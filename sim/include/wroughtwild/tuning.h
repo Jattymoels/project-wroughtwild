@@ -61,11 +61,19 @@ struct CatalystProcess {
     double minimumRollFractionAtSkill = 0.0;
 };
 
+// Non-catalyst tempering: the deterministic baseline (tier midpoint) route.
+struct BasicTemper {
+    std::string process = "basic_temper"; // a station must list this process
+    std::string property = "fire_resistance";
+    int tier = 1;
+};
+
 struct CraftingTable {
     std::vector<Station> stations;
     std::vector<Recipe> recipes;
     std::vector<Order> orders;
     std::vector<CatalystProcess> catalystProcesses;
+    BasicTemper basicTemper;
     double salvageReturnFraction = 0.0;
     RepetitionDecay repetitionDecay;
 
@@ -245,6 +253,8 @@ struct ShapeDef {
     std::string id;
     std::string displayName;
     int materialCost = 1; // units of whichever material family the player selected
+    double sizeM[3] = {1.0, 1.0, 1.0};
+    std::string requiresWorldEffect; // empty = available from the start
 };
 
 struct ConstructionTable {

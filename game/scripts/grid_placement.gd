@@ -12,6 +12,9 @@ const PLACED_BLOCK_SCENE := preload("res://scenes/placed_block.tscn")
 ## applied by the rules library, never computed here.
 var grid_size: float = 1.0
 var placement_range: float = 10.0
+## Metres, from the selected shape's size_m; shapes shorter than the cell
+## sit on the cell floor.
+var shape_size := Vector3.ONE
 
 @export var selected_shape: StringName = &"cube"
 @export var selected_material_family: StringName = &"wood"
@@ -35,7 +38,41 @@ const INVALID_COLOR := Color(0.9, 0.1, 0.1, 0.5)
 func _ready() -> void:
 	grid_size = _sim().grid_size()
 	placement_range = _sim().placement_range()
+	select_shape(selected_shape)
 	_create_preview_mesh()
+
+
+func unlocked_shapes() -> PackedStringArray:
+	var ids := PackedStringArray()
+	for id in _sim().shape_ids():
+		if _sim().shape_unlocked(id):
+			ids.append(id)
+	return ids
+
+
+func select_shape(shape_id: StringName) -> bool:
+	var info: Dictionary = _sim().shape(shape_id)
+	if info.is_empty() or not info["unlocked"]:
+		return false
+	selected_shape = shape_id
+	shape_size = info["size"]
+	if _preview_mesh != null:
+		(_preview_mesh.mesh as BoxMesh).size = shape_size
+	return true
+
+
+## Next unlocked shape in construction.json order.
+func cycle_shape() -> StringName:
+	var ids := unlocked_shapes()
+	if ids.is_empty():
+		return selected_shape
+	var index := ids.find(String(selected_shape))
+	select_shape(StringName(ids[(index + 1) % ids.size()]))
+	return selected_shape
+
+
+func _shape_offset() -> Vector3:
+	return Vector3(0.0, (shape_size.y - grid_size) * 0.5, 0.0)
 
 
 ## The same rules instance the inventory draws on, so affordability, payment
@@ -53,7 +90,7 @@ func _create_preview_mesh() -> void:
 
 	_preview_mesh = MeshInstance3D.new()
 	var box := BoxMesh.new()
-	box.size = Vector3.ONE * grid_size
+	box.size = shape_size
 	_preview_mesh.mesh = box
 	_preview_mesh.material_override = _preview_material
 	_preview_mesh.visible = false
@@ -113,7 +150,7 @@ func _update_preview() -> void:
 	var affordable: bool = _sim().can_afford_placement(selected_shape, selected_material_family)
 	preview_valid = affordable and _is_cell_free(preview_location)
 
-	_preview_mesh.global_position = preview_location
+	_preview_mesh.global_position = preview_location + _shape_offset()
 	_preview_mesh.rotation.y = preview_rotation
 	_preview_mesh.visible = true
 	preview_visible = true
@@ -129,9 +166,9 @@ func try_place_block() -> bool:
 
 	var block: PlacedBlock = PLACED_BLOCK_SCENE.instantiate()
 	(get_parent() as WroughtwildPlayer).world_root().add_child(block)
-	block.global_position = preview_location
+	block.global_position = preview_location + _shape_offset()
 	block.rotation.y = preview_rotation
-	block.init_block(selected_shape, selected_material_family, grid_size)
+	block.init_block(selected_shape, selected_material_family, shape_size)
 	return true
 
 

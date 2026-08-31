@@ -9,7 +9,9 @@ extends StaticBody3D
 @export var material_family: StringName = &"wood"
 
 
-func init_block(in_shape: StringName, in_family: StringName, grid_size: float) -> void:
+## size comes from the shape's size_m in construction.json (the scene's mesh
+## and collision are unit cubes).
+func init_block(in_shape: StringName, in_family: StringName, size: Vector3) -> void:
 	shape_id = in_shape
 	material_family = in_family
-	scale = Vector3.ONE * grid_size
+	scale = size

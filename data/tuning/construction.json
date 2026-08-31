@@ -9,7 +9,16 @@
       "id": "cube",
       "display_name": "Cube Block",
       "material_cost": 2,
-      "design_purpose": "The only prototype shape so far. Two units per block equals one harvest swing, so a small shelter visibly eats into a resource node instead of feeling free."
+      "size_m": [1.0, 1.0, 1.0],
+      "design_purpose": "The starting shape. Two units per block equals one harvest swing, so a small shelter visibly eats into a resource node instead of feeling free."
+    },
+    {
+      "id": "stonecut_slab",
+      "display_name": "Stonecut Slab",
+      "material_cost": 1,
+      "size_m": [1.0, 0.5, 1.0],
+      "requires_world_effect": "stonecut_blocks",
+      "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a half-height slab that makes floors, steps and roofs possible, so the trial demonstrably widens what can be built."
     }
   ],
   "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy."

@@ -246,3 +246,32 @@ func _test_sim_extension() -> void:
 	check(sim.material_count("wood") == wood_deposit and sim.material_count("ember_catalyst") == 1,
 		"trial: deposit and earlier catalyst survive death")
 	check(sim.trial_end(), "trial: failed run closed")
+
+	# Shapes: the slab waits on the boss kill; sizes come from data.
+	check(sim.shape("cube")["size"] == Vector3.ONE and sim.shape("cube")["unlocked"], "shape: cube view")
+	check(not sim.shape_unlocked("stonecut_slab"), "shape: slab locked until the completion unlock")
+
+	# Equipment and tempering (the catalyst banked above is still held).
+	check(sim.equipment().is_empty(), "gear: nothing worn")
+	check(not sim.equip_from_inventory("iron_chest_armour"), "gear: cannot wear armour you do not carry")
+	sim.add_material("iron_chest_armour", 1)
+	check(sim.equip_from_inventory("iron_chest_armour") and sim.equipment()["chest"]["armour"] == 20.0,
+		"gear: worn armour shows its implicit armour")
+	check(sim.derived_stats()["armour"] == 20.0 and sim.material_count("iron_chest_armour") == 0,
+		"gear: derived stats include the worn piece and the pack is lighter")
+	check(sim.temper_basic()["reason"] == "station_unavailable", "temper: quench needs a forge that supports basic_temper")
+	sim.add_material("iron_fittings", 6)
+	check(sim.build_station("forge_improved"), "temper: forge upgraded with the order's pay")
+	var quench: Dictionary = sim.temper_basic()
+	check(quench["applied"] and absf(quench["value"] - 11.5) < 0.001, "temper: quench sets the tier-1 midpoint")
+	check(absf(sim.derived_stats()["fire_resistance_percent"] - 11.5) < 0.001, "temper: resistance flows into derived stats")
+	check(sim.mitigate(100.0, "fire") < 100.0 and absf(sim.mitigate(100.0, "physical") - 100.0 / (1.0 + 20.0 / 100.0)) < 0.5,
+		"temper: fire and armour both mitigate now")
+	var process: Dictionary = sim.catalyst_process("ember_catalyst_tempering")
+	check(process["catalyst_held"] == 1 and process["tier_minimum"] == 25.0 and absf(process["floor_at_skill"] - 32.5) < 0.001,
+		"temper: catalyst process explained before use")
+	var refused: Dictionary = sim.temper_with_catalyst("ember_catalyst_tempering")
+	check(refused["reason"] == "skill_too_low" and sim.material_count("ember_catalyst") == 1,
+		"temper: refused below the skill floor without consuming the catalyst")
+	var snapshot_with_gear: String = sim.export_json()
+	check(snapshot_with_gear.find("fire_resistance") >= 0, "gear: tempered armour is in the save schema")

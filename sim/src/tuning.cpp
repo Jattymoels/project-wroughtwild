@@ -120,6 +120,11 @@ CraftingTable loadCrafting(const std::string& path) {
 
     table.salvageReturnFraction = doc->get("salvage_return_fraction").asNumber();
 
+    const Value& basic = doc->get("basic_temper");
+    table.basicTemper.process = basic.get("process").asString();
+    table.basicTemper.property = basic.get("property").asString();
+    table.basicTemper.tier = basic.get("tier").asInt();
+
     const Value& decay = doc->get("repetition_decay");
     table.repetitionDecay.enabled = decay.get("enabled").asBool();
     table.repetitionDecay.fullXpRepetitions = decay.get("full_xp_repetitions").asInt();
@@ -234,6 +239,11 @@ ConstructionTable loadConstruction(const std::string& path) {
         shape.id = s->get("id").asString();
         shape.displayName = s->get("display_name").asString();
         shape.materialCost = s->get("material_cost").asInt();
+        const auto& size = s->get("size_m").asArray();
+        if (size.size() != 3) throw std::runtime_error("construction: size_m needs 3 numbers");
+        for (size_t i = 0; i < 3; ++i) shape.sizeM[i] = size[i]->asNumber();
+        if (auto effect = s->find("requires_world_effect"))
+            shape.requiresWorldEffect = effect->asString();
         table.shapes.push_back(std::move(shape));
     }
     return table;

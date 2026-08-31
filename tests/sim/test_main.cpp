@@ -157,6 +157,20 @@ void testShapePlacement(const tuning::Tuning& t) {
 
     check(!player.payPlacement("no_such_shape", "wood"), "construction: unknown shape refused");
     check(player.refundRemoval("no_such_shape", "wood") == 0, "construction: unknown shape refunds nothing");
+
+    // The trial's completion unlock gates the slab.
+    const auto* slab = t.construction.findShape("stonecut_slab");
+    check(slab != nullptr && slab->requiresWorldEffect == t.trial.completionUnlock,
+          "construction: slab is gated by the trial completion unlock");
+    check(slab->sizeM[1] < slab->sizeM[0], "construction: slab is half height");
+    player.inventory["wood"] = 10;
+    check(!player.shapeUnlocked("stonecut_slab") && !player.canAffordPlacement("stonecut_slab", "wood"),
+          "construction: slab locked before the boss falls");
+    player.recordWorldEffect(t.trial.completionUnlock);
+    check(player.shapeUnlocked("stonecut_slab") && player.payPlacement("stonecut_slab", "wood"),
+          "construction: slab placeable after the unlock");
+    check(t.crafting.basicTemper.property == "fire_resistance" && t.crafting.basicTemper.tier == 1,
+          "crafting: basic temper config loads");
 }
 
 void testSkillCurve(const tuning::Tuning& t) {
