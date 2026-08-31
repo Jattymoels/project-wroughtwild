@@ -2,67 +2,197 @@
   "schema_version": 1,
   "status": "prototype-placeholder",
   "materials": [
-    {"id": "wood", "display_name": "Wood"},
-    {"id": "iron_ore", "display_name": "Iron Ore"},
-    {"id": "iron_ingot", "display_name": "Iron Ingot"}
+    {
+      "id": "wood",
+      "display_name": "Wood"
+    },
+    {
+      "id": "iron_ore",
+      "display_name": "Iron Ore"
+    },
+    {
+      "id": "iron_ingot",
+      "display_name": "Iron Ingot"
+    }
   ],
   "stations": [
+    {
+      "id": "workbench",
+      "display_name": "Workbench",
+      "tier": 1,
+      "supported_processes": [
+        "assemble"
+      ],
+      "build_cost": {
+        "wood": 8
+      },
+      "kit_item": "workbench_kit",
+      "design_purpose": "The first station: assembled bare-handed from gathered wood and placed anywhere. Burns no fuel; it gates kit assembly, not metallurgy."
+    },
     {
       "id": "forge_basic",
       "display_name": "Basic Forge",
       "tier": 1,
-      "supported_processes": ["shape"],
-      "build_cost": {"wood": 15, "iron_ore": 4},
-      "design_purpose": "Cheap enough to build in the first play session; the cost teaches that construction consumes gathered families"
+      "supported_processes": [
+        "shape"
+      ],
+      "build_cost": {
+        "wood": 15,
+        "iron_ore": 4
+      },
+      "design_purpose": "Placed from a Forge Kit assembled at the workbench. Its processes burn fuel (wood or charcoal), making power the fourth gate from the first hour.",
+      "kit_item": "forge_kit"
     },
     {
       "id": "forge_improved",
       "display_name": "Improved Forge",
       "tier": 2,
-      "supported_processes": ["shape", "basic_temper", "catalyst_temper"],
+      "supported_processes": [
+        "shape",
+        "basic_temper",
+        "catalyst_temper"
+      ],
       "upgrade_from": "forge_basic",
-      "upgrade_cost": {"trade_currency": 30, "iron_fittings": 6},
-      "design_purpose": "Consumes most of the mine-order payment plus useful output, so the upgrade feels earned through work rather than passively unlocked"
+      "upgrade_cost": {
+        "trade_currency": 30,
+        "iron_fittings": 6
+      },
+      "design_purpose": "Upgraded in place at a built forge. Consumes most of the mine-order payment plus useful output, so the upgrade feels earned through work rather than passively unlocked."
     }
   ],
   "recipes": [
     {
+      "id": "workbench_kit",
+      "display_name": "Workbench Kit",
+      "station": "",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 8
+      },
+      "outputs": {
+        "workbench_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "The start-with-nothing rung: gather wood by hand, lash a bench together in the field, place it (B, Tab to the kit)."
+    },
+    {
+      "id": "forge_kit",
+      "display_name": "Forge Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 12,
+        "stone": 8,
+        "iron_ore": 4
+      },
+      "outputs": {
+        "forge_kit": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "Assembled at the workbench from all three gathered families, then placed to found the forge; replaces the pre-built forge site."
+    },
+    {
+      "id": "charcoal",
+      "display_name": "Charcoal",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "wood": 4
+      },
+      "outputs": {
+        "charcoal": 2
+      },
+      "base_skill_xp": 1,
+      "fuel_cost": 0,
+      "use_categories": [
+        "processing",
+        "fuel"
+      ],
+      "design_purpose": "Slow-burned wood: four times the fuel value per unit, so smiths who plan their burns spend fewer trips hauling logs."
+    },
+    {
       "id": "smelt_iron",
       "display_name": "Smelt Iron Ingot",
       "station": "forge_basic",
-      "minimum_skill": {"blacksmithing": 1},
-      "inputs": {"iron_ore": 2, "wood": 1},
-      "outputs": {"iron_ingot": 1},
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "iron_ore": 2,
+        "wood": 1
+      },
+      "outputs": {
+        "iron_ingot": 1
+      },
       "base_skill_xp": 2,
-      "use_categories": ["processing"]
+      "use_categories": [
+        "processing"
+      ],
+      "fuel_cost": 2,
+      "design_purpose": "Two ore plus flux wood into one ingot; the forge also burns 2 fuel per smelt, so ore trips and wood trips stay coupled."
     },
     {
       "id": "iron_fittings",
       "display_name": "Iron Fittings",
       "station": "forge_basic",
-      "minimum_skill": {"blacksmithing": 1},
-      "inputs": {"iron_ingot": 2},
-      "outputs": {"iron_fittings": 4},
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "iron_ingot": 2
+      },
+      "outputs": {
+        "iron_fittings": 4
+      },
       "base_skill_xp": 8,
-      "use_categories": ["orders", "construction", "infrastructure"]
+      "use_categories": [
+        "orders",
+        "construction",
+        "infrastructure"
+      ],
+      "fuel_cost": 1
     },
     {
       "id": "iron_chest_armour",
       "display_name": "Iron Chest Armour",
       "station": "forge_improved",
-      "minimum_skill": {"blacksmithing": 4},
-      "inputs": {"iron_ingot": 12},
-      "outputs": {"iron_chest_armour": 1},
+      "minimum_skill": {
+        "blacksmithing": 4
+      },
+      "inputs": {
+        "iron_ingot": 12
+      },
+      "outputs": {
+        "iron_chest_armour": 1
+      },
       "base_skill_xp": 35,
-      "use_categories": ["equipment"]
+      "use_categories": [
+        "equipment"
+      ],
+      "fuel_cost": 4
     }
   ],
   "orders": [
     {
       "id": "reinforce_old_mine",
       "display_name": "Reinforce the Old Mine",
-      "required_outputs": {"iron_fittings": 24},
-      "rewards": {"trade_currency": 40, "blacksmithing_xp": 60},
+      "required_outputs": {
+        "iron_fittings": 24
+      },
+      "rewards": {
+        "trade_currency": 40,
+        "blacksmithing_xp": 60
+      },
       "world_effect": "old_mine_reinforced"
     }
   ],
@@ -74,7 +204,9 @@
       "catalyst": "ember_catalyst",
       "station": "forge_improved",
       "process": "catalyst_temper",
-      "minimum_skill": {"blacksmithing": 5},
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
       "guaranteed_property": "fire_resistance",
       "result_tier": 2,
       "minimum_roll_fraction_at_skill": 0.5,
@@ -93,5 +225,10 @@
     "full_xp_repetitions": 5,
     "minimum_multiplier": 0.2,
     "order_crafting_ignores_decay": true
+  },
+  "fuels": {
+    "wood": 1,
+    "charcoal": 4,
+    "design_purpose": "Fuel value per unit when a station process burns fuel. Charcoal concentrates wood four-to-one so refining fuel is worth forge time; the first rung of the power ladder (crafting-and-skills.md four gates)."
   }
 }

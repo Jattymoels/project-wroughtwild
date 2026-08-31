@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "status": "prototype-placeholder",
+  "default_seed": 1,
+  "map": {
+    "width_cells": 96,
+    "height_cells": 96,
+    "cell_size_m": 1.0,
+    "base_height": 1,
+    "height_scale": 7,
+    "height_frequency": 0.035,
+    "height_octaves": 3,
+    "moisture_frequency": 0.017,
+    "design_purpose": "Bounded sandpit dimensions and terrain character (D-003). height_scale sets how tall hills get in blocks; frequencies set how quickly terrain and biomes change while walking - lower is broader features."
+  },
+  "biomes": [
+    {
+      "id": "rocky_hills",
+      "display_name": "Rocky Hills",
+      "surface": "rock",
+      "height_min": 5,
+      "node_density": {"boulder": 0.030, "iron_vein": 0.016, "tree": 0.004},
+      "pack_density": 0.0045,
+      "packs": [["stone_husk"], ["stone_husk", "ash_hound"]],
+      "design_purpose": "High ground owns stone and iron; Stone Husks make taking them feel like a claim, and the climb telegraphs risk"
+    },
+    {
+      "id": "ember_wastes",
+      "display_name": "Ember Wastes",
+      "surface": "ash",
+      "moisture_max": 0.3,
+      "node_density": {"boulder": 0.012, "tree": 0.002},
+      "pack_density": 0.007,
+      "packs": [["ember_whelp", "ember_whelp"], ["cinder_archer", "ember_whelp"], ["ash_hound", "ash_hound", "ash_hound"]],
+      "design_purpose": "The dangerous quarter that holds the trial gate: fire creatures preview the Tyrant's element and the ground itself looks burnt"
+    },
+    {
+      "id": "forest",
+      "display_name": "Deep Forest",
+      "surface": "forest_floor",
+      "moisture_min": 0.55,
+      "node_density": {"tree": 0.050, "boulder": 0.006},
+      "pack_density": 0.004,
+      "packs": [["ash_hound", "ash_hound"]],
+      "design_purpose": "Wood country: dense trees with hound packs prowling, so bulk timber runs stay tense"
+    },
+    {
+      "id": "meadow",
+      "display_name": "Meadow",
+      "surface": "grass",
+      "node_density": {"tree": 0.014, "boulder": 0.008},
+      "pack_density": 0.0015,
+      "packs": [["ember_whelp"]],
+      "design_purpose": "The gentle fallback biome and starting country: sparse resources, near-empty of threats, readable in every direction"
+    }
+  ],
+  "nodes": {
+    "tree": {"display_name": "Tree", "material_family": "wood", "units": 12, "units_per_harvest": 3, "visual": "tree"},
+    "boulder": {"display_name": "Boulder", "material_family": "stone", "units": 10, "units_per_harvest": 2, "visual": "boulder"},
+    "iron_vein": {"display_name": "Iron Vein", "material_family": "iron_ore", "units": 8, "units_per_harvest": 2, "visual": "iron_vein"},
+    "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture"
+  },
+  "guarantees": {
+    "spawn_biome": "meadow",
+    "spawn_clear_radius_m": 8,
+    "near_radius_m": 40,
+    "min_nodes_near": {"tree": 8, "boulder": 5, "iron_vein": 3},
+    "gate_biome": "ember_wastes",
+    "gate_min_distance_m": 45,
+    "pack_min_distance_from_spawn_m": 22,
+    "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing, has enough wood/stone/iron within a short walk to reach the forge, keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination"
+  }
+}

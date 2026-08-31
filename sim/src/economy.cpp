@@ -71,6 +71,30 @@ double PlayerEconomy::repetitionMultiplier(const std::string& recipeId, bool for
     return std::max(multiplier, decay.minimumMultiplier);
 }
 
+int PlayerEconomy::fuelValueHeld() const {
+    int total = 0;
+    for (const auto& [item, value] : tuning_.crafting.fuels) {
+        auto held = inventory.find(item);
+        if (held != inventory.end()) total += held->second * value;
+    }
+    return total;
+}
+
+bool PlayerEconomy::fuelMet(const std::string& recipeId) const {
+    const tuning::Recipe* recipe = tuning_.crafting.findRecipe(recipeId);
+    if (!recipe || recipe->fuelCost <= 0 || recipe->station.empty()) return true;
+    int available = 0;
+    for (const auto& [item, value] : tuning_.crafting.fuels) {
+        auto held = inventory.find(item);
+        int count = held != inventory.end() ? held->second : 0;
+        // Units committed as recipe inputs cannot also burn as fuel.
+        auto asInput = recipe->inputs.find(item);
+        if (asInput != recipe->inputs.end()) count -= asInput->second;
+        available += std::max(0, count) * value;
+    }
+    return available >= recipe->fuelCost;
+}
+
 PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, bool forOrder) {
     CraftResult result;
     const tuning::Recipe* recipe = tuning_.crafting.findRecipe(recipeId);
@@ -78,13 +102,32 @@ PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, boo
         result.failure.unknownRecipe = true;
         return result;
     }
-    if (!stationAvailable(recipe->station)) result.failure.stationUnavailable = true;
+    // An empty station means hand-crafting: no facility gate, no fuel burned.
+    bool handCraft = recipe->station.empty();
+    if (!handCraft && !stationAvailable(recipe->station)) result.failure.stationUnavailable = true;
     for (const auto& [skillId, level] : recipe->minimumSkill)
         if (skillLevel(skillId) < level) result.failure.skillTooLow = true;
     if (!hasAll(inventory, recipe->inputs)) result.failure.missingInputs = true;
+    if (!fuelMet(recipeId)) result.failure.missingFuel = true;
     if (result.failure.any()) return result;
 
     remove(inventory, recipe->inputs);
+
+    // Burn fuel cheapest-value first, so wood feeds the fire before charcoal.
+    if (!handCraft && recipe->fuelCost > 0) {
+        std::vector<std::pair<int, std::string>> byValue;
+        for (const auto& [item, value] : tuning_.crafting.fuels)
+            byValue.push_back({value, item});
+        std::sort(byValue.begin(), byValue.end());
+        int needed = recipe->fuelCost;
+        for (const auto& [value, item] : byValue) {
+            while (needed > 0 && inventory[item] > 0) {
+                inventory[item] -= 1;
+                needed -= value;
+            }
+        }
+    }
+
     add(inventory, recipe->outputs);
 
     result.xpMultiplier = repetitionMultiplier(recipeId, forOrder);

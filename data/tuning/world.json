@@ -16,7 +16,21 @@
       "damage": 6,
       "damage_type": "physical",
       "attack_period_rounds": 1,
-      "design_purpose": "Basic fodder that teaches area clearing"
+      "design_purpose": "Basic fodder that teaches area clearing",
+      "loot": [
+        {
+          "item": "charcoal",
+          "min": 1,
+          "max": 1,
+          "chance": 0.35
+        },
+        {
+          "item": "trade_currency",
+          "min": 1,
+          "max": 2,
+          "chance": 0.5
+        }
+      ]
     },
     {
       "id": "cinder_archer",
@@ -26,7 +40,21 @@
       "damage": 9,
       "damage_type": "fire",
       "attack_period_rounds": 2,
-      "design_purpose": "Introduces fire damage in small doses before the boss"
+      "design_purpose": "Introduces fire damage in small doses before the boss",
+      "loot": [
+        {
+          "item": "charcoal",
+          "min": 1,
+          "max": 2,
+          "chance": 0.45
+        },
+        {
+          "item": "trade_currency",
+          "min": 1,
+          "max": 3,
+          "chance": 0.5
+        }
+      ]
     },
     {
       "id": "ash_hound",
@@ -36,14 +64,54 @@
       "damage": 4,
       "damage_type": "physical",
       "attack_period_rounds": 1,
-      "design_purpose": "Cheap but quick; the hastened weakness makes packs of these frightening"
+      "design_purpose": "Cheap but quick; the hastened weakness makes packs of these frightening",
+      "loot": [
+        {
+          "item": "trade_currency",
+          "min": 1,
+          "max": 3,
+          "chance": 0.6
+        },
+        {
+          "item": "iron_ore",
+          "min": 1,
+          "max": 1,
+          "chance": 0.2
+        }
+      ]
+    },
+    {
+      "id": "stone_husk",
+      "display_name": "Stone Husk",
+      "max_life": 45,
+      "behaviour": "melee",
+      "damage": 9,
+      "damage_type": "physical",
+      "attack_period_rounds": 2,
+      "loot": [
+        {
+          "item": "stone",
+          "min": 2,
+          "max": 4,
+          "chance": 1.0
+        },
+        {
+          "item": "iron_ore",
+          "min": 1,
+          "max": 2,
+          "chance": 0.35
+        }
+      ],
+      "design_purpose": "Slow hill guardian that makes stone and iron country feel owned; killing it IS mining, so combat feeds construction directly"
     }
   ],
   "gathering_sites": [
     {
       "id": "valley_forest",
       "display_name": "Valley Forest",
-      "yields_per_action": {"wood": 3},
+      "yields_per_action": {
+        "wood": 3
+      },
       "ambush_chance": 0.0,
       "ambush_enemies": [],
       "design_purpose": "Safe early gathering; controls how long shelter and fuel work takes"
@@ -51,9 +119,14 @@
     {
       "id": "old_mine",
       "display_name": "Old Mine",
-      "yields_per_action": {"iron_ore": 2},
+      "yields_per_action": {
+        "iron_ore": 2
+      },
       "ambush_chance": 0.15,
-      "ambush_enemies": ["ash_hound", "ash_hound"],
+      "ambush_enemies": [
+        "ash_hound",
+        "ash_hound"
+      ],
       "ambush_removed_by_world_effect": "old_mine_reinforced",
       "design_purpose": "Iron source with real risk, so open-world death rules matter; reinforcing the mine (order world effect) removes the ambushes"
     }
@@ -61,5 +134,6 @@
   "open_world_death": {
     "dropped_inventory_recoverable": true,
     "design_purpose": "Open-world death drops carried inventory at the site for recovery (D-006); permanent equipment is never dropped"
-  }
+  },
+  "design_purpose_loot": "Every mob pays out into the survival economy (fuel, ore, stone, coin) so fighting is never dead time next to gathering; modifier-bearing drops arrive in Wave 3."
 }

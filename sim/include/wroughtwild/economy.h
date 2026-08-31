@@ -45,7 +45,11 @@ public:
         bool stationUnavailable = false;
         bool skillTooLow = false;
         bool missingInputs = false;
-        bool any() const { return unknownRecipe || stationUnavailable || skillTooLow || missingInputs; }
+        bool missingFuel = false;
+        bool any() const {
+            return unknownRecipe || stationUnavailable || skillTooLow || missingInputs ||
+                   missingFuel;
+        }
     };
 
     struct CraftResult {
@@ -61,7 +65,16 @@ public:
 
     // forOrder marks crafting directed at a bulk order; per crafting.json it
     // bypasses repetition decay because the output is genuinely consumed.
+    // A recipe with an empty station is hand-craftable anywhere and skips
+    // the facility and fuel gates.
     CraftResult craft(const std::string& recipeId, bool forOrder = false);
+
+    // --- fuel (the first rung of the power gate) ---
+    // Total fuel value carried: sum of count * fuel value per fuel item.
+    int fuelValueHeld() const;
+    // True when carried fuel covers the recipe's fuel_cost (input materials
+    // committed to the craft are not double-counted as fuel).
+    bool fuelMet(const std::string& recipeId) const;
 
     // PROVISIONAL decay rule (open question in crafting-and-skills.md):
     // repetitions 1..full_xp_repetitions grant full XP; repetition n beyond

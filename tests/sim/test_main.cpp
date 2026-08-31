@@ -9,10 +9,12 @@
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/items.h"
+#include "wroughtwild/loot.h"
 #include "wroughtwild/save.h"
 #include "wroughtwild/stats.h"
 #include "wroughtwild/trial.h"
 #include "wroughtwild/tuning.h"
+#include "wroughtwild/worldgen.h"
 
 namespace {
 
@@ -191,6 +193,7 @@ void testSkillCurve(const tuning::Tuning& t) {
 void testCraftingGates(const tuning::Tuning& t) {
     economy::PlayerEconomy player(t);
     player.inventory["iron_ingot"] = 2;
+    player.inventory["wood"] = 50; // fuel for the forge
 
     // No forge yet: the facility gate must block on its own.
     auto result = player.craft("iron_fittings");
@@ -218,6 +221,7 @@ void testRepetitionDecay(const tuning::Tuning& t) {
     economy::PlayerEconomy player(t);
     player.addAvailableStation("forge_basic");
     player.inventory["iron_ingot"] = 2000;
+    player.inventory["wood"] = 5000; // fuel
 
     // First full_xp_repetitions (5) crafts grant full XP.
     for (int i = 0; i < 5; ++i) {
@@ -244,6 +248,7 @@ void testOrderFulfilment(const tuning::Tuning& t) {
     economy::PlayerEconomy player(t);
     player.addAvailableStation("forge_basic");
     player.inventory["iron_ingot"] = 12; // 6 crafts x 2 ingots -> 24 fittings
+    player.inventory["wood"] = 20;        // fuel
 
     for (int i = 0; i < 6; ++i) {
         auto r = player.craft("iron_fittings", /*forOrder=*/true);
@@ -267,6 +272,7 @@ void testSalvage(const tuning::Tuning& t) {
     economy::PlayerEconomy player(t);
     player.addAvailableStation("forge_basic");
     player.inventory["iron_ingot"] = 2;
+    player.inventory["wood"] = 1; // exactly the fuel, so salvage maths stay exact
     player.craft("iron_fittings");
 
     // One fitting embodies 0.5 ingot; salvage returns floor(0.5 * 0.5) = 0.
@@ -352,6 +358,7 @@ void testVerticalSliceSpine(const tuning::Tuning& t) {
     economy::PlayerEconomy player(t);
     player.addAvailableStation("forge_basic");
     player.inventory["iron_ingot"] = 12;
+    player.inventory["wood"] = 6000; // fuel for the whole spine
 
     for (int i = 0; i < 6; ++i) player.craft("iron_fittings", /*forOrder=*/true);
     player.fulfillOrder("reinforce_old_mine");
@@ -662,6 +669,172 @@ void testSaveLoad(const tuning::Tuning& t) {
     check(restored.stationAvailable("forge_basic"), "save: imported station usable");
 }
 
+
+void testFuelGate(const tuning::Tuning& t) {
+    check(t.crafting.fuels.at("wood") == 1 && t.crafting.fuels.at("charcoal") == 4,
+          "fuel: fuel values load");
+
+    economy::PlayerEconomy player(t);
+    player.addAvailableStation("forge_basic");
+    // Smelting needs 2 ore + 1 wood as inputs AND 2 fuel; exactly the input
+    // wood is not enough - committed inputs cannot double as fuel.
+    player.inventory["iron_ore"] = 2;
+    player.inventory["wood"] = 1;
+    check(!player.fuelMet("smelt_iron"), "fuel: input wood does not double as fuel");
+    auto starved = player.craft("smelt_iron");
+    check(!starved.crafted && starved.failure.missingFuel, "fuel: craft blocked without fuel");
+    check(player.inventory["iron_ore"] == 2 && player.inventory["wood"] == 1,
+          "fuel: blocked craft consumes nothing");
+
+    player.inventory["wood"] = 3; // 1 input + 2 fuel
+    check(player.fuelMet("smelt_iron"), "fuel: met with input plus fuel wood");
+    auto smelted = player.craft("smelt_iron");
+    check(smelted.crafted, "fuel: craft succeeds with fuel");
+    check(player.inventory["wood"] == 0, "fuel: fuel burned");
+    check(player.inventory["iron_ingot"] == 1, "fuel: output produced");
+
+    // Charcoal covers fuel at 4x value; wood burns first when both are held.
+    player.inventory["iron_ore"] = 4;
+    player.inventory["wood"] = 2;     // covers input 1 + fuel 1
+    player.inventory["charcoal"] = 1; // covers the remaining fuel
+    auto mixed = player.craft("smelt_iron");
+    check(mixed.crafted, "fuel: mixed fuels accepted");
+    check(player.inventory["wood"] == 0, "fuel: cheap wood burned first");
+    check(player.inventory["charcoal"] == 0, "fuel: charcoal burned for the remainder");
+
+    // Charcoal alone: one unit over-covers a 2-fuel smelt (furnace wastes heat).
+    player.inventory["iron_ore"] = 2;
+    player.inventory["wood"] = 1;
+    player.inventory["charcoal"] = 1;
+    auto rich = player.craft("smelt_iron");
+    check(rich.crafted && player.inventory["charcoal"] == 0,
+          "fuel: charcoal alone covers the burn");
+}
+
+void testHandCraftingAndKits(const tuning::Tuning& t) {
+    economy::PlayerEconomy player(t);
+    // The workbench kit is hand-craftable with no station at all.
+    player.inventory["wood"] = 8;
+    auto bench = player.craft("workbench_kit");
+    check(bench.crafted, "kits: workbench kit hand-crafts with no station");
+    check(player.inventory["workbench_kit"] == 1, "kits: kit lands in the pack");
+
+    // Placing the kit founds the station (the engine consumes the item and
+    // calls addAvailableStation; here we exercise the mapping).
+    const auto* station = t.crafting.findStationForKit("workbench_kit");
+    check(station != nullptr && station->id == "workbench", "kits: workbench kit maps to workbench");
+    check(t.crafting.findStationForKit("forge_kit") != nullptr &&
+              t.crafting.findStationForKit("forge_kit")->id == "forge_basic",
+          "kits: forge kit maps to basic forge");
+    check(t.crafting.findStationForKit("iron_ingot") == nullptr, "kits: non-kit items map to nothing");
+
+    player.addAvailableStation(station->id);
+    // The forge kit needs the workbench plus all three gathered families.
+    auto blocked = player.craft("forge_kit");
+    check(!blocked.crafted && blocked.failure.missingInputs, "kits: forge kit needs materials");
+    player.inventory["wood"] = 12;
+    player.inventory["stone"] = 8;
+    player.inventory["iron_ore"] = 4;
+    auto forge = player.craft("forge_kit");
+    check(forge.crafted && player.inventory["forge_kit"] == 1, "kits: forge kit assembles at the bench");
+    check(player.inventory["stone"] == 0, "kits: stone family consumed");
+}
+
+void testEnemyLoot(const tuning::Tuning& t) {
+    // Determinism: the same kill seed always drops the same loot.
+    auto a = loot::rollEnemyLoot(t.world, "stone_husk", 99);
+    auto b = loot::rollEnemyLoot(t.world, "stone_husk", 99);
+    check(a == b, "loot: deterministic per seed");
+    check(loot::rollEnemyLoot(t.world, "nobody", 1).empty(), "loot: unknown enemy drops nothing");
+
+    // Bounds and rates over many kills: guaranteed entries always drop,
+    // counts stay in [min, max], chances land near their tuned values.
+    int husks = 2000, stoneDrops = 0, ironDrops = 0;
+    bool boundsOk = true;
+    for (int seed = 0; seed < husks; ++seed) {
+        auto drops = loot::rollEnemyLoot(t.world, "stone_husk", seed);
+        if (drops.count("stone")) {
+            ++stoneDrops;
+            if (drops["stone"] < 2 || drops["stone"] > 4) boundsOk = false;
+        }
+        if (drops.count("iron_ore")) ++ironDrops;
+    }
+    check(stoneDrops == husks, "loot: certain drops always arrive");
+    check(boundsOk, "loot: counts stay inside min..max");
+    double ironRate = static_cast<double>(ironDrops) / husks;
+    check(ironRate > 0.30 && ironRate < 0.40, "loot: chance drops near their tuned rate");
+}
+
+void testWorldgen(const tuning::Tuning& t) {
+    // Determinism: one seed, one world.
+    auto a = worldgen::generate(t, 7);
+    auto b = worldgen::generate(t, 7);
+    check(a.cells.size() == b.cells.size() && a.nodes.size() == b.nodes.size() &&
+              a.packs.size() == b.packs.size() && a.spawnX == b.spawnX && a.gateX == b.gateX,
+          "worldgen: deterministic per seed");
+    bool sameCells = true;
+    for (size_t i = 0; i < a.cells.size(); ++i)
+        if (a.cells[i].height != b.cells[i].height || a.cells[i].biomeIndex != b.cells[i].biomeIndex)
+            sameCells = false;
+    check(sameCells, "worldgen: identical terrain per seed");
+
+    auto c = worldgen::generate(t, 8);
+    bool differs = c.spawnX != a.spawnX || c.gateX != a.gateX || c.nodes.size() != a.nodes.size();
+    if (!differs)
+        for (size_t i = 0; i < a.cells.size() && !differs; ++i)
+            if (a.cells[i].height != c.cells[i].height) differs = true;
+    check(differs, "worldgen: different seeds differ");
+
+    // The guarantees hold across many seeds (D-003: critical progression
+    // resources cannot be absent from a valid seed).
+    const auto& g = t.worldgen.guarantees;
+    int spawnBiome = -1;
+    for (size_t i = 0; i < t.worldgen.biomes.size(); ++i)
+        if (t.worldgen.biomes[i].id == g.spawnBiome) spawnBiome = static_cast<int>(i);
+    bool allGood = true;
+    std::string firstBad;
+    for (uint64_t seed = 1; seed <= 60 && allGood; ++seed) {
+        auto map = worldgen::generate(t, seed);
+        if (map.at(map.spawnX, map.spawnZ).biomeIndex != spawnBiome) {
+            allGood = false; firstBad = "spawn biome (seed " + std::to_string(seed) + ")";
+        }
+        for (const auto& [type, minimum] : g.minNodesNear)
+            if (map.countNodesNear(type, map.spawnX, map.spawnZ, g.nearRadiusM) < minimum) {
+                allGood = false;
+                firstBad = type + " shortfall (seed " + std::to_string(seed) + ")";
+            }
+        double gateDistance = std::sqrt(
+            static_cast<double>((map.gateX - map.spawnX) * (map.gateX - map.spawnX) +
+                                (map.gateZ - map.spawnZ) * (map.gateZ - map.spawnZ)));
+        if (gateDistance < g.gateMinDistanceM) {
+            allGood = false; firstBad = "gate too close (seed " + std::to_string(seed) + ")";
+        }
+        for (const auto& pack : map.packs) {
+            double d = std::sqrt(
+                static_cast<double>((pack.x - map.spawnX) * (pack.x - map.spawnX) +
+                                    (pack.z - map.spawnZ) * (pack.z - map.spawnZ)));
+            if (d < g.packMinDistanceFromSpawnM) {
+                allGood = false; firstBad = "pack at the spawn door (seed " + std::to_string(seed) + ")";
+            }
+        }
+        if (map.nodes.empty() || map.packs.empty()) {
+            allGood = false; firstBad = "empty world (seed " + std::to_string(seed) + ")";
+        }
+        // Every node type and pack enemy must be defined in tuning.
+        for (const auto& node : map.nodes)
+            if (!t.worldgen.nodeTypes.count(node.type)) {
+                allGood = false; firstBad = "unknown node type " + node.type;
+            }
+        for (const auto& pack : map.packs)
+            for (const auto& enemy : pack.enemies)
+                if (!t.world.findEnemy(enemy)) {
+                    allGood = false; firstBad = "unknown pack enemy " + enemy;
+                }
+    }
+    check(allGood, "worldgen: guarantees hold across 60 seeds" +
+                       (firstBad.empty() ? "" : " - first failure: " + firstBad));
+}
+
 } // namespace
 
 int main(int argc, char** argv) {
@@ -693,6 +866,10 @@ int main(int argc, char** argv) {
     testTrialContracts(t);
     testTrialRealtimeHost(t);
     testSaveLoad(t);
+    testFuelGate(t);
+    testHandCraftingAndKits(t);
+    testEnemyLoot(t);
+    testWorldgen(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

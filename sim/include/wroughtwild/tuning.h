@@ -3,6 +3,7 @@
 // Typed views over data/tuning/*.json. Loading is strict: a missing required
 // field throws rather than defaulting, so tuning mistakes surface in tests.
 
+#include <cstdint>
 #include <map>
 #include <string>
 #include <vector>
@@ -19,16 +20,18 @@ struct Station {
     std::map<std::string, int> buildCost;   // material or currency id -> amount
     std::string upgradeFrom;                // empty when built from scratch
     std::map<std::string, int> upgradeCost;
+    std::string kitItem; // placing this crafted item founds the station ("" = none)
 };
 
 struct Recipe {
     std::string id;
     std::string displayName;
-    std::string station;
+    std::string station; // "" = hand-craftable anywhere, no facility or fuel gate
     std::map<std::string, int> minimumSkill; // skill id -> level
     std::map<std::string, int> inputs;       // material id -> count
     std::map<std::string, int> outputs;      // item id -> count
     int baseSkillXp = 0;
+    int fuelCost = 0; // fuel value burned by the station per craft
     std::vector<std::string> useCategories;
 };
 
@@ -76,11 +79,14 @@ struct CraftingTable {
     BasicTemper basicTemper;
     double salvageReturnFraction = 0.0;
     RepetitionDecay repetitionDecay;
+    std::map<std::string, int> fuels; // item id -> fuel value per unit
 
     const Station* findStation(const std::string& id) const;
     const Recipe* findRecipe(const std::string& id) const;
     const Order* findOrder(const std::string& id) const;
     const CatalystProcess* findCatalystProcess(const std::string& id) const;
+    // Station founded by placing kit item id, or nullptr.
+    const Station* findStationForKit(const std::string& kitItemId) const;
 };
 
 // --- skills.json -------------------------------------------------------------
@@ -181,6 +187,13 @@ struct PlayerBase {
     double resistanceCapPercent = 75.0;
 };
 
+struct LootEntry {
+    std::string item;
+    int minCount = 1;
+    int maxCount = 1;
+    double chance = 1.0;
+};
+
 struct EnemyDef {
     std::string id;
     std::string displayName;
@@ -189,6 +202,7 @@ struct EnemyDef {
     double damage = 0.0;
     std::string damageType; // "physical" or "fire"
     int attackPeriodRounds = 1;
+    std::vector<LootEntry> loot;
 };
 
 struct GatherSite {
@@ -299,9 +313,69 @@ struct RealtimeTable {
     const BehaviourRealtime* findBehaviour(const std::string& id) const;
 };
 
+// --- worldgen.json -----------------------------------------------------------
+// Seed-generated bounded sandpit (D-003): terrain character, biome rules,
+// node yields and the guaranteed-content rules every valid seed must satisfy.
+
+struct MapParams {
+    int widthCells = 96;
+    int heightCells = 96;
+    double cellSizeM = 1.0;
+    int baseHeight = 1;
+    int heightScale = 6;
+    double heightFrequency = 0.03;
+    int heightOctaves = 3;
+    double moistureFrequency = 0.015;
+};
+
+struct BiomeDef {
+    std::string id;
+    std::string displayName;
+    std::string surface; // visual key: grass | forest_floor | rock | ash
+    // Matching rules; first biome whose set bounds all pass wins, the last
+    // biome in the list is the fallback. -1 / 2.0 mean "unset".
+    int heightMin = -1;
+    int heightMax = -1;
+    double moistureMin = -1.0;
+    double moistureMax = 2.0;
+    std::map<std::string, double> nodeDensity; // node type -> per-cell chance
+    double packDensity = 0.0;
+    std::vector<std::vector<std::string>> packs; // possible pack compositions
+};
+
+struct NodeTypeDef {
+    std::string id;
+    std::string displayName;
+    std::string materialFamily;
+    int units = 10;
+    int unitsPerHarvest = 2;
+    std::string visual;
+};
+
+struct WorldgenGuarantees {
+    std::string spawnBiome;
+    double spawnClearRadiusM = 8.0;
+    double nearRadiusM = 40.0;
+    std::map<std::string, int> minNodesNear; // node type -> minimum count
+    std::string gateBiome;
+    double gateMinDistanceM = 45.0;
+    double packMinDistanceFromSpawnM = 20.0;
+};
+
+struct WorldgenTable {
+    uint64_t defaultSeed = 1;
+    MapParams map;
+    std::vector<BiomeDef> biomes;
+    std::map<std::string, NodeTypeDef> nodeTypes;
+    WorldgenGuarantees guarantees;
+
+    const BiomeDef* findBiome(const std::string& id) const;
+};
+
 // --- loading -----------------------------------------------------------------
 
 CraftingTable loadCrafting(const std::string& path);
+WorldgenTable loadWorldgen(const std::string& path);
 ConstructionTable loadConstruction(const std::string& path);
 RealtimeTable loadRealtime(const std::string& path);
 SkillTable loadSkills(const std::string& path);
@@ -320,6 +394,7 @@ struct Tuning {
     WorldTable world;
     TrialTable trial;
     RealtimeTable realtime;
+    WorldgenTable worldgen;
 };
 
 Tuning loadAll(const std::string& tuningDirectory);
