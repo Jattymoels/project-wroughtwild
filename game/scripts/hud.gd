@@ -81,7 +81,18 @@ func refresh() -> void:
 			ceili(combat.life), ceili(combat.max_life),
 			_cooldown_text(PlayerCombat.AREA_SKILL), _cooldown_text(PlayerCombat.HEAVY_SKILL),
 			_cooldown_text(PlayerCombat.DASH_SKILL)]
-	_status.text = holdings + progress + vitals
+	var run := ""
+	if sim.trial_active():
+		var state: Dictionary = sim.trial_run_state()
+		var names := PackedStringArray()
+		for b in state["boons"]:
+			names.append(b["display_name"])
+		for w in state["weaknesses"]:
+			names.append("cursed: " + w["display_name"])
+		run = "\nIN THE TRIAL  ·  loot: %s  ·  %s" % [
+			WorkPanel.amounts_text(sim.trial_loot()) if not sim.trial_loot().is_empty() else "nothing yet",
+			", ".join(names) if not names.is_empty() else "no blessings"]
+	_status.text = holdings + progress + vitals + run
 
 
 func _cooldown_text(skill_id: StringName) -> String:

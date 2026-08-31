@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_script"]
+
+[sub_resource type="CapsuleShape3D" id="boss_shape"]
+radius = 0.9
+height = 3.2
+
+[sub_resource type="CapsuleMesh" id="boss_mesh"]
+radius = 0.9
+height = 3.2
+
+[node name="Boss" type="CharacterBody3D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1.6, 0)
+shape = SubResource("boss_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.6, 0)
+mesh = SubResource("boss_mesh")
+
+[node name="Label3D" type="Label3D" parent="."]
+position = Vector3(0, 3.8, 0)
+billboard = 1
+font_size = 48
+pixel_size = 0.005
+text = "boss"

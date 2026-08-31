@@ -21,6 +21,7 @@ const DROPPED_BUNDLE_SCENE := preload("res://scenes/dropped_bundle.tscn")
 
 var hud: Hud
 var work_panel: WorkPanel
+var trial: TrialController
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
 ## Rolls gathering ambushes; tests seed it or spawn ambushes directly.
@@ -46,6 +47,10 @@ func _ready() -> void:
 	work_panel.closed.connect(_capture_mouse)
 	add_child(work_panel)
 
+	trial = TrialController.new()
+	trial.setup(self)
+	add_child(trial)
+
 	_capture_mouse()
 
 
@@ -68,6 +73,12 @@ func open_crafting(station: StationSite) -> void:
 func open_order(order_id: StringName) -> void:
 	placement.set_build_mode_enabled(false)
 	work_panel.open_order(order_id)
+	_release_mouse()
+
+
+func open_custom_panel(title: String, rows: Array, message_text: String = "") -> void:
+	placement.set_build_mode_enabled(false)
+	work_panel.open_custom(title, rows, message_text)
 	_release_mouse()
 
 
@@ -107,6 +118,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func save_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
+	if trial.active():
+		hud.notify("You cannot save inside the trial.")
+		return false
 	var manager := SaveManager.new()
 	var ok := manager.write(path, self)
 	hud.notify("Saved." if ok else "Save failed: %s" % manager.last_error)
@@ -114,6 +128,9 @@ func save_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 
 
 func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
+	if trial.active():
+		hud.notify("You cannot load inside the trial.")
+		return false
 	work_panel.close_panel()
 	var manager := SaveManager.new()
 	var ok := manager.read(path, self)
@@ -140,6 +157,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_died() -> void:
+	if trial.active():
+		# Trial death is the sim's contract: deposit safe, run loot lost,
+		# catalysts kept. Nothing drops in the arena.
+		trial.on_player_died()
+		return
 	var sim := inventory.get_sim()
 	var dropped: Dictionary = sim.drop_inventory()
 	if not dropped.is_empty():
@@ -189,6 +211,10 @@ func spawn_ambush(node: ResourceNode) -> Array:
 
 
 func interact() -> void:
+	# Inside a run with no fight on, E brings the doors or offer back.
+	if trial.active() and trial.state != "fighting":
+		trial.reopen()
+		return
 	var from := camera.global_position
 	var to := from + (-camera.global_transform.basis.z) * interact_range
 	var query := PhysicsRayQueryParameters3D.create(from, to)
@@ -212,3 +238,5 @@ func interact() -> void:
 		(collider as OrderBoard).interact(self)
 	elif collider is DroppedBundle:
 		(collider as DroppedBundle).interact(self)
+	elif collider is TrialGate:
+		(collider as TrialGate).interact(self)

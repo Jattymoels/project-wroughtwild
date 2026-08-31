@@ -59,6 +59,25 @@ public:
                           const combat::Controller& controller,
                           std::vector<std::string>* log = nullptr);
 
+    // For a real-time host (ADR-0003): beginRoom chooses the room and hands
+    // back who to fight plus the seed for that fight's HitStream; the host
+    // fights in its own time and then calls resolveRoom, which applies the
+    // reward (victory) or the death contract (defeat) exactly as enterRoom
+    // would. enterRoom is these two calls around runEncounter.
+    struct RoomStart {
+        bool started = false;
+        std::string roomId;
+        std::string displayName;
+        std::vector<std::string> encounter;
+        uint64_t seed = 0;
+    };
+    RoomStart beginRoom(int choiceIndex);
+    RoomOutcome resolveRoom(bool victory);
+    bool roomInProgress() const { return roomInProgress_; }
+
+    // Walking out mid-run is a failed attempt: the death contract applies.
+    void abandon();
+
     bool acceptBoonFromOffer(const std::string& boonId);
     bool acceptOfferedWeakness();
 
@@ -88,6 +107,11 @@ private:
     bool finished_ = false;
     bool died_ = false;
     bool bossDefeated_ = false;
+
+    bool roomInProgress_ = false;
+    const tuning::RoomChoice* currentRoom_ = nullptr;
+    combat::CombatMods roomMods_;
+    uint64_t roomSeed_ = 0;
 };
 
 } // namespace wroughtwild::trial

@@ -14,9 +14,11 @@ var _title: Label
 var _body: VBoxContainer
 var _message: Label
 
-var _mode := ""  # "crafting" | "order" | ""
+var _mode := ""  # "crafting" | "order" | "custom" | ""
 var _station: StationSite
 var _order_id := ""
+var _custom_title := ""
+var _custom_rows: Array = []
 
 
 func _ready() -> void:
@@ -72,6 +74,17 @@ func open_order(order_id: StringName) -> void:
 	_mode = "order"
 	_order_id = order_id
 	_message.text = ""
+	_root.visible = true
+	refresh()
+
+
+## Arbitrary choice list: rows are {text, button, enabled (optional),
+## callback (Callable)}. Used for trial doors and offers.
+func open_custom(title: String, rows: Array, message_text: String = "") -> void:
+	_mode = "custom"
+	_custom_title = title
+	_custom_rows = rows
+	_message.text = message_text
 	_root.visible = true
 	refresh()
 
@@ -159,6 +172,13 @@ func refresh() -> void:
 	match _mode:
 		"crafting": _render_crafting()
 		"order": _render_order()
+		"custom": _render_custom()
+
+
+func _render_custom() -> void:
+	_title.text = _custom_title
+	for row in _custom_rows:
+		_add_row(row.get("text", ""), row.get("button", ""), row.get("enabled", true), row.get("callback", Callable()))
 
 
 func _add_row(text: String, button_text: String = "", enabled := false, on_pressed: Callable = Callable()) -> void:

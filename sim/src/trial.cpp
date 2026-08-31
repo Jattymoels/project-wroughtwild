@@ -34,20 +34,53 @@ TrialSession::RoomOutcome TrialSession::enterRoom(int choiceIndex,
                                                   const stats::DerivedStats& playerStats,
                                                   const combat::Controller& controller,
                                                   std::vector<std::string>* log) {
-    RoomOutcome outcome;
-    if (finished_) return outcome;
+    RoomStart start = beginRoom(choiceIndex);
+    if (!start.started) return RoomOutcome{};
+
+    combat::EncounterResult fight = combat::runEncounter(tuning_, playerStats, roomMods_,
+                                                         start.encounter, start.seed,
+                                                         controller, log);
+    RoomOutcome outcome = resolveRoom(fight.victory);
+    outcome.combat = fight;
+    return outcome;
+}
+
+TrialSession::RoomStart TrialSession::beginRoom(int choiceIndex) {
+    RoomStart start;
+    if (finished_ || roomInProgress_) return start;
 
     const tuning::TrialStage& stage = currentStage();
     if (choiceIndex < 0 || choiceIndex >= static_cast<int>(stage.choices.size()))
         throw std::runtime_error("trial: invalid room choice");
-    const tuning::RoomChoice& room = stage.choices[choiceIndex];
+    currentRoom_ = &stage.choices[choiceIndex];
+    roomMods_ = currentMods();
+    roomSeed_ = seed_ + 7919ull * static_cast<uint64_t>(++roomsEntered_);
+    roomInProgress_ = true;
 
-    combat::CombatMods mods = currentMods();
-    uint64_t roomSeed = seed_ + 7919ull * static_cast<uint64_t>(++roomsEntered_);
-    outcome.combat = combat::runEncounter(tuning_, playerStats, mods, room.encounter,
-                                          roomSeed, controller, log);
+    start.started = true;
+    start.roomId = currentRoom_->id;
+    start.displayName = currentRoom_->displayName;
+    start.encounter = currentRoom_->encounter;
+    start.seed = roomSeed_;
+    return start;
+}
 
-    if (!outcome.combat.victory) {
+void TrialSession::abandon() {
+    if (finished_) return;
+    roomInProgress_ = false;
+    finish(/*died=*/true);
+}
+
+TrialSession::RoomOutcome TrialSession::resolveRoom(bool victory) {
+    RoomOutcome outcome;
+    if (finished_ || !roomInProgress_) return outcome;
+    roomInProgress_ = false;
+    const tuning::RoomChoice& room = *currentRoom_;
+    const combat::CombatMods& mods = roomMods_;
+    const uint64_t roomSeed = roomSeed_;
+    outcome.combat.victory = victory;
+
+    if (!victory) {
         finish(/*died=*/true);
         return outcome;
     }

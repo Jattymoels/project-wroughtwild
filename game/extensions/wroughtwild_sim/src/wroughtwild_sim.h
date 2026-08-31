@@ -16,6 +16,7 @@
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/stats.h"
+#include "wroughtwild/trial.h"
 #include "wroughtwild/tuning.h"
 
 namespace godot {
@@ -128,6 +129,36 @@ public:
     // Mitigation without variance, for previews and UI.
     double mitigate(double amount, const String& damage_type) const;
 
+    // --- trial (one run at a time; the sim's TrialSession is the authority
+    // on deposit, rooms, offers, loot and the death contract) ---
+    // Deposits carried materials at the gate and opens a run. False when a
+    // run is already open.
+    bool trial_start(int seed);
+    bool trial_active() const;
+    bool trial_finished() const;
+    bool trial_player_died() const;
+    bool trial_boss_defeated() const;
+    // Keys: index, choices (array of {id, display_name, encounter, reward}),
+    // can_bank_and_exit, room_in_progress.
+    Dictionary trial_stage() const;
+    // Keys: started, id, display_name, encounter, seed. Also seeds the hit
+    // stream for the fight.
+    Dictionary trial_begin_room(int choice_index);
+    // Keys: victory, reward_type, boon_offer (array of {id, display_name,
+    // design_purpose}), offered_weakness ({id, display_name,
+    // reward_multiplier} or empty), catalyst_recovered, materials, finished,
+    // died, boss_defeated.
+    Dictionary trial_resolve_room(bool victory);
+    bool trial_accept_boon(const String& boon_id);
+    bool trial_accept_weakness();
+    bool trial_bank_and_exit();
+    void trial_abandon();
+    // Keys: boons, weaknesses (arrays of {id, display_name}).
+    Dictionary trial_run_state() const;
+    Dictionary trial_loot() const;
+    // Closes a finished run so a new one can start. False while unfinished.
+    bool trial_end();
+
     // --- save/load ---
     // The rules state (economy, equipment) in the sim's own SaveGame JSON
     // schema, so engine saves and text-playtest saves stay interchangeable.
@@ -144,11 +175,13 @@ private:
     bool require_loaded(const char* method) const;
 
     const wroughtwild::tuning::CombatSkillDef* find_skill(const String& skill_id) const;
+    wroughtwild::combat::CombatMods current_mods() const;
+    wroughtwild::boons::BuildTags build_tags() const;
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;
     wroughtwild::stats::Equipment equipment_;
-    wroughtwild::boons::RunState run_; // temporary trial effects; empty outside a run
+    std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
     String last_error_;
 };

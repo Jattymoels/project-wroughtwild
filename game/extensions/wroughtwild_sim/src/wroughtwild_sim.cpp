@@ -1,5 +1,6 @@
 #include "wroughtwild_sim.h"
 
+#include <algorithm>
 #include <exception>
 
 #include <godot_cpp/core/class_db.hpp>
@@ -84,6 +85,189 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("player_hit_damage", "skill_id", "isolated"), &WroughtwildSim::player_hit_damage);
     ClassDB::bind_method(D_METHOD("enemy_hit_damage", "raw_damage", "damage_type"), &WroughtwildSim::enemy_hit_damage);
     ClassDB::bind_method(D_METHOD("mitigate", "amount", "damage_type"), &WroughtwildSim::mitigate);
+
+    ClassDB::bind_method(D_METHOD("trial_start", "seed"), &WroughtwildSim::trial_start);
+    ClassDB::bind_method(D_METHOD("trial_active"), &WroughtwildSim::trial_active);
+    ClassDB::bind_method(D_METHOD("trial_finished"), &WroughtwildSim::trial_finished);
+    ClassDB::bind_method(D_METHOD("trial_player_died"), &WroughtwildSim::trial_player_died);
+    ClassDB::bind_method(D_METHOD("trial_boss_defeated"), &WroughtwildSim::trial_boss_defeated);
+    ClassDB::bind_method(D_METHOD("trial_stage"), &WroughtwildSim::trial_stage);
+    ClassDB::bind_method(D_METHOD("trial_begin_room", "choice_index"), &WroughtwildSim::trial_begin_room);
+    ClassDB::bind_method(D_METHOD("trial_resolve_room", "victory"), &WroughtwildSim::trial_resolve_room);
+    ClassDB::bind_method(D_METHOD("trial_accept_boon", "boon_id"), &WroughtwildSim::trial_accept_boon);
+    ClassDB::bind_method(D_METHOD("trial_accept_weakness"), &WroughtwildSim::trial_accept_weakness);
+    ClassDB::bind_method(D_METHOD("trial_bank_and_exit"), &WroughtwildSim::trial_bank_and_exit);
+    ClassDB::bind_method(D_METHOD("trial_abandon"), &WroughtwildSim::trial_abandon);
+    ClassDB::bind_method(D_METHOD("trial_run_state"), &WroughtwildSim::trial_run_state);
+    ClassDB::bind_method(D_METHOD("trial_loot"), &WroughtwildSim::trial_loot);
+    ClassDB::bind_method(D_METHOD("trial_end"), &WroughtwildSim::trial_end);
+}
+
+bool WroughtwildSim::trial_start(int seed) {
+    if (!require_loaded("trial_start") || trial_) {
+        return false;
+    }
+    trial_ = std::make_unique<wroughtwild::trial::TrialSession>(
+        *tuning_, *player_, build_tags(), static_cast<uint64_t>(seed));
+    return true;
+}
+
+bool WroughtwildSim::trial_active() const { return trial_ != nullptr; }
+bool WroughtwildSim::trial_finished() const { return trial_ && trial_->finished(); }
+bool WroughtwildSim::trial_player_died() const { return trial_ && trial_->playerDied(); }
+bool WroughtwildSim::trial_boss_defeated() const { return trial_ && trial_->bossDefeated(); }
+
+Dictionary WroughtwildSim::trial_stage() const {
+    Dictionary d;
+    if (!trial_ || trial_->finished()) {
+        return d;
+    }
+    d["index"] = trial_->currentStageIndex();
+    Array choices;
+    for (const auto& choice : trial_->currentStage().choices) {
+        Dictionary c;
+        c["id"] = to_godot(choice.id);
+        c["display_name"] = to_godot(choice.displayName);
+        PackedStringArray encounter;
+        for (const auto& id : choice.encounter) {
+            encounter.push_back(to_godot(id));
+        }
+        c["encounter"] = encounter;
+        c["reward"] = to_godot(choice.reward);
+        choices.push_back(c);
+    }
+    d["choices"] = choices;
+    d["can_bank_and_exit"] = trial_->canBankAndExit();
+    d["room_in_progress"] = trial_->roomInProgress();
+    return d;
+}
+
+Dictionary WroughtwildSim::trial_begin_room(int choice_index) {
+    Dictionary d;
+    d["started"] = false;
+    if (!trial_) {
+        return d;
+    }
+    try {
+        const auto start = trial_->beginRoom(choice_index);
+        d["started"] = start.started;
+        if (!start.started) {
+            return d;
+        }
+        d["id"] = to_godot(start.roomId);
+        d["display_name"] = to_godot(start.displayName);
+        PackedStringArray encounter;
+        for (const auto& id : start.encounter) {
+            encounter.push_back(to_godot(id));
+        }
+        d["encounter"] = encounter;
+        d["seed"] = static_cast<int64_t>(start.seed);
+        hits_ = std::make_unique<wroughtwild::combat::HitStream>(start.seed);
+    } catch (const std::exception& e) {
+        last_error_ = to_godot(e.what());
+        UtilityFunctions::push_warning("WroughtwildSim.trial_begin_room: ", last_error_);
+    }
+    return d;
+}
+
+Dictionary WroughtwildSim::trial_resolve_room(bool victory) {
+    Dictionary d;
+    d["victory"] = victory;
+    if (!trial_) {
+        return d;
+    }
+    const auto outcome = trial_->resolveRoom(victory);
+    d["reward_type"] = to_godot(outcome.rewardType);
+    Array offer;
+    for (const auto* boon : outcome.boonOffer) {
+        Dictionary b;
+        b["id"] = to_godot(boon->id);
+        b["display_name"] = to_godot(boon->displayName);
+        b["design_purpose"] = to_godot(boon->designPurpose);
+        offer.push_back(b);
+    }
+    d["boon_offer"] = offer;
+    Dictionary weakness;
+    if (!outcome.offeredWeakness.empty()) {
+        for (const auto& w : tuning_->boons.weaknesses) {
+            if (w.id == outcome.offeredWeakness) {
+                weakness["id"] = to_godot(w.id);
+                weakness["display_name"] = to_godot(w.displayName);
+                weakness["reward_multiplier"] = w.baseRewardMultiplier;
+            }
+        }
+    }
+    d["offered_weakness"] = weakness;
+    d["catalyst_recovered"] = outcome.catalystRecovered;
+    d["materials"] = to_dictionary(outcome.materials);
+    d["finished"] = trial_->finished();
+    d["died"] = trial_->playerDied();
+    d["boss_defeated"] = trial_->bossDefeated();
+    return d;
+}
+
+bool WroughtwildSim::trial_accept_boon(const String& boon_id) {
+    return trial_ && trial_->acceptBoonFromOffer(to_std(boon_id));
+}
+
+bool WroughtwildSim::trial_accept_weakness() {
+    return trial_ && trial_->acceptOfferedWeakness();
+}
+
+bool WroughtwildSim::trial_bank_and_exit() {
+    if (!trial_ || !trial_->canBankAndExit()) {
+        return false;
+    }
+    trial_->bankAndExit();
+    return trial_->finished();
+}
+
+void WroughtwildSim::trial_abandon() {
+    if (trial_) {
+        trial_->abandon();
+    }
+}
+
+Dictionary WroughtwildSim::trial_run_state() const {
+    Dictionary d;
+    Array boons;
+    Array weaknesses;
+    if (trial_) {
+        for (const auto& id : trial_->runState().activeBoons) {
+            Dictionary b;
+            b["id"] = to_godot(id);
+            const auto* def = tuning_->boons.findBoon(id);
+            b["display_name"] = to_godot(def ? def->displayName : id);
+            boons.push_back(b);
+        }
+        for (const auto& id : trial_->runState().activeWeaknesses) {
+            Dictionary w;
+            w["id"] = to_godot(id);
+            String name = to_godot(id);
+            for (const auto& def : tuning_->boons.weaknesses) {
+                if (def.id == id) {
+                    name = to_godot(def.displayName);
+                }
+            }
+            w["display_name"] = name;
+            weaknesses.push_back(w);
+        }
+    }
+    d["boons"] = boons;
+    d["weaknesses"] = weaknesses;
+    return d;
+}
+
+Dictionary WroughtwildSim::trial_loot() const {
+    return trial_ ? to_dictionary(trial_->runLoot()) : Dictionary();
+}
+
+bool WroughtwildSim::trial_end() {
+    if (!trial_ || !trial_->finished()) {
+        return false;
+    }
+    trial_.reset();
+    return true;
 }
 
 const wroughtwild::tuning::CombatSkillDef* WroughtwildSim::find_skill(const String& skill_id) const {
@@ -230,12 +414,32 @@ Dictionary WroughtwildSim::realtime() const {
     return d;
 }
 
+wroughtwild::combat::CombatMods WroughtwildSim::current_mods() const {
+    if (trial_ && !trial_->finished()) {
+        return trial_->currentMods();
+    }
+    return wroughtwild::combat::buildMods(tuning_->boons, wroughtwild::boons::RunState{});
+}
+
+wroughtwild::boons::BuildTags WroughtwildSim::build_tags() const {
+    // The prototype build equips every combat skill; its identity is their tags.
+    wroughtwild::boons::BuildTags tags;
+    for (const auto& def : tuning_->skills.combatSkills) {
+        for (const auto& tag : def.tags) {
+            if (std::find(tags.begin(), tags.end(), tag) == tags.end()) {
+                tags.push_back(tag);
+            }
+        }
+    }
+    return tags;
+}
+
 Dictionary WroughtwildSim::combat_mods() const {
     Dictionary d;
     if (!require_loaded("combat_mods")) {
         return d;
     }
-    const auto mods = wroughtwild::combat::buildMods(tuning_->boons, run_);
+    const auto mods = current_mods();
     d["enemy_speed_multiplier"] = mods.enemySpeedMultiplier;
     d["reward_quantity_multiplier"] = mods.rewardQuantityMultiplier;
     d["repeat_hit_count"] = mods.repeatHitCount;
@@ -261,7 +465,7 @@ double WroughtwildSim::player_hit_damage(const String& skill_id, bool isolated) 
     if (!hits_) {
         begin_fight(0);
     }
-    return hits_->playerHit(*def, wroughtwild::combat::buildMods(tuning_->boons, run_), isolated);
+    return hits_->playerHit(*def, current_mods(), isolated);
 }
 
 double WroughtwildSim::enemy_hit_damage(double raw_damage, const String& damage_type) {
@@ -444,7 +648,8 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         auto loaded = std::make_unique<wroughtwild::tuning::Tuning>(
             wroughtwild::tuning::loadAll(to_std(tuning_directory)));
         // PlayerEconomy keeps a reference to the tuning, so the tuning must
-        // outlive it: drop the player first, then swap the tuning in.
+        // outlive it: drop the session and player first, then swap the tuning in.
+        trial_.reset();
         player_.reset();
         tuning_ = std::move(loaded);
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);

@@ -11,7 +11,7 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## World and persistence
 
-- [ ] A bounded region loads with required wood, iron, forge location and trial entrance.
+- [x] A bounded region loads with required wood, iron, forge location and trial entrance. *(authored greybox valley: two wood nodes, iron node, forge site, mine board, trial gate + arena)*
 - [ ] Critical progression resources cannot be absent from a valid seed.
 - [x] Player state, equipment, placed structures and storage survive save/reload. *(F5/F9; `SaveManager` writes the sim's SaveGame JSON plus blocks, nodes and pose; integration-tested. Equipment round-trips through the schema but nothing equips it yet.)*
 
@@ -39,15 +39,15 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Trial
 
-- [ ] The player deposits ordinary inventory before entry.
-- [ ] At least one room presents a meaningful branching choice.
-- [ ] Temporary boons modify the persistent build without replacing it.
-- [ ] The boss exposes insufficient fire resistance or another deliberate weakness clearly.
-- [ ] Trial death preserves permanent equipment and permits immediate reconsideration.
+- [x] The player deposits ordinary inventory before entry. *(gate → `TrialSession` deposit; HUD shows it; integration-tested)*
+- [x] At least one room presents a meaningful branching choice. *(stages 1–2 offer two doors with different encounters and rewards; bank-or-push before the boss)*
+- [x] Temporary boons modify the persistent build without replacing it. *(offers via the sim; `combat_mods` change per hit; run state cleared at run end)*
+- [x] The boss exposes insufficient fire resistance or another deliberate weakness clearly. *(telegraphed 42 fire breath every 2 s; unresisted it lands in band — integration-tested)*
+- [x] Trial death preserves permanent equipment and permits immediate reconsideration. *(death contract: deposit and catalysts back at the gate, no pack dropped, re-enter at once)*
 
 ## Loot and catalyst crafting
 
-- [ ] The Ember Catalyst is recognisably valuable when it drops.
+- [x] The Ember Catalyst is recognisably valuable when it drops. *(shrine room; notice says death cannot take it; it is the one loot kept on death)*
 - [ ] Its crafting effect is explained before consumption.
 - [ ] It participates in a forge operation rather than being a generic stat token.
 - [ ] The resulting equipment improvement is visible in the subsequent boss attempt.
