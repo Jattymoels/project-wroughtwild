@@ -11,7 +11,7 @@
       "id": "forge_basic",
       "display_name": "Basic Forge",
       "tier": 1,
-      "supported_processes": ["shape", "basic_temper"],
+      "supported_processes": ["shape"],
       "build_cost": {"wood": 15, "iron_ore": 4},
       "design_purpose": "Cheap enough to build in the first play session; the cost teaches that construction consumes gathered families"
     },
@@ -81,6 +81,12 @@
       "design_purpose": "The catalyst guarantees the domain (fire resistance lands, at tier 2) while the magnitude stays a bounded roll; minimum_roll_fraction raises the roll floor at the required skill so mastery buys consistency, and an existing better roll is never downgraded (preservation)"
     }
   ],
+  "basic_temper": {
+    "process": "basic_temper",
+    "property": "fire_resistance",
+    "tier": 1,
+    "design_purpose": "Quenching at a forge that supports basic_temper adds fire resistance at exactly the tier-1 midpoint, so the upgraded forge produces baseline resistance deterministically; the catalyst path is where the roll lives."
+  },
   "salvage_return_fraction": 0.5,
   "repetition_decay": {
     "enabled": true,

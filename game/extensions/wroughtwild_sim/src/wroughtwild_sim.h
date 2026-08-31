@@ -37,6 +37,10 @@ public:
     double salvage_return_fraction() const;
     PackedStringArray shape_ids() const;
     int shape_material_cost(const String& shape_id) const;
+    // Keys: id, display_name, material_cost, size (Vector3),
+    // requires_world_effect, unlocked.
+    Dictionary shape(const String& shape_id) const;
+    bool shape_unlocked(const String& shape_id) const;
     double grid_size() const;
     double placement_range() const;
     double removal_refund_fraction() const;
@@ -129,6 +133,34 @@ public:
     // Mitigation without variance, for previews and UI.
     double mitigate(double amount, const String& damage_type) const;
 
+    // --- equipment and tempering ---
+    // Keys per slot: base_id, display_name, armour, fire_resistance,
+    // max_life, area_size, rolled (array of {property, tier, value}).
+    Dictionary equipment() const;
+    // Takes one item of base_id from the inventory and wears it in the
+    // "chest" slot; anything already worn returns to the inventory as a bare
+    // base (its tempering is lost). False when none is carried.
+    bool equip_from_inventory(const String& base_id);
+    // Keys: id, display_name, catalyst, station, process, minimum_skill,
+    // guaranteed_property, property_display_name, result_tier, tier_minimum,
+    // tier_maximum, floor_at_skill, catalyst_held, station_available,
+    // skill_met, armour_equipped.
+    Dictionary catalyst_process(const String& process_id) const;
+    PackedStringArray catalyst_process_ids() const;
+    // Keys: process, property, property_display_name, tier, value,
+    // station_available, armour_equipped, current_value.
+    Dictionary basic_temper_info() const;
+    // Deterministic baseline: adds the configured property at the tier
+    // midpoint. Keys: applied, reason (no_armour | station_unavailable),
+    // value.
+    Dictionary temper_basic();
+    // Consumes one catalyst and applies the process. Keys: applied, reason
+    // (no_armour | station_unavailable | missing_catalyst | skill_too_low |
+    // wrong_tier), rolled_value, previous_value.
+    Dictionary temper_with_catalyst(const String& process_id);
+    // Tests fix the roll; the default seed is random per load.
+    void set_temper_seed(int seed);
+
     // --- trial (one run at a time; the sim's TrialSession is the authority
     // on deposit, rooms, offers, loot and the death contract) ---
     // Deposits carried materials at the gate and opens a run. False when a
@@ -183,6 +215,7 @@ private:
     wroughtwild::stats::Equipment equipment_;
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
+    uint64_t temper_seed_ = 0;
     String last_error_;
 };
 

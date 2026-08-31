@@ -96,6 +96,8 @@ public:
     // A shape costs construction.json's material_cost in whichever family the
     // player selected (construction spec core rule 1: families, not SKUs).
     // Removal refunds floor(cost * removal_refund_fraction) to the same family.
+    // A shape may require a world effect (trial completion unlock).
+    bool shapeUnlocked(const std::string& shapeId) const;
     bool canAffordPlacement(const std::string& shapeId, const std::string& materialFamily) const;
     bool payPlacement(const std::string& shapeId, const std::string& materialFamily);
     int refundRemoval(const std::string& shapeId, const std::string& materialFamily);

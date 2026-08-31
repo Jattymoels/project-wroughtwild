@@ -152,6 +152,44 @@ func upgrade() -> bool:
 	return built
 
 
+func equip(base_id: StringName) -> bool:
+	var worn: bool = sim.equip_from_inventory(base_id)
+	_message.text = "You strap on the armour." if worn else "You have none to wear."
+	refresh()
+	return worn
+
+
+func temper_basic() -> Dictionary:
+	var result: Dictionary = sim.temper_basic()
+	if result["applied"]:
+		_message.text = "You quench the plates carefully. %s is now %d%%." % [
+			sim.basic_temper_info()["property_display_name"], int(result["value"])]
+	else:
+		match result.get("reason", ""):
+			"no_armour": _message.text = "Wear your armour first."
+			"station_unavailable": _message.text = "Quenching needs the Improved Forge."
+			_: _message.text = "Nothing to quench."
+	refresh()
+	return result
+
+
+func temper_catalyst(process_id: StringName) -> Dictionary:
+	var result: Dictionary = sim.temper_with_catalyst(process_id)
+	var p: Dictionary = sim.catalyst_process(process_id)
+	if result["applied"]:
+		_message.text = "The catalyst flares as it burns into the metal. %s is now %d%% (was %d%%)." % [
+			p["property_display_name"], int(result["rolled_value"]), int(result["previous_value"])]
+	else:
+		match result.get("reason", ""):
+			"no_armour": _message.text = "Wear your armour first."
+			"station_unavailable": _message.text = "Ember-tempering needs the Improved Forge."
+			"missing_catalyst": _message.text = "You need an Ember Catalyst; the trial holds them."
+			"skill_too_low": _message.text = "The catalyst's heat is beyond your skill."
+			_: _message.text = "The catalyst will not take."
+	refresh()
+	return result
+
+
 func deliver() -> Dictionary:
 	var result: Dictionary = sim.fulfill_order(_order_id)
 	if result["fulfilled"]:
@@ -226,6 +264,36 @@ func _render_crafting() -> void:
 		var target: Dictionary = sim.station(upgrade_id)
 		_add_row("Upgrade to %s  —  %s" % [target.get("display_name", upgrade_id), cost_text(target.get("upgrade_cost", {}), sim)],
 			"Upgrade", sim.can_build_station(upgrade_id), upgrade)
+
+	# Armour: wear it, then temper it here. The effect of each temper is
+	# stated before anything is consumed.
+	var worn: Dictionary = sim.equipment().get("chest", {})
+	if worn.is_empty():
+		_add_row("Wearing nothing. Craft Iron Chest Armour, then wear it here.")
+	else:
+		_add_row("Wearing %s  —  armour %d, fire resistance %d%%" % [
+			worn["display_name"], int(worn["armour"]), int(worn["fire_resistance"])])
+	var armour_held: int = sim.material_count("iron_chest_armour")
+	if armour_held > 0:
+		_add_row("Iron Chest Armour in your pack (%d)" % armour_held, "Wear", true, equip.bind(&"iron_chest_armour"))
+
+	var quench: Dictionary = sim.basic_temper_info()
+	_add_row("Quench  —  sets %s to at least %d%% (a fixed baseline, no roll). Needs a forge that supports %s%s." % [
+		quench["property_display_name"], int(quench["value"]), Hud.pretty(quench["process"]),
+		"" if quench["station_available"] else " (upgrade first)"],
+		"Quench", quench["armour_equipped"] and quench["station_available"], temper_basic)
+
+	for process_id in sim.catalyst_process_ids():
+		var p: Dictionary = sim.catalyst_process(process_id)
+		var skill_text := ""
+		for skill_id in p["minimum_skill"]:
+			skill_text = "%s %d" % [Hud.pretty(skill_id), p["minimum_skill"][skill_id]]
+		var line := "%s  —  consumes 1 %s. Guarantees %s tier %d: a roll between %d%% and %d%%, floor %d%% at %s; never lowers an existing roll. Needs %s. Catalysts held: %d." % [
+			p["display_name"], Hud.pretty(p["catalyst"]), p["property_display_name"], p["result_tier"],
+			int(p["tier_minimum"]), int(p["tier_maximum"]), int(p["floor_at_skill"]), skill_text,
+			Hud.pretty(p["station"]), p["catalyst_held"]]
+		var can_temper: bool = p["armour_equipped"] and p["station_available"] and p["skill_met"] and p["catalyst_held"] > 0
+		_add_row(line, "Temper", can_temper, temper_catalyst.bind(StringName(process_id)))
 
 
 func _render_order() -> void:

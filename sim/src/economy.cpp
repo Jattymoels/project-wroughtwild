@@ -158,9 +158,16 @@ void PlayerEconomy::recordWorldEffect(const std::string& effect) {
     if (!worldEffectActive(effect)) worldEffects_.push_back(effect);
 }
 
+bool PlayerEconomy::shapeUnlocked(const std::string& shapeId) const {
+    const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
+    return shape != nullptr &&
+           (shape->requiresWorldEffect.empty() || worldEffectActive(shape->requiresWorldEffect));
+}
+
 bool PlayerEconomy::canAffordPlacement(const std::string& shapeId, const std::string& materialFamily) const {
     const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
-    return shape != nullptr && hasAll(inventory, {{materialFamily, shape->materialCost}});
+    return shape != nullptr && shapeUnlocked(shapeId) &&
+           hasAll(inventory, {{materialFamily, shape->materialCost}});
 }
 
 bool PlayerEconomy::payPlacement(const std::string& shapeId, const std::string& materialFamily) {

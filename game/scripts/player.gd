@@ -40,6 +40,7 @@ func _ready() -> void:
 	hud = Hud.new()
 	hud.sim = inventory.get_sim()
 	hud.combat = combat
+	hud.placement = placement
 	add_child(hud)
 
 	work_panel = WorkPanel.new()
@@ -103,6 +104,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		load_game()
 	elif work_panel.is_open():
 		return
+	elif event.is_action_pressed("cycle_shape"):
+		var shape := placement.cycle_shape()
+		hud.notify("Shape: %s" % inventory.get_sim().shape(shape).get("display_name", shape))
 	elif event.is_action_pressed("skill_area"):
 		combat.use_area()
 	elif event.is_action_pressed("skill_heavy"):

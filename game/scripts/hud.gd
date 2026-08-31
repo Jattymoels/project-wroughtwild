@@ -8,6 +8,7 @@ const REFRESH_SECONDS := 0.1
 
 var sim: WroughtwildSim
 var combat: PlayerCombat
+var placement: GridPlacement
 
 var _status: Label
 var _notice: Label
@@ -24,7 +25,7 @@ func _ready() -> void:
 	column.add_child(_status)
 
 	var hints := Label.new()
-	hints.text = "E interact  ·  B build mode  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike  ·  2 heavy strike  ·  Shift dash  ·  Esc close panel  ·  F5 save  ·  F9 load"
+	hints.text = "E interact  ·  B build mode  ·  Tab shape  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike  ·  2 heavy strike  ·  Shift dash  ·  Esc close panel  ·  F5 save  ·  F9 load"
 	hints.modulate = Color(1.0, 1.0, 1.0, 0.6)
 	column.add_child(hints)
 
@@ -77,10 +78,18 @@ func refresh() -> void:
 
 	var vitals := ""
 	if combat != null and combat.sim != null:
-		vitals = "\nLife %d / %d    [1] Area %s   [2] Heavy %s   [Shift] Dash %s" % [
-			ceili(combat.life), ceili(combat.max_life),
+		var ds: Dictionary = sim.derived_stats()
+		var worn: Dictionary = sim.equipment().get("chest", {})
+		vitals = "\nLife %d / %d  ·  armour %d  ·  fire resistance %d%%  ·  wearing %s    [1] Area %s   [2] Heavy %s   [Shift] Dash %s" % [
+			ceili(combat.life), ceili(combat.max_life), int(ds.get("armour", 0.0)), int(ds.get("fire_resistance_percent", 0.0)),
+			worn.get("display_name", "nothing"),
 			_cooldown_text(PlayerCombat.AREA_SKILL), _cooldown_text(PlayerCombat.HEAVY_SKILL),
 			_cooldown_text(PlayerCombat.DASH_SKILL)]
+	if placement != null:
+		var shape: Dictionary = sim.shape(placement.selected_shape)
+		vitals += "\nBuild: %s (%s, %d per block; Tab to change)" % [
+			shape.get("display_name", placement.selected_shape), pretty(placement.selected_material_family),
+			shape.get("material_cost", 0)]
 	var run := ""
 	if sim.trial_active():
 		var state: Dictionary = sim.trial_run_state()

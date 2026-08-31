@@ -19,6 +19,7 @@ var _back: Enemy
 var _wood_before_death := 0
 var _death_spot := Vector3.ZERO
 var _wood_before_trial := 0
+var _blocks_before := 0
 
 
 func check(condition: bool, label: String) -> void:
@@ -272,5 +273,31 @@ func _physics_process(_delta: float) -> void:
 			for child in get_tree().current_scene.get_children():
 				check(not (child is DroppedBundle), "trial: no pack dropped for a trial death")
 		64:
+			# The completion unlock widens construction: the slab is placeable.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			check(sim.shape_unlocked("stonecut_slab"), "unlock: slab unlocked by the boss kill")
+			check(_player.placement.select_shape(&"stonecut_slab"), "unlock: slab selectable")
+			check(_player.placement.shape_size.y < 1.0, "unlock: slab is half height")
+			_blocks_before = _count_placed_blocks()
+			_player.placement.set_build_mode_enabled(true)
+		66:
+			check(_player.placement.try_place_block(), "unlock: slab placed")
+			check(_count_placed_blocks() == _blocks_before + 1, "unlock: slab in the scene")
+			_player.placement.set_build_mode_enabled(false)
+			# Wear armour and quench it at the upgraded forge, from the panel.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			sim.add_material("iron_fittings", 6)
+			(_scene.get_node("ForgeSite") as StationSite).interact(_player)
+			check(_player.work_panel.is_open(), "gear: forge panel open")
+			check(_player.work_panel.upgrade(), "gear: forge upgraded from the panel")
+			sim.add_material("iron_chest_armour", 1)
+			check(_player.work_panel.equip(&"iron_chest_armour"), "gear: armour worn from the panel")
+			check(_player.work_panel.temper_basic()["applied"], "gear: quenched at the Improved Forge")
+			check(sim.derived_stats()["fire_resistance_percent"] > 10.0, "gear: resistance on the build")
+			var refused: Dictionary = _player.work_panel.temper_catalyst(&"ember_catalyst_tempering")
+			check(refused["reason"] == "skill_too_low" and _player.work_panel.message().find("skill") >= 0,
+				"gear: catalyst temper refused and explained below skill 5")
+			_player.work_panel.close_panel()
+		68:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)

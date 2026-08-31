@@ -37,6 +37,12 @@ project diffs in Git; `.uid` files are committed on purpose.
    through it or step out of the cone. Dying in the trial returns you to the
    gate with your deposit and any catalyst; run materials are lost. E inside
    the run brings the doors back if you closed the panel.
+5. Back at the forge: wear crafted armour, **Quench** it at the Improved
+   Forge for a fixed baseline of fire resistance, and **Ember-temper** it with
+   a recovered catalyst (Blacksmithing 5) for a rolled tier-2 resistance;
+   the panel states each effect before anything is consumed. Killing the
+   Tyrant unlocks the **Stonecut Slab** shape: **Tab** cycles shapes in build
+   mode.
 
 ## Build the rules extension (once per checkout, and after `sim/` changes)
 

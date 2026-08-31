@@ -17,7 +17,7 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Construction
 
-- [ ] The player can place and remove the prototype shape set on a consistent grid. *(grid placement works; only the cube shape exists so far)*
+- [ ] The player can place and remove the prototype shape set on a consistent grid. *(grid placement works; two shapes so far — cube, and the stonecut slab unlocked by the trial; the spec wants six to eight)*
 - [x] Shapes consume the selected material family rather than separate inventory SKUs. *(`construction.json` shape cost paid via `sim`)*
 - [x] Placement preview communicates valid and invalid placement. *(green/red preview, integration-tested)*
 - [x] Buildings do not collapse through structural-integrity simulation. *(none exists by design)*
@@ -28,13 +28,13 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [x] Completing the order consumes output and grants an understandable reward. *(mine board panel: fittings consumed, trade currency + Blacksmithing XP paid, world effect recorded)*
 - [x] Blacksmithing progress is visible and unlocks the forge-upgrade path. *(HUD and panel show level/xp; Improved Forge upgrade row appears at the built forge)*
 - [x] Repeating the cheapest irrelevant recipe is less effective than useful work. *(repetition decay in `sim`; panel marks order-feeding recipes ★ and reports reduced XP)*
-- [ ] The upgraded forge can produce baseline fire resistance deterministically.
+- [x] The upgraded forge can produce baseline fire resistance deterministically. *(Quench at the Improved Forge: tier-1 midpoint from `crafting.json` `basic_temper`, no roll)*
 
 ## Combat and build
 
 - [x] The prototype class has a recognisable persistent play pattern. *(area strike / heavy strike / dash in real time, three enemy behaviours; ADR-0003)*
-- [ ] Equipment changes persistent offence or defence visibly. *(derived stats flow from equipment; nothing can be equipped in-engine yet)*
-- [ ] The player can survive appropriate content slowly with baseline defensive preparation.
+- [x] Equipment changes persistent offence or defence visibly. *(wear armour at the forge; HUD shows armour and fire resistance; every hit is mitigated through `sim`)*
+- [x] The player can survive appropriate content slowly with baseline defensive preparation. *(balance sim: armour + quench completes 60% of runs and wins the boss 33%; bare armour 0% — confirm by playtest)*
 - [x] Damage, defence and area/single-target trade-offs are measurable. *(every hit is a sim number; integration test asserts bands; balance sim is the oracle)*
 
 ## Trial
@@ -48,9 +48,9 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 ## Loot and catalyst crafting
 
 - [x] The Ember Catalyst is recognisably valuable when it drops. *(shrine room; notice says death cannot take it; it is the one loot kept on death)*
-- [ ] Its crafting effect is explained before consumption.
-- [ ] It participates in a forge operation rather than being a generic stat token.
-- [ ] The resulting equipment improvement is visible in the subsequent boss attempt.
+- [x] Its crafting effect is explained before consumption. *(forge panel states the guaranteed property, tier range, skill floor and preservation rule; the catalyst is only consumed once the temper applies)*
+- [x] It participates in a forge operation rather than being a generic stat token. *(Ember-Tempering is a `catalyst_processes` row: needs the Improved Forge and Blacksmithing 5)*
+- [x] The resulting equipment improvement is visible in the subsequent boss attempt. *(HUD fire resistance; breath damage mitigated through `sim` — a playtest should confirm it reads in the fight)*
 
 ## Open-world death
 

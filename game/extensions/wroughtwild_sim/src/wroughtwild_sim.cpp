@@ -2,6 +2,9 @@
 
 #include <algorithm>
 #include <exception>
+#include <random>
+
+#include "wroughtwild/items.h"
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
@@ -35,6 +38,16 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("salvage_return_fraction"), &WroughtwildSim::salvage_return_fraction);
     ClassDB::bind_method(D_METHOD("shape_ids"), &WroughtwildSim::shape_ids);
     ClassDB::bind_method(D_METHOD("shape_material_cost", "shape_id"), &WroughtwildSim::shape_material_cost);
+    ClassDB::bind_method(D_METHOD("shape", "shape_id"), &WroughtwildSim::shape);
+    ClassDB::bind_method(D_METHOD("shape_unlocked", "shape_id"), &WroughtwildSim::shape_unlocked);
+    ClassDB::bind_method(D_METHOD("equipment"), &WroughtwildSim::equipment);
+    ClassDB::bind_method(D_METHOD("equip_from_inventory", "base_id"), &WroughtwildSim::equip_from_inventory);
+    ClassDB::bind_method(D_METHOD("catalyst_process", "process_id"), &WroughtwildSim::catalyst_process);
+    ClassDB::bind_method(D_METHOD("catalyst_process_ids"), &WroughtwildSim::catalyst_process_ids);
+    ClassDB::bind_method(D_METHOD("basic_temper_info"), &WroughtwildSim::basic_temper_info);
+    ClassDB::bind_method(D_METHOD("temper_basic"), &WroughtwildSim::temper_basic);
+    ClassDB::bind_method(D_METHOD("temper_with_catalyst", "process_id"), &WroughtwildSim::temper_with_catalyst);
+    ClassDB::bind_method(D_METHOD("set_temper_seed", "seed"), &WroughtwildSim::set_temper_seed);
     ClassDB::bind_method(D_METHOD("grid_size"), &WroughtwildSim::grid_size);
     ClassDB::bind_method(D_METHOD("placement_range"), &WroughtwildSim::placement_range);
     ClassDB::bind_method(D_METHOD("removal_refund_fraction"), &WroughtwildSim::removal_refund_fraction);
@@ -653,6 +666,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         player_.reset();
         tuning_ = std::move(loaded);
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);
+        temper_seed_ = std::random_device{}();
         last_error_ = String();
         return true;
     } catch (const std::exception& e) {
@@ -731,6 +745,256 @@ int WroughtwildSim::shape_material_cost(const String& shape_id) const {
     }
     const auto* shape = tuning_->construction.findShape(to_std(shape_id));
     return shape == nullptr ? 0 : shape->materialCost;
+}
+
+Dictionary WroughtwildSim::shape(const String& shape_id) const {
+    Dictionary d;
+    if (!require_loaded("shape")) {
+        return d;
+    }
+    const auto* s = tuning_->construction.findShape(to_std(shape_id));
+    if (s == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(s->id);
+    d["display_name"] = to_godot(s->displayName);
+    d["material_cost"] = s->materialCost;
+    d["size"] = Vector3(static_cast<real_t>(s->sizeM[0]), static_cast<real_t>(s->sizeM[1]),
+                        static_cast<real_t>(s->sizeM[2]));
+    d["requires_world_effect"] = to_godot(s->requiresWorldEffect);
+    d["unlocked"] = player_->shapeUnlocked(s->id);
+    return d;
+}
+
+bool WroughtwildSim::shape_unlocked(const String& shape_id) const {
+    return require_loaded("shape_unlocked") && player_->shapeUnlocked(to_std(shape_id));
+}
+
+namespace {
+
+const char* kChestSlot = "chest";
+
+const wroughtwild::tuning::PropertyDef* find_property(const wroughtwild::tuning::ItemTable& table,
+                                                      const std::string& id) {
+    for (const auto& def : table.propertyDefinitions) {
+        if (def.id == id) {
+            return &def;
+        }
+    }
+    return nullptr;
+}
+
+const wroughtwild::tuning::PropertyTier* find_tier(const wroughtwild::tuning::PropertyDef* def, int tier) {
+    if (def == nullptr) {
+        return nullptr;
+    }
+    for (const auto& t : def->tiers) {
+        if (t.tier == tier) {
+            return &t;
+        }
+    }
+    return nullptr;
+}
+
+} // namespace
+
+Dictionary WroughtwildSim::equipment() const {
+    Dictionary d;
+    if (!require_loaded("equipment")) {
+        return d;
+    }
+    for (const auto& [slot, item] : equipment_.slots) {
+        Dictionary entry;
+        entry["base_id"] = to_godot(item.baseId);
+        const auto* base = tuning_->items.findBase(item.baseId);
+        entry["display_name"] = to_godot(base ? base->displayName : item.baseId);
+        entry["armour"] = wroughtwild::items::propertyTotal(item, "armour");
+        entry["fire_resistance"] = wroughtwild::items::propertyTotal(item, "fire_resistance");
+        entry["max_life"] = wroughtwild::items::propertyTotal(item, "max_life");
+        entry["area_size"] = wroughtwild::items::propertyTotal(item, "area_size");
+        Array rolled;
+        for (const auto& r : item.rolledProperties) {
+            Dictionary p;
+            p["property"] = to_godot(r.propertyId);
+            p["tier"] = r.tier;
+            p["value"] = r.value;
+            rolled.push_back(p);
+        }
+        entry["rolled"] = rolled;
+        d[to_godot(slot)] = entry;
+    }
+    return d;
+}
+
+bool WroughtwildSim::equip_from_inventory(const String& base_id) {
+    if (!require_loaded("equip_from_inventory")) {
+        return false;
+    }
+    const std::string id = to_std(base_id);
+    const auto* base = tuning_->items.findBase(id);
+    auto held = player_->inventory.find(id);
+    if (base == nullptr || held == player_->inventory.end() || held->second < 1) {
+        return false;
+    }
+    held->second -= 1;
+    auto worn = equipment_.slots.find(kChestSlot);
+    if (worn != equipment_.slots.end()) {
+        player_->inventory[worn->second.baseId] += 1;
+    }
+    wroughtwild::items::ItemInstance item;
+    item.baseId = base->id;
+    item.implicitProperties = base->implicitProperties;
+    equipment_.slots[kChestSlot] = item;
+    return true;
+}
+
+PackedStringArray WroughtwildSim::catalyst_process_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("catalyst_process_ids")) {
+        for (const auto& p : tuning_->crafting.catalystProcesses) {
+            ids.push_back(to_godot(p.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::catalyst_process(const String& process_id) const {
+    Dictionary d;
+    if (!require_loaded("catalyst_process")) {
+        return d;
+    }
+    const auto* p = tuning_->crafting.findCatalystProcess(to_std(process_id));
+    if (p == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(p->id);
+    d["display_name"] = to_godot(p->displayName);
+    d["catalyst"] = to_godot(p->catalyst);
+    d["station"] = to_godot(p->station);
+    d["process"] = to_godot(p->process);
+    d["minimum_skill"] = to_dictionary(p->minimumSkill);
+    d["guaranteed_property"] = to_godot(p->guaranteedProperty);
+    const auto* def = find_property(tuning_->items, p->guaranteedProperty);
+    d["property_display_name"] = to_godot(def ? def->displayName : p->guaranteedProperty);
+    d["result_tier"] = p->resultTier;
+    const auto* tier = find_tier(def, p->resultTier);
+    d["tier_minimum"] = tier ? tier->minimum : 0.0;
+    d["tier_maximum"] = tier ? tier->maximum : 0.0;
+    d["floor_at_skill"] = tier ? tier->minimum + p->minimumRollFractionAtSkill * (tier->maximum - tier->minimum) : 0.0;
+    auto catalyst = player_->inventory.find(p->catalyst);
+    d["catalyst_held"] = catalyst == player_->inventory.end() ? 0 : catalyst->second;
+    d["station_available"] = player_->stationAvailable(p->station);
+    bool skillMet = true;
+    for (const auto& [skillId, level] : p->minimumSkill) {
+        if (player_->skillLevel(skillId) < level) {
+            skillMet = false;
+        }
+    }
+    d["skill_met"] = skillMet;
+    d["armour_equipped"] = equipment_.slots.count(kChestSlot) > 0;
+    return d;
+}
+
+Dictionary WroughtwildSim::basic_temper_info() const {
+    Dictionary d;
+    if (!require_loaded("basic_temper_info")) {
+        return d;
+    }
+    const auto& cfg = tuning_->crafting.basicTemper;
+    d["process"] = to_godot(cfg.process);
+    d["property"] = to_godot(cfg.property);
+    const auto* def = find_property(tuning_->items, cfg.property);
+    d["property_display_name"] = to_godot(def ? def->displayName : cfg.property);
+    d["tier"] = cfg.tier;
+    const auto* tier = find_tier(def, cfg.tier);
+    d["value"] = tier ? (tier->minimum + tier->maximum) / 2.0 : 0.0;
+    bool stationAvailable = false;
+    for (const auto& station : tuning_->crafting.stations) {
+        if (player_->stationAvailable(station.id) &&
+            std::find(station.supportedProcesses.begin(), station.supportedProcesses.end(), cfg.process) !=
+                station.supportedProcesses.end()) {
+            stationAvailable = true;
+        }
+    }
+    d["station_available"] = stationAvailable;
+    auto worn = equipment_.slots.find(kChestSlot);
+    d["armour_equipped"] = worn != equipment_.slots.end();
+    d["current_value"] = worn == equipment_.slots.end()
+                             ? 0.0
+                             : wroughtwild::items::propertyTotal(worn->second, cfg.property);
+    return d;
+}
+
+Dictionary WroughtwildSim::temper_basic() {
+    Dictionary d;
+    d["applied"] = false;
+    if (!require_loaded("temper_basic")) {
+        return d;
+    }
+    const Dictionary info = basic_temper_info();
+    auto worn = equipment_.slots.find(kChestSlot);
+    if (worn == equipment_.slots.end()) {
+        d["reason"] = "no_armour";
+        return d;
+    }
+    if (!static_cast<bool>(info["station_available"])) {
+        d["reason"] = "station_unavailable";
+        return d;
+    }
+    const auto& cfg = tuning_->crafting.basicTemper;
+    d["applied"] = wroughtwild::items::basicTemper(tuning_->items, worn->second, cfg.property, cfg.tier);
+    d["value"] = wroughtwild::items::propertyTotal(worn->second, cfg.property);
+    return d;
+}
+
+Dictionary WroughtwildSim::temper_with_catalyst(const String& process_id) {
+    Dictionary d;
+    d["applied"] = false;
+    if (!require_loaded("temper_with_catalyst")) {
+        return d;
+    }
+    const auto* p = tuning_->crafting.findCatalystProcess(to_std(process_id));
+    if (p == nullptr) {
+        d["reason"] = "unknown_process";
+        return d;
+    }
+    auto worn = equipment_.slots.find(kChestSlot);
+    if (worn == equipment_.slots.end()) {
+        d["reason"] = "no_armour";
+        return d;
+    }
+    if (!player_->stationAvailable(p->station)) {
+        d["reason"] = "station_unavailable";
+        return d;
+    }
+    auto catalyst = player_->inventory.find(p->catalyst);
+    if (catalyst == player_->inventory.end() || catalyst->second < 1) {
+        d["reason"] = "missing_catalyst";
+        return d;
+    }
+    int skillLevel = 0;
+    for (const auto& [skillId, level] : p->minimumSkill) {
+        skillLevel = player_->skillLevel(skillId);
+    }
+    const auto result = wroughtwild::items::catalystTemper(tuning_->items, *p, worn->second, skillLevel,
+                                                           temper_seed_++);
+    if (result.skillTooLow) {
+        d["reason"] = "skill_too_low";
+        return d;
+    }
+    if (result.wrongTier) {
+        d["reason"] = "wrong_tier";
+        return d;
+    }
+    catalyst->second -= 1; // consumed only once the temper has applied
+    d["applied"] = result.applied;
+    d["rolled_value"] = result.rolledValue;
+    d["previous_value"] = result.previousValue;
+    return d;
+}
+
+void WroughtwildSim::set_temper_seed(int seed) {
+    temper_seed_ = static_cast<uint64_t>(seed);
 }
 
 double WroughtwildSim::grid_size() const {
