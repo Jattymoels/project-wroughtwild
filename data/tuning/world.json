@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "status": "prototype-placeholder",
+  "player_base": {
+    "max_life": 100,
+    "armour_reduction_scale": 100,
+    "resistance_cap_percent": 75,
+    "design_purpose": "Baseline survivability before any equipment. armour_reduction_scale controls how fast armour approaches full physical reduction (reduction = armour / (armour + scale)); resistance_cap_percent stops resistance stacking from trivialising elemental threats."
+  },
+  "enemies": [
+    {
+      "id": "ember_whelp",
+      "display_name": "Ember Whelp",
+      "max_life": 30,
+      "behaviour": "melee",
+      "damage": 6,
+      "damage_type": "physical",
+      "attack_period_rounds": 1,
+      "design_purpose": "Basic fodder that teaches area clearing"
+    },
+    {
+      "id": "cinder_archer",
+      "display_name": "Cinder Archer",
+      "max_life": 22,
+      "behaviour": "ranged",
+      "damage": 9,
+      "damage_type": "fire",
+      "attack_period_rounds": 2,
+      "design_purpose": "Introduces fire damage in small doses before the boss"
+    },
+    {
+      "id": "ash_hound",
+      "display_name": "Ash Hound",
+      "max_life": 18,
+      "behaviour": "fast",
+      "damage": 4,
+      "damage_type": "physical",
+      "attack_period_rounds": 1,
+      "design_purpose": "Cheap but quick; the hastened weakness makes packs of these frightening"
+    }
+  ],
+  "gathering_sites": [
+    {
+      "id": "valley_forest",
+      "display_name": "Valley Forest",
+      "yields_per_action": {"wood": 3},
+      "ambush_chance": 0.0,
+      "ambush_enemies": [],
+      "design_purpose": "Safe early gathering; controls how long shelter and fuel work takes"
+    },
+    {
+      "id": "old_mine",
+      "display_name": "Old Mine",
+      "yields_per_action": {"iron_ore": 2},
+      "ambush_chance": 0.15,
+      "ambush_enemies": ["ash_hound", "ash_hound"],
+      "design_purpose": "Iron source with real risk, so open-world death rules matter; reinforcing the mine (order world effect) removes the ambushes"
+    }
+  ],
+  "open_world_death": {
+    "dropped_inventory_recoverable": true,
+    "design_purpose": "Open-world death drops carried inventory at the site for recovery (D-006); permanent equipment is never dropped"
+  }
+}

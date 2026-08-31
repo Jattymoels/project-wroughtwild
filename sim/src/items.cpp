@@ -54,6 +54,86 @@ ItemInstance rollItem(const tuning::ItemTable& table,
     return item;
 }
 
+TemperResult catalystTemper(const tuning::ItemTable& table,
+                            const tuning::CatalystProcess& process,
+                            ItemInstance& item,
+                            int craftSkillLevel,
+                            uint64_t seed) {
+    TemperResult result;
+
+    for (const auto& [skillId, level] : process.minimumSkill) {
+        (void)skillId;
+        if (craftSkillLevel < level) {
+            result.skillTooLow = true;
+            return result;
+        }
+    }
+
+    const tuning::PropertyDef* def = nullptr;
+    for (const auto& d : table.propertyDefinitions)
+        if (d.id == process.guaranteedProperty) def = &d;
+    const tuning::PropertyTier* tier = nullptr;
+    if (def)
+        for (const auto& t : def->tiers)
+            if (t.tier == process.resultTier) tier = &t;
+    if (!tier) {
+        result.wrongTier = true;
+        return result;
+    }
+
+    // Skill raises the floor of the roll: mastery buys consistency.
+    double floorValue =
+        tier->minimum + process.minimumRollFractionAtSkill * (tier->maximum - tier->minimum);
+    std::mt19937_64 rng(seed);
+    std::uniform_real_distribution<double> range(floorValue, tier->maximum);
+    double rolled = range(rng);
+
+    // Preservation: replace an existing roll of this property only when the
+    // new roll is strictly better; the catalyst can never make an item worse.
+    for (auto& existing : item.rolledProperties) {
+        if (existing.propertyId != process.guaranteedProperty) continue;
+        result.previousValue = existing.value;
+        if (rolled > existing.value) {
+            existing.tier = process.resultTier;
+            existing.value = rolled;
+            result.rolledValue = rolled;
+        } else {
+            result.rolledValue = existing.value;
+        }
+        result.applied = true;
+        return result;
+    }
+
+    item.rolledProperties.push_back({process.guaranteedProperty, process.resultTier, rolled});
+    result.rolledValue = rolled;
+    result.applied = true;
+    return result;
+}
+
+bool basicTemper(const tuning::ItemTable& table,
+                 ItemInstance& item,
+                 const std::string& propertyId,
+                 int tier) {
+    const tuning::PropertyTier* tierDef = nullptr;
+    for (const auto& def : table.propertyDefinitions)
+        if (def.id == propertyId)
+            for (const auto& t : def.tiers)
+                if (t.tier == tier) tierDef = &t;
+    if (!tierDef) return false;
+
+    double value = (tierDef->minimum + tierDef->maximum) / 2.0;
+    for (auto& existing : item.rolledProperties) {
+        if (existing.propertyId != propertyId) continue;
+        if (value > existing.value) {
+            existing.tier = tier;
+            existing.value = value;
+        }
+        return true;
+    }
+    item.rolledProperties.push_back({propertyId, tier, value});
+    return true;
+}
+
 double propertyTotal(const ItemInstance& item, const std::string& propertyId) {
     double total = 0.0;
     auto implicitIt = item.implicitProperties.find(propertyId);

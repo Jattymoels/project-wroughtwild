@@ -78,6 +78,26 @@ public:
 
     OrderResult fulfillOrder(const std::string& orderId);
     bool worldEffectActive(const std::string& effect) const;
+    void recordWorldEffect(const std::string& effect);
+
+    // --- construction of stations ---
+    // Pays a station's build_cost (or upgrade_cost when it upgrades another
+    // station the player already has) from inventory and currency, then makes
+    // the station available. Returns false without paying when blocked.
+    bool buildStation(const std::string& stationId);
+
+    // --- save/load ---
+    struct State {
+        Inventory inventory;
+        std::map<std::string, int> currency;
+        std::map<std::string, int> skillXp;
+        std::vector<std::string> availableStations;
+        std::map<std::string, int> craftCounts;
+        std::vector<std::string> fulfilledOrders;
+        std::vector<std::string> worldEffects;
+    };
+    State exportState() const;
+    void importState(const State& state);
 
     // --- salvage ---
     // Returns floor(input * salvage_return_fraction) of each input of the
