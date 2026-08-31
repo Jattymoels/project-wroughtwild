@@ -37,7 +37,19 @@ public:
     double placement_range() const;
     double removal_refund_fraction() const;
 
+    PackedStringArray station_ids() const;
+    // Keys: id, display_name, tier, build_cost, upgrade_from, upgrade_cost, available.
+    Dictionary station(const String& station_id) const;
+    PackedStringArray order_ids() const;
+    // Keys: id, display_name, required_outputs, rewards, world_effect, fulfilled.
+    Dictionary order(const String& order_id) const;
+    // Keys: id, display_name, level, xp, max_level, next_level_xp (-1 at max).
+    Dictionary skill_progress(const String& skill_id) const;
+
     // --- player economy (one player, prototype scope) ---
+    Dictionary inventory() const;
+    Dictionary currency() const;
+    int currency_count(const String& currency_id) const;
     void add_material(const String& material_id, int amount);
     // Returns false (and consumes nothing) when fewer than amount are held.
     bool consume_material(const String& material_id, int amount);
@@ -58,6 +70,15 @@ public:
     // skill_too_low | missing_inputs).
     Dictionary craft(const String& recipe_id, bool for_order = false);
     bool salvage(const String& recipe_id);
+    bool recipe_feeds_open_order(const String& recipe_id) const;
+
+    bool can_build_station(const String& station_id) const;
+    bool build_station(const String& station_id);
+
+    // Keys: fulfilled, already_fulfilled, missing_outputs, world_effect.
+    Dictionary fulfill_order(const String& order_id);
+    bool order_fulfilled(const String& order_id) const;
+    bool world_effect_active(const String& effect) const;
 
 protected:
     static void _bind_methods();

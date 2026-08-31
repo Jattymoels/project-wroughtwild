@@ -77,13 +77,19 @@ public:
     };
 
     OrderResult fulfillOrder(const std::string& orderId);
+    bool orderFulfilled(const std::string& orderId) const;
     bool worldEffectActive(const std::string& effect) const;
     void recordWorldEffect(const std::string& effect);
+
+    // True when some unfulfilled order demands one of the recipe's outputs.
+    // Crafting toward genuine demand is what earns full XP (see forOrder).
+    bool recipeFeedsOpenOrder(const std::string& recipeId) const;
 
     // --- construction of stations ---
     // Pays a station's build_cost (or upgrade_cost when it upgrades another
     // station the player already has) from inventory and currency, then makes
     // the station available. Returns false without paying when blocked.
+    bool canBuildStation(const std::string& stationId) const;
     bool buildStation(const std::string& stationId);
 
     // --- construction of shapes ---

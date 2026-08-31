@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/station_site.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="site_shape"]
+size = Vector3(2, 2, 2)
+
+[node name="StationSite" type="StaticBody3D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1, 0)
+shape = SubResource("site_shape")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
