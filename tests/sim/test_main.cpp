@@ -42,6 +42,32 @@ void testTuningLoads(const tuning::Tuning& t) {
     check(t.items.findBase("iron_chest_armour") != nullptr, "items: armour base loads");
     check(t.boons.findBoon("expanding_echo") != nullptr, "boons: expanding_echo loads");
     check(t.boons.offerRules.optionsPerOffer == 3, "boons: offer rules load");
+    check(t.construction.findShape("cube") != nullptr, "construction: cube shape loads");
+    check(t.construction.gridSizeMetres > 0.0 && t.construction.placementRangeMetres > 0.0,
+          "construction: grid and range load");
+}
+
+void testShapePlacement(const tuning::Tuning& t) {
+    const auto* cube = t.construction.findShape("cube");
+    economy::PlayerEconomy player(t);
+    check(!player.canAffordPlacement("cube", "wood"), "construction: empty inventory cannot place");
+    check(!player.payPlacement("cube", "wood"), "construction: unpaid placement refused");
+    check(player.inventory["wood"] == 0, "construction: refused placement consumes nothing");
+
+    player.inventory["wood"] = cube->materialCost * 2;
+    check(player.canAffordPlacement("cube", "wood"), "construction: affordable with enough of the family");
+    check(player.payPlacement("cube", "wood"), "construction: placement paid");
+    check(player.inventory["wood"] == cube->materialCost, "construction: cost consumed once");
+
+    const int expectedRefund =
+        static_cast<int>(std::floor(cube->materialCost * t.construction.removalRefundFraction));
+    check(player.refundRemoval("cube", "wood") == expectedRefund,
+          "construction: refund follows removal_refund_fraction");
+    check(player.inventory["wood"] == cube->materialCost + expectedRefund,
+          "construction: refund returned to the same family");
+
+    check(!player.payPlacement("no_such_shape", "wood"), "construction: unknown shape refused");
+    check(player.refundRemoval("no_such_shape", "wood") == 0, "construction: unknown shape refunds nothing");
 }
 
 void testSkillCurve(const tuning::Tuning& t) {
@@ -506,6 +532,7 @@ int main(int argc, char** argv) {
     testStatsAndMitigation(t);
     testCatalystTemper(t);
     testStationConstruction(t);
+    testShapePlacement(t);
     testCombat(t);
     testTrialContracts(t);
     testSaveLoad(t);

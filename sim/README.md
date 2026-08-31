@@ -29,6 +29,11 @@ Provisional rules implemented here (flagged in code, not accepted decisions):
   `crafting.json`.
 - **Salvage** returns `floor(input × salvage_return_fraction)` per input
   material of the recipe that produced the item.
+- **Shape placement** (`construction.json`): a shape costs `material_cost`
+  units of whichever material family the player selected; removal refunds
+  `floor(cost × removal_refund_fraction)` to that family. Grid size and
+  placement range live in the same file so the engine layer reads, never
+  defines, them.
 
 Catalyst tempering is deliberately **not** implemented: D-007 (crafting
 economy / catalysts) is a high-priority open decision.

@@ -4,9 +4,9 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Repository and configuration
 
-- [ ] The selected engine and version are recorded in an accepted ADR.
-- [ ] The project launches from a clean checkout using documented steps.
-- [ ] Core tuning values are externalised from game logic.
+- [x] The selected engine and version are recorded in an accepted ADR. *(ADR-0001, Godot 4.5-stable)*
+- [x] The project launches from a clean checkout using documented steps. *(`game/README.md`)*
+- [x] Core tuning values are externalised from game logic. *(`data/tuning/*.json`, read only through `sim/`)*
 - [ ] A deterministic test seed is available.
 
 ## World and persistence
@@ -17,10 +17,10 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Construction
 
-- [ ] The player can place and remove the prototype shape set on a consistent grid.
-- [ ] Shapes consume the selected material family rather than separate inventory SKUs.
-- [ ] Placement preview communicates valid and invalid placement.
-- [ ] Buildings do not collapse through structural-integrity simulation.
+- [ ] The player can place and remove the prototype shape set on a consistent grid. *(grid placement works; only the cube shape exists so far)*
+- [x] Shapes consume the selected material family rather than separate inventory SKUs. *(`construction.json` shape cost paid via `sim`)*
+- [x] Placement preview communicates valid and invalid placement. *(green/red preview, integration-tested)*
+- [x] Buildings do not collapse through structural-integrity simulation. *(none exists by design)*
 
 ## Crafting and skills
 

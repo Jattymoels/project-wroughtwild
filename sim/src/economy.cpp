@@ -143,6 +143,26 @@ void PlayerEconomy::recordWorldEffect(const std::string& effect) {
     if (!worldEffectActive(effect)) worldEffects_.push_back(effect);
 }
 
+bool PlayerEconomy::canAffordPlacement(const std::string& shapeId, const std::string& materialFamily) const {
+    const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
+    return shape != nullptr && hasAll(inventory, {{materialFamily, shape->materialCost}});
+}
+
+bool PlayerEconomy::payPlacement(const std::string& shapeId, const std::string& materialFamily) {
+    if (!canAffordPlacement(shapeId, materialFamily)) return false;
+    remove(inventory, {{materialFamily, tuning_.construction.findShape(shapeId)->materialCost}});
+    return true;
+}
+
+int PlayerEconomy::refundRemoval(const std::string& shapeId, const std::string& materialFamily) {
+    const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
+    if (shape == nullptr) return 0;
+    const int refund = static_cast<int>(
+        std::floor(shape->materialCost * tuning_.construction.removalRefundFraction));
+    if (refund > 0) add(inventory, {{materialFamily, refund}});
+    return refund;
+}
+
 bool PlayerEconomy::buildStation(const std::string& stationId) {
     const tuning::Station* station = tuning_.crafting.findStation(stationId);
     if (!station || stationAvailable(stationId)) return false;

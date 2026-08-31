@@ -75,8 +75,11 @@ run_headless_checks.sh  The check pipeline above
   duplicate only trivial glue (grid maths, inventory counts). The binding from
   `sim/` into Godot is a GDExtension using `godot-cpp`, the one third-party
   dependency approved by ADR-0001.
-- Tuning is read from `../data/tuning/*.json` at startup (`scripts/tuning.gd`);
-  never hard-code tunables in scripts.
+- The `Sim` autoload (`scripts/sim.gd`) owns the one `WroughtwildSim`
+  instance and loads `../data/tuning/*.json` through it at startup. Inventory
+  counts, construction costs and refunds, grid size and placement range all
+  come from there; never hard-code tunables in scripts. Headless `--script`
+  tests get an isolated instance via `sim.gd`'s `shared()` fallback.
 - Keep `.godot/`, exports and editor state out of Git (see `.gitignore`).
   After an editor session, check `git status`: the editor may rewrite the
   header comment of `project.godot`; restore it if so.

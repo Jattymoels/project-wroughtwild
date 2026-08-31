@@ -7,21 +7,14 @@ extends Node
 
 const PLACED_BLOCK_SCENE := preload("res://scenes/placed_block.tscn")
 
-## Tunable: balance between Minecraft-like constraint and detail
-## (construction spec, "Grid size"). Final value is an open question.
-@export var grid_size: float = 1.0
+## Grid size and placement range are tunables read from
+## data/tuning/construction.json at ready; shape costs and removal refunds are
+## applied by the rules library, never computed here.
+var grid_size: float = 1.0
+var placement_range: float = 10.0
 
-## Tunable: building pace and need for scaffolding ("Placement range").
-## Measured from the camera, which sits ~4.5 m behind the player, so the
-## value must cover camera-to-player distance plus reach in front.
-@export var placement_range: float = 10.0
-
-## Tunable: experimentation freedom versus commitment ("Removal refund").
-## Mirrors salvage_return_fraction in data/tuning/crafting.json.
-@export var removal_refund_fraction: float = 0.5
-
+@export var selected_shape: StringName = &"cube"
 @export var selected_material_family: StringName = &"wood"
-@export var material_cost_per_block: int = 1
 
 @export var camera: Camera3D
 @export var inventory: WroughtwildInventory
@@ -40,7 +33,17 @@ const INVALID_COLOR := Color(0.9, 0.1, 0.1, 0.5)
 
 
 func _ready() -> void:
+	grid_size = _sim().grid_size()
+	placement_range = _sim().placement_range()
 	_create_preview_mesh()
+
+
+## The same rules instance the inventory draws on, so affordability, payment
+## and refunds all touch one economy.
+func _sim() -> WroughtwildSim:
+	if inventory != null:
+		return inventory.get_sim()
+	return load("res://scripts/sim.gd").shared()
 
 
 func _create_preview_mesh() -> void:
@@ -107,8 +110,7 @@ func _update_preview() -> void:
 	preview_location = WroughtwildGrid.placement_cell_center(
 		hit["position"], hit["normal"], grid_size)
 
-	var affordable: bool = inventory != null \
-		and inventory.get_count(selected_material_family) >= material_cost_per_block
+	var affordable: bool = _sim().can_afford_placement(selected_shape, selected_material_family)
 	preview_valid = affordable and _is_cell_free(preview_location)
 
 	_preview_mesh.global_position = preview_location
@@ -122,14 +124,14 @@ func _update_preview() -> void:
 func try_place_block() -> bool:
 	if not build_mode_enabled or not preview_visible or not preview_valid:
 		return false
-	if inventory == null or not inventory.consume_material(selected_material_family, material_cost_per_block):
+	if not _sim().pay_placement(selected_shape, selected_material_family):
 		return false
 
 	var block: PlacedBlock = PLACED_BLOCK_SCENE.instantiate()
 	get_tree().current_scene.add_child(block)
 	block.global_position = preview_location
 	block.rotation.y = preview_rotation
-	block.init_block(selected_material_family, material_cost_per_block, grid_size)
+	block.init_block(selected_shape, selected_material_family, grid_size)
 	return true
 
 
@@ -146,9 +148,7 @@ func try_remove_block() -> bool:
 	if block == null:
 		return false
 
-	if inventory != null:
-		var refund := int(floorf(block.material_cost * removal_refund_fraction))
-		inventory.add_material(block.material_family, refund)
+	_sim().refund_removal(block.shape_id, block.material_family)
 	block.queue_free()
 	return true
 
