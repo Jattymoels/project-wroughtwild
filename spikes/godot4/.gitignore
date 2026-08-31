@@ -1,5 +1,0 @@
-# Godot generated/local files (per game/README.md hygiene rules).
-# .uid files ARE committed, per Godot's own version-control guidance.
-.godot/
-*.tmp
-export_presets.cfg

@@ -105,7 +105,7 @@ Rationale, against the criteria:
 
 ## Spike status
 
-> The Unreal spike directory (`spikes/unreal58/`) was removed from the tree in the cleanup commit that followed acceptance; everything below remains retrievable from git history at commit `1dab955` and earlier.
+> Both spike directories were removed from the tree after acceptance: `spikes/unreal58/` in the cleanup commit that followed (last present at `1dab955`), and `spikes/godot4/` once `game/` had superseded it (last present at `b738f02`). Everything below remains retrievable from git history.
 
 - **Unreal Engine 5.8:** spike scaffold committed at `spikes/unreal58/` (31 August 2026, owner-directed). It is text-only (C++, configs, no binary assets) and covers the checklist above: clean-checkout open, controllable capsule, resource node, grid snap-placement preview and two automation tests. The MCP inspection step must be run on the owner's machine because the Unreal MCP server only runs inside a locally launched editor; `spikes/unreal58/SPIKE.md` is the runbook and lists the measurements to record. **This does not accept the ADR** — the comparison spike in the other finalist remains outstanding.
 - **Godot 4:** spike scaffold committed at `spikes/godot4/` (31 August 2026), mirroring the Unreal spike piece for piece on pinned Godot **4.5-stable**. Unlike the Unreal scaffold it was **executed and verified headless in the real engine** before commit: project import, unit tests, an in-engine physics integration test of the placement loop, and a 120-frame scene smoke run all pass (`spikes/godot4/run_headless_checks.sh`). The editor-MCP evaluation (community add-ons) remains a local step; `spikes/godot4/SPIKE.md` is the runbook. **This does not accept the ADR.**

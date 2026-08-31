@@ -5,11 +5,12 @@ This is the engine project for Project Wroughtwild, accepted in
 Engine version is pinned to **Godot 4.5-stable**
 (`4.5.stable.official.876b29033`); upgrade only through a recorded decision.
 
-It was seeded from the verified `spikes/godot4/` scaffold and currently
-contains the greybox vertical-slice valley: a controllable capsule, harvestable
-resource nodes, a material-family inventory and grid snap-placement with a
-green/red preview. Every file is text (`.tscn` scenes included) so the whole
-project diffs in Git; `.uid` files are committed on purpose.
+It grew out of the ADR-0001 Godot spike (since removed from the tree) and now
+holds the whole greybox vertical slice: harvesting, grid construction, the
+forge and mine order, real-time combat, the trial with its boss, armour and
+catalyst tempering, and save/load. Every file is text (`.tscn` scenes
+included) so the whole project diffs in Git; `.uid` files are committed on
+purpose.
 
 ## Run from a clean checkout
 
