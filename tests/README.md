@@ -22,6 +22,8 @@ vertical-slice economy spine (gather → craft → order → level → forge upg
 
 Engine-side automation tests for the Unreal spike live in
 `spikes/unreal58/Source/Wroughtwild/Tests/` and run from the editor.
+The Godot spike's in-engine checks run fully headless:
+`spikes/godot4/run_headless_checks.sh` (see `spikes/godot4/SPIKE.md`).
 
 Expected test categories:
 

@@ -27,8 +27,12 @@ public:
 	float GridSize = 100.0f;
 
 	// Tunable: building pace and need for scaffolding ("Placement range").
+	// Measured from the camera, which sits ~450 units behind the player, so
+	// the value must cover camera-to-player distance plus reach in front.
+	// (Found via the Godot spike's headless integration test: 600 could not
+	// reach the floor in front of the player.)
 	UPROPERTY(EditAnywhere, Category = "Wroughtwild|Construction")
-	float PlacementRange = 600.0f;
+	float PlacementRange = 1000.0f;
 
 	// Tunable: experimentation freedom versus commitment ("Removal refund").
 	// Mirrors salvage_return_fraction in data/tuning/crafting.json.
