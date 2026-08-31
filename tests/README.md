@@ -32,9 +32,10 @@ The engine project's in-engine checks run fully headless:
 placement loop, and a scene smoke run; see `game/README.md`). Run them before
 every commit touching `game/`.
 
-The historical ADR-0001 spikes keep their own checks:
-`spikes/godot4/run_headless_checks.sh`, and the Unreal automation tests in
-`spikes/unreal58/Source/Wroughtwild/Tests/` (editor or `UnrealEditor-Cmd`).
+The historical Godot spike keeps its own copy of these checks
+(`spikes/godot4/run_headless_checks.sh`). The Unreal 5.8 spike was removed
+from the tree after ADR-0001 was accepted; its source and automation tests
+remain in git history (see the ADR's spike status).
 
 Expected test categories:
 

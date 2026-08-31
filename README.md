@@ -39,8 +39,8 @@ docs/research/                 Time-stamped external research notes
 data/tuning/                   Engine-neutral tuning placeholders
 sim/                           Engine-neutral C++ simulation core (rules layer)
 tools/                         Text playtest of the vertical slice + balance simulator
-spikes/unreal58/               ADR-0001 Unreal Engine 5.8 comparative spike (historical)
 spikes/godot4/                 ADR-0001 Godot 4.5 comparative spike (historical; seeded game/)
+third_party/godot-cpp          Submodule: Godot's GDExtension C++ bindings (pinned godot-4.5-stable)
 game/                          Godot 4.5-stable engine project (presentation layer)
 tests/                         Automated and simulation tests (tests/sim runs headless)
 ```
