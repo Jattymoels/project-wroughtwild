@@ -20,4 +20,4 @@ build/
 dist/
 exports/
 
-# Engine-specific rules must be added after ADR-0001 is accepted.
+# Engine-specific (Godot) rules live in game/.gitignore, per ADR-0001.

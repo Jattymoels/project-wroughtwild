@@ -27,10 +27,14 @@ and save/load round-trips.
 `tools/` adds two headless executables on the same rules: a playable text
 version of the whole slice and a balance simulator (see `tools/README.md`).
 
-Engine-side automation tests for the Unreal spike live in
-`spikes/unreal58/Source/Wroughtwild/Tests/` and run from the editor.
-The Godot spike's in-engine checks run fully headless:
-`spikes/godot4/run_headless_checks.sh` (see `spikes/godot4/SPIKE.md`).
+The engine project's in-engine checks run fully headless:
+`game/run_headless_checks.sh` (unit tests, a physics integration test of the
+placement loop, and a scene smoke run; see `game/README.md`). Run them before
+every commit touching `game/`.
+
+The historical ADR-0001 spikes keep their own checks:
+`spikes/godot4/run_headless_checks.sh`, and the Unreal automation tests in
+`spikes/unreal58/Source/Wroughtwild/Tests/` (editor or `UnrealEditor-Cmd`).
 
 Expected test categories:
 

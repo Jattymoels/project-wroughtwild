@@ -1,6 +1,6 @@
 # ADR-0001: Engine Selection
 
-**Status:** Open  
+**Status:** Accepted — **Godot 4.5-stable** (`4.5.stable.official.876b29033`), 31 August 2026  
 **Decision owner:** Human project owner
 
 ## Context
@@ -85,10 +85,29 @@ Before accepting an engine, create the same tiny spike in the final two candidat
 
 No implementation should begin until the owner accepts an option and records the exact engine version.
 
+## Decision (31 August 2026)
+
+The owner accepts **Godot 4.5-stable** (`4.5.stable.official.876b29033`, pinned; upgrade only by a recorded decision) as the prototype engine. The engine project lives in `game/`, seeded from the verified `spikes/godot4/` scaffold.
+
+Rationale, against the criteria:
+
+1. **Time to first loop** — the Godot spike went from clean checkout to a fully verified, playable scene in minutes with a single 76 MB binary; the Unreal spike needed ~30 GB of engine plus Visual Studio, two source fixes before it compiled at all, and a human at the keyboard for the MCP evaluation.
+2. **Source control and AI-assisted change** — the decisive criterion for a solo developer working mostly through an AI editor. Godot scenes and resources are text, the whole in-engine check suite runs headless, and an agent can fix, re-run and verify without the editor open or a human present. Unreal's first-party MCP server is the better *live-editor* agent experience, but maps are binary, the editor rewrites committed config on every settings save, and every agent action requires a running local editor.
+3. **Separating rules from presentation** — unaffected by engine choice: the rules already live in the engine-neutral `sim/` C++17 library with its own headless regression suite. Godot consumes it through a thin GDExtension binding (next task); the engine layer stays presentation, input and scenes.
+4. **3D adequacy** — everything the vertical slice needs exists natively: `CharacterBody3D`, physics traces, grid placement (already integration-tested), `GridMap`/`MultiMesh` for the small construction catalogue, heightmap or plugin terrain, `NavigationServer3D`, Jolt physics, text saves. The prototype boundaries (bounded world, small catalogue) keep it inside Godot's comfort zone.
+5. **Retention into production** — the weakest criterion for Godot and accepted knowingly; see the exit condition.
+
+**Exit condition.** Revisit this decision if terrain scale, world streaming or construction density outgrows what Godot handles comfortably, or if production visual targets demand it. Because `sim/` is engine-neutral, the cost of switching is the presentation layer only — keep it that way.
+
+**Dependencies approved by this decision:** `godot-cpp` (Godot's official GDExtension C++ bindings, pinned to the matching 4.5 branch) as the sole third-party dependency, solely to bind `sim/` into the engine. Community MCP add-ons remain unapproved until individually reviewed.
+
+**Not chosen:** Unity 6 was the pre-spike leaning but was never spiked (Hub/licence activation blocks unattended setup); Unreal 5.8 was fully spiked (see below) and set aside for the daily-workflow costs above, not for capability.
+
 ## Spike status
 
 - **Unreal Engine 5.8:** spike scaffold committed at `spikes/unreal58/` (31 August 2026, owner-directed). It is text-only (C++, configs, no binary assets) and covers the checklist above: clean-checkout open, controllable capsule, resource node, grid snap-placement preview and two automation tests. The MCP inspection step must be run on the owner's machine because the Unreal MCP server only runs inside a locally launched editor; `spikes/unreal58/SPIKE.md` is the runbook and lists the measurements to record. **This does not accept the ADR** — the comparison spike in the other finalist remains outstanding.
 - **Godot 4:** spike scaffold committed at `spikes/godot4/` (31 August 2026), mirroring the Unreal spike piece for piece on pinned Godot **4.5-stable**. Unlike the Unreal scaffold it was **executed and verified headless in the real engine** before commit: project import, unit tests, an in-engine physics integration test of the placement loop, and a 120-frame scene smoke run all pass (`spikes/godot4/run_headless_checks.sh`). The editor-MCP evaluation (community add-ons) remains a local step; `spikes/godot4/SPIKE.md` is the runbook. **This does not accept the ADR.**
+- **Unreal Engine 5.8 — local run and MCP session (31 August 2026, owner's machine):** the scaffold had never been compiled; first build failed on a missing include path (`Tests/` subfolder) and UE 5.8 ships no `BasicShapes/Capsule` mesh, both fixed. Clean-checkout-to-Play was dominated by installs (~30 GB engine download, Visual Studio 2022 game workload); the module itself compiles in ~10 s and both automation tests pass headless (`UnrealEditor-Cmd -ExecCmds="Automation RunTests Wroughtwild"`). MCP runbook results with Epic's `ModelContextProtocol` plugin driving Claude over HTTP: **task 1 inspect — pass** (level, actors, `ResourceNode` class and properties discovered); **task 2 create scene — pass with one human step** (no "new level" tool exists and `AssetTools.duplicate` on a map produces an unsaveable copy referencing the source's private BSP model, so the owner did File → New Level → Save As; the agent then spawned floor, lights, sky, Player Start and three `ResourceNode`s in 1.6 s, set material families, saved the map and set it as startup map via `ConfigSettingsToolset`); **task 3 mutate — pass** (moved a node, changed `RemainingUnits`, changed and restored the `GridSize` class default; the visual preview check still needs a human because MCP cannot send gameplay input); **task 4 automation — pass** (`AutomationTestToolset` discovered in 2.4 s, both tests Success in 0.5 s); **task 5 deliberate errors — pass** (non-existent actor, non-existent level and a typo'd property all returned precise errors, level unharmed). PIE can be started, screenshotted and stopped by the agent (~3 s to BeginPlay). Retry count: 6 argument-name misses in ~40 calls, every one recoverable from the schema returned in the error; parameters marked optional are frequently mandatory at call time. Git hygiene: the editor rewrote `DefaultInput.ini` (harmless bloat) and injected an `AndroidFileServer` section with a `SecurityToken` into `DefaultEngine.ini` on every settings save, and the Launcher had not registered the engine so the first double-click rewrote `EngineAssociation` to a machine GUID — all reverted by hand; `*.slnx` added to the ignore list. **This does not accept the ADR** — the Godot MCP evaluation (community add-ons) remains outstanding.
 - Cross-spike finding: the placement range must exceed the third-person camera set-back; Godot's integration test caught the too-short default, and the fix was back-ported to the Unreal spike.
 - Engine-neutral economy rules were extracted to `sim/` with headless tests in `tests/sim/`, so the rules layer is portable to whichever engine is accepted.
 - Practical note for the comparison: Godot is the only shortlisted engine whose spike can be executed and regression-tested by a cloud coding agent (single binary, headless mode, text scenes). Unreal compiles only on a full local install; Unity requires Hub/licence activation and was not spiked in-container.
