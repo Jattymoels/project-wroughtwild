@@ -6,11 +6,14 @@ extends Node
 ## block placement consuming material, and removal with partial refund.
 ## Quits with a non-zero exit code on failure.
 
+const SAVE_PATH := "user://integration_test_save.json"
+
 var _scene: Node3D
 var _player: WroughtwildPlayer
 var _frame := 0
 var _failures := 0
 var _checks := 0
+var _saved_wood := 0
 
 
 func check(condition: bool, label: String) -> void:
@@ -102,5 +105,34 @@ func _physics_process(_delta: float) -> void:
 			check(not sim.recipe_feeds_open_order("iron_fittings"), "integration: fittings no longer feed an open order")
 			_player.work_panel.close_panel()
 		18:
+			_player.placement.set_build_mode_enabled(true)
+		20:
+			# Save with one block placed, the iron node partly harvested.
+			check(_player.placement.try_place_block(), "save: block placed before saving")
+			(_scene.get_node("IronNode") as ResourceNode).remaining_units = 5
+			_saved_wood = _player.inventory.get_count(&"wood")
+			check(_player.save_game(SAVE_PATH), "save: game written")
+			check(FileAccess.file_exists(SAVE_PATH), "save: file exists")
+		22:
+			# Mutate everything the save covers, then load.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			for child in get_tree().current_scene.get_children():
+				if child is PlacedBlock:
+					child.free()
+			sim.consume_material("wood", 3)
+			(_scene.get_node("IronNode") as ResourceNode).remaining_units = 1
+			_player.global_position += Vector3(2, 0, 0)
+			check(_count_placed_blocks() == 0, "save: block removed before loading")
+			check(_player.load_game(SAVE_PATH), "save: game loaded")
+		24:
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			check(_count_placed_blocks() == 1, "save: placed block restored")
+			check(_player.inventory.get_count(&"wood") == _saved_wood, "save: inventory restored")
+			check((_scene.get_node("IronNode") as ResourceNode).remaining_units == 5, "save: resource node units restored")
+			check(sim.has_station("forge_basic") and sim.currency_count("trade_currency") == 40,
+				"save: stations and currency restored")
+			check(absf(_player.global_position.x - 0.3) < 0.05, "save: player pose restored")
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+		26:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)

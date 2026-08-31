@@ -66,6 +66,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			-PI / 3.0, PI / 3.0)
 	elif event.is_action_pressed("ui_cancel"):
 		work_panel.close_panel()
+	elif event.is_action_pressed("save_game"):
+		save_game()
+	elif event.is_action_pressed("load_game"):
+		load_game()
 	elif work_panel.is_open():
 		return
 	elif event.is_action_pressed("interact"):
@@ -81,6 +85,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		placement.try_remove_block()
 	elif event.is_action_pressed("rotate_preview"):
 		placement.rotate_preview()
+
+
+func save_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
+	var manager := SaveManager.new()
+	var ok := manager.write(path, self)
+	hud.notify("Saved." if ok else "Save failed: %s" % manager.last_error)
+	return ok
+
+
+func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
+	work_panel.close_panel()
+	var manager := SaveManager.new()
+	var ok := manager.read(path, self)
+	hud.notify("Loaded." if ok else "Load failed: %s" % manager.last_error)
+	return ok
 
 
 func _physics_process(delta: float) -> void:
