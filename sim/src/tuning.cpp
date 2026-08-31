@@ -51,6 +51,9 @@ const T* findById(const std::vector<T>& list, const std::string& id) {
 const Station* CraftingTable::findStation(const std::string& id) const { return findById(stations, id); }
 const Recipe* CraftingTable::findRecipe(const std::string& id) const { return findById(recipes, id); }
 const Order* CraftingTable::findOrder(const std::string& id) const { return findById(orders, id); }
+const CatalystProcess* CraftingTable::findCatalystProcess(const std::string& id) const { return findById(catalystProcesses, id); }
+const EnemyDef* WorldTable::findEnemy(const std::string& id) const { return findById(enemies, id); }
+const GatherSite* WorldTable::findSite(const std::string& id) const { return findById(gatheringSites, id); }
 const CraftSkillDef* SkillTable::findCraftSkill(const std::string& id) const { return findById(craftSkills, id); }
 const ItemBase* ItemTable::findBase(const std::string& id) const { return findById(itemBases, id); }
 const BoonDef* BoonTable::findBoon(const std::string& id) const { return findById(boons, id); }
@@ -65,6 +68,9 @@ CraftingTable loadCrafting(const std::string& path) {
         station.displayName = s->get("display_name").asString();
         station.tier = s->get("tier").asInt();
         station.supportedProcesses = readStringArray(s->get("supported_processes"));
+        if (auto cost = s->find("build_cost")) station.buildCost = readIntMap(*cost);
+        if (auto from = s->find("upgrade_from")) station.upgradeFrom = from->asString();
+        if (auto cost = s->find("upgrade_cost")) station.upgradeCost = readIntMap(*cost);
         table.stations.push_back(std::move(station));
     }
 
@@ -89,6 +95,22 @@ CraftingTable loadCrafting(const std::string& path) {
         order.rewards = readIntMap(o->get("rewards"));
         order.worldEffect = o->get("world_effect").asString();
         table.orders.push_back(std::move(order));
+    }
+
+    if (auto processes = doc->find("catalyst_processes")) {
+        for (const auto& c : processes->asArray()) {
+            CatalystProcess process;
+            process.id = c->get("id").asString();
+            process.displayName = c->get("display_name").asString();
+            process.catalyst = c->get("catalyst").asString();
+            process.station = c->get("station").asString();
+            process.process = c->get("process").asString();
+            process.minimumSkill = readIntMap(c->get("minimum_skill"));
+            process.guaranteedProperty = c->get("guaranteed_property").asString();
+            process.resultTier = c->get("result_tier").asInt();
+            process.minimumRollFractionAtSkill = c->get("minimum_roll_fraction_at_skill").asNumber();
+            table.catalystProcesses.push_back(std::move(process));
+        }
     }
 
     table.salvageReturnFraction = doc->get("salvage_return_fraction").asNumber();
@@ -194,12 +216,92 @@ BoonTable loadBoons(const std::string& path) {
     return table;
 }
 
+WorldTable loadWorld(const std::string& path) {
+    auto doc = json::parseFile(path);
+    WorldTable table;
+
+    const Value& base = doc->get("player_base");
+    table.playerBase.maxLife = base.get("max_life").asNumber();
+    table.playerBase.armourReductionScale = base.get("armour_reduction_scale").asNumber();
+    table.playerBase.resistanceCapPercent = base.get("resistance_cap_percent").asNumber();
+
+    for (const auto& e : doc->get("enemies").asArray()) {
+        EnemyDef def;
+        def.id = e->get("id").asString();
+        def.displayName = e->get("display_name").asString();
+        def.maxLife = e->get("max_life").asNumber();
+        def.behaviour = e->get("behaviour").asString();
+        def.damage = e->get("damage").asNumber();
+        def.damageType = e->get("damage_type").asString();
+        def.attackPeriodRounds = e->get("attack_period_rounds").asInt();
+        table.enemies.push_back(std::move(def));
+    }
+
+    for (const auto& s : doc->get("gathering_sites").asArray()) {
+        GatherSite site;
+        site.id = s->get("id").asString();
+        site.displayName = s->get("display_name").asString();
+        site.yieldsPerAction = readIntMap(s->get("yields_per_action"));
+        site.ambushChance = s->get("ambush_chance").asNumber();
+        site.ambushEnemies = readStringArray(s->get("ambush_enemies"));
+        table.gatheringSites.push_back(std::move(site));
+    }
+
+    table.droppedInventoryRecoverable =
+        doc->get("open_world_death").get("dropped_inventory_recoverable").asBool();
+    return table;
+}
+
+TrialTable loadTrial(const std::string& path) {
+    auto doc = json::parseFile(path);
+    TrialTable table;
+
+    const Value& boss = doc->get("boss");
+    table.boss.id = boss.get("id").asString();
+    table.boss.displayName = boss.get("display_name").asString();
+    table.boss.maxLife = boss.get("max_life").asNumber();
+    table.boss.clawDamage = boss.get("claw_damage").asNumber();
+    table.boss.clawDamageType = boss.get("claw_damage_type").asString();
+    table.boss.clawPeriodRounds = boss.get("claw_period_rounds").asInt();
+    table.boss.breathDamage = boss.get("breath_damage").asNumber();
+    table.boss.breathDamageType = boss.get("breath_damage_type").asString();
+    table.boss.breathPeriodRounds = boss.get("breath_period_rounds").asInt();
+    table.boss.breathTelegraphRounds = boss.get("breath_telegraph_rounds").asInt();
+
+    for (const auto& stage : doc->get("stages").asArray()) {
+        TrialStage trialStage;
+        for (const auto& c : stage->get("choices").asArray()) {
+            RoomChoice choice;
+            choice.id = c->get("id").asString();
+            choice.displayName = c->get("display_name").asString();
+            choice.encounter = readStringArray(c->get("encounter"));
+            choice.reward = c->get("reward").asString();
+            trialStage.choices.push_back(std::move(choice));
+        }
+        table.stages.push_back(std::move(trialStage));
+    }
+
+    table.exitAfterStage = doc->get("exit_after_stage").asInt();
+
+    const Value& rewards = doc->get("rewards");
+    table.materialsReward = readIntMap(rewards.get("materials_reward"));
+    table.catalystItem = rewards.get("catalyst_item").asString();
+    table.completionUnlock = rewards.get("completion_unlock").asString();
+
+    const Value& contract = doc->get("death_contract");
+    table.keepCatalystsOnDeath = contract.get("keep_catalysts_on_death").asBool();
+    table.loseRunMaterialsOnDeath = contract.get("lose_run_materials_on_death").asBool();
+    return table;
+}
+
 Tuning loadAll(const std::string& tuningDirectory) {
     Tuning tuning;
     tuning.crafting = loadCrafting(tuningDirectory + "/crafting.json");
     tuning.skills = loadSkills(tuningDirectory + "/skills.json");
     tuning.items = loadItems(tuningDirectory + "/items.json");
     tuning.boons = loadBoons(tuningDirectory + "/boons.json");
+    tuning.world = loadWorld(tuningDirectory + "/world.json");
+    tuning.trial = loadTrial(tuningDirectory + "/trial.json");
     return tuning;
 }
 

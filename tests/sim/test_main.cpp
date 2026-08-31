@@ -6,8 +6,12 @@
 #include <string>
 
 #include "wroughtwild/boons.h"
+#include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/items.h"
+#include "wroughtwild/save.h"
+#include "wroughtwild/stats.h"
+#include "wroughtwild/trial.h"
 #include "wroughtwild/tuning.h"
 
 namespace {
@@ -45,7 +49,8 @@ void testSkillCurve(const tuning::Tuning& t) {
     check(economy::levelForXp(*bs, 0) == 1, "skills: level 1 at 0 xp");
     check(economy::levelForXp(*bs, 49) == 1, "skills: level 1 just below threshold");
     check(economy::levelForXp(*bs, 50) == 2, "skills: level 2 at 50 xp");
-    check(economy::levelForXp(*bs, 350) == 5, "skills: level 5 at 350 xp");
+    check(economy::levelForXp(*bs, bs->xpRequiredByLevel.back()) == 5,
+          "skills: level 5 at the curve's final threshold");
     check(economy::levelForXp(*bs, 10000) == 5, "skills: clamped to prototype maximum");
 }
 
@@ -233,6 +238,250 @@ void testVerticalSliceSpine(const tuning::Tuning& t) {
     check(player.inventory["iron_chest_armour"] == 1, "spine: armour produced");
 }
 
+void testStatsAndMitigation(const tuning::Tuning& t) {
+    stats::Equipment bare;
+    auto base = stats::deriveStats(t.world.playerBase, bare);
+    check(base.maxLife == 100.0, "stats: base life from world.json");
+    checkNear(stats::mitigateDamage(40.0, "fire", base, t.world.playerBase), 40.0, 1e-9,
+              "stats: no resistance, full fire damage");
+
+    stats::Equipment armoured;
+    items::ItemInstance armour;
+    armour.baseId = "iron_chest_armour";
+    armour.implicitProperties["armour"] = 20.0;
+    armour.rolledProperties.push_back({"fire_resistance", 2, 20.0});
+    armour.rolledProperties.push_back({"max_life", 1, 10.0});
+    armoured.slots["chest"] = armour;
+
+    auto derived = stats::deriveStats(t.world.playerBase, armoured);
+    check(derived.maxLife == 110.0, "stats: life property adds");
+    checkNear(derived.fireResistancePercent, 20.0, 1e-9, "stats: fire resistance sums");
+    checkNear(stats::mitigateDamage(40.0, "fire", derived, t.world.playerBase), 32.0, 1e-9,
+              "stats: fire damage reduced by resistance");
+    checkNear(stats::mitigateDamage(12.0, "physical", derived, t.world.playerBase),
+              12.0 * (1.0 - 20.0 / 120.0), 1e-9, "stats: armour formula");
+
+    stats::Equipment stacked = armoured;
+    stacked.slots["chest"].rolledProperties.push_back({"fire_resistance", 2, 200.0});
+    auto capped = stats::deriveStats(t.world.playerBase, stacked);
+    checkNear(capped.fireResistancePercent, t.world.playerBase.resistanceCapPercent, 1e-9,
+              "stats: resistance capped");
+}
+
+void testCatalystTemper(const tuning::Tuning& t) {
+    const auto* process = t.crafting.findCatalystProcess("ember_catalyst_tempering");
+    check(process != nullptr, "temper: catalyst process loads");
+
+    items::ItemInstance armour;
+    armour.baseId = "iron_chest_armour";
+    armour.implicitProperties["armour"] = 20.0;
+
+    auto low = items::catalystTemper(t.items, *process, armour, 4, 1);
+    check(!low.applied && low.skillTooLow, "temper: skill gate holds");
+
+    // Domain guaranteed, magnitude bounded, floor raised by skill.
+    const auto* def = &t.items.propertyDefinitions[0];
+    for (const auto& d : t.items.propertyDefinitions)
+        if (d.id == "fire_resistance") def = &d;
+    double t2min = 0, t2max = 0;
+    for (const auto& tier : def->tiers)
+        if (tier.tier == 2) { t2min = tier.minimum; t2max = tier.maximum; }
+    double floorValue = t2min + process->minimumRollFractionAtSkill * (t2max - t2min);
+
+    for (uint64_t seed = 0; seed < 50; ++seed) {
+        items::ItemInstance fresh = armour;
+        auto result = items::catalystTemper(t.items, *process, fresh, 5, seed);
+        check(result.applied, "temper: applies at required skill");
+        check(result.rolledValue >= floorValue - 1e-9 && result.rolledValue <= t2max + 1e-9,
+              "temper: roll within skill floor and tier maximum");
+        check(items::propertyTotal(fresh, "fire_resistance") == result.rolledValue,
+              "temper: property landed on the item");
+    }
+
+    // Preservation: an existing better roll is never downgraded.
+    items::ItemInstance blessed = armour;
+    blessed.rolledProperties.push_back({"fire_resistance", 2, t2max});
+    auto preserved = items::catalystTemper(t.items, *process, blessed, 5, 3);
+    check(preserved.applied && items::propertyTotal(blessed, "fire_resistance") >= t2max - 1e-9,
+          "temper: never downgrades an existing roll");
+
+    auto a = items::catalystTemper(t.items, *process, armour, 5, 99);
+    items::ItemInstance again;
+    again.baseId = "iron_chest_armour";
+    auto b = items::catalystTemper(t.items, *process, again, 5, 99);
+    checkNear(a.rolledValue, b.rolledValue, 0.0, "temper: deterministic per seed");
+}
+
+void testStationConstruction(const tuning::Tuning& t) {
+    economy::PlayerEconomy player(t);
+    check(!player.buildStation("forge_basic"), "build: cannot build without materials");
+    player.inventory["wood"] = 15;
+    player.inventory["iron_ore"] = 4;
+    check(player.buildStation("forge_basic"), "build: basic forge built");
+    check(player.inventory["wood"] == 0 && player.inventory["iron_ore"] == 0,
+          "build: materials consumed");
+    check(player.stationAvailable("forge_basic"), "build: station available");
+
+    check(!player.buildStation("forge_improved"), "build: upgrade needs payment");
+    player.currency["trade_currency"] = 30;
+    player.inventory["iron_fittings"] = 6;
+    check(player.buildStation("forge_improved"), "build: upgrade paid from currency + goods");
+    check(player.currency["trade_currency"] == 0 && player.inventory["iron_fittings"] == 0,
+          "build: upgrade cost consumed");
+}
+
+void testCombat(const tuning::Tuning& t) {
+    stats::Equipment bare;
+    auto baseStats = stats::deriveStats(t.world.playerBase, bare);
+    combat::CombatMods noMods;
+
+    // Determinism: identical inputs replay identically.
+    auto a = combat::runEncounter(t, baseStats, noMods, {"ember_whelp", "ember_whelp"}, 42,
+                                  combat::autoPolicy);
+    auto b = combat::runEncounter(t, baseStats, noMods, {"ember_whelp", "ember_whelp"}, 42,
+                                  combat::autoPolicy);
+    check(a.victory == b.victory && a.rounds == b.rounds &&
+              a.playerLifeRemaining == b.playerLifeRemaining,
+          "combat: deterministic per seed");
+    check(a.victory, "combat: bare player clears two whelps");
+
+    // Hastened enemies (weakness) make the same fight strictly more painful.
+    combat::CombatMods hastened;
+    hastened.enemySpeedMultiplier = 1.2;
+    auto fast = combat::runEncounter(t, baseStats, hastened,
+                                     {"ash_hound", "ash_hound", "ash_hound"}, 7,
+                                     combat::autoPolicy);
+    auto slow = combat::runEncounter(t, baseStats, noMods,
+                                     {"ash_hound", "ash_hound", "ash_hound"}, 7,
+                                     combat::autoPolicy);
+    check(fast.playerLifeRemaining <= slow.playerLifeRemaining,
+          "combat: hastened enemies deal at least as much damage");
+
+    // Concentrated force speeds up a lone-target fight.
+    combat::CombatMods concentrated;
+    concentrated.isolatedDamageMultiplier = 1.45;
+    auto focused = combat::runEncounter(t, baseStats, concentrated, {"ember_whelp"}, 11,
+                                        combat::autoPolicy);
+    auto normal = combat::runEncounter(t, baseStats, noMods, {"ember_whelp"}, 11,
+                                       combat::autoPolicy);
+    check(focused.rounds <= normal.rounds, "combat: isolated damage boon kills faster");
+
+    check(combat::buildMods(t.boons, boons::RunState{}).enemySpeedMultiplier == 1.0,
+          "combat: empty run state builds neutral mods");
+    boons::RunState run;
+    run.acceptWeakness("hastened_enemies");
+    auto mods = combat::buildMods(t.boons, run);
+    checkNear(mods.enemySpeedMultiplier, 1.2, 1e-9, "combat: weakness speed op interpreted");
+    checkNear(mods.rewardQuantityMultiplier, 1.15, 1e-9, "combat: weakness reward op interpreted");
+}
+
+void testTrialContracts(const tuning::Tuning& t) {
+    stats::Equipment bare;
+    auto baseStats = stats::deriveStats(t.world.playerBase, bare);
+    boons::BuildTags tags = {"attack", "physical", "area", "single_target", "movement"};
+
+    // Death contract: deposited inventory always comes home; run materials
+    // are lost, recovered catalysts are kept; boons never persist.
+    {
+        economy::PlayerEconomy player(t);
+        player.inventory["wood"] = 9;
+        trial::TrialSession session(t, player, tags, 5);
+        check(player.inventory.empty(), "trial: inventory deposited at the gate");
+
+        auto alwaysDie = [](const combat::CombatView&) { return combat::Action{-1, 0}; };
+        session.enterRoom(0, baseStats, alwaysDie);
+        check(session.finished() && session.playerDied(), "trial: standing still gets you killed");
+        check(player.inventory["wood"] == 9, "trial: deposited inventory restored after death");
+        check(session.runState().activeBoons.empty(), "trial: no boons survive the run");
+    }
+
+    // Full successful run driven by the auto policy, tempered armour equipped.
+    {
+        economy::PlayerEconomy player(t);
+        player.inventory["wood"] = 3;
+
+        // Gear up exactly the way a player would: craft-equivalent armour,
+        // then catalyst-temper it with the real process at skill 5.
+        stats::Equipment geared;
+        items::ItemInstance armour;
+        armour.baseId = "iron_chest_armour";
+        armour.implicitProperties["armour"] = 20.0;
+        const auto* process = t.crafting.findCatalystProcess("ember_catalyst_tempering");
+        check(process != nullptr, "trial: temper process available");
+        check(items::catalystTemper(t.items, *process, armour, 5, 77).applied,
+              "trial: armour tempered for the attempt");
+        geared.slots["chest"] = armour;
+        auto gearedStats = stats::deriveStats(t.world.playerBase, geared);
+
+        trial::TrialSession session(t, player, tags, 1234);
+        // Stage 0: take the boon room, accept the first offered boon.
+        auto outcome = session.enterRoom(0, gearedStats, combat::autoPolicy);
+        check(outcome.combat.victory, "trial: stage 0 cleared");
+        check(outcome.rewardType == "boon_offer" && !outcome.boonOffer.empty(),
+              "trial: boon offer presented");
+        check(session.acceptBoonFromOffer(outcome.boonOffer.front()->id),
+              "trial: offered boon accepted");
+        // Stage 1: materials room pays out.
+        outcome = session.enterRoom(1, gearedStats, combat::autoPolicy);
+        check(outcome.combat.victory && outcome.rewardType == "materials",
+              "trial: materials room cleared");
+        // Stage 2: catalyst shrine.
+        outcome = session.enterRoom(0, gearedStats, combat::autoPolicy);
+        check(outcome.catalystRecovered, "trial: catalyst recovered");
+        check(session.canBankAndExit(), "trial: bank-out point reached");
+        // Push to the boss anyway.
+        outcome = session.enterRoom(0, gearedStats, combat::autoPolicy);
+        check(outcome.combat.victory, "trial: tempered build defeats the boss");
+        check(session.bossDefeated() && session.finished(), "trial: completion recorded");
+        check(player.inventory["wood"] == 3, "trial: deposit restored after victory");
+        check(player.inventory[t.trial.catalystItem] == 1, "trial: catalyst banked");
+        check(player.inventory["iron_ingot"] >= 4, "trial: materials banked");
+        check(player.worldEffectActive(t.trial.completionUnlock),
+              "trial: construction unlock granted");
+    }
+}
+
+void testSaveLoad(const tuning::Tuning& t) {
+    economy::PlayerEconomy player(t);
+    player.inventory["wood"] = 15;
+    player.inventory["iron_ore"] = 4;
+    player.buildStation("forge_basic");
+    player.inventory["iron_ingot"] = 4;
+    player.craft("iron_fittings");
+    player.recordWorldEffect("old_mine_reinforced");
+
+    save::SaveGame game;
+    game.economy = player.exportState();
+    items::ItemInstance armour;
+    armour.baseId = "iron_chest_armour";
+    armour.implicitProperties["armour"] = 20.0;
+    armour.rolledProperties.push_back({"fire_resistance", 2, 17.25});
+    game.equipment.slots["chest"] = armour;
+    game.extra["location"] = "camp";
+
+    save::SaveGame loaded = save::fromJson(save::toJson(game));
+    check(loaded.economy.inventory == game.economy.inventory, "save: inventory round-trips");
+    check(loaded.economy.skillXp == game.economy.skillXp, "save: skill xp round-trips");
+    check(loaded.economy.craftCounts == game.economy.craftCounts,
+          "save: repetition counters round-trip");
+    check(loaded.economy.availableStations == game.economy.availableStations,
+          "save: stations round-trip");
+    check(loaded.economy.worldEffects == game.economy.worldEffects,
+          "save: world effects round-trip");
+    check(loaded.extra.at("location") == "camp", "save: extra fields round-trip");
+
+    const auto& item = loaded.equipment.slots.at("chest");
+    check(item.baseId == "iron_chest_armour", "save: equipment base round-trips");
+    checkNear(items::propertyTotal(item, "fire_resistance"), 17.25, 1e-12,
+              "save: rolled values round-trip exactly");
+
+    economy::PlayerEconomy restored(t);
+    restored.importState(loaded.economy);
+    check(restored.skillXp("blacksmithing") == player.skillXp("blacksmithing"),
+          "save: imported economy matches");
+    check(restored.stationAvailable("forge_basic"), "save: imported station usable");
+}
+
 } // namespace
 
 int main(int argc, char** argv) {
@@ -254,6 +503,12 @@ int main(int argc, char** argv) {
     testItemRolls(t);
     testBoons(t);
     testVerticalSliceSpine(t);
+    testStatsAndMitigation(t);
+    testCatalystTemper(t);
+    testStationConstruction(t);
+    testCombat(t);
+    testTrialContracts(t);
+    testSaveLoad(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

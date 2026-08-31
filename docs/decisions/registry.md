@@ -19,6 +19,13 @@ Statuses:
 | D-008 | Input | Initial building interface targets mouse and keyboard only | Accepted | Controller scope is considered |
 | D-009 | Engine | No engine is selected yet | Open | Before implementation begins |
 
+## Proposals awaiting acceptance
+
+- [ADR-0002](ADR-0002-catalyst-crafting.md) proposes a resolution to D-007
+  (what a crafting catalyst does). Proposal C is implemented provisionally in
+  `sim/` and `data/tuning/crafting.json` so the playtest can exercise it;
+  D-007 stays open until the owner accepts.
+
 ## Registering a decision
 
 Add an entry when a choice materially affects player experience, save data, system boundaries, architecture or prototype scope. Create a separate ADR when the rationale, alternatives or consequences require more than one table row.

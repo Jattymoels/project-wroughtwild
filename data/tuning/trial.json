@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "prototype-placeholder",
+  "boss": {
+    "id": "forge_tyrant",
+    "display_name": "The Forge Tyrant",
+    "max_life": 160,
+    "claw_damage": 8,
+    "claw_damage_type": "physical",
+    "claw_period_rounds": 1,
+    "breath_damage": 42,
+    "breath_damage_type": "fire",
+    "breath_period_rounds": 2,
+    "breath_telegraph_rounds": 1,
+    "design_purpose": "Substantial periodic fire damage that the armour/tempering path must answer. Breathing faster than the dash recharges means skilled dodging halves the fire taken but can never zero it, so resistance preparation stays mandatory"
+  },
+  "stages": [
+    {
+      "choices": [
+        {
+          "id": "ember_nests",
+          "display_name": "The Ember Nests",
+          "encounter": [
+            "ember_whelp",
+            "ember_whelp"
+          ],
+          "reward": "boon_offer"
+        },
+        {
+          "id": "hound_kennels",
+          "display_name": "The Hound Kennels",
+          "encounter": [
+            "ash_hound",
+            "ash_hound",
+            "ash_hound"
+          ],
+          "reward": "weakness_offer"
+        }
+      ]
+    },
+    {
+      "choices": [
+        {
+          "id": "smoke_gallery",
+          "display_name": "The Smoke Gallery",
+          "encounter": [
+            "cinder_archer",
+            "ember_whelp"
+          ],
+          "reward": "boon_offer"
+        },
+        {
+          "id": "slag_vault",
+          "display_name": "The Slag Vault",
+          "encounter": [
+            "ember_whelp",
+            "ash_hound",
+            "cinder_archer"
+          ],
+          "reward": "materials"
+        }
+      ]
+    },
+    {
+      "choices": [
+        {
+          "id": "catalyst_shrine",
+          "display_name": "The Catalyst Shrine",
+          "encounter": [
+            "ember_whelp",
+            "ember_whelp",
+            "cinder_archer"
+          ],
+          "reward": "catalyst"
+        }
+      ]
+    },
+    {
+      "choices": [
+        {
+          "id": "tyrant_forge",
+          "display_name": "The Tyrant's Forge",
+          "encounter": [
+            "forge_tyrant"
+          ],
+          "reward": "completion"
+        }
+      ]
+    }
+  ],
+  "exit_after_stage": 2,
+  "rewards": {
+    "materials_reward": {
+      "iron_ingot": 4
+    },
+    "catalyst_item": "ember_catalyst",
+    "completion_unlock": "stonecut_blocks",
+    "design_purpose": "materials_reward is the mid-run loot room payout (scaled by weakness reward multipliers); catalyst_item is the guaranteed shrine recovery; completion_unlock is the visible construction-vocabulary reward for the first boss kill. exit_after_stage lets the player bank recovered loot instead of facing the boss (push-or-bank decision)."
+  },
+  "death_contract": {
+    "keep_catalysts_on_death": true,
+    "lose_run_materials_on_death": true,
+    "design_purpose": "Provisional (D-006): recovered catalysts represent learning and survive a failed attempt so death still advances the crafting plan; ordinary run loot is lost to keep the bank-or-push choice meaningful"
+  }
+}

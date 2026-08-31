@@ -11,16 +11,31 @@
       "id": "forge_basic",
       "display_name": "Basic Forge",
       "tier": 1,
-      "supported_processes": ["shape", "basic_temper"]
+      "supported_processes": ["shape", "basic_temper"],
+      "build_cost": {"wood": 15, "iron_ore": 4},
+      "design_purpose": "Cheap enough to build in the first play session; the cost teaches that construction consumes gathered families"
     },
     {
       "id": "forge_improved",
       "display_name": "Improved Forge",
       "tier": 2,
-      "supported_processes": ["shape", "basic_temper", "catalyst_temper"]
+      "supported_processes": ["shape", "basic_temper", "catalyst_temper"],
+      "upgrade_from": "forge_basic",
+      "upgrade_cost": {"trade_currency": 30, "iron_fittings": 6},
+      "design_purpose": "Consumes most of the mine-order payment plus useful output, so the upgrade feels earned through work rather than passively unlocked"
     }
   ],
   "recipes": [
+    {
+      "id": "smelt_iron",
+      "display_name": "Smelt Iron Ingot",
+      "station": "forge_basic",
+      "minimum_skill": {"blacksmithing": 1},
+      "inputs": {"iron_ore": 2, "wood": 1},
+      "outputs": {"iron_ingot": 1},
+      "base_skill_xp": 2,
+      "use_categories": ["processing"]
+    },
     {
       "id": "iron_fittings",
       "display_name": "Iron Fittings",
@@ -49,6 +64,21 @@
       "required_outputs": {"iron_fittings": 24},
       "rewards": {"trade_currency": 40, "blacksmithing_xp": 60},
       "world_effect": "old_mine_reinforced"
+    }
+  ],
+  "catalyst_processes": [
+    {
+      "id": "ember_catalyst_tempering",
+      "display_name": "Ember-Tempering",
+      "status": "provisional (Proposal C of ADR-0002; D-007 remains open)",
+      "catalyst": "ember_catalyst",
+      "station": "forge_improved",
+      "process": "catalyst_temper",
+      "minimum_skill": {"blacksmithing": 5},
+      "guaranteed_property": "fire_resistance",
+      "result_tier": 2,
+      "minimum_roll_fraction_at_skill": 0.5,
+      "design_purpose": "The catalyst guarantees the domain (fire resistance lands, at tier 2) while the magnitude stays a bounded roll; minimum_roll_fraction raises the roll floor at the required skill so mastery buys consistency, and an existing better roll is never downgraded (preservation)"
     }
   ],
   "salvage_return_fraction": 0.5,

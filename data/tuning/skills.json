@@ -6,7 +6,7 @@
       "id": "blacksmithing",
       "display_name": "Blacksmithing",
       "maximum_prototype_level": 5,
-      "xp_required_by_level": [0, 50, 125, 225, 350],
+      "xp_required_by_level": [0, 50, 125, 225, 300],
       "unlock_summary": {
         "1": ["iron_fittings"],
         "2": ["efficient_smelting"],

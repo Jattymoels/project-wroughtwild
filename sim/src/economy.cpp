@@ -139,6 +139,64 @@ bool PlayerEconomy::worldEffectActive(const std::string& effect) const {
     return std::find(worldEffects_.begin(), worldEffects_.end(), effect) != worldEffects_.end();
 }
 
+void PlayerEconomy::recordWorldEffect(const std::string& effect) {
+    if (!worldEffectActive(effect)) worldEffects_.push_back(effect);
+}
+
+bool PlayerEconomy::buildStation(const std::string& stationId) {
+    const tuning::Station* station = tuning_.crafting.findStation(stationId);
+    if (!station || stationAvailable(stationId)) return false;
+
+    const std::map<std::string, int>* cost = &station->buildCost;
+    if (!station->upgradeFrom.empty()) {
+        if (!stationAvailable(station->upgradeFrom)) return false;
+        cost = &station->upgradeCost;
+    }
+
+    // Cost entries name either inventory materials or currency; verify both
+    // sides before paying anything.
+    for (const auto& [id, amount] : *cost) {
+        auto inInventory = inventory.find(id);
+        int held = inInventory != inventory.end() ? inInventory->second : 0;
+        auto inCurrency = currency.find(id);
+        if (held < amount) held = inCurrency != currency.end() ? inCurrency->second : 0;
+        if (held < amount) return false;
+    }
+    for (const auto& [id, amount] : *cost) {
+        auto inInventory = inventory.find(id);
+        if (inInventory != inventory.end() && inInventory->second >= amount)
+            inInventory->second -= amount;
+        else
+            currency[id] -= amount;
+    }
+
+    availableStations_.push_back(stationId);
+    return true;
+}
+
+PlayerEconomy::State PlayerEconomy::exportState() const {
+    State state;
+    state.inventory = inventory;
+    state.currency = currency;
+    for (const auto& [id, skill] : skills_) state.skillXp[id] = skill.xp;
+    state.availableStations = availableStations_;
+    state.craftCounts = craftCounts_;
+    state.fulfilledOrders = fulfilledOrders_;
+    state.worldEffects = worldEffects_;
+    return state;
+}
+
+void PlayerEconomy::importState(const State& state) {
+    inventory = state.inventory;
+    currency = state.currency;
+    skills_.clear();
+    for (const auto& [id, xp] : state.skillXp) skills_[id].xp = xp;
+    availableStations_ = state.availableStations;
+    craftCounts_ = state.craftCounts;
+    fulfilledOrders_ = state.fulfilledOrders;
+    worldEffects_ = state.worldEffects;
+}
+
 bool PlayerEconomy::salvage(const std::string& recipeId) {
     const tuning::Recipe* recipe = tuning_.crafting.findRecipe(recipeId);
     if (!recipe) return false;

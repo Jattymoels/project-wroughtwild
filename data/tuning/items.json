@@ -16,8 +16,8 @@
       "display_name": "Fire Resistance",
       "tags": ["defence", "fire", "resistance"],
       "tiers": [
-        {"tier": 1, "minimum": 8, "maximum": 12},
-        {"tier": 2, "minimum": 13, "maximum": 20}
+        {"tier": 1, "minimum": 8, "maximum": 15},
+        {"tier": 2, "minimum": 25, "maximum": 40}
       ]
     },
     {
