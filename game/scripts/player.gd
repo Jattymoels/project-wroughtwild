@@ -16,6 +16,16 @@ extends CharacterBody3D
 @onready var inventory: WroughtwildInventory = $Inventory
 @onready var placement: GridPlacement = $Placement
 @onready var combat: PlayerCombat = $Combat
+@onready var body_mesh: MeshInstance3D = $MeshInstance3D
+
+## First person is the default view (D-012); V toggles third person for
+## greybox debugging. Eye height sits near the top of the capsule.
+var first_person := true
+const FP_EYE_HEIGHT := 0.72
+const FP_PITCH_LIMIT := 1.35
+const TP_PITCH_LIMIT := PI / 3.0
+var _tp_arm_length := 4.5
+var _tp_arm_position := Vector3(0, 0.6, 0)
 
 const DROPPED_BUNDLE_SCENE := preload("res://scenes/dropped_bundle.tscn")
 
@@ -37,10 +47,15 @@ func _ready() -> void:
 	combat.setup(self, inventory.get_sim())
 	combat.died.connect(_on_died)
 
+	_tp_arm_length = spring_arm.spring_length
+	_tp_arm_position = spring_arm.position
+	_apply_camera_mode()
+
 	hud = Hud.new()
 	hud.sim = inventory.get_sim()
 	hud.combat = combat
 	hud.placement = placement
+	hud.player = self
 	add_child(hud)
 
 	work_panel = WorkPanel.new()
@@ -98,10 +113,15 @@ func open_custom_panel(title: String, rows: Array, message_text: String = "") ->
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		var pitch_limit := FP_PITCH_LIMIT if first_person else TP_PITCH_LIMIT
 		rotation.y -= event.relative.x * mouse_sensitivity
 		spring_arm.rotation.x = clampf(
 			spring_arm.rotation.x - event.relative.y * mouse_sensitivity,
-			-PI / 3.0, PI / 3.0)
+			-pitch_limit, pitch_limit)
+	elif event.is_action_pressed("toggle_camera"):
+		first_person = not first_person
+		_apply_camera_mode()
+		hud.notify("First person" if first_person else "Third person")
 	elif event.is_action_pressed("ui_cancel"):
 		work_panel.close_panel()
 	elif event.is_action_pressed("save_game"):
@@ -227,6 +247,42 @@ func spawn_ambush(node: ResourceNode) -> Array:
 	if not spawned.is_empty():
 		hud.notify("Ambush! %s" % site.get("display_name", ""))
 	return spawned
+
+
+func _apply_camera_mode() -> void:
+	if first_person:
+		spring_arm.spring_length = 0.0
+		spring_arm.position = Vector3(0.0, FP_EYE_HEIGHT, 0.0)
+		# The capsule stays for shadows only, so the camera never sits inside it.
+		body_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
+	else:
+		spring_arm.spring_length = _tp_arm_length
+		spring_arm.position = _tp_arm_position
+		spring_arm.rotation.x = clampf(spring_arm.rotation.x, -TP_PITCH_LIMIT, TP_PITCH_LIMIT)
+		body_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+
+
+## What the crosshair is over, for HUD feedback: "enemy" when a living enemy
+## is within melee reach of the facing, "interact" when an E-target is in
+## range, otherwise "none".
+func aim_state() -> String:
+	var from := camera.global_position
+	var to := from + (-camera.global_transform.basis.z) * interact_range
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [self]
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	if hit.is_empty():
+		return "none"
+	var collider: Object = hit.get("collider")
+	if collider is Enemy:
+		var enemy := collider as Enemy
+		if enemy.life > 0.0 and hit["position"].distance_to(from) <= combat.melee_reach + 1.0:
+			return "enemy"
+		return "none"
+	if collider is ResourceNode or collider is StationSite or collider is OrderBoard \
+			or collider is DroppedBundle or collider is TrialGate:
+		return "interact"
+	return "none"
 
 
 func interact() -> void:

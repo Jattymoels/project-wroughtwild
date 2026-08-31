@@ -280,6 +280,8 @@ RealtimeTable loadRealtime(const std::string& path) {
     const Value& player = doc->get("player");
     table.playerMoveSpeedMps = player.get("move_speed_mps").asNumber();
     table.playerMeleeReachM = player.get("melee_reach_m").asNumber();
+    if (auto cone = player.find("cone_degrees"))
+        table.playerConeDegrees = cone->asNumber();
 
     for (const auto& [id, b] : doc->get("behaviours").asObject()) {
         BehaviourRealtime behaviour;
@@ -289,7 +291,15 @@ RealtimeTable loadRealtime(const std::string& path) {
             behaviour.preferredDistanceM = preferred->asNumber();
         behaviour.aggroRangeM = b->get("aggro_range_m").asNumber();
         behaviour.windupSeconds = b->get("windup_seconds").asNumber();
+        if (auto giveUp = b->find("give_up_distance_m"))
+            behaviour.giveUpDistanceM = giveUp->asNumber();
         table.behaviours[id] = behaviour;
+    }
+
+    if (auto horde = doc->find("horde")) {
+        table.hordeSeparationRadiusM = horde->get("separation_radius_m").asNumber();
+        table.hordeSeparationStrengthMps = horde->get("separation_strength_mps").asNumber();
+        table.hordeGiveUpSeconds = horde->get("give_up_seconds").asNumber();
     }
 
     const Value& boss = doc->get("boss");

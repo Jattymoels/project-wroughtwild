@@ -188,8 +188,13 @@ func _test_sim_extension() -> void:
 	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 4, "combat: enemy view")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
 	var rt: Dictionary = sim.realtime()
-	check(rt["round_seconds"] > 0.0 and rt["behaviours"].has("fast") and rt["dash"]["invulnerable_seconds"] > 0.0,
-		"combat: realtime tunables")
+	# D-012: dash is pure movement, so its invulnerability window is zero.
+	check(rt["round_seconds"] > 0.0 and rt["behaviours"].has("fast")
+		and rt["dash"]["invulnerable_seconds"] == 0.0
+		and rt["behaviours"]["fast"]["give_up_distance_m"] > rt["behaviours"]["melee"]["give_up_distance_m"]
+		and rt["horde"]["separation_radius_m"] > 0.0
+		and rt["player"]["cone_degrees"] > 0.0,
+		"combat: realtime tunables (D-012 horde fields present)")
 	check(sim.combat_mods()["enemy_speed_multiplier"] == 1.0, "combat: no mods outside a run")
 	check(absf(sim.mitigate(100.0, "physical") - 100.0) < 0.000001, "combat: no armour, no mitigation")
 

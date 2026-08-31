@@ -22,12 +22,21 @@ var preferred_distance := 0.0
 var aggro_range := 10.0
 var windup_seconds := 0.3
 var attack_period_seconds := 1.0
+## D-012 stupid-zombie chase: once aggroed, press until the player stays
+## beyond give_up_distance for give_up_seconds. 0 = never gives up.
+var give_up_distance := 0.0
+var give_up_seconds := 2.5
+var separation_radius := 1.1
+var separation_strength := 3.0
 
 ## idle | chase | windup
 var state := "idle"
 
 var _windup_left := 0.0
 var _attack_cooldown := 0.0
+var _give_up_timer := 0.0
+var _flash_left := 0.0
+var _material: StandardMaterial3D
 var _player: WroughtwildPlayer
 
 @onready var _label: Label3D = $Label3D
@@ -71,13 +80,18 @@ func configure(sim: WroughtwildSim) -> void:
 	aggro_range = b.get("aggro_range_m", 10.0)
 	windup_seconds = b.get("windup_seconds", 0.3)
 	attack_period_seconds = def["attack_period_rounds"] * rt["round_seconds"] / speed_multiplier
+	give_up_distance = b.get("give_up_distance_m", 0.0)
+	var horde: Dictionary = rt.get("horde", {})
+	give_up_seconds = horde.get("give_up_seconds", 2.5)
+	separation_radius = horde.get("separation_radius_m", 1.1)
+	separation_strength = horde.get("separation_strength_mps", 3.0)
 
-	var material := StandardMaterial3D.new()
+	_material = StandardMaterial3D.new()
 	match behaviour:
-		"ranged": material.albedo_color = Color(0.8, 0.15, 0.1)
-		"fast": material.albedo_color = Color(0.25, 0.3, 0.45)
-		_: material.albedo_color = Color(0.9, 0.45, 0.1)
-	_mesh.material_override = material
+		"ranged": _material.albedo_color = Color(0.8, 0.15, 0.1)
+		"fast": _material.albedo_color = Color(0.25, 0.3, 0.45)
+		_: _material.albedo_color = Color(0.9, 0.45, 0.1)
+	_mesh.material_override = _material
 	_refresh_label()
 
 
@@ -101,6 +115,10 @@ func _horizontal_distance_to(target: Node3D) -> float:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	if _flash_left > 0.0:
+		_flash_left -= delta
+		if _flash_left <= 0.0 and _material != null:
+			_material.emission_enabled = false
 	var player := _find_player()
 	if player == null:
 		move_and_slide()
@@ -114,14 +132,23 @@ func _physics_process(delta: float) -> void:
 		"idle":
 			if distance <= aggro_range:
 				state = "chase"
+				_give_up_timer = 0.0
 		"chase":
-			if distance > aggro_range * 1.5:
-				state = "idle"
-			elif distance <= attack_range and _attack_cooldown <= 0.0:
-				state = "windup"
-				_windup_left = windup_seconds
+			# D-012: no leash. The chase only ends when the player genuinely
+			# leaves - staying beyond give_up_distance for give_up_seconds.
+			if give_up_distance > 0.0 and distance > give_up_distance:
+				_give_up_timer += delta
+				if _give_up_timer >= give_up_seconds:
+					state = "idle"
+					_give_up_timer = 0.0
 			else:
-				planar = _chase_direction(player, distance) * move_speed
+				_give_up_timer = 0.0
+			if state == "chase":
+				if distance <= attack_range and _attack_cooldown <= 0.0:
+					state = "windup"
+					_windup_left = windup_seconds
+				else:
+					planar = _chase_direction(player, distance) * move_speed
 		"windup":
 			_windup_left -= delta
 			if _windup_left <= 0.0:
@@ -132,11 +159,30 @@ func _physics_process(delta: float) -> void:
 				_attack_cooldown = attack_period_seconds
 				state = "chase"
 
+	# Separation steering: chasers shoulder each other apart, so a trained
+	# horde forms a physical train instead of a stack of ghosts (D-012).
+	if state != "idle":
+		planar += _separation_push()
+
 	velocity.x = planar.x
 	velocity.z = planar.z
-	if planar.length_squared() > 0.0001:
+	if planar.length_squared() > 0.0001 and distance > 0.05:
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	move_and_slide()
+
+
+func _separation_push() -> Vector3:
+	var push := Vector3.ZERO
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node == self or not (node is Enemy) or not is_instance_valid(node):
+			continue
+		var away: Vector3 = global_position - (node as Enemy).global_position
+		away.y = 0.0
+		var d := away.length()
+		if d < 0.001 or d >= separation_radius:
+			continue
+		push += (away / d) * (1.0 - d / separation_radius)
+	return push * separation_strength
 
 
 func _chase_direction(player: Node3D, distance: float) -> Vector3:
@@ -170,6 +216,16 @@ func take_damage(amount: float) -> void:
 		return
 	life = maxf(0.0, life - amount)
 	_refresh_label()
+	# Hit feedback: a brief white-hot flash. Taking damage also wakes the
+	# enemy - shooting a distant mob pulls it (D-012 stray-pull).
+	if _material != null:
+		_material.emission_enabled = true
+		_material.emission = Color(1.0, 1.0, 0.9)
+		_material.emission_energy_multiplier = 1.6
+		_flash_left = 0.12
+	if state == "idle":
+		state = "chase"
+		_give_up_timer = 0.0
 	if life <= 0.0:
 		died.emit(self)
 		remove_from_group("enemies")

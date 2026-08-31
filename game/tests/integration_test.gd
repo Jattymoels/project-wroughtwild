@@ -163,10 +163,13 @@ func _physics_process(_delta: float) -> void:
 			var hits := _player.combat.use_area()
 			check(hits >= 1, "combat: area strike hits enemies in radius (%d)" % hits)
 		34:
+			# D-012: dash is pure movement - it grants no invulnerability, so
+			# a hit that catches you mid-dash still lands. Position, not
+			# i-frames, is the defence.
 			check(_player.combat.use_dash(), "combat: dash available")
 			var life_before := _player.combat.life
-			check(_back.force_attack() == 0.0, "combat: dash window dodges the hit")
-			check(_player.combat.life == life_before, "combat: no life lost while invulnerable")
+			check(_back.force_attack() > 0.0, "combat: dash grants no i-frames - the hit lands")
+			check(_player.combat.life < life_before, "combat: dashing through an attack still costs life")
 		40:
 			# Open-world death: the pack drops where you fell, you respawn at camp.
 			var sim: WroughtwildSim = _player.inventory.get_sim()

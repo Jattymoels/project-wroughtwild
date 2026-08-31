@@ -405,6 +405,7 @@ Dictionary WroughtwildSim::realtime() const {
     Dictionary player;
     player["move_speed_mps"] = rt.playerMoveSpeedMps;
     player["melee_reach_m"] = rt.playerMeleeReachM;
+    player["cone_degrees"] = rt.playerConeDegrees;
     d["player"] = player;
 
     Dictionary behaviours;
@@ -415,9 +416,16 @@ Dictionary WroughtwildSim::realtime() const {
         entry["preferred_distance_m"] = b.preferredDistanceM;
         entry["aggro_range_m"] = b.aggroRangeM;
         entry["windup_seconds"] = b.windupSeconds;
+        entry["give_up_distance_m"] = b.giveUpDistanceM;
         behaviours[to_godot(id)] = entry;
     }
     d["behaviours"] = behaviours;
+
+    Dictionary horde;
+    horde["separation_radius_m"] = rt.hordeSeparationRadiusM;
+    horde["separation_strength_mps"] = rt.hordeSeparationStrengthMps;
+    horde["give_up_seconds"] = rt.hordeGiveUpSeconds;
+    d["horde"] = horde;
 
     Dictionary boss;
     boss["move_speed_mps"] = rt.boss.moveSpeedMps;

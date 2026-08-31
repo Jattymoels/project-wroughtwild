@@ -22,6 +22,9 @@ echo "== unit tests =="
 echo "== integration test (physics + placement loop) =="
 "$GODOT" --headless --path . res://tests/integration.tscn
 
+echo "== horde test (D-012 chase, training, cone, dash) =="
+"$GODOT" --headless --path . res://tests/horde.tscn
+
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 

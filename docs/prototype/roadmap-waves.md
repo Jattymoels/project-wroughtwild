@@ -34,7 +34,7 @@ Start with nothing in a seed-generated bounded world and survive/build up.
 Out of scope for wave 1: dig-anywhere voxel terrain (excluded by D-001),
 day/night, weather, hunger, mob respawning waves.
 
-## Wave 1.5 — First-Person Feel *(next; D-012)*
+## Wave 1.5 — First-Person Feel *(landed 31 Aug 2026; D-012)*
 
 Combat goes first-person and the horde becomes trainable, so the feel
 question is answerable in greybox before Wave 2 commits itemisation to it.
@@ -48,6 +48,10 @@ question is answerable in greybox before Wave 2 commits itemisation to it.
 - A first cone-shaped area strike so a trained bunch already pays off.
 - Re-examine dash: in first person, movement itself may be the defence
   (Zombies has no dodge); i-frames may not survive this wave.
+  **Outcome:** dash kept as a movement burst, invulnerability removed
+  (`combat_realtime.json`); the boss breath is dodged spatially. Also
+  landed: crosshair aim feedback, hitmarker, damage flash, and stray-pull
+  (damaging an idle mob wakes it).
 
 ## Wave 2 — Items and Modifiers *(intensive itemisation pass)*
 

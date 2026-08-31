@@ -5,7 +5,8 @@
   "player": {
     "move_speed_mps": 5.0,
     "melee_reach_m": 2.2,
-    "design_purpose": "move_speed_mps sets the pace of positioning against enemies whose speeds are below. melee_reach_m is how far in front of the player a single-target strike connects."
+    "design_purpose": "move_speed_mps sets the pace of positioning against enemies whose speeds are below. melee_reach_m is how far in front of the player a single-target strike connects. cone_degrees is the first-person area-strike arc (D-012): 'area' means the slice of the horde you are facing, which is why training mobs into a bunch pays.",
+    "cone_degrees": 100.0
   },
   "behaviours": {
     "melee": {
@@ -13,7 +14,8 @@
       "attack_range_m": 1.8,
       "aggro_range_m": 12.0,
       "windup_seconds": 0.4,
-      "design_purpose": "Slower than the player so kiting works, but relentless; the wind-up is the tell for a dodge."
+      "design_purpose": "Slower than the player so kiting works, but relentless while you stay near (D-012 training); gives up only when you genuinely leave (give_up_distance_m).",
+      "give_up_distance_m": 26.0
     },
     "ranged": {
       "move_speed_mps": 2.5,
@@ -21,14 +23,16 @@
       "aggro_range_m": 14.0,
       "preferred_distance_m": 7.0,
       "windup_seconds": 0.6,
-      "design_purpose": "Keeps its distance and chips with fire so the player learns fire damage exists before the boss; closing on it is the counter."
+      "design_purpose": "Keeps its distance and chips with fire so the player learns fire damage exists before the boss; closing on it is the counter.",
+      "give_up_distance_m": 22.0
     },
     "fast": {
       "move_speed_mps": 6.5,
       "attack_range_m": 1.6,
       "aggro_range_m": 14.0,
       "windup_seconds": 0.25,
-      "design_purpose": "Outruns the player; packs punish standing still and reward area strikes. The hastened weakness multiplies this."
+      "design_purpose": "Outruns the player; packs punish standing still and reward area strikes. The long give_up_distance_m makes hounds the dangerous disengage: escaping them costs distance and risk.",
+      "give_up_distance_m": 34.0
     }
   },
   "boss": {
@@ -38,14 +42,20 @@
     "breath_range_m": 9.0,
     "breath_cone_degrees": 70.0,
     "breath_telegraph_seconds": 1.0,
-    "design_purpose": "The breath telegraph must be long enough to read and dash, but the dash cooldown (2.5 s) exceeds the breath period (2 rounds) so fire is never fully dodgeable: resistance preparation stays mandatory."
+    "design_purpose": "The breath telegraph must be long enough to read and MOVE: the cone is dodged spatially (step or dash out of it), never by invulnerability. Resistance preparation stays mandatory because a horde fight will eventually catch you inside a cone."
   },
   "skills": {
     "prototype_dash": {
-      "invulnerable_seconds": 0.35,
+      "invulnerable_seconds": 0.0,
       "duration_seconds": 0.25
     },
-    "design_purpose": "Dash grants a short invulnerability window matching the round model's 'dodges this round' rule; its distance and cooldown live in skills.json."
+    "design_purpose": "Dash is pure movement (D-012): in first person, position is the defence - step or dash out of the breath cone, outpace the train. No invulnerability frames; distance and cooldown live in skills.json."
   },
-  "design_purpose": "round_seconds is the bridge between the sim's round-based encounter (the balance oracle) and real time: attack_period_rounds, breath periods and skill cooldowns become seconds by multiplying by it. Everything else here is time-and-space feel that the round model cannot express; damage, life and mitigation never live in this file (ADR-0003)."
+  "design_purpose": "round_seconds is the bridge between the sim's round-based encounter (the balance oracle) and real time: attack_period_rounds, breath periods and skill cooldowns become seconds by multiplying by it. Everything else here is time-and-space feel that the round model cannot express; damage, life and mitigation never live in this file (ADR-0003).",
+  "horde": {
+    "separation_radius_m": 1.1,
+    "separation_strength_mps": 3.0,
+    "give_up_seconds": 2.5,
+    "design_purpose": "D-012 stupid-zombie horde feel. Separation makes chasers push apart into a physical train instead of stacking, so bunching them is a skill. give_up_seconds is how long the player must stay beyond a chaser's give_up_distance_m before it loses interest - no eternal aggro, no instant leash."
+  }
 }
