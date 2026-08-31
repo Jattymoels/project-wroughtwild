@@ -31,10 +31,23 @@ public:
     PackedStringArray recipe_ids() const;
     Dictionary recipe(const String& recipe_id) const;
     double salvage_return_fraction() const;
+    PackedStringArray shape_ids() const;
+    int shape_material_cost(const String& shape_id) const;
+    double grid_size() const;
+    double placement_range() const;
+    double removal_refund_fraction() const;
 
     // --- player economy (one player, prototype scope) ---
     void add_material(const String& material_id, int amount);
+    // Returns false (and consumes nothing) when fewer than amount are held.
+    bool consume_material(const String& material_id, int amount);
     int material_count(const String& material_id) const;
+
+    // Construction: shapes are paid in the selected material family at the
+    // cost in construction.json; removal refunds by removal_refund_fraction.
+    bool can_afford_placement(const String& shape_id, const String& material_family) const;
+    bool pay_placement(const String& shape_id, const String& material_family);
+    int refund_removal(const String& shape_id, const String& material_family);
     void add_station(const String& station_id);
     bool has_station(const String& station_id) const;
     int skill_xp(const String& skill_id) const;

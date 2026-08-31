@@ -238,9 +238,27 @@ struct TrialTable {
     bool loseRunMaterialsOnDeath = true;
 };
 
+// --- construction.json -------------------------------------------------------
+
+struct ShapeDef {
+    std::string id;
+    std::string displayName;
+    int materialCost = 1; // units of whichever material family the player selected
+};
+
+struct ConstructionTable {
+    double gridSizeMetres = 1.0;
+    double placementRangeMetres = 10.0;
+    double removalRefundFraction = 0.0;
+    std::vector<ShapeDef> shapes;
+
+    const ShapeDef* findShape(const std::string& id) const;
+};
+
 // --- loading -----------------------------------------------------------------
 
 CraftingTable loadCrafting(const std::string& path);
+ConstructionTable loadConstruction(const std::string& path);
 SkillTable loadSkills(const std::string& path);
 ItemTable loadItems(const std::string& path);
 BoonTable loadBoons(const std::string& path);
@@ -250,6 +268,7 @@ TrialTable loadTrial(const std::string& path);
 // Loads all tuning files from a data/tuning directory.
 struct Tuning {
     CraftingTable crafting;
+    ConstructionTable construction;
     SkillTable skills;
     ItemTable items;
     BoonTable boons;

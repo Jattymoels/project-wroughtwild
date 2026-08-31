@@ -86,6 +86,14 @@ public:
     // the station available. Returns false without paying when blocked.
     bool buildStation(const std::string& stationId);
 
+    // --- construction of shapes ---
+    // A shape costs construction.json's material_cost in whichever family the
+    // player selected (construction spec core rule 1: families, not SKUs).
+    // Removal refunds floor(cost * removal_refund_fraction) to the same family.
+    bool canAffordPlacement(const std::string& shapeId, const std::string& materialFamily) const;
+    bool payPlacement(const std::string& shapeId, const std::string& materialFamily);
+    int refundRemoval(const std::string& shapeId, const std::string& materialFamily);
+
     // --- save/load ---
     struct State {
         Inventory inventory;

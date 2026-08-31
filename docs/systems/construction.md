@@ -63,6 +63,11 @@ Curves, freeform terrain carving, large blueprints and physics-based destruction
 | Snap tolerance | Precision versus frustration |
 | Unlock skill level | Pacing of architectural vocabulary |
 
+Grid size, placement range, per-shape material cost and removal refund are
+data in `data/tuning/construction.json`, loaded by the `sim/` library; the
+engine layer reads them and applies placement payment and refunds through
+the rules library rather than computing them in scene scripts.
+
 ## Interface requirements
 
 - Material selection and shape selection must be separate concepts.

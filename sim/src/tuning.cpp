@@ -52,6 +52,7 @@ const Station* CraftingTable::findStation(const std::string& id) const { return 
 const Recipe* CraftingTable::findRecipe(const std::string& id) const { return findById(recipes, id); }
 const Order* CraftingTable::findOrder(const std::string& id) const { return findById(orders, id); }
 const CatalystProcess* CraftingTable::findCatalystProcess(const std::string& id) const { return findById(catalystProcesses, id); }
+const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
 const EnemyDef* WorldTable::findEnemy(const std::string& id) const { return findById(enemies, id); }
 const GatherSite* WorldTable::findSite(const std::string& id) const { return findById(gatheringSites, id); }
 const CraftSkillDef* SkillTable::findCraftSkill(const std::string& id) const { return findById(craftSkills, id); }
@@ -216,6 +217,24 @@ BoonTable loadBoons(const std::string& path) {
     return table;
 }
 
+ConstructionTable loadConstruction(const std::string& path) {
+    auto doc = json::parseFile(path);
+    ConstructionTable table;
+
+    table.gridSizeMetres = doc->get("grid_size_metres").asNumber();
+    table.placementRangeMetres = doc->get("placement_range_metres").asNumber();
+    table.removalRefundFraction = doc->get("removal_refund_fraction").asNumber();
+
+    for (const auto& s : doc->get("shapes").asArray()) {
+        ShapeDef shape;
+        shape.id = s->get("id").asString();
+        shape.displayName = s->get("display_name").asString();
+        shape.materialCost = s->get("material_cost").asInt();
+        table.shapes.push_back(std::move(shape));
+    }
+    return table;
+}
+
 WorldTable loadWorld(const std::string& path) {
     auto doc = json::parseFile(path);
     WorldTable table;
@@ -297,6 +316,7 @@ TrialTable loadTrial(const std::string& path) {
 Tuning loadAll(const std::string& tuningDirectory) {
     Tuning tuning;
     tuning.crafting = loadCrafting(tuningDirectory + "/crafting.json");
+    tuning.construction = loadConstruction(tuningDirectory + "/construction.json");
     tuning.skills = loadSkills(tuningDirectory + "/skills.json");
     tuning.items = loadItems(tuningDirectory + "/items.json");
     tuning.boons = loadBoons(tuningDirectory + "/boons.json");

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "prototype-placeholder",
+  "grid_size_metres": 1.0,
+  "placement_range_metres": 10.0,
+  "removal_refund_fraction": 0.5,
+  "shapes": [
+    {
+      "id": "cube",
+      "display_name": "Cube Block",
+      "material_cost": 2,
+      "design_purpose": "The only prototype shape so far. Two units per block equals one harvest swing, so a small shelter visibly eats into a resource node instead of feeling free."
+    }
+  ],
+  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy."
+}

@@ -18,7 +18,7 @@ func check(condition: bool, label: String) -> void:
 func _initialize() -> void:
 	_test_grid()
 	_test_inventory()
-	_test_tuning()
+	_test_sim_gateway()
 	_test_resource_node()
 	_test_scene_instantiation()
 	_test_sim_extension()
@@ -53,16 +53,16 @@ func _test_inventory() -> void:
 	inventory.free()
 
 
-func _test_tuning() -> void:
-	# The autoload is not instantiated in --script mode; test the class directly.
-	var tuning: Node = load("res://scripts/tuning.gd").new()
-	check(tuning.load_crafting_tuning(), "tuning: crafting.json loads from repo checkout")
-	check(tuning.loaded, "tuning: loaded flag set")
-	check(tuning.recipe_count >= 2, "tuning: recipes present")
-	check(tuning.recipe_ids.has("smelt_iron"), "tuning: smelt_iron recipe present")
-	check(tuning.recipe_ids.has("iron_fittings"), "tuning: iron_fittings recipe present")
-	check(absf(tuning.salvage_return_fraction - 0.5) < 0.000001, "tuning: salvage fraction read")
-	tuning.free()
+func _test_sim_gateway() -> void:
+	# The autoload is not instantiated in --script mode; test the script directly.
+	var gateway: Node = load("res://scripts/sim.gd").new()
+	check(gateway.loaded, "sim gateway: tuning loads from the repo checkout")
+	check(gateway.sim.recipe_ids().has("smelt_iron"), "sim gateway: crafting recipes visible")
+	check(gateway.sim.shape_ids().has("cube"), "sim gateway: construction shapes visible")
+	check(gateway.sim.grid_size() > 0.0 and gateway.sim.placement_range() > gateway.sim.grid_size(),
+		"sim gateway: grid size and placement range come from construction.json")
+	check(absf(gateway.sim.salvage_return_fraction() - 0.5) < 0.000001, "sim gateway: salvage fraction read")
+	gateway.free()
 
 
 func _test_resource_node() -> void:
@@ -103,7 +103,7 @@ func _test_sim_extension() -> void:
 		check(false, "sim: WroughtwildSim extension not loaded (build game/extensions/wroughtwild_sim first)")
 		return
 	var sim: RefCounted = ClassDB.instantiate(&"WroughtwildSim")
-	var tuning_dir: String = load("res://scripts/tuning.gd").get_tuning_directory()
+	var tuning_dir: String = load("res://scripts/sim.gd").get_tuning_directory()
 	check(sim.load_tuning(tuning_dir), "sim: tuning loads through the sim library (%s)" % sim.last_error())
 	check(sim.recipe_ids().has("smelt_iron"), "sim: recipes visible")
 	check(absf(sim.salvage_return_fraction() - 0.5) < 0.000001, "sim: salvage fraction agrees with GDScript loader")
@@ -125,3 +125,16 @@ func _test_sim_extension() -> void:
 		"sim: inputs consumed and output added by the sim rule")
 	check(sim.skill_xp("blacksmithing") == recipe["base_skill_xp"], "sim: skill XP granted by the sim rule")
 	check(sim.craft("no_such_recipe")["failure"] == "unknown_recipe", "sim: unknown recipe reported")
+
+	# Construction draws on the same inventory as crafting.
+	var cost: int = sim.shape_material_cost("cube")
+	check(cost > 0, "sim: cube shape has a material cost")
+	check(not sim.can_afford_placement("cube", "wood"), "sim: cannot place with no wood")
+	sim.add_material("wood", cost * 2)
+	check(sim.pay_placement("cube", "wood"), "sim: placement paid from the family")
+	check(sim.material_count("wood") == cost, "sim: placement consumed one shape's cost")
+	var refund: int = sim.refund_removal("cube", "wood")
+	check(refund == int(floorf(cost * sim.removal_refund_fraction())), "sim: refund follows removal_refund_fraction")
+	check(sim.material_count("wood") == cost + refund, "sim: refund returned to the family")
+	check(not sim.consume_material("wood", 999), "sim: consume refuses overdraw")
+	check(sim.consume_material("wood", 1), "sim: consume succeeds within holdings")

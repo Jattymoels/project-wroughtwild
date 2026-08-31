@@ -44,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 	match _frame:
 		2:
 			# Build mode with an empty inventory: preview must show invalid.
-			_player.placement.material_cost_per_block = 2
+			# The cube costs 2 wood per data/tuning/construction.json.
 			_player.placement.set_build_mode_enabled(true)
 		4:
 			check(_player.placement.preview_visible, "integration: preview visible over floor")

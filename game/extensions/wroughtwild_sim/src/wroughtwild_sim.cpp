@@ -30,9 +30,18 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("recipe_ids"), &WroughtwildSim::recipe_ids);
     ClassDB::bind_method(D_METHOD("recipe", "recipe_id"), &WroughtwildSim::recipe);
     ClassDB::bind_method(D_METHOD("salvage_return_fraction"), &WroughtwildSim::salvage_return_fraction);
+    ClassDB::bind_method(D_METHOD("shape_ids"), &WroughtwildSim::shape_ids);
+    ClassDB::bind_method(D_METHOD("shape_material_cost", "shape_id"), &WroughtwildSim::shape_material_cost);
+    ClassDB::bind_method(D_METHOD("grid_size"), &WroughtwildSim::grid_size);
+    ClassDB::bind_method(D_METHOD("placement_range"), &WroughtwildSim::placement_range);
+    ClassDB::bind_method(D_METHOD("removal_refund_fraction"), &WroughtwildSim::removal_refund_fraction);
 
     ClassDB::bind_method(D_METHOD("add_material", "material_id", "amount"), &WroughtwildSim::add_material);
+    ClassDB::bind_method(D_METHOD("consume_material", "material_id", "amount"), &WroughtwildSim::consume_material);
     ClassDB::bind_method(D_METHOD("material_count", "material_id"), &WroughtwildSim::material_count);
+    ClassDB::bind_method(D_METHOD("can_afford_placement", "shape_id", "material_family"), &WroughtwildSim::can_afford_placement);
+    ClassDB::bind_method(D_METHOD("pay_placement", "shape_id", "material_family"), &WroughtwildSim::pay_placement);
+    ClassDB::bind_method(D_METHOD("refund_removal", "shape_id", "material_family"), &WroughtwildSim::refund_removal);
     ClassDB::bind_method(D_METHOD("add_station", "station_id"), &WroughtwildSim::add_station);
     ClassDB::bind_method(D_METHOD("has_station", "station_id"), &WroughtwildSim::has_station);
     ClassDB::bind_method(D_METHOD("skill_xp", "skill_id"), &WroughtwildSim::skill_xp);
@@ -101,10 +110,66 @@ double WroughtwildSim::salvage_return_fraction() const {
     return require_loaded("salvage_return_fraction") ? tuning_->crafting.salvageReturnFraction : 0.0;
 }
 
+PackedStringArray WroughtwildSim::shape_ids() const {
+    PackedStringArray ids;
+    if (!require_loaded("shape_ids")) {
+        return ids;
+    }
+    for (const auto& shape : tuning_->construction.shapes) {
+        ids.push_back(to_godot(shape.id));
+    }
+    return ids;
+}
+
+int WroughtwildSim::shape_material_cost(const String& shape_id) const {
+    if (!require_loaded("shape_material_cost")) {
+        return 0;
+    }
+    const auto* shape = tuning_->construction.findShape(to_std(shape_id));
+    return shape == nullptr ? 0 : shape->materialCost;
+}
+
+double WroughtwildSim::grid_size() const {
+    return require_loaded("grid_size") ? tuning_->construction.gridSizeMetres : 1.0;
+}
+
+double WroughtwildSim::placement_range() const {
+    return require_loaded("placement_range") ? tuning_->construction.placementRangeMetres : 0.0;
+}
+
+double WroughtwildSim::removal_refund_fraction() const {
+    return require_loaded("removal_refund_fraction") ? tuning_->construction.removalRefundFraction : 0.0;
+}
+
 void WroughtwildSim::add_material(const String& material_id, int amount) {
     if (require_loaded("add_material")) {
         wroughtwild::economy::add(player_->inventory, {{to_std(material_id), amount}});
     }
+}
+
+bool WroughtwildSim::consume_material(const String& material_id, int amount) {
+    if (!require_loaded("consume_material")) {
+        return false;
+    }
+    const std::map<std::string, int> amounts{{to_std(material_id), amount}};
+    if (!wroughtwild::economy::hasAll(player_->inventory, amounts)) {
+        return false;
+    }
+    wroughtwild::economy::remove(player_->inventory, amounts);
+    return true;
+}
+
+bool WroughtwildSim::can_afford_placement(const String& shape_id, const String& material_family) const {
+    return require_loaded("can_afford_placement") &&
+           player_->canAffordPlacement(to_std(shape_id), to_std(material_family));
+}
+
+bool WroughtwildSim::pay_placement(const String& shape_id, const String& material_family) {
+    return require_loaded("pay_placement") && player_->payPlacement(to_std(shape_id), to_std(material_family));
+}
+
+int WroughtwildSim::refund_removal(const String& shape_id, const String& material_family) {
+    return require_loaded("refund_removal") ? player_->refundRemoval(to_std(shape_id), to_std(material_family)) : 0;
 }
 
 int WroughtwildSim::material_count(const String& material_id) const {
