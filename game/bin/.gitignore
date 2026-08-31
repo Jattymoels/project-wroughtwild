@@ -1,0 +1,6 @@
+# Built extension binaries come from CMake (see ../extensions/wroughtwild_sim);
+# only the .gdextension descriptor is committed.
+*.dll
+*.so
+*.dylib
+*.pdb
