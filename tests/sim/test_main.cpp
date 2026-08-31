@@ -74,6 +74,11 @@ void testCombatNumbers(const tuning::Tuning& t) {
         check(t.realtime.findBehaviour(enemy.behaviour) != nullptr,
               "realtime: behaviour tunables exist for " + enemy.id);
     check(t.realtime.boss.breathTelegraphSeconds > 0.0, "realtime: boss telegraph loads");
+    check(t.realtime.findBehaviour("fast")->aggroRangeM > 0.0, "realtime: aggro range loads");
+    check(t.world.findSite("old_mine")->ambushRemovedByWorldEffect == "old_mine_reinforced",
+          "world: mine ambush is removed by the reinforcement effect");
+    check(t.world.findSite("valley_forest")->ambushRemovedByWorldEffect.empty(),
+          "world: forest has no ambush removal effect");
 
     const tuning::CombatSkillDef* heavy = nullptr;
     const tuning::CombatSkillDef* area = nullptr;

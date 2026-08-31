@@ -49,11 +49,20 @@ public:
     // Keys: id, display_name, level, xp, max_level, next_level_xp (-1 at max).
     Dictionary skill_progress(const String& skill_id) const;
 
+    // Keys: id, display_name, yields_per_action, ambush_chance,
+    // ambush_enemies, ambush_removed_by_world_effect.
+    Dictionary gather_site(const String& site_id) const;
+
     // --- player economy (one player, prototype scope) ---
     Dictionary inventory() const;
     Dictionary currency() const;
     int currency_count(const String& currency_id) const;
     void add_material(const String& material_id, int amount);
+    void add_materials(const Dictionary& amounts);
+    // Open-world death (D-006): removes and returns every carried material so
+    // the host can leave it where the player fell. Currency and equipment
+    // are never dropped.
+    Dictionary drop_inventory();
     // Returns false (and consumes nothing) when fewer than amount are held.
     bool consume_material(const String& material_id, int amount);
     int material_count(const String& material_id) const;

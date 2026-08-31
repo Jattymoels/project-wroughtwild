@@ -32,10 +32,10 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Combat and build
 
-- [ ] The prototype class has a recognisable persistent play pattern.
-- [ ] Equipment changes persistent offence or defence visibly.
+- [x] The prototype class has a recognisable persistent play pattern. *(area strike / heavy strike / dash in real time, three enemy behaviours; ADR-0003)*
+- [ ] Equipment changes persistent offence or defence visibly. *(derived stats flow from equipment; nothing can be equipped in-engine yet)*
 - [ ] The player can survive appropriate content slowly with baseline defensive preparation.
-- [ ] Damage, defence and area/single-target trade-offs are measurable.
+- [x] Damage, defence and area/single-target trade-offs are measurable. *(every hit is a sim number; integration test asserts bands; balance sim is the oracle)*
 
 ## Trial
 
@@ -54,9 +54,9 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Open-world death
 
-- [ ] Carried inventory drops at a recoverable location.
-- [ ] The recovery location is communicated clearly.
-- [ ] Build-defining equipment is not permanently destroyed.
+- [x] Carried inventory drops at a recoverable location. *(`DroppedBundle` at the death spot; integration-tested)*
+- [x] The recovery location is communicated clearly. *(HUD notice + glowing pack; a map marker is a later polish item)*
+- [x] Build-defining equipment is not permanently destroyed. *(`drop_inventory` touches materials only; equipment and currency stay)*
 
 ## Slice-level validation
 

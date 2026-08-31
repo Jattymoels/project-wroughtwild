@@ -54,6 +54,7 @@
       "yields_per_action": {"iron_ore": 2},
       "ambush_chance": 0.15,
       "ambush_enemies": ["ash_hound", "ash_hound"],
+      "ambush_removed_by_world_effect": "old_mine_reinforced",
       "design_purpose": "Iron source with real risk, so open-world death rules matter; reinforcing the mine (order world effect) removes the ambushes"
     }
   ],

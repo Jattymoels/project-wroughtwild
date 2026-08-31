@@ -38,6 +38,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("placement_range"), &WroughtwildSim::placement_range);
     ClassDB::bind_method(D_METHOD("removal_refund_fraction"), &WroughtwildSim::removal_refund_fraction);
 
+    ClassDB::bind_method(D_METHOD("gather_site", "site_id"), &WroughtwildSim::gather_site);
+    ClassDB::bind_method(D_METHOD("add_materials", "amounts"), &WroughtwildSim::add_materials);
+    ClassDB::bind_method(D_METHOD("drop_inventory"), &WroughtwildSim::drop_inventory);
     ClassDB::bind_method(D_METHOD("add_material", "material_id", "amount"), &WroughtwildSim::add_material);
     ClassDB::bind_method(D_METHOD("consume_material", "material_id", "amount"), &WroughtwildSim::consume_material);
     ClassDB::bind_method(D_METHOD("material_count", "material_id"), &WroughtwildSim::material_count);
@@ -205,6 +208,7 @@ Dictionary WroughtwildSim::realtime() const {
         entry["move_speed_mps"] = b.moveSpeedMps;
         entry["attack_range_m"] = b.attackRangeM;
         entry["preferred_distance_m"] = b.preferredDistanceM;
+        entry["aggro_range_m"] = b.aggroRangeM;
         entry["windup_seconds"] = b.windupSeconds;
         behaviours[to_godot(id)] = entry;
     }
@@ -540,6 +544,57 @@ void WroughtwildSim::add_material(const String& material_id, int amount) {
     if (require_loaded("add_material")) {
         wroughtwild::economy::add(player_->inventory, {{to_std(material_id), amount}});
     }
+}
+
+Dictionary WroughtwildSim::gather_site(const String& site_id) const {
+    Dictionary d;
+    if (!require_loaded("gather_site")) {
+        return d;
+    }
+    const auto* s = tuning_->world.findSite(to_std(site_id));
+    if (s == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(s->id);
+    d["display_name"] = to_godot(s->displayName);
+    d["yields_per_action"] = to_dictionary(s->yieldsPerAction);
+    d["ambush_chance"] = s->ambushChance;
+    PackedStringArray enemies;
+    for (const auto& id : s->ambushEnemies) {
+        enemies.push_back(to_godot(id));
+    }
+    d["ambush_enemies"] = enemies;
+    d["ambush_removed_by_world_effect"] = to_godot(s->ambushRemovedByWorldEffect);
+    return d;
+}
+
+void WroughtwildSim::add_materials(const Dictionary& amounts) {
+    if (!require_loaded("add_materials")) {
+        return;
+    }
+    std::map<std::string, int> converted;
+    const Array keys = amounts.keys();
+    for (int i = 0; i < keys.size(); ++i) {
+        const int amount = static_cast<int>(amounts[keys[i]]);
+        if (amount > 0) {
+            converted[to_std(String(keys[i]))] = amount;
+        }
+    }
+    wroughtwild::economy::add(player_->inventory, converted);
+}
+
+Dictionary WroughtwildSim::drop_inventory() {
+    Dictionary dropped;
+    if (!require_loaded("drop_inventory")) {
+        return dropped;
+    }
+    for (const auto& [id, count] : player_->inventory) {
+        if (count > 0) {
+            dropped[to_godot(id)] = count;
+        }
+    }
+    player_->inventory.clear();
+    return dropped;
 }
 
 bool WroughtwildSim::consume_material(const String& material_id, int amount) {

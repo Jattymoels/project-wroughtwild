@@ -8,6 +8,9 @@ extends StaticBody3D
 @export var material_family: StringName = &"wood"
 @export var remaining_units: int = 20
 @export var units_per_harvest: int = 2
+## Gathering site in data/tuning/world.json this node belongs to; drives
+## ambush chance and which enemies arrive. Empty means never ambushed.
+@export var gather_site_id: StringName = &""
 
 
 ## Returns the units actually granted (0 when depleted).

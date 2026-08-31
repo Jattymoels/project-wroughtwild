@@ -255,6 +255,7 @@ RealtimeTable loadRealtime(const std::string& path) {
         behaviour.attackRangeM = b->get("attack_range_m").asNumber();
         if (auto preferred = b->find("preferred_distance_m"))
             behaviour.preferredDistanceM = preferred->asNumber();
+        behaviour.aggroRangeM = b->get("aggro_range_m").asNumber();
         behaviour.windupSeconds = b->get("windup_seconds").asNumber();
         table.behaviours[id] = behaviour;
     }
@@ -301,6 +302,8 @@ WorldTable loadWorld(const std::string& path) {
         site.yieldsPerAction = readIntMap(s->get("yields_per_action"));
         site.ambushChance = s->get("ambush_chance").asNumber();
         site.ambushEnemies = readStringArray(s->get("ambush_enemies"));
+        if (auto removedBy = s->find("ambush_removed_by_world_effect"))
+            site.ambushRemovedByWorldEffect = removedBy->asString();
         table.gatheringSites.push_back(std::move(site));
     }
 
