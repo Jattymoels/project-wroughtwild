@@ -54,6 +54,13 @@ func _ready() -> void:
 	_capture_mouse()
 
 
+## Where runtime-spawned nodes (blocks, enemies, packs) live: the current
+## scene, or the player's parent when a harness built the tree by hand.
+func world_root() -> Node:
+	var scene := get_tree().current_scene
+	return scene if scene != null else get_parent()
+
+
 func _capture_mouse() -> void:
 	if DisplayServer.get_name() != "headless":
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -166,7 +173,7 @@ func _on_died() -> void:
 	var dropped: Dictionary = sim.drop_inventory()
 	if not dropped.is_empty():
 		var bundle: DroppedBundle = DROPPED_BUNDLE_SCENE.instantiate()
-		get_tree().current_scene.add_child(bundle)
+		world_root().add_child(bundle)
 		bundle.global_position = global_position
 		bundle.contents = dropped
 		hud.notify("You fell. Your pack lies where you died; go back for it.")
@@ -204,7 +211,7 @@ func spawn_ambush(node: ResourceNode) -> Array:
 	for i in ids.size():
 		var angle := TAU * float(i) / float(maxi(ids.size(), 1)) + 0.7
 		var offset := Vector3(cos(angle), 0.0, sin(angle)) * 3.0
-		spawned.append(Enemy.spawn(get_tree().current_scene, ids[i], node.global_position + offset))
+		spawned.append(Enemy.spawn(world_root(), ids[i], node.global_position + offset))
 	if not spawned.is_empty():
 		hud.notify("Ambush! %s" % site.get("display_name", ""))
 	return spawned

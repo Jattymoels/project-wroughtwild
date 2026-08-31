@@ -37,7 +37,7 @@ static func _walk(node: Node, blocks: Array, nodes: Array, sites: Array) -> void
 
 
 func capture(player: WroughtwildPlayer) -> Dictionary:
-	var root: Node = player.get_tree().current_scene
+	var root: Node = player.world_root()
 	var blocks: Array = []
 	var nodes: Array = []
 	var sites: Array = []
@@ -87,7 +87,7 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		last_error = "rules state rejected: %s" % sim.last_error()
 		return false
 
-	var root: Node = player.get_tree().current_scene
+	var root: Node = player.world_root()
 	var blocks: Array = []
 	var nodes: Array = []
 	var sites: Array = []

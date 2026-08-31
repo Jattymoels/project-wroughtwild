@@ -125,7 +125,7 @@ func enter_room(choice_index: int) -> bool:
 
 
 func _spawn_encounter(ids: PackedStringArray) -> void:
-	var root: Node = player.get_tree().current_scene
+	var root: Node = player.world_root()
 	var boss_id: String = sim.boss()["id"]
 	var ordinary: Array = []
 	for id in ids:

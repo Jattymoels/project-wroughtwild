@@ -128,7 +128,7 @@ func try_place_block() -> bool:
 		return false
 
 	var block: PlacedBlock = PLACED_BLOCK_SCENE.instantiate()
-	get_tree().current_scene.add_child(block)
+	(get_parent() as WroughtwildPlayer).world_root().add_child(block)
 	block.global_position = preview_location
 	block.rotation.y = preview_rotation
 	block.init_block(selected_shape, selected_material_family, grid_size)
