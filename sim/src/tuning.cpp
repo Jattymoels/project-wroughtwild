@@ -53,6 +53,10 @@ const Recipe* CraftingTable::findRecipe(const std::string& id) const { return fi
 const Order* CraftingTable::findOrder(const std::string& id) const { return findById(orders, id); }
 const CatalystProcess* CraftingTable::findCatalystProcess(const std::string& id) const { return findById(catalystProcesses, id); }
 const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
+const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) const {
+    auto it = behaviours.find(id);
+    return it == behaviours.end() ? nullptr : &it->second;
+}
 const EnemyDef* WorldTable::findEnemy(const std::string& id) const { return findById(enemies, id); }
 const GatherSite* WorldTable::findSite(const std::string& id) const { return findById(gatheringSites, id); }
 const CraftSkillDef* SkillTable::findCraftSkill(const std::string& id) const { return findById(craftSkills, id); }
@@ -235,6 +239,40 @@ ConstructionTable loadConstruction(const std::string& path) {
     return table;
 }
 
+RealtimeTable loadRealtime(const std::string& path) {
+    auto doc = json::parseFile(path);
+    RealtimeTable table;
+
+    table.roundSeconds = doc->get("round_seconds").asNumber();
+
+    const Value& player = doc->get("player");
+    table.playerMoveSpeedMps = player.get("move_speed_mps").asNumber();
+    table.playerMeleeReachM = player.get("melee_reach_m").asNumber();
+
+    for (const auto& [id, b] : doc->get("behaviours").asObject()) {
+        BehaviourRealtime behaviour;
+        behaviour.moveSpeedMps = b->get("move_speed_mps").asNumber();
+        behaviour.attackRangeM = b->get("attack_range_m").asNumber();
+        if (auto preferred = b->find("preferred_distance_m"))
+            behaviour.preferredDistanceM = preferred->asNumber();
+        behaviour.windupSeconds = b->get("windup_seconds").asNumber();
+        table.behaviours[id] = behaviour;
+    }
+
+    const Value& boss = doc->get("boss");
+    table.boss.moveSpeedMps = boss.get("move_speed_mps").asNumber();
+    table.boss.clawRangeM = boss.get("claw_range_m").asNumber();
+    table.boss.clawWindupSeconds = boss.get("claw_windup_seconds").asNumber();
+    table.boss.breathRangeM = boss.get("breath_range_m").asNumber();
+    table.boss.breathConeDegrees = boss.get("breath_cone_degrees").asNumber();
+    table.boss.breathTelegraphSeconds = boss.get("breath_telegraph_seconds").asNumber();
+
+    const Value& dash = doc->get("skills").get("prototype_dash");
+    table.dashInvulnerableSeconds = dash.get("invulnerable_seconds").asNumber();
+    table.dashDurationSeconds = dash.get("duration_seconds").asNumber();
+    return table;
+}
+
 WorldTable loadWorld(const std::string& path) {
     auto doc = json::parseFile(path);
     WorldTable table;
@@ -322,6 +360,7 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.boons = loadBoons(tuningDirectory + "/boons.json");
     tuning.world = loadWorld(tuningDirectory + "/world.json");
     tuning.trial = loadTrial(tuningDirectory + "/trial.json");
+    tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     return tuning;
 }
 

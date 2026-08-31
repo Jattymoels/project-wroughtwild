@@ -23,11 +23,26 @@ void applyEffect(CombatMods& mods, const tuning::BoonEffect& effect) {
         mods.repeatDamageMultiplier = param(effect, "damage_multiplier", 0.0);
     } else if (effect.operation == "damage_multiplier_against_isolated")
         mods.isolatedDamageMultiplier *= param(effect, "value", 1.0);
-    // area_multiplier_against_isolated affects radius, which this round
-    // abstraction does not model; the engine build applies it spatially.
+    else if (effect.operation == "area_multiplier_against_isolated")
+        mods.isolatedAreaMultiplier *= param(effect, "value", 1.0);
 }
 
 } // namespace
+
+double HitStream::playerHit(const tuning::CombatSkillDef& skill, const CombatMods& mods, bool isolated) {
+    auto baseIt = skill.numbers.find("base_damage");
+    double base = baseIt == skill.numbers.end() ? 0.0 : baseIt->second;
+    if (isolated) base *= mods.isolatedDamageMultiplier;
+    double dealt = base * variance_(rng_);
+    if (mods.repeatHitCount > 0 && ++hitCounter_ % mods.repeatHitCount == 0)
+        dealt += base * mods.repeatDamageMultiplier;
+    return dealt;
+}
+
+double HitStream::enemyHit(double rawDamage, const std::string& damageType,
+                           const stats::DerivedStats& playerStats, const tuning::PlayerBase& base) {
+    return stats::mitigateDamage(rawDamage * variance_(rng_), damageType, playerStats, base);
+}
 
 CombatMods buildMods(const tuning::BoonTable& table, const boons::RunState& run) {
     CombatMods mods;
@@ -122,8 +137,7 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
                              const Controller& controller,
                              std::vector<std::string>* log) {
     std::vector<Combatant> enemies = buildCombatants(tuning, enemyIds);
-    std::mt19937_64 rng(seed);
-    std::uniform_real_distribution<double> variance(0.9, 1.1);
+    HitStream hits(seed);
 
     std::vector<SkillSlot> skills;
     for (const auto& def : tuning.skills.combatSkills) {
@@ -136,7 +150,6 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
     }
 
     double playerLife = playerStats.maxLife;
-    int hitCounter = 0;
     EncounterResult result;
 
     const int maxRounds = 200; // attrition guard: outlasting this counts as defeat
@@ -169,15 +182,11 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
                 dodging = true;
                 logLine(log, "You dash clear of danger.");
             } else {
-                auto baseIt = def.numbers.find("base_damage");
-                double base = baseIt == def.numbers.end() ? 0.0 : baseIt->second;
-                if (view.aliveEnemyCount() == 1) base *= mods.isolatedDamageMultiplier;
+                const bool isolated = view.aliveEnemyCount() == 1;
 
                 auto strike = [&](Combatant& target) {
                     if (!target.alive()) return;
-                    double dealt = base * variance(rng);
-                    if (mods.repeatHitCount > 0 && ++hitCounter % mods.repeatHitCount == 0)
-                        dealt += base * mods.repeatDamageMultiplier;
+                    double dealt = hits.playerHit(def, mods, isolated);
                     target.life -= dealt;
                     logLine(log, def.displayName + " hits " + target.displayName + " for " +
                                      std::to_string(static_cast<int>(dealt)) +
@@ -235,8 +244,7 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
                 logLine(log, "You evade " + enemy.displayName + "'s attack.");
                 continue;
             }
-            double taken = stats::mitigateDamage(incoming * variance(rng), incomingType,
-                                                 playerStats, tuning.world.playerBase);
+            double taken = hits.enemyHit(incoming, incomingType, playerStats, tuning.world.playerBase);
             playerLife -= taken;
             logLine(log, enemy.displayName + " hits you for " +
                              std::to_string(static_cast<int>(taken)) + ".");

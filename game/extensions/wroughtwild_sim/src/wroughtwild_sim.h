@@ -12,6 +12,8 @@
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 
+#include "wroughtwild/boons.h"
+#include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/stats.h"
 #include "wroughtwild/tuning.h"
@@ -81,6 +83,42 @@ public:
     bool order_fulfilled(const String& order_id) const;
     bool world_effect_active(const String& effect) const;
 
+    // --- combat numbers (ADR-0003: the sim owns numbers, the engine owns
+    // time and space) ---
+    // Keys: max_life, armour, fire_resistance_percent, area_bonus.
+    Dictionary derived_stats() const;
+    PackedStringArray combat_skill_ids() const;
+    // Keys: id, display_name, tags, plus every numeric field of skills.json
+    // (base_damage, base_area_radius, cooldown_seconds, distance...).
+    Dictionary combat_skill(const String& skill_id) const;
+    PackedStringArray enemy_ids() const;
+    // Keys: id, display_name, max_life, behaviour, damage, damage_type,
+    // attack_period_rounds.
+    Dictionary enemy(const String& enemy_id) const;
+    // Keys: id, display_name, max_life, claw_damage, claw_damage_type,
+    // claw_period_rounds, breath_damage, breath_damage_type,
+    // breath_period_rounds, breath_telegraph_rounds.
+    Dictionary boss() const;
+    // combat_realtime.json as nested dictionaries: round_seconds, player,
+    // behaviours, boss, dash.
+    Dictionary realtime() const;
+    // Boon/weakness effects of the current run as numbers: keys
+    // enemy_speed_multiplier, reward_quantity_multiplier, repeat_hit_count,
+    // repeat_damage_multiplier, isolated_damage_multiplier,
+    // isolated_area_multiplier.
+    Dictionary combat_mods() const;
+
+    // One deterministic damage stream per fight (same seed + same calls =
+    // same numbers). Call begin_fight before the first hit of an encounter.
+    void begin_fight(int seed);
+    // Damage one player hit of skill_id deals; isolated when the target is
+    // the only living enemy.
+    double player_hit_damage(const String& skill_id, bool isolated);
+    // Damage the player takes from one enemy hit, after mitigation.
+    double enemy_hit_damage(double raw_damage, const String& damage_type);
+    // Mitigation without variance, for previews and UI.
+    double mitigate(double amount, const String& damage_type) const;
+
     // --- save/load ---
     // The rules state (economy, equipment) in the sim's own SaveGame JSON
     // schema, so engine saves and text-playtest saves stay interchangeable.
@@ -96,9 +134,13 @@ protected:
 private:
     bool require_loaded(const char* method) const;
 
+    const wroughtwild::tuning::CombatSkillDef* find_skill(const String& skill_id) const;
+
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;
     wroughtwild::stats::Equipment equipment_;
+    wroughtwild::boons::RunState run_; // temporary trial effects; empty outside a run
+    std::unique_ptr<wroughtwild::combat::HitStream> hits_;
     String last_error_;
 };
 

@@ -68,6 +68,215 @@ void WroughtwildSim::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("export_json"), &WroughtwildSim::export_json);
     ClassDB::bind_method(D_METHOD("import_json", "text"), &WroughtwildSim::import_json);
+
+    ClassDB::bind_method(D_METHOD("derived_stats"), &WroughtwildSim::derived_stats);
+    ClassDB::bind_method(D_METHOD("combat_skill_ids"), &WroughtwildSim::combat_skill_ids);
+    ClassDB::bind_method(D_METHOD("combat_skill", "skill_id"), &WroughtwildSim::combat_skill);
+    ClassDB::bind_method(D_METHOD("enemy_ids"), &WroughtwildSim::enemy_ids);
+    ClassDB::bind_method(D_METHOD("enemy", "enemy_id"), &WroughtwildSim::enemy);
+    ClassDB::bind_method(D_METHOD("boss"), &WroughtwildSim::boss);
+    ClassDB::bind_method(D_METHOD("realtime"), &WroughtwildSim::realtime);
+    ClassDB::bind_method(D_METHOD("combat_mods"), &WroughtwildSim::combat_mods);
+    ClassDB::bind_method(D_METHOD("begin_fight", "seed"), &WroughtwildSim::begin_fight);
+    ClassDB::bind_method(D_METHOD("player_hit_damage", "skill_id", "isolated"), &WroughtwildSim::player_hit_damage);
+    ClassDB::bind_method(D_METHOD("enemy_hit_damage", "raw_damage", "damage_type"), &WroughtwildSim::enemy_hit_damage);
+    ClassDB::bind_method(D_METHOD("mitigate", "amount", "damage_type"), &WroughtwildSim::mitigate);
+}
+
+const wroughtwild::tuning::CombatSkillDef* WroughtwildSim::find_skill(const String& skill_id) const {
+    const std::string id = to_std(skill_id);
+    for (const auto& def : tuning_->skills.combatSkills) {
+        if (def.id == id) {
+            return &def;
+        }
+    }
+    return nullptr;
+}
+
+Dictionary WroughtwildSim::derived_stats() const {
+    Dictionary d;
+    if (!require_loaded("derived_stats")) {
+        return d;
+    }
+    const auto s = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_);
+    d["max_life"] = s.maxLife;
+    d["armour"] = s.armour;
+    d["fire_resistance_percent"] = s.fireResistancePercent;
+    d["area_bonus"] = s.areaBonus;
+    return d;
+}
+
+PackedStringArray WroughtwildSim::combat_skill_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("combat_skill_ids")) {
+        for (const auto& def : tuning_->skills.combatSkills) {
+            ids.push_back(to_godot(def.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::combat_skill(const String& skill_id) const {
+    Dictionary d;
+    if (!require_loaded("combat_skill")) {
+        return d;
+    }
+    const auto* def = find_skill(skill_id);
+    if (def == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(def->id);
+    d["display_name"] = to_godot(def->displayName);
+    PackedStringArray tags;
+    for (const auto& tag : def->tags) {
+        tags.push_back(to_godot(tag));
+    }
+    d["tags"] = tags;
+    for (const auto& [key, value] : def->numbers) {
+        d[to_godot(key)] = value;
+    }
+    return d;
+}
+
+PackedStringArray WroughtwildSim::enemy_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("enemy_ids")) {
+        for (const auto& e : tuning_->world.enemies) {
+            ids.push_back(to_godot(e.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::enemy(const String& enemy_id) const {
+    Dictionary d;
+    if (!require_loaded("enemy")) {
+        return d;
+    }
+    const auto* e = tuning_->world.findEnemy(to_std(enemy_id));
+    if (e == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(e->id);
+    d["display_name"] = to_godot(e->displayName);
+    d["max_life"] = e->maxLife;
+    d["behaviour"] = to_godot(e->behaviour);
+    d["damage"] = e->damage;
+    d["damage_type"] = to_godot(e->damageType);
+    d["attack_period_rounds"] = e->attackPeriodRounds;
+    return d;
+}
+
+Dictionary WroughtwildSim::boss() const {
+    Dictionary d;
+    if (!require_loaded("boss")) {
+        return d;
+    }
+    const auto& b = tuning_->trial.boss;
+    d["id"] = to_godot(b.id);
+    d["display_name"] = to_godot(b.displayName);
+    d["max_life"] = b.maxLife;
+    d["claw_damage"] = b.clawDamage;
+    d["claw_damage_type"] = to_godot(b.clawDamageType);
+    d["claw_period_rounds"] = b.clawPeriodRounds;
+    d["breath_damage"] = b.breathDamage;
+    d["breath_damage_type"] = to_godot(b.breathDamageType);
+    d["breath_period_rounds"] = b.breathPeriodRounds;
+    d["breath_telegraph_rounds"] = b.breathTelegraphRounds;
+    return d;
+}
+
+Dictionary WroughtwildSim::realtime() const {
+    Dictionary d;
+    if (!require_loaded("realtime")) {
+        return d;
+    }
+    const auto& rt = tuning_->realtime;
+    d["round_seconds"] = rt.roundSeconds;
+
+    Dictionary player;
+    player["move_speed_mps"] = rt.playerMoveSpeedMps;
+    player["melee_reach_m"] = rt.playerMeleeReachM;
+    d["player"] = player;
+
+    Dictionary behaviours;
+    for (const auto& [id, b] : rt.behaviours) {
+        Dictionary entry;
+        entry["move_speed_mps"] = b.moveSpeedMps;
+        entry["attack_range_m"] = b.attackRangeM;
+        entry["preferred_distance_m"] = b.preferredDistanceM;
+        entry["windup_seconds"] = b.windupSeconds;
+        behaviours[to_godot(id)] = entry;
+    }
+    d["behaviours"] = behaviours;
+
+    Dictionary boss;
+    boss["move_speed_mps"] = rt.boss.moveSpeedMps;
+    boss["claw_range_m"] = rt.boss.clawRangeM;
+    boss["claw_windup_seconds"] = rt.boss.clawWindupSeconds;
+    boss["breath_range_m"] = rt.boss.breathRangeM;
+    boss["breath_cone_degrees"] = rt.boss.breathConeDegrees;
+    boss["breath_telegraph_seconds"] = rt.boss.breathTelegraphSeconds;
+    d["boss"] = boss;
+
+    Dictionary dash;
+    dash["invulnerable_seconds"] = rt.dashInvulnerableSeconds;
+    dash["duration_seconds"] = rt.dashDurationSeconds;
+    d["dash"] = dash;
+    return d;
+}
+
+Dictionary WroughtwildSim::combat_mods() const {
+    Dictionary d;
+    if (!require_loaded("combat_mods")) {
+        return d;
+    }
+    const auto mods = wroughtwild::combat::buildMods(tuning_->boons, run_);
+    d["enemy_speed_multiplier"] = mods.enemySpeedMultiplier;
+    d["reward_quantity_multiplier"] = mods.rewardQuantityMultiplier;
+    d["repeat_hit_count"] = mods.repeatHitCount;
+    d["repeat_damage_multiplier"] = mods.repeatDamageMultiplier;
+    d["isolated_damage_multiplier"] = mods.isolatedDamageMultiplier;
+    d["isolated_area_multiplier"] = mods.isolatedAreaMultiplier;
+    return d;
+}
+
+void WroughtwildSim::begin_fight(int seed) {
+    hits_ = std::make_unique<wroughtwild::combat::HitStream>(static_cast<uint64_t>(seed));
+}
+
+double WroughtwildSim::player_hit_damage(const String& skill_id, bool isolated) {
+    if (!require_loaded("player_hit_damage")) {
+        return 0.0;
+    }
+    const auto* def = find_skill(skill_id);
+    if (def == nullptr) {
+        UtilityFunctions::push_error("WroughtwildSim.player_hit_damage: unknown skill ", skill_id);
+        return 0.0;
+    }
+    if (!hits_) {
+        begin_fight(0);
+    }
+    return hits_->playerHit(*def, wroughtwild::combat::buildMods(tuning_->boons, run_), isolated);
+}
+
+double WroughtwildSim::enemy_hit_damage(double raw_damage, const String& damage_type) {
+    if (!require_loaded("enemy_hit_damage")) {
+        return 0.0;
+    }
+    if (!hits_) {
+        begin_fight(0);
+    }
+    const auto stats = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_);
+    return hits_->enemyHit(raw_damage, to_std(damage_type), stats, tuning_->world.playerBase);
+}
+
+double WroughtwildSim::mitigate(double amount, const String& damage_type) const {
+    if (!require_loaded("mitigate")) {
+        return amount;
+    }
+    const auto stats = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_);
+    return wroughtwild::stats::mitigateDamage(amount, to_std(damage_type), stats, tuning_->world.playerBase);
 }
 
 String WroughtwildSim::export_json() const {

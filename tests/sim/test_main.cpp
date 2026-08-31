@@ -67,6 +67,70 @@ void testOrderDemandAndStationChecks(const tuning::Tuning& t) {
     check(!player.recipeFeedsOpenOrder("iron_fittings"), "order demand: no open demand after fulfilment");
 }
 
+void testCombatNumbers(const tuning::Tuning& t) {
+    // Real-time tunables load and the behaviour keys match the enemy roster.
+    check(t.realtime.roundSeconds > 0.0, "realtime: round_seconds loads");
+    for (const auto& enemy : t.world.enemies)
+        check(t.realtime.findBehaviour(enemy.behaviour) != nullptr,
+              "realtime: behaviour tunables exist for " + enemy.id);
+    check(t.realtime.boss.breathTelegraphSeconds > 0.0, "realtime: boss telegraph loads");
+
+    const tuning::CombatSkillDef* heavy = nullptr;
+    const tuning::CombatSkillDef* area = nullptr;
+    for (const auto& def : t.skills.combatSkills) {
+        if (def.id == "prototype_heavy_strike") heavy = &def;
+        if (def.id == "prototype_area_strike") area = &def;
+    }
+    check(heavy != nullptr && area != nullptr, "hit stream: prototype skills present");
+
+    // Same seed, same calls, same numbers: the engine can replay a fight.
+    combat::CombatMods none;
+    combat::HitStream a(42), b(42);
+    bool identical = true;
+    for (int i = 0; i < 20; ++i)
+        if (a.playerHit(*heavy, none, false) != b.playerHit(*heavy, none, false)) identical = false;
+    check(identical, "hit stream: deterministic per seed");
+
+    // Variance stays inside the round model's band.
+    combat::HitStream c(7);
+    bool inBand = true;
+    for (int i = 0; i < 200; ++i) {
+        double d = c.playerHit(*heavy, none, false);
+        if (d < 28.0 * 0.9 - 1e-9 || d > 28.0 * 1.1 + 1e-9) inBand = false;
+    }
+    check(inBand, "hit stream: damage within +/-10% of base_damage");
+
+    // concentrated_force: isolated targets take the damage multiplier.
+    boons::RunState run;
+    run.activeBoons.push_back("concentrated_force");
+    combat::CombatMods focused = combat::buildMods(t.boons, run);
+    check(focused.isolatedDamageMultiplier > 1.0 && focused.isolatedAreaMultiplier < 1.0,
+          "mods: concentrated_force scales isolated damage up and area down");
+    combat::HitStream d1(3), d2(3);
+    checkNear(d1.playerHit(*area, focused, true) / d2.playerHit(*area, focused, false),
+              focused.isolatedDamageMultiplier, 1e-9, "hit stream: isolation multiplier applied");
+
+    // expanding_echo: every nth hit of the stream carries the repeat bonus.
+    boons::RunState echoRun;
+    echoRun.activeBoons.push_back("expanding_echo");
+    combat::CombatMods echo = combat::buildMods(t.boons, echoRun);
+    combat::HitStream e1(11), e2(11);
+    double plain = 0.0, echoed = 0.0;
+    for (int i = 0; i < echo.repeatHitCount; ++i) {
+        plain = e1.playerHit(*heavy, none, false);
+        echoed = e2.playerHit(*heavy, echo, false);
+    }
+    checkNear(echoed - plain, 28.0 * echo.repeatDamageMultiplier, 1e-9,
+              "hit stream: nth hit adds the echo bonus");
+
+    // Enemy hits go through the same mitigation the round model uses.
+    stats::Equipment bare;
+    stats::DerivedStats stats = stats::deriveStats(t.world.playerBase, bare);
+    combat::HitStream f(5);
+    double taken = f.enemyHit(40.0, "fire", stats, t.world.playerBase);
+    check(taken >= 36.0 - 1e-9 && taken <= 44.0 + 1e-9, "hit stream: unresisted fire lands in band");
+}
+
 void testShapePlacement(const tuning::Tuning& t) {
     const auto* cube = t.construction.findShape("cube");
     economy::PlayerEconomy player(t);
@@ -554,6 +618,7 @@ int main(int argc, char** argv) {
     testStationConstruction(t);
     testShapePlacement(t);
     testOrderDemandAndStationChecks(t);
+    testCombatNumbers(t);
     testCombat(t);
     testTrialContracts(t);
     testSaveLoad(t);

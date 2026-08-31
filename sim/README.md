@@ -35,6 +35,12 @@ Provisional rules implemented here (flagged in code, not accepted decisions):
   placement range live in the same file so the engine layer reads, never
   defines, them.
 
+- **Combat numbers for a real-time host** (ADR-0003): `combat::HitStream`
+  gives per-hit player and enemy damage from the same code `runEncounter`
+  uses, seeded so a real-time fight replays. `combat_realtime.json` holds the
+  time-and-space tunables (speeds, ranges, wind-ups, `round_seconds`); the
+  round-based encounter remains the balance oracle.
+
 Catalyst tempering is deliberately **not** implemented: D-007 (crafting
 economy / catalysts) is a high-priority open decision.
 
