@@ -22,7 +22,7 @@ The intended game combines self-directed construction, persistent ARPG buildcraf
 
 ## Current phase
 
-**Phase:** Vertical-slice greybox in Godot 4.5 (engine accepted 31 August 2026); rules already playable headless via `tools/playtest`.
+**Phase:** Vertical-slice greybox in Godot 4.5 (engine accepted 31 August 2026). The whole loop — gather, forge, mine order, armour, trial, catalyst tempering, construction unlock — is playable in `game/` and headless via `tools/playtest`; see `docs/prototype/acceptance-criteria.md` for what is ticked and what awaits playtesting.
 
 The prototype intentionally excludes co-op, raids, an infinite world, extensive automation, multiple complete classes and a large construction catalogue. Its purpose is to prove that returning from a trial makes the player excited to improve their build, base or production capability—and that those improvements make them want to venture out again.
 
@@ -39,7 +39,6 @@ docs/research/                 Time-stamped external research notes
 data/tuning/                   Engine-neutral tuning placeholders
 sim/                           Engine-neutral C++ simulation core (rules layer)
 tools/                         Text playtest of the vertical slice + balance simulator
-spikes/godot4/                 ADR-0001 Godot 4.5 comparative spike (historical; seeded game/)
 third_party/godot-cpp          Submodule: Godot's GDExtension C++ bindings (pinned godot-4.5-stable)
 game/                          Godot 4.5-stable engine project (presentation layer)
 tests/                         Automated and simulation tests (tests/sim runs headless)

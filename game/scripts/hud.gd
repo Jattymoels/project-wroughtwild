@@ -19,12 +19,15 @@ var _refresh_timer := 0.0
 func _ready() -> void:
 	var column := VBoxContainer.new()
 	column.position = Vector2(12, 12)
+	column.custom_minimum_size = Vector2(1000, 0)
 	add_child(column)
 
 	_status = Label.new()
+	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(_status)
 
 	var hints := Label.new()
+	hints.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hints.text = "E interact  ·  B build mode  ·  Tab shape  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike  ·  2 heavy strike  ·  Shift dash  ·  Esc close panel  ·  F5 save  ·  F9 load"
 	hints.modulate = Color(1.0, 1.0, 1.0, 0.6)
 	column.add_child(hints)
