@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.8",
+	"EngineAssociation": "{E35C6433-4470-6DC5-6661-54BA6A0DF85B}",
 	"Category": "",
 	"Description": "ADR-0001 Unreal Engine 5.8 comparative spike for Project Wroughtwild",
 	"Modules": [
@@ -8,6 +8,16 @@
 			"Name": "Wroughtwild",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelContextProtocol",
+			"Enabled": true
+		},
+		{
+			"Name": "AllToolsets",
+			"Enabled": true
 		}
 	]
 }

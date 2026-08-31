@@ -35,29 +35,45 @@ Default controls: WASD move, mouse look, Space jump, **E** harvest,
    prompt to build the missing `Wroughtwild` module (or right-click the
    .uproject → Generate project files, then build the `WroughtwildEditor`
    target from your IDE).
-3. The project opens with the engine's default map. Create a spike map (or let
-   the MCP agent do it — see below): add a floor (any large static mesh or a
-   Landscape), a Player Start, a directional light, and a few `ResourceNode`
-   actors (set `MaterialFamily` to `wood` or `iron_ore`).
+3. The project opens on `Content/Maps/SpikeValley` (set as the editor startup
+   map). The map was built entirely through the MCP server on 31 August 2026:
+   a 40 m × 40 m floor, directional light, sky light, sky atmosphere, Player
+   Start and three `ResourceNode` actors (`WoodNode_A`, `WoodNode_B`,
+   `IronNode`). It is the one binary asset in the spike (`.umap`, ~25 KB).
 4. Press Play. Harvest a node with E, press B and place/remove blocks; the
    preview shows green for valid placement, red for blocked/unaffordable.
 
 ## Connect the MCP server (spike step 2)
 
-1. In the editor: **Edit → Plugins**, search for **Unreal MCP**, enable it and
-   restart. The plugin is *experimental*; expect API changes.
-2. Follow the plugin's panel/docs to start the local MCP server and generate a
-   client configuration. The server is loopback-only with no authentication —
-   never expose it beyond localhost.
-3. Register it with your local Claude Code:
+1. In the editor: **Edit → Plugins**, enable **Unreal MCP** *and* **All
+   Toolsets** (without the latter the server exposes almost no tools), then
+   restart. `Wroughtwild.uproject` already lists `ModelContextProtocol` as
+   enabled. The plugin is *experimental*; expect API changes.
+2. The plugin has **no panel**. Start the server from the editor console
+   (backtick key, or the Output Log command bar):
 
-   ```sh
-   claude mcp add --transport http unreal <URL from the plugin, e.g. http://127.0.0.1:PORT/...>
+   ```text
+   ModelContextProtocol.StartServer
+   ModelContextProtocol.GenerateClientConfig ClaudeCode
    ```
 
-   (Match the transport/URL to what the plugin's generated config specifies.)
+   The first listens on `http://127.0.0.1:8000/mcp` (loopback-only, no
+   authentication — never expose it beyond localhost; port/path and an
+   auto-start toggle live under Edit → Editor Preferences → General → Model
+   Context Protocol). The second writes `.mcp.json` next to the `.uproject`.
+3. Launch Claude Code from `spikes/unreal58/` so it picks up `.mcp.json`, or
+   register the server globally:
+
+   ```sh
+   claude mcp add --transport http unreal http://127.0.0.1:8000/mcp
+   ```
+
 4. Editor tool calls run serially on the game thread — treat the agent as an
-   assistant inside the editor, not a headless build pipeline.
+   assistant inside the editor, not a headless build pipeline. The server runs
+   in "tool search" mode: only `list_toolsets`, `describe_toolset` and
+   `call_tool` are advertised; every real tool needs a `describe_toolset`
+   round-trip first, and argument names cannot be guessed (see the session
+   findings in `docs/decisions/ADR-0001-engine-selection.md`).
 
 ## MCP tasks to attempt (record results for the ADR)
 
@@ -89,8 +105,12 @@ does an engine project move into `game/`.
 
 - Legacy input mappings (text-based, reviewable) are used instead of Enhanced
   Input assets; migrate after engine acceptance.
-- No map is committed (maps are binary); scene creation is part of the MCP
-  evaluation itself.
+- `Content/Maps/SpikeValley.umap` is the one committed binary asset; it was
+  created by the MCP evaluation itself. Creating a *new* level is the one step
+  MCP cannot do (no tool exists, and `AssetTools.duplicate` on a map yields an
+  unsaveable copy), so a human does File → New Level → Save As once.
+- UE 5.8 ships no `BasicShapes/Capsule`; the player body uses the engine
+  Cylinder instead.
 - The engine-side code deliberately duplicates only trivial rules (grid math,
   inventory counts). The full economy rules live in the engine-neutral
   `sim/` library, which is the source of truth and is regression-tested

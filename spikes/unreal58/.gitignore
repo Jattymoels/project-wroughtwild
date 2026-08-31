@@ -8,6 +8,7 @@ Platforms/
 .vscode/
 .idea/
 *.sln
+*.slnx
 *.xcworkspace
 *.code-workspace
 *.VC.db

@@ -6,6 +6,7 @@ extends Node
 
 var loaded := false
 var recipe_count := 0
+var recipe_ids := PackedStringArray()
 var salvage_return_fraction := 0.0
 
 
@@ -39,7 +40,12 @@ func load_crafting_tuning() -> bool:
 		push_warning("Missing expected fields in %s" % path)
 		return false
 
-	recipe_count = (root["recipes"] as Array).size()
+	var recipes: Array = root["recipes"]
+	recipe_count = recipes.size()
+	recipe_ids.clear()
+	for recipe: Variant in recipes:
+		if recipe is Dictionary and recipe.get("id") is String:
+			recipe_ids.append(recipe["id"])
 	salvage_return_fraction = root["salvage_return_fraction"]
 	loaded = true
 	print("Loaded crafting tuning: %d recipes" % recipe_count)

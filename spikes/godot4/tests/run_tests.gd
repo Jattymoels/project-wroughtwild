@@ -57,7 +57,9 @@ func _test_tuning() -> void:
 	var tuning: Node = load("res://scripts/tuning.gd").new()
 	check(tuning.load_crafting_tuning(), "tuning: crafting.json loads from repo checkout")
 	check(tuning.loaded, "tuning: loaded flag set")
-	check(tuning.recipe_count == 2, "tuning: both prototype recipes present")
+	check(tuning.recipe_count >= 2, "tuning: recipes present")
+	check(tuning.recipe_ids.has("smelt_iron"), "tuning: smelt_iron recipe present")
+	check(tuning.recipe_ids.has("iron_fittings"), "tuning: iron_fittings recipe present")
 	check(absf(tuning.salvage_return_fraction - 0.5) < 0.000001, "tuning: salvage fraction read")
 	tuning.free()
 

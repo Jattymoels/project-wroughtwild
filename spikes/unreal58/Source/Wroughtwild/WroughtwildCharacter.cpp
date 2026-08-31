@@ -21,11 +21,12 @@ AWroughtwildCharacter::AWroughtwildCharacter()
 	BodyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
 	BodyMesh->SetupAttachment(GetCapsuleComponent());
 	BodyMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> CapsuleMesh(
-		TEXT("/Engine/BasicShapes/Capsule.Capsule"));
-	if (CapsuleMesh.Succeeded())
+	// UE 5.8 ships no BasicShapes/Capsule; the 100-unit Cylinder fills the 42x96 collision capsule.
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> BodyMeshAsset(
+		TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
+	if (BodyMeshAsset.Succeeded())
 	{
-		BodyMesh->SetStaticMesh(CapsuleMesh.Object);
+		BodyMesh->SetStaticMesh(BodyMeshAsset.Object);
 		BodyMesh->SetRelativeScale3D(FVector(0.84f, 0.84f, 1.92f));
 	}
 
