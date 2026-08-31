@@ -17,7 +17,7 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Construction
 
-- [ ] The player can place and remove the prototype shape set on a consistent grid. *(grid placement works; two shapes so far — cube, and the stonecut slab unlocked by the trial; the spec wants six to eight)*
+- [x] The player can place and remove the prototype shape set on a consistent grid. *(six shapes in `construction.json` — cube, wall panel, pillar, beam, step, and the trial-unlocked stonecut slab; Tab cycles, R rotates; sizes are data)*
 - [x] Shapes consume the selected material family rather than separate inventory SKUs. *(`construction.json` shape cost paid via `sim`)*
 - [x] Placement preview communicates valid and invalid placement. *(green/red preview, integration-tested)*
 - [x] Buildings do not collapse through structural-integrity simulation. *(none exists by design)*

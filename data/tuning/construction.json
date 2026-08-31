@@ -13,12 +13,40 @@
       "design_purpose": "The starting shape. Two units per block equals one harvest swing, so a small shelter visibly eats into a resource node instead of feeling free."
     },
     {
+      "id": "wall_panel",
+      "display_name": "Wall Panel",
+      "material_cost": 1,
+      "size_m": [1.0, 1.0, 0.25],
+      "design_purpose": "A thin partition through the middle of its cell; rotate with R. Half the cost of a cube so walling a shelter is cheaper than filling it."
+    },
+    {
+      "id": "pillar",
+      "display_name": "Pillar",
+      "material_cost": 1,
+      "size_m": [0.3, 1.0, 0.3],
+      "design_purpose": "Corner posts and supports for roofs made of slabs and beams."
+    },
+    {
+      "id": "beam",
+      "display_name": "Beam",
+      "material_cost": 1,
+      "size_m": [1.0, 0.25, 0.25],
+      "design_purpose": "Spans a cell at floor level; stack on pillars for lintels and rafters."
+    },
+    {
+      "id": "step",
+      "display_name": "Step",
+      "material_cost": 1,
+      "size_m": [1.0, 0.5, 0.5],
+      "design_purpose": "Half height and half depth so two make a stair; the cheapest way to climb your own building."
+    },
+    {
       "id": "stonecut_slab",
       "display_name": "Stonecut Slab",
       "material_cost": 1,
       "size_m": [1.0, 0.5, 1.0],
       "requires_world_effect": "stonecut_blocks",
-      "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a half-height slab that makes floors, steps and roofs possible, so the trial demonstrably widens what can be built."
+      "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a half-height slab that makes floors and roofs possible, so the trial demonstrably widens what can be built."
     }
   ],
   "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy."
