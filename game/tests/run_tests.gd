@@ -198,3 +198,13 @@ func _test_sim_extension() -> void:
 	check(first[0] >= 28.0 * 0.9 and first[0] <= 28.0 * 1.1, "combat: hit inside variance band")
 	var fire: float = sim.enemy_hit_damage(40.0, "fire")
 	check(fire >= 36.0 and fire <= 44.0, "combat: unresisted fire lands in band")
+
+	# Gathering sites and the open-world death contract's inventory drop.
+	var mine: Dictionary = sim.gather_site("old_mine")
+	check(mine["ambush_enemies"].size() == 2 and mine["ambush_removed_by_world_effect"] == "old_mine_reinforced",
+		"world: mine ambush data from world.json")
+	sim.add_material("wood", 3)
+	var dropped: Dictionary = sim.drop_inventory()
+	check(dropped.get("wood", 0) >= 3 and sim.inventory().is_empty(), "death: drop empties carried materials")
+	sim.add_materials(dropped)
+	check(sim.material_count("wood") == dropped["wood"], "death: recovered pack restores them")

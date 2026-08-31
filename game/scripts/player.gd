@@ -15,17 +15,30 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $SpringArm3D/Camera3D
 @onready var inventory: WroughtwildInventory = $Inventory
 @onready var placement: GridPlacement = $Placement
+@onready var combat: PlayerCombat = $Combat
+
+const DROPPED_BUNDLE_SCENE := preload("res://scenes/dropped_bundle.tscn")
 
 var hud: Hud
 var work_panel: WorkPanel
+## Where the player returns after an open-world death.
+var spawn_position := Vector3.ZERO
+## Rolls gathering ambushes; tests seed it or spawn ambushes directly.
+var ambush_rng := RandomNumberGenerator.new()
 
 
 func _ready() -> void:
+	add_to_group("player")
+	spawn_position = global_position
+	ambush_rng.randomize()
 	placement.camera = camera
 	placement.inventory = inventory
+	combat.setup(self, inventory.get_sim())
+	combat.died.connect(_on_died)
 
 	hud = Hud.new()
 	hud.sim = inventory.get_sim()
+	hud.combat = combat
 	add_child(hud)
 
 	work_panel = WorkPanel.new()
@@ -72,6 +85,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		load_game()
 	elif work_panel.is_open():
 		return
+	elif event.is_action_pressed("skill_area"):
+		combat.use_area()
+	elif event.is_action_pressed("skill_heavy"):
+		combat.use_heavy()
+	elif event.is_action_pressed("dash"):
+		combat.use_dash()
 	elif event.is_action_pressed("interact"):
 		interact()
 	elif event.is_action_pressed("toggle_build_mode"):
@@ -108,11 +127,65 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
 
-	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
-	velocity.x = direction.x * move_speed
-	velocity.z = direction.z * move_speed
+	var dash := combat.dash_velocity()
+	if dash != Vector3.ZERO:
+		velocity.x = dash.x
+		velocity.z = dash.z
+	else:
+		var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
+		velocity.x = direction.x * move_speed
+		velocity.z = direction.z * move_speed
 	move_and_slide()
+
+
+func _on_died() -> void:
+	var sim := inventory.get_sim()
+	var dropped: Dictionary = sim.drop_inventory()
+	if not dropped.is_empty():
+		var bundle: DroppedBundle = DROPPED_BUNDLE_SCENE.instantiate()
+		get_tree().current_scene.add_child(bundle)
+		bundle.global_position = global_position
+		bundle.contents = dropped
+		hud.notify("You fell. Your pack lies where you died; go back for it.")
+	else:
+		hud.notify("You fell.")
+	work_panel.close_panel()
+	global_position = spawn_position
+	velocity = Vector3.ZERO
+	combat.restore_life()
+	combat.invulnerable_left = 2.0
+
+
+## Rolls the gathering site's ambush; returns the enemies spawned (if any).
+func maybe_ambush(node: ResourceNode) -> Array:
+	if node.gather_site_id == &"":
+		return []
+	var sim := inventory.get_sim()
+	var site: Dictionary = sim.gather_site(node.gather_site_id)
+	if site.is_empty():
+		return []
+	var removed_by: String = site.get("ambush_removed_by_world_effect", "")
+	if removed_by != "" and sim.world_effect_active(removed_by):
+		return []
+	if ambush_rng.randf() >= site.get("ambush_chance", 0.0):
+		return []
+	return spawn_ambush(node)
+
+
+## Spawns the site's ambush party around the node regardless of the roll.
+func spawn_ambush(node: ResourceNode) -> Array:
+	var sim := inventory.get_sim()
+	var site: Dictionary = sim.gather_site(node.gather_site_id)
+	var spawned: Array = []
+	var ids: PackedStringArray = site.get("ambush_enemies", PackedStringArray())
+	for i in ids.size():
+		var angle := TAU * float(i) / float(maxi(ids.size(), 1)) + 0.7
+		var offset := Vector3(cos(angle), 0.0, sin(angle)) * 3.0
+		spawned.append(Enemy.spawn(get_tree().current_scene, ids[i], node.global_position + offset))
+	if not spawned.is_empty():
+		hud.notify("Ambush! %s" % site.get("display_name", ""))
+	return spawned
 
 
 func interact() -> void:
@@ -132,7 +205,10 @@ func interact() -> void:
 		if granted > 0:
 			inventory.add_material(family, granted)
 			hud.notify("+%d %s" % [granted, Hud.pretty(family)])
+			maybe_ambush(node)
 	elif collider is StationSite:
 		(collider as StationSite).interact(self)
 	elif collider is OrderBoard:
 		(collider as OrderBoard).interact(self)
+	elif collider is DroppedBundle:
+		(collider as DroppedBundle).interact(self)

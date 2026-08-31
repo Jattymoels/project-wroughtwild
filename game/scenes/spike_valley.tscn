@@ -38,6 +38,7 @@ position = Vector3(-3, 1, 2)
 [node name="IronNode" parent="." instance=ExtResource("2_resource")]
 position = Vector3(0, 1, -4)
 material_family = &"iron_ore"
+gather_site_id = &"old_mine"
 
 [node name="ForgeSite" parent="." instance=ExtResource("3_station")]
 position = Vector3(5, 0, 5)

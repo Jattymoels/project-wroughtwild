@@ -7,6 +7,7 @@ const NOTICE_SECONDS := 3.0
 const REFRESH_SECONDS := 0.1
 
 var sim: WroughtwildSim
+var combat: PlayerCombat
 
 var _status: Label
 var _notice: Label
@@ -23,7 +24,7 @@ func _ready() -> void:
 	column.add_child(_status)
 
 	var hints := Label.new()
-	hints.text = "E interact  ·  B build mode  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  Esc close panel  ·  F5 save  ·  F9 load"
+	hints.text = "E interact  ·  B build mode  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike  ·  2 heavy strike  ·  Shift dash  ·  Esc close panel  ·  F5 save  ·  F9 load"
 	hints.modulate = Color(1.0, 1.0, 1.0, 0.6)
 	column.add_child(hints)
 
@@ -73,4 +74,16 @@ func refresh() -> void:
 	if not skill.is_empty():
 		var next: String = "max" if skill["next_level_xp"] < 0 else str(skill["next_level_xp"])
 		progress = "\n%s level %d  (%d / %s xp)" % [skill["display_name"], skill["level"], skill["xp"], next]
-	_status.text = holdings + progress
+
+	var vitals := ""
+	if combat != null and combat.sim != null:
+		vitals = "\nLife %d / %d    [1] Area %s   [2] Heavy %s   [Shift] Dash %s" % [
+			ceili(combat.life), ceili(combat.max_life),
+			_cooldown_text(PlayerCombat.AREA_SKILL), _cooldown_text(PlayerCombat.HEAVY_SKILL),
+			_cooldown_text(PlayerCombat.DASH_SKILL)]
+	_status.text = holdings + progress + vitals
+
+
+func _cooldown_text(skill_id: StringName) -> String:
+	var left := combat.cooldown_left(skill_id)
+	return "ready" if left <= 0.0 else "%.1fs" % left

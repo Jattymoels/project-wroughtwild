@@ -25,8 +25,11 @@ project diffs in Git; `.uid` files are committed on purpose.
 3. Controls: WASD move, mouse look, Space jump, **E** interact (harvest a
    node, build or use the forge, read the mine board), **B** toggle build
    mode, **LMB** place (or harvest outside build mode), **X** remove block,
-   **R** rotate preview, **Esc** close a panel, **F5** save, **F9** load
-   (`user://wroughtwild_save.json`).
+   **R** rotate preview, **1** area strike, **2** heavy strike, **Shift**
+   dash (brief invulnerability), **Esc** close a panel, **F5** save, **F9**
+   load (`user://wroughtwild_save.json`). Harvesting the iron node can
+   trigger the Old Mine ambush from `world.json` until the mine order is
+   fulfilled; dying drops your materials in a pack where you fell.
 
 ## Build the rules extension (once per checkout, and after `sim/` changes)
 
@@ -61,9 +64,11 @@ before every commit that touches `game/`.
 
 ```text
 project.godot           Project settings, input map, autoloads (text)
-scenes/                 Greybox scenes (player, resource node, placed block, forge site, order board, valley)
-scripts/                Presentation/input scripts: player, placement, station site, order board,
-                        HUD and the work panel (crafting/orders UI). No rules live here.
+scenes/                 Greybox scenes (player, resource node, placed block, forge site, order board,
+                        enemy, dropped pack, valley)
+scripts/                Presentation/input scripts: player, placement, player combat (timers and
+                        targeting only), enemy behaviours, station site, order board, HUD, work
+                        panel, save manager. No rules live here (ADR-0003).
 extensions/             wroughtwild_sim GDExtension source + CMake (binds ../sim)
 bin/                    .gdextension descriptor (committed) + built binaries (ignored)
 tests/                  Headless unit + integration tests

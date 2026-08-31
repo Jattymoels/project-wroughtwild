@@ -189,6 +189,7 @@ struct GatherSite {
     std::map<std::string, int> yieldsPerAction;
     double ambushChance = 0.0;
     std::vector<std::string> ambushEnemies;
+    std::string ambushRemovedByWorldEffect; // empty when ambushes are permanent
 };
 
 struct WorldTable {
@@ -263,6 +264,7 @@ struct BehaviourRealtime {
     double moveSpeedMps = 0.0;
     double attackRangeM = 0.0;
     double preferredDistanceM = 0.0; // 0 = close to melee range
+    double aggroRangeM = 0.0;
     double windupSeconds = 0.0;
 };
 

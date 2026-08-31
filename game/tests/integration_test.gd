@@ -14,6 +14,10 @@ var _frame := 0
 var _failures := 0
 var _checks := 0
 var _saved_wood := 0
+var _front: Enemy
+var _back: Enemy
+var _wood_before_death := 0
+var _death_spot := Vector3.ZERO
 
 
 func check(condition: bool, label: String) -> void:
@@ -134,5 +138,62 @@ func _physics_process(_delta: float) -> void:
 			check(absf(_player.global_position.x - 0.3) < 0.05, "save: player pose restored")
 			DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
 		26:
+			# Combat: one whelp ahead (heavy-strike target), one behind (attacker).
+			_player.placement.set_build_mode_enabled(false)
+			_player.combat.fight_seed_source.seed = 1234
+			var p := _player.global_position
+			_front = Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(0, 0, -1.5))
+			_back = Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(0, 0, 1.4))
+			check(_front.life == 30.0 and _front.damage == 6.0, "combat: enemy numbers come from the sim")
+			check(_player.combat.max_life == 100.0 and _player.combat.life == 100.0, "combat: player life from derived stats")
+		28:
+			check(_player.combat.use_heavy(), "combat: heavy strike finds the enemy in front")
+			var dealt := _player.combat.last_hit_dealt
+			check(dealt >= 28.0 * 0.9 and dealt <= 28.0 * 1.1, "combat: heavy damage inside the sim's band (%.2f)" % dealt)
+			check(not is_instance_valid(_front) or _front.life <= 30.0 - dealt + 0.001, "combat: damage applied to the target")
+			check(is_instance_valid(_back) and _back.life == 30.0, "combat: enemy behind untouched by a frontal strike")
+			check(not _player.combat.use_heavy(), "combat: cooldown blocks an immediate second strike")
+		30:
+			var taken := _back.force_attack()
+			check(taken >= 6.0 * 0.9 and taken <= 6.0 * 1.1, "combat: whelp hit mitigated by the sim (%.2f)" % taken)
+			check(absf(_player.combat.life - (100.0 - taken)) < 0.001, "combat: life reduced by exactly the mitigated hit")
+		32:
+			var hits := _player.combat.use_area()
+			check(hits >= 1, "combat: area strike hits enemies in radius (%d)" % hits)
+		34:
+			check(_player.combat.use_dash(), "combat: dash available")
+			var life_before := _player.combat.life
+			check(_back.force_attack() == 0.0, "combat: dash window dodges the hit")
+			check(_player.combat.life == life_before, "combat: no life lost while invulnerable")
+		40:
+			# Open-world death: the pack drops where you fell, you respawn at camp.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			_wood_before_death = sim.material_count("wood")
+			check(_wood_before_death > 0, "death: carrying materials before dying")
+			_player.combat.invulnerable_left = 0.0
+			_player.combat.life = 1.0
+			_death_spot = _player.global_position
+			_back.force_attack()
+			check(_player.combat.life == _player.combat.max_life, "death: respawned with full life")
+			check(_player.global_position.distance_to(_player.spawn_position) < 0.01, "death: back at the spawn point")
+			check(sim.material_count("wood") == 0, "death: carried materials dropped")
+			check(sim.currency_count("trade_currency") == 40, "death: currency kept")
+			var bundle: DroppedBundle = null
+			for child in get_tree().current_scene.get_children():
+				if child is DroppedBundle:
+					bundle = child
+			check(bundle != null and bundle.global_position.distance_to(_death_spot) < 0.01, "death: pack lies where the player fell")
+			if bundle != null:
+				bundle.interact(_player)
+			check(sim.material_count("wood") == _wood_before_death, "death: pack recovered restores materials")
+		42:
+			# Ambush data flows from world.json; a forced ambush spawns the party.
+			var iron: ResourceNode = _scene.get_node("IronNode")
+			check(_player.maybe_ambush(iron).is_empty(), "ambush: suppressed once the mine is reinforced")
+			var party: Array = _player.spawn_ambush(iron)
+			check(party.size() == 2 and party[0].enemy_id == &"ash_hound", "ambush: two ash hounds per world.json")
+			for enemy in get_tree().get_nodes_in_group("enemies"):
+				enemy.queue_free()
+		44:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
