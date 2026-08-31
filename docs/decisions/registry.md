@@ -21,10 +21,15 @@ Statuses:
 
 ## Proposals awaiting acceptance
 
-- [ADR-0002](ADR-0002-catalyst-crafting.md) proposes a resolution to D-007
-  (what a crafting catalyst does). Proposal C is implemented provisionally in
-  `sim/` and `data/tuning/crafting.json` so the playtest can exercise it;
-  D-007 stays open until the owner accepts.
+- [ADR-0002](ADR-0002-catalyst-crafting.md) proposes the *verb shape* for
+  catalyst-type items (what applying one does). Proposal C is implemented
+  provisionally in `sim/` and `data/tuning/crafting.json` so the playtest can
+  exercise it; D-007 stays open until the owner accepts.
+- Owner direction (31 Aug 2026): catalysts are a farmable currency class
+  (PoE-orb-like, dungeon-sourced, multiple types expected), not singular
+  treasures. Currency-economy breadth — type count, drop rates, stacking,
+  fungibility, trade — is deliberately deferred until the core loop is
+  proven; do not over-design mid/late-game crafting now.
 
 ## Registering a decision
 
