@@ -31,8 +31,11 @@ docs/systems/                  Focused gameplay system specifications
 docs/decisions/                Decision registry and architecture records
 docs/research/                 Time-stamped external research notes
 data/tuning/                   Engine-neutral tuning placeholders
-game/                          Future engine project
-tests/                         Future automated and simulation tests
+sim/                           Engine-neutral C++ simulation core (rules layer)
+spikes/unreal58/               ADR-0001 Unreal Engine 5.8 comparative spike
+spikes/godot4/                 ADR-0001 Godot 4.5 comparative spike (headless-verified)
+game/                          Future engine project (after ADR-0001 acceptance)
+tests/                         Automated and simulation tests (tests/sim runs headless)
 ```
 
 ## Development principles
