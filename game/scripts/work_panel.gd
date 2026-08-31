@@ -70,6 +70,16 @@ func open_crafting(station: StationSite) -> void:
 	refresh()
 
 
+## Field crafting: what bare hands can make anywhere (recipes with no
+## station). The start-with-nothing entry point.
+func open_hand_crafting() -> void:
+	_mode = "crafting"
+	_station = null
+	_message.text = ""
+	_root.visible = true
+	refresh()
+
+
 func open_order(order_id: StringName) -> void:
 	_mode = "order"
 	_order_id = order_id
@@ -133,6 +143,7 @@ func craft(recipe_id: StringName) -> Dictionary:
 			"station_unavailable": _message.text = "You need a %s for that." % Hud.pretty(recipe.get("station", "station"))
 			"skill_too_low": _message.text = "Your Blacksmithing is too low."
 			"missing_inputs": _message.text = "Not enough materials."
+			"missing_fuel": _message.text = "The forge is cold: it needs fuel (wood or charcoal)."
 			_: _message.text = "Cannot craft that."
 	refresh()
 	return result
@@ -239,31 +250,60 @@ func _add_row(text: String, button_text: String = "", enabled := false, on_press
 
 
 func _render_crafting() -> void:
-	var station_id: StringName = _station.current_station_id(sim)
-	_title.text = sim.station(station_id).get("display_name", "Forge")
+	# The stations this panel works at: none for field crafting, or the
+	# site's built chain (a forge keeps its basic recipes when improved).
+	var chain: Array = []
+	if _station == null:
+		_title.text = "Field Crafting"
+		_add_row("What bare hands can make. A placed workbench unlocks assembly; a forge unlocks metalwork.")
+	else:
+		var station_id: StringName = _station.current_station_id(sim)
+		_title.text = sim.station(station_id).get("display_name", "Forge")
+		chain.append(String(_station.station_id))
+		if _station.upgrade_station_id != &"":
+			chain.append(String(_station.upgrade_station_id))
 
 	var skill: Dictionary = sim.skill_progress("blacksmithing")
 	var next: String = "max" if skill["next_level_xp"] < 0 else str(skill["next_level_xp"])
 	_add_row("%s level %d  (%d / %s xp)" % [skill["display_name"], skill["level"], skill["xp"], next])
 
+	var shows_fuel := false
 	for recipe_id in sim.recipe_ids():
 		var r: Dictionary = sim.recipe(recipe_id)
+		if _station == null and not r["hand_craftable"]:
+			continue
+		if _station != null and not (r["hand_craftable"] or chain.has(String(r["station"]))):
+			continue
 		var skill_text := ""
 		for skill_id in r["minimum_skill"]:
 			skill_text += "%s %d" % [Hud.pretty(skill_id), r["minimum_skill"][skill_id]]
-		var line := "%s  —  %s, %s\n    %s  →  %s" % [
-			r["display_name"], Hud.pretty(r["station"]), skill_text,
+		var where: String = "by hand" if r["hand_craftable"] else Hud.pretty(r["station"])
+		var line := "%s  —  %s%s\n    %s  →  %s" % [
+			r["display_name"], where, ("" if skill_text == "" else ", " + skill_text),
 			cost_text(r["inputs"], sim), amounts_text(r["outputs"])]
+		if int(r["fuel_cost"]) > 0:
+			line += "\n    burns %d fuel" % int(r["fuel_cost"])
+			shows_fuel = true
 		if sim.recipe_feeds_open_order(recipe_id):
 			line += "\n    ★ feeds an open order: full XP"
-		var craftable: bool = r["station_available"] and r["skill_met"] and r["inputs_met"]
+		var craftable: bool = r["station_available"] and r["skill_met"] and r["inputs_met"] and r["fuel_met"]
 		_add_row(line, "Craft", craftable, craft.bind(recipe_id))
+
+	if shows_fuel:
+		_add_row("Fuel on hand: %d  (wood burns as 1, charcoal as 4)" % sim.fuel_value_held())
+
+	if _station == null:
+		return
 
 	var upgrade_id: StringName = _station.upgrade_station_id
 	if upgrade_id != &"" and not sim.has_station(upgrade_id):
 		var target: Dictionary = sim.station(upgrade_id)
 		_add_row("Upgrade to %s  —  %s" % [target.get("display_name", upgrade_id), cost_text(target.get("upgrade_cost", {}), sim)],
 			"Upgrade", sim.can_build_station(upgrade_id), upgrade)
+
+	# Armour work belongs to the forge; the workbench stops here.
+	if _station.station_id != &"forge_basic":
+		return
 
 	# Armour: wear it, then temper it here. The effect of each temper is
 	# stated before anything is consumed.

@@ -22,7 +22,7 @@ The intended game combines self-directed construction, persistent ARPG buildcraf
 
 ## Current phase
 
-**Phase:** Vertical-slice greybox in Godot 4.5 (engine accepted 31 August 2026). The whole loop — gather, forge, mine order, armour, trial, catalyst tempering, construction unlock — is playable in `game/` and headless via `tools/playtest`; see `docs/prototype/acceptance-criteria.md` for what is ticked and what awaits playtesting.
+**Phase:** Wave 1 — the sandpit ([roadmap](docs/prototype/roadmap-waves.md), D-011). The game now opens on a seed-generated open world: biome terrain, scattered resources, roaming mob packs with loot, and a start-with-nothing opening (hand-craft a workbench, assemble and fuel a forge). The vertical-slice loop — mine order, armour, trial, catalyst tempering, construction unlock — sits on top and remains completable; `tools/playtest` stays the headless economy oracle. See `docs/prototype/acceptance-criteria.md` for what is ticked and what awaits playtesting.
 
 The prototype intentionally excludes co-op, raids, an infinite world, extensive automation, multiple complete classes and a large construction catalogue. Its purpose is to prove that returning from a trial makes the player excited to improve their build, base or production capability—and that those improvements make them want to venture out again.
 

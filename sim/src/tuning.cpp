@@ -1,5 +1,7 @@
 #include "wroughtwild/tuning.h"
 
+#include <algorithm>
+
 #include "wroughtwild/json.h"
 
 namespace wroughtwild::tuning {
@@ -52,6 +54,16 @@ const Station* CraftingTable::findStation(const std::string& id) const { return 
 const Recipe* CraftingTable::findRecipe(const std::string& id) const { return findById(recipes, id); }
 const Order* CraftingTable::findOrder(const std::string& id) const { return findById(orders, id); }
 const CatalystProcess* CraftingTable::findCatalystProcess(const std::string& id) const { return findById(catalystProcesses, id); }
+bool CraftingTable::isCurrency(const std::string& id) const {
+    return std::find(currencies.begin(), currencies.end(), id) != currencies.end();
+}
+const Station* CraftingTable::findStationForKit(const std::string& kitItemId) const {
+    if (kitItemId.empty()) return nullptr;
+    for (const auto& station : stations)
+        if (station.kitItem == kitItemId) return &station;
+    return nullptr;
+}
+const BiomeDef* WorldgenTable::findBiome(const std::string& id) const { return findById(biomes, id); }
 const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
 const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) const {
     auto it = behaviours.find(id);
@@ -76,6 +88,7 @@ CraftingTable loadCrafting(const std::string& path) {
         if (auto cost = s->find("build_cost")) station.buildCost = readIntMap(*cost);
         if (auto from = s->find("upgrade_from")) station.upgradeFrom = from->asString();
         if (auto cost = s->find("upgrade_cost")) station.upgradeCost = readIntMap(*cost);
+        if (auto kit = s->find("kit_item")) station.kitItem = kit->asString();
         table.stations.push_back(std::move(station));
     }
 
@@ -88,6 +101,7 @@ CraftingTable loadCrafting(const std::string& path) {
         recipe.inputs = readIntMap(r->get("inputs"));
         recipe.outputs = readIntMap(r->get("outputs"));
         recipe.baseSkillXp = r->get("base_skill_xp").asInt();
+        if (auto fuel = r->find("fuel_cost")) recipe.fuelCost = fuel->asInt();
         recipe.useCategories = readStringArray(r->get("use_categories"));
         table.recipes.push_back(std::move(recipe));
     }
@@ -116,6 +130,14 @@ CraftingTable loadCrafting(const std::string& path) {
             process.minimumRollFractionAtSkill = c->get("minimum_roll_fraction_at_skill").asNumber();
             table.catalystProcesses.push_back(std::move(process));
         }
+    }
+
+    if (auto currencies = doc->find("currencies"))
+        table.currencies = readStringArray(*currencies);
+
+    if (auto fuels = doc->find("fuels")) {
+        for (const auto& [item, value] : fuels->asObject())
+            if (item != "design_purpose") table.fuels[item] = value->asInt();
     }
 
     table.salvageReturnFraction = doc->get("salvage_return_fraction").asNumber();
@@ -302,6 +324,16 @@ WorldTable loadWorld(const std::string& path) {
         def.damage = e->get("damage").asNumber();
         def.damageType = e->get("damage_type").asString();
         def.attackPeriodRounds = e->get("attack_period_rounds").asInt();
+        if (auto loot = e->find("loot")) {
+            for (const auto& entry : loot->asArray()) {
+                LootEntry drop;
+                drop.item = entry->get("item").asString();
+                drop.minCount = entry->get("min").asInt();
+                drop.maxCount = entry->get("max").asInt();
+                drop.chance = entry->get("chance").asNumber();
+                def.loot.push_back(std::move(drop));
+            }
+        }
         table.enemies.push_back(std::move(def));
     }
 
@@ -364,6 +396,66 @@ TrialTable loadTrial(const std::string& path) {
     return table;
 }
 
+WorldgenTable loadWorldgen(const std::string& path) {
+    auto doc = json::parseFile(path);
+    WorldgenTable table;
+
+    table.defaultSeed = static_cast<uint64_t>(doc->get("default_seed").asNumber());
+
+    const Value& map = doc->get("map");
+    table.map.widthCells = map.get("width_cells").asInt();
+    table.map.heightCells = map.get("height_cells").asInt();
+    table.map.cellSizeM = map.get("cell_size_m").asNumber();
+    table.map.baseHeight = map.get("base_height").asInt();
+    table.map.heightScale = map.get("height_scale").asInt();
+    table.map.heightFrequency = map.get("height_frequency").asNumber();
+    table.map.heightOctaves = map.get("height_octaves").asInt();
+    table.map.moistureFrequency = map.get("moisture_frequency").asNumber();
+
+    for (const auto& b : doc->get("biomes").asArray()) {
+        BiomeDef biome;
+        biome.id = b->get("id").asString();
+        biome.displayName = b->get("display_name").asString();
+        biome.surface = b->get("surface").asString();
+        if (auto v = b->find("height_min")) biome.heightMin = v->asInt();
+        if (auto v = b->find("height_max")) biome.heightMax = v->asInt();
+        if (auto v = b->find("moisture_min")) biome.moistureMin = v->asNumber();
+        if (auto v = b->find("moisture_max")) biome.moistureMax = v->asNumber();
+        if (auto density = b->find("node_density"))
+            for (const auto& [type, value] : density->asObject())
+                biome.nodeDensity[type] = value->asNumber();
+        if (auto v = b->find("pack_density")) biome.packDensity = v->asNumber();
+        if (auto packs = b->find("packs"))
+            for (const auto& pack : packs->asArray())
+                biome.packs.push_back(readStringArray(*pack));
+        table.biomes.push_back(std::move(biome));
+    }
+
+    for (const auto& [id, n] : doc->get("nodes").asObject()) {
+        if (id == "design_purpose") continue;
+        NodeTypeDef node;
+        node.id = id;
+        node.displayName = n->get("display_name").asString();
+        node.materialFamily = n->get("material_family").asString();
+        node.units = n->get("units").asInt();
+        node.unitsPerHarvest = n->get("units_per_harvest").asInt();
+        node.visual = n->get("visual").asString();
+        table.nodeTypes[id] = std::move(node);
+    }
+
+    const Value& g = doc->get("guarantees");
+    table.guarantees.spawnBiome = g.get("spawn_biome").asString();
+    table.guarantees.spawnClearRadiusM = g.get("spawn_clear_radius_m").asNumber();
+    table.guarantees.nearRadiusM = g.get("near_radius_m").asNumber();
+    table.guarantees.minNodesNear = readIntMap(g.get("min_nodes_near"));
+    table.guarantees.gateBiome = g.get("gate_biome").asString();
+    table.guarantees.gateMinDistanceM = g.get("gate_min_distance_m").asNumber();
+    table.guarantees.packMinDistanceFromSpawnM =
+        g.get("pack_min_distance_from_spawn_m").asNumber();
+
+    return table;
+}
+
 Tuning loadAll(const std::string& tuningDirectory) {
     Tuning tuning;
     tuning.crafting = loadCrafting(tuningDirectory + "/crafting.json");
@@ -374,6 +466,7 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.world = loadWorld(tuningDirectory + "/world.json");
     tuning.trial = loadTrial(tuningDirectory + "/trial.json");
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
+    tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
     return tuning;
 }
 

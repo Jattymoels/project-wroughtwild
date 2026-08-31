@@ -28,7 +28,7 @@ func _ready() -> void:
 
 	var hints := Label.new()
 	hints.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	hints.text = "E interact  ·  B build mode  ·  Tab shape  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike  ·  2 heavy strike  ·  Shift dash  ·  Esc close panel  ·  F5 save  ·  F9 load"
+	hints.text = "E interact  ·  C craft by hand  ·  B build mode  ·  Tab shape/kit  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike  ·  2 heavy strike  ·  Shift dash  ·  Esc close panel  ·  F5 save  ·  F9 load"
 	hints.modulate = Color(1.0, 1.0, 1.0, 0.6)
 	column.add_child(hints)
 

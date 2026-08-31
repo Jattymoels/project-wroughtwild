@@ -65,7 +65,18 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 			"units_per_harvest": node.units_per_harvest,
 		})
 
-	return {
+	var site_data: Array = []
+	for site in sites:
+		site_data.append({
+			"name": String(site.name),
+			"parent": String(root.get_path_to(site.get_parent())),
+			"station_id": String(site.station_id),
+			"upgrade_station_id": String(site.upgrade_station_id),
+			"position": _vec(site.global_position),
+			"rotation_y": site.rotation.y,
+		})
+
+	var data := {
 		"schema_version": SCHEMA_VERSION,
 		"sim": player.inventory.get_sim().export_json(),
 		"player": {
@@ -75,7 +86,12 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 		},
 		"blocks": block_data,
 		"resource_nodes": node_data,
+		"stations": site_data,
 	}
+	# Generated worlds carry their seed so a load rebuilds the same terrain.
+	if "world_seed" in root:
+		data["world_seed"] = root.get("world_seed")
+	return data
 
 
 func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
@@ -88,6 +104,11 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		return false
 
 	var root: Node = player.world_root()
+	# A save from a different generated world rebuilds that world first, so
+	# the node names below resolve against the right terrain.
+	if data.has("world_seed") and root.has_method("apply_world_seed"):
+		root.call("apply_world_seed", int(data["world_seed"]))
+
 	var blocks: Array = []
 	var nodes: Array = []
 	var sites: Array = []
@@ -130,6 +151,30 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		if not saved_names.has(node.name):
 			node.get_parent().remove_child(node)
 			node.free()
+
+	# Placed station sites: rebuild the set from the save. Saves without the
+	# key (pre-sandpit) keep whatever sites the scene authored.
+	if data.has("stations"):
+		var station_scene: PackedScene = load("res://scenes/station_site.tscn")
+		for site in sites:
+			site.get_parent().remove_child(site)
+			site.free()
+		sites = []
+		for entry in data["stations"]:
+			var site: StationSite = station_scene.instantiate()
+			if entry.has("name"):
+				site.name = entry["name"]
+			site.station_id = StringName(entry["station_id"])
+			site.upgrade_station_id = StringName(entry["upgrade_station_id"])
+			var parent: Node = root
+			if entry.has("parent"):
+				parent = root.get_node_or_null(NodePath(entry["parent"]))
+				if parent == null:
+					parent = root
+			parent.add_child(site)
+			site.global_position = _unvec(entry["position"])
+			site.rotation.y = entry.get("rotation_y", 0.0)
+			sites.append(site)
 
 	var pose: Dictionary = data.get("player", {})
 	if not pose.is_empty():

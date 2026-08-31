@@ -84,6 +84,12 @@ func open_order(order_id: StringName) -> void:
 	_release_mouse()
 
 
+func open_hand_crafting() -> void:
+	placement.set_build_mode_enabled(false)
+	work_panel.open_hand_crafting()
+	_release_mouse()
+
+
 func open_custom_panel(title: String, rows: Array, message_text: String = "") -> void:
 	placement.set_build_mode_enabled(false)
 	work_panel.open_custom(title, rows, message_text)
@@ -104,9 +110,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		load_game()
 	elif work_panel.is_open():
 		return
+	elif event.is_action_pressed("hand_craft"):
+		open_hand_crafting()
 	elif event.is_action_pressed("cycle_shape"):
-		var shape := placement.cycle_shape()
-		hud.notify("Shape: %s" % inventory.get_sim().shape(shape).get("display_name", shape))
+		placement.cycle_shape()
+		hud.notify("Placing: %s" % placement.selection_label())
 	elif event.is_action_pressed("skill_area"):
 		combat.use_area()
 	elif event.is_action_pressed("skill_heavy"):

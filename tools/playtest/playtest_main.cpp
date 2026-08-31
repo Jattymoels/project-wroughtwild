@@ -245,6 +245,7 @@ void doCraft(Game& game, const std::vector<std::string>& args) {
             if (result.failure.stationUnavailable) std::cout << "You need the right forge.\n";
             if (result.failure.skillTooLow) std::cout << "Your blacksmithing is too low.\n";
             if (result.failure.missingInputs) std::cout << "Not enough materials.\n";
+            if (result.failure.missingFuel) std::cout << "The forge is cold - it needs fuel (wood or charcoal).\n";
             return;
         }
         ++game.actions;

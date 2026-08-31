@@ -9,7 +9,9 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
+#include "wroughtwild/loot.h"
 #include "wroughtwild/save.h"
+#include "wroughtwild/worldgen.h"
 
 namespace godot {
 
@@ -53,6 +55,12 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("removal_refund_fraction"), &WroughtwildSim::removal_refund_fraction);
 
     ClassDB::bind_method(D_METHOD("gather_site", "site_id"), &WroughtwildSim::gather_site);
+    ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
+    ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_loot);
+    ClassDB::bind_method(D_METHOD("kit_station", "kit_item_id"), &WroughtwildSim::kit_station);
+    ClassDB::bind_method(D_METHOD("kit_item_ids"), &WroughtwildSim::kit_item_ids);
+    ClassDB::bind_method(D_METHOD("fuels"), &WroughtwildSim::fuels);
+    ClassDB::bind_method(D_METHOD("fuel_value_held"), &WroughtwildSim::fuel_value_held);
     ClassDB::bind_method(D_METHOD("add_materials", "amounts"), &WroughtwildSim::add_materials);
     ClassDB::bind_method(D_METHOD("drop_inventory"), &WroughtwildSim::drop_inventory);
     ClassDB::bind_method(D_METHOD("add_material", "material_id", "amount"), &WroughtwildSim::add_material);
@@ -552,6 +560,7 @@ Dictionary WroughtwildSim::station(const String& station_id) const {
     d["build_cost"] = to_dictionary(s->buildCost);
     d["upgrade_from"] = to_godot(s->upgradeFrom);
     d["upgrade_cost"] = to_dictionary(s->upgradeCost);
+    d["kit_item"] = to_godot(s->kitItem);
     d["available"] = player_->stationAvailable(s->id);
     return d;
 }
@@ -711,16 +720,20 @@ Dictionary WroughtwildSim::recipe(const String& recipe_id) const {
     d["inputs"] = to_dictionary(r->inputs);
     d["outputs"] = to_dictionary(r->outputs);
     d["base_skill_xp"] = r->baseSkillXp;
-    // Gate status for UI: the same three checks craft() applies.
+    d["fuel_cost"] = r->fuelCost;
+    // Gate status for UI: the same checks craft() applies. An empty station
+    // means hand-crafting: no facility or fuel gate.
     bool skillMet = true;
     for (const auto& [skillId, level] : r->minimumSkill) {
         if (player_->skillLevel(skillId) < level) {
             skillMet = false;
         }
     }
-    d["station_available"] = player_->stationAvailable(r->station);
+    d["hand_craftable"] = r->station.empty();
+    d["station_available"] = r->station.empty() || player_->stationAvailable(r->station);
     d["skill_met"] = skillMet;
     d["inputs_met"] = wroughtwild::economy::hasAll(player_->inventory, r->inputs);
+    d["fuel_met"] = player_->fuelMet(r->id);
     return d;
 }
 
@@ -1049,7 +1062,15 @@ void WroughtwildSim::add_materials(const Dictionary& amounts) {
             converted[to_std(String(keys[i]))] = amount;
         }
     }
-    wroughtwild::economy::add(player_->inventory, converted);
+    // Currency ids (crafting.json "currencies") land in the purse; everything
+    // else is a carried material.
+    for (const auto& [id, amount] : converted) {
+        if (tuning_->crafting.isCurrency(id)) {
+            player_->currency[id] += amount;
+        } else {
+            player_->inventory[id] += amount;
+        }
+    }
 }
 
 Dictionary WroughtwildSim::drop_inventory() {
@@ -1133,6 +1154,7 @@ Dictionary WroughtwildSim::craft(const String& recipe_id, bool for_order) {
                        : f.stationUnavailable ? "station_unavailable"
                        : f.skillTooLow        ? "skill_too_low"
                        : f.missingInputs      ? "missing_inputs"
+                       : f.missingFuel        ? "missing_fuel"
                                               : "unknown";
     }
     return d;
@@ -1140,6 +1162,126 @@ Dictionary WroughtwildSim::craft(const String& recipe_id, bool for_order) {
 
 bool WroughtwildSim::salvage(const String& recipe_id) {
     return require_loaded("salvage") && player_->salvage(to_std(recipe_id));
+}
+
+int WroughtwildSim::fuel_value_held() const {
+    return require_loaded("fuel_value_held") ? player_->fuelValueHeld() : 0;
+}
+
+Dictionary WroughtwildSim::fuels() const {
+    Dictionary d;
+    if (require_loaded("fuels")) {
+        for (const auto& [item, value] : tuning_->crafting.fuels) {
+            d[to_godot(item)] = value;
+        }
+    }
+    return d;
+}
+
+String WroughtwildSim::kit_station(const String& kit_item_id) const {
+    if (!require_loaded("kit_station")) {
+        return String();
+    }
+    const auto* station = tuning_->crafting.findStationForKit(to_std(kit_item_id));
+    return station != nullptr ? to_godot(station->id) : String();
+}
+
+PackedStringArray WroughtwildSim::kit_item_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("kit_item_ids")) {
+        for (const auto& station : tuning_->crafting.stations) {
+            if (!station.kitItem.empty()) {
+                ids.push_back(to_godot(station.kitItem));
+            }
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::enemy_loot(const String& enemy_id, int seed) {
+    Dictionary d;
+    if (!require_loaded("enemy_loot")) {
+        return d;
+    }
+    const auto drops = wroughtwild::loot::rollEnemyLoot(
+        tuning_->world, to_std(enemy_id), static_cast<uint64_t>(seed));
+    for (const auto& [item, count] : drops) {
+        d[to_godot(item)] = count;
+    }
+    return d;
+}
+
+Dictionary WroughtwildSim::world_map(int seed) {
+    Dictionary d;
+    if (!require_loaded("world_map")) {
+        return d;
+    }
+    const auto map = wroughtwild::worldgen::generate(*tuning_, static_cast<uint64_t>(seed));
+
+    d["seed"] = seed;
+    d["width"] = map.width;
+    d["height"] = map.height;
+    d["cell_size"] = map.cellSize;
+
+    PackedInt32Array heights;
+    PackedInt32Array biome_indices;
+    heights.resize(static_cast<int64_t>(map.cells.size()));
+    biome_indices.resize(static_cast<int64_t>(map.cells.size()));
+    for (size_t i = 0; i < map.cells.size(); ++i) {
+        heights[static_cast<int64_t>(i)] = map.cells[i].height;
+        biome_indices[static_cast<int64_t>(i)] = map.cells[i].biomeIndex;
+    }
+    d["heights"] = heights;
+    d["biomes"] = biome_indices;
+
+    Array biome_defs;
+    for (const auto& biome : tuning_->worldgen.biomes) {
+        Dictionary b;
+        b["id"] = to_godot(biome.id);
+        b["display_name"] = to_godot(biome.displayName);
+        b["surface"] = to_godot(biome.surface);
+        biome_defs.push_back(b);
+    }
+    d["biome_defs"] = biome_defs;
+
+    Array nodes;
+    for (const auto& node : map.nodes) {
+        const auto typeIt = tuning_->worldgen.nodeTypes.find(node.type);
+        if (typeIt == tuning_->worldgen.nodeTypes.end()) {
+            continue;
+        }
+        Dictionary n;
+        n["type"] = to_godot(node.type);
+        n["x"] = node.x;
+        n["z"] = node.z;
+        n["material_family"] = to_godot(typeIt->second.materialFamily);
+        n["display_name"] = to_godot(typeIt->second.displayName);
+        n["units"] = typeIt->second.units;
+        n["units_per_harvest"] = typeIt->second.unitsPerHarvest;
+        n["visual"] = to_godot(typeIt->second.visual);
+        nodes.push_back(n);
+    }
+    d["nodes"] = nodes;
+
+    Array packs;
+    for (const auto& pack : map.packs) {
+        Dictionary p;
+        PackedStringArray enemies;
+        for (const auto& id : pack.enemies) {
+            enemies.push_back(to_godot(id));
+        }
+        p["enemies"] = enemies;
+        p["x"] = pack.x;
+        p["z"] = pack.z;
+        packs.push_back(p);
+    }
+    d["packs"] = packs;
+
+    d["spawn_x"] = map.spawnX;
+    d["spawn_z"] = map.spawnZ;
+    d["gate_x"] = map.gateX;
+    d["gate_z"] = map.gateZ;
+    return d;
 }
 
 } // namespace godot
