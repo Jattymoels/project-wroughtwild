@@ -250,6 +250,8 @@ func _test_sim_extension() -> void:
 	# Shapes: the slab waits on the boss kill; sizes come from data.
 	check(sim.shape("cube")["size"] == Vector3.ONE and sim.shape("cube")["unlocked"], "shape: cube view")
 	check(not sim.shape_unlocked("stonecut_slab"), "shape: slab locked until the completion unlock")
+	check(sim.shape_ids().size() >= 6 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
+		"shape: six-shape set with sizes from data")
 
 	# Equipment and tempering (the catalyst banked above is still held).
 	check(sim.equipment().is_empty(), "gear: nothing worn")

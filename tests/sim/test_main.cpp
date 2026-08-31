@@ -171,6 +171,11 @@ void testShapePlacement(const tuning::Tuning& t) {
           "construction: slab placeable after the unlock");
     check(t.crafting.basicTemper.property == "fire_resistance" && t.crafting.basicTemper.tier == 1,
           "crafting: basic temper config loads");
+    check(t.construction.shapes.size() >= 6, "construction: prototype shape set has at least six shapes");
+    int unlockedFromStart = 0;
+    for (const auto& shape : t.construction.shapes)
+        if (shape.requiresWorldEffect.empty()) ++unlockedFromStart;
+    check(unlockedFromStart >= 5, "construction: most shapes are available before the trial");
 }
 
 void testSkillCurve(const tuning::Tuning& t) {
