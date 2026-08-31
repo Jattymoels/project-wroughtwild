@@ -58,6 +58,23 @@ public:
     // ambush_enemies, ambush_removed_by_world_effect.
     Dictionary gather_site(const String& site_id) const;
 
+    // --- Wave 1 sandpit ---
+    // The generated bounded world for a seed (deterministic). Keys: seed,
+    // width, height, cell_size, heights + biomes (PackedInt32Array,
+    // row-major z*width+x), biome_defs (array of {id, display_name,
+    // surface}), nodes (array of {type, x, z, material_family, display_name,
+    // units, units_per_harvest, visual}), packs (array of {enemies, x, z}),
+    // spawn_x/z, gate_x/z.
+    Dictionary world_map(int seed);
+    // Deterministic per-kill drops from the enemy's world.json loot table.
+    Dictionary enemy_loot(const String& enemy_id, int seed);
+    // Station founded by placing this kit item ("" when not a kit).
+    String kit_station(const String& kit_item_id) const;
+    PackedStringArray kit_item_ids() const;
+    // Fuel item -> value per unit, and the total fuel value carried.
+    Dictionary fuels() const;
+    int fuel_value_held() const;
+
     // --- player economy (one player, prototype scope) ---
     Dictionary inventory() const;
     Dictionary currency() const;
