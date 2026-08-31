@@ -14,10 +14,10 @@ func _ready() -> void:
 	load_crafting_tuning()
 
 
-## Resolves the repository's data/tuning directory. The spike project lives
-## at spikes/godot4/, so tuning sits two levels above the project root.
+## Resolves the repository's data/tuning directory. The game project lives
+## at game/, so tuning sits one level above the project root.
 static func get_tuning_directory() -> String:
-	return ProjectSettings.globalize_path("res://").path_join("../../data/tuning")
+	return ProjectSettings.globalize_path("res://").path_join("../data/tuning")
 
 
 ## Parses crafting.json; returns false (and logs) when missing or invalid.

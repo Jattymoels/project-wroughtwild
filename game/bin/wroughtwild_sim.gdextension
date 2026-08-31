@@ -1,0 +1,11 @@
+[configuration]
+
+entry_symbol = "wroughtwild_sim_init"
+compatibility_minimum = "4.5"
+reloadable = true
+
+[libraries]
+
+windows.x86_64 = "res://bin/libwroughtwild_sim.windows.x86_64.dll"
+linux.x86_64 = "res://bin/libwroughtwild_sim.linux.x86_64.so"
+macos = "res://bin/libwroughtwild_sim.macos.x86_64.dylib"

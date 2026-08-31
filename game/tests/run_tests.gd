@@ -1,6 +1,6 @@
 extends SceneTree
 ## Headless unit tests, run with:
-##   godot --headless --path spikes/godot4 --script tests/run_tests.gd
+##   godot --headless --path game --script tests/run_tests.gd
 ## Exits non-zero on any failure. Frame-dependent behaviour (physics,
 ## placement raycasts) is covered by tests/integration.tscn instead.
 
@@ -21,6 +21,7 @@ func _initialize() -> void:
 	_test_tuning()
 	_test_resource_node()
 	_test_scene_instantiation()
+	_test_sim_extension()
 
 	print("%d checks, %d failures" % [checks, failures])
 	quit(0 if failures == 0 else 1)
@@ -92,3 +93,35 @@ func _test_scene_instantiation() -> void:
 		"scene: default material family")
 	get_root().remove_child(scene)
 	scene.free()
+
+
+func _test_sim_extension() -> void:
+	# The rules library reached through the GDExtension in
+	# game/extensions/wroughtwild_sim. These checks prove the door works; the
+	# rules themselves are regression-tested in tests/sim.
+	if not ClassDB.class_exists(&"WroughtwildSim"):
+		check(false, "sim: WroughtwildSim extension not loaded (build game/extensions/wroughtwild_sim first)")
+		return
+	var sim: RefCounted = ClassDB.instantiate(&"WroughtwildSim")
+	var tuning_dir: String = load("res://scripts/tuning.gd").get_tuning_directory()
+	check(sim.load_tuning(tuning_dir), "sim: tuning loads through the sim library (%s)" % sim.last_error())
+	check(sim.recipe_ids().has("smelt_iron"), "sim: recipes visible")
+	check(absf(sim.salvage_return_fraction() - 0.5) < 0.000001, "sim: salvage fraction agrees with GDScript loader")
+
+	var blocked: Dictionary = sim.craft("smelt_iron")
+	check(not blocked["crafted"] and blocked["failure"] == "station_unavailable",
+		"sim: craft refused without station (%s)" % blocked.get("failure"))
+	sim.add_station("forge_basic")
+	blocked = sim.craft("smelt_iron")
+	check(not blocked["crafted"] and blocked["failure"] == "missing_inputs",
+		"sim: craft refused without inputs (%s)" % blocked.get("failure"))
+
+	var recipe: Dictionary = sim.recipe("smelt_iron")
+	for material in recipe["inputs"]:
+		sim.add_material(material, recipe["inputs"][material])
+	var result: Dictionary = sim.craft("smelt_iron")
+	check(result["crafted"], "sim: craft succeeds with station and inputs")
+	check(sim.material_count("iron_ingot") == 1 and sim.material_count("iron_ore") == 0,
+		"sim: inputs consumed and output added by the sim rule")
+	check(sim.skill_xp("blacksmithing") == recipe["base_skill_xp"], "sim: skill XP granted by the sim rule")
+	check(sim.craft("no_such_recipe")["failure"] == "unknown_recipe", "sim: unknown recipe reported")

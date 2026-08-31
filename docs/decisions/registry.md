@@ -17,7 +17,7 @@ Statuses:
 | D-006 | Death | Trials protect stored possessions; open-world death drops carried inventory; binding eventually protects important gear | Provisional | Death and recovery playtest |
 | D-007 | Crafting economy | Combine physical materials and infrastructure with rare crafting catalysts from combat and exploration | High-priority open | Itemisation prototype begins |
 | D-008 | Input | Initial building interface targets mouse and keyboard only | Accepted | Controller scope is considered |
-| D-009 | Engine | No engine is selected yet | Open | Before implementation begins |
+| D-009 | Engine | Godot 4.5-stable (`4.5.stable.official.876b29033`) is the prototype engine; the engine project lives in `game/`, gameplay rules stay in the engine-neutral `sim/` library bound via GDExtension; `godot-cpp` is the only approved third-party dependency ([ADR-0001](ADR-0001-engine-selection.md)) | Accepted | Terrain scale, world streaming, construction density or visual targets outgrow Godot (ADR-0001 exit condition) |
 
 ## Proposals awaiting acceptance
 
