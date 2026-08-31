@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.8",
+	"Category": "",
+	"Description": "ADR-0001 Unreal Engine 5.8 comparative spike for Project Wroughtwild",
+	"Modules": [
+		{
+			"Name": "Wroughtwild",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}

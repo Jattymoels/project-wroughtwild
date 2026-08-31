@@ -84,3 +84,8 @@ Before accepting an engine, create the same tiny spike in the final two candidat
 5. compare total setup time, Git changes and agent reliability.
 
 No implementation should begin until the owner accepts an option and records the exact engine version.
+
+## Spike status
+
+- **Unreal Engine 5.8:** spike scaffold committed at `spikes/unreal58/` (31 August 2026, owner-directed). It is text-only (C++, configs, no binary assets) and covers the checklist above: clean-checkout open, controllable capsule, resource node, grid snap-placement preview and two automation tests. The MCP inspection step must be run on the owner's machine because the Unreal MCP server only runs inside a locally launched editor; `spikes/unreal58/SPIKE.md` is the runbook and lists the measurements to record. **This does not accept the ADR** — the comparison spike in the other finalist remains outstanding.
+- Engine-neutral economy rules were extracted to `sim/` with headless tests in `tests/sim/`, so the rules layer is portable to whichever engine is accepted.
