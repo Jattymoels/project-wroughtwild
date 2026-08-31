@@ -13,6 +13,7 @@ config/features=PackedStringArray("4.5")
 [autoload]
 
 Sim="*res://scripts/sim.gd"
+ExtensionGuard="*res://scripts/extension_guard.gd"
 
 [input]
 
