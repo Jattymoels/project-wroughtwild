@@ -292,6 +292,9 @@ struct BehaviourRealtime {
     double preferredDistanceM = 0.0; // 0 = close to melee range
     double aggroRangeM = 0.0;
     double windupSeconds = 0.0;
+    // D-012: chase persists until the player stays beyond this for the
+    // horde's give_up_seconds; 0 means "never gives up".
+    double giveUpDistanceM = 0.0;
 };
 
 struct BossRealtime {
@@ -307,10 +310,16 @@ struct RealtimeTable {
     double roundSeconds = 1.0; // sim rounds -> seconds
     double playerMoveSpeedMps = 0.0;
     double playerMeleeReachM = 0.0;
+    double playerConeDegrees = 360.0; // first-person area-strike arc (D-012)
     std::map<std::string, BehaviourRealtime> behaviours; // keyed by EnemyDef::behaviour
     BossRealtime boss;
     double dashInvulnerableSeconds = 0.0;
     double dashDurationSeconds = 0.0;
+    // D-012 horde feel: chasers push apart into a train, and lose interest
+    // only after the player stays beyond give-up range this long.
+    double hordeSeparationRadiusM = 0.0;
+    double hordeSeparationStrengthMps = 0.0;
+    double hordeGiveUpSeconds = 0.0;
 
     const BehaviourRealtime* findBehaviour(const std::string& id) const;
 };

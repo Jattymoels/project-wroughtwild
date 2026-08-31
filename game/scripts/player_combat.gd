@@ -6,6 +6,8 @@ extends Node
 
 signal life_changed(life: float, max_life: float)
 signal died
+## A player hit connected with at least one enemy (HUD hitmarker).
+signal hit_landed(total_damage: float, kills: int)
 
 const AREA_SKILL := &"prototype_area_strike"
 const HEAVY_SKILL := &"prototype_heavy_strike"
@@ -20,6 +22,9 @@ var skills := {}     # skill id -> sim view (base_damage, cooldown_seconds, ...)
 var cooldowns := {}  # skill id -> seconds remaining
 var invulnerable_left := 0.0
 var melee_reach := 2.0
+## First-person area-strike arc (D-012): "area" is the slice of the horde
+## you are facing, so training mobs into a bunch is what makes it pay.
+var cone_degrees := 360.0
 var dash_invulnerable := 0.3
 var dash_duration := 0.25
 var fight_active := false
@@ -40,6 +45,7 @@ func setup(in_player: WroughtwildPlayer, in_sim: WroughtwildSim) -> void:
 		cooldowns[id] = 0.0
 	var rt: Dictionary = sim.realtime()
 	melee_reach = rt["player"]["melee_reach_m"]
+	cone_degrees = rt["player"].get("cone_degrees", 360.0)
 	dash_invulnerable = rt["dash"]["invulnerable_seconds"]
 	dash_duration = rt["dash"]["duration_seconds"]
 	fight_seed_source.randomize()
@@ -96,8 +102,9 @@ func _spend(skill_id: StringName) -> void:
 	cooldowns[skill_id] = skills[skill_id].get("cooldown_seconds", 1.0)
 
 
-## Area strike: every living enemy inside the radius takes one hit. Returns
-## how many were hit.
+## Area strike: every living enemy inside the radius AND inside the facing
+## cone takes one hit (D-012: area is the slice of the horde in front of
+## you). Returns how many were hit.
 func use_area() -> int:
 	if not is_ready(AREA_SKILL):
 		return 0
@@ -110,12 +117,30 @@ func use_area() -> int:
 	var radius: float = skills[AREA_SKILL]["base_area_radius"] * (1.0 + sim.derived_stats()["area_bonus"])
 	if isolated:
 		radius *= sim.combat_mods()["isolated_area_multiplier"]
+	var forward := -player.global_transform.basis.z
+	forward.y = 0.0
+	forward = forward.normalized()
+	var cone_cos := cos(deg_to_rad(cone_degrees / 2.0))
 	var hits := 0
+	var kills := 0
+	var total := 0.0
 	for enemy in enemies:
-		if _planar_distance(enemy.global_position, player.global_position) <= radius:
-			last_hit_dealt = sim.player_hit_damage(AREA_SKILL, isolated)
-			enemy.take_damage(last_hit_dealt)
-			hits += 1
+		var to_enemy: Vector3 = enemy.global_position - player.global_position
+		to_enemy.y = 0.0
+		var distance := to_enemy.length()
+		if distance > radius:
+			continue
+		# Point-blank targets always count; beyond that, the cone decides.
+		if distance > 0.6 and forward.dot(to_enemy / distance) < cone_cos:
+			continue
+		last_hit_dealt = sim.player_hit_damage(AREA_SKILL, isolated)
+		total += last_hit_dealt
+		enemy.take_damage(last_hit_dealt)
+		if enemy.life <= 0.0:
+			kills += 1
+		hits += 1
+	if hits > 0:
+		hit_landed.emit(total, kills)
 	return hits
 
 
@@ -130,6 +155,7 @@ func use_heavy() -> bool:
 	_ensure_fight()
 	last_hit_dealt = sim.player_hit_damage(HEAVY_SKILL, alive_enemies().size() == 1)
 	target.take_damage(last_hit_dealt)
+	hit_landed.emit(last_hit_dealt, 1 if target.life <= 0.0 else 0)
 	return true
 
 

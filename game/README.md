@@ -35,12 +35,13 @@ purpose.
    godot --path game -e         # open the editor
    ```
 
-3. Controls: WASD move, mouse look, Space jump, **E** interact (harvest,
+3. The game is **first-person** (D-012); **V** toggles third person for
+   debugging. Controls: WASD move, mouse look, Space jump, **E** interact (harvest,
    work at a station, read the board, open the gate), **C** craft by hand,
    **B** toggle build mode, **Tab** cycle shapes and crafted station kits,
    **LMB** place (or harvest outside build mode), **X** remove block, **R**
    rotate preview, **1** area strike, **2** heavy strike, **Shift** dash
-   (brief invulnerability), **Esc** close a panel, **F5** save, **F9** load
+   (a pure movement burst - no invulnerability, D-012), **Esc** close a panel, **F5** save, **F9** load
    (`user://wroughtwild_save.json`). Dying drops your materials in a pack
    where you fell; walk back for it.
 4. **The first hour, from nothing:** harvest trees (E) → **C** → craft the
@@ -49,12 +50,18 @@ purpose.
    veins — the rocky hills have both, and their Stone Husks drop them too)
    → place the forge → keep it fed with wood or charcoal, because every
    smelt and forging burns fuel. Mob packs wake as you approach; every kill
-   drops something the economy uses.
+   drops something the economy uses. Chasers are D-012 stupid zombies: they
+   keep coming while you stay near (bunch them and pay the train off with
+   the cone-shaped area strike), give up only when you genuinely run, and
+   an idle stray joins the fight the moment you hit it. The crosshair reads
+   your aim (green = E-interact in reach, red = enemy in melee reach) and
+   blips on a landed hit.
 5. The **trial gate** waits far out in the ember wastes. E stows your goods and opens the
    run: pick a door, clear the room in the arena, take or refuse what the
    shrine offers, bank out after the catalyst shrine or push on to the Forge
-   Tyrant. Its breath is telegraphed (it glows and the HUD warns you); dash
-   through it or step out of the cone. Dying in the trial returns you to the
+   Tyrant. Its breath is telegraphed (it glows and the HUD warns you); step
+   or dash OUT of the cone - dash is pure movement now, with no
+   invulnerability (D-012). Dying in the trial returns you to the
    gate with your deposit and any catalyst; run materials are lost. E inside
    the run brings the doors back if you closed the panel.
 6. Back at the forge: wear crafted armour, **Quench** it at the Improved
@@ -89,8 +96,10 @@ GODOT=/path/to/Godot_v4.5-stable ./run_headless_checks.sh
 ```
 
 Runs project import → unit tests (`tests/run_tests.gd`) → in-engine physics
-integration test of the full placement loop (`tests/integration.tscn`) → a
-120-frame smoke run of the main scene. Non-zero exit on any failure. Run this
+integration test of the full placement loop (`tests/integration.tscn`) → the
+D-012 horde test (`tests/horde.tscn`: chase persistence, training
+separation, give-up, cone strike, dash) → a 120-frame smoke run of the main
+scene. Non-zero exit on any failure. Run this
 before every commit that touches `game/`.
 
 ## Layout
