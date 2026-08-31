@@ -14,6 +14,12 @@ purpose.
 
 ## Run from a clean checkout
 
+> **Build the rules extension first** (next section). Without it the world
+> loads but nothing is interactable — you can walk, dodge and jump, while
+> harvesting, building and the forge are all dead, because every interactive
+> script depends on the compiled `WroughtwildSim` library. The game now shows
+> a full-screen notice when this happens instead of failing silently.
+
 1. Download Godot 4.5-stable for your platform (a single executable, no
    installer) and put it somewhere convenient.
 2. Open `game/project.godot` with it, or launch directly:
