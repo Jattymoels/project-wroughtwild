@@ -5,6 +5,8 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
+#include "wroughtwild/save.h"
+
 namespace godot {
 
 namespace {
@@ -63,6 +65,36 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("fulfill_order", "order_id"), &WroughtwildSim::fulfill_order);
     ClassDB::bind_method(D_METHOD("order_fulfilled", "order_id"), &WroughtwildSim::order_fulfilled);
     ClassDB::bind_method(D_METHOD("world_effect_active", "effect"), &WroughtwildSim::world_effect_active);
+
+    ClassDB::bind_method(D_METHOD("export_json"), &WroughtwildSim::export_json);
+    ClassDB::bind_method(D_METHOD("import_json", "text"), &WroughtwildSim::import_json);
+}
+
+String WroughtwildSim::export_json() const {
+    if (!require_loaded("export_json")) {
+        return String();
+    }
+    wroughtwild::save::SaveGame game;
+    game.economy = player_->exportState();
+    game.equipment = equipment_;
+    return to_godot(wroughtwild::save::toJson(game));
+}
+
+bool WroughtwildSim::import_json(const String& text) {
+    if (!require_loaded("import_json")) {
+        return false;
+    }
+    try {
+        const wroughtwild::save::SaveGame game = wroughtwild::save::fromJson(to_std(text));
+        player_->importState(game.economy);
+        equipment_ = game.equipment;
+        last_error_ = String();
+        return true;
+    } catch (const std::exception& e) {
+        last_error_ = to_godot(e.what());
+        UtilityFunctions::push_warning("WroughtwildSim.import_json failed: ", last_error_);
+        return false;
+    }
 }
 
 PackedStringArray WroughtwildSim::station_ids() const {

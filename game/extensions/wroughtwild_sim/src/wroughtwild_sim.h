@@ -13,6 +13,7 @@
 #include <godot_cpp/variant/string.hpp>
 
 #include "wroughtwild/economy.h"
+#include "wroughtwild/stats.h"
 #include "wroughtwild/tuning.h"
 
 namespace godot {
@@ -80,6 +81,15 @@ public:
     bool order_fulfilled(const String& order_id) const;
     bool world_effect_active(const String& effect) const;
 
+    // --- save/load ---
+    // The rules state (economy, equipment) in the sim's own SaveGame JSON
+    // schema, so engine saves and text-playtest saves stay interchangeable.
+    // Schema v1 is not yet declared stable.
+    String export_json() const;
+    // Replaces the current rules state. Returns false (see last_error) and
+    // leaves state untouched when the text is malformed.
+    bool import_json(const String& text);
+
 protected:
     static void _bind_methods();
 
@@ -88,6 +98,7 @@ private:
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;
+    wroughtwild::stats::Equipment equipment_;
     String last_error_;
 };
 

@@ -23,7 +23,7 @@ func _ready() -> void:
 	column.add_child(_status)
 
 	var hints := Label.new()
-	hints.text = "E interact  ·  B build mode  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  Esc close panel"
+	hints.text = "E interact  ·  B build mode  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  Esc close panel  ·  F5 save  ·  F9 load"
 	hints.modulate = Color(1.0, 1.0, 1.0, 0.6)
 	column.add_child(hints)
 

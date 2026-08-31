@@ -13,7 +13,7 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 - [ ] A bounded region loads with required wood, iron, forge location and trial entrance.
 - [ ] Critical progression resources cannot be absent from a valid seed.
-- [ ] Player state, equipment, placed structures and storage survive save/reload.
+- [x] Player state, equipment, placed structures and storage survive save/reload. *(F5/F9; `SaveManager` writes the sim's SaveGame JSON plus blocks, nodes and pose; integration-tested. Equipment round-trips through the schema but nothing equips it yet.)*
 
 ## Construction
 

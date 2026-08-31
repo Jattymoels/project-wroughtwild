@@ -159,3 +159,14 @@ func _test_sim_extension() -> void:
 		"sim: order paid currency and consumed fittings")
 	check(sim.skill_progress("blacksmithing")["level"] >= 2, "sim: order XP reward levelled Blacksmithing")
 	check(sim.fulfill_order("reinforce_old_mine")["already_fulfilled"], "sim: second delivery refused")
+
+	# Rules state round-trips through the sim's own save schema.
+	var snapshot: String = sim.export_json()
+	var xp_before: int = sim.skill_xp("blacksmithing")
+	sim.add_material("wood", 50)
+	check(sim.import_json(snapshot), "save: sim JSON imports (%s)" % sim.last_error())
+	check(sim.material_count("wood") != 50 + cost, "save: import replaced the mutated inventory")
+	check(sim.skill_xp("blacksmithing") == xp_before and sim.has_station("forge_basic")
+		and sim.order_fulfilled("reinforce_old_mine"), "save: skills, stations and orders round-trip")
+	check(not sim.import_json("{not json"), "save: malformed text rejected")
+	check(sim.has_station("forge_basic"), "save: rejected import leaves state untouched")

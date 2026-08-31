@@ -22,9 +22,11 @@ project diffs in Git; `.uid` files are committed on purpose.
    godot --path game -e         # open the editor
    ```
 
-3. Controls: WASD move, mouse look, Space jump, **E** harvest, **B** toggle
-   build mode, **LMB** place (or harvest outside build mode), **X** remove
-   block, **R** rotate preview.
+3. Controls: WASD move, mouse look, Space jump, **E** interact (harvest a
+   node, build or use the forge, read the mine board), **B** toggle build
+   mode, **LMB** place (or harvest outside build mode), **X** remove block,
+   **R** rotate preview, **Esc** close a panel, **F5** save, **F9** load
+   (`user://wroughtwild_save.json`).
 
 ## Build the rules extension (once per checkout, and after `sim/` changes)
 
