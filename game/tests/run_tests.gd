@@ -22,6 +22,7 @@ func _initialize() -> void:
 	_test_resource_node()
 	_test_scene_instantiation()
 	_test_sim_extension()
+	_test_sandpit_extension()
 
 	print("%d checks, %d failures" % [checks, failures])
 	quit(0 if failures == 0 else 1)
@@ -123,8 +124,13 @@ func _test_sim_extension() -> void:
 	var recipe: Dictionary = sim.recipe("smelt_iron")
 	for material in recipe["inputs"]:
 		sim.add_material(material, recipe["inputs"][material])
+	# Inputs alone are not enough any more: the forge burns fuel on top.
+	var cold: Dictionary = sim.craft("smelt_iron")
+	check(not cold["crafted"] and cold["failure"] == "missing_fuel",
+		"sim: craft refused without fuel (%s)" % cold.get("failure"))
+	sim.add_material("wood", int(recipe["fuel_cost"]))
 	var result: Dictionary = sim.craft("smelt_iron")
-	check(result["crafted"], "sim: craft succeeds with station and inputs")
+	check(result["crafted"], "sim: craft succeeds with station, inputs and fuel")
 	check(sim.material_count("iron_ingot") == 1 and sim.material_count("iron_ore") == 0,
 		"sim: inputs consumed and output added by the sim rule")
 	check(sim.skill_xp("blacksmithing") == recipe["base_skill_xp"], "sim: skill XP granted by the sim rule")
@@ -179,7 +185,7 @@ func _test_sim_extension() -> void:
 	var heavy: Dictionary = sim.combat_skill("prototype_heavy_strike")
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
 	check(sim.combat_skill_ids().size() == 3, "combat: three prototype skills")
-	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 3, "combat: enemy view")
+	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 4, "combat: enemy view")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
 	var rt: Dictionary = sim.realtime()
 	check(rt["round_seconds"] > 0.0 and rt["behaviours"].has("fast") and rt["dash"]["invulnerable_seconds"] > 0.0,
@@ -277,3 +283,50 @@ func _test_sim_extension() -> void:
 		"temper: refused below the skill floor without consuming the catalyst")
 	var snapshot_with_gear: String = sim.export_json()
 	check(snapshot_with_gear.find("fire_resistance") >= 0, "gear: tempered armour is in the save schema")
+
+func _test_sandpit_extension() -> void:
+	# Wave 1 surface: worldgen, loot, kits, fuel and currency routing.
+	if not ClassDB.class_exists(&"WroughtwildSim"):
+		return
+	var sim: RefCounted = ClassDB.instantiate(&"WroughtwildSim")
+	sim.load_tuning(load("res://scripts/sim.gd").get_tuning_directory())
+
+	var a: Dictionary = sim.world_map(5)
+	var b: Dictionary = sim.world_map(5)
+	check(not a.is_empty() and a["width"] > 0, "sandpit: world map generates")
+	check(a["heights"] == b["heights"] and a["spawn_x"] == b["spawn_x"]
+		and a["nodes"].size() == b["nodes"].size(), "sandpit: world map deterministic per seed")
+	var gate_dx: float = float(a["gate_x"] - a["spawn_x"])
+	var gate_dz: float = float(a["gate_z"] - a["spawn_z"])
+	check(sqrt(gate_dx * gate_dx + gate_dz * gate_dz) >= 45.0, "sandpit: gate far from spawn")
+	check(a["nodes"].size() > 0 and a["packs"].size() > 0, "sandpit: nodes and packs placed")
+	check(a["biome_defs"].size() == 4, "sandpit: four biomes defined")
+
+	check(sim.kit_station("workbench_kit") == "workbench", "sandpit: workbench kit maps to workbench")
+	check(sim.kit_station("forge_kit") == "forge_basic", "sandpit: forge kit maps to the forge")
+	check(sim.kit_station("wood") == "", "sandpit: non-kits map to nothing")
+	check(sim.kit_item_ids().size() == 2, "sandpit: two kits exist")
+
+	var drops_a: Dictionary = sim.enemy_loot("stone_husk", 77)
+	var drops_b: Dictionary = sim.enemy_loot("stone_husk", 77)
+	check(drops_a == drops_b, "sandpit: loot deterministic per seed")
+	check(drops_a.get("stone", 0) >= 2, "sandpit: husks always pay stone")
+
+	# Currency loot lands in the purse, material loot in the pack.
+	var before: int = sim.currency_count("trade_currency")
+	sim.add_materials({"trade_currency": 3, "stone": 2})
+	check(sim.currency_count("trade_currency") == before + 3, "sandpit: currency loot routed to the purse")
+	check(sim.material_count("stone") == 2, "sandpit: material loot routed to the pack")
+	check(sim.inventory().get("trade_currency", 0) == 0, "sandpit: currency never sits in the pack")
+
+	# Hand-crafting through the extension: the start-with-nothing rung.
+	var kit_recipe: Dictionary = sim.recipe("workbench_kit")
+	check(kit_recipe["hand_craftable"] and kit_recipe["station_available"],
+		"sandpit: workbench kit is hand-craftable anywhere")
+	sim.add_material("wood", 8)
+	check(sim.craft("workbench_kit")["crafted"], "sandpit: kit crafts with no station")
+	check(sim.material_count("workbench_kit") == 1, "sandpit: kit in the pack")
+	check(sim.fuel_value_held() == 0, "sandpit: fuel meter reads an empty pack")
+	sim.add_material("wood", 2)
+	sim.add_material("charcoal", 1)
+	check(sim.fuel_value_held() == 6, "sandpit: fuel meter sums wood and charcoal values")

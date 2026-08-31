@@ -80,7 +80,9 @@ struct CraftingTable {
     double salvageReturnFraction = 0.0;
     RepetitionDecay repetitionDecay;
     std::map<std::string, int> fuels; // item id -> fuel value per unit
+    std::vector<std::string> currencies; // ids that live in the purse, not the pack
 
+    bool isCurrency(const std::string& id) const;
     const Station* findStation(const std::string& id) const;
     const Recipe* findRecipe(const std::string& id) const;
     const Order* findOrder(const std::string& id) const;

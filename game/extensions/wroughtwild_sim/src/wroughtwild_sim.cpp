@@ -1062,7 +1062,15 @@ void WroughtwildSim::add_materials(const Dictionary& amounts) {
             converted[to_std(String(keys[i]))] = amount;
         }
     }
-    wroughtwild::economy::add(player_->inventory, converted);
+    // Currency ids (crafting.json "currencies") land in the purse; everything
+    // else is a carried material.
+    for (const auto& [id, amount] : converted) {
+        if (tuning_->crafting.isCurrency(id)) {
+            player_->currency[id] += amount;
+        } else {
+            player_->inventory[id] += amount;
+        }
+    }
 }
 
 Dictionary WroughtwildSim::drop_inventory() {

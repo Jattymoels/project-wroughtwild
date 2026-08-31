@@ -230,5 +230,8 @@
     "wood": 1,
     "charcoal": 4,
     "design_purpose": "Fuel value per unit when a station process burns fuel. Charcoal concentrates wood four-to-one so refining fuel is worth forge time; the first rung of the power ladder (crafting-and-skills.md four gates)."
-  }
+  },
+  "currencies": [
+    "trade_currency"
+  ]
 }

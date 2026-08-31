@@ -1,5 +1,7 @@
 #include "wroughtwild/tuning.h"
 
+#include <algorithm>
+
 #include "wroughtwild/json.h"
 
 namespace wroughtwild::tuning {
@@ -52,6 +54,9 @@ const Station* CraftingTable::findStation(const std::string& id) const { return 
 const Recipe* CraftingTable::findRecipe(const std::string& id) const { return findById(recipes, id); }
 const Order* CraftingTable::findOrder(const std::string& id) const { return findById(orders, id); }
 const CatalystProcess* CraftingTable::findCatalystProcess(const std::string& id) const { return findById(catalystProcesses, id); }
+bool CraftingTable::isCurrency(const std::string& id) const {
+    return std::find(currencies.begin(), currencies.end(), id) != currencies.end();
+}
 const Station* CraftingTable::findStationForKit(const std::string& kitItemId) const {
     if (kitItemId.empty()) return nullptr;
     for (const auto& station : stations)
@@ -126,6 +131,9 @@ CraftingTable loadCrafting(const std::string& path) {
             table.catalystProcesses.push_back(std::move(process));
         }
     }
+
+    if (auto currencies = doc->find("currencies"))
+        table.currencies = readStringArray(*currencies);
 
     if (auto fuels = doc->find("fuels")) {
         for (const auto& [item, value] : fuels->asObject())
