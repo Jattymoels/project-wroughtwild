@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "prototype-placeholder",
+  "craft_skills": [
+    {
+      "id": "blacksmithing",
+      "display_name": "Blacksmithing",
+      "maximum_prototype_level": 5,
+      "xp_required_by_level": [0, 50, 125, 225, 350],
+      "unlock_summary": {
+        "1": ["iron_fittings"],
+        "2": ["efficient_smelting"],
+        "3": ["mine_reinforcement"],
+        "4": ["iron_chest_armour"],
+        "5": ["ember_catalyst_tempering"]
+      }
+    }
+  ],
+  "combat_skills": [
+    {
+      "id": "prototype_area_strike",
+      "display_name": "Area Strike",
+      "tags": ["attack", "physical", "area"],
+      "base_damage": 12,
+      "base_area_radius": 2.5,
+      "cooldown_seconds": 0.8
+    },
+    {
+      "id": "prototype_heavy_strike",
+      "display_name": "Heavy Strike",
+      "tags": ["attack", "physical", "single_target"],
+      "base_damage": 28,
+      "cooldown_seconds": 1.4
+    },
+    {
+      "id": "prototype_dash",
+      "display_name": "Dash",
+      "tags": ["movement"],
+      "distance": 4.0,
+      "cooldown_seconds": 2.5
+    }
+  ]
+}

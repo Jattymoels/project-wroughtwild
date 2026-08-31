@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "prototype-placeholder",
+  "boons": [
+    {
+      "id": "expanding_echo",
+      "display_name": "Expanding Echo",
+      "requires_any_tags": ["area"],
+      "effects": [
+        {"operation": "repeat_every_nth_hit", "hit_count": 3, "damage_multiplier": 0.6}
+      ],
+      "design_purpose": "Amplify area-clear identity"
+    },
+    {
+      "id": "concentrated_force",
+      "display_name": "Concentrated Force",
+      "requires_any_tags": ["area"],
+      "effects": [
+        {"operation": "area_multiplier_against_isolated", "value": 0.7},
+        {"operation": "damage_multiplier_against_isolated", "value": 1.45}
+      ],
+      "design_purpose": "Trade area coverage for boss damage"
+    },
+    {
+      "id": "pressure_harvest",
+      "display_name": "Pressure Harvest",
+      "requires_weakness": "hastened_enemies",
+      "effects": [
+        {"operation": "reward_quantity_multiplier", "value": 1.25}
+      ],
+      "design_purpose": "Create an interaction with an accepted weakness"
+    }
+  ],
+  "weaknesses": [
+    {
+      "id": "hastened_enemies",
+      "display_name": "Hastened Enemies",
+      "effects": [
+        {"operation": "enemy_speed_multiplier", "value": 1.2}
+      ],
+      "base_reward_multiplier": 1.15
+    }
+  ],
+  "offer_rules": {
+    "options_per_offer": 3,
+    "allow_incompatible_options": false,
+    "minimum_unweighted_option_count": 1
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "prototype-placeholder",
+  "materials": [
+    {"id": "wood", "display_name": "Wood"},
+    {"id": "iron_ore", "display_name": "Iron Ore"},
+    {"id": "iron_ingot", "display_name": "Iron Ingot"}
+  ],
+  "stations": [
+    {
+      "id": "forge_basic",
+      "display_name": "Basic Forge",
+      "tier": 1,
+      "supported_processes": ["shape", "basic_temper"]
+    },
+    {
+      "id": "forge_improved",
+      "display_name": "Improved Forge",
+      "tier": 2,
+      "supported_processes": ["shape", "basic_temper", "catalyst_temper"]
+    }
+  ],
+  "recipes": [
+    {
+      "id": "iron_fittings",
+      "display_name": "Iron Fittings",
+      "station": "forge_basic",
+      "minimum_skill": {"blacksmithing": 1},
+      "inputs": {"iron_ingot": 2},
+      "outputs": {"iron_fittings": 4},
+      "base_skill_xp": 8,
+      "use_categories": ["orders", "construction", "infrastructure"]
+    },
+    {
+      "id": "iron_chest_armour",
+      "display_name": "Iron Chest Armour",
+      "station": "forge_improved",
+      "minimum_skill": {"blacksmithing": 4},
+      "inputs": {"iron_ingot": 12},
+      "outputs": {"iron_chest_armour": 1},
+      "base_skill_xp": 35,
+      "use_categories": ["equipment"]
+    }
+  ],
+  "orders": [
+    {
+      "id": "reinforce_old_mine",
+      "display_name": "Reinforce the Old Mine",
+      "required_outputs": {"iron_fittings": 24},
+      "rewards": {"trade_currency": 40, "blacksmithing_xp": 60},
+      "world_effect": "old_mine_reinforced"
+    }
+  ],
+  "salvage_return_fraction": 0.5,
+  "repetition_decay": {
+    "enabled": true,
+    "full_xp_repetitions": 5,
+    "minimum_multiplier": 0.2,
+    "order_crafting_ignores_decay": true
+  }
+}
