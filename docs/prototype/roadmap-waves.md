@@ -34,24 +34,51 @@ Start with nothing in a seed-generated bounded world and survive/build up.
 Out of scope for wave 1: dig-anywhere voxel terrain (excluded by D-001),
 day/night, weather, hunger, mob respawning waves.
 
+## Wave 1.5 — First-Person Feel *(next; D-012)*
+
+Combat goes first-person and the horde becomes trainable, so the feel
+question is answerable in greybox before Wave 2 commits itemisation to it.
+
+- First-person camera as the default (third-person toggle kept for greybox
+  debugging), crosshair, melee reach feedback and basic hit feedback.
+- "Stupid zombie" open-world chasing per D-012: mobs press persistently and
+  bunch while the player stays close (training works), with separation
+  steering so trains form physically; running genuinely away breaks the
+  chase after a dangerous disengage — no eternal aggro, no instant leash.
+- A first cone-shaped area strike so a trained bunch already pays off.
+- Re-examine dash: in first person, movement itself may be the defence
+  (Zombies has no dodge); i-frames may not survive this wave.
+
 ## Wave 2 — Items and Modifiers *(intensive itemisation pass)*
 
 The PoE side: more bases and slots, the modifier/tier pool, rarity, how
 crafted vs dropped vs tempered items relate. Catalyst currency types grow
-here. Balance sims extended to itemisation.
+here. **Carries the D-012 mechanics vocabulary:** modifiers grant damage
+*mechanics*, not just numbers — cone/cleave area, ground effects (fire
+patch, frost floor) the train is led through, damage-over-time tag-and-run
+(bleed, poison, ignite), chill/freeze choke-making, attack/cast speed for
+drill-through single-target play. Each mechanic is a different way of
+moving in first person. Balance sims extended to itemisation.
 
 ## Wave 3 — Mobs, Packs and Their Drops
 
 Mob families and pack composition per biome, elite/champion modifiers on
 mobs, drop tables tied to those modifiers, density tuning toward the
 Diablo/PoE "clear a pack, get a reward" cadence — in the open world, not an
-instance.
+instance. **With D-012:** fewer mobs on screen than PoE but more dangerous;
+aggro chaining ("shriekers" that pull nearby strays into the stream) builds
+the Zombies wave feeling out in the world; speeds tuned so training stays
+skilful rather than trivial.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 
 The innovation layer: run structure, boon/build interaction depth, secrets,
 story-through-runs, dungeon modifiers the player chooses (risk dials). The
-existing trial is the seed of this wave.
+existing trial is the seed of this wave. **With D-012:** horde/wave rooms
+(the CoD Zombies mode distilled — survive escalating waves, spend between
+them), and the deliberate AI contrast: dungeon enemies may grow smarter
+than the open world's stupid zombies, making dungeons feel dangerous in a
+different way, not just denser.
 
 ## Standing constraints
 
