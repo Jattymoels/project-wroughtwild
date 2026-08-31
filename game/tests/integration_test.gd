@@ -18,6 +18,7 @@ var _front: Enemy
 var _back: Enemy
 var _wood_before_death := 0
 var _death_spot := Vector3.ZERO
+var _wood_before_trial := 0
 
 
 func check(condition: bool, label: String) -> void:
@@ -194,6 +195,82 @@ func _physics_process(_delta: float) -> void:
 			check(party.size() == 2 and party[0].enemy_id == &"ash_hound", "ambush: two ash hounds per world.json")
 			for enemy in get_tree().get_nodes_in_group("enemies"):
 				enemy.queue_free()
-		44:
+		46:
+			# Trial: the gate deposits goods and moves the player into the arena.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			_wood_before_trial = sim.material_count("wood")
+			check(_wood_before_trial > 0, "trial: carrying wood before entering")
+			(_scene.get_node("TrialGate") as TrialGate).interact(_player)
+			check(sim.trial_active(), "trial: run opened at the gate")
+			check(sim.material_count("wood") == 0, "trial: goods deposited")
+			check(_player.global_position.x > 60.0, "trial: player moved into the arena")
+			check(_player.work_panel.is_open() and _player.trial.state == "doors", "trial: doors presented")
+			check(not _player.save_game(SAVE_PATH), "trial: saving refused inside the run")
+		48:
+			check(_player.trial.enter_room(0), "trial: first room entered")
+			check(_player.trial.state == "fighting" and _player.combat.alive_enemies().size() == 2, "trial: two whelps spawned")
+			for enemy in _player.combat.alive_enemies():
+				enemy.take_damage(1000.0)
+		50:
+			check(_player.trial.state == "reward" and _player.trial.current_offer.size() >= 1, "trial: clearing the room brings a boon offer")
+			_player.trial.accept_boon(_player.trial.current_offer[0]["id"])
+			check(_player.inventory.get_sim().trial_run_state()["boons"].size() == 1, "trial: boon accepted into the run")
+			check(_player.trial.state == "doors", "trial: back to the doors")
+		52:
+			check(_player.trial.enter_room(1), "trial: slag vault entered")
+			for enemy in _player.combat.alive_enemies():
+				enemy.take_damage(1000.0)
+		54:
+			check(_player.inventory.get_sim().trial_loot().get("iron_ingot", 0) >= 4, "trial: materials room paid run loot")
+			check(_player.trial.enter_room(0), "trial: catalyst shrine entered")
+			for enemy in _player.combat.alive_enemies():
+				enemy.take_damage(1000.0)
+		56:
+			check(_player.inventory.get_sim().trial_loot().get("ember_catalyst", 0) == 1, "trial: catalyst recovered into run loot")
+			check(_player.inventory.get_sim().trial_stage()["can_bank_and_exit"], "trial: bank-out offered before the boss")
+			check(_player.trial.enter_room(0), "trial: pushing on to the Tyrant")
+			var boss: Boss = null
+			for enemy in _player.combat.alive_enemies():
+				if enemy is Boss:
+					boss = enemy
+			check(boss != null and boss.life == 160.0 and boss.breath_damage == 42.0, "trial: boss numbers from the sim")
+			if boss != null:
+				# Breath telegraph then fire: out of the cone nothing lands.
+				_player.combat.invulnerable_left = 0.0
+				boss.force_inhale()
+				_player.global_position = boss.global_position + Vector3(0, 0, 8)
+				boss.look_at(boss.global_position + Vector3(0, 0, -1), Vector3.UP)
+				check(boss.breathe(_player) == 0.0, "trial: breath misses outside the cone")
+				boss.force_inhale()
+				boss.look_at(_player.global_position, Vector3.UP)
+				var burned := boss.breathe(_player)
+				check(burned >= 42.0 * 0.9 and burned <= 42.0 * 1.1, "trial: unresisted breath lands in band (%.1f)" % burned)
+				boss.take_damage(1000.0)
+		58:
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			check(not sim.trial_active(), "trial: run closed after the boss")
+			check(sim.world_effect_active("stonecut_blocks"), "trial: completion unlock recorded")
+			check(sim.material_count("wood") == _wood_before_trial, "trial: deposit restored")
+			check(sim.material_count("ember_catalyst") == 1 and sim.material_count("iron_ingot") >= 4, "trial: loot banked")
+			check(_player.global_position.x < 30.0, "trial: player back at the gate")
+			check(_player.combat.life == _player.combat.max_life, "trial: life restored on return")
+		60:
+			# Death contract through the engine path.
+			(_scene.get_node("TrialGate") as TrialGate).interact(_player)
+			check(_player.trial.enter_room(1), "trial: second run, hound kennels")
+			_player.combat.invulnerable_left = 0.0
+			_player.combat.life = 1.0
+			var hound: Enemy = _player.combat.alive_enemies()[0]
+			hound.force_attack()
+		62:
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			check(not sim.trial_active(), "trial: death ends the run")
+			check(sim.material_count("wood") == _wood_before_trial, "trial: deposit survives death")
+			check(sim.material_count("ember_catalyst") == 1, "trial: earlier catalyst survives death")
+			check(_player.combat.alive_enemies().is_empty(), "trial: arena cleared after death")
+			check(_player.global_position.x < 30.0, "trial: woke at the gate")
+			for child in get_tree().current_scene.get_children():
+				check(not (child is DroppedBundle), "trial: no pack dropped for a trial death")
+		64:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)

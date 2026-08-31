@@ -30,6 +30,13 @@ project diffs in Git; `.uid` files are committed on purpose.
    load (`user://wroughtwild_save.json`). Harvesting the iron node can
    trigger the Old Mine ambush from `world.json` until the mine order is
    fulfilled; dying drops your materials in a pack where you fell.
+4. The **trial gate** stands east of camp. E stows your goods and opens the
+   run: pick a door, clear the room in the arena, take or refuse what the
+   shrine offers, bank out after the catalyst shrine or push on to the Forge
+   Tyrant. Its breath is telegraphed (it glows and the HUD warns you); dash
+   through it or step out of the cone. Dying in the trial returns you to the
+   gate with your deposit and any catalyst; run materials are lost. E inside
+   the run brings the doors back if you closed the panel.
 
 ## Build the rules extension (once per checkout, and after `sim/` changes)
 
@@ -65,10 +72,11 @@ before every commit that touches `game/`.
 ```text
 project.godot           Project settings, input map, autoloads (text)
 scenes/                 Greybox scenes (player, resource node, placed block, forge site, order board,
-                        enemy, dropped pack, valley)
+                        enemy, boss, dropped pack, trial gate, trial arena, valley)
 scripts/                Presentation/input scripts: player, placement, player combat (timers and
-                        targeting only), enemy behaviours, station site, order board, HUD, work
-                        panel, save manager. No rules live here (ADR-0003).
+                        targeting only), enemy behaviours, boss, trial controller (doors/fight/
+                        reward flow over the sim's TrialSession), station site, order board, HUD,
+                        work panel, save manager. No rules live here (ADR-0003).
 extensions/             wroughtwild_sim GDExtension source + CMake (binds ../sim)
 bin/                    .gdextension descriptor (committed) + built binaries (ignored)
 tests/                  Headless unit + integration tests

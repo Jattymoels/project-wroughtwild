@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://scenes/resource_node.tscn" id="2_resource"]
 [ext_resource type="PackedScene" path="res://scenes/station_site.tscn" id="3_station"]
 [ext_resource type="PackedScene" path="res://scenes/order_board.tscn" id="4_board"]
+[ext_resource type="PackedScene" path="res://scenes/trial_gate.tscn" id="5_gate"]
+[ext_resource type="PackedScene" path="res://scenes/trial_arena.tscn" id="6_arena"]
 
 [sub_resource type="BoxShape3D" id="floor_shape"]
 size = Vector3(40, 1, 40)
@@ -46,3 +48,9 @@ position = Vector3(5, 0, 5)
 [node name="MineBoard" parent="." instance=ExtResource("4_board")]
 position = Vector3(-5, 0, -5)
 rotation = Vector3(0, 0.785398, 0)
+
+[node name="TrialGate" parent="." instance=ExtResource("5_gate")]
+position = Vector3(16, 0, 0)
+
+[node name="TrialArena" parent="." instance=ExtResource("6_arena")]
+position = Vector3(90, 0, 0)

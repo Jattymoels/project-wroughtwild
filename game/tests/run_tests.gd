@@ -93,6 +93,8 @@ func _test_scene_instantiation() -> void:
 		"scene: default material family")
 	check(scene.get_node("ForgeSite") is StationSite, "scene: forge site present")
 	check(scene.get_node("MineBoard") is OrderBoard, "scene: mine order board present")
+	check(scene.get_node("TrialGate") is TrialGate and scene.get_node("TrialArena") is TrialArena,
+		"scene: trial gate and arena present")
 	get_root().remove_child(scene)
 	scene.free()
 
@@ -208,3 +210,39 @@ func _test_sim_extension() -> void:
 	check(dropped.get("wood", 0) >= 3 and sim.inventory().is_empty(), "death: drop empties carried materials")
 	sim.add_materials(dropped)
 	check(sim.material_count("wood") == dropped["wood"], "death: recovered pack restores them")
+
+	# Trial run driven the way the engine will drive it: begin room, fight
+	# elsewhere, resolve. The sim owns the deposit, offers, loot and contract.
+	var wood_deposit: int = sim.material_count("wood")
+	check(sim.trial_start(99), "trial: run opens")
+	check(not sim.trial_start(1), "trial: only one run at a time")
+	check(sim.material_count("wood") == 0, "trial: carried materials deposited at the gate")
+	var stage: Dictionary = sim.trial_stage()
+	check(stage["index"] == 0 and stage["choices"].size() == 2, "trial: first stage offers two doors")
+	var room: Dictionary = sim.trial_begin_room(0)
+	check(room["started"] and room["encounter"].size() == 2 and room["seed"] != 0, "trial: room begun with an encounter and seed")
+	check(sim.trial_stage()["room_in_progress"], "trial: room in progress")
+	var outcome: Dictionary = sim.trial_resolve_room(true)
+	check(outcome["reward_type"] == "boon_offer" and outcome["boon_offer"].size() >= 1, "trial: boon offer after victory")
+	check(sim.trial_accept_boon(outcome["boon_offer"][0]["id"]), "trial: boon accepted")
+	check(sim.trial_run_state()["boons"].size() == 1, "trial: run state shows the boon")
+	check(sim.combat_mods() != {} and (sim.combat_mods()["repeat_hit_count"] > 0 or sim.combat_mods()["isolated_damage_multiplier"] > 1.0),
+		"trial: accepted boon changes combat mods")
+	check(sim.trial_begin_room(1)["started"], "trial: materials room begun")
+	outcome = sim.trial_resolve_room(true)
+	check(outcome["reward_type"] == "materials" and outcome["materials"].get("iron_ingot", 0) >= 4, "trial: materials paid into run loot")
+	check(sim.trial_begin_room(0)["started"] and sim.trial_resolve_room(true)["catalyst_recovered"], "trial: catalyst recovered")
+	check(sim.trial_stage()["can_bank_and_exit"], "trial: bank-out point reached")
+	check(sim.trial_bank_and_exit() and sim.trial_finished() and not sim.trial_player_died(), "trial: banked out")
+	check(sim.material_count("wood") == wood_deposit, "trial: deposit restored after banking")
+	check(sim.material_count("ember_catalyst") == 1 and sim.material_count("iron_ingot") >= 4, "trial: loot banked")
+	check(sim.trial_run_state()["boons"].is_empty(), "trial: boons cleared at run end")
+	check(sim.trial_end() and not sim.trial_active(), "trial: run closed")
+
+	# Death contract through the host path.
+	check(sim.trial_start(5) and sim.trial_begin_room(0)["started"], "trial: second run begun")
+	outcome = sim.trial_resolve_room(false)
+	check(outcome["died"] and outcome["finished"], "trial: host-reported defeat ends the run")
+	check(sim.material_count("wood") == wood_deposit and sim.material_count("ember_catalyst") == 1,
+		"trial: deposit and earlier catalyst survive death")
+	check(sim.trial_end(), "trial: failed run closed")

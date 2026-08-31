@@ -556,6 +556,52 @@ void testTrialContracts(const tuning::Tuning& t) {
     }
 }
 
+void testTrialRealtimeHost(const tuning::Tuning& t) {
+    boons::BuildTags tags = {"attack", "physical", "area", "single_target", "movement"};
+
+    // beginRoom/resolveRoom drive the same session as enterRoom, but the
+    // host fights in between.
+    economy::PlayerEconomy player(t);
+    player.inventory["wood"] = 4;
+    trial::TrialSession session(t, player, tags, 99);
+
+    auto start = session.beginRoom(0);
+    check(start.started && start.roomId == "ember_nests" && start.encounter.size() == 2,
+          "host trial: beginRoom hands back the room's encounter");
+    check(start.seed != 0 && session.roomInProgress(), "host trial: room in progress with a seed");
+    check(!session.beginRoom(1).started, "host trial: cannot begin a second room mid-fight");
+
+    auto outcome = session.resolveRoom(true);
+    check(outcome.rewardType == "boon_offer" && !outcome.boonOffer.empty(),
+          "host trial: victory prepares the room's reward");
+    check(!session.roomInProgress() && session.currentStageIndex() == 1,
+          "host trial: stage advances after resolution");
+    check(session.acceptBoonFromOffer(outcome.boonOffer.front()->id), "host trial: boon accepted");
+    check(session.currentMods().repeatHitCount > 0 || session.currentMods().isolatedDamageMultiplier > 1.0,
+          "host trial: accepted boon changes the mods the host reads");
+
+    check(session.beginRoom(1).started, "host trial: materials room begun");
+    outcome = session.resolveRoom(true);
+    check(outcome.rewardType == "materials" && outcome.materials.count("iron_ingot") == 1,
+          "host trial: materials room pays into run loot");
+
+    // Defeat resolved by the host applies the death contract.
+    check(session.beginRoom(0).started, "host trial: shrine room begun");
+    outcome = session.resolveRoom(false);
+    check(session.finished() && session.playerDied(), "host trial: host-reported defeat ends the run");
+    check(player.inventory["wood"] == 4 && player.inventory.count("iron_ingot") == 0,
+          "host trial: deposit restored, run materials lost on death");
+
+    // Abandoning mid-run is a failure with the same contract.
+    economy::PlayerEconomy quitter(t);
+    quitter.inventory["wood"] = 2;
+    trial::TrialSession quitRun(t, quitter, tags, 5);
+    quitRun.beginRoom(0);
+    quitRun.abandon();
+    check(quitRun.finished() && quitRun.playerDied() && quitter.inventory["wood"] == 2,
+          "host trial: abandon applies the death contract and returns the deposit");
+}
+
 void testSaveLoad(const tuning::Tuning& t) {
     economy::PlayerEconomy player(t);
     player.inventory["wood"] = 15;
@@ -626,6 +672,7 @@ int main(int argc, char** argv) {
     testCombatNumbers(t);
     testCombat(t);
     testTrialContracts(t);
+    testTrialRealtimeHost(t);
     testSaveLoad(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
