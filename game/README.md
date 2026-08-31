@@ -41,7 +41,7 @@ purpose.
    **B** toggle build mode, **Tab** cycle shapes and crafted station kits,
    **LMB** place (or harvest outside build mode), **X** remove block, **R**
    rotate preview, **1** area strike, **2** heavy strike, **Shift** dash
-   (brief invulnerability), **Esc** close a panel, **F5** save, **F9** load
+   (a pure movement burst - no invulnerability, D-012), **Esc** close a panel, **F5** save, **F9** load
    (`user://wroughtwild_save.json`). Dying drops your materials in a pack
    where you fell; walk back for it.
 4. **The first hour, from nothing:** harvest trees (E) → **C** → craft the
@@ -96,8 +96,10 @@ GODOT=/path/to/Godot_v4.5-stable ./run_headless_checks.sh
 ```
 
 Runs project import → unit tests (`tests/run_tests.gd`) → in-engine physics
-integration test of the full placement loop (`tests/integration.tscn`) → a
-120-frame smoke run of the main scene. Non-zero exit on any failure. Run this
+integration test of the full placement loop (`tests/integration.tscn`) → the
+D-012 horde test (`tests/horde.tscn`: chase persistence, training
+separation, give-up, cone strike, dash) → a 120-frame smoke run of the main
+scene. Non-zero exit on any failure. Run this
 before every commit that touches `game/`.
 
 ## Layout
