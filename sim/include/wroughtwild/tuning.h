@@ -255,10 +255,43 @@ struct ConstructionTable {
     const ShapeDef* findShape(const std::string& id) const;
 };
 
+// --- combat_realtime.json ----------------------------------------------------
+// Time-and-space tunables for the real-time engine host (ADR-0003). Numbers
+// that affect damage, life or mitigation never live here.
+
+struct BehaviourRealtime {
+    double moveSpeedMps = 0.0;
+    double attackRangeM = 0.0;
+    double preferredDistanceM = 0.0; // 0 = close to melee range
+    double windupSeconds = 0.0;
+};
+
+struct BossRealtime {
+    double moveSpeedMps = 0.0;
+    double clawRangeM = 0.0;
+    double clawWindupSeconds = 0.0;
+    double breathRangeM = 0.0;
+    double breathConeDegrees = 0.0;
+    double breathTelegraphSeconds = 0.0;
+};
+
+struct RealtimeTable {
+    double roundSeconds = 1.0; // sim rounds -> seconds
+    double playerMoveSpeedMps = 0.0;
+    double playerMeleeReachM = 0.0;
+    std::map<std::string, BehaviourRealtime> behaviours; // keyed by EnemyDef::behaviour
+    BossRealtime boss;
+    double dashInvulnerableSeconds = 0.0;
+    double dashDurationSeconds = 0.0;
+
+    const BehaviourRealtime* findBehaviour(const std::string& id) const;
+};
+
 // --- loading -----------------------------------------------------------------
 
 CraftingTable loadCrafting(const std::string& path);
 ConstructionTable loadConstruction(const std::string& path);
+RealtimeTable loadRealtime(const std::string& path);
 SkillTable loadSkills(const std::string& path);
 ItemTable loadItems(const std::string& path);
 BoonTable loadBoons(const std::string& path);
@@ -274,6 +307,7 @@ struct Tuning {
     BoonTable boons;
     WorldTable world;
     TrialTable trial;
+    RealtimeTable realtime;
 };
 
 Tuning loadAll(const std::string& tuningDirectory);

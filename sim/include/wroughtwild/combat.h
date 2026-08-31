@@ -7,6 +7,7 @@
 
 #include <cstdint>
 #include <functional>
+#include <random>
 #include <string>
 #include <vector>
 
@@ -23,10 +24,39 @@ struct CombatMods {
     int repeatHitCount = 0; // 0 = expanding_echo off
     double repeatDamageMultiplier = 0.0;
     double isolatedDamageMultiplier = 1.0; // concentrated_force vs a lone enemy
+    // Spatial only: the real-time host scales area radius by this against a
+    // lone enemy; the round model has no geometry to apply it to.
+    double isolatedAreaMultiplier = 1.0;
 };
 
 // Interprets the effect operations of every active boon and weakness.
 CombatMods buildMods(const tuning::BoonTable& table, const boons::RunState& run);
+
+// Per-hit numbers for a real-time host (ADR-0003: the sim owns the numbers,
+// the engine owns time and space). One stream per fight: the same seed and
+// the same sequence of calls always yield the same damage, so a recorded
+// real-time fight replays identically in tests. runEncounter uses this same
+// stream internally, so a hit in the engine and a hit in the balance
+// simulator are computed by one function.
+class HitStream {
+public:
+    explicit HitStream(uint64_t seed) : rng_(seed) {}
+
+    // Damage one player hit of `skill` deals. isolated: the target is the only
+    // living enemy (concentrated_force). Applies expanding_echo's repeat bonus
+    // on every nth hit of the stream.
+    double playerHit(const tuning::CombatSkillDef& skill, const CombatMods& mods, bool isolated);
+
+    // Damage the player takes from one enemy or boss hit, after armour or
+    // resistance mitigation.
+    double enemyHit(double rawDamage, const std::string& damageType,
+                    const stats::DerivedStats& playerStats, const tuning::PlayerBase& base);
+
+private:
+    std::mt19937_64 rng_;
+    std::uniform_real_distribution<double> variance_{0.9, 1.1};
+    int hitCounter_ = 0;
+};
 
 struct Combatant {
     std::string id;

@@ -17,6 +17,7 @@ Statuses:
 | D-006 | Death | Trials protect stored possessions; open-world death drops carried inventory; binding eventually protects important gear | Provisional | Death and recovery playtest |
 | D-007 | Crafting economy | Combine physical materials and infrastructure with rare crafting catalysts from combat and exploration | High-priority open | Itemisation prototype begins |
 | D-008 | Input | Initial building interface targets mouse and keyboard only | Accepted | Controller scope is considered |
+| D-010 | Combat | The sim owns combat numbers (derived stats, mitigation, boon mods, per-hit damage, trial structure); the engine owns time and space (movement, hitboxes, timers); `round_seconds` bridges the two clocks; the round-based encounter stays the balance oracle ([ADR-0003](ADR-0003-combat-authority.md)) | Accepted | Real-time feel needs a rule the round model cannot express, or a second combat archetype is added |
 | D-009 | Engine | Godot 4.5-stable (`4.5.stable.official.876b29033`) is the prototype engine; the engine project lives in `game/`, gameplay rules stay in the engine-neutral `sim/` library bound via GDExtension; `godot-cpp` is the only approved third-party dependency ([ADR-0001](ADR-0001-engine-selection.md)) | Accepted | Terrain scale, world streaming, construction density or visual targets outgrow Godot (ADR-0001 exit condition) |
 
 ## Proposals awaiting acceptance

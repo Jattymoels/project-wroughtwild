@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "prototype-placeholder",
+  "round_seconds": 1.0,
+  "player": {
+    "move_speed_mps": 5.0,
+    "melee_reach_m": 2.2,
+    "design_purpose": "move_speed_mps sets the pace of positioning against enemies whose speeds are below. melee_reach_m is how far in front of the player a single-target strike connects."
+  },
+  "behaviours": {
+    "melee": {
+      "move_speed_mps": 3.5,
+      "attack_range_m": 1.8,
+      "windup_seconds": 0.4,
+      "design_purpose": "Slower than the player so kiting works, but relentless; the wind-up is the tell for a dodge."
+    },
+    "ranged": {
+      "move_speed_mps": 2.5,
+      "attack_range_m": 9.0,
+      "preferred_distance_m": 7.0,
+      "windup_seconds": 0.6,
+      "design_purpose": "Keeps its distance and chips with fire so the player learns fire damage exists before the boss; closing on it is the counter."
+    },
+    "fast": {
+      "move_speed_mps": 6.5,
+      "attack_range_m": 1.6,
+      "windup_seconds": 0.25,
+      "design_purpose": "Outruns the player; packs punish standing still and reward area strikes. The hastened weakness multiplies this."
+    }
+  },
+  "boss": {
+    "move_speed_mps": 3.0,
+    "claw_range_m": 2.6,
+    "claw_windup_seconds": 0.5,
+    "breath_range_m": 9.0,
+    "breath_cone_degrees": 70.0,
+    "breath_telegraph_seconds": 1.0,
+    "design_purpose": "The breath telegraph must be long enough to read and dash, but the dash cooldown (2.5 s) exceeds the breath period (2 rounds) so fire is never fully dodgeable: resistance preparation stays mandatory."
+  },
+  "skills": {
+    "prototype_dash": {
+      "invulnerable_seconds": 0.35,
+      "duration_seconds": 0.25
+    },
+    "design_purpose": "Dash grants a short invulnerability window matching the round model's 'dodges this round' rule; its distance and cooldown live in skills.json."
+  },
+  "design_purpose": "round_seconds is the bridge between the sim's round-based encounter (the balance oracle) and real time: attack_period_rounds, breath periods and skill cooldowns become seconds by multiplying by it. Everything else here is time-and-space feel that the round model cannot express; damage, life and mitigation never live in this file (ADR-0003)."
+}

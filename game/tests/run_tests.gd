@@ -170,3 +170,31 @@ func _test_sim_extension() -> void:
 		and sim.order_fulfilled("reinforce_old_mine"), "save: skills, stations and orders round-trip")
 	check(not sim.import_json("{not json"), "save: malformed text rejected")
 	check(sim.has_station("forge_basic"), "save: rejected import leaves state untouched")
+
+	# Combat numbers (ADR-0003): everything damage-related is asked of the sim.
+	var stats: Dictionary = sim.derived_stats()
+	check(stats["max_life"] == 100.0 and stats["armour"] == 0.0, "combat: bare derived stats")
+	var heavy: Dictionary = sim.combat_skill("prototype_heavy_strike")
+	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
+	check(sim.combat_skill_ids().size() == 3, "combat: three prototype skills")
+	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 3, "combat: enemy view")
+	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
+	var rt: Dictionary = sim.realtime()
+	check(rt["round_seconds"] > 0.0 and rt["behaviours"].has("fast") and rt["dash"]["invulnerable_seconds"] > 0.0,
+		"combat: realtime tunables")
+	check(sim.combat_mods()["enemy_speed_multiplier"] == 1.0, "combat: no mods outside a run")
+	check(absf(sim.mitigate(100.0, "physical") - 100.0) < 0.000001, "combat: no armour, no mitigation")
+
+	sim.begin_fight(42)
+	var first: Array = []
+	for i in 5:
+		first.append(sim.player_hit_damage("prototype_heavy_strike", false))
+	sim.begin_fight(42)
+	var replay_ok := true
+	for i in 5:
+		if sim.player_hit_damage("prototype_heavy_strike", false) != first[i]:
+			replay_ok = false
+	check(replay_ok, "combat: hit stream replays per seed")
+	check(first[0] >= 28.0 * 0.9 and first[0] <= 28.0 * 1.1, "combat: hit inside variance band")
+	var fire: float = sim.enemy_hit_damage(40.0, "fire")
+	check(fire >= 36.0 and fire <= 44.0, "combat: unresisted fire lands in band")
