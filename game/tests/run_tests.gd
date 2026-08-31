@@ -91,6 +91,8 @@ func _test_scene_instantiation() -> void:
 		"scene: per-instance material family override applies")
 	check(scene.get_node("WoodNode1").material_family == &"wood",
 		"scene: default material family")
+	check(scene.get_node("ForgeSite") is StationSite, "scene: forge site present")
+	check(scene.get_node("MineBoard") is OrderBoard, "scene: mine order board present")
 	get_root().remove_child(scene)
 	scene.free()
 
@@ -138,3 +140,22 @@ func _test_sim_extension() -> void:
 	check(sim.material_count("wood") == cost + refund, "sim: refund returned to the family")
 	check(not sim.consume_material("wood", 999), "sim: consume refuses overdraw")
 	check(sim.consume_material("wood", 1), "sim: consume succeeds within holdings")
+
+	# Stations, orders and skill views used by the HUD and work panel.
+	var forge: Dictionary = sim.station("forge_basic")
+	check(forge.get("display_name", "") == "Basic Forge" and forge["available"], "sim: station view (already built above)")
+	check(not sim.can_build_station("forge_basic"), "sim: built station not buildable again")
+	check(sim.station_ids().has("forge_improved") and not sim.can_build_station("forge_improved"),
+		"sim: upgrade unaffordable before the order pays out")
+	var progress: Dictionary = sim.skill_progress("blacksmithing")
+	check(progress["level"] == 1 and progress["next_level_xp"] == 50, "sim: skill progress view")
+	check(sim.recipe_feeds_open_order("iron_fittings"), "sim: fittings feed the open mine order")
+	var order: Dictionary = sim.order("reinforce_old_mine")
+	check(order["required_outputs"].get("iron_fittings", 0) == 24 and not order["fulfilled"], "sim: order view")
+	check(sim.fulfill_order("reinforce_old_mine")["missing_outputs"], "sim: order refused without fittings")
+	sim.add_material("iron_fittings", 24)
+	check(sim.fulfill_order("reinforce_old_mine")["fulfilled"], "sim: order fulfilled")
+	check(sim.currency_count("trade_currency") == 40 and sim.inventory().get("iron_fittings", 0) == 0,
+		"sim: order paid currency and consumed fittings")
+	check(sim.skill_progress("blacksmithing")["level"] >= 2, "sim: order XP reward levelled Blacksmithing")
+	check(sim.fulfill_order("reinforce_old_mine")["already_fulfilled"], "sim: second delivery refused")

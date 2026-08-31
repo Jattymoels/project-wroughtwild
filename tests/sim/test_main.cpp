@@ -47,6 +47,26 @@ void testTuningLoads(const tuning::Tuning& t) {
           "construction: grid and range load");
 }
 
+void testOrderDemandAndStationChecks(const tuning::Tuning& t) {
+    economy::PlayerEconomy player(t);
+    check(!player.canBuildStation("forge_basic"), "station check: unaffordable when empty");
+    player.inventory["wood"] = 15;
+    player.inventory["iron_ore"] = 4;
+    check(player.canBuildStation("forge_basic"), "station check: affordable with build_cost");
+    check(player.inventory["wood"] == 15, "station check: checking pays nothing");
+    check(!player.canBuildStation("forge_improved"), "station check: upgrade needs the base station");
+    check(player.buildStation("forge_basic"), "station check: build after check succeeds");
+    check(!player.canBuildStation("forge_basic"), "station check: already built is not buildable");
+
+    check(player.recipeFeedsOpenOrder("iron_fittings"), "order demand: fittings feed the open mine order");
+    check(!player.recipeFeedsOpenOrder("smelt_iron"), "order demand: ingots feed no order directly");
+    check(!player.orderFulfilled("reinforce_old_mine"), "order demand: order starts open");
+    player.inventory["iron_fittings"] = 24;
+    check(player.fulfillOrder("reinforce_old_mine").fulfilled, "order demand: order fulfilled");
+    check(player.orderFulfilled("reinforce_old_mine"), "order demand: order recorded as fulfilled");
+    check(!player.recipeFeedsOpenOrder("iron_fittings"), "order demand: no open demand after fulfilment");
+}
+
 void testShapePlacement(const tuning::Tuning& t) {
     const auto* cube = t.construction.findShape("cube");
     economy::PlayerEconomy player(t);
@@ -533,6 +553,7 @@ int main(int argc, char** argv) {
     testCatalystTemper(t);
     testStationConstruction(t);
     testShapePlacement(t);
+    testOrderDemandAndStationChecks(t);
     testCombat(t);
     testTrialContracts(t);
     testSaveLoad(t);

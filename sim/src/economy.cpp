@@ -135,6 +135,21 @@ PlayerEconomy::OrderResult PlayerEconomy::fulfillOrder(const std::string& orderI
     return result;
 }
 
+bool PlayerEconomy::orderFulfilled(const std::string& orderId) const {
+    return std::find(fulfilledOrders_.begin(), fulfilledOrders_.end(), orderId) != fulfilledOrders_.end();
+}
+
+bool PlayerEconomy::recipeFeedsOpenOrder(const std::string& recipeId) const {
+    const tuning::Recipe* recipe = tuning_.crafting.findRecipe(recipeId);
+    if (!recipe) return false;
+    for (const auto& order : tuning_.crafting.orders) {
+        if (orderFulfilled(order.id)) continue;
+        for (const auto& [outputId, count] : recipe->outputs)
+            if (order.requiredOutputs.count(outputId) > 0) return true;
+    }
+    return false;
+}
+
 bool PlayerEconomy::worldEffectActive(const std::string& effect) const {
     return std::find(worldEffects_.begin(), worldEffects_.end(), effect) != worldEffects_.end();
 }
@@ -163,18 +178,25 @@ int PlayerEconomy::refundRemoval(const std::string& shapeId, const std::string& 
     return refund;
 }
 
-bool PlayerEconomy::buildStation(const std::string& stationId) {
-    const tuning::Station* station = tuning_.crafting.findStation(stationId);
-    if (!station || stationAvailable(stationId)) return false;
+namespace {
 
-    const std::map<std::string, int>* cost = &station->buildCost;
-    if (!station->upgradeFrom.empty()) {
-        if (!stationAvailable(station->upgradeFrom)) return false;
-        cost = &station->upgradeCost;
-    }
+// A station's price list: build_cost, or upgrade_cost when it upgrades a
+// station the player must already have. Null when the station is unknown,
+// already available, or its prerequisite is missing.
+const std::map<std::string, int>* stationCost(const PlayerEconomy& player,
+                                              const tuning::Station* station) {
+    if (!station || player.stationAvailable(station->id)) return nullptr;
+    if (station->upgradeFrom.empty()) return &station->buildCost;
+    return player.stationAvailable(station->upgradeFrom) ? &station->upgradeCost : nullptr;
+}
 
-    // Cost entries name either inventory materials or currency; verify both
-    // sides before paying anything.
+} // namespace
+
+bool PlayerEconomy::canBuildStation(const std::string& stationId) const {
+    const std::map<std::string, int>* cost =
+        stationCost(*this, tuning_.crafting.findStation(stationId));
+    if (!cost) return false;
+    // Cost entries name either inventory materials or currency.
     for (const auto& [id, amount] : *cost) {
         auto inInventory = inventory.find(id);
         int held = inInventory != inventory.end() ? inInventory->second : 0;
@@ -182,6 +204,13 @@ bool PlayerEconomy::buildStation(const std::string& stationId) {
         if (held < amount) held = inCurrency != currency.end() ? inCurrency->second : 0;
         if (held < amount) return false;
     }
+    return true;
+}
+
+bool PlayerEconomy::buildStation(const std::string& stationId) {
+    if (!canBuildStation(stationId)) return false;
+    const std::map<std::string, int>* cost =
+        stationCost(*this, tuning_.crafting.findStation(stationId));
     for (const auto& [id, amount] : *cost) {
         auto inInventory = inventory.find(id);
         if (inInventory != inventory.end() && inInventory->second >= amount)

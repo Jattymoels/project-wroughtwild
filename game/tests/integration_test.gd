@@ -63,5 +63,44 @@ func _physics_process(_delta: float) -> void:
 				"integration: partial refund applied (floor(2 * 0.5) = 1)")
 		10:
 			check(_count_placed_blocks() == 0, "integration: removed block left the scene")
+		12:
+			# Forge site: refused while unaffordable, built through the sim once paid for.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			var forge: StationSite = _scene.get_node("ForgeSite")
+			forge.interact(_player)
+			check(not sim.has_station("forge_basic"), "integration: forge refused without materials")
+			sim.add_material("wood", 15)
+			sim.add_material("iron_ore", 4)
+			forge.interact(_player)
+			check(sim.has_station("forge_basic"), "integration: forge built through the sim")
+			check(sim.material_count("iron_ore") == 0, "integration: forge cost paid from inventory")
+			check(not _player.work_panel.is_open(), "integration: building does not open the panel")
+		14:
+			# Built forge opens the crafting panel; crafting runs the sim rule.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			var forge: StationSite = _scene.get_node("ForgeSite")
+			forge.interact(_player)
+			check(_player.work_panel.is_open(), "integration: built forge opens the crafting panel")
+			sim.add_material("iron_ore", 2)
+			var result: Dictionary = _player.work_panel.craft("smelt_iron")
+			check(result["crafted"], "integration: smelt crafted from the panel")
+			check(sim.material_count("iron_ingot") == 1, "integration: ingot in the shared inventory")
+			check(_player.work_panel.message().begins_with("Crafted"), "integration: panel reports the craft")
+			_player.work_panel.close_panel()
+			check(not _player.work_panel.is_open(), "integration: panel closes")
+		16:
+			# Order board: delivery consumes output, pays currency and changes the world.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			sim.add_material("iron_fittings", 24)
+			(_scene.get_node("MineBoard") as OrderBoard).interact(_player)
+			check(_player.work_panel.is_open(), "integration: order board opens the panel")
+			var delivered: Dictionary = _player.work_panel.deliver()
+			check(delivered["fulfilled"], "integration: order delivered")
+			check(sim.material_count("iron_fittings") == 0, "integration: order consumed the fittings")
+			check(sim.currency_count("trade_currency") == 40, "integration: order paid trade currency")
+			check(sim.world_effect_active("old_mine_reinforced"), "integration: world effect recorded")
+			check(not sim.recipe_feeds_open_order("iron_fittings"), "integration: fittings no longer feed an open order")
+			_player.work_panel.close_panel()
+		18:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)

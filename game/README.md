@@ -59,8 +59,9 @@ before every commit that touches `game/`.
 
 ```text
 project.godot           Project settings, input map, autoloads (text)
-scenes/                 Greybox scenes (player, resource node, placed block, valley)
-scripts/                Presentation/input scripts; trivial grid + inventory helpers only
+scenes/                 Greybox scenes (player, resource node, placed block, forge site, order board, valley)
+scripts/                Presentation/input scripts: player, placement, station site, order board,
+                        HUD and the work panel (crafting/orders UI). No rules live here.
 extensions/             wroughtwild_sim GDExtension source + CMake (binds ../sim)
 bin/                    .gdextension descriptor (committed) + built binaries (ignored)
 tests/                  Headless unit + integration tests

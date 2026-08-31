@@ -16,12 +16,46 @@ extends CharacterBody3D
 @onready var inventory: WroughtwildInventory = $Inventory
 @onready var placement: GridPlacement = $Placement
 
+var hud: Hud
+var work_panel: WorkPanel
+
 
 func _ready() -> void:
 	placement.camera = camera
 	placement.inventory = inventory
+
+	hud = Hud.new()
+	hud.sim = inventory.get_sim()
+	add_child(hud)
+
+	work_panel = WorkPanel.new()
+	work_panel.sim = inventory.get_sim()
+	work_panel.closed.connect(_capture_mouse)
+	add_child(work_panel)
+
+	_capture_mouse()
+
+
+func _capture_mouse() -> void:
 	if DisplayServer.get_name() != "headless":
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _release_mouse() -> void:
+	if DisplayServer.get_name() != "headless":
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func open_crafting(station: StationSite) -> void:
+	placement.set_build_mode_enabled(false)
+	work_panel.open_crafting(station)
+	_release_mouse()
+
+
+func open_order(order_id: StringName) -> void:
+	placement.set_build_mode_enabled(false)
+	work_panel.open_order(order_id)
+	_release_mouse()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -30,6 +64,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		spring_arm.rotation.x = clampf(
 			spring_arm.rotation.x - event.relative.y * mouse_sensitivity,
 			-PI / 3.0, PI / 3.0)
+	elif event.is_action_pressed("ui_cancel"):
+		work_panel.close_panel()
+	elif work_panel.is_open():
+		return
 	elif event.is_action_pressed("interact"):
 		interact()
 	elif event.is_action_pressed("toggle_build_mode"):
@@ -67,9 +105,15 @@ func interact() -> void:
 	if hit.is_empty():
 		return
 
-	var node := hit.get("collider") as ResourceNode
-	if node != null:
+	var collider: Object = hit.get("collider")
+	if collider is ResourceNode:
+		var node := collider as ResourceNode
 		var family := node.material_family
 		var granted := node.harvest()
 		if granted > 0:
 			inventory.add_material(family, granted)
+			hud.notify("+%d %s" % [granted, Hud.pretty(family)])
+	elif collider is StationSite:
+		(collider as StationSite).interact(self)
+	elif collider is OrderBoard:
+		(collider as OrderBoard).interact(self)

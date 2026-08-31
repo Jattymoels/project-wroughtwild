@@ -48,6 +48,150 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_level", "skill_id"), &WroughtwildSim::skill_level);
     ClassDB::bind_method(D_METHOD("craft", "recipe_id", "for_order"), &WroughtwildSim::craft, DEFVAL(false));
     ClassDB::bind_method(D_METHOD("salvage", "recipe_id"), &WroughtwildSim::salvage);
+    ClassDB::bind_method(D_METHOD("recipe_feeds_open_order", "recipe_id"), &WroughtwildSim::recipe_feeds_open_order);
+
+    ClassDB::bind_method(D_METHOD("station_ids"), &WroughtwildSim::station_ids);
+    ClassDB::bind_method(D_METHOD("station", "station_id"), &WroughtwildSim::station);
+    ClassDB::bind_method(D_METHOD("order_ids"), &WroughtwildSim::order_ids);
+    ClassDB::bind_method(D_METHOD("order", "order_id"), &WroughtwildSim::order);
+    ClassDB::bind_method(D_METHOD("skill_progress", "skill_id"), &WroughtwildSim::skill_progress);
+    ClassDB::bind_method(D_METHOD("inventory"), &WroughtwildSim::inventory);
+    ClassDB::bind_method(D_METHOD("currency"), &WroughtwildSim::currency);
+    ClassDB::bind_method(D_METHOD("currency_count", "currency_id"), &WroughtwildSim::currency_count);
+    ClassDB::bind_method(D_METHOD("can_build_station", "station_id"), &WroughtwildSim::can_build_station);
+    ClassDB::bind_method(D_METHOD("build_station", "station_id"), &WroughtwildSim::build_station);
+    ClassDB::bind_method(D_METHOD("fulfill_order", "order_id"), &WroughtwildSim::fulfill_order);
+    ClassDB::bind_method(D_METHOD("order_fulfilled", "order_id"), &WroughtwildSim::order_fulfilled);
+    ClassDB::bind_method(D_METHOD("world_effect_active", "effect"), &WroughtwildSim::world_effect_active);
+}
+
+PackedStringArray WroughtwildSim::station_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("station_ids")) {
+        for (const auto& s : tuning_->crafting.stations) {
+            ids.push_back(to_godot(s.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::station(const String& station_id) const {
+    Dictionary d;
+    if (!require_loaded("station")) {
+        return d;
+    }
+    const auto* s = tuning_->crafting.findStation(to_std(station_id));
+    if (s == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(s->id);
+    d["display_name"] = to_godot(s->displayName);
+    d["tier"] = s->tier;
+    d["build_cost"] = to_dictionary(s->buildCost);
+    d["upgrade_from"] = to_godot(s->upgradeFrom);
+    d["upgrade_cost"] = to_dictionary(s->upgradeCost);
+    d["available"] = player_->stationAvailable(s->id);
+    return d;
+}
+
+PackedStringArray WroughtwildSim::order_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("order_ids")) {
+        for (const auto& o : tuning_->crafting.orders) {
+            ids.push_back(to_godot(o.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::order(const String& order_id) const {
+    Dictionary d;
+    if (!require_loaded("order")) {
+        return d;
+    }
+    const auto* o = tuning_->crafting.findOrder(to_std(order_id));
+    if (o == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(o->id);
+    d["display_name"] = to_godot(o->displayName);
+    d["required_outputs"] = to_dictionary(o->requiredOutputs);
+    d["rewards"] = to_dictionary(o->rewards);
+    d["world_effect"] = to_godot(o->worldEffect);
+    d["fulfilled"] = player_->orderFulfilled(o->id);
+    return d;
+}
+
+Dictionary WroughtwildSim::skill_progress(const String& skill_id) const {
+    Dictionary d;
+    if (!require_loaded("skill_progress")) {
+        return d;
+    }
+    const auto* def = tuning_->skills.findCraftSkill(to_std(skill_id));
+    if (def == nullptr) {
+        return d;
+    }
+    const int level = player_->skillLevel(def->id);
+    d["id"] = to_godot(def->id);
+    d["display_name"] = to_godot(def->displayName);
+    d["level"] = level;
+    d["xp"] = player_->skillXp(def->id);
+    d["max_level"] = def->maximumPrototypeLevel;
+    // xpRequiredByLevel[i] is the cumulative XP for level i+1.
+    const bool atMax = level >= def->maximumPrototypeLevel ||
+                       level >= static_cast<int>(def->xpRequiredByLevel.size());
+    d["next_level_xp"] = atMax ? -1 : def->xpRequiredByLevel[static_cast<size_t>(level)];
+    return d;
+}
+
+Dictionary WroughtwildSim::inventory() const {
+    return require_loaded("inventory") ? to_dictionary(player_->inventory) : Dictionary();
+}
+
+Dictionary WroughtwildSim::currency() const {
+    return require_loaded("currency") ? to_dictionary(player_->currency) : Dictionary();
+}
+
+int WroughtwildSim::currency_count(const String& currency_id) const {
+    if (!require_loaded("currency_count")) {
+        return 0;
+    }
+    const auto it = player_->currency.find(to_std(currency_id));
+    return it == player_->currency.end() ? 0 : it->second;
+}
+
+bool WroughtwildSim::recipe_feeds_open_order(const String& recipe_id) const {
+    return require_loaded("recipe_feeds_open_order") && player_->recipeFeedsOpenOrder(to_std(recipe_id));
+}
+
+bool WroughtwildSim::can_build_station(const String& station_id) const {
+    return require_loaded("can_build_station") && player_->canBuildStation(to_std(station_id));
+}
+
+bool WroughtwildSim::build_station(const String& station_id) {
+    return require_loaded("build_station") && player_->buildStation(to_std(station_id));
+}
+
+Dictionary WroughtwildSim::fulfill_order(const String& order_id) {
+    Dictionary d;
+    d["fulfilled"] = false;
+    if (!require_loaded("fulfill_order")) {
+        return d;
+    }
+    const auto result = player_->fulfillOrder(to_std(order_id));
+    d["fulfilled"] = result.fulfilled;
+    d["already_fulfilled"] = result.alreadyFulfilled;
+    d["missing_outputs"] = result.missingOutputs;
+    d["world_effect"] = to_godot(result.worldEffect);
+    return d;
+}
+
+bool WroughtwildSim::order_fulfilled(const String& order_id) const {
+    return require_loaded("order_fulfilled") && player_->orderFulfilled(to_std(order_id));
+}
+
+bool WroughtwildSim::world_effect_active(const String& effect) const {
+    return require_loaded("world_effect_active") && player_->worldEffectActive(to_std(effect));
 }
 
 bool WroughtwildSim::load_tuning(const String& tuning_directory) {
@@ -103,6 +247,16 @@ Dictionary WroughtwildSim::recipe(const String& recipe_id) const {
     d["inputs"] = to_dictionary(r->inputs);
     d["outputs"] = to_dictionary(r->outputs);
     d["base_skill_xp"] = r->baseSkillXp;
+    // Gate status for UI: the same three checks craft() applies.
+    bool skillMet = true;
+    for (const auto& [skillId, level] : r->minimumSkill) {
+        if (player_->skillLevel(skillId) < level) {
+            skillMet = false;
+        }
+    }
+    d["station_available"] = player_->stationAvailable(r->station);
+    d["skill_met"] = skillMet;
+    d["inputs_met"] = wroughtwild::economy::hasAll(player_->inventory, r->inputs);
     return d;
 }
 
