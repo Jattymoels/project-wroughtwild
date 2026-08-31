@@ -6,10 +6,16 @@ Engine version is pinned to **Godot 4.5-stable**
 (`4.5.stable.official.876b29033`); upgrade only through a recorded decision.
 
 It grew out of the ADR-0001 Godot spike (since removed from the tree) and now
-holds the whole greybox vertical slice: harvesting, grid construction, the
-forge and mine order, real-time combat, the trial with its boss, armour and
-catalyst tempering, and save/load. Every file is text (`.tscn` scenes
-included) so the whole project diffs in Git; `.uid` files are committed on
+holds the **Wave 1 sandpit** (docs/prototype/roadmap-waves.md): a
+seed-generated open world of blocky biome terrain — meadow, deep forest,
+rocky hills, ember wastes — with scattered trees, boulders and iron veins,
+roaming mob packs that drop loot, and a start-with-nothing survival opening:
+hand-craft a workbench kit from gathered wood, place it, assemble a forge
+kit, place that, and keep the forge fuelled. On top of the sandpit sits the
+whole vertical-slice loop: the mine order, real-time combat, the trial and
+its boss, armour and catalyst tempering, and save/load (saves carry the
+world seed). Every file except the 16×16 pixel textures is text (`.tscn`
+scenes included) so the project diffs in Git; `.uid` files are committed on
 purpose.
 
 ## Run from a clean checkout
@@ -23,22 +29,29 @@ purpose.
    godot --path game -e         # open the editor
    ```
 
-3. Controls: WASD move, mouse look, Space jump, **E** interact (harvest a
-   node, build or use the forge, read the mine board), **B** toggle build
-   mode, **LMB** place (or harvest outside build mode), **X** remove block,
-   **R** rotate preview, **1** area strike, **2** heavy strike, **Shift**
-   dash (brief invulnerability), **Esc** close a panel, **F5** save, **F9**
-   load (`user://wroughtwild_save.json`). Harvesting the iron node can
-   trigger the Old Mine ambush from `world.json` until the mine order is
-   fulfilled; dying drops your materials in a pack where you fell.
-4. The **trial gate** stands east of camp. E stows your goods and opens the
+3. Controls: WASD move, mouse look, Space jump, **E** interact (harvest,
+   work at a station, read the board, open the gate), **C** craft by hand,
+   **B** toggle build mode, **Tab** cycle shapes and crafted station kits,
+   **LMB** place (or harvest outside build mode), **X** remove block, **R**
+   rotate preview, **1** area strike, **2** heavy strike, **Shift** dash
+   (brief invulnerability), **Esc** close a panel, **F5** save, **F9** load
+   (`user://wroughtwild_save.json`). Dying drops your materials in a pack
+   where you fell; walk back for it.
+4. **The first hour, from nothing:** harvest trees (E) → **C** → craft the
+   Workbench Kit → **B**, **Tab** to the kit, place it → E the bench to
+   assemble a Forge Kit (needs wood, stone from boulders, iron ore from
+   veins — the rocky hills have both, and their Stone Husks drop them too)
+   → place the forge → keep it fed with wood or charcoal, because every
+   smelt and forging burns fuel. Mob packs wake as you approach; every kill
+   drops something the economy uses.
+5. The **trial gate** waits far out in the ember wastes. E stows your goods and opens the
    run: pick a door, clear the room in the arena, take or refuse what the
    shrine offers, bank out after the catalyst shrine or push on to the Forge
    Tyrant. Its breath is telegraphed (it glows and the HUD warns you); dash
    through it or step out of the cone. Dying in the trial returns you to the
    gate with your deposit and any catalyst; run materials are lost. E inside
    the run brings the doors back if you closed the panel.
-5. Back at the forge: wear crafted armour, **Quench** it at the Improved
+6. Back at the forge: wear crafted armour, **Quench** it at the Improved
    Forge for a fixed baseline of fire resistance, and **Ember-temper** it with
    a recovered catalyst (Blacksmithing 5) for a rolled tier-2 resistance;
    the panel states each effect before anything is consumed. Killing the
