@@ -39,6 +39,16 @@ var _flash_left := 0.0
 var _material: StandardMaterial3D
 var _player: WroughtwildPlayer
 
+## Grammar spike: chill buildup toward the freeze threshold. All numbers
+## come from the sim's chill_status/chill_applied; a frozen enemy is a
+## solid, harmless block of ice until the timer runs out.
+var chill := 0.0
+var frozen_left := 0.0
+var _chill_max := 100.0
+var _chill_decay := 30.0
+var _freeze_duration := 2.5
+var _base_albedo := Color.WHITE
+
 @onready var _label: Label3D = $Label3D
 @onready var _mesh: MeshInstance3D = $MeshInstance3D
 
@@ -48,6 +58,10 @@ static func spawn(root: Node, id: StringName, at: Vector3) -> Enemy:
 	var scene: PackedScene = load("res://scenes/enemy.tscn")
 	var enemy: Enemy = scene.instantiate()
 	enemy.enemy_id = id
+	# Position before add_child: the physics body must never spend a frame at
+	# the parent's origin, or it depenetrates (and platform-carries) whatever
+	# stands there - the player, usually.
+	enemy.position = at
 	root.add_child(enemy)
 	enemy.global_position = at
 	return enemy
@@ -86,11 +100,17 @@ func configure(sim: WroughtwildSim) -> void:
 	separation_radius = horde.get("separation_radius_m", 1.1)
 	separation_strength = horde.get("separation_strength_mps", 3.0)
 
+	var chill_rules: Dictionary = sim.chill_status()
+	_chill_max = chill_rules.get("buildup_max", 100.0)
+	_chill_decay = chill_rules.get("decay_per_s", 30.0)
+	_freeze_duration = chill_rules.get("freeze_duration_s", 2.5)
+
 	_material = StandardMaterial3D.new()
 	match behaviour:
 		"ranged": _material.albedo_color = Color(0.8, 0.15, 0.1)
 		"fast": _material.albedo_color = Color(0.25, 0.3, 0.45)
 		_: _material.albedo_color = Color(0.9, 0.45, 0.1)
+	_base_albedo = _material.albedo_color
 	_mesh.material_override = _material
 	_refresh_label()
 
@@ -112,13 +132,53 @@ func _horizontal_distance_to(target: Node3D) -> float:
 	return Vector2(a.x - b.x, a.z - b.z).length()
 
 
+func is_frozen() -> bool:
+	return frozen_left > 0.0
+
+
+## Chill from the sim's numbers; crossing the threshold freezes solid.
+func apply_chill(amount: float) -> void:
+	if amount <= 0.0 or is_frozen() or life <= 0.0:
+		return
+	chill += amount
+	if chill >= _chill_max:
+		chill = 0.0
+		frozen_left = _freeze_duration
+		_windup_left = 0.0
+		if _material != null:
+			_material.albedo_color = Color(0.55, 0.82, 1.0)
+			_material.emission_enabled = true
+			_material.emission = Color(0.5, 0.8, 1.0)
+			_material.emission_energy_multiplier = 0.8
+
+
+func _thaw() -> void:
+	frozen_left = 0.0
+	if _material != null:
+		_material.albedo_color = _base_albedo
+		_material.emission_enabled = false
+
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if _flash_left > 0.0:
 		_flash_left -= delta
-		if _flash_left <= 0.0 and _material != null:
+		if _flash_left <= 0.0 and _material != null and not is_frozen():
 			_material.emission_enabled = false
+
+	# Frozen: a solid, harmless block. Trains pile up behind it (D-012:
+	# your damage builds walls); no thinking, no attacking, no walking.
+	if is_frozen():
+		frozen_left -= delta
+		if frozen_left <= 0.0:
+			_thaw()
+		velocity.x = 0.0
+		velocity.z = 0.0
+		move_and_slide()
+		return
+	chill = maxf(0.0, chill - _chill_decay * delta)
+
 	var player := _find_player()
 	if player == null:
 		move_and_slide()

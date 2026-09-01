@@ -8,6 +8,7 @@
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
+#include "wroughtwild/grammar.h"
 #include "wroughtwild/items.h"
 #include "wroughtwild/loot.h"
 #include "wroughtwild/save.h"
@@ -835,6 +836,76 @@ void testWorldgen(const tuning::Tuning& t) {
                        (firstBad.empty() ? "" : " - first failure: " + firstBad));
 }
 
+
+void testGrammar(const tuning::Tuning& t) {
+    // Tables load.
+    check(t.grammar.chill.buildupMax == 100.0, "grammar: chill threshold loads");
+    check(t.grammar.findMod("forked_lattice") != nullptr, "grammar: mods load");
+    check(t.grammar.shatter.novaRadiusM > 0.0, "grammar: shatter hook loads");
+    check(t.realtime.skillSpatials.count("prototype_frost_orb") == 1,
+          "grammar: orb spatials load");
+
+    grammar::ActiveMods none;
+    grammar::ActiveMods all = {"forked_lattice", "deep_frost", "wide_shatter"};
+
+    // Fork resolution: base 1, +1 flat from the lattice; tag-gated.
+    check(grammar::forkCount(t, none, "prototype_frost_orb") == 1, "grammar: base fork count");
+    check(grammar::forkCount(t, all, "prototype_frost_orb") == 2, "grammar: lattice adds a fork");
+    check(grammar::forkCount(t, all, "prototype_heavy_strike") == 0,
+          "grammar: fork mod ignores non-projectile skills");
+
+    // Fork damage decays per generation.
+    checkNear(grammar::forkDamageFraction(t, "prototype_frost_orb", 0), 1.0, 1e-9,
+              "grammar: the cast keeps full damage");
+    checkNear(grammar::forkDamageFraction(t, "prototype_frost_orb", 2), 0.49, 1e-9,
+              "grammar: second-generation forks keep 0.7^2");
+
+    // Chill: base 40; Deep Frost = 50% increased -> 60. The breakpoint the
+    // mod is FOR: three hits to freeze becomes two (skill-grammar.md).
+    checkNear(grammar::chillApplied(t, none, "prototype_frost_orb", false), 40.0, 1e-9,
+              "grammar: base chill buildup");
+    checkNear(grammar::chillApplied(t, all, "prototype_frost_orb", false), 60.0, 1e-9,
+              "grammar: deep frost crosses the two-hit-freeze breakpoint");
+    check(2.0 * grammar::chillApplied(t, all, "prototype_frost_orb", false) >=
+              t.grammar.chill.buildupMax,
+          "grammar: two modded hits reach the freeze threshold");
+    check(3.0 * grammar::chillApplied(t, none, "prototype_frost_orb", false) >=
+              t.grammar.chill.buildupMax &&
+          2.0 * grammar::chillApplied(t, none, "prototype_frost_orb", false) <
+              t.grammar.chill.buildupMax,
+          "grammar: unmodded freeze takes exactly three hits");
+    check(grammar::chillApplied(t, none, "prototype_heavy_strike", false) == 0.0,
+          "grammar: non-chill skills apply nothing");
+
+    // Boss status resistance from day one.
+    checkNear(grammar::chillApplied(t, none, "prototype_frost_orb", true), 10.0, 1e-9,
+              "grammar: bosses resist chill buildup");
+
+    // Shatter hook: carried by the cone strike only; radius honours mods.
+    auto plain = grammar::shatterFor(t, none, "prototype_area_strike");
+    check(plain.enabled && plain.executesFrozen, "grammar: cone strike carries shatter");
+    check(!grammar::shatterFor(t, none, "prototype_heavy_strike").enabled,
+          "grammar: heavy strike carries no shatter");
+    auto wide = grammar::shatterFor(t, all, "prototype_area_strike");
+    checkNear(wide.novaRadiusM, plain.novaRadiusM * 1.4, 1e-9,
+              "grammar: wide shatter is 40% increased radius");
+
+    // The increased-vs-more rule: two increased mods sum, a more multiplies.
+    tuning::Tuning scratch = t;
+    tuning::SkillModDef inc2;
+    inc2.id = "test_inc";
+    inc2.effect["increased_chill_buildup"] = 0.5;
+    scratch.grammar.skillMods.push_back(inc2);
+    tuning::SkillModDef mre;
+    mre.id = "test_more";
+    mre.effect["more_chill_buildup"] = 0.5;
+    scratch.grammar.skillMods.push_back(mre);
+    grammar::ActiveMods stacked = {"deep_frost", "test_inc", "test_more"};
+    // 40 * (1 + 0.5 + 0.5) * 1.5 = 120: increased sums, more multiplies.
+    checkNear(grammar::chillApplied(scratch, stacked, "prototype_frost_orb", false), 120.0, 1e-9,
+              "grammar: increased sums additively, more multiplies");
+}
+
 } // namespace
 
 int main(int argc, char** argv) {
@@ -870,6 +941,7 @@ int main(int argc, char** argv) {
     testHandCraftingAndKits(t);
     testEnemyLoot(t);
     testWorldgen(t);
+    testGrammar(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

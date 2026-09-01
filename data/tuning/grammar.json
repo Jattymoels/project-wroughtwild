@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "status": "grammar-spike (skill-grammar.md ideation; nothing accepted)",
+  "statuses": {
+    "chill": {
+      "buildup_max": 100.0,
+      "freeze_duration_s": 2.5,
+      "decay_per_s": 30.0,
+      "boss_buildup_multiplier": 0.25,
+      "design_purpose": "Chill buildup per hit comes from the applying skill; crossing buildup_max freezes. At the spike's numbers a whelp freezes in three orb hits, or two with the Deep Frost mod - a felt breakpoint, not a percentage. Frozen mobs are solid: your damage builds walls. boss_buildup_multiplier is the day-one status-resistance rule so bosses cannot be permafrozen (skill-grammar.md risk list)."
+    }
+  },
+  "hooks": {
+    "shatter": {
+      "trigger_skills": ["prototype_area_strike"],
+      "nova_damage": 18.0,
+      "nova_damage_type": "cold",
+      "nova_radius_m": 2.6,
+      "executes_frozen": true,
+      "design_purpose": "The combo maker: hitting a FROZEN enemy with a trigger skill shatters it - an execute plus a cold nova at the corpse. Novas shatter other frozen enemies in radius, so a frozen train cascades down its own line. Spike-scale execute is safe on fodder; elites and bosses need the execute flag revisited in Wave 2."
+    }
+  },
+  "skill_mods": [
+    {
+      "id": "forked_lattice",
+      "display_name": "Forked Lattice",
+      "applies_to_tags": ["projectile"],
+      "effect": {"add_fork": 1},
+      "design_purpose": "Flat +1 fork for projectile skills: the orb splits twice on first impact, lighting up more of the train per cast"
+    },
+    {
+      "id": "deep_frost",
+      "display_name": "Deep Frost",
+      "applies_to_tags": ["chill"],
+      "effect": {"increased_chill_buildup": 0.5},
+      "design_purpose": "50% increased chill buildup: crosses the three-hits-to-freeze breakpoint down to two, which is the whole point of increased-type mods - visible thresholds"
+    },
+    {
+      "id": "wide_shatter",
+      "display_name": "Wide Shatter",
+      "applies_to_tags": ["shatter"],
+      "effect": {"increased_shatter_radius": 0.4},
+      "design_purpose": "40% increased shatter nova radius: a shattered mob reaches further down the train, making cascade chains connect across looser bunches"
+    }
+  ],
+  "design_purpose": "The Wave 2 grammar spike (docs/systems/skill-grammar.md): one complete sentence - Frost Orb (orb delivery + fork propagation + chill payload) into freeze into the shatter hook on the cone strike - plus three tag-targeted mods resolved with the increased-vs-more schema. In the spike the mods are toggled with F1-F3 as scaffolding; Wave 2 moves them onto gear, points and boons. Effect keys: add_* is flat, increased_* sums additively within its bucket, more_* multiplies (none used yet, but the resolver honours it from day one)."
+}

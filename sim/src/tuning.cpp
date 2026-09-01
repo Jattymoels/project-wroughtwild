@@ -64,6 +64,7 @@ const Station* CraftingTable::findStationForKit(const std::string& kitItemId) co
     return nullptr;
 }
 const BiomeDef* WorldgenTable::findBiome(const std::string& id) const { return findById(biomes, id); }
+const SkillModDef* GrammarTable::findMod(const std::string& id) const { return findById(skillMods, id); }
 const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
 const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) const {
     auto it = behaviours.find(id);
@@ -176,6 +177,7 @@ SkillTable loadSkills(const std::string& path) {
             if (key == "id") def.id = value->asString();
             else if (key == "display_name") def.displayName = value->asString();
             else if (key == "tags") def.tags = readStringArray(*value);
+            else if (key == "design_purpose") continue;
             else def.numbers[key] = value->asNumber();
         }
         table.combatSkills.push_back(std::move(def));
@@ -313,6 +315,45 @@ RealtimeTable loadRealtime(const std::string& path) {
     const Value& dash = doc->get("skills").get("prototype_dash");
     table.dashInvulnerableSeconds = dash.get("invulnerable_seconds").asNumber();
     table.dashDurationSeconds = dash.get("duration_seconds").asNumber();
+
+    // Per-skill space-and-time tunables (projectile speeds, ranges...):
+    // numeric fields pass through verbatim for the engine to read.
+    for (const auto& [skillId, spatial] : doc->get("skills").asObject()) {
+        if (skillId == "design_purpose" || skillId == "prototype_dash") continue;
+        for (const auto& [key, value] : spatial->asObject()) {
+            if (key == "design_purpose") continue;
+            table.skillSpatials[skillId][key] = value->asNumber();
+        }
+    }
+    return table;
+}
+
+GrammarTable loadGrammar(const std::string& path) {
+    auto doc = json::parseFile(path);
+    GrammarTable table;
+
+    const Value& chill = doc->get("statuses").get("chill");
+    table.chill.buildupMax = chill.get("buildup_max").asNumber();
+    table.chill.freezeDurationS = chill.get("freeze_duration_s").asNumber();
+    table.chill.decayPerS = chill.get("decay_per_s").asNumber();
+    table.chill.bossBuildupMultiplier = chill.get("boss_buildup_multiplier").asNumber();
+
+    const Value& shatter = doc->get("hooks").get("shatter");
+    table.shatter.triggerSkills = readStringArray(shatter.get("trigger_skills"));
+    table.shatter.novaDamage = shatter.get("nova_damage").asNumber();
+    table.shatter.novaDamageType = shatter.get("nova_damage_type").asString();
+    table.shatter.novaRadiusM = shatter.get("nova_radius_m").asNumber();
+    table.shatter.executesFrozen = shatter.get("executes_frozen").asBool();
+
+    for (const auto& m : doc->get("skill_mods").asArray()) {
+        SkillModDef mod;
+        mod.id = m->get("id").asString();
+        mod.displayName = m->get("display_name").asString();
+        mod.appliesToTags = readStringArray(m->get("applies_to_tags"));
+        for (const auto& [key, value] : m->get("effect").asObject())
+            mod.effect[key] = value->asNumber();
+        table.skillMods.push_back(std::move(mod));
+    }
     return table;
 }
 
@@ -477,6 +518,7 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.trial = loadTrial(tuningDirectory + "/trial.json");
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
+    tuning.grammar = loadGrammar(tuningDirectory + "/grammar.json");
     return tuning;
 }
 

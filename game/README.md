@@ -40,7 +40,11 @@ purpose.
    work at a station, read the board, open the gate), **C** craft by hand,
    **B** toggle build mode, **Tab** cycle shapes and crafted station kits,
    **LMB** place (or harvest outside build mode), **X** remove block, **R**
-   rotate preview, **1** area strike, **2** heavy strike, **Shift** dash
+   rotate preview, **1** area strike, **2** heavy strike, **3** Frost Orb
+   (the grammar-spike projectile: it forks down a bunched pack and builds
+   chill toward a freeze; strike a frozen mob with **1** to shatter it),
+   **F1–F3** toggle the three spike skill-mods (Forked Lattice, Deep Frost,
+   Wide Shatter — scaffolding until Wave 2 puts mods on gear), **Shift** dash
    (a pure movement burst - no invulnerability, D-012), **Esc** close a panel, **F5** save, **F9** load
    (`user://wroughtwild_save.json`). Dying drops your materials in a pack
    where you fell; walk back for it.
@@ -98,7 +102,9 @@ GODOT=/path/to/Godot_v4.5-stable ./run_headless_checks.sh
 Runs project import → unit tests (`tests/run_tests.gd`) → in-engine physics
 integration test of the full placement loop (`tests/integration.tscn`) → the
 D-012 horde test (`tests/horde.tscn`: chase persistence, training
-separation, give-up, cone strike, dash) → a 120-frame smoke run of the main
+separation, give-up, cone strike, dash) → the grammar-spike test
+(`tests/grammar.tscn`: orb flight and forking, freeze breakpoints, the
+shatter cascade) → a 120-frame smoke run of the main
 scene. Non-zero exit on any failure. Run this
 before every commit that touches `game/`.
 

@@ -184,7 +184,7 @@ func _test_sim_extension() -> void:
 	check(stats["max_life"] == 100.0 and stats["armour"] == 0.0, "combat: bare derived stats")
 	var heavy: Dictionary = sim.combat_skill("prototype_heavy_strike")
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
-	check(sim.combat_skill_ids().size() == 3, "combat: three prototype skills")
+	check(sim.combat_skill_ids().size() == 4, "combat: four prototype skills (frost orb joined)")
 	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 4, "combat: enemy view")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
 	var rt: Dictionary = sim.realtime()
@@ -197,6 +197,30 @@ func _test_sim_extension() -> void:
 		"combat: realtime tunables (D-012 horde fields present)")
 	check(sim.combat_mods()["enemy_speed_multiplier"] == 1.0, "combat: no mods outside a run")
 	check(absf(sim.mitigate(100.0, "physical") - 100.0) < 0.000001, "combat: no armour, no mitigation")
+
+	# Skill grammar (grammar spike): the sim owns the sentence's numbers and
+	# the engine only asks. Mods are tag-gated and toggle cleanly.
+	check(sim.skill_mod_ids().size() == 3, "grammar: three spike mods loaded")
+	check(sim.skill_mod("deep_frost")["applies_to_tags"].has("chill"), "grammar: mod view carries tags")
+	check(sim.fork_count("prototype_frost_orb") == 1, "grammar: orb forks once bare")
+	check(sim.fork_count("prototype_area_strike") == 0, "grammar: strike never forks (no projectile tag)")
+	check(absf(sim.chill_applied("prototype_frost_orb", false) - 40.0) < 0.000001, "grammar: bare chill buildup")
+	check(absf(sim.chill_applied("prototype_frost_orb", true) - 10.0) < 0.000001, "grammar: boss resists chill x0.25")
+	sim.set_skill_mod_active("forked_lattice", true)
+	sim.set_skill_mod_active("deep_frost", true)
+	check(sim.fork_count("prototype_frost_orb") == 2, "grammar: Forked Lattice adds a fork")
+	check(absf(sim.chill_applied("prototype_frost_orb", false) - 60.0) < 0.000001, "grammar: Deep Frost is 50 percent increased chill")
+	check(absf(sim.fork_damage_fraction("prototype_frost_orb", 1) - 0.7) < 0.000001, "grammar: fork generation decays damage")
+	var shatter: Dictionary = sim.shatter_for("prototype_area_strike")
+	check(shatter["enabled"] and shatter["executes_frozen"], "grammar: area strike carries the shatter hook")
+	check(not sim.shatter_for("prototype_heavy_strike")["enabled"], "grammar: heavy strike does not shatter")
+	var bare_radius: float = shatter["nova_radius_m"]
+	sim.set_skill_mod_active("wide_shatter", true)
+	check(absf(sim.shatter_for("prototype_area_strike")["nova_radius_m"] - bare_radius * 1.4) < 0.000001,
+		"grammar: Wide Shatter is 40 percent increased nova radius")
+	for mod_id in sim.skill_mod_ids():
+		sim.set_skill_mod_active(mod_id, false)
+	check(not sim.skill_mod_active("deep_frost"), "grammar: mods toggle back off")
 
 	sim.begin_fight(42)
 	var first: Array = []

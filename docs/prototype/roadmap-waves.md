@@ -53,6 +53,20 @@ question is answerable in greybox before Wave 2 commits itemisation to it.
   landed: crosshair aim feedback, hitmarker, damage flash, and stray-pull
   (damaging an idle mob wakes it).
 
+### Grammar spike *(landed 1 Sep 2026; playable ahead of Wave 2)*
+
+One full grammar sentence is playable end to end, so the freeze-shatter
+combo can be felt before Wave 2 commits to the vocabulary: **Frost Orb**
+(key 3 — orb delivery, fork propagation, chill payload) builds toward a
+freeze (three hits bare), and striking a frozen mob with the cone strike
+(key 1) triggers the **shatter hook** — an execute plus a cold nova that
+chains down a frozen train. Three tag-targeted mods toggle on F1–F3 as
+scaffolding (Forked Lattice, Deep Frost, Wide Shatter) to feel each word
+scale; Wave 2 moves mods onto gear, points and boons. Numbers live in
+`data/tuning/grammar.json`, the resolver (increased-vs-more) in
+`sim/src/grammar.cpp`, and `game/tests/grammar.tscn` drives the whole
+sentence headless.
+
 ## Wave 2 — Items and Modifiers *(intensive itemisation pass)*
 
 The PoE side: more bases and slots, the modifier/tier pool, rarity, how
