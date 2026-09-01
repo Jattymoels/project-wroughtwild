@@ -320,8 +320,47 @@ struct RealtimeTable {
     double hordeSeparationRadiusM = 0.0;
     double hordeSeparationStrengthMps = 0.0;
     double hordeGiveUpSeconds = 0.0;
+    // Per-skill space-and-time tunables (projectile speed, ranges...),
+    // numeric fields verbatim; keyed by skill id.
+    std::map<std::string, std::map<std::string, double>> skillSpatials;
 
     const BehaviourRealtime* findBehaviour(const std::string& id) const;
+};
+
+// --- grammar.json ------------------------------------------------------------
+// The Wave 2 grammar spike (docs/systems/skill-grammar.md): statuses, hooks
+// and tag-targeted skill mods. Ideation-stage; nothing here is accepted.
+
+struct ChillStatus {
+    double buildupMax = 100.0;
+    double freezeDurationS = 2.5;
+    double decayPerS = 30.0;
+    double bossBuildupMultiplier = 0.25; // day-one boss status resistance
+};
+
+struct ShatterHook {
+    std::vector<std::string> triggerSkills; // skills carrying the hook
+    double novaDamage = 0.0;
+    std::string novaDamageType = "cold";
+    double novaRadiusM = 0.0;
+    bool executesFrozen = true;
+};
+
+struct SkillModDef {
+    std::string id;
+    std::string displayName;
+    std::vector<std::string> appliesToTags; // empty = applies to everything
+    // Effect keys: add_* flat; increased_* sums additively per bucket;
+    // more_* multiplies (the increased-vs-more rule, adopted from day one).
+    std::map<std::string, double> effect;
+};
+
+struct GrammarTable {
+    ChillStatus chill;
+    ShatterHook shatter;
+    std::vector<SkillModDef> skillMods;
+
+    const SkillModDef* findMod(const std::string& id) const;
 };
 
 // --- worldgen.json -----------------------------------------------------------
@@ -387,6 +426,7 @@ struct WorldgenTable {
 
 CraftingTable loadCrafting(const std::string& path);
 WorldgenTable loadWorldgen(const std::string& path);
+GrammarTable loadGrammar(const std::string& path);
 ConstructionTable loadConstruction(const std::string& path);
 RealtimeTable loadRealtime(const std::string& path);
 SkillTable loadSkills(const std::string& path);
@@ -406,6 +446,7 @@ struct Tuning {
     TrialTable trial;
     RealtimeTable realtime;
     WorldgenTable worldgen;
+    GrammarTable grammar;
 };
 
 Tuning loadAll(const std::string& tuningDirectory);

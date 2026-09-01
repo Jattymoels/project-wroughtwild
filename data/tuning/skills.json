@@ -6,13 +6,29 @@
       "id": "blacksmithing",
       "display_name": "Blacksmithing",
       "maximum_prototype_level": 5,
-      "xp_required_by_level": [0, 50, 125, 225, 300],
+      "xp_required_by_level": [
+        0,
+        50,
+        125,
+        225,
+        300
+      ],
       "unlock_summary": {
-        "1": ["iron_fittings"],
-        "2": ["efficient_smelting"],
-        "3": ["mine_reinforcement"],
-        "4": ["iron_chest_armour"],
-        "5": ["ember_catalyst_tempering"]
+        "1": [
+          "iron_fittings"
+        ],
+        "2": [
+          "efficient_smelting"
+        ],
+        "3": [
+          "mine_reinforcement"
+        ],
+        "4": [
+          "iron_chest_armour"
+        ],
+        "5": [
+          "ember_catalyst_tempering"
+        ]
       }
     }
   ],
@@ -20,7 +36,11 @@
     {
       "id": "prototype_area_strike",
       "display_name": "Area Strike",
-      "tags": ["attack", "physical", "area"],
+      "tags": [
+        "attack",
+        "physical",
+        "area"
+      ],
       "base_damage": 12,
       "base_area_radius": 2.5,
       "cooldown_seconds": 0.8
@@ -28,16 +48,38 @@
     {
       "id": "prototype_heavy_strike",
       "display_name": "Heavy Strike",
-      "tags": ["attack", "physical", "single_target"],
+      "tags": [
+        "attack",
+        "physical",
+        "single_target"
+      ],
       "base_damage": 28,
       "cooldown_seconds": 1.4
     },
     {
       "id": "prototype_dash",
       "display_name": "Dash",
-      "tags": ["movement"],
+      "tags": [
+        "movement"
+      ],
       "distance": 4.0,
       "cooldown_seconds": 2.5
+    },
+    {
+      "id": "prototype_frost_orb",
+      "display_name": "Frost Orb",
+      "tags": [
+        "spell",
+        "projectile",
+        "cold",
+        "chill"
+      ],
+      "base_damage": 9,
+      "chill_buildup": 40,
+      "fork_count": 1,
+      "fork_damage_fraction": 0.7,
+      "cooldown_seconds": 3.0,
+      "design_purpose": "The grammar-spike sentence opener: a slow orb that forks on impact and stacks chill toward the freeze threshold. Its damage is modest on purpose - the payoff lives in the freeze-shatter combo, not the hit."
     }
   ]
 }

@@ -42,7 +42,7 @@ func _ready() -> void:
 
 	var hints := Label.new()
 	hints.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	hints.text = "E interact  ·  C craft by hand  ·  B build mode  ·  Tab shape/kit  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike (cone)  ·  2 heavy strike  ·  Shift dash  ·  V camera  ·  Esc close panel  ·  F5 save  ·  F9 load"
+	hints.text = "E interact  ·  C craft by hand  ·  B build mode  ·  Tab shape/kit  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike (cone)  ·  2 heavy strike  ·  3 frost orb  ·  F1-F3 spike mods  ·  Shift dash  ·  V camera  ·  Esc close panel  ·  F5 save  ·  F9 load"
 	hints.modulate = Color(1.0, 1.0, 1.0, 0.6)
 	column.add_child(hints)
 
@@ -155,11 +155,17 @@ func refresh() -> void:
 	if combat != null and combat.sim != null:
 		var ds: Dictionary = sim.derived_stats()
 		var worn: Dictionary = sim.equipment().get("chest", {})
-		vitals = "\nLife %d / %d  ·  armour %d  ·  fire resistance %d%%  ·  wearing %s    [1] Area %s   [2] Heavy %s   [Shift] Dash %s" % [
+		vitals = "\nLife %d / %d  ·  armour %d  ·  fire resistance %d%%  ·  wearing %s    [1] Area %s   [2] Heavy %s   [3] Orb %s   [Shift] Dash %s" % [
 			ceili(combat.life), ceili(combat.max_life), int(ds.get("armour", 0.0)), int(ds.get("fire_resistance_percent", 0.0)),
 			worn.get("display_name", "nothing"),
 			_cooldown_text(PlayerCombat.AREA_SKILL), _cooldown_text(PlayerCombat.HEAVY_SKILL),
-			_cooldown_text(PlayerCombat.DASH_SKILL)]
+			_cooldown_text(PlayerCombat.ORB_SKILL), _cooldown_text(PlayerCombat.DASH_SKILL)]
+		var active_mods := PackedStringArray()
+		for mod_id in sim.skill_mod_ids():
+			if sim.skill_mod_active(mod_id):
+				active_mods.append(pretty(mod_id))
+		if not active_mods.is_empty():
+			vitals += "\nSpike mods on: " + " · ".join(active_mods)
 	if placement != null:
 		var shape: Dictionary = sim.shape(placement.selected_shape)
 		vitals += "\nBuild: %s (%s, %d per block; Tab to change)" % [

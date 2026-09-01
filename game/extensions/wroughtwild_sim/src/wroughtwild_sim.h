@@ -4,6 +4,7 @@
 // is the only door from GDScript into the economy rules; scripts must not
 // re-implement crafting, skill or salvage logic (game/README.md boundaries).
 
+#include <set>
 #include <memory>
 #include <string>
 
@@ -57,6 +58,24 @@ public:
     // Keys: id, display_name, yields_per_action, ambush_chance,
     // ambush_enemies, ambush_removed_by_world_effect.
     Dictionary gather_site(const String& site_id) const;
+
+    // --- grammar spike (docs/systems/skill-grammar.md) ---
+    // Tag-targeted skill mods, toggled in the spike (F1-F3 scaffolding);
+    // Wave 2 moves them onto gear, points and boons.
+    PackedStringArray skill_mod_ids() const;
+    // Keys: id, display_name, applies_to_tags, active, effect (dict).
+    Dictionary skill_mod(const String& mod_id) const;
+    void set_skill_mod_active(const String& mod_id, bool active);
+    bool skill_mod_active(const String& mod_id) const;
+    // Resolved numbers for the active mod set (the sim owns them all):
+    int fork_count(const String& skill_id) const;
+    double fork_damage_fraction(const String& skill_id, int generation) const;
+    double chill_applied(const String& skill_id, bool is_boss) const;
+    // Keys: buildup_max, freeze_duration_s, decay_per_s.
+    Dictionary chill_status() const;
+    // Keys: enabled, nova_damage, nova_damage_type, nova_radius_m,
+    // executes_frozen.
+    Dictionary shatter_for(const String& skill_id) const;
 
     // --- Wave 1 sandpit ---
     // The generated bounded world for a seed (deterministic). Keys: seed,
@@ -232,6 +251,7 @@ private:
     wroughtwild::stats::Equipment equipment_;
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
+    std::set<std::string> active_skill_mods_; // grammar spike scaffolding
     uint64_t temper_seed_ = 0;
     String last_error_;
 };

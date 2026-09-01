@@ -12,6 +12,7 @@ signal hit_landed(total_damage: float, kills: int)
 const AREA_SKILL := &"prototype_area_strike"
 const HEAVY_SKILL := &"prototype_heavy_strike"
 const DASH_SKILL := &"prototype_dash"
+const ORB_SKILL := &"prototype_frost_orb"
 
 var player: WroughtwildPlayer
 var sim: WroughtwildSim
@@ -124,6 +125,8 @@ func use_area() -> int:
 	var hits := 0
 	var kills := 0
 	var total := 0.0
+	var to_shatter: Array = []
+	var shatter: Dictionary = sim.shatter_for(String(AREA_SKILL))
 	for enemy in enemies:
 		var to_enemy: Vector3 = enemy.global_position - player.global_position
 		to_enemy.y = 0.0
@@ -133,15 +136,84 @@ func use_area() -> int:
 		# Point-blank targets always count; beyond that, the cone decides.
 		if distance > 0.6 and forward.dot(to_enemy / distance) < cone_cos:
 			continue
+		# The shatter hook (grammar spike): frozen enemies hit by a trigger
+		# skill shatter instead of taking the ordinary hit.
+		if shatter.get("enabled", false) and enemy.is_frozen():
+			to_shatter.append(enemy)
+			hits += 1
+			continue
 		last_hit_dealt = sim.player_hit_damage(AREA_SKILL, isolated)
 		total += last_hit_dealt
 		enemy.take_damage(last_hit_dealt)
 		if enemy.life <= 0.0:
 			kills += 1
 		hits += 1
+
+	# Shatter cascade: each shattered mob dies releasing a cold nova; other
+	# FROZEN mobs inside the nova shatter too, so a frozen train chains down
+	# its own line. Every mob shatters at most once.
+	var shattered := {}
+	while not to_shatter.is_empty():
+		var victim: Enemy = to_shatter.pop_front()
+		if not is_instance_valid(victim) or shattered.has(victim.get_instance_id()):
+			continue
+		shattered[victim.get_instance_id()] = true
+		var at: Vector3 = victim.global_position
+		_spawn_nova(at, shatter["nova_radius_m"])
+		if shatter.get("executes_frozen", true):
+			total += victim.life
+			victim.take_damage(victim.life)
+			kills += 1
+		for other in alive_enemies():
+			if shattered.has(other.get_instance_id()) or to_shatter.has(other):
+				continue
+			if _planar_distance(other.global_position, at) > shatter["nova_radius_m"]:
+				continue
+			if other.is_frozen():
+				to_shatter.append(other)
+			else:
+				total += shatter["nova_damage"]
+				other.take_damage(shatter["nova_damage"])
+				if other.life <= 0.0:
+					kills += 1
+
 	if hits > 0:
 		hit_landed.emit(total, kills)
 	return hits
+
+
+## A brief expanding ice sphere where a mob shattered (greybox VFX).
+func _spawn_nova(at: Vector3, radius: float) -> void:
+	var mesh := MeshInstance3D.new()
+	var sphere := SphereMesh.new()
+	sphere.radius = 0.5
+	sphere.height = 1.0
+	var material := StandardMaterial3D.new()
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.albedo_color = Color(0.6, 0.85, 1.0, 0.55)
+	material.emission_enabled = true
+	material.emission = Color(0.6, 0.85, 1.0)
+	sphere.material = material
+	mesh.mesh = sphere
+	player.world_root().add_child(mesh)
+	mesh.global_position = at + Vector3(0, 0.5, 0)
+	var tween := mesh.create_tween()
+	tween.tween_property(mesh, "scale", Vector3.ONE * radius * 2.0, 0.22)
+	tween.parallel().tween_property(mesh, "transparency", 1.0, 0.22)
+	tween.tween_callback(mesh.queue_free)
+
+
+## Frost Orb (grammar spike): the sentence opener. Fires from the eyes so
+## first-person aim is the delivery.
+func use_orb() -> bool:
+	if not is_ready(ORB_SKILL):
+		return false
+	_spend(ORB_SKILL)
+	_ensure_fight()
+	var from: Vector3 = player.camera.global_position - player.camera.global_transform.basis.z * 0.6
+	var dir: Vector3 = -player.camera.global_transform.basis.z
+	FrostOrb.launch(self, player.world_root(), from, dir, 0, [])
+	return true
 
 
 ## Heavy strike: the nearest living enemy in front within melee reach.

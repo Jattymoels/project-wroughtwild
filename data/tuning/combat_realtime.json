@@ -49,7 +49,14 @@
       "invulnerable_seconds": 0.0,
       "duration_seconds": 0.25
     },
-    "design_purpose": "Dash is pure movement (D-012): in first person, position is the defence - step or dash out of the breath cone, outpace the train. No invulnerability frames; distance and cooldown live in skills.json."
+    "design_purpose": "Dash is pure movement (D-012): in first person, position is the defence - step or dash out of the breath cone, outpace the train. No invulnerability frames; distance and cooldown live in skills.json.",
+    "prototype_frost_orb": {
+      "speed_mps": 14.0,
+      "hit_radius_m": 0.55,
+      "max_range_m": 20.0,
+      "fork_range_m": 7.0,
+      "design_purpose": "Space-and-time of the orb (ADR-0003): slow enough to lead the train with, fork_range_m decides how loose a bunch still connects"
+    }
   },
   "design_purpose": "round_seconds is the bridge between the sim's round-based encounter (the balance oracle) and real time: attack_period_rounds, breath periods and skill cooldowns become seconds by multiplying by it. Everything else here is time-and-space feel that the round model cannot express; damage, life and mitigation never live in this file (ADR-0003).",
   "horde": {

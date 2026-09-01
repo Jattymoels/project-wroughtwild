@@ -9,6 +9,7 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 
+#include "wroughtwild/grammar.h"
 #include "wroughtwild/loot.h"
 #include "wroughtwild/save.h"
 #include "wroughtwild/worldgen.h"
@@ -55,6 +56,15 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("removal_refund_fraction"), &WroughtwildSim::removal_refund_fraction);
 
     ClassDB::bind_method(D_METHOD("gather_site", "site_id"), &WroughtwildSim::gather_site);
+    ClassDB::bind_method(D_METHOD("skill_mod_ids"), &WroughtwildSim::skill_mod_ids);
+    ClassDB::bind_method(D_METHOD("skill_mod", "mod_id"), &WroughtwildSim::skill_mod);
+    ClassDB::bind_method(D_METHOD("set_skill_mod_active", "mod_id", "active"), &WroughtwildSim::set_skill_mod_active);
+    ClassDB::bind_method(D_METHOD("skill_mod_active", "mod_id"), &WroughtwildSim::skill_mod_active);
+    ClassDB::bind_method(D_METHOD("fork_count", "skill_id"), &WroughtwildSim::fork_count);
+    ClassDB::bind_method(D_METHOD("fork_damage_fraction", "skill_id", "generation"), &WroughtwildSim::fork_damage_fraction);
+    ClassDB::bind_method(D_METHOD("chill_applied", "skill_id", "is_boss"), &WroughtwildSim::chill_applied);
+    ClassDB::bind_method(D_METHOD("chill_status"), &WroughtwildSim::chill_status);
+    ClassDB::bind_method(D_METHOD("shatter_for", "skill_id"), &WroughtwildSim::shatter_for);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
     ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_loot);
     ClassDB::bind_method(D_METHOD("kit_station", "kit_item_id"), &WroughtwildSim::kit_station);
@@ -440,6 +450,16 @@ Dictionary WroughtwildSim::realtime() const {
     dash["invulnerable_seconds"] = rt.dashInvulnerableSeconds;
     dash["duration_seconds"] = rt.dashDurationSeconds;
     d["dash"] = dash;
+
+    Dictionary skills;
+    for (const auto& [skillId, numbers] : rt.skillSpatials) {
+        Dictionary entry;
+        for (const auto& [key, value] : numbers) {
+            entry[to_godot(key)] = value;
+        }
+        skills[to_godot(skillId)] = entry;
+    }
+    d["skills"] = skills;
     return d;
 }
 
@@ -1216,6 +1236,108 @@ Dictionary WroughtwildSim::enemy_loot(const String& enemy_id, int seed) {
     for (const auto& [item, count] : drops) {
         d[to_godot(item)] = count;
     }
+    return d;
+}
+
+PackedStringArray WroughtwildSim::skill_mod_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("skill_mod_ids")) {
+        for (const auto& mod : tuning_->grammar.skillMods) {
+            ids.push_back(to_godot(mod.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::skill_mod(const String& mod_id) const {
+    Dictionary d;
+    if (!require_loaded("skill_mod")) {
+        return d;
+    }
+    const auto* mod = tuning_->grammar.findMod(to_std(mod_id));
+    if (mod == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(mod->id);
+    d["display_name"] = to_godot(mod->displayName);
+    PackedStringArray tags;
+    for (const auto& tag : mod->appliesToTags) {
+        tags.push_back(to_godot(tag));
+    }
+    d["applies_to_tags"] = tags;
+    Dictionary effect;
+    for (const auto& [key, value] : mod->effect) {
+        effect[to_godot(key)] = value;
+    }
+    d["effect"] = effect;
+    d["active"] = active_skill_mods_.count(mod->id) > 0;
+    return d;
+}
+
+void WroughtwildSim::set_skill_mod_active(const String& mod_id, bool active) {
+    if (!require_loaded("set_skill_mod_active")) {
+        return;
+    }
+    const std::string id = to_std(mod_id);
+    if (tuning_->grammar.findMod(id) == nullptr) {
+        return;
+    }
+    if (active) {
+        active_skill_mods_.insert(id);
+    } else {
+        active_skill_mods_.erase(id);
+    }
+}
+
+bool WroughtwildSim::skill_mod_active(const String& mod_id) const {
+    return active_skill_mods_.count(to_std(mod_id)) > 0;
+}
+
+int WroughtwildSim::fork_count(const String& skill_id) const {
+    if (!require_loaded("fork_count")) {
+        return 0;
+    }
+    return wroughtwild::grammar::forkCount(*tuning_, active_skill_mods_, to_std(skill_id));
+}
+
+double WroughtwildSim::fork_damage_fraction(const String& skill_id, int generation) const {
+    if (!require_loaded("fork_damage_fraction")) {
+        return 1.0;
+    }
+    return wroughtwild::grammar::forkDamageFraction(*tuning_, to_std(skill_id), generation);
+}
+
+double WroughtwildSim::chill_applied(const String& skill_id, bool is_boss) const {
+    if (!require_loaded("chill_applied")) {
+        return 0.0;
+    }
+    return wroughtwild::grammar::chillApplied(*tuning_, active_skill_mods_, to_std(skill_id),
+                                              is_boss);
+}
+
+Dictionary WroughtwildSim::chill_status() const {
+    Dictionary d;
+    if (require_loaded("chill_status")) {
+        d["buildup_max"] = tuning_->grammar.chill.buildupMax;
+        d["freeze_duration_s"] = tuning_->grammar.chill.freezeDurationS;
+        d["decay_per_s"] = tuning_->grammar.chill.decayPerS;
+    }
+    return d;
+}
+
+Dictionary WroughtwildSim::shatter_for(const String& skill_id) const {
+    Dictionary d;
+    d["enabled"] = false;
+    if (!require_loaded("shatter_for")) {
+        return d;
+    }
+    const auto params =
+        wroughtwild::grammar::shatterFor(*tuning_, active_skill_mods_, to_std(skill_id));
+    d["enabled"] = params.enabled;
+    d["nova_damage"] = params.novaDamage;
+    d["nova_damage_type"] = to_godot(params.novaDamageType);
+    d["nova_radius_m"] = params.novaRadiusM;
+    d["executes_frozen"] = params.executesFrozen;
     return d;
 }
 

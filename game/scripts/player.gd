@@ -37,6 +37,11 @@ var spawn_position := Vector3.ZERO
 ## Rolls gathering ambushes; tests seed it or spawn ambushes directly.
 var ambush_rng := RandomNumberGenerator.new()
 
+## Grammar-spike scaffolding: F1-F3 flip the three test mods on and off so
+## the freeze-shatter sentence can be felt with and without each word.
+## Wave 2 replaces these hotkeys with mods that live on gear.
+const SPIKE_MODS: Array[StringName] = [&"forked_lattice", &"deep_frost", &"wide_shatter"]
+
 
 func _ready() -> void:
 	add_to_group("player")
@@ -139,6 +144,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		combat.use_area()
 	elif event.is_action_pressed("skill_heavy"):
 		combat.use_heavy()
+	elif event.is_action_pressed("skill_orb"):
+		combat.use_orb()
+	elif event.is_action_pressed("spike_mod_1"):
+		_toggle_spike_mod(0)
+	elif event.is_action_pressed("spike_mod_2"):
+		_toggle_spike_mod(1)
+	elif event.is_action_pressed("spike_mod_3"):
+		_toggle_spike_mod(2)
 	elif event.is_action_pressed("dash"):
 		combat.use_dash()
 	elif event.is_action_pressed("interact"):
@@ -154,6 +167,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		placement.try_remove_block()
 	elif event.is_action_pressed("rotate_preview"):
 		placement.rotate_preview()
+
+
+func _toggle_spike_mod(index: int) -> void:
+	if index < 0 or index >= SPIKE_MODS.size():
+		return
+	var sim := inventory.get_sim()
+	var id := String(SPIKE_MODS[index])
+	var now_active := not sim.skill_mod_active(id)
+	sim.set_skill_mod_active(id, now_active)
+	var mod: Dictionary = sim.skill_mod(id)
+	hud.notify("%s %s (spike mod F%d)" % [
+		mod.get("display_name", id), "ON" if now_active else "off", index + 1])
 
 
 func save_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
