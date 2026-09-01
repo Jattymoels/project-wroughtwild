@@ -53,6 +53,19 @@ question is answerable in greybox before Wave 2 commits itemisation to it.
   landed: crosshair aim feedback, hitmarker, damage flash, and stray-pull
   (damaging an idle mob wakes it).
 
+### World-feel pass *(landed 1 Sep 2026)*
+
+Collecting and moving get their juice before itemisation piles on top:
+harvests and mob kills scatter physical material chips that bounce, rest,
+and vacuum into a nearby player (grant-on-absorb, with an aggregated HUD
+ticker); resource nodes squash on each harvest, visibly shrink with
+remaining yield and shrink away when spent; the crosshair names its target
+and glows harvestables; jumping gains coyote time, input buffering and a
+slightly higher arc (a placed 1 m block is comfortably hoppable), with a
+camera dip on hard landings; the sandpit gets distance fog and filmic
+tonemapping. Also fixed: spawned enemies no longer spend a physics frame at
+their parent's origin. `game/tests/feel.tscn` drives the loop headless.
+
 ### Grammar spike *(landed 1 Sep 2026; playable ahead of Wave 2)*
 
 One full grammar sentence is playable end to end, so the freeze-shatter

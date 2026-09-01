@@ -25,6 +25,18 @@ var _damage_flash: ColorRect
 var _damage_flash_timer := 0.0
 var _last_life := -1.0
 
+# Look-at feedback: the target names itself under the crosshair and
+# harvestables glow while aimed at.
+var _target_label: Label
+var _hovered: Node = null
+
+# Pickup ticker: absorbed drops aggregate into one green line ("+3 wood ·
+# +1 iron ore") instead of a notify per chip.
+const PICKUP_SECONDS := 2.4
+var _pickup_label: Label
+var _pickup_totals := {}
+var _pickup_timer := 0.0
+
 const CROSSHAIR_NEUTRAL := Color(1, 1, 1, 0.8)
 const CROSSHAIR_INTERACT := Color(0.35, 1.0, 0.45, 0.95)
 const CROSSHAIR_ENEMY := Color(1.0, 0.35, 0.3, 0.95)
@@ -49,6 +61,10 @@ func _ready() -> void:
 	_notice = Label.new()
 	_notice.modulate = Color(1.0, 0.9, 0.5)
 	column.add_child(_notice)
+
+	_pickup_label = Label.new()
+	_pickup_label.modulate = Color(0.5, 1.0, 0.55)
+	column.add_child(_pickup_label)
 
 	_damage_flash = ColorRect.new()
 	_damage_flash.color = Color(0.8, 0.05, 0.05, 0.0)
@@ -76,6 +92,22 @@ func _ready() -> void:
 	_hitmarker.modulate = Color(1, 1, 1, 0)
 	marker_centre.add_child(_hitmarker)
 
+	# The target line sits a fixed distance below the crosshair (a spacer in
+	# a centred column keeps the crosshair itself from shifting).
+	var target_centre := CenterContainer.new()
+	target_centre.set_anchors_preset(Control.PRESET_FULL_RECT)
+	target_centre.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(target_centre)
+	var target_column := VBoxContainer.new()
+	target_centre.add_child(target_column)
+	var spacer := Control.new()
+	spacer.custom_minimum_size = Vector2(0, 84)
+	target_column.add_child(spacer)
+	_target_label = Label.new()
+	_target_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_target_label.modulate = Color(1, 1, 1, 0.85)
+	target_column.add_child(_target_label)
+
 	if combat != null:
 		combat.hit_landed.connect(_on_hit_landed)
 		combat.life_changed.connect(_on_life_changed)
@@ -99,6 +131,17 @@ func notify(text: String) -> void:
 	refresh()
 
 
+## Absorbed pickups accumulate into one line while they keep arriving.
+func notify_pickup(family: String, amount: int) -> void:
+	_pickup_totals[family] = int(_pickup_totals.get(family, 0)) + amount
+	_pickup_timer = PICKUP_SECONDS
+	var parts := PackedStringArray()
+	for id in _pickup_totals:
+		parts.append("+%d %s" % [_pickup_totals[id], pretty(id)])
+	_pickup_label.text = " · ".join(parts)
+	refresh()
+
+
 func _process(delta: float) -> void:
 	_refresh_timer -= delta
 	if _refresh_timer <= 0.0:
@@ -116,15 +159,31 @@ func _process(delta: float) -> void:
 	if _damage_flash_timer > 0.0:
 		_damage_flash_timer -= delta
 		_damage_flash.color.a = maxf(0.0, _damage_flash_timer) * 0.9
+	if _pickup_timer > 0.0:
+		_pickup_timer -= delta
+		if _pickup_timer <= 0.0:
+			_pickup_totals.clear()
+			_pickup_label.text = ""
 
 
 func _refresh_crosshair() -> void:
 	if _crosshair == null or player == null:
 		return
-	match player.aim_state():
+	var probe: Dictionary = player.aim_probe()
+	match probe["state"]:
 		"enemy": _crosshair.modulate = CROSSHAIR_ENEMY
 		"interact": _crosshair.modulate = CROSSHAIR_INTERACT
 		_: _crosshair.modulate = CROSSHAIR_NEUTRAL
+	_target_label.text = probe["label"]
+
+	# Hover highlight: glow the harvestable you are looking at.
+	var target: Node = probe["target"] as Node
+	if target != _hovered:
+		if is_instance_valid(_hovered) and _hovered.has_method("set_highlight"):
+			_hovered.set_highlight(false)
+		_hovered = target
+		if is_instance_valid(_hovered) and _hovered.has_method("set_highlight"):
+			_hovered.set_highlight(true)
 
 
 static func pretty(id: String) -> String:

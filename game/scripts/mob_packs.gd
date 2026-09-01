@@ -3,10 +3,9 @@ extends Node
 ## Roaming mob packs of the sandpit. Each pack from the sim's world map is a
 ## dormant spawn point; when the player first comes near, its enemies appear
 ## and hold their ground (aggro is the enemies' own behaviour). Kills roll
-## the sim's loot tables and drop a pack on the ground - fighting always
-## pays into the survival economy.
-
-const DROPPED_BUNDLE_SCENE := preload("res://scenes/dropped_bundle.tscn")
+## the sim's loot tables and scatter physical pickups where the mob fell -
+## fighting always pays into the survival economy, and walking through
+## your battlefield hoovers up the reward.
 
 ## How close the player must come before a pack takes shape. Far enough to
 ## feel discovered, near enough that distant packs cost nothing.
@@ -63,10 +62,9 @@ func _on_enemy_died(enemy: Enemy) -> void:
 	_kill_counter += 1
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	# Per-kill deterministic seed: replaying a save replays its luck.
-	var drops: Dictionary = sim.enemy_loot(enemy.enemy_id, world_seed + _kill_counter * 7919)
+	var kill_seed := world_seed + _kill_counter * 7919
+	var drops: Dictionary = sim.enemy_loot(enemy.enemy_id, kill_seed)
 	if drops.is_empty():
 		return
-	var bundle: DroppedBundle = DROPPED_BUNDLE_SCENE.instantiate()
-	get_parent().add_child(bundle)
-	bundle.global_position = enemy.global_position + Vector3(0, 0.3, 0)
-	bundle.contents = drops
+	Pickup.scatter(get_parent(), enemy.global_position + Vector3(0, 0.5, 0),
+		drops, kill_seed, enemy.global_position.y + 0.02)

@@ -8,8 +8,14 @@ extends CharacterBody3D
 ## Tunable: harvesting pace and how close the player must stand.
 @export var interact_range: float = 3.5
 @export var move_speed: float = 5.0
-@export var jump_velocity: float = 4.5
+## High enough to hop onto a placed 1 m block with room to spare.
+@export var jump_velocity: float = 5.0
 @export var mouse_sensitivity: float = 0.003
+
+## Jump feel: a jump pressed just after stepping off a ledge (coyote) or
+## just before landing (buffer) still fires - inputs stop feeling eaten.
+const COYOTE_SECONDS := 0.12
+const JUMP_BUFFER_SECONDS := 0.12
 
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var camera: Camera3D = $SpringArm3D/Camera3D
@@ -36,6 +42,12 @@ var trial: TrialController
 var spawn_position := Vector3.ZERO
 ## Rolls gathering ambushes; tests seed it or spawn ambushes directly.
 var ambush_rng := RandomNumberGenerator.new()
+
+var _coyote_left := 0.0
+var _jump_buffer_left := 0.0
+var _was_on_floor := true
+## Landing camera dip: set on a hard landing, eased back to zero.
+var _land_dip := 0.0
 
 ## Grammar-spike scaffolding: F1-F3 flip the three test mods on and off so
 ## the freeze-shatter sentence can be felt with and without each word.
@@ -203,10 +215,21 @@ func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
+	if Input.is_action_just_pressed("jump"):
+		_jump_buffer_left = JUMP_BUFFER_SECONDS
+	else:
+		_jump_buffer_left = maxf(0.0, _jump_buffer_left - delta)
+
+	if is_on_floor():
+		_coyote_left = COYOTE_SECONDS
+	else:
 		velocity += get_gravity() * delta
-	elif Input.is_action_just_pressed("jump"):
+		_coyote_left = maxf(0.0, _coyote_left - delta)
+
+	if _jump_buffer_left > 0.0 and _coyote_left > 0.0:
 		velocity.y = jump_velocity
+		_jump_buffer_left = 0.0
+		_coyote_left = 0.0
 
 	var dash := combat.dash_velocity()
 	if dash != Vector3.ZERO:
@@ -217,7 +240,16 @@ func _physics_process(delta: float) -> void:
 		var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
 		velocity.x = direction.x * move_speed
 		velocity.z = direction.z * move_speed
+
+	var fall_speed := -velocity.y
 	move_and_slide()
+
+	# A hard landing dips the camera briefly - weight without screen shake.
+	if is_on_floor() and not _was_on_floor and fall_speed > 5.5:
+		_land_dip = clampf(fall_speed * 0.014, 0.04, 0.13)
+	_was_on_floor = is_on_floor()
+	_land_dip = move_toward(_land_dip, 0.0, delta * 0.7)
+	spring_arm.position.y = (FP_EYE_HEIGHT if first_person else _tp_arm_position.y) - _land_dip
 
 
 func _on_died() -> void:
@@ -287,27 +319,46 @@ func _apply_camera_mode() -> void:
 		body_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 
 
-## What the crosshair is over, for HUD feedback: "enemy" when a living enemy
-## is within melee reach of the facing, "interact" when an E-target is in
-## range, otherwise "none".
-func aim_state() -> String:
+## What the crosshair is over, for HUD feedback: a state ("none" |
+## "interact" | "enemy"), a short label naming the target, and the target
+## node itself (for hover highlighting).
+func aim_probe() -> Dictionary:
+	var none := {"state": "none", "label": "", "target": null}
 	var from := camera.global_position
 	var to := from + (-camera.global_transform.basis.z) * interact_range
 	var query := PhysicsRayQueryParameters3D.create(from, to)
 	query.exclude = [self]
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty():
-		return "none"
+		return none
 	var collider: Object = hit.get("collider")
 	if collider is Enemy:
 		var enemy := collider as Enemy
 		if enemy.life > 0.0 and hit["position"].distance_to(from) <= combat.melee_reach + 1.0:
-			return "enemy"
-		return "none"
-	if collider is ResourceNode or collider is StationSite or collider is OrderBoard \
-			or collider is DroppedBundle or collider is TrialGate:
-		return "interact"
-	return "none"
+			return {"state": "enemy", "label": "", "target": enemy}
+		return none
+	if collider is ResourceNode:
+		var node := collider as ResourceNode
+		return {"state": "interact", "target": node,
+			"label": "%s ×%d — E to gather" % [Hud.pretty(String(node.material_family)), node.remaining_units]}
+	if collider is StationSite:
+		var site := collider as StationSite
+		var sim := inventory.get_sim()
+		var info: Dictionary = sim.station(site.current_station_id(sim))
+		var verb := "E to work" if site.is_built(sim) else "E to build"
+		return {"state": "interact", "target": site,
+			"label": "%s — %s" % [info.get("display_name", "Station"), verb]}
+	if collider is OrderBoard:
+		return {"state": "interact", "label": "Order board — E to read", "target": collider}
+	if collider is DroppedBundle:
+		return {"state": "interact", "label": "Your dropped pack — E to recover", "target": collider}
+	if collider is TrialGate:
+		return {"state": "interact", "label": "Trial gate — E to enter", "target": collider}
+	return none
+
+
+func aim_state() -> String:
+	return aim_probe()["state"]
 
 
 func interact() -> void:
@@ -329,8 +380,10 @@ func interact() -> void:
 		var family := node.material_family
 		var granted := node.harvest()
 		if granted > 0:
-			inventory.add_material(family, granted)
-			hud.notify("+%d %s" % [granted, Hud.pretty(family)])
+			# Feel: the yield pops out of the node as physical chips that
+			# vacuum into you; the inventory add happens on absorb.
+			Pickup.scatter(world_root(), node.global_position + Vector3(0, 0.9, 0),
+				{String(family): granted}, ambush_rng.randi(), node.global_position.y + 0.02)
 			maybe_ambush(node)
 	elif collider is StationSite:
 		(collider as StationSite).interact(self)

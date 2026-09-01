@@ -16,16 +16,34 @@ extends StaticBody3D
 @export var visual: StringName = &""
 
 
+## Yield when the node first appeared, so the visual shrink tracks the
+## fraction actually taken (feel: you can SEE a node is nearly spent).
+var _initial_units := 0
+## Materials created for this node's own meshes; safe to tint for the
+## look-at highlight because they are never shared between nodes.
+var _own_materials: Array = []
+
+
 func _ready() -> void:
+	_initial_units = maxi(remaining_units, 1)
 	_apply_visual()
 
 
-static func _textured(texture_path: String) -> StandardMaterial3D:
+func _textured(texture_path: String) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
 	material.albedo_texture = load(texture_path)
 	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	material.roughness = 1.0
+	material.emission = Color(0.85, 0.85, 0.6)
+	material.emission_energy_multiplier = 0.35
+	_own_materials.append(material)
 	return material
+
+
+## Crosshair-hover feedback: a soft glow on the node you would harvest.
+func set_highlight(on: bool) -> void:
+	for material in _own_materials:
+		material.emission_enabled = on
 
 
 func _apply_visual() -> void:
@@ -84,5 +102,37 @@ func harvest() -> int:
 	remaining_units -= granted
 
 	if remaining_units <= 0:
-		queue_free()
+		_deplete()
+	elif is_inside_tree():
+		_play_harvest_punch()
 	return granted
+
+
+## Feel: each harvest gives the node a quick squash-and-settle, landing on a
+## scale that tracks how much yield is left - a half-spent tree looks it.
+func _play_harvest_punch() -> void:
+	var target := _scale_for_remaining()
+	scale = target * 0.86
+	var tween := create_tween()
+	tween.tween_property(self, "scale", target, 0.18) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+
+func _scale_for_remaining() -> Vector3:
+	var fraction := float(remaining_units) / float(maxi(_initial_units, 1))
+	return Vector3.ONE * lerpf(0.6, 1.0, fraction)
+
+
+## The last harvest shrinks the node away instead of blinking it out.
+## Collision goes immediately so the space is usable at once.
+func _deplete() -> void:
+	if not is_inside_tree():
+		queue_free()
+		return
+	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
+	if collider != null:
+		collider.set_deferred("disabled", true)
+	var tween := create_tween()
+	tween.tween_property(self, "scale", Vector3.ONE * 0.02, 0.3) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.tween_callback(queue_free)
