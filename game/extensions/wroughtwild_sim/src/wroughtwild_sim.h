@@ -9,6 +9,7 @@
 #include <string>
 
 #include <godot_cpp/classes/ref_counted.hpp>
+#include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
@@ -16,6 +17,7 @@
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
+#include "wroughtwild/grammar.h"
 #include "wroughtwild/stats.h"
 #include "wroughtwild/trial.h"
 #include "wroughtwild/tuning.h"
@@ -59,11 +61,39 @@ public:
     // ambush_enemies, ambush_removed_by_world_effect.
     Dictionary gather_site(const String& site_id) const;
 
-    // --- grammar spike (docs/systems/skill-grammar.md) ---
-    // Tag-targeted skill mods, toggled in the spike (F1-F3 scaffolding);
-    // Wave 2 moves them onto gear, points and boons.
+    // --- itemisation (D-014, docs/systems/items-and-modifiers.md) ---
+    PackedStringArray slot_ids() const;
+    PackedStringArray item_base_ids() const;
+    // Keys: id, display_name, slot, grants_skill, material, implicit_properties,
+    // implicit_modifiers (array of modifier entries), allowed_modifier_tags.
+    Dictionary item_base(const String& base_id) const;
+    PackedStringArray modifier_ids() const;
+    // Keys: id, display_name, tags, applies_to_tags, effect_key, display, self,
+    // tiers (array of {tier, minimum, maximum}).
+    Dictionary modifier(const String& modifier_id) const;
+    // Rolled gear carried in the pack: array of item entries (keys: index,
+    // base_id, display_name, slot, rarity, grants_skill, armour,
+    // fire_resistance, max_life, area_size, mods (array of {id,
+    // display_name, tier, value, sentence, source}), rolled).
+    Array pack_items() const;
+    // Wears pack item `index` in its base's slot; anything worn there returns
+    // to the pack with its modifiers. False when the index is out of range.
+    bool equip_pack_item(int index);
+    // Returns the worn item of a slot to the pack. False when empty.
+    bool unequip(const String& slot);
+    // Every modifier in force (worn gear plus debug toggles): array of
+    // modifier entries with source.
+    Array active_modifiers() const;
+    // Rolls a rarity item of base_id into the pack; returns its index or -1.
+    int roll_item_into_pack(const String& base_id, const String& rarity, int tier, int seed);
+    // Cooldown after cooldown-recovery modifiers.
+    double skill_cooldown_seconds(const String& skill_id) const;
+
+    // --- grammar (docs/systems/skill-grammar.md) ---
+    // Debug toggles (F1-F3): force one non-self modifier at its tier-1
+    // maximum, on top of what gear supplies.
     PackedStringArray skill_mod_ids() const;
-    // Keys: id, display_name, applies_to_tags, active, effect (dict).
+    // Keys: id, display_name, applies_to_tags, active, effect (dict), sentence.
     Dictionary skill_mod(const String& mod_id) const;
     void set_skill_mod_active(const String& mod_id, bool active);
     bool skill_mod_active(const String& mod_id) const;
@@ -173,9 +203,9 @@ public:
     // Keys per slot: base_id, display_name, armour, fire_resistance,
     // max_life, area_size, rolled (array of {property, tier, value}).
     Dictionary equipment() const;
-    // Takes one item of base_id from the inventory and wears it in the
-    // "chest" slot; anything already worn returns to the inventory as a bare
-    // base (its tempering is lost). False when none is carried.
+    // Takes one plain item of base_id from the inventory and wears it in its
+    // base's slot; anything already worn there goes to the pack with its
+    // modifiers intact (D-014). False when none is carried.
     bool equip_from_inventory(const String& base_id);
     // Keys: id, display_name, catalyst, station, process, minimum_skill,
     // guaranteed_property, property_display_name, result_tier, tier_minimum,
@@ -245,13 +275,14 @@ private:
     const wroughtwild::tuning::CombatSkillDef* find_skill(const String& skill_id) const;
     wroughtwild::combat::CombatMods current_mods() const;
     wroughtwild::boons::BuildTags build_tags() const;
+    wroughtwild::grammar::ActiveMods active_mods() const;
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;
     wroughtwild::stats::Equipment equipment_;
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
-    std::set<std::string> active_skill_mods_; // grammar spike scaffolding
+    std::set<std::string> active_skill_mods_; // debug toggles (F1-F3)
     uint64_t temper_seed_ = 0;
     String last_error_;
 };

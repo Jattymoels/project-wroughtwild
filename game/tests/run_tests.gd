@@ -288,7 +288,7 @@ func _test_sim_extension() -> void:
 
 	# Skill grammar (grammar spike): the sim owns the sentence's numbers and
 	# the engine only asks. Mods are tag-gated and toggle cleanly.
-	check(sim.skill_mod_ids().size() == 3, "grammar: three spike mods loaded")
+	check(sim.skill_mod_ids().size() >= 3 and sim.skill_mod_ids().has("deep_frost"), "grammar: debug toggles come from the item modifier pool")
 	check(sim.skill_mod("deep_frost")["applies_to_tags"].has("chill"), "grammar: mod view carries tags")
 	check(sim.fork_count("prototype_frost_orb") == 1, "grammar: orb forks once bare")
 	check(sim.fork_count("prototype_area_strike") == 0, "grammar: strike never forks (no projectile tag)")
@@ -400,6 +400,25 @@ func _test_sim_extension() -> void:
 		"temper: refused below the skill floor without consuming the catalyst")
 	var snapshot_with_gear: String = sim.export_json()
 	check(snapshot_with_gear.find("fire_resistance") >= 0, "gear: tempered armour is in the save schema")
+
+	# D-014 itemisation: bases, rarities, pack items, gear-driven grammar.
+	check(sim.slot_ids().size() == 3 and sim.item_base_ids().has("frost_sceptre"), "items: slots and bases from data")
+	check(sim.modifier("deep_frost")["applies_to_tags"].has("chill") and sim.modifier("max_life")["self"], "items: modifier views")
+	# The trial run above banked the gear its rooms dropped, so the pack is not empty.
+	var before: int = sim.pack_items().size()
+	check(before == 2, "items: the trial's loot room and shrine banked one piece of gear each")
+	var index: int = sim.roll_item_into_pack("frost_sceptre", "keen", 1, 7)
+	check(index == before and sim.pack_items().size() == before + 1 and sim.pack_items()[index]["rarity"] == "keen", "items: a keen sceptre rolled into the pack")
+	var mods: Array = sim.pack_items()[index]["mods"]
+	check(mods.size() >= 2 and String(mods[0]["sentence"]).begins_with("+1 Forks"), "items: the item card lists the implicit fork first")
+	check(sim.equip_pack_item(index) and sim.equipment().has("weapon") and sim.pack_items().size() == before, "items: wearing from the pack fills the weapon slot")
+	check(sim.fork_count("prototype_frost_orb") == 2, "items: the worn sceptre forks the orb")
+	check(sim.active_modifiers().size() >= 2, "items: active modifiers list the worn gear")
+	check(sim.unequip("weapon") and sim.pack_items().size() == before + 1 and not sim.equipment().has("weapon"), "items: taking it off returns it to the pack with its modifiers")
+	check(sim.fork_count("prototype_frost_orb") == 1, "items: bare again")
+	check(absf(sim.skill_cooldown_seconds("prototype_heavy_strike") - 1.4) < 0.000001, "items: cooldown view matches skills.json bare")
+	check(sim.export_json().find("pack_items") >= 0, "items: pack items are in the save schema")
+	check(sim.roll_item_into_pack("no_such_base", "keen", 1, 1) == -1 and sim.pack_items().size() == before + 1, "items: unknown bases roll nothing")
 
 func _test_sandpit_extension() -> void:
 	# Wave 1 surface: worldgen, loot, kits, fuel and currency routing.

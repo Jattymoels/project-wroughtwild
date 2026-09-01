@@ -29,6 +29,70 @@ Dictionary to_dictionary(const std::map<std::string, int>& counts) {
     return d;
 }
 
+// --- D-014 item views ---------------------------------------------------------
+
+PackedStringArray strings_to_packed(const std::vector<std::string>& values) {
+    PackedStringArray out;
+    for (const auto& v : values) {
+        out.push_back(to_godot(v));
+    }
+    return out;
+}
+
+Dictionary mod_entry(const wroughtwild::tuning::ModifierDef& def, double value, int tier, const std::string& source) {
+    Dictionary m;
+    m["id"] = to_godot(def.id);
+    m["display_name"] = to_godot(def.displayName);
+    m["value"] = value;
+    m["tier"] = tier;
+    m["sentence"] = to_godot(wroughtwild::items::modifierSentence(def, value));
+    m["source"] = to_godot(source);
+    m["applies_to_tags"] = strings_to_packed(def.appliesToTags);
+    m["effect_key"] = to_godot(def.effectKey);
+    return m;
+}
+
+Dictionary item_entry(const wroughtwild::tuning::Tuning& tuning, const wroughtwild::items::ItemInstance& item,
+                      int index) {
+    Dictionary d;
+    const auto* base = tuning.items.findBase(item.baseId);
+    d["index"] = index;
+    d["base_id"] = to_godot(item.baseId);
+    d["display_name"] = to_godot(base ? base->displayName : item.baseId);
+    d["slot"] = to_godot(base ? base->slot : std::string());
+    d["grants_skill"] = to_godot(base ? base->grantsSkill : std::string());
+    d["rarity"] = to_godot(item.rarity);
+    const auto totals = wroughtwild::items::statTotals(tuning.items, item);
+    d["armour"] = totals.armour;
+    d["fire_resistance"] = totals.fireResistance;
+    d["max_life"] = totals.maxLife;
+    d["area_size"] = totals.areaSize;
+    Array mods;
+    if (base) {
+        for (const auto& implicit : base->implicitModifiers) {
+            const auto* def = tuning.items.findModifier(implicit.id);
+            if (def) {
+                mods.push_back(mod_entry(*def, implicit.value, 0, "implicit"));
+            }
+        }
+    }
+    Array rolled;
+    for (const auto& r : item.rolledProperties) {
+        const auto* def = tuning.items.findModifier(r.propertyId);
+        if (def) {
+            mods.push_back(mod_entry(*def, r.value, r.tier, "rolled"));
+        }
+        Dictionary p;
+        p["property"] = to_godot(r.propertyId);
+        p["tier"] = r.tier;
+        p["value"] = r.value;
+        rolled.push_back(p);
+    }
+    d["mods"] = mods;
+    d["rolled"] = rolled;
+    return d;
+}
+
 } // namespace
 
 void WroughtwildSim::_bind_methods() {
@@ -65,6 +129,17 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("chill_applied", "skill_id", "is_boss"), &WroughtwildSim::chill_applied);
     ClassDB::bind_method(D_METHOD("chill_status"), &WroughtwildSim::chill_status);
     ClassDB::bind_method(D_METHOD("shatter_for", "skill_id"), &WroughtwildSim::shatter_for);
+    ClassDB::bind_method(D_METHOD("slot_ids"), &WroughtwildSim::slot_ids);
+    ClassDB::bind_method(D_METHOD("item_base_ids"), &WroughtwildSim::item_base_ids);
+    ClassDB::bind_method(D_METHOD("item_base", "base_id"), &WroughtwildSim::item_base);
+    ClassDB::bind_method(D_METHOD("modifier_ids"), &WroughtwildSim::modifier_ids);
+    ClassDB::bind_method(D_METHOD("modifier", "modifier_id"), &WroughtwildSim::modifier);
+    ClassDB::bind_method(D_METHOD("pack_items"), &WroughtwildSim::pack_items);
+    ClassDB::bind_method(D_METHOD("equip_pack_item", "index"), &WroughtwildSim::equip_pack_item);
+    ClassDB::bind_method(D_METHOD("unequip", "slot"), &WroughtwildSim::unequip);
+    ClassDB::bind_method(D_METHOD("active_modifiers"), &WroughtwildSim::active_modifiers);
+    ClassDB::bind_method(D_METHOD("roll_item_into_pack", "base_id", "rarity", "tier", "seed"), &WroughtwildSim::roll_item_into_pack);
+    ClassDB::bind_method(D_METHOD("skill_cooldown_seconds", "skill_id"), &WroughtwildSim::skill_cooldown_seconds);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
     ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_loot);
     ClassDB::bind_method(D_METHOD("kit_station", "kit_item_id"), &WroughtwildSim::kit_station);
@@ -231,6 +306,11 @@ Dictionary WroughtwildSim::trial_resolve_room(bool victory) {
     d["offered_weakness"] = weakness;
     d["catalyst_recovered"] = outcome.catalystRecovered;
     d["materials"] = to_dictionary(outcome.materials);
+    Array items;
+    for (const auto& item : outcome.items) {
+        items.push_back(item_entry(*tuning_, item, -1));
+    }
+    d["items"] = items;
     d["finished"] = trial_->finished();
     d["died"] = trial_->playerDied();
     d["boss_defeated"] = trial_->bossDefeated();
@@ -316,7 +396,7 @@ Dictionary WroughtwildSim::derived_stats() const {
     if (!require_loaded("derived_stats")) {
         return d;
     }
-    const auto s = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_);
+    const auto s = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_, tuning_->items);
     d["max_life"] = s.maxLife;
     d["armour"] = s.armour;
     d["fire_resistance_percent"] = s.fireResistancePercent;
@@ -514,7 +594,11 @@ double WroughtwildSim::player_hit_damage(const String& skill_id, bool isolated) 
     if (!hits_) {
         begin_fight(0);
     }
-    return hits_->playerHit(*def, current_mods(), isolated);
+    // Gear modifiers scale the skill's base damage by tag before the hit
+    // stream applies variance and run boons (D-014).
+    auto modded = *def;
+    modded.numbers["base_damage"] = wroughtwild::grammar::skillDamage(*tuning_, active_mods(), to_std(skill_id));
+    return hits_->playerHit(modded, current_mods(), isolated);
 }
 
 double WroughtwildSim::enemy_hit_damage(double raw_damage, const String& damage_type) {
@@ -524,7 +608,7 @@ double WroughtwildSim::enemy_hit_damage(double raw_damage, const String& damage_
     if (!hits_) {
         begin_fight(0);
     }
-    const auto stats = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_);
+    const auto stats = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_, tuning_->items);
     return hits_->enemyHit(raw_damage, to_std(damage_type), stats, tuning_->world.playerBase);
 }
 
@@ -532,7 +616,7 @@ double WroughtwildSim::mitigate(double amount, const String& damage_type) const 
     if (!require_loaded("mitigate")) {
         return amount;
     }
-    const auto stats = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_);
+    const auto stats = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_, tuning_->items);
     return wroughtwild::stats::mitigateDamage(amount, to_std(damage_type), stats, tuning_->world.playerBase);
 }
 
@@ -818,25 +902,13 @@ const char* kChestSlot = "chest";
 
 const wroughtwild::tuning::PropertyDef* find_property(const wroughtwild::tuning::ItemTable& table,
                                                       const std::string& id) {
-    for (const auto& def : table.propertyDefinitions) {
-        if (def.id == id) {
-            return &def;
-        }
-    }
-    return nullptr;
+    return table.findModifier(id);
 }
 
 const wroughtwild::tuning::PropertyTier* find_tier(const wroughtwild::tuning::PropertyDef* def, int tier) {
-    if (def == nullptr) {
-        return nullptr;
-    }
-    for (const auto& t : def->tiers) {
-        if (t.tier == tier) {
-            return &t;
-        }
-    }
-    return nullptr;
+    return def == nullptr ? nullptr : def->findTier(tier);
 }
+
 
 } // namespace
 
@@ -846,24 +918,7 @@ Dictionary WroughtwildSim::equipment() const {
         return d;
     }
     for (const auto& [slot, item] : equipment_.slots) {
-        Dictionary entry;
-        entry["base_id"] = to_godot(item.baseId);
-        const auto* base = tuning_->items.findBase(item.baseId);
-        entry["display_name"] = to_godot(base ? base->displayName : item.baseId);
-        entry["armour"] = wroughtwild::items::propertyTotal(item, "armour");
-        entry["fire_resistance"] = wroughtwild::items::propertyTotal(item, "fire_resistance");
-        entry["max_life"] = wroughtwild::items::propertyTotal(item, "max_life");
-        entry["area_size"] = wroughtwild::items::propertyTotal(item, "area_size");
-        Array rolled;
-        for (const auto& r : item.rolledProperties) {
-            Dictionary p;
-            p["property"] = to_godot(r.propertyId);
-            p["tier"] = r.tier;
-            p["value"] = r.value;
-            rolled.push_back(p);
-        }
-        entry["rolled"] = rolled;
-        d[to_godot(slot)] = entry;
+        d[to_godot(slot)] = item_entry(*tuning_, item, -1);
     }
     return d;
 }
@@ -879,14 +934,14 @@ bool WroughtwildSim::equip_from_inventory(const String& base_id) {
         return false;
     }
     held->second -= 1;
-    auto worn = equipment_.slots.find(kChestSlot);
+    auto worn = equipment_.slots.find(base->slot);
     if (worn != equipment_.slots.end()) {
-        player_->inventory[worn->second.baseId] += 1;
+        player_->packItems.push_back(worn->second); // modifiers travel with it (D-014)
     }
     wroughtwild::items::ItemInstance item;
     item.baseId = base->id;
     item.implicitProperties = base->implicitProperties;
-    equipment_.slots[kChestSlot] = item;
+    equipment_.slots[base->slot] = item;
     return true;
 }
 
@@ -1243,8 +1298,10 @@ Dictionary WroughtwildSim::enemy_loot(const String& enemy_id, int seed) {
 PackedStringArray WroughtwildSim::skill_mod_ids() const {
     PackedStringArray ids;
     if (require_loaded("skill_mod_ids")) {
-        for (const auto& mod : tuning_->grammar.skillMods) {
-            ids.push_back(to_godot(mod.id));
+        for (const auto& def : tuning_->items.modifiers) {
+            if (!def.isSelf()) {
+                ids.push_back(to_godot(def.id));
+            }
         }
     }
     return ids;
@@ -1255,23 +1312,19 @@ Dictionary WroughtwildSim::skill_mod(const String& mod_id) const {
     if (!require_loaded("skill_mod")) {
         return d;
     }
-    const auto* mod = tuning_->grammar.findMod(to_std(mod_id));
-    if (mod == nullptr) {
+    const auto* def = tuning_->items.findModifier(to_std(mod_id));
+    if (def == nullptr || def->isSelf()) {
         return d;
     }
-    d["id"] = to_godot(mod->id);
-    d["display_name"] = to_godot(mod->displayName);
-    PackedStringArray tags;
-    for (const auto& tag : mod->appliesToTags) {
-        tags.push_back(to_godot(tag));
-    }
-    d["applies_to_tags"] = tags;
+    const double value = wroughtwild::grammar::defaultValue(*def);
+    d["id"] = to_godot(def->id);
+    d["display_name"] = to_godot(def->displayName);
+    d["applies_to_tags"] = strings_to_packed(def->appliesToTags);
     Dictionary effect;
-    for (const auto& [key, value] : mod->effect) {
-        effect[to_godot(key)] = value;
-    }
+    effect[to_godot(def->effectKey)] = value;
     d["effect"] = effect;
-    d["active"] = active_skill_mods_.count(mod->id) > 0;
+    d["sentence"] = to_godot(wroughtwild::items::modifierSentence(*def, value));
+    d["active"] = active_skill_mods_.count(def->id) > 0;
     return d;
 }
 
@@ -1280,7 +1333,8 @@ void WroughtwildSim::set_skill_mod_active(const String& mod_id, bool active) {
         return;
     }
     const std::string id = to_std(mod_id);
-    if (tuning_->grammar.findMod(id) == nullptr) {
+    const auto* def = tuning_->items.findModifier(id);
+    if (def == nullptr || def->isSelf()) {
         return;
     }
     if (active) {
@@ -1298,7 +1352,7 @@ int WroughtwildSim::fork_count(const String& skill_id) const {
     if (!require_loaded("fork_count")) {
         return 0;
     }
-    return wroughtwild::grammar::forkCount(*tuning_, active_skill_mods_, to_std(skill_id));
+    return wroughtwild::grammar::forkCount(*tuning_, active_mods(), to_std(skill_id));
 }
 
 double WroughtwildSim::fork_damage_fraction(const String& skill_id, int generation) const {
@@ -1312,7 +1366,7 @@ double WroughtwildSim::chill_applied(const String& skill_id, bool is_boss) const
     if (!require_loaded("chill_applied")) {
         return 0.0;
     }
-    return wroughtwild::grammar::chillApplied(*tuning_, active_skill_mods_, to_std(skill_id),
+    return wroughtwild::grammar::chillApplied(*tuning_, active_mods(), to_std(skill_id),
                                               is_boss);
 }
 
@@ -1333,7 +1387,7 @@ Dictionary WroughtwildSim::shatter_for(const String& skill_id) const {
         return d;
     }
     const auto params =
-        wroughtwild::grammar::shatterFor(*tuning_, active_skill_mods_, to_std(skill_id));
+        wroughtwild::grammar::shatterFor(*tuning_, active_mods(), to_std(skill_id));
     d["enabled"] = params.enabled;
     d["nova_damage"] = params.novaDamage;
     d["nova_damage_type"] = to_godot(params.novaDamageType);
@@ -1413,6 +1467,182 @@ Dictionary WroughtwildSim::world_map(int seed) {
     d["gate_x"] = map.gateX;
     d["gate_z"] = map.gateZ;
     return d;
+}
+
+// --- D-014 itemisation ---------------------------------------------------------
+
+wroughtwild::grammar::ActiveMods WroughtwildSim::active_mods() const {
+    auto mods = wroughtwild::grammar::gearMods(tuning_->items, equipment_);
+    for (const auto& id : active_skill_mods_) {
+        const auto* def = tuning_->items.findModifier(id);
+        if (def != nullptr) {
+            mods.push_back(wroughtwild::grammar::modAt(tuning_->items, id,
+                                                       wroughtwild::grammar::defaultValue(*def), "debug"));
+        }
+    }
+    return mods;
+}
+
+PackedStringArray WroughtwildSim::slot_ids() const {
+    return require_loaded("slot_ids") ? strings_to_packed(tuning_->items.slots) : PackedStringArray();
+}
+
+PackedStringArray WroughtwildSim::item_base_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("item_base_ids")) {
+        for (const auto& base : tuning_->items.itemBases) {
+            ids.push_back(to_godot(base.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::item_base(const String& base_id) const {
+    Dictionary d;
+    if (!require_loaded("item_base")) {
+        return d;
+    }
+    const auto* base = tuning_->items.findBase(to_std(base_id));
+    if (base == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(base->id);
+    d["display_name"] = to_godot(base->displayName);
+    d["slot"] = to_godot(base->slot);
+    d["grants_skill"] = to_godot(base->grantsSkill);
+    d["material"] = to_godot(base->material);
+    Dictionary implicit;
+    for (const auto& [key, value] : base->implicitProperties) {
+        implicit[to_godot(key)] = value;
+    }
+    d["implicit_properties"] = implicit;
+    Array mods;
+    for (const auto& im : base->implicitModifiers) {
+        const auto* def = tuning_->items.findModifier(im.id);
+        if (def != nullptr) {
+            mods.push_back(mod_entry(*def, im.value, 0, "implicit"));
+        }
+    }
+    d["implicit_modifiers"] = mods;
+    d["allowed_modifier_tags"] = strings_to_packed(base->allowedModifierTags);
+    return d;
+}
+
+PackedStringArray WroughtwildSim::modifier_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("modifier_ids")) {
+        for (const auto& def : tuning_->items.modifiers) {
+            ids.push_back(to_godot(def.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::modifier(const String& modifier_id) const {
+    Dictionary d;
+    if (!require_loaded("modifier")) {
+        return d;
+    }
+    const auto* def = tuning_->items.findModifier(to_std(modifier_id));
+    if (def == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(def->id);
+    d["display_name"] = to_godot(def->displayName);
+    d["tags"] = strings_to_packed(def->tags);
+    d["applies_to_tags"] = strings_to_packed(def->appliesToTags);
+    d["effect_key"] = to_godot(def->effectKey);
+    d["display"] = to_godot(def->display);
+    d["self"] = def->isSelf();
+    d["design_purpose"] = to_godot(def->designPurpose);
+    Array tiers;
+    for (const auto& tier : def->tiers) {
+        Dictionary t;
+        t["tier"] = tier.tier;
+        t["minimum"] = tier.minimum;
+        t["maximum"] = tier.maximum;
+        tiers.push_back(t);
+    }
+    d["tiers"] = tiers;
+    return d;
+}
+
+Array WroughtwildSim::pack_items() const {
+    Array items;
+    if (!require_loaded("pack_items")) {
+        return items;
+    }
+    for (size_t i = 0; i < player_->packItems.size(); ++i) {
+        items.push_back(item_entry(*tuning_, player_->packItems[i], static_cast<int>(i)));
+    }
+    return items;
+}
+
+bool WroughtwildSim::equip_pack_item(int index) {
+    if (!require_loaded("equip_pack_item") || index < 0 ||
+        static_cast<size_t>(index) >= player_->packItems.size()) {
+        return false;
+    }
+    const wroughtwild::items::ItemInstance item = player_->packItems[static_cast<size_t>(index)];
+    const auto* base = tuning_->items.findBase(item.baseId);
+    if (base == nullptr) {
+        return false;
+    }
+    player_->packItems.erase(player_->packItems.begin() + index);
+    auto worn = equipment_.slots.find(base->slot);
+    if (worn != equipment_.slots.end()) {
+        player_->packItems.push_back(worn->second);
+    }
+    equipment_.slots[base->slot] = item;
+    return true;
+}
+
+bool WroughtwildSim::unequip(const String& slot) {
+    if (!require_loaded("unequip")) {
+        return false;
+    }
+    auto worn = equipment_.slots.find(to_std(slot));
+    if (worn == equipment_.slots.end()) {
+        return false;
+    }
+    player_->packItems.push_back(worn->second);
+    equipment_.slots.erase(worn);
+    return true;
+}
+
+Array WroughtwildSim::active_modifiers() const {
+    Array out;
+    if (!require_loaded("active_modifiers")) {
+        return out;
+    }
+    for (const auto& mod : active_mods()) {
+        const auto* def = tuning_->items.findModifier(mod.id);
+        if (def != nullptr) {
+            out.push_back(mod_entry(*def, mod.value, 0, mod.source));
+        }
+    }
+    return out;
+}
+
+int WroughtwildSim::roll_item_into_pack(const String& base_id, const String& rarity, int tier, int seed) {
+    if (!require_loaded("roll_item_into_pack")) {
+        return -1;
+    }
+    try {
+        player_->packItems.push_back(wroughtwild::items::rollRarityItem(
+            tuning_->items, to_std(base_id), to_std(rarity), tier, static_cast<uint64_t>(seed)));
+    } catch (const std::exception& e) {
+        UtilityFunctions::push_warning("WroughtwildSim.roll_item_into_pack: ", e.what());
+        return -1;
+    }
+    return static_cast<int>(player_->packItems.size()) - 1;
+}
+
+double WroughtwildSim::skill_cooldown_seconds(const String& skill_id) const {
+    if (!require_loaded("skill_cooldown_seconds")) {
+        return 0.0;
+    }
+    return wroughtwild::grammar::skillCooldownSeconds(*tuning_, active_mods(), to_std(skill_id));
 }
 
 } // namespace godot

@@ -4,20 +4,40 @@
 
 namespace wroughtwild::stats {
 
+namespace {
+
+DerivedStats finish(const tuning::PlayerBase& base, DerivedStats stats) {
+    stats.fireResistancePercent =
+        std::min(stats.fireResistancePercent, base.resistanceCapPercent);
+    return stats;
+}
+
+} // namespace
+
+DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment,
+                         const tuning::ItemTable& table) {
+    DerivedStats stats;
+    stats.maxLife = base.maxLife;
+    for (const auto& [slot, item] : equipment.slots) {
+        const items::StatTotals totals = items::statTotals(table, item);
+        stats.maxLife += totals.maxLife;
+        stats.armour += totals.armour;
+        stats.fireResistancePercent += totals.fireResistance;
+        stats.areaBonus += totals.areaSize;
+    }
+    return finish(base, stats);
+}
+
 DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment) {
     DerivedStats stats;
     stats.maxLife = base.maxLife;
-
     for (const auto& [slot, item] : equipment.slots) {
         stats.maxLife += items::propertyTotal(item, "max_life");
         stats.armour += items::propertyTotal(item, "armour");
         stats.fireResistancePercent += items::propertyTotal(item, "fire_resistance");
         stats.areaBonus += items::propertyTotal(item, "area_size");
     }
-
-    stats.fireResistancePercent =
-        std::min(stats.fireResistancePercent, base.resistanceCapPercent);
-    return stats;
+    return finish(base, stats);
 }
 
 double mitigateDamage(double amount, const std::string& damageType,

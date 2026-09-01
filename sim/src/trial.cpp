@@ -86,6 +86,19 @@ TrialSession::RoomOutcome TrialSession::resolveRoom(bool victory) {
     }
 
     outcome.rewardType = room.reward;
+
+    // Gear drops (D-014): the room's reward type decides rarity and tier;
+    // the base is drawn from every base, so any build can be pulled sideways.
+    auto itemReward = tuning_.trial.itemRewards.find(room.reward);
+    if (itemReward != tuning_.trial.itemRewards.end() && !tuning_.items.itemBases.empty()) {
+        const auto& bases = tuning_.items.itemBases;
+        const auto& base = bases[static_cast<size_t>((roomSeed >> 8) % bases.size())];
+        auto item = items::rollRarityItem(tuning_.items, base.id, itemReward->second.rarity,
+                                          itemReward->second.tier, roomSeed ^ 0xA5A5A5A5ull);
+        lootItems_.push_back(item);
+        outcome.items.push_back(item);
+    }
+
     if (room.reward == "boon_offer") {
         pendingOffer_ = boons::generateOffer(tuning_.boons, buildTags_, run_, roomSeed);
         outcome.boonOffer = pendingOffer_;
@@ -164,6 +177,10 @@ void TrialSession::finish(bool died) {
             economy_.inventory[id] += amount;
         }
     }
+
+    // Dropped gear follows the same contract as run materials.
+    if (!died || !tuning_.trial.loseRunMaterialsOnDeath)
+        for (const auto& item : lootItems_) economy_.packItems.push_back(item);
 
     if (bossDefeated_)
         economy_.recordWorldEffect(tuning_.trial.completionUnlock);

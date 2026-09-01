@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <string>
 
+#include <set>
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
@@ -304,7 +305,7 @@ void testItemRolls(const tuning::Tuning& t) {
         for (const auto& rolled : item.rolledProperties) {
             check(rolled.propertyId != "area_size", "items: offence tag excluded from armour");
             const tuning::PropertyDef* def = nullptr;
-            for (const auto& d : t.items.propertyDefinitions)
+            for (const auto& d : t.items.modifiers)
                 if (d.id == rolled.propertyId) def = &d;
             check(def != nullptr, "items: rolled property is defined");
             for (const auto& tier : def->tiers)
@@ -427,8 +428,8 @@ void testCatalystTemper(const tuning::Tuning& t) {
     check(!low.applied && low.skillTooLow, "temper: skill gate holds");
 
     // Domain guaranteed, magnitude bounded, floor raised by skill.
-    const auto* def = &t.items.propertyDefinitions[0];
-    for (const auto& d : t.items.propertyDefinitions)
+    const auto* def = &t.items.modifiers[0];
+    for (const auto& d : t.items.modifiers)
         if (d.id == "fire_resistance") def = &d;
     double t2min = 0, t2max = 0;
     for (const auto& tier : def->tiers)
@@ -845,13 +846,19 @@ void testWorldgen(const tuning::Tuning& t) {
 void testGrammar(const tuning::Tuning& t) {
     // Tables load.
     check(t.grammar.chill.buildupMax == 100.0, "grammar: chill threshold loads");
-    check(t.grammar.findMod("forked_lattice") != nullptr, "grammar: mods load");
+    check(t.items.findModifier("forked_lattice") != nullptr, "grammar: mods load from the item pool");
     check(t.grammar.shatter.novaRadiusM > 0.0, "grammar: shatter hook loads");
     check(t.realtime.skillSpatials.count("prototype_frost_orb") == 1,
           "grammar: orb spatials load");
 
     grammar::ActiveMods none;
-    grammar::ActiveMods all = {"forked_lattice", "deep_frost", "wide_shatter"};
+    auto toggled = [&](std::initializer_list<const char*> ids) {
+        grammar::ActiveMods mods;
+        for (const char* id : ids)
+            mods.push_back(grammar::modAt(t.items, id, grammar::defaultValue(*t.items.findModifier(id)), "test"));
+        return mods;
+    };
+    grammar::ActiveMods all = toggled({"forked_lattice", "deep_frost", "wide_shatter"});
 
     // Fork resolution: base 1, +1 flat from the lattice; tag-gated.
     check(grammar::forkCount(t, none, "prototype_frost_orb") == 1, "grammar: base fork count");
@@ -896,22 +903,141 @@ void testGrammar(const tuning::Tuning& t) {
               "grammar: wide shatter is 40% increased radius");
 
     // The increased-vs-more rule: two increased mods sum, a more multiplies.
-    tuning::Tuning scratch = t;
-    tuning::SkillModDef inc2;
-    inc2.id = "test_inc";
-    inc2.effect["increased_chill_buildup"] = 0.5;
-    scratch.grammar.skillMods.push_back(inc2);
-    tuning::SkillModDef mre;
-    mre.id = "test_more";
-    mre.effect["more_chill_buildup"] = 0.5;
-    scratch.grammar.skillMods.push_back(mre);
-    grammar::ActiveMods stacked = {"deep_frost", "test_inc", "test_more"};
+    grammar::ActiveMods stacked = toggled({"deep_frost"});
+    stacked.push_back({"test_inc", {"chill"}, "increased_chill_buildup", 0.5, "test"});
+    stacked.push_back({"test_more", {}, "more_chill_buildup", 0.5, "test"});
     // 40 * (1 + 0.5 + 0.5) * 1.5 = 120: increased sums, more multiplies.
-    checkNear(grammar::chillApplied(scratch, stacked, "prototype_frost_orb", false), 120.0, 1e-9,
+    checkNear(grammar::chillApplied(t, stacked, "prototype_frost_orb", false), 120.0, 1e-9,
               "grammar: increased sums additively, more multiplies");
 }
 
 } // namespace
+
+// D-014 slice 1: one modifier pool, rarity by count, gear-driven grammar,
+// pack items that save, and trial rooms that drop gear.
+void testItemisation(const tuning::Tuning& t) {
+    check(t.items.slots.size() == 3 && t.items.findRarity("wrought") != nullptr, "items: slots and rarities load");
+    const auto* sceptre = t.items.findBase("frost_sceptre");
+    check(sceptre != nullptr && sceptre->slot == "weapon" && sceptre->grantsSkill == "prototype_frost_orb",
+          "items: weapon base carries its slot and skill");
+    check(t.items.findModifier("max_life")->isSelf() && !t.items.findModifier("deep_frost")->isSelf(),
+          "items: self modifiers are told apart from skill modifiers");
+    for (const auto& def : t.items.modifiers)
+        check(!def.designPurpose.empty(), "items: every modifier states its design purpose (" + def.id + ")");
+
+    // Rarity is a modifier count within the rarity's range, all distinct, all allowed.
+    for (uint64_t seed = 0; seed < 40; ++seed) {
+        auto item = items::rollRarityItem(t.items, "frost_sceptre", "wrought", 1, seed);
+        check(item.rarity == "wrought", "items: rarity recorded");
+        check(item.rolledProperties.size() >= 3 && item.rolledProperties.size() <= 4, "items: wrought rolls 3-4 modifiers");
+        std::set<std::string> seen;
+        for (const auto& rolled : item.rolledProperties) {
+            check(seen.insert(rolled.propertyId).second, "items: rolled modifiers are distinct");
+            const auto* def = t.items.findModifier(rolled.propertyId);
+            check(def != nullptr && def->id != "physical_damage" && def->id != "max_life",
+                  "items: sceptre rolls only its allowed tags");
+        }
+        auto plain = items::rollRarityItem(t.items, "iron_mace", "plain", 1, seed);
+        check(plain.rolledProperties.empty() && plain.rarity == "plain", "items: plain rolls nothing");
+    }
+    auto high = items::rollRarityItem(t.items, "ember_charm", "wrought", 2, 9);
+    check(high.rolledProperties.size() >= 3, "items: higher tiers fall back to defined tiers");
+
+    // Gear drives the grammar: a plain sceptre's implicit fork doubles the orb.
+    stats::Equipment worn;
+    items::ItemInstance plainSceptre;
+    plainSceptre.baseId = "frost_sceptre";
+    worn.slots["weapon"] = plainSceptre;
+    auto mods = grammar::gearMods(t.items, worn);
+    check(mods.size() == 1 && mods.front().source == "weapon", "items: implicit modifier comes from the weapon slot");
+    check(grammar::forkCount(t, mods, "prototype_frost_orb") == 2, "items: the sceptre's implicit fork counts");
+    check(grammar::forkCount(t, mods, "prototype_area_strike") == 0, "items: fork ignores the cone strike");
+
+    // Damage and cooldown modifiers resolve by tag.
+    items::ItemInstance mace;
+    mace.baseId = "iron_mace";
+    mace.rolledProperties.push_back({"swift_hands", 1, 0.25});
+    stats::Equipment maced;
+    maced.slots["weapon"] = mace;
+    auto maceMods = grammar::gearMods(t.items, maced);
+    checkNear(grammar::skillDamage(t, maceMods, "prototype_heavy_strike"), 28.0 * 1.1, 1e-9,
+              "items: mace implicit is 10% increased physical damage");
+    checkNear(grammar::skillDamage(t, maceMods, "prototype_frost_orb"), 9.0, 1e-9,
+              "items: physical damage leaves the cold orb alone");
+    checkNear(grammar::skillCooldownSeconds(t, maceMods, "prototype_heavy_strike"), 1.4 / 1.25, 1e-9,
+              "items: cooldown recovery shortens the cooldown");
+    checkNear(grammar::skillCooldownSeconds(t, maceMods, "prototype_dash"), 2.5, 1e-9,
+              "items: recovery is attack/spell only, never movement");
+
+    // Character stats read modifiers by effect key, not by id.
+    items::ItemInstance chest;
+    chest.baseId = "iron_chest_armour";
+    chest.implicitProperties["armour"] = 20.0;
+    chest.rolledProperties.push_back({"armour_plating", 1, 10.0});
+    chest.rolledProperties.push_back({"max_life", 1, 12.0});
+    items::ItemInstance charm;
+    charm.baseId = "ember_charm";
+    stats::Equipment kitted;
+    kitted.slots["chest"] = chest;
+    kitted.slots["charm"] = charm;
+    auto derived = stats::deriveStats(t.world.playerBase, kitted, t.items);
+    checkNear(derived.armour, 30.0, 1e-9, "items: armour plating adds to implicit armour");
+    checkNear(derived.maxLife, 112.0, 1e-9, "items: life modifier adds");
+    checkNear(derived.fireResistancePercent, 5.0, 1e-9, "items: the charm's implicit resistance counts");
+
+    // Sentences a tester can read.
+    check(items::modifierSentence(*t.items.findModifier("max_life"), 12.0) == "+12 Maximum Life", "items: flat sentence");
+    check(items::modifierSentence(*t.items.findModifier("deep_frost"), 0.5) ==
+              "50% increased Chill Buildup for chill skills",
+          "items: percent sentence names its tags");
+
+    // Save round-trip keeps pack items with their rarity and modifiers.
+    economy::PlayerEconomy player(t);
+    player.packItems.push_back(items::rollRarityItem(t.items, "frost_sceptre", "keen", 1, 3));
+    save::SaveGame game;
+    game.economy = player.exportState();
+    save::SaveGame loaded = save::fromJson(save::toJson(game));
+    check(loaded.economy.packItems.size() == 1 && loaded.economy.packItems.front().rarity == "keen",
+          "items: pack items round-trip with rarity");
+    check(loaded.economy.packItems.front().rolledProperties.size() == player.packItems.front().rolledProperties.size(),
+          "items: pack item modifiers round-trip");
+
+    // Trial rooms hand out gear; banking lands it in the pack, dying loses it.
+    stats::Equipment geared;
+    items::ItemInstance armour;
+    armour.baseId = "iron_chest_armour";
+    armour.implicitProperties["armour"] = 20.0;
+    const auto* process = t.crafting.findCatalystProcess("ember_catalyst_tempering");
+    items::catalystTemper(t.items, *process, armour, 5, 77);
+    geared.slots["chest"] = armour;
+    auto gearedStats = stats::deriveStats(t.world.playerBase, geared, t.items);
+    boons::BuildTags tags = {"attack", "physical", "area", "single_target", "movement"};
+    {
+        economy::PlayerEconomy runner(t);
+        trial::TrialSession session(t, runner, tags, 1234);
+        auto outcome = session.enterRoom(0, gearedStats, combat::autoPolicy);
+        check(outcome.combat.victory && outcome.items.empty(), "items: the boon room drops no gear");
+        session.acceptBoonFromOffer(outcome.boonOffer.front()->id);
+        outcome = session.enterRoom(1, gearedStats, combat::autoPolicy);
+        check(outcome.combat.victory && outcome.items.size() == 1 && outcome.items.front().rarity == "keen",
+              "items: the materials room drops a keen item");
+        check(session.runLootItems().size() == 1, "items: dropped gear waits in run loot");
+        outcome = session.enterRoom(0, gearedStats, combat::autoPolicy);
+        check(outcome.items.size() == 1 && outcome.items.front().rarity == "wrought", "items: the shrine drops wrought gear");
+        session.bankAndExit();
+        check(runner.packItems.size() == 2, "items: banked gear lands in the pack");
+    }
+    {
+        economy::PlayerEconomy runner(t);
+        trial::TrialSession session(t, runner, tags, 1234);
+        auto outcome = session.enterRoom(0, gearedStats, combat::autoPolicy);
+        session.acceptBoonFromOffer(outcome.boonOffer.front()->id);
+        session.enterRoom(1, gearedStats, combat::autoPolicy);
+        auto alwaysDie = [](const combat::CombatView&) { return combat::Action{-1, 0}; };
+        session.enterRoom(0, gearedStats, alwaysDie);
+        check(session.playerDied() && runner.packItems.empty(), "items: dying loses unbanked gear like other run loot");
+    }
+}
 
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
@@ -947,6 +1073,7 @@ int main(int argc, char** argv) {
     testEnemyLoot(t);
     testWorldgen(t);
     testGrammar(t);
+    testItemisation(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

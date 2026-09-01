@@ -103,7 +103,7 @@ void reportBossOutcomes(const tuning::Tuning& t) {
     // ceiling come from the tier-2 range and Proposal C's floor fraction.
     const auto* process = t.crafting.findCatalystProcess("ember_catalyst_tempering");
     double t1mid = 10.0, t2min = 13.0, t2max = 20.0;
-    for (const auto& def : t.items.propertyDefinitions) {
+    for (const auto& def : t.items.modifiers) {
         if (def.id != "fire_resistance") continue;
         for (const auto& tier : def.tiers) {
             if (tier.tier == 1) t1mid = (tier.minimum + tier.maximum) / 2.0;

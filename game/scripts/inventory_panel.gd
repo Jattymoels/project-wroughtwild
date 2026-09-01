@@ -1,29 +1,33 @@
 class_name InventoryPanel
 extends CanvasLayer
-## The pack screen (I): materials and currency as tiles, what is worn per
-## slot, derived vitals and the active modifier set. It shows sim views only
-## and each button calls one sim method (docs/systems/interface.md). Wave 2
-## grows the "Wearing" column to weapon and charm slots and item cards.
+## The pack screen (I): materials and currency as tiles, gear in the pack as
+## item cards, what is worn per slot, derived vitals and the active
+## modifier set. It shows sim views only and each button calls one sim
+## method (docs/systems/interface.md). Item cards read rarity, stats and
+## per-modifier sentences straight from the sim (D-014).
 
 signal closed
 
 const COLUMNS := 5
 const TILE_SIZE := Vector2(122, 66)
-## Slice slots; items-and-modifiers.md proposes weapon and charm next.
-const SLOTS := [&"chest"]
-const WEARABLE := {&"chest": &"iron_chest_armour"}
+## The body scrolls once it outgrows this share of the window.
+const MAX_HEIGHT_FRACTION := 0.8
 
 var sim: WroughtwildSim
 
 var _root: PanelContainer
+var _scroll: ScrollContainer
 var _tiles: GridContainer
 var _empty: Label
+var _gear: VBoxContainer
 var _worn: VBoxContainer
 var _vitals: Label
 var _mods: VBoxContainer
+var _debug: VBoxContainer
 var _message: Label
-## Test surface: tiles shown by the last refresh.
+## Test surface: tiles and gear cards shown by the last refresh.
 var tile_count := 0
+var gear_count := 0
 
 
 func _ready() -> void:
@@ -33,7 +37,7 @@ func _ready() -> void:
 	_root.set_anchors_preset(Control.PRESET_CENTER)
 	_root.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_root.grow_vertical = Control.GROW_DIRECTION_BOTH
-	_root.custom_minimum_size = Vector2(960, 0)
+	_root.custom_minimum_size = Vector2(1040, 0)
 	_root.visible = false
 	add_child(_root)
 
@@ -57,9 +61,14 @@ func _ready() -> void:
 	close.pressed.connect(close_panel)
 	header.add_child(close)
 
+	_scroll = ScrollContainer.new()
+	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_scroll.custom_minimum_size = Vector2(0, 120)
+	column.add_child(_scroll)
 	var body := HBoxContainer.new()
+	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	body.add_theme_constant_override("separation", 20)
-	column.add_child(body)
+	_scroll.add_child(body)
 
 	var left := VBoxContainer.new()
 	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -75,9 +84,13 @@ func _ready() -> void:
 	_empty.text = "Nothing carried yet. Harvest trees and boulders with E."
 	_empty.modulate = UiTheme.MUTED
 	left.add_child(_empty)
+	left.add_child(_section("Gear in pack"))
+	_gear = VBoxContainer.new()
+	_gear.add_theme_constant_override("separation", 6)
+	left.add_child(_gear)
 
 	var right := VBoxContainer.new()
-	right.custom_minimum_size = Vector2(300, 0)
+	right.custom_minimum_size = Vector2(360, 0)
 	right.add_theme_constant_override("separation", 6)
 	body.add_child(right)
 	right.add_child(_section("Wearing"))
@@ -91,6 +104,9 @@ func _ready() -> void:
 	right.add_child(_section("Active modifiers"))
 	_mods = VBoxContainer.new()
 	right.add_child(_mods)
+	right.add_child(_section("Debug: force a modifier (F1–F3)"))
+	_debug = VBoxContainer.new()
+	right.add_child(_debug)
 
 	_message = Label.new()
 	_message.modulate = UiTheme.EMBER
@@ -135,11 +151,28 @@ func message() -> String:
 
 # --- actions (also the test surface) ------------------------------------------
 
+## Wear a plain (crafted, unrolled) item straight from its stack.
 func wear(base_id: StringName) -> bool:
 	var worn: bool = sim.equip_from_inventory(base_id)
-	_message.text = "You strap on the armour." if worn else "You have none to wear."
+	_message.text = "You strap it on." if worn else "You have none to wear."
 	refresh()
 	return worn
+
+
+## Wear a rolled item from the gear list; whatever was worn goes back to
+## the pack with its modifiers intact (D-014 rule 7).
+func wear_pack_item(index: int) -> bool:
+	var worn: bool = sim.equip_pack_item(index)
+	_message.text = "You strap it on." if worn else "That is not in your pack."
+	refresh()
+	return worn
+
+
+func take_off(slot: StringName) -> bool:
+	var removed: bool = sim.unequip(slot)
+	_message.text = "Back in the pack." if removed else "Nothing worn there."
+	refresh()
+	return removed
 
 
 func set_mod_active(mod_id: StringName, active: bool) -> void:
@@ -153,12 +186,29 @@ func refresh() -> void:
 	if sim == null:
 		return
 	_refresh_tiles()
+	_refresh_gear()
 	_refresh_worn()
 	var ds: Dictionary = sim.derived_stats()
 	_vitals.text = "Life %d  ·  armour %d  ·  fire resistance %d%%  ·  area +%d%%" % [
 		int(ds.get("max_life", 0.0)), int(ds.get("armour", 0.0)),
 		int(ds.get("fire_resistance_percent", 0.0)), int(ds.get("area_bonus", 0.0) * 100.0)]
 	_refresh_mods()
+	_fit_height.call_deferred()
+
+
+## Grow with the content up to a share of the window, then scroll (the
+## same rule as the work panel): measured after layout has run.
+func _fit_height() -> void:
+	if _scroll == null or not is_inside_tree():
+		return
+	var tree := get_tree()
+	await tree.process_frame
+	await tree.process_frame
+	if _scroll == null or not is_inside_tree():
+		return
+	var cap := get_viewport().get_visible_rect().size.y * MAX_HEIGHT_FRACTION
+	var body := _scroll.get_child(0) as Control
+	_scroll.custom_minimum_size.y = clampf(body.size.y + 4.0, 120.0, cap)
 
 
 func _clear(container: Node) -> void:
@@ -171,8 +221,10 @@ func _refresh_tiles() -> void:
 	_clear(_tiles)
 	tile_count = 0
 	var held: Dictionary = sim.inventory()
+	var bases := sim.item_base_ids()
 	for id in held:
-		if held[id] > 0:
+		# Plain gear stacks are shown as gear cards, not material tiles.
+		if held[id] > 0 and not bases.has(String(id)):
 			_add_tile(String(id), int(held[id]))
 	var coins: Dictionary = sim.currency()
 	for id in coins:
@@ -208,65 +260,119 @@ func _add_tile(id: String, count: int) -> void:
 	tile_count += 1
 
 
+## An item card: rarity-coloured edge, name and slot, stats, one sentence
+## per modifier, and one button.
+func _item_card(item: Dictionary, button_text: String, on_pressed: Callable) -> PanelContainer:
+	var rarity := String(item.get("rarity", "plain"))
+	var card := PanelContainer.new()
+	card.add_theme_stylebox_override("panel",
+		UiTheme.flat(Color(UiTheme.ASH, 0.75), Color(UiTheme.rarity_colour(rarity), 0.85), 5))
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+	card.add_child(row)
+	var column := VBoxContainer.new()
+	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	column.add_theme_constant_override("separation", 1)
+	row.add_child(column)
+	var title := Label.new()
+	title.text = "%s %s  —  %s" % [rarity.capitalize(), item.get("display_name", "?"), Hud.pretty(String(item.get("slot", "")))]
+	title.modulate = UiTheme.rarity_colour(rarity)
+	column.add_child(title)
+	var stats := PackedStringArray()
+	if int(item.get("armour", 0.0)) > 0:
+		stats.append("armour %d" % int(item["armour"]))
+	if int(item.get("fire_resistance", 0.0)) > 0:
+		stats.append("fire resistance %d%%" % int(item["fire_resistance"]))
+	if int(item.get("max_life", 0.0)) > 0:
+		stats.append("life +%d" % int(item["max_life"]))
+	if float(item.get("area_size", 0.0)) > 0.0:
+		stats.append("area +%d%%" % int(float(item["area_size"]) * 100.0))
+	if not stats.is_empty():
+		var stat_line := Label.new()
+		stat_line.text = "  ".join(stats)
+		stat_line.add_theme_font_size_override("font_size", 13)
+		column.add_child(stat_line)
+	for mod in item.get("mods", []):
+		var line := Label.new()
+		line.text = "  %s%s" % [mod["sentence"], "  (implicit)" if mod.get("source", "") == "implicit" else ""]
+		line.add_theme_font_size_override("font_size", 13)
+		line.modulate = UiTheme.PARCHMENT if mod.get("source", "") != "implicit" else UiTheme.MUTED
+		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		column.add_child(line)
+	if button_text != "":
+		var button := Button.new()
+		button.text = button_text
+		button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		button.pressed.connect(on_pressed)
+		row.add_child(button)
+	return card
+
+
+func _refresh_gear() -> void:
+	_clear(_gear)
+	gear_count = 0
+	for item in sim.pack_items():
+		_gear.add_child(_item_card(item, "Wear", wear_pack_item.bind(int(item["index"]))))
+		gear_count += 1
+	# Plain crafted gear still sits in stacks; offer to wear one of each.
+	for base_id in sim.item_base_ids():
+		var held: int = sim.material_count(base_id)
+		if held > 0:
+			var base: Dictionary = sim.item_base(base_id)
+			var plain := {"display_name": "%s ×%d" % [base.get("display_name", base_id), held], "slot": base.get("slot", ""),
+				"rarity": "plain", "mods": base.get("implicit_modifiers", []),
+				"armour": base.get("implicit_properties", {}).get("armour", 0.0)}
+			_gear.add_child(_item_card(plain, "Wear", wear.bind(StringName(base_id))))
+			gear_count += 1
+	if gear_count == 0:
+		var none := Label.new()
+		none.text = "No gear carried. Craft a mace or armour at the forge; the trial's deeper rooms drop keen and wrought pieces."
+		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		none.modulate = UiTheme.MUTED
+		_gear.add_child(none)
+
+
 func _refresh_worn() -> void:
 	_clear(_worn)
 	var equipment: Dictionary = sim.equipment()
-	for slot in SLOTS:
-		var item: Dictionary = equipment.get(String(slot), {})
-		var card := PanelContainer.new()
-		card.add_theme_stylebox_override("panel", UiTheme.card(not item.is_empty()))
-		var column := VBoxContainer.new()
-		card.add_child(column)
-		var line := Label.new()
-		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		if item.is_empty():
+	for slot in sim.slot_ids():
+		if equipment.has(slot):
+			_worn.add_child(_item_card(equipment[slot], "Take off", take_off.bind(StringName(slot))))
+		else:
+			var card := PanelContainer.new()
+			card.add_theme_stylebox_override("panel", UiTheme.card(false))
+			var line := Label.new()
 			line.text = "%s  —  nothing worn" % Hud.pretty(String(slot)).capitalize()
 			line.modulate = UiTheme.MUTED
-		else:
-			line.text = "%s  —  %s\narmour %d  ·  fire resistance %d%%  ·  life +%d" % [
-				Hud.pretty(String(slot)).capitalize(), item.get("display_name", "?"),
-				int(item.get("armour", 0.0)), int(item.get("fire_resistance", 0.0)), int(item.get("max_life", 0.0))]
-			for rolled in item.get("rolled", []):
-				line.text += "\n  %s  tier %d  %d" % [Hud.pretty(String(rolled["property"])), int(rolled["tier"]), int(rolled["value"])]
-		column.add_child(line)
-		var base_id: StringName = WEARABLE.get(slot, &"")
-		if base_id != &"" and sim.material_count(String(base_id)) > 0:
-			var wear_button := Button.new()
-			wear_button.text = "Wear %s  (%d in pack)" % [Hud.pretty(String(base_id)), sim.material_count(String(base_id))]
-			wear_button.pressed.connect(wear.bind(base_id))
-			column.add_child(wear_button)
-		_worn.add_child(card)
-
-
-## 1.0 reads as 1; 0.5 stays 0.5.
-static func _number(value: Variant) -> String:
-	if value is float and is_equal_approx(value, roundf(value)):
-		return str(int(value))
-	return str(value)
+			card.add_child(line)
+			_worn.add_child(card)
 
 
 func _refresh_mods() -> void:
 	_clear(_mods)
-	var ids := sim.skill_mod_ids()
-	if ids.is_empty():
+	var active: Array = sim.active_modifiers()
+	if active.is_empty():
 		var none := Label.new()
-		none.text = "None"
+		none.text = "None — your gear carries no modifiers yet."
 		none.modulate = UiTheme.MUTED
 		_mods.add_child(none)
-		return
-	for id in ids:
+	for mod in active:
+		var line := Label.new()
+		line.text = "%s   (%s)" % [mod["sentence"], Hud.pretty(String(mod.get("source", "")))]
+		line.add_theme_font_size_override("font_size", 13)
+		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_mods.add_child(line)
+
+	_clear(_debug)
+	for id in sim.skill_mod_ids():
 		var mod: Dictionary = sim.skill_mod(id)
-		var effects := PackedStringArray()
-		var effect: Dictionary = mod.get("effect", {})
-		for key in effect:
-			effects.append("%s %s" % [Hud.pretty(String(key)), _number(effect[key])])
-		var active: bool = mod.get("active", false)
+		var is_on: bool = mod.get("active", false)
 		var toggle := Button.new()
 		toggle.toggle_mode = true
-		toggle.button_pressed = active
+		toggle.button_pressed = is_on
 		toggle.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		toggle.text = "%s   %s  —  %s  (%s)" % ["ON " if active else "off", mod.get("display_name", id),
-			" · ".join(effects), " ".join(mod.get("applies_to_tags", PackedStringArray()))]
-		toggle.modulate = Color(1, 1, 1, 1.0) if active else Color(1, 1, 1, 0.7)
+		toggle.text = "%s   %s" % ["ON " if is_on else "off", mod.get("sentence", mod.get("display_name", id))]
+		toggle.add_theme_font_size_override("font_size", 12)
+		toggle.modulate = Color(1, 1, 1, 1.0) if is_on else Color(1, 1, 1, 0.6)
 		toggle.toggled.connect(func(on: bool) -> void: set_mod_active(StringName(id), on))
-		_mods.add_child(toggle)
+		_debug.add_child(toggle)

@@ -11,7 +11,7 @@
 
 namespace wroughtwild::stats {
 
-// Equipped items by slot ("chest" is the only slice slot).
+// Equipped items by slot ("weapon", "chest", "charm" since D-014).
 struct Equipment {
     std::map<std::string, items::ItemInstance> slots;
 };
@@ -23,6 +23,15 @@ struct DerivedStats {
     double areaBonus = 0.0;             // fractional area size increase
 };
 
+// Stats from the item table's modifier pool: implicit properties plus every
+// implicit or rolled modifier whose effect is a character stat (D-014).
+DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment,
+                         const tuning::ItemTable& table);
+
+// Legacy view without the table: implicit properties plus rolled entries
+// whose id names a stat directly (max_life, armour, fire_resistance,
+// area_size). Kept for the balance and playtest tools, which build items by
+// hand from those ids.
 DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment);
 
 // Damage after defences. Physical is reduced by armour

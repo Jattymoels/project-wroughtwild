@@ -1,42 +1,379 @@
 {
-  "schema_version": 1,
-  "status": "prototype-placeholder",
-  "property_definitions": [
+  "schema_version": 2,
+  "status": "wave-2 slice 1 (D-014): one modifier pool, three slots, rarity by modifier count",
+  "slots": [
+    "weapon",
+    "chest",
+    "charm"
+  ],
+  "rarities": [
+    {
+      "id": "plain",
+      "display_name": "Plain",
+      "modifiers_min": 0,
+      "modifiers_max": 0
+    },
+    {
+      "id": "keen",
+      "display_name": "Keen",
+      "modifiers_min": 1,
+      "modifiers_max": 2
+    },
+    {
+      "id": "wrought",
+      "display_name": "Wrought",
+      "modifiers_min": 3,
+      "modifiers_max": 4
+    }
+  ],
+  "modifiers": [
     {
       "id": "max_life",
       "display_name": "Maximum Life",
-      "tags": ["defence", "life"],
+      "tags": [
+        "defence",
+        "life"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_max_life",
+      "display": "flat",
       "tiers": [
-        {"tier": 1, "minimum": 8, "maximum": 12},
-        {"tier": 2, "minimum": 13, "maximum": 20}
-      ]
+        {
+          "tier": 1,
+          "minimum": 8,
+          "maximum": 12
+        },
+        {
+          "tier": 2,
+          "minimum": 13,
+          "maximum": 20
+        }
+      ],
+      "design_purpose": "The plainest survivability roll; a tester can read +12 life and know exactly what changed."
+    },
+    {
+      "id": "armour_plating",
+      "display_name": "Armour",
+      "tags": [
+        "defence"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_armour",
+      "display": "flat",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 6,
+          "maximum": 12
+        },
+        {
+          "tier": 2,
+          "minimum": 13,
+          "maximum": 22
+        }
+      ],
+      "design_purpose": "Physical mitigation on top of the base's implicit plate; stacks into the armour formula, so it is worth more early than late."
     },
     {
       "id": "fire_resistance",
       "display_name": "Fire Resistance",
-      "tags": ["defence", "fire", "resistance"],
+      "tags": [
+        "defence",
+        "fire",
+        "resistance"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_fire_resistance",
+      "display": "flat",
       "tiers": [
-        {"tier": 1, "minimum": 8, "maximum": 15},
-        {"tier": 2, "minimum": 25, "maximum": 40}
-      ]
+        {
+          "tier": 1,
+          "minimum": 8,
+          "maximum": 15
+        },
+        {
+          "tier": 2,
+          "minimum": 25,
+          "maximum": 40
+        }
+      ],
+      "design_purpose": "The Tyrant's answer. Also the catalyst-tempering domain, so a drop and a forge temper compete for the same slot on the same terms (D-014: catalysts target, they do not gate)."
     },
     {
       "id": "area_size",
       "display_name": "Area Size",
-      "tags": ["offence", "area"],
+      "tags": [
+        "offence",
+        "area"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_area_size",
+      "display": "percent",
       "tiers": [
-        {"tier": 1, "minimum": 0.08, "maximum": 0.12},
-        {"tier": 2, "minimum": 0.13, "maximum": 0.2}
-      ]
+        {
+          "tier": 1,
+          "minimum": 0.08,
+          "maximum": 0.12
+        },
+        {
+          "tier": 2,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "design_purpose": "Wider cone strike: the train you can pay off in one swing grows, which is the Bulwark/Glacier dance getting easier."
+    },
+    {
+      "id": "forked_lattice",
+      "display_name": "Forks",
+      "tags": [
+        "offence",
+        "cold",
+        "projectile"
+      ],
+      "applies_to": [
+        "projectile"
+      ],
+      "effect": "add_fork",
+      "display": "flat",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1,
+          "maximum": 1
+        },
+        {
+          "tier": 2,
+          "minimum": 2,
+          "maximum": 2
+        }
+      ],
+      "design_purpose": "Flat +1 fork for projectile skills: the orb splits again on first impact, lighting up more of the train per cast. The Frost Sceptre carries one as its implicit, so the weapon is what makes the orb a train-clearer."
+    },
+    {
+      "id": "deep_frost",
+      "display_name": "Chill Buildup",
+      "tags": [
+        "offence",
+        "cold",
+        "chill"
+      ],
+      "applies_to": [
+        "chill"
+      ],
+      "effect": "increased_chill_buildup",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.3,
+          "maximum": 0.5
+        },
+        {
+          "tier": 2,
+          "minimum": 0.5,
+          "maximum": 0.8
+        }
+      ],
+      "design_purpose": "Increased chill buildup: the top of tier 1 crosses the three-hits-to-freeze breakpoint down to two, which is the whole point of increased-type mods - visible thresholds."
+    },
+    {
+      "id": "wide_shatter",
+      "display_name": "Shatter Radius",
+      "tags": [
+        "offence",
+        "cold",
+        "shatter"
+      ],
+      "applies_to": [
+        "shatter"
+      ],
+      "effect": "increased_shatter_radius",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.25,
+          "maximum": 0.4
+        },
+        {
+          "tier": 2,
+          "minimum": 0.4,
+          "maximum": 0.6
+        }
+      ],
+      "design_purpose": "A shattered mob reaches further down the train, making cascade chains connect across looser bunches."
+    },
+    {
+      "id": "cold_damage",
+      "display_name": "Cold Damage",
+      "tags": [
+        "offence",
+        "cold"
+      ],
+      "applies_to": [
+        "cold"
+      ],
+      "effect": "increased_damage",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.1,
+          "maximum": 0.2
+        },
+        {
+          "tier": 2,
+          "minimum": 0.2,
+          "maximum": 0.35
+        }
+      ],
+      "design_purpose": "The plain scaling axis for the Glacier line; deliberately smaller than the mechanic mods so a fork or a freeze breakpoint always reads as the bigger prize."
+    },
+    {
+      "id": "physical_damage",
+      "display_name": "Physical Damage",
+      "tags": [
+        "offence",
+        "physical"
+      ],
+      "applies_to": [
+        "physical"
+      ],
+      "effect": "increased_damage",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.1,
+          "maximum": 0.2
+        },
+        {
+          "tier": 2,
+          "minimum": 0.2,
+          "maximum": 0.35
+        }
+      ],
+      "design_purpose": "Scales the strikes; the Iron Mace's implicit. Redline's first rung."
+    },
+    {
+      "id": "swift_hands",
+      "display_name": "Cooldown Recovery",
+      "tags": [
+        "offence",
+        "speed"
+      ],
+      "applies_to": [
+        "attack",
+        "spell"
+      ],
+      "effect": "increased_cooldown_recovery",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.1,
+          "maximum": 0.2
+        },
+        {
+          "tier": 2,
+          "minimum": 0.2,
+          "maximum": 0.3
+        }
+      ],
+      "design_purpose": "Faster casting is a different dance (drill through the train head-on rather than circle it); kept off movement so the dash stays a fixed rhythm."
     }
   ],
   "item_bases": [
     {
+      "id": "iron_mace",
+      "display_name": "Iron Mace",
+      "slot": "weapon",
+      "material": "iron",
+      "grants_skill": "prototype_heavy_strike",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "physical_damage",
+          "value": 0.1
+        }
+      ],
+      "allowed_modifier_tags": [
+        "physical",
+        "area",
+        "speed"
+      ],
+      "design_purpose": "The first weapon: a plain physical implicit so crafting one is a felt step up from bare hands. Rolls only physical, area and speed - a mace never grows cold mods, which keeps the Glacier line on the sceptre."
+    },
+    {
+      "id": "frost_sceptre",
+      "display_name": "Frost Sceptre",
+      "slot": "weapon",
+      "material": "iron",
+      "grants_skill": "prototype_frost_orb",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "forked_lattice",
+          "value": 1
+        }
+      ],
+      "allowed_modifier_tags": [
+        "cold",
+        "chill",
+        "projectile",
+        "shatter",
+        "speed"
+      ],
+      "design_purpose": "The Glacier weapon: its implicit fork is what makes the Frost Orb a train-clearer, and its roll pool is the whole cold line, so a wrought sceptre can assemble the owner's freeze-shatter build on its own."
+    },
+    {
       "id": "iron_chest_armour",
       "display_name": "Iron Chest Armour",
+      "slot": "chest",
       "material": "iron",
-      "implicit_properties": {"armour": 20},
-      "allowed_property_tags": ["defence", "life", "resistance"]
+      "implicit_properties": {
+        "armour": 20
+      },
+      "implicit_modifiers": [],
+      "allowed_modifier_tags": [
+        "defence",
+        "life",
+        "resistance"
+      ],
+      "design_purpose": "Defence only; offence lives on the weapon and the charm so the three slots answer three different questions."
+    },
+    {
+      "id": "ember_charm",
+      "display_name": "Ember Charm",
+      "slot": "charm",
+      "material": "iron",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "fire_resistance",
+          "value": 5
+        }
+      ],
+      "allowed_modifier_tags": [
+        "defence",
+        "life",
+        "resistance",
+        "cold",
+        "physical",
+        "area",
+        "speed"
+      ],
+      "design_purpose": "The build-defining slot: it may roll anything, so a keen charm is where an unexpected mod can pull a build sideways (PoE cross-pollination without sockets)."
     }
-  ]
+  ],
+  "design_purpose": "Every modifier attaches to tags, never to a skill or a socket (D-014). applies_to ['self'] marks a character stat; anything else names the skill tags the modifier excites. effect keys follow the resolver's increased-vs-more rule: add_* is flat, increased_* sums within its bucket, more_* multiplies. A base's allowed_modifier_tags is the roll pool - specific tags, never the generic offence/defence pair alone, so a sceptre cannot grow physical mods and a mace cannot grow cold ones; rarity is a modifier count (plain 0, keen 1-2, wrought 3-4) and never a stat. Uniques (hand-authored, rule-bending) are the next slice."
 }

@@ -188,6 +188,15 @@ func prompt() -> String:
 # --- rewards -----------------------------------------------------------------
 
 var _pending_outcome: Dictionary = {}
+var _completion_items := ""
+
+
+## ", and a keen Frost Sceptre" for the gear a room dropped (D-014).
+func _items_text(outcome: Dictionary) -> String:
+	var names := PackedStringArray()
+	for item in outcome.get("items", []):
+		names.append("a %s %s" % [item.get("rarity", "plain"), item.get("display_name", "item")])
+	return "" if names.is_empty() else "  Among the spoils: %s." % ", ".join(names)
 
 
 func _room_won() -> void:
@@ -224,12 +233,13 @@ func _present_pending_reward() -> void:
 				rows.append({"text": "Refuse the bargain.", "button": "Decline", "callback": skip_offer})
 			player.open_custom_panel("A cursed altar offers greater rewards for greater danger", rows, "")
 		"materials":
-			player.hud.notify("You claim %s." % WorkPanel.amounts_text(outcome.get("materials", {})))
+			player.hud.notify("You claim %s%s." % [WorkPanel.amounts_text(outcome.get("materials", {})), _items_text(outcome)])
 			_after_reward()
 		"catalyst":
-			player.hud.notify("You prise an EMBER CATALYST from the shrine; it thrums with heat. Even death cannot take it from you now.")
+			player.hud.notify("You prise an EMBER CATALYST from the shrine; it thrums with heat. Even death cannot take it from you now.%s" % _items_text(outcome))
 			_after_reward()
 		"completion":
+			_completion_items = _items_text(outcome)
 			finish_run()
 		_:
 			_after_reward()
@@ -302,5 +312,6 @@ func finish_run() -> void:
 		var kept := ", and the catalyst is still in your hand" if sim.material_count("ember_catalyst") > 0 else ""
 		player.hud.notify("You wake at the gate. Your stored goods are untouched%s. The Tyrant's weakness to prepared steel is clearer now." % kept)
 	elif boss_defeated:
-		player.hud.notify("The Forge Tyrant falls! Deep in its forge you find mastery of stonecut blocks: a new material for your constructions.")
+		player.hud.notify("The Forge Tyrant falls! Deep in its forge you find mastery of stonecut blocks: a new material for your constructions.%s" % _completion_items)
+		_completion_items = ""
 	player.hud.refresh()

@@ -282,6 +282,7 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
     state.craftCounts = craftCounts_;
     state.fulfilledOrders = fulfilledOrders_;
     state.worldEffects = worldEffects_;
+    state.packItems = packItems;
     return state;
 }
 
@@ -294,6 +295,7 @@ void PlayerEconomy::importState(const State& state) {
     craftCounts_ = state.craftCounts;
     fulfilledOrders_ = state.fulfilledOrders;
     worldEffects_ = state.worldEffects;
+    packItems = state.packItems;
 }
 
 bool PlayerEconomy::salvage(const std::string& recipeId) {
