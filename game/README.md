@@ -53,8 +53,13 @@ purpose.
    assemble a Forge Kit (needs wood, stone from boulders, iron ore from
    veins — the rocky hills have both, and their Stone Husks drop them too)
    → place the forge → keep it fed with wood or charcoal, because every
-   smelt and forging burns fuel. Mob packs wake as you approach; every kill
-   drops something the economy uses. Chasers are D-012 stupid zombies: they
+   smelt and forging burns fuel. Harvests and mob kills pay out as glowing
+   material chips that pop out, bounce, and vacuum into you when you walk
+   near (the green ticker under the notices counts them in); nodes visibly
+   wear down as you work them and shrink away when spent. The thing under
+   your crosshair names itself ("wood ×12 — E to gather") and harvestables
+   glow while you look at them. Mob packs wake as you approach; every kill
+   scatters loot where the mob fell. Chasers are D-012 stupid zombies: they
    keep coming while you stay near (bunch them and pay the train off with
    the cone-shaped area strike), give up only when you genuinely run, and
    an idle stray joins the fight the moment you hit it. The crosshair reads
@@ -104,7 +109,9 @@ integration test of the full placement loop (`tests/integration.tscn`) → the
 D-012 horde test (`tests/horde.tscn`: chase persistence, training
 separation, give-up, cone strike, dash) → the grammar-spike test
 (`tests/grammar.tscn`: orb flight and forking, freeze breakpoints, the
-shatter cascade) → a 120-frame smoke run of the main
+shatter cascade) → the world-feel test (`tests/feel.tscn`: pickup magnet
+and absorb-to-grant, harvest feedback, buffered jump) → a 120-frame smoke
+run of the main
 scene. Non-zero exit on any failure. Run this
 before every commit that touches `game/`.
 

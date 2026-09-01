@@ -28,6 +28,9 @@ echo "== horde test (D-012 chase, training, cone, dash) =="
 echo "== grammar test (frost orb fork, freeze breakpoints, shatter cascade) =="
 "$GODOT" --headless --path . res://tests/grammar.tscn
 
+echo "== feel test (pickup magnet, harvest feedback, jump buffer) =="
+"$GODOT" --headless --path . res://tests/feel.tscn
+
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 
