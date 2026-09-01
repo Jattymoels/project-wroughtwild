@@ -39,6 +39,11 @@ Curves, freeform terrain carving, large blueprints and physics-based destruction
 3. Placing a shape consumes an amount derived from its volume or standard recipe cost.
 4. Removing a player-placed shape returns a configurable portion of its material.
 5. Placement uses forgiving snapping and clearly previews invalid collision.
+   Every shape sits inside one grid cell: thin shapes anchor to the face or
+   corner their rotation selects, so panels, beams and pillars in
+   neighbouring cells meet instead of floating mid-cell, and a cell can hold
+   several partial shapes (a wall on two faces, a corner post, a slab floor)
+   but only one shape that fills it.
 6. Functional stations operate without requiring decorative architecture.
 7. More advanced craft skills and facilities may unlock additional cuts and finishes.
 
@@ -60,10 +65,12 @@ Curves, freeform terrain carving, large blueprints and physics-based destruction
 | Rotation increments | Shape flexibility and interface complexity |
 | Material cost per shape | Construction ambition and resource demand |
 | Removal refund | Experimentation freedom versus commitment |
+| Shape anchor | Whether thin shapes meet at corners or float through their cell |
 | Snap tolerance | Precision versus frustration |
 | Unlock skill level | Pacing of architectural vocabulary |
 
-Grid size, placement range, per-shape material cost and removal refund are
+Grid size, placement range, per-shape material cost, per-shape anchor and
+removal refund are
 data in `data/tuning/construction.json`, loaded by the `sim/` library; the
 engine layer reads them and applies placement payment and refunds through
 the rules library rather than computing them in scene scripts.

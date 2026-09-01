@@ -38,7 +38,7 @@ public:
     double salvage_return_fraction() const;
     PackedStringArray shape_ids() const;
     int shape_material_cost(const String& shape_id) const;
-    // Keys: id, display_name, material_cost, size (Vector3),
+    // Keys: id, display_name, material_cost, size (Vector3), anchor,
     // requires_world_effect, unlocked.
     Dictionary shape(const String& shape_id) const;
     bool shape_unlocked(const String& shape_id) const;

@@ -266,6 +266,12 @@ ConstructionTable loadConstruction(const std::string& path) {
         const auto& size = s->get("size_m").asArray();
         if (size.size() != 3) throw std::runtime_error("construction: size_m needs 3 numbers");
         for (size_t i = 0; i < 3; ++i) shape.sizeM[i] = size[i]->asNumber();
+        if (auto anchor = s->find("anchor")) {
+            shape.anchor = anchor->asString();
+            if (shape.anchor != "centre" && shape.anchor != "face" && shape.anchor != "corner")
+                throw std::runtime_error("construction: shape '" + shape.id +
+                                         "' anchor must be centre, face or corner");
+        }
         if (auto effect = s->find("requires_world_effect"))
             shape.requiresWorldEffect = effect->asString();
         table.shapes.push_back(std::move(shape));

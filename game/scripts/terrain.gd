@@ -7,7 +7,9 @@ extends Node3D
 ## how it looks (ADR-0003 for terrain).
 ##
 ## Known greybox compromise: collision uses a heightmap, which ramps between
-## cells instead of hard block steps; visuals stay blocky.
+## cells instead of hard block steps; visuals stay blocky. Building reads
+## the block heights directly (build_cell_center, cell_clear_of_ground) so
+## placement follows what the player sees, not the ramp.
 
 const RESOURCE_NODE_SCENE := preload("res://scenes/resource_node.tscn")
 
@@ -37,6 +39,22 @@ func height_at(x: int, z: int) -> int:
 func surface_position(x: int, z: int) -> Vector3:
 	var cell: float = map["cell_size"]
 	return Vector3((x + 0.5) * cell, float(height_at(x, z)), (z + 0.5) * cell)
+
+
+## Centre of the build cell resting on the terrain block under a ground hit.
+func build_cell_center(point: Vector3, grid_size: float) -> Vector3:
+	var cell: float = map["cell_size"]
+	var x := floori(point.x / cell)
+	var z := floori(point.z / cell)
+	return Vector3((x + 0.5) * cell, float(height_at(x, z)) + grid_size * 0.5, (z + 0.5) * cell)
+
+
+## True when a build cell's floor sits on or above the terrain block there.
+func cell_clear_of_ground(cell_center: Vector3, grid_size: float) -> bool:
+	var cell: float = map["cell_size"]
+	var x := floori(cell_center.x / cell)
+	var z := floori(cell_center.z / cell)
+	return cell_center.y - grid_size * 0.5 >= float(height_at(x, z)) - 0.001
 
 
 static func _block_material(texture_path: String) -> StandardMaterial3D:

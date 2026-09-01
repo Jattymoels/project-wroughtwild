@@ -166,6 +166,11 @@ void testShapePlacement(const tuning::Tuning& t) {
     check(slab != nullptr && slab->requiresWorldEffect == t.trial.completionUnlock,
           "construction: slab is gated by the trial completion unlock");
     check(slab->sizeM[1] < slab->sizeM[0], "construction: slab is half height");
+    check(slab->anchor == "centre" && cube->anchor == "centre", "construction: anchor defaults to centre");
+    const auto* panel = t.construction.findShape("wall_panel");
+    check(panel != nullptr && panel->anchor == "face", "construction: wall panel anchors to a cell face");
+    const auto* pillar = t.construction.findShape("pillar");
+    check(pillar != nullptr && pillar->anchor == "corner", "construction: pillar anchors to a cell corner");
     player.inventory["wood"] = 10;
     check(!player.shapeUnlocked("stonecut_slab") && !player.canAffordPlacement("stonecut_slab", "wood"),
           "construction: slab locked before the boss falls");
