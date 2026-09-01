@@ -57,7 +57,10 @@ question is answerable in greybox before Wave 2 commits itemisation to it.
 
 The PoE side: more bases and slots, the modifier/tier pool, rarity, how
 crafted vs dropped vs tempered items relate. Catalyst currency types grow
-here. **Carries the D-012 mechanics vocabulary:** modifiers grant damage
+here. **Design space: [systems/skill-grammar.md](../systems/skill-grammar.md)**
+— the delivery/propagation/payload/hook grammar, tag-targeted mods,
+increased-vs-more, the status matrix and the "your build decides how you
+train" principle. **Carries the D-012 mechanics vocabulary:** modifiers grant damage
 *mechanics*, not just numbers — cone/cleave area, ground effects (fire
 patch, frost floor) the train is led through, damage-over-time tag-and-run
 (bleed, poison, ignite), chill/freeze choke-making, attack/cast speed for
