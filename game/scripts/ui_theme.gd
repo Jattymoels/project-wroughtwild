@@ -32,6 +32,10 @@ const FAMILY_COLOURS := {
 	"trade_currency": IRON_RUST,
 }
 
+## Rarity colours (items-and-modifiers.md): plain reads muted, keen frost,
+## wrought sun-warm, unique ember.
+const RARITY_COLOURS := {"plain": MUTED, "keen": FROST, "wrought": SUN_WARM, "unique": EMBER}
+
 static var _theme: Theme
 
 
@@ -39,6 +43,10 @@ static func theme() -> Theme:
 	if _theme == null:
 		_theme = _build()
 	return _theme
+
+
+static func rarity_colour(id: String) -> Color:
+	return RARITY_COLOURS.get(id, MUTED)
 
 
 static func family_colour(id: String) -> Color:

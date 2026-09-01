@@ -49,6 +49,7 @@ public:
         std::string offeredWeakness;
         bool catalystRecovered = false;
         std::map<std::string, int> materials; // already multiplied by reward mods
+        std::vector<items::ItemInstance> items; // gear the room dropped (D-014)
     };
 
     // Fights the chosen room. On victory the room's reward is prepared (and
@@ -86,6 +87,7 @@ public:
 
     const boons::RunState& runState() const { return run_; }
     const std::map<std::string, int>& runLoot() const { return loot_; }
+    const std::vector<items::ItemInstance>& runLootItems() const { return lootItems_; }
     combat::CombatMods currentMods() const;
 
 private:
@@ -100,6 +102,7 @@ private:
     economy::Inventory depositedInventory_;
     boons::RunState run_;
     std::map<std::string, int> loot_;
+    std::vector<items::ItemInstance> lootItems_;
     std::vector<const tuning::BoonDef*> pendingOffer_;
     std::string pendingWeakness_;
 

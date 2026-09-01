@@ -69,7 +69,7 @@ func _process(_delta: float) -> void:
 	for slot in slots:
 		var skill_id: StringName = slot["skill"]
 		var left: float = combat.cooldown_left(skill_id)
-		var total: float = combat.skills.get(skill_id, {}).get("cooldown_seconds", 1.0)
+		var total: float = combat.cooldown_total(skill_id)
 		var ready := left <= 0.0
 		slot["bar"].value = 1.0 if ready else clampf(1.0 - left / maxf(total, 0.01), 0.0, 1.0)
 		slot["state"].text = "ready" if ready else "%.1fs" % left

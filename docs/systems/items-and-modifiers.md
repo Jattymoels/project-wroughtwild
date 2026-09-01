@@ -1,6 +1,6 @@
 # Items and Modifiers
 
-**Status:** Accepted direction (D-014, owner answers 1 September 2026); implementation in progress  
+**Status:** Accepted direction (D-014, owner answers 1 September 2026); slice 1 implemented  
 **Owner:** Unassigned  
 **Related decisions:** D-007 (open), D-012, ADR-0002 (proposal C, provisional), D-014 (proposed)  
 **Related documents:** [skill-grammar.md](skill-grammar.md) (the design space this spec builds from), [combat-and-builds.md](combat-and-builds.md), [loot-and-currency.md](loot-and-currency.md), [interface.md](interface.md)
@@ -60,6 +60,23 @@ Excluded from the slice (deliberately): upskilling points (owner: hold off
 until a later wave), rings/boots/helmet slots, item level/requirements,
 sockets, trade, currency breadth beyond the two catalyst types (owner
 direction, 31 Aug 2026).
+
+## Implemented so far (slice 1, 1 September 2026)
+
+- `items.json` v2: one `modifiers[]` pool (ten modifiers, each with tags,
+  `applies_to`, an effect key, tiers and a `design_purpose`), three `slots`,
+  three `rarities`, four bases (Iron Mace, Frost Sceptre, Iron Chest Armour,
+  Ember Charm) with implicit modifiers and `grants_skill`. `grammar.json`
+  no longer carries skill mods.
+- `sim`: `rollRarityItem`, `gearMods` (the active set from worn gear),
+  `resolve` over magnitudes, `skillDamage`, `skillCooldownSeconds`,
+  `deriveStats` via effect keys, pack items in the economy and the save,
+  trial rooms dropping gear by reward type (`trial.json item_rewards`).
+- Engine: pack screen item cards (rarity edge, stats, per-modifier
+  sentences, wear / take off), plain crafted gear wearable from its stack,
+  reward notices name the drop, recipes for the mace, sceptre and charm.
+- Not yet: uniques, the weapon gating which skills are on the bar, world
+  drops from packs, the compare view, removal of the F1–F3 debug toggles.
 
 ## Inputs and outputs
 

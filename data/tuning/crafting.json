@@ -180,6 +180,69 @@
         "equipment"
       ],
       "fuel_cost": 4
+    },
+    {
+      "id": "iron_mace",
+      "display_name": "Iron Mace",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "iron_ingot": 6,
+        "wood": 2
+      },
+      "outputs": {
+        "iron_mace": 1
+      },
+      "base_skill_xp": 12,
+      "fuel_cost": 2,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "The first weapon, craftable at the basic forge: its implicit physical damage is the first felt step above bare hands (D-014 slice 1)."
+    },
+    {
+      "id": "frost_sceptre",
+      "display_name": "Frost Sceptre",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "iron_ingot": 8,
+        "charcoal": 2
+      },
+      "outputs": {
+        "frost_sceptre": 1
+      },
+      "base_skill_xp": 25,
+      "fuel_cost": 4,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "The Glacier weapon needs the improved forge and Blacksmithing 3, so the freeze-shatter build is earned through the same forge ladder as armour."
+    },
+    {
+      "id": "ember_charm",
+      "display_name": "Ember Charm",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 2
+      },
+      "inputs": {
+        "iron_ingot": 3,
+        "charcoal": 1
+      },
+      "outputs": {
+        "ember_charm": 1
+      },
+      "base_skill_xp": 15,
+      "fuel_cost": 2,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "Cheap third slot with a small resistance implicit; its rolled modifiers (from drops) are where a build gets pulled sideways."
     }
   ],
   "orders": [

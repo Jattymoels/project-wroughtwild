@@ -99,8 +99,15 @@ func _planar_distance(a: Vector3, b: Vector3) -> float:
 	return Vector2(a.x - b.x, a.z - b.z).length()
 
 
+## The skill's cooldown after gear modifiers (the sim resolves it).
+func cooldown_total(skill_id: StringName) -> float:
+	if sim != null:
+		return sim.skill_cooldown_seconds(String(skill_id))
+	return skills.get(skill_id, {}).get("cooldown_seconds", 1.0)
+
+
 func _spend(skill_id: StringName) -> void:
-	cooldowns[skill_id] = skills[skill_id].get("cooldown_seconds", 1.0)
+	cooldowns[skill_id] = cooldown_total(skill_id)
 
 
 ## Area strike: every living enemy inside the radius AND inside the facing

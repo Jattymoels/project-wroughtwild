@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+#include "wroughtwild/items.h"
 #include "wroughtwild/tuning.h"
 
 namespace wroughtwild::economy {
@@ -33,6 +34,9 @@ public:
 
     Inventory inventory;
     std::map<std::string, int> currency;
+    // Rolled gear (D-014): items with modifiers are instances, not counts;
+    // plain crafted gear stays a count in `inventory` until it is worn.
+    std::vector<items::ItemInstance> packItems;
 
     // --- skills ---
     int skillXp(const std::string& skillId) const;
@@ -124,6 +128,7 @@ public:
         std::map<std::string, int> craftCounts;
         std::vector<std::string> fulfilledOrders;
         std::vector<std::string> worldEffects;
+        std::vector<items::ItemInstance> packItems;
     };
     State exportState() const;
     void importState(const State& state);

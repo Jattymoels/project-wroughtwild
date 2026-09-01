@@ -64,7 +64,16 @@ const Station* CraftingTable::findStationForKit(const std::string& kitItemId) co
     return nullptr;
 }
 const BiomeDef* WorldgenTable::findBiome(const std::string& id) const { return findById(biomes, id); }
-const SkillModDef* GrammarTable::findMod(const std::string& id) const { return findById(skillMods, id); }
+const ModifierDef* ItemTable::findModifier(const std::string& id) const { return findById(modifiers, id); }
+const RarityDef* ItemTable::findRarity(const std::string& id) const { return findById(rarities, id); }
+bool ModifierDef::isSelf() const {
+    return appliesToTags.size() == 1 && appliesToTags.front() == "self";
+}
+const ModifierTier* ModifierDef::findTier(int tier) const {
+    for (const auto& t : tiers)
+        if (t.tier == tier) return &t;
+    return nullptr;
+}
 const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
 const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) const {
     auto it = behaviours.find(id);
@@ -190,19 +199,41 @@ ItemTable loadItems(const std::string& path) {
     auto doc = json::parseFile(path);
     ItemTable table;
 
-    for (const auto& p : doc->get("property_definitions").asArray()) {
-        PropertyDef def;
-        def.id = p->get("id").asString();
-        def.displayName = p->get("display_name").asString();
-        def.tags = readStringArray(p->get("tags"));
-        for (const auto& t : p->get("tiers").asArray()) {
-            PropertyTier tier;
+    table.slots = readStringArray(doc->get("slots"));
+
+    for (const auto& r : doc->get("rarities").asArray()) {
+        RarityDef rarity;
+        rarity.id = r->get("id").asString();
+        rarity.displayName = r->get("display_name").asString();
+        rarity.modifiersMin = r->get("modifiers_min").asInt();
+        rarity.modifiersMax = r->get("modifiers_max").asInt();
+        if (rarity.modifiersMax < rarity.modifiersMin)
+            throw std::runtime_error("items: rarity " + rarity.id + " has max below min");
+        table.rarities.push_back(std::move(rarity));
+    }
+
+    for (const auto& m : doc->get("modifiers").asArray()) {
+        ModifierDef def;
+        def.id = m->get("id").asString();
+        def.displayName = m->get("display_name").asString();
+        def.tags = readStringArray(m->get("tags"));
+        def.appliesToTags = readStringArray(m->get("applies_to"));
+        def.effectKey = m->get("effect").asString();
+        if (def.effectKey.rfind("add_", 0) != 0 && def.effectKey.rfind("increased_", 0) != 0 &&
+            def.effectKey.rfind("more_", 0) != 0)
+            throw std::runtime_error("items: modifier " + def.id + " effect must start with add_, increased_ or more_");
+        if (auto display = m->find("display")) def.display = display->asString();
+        if (auto weight = m->find("weight")) def.weight = weight->asNumber();
+        if (auto purpose = m->find("design_purpose")) def.designPurpose = purpose->asString();
+        for (const auto& t : m->get("tiers").asArray()) {
+            ModifierTier tier;
             tier.tier = t->get("tier").asInt();
             tier.minimum = t->get("minimum").asNumber();
             tier.maximum = t->get("maximum").asNumber();
             def.tiers.push_back(tier);
         }
-        table.propertyDefinitions.push_back(std::move(def));
+        if (def.tiers.empty()) throw std::runtime_error("items: modifier " + def.id + " needs tiers");
+        table.modifiers.push_back(std::move(def));
     }
 
     for (const auto& b : doc->get("item_bases").asArray()) {
@@ -210,8 +241,22 @@ ItemTable loadItems(const std::string& path) {
         base.id = b->get("id").asString();
         base.displayName = b->get("display_name").asString();
         base.material = b->get("material").asString();
-        base.implicitProperties = readNumberMap(b->get("implicit_properties"));
-        base.allowedPropertyTags = readStringArray(b->get("allowed_property_tags"));
+        if (auto slot = b->find("slot")) base.slot = slot->asString();
+        if (std::find(table.slots.begin(), table.slots.end(), base.slot) == table.slots.end())
+            throw std::runtime_error("items: base " + base.id + " uses unknown slot " + base.slot);
+        if (auto skill = b->find("grants_skill")) base.grantsSkill = skill->asString();
+        if (auto implicit = b->find("implicit_properties")) base.implicitProperties = readNumberMap(*implicit);
+        if (auto mods = b->find("implicit_modifiers")) {
+            for (const auto& im : mods->asArray()) {
+                ImplicitModifier implicit;
+                implicit.id = im->get("id").asString();
+                implicit.value = im->get("value").asNumber();
+                if (!table.findModifier(implicit.id))
+                    throw std::runtime_error("items: base " + base.id + " implicit modifier " + implicit.id + " is undefined");
+                base.implicitModifiers.push_back(implicit);
+            }
+        }
+        base.allowedModifierTags = readStringArray(b->get("allowed_modifier_tags"));
         table.itemBases.push_back(std::move(base));
     }
 
@@ -351,15 +396,7 @@ GrammarTable loadGrammar(const std::string& path) {
     table.shatter.novaRadiusM = shatter.get("nova_radius_m").asNumber();
     table.shatter.executesFrozen = shatter.get("executes_frozen").asBool();
 
-    for (const auto& m : doc->get("skill_mods").asArray()) {
-        SkillModDef mod;
-        mod.id = m->get("id").asString();
-        mod.displayName = m->get("display_name").asString();
-        mod.appliesToTags = readStringArray(m->get("applies_to_tags"));
-        for (const auto& [key, value] : m->get("effect").asObject())
-            mod.effect[key] = value->asNumber();
-        table.skillMods.push_back(std::move(mod));
-    }
+    // skill_mods moved to items.json modifiers (D-014); an old file is tolerated.
     return table;
 }
 
@@ -446,6 +483,14 @@ TrialTable loadTrial(const std::string& path) {
     table.materialsReward = readIntMap(rewards.get("materials_reward"));
     table.catalystItem = rewards.get("catalyst_item").asString();
     table.completionUnlock = rewards.get("completion_unlock").asString();
+    if (auto itemRewards = rewards.find("item_rewards")) {
+        for (const auto& [rewardType, spec] : itemRewards->asObject()) {
+            TrialTable::ItemReward reward;
+            reward.rarity = spec->get("rarity").asString();
+            reward.tier = spec->get("tier").asInt();
+            table.itemRewards[rewardType] = reward;
+        }
+    }
 
     const Value& contract = doc->get("death_contract");
     table.keepCatalystsOnDeath = contract.get("keep_catalysts_on_death").asBool();

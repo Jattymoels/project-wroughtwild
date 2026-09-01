@@ -115,33 +115,64 @@ struct SkillTable {
 };
 
 // --- items.json --------------------------------------------------------------
+// One modifier pool (D-014): character stats and skill modifiers are the
+// same kind of thing, told apart by applies_to ("self" versus skill tags).
 
-struct PropertyTier {
+struct ModifierTier {
     int tier = 0;
     double minimum = 0.0;
     double maximum = 0.0;
 };
 
-struct PropertyDef {
+struct ModifierDef {
     std::string id;
     std::string displayName;
-    std::vector<std::string> tags;
-    std::vector<PropertyTier> tiers;
+    std::vector<std::string> tags;          // what it is about; a base's roll pool is by these
+    std::vector<std::string> appliesToTags; // {"self"} = a character stat; else the skill tags it excites
+    std::string effectKey;                  // add_<x> flat | increased_<x> additive | more_<x> multiplicative
+    std::string display = "flat";           // "flat" | "percent", for the sentence
+    std::vector<ModifierTier> tiers;
+    double weight = 1.0;
+    std::string designPurpose;
+
+    bool isSelf() const;
+    const ModifierTier* findTier(int tier) const;
+};
+using PropertyDef = ModifierDef;
+using PropertyTier = ModifierTier;
+
+struct ImplicitModifier {
+    std::string id;
+    double value = 0.0;
 };
 
 struct ItemBase {
     std::string id;
     std::string displayName;
     std::string material;
+    std::string slot = "chest";
+    std::string grantsSkill; // the delivery skill a weapon carries ("" = none)
     std::map<std::string, double> implicitProperties;
-    std::vector<std::string> allowedPropertyTags;
+    std::vector<ImplicitModifier> implicitModifiers;
+    std::vector<std::string> allowedModifierTags;
+};
+
+struct RarityDef {
+    std::string id;
+    std::string displayName;
+    int modifiersMin = 0;
+    int modifiersMax = 0;
 };
 
 struct ItemTable {
-    std::vector<PropertyDef> propertyDefinitions;
+    std::vector<std::string> slots; // display order
+    std::vector<RarityDef> rarities;
+    std::vector<ModifierDef> modifiers;
     std::vector<ItemBase> itemBases;
 
     const ItemBase* findBase(const std::string& id) const;
+    const ModifierDef* findModifier(const std::string& id) const;
+    const RarityDef* findRarity(const std::string& id) const;
 };
 
 // --- boons.json --------------------------------------------------------------
@@ -259,6 +290,12 @@ struct TrialTable {
     std::map<std::string, int> materialsReward;
     std::string catalystItem;
     std::string completionUnlock;
+    // Gear a cleared room drops, keyed by the room's reward type (D-014).
+    struct ItemReward {
+        std::string rarity;
+        int tier = 1;
+    };
+    std::map<std::string, ItemReward> itemRewards;
     bool keepCatalystsOnDeath = true;
     bool loseRunMaterialsOnDeath = true;
 };
@@ -332,8 +369,8 @@ struct RealtimeTable {
 };
 
 // --- grammar.json ------------------------------------------------------------
-// The Wave 2 grammar spike (docs/systems/skill-grammar.md): statuses, hooks
-// and tag-targeted skill mods. Ideation-stage; nothing here is accepted.
+// The Wave 2 grammar (docs/systems/skill-grammar.md): statuses and hooks.
+// The tag-targeted modifiers that scale them live in items.json (D-014).
 
 struct ChillStatus {
     double buildupMax = 100.0;
@@ -350,21 +387,9 @@ struct ShatterHook {
     bool executesFrozen = true;
 };
 
-struct SkillModDef {
-    std::string id;
-    std::string displayName;
-    std::vector<std::string> appliesToTags; // empty = applies to everything
-    // Effect keys: add_* flat; increased_* sums additively per bucket;
-    // more_* multiplies (the increased-vs-more rule, adopted from day one).
-    std::map<std::string, double> effect;
-};
-
 struct GrammarTable {
     ChillStatus chill;
     ShatterHook shatter;
-    std::vector<SkillModDef> skillMods;
-
-    const SkillModDef* findMod(const std::string& id) const;
 };
 
 // --- worldgen.json -----------------------------------------------------------

@@ -95,7 +95,21 @@
     },
     "catalyst_item": "ember_catalyst",
     "completion_unlock": "stonecut_blocks",
-    "design_purpose": "materials_reward is the mid-run loot room payout (scaled by weakness reward multipliers); catalyst_item is the guaranteed shrine recovery; completion_unlock is the visible construction-vocabulary reward for the first boss kill. exit_after_stage lets the player bank recovered loot instead of facing the boss (push-or-bank decision)."
+    "item_rewards": {
+      "materials": {
+        "rarity": "keen",
+        "tier": 1
+      },
+      "catalyst": {
+        "rarity": "wrought",
+        "tier": 1
+      },
+      "completion": {
+        "rarity": "wrought",
+        "tier": 2
+      }
+    },
+    "design_purpose": "materials_reward is the mid-run loot room payout (scaled by weakness reward multipliers); catalyst_item is the guaranteed shrine recovery; completion_unlock is the visible construction-vocabulary reward for the first boss kill. exit_after_stage lets the player bank recovered loot instead of facing the boss (push-or-bank decision). item_rewards (D-014) is the gear a cleared room drops by reward type: the loot room a keen piece, the shrine a wrought one, the Tyrant a tier-2 wrought piece; deeper is better, and death loses them like other run loot."
   },
   "death_contract": {
     "keep_catalysts_on_death": true,

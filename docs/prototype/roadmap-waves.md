@@ -122,9 +122,12 @@ sentences, and a compare view, as soon as the items spec is accepted.
 Owner answers: weapon / chest / charm; plain / keen / wrought **plus
 uniques** with legendary or weird interactions; any modifier may drop
 (catalysts target, they do not gate); upskilling points wait for a later
-wave. First slice: the unified modifier pool in `items.json`, three slots,
-rolled items that feed both derived stats and the active mod set, item
-cards in the pack screen.
+wave. **First slice landed 1 Sep 2026:** the unified modifier pool in
+`items.json` (ten modifiers, three slots, three rarities, four bases with
+implicit modifiers), rolled items that feed both derived stats and the
+active modifier set, trial rooms dropping keen/wrought gear, pack items
+in the save, and item cards in the pack screen. Next: uniques, the weapon
+deciding which skills sit on the bar, world drops, the compare view.
 
 The PoE side: more bases and slots, the modifier/tier pool, rarity, how
 crafted vs dropped vs tempered items relate. Catalyst currency types grow

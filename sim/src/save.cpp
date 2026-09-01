@@ -45,6 +45,26 @@ void writeStringList(std::ostringstream& out, const std::vector<std::string>& li
     out << "]";
 }
 
+// One item: base, rarity, implicit numeric properties, rolled modifiers.
+void writeItem(std::ostringstream& out, const items::ItemInstance& item) {
+    out << "{\"base\":\"" << escape(item.baseId) << "\",\"rarity\":\"" << escape(item.rarity)
+        << "\",\"implicit\":{";
+    bool first = true;
+    for (const auto& [id, value] : item.implicitProperties) {
+        if (!first) out << ",";
+        first = false;
+        out << "\"" << escape(id) << "\":" << value;
+    }
+    out << "},\"rolled\":[";
+    for (size_t i = 0; i < item.rolledProperties.size(); ++i) {
+        const auto& rolled = item.rolledProperties[i];
+        if (i) out << ",";
+        out << "{\"id\":\"" << escape(rolled.propertyId) << "\",\"tier\":" << rolled.tier
+            << ",\"value\":" << rolled.value << "}";
+    }
+    out << "]}";
+}
+
 std::map<std::string, int> readIntMap(const json::Value& v) {
     std::map<std::string, int> out;
     for (const auto& [key, value] : v.asObject()) out[key] = value->asInt();
@@ -55,6 +75,22 @@ std::vector<std::string> readStringList(const json::Value& v) {
     std::vector<std::string> out;
     for (const auto& item : v.asArray()) out.push_back(item->asString());
     return out;
+}
+
+items::ItemInstance readItem(const json::Value& v) {
+    items::ItemInstance item;
+    item.baseId = v.get("base").asString();
+    if (auto rarity = v.find("rarity")) item.rarity = rarity->asString();
+    for (const auto& [id, value] : v.get("implicit").asObject())
+        item.implicitProperties[id] = value->asNumber();
+    for (const auto& rolled : v.get("rolled").asArray()) {
+        items::RolledProperty property;
+        property.propertyId = rolled->get("id").asString();
+        property.tier = rolled->get("tier").asInt();
+        property.value = rolled->get("value").asNumber();
+        item.rolledProperties.push_back(std::move(property));
+    }
+    return item;
 }
 
 } // namespace
@@ -78,28 +114,19 @@ std::string toJson(const SaveGame& game) {
     writeStringList(out, game.economy.fulfilledOrders);
     out << ",\"world_effects\":";
     writeStringList(out, game.economy.worldEffects);
-    out << "},\"equipment\":{";
+    out << ",\"pack_items\":[";
+    for (size_t i = 0; i < game.economy.packItems.size(); ++i) {
+        if (i) out << ",";
+        writeItem(out, game.economy.packItems[i]);
+    }
+    out << "]},\"equipment\":{";
 
     bool firstSlot = true;
     for (const auto& [slot, item] : game.equipment.slots) {
         if (!firstSlot) out << ",";
         firstSlot = false;
-        out << "\"" << escape(slot) << "\":{\"base\":\"" << escape(item.baseId)
-            << "\",\"implicit\":{";
-        bool first = true;
-        for (const auto& [id, value] : item.implicitProperties) {
-            if (!first) out << ",";
-            first = false;
-            out << "\"" << escape(id) << "\":" << value;
-        }
-        out << "},\"rolled\":[";
-        for (size_t i = 0; i < item.rolledProperties.size(); ++i) {
-            const auto& rolled = item.rolledProperties[i];
-            if (i) out << ",";
-            out << "{\"id\":\"" << escape(rolled.propertyId) << "\",\"tier\":" << rolled.tier
-                << ",\"value\":" << rolled.value << "}";
-        }
-        out << "]}";
+        out << "\"" << escape(slot) << "\":";
+        writeItem(out, item);
     }
     out << "},\"extra\":{";
 
@@ -129,21 +156,13 @@ SaveGame fromJson(const std::string& text) {
     game.economy.craftCounts = readIntMap(eco.get("craft_counts"));
     game.economy.fulfilledOrders = readStringList(eco.get("fulfilled_orders"));
     game.economy.worldEffects = readStringList(eco.get("world_effects"));
+    // Saves written before D-014 carry no pack items.
+    if (auto pack = eco.find("pack_items"))
+        for (const auto& itemValue : pack->asArray())
+            game.economy.packItems.push_back(readItem(*itemValue));
 
-    for (const auto& [slot, itemValue] : doc->get("equipment").asObject()) {
-        items::ItemInstance item;
-        item.baseId = itemValue->get("base").asString();
-        for (const auto& [id, value] : itemValue->get("implicit").asObject())
-            item.implicitProperties[id] = value->asNumber();
-        for (const auto& rolled : itemValue->get("rolled").asArray()) {
-            items::RolledProperty property;
-            property.propertyId = rolled->get("id").asString();
-            property.tier = rolled->get("tier").asInt();
-            property.value = rolled->get("value").asNumber();
-            item.rolledProperties.push_back(std::move(property));
-        }
-        game.equipment.slots[slot] = std::move(item);
-    }
+    for (const auto& [slot, itemValue] : doc->get("equipment").asObject())
+        game.equipment.slots[slot] = readItem(*itemValue);
 
     for (const auto& [key, value] : doc->get("extra").asObject())
         game.extra[key] = value->asString();
