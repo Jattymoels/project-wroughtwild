@@ -20,6 +20,7 @@ func _initialize() -> void:
 	_test_inventory()
 	_test_sim_gateway()
 	_test_resource_node()
+	_test_biome_mood()
 	_test_scene_instantiation()
 	_test_sim_extension()
 	_test_sandpit_extension()
@@ -76,6 +77,22 @@ func _test_resource_node() -> void:
 	check(node.harvest() == 1, "resource: final partial harvest")
 	check(node.harvest() == 0, "resource: depleted node grants nothing")
 	node.free()
+
+
+func _test_biome_mood() -> void:
+	# The art direction's contract (D-013): light drains toward danger.
+	var meadow: Dictionary = BiomeMood.mood_for("meadow")
+	var wastes: Dictionary = BiomeMood.mood_for("ember_wastes")
+	var forest: Dictionary = BiomeMood.mood_for("forest")
+	check(wastes["sun_energy"] < forest["sun_energy"]
+		and forest["sun_energy"] <= BiomeMood.mood_for("rocky_hills")["sun_energy"]
+		and BiomeMood.mood_for("rocky_hills")["sun_energy"] < meadow["sun_energy"],
+		"art: sun energy orders safe > exposed > forest > wastes (D-013)")
+	check(wastes["fog_density"] > forest["fog_density"]
+		and forest["fog_density"] > meadow["fog_density"],
+		"art: fog thickens toward danger")
+	check(wastes["ambient"] < meadow["ambient"], "art: the wastes sit darker than safe country")
+	check(BiomeMood.mood_for("no_such_biome") == meadow, "art: unknown biomes fall back to the safe mood")
 
 
 func _test_scene_instantiation() -> void:

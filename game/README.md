@@ -59,7 +59,9 @@ purpose.
    wear down as you work them and shrink away when spent. The thing under
    your crosshair names itself ("wood ×12 — E to gather") and harvestables
    glow while you look at them. Mob packs wake as you approach; every kill
-   scatters loot where the mob fell. Chasers are D-012 stupid zombies: they
+   scatters loot where the mob fell. Light follows the land (D-013): safe
+   biomes are bright and saturated, the deep forest closes in, and the
+   Ember Wastes drain the light before the first pack appears. Chasers are D-012 stupid zombies: they
    keep coming while you stay near (bunch them and pay the train off with
    the cone-shaped area strike), give up only when you genuinely run, and
    an idle stray joins the fight the moment you hit it. The crosshair reads

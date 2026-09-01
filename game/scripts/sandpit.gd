@@ -15,6 +15,7 @@ const ORDER_BOARD_SCENE := preload("res://scenes/order_board.tscn")
 
 @onready var terrain: Terrain = $Terrain
 @onready var mob_packs: MobPacks = $MobPacks
+@onready var mood: BiomeMood = $Mood
 @onready var player: WroughtwildPlayer = $Player
 
 
@@ -37,6 +38,8 @@ func _build_world(seed_value: int) -> void:
 	player.global_position = spawn + Vector3(0, 1.2, 0)
 	player.spawn_position = player.global_position
 	player.velocity = Vector3.ZERO
+	# The art direction's mood dial (D-013): light follows the biome.
+	mood.setup(terrain, $WorldEnvironment.environment, $Sun)
 
 	_replace_named(TRIAL_GATE_SCENE, "TrialGate",
 		terrain.surface_position(terrain.map["gate_x"], terrain.map["gate_z"]))
