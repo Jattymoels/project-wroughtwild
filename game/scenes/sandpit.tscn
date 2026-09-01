@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/sandpit.gd" id="1_sandpit"]
 [ext_resource type="Script" path="res://scripts/terrain.gd" id="2_terrain"]
 [ext_resource type="Script" path="res://scripts/mob_packs.gd" id="3_packs"]
+[ext_resource type="Script" path="res://scripts/biome_mood.gd" id="6_mood"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="4_player"]
 [ext_resource type="PackedScene" path="res://scenes/trial_arena.tscn" id="5_arena"]
 
@@ -42,6 +43,9 @@ script = ExtResource("2_terrain")
 
 [node name="MobPacks" type="Node" parent="."]
 script = ExtResource("3_packs")
+
+[node name="Mood" type="Node" parent="."]
+script = ExtResource("6_mood")
 
 [node name="Player" parent="." instance=ExtResource("4_player")]
 position = Vector3(48, 12, 48)

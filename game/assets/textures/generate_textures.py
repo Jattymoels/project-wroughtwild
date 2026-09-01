@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""Generates the 16x16 greybox pixel textures (committed as PNGs next to this
+"""Generates the 16x16 pixel textures (committed as PNGs next to this
 script). Deterministic: rerunning reproduces identical files. Pure standard
-library, so no image dependencies are needed to tweak the look."""
+library, so no image dependencies are needed to tweak the look.
+
+Every colour comes from the master palette in docs/art/art-direction.md
+(D-013 "Bright frontier, dark thresholds"): one base tone + one accent per
+surface, brightness jitter only. Edit PALETTE, not the call sites."""
 
 import random
 import struct
@@ -10,6 +14,26 @@ from pathlib import Path
 
 SIZE = 16
 OUT = Path(__file__).parent
+
+# Master palette (docs/art/art-direction.md). Keep in sync with the biome
+# mood table in game/scripts/biome_mood.gd.
+PALETTE = {
+    "meadow_grass": (98, 150, 62),
+    "meadow_grass_light": (140, 188, 86),
+    "forest_floor": (46, 84, 41),
+    "forest_loam": (86, 60, 38),
+    "stone": (116, 116, 122),
+    "stone_dark": (86, 88, 96),
+    "dirt": (106, 76, 48),
+    "dirt_dark": (82, 58, 38),
+    "bark": (92, 64, 38),
+    "bark_dark": (64, 44, 26),
+    "leaf": (48, 106, 42),
+    "leaf_dark": (32, 76, 28),
+    "ash": (52, 46, 46),
+    "ember": (236, 110, 30),
+    "iron_rust": (196, 116, 44),
+}
 
 
 def write_png(name: str, pixels: list) -> None:
@@ -50,16 +74,22 @@ def speckle(base, jitter, rng, accents=None):
 
 def main() -> None:
     rng = random.Random(31)  # fixed seed: identical textures every run
+    p = PALETTE
 
-    write_png("grass.png", speckle((88, 140, 60), 0.14, rng, ((130, 180, 80), 0.06)))
-    write_png("forest_floor.png", speckle((52, 92, 44), 0.16, rng, ((84, 62, 38), 0.08)))
-    write_png("rock.png", speckle((120, 120, 124), 0.12, rng, ((90, 90, 96), 0.07)))
-    write_png("ash.png", speckle((58, 52, 50), 0.18, rng, ((214, 96, 28), 0.03)))
-    write_png("dirt.png", speckle((110, 80, 52), 0.14, rng, ((84, 60, 38), 0.08)))
-    write_png("stone_node.png", speckle((136, 134, 130), 0.10, rng, ((104, 102, 100), 0.10)))
-    write_png("iron_vein.png", speckle((122, 118, 114), 0.10, rng, ((186, 110, 48), 0.12)))
-    write_png("bark.png", speckle((96, 68, 40), 0.10, rng, ((70, 48, 28), 0.16)))
-    write_png("leaves.png", speckle((46, 104, 40), 0.18, rng, ((30, 74, 28), 0.12)))
+    # Surfaces: base tone + one accent, per the art-direction texture rules.
+    write_png("grass.png", speckle(p["meadow_grass"], 0.13, rng, (p["meadow_grass_light"], 0.07)))
+    write_png("forest_floor.png", speckle(p["forest_floor"], 0.15, rng, (p["forest_loam"], 0.08)))
+    write_png("rock.png", speckle(p["stone"], 0.11, rng, (p["stone_dark"], 0.08)))
+    # The wastes stay near-greyscale so the ember accent is the only thing
+    # alive in the frame - danger accents are earned (D-013).
+    write_png("ash.png", speckle(p["ash"], 0.17, rng, (p["ember"], 0.035)))
+    write_png("dirt.png", speckle(p["dirt"], 0.13, rng, (p["dirt_dark"], 0.08)))
+
+    # Props and nodes.
+    write_png("stone_node.png", speckle(tuple(c + 14 for c in p["stone"]), 0.10, rng, (p["stone_dark"], 0.10)))
+    write_png("iron_vein.png", speckle(p["stone"], 0.10, rng, (p["iron_rust"], 0.13)))
+    write_png("bark.png", speckle(p["bark"], 0.10, rng, (p["bark_dark"], 0.16)))
+    write_png("leaves.png", speckle(p["leaf"], 0.17, rng, (p["leaf_dark"], 0.12)))
 
 
 if __name__ == "__main__":

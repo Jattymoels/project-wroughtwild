@@ -53,6 +53,18 @@ question is answerable in greybox before Wave 2 commits itemisation to it.
   landed: crosshair aim feedback, hitmarker, damage flash, and stray-pull
   (damaging an idle mob wakes it).
 
+### Art direction — first pass *(landed 1 Sep 2026; D-013)*
+
+"Bright frontier, dark thresholds" ([art/art-direction.md](../art/art-direction.md)):
+a vibrant Minecraft-warm overworld whose light and saturation drain toward
+danger — PoE's use of darkness without its gore. Landed in engine: the
+master palette as single source of truth, the texture generator rebuilt
+around it, and `BiomeMood` — sun, fog and ambient crossfade to the biome
+underfoot, so the Ember Wastes feel wrong before the first pack appears.
+Blocky terrain/buildings, chunky low-poly props, smoother low-poly
+characters later; polygon budget is a non-issue at this scale (the
+constraint is authoring time).
+
 ### World-feel pass *(landed 1 Sep 2026)*
 
 Collecting and moving get their juice before itemisation piles on top:
