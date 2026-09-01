@@ -7,12 +7,12 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [x] The selected engine and version are recorded in an accepted ADR. *(ADR-0001, Godot 4.5-stable)*
 - [x] The project launches from a clean checkout using documented steps. *(`game/README.md`)*
 - [x] Core tuning values are externalised from game logic. *(`data/tuning/*.json`, read only through `sim/`)*
-- [ ] A deterministic test seed is available.
+- [x] A deterministic test seed is available. *(`worldgen.json` `default_seed`; `sandpit.gd` builds from `world_seed` and saves carry their seed; `tests/sim` proves `worldgen::generate` is identical per seed and differs across seeds)*
 
 ## World and persistence
 
 - [x] A bounded region loads with required wood, iron, forge location and trial entrance. *(authored greybox valley: two wood nodes, iron node, forge site, mine board, trial gate + arena)*
-- [ ] Critical progression resources cannot be absent from a valid seed.
+- [x] Critical progression resources cannot be absent from a valid seed. *(D-003 guarantees in `worldgen.json` — safe meadow spawn, wood/stone/iron within a short walk, packs off the doorstep, trial gate far in the wastes — checked by `tests/sim` across 60 seeds)*
 - [x] Player state, equipment, placed structures and storage survive save/reload. *(F5/F9; `SaveManager` writes the sim's SaveGame JSON plus blocks, nodes and pose; integration-tested. Equipment round-trips through the schema but nothing equips it yet.)*
 
 ## Construction
