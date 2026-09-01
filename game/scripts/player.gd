@@ -37,6 +37,7 @@ const DROPPED_BUNDLE_SCENE := preload("res://scenes/dropped_bundle.tscn")
 
 var hud: Hud
 var work_panel: WorkPanel
+var inventory_panel: InventoryPanel
 var trial: TrialController
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
@@ -80,6 +81,11 @@ func _ready() -> void:
 	work_panel.closed.connect(_capture_mouse)
 	add_child(work_panel)
 
+	inventory_panel = InventoryPanel.new()
+	inventory_panel.sim = inventory.get_sim()
+	inventory_panel.closed.connect(_capture_mouse)
+	add_child(inventory_panel)
+
 	trial = TrialController.new()
 	trial.setup(self)
 	add_child(trial)
@@ -106,24 +112,28 @@ func _release_mouse() -> void:
 
 func open_crafting(station: StationSite) -> void:
 	placement.set_build_mode_enabled(false)
+	inventory_panel.close_panel()
 	work_panel.open_crafting(station)
 	_release_mouse()
 
 
 func open_order(order_id: StringName) -> void:
 	placement.set_build_mode_enabled(false)
+	inventory_panel.close_panel()
 	work_panel.open_order(order_id)
 	_release_mouse()
 
 
 func open_hand_crafting() -> void:
 	placement.set_build_mode_enabled(false)
+	inventory_panel.close_panel()
 	work_panel.open_hand_crafting()
 	_release_mouse()
 
 
 func open_custom_panel(title: String, rows: Array, message_text: String = "") -> void:
 	placement.set_build_mode_enabled(false)
+	inventory_panel.close_panel()
 	work_panel.open_custom(title, rows, message_text)
 	_release_mouse()
 
@@ -140,12 +150,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		_apply_camera_mode()
 		hud.notify("First person" if first_person else "Third person")
 	elif event.is_action_pressed("ui_cancel"):
-		work_panel.close_panel()
+		if hud.help_visible():
+			hud.toggle_help()
+		elif inventory_panel.is_open():
+			inventory_panel.close_panel()
+		else:
+			work_panel.close_panel()
+	elif event.is_action_pressed("toggle_help"):
+		hud.toggle_help()
+	elif event.is_action_pressed("toggle_inventory"):
+		toggle_inventory()
 	elif event.is_action_pressed("save_game"):
 		save_game()
 	elif event.is_action_pressed("load_game"):
 		load_game()
-	elif work_panel.is_open():
+	elif work_panel.is_open() or inventory_panel.is_open():
 		return
 	elif event.is_action_pressed("hand_craft"):
 		open_hand_crafting()
@@ -181,6 +200,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		placement.rotate_preview()
 
 
+## The pack screen (I): opens over the world with the mouse released; a
+## station's work panel takes precedence while it is open.
+func toggle_inventory() -> void:
+	if work_panel.is_open():
+		return
+	if inventory_panel.is_open():
+		inventory_panel.close_panel()
+	else:
+		placement.set_build_mode_enabled(false)
+		inventory_panel.open_panel()
+		_release_mouse()
+
+
 func _toggle_spike_mod(index: int) -> void:
 	if index < 0 or index >= SPIKE_MODS.size():
 		return
@@ -208,6 +240,7 @@ func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 		hud.notify("You cannot load inside the trial.")
 		return false
 	work_panel.close_panel()
+	inventory_panel.close_panel()
 	var manager := SaveManager.new()
 	var ok := manager.read(path, self)
 	hud.notify("Loaded." if ok else "Load failed: %s" % manager.last_error)

@@ -17,6 +17,7 @@ func check(condition: bool, label: String) -> void:
 
 func _initialize() -> void:
 	_test_grid()
+	_test_ui_theme()
 	_test_inventory()
 	_test_sim_gateway()
 	_test_resource_node()
@@ -70,6 +71,24 @@ func _test_grid() -> void:
 	var offset := WroughtwildGrid.shape_offset(panel, &"face", PI / 2.0, grid)
 	check(WroughtwildGrid.cell_of(Vector3(2.5, 3.5, -1.5) + offset, offset, grid) == Vector3i(2, 3, -2),
 		"grid: cell recovered from an anchored position")
+
+
+func _test_ui_theme() -> void:
+	check(UiTheme.theme() == UiTheme.theme(), "ui: one shared theme")
+	check(UiTheme.theme().has_stylebox("panel", "PanelContainer") and UiTheme.theme().has_stylebox("disabled", "Button"),
+		"ui: theme styles panels and buttons")
+	check(UiTheme.family_colour("wood") == UiTheme.BARK and UiTheme.family_colour("forge_kit") == UiTheme.FROST,
+		"ui: material swatches follow the family")
+	check(UiTheme.family_colour("ember_catalyst") == UiTheme.EMBER and UiTheme.family_colour("unknown_thing") == UiTheme.MUTED,
+		"ui: catalysts glow ember, unknowns stay muted")
+	check(UiTheme.card(true).border_color.a > UiTheme.card(false).border_color.a, "ui: available cards have the brighter edge")
+	var root := Control.new()
+	var stop := Button.new()
+	root.add_child(stop)
+	UiTheme.ignore_mouse(root)
+	check(root.mouse_filter == Control.MOUSE_FILTER_IGNORE and stop.mouse_filter == Control.MOUSE_FILTER_IGNORE,
+		"ui: ignore_mouse reaches every descendant")
+	root.free()
 
 
 func _test_inventory() -> void:
