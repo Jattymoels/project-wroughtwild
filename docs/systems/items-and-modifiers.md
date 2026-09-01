@@ -1,6 +1,6 @@
 # Items and Modifiers
 
-**Status:** Proposed (Wave 2 kickoff, 1 September 2026) — awaiting owner review as D-014  
+**Status:** Accepted direction (D-014, owner answers 1 September 2026); implementation in progress  
 **Owner:** Unassigned  
 **Related decisions:** D-007 (open), D-012, ADR-0002 (proposal C, provisional), D-014 (proposed)  
 **Related documents:** [skill-grammar.md](skill-grammar.md) (the design space this spec builds from), [combat-and-builds.md](combat-and-builds.md), [loot-and-currency.md](loot-and-currency.md), [interface.md](interface.md)
@@ -37,22 +37,29 @@ Included:
   `self` (max life, fire resistance). ~15 modifiers at launch, the minimum
   vocabulary from skill-grammar.md.
 - **Rarity by modifier count:** *plain* (0 rolled), *keen* (1–2), *wrought*
-  (3–4). No uniques in the slice; no sockets ever (mods attach to tags).
+  (3–4), plus **unique** — hand-authored items with legendary or weird
+  interactions (owner direction: a unique bends a rule, e.g. "frozen enemies
+  you shatter re-freeze their neighbours", "your forks fork"), authored one
+  at a time in data with a `design_purpose`. No sockets ever (mods attach
+  to tags).
 - **Sources, in order of reliability:** craft a plain base at the forge →
   temper with a catalyst to add a *guaranteed-domain* mod (ADR-0002 C, as
   now) → trial room and boss rewards roll keen/wrought gear deterministically
   from the run seed → open-world packs drop keen gear rarely (rate in data,
-  tuned in Wave 3 with elite modifiers).
+  tuned in Wave 3 with elite modifiers). **Any modifier can drop** (owner
+  direction): the catalyst's value is *targeting* — it guarantees the domain
+  you need — not exclusivity. Uniques come from the trial (boss and, later,
+  secrets), never from crafting.
 - **Statuses and hooks** from the grammar: chill/freeze/shatter exist;
   Wave 2 adds ignite + proliferate and bleed (the training tax), each with a
   silhouette-visible greybox tell.
 - **Balance sim** extended to find breakpoints ("chill per orb vs whelp freeze
   threshold") the way it tuned the Tyrant.
 
-Excluded from the slice (deliberately): upskilling points (the "where do I
-spend" layer — Wave 2.5, once gear proves the mod vocabulary), rings/boots/
-helmet slots, item level/requirements, sockets, uniques, trade, currency
-breadth beyond the two catalyst types (owner direction, 31 Aug 2026).
+Excluded from the slice (deliberately): upskilling points (owner: hold off
+until a later wave), rings/boots/helmet slots, item level/requirements,
+sockets, trade, currency breadth beyond the two catalyst types (owner
+direction, 31 Aug 2026).
 
 ## Inputs and outputs
 
@@ -149,12 +156,13 @@ the inventory screen so a tester can answer "why am I stronger".
 - [ ] The balance sim reports the freeze breakpoint (orbs to freeze a whelp)
       for the plain, keen and wrought Glacier sets.
 
-## Open questions (for the owner)
+## Owner answers (1 September 2026) — now D-014
 
-1. Three slots (weapon / chest / charm) for the slice, or two?
-2. Rarity names — plain / keen / wrought fits the smithing voice; confirm.
-3. Does the weapon decide delivery (rule 6), or are skills independent of
-   the weapon and the weapon only carries mods?
-4. May dropped gear carry catalyst-exclusive mods (loot-and-currency.md open
-   question)? Proposed: no — the forge stays the only source of T2 guarantees.
-5. Do upskilling points arrive in Wave 2 or after gear proves the vocabulary?
+1. Slots: weapon / chest / charm for now.
+2. Rarity names confirmed (plain / keen / wrought), **plus a unique tier**
+   with legendary or weird interactions.
+3. Weapon decides delivery — not answered explicitly; rule 6 stands as the
+   working assumption until the owner objects.
+4. Random drops **can** carry any modifier; catalysts exist to *target* a
+   domain when you need a guarantee, not to gate modifiers.
+5. Upskilling points wait for a later wave.

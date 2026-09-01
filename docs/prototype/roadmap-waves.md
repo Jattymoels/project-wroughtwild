@@ -117,7 +117,14 @@ overlay replacing the permanent hint paragraph. One code-built Theme from
 the master palette. Next: item cards with rarity colour and per-modifier
 sentences, and a compare view, as soon as the items spec is accepted.
 
-### Itemisation track *(spec proposed; implementation waits on D-014)*
+### Itemisation track *(D-014 accepted 1 Sep 2026; implementation under way)*
+
+Owner answers: weapon / chest / charm; plain / keen / wrought **plus
+uniques** with legendary or weird interactions; any modifier may drop
+(catalysts target, they do not gate); upskilling points wait for a later
+wave. First slice: the unified modifier pool in `items.json`, three slots,
+rolled items that feed both derived stats and the active mod set, item
+cards in the pack screen.
 
 The PoE side: more bases and slots, the modifier/tier pool, rarity, how
 crafted vs dropped vs tempered items relate. Catalyst currency types grow

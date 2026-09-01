@@ -130,17 +130,59 @@ func _spawn_encounter(ids: PackedStringArray) -> void:
 	var ordinary: Array = []
 	for id in ids:
 		if id == boss_id:
-			Boss.spawn_boss(root, arena.boss_spawn.global_position)
+			_make_relentless(Boss.spawn_boss(root, arena.boss_spawn.global_position))
 		else:
 			ordinary.append(id)
 	var points: Array = arena.enemy_spawn_points(ordinary.size())
 	for i in ordinary.size():
-		Enemy.spawn(root, ordinary[i], points[i])
+		_make_relentless(Enemy.spawn(root, ordinary[i], points[i]))
+
+
+## A trial room is a closed fight: its enemies always know where you are
+## and never give up, so a room cannot stall with an idle mob in a corner
+## (the open world's D-012 give-up rule stays as it is out there).
+func _make_relentless(enemy: Enemy) -> void:
+	if enemy == null:
+		return
+	enemy.aggro_range = 100.0
+	enemy.give_up_distance = 0.0
 
 
 func _process(_delta: float) -> void:
-	if state == "fighting" and player.combat.alive_enemies().is_empty():
-		_room_won()
+	if state == "fighting":
+		_keep_everyone_in_the_room()
+		if player.combat.alive_enemies().is_empty():
+			_room_won()
+	elif state != "idle":
+		_keep_everyone_in_the_room()
+
+
+## Safety net under the walls: anything that still leaves the floor (a
+## knockback through a seam, a spawn on the wall line) is put back on it
+## rather than falling forever with the room unfinished.
+func _keep_everyone_in_the_room() -> void:
+	if _find_arena() == null:
+		return
+	for enemy in player.combat.alive_enemies():
+		if not arena.contains(enemy.global_position):
+			enemy.global_position = arena.clamp_to_floor(enemy.global_position)
+			enemy.velocity = Vector3.ZERO
+	if not arena.contains(player.global_position):
+		player.global_position = arena.player_spawn.global_position
+		player.velocity = Vector3.ZERO
+
+
+## What the run wants from the player right now, for the HUD.
+func prompt() -> String:
+	match state:
+		"fighting":
+			var remaining := player.combat.alive_enemies().size()
+			return "Clear the room  —  %d remain" % remaining if remaining != 1 else "Clear the room  —  1 remains"
+		"doors":
+			return "" if player.work_panel.is_open() else "E  —  choose the next door"
+		"reward":
+			return "" if player.work_panel.is_open() else "E  —  answer the shrine"
+	return ""
 
 
 # --- rewards -----------------------------------------------------------------

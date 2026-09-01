@@ -24,6 +24,7 @@ var player: WroughtwildPlayer
 
 var _ui: Control
 var _status: Label
+var _trial_prompt: Label
 var _notice: Label
 var _notice_timer := 0.0
 var _refresh_timer := 0.0
@@ -74,6 +75,10 @@ func _ready() -> void:
 	_status = Label.new()
 	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(_status)
+	_trial_prompt = Label.new()
+	_trial_prompt.add_theme_font_size_override("font_size", 18)
+	_trial_prompt.modulate = UiTheme.SUN_WARM
+	column.add_child(_trial_prompt)
 	_notice = Label.new()
 	_notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_notice.modulate = Color(1.0, 0.9, 0.5)
@@ -352,6 +357,7 @@ func refresh() -> void:
 			WorkPanel.amounts_text(sim.trial_loot()) if not sim.trial_loot().is_empty() else "nothing yet",
 			", ".join(names) if not names.is_empty() else "no blessings"])
 	_status.text = "\n".join(lines)
+	_trial_prompt.text = player.trial.prompt() if player != null and player.trial != null else ""
 
 	if combat != null and combat.sim != null:
 		var ds: Dictionary = sim.derived_stats()
