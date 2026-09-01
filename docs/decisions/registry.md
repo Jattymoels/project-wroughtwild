@@ -22,6 +22,8 @@ Statuses:
 | D-012 | Combat perspective | Combat is first-person (a third-person toggle may remain for greybox debugging): the build clears hordes but the player only engages what is in front of them, trading PoE's screen-clear for personal-scale danger. Horde pressure is CoD-Zombies-style: open-world mobs are deliberately "stupid zombies" — persistent chasers that bunch up and can be trained by a player who stays close — but aggro is NOT eternal: genuinely running away breaks the chase, at the cost of a dangerous disengage. Build expression comes from damage *mechanics* (cone/cleave AoE, ground effects the train is led through, bleed/poison/ignite tag-and-run, chill/freeze choke-making, single-target speed) rather than raw numbers; the mechanic vocabulary arrives with Wave 2 items and Wave 3 mobs, horde/wave rooms with Wave 4. Dungeon AI may later become smarter than the open world's — a deliberate contrast, not an accident | Accepted direction | First-person greybox playtest (Wave 1.5) |
 | D-013 | Art direction | "Bright frontier, dark thresholds" ([art/art-direction.md](../art/art-direction.md)): vibrant, saturated, Minecraft-warm overworld whose light and saturation drain toward danger (enemy biomes, dungeon thresholds) — PoE's use of darkness without its gore; menace is told by light, fog and silhouette, never blood. Blocky terrain and buildings, chunky low-poly props, smoother low-poly characters; one master palette governs all textures, tints, fog and VFX | Accepted direction | First art-pass playtest, or character modelling begins |
 | D-009 | Engine | Godot 4.5-stable (`4.5.stable.official.876b29033`) is the prototype engine; the engine project lives in `game/`, gameplay rules stay in the engine-neutral `sim/` library bound via GDExtension; `godot-cpp` is the only approved third-party dependency ([ADR-0001](ADR-0001-engine-selection.md)) | Accepted | Terrain scale, world streaming, construction density or visual targets outgrow Godot (ADR-0001 exit condition) |
+| D-014 | Itemisation | Wave 2 scope per [systems/items-and-modifiers.md](../systems/items-and-modifiers.md): one modifier pool where mods attach to tags (never sockets) with the increased/more schema; three slots (weapon, chest, charm); rarity by rolled-mod count (plain / keen / wrought); the weapon carries the delivery skill; equipment swaps never destroy a tempered item; upskilling points deferred until gear proves the vocabulary | Proposed | Owner reviews the spec's open questions |
+| D-015 | Interface | Per [systems/interface.md](../systems/interface.md): four layers only — HUD (life bar, action bar, holdings strip, notices, crosshair), pack screen (I), one work-panel type (cards in a scroll area), help overlay (H); the mouse is captured unless a panel needs it; panels never compute rules and every panel is a headless test surface; one code-built Theme from the master palette | Proposed (first slice implemented 1 Sep 2026) | Owner plays the first interface slice |
 
 ## Proposals awaiting acceptance
 
@@ -34,6 +36,13 @@ Statuses:
   treasures. Currency-economy breadth — type count, drop rates, stacking,
   fungibility, trade — is deliberately deferred until the core loop is
   proven; do not over-design mid/late-game crafting now.
+
+- **D-014 / D-015 (1 Sep 2026):** the Wave 2 itemisation spec and the
+  interface spec are proposals. The interface's first slice is already in
+  the build because it is the instrument the itemisation playtest needs;
+  the itemisation rules themselves wait for the owner's answers to the
+  spec's open questions (slots, rarity names, weapon-decides-delivery,
+  dropped catalyst-exclusive mods, when points arrive).
 
 ## Registering a decision
 

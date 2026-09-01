@@ -36,7 +36,9 @@ purpose.
    ```
 
 3. The game is **first-person** (D-012); **V** toggles third person for
-   debugging. Controls: WASD move, mouse look, Space jump, **E** interact (harvest,
+   debugging. The HUD (docs/systems/interface.md) shows a life bar with
+   defences bottom-left, the action bar with cooldown sweeps bottom-centre
+   and what you carry top-right; press **I** for the pack screen. Controls: WASD move, mouse look, Space jump, **E** interact (harvest,
    work at a station, read the board, open the gate), **C** craft by hand,
    **B** toggle build mode, **Tab** cycle shapes and crafted station kits,
    **LMB** place (or harvest outside build mode), **X** remove block, **R** rotate (for panels, beams and pillars this also picks which face or corner of the cell they sit against), **1** area strike, **2** heavy strike, **3** Frost Orb
@@ -44,7 +46,7 @@ purpose.
    chill toward a freeze; strike a frozen mob with **1** to shatter it),
    **F1–F3** toggle the three spike skill-mods (Forked Lattice, Deep Frost,
    Wide Shatter — scaffolding until Wave 2 puts mods on gear), **Shift** dash
-   (a pure movement burst - no invulnerability, D-012), **Esc** close a panel, **F5** save, **F9** load
+   (a pure movement burst - no invulnerability, D-012), **I** pack (what you carry and wear, vitals, spike-mod toggles; wear armour here), **H** help overlay, **Esc** close a panel, **F5** save, **F9** load
    (`user://wroughtwild_save.json`). Dying drops your materials in a pack
    where you fell; walk back for it.
 4. **The first hour, from nothing:** harvest trees (E) → **C** → craft the

@@ -1,16 +1,22 @@
 class_name WorkPanel
 extends CanvasLayer
-## One panel for every "work" interaction in the valley: crafting at a station
-## and delivering to an order board. Rows are built from the sim's tuning
-## views and every button routes back into the sim, so the panel never
-## computes a rule; it only shows what the rules say.
+## One panel for every "work" interaction in the valley: crafting at a station,
+## delivering to an order board, and the trial's doors and offers. Rows are
+## cards built from the sim's tuning views — what it is, what it needs with
+## have/need coloured, one button — inside a scroll area so a fully upgraded
+## forge never pushes the close button off screen (docs/systems/interface.md).
+## Every button routes back into the sim, so the panel never computes a rule;
+## it only shows what the rules say.
 
 signal closed
+
+const MAX_HEIGHT_FRACTION := 0.6
 
 var sim: WroughtwildSim
 
 var _root: PanelContainer
 var _title: Label
+var _scroll: ScrollContainer
 var _body: VBoxContainer
 var _message: Label
 
@@ -24,10 +30,11 @@ var _custom_rows: Array = []
 func _ready() -> void:
 	layer = 10
 	_root = PanelContainer.new()
+	_root.theme = UiTheme.theme()
 	_root.set_anchors_preset(Control.PRESET_CENTER)
 	_root.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_root.grow_vertical = Control.GROW_DIRECTION_BOTH
-	_root.custom_minimum_size = Vector2(680, 0)
+	_root.custom_minimum_size = Vector2(780, 0)
 	_root.visible = false
 	add_child(_root)
 
@@ -40,22 +47,30 @@ func _ready() -> void:
 	column.add_theme_constant_override("separation", 8)
 	margin.add_child(column)
 
+	var header := HBoxContainer.new()
+	column.add_child(header)
 	_title = Label.new()
 	_title.add_theme_font_size_override("font_size", 22)
-	column.add_child(_title)
-
-	_body = VBoxContainer.new()
-	_body.add_theme_constant_override("separation", 6)
-	column.add_child(_body)
-
-	_message = Label.new()
-	_message.modulate = Color(1.0, 0.9, 0.5)
-	column.add_child(_message)
-
+	_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	header.add_child(_title)
 	var close := Button.new()
 	close.text = "Close  (Esc)"
 	close.pressed.connect(close_panel)
-	column.add_child(close)
+	header.add_child(close)
+
+	_scroll = ScrollContainer.new()
+	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_scroll.custom_minimum_size = Vector2(0, 80)
+	column.add_child(_scroll)
+	_body = VBoxContainer.new()
+	_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_body.add_theme_constant_override("separation", 6)
+	_scroll.add_child(_body)
+
+	_message = Label.new()
+	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_message.modulate = Color(1.0, 0.9, 0.5)
+	column.add_child(_message)
 
 
 func is_open() -> bool:
@@ -111,12 +126,27 @@ func message() -> String:
 	return _message.text
 
 
+## Test surface: rows shown by the last refresh.
+func row_count() -> int:
+	return _body.get_child_count()
+
+
 ## "iron ore 2 (have 5), wood 1 (have 0)"
 static func cost_text(cost: Dictionary, sim_ref: WroughtwildSim) -> String:
 	var parts := PackedStringArray()
 	for id in cost:
 		var have: int = maxi(sim_ref.material_count(id), sim_ref.currency_count(id))
 		parts.append("%s %d (have %d)" % [Hud.pretty(id), cost[id], have])
+	return ", ".join(parts)
+
+
+## The same, coloured per requirement: met in grass-light, short in cinder.
+static func cost_bbcode(cost: Dictionary, sim_ref: WroughtwildSim) -> String:
+	var parts := PackedStringArray()
+	for id in cost:
+		var have: int = maxi(sim_ref.material_count(id), sim_ref.currency_count(id))
+		var colour: Color = UiTheme.GRASS_LIGHT if have >= int(cost[id]) else UiTheme.CINDER
+		parts.append("[color=#%s]%s %d (have %d)[/color]" % [colour.to_html(false), Hud.pretty(id), cost[id], have])
 	return ", ".join(parts)
 
 
@@ -217,11 +247,29 @@ func deliver() -> Dictionary:
 
 func refresh() -> void:
 	for child in _body.get_children():
+		_body.remove_child(child)
 		child.queue_free()
 	match _mode:
 		"crafting": _render_crafting()
 		"order": _render_order()
 		"custom": _render_custom()
+	_fit_height.call_deferred()
+
+
+## The scroll area grows with its rows up to a fraction of the window, so
+## short lists sit tight and long forges scroll. Rows wrap their text, so
+## their real height is only known once layout has run: measure after two
+## frames rather than trusting the pre-layout minimum size.
+func _fit_height() -> void:
+	if _scroll == null or not is_inside_tree():
+		return
+	var tree := get_tree()
+	await tree.process_frame
+	await tree.process_frame
+	if _scroll == null or not is_inside_tree():
+		return
+	var cap := get_viewport().get_visible_rect().size.y * MAX_HEIGHT_FRACTION
+	_scroll.custom_minimum_size.y = clampf(_body.size.y + 4.0, 40.0, cap)
 
 
 func _render_custom() -> void:
@@ -230,12 +278,19 @@ func _render_custom() -> void:
 		_add_row(row.get("text", ""), row.get("button", ""), row.get("enabled", true), row.get("callback", Callable()))
 
 
+## One card: text (bbcode allowed) and, optionally, a button.
 func _add_row(text: String, button_text: String = "", enabled := false, on_pressed: Callable = Callable()) -> void:
+	var card := PanelContainer.new()
+	card.add_theme_stylebox_override("panel", UiTheme.card(button_text != "" and enabled))
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 12)
-	var label := Label.new()
+	card.add_child(row)
+	var label := RichTextLabel.new()
+	label.bbcode_enabled = true
+	label.fit_content = true
+	label.scroll_active = false
 	label.text = text
-	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(label)
 	if button_text != "":
@@ -243,10 +298,11 @@ func _add_row(text: String, button_text: String = "", enabled := false, on_press
 		button.text = button_text
 		button.disabled = not enabled
 		button.custom_minimum_size = Vector2(110, 0)
+		button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		if on_pressed.is_valid():
 			button.pressed.connect(on_pressed)
 		row.add_child(button)
-	_body.add_child(row)
+	_body.add_child(card)
 
 
 func _render_crafting() -> void:
@@ -278,14 +334,17 @@ func _render_crafting() -> void:
 		for skill_id in r["minimum_skill"]:
 			skill_text += "%s %d" % [Hud.pretty(skill_id), r["minimum_skill"][skill_id]]
 		var where: String = "by hand" if r["hand_craftable"] else Hud.pretty(r["station"])
-		var line := "%s  —  %s%s\n    %s  →  %s" % [
+		var line := "[b]%s[/b]  —  %s%s\n    %s  →  %s" % [
 			r["display_name"], where, ("" if skill_text == "" else ", " + skill_text),
-			cost_text(r["inputs"], sim), amounts_text(r["outputs"])]
+			cost_bbcode(r["inputs"], sim), amounts_text(r["outputs"])]
 		if int(r["fuel_cost"]) > 0:
-			line += "\n    burns %d fuel" % int(r["fuel_cost"])
+			var fuel_colour: Color = UiTheme.GRASS_LIGHT if r["fuel_met"] else UiTheme.CINDER
+			line += "\n    [color=#%s]burns %d fuel[/color]" % [fuel_colour.to_html(false), int(r["fuel_cost"])]
 			shows_fuel = true
+		if not r["skill_met"]:
+			line += "\n    [color=#%s]Blacksmithing too low[/color]" % UiTheme.CINDER.to_html(false)
 		if sim.recipe_feeds_open_order(recipe_id):
-			line += "\n    ★ feeds an open order: full XP"
+			line += "\n    [color=#%s]★ feeds an open order: full XP[/color]" % UiTheme.SUN_WARM.to_html(false)
 		var craftable: bool = r["station_available"] and r["skill_met"] and r["inputs_met"] and r["fuel_met"]
 		_add_row(line, "Craft", craftable, craft.bind(recipe_id))
 
@@ -298,7 +357,7 @@ func _render_crafting() -> void:
 	var upgrade_id: StringName = _station.upgrade_station_id
 	if upgrade_id != &"" and not sim.has_station(upgrade_id):
 		var target: Dictionary = sim.station(upgrade_id)
-		_add_row("Upgrade to %s  —  %s" % [target.get("display_name", upgrade_id), cost_text(target.get("upgrade_cost", {}), sim)],
+		_add_row("[b]Upgrade to %s[/b]  —  %s" % [target.get("display_name", upgrade_id), cost_bbcode(target.get("upgrade_cost", {}), sim)],
 			"Upgrade", sim.can_build_station(upgrade_id), upgrade)
 
 	# Armour work belongs to the forge; the workbench stops here.
@@ -309,16 +368,16 @@ func _render_crafting() -> void:
 	# stated before anything is consumed.
 	var worn: Dictionary = sim.equipment().get("chest", {})
 	if worn.is_empty():
-		_add_row("Wearing nothing. Craft Iron Chest Armour, then wear it here.")
+		_add_row("Wearing nothing. Craft Iron Chest Armour, then wear it here or from your pack (I).")
 	else:
-		_add_row("Wearing %s  —  armour %d, fire resistance %d%%" % [
+		_add_row("Wearing [b]%s[/b]  —  armour %d, fire resistance %d%%" % [
 			worn["display_name"], int(worn["armour"]), int(worn["fire_resistance"])])
 	var armour_held: int = sim.material_count("iron_chest_armour")
 	if armour_held > 0:
 		_add_row("Iron Chest Armour in your pack (%d)" % armour_held, "Wear", true, equip.bind(&"iron_chest_armour"))
 
 	var quench: Dictionary = sim.basic_temper_info()
-	_add_row("Quench  —  sets %s to at least %d%% (a fixed baseline, no roll). Needs a forge that supports %s%s." % [
+	_add_row("[b]Quench[/b]  —  sets %s to at least %d%% (a fixed baseline, no roll). Needs a forge that supports %s%s." % [
 		quench["property_display_name"], int(quench["value"]), Hud.pretty(quench["process"]),
 		"" if quench["station_available"] else " (upgrade first)"],
 		"Quench", quench["armour_equipped"] and quench["station_available"], temper_basic)
@@ -328,7 +387,7 @@ func _render_crafting() -> void:
 		var skill_text := ""
 		for skill_id in p["minimum_skill"]:
 			skill_text = "%s %d" % [Hud.pretty(skill_id), p["minimum_skill"][skill_id]]
-		var line := "%s  —  consumes 1 %s. Guarantees %s tier %d: a roll between %d%% and %d%%, floor %d%% at %s; never lowers an existing roll. Needs %s. Catalysts held: %d." % [
+		var line := "[b]%s[/b]  —  consumes 1 %s. Guarantees %s tier %d: a roll between %d%% and %d%%, floor %d%% at %s; never lowers an existing roll. Needs %s. Catalysts held: %d." % [
 			p["display_name"], Hud.pretty(p["catalyst"]), p["property_display_name"], p["result_tier"],
 			int(p["tier_minimum"]), int(p["tier_maximum"]), int(p["floor_at_skill"]), skill_text,
 			Hud.pretty(p["station"]), p["catalyst_held"]]
@@ -342,7 +401,7 @@ func _render_order() -> void:
 	if o.get("fulfilled", false):
 		_add_row("Complete. The old mine is reinforced.")
 		return
-	_add_row("Deliver: %s" % cost_text(o["required_outputs"], sim))
+	_add_row("Deliver: %s" % cost_bbcode(o["required_outputs"], sim))
 	_add_row("Reward: %s" % amounts_text(o["rewards"]))
 	var can_deliver := true
 	for id in o["required_outputs"]:

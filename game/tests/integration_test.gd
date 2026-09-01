@@ -127,6 +127,38 @@ func _physics_process(_delta: float) -> void:
 			check(_player.work_panel.message().begins_with("Crafted"), "integration: panel reports the craft")
 			_player.work_panel.close_panel()
 			check(not _player.work_panel.is_open(), "integration: panel closes")
+		15:
+			# The interface is a headless test surface (interface.md rule 4):
+			# pack screen, help overlay, action bar and work-panel cards.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			var pack: InventoryPanel = _player.inventory_panel
+			_player.toggle_inventory()
+			check(pack.is_open(), "ui: I opens the pack screen")
+			var nonzero := 0
+			for id in sim.inventory():
+				if sim.inventory()[id] > 0:
+					nonzero += 1
+			for id in sim.currency():
+				if sim.currency()[id] > 0:
+					nonzero += 1
+			check(pack.tile_count == nonzero and nonzero > 0, "ui: one tile per carried family and currency")
+			pack.set_mod_active(&"deep_frost", true)
+			check(sim.skill_mod_active("deep_frost"), "ui: pack toggles a spike mod through the sim")
+			pack.set_mod_active(&"deep_frost", false)
+			check(not sim.skill_mod_active("deep_frost"), "ui: and back off")
+			check(not pack.wear(&"iron_chest_armour"), "ui: wearing armour you do not carry is refused")
+			_player.toggle_inventory()
+			check(not pack.is_open(), "ui: I closes the pack screen")
+			check(not _player.hud.help_visible(), "ui: help starts hidden")
+			_player.hud.toggle_help()
+			check(_player.hud.help_visible(), "ui: H shows the controls")
+			_player.hud.toggle_help()
+			check(_player.hud.action_bar != null and _player.hud.action_bar.slots.size() == 4, "ui: four action slots")
+			check(_player.hud.action_bar.shown_fraction(PlayerCombat.AREA_SKILL) == 1.0, "ui: a ready skill shows a full sweep")
+			check(_player.hud.holdings_text().contains("wood"), "ui: holdings strip names carried wood")
+			_player.open_hand_crafting()
+			check(_player.work_panel.is_open() and _player.work_panel.row_count() >= 2, "ui: field crafting renders cards")
+			_player.work_panel.close_panel()
 		16:
 			# Order board: delivery consumes output, pays currency and changes the world.
 			var sim: WroughtwildSim = _player.inventory.get_sim()

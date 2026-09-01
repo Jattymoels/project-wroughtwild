@@ -1,20 +1,38 @@
 class_name Hud
 extends CanvasLayer
-## Greybox HUD: material families, currency, Blacksmithing progress, control
-## hints and a transient notice line. Everything shown is read from the sim.
+## The always-on layer (docs/systems/interface.md): life bar with defences,
+## the action bar with cooldown sweeps, the build chip, a right-aligned
+## holdings strip, notices, the pickup ticker, crosshair and target line,
+## and the H help overlay. Everything shown is read from the sim or from
+## engine-owned timers. Nothing here takes the mouse: every control ignores
+## it, recursively, once built.
 
 const NOTICE_SECONDS := 3.0
 const REFRESH_SECONDS := 0.1
+const HELP_TEXT := """WASD move  ·  mouse look  ·  Space jump  ·  Shift dash (movement only)
+E interact: harvest, work at a station, read the board, open the gate
+LMB harvest (or place in build mode)  ·  C craft by hand  ·  I pack
+B build mode  ·  Tab shape or kit  ·  R rotate / pick the face  ·  X remove
+1 area strike (cone)  ·  2 heavy strike  ·  3 frost orb
+F1–F3 spike mods (scaffolding until Wave 2 puts them on gear)
+V camera  ·  H this help  ·  Esc close  ·  F5 save  ·  F9 load"""
 
 var sim: WroughtwildSim
 var combat: PlayerCombat
 var placement: GridPlacement
 var player: WroughtwildPlayer
 
+var _ui: Control
 var _status: Label
 var _notice: Label
 var _notice_timer := 0.0
 var _refresh_timer := 0.0
+var _holdings: Label
+var _life_bar: ProgressBar
+var _life_text: Label
+var _build_chip: Label
+var _help: PanelContainer
+var action_bar: ActionBar
 
 # First-person feedback (D-012): crosshair that reads the aim, a hitmarker
 # blip when a strike connects, and a red flash when damage lands on you.
@@ -43,39 +61,110 @@ const CROSSHAIR_ENEMY := Color(1.0, 0.35, 0.3, 0.95)
 
 
 func _ready() -> void:
+	_ui = Control.new()
+	_ui.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_ui.theme = UiTheme.theme()
+	add_child(_ui)
+
+	# Top-left: progress, notices, the pickup ticker, one-line reminder.
 	var column := VBoxContainer.new()
 	column.position = Vector2(12, 12)
-	column.custom_minimum_size = Vector2(1000, 0)
-	add_child(column)
-
+	column.custom_minimum_size = Vector2(620, 0)
+	_ui.add_child(column)
 	_status = Label.new()
 	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(_status)
-
-	var hints := Label.new()
-	hints.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	hints.text = "E interact  ·  C craft by hand  ·  B build mode  ·  Tab shape/kit  ·  LMB place / harvest  ·  X remove  ·  R rotate  ·  1 area strike (cone)  ·  2 heavy strike  ·  3 frost orb  ·  F1-F3 spike mods  ·  Shift dash  ·  V camera  ·  Esc close panel  ·  F5 save  ·  F9 load"
-	hints.modulate = Color(1.0, 1.0, 1.0, 0.6)
-	column.add_child(hints)
-
 	_notice = Label.new()
+	_notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_notice.modulate = Color(1.0, 0.9, 0.5)
 	column.add_child(_notice)
-
 	_pickup_label = Label.new()
-	_pickup_label.modulate = Color(0.5, 1.0, 0.55)
+	_pickup_label.modulate = UiTheme.GRASS_LIGHT
 	column.add_child(_pickup_label)
+	var reminder := Label.new()
+	reminder.text = "H help  ·  I pack"
+	reminder.add_theme_font_size_override("font_size", 13)
+	reminder.modulate = UiTheme.MUTED
+	column.add_child(reminder)
+
+	# Top-right: what you carry, at a glance.
+	_holdings = Label.new()
+	_holdings.anchor_left = 1.0
+	_holdings.anchor_right = 1.0
+	_holdings.offset_left = -560
+	_holdings.offset_right = -12
+	_holdings.offset_top = 12
+	_holdings.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	_holdings.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_holdings.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_holdings.modulate = UiTheme.PARCHMENT
+	_ui.add_child(_holdings)
+
+	# Bottom-left: life and defences, on a dark backing so the text reads
+	# over bright meadow as well as dark wastes.
+	var vitals_panel := PanelContainer.new()
+	vitals_panel.anchor_top = 1.0
+	vitals_panel.anchor_bottom = 1.0
+	vitals_panel.offset_left = 12
+	vitals_panel.offset_right = 400
+	vitals_panel.offset_top = -66
+	vitals_panel.offset_bottom = -12
+	vitals_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	vitals_panel.add_theme_stylebox_override("panel", UiTheme.flat(Color(UiTheme.INK, 0.7), Color(0, 0, 0, 0), 5))
+	_ui.add_child(vitals_panel)
+	var vitals := VBoxContainer.new()
+	vitals.add_theme_constant_override("separation", 2)
+	vitals_panel.add_child(vitals)
+	_life_bar = ProgressBar.new()
+	_life_bar.show_percentage = false
+	_life_bar.custom_minimum_size = Vector2(360, 16)
+	_life_bar.add_theme_stylebox_override("fill", UiTheme.flat(UiTheme.EMBER, Color(0, 0, 0, 0), 3))
+	vitals.add_child(_life_bar)
+	_life_text = Label.new()
+	_life_text.add_theme_font_size_override("font_size", 13)
+	vitals.add_child(_life_text)
+
+	# Bottom-centre: the action bar, centred; the life panel sits to its left
+	# and the build chip to its right, so nothing overlaps at 1280 wide.
+	var bottom := VBoxContainer.new()
+	bottom.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
+	bottom.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	bottom.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	bottom.offset_top = -80
+	bottom.offset_bottom = -12
+	bottom.alignment = BoxContainer.ALIGNMENT_END
+	_ui.add_child(bottom)
+	if combat != null:
+		action_bar = ActionBar.new()
+		action_bar.setup(combat)
+		action_bar.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		bottom.add_child(action_bar)
+
+	# Bottom-right: what build mode would place.
+	var chip_panel := PanelContainer.new()
+	chip_panel.anchor_left = 1.0
+	chip_panel.anchor_right = 1.0
+	chip_panel.anchor_top = 1.0
+	chip_panel.anchor_bottom = 1.0
+	chip_panel.offset_right = -12
+	chip_panel.offset_bottom = -12
+	chip_panel.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	chip_panel.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	chip_panel.add_theme_stylebox_override("panel", UiTheme.flat(Color(UiTheme.INK, 0.7), Color(0, 0, 0, 0), 5))
+	_ui.add_child(chip_panel)
+	_build_chip = Label.new()
+	_build_chip.add_theme_font_size_override("font_size", 14)
+	_build_chip.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	chip_panel.add_child(_build_chip)
 
 	_damage_flash = ColorRect.new()
 	_damage_flash.color = Color(0.8, 0.05, 0.05, 0.0)
 	_damage_flash.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_damage_flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(_damage_flash)
+	_ui.add_child(_damage_flash)
 
 	var centre := CenterContainer.new()
 	centre.set_anchors_preset(Control.PRESET_FULL_RECT)
-	centre.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(centre)
+	_ui.add_child(centre)
 	_crosshair = Label.new()
 	_crosshair.text = "+"
 	_crosshair.add_theme_font_size_override("font_size", 24)
@@ -84,8 +173,7 @@ func _ready() -> void:
 
 	var marker_centre := CenterContainer.new()
 	marker_centre.set_anchors_preset(Control.PRESET_FULL_RECT)
-	marker_centre.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(marker_centre)
+	_ui.add_child(marker_centre)
 	_hitmarker = Label.new()
 	_hitmarker.text = "×"
 	_hitmarker.add_theme_font_size_override("font_size", 34)
@@ -96,22 +184,48 @@ func _ready() -> void:
 	# a centred column keeps the crosshair itself from shifting).
 	var target_centre := CenterContainer.new()
 	target_centre.set_anchors_preset(Control.PRESET_FULL_RECT)
-	target_centre.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(target_centre)
+	_ui.add_child(target_centre)
 	var target_column := VBoxContainer.new()
-	target_column.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	target_centre.add_child(target_column)
-	# Plain Controls default to MOUSE_FILTER_STOP; under a captured cursor
-	# (parked at screen centre) that would swallow mouse look and clicks the
-	# moment the target line has text and the column gains width.
 	var spacer := Control.new()
-	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	spacer.custom_minimum_size = Vector2(0, 84)
 	target_column.add_child(spacer)
 	_target_label = Label.new()
 	_target_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_target_label.modulate = Color(1, 1, 1, 0.85)
 	target_column.add_child(_target_label)
+
+	# Help overlay (H): the control list, off by default.
+	_help = PanelContainer.new()
+	_help.set_anchors_preset(Control.PRESET_CENTER)
+	_help.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	_help.grow_vertical = Control.GROW_DIRECTION_BOTH
+	_help.visible = false
+	_ui.add_child(_help)
+	var help_margin := MarginContainer.new()
+	for side in ["margin_left", "margin_right", "margin_top", "margin_bottom"]:
+		help_margin.add_theme_constant_override(side, 18)
+	_help.add_child(help_margin)
+	var help_column := VBoxContainer.new()
+	help_column.add_theme_constant_override("separation", 8)
+	help_margin.add_child(help_column)
+	var help_title := Label.new()
+	help_title.text = "Controls"
+	help_title.add_theme_font_size_override("font_size", 20)
+	help_column.add_child(help_title)
+	var help_body := Label.new()
+	help_body.text = HELP_TEXT
+	help_body.custom_minimum_size = Vector2(640, 0)
+	help_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	help_column.add_child(help_body)
+	var help_footer := Label.new()
+	help_footer.text = "H or Esc to close"
+	help_footer.modulate = UiTheme.MUTED
+	help_column.add_child(help_footer)
+
+	# The 1 Sep 2026 bug: any HUD control left at MOUSE_FILTER_STOP swallows
+	# mouse look under the captured cursor. Never again, for any of them.
+	UiTheme.ignore_mouse(_ui)
 
 	if combat != null:
 		combat.hit_landed.connect(_on_hit_landed)
@@ -145,6 +259,14 @@ func notify_pickup(family: String, amount: int) -> void:
 		parts.append("+%d %s" % [_pickup_totals[id], pretty(id)])
 	_pickup_label.text = " · ".join(parts)
 	refresh()
+
+
+func toggle_help() -> void:
+	_help.visible = not _help.visible
+
+
+func help_visible() -> bool:
+	return _help.visible
 
 
 func _process(delta: float) -> void:
@@ -195,6 +317,11 @@ static func pretty(id: String) -> String:
 	return id.replace("_", " ")
 
 
+## Test surface: the holdings strip text.
+func holdings_text() -> String:
+	return _holdings.text
+
+
 func refresh() -> void:
 	if sim == null:
 		return
@@ -207,35 +334,13 @@ func refresh() -> void:
 	for id in coins:
 		if coins[id] > 0:
 			parts.append("%s %d" % [pretty(id), coins[id]])
-	var holdings := " · ".join(parts) if parts.size() > 0 else "Nothing gathered yet"
+	_holdings.text = " · ".join(parts) if parts.size() > 0 else "Nothing gathered yet"
 
+	var lines := PackedStringArray()
 	var skill: Dictionary = sim.skill_progress("blacksmithing")
-	var progress := ""
 	if not skill.is_empty():
 		var next: String = "max" if skill["next_level_xp"] < 0 else str(skill["next_level_xp"])
-		progress = "\n%s level %d  (%d / %s xp)" % [skill["display_name"], skill["level"], skill["xp"], next]
-
-	var vitals := ""
-	if combat != null and combat.sim != null:
-		var ds: Dictionary = sim.derived_stats()
-		var worn: Dictionary = sim.equipment().get("chest", {})
-		vitals = "\nLife %d / %d  ·  armour %d  ·  fire resistance %d%%  ·  wearing %s    [1] Area %s   [2] Heavy %s   [3] Orb %s   [Shift] Dash %s" % [
-			ceili(combat.life), ceili(combat.max_life), int(ds.get("armour", 0.0)), int(ds.get("fire_resistance_percent", 0.0)),
-			worn.get("display_name", "nothing"),
-			_cooldown_text(PlayerCombat.AREA_SKILL), _cooldown_text(PlayerCombat.HEAVY_SKILL),
-			_cooldown_text(PlayerCombat.ORB_SKILL), _cooldown_text(PlayerCombat.DASH_SKILL)]
-		var active_mods := PackedStringArray()
-		for mod_id in sim.skill_mod_ids():
-			if sim.skill_mod_active(mod_id):
-				active_mods.append(pretty(mod_id))
-		if not active_mods.is_empty():
-			vitals += "\nSpike mods on: " + " · ".join(active_mods)
-	if placement != null:
-		var shape: Dictionary = sim.shape(placement.selected_shape)
-		vitals += "\nBuild: %s (%s, %d per block; Tab to change)" % [
-			shape.get("display_name", placement.selected_shape), pretty(placement.selected_material_family),
-			shape.get("material_cost", 0)]
-	var run := ""
+		lines.append("%s level %d  (%d / %s xp)" % [skill["display_name"], skill["level"], skill["xp"], next])
 	if sim.trial_active():
 		var state: Dictionary = sim.trial_run_state()
 		var names := PackedStringArray()
@@ -243,12 +348,26 @@ func refresh() -> void:
 			names.append(b["display_name"])
 		for w in state["weaknesses"]:
 			names.append("cursed: " + w["display_name"])
-		run = "\nIN THE TRIAL  ·  loot: %s  ·  %s" % [
+		lines.append("IN THE TRIAL  ·  loot: %s  ·  %s" % [
 			WorkPanel.amounts_text(sim.trial_loot()) if not sim.trial_loot().is_empty() else "nothing yet",
-			", ".join(names) if not names.is_empty() else "no blessings"]
-	_status.text = holdings + progress + vitals + run
+			", ".join(names) if not names.is_empty() else "no blessings"])
+	_status.text = "\n".join(lines)
 
+	if combat != null and combat.sim != null:
+		var ds: Dictionary = sim.derived_stats()
+		var worn: Dictionary = sim.equipment().get("chest", {})
+		_life_bar.max_value = maxf(combat.max_life, 1.0)
+		_life_bar.value = combat.life
+		_life_text.text = "Life %d / %d  ·  armour %d  ·  fire resistance %d%%  ·  wearing %s" % [
+			ceili(combat.life), ceili(combat.max_life), int(ds.get("armour", 0.0)),
+			int(ds.get("fire_resistance_percent", 0.0)), worn.get("display_name", "nothing")]
 
-func _cooldown_text(skill_id: StringName) -> String:
-	var left := combat.cooldown_left(skill_id)
-	return "ready" if left <= 0.0 else "%.1fs" % left
+	if placement != null:
+		if placement.build_mode_enabled:
+			_build_chip.modulate = UiTheme.FROST
+			_build_chip.text = "B  Building: %s  (%s, %d each  ·  Tab change  ·  R rotate)" % [
+				placement.selection_label(), pretty(placement.selected_material_family),
+				sim.shape(placement.selected_shape).get("material_cost", 0)]
+		else:
+			_build_chip.modulate = UiTheme.MUTED
+			_build_chip.text = "B  build"

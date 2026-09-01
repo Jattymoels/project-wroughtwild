@@ -96,7 +96,28 @@ scale; Wave 2 moves mods onto gear, points and boons. Numbers live in
 `sim/src/grammar.cpp`, and `game/tests/grammar.tscn` drives the whole
 sentence headless.
 
-## Wave 2 — Items and Modifiers *(intensive itemisation pass)*
+## Wave 2 — Items and Modifiers *(kicked off 1 Sep 2026)*
+
+**Owner direction (1 Sep 2026):** after the first 3D playtest, continue with
+the build waves; Wave 2 focuses on items and modifiers **and** on the
+in-game interface — inventory, action bar and crafting pop-ups were "quite
+difficult to test with", so the interface is the test instrument this wave
+is built on. Specs: [systems/items-and-modifiers.md](../systems/items-and-modifiers.md)
+(D-014, proposed) and [systems/interface.md](../systems/interface.md)
+(D-015, proposed).
+
+### Interface track *(first slice landed 1 Sep 2026)*
+
+Life bar with defences, an action bar with key caps and cooldown sweeps, the
+build chip, a right-aligned holdings strip, the pack screen (**I**: tiles per
+material and currency, worn gear with its rolled properties, vitals, and the
+spike mods as toggles until gear carries them; wear armour from here), work
+panels as have/need-coloured cards inside a scroll area, and an **H** help
+overlay replacing the permanent hint paragraph. One code-built Theme from
+the master palette. Next: item cards with rarity colour and per-modifier
+sentences, and a compare view, as soon as the items spec is accepted.
+
+### Itemisation track *(spec proposed; implementation waits on D-014)*
 
 The PoE side: more bases and slots, the modifier/tier pool, rarity, how
 crafted vs dropped vs tempered items relate. Catalyst currency types grow
