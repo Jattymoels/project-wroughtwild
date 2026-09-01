@@ -20,6 +20,8 @@ var _wood_before_death := 0
 var _death_spot := Vector3.ZERO
 var _wood_before_trial := 0
 var _blocks_before := 0
+var _corner_panel: PlacedBlock
+const CORNER_CELL := Vector3(5.5, 3.5, 5.5)
 
 
 func check(condition: bool, label: String) -> void:
@@ -72,6 +74,34 @@ func _physics_process(_delta: float) -> void:
 				"integration: partial refund applied (floor(2 * 0.5) = 1)")
 		10:
 			check(_count_placed_blocks() == 0, "integration: removed block left the scene")
+		11:
+			# A wall panel flush to one face of a mid-air cell; the slot rules
+			# are judged next frame, once it is in the physics space.
+			var placement := _player.placement
+			var panel: Dictionary = _player.inventory.get_sim().shape("wall_panel")
+			_corner_panel = placement.PLACED_BLOCK_SCENE.instantiate()
+			get_tree().current_scene.add_child(_corner_panel)
+			_corner_panel.global_position = CORNER_CELL + WroughtwildGrid.shape_offset(
+				panel["size"], &"face", 0.0, placement.grid_size)
+			_corner_panel.rotation.y = 0.0
+			_corner_panel.init_block(&"wall_panel", &"wood", panel["size"], &"face", placement.grid_size)
+			check(_corner_panel.cell == Vector3i(5, 3, 5) and _corner_panel.slot == &"face_0",
+				"corner: panel reads its cell and face back from its transform")
+		13:
+			var placement := _player.placement
+			check(placement.select_shape(&"wall_panel"), "corner: wall panel selectable")
+			placement.preview_rotation = 0.0
+			check(not placement.cell_accepts(CORNER_CELL), "corner: the same face is already taken")
+			placement.preview_rotation = PI / 2.0
+			check(placement.cell_accepts(CORNER_CELL), "corner: a second panel joins on the next face")
+			check(placement.select_shape(&"pillar"), "corner: pillar selectable")
+			check(placement.cell_accepts(CORNER_CELL), "corner: a corner post shares the cell too")
+			check(placement.select_shape(&"cube"), "corner: cube selectable")
+			placement.preview_rotation = 0.0
+			check(not placement.cell_accepts(CORNER_CELL), "corner: a cube cannot fill a cell holding a panel")
+			check(placement.cell_accepts(CORNER_CELL + Vector3(0.0, 0.0, -1.0)),
+				"corner: the cell on the panel's outer side stays free")
+			_corner_panel.queue_free()
 		12:
 			# Forge site: refused while unaffordable, built through the sim once paid for.
 			var sim: WroughtwildSim = _player.inventory.get_sim()

@@ -17,21 +17,24 @@
       "display_name": "Wall Panel",
       "material_cost": 1,
       "size_m": [1.0, 1.0, 0.25],
-      "design_purpose": "A thin partition through the middle of its cell; rotate with R. Half the cost of a cube so walling a shelter is cheaper than filling it."
+      "anchor": "face",
+      "design_purpose": "A thin partition flush against one face of its cell; R cycles the four faces. Sitting on the face rather than through the cell's middle is what lets two panels meet at a corner and share that corner cell. Half the cost of a cube so walling a shelter is cheaper than filling it."
     },
     {
       "id": "pillar",
       "display_name": "Pillar",
       "material_cost": 1,
       "size_m": [0.3, 1.0, 0.3],
-      "design_purpose": "Corner posts and supports for roofs made of slabs and beams."
+      "anchor": "corner",
+      "design_purpose": "Corner posts and supports for roofs made of slabs and beams; R picks which corner of the cell it stands in, so it lines up with the panels on that cell's faces."
     },
     {
       "id": "beam",
       "display_name": "Beam",
       "material_cost": 1,
       "size_m": [1.0, 0.25, 0.25],
-      "design_purpose": "Spans a cell at floor level; stack on pillars for lintels and rafters."
+      "anchor": "face",
+      "design_purpose": "Runs along one face of its cell at floor level (R picks the face); placed in the cell above a wall it becomes a lintel or wall plate."
     },
     {
       "id": "step",
@@ -49,5 +52,5 @@
       "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a half-height slab that makes floors and roofs possible, so the trial demonstrably widens what can be built."
     }
   ],
-  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy."
+  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. anchor (centre | face | corner, default centre) says where a shape sits inside its cell: centred, flush against the face its rotation points at, or tucked into that corner. Shapes only conflict when one fills its cell or both claim the same slot, which is what lets a wall on two faces, a corner pillar and a slab floor share one cell."
 }

@@ -40,6 +40,36 @@ func _test_grid() -> void:
 		"grid: snapping is idempotent")
 	check(WroughtwildGrid.placement_cell_center(Vector3(0.5, 1.0, 0.5), Vector3.UP, grid) == Vector3(0.5, 1.5, 0.5),
 		"grid: face placement selects adjacent cell")
+	check(WroughtwildGrid.placement_cell_center(Vector3(0.5, 0.5, 0.5), Vector3.UP, grid) == Vector3(0.5, 0.5, 0.5),
+		"grid: the top of a half-height slab still targets its own cell")
+	check(WroughtwildGrid.placement_cell_center(Vector3(0.5, 0.5, 0.0), Vector3.BACK, grid) == Vector3(0.5, 0.5, 0.5),
+		"grid: a face-anchored panel's inner side targets its own cell")
+
+	# Anchored shapes sit flush to the face or corner their rotation selects.
+	var panel := Vector3(1.0, 1.0, 0.25)
+	check(WroughtwildGrid.shape_offset(panel, &"face", 0.0, grid).is_equal_approx(Vector3(0.0, 0.0, -0.375)),
+		"grid: face anchor presses a panel against the -z face")
+	check(WroughtwildGrid.shape_offset(panel, &"face", PI / 2.0, grid).is_equal_approx(Vector3(-0.375, 0.0, 0.0)),
+		"grid: a quarter turn moves the panel to the -x face")
+	check(WroughtwildGrid.shape_offset(Vector3(0.3, 1.0, 0.3), &"corner", 0.0, grid).is_equal_approx(Vector3(-0.35, 0.0, -0.35)),
+		"grid: corner anchor tucks a pillar into the corner")
+	check(WroughtwildGrid.shape_offset(Vector3(1.0, 0.5, 1.0), &"centre", 0.0, grid).is_equal_approx(Vector3(0.0, -0.25, 0.0)),
+		"grid: short centred shapes rest on the cell floor")
+	check(WroughtwildGrid.slot_id(&"face", 0.0) == &"face_0" and WroughtwildGrid.slot_id(&"face", 3.0 * PI / 2.0) == &"face_3",
+		"grid: face slots follow the rotation step")
+	check(WroughtwildGrid.slot_id(&"face", TAU - 1e-6) == &"face_0", "grid: a full turn wraps to the first face")
+	check(WroughtwildGrid.slot_id(&"centre", PI) == &"centre", "grid: centred shapes ignore rotation for their slot")
+	check(WroughtwildGrid.fills_cell(Vector3.ONE, grid) and not WroughtwildGrid.fills_cell(panel, grid),
+		"grid: only a full-size shape fills its cell")
+	check(not WroughtwildGrid.slots_conflict(&"face_0", false, &"face_1", false),
+		"grid: panels on different faces share a cell")
+	check(WroughtwildGrid.slots_conflict(&"face_0", false, &"face_0", false), "grid: the same face is taken once")
+	check(WroughtwildGrid.slots_conflict(&"centre", true, &"face_2", false), "grid: a cube fills its cell")
+	check(not WroughtwildGrid.slots_conflict(&"centre", false, &"corner_1", false),
+		"grid: a slab floor and a corner pillar coexist")
+	var offset := WroughtwildGrid.shape_offset(panel, &"face", PI / 2.0, grid)
+	check(WroughtwildGrid.cell_of(Vector3(2.5, 3.5, -1.5) + offset, offset, grid) == Vector3i(2, 3, -2),
+		"grid: cell recovered from an anchored position")
 
 
 func _test_inventory() -> void:

@@ -99,8 +99,13 @@ func _ready() -> void:
 	target_centre.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(target_centre)
 	var target_column := VBoxContainer.new()
+	target_column.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	target_centre.add_child(target_column)
+	# Plain Controls default to MOUSE_FILTER_STOP; under a captured cursor
+	# (parked at screen centre) that would swallow mouse look and clicks the
+	# moment the target line has text and the column gains width.
 	var spacer := Control.new()
+	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	spacer.custom_minimum_size = Vector2(0, 84)
 	target_column.add_child(spacer)
 	_target_label = Label.new()

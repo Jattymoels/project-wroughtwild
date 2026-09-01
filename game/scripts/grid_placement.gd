@@ -17,6 +17,9 @@ var placement_range: float = 10.0
 ## Metres, from the selected shape's size_m; shapes shorter than the cell
 ## sit on the cell floor.
 var shape_size := Vector3.ONE
+## Where the selected shape sits in its cell (construction.json anchor):
+## centre, or flush to the face/corner the preview rotation selects.
+var shape_anchor: StringName = &"centre"
 
 @export var selected_shape: StringName = &"cube"
 @export var selected_material_family: StringName = &"wood"
@@ -35,6 +38,9 @@ var preview_rotation := 0.0
 
 var _preview_mesh: MeshInstance3D
 var _preview_material: StandardMaterial3D
+## The generated terrain, when the scene has one: ground placement snaps to
+## its block heights instead of the ramped heightmap collision.
+var _terrain: Terrain
 
 const VALID_COLOR := Color(0.1, 0.9, 0.2, 0.5)
 const INVALID_COLOR := Color(0.9, 0.1, 0.1, 0.5)
@@ -62,6 +68,7 @@ func select_shape(shape_id: StringName) -> bool:
 	selected_kit = &""
 	selected_shape = shape_id
 	shape_size = info["size"]
+	shape_anchor = StringName(info.get("anchor", "centre"))
 	if _preview_mesh != null:
 		(_preview_mesh.mesh as BoxMesh).size = shape_size
 	return true
@@ -99,6 +106,7 @@ func cycle_shape() -> StringName:
 func _select_kit(kit_id: StringName) -> void:
 	selected_kit = kit_id
 	shape_size = KIT_PREVIEW_SIZE
+	shape_anchor = &"centre"
 	if _preview_mesh != null:
 		(_preview_mesh.mesh as BoxMesh).size = shape_size
 
@@ -111,7 +119,17 @@ func selection_label() -> String:
 
 
 func _shape_offset() -> Vector3:
-	return Vector3(0.0, (shape_size.y - grid_size) * 0.5, 0.0)
+	return WroughtwildGrid.shape_offset(shape_size, shape_anchor, preview_rotation, grid_size)
+
+
+func _find_terrain() -> Terrain:
+	if _terrain == null or not is_instance_valid(_terrain):
+		_terrain = null
+		for child in (get_parent() as WroughtwildPlayer).world_root().get_children():
+			if child is Terrain:
+				_terrain = child
+				break
+	return _terrain
 
 
 ## The same rules instance the inventory draws on, so affordability, payment
@@ -160,7 +178,15 @@ func _get_view_trace() -> Dictionary:
 	return camera.get_world_3d().direct_space_state.intersect_ray(query)
 
 
-func _is_cell_free(cell_center: Vector3) -> bool:
+## Whether the selected shape may go in this cell. Placed blocks share a
+## cell by slot (a wall on two faces plus a corner pillar is fine; a cube
+## takes the whole cell); generated terrain is judged by its block heights,
+## because its collision ramps between cells; anything else in the cell
+## (nodes, stations, mobs, pickups) blocks it.
+func cell_accepts(cell_center: Vector3) -> bool:
+	var terrain := _find_terrain()
+	if terrain != null and not terrain.cell_clear_of_ground(cell_center, grid_size):
+		return false
 	# Slightly smaller than the cell so face-adjacent neighbours don't collide.
 	var shape := BoxShape3D.new()
 	shape.size = Vector3.ONE * (grid_size - 0.04)
@@ -169,7 +195,19 @@ func _is_cell_free(cell_center: Vector3) -> bool:
 	query.transform = Transform3D(Basis.IDENTITY, cell_center)
 	query.exclude = [get_parent()]
 	var space := (get_parent() as Node3D).get_world_3d().direct_space_state
-	return space.intersect_shape(query, 1).is_empty()
+	var new_slot := WroughtwildGrid.slot_id(shape_anchor, preview_rotation)
+	var new_fills := WroughtwildGrid.fills_cell(shape_size, grid_size)
+	for result in space.intersect_shape(query, 32):
+		var collider: Object = result["collider"]
+		if terrain != null and collider is Node and (collider as Node).get_parent() == terrain:
+			continue
+		if collider is PlacedBlock:
+			var block := collider as PlacedBlock
+			if WroughtwildGrid.slots_conflict(block.slot, block.fills_cell, new_slot, new_fills):
+				return false
+			continue
+		return false
+	return true
 
 
 func _update_preview() -> void:
@@ -183,15 +221,20 @@ func _update_preview() -> void:
 		preview_valid = false
 		return
 
-	preview_location = WroughtwildGrid.placement_cell_center(
-		hit["position"], hit["normal"], grid_size)
+	var terrain := _find_terrain()
+	var collider := hit.get("collider") as Node
+	if terrain != null and collider != null and collider.get_parent() == terrain:
+		preview_location = terrain.build_cell_center(hit["position"], grid_size)
+	else:
+		preview_location = WroughtwildGrid.placement_cell_center(
+			hit["position"], hit["normal"], grid_size)
 
 	var affordable: bool
 	if selected_kit != &"":
 		affordable = _sim().material_count(selected_kit) > 0
 	else:
 		affordable = _sim().can_afford_placement(selected_shape, selected_material_family)
-	preview_valid = affordable and _is_cell_free(preview_location)
+	preview_valid = affordable and cell_accepts(preview_location)
 
 	_preview_mesh.global_position = preview_location + _shape_offset()
 	_preview_mesh.rotation.y = preview_rotation
@@ -213,7 +256,7 @@ func try_place_block() -> bool:
 	(get_parent() as WroughtwildPlayer).world_root().add_child(block)
 	block.global_position = preview_location + _shape_offset()
 	block.rotation.y = preview_rotation
-	block.init_block(selected_shape, selected_material_family, shape_size)
+	block.init_block(selected_shape, selected_material_family, shape_size, shape_anchor, grid_size)
 	return true
 
 

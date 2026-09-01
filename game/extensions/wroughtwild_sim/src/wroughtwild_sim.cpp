@@ -802,6 +802,7 @@ Dictionary WroughtwildSim::shape(const String& shape_id) const {
     d["material_cost"] = s->materialCost;
     d["size"] = Vector3(static_cast<real_t>(s->sizeM[0]), static_cast<real_t>(s->sizeM[1]),
                         static_cast<real_t>(s->sizeM[2]));
+    d["anchor"] = to_godot(s->anchor);
     d["requires_world_effect"] = to_godot(s->requiresWorldEffect);
     d["unlocked"] = player_->shapeUnlocked(s->id);
     return d;

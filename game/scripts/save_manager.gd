@@ -124,8 +124,10 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		root.add_child(block)
 		block.global_position = _unvec(entry["position"])
 		block.rotation.y = entry["rotation_y"]
-		var size: Vector3 = sim.shape(entry["shape"]).get("size", Vector3.ONE * grid_size)
-		block.init_block(StringName(entry["shape"]), StringName(entry["family"]), size)
+		var info: Dictionary = sim.shape(entry["shape"])
+		var size: Vector3 = info.get("size", Vector3.ONE * grid_size)
+		var anchor := StringName(info.get("anchor", "centre"))
+		block.init_block(StringName(entry["shape"]), StringName(entry["family"]), size, anchor, grid_size)
 
 	# Resource nodes: restore units, respawn ones depleted since the save,
 	# and drop ones the save no longer knows about (depleted before the save).

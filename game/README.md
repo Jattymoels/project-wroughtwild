@@ -39,8 +39,7 @@ purpose.
    debugging. Controls: WASD move, mouse look, Space jump, **E** interact (harvest,
    work at a station, read the board, open the gate), **C** craft by hand,
    **B** toggle build mode, **Tab** cycle shapes and crafted station kits,
-   **LMB** place (or harvest outside build mode), **X** remove block, **R**
-   rotate preview, **1** area strike, **2** heavy strike, **3** Frost Orb
+   **LMB** place (or harvest outside build mode), **X** remove block, **R** rotate (for panels, beams and pillars this also picks which face or corner of the cell they sit against), **1** area strike, **2** heavy strike, **3** Frost Orb
    (the grammar-spike projectile: it forks down a bunched pack and builds
    chill toward a freeze; strike a frozen mob with **1** to shatter it),
    **F1–F3** toggle the three spike skill-mods (Forked Lattice, Deep Frost,
