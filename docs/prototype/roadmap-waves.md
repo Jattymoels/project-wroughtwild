@@ -126,8 +126,14 @@ wave. **First slice landed 1 Sep 2026:** the unified modifier pool in
 `items.json` (ten modifiers, three slots, three rarities, four bases with
 implicit modifiers), rolled items that feed both derived stats and the
 active modifier set, trial rooms dropping keen/wrought gear, pack items
-in the save, and item cards in the pack screen. Next: uniques, the weapon
-deciding which skills sit on the bar, world drops, the compare view.
+in the save, and item cards in the pack screen. Next: the weapon deciding
+which skills sit on the bar, world drops, the compare view. Uniques are
+deferred by owner direction (noted in the items spec).
+
+**Owner playtest verdict (1 Sep 2026):** "I like the gameplay loop so far."
+Base building was barely exercised in that run; its improvement and
+optimisation pass is parked as a later, quick item (construction.md open
+questions stay open) rather than a Wave 2 concern.
 
 The PoE side: more bases and slots, the modifier/tier pool, rarity, how
 crafted vs dropped vs tempered items relate. Catalyst currency types grow

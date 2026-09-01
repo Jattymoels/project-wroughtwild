@@ -75,8 +75,14 @@ direction, 31 Aug 2026).
 - Engine: pack screen item cards (rarity edge, stats, per-modifier
   sentences, wear / take off), plain crafted gear wearable from its stack,
   reward notices name the drop, recipes for the mace, sceptre and charm.
-- Not yet: uniques, the weapon gating which skills are on the bar, world
-  drops from packs, the compare view, removal of the F1–F3 debug toggles.
+- Not yet: the weapon gating which skills are on the bar, world drops
+  from packs, the compare view, removal of the F1–F3 debug toggles.
+- **Uniques: deferred by the owner (1 Sep 2026, "keep them noted").** The
+  intent stays on record: hand-authored items whose modifier bends a rule
+  rather than a number (candidates: "shattered enemies re-freeze their
+  neighbours", "your forks fork", "chill also slows your cooldowns down
+  and your enemies more"). They need engine hooks beyond the resolver, so
+  they arrive after the core loop is judged, not before.
 
 ## Inputs and outputs
 
