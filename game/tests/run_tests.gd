@@ -20,6 +20,7 @@ func _initialize() -> void:
 	_test_inventory()
 	_test_sim_gateway()
 	_test_resource_node()
+	_test_prop_mesh()
 	_test_biome_mood()
 	_test_scene_instantiation()
 	_test_sim_extension()
@@ -77,6 +78,27 @@ func _test_resource_node() -> void:
 	check(node.harvest() == 1, "resource: final partial harvest")
 	check(node.harvest() == 0, "resource: depleted node grants nothing")
 	node.free()
+
+
+func _test_prop_mesh() -> void:
+	# Procedural props (D-013): deterministic, faceted, palette-coloured.
+	var a: ArrayMesh = PropMesh.build_tree(7)
+	var b: ArrayMesh = PropMesh.build_tree(7)
+	var c: ArrayMesh = PropMesh.build_tree(8)
+	var a_verts: PackedVector3Array = a.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
+	check(a_verts.size() == 84 * 3, "props: tree is 84 flat facets (%d verts)" % a_verts.size())
+	check(a_verts == b.surface_get_arrays(0)[Mesh.ARRAY_VERTEX],
+		"props: the same seed grows the same tree")
+	check(a_verts != c.surface_get_arrays(0)[Mesh.ARRAY_VERTEX],
+		"props: different seeds grow different trees")
+	check(PropMesh.build_boulder(3).surface_get_arrays(0)[Mesh.ARRAY_VERTEX].size() == 20 * 3,
+		"props: boulder is 20 facets")
+	var vein_colors: PackedColorArray = PropMesh.build_iron_vein(5).surface_get_arrays(0)[Mesh.ARRAY_COLOR]
+	var has_rust := false
+	for color in vein_colors:
+		if color.r > color.b * 1.5:
+			has_rust = true
+	check(has_rust, "props: the iron vein carries rust facets")
 
 
 func _test_biome_mood() -> void:

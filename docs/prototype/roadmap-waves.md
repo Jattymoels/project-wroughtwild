@@ -63,7 +63,11 @@ around it, and `BiomeMood` — sun, fog and ambient crossfade to the biome
 underfoot, so the Ember Wastes feel wrong before the first pack appears.
 Blocky terrain/buildings, chunky low-poly props, smoother low-poly
 characters later; polygon budget is a non-issue at this scale (the
-constraint is authoring time).
+constraint is authoring time). Second pass: trees, boulders and iron veins
+became procedural faceted meshes (`prop_mesh.gd`) — crooked trunks,
+warped-icosahedron canopies and rocks in palette vertex colours,
+deterministic per position — per the owner's note that props must not read
+as Minecraft; only terrain and buildings stay blocky.
 
 ### World-feel pass *(landed 1 Sep 2026)*
 
