@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/trial_arena.gd" id="1_script"]
 
@@ -11,8 +11,14 @@ size = Vector3(28, 1, 28)
 [sub_resource type="StandardMaterial3D" id="arena_floor_material"]
 albedo_color = Color(0.3, 0.22, 0.2, 1)
 
+[sub_resource type="BoxShape3D" id="arena_wall_shape"]
+size = Vector3(29, 6, 0.5)
+
 [sub_resource type="BoxMesh" id="arena_wall_mesh"]
-size = Vector3(28, 3, 0.5)
+size = Vector3(29, 3, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="arena_wall_material"]
+albedo_color = Color(0.22, 0.16, 0.15, 1)
 
 [node name="TrialArena" type="Node3D"]
 script = ExtResource("1_script")
@@ -27,9 +33,43 @@ shape = SubResource("arena_floor_shape")
 mesh = SubResource("arena_floor_mesh")
 material_override = SubResource("arena_floor_material")
 
-[node name="BackWall" type="MeshInstance3D" parent="."]
-position = Vector3(0, 1.5, -14)
+[node name="Walls" type="StaticBody3D" parent="."]
+
+[node name="Back" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -14)
+shape = SubResource("arena_wall_shape")
+
+[node name="BackMesh" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -14)
 mesh = SubResource("arena_wall_mesh")
+material_override = SubResource("arena_wall_material")
+
+[node name="Front" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 14)
+shape = SubResource("arena_wall_shape")
+
+[node name="FrontMesh" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 14)
+mesh = SubResource("arena_wall_mesh")
+material_override = SubResource("arena_wall_material")
+
+[node name="Left" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -14, 2.5, 0)
+shape = SubResource("arena_wall_shape")
+
+[node name="LeftMesh" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -14, 1.5, 0)
+mesh = SubResource("arena_wall_mesh")
+material_override = SubResource("arena_wall_material")
+
+[node name="Right" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 14, 2.5, 0)
+shape = SubResource("arena_wall_shape")
+
+[node name="RightMesh" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 14, 1.5, 0)
+mesh = SubResource("arena_wall_mesh")
+material_override = SubResource("arena_wall_material")
 
 [node name="Torch" type="OmniLight3D" parent="."]
 position = Vector3(0, 6, -4)

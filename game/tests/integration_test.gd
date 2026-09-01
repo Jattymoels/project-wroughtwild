@@ -275,8 +275,20 @@ func _physics_process(_delta: float) -> void:
 		48:
 			check(_player.trial.enter_room(0), "trial: first room entered")
 			check(_player.trial.state == "fighting" and _player.combat.alive_enemies().size() == 2, "trial: two whelps spawned")
-			for enemy in _player.combat.alive_enemies():
-				enemy.take_damage(1000.0)
+			check(_player.hud._trial_prompt.text.begins_with("Clear the room"), "trial: HUD says what the room wants")
+			var enemies := _player.combat.alive_enemies()
+			check((enemies[0] as Enemy).give_up_distance == 0.0, "trial: arena enemies never give up")
+			# A retreating archer used to walk through the wall mesh and fall
+			# forever, leaving the room unwinnable. Push one out; it must come back.
+			(enemies[0] as Enemy).global_position = _player.trial.arena.global_position + Vector3(0, -40, 0)
+			(enemies[1] as Enemy).take_damage(1000.0)
+		49:
+			var survivor: Array = _player.combat.alive_enemies()
+			check(survivor.size() == 1 and _player.trial.arena.contains((survivor[0] as Enemy).global_position),
+				"trial: an enemy that leaves the room is put back on the floor")
+			_player.hud.refresh()
+			check(_player.hud._trial_prompt.text.contains("1 remains"), "trial: HUD counts the last enemy")
+			(survivor[0] as Enemy).take_damage(1000.0)
 		50:
 			check(_player.trial.state == "reward" and _player.trial.current_offer.size() >= 1, "trial: clearing the room brings a boon offer")
 			_player.trial.accept_boon(_player.trial.current_offer[0]["id"])
