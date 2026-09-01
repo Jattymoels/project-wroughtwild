@@ -49,6 +49,12 @@ everything:
   the grid the player builds on; blockiness here is legibility.
 - **Props (trees, boulders, stations):** chunky low-poly, ~100–1,000
   triangles each, flat or palette-textured. Crooked silhouettes beat cubes.
+  *Implemented for nodes:* `game/scripts/prop_mesh.gd` grows trees (~84
+  flat facets: crooked hexagonal trunk + three warped-icosahedron canopy
+  lobes), boulders and rust-shot iron veins procedurally, flat-shaded with
+  palette vertex colours, deterministic per world position. Owner note
+  (1 Sep 2026): props must NOT read as Minecraft — the blocky look stays
+  on terrain and buildings only.
 - **Characters (player hands, enemies, boss):** free to be smooth-ish
   low-poly, ~1,000–5,000 triangles — Valheim's characters are in this
   range and read beautifully next to its chunky world. Faceted "crystal"

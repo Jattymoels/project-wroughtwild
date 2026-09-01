@@ -29,21 +29,16 @@ func _ready() -> void:
 	_apply_visual()
 
 
-func _textured(texture_path: String) -> StandardMaterial3D:
-	var material := StandardMaterial3D.new()
-	material.albedo_texture = load(texture_path)
-	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-	material.roughness = 1.0
-	material.emission = Color(0.85, 0.85, 0.6)
-	material.emission_energy_multiplier = 0.35
-	_own_materials.append(material)
-	return material
-
-
 ## Crosshair-hover feedback: a soft glow on the node you would harvest.
 func set_highlight(on: bool) -> void:
 	for material in _own_materials:
 		material.emission_enabled = on
+
+
+## Deterministic per position and kind, so a rebuilt (or loaded) world
+## grows the exact same crooked tree in the exact same place.
+func _visual_seed() -> int:
+	return hash(Vector3i((position * 4.0).round())) + hash(String(visual))
 
 
 func _apply_visual() -> void:
@@ -51,46 +46,32 @@ func _apply_visual() -> void:
 	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
 	if mesh_instance == null or collider == null:
 		return
+	if visual != &"tree" and visual != &"boulder" and visual != &"iron_vein":
+		return
+
+	# Chunky low-poly props (D-013): flat-shaded facets, palette vertex
+	# colours, crooked silhouettes - not Minecraft boxes.
+	var material := PropMesh.material()
+	_own_materials.append(material)
+	mesh_instance.material_override = material
+	mesh_instance.position = Vector3.ZERO
+	mesh_instance.rotation.y = float(_visual_seed() % 628) / 100.0
+	var shape := BoxShape3D.new()
 	match visual:
 		&"tree":
-			var trunk := BoxMesh.new()
-			trunk.size = Vector3(0.6, 3.0, 0.6)
-			trunk.material = _textured("res://assets/textures/bark.png")
-			mesh_instance.mesh = trunk
-			mesh_instance.position = Vector3(0, 1.5, 0)
-			var crown := MeshInstance3D.new()
-			var leaves := BoxMesh.new()
-			leaves.size = Vector3(2.2, 1.8, 2.2)
-			leaves.material = _textured("res://assets/textures/leaves.png")
-			crown.mesh = leaves
-			crown.position = Vector3(0, 3.6, 0)
-			add_child(crown)
-			var shape := BoxShape3D.new()
+			mesh_instance.mesh = PropMesh.build_tree(_visual_seed())
+			# Collision stays the trunk only: you can stand under the canopy.
 			shape.size = Vector3(0.7, 3.0, 0.7)
-			collider.shape = shape
 			collider.position = Vector3(0, 1.5, 0)
 		&"boulder":
-			var rock := BoxMesh.new()
-			rock.size = Vector3(1.4, 1.0, 1.2)
-			rock.material = _textured("res://assets/textures/stone_node.png")
-			mesh_instance.mesh = rock
-			mesh_instance.position = Vector3(0, 0.5, 0)
-			mesh_instance.rotation.y = 0.5
-			var shape := BoxShape3D.new()
+			mesh_instance.mesh = PropMesh.build_boulder(_visual_seed())
 			shape.size = Vector3(1.4, 1.0, 1.2)
-			collider.shape = shape
 			collider.position = Vector3(0, 0.5, 0)
 		&"iron_vein":
-			var vein := BoxMesh.new()
-			vein.size = Vector3(1.2, 0.9, 1.2)
-			vein.material = _textured("res://assets/textures/iron_vein.png")
-			mesh_instance.mesh = vein
-			mesh_instance.position = Vector3(0, 0.45, 0)
-			mesh_instance.rotation.y = -0.35
-			var shape := BoxShape3D.new()
+			mesh_instance.mesh = PropMesh.build_iron_vein(_visual_seed())
 			shape.size = Vector3(1.2, 0.9, 1.2)
-			collider.shape = shape
 			collider.position = Vector3(0, 0.45, 0)
+	collider.shape = shape
 
 
 ## Returns the units actually granted (0 when depleted).
