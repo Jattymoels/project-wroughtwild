@@ -141,10 +141,17 @@ list — loading restores exactly the save's holes, filling back anything
 dug since. Tool tiers wait until crafting wants them; the only cost is
 time.
 
+**Mobs in the world (slice 3, same day):** the caves are inhabited — Gloom
+Crawler packs den on the same floors as the underground iron; Shrieker
+packs in the forest and wastes recruit every idle mob in scream radius
+(D-012's aggro chain); and the danger rings now also grow pack size and
+crown one member with an elite modifier beyond the heartland (world.json
+`elite_modifiers`: status-grammar counters with tripled drop bounties).
+
 **Deliberately not yet:** building inside dug holes or caves (placement
 still reads the pristine surface heights), a soil material family (dirt
 yields nothing until something wants soil), water, falling-block physics,
-and cave-dwelling mob families (the mob pass).
+and cave light rules (a lamp item; the dark is honest for now).
 
 ## Open questions
 

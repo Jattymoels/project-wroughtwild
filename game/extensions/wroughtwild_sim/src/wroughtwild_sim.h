@@ -161,17 +161,25 @@ public:
     // "dirt", "stone", "bedrock"): {breakable, dig_seconds, yields}.
     Dictionary block_rules() const;
     // Deterministic per-kill drops from the enemy's world.json loot table:
-    // material stacks as item -> count.
-    Dictionary enemy_loot(const String& enemy_id, int seed);
+    // material stacks as item -> count. elite_id ("" for none) applies the
+    // elite modifier's loot bonuses (Wave 3): extra table passes.
+    Dictionary enemy_loot(const String& enemy_id, int seed, const String& elite_id);
     // The rolled gear the same kill drops (array of item entries as in
     // pack_items, index -1): a preview for spawning pickups. Nothing enters
-    // the pack until claim_enemy_gear repeats the roll for the same kill.
-    Array enemy_gear_loot(const String& enemy_id, int seed);
+    // the pack until claim_enemy_gear repeats the roll for the same kill
+    // (same enemy, seed AND elite_id - the pickup remembers all three).
+    Array enemy_gear_loot(const String& enemy_id, int seed, const String& elite_id);
     // Rolls the kill's gear again into the pack; returns the entries added.
-    Array claim_enemy_gear(const String& enemy_id, int seed);
+    Array claim_enemy_gear(const String& enemy_id, int seed, const String& elite_id);
     // The skill page the kill drops given what the player knows now: a skill
     // id to learn_skill on pickup, or "" for no page.
-    String enemy_skill_page(const String& enemy_id, int seed) const;
+    String enemy_skill_page(const String& enemy_id, int seed, const String& elite_id) const;
+    // The elite prefixes mobs can spawn with (world.json elite_modifiers).
+    PackedStringArray elite_modifier_ids() const;
+    // Keys: id, display_name, life/speed/damage_multiplier, immune_statuses,
+    // death_burst_damage/radius_m/type, extra_loot_rolls,
+    // gear/page_chance_multiplier. Empty for an unknown id.
+    Dictionary elite_modifier(const String& elite_id) const;
     // Station founded by placing this kit item ("" when not a kit).
     String kit_station(const String& kit_item_id) const;
     PackedStringArray kit_item_ids() const;
@@ -334,6 +342,8 @@ private:
     wroughtwild::grammar::ActiveMods active_mods() const;
     // Generates (or reuses) the world for a seed; generation costs real time.
     const wroughtwild::worldgen::WorldMap& cached_world(uint64_t seed);
+    // The elite modifier for an id, or nullptr for "" / unknown.
+    const wroughtwild::tuning::EliteModifierDef* find_elite(const String& elite_id) const;
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;

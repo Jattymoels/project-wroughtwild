@@ -274,7 +274,8 @@ func _test_sim_extension() -> void:
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
 	check(heavy["delivery"] == "strike" and heavy["starting"], "combat: skill view carries delivery and starting (D-016)")
 	check(sim.combat_skill_ids().size() == 7, "combat: seven skills defined (three arrive as pages)")
-	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 4, "combat: enemy view")
+	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 6,
+		"combat: enemy view (shrieker and gloom crawler joined)")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
 	var rt: Dictionary = sim.realtime()
 	# D-012: dash is pure movement, so its invulnerability window is zero.
@@ -529,6 +530,26 @@ func _test_sandpit_extension() -> void:
 		and terrain.block_at(sx, sh - 1, sz) == 0,
 		"dig: a save's holes restore exactly (dug-since filled back)")
 	terrain.queue_free()
+
+	# Wave 3 elites through the binding: views, crowned packs, elite loot.
+	check(sim.elite_modifier_ids().size() == 4, "elites: four modifiers exposed")
+	var unfreezable: Dictionary = sim.elite_modifier("unfreezable")
+	check(unfreezable["display_name"] == "Unfreezable" and unfreezable["immune_statuses"].has("chill"),
+		"elites: modifier view carries immunities")
+	check(sim.elite_modifier("nobody").is_empty(), "elites: unknown ids are empty")
+	var crowned := 0
+	var cave_dens := 0
+	for pack in a["packs"]:
+		if int(pack["elite_member"]) >= 0 and String(pack["elite_modifier"]) != "":
+			crowned += 1
+		if int(pack["y"]) < heights[int(pack["z"]) * int(a["width"]) + int(pack["x"])]:
+			cave_dens += 1
+	check(crowned > 0, "elites: the far rings crowned some packs")
+	check(cave_dens > 0, "elites: cave packs den underground")
+	var plain_husk: Dictionary = sim.enemy_loot("stone_husk", 99)
+	var elite_husk: Dictionary = sim.enemy_loot("stone_husk", 99, "unfreezable")
+	check(int(elite_husk.get("stone", 0)) > int(plain_husk.get("stone", 0)),
+		"elites: the bounty pays more stone")
 
 	check(sim.kit_station("workbench_kit") == "workbench", "sandpit: workbench kit maps to workbench")
 	check(sim.kit_station("forge_kit") == "forge_basic", "sandpit: forge kit maps to the forge")

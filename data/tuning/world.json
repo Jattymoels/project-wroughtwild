@@ -139,8 +139,112 @@
         }
       ],
       "design_purpose": "Slow hill guardian that makes stone and iron country feel owned; killing it IS mining, so combat feeds construction directly"
+    },
+    {
+      "id": "shrieker",
+      "display_name": "Shrieker",
+      "max_life": 16,
+      "behaviour": "shrieker",
+      "damage": 3,
+      "damage_type": "physical",
+      "attack_period_rounds": 2,
+      "design_purpose": "The aggro-chainer (D-012, named in the roadmap): it hangs back and SCREAMS - every idle mob in scream radius joins the chase, so a pack with a shrieker recruits the biome. Kill it first or fight everything it can see. Barely dangerous alone; its page chance is the bounty on its head.",
+      "loot": [
+        {
+          "item": "trade_currency",
+          "min": 2,
+          "max": 4,
+          "chance": 0.7
+        },
+        {
+          "skill_page": true,
+          "chance": 0.08
+        }
+      ]
+    },
+    {
+      "id": "gloom_crawler",
+      "display_name": "Gloom Crawler",
+      "max_life": 24,
+      "behaviour": "fast",
+      "damage": 7,
+      "damage_type": "physical",
+      "attack_period_rounds": 1,
+      "design_purpose": "The cave dweller: quick in the tunnels where there is no room to kite, guarding the underground iron. Meeting one in the dark is the cost of the richer veins.",
+      "loot": [
+        {
+          "item": "iron_ore",
+          "min": 1,
+          "max": 2,
+          "chance": 0.5
+        },
+        {
+          "item": "stone",
+          "min": 1,
+          "max": 2,
+          "chance": 0.4
+        },
+        {
+          "gear": "keen",
+          "tier": 1,
+          "chance": 0.05
+        },
+        {
+          "skill_page": true,
+          "chance": 0.05
+        }
+      ]
     }
   ],
+  "elite_modifiers": [
+    {
+      "id": "unfreezable",
+      "display_name": "Unfreezable",
+      "life_multiplier": 1.6,
+      "immune_statuses": ["chill"],
+      "extra_loot_rolls": 1,
+      "gear_chance_multiplier": 3.0,
+      "page_chance_multiplier": 3.0,
+      "design_purpose": "The anti-Glacier elite: chill never sticks, so the freeze-shatter sentence needs a second answer in the pack (D-016 statuses meet resistance, PoE-style)."
+    },
+    {
+      "id": "cinder_blooded",
+      "display_name": "Cinder-Blooded",
+      "life_multiplier": 1.4,
+      "immune_statuses": ["ignite"],
+      "death_burst": {
+        "damage": 14,
+        "radius_m": 2.6,
+        "damage_type": "fire"
+      },
+      "extra_loot_rolls": 1,
+      "gear_chance_multiplier": 3.0,
+      "page_chance_multiplier": 3.0,
+      "design_purpose": "The anti-Wildfire elite: it will not burn, and its death is a fire nova - stand back for the kill or eat the burst. Positioning is the counter, as always (D-012)."
+    },
+    {
+      "id": "stonehide",
+      "display_name": "Stonehide",
+      "life_multiplier": 2.4,
+      "speed_multiplier": 0.85,
+      "immune_statuses": ["bleed"],
+      "extra_loot_rolls": 1,
+      "gear_chance_multiplier": 3.0,
+      "page_chance_multiplier": 3.0,
+      "design_purpose": "The anvil: bleeds find no vein and the life pool is a wall. Slow enough to disengage from - fighting it is a choice you commit to."
+    },
+    {
+      "id": "hastened",
+      "display_name": "Hastened",
+      "speed_multiplier": 1.4,
+      "damage_multiplier": 1.25,
+      "extra_loot_rolls": 1,
+      "gear_chance_multiplier": 3.0,
+      "page_chance_multiplier": 3.0,
+      "design_purpose": "Pure pressure: faster than you in a straight line. Chill and pits are the counters - the grammar answers what stats cannot."
+    }
+  ],
+  "design_purpose_elites": "Wave 3 elite prefixes: worldgen's danger rings decide who spawns elite (farther out, more often); each interacts with the D-016 status grammar rather than only multiplying numbers, and each pays triple gear/page chance plus an extra loot pass - elites are why you hunt the far rings. Trial rooms do not roll elites yet (the dungeon pass owns that).",
   "gathering_sites": [
     {
       "id": "valley_forest",

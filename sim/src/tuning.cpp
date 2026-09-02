@@ -65,9 +65,13 @@ const Station* CraftingTable::findStationForKit(const std::string& kitItemId) co
 }
 const BiomeDef* WorldgenTable::findBiome(const std::string& id) const { return findById(biomes, id); }
 double WorldgenTable::dangerMultiplierAt(double distanceM) const {
+    const DangerRing* ring = dangerRingAt(distanceM);
+    return ring ? ring->packDensityMultiplier : 1.0;
+}
+const DangerRing* WorldgenTable::dangerRingAt(double distanceM) const {
     for (const auto& ring : dangerRings)
-        if (distanceM <= ring.radiusM) return ring.packDensityMultiplier;
-    return dangerRings.empty() ? 1.0 : dangerRings.back().packDensityMultiplier;
+        if (distanceM <= ring.radiusM) return &ring;
+    return dangerRings.empty() ? nullptr : &dangerRings.back();
 }
 const ModifierDef* ItemTable::findModifier(const std::string& id) const { return findById(modifiers, id); }
 const RarityDef* ItemTable::findRarity(const std::string& id) const { return findById(rarities, id); }
@@ -85,6 +89,9 @@ const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) con
     return it == behaviours.end() ? nullptr : &it->second;
 }
 const EnemyDef* WorldTable::findEnemy(const std::string& id) const { return findById(enemies, id); }
+const EliteModifierDef* WorldTable::findEliteModifier(const std::string& id) const {
+    return findById(eliteModifiers, id);
+}
 const GatherSite* WorldTable::findSite(const std::string& id) const { return findById(gatheringSites, id); }
 const CraftSkillDef* SkillTable::findCraftSkill(const std::string& id) const { return findById(craftSkills, id); }
 const CombatSkillDef* SkillTable::findCombatSkill(const std::string& id) const { return findById(combatSkills, id); }
@@ -369,6 +376,10 @@ RealtimeTable loadRealtime(const std::string& path) {
         behaviour.windupSeconds = b->get("windup_seconds").asNumber();
         if (auto giveUp = b->find("give_up_distance_m"))
             behaviour.giveUpDistanceM = giveUp->asNumber();
+        if (auto scream = b->find("scream_period_seconds"))
+            behaviour.screamPeriodSeconds = scream->asNumber();
+        if (auto radius = b->find("scream_radius_m"))
+            behaviour.screamRadiusM = radius->asNumber();
         table.behaviours[id] = behaviour;
     }
 
@@ -488,6 +499,27 @@ WorldTable loadWorld(const std::string& path) {
         table.enemies.push_back(std::move(def));
     }
 
+    if (auto elites = doc->find("elite_modifiers")) {
+        for (const auto& e : elites->asArray()) {
+            EliteModifierDef def;
+            def.id = e->get("id").asString();
+            def.displayName = e->get("display_name").asString();
+            if (auto v = e->find("life_multiplier")) def.lifeMultiplier = v->asNumber();
+            if (auto v = e->find("speed_multiplier")) def.speedMultiplier = v->asNumber();
+            if (auto v = e->find("damage_multiplier")) def.damageMultiplier = v->asNumber();
+            if (auto v = e->find("immune_statuses")) def.immuneStatuses = readStringArray(*v);
+            if (auto burst = e->find("death_burst")) {
+                def.deathBurstDamage = burst->get("damage").asNumber();
+                def.deathBurstRadiusM = burst->get("radius_m").asNumber();
+                def.deathBurstType = burst->get("damage_type").asString();
+            }
+            if (auto v = e->find("extra_loot_rolls")) def.extraLootRolls = v->asInt();
+            if (auto v = e->find("gear_chance_multiplier")) def.gearChanceMultiplier = v->asNumber();
+            if (auto v = e->find("page_chance_multiplier")) def.pageChanceMultiplier = v->asNumber();
+            table.eliteModifiers.push_back(std::move(def));
+        }
+    }
+
     for (const auto& s : doc->get("gathering_sites").asArray()) {
         GatherSite site;
         site.id = s->get("id").asString();
@@ -593,11 +625,18 @@ WorldgenTable loadWorldgen(const std::string& path) {
     if (auto density = caves.find("node_density"))
         for (const auto& [type, value] : density->asObject())
             if (type != "design_purpose") table.caves.nodeDensity[type] = value->asNumber();
+    if (auto cavePacks = caves.find("packs"))
+        for (const auto& pack : cavePacks->asArray())
+            table.caves.packs.push_back(readStringArray(*pack));
+    if (auto packDensity = caves.find("pack_density"))
+        table.caves.packDensity = packDensity->asNumber();
 
     for (const auto& ring : doc->get("danger").get("rings").asArray()) {
         DangerRing r;
         r.radiusM = ring->get("radius_m").asNumber();
         r.packDensityMultiplier = ring->get("pack_density_multiplier").asNumber();
+        if (auto v = ring->find("pack_size_bonus")) r.packSizeBonus = v->asInt();
+        if (auto v = ring->find("elite_chance")) r.eliteChance = v->asNumber();
         table.dangerRings.push_back(r);
     }
 

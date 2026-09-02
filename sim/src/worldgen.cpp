@@ -268,6 +268,19 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
         }
     }
 
+    // The deepest roofed cave floor of a column (-1 when it has none):
+    // where underground nodes stand and cave packs den.
+    auto caveFloorY = [&](int x, int z) -> int {
+        int hgt = map.at(x, z).height;
+        for (int y = caves.minY + 1; y < hgt - 2; ++y) {
+            if (map.blockAt(x, y, z) != kAir || map.blockAt(x, y - 1, z) == kAir) continue;
+            for (int above = y + 1; above < hgt; ++above)
+                if (map.blockAt(x, above, z) != kAir) return y;
+            return -1; // open to the sky: an entrance shaft, not a den
+        }
+        return -1;
+    };
+
     // 5. Cave-floor nodes: the deepest roofed floor of each carved column
     //    may hold a node (iron runs richer underground — the reason to go
     //    down). One node per column, cave before surface.
@@ -275,15 +288,7 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
     if (caves.enabled && !caves.nodeDensity.empty()) {
         for (int z = 1; z < map.height - 1; ++z) {
             for (int x = 1; x < map.width - 1; ++x) {
-                int hgt = map.at(x, z).height;
-                int floorY = -1;
-                for (int y = caves.minY + 1; y < hgt - 2; ++y) {
-                    if (map.blockAt(x, y, z) != kAir || map.blockAt(x, y - 1, z) == kAir) continue;
-                    bool roofed = false;
-                    for (int above = y + 1; above < hgt; ++above)
-                        if (map.blockAt(x, above, z) != kAir) { roofed = true; break; }
-                    if (roofed) { floorY = y; break; }
-                }
+                int floorY = caveFloorY(x, z);
                 if (floorY < 0) continue;
                 uint32_t salt = 5000;
                 for (const auto& [type, density] : caves.nodeDensity) {
@@ -345,10 +350,37 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
         }
     }
 
-    // 8. Mob packs: sparse deterministic rolls on a coarse stride so packs
-    //    keep natural spacing; never inside the spawn's protective radius,
-    //    never over a cave entrance, and denser the farther out the cell
-    //    sits (danger rings: leaving the heartland is a choice).
+    // Rounds a rolled pack off with the danger ring's rules: extra members
+    // drawn from the pack's own kind, and perhaps one member crowned with
+    // an elite modifier (Wave 3: elites are why you hunt the far rings).
+    auto finishPack = [&](std::vector<std::string> enemies, int x, int y, int z) {
+        MobPack pack;
+        double distanceM = distance(x, z, map.spawnX, map.spawnZ) * params.cellSizeM;
+        const tuning::DangerRing* ring = table.dangerRingAt(distanceM);
+        if (ring != nullptr && !enemies.empty()) {
+            for (int i = 0; i < ring->packSizeBonus; ++i)
+                enemies.push_back(
+                    enemies[hashCoords(seed, x, z, 9300 + static_cast<uint32_t>(i)) % enemies.size()]);
+            const auto& elites = tuning.world.eliteModifiers;
+            if (!elites.empty() && ring->eliteChance > 0.0 &&
+                lattice(seed, x, z, 9400) < ring->eliteChance) {
+                pack.eliteMemberIndex =
+                    static_cast<int>(hashCoords(seed, x, z, 9500) % enemies.size());
+                pack.eliteModifierId =
+                    elites[hashCoords(seed, x, z, 9600) % elites.size()].id;
+            }
+        }
+        pack.enemies = std::move(enemies);
+        pack.x = x;
+        pack.y = y;
+        pack.z = z;
+        map.packs.push_back(std::move(pack));
+    };
+
+    // 8. Surface mob packs: sparse deterministic rolls on a coarse stride
+    //    so packs keep natural spacing; never inside the spawn's protective
+    //    radius, never over a cave entrance, and denser the farther out the
+    //    cell sits (danger rings: leaving the heartland is a choice).
     double packSafe = g.packMinDistanceFromSpawnM / params.cellSizeM;
     for (int z = 2; z < map.height - 2; z += 4) {
         for (int x = 2; x < map.width - 2; x += 4) {
@@ -362,7 +394,23 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
             // so the tuned value keeps meaning "packs per cell".
             if (lattice(seed, x, z, 9100) < biome.packDensity * 16.0 * danger) {
                 size_t pick = hashCoords(seed, x, z, 9200) % biome.packs.size();
-                map.packs.push_back({biome.packs[pick], x, z});
+                finishPack(biome.packs[pick], x, map.at(x, z).height, z);
+            }
+        }
+    }
+
+    // 9. Cave packs: dens on roofed cave floors, on the same coarse stride.
+    //    The dark has its own residents (and its own elites).
+    if (caves.enabled && !caves.packs.empty() && caves.packDensity > 0.0) {
+        for (int z = 2; z < map.height - 2; z += 4) {
+            for (int x = 2; x < map.width - 2; x += 4) {
+                if (distance(x, z, map.spawnX, map.spawnZ) < packSafe) continue;
+                int floorY = caveFloorY(x, z);
+                if (floorY < 0) continue;
+                if (lattice(seed, x, z, 9700) < caves.packDensity * 16.0) {
+                    size_t pick = hashCoords(seed, x, z, 9800) % caves.packs.size();
+                    finishPack(caves.packs[pick], x, floorY, z);
+                }
             }
         }
     }

@@ -33,6 +33,17 @@
       "windup_seconds": 0.25,
       "design_purpose": "Outruns the player; packs punish standing still and reward area strikes. The long give_up_distance_m makes hounds the dangerous disengage: escaping them costs distance and risk.",
       "give_up_distance_m": 34.0
+    },
+    "shrieker": {
+      "move_speed_mps": 2.2,
+      "attack_range_m": 2.0,
+      "aggro_range_m": 16.0,
+      "preferred_distance_m": 8.0,
+      "windup_seconds": 0.5,
+      "give_up_distance_m": 24.0,
+      "scream_period_seconds": 4.0,
+      "scream_radius_m": 14.0,
+      "design_purpose": "The aggro-chainer: hangs back at preferred distance and screams every scream_period_seconds, waking every idle mob within scream_radius_m (D-012's Zombies-wave builder). Weak in the bite; the threat is who it invites. Killing it first is the play."
     }
   },
   "boss": {

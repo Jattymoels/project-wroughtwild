@@ -42,7 +42,11 @@ struct PlacedNode {
 struct MobPack {
     std::vector<std::string> enemies;
     int x = 0;
+    int y = 0; // the level the pack stands on: the surface, or a cave floor
     int z = 0;
+    // Danger rings may crown one member with an elite modifier (Wave 3).
+    int eliteMemberIndex = -1;   // -1 = no elite in this pack
+    std::string eliteModifierId;
 };
 
 struct WorldMap {

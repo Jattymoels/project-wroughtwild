@@ -39,15 +39,17 @@
       "iron_vein": 0.05,
       "boulder": 0.02
     },
-    "design_purpose": "Carved cave systems: two intersecting 3D noise level-sets (tunnel_width sets how fat the intersection is) wind spaghetti tunnels; a third field above cavern_threshold opens caverns in the lower cavern_max_y_fraction of a column. Tunnels normally keep surface_margin blocks of roof, but breach_chance of columns may carve through the top - natural entrances you can find and drop into. node_density seeds cave floors with nodes: iron runs richer underground, which is the reason to go down before digging exists. The spawn clearing and gate ground are never carved."
+    "packs": [["gloom_crawler"], ["gloom_crawler", "gloom_crawler"]],
+    "pack_density": 0.012,
+    "design_purpose": "Carved cave systems: two intersecting 3D noise level-sets (tunnel_width sets how fat the intersection is) wind spaghetti tunnels; a third field above cavern_threshold opens caverns in the lower cavern_max_y_fraction of a column. Tunnels normally keep surface_margin blocks of roof, but breach_chance of columns may carve through the top - natural entrances you can find and drop into. node_density seeds cave floors with nodes: iron runs richer underground, which is the reason to go down before digging exists. packs den Gloom Crawlers on the same floors - the dark is inhabited. The spawn clearing and gate ground are never carved."
   },
   "danger": {
     "rings": [
-      {"radius_m": 55, "pack_density_multiplier": 1.0},
-      {"radius_m": 110, "pack_density_multiplier": 1.8},
-      {"radius_m": 100000, "pack_density_multiplier": 2.6}
+      {"radius_m": 55, "pack_density_multiplier": 1.0, "pack_size_bonus": 0, "elite_chance": 0.0},
+      {"radius_m": 110, "pack_density_multiplier": 1.8, "pack_size_bonus": 1, "elite_chance": 0.14},
+      {"radius_m": 100000, "pack_density_multiplier": 2.6, "pack_size_bonus": 2, "elite_chance": 0.25}
     ],
-    "design_purpose": "Danger scales with distance from spawn: pack density multiplies by the first ring containing the cell, so the heartland stays learnable while the map edge is genuinely hostile. The Wave 3 mob pass will hang harder pack compositions off these same rings."
+    "design_purpose": "Danger scales with distance from spawn: the first ring containing a cell multiplies pack density, appends pack_size_bonus extra members drawn from the pack's own kind, and rolls elite_chance for one member to carry an elite modifier (world.json elite_modifiers). The heartland stays learnable and elite-free; the far rings are where packs grow teeth and the elite bounties live."
   },
   "block_rules": {
     "surface": {"breakable": true, "dig_seconds": 0.7, "yields": {}},
@@ -74,8 +76,8 @@
       "moisture_max": 0.3,
       "node_density": {"boulder": 0.012, "tree": 0.002},
       "pack_density": 0.007,
-      "packs": [["ember_whelp", "ember_whelp"], ["cinder_archer", "ember_whelp"], ["ash_hound", "ash_hound", "ash_hound"]],
-      "design_purpose": "The dangerous quarter that holds the trial gate: fire creatures preview the Tyrant's element and the ground itself looks burnt"
+      "packs": [["ember_whelp", "ember_whelp"], ["cinder_archer", "ember_whelp"], ["ash_hound", "ash_hound", "ash_hound"], ["shrieker", "ember_whelp", "ember_whelp"]],
+      "design_purpose": "The dangerous quarter that holds the trial gate: fire creatures preview the Tyrant's element and the ground itself looks burnt; shrieker packs recruit the wastes against you"
     },
     {
       "id": "forest",
@@ -84,8 +86,8 @@
       "moisture_min": 0.55,
       "node_density": {"tree": 0.050, "boulder": 0.006},
       "pack_density": 0.004,
-      "packs": [["ash_hound", "ash_hound"]],
-      "design_purpose": "Wood country: dense trees with hound packs prowling, so bulk timber runs stay tense"
+      "packs": [["ash_hound", "ash_hound"], ["shrieker", "ash_hound", "ash_hound"]],
+      "design_purpose": "Wood country: dense trees with hound packs prowling, so bulk timber runs stay tense; a shrieker among the hounds turns a timber run into a hunt"
     },
     {
       "id": "meadow",

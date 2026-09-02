@@ -46,6 +46,21 @@ var _sim: WroughtwildSim
 ## harmless block of ice; a burning one ticks fire damage; a bleeding one
 ## bleeds harder while it walks. Boss shares all of this via the
 ## _configure_statuses/_tick_statuses helpers.
+## Elite prefix (Wave 3): "" for a plain mob. make_elite applies the
+## modifier's multipliers, immunities and death burst; loot rolls carry
+## the id so elites pay their bounty.
+var elite_id := ""
+var _immune_statuses := PackedStringArray()
+var _burst_damage := 0.0
+var _burst_radius := 0.0
+var _burst_type := "fire"
+
+## Shrieker fields (0 for everything else): while aggroed it screams every
+## period, waking idle mobs in radius (D-012's aggro chain).
+var _scream_period := 0.0
+var _scream_radius := 0.0
+var _scream_timer := 0.0
+
 var chill := 0.0
 var frozen_left := 0.0
 var ignite := 0.0
@@ -110,6 +125,9 @@ func configure(sim: WroughtwildSim) -> void:
 	windup_seconds = b.get("windup_seconds", 0.3)
 	attack_period_seconds = def["attack_period_rounds"] * rt["round_seconds"] / speed_multiplier
 	give_up_distance = b.get("give_up_distance_m", 0.0)
+	_scream_period = b.get("scream_period_seconds", 0.0)
+	_scream_radius = b.get("scream_radius_m", 0.0)
+	_scream_timer = _scream_period
 	var horde: Dictionary = rt.get("horde", {})
 	give_up_seconds = horde.get("give_up_seconds", 2.5)
 	separation_radius = horde.get("separation_radius_m", 1.1)
@@ -121,6 +139,8 @@ func configure(sim: WroughtwildSim) -> void:
 	match behaviour:
 		"ranged": _material.albedo_color = Color(0.8, 0.15, 0.1)
 		"fast": _material.albedo_color = Color(0.25, 0.3, 0.45)
+		# The recruiter reads sickly yellow: kill-it-first at a glance.
+		"shrieker": _material.albedo_color = Color(0.8, 0.75, 0.25)
 		_: _material.albedo_color = Color(0.9, 0.45, 0.1)
 	_base_albedo = _material.albedo_color
 	_mesh.material_override = _material
@@ -130,6 +150,30 @@ func configure(sim: WroughtwildSim) -> void:
 func _refresh_label() -> void:
 	if _label != null:
 		_label.text = "%s  %d / %d" % [display_name, ceili(life), ceili(max_life)]
+
+
+## Crowns this mob with an elite modifier (sim.elite_modifier view): the
+## prefix joins the name, the multipliers land, immunities arm, and a
+## death burst may too. Bigger and gold-named so the bounty reads at a
+## glance (D-013: menace must be legible).
+func make_elite(mod: Dictionary) -> void:
+	if mod.is_empty():
+		return
+	elite_id = mod["id"]
+	display_name = "%s %s" % [mod["display_name"], display_name]
+	max_life *= mod.get("life_multiplier", 1.0)
+	life = max_life
+	damage *= mod.get("damage_multiplier", 1.0)
+	move_speed *= mod.get("speed_multiplier", 1.0)
+	_immune_statuses = mod.get("immune_statuses", PackedStringArray())
+	_burst_damage = mod.get("death_burst_damage", 0.0)
+	_burst_radius = mod.get("death_burst_radius_m", 0.0)
+	_burst_type = mod.get("death_burst_type", "fire")
+	if _mesh != null:
+		_mesh.scale = Vector3.ONE * 1.3
+	if _label != null:
+		_label.modulate = Color(1.0, 0.85, 0.3)
+	_refresh_label()
 
 
 func _find_player() -> WroughtwildPlayer:
@@ -166,7 +210,7 @@ func _configure_statuses(sim: WroughtwildSim) -> void:
 
 ## Chill from the sim's numbers; crossing the threshold freezes solid.
 func apply_chill(amount: float) -> void:
-	if amount <= 0.0 or is_frozen() or life <= 0.0:
+	if amount <= 0.0 or is_frozen() or life <= 0.0 or _immune_statuses.has("chill"):
 		return
 	chill += amount
 	if chill >= _chill_max:
@@ -186,7 +230,7 @@ func _on_frozen() -> void:
 ## tick are snapshotted from the sim at ignition, so the burn a mob carries
 ## reflects the gear that lit it. Re-igniting refreshes, never stacks.
 func apply_ignite(amount: float) -> void:
-	if amount <= 0.0 or life <= 0.0:
+	if amount <= 0.0 or life <= 0.0 or _immune_statuses.has("ignite"):
 		return
 	ignite += amount
 	if ignite >= _ignite_max:
@@ -200,7 +244,7 @@ func apply_ignite(amount: float) -> void:
 ## Bleed buildup; crossing the threshold opens a wound that ticks harder
 ## while the mob walks (the chasing train pays for chasing).
 func apply_bleed(amount: float) -> void:
-	if amount <= 0.0 or life <= 0.0:
+	if amount <= 0.0 or life <= 0.0 or _immune_statuses.has("bleed"):
 		return
 	bleed += amount
 	if bleed >= _bleed_max:
@@ -357,6 +401,11 @@ func _physics_process(delta: float) -> void:
 	# horde forms a physical train instead of a stack of ghosts (D-012).
 	if state != "idle":
 		planar += _separation_push()
+		# Shrieker: the aggro chain. While it fights, it recruits.
+		if _scream_period > 0.0:
+			_scream_timer -= delta
+			if _scream_timer <= 0.0:
+				force_scream()
 
 	velocity.x = planar.x
 	velocity.z = planar.z
@@ -395,6 +444,55 @@ func _chase_direction(player: Node3D, distance: float) -> Vector3:
 	return to_player
 
 
+## The scream: every idle enemy within radius joins the chase (D-012's
+## Zombies-wave builder). Public as the test hook too.
+func force_scream() -> void:
+	_scream_timer = _scream_period
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node == self or not (node is Enemy) or not is_instance_valid(node):
+			continue
+		var other := node as Enemy
+		if other.state != "idle" or other.life <= 0.0:
+			continue
+		if _horizontal_distance_to(other) > _scream_radius:
+			continue
+		other.state = "chase"
+	_pulse_ring(_scream_radius, Color(1.0, 0.9, 0.35, 0.4))
+
+
+## An expanding translucent ring (scream, death burst): greybox VFX that
+## tells the radius honestly.
+func _pulse_ring(radius: float, colour: Color) -> void:
+	var mesh := MeshInstance3D.new()
+	var sphere := SphereMesh.new()
+	sphere.radius = 0.5
+	sphere.height = 1.0
+	var material := StandardMaterial3D.new()
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.albedo_color = colour
+	material.emission_enabled = true
+	material.emission = Color(colour.r, colour.g, colour.b)
+	sphere.material = material
+	mesh.mesh = sphere
+	get_parent().add_child(mesh)
+	mesh.global_position = global_position + Vector3(0, 0.5, 0)
+	var tween := mesh.create_tween()
+	tween.tween_property(mesh, "scale", Vector3.ONE * radius * 2.0, 0.3)
+	tween.parallel().tween_property(mesh, "transparency", 1.0, 0.3)
+	tween.tween_callback(mesh.queue_free)
+
+
+## An elite's death burst: fire (usually) at the corpse. Positioning is
+## the counter - the player eats it only by standing in it.
+func _death_burst() -> void:
+	_pulse_ring(_burst_radius, Color(1.0, 0.45, 0.1, 0.5))
+	var player := _find_player()
+	if player == null:
+		return
+	if _horizontal_distance_to(player) <= _burst_radius:
+		player.combat.take_hit(_burst_damage, _burst_type, display_name)
+
+
 ## Test hook: resolves an attack immediately, ignoring range and wind-up.
 func force_attack() -> float:
 	var player := _find_player()
@@ -422,6 +520,8 @@ func take_damage(amount: float, flash: bool = true) -> void:
 	if life <= 0.0:
 		if burning_left > 0.0:
 			_proliferate()
+		if _burst_damage > 0.0:
+			_death_burst()
 		died.emit(self)
 		remove_from_group("enemies")
 		queue_free()

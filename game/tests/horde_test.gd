@@ -80,6 +80,8 @@ func _physics_process(_delta: float) -> void:
 			check(_all_state("chase"), "horde: returning re-aggroes the pack")
 			_run_cone_and_dash_checks()
 		510:
+			_run_shrieker_and_elite_checks()
+		520:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
 
@@ -110,3 +112,44 @@ func _run_cone_and_dash_checks() -> void:
 	check(stray.state == "idle", "stray: spawns unaware at 20 m")
 	stray.take_damage(1.0)
 	check(stray.state == "chase", "stray: taking a hit pulls it into the fight")
+
+
+## Wave 3: the shrieker's aggro chain and the elite modifiers.
+func _run_shrieker_and_elite_checks() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		(enemy as Enemy).take_damage(100000.0)
+	_pack.clear()
+	_player.combat.restore_life()
+	_player.global_position = Vector3(-60, 1.1, -60)
+	var sim: WroughtwildSim = _player.inventory.get_sim()
+
+	# The scream: an idle mob far outside its own aggro joins the chase.
+	var shrieker := Enemy.spawn(self, &"shrieker", Vector3(-60, 0.6, -52))
+	var sleeper := Enemy.spawn(self, &"ember_whelp", Vector3(-60, 0.6, -42))
+	check(shrieker.behaviour == "shrieker" and shrieker._scream_radius > 0.0,
+		"shrieker: behaviour and scream tuned from the sim")
+	sleeper.state = "idle"
+	check(sleeper.state == "idle", "shrieker: the sleeper starts unaware")
+	shrieker.force_scream()
+	check(sleeper.state == "chase", "shrieker: the scream recruits the sleeper")
+
+	# Unfreezable: chill that would freeze anything slides off.
+	var elite := Enemy.spawn(self, &"ember_whelp", Vector3(-58, 0.6, -60))
+	var plain_life: float = elite.max_life
+	elite.make_elite(sim.elite_modifier("unfreezable"))
+	check(elite.display_name.begins_with("Unfreezable") and elite.max_life > plain_life,
+		"elite: the crown renames and toughens")
+	check(elite.elite_id == "unfreezable", "elite: kills will carry the bounty id")
+	elite.apply_chill(100000.0)
+	check(not elite.is_frozen(), "elite: unfreezable never freezes")
+	elite.apply_bleed(100000.0)
+	check(elite.bleeding_left > 0.0, "elite: other statuses still land")
+
+	# Cinder-blooded: no burn, and the death burst catches a close player.
+	var cinder := Enemy.spawn(self, &"ember_whelp", Vector3(-60.5, 0.6, -60))
+	cinder.make_elite(sim.elite_modifier("cinder_blooded"))
+	cinder.apply_ignite(100000.0)
+	check(cinder.burning_left <= 0.0, "elite: cinder-blooded will not burn")
+	var life_before: float = _player.combat.life
+	cinder.take_damage(100000.0)
+	check(_player.combat.life < life_before, "elite: the death burst catches a player standing in it")

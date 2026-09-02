@@ -192,17 +192,26 @@ cost is time. Owner's ask ("some sort of mechanic for breaking the
 generic blocks") answered; pit traps against the D-012 train now emerge
 free.
 
-### Mob track
+### Mob track — first slice landed 2 Sep 2026
 
-Mob families and pack composition per biome (cave dwellers included),
-elite/champion modifiers on mobs that interact with the D-016 statuses
-("Unfreezable", "Cinder-blooded"), drop tables tied to those modifiers,
-density tuning toward the Diablo/PoE "clear a pack, get a reward" cadence —
-in the open world, not an instance. **With D-012:** fewer mobs on screen
-than PoE but more dangerous; aggro chaining ("shriekers" that pull nearby
-strays into the stream) builds the Zombies wave feeling out in the world;
-speeds tuned so training stays skilful rather than trivial. Grammar
-balance tuning waits for these mobs to exist.
+Landed: the **Shrieker** (sickly-yellow aggro-chainer that hangs back and
+screams every few seconds, waking every idle mob in radius — D-012's
+Zombies-wave builder; kill it first or fight the biome) and the **Gloom
+Crawler** (cave dweller denning on the same floors as the underground
+iron). **Elite modifiers** (world.json) that interact with the D-016
+statuses instead of only multiplying numbers: Unfreezable, Cinder-Blooded
+(death fire burst), Stonehide, Hastened — each paying an extra loot pass
+and tripled gear/page chances, so elites are why you hunt the far rings.
+Danger rings now also grow pack size and crown elites only beyond the
+heartland; cave packs den underground; gear pickups remember the elite id
+so the boosted claim survives the walk back. Trial rooms do not roll
+elites yet (the dungeon pass owns that).
+
+Still ahead in this track: density tuning toward the "clear a pack, get a
+reward" cadence once the owner has felt the current pressure; more
+families per biome as the grammar wants counters; extending the balance
+oracle to elite encounters. Grammar balance tuning starts now that mobs
+push back.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 
