@@ -60,7 +60,6 @@ Dictionary item_entry(const wroughtwild::tuning::Tuning& tuning, const wroughtwi
     d["base_id"] = to_godot(item.baseId);
     d["display_name"] = to_godot(base ? base->displayName : item.baseId);
     d["slot"] = to_godot(base ? base->slot : std::string());
-    d["grants_skill"] = to_godot(base ? base->grantsSkill : std::string());
     d["rarity"] = to_godot(item.rarity);
     const auto totals = wroughtwild::items::statTotals(tuning.items, item);
     d["armour"] = totals.armour;
@@ -127,8 +126,20 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("fork_count", "skill_id"), &WroughtwildSim::fork_count);
     ClassDB::bind_method(D_METHOD("fork_damage_fraction", "skill_id", "generation"), &WroughtwildSim::fork_damage_fraction);
     ClassDB::bind_method(D_METHOD("chill_applied", "skill_id", "is_boss"), &WroughtwildSim::chill_applied);
+    ClassDB::bind_method(D_METHOD("ignite_applied", "skill_id", "is_boss"), &WroughtwildSim::ignite_applied);
+    ClassDB::bind_method(D_METHOD("bleed_applied", "skill_id", "is_boss"), &WroughtwildSim::bleed_applied);
     ClassDB::bind_method(D_METHOD("chill_status"), &WroughtwildSim::chill_status);
+    ClassDB::bind_method(D_METHOD("ignite_status"), &WroughtwildSim::ignite_status);
+    ClassDB::bind_method(D_METHOD("bleed_status"), &WroughtwildSim::bleed_status);
     ClassDB::bind_method(D_METHOD("shatter_for", "skill_id"), &WroughtwildSim::shatter_for);
+    ClassDB::bind_method(D_METHOD("proliferate_for"), &WroughtwildSim::proliferate_for);
+    ClassDB::bind_method(D_METHOD("player_build_tags"), &WroughtwildSim::player_build_tags);
+    ClassDB::bind_method(D_METHOD("known_skill_ids"), &WroughtwildSim::known_skill_ids);
+    ClassDB::bind_method(D_METHOD("knows_skill", "skill_id"), &WroughtwildSim::knows_skill);
+    ClassDB::bind_method(D_METHOD("skill_bar_size"), &WroughtwildSim::skill_bar_size);
+    ClassDB::bind_method(D_METHOD("skill_bar"), &WroughtwildSim::skill_bar);
+    ClassDB::bind_method(D_METHOD("set_bar_slot", "slot", "skill_id"), &WroughtwildSim::set_bar_slot);
+    ClassDB::bind_method(D_METHOD("learn_skill", "skill_id"), &WroughtwildSim::learn_skill);
     ClassDB::bind_method(D_METHOD("slot_ids"), &WroughtwildSim::slot_ids);
     ClassDB::bind_method(D_METHOD("item_base_ids"), &WroughtwildSim::item_base_ids);
     ClassDB::bind_method(D_METHOD("item_base", "base_id"), &WroughtwildSim::item_base);
@@ -142,6 +153,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_cooldown_seconds", "skill_id"), &WroughtwildSim::skill_cooldown_seconds);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
     ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_loot);
+    ClassDB::bind_method(D_METHOD("enemy_gear_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_gear_loot);
+    ClassDB::bind_method(D_METHOD("claim_enemy_gear", "enemy_id", "seed"), &WroughtwildSim::claim_enemy_gear);
+    ClassDB::bind_method(D_METHOD("enemy_skill_page", "enemy_id", "seed"), &WroughtwildSim::enemy_skill_page);
     ClassDB::bind_method(D_METHOD("kit_station", "kit_item_id"), &WroughtwildSim::kit_station);
     ClassDB::bind_method(D_METHOD("kit_item_ids"), &WroughtwildSim::kit_item_ids);
     ClassDB::bind_method(D_METHOD("fuels"), &WroughtwildSim::fuels);
@@ -425,6 +439,9 @@ Dictionary WroughtwildSim::combat_skill(const String& skill_id) const {
     }
     d["id"] = to_godot(def->id);
     d["display_name"] = to_godot(def->displayName);
+    d["delivery"] = to_godot(def->delivery);
+    d["starting"] = def->starting;
+    d["drop_weight"] = def->dropWeight;
     PackedStringArray tags;
     for (const auto& tag : def->tags) {
         tags.push_back(to_godot(tag));
@@ -551,10 +568,15 @@ wroughtwild::combat::CombatMods WroughtwildSim::current_mods() const {
 }
 
 wroughtwild::boons::BuildTags WroughtwildSim::build_tags() const {
-    // The prototype build equips every combat skill; its identity is their tags.
+    // The build's identity is the tags of the skills on its bar (D-016):
+    // what the player actually fights with, not everything they know.
     wroughtwild::boons::BuildTags tags;
-    for (const auto& def : tuning_->skills.combatSkills) {
-        for (const auto& tag : def.tags) {
+    for (const auto& id : player_->skillBar()) {
+        const auto* def = tuning_->skills.findCombatSkill(id);
+        if (def == nullptr) {
+            continue;
+        }
+        for (const auto& tag : def->tags) {
             if (std::find(tags.begin(), tags.end(), tag) == tags.end()) {
                 tags.push_back(tag);
             }
@@ -1295,6 +1317,79 @@ Dictionary WroughtwildSim::enemy_loot(const String& enemy_id, int seed) {
     return d;
 }
 
+Array WroughtwildSim::enemy_gear_loot(const String& enemy_id, int seed) {
+    Array out;
+    if (!require_loaded("enemy_gear_loot")) {
+        return out;
+    }
+    const auto gear = wroughtwild::loot::rollEnemyGear(*tuning_, to_std(enemy_id), static_cast<uint64_t>(seed));
+    for (const auto& item : gear) {
+        out.push_back(item_entry(*tuning_, item, -1));
+    }
+    return out;
+}
+
+Array WroughtwildSim::claim_enemy_gear(const String& enemy_id, int seed) {
+    Array out;
+    if (!require_loaded("claim_enemy_gear")) {
+        return out;
+    }
+    // The same kill rolls the same gear (the gear stream is deterministic per
+    // seed), so a pickup only needs to remember which kill it came from.
+    const auto gear = wroughtwild::loot::rollEnemyGear(*tuning_, to_std(enemy_id), static_cast<uint64_t>(seed));
+    for (const auto& item : gear) {
+        player_->packItems.push_back(item);
+        out.push_back(item_entry(*tuning_, item, static_cast<int>(player_->packItems.size()) - 1));
+    }
+    return out;
+}
+
+String WroughtwildSim::enemy_skill_page(const String& enemy_id, int seed) const {
+    if (!require_loaded("enemy_skill_page")) {
+        return String();
+    }
+    return to_godot(wroughtwild::loot::rollEnemySkillPage(*tuning_, to_std(enemy_id), static_cast<uint64_t>(seed),
+                                                          player_->knownSkills()));
+}
+
+PackedStringArray WroughtwildSim::player_build_tags() const {
+    PackedStringArray tags;
+    if (require_loaded("player_build_tags")) {
+        tags = strings_to_packed(build_tags());
+    }
+    return tags;
+}
+
+PackedStringArray WroughtwildSim::known_skill_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("known_skill_ids")) {
+        ids = strings_to_packed(player_->knownSkills());
+    }
+    return ids;
+}
+
+bool WroughtwildSim::knows_skill(const String& skill_id) const {
+    return require_loaded("knows_skill") && player_->knowsSkill(to_std(skill_id));
+}
+
+int WroughtwildSim::skill_bar_size() const { return wroughtwild::economy::kSkillBarSize; }
+
+PackedStringArray WroughtwildSim::skill_bar() const {
+    PackedStringArray ids;
+    if (require_loaded("skill_bar")) {
+        ids = strings_to_packed(player_->skillBar());
+    }
+    return ids;
+}
+
+bool WroughtwildSim::set_bar_slot(int slot, const String& skill_id) {
+    return require_loaded("set_bar_slot") && player_->setBarSlot(slot, to_std(skill_id));
+}
+
+bool WroughtwildSim::learn_skill(const String& skill_id) {
+    return require_loaded("learn_skill") && player_->learnSkill(to_std(skill_id));
+}
+
 PackedStringArray WroughtwildSim::skill_mod_ids() const {
     PackedStringArray ids;
     if (require_loaded("skill_mod_ids")) {
@@ -1370,6 +1465,20 @@ double WroughtwildSim::chill_applied(const String& skill_id, bool is_boss) const
                                               is_boss);
 }
 
+double WroughtwildSim::ignite_applied(const String& skill_id, bool is_boss) const {
+    if (!require_loaded("ignite_applied")) {
+        return 0.0;
+    }
+    return wroughtwild::grammar::igniteApplied(*tuning_, active_mods(), to_std(skill_id), is_boss);
+}
+
+double WroughtwildSim::bleed_applied(const String& skill_id, bool is_boss) const {
+    if (!require_loaded("bleed_applied")) {
+        return 0.0;
+    }
+    return wroughtwild::grammar::bleedApplied(*tuning_, active_mods(), to_std(skill_id), is_boss);
+}
+
 Dictionary WroughtwildSim::chill_status() const {
     Dictionary d;
     if (require_loaded("chill_status")) {
@@ -1377,6 +1486,49 @@ Dictionary WroughtwildSim::chill_status() const {
         d["freeze_duration_s"] = tuning_->grammar.chill.freezeDurationS;
         d["decay_per_s"] = tuning_->grammar.chill.decayPerS;
     }
+    return d;
+}
+
+namespace {
+
+Dictionary dot_status_entry(const wroughtwild::grammar::DotStatus& status) {
+    Dictionary d;
+    d["buildup_max"] = status.buildupMax;
+    d["decay_per_s"] = status.decayPerS;
+    d["duration_s"] = status.durationS;
+    d["damage_per_s"] = status.damagePerS;
+    d["moving_multiplier"] = status.movingMultiplier;
+    return d;
+}
+
+} // namespace
+
+Dictionary WroughtwildSim::ignite_status() const {
+    if (!require_loaded("ignite_status")) {
+        return Dictionary();
+    }
+    return dot_status_entry(wroughtwild::grammar::igniteStatus(*tuning_, active_mods()));
+}
+
+Dictionary WroughtwildSim::bleed_status() const {
+    if (!require_loaded("bleed_status")) {
+        return Dictionary();
+    }
+    return dot_status_entry(wroughtwild::grammar::bleedStatus(*tuning_, active_mods()));
+}
+
+Dictionary WroughtwildSim::proliferate_for() const {
+    Dictionary d;
+    d["enabled"] = false;
+    if (!require_loaded("proliferate_for")) {
+        return d;
+    }
+    const auto params = wroughtwild::grammar::proliferateFor(*tuning_, active_mods());
+    d["enabled"] = params.enabled;
+    d["radius_m"] = params.radiusM;
+    d["spread_buildup"] = params.spreadBuildup;
+    // Bosses resist spread the way they resist any ignite hit.
+    d["spread_buildup_boss"] = params.spreadBuildup * tuning_->grammar.ignite.bossBuildupMultiplier;
     return d;
 }
 
@@ -1393,6 +1545,7 @@ Dictionary WroughtwildSim::shatter_for(const String& skill_id) const {
     d["nova_damage_type"] = to_godot(params.novaDamageType);
     d["nova_radius_m"] = params.novaRadiusM;
     d["executes_frozen"] = params.executesFrozen;
+    d["executes_boss"] = params.executesBoss;
     return d;
 }
 
@@ -1509,7 +1662,6 @@ Dictionary WroughtwildSim::item_base(const String& base_id) const {
     d["id"] = to_godot(base->id);
     d["display_name"] = to_godot(base->displayName);
     d["slot"] = to_godot(base->slot);
-    d["grants_skill"] = to_godot(base->grantsSkill);
     d["material"] = to_godot(base->material);
     Dictionary implicit;
     for (const auto& [key, value] : base->implicitProperties) {

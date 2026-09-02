@@ -24,9 +24,9 @@ the increased/more resolver, catalyst tempering).
 Included:
 
 - **Three equipment slots:** `weapon` (new), `chest` (exists), `charm` (new).
-  A weapon carries the *delivery* implicit (a Frost Sceptre makes Frost Orb the
-  weapon's skill; an Iron Mace carries the strikes); chest carries defence;
-  charm carries one build-defining mod.
+  A weapon carries offensive implicits, chest carries defence, charm carries
+  one build-defining mod. *(Since D-016 no slot grants a skill — skills are
+  learned from pages; gear only scales them by tag.)*
 - **Bases** (all craftable at the forge, all data): Iron Mace, Frost Sceptre,
   Iron Chest Armour (exists), Ember Charm. Wood and stone remain construction
   families; gear is iron with a catalyst-flavoured accent.
@@ -63,11 +63,12 @@ direction, 31 Aug 2026).
 
 ## Implemented so far (slice 1, 1 September 2026)
 
-- `items.json` v2: one `modifiers[]` pool (ten modifiers, each with tags,
-  `applies_to`, an effect key, tiers and a `design_purpose`), three `slots`,
-  three `rarities`, four bases (Iron Mace, Frost Sceptre, Iron Chest Armour,
-  Ember Charm) with implicit modifiers and `grants_skill`. `grammar.json`
-  no longer carries skill mods.
+- `items.json` v2: one `modifiers[]` pool (each with tags, `applies_to`, an
+  effect key, tiers and a `design_purpose`), three `slots`, three
+  `rarities`, five bases (Iron Mace, Frost Sceptre, Ember Wand, Iron Chest
+  Armour, Ember Charm) with implicit modifiers. `grammar.json` no longer
+  carries skill mods, and since D-016 no base has `grants_skill` — the
+  loader rejects it.
 - `sim`: `rollRarityItem`, `gearMods` (the active set from worn gear),
   `resolve` over magnitudes, `skillDamage`, `skillCooldownSeconds`,
   `deriveStats` via effect keys, pack items in the economy and the save,
@@ -118,9 +119,12 @@ Proposed for Wave 2:
 5. **Rarity is count, not a stat:** plain 0, keen 1–2, wrought 3–4 rolled
    mods, each distinct, each tier-rolled by the source (trial stage index or
    pack tier decides the tier band; data).
-6. **Weapon decides delivery.** Skills stay data in `skills.json`; a weapon's
-   implicit `grants_skill` puts that skill on the bar. With no weapon the
-   player has the bare strikes (start-with-nothing still holds).
+6. **Skills are found, not worn** (D-016, superseding slice 1's "weapon
+   decides delivery"). Skills stay data in `skills.json` with a `delivery`,
+   tags and a `drop_weight`; the starting four fill the free bar and the
+   rest arrive as mob-dropped skill pages. Gear never puts a skill on the
+   bar — its modifiers scale whatever tagged skills the player fights with
+   (start-with-nothing still holds: the starting four need no gear at all).
 7. **Equip anywhere from the pack** (the inventory screen), not only at the
    forge; tempering stays at the forge. Swapping returns the old item to the
    pack *with* its mods (the current "returns as a bare base" rule goes —

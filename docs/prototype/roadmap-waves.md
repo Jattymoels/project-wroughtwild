@@ -126,9 +126,27 @@ wave. **First slice landed 1 Sep 2026:** the unified modifier pool in
 `items.json` (ten modifiers, three slots, three rarities, four bases with
 implicit modifiers), rolled items that feed both derived stats and the
 active modifier set, trial rooms dropping keen/wrought gear, pack items
-in the save, and item cards in the pack screen. Next: the weapon deciding
-which skills sit on the bar, world drops, the compare view. Uniques are
-deferred by owner direction (noted in the items spec).
+in the save, and item cards in the pack screen. Uniques are deferred by
+owner direction (noted in the items spec). Still ahead: the compare view.
+
+### Spell-grammar track *(landed 2 Sep 2026; D-016)*
+
+Owner steer (2 Sep 2026): PoE's many-skills-with-interacting-grammars over
+Diablo/Last-Epoch gear-defined archetypes — so "the weapon decides
+delivery" was dropped before it shipped. **Skills are found, not worn:**
+seven skills in `skills.json` (the starting four plus Ember Bolt, Rend and
+Frost Nova as mob-dropped **skill pages**), a free four-slot bar on keys
+1–4 (Shift dashes wherever Dash sits), assignment in the pack screen, the
+loadout in the save. Three statuses (chill/freeze, **ignite**, **bleed**
+with its walking tax), two hooks by tag (**shatter** — which now novas a
+frozen boss and thaws it rather than executing, `executes_boss` tunable —
+and **proliferate**), nine more tag-targeted modifiers, the Ember Wand,
+and per-kill world drops: materials, rolled keen gear and pages on
+independent seed streams (a gear pickup remembers only its kill; the sim
+re-rolls the identical item on claim). Balance oracle untouched: encounters
+still fight with the starting kit. Details in the skill-grammar spec's
+[Implemented](../systems/skill-grammar.md#implemented-the-wave-2-grammar-slice-2-september-2026)
+section.
 
 **Owner playtest verdict (1 Sep 2026):** "I like the gameplay loop so far."
 Base building was barely exercised in that run; its improvement and

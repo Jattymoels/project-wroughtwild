@@ -14,20 +14,25 @@ const TILE_SIZE := Vector2(122, 66)
 const MAX_HEIGHT_FRACTION := 0.8
 
 var sim: WroughtwildSim
+## Set by the player: bar assignments route through PlayerCombat so the
+## action bar hears loadout_changed. The panel works sim-only without it.
+var combat: PlayerCombat
 
 var _root: PanelContainer
 var _scroll: ScrollContainer
 var _tiles: GridContainer
 var _empty: Label
 var _gear: VBoxContainer
+var _skills: VBoxContainer
 var _worn: VBoxContainer
 var _vitals: Label
 var _mods: VBoxContainer
 var _debug: VBoxContainer
 var _message: Label
-## Test surface: tiles and gear cards shown by the last refresh.
+## Test surface: tiles, gear cards and skill rows shown by the last refresh.
 var tile_count := 0
 var gear_count := 0
+var skill_row_count := 0
 
 
 func _ready() -> void:
@@ -88,6 +93,10 @@ func _ready() -> void:
 	_gear = VBoxContainer.new()
 	_gear.add_theme_constant_override("separation", 6)
 	left.add_child(_gear)
+	left.add_child(_section("Skills — press 1–4 to slot (Shift dashes)"))
+	_skills = VBoxContainer.new()
+	_skills.add_theme_constant_override("separation", 6)
+	left.add_child(_skills)
 
 	var right := VBoxContainer.new()
 	right.custom_minimum_size = Vector2(360, 0)
@@ -180,6 +189,21 @@ func set_mod_active(mod_id: StringName, active: bool) -> void:
 	refresh()
 
 
+## Put a known skill in a bar slot ("" clears it). Routes through
+## PlayerCombat when wired so the action bar rebuilds.
+func assign_skill(skill_id: String, slot: int) -> bool:
+	var ok := combat.assign_bar_slot(slot, skill_id) if combat != null \
+		else sim.set_bar_slot(slot, skill_id)
+	if not ok:
+		_message.text = "That cannot go there."
+	elif skill_id == "":
+		_message.text = "Slot %d cleared." % (slot + 1)
+	else:
+		_message.text = "Slot %d set." % (slot + 1)
+	refresh()
+	return ok
+
+
 # --- rendering ---------------------------------------------------------------
 
 func refresh() -> void:
@@ -187,6 +211,7 @@ func refresh() -> void:
 		return
 	_refresh_tiles()
 	_refresh_gear()
+	_refresh_skills()
 	_refresh_worn()
 	var ds: Dictionary = sim.derived_stats()
 	_vitals.text = "Life %d  ·  armour %d  ·  fire resistance %d%%  ·  area +%d%%" % [
@@ -330,6 +355,55 @@ func _refresh_gear() -> void:
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.modulate = UiTheme.MUTED
 		_gear.add_child(none)
+
+
+## One row per known skill (D-016: skills are found, not worn): name,
+## delivery and tags, then a button per bar slot. The lit button is where
+## the skill sits; pressing it again clears the slot, pressing another
+## number moves the skill there.
+func _refresh_skills() -> void:
+	_clear(_skills)
+	skill_row_count = 0
+	var bar := sim.skill_bar()
+	for id in sim.known_skill_ids():
+		var view: Dictionary = sim.combat_skill(id)
+		var card := PanelContainer.new()
+		card.add_theme_stylebox_override("panel", UiTheme.card(false))
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 10)
+		card.add_child(row)
+		var column := VBoxContainer.new()
+		column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		column.add_theme_constant_override("separation", 1)
+		row.add_child(column)
+		var title := Label.new()
+		title.text = view.get("display_name", id)
+		column.add_child(title)
+		var detail := Label.new()
+		var tags: PackedStringArray = view.get("tags", PackedStringArray())
+		detail.text = "%s  ·  %s" % [view.get("delivery", "?"), " / ".join(tags)]
+		detail.add_theme_font_size_override("font_size", 12)
+		detail.modulate = UiTheme.MUTED
+		column.add_child(detail)
+		var in_slot := bar.find(id)
+		for slot in bar.size():
+			var button := Button.new()
+			button.text = str(slot + 1)
+			button.toggle_mode = true
+			button.button_pressed = slot == in_slot
+			button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+			button.pressed.connect(_on_skill_slot_button.bind(String(id), slot))
+			row.add_child(button)
+		_skills.add_child(card)
+		skill_row_count += 1
+
+
+func _on_skill_slot_button(skill_id: String, slot: int) -> void:
+	var bar := sim.skill_bar()
+	if slot < bar.size() and bar[slot] == skill_id:
+		assign_skill("", slot)
+	else:
+		assign_skill(skill_id, slot)
 
 
 func _refresh_worn() -> void:

@@ -119,7 +119,11 @@ std::string toJson(const SaveGame& game) {
         if (i) out << ",";
         writeItem(out, game.economy.packItems[i]);
     }
-    out << "]},\"equipment\":{";
+    out << "],\"known_skills\":";
+    writeStringList(out, game.economy.knownSkills);
+    out << ",\"skill_bar\":";
+    writeStringList(out, game.economy.skillBar);
+    out << "},\"equipment\":{";
 
     bool firstSlot = true;
     for (const auto& [slot, item] : game.equipment.slots) {
@@ -160,6 +164,9 @@ SaveGame fromJson(const std::string& text) {
     if (auto pack = eco.find("pack_items"))
         for (const auto& itemValue : pack->asArray())
             game.economy.packItems.push_back(readItem(*itemValue));
+    // Saves written before D-016 carry no loadout; importState starts one.
+    if (auto known = eco.find("known_skills")) game.economy.knownSkills = readStringList(*known);
+    if (auto bar = eco.find("skill_bar")) game.economy.skillBar = readStringList(*bar);
 
     for (const auto& [slot, itemValue] : doc->get("equipment").asObject())
         game.equipment.slots[slot] = readItem(*itemValue);

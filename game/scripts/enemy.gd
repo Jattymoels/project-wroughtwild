@@ -38,15 +38,30 @@ var _give_up_timer := 0.0
 var _flash_left := 0.0
 var _material: StandardMaterial3D
 var _player: WroughtwildPlayer
+var _sim: WroughtwildSim
 
-## Grammar spike: chill buildup toward the freeze threshold. All numbers
-## come from the sim's chill_status/chill_applied; a frozen enemy is a
-## solid, harmless block of ice until the timer runs out.
+## Status grammar: buildup toward each threshold comes from the sim's
+## *_applied numbers; the rules (max, decay, durations, ticks) from
+## chill_status/ignite_status/bleed_status. A frozen enemy is a solid,
+## harmless block of ice; a burning one ticks fire damage; a bleeding one
+## bleeds harder while it walks. Boss shares all of this via the
+## _configure_statuses/_tick_statuses helpers.
 var chill := 0.0
 var frozen_left := 0.0
+var ignite := 0.0
+var burning_left := 0.0
+var bleed := 0.0
+var bleeding_left := 0.0
 var _chill_max := 100.0
 var _chill_decay := 30.0
 var _freeze_duration := 2.5
+var _ignite_max := 100.0
+var _ignite_decay := 8.0
+var _burn_dps := 0.0
+var _bleed_max := 100.0
+var _bleed_decay := 8.0
+var _bleed_dps := 0.0
+var _bleed_move_mult := 1.0
 var _base_albedo := Color.WHITE
 
 @onready var _label: Label3D = $Label3D
@@ -100,10 +115,7 @@ func configure(sim: WroughtwildSim) -> void:
 	separation_radius = horde.get("separation_radius_m", 1.1)
 	separation_strength = horde.get("separation_strength_mps", 3.0)
 
-	var chill_rules: Dictionary = sim.chill_status()
-	_chill_max = chill_rules.get("buildup_max", 100.0)
-	_chill_decay = chill_rules.get("decay_per_s", 30.0)
-	_freeze_duration = chill_rules.get("freeze_duration_s", 2.5)
+	_configure_statuses(sim)
 
 	_material = StandardMaterial3D.new()
 	match behaviour:
@@ -136,6 +148,22 @@ func is_frozen() -> bool:
 	return frozen_left > 0.0
 
 
+## Reads every status rule from the sim. Boss calls this too: statuses are
+## the one piece of enemy behaviour the whole bestiary shares.
+func _configure_statuses(sim: WroughtwildSim) -> void:
+	_sim = sim
+	var chill_rules: Dictionary = sim.chill_status()
+	_chill_max = chill_rules.get("buildup_max", 100.0)
+	_chill_decay = chill_rules.get("decay_per_s", 30.0)
+	_freeze_duration = chill_rules.get("freeze_duration_s", 2.5)
+	var ignite_rules: Dictionary = sim.ignite_status()
+	_ignite_max = ignite_rules.get("buildup_max", 100.0)
+	_ignite_decay = ignite_rules.get("decay_per_s", 8.0)
+	var bleed_rules: Dictionary = sim.bleed_status()
+	_bleed_max = bleed_rules.get("buildup_max", 100.0)
+	_bleed_decay = bleed_rules.get("decay_per_s", 8.0)
+
+
 ## Chill from the sim's numbers; crossing the threshold freezes solid.
 func apply_chill(amount: float) -> void:
 	if amount <= 0.0 or is_frozen() or life <= 0.0:
@@ -144,40 +172,146 @@ func apply_chill(amount: float) -> void:
 	if chill >= _chill_max:
 		chill = 0.0
 		frozen_left = _freeze_duration
-		_windup_left = 0.0
-		if _material != null:
-			_material.albedo_color = Color(0.55, 0.82, 1.0)
-			_material.emission_enabled = true
-			_material.emission = Color(0.5, 0.8, 1.0)
-			_material.emission_energy_multiplier = 0.8
+		_on_frozen()
+		_refresh_look()
 
 
-func _thaw() -> void:
+## Interrupts whatever the enemy was doing when it froze. Boss extends this
+## to cancel an inhale.
+func _on_frozen() -> void:
+	_windup_left = 0.0
+
+
+## Ignite buildup; crossing the threshold sets the mob burning. Duration and
+## tick are snapshotted from the sim at ignition, so the burn a mob carries
+## reflects the gear that lit it. Re-igniting refreshes, never stacks.
+func apply_ignite(amount: float) -> void:
+	if amount <= 0.0 or life <= 0.0:
+		return
+	ignite += amount
+	if ignite >= _ignite_max:
+		ignite = 0.0
+		var rules: Dictionary = _sim.ignite_status() if _sim != null else {}
+		burning_left = rules.get("duration_s", 4.0)
+		_burn_dps = rules.get("damage_per_s", 0.0)
+		_refresh_look()
+
+
+## Bleed buildup; crossing the threshold opens a wound that ticks harder
+## while the mob walks (the chasing train pays for chasing).
+func apply_bleed(amount: float) -> void:
+	if amount <= 0.0 or life <= 0.0:
+		return
+	bleed += amount
+	if bleed >= _bleed_max:
+		bleed = 0.0
+		var rules: Dictionary = _sim.bleed_status() if _sim != null else {}
+		bleeding_left = rules.get("duration_s", 5.0)
+		_bleed_dps = rules.get("damage_per_s", 0.0)
+		_bleed_move_mult = rules.get("moving_multiplier", 1.0)
+		_refresh_look()
+
+
+## Public: the shatter hook thaws a nova'd boss from outside.
+func thaw() -> void:
 	frozen_left = 0.0
-	if _material != null:
-		_material.albedo_color = _base_albedo
-		_material.emission_enabled = false
+	_refresh_look()
 
 
-func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+## One tick of the shared status clocks: freeze countdown, buildup decay,
+## burn and bleed damage. Returns true while frozen - the caller must stand
+## still and skip its brain. Boss calls this from its own _physics_process.
+func _tick_statuses(delta: float) -> bool:
 	if _flash_left > 0.0:
 		_flash_left -= delta
-		if _flash_left <= 0.0 and _material != null and not is_frozen():
-			_material.emission_enabled = false
+		if _flash_left <= 0.0:
+			_refresh_look()
+
+	# DoTs tick even through ice: freeze holds the mob, not the fire.
+	if burning_left > 0.0:
+		burning_left -= delta
+		take_damage(_burn_dps * delta, false)
+		if burning_left <= 0.0:
+			_refresh_look()
+	else:
+		ignite = maxf(0.0, ignite - _ignite_decay * delta)
+	if bleeding_left > 0.0:
+		bleeding_left -= delta
+		var moving := Vector2(velocity.x, velocity.z).length() > 0.5
+		var mult := _bleed_move_mult if moving else 1.0
+		take_damage(_bleed_dps * mult * delta, false)
+		if bleeding_left <= 0.0:
+			_refresh_look()
+	else:
+		bleed = maxf(0.0, bleed - _bleed_decay * delta)
 
 	# Frozen: a solid, harmless block. Trains pile up behind it (D-012:
 	# your damage builds walls); no thinking, no attacking, no walking.
 	if is_frozen():
 		frozen_left -= delta
 		if frozen_left <= 0.0:
-			_thaw()
+			thaw()
+		return frozen_left > 0.0
+	chill = maxf(0.0, chill - _chill_decay * delta)
+	return false
+
+
+## The one place the material is decided. Priority: ice, then the hit
+## flash, then fire, then blood, then the behaviour's base colour.
+func _refresh_look() -> void:
+	if _material == null:
+		return
+	if is_frozen():
+		_material.albedo_color = Color(0.55, 0.82, 1.0)
+		_material.emission_enabled = true
+		_material.emission = Color(0.5, 0.8, 1.0)
+		_material.emission_energy_multiplier = 0.8
+	elif _flash_left > 0.0:
+		_material.albedo_color = _base_albedo
+		_material.emission_enabled = true
+		_material.emission = Color(1.0, 1.0, 0.9)
+		_material.emission_energy_multiplier = 1.6
+	elif burning_left > 0.0:
+		_material.albedo_color = _base_albedo.lerp(Color(1.0, 0.4, 0.05), 0.55)
+		_material.emission_enabled = true
+		_material.emission = Color(1.0, 0.35, 0.05)
+		_material.emission_energy_multiplier = 1.1
+	elif bleeding_left > 0.0:
+		_material.albedo_color = _base_albedo.lerp(Color(0.5, 0.02, 0.02), 0.6)
+		_material.emission_enabled = false
+	else:
+		_material.albedo_color = _base_albedo
+		_material.emission_enabled = false
+
+
+## A burning mob's death spreads its fire (the proliferate hook): every mob
+## within the sim's radius receives spread buildup, bosses through their
+## resistance. A dense pack burns down from one kill.
+func _proliferate() -> void:
+	if _sim == null:
+		return
+	var params: Dictionary = _sim.proliferate_for()
+	if not params.get("enabled", false):
+		return
+	var radius: float = params.get("radius_m", 0.0)
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node == self or not (node is Enemy) or not is_instance_valid(node):
+			continue
+		var other := node as Enemy
+		if global_position.distance_to(other.global_position) > radius:
+			continue
+		var key := "spread_buildup_boss" if other is Boss else "spread_buildup"
+		other.apply_ignite(params.get(key, 0.0))
+
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	if _tick_statuses(delta):
 		velocity.x = 0.0
 		velocity.z = 0.0
 		move_and_slide()
 		return
-	chill = maxf(0.0, chill - _chill_decay * delta)
 
 	var player := _find_player()
 	if player == null:
@@ -271,22 +405,23 @@ func force_attack() -> float:
 	return player.combat.take_hit(damage, damage_type, display_name)
 
 
-func take_damage(amount: float) -> void:
+func take_damage(amount: float, flash: bool = true) -> void:
 	if life <= 0.0:
 		return
 	life = maxf(0.0, life - amount)
 	_refresh_label()
-	# Hit feedback: a brief white-hot flash. Taking damage also wakes the
-	# enemy - shooting a distant mob pulls it (D-012 stray-pull).
-	if _material != null:
-		_material.emission_enabled = true
-		_material.emission = Color(1.0, 1.0, 0.9)
-		_material.emission_energy_multiplier = 1.6
+	# Hit feedback: a brief white-hot flash (DoT ticks pass flash=false so a
+	# burn does not strobe). Taking damage also wakes the enemy - shooting a
+	# distant mob pulls it (D-012 stray-pull).
+	if flash:
 		_flash_left = 0.12
+		_refresh_look()
 	if state == "idle":
 		state = "chase"
 		_give_up_timer = 0.0
 	if life <= 0.0:
+		if burning_left > 0.0:
+			_proliferate()
 		died.emit(self)
 		remove_from_group("enemies")
 		queue_free()

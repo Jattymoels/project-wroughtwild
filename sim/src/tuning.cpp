@@ -82,6 +82,13 @@ const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) con
 const EnemyDef* WorldTable::findEnemy(const std::string& id) const { return findById(enemies, id); }
 const GatherSite* WorldTable::findSite(const std::string& id) const { return findById(gatheringSites, id); }
 const CraftSkillDef* SkillTable::findCraftSkill(const std::string& id) const { return findById(craftSkills, id); }
+const CombatSkillDef* SkillTable::findCombatSkill(const std::string& id) const { return findById(combatSkills, id); }
+std::vector<std::string> SkillTable::startingSkillIds() const {
+    std::vector<std::string> ids;
+    for (const auto& def : combatSkills)
+        if (def.starting) ids.push_back(def.id);
+    return ids;
+}
 const ItemBase* ItemTable::findBase(const std::string& id) const { return findById(itemBases, id); }
 const BoonDef* BoonTable::findBoon(const std::string& id) const { return findById(boons, id); }
 
@@ -180,17 +187,27 @@ SkillTable loadSkills(const std::string& path) {
         table.craftSkills.push_back(std::move(def));
     }
 
+    static const std::vector<std::string> deliveries = {"cone", "strike", "projectile", "dash"};
     for (const auto& s : doc->get("combat_skills").asArray()) {
         CombatSkillDef def;
         for (const auto& [key, value] : s->asObject()) {
             if (key == "id") def.id = value->asString();
             else if (key == "display_name") def.displayName = value->asString();
+            else if (key == "delivery") def.delivery = value->asString();
             else if (key == "tags") def.tags = readStringArray(*value);
+            else if (key == "starting") def.starting = value->asBool();
+            else if (key == "drop_weight") def.dropWeight = value->asNumber();
             else if (key == "design_purpose") continue;
             else def.numbers[key] = value->asNumber();
         }
+        if (std::find(deliveries.begin(), deliveries.end(), def.delivery) == deliveries.end())
+            throw std::runtime_error("skills: combat skill " + def.id + " has unknown delivery " + def.delivery);
+        if (def.dropWeight < 0.0)
+            throw std::runtime_error("skills: combat skill " + def.id + " drop_weight must not be negative");
         table.combatSkills.push_back(std::move(def));
     }
+    if (table.startingSkillIds().empty())
+        throw std::runtime_error("skills: at least one combat skill must be starting");
 
     return table;
 }
@@ -244,7 +261,8 @@ ItemTable loadItems(const std::string& path) {
         if (auto slot = b->find("slot")) base.slot = slot->asString();
         if (std::find(table.slots.begin(), table.slots.end(), base.slot) == table.slots.end())
             throw std::runtime_error("items: base " + base.id + " uses unknown slot " + base.slot);
-        if (auto skill = b->find("grants_skill")) base.grantsSkill = skill->asString();
+        if (b->find("grants_skill"))
+            throw std::runtime_error("items: base " + base.id + " grants_skill is gone (D-016: skills are learned, not worn)");
         if (auto implicit = b->find("implicit_properties")) base.implicitProperties = readNumberMap(*implicit);
         if (auto mods = b->find("implicit_modifiers")) {
             for (const auto& im : mods->asArray()) {
@@ -383,18 +401,37 @@ GrammarTable loadGrammar(const std::string& path) {
     auto doc = json::parseFile(path);
     GrammarTable table;
 
-    const Value& chill = doc->get("statuses").get("chill");
+    const Value& statuses = doc->get("statuses");
+    const Value& chill = statuses.get("chill");
     table.chill.buildupMax = chill.get("buildup_max").asNumber();
     table.chill.freezeDurationS = chill.get("freeze_duration_s").asNumber();
     table.chill.decayPerS = chill.get("decay_per_s").asNumber();
     table.chill.bossBuildupMultiplier = chill.get("boss_buildup_multiplier").asNumber();
 
-    const Value& shatter = doc->get("hooks").get("shatter");
-    table.shatter.triggerSkills = readStringArray(shatter.get("trigger_skills"));
+    auto readDot = [](const Value& v, DotStatusDef& def) {
+        def.buildupMax = v.get("buildup_max").asNumber();
+        def.durationS = v.get("duration_s").asNumber();
+        def.damagePerS = v.get("damage_per_s").asNumber();
+        def.decayPerS = v.get("decay_per_s").asNumber();
+        def.bossBuildupMultiplier = v.get("boss_buildup_multiplier").asNumber();
+        if (auto moving = v.find("moving_multiplier")) def.movingMultiplier = moving->asNumber();
+    };
+    readDot(statuses.get("ignite"), table.ignite);
+    readDot(statuses.get("bleed"), table.bleed);
+
+    const Value& hooks = doc->get("hooks");
+    const Value& shatter = hooks.get("shatter");
+    table.shatter.triggerTags = readStringArray(shatter.get("trigger_tags"));
     table.shatter.novaDamage = shatter.get("nova_damage").asNumber();
     table.shatter.novaDamageType = shatter.get("nova_damage_type").asString();
     table.shatter.novaRadiusM = shatter.get("nova_radius_m").asNumber();
     table.shatter.executesFrozen = shatter.get("executes_frozen").asBool();
+    table.shatter.executesBoss = shatter.get("executes_boss").asBool();
+
+    const Value& proliferate = hooks.get("proliferate");
+    table.proliferate.enabled = proliferate.get("enabled").asBool();
+    table.proliferate.radiusM = proliferate.get("radius_m").asNumber();
+    table.proliferate.spreadBuildup = proliferate.get("spread_buildup").asNumber();
 
     // skill_mods moved to items.json modifiers (D-014); an old file is tolerated.
     return table;
@@ -421,10 +458,25 @@ WorldTable loadWorld(const std::string& path) {
         if (auto loot = e->find("loot")) {
             for (const auto& entry : loot->asArray()) {
                 LootEntry drop;
-                drop.item = entry->get("item").asString();
-                drop.minCount = entry->get("min").asInt();
-                drop.maxCount = entry->get("max").asInt();
                 drop.chance = entry->get("chance").asNumber();
+                if (auto gear = entry->find("gear")) {
+                    // {"gear": "<rarity>", "tier": n, "chance": p}
+                    drop.kind = "gear";
+                    drop.gearRarity = gear->asString();
+                    if (auto tier = entry->find("tier")) drop.gearTier = tier->asInt();
+                } else if (auto page = entry->find("skill_page")) {
+                    // {"skill_page": true, "chance": p}
+                    if (!page->asBool())
+                        throw std::runtime_error("world: enemy " + def.id + " skill_page entry must be true");
+                    drop.kind = "skill_page";
+                } else {
+                    // {"item": "<material>", "min": a, "max": b, "chance": p}
+                    drop.item = entry->get("item").asString();
+                    drop.minCount = entry->get("min").asInt();
+                    drop.maxCount = entry->get("max").asInt();
+                    if (drop.maxCount < drop.minCount)
+                        throw std::runtime_error("world: enemy " + def.id + " loot " + drop.item + " has max below min");
+                }
                 def.loot.push_back(std::move(drop));
             }
         }

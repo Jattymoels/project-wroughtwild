@@ -1,8 +1,10 @@
 # The Skill Grammar — First-Person Build Composition
 
-**Status:** Ideation for Wave 2 (owner-directed, 1 September 2026). Nothing
-here is an accepted decision; this is the design space to build Wave 2 from.
-**Related:** D-012 (first-person, trainable hordes), roadmap Waves 2–4,
+**Status:** Ideation for Wave 2 (owner-directed, 1 September 2026); the
+first grammar slice is implemented (2 September 2026) — see
+[Implemented](#implemented-the-wave-2-grammar-slice-2-september-2026).
+**Related:** D-012 (first-person, trainable hordes), D-016 (skills are
+found, not worn), roadmap Waves 2–4,
 [combat-and-builds.md](combat-and-builds.md).
 
 ## The thesis
@@ -161,6 +163,45 @@ threshold") the same way it tuned the Tyrant.
 - **Multiplier runaway**: the increased/more split, above.
 - **Performance**: propagation fan-out is capped per cast generation;
   greybox VFX are meshes and tints, not particle systems.
+
+## Implemented: the Wave 2 grammar slice (2 September 2026)
+
+**Skills are found, not worn (D-016).** Each skill is one entry in
+`skills.json`: a `delivery` the engine dispatches on (`cone`, `strike`,
+`projectile`, `dash`), tags, payload numbers, `starting` and `drop_weight`.
+The starting four (Area Strike, Heavy Strike, Frost Orb, Dash) fill a free
+four-slot bar; Ember Bolt, Rend and Frost Nova arrive as mob-dropped skill
+pages (weighted among skills the player does not know — a page is never a
+duplicate). Keys 1–4 cast the bar; Shift stays the dash reflex wherever
+Dash is slotted; the pack screen (I) assigns slots. Known skills and the
+bar are in the save (an old save resets to the starting loadout). Gear
+never grants a skill; hooks trigger by tag, never skill id — so a page
+found tomorrow joins the combos it is tagged for, which is the whole point.
+
+In play: three statuses (chill/freeze, ignite, bleed), two hooks (shatter,
+proliferate), forking, and per-skill spatial overrides (Frost Nova is a
+`cone` whose `cone_degrees` 360 makes it a ring). Statuses read on the mob
+silhouette: ice blue, flame rim, blood dark. The one deliberate deviation
+from the ideation list: `dash` replaced `ground` as the fourth delivery for
+now — ground patches want the Wave 3 mob pass to matter.
+
+**Where every number lives** (all tunable without touching code):
+
+| Knob | File | Keys |
+| --- | --- | --- |
+| Skill payloads, cooldowns, drop weights | `skills.json` | `combat_skills[]`: `base_damage`, `chill_buildup`/`ignite_buildup`/`bleed_buildup`, `fork_count`, `cooldown_seconds`, `starting`, `drop_weight` |
+| Status thresholds and DoTs | `grammar.json` | `statuses.*`: `buildup_max`, `decay_per_s`, `freeze_duration_s`/`duration_s`, `damage_per_s`, `moving_multiplier` (bleed), `boss_buildup_multiplier` |
+| Shatter | `grammar.json` | `hooks.shatter`: `trigger_tags` (attacks), `nova_damage`, `nova_radius_m`, `executes_frozen`, `executes_boss` (false: a frozen boss takes the nova and thaws) |
+| Proliferate | `grammar.json` | `hooks.proliferate`: `enabled`, `radius_m`, `spread_buildup` |
+| Tag-targeted modifiers | `items.json` | `modifiers[]`: `applies_to`, effect key (`add_*`/`increased_*`/`more_*`), tiers |
+| Projectile/arc space | `combat_realtime.json` | `skills.<id>`: `speed_mps`, `hit_radius_m`, `max_range_m`, `fork_range_m`, `cone_degrees` override |
+| Drop chances | `world.json` | per-enemy loot: `{"gear": rarity, "tier", "chance"}`, `{"skill_page": true, "chance"}` |
+
+Resolution is the day-one rule throughout:
+`(base + Σadd) × (1 + Σincreased) × Π(1 + more)` over mods whose
+`applies_to` tags intersect the skill's tags. A flat `add_<status>_buildup`
+roll gives a payload to a skill that lacks it (a Frostbite mace chills with
+plain strikes) — cross-pollination without sockets.
 
 ## What this means per wave
 

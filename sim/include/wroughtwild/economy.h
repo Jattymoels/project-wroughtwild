@@ -28,9 +28,12 @@ struct SkillState {
 // prototype maximum. xp_required_by_level[i] is the XP needed for level i+1.
 int levelForXp(const tuning::CraftSkillDef& skill, int xp);
 
+// How many skills the bar holds (D-016): four keys, any known skill in any.
+constexpr int kSkillBarSize = 4;
+
 class PlayerEconomy {
 public:
-    explicit PlayerEconomy(const tuning::Tuning& tuning) : tuning_(tuning) {}
+    explicit PlayerEconomy(const tuning::Tuning& tuning);
 
     Inventory inventory;
     std::map<std::string, int> currency;
@@ -38,10 +41,26 @@ public:
     // plain crafted gear stays a count in `inventory` until it is worn.
     std::vector<items::ItemInstance> packItems;
 
-    // --- skills ---
+    // --- craft skills ---
     int skillXp(const std::string& skillId) const;
     int skillLevel(const std::string& skillId) const;
     void grantSkillXp(const std::string& skillId, int amount);
+
+    // --- combat loadout (D-016: skills are learned, not worn) ---
+    // Known skills in learning order (the starting skills first), and the
+    // bar: kSkillBarSize slots, each a known skill id or "" for empty. A
+    // fresh character knows the starting skills and has them on the bar in
+    // skills.json order.
+    const std::vector<std::string>& knownSkills() const { return knownSkills_; }
+    const std::vector<std::string>& skillBar() const { return skillBar_; }
+    bool knowsSkill(const std::string& skillId) const;
+    // Learns a skill (a page drop): false when unknown to tuning or already
+    // known. A newly learned skill takes the first empty bar slot, if any.
+    bool learnSkill(const std::string& skillId);
+    // Puts a known skill (or "" to clear) into slot [0, kSkillBarSize). A
+    // skill already on the bar moves rather than duplicates. False when the
+    // slot is out of range or the skill is not known.
+    bool setBarSlot(int slot, const std::string& skillId);
 
     // --- crafting ---
     struct CraftFailure {
@@ -129,8 +148,12 @@ public:
         std::vector<std::string> fulfilledOrders;
         std::vector<std::string> worldEffects;
         std::vector<items::ItemInstance> packItems;
+        std::vector<std::string> knownSkills;
+        std::vector<std::string> skillBar;
     };
     State exportState() const;
+    // Restores a state; unknown skill ids are dropped, and an empty known
+    // list (a save from before D-016) falls back to the starting skills.
     void importState(const State& state);
 
     // --- salvage ---
@@ -139,12 +162,16 @@ public:
     bool salvage(const std::string& recipeId);
 
 private:
+    void resetLoadout(); // starting skills known and on the bar
+
     const tuning::Tuning& tuning_;
     std::map<std::string, SkillState> skills_;
     std::vector<std::string> availableStations_;
     std::map<std::string, int> craftCounts_; // recipe id -> non-order repetitions
     std::vector<std::string> fulfilledOrders_;
     std::vector<std::string> worldEffects_;
+    std::vector<std::string> knownSkills_;
+    std::vector<std::string> skillBar_; // always kSkillBarSize entries
 };
 
 } // namespace wroughtwild::economy

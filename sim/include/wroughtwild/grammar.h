@@ -3,12 +3,13 @@
 // The skill-grammar resolver (docs/systems/skill-grammar.md). Pure
 // functions: given the tuning tables, the set of active modifiers (with
 // magnitudes) and a skill, they produce the final numbers - fork counts,
-// chill buildup, shatter parameters, damage, cooldowns - using the
-// increased-vs-more rule from day one: add_* is flat, increased_* sums
-// additively within its bucket, more_* multiplies. The engine owns where
-// orbs fly and which mob a fork jumps to; every number here is the sim's
-// (ADR-0003). Since D-014 the modifiers come from worn gear
-// (items.json modifiers); the F1-F3 debug toggles add one at a fixed value.
+// status buildup, status damage and durations, hook parameters, damage,
+// cooldowns - using the increased-vs-more rule from day one: add_* is flat,
+// increased_* sums additively within its bucket, more_* multiplies. The
+// engine owns where projectiles fly, which mob a fork jumps to and when a
+// DoT ticks; every number here is the sim's (ADR-0003). Since D-014 the
+// modifiers come from worn gear (items.json modifiers); the F1-F3 debug
+// toggles add one at a fixed value.
 
 #include <string>
 #include <vector>
@@ -52,6 +53,8 @@ ActiveMod modAt(const tuning::ItemTable& table, const std::string& modifierId, d
 double defaultValue(const tuning::ModifierDef& def);
 
 // --- resolved views for one skill --------------------------------------------
+// Which skills the player has and which sit on the bar is the loadout's
+// business (economy.h, D-016); the grammar only resolves numbers for one.
 
 // Forks the skill's projectile splits into on impact (0 for non-forking).
 int forkCount(const tuning::Tuning& tuning, const ActiveMods& active,
@@ -61,10 +64,29 @@ int forkCount(const tuning::Tuning& tuning, const ActiveMods& active,
 double forkDamageFraction(const tuning::Tuning& tuning, const std::string& skillId,
                           int generation);
 
-// Chill buildup one hit of the skill applies (0 for non-chilling skills);
+// Status buildup one hit of the skill applies. A skill without that payload
+// contributes 0 of its own, but a flat add_<status>_buildup modifier whose
+// tags match still gives it one (a Frostbite mace chills with plain strikes);
 // isBoss applies the day-one boss status resistance.
 double chillApplied(const tuning::Tuning& tuning, const ActiveMods& active,
                     const std::string& skillId, bool isBoss);
+double igniteApplied(const tuning::Tuning& tuning, const ActiveMods& active,
+                     const std::string& skillId, bool isBoss);
+double bleedApplied(const tuning::Tuning& tuning, const ActiveMods& active,
+                    const std::string& skillId, bool isBoss);
+
+// A damage-over-time status once its buildup threshold is crossed. The
+// engine ticks damagePerS each second while the status lasts; bleed
+// multiplies its tick by movingMultiplier while the mob is walking.
+struct DotStatus {
+    double buildupMax = 100.0;
+    double decayPerS = 0.0;
+    double durationS = 0.0;
+    double damagePerS = 0.0;
+    double movingMultiplier = 1.0;
+};
+DotStatus igniteStatus(const tuning::Tuning& tuning, const ActiveMods& active);
+DotStatus bleedStatus(const tuning::Tuning& tuning, const ActiveMods& active);
 
 // The skill's base_damage after damage modifiers matching its tags.
 double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,
@@ -81,11 +103,22 @@ struct ShatterParams {
     std::string novaDamageType;
     double novaRadiusM = 0.0;
     bool executesFrozen = true;
+    bool executesBoss = false; // frozen bosses take the nova but survive the execute
 };
 
-// Shatter parameters when triggered by skillId (enabled=false when the
-// skill does not carry the hook). Radius honours shatter-tagged mods.
+// Shatter parameters when triggered by skillId: enabled when the skill
+// carries any of the hook's trigger tags (attacks, by the day-one rule).
+// Radius honours shatter-tagged mods.
 ShatterParams shatterFor(const tuning::Tuning& tuning, const ActiveMods& active,
                          const std::string& skillId);
+
+// Proliferate: a burning mob's death gives spreadBuildup of ignite to every
+// mob within radiusM. Radius honours proliferate-tagged mods.
+struct ProliferateParams {
+    bool enabled = false;
+    double radiusM = 0.0;
+    double spreadBuildup = 0.0;
+};
+ProliferateParams proliferateFor(const tuning::Tuning& tuning, const ActiveMods& active);
 
 } // namespace wroughtwild::grammar

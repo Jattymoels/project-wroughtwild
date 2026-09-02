@@ -8,7 +8,12 @@ signal life_changed(life: float, max_life: float)
 signal died
 ## A player hit connected with at least one enemy (HUD hitmarker).
 signal hit_landed(total_damage: float, kills: int)
+## Known skills or the bar changed (page learned, slot assigned, game
+## loaded); the action bar rebuilds itself from the sim.
+signal loadout_changed
 
+## The four starting skills, named for tests and legacy callers. Everything
+## else arrives as a skill page and is addressed through the bar (D-016).
 const AREA_SKILL := &"prototype_area_strike"
 const HEAVY_SKILL := &"prototype_heavy_strike"
 const DASH_SKILL := &"prototype_dash"
@@ -110,55 +115,214 @@ func _spend(skill_id: StringName) -> void:
 	cooldowns[skill_id] = cooldown_total(skill_id)
 
 
-## Area strike: every living enemy inside the radius AND inside the facing
-## cone takes one hit (D-012: area is the slice of the horde in front of
-## you). Returns how many were hit.
+## --- the skill bar (D-016) ---------------------------------------------------
+## Skills are learned, not worn: the sim owns which are known and which sit
+## on the four bar slots; the keys 1-4 cast whatever sits there, dispatched
+## by the skill's delivery shape.
+
+func bar_skills() -> PackedStringArray:
+	return sim.skill_bar()
+
+
+## Casts whatever sits in bar slot `slot` (0-based). False for an empty
+## slot, an unknown skill or one still on cooldown.
+func use_slot(slot: int) -> bool:
+	var bar := sim.skill_bar()
+	if slot < 0 or slot >= bar.size() or bar[slot] == "":
+		return false
+	return use_skill(StringName(bar[slot]))
+
+
+## The bar slot holding a dash-delivery skill, or -1: Shift is an alias for
+## it, so movement keeps its reflex key wherever Dash is slotted.
+func dash_slot() -> int:
+	var bar := sim.skill_bar()
+	for i in bar.size():
+		if skills.get(StringName(bar[i]), {}).get("delivery", "") == "dash":
+			return i
+	return -1
+
+
+## Casts one skill by id, dispatching on its delivery. The sim owns every
+## number; each delivery shape owns its space (ADR-0003).
+func use_skill(skill_id: StringName) -> bool:
+	var def: Dictionary = skills.get(skill_id, {})
+	if def.is_empty() or not is_ready(skill_id):
+		return false
+	match String(def.get("delivery", "")):
+		"cone":
+			_use_cone(skill_id)
+			return true
+		"strike":
+			return _use_strike(skill_id)
+		"projectile":
+			return _use_projectile(skill_id)
+		"dash":
+			return _use_dash(skill_id)
+	return false
+
+
+## Bar assignment and page learning route through here so the HUD hears
+## about it (loadout_changed).
+func assign_bar_slot(slot: int, skill_id: String) -> bool:
+	if not sim.set_bar_slot(slot, skill_id):
+		return false
+	loadout_changed.emit()
+	return true
+
+
+func learn_skill(skill_id: String) -> bool:
+	if not sim.learn_skill(skill_id):
+		return false
+	loadout_changed.emit()
+	return true
+
+
+## Named wrappers for the starting four (tests, legacy callers).
 func use_area() -> int:
-	if not is_ready(AREA_SKILL):
+	return _use_cone(AREA_SKILL)
+
+
+func use_heavy() -> bool:
+	return _use_strike(HEAVY_SKILL)
+
+
+func use_orb() -> bool:
+	return _use_projectile(ORB_SKILL)
+
+
+func use_dash() -> bool:
+	return _use_dash(DASH_SKILL)
+
+
+## Applies the skill's status payload to a struck enemy. Skills without a
+## payload apply 0s; a matching add_*_buildup gear roll can still give them
+## one (a Frostbite mace chills with plain strikes). Payload lands before
+## the damage so a killing blow that ignites leaves a burning corpse for
+## proliferate.
+func _apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool) -> void:
+	var id := String(skill_id)
+	enemy.apply_chill(sim.chill_applied(id, is_boss))
+	enemy.apply_ignite(sim.ignite_applied(id, is_boss))
+	enemy.apply_bleed(sim.bleed_applied(id, is_boss))
+
+
+## Cone delivery: every living enemy inside the radius AND inside the arc
+## takes one hit (D-012: area is the slice of the horde you are facing).
+## A per-skill cone_degrees in combat_realtime.json overrides the player's
+## first-person arc - 360 turns the cone into a nova ring. Returns hits.
+func _use_cone(skill_id: StringName) -> int:
+	if not is_ready(skill_id):
 		return 0
-	_spend(AREA_SKILL)
+	_spend(skill_id)
 	var enemies := alive_enemies()
 	if enemies.is_empty():
 		return 0
 	_ensure_fight()
 	var isolated := enemies.size() == 1
-	var radius: float = skills[AREA_SKILL]["base_area_radius"] * (1.0 + sim.derived_stats()["area_bonus"])
+	var radius: float = skills[skill_id]["base_area_radius"] * (1.0 + sim.derived_stats()["area_bonus"])
 	if isolated:
 		radius *= sim.combat_mods()["isolated_area_multiplier"]
+	var spatial: Dictionary = sim.realtime().get("skills", {}).get(String(skill_id), {})
+	var arc: float = spatial.get("cone_degrees", cone_degrees)
 	var forward := -player.global_transform.basis.z
 	forward.y = 0.0
 	forward = forward.normalized()
-	var cone_cos := cos(deg_to_rad(cone_degrees / 2.0))
+	var cone_cos := cos(deg_to_rad(arc / 2.0))
 	var hits := 0
 	var kills := 0
 	var total := 0.0
 	var to_shatter: Array = []
-	var shatter: Dictionary = sim.shatter_for(String(AREA_SKILL))
+	var shatter: Dictionary = sim.shatter_for(String(skill_id))
 	for enemy in enemies:
 		var to_enemy: Vector3 = enemy.global_position - player.global_position
 		to_enemy.y = 0.0
 		var distance := to_enemy.length()
 		if distance > radius:
 			continue
-		# Point-blank targets always count; beyond that, the cone decides.
+		# Point-blank targets always count; beyond that, the arc decides.
 		if distance > 0.6 and forward.dot(to_enemy / distance) < cone_cos:
 			continue
-		# The shatter hook (grammar spike): frozen enemies hit by a trigger
-		# skill shatter instead of taking the ordinary hit.
+		# The shatter hook: frozen enemies hit by a trigger skill shatter
+		# instead of taking the ordinary hit.
 		if shatter.get("enabled", false) and enemy.is_frozen():
 			to_shatter.append(enemy)
 			hits += 1
 			continue
-		last_hit_dealt = sim.player_hit_damage(AREA_SKILL, isolated)
+		_apply_payload(enemy, skill_id, enemy is Boss)
+		last_hit_dealt = sim.player_hit_damage(skill_id, isolated)
 		total += last_hit_dealt
 		enemy.take_damage(last_hit_dealt)
 		if enemy.life <= 0.0:
 			kills += 1
 		hits += 1
 
-	# Shatter cascade: each shattered mob dies releasing a cold nova; other
-	# FROZEN mobs inside the nova shatter too, so a frozen train chains down
-	# its own line. Every mob shatters at most once.
+	var cascade := _shatter_cascade(to_shatter, shatter)
+	total += cascade["damage"]
+	kills += cascade["kills"]
+	if hits > 0:
+		hit_landed.emit(total, kills)
+	return hits
+
+
+## Strike delivery: the nearest living enemy in front within melee reach.
+func _use_strike(skill_id: StringName) -> bool:
+	if not is_ready(skill_id):
+		return false
+	_spend(skill_id)
+	var target := _nearest_enemy_in_front(melee_reach)
+	if target == null:
+		return false
+	_ensure_fight()
+	# An attack on a frozen target cashes in the shatter combo instead.
+	var shatter: Dictionary = sim.shatter_for(String(skill_id))
+	if shatter.get("enabled", false) and target.is_frozen():
+		var cascade := _shatter_cascade([target], shatter)
+		hit_landed.emit(cascade["damage"], cascade["kills"])
+		return true
+	_apply_payload(target, skill_id, target is Boss)
+	last_hit_dealt = sim.player_hit_damage(skill_id, alive_enemies().size() == 1)
+	target.take_damage(last_hit_dealt)
+	hit_landed.emit(last_hit_dealt, 1 if target.life <= 0.0 else 0)
+	return true
+
+
+## Projectile delivery: fires from the eyes so first-person aim is the
+## delivery; flight, forks and payload live in SkillProjectile.
+func _use_projectile(skill_id: StringName) -> bool:
+	if not is_ready(skill_id):
+		return false
+	_spend(skill_id)
+	_ensure_fight()
+	var from: Vector3 = player.camera.global_position - player.camera.global_transform.basis.z * 0.6
+	var dir: Vector3 = -player.camera.global_transform.basis.z
+	SkillProjectile.launch(skill_id, self, player.world_root(), from, dir, 0, [])
+	return true
+
+
+## Dash delivery: a burst forward. Pure movement (D-012) - position, not
+## i-frames, is the defence.
+func _use_dash(skill_id: StringName) -> bool:
+	if not is_ready(skill_id):
+		return false
+	_spend(skill_id)
+	var forward := -player.global_transform.basis.z
+	forward.y = 0.0
+	forward = forward.normalized()
+	_dash_velocity = forward * (skills[skill_id].get("distance", 4.0) / dash_duration)
+	_dash_left = dash_duration
+	invulnerable_left = dash_invulnerable
+	return true
+
+
+## Shatter cascade: each shattered mob dies releasing a cold nova; other
+## FROZEN mobs inside the nova shatter too, so a frozen train chains down
+## its own line. Every mob shatters at most once. A frozen boss takes the
+## nova and thaws instead of dying, unless executes_boss is tuned on - the
+## freeze window is the reward, not a one-shot.
+func _shatter_cascade(to_shatter: Array, shatter: Dictionary) -> Dictionary:
+	var total := 0.0
+	var kills := 0
 	var shattered := {}
 	while not to_shatter.is_empty():
 		var victim: Enemy = to_shatter.pop_front()
@@ -167,10 +331,18 @@ func use_area() -> int:
 		shattered[victim.get_instance_id()] = true
 		var at: Vector3 = victim.global_position
 		_spawn_nova(at, shatter["nova_radius_m"])
-		if shatter.get("executes_frozen", true):
+		var executes: bool = shatter.get("executes_frozen", true) \
+			and (shatter.get("executes_boss", false) or not (victim is Boss))
+		if executes:
 			total += victim.life
 			victim.take_damage(victim.life)
 			kills += 1
+		else:
+			victim.thaw()
+			total += shatter["nova_damage"]
+			victim.take_damage(shatter["nova_damage"])
+			if victim.life <= 0.0:
+				kills += 1
 		for other in alive_enemies():
 			if shattered.has(other.get_instance_id()) or to_shatter.has(other):
 				continue
@@ -183,10 +355,7 @@ func use_area() -> int:
 				other.take_damage(shatter["nova_damage"])
 				if other.life <= 0.0:
 					kills += 1
-
-	if hits > 0:
-		hit_landed.emit(total, kills)
-	return hits
+	return {"damage": total, "kills": kills}
 
 
 ## A brief expanding ice sphere where a mob shattered (greybox VFX).
@@ -210,34 +379,6 @@ func _spawn_nova(at: Vector3, radius: float) -> void:
 	tween.tween_callback(mesh.queue_free)
 
 
-## Frost Orb (grammar spike): the sentence opener. Fires from the eyes so
-## first-person aim is the delivery.
-func use_orb() -> bool:
-	if not is_ready(ORB_SKILL):
-		return false
-	_spend(ORB_SKILL)
-	_ensure_fight()
-	var from: Vector3 = player.camera.global_position - player.camera.global_transform.basis.z * 0.6
-	var dir: Vector3 = -player.camera.global_transform.basis.z
-	FrostOrb.launch(self, player.world_root(), from, dir, 0, [])
-	return true
-
-
-## Heavy strike: the nearest living enemy in front within melee reach.
-func use_heavy() -> bool:
-	if not is_ready(HEAVY_SKILL):
-		return false
-	_spend(HEAVY_SKILL)
-	var target := _nearest_enemy_in_front(melee_reach)
-	if target == null:
-		return false
-	_ensure_fight()
-	last_hit_dealt = sim.player_hit_damage(HEAVY_SKILL, alive_enemies().size() == 1)
-	target.take_damage(last_hit_dealt)
-	hit_landed.emit(last_hit_dealt, 1 if target.life <= 0.0 else 0)
-	return true
-
-
 func _nearest_enemy_in_front(reach: float) -> Enemy:
 	var forward := -player.global_transform.basis.z
 	forward.y = 0.0
@@ -256,20 +397,6 @@ func _nearest_enemy_in_front(reach: float) -> Enemy:
 			best_distance = distance
 			best = enemy
 	return best
-
-
-## Dash: a burst forward with a short invulnerability window.
-func use_dash() -> bool:
-	if not is_ready(DASH_SKILL):
-		return false
-	_spend(DASH_SKILL)
-	var forward := -player.global_transform.basis.z
-	forward.y = 0.0
-	forward = forward.normalized()
-	_dash_velocity = forward * (skills[DASH_SKILL].get("distance", 4.0) / dash_duration)
-	_dash_left = dash_duration
-	invulnerable_left = dash_invulnerable
-	return true
 
 
 ## An enemy's raw hit arrives here; the sim decides what gets through.

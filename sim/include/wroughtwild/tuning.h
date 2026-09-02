@@ -100,10 +100,15 @@ struct CraftSkillDef {
     std::vector<int> xpRequiredByLevel; // cumulative XP needed to reach level i+1
 };
 
+// A combat skill (D-016): skills are learned, not worn. Each carries its own
+// delivery, tags and payload numbers; gear only scales them by tag.
 struct CombatSkillDef {
     std::string id;
     std::string displayName;
+    std::string delivery = "strike"; // cone | strike | projectile | dash - the engine's shape
     std::vector<std::string> tags;
+    bool starting = false;   // known from the first moment (and on the round model's bar)
+    double dropWeight = 0.0; // relative chance among unknown skills when a page drops (0 = never)
     std::map<std::string, double> numbers; // remaining numeric fields verbatim
 };
 
@@ -112,6 +117,9 @@ struct SkillTable {
     std::vector<CombatSkillDef> combatSkills;
 
     const CraftSkillDef* findCraftSkill(const std::string& id) const;
+    const CombatSkillDef* findCombatSkill(const std::string& id) const;
+    // Ids of the starting skills, in skills.json order.
+    std::vector<std::string> startingSkillIds() const;
 };
 
 // --- items.json --------------------------------------------------------------
@@ -151,7 +159,6 @@ struct ItemBase {
     std::string displayName;
     std::string material;
     std::string slot = "chest";
-    std::string grantsSkill; // the delivery skill a weapon carries ("" = none)
     std::map<std::string, double> implicitProperties;
     std::vector<ImplicitModifier> implicitModifiers;
     std::vector<std::string> allowedModifierTags;
@@ -220,11 +227,17 @@ struct PlayerBase {
     double resistanceCapPercent = 75.0;
 };
 
+// One line of a mob's loot table. Three kinds (D-016): a material stack, a
+// rolled gear piece of a rarity and tier, or a skill page that teaches one
+// skill the player does not yet know.
 struct LootEntry {
-    std::string item;
+    std::string kind = "item"; // item | gear | skill_page
+    std::string item;          // item kind: the material id
     int minCount = 1;
     int maxCount = 1;
     double chance = 1.0;
+    std::string gearRarity;    // gear kind: rarity id
+    int gearTier = 1;          // gear kind: modifier tier
 };
 
 struct EnemyDef {
@@ -379,17 +392,40 @@ struct ChillStatus {
     double bossBuildupMultiplier = 0.25; // day-one boss status resistance
 };
 
+// A damage-over-time status (ignite, bleed): buildup crosses the threshold,
+// then the mob takes damagePerS for durationS. Bleed's movingMultiplier
+// scales the tick while the mob walks (ignite's stays 1).
+struct DotStatusDef {
+    double buildupMax = 100.0;
+    double durationS = 0.0;
+    double damagePerS = 0.0;
+    double decayPerS = 0.0;
+    double bossBuildupMultiplier = 0.25;
+    double movingMultiplier = 1.0;
+};
+
 struct ShatterHook {
-    std::vector<std::string> triggerSkills; // skills carrying the hook
+    std::vector<std::string> triggerTags; // skills carrying any of these tags trigger it
     double novaDamage = 0.0;
     std::string novaDamageType = "cold";
     double novaRadiusM = 0.0;
     bool executesFrozen = true;
+    bool executesBoss = false; // frozen bosses take the nova but survive the execute
+};
+
+// Proliferate: a burning mob's death spreads its ignite to neighbours.
+struct ProliferateHook {
+    bool enabled = false;
+    double radiusM = 0.0;
+    double spreadBuildup = 0.0; // ignite buildup each neighbour receives
 };
 
 struct GrammarTable {
     ChillStatus chill;
+    DotStatusDef ignite;
+    DotStatusDef bleed;
     ShatterHook shatter;
+    ProliferateHook proliferate;
 };
 
 // --- worldgen.json -----------------------------------------------------------

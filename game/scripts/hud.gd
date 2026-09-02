@@ -13,8 +13,9 @@ const HELP_TEXT := """WASD move  ·  mouse look  ·  Space jump  ·  Shift dash 
 E interact: harvest, work at a station, read the board, open the gate
 LMB harvest (or place in build mode)  ·  C craft by hand  ·  I pack
 B build mode  ·  Tab shape or kit  ·  R rotate / pick the face  ·  X remove
-1 area strike (cone)  ·  2 heavy strike  ·  3 frost orb
-F1–F3 spike mods (scaffolding until Wave 2 puts them on gear)
+1–4 skill bar (assign skills in the pack screen; Shift also dashes)
+Mobs drop skill pages that teach new skills, and rolled gear that scales them
+F1–F3 spike mods (debug: force one modifier on)
 V camera  ·  H this help  ·  Esc close  ·  F5 save  ·  F9 load"""
 
 var sim: WroughtwildSim
