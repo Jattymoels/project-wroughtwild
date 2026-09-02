@@ -213,6 +213,18 @@ families per biome as the grammar wants counters; extending the balance
 oracle to elite encounters. Grammar balance tuning starts now that mobs
 push back.
 
+**Owner playtest verdict (2 Sep 2026):** "I really like the combat at the
+moment." Held steady during playtesting, tune later: player damage feels
+high (but fun); page/gear drops progress too fast at the start — wants
+early deprivation that eases as mobs thin; density is right ("overwhelmed
+easy which is a great feeling") though ash hounds hit too hard for their
+speed and pack size; a health-regeneration route is needed. Fixed on the
+spot: invisible damage from cave dwellers through the floor
+(`vertical_reach_m`), and mobs stuck on one-block steps (they hop now,
+`jump_speed_mps`). Caves look good. **Next intensive after this playtest
+round: building mechanics** — placement still feels "off", above all
+sub-block pieces (a post on a block or wall) inside the cell grid.
+
 ## Wave 4 — Dungeon and Roguelite Iteration
 
 The innovation layer: run structure, boon/build interaction depth, secrets,

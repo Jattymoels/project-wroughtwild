@@ -545,6 +545,7 @@ Dictionary WroughtwildSim::realtime() const {
     horde["separation_strength_mps"] = rt.hordeSeparationStrengthMps;
     horde["give_up_seconds"] = rt.hordeGiveUpSeconds;
     horde["vertical_reach_m"] = rt.hordeVerticalReachM;
+    horde["jump_speed_mps"] = rt.hordeJumpSpeedMps;
     d["horde"] = horde;
 
     Dictionary boss;

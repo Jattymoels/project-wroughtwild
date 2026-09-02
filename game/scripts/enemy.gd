@@ -28,6 +28,8 @@ var give_up_distance := 0.0
 var give_up_seconds := 2.5
 ## Vertical band within which a mob can aggro on and reach the player.
 var vertical_reach := 2.5
+## Take-off speed for hopping a one-block ledge in the chase path.
+var jump_speed := 5.0
 var separation_radius := 1.1
 var separation_strength := 3.0
 
@@ -133,6 +135,7 @@ func configure(sim: WroughtwildSim) -> void:
 	var horde: Dictionary = rt.get("horde", {})
 	give_up_seconds = horde.get("give_up_seconds", 2.5)
 	vertical_reach = horde.get("vertical_reach_m", 2.5)
+	jump_speed = horde.get("jump_speed_mps", 5.0)
 	separation_radius = horde.get("separation_radius_m", 1.1)
 	separation_strength = horde.get("separation_strength_mps", 3.0)
 
@@ -421,9 +424,21 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = planar.x
 	velocity.z = planar.z
+	_hop_if_blocked(planar)
 	if planar.length_squared() > 0.0001 and distance > 0.05:
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	move_and_slide()
+
+
+## A chaser pressing into a ledge hops it (one block, not two): the 3D
+## world's steps must not be free kills. Reads last frame's wall contact.
+func _hop_if_blocked(planar: Vector3) -> void:
+	if jump_speed <= 0.0 or not is_on_floor() or not is_on_wall():
+		return
+	if planar.length_squared() < 0.01:
+		return
+	if get_wall_normal().dot(planar.normalized()) < -0.5:
+		velocity.y = jump_speed
 
 
 func _separation_push() -> Vector3:

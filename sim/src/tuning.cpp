@@ -389,6 +389,8 @@ RealtimeTable loadRealtime(const std::string& path) {
         table.hordeGiveUpSeconds = horde->get("give_up_seconds").asNumber();
         if (auto reach = horde->find("vertical_reach_m"))
             table.hordeVerticalReachM = reach->asNumber();
+        if (auto jump = horde->find("jump_speed_mps"))
+            table.hordeJumpSpeedMps = jump->asNumber();
     }
 
     const Value& boss = doc->get("boss");

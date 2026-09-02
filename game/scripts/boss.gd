@@ -58,6 +58,7 @@ func configure(sim: WroughtwildSim) -> void:
 
 	_configure_statuses(sim)
 	vertical_reach = rt.get("horde", {}).get("vertical_reach_m", 2.5)
+	jump_speed = rt.get("horde", {}).get("jump_speed_mps", 5.0)
 
 	_base_material = StandardMaterial3D.new()
 	_base_material.albedo_color = Color(0.45, 0.08, 0.05)
@@ -135,6 +136,7 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = planar.x
 	velocity.z = planar.z
+	_hop_if_blocked(planar)
 	if state != "inhale":
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	move_and_slide()

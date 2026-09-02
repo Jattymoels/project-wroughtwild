@@ -90,7 +90,23 @@ func _physics_process(_delta: float) -> void:
 			_pack[0].global_position = _player.global_position + Vector3(0, -0.5, 2.0)
 		530:
 			check(_pack[0].state != "idle", "reach: the same crawler on your level aggroes (%s)" % _pack[0].state)
-		532:
+			_pack[0].take_damage(100000.0)
+			# A one-block ledge across the chase path (owner playtest: stuck
+			# mobs were free kills). The whelp must hop it, not grind on it.
+			var ledge := StaticBody3D.new()
+			var ledge_shape := CollisionShape3D.new()
+			var box := BoxShape3D.new()
+			box.size = Vector3(8, 1, 1)
+			ledge_shape.shape = box
+			ledge.add_child(ledge_shape)
+			add_child(ledge)
+			ledge.global_position = Vector3(80, 0.5, -83.5)
+			_player.global_position = Vector3(80, 1.1, -78)
+			_pack = [Enemy.spawn(self, &"ember_whelp", Vector3(80, 0.6, -88))]
+		680:
+			check(is_instance_valid(_pack[0]) and _pack[0].global_position.z > -83.0,
+				"hop: a chaser clears a one-block ledge (z %.1f)" % _pack[0].global_position.z)
+		682:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
 
