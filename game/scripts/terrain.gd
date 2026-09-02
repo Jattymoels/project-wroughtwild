@@ -33,8 +33,20 @@ var map: Dictionary = {}
 var nodes_root: Node3D
 ## chunk key "x_z" -> Node3D holding that chunk's meshes and collision.
 var chunks: Dictionary = {}
+## Rules for breaking generic blocks, from the sim: kind -> {breakable,
+## dig_seconds, yields}.
+var block_rules: Dictionary = {}
+## Every block the player has dug out this world, for the save.
+var broken: Array[Vector3i] = []
+
+## Block id -> kind name (worldgen.h's palette).
+const KIND_NAMES := {1: "surface", 2: "dirt", 3: "stone", 4: "bedrock"}
 
 var _materials := {}
+var _sim: WroughtwildSim
+var _seed := 0
+## Mutable copy of the sim's block field with the player's digs applied.
+var _blocks := PackedByteArray()
 
 
 func _cell_index(x: int, z: int) -> int:
@@ -49,13 +61,31 @@ func height_at(x: int, z: int) -> int:
 	return (map["heights"] as PackedInt32Array)[_cell_index(x, z)]
 
 
-## The block id at a world cell (0 = air); reads the sim's block field.
+## The block id at a world cell (0 = air), with the player's digs applied.
 func block_at(x: int, y: int, z: int) -> int:
 	if x < 0 or z < 0 or x >= int(map["width"]) or z >= int(map["height"]):
 		return 0
 	if y < 0 or y >= int(map["depth"]):
 		return 0
-	return (map["blocks"] as PackedByteArray)[_cell_index(x, z) * int(map["depth"]) + y]
+	return _blocks[_cell_index(x, z) * int(map["depth"]) + y]
+
+
+## The block kind name at a cell ("" for air).
+func kind_at(x: int, y: int, z: int) -> String:
+	return KIND_NAMES.get(block_at(x, y, z), "")
+
+
+## True when a collider is one of this terrain's chunk bodies.
+func is_terrain_body(body: Object) -> bool:
+	return body is Node and (body as Node).has_meta("terrain_chunk")
+
+
+## Converts a collision hit on a chunk body into the block cell struck:
+## the hit point sits on a face, so step half a block inward.
+func block_from_hit(hit_position: Vector3, hit_normal: Vector3) -> Vector3i:
+	var cell: float = map["cell_size"]
+	var inside := hit_position - hit_normal * (cell * 0.5)
+	return Vector3i(floori(inside.x / cell), floori(inside.y / cell), floori(inside.z / cell))
 
 
 ## World-space centre of a cell's top face: where things stand.
@@ -98,10 +128,15 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 		remove_child(child)
 		child.free()
 	chunks.clear()
+	broken.clear()
+	_sim = sim
+	_seed = seed_value
 	map = sim.world_map(seed_value)
 	if map.is_empty():
 		push_error("Terrain: sim.world_map returned nothing")
 		return
+	_blocks = (map["blocks"] as PackedByteArray).duplicate()
+	block_rules = sim.block_rules()
 
 	var cell: float = map["cell_size"]
 	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS):
@@ -146,10 +181,83 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 		shape.backface_collision = true
 		var body := StaticBody3D.new()
 		body.name = "ChunkBody"
+		body.set_meta("terrain_chunk", true)
 		var collider := CollisionShape3D.new()
 		collider.shape = shape
 		body.add_child(collider)
 		chunk.add_child(body)
+
+
+# --- digging (Wave 3: breaking the generic blocks) ---------------------------
+
+## Digs one block out: air in the local field, recorded for the save, the
+## touched chunk(s) rebuilt from the sim with the edits applied. Returns
+## the kind broken, or "" when the cell holds nothing breakable.
+func break_block(x: int, y: int, z: int) -> String:
+	var kind := kind_at(x, y, z)
+	if kind == "" or not block_rules.get(kind, {}).get("breakable", false):
+		return ""
+	_blocks[_cell_index(x, z) * int(map["depth"]) + y] = 0
+	broken.append(Vector3i(x, y, z))
+	for origin in _touched_chunk_origins(x, z):
+		_rebuild_chunk(origin.x, origin.y)
+	return kind
+
+
+## The chunk holding a column, plus the neighbour when the column sits on
+## a chunk border (a dig there exposes faces next door).
+func _touched_chunk_origins(x: int, z: int) -> Array[Vector2i]:
+	var origins: Array[Vector2i] = [Vector2i(x - x % CHUNK_CELLS, z - z % CHUNK_CELLS)]
+	if x % CHUNK_CELLS == 0 and x > 0:
+		origins.append(Vector2i(x - CHUNK_CELLS, z - z % CHUNK_CELLS))
+	elif x % CHUNK_CELLS == CHUNK_CELLS - 1 and x + 1 < int(map["width"]):
+		origins.append(Vector2i(x + 1, z - z % CHUNK_CELLS))
+	if z % CHUNK_CELLS == 0 and z > 0:
+		origins.append(Vector2i(x - x % CHUNK_CELLS, z - CHUNK_CELLS))
+	elif z % CHUNK_CELLS == CHUNK_CELLS - 1 and z + 1 < int(map["height"]):
+		origins.append(Vector2i(x - x % CHUNK_CELLS, z + 1))
+	return origins
+
+
+func _rebuild_chunk(cx: int, cz: int) -> void:
+	cx -= cx % CHUNK_CELLS
+	cz -= cz % CHUNK_CELLS
+	var key := "%d_%d" % [cx, cz]
+	if chunks.has(key):
+		var old: Node3D = chunks[key]
+		remove_child(old)
+		old.free()
+		chunks.erase(key)
+	var packed := PackedInt32Array()
+	for v in broken:
+		packed.append(v.x)
+		packed.append(v.y)
+		packed.append(v.z)
+	_build_chunk(_sim.world_mesh_chunk(_seed, CHUNK_CELLS, cx, cz, packed), map["cell_size"])
+
+
+## SaveManager hook: makes the world's digs exactly the save's - undoes
+## holes dug since (the field resets to the sim's pristine blocks), then
+## re-carves the saved list and rebuilds every chunk either set touched.
+func apply_broken_blocks(list: Array) -> void:
+	var touched := {}
+	for v in broken:
+		for origin in _touched_chunk_origins(v.x, v.z):
+			touched[origin] = true
+	broken.clear()
+	_blocks = (map["blocks"] as PackedByteArray).duplicate()
+	for entry in list:
+		if not (entry is Array) or entry.size() != 3:
+			continue
+		var v := Vector3i(int(entry[0]), int(entry[1]), int(entry[2]))
+		if block_at(v.x, v.y, v.z) == 0:
+			continue
+		_blocks[_cell_index(v.x, v.z) * int(map["depth"]) + v.y] = 0
+		broken.append(v)
+		for origin in _touched_chunk_origins(v.x, v.z):
+			touched[origin] = true
+	for origin in touched:
+		_rebuild_chunk(origin.x, origin.y)
 
 
 func _spawn_resource_node(def: Dictionary) -> void:
@@ -163,5 +271,7 @@ func _spawn_resource_node(def: Dictionary) -> void:
 	node.visual = StringName(def["visual"])
 	nodes_root.add_child(node)
 	var cell: float = map["cell_size"]
-	node.global_position = Vector3(
+	# Local position: terrain sits at the origin, and this also works when a
+	# harness builds the terrain before the first frame.
+	node.position = Vector3(
 		(int(def["x"]) + 0.5) * cell, float(def["y"]), (int(def["z"]) + 0.5) * cell)

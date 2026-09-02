@@ -11,6 +11,7 @@
 #include <godot_cpp/classes/ref_counted.hpp>
 #include <godot_cpp/variant/array.hpp>
 #include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/packed_int32_array.hpp>
 #include <godot_cpp/variant/packed_string_array.hpp>
 #include <godot_cpp/variant/string.hpp>
 
@@ -151,6 +152,14 @@ public:
     // surface key, "dirt", "stone" or "bedrock"}, faces: PackedVector3Array
     // of exposed-face collision triangles (use backface_collision)}.
     Array world_mesh(int seed, int chunk_cells);
+    // One chunk's geometry with engine edits applied: removed_blocks is a
+    // flat PackedInt32Array of x,y,z triples (dug blocks) treated as air.
+    // The digging loop rebuilds only the touched chunk(s) through this.
+    Dictionary world_mesh_chunk(int seed, int chunk_cells, int chunk_x, int chunk_z,
+                                const PackedInt32Array& removed_blocks);
+    // Rules for breaking generic terrain blocks, by kind ("surface",
+    // "dirt", "stone", "bedrock"): {breakable, dig_seconds, yields}.
+    Dictionary block_rules() const;
     // Deterministic per-kill drops from the enemy's world.json loot table:
     // material stacks as item -> count.
     Dictionary enemy_loot(const String& enemy_id, int seed);

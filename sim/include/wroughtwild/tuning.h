@@ -480,6 +480,15 @@ struct DangerRing {
     double packDensityMultiplier = 1.0;
 };
 
+// What breaking one generic terrain block costs and pays, per block kind
+// ("surface", "dirt", "stone", "bedrock"). Digging is the engine's act;
+// these are its rules.
+struct BlockRule {
+    bool breakable = true;
+    double digSeconds = 1.0;
+    std::map<std::string, int> yields; // material family -> count
+};
+
 struct BiomeDef {
     std::string id;
     std::string displayName;
@@ -521,6 +530,7 @@ struct WorldgenTable {
     StrataParams strata;
     CaveParams caves;
     std::vector<DangerRing> dangerRings;
+    std::map<std::string, BlockRule> blockRules; // by block kind name
     std::vector<BiomeDef> biomes;
     std::map<std::string, NodeTypeDef> nodeTypes;
     WorldgenGuarantees guarantees;

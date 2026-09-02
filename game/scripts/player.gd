@@ -55,6 +55,12 @@ var _land_dip := 0.0
 ## Wave 2 replaces these hotkeys with mods that live on gear.
 const SPIKE_MODS: Array[StringName] = [&"forked_lattice", &"deep_frost", &"wide_shatter"]
 
+## Hold-to-dig (Wave 3): a held LMB on a generic terrain block digs it out
+## over the block's dig_seconds; letting go or looking away resets.
+var _dig_cell := Vector3i(-1, -1, -1)
+var _dig_progress := 0.0
+var _terrain: Terrain
+
 
 func _ready() -> void:
 	add_to_group("player")
@@ -293,6 +299,68 @@ func _physics_process(delta: float) -> void:
 	_was_on_floor = is_on_floor()
 	_land_dip = move_toward(_land_dip, 0.0, delta * 0.7)
 	spring_arm.position.y = (FP_EYE_HEIGHT if first_person else _tp_arm_position.y) - _land_dip
+
+	_update_digging(delta)
+
+
+func _find_terrain() -> Terrain:
+	if _terrain == null or not is_instance_valid(_terrain):
+		_terrain = world_root().get_node_or_null("Terrain") as Terrain
+	return _terrain
+
+
+## The dig loop: while LMB is held on a breakable terrain block (build mode
+## off, no panel open), progress fills at the block's dig_seconds; moving
+## the aim to a different block starts over. Position is the tool - there
+## are no tool tiers yet, only time (worldgen.json block_rules).
+func _update_digging(delta: float) -> void:
+	var digging := false
+	if Input.is_action_pressed("primary_action") and not placement.build_mode_enabled \
+			and not work_panel.is_open() and not inventory_panel.is_open():
+		var terrain := _find_terrain()
+		if terrain != null and not terrain.map.is_empty():
+			var from := camera.global_position
+			var to := from + (-camera.global_transform.basis.z) * interact_range
+			var query := PhysicsRayQueryParameters3D.create(from, to)
+			query.exclude = [self]
+			var hit := get_world_3d().direct_space_state.intersect_ray(query)
+			if not hit.is_empty() and terrain.is_terrain_body(hit.get("collider")):
+				var cell := terrain.block_from_hit(hit["position"], hit["normal"])
+				if terrain.kind_at(cell.x, cell.y, cell.z) == "":
+					# Backface hit: the normal faced away; the block is behind.
+					cell = terrain.block_from_hit(hit["position"], -hit["normal"])
+				var kind := terrain.kind_at(cell.x, cell.y, cell.z)
+				var rule: Dictionary = terrain.block_rules.get(kind, {})
+				if kind != "" and not rule.get("breakable", false):
+					hud.show_dig(kind, -1.0)
+					digging = true
+				elif kind != "":
+					if cell != _dig_cell:
+						_dig_cell = cell
+						_dig_progress = 0.0
+					_dig_progress += delta
+					digging = true
+					var need := maxf(rule.get("dig_seconds", 1.0), 0.05)
+					hud.show_dig(kind, clampf(_dig_progress / need, 0.0, 1.0))
+					if _dig_progress >= need:
+						_finish_dig(terrain, cell, rule)
+	if not digging:
+		_dig_cell = Vector3i(-1, -1, -1)
+		_dig_progress = 0.0
+		hud.show_dig("", 0.0)
+
+
+func _finish_dig(terrain: Terrain, cell: Vector3i, rule: Dictionary) -> void:
+	_dig_cell = Vector3i(-1, -1, -1)
+	_dig_progress = 0.0
+	if terrain.break_block(cell.x, cell.y, cell.z) == "":
+		return
+	var yields: Dictionary = rule.get("yields", {})
+	if not yields.is_empty():
+		var cs: float = terrain.map["cell_size"]
+		var at := Vector3((cell.x + 0.5) * cs, cell.y + 0.6, (cell.z + 0.5) * cs)
+		# The yield pops out as physical chips, like every other harvest.
+		Pickup.scatter(world_root(), at, yields, ambush_rng.randi(), float(cell.y) + 0.02)
 
 
 func _on_died() -> void:

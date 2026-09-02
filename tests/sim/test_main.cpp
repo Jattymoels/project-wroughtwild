@@ -841,6 +841,11 @@ void testWorldgen(const tuning::Tuning& t) {
     check(t.worldgen.dangerMultiplierAt(30.0) <= t.worldgen.dangerMultiplierAt(200.0) &&
               t.worldgen.dangerMultiplierAt(200.0) > 1.0,
           "worldgen: danger rings scale pack density outward");
+    check(t.worldgen.blockRules.count("stone") == 1 &&
+              t.worldgen.blockRules.at("stone").yields.at("stone") == 1 &&
+              t.worldgen.blockRules.at("stone").digSeconds > 0.0 &&
+              !t.worldgen.blockRules.at("bedrock").breakable,
+          "worldgen: block rules load (stone pays stone, bedrock never breaks)");
 
     // The guarantees hold across many seeds (D-003: critical progression
     // resources cannot be absent from a valid seed). 24 seeds: the 3D world

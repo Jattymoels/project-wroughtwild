@@ -601,6 +601,15 @@ WorldgenTable loadWorldgen(const std::string& path) {
         table.dangerRings.push_back(r);
     }
 
+    for (const auto& [kind, rule] : doc->get("block_rules").asObject()) {
+        if (kind == "design_purpose") continue;
+        BlockRule r;
+        r.breakable = rule->get("breakable").asBool();
+        r.digSeconds = rule->get("dig_seconds").asNumber();
+        if (auto yields = rule->find("yields")) r.yields = readIntMap(*yields);
+        table.blockRules[kind] = std::move(r);
+    }
+
     for (const auto& b : doc->get("biomes").asArray()) {
         BiomeDef biome;
         biome.id = b->get("id").asString();

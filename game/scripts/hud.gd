@@ -11,7 +11,8 @@ const NOTICE_SECONDS := 3.0
 const REFRESH_SECONDS := 0.1
 const HELP_TEXT := """WASD move  ·  mouse look  ·  Space jump  ·  Shift dash (movement only)
 E interact: harvest, work at a station, read the board, open the gate
-LMB harvest (or place in build mode)  ·  C craft by hand  ·  I pack
+LMB harvest  ·  hold LMB on the ground to dig it out (stone pays stone)
+LMB places in build mode  ·  C craft by hand  ·  I pack
 B build mode  ·  Tab shape or kit  ·  R rotate / pick the face  ·  X remove
 1–4 skill bar (assign skills in the pack screen; Shift also dashes)
 Mobs drop skill pages that teach new skills, and rolled gear that scales them
@@ -49,6 +50,8 @@ var _last_life := -1.0
 # harvestables glow while aimed at.
 var _target_label: Label
 var _hovered: Node = null
+## While digging, this replaces the target label (set by show_dig).
+var _dig_text := ""
 
 # Pickup ticker: absorbed drops aggregate into one green line ("+3 wood ·
 # +1 iron ore") instead of a notify per chip.
@@ -256,6 +259,19 @@ func notify(text: String) -> void:
 	refresh()
 
 
+## Dig feedback under the crosshair: a filling bar per held block, a flat
+## refusal for the unbreakable, "" to clear (fraction ignored then).
+func show_dig(kind: String, fraction: float) -> void:
+	if kind == "":
+		_dig_text = ""
+		return
+	if fraction < 0.0:
+		_dig_text = "%s will not break" % pretty(kind)
+		return
+	var filled := clampi(roundi(fraction * 10.0), 0, 10)
+	_dig_text = "Digging %s  [%s%s]" % [pretty(kind), "#".repeat(filled), "-".repeat(10 - filled)]
+
+
 ## Absorbed pickups accumulate into one line while they keep arriving.
 func notify_pickup(family: String, amount: int) -> void:
 	_pickup_totals[family] = int(_pickup_totals.get(family, 0)) + amount
@@ -307,7 +323,7 @@ func _refresh_crosshair() -> void:
 		"enemy": _crosshair.modulate = CROSSHAIR_ENEMY
 		"interact": _crosshair.modulate = CROSSHAIR_INTERACT
 		_: _crosshair.modulate = CROSSHAIR_NEUTRAL
-	_target_label.text = probe["label"]
+	_target_label.text = _dig_text if _dig_text != "" else probe["label"]
 
 	# Hover highlight: glow the harvestable you are looking at.
 	var target: Node = probe["target"] as Node
