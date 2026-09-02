@@ -165,15 +165,37 @@ patch, frost floor) the train is led through, damage-over-time tag-and-run
 drill-through single-target play. Each mechanic is a different way of
 moving in first person. Balance sims extended to itemisation.
 
-## Wave 3 — Mobs, Packs and Their Drops
+## Wave 3 — Mobs, Packs, Drops and the Open World
 
-Mob families and pack composition per biome, elite/champion modifiers on
-mobs, drop tables tied to those modifiers, density tuning toward the
-Diablo/PoE "clear a pack, get a reward" cadence — in the open world, not an
-instance. **With D-012:** fewer mobs on screen than PoE but more dangerous;
-aggro chaining ("shriekers" that pull nearby strays into the stream) builds
-the Zombies wave feeling out in the world; speeds tuned so training stays
-skilful rather than trivial.
+**Owner direction (2 Sep 2026):** after the spell grammar, spend real time
+on mobs, drops and the open world — "not infinite, but more so the feel of
+the generation, biomes, make it further out, allow verticality/caves", plus
+"some sort of mechanic for breaking the generic blocks too not just
+trees/stones".
+
+### World track — slice 1 landed 2 Sep 2026
+
+The world is a full 3D block field: 160×160×48, a mountain layer for real
+verticality, strata (dirt/stone/bedrock), carved cave systems with natural
+breach entrances and richer iron on cave floors, danger rings scaling pack
+density with distance from spawn, and chunked render/collision the sim
+derives (`world_mesh`) so digging can later rebuild one patch. Guarantees
+(safe clearing, nodes in reach, far gate) hold across seeds by test. See
+[systems/world-generation.md](../systems/world-generation.md). **Next
+slice: breaking blocks** — a sim break API with a broken-block diff in the
+save, hold-to-dig in the engine, chunk rebuilds, bedrock unbreakable.
+
+### Mob track
+
+Mob families and pack composition per biome (cave dwellers included),
+elite/champion modifiers on mobs that interact with the D-016 statuses
+("Unfreezable", "Cinder-blooded"), drop tables tied to those modifiers,
+density tuning toward the Diablo/PoE "clear a pack, get a reward" cadence —
+in the open world, not an instance. **With D-012:** fewer mobs on screen
+than PoE but more dangerous; aggro chaining ("shriekers" that pull nearby
+strays into the stream) builds the Zombies wave feeling out in the world;
+speeds tuned so training stays skilful rather than trivial. Grammar
+balance tuning waits for these mobs to exist.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 

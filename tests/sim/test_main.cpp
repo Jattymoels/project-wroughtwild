@@ -793,15 +793,66 @@ void testWorldgen(const tuning::Tuning& t) {
             if (a.cells[i].height != c.cells[i].height) differs = true;
     check(differs, "worldgen: different seeds differ");
 
+    // The block field (Wave 3 world slice 1): bedrock floor, strata under a
+    // surface block, caves carved strictly underground with a few breach
+    // entrances, and every node standing on real ground.
+    check(a.depth == t.worldgen.map.worldDepth &&
+              a.blocks.size() == static_cast<size_t>(a.width) * a.height * a.depth,
+          "worldgen: block field sized to the map");
+    check(a.blocks == b.blocks, "worldgen: identical blocks per seed");
+    bool bedrockGood = true;
+    int columns = 0, caveCells = 0, breaches = 0, tallest = 0;
+    for (int z = 0; z < a.height; ++z) {
+        for (int x = 0; x < a.width; ++x) {
+            ++columns;
+            int hgt = a.at(x, z).height;
+            tallest = std::max(tallest, hgt);
+            if (a.blockAt(x, 0, z) != worldgen::kBedrock) bedrockGood = false;
+            if (a.topSolid(x, z) != hgt) ++breaches;
+            for (int y = 1; y < hgt - 1; ++y)
+                if (a.blockAt(x, y, z) == worldgen::kAir) ++caveCells;
+        }
+    }
+    check(bedrockGood, "worldgen: bedrock everywhere at y 0");
+    check(caveCells > 500, "worldgen: caves carved underground");
+    check(breaches > 0 && breaches < columns / 4,
+          "worldgen: some breach entrances, a mostly intact surface");
+    check(tallest > t.worldgen.map.baseHeight + t.worldgen.map.heightScale,
+          "worldgen: mountains rise above the rolling base");
+    bool nodesGrounded = true;
+    int caveNodes = 0;
+    for (const auto& node : a.nodes) {
+        if (a.blockAt(node.x, node.y, node.z) != worldgen::kAir ||
+            a.blockAt(node.x, node.y - 1, node.z) == worldgen::kAir)
+            nodesGrounded = false;
+        if (node.y < a.at(node.x, node.z).height) ++caveNodes;
+    }
+    check(nodesGrounded, "worldgen: every node stands in air on solid ground");
+    check(caveNodes > 0, "worldgen: iron runs underground (cave-floor nodes exist)");
+    int clearR = static_cast<int>(t.worldgen.guarantees.spawnClearRadiusM / t.worldgen.map.cellSizeM);
+    bool clearingIntact = true;
+    for (int dz = -clearR; dz <= clearR; ++dz)
+        for (int dx = -clearR; dx <= clearR; ++dx) {
+            int x = a.spawnX + dx, z = a.spawnZ + dz;
+            if (!a.inBounds(x, z) || dx * dx + dz * dz > clearR * clearR) continue;
+            if (a.topSolid(x, z) != a.at(x, z).height) clearingIntact = false;
+        }
+    check(clearingIntact, "worldgen: the spawn clearing is never carved beneath");
+    check(t.worldgen.dangerMultiplierAt(30.0) <= t.worldgen.dangerMultiplierAt(200.0) &&
+              t.worldgen.dangerMultiplierAt(200.0) > 1.0,
+          "worldgen: danger rings scale pack density outward");
+
     // The guarantees hold across many seeds (D-003: critical progression
-    // resources cannot be absent from a valid seed).
+    // resources cannot be absent from a valid seed). 24 seeds: the 3D world
+    // costs real time to generate, and two dozen distinct worlds still
+    // catch a broken guarantee.
     const auto& g = t.worldgen.guarantees;
     int spawnBiome = -1;
     for (size_t i = 0; i < t.worldgen.biomes.size(); ++i)
         if (t.worldgen.biomes[i].id == g.spawnBiome) spawnBiome = static_cast<int>(i);
     bool allGood = true;
     std::string firstBad;
-    for (uint64_t seed = 1; seed <= 60 && allGood; ++seed) {
+    for (uint64_t seed = 1; seed <= 24 && allGood; ++seed) {
         auto map = worldgen::generate(t, seed);
         if (map.at(map.spawnX, map.spawnZ).biomeIndex != spawnBiome) {
             allGood = false; firstBad = "spawn biome (seed " + std::to_string(seed) + ")";
@@ -839,7 +890,7 @@ void testWorldgen(const tuning::Tuning& t) {
                     allGood = false; firstBad = "unknown pack enemy " + enemy;
                 }
     }
-    check(allGood, "worldgen: guarantees hold across 60 seeds" +
+    check(allGood, "worldgen: guarantees hold across 24 seeds" +
                        (firstBad.empty() ? "" : " - first failure: " + firstBad));
 }
 

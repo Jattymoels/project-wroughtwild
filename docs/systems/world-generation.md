@@ -1,6 +1,9 @@
 # World Generation, Settlements and Travel
 
-**Status:** Bounded hybrid generation accepted for prototype exploration  
+**Status:** Bounded hybrid generation accepted for prototype exploration;
+the Wave 3 world pass answers "final terrain representation and
+destructibility" — see
+[Implemented](#implemented-the-3d-block-world-2-september-2026).  
 **Related decisions:** D-001, D-003, D-005
 
 ## Purpose and player fantasy
@@ -97,9 +100,43 @@ Terrain noise is not necessarily the dominant compute cost. Persistence, mesh/co
 - Resource placement creates at least one meaningful travel decision.
 - Save and reload preserve generated and player-built state.
 
+## Implemented: the 3D block world (2 September 2026)
+
+Wave 3 world slice 1 (owner direction: bounded but further out, biome
+feel, verticality and caves, with block-breaking to follow). The world is
+now a **full 3D block field** the sim generates deterministically per seed
+(`sim/src/worldgen.cpp`, tuned entirely by `worldgen.json`):
+
+- **Terrain:** 160×160 columns, 48 block levels. A rolling fbm base plus a
+  second mountain layer — where a slow "cragginess" field runs high,
+  ridged noise piles localized massifs with real cliffs. Strata under the
+  biome surface block: dirt, then stone, bedrock at y=0.
+- **Caves:** two intersecting 3D noise level-sets carve winding tunnels; a
+  third opens caverns low in a column. Most tunnels keep a roof margin,
+  but a tunable fraction of columns may breach the surface — natural
+  entrances you find and drop into. Cave floors host resource nodes (iron
+  runs richer underground — the reason to go down). The spawn clearing
+  and the trial gate's ground are never carved.
+- **Danger rings:** pack density multiplies with distance from spawn, so
+  the heartland stays learnable and the map edge is genuinely hostile.
+  The Wave 3 mob pass will hang harder compositions off the same rings.
+- **Engine:** the sim also derives the render/collision geometry
+  (`world_mesh`: per-chunk visible-block centres by kind plus exposed-face
+  triangles), so the engine builds one MultiMesh per kind and one trimesh
+  body per 16×16 chunk without re-walking a million blocks in script.
+  Chunks exist so the digging slice can rebuild one patch, not the world.
+- **Guarantees kept (D-003):** safe flat meadow clearing, minimum
+  wood/stone/iron within the near radius, packs off the doorstep, the
+  gate ≥ 70 m out in the wastes, all held across seeds by tests.
+
+**Deliberately not yet:** block breaking/digging (next slice: the sim gets
+a break API plus a broken-block diff in the save; bedrock stays
+unbreakable), building inside caves (placement still reads surface
+heights), water, and cave-dwelling mob families (the mob pass).
+
 ## Open questions
 
-- Whether the first slice needs generated terrain at all.
-- Final terrain representation and destructibility.
 - How class halls are signposted.
 - When outposts become mechanically worthwhile.
+- Whether cave dark needs its own light rules before torches exist
+  (D-013's "menace is told by light" suggests yes).

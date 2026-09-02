@@ -64,6 +64,11 @@ const Station* CraftingTable::findStationForKit(const std::string& kitItemId) co
     return nullptr;
 }
 const BiomeDef* WorldgenTable::findBiome(const std::string& id) const { return findById(biomes, id); }
+double WorldgenTable::dangerMultiplierAt(double distanceM) const {
+    for (const auto& ring : dangerRings)
+        if (distanceM <= ring.radiusM) return ring.packDensityMultiplier;
+    return dangerRings.empty() ? 1.0 : dangerRings.back().packDensityMultiplier;
+}
 const ModifierDef* ItemTable::findModifier(const std::string& id) const { return findById(modifiers, id); }
 const RarityDef* ItemTable::findRarity(const std::string& id) const { return findById(rarities, id); }
 bool ModifierDef::isSelf() const {
@@ -560,11 +565,41 @@ WorldgenTable loadWorldgen(const std::string& path) {
     table.map.widthCells = map.get("width_cells").asInt();
     table.map.heightCells = map.get("height_cells").asInt();
     table.map.cellSizeM = map.get("cell_size_m").asNumber();
+    table.map.worldDepth = map.get("world_depth").asInt();
     table.map.baseHeight = map.get("base_height").asInt();
     table.map.heightScale = map.get("height_scale").asInt();
     table.map.heightFrequency = map.get("height_frequency").asNumber();
     table.map.heightOctaves = map.get("height_octaves").asInt();
     table.map.moistureFrequency = map.get("moisture_frequency").asNumber();
+
+    const Value& mountains = doc->get("mountains");
+    table.mountains.extraScale = mountains.get("extra_scale").asInt();
+    table.mountains.frequency = mountains.get("frequency").asNumber();
+    table.mountains.cragginessFrequency = mountains.get("cragginess_frequency").asNumber();
+    table.mountains.cragginessThreshold = mountains.get("cragginess_threshold").asNumber();
+
+    table.strata.dirtDepth = doc->get("strata").get("dirt_depth").asInt();
+
+    const Value& caves = doc->get("caves");
+    table.caves.enabled = caves.get("enabled").asBool();
+    table.caves.tunnelFrequency = caves.get("tunnel_frequency").asNumber();
+    table.caves.tunnelWidth = caves.get("tunnel_width").asNumber();
+    table.caves.cavernFrequency = caves.get("cavern_frequency").asNumber();
+    table.caves.cavernThreshold = caves.get("cavern_threshold").asNumber();
+    table.caves.cavernMaxYFraction = caves.get("cavern_max_y_fraction").asNumber();
+    table.caves.minY = caves.get("min_y").asInt();
+    table.caves.surfaceMargin = caves.get("surface_margin").asInt();
+    table.caves.breachChance = caves.get("breach_chance").asNumber();
+    if (auto density = caves.find("node_density"))
+        for (const auto& [type, value] : density->asObject())
+            if (type != "design_purpose") table.caves.nodeDensity[type] = value->asNumber();
+
+    for (const auto& ring : doc->get("danger").get("rings").asArray()) {
+        DangerRing r;
+        r.radiusM = ring->get("radius_m").asNumber();
+        r.packDensityMultiplier = ring->get("pack_density_multiplier").asNumber();
+        table.dangerRings.push_back(r);
+    }
 
     for (const auto& b : doc->get("biomes").asArray()) {
         BiomeDef biome;
