@@ -470,9 +470,28 @@ func _test_sandpit_extension() -> void:
 		and a["nodes"].size() == b["nodes"].size(), "sandpit: world map deterministic per seed")
 	var gate_dx: float = float(a["gate_x"] - a["spawn_x"])
 	var gate_dz: float = float(a["gate_z"] - a["spawn_z"])
-	check(sqrt(gate_dx * gate_dx + gate_dz * gate_dz) >= 45.0, "sandpit: gate far from spawn")
+	check(sqrt(gate_dx * gate_dx + gate_dz * gate_dz) >= 70.0, "sandpit: gate far from spawn")
 	check(a["nodes"].size() > 0 and a["packs"].size() > 0, "sandpit: nodes and packs placed")
 	check(a["biome_defs"].size() == 4, "sandpit: four biomes defined")
+
+	# Wave 3 world slice 1: the world is a 3D block field with caves.
+	var blocks: PackedByteArray = a["blocks"]
+	check(int(a["depth"]) > 0 and blocks.size() == int(a["width"]) * int(a["height"]) * int(a["depth"]),
+		"sandpit: 3D block field sized to the map")
+	check(blocks[0] == 4, "sandpit: bedrock floors the first column")
+	var heights: PackedInt32Array = a["heights"]
+	var underground := false
+	for node in a["nodes"]:
+		if int(node["y"]) < heights[int(node["z"]) * int(a["width"]) + int(node["x"])]:
+			underground = true
+	check(underground, "sandpit: some nodes live on cave floors")
+	var mesh: Array = sim.world_mesh(5, 16)
+	check(mesh.size() == ceili(int(a["width"]) / 16.0) * ceili(int(a["height"]) / 16.0),
+		"sandpit: world mesh chunks cover the map")
+	var chunk: Dictionary = mesh[0]
+	check(not (chunk["faces"] as PackedVector3Array).is_empty()
+		and not (chunk["kinds"] as Dictionary).is_empty(),
+		"sandpit: chunks carry visible blocks and collision faces")
 
 	check(sim.kit_station("workbench_kit") == "workbench", "sandpit: workbench kit maps to workbench")
 	check(sim.kit_station("forge_kit") == "forge_basic", "sandpit: forge kit maps to the forge")

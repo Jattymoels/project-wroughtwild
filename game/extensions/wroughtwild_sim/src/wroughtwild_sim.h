@@ -21,6 +21,7 @@
 #include "wroughtwild/stats.h"
 #include "wroughtwild/trial.h"
 #include "wroughtwild/tuning.h"
+#include "wroughtwild/worldgen.h"
 
 namespace godot {
 
@@ -135,12 +136,21 @@ public:
 
     // --- Wave 1 sandpit ---
     // The generated bounded world for a seed (deterministic). Keys: seed,
-    // width, height, cell_size, heights + biomes (PackedInt32Array,
-    // row-major z*width+x), biome_defs (array of {id, display_name,
-    // surface}), nodes (array of {type, x, z, material_family, display_name,
-    // units, units_per_harvest, visual}), packs (array of {enemies, x, z}),
-    // spawn_x/z, gate_x/z.
+    // width, height, depth (vertical block levels), cell_size, heights +
+    // biomes (PackedInt32Array, row-major z*width+x), blocks
+    // (PackedByteArray, column-contiguous (z*width+x)*depth+y; ids 0 air,
+    // 1 surface, 2 dirt, 3 stone, 4 bedrock), biome_defs (array of {id,
+    // display_name, surface}), nodes (array of {type, x, y, z,
+    // material_family, display_name, units, units_per_harvest, visual}),
+    // packs (array of {enemies, x, z}), spawn_x/z, gate_x/z.
     Dictionary world_map(int seed);
+    // The world's render/collision geometry, chunked (the sim derives it so
+    // the engine never re-walks a million blocks in script): one entry per
+    // chunk_cells x chunk_cells column chunk - {x, z, kinds: {kind ->
+    // PackedVector3Array of visible-block centres; kind is the biome
+    // surface key, "dirt", "stone" or "bedrock"}, faces: PackedVector3Array
+    // of exposed-face collision triangles (use backface_collision)}.
+    Array world_mesh(int seed, int chunk_cells);
     // Deterministic per-kill drops from the enemy's world.json loot table:
     // material stacks as item -> count.
     Dictionary enemy_loot(const String& enemy_id, int seed);
@@ -313,12 +323,15 @@ private:
     wroughtwild::combat::CombatMods current_mods() const;
     wroughtwild::boons::BuildTags build_tags() const;
     wroughtwild::grammar::ActiveMods active_mods() const;
+    // Generates (or reuses) the world for a seed; generation costs real time.
+    const wroughtwild::worldgen::WorldMap& cached_world(uint64_t seed);
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;
     wroughtwild::stats::Equipment equipment_;
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
+    std::unique_ptr<wroughtwild::worldgen::WorldMap> world_cache_; // last seed's world
     std::set<std::string> active_skill_mods_; // debug toggles (F1-F3)
     uint64_t temper_seed_ = 0;
     String last_error_;

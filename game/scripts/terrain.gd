@@ -1,38 +1,61 @@
 class_name Terrain
 extends Node3D
-## Renders the sim's generated world (WroughtwildSim.world_map): blocky
-## terrain as one MultiMesh per surface texture plus dirt filler for exposed
-## cliff sides, a single heightmap collision body, and the scattered
-## resource nodes. The sim decides WHAT the world is; this node only decides
-## how it looks (ADR-0003 for terrain).
-##
-## Known greybox compromise: collision uses a heightmap, which ramps between
-## cells instead of hard block steps; visuals stay blocky. Building reads
-## the block heights directly (build_cell_center, cell_clear_of_ground) so
-## placement follows what the player sees, not the ramp.
+## Renders the sim's generated world (WroughtwildSim.world_map / world_mesh):
+## a full 3D block field - rolling ground, craggy massifs, strata and carved
+## caves - drawn as one MultiMesh per surface kind per chunk, with one
+## trimesh collision body per chunk built from the exposed faces. The sim
+## decides WHAT the world is and even which blocks are visible (world_mesh
+## derives the geometry so no script re-walks a million blocks); this node
+## only decides how it looks (ADR-0003 for terrain). Chunks exist so the
+## digging slice can rebuild one 16x16 column patch instead of the world.
 
 const RESOURCE_NODE_SCENE := preload("res://scenes/resource_node.tscn")
 
-const SURFACE_TEXTURES := {
+const CHUNK_CELLS := 16
+## Every block kind the sim can emit (biome surface keys plus strata).
+const KIND_TEXTURES := {
 	"grass": "res://assets/textures/grass.png",
 	"forest_floor": "res://assets/textures/forest_floor.png",
 	"rock": "res://assets/textures/rock.png",
 	"ash": "res://assets/textures/ash.png",
+	"dirt": "res://assets/textures/dirt.png",
+	"stone": "res://assets/textures/rock.png",
+	"bedrock": "res://assets/textures/rock.png",
 }
-const FILLER_TEXTURE := "res://assets/textures/dirt.png"
+## Strata get a tint so stone reads darker than surface rock and bedrock
+## reads as the unbreakable floor.
+const KIND_TINTS := {
+	"stone": Color(0.72, 0.72, 0.75),
+	"bedrock": Color(0.38, 0.38, 0.42),
+}
 
 var map: Dictionary = {}
 var nodes_root: Node3D
+## chunk key "x_z" -> Node3D holding that chunk's meshes and collision.
+var chunks: Dictionary = {}
+
+var _materials := {}
 
 
 func _cell_index(x: int, z: int) -> int:
 	return z * int(map["width"]) + x
 
 
+## The walking-surface level of a column (what the generator intended;
+## a cave breach below does not move it).
 func height_at(x: int, z: int) -> int:
 	if x < 0 or z < 0 or x >= int(map["width"]) or z >= int(map["height"]):
 		return 0
 	return (map["heights"] as PackedInt32Array)[_cell_index(x, z)]
+
+
+## The block id at a world cell (0 = air); reads the sim's block field.
+func block_at(x: int, y: int, z: int) -> int:
+	if x < 0 or z < 0 or x >= int(map["width"]) or z >= int(map["height"]):
+		return 0
+	if y < 0 or y >= int(map["depth"]):
+		return 0
+	return (map["blocks"] as PackedByteArray)[_cell_index(x, z) * int(map["depth"]) + y]
 
 
 ## World-space centre of a cell's top face: where things stand.
@@ -57,11 +80,16 @@ func cell_clear_of_ground(cell_center: Vector3, grid_size: float) -> bool:
 	return cell_center.y - grid_size * 0.5 >= float(height_at(x, z)) - 0.001
 
 
-static func _block_material(texture_path: String) -> StandardMaterial3D:
+func _material_for(kind: String) -> StandardMaterial3D:
+	if _materials.has(kind):
+		return _materials[kind]
 	var material := StandardMaterial3D.new()
-	material.albedo_texture = load(texture_path)
+	material.albedo_texture = load(KIND_TEXTURES.get(kind, KIND_TEXTURES["rock"]))
 	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	material.roughness = 1.0
+	if KIND_TINTS.has(kind):
+		material.albedo_color = KIND_TINTS[kind]
+	_materials[kind] = material
 	return material
 
 
@@ -69,44 +97,15 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 	for child in get_children():
 		remove_child(child)
 		child.free()
+	chunks.clear()
 	map = sim.world_map(seed_value)
 	if map.is_empty():
 		push_error("Terrain: sim.world_map returned nothing")
 		return
 
-	var width: int = map["width"]
-	var depth: int = map["height"]
 	var cell: float = map["cell_size"]
-	var heights: PackedInt32Array = map["heights"]
-	var biomes: PackedInt32Array = map["biomes"]
-	var biome_defs: Array = map["biome_defs"]
-
-	# Sort every visible cube into buckets: surface texture -> transforms.
-	var buckets := {}
-	for key in SURFACE_TEXTURES:
-		buckets[key] = []
-	var filler: Array = []
-
-	for z in depth:
-		for x in width:
-			var h := heights[_cell_index(x, z)]
-			var surface: String = biome_defs[biomes[_cell_index(x, z)]]["surface"]
-			if not buckets.has(surface):
-				surface = "grass"
-			# Top block: its upper face is the walking surface at y = h.
-			buckets[surface].append(Vector3((x + 0.5) * cell, h - 0.5, (z + 0.5) * cell))
-			# Filler blocks down to the lowest neighbour, so cliffs have sides.
-			var lowest := h
-			for offset in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
-				lowest = mini(lowest, height_at(x + offset.x, z + offset.y))
-			for y in range(lowest, h - 1):
-				filler.append(Vector3((x + 0.5) * cell, y + 0.5, (z + 0.5) * cell))
-
-	for surface in buckets:
-		_add_multimesh(buckets[surface], SURFACE_TEXTURES[surface], cell)
-	_add_multimesh(filler, FILLER_TEXTURE, cell)
-
-	_build_collision(width, depth, cell, heights)
+	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS):
+		_build_chunk(chunk_data, cell)
 
 	nodes_root = Node3D.new()
 	nodes_root.name = "ResourceNodes"
@@ -115,50 +114,54 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 		_spawn_resource_node(node)
 
 
-func _add_multimesh(positions: Array, texture_path: String, cell: float) -> void:
-	if positions.is_empty():
-		return
-	var mesh := BoxMesh.new()
-	mesh.size = Vector3.ONE * cell
-	mesh.material = _block_material(texture_path)
-	var multimesh := MultiMesh.new()
-	multimesh.transform_format = MultiMesh.TRANSFORM_3D
-	multimesh.mesh = mesh
-	multimesh.instance_count = positions.size()
-	for i in positions.size():
-		multimesh.set_instance_transform(i, Transform3D(Basis.IDENTITY, positions[i]))
-	var instance := MultiMeshInstance3D.new()
-	instance.multimesh = multimesh
-	add_child(instance)
+func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
+	var chunk := Node3D.new()
+	chunk.name = "Chunk_%d_%d" % [int(chunk_data["x"]), int(chunk_data["z"])]
+	add_child(chunk)
+	chunks["%d_%d" % [int(chunk_data["x"]), int(chunk_data["z"])]] = chunk
 
+	var kinds: Dictionary = chunk_data["kinds"]
+	for kind in kinds:
+		var centres: PackedVector3Array = kinds[kind]
+		if centres.is_empty():
+			continue
+		var mesh := BoxMesh.new()
+		mesh.size = Vector3.ONE * cell
+		mesh.material = _material_for(String(kind))
+		var multimesh := MultiMesh.new()
+		multimesh.transform_format = MultiMesh.TRANSFORM_3D
+		multimesh.mesh = mesh
+		multimesh.instance_count = centres.size()
+		for i in centres.size():
+			multimesh.set_instance_transform(i, Transform3D(Basis.IDENTITY, centres[i]))
+		var instance := MultiMeshInstance3D.new()
+		instance.multimesh = multimesh
+		chunk.add_child(instance)
 
-func _build_collision(width: int, depth: int, cell: float, heights: PackedInt32Array) -> void:
-	var shape := HeightMapShape3D.new()
-	shape.map_width = width
-	shape.map_depth = depth
-	var data := PackedFloat32Array()
-	data.resize(width * depth)
-	for i in width * depth:
-		data[i] = float(heights[i])
-	shape.map_data = data
-
-	var body := StaticBody3D.new()
-	body.name = "TerrainBody"
-	var collider := CollisionShape3D.new()
-	collider.shape = shape
-	body.add_child(collider)
-	add_child(body)
-	# HeightMapShape3D is centred on its own origin; align its sample points
-	# with cell centres.
-	body.global_position = Vector3(width * cell / 2.0, 0.0, depth * cell / 2.0)
+	var faces: PackedVector3Array = chunk_data["faces"]
+	if not faces.is_empty():
+		var shape := ConcavePolygonShape3D.new()
+		shape.set_faces(faces)
+		# The sim does not promise a winding; collide from both sides.
+		shape.backface_collision = true
+		var body := StaticBody3D.new()
+		body.name = "ChunkBody"
+		var collider := CollisionShape3D.new()
+		collider.shape = shape
+		body.add_child(collider)
+		chunk.add_child(body)
 
 
 func _spawn_resource_node(def: Dictionary) -> void:
 	var node: ResourceNode = RESOURCE_NODE_SCENE.instantiate()
-	node.name = "wn_%s_%d_%d" % [def["type"], def["x"], def["z"]]
+	# y is part of the name: a cave-floor node and a surface node may share
+	# a column, and saves match nodes by name.
+	node.name = "wn_%s_%d_%d_%d" % [def["type"], def["x"], def["y"], def["z"]]
 	node.material_family = StringName(def["material_family"])
 	node.remaining_units = def["units"]
 	node.units_per_harvest = def["units_per_harvest"]
 	node.visual = StringName(def["visual"])
 	nodes_root.add_child(node)
-	node.global_position = surface_position(def["x"], def["z"])
+	var cell: float = map["cell_size"]
+	node.global_position = Vector3(
+		(int(def["x"]) + 0.5) * cell, float(def["y"]), (int(def["z"]) + 0.5) * cell)

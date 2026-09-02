@@ -436,11 +436,48 @@ struct MapParams {
     int widthCells = 96;
     int heightCells = 96;
     double cellSizeM = 1.0;
+    int worldDepth = 48; // vertical block levels; y=0 is bedrock
     int baseHeight = 1;
     int heightScale = 6;
     double heightFrequency = 0.03;
     int heightOctaves = 3;
     double moistureFrequency = 0.015;
+};
+
+// The second terrain layer: localized craggy massifs on top of the rolling
+// base, so the world has real verticality where cragginess runs high.
+struct MountainParams {
+    int extraScale = 0; // 0 disables the layer
+    double frequency = 0.05;
+    double cragginessFrequency = 0.012;
+    double cragginessThreshold = 0.62;
+};
+
+struct StrataParams {
+    int dirtDepth = 3; // dirt blocks under the surface block; stone below
+};
+
+// Carved cave systems: two intersecting 3D noise level-sets make winding
+// tunnels, a third opens caverns low down; near-surface tunnel tops may
+// breach as natural entrances.
+struct CaveParams {
+    bool enabled = false;
+    double tunnelFrequency = 0.06;
+    double tunnelWidth = 0.07;       // carve where |n1-.5|+|n2-.5| < width
+    double cavernFrequency = 0.045;
+    double cavernThreshold = 0.76;
+    double cavernMaxYFraction = 0.5; // caverns only this far up a column
+    int minY = 1;                    // never carve bedrock
+    int surfaceMargin = 2;           // tunnels stay this far under the top...
+    double breachChance = 0.35;      // ...except breach columns become entrances
+    std::map<std::string, double> nodeDensity; // node type -> per-cave-floor chance
+};
+
+// Danger scales with distance from spawn: the first ring whose radius
+// contains the cell decides the pack-density multiplier.
+struct DangerRing {
+    double radiusM = 0.0;
+    double packDensityMultiplier = 1.0;
 };
 
 struct BiomeDef {
@@ -480,11 +517,18 @@ struct WorldgenGuarantees {
 struct WorldgenTable {
     uint64_t defaultSeed = 1;
     MapParams map;
+    MountainParams mountains;
+    StrataParams strata;
+    CaveParams caves;
+    std::vector<DangerRing> dangerRings;
     std::vector<BiomeDef> biomes;
     std::map<std::string, NodeTypeDef> nodeTypes;
     WorldgenGuarantees guarantees;
 
     const BiomeDef* findBiome(const std::string& id) const;
+    // The pack-density multiplier for a cell this far from spawn (1.0 when
+    // no rings are tuned).
+    double dangerMultiplierAt(double distanceM) const;
 };
 
 // --- loading -----------------------------------------------------------------

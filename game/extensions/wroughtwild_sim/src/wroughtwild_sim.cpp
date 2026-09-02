@@ -152,6 +152,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("roll_item_into_pack", "base_id", "rarity", "tier", "seed"), &WroughtwildSim::roll_item_into_pack);
     ClassDB::bind_method(D_METHOD("skill_cooldown_seconds", "skill_id"), &WroughtwildSim::skill_cooldown_seconds);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
+    ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells"), &WroughtwildSim::world_mesh);
     ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_loot);
     ClassDB::bind_method(D_METHOD("enemy_gear_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_gear_loot);
     ClassDB::bind_method(D_METHOD("claim_enemy_gear", "enemy_id", "seed"), &WroughtwildSim::claim_enemy_gear);
@@ -807,6 +808,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         // outlive it: drop the session and player first, then swap the tuning in.
         trial_.reset();
         player_.reset();
+        world_cache_.reset();
         tuning_ = std::move(loaded);
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);
         temper_seed_ = std::random_device{}();
@@ -1549,17 +1551,34 @@ Dictionary WroughtwildSim::shatter_for(const String& skill_id) const {
     return d;
 }
 
+const wroughtwild::worldgen::WorldMap& WroughtwildSim::cached_world(uint64_t seed) {
+    // The 3D world costs real time to generate; world_map and world_mesh
+    // are always asked about the same seed back to back, so keep the last
+    // one. Deterministic generation makes the cache invisible.
+    if (!world_cache_ || world_cache_->seed != seed) {
+        world_cache_ = std::make_unique<wroughtwild::worldgen::WorldMap>(
+            wroughtwild::worldgen::generate(*tuning_, seed));
+    }
+    return *world_cache_;
+}
+
 Dictionary WroughtwildSim::world_map(int seed) {
     Dictionary d;
     if (!require_loaded("world_map")) {
         return d;
     }
-    const auto map = wroughtwild::worldgen::generate(*tuning_, static_cast<uint64_t>(seed));
+    const auto& map = cached_world(static_cast<uint64_t>(seed));
 
     d["seed"] = seed;
     d["width"] = map.width;
     d["height"] = map.height;
+    d["depth"] = map.depth;
     d["cell_size"] = map.cellSize;
+
+    PackedByteArray blocks;
+    blocks.resize(static_cast<int64_t>(map.blocks.size()));
+    memcpy(blocks.ptrw(), map.blocks.data(), map.blocks.size());
+    d["blocks"] = blocks;
 
     PackedInt32Array heights;
     PackedInt32Array biome_indices;
@@ -1591,6 +1610,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
         Dictionary n;
         n["type"] = to_godot(node.type);
         n["x"] = node.x;
+        n["y"] = node.y;
         n["z"] = node.z;
         n["material_family"] = to_godot(typeIt->second.materialFamily);
         n["display_name"] = to_godot(typeIt->second.displayName);
@@ -1620,6 +1640,94 @@ Dictionary WroughtwildSim::world_map(int seed) {
     d["gate_x"] = map.gateX;
     d["gate_z"] = map.gateZ;
     return d;
+}
+
+Array WroughtwildSim::world_mesh(int seed, int chunk_cells) {
+    Array chunks;
+    if (!require_loaded("world_mesh") || chunk_cells < 1) {
+        return chunks;
+    }
+    const auto& map = cached_world(static_cast<uint64_t>(seed));
+    const double cs = map.cellSize;
+    using wroughtwild::worldgen::kAir;
+    using wroughtwild::worldgen::kBedrock;
+    using wroughtwild::worldgen::kDirt;
+    using wroughtwild::worldgen::kStone;
+    using wroughtwild::worldgen::kSurface;
+
+    // The six neighbour directions and, for each, the face's four corners
+    // (two triangles) on the unit block [0,1]^3. The engine's collision
+    // shape enables backface_collision, so winding is not load-bearing.
+    struct Dir { int dx, dy, dz; Vector3 corners[4]; };
+    static const Dir kDirs[6] = {
+        {1, 0, 0, {{1, 0, 1}, {1, 1, 1}, {1, 1, 0}, {1, 0, 0}}},
+        {-1, 0, 0, {{0, 0, 0}, {0, 1, 0}, {0, 1, 1}, {0, 0, 1}}},
+        {0, 1, 0, {{0, 1, 1}, {1, 1, 1}, {1, 1, 0}, {0, 1, 0}}},
+        {0, -1, 0, {{0, 0, 0}, {1, 0, 0}, {1, 0, 1}, {0, 0, 1}}},
+        {0, 0, 1, {{0, 0, 1}, {0, 1, 1}, {1, 1, 1}, {1, 0, 1}}},
+        {0, 0, -1, {{1, 0, 0}, {1, 1, 0}, {0, 1, 0}, {0, 0, 0}}},
+    };
+
+    for (int cz = 0; cz < map.height; cz += chunk_cells) {
+        for (int cx = 0; cx < map.width; cx += chunk_cells) {
+            Dictionary chunk;
+            chunk["x"] = cx;
+            chunk["z"] = cz;
+            // Accumulate locally: Packed arrays behind a Variant are
+            // copy-on-write, so growing them in place through the Dictionary
+            // would copy the whole array per block.
+            std::map<String, PackedVector3Array> bucket;
+            PackedVector3Array faces;
+            for (int z = cz; z < std::min(cz + chunk_cells, map.height); ++z) {
+                for (int x = cx; x < std::min(cx + chunk_cells, map.width); ++x) {
+                    for (int y = 0; y < map.depth; ++y) {
+                        uint8_t id = map.blockAt(x, y, z);
+                        if (id == kAir) {
+                            continue;
+                        }
+                        bool visible = false;
+                        for (const auto& dir : kDirs) {
+                            if (map.blockAt(x + dir.dx, y + dir.dy, z + dir.dz) != kAir) {
+                                continue;
+                            }
+                            visible = true;
+                            const Vector3 base(x * cs, y * cs, z * cs);
+                            faces.push_back(base + dir.corners[0] * cs);
+                            faces.push_back(base + dir.corners[1] * cs);
+                            faces.push_back(base + dir.corners[2] * cs);
+                            faces.push_back(base + dir.corners[0] * cs);
+                            faces.push_back(base + dir.corners[2] * cs);
+                            faces.push_back(base + dir.corners[3] * cs);
+                        }
+                        if (!visible) {
+                            continue;
+                        }
+                        String kind;
+                        switch (id) {
+                            case kSurface:
+                                kind = to_godot(
+                                    tuning_->worldgen.biomes[map.at(x, z).biomeIndex].surface);
+                                break;
+                            case kDirt: kind = "dirt"; break;
+                            case kBedrock: kind = "bedrock"; break;
+                            case kStone:
+                            default: kind = "stone"; break;
+                        }
+                        bucket[kind].push_back(
+                            Vector3((x + 0.5) * cs, (y + 0.5) * cs, (z + 0.5) * cs));
+                    }
+                }
+            }
+            Dictionary kinds; // kind string -> PackedVector3Array of block centres
+            for (const auto& [kind, centres] : bucket) {
+                kinds[kind] = centres;
+            }
+            chunk["kinds"] = kinds;
+            chunk["faces"] = faces;
+            chunks.push_back(chunk);
+        }
+    }
+    return chunks;
 }
 
 // --- D-014 itemisation ---------------------------------------------------------
