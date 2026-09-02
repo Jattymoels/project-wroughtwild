@@ -1372,6 +1372,76 @@ void testItemisation(const tuning::Tuning& t) {
     }
 }
 
+void testElitesAndFamilies(const tuning::Tuning& t) {
+    // Wave 3 mobs: the new families and behaviours load.
+    check(t.world.findEnemy("shrieker") != nullptr && t.world.findEnemy("gloom_crawler") != nullptr,
+          "mobs: the shrieker and the cave dweller exist");
+    const auto* shrieker = t.realtime.findBehaviour("shrieker");
+    check(shrieker != nullptr && shrieker->screamRadiusM > 0.0 && shrieker->screamPeriodSeconds > 0.0,
+          "mobs: shrieker behaviour carries its scream");
+    check(t.realtime.findBehaviour("melee")->screamRadiusM == 0.0,
+          "mobs: only the shrieker screams");
+
+    // Elite modifiers: named prefixes interacting with the status grammar.
+    check(t.world.eliteModifiers.size() == 4 && t.world.findEliteModifier("unfreezable") != nullptr,
+          "elites: four modifiers load");
+    const auto* cinder = t.world.findEliteModifier("cinder_blooded");
+    check(cinder != nullptr && cinder->deathBurstDamage > 0.0 &&
+              std::find(cinder->immuneStatuses.begin(), cinder->immuneStatuses.end(),
+                        "ignite") != cinder->immuneStatuses.end(),
+          "elites: cinder-blooded bursts on death and will not burn");
+    check(t.world.findEliteModifier("nobody") == nullptr, "elites: unknown ids are nothing");
+
+    // Danger rings: packs grow and elites appear only farther out.
+    check(t.worldgen.dangerRingAt(200.0)->packSizeBonus > 0 &&
+              t.worldgen.dangerRingAt(200.0)->eliteChance > 0.0 &&
+              t.worldgen.dangerRingAt(30.0)->eliteChance == 0.0,
+          "elites: rings crown elites only beyond the heartland");
+
+    // Generated packs: cave dens exist, elite assignments are valid, and
+    // every enemy id resolves.
+    auto map = worldgen::generate(t, 7);
+    bool cavePack = false;
+    int elites = 0;
+    bool valid = true;
+    for (const auto& pack : map.packs) {
+        if (pack.y < map.at(pack.x, pack.z).height) cavePack = true;
+        if (pack.eliteMemberIndex >= 0) {
+            ++elites;
+            if (pack.eliteMemberIndex >= static_cast<int>(pack.enemies.size()) ||
+                t.world.findEliteModifier(pack.eliteModifierId) == nullptr)
+                valid = false;
+        }
+        for (const auto& id : pack.enemies)
+            if (!t.world.findEnemy(id)) valid = false;
+    }
+    check(cavePack, "elites: cave packs den underground");
+    check(elites > 0 && valid, "elites: far packs carry valid elite crowns");
+
+    // Elite loot: strictly more materials (extra passes only add), and
+    // pages drop noticeably more often (the tripled chance).
+    const auto* eliteMod = t.world.findEliteModifier("unfreezable");
+    auto plainLoot = loot::rollEnemyLoot(t.world, "stone_husk", 99);
+    auto eliteLoot = loot::rollEnemyLoot(t.world, "stone_husk", 99, eliteMod);
+    bool superset = true;
+    int plainTotal = 0, eliteTotal = 0;
+    for (const auto& [item, count] : plainLoot) {
+        plainTotal += count;
+        auto it = eliteLoot.find(item);
+        if (it == eliteLoot.end() || it->second < count) superset = false;
+    }
+    for (const auto& [item, count] : eliteLoot) eliteTotal += count;
+    check(superset && eliteTotal > plainTotal,
+          "elites: an elite kill pays a strict superset of the plain kill");
+    int plainPages = 0, elitePages = 0;
+    for (uint64_t s = 0; s < 300; ++s) {
+        if (!loot::rollEnemySkillPage(t, "stone_husk", s, {}).empty()) ++plainPages;
+        if (!loot::rollEnemySkillPage(t, "stone_husk", s, {}, eliteMod).empty()) ++elitePages;
+    }
+    check(elitePages > plainPages, "elites: pages concentrate on elite kills");
+}
+
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -1410,6 +1480,7 @@ int main(int argc, char** argv) {
     testStatusGrammar(t);
     testSkillLoadout(t);
     testMobGearAndPages(t);
+    testElitesAndFamilies(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

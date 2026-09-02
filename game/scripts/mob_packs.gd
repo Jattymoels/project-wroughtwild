@@ -27,7 +27,10 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 		packs.append({
 			"enemies": pack["enemies"],
 			"x": pack["x"],
+			"y": pack.get("y", 0),
 			"z": pack["z"],
+			"elite_member": pack.get("elite_member", -1),
+			"elite_modifier": pack.get("elite_modifier", ""),
 			"spawned": false,
 		})
 
@@ -43,18 +46,26 @@ func _physics_process(delta: float) -> void:
 	for pack in packs:
 		if pack["spawned"]:
 			continue
-		var at := terrain.surface_position(pack["x"], pack["z"])
+		# Packs stand at their generated level: the surface, or a cave floor
+		# (cave packs activate when the player is near in 3D - above ground
+		# counts, so descending into a lit-up cave meets its residents).
+		var cell: float = terrain.map["cell_size"]
+		var at := Vector3((pack["x"] + 0.5) * cell, float(pack["y"]), (pack["z"] + 0.5) * cell)
 		if at.distance_to(player.global_position) <= ACTIVATION_RANGE_M:
 			_spawn_pack(pack, at)
 
 
 func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	pack["spawned"] = true
+	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	var ids: PackedStringArray = pack["enemies"]
 	for i in ids.size():
 		var angle := TAU * float(i) / float(maxi(ids.size(), 1))
 		var offset := Vector3(cos(angle), 0.5, sin(angle)) * 1.6
 		var enemy := Enemy.spawn(get_parent(), StringName(ids[i]), at + offset)
+		# The danger ring may have crowned one member (Wave 3 elites).
+		if i == int(pack["elite_member"]) and String(pack["elite_modifier"]) != "":
+			enemy.make_elite(sim.elite_modifier(pack["elite_modifier"]))
 		enemy.died.connect(_on_enemy_died)
 
 
@@ -63,20 +74,23 @@ func _on_enemy_died(enemy: Enemy) -> void:
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	# Per-kill deterministic seed: replaying a save replays its luck. The
 	# three loot kinds (materials, gear, pages) roll independent streams off
-	# this one seed inside the sim.
+	# this one seed inside the sim; an elite's id rides along for its
+	# bounty (extra passes, tripled gear and page chances).
 	var kill_seed := world_seed + _kill_counter * 7919
+	var elite: String = enemy.elite_id
 	var at := enemy.global_position
 	var from := at + Vector3(0, 0.5, 0)
 	var floor_y := at.y + 0.02
-	var drops: Dictionary = sim.enemy_loot(enemy.enemy_id, kill_seed)
+	var drops: Dictionary = sim.enemy_loot(enemy.enemy_id, kill_seed, elite)
 	if not drops.is_empty():
 		Pickup.scatter(get_parent(), from, drops, kill_seed, floor_y)
 	# Gear: one pickup per kill, previewing the roll; the sim re-rolls the
-	# identical item on claim, so the pickup remembers only the kill.
-	var gear: Array = sim.enemy_gear_loot(enemy.enemy_id, kill_seed)
+	# identical item on claim, so the pickup remembers only the kill (elite
+	# id included - the bounty survives the walk back).
+	var gear: Array = sim.enemy_gear_loot(enemy.enemy_id, kill_seed, elite)
 	if not gear.is_empty():
-		Pickup.drop_gear(get_parent(), from, enemy.enemy_id, kill_seed, gear[0], floor_y)
-	var page: String = sim.enemy_skill_page(enemy.enemy_id, kill_seed)
+		Pickup.drop_gear(get_parent(), from, enemy.enemy_id, kill_seed, gear[0], floor_y, elite)
+	var page: String = sim.enemy_skill_page(enemy.enemy_id, kill_seed, elite)
 	if page != "":
 		var view: Dictionary = sim.combat_skill(page)
 		Pickup.drop_page(get_parent(), from, page, view.get("display_name", page), floor_y)

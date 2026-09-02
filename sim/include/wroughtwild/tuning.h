@@ -260,13 +260,34 @@ struct GatherSite {
     std::string ambushRemovedByWorldEffect; // empty when ambushes are permanent
 };
 
+// An elite prefix a spawned mob can carry (Wave 3): named, felt, and
+// interacting with the status grammar rather than only multiplying
+// numbers. The worldgen danger rings decide who spawns elite; the drop
+// bonuses are why elites are hunted (pages and gear concentrate here).
+struct EliteModifierDef {
+    std::string id;
+    std::string displayName; // a prefix: "Unfreezable Stone Husk"
+    double lifeMultiplier = 1.0;
+    double speedMultiplier = 1.0;
+    double damageMultiplier = 1.0;
+    std::vector<std::string> immuneStatuses; // of: chill, ignite, bleed
+    double deathBurstDamage = 0.0;           // > 0: explodes on death
+    double deathBurstRadiusM = 0.0;
+    std::string deathBurstType = "fire";
+    int extraLootRolls = 0;            // extra material-table rolls per kill
+    double gearChanceMultiplier = 1.0; // scales every gear loot entry
+    double pageChanceMultiplier = 1.0; // scales every skill-page entry
+};
+
 struct WorldTable {
     PlayerBase playerBase;
     std::vector<EnemyDef> enemies;
+    std::vector<EliteModifierDef> eliteModifiers;
     std::vector<GatherSite> gatheringSites;
     bool droppedInventoryRecoverable = true;
 
     const EnemyDef* findEnemy(const std::string& id) const;
+    const EliteModifierDef* findEliteModifier(const std::string& id) const;
     const GatherSite* findSite(const std::string& id) const;
 };
 
@@ -349,6 +370,11 @@ struct BehaviourRealtime {
     // D-012: chase persists until the player stays beyond this for the
     // horde's give_up_seconds; 0 means "never gives up".
     double giveUpDistanceM = 0.0;
+    // Shrieker fields (0 on everything else): while aggroed it screams
+    // every screamPeriodSeconds, waking idle mobs within screamRadiusM -
+    // the aggro chain that builds the Zombies wave feeling (D-012).
+    double screamPeriodSeconds = 0.0;
+    double screamRadiusM = 0.0;
 };
 
 struct BossRealtime {
@@ -471,13 +497,19 @@ struct CaveParams {
     int surfaceMargin = 2;           // tunnels stay this far under the top...
     double breachChance = 0.35;      // ...except breach columns become entrances
     std::map<std::string, double> nodeDensity; // node type -> per-cave-floor chance
+    // Cave-dwelling packs, rolled on roofed cave floors like nodes.
+    std::vector<std::vector<std::string>> packs;
+    double packDensity = 0.0;
 };
 
 // Danger scales with distance from spawn: the first ring whose radius
-// contains the cell decides the pack-density multiplier.
+// contains the cell decides pack density, pack size and how often a pack
+// carries an elite.
 struct DangerRing {
     double radiusM = 0.0;
     double packDensityMultiplier = 1.0;
+    int packSizeBonus = 0;     // extra members appended from the pack's own kind
+    double eliteChance = 0.0;  // chance one member spawns with an elite modifier
 };
 
 // What breaking one generic terrain block costs and pays, per block kind
@@ -539,6 +571,8 @@ struct WorldgenTable {
     // The pack-density multiplier for a cell this far from spawn (1.0 when
     // no rings are tuned).
     double dangerMultiplierAt(double distanceM) const;
+    // The whole ring for a distance (nullptr when none are tuned).
+    const DangerRing* dangerRingAt(double distanceM) const;
 };
 
 // --- loading -----------------------------------------------------------------

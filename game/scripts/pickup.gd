@@ -22,9 +22,11 @@ const MAX_AGE_SECONDS := 180.0
 var kind := "material"
 var family := "wood"
 var amount := 1
-## gear: the kill this item came from (the sim re-rolls it on claim).
+## gear: the kill this item came from (the sim re-rolls it on claim);
+## elite_id keeps an elite kill's boosted roll identical at claim time.
 var enemy_id := ""
 var gear_seed := 0
+var elite_id := ""
 ## gear/page: what the HUD calls it before it is claimed.
 var display_name := ""
 var rarity := "plain"
@@ -71,11 +73,12 @@ static func scatter(root: Node, at: Vector3, contents: Dictionary, seed_value: i
 ## (enemy + seed): claiming asks the sim to re-roll the identical item into
 ## the pack, so no item state ever lives in the world (D-016).
 static func drop_gear(root: Node, at: Vector3, in_enemy_id: String, in_seed: int,
-		preview: Dictionary, floor_y := NAN) -> Pickup:
+		preview: Dictionary, floor_y := NAN, in_elite_id := "") -> Pickup:
 	var pickup := Pickup.new()
 	pickup.kind = "gear"
 	pickup.enemy_id = in_enemy_id
 	pickup.gear_seed = in_seed
+	pickup.elite_id = in_elite_id
 	pickup.display_name = preview.get("display_name", "gear")
 	pickup.rarity = preview.get("rarity", "plain")
 	_launch_drop(pickup, root, at, in_seed, floor_y)
@@ -195,7 +198,7 @@ func _absorb(player: Node3D) -> void:
 			# The claim re-rolls the kill's gear straight into the pack: the
 			# same (enemy, seed) always yields the same item, so the world
 			# never carried item state at all.
-			for entry in sim.claim_enemy_gear(enemy_id, gear_seed):
+			for entry in sim.claim_enemy_gear(enemy_id, gear_seed, elite_id):
 				if wrought_player.hud != null:
 					wrought_player.hud.notify("Found: %s %s" % [
 						String(entry.get("rarity", "plain")).capitalize(),

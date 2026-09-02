@@ -156,10 +156,16 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks"),
                          &WroughtwildSim::world_mesh_chunk);
     ClassDB::bind_method(D_METHOD("block_rules"), &WroughtwildSim::block_rules);
-    ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_loot);
-    ClassDB::bind_method(D_METHOD("enemy_gear_loot", "enemy_id", "seed"), &WroughtwildSim::enemy_gear_loot);
-    ClassDB::bind_method(D_METHOD("claim_enemy_gear", "enemy_id", "seed"), &WroughtwildSim::claim_enemy_gear);
-    ClassDB::bind_method(D_METHOD("enemy_skill_page", "enemy_id", "seed"), &WroughtwildSim::enemy_skill_page);
+    ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed", "elite_id"),
+                         &WroughtwildSim::enemy_loot, DEFVAL(String()));
+    ClassDB::bind_method(D_METHOD("enemy_gear_loot", "enemy_id", "seed", "elite_id"),
+                         &WroughtwildSim::enemy_gear_loot, DEFVAL(String()));
+    ClassDB::bind_method(D_METHOD("claim_enemy_gear", "enemy_id", "seed", "elite_id"),
+                         &WroughtwildSim::claim_enemy_gear, DEFVAL(String()));
+    ClassDB::bind_method(D_METHOD("enemy_skill_page", "enemy_id", "seed", "elite_id"),
+                         &WroughtwildSim::enemy_skill_page, DEFVAL(String()));
+    ClassDB::bind_method(D_METHOD("elite_modifier_ids"), &WroughtwildSim::elite_modifier_ids);
+    ClassDB::bind_method(D_METHOD("elite_modifier", "elite_id"), &WroughtwildSim::elite_modifier);
     ClassDB::bind_method(D_METHOD("kit_station", "kit_item_id"), &WroughtwildSim::kit_station);
     ClassDB::bind_method(D_METHOD("kit_item_ids"), &WroughtwildSim::kit_item_ids);
     ClassDB::bind_method(D_METHOD("fuels"), &WroughtwildSim::fuels);
@@ -528,6 +534,8 @@ Dictionary WroughtwildSim::realtime() const {
         entry["aggro_range_m"] = b.aggroRangeM;
         entry["windup_seconds"] = b.windupSeconds;
         entry["give_up_distance_m"] = b.giveUpDistanceM;
+        entry["scream_period_seconds"] = b.screamPeriodSeconds;
+        entry["scream_radius_m"] = b.screamRadiusM;
         behaviours[to_godot(id)] = entry;
     }
     d["behaviours"] = behaviours;
@@ -1309,39 +1317,49 @@ PackedStringArray WroughtwildSim::kit_item_ids() const {
     return ids;
 }
 
-Dictionary WroughtwildSim::enemy_loot(const String& enemy_id, int seed) {
+const wroughtwild::tuning::EliteModifierDef* WroughtwildSim::find_elite(const String& elite_id) const {
+    if (elite_id.is_empty()) {
+        return nullptr;
+    }
+    return tuning_->world.findEliteModifier(to_std(elite_id));
+}
+
+Dictionary WroughtwildSim::enemy_loot(const String& enemy_id, int seed, const String& elite_id) {
     Dictionary d;
     if (!require_loaded("enemy_loot")) {
         return d;
     }
     const auto drops = wroughtwild::loot::rollEnemyLoot(
-        tuning_->world, to_std(enemy_id), static_cast<uint64_t>(seed));
+        tuning_->world, to_std(enemy_id), static_cast<uint64_t>(seed), find_elite(elite_id));
     for (const auto& [item, count] : drops) {
         d[to_godot(item)] = count;
     }
     return d;
 }
 
-Array WroughtwildSim::enemy_gear_loot(const String& enemy_id, int seed) {
+Array WroughtwildSim::enemy_gear_loot(const String& enemy_id, int seed, const String& elite_id) {
     Array out;
     if (!require_loaded("enemy_gear_loot")) {
         return out;
     }
-    const auto gear = wroughtwild::loot::rollEnemyGear(*tuning_, to_std(enemy_id), static_cast<uint64_t>(seed));
+    const auto gear = wroughtwild::loot::rollEnemyGear(*tuning_, to_std(enemy_id),
+                                                       static_cast<uint64_t>(seed), find_elite(elite_id));
     for (const auto& item : gear) {
         out.push_back(item_entry(*tuning_, item, -1));
     }
     return out;
 }
 
-Array WroughtwildSim::claim_enemy_gear(const String& enemy_id, int seed) {
+Array WroughtwildSim::claim_enemy_gear(const String& enemy_id, int seed, const String& elite_id) {
     Array out;
     if (!require_loaded("claim_enemy_gear")) {
         return out;
     }
     // The same kill rolls the same gear (the gear stream is deterministic per
-    // seed), so a pickup only needs to remember which kill it came from.
-    const auto gear = wroughtwild::loot::rollEnemyGear(*tuning_, to_std(enemy_id), static_cast<uint64_t>(seed));
+    // seed and elite), so a pickup only needs to remember which kill it came
+    // from - the elite id included.
+    const auto gear = wroughtwild::loot::rollEnemyGear(*tuning_, to_std(enemy_id),
+                                                       static_cast<uint64_t>(seed), find_elite(elite_id));
     for (const auto& item : gear) {
         player_->packItems.push_back(item);
         out.push_back(item_entry(*tuning_, item, static_cast<int>(player_->packItems.size()) - 1));
@@ -1349,12 +1367,46 @@ Array WroughtwildSim::claim_enemy_gear(const String& enemy_id, int seed) {
     return out;
 }
 
-String WroughtwildSim::enemy_skill_page(const String& enemy_id, int seed) const {
+String WroughtwildSim::enemy_skill_page(const String& enemy_id, int seed, const String& elite_id) const {
     if (!require_loaded("enemy_skill_page")) {
         return String();
     }
     return to_godot(wroughtwild::loot::rollEnemySkillPage(*tuning_, to_std(enemy_id), static_cast<uint64_t>(seed),
-                                                          player_->knownSkills()));
+                                                          player_->knownSkills(), find_elite(elite_id)));
+}
+
+PackedStringArray WroughtwildSim::elite_modifier_ids() const {
+    PackedStringArray ids;
+    if (require_loaded("elite_modifier_ids")) {
+        for (const auto& def : tuning_->world.eliteModifiers) {
+            ids.push_back(to_godot(def.id));
+        }
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::elite_modifier(const String& elite_id) const {
+    Dictionary d;
+    if (!require_loaded("elite_modifier")) {
+        return d;
+    }
+    const auto* def = find_elite(elite_id);
+    if (def == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(def->id);
+    d["display_name"] = to_godot(def->displayName);
+    d["life_multiplier"] = def->lifeMultiplier;
+    d["speed_multiplier"] = def->speedMultiplier;
+    d["damage_multiplier"] = def->damageMultiplier;
+    d["immune_statuses"] = strings_to_packed(def->immuneStatuses);
+    d["death_burst_damage"] = def->deathBurstDamage;
+    d["death_burst_radius_m"] = def->deathBurstRadiusM;
+    d["death_burst_type"] = to_godot(def->deathBurstType);
+    d["extra_loot_rolls"] = def->extraLootRolls;
+    d["gear_chance_multiplier"] = def->gearChanceMultiplier;
+    d["page_chance_multiplier"] = def->pageChanceMultiplier;
+    return d;
 }
 
 PackedStringArray WroughtwildSim::player_build_tags() const {
@@ -1633,7 +1685,10 @@ Dictionary WroughtwildSim::world_map(int seed) {
         }
         p["enemies"] = enemies;
         p["x"] = pack.x;
+        p["y"] = pack.y;
         p["z"] = pack.z;
+        p["elite_member"] = pack.eliteMemberIndex;
+        p["elite_modifier"] = to_godot(pack.eliteModifierId);
         packs.push_back(p);
     }
     d["packs"] = packs;
