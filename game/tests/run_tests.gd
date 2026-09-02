@@ -272,7 +272,8 @@ func _test_sim_extension() -> void:
 	check(stats["max_life"] == 100.0 and stats["armour"] == 0.0, "combat: bare derived stats")
 	var heavy: Dictionary = sim.combat_skill("prototype_heavy_strike")
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
-	check(sim.combat_skill_ids().size() == 4, "combat: four prototype skills (frost orb joined)")
+	check(heavy["delivery"] == "strike" and heavy["starting"], "combat: skill view carries delivery and starting (D-016)")
+	check(sim.combat_skill_ids().size() == 7, "combat: seven skills defined (three arrive as pages)")
 	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 4, "combat: enemy view")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
 	var rt: Dictionary = sim.realtime()
@@ -301,7 +302,9 @@ func _test_sim_extension() -> void:
 	check(absf(sim.fork_damage_fraction("prototype_frost_orb", 1) - 0.7) < 0.000001, "grammar: fork generation decays damage")
 	var shatter: Dictionary = sim.shatter_for("prototype_area_strike")
 	check(shatter["enabled"] and shatter["executes_frozen"], "grammar: area strike carries the shatter hook")
-	check(not sim.shatter_for("prototype_heavy_strike")["enabled"], "grammar: heavy strike does not shatter")
+	check(not shatter["executes_boss"], "grammar: shatter novas a frozen boss, never executes it")
+	check(sim.shatter_for("prototype_heavy_strike")["enabled"], "grammar: every attack shatters (trigger by tag, D-016)")
+	check(not sim.shatter_for("prototype_frost_orb")["enabled"], "grammar: cold spells set up, attacks cash in")
 	var bare_radius: float = shatter["nova_radius_m"]
 	sim.set_skill_mod_active("wide_shatter", true)
 	check(absf(sim.shatter_for("prototype_area_strike")["nova_radius_m"] - bare_radius * 1.4) < 0.000001,
@@ -309,6 +312,18 @@ func _test_sim_extension() -> void:
 	for mod_id in sim.skill_mod_ids():
 		sim.set_skill_mod_active(mod_id, false)
 	check(not sim.skill_mod_active("deep_frost"), "grammar: mods toggle back off")
+
+	# D-016 statuses: ignite and bleed sit beside chill, resolved by tag.
+	check(absf(sim.ignite_applied("prototype_ember_bolt", false) - 45.0) < 0.000001, "grammar: bolt ignite buildup")
+	check(absf(sim.ignite_applied("prototype_ember_bolt", true) - 11.25) < 0.000001, "grammar: bosses resist ignite x0.25")
+	check(absf(sim.bleed_applied("prototype_rend", false) - 70.0) < 0.000001, "grammar: rend bleed buildup")
+	check(sim.ignite_status()["damage_per_s"] == 6.0 and sim.ignite_status()["duration_s"] == 4.0,
+		"grammar: ignite DoT rules exposed")
+	check(sim.bleed_status()["moving_multiplier"] == 3.0, "grammar: bleed punishes walking")
+	var prolif: Dictionary = sim.proliferate_for()
+	check(prolif["enabled"] and prolif["radius_m"] == 3.0 and prolif["spread_buildup"] == 100.0,
+		"grammar: proliferate hook exposed")
+	check(absf(prolif["spread_buildup_boss"] - 25.0) < 0.000001, "grammar: proliferate respects boss resistance")
 
 	sim.begin_fight(42)
 	var first: Array = []
@@ -420,6 +435,27 @@ func _test_sim_extension() -> void:
 	check(sim.export_json().find("pack_items") >= 0, "items: pack items are in the save schema")
 	check(sim.roll_item_into_pack("no_such_base", "keen", 1, 1) == -1 and sim.pack_items().size() == before + 1, "items: unknown bases roll nothing")
 
+	# D-016 loadout: skills are found, not worn. The starting four fill the
+	# bar; pages teach the rest; gear only ever scales skills by tag.
+	check(sim.skill_bar_size() == 4 and sim.skill_bar().size() == 4, "loadout: four bar slots")
+	check(sim.known_skill_ids().size() == 4 and sim.knows_skill("prototype_dash"), "loadout: the starting four are known")
+	check(sim.skill_bar()[0] == "prototype_area_strike" and sim.skill_bar()[3] == "prototype_dash",
+		"loadout: starting skills fill the bar in data order")
+	check(not sim.knows_skill("prototype_ember_bolt"), "loadout: page skills start unknown")
+	check(not sim.set_bar_slot(0, "prototype_ember_bolt"), "loadout: cannot slot a skill you do not know")
+	check(sim.learn_skill("prototype_ember_bolt") and sim.knows_skill("prototype_ember_bolt"), "loadout: a page teaches the skill")
+	check(not sim.learn_skill("prototype_ember_bolt"), "loadout: relearning refused")
+	check(sim.set_bar_slot(1, "prototype_ember_bolt") and sim.skill_bar()[1] == "prototype_ember_bolt",
+		"loadout: a learned skill takes slot 2")
+	check(sim.set_bar_slot(2, "prototype_ember_bolt") and sim.skill_bar()[2] == "prototype_ember_bolt"
+		and sim.skill_bar()[1] == "", "loadout: one key per skill - moving it vacates the old slot")
+	check(sim.player_build_tags().has("fire"), "loadout: build tags follow what the bar holds")
+	var loadout_snapshot: String = sim.export_json()
+	check(loadout_snapshot.find("known_skills") >= 0, "loadout: known skills in the save schema")
+	sim.set_bar_slot(2, "")
+	check(sim.import_json(loadout_snapshot) and sim.skill_bar()[2] == "prototype_ember_bolt",
+		"loadout: the bar round-trips through the save")
+
 func _test_sandpit_extension() -> void:
 	# Wave 1 surface: worldgen, loot, kits, fuel and currency routing.
 	if not ClassDB.class_exists(&"WroughtwildSim"):
@@ -447,6 +483,36 @@ func _test_sandpit_extension() -> void:
 	var drops_b: Dictionary = sim.enemy_loot("stone_husk", 77)
 	check(drops_a == drops_b, "sandpit: loot deterministic per seed")
 	check(drops_a.get("stone", 0) >= 2, "sandpit: husks always pay stone")
+
+	# D-016 loot: gear and pages ride independent streams off the kill seed,
+	# and a gear pickup remembers only its kill - the claim re-rolls it.
+	var gear_seed := -1
+	for s in 400:
+		if not sim.enemy_gear_loot("stone_husk", s).is_empty():
+			gear_seed = s
+			break
+	check(gear_seed >= 0, "loot: a husk eventually drops gear")
+	if gear_seed >= 0:
+		var preview: Dictionary = sim.enemy_gear_loot("stone_husk", gear_seed)[0]
+		check(preview["rarity"] == "keen" and int(preview["index"]) == -1, "loot: gear preview is keen and unbanked")
+		var pack_before: int = sim.pack_items().size()
+		var claimed: Array = sim.claim_enemy_gear("stone_husk", gear_seed)
+		check(claimed.size() == 1 and sim.pack_items().size() == pack_before + 1, "loot: claiming banks the item")
+		check(claimed[0]["base_id"] == preview["base_id"] and claimed[0]["mods"].size() == preview["mods"].size(),
+			"loot: the claim re-rolls the identical item from the kill seed")
+	var page_seed := -1
+	for s in 400:
+		if sim.enemy_skill_page("stone_husk", s) != "":
+			page_seed = s
+			break
+	check(page_seed >= 0, "loot: a husk eventually drops a skill page")
+	if page_seed >= 0:
+		var page: String = sim.enemy_skill_page("stone_husk", page_seed)
+		check(not sim.knows_skill(page) and sim.combat_skill(page)["drop_weight"] > 0.0,
+			"loot: pages only teach unknown droppable skills")
+		for id in sim.combat_skill_ids():
+			sim.learn_skill(id)
+		check(sim.enemy_skill_page("stone_husk", page_seed) == "", "loot: a full spellbook drops no pages")
 
 	# Currency loot lands in the purse, material loot in the pack.
 	var before: int = sim.currency_count("trade_currency")

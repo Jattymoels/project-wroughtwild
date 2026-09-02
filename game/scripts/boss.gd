@@ -56,6 +56,8 @@ func configure(sim: WroughtwildSim) -> void:
 	breath_telegraph_seconds = boss_rt["breath_telegraph_seconds"]
 	_breath_timer = breath_period_seconds
 
+	_configure_statuses(sim)
+
 	_base_material = StandardMaterial3D.new()
 	_base_material.albedo_color = Color(0.45, 0.08, 0.05)
 	_telegraph_material = StandardMaterial3D.new()
@@ -63,14 +65,37 @@ func configure(sim: WroughtwildSim) -> void:
 	_telegraph_material.emission_enabled = true
 	_telegraph_material.emission = Color(1.0, 0.4, 0.05)
 	_telegraph_material.emission_energy_multiplier = 3.0
+	# The status looks (ice, fire, blood) paint the base material, so the
+	# shared _refresh_look works on the boss too; the telegraph is its own
+	# override on top.
+	_material = _base_material
+	_base_albedo = _base_material.albedo_color
 	_mesh.material_override = _base_material
 	state = "chase"
 	_refresh_label()
 
 
+## Freezing a boss (through its buildup resistance) interrupts everything,
+## an inhale included - the earned reward is a stopped breath.
+func _on_frozen() -> void:
+	super()
+	if state == "inhale":
+		state = "chase"
+		_telegraph_left = 0.0
+		_mesh.material_override = _base_material
+		_refresh_label()
+
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	# Shared status clocks (enemy.gd): a frozen boss stands, thaws, and takes
+	# its DoT ticks like anything else - only its buildup resistance differs.
+	if _tick_statuses(delta):
+		velocity.x = 0.0
+		velocity.z = 0.0
+		move_and_slide()
+		return
 	var player := _find_player()
 	if player == null:
 		move_and_slide()

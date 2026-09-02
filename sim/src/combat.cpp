@@ -139,8 +139,12 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
     std::vector<Combatant> enemies = buildCombatants(tuning, enemyIds);
     HitStream hits(seed);
 
+    // The round model fights with the starting bar (D-016): learned skills
+    // are the real-time game's business, and the balance baseline must not
+    // shift every time skills.json gains a page.
     std::vector<SkillSlot> skills;
     for (const auto& def : tuning.skills.combatSkills) {
+        if (!def.starting) continue;
         SkillSlot slot;
         slot.def = &def;
         auto cd = def.numbers.find("cooldown_seconds");

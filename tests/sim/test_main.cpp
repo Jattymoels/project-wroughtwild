@@ -1,6 +1,7 @@
 // Headless regression tests for the engine-neutral simulation core.
 // Run via `make` in tests/sim; exits non-zero on any failure.
 
+#include <algorithm>
 #include <cmath>
 #include <cstdio>
 #include <string>
@@ -893,11 +894,19 @@ void testGrammar(const tuning::Tuning& t) {
     checkNear(grammar::chillApplied(t, none, "prototype_frost_orb", true), 10.0, 1e-9,
               "grammar: bosses resist chill buildup");
 
-    // Shatter hook: carried by the cone strike only; radius honours mods.
+    // Shatter hook: triggered by tag (every attack), never by skill id;
+    // spells set up, attacks cash in. Radius honours mods.
     auto plain = grammar::shatterFor(t, none, "prototype_area_strike");
     check(plain.enabled && plain.executesFrozen, "grammar: cone strike carries shatter");
-    check(!grammar::shatterFor(t, none, "prototype_heavy_strike").enabled,
-          "grammar: heavy strike carries no shatter");
+    check(!plain.executesBoss, "grammar: shatter novas a frozen boss but does not execute it");
+    check(grammar::shatterFor(t, none, "prototype_heavy_strike").enabled,
+          "grammar: heavy strike carries shatter too (attack tag)");
+    check(grammar::shatterFor(t, none, "prototype_rend").enabled,
+          "grammar: a learned attack joins the shatter combo by its tag");
+    check(!grammar::shatterFor(t, none, "prototype_frost_orb").enabled &&
+              !grammar::shatterFor(t, none, "prototype_frost_nova").enabled,
+          "grammar: cold spells do not shatter");
+    check(!grammar::shatterFor(t, none, "nobody").enabled, "grammar: unknown skills carry nothing");
     auto wide = grammar::shatterFor(t, all, "prototype_area_strike");
     checkNear(wide.novaRadiusM, plain.novaRadiusM * 1.4, 1e-9,
               "grammar: wide shatter is 40% increased radius");
@@ -911,6 +920,274 @@ void testGrammar(const tuning::Tuning& t) {
               "grammar: increased sums additively, more multiplies");
 }
 
+// The Wave 2 grammar intensive (D-016): ignite and bleed beside chill, flat
+// payload mods, proliferate, and skills with their own delivery.
+void testStatusGrammar(const tuning::Tuning& t) {
+    const auto* bolt = t.skills.findCombatSkill("prototype_ember_bolt");
+    const auto* rend = t.skills.findCombatSkill("prototype_rend");
+    const auto* nova = t.skills.findCombatSkill("prototype_frost_nova");
+    check(bolt && bolt->delivery == "projectile" && !bolt->starting && bolt->dropWeight > 0.0,
+          "status: ember bolt is a learned projectile");
+    check(rend && rend->delivery == "strike" && nova && nova->delivery == "cone",
+          "status: rend strikes, nova is a ring");
+    check(t.skills.findCombatSkill("prototype_dash")->delivery == "dash" &&
+              t.skills.findCombatSkill("prototype_area_strike")->delivery == "cone",
+          "status: starting skills carry their deliveries");
+    check(t.realtime.skillSpatials.count("prototype_ember_bolt") == 1 &&
+              t.realtime.skillSpatials.at("prototype_frost_nova").at("cone_degrees") == 360.0,
+          "status: new skills have their space-and-time entries");
+    check(t.grammar.ignite.durationS > 0.0 && t.grammar.bleed.movingMultiplier > 1.0 &&
+              t.grammar.proliferate.enabled,
+          "status: ignite, bleed and proliferate load");
+
+    grammar::ActiveMods none;
+    auto at = [&](const char* id, double value) {
+        return grammar::modAt(t.items, id, value, "test");
+    };
+    auto tierOneMax = [&](const char* id) {
+        return at(id, grammar::defaultValue(*t.items.findModifier(id)));
+    };
+
+    // Ignite: three bolts bare, two with Kindling at tier-1 maximum.
+    double igniteBare = grammar::igniteApplied(t, none, "prototype_ember_bolt", false);
+    check(igniteBare > 0.0 && 3.0 * igniteBare >= t.grammar.ignite.buildupMax &&
+              2.0 * igniteBare < t.grammar.ignite.buildupMax,
+          "status: bare ignite takes three bolts");
+    grammar::ActiveMods kindled = {tierOneMax("kindling")};
+    check(2.0 * grammar::igniteApplied(t, kindled, "prototype_ember_bolt", false) >=
+              t.grammar.ignite.buildupMax,
+          "status: kindling crosses to a two-bolt ignite");
+    checkNear(grammar::igniteApplied(t, none, "prototype_ember_bolt", true),
+              igniteBare * t.grammar.ignite.bossBuildupMultiplier, 1e-9,
+              "status: bosses resist ignite");
+    check(grammar::igniteApplied(t, kindled, "prototype_frost_orb", false) == 0.0,
+          "status: kindling gives the orb no ignite (increased needs a base)");
+    check(grammar::chillApplied(t, none, "prototype_ember_bolt", false) == 0.0,
+          "status: the bolt carries no chill");
+
+    // Bleed: two rends bare, one with Serration at tier-1 maximum.
+    double bleedBare = grammar::bleedApplied(t, none, "prototype_rend", false);
+    check(bleedBare > 0.0 && 2.0 * bleedBare >= t.grammar.bleed.buildupMax &&
+              bleedBare < t.grammar.bleed.buildupMax,
+          "status: bare bleed takes two rends");
+    grammar::ActiveMods serrated = {tierOneMax("serration")};
+    check(grammar::bleedApplied(t, serrated, "prototype_rend", false) >= t.grammar.bleed.buildupMax,
+          "status: serration opens a wound in one rend");
+    check(grammar::bleedApplied(t, serrated, "prototype_heavy_strike", false) == 0.0,
+          "status: the heavy strike has no bleed to increase");
+
+    // Flat payload mods give a skill a status it lacks: Frostbite chills
+    // attacks, Smouldering ignites spells - and only those.
+    grammar::ActiveMods frostbite = {at("frostbite", 25.0)};
+    checkNear(grammar::chillApplied(t, frostbite, "prototype_area_strike", false), 25.0, 1e-9,
+              "status: frostbite gives the cone strike chill");
+    checkNear(grammar::chillApplied(t, frostbite, "prototype_frost_orb", false), 40.0, 1e-9,
+              "status: frostbite leaves spells alone");
+    grammar::ActiveMods frostbiteAndDeepFrost = {at("frostbite", 25.0), tierOneMax("deep_frost")};
+    checkNear(grammar::chillApplied(t, frostbiteAndDeepFrost, "prototype_area_strike", false), 25.0, 1e-9,
+              "status: deep frost scales chill skills, not a chilling attack");
+    grammar::ActiveMods smouldering = {at("smouldering", 20.0)};
+    checkNear(grammar::igniteApplied(t, smouldering, "prototype_frost_orb", false), 20.0, 1e-9,
+              "status: smouldering gives the orb ignite");
+    checkNear(grammar::igniteApplied(t, smouldering, "prototype_ember_bolt", false), igniteBare + 20.0, 1e-9,
+              "status: flat adds before increased (bolt + smouldering)");
+    check(grammar::igniteApplied(t, smouldering, "prototype_heavy_strike", false) == 0.0,
+          "status: smouldering ignores attacks");
+
+    // Status parameters honour their tags: burn damage and duration, bleed damage.
+    auto burnBare = grammar::igniteStatus(t, none);
+    checkNear(burnBare.damagePerS, t.grammar.ignite.damagePerS, 1e-9, "status: base burn per second");
+    grammar::ActiveMods burning = {at("burn_damage", 0.5), at("lingering_flame", 0.25)};
+    auto burn = grammar::igniteStatus(t, burning);
+    checkNear(burn.damagePerS, t.grammar.ignite.damagePerS * 1.5, 1e-9, "status: burn damage increases the tick");
+    checkNear(burn.durationS, t.grammar.ignite.durationS * 1.25, 1e-9, "status: lingering flame lengthens the burn");
+    check(burn.buildupMax == t.grammar.ignite.buildupMax && burn.decayPerS == t.grammar.ignite.decayPerS,
+          "status: ignite thresholds pass through");
+    grammar::ActiveMods bleeding = {at("hemorrhage", 0.6)};
+    auto wound = grammar::bleedStatus(t, bleeding);
+    checkNear(wound.damagePerS, t.grammar.bleed.damagePerS * 1.6, 1e-9, "status: hemorrhage increases the bleed tick");
+    checkNear(wound.movingMultiplier, t.grammar.bleed.movingMultiplier, 1e-9, "status: bleed keeps its moving multiplier");
+    checkNear(grammar::igniteStatus(t, bleeding).damagePerS, t.grammar.ignite.damagePerS, 1e-9,
+              "status: bleed mods leave the burn alone");
+
+    // Proliferate: radius honours Wildfire Reach; buildup is the hook's.
+    auto spread = grammar::proliferateFor(t, none);
+    check(spread.enabled && spread.radiusM == t.grammar.proliferate.radiusM &&
+              spread.spreadBuildup == t.grammar.proliferate.spreadBuildup,
+          "status: proliferate base parameters");
+    grammar::ActiveMods reach = {at("wildfire_reach", 0.4)};
+    checkNear(grammar::proliferateFor(t, reach).radiusM, t.grammar.proliferate.radiusM * 1.4, 1e-9,
+              "status: wildfire reach widens proliferate");
+
+    // Damage by element: fire damage scales the bolt's hit, not its burn.
+    grammar::ActiveMods fiery = {at("fire_damage", 0.2)};
+    checkNear(grammar::skillDamage(t, fiery, "prototype_ember_bolt"), 8.0 * 1.2, 1e-9,
+              "status: fire damage scales the bolt");
+    checkNear(grammar::skillDamage(t, fiery, "prototype_frost_orb"), 9.0, 1e-9,
+              "status: fire damage leaves the orb alone");
+    checkNear(grammar::igniteStatus(t, fiery).damagePerS, t.grammar.ignite.damagePerS, 1e-9,
+              "status: fire damage is the hit, not the burn");
+
+    // Forks are a projectile thing: a Forks roll teaches the bolt to split.
+    check(grammar::forkCount(t, none, "prototype_ember_bolt") == 0, "status: the bolt does not fork bare");
+    grammar::ActiveMods lattice = {tierOneMax("forked_lattice")};
+    check(grammar::forkCount(t, lattice, "prototype_ember_bolt") == 1, "status: forks teach the bolt to split");
+
+    // The wand: implicit Kindling, pool is the fire line; never resistance.
+    const auto* wand = t.items.findBase("ember_wand");
+    check(wand && wand->slot == "weapon" && wand->implicitModifiers.size() == 1 &&
+              wand->implicitModifiers.front().id == "kindling",
+          "status: the ember wand carries kindling");
+    for (uint64_t seed = 0; seed < 40; ++seed) {
+        auto item = items::rollRarityItem(t.items, "ember_wand", "wrought", 1, seed);
+        for (const auto& rolled : item.rolledProperties) {
+            const auto* def = t.items.findModifier(rolled.propertyId);
+            check(def && !def->isSelf(), "status: the wand rolls only skill modifiers (" + rolled.propertyId + ")");
+        }
+        auto maceRoll = items::rollRarityItem(t.items, "iron_mace", "wrought", 1, seed);
+        for (const auto& rolled : maceRoll.rolledProperties)
+            check(rolled.propertyId != "deep_frost" && rolled.propertyId != "kindling",
+                  "status: the mace never grows spell-line mods");
+    }
+    check(t.crafting.findRecipe("ember_wand") != nullptr, "status: the wand has a recipe");
+}
+
+// D-016: skills are learned, not worn. The loadout lives in the economy
+// and saves; the round model fights with the starting bar.
+void testSkillLoadout(const tuning::Tuning& t) {
+    auto starting = t.skills.startingSkillIds();
+    check(starting.size() == 4 && starting[0] == "prototype_area_strike" &&
+              starting[1] == "prototype_heavy_strike" && starting[2] == "prototype_frost_orb" &&
+              starting[3] == "prototype_dash",
+          "loadout: four starting skills in bar order");
+
+    economy::PlayerEconomy player(t);
+    check(player.knownSkills() == starting, "loadout: a fresh character knows the starting skills");
+    check(player.skillBar().size() == economy::kSkillBarSize && player.skillBar() == starting,
+          "loadout: the starting skills fill the bar in order");
+    check(player.knowsSkill("prototype_frost_orb") && !player.knowsSkill("prototype_ember_bolt"),
+          "loadout: learned skills are known, pages are not");
+
+    check(!player.learnSkill("nobody"), "loadout: unknown skills cannot be learned");
+    check(!player.learnSkill("prototype_frost_orb"), "loadout: a known skill is not learned twice");
+    check(player.learnSkill("prototype_ember_bolt") && player.knowsSkill("prototype_ember_bolt"),
+          "loadout: a page teaches its skill");
+    check(player.knownSkills().size() == 5 && player.skillBar() == starting,
+          "loadout: a full bar stays as it was; the new skill waits");
+    check(!player.setBarSlot(4, "prototype_ember_bolt") && !player.setBarSlot(-1, "prototype_ember_bolt"),
+          "loadout: bar slots are bounded");
+    check(!player.setBarSlot(0, "prototype_rend"), "loadout: an unknown skill cannot go on the bar");
+    check(player.setBarSlot(1, "prototype_ember_bolt") && player.skillBar()[1] == "prototype_ember_bolt",
+          "loadout: a known skill takes a slot");
+    check(player.setBarSlot(3, "prototype_ember_bolt") && player.skillBar()[3] == "prototype_ember_bolt" &&
+              player.skillBar()[1].empty(),
+          "loadout: moving a skill vacates its old slot");
+    check(player.setBarSlot(3, "") && player.skillBar()[3].empty(), "loadout: a slot can be cleared");
+    check(player.learnSkill("prototype_rend") && player.skillBar()[1] == "prototype_rend",
+          "loadout: a new skill takes the first empty slot");
+
+    // Save round-trip keeps the loadout; a pre-D-016 save starts fresh.
+    save::SaveGame game;
+    game.economy = player.exportState();
+    save::SaveGame loaded = save::fromJson(save::toJson(game));
+    check(loaded.economy.knownSkills.size() == 6 && loaded.economy.skillBar == player.skillBar(),
+          "loadout: known skills and bar round-trip");
+    economy::PlayerEconomy restored(t);
+    restored.importState(loaded.economy);
+    check(restored.knownSkills() == player.knownSkills() && restored.skillBar() == player.skillBar(),
+          "loadout: import restores the loadout");
+    economy::PlayerEconomy::State old;
+    restored.importState(old);
+    check(restored.knownSkills() == starting && restored.skillBar() == starting,
+          "loadout: an old save falls back to the starting bar");
+    economy::PlayerEconomy::State stale;
+    stale.knownSkills = {"prototype_frost_orb", "retired_skill", "prototype_rend"};
+    stale.skillBar = {"retired_skill", "prototype_rend", "", "prototype_dash"};
+    restored.importState(stale);
+    check(restored.knowsSkill("prototype_rend") && !restored.knowsSkill("retired_skill") &&
+              restored.knowsSkill("prototype_area_strike"),
+          "loadout: import drops retired skills and never loses a starting one");
+    check(restored.skillBar()[0].empty() && restored.skillBar()[1] == "prototype_rend" &&
+              restored.skillBar()[3] == "prototype_dash",
+          "loadout: the bar keeps what is still known, slot by slot");
+
+    // The round model (balance oracle) fights with the starting bar only.
+    boons::BuildTags tags = {"attack", "physical", "area", "single_target", "movement"};
+    stats::Equipment bare;
+    auto derived = stats::deriveStats(t.world.playerBase, bare, t.items);
+    std::vector<std::string> log;
+    auto result = combat::runEncounter(t, derived, combat::CombatMods{}, {"ember_whelp", "ember_whelp"},
+                                       5, combat::autoPolicy, &log);
+    bool learnedUsed = false;
+    for (const auto& line : log)
+        if (line.find("Rend") != std::string::npos || line.find("Ember Bolt") != std::string::npos ||
+            line.find("Frost Nova") != std::string::npos)
+            learnedUsed = true;
+    check(result.victory && !learnedUsed, "loadout: the round model never swings a learned skill");
+}
+
+// Mob drops beyond materials (D-016): gear pieces and skill pages, each on
+// its own random stream so adding one never moves the others.
+void testMobGearAndPages(const tuning::Tuning& t) {
+    auto a = loot::rollEnemyGear(t, "stone_husk", 4);
+    auto b = loot::rollEnemyGear(t, "stone_husk", 4);
+    check(a.size() == b.size(), "drops: gear is deterministic per seed");
+    check(loot::rollEnemyGear(t, "nobody", 4).empty(), "drops: unknown enemies drop no gear");
+
+    const int kills = 4000;
+    int gearDrops = 0;
+    bool wellFormed = true;
+    for (uint64_t seed = 0; seed < kills; ++seed) {
+        for (const auto& item : loot::rollEnemyGear(t, "stone_husk", seed)) {
+            ++gearDrops;
+            if (item.rarity != "keen" || !t.items.findBase(item.baseId) || item.rolledProperties.empty())
+                wellFormed = false;
+        }
+    }
+    double gearRate = static_cast<double>(gearDrops) / kills;
+    check(gearRate > 0.04 && gearRate < 0.08, "drops: husk gear lands near its 6% chance");
+    check(wellFormed, "drops: dropped gear is keen, on a real base, with modifiers");
+
+    // Pages teach only unknown skills, weighted, and dry up once all are known.
+    std::vector<std::string> known = t.skills.startingSkillIds();
+    std::set<std::string> taught;
+    int pages = 0;
+    for (uint64_t seed = 0; seed < kills; ++seed) {
+        auto page = loot::rollEnemySkillPage(t, "stone_husk", seed, known);
+        if (page.empty()) continue;
+        ++pages;
+        taught.insert(page);
+        check(t.skills.findCombatSkill(page) && !t.skills.findCombatSkill(page)->starting,
+              "drops: a page never teaches a known skill");
+    }
+    double pageRate = static_cast<double>(pages) / kills;
+    check(pageRate > 0.035 && pageRate < 0.07, "drops: husk pages land near their 5% chance");
+    check(taught.size() == 3, "drops: every learnable skill turns up on pages");
+    check(loot::rollEnemySkillPage(t, "stone_husk", 1, known) ==
+              loot::rollEnemySkillPage(t, "stone_husk", 1, known),
+          "drops: pages are deterministic per seed");
+
+    std::vector<std::string> everything;
+    for (const auto& def : t.skills.combatSkills) everything.push_back(def.id);
+    bool dry = true;
+    for (uint64_t seed = 0; seed < 500; ++seed)
+        if (!loot::rollEnemySkillPage(t, "stone_husk", seed, everything).empty()) dry = false;
+    check(dry, "drops: no pages once every skill is known");
+    std::vector<std::string> allButNova = everything;
+    allButNova.erase(std::find(allButNova.begin(), allButNova.end(), "prototype_frost_nova"));
+    bool onlyNova = true;
+    for (uint64_t seed = 0; seed < 500; ++seed) {
+        auto page = loot::rollEnemySkillPage(t, "stone_husk", seed, allButNova);
+        if (!page.empty() && page != "prototype_frost_nova") onlyNova = false;
+    }
+    check(onlyNova, "drops: the last unknown skill is the only page left");
+    check(loot::rollEnemySkillPage(t, "nobody", 1, known).empty(), "drops: unknown enemies drop no pages");
+
+    // Material rolls are untouched by the gear and page entries.
+    check(loot::rollEnemyLoot(t.world, "stone_husk", 99).count("stone") == 1,
+          "drops: materials still roll beside gear and pages");
+}
+
 } // namespace
 
 // D-014 slice 1: one modifier pool, rarity by count, gear-driven grammar,
@@ -918,8 +1195,8 @@ void testGrammar(const tuning::Tuning& t) {
 void testItemisation(const tuning::Tuning& t) {
     check(t.items.slots.size() == 3 && t.items.findRarity("wrought") != nullptr, "items: slots and rarities load");
     const auto* sceptre = t.items.findBase("frost_sceptre");
-    check(sceptre != nullptr && sceptre->slot == "weapon" && sceptre->grantsSkill == "prototype_frost_orb",
-          "items: weapon base carries its slot and skill");
+    check(sceptre != nullptr && sceptre->slot == "weapon" && !sceptre->implicitModifiers.empty(),
+          "items: weapon base carries its slot and an implicit (never a skill, D-016)");
     check(t.items.findModifier("max_life")->isSelf() && !t.items.findModifier("deep_frost")->isSelf(),
           "items: self modifiers are told apart from skill modifiers");
     for (const auto& def : t.items.modifiers)
@@ -1074,6 +1351,9 @@ int main(int argc, char** argv) {
     testWorldgen(t);
     testGrammar(t);
     testItemisation(t);
+    testStatusGrammar(t);
+    testSkillLoadout(t);
+    testMobGearAndPages(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

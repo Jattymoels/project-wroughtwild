@@ -64,7 +64,7 @@ public:
     // --- itemisation (D-014, docs/systems/items-and-modifiers.md) ---
     PackedStringArray slot_ids() const;
     PackedStringArray item_base_ids() const;
-    // Keys: id, display_name, slot, grants_skill, material, implicit_properties,
+    // Keys: id, display_name, slot, material, implicit_properties,
     // implicit_modifiers (array of modifier entries), allowed_modifier_tags.
     Dictionary item_base(const String& base_id) const;
     PackedStringArray modifier_ids() const;
@@ -72,9 +72,9 @@ public:
     // tiers (array of {tier, minimum, maximum}).
     Dictionary modifier(const String& modifier_id) const;
     // Rolled gear carried in the pack: array of item entries (keys: index,
-    // base_id, display_name, slot, rarity, grants_skill, armour,
-    // fire_resistance, max_life, area_size, mods (array of {id,
-    // display_name, tier, value, sentence, source}), rolled).
+    // base_id, display_name, slot, rarity, armour, fire_resistance, max_life,
+    // area_size, mods (array of {id, display_name, tier, value, sentence,
+    // source}), rolled).
     Array pack_items() const;
     // Wears pack item `index` in its base's slot; anything worn there returns
     // to the pack with its modifiers. False when the index is out of range.
@@ -100,12 +100,38 @@ public:
     // Resolved numbers for the active mod set (the sim owns them all):
     int fork_count(const String& skill_id) const;
     double fork_damage_fraction(const String& skill_id, int generation) const;
+    // Status buildup one hit of the skill applies (0 when the skill has no
+    // such payload and no flat add_*_buildup modifier reaches its tags).
     double chill_applied(const String& skill_id, bool is_boss) const;
+    double ignite_applied(const String& skill_id, bool is_boss) const;
+    double bleed_applied(const String& skill_id, bool is_boss) const;
     // Keys: buildup_max, freeze_duration_s, decay_per_s.
     Dictionary chill_status() const;
+    // Keys: buildup_max, decay_per_s, duration_s, damage_per_s,
+    // moving_multiplier (after ignite/bleed-tagged modifiers).
+    Dictionary ignite_status() const;
+    Dictionary bleed_status() const;
     // Keys: enabled, nova_damage, nova_damage_type, nova_radius_m,
-    // executes_frozen.
+    // executes_frozen, executes_boss.
     Dictionary shatter_for(const String& skill_id) const;
+    // Keys: enabled, radius_m, spread_buildup, spread_buildup_boss.
+    Dictionary proliferate_for() const;
+
+    // --- skill loadout (D-016: skills are learned, not worn) ---
+    // The build's identity: the union of tags across the skills on the bar.
+    PackedStringArray player_build_tags() const;
+    // Every skill the player knows, in learning order (starting skills first).
+    PackedStringArray known_skill_ids() const;
+    bool knows_skill(const String& skill_id) const;
+    // The action bar: skill_bar_size() entries, "" for an empty slot.
+    int skill_bar_size() const;
+    PackedStringArray skill_bar() const;
+    // Puts skill_id in slot (moving it if it sits elsewhere); "" clears.
+    // False for a bad slot or a skill the player does not know.
+    bool set_bar_slot(int slot, const String& skill_id);
+    // Learns a skill (from a page): it takes the first empty bar slot, if
+    // any. False when unknown to tuning or already known.
+    bool learn_skill(const String& skill_id);
 
     // --- Wave 1 sandpit ---
     // The generated bounded world for a seed (deterministic). Keys: seed,
@@ -115,8 +141,18 @@ public:
     // units, units_per_harvest, visual}), packs (array of {enemies, x, z}),
     // spawn_x/z, gate_x/z.
     Dictionary world_map(int seed);
-    // Deterministic per-kill drops from the enemy's world.json loot table.
+    // Deterministic per-kill drops from the enemy's world.json loot table:
+    // material stacks as item -> count.
     Dictionary enemy_loot(const String& enemy_id, int seed);
+    // The rolled gear the same kill drops (array of item entries as in
+    // pack_items, index -1): a preview for spawning pickups. Nothing enters
+    // the pack until claim_enemy_gear repeats the roll for the same kill.
+    Array enemy_gear_loot(const String& enemy_id, int seed);
+    // Rolls the kill's gear again into the pack; returns the entries added.
+    Array claim_enemy_gear(const String& enemy_id, int seed);
+    // The skill page the kill drops given what the player knows now: a skill
+    // id to learn_skill on pickup, or "" for no page.
+    String enemy_skill_page(const String& enemy_id, int seed) const;
     // Station founded by placing this kit item ("" when not a kit).
     String kit_station(const String& kit_item_id) const;
     PackedStringArray kit_item_ids() const;
@@ -168,7 +204,8 @@ public:
     // Keys: max_life, armour, fire_resistance_percent, area_bonus.
     Dictionary derived_stats() const;
     PackedStringArray combat_skill_ids() const;
-    // Keys: id, display_name, tags, plus every numeric field of skills.json
+    // Keys: id, display_name, delivery (cone | strike | projectile | dash),
+    // tags, starting, drop_weight, plus every numeric field of skills.json
     // (base_damage, base_area_radius, cooldown_seconds, distance...).
     Dictionary combat_skill(const String& skill_id) const;
     PackedStringArray enemy_ids() const;

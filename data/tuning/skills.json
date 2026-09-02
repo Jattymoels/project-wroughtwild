@@ -32,15 +32,19 @@
       }
     }
   ],
+  "design_purpose_combat_skills": "D-016: skills are learned, not worn. Each entry is one skill: its delivery (the engine's shape: cone, strike, projectile, dash), its tags (what modifiers and hooks latch onto) and its payload numbers. `starting` skills are known from the first moment and fill the bar in this order; the rest are learned from skill pages that mobs drop, weighted by drop_weight among the skills the player does not know yet. Gear never grants a skill - it only scales skills by tag.",
   "combat_skills": [
     {
       "id": "prototype_area_strike",
       "display_name": "Area Strike",
+      "delivery": "cone",
       "tags": [
         "attack",
         "physical",
         "area"
       ],
+      "starting": true,
+      "drop_weight": 0,
       "base_damage": 12,
       "base_area_radius": 2.5,
       "cooldown_seconds": 0.8
@@ -48,38 +52,101 @@
     {
       "id": "prototype_heavy_strike",
       "display_name": "Heavy Strike",
+      "delivery": "strike",
       "tags": [
         "attack",
         "physical",
         "single_target"
       ],
+      "starting": true,
+      "drop_weight": 0,
       "base_damage": 28,
       "cooldown_seconds": 1.4
     },
     {
-      "id": "prototype_dash",
-      "display_name": "Dash",
-      "tags": [
-        "movement"
-      ],
-      "distance": 4.0,
-      "cooldown_seconds": 2.5
-    },
-    {
       "id": "prototype_frost_orb",
       "display_name": "Frost Orb",
+      "delivery": "projectile",
       "tags": [
         "spell",
         "projectile",
         "cold",
         "chill"
       ],
+      "starting": true,
+      "drop_weight": 0,
       "base_damage": 9,
       "chill_buildup": 40,
       "fork_count": 1,
       "fork_damage_fraction": 0.7,
-      "cooldown_seconds": 3.0,
-      "design_purpose": "The grammar-spike sentence opener: a slow orb that forks on impact and stacks chill toward the freeze threshold. Its damage is modest on purpose - the payoff lives in the freeze-shatter combo, not the hit."
+      "cooldown_seconds": 1.2,
+      "design_purpose": "The grammar sentence opener: an orb that forks on impact and stacks chill toward the freeze threshold. Its damage is modest on purpose - the payoff lives in the freeze-shatter combo, not the hit. Cooldown 1.2 against chill decay 6/s means a bare caster freezes on the third orb; Deep Frost brings it to two."
+    },
+    {
+      "id": "prototype_dash",
+      "display_name": "Dash",
+      "delivery": "dash",
+      "tags": [
+        "movement"
+      ],
+      "starting": true,
+      "drop_weight": 0,
+      "distance": 4.0,
+      "cooldown_seconds": 2.5
+    },
+    {
+      "id": "prototype_ember_bolt",
+      "display_name": "Ember Bolt",
+      "delivery": "projectile",
+      "tags": [
+        "spell",
+        "projectile",
+        "fire",
+        "ignite"
+      ],
+      "starting": false,
+      "drop_weight": 1.0,
+      "base_damage": 8,
+      "ignite_buildup": 45,
+      "fork_count": 0,
+      "fork_damage_fraction": 0.7,
+      "cooldown_seconds": 1.0,
+      "design_purpose": "The fire opener: a quick bolt whose hit is small but whose ignite burns for seconds. It does not fork by itself - a Forked Lattice roll (projectile tag) gives it the orb's split, which is the kind of cross-skill grammar D-016 is for. Three bolts ignite a plain mob."
+    },
+    {
+      "id": "prototype_rend",
+      "display_name": "Rend",
+      "delivery": "strike",
+      "tags": [
+        "attack",
+        "physical",
+        "single_target",
+        "bleed"
+      ],
+      "starting": false,
+      "drop_weight": 1.0,
+      "base_damage": 18,
+      "bleed_buildup": 70,
+      "cooldown_seconds": 1.1,
+      "design_purpose": "A heavy strike that trades hit damage for bleed: two rends open a wound, and a bleeding mob that keeps chasing takes the moving multiplier - the anti-kite answer to D-012's stupid-zombie trains. Being an attack it also shatters frozen mobs."
+    },
+    {
+      "id": "prototype_frost_nova",
+      "display_name": "Frost Nova",
+      "delivery": "cone",
+      "tags": [
+        "spell",
+        "cold",
+        "chill",
+        "area"
+      ],
+      "starting": false,
+      "drop_weight": 1.0,
+      "base_damage": 6,
+      "chill_buildup": 45,
+      "base_area_radius": 3.0,
+      "cooldown_seconds": 2.0,
+      "design_purpose": "A ring of cold around the caster (cone_degrees 360 in combat_realtime.json): low damage, chill on everything close. Three novas freeze a ring bare, two with Deep Frost; with an orb in the mix it is the panic button that sets up a shatter with any attack."
     }
   ]
 }

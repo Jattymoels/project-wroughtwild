@@ -31,6 +31,45 @@ int levelForXp(const tuning::CraftSkillDef& skill, int xp) {
     return std::min(level, skill.maximumPrototypeLevel);
 }
 
+PlayerEconomy::PlayerEconomy(const tuning::Tuning& tuning) : tuning_(tuning) {
+    resetLoadout();
+}
+
+void PlayerEconomy::resetLoadout() {
+    knownSkills_ = tuning_.skills.startingSkillIds();
+    skillBar_.assign(kSkillBarSize, "");
+    for (size_t i = 0; i < knownSkills_.size() && i < static_cast<size_t>(kSkillBarSize); ++i)
+        skillBar_[i] = knownSkills_[i];
+}
+
+bool PlayerEconomy::knowsSkill(const std::string& skillId) const {
+    return std::find(knownSkills_.begin(), knownSkills_.end(), skillId) != knownSkills_.end();
+}
+
+bool PlayerEconomy::learnSkill(const std::string& skillId) {
+    if (!tuning_.skills.findCombatSkill(skillId) || knowsSkill(skillId)) return false;
+    knownSkills_.push_back(skillId);
+    for (auto& slot : skillBar_) {
+        if (slot.empty()) {
+            slot = skillId;
+            break;
+        }
+    }
+    return true;
+}
+
+bool PlayerEconomy::setBarSlot(int slot, const std::string& skillId) {
+    if (slot < 0 || slot >= kSkillBarSize) return false;
+    if (!skillId.empty() && !knowsSkill(skillId)) return false;
+    if (!skillId.empty()) {
+        // One key per skill: moving it vacates its old slot.
+        for (auto& existing : skillBar_)
+            if (existing == skillId) existing.clear();
+    }
+    skillBar_[static_cast<size_t>(slot)] = skillId;
+    return true;
+}
+
 int PlayerEconomy::skillXp(const std::string& skillId) const {
     auto it = skills_.find(skillId);
     return it == skills_.end() ? 0 : it->second.xp;
@@ -283,6 +322,8 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
     state.fulfilledOrders = fulfilledOrders_;
     state.worldEffects = worldEffects_;
     state.packItems = packItems;
+    state.knownSkills = knownSkills_;
+    state.skillBar = skillBar_;
     return state;
 }
 
@@ -296,6 +337,19 @@ void PlayerEconomy::importState(const State& state) {
     fulfilledOrders_ = state.fulfilledOrders;
     worldEffects_ = state.worldEffects;
     packItems = state.packItems;
+
+    // Loadout: a pre-D-016 save has no skill list; start it as a fresh
+    // character would. Otherwise keep what tuning still knows about.
+    resetLoadout();
+    if (state.knownSkills.empty()) return;
+    knownSkills_.clear();
+    for (const auto& id : state.knownSkills)
+        if (tuning_.skills.findCombatSkill(id) && !knowsSkill(id)) knownSkills_.push_back(id);
+    for (const auto& id : tuning_.skills.startingSkillIds())
+        if (!knowsSkill(id)) knownSkills_.push_back(id); // a new starting skill is never lost
+    skillBar_.assign(kSkillBarSize, "");
+    for (size_t i = 0; i < state.skillBar.size() && i < static_cast<size_t>(kSkillBarSize); ++i)
+        if (knowsSkill(state.skillBar[i])) setBarSlot(static_cast<int>(i), state.skillBar[i]);
 }
 
 bool PlayerEconomy::salvage(const std::string& recipeId) {

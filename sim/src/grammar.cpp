@@ -18,6 +18,21 @@ double skillNumber(const tuning::CombatSkillDef& def, const std::string& key, do
     return it == def.numbers.end() ? fallback : it->second;
 }
 
+// Buildup for one status: the skill's own payload number (0 when it has
+// none - a flat add_* mod matching the tags can still supply one), scaled by
+// mods matching the skill's tags, then by the boss resistance rule.
+double statusApplied(const tuning::Tuning& tuning, const ActiveMods& active,
+                     const std::string& skillId, const char* payloadKey,
+                     const char* resolveKey, double bossMultiplier, bool isBoss) {
+    const auto* def = findSkill(tuning, skillId);
+    if (!def) return 0.0;
+    double base = skillNumber(*def, payloadKey, 0.0);
+    double applied = resolve(active, def->tags, resolveKey, base);
+    if (applied <= 0.0) return 0.0;
+    if (isBoss) applied *= bossMultiplier;
+    return applied;
+}
+
 } // namespace
 
 bool modAppliesToTags(const std::vector<std::string>& appliesToTags,
@@ -96,13 +111,41 @@ double forkDamageFraction(const tuning::Tuning& tuning, const std::string& skill
 
 double chillApplied(const tuning::Tuning& tuning, const ActiveMods& active,
                     const std::string& skillId, bool isBoss) {
-    const auto* def = findSkill(tuning, skillId);
-    if (!def) return 0.0;
-    double base = skillNumber(*def, "chill_buildup", 0.0);
-    if (base <= 0.0) return 0.0;
-    double applied = resolve(active, def->tags, "chill_buildup", base);
-    if (isBoss) applied *= tuning.grammar.chill.bossBuildupMultiplier;
-    return applied;
+    return statusApplied(tuning, active, skillId, "chill_buildup", "chill_buildup",
+                         tuning.grammar.chill.bossBuildupMultiplier, isBoss);
+}
+
+double igniteApplied(const tuning::Tuning& tuning, const ActiveMods& active,
+                     const std::string& skillId, bool isBoss) {
+    return statusApplied(tuning, active, skillId, "ignite_buildup", "ignite_buildup",
+                         tuning.grammar.ignite.bossBuildupMultiplier, isBoss);
+}
+
+double bleedApplied(const tuning::Tuning& tuning, const ActiveMods& active,
+                    const std::string& skillId, bool isBoss) {
+    return statusApplied(tuning, active, skillId, "bleed_buildup", "bleed_buildup",
+                         tuning.grammar.bleed.bossBuildupMultiplier, isBoss);
+}
+
+DotStatus igniteStatus(const tuning::Tuning& tuning, const ActiveMods& active) {
+    const auto& cfg = tuning.grammar.ignite;
+    DotStatus status;
+    status.buildupMax = cfg.buildupMax;
+    status.decayPerS = cfg.decayPerS;
+    status.durationS = resolve(active, {"fire", "ignite"}, "ignite_duration", cfg.durationS);
+    status.damagePerS = resolve(active, {"fire", "ignite"}, "burn_damage", cfg.damagePerS);
+    return status;
+}
+
+DotStatus bleedStatus(const tuning::Tuning& tuning, const ActiveMods& active) {
+    const auto& cfg = tuning.grammar.bleed;
+    DotStatus status;
+    status.buildupMax = cfg.buildupMax;
+    status.decayPerS = cfg.decayPerS;
+    status.durationS = resolve(active, {"physical", "bleed"}, "bleed_duration", cfg.durationS);
+    status.damagePerS = resolve(active, {"physical", "bleed"}, "bleed_damage", cfg.damagePerS);
+    status.movingMultiplier = cfg.movingMultiplier;
+    return status;
 }
 
 double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,
@@ -125,16 +168,27 @@ ShatterParams shatterFor(const tuning::Tuning& tuning, const ActiveMods& active,
                          const std::string& skillId) {
     ShatterParams params;
     const auto& hook = tuning.grammar.shatter;
-    if (std::find(hook.triggerSkills.begin(), hook.triggerSkills.end(), skillId) ==
-        hook.triggerSkills.end()) {
+    const auto* def = findSkill(tuning, skillId);
+    if (!def || !modAppliesToTags(hook.triggerTags, def->tags) || hook.triggerTags.empty())
         return params;
-    }
     params.enabled = true;
     params.novaDamage = hook.novaDamage;
     params.novaDamageType = hook.novaDamageType;
     params.executesFrozen = hook.executesFrozen;
+    params.executesBoss = hook.executesBoss;
     // Shatter mods target the "shatter" tag by convention.
     params.novaRadiusM = resolve(active, {"shatter", "cold"}, "shatter_radius", hook.novaRadiusM);
+    return params;
+}
+
+ProliferateParams proliferateFor(const tuning::Tuning& tuning, const ActiveMods& active) {
+    ProliferateParams params;
+    const auto& hook = tuning.grammar.proliferate;
+    params.enabled = hook.enabled;
+    // Proliferate mods target the "proliferate" tag by convention.
+    params.radiusM = resolve(active, {"proliferate", "fire"}, "proliferate_radius", hook.radiusM);
+    params.spreadBuildup = resolve(active, {"proliferate", "fire", "ignite"}, "proliferate_buildup",
+                                   hook.spreadBuildup);
     return params;
 }
 

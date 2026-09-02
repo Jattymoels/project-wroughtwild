@@ -1,24 +1,48 @@
 {
-  "schema_version": 2,
-  "status": "grammar spike statuses and hooks; skill modifiers now live in items.json (D-014)",
+  "schema_version": 3,
+  "status": "Wave 2 grammar: three statuses, two hooks; skill modifiers live in items.json (D-014), skills are learned (D-016)",
   "statuses": {
     "chill": {
       "buildup_max": 100.0,
       "freeze_duration_s": 2.5,
-      "decay_per_s": 30.0,
+      "decay_per_s": 6.0,
       "boss_buildup_multiplier": 0.25,
-      "design_purpose": "Chill buildup per hit comes from the applying skill; crossing buildup_max freezes. At the spike's numbers a whelp freezes in three orb hits, or two with a top-tier Chill Buildup modifier - a felt breakpoint, not a percentage. Frozen mobs are solid: your damage builds walls. boss_buildup_multiplier is the day-one status-resistance rule so bosses cannot be permafrozen (skill-grammar.md risk list)."
+      "design_purpose": "Chill buildup per hit comes from the applying skill; crossing buildup_max freezes. Decay is slow (6/s) so buildup is a resource that survives a cooldown: at the orb's 1.2 s cooldown a bare caster freezes a whelp on the third orb, two with Deep Frost. Frozen mobs are solid: your damage builds walls. boss_buildup_multiplier is the day-one status-resistance rule so bosses cannot be permafrozen (skill-grammar.md risk list)."
+    },
+    "ignite": {
+      "buildup_max": 100.0,
+      "duration_s": 4.0,
+      "damage_per_s": 6.0,
+      "decay_per_s": 8.0,
+      "boss_buildup_multiplier": 0.25,
+      "design_purpose": "Fire's status: a burning mob takes damage_per_s for duration_s (24 fire over four seconds at base - most of a whelp). Three Ember Bolts ignite; Kindling makes it two; Burn Damage and Ignite Duration scale the burn, not the hit. Re-igniting a burning mob refreshes the timer rather than stacking."
+    },
+    "bleed": {
+      "buildup_max": 100.0,
+      "duration_s": 5.0,
+      "damage_per_s": 3.0,
+      "decay_per_s": 8.0,
+      "boss_buildup_multiplier": 0.25,
+      "moving_multiplier": 3.0,
+      "design_purpose": "Physical's status: slow damage while the mob stands, moving_multiplier times that while it walks - the chasing train pays for chasing. Two Rends open a wound; Serration makes it one plus a strike. Hemorrhage scales the tick. At base a walking mob takes 45 over the bleed, a standing one 15."
     }
   },
   "hooks": {
     "shatter": {
-      "trigger_skills": ["prototype_area_strike"],
+      "trigger_tags": ["attack"],
       "nova_damage": 18.0,
       "nova_damage_type": "cold",
       "nova_radius_m": 2.6,
       "executes_frozen": true,
-      "design_purpose": "The combo maker: hitting a FROZEN enemy with a trigger skill shatters it - an execute plus a cold nova at the corpse. Novas shatter other frozen enemies in radius, so a frozen train cascades down its own line. Spike-scale execute is safe on fodder; elites and bosses need the execute flag revisited in Wave 2."
+      "executes_boss": false,
+      "design_purpose": "The combo maker: hitting a FROZEN enemy with any skill carrying a trigger tag (every attack - Area Strike, Heavy Strike, Rend) shatters it: an execute plus a cold nova at the corpse. Novas shatter other frozen enemies in radius, so a frozen train cascades down its own line. Spells do not shatter: cold spells set up, attacks cash in. executes_boss false means a frozen boss takes the nova damage and thaws instead of dying - the freeze window is the reward, not a one-shot; flip it (or gate it per-tier) in the mob pass if elites want executes."
+    },
+    "proliferate": {
+      "enabled": true,
+      "radius_m": 3.0,
+      "spread_buildup": 100.0,
+      "design_purpose": "Fire's chain reaction: when a burning mob dies, every mob within radius_m receives spread_buildup ignite (100 = it catches fire outright). A dense pack burns down from one kill; Wildfire Reach widens the radius. The mirror of shatter's cascade, for the fire sentence. Boss resistance applies through the receiving mob's usual multiplier."
     }
   },
-  "design_purpose": "The Wave 2 grammar (docs/systems/skill-grammar.md): statuses and on-event hooks. The tag-targeted modifiers that scale them (forks, chill buildup, shatter radius, damage, cooldown recovery) are items.json modifiers since D-014, carried by gear; the F1-F3 debug toggles activate one at its tier-1 maximum. Effect keys: add_* is flat, increased_* sums additively within its bucket, more_* multiplies."
+  "design_purpose": "The Wave 2 grammar (docs/systems/skill-grammar.md): statuses and on-event hooks. The tag-targeted modifiers that scale them (forks, buildup, durations, radii, damage, cooldown recovery) are items.json modifiers since D-014, carried by gear; the F1-F3 debug toggles activate one at its tier-1 maximum. Effect keys: add_* is flat, increased_* sums additively within its bucket, more_* multiplies. Hooks trigger by tag, never by skill id, so a page found tomorrow joins the combos it is tagged for."
 }

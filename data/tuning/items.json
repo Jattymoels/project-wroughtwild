@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "status": "wave-2 slice 1 (D-014): one modifier pool, three slots, rarity by modifier count",
+  "status": "wave-2 (D-014/D-016): one modifier pool, three slots, rarity by modifier count; gear scales skills by tag and never grants one",
   "slots": [
     "weapon",
     "chest",
@@ -83,7 +83,6 @@
       "display_name": "Fire Resistance",
       "tags": [
         "defence",
-        "fire",
         "resistance"
       ],
       "applies_to": [
@@ -103,7 +102,7 @@
           "maximum": 40
         }
       ],
-      "design_purpose": "The Tyrant's answer. Also the catalyst-tempering domain, so a drop and a forge temper compete for the same slot on the same terms (D-014: catalysts target, they do not gate)."
+      "design_purpose": "The Tyrant's answer. Also the catalyst-tempering domain, so a drop and a forge temper compete for the same slot on the same terms (D-014: catalysts target, they do not gate). Tagged resistance, not fire, so the fire weapon's roll pool stays offence."
     },
     {
       "id": "area_size",
@@ -136,7 +135,6 @@
       "display_name": "Forks",
       "tags": [
         "offence",
-        "cold",
         "projectile"
       ],
       "applies_to": [
@@ -156,7 +154,7 @@
           "maximum": 2
         }
       ],
-      "design_purpose": "Flat +1 fork for projectile skills: the orb splits again on first impact, lighting up more of the train per cast. The Frost Sceptre carries one as its implicit, so the weapon is what makes the orb a train-clearer."
+      "design_purpose": "Flat +1 fork for every projectile skill: the orb splits again on first impact, and an Ember Bolt - which does not fork on its own - learns to. The Frost Sceptre carries one as its implicit, so the cold stat-stick is what makes projectiles train-clearers."
     },
     {
       "id": "deep_frost",
@@ -183,7 +181,7 @@
           "maximum": 0.8
         }
       ],
-      "design_purpose": "Increased chill buildup: the top of tier 1 crosses the three-hits-to-freeze breakpoint down to two, which is the whole point of increased-type mods - visible thresholds."
+      "design_purpose": "Increased chill buildup: the top of tier 1 crosses the three-orbs-to-freeze breakpoint down to two, which is the whole point of increased-type mods - visible thresholds."
     },
     {
       "id": "wide_shatter",
@@ -211,6 +209,34 @@
         }
       ],
       "design_purpose": "A shattered mob reaches further down the train, making cascade chains connect across looser bunches."
+    },
+    {
+      "id": "frostbite",
+      "display_name": "Chill on Attacks",
+      "tags": [
+        "offence",
+        "cold",
+        "chill",
+        "attack"
+      ],
+      "applies_to": [
+        "attack"
+      ],
+      "effect": "add_chill_buildup",
+      "display": "flat",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 15,
+          "maximum": 25
+        },
+        {
+          "tier": 2,
+          "minimum": 25,
+          "maximum": 40
+        }
+      ],
+      "design_purpose": "Flat chill on every attack: a skill with no chill of its own gains a payload (the resolver adds before it multiplies). A Frostbite mace freezes with plain strikes and then shatters with the same strikes - the freeze-shatter sentence with no spell in it. Five area strikes at tier 1, faster on top of an orb."
     },
     {
       "id": "cold_damage",
@@ -265,6 +291,222 @@
       "design_purpose": "Scales the strikes; the Iron Mace's implicit. Redline's first rung."
     },
     {
+      "id": "fire_damage",
+      "display_name": "Fire Damage",
+      "tags": [
+        "offence",
+        "fire"
+      ],
+      "applies_to": [
+        "fire"
+      ],
+      "effect": "increased_damage",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.1,
+          "maximum": 0.2
+        },
+        {
+          "tier": 2,
+          "minimum": 0.2,
+          "maximum": 0.35
+        }
+      ],
+      "design_purpose": "The plain scaling axis for the fire line; scales the bolt's hit, not its burn (Burn Damage does that), so the two rolls read as different choices."
+    },
+    {
+      "id": "kindling",
+      "display_name": "Ignite Buildup",
+      "tags": [
+        "offence",
+        "fire",
+        "ignite"
+      ],
+      "applies_to": [
+        "ignite"
+      ],
+      "effect": "increased_ignite_buildup",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.3,
+          "maximum": 0.5
+        },
+        {
+          "tier": 2,
+          "minimum": 0.5,
+          "maximum": 0.8
+        }
+      ],
+      "design_purpose": "Increased ignite buildup: the fire line's freeze breakpoint - three Ember Bolts to ignite become two. The Ember Wand's implicit."
+    },
+    {
+      "id": "burn_damage",
+      "display_name": "Burn Damage",
+      "tags": [
+        "offence",
+        "fire",
+        "ignite"
+      ],
+      "applies_to": [
+        "ignite"
+      ],
+      "effect": "increased_burn_damage",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.2,
+          "maximum": 0.35
+        },
+        {
+          "tier": 2,
+          "minimum": 0.35,
+          "maximum": 0.6
+        }
+      ],
+      "design_purpose": "Scales the ignite's damage per second, not the hit: the fire build that wants to set things alight and walk away."
+    },
+    {
+      "id": "lingering_flame",
+      "display_name": "Ignite Duration",
+      "tags": [
+        "offence",
+        "fire",
+        "ignite"
+      ],
+      "applies_to": [
+        "ignite"
+      ],
+      "effect": "increased_ignite_duration",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.2,
+          "maximum": 0.35
+        },
+        {
+          "tier": 2,
+          "minimum": 0.35,
+          "maximum": 0.5
+        }
+      ],
+      "design_purpose": "A longer burn is more total damage and a wider window for proliferate to find a death; the slow-fuse alternative to Burn Damage."
+    },
+    {
+      "id": "wildfire_reach",
+      "display_name": "Proliferate Radius",
+      "tags": [
+        "offence",
+        "fire",
+        "proliferate"
+      ],
+      "applies_to": [
+        "proliferate"
+      ],
+      "effect": "increased_proliferate_radius",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.25,
+          "maximum": 0.4
+        },
+        {
+          "tier": 2,
+          "minimum": 0.4,
+          "maximum": 0.6
+        }
+      ],
+      "design_purpose": "A burning death reaches further into the pack: the fire mirror of Shatter Radius, making chain-burns connect across looser bunches."
+    },
+    {
+      "id": "smouldering",
+      "display_name": "Ignite on Spells",
+      "tags": [
+        "offence",
+        "fire",
+        "ignite",
+        "spell"
+      ],
+      "applies_to": [
+        "spell"
+      ],
+      "effect": "add_ignite_buildup",
+      "display": "flat",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 15,
+          "maximum": 25
+        },
+        {
+          "tier": 2,
+          "minimum": 25,
+          "maximum": 40
+        }
+      ],
+      "design_purpose": "Flat ignite on every spell: a Frost Orb that chills and burns, a Frost Nova that sets the whole ring smouldering. The cross-element roll that lets one caster run both sentences at once."
+    },
+    {
+      "id": "serration",
+      "display_name": "Bleed Buildup",
+      "tags": [
+        "offence",
+        "physical",
+        "bleed"
+      ],
+      "applies_to": [
+        "bleed"
+      ],
+      "effect": "increased_bleed_buildup",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.3,
+          "maximum": 0.5
+        },
+        {
+          "tier": 2,
+          "minimum": 0.5,
+          "maximum": 0.8
+        }
+      ],
+      "design_purpose": "Increased bleed buildup: the top of tier 1 turns two Rends to open a wound into one."
+    },
+    {
+      "id": "hemorrhage",
+      "display_name": "Bleed Damage",
+      "tags": [
+        "offence",
+        "physical",
+        "bleed"
+      ],
+      "applies_to": [
+        "bleed"
+      ],
+      "effect": "increased_bleed_damage",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.2,
+          "maximum": 0.35
+        },
+        {
+          "tier": 2,
+          "minimum": 0.35,
+          "maximum": 0.6
+        }
+      ],
+      "design_purpose": "Scales the bleed tick, and through it the moving multiplier: the build that wounds and kites."
+    },
+    {
       "id": "swift_hands",
       "display_name": "Cooldown Recovery",
       "tags": [
@@ -298,7 +540,6 @@
       "display_name": "Iron Mace",
       "slot": "weapon",
       "material": "iron",
-      "grants_skill": "prototype_heavy_strike",
       "implicit_properties": {},
       "implicit_modifiers": [
         {
@@ -308,17 +549,18 @@
       ],
       "allowed_modifier_tags": [
         "physical",
+        "bleed",
         "area",
-        "speed"
+        "speed",
+        "attack"
       ],
-      "design_purpose": "The first weapon: a plain physical implicit so crafting one is a felt step up from bare hands. Rolls only physical, area and speed - a mace never grows cold mods, which keeps the Glacier line on the sceptre."
+      "design_purpose": "The physical stat-stick: a plain physical implicit so crafting one is a felt step up from bare hands. Rolls the physical line (damage, bleed), area, speed and the on-attack payloads - so a mace can grow Frostbite and freeze with plain strikes, but never a cold-spell mod; those stay on the sceptre."
     },
     {
       "id": "frost_sceptre",
       "display_name": "Frost Sceptre",
       "slot": "weapon",
       "material": "iron",
-      "grants_skill": "prototype_frost_orb",
       "implicit_properties": {},
       "implicit_modifiers": [
         {
@@ -333,7 +575,28 @@
         "shatter",
         "speed"
       ],
-      "design_purpose": "The Glacier weapon: its implicit fork is what makes the Frost Orb a train-clearer, and its roll pool is the whole cold line, so a wrought sceptre can assemble the owner's freeze-shatter build on its own."
+      "design_purpose": "The cold stat-stick: its implicit fork is what makes the Frost Orb a train-clearer, and its roll pool is the whole cold line, so a wrought sceptre can assemble the freeze-shatter build on its own. It grants nothing (D-016): the orb is a skill you know, the sceptre is what you scale it with."
+    },
+    {
+      "id": "ember_wand",
+      "display_name": "Ember Wand",
+      "slot": "weapon",
+      "material": "iron",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "kindling",
+          "value": 0.3
+        }
+      ],
+      "allowed_modifier_tags": [
+        "fire",
+        "ignite",
+        "proliferate",
+        "projectile",
+        "speed"
+      ],
+      "design_purpose": "The fire stat-stick: its implicit Kindling brings the Ember Bolt to a two-hit ignite, and its pool is the fire line plus projectile - so a wrought wand can roll Forks and make the bolt split like the orb."
     },
     {
       "id": "iron_chest_armour",
@@ -368,12 +631,21 @@
         "life",
         "resistance",
         "cold",
+        "chill",
+        "shatter",
         "physical",
+        "bleed",
+        "fire",
+        "ignite",
+        "proliferate",
+        "projectile",
         "area",
-        "speed"
+        "speed",
+        "attack",
+        "spell"
       ],
-      "design_purpose": "The build-defining slot: it may roll anything, so a keen charm is where an unexpected mod can pull a build sideways (PoE cross-pollination without sockets)."
+      "design_purpose": "The build-defining slot: it may roll anything, so a keen charm is where an unexpected mod can pull a build sideways (PoE cross-pollination without sockets) - Smouldering on a cold caster, Frostbite on a mace."
     }
   ],
-  "design_purpose": "Every modifier attaches to tags, never to a skill or a socket (D-014). applies_to ['self'] marks a character stat; anything else names the skill tags the modifier excites. effect keys follow the resolver's increased-vs-more rule: add_* is flat, increased_* sums within its bucket, more_* multiplies. A base's allowed_modifier_tags is the roll pool - specific tags, never the generic offence/defence pair alone, so a sceptre cannot grow physical mods and a mace cannot grow cold ones; rarity is a modifier count (plain 0, keen 1-2, wrought 3-4) and never a stat. Uniques (hand-authored, rule-bending) are the next slice."
+  "design_purpose": "Every modifier attaches to tags, never to a skill or a socket (D-014), and gear never grants a skill (D-016: skills are learned pages, the bar is free). applies_to ['self'] marks a character stat; anything else names the skill tags the modifier excites - so a mod written today applies to a skill found tomorrow if the tags meet. effect keys follow the resolver's increased-vs-more rule: add_* is flat (and can give a skill a payload it lacks), increased_* sums within its bucket, more_* multiplies. A base's allowed_modifier_tags is the roll pool - specific tags, never the generic offence/defence pair alone, so a sceptre cannot grow physical mods and a mace cannot grow cold-spell ones; rarity is a modifier count (plain 0, keen 1-2, wrought 3-4) and never a stat. Uniques (hand-authored, rule-bending) are the next slice."
 }

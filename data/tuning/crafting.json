@@ -221,7 +221,28 @@
       "use_categories": [
         "equipment"
       ],
-      "design_purpose": "The Glacier weapon needs the improved forge and Blacksmithing 3, so the freeze-shatter build is earned through the same forge ladder as armour."
+      "design_purpose": "The cold stat-stick needs the improved forge and Blacksmithing 3, so the freeze-shatter build is earned through the same forge ladder as armour."
+    },
+    {
+      "id": "ember_wand",
+      "display_name": "Ember Wand",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "iron_ingot": 8,
+        "charcoal": 3
+      },
+      "outputs": {
+        "ember_wand": 1
+      },
+      "base_skill_xp": 25,
+      "fuel_cost": 4,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "The fire stat-stick sits on the same rung as the sceptre (improved forge, Blacksmithing 3) and burns one more charcoal: the two casting weapons are a choice, not a ladder."
     },
     {
       "id": "ember_charm",

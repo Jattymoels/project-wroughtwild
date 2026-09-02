@@ -83,6 +83,7 @@ func _ready() -> void:
 
 	inventory_panel = InventoryPanel.new()
 	inventory_panel.sim = inventory.get_sim()
+	inventory_panel.combat = combat
 	inventory_panel.closed.connect(_capture_mouse)
 	add_child(inventory_panel)
 
@@ -171,12 +172,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("cycle_shape"):
 		placement.cycle_shape()
 		hud.notify("Placing: %s" % placement.selection_label())
-	elif event.is_action_pressed("skill_area"):
-		combat.use_area()
-	elif event.is_action_pressed("skill_heavy"):
-		combat.use_heavy()
-	elif event.is_action_pressed("skill_orb"):
-		combat.use_orb()
+	elif event.is_action_pressed("skill_slot_1"):
+		combat.use_slot(0)
+	elif event.is_action_pressed("skill_slot_2"):
+		combat.use_slot(1)
+	elif event.is_action_pressed("skill_slot_3"):
+		combat.use_slot(2)
+	elif event.is_action_pressed("skill_slot_4"):
+		combat.use_slot(3)
 	elif event.is_action_pressed("spike_mod_1"):
 		_toggle_spike_mod(0)
 	elif event.is_action_pressed("spike_mod_2"):
@@ -184,7 +187,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("spike_mod_3"):
 		_toggle_spike_mod(2)
 	elif event.is_action_pressed("dash"):
-		combat.use_dash()
+		# Shift casts whichever slot holds a dash skill (D-016): the reflex
+		# key survives rearranging the bar.
+		var slot := combat.dash_slot()
+		if slot >= 0:
+			combat.use_slot(slot)
 	elif event.is_action_pressed("interact"):
 		interact()
 	elif event.is_action_pressed("toggle_build_mode"):
@@ -243,6 +250,9 @@ func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 	inventory_panel.close_panel()
 	var manager := SaveManager.new()
 	var ok := manager.read(path, self)
+	if ok:
+		# The save restored known skills and the bar; the HUD rebuilds.
+		combat.loadout_changed.emit()
 	hud.notify("Loaded." if ok else "Load failed: %s" % manager.last_error)
 	return ok
 

@@ -61,10 +61,22 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 func _on_enemy_died(enemy: Enemy) -> void:
 	_kill_counter += 1
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
-	# Per-kill deterministic seed: replaying a save replays its luck.
+	# Per-kill deterministic seed: replaying a save replays its luck. The
+	# three loot kinds (materials, gear, pages) roll independent streams off
+	# this one seed inside the sim.
 	var kill_seed := world_seed + _kill_counter * 7919
+	var at := enemy.global_position
+	var from := at + Vector3(0, 0.5, 0)
+	var floor_y := at.y + 0.02
 	var drops: Dictionary = sim.enemy_loot(enemy.enemy_id, kill_seed)
-	if drops.is_empty():
-		return
-	Pickup.scatter(get_parent(), enemy.global_position + Vector3(0, 0.5, 0),
-		drops, kill_seed, enemy.global_position.y + 0.02)
+	if not drops.is_empty():
+		Pickup.scatter(get_parent(), from, drops, kill_seed, floor_y)
+	# Gear: one pickup per kill, previewing the roll; the sim re-rolls the
+	# identical item on claim, so the pickup remembers only the kill.
+	var gear: Array = sim.enemy_gear_loot(enemy.enemy_id, kill_seed)
+	if not gear.is_empty():
+		Pickup.drop_gear(get_parent(), from, enemy.enemy_id, kill_seed, gear[0], floor_y)
+	var page: String = sim.enemy_skill_page(enemy.enemy_id, kill_seed)
+	if page != "":
+		var view: Dictionary = sim.combat_skill(page)
+		Pickup.drop_page(get_parent(), from, page, view.get("display_name", page), floor_y)
