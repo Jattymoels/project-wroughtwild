@@ -129,10 +129,22 @@ now a **full 3D block field** the sim generates deterministically per seed
   wood/stone/iron within the near radius, packs off the doorstep, the
   gate ≥ 70 m out in the wastes, all held across seeds by tests.
 
-**Deliberately not yet:** block breaking/digging (next slice: the sim gets
-a break API plus a broken-block diff in the save; bedrock stays
-unbreakable), building inside caves (placement still reads surface
-heights), water, and cave-dwelling mob families (the mob pass).
+**Digging (slice 2, same day):** hold LMB on any generic terrain block to
+dig it out over its `dig_seconds` (a progress bar fills under the
+crosshair). Rules are data (`worldgen.json block_rules`): soil breaks fast
+and yields nothing yet (digging buys ACCESS — mine down, open a cave, cut
+a pit the horde falls into), stone breaks slow and pays the stone family
+(rock faces are a quarry), bedrock never breaks. The engine keeps the dug
+set, rebuilds only the touched 16×16 chunk(s) through the sim's
+`world_mesh_chunk` (which applies the holes), and the save stores the
+list — loading restores exactly the save's holes, filling back anything
+dug since. Tool tiers wait until crafting wants them; the only cost is
+time.
+
+**Deliberately not yet:** building inside dug holes or caves (placement
+still reads the pristine surface heights), a soil material family (dirt
+yields nothing until something wants soil), water, falling-block physics,
+and cave-dwelling mob families (the mob pass).
 
 ## Open questions
 

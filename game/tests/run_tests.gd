@@ -493,6 +493,43 @@ func _test_sandpit_extension() -> void:
 		and not (chunk["kinds"] as Dictionary).is_empty(),
 		"sandpit: chunks carry visible blocks and collision faces")
 
+	# Digging (Wave 3 slice 2): rules from the sim, holes in the terrain,
+	# the save restoring the world's exact set of holes.
+	var sx: int = a["spawn_x"]
+	var sz: int = a["spawn_z"]
+	var sh: int = heights[sz * int(a["width"]) + sx]
+	var removed := PackedInt32Array([sx, sh - 1, sz])
+	var patched: Dictionary = sim.world_mesh_chunk(5, 16, sx - sx % 16, sz - sz % 16, removed)
+	var centre := Vector3(sx + 0.5, sh - 1 + 0.5, sz + 0.5)
+	var still_there := false
+	for kind in patched["kinds"]:
+		if (patched["kinds"][kind] as PackedVector3Array).has(centre):
+			still_there = true
+	check(not still_there, "dig: world_mesh_chunk treats removed blocks as air")
+
+	var terrain := Terrain.new()
+	get_root().add_child(terrain)
+	terrain.build(sim, 5)
+	check(terrain.chunks.size() == mesh.size(), "dig: terrain builds its chunks")
+	check(terrain.block_rules.has("stone") and not terrain.block_rules["bedrock"]["breakable"],
+		"dig: block rules arrive from the sim")
+	check(terrain.kind_at(sx, sh - 1, sz) == "surface", "dig: spawn column crowned by turf")
+	check(terrain.break_block(sx, sh - 1, sz) == "surface", "dig: the turf digs out")
+	check(terrain.block_at(sx, sh - 1, sz) == 0 and terrain.broken.size() == 1, "dig: hole recorded")
+	check(terrain.kind_at(sx, sh - 2, sz) == "dirt", "dig: dirt under the turf")
+	check(terrain.break_block(sx, 0, sz) == "" and terrain.block_at(sx, 0, sz) == 4,
+		"dig: bedrock refuses to break")
+	var saved_holes: Array = []
+	for v in terrain.broken:
+		saved_holes.append([v.x, v.y, v.z])
+	check(terrain.break_block(sx, sh - 2, sz) == "dirt" and terrain.broken.size() == 2,
+		"dig: digging deeper")
+	terrain.apply_broken_blocks(saved_holes)
+	check(terrain.broken.size() == 1 and terrain.block_at(sx, sh - 2, sz) != 0
+		and terrain.block_at(sx, sh - 1, sz) == 0,
+		"dig: a save's holes restore exactly (dug-since filled back)")
+	terrain.queue_free()
+
 	check(sim.kit_station("workbench_kit") == "workbench", "sandpit: workbench kit maps to workbench")
 	check(sim.kit_station("forge_kit") == "forge_basic", "sandpit: forge kit maps to the forge")
 	check(sim.kit_station("wood") == "", "sandpit: non-kits map to nothing")

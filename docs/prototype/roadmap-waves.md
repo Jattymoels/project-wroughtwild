@@ -181,9 +181,16 @@ breach entrances and richer iron on cave floors, danger rings scaling pack
 density with distance from spawn, and chunked render/collision the sim
 derives (`world_mesh`) so digging can later rebuild one patch. Guarantees
 (safe clearing, nodes in reach, far gate) hold across seeds by test. See
-[systems/world-generation.md](../systems/world-generation.md). **Next
-slice: breaking blocks** — a sim break API with a broken-block diff in the
-save, hold-to-dig in the engine, chunk rebuilds, bedrock unbreakable.
+[systems/world-generation.md](../systems/world-generation.md).
+
+**Slice 2 (same day): breaking blocks.** Hold LMB digs any generic block
+out over its tuned dig_seconds (`worldgen.json block_rules`); stone pays
+the stone family, soil buys access, bedrock refuses. The engine records
+the holes, rebuilds only touched chunks via the sim's `world_mesh_chunk`,
+and the save restores the exact set. Tool tiers deferred — the mechanic's
+cost is time. Owner's ask ("some sort of mechanic for breaking the
+generic blocks") answered; pit traps against the D-012 train now emerge
+free.
 
 ### Mob track
 

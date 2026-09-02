@@ -49,6 +49,13 @@
     ],
     "design_purpose": "Danger scales with distance from spawn: pack density multiplies by the first ring containing the cell, so the heartland stays learnable while the map edge is genuinely hostile. The Wave 3 mob pass will hang harder pack compositions off these same rings."
   },
+  "block_rules": {
+    "surface": {"breakable": true, "dig_seconds": 0.7, "yields": {}},
+    "dirt": {"breakable": true, "dig_seconds": 0.7, "yields": {}},
+    "stone": {"breakable": true, "dig_seconds": 1.6, "yields": {"stone": 1}},
+    "bedrock": {"breakable": false, "dig_seconds": 0.0, "yields": {}},
+    "design_purpose": "Breaking generic terrain blocks (owner ask, 2 Sep 2026): hold LMB on a block to dig it out. The mechanic's cost is time - dig_seconds per kind, stone slower than soil - with tool tiers deferred until crafting wants them. Soil (surface turf, dirt) yields nothing yet because no soil material family exists; digging soil buys ACCESS (mine down, open a cave, cut a pit the horde falls into). Stone yields the stone family, so rock faces are a real quarry beside boulders. Bedrock at y 0 is the world's floor and never breaks."
+  },
   "biomes": [
     {
       "id": "rocky_hills",

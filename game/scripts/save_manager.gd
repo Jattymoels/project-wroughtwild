@@ -91,6 +91,13 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 	# Generated worlds carry their seed so a load rebuilds the same terrain.
 	if "world_seed" in root:
 		data["world_seed"] = root.get("world_seed")
+	# ...and every block the player dug out of it (Wave 3 digging).
+	var terrain := root.get_node_or_null("Terrain") as Terrain
+	if terrain != null and not terrain.broken.is_empty():
+		var broken_data: Array = []
+		for v in terrain.broken:
+			broken_data.append([v.x, v.y, v.z])
+		data["broken_blocks"] = broken_data
 	return data
 
 
@@ -108,6 +115,11 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	# the node names below resolve against the right terrain.
 	if data.has("world_seed") and root.has_method("apply_world_seed"):
 		root.call("apply_world_seed", int(data["world_seed"]))
+	# Dug blocks become exactly the save's: holes it has are carved, holes
+	# dug since are filled back in.
+	var terrain := root.get_node_or_null("Terrain") as Terrain
+	if terrain != null and not terrain.map.is_empty():
+		terrain.apply_broken_blocks(data.get("broken_blocks", []))
 
 	var blocks: Array = []
 	var nodes: Array = []
