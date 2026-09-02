@@ -8,6 +8,9 @@ signal life_changed(life: float, max_life: float)
 signal died
 ## A player hit connected with at least one enemy (HUD hitmarker).
 signal hit_landed(total_damage: float, kills: int)
+## Damage got through to the player; the HUD names the source so a hit
+## from out of sight is never a mystery.
+signal hit_taken(damage: float, source_name: String)
 ## Known skills or the bar changed (page learned, slot assigned, game
 ## loaded); the action bar rebuilds itself from the sim.
 signal loadout_changed
@@ -400,13 +403,14 @@ func _nearest_enemy_in_front(reach: float) -> Enemy:
 
 
 ## An enemy's raw hit arrives here; the sim decides what gets through.
-func take_hit(raw_damage: float, damage_type: String, _source_name := "") -> float:
+func take_hit(raw_damage: float, damage_type: String, source_name := "") -> float:
 	if invulnerable_left > 0.0 or life <= 0.0:
 		return 0.0
 	_ensure_fight()
 	last_hit_taken = sim.enemy_hit_damage(raw_damage, damage_type)
 	life = maxf(0.0, life - last_hit_taken)
 	life_changed.emit(life, max_life)
+	hit_taken.emit(last_hit_taken, source_name)
 	if life <= 0.0:
 		died.emit()
 	return last_hit_taken

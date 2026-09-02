@@ -57,6 +57,7 @@ func configure(sim: WroughtwildSim) -> void:
 	_breath_timer = breath_period_seconds
 
 	_configure_statuses(sim)
+	vertical_reach = rt.get("horde", {}).get("vertical_reach_m", 2.5)
 
 	_base_material = StandardMaterial3D.new()
 	_base_material.albedo_color = Color(0.45, 0.08, 0.05)
@@ -102,19 +103,20 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var distance := _horizontal_distance_to(player)
+	var in_reach := _vertical_gap_to(player) <= vertical_reach
 	_attack_cooldown = maxf(0.0, _attack_cooldown - delta)
 	var planar := Vector3.ZERO
 
 	match state:
 		"chase":
 			_breath_timer -= delta
-			if _breath_timer <= 0.0 and distance <= breath_range * 1.2:
+			if _breath_timer <= 0.0 and distance <= breath_range * 1.2 and in_reach:
 				state = "inhale"
 				_telegraph_left = breath_telegraph_seconds
 				_mesh.material_override = _telegraph_material
 				_refresh_label()
 				player.hud.notify("%s inhales deeply. Fire is coming!" % display_name)
-			elif distance <= attack_range and _attack_cooldown <= 0.0:
+			elif distance <= attack_range and in_reach and _attack_cooldown <= 0.0:
 				state = "windup"
 				_windup_left = windup_seconds
 			else:
@@ -122,7 +124,7 @@ func _physics_process(delta: float) -> void:
 		"windup":
 			_windup_left -= delta
 			if _windup_left <= 0.0:
-				if distance <= attack_range * 1.15:
+				if distance <= attack_range * 1.15 and in_reach:
 					player.combat.take_hit(damage, damage_type, display_name)
 				_attack_cooldown = attack_period_seconds
 				state = "chase"

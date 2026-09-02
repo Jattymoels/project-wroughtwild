@@ -81,7 +81,16 @@ func _physics_process(_delta: float) -> void:
 			_run_cone_and_dash_checks()
 		510:
 			_run_shrieker_and_elite_checks()
-		520:
+			# The 3D-world rule (owner playtest 2 Sep 2026): a mob under the
+			# floor, 2 m away horizontally, must NOT aggro through the rock.
+			_player.global_position = Vector3(80, 1.1, -80)
+			_pack = [Enemy.spawn(self, &"gloom_crawler", Vector3(80, -6.0, -78))]
+		522:
+			check(_pack[0].state == "idle", "reach: a crawler beneath the floor cannot aggro through it")
+			_pack[0].global_position = _player.global_position + Vector3(0, -0.5, 2.0)
+		530:
+			check(_pack[0].state != "idle", "reach: the same crawler on your level aggroes (%s)" % _pack[0].state)
+		532:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
 

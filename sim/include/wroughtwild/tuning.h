@@ -400,6 +400,9 @@ struct RealtimeTable {
     double hordeSeparationRadiusM = 0.0;
     double hordeSeparationStrengthMps = 0.0;
     double hordeGiveUpSeconds = 0.0;
+    // The 3D world's rule: a mob aggroes on and reaches the player only
+    // within this vertical band - nothing bites through a floor or a cliff.
+    double hordeVerticalReachM = 2.5;
     // Per-skill space-and-time tunables (projectile speed, ranges...),
     // numeric fields verbatim; keyed by skill id.
     std::map<std::string, std::map<std::string, double>> skillSpatials;
