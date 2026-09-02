@@ -85,6 +85,7 @@
     "separation_radius_m": 1.1,
     "separation_strength_mps": 3.0,
     "give_up_seconds": 2.5,
-    "design_purpose": "D-012 stupid-zombie horde feel. Separation makes chasers push apart into a physical train instead of stacking, so bunching them is a skill. give_up_seconds is how long the player must stay beyond a chaser's give_up_distance_m before it loses interest - no eternal aggro, no instant leash."
+    "vertical_reach_m": 2.5,
+    "design_purpose": "D-012 stupid-zombie horde feel. Separation makes chasers push apart into a physical train instead of stacking, so bunching them is a skill. give_up_seconds is how long the player must stay beyond a chaser's give_up_distance_m before it loses interest - no eternal aggro, no instant leash. vertical_reach_m is the 3D world's rule (owner playtest, 2 Sep 2026: invisible damage from cave dwellers under the floor): a mob only aggroes on, attacks, and keeps chasing a player within this vertical band - nothing bites through rock, and a target it cannot reach for give_up_seconds is dropped."
   }
 }

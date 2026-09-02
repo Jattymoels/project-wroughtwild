@@ -239,7 +239,15 @@ func _ready() -> void:
 	if combat != null:
 		combat.hit_landed.connect(_on_hit_landed)
 		combat.life_changed.connect(_on_life_changed)
+		combat.hit_taken.connect(_on_hit_taken)
 	refresh()
+
+
+## Every hit names its source in the notice line: "-6  Gloom Crawler".
+## Owner playtest (2 Sep 2026): damage with no visible attacker must at
+## least say who.
+func _on_hit_taken(damage: float, source_name: String) -> void:
+	notify("-%d  %s" % [ceili(damage), source_name if source_name != "" else "unknown"])
 
 
 func _on_hit_landed(_total_damage: float, kills: int) -> void:

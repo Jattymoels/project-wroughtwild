@@ -26,6 +26,8 @@ var attack_period_seconds := 1.0
 ## beyond give_up_distance for give_up_seconds. 0 = never gives up.
 var give_up_distance := 0.0
 var give_up_seconds := 2.5
+## Vertical band within which a mob can aggro on and reach the player.
+var vertical_reach := 2.5
 var separation_radius := 1.1
 var separation_strength := 3.0
 
@@ -130,6 +132,7 @@ func configure(sim: WroughtwildSim) -> void:
 	_scream_timer = _scream_period
 	var horde: Dictionary = rt.get("horde", {})
 	give_up_seconds = horde.get("give_up_seconds", 2.5)
+	vertical_reach = horde.get("vertical_reach_m", 2.5)
 	separation_radius = horde.get("separation_radius_m", 1.1)
 	separation_strength = horde.get("separation_strength_mps", 3.0)
 
@@ -186,6 +189,10 @@ func _horizontal_distance_to(target: Node3D) -> float:
 	var a := global_position
 	var b := target.global_position
 	return Vector2(a.x - b.x, a.z - b.z).length()
+
+
+func _vertical_gap_to(target: Node3D) -> float:
+	return absf(global_position.y - target.global_position.y)
 
 
 func is_frozen() -> bool:
@@ -363,18 +370,23 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var distance := _horizontal_distance_to(player)
+	# The 3D world's rule: a floor or a cliff between us means no aggro, no
+	# bite, and (after give_up_seconds) no interest. Cave dwellers under
+	# your feet stay in their cave until you drop in.
+	var in_reach := _vertical_gap_to(player) <= vertical_reach
 	_attack_cooldown = maxf(0.0, _attack_cooldown - delta)
 	var planar := Vector3.ZERO
 
 	match state:
 		"idle":
-			if distance <= aggro_range:
+			if distance <= aggro_range and in_reach:
 				state = "chase"
 				_give_up_timer = 0.0
 		"chase":
 			# D-012: no leash. The chase only ends when the player genuinely
-			# leaves - staying beyond give_up_distance for give_up_seconds.
-			if give_up_distance > 0.0 and distance > give_up_distance:
+			# leaves - staying beyond give_up_distance (or out of vertical
+			# reach) for give_up_seconds.
+			if (give_up_distance > 0.0 and distance > give_up_distance) or not in_reach:
 				_give_up_timer += delta
 				if _give_up_timer >= give_up_seconds:
 					state = "idle"
@@ -382,7 +394,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				_give_up_timer = 0.0
 			if state == "chase":
-				if distance <= attack_range and _attack_cooldown <= 0.0:
+				if distance <= attack_range and in_reach and _attack_cooldown <= 0.0:
 					state = "windup"
 					_windup_left = windup_seconds
 				else:
@@ -392,7 +404,7 @@ func _physics_process(delta: float) -> void:
 			if _windup_left <= 0.0:
 				# The hit only lands if the player is still in reach: walking
 				# out of the wind-up is a legitimate dodge.
-				if distance <= attack_range * 1.15:
+				if distance <= attack_range * 1.15 and in_reach:
 					player.combat.take_hit(damage, damage_type, display_name)
 				_attack_cooldown = attack_period_seconds
 				state = "chase"
