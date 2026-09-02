@@ -403,6 +403,9 @@ struct RealtimeTable {
     // The 3D world's rule: a mob aggroes on and reaches the player only
     // within this vertical band - nothing bites through a floor or a cliff.
     double hordeVerticalReachM = 2.5;
+    // A chaser blocked by a ledge hops with this take-off speed: enough
+    // for one block, not two, so cliffs stay cliffs.
+    double hordeJumpSpeedMps = 5.0;
     // Per-skill space-and-time tunables (projectile speed, ranges...),
     // numeric fields verbatim; keyed by skill id.
     std::map<std::string, std::map<std::string, double>> skillSpatials;
