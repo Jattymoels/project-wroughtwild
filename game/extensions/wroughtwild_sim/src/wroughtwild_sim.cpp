@@ -200,6 +200,8 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("structure_enclosure", "seed", "removed_blocks", "at"),
                          &WroughtwildSim::structure_enclosure);
     ClassDB::bind_method(D_METHOD("shelter"), &WroughtwildSim::shelter);
+    ClassDB::bind_method(D_METHOD("note_skill_use", "skill_id"), &WroughtwildSim::note_skill_use);
+    ClassDB::bind_method(D_METHOD("discard_pack_item", "index"), &WroughtwildSim::discard_pack_item);
     ClassDB::bind_method(D_METHOD("transfer_targets", "process_id"), &WroughtwildSim::transfer_targets);
     ClassDB::bind_method(D_METHOD("transfer_with_catalyst", "process_id", "target_index"),
                          &WroughtwildSim::transfer_with_catalyst);
@@ -518,6 +520,16 @@ Dictionary WroughtwildSim::combat_skill(const String& skill_id) const {
     d["delivery"] = to_godot(def->delivery);
     d["starting"] = def->starting;
     d["drop_weight"] = def->dropWeight;
+    d["uses"] = player_->skillUses(def->id);
+    Array mastery;
+    for (const auto& perk : def->mastery) {
+        Dictionary m;
+        m["uses"] = perk.uses;
+        m["text"] = to_godot(perk.text);
+        m["unlocked"] = perk.uses <= player_->skillUses(def->id);
+        mastery.push_back(m);
+    }
+    d["mastery"] = mastery;
     PackedStringArray tags;
     for (const auto& tag : def->tags) {
         tags.push_back(to_godot(tag));
@@ -2290,6 +2302,27 @@ void WroughtwildSim::encroachment_reset(int seed) {
                                                                              static_cast<uint64_t>(seed));
 }
 
+// --- skill mastery ---------------------------------------------------------------
+
+PackedStringArray WroughtwildSim::note_skill_use(const String& skill_id) {
+    PackedStringArray out;
+    if (!require_loaded("note_skill_use")) {
+        return out;
+    }
+    for (const auto& text : player_->noteSkillUse(to_std(skill_id))) {
+        out.push_back(to_godot(text));
+    }
+    return out;
+}
+
+bool WroughtwildSim::discard_pack_item(int index) {
+    if (!require_loaded("discard_pack_item") || index < 0 || index >= static_cast<int>(player_->packItems.size())) {
+        return false;
+    }
+    player_->packItems.erase(player_->packItems.begin() + index);
+    return true;
+}
+
 // --- items as mechanics: Preserving Transfer -----------------------------------
 
 Array WroughtwildSim::transfer_targets(const String& process_id) const {
@@ -2607,6 +2640,10 @@ wroughtwild::grammar::ActiveMods WroughtwildSim::active_mods() const {
     auto mods = wroughtwild::grammar::gearMods(tuning_->items, equipment_);
     // The Foundry's plate speaks in the same modifiers as gear (D-019).
     for (auto& mod : wroughtwild::grammar::foundryMods(*tuning_, player_->foundry(), player_->currentEra())) {
+        mods.push_back(std::move(mod));
+    }
+    // Mastery perks speak to their own skill only.
+    for (auto& mod : wroughtwild::grammar::masteryMods(*tuning_, player_->exportState().skillUses)) {
         mods.push_back(std::move(mod));
     }
     for (const auto& id : active_skill_mods_) {

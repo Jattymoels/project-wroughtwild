@@ -229,17 +229,28 @@ func use_skill(skill_id: StringName) -> bool:
 	var def: Dictionary = skills.get(skill_id, {})
 	if def.is_empty() or not is_ready(skill_id):
 		return false
+	var fired := false
 	match String(def.get("delivery", "")):
 		"cone":
 			_use_cone(skill_id)
-			return true
+			fired = true
 		"strike":
-			return _use_strike(skill_id)
+			fired = _use_strike(skill_id)
 		"projectile":
-			return _use_projectile(skill_id)
+			fired = _use_projectile(skill_id)
 		"dash":
-			return _use_dash(skill_id)
-	return false
+			fired = _use_dash(skill_id)
+	if fired:
+		_note_use(skill_id)
+	return fired
+
+
+## Mastery (D-019): the sim counts casts that fired; a perk that unlocks
+## is announced and changes this skill's numbers from now on.
+func _note_use(skill_id: StringName) -> void:
+	for text in sim.note_skill_use(String(skill_id)):
+		if player != null and player.hud != null:
+			player.hud.notify("Mastery: %s - %s." % [skills[skill_id].get("display_name", String(skill_id)), text])
 
 
 ## Bar assignment and page learning route through here so the HUD hears

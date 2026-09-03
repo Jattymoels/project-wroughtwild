@@ -27,7 +27,7 @@ double statusApplied(const tuning::Tuning& tuning, const ActiveMods& active,
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
     double base = skillNumber(*def, payloadKey, 0.0);
-    double applied = resolve(active, def->tags, resolveKey, base);
+    double applied = resolve(active, def->resolveTags(), resolveKey, base);
     if (applied <= 0.0) return 0.0;
     if (isBoss) applied *= bossMultiplier;
     return applied;
@@ -99,6 +99,21 @@ ActiveMod modAt(const tuning::ItemTable& table, const std::string& modifierId, d
     return {def->id, def->appliesToTags, def->effectKey, value, source};
 }
 
+ActiveMods masteryMods(const tuning::Tuning& tuning, const std::map<std::string, int>& skillUses) {
+    ActiveMods mods;
+    for (const auto& def : tuning.skills.combatSkills) {
+        auto it = skillUses.find(def.id);
+        const int uses = it == skillUses.end() ? 0 : it->second;
+        for (const auto& perk : def.mastery) {
+            if (perk.uses > uses) continue;
+            ActiveMod mod = modAt(tuning.items, perk.modifier, perk.value, "mastery:" + def.id);
+            mod.appliesToTags = {"skill:" + def.id}; // this skill alone
+            mods.push_back(std::move(mod));
+        }
+    }
+    return mods;
+}
+
 ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state, int era) {
     ActiveMods mods;
     const auto size = foundry::plateSize(tuning.foundry, era);
@@ -112,7 +127,7 @@ int forkCount(const tuning::Tuning& tuning, const ActiveMods& active,
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0;
     double base = skillNumber(*def, "fork_count", 0.0);
-    return static_cast<int>(std::floor(resolve(active, def->tags, "fork", base)));
+    return static_cast<int>(std::floor(resolve(active, def->resolveTags(), "fork", base)));
 }
 
 double forkDamageFraction(const tuning::Tuning& tuning, const std::string& skillId,
@@ -166,7 +181,7 @@ double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,
                    const std::string& skillId) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
-    return resolve(active, def->tags, "damage", skillNumber(*def, "base_damage", 0.0));
+    return resolve(active, def->resolveTags(), "damage", skillNumber(*def, "base_damage", 0.0));
 }
 
 double skillCooldownSeconds(const tuning::Tuning& tuning, const ActiveMods& active,
@@ -174,7 +189,7 @@ double skillCooldownSeconds(const tuning::Tuning& tuning, const ActiveMods& acti
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
     double base = skillNumber(*def, "cooldown_seconds", 0.0);
-    double recovery = resolve(active, def->tags, "cooldown_recovery", 1.0);
+    double recovery = resolve(active, def->resolveTags(), "cooldown_recovery", 1.0);
     return recovery > 0.0 ? base / recovery : base;
 }
 
@@ -183,7 +198,7 @@ ShatterParams shatterFor(const tuning::Tuning& tuning, const ActiveMods& active,
     ShatterParams params;
     const auto& hook = tuning.grammar.shatter;
     const auto* def = findSkill(tuning, skillId);
-    if (!def || !modAppliesToTags(hook.triggerTags, def->tags) || hook.triggerTags.empty())
+    if (!def || !modAppliesToTags(hook.triggerTags, def->resolveTags()) || hook.triggerTags.empty())
         return params;
     params.enabled = true;
     params.novaDamage = hook.novaDamage;

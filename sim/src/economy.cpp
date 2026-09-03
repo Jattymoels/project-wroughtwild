@@ -1,6 +1,7 @@
 #include "wroughtwild/economy.h"
 
 #include <algorithm>
+#include <random>
 #include <cmath>
 #include <stdexcept>
 
@@ -167,7 +168,31 @@ PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, boo
         }
     }
 
-    add(inventory, recipe->outputs);
+    // Outputs that are item bases become rolled gear in the pack (D-019:
+    // crafted gear rolls like a drop); everything else stacks.
+    for (const auto& [outputId, count] : recipe->outputs) {
+        const tuning::ItemBase* base = tuning_.items.findBase(outputId);
+        if (base == nullptr) {
+            add(inventory, {{outputId, count}});
+            continue;
+        }
+        for (int i = 0; i < count; ++i) {
+            const uint64_t seed = 0xC4A1F7ull * static_cast<uint64_t>(++craftedGear_) + 17;
+            std::mt19937_64 rng(seed);
+            std::uniform_real_distribution<double> roll(0.0, 1.0);
+            int level = 0;
+            for (const auto& [skillId, minimum] : recipe->minimumSkill) level = std::max(level, skillLevel(skillId));
+            const auto& rolls = tuning_.crafting;
+            std::string rarity = "plain";
+            const double wrought = level >= rolls.wroughtChanceFromLevel
+                                       ? rolls.wroughtChancePerLevel * (level - rolls.wroughtChanceFromLevel + 1)
+                                       : 0.0;
+            const double keen = rolls.keenChanceAtLevel1 + rolls.keenChancePerLevel * std::max(0, level - 1);
+            if (roll(rng) < wrought) rarity = "wrought";
+            else if (roll(rng) < keen) rarity = "keen";
+            packItems.push_back(items::rollRarityItem(tuning_.items, outputId, rarity, currentEra(), rng()));
+        }
+    }
 
     result.xpMultiplier = repetitionMultiplier(recipeId, forOrder);
     result.xpGranted = static_cast<int>(std::floor(recipe->baseSkillXp * result.xpMultiplier));
@@ -245,6 +270,31 @@ void PlayerEconomy::recordWorldEffect(const std::string& effect) {
     // An effect that wakes an era is a milestone of its own.
     for (int era = before + 1; era <= currentEra(); ++era)
         for (const auto& id : foundryEvent("era:" + std::to_string(era))) foundryNotices_.push_back(id);
+}
+
+std::vector<std::string> PlayerEconomy::noteSkillUse(const std::string& skillId) {
+    std::vector<std::string> unlocked;
+    const tuning::CombatSkillDef* def = tuning_.skills.findCombatSkill(skillId);
+    if (!def) return unlocked;
+    const int uses = ++skillUses_[skillId];
+    for (const auto& perk : def->mastery)
+        if (perk.uses == uses) unlocked.push_back(perk.text);
+    return unlocked;
+}
+
+int PlayerEconomy::skillUses(const std::string& skillId) const {
+    auto it = skillUses_.find(skillId);
+    return it == skillUses_.end() ? 0 : it->second;
+}
+
+std::vector<const tuning::MasteryPerk*> PlayerEconomy::masteryUnlocked(const std::string& skillId) const {
+    std::vector<const tuning::MasteryPerk*> out;
+    const tuning::CombatSkillDef* def = tuning_.skills.findCombatSkill(skillId);
+    if (!def) return out;
+    const int uses = skillUses(skillId);
+    for (const auto& perk : def->mastery)
+        if (perk.uses <= uses) out.push_back(&perk);
+    return out;
 }
 
 foundry::PlateSize PlayerEconomy::plateSize() const { return foundry::plateSize(tuning_.foundry, currentEra()); }
@@ -399,11 +449,13 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
     state.knownSkills = knownSkills_;
     state.skillBar = skillBar_;
     state.foundry = foundry_;
+    state.skillUses = skillUses_;
     return state;
 }
 
 void PlayerEconomy::importState(const State& state) {
     foundry_ = state.foundry;
+    skillUses_ = state.skillUses;
     inventory = state.inventory;
     currency = state.currency;
     skills_.clear();

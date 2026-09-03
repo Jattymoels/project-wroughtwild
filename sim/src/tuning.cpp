@@ -105,6 +105,11 @@ const EliteModifierDef* WorldTable::findEliteModifier(const std::string& id) con
 const GatherSite* WorldTable::findSite(const std::string& id) const { return findById(gatheringSites, id); }
 const CraftSkillDef* SkillTable::findCraftSkill(const std::string& id) const { return findById(craftSkills, id); }
 const CombatSkillDef* SkillTable::findCombatSkill(const std::string& id) const { return findById(combatSkills, id); }
+std::vector<std::string> CombatSkillDef::resolveTags() const {
+    std::vector<std::string> out = tags;
+    out.push_back("skill:" + id);
+    return out;
+}
 std::vector<std::string> SkillTable::startingSkillIds() const {
     std::vector<std::string> ids;
     for (const auto& def : combatSkills)
@@ -173,6 +178,12 @@ CraftingTable loadCrafting(const std::string& path) {
 
     if (auto currencies = doc->find("currencies"))
         table.currencies = readStringArray(*currencies);
+    if (auto rolls = doc->find("craft_rolls")) {
+        table.keenChanceAtLevel1 = rolls->get("keen_chance_at_level_1").asNumber();
+        table.keenChancePerLevel = rolls->get("keen_chance_per_level").asNumber();
+        table.wroughtChanceFromLevel = rolls->get("wrought_chance_from_level").asInt();
+        table.wroughtChancePerLevel = rolls->get("wrought_chance_per_level").asNumber();
+    }
 
     if (auto fuels = doc->find("fuels")) {
         for (const auto& [item, value] : fuels->asObject())
@@ -220,6 +231,16 @@ SkillTable loadSkills(const std::string& path) {
             else if (key == "starting") def.starting = value->asBool();
             else if (key == "drop_weight") def.dropWeight = value->asNumber();
             else if (key == "design_purpose") continue;
+            else if (key == "mastery") {
+                for (const auto& m : value->asArray()) {
+                    MasteryPerk perk;
+                    perk.uses = m->get("uses").asInt();
+                    perk.modifier = m->get("modifier").asString();
+                    perk.value = m->get("value").asNumber();
+                    perk.text = m->get("text").asString();
+                    def.mastery.push_back(std::move(perk));
+                }
+            }
             else def.numbers[key] = value->asNumber();
         }
         if (std::find(deliveries.begin(), deliveries.end(), def.delivery) == deliveries.end())
@@ -908,6 +929,10 @@ Tuning loadAll(const std::string& tuningDirectory) {
     for (const auto& pair : tuning.foundry.pairs)
         if (!tuning.items.findModifier(pair.modifier))
             throw std::runtime_error("foundry: pair " + pair.displayName + " names unknown modifier " + pair.modifier);
+    for (const auto& skill : tuning.skills.combatSkills)
+        for (const auto& perk : skill.mastery)
+            if (!tuning.items.findModifier(perk.modifier))
+                throw std::runtime_error("skills: mastery perk on " + skill.id + " names unknown modifier " + perk.modifier);
     return tuning;
 }
 

@@ -232,6 +232,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 ## The pack screen (I): opens over the world with the mouse released; a
 ## station's work panel takes precedence while it is open.
+## Pack management: drop a stack at your feet as pickups (recoverable) -
+## the sim gives it up, the world keeps it.
+func drop_material(id: StringName, amount: int) -> bool:
+	if amount <= 0 or not inventory.consume_material(id, amount):
+		return false
+	Pickup.scatter(world_root(), global_position + Vector3(0, 0.6, 0), {String(id): amount},
+		ambush_rng.randi(), global_position.y - 0.9)
+	hud.notify("Dropped %d %s." % [amount, Hud.pretty(String(id))])
+	return true
+
+
 ## The Foundry (D-019): opened from a built forge's panel.
 func open_foundry() -> void:
 	placement.set_build_mode_enabled(false)

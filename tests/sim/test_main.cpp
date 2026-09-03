@@ -451,7 +451,9 @@ void testVerticalSliceSpine(const tuning::Tuning& t) {
     player.inventory["iron_ingot"] = 12;
     auto armour = player.craft("iron_chest_armour");
     check(armour.crafted, "spine: armour craftable after upgrade and levelling");
-    check(player.inventory["iron_chest_armour"] == 1, "spine: armour produced");
+    check(player.inventory["iron_chest_armour"] == 0 && player.packItems.size() == 1 &&
+              player.packItems.front().baseId == "iron_chest_armour",
+          "spine: armour produced as rolled gear in the pack (D-019)");
 }
 
 void testStatsAndMitigation(const tuning::Tuning& t) {
@@ -1285,7 +1287,7 @@ void testMobGearAndPages(const tuning::Tuning& t) {
     }
     double pageRate = static_cast<double>(pages) / kills;
     check(pageRate > 0.035 && pageRate < 0.07, "drops: husk pages land near their 5% chance");
-    check(taught.size() == 3, "drops: every learnable skill turns up on pages");
+    check(taught.size() == 4, "drops: every learnable skill turns up on pages");
     check(loot::rollEnemySkillPage(t, "stone_husk", 1, known) ==
               loot::rollEnemySkillPage(t, "stone_husk", 1, known),
           "drops: pages are deterministic per seed");
@@ -1983,6 +1985,53 @@ void testItemsAsMechanics(const tuning::Tuning& t) {
     check(t.crafting.findRecipe("bronze_sceptre") != nullptr, "items: bronze bases are craftable");
 }
 
+// Mastery and crafted rolls (D-019): uses unlock per-skill perks; crafts roll.
+void testMasteryAndCraftRolls(const tuning::Tuning& t) {
+    const auto* orb = t.skills.findCombatSkill("prototype_frost_orb");
+    check(orb && orb->mastery.size() == 2 && orb->resolveTags().back() == "skill:prototype_frost_orb",
+          "mastery: perks load and skills carry their own tag");
+    check(t.skills.findCombatSkill("prototype_shatter") != nullptr, "mastery: the Shatter spell exists");
+    economy::PlayerEconomy player(t);
+    std::vector<std::string> unlocked;
+    for (int i = 0; i < orb->mastery.front().uses; ++i) {
+        auto got = player.noteSkillUse("prototype_frost_orb");
+        unlocked.insert(unlocked.end(), got.begin(), got.end());
+    }
+    check(unlocked.size() == 1 && unlocked.front() == orb->mastery.front().text,
+          "mastery: the first perk unlocks exactly at its use count");
+    check(player.masteryUnlocked("prototype_frost_orb").size() == 1 && player.masteryUnlocked("prototype_frost_nova").empty(),
+          "mastery: one perk on the orb, none on the nova");
+    auto mods = grammar::masteryMods(t, player.exportState().skillUses);
+    check(mods.size() == 1 && mods.front().appliesToTags == std::vector<std::string>{"skill:prototype_frost_orb"},
+          "mastery: a perk targets its own skill only");
+    const double orbChill = grammar::chillApplied(t, mods, "prototype_frost_orb", false);
+    const double novaChill = grammar::chillApplied(t, mods, "prototype_frost_nova", false);
+    const double orbBase = grammar::chillApplied(t, {}, "prototype_frost_orb", false);
+    const double novaBase = grammar::chillApplied(t, {}, "prototype_frost_nova", false);
+    check(orbChill > orbBase && std::abs(novaChill - novaBase) < 1e-9,
+          "mastery: the orb chills deeper, the nova is untouched");
+    save::SaveGame game;
+    game.economy = player.exportState();
+    auto back = save::fromJson(save::toJson(game));
+    check(back.economy.skillUses.at("prototype_frost_orb") == orb->mastery.front().uses, "mastery: uses ride in the save");
+    // Crafted gear rolls: a forge at level 5 makes keen or wrought more often than plain.
+    economy::PlayerEconomy smith(t);
+    smith.addAvailableStation("forge_improved");
+    int keenOrBetter = 0;
+    for (int i = 0; i < 30; ++i) {
+        smith.inventory["iron_ingot"] += 12;
+        smith.inventory["wood"] += 10; // the forge burns fuel
+        smith.grantSkillXp("blacksmithing", 1000);
+        auto r = smith.craft("iron_chest_armour");
+        check(r.crafted, "craft: armour crafts");
+        if (smith.packItems.back().rarity != "plain") ++keenOrBetter;
+    }
+    check(smith.packItems.size() == 30 && keenOrBetter >= 15, "craft: most level-five crafts roll modifiers");
+    bool anyRolled = false;
+    for (const auto& item : smith.packItems) anyRolled = anyRolled || !item.rolledProperties.empty();
+    check(anyRolled, "craft: crafted gear carries rolled modifiers");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -2027,6 +2076,7 @@ int main(int argc, char** argv) {
     testEras(t);
     testFoundry(t);
     testItemsAsMechanics(t);
+    testMasteryAndCraftRolls(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

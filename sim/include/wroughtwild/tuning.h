@@ -81,7 +81,12 @@ struct CraftingTable {
     double salvageReturnFraction = 0.0;
     RepetitionDecay repetitionDecay;
     std::map<std::string, int> fuels; // item id -> fuel value per unit
-    std::vector<std::string> currencies; // ids that live in the purse, not the pack
+    std::vector<std::string> currencies;
+    // Crafted gear rolls like a drop (craft_rolls).
+    double keenChanceAtLevel1 = 0.0;
+    double keenChancePerLevel = 0.0;
+    int wroughtChanceFromLevel = 99;
+    double wroughtChancePerLevel = 0.0; // ids that live in the purse, not the pack
 
     bool isCurrency(const std::string& id) const;
     const Station* findStation(const std::string& id) const;
@@ -103,6 +108,14 @@ struct CraftSkillDef {
 
 // A combat skill (D-016): skills are learned, not worn. Each carries its own
 // delivery, tags and payload numbers; gear only scales them by tag.
+// A mastery perk: after `uses` casts, this skill alone gains the modifier.
+struct MasteryPerk {
+    int uses = 0;
+    std::string modifier;
+    double value = 0.0;
+    std::string text;
+};
+
 struct CombatSkillDef {
     std::string id;
     std::string displayName;
@@ -111,6 +124,10 @@ struct CombatSkillDef {
     bool starting = false;   // known from the first moment (and on the round model's bar)
     double dropWeight = 0.0; // relative chance among unknown skills when a page drops (0 = never)
     std::map<std::string, double> numbers; // remaining numeric fields verbatim
+    std::vector<MasteryPerk> mastery;      // in use order
+    // The skill's tags plus its own "skill:<id>" tag, so a modifier can
+    // target this skill alone (mastery perks).
+    std::vector<std::string> resolveTags() const;
 };
 
 struct SkillTable {

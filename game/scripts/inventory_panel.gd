@@ -281,8 +281,31 @@ func _add_tile(id: String, count: int) -> void:
 	amount.add_theme_font_size_override("font_size", 18)
 	amount.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	column.add_child(amount)
+	# Drop: currencies stay; a stack goes to your feet as pickups.
+	if not sim.currency().has(id):
+		var drop := Button.new()
+		drop.text = "Drop"
+		drop.add_theme_font_size_override("font_size", 11)
+		drop.pressed.connect(drop_material.bind(StringName(id), count))
+		column.add_child(drop)
 	_tiles.add_child(tile)
 	tile_count += 1
+
+
+## Drops a carried stack at the player's feet (recoverable pickups).
+func drop_material(id: StringName, count: int) -> bool:
+	if combat == null or combat.player == null:
+		return false
+	var dropped: bool = combat.player.drop_material(id, count)
+	refresh()
+	return dropped
+
+
+## Throws a pack item away for good.
+func discard_pack_item(index: int) -> bool:
+	var ok: bool = sim.discard_pack_item(index)
+	refresh()
+	return ok
 
 
 ## An item card: rarity-coloured edge, name and slot, stats, one sentence
@@ -349,6 +372,13 @@ func _item_card(item: Dictionary, button_text: String, on_pressed: Callable) -> 
 		button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		button.pressed.connect(on_pressed)
 		row.add_child(button)
+	if item.has("index") and int(item["index"]) >= 0:
+		var discard := Button.new()
+		discard.text = "Discard"
+		discard.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		discard.modulate = UiTheme.MUTED
+		discard.pressed.connect(discard_pack_item.bind(int(item["index"])))
+		row.add_child(discard)
 	return card
 
 
@@ -404,6 +434,18 @@ func _refresh_skills() -> void:
 		detail.add_theme_font_size_override("font_size", 12)
 		detail.modulate = UiTheme.MUTED
 		column.add_child(detail)
+		# Mastery: uses so far, and each perk with its threshold.
+		var perks: Array = view.get("mastery", [])
+		if not perks.is_empty():
+			var mastery := Label.new()
+			var parts := PackedStringArray()
+			for perk in perks:
+				parts.append("%s%s (%d)" % ["✓ " if perk["unlocked"] else "", perk["text"], int(perk["uses"])])
+			mastery.text = "mastery %d uses  ·  %s" % [int(view.get("uses", 0)), "  ·  ".join(parts)]
+			mastery.add_theme_font_size_override("font_size", 12)
+			mastery.modulate = UiTheme.SUN_WARM
+			mastery.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			column.add_child(mastery)
 		var in_slot := bar.find(id)
 		for slot in bar.size():
 			var button := Button.new()

@@ -317,7 +317,11 @@ the world is the campaign. Slices, in order:
    three), held-back rolls shown greyed with what unleashes them, drop
    tiers rising with the era and with elites, and the Preserving Transfer
    at the forge.
-4. Skill mastery perks; the third era.
+4. **Skill mastery** *(landed 3 Sep 2026)*: use-milestones per skill unlock
+   per-skill perks through a `skill:<id>` tag; the Shatter spell; crafted
+   gear rolls modifiers; pack Drop and Discard (owner's second-arc notes).
+   Still ahead: the third era, more trial floors, more mob variants, life
+   in the world beyond hostiles, and the wider modifier vocabulary.
 
 Owner tuning note (3 Sep): "everything is way too fast/powerful ... to
 feel good you have to start with less damage/more danger" — era one's

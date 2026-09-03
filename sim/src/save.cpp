@@ -133,7 +133,8 @@ std::string toJson(const SaveGame& game) {
     }
     out << "],\"milestones\":";
     writeStringList(out, game.economy.foundry.milestones);
-    out << "}";
+    out << "},\"skill_uses\":";
+    writeIntMap(out, game.economy.skillUses);
     out << "},\"equipment\":{";
 
     bool firstSlot = true;
@@ -186,6 +187,7 @@ SaveGame fromJson(const std::string& text) {
                 {p->get("row").asInt(), p->get("col").asInt(), p->get("ingot").asString()});
         game.economy.foundry.milestones = readStringList(f->get("milestones"));
     }
+    if (auto uses = eco.find("skill_uses")) game.economy.skillUses = readIntMap(*uses);
 
     for (const auto& [slot, itemValue] : doc->get("equipment").asObject())
         game.equipment.slots[slot] = readItem(*itemValue);
