@@ -21,6 +21,7 @@ var _death_spot := Vector3.ZERO
 var _wood_before_trial := 0
 var _blocks_before := 0
 var _corner_panel: PlacedBlock
+var _stray: Enemy
 var _door: PlacedBlock
 var _room: Array = []
 ## The x-face, z-face and vertical edge that all meet at build-grid corner
@@ -438,16 +439,26 @@ func _physics_process(_delta: float) -> void:
 			# Death contract through the engine path.
 			(_scene.get_node("TrialGate") as TrialGate).interact(_player)
 			check(_player.trial.enter_room(1), "trial: second run, hound kennels")
+			# A roaming whelp far from the arena is not the room's business:
+			# it must not be pulled in, counted, or cleared with the room.
+			_stray = Enemy.spawn(get_tree().current_scene, &"ember_whelp", Vector3(-60, 1.0, -60))
+			var hounds := _player.trial.trial_enemies()
+			check(hounds.size() == 3 and _player.combat.alive_enemies().size() == 4,
+				"trial: the room counts its own three hounds, not the stray")
 			_player.combat.invulnerable_left = 0.0
 			_player.combat.life = 1.0
-			var hound: Enemy = _player.combat.alive_enemies()[0]
+			var hound: Enemy = hounds[0]
 			hound.force_attack()
 		62:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			check(not sim.trial_active(), "trial: death ends the run")
 			check(sim.material_count("wood") == _wood_before_trial, "trial: deposit survives death")
 			check(sim.material_count("ember_catalyst") == 1, "trial: earlier catalyst survives death")
-			check(_player.combat.alive_enemies().is_empty(), "trial: arena cleared after death")
+			check(_player.trial.trial_enemies().is_empty(), "trial: arena cleared after death")
+			check(is_instance_valid(_stray) and _stray.life > 0.0
+				and _stray.global_position.distance_to(Vector3(-60, 1.0, -60)) < 5.0,
+				"trial: the stray outside was neither pulled in nor cleared")
+			_stray.take_damage(100000.0)
 			check(_player.global_position.x < 30.0, "trial: woke at the gate")
 			for child in get_tree().current_scene.get_children():
 				check(not (child is DroppedBundle), "trial: no pack dropped for a trial death")

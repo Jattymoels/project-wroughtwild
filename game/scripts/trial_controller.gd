@@ -144,14 +144,25 @@ func _spawn_encounter(ids: PackedStringArray) -> void:
 func _make_relentless(enemy: Enemy) -> void:
 	if enemy == null:
 		return
+	enemy.trial_bound = true
 	enemy.aggro_range = 100.0
 	enemy.give_up_distance = 0.0
+
+
+## The room's own living enemies. The open world's packs are not the
+## trial's business: they are neither pulled into the arena nor counted.
+func trial_enemies() -> Array:
+	var alive: Array = []
+	for enemy in player.combat.alive_enemies():
+		if enemy.trial_bound:
+			alive.append(enemy)
+	return alive
 
 
 func _process(_delta: float) -> void:
 	if state == "fighting":
 		_keep_everyone_in_the_room()
-		if player.combat.alive_enemies().is_empty():
+		if trial_enemies().is_empty():
 			_room_won()
 	elif state != "idle":
 		_keep_everyone_in_the_room()
@@ -163,7 +174,7 @@ func _process(_delta: float) -> void:
 func _keep_everyone_in_the_room() -> void:
 	if _find_arena() == null:
 		return
-	for enemy in player.combat.alive_enemies():
+	for enemy in trial_enemies():
 		if not arena.contains(enemy.global_position):
 			enemy.global_position = arena.clamp_to_floor(enemy.global_position)
 			enemy.velocity = Vector3.ZERO
@@ -176,7 +187,7 @@ func _keep_everyone_in_the_room() -> void:
 func prompt() -> String:
 	match state:
 		"fighting":
-			var remaining := player.combat.alive_enemies().size()
+			var remaining := trial_enemies().size()
 			return "Clear the room  —  %d remain" % remaining if remaining != 1 else "Clear the room  —  1 remains"
 		"doors":
 			return "" if player.work_panel.is_open() else "E  —  choose the next door"
@@ -292,6 +303,8 @@ func on_player_died() -> void:
 
 func _despawn_enemies() -> void:
 	for node in player.get_tree().get_nodes_in_group("enemies"):
+		if not (node is Enemy) or not (node as Enemy).trial_bound:
+			continue
 		node.remove_from_group("enemies")
 		node.queue_free()
 

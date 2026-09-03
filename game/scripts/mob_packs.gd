@@ -43,6 +43,10 @@ func _physics_process(delta: float) -> void:
 	var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
 	if player == null or terrain == null:
 		return
+	# A trial is a closed fight: the packs of the wastes around the arena
+	# do not wake while the player is inside one.
+	if player.trial != null and player.trial.active():
+		return
 	for pack in packs:
 		if pack["spawned"]:
 			continue
