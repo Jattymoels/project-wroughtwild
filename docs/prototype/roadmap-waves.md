@@ -275,11 +275,24 @@ Q cycles the families you carry; refusals are explained in the HUD. The
 **Owner steer on base threats (3 Sep 2026):** mobs breaking walls is out —
 "starting out poor ... a wood house shouldn't be easily broken down", and
 the threat should not vanish at higher tiers either. Threat around a base
-must be *pressure*, not demolition. Proposal pending.
+must be *pressure*, not demolition; and it must not become a farm ("an
+exploit to just wait in your base for the mobs to get larger").
 
-Still ahead for building: the owner's next playtest, the base-threat
-design, an alloy family. Deliberately out: structural-support rules,
-wall damage.
+**Encroachment slice 1 (landed 3 Sep 2026):** once the player has a home
+(a shelter rested in), packs settle into **nests** on its fringe ring,
+one per `settle_seconds` up to a cap, spaced apart. A standing nest grows
+a tier at a time (bigger pack; the top tier brings a shrieker), refills
+its fallen, and blights rest within its radius (uneasy rest, a fraction
+of the regen). The exploit guard: only a fraction of nest-born kills drop
+anything, and tearing a nest down (E, once undefended) drops nothing —
+it ends the nuisance and scars the spot. Rules in `sim/encroachment.h`,
+numbers in `world.json` `encroachment`; nests are not saved. Next
+slices: burrowers that trench the ground between nest and home (the dig
+system, turned around), and the shut-door siege: packs massing at the
+door, the shrieker calling more, the sortie as the moment.
+
+Still ahead for building: the owner's next playtest, an alloy family.
+Deliberately out: structural-support rules, wall damage.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 

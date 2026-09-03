@@ -13,6 +13,26 @@
     "max_room_cells": 96,
     "design_purpose": "Resting in a shelter is the health-regeneration route (owner playtest 2 Sep 2026: 'you need some passive health regeneration or a way to get health regened'). A shelter is an enclosed room - the sim flood-fills the space around the player through open cells, stopped by placed walls, floors, blocks and by terrain, and it is a shelter when the fill closes before max_room_cells build cells without reaching open sky. Regen starts settle_rounds after the last hit taken and pays regen_life_per_round (per round_seconds of combat_realtime.json), so a hut is worth building on day one, a dug-out hollow with a slab over its mouth counts, and a mob that breaks in stops the rest. Out in the open, nothing regenerates: the deprivation the owner asked for at the start stays."
   },
+  "encroachment": {
+    "settle_seconds": 90,
+    "fringe_min_m": 14,
+    "fringe_max_m": 30,
+    "max_nests": 3,
+    "spacing_m": 10,
+    "growth_seconds": 150,
+    "respawn_seconds": 45,
+    "blight_radius_m": 18,
+    "uneasy_rest_multiplier": 0.35,
+    "nest_loot_fraction": 0.4,
+    "scar_seconds": 300,
+    "tiers": [
+      ["ember_whelp"],
+      ["ember_whelp", "ember_whelp"],
+      ["ember_whelp", "ember_whelp", "ash_hound"],
+      ["shrieker", "ember_whelp", "ember_whelp", "ash_hound"]
+    ],
+    "design_purpose": "Base threat as pressure, never demolition (owner steer 3 Sep 2026: a timber house is a house at every tier, and the threat should not vanish at higher tiers either). Once the player has a home - a shelter they have rested in - a pack settles into a nest on the fringe ring (fringe_min_m..fringe_max_m from home) every settle_seconds, up to max_nests, never within spacing_m of another nest or a fresh scar. A standing nest grows a tier every growth_seconds (tiers lists its pack; the top tier brings a shrieker to call packs to your walls), and a fallen member returns after respawn_seconds while the nest stands. Within blight_radius_m rest in the shelter pays uneasy_rest_multiplier of its regen. The exploit guard (owner, 3 Sep): only nest_loot_fraction of nest-born kills drop anything and tearing a nest down drops nothing, so a nest is a nuisance to end, not a crop to grow - waiting only makes the neighbourhood worse. A cleared spot scars for scar_seconds. Nests are not saved: a loaded game starts quiet."
+  },
   "enemies": [
     {
       "id": "ember_whelp",

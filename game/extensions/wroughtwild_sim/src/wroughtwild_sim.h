@@ -18,6 +18,7 @@
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
+#include "wroughtwild/encroachment.h"
 #include "wroughtwild/grammar.h"
 #include "wroughtwild/lattice.h"
 #include "wroughtwild/stats.h"
@@ -238,6 +239,27 @@ public:
     Dictionary structure_enclosure(int seed, const PackedInt32Array& removed_blocks, const Vector3& at);
     // world.json shelter: regen_life_per_round, settle_rounds, max_room_cells.
     Dictionary shelter() const;
+
+    // --- encroachment (encroachment.h): nests on the fringe of a home ---
+    // Starts a world's encroachment afresh (new game, new seed).
+    void encroachment_reset(int seed);
+    // Advances the rules to `now` seconds; has_home/home is the last
+    // shelter rested in. Returns nests born by this call: {id, x, z,
+    // tier, pack (PackedStringArray of enemy ids)}.
+    Array encroachment_tick(double now, bool has_home, const Vector3& home);
+    // Every standing nest as encroachment_tick entries.
+    Array encroachment_nests() const;
+    // Shelter regen multiplier at a position (uneasy near a nest).
+    double encroachment_rest_multiplier(const Vector3& at) const;
+    // Tears a nest down; its spot scars.
+    bool encroachment_clear(int nest_id, double now);
+    // Whether a nest-born kill drops loot at all (the exploit guard).
+    bool encroachment_kill_drops(int kill_seed) const;
+    // Highest standing tier, 0 when quiet.
+    int encroachment_pressure() const;
+    // world.json encroachment numbers the engine paces by: respawn_seconds,
+    // settle_seconds, growth_seconds, blight_radius_m, max_nests.
+    Dictionary encroachment_rules() const;
     // Deterministic per-kill drops from the enemy's world.json loot table:
     // material stacks as item -> count. elite_id ("" for none) applies the
     // elite modifier's loot bonuses (Wave 3): extra table passes.
@@ -430,6 +452,7 @@ private:
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
     std::unique_ptr<wroughtwild::worldgen::WorldMap> world_cache_; // last seed's world
     wroughtwild::lattice::Structure structure_; // the player's placed pieces
+    std::unique_ptr<wroughtwild::encroachment::Encroachment> encroachment_; // this world's nests
     std::set<std::string> active_skill_mods_; // debug toggles (F1-F3)
     uint64_t temper_seed_ = 0;
     String last_error_;

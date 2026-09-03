@@ -71,12 +71,17 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 
 func _on_enemy_died(enemy: Enemy) -> void:
 	_kill_counter += 1
+	# Per-kill deterministic seed: replaying a save replays its luck.
+	drop_loot_for(enemy, world_seed + _kill_counter * 7919)
+
+
+## Rolls and scatters a kill's loot for a seed. The three loot kinds
+## (materials, gear, pages) roll independent streams off this one seed
+## inside the sim; an elite's id rides along for its bounty (extra passes,
+## tripled gear and page chances). Nest-born kills come here too, when the
+## encroachment rules say that kill drops at all.
+func drop_loot_for(enemy: Enemy, kill_seed: int) -> void:
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
-	# Per-kill deterministic seed: replaying a save replays its luck. The
-	# three loot kinds (materials, gear, pages) roll independent streams off
-	# this one seed inside the sim; an elite's id rides along for its
-	# bounty (extra passes, tripled gear and page chances).
-	var kill_seed := world_seed + _kill_counter * 7919
 	var elite: String = enemy.elite_id
 	var at := enemy.global_position
 	var from := at + Vector3(0, 0.5, 0)

@@ -533,6 +533,25 @@ WorldTable loadWorld(const std::string& path) {
         table.shelter.maxRoomCells = shelter->get("max_room_cells").asInt();
         if (table.shelter.maxRoomCells < 1) throw std::runtime_error("world: shelter.max_room_cells must be >= 1");
     }
+    if (auto enc = doc->find("encroachment")) {
+        auto& e = table.encroachment;
+        e.settleSeconds = enc->get("settle_seconds").asNumber();
+        e.fringeMinM = enc->get("fringe_min_m").asNumber();
+        e.fringeMaxM = enc->get("fringe_max_m").asNumber();
+        e.maxNests = enc->get("max_nests").asInt();
+        e.spacingM = enc->get("spacing_m").asNumber();
+        e.growthSeconds = enc->get("growth_seconds").asNumber();
+        e.respawnSeconds = enc->get("respawn_seconds").asNumber();
+        e.blightRadiusM = enc->get("blight_radius_m").asNumber();
+        e.uneasyRestMultiplier = enc->get("uneasy_rest_multiplier").asNumber();
+        e.nestLootFraction = enc->get("nest_loot_fraction").asNumber();
+        e.scarSeconds = enc->get("scar_seconds").asNumber();
+        for (const auto& tier : enc->get("tiers").asArray()) e.tiers.push_back(readStringArray(*tier));
+        if (e.tiers.empty()) throw std::runtime_error("world: encroachment.tiers needs at least one tier");
+        if (e.fringeMaxM < e.fringeMinM) throw std::runtime_error("world: encroachment fringe_max_m < fringe_min_m");
+        if (e.nestLootFraction < 0.0 || e.nestLootFraction > 1.0)
+            throw std::runtime_error("world: encroachment.nest_loot_fraction must be within [0, 1]");
+    }
 
     for (const auto& e : doc->get("enemies").asArray()) {
         EnemyDef def;
