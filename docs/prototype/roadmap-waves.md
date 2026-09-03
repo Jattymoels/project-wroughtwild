@@ -355,6 +355,13 @@ the world is the campaign. Slices, in order:
    chunk falling, first dressed block as a beat, a first-hour job for
    fire), melee's stagger/push/swing armour, and the bench kept alive
    (bulk wedges, frames for the yard and the forge).
+12. **The working** *(proposed 3 Sep 2026, D-023; awaiting the owner)*:
+   the plate worked around sockets - subjects (skill tablets, the
+   Vanguard), supports whose reading the subject decides, corners that
+   hold ingots or typed currency as augments (a Catalyst makes Scald),
+   links between sockets, class and manner rails; trade currency split
+   into kinds that aim a craft. Slice order in
+   [systems/foundry.md](../systems/foundry.md).
 
 Owner tuning note (3 Sep): "everything is way too fast/powerful ... to
 feel good you have to start with less damage/more danger" — era one's

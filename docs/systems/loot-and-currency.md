@@ -41,6 +41,15 @@ Unwanted equipment returns a controlled portion of materials and may recover com
 
 Ordinary currency supports merchants, orders and services. It should not replace the physical material economy or become the only meaningful reward.
 
+**Direction (3 Sep 2026, D-023): currency stops being generic.** The
+owner asked for trade currency to split into kinds with jobs: catalysts
+(offence), **vanguards** (defence), and their like for life and speed.
+Each kind aims a craft toward its modifier family and can be placed on
+the Foundry plate as a subject or an augment. The proposal, including
+retiring the coin in favour of a peddler who changes kinds, is in
+[foundry.md](foundry.md). This widens the 31 Aug deferral of currency
+breadth at the owner's request; four kinds is the prototype cap.
+
 ## Prototype recipe
 
 1. Select an iron armour base.

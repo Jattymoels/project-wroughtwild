@@ -1,7 +1,7 @@
 # Progression: Eras, the Foundry, and Ores as Properties
 
 **Status:** Accepted direction (owner, 3 Sep 2026); implementation begins with the first era transition  
-**Related decisions:** D-002, D-007, D-014, D-016, D-018, D-019
+**Related decisions:** D-002, D-007, D-014, D-016, D-018, D-019, D-022, D-023
 
 ## Purpose and player fantasy
 
@@ -450,3 +450,21 @@ verb the player already has. Playtest question: did you build a wooden
 home and feel clever when you finally worked stone, and did Heavy Strike
 driving the wedge produce the click that your combat ability works on the
 world.
+
+## Direction: the plate as a working (3 Sep 2026, D-023)
+
+The owner accepted the plate as the progression mechanic ("it limits the
+amount of spells you can optimise, it also allows creativity in placement
+to optimise joins") and set its next shape: the thing being worked (a
+skill, or a defensive **vanguard** currency) sits in a designated socket;
+the four orthogonal cells are its supports, and what a support means is
+decided by what it touches; the diagonal cells hold more ingots or typed
+currency that augments the supports beside them (an augmented fire ingot
+beside a frost skill is **Scald**); class lives in row and column effects
+at the plate's edge. Trade currency splits into kinds (catalysts,
+vanguards, and their like for life and speed) that aim a craft or sit on
+the plate. The full proposal, the reading tables, worked plates, the open
+questions and the slice order are in [foundry.md](foundry.md). One
+conflict is on record there: "Reach beside Frost Orb widens the orb"
+above describes what the code does not do; Reach is a self stat and never
+supports.
