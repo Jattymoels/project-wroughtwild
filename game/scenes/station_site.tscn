@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/station_site.gd" id="1_script"]
 
 [sub_resource type="BoxShape3D" id="site_shape"]
-size = Vector3(2, 2, 2)
+size = Vector3(0.96, 2, 0.96)
 
 [node name="StationSite" type="StaticBody3D"]
 script = ExtResource("1_script")
