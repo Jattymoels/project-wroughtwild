@@ -130,6 +130,27 @@ func _test_lattice() -> void:
 		"touch: the next beam along the line touches")
 	check(not sim.structure_touches("beam", {"kind": "edge", "axis": 0, "cell": Vector3i(28, 26, 20)}),
 		"touch: a beam three cells on does not")
+	# Population (3 Sep): the mob grid answers neighbour queries from the last
+	# finished frame (pack sleep is covered in the horde scene).
+	MobGrid.reset()
+	var m1 := Node3D.new()
+	var m2 := Node3D.new()
+	var m3 := Node3D.new()
+	get_root().add_child(m1); get_root().add_child(m2); get_root().add_child(m3)
+	m1.position = Vector3(10, 0, 10)
+	m2.position = Vector3(10.8, 0, 10)
+	m3.position = Vector3(30, 0, 10)
+	MobGrid.register(m1); MobGrid.register(m2); MobGrid.register(m3)
+	check(MobGrid.near(Vector3(10, 0, 10), 2.0, m1).size() == 1, "grid: a mob registered this frame is already findable")
+	MobGrid._frame = -1  # pretend a new frame began
+	MobGrid.register(m1)
+	check(MobGrid.near(Vector3(10, 0, 10), 2.0, m1).size() == 1 and MobGrid.near(Vector3(10, 0, 10), 2.0, m1)[0] == m2
+		and MobGrid.near(Vector3(30, 0, 10), 1.0).size() == 1 and MobGrid.population() == 3,
+		"grid: neighbours within the radius, excluding yourself, from the finished frame")
+	m1.queue_free(); m2.queue_free(); m3.queue_free()
+	MobGrid.reset()
+
+
 	# A block owns its interior: a wall cannot be placed through its middle
 	# plane, and a block cannot be placed around an off-grid wall.
 	check(sim.structure_place({"kind": "volume", "axis": 0, "cell": Vector3i(60, 26, 60)}, "cube", "wood", 0),

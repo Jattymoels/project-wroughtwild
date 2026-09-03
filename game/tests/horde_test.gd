@@ -133,6 +133,36 @@ func _physics_process(_delta: float) -> void:
 			check(_nest.defenders().is_empty(), "encroach: the pack is dead")
 			check(_nest.interact(_player) and sim.encroachment_nests().is_empty() and _encroachment.nest_count() == 0,
 				"encroach: an undefended nest tears down and the sim forgets it")
+		695:
+			# Population (3 Sep): a woken pack far from the player, calm and
+			# unhurt, goes back to sleep; its survivors return, its dead do not.
+			var mp := MobPacks.new()
+			add_child(mp)
+			mp.sleep_range_m = 60.0
+			mp.sleep_after_seconds = 0.0
+			mp.packs = [{"enemies": PackedStringArray(["stone_husk", "stone_husk"]), "x": 100, "y": 0, "z": 100,
+				"elite_member": -1, "elite_modifier": "", "grazer": false, "spawned": false, "members": []}]
+			mp._spawn_pack(mp.packs[0], Vector3(100.5, 0.6, 100.5))
+			check((mp.packs[0]["members"] as Array).size() == 2, "packs: a woken pack knows its members")
+			check(mp.sleep_far_packs(Vector3(120, 0.6, 100)) == 0 and mp.packs[0]["spawned"], "packs: near the player it stays awake")
+			mp.sleep_after_seconds = 5.0
+			(mp.packs[0]["members"][0] as Enemy).take_damage(1.0)
+			check(mp.sleep_far_packs(_player.global_position) == 0, "packs: a pack hurt just now stays awake")
+			mp.sleep_after_seconds = 0.0
+			(mp.packs[0]["members"][1] as Enemy).take_damage(100000.0)
+			# A hit wakes a mob; the give-up timer would settle it. Settle it.
+			(mp.packs[0]["members"][0] as Enemy).state = "idle"
+			var slept := mp.sleep_far_packs(_player.global_position)
+			check(slept == 1 and not mp.packs[0]["spawned"]
+				and (mp.packs[0]["enemies"] as PackedStringArray).size() == 1 and mp.packs[0].get("resting", false),
+				"packs: far and calm, the survivor sleeps; the dead do not return (slept %d, spawned %s, enemies %s, calm %s, since %.1f, state %s, dist %.1f)" % [
+					slept, str(mp.packs[0]["spawned"]), str(mp.packs[0]["enemies"]),
+					str((mp.packs[0]["members"][0] as Enemy).calm()) if (mp.packs[0]["members"] as Array).size() > 0 and is_instance_valid(mp.packs[0]["members"][0]) else "-",
+					(mp.packs[0]["members"][0] as Enemy).since_hurt if (mp.packs[0]["members"] as Array).size() > 0 and is_instance_valid(mp.packs[0]["members"][0]) else -1.0,
+					(mp.packs[0]["members"][0] as Enemy).state if (mp.packs[0]["members"] as Array).size() > 0 and is_instance_valid(mp.packs[0]["members"][0]) else "-",
+					(mp.packs[0]["members"][0] as Enemy).global_position.distance_to(_player.global_position) if (mp.packs[0]["members"] as Array).size() > 0 and is_instance_valid(mp.packs[0]["members"][0]) else -1.0])
+			mp.max_live_mobs = 0
+			mp.queue_free()
 		696:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)

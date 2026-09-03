@@ -234,7 +234,7 @@
           "valley_elk"
         ]
       ],
-      "grazer_density": 0.004
+      "grazer_density": 0.002
     },
     {
       "id": "meadow",
@@ -258,7 +258,7 @@
           "valley_elk"
         ]
       ],
-      "grazer_density": 0.004
+      "grazer_density": 0.002
     }
   ],
   "nodes": {

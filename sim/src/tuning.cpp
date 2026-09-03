@@ -600,6 +600,9 @@ RealtimeTable loadRealtime(const std::string& path) {
             table.hordeVerticalReachM = reach->asNumber();
         if (auto jump = horde->find("jump_speed_mps"))
             table.hordeJumpSpeedMps = jump->asNumber();
+        if (auto cap = horde->find("max_live_mobs")) table.hordeMaxLiveMobs = cap->asInt();
+        if (auto range = horde->find("sleep_range_m")) table.hordeSleepRangeM = range->asNumber();
+        if (auto after = horde->find("sleep_after_seconds")) table.hordeSleepAfterSeconds = after->asNumber();
     }
 
     const Value& boss = doc->get("boss");

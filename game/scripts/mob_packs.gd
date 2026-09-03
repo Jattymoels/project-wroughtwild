@@ -13,10 +13,15 @@ const ACTIVATION_RANGE_M := 28.0
 const CHECK_SECONDS := 0.4
 
 var terrain: Terrain
-var packs: Array = []          # {enemies, x, z, spawned}
+var packs: Array = []          # {enemies, x, z, spawned, members}
 var world_seed := 0
 var _kill_counter := 0
 var _check_timer := 0.0
+## Population rules (combat_realtime.json horde): how many mobs may be
+## alive at once, and when a calm far-off pack goes back to sleep.
+var max_live_mobs := 60
+var sleep_range_m := 60.0
+var sleep_after_seconds := 6.0
 
 
 func setup(from_terrain: Terrain, seed_value: int) -> void:
@@ -33,7 +38,12 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 			"elite_modifier": pack.get("elite_modifier", ""),
 			"grazer": pack.get("grazer", false),
 			"spawned": false,
+			"members": [],
 		})
+	var horde: Dictionary = load("res://scripts/sim.gd").shared().realtime().get("horde", {})
+	max_live_mobs = int(horde.get("max_live_mobs", 60))
+	sleep_range_m = float(horde.get("sleep_range_m", 60.0))
+	sleep_after_seconds = float(horde.get("sleep_after_seconds", 6.0))
 
 
 func _physics_process(delta: float) -> void:
@@ -48,9 +58,14 @@ func _physics_process(delta: float) -> void:
 	# do not wake while the player is inside one.
 	if player.trial != null and player.trial.active():
 		return
+	sleep_far_packs(player.global_position)
+	var live := live_count()
 	for pack in packs:
 		if pack["spawned"]:
 			continue
+		# The cap: a crowd is a crowd, however many packs the walk crossed.
+		if live >= max_live_mobs:
+			break
 		# Packs stand at their generated level: the surface, or a cave floor
 		# (cave packs activate when the player is near in 3D - above ground
 		# counts, so descending into a lit-up cave meets its residents).
@@ -58,21 +73,87 @@ func _physics_process(delta: float) -> void:
 		var at := Vector3((pack["x"] + 0.5) * cell, float(pack["y"]), (pack["z"] + 0.5) * cell)
 		if at.distance_to(player.global_position) <= ACTIVATION_RANGE_M:
 			_spawn_pack(pack, at)
+			live += (pack["members"] as Array).size()
+
+
+## Mobs alive in the world right now.
+func live_count() -> int:
+	var count := 0
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node is Enemy and is_instance_valid(node) and (node as Enemy).life > 0.0:
+			count += 1
+	return count
+
+
+## A woken pack whose members are all calm, unhurt for a while and far
+## from the player goes back to sleep: its survivors are freed and return
+## (at full life, as they were) when the player comes back. Returns how
+## many packs slept.
+func sleep_far_packs(player_position: Vector3) -> int:
+	var slept := 0
+	var cell: float = terrain.map["cell_size"] if terrain != null and not terrain.map.is_empty() else 1.0
+	for pack in packs:
+		if not pack["spawned"]:
+			continue
+		var members: Array = pack["members"]
+		var survivors := PackedStringArray()
+		var survivor_ids: Array = []
+		var elite_index := -1
+		var all_calm := true
+		var any_alive := false
+		for i in members.size():
+			var m = members[i]
+			if not is_instance_valid(m) or (m as Enemy).life <= 0.0:
+				continue
+			any_alive = true
+			var enemy := m as Enemy
+			if not enemy.calm() or enemy.since_hurt < sleep_after_seconds:
+				all_calm = false
+				break
+			if enemy.global_position.distance_to(player_position) < sleep_range_m:
+				all_calm = false
+				break
+			if enemy.elite_id != "":
+				elite_index = survivors.size()
+			survivors.append(String(enemy.enemy_id))
+			survivor_ids.append(enemy)
+		if not any_alive:
+			# Everyone died: the pack is spent and will not return.
+			pack["members"] = []
+			continue
+		if not all_calm:
+			continue
+		var anchor := Vector3((pack["x"] + 0.5) * cell, float(pack["y"]), (pack["z"] + 0.5) * cell)
+		if anchor.distance_to(player_position) < sleep_range_m:
+			continue
+		for enemy in survivor_ids:
+			(enemy as Enemy).queue_free()
+		pack["enemies"] = survivors
+		pack["elite_member"] = elite_index
+		pack["elite_modifier"] = pack["elite_modifier"] if elite_index >= 0 else ""
+		pack["members"] = []
+		pack["spawned"] = false
+		pack["resting"] = true  # spawns as plain members again: bonuses already applied once
+		slept += 1
+	return slept
 
 
 func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	pack["spawned"] = true
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
-	var ids: PackedStringArray = pack["enemies"]
+	var ids: PackedStringArray = (pack["enemies"] as PackedStringArray).duplicate()
 	# Herds (D-020 the quiet heartland) are life, not threat: no escorts,
 	# never crowned.
 	var grazer: bool = pack.get("grazer", false)
+	# A pack returning from sleep is exactly its survivors: era bonuses and
+	# escorts were added the first time and are in the list already.
+	var resting: bool = pack.get("resting", false)
 	# Era mechanics (eras.json): some families run in bigger packs now, some
 	# bring escorts, and later eras crown elites more often.
 	var era: Dictionary = sim.era()
 	var bonus_seen := {}
 	var escorts: Dictionary = era.get("pack_escorts", {})
-	for id in pack["enemies"]:
+	for id in (PackedStringArray() if resting else pack["enemies"]):
 		if bonus_seen.has(id):
 			continue
 		bonus_seen[id] = true
@@ -92,6 +173,7 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 			if not modifiers.is_empty():
 				elite_member = roll.randi() % ids.size()
 				elite_modifier = modifiers[roll.randi() % modifiers.size()]
+	var members: Array = []
 	for i in ids.size():
 		var angle := TAU * float(i) / float(maxi(ids.size(), 1))
 		var offset := Vector3(cos(angle), 0.5, sin(angle)) * 1.6
@@ -100,6 +182,8 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 		if i == elite_member and elite_modifier != "":
 			enemy.make_elite(sim.elite_modifier(elite_modifier))
 		enemy.died.connect(_on_enemy_died)
+		members.append(enemy)
+	pack["members"] = members
 
 
 func _on_enemy_died(enemy: Enemy) -> void:
