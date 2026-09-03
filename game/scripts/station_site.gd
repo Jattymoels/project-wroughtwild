@@ -2,7 +2,9 @@ class_name StationSite
 extends StaticBody3D
 ## A place in the valley where a crafting station is built and then used.
 ## Building pays the station's cost through the sim; the mesh grows with the
-## station's tier so progress is visible from across the valley.
+## station's tier so progress is visible from across the valley. A station
+## fits the one build cell its kit was placed in (owner playtest, 3 Sep: a
+## two-metre bench engulfed the post standing beside it).
 
 @export var station_id: StringName = &"forge_basic"
 ## Station that upgrades this one (empty for none).
@@ -47,16 +49,16 @@ func refresh_visual(sim: WroughtwildSim) -> void:
 	var box := BoxMesh.new()
 	var material := StandardMaterial3D.new()
 	if upgrade_station_id != &"" and sim.has_station(upgrade_station_id):
-		box.size = Vector3(2.0, 2.0, 2.0)
+		box.size = Vector3(0.96, 2.0, 0.96)
 		material.albedo_color = Color(0.35, 0.2, 0.15)
 		material.emission_enabled = true
 		material.emission = Color(1.0, 0.45, 0.1)
 		material.emission_energy_multiplier = 1.5
 	elif sim.has_station(station_id):
-		box.size = Vector3(2.0, 1.4, 2.0)
+		box.size = Vector3(0.96, 1.4, 0.96)
 		material.albedo_color = Color(0.3, 0.3, 0.32)
 	else:
-		box.size = Vector3(2.0, 0.2, 2.0)
+		box.size = Vector3(0.96, 0.2, 0.96)
 		material.albedo_color = Color(0.55, 0.5, 0.4)
 	_mesh.mesh = box
 	_mesh.material_override = material
