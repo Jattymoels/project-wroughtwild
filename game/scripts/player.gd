@@ -3,7 +3,8 @@ extends CharacterBody3D
 ## Spike pawn: a controllable capsule with third-person camera, resource
 ## harvesting and grid build mode. Mouse and keyboard only (D-008).
 ## Controls: WASD move, mouse look, Space jump, E harvest, B build mode,
-## LMB place (or harvest outside build mode), X remove, R turn an oriented block.
+## LMB place (or harvest outside build mode), X remove, R turn an oriented
+## block, G fine (half-scale) pieces.
 
 ## Tunable: harvesting pace and how close the player must stand.
 @export var interact_range: float = 3.5
@@ -211,6 +212,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		placement.try_remove_block()
 	elif event.is_action_pressed("rotate_preview"):
 		placement.rotate_preview()
+	elif event.is_action_pressed("toggle_fine"):
+		var fine := placement.toggle_fine()
+		hud.notify("Fine pieces: %s" % ("on - half-scale twins of the basic shapes" if fine else "off"))
 
 
 ## The pack screen (I): opens over the world with the mouse released; a

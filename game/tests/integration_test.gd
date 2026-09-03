@@ -118,6 +118,18 @@ func _physics_process(_delta: float) -> void:
 				"door: the face above it is the door's")
 			check(door.toggle() and door.open and not door.toggle() and not door.open, "door: E swings it open and shut")
 			check(placement.remove_piece(door) and placement.trim_count() == 0, "door: removed with its trims")
+			# Fine mode: G swaps the selection for its half-scale twin and back.
+			check(placement.select_shape(&"wall_panel") and placement.has_fine_twin()
+				and not placement.select_shape(&"half_wall"), "fine: twins ride on G, never on Tab")
+			check(placement.toggle_fine() and placement.placing_shape() == &"half_wall"
+				and placement.shape_size.is_equal_approx(Vector3(0.5, 0.5, 0.125))
+				and placement.selection_label().contains("fine"), "fine: G selects the half wall")
+			check(placement.element_accepts({"kind": "face", "axis": 0, "cell": Vector3i(11, 7, 10)}),
+				"fine: a half wall may stand off the build grid")
+			check(placement.select_shape(&"door") and placement.placing_shape() == &"door",
+				"fine: a shape without a twin stays full size in fine mode")
+			check(not placement.toggle_fine() and placement.select_shape(&"wall_panel")
+				and placement.placing_shape() == &"wall_panel", "fine: G again restores full size")
 			check(_player.inventory.get_sim().structure_pieces().is_empty(), "corner: the structure is empty again")
 		12:
 			# Forge site: refused while unaffordable, built through the sim once paid for.

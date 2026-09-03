@@ -38,6 +38,12 @@ var shape_slot: StringName = &"block"
 var shape_form := "box"
 ## True when R turns the selection.
 var shape_oriented := false
+## Fine mode (G): the selection is swapped for its half-scale twin - the
+## same placement rule at half the cell. Shapes without a twin (stairs,
+## door, wedge) stay full size.
+var fine_mode := false
+## full-size shape id -> its fine twin's id, from construction.json fine_of.
+var _fine_twins: Dictionary = {}
 
 @export var selected_shape: StringName = &"cube"
 @export var selected_material_family: StringName = &"wood"
@@ -74,6 +80,10 @@ func _ready() -> void:
 	grid_size = _sim().grid_size()
 	placement_range = _sim().placement_range()
 	registry_grid = _sim().lattice_registry_grid()
+	for id in _sim().shape_ids():
+		var twin_of: String = _sim().shape(id).get("fine_of", "")
+		if twin_of != "":
+			_fine_twins[StringName(twin_of)] = StringName(id)
 	_create_preview_mesh()
 	select_shape(selected_shape)
 
@@ -88,23 +98,51 @@ func unlocked_shapes() -> PackedStringArray:
 
 func select_shape(shape_id: StringName) -> bool:
 	var info: Dictionary = _sim().shape(shape_id)
-	if info.is_empty() or not info["unlocked"]:
+	if info.is_empty() or not info["unlocked"] or info.get("fine", false):
 		return false
 	selected_kit = &""
 	selected_shape = shape_id
-	shape_size = info["size"]
-	shape_slot = StringName(info.get("element", "block"))
-	shape_form = String(info.get("form", "box"))
-	shape_oriented = bool(info.get("oriented", false))
-	if _preview_mesh != null:
-		_preview_mesh.mesh = PieceMesh.preview_mesh_for(shape_form, shape_size)
+	_refresh_selection()
 	return true
 
 
-## Everything Tab can select: unlocked shapes, then crafted kits in the pack.
+## Reads size, element kind, form and orientation from whichever shape the
+## lattice will actually be asked about (the selection or its fine twin).
+func _refresh_selection() -> void:
+	if selected_kit != &"":
+		shape_size = KIT_PREVIEW_SIZE
+		shape_slot = &"block"
+		shape_form = "box"
+		shape_oriented = true
+	else:
+		var info: Dictionary = _sim().shape(_target_shape())
+		shape_size = info["size"]
+		shape_slot = StringName(info.get("element", "block"))
+		shape_form = String(info.get("form", "box"))
+		shape_oriented = bool(info.get("oriented", false))
+	if _preview_mesh != null:
+		_preview_mesh.mesh = PieceMesh.preview_mesh_for(shape_form, shape_size)
+
+
+## Fine mode on or off; returns the new state.
+func toggle_fine() -> bool:
+	fine_mode = not fine_mode
+	_refresh_selection()
+	return fine_mode
+
+
+## True when the current selection has a half-scale twin fine mode would use.
+func has_fine_twin() -> bool:
+	return selected_kit == &"" and _fine_twins.has(selected_shape)
+
+
+## Everything Tab can select: unlocked full-size shapes (fine twins ride
+## along on G), then crafted kits in the pack.
 func placeables() -> Array:
 	var entries: Array = []
 	for id in unlocked_shapes():
+		if _sim().shape(id).get("fine", false):
+			continue
 		entries.append({"kind": "shape", "id": StringName(id)})
 	for id in _sim().kit_item_ids():
 		if _sim().material_count(id) > 0:
@@ -132,25 +170,31 @@ func cycle_shape() -> StringName:
 
 func _select_kit(kit_id: StringName) -> void:
 	selected_kit = kit_id
-	shape_size = KIT_PREVIEW_SIZE
-	shape_slot = &"block"
-	shape_form = "box"
-	shape_oriented = true
-	if _preview_mesh != null:
-		_preview_mesh.mesh = PieceMesh.preview_mesh_for("box", shape_size)
+	_refresh_selection()
 
 
-## The shape the lattice is asked about: the selection, or the kit's
-## whole-cell stand-in.
+## The shape the lattice is asked about (and paid for): the selection, its
+## fine twin in fine mode, or the kit's whole-cell stand-in.
 func _target_shape() -> StringName:
-	return KIT_STAND_IN_SHAPE if selected_kit != &"" else selected_shape
+	if selected_kit != &"":
+		return KIT_STAND_IN_SHAPE
+	if fine_mode and _fine_twins.has(selected_shape):
+		return _fine_twins[selected_shape]
+	return selected_shape
+
+
+## The shape a placement pays for and records.
+func placing_shape() -> StringName:
+	return _target_shape()
 
 
 ## What the HUD should call the current selection.
 func selection_label() -> String:
 	if selected_kit != &"":
 		return Hud.pretty(selected_kit)
-	return _sim().shape(selected_shape).get("display_name", String(selected_shape))
+	var shape := _target_shape()
+	var name: String = _sim().shape(shape).get("display_name", String(shape))
+	return name + "  (fine)" if fine_mode and shape != selected_shape else name
 
 
 ## True when R does anything for the selection.
@@ -348,7 +392,7 @@ func _update_preview() -> void:
 	if selected_kit != &"":
 		affordable = _sim().material_count(selected_kit) > 0
 	else:
-		affordable = _sim().can_afford_placement(selected_shape, selected_material_family)
+		affordable = _sim().can_afford_placement(_target_shape(), selected_material_family)
 	preview_valid = affordable and element_accepts(element)
 
 	_preview_mesh.global_position = pose["centre"]
@@ -372,9 +416,10 @@ func try_place_block() -> bool:
 		return false
 	if selected_kit != &"":
 		return _place_kit()
-	if not _sim().pay_placement(selected_shape, selected_material_family):
+	var shape := _target_shape()
+	if not _sim().pay_placement(shape, selected_material_family):
 		return false
-	return place_piece(preview_element, selected_shape, selected_material_family, preview_rotation_step) != null
+	return place_piece(preview_element, shape, selected_material_family, preview_rotation_step) != null
 
 
 ## Registers a piece on an element and raises it in the world (no payment:

@@ -57,8 +57,9 @@ Statuses:
   engine's point of view"; the lattice answer was proposed and accepted
   ("Okay perfect lets do it"). Slice 2 (vocabulary: registry at half
   cells with footprints, floor slab un-gated, stairs, a two-cell door, the
-  roof wedge as the trial reward) landed the same day; fine mode and
-  enclosure → shelter regen follow.
+  roof wedge as the trial reward) and 2b (fine mode: G swaps the selection
+  for a half-scale twin on the same rule) landed the same day; enclosure →
+  shelter regen follows.
 
 ## Registering a decision
 

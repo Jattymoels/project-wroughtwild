@@ -364,9 +364,20 @@ ConstructionTable loadConstruction(const std::string& path) {
             if (shape.cellsTall < 1) throw std::runtime_error("construction: shape '" + shape.id + "' cells_tall must be >= 1");
         }
         if (auto fine = s->find("fine")) shape.fine = fine->asBool();
+        if (auto fineOf = s->find("fine_of")) shape.fineOf = fineOf->asString();
+        if (!shape.fineOf.empty() && !shape.fine)
+            throw std::runtime_error("construction: shape '" + shape.id + "' names fine_of but is not fine");
         if (auto effect = s->find("requires_world_effect"))
             shape.requiresWorldEffect = effect->asString();
         table.shapes.push_back(std::move(shape));
+    }
+    for (const auto& shape : table.shapes) {
+        if (shape.fineOf.empty()) continue;
+        const auto* twin = table.findShape(shape.fineOf);
+        if (twin == nullptr || twin->fine)
+            throw std::runtime_error("construction: shape '" + shape.id + "' fine_of must name a full-size shape");
+        if (twin->element != shape.element)
+            throw std::runtime_error("construction: shape '" + shape.id + "' must occupy the same element kind as its twin");
     }
     return table;
 }

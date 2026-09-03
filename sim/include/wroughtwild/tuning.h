@@ -355,6 +355,9 @@ struct ShapeDef {
     int cellsTall = 1;
     // True for half-scale pieces that live on the registry lattice itself.
     bool fine = false;
+    // For fine pieces: the full-size shape this is the half-scale twin of
+    // (fine mode swaps the selection for its twin). Empty otherwise.
+    std::string fineOf;
     std::string requiresWorldEffect; // empty = available from the start
 };
 
