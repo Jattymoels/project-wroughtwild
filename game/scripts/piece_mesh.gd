@@ -18,6 +18,8 @@ static func mesh_for(form: String, size: Vector3) -> Mesh:
 	match form:
 		"fire":
 			return _fire_mesh(size)
+		"low":
+			return _low_mesh(size)
 		"stairs":
 			return _stairs_mesh(size)
 		"wedge":
@@ -36,6 +38,8 @@ static func mesh_for(form: String, size: Vector3) -> Mesh:
 ## What the preview shows: the footprint box for boxes and doors (so the
 ## door's whole opening reads), the real shape for stairs and wedges.
 static func preview_mesh_for(form: String, size: Vector3) -> Mesh:
+	if form == "low":
+		return _low_mesh(size)
 	if form == "door":
 		var box := BoxMesh.new()
 		box.size = size
@@ -47,6 +51,10 @@ static func preview_mesh_for(form: String, size: Vector3) -> Mesh:
 ## space. Stairs are two boxes, the wedge a convex hull, the rest one box.
 static func collision_for(form: String, size: Vector3) -> Array:
 	match form:
+		"low":
+			var low := BoxShape3D.new()
+			low.size = size
+			return [{"shape": low, "transform": Transform3D(Basis.IDENTITY, Vector3(0.0, -(1.0 - size.y) * 0.5, 0.0))}]
 		"fire":
 			# A low pile: the player steps over it, mobs path around it.
 			var box := BoxShape3D.new()
@@ -218,3 +226,13 @@ static func _add_prism(st: SurfaceTool, a: Vector3, b: Vector3, r: float) -> voi
 	_add_quad(st, c110, c100, c101, c111) # +side
 	_add_quad(st, c100, c110, c010, c000) # a end
 	_add_quad(st, c001, c011, c111, c101) # b end
+
+
+## A box that sits at the bottom of a one-cell-tall element: a footing on
+## the cell floor, a knee-high dry wall on a face (D-021 fieldstone).
+static func _low_mesh(size: Vector3) -> Mesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	_add_box(st, Vector3(0.0, -(1.0 - size.y) * 0.5, 0.0), size)
+	st.generate_normals()
+	return st.commit()

@@ -129,6 +129,13 @@ now a **full 3D block field** the sim generates deterministically per seed
   wood/stone/iron within the near radius, packs off the doorstep, the
   gate ≥ 70 m out in the wastes, all held across seeds by tests.
 
+**Seams (3 Sep 2026, D-021):** `stone_seam` nodes (three guaranteed inside
+the near radius, densest in the hills) are worked with a `tool_item` (the
+timber wedge) over `drive_presses` presses, or at once by a heavy blow.
+Boulders pay fieldstone by hand; iron is hands' work; the alloy ores keep
+`heat_to_work` and are worked while hot or once cracked. Cracked strata
+pay split stone.
+
 **Fire-setting (3 Sep 2026, D-020):** hands dig soil only. Stone wants a
 campfire against it (`construction.json` campfire, laid in timber or
 charcoal) and then cold: the blocks and nodes within `fire_setting.reach_cells`

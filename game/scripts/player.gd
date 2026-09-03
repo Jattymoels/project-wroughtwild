@@ -473,6 +473,59 @@ func _on_died() -> void:
 	combat.invulnerable_left = 2.0
 
 
+## What a node's work() or strike() returned: chips out for a yield, a
+## line for a step, a refusal. Fires the milestone when a blow did the work.
+func _apply_work(node: ResourceNode, result: Dictionary) -> void:
+	if result.is_empty():
+		return
+	if result.has("refusal"):
+		hud.notify("%s: %s." % [Hud.pretty(String(node.material_family)), result["refusal"]])
+		return
+	if result.has("text"):
+		hud.notify(result["text"])
+	var granted: int = int(result.get("granted", 0))
+	if granted > 0:
+		# Feel: the yield pops out of the node as physical chips that
+		# vacuum into you; the inventory add happens on absorb.
+		Pickup.scatter(world_root(), node.global_position + Vector3(0, 0.9, 0),
+			{String(node.material_family): granted}, ambush_rng.randi(), node.global_position.y + 0.02)
+		maybe_ambush(node)
+		if result.get("struck", false) and node.is_seam():
+			# The click that the two halves are one game is a milestone.
+			inventory.get_sim().foundry_event("work:strike_split")
+			if result.get("synergy", false):
+				hud.notify("The hot seam gives way whole.")
+			else:
+				hud.notify("The blow drives the wedge home.")
+
+
+## A strike that found no enemy reaches the world instead (D-021: skills
+## have properties, materials have responses). A set wedge splits, a hot
+## rock cracks. Returns true when something answered.
+func strike_world() -> bool:
+	var from := camera.global_position
+	var to := from + (-camera.global_transform.basis.z) * interact_range
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [self]
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	if hit.is_empty():
+		return false
+	var collider: Object = hit.get("collider")
+	if collider is ResourceNode:
+		var result: Dictionary = (collider as ResourceNode).strike()
+		_apply_work(collider as ResourceNode, result)
+		return not result.is_empty()
+	var terrain := _find_terrain()
+	if terrain != null and terrain.is_terrain_body(collider):
+		var cell := terrain.block_from_hit(hit["position"], hit["normal"])
+		if terrain.kind_at(cell.x, cell.y, cell.z) == "":
+			cell = terrain.block_from_hit(hit["position"], -hit["normal"])
+		if terrain.crack_block(cell):
+			hud.notify("The hot rock cracks under the blow.")
+			return true
+	return false
+
+
 ## Rolls the gathering site's ambush; returns the enemies spawned (if any).
 func maybe_ambush(node: ResourceNode) -> Array:
 	if node.gather_site_id == &"":
@@ -537,11 +590,7 @@ func aim_probe() -> Dictionary:
 		return none
 	if collider is ResourceNode:
 		var node := collider as ResourceNode
-		if not node.workable():
-			return {"state": "interact", "target": node,
-				"label": "%s ×%d — %s" % [Hud.pretty(String(node.material_family)), node.remaining_units, node.work_refusal()]}
-		return {"state": "interact", "target": node,
-			"label": "%s ×%d — E to gather" % [Hud.pretty(String(node.material_family)), node.remaining_units]}
+		return {"state": "interact", "target": node, "label": node.interact_label(inventory.get_sim())}
 	if collider is StationSite:
 		var site := collider as StationSite
 		var sim := inventory.get_sim()
@@ -584,17 +633,7 @@ func interact() -> void:
 	var collider: Object = hit.get("collider")
 	if collider is ResourceNode:
 		var node := collider as ResourceNode
-		var family := node.material_family
-		if not node.workable():
-			hud.notify("%s: %s." % [Hud.pretty(String(family)), node.work_refusal()])
-			return
-		var granted := node.harvest()
-		if granted > 0:
-			# Feel: the yield pops out of the node as physical chips that
-			# vacuum into you; the inventory add happens on absorb.
-			Pickup.scatter(world_root(), node.global_position + Vector3(0, 0.9, 0),
-				{String(family): granted}, ambush_rng.randi(), node.global_position.y + 0.02)
-			maybe_ambush(node)
+		_apply_work(node, node.work(inventory.get_sim()))
 	elif collider is StationSite:
 		(collider as StationSite).interact(self)
 	elif collider is OrderBoard:

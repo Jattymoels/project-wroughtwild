@@ -336,7 +336,13 @@ the world is the campaign. Slices, in order:
    and **fire-setting** as the first capability gate — a campfire against
    rock, cold cracks what is hot, cracked rock digs by hand; charcoal for
    the alloy ores.
-8. **Skills on the plate** *(next)*: a skill tablet laid on the Foundry
+8. **Seams and the yard** *(landed 3 Sep 2026, D-021)*: masonry is the
+   unlock, not stone — fieldstone lays footings and dry walls, timber
+   wedges split seams (E drives, a heavy blow drives at once, a hot seam
+   splits whole), the mason's yard dresses split stone; fire-setting
+   reframed as one material response. Two rules: materials have
+   responses, skills have properties; Baseline, Exploit, Synergy.
+9. **Skills on the plate** *(next)*: a skill tablet laid on the Foundry
    plate is supported by the ingots touching it; later, manners learned
    from mob families as the support pool.
 

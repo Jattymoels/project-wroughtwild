@@ -1870,6 +1870,8 @@ Dictionary WroughtwildSim::world_map(int seed) {
         n["visual"] = to_godot(typeIt->second.visual);
         n["era"] = typeIt->second.era;
         n["heat_to_work"] = typeIt->second.heatToWork;
+        n["tool_item"] = to_godot(typeIt->second.toolItem);
+        n["drive_presses"] = typeIt->second.drivePresses;
         nodes.push_back(n);
     }
     d["nodes"] = nodes;

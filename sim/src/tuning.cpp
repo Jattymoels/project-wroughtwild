@@ -507,9 +507,9 @@ ConstructionTable loadConstruction(const std::string& path) {
         if (auto form = s->find("form")) {
             shape.form = form->asString();
             if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door" &&
-                shape.form != "arch" && shape.form != "fire")
+                shape.form != "arch" && shape.form != "fire" && shape.form != "low")
                 throw std::runtime_error("construction: shape '" + shape.id +
-                                         "' form must be box, stairs, wedge, door, arch or fire");
+                                         "' form must be box, stairs, wedge, door, arch, fire or low");
         }
         if (auto oriented = s->find("oriented")) shape.oriented = oriented->asBool();
         if (auto tall = s->find("cells_tall")) {
@@ -979,6 +979,8 @@ WorldgenTable loadWorldgen(const std::string& path) {
         node.visual = n->get("visual").asString();
         if (auto era = n->find("era")) node.era = era->asInt();
         if (auto heat = n->find("heat_to_work")) node.heatToWork = heat->asInt();
+        if (auto tool = n->find("tool_item")) node.toolItem = tool->asString();
+        if (auto presses = n->find("drive_presses")) node.drivePresses = presses->asInt();
         table.nodeTypes[id] = std::move(node);
     }
 

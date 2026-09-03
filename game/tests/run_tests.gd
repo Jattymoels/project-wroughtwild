@@ -593,7 +593,7 @@ func _test_sim_extension() -> void:
 		"shape: the wedge waits on the completion unlock, the slab does not")
 	check(sim.shape_ids().size() >= 9 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
 		"shape: nine-shape set with sizes from data")
-	check(sim.build_material_ids().size() == 7 and sim.build_material("iron")["source"] == "iron_ingot"
+	check(sim.build_material_ids().size() == 8 and sim.build_material("iron")["source"] == "iron_ingot"
 		and sim.build_material("stone")["texture"] == "masonry", "materials: families through the door")
 	check(sim.shape_allows_family("door", "wood") and not sim.shape_allows_family("door", "stone")
 		and sim.shape("girder")["cells_long"] == 2 and sim.shape("girder")["requires_traits"].has("metal"),
@@ -785,18 +785,50 @@ func _test_sandpit_extension() -> void:
 	if terrain.kind_at(below.x, below.y, below.z) == "stone":
 		terrain.apply_cracked([[below.x, below.y, below.z]])
 		check(terrain.is_cracked(below) and terrain.diggable_by_hand(below), "fire: a save's cracks restore")
-	# Nodes: a boulder wants a fire; soaked and quenched it works.
+	# Nodes: an alloy ore wants a charcoal fire; hot it works, cold cracks it for good.
 	var boulder: ResourceNode = load("res://scenes/resource_node.tscn").instantiate()
-	boulder.material_family = &"stone"
-	boulder.heat_to_work = 1
-	boulder.remaining_units = 4
+	boulder.material_family = &"copper_ore"
+	boulder.heat_to_work = 2
+	boulder.remaining_units = 6
 	get_root().add_child(boulder)
 	check(not boulder.workable() and boulder.harvest() == 0 and boulder.work_refusal().contains("fire"),
-		"fire: a boulder refuses hands and says why")
+		"fire: an alloy vein refuses hands and says why")
 	boulder.soak(1, 30.0)
-	check(not boulder.workable() and boulder.work_refusal().contains("cold") and not boulder.quench() == false,
-		"fire: soaked, it asks for cold; cold cracks it")
-	check(boulder.workable() and boulder.harvest() == 2, "fire: cracked, it works")
+	check(not boulder.workable() and boulder.work_refusal().contains("hotter"), "fire: a wood fire is not enough for copper")
+	boulder.soak(2, 30.0)
+	check(boulder.workable() and boulder.harvest() == 2, "fire: hot at charcoal heat, it works (softened)")
+	check(boulder.quench() and boulder.cracked and boulder.workable(), "fire: cold on the hot vein cracks it for good")
+
+	# D-021 seams: the three routes. Baseline E drives the wedge; a blow
+	# splits at once; a hot seam splits twice under one blow.
+	sim.add_material("timber_wedge", 3)
+	var seam: ResourceNode = load("res://scenes/resource_node.tscn").instantiate()
+	seam.material_family = &"split_stone"
+	seam.tool_item = &"timber_wedge"
+	seam.drive_presses = 3
+	seam.remaining_units = 12
+	seam.units_per_harvest = 2
+	get_root().add_child(seam)
+	check(seam.is_seam() and seam.interact_label(sim).contains("set a wedge"), "seams: the label offers a wedge you carry")
+	check(seam.strike().has("refusal"), "seams: a blow on a bare seam does nothing")
+	var step: Dictionary = seam.work(sim)
+	check(step.has("text") and seam.wedge_set and sim.material_count("timber_wedge") == 2, "seams: E sets a wedge and spends it")
+	check(seam.work(sim).has("text") and seam.work(sim).has("text") and seam.drive_progress == 2, "seams: E drives it a press at a time")
+	var split: Dictionary = seam.work(sim)
+	check(int(split.get("granted", 0)) == 2 and not seam.wedge_set and seam.remaining_units == 10, "seams: the last press splits two stone and frees the wedge")
+	seam.work(sim)
+	var blow: Dictionary = seam.strike()
+	check(int(blow.get("granted", 0)) == 2 and blow.get("struck", false) and not blow.get("synergy", true) and seam.remaining_units == 8,
+		"seams: a heavy blow on a set wedge splits at once (exploit)")
+	seam.work(sim)
+	seam.soak(1, 30.0)
+	check(seam.interact_label(sim).contains("whole seam"), "seams: a hot seam says what a blow will do")
+	var whole: Dictionary = seam.strike()
+	check(int(whole.get("granted", 0)) == 4 and whole.get("synergy", false) and seam.remaining_units == 4,
+		"seams: heat and impact take the whole seam (synergy)")
+	check(sim.material_count("timber_wedge") == 0 and seam.work(sim).has("refusal"), "seams: out of wedges, the seam says so")
+	seam.queue_free()
+	boulder.queue_free()
 	var tree: ResourceNode = load("res://scenes/resource_node.tscn").instantiate()
 	tree.material_family = &"wood"
 	get_root().add_child(tree)
@@ -822,18 +854,18 @@ func _test_sandpit_extension() -> void:
 	check(cave_dens > 0, "elites: cave packs den underground")
 	var plain_husk: Dictionary = sim.enemy_loot("stone_husk", 99)
 	var elite_husk: Dictionary = sim.enemy_loot("stone_husk", 99, "unfreezable")
-	check(int(elite_husk.get("stone", 0)) > int(plain_husk.get("stone", 0)),
+	check(int(elite_husk.get("split_stone", 0)) > int(plain_husk.get("split_stone", 0)),
 		"elites: the bounty pays more stone")
 
 	check(sim.kit_station("workbench_kit") == "workbench", "sandpit: workbench kit maps to workbench")
 	check(sim.kit_station("forge_kit") == "forge_basic", "sandpit: forge kit maps to the forge")
 	check(sim.kit_station("wood") == "", "sandpit: non-kits map to nothing")
-	check(sim.kit_item_ids().size() == 2, "sandpit: two kits exist")
+	check(sim.kit_item_ids().size() == 3 and sim.kit_station("mason_yard_kit") == "mason_yard", "sandpit: three kits exist (the yard joined, D-021)")
 
 	var drops_a: Dictionary = sim.enemy_loot("stone_husk", 77)
 	var drops_b: Dictionary = sim.enemy_loot("stone_husk", 77)
 	check(drops_a == drops_b, "sandpit: loot deterministic per seed")
-	check(drops_a.get("stone", 0) >= 2, "sandpit: husks always pay stone")
+	check(drops_a.get("split_stone", 0) >= 2, "sandpit: husks always pay split stone (D-021)")
 
 	# D-016 loot: gear and pages ride independent streams off the kill seed,
 	# and a gear pickup remembers only its kill - the claim re-rolls it.

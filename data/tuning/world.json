@@ -157,7 +157,7 @@
       "attack_period_rounds": 2,
       "loot": [
         {
-          "item": "stone",
+          "item": "split_stone",
           "min": 2,
           "max": 4,
           "chance": 1.0
@@ -231,7 +231,7 @@
           "chance": 0.5
         },
         {
-          "item": "stone",
+          "item": "split_stone",
           "min": 1,
           "max": 2,
           "chance": 0.4
@@ -490,6 +490,6 @@
     "dropped_inventory_recoverable": true,
     "design_purpose": "Open-world death drops carried inventory at the site for recovery (D-006); permanent equipment is never dropped"
   },
-  "design_purpose_loot": "Every mob pays out into the survival economy (fuel, ore, stone, coin) so fighting is never dead time next to gathering. Three kinds of entry: {item,min,max,chance} materials; {gear: rarity, tier, chance} a rolled piece on any base (D-014); {skill_page: true, chance} a page teaching one skill the player does not know yet, weighted by skills.json drop_weight (D-016). Page chances are set so a first hour of hunting finds one or two skills; the mob pass will move them onto elites.",
+  "design_purpose_loot": "Every mob pays out into the survival economy (fuel, ore, stone, coin) so fighting is never dead time next to gathering. Three kinds of entry: {item,min,max,chance} materials; {gear: rarity, tier, chance} a rolled piece on any base (D-014); {skill_page: true, chance} a page teaching one skill the player does not know yet, weighted by skills.json drop_weight (D-016). Page chances are set so a first hour of hunting finds one or two skills; the mob pass will move them onto elites. Stone creatures pay SPLIT stone (D-021): the yard, not the husk, makes masonry.",
   "design_purpose_pacing": "Long fights (owner, 3 Sep 2026: 'we get too powerful too quick ... more like early MMOs, lots of mobs and it takes a while to kill things', combat should 'start a bit more powerful' - the swing stays, the life bars grow). Mob life is two and a half times the first cut and mob damage seven tenths, player numbers untouched: a day-one whelp takes three heavy blows instead of two-and-a-bit, a pack is a thirty-second fight where spacing and the sweep matter, and the first Keen mace no longer ends era one. The trial's bosses keep their numbers; the oracle (tools/balance) holds their win rates in band."
 }

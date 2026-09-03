@@ -49,6 +49,22 @@
     {
       "id": "hide",
       "display_name": "Hide"
+    },
+    {
+      "id": "fieldstone",
+      "display_name": "Fieldstone"
+    },
+    {
+      "id": "split_stone",
+      "display_name": "Split Stone"
+    },
+    {
+      "id": "timber_wedge",
+      "display_name": "Timber Wedge"
+    },
+    {
+      "id": "mason_yard_kit",
+      "display_name": "Mason's Yard Kit"
     }
   ],
   "stations": [
@@ -96,6 +112,20 @@
         "iron_fittings": 6
       },
       "design_purpose": "Upgraded in place at a built forge. Consumes most of the mine-order payment plus useful output, so the upgrade feels earned through work rather than passively unlocked."
+    },
+    {
+      "id": "mason_yard",
+      "display_name": "Mason's Yard",
+      "tier": 1,
+      "supported_processes": [
+        "assemble"
+      ],
+      "build_cost": {
+        "wood": 10,
+        "fieldstone": 6
+      },
+      "kit_item": "mason_yard_kit",
+      "design_purpose": "Where rough stone is worked into building stone (D-021). Founded from its kit like the bench and the forge; burns no fuel."
     }
   ],
   "recipes": [
@@ -116,6 +146,61 @@
         "construction"
       ],
       "design_purpose": "The start-with-nothing rung: gather wood by hand, lash a bench together in the field, place it (B, Tab to the kit)."
+    },
+    {
+      "id": "timber_wedge",
+      "display_name": "Timber Wedges",
+      "station": "",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 1
+      },
+      "outputs": {
+        "timber_wedge": 2
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "D-021: wood is how you enter the stone age. A wedge set in a seam and driven (E, or a heavy blow) splits stone; each split spends the wedge. Hand-made anywhere, so nobody is ever stuck without a quarry."
+    },
+    {
+      "id": "mason_yard_kit",
+      "display_name": "Mason's Yard Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 10,
+        "fieldstone": 6
+      },
+      "outputs": {
+        "mason_yard_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "The yard is where split stone becomes masonry: timber frames and a fieldstone bed. Its cost is the first thing fieldstone is for."
+    },
+    {
+      "id": "dress_stone",
+      "display_name": "Dress Stone",
+      "station": "mason_yard",
+      "minimum_skill": {},
+      "inputs": {
+        "split_stone": 2
+      },
+      "outputs": {
+        "stone": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "Two split stones dress into one block of the stone family. Masonry is dearer and slower than timber on purpose (D-021): the first house is wood because that is what the materials can do, and the forge kit's eight stone is the first real masonry ambition."
     },
     {
       "id": "forge_kit",

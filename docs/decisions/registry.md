@@ -100,6 +100,28 @@ Statuses:
   it) is the accepted support direction, to build next; "manners learned
   from mobs" is the accepted source of later supports.
 
+- **D-021 (3 Sep 2026, masonry is the unlock, not stone):** the owner,
+  on the fire-setting gate: "doesn't scratch the itch as I don't want to
+  enforce a cold aspect to crack stone and doesn't really scale to mid
+  game"; they brought a second opinion whose reframe we adopted — ask "why
+  is stone not yet a practical building material" rather than "how do I
+  stop the player mining." Accepted and landed: **fieldstone** (boulders by
+  hand; lays only a footing and a dry wall, `only_for_trait: rough`, never
+  a house), **stone seams** worked with hand-made **timber wedges** (E
+  drives a wedge over four presses; a heavy blow drives it at once; a hot
+  seam splits whole under one blow), **the mason's yard** (a kit station
+  that dresses two split stones into one stone; the forge kit's eight
+  stone is the first masonry ambition), the stone creatures paying split
+  stone, cracked strata paying split stone, and iron by hand. Fire-setting
+  stays as one material response: hot rock is softened, and impact or cold
+  cracks it; nothing needs cold. Two rules written down: **materials have
+  responses, skills have properties** (one grammar for enemies and the
+  world), and **Baseline, Exploit, Synergy** — E always works, a skill
+  property shortcuts it, two properties do better; exploits buy time or
+  yield, never access. The first strike-driven split is a Foundry
+  milestone (`work:strike_split`). Archetype-specific work (an archer's
+  precision) waits until the grammar proves itself in play.
+
 ## Registering a decision
 
 Add an entry when a choice materially affects player experience, save data, system boundaries, architecture or prototype scope. Create a separate ADR when the rationale, alternatives or consequences require more than one table row.

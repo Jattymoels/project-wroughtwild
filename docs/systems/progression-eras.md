@@ -377,3 +377,57 @@ learned from mobs**: each family teaches one way of fighting after enough
 of them have fallen (the hound's manner hunts, the wisp's casts on the
 retreat, the husk's staggers), so the world advancing is the support pool
 growing. Together they take the burden off items, which is the point.
+
+
+## Two rules (3 Sep 2026, D-021)
+
+**Materials have responses, skills have properties.** A skill is not a
+list of bespoke things it does; it carries tags (D-016: attack, spell,
+projectile, area, cold, fire, impact...). Enemies answer those tags
+(chill, ignite, bleed, shatter) and so does the world: cold on hot rock
+cracks it, fire on rock heats it, an impact on a set wedge drives it.
+Whenever a combat behaviour is introduced, ask what in the world should
+answer it. Not everything needs an answer; enough should that players
+start asking "can I ignite this, can I freeze that, can this blow move
+that."
+
+**Baseline, Exploit, Synergy.** Every world interaction has a contextual
+E route that always works, slower but complete. A skill property can
+shortcut it (the exploit). Two properties together do substantially
+better (the synergy). Exploits buy time or yield; they never buy access,
+so nobody is punished for a build they did not pick. The action bar stays
+the ARPG's: there is no tool hotbar.
+
+## Implemented: seams and the yard (3 Sep 2026, D-021)
+
+The gate is masonry, not stone. You can touch rock from the first
+minute; you cannot yet build a house with it.
+
+- **Fieldstone** — boulders by hand. A building family with the `rough`
+  trait and `only_for_trait: rough`, so it lays the **footing** (a
+  half-height course on the cell floor) and the **dry wall** (a knee-high
+  wall on a face), and nothing else. The first house is timber on a stone
+  footing.
+- **Stone seams** — a node (`stone_seam`, three guaranteed near spawn,
+  denser in the hills) worked with a `tool_item`, the hand-made **timber
+  wedge** (one timber makes two). E sets a wedge, E drives it over
+  `drive_presses`; the last press splits two stone and spends the wedge.
+  A heavy blow on a set wedge splits at once. A hot seam splits twice
+  over under one blow.
+- **The mason's yard** — a kit station (timber and fieldstone at the
+  bench) whose one recipe dresses two split stones into one of the stone
+  family. The forge kit's eight stone is now the first real masonry
+  ambition; husks and crawlers pay split stone, not masonry; cracked
+  strata pay split stone.
+- **Fire-setting reframed** — hot rock is softened: an impact cracks a hot
+  block, cold cracks every hot block in reach, and the alloy ores are
+  worked while hot (or once cracked). Iron is hands' work.
+- **The click is a milestone** — the first strike-driven split raises
+  `work:strike_split`, which the Foundry pays with an ingot.
+
+The chain: wood → wedges and a bench → a seam → split stone; boulders →
+fieldstone → the yard's kit → dressed stone → the forge. Every rung is a
+verb the player already has. Playtest question: did you build a wooden
+home and feel clever when you finally worked stone, and did Heavy Strike
+driving the wedge produce the click that your combat ability works on the
+world.

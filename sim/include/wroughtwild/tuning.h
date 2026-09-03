@@ -685,7 +685,11 @@ struct NodeTypeDef {
     int unitsPerHarvest = 2;
     std::string visual;
     int era = 1; // the era this node type surfaces in (eras.json)
-    int heatToWork = 0; // fire heat it must be soaked in and quenched before E works it (0 = hands)
+    int heatToWork = 0; // fire heat it must be hot at (or cracked by cold) before E works it (0 = hands)
+    // Seams (D-021): the item set in it and spent per split ("" = hands),
+    // and how many E presses drive it - the baseline a heavy blow shortcuts.
+    std::string toolItem;
+    int drivePresses = 0;
 };
 
 // Fire-setting (D-020): a campfire's heat, how far it reaches, how long
