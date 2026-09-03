@@ -232,8 +232,23 @@ func _physics_process(_delta: float) -> void:
 			check(result["crafted"], "integration: smelt crafted from the panel")
 			check(sim.material_count("iron_ingot") == 1, "integration: ingot in the shared inventory")
 			check(_player.work_panel.message().begins_with("Crafted"), "integration: panel reports the craft")
+			# The first smelt is a Foundry milestone: an Ember Ingot, announced
+			# through the HUD's notice drain, placed at the forge.
+			check(sim.foundry_notices() == ["ember"], "foundry: the first smelt forged an ember ingot")
+			check(_player.work_panel.row_count() >= 3, "foundry: the forge panel offers the Foundry")
 			_player.work_panel.close_panel()
 			check(not _player.work_panel.is_open(), "integration: panel closes")
+			_player.open_foundry()
+			check(_player.foundry_panel.is_open() and _player.foundry_panel.cell_count == 9
+				and _player.foundry_panel.tray_count == 1, "foundry: the panel shows a 3x3 plate and one ingot in hand")
+			_player.foundry_panel.set_selected(&"ember")
+			_player.foundry_panel.press_cell(0, 0)
+			check(sim.foundry()["plate"].size() == 1 and _player.foundry_panel.effect_count == 1,
+				"foundry: the panel set the ingot and shows its effect")
+			check(sim.foundry_event("first_kill:cinder_archer") == ["reach"] and sim.foundry_place(0, 1, "reach")
+				and sim.foundry_effects().size() == 3, "foundry: reach beside ember makes Wildfire")
+			_player.foundry_panel.close_panel()
+			check(not _player.foundry_panel.is_open(), "foundry: panel closes")
 		15:
 			# The door is in the physics space now: shut it collides (so X and
 			# E can reach it), open it does not.
@@ -283,6 +298,7 @@ func _physics_process(_delta: float) -> void:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			check(_count_placed_blocks() == 1, "save: placed block restored")
 			check(sim.structure_pieces().size() == 1, "save: the structure registry restored with it")
+			check(sim.foundry()["plate"].size() == 2, "save: the Foundry's plate restored")
 			check(_player.inventory.get_count(&"wood") == _saved_wood, "save: inventory restored")
 			check((_scene.get_node("IronNode") as ResourceNode).remaining_units == 5, "save: resource node units restored")
 			check(sim.has_station("forge_basic") and sim.currency_count("trade_currency") == 40,

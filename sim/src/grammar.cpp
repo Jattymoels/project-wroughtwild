@@ -93,6 +93,14 @@ ActiveMod modAt(const tuning::ItemTable& table, const std::string& modifierId, d
     return {def->id, def->appliesToTags, def->effectKey, value, source};
 }
 
+ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state, int era) {
+    ActiveMods mods;
+    const auto size = foundry::plateSize(tuning.foundry, era);
+    for (const auto& effect : foundry::effects(tuning.foundry, state, size))
+        mods.push_back(modAt(tuning.items, effect.modifier, effect.value, "foundry:" + effect.kind));
+    return mods;
+}
+
 int forkCount(const tuning::Tuning& tuning, const ActiveMods& active,
               const std::string& skillId) {
     const auto* def = findSkill(tuning, skillId);

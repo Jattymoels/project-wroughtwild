@@ -123,6 +123,17 @@ std::string toJson(const SaveGame& game) {
     writeStringList(out, game.economy.knownSkills);
     out << ",\"skill_bar\":";
     writeStringList(out, game.economy.skillBar);
+    out << ",\"foundry\":{\"owned\":";
+    writeIntMap(out, game.economy.foundry.owned);
+    out << ",\"plate\":[";
+    for (size_t i = 0; i < game.economy.foundry.plate.size(); ++i) {
+        const auto& p = game.economy.foundry.plate[i];
+        if (i) out << ",";
+        out << "{\"row\":" << p.row << ",\"col\":" << p.col << ",\"ingot\":\"" << escape(p.ingot) << "\"}";
+    }
+    out << "],\"milestones\":";
+    writeStringList(out, game.economy.foundry.milestones);
+    out << "}";
     out << "},\"equipment\":{";
 
     bool firstSlot = true;
@@ -167,6 +178,14 @@ SaveGame fromJson(const std::string& text) {
     // Saves written before D-016 carry no loadout; importState starts one.
     if (auto known = eco.find("known_skills")) game.economy.knownSkills = readStringList(*known);
     if (auto bar = eco.find("skill_bar")) game.economy.skillBar = readStringList(*bar);
+    // Saves written before D-019 carry no Foundry.
+    if (auto f = eco.find("foundry")) {
+        game.economy.foundry.owned = readIntMap(f->get("owned"));
+        for (const auto& p : f->get("plate").asArray())
+            game.economy.foundry.plate.push_back(
+                {p->get("row").asInt(), p->get("col").asInt(), p->get("ingot").asString()});
+        game.economy.foundry.milestones = readStringList(f->get("milestones"));
+    }
 
     for (const auto& [slot, itemValue] : doc->get("equipment").asObject())
         game.equipment.slots[slot] = readItem(*itemValue);

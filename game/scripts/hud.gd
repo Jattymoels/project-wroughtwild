@@ -385,6 +385,9 @@ func refresh() -> void:
 	var era: Dictionary = sim.era()
 	if not era.is_empty():
 		lines.append("Era %d of %d: %s" % [era["index"], era.get("count", 1), era["display_name"]])
+	# The economy's own milestones (crafts, world effects, eras) forge ingots.
+	for id in sim.foundry_notices():
+		notify("The Foundry: a %s is yours. Set it on the plate at the forge." % sim.foundry_ingot(id).get("display_name", id))
 	if sim.trial_active():
 		var state: Dictionary = sim.trial_run_state()
 		var names := PackedStringArray()

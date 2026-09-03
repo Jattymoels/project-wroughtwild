@@ -39,6 +39,7 @@ const DROPPED_BUNDLE_SCENE := preload("res://scenes/dropped_bundle.tscn")
 var hud: Hud
 var work_panel: WorkPanel
 var inventory_panel: InventoryPanel
+var foundry_panel: FoundryPanel
 var trial: TrialController
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
@@ -93,6 +94,12 @@ func _ready() -> void:
 	inventory_panel.combat = combat
 	inventory_panel.closed.connect(_capture_mouse)
 	add_child(inventory_panel)
+
+	foundry_panel = FoundryPanel.new()
+	foundry_panel.sim = inventory.get_sim()
+	foundry_panel.player = self
+	foundry_panel.closed.connect(_capture_mouse)
+	add_child(foundry_panel)
 
 	trial = TrialController.new()
 	trial.setup(self)
@@ -162,6 +169,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			hud.toggle_help()
 		elif inventory_panel.is_open():
 			inventory_panel.close_panel()
+		elif foundry_panel.is_open():
+			foundry_panel.close_panel()
 		else:
 			work_panel.close_panel()
 	elif event.is_action_pressed("toggle_help"):
@@ -172,7 +181,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		save_game()
 	elif event.is_action_pressed("load_game"):
 		load_game()
-	elif work_panel.is_open() or inventory_panel.is_open():
+	elif work_panel.is_open() or inventory_panel.is_open() or foundry_panel.is_open():
 		return
 	elif event.is_action_pressed("hand_craft"):
 		open_hand_crafting()
@@ -223,8 +232,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 ## The pack screen (I): opens over the world with the mouse released; a
 ## station's work panel takes precedence while it is open.
+## The Foundry (D-019): opened from a built forge's panel.
+func open_foundry() -> void:
+	placement.set_build_mode_enabled(false)
+	inventory_panel.close_panel()
+	work_panel.close_panel()
+	foundry_panel.open_panel()
+	_release_mouse()
+
+
 func toggle_inventory() -> void:
-	if work_panel.is_open():
+	if work_panel.is_open() or foundry_panel.is_open():
 		return
 	if inventory_panel.is_open():
 		inventory_panel.close_panel()

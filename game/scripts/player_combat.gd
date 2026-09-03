@@ -67,6 +67,15 @@ func restore_life() -> void:
 	life_changed.emit(life, max_life)
 
 
+## Gear or the Foundry changed: the maximum moves, current life keeps its
+## share of it.
+func refresh_stats() -> void:
+	var fraction := life / maxf(max_life, 1.0)
+	max_life = sim.derived_stats()["max_life"]
+	life = clampf(fraction * max_life, 0.0, max_life)
+	life_changed.emit(life, max_life)
+
+
 ## --- shelter regen (Wave 4 building slice 3) ---
 ## Resting in an enclosed room regenerates life once you have gone the
 ## settle time without a hit. The sim decides what a shelter is and how

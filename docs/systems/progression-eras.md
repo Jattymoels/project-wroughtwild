@@ -191,7 +191,38 @@ the Forge Tyrant's fall (`stonecut_blocks`) and changes the three axes:
   no nests even with a home.
 
 The HUD names the era; the sandpit polls the sim once a second and tells
-the era's story when it changes. Not yet: the Foundry, item tiers,
+the era's story when it changes.
+
+## Implemented: the Foundry (3 Sep 2026)
+
+`data/tuning/foundry.json` and `sim/foundry.h`:
+
+- **Ingots** are eight verbs (ember, frost, edge, reach, vigour, plate,
+  ward, haste), each one `items.json` modifier at a flat value. **Sources**
+  map a milestone event to one ingot, each granted once and only from its
+  era on: the first workbench and the first smelt (`recipe:`), each
+  family's first kill (`first_kill:`, reported by the engine), the mine
+  reinforced and the Tyrant's fall (`world_effect:`), the era itself
+  (`era:2`), the first bronze. The economy raises its own events from
+  crafts and world effects and queues notices for the HUD; kills come in
+  through `foundry_event`.
+- **The plate** is `plate_by_era` (3x3, 3x4, 4x4). `foundry::effects`
+  lists what the plate does: every placed ingot's verb, every orthogonal
+  adjacency that matches a **pair** (Ember beside Reach is Wildfire, Frost
+  beside Edge is Wide Shatter, Vigour beside Plate is Bulwark...), and every
+  straight **line** of three matching ingots, which adds the verb again.
+  `grammar::foundryMods` turns those into modifiers in the same pool gear
+  uses, so skill numbers, statuses and hooks read the plate with no new
+  resolver; stat ingots reach the sheet through `deriveStats`' extra
+  effects. **Re-forging** (lifting an ingot) pays `reforge_cost`, one iron
+  ingot.
+- **The panel** (`foundry_panel.gd`) opens from a built forge's work panel:
+  the plate as a grid, the ingots in hand as a tray, the effects as a
+  list; a tray click picks an ingot, an empty cell sets it, a filled cell
+  lifts it. The plate, the ingots and the milestones ride in the sim's
+  save.
+
+Not yet: refinement (reach) and wrought forms, item tiers as breakpoints,
 mastery, the third era.
 
 ## Open questions

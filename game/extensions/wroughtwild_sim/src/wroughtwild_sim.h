@@ -240,6 +240,24 @@ public:
     // world.json shelter: regen_life_per_round, settle_rounds, max_room_cells.
     Dictionary shelter() const;
 
+    // --- the Foundry (foundry.json, D-019): ingots on the era's plate ---
+    // {rows, cols, era, plate: [{row, col, ingot}], owned: {id: n},
+    // unplaced: {id: n}, reforge_cost: {item: n}, can_reforge}.
+    Dictionary foundry() const;
+    PackedStringArray foundry_ingot_ids() const;
+    // {id, display_name, verb, modifier, value, sentence, owned, unplaced}.
+    Dictionary foundry_ingot(const String& ingot_id) const;
+    // What the plate does now: [{kind: ingot|pair|line, label, sentence, row, col}].
+    Array foundry_effects() const;
+    bool foundry_place(int row, int col, const String& ingot_id);
+    bool foundry_remove(int row, int col);
+    // Reports a milestone the engine saw ("first_kill:ash_hound"); returns
+    // the ingot ids it granted (each source once).
+    Array foundry_event(const String& event);
+    // Ingot ids granted by the economy's own milestones (crafts, world
+    // effects, eras) since last asked, for notices.
+    Array foundry_notices();
+
     // --- eras (eras.json, D-019): the world's state, from milestones ---
     // {index (1-based), id, display_name, story, encroachment}.
     Dictionary era() const;
@@ -453,6 +471,8 @@ private:
     const wroughtwild::worldgen::WorldMap& cached_world(uint64_t seed);
     // The elite modifier for an id, or nullptr for "" / unknown.
     const wroughtwild::tuning::EliteModifierDef* find_elite(const String& elite_id) const;
+    // Character stats with the Foundry's stat ingots applied.
+    wroughtwild::stats::DerivedStats derived_now() const;
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;

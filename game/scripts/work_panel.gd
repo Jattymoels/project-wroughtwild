@@ -103,6 +103,12 @@ func open_order(order_id: StringName) -> void:
 	refresh()
 
 
+func _open_foundry() -> void:
+	var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+	if player != null:
+		player.open_foundry()
+
+
 ## Arbitrary choice list: rows are {text, button, enabled (optional),
 ## callback (Callable)}. Used for trial doors and offers.
 func open_custom(title: String, rows: Array, message_text: String = "") -> void:
@@ -322,6 +328,10 @@ func _render_crafting() -> void:
 	var skill: Dictionary = sim.skill_progress("blacksmithing")
 	var next: String = "max" if skill["next_level_xp"] < 0 else str(skill["next_level_xp"])
 	_add_row("%s level %d  (%d / %s xp)" % [skill["display_name"], skill["level"], skill["xp"], next])
+	if _station != null and _station.is_built(sim):
+		var view: Dictionary = sim.foundry()
+		_add_row("[b]The Foundry[/b]  —  your ingots on a %d×%d plate; arrangement is the build" % [view["rows"], view["cols"]],
+			"Open", true, _open_foundry)
 
 	var shows_fuel := false
 	for recipe_id in sim.recipe_ids():

@@ -3,6 +3,7 @@
 // Typed views over data/tuning/*.json. Loading is strict: a missing required
 // field throws rather than defaulting, so tuning mistakes surface in tests.
 
+#include <array>
 #include <cstdint>
 #include <map>
 #include <string>
@@ -684,11 +685,52 @@ struct EraTable {
 
 EraTable loadEras(const std::string& path);
 
+// --- foundry.json ------------------------------------------------------------
+// The Foundry (D-019, foundry.h): ingots on a plate the era forges.
+
+struct IngotDef {
+    std::string id;
+    std::string displayName;
+    std::string verb;     // fire, cold, area, life...
+    std::string modifier; // items.json modifier the ingot speaks
+    double value = 0.0;   // flat, never changes
+};
+
+struct IngotPairDef {
+    std::string a, b;     // ingot ids, unordered
+    std::string displayName;
+    std::string modifier;
+    double value = 0.0;
+};
+
+struct IngotSourceDef {
+    std::string id;
+    std::string event; // recipe:<id> | first_kill:<enemy> | world_effect:<id> | era:<n>
+    std::string ingot;
+    int era = 1;       // the earliest era this source may grant in
+};
+
+struct FoundryDef {
+    std::vector<std::array<int, 2>> plateByEra; // rows, cols per era; the last serves later eras
+    std::map<std::string, int> reforgeCost;     // paid to lift an ingot off the plate
+    int lineLength = 3;
+    double lineBonus = 1.0; // a line adds the ingot's modifier again at this times its value
+    std::vector<IngotDef> ingots;
+    std::vector<IngotPairDef> pairs;
+    std::vector<IngotSourceDef> sources;
+
+    const IngotDef* findIngot(const std::string& id) const;
+    const IngotPairDef* findPair(const std::string& a, const std::string& b) const;
+};
+
+FoundryDef loadFoundry(const std::string& path);
+
 // Loads all tuning files from a data/tuning directory.
 struct Tuning {
     CraftingTable crafting;
     ConstructionTable construction;
     EraTable eras;
+    FoundryDef foundry;
     SkillTable skills;
     ItemTable items;
     BoonTable boons;

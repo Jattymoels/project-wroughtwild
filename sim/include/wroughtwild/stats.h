@@ -5,6 +5,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 #include "wroughtwild/items.h"
 #include "wroughtwild/tuning.h"
@@ -27,6 +28,15 @@ struct DerivedStats {
 // implicit or rolled modifier whose effect is a character stat (D-014).
 DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment,
                          const tuning::ItemTable& table);
+
+// A character-stat effect from outside the gear: the Foundry's ingots
+// (add_max_life, add_armour, add_fire_resistance, add_area_size).
+struct ExtraEffect {
+    std::string key;
+    double value = 0.0;
+};
+DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment,
+                         const tuning::ItemTable& table, const std::vector<ExtraEffect>& extra);
 
 // Legacy view without the table: implicit properties plus rolled entries
 // whose id names a stat directly (max_life, armour, fire_resistance,

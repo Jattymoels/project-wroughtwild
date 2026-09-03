@@ -28,6 +28,26 @@ DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipm
     return finish(base, stats);
 }
 
+DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment,
+                         const tuning::ItemTable& table, const std::vector<ExtraEffect>& extra) {
+    DerivedStats stats;
+    stats.maxLife = base.maxLife;
+    for (const auto& [slot, item] : equipment.slots) {
+        const items::StatTotals totals = items::statTotals(table, item);
+        stats.maxLife += totals.maxLife;
+        stats.armour += totals.armour;
+        stats.fireResistancePercent += totals.fireResistance;
+        stats.areaBonus += totals.areaSize;
+    }
+    for (const auto& e : extra) {
+        if (e.key == "add_max_life") stats.maxLife += e.value;
+        else if (e.key == "add_armour") stats.armour += e.value;
+        else if (e.key == "add_fire_resistance") stats.fireResistancePercent += e.value;
+        else if (e.key == "add_area_size") stats.areaBonus += e.value;
+    }
+    return finish(base, stats);
+}
+
 DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment) {
     DerivedStats stats;
     stats.maxLife = base.maxLife;

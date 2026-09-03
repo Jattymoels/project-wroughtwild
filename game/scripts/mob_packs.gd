@@ -86,6 +86,19 @@ func _on_enemy_died(enemy: Enemy) -> void:
 	_kill_counter += 1
 	# Per-kill deterministic seed: replaying a save replays its luck.
 	drop_loot_for(enemy, world_seed + _kill_counter * 7919)
+	note_first_kill(enemy)
+
+
+## A family's first kill is a Foundry milestone (foundry.json sources):
+## the sim says whether this one forged an ingot.
+static func note_first_kill(enemy: Enemy) -> void:
+	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
+	var granted: Array = sim.foundry_event("first_kill:%s" % enemy.enemy_id)
+	var player := enemy.get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+	if player == null or player.hud == null:
+		return
+	for id in granted:
+		player.hud.notify("The Foundry: your first %s forged a %s." % [enemy.display_name, sim.foundry_ingot(id).get("display_name", id)])
 
 
 ## Rolls and scatters a kill's loot for a seed. The three loot kinds
