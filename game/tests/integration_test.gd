@@ -168,6 +168,24 @@ func _physics_process(_delta: float) -> void:
 			check(placement.cycle_material() == &"wood", "materials: Q cycles back to timber")
 			sim.consume_material("stone", 6)
 			placement.select_shape(&"wall_panel")
+			# Aim (owner playtest, 3 Sep): standing beside a wall and aiming at
+			# a pillar top in the air must target the pillar top, not the wall
+			# the view ray brushes on its way.
+			var beside := placement.place_piece({"kind": "face", "axis": 0, "cell": Vector3i(64, 8, 60)}, &"wall_panel", &"wood")
+			var stack: Array = []
+			for y in [8, 10, 12]:
+				stack.append(placement.place_piece({"kind": "volume", "axis": 0, "cell": Vector3i(72, y, 60)}, &"cube", &"wood"))
+			check(beside != null and stack.size() == 3 and stack[2] != null, "aim: a wall beside and a three-cube pillar ahead")
+			placement.select_shape(&"cube")
+			var eye := Vector3(30.5, 4.5, 30.5)
+			var aim: Vector3 = (Vector3(36.5, 7.5, 30.5) - eye).normalized()
+			var picked: Dictionary = placement.extend_target(eye, aim, 10.0, 0.0)
+			check(not picked.is_empty() and picked["kind"] == "volume" and picked["cell"] == Vector3i(72, 14, 60),
+				"aim: the pillar top wins over the wall the ray brushes (%s)" % str(picked))
+			placement.remove_piece(beside)
+			for piece in stack:
+				placement.remove_piece(piece)
+			placement.select_shape(&"wall_panel")
 		17:
 			# Shelter (building slice 3): walls, floor and roof around the
 			# player's cell make a room; the sim's flood fill says so, and
