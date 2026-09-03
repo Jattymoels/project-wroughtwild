@@ -212,6 +212,24 @@ func _test_lattice() -> void:
 		"foundry: lifted for one ingot of iron")
 	check(sim.foundry_notices().is_empty(), "foundry: engine-reported milestones raise no notices of their own")
 
+	# Items as mechanics through the door: a tier-three roll on iron is
+	# held back and says so; the pack view carries breakpoints.
+	# Only cold damage has a third tier in the sceptre's pool, so roll until it lands.
+	var any_held := false
+	var cap := 0
+	for seed in range(1, 40):
+		var held_index: int = sim.roll_item_into_pack("frost_sceptre", "keen", 3, seed)
+		var held_item: Dictionary = sim.pack_items()[held_index]
+		cap = held_item["tier_cap"]
+		for mod in held_item["mods"]:
+			if mod.get("held_back", false):
+				any_held = mod["tier"] <= 2 and mod["rolled_tier"] == 3 and mod["unleashed_by"].contains("tier 3")
+		if any_held:
+			break
+	check(cap == 2 and any_held, "items: a tier-three roll on an iron base is held back at tier two")
+	check(sim.catalyst_process("preserving_transfer")["process"] == "catalyst_transfer", "items: the transfer process is visible")
+	sim.structure_clear()
+
 	# Piece meshes: every form builds, the wedge's hull has six corners.
 	check(PieceMesh.mesh_for("stairs", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE)
 		and PieceMesh.mesh_for("wedge", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE),

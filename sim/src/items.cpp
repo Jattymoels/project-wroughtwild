@@ -187,6 +187,38 @@ double propertyTotal(const ItemInstance& item, const std::string& propertyId) {
     return total;
 }
 
+EffectiveRoll effectiveRoll(const tuning::ItemTable& table, const ItemInstance& item,
+                            const RolledProperty& rolled) {
+    EffectiveRoll out{rolled.tier, rolled.value, false};
+    const tuning::ItemBase* base = table.findBase(item.baseId);
+    const tuning::ModifierDef* def = table.findModifier(rolled.propertyId);
+    if (!base || !def || rolled.tier <= base->tierCap) return out;
+    const tuning::ModifierTier* cap = def->findTier(base->tierCap);
+    if (!cap) cap = nearestTier(*def, base->tierCap);
+    if (!cap) return out;
+    out.tier = cap->tier;
+    out.value = cap->maximum;
+    out.heldBack = true;
+    return out;
+}
+
+std::vector<const tuning::Breakpoint*> breakpointsFor(const tuning::ModifierDef& def, int tier) {
+    std::vector<const tuning::Breakpoint*> out;
+    for (const auto& t : def.tiers)
+        if (t.tier <= tier)
+            for (const auto& bp : t.breakpoints) out.push_back(&bp);
+    return out;
+}
+
+bool catalystTransfer(const tuning::ItemTable& table, const ItemInstance& source, ItemInstance& target) {
+    const tuning::ItemBase* from = table.findBase(source.baseId);
+    const tuning::ItemBase* to = table.findBase(target.baseId);
+    if (!from || !to || from->slot != to->slot || source.rolledProperties.empty()) return false;
+    target.rolledProperties = source.rolledProperties;
+    target.rarity = source.rarity;
+    return true;
+}
+
 StatTotals statTotals(const tuning::ItemTable& table, const ItemInstance& item) {
     StatTotals totals;
     for (const auto& [id, value] : item.implicitProperties) addStat(totals, "add_" + id, value);
@@ -199,7 +231,12 @@ StatTotals statTotals(const tuning::ItemTable& table, const ItemInstance& item) 
     }
     for (const auto& rolled : item.rolledProperties) {
         const auto* def = table.findModifier(rolled.propertyId);
-        if (def) addStat(totals, def->effectKey, rolled.value);
+        if (!def) continue;
+        const EffectiveRoll eff = effectiveRoll(table, item, rolled);
+        addStat(totals, def->effectKey, eff.value);
+        // A tier's breakpoints that are character stats count on the sheet.
+        for (const auto* bp : breakpointsFor(*def, eff.tier))
+            if (bp->appliesTo.size() == 1 && bp->appliesTo.front() == "self") addStat(totals, bp->effect, bp->value);
     }
     return totals;
 }

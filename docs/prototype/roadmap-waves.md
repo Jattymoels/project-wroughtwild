@@ -312,8 +312,11 @@ the world is the campaign. Slices, in order:
    sources (first kills, first smelts, the mine, the Tyrant, the era, the
    first bronze), re-forging for one iron at the forge; the panel opens
    from a built forge. Refinement and wrought forms wait for the next pass.
-3. **Items as mechanics**: tier breakpoints for the existing modifiers,
-   base capacity per metal, held-back display, the preservation catalyst.
+3. **Items as mechanics** *(landed 3 Sep 2026)*: tier breakpoints on seven
+   modifiers (a third tier each), `tier_cap` per base (iron two, bronze
+   three), held-back rolls shown greyed with what unleashes them, drop
+   tiers rising with the era and with elites, and the Preserving Transfer
+   at the forge.
 4. Skill mastery perks; the third era.
 
 Owner tuning note (3 Sep): "everything is way too fast/powerful ... to

@@ -394,6 +394,9 @@ func _render_crafting() -> void:
 
 	for process_id in sim.catalyst_process_ids():
 		var p: Dictionary = sim.catalyst_process(process_id)
+		if p["process"] == "catalyst_transfer":
+			_render_transfer(process_id, p)
+			continue
 		var skill_text := ""
 		for skill_id in p["minimum_skill"]:
 			skill_text = "%s %d" % [Hud.pretty(skill_id), p["minimum_skill"][skill_id]]
@@ -403,6 +406,37 @@ func _render_crafting() -> void:
 			Hud.pretty(p["station"]), p["catalyst_held"]]
 		var can_temper: bool = p["armour_equipped"] and p["station_available"] and p["skill_met"] and p["catalyst_held"] > 0
 		_add_row(line, "Temper", can_temper, temper_catalyst.bind(StringName(process_id)))
+
+
+## Preserving Transfer (D-019): one row per pack item the worn rolls could
+## move onto - the held-back roll's way to the base that holds it.
+func _render_transfer(process_id: String, p: Dictionary) -> void:
+	var targets: Array = sim.transfer_targets(process_id)
+	var held: int = p["catalyst_held"]
+	if targets.is_empty():
+		_add_row("[b]%s[/b]  —  moves a worn item's rolled modifiers, whole, onto a base of the same slot in your pack; the old base is spent. Wear the item and carry the new base. Catalysts held: %d." % [p["display_name"], held])
+		return
+	for target in targets:
+		var line := "[b]%s[/b]  —  move the worn %s's modifiers onto the %s in your pack (holds tier %d). Consumes 1 %s; the old base is spent. Held: %d." % [
+			p["display_name"], target["worn_display_name"], target["display_name"], int(target["tier_cap"]),
+			Hud.pretty(p["catalyst"]), held]
+		_add_row(line, "Transfer", held > 0 and p["station_available"] and p["skill_met"],
+			transfer_catalyst.bind(StringName(process_id), int(target["index"])))
+
+
+func transfer_catalyst(process_id: StringName, target_index: int) -> Dictionary:
+	var result: Dictionary = sim.transfer_with_catalyst(process_id, target_index)
+	if result["applied"]:
+		_message.text = "The catalyst holds the metal's memory as it moves: %d modifiers carried across. Wear the new base from your pack." % int(result["moved"])
+	else:
+		match result.get("reason", ""):
+			"no_source": _message.text = "Wear the item whose modifiers you want to move."
+			"missing_catalyst": _message.text = "You need a Preserving Catalyst."
+			"skill_too_low": _message.text = "The transfer is beyond your skill."
+			"station_unavailable": _message.text = "This forge cannot hold a transfer."
+			_: _message.text = "The transfer will not take."
+	refresh()
+	return result
 
 
 func _render_order() -> void:

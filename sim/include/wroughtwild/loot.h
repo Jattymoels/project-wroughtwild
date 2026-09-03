@@ -30,10 +30,14 @@ std::map<std::string, int> rollEnemyLoot(const tuning::WorldTable& world,
 // its rarity and tier, on a base drawn from every base in items.json.
 // Deterministic per seed; independent of the material roll above. An elite
 // modifier multiplies each entry's chance by gearChanceMultiplier.
+// Gear tiers are era-bound (D-019): a drop rolls the table's tier plus
+// one per era past the first, and an elite's kill one more - so era two's
+// elites drop the tier-three rolls an iron base holds back.
 std::vector<items::ItemInstance> rollEnemyGear(const tuning::Tuning& tuning,
                                                const std::string& enemyId,
                                                uint64_t seed,
-                                               const tuning::EliteModifierDef* elite = nullptr);
+                                               const tuning::EliteModifierDef* elite = nullptr,
+                                               int era = 1);
 
 // Rolls the enemy's skill-page entries: each drops with its chance as one
 // skill the player does not yet know, weighted by drop_weight (so a page

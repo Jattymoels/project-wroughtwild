@@ -543,6 +543,32 @@ func _ui_checks() -> void:
 	check(pack.gear_count == 1, "ui: a rolled item shows as a gear card")
 	check(pack.wear_pack_item(0) and sim.equipment().has("weapon"), "ui: wearing from the pack screen")
 	check(pack.take_off(&"weapon") and pack.gear_count == 1, "ui: taking gear off returns it to the pack")
+	# Items as mechanics (D-019): a held-back roll on iron, unleashed by a
+	# Preserving Transfer onto bronze at the forge.
+	var held := -1
+	var held_back := false
+	for seed in range(1, 40):
+		held = sim.roll_item_into_pack("frost_sceptre", "keen", 3, seed)
+		for mod in sim.pack_items()[held]["mods"]:
+			held_back = held_back or mod.get("held_back", false)
+		if held_back:
+			break
+	check(held_back, "items: an era-two roll on iron shows held back")
+	check(pack.wear_pack_item(held), "items: worn anyway - it still speaks at tier two")
+	var bronze := sim.roll_item_into_pack("bronze_sceptre", "plain", 1, 5)
+	var is_target := false
+	for target in sim.transfer_targets("preserving_transfer"):
+		is_target = is_target or int(target["index"]) == bronze
+	check(is_target, "items: the bronze sceptre is a transfer target")
+	sim.add_material("preserving_catalyst", 1)
+	var moved: Dictionary = sim.transfer_with_catalyst("preserving_transfer", bronze)
+	check(moved["applied"] and int(moved["moved"]) >= 1 and sim.material_count("preserving_catalyst") == 0
+		and not sim.equipment().has("weapon"), "items: the transfer carries the rolls and spends the old base and the catalyst")
+	var unleashed := false
+	for mod in sim.pack_items()[bronze]["mods"]:
+		unleashed = unleashed or (int(mod.get("rolled_tier", 0)) == 3 and not mod.get("held_back", false))
+	check(unleashed, "items: on bronze the roll speaks in full")
+	pack.refresh()
 	_player.toggle_inventory()
 	check(not pack.is_open(), "ui: I closes the pack screen")
 	check(not _player.hud.help_visible(), "ui: help starts hidden")

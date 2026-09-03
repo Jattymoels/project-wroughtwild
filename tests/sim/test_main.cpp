@@ -1906,6 +1906,83 @@ void testFoundry(const tuning::Tuning& t) {
           "foundry: a restored save remembers what it already granted");
 }
 
+// Items as mechanics (D-019): tiers carry breakpoints, bases cap tiers,
+// held-back rolls speak at the cap, transfers unleash them, eras raise
+// drop tiers.
+void testItemsAsMechanics(const tuning::Tuning& t) {
+    const auto* cold = t.items.findModifier("cold_damage");
+    check(cold && cold->findTier(3) != nullptr && !cold->findTier(2)->breakpoints.empty(),
+          "items: cold damage has a third tier and a tier-two breakpoint");
+    const auto* iron = t.items.findBase("frost_sceptre");
+    const auto* bronze = t.items.findBase("bronze_sceptre");
+    check(iron && iron->tierCap == 2 && bronze && bronze->tierCap == 3 && bronze->slot == "weapon",
+          "items: iron holds two tiers, bronze three");
+    // A tier-three cold roll on iron is held back to tier two's best.
+    items::ItemInstance sceptre;
+    sceptre.baseId = "frost_sceptre";
+    sceptre.rarity = "keen";
+    sceptre.rolledProperties.push_back({"cold_damage", 3, 0.45});
+    const auto eff = items::effectiveRoll(t.items, sceptre, sceptre.rolledProperties.front());
+    check(eff.heldBack && eff.tier == 2 && std::abs(eff.value - cold->findTier(2)->maximum) < 1e-9,
+          "items: a roll above the cap speaks at the cap tier's best value");
+    check(items::breakpointsFor(*cold, 2).size() == 1 && items::breakpointsFor(*cold, 3).size() == 2,
+          "items: breakpoints accumulate up the tiers");
+    stats::Equipment worn;
+    worn.slots["weapon"] = sceptre;
+    auto mods = grammar::gearMods(t.items, worn);
+    bool chill = false, deeper = false;
+    double coldValue = 0.0;
+    for (const auto& m : mods) {
+        if (m.id == "cold_damage") coldValue = m.value;
+        if (m.effectKey == "increased_chill_buildup") chill = true;
+        if (m.effectKey == "add_chill_buildup") deeper = true;
+    }
+    check(std::abs(coldValue - cold->findTier(2)->maximum) < 1e-9 && chill && !deeper,
+          "items: worn gear speaks the held-back value and only tier two's breakpoint");
+    // Transfer onto bronze: the roll is unleashed, and the third breakpoint comes.
+    items::ItemInstance bronzeSceptre;
+    bronzeSceptre.baseId = "bronze_sceptre";
+    check(items::catalystTransfer(t.items, sceptre, bronzeSceptre) && bronzeSceptre.rolledProperties.size() == 1 &&
+              bronzeSceptre.rarity == "keen",
+          "items: the transfer carries the rolls and the rarity");
+    const auto unleashed = items::effectiveRoll(t.items, bronzeSceptre, bronzeSceptre.rolledProperties.front());
+    check(!unleashed.heldBack && unleashed.tier == 3 && std::abs(unleashed.value - 0.45) < 1e-9,
+          "items: on bronze the roll speaks in full");
+    worn.slots["weapon"] = bronzeSceptre;
+    deeper = false;
+    for (const auto& m : grammar::gearMods(t.items, worn))
+        if (m.effectKey == "add_chill_buildup") deeper = true;
+    check(deeper, "items: tier three's breakpoint arrives with the base that holds it");
+    items::ItemInstance mail;
+    mail.baseId = "iron_chest_armour";
+    check(!items::catalystTransfer(t.items, sceptre, mail), "items: a transfer needs the same slot");
+    // Stat breakpoints reach the sheet: tier-two life adds armour.
+    items::ItemInstance armour;
+    armour.baseId = "iron_chest_armour";
+    armour.rolledProperties.push_back({"max_life", 2, 10.0});
+    const auto totals = items::statTotals(t.items, armour);
+    check(std::abs(totals.maxLife - 10.0) < 1e-9 && std::abs(totals.armour - 4.0) < 1e-9,
+          "items: a tier-two life roll also armours (+4 on a bare instance)");
+    // Era-bound drop tiers: the same kill rolls higher in era two, and an elite one more.
+    const tuning::EnemyDef* whelp = t.world.findEnemy("ember_whelp");
+    check(whelp != nullptr, "items: whelp def");
+    int maxTierEra1 = 0, maxTierEra2 = 0, maxTierElite = 0;
+    const auto* elite = t.world.findEliteModifier("hastened");
+    for (uint64_t seed = 1; seed < 400; ++seed) {
+        for (const auto& item : loot::rollEnemyGear(t, "ember_whelp", seed, nullptr, 1))
+            for (const auto& r : item.rolledProperties) maxTierEra1 = std::max(maxTierEra1, r.tier);
+        for (const auto& item : loot::rollEnemyGear(t, "ember_whelp", seed, nullptr, 2))
+            for (const auto& r : item.rolledProperties) maxTierEra2 = std::max(maxTierEra2, r.tier);
+        for (const auto& item : loot::rollEnemyGear(t, "ember_whelp", seed, elite, 2))
+            for (const auto& r : item.rolledProperties) maxTierElite = std::max(maxTierElite, r.tier);
+    }
+    check(maxTierEra1 == 1 && maxTierEra2 == 2 && maxTierElite == 3, "items: drop tiers rise with the era and with elites");
+    check(t.crafting.findCatalystProcess("preserving_transfer") != nullptr &&
+              t.crafting.findCatalystProcess("preserving_transfer")->process == "catalyst_transfer",
+          "items: the preserving transfer process loads without a guaranteed property");
+    check(t.crafting.findRecipe("bronze_sceptre") != nullptr, "items: bronze bases are craftable");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -1949,6 +2026,7 @@ int main(int argc, char** argv) {
     testEncroachment(t);
     testEras(t);
     testFoundry(t);
+    testItemsAsMechanics(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

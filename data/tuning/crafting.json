@@ -25,6 +25,10 @@
     {
       "id": "bronze_ingot",
       "display_name": "Bronze Ingot"
+    },
+    {
+      "id": "preserving_catalyst",
+      "display_name": "Preserving Catalyst"
     }
   ],
   "stations": [
@@ -46,7 +50,8 @@
       "display_name": "Basic Forge",
       "tier": 1,
       "supported_processes": [
-        "shape"
+        "shape",
+        "catalyst_transfer"
       ],
       "build_cost": {
         "wood": 15,
@@ -62,7 +67,8 @@
       "supported_processes": [
         "shape",
         "basic_temper",
-        "catalyst_temper"
+        "catalyst_temper",
+        "catalyst_transfer"
       ],
       "upgrade_from": "forge_basic",
       "upgrade_cost": {
@@ -157,11 +163,21 @@
       "id": "smelt_bronze",
       "display_name": "Smelt Bronze Ingot",
       "station": "forge_basic",
-      "minimum_skill": {"blacksmithing": 2},
-      "inputs": {"copper_ore": 2, "tin_ore": 1, "wood": 1},
-      "outputs": {"bronze_ingot": 1},
+      "minimum_skill": {
+        "blacksmithing": 2
+      },
+      "inputs": {
+        "copper_ore": 2,
+        "tin_ore": 1,
+        "wood": 1
+      },
+      "outputs": {
+        "bronze_ingot": 1
+      },
       "base_skill_xp": 3,
-      "use_categories": ["processing"],
+      "use_categories": [
+        "processing"
+      ],
       "fuel_cost": 2,
       "design_purpose": "The first alloy (D-019): two ores that only surface once the deep wakes, combined at the forge you already have. Bronze is malleable and tough - the building family that works curved forms and the item base that holds a second modifier tier - so era two's new ground leads straight to era two's new work. Old ores never become trash: bronze needs copper forever."
     },
@@ -288,6 +304,47 @@
         "equipment"
       ],
       "design_purpose": "Cheap third slot with a small resistance implicit; its rolled modifiers (from drops) are where a build gets pulled sideways."
+    },
+    {
+      "id": "bronze_sceptre",
+      "display_name": "Bronze Sceptre",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "bronze_ingot": 6,
+        "charcoal": 2
+      },
+      "outputs": {
+        "bronze_sceptre": 1
+      },
+      "base_skill_xp": 6,
+      "use_categories": [
+        "assembly"
+      ],
+      "fuel_cost": 3,
+      "design_purpose": "The era-two weapon base: bronze from the deep, so a sceptre that can hold tier three is a sceptre with copper and tin trips behind it (D-019)."
+    },
+    {
+      "id": "bronze_mail",
+      "display_name": "Bronze Mail",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "bronze_ingot": 10
+      },
+      "outputs": {
+        "bronze_mail": 1
+      },
+      "base_skill_xp": 6,
+      "use_categories": [
+        "assembly"
+      ],
+      "fuel_cost": 3,
+      "design_purpose": "The era-two chest base that holds tier-three defence rolls."
     }
   ],
   "orders": [
@@ -319,6 +376,18 @@
       "result_tier": 2,
       "minimum_roll_fraction_at_skill": 0.5,
       "design_purpose": "The catalyst guarantees the domain (fire resistance lands, at tier 2) while the magnitude stays a bounded roll; minimum_roll_fraction raises the roll floor at the required skill so mastery buys consistency, and an existing better roll is never downgraded (preservation)"
+    },
+    {
+      "id": "preserving_transfer",
+      "display_name": "Preserving Transfer",
+      "status": "D-019: the preservation class of ADR-0002, doing its first real job",
+      "catalyst": "preserving_catalyst",
+      "station": "forge_basic",
+      "process": "catalyst_transfer",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "design_purpose": "Moves the worn item's rolled modifiers, whole, onto a base in the pack of the same slot; the old base is spent with the catalyst. This is how a held-back roll is unleashed (an iron sceptre's tier-three cold onto bronze) and how a loved early find is never thrown away. The catalyst is the gate, not the skill: it drops rarely from the stone husks and shriekers of the hills and caves, and from elites' extra passes."
     }
   ],
   "basic_temper": {

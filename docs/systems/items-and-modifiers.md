@@ -78,6 +78,11 @@ direction, 31 Aug 2026).
   reward notices name the drop, recipes for the mace, sceptre and charm.
 - Not yet: the weapon gating which skills are on the bar, world drops
   from packs, the compare view, removal of the F1–F3 debug toggles.
+- **D-019 (3 Sep 2026):** tiers carry breakpoints (mechanics, not only
+  numbers), bases cap the tier their metal can express, rolls above the
+  cap are held back until a Preserving Transfer moves them to a base that
+  holds them, and drop tiers are era-bound. See
+  [progression-eras.md](progression-eras.md).
 - **Uniques: deferred by the owner (1 Sep 2026, "keep them noted").** The
   intent stays on record: hand-authored items whose modifier bends a rule
   rather than a number (candidates: "shattered enemies re-freeze their

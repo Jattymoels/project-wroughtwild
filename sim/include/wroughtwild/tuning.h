@@ -127,10 +127,20 @@ struct SkillTable {
 // One modifier pool (D-014): character stats and skill modifiers are the
 // same kind of thing, told apart by applies_to ("self" versus skill tags).
 
+// An extra effect a roll brings at a tier and every tier above it (D-019:
+// tiers are mechanics, not only bigger numbers).
+struct Breakpoint {
+    std::string effect;                  // add_<x> | increased_<x> | more_<x>
+    double value = 0.0;
+    std::vector<std::string> appliesTo;  // {"self"} for a stat; else skill tags
+    std::string text;                    // how the pack screen says it
+};
+
 struct ModifierTier {
     int tier = 0;
     double minimum = 0.0;
     double maximum = 0.0;
+    std::vector<Breakpoint> breakpoints;
 };
 
 struct ModifierDef {
@@ -163,6 +173,9 @@ struct ItemBase {
     std::map<std::string, double> implicitProperties;
     std::vector<ImplicitModifier> implicitModifiers;
     std::vector<std::string> allowedModifierTags;
+    // The highest modifier tier this base's metal can express; a roll above
+    // it is held back until moved to a better base (D-019).
+    int tierCap = 99;
 };
 
 struct RarityDef {

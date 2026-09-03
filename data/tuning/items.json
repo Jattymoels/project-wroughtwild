@@ -48,7 +48,22 @@
         {
           "tier": 2,
           "minimum": 13,
-          "maximum": 20
+          "maximum": 20,
+          "breakpoints": [
+            {
+              "effect": "add_armour",
+              "value": 4,
+              "applies_to": [
+                "self"
+              ],
+              "text": "+4 armour"
+            }
+          ]
+        },
+        {
+          "tier": 3,
+          "minimum": 22,
+          "maximum": 28
         }
       ],
       "design_purpose": "The plainest survivability roll; a tester can read +12 life and know exactly what changed."
@@ -74,6 +89,11 @@
           "tier": 2,
           "minimum": 13,
           "maximum": 22
+        },
+        {
+          "tier": 3,
+          "minimum": 14,
+          "maximum": 20
         }
       ],
       "design_purpose": "Physical mitigation on top of the base's implicit plate; stacks into the armour formula, so it is worth more early than late."
@@ -100,6 +120,11 @@
           "tier": 2,
           "minimum": 25,
           "maximum": 40
+        },
+        {
+          "tier": 3,
+          "minimum": 16,
+          "maximum": 22
         }
       ],
       "design_purpose": "The Tyrant's answer. Also the catalyst-tempering domain, so a drop and a forge temper compete for the same slot on the same terms (D-014: catalysts target, they do not gate). Tagged resistance, not fire, so the fire weapon's roll pool stays offence."
@@ -125,7 +150,22 @@
         {
           "tier": 2,
           "minimum": 0.13,
-          "maximum": 0.2
+          "maximum": 0.2,
+          "breakpoints": [
+            {
+              "effect": "increased_proliferate_radius",
+              "value": 0.2,
+              "applies_to": [
+                "proliferate"
+              ],
+              "text": "fire spreads 20% further"
+            }
+          ]
+        },
+        {
+          "tier": 3,
+          "minimum": 0.14,
+          "maximum": 0.18
         }
       ],
       "design_purpose": "Wider cone strike: the train you can pay off in one swing grows, which is the Bulwark/Glacier dance getting easier."
@@ -233,7 +273,17 @@
         {
           "tier": 2,
           "minimum": 25,
-          "maximum": 40
+          "maximum": 40,
+          "breakpoints": [
+            {
+              "effect": "increased_shatter_radius",
+              "value": 0.2,
+              "applies_to": [
+                "shatter"
+              ],
+              "text": "shatters reach 20% further"
+            }
+          ]
         }
       ],
       "design_purpose": "Flat chill on every attack: a skill with no chill of its own gains a payload (the resolver adds before it multiplies). A Frostbite mace freezes with plain strikes and then shatters with the same strikes - the freeze-shatter sentence with no spell in it. Five area strikes at tier 1, faster on top of an orb."
@@ -259,7 +309,32 @@
         {
           "tier": 2,
           "minimum": 0.2,
-          "maximum": 0.35
+          "maximum": 0.35,
+          "breakpoints": [
+            {
+              "effect": "increased_chill_buildup",
+              "value": 0.2,
+              "applies_to": [
+                "cold"
+              ],
+              "text": "chill builds 20% faster"
+            }
+          ]
+        },
+        {
+          "tier": 3,
+          "minimum": 0.35,
+          "maximum": 0.5,
+          "breakpoints": [
+            {
+              "effect": "add_chill_buildup",
+              "value": 10,
+              "applies_to": [
+                "cold"
+              ],
+              "text": "cold hits chill 10 deeper"
+            }
+          ]
         }
       ],
       "design_purpose": "The plain scaling axis for the Glacier line; deliberately smaller than the mechanic mods so a fork or a freeze breakpoint always reads as the bigger prize."
@@ -285,7 +360,32 @@
         {
           "tier": 2,
           "minimum": 0.2,
-          "maximum": 0.35
+          "maximum": 0.35,
+          "breakpoints": [
+            {
+              "effect": "increased_bleed_buildup",
+              "value": 0.25,
+              "applies_to": [
+                "bleed"
+              ],
+              "text": "bleeds build 25% faster"
+            }
+          ]
+        },
+        {
+          "tier": 3,
+          "minimum": 0.35,
+          "maximum": 0.5,
+          "breakpoints": [
+            {
+              "effect": "increased_bleed_damage",
+              "value": 0.2,
+              "applies_to": [
+                "bleed"
+              ],
+              "text": "bleeds deal 20% more"
+            }
+          ]
         }
       ],
       "design_purpose": "Scales the strikes; the Iron Mace's implicit. Redline's first rung."
@@ -311,7 +411,32 @@
         {
           "tier": 2,
           "minimum": 0.2,
-          "maximum": 0.35
+          "maximum": 0.35,
+          "breakpoints": [
+            {
+              "effect": "increased_burn_damage",
+              "value": 0.2,
+              "applies_to": [
+                "ignite"
+              ],
+              "text": "burns deal 20% more"
+            }
+          ]
+        },
+        {
+          "tier": 3,
+          "minimum": 0.35,
+          "maximum": 0.5,
+          "breakpoints": [
+            {
+              "effect": "increased_ignite_duration",
+              "value": 0.25,
+              "applies_to": [
+                "ignite"
+              ],
+              "text": "burns last 25% longer"
+            }
+          ]
         }
       ],
       "design_purpose": "The plain scaling axis for the fire line; scales the bolt's hit, not its burn (Burn Damage does that), so the two rolls read as different choices."
@@ -338,7 +463,17 @@
         {
           "tier": 2,
           "minimum": 0.5,
-          "maximum": 0.8
+          "maximum": 0.8,
+          "breakpoints": [
+            {
+              "effect": "increased_ignite_duration",
+              "value": 0.2,
+              "applies_to": [
+                "ignite"
+              ],
+              "text": "burns last 20% longer"
+            }
+          ]
         }
       ],
       "design_purpose": "Increased ignite buildup: the fire line's freeze breakpoint - three Ember Bolts to ignite become two. The Ember Wand's implicit."
@@ -554,7 +689,8 @@
         "speed",
         "attack"
       ],
-      "design_purpose": "The physical stat-stick: a plain physical implicit so crafting one is a felt step up from bare hands. Rolls the physical line (damage, bleed), area, speed and the on-attack payloads - so a mace can grow Frostbite and freeze with plain strikes, but never a cold-spell mod; those stay on the sceptre."
+      "design_purpose": "The physical stat-stick: a plain physical implicit so crafting one is a felt step up from bare hands. Rolls the physical line (damage, bleed), area, speed and the on-attack payloads - so a mace can grow Frostbite and freeze with plain strikes, but never a cold-spell mod; those stay on the sceptre.",
+      "tier_cap": 2
     },
     {
       "id": "frost_sceptre",
@@ -575,7 +711,8 @@
         "shatter",
         "speed"
       ],
-      "design_purpose": "The cold stat-stick: its implicit fork is what makes the Frost Orb a train-clearer, and its roll pool is the whole cold line, so a wrought sceptre can assemble the freeze-shatter build on its own. It grants nothing (D-016): the orb is a skill you know, the sceptre is what you scale it with."
+      "design_purpose": "The cold stat-stick: its implicit fork is what makes the Frost Orb a train-clearer, and its roll pool is the whole cold line, so a wrought sceptre can assemble the freeze-shatter build on its own. It grants nothing (D-016): the orb is a skill you know, the sceptre is what you scale it with.",
+      "tier_cap": 2
     },
     {
       "id": "ember_wand",
@@ -596,7 +733,8 @@
         "projectile",
         "speed"
       ],
-      "design_purpose": "The fire stat-stick: its implicit Kindling brings the Ember Bolt to a two-hit ignite, and its pool is the fire line plus projectile - so a wrought wand can roll Forks and make the bolt split like the orb."
+      "design_purpose": "The fire stat-stick: its implicit Kindling brings the Ember Bolt to a two-hit ignite, and its pool is the fire line plus projectile - so a wrought wand can roll Forks and make the bolt split like the orb.",
+      "tier_cap": 2
     },
     {
       "id": "iron_chest_armour",
@@ -612,7 +750,8 @@
         "life",
         "resistance"
       ],
-      "design_purpose": "Defence only; offence lives on the weapon and the charm so the three slots answer three different questions."
+      "design_purpose": "Defence only; offence lives on the weapon and the charm so the three slots answer three different questions.",
+      "tier_cap": 2
     },
     {
       "id": "ember_charm",
@@ -644,8 +783,48 @@
         "attack",
         "spell"
       ],
-      "design_purpose": "The build-defining slot: it may roll anything, so a keen charm is where an unexpected mod can pull a build sideways (PoE cross-pollination without sockets) - Smouldering on a cold caster, Frostbite on a mace."
+      "design_purpose": "The build-defining slot: it may roll anything, so a keen charm is where an unexpected mod can pull a build sideways (PoE cross-pollination without sockets) - Smouldering on a cold caster, Frostbite on a mace.",
+      "tier_cap": 2
+    },
+    {
+      "id": "bronze_sceptre",
+      "display_name": "Bronze Sceptre",
+      "slot": "weapon",
+      "material": "bronze",
+      "tier_cap": 3,
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "forked_lattice",
+          "value": 1
+        }
+      ],
+      "allowed_modifier_tags": [
+        "cold",
+        "chill",
+        "projectile",
+        "shatter",
+        "speed"
+      ],
+      "design_purpose": "Era two's sceptre (D-019): the same cold roll pool as the Frost Sceptre, but bronze holds tier three - the base that unleashes a held-back roll. It is not stronger in itself; it is roomier."
+    },
+    {
+      "id": "bronze_mail",
+      "display_name": "Bronze Mail",
+      "slot": "chest",
+      "material": "bronze",
+      "tier_cap": 3,
+      "implicit_properties": {
+        "armour": 24
+      },
+      "implicit_modifiers": [],
+      "allowed_modifier_tags": [
+        "defence",
+        "life",
+        "resistance"
+      ],
+      "design_purpose": "Era two's armour: a little more plate than iron and room for tier-three rolls. The number spread between metals stays small on purpose; the tier cap is the point."
     }
   ],
-  "design_purpose": "Every modifier attaches to tags, never to a skill or a socket (D-014), and gear never grants a skill (D-016: skills are learned pages, the bar is free). applies_to ['self'] marks a character stat; anything else names the skill tags the modifier excites - so a mod written today applies to a skill found tomorrow if the tags meet. effect keys follow the resolver's increased-vs-more rule: add_* is flat (and can give a skill a payload it lacks), increased_* sums within its bucket, more_* multiplies. A base's allowed_modifier_tags is the roll pool - specific tags, never the generic offence/defence pair alone, so a sceptre cannot grow physical mods and a mace cannot grow cold-spell ones; rarity is a modifier count (plain 0, keen 1-2, wrought 3-4) and never a stat. Uniques (hand-authored, rule-bending) are the next slice."
+  "design_purpose": "Every modifier attaches to tags, never to a skill or a socket (D-014), and gear never grants a skill (D-016: skills are learned pages, the bar is free). applies_to ['self'] marks a character stat; anything else names the skill tags the modifier excites - so a mod written today applies to a skill found tomorrow if the tags meet. effect keys follow the resolver's increased-vs-more rule: add_* is flat (and can give a skill a payload it lacks), increased_* sums within its bucket, more_* multiplies. A base's allowed_modifier_tags is the roll pool - specific tags, never the generic offence/defence pair alone, so a sceptre cannot grow physical mods and a mace cannot grow cold-spell ones; rarity is a modifier count (plain 0, keen 1-2, wrought 3-4) and never a stat. Uniques (hand-authored, rule-bending) are the next slice. Tiers are breakpoints (D-019): a tier may carry breakpoints, extra effects the roll brings at that tier and every tier above it (tier-two cold also builds chill faster; tier three chills deeper), so a higher tier is a mechanic, not only a bigger number. tier_cap on a base is the highest tier its metal can express: a roll above the cap is held back - it speaks at the cap tier's best value and shows the rest greyed - until a Preserving Transfer moves it to a base that holds it. That is the early taste: you see what the roll could be and you know which metal unleashes it."
 }

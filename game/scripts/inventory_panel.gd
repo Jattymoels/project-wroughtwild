@@ -319,11 +319,30 @@ func _item_card(item: Dictionary, button_text: String, on_pressed: Callable) -> 
 		column.add_child(stat_line)
 	for mod in item.get("mods", []):
 		var line := Label.new()
-		line.text = "  %s%s" % [mod["sentence"], "  (implicit)" if mod.get("source", "") == "implicit" else ""]
+		var held: bool = mod.get("held_back", false)
+		if held:
+			# The taste (D-019): the roll it could be, greyed, and what unleashes it.
+			line.text = "  %s  (now %s)  —  held back by %s: %s" % [
+				mod.get("full_sentence", mod["sentence"]), mod["sentence"],
+				Hud.pretty(String(item.get("material", "iron"))), mod.get("unleashed_by", "a better base")]
+		else:
+			line.text = "  %s%s" % [mod["sentence"], "  (implicit)" if mod.get("source", "") == "implicit" else ""]
 		line.add_theme_font_size_override("font_size", 13)
-		line.modulate = UiTheme.PARCHMENT if mod.get("source", "") != "implicit" else UiTheme.MUTED
+		line.modulate = UiTheme.MUTED if held or mod.get("source", "") == "implicit" else UiTheme.PARCHMENT
 		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		column.add_child(line)
+		for text in mod.get("breakpoints", []):
+			var bp := Label.new()
+			bp.text = "      tier %d: %s" % [int(mod.get("tier", 0)), text]
+			bp.add_theme_font_size_override("font_size", 12)
+			bp.modulate = UiTheme.SUN_WARM
+			column.add_child(bp)
+		for text in mod.get("held_breakpoints", []):
+			var bp := Label.new()
+			bp.text = "      held: %s" % text
+			bp.add_theme_font_size_override("font_size", 12)
+			bp.modulate = UiTheme.MUTED
+			column.add_child(bp)
 	if button_text != "":
 		var button := Button.new()
 		button.text = button_text

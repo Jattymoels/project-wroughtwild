@@ -51,6 +51,25 @@ ItemInstance rollRarityItem(const tuning::ItemTable& table,
                             int tier,
                             uint64_t seed);
 
+// Held-back rule (D-019): a base's tier_cap is the highest tier its metal
+// can express. A roll above the cap speaks at the cap tier's best value
+// until a Preserving Transfer moves it to a base that holds it.
+struct EffectiveRoll {
+    int tier = 0;
+    double value = 0.0;
+    bool heldBack = false;
+};
+EffectiveRoll effectiveRoll(const tuning::ItemTable& table, const ItemInstance& item,
+                            const RolledProperty& rolled);
+
+// The breakpoints a modifier brings at a tier: its own and every tier below.
+std::vector<const tuning::Breakpoint*> breakpointsFor(const tuning::ModifierDef& def, int tier);
+
+// Preserving Transfer: the source's rolled modifiers and rarity move onto
+// the target (same slot); the target's own rolls are replaced. False when
+// the slots differ or the source has nothing rolled.
+bool catalystTransfer(const tuning::ItemTable& table, const ItemInstance& source, ItemInstance& target);
+
 // Total of implicit and rolled values for one property/modifier id (0 when absent).
 double propertyTotal(const ItemInstance& item, const std::string& propertyId);
 

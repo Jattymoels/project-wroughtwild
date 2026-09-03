@@ -240,6 +240,16 @@ public:
     // world.json shelter: regen_life_per_round, settle_rounds, max_room_cells.
     Dictionary shelter() const;
 
+    // --- items as mechanics (D-019) ---
+    // Pack items in the worn item's slot that a Preserving Transfer could
+    // carry the worn rolls onto: item entries with index and display_name.
+    Array transfer_targets(const String& process_id) const;
+    // Moves the worn item's rolled modifiers (in the target's slot) onto the
+    // pack item at target_index; the worn base and one catalyst are spent.
+    // Keys: applied, reason (no_source | wrong_process | station_unavailable
+    // | missing_catalyst | skill_too_low | bad_target), moved (count).
+    Dictionary transfer_with_catalyst(const String& process_id, int target_index);
+
     // --- the Foundry (foundry.json, D-019): ingots on the era's plate ---
     // {rows, cols, era, plate: [{row, col, ingot}], owned: {id: n},
     // unplaced: {id: n}, reforge_cost: {item: n}, can_reforge}.

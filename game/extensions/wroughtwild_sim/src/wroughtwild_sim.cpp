@@ -61,6 +61,8 @@ Dictionary item_entry(const wroughtwild::tuning::Tuning& tuning, const wroughtwi
     d["display_name"] = to_godot(base ? base->displayName : item.baseId);
     d["slot"] = to_godot(base ? base->slot : std::string());
     d["rarity"] = to_godot(item.rarity);
+    d["tier_cap"] = base ? base->tierCap : 99;
+    d["material"] = to_godot(base ? base->material : std::string());
     const auto totals = wroughtwild::items::statTotals(tuning.items, item);
     d["armour"] = totals.armour;
     d["fire_resistance"] = totals.fireResistance;
@@ -79,7 +81,25 @@ Dictionary item_entry(const wroughtwild::tuning::Tuning& tuning, const wroughtwi
     for (const auto& r : item.rolledProperties) {
         const auto* def = tuning.items.findModifier(r.propertyId);
         if (def) {
-            mods.push_back(mod_entry(*def, r.value, r.tier, "rolled"));
+            const auto eff = wroughtwild::items::effectiveRoll(tuning.items, item, r);
+            Dictionary m = mod_entry(*def, eff.value, eff.tier, "rolled");
+            m["rolled_tier"] = r.tier;
+            m["held_back"] = eff.heldBack;
+            m["full_sentence"] = to_godot(wroughtwild::items::modifierSentence(*def, r.value));
+            m["unleashed_by"] = eff.heldBack ? String("a base that holds tier ") + String::num_int64(r.tier) : String();
+            Array breakpoints;
+            for (const auto* bp : wroughtwild::items::breakpointsFor(*def, eff.tier)) {
+                breakpoints.push_back(to_godot(bp->text));
+            }
+            m["breakpoints"] = breakpoints;
+            Array locked;
+            for (const auto* bp : wroughtwild::items::breakpointsFor(*def, r.tier)) {
+                bool have = false;
+                for (const auto* got : wroughtwild::items::breakpointsFor(*def, eff.tier)) have = have || got == bp;
+                if (!have) locked.push_back(to_godot(bp->text));
+            }
+            m["held_breakpoints"] = locked;
+            mods.push_back(m);
         }
         Dictionary p;
         p["property"] = to_godot(r.propertyId);
@@ -180,6 +200,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("structure_enclosure", "seed", "removed_blocks", "at"),
                          &WroughtwildSim::structure_enclosure);
     ClassDB::bind_method(D_METHOD("shelter"), &WroughtwildSim::shelter);
+    ClassDB::bind_method(D_METHOD("transfer_targets", "process_id"), &WroughtwildSim::transfer_targets);
+    ClassDB::bind_method(D_METHOD("transfer_with_catalyst", "process_id", "target_index"),
+                         &WroughtwildSim::transfer_with_catalyst);
     ClassDB::bind_method(D_METHOD("foundry"), &WroughtwildSim::foundry);
     ClassDB::bind_method(D_METHOD("foundry_ingot_ids"), &WroughtwildSim::foundry_ingot_ids);
     ClassDB::bind_method(D_METHOD("foundry_ingot", "ingot_id"), &WroughtwildSim::foundry_ingot);
@@ -1435,7 +1458,8 @@ Array WroughtwildSim::enemy_gear_loot(const String& enemy_id, int seed, const St
         return out;
     }
     const auto gear = wroughtwild::loot::rollEnemyGear(*tuning_, to_std(enemy_id),
-                                                       static_cast<uint64_t>(seed), find_elite(elite_id));
+                                                       static_cast<uint64_t>(seed), find_elite(elite_id),
+                                                       player_->currentEra());
     for (const auto& item : gear) {
         out.push_back(item_entry(*tuning_, item, -1));
     }
@@ -1451,7 +1475,8 @@ Array WroughtwildSim::claim_enemy_gear(const String& enemy_id, int seed, const S
     // seed and elite), so a pickup only needs to remember which kill it came
     // from - the elite id included.
     const auto gear = wroughtwild::loot::rollEnemyGear(*tuning_, to_std(enemy_id),
-                                                       static_cast<uint64_t>(seed), find_elite(elite_id));
+                                                       static_cast<uint64_t>(seed), find_elite(elite_id),
+                                                       player_->currentEra());
     for (const auto& item : gear) {
         player_->packItems.push_back(item);
         out.push_back(item_entry(*tuning_, item, static_cast<int>(player_->packItems.size()) - 1));
@@ -2263,6 +2288,93 @@ void WroughtwildSim::encroachment_reset(int seed) {
     }
     encroachment_ = std::make_unique<wroughtwild::encroachment::Encroachment>(tuning_->world.encroachment,
                                                                              static_cast<uint64_t>(seed));
+}
+
+// --- items as mechanics: Preserving Transfer -----------------------------------
+
+Array WroughtwildSim::transfer_targets(const String& process_id) const {
+    Array out;
+    if (!require_loaded("transfer_targets")) {
+        return out;
+    }
+    const auto* p = tuning_->crafting.findCatalystProcess(to_std(process_id));
+    if (p == nullptr || p->process != "catalyst_transfer") {
+        return out;
+    }
+    for (size_t i = 0; i < player_->packItems.size(); ++i) {
+        const auto& target = player_->packItems[i];
+        const auto* base = tuning_->items.findBase(target.baseId);
+        if (base == nullptr) {
+            continue;
+        }
+        auto worn = equipment_.slots.find(base->slot);
+        if (worn == equipment_.slots.end() || worn->second.rolledProperties.empty()) {
+            continue;
+        }
+        if (worn->second.baseId == target.baseId && target.rolledProperties.empty() && base->tierCap <=
+            tuning_->items.findBase(worn->second.baseId)->tierCap) {
+            // Same base, nothing gained: still allowed (a spare), but list it last? Keep simple: allow.
+        }
+        Dictionary entry = item_entry(*tuning_, target, static_cast<int>(i));
+        entry["worn_display_name"] = to_godot(tuning_->items.findBase(worn->second.baseId)
+                                                   ? tuning_->items.findBase(worn->second.baseId)->displayName
+                                                   : worn->second.baseId);
+        out.push_back(entry);
+    }
+    return out;
+}
+
+Dictionary WroughtwildSim::transfer_with_catalyst(const String& process_id, int target_index) {
+    Dictionary d;
+    d["applied"] = false;
+    d["moved"] = 0;
+    if (!require_loaded("transfer_with_catalyst")) {
+        return d;
+    }
+    const auto* p = tuning_->crafting.findCatalystProcess(to_std(process_id));
+    if (p == nullptr || p->process != "catalyst_transfer") {
+        d["reason"] = "wrong_process";
+        return d;
+    }
+    if (target_index < 0 || target_index >= static_cast<int>(player_->packItems.size())) {
+        d["reason"] = "bad_target";
+        return d;
+    }
+    auto& target = player_->packItems[static_cast<size_t>(target_index)];
+    const auto* base = tuning_->items.findBase(target.baseId);
+    if (base == nullptr) {
+        d["reason"] = "bad_target";
+        return d;
+    }
+    auto worn = equipment_.slots.find(base->slot);
+    if (worn == equipment_.slots.end() || worn->second.rolledProperties.empty()) {
+        d["reason"] = "no_source";
+        return d;
+    }
+    if (!player_->stationAvailable(p->station)) {
+        d["reason"] = "station_unavailable";
+        return d;
+    }
+    auto catalyst = player_->inventory.find(p->catalyst);
+    if (catalyst == player_->inventory.end() || catalyst->second < 1) {
+        d["reason"] = "missing_catalyst";
+        return d;
+    }
+    for (const auto& [skillId, level] : p->minimumSkill) {
+        if (player_->skillLevel(skillId) < level) {
+            d["reason"] = "skill_too_low";
+            return d;
+        }
+    }
+    if (!wroughtwild::items::catalystTransfer(tuning_->items, worn->second, target)) {
+        d["reason"] = "bad_target";
+        return d;
+    }
+    d["moved"] = static_cast<int>(target.rolledProperties.size());
+    catalyst->second -= 1;
+    equipment_.slots.erase(worn); // the old base is spent with the catalyst
+    d["applied"] = true;
+    return d;
 }
 
 // --- the Foundry ---------------------------------------------------------------
