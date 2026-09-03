@@ -29,6 +29,8 @@ const TRIM_COLOUR := Color(0.66, 0.66, 0.69)
 ## applied by the rules library, never computed here.
 var grid_size: float = 1.0
 var placement_range: float = 10.0
+## The red shell that marks where the room leaks (build mode only).
+var _leak_marker: MeshInstance3D
 ## The occupancy registry's cell (grid_size / lattice_divisions).
 var registry_grid: float = 0.5
 ## Metres, from the selected shape's size_m.
@@ -298,6 +300,8 @@ func _create_preview_mesh() -> void:
 
 
 func set_build_mode_enabled(enabled: bool) -> void:
+	if not enabled and _leak_marker != null:
+		_leak_marker.visible = false
 	build_mode_enabled = enabled
 	if not build_mode_enabled and _preview_mesh:
 		_preview_mesh.visible = false
@@ -481,7 +485,36 @@ func extend_target(from: Vector3, dir: Vector3, reach: float, start: float = 0.0
 	return best
 
 
+## Build mode marks where the last shelter probe escaped: a red shell on
+## the volume the fill left through (owner playtest, 3 Sep: "under a roof
+## ... not working even though I'm enclosed" - now the house says where).
+func _update_leak_marker() -> void:
+	var player := get_parent() as WroughtwildPlayer
+	var probe: Dictionary = player.combat.last_shelter if player != null and player.combat != null else {}
+	var show: bool = build_mode_enabled and not probe.get("enclosed", true) and probe.has("leak") \
+			and String(probe.get("reason", "")) == "sky"
+	if not show:
+		if _leak_marker != null:
+			_leak_marker.visible = false
+		return
+	if _leak_marker == null:
+		_leak_marker = MeshInstance3D.new()
+		var box := BoxMesh.new()
+		box.size = Vector3.ONE * registry_grid * 0.9
+		var material := StandardMaterial3D.new()
+		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		material.albedo_color = Color(1.0, 0.15, 0.1, 0.6)
+		material.no_depth_test = true
+		box.material = material
+		_leak_marker.mesh = box
+		_world_root().add_child(_leak_marker)
+	_leak_marker.global_position = probe["leak"]
+	_leak_marker.visible = true
+
+
 func _update_preview() -> void:
+	_update_leak_marker()
 	if _preview_mesh == null:
 		return
 

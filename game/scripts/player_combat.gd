@@ -96,6 +96,9 @@ var has_home := false
 var home_position := Vector3.ZERO
 ## Shelter regen multiplier from the world (1 clear, less in a nest's blight).
 var rest_multiplier := 1.0
+## The last shelter probe as the sim returned it ({enclosed, cells, reason,
+## leak}), so build mode can mark where a room leaks.
+var last_shelter: Dictionary = {}
 
 
 func _tick_shelter(delta: float) -> void:
@@ -122,7 +125,20 @@ func _probe_shelter() -> bool:
 	var player := get_parent()
 	if player == null or not (player is WroughtwildPlayer):
 		return false
-	return (player as WroughtwildPlayer).placement.enclosure_at(player.global_position).get("enclosed", false)
+	last_shelter = (player as WroughtwildPlayer).placement.enclosure_at(player.global_position)
+	return last_shelter.get("enclosed", false)
+
+
+## One line for the HUD about the room you are in ("" when nothing to say).
+func shelter_text() -> String:
+	if sheltered or last_shelter.is_empty():
+		return ""
+	match String(last_shelter.get("reason", "")):
+		"sky":
+			return "open to the sky  ·  leak marked in build mode"
+		"cap":
+			return "too big to be a room (%d cells)" % int(last_shelter.get("cells", 0))
+	return ""
 
 
 func set_sheltered(value: bool) -> void:

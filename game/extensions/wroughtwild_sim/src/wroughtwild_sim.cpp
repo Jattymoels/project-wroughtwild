@@ -2348,7 +2348,7 @@ Dictionary WroughtwildSim::structure_enclosure(int seed, const PackedInt32Array&
         const int by = static_cast<int>(std::floor(static_cast<double>(c.y) / div));
         const int bz = static_cast<int>(std::floor(static_cast<double>(c.z) / div));
         if (map == nullptr) {
-            return wroughtwild::lattice::WorldCell::Open;
+            return wroughtwild::lattice::WorldCell::Sky; // no ground: all of it is open air
         }
         if (!map->inBounds(bx, bz) || by >= map->depth) {
             return wroughtwild::lattice::WorldCell::Outside;
@@ -2358,10 +2358,13 @@ Dictionary WroughtwildSim::structure_enclosure(int seed, const PackedInt32Array&
         }
         const int64_t key = (static_cast<int64_t>(bz) * map->width + bx) * map->depth + by;
         if (removed.count(key)) {
-            return wroughtwild::lattice::WorldCell::Open;
+            return wroughtwild::lattice::WorldCell::Open; // dug: a hollow, never sky
         }
-        return map->blockAt(bx, by, bz) == wroughtwild::worldgen::kAir ? wroughtwild::lattice::WorldCell::Open
-                                                                        : wroughtwild::lattice::WorldCell::Solid;
+        if (map->blockAt(bx, by, bz) != wroughtwild::worldgen::kAir) {
+            return wroughtwild::lattice::WorldCell::Solid;
+        }
+        return by >= map->at(bx, bz).height ? wroughtwild::lattice::WorldCell::Sky
+                                            : wroughtwild::lattice::WorldCell::Open;
     };
     wroughtwild::lattice::Element start;
     start.kind = ElementKind::Volume;
@@ -2372,6 +2375,13 @@ Dictionary WroughtwildSim::structure_enclosure(int seed, const PackedInt32Array&
     const auto result = wroughtwild::lattice::enclosure(structure_, start, cap, world);
     d["enclosed"] = result.enclosed;
     d["cells"] = result.volumes / (div * div * div);
+    d["reason"] = to_godot(result.leakReason);
+    if (!result.leakReason.empty()) {
+        // The escape volume's centre in world metres, for a marker.
+        d["leak"] = Vector3(static_cast<real_t>((result.leak.x + 0.5) * registry),
+                            static_cast<real_t>((result.leak.y + 0.5) * registry),
+                            static_cast<real_t>((result.leak.z + 0.5) * registry));
+    }
     return d;
 }
 

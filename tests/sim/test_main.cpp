@@ -920,6 +920,7 @@ void testWorldgen(const tuning::Tuning& t) {
               t.worldgen.dangerMultiplierAt(200.0) > 1.0,
           "worldgen: danger rings scale pack density outward");
     check(t.worldgen.dangerMultiplierAt(30.0) < 0.5, "worldgen: the heartland is quiet (D-020)");
+    check(t.world.shelter.maxRoomCells >= 300, "shelter: the room cap is a hall, not a hut (owner playtest 3 Sep)");
     {
         // Grazers: placed from the biome's grazer list, flagged, never
         // hostile-listed; hostile packs keep off the doorstep.

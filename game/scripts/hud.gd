@@ -417,6 +417,8 @@ func refresh() -> void:
 		if combat.sheltered:
 			var uneasy := "uneasy " if combat.uneasy() else ""
 			rest = "  ·  %sresting +%.1f/s" % [uneasy, combat.regen_per_second()] if combat.resting() else "  ·  sheltered" + ("  ·  a nest is near" if combat.uneasy() else "")
+		elif combat.shelter_text() != "":
+			rest = "  ·  " + combat.shelter_text()
 		_life_text.text = "Life %d / %d  ·  armour %d  ·  fire resistance %d%%  ·  wearing %s%s" % [
 			ceili(combat.life), ceili(combat.max_life), int(ds.get("armour", 0.0)),
 			int(ds.get("fire_resistance_percent", 0.0)), worn.get("display_name", "nothing"), rest]
