@@ -163,6 +163,9 @@ var _nest: Nest
 
 func _run_encroachment_checks() -> void:
 	var sim: WroughtwildSim = _player.inventory.get_sim()
+	# Nests belong to era two (D-019): wake the deep first.
+	sim.record_world_effect("stonecut_blocks")
+	check(sim.era()["index"] == 2, "encroach: the deep is awake")
 	_player.global_position = Vector3(-80, 1.1, 80)
 	_player.combat.has_home = true
 	_player.combat.home_position = _player.global_position

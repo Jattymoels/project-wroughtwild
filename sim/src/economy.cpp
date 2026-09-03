@@ -240,6 +240,18 @@ void PlayerEconomy::recordWorldEffect(const std::string& effect) {
     if (!worldEffectActive(effect)) worldEffects_.push_back(effect);
 }
 
+int PlayerEconomy::currentEra() const {
+    int era = 1;
+    const auto& eras = tuning_.eras.eras;
+    for (size_t i = 1; i < eras.size(); ++i) {
+        if (!eras[i].triggerWorldEffect.empty() && !worldEffectActive(eras[i].triggerWorldEffect)) break;
+        era = static_cast<int>(i) + 1;
+    }
+    return era;
+}
+
+const tuning::EraDef& PlayerEconomy::era() const { return tuning_.eras.eras[static_cast<size_t>(currentEra() - 1)]; }
+
 bool PlayerEconomy::shapeUnlocked(const std::string& shapeId) const {
     const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
     return shape != nullptr &&

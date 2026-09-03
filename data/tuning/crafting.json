@@ -13,6 +13,18 @@
     {
       "id": "iron_ingot",
       "display_name": "Iron Ingot"
+    },
+    {
+      "id": "copper_ore",
+      "display_name": "Copper Ore"
+    },
+    {
+      "id": "tin_ore",
+      "display_name": "Tin Ore"
+    },
+    {
+      "id": "bronze_ingot",
+      "display_name": "Bronze Ingot"
     }
   ],
   "stations": [
@@ -140,6 +152,18 @@
       ],
       "fuel_cost": 2,
       "design_purpose": "Two ore plus flux wood into one ingot; the forge also burns 2 fuel per smelt, so ore trips and wood trips stay coupled."
+    },
+    {
+      "id": "smelt_bronze",
+      "display_name": "Smelt Bronze Ingot",
+      "station": "forge_basic",
+      "minimum_skill": {"blacksmithing": 2},
+      "inputs": {"copper_ore": 2, "tin_ore": 1, "wood": 1},
+      "outputs": {"bronze_ingot": 1},
+      "base_skill_xp": 3,
+      "use_categories": ["processing"],
+      "fuel_cost": 2,
+      "design_purpose": "The first alloy (D-019): two ores that only surface once the deep wakes, combined at the forge you already have. Bronze is malleable and tough - the building family that works curved forms and the item base that holds a second modifier tier - so era two's new ground leads straight to era two's new work. Old ores never become trash: bronze needs copper forever."
     },
     {
       "id": "iron_fittings",

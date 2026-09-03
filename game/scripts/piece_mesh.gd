@@ -7,6 +7,10 @@ class_name PieceMesh
 ## is +z), and the door leaf hangs from the local -x edge.
 
 const DOOR_LEAF_INSET := 0.06
+## The arch's opening: a half-round of this fraction of the piece's width,
+## rising from the bottom edge.
+const ARCH_RADIUS_FRACTION := 0.4
+const ARCH_STRIPS := 12
 
 
 ## The render mesh for a form at a size.
@@ -16,6 +20,8 @@ static func mesh_for(form: String, size: Vector3) -> Mesh:
 			return _stairs_mesh(size)
 		"wedge":
 			return _wedge_mesh(size)
+		"arch":
+			return _arch_mesh(size)
 		"door":
 			var leaf := BoxMesh.new()
 			leaf.size = _door_leaf_size(size)
@@ -56,6 +62,19 @@ static func collision_for(form: String, size: Vector3) -> Array:
 			var leaf := BoxShape3D.new()
 			leaf.size = _door_leaf_size(size)
 			return [{"shape": leaf, "transform": Transform3D.IDENTITY}]
+		"arch":
+			# Two piers and the head above the opening's crown.
+			var r := ARCH_RADIUS_FRACTION * size.x
+			var pier := BoxShape3D.new()
+			pier.size = Vector3(size.x * 0.5 - r, size.y, size.z)
+			var head := BoxShape3D.new()
+			head.size = Vector3(size.x, size.y * 0.5 - r, size.z)
+			var px := (size.x * 0.5 + r) * 0.5
+			return [
+				{"shape": pier, "transform": Transform3D(Basis.IDENTITY, Vector3(-px, 0.0, 0.0))},
+				{"shape": pier, "transform": Transform3D(Basis.IDENTITY, Vector3(px, 0.0, 0.0))},
+				{"shape": head, "transform": Transform3D(Basis.IDENTITY, Vector3(0.0, size.y * 0.5 - head.size.y * 0.5, 0.0))},
+			]
 	var box := BoxShape3D.new()
 	box.size = size
 	return [{"shape": box, "transform": Transform3D.IDENTITY}]
@@ -98,6 +117,27 @@ static func _wedge_mesh(size: Vector3) -> Mesh:
 	_add_quad(st, p[0], p[1], p[4], p[5])
 	_add_tri(st, p[0], p[5], p[3])
 	_add_tri(st, p[1], p[2], p[4])
+	st.generate_normals()
+	return st.commit()
+
+
+## A wall piece whose underside is a half-round opening: vertical strips
+## across the width, each solid from the arc up to the top edge.
+static func _arch_mesh(size: Vector3) -> Mesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var r := ARCH_RADIUS_FRACTION * size.x
+	var strip := size.x / float(ARCH_STRIPS)
+	for i in ARCH_STRIPS:
+		var x0 := -size.x * 0.5 + strip * float(i)
+		var xc := x0 + strip * 0.5
+		var arc := -size.y * 0.5
+		if absf(xc) < r:
+			arc = sqrt(maxf(r * r - xc * xc, 0.0)) - size.y * 0.5
+		var top := size.y * 0.5
+		if top - arc < 0.01:
+			continue
+		_add_box(st, Vector3(xc, (top + arc) * 0.5, 0.0), Vector3(strip, top - arc, size.z))
 	st.generate_normals()
 	return st.commit()
 

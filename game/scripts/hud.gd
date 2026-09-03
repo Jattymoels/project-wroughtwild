@@ -382,6 +382,9 @@ func refresh() -> void:
 	if not skill.is_empty():
 		var next: String = "max" if skill["next_level_xp"] < 0 else str(skill["next_level_xp"])
 		lines.append("%s level %d  (%d / %s xp)" % [skill["display_name"], skill["level"], skill["xp"], next])
+	var era: Dictionary = sim.era()
+	if not era.is_empty():
+		lines.append("Era %d of %d: %s" % [era["index"], era.get("count", 1), era["display_name"]])
 	if sim.trial_active():
 		var state: Dictionary = sim.trial_run_state()
 		var names := PackedStringArray()

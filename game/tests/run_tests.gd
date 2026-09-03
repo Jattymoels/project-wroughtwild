@@ -157,6 +157,18 @@ func _test_lattice() -> void:
 	# fringe with a home, uneasy rest beside it, a scar after clearing.
 	sim.encroachment_reset(5)
 	var enc_rules: Dictionary = sim.encroachment_rules()
+	# Nests belong to era two: with a home in era one nothing settles.
+	check(sim.era()["index"] == 1, "eras: a fresh sim is era one")
+	sim.encroachment_tick(10.0, true, Vector3(40, 0, 40))
+	check(sim.encroachment_tick(10.0 + enc_rules["settle_seconds"] * 2, true, Vector3(40, 0, 40)).is_empty(),
+		"eras: era one has no nests even with a home")
+	sim.record_world_effect("stonecut_blocks")
+	check(sim.era()["index"] == 2 and sim.era()["id"] == "deep_wakes" and sim.era()["encroachment"],
+		"eras: the completion effect wakes the deep")
+	check(sim.era_mechanic("ash_hound", "pack_size_bonus").get("value", 0) == 1
+		and sim.era_mechanic("ember_whelp", "burning_ground").has("seconds")
+		and sim.era_mechanic("stone_husk", "burning_ground").is_empty(), "eras: mechanics through the door")
+	sim.encroachment_reset(5)
 	check(enc_rules["max_nests"] >= 1 and sim.encroachment_tick(10.0, false, Vector3.ZERO).is_empty(),
 		"encroach: nothing settles without a home")
 	sim.encroachment_tick(10.0, true, Vector3(40, 0, 40))
@@ -503,7 +515,7 @@ func _test_sim_extension() -> void:
 		"shape: the wedge waits on the completion unlock, the slab does not")
 	check(sim.shape_ids().size() >= 9 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
 		"shape: nine-shape set with sizes from data")
-	check(sim.build_material_ids().size() == 3 and sim.build_material("iron")["source"] == "iron_ingot"
+	check(sim.build_material_ids().size() == 4 and sim.build_material("iron")["source"] == "iron_ingot"
 		and sim.build_material("stone")["texture"] == "masonry", "materials: families through the door")
 	check(sim.shape_allows_family("door", "wood") and not sim.shape_allows_family("door", "stone")
 		and sim.shape("girder")["cells_long"] == 2 and sim.shape("girder")["requires_traits"].has("metal"),

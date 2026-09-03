@@ -26,9 +26,17 @@
       "id": "iron",
       "display_name": "Iron",
       "source": "iron_ingot",
-      "traits": ["metal", "joinery", "malleable"],
+      "traits": ["metal", "joinery"],
       "texture": "iron_plate",
-      "design_purpose": "Smelted at the forge, so a build in iron is a build that has a forge behind it. Metal spans (the girder); malleable is the trait the next family - an alloy - will need for curved and conical forms; joinery for iron doors and hinges."
+      "design_purpose": "Smelted at the forge, so a build in iron is a build that has a forge behind it. Metal spans (the girder); joinery for iron doors and hinges. Iron is not malleable: curved forms wait for bronze."
+    },
+    {
+      "id": "bronze",
+      "display_name": "Bronze",
+      "source": "bronze_ingot",
+      "traits": ["metal", "malleable", "tough", "joinery"],
+      "texture": "bronze",
+      "design_purpose": "Era two's alloy (copper and tin, eras.json / D-019): the first malleable family, so it is what the arch and every curved form after it are worked from. Tough is the hook for what may carry what. It also spans and joins, so a bronze build is never worse than iron - it is iron plus curves."
     }
   ],
   "shapes": [
@@ -122,6 +130,17 @@
       "requires_traits": ["metal"],
       "hint": "an iron beam two cells long: spans a room's width without a post under it",
       "design_purpose": "The first shape a material trait unlocks rather than a boss: a two-cell beam needs metal, so a forge is what widens your rooms. It occupies two edges in a row (a footprint two cells long), which is also the model any long or tall piece uses."
+    },
+    {
+      "id": "arch",
+      "display_name": "Arch",
+      "material_cost": 2,
+      "size_m": [1.0, 1.0, 0.25],
+      "element": "wall",
+      "form": "arch",
+      "requires_traits": ["malleable"],
+      "hint": "a wall piece with a rounded opening: caps a doorway or a window; bronze or better",
+      "design_purpose": "The first curved form (D-019): a wall piece whose underside is a half-round opening, so a doorway or window gets an arched head. It needs a malleable family - bronze, the era-two alloy - which is how a material's property, not a boss, unlocks a form."
     },
     {
       "id": "half_cube",

@@ -165,6 +165,35 @@ multiplies. The felt jump at an era is the world's, not the sheet's.
 - Two Foundry layouts of the same ingots play differently.
 - A tester can say why they got stronger without quoting a number.
 
+## Implemented: the first era transition (3 Sep 2026)
+
+`data/tuning/eras.json` lists the eras in order; the current era is the
+last whose `trigger_world_effect` is active, stopping at the first unmet
+one (`PlayerEconomy::currentEra`). Era two, *The Deep Wakes*, triggers on
+the Forge Tyrant's fall (`stonecut_blocks`) and changes the three axes:
+
+- **Mobs do:** `mob_mechanics` per enemy id. Ash hounds gain a pack
+  member (`pack_size_bonus`, applied when a pack spawns); ember whelps
+  leave `burning_ground` where they die (`burning_ground.gd`: a patch that
+  pays fire through the sim's mitigation for a few seconds). The engine
+  asks `era_mechanic(enemy, name)` and never carries the numbers.
+- **Ground offers:** node types carry an `era` (`worldgen.json`): copper
+  and tin veins are placed on cave floors from the seed like everything
+  else, but the terrain holds them back until `reveal_era` brings their
+  era, with a notice ("the strata have cracked") and a light shift
+  (`BiomeMood.set_era`).
+- **Work:** `smelt_bronze` at the forge (copper, tin, flux wood;
+  Blacksmithing 2); **bronze** as the first malleable family; the **arch**,
+  a wall piece with a half-round opening, requiring `malleable` - the first
+  form a material's property unlocks. Iron lost `malleable`: curved forms
+  wait for bronze.
+- **Encroachment** is gated by the era's `encroachment` flag: era one has
+  no nests even with a home.
+
+The HUD names the era; the sandpit polls the sim once a second and tells
+the era's story when it changes. Not yet: the Foundry, item tiers,
+mastery, the third era.
+
 ## Open questions
 
 - The exact ore set and era triggers (defaults above).

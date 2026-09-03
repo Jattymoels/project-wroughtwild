@@ -1796,6 +1796,40 @@ void testEncroachment(const tuning::Tuning& t) {
     check(e.nests().size() == standing, "encroach: without a home nothing new settles");
 }
 
+// Eras (D-019): the world's state follows milestones, in order.
+void testEras(const tuning::Tuning& t) {
+    check(t.eras.eras.size() >= 2 && t.eras.eras.front().triggerWorldEffect.empty(), "eras: load in order from the start");
+    economy::PlayerEconomy player(t);
+    check(player.currentEra() == 1 && player.era().id == "valley", "eras: a new game is era one");
+    check(player.era().mechanic("ash_hound", "pack_size_bonus") == nullptr, "eras: era one has no mechanics");
+    player.recordWorldEffect(t.eras.eras[1].triggerWorldEffect);
+    check(player.currentEra() == 2 && player.era().id == "deep_wakes", "eras: the Tyrant's fall wakes the deep");
+    const auto* bonus = player.era().mechanic("ash_hound", "pack_size_bonus");
+    check(bonus != nullptr && bonus->at("value") == 1.0, "eras: hounds gain a pack member");
+    const auto* burn = player.era().mechanic("ember_whelp", "burning_ground");
+    check(burn != nullptr && burn->at("seconds") > 0.0 && burn->at("damage_per_round") > 0.0,
+          "eras: whelps burn where they die");
+    check(player.era().encroachment && !t.eras.eras.front().encroachment, "eras: nests belong to era two");
+    // Era nodes: copper and tin surface in the deep, and the world map places them.
+    const auto* copper = t.worldgen.nodeTypes.count("copper_vein") ? &t.worldgen.nodeTypes.at("copper_vein") : nullptr;
+    check(copper != nullptr && copper->era == 2 && t.worldgen.nodeTypes.at("iron_vein").era == 1,
+          "eras: copper is an era-two node type");
+    auto map = worldgen::generate(t, 3);
+    int copperNodes = 0, tinNodes = 0;
+    for (const auto& n : map.nodes) {
+        if (n.type == "copper_vein") ++copperNodes;
+        if (n.type == "tin_vein") ++tinNodes;
+    }
+    check(copperNodes > 0 && tinNodes > 0, "eras: the map holds era-two veins from the seed");
+    // Bronze: the alloy needs the new ores and is malleable.
+    check(t.crafting.findRecipe("smelt_bronze") != nullptr, "eras: bronze recipe loads");
+    const auto* bronze = t.construction.findMaterial("bronze");
+    check(bronze != nullptr && bronze->hasTrait("malleable") && bronze->source == "bronze_ingot",
+          "eras: bronze is the malleable family");
+    check(player.shapeAllowsFamily("arch", "bronze") && !player.shapeAllowsFamily("arch", "iron"),
+          "eras: the arch is worked from bronze, not iron");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -1837,6 +1871,7 @@ int main(int argc, char** argv) {
     testElitesAndFamilies(t);
     testLattice(t);
     testEncroachment(t);
+    testEras(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

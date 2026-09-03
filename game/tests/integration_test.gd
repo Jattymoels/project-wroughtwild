@@ -419,6 +419,21 @@ func _physics_process(_delta: float) -> void:
 			check(sim.material_count("ember_catalyst") == 1 and sim.material_count("iron_ingot") >= 4, "trial: loot banked")
 			check(_player.global_position.x < 30.0, "trial: player back at the gate")
 			check(_player.combat.life == _player.combat.max_life, "trial: life restored on return")
+			# Era two (D-019): the world changed state on the kill.
+			check(sim.era()["index"] == 2, "eras: the Tyrant's fall wakes the deep")
+			# A whelp dying now leaves burning ground that hurts a player in it.
+			var p := _player.global_position
+			var whelp := Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(0, 0, -1.2))
+			whelp.take_damage(100000.0)
+			check(get_tree().get_nodes_in_group("burning_ground").size() == 1, "eras: a whelp leaves burning ground")
+			_player.global_position = p + Vector3(0, 0, -1.2)
+			_player.combat.invulnerable_left = 0.0
+			_player.combat._settle_left = 1000.0
+		59:
+			check(_player.combat.life < _player.combat.max_life, "eras: standing in burning ground hurts")
+			for patch in get_tree().get_nodes_in_group("burning_ground"):
+				patch.queue_free()
+			_player.combat.restore_life()
 		60:
 			# Death contract through the engine path.
 			(_scene.get_node("TrialGate") as TrialGate).interact(_player)

@@ -38,6 +38,10 @@ var chunks: Dictionary = {}
 var block_rules: Dictionary = {}
 ## Every block the player has dug out this world, for the save.
 var broken: Array[Vector3i] = []
+## The era the world is in (eras.json, D-019): nodes of a later era wait
+## in _pending_nodes until reveal_era brings their era.
+var current_era := 1
+var _pending_nodes: Array = []
 
 ## Block id -> kind name (worldgen.h's palette).
 const KIND_NAMES := {1: "surface", 2: "dirt", 3: "stone", 4: "bedrock"}
@@ -131,6 +135,8 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 	broken.clear()
 	_sim = sim
 	_seed = seed_value
+	current_era = int(sim.era().get("index", 1))
+	_pending_nodes.clear()
 	map = sim.world_map(seed_value)
 	if map.is_empty():
 		push_error("Terrain: sim.world_map returned nothing")
@@ -260,7 +266,30 @@ func apply_broken_blocks(list: Array) -> void:
 		_rebuild_chunk(origin.x, origin.y)
 
 
+## An era arrives: the nodes that were waiting for it surface. Returns
+## how many.
+func reveal_era(era: int) -> int:
+	current_era = era
+	var revealed := 0
+	var still_waiting: Array = []
+	for def in _pending_nodes:
+		if int(def.get("era", 1)) <= era:
+			_spawn_resource_node(def)
+			revealed += 1
+		else:
+			still_waiting.append(def)
+	_pending_nodes = still_waiting
+	return revealed
+
+
+func pending_node_count() -> int:
+	return _pending_nodes.size()
+
+
 func _spawn_resource_node(def: Dictionary) -> void:
+	if int(def.get("era", 1)) > current_era:
+		_pending_nodes.append(def)
+		return
 	var node: ResourceNode = RESOURCE_NODE_SCENE.instantiate()
 	# y is part of the name: a cave-floor node and a surface node may share
 	# a column, and saves match nodes by name.

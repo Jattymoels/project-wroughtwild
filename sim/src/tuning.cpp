@@ -335,6 +335,43 @@ BoonTable loadBoons(const std::string& path) {
     return table;
 }
 
+const std::map<std::string, double>* EraDef::mechanic(const std::string& enemyId, const std::string& name) const {
+    auto enemy = mobMechanics.find(enemyId);
+    if (enemy == mobMechanics.end()) return nullptr;
+    auto m = enemy->second.find(name);
+    return m == enemy->second.end() ? nullptr : &m->second;
+}
+
+EraTable loadEras(const std::string& path) {
+    auto doc = json::parseFile(path);
+    EraTable table;
+    for (const auto& e : doc->get("eras").asArray()) {
+        EraDef era;
+        era.id = e->get("id").asString();
+        era.displayName = e->get("display_name").asString();
+        era.story = e->get("story").asString();
+        era.triggerWorldEffect = e->get("trigger_world_effect").asString();
+        if (auto enc = e->find("encroachment")) era.encroachment = enc->asBool();
+        if (auto mechanics = e->find("mob_mechanics")) {
+            for (const auto& [enemyId, byName] : mechanics->asObject()) {
+                for (const auto& [name, params] : byName->asObject()) {
+                    std::map<std::string, double> values;
+                    if (params->type == json::Type::Object) {
+                        for (const auto& [key, value] : params->asObject()) values[key] = value->asNumber();
+                    } else {
+                        values["value"] = params->asNumber();
+                    }
+                    era.mobMechanics[enemyId][name] = std::move(values);
+                }
+            }
+        }
+        table.eras.push_back(std::move(era));
+    }
+    if (table.eras.empty()) throw std::runtime_error("eras: at least one era is needed");
+    if (!table.eras.front().triggerWorldEffect.empty()) throw std::runtime_error("eras: the first era has no trigger");
+    return table;
+}
+
 ConstructionTable loadConstruction(const std::string& path) {
     auto doc = json::parseFile(path);
     ConstructionTable table;
@@ -363,9 +400,10 @@ ConstructionTable loadConstruction(const std::string& path) {
         }
         if (auto form = s->find("form")) {
             shape.form = form->asString();
-            if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door")
+            if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door" &&
+                shape.form != "arch")
                 throw std::runtime_error("construction: shape '" + shape.id +
-                                         "' form must be box, stairs, wedge or door");
+                                         "' form must be box, stairs, wedge, door or arch");
         }
         if (auto oriented = s->find("oriented")) shape.oriented = oriented->asBool();
         if (auto tall = s->find("cells_tall")) {
@@ -769,6 +807,7 @@ WorldgenTable loadWorldgen(const std::string& path) {
         node.units = n->get("units").asInt();
         node.unitsPerHarvest = n->get("units_per_harvest").asInt();
         node.visual = n->get("visual").asString();
+        if (auto era = n->find("era")) node.era = era->asInt();
         table.nodeTypes[id] = std::move(node);
     }
 
@@ -789,6 +828,7 @@ Tuning loadAll(const std::string& tuningDirectory) {
     Tuning tuning;
     tuning.crafting = loadCrafting(tuningDirectory + "/crafting.json");
     tuning.construction = loadConstruction(tuningDirectory + "/construction.json");
+    tuning.eras = loadEras(tuningDirectory + "/eras.json");
     tuning.skills = loadSkills(tuningDirectory + "/skills.json");
     tuning.items = loadItems(tuningDirectory + "/items.json");
     tuning.boons = loadBoons(tuningDirectory + "/boons.json");
