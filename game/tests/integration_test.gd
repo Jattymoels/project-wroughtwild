@@ -21,6 +21,7 @@ var _death_spot := Vector3.ZERO
 var _wood_before_trial := 0
 var _blocks_before := 0
 var _corner_panel: PlacedBlock
+var _room: Array = []
 ## The x-face, z-face and vertical edge that all meet at build-grid corner
 ## (5, 3, 5) - registry coordinates run at half cells, so (10, 6, 10).
 const CORNER_FACE_X := {"kind": "face", "axis": 0, "cell": Vector3i(10, 6, 10)}
@@ -131,6 +132,47 @@ func _physics_process(_delta: float) -> void:
 			check(not placement.toggle_fine() and placement.select_shape(&"wall_panel")
 				and placement.placing_shape() == &"wall_panel", "fine: G again restores full size")
 			check(_player.inventory.get_sim().structure_pieces().is_empty(), "corner: the structure is empty again")
+		17:
+			# Shelter (building slice 3): walls, floor and roof around the
+			# player's cell make a room; the sim's flood fill says so, and
+			# resting there regenerates life until a hit resets the settle.
+			var placement := _player.placement
+			var combat := _player.combat
+			var p := _player.global_position
+			# The room stands three cells over so its walls never shove the
+			# player (the pose is saved and compared a few frames on); the
+			# probe point is the room's own centre.
+			var c := Vector3i(floori(p.x) + 3, floori(p.y), floori(p.z))
+			var inside := Vector3(c.x + 0.5, c.y + 0.5, c.z + 0.5)
+			check(not placement.enclosure_at(p)["enclosed"], "shelter: open valley is no shelter")
+			for y in 2:
+				for wall in [[0, Vector3i(c.x, c.y + y, c.z)], [0, Vector3i(c.x + 1, c.y + y, c.z)],
+						[2, Vector3i(c.x, c.y + y, c.z)], [2, Vector3i(c.x, c.y + y, c.z + 1)]]:
+					_room.append(placement.place_piece({"kind": "face", "axis": wall[0], "cell": wall[1] * 2},
+						&"wall_panel", &"wood"))
+			_room.append(placement.place_piece({"kind": "face", "axis": 1, "cell": c * 2}, &"floor_slab", &"wood"))
+			check(not placement.enclosure_at(inside)["enclosed"], "shelter: walls without a roof are a yard")
+			_room.append(placement.place_piece({"kind": "face", "axis": 1, "cell": Vector3i(c.x, c.y + 2, c.z) * 2},
+				&"floor_slab", &"wood"))
+			var room: Dictionary = placement.enclosure_at(inside)
+			check(room["enclosed"] and room["cells"] == 2, "shelter: a roofed two-cell box is a shelter of two cells")
+			check(not placement.enclosure_at(p)["enclosed"], "shelter: standing outside it, you are not")
+			check(combat.regen_per_second() > 0.0, "shelter: regen rate read from the sim")
+			combat.set_sheltered(true)
+			combat._settle_left = 0.0
+			combat.life = 50.0
+			check(combat.resting(), "shelter: sheltered, settled and hurt means resting")
+		19:
+			var combat := _player.combat
+			check(combat.life > 50.0, "shelter: resting regenerates life (%.1f)" % combat.life)
+			combat.take_hit(1.0, "physical", "test")
+			check(not combat.resting(), "shelter: a hit resets the settle time")
+			for piece in _room:
+				_player.placement.remove_piece(piece)
+			_room.clear()
+			combat.set_sheltered(false)
+			combat.restore_life()
+			check(_player.inventory.get_sim().structure_pieces().is_empty(), "shelter: the room is gone again")
 		12:
 			# Forge site: refused while unaffordable, built through the sim once paid for.
 			var sim: WroughtwildSim = _player.inventory.get_sim()

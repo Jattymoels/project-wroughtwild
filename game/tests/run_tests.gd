@@ -117,6 +117,25 @@ func _test_lattice() -> void:
 		"fine: a half cube blocks the full cube from its cell but not another half cube")
 	sim.structure_clear()
 
+	# Shelter: with no terrain (seed -1) the structure alone must close the
+	# room - four walls, a floor and a roof around build cell (0, 0, 0).
+	var rules: Dictionary = sim.shelter()
+	check(rules.get("regen_life_per_round", 0.0) > 0.0 and rules.get("max_room_cells", 0) > 0,
+		"shelter: rules come from world.json")
+	var no_digs := PackedInt32Array()
+	var middle := Vector3(0.5, 0.5, 0.5)
+	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")
+	for wall in [[0, Vector3i(0, 0, 0)], [0, Vector3i(2, 0, 0)], [2, Vector3i(0, 0, 0)], [2, Vector3i(0, 0, 2)]]:
+		sim.structure_place({"kind": "face", "axis": wall[0], "cell": wall[1]}, "wall_panel", "wood", 0)
+	sim.structure_place({"kind": "face", "axis": 1, "cell": Vector3i(0, 0, 0)}, "floor_slab", "wood", 0)
+	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: no roof, no shelter")
+	sim.structure_place({"kind": "face", "axis": 1, "cell": Vector3i(0, 2, 0)}, "floor_slab", "wood", 0)
+	var room: Dictionary = sim.structure_enclosure(-1, no_digs, middle)
+	check(room["enclosed"] and room["cells"] == 1, "shelter: a closed one-cell box is a shelter of one cell")
+	check(not sim.structure_enclosure(-1, no_digs, Vector3(3.5, 0.5, 0.5))["enclosed"],
+		"shelter: standing outside the box is not sheltered")
+	sim.structure_clear()
+
 	# Piece meshes: every form builds, the wedge's hull has six corners.
 	check(PieceMesh.mesh_for("stairs", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE)
 		and PieceMesh.mesh_for("wedge", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE),

@@ -170,6 +170,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("structure_clear"), &WroughtwildSim::structure_clear);
     ClassDB::bind_method(D_METHOD("structure_pieces"), &WroughtwildSim::structure_pieces);
     ClassDB::bind_method(D_METHOD("structure_trim_edges"), &WroughtwildSim::structure_trim_edges);
+    ClassDB::bind_method(D_METHOD("structure_enclosure", "seed", "removed_blocks", "at"),
+                         &WroughtwildSim::structure_enclosure);
+    ClassDB::bind_method(D_METHOD("shelter"), &WroughtwildSim::shelter);
     ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed", "elite_id"),
                          &WroughtwildSim::enemy_loot, DEFVAL(String()));
     ClassDB::bind_method(D_METHOD("enemy_gear_loot", "enemy_id", "seed", "elite_id"),
@@ -2081,6 +2084,62 @@ Array WroughtwildSim::structure_trim_edges() const {
         out.push_back(d);
     }
     return out;
+}
+
+Dictionary WroughtwildSim::shelter() const {
+    Dictionary d;
+    if (!require_loaded("shelter")) {
+        return d;
+    }
+    d["regen_life_per_round"] = tuning_->world.shelter.regenLifePerRound;
+    d["settle_rounds"] = tuning_->world.shelter.settleRounds;
+    d["max_room_cells"] = tuning_->world.shelter.maxRoomCells;
+    return d;
+}
+
+Dictionary WroughtwildSim::structure_enclosure(int seed, const PackedInt32Array& removed_blocks, const Vector3& at) {
+    Dictionary d;
+    d["enclosed"] = false;
+    d["cells"] = 0;
+    if (!require_loaded("structure_enclosure")) {
+        return d;
+    }
+    const int div = std::max(1, tuning_->construction.latticeDivisions);
+    const double registry = tuning_->construction.gridSizeMetres / div;
+    const wroughtwild::worldgen::WorldMap* map = seed >= 0 ? &cached_world(static_cast<uint64_t>(seed)) : nullptr;
+    const std::set<int64_t> removed = map ? removed_set(*map, removed_blocks) : std::set<int64_t>();
+    // Registry volume -> build cell -> terrain. Without terrain the world
+    // is open everywhere and the structure alone must close the room.
+    auto world = [&](const wroughtwild::lattice::Cell& c) {
+        const int bx = static_cast<int>(std::floor(static_cast<double>(c.x) / div));
+        const int by = static_cast<int>(std::floor(static_cast<double>(c.y) / div));
+        const int bz = static_cast<int>(std::floor(static_cast<double>(c.z) / div));
+        if (map == nullptr) {
+            return wroughtwild::lattice::WorldCell::Open;
+        }
+        if (!map->inBounds(bx, bz) || by >= map->depth) {
+            return wroughtwild::lattice::WorldCell::Outside;
+        }
+        if (by < 0) {
+            return wroughtwild::lattice::WorldCell::Solid;
+        }
+        const int64_t key = (static_cast<int64_t>(bz) * map->width + bx) * map->depth + by;
+        if (removed.count(key)) {
+            return wroughtwild::lattice::WorldCell::Open;
+        }
+        return map->blockAt(bx, by, bz) == wroughtwild::worldgen::kAir ? wroughtwild::lattice::WorldCell::Open
+                                                                        : wroughtwild::lattice::WorldCell::Solid;
+    };
+    wroughtwild::lattice::Element start;
+    start.kind = ElementKind::Volume;
+    start.cell = wroughtwild::lattice::Cell{static_cast<int>(std::floor(at.x / registry)),
+                                            static_cast<int>(std::floor(at.y / registry)),
+                                            static_cast<int>(std::floor(at.z / registry))};
+    const int cap = tuning_->world.shelter.maxRoomCells * div * div * div;
+    const auto result = wroughtwild::lattice::enclosure(structure_, start, cap, world);
+    d["enclosed"] = result.enclosed;
+    d["cells"] = result.volumes / (div * div * div);
+    return d;
 }
 
 // --- D-014 itemisation ---------------------------------------------------------
