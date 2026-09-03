@@ -266,9 +266,20 @@ build on decides the grid (a full cube on a half cube), a player step-up
 for stairs and half cubes, door collision (a Godot pivot mistake), and
 per-shape hints (floor slabs live between cells).
 
-Still ahead for building: mobs breaking in (wall life, the door as the
-weak point), material families that look different, and the owner's
-next playtest. Deliberately out: structural-support rules.
+**Material families (landed 3 Sep 2026; D-018):** timber, stone and iron
+as data with a source item, a texture and traits; shapes require traits
+(doors need joinery, the wedge masonry, the new two-cell girder metal);
+Q cycles the families you carry; refusals are explained in the HUD. The
+`malleable` trait waits for an alloy family and the first curved form.
+
+**Owner steer on base threats (3 Sep 2026):** mobs breaking walls is out —
+"starting out poor ... a wood house shouldn't be easily broken down", and
+the threat should not vanish at higher tiers either. Threat around a base
+must be *pressure*, not demolition. Proposal pending.
+
+Still ahead for building: the owner's next playtest, the base-threat
+design, an alloy family. Deliberately out: structural-support rules,
+wall damage.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 

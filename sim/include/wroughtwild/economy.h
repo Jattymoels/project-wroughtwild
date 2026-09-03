@@ -134,6 +134,9 @@ public:
     // Removal refunds floor(cost * removal_refund_fraction) to the same family.
     // A shape may require a world effect (trial completion unlock).
     bool shapeUnlocked(const std::string& shapeId) const;
+    // True when the building family can be worked into the shape (it has
+    // every trait the shape requires).
+    bool shapeAllowsFamily(const std::string& shapeId, const std::string& materialFamily) const;
     bool canAffordPlacement(const std::string& shapeId, const std::string& materialFamily) const;
     bool payPlacement(const std::string& shapeId, const std::string& materialFamily);
     int refundRemoval(const std::string& shapeId, const std::string& materialFamily);

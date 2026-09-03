@@ -5,6 +5,32 @@
   "placement_range_metres": 10.0,
   "removal_refund_fraction": 0.5,
   "lattice_divisions": 2,
+  "materials": [
+    {
+      "id": "wood",
+      "display_name": "Timber",
+      "source": "wood",
+      "traits": ["timber", "joinery"],
+      "texture": "planks",
+      "design_purpose": "The first family: felled wood, worked with nothing but hands. Joinery means it can be hung and swung (doors); it cannot be cut into masonry forms or span a girder. A timber house is still a house - nothing knocks it down."
+    },
+    {
+      "id": "stone",
+      "display_name": "Stone",
+      "source": "stone",
+      "traits": ["masonry", "heavy"],
+      "texture": "masonry",
+      "design_purpose": "Dug from rock faces and boulders. Masonry is what the boss's stonecut mastery works with (the roof wedge and every cut form after it); heavy is a hook for later rules (a stone floor over a timber frame). It has no joinery: no stone doors."
+    },
+    {
+      "id": "iron",
+      "display_name": "Iron",
+      "source": "iron_ingot",
+      "traits": ["metal", "joinery", "malleable"],
+      "texture": "iron_plate",
+      "design_purpose": "Smelted at the forge, so a build in iron is a build that has a forge behind it. Metal spans (the girder); malleable is the trait the next family - an alloy - will need for curved and conical forms; joinery for iron doors and hinges."
+    }
+  ],
   "shapes": [
     {
       "id": "cube",
@@ -68,7 +94,8 @@
       "form": "door",
       "oriented": true,
       "cells_tall": 2,
-      "hint": "two cells tall; E opens and shuts it, R flips the hinge",
+      "requires_traits": ["joinery"],
+      "hint": "two cells tall; E opens and shuts it, R flips the hinge; timber or iron, never stone",
       "design_purpose": "A wall piece two cells tall (the player is 1.92 m) whose leaf swings open on E and closes again; while open its collision is gone and mobs may follow you through. Occupies the face it stands on and the one above, so nothing else can straddle the opening. R flips the hinge to the other side. Costs a cube: a door is the most valuable square metre of a shelter."
     },
     {
@@ -80,7 +107,20 @@
       "form": "wedge",
       "oriented": true,
       "requires_world_effect": "stonecut_blocks",
+      "requires_traits": ["masonry"],
+      "hint": "a cut stone form: stone only; R turns it",
       "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a 45-degree wedge filling a cell, low at the front and full height at the back, turned with R, so pitched roofs and ramps join the vocabulary. Flat roofs from slabs are always possible; the wedge is what makes a build look finished, which is the right kind of reward - it widens what can be built without gating shelter."
+    },
+    {
+      "id": "girder",
+      "display_name": "Girder",
+      "material_cost": 2,
+      "size_m": [2.0, 0.25, 0.25],
+      "element": "beam",
+      "cells_long": 2,
+      "requires_traits": ["metal"],
+      "hint": "an iron beam two cells long: spans a room's width without a post under it",
+      "design_purpose": "The first shape a material trait unlocks rather than a boss: a two-cell beam needs metal, so a forge is what widens your rooms. It occupies two edges in a row (a footprint two cells long), which is also the model any long or tall piece uses."
     },
     {
       "id": "half_cube",
@@ -133,5 +173,5 @@
       "design_purpose": "Fine mode's slab: a quarter of a floor on one registry face, for shelves, steps between half-cubes, and roof edges."
     }
   ],
-  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented shapes. lattice_divisions is how much finer the occupancy registry is than the build grid (2 = half cells): full-size pieces occupy a footprint of registry elements, which is what lets half-scale pieces (fine mode) share the world with them through one set lookup. form (box | stairs | wedge | door, default box) picks the mesh and collision the engine builds; oriented (default false) says R turns the piece; cells_tall (default 1) stacks the footprint upward, for the two-cell door. fine (default false) marks a half-scale piece that occupies one registry element, and fine_of names the full-size shape it is the fine twin of: fine mode (G) swaps the selection for its twin and back, so the palette stays eight shapes with a scale toggle rather than thirteen."
+  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented shapes. lattice_divisions is how much finer the occupancy registry is than the build grid (2 = half cells): full-size pieces occupy a footprint of registry elements, which is what lets half-scale pieces (fine mode) share the world with them through one set lookup. form (box | stairs | wedge | door, default box) picks the mesh and collision the engine builds; oriented (default false) says R turns the piece; cells_tall (default 1) stacks the footprint upward, for the two-cell door. fine (default false) marks a half-scale piece that occupies one registry element, and fine_of names the full-size shape it is the fine twin of: fine mode (G) swaps the selection for its twin and back, so the palette stays nine shapes with a scale toggle rather than fourteen. materials are the building families (Q cycles the ones you carry): each is paid in its source item and carries traits; a shape may require traits (requires_traits), which is how looks and forms are gated to what a material can be worked into - joinery for doors, masonry for cut stone forms, metal for spans, and malleable reserved for the alloy family that curved forms will need. cells_long stretches a beam along its edge."
 }

@@ -49,6 +49,13 @@ public:
     // of a fine shape), requires_world_effect, unlocked.
     Dictionary shape(const String& shape_id) const;
     bool shape_unlocked(const String& shape_id) const;
+    // Building families (construction.json materials): ids in data order.
+    PackedStringArray build_material_ids() const;
+    // Keys: id, display_name, source, traits, texture, tint, carried (units
+    // of the source item in the pack).
+    Dictionary build_material(const String& material_id) const;
+    // True when the family has every trait the shape requires.
+    bool shape_allows_family(const String& shape_id, const String& material_family) const;
     double grid_size() const;
     double placement_range() const;
     double removal_refund_fraction() const;

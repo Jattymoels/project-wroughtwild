@@ -27,13 +27,15 @@ var open := false
 ## rotation; every other form builds straight under the body.
 var _pivot: Node3D
 var _collision_shapes: Array[CollisionShape3D] = []
+var _look: Material
 
 
 ## Builds the piece at its pose. size comes from the shape's size_m; centre
 ## and yaw from the sim's lattice pose (plus the rotation step, applied by
 ## the placement script).
 func init_piece(in_shape: StringName, in_family: StringName, in_element: Dictionary,
-		in_rotation_step: int, in_form: String, in_size: Vector3, centre: Vector3, yaw: float) -> void:
+		in_rotation_step: int, in_form: String, in_size: Vector3, centre: Vector3, yaw: float,
+		look: Material = null) -> void:
 	shape_id = in_shape
 	material_family = in_family
 	element = in_element.duplicate()
@@ -42,6 +44,7 @@ func init_piece(in_shape: StringName, in_family: StringName, in_element: Diction
 	size = in_size
 	global_position = centre
 	rotation.y = yaw
+	_look = look
 	_build()
 
 
@@ -63,6 +66,8 @@ func _build() -> void:
 		parent = _pivot
 	var mesh := MeshInstance3D.new()
 	mesh.mesh = PieceMesh.mesh_for(form, size)
+	if _look != null:
+		mesh.material_override = _look
 	parent.add_child(mesh)
 	if is_door():
 		mesh.position = Vector3(size.x * 0.5, 0.0, 0.0)

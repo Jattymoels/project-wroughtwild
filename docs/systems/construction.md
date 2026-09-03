@@ -212,9 +212,37 @@ causes:
   half-height floors are half cubes in fine mode. Shapes now carry a
   one-line `hint` the HUD shows on selection to say such things.
 
-Next for building: mobs breaking in (a wall's life; the door as the weak
-point), material families that look different, and the owner's next
-playtest.
+## Implemented: material families and traits (D-018, 3 Sep 2026)
+
+Building families are data (`construction.json` `materials`): each is
+**paid in a source item** (timber in wood, stone in stone, iron in
+ingots), **looks like itself** (a 16×16 texture per family, triplanar on
+every piece and on the corner trims of that family's walls), and
+**carries traits** that say what it can be worked into. Shapes may
+`requires_traits`; a family without them is refused, and the HUD says why
+("needs joinery"). Q cycles the families whose source you carry.
+
+The ladder, as the owner framed it ("a conical beam only usable through an
+alloy that makes it malleable"): the family's *properties* gate the
+*forms*, not a tech tree. Today's traits:
+
+| Family | Source | Traits | What it unlocks |
+| --- | --- | --- | --- |
+| Timber | wood | timber, joinery | everything basic; doors (joinery) |
+| Stone | stone | masonry, heavy | the cut-stone roof wedge (masonry, plus the boss's stonecut mastery) |
+| Iron | iron ingot | metal, joinery, malleable | the two-cell **girder** (metal); iron doors |
+
+`malleable` is deliberately unused: it is the trait the next family (an
+alloy of two ores) will carry, and the trait curved and conical forms
+will require, so that chain exists in data before the pieces do. `heavy`
+is the hook for a later rule about what may sit on what. Adding a family
+is one data entry plus a texture; adding a gated form is a shape with
+`requires_traits`. The girder also introduced `cells_long` (a footprint
+that runs along its edge), the same footprint model as the two-cell door.
+
+Next for building: the owner's next playtest; base threats (see the
+roadmap: pressure, not demolition); an alloy family with the first
+malleable form.
 
 ## Interface requirements
 
