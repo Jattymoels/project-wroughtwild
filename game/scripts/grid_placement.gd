@@ -534,3 +534,20 @@ func refresh_trims() -> void:
 
 func trim_count() -> int:
 	return _trims.size()
+
+
+## Shelter: is this world position inside an enclosed room of the player's
+## structure (or of the terrain, roofed by it)? The sim flood-fills from
+## the position; this only supplies what the engine knows - the terrain's
+## seed and its dug blocks. {enclosed, cells}; never enclosed with nothing
+## built, so the common case costs nothing.
+func enclosure_at(position: Vector3) -> Dictionary:
+	if _sim().structure_pieces().is_empty():
+		return {"enclosed": false, "cells": 0}
+	var terrain := _find_terrain()
+	var seed_value := -1
+	var removed := PackedInt32Array()
+	if terrain != null and not terrain.map.is_empty():
+		seed_value = terrain.seed_value()
+		removed = terrain.broken_packed()
+	return _sim().structure_enclosure(seed_value, removed, position)

@@ -1637,6 +1637,55 @@ void testLattice(const tuning::Tuning& t) {
     // Wall end (2), door's far edge (4), and the door's upper half where it
     // rises past the one-cell wall (2): no post grows in the seam itself.
     check(s.trimEdges().size() == 8, "trim: a door continues the run at the seam and is framed where it rises past it");
+
+    // Enclosure (slice 3): a hut is a shelter, a hut with a wall missing is
+    // not, a door keeps it one, and a hall past the cap is outside.
+    check(t.world.shelter.regenLifePerRound > 0.0 && t.world.shelter.maxRoomCells > 0 &&
+              t.world.shelter.settleRounds >= 0.0,
+          "shelter: tunables load from world.json");
+    // World: solid ground below y = 0, open sky above registry y = 40, edges far away.
+    auto ground = [](const Cell& c) {
+        if (c.y < 0) return WorldCell::Solid;
+        if (c.y >= 40) return WorldCell::Outside;
+        return WorldCell::Open;
+    };
+    s.clear();
+    const int cap = t.world.shelter.maxRoomCells * div * div * div;
+    const Element inside{ElementKind::Volume, 0, Cell{1, 1, 1}}; // registry cell inside build cell (0,0,0)
+    check(!enclosure(s, inside, cap, ground).enclosed, "shelter: open ground is no shelter");
+    // Walls two tall around build cell (0, 0..1, 0), roof slab at y = 2.
+    auto wall = [&](int axis, int x, int y, int z) {
+        s.place(piece(Element{ElementKind::Face, axis, Cell{x, y, z}}, Slot::Wall, "wall_panel"));
+    };
+    for (int y = 0; y < 2; ++y) {
+        wall(0, 0, y, 0);
+        wall(0, 1, y, 0);
+        wall(2, 0, y, 0);
+        wall(2, 0, y, 1);
+    }
+    check(!enclosure(s, inside, cap, ground).enclosed, "shelter: four walls with no roof is a yard");
+    s.place(piece(Element{ElementKind::Face, 1, Cell{0, 2, 0}}, Slot::Floor, "floor_slab"));
+    auto hut = enclosure(s, inside, cap, ground);
+    check(hut.enclosed && hut.volumes == 2 * div * div * div, "shelter: walls, ground and a roof make a two-cell hut");
+    // Swap the front wall for a door: still a shelter, open or shut.
+    s.remove(scaled(Element{ElementKind::Face, 2, Cell{0, 0, 0}}, div));
+    s.remove(scaled(Element{ElementKind::Face, 2, Cell{0, 1, 0}}, div));
+    check(!enclosure(s, inside, cap, ground).enclosed, "shelter: a missing wall lets the fill out");
+    s.place(piece(Element{ElementKind::Face, 2, Cell{0, 0, 0}}, Slot::Wall, "door", 2));
+    check(enclosure(s, inside, cap, ground).enclosed, "shelter: a door seals the hut");
+    // A dug-out hollow: solid rock all round, one open cell, a slab over it.
+    auto rock = [](const Cell& c) {
+        const bool hollow = c.x >= 10 && c.x < 12 && c.y >= 0 && c.y < 2 && c.z >= 10 && c.z < 12;
+        const bool shaft = c.x >= 10 && c.x < 12 && c.y >= 2 && c.y < 40 && c.z >= 10 && c.z < 12;
+        if (hollow || shaft) return c.y >= 40 ? WorldCell::Outside : WorldCell::Open;
+        return c.y >= 40 ? WorldCell::Outside : WorldCell::Solid;
+    };
+    const Element hollowCell{ElementKind::Volume, 0, Cell{10, 0, 10}};
+    check(!enclosure(s, hollowCell, cap, rock).enclosed, "shelter: a hollow open to the sky is a pit");
+    s.place(piece(Element{ElementKind::Face, 1, Cell{5, 1, 5}}, Slot::Floor, "floor_slab")); // registry (10, 2, 10)
+    check(enclosure(s, hollowCell, cap, rock).enclosed, "shelter: a slab over the mouth makes the hollow a den");
+    // Too big: a room past the cap reads as outside.
+    check(!enclosure(s, hollowCell, 3, rock).enclosed, "shelter: a room past the cap is not a shelter");
 }
 
 int main(int argc, char** argv) {

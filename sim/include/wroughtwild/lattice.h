@@ -19,6 +19,7 @@
 // surface normal, asks for ranked candidates, filters them by what its own
 // world knows (terrain solidity, props), and renders the chosen pose.
 
+#include <functional>
 #include <map>
 #include <string>
 #include <vector>
@@ -148,5 +149,26 @@ private:
     std::map<Element, Piece> pieces_;     // by anchor
     std::map<Element, Element> owner_;    // covered element -> anchor
 };
+
+// What the world (not the structure) says about a registry volume.
+enum class WorldCell { Open = 0, Solid = 1, Outside = 2 };
+
+struct Enclosure {
+    bool enclosed = false;
+    int volumes = 0; // registry volumes reached (the room's size, or the cap)
+};
+
+// Is the registry volume `start` inside a shelter? Flood-fills open
+// registry volumes six ways from it; a step is blocked by an occupied
+// volume, an occupied face between the two volumes, or a world cell the
+// callback calls Solid. The room is a shelter when the fill finishes
+// before `maxVolumes` without ever reaching a cell the callback calls
+// Outside (past the world's top or edge: open sky). A closed door counts
+// as a wall - it is a piece on its face - and so does an open one, which
+// is the rule Valheim uses and the one that lets you rest with the door
+// ajar. Terrain is the world's business: a dug-out hollow with a slab
+// over its mouth is as much a shelter as a hut.
+Enclosure enclosure(const Structure& structure, const Element& start, int maxVolumes,
+                    const std::function<WorldCell(const Cell&)>& world);
 
 } // namespace wroughtwild::lattice

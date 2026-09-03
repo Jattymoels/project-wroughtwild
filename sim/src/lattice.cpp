@@ -297,4 +297,49 @@ std::vector<Element> Structure::trimEdges() const {
     return trims;
 }
 
+Enclosure enclosure(const Structure& structure, const Element& start, int maxVolumes,
+                    const std::function<WorldCell(const Cell&)>& world) {
+    Enclosure result;
+    if (start.kind != ElementKind::Volume || maxVolumes < 1) return result;
+    Element origin = start;
+    origin.axis = 0;
+    if (structure.occupied(origin) || world(origin.cell) != WorldCell::Open) return result;
+
+    std::set<Cell> seen;
+    std::vector<Cell> frontier;
+    seen.insert(origin.cell);
+    frontier.push_back(origin.cell);
+    const int steps[6][3] = {{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}};
+    while (!frontier.empty()) {
+        const Cell here = frontier.back();
+        frontier.pop_back();
+        for (const auto& step : steps) {
+            const Cell next{here.x + step[0], here.y + step[1], here.z + step[2]};
+            if (seen.count(next)) continue;
+            // The face between here and next: the min-side face of whichever
+            // of the two is further along the step's axis.
+            const int axis = step[0] != 0 ? 0 : (step[1] != 0 ? 1 : 2);
+            const bool forward = step[axis] > 0;
+            Element face{ElementKind::Face, axis, forward ? next : here};
+            if (structure.occupied(face)) continue;
+            const WorldCell cell = world(next);
+            if (cell == WorldCell::Solid) continue;
+            if (cell == WorldCell::Outside) {
+                result.volumes = static_cast<int>(seen.size());
+                return result; // open to the sky or the world's edge
+            }
+            if (structure.occupied(Element{ElementKind::Volume, 0, next})) continue;
+            seen.insert(next);
+            if (static_cast<int>(seen.size()) > maxVolumes) {
+                result.volumes = static_cast<int>(seen.size());
+                return result; // too big to be a room
+            }
+            frontier.push_back(next);
+        }
+    }
+    result.enclosed = true;
+    result.volumes = static_cast<int>(seen.size());
+    return result;
+}
+
 } // namespace wroughtwild::lattice

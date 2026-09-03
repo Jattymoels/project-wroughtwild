@@ -493,6 +493,12 @@ WorldTable loadWorld(const std::string& path) {
     table.playerBase.maxLife = base.get("max_life").asNumber();
     table.playerBase.armourReductionScale = base.get("armour_reduction_scale").asNumber();
     table.playerBase.resistanceCapPercent = base.get("resistance_cap_percent").asNumber();
+    if (auto shelter = doc->find("shelter")) {
+        table.shelter.regenLifePerRound = shelter->get("regen_life_per_round").asNumber();
+        table.shelter.settleRounds = shelter->get("settle_rounds").asNumber();
+        table.shelter.maxRoomCells = shelter->get("max_room_cells").asInt();
+        if (table.shelter.maxRoomCells < 1) throw std::runtime_error("world: shelter.max_room_cells must be >= 1");
+    }
 
     for (const auto& e : doc->get("enemies").asArray()) {
         EnemyDef def;

@@ -227,6 +227,15 @@ struct PlayerBase {
     double resistanceCapPercent = 75.0;
 };
 
+// Resting in a shelter (world.json "shelter", Wave 4 building slice 3):
+// an enclosed room of at most maxRoomCells build cells regenerates life
+// once the player has gone settleRounds without taking a hit.
+struct ShelterDef {
+    double regenLifePerRound = 0.0;
+    double settleRounds = 0.0;
+    int maxRoomCells = 0;
+};
+
 // One line of a mob's loot table. Three kinds (D-016): a material stack, a
 // rolled gear piece of a rarity and tier, or a skill page that teaches one
 // skill the player does not yet know.
@@ -281,6 +290,7 @@ struct EliteModifierDef {
 
 struct WorldTable {
     PlayerBase playerBase;
+    ShelterDef shelter;
     std::vector<EnemyDef> enemies;
     std::vector<EliteModifierDef> eliteModifiers;
     std::vector<GatherSite> gatheringSites;

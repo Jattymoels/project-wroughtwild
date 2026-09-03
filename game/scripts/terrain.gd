@@ -75,6 +75,22 @@ func kind_at(x: int, y: int, z: int) -> String:
 	return KIND_NAMES.get(block_at(x, y, z), "")
 
 
+## The world seed this terrain was built from.
+func seed_value() -> int:
+	return _seed
+
+
+## Every dug block as flat x,y,z triples, the form the sim's chunk and
+## enclosure queries take.
+func broken_packed() -> PackedInt32Array:
+	var packed := PackedInt32Array()
+	for v in broken:
+		packed.append(v.x)
+		packed.append(v.y)
+		packed.append(v.z)
+	return packed
+
+
 ## True when a collider is one of this terrain's chunk bodies.
 func is_terrain_body(body: Object) -> bool:
 	return body is Node and (body as Node).has_meta("terrain_chunk")

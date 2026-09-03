@@ -7,6 +7,12 @@
     "resistance_cap_percent": 75,
     "design_purpose": "Baseline survivability before any equipment. armour_reduction_scale controls how fast armour approaches full physical reduction (reduction = armour / (armour + scale)); resistance_cap_percent stops resistance stacking from trivialising elemental threats."
   },
+  "shelter": {
+    "regen_life_per_round": 4,
+    "settle_rounds": 2,
+    "max_room_cells": 96,
+    "design_purpose": "Resting in a shelter is the health-regeneration route (owner playtest 2 Sep 2026: 'you need some passive health regeneration or a way to get health regened'). A shelter is an enclosed room - the sim flood-fills the space around the player through open cells, stopped by placed walls, floors, blocks and by terrain, and it is a shelter when the fill closes before max_room_cells build cells without reaching open sky. Regen starts settle_rounds after the last hit taken and pays regen_life_per_round (per round_seconds of combat_realtime.json), so a hut is worth building on day one, a dug-out hollow with a slab over its mouth counts, and a mob that breaks in stops the rest. Out in the open, nothing regenerates: the deprivation the owner asked for at the start stays."
+  },
   "enemies": [
     {
       "id": "ember_whelp",

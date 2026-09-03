@@ -242,12 +242,20 @@ func _ready() -> void:
 		combat.hit_landed.connect(_on_hit_landed)
 		combat.life_changed.connect(_on_life_changed)
 		combat.hit_taken.connect(_on_hit_taken)
+		combat.shelter_changed.connect(_on_shelter_changed)
 	refresh()
 
 
 ## Every hit names its source in the notice line: "-6  Gloom Crawler".
 ## Owner playtest (2 Sep 2026): damage with no visible attacker must at
 ## least say who.
+func _on_shelter_changed(sheltered: bool) -> void:
+	if sheltered:
+		notify("Sheltered. Rest here and your wounds close.")
+	else:
+		notify("Out in the open again.")
+
+
 func _on_hit_taken(damage: float, source_name: String) -> void:
 	notify("-%d  %s" % [ceili(damage), source_name if source_name != "" else "unknown"])
 
@@ -391,9 +399,12 @@ func refresh() -> void:
 		var worn: Dictionary = sim.equipment().get("chest", {})
 		_life_bar.max_value = maxf(combat.max_life, 1.0)
 		_life_bar.value = combat.life
-		_life_text.text = "Life %d / %d  ·  armour %d  ·  fire resistance %d%%  ·  wearing %s" % [
+		var rest := ""
+		if combat.sheltered:
+			rest = "  ·  resting +%.0f/s" % combat.regen_per_second() if combat.resting() else "  ·  sheltered"
+		_life_text.text = "Life %d / %d  ·  armour %d  ·  fire resistance %d%%  ·  wearing %s%s" % [
 			ceili(combat.life), ceili(combat.max_life), int(ds.get("armour", 0.0)),
-			int(ds.get("fire_resistance_percent", 0.0)), worn.get("display_name", "nothing")]
+			int(ds.get("fire_resistance_percent", 0.0)), worn.get("display_name", "nothing"), rest]
 
 	if placement != null:
 		if placement.build_mode_enabled:

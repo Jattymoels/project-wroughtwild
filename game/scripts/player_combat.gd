@@ -67,10 +67,64 @@ func restore_life() -> void:
 	life_changed.emit(life, max_life)
 
 
+## --- shelter regen (Wave 4 building slice 3) ---
+## Resting in an enclosed room regenerates life once you have gone the
+## settle time without a hit. The sim decides what a shelter is and how
+## fast it heals (world.json shelter); this owns the clocks: probing the
+## room once a second and paying the regen per frame.
+signal shelter_changed(sheltered: bool)
+const SHELTER_PROBE_SECONDS := 1.0
+var sheltered := false
+var _shelter_probe_left := 0.0
+var _settle_left := 0.0
+var _regen_per_second := 0.0
+var _settle_seconds := 0.0
+
+
+func _tick_shelter(delta: float) -> void:
+	_settle_left = maxf(0.0, _settle_left - delta)
+	_shelter_probe_left -= delta
+	if _shelter_probe_left <= 0.0:
+		_shelter_probe_left = SHELTER_PROBE_SECONDS
+		if _regen_per_second <= 0.0 and sim != null:
+			var rules: Dictionary = sim.shelter()
+			var round_seconds: float = sim.realtime().get("round_seconds", 1.0)
+			_regen_per_second = float(rules.get("regen_life_per_round", 0.0)) / maxf(round_seconds, 0.01)
+			_settle_seconds = float(rules.get("settle_rounds", 0.0)) * round_seconds
+		set_sheltered(_probe_shelter())
+	if sheltered and _settle_left <= 0.0 and life > 0.0 and life < max_life:
+		life = minf(max_life, life + _regen_per_second * delta)
+		life_changed.emit(life, max_life)
+
+
+func _probe_shelter() -> bool:
+	var player := get_parent()
+	if player == null or not (player is WroughtwildPlayer):
+		return false
+	return (player as WroughtwildPlayer).placement.enclosure_at(player.global_position).get("enclosed", false)
+
+
+func set_sheltered(value: bool) -> void:
+	if value == sheltered:
+		return
+	sheltered = value
+	shelter_changed.emit(sheltered)
+
+
+## True while resting is actually paying out.
+func resting() -> bool:
+	return sheltered and _settle_left <= 0.0 and life < max_life
+
+
+func regen_per_second() -> float:
+	return _regen_per_second
+
+
 func _physics_process(delta: float) -> void:
 	for id in cooldowns:
 		cooldowns[id] = maxf(0.0, cooldowns[id] - delta)
 	invulnerable_left = maxf(0.0, invulnerable_left - delta)
+	_tick_shelter(delta)
 	_dash_left = maxf(0.0, _dash_left - delta)
 	if fight_active and alive_enemies().is_empty():
 		fight_active = false
@@ -409,6 +463,7 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "") -> floa
 	_ensure_fight()
 	last_hit_taken = sim.enemy_hit_damage(raw_damage, damage_type)
 	life = maxf(0.0, life - last_hit_taken)
+	_settle_left = _settle_seconds
 	life_changed.emit(life, max_life)
 	hit_taken.emit(last_hit_taken, source_name)
 	if life <= 0.0:

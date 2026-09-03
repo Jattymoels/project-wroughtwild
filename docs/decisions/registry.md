@@ -58,8 +58,9 @@ Statuses:
   ("Okay perfect lets do it"). Slice 2 (vocabulary: registry at half
   cells with footprints, floor slab un-gated, stairs, a two-cell door, the
   roof wedge as the trial reward) and 2b (fine mode: G swaps the selection
-  for a half-scale twin on the same rule) landed the same day; enclosure →
-  shelter regen follows.
+  for a half-scale twin on the same rule) and 3 (shelter: an enclosed
+  room under a size cap regenerates life once settled; `world.json`
+  `shelter`) landed the same day.
 
 ## Registering a decision
 

@@ -158,8 +158,27 @@ without a twin (stairs, door, wedge) stay full size in fine mode. Twins
 never appear on Tab: the palette stays eight shapes plus a scale toggle.
 Detail costs more than bulk on purpose (eight half cubes outprice a cube).
 
-Next: **enclosure detection** — flood-filling volumes bounded by faces —
-as the honest home for rest-in-shelter health regeneration.
+## Implemented: shelter (Wave 4 slice 3, 3 Sep 2026)
+
+The health-regeneration route the owner asked for, and the first reason
+to build. `lattice::enclosure` flood-fills open registry volumes six ways
+from the player's cell; a step is blocked by an occupied volume, an
+occupied face between the two volumes, or terrain. The room is a
+**shelter** when the fill closes before `max_room_cells` build cells
+without reaching open sky or the world's edge. Doors count as walls open
+or shut (Valheim's rule: you can rest with the door ajar). Terrain is the
+world's business, so a dug-out hollow with a slab over its mouth is a den,
+and a walled yard with no roof is not.
+
+The engine probes once a second (`player_combat.gd`, a free check while
+nothing is built) and, sheltered and `settle_rounds` after the last hit,
+pays `regen_life_per_round` per `round_seconds`. Out in the open nothing
+regenerates: the early deprivation the owner asked for stays, and a mob
+that breaks in stops the rest. Numbers live in `world.json` `shelter`; the
+HUD's life line reads "sheltered" or "resting +N/s".
+
+Next for building: mobs breaking in (a wall's life; the door as the weak
+point), material families that look different, and the owner's playtest.
 
 ## Interface requirements
 

@@ -252,10 +252,16 @@ its half-scale twin (half cube, wall, post, beam, slab) — the same rule at
 half the cell, the owner's "post on a block" at sub-block scale, with no
 new occupancy logic and no palette growth.
 
-Still ahead in this intensive: **slice 3, enclosure** — flood-fill the volumes bounded by faces to know a
-roofed room, the honest home for rest-in-shelter health regeneration (the
-owner's regen note) and, later, for mobs breaking in. Deliberately out:
-structural-support rules.
+**Slice 3, shelter (landed 3 Sep 2026):** the sim flood-fills the room
+around the player (stopped by placed faces and volumes and by terrain);
+a roofed room under `max_room_cells` with no path to the sky is a shelter,
+and resting there `settle_rounds` after the last hit regenerates
+`regen_life_per_round` — the owner's regen ask, and the first reason to
+build on day one. A dug hollow with a slab over its mouth counts.
+
+Still ahead for building: mobs breaking in (wall life, the door as the
+weak point), material families that look different, and the owner's
+building playtest. Deliberately out: structural-support rules.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 

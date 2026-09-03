@@ -210,6 +210,16 @@ public:
     // post drawn: where walls end or meet at an angle and no real post
     // stands. A post visual is one registry cell tall.
     Array structure_trim_edges() const;
+    // Shelter (slice 3): is the world position inside an enclosed room?
+    // Flood-fills open registry volumes from the position, stopped by the
+    // structure's faces and volumes and by the seed's terrain with the
+    // dug blocks (x,y,z triples) removed; a room is a shelter when the
+    // fill closes before shelter().max_room_cells build cells without
+    // reaching open sky. seed < 0 means no terrain at all (test scenes).
+    // Keys: enclosed, cells (build cells reached).
+    Dictionary structure_enclosure(int seed, const PackedInt32Array& removed_blocks, const Vector3& at);
+    // world.json shelter: regen_life_per_round, settle_rounds, max_room_cells.
+    Dictionary shelter() const;
     // Deterministic per-kill drops from the enemy's world.json loot table:
     // material stacks as item -> count. elite_id ("" for none) applies the
     // elite modifier's loot bonuses (Wave 3): extra table passes.
