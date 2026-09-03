@@ -146,11 +146,20 @@ one.
   the wedge a six-point convex hull, the door a leaf on a hinge pivot), and
   `PlacedBlock` no longer scales a unit cube.
 
-Next: **fine mode** — the half-scale wall, post, beam, slab and block on a
-toggle, which is the same rule at half the cell and needs no new
-occupancy logic; then **enclosure detection** — flood-filling volumes
-bounded by faces — as the honest home for rest-in-shelter health
-regeneration.
+## Implemented: fine mode (Wave 4 slice 2b, 3 Sep 2026)
+
+**G** swaps the selection for its half-scale twin (`fine: true`,
+`fine_of`): half cube, half wall, half post, half beam, half slab. A fine
+piece occupies one registry element, so it may stand anywhere on the
+half-cell lattice — a half post on the edge through the middle of a
+block's top, a half wall patching a gap, a shelf of half slabs — and it
+conflicts with full-size pieces through the same footprint lookup. Shapes
+without a twin (stairs, door, wedge) stay full size in fine mode. Twins
+never appear on Tab: the palette stays eight shapes plus a scale toggle.
+Detail costs more than bulk on purpose (eight half cubes outprice a cube).
+
+Next: **enclosure detection** — flood-filling volumes bounded by faces —
+as the honest home for rest-in-shelter health regeneration.
 
 ## Interface requirements
 

@@ -247,10 +247,12 @@ wall, pillar, beam, floor slab (un-gated), stairs, a two-cell door that
 swings on E, and the roof wedge as the trial reward in place of the slab;
 forms (stairs, wedge, door) get real meshes and collision.
 
-Still ahead in this intensive: **slice 2b, fine mode** — half-scale wall,
-post, beam, slab and block on a toggle, the same rule at half the cell (the
-owner's "post on a block" at sub-block scale, no new occupancy logic);
-**slice 3, enclosure** — flood-fill the volumes bounded by faces to know a
+**Slice 2b, fine mode (landed 3 Sep 2026):** G swaps the selection for
+its half-scale twin (half cube, wall, post, beam, slab) — the same rule at
+half the cell, the owner's "post on a block" at sub-block scale, with no
+new occupancy logic and no palette growth.
+
+Still ahead in this intensive: **slice 3, enclosure** — flood-fill the volumes bounded by faces to know a
 roofed room, the honest home for rest-in-shelter health regeneration (the
 owner's regen note) and, later, for mobs breaking in. Deliberately out:
 structural-support rules.

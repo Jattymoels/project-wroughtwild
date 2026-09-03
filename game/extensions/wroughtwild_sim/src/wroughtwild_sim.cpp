@@ -943,6 +943,7 @@ Dictionary WroughtwildSim::shape(const String& shape_id) const {
     d["oriented"] = s->oriented;
     d["cells_tall"] = s->cellsTall;
     d["fine"] = s->fine;
+    d["fine_of"] = to_godot(s->fineOf);
     d["requires_world_effect"] = to_godot(s->requiresWorldEffect);
     d["unlocked"] = player_->shapeUnlocked(s->id);
     return d;

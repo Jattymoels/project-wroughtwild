@@ -45,8 +45,8 @@ public:
     int shape_material_cost(const String& shape_id) const;
     // Keys: id, display_name, material_cost, size (Vector3), element (the
     // lattice slot: block, wall, floor, post, beam), form (box, stairs,
-    // wedge, door), oriented, cells_tall, fine, requires_world_effect,
-    // unlocked.
+    // wedge, door), oriented, cells_tall, fine, fine_of (the full-size twin
+    // of a fine shape), requires_world_effect, unlocked.
     Dictionary shape(const String& shape_id) const;
     bool shape_unlocked(const String& shape_id) const;
     double grid_size() const;

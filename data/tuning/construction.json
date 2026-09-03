@@ -77,7 +77,57 @@
       "oriented": true,
       "requires_world_effect": "stonecut_blocks",
       "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a 45-degree wedge filling a cell, low at the front and full height at the back, turned with R, so pitched roofs and ramps join the vocabulary. Flat roofs from slabs are always possible; the wedge is what makes a build look finished, which is the right kind of reward - it widens what can be built without gating shelter."
+    },
+    {
+      "id": "half_cube",
+      "display_name": "Half Cube",
+      "material_cost": 1,
+      "size_m": [0.5, 0.5, 0.5],
+      "element": "block",
+      "fine": true,
+      "fine_of": "cube",
+      "design_purpose": "Fine mode's cube: one registry cell (half a build cell each way), the same rule at half the grid. Eight of them make a cube for four times the price - detail costs, bulk is cheap - so fine pieces are for trim, steps, sills and furniture, never for walls by the metre."
+    },
+    {
+      "id": "half_wall",
+      "display_name": "Half Wall",
+      "material_cost": 1,
+      "size_m": [0.5, 0.5, 0.125],
+      "element": "wall",
+      "fine": true,
+      "fine_of": "wall_panel",
+      "design_purpose": "Fine mode's wall: a quarter of a panel on one registry face, for parapets, window sills, half-height partitions and patching the gap a full panel cannot fit."
+    },
+    {
+      "id": "half_pillar",
+      "display_name": "Half Post",
+      "material_cost": 1,
+      "size_m": [0.15, 0.5, 0.15],
+      "element": "post",
+      "fine": true,
+      "fine_of": "pillar",
+      "design_purpose": "Fine mode's post: half a cell tall on any registry edge, including the edges through the middle of a block's top face - the owner's 'a post on a block' at sub-block scale. Balusters, table legs, fence pickets."
+    },
+    {
+      "id": "half_beam",
+      "display_name": "Half Beam",
+      "material_cost": 1,
+      "size_m": [0.5, 0.125, 0.125],
+      "element": "beam",
+      "fine": true,
+      "fine_of": "beam",
+      "design_purpose": "Fine mode's beam: half a cell long on any horizontal registry edge, for rails, sills and the small lintel over a half-wall gap."
+    },
+    {
+      "id": "half_slab",
+      "display_name": "Half Slab",
+      "material_cost": 1,
+      "size_m": [0.5, 0.125, 0.5],
+      "element": "floor",
+      "fine": true,
+      "fine_of": "floor_slab",
+      "design_purpose": "Fine mode's slab: a quarter of a floor on one registry face, for shelves, steps between half-cubes, and roof edges."
     }
   ],
-  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented shapes. lattice_divisions is how much finer the occupancy registry is than the build grid (2 = half cells): full-size pieces occupy a footprint of registry elements, which is what lets half-scale pieces (fine mode) share the world with them through one set lookup. form (box | stairs | wedge | door, default box) picks the mesh and collision the engine builds; oriented (default false) says R turns the piece; cells_tall (default 1) stacks the footprint upward, for the two-cell door."
+  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented shapes. lattice_divisions is how much finer the occupancy registry is than the build grid (2 = half cells): full-size pieces occupy a footprint of registry elements, which is what lets half-scale pieces (fine mode) share the world with them through one set lookup. form (box | stairs | wedge | door, default box) picks the mesh and collision the engine builds; oriented (default false) says R turns the piece; cells_tall (default 1) stacks the footprint upward, for the two-cell door. fine (default false) marks a half-scale piece that occupies one registry element, and fine_of names the full-size shape it is the fine twin of: fine mode (G) swaps the selection for its twin and back, so the palette stays eight shapes with a scale toggle rather than thirteen."
 }

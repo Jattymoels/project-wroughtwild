@@ -98,6 +98,25 @@ func _test_lattice() -> void:
 	sim.structure_clear()
 	check(sim.structure_pieces().is_empty() and sim.structure_trim_edges().is_empty(), "structure: clear empties it")
 
+	# Fine mode: a half post aimed at the middle of a cube's top takes the
+	# registry edge there - "a post on a block" - where a full post cannot.
+	var mid_top := {"kind": "edge", "axis": 1, "cell": Vector3i(21, 26, 21)}
+	var half_posts: Array = sim.lattice_candidates("half_pillar", Vector3(10.5, 13.0, 10.5), Vector3.UP)
+	check(not half_posts.is_empty() and half_posts[0]["cell"] == mid_top["cell"] and half_posts[0]["kind"] == "edge",
+		"fine: a half post aimed at a cube's top centre takes the edge through it")
+	check(sim.shape_accepts("half_pillar", mid_top) and not sim.shape_accepts("pillar", mid_top),
+		"fine: only the half post may stand off the build grid")
+	check(sim.lattice_pose("half_pillar", mid_top)["centre"] == Vector3(10.5, 13.25, 10.5),
+		"fine: a half post is posed at its registry edge")
+	var half_cell := {"kind": "volume", "axis": 0, "cell": Vector3i(21, 24, 21)}
+	check(sim.lattice_pose("half_cube", half_cell)["centre"] == Vector3(10.75, 12.25, 10.75),
+		"fine: a half cube sits in its registry cell")
+	check(sim.structure_place(half_cell, "half_cube", "wood", 0)
+		and not sim.structure_free_for("cube", {"kind": "volume", "axis": 0, "cell": Vector3i(20, 24, 20)})
+		and sim.structure_place({"kind": "volume", "axis": 0, "cell": Vector3i(20, 24, 20)}, "half_cube", "wood", 0),
+		"fine: a half cube blocks the full cube from its cell but not another half cube")
+	sim.structure_clear()
+
 	# Piece meshes: every form builds, the wedge's hull has six corners.
 	check(PieceMesh.mesh_for("stairs", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE)
 		and PieceMesh.mesh_for("wedge", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE),

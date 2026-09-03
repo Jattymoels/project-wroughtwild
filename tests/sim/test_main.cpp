@@ -191,6 +191,21 @@ void testShapePlacement(const tuning::Tuning& t) {
     check(stairs != nullptr && stairs->form == "stairs" && stairs->oriented && cube->form == "box" && cube->cellsTall == 1,
           "construction: stairs are an oriented block; the cube defaults to a plain box");
     check(t.construction.latticeDivisions == 2, "construction: the registry runs at half cells");
+    // Fine mode: every full-size basic shape has a half-scale twin of the
+    // same element kind at half its size.
+    int twins = 0;
+    for (const auto& shape : t.construction.shapes) {
+        if (!shape.fine) continue;
+        const auto* full = t.construction.findShape(shape.fineOf);
+        bool half = full != nullptr && full->element == shape.element;
+        for (int i = 0; i < 3 && half; ++i)
+            half = std::abs(shape.sizeM[i] - full->sizeM[i] * 0.5) < 1e-9;
+        if (half) ++twins;
+    }
+    check(twins == 5 && t.construction.findShape("half_pillar")->fineOf == "pillar",
+          "construction: five fine twins at exactly half their full-size shape");
+    check(t.construction.findShape("half_cube")->materialCost * 8 > cube->materialCost,
+          "construction: detail costs more than bulk - eight half cubes outprice a cube");
     player.inventory["wood"] = 10;
     check(!player.shapeUnlocked("roof_wedge") && !player.canAffordPlacement("roof_wedge", "wood"),
           "construction: wedge locked before the boss falls");
