@@ -455,16 +455,30 @@ func extend_target(from: Vector3, dir: Vector3, reach: float, start: float = 0.0
 	var shape := _target_shape()
 	var d := start + EXTEND_STEP
 	var passed := false
+	# The whole ray is walked and the candidate nearest the crosshair's
+	# line wins (owner playtest, 3 Sep: standing beside a wall and aiming
+	# at a pillar top snapped to the wall - the first brush is not the
+	# aim). Ties within a hand's width go to the farther one, which is
+	# where the crosshair sits.
+	var best := {}
+	var best_off := INF
+	var best_d := 0.0
 	while d < reach - EXTEND_STEP * 0.5:
 		var p := from + dir * d
 		if not passed:
 			passed = _sim().structure_near_point(p)
-		else:
+		if passed:
 			for candidate in _sim().lattice_candidates(shape, p, Vector3.ZERO, false):
 				if _sim().structure_touches(shape, candidate) and element_accepts(candidate):
-					return candidate
+					var centre: Vector3 = piece_pose(shape, candidate, preview_rotation_step)["centre"]
+					var off := (centre - from).cross(dir).length()
+					if off < best_off - 0.15 or (absf(off - best_off) <= 0.15 and d > best_d):
+						best = candidate
+						best_off = off
+						best_d = d
+					break
 		d += EXTEND_STEP
-	return {}
+	return best
 
 
 func _update_preview() -> void:
@@ -475,7 +489,13 @@ func _update_preview() -> void:
 	var from := camera.global_position
 	var dir := -camera.global_transform.basis.z
 	var reach := placement_range if hit.is_empty() else from.distance_to(hit["position"])
-	var element := extend_target(from, dir, reach, from.distance_to((get_parent() as Node3D).global_position))
+	var element := {}
+	# Pointing at a piece means building on that piece: the direct hit wins
+	# before any reach-into-air guess.
+	if not hit.is_empty() and hit.get("collider") is PlacedBlock:
+		element = target_element(hit["position"], hit["normal"], _hit_on_fine_grid(hit))
+	if element.is_empty():
+		element = extend_target(from, dir, reach, from.distance_to((get_parent() as Node3D).global_position))
 	if element.is_empty() and not hit.is_empty():
 		element = target_element(hit["position"], hit["normal"], _hit_on_fine_grid(hit))
 	if element.is_empty():
