@@ -11,6 +11,17 @@ signal died(enemy: Enemy)
 ## The nest that fielded this mob (encroachment), 0 for a roaming pack.
 var nest_id := 0
 
+
+## Era mechanic (eras.json burning_ground): where this family dies, the
+## ground burns for a while. The sim says whether and how much.
+func _leave_burning_ground() -> void:
+	if _sim == null:
+		return
+	var params: Dictionary = _sim.era_mechanic(enemy_id, "burning_ground")
+	if params.is_empty() or get_parent() == null:
+		return
+	BurningGround.spawn(get_parent(), global_position, params, float(_sim.realtime().get("round_seconds", 1.0)))
+
 @export var enemy_id: StringName = &"ember_whelp"
 
 var display_name := ""
@@ -552,6 +563,7 @@ func take_damage(amount: float, flash: bool = true) -> void:
 			_proliferate()
 		if _burst_damage > 0.0:
 			_death_burst()
+		_leave_burning_ground()
 		died.emit(self)
 		remove_from_group("enemies")
 		queue_free()

@@ -50,6 +50,15 @@ var environment: Environment
 var sun: DirectionalLight3D
 var _check_timer := 0.0
 var _target: Dictionary = MOODS[DEFAULT_BIOME]
+## Era shift (D-019): from era two the light warms and thickens a little
+## everywhere - the world has changed, and it should be felt before read.
+var _era_fog_tint := Color.WHITE
+var _era_sun_scale := 1.0
+
+
+func set_era(index: int) -> void:
+	_era_fog_tint = Color.WHITE if index < 2 else Color(0.9, 0.82, 0.8)
+	_era_sun_scale = 1.0 if index < 2 else 0.9
 
 
 ## The mood for a biome id, falling back to the safe default. Static so
@@ -90,10 +99,10 @@ func _process(delta: float) -> void:
 
 
 func _apply(weight: float) -> void:
-	environment.fog_light_color = environment.fog_light_color.lerp(_target["fog_color"], weight)
+	environment.fog_light_color = environment.fog_light_color.lerp(_target["fog_color"] * _era_fog_tint, weight)
 	environment.fog_density = lerpf(environment.fog_density, _target["fog_density"], weight)
 	environment.ambient_light_sky_contribution = lerpf(
 		environment.ambient_light_sky_contribution, _target["ambient"], weight)
 	if sun != null:
 		sun.light_color = sun.light_color.lerp(_target["sun_color"], weight)
-		sun.light_energy = lerpf(sun.light_energy, _target["sun_energy"], weight)
+		sun.light_energy = lerpf(sun.light_energy, _target["sun_energy"] * _era_sun_scale, weight)

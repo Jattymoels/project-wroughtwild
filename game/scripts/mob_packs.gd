@@ -59,6 +59,15 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	pack["spawned"] = true
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	var ids: PackedStringArray = pack["enemies"]
+	# Era mechanics (eras.json): some families run in bigger packs now.
+	var bonus_seen := {}
+	for id in pack["enemies"]:
+		if bonus_seen.has(id):
+			continue
+		bonus_seen[id] = true
+		var bonus: Dictionary = sim.era_mechanic(id, "pack_size_bonus")
+		for k in int(bonus.get("value", 0)):
+			ids.append(id)
 	for i in ids.size():
 		var angle := TAU * float(i) / float(maxi(ids.size(), 1))
 		var offset := Vector3(cos(angle), 0.5, sin(angle)) * 1.6

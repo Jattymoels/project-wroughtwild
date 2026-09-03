@@ -17,6 +17,9 @@ const LEAF_DARK := Color("204C1C")
 const STONE := Color("74747A")
 const STONE_DARK := Color("565860")
 const IRON_RUST := Color("C4742C")
+## Era-two ores (D-019): copper glints warm, tin pale.
+const COPPER := Color("C8783C")
+const TIN := Color("C9CCD2")
 
 const PHI := 1.618034
 ## Icosahedron faces over the 12 canonical vertices (see _ico_vertices).
@@ -136,13 +139,17 @@ static func build_boulder(seed_value: int) -> ArrayMesh:
 
 
 static func build_iron_vein(seed_value: int) -> ArrayMesh:
+	return build_vein(seed_value, IRON_RUST)
+
+
+## A squatter rock shot through with ore facets in the metal's colour -
+## the ore reads from across the valley without a label.
+static func build_vein(seed_value: int, ore: Color) -> ArrayMesh:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	# A squatter rock shot through with rust facets - the ore reads from
-	# across the valley without a label.
 	_blob(st, Vector3(0, 0.4, 0), rng.randf_range(0.62, 0.75), 0.6,
-		rng, STONE, STONE_DARK, 0.25, IRON_RUST, 0.3)
+		rng, STONE, STONE_DARK, 0.25, ore, 0.3)
 	st.generate_normals()
 	return st.commit()

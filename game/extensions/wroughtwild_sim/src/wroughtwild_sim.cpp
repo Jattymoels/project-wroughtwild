@@ -180,6 +180,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("structure_enclosure", "seed", "removed_blocks", "at"),
                          &WroughtwildSim::structure_enclosure);
     ClassDB::bind_method(D_METHOD("shelter"), &WroughtwildSim::shelter);
+    ClassDB::bind_method(D_METHOD("era"), &WroughtwildSim::era);
+    ClassDB::bind_method(D_METHOD("era_mechanic", "enemy_id", "mechanic"), &WroughtwildSim::era_mechanic);
+    ClassDB::bind_method(D_METHOD("record_world_effect", "effect"), &WroughtwildSim::record_world_effect);
     ClassDB::bind_method(D_METHOD("encroachment_reset", "seed"), &WroughtwildSim::encroachment_reset);
     ClassDB::bind_method(D_METHOD("encroachment_tick", "now", "has_home", "home"), &WroughtwildSim::encroachment_tick);
     ClassDB::bind_method(D_METHOD("encroachment_nests"), &WroughtwildSim::encroachment_nests);
@@ -1753,6 +1756,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
         n["units"] = typeIt->second.units;
         n["units_per_harvest"] = typeIt->second.unitsPerHarvest;
         n["visual"] = to_godot(typeIt->second.visual);
+        n["era"] = typeIt->second.era;
         nodes.push_back(n);
     }
     d["nodes"] = nodes;
@@ -2253,6 +2257,42 @@ void WroughtwildSim::encroachment_reset(int seed) {
                                                                              static_cast<uint64_t>(seed));
 }
 
+Dictionary WroughtwildSim::era() const {
+    Dictionary d;
+    if (!require_loaded("era")) {
+        return d;
+    }
+    const auto& e = player_->era();
+    d["index"] = player_->currentEra();
+    d["id"] = to_godot(e.id);
+    d["display_name"] = to_godot(e.displayName);
+    d["story"] = to_godot(e.story);
+    d["encroachment"] = e.encroachment;
+    d["count"] = static_cast<int>(tuning_->eras.eras.size());
+    return d;
+}
+
+Dictionary WroughtwildSim::era_mechanic(const String& enemy_id, const String& mechanic) const {
+    Dictionary d;
+    if (!require_loaded("era_mechanic")) {
+        return d;
+    }
+    const auto* params = player_->era().mechanic(to_std(enemy_id), to_std(mechanic));
+    if (params == nullptr) {
+        return d;
+    }
+    for (const auto& [key, value] : *params) {
+        d[to_godot(key)] = value;
+    }
+    return d;
+}
+
+void WroughtwildSim::record_world_effect(const String& effect) {
+    if (require_loaded("record_world_effect")) {
+        player_->recordWorldEffect(to_std(effect));
+    }
+}
+
 Array WroughtwildSim::encroachment_tick(double now, bool has_home, const Vector3& home) {
     Array out;
     if (!require_loaded("encroachment_tick")) {
@@ -2261,7 +2301,10 @@ Array WroughtwildSim::encroachment_tick(double now, bool has_home, const Vector3
     if (!encroachment_) {
         encroachment_reset(0);
     }
-    for (const auto& n : encroachment_->tick(now, has_home, home.x, home.z)) {
+    // Nests belong to the eras that allow them (D-019): before then the
+    // clock does not run and nothing settles.
+    const bool allowed = player_->era().encroachment;
+    for (const auto& n : encroachment_->tick(now, allowed && has_home, home.x, home.z)) {
         out.push_back(nest_to(*encroachment_, n));
     }
     return out;

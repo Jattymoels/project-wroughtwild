@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "wave-5 slice 1: the first transition (D-019)",
+  "eras": [
+    {
+      "id": "valley",
+      "display_name": "The Valley",
+      "trigger_world_effect": "",
+      "encroachment": false,
+      "story": "You arrive with nothing. The valley is quiet, and the deep below it has not noticed you.",
+      "mob_mechanics": {}
+    },
+    {
+      "id": "deep_wakes",
+      "display_name": "The Deep Wakes",
+      "trigger_world_effect": "stonecut_blocks",
+      "encroachment": true,
+      "story": "The Forge Tyrant falls and the deep answers. The strata crack: copper and tin glint on the cave floors. The hounds run in larger packs, and the Tyrant's whelps burn where they die. Something has begun to gather at the edge of your claim.",
+      "mob_mechanics": {
+        "ash_hound": { "pack_size_bonus": 1 },
+        "ember_whelp": { "burning_ground": { "damage_per_round": 3, "seconds": 5, "radius_m": 1.4 } }
+      }
+    }
+  ],
+  "design_purpose": "Eras are the campaign (docs/systems/progression-eras.md, D-019): the world changes state on milestones the player chose to hit, never on time or a level, and mobs scale per era, never per player. The current era is the last one in this list whose trigger_world_effect is active (an empty trigger is the start); scanning stops at the first unmet trigger, so eras are ordered. Each era changes three things at once - what mobs DO (mob_mechanics: per enemy id, a mechanic name with its numbers; a bare number means {value}), what the ground OFFERS (worldgen.json node types carry an era and surface when it arrives), and what can be WORKED (materials and shapes gated by traits in construction.json, recipes in crafting.json). encroachment says whether nests may settle in this era - the base is a stake from era two. Numbers here are deliberately mechanics with modest values: hounds +1 to a pack, a whelp's death leaves 3 life per round of fire for 5 seconds in a 1.4 m patch; the felt jump at an era is the world's, not the sheet's."
+}

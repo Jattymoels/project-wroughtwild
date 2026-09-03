@@ -115,6 +115,10 @@ public:
     OrderResult fulfillOrder(const std::string& orderId);
     bool orderFulfilled(const std::string& orderId) const;
     bool worldEffectActive(const std::string& effect) const;
+    // The current era (1-based, eras.json): the last era in order whose
+    // trigger is active, stopping at the first unmet one (D-019).
+    int currentEra() const;
+    const tuning::EraDef& era() const;
     void recordWorldEffect(const std::string& effect);
 
     // True when some unfulfilled order demands one of the recipe's outputs.

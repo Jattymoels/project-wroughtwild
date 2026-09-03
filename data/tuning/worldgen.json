@@ -37,6 +37,8 @@
     "breach_chance": 0.35,
     "node_density": {
       "iron_vein": 0.05,
+      "copper_vein": 0.03,
+      "tin_vein": 0.02,
       "boulder": 0.02
     },
     "packs": [["gloom_crawler"], ["gloom_crawler", "gloom_crawler"]],
@@ -103,7 +105,9 @@
     "tree": {"display_name": "Tree", "material_family": "wood", "units": 12, "units_per_harvest": 3, "visual": "tree"},
     "boulder": {"display_name": "Boulder", "material_family": "stone", "units": 10, "units_per_harvest": 2, "visual": "boulder"},
     "iron_vein": {"display_name": "Iron Vein", "material_family": "iron_ore", "units": 8, "units_per_harvest": 2, "visual": "iron_vein"},
-    "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture. Cave-floor nodes use the same types (caves.node_density decides which)"
+    "copper_vein": {"display_name": "Copper Vein", "material_family": "copper_ore", "units": 8, "units_per_harvest": 2, "visual": "copper_vein", "era": 2},
+    "tin_vein": {"display_name": "Tin Vein", "material_family": "tin_ore", "units": 6, "units_per_harvest": 2, "visual": "tin_vein", "era": 2},
+    "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture. Cave-floor nodes use the same types (caves.node_density decides which). era (default 1) is the era a node type surfaces in (eras.json, D-019): the world map places every node from the seed, and the engine reveals the ones whose era has come - copper and tin glint on the cave floors once the deep wakes."
   },
   "guarantees": {
     "spawn_biome": "meadow",

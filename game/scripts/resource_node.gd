@@ -46,7 +46,7 @@ func _apply_visual() -> void:
 	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
 	if mesh_instance == null or collider == null:
 		return
-	if visual != &"tree" and visual != &"boulder" and visual != &"iron_vein":
+	if not (visual in [&"tree", &"boulder", &"iron_vein", &"copper_vein", &"tin_vein"]):
 		return
 
 	# Chunky low-poly props (D-013): flat-shaded facets, palette vertex
@@ -69,6 +69,14 @@ func _apply_visual() -> void:
 			collider.position = Vector3(0, 0.5, 0)
 		&"iron_vein":
 			mesh_instance.mesh = PropMesh.build_iron_vein(_visual_seed())
+			shape.size = Vector3(1.2, 0.9, 1.2)
+			collider.position = Vector3(0, 0.45, 0)
+		&"copper_vein":
+			mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.COPPER)
+			shape.size = Vector3(1.2, 0.9, 1.2)
+			collider.position = Vector3(0, 0.45, 0)
+		&"tin_vein":
+			mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.TIN)
 			shape.size = Vector3(1.2, 0.9, 1.2)
 			collider.position = Vector3(0, 0.45, 0)
 	collider.shape = shape

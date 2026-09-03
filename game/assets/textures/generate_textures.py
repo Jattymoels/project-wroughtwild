@@ -98,6 +98,8 @@ def main() -> None:
     write_png("planks.png", banded(speckle(tuple(c + 26 for c in p["bark"]), 0.08, rng), p["bark_dark"], 4, 0))
     write_png("masonry.png", banded(speckle(p["stone"], 0.09, rng), p["stone_dark"], 8, 4, brick=True))
     write_png("iron_plate.png", speckle(tuple(c - 10 for c in p["stone_dark"]), 0.06, rng, (p["iron_rust"], 0.04)))
+    # Bronze: warm alloy with a green patina fleck (era two's family).
+    write_png("bronze.png", speckle((176, 118, 62), 0.07, rng, ((92, 128, 96), 0.05)))
 
 
 def banded(pixels: list, seam, period: int, offset: int, brick: bool = False) -> list:

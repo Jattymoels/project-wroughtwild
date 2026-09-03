@@ -240,6 +240,15 @@ public:
     // world.json shelter: regen_life_per_round, settle_rounds, max_room_cells.
     Dictionary shelter() const;
 
+    // --- eras (eras.json, D-019): the world's state, from milestones ---
+    // {index (1-based), id, display_name, story, encroachment}.
+    Dictionary era() const;
+    // The current era's parameters for an enemy's mechanic ({} when none):
+    // eras.json mob_mechanics, e.g. ash_hound pack_size_bonus -> {value}.
+    Dictionary era_mechanic(const String& enemy_id, const String& mechanic) const;
+    // Records a world effect (trial rewards do this; tests and debug too).
+    void record_world_effect(const String& effect);
+
     // --- encroachment (encroachment.h): nests on the fringe of a home ---
     // Starts a world's encroachment afresh (new game, new seed).
     void encroachment_reset(int seed);

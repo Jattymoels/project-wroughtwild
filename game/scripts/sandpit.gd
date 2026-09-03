@@ -17,6 +17,10 @@ const ORDER_BOARD_SCENE := preload("res://scenes/order_board.tscn")
 @onready var mob_packs: MobPacks = $MobPacks
 ## Base threat as pressure (D-018): nests on the fringe of the player's home.
 var encroachment: Encroachment
+## Eras (D-019): the world's state, polled from the sim; a change reveals
+## the era's nodes, shifts the light and tells the story.
+var _era_index := 0
+var _era_poll := 0.0
 @onready var mood: BiomeMood = $Mood
 @onready var player: WroughtwildPlayer = $Player
 
@@ -64,6 +68,27 @@ func _replace_named(scene: PackedScene, node_name: String, at: Vector3) -> Node3
 	add_child(node)
 	node.global_position = at
 	return node
+
+
+func _physics_process(delta: float) -> void:
+	_era_poll -= delta
+	if _era_poll > 0.0 or terrain.map.is_empty():
+		return
+	_era_poll = 1.0
+	var era: Dictionary = _sim().era()
+	var index := int(era.get("index", 1))
+	if _era_index == 0:
+		_era_index = index
+		mood.set_era(index)
+		return
+	if index == _era_index:
+		return
+	_era_index = index
+	var revealed := terrain.reveal_era(index)
+	mood.set_era(index)
+	player.hud.notify("Era %d: %s. %s" % [index, era["display_name"], era["story"]])
+	if revealed > 0:
+		player.hud.notify("The strata have cracked: %d new veins surfaced in the deep." % revealed)
 
 
 ## SaveManager hook: a loaded save carries its own seed; rebuild the world

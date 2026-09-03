@@ -300,12 +300,13 @@ The answer to "a talent tree has nothing to push against in a procedural
 world" ([systems/progression-eras.md](../systems/progression-eras.md)):
 the world is the campaign. Slices, in order:
 
-1. **The first era transition** on the Forge Tyrant's fall: an era state
-   in the sim driven by world effects; copper and tin veins surface in the
-   deep when the strata crack (nodes carry an era; the engine reveals
-   them with a notice and a mood shift); bronze as the alloy family
-   (malleable, tough) and the first curved form; hounds hunt in wider
-   packs and whelps leave burning ground; encroachment switches on.
+1. **The first era transition** *(landed 3 Sep 2026)* on the Forge
+   Tyrant's fall: an era state in the sim driven by world effects
+   (`eras.json`); copper and tin veins surface in the deep when the strata
+   crack (nodes carry an era; the engine reveals them with a notice and a
+   light shift); bronze as the alloy family (malleable, tough) and the
+   arch as the first curved form; hounds run in bigger packs and whelps
+   leave burning ground; encroachment switches on only from era two.
 2. **The Foundry**: a 3×3 plate, about twelve ingot verbs, adjacency pairs
    and lines, six milestone sources, re-forging at the forge; the plate
    widens with the era.

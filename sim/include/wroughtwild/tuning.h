@@ -618,6 +618,7 @@ struct NodeTypeDef {
     int units = 10;
     int unitsPerHarvest = 2;
     std::string visual;
+    int era = 1; // the era this node type surfaces in (eras.json)
 };
 
 struct WorldgenGuarantees {
@@ -663,10 +664,31 @@ BoonTable loadBoons(const std::string& path);
 WorldTable loadWorld(const std::string& path);
 TrialTable loadTrial(const std::string& path);
 
+// --- eras.json ---------------------------------------------------------------
+// Eras are the campaign (D-019): the world changes state on milestones.
+
+struct EraDef {
+    std::string id;
+    std::string displayName;
+    std::string story;
+    std::string triggerWorldEffect; // empty for the first era
+    bool encroachment = false;      // may nests settle in this era
+    // enemy id -> mechanic name -> parameters (a bare number is {"value": n})
+    std::map<std::string, std::map<std::string, std::map<std::string, double>>> mobMechanics;
+    const std::map<std::string, double>* mechanic(const std::string& enemyId, const std::string& name) const;
+};
+
+struct EraTable {
+    std::vector<EraDef> eras; // in order; the first is the start
+};
+
+EraTable loadEras(const std::string& path);
+
 // Loads all tuning files from a data/tuning directory.
 struct Tuning {
     CraftingTable crafting;
     ConstructionTable construction;
+    EraTable eras;
     SkillTable skills;
     ItemTable items;
     BoonTable boons;
