@@ -32,7 +32,8 @@ std::map<std::string, int> rollEnemyLoot(const tuning::WorldTable& world,
 std::vector<items::ItemInstance> rollEnemyGear(const tuning::Tuning& tuning,
                                                const std::string& enemyId,
                                                uint64_t seed,
-                                               const tuning::EliteModifierDef* elite) {
+                                               const tuning::EliteModifierDef* elite,
+                                               int era) {
     std::vector<items::ItemInstance> drops;
     const tuning::EnemyDef* enemy = tuning.world.findEnemy(enemyId);
     if (!enemy || tuning.items.itemBases.empty()) return drops;
@@ -47,8 +48,8 @@ std::vector<items::ItemInstance> rollEnemyGear(const tuning::Tuning& tuning,
         if (entry.kind != "gear") continue;
         if (roll(rng) >= entry.chance * chanceMultiplier) continue;
         const auto& base = tuning.items.itemBases[pickBase(rng)];
-        drops.push_back(items::rollRarityItem(tuning.items, base.id, entry.gearRarity,
-                                              entry.gearTier, rng()));
+        const int tier = entry.gearTier + std::max(0, era - 1) + (elite ? 1 : 0);
+        drops.push_back(items::rollRarityItem(tuning.items, base.id, entry.gearRarity, tier, rng()));
     }
     return drops;
 }

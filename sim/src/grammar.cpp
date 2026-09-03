@@ -74,7 +74,13 @@ ActiveMods gearMods(const tuning::ItemTable& table, const stats::Equipment& equi
         }
         for (const auto& rolled : item.rolledProperties) {
             const auto* def = table.findModifier(rolled.propertyId);
-            if (def) mods.push_back({def->id, def->appliesToTags, def->effectKey, rolled.value, slot});
+            if (!def) continue;
+            // The base caps what the roll can say (D-019 held-back rule), and
+            // the tier it does say brings its breakpoints with it.
+            const items::EffectiveRoll eff = items::effectiveRoll(table, item, rolled);
+            mods.push_back({def->id, def->appliesToTags, def->effectKey, eff.value, slot});
+            for (const auto* bp : items::breakpointsFor(*def, eff.tier))
+                mods.push_back({def->id + "@" + bp->effect, bp->appliesTo, bp->effect, bp->value, slot});
         }
     }
     return mods;

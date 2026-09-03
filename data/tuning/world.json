@@ -26,10 +26,24 @@
     "nest_loot_fraction": 0.4,
     "scar_seconds": 300,
     "tiers": [
-      ["ember_whelp"],
-      ["ember_whelp", "ember_whelp"],
-      ["ember_whelp", "ember_whelp", "ash_hound"],
-      ["shrieker", "ember_whelp", "ember_whelp", "ash_hound"]
+      [
+        "ember_whelp"
+      ],
+      [
+        "ember_whelp",
+        "ember_whelp"
+      ],
+      [
+        "ember_whelp",
+        "ember_whelp",
+        "ash_hound"
+      ],
+      [
+        "shrieker",
+        "ember_whelp",
+        "ember_whelp",
+        "ash_hound"
+      ]
     ],
     "design_purpose": "Base threat as pressure, never demolition (owner steer 3 Sep 2026: a timber house is a house at every tier, and the threat should not vanish at higher tiers either). Once the player has a home - a shelter they have rested in - a pack settles into a nest on the fringe ring (fringe_min_m..fringe_max_m from home) every settle_seconds, up to max_nests, never within spacing_m of another nest or a fresh scar. A standing nest grows a tier every growth_seconds (tiers lists its pack; the top tier brings a shrieker to call packs to your walls), and a fallen member returns after respawn_seconds while the nest stands. Within blight_radius_m rest in the shelter pays uneasy_rest_multiplier of its regen. The exploit guard (owner, 3 Sep): only nest_loot_fraction of nest-born kills drop anything and tearing a nest down drops nothing, so a nest is a nuisance to end, not a crop to grow - waiting only makes the neighbourhood worse. A cleared spot scars for scar_seconds. Nests are not saved: a loaded game starts quiet."
   },
@@ -162,6 +176,12 @@
         {
           "skill_page": true,
           "chance": 0.05
+        },
+        {
+          "item": "preserving_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.05
         }
       ],
       "design_purpose": "Slow hill guardian that makes stone and iron country feel owned; killing it IS mining, so combat feeds construction directly"
@@ -185,6 +205,12 @@
         {
           "skill_page": true,
           "chance": 0.08
+        },
+        {
+          "item": "preserving_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.05
         }
       ]
     },
@@ -227,7 +253,9 @@
       "id": "unfreezable",
       "display_name": "Unfreezable",
       "life_multiplier": 1.6,
-      "immune_statuses": ["chill"],
+      "immune_statuses": [
+        "chill"
+      ],
       "extra_loot_rolls": 1,
       "gear_chance_multiplier": 3.0,
       "page_chance_multiplier": 3.0,
@@ -237,7 +265,9 @@
       "id": "cinder_blooded",
       "display_name": "Cinder-Blooded",
       "life_multiplier": 1.4,
-      "immune_statuses": ["ignite"],
+      "immune_statuses": [
+        "ignite"
+      ],
       "death_burst": {
         "damage": 14,
         "radius_m": 2.6,
@@ -253,7 +283,9 @@
       "display_name": "Stonehide",
       "life_multiplier": 2.4,
       "speed_multiplier": 0.85,
-      "immune_statuses": ["bleed"],
+      "immune_statuses": [
+        "bleed"
+      ],
       "extra_loot_rolls": 1,
       "gear_chance_multiplier": 3.0,
       "page_chance_multiplier": 3.0,

@@ -222,8 +222,33 @@ the era's story when it changes.
   lifts it. The plate, the ingots and the milestones ride in the sim's
   save.
 
-Not yet: refinement (reach) and wrought forms, item tiers as breakpoints,
-mastery, the third era.
+Not yet: refinement (reach) and wrought forms.
+
+## Implemented: items as mechanics (3 Sep 2026)
+
+- **Tiers are breakpoints.** A modifier tier may carry `breakpoints`
+  (`items.json`): extra effects the roll brings at that tier and every
+  tier above it, in the same effect vocabulary the grammar already
+  resolves. Tier-two cold builds chill faster; tier three chills deeper.
+  Tier-two fire burns harder; tier three burns longer. Tier-two life also
+  armours. Seven modifiers gained a third tier.
+- **Bases cap tiers.** `tier_cap` on an item base is the highest tier its
+  metal can express: iron holds two, the new bronze sceptre and bronze
+  mail hold three (craftable at the forge from era two's bronze).
+- **Held back.** A roll above the cap speaks at the cap tier's best value
+  (`items::effectiveRoll`) and the pack screen shows the full sentence
+  greyed with what unleashes it. Gear mods and stat totals both read the
+  effective roll and its breakpoints.
+- **Era-bound drops.** `rollEnemyGear` rolls the table's tier plus one per
+  era past the first, and one more for an elite's kill, so era two's
+  elites drop the tier-three rolls an iron base holds back: the taste.
+- **Preserving Transfer.** The preservation class of ADR-0002 does its
+  first job: at the forge, a Preserving Catalyst (a rare drop from stone
+  husks and shriekers) moves the worn item's rolled modifiers, whole, onto
+  a base of the same slot in the pack; the old base is spent with the
+  catalyst. The forge panel lists one row per target.
+
+Not yet: mastery perks, the third era, wrought forms and refinement.
 
 ## Open questions
 

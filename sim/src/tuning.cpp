@@ -164,9 +164,9 @@ CraftingTable loadCrafting(const std::string& path) {
             process.station = c->get("station").asString();
             process.process = c->get("process").asString();
             process.minimumSkill = readIntMap(c->get("minimum_skill"));
-            process.guaranteedProperty = c->get("guaranteed_property").asString();
-            process.resultTier = c->get("result_tier").asInt();
-            process.minimumRollFractionAtSkill = c->get("minimum_roll_fraction_at_skill").asNumber();
+            if (auto gp = c->find("guaranteed_property")) process.guaranteedProperty = gp->asString();
+            if (auto rt = c->find("result_tier")) process.resultTier = rt->asInt();
+            if (auto fr = c->find("minimum_roll_fraction_at_skill")) process.minimumRollFractionAtSkill = fr->asNumber();
             table.catalystProcesses.push_back(std::move(process));
         }
     }
@@ -269,6 +269,16 @@ ItemTable loadItems(const std::string& path) {
             tier.tier = t->get("tier").asInt();
             tier.minimum = t->get("minimum").asNumber();
             tier.maximum = t->get("maximum").asNumber();
+            if (auto bps = t->find("breakpoints")) {
+                for (const auto& b : bps->asArray()) {
+                    Breakpoint bp;
+                    bp.effect = b->get("effect").asString();
+                    bp.value = b->get("value").asNumber();
+                    bp.appliesTo = readStringArray(b->get("applies_to"));
+                    bp.text = b->get("text").asString();
+                    tier.breakpoints.push_back(std::move(bp));
+                }
+            }
             def.tiers.push_back(tier);
         }
         if (def.tiers.empty()) throw std::runtime_error("items: modifier " + def.id + " needs tiers");
@@ -297,6 +307,7 @@ ItemTable loadItems(const std::string& path) {
             }
         }
         base.allowedModifierTags = readStringArray(b->get("allowed_modifier_tags"));
+        if (auto cap = b->find("tier_cap")) base.tierCap = cap->asInt();
         table.itemBases.push_back(std::move(base));
     }
 
