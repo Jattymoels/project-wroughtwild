@@ -212,11 +212,41 @@ void testShapePlacement(const tuning::Tuning& t) {
     check(player.shapeUnlocked("floor_slab") && player.canAffordPlacement("floor_slab", "wood"),
           "construction: slab placeable before the boss falls");
     player.recordWorldEffect(t.trial.completionUnlock);
-    check(player.shapeUnlocked("roof_wedge") && player.payPlacement("roof_wedge", "wood"),
+    player.inventory["stone"] = 10;
+    check(player.shapeUnlocked("roof_wedge") && !player.payPlacement("roof_wedge", "wood") &&
+              player.payPlacement("roof_wedge", "stone"),
           "construction: wedge placeable after the unlock");
     check(t.crafting.basicTemper.property == "fire_resistance" && t.crafting.basicTemper.tier == 1,
           "crafting: basic temper config loads");
-    check(t.construction.shapes.size() >= 8, "construction: prototype shape set has at least eight shapes");
+    check(t.construction.shapes.size() >= 9, "construction: prototype shape set has at least nine shapes");
+    // Building families: paid in their source, gated by traits.
+    const auto* timber = t.construction.findMaterial("wood");
+    const auto* stone = t.construction.findMaterial("stone");
+    const auto* iron = t.construction.findMaterial("iron");
+    check(timber && stone && iron && iron->source == "iron_ingot" && stone->source == "stone",
+          "materials: three families with their source items");
+    check(timber->hasTrait("joinery") && !stone->hasTrait("joinery") && iron->hasTrait("metal"),
+          "materials: traits load");
+    check(player.shapeAllowsFamily("door", "wood") && player.shapeAllowsFamily("door", "iron") &&
+              !player.shapeAllowsFamily("door", "stone"),
+          "materials: a door takes joinery - timber or iron, never stone");
+    check(!player.shapeAllowsFamily("roof_wedge", "wood") && player.shapeAllowsFamily("roof_wedge", "stone"),
+          "materials: the cut stone wedge is masonry only");
+    const auto* girder = t.construction.findShape("girder");
+    check(girder && girder->cellsLong == 2 && player.shapeAllowsFamily("girder", "iron") &&
+              !player.shapeAllowsFamily("girder", "wood"),
+          "materials: the two-cell girder needs metal");
+    player.inventory["stone"] = 4;
+    player.inventory["iron_ingot"] = 4;
+    check(player.canAffordPlacement("cube", "stone") && player.payPlacement("cube", "stone") &&
+              player.inventory["stone"] == 4 - cube->materialCost,
+          "materials: a stone cube is paid in stone");
+    check(!player.canAffordPlacement("door", "stone"), "materials: a stone door cannot be paid for at all");
+    check(player.payPlacement("girder", "iron") && player.inventory["iron_ingot"] == 4 - girder->materialCost,
+          "materials: a girder is paid in ingots");
+    player.refundRemoval("girder", "iron");
+    check(player.inventory["iron_ingot"] > 4 - girder->materialCost, "materials: refunds return the source item");
+    check(!player.canAffordPlacement("cube", "no_such_family"), "materials: an unknown family is refused");
     int unlockedFromStart = 0;
     for (const auto& shape : t.construction.shapes)
         if (shape.requiresWorldEffect.empty()) ++unlockedFromStart;
@@ -1574,6 +1604,9 @@ void testLattice(const tuning::Tuning& t) {
               footprint(scaled(edgeY, div), div, 1).size() == 2 && footprint(scaled(edgeX, div), div, 1).size() == 2,
           "lattice: a cube covers eight fine volumes, a wall four faces, a post or beam two edges");
     check(footprint(scaled(faceX, div), div, 2).size() == 8, "lattice: a two-cell door covers eight fine faces");
+    check(footprint(scaled(edgeX, div), div, 1, 2).size() == 4 &&
+              near(footprintCentre(scaled(edgeX, div), div, 1, g / div, 2), 11.0, 12.0, 10.0),
+          "lattice: a two-cell girder covers four fine edges and is posed at their middle");
     const double fine = g / div;
     check(near(footprintCentre(scaled(cube, div), div, 1, fine), 10.5, 12.5, 10.5) &&
               near(footprintCentre(scaled(faceX, div), div, 1, fine), 10.0, 12.5, 10.5) &&

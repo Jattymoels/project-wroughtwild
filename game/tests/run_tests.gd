@@ -479,8 +479,15 @@ func _test_sim_extension() -> void:
 	check(sim.shape("cube")["size"] == Vector3.ONE and sim.shape("cube")["unlocked"], "shape: cube view")
 	check(not sim.shape_unlocked("roof_wedge") and sim.shape_unlocked("floor_slab"),
 		"shape: the wedge waits on the completion unlock, the slab does not")
-	check(sim.shape_ids().size() >= 8 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
-		"shape: eight-shape set with sizes from data")
+	check(sim.shape_ids().size() >= 9 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
+		"shape: nine-shape set with sizes from data")
+	check(sim.build_material_ids().size() == 3 and sim.build_material("iron")["source"] == "iron_ingot"
+		and sim.build_material("stone")["texture"] == "masonry", "materials: families through the door")
+	check(sim.shape_allows_family("door", "wood") and not sim.shape_allows_family("door", "stone")
+		and sim.shape("girder")["cells_long"] == 2 and sim.shape("girder")["requires_traits"].has("metal"),
+		"materials: trait gating through the door")
+	check(sim.lattice_pose("girder", {"kind": "edge", "axis": 0, "cell": Vector3i(20, 26, 20)})["centre"] == Vector3(11.0, 13.0, 10.0),
+		"materials: a girder is posed across both its cells")
 
 	# Equipment and tempering (the catalyst banked above is still held).
 	check(sim.equipment().is_empty(), "gear: nothing worn")

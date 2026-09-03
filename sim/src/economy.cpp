@@ -246,24 +246,36 @@ bool PlayerEconomy::shapeUnlocked(const std::string& shapeId) const {
            (shape->requiresWorldEffect.empty() || worldEffectActive(shape->requiresWorldEffect));
 }
 
+bool PlayerEconomy::shapeAllowsFamily(const std::string& shapeId, const std::string& materialFamily) const {
+    const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
+    const tuning::BuildMaterialDef* material = tuning_.construction.findMaterial(materialFamily);
+    return shape != nullptr && material != nullptr && tuning_.construction.shapeAllowsMaterial(*shape, *material);
+}
+
+// A placement is paid in the family's source item (timber in wood, iron
+// in ingots), and only a family with the shape's traits may be used.
 bool PlayerEconomy::canAffordPlacement(const std::string& shapeId, const std::string& materialFamily) const {
     const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
-    return shape != nullptr && shapeUnlocked(shapeId) &&
-           hasAll(inventory, {{materialFamily, shape->materialCost}});
+    const tuning::BuildMaterialDef* material = tuning_.construction.findMaterial(materialFamily);
+    return shape != nullptr && material != nullptr && shapeUnlocked(shapeId) &&
+           shapeAllowsFamily(shapeId, materialFamily) &&
+           hasAll(inventory, {{material->source, shape->materialCost}});
 }
 
 bool PlayerEconomy::payPlacement(const std::string& shapeId, const std::string& materialFamily) {
     if (!canAffordPlacement(shapeId, materialFamily)) return false;
-    remove(inventory, {{materialFamily, tuning_.construction.findShape(shapeId)->materialCost}});
+    remove(inventory, {{tuning_.construction.findMaterial(materialFamily)->source,
+                        tuning_.construction.findShape(shapeId)->materialCost}});
     return true;
 }
 
 int PlayerEconomy::refundRemoval(const std::string& shapeId, const std::string& materialFamily) {
     const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
-    if (shape == nullptr) return 0;
+    const tuning::BuildMaterialDef* material = tuning_.construction.findMaterial(materialFamily);
+    if (shape == nullptr || material == nullptr) return 0;
     const int refund = static_cast<int>(
         std::floor(shape->materialCost * tuning_.construction.removalRefundFraction));
-    if (refund > 0) add(inventory, {{materialFamily, refund}});
+    if (refund > 0) add(inventory, {{material->source, refund}});
     return refund;
 }
 

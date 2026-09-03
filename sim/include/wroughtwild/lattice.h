@@ -104,11 +104,12 @@ Element scaled(const Element& element, int factor);
 // axis, `tall` piece cells stacked upward. A volume spans all three axes, a
 // face the two in its plane, an edge its own axis; `tall` stacks along y
 // (a horizontal edge cannot be tall).
-std::vector<Element> footprint(const Element& anchor, int span, int tall);
+// `longCells` runs an edge on along its own axis (a girder is two).
+std::vector<Element> footprint(const Element& anchor, int span, int tall, int longCells = 1);
 
 // World-space centre of a whole footprint on a registry lattice of
 // `registryGrid`: what the engine poses the piece at.
-Vec3 footprintCentre(const Element& anchor, int span, int tall, double registryGrid);
+Vec3 footprintCentre(const Element& anchor, int span, int tall, double registryGrid, int longCells = 1);
 
 // One placed piece.
 struct Piece {

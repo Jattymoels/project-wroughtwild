@@ -145,6 +145,24 @@ func _physics_process(_delta: float) -> void:
 				"fine: a shape without a twin stays full size in fine mode")
 			check(not placement.toggle_fine() and placement.select_shape(&"wall_panel")
 				and placement.placing_shape() == &"wall_panel", "fine: G again restores full size")
+			# Materials: Q cycles the families you carry; a family without the
+			# shape's traits is refused and the HUD says why.
+			var sim := _player.inventory.get_sim()
+			check(placement.carried_materials() == PackedStringArray(["wood"]), "materials: only timber carried")
+			sim.add_material("stone", 6)
+			check(placement.cycle_material() == &"stone" and placement.material_label() == "Stone",
+				"materials: Q moves to stone once you carry it")
+			check(placement.select_shape(&"door") and not placement.family_allowed()
+				and placement.family_refusal().contains("joinery"), "materials: a stone door is refused with a reason")
+			check(placement.select_shape(&"cube") and placement.family_allowed(), "materials: a stone cube is fine")
+			var stone_cube := placement.place_piece({"kind": "volume", "axis": 0, "cell": Vector3i(20, 6, 20)}, &"cube", &"stone")
+			check(stone_cube != null and stone_cube.material_family == &"stone"
+				and PieceLook.material_for(sim, &"stone") != PieceLook.material_for(sim, &"wood"),
+				"materials: a stone cube wears the stone look")
+			placement.remove_piece(stone_cube)
+			check(placement.cycle_material() == &"wood", "materials: Q cycles back to timber")
+			sim.consume_material("stone", 6)
+			placement.select_shape(&"wall_panel")
 		17:
 			# Shelter (building slice 3): walls, floor and roof around the
 			# player's cell make a room; the sim's flood fill says so, and
@@ -420,12 +438,18 @@ func _physics_process(_delta: float) -> void:
 			check(_player.placement.select_shape(&"roof_wedge"), "unlock: wedge selectable")
 			check(_player.placement.shape_form == "wedge" and _player.placement.rotatable(),
 				"unlock: the wedge is an oriented piece with its own form")
+			# A cut stone form: masonry only, so build it in stone.
+			sim.add_material("stone", 4)
+			check(not _player.placement.family_allowed(), "unlock: the wedge refuses timber")
+			_player.placement.selected_material_family = &"stone"
+			check(_player.placement.family_allowed(), "unlock: the wedge takes stone")
 			_blocks_before = _count_placed_blocks()
 			_player.placement.set_build_mode_enabled(true)
 		66:
 			check(_player.placement.try_place_block(), "unlock: wedge placed")
 			check(_count_placed_blocks() == _blocks_before + 1, "unlock: wedge in the scene")
 			_player.placement.set_build_mode_enabled(false)
+			_player.placement.selected_material_family = &"wood"
 			# Wear armour and quench it at the upgraded forge, from the panel.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			sim.add_material("iron_fittings", 6)

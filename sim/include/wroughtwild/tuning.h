@@ -371,6 +371,24 @@ struct ShapeDef {
     // One line the HUD shows when the shape is selected (how to use it).
     std::string hint;
     std::string requiresWorldEffect; // empty = available from the start
+    // Material traits the shape needs (all of them): a door needs joinery,
+    // a stone-cut wedge masonry, a girder metal. Empty = any family.
+    std::vector<std::string> requiresTraits;
+    // For beams: piece cells the footprint runs along its edge (a girder
+    // is two). 1 for everything else.
+    int cellsLong = 1;
+};
+
+// A building material family (construction.json "materials"): what it is
+// paid with, what it can be worked into, and how it looks.
+struct BuildMaterialDef {
+    std::string id;
+    std::string displayName;
+    std::string source;              // inventory item it is paid in (wood, stone, iron_ingot)
+    std::vector<std::string> traits; // what the family can be worked into
+    std::string texture;             // engine texture key for placed pieces
+    std::string tint;                // "#rrggbb" multiplier over the texture
+    bool hasTrait(const std::string& trait) const;
 };
 
 struct ConstructionTable {
@@ -380,8 +398,12 @@ struct ConstructionTable {
     double placementRangeMetres = 10.0;
     double removalRefundFraction = 0.0;
     std::vector<ShapeDef> shapes;
+    std::vector<BuildMaterialDef> materials;
 
     const ShapeDef* findShape(const std::string& id) const;
+    const BuildMaterialDef* findMaterial(const std::string& id) const;
+    // True when the family has every trait the shape asks for.
+    bool shapeAllowsMaterial(const ShapeDef& shape, const BuildMaterialDef& material) const;
 };
 
 // --- combat_realtime.json ----------------------------------------------------

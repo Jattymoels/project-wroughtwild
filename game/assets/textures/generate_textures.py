@@ -91,6 +91,28 @@ def main() -> None:
     write_png("bark.png", speckle(p["bark"], 0.10, rng, (p["bark_dark"], 0.16)))
     write_png("leaves.png", speckle(p["leaf"], 0.17, rng, (p["leaf_dark"], 0.12)))
 
+    # Building families (construction.json materials): each family reads
+    # as its own surface at a glance. Planks: bark tones with a dark seam
+    # every four rows. Masonry: stone with mortar lines. Iron plate: dark
+    # steel with rivet accents in rust.
+    write_png("planks.png", banded(speckle(tuple(c + 26 for c in p["bark"]), 0.08, rng), p["bark_dark"], 4, 0))
+    write_png("masonry.png", banded(speckle(p["stone"], 0.09, rng), p["stone_dark"], 8, 4, brick=True))
+    write_png("iron_plate.png", speckle(tuple(c - 10 for c in p["stone_dark"]), 0.06, rng, (p["iron_rust"], 0.04)))
+
+
+def banded(pixels: list, seam, period: int, offset: int, brick: bool = False) -> list:
+    """Dark seam rows every `period` rows (plank edges); with brick=True,
+    vertical seams too, staggered per course, for masonry."""
+    seam = tuple(clamp(c) for c in seam)
+    for y in range(SIZE):
+        course = (y + offset) // period
+        for x in range(SIZE):
+            if (y + offset) % period == 0:
+                pixels[y][x] = seam
+            elif brick and (x + (course % 2) * (period // 2)) % period == 0:
+                pixels[y][x] = seam
+    return pixels
+
 
 if __name__ == "__main__":
     main()

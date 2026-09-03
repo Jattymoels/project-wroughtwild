@@ -48,6 +48,8 @@ var fine_mode := false
 var _fine_twins: Dictionary = {}
 
 @export var selected_shape: StringName = &"cube"
+## The building family (construction.json materials) placements are paid
+## in and look like; Q cycles the families whose source you carry.
 @export var selected_material_family: StringName = &"wood"
 ## When non-empty, build mode is placing this crafted station kit instead of
 ## a shape: placing consumes the kit item and founds its station.
@@ -202,6 +204,46 @@ func selection_label() -> String:
 ## True when R does anything for the selection.
 func rotatable() -> bool:
 	return shape_oriented
+
+
+## Families the player could build in right now: every family whose
+## source item is in the pack, or the current one when none is.
+func carried_materials() -> PackedStringArray:
+	var ids := PackedStringArray()
+	for id in _sim().build_material_ids():
+		if _sim().build_material(id).get("carried", 0) > 0:
+			ids.append(id)
+	if ids.is_empty():
+		ids.append(String(selected_material_family))
+	return ids
+
+
+## Next carried family (Q); returns the new selection.
+func cycle_material() -> StringName:
+	var ids := carried_materials()
+	var index := 0
+	for i in ids.size():
+		if ids[i] == String(selected_material_family):
+			index = (i + 1) % ids.size()
+	selected_material_family = StringName(ids[index])
+	return selected_material_family
+
+
+func material_label() -> String:
+	return _sim().build_material(selected_material_family).get("display_name", String(selected_material_family))
+
+
+## True when the selected family can be worked into the selected shape.
+func family_allowed() -> bool:
+	return selected_kit != &"" or _sim().shape_allows_family(_target_shape(), selected_material_family)
+
+
+## Why the family is refused, for the HUD ("needs joinery"); "" when fine.
+func family_refusal() -> String:
+	if family_allowed():
+		return ""
+	var traits: PackedStringArray = _sim().shape(_target_shape()).get("requires_traits", PackedStringArray())
+	return "needs " + ", ".join(traits)
 
 
 func _find_terrain() -> Terrain:
@@ -478,7 +520,7 @@ func place_piece(element: Dictionary, shape_id: StringName, family: StringName,
 	var block: PlacedBlock = PLACED_BLOCK_SCENE.instantiate()
 	_world_root().add_child(block)
 	block.init_piece(shape_id, family, element, rotation_step, String(info.get("form", "box")),
-		info["size"], pose["centre"], pose["yaw"])
+		info["size"], pose["centre"], pose["yaw"], PieceLook.material_for(_sim(), family))
 	refresh_trims()
 	return block
 
@@ -564,7 +606,8 @@ func refresh_trims() -> void:
 		var box := BoxMesh.new()
 		box.size = Vector3(TRIM_SIZE, registry_grid, TRIM_SIZE)
 		trim.mesh = box
-		trim.material_override = _trim_material
+		var family: String = edge.get("family", "")
+		trim.material_override = PieceLook.material_for(_sim(), StringName(family)) if family != "" else _trim_material
 		_trims_root.add_child(trim)
 		trim.global_position = edge["centre"]
 		_trims[key] = trim

@@ -106,6 +106,10 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("shape_material_cost", "shape_id"), &WroughtwildSim::shape_material_cost);
     ClassDB::bind_method(D_METHOD("shape", "shape_id"), &WroughtwildSim::shape);
     ClassDB::bind_method(D_METHOD("shape_unlocked", "shape_id"), &WroughtwildSim::shape_unlocked);
+    ClassDB::bind_method(D_METHOD("build_material_ids"), &WroughtwildSim::build_material_ids);
+    ClassDB::bind_method(D_METHOD("build_material", "material_id"), &WroughtwildSim::build_material);
+    ClassDB::bind_method(D_METHOD("shape_allows_family", "shape_id", "material_family"),
+                         &WroughtwildSim::shape_allows_family);
     ClassDB::bind_method(D_METHOD("equipment"), &WroughtwildSim::equipment);
     ClassDB::bind_method(D_METHOD("equip_from_inventory", "base_id"), &WroughtwildSim::equip_from_inventory);
     ClassDB::bind_method(D_METHOD("catalyst_process", "process_id"), &WroughtwildSim::catalyst_process);
@@ -951,6 +955,8 @@ Dictionary WroughtwildSim::shape(const String& shape_id) const {
     d["fine"] = s->fine;
     d["fine_of"] = to_godot(s->fineOf);
     d["hint"] = to_godot(s->hint);
+    d["requires_traits"] = strings_to_packed(s->requiresTraits);
+    d["cells_long"] = s->cellsLong;
     d["requires_world_effect"] = to_godot(s->requiresWorldEffect);
     d["unlocked"] = player_->shapeUnlocked(s->id);
     return d;
@@ -958,6 +964,42 @@ Dictionary WroughtwildSim::shape(const String& shape_id) const {
 
 bool WroughtwildSim::shape_unlocked(const String& shape_id) const {
     return require_loaded("shape_unlocked") && player_->shapeUnlocked(to_std(shape_id));
+}
+
+PackedStringArray WroughtwildSim::build_material_ids() const {
+    PackedStringArray ids;
+    if (!require_loaded("build_material_ids")) {
+        return ids;
+    }
+    for (const auto& m : tuning_->construction.materials) {
+        ids.push_back(to_godot(m.id));
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::build_material(const String& material_id) const {
+    Dictionary d;
+    if (!require_loaded("build_material")) {
+        return d;
+    }
+    const auto* m = tuning_->construction.findMaterial(to_std(material_id));
+    if (m == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(m->id);
+    d["display_name"] = to_godot(m->displayName);
+    d["source"] = to_godot(m->source);
+    d["traits"] = strings_to_packed(m->traits);
+    d["texture"] = to_godot(m->texture);
+    d["tint"] = to_godot(m->tint);
+    auto carried = player_->inventory.find(m->source);
+    d["carried"] = carried == player_->inventory.end() ? 0 : carried->second;
+    return d;
+}
+
+bool WroughtwildSim::shape_allows_family(const String& shape_id, const String& material_family) const {
+    return require_loaded("shape_allows_family") &&
+           player_->shapeAllowsFamily(to_std(shape_id), to_std(material_family));
 }
 
 namespace {
@@ -1944,6 +1986,7 @@ struct ShapeLattice {
     double registryGrid = 1.0;
     int span = 1;
     int tall = 1;
+    int longCells = 1;
 };
 
 bool shape_lattice(const wroughtwild::tuning::Tuning& tuning, const String& shape_id, ShapeLattice& out) {
@@ -1957,12 +2000,13 @@ bool shape_lattice(const wroughtwild::tuning::Tuning& tuning, const String& shap
     out.span = out.shape->fine ? 1 : divisions;
     out.pieceGrid = out.registryGrid * out.span;
     out.tall = std::max(1, out.shape->cellsTall);
+    out.longCells = std::max(1, out.shape->cellsLong);
     return true;
 }
 
 Dictionary pose_of(const ShapeLattice& sl, const Element& anchor) {
     Dictionary d;
-    d["centre"] = to_vector(wroughtwild::lattice::footprintCentre(anchor, sl.span, sl.tall, sl.registryGrid));
+    d["centre"] = to_vector(wroughtwild::lattice::footprintCentre(anchor, sl.span, sl.tall, sl.registryGrid, sl.longCells));
     d["yaw_turns"] = wroughtwild::lattice::yawTurns(anchor);
     return d;
 }
@@ -2020,7 +2064,7 @@ bool WroughtwildSim::structure_touches(const String& shape_id, const Dictionary&
     if (!require_loaded("structure_touches") || !shape_lattice(*tuning_, shape_id, sl) || !element_from(element, e)) {
         return false;
     }
-    return structure_.near(wroughtwild::lattice::footprint(e, sl.span, sl.tall), 0);
+    return structure_.near(wroughtwild::lattice::footprint(e, sl.span, sl.tall, sl.longCells), 0);
 }
 
 bool WroughtwildSim::structure_near_point(const Vector3& point) const {
@@ -2051,7 +2095,7 @@ bool WroughtwildSim::structure_free_for(const String& shape_id, const Dictionary
     if (!require_loaded("structure_free_for") || !shape_lattice(*tuning_, shape_id, sl) || !element_from(element, e)) {
         return false;
     }
-    for (const auto& covered : wroughtwild::lattice::footprint(e, sl.span, sl.tall)) {
+    for (const auto& covered : wroughtwild::lattice::footprint(e, sl.span, sl.tall, sl.longCells)) {
         if (structure_.occupied(covered)) {
             return false;
         }
@@ -2081,7 +2125,7 @@ bool WroughtwildSim::structure_place(const Dictionary& element, const String& sh
     wroughtwild::lattice::Piece piece;
     piece.anchor = e;
     piece.slot = sl.slot;
-    piece.footprint = wroughtwild::lattice::footprint(e, sl.span, sl.tall);
+    piece.footprint = wroughtwild::lattice::footprint(e, sl.span, sl.tall, sl.longCells);
     piece.shapeId = to_std(shape_id);
     piece.family = to_std(family);
     piece.rotationStep = ((rotation_step % 4) + 4) % 4;
@@ -2112,6 +2156,8 @@ Array WroughtwildSim::structure_trim_edges() const {
     for (const auto& e : structure_.trimEdges()) {
         Dictionary d = element_to(e);
         d["centre"] = to_vector(wroughtwild::lattice::centre(e, grid));
+        const auto walls = structure_.wallsAt(e);
+        d["family"] = walls.empty() ? String() : to_godot(walls.front()->family);
         out.push_back(d);
     }
     return out;

@@ -213,6 +213,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		placement.try_remove_block()
 	elif event.is_action_pressed("rotate_preview"):
 		placement.rotate_preview()
+	elif event.is_action_pressed("cycle_material"):
+		placement.cycle_material()
+		hud.notify("Building in %s" % placement.material_label())
 	elif event.is_action_pressed("toggle_fine"):
 		var fine := placement.toggle_fine()
 		hud.notify("Fine pieces: %s" % ("on - half-scale twins of the basic shapes" if fine else "off"))

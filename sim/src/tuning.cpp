@@ -85,6 +85,15 @@ const ModifierTier* ModifierDef::findTier(int tier) const {
     return nullptr;
 }
 const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
+const BuildMaterialDef* ConstructionTable::findMaterial(const std::string& id) const { return findById(materials, id); }
+bool BuildMaterialDef::hasTrait(const std::string& trait) const {
+    return std::find(traits.begin(), traits.end(), trait) != traits.end();
+}
+bool ConstructionTable::shapeAllowsMaterial(const ShapeDef& shape, const BuildMaterialDef& material) const {
+    for (const auto& trait : shape.requiresTraits)
+        if (!material.hasTrait(trait)) return false;
+    return true;
+}
 const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) const {
     auto it = behaviours.find(id);
     return it == behaviours.end() ? nullptr : &it->second;
@@ -366,11 +375,35 @@ ConstructionTable loadConstruction(const std::string& path) {
         if (auto fine = s->find("fine")) shape.fine = fine->asBool();
         if (auto fineOf = s->find("fine_of")) shape.fineOf = fineOf->asString();
         if (auto hint = s->find("hint")) shape.hint = hint->asString();
+        if (auto traits = s->find("requires_traits")) shape.requiresTraits = readStringArray(*traits);
+        if (auto lengthCells = s->find("cells_long")) {
+            shape.cellsLong = lengthCells->asInt();
+            if (shape.cellsLong < 1) throw std::runtime_error("construction: shape '" + shape.id + "' cells_long must be >= 1");
+            if (shape.element != "beam")
+                throw std::runtime_error("construction: shape '" + shape.id + "' cells_long is for beams");
+        }
         if (!shape.fineOf.empty() && !shape.fine)
             throw std::runtime_error("construction: shape '" + shape.id + "' names fine_of but is not fine");
         if (auto effect = s->find("requires_world_effect"))
             shape.requiresWorldEffect = effect->asString();
         table.shapes.push_back(std::move(shape));
+    }
+    for (const auto& m : doc->get("materials").asArray()) {
+        BuildMaterialDef material;
+        material.id = m->get("id").asString();
+        material.displayName = m->get("display_name").asString();
+        material.source = m->get("source").asString();
+        material.traits = readStringArray(m->get("traits"));
+        material.texture = m->get("texture").asString();
+        if (auto tint = m->find("tint")) material.tint = tint->asString();
+        table.materials.push_back(std::move(material));
+    }
+    if (table.materials.empty()) throw std::runtime_error("construction: at least one building material is needed");
+    for (const auto& shape : table.shapes) {
+        bool workable = false;
+        for (const auto& material : table.materials)
+            if (table.shapeAllowsMaterial(shape, material)) workable = true;
+        if (!workable) throw std::runtime_error("construction: no material can be worked into shape '" + shape.id + "'");
     }
     for (const auto& shape : table.shapes) {
         if (shape.fineOf.empty()) continue;

@@ -173,12 +173,13 @@ Element scaled(const Element& element, int factor) {
     return e;
 }
 
-std::vector<Element> footprint(const Element& anchor, int span, int tall) {
+std::vector<Element> footprint(const Element& anchor, int span, int tall, int longCells) {
     bool spans[3];
     spannedAxes(anchor, spans);
     int extent[3];
     for (int a = 0; a < 3; ++a) extent[a] = spans[a] ? span : 1;
     if (spans[1]) extent[1] = span * std::max(1, tall);
+    if (anchor.kind == ElementKind::Edge) extent[anchor.axis] = span * std::max(1, longCells);
     std::vector<Element> out;
     for (int dx = 0; dx < extent[0]; ++dx)
         for (int dy = 0; dy < extent[1]; ++dy)
@@ -190,14 +191,17 @@ std::vector<Element> footprint(const Element& anchor, int span, int tall) {
     return out;
 }
 
-Vec3 footprintCentre(const Element& anchor, int span, int tall, double registryGrid) {
+Vec3 footprintCentre(const Element& anchor, int span, int tall, double registryGrid, int longCells) {
     bool spans[3];
     spannedAxes(anchor, spans);
     Vec3 c = centre(anchor, registryGrid);
     const double half = registryGrid * 0.5;
-    if (spans[0]) c.x += (span - 1) * half;
-    if (spans[1]) c.y += (span * std::max(1, tall) - 1) * half;
-    if (spans[2]) c.z += (span - 1) * half;
+    int extent[3] = {span, span, span};
+    if (spans[1]) extent[1] = span * std::max(1, tall);
+    if (anchor.kind == ElementKind::Edge) extent[anchor.axis] = span * std::max(1, longCells);
+    if (spans[0]) c.x += (extent[0] - 1) * half;
+    if (spans[1]) c.y += (extent[1] - 1) * half;
+    if (spans[2]) c.z += (extent[2] - 1) * half;
     return c;
 }
 

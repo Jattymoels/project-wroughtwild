@@ -16,6 +16,7 @@ LMB places in build mode  ·  C craft by hand  ·  I pack
 B build mode  ·  Tab shape or kit  ·  X remove  ·  R turn stairs, wedges, a door's hinge
 Pieces snap to the nearest free cell, face or edge you look at: walls join walls, posts stack
 G fine pieces: half-scale twins of the cube, wall, post, beam and slab  ·  E opens a door
+Q building material: timber, stone or iron from your pack - doors need joinery, cut stone needs stone, girders need iron
 1–4 skill bar (assign skills in the pack screen; Shift also dashes)
 Mobs drop skill pages that teach new skills, and rolled gear that scales them
 F1–F3 spike mods (debug: force one modifier on)
@@ -409,11 +410,13 @@ func refresh() -> void:
 	if placement != null:
 		if placement.build_mode_enabled:
 			_build_chip.modulate = UiTheme.FROST
-			_build_chip.text = "B  Building: %s  (%s, %d each  ·  Tab change%s%s)" % [
-				placement.selection_label(), pretty(placement.selected_material_family),
+			var refusal := placement.family_refusal()
+			_build_chip.text = "B  Building: %s  (%s, %d each  ·  Tab change  ·  Q material%s%s%s)" % [
+				placement.selection_label(), placement.material_label(),
 				sim.shape(placement.placing_shape()).get("material_cost", 0),
 				"  ·  R turn" if placement.rotatable() else "",
-				"  ·  G fine" if placement.has_fine_twin() else ""]
+				"  ·  G fine" if placement.has_fine_twin() else "",
+				"  ·  " + refusal if refusal != "" else ""]
 		else:
 			_build_chip.modulate = UiTheme.MUTED
 			_build_chip.text = "B  build"
