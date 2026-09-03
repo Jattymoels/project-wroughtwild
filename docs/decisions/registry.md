@@ -55,8 +55,10 @@ Statuses:
   were one bug — cell chosen by the ray, position-in-cell chosen by R. The
   owner asked for "an innovative thought process ... intuitive from the
   engine's point of view"; the lattice answer was proposed and accepted
-  ("Okay perfect lets do it"). Slices 2 (vocabulary, fine mode) and 3
-  (enclosure → shelter regen) follow.
+  ("Okay perfect lets do it"). Slice 2 (vocabulary: registry at half
+  cells with footprints, floor slab un-gated, stairs, a two-cell door, the
+  roof wedge as the trial reward) landed the same day; fine mode and
+  enclosure → shelter regen follow.
 
 ## Registering a decision
 

@@ -21,10 +21,11 @@ var _death_spot := Vector3.ZERO
 var _wood_before_trial := 0
 var _blocks_before := 0
 var _corner_panel: PlacedBlock
-## The x-face, z-face and vertical edge that all meet at lattice corner (5, 3, 5).
-const CORNER_FACE_X := {"kind": "face", "axis": 0, "cell": Vector3i(5, 3, 5)}
-const CORNER_FACE_Z := {"kind": "face", "axis": 2, "cell": Vector3i(5, 3, 5)}
-const CORNER_EDGE := {"kind": "edge", "axis": 1, "cell": Vector3i(5, 3, 5)}
+## The x-face, z-face and vertical edge that all meet at build-grid corner
+## (5, 3, 5) - registry coordinates run at half cells, so (10, 6, 10).
+const CORNER_FACE_X := {"kind": "face", "axis": 0, "cell": Vector3i(10, 6, 10)}
+const CORNER_FACE_Z := {"kind": "face", "axis": 2, "cell": Vector3i(10, 6, 10)}
+const CORNER_EDGE := {"kind": "edge", "axis": 1, "cell": Vector3i(10, 6, 10)}
 
 
 func check(condition: bool, label: String) -> void:
@@ -82,12 +83,12 @@ func _physics_process(_delta: float) -> void:
 			# world rules are judged next frame, once it is in the physics space.
 			var placement := _player.placement
 			_corner_panel = placement.place_piece(CORNER_FACE_X, &"wall_panel", &"wood")
-			check(_corner_panel != null and _corner_panel.element["cell"] == Vector3i(5, 3, 5),
+			check(_corner_panel != null and _corner_panel.element["cell"] == Vector3i(10, 6, 10),
 				"corner: the panel stands on its element")
 			check(_corner_panel.global_position.is_equal_approx(Vector3(5.0, 3.5, 5.5))
 				and absf(_corner_panel.rotation.y - PI / 2.0) < 0.001,
 				"corner: an x-face panel sits on the x = 5 plane, turned a quarter")
-			check(placement.trim_count() == 2, "corner: a lone panel is framed at both ends")
+			check(placement.trim_count() == 4, "corner: a lone panel is framed at both ends (two half-cell trims each)")
 		13:
 			var placement := _player.placement
 			check(placement.select_shape(&"wall_panel"), "corner: wall panel selectable")
@@ -97,14 +98,26 @@ func _physics_process(_delta: float) -> void:
 			check(placement.element_accepts(CORNER_EDGE), "corner: a post stands on the edge the walls share")
 			check(not placement.element_accepts(CORNER_FACE_Z), "corner: a post may not stand on a face")
 			check(placement.select_shape(&"cube"), "corner: cube selectable")
-			check(placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(5, 3, 5)})
-				and placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(4, 3, 5)}),
+			check(placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(10, 6, 10)})
+				and placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(8, 6, 10)}),
 				"corner: a cube fills either cell a wall divides - the wall belongs to neither")
+			check(not placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(9, 6, 10)}),
+				"corner: a full-size cube must sit on the build grid")
 			# The perpendicular wall makes the shared edge a corner: a trim grows there.
 			var second := placement.place_piece(CORNER_FACE_Z, &"wall_panel", &"wood")
-			check(second != null and placement.trim_count() == 3, "corner: walls meeting at an angle grow a post")
+			check(second != null and placement.trim_count() == 6, "corner: walls meeting at an angle grow a post")
 			check(placement.remove_piece(second) and placement.remove_piece(_corner_panel)
 				and placement.trim_count() == 0, "corner: removing the walls removes their trims")
+			# A door: two cells tall, swings on E, and its opening cannot be straddled.
+			check(placement.select_shape(&"door"), "door: selectable from the start")
+			var door := placement.place_piece(CORNER_FACE_X, &"door", &"wood")
+			check(door != null and door.is_door() and door.global_position.is_equal_approx(Vector3(5.0, 4.0, 5.5)),
+				"door: stands two cells tall on its face")
+			check(placement.select_shape(&"wall_panel")
+				and not placement.element_accepts({"kind": "face", "axis": 0, "cell": Vector3i(10, 8, 10)}),
+				"door: the face above it is the door's")
+			check(door.toggle() and door.open and not door.toggle() and not door.open, "door: E swings it open and shut")
+			check(placement.remove_piece(door) and placement.trim_count() == 0, "door: removed with its trims")
 			check(_player.inventory.get_sim().structure_pieces().is_empty(), "corner: the structure is empty again")
 		12:
 			# Forge site: refused while unaffordable, built through the sim once paid for.
@@ -362,15 +375,15 @@ func _physics_process(_delta: float) -> void:
 		64:
 			# The completion unlock widens construction: the slab is placeable.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
-			check(sim.shape_unlocked("stonecut_slab"), "unlock: slab unlocked by the boss kill")
-			check(_player.placement.select_shape(&"stonecut_slab"), "unlock: slab selectable")
-			check(_player.placement.shape_size.y < 1.0 and _player.placement.shape_slot == &"floor",
-				"unlock: slab is a thin floor piece")
+			check(sim.shape_unlocked("roof_wedge"), "unlock: roof wedge unlocked by the boss kill")
+			check(_player.placement.select_shape(&"roof_wedge"), "unlock: wedge selectable")
+			check(_player.placement.shape_form == "wedge" and _player.placement.rotatable(),
+				"unlock: the wedge is an oriented piece with its own form")
 			_blocks_before = _count_placed_blocks()
 			_player.placement.set_build_mode_enabled(true)
 		66:
-			check(_player.placement.try_place_block(), "unlock: slab placed")
-			check(_count_placed_blocks() == _blocks_before + 1, "unlock: slab in the scene")
+			check(_player.placement.try_place_block(), "unlock: wedge placed")
+			check(_count_placed_blocks() == _blocks_before + 1, "unlock: wedge in the scene")
 			_player.placement.set_build_mode_enabled(false)
 			# Wear armour and quench it at the upgraded forge, from the panel.
 			var sim: WroughtwildSim = _player.inventory.get_sim()

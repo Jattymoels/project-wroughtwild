@@ -345,11 +345,23 @@ struct ShapeDef {
     // "block" (a cell), "wall" (a vertical face), "floor" (a horizontal
     // face), "post" (a vertical edge) or "beam" (a horizontal edge).
     std::string element = "block";
+    // The mesh and collision the engine builds: "box" (default), "stairs",
+    // "wedge" or "door".
+    std::string form = "box";
+    // True when the rotation key turns the piece (stairs, wedge, the
+    // door's hinge side); faces and edges otherwise orient themselves.
+    bool oriented = false;
+    // Piece cells the footprint stacks upward (the door is two).
+    int cellsTall = 1;
+    // True for half-scale pieces that live on the registry lattice itself.
+    bool fine = false;
     std::string requiresWorldEffect; // empty = available from the start
 };
 
 struct ConstructionTable {
     double gridSizeMetres = 1.0;
+    // How much finer the occupancy registry is than the build grid.
+    int latticeDivisions = 2;
     double placementRangeMetres = 10.0;
     double removalRefundFraction = 0.0;
     std::vector<ShapeDef> shapes;

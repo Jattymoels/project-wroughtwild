@@ -1,20 +1,23 @@
 class_name GridPlacement
 extends Node
-## Lattice placement with a validity-coloured preview (Wave 4, building
-## intensive slice 1). Every piece occupies one ELEMENT of the cubic grid -
-## a cell, a face two cells share, or an edge four share - and the one
-## placement rule is: the preview goes to the nearest free element of the
-## piece's kind to the point you are looking at. Walls, floors, posts and
-## beams take their orientation from the element; only oriented blocks (the
-## step) still turn with R.
+## Lattice placement with a validity-coloured preview (Wave 4 building
+## intensive, D-017). Every piece is anchored on one ELEMENT of the cubic
+## grid - a cell, a face two cells share, or an edge four share - and the
+## one placement rule is: the preview goes to the nearest free element of
+## the piece's kind to the point you are looking at. Walls, floors, posts
+## and beams take their orientation from the element; only oriented shapes
+## (stairs, the roof wedge, a door's hinge side) turn with R.
 ##
-## The sim owns the geometry (which elements sit around a hit, their poses)
-## and the occupancy registry; this node owns the camera trace, what the
-## engine's world knows (terrain, props, mobs) and the preview.
+## The sim owns the geometry (which elements sit around a hit, their poses,
+## footprints on the finer registry) and the occupancy registry; this node
+## owns the camera trace, what the engine's world knows (terrain, props,
+## mobs) and the preview.
 
 const PLACED_BLOCK_SCENE := preload("res://scenes/placed_block.tscn")
 const STATION_SITE_SCENE := preload("res://scenes/station_site.tscn")
 const KIT_PREVIEW_SIZE := Vector3(1.8, 1.2, 1.8)
+## Kits stand in a whole cell: they target the lattice as this shape does.
+const KIT_STAND_IN_SHAPE := &"cube"
 ## Corner trims: the post visual walls grow where they end or meet.
 const TRIM_SIZE := 0.3
 const TRIM_COLOUR := Color(0.66, 0.66, 0.69)
@@ -24,11 +27,17 @@ const TRIM_COLOUR := Color(0.66, 0.66, 0.69)
 ## applied by the rules library, never computed here.
 var grid_size: float = 1.0
 var placement_range: float = 10.0
+## The occupancy registry's cell (grid_size / lattice_divisions).
+var registry_grid: float = 0.5
 ## Metres, from the selected shape's size_m.
 var shape_size := Vector3.ONE
 ## Which kind of element the selected shape occupies (construction.json
 ## element): block, wall, floor, post or beam.
 var shape_slot: StringName = &"block"
+## construction.json form: box | stairs | wedge | door.
+var shape_form := "box"
+## True when R turns the selection.
+var shape_oriented := false
 
 @export var selected_shape: StringName = &"cube"
 @export var selected_material_family: StringName = &"wood"
@@ -44,7 +53,7 @@ var preview_valid := false
 var preview_visible := false
 ## The element the preview targets ({kind, axis, cell}); empty when hidden.
 var preview_element: Dictionary = {}
-## Quarter turns for oriented blocks (R). Ignored by every other slot.
+## Quarter turns for oriented shapes (R). Ignored by every other shape.
 var preview_rotation_step := 0
 
 var _preview_mesh: MeshInstance3D
@@ -64,8 +73,9 @@ const INVALID_COLOR := Color(0.9, 0.1, 0.1, 0.5)
 func _ready() -> void:
 	grid_size = _sim().grid_size()
 	placement_range = _sim().placement_range()
-	select_shape(selected_shape)
+	registry_grid = _sim().lattice_registry_grid()
 	_create_preview_mesh()
+	select_shape(selected_shape)
 
 
 func unlocked_shapes() -> PackedStringArray:
@@ -84,8 +94,10 @@ func select_shape(shape_id: StringName) -> bool:
 	selected_shape = shape_id
 	shape_size = info["size"]
 	shape_slot = StringName(info.get("element", "block"))
+	shape_form = String(info.get("form", "box"))
+	shape_oriented = bool(info.get("oriented", false))
 	if _preview_mesh != null:
-		(_preview_mesh.mesh as BoxMesh).size = shape_size
+		_preview_mesh.mesh = PieceMesh.preview_mesh_for(shape_form, shape_size)
 	return true
 
 
@@ -122,8 +134,16 @@ func _select_kit(kit_id: StringName) -> void:
 	selected_kit = kit_id
 	shape_size = KIT_PREVIEW_SIZE
 	shape_slot = &"block"
+	shape_form = "box"
+	shape_oriented = true
 	if _preview_mesh != null:
-		(_preview_mesh.mesh as BoxMesh).size = shape_size
+		_preview_mesh.mesh = PieceMesh.preview_mesh_for("box", shape_size)
+
+
+## The shape the lattice is asked about: the selection, or the kit's
+## whole-cell stand-in.
+func _target_shape() -> StringName:
+	return KIT_STAND_IN_SHAPE if selected_kit != &"" else selected_shape
 
 
 ## What the HUD should call the current selection.
@@ -133,10 +153,9 @@ func selection_label() -> String:
 	return _sim().shape(selected_shape).get("display_name", String(selected_shape))
 
 
-## True when R does anything for the selection: an oriented block (one that
-## does not fill its cell). Faces and edges orient themselves.
+## True when R does anything for the selection.
 func rotatable() -> bool:
-	return selected_kit == &"" and shape_slot == &"block" and not shape_size.is_equal_approx(Vector3.ONE * grid_size)
+	return shape_oriented
 
 
 func _find_terrain() -> Terrain:
@@ -167,9 +186,7 @@ func _create_preview_mesh() -> void:
 	_preview_material.albedo_color = VALID_COLOR
 
 	_preview_mesh = MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size = shape_size
-	_preview_mesh.mesh = box
+	_preview_mesh.mesh = PieceMesh.preview_mesh_for(shape_form, shape_size)
 	_preview_mesh.material_override = _preview_material
 	_preview_mesh.visible = false
 	# Added top-level so the preview moves in world space, not with the player.
@@ -200,19 +217,34 @@ func _get_view_trace() -> Dictionary:
 	return camera.get_world_3d().direct_space_state.intersect_ray(query)
 
 
-## Where a piece of `size` stands on an element: the element's centre and
-## yaw from the sim, blocks shorter than the cell resting on the cell floor,
-## oriented blocks turned by their rotation step.
-func piece_pose(element: Dictionary, size: Vector3, rotation_step: int) -> Dictionary:
-	var pose: Dictionary = _sim().lattice_pose(element)
-	if pose.is_empty():
+## Where a shape stands when anchored on an element: the footprint's centre
+## and yaw from the sim; blocks shorter than the cell rest on the cell
+## floor; oriented blocks turn by the rotation step, oriented faces (a
+## door) flip their hinge to the other side on odd steps.
+func piece_pose(shape_id: StringName, element: Dictionary, rotation_step: int) -> Dictionary:
+	var info: Dictionary = _sim().shape(shape_id)
+	var pose: Dictionary = _sim().lattice_pose(shape_id, element)
+	if info.is_empty() or pose.is_empty():
 		return {}
+	var size: Vector3 = info["size"]
 	var centre: Vector3 = pose["centre"]
 	var yaw: float = float(pose["yaw_turns"]) * PI / 2.0
+	var oriented: bool = info.get("oriented", false)
 	if element["kind"] == "volume":
-		centre.y -= (grid_size - size.y) * 0.5
-		yaw += float(rotation_step) * PI / 2.0
+		var cell_height: float = grid_size if not info.get("fine", false) else registry_grid
+		centre.y -= (cell_height - size.y) * 0.5
+		if oriented:
+			yaw += float(rotation_step) * PI / 2.0
+	elif oriented:
+		yaw += float(rotation_step % 2) * PI
 	return {"centre": centre, "yaw": yaw}
+
+
+## The build-grid cell a registry cell lies in.
+func _build_cell(registry_cell: Vector3i) -> Vector3i:
+	var div := maxi(1, roundi(grid_size / registry_grid))
+	return Vector3i(floori(float(registry_cell.x) / div), floori(float(registry_cell.y) / div),
+		floori(float(registry_cell.z) / div))
 
 
 ## The terrain's verdict on an element: a block cannot go into rock, and a
@@ -241,31 +273,34 @@ func _buried(element: Dictionary) -> bool:
 					n[a2] -= s2
 					cells.append(n)
 	for cell in cells:
-		if terrain.block_at(cell.x, cell.y, cell.z) == 0:
+		var b := _build_cell(cell)
+		if terrain.block_at(b.x, b.y, b.z) == 0:
 			return false
 	return true
 
 
-## Whether the selected shape may stand on this element: the element must be
-## free in the sim's structure, open to the terrain, and the piece's box must
-## not overlap anything else in the world (nodes, stations, mobs, pickups).
-## Other placed pieces never block - the structure decides those conflicts.
+## Whether the selected shape may anchor on this element: the right kind of
+## element for it, its whole footprint free in the sim's structure, open to
+## the terrain, and the piece's box clear of everything else in the world
+## (nodes, stations, mobs, pickups). Other placed pieces never block - the
+## structure decides those conflicts.
 func element_accepts(element: Dictionary) -> bool:
-	if element.is_empty() or not _sim().lattice_slot_accepts(shape_slot, element):
+	var shape := _target_shape()
+	if element.is_empty() or not _sim().shape_accepts(shape, element):
 		return false
-	if _sim().structure_occupied(element):
+	if not _sim().structure_free_for(shape, element):
 		return false
 	if _buried(element):
 		return false
-	var pose := piece_pose(element, shape_size, preview_rotation_step)
+	var pose := piece_pose(shape, element, preview_rotation_step)
 	if pose.is_empty():
 		return false
 	var terrain := _find_terrain()
-	var shape := BoxShape3D.new()
+	var shape_box := BoxShape3D.new()
 	# Slightly smaller than the piece so face-adjacent neighbours do not touch.
-	shape.size = shape_size * 0.9
+	shape_box.size = shape_size * 0.9
 	var query := PhysicsShapeQueryParameters3D.new()
-	query.shape = shape
+	query.shape = shape_box
 	query.transform = Transform3D(Basis(Vector3.UP, pose["yaw"]), pose["centre"])
 	query.exclude = [get_parent()]
 	var space := (get_parent() as Node3D).get_world_3d().direct_space_state
@@ -283,7 +318,7 @@ func element_accepts(element: Dictionary) -> bool:
 ## acceptable candidate, or the nearest of all when none is (for the red
 ## preview). Empty when the sim has nothing to offer.
 func target_element(point: Vector3, normal: Vector3) -> Dictionary:
-	var candidates: Array = _sim().lattice_candidates(shape_slot, point, normal)
+	var candidates: Array = _sim().lattice_candidates(_target_shape(), point, normal)
 	for candidate in candidates:
 		if element_accepts(candidate):
 			return candidate
@@ -304,7 +339,10 @@ func _update_preview() -> void:
 		_hide_preview()
 		return
 	preview_element = element
-	var pose := piece_pose(element, shape_size, preview_rotation_step)
+	var pose := piece_pose(_target_shape(), element, preview_rotation_step)
+	if selected_kit != &"":
+		# The kit preview is a stand-in box on the cell floor, not a shape.
+		pose["centre"].y += (KIT_PREVIEW_SIZE.y - grid_size) * 0.5
 
 	var affordable: bool
 	if selected_kit != &"":
@@ -340,8 +378,8 @@ func try_place_block() -> bool:
 
 
 ## Registers a piece on an element and raises it in the world (no payment:
-## try_place_block pays, loading a save does not). Null when the element is
-## taken or the shape may not stand there.
+## try_place_block pays, loading a save does not). Null when the footprint
+## is taken or the shape may not anchor there.
 func place_piece(element: Dictionary, shape_id: StringName, family: StringName,
 		rotation_step: int = 0) -> PlacedBlock:
 	var info: Dictionary = _sim().shape(shape_id)
@@ -349,11 +387,11 @@ func place_piece(element: Dictionary, shape_id: StringName, family: StringName,
 		return null
 	if not _sim().structure_place(element, shape_id, family, rotation_step):
 		return null
-	var size: Vector3 = info["size"]
-	var pose := piece_pose(element, size, rotation_step)
+	var pose := piece_pose(shape_id, element, rotation_step)
 	var block: PlacedBlock = PLACED_BLOCK_SCENE.instantiate()
 	_world_root().add_child(block)
-	block.init_piece(shape_id, family, element, rotation_step, size, pose["centre"], pose["yaw"])
+	block.init_piece(shape_id, family, element, rotation_step, String(info.get("form", "box")),
+		info["size"], pose["centre"], pose["yaw"])
 	refresh_trims()
 	return block
 
@@ -385,7 +423,7 @@ func _place_kit() -> bool:
 		if _sim().station(other_id).get("upgrade_from", "") == String(station_id):
 			site.upgrade_station_id = StringName(other_id)
 	_world_root().add_child(site)
-	var pose := piece_pose(preview_element, Vector3.ONE * grid_size, 0)
+	var pose := piece_pose(KIT_STAND_IN_SHAPE, preview_element, 0)
 	site.global_position = pose["centre"] + Vector3(0.0, -grid_size * 0.5, 0.0)
 	site.rotation.y = float(preview_rotation_step) * PI / 2.0
 	site.refresh_visual(_sim())
@@ -417,10 +455,10 @@ func rotate_preview() -> void:
 	preview_rotation_step = (preview_rotation_step + 1) % 4
 
 
-## Corner trims: the sim says which vertical edges want a post visual (walls
-## ending or meeting at an angle with no real post); this keeps one slim
-## mesh per such edge and drops the rest. Purely presentation - trims are
-## never saved, never collide, never cost.
+## Corner trims: the sim says which vertical registry edges want a post
+## visual (walls ending or meeting at an angle with no real post); this
+## keeps one slim mesh per such edge and drops the rest. Purely
+## presentation - trims are never saved, never collide, never cost.
 func refresh_trims() -> void:
 	if _trims_root == null or not is_instance_valid(_trims_root):
 		_trims_root = Node3D.new()
@@ -437,7 +475,7 @@ func refresh_trims() -> void:
 			continue
 		var trim := MeshInstance3D.new()
 		var box := BoxMesh.new()
-		box.size = Vector3(TRIM_SIZE, grid_size, TRIM_SIZE)
+		box.size = Vector3(TRIM_SIZE, registry_grid, TRIM_SIZE)
 		trim.mesh = box
 		trim.material_override = _trim_material
 		_trims_root.add_child(trim)

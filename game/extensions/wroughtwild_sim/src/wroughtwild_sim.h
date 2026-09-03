@@ -44,7 +44,8 @@ public:
     PackedStringArray shape_ids() const;
     int shape_material_cost(const String& shape_id) const;
     // Keys: id, display_name, material_cost, size (Vector3), element (the
-    // lattice slot: block, wall, floor, post, beam), requires_world_effect,
+    // lattice slot: block, wall, floor, post, beam), form (box, stairs,
+    // wedge, door), oriented, cells_tall, fine, requires_world_effect,
     // unlocked.
     Dictionary shape(const String& shape_id) const;
     bool shape_unlocked(const String& shape_id) const;
@@ -163,37 +164,51 @@ public:
     // "dirt", "stone", "bedrock"): {breakable, dig_seconds, yields}.
     Dictionary block_rules() const;
 
-    // --- the building lattice (Wave 4, lattice.h) ---
+    // --- the building lattice (Wave 4, lattice.h, D-017) ---
     // An element is a Dictionary {kind: "volume" | "face" | "edge", axis:
     // 0..2, cell: Vector3i} - the canonical address of a cell, a face two
-    // cells share, or an edge four share. Pieces occupy elements; two pieces
-    // conflict only when they want the same one.
+    // cells share, or an edge four share. Cells are REGISTRY coordinates:
+    // the occupancy registry runs lattice_divisions times finer than the
+    // build grid, and a full-size piece anchors at a registry element
+    // aligned to the build grid and covers a footprint of them. Two pieces
+    // conflict only when their footprints share an element.
     //
-    // Elements of `slot` ("block", "wall", "floor", "post", "beam") around a
-    // surface hit, nearest the point first. Each entry is an element plus
-    // centre (Vector3) and yaw_turns (quarter turns for a shape authored
-    // thin along z / long along x). The host filters by what its world
-    // knows (terrain, props) and takes the first survivor.
-    Array lattice_candidates(const String& slot, const Vector3& point, const Vector3& normal) const;
-    // Pose of one element: {centre, yaw_turns}.
-    Dictionary lattice_pose(const Dictionary& element) const;
-    // True when the shape may occupy the element (a wall wants a vertical
-    // face, a post a vertical edge...).
-    bool lattice_slot_accepts(const String& slot, const Dictionary& element) const;
+    // The registry's cell size in metres (grid_size / lattice_divisions).
+    double lattice_registry_grid() const;
+    // Anchor elements the shape could take around a surface hit, nearest
+    // the point first. Each entry is an element plus centre (Vector3, the
+    // whole footprint's centre) and yaw_turns (quarter turns for a shape
+    // authored thin along z / long along x). The host filters by what its
+    // world knows (occupancy, terrain, props) and takes the first survivor.
+    Array lattice_candidates(const String& shape_id, const Vector3& point, const Vector3& normal) const;
+    // Pose of the shape anchored at an element: {centre, yaw_turns}.
+    Dictionary lattice_pose(const String& shape_id, const Dictionary& element) const;
+    // True when the shape may anchor on the element: right kind for its
+    // slot, aligned to its grid.
+    bool shape_accepts(const String& shape_id, const Dictionary& element) const;
 
     // The player's structure: what stands on which element. The host
     // mirrors it with scene nodes and rebuilds it from a save.
     bool structure_occupied(const Dictionary& element) const;
-    // {shape, family, rotation_step} plus the element keys, or {} when free.
+    // True when every element of the shape's footprint from this anchor is
+    // free (what the preview asks before structure_place would succeed).
+    bool structure_free_for(const String& shape_id, const Dictionary& element) const;
+    // The piece covering an element - {shape, family, rotation_step, slot}
+    // plus its anchor's element keys - or {} when free.
     Dictionary structure_piece(const Dictionary& element) const;
+    // Anchors the shape at the element (its footprint follows from the
+    // shape). False when any of the footprint is taken or the shape may
+    // not anchor there.
     bool structure_place(const Dictionary& element, const String& shape_id, const String& family,
                          int rotation_step);
+    // Removes the piece covering the element.
     bool structure_remove(const Dictionary& element);
     void structure_clear();
     // Every piece as structure_piece entries.
     Array structure_pieces() const;
-    // Vertical edges (as elements) that want a corner post drawn: where
-    // walls end or meet at an angle and no real post stands.
+    // Vertical registry edges (as elements, with centre) that want a corner
+    // post drawn: where walls end or meet at an angle and no real post
+    // stands. A post visual is one registry cell tall.
     Array structure_trim_edges() const;
     // Deterministic per-kill drops from the enemy's world.json loot table:
     // material stacks as item -> count. elite_id ("" for none) applies the

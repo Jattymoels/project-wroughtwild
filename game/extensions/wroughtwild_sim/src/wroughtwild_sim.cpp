@@ -156,12 +156,13 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks"),
                          &WroughtwildSim::world_mesh_chunk);
     ClassDB::bind_method(D_METHOD("block_rules"), &WroughtwildSim::block_rules);
-    ClassDB::bind_method(D_METHOD("lattice_candidates", "slot", "point", "normal"),
+    ClassDB::bind_method(D_METHOD("lattice_registry_grid"), &WroughtwildSim::lattice_registry_grid);
+    ClassDB::bind_method(D_METHOD("lattice_candidates", "shape_id", "point", "normal"),
                          &WroughtwildSim::lattice_candidates);
-    ClassDB::bind_method(D_METHOD("lattice_pose", "element"), &WroughtwildSim::lattice_pose);
-    ClassDB::bind_method(D_METHOD("lattice_slot_accepts", "slot", "element"),
-                         &WroughtwildSim::lattice_slot_accepts);
+    ClassDB::bind_method(D_METHOD("lattice_pose", "shape_id", "element"), &WroughtwildSim::lattice_pose);
+    ClassDB::bind_method(D_METHOD("shape_accepts", "shape_id", "element"), &WroughtwildSim::shape_accepts);
     ClassDB::bind_method(D_METHOD("structure_occupied", "element"), &WroughtwildSim::structure_occupied);
+    ClassDB::bind_method(D_METHOD("structure_free_for", "shape_id", "element"), &WroughtwildSim::structure_free_for);
     ClassDB::bind_method(D_METHOD("structure_piece", "element"), &WroughtwildSim::structure_piece);
     ClassDB::bind_method(D_METHOD("structure_place", "element", "shape_id", "family", "rotation_step"),
                          &WroughtwildSim::structure_place);
@@ -938,6 +939,10 @@ Dictionary WroughtwildSim::shape(const String& shape_id) const {
     d["size"] = Vector3(static_cast<real_t>(s->sizeM[0]), static_cast<real_t>(s->sizeM[1]),
                         static_cast<real_t>(s->sizeM[2]));
     d["element"] = to_godot(s->element);
+    d["form"] = to_godot(s->form);
+    d["oriented"] = s->oriented;
+    d["cells_tall"] = s->cellsTall;
+    d["fine"] = s->fine;
     d["requires_world_effect"] = to_godot(s->requiresWorldEffect);
     d["unlocked"] = player_->shapeUnlocked(s->id);
     return d;
@@ -1866,7 +1871,7 @@ Dictionary WroughtwildSim::block_rules() const {
     return d;
 }
 
-// --- the building lattice (Wave 4) ---------------------------------------------
+// --- the building lattice (Wave 4, D-017) --------------------------------------
 
 namespace {
 
@@ -1909,69 +1914,114 @@ Dictionary element_to(const Element& e) {
     return d;
 }
 
-void add_pose(Dictionary& d, const Element& e, double grid) {
-    const auto c = wroughtwild::lattice::centre(e, grid);
-    d["centre"] = Vector3(static_cast<real_t>(c.x), static_cast<real_t>(c.y), static_cast<real_t>(c.z));
-    d["yaw_turns"] = wroughtwild::lattice::yawTurns(e);
-}
-
-bool slot_from(const String& name, wroughtwild::lattice::Slot& out) {
-    try {
-        out = wroughtwild::lattice::slotFromName(to_std(name));
-        return true;
-    } catch (const std::exception& e) {
-        UtilityFunctions::push_error("WroughtwildSim: ", e.what());
-        return false;
-    }
+Vector3 to_vector(const wroughtwild::lattice::Vec3& v) {
+    return Vector3(static_cast<real_t>(v.x), static_cast<real_t>(v.y), static_cast<real_t>(v.z));
 }
 
 Dictionary piece_to(const wroughtwild::lattice::Piece& piece) {
-    Dictionary d = element_to(piece.element);
+    Dictionary d = element_to(piece.anchor);
     d["shape"] = to_godot(piece.shapeId);
     d["family"] = to_godot(piece.family);
     d["rotation_step"] = piece.rotationStep;
+    d["slot"] = wroughtwild::lattice::slotName(piece.slot);
+    return d;
+}
+
+// How a shape sits on the registry: its own grid, its span in registry
+// cells per piece cell, and how many piece cells tall it is.
+struct ShapeLattice {
+    const wroughtwild::tuning::ShapeDef* shape = nullptr;
+    wroughtwild::lattice::Slot slot = wroughtwild::lattice::Slot::Block;
+    double pieceGrid = 1.0;
+    double registryGrid = 1.0;
+    int span = 1;
+    int tall = 1;
+};
+
+bool shape_lattice(const wroughtwild::tuning::Tuning& tuning, const String& shape_id, ShapeLattice& out) {
+    out.shape = tuning.construction.findShape(to_std(shape_id));
+    if (out.shape == nullptr) {
+        return false;
+    }
+    const int divisions = std::max(1, tuning.construction.latticeDivisions);
+    out.slot = wroughtwild::lattice::slotFromName(out.shape->element);
+    out.registryGrid = tuning.construction.gridSizeMetres / divisions;
+    out.span = out.shape->fine ? 1 : divisions;
+    out.pieceGrid = out.registryGrid * out.span;
+    out.tall = std::max(1, out.shape->cellsTall);
+    return true;
+}
+
+bool aligned(const Element& e, int span) {
+    return e.cell.x % span == 0 && e.cell.y % span == 0 && e.cell.z % span == 0;
+}
+
+Dictionary pose_of(const ShapeLattice& sl, const Element& anchor) {
+    Dictionary d;
+    d["centre"] = to_vector(wroughtwild::lattice::footprintCentre(anchor, sl.span, sl.tall, sl.registryGrid));
+    d["yaw_turns"] = wroughtwild::lattice::yawTurns(anchor);
     return d;
 }
 
 } // namespace
 
-Array WroughtwildSim::lattice_candidates(const String& slot, const Vector3& point, const Vector3& normal) const {
+double WroughtwildSim::lattice_registry_grid() const {
+    if (!require_loaded("lattice_registry_grid")) {
+        return 1.0;
+    }
+    return tuning_->construction.gridSizeMetres / std::max(1, tuning_->construction.latticeDivisions);
+}
+
+Array WroughtwildSim::lattice_candidates(const String& shape_id, const Vector3& point, const Vector3& normal) const {
     Array out;
-    wroughtwild::lattice::Slot s;
-    if (!require_loaded("lattice_candidates") || !slot_from(slot, s)) {
+    ShapeLattice sl;
+    if (!require_loaded("lattice_candidates") || !shape_lattice(*tuning_, shape_id, sl)) {
         return out;
     }
-    const double grid = tuning_->construction.gridSizeMetres;
-    const auto found = wroughtwild::lattice::candidates(s, {point.x, point.y, point.z},
-                                                        {normal.x, normal.y, normal.z}, grid);
-    for (const auto& e : found) {
-        Dictionary d = element_to(e);
-        add_pose(d, e, grid);
+    const auto found = wroughtwild::lattice::candidates(sl.slot, {point.x, point.y, point.z},
+                                                        {normal.x, normal.y, normal.z}, sl.pieceGrid);
+    for (const auto& coarse : found) {
+        const Element anchor = wroughtwild::lattice::scaled(coarse, sl.span);
+        Dictionary d = element_to(anchor);
+        d.merge(pose_of(sl, anchor));
         out.push_back(d);
     }
     return out;
 }
 
-Dictionary WroughtwildSim::lattice_pose(const Dictionary& element) const {
-    Dictionary d;
+Dictionary WroughtwildSim::lattice_pose(const String& shape_id, const Dictionary& element) const {
+    ShapeLattice sl;
     Element e;
-    if (!require_loaded("lattice_pose") || !element_from(element, e)) {
-        return d;
+    if (!require_loaded("lattice_pose") || !shape_lattice(*tuning_, shape_id, sl) || !element_from(element, e)) {
+        return Dictionary();
     }
-    add_pose(d, e, tuning_->construction.gridSizeMetres);
-    return d;
+    return pose_of(sl, e);
 }
 
-bool WroughtwildSim::lattice_slot_accepts(const String& slot, const Dictionary& element) const {
-    wroughtwild::lattice::Slot s;
+bool WroughtwildSim::shape_accepts(const String& shape_id, const Dictionary& element) const {
+    ShapeLattice sl;
     Element e;
-    return require_loaded("lattice_slot_accepts") && slot_from(slot, s) && element_from(element, e) &&
-           wroughtwild::lattice::slotAccepts(s, e);
+    return require_loaded("shape_accepts") && shape_lattice(*tuning_, shape_id, sl) && element_from(element, e) &&
+           wroughtwild::lattice::slotAccepts(sl.slot, e) && aligned(e, sl.span);
 }
 
 bool WroughtwildSim::structure_occupied(const Dictionary& element) const {
     Element e;
     return require_loaded("structure_occupied") && element_from(element, e) && structure_.occupied(e);
+}
+
+bool WroughtwildSim::structure_free_for(const String& shape_id, const Dictionary& element) const {
+    ShapeLattice sl;
+    Element e;
+    if (!require_loaded("structure_free_for") || !shape_lattice(*tuning_, shape_id, sl) || !element_from(element, e)) {
+        return false;
+    }
+    for (const auto& covered : wroughtwild::lattice::footprint(e, sl.span, sl.tall)) {
+        if (structure_.occupied(covered)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 Dictionary WroughtwildSim::structure_piece(const Dictionary& element) const {
@@ -1985,15 +2035,22 @@ Dictionary WroughtwildSim::structure_piece(const Dictionary& element) const {
 
 bool WroughtwildSim::structure_place(const Dictionary& element, const String& shape_id, const String& family,
                                      int rotation_step) {
+    ShapeLattice sl;
     Element e;
-    if (!require_loaded("structure_place") || !element_from(element, e)) {
+    if (!require_loaded("structure_place") || !shape_lattice(*tuning_, shape_id, sl) || !element_from(element, e)) {
         return false;
     }
-    const auto* shape = tuning_->construction.findShape(to_std(shape_id));
-    if (shape == nullptr || !wroughtwild::lattice::slotAccepts(wroughtwild::lattice::slotFromName(shape->element), e)) {
+    if (!wroughtwild::lattice::slotAccepts(sl.slot, e) || !aligned(e, sl.span)) {
         return false;
     }
-    return structure_.place({e, to_std(shape_id), to_std(family), ((rotation_step % 4) + 4) % 4});
+    wroughtwild::lattice::Piece piece;
+    piece.anchor = e;
+    piece.slot = sl.slot;
+    piece.footprint = wroughtwild::lattice::footprint(e, sl.span, sl.tall);
+    piece.shapeId = to_std(shape_id);
+    piece.family = to_std(family);
+    piece.rotationStep = ((rotation_step % 4) + 4) % 4;
+    return structure_.place(piece);
 }
 
 bool WroughtwildSim::structure_remove(const Dictionary& element) {
@@ -2005,7 +2062,7 @@ void WroughtwildSim::structure_clear() { structure_.clear(); }
 
 Array WroughtwildSim::structure_pieces() const {
     Array out;
-    for (const auto& [element, piece] : structure_.pieces()) {
+    for (const auto& [anchor, piece] : structure_.pieces()) {
         out.push_back(piece_to(piece));
     }
     return out;
@@ -2016,10 +2073,10 @@ Array WroughtwildSim::structure_trim_edges() const {
     if (!require_loaded("structure_trim_edges")) {
         return out;
     }
-    const double grid = tuning_->construction.gridSizeMetres;
+    const double grid = lattice_registry_grid();
     for (const auto& e : structure_.trimEdges()) {
         Dictionary d = element_to(e);
-        add_pose(d, e, grid);
+        d["centre"] = to_vector(wroughtwild::lattice::centre(e, grid));
         out.push_back(d);
     }
     return out;

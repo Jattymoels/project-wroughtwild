@@ -240,13 +240,20 @@ registry; the engine filters candidates by terrain and props (a face
 between rock and open air is a mine lining, a block never goes into rock)
 and mirrors the registry with nodes. Saves are schema v2 (element-keyed).
 
-Still ahead in this intensive: **slice 2, vocabulary** — stairs, doorway,
-roof wedge, a floor slab that is not boss-gated, and a half-scale "fine"
-mode that is the same rule on a half-cell lattice (the owner's "post on a
-block" at sub-block scale); **slice 3, enclosure** — flood-fill the
-volumes bounded by faces to know a roofed room, the honest home for
-rest-in-shelter health regeneration (the owner's regen note) and, later,
-for mobs breaking in. Deliberately out: structural-support rules.
+**Slice 2, vocabulary (landed 3 Sep 2026):** the registry now runs at
+half cells and pieces cover footprints of registry elements (one rulebook
+for two scales, and the door's two-cell height); eight shapes — cube,
+wall, pillar, beam, floor slab (un-gated), stairs, a two-cell door that
+swings on E, and the roof wedge as the trial reward in place of the slab;
+forms (stairs, wedge, door) get real meshes and collision.
+
+Still ahead in this intensive: **slice 2b, fine mode** — half-scale wall,
+post, beam, slab and block on a toggle, the same rule at half the cell (the
+owner's "post on a block" at sub-block scale, no new occupancy logic);
+**slice 3, enclosure** — flood-fill the volumes bounded by faces to know a
+roofed room, the honest home for rest-in-shelter health regeneration (the
+owner's regen note) and, later, for mobs breaking in. Deliberately out:
+structural-support rules.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 
