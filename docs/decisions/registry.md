@@ -27,6 +27,7 @@ Statuses:
 | D-016 | Skills | Skills are found, not worn (supersedes D-014's "the weapon carries the delivery skill" working assumption, per owner direction 2 Sep 2026: PoE's many-skills-with-interacting-grammars over gear-defined archetypes). Each skill is one data entry in `skills.json` — delivery (cone / strike / projectile / dash), tags, payload numbers; the starting four fill a free four-slot bar and the rest are learned from skill pages that mobs drop (weighted among unknown skills, never duplicates). Gear only ever scales skills through tag-targeted modifiers; hooks (shatter, proliferate) trigger by tag, never by skill id, so a page found tomorrow joins the combos it is tagged for. Build identity = the tags on the bar. Statuses are buildup-with-threshold (chill/freeze, ignite/burn, bleed) with the day-one boss resistance multiplier; shatter never executes a boss (`executes_boss` tunable, default false) — the freeze window is the reward | Accepted direction (implemented 2 Sep 2026) | Wave 3 mob families stress the grammar, or a skill that cannot be one data entry appears |
 | D-017 | Building | Pieces are addressed by lattice element, never by cell-plus-slot: a block occupies a cell, a wall or floor a face two cells share, a post or beam an edge four cells share, each with one canonical address (`sim/lattice.h`). The single placement rule is "the nearest free element of the piece's kind to the crosshair"; orientation comes from the element, so only oriented blocks turn with R; two pieces conflict only when they want the same element. Corners where walls end or meet grow a post visual on their own. No structural-support rules — the lattice's shape is all the physical honesty a build needs ([systems/construction.md](../systems/construction.md)) | Accepted direction (owner "lets do it" 3 Sep 2026; slice 1 implemented) | The owner's building playtest, or a piece that cannot be one element (diagonals, curves) |
 | D-018 | Building materials | Building families are data with a source item, a look and **traits**; shapes require traits, so a material's properties gate the forms it can be worked into (joinery for doors, masonry for cut stone, metal for spans, malleable reserved for the coming alloy and its curved forms) rather than a tech tree. Placed pieces are never demolished by mobs: a timber house is a house at every tier (owner, 3 Sep 2026); base threat is pressure around the build, not damage to it ([systems/construction.md](../systems/construction.md)) | Accepted direction (owner steer 3 Sep 2026; three families + girder implemented) | An alloy family lands, or the base-threat design is playtested |
+| D-019 | Progression | Per [systems/progression-eras.md](../systems/progression-eras.md): **eras are the campaign** (the world changes state on player-chosen milestones; mobs scale per era, never per player; no zones unlock), **the Foundry** is the point system (ingots placed on a forged plate; adjacency, lines, wrought forms; refinement widens reach, numbers stay flat; respec is re-forging), and **ores are properties, not ranks** (one trait vocabulary across building materials, item bases and ingots; modifier tiers are mechanic breakpoints; held-back modifiers as the early taste; a threefold global number budget). Encroachment belongs to era two | Accepted direction (owner "lets do it" 3 Sep 2026) | The first era transition is playtested |
 
 ## Proposals awaiting acceptance
 
@@ -62,6 +63,13 @@ Statuses:
   for a half-scale twin on the same rule) and 3 (shelter: an enclosed
   room under a size cap regenerates life once settled; `world.json`
   `shelter`) landed the same day.
+
+- **D-019 (3 Sep 2026):** the owner's worry — "builds through passive
+  skills or a talent tree have tension with a procedural world, and rely
+  more on itemisation, which ... becomes '50% increased cold vs 45%'" —
+  and their pull toward "the world develops and advances with you" rather
+  than zones unlocking. Encroachment slice 1 stays merged but is era two's
+  mechanic; nests do not settle in era one.
 
 ## Registering a decision
 

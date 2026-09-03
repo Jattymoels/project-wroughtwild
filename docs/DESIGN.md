@@ -96,6 +96,13 @@ Physical resources establish an item's base. Skills, facilities and recipes prov
 
 See [systems/loot-and-currency.md](systems/loot-and-currency.md).
 
+### Eras and the Foundry
+
+The world is the campaign: it changes state in eras on milestones the
+player chooses to hit, and never adds a zone. Points are ingots placed on
+a forged plate; ores are properties rather than ranks. See
+[systems/progression-eras.md](systems/progression-eras.md) (D-019).
+
 ## Death contracts
 
 - Before a structured trial, ordinary carried possessions are stored at the entrance.
@@ -150,5 +157,6 @@ If one route dominates, another major system becomes irrelevant.
 - [systems/dungeon-runs.md](systems/dungeon-runs.md)
 - [systems/loot-and-currency.md](systems/loot-and-currency.md)
 - [systems/world-generation.md](systems/world-generation.md)
+- [systems/progression-eras.md](systems/progression-eras.md)
 - [decisions/registry.md](decisions/registry.md)
 - [research/engine-ai-integrations.md](research/engine-ai-integrations.md)

@@ -294,6 +294,29 @@ door, the shrieker calling more, the sortie as the moment.
 Still ahead for building: the owner's next playtest, an alloy family.
 Deliberately out: structural-support rules, wall damage.
 
+## Wave 5 — Eras and the Foundry *(direction accepted 3 Sep 2026; D-019)*
+
+The answer to "a talent tree has nothing to push against in a procedural
+world" ([systems/progression-eras.md](../systems/progression-eras.md)):
+the world is the campaign. Slices, in order:
+
+1. **The first era transition** on the Forge Tyrant's fall: an era state
+   in the sim driven by world effects; copper and tin veins surface in the
+   deep when the strata crack (nodes carry an era; the engine reveals
+   them with a notice and a mood shift); bronze as the alloy family
+   (malleable, tough) and the first curved form; hounds hunt in wider
+   packs and whelps leave burning ground; encroachment switches on.
+2. **The Foundry**: a 3×3 plate, about twelve ingot verbs, adjacency pairs
+   and lines, six milestone sources, re-forging at the forge; the plate
+   widens with the era.
+3. **Items as mechanics**: tier breakpoints for the existing modifiers,
+   base capacity per metal, held-back display, the preservation catalyst.
+4. Skill mastery perks; the third era.
+
+Owner tuning note (3 Sep): "everything is way too fast/powerful ... to
+feel good you have to start with less damage/more danger" — era one's
+target is slow, poor and dangerous; numbers still held until asked.
+
 ## Wave 4 — Dungeon and Roguelite Iteration
 
 The innovation layer: run structure, boon/build interaction depth, secrets,
