@@ -24,10 +24,18 @@ class TrialSession {
 public:
     // Constructing the session deposits the player's carried inventory at the
     // gate (D-006: trials protect stored possessions).
+    // floor: a deeper run (tuning::TrialFloor), or nullptr for the first.
     TrialSession(const tuning::Tuning& tuning,
                  economy::PlayerEconomy& economy,
                  boons::BuildTags buildTags,
-                 uint64_t seed);
+                 uint64_t seed,
+                 const tuning::TrialFloor* floor = nullptr);
+
+    const tuning::TrialFloor* floor() const { return floor_; }
+    const std::vector<tuning::TrialStage>& stages() const;
+    const tuning::BossDef& boss() const;
+    int exitAfterStage() const;
+    const std::string& completionUnlock() const;
 
     // A session ends exactly once: bossDefeated, banked out, or died.
     bool finished() const { return finished_; }
@@ -95,6 +103,7 @@ private:
 
     const tuning::Tuning& tuning_;
     economy::PlayerEconomy& economy_;
+    const tuning::TrialFloor* floor_ = nullptr;
     boons::BuildTags buildTags_;
     uint64_t seed_;
     int roomsEntered_ = 0;

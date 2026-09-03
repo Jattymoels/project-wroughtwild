@@ -284,7 +284,11 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("enemy_hit_damage", "raw_damage", "damage_type"), &WroughtwildSim::enemy_hit_damage);
     ClassDB::bind_method(D_METHOD("mitigate", "amount", "damage_type"), &WroughtwildSim::mitigate);
 
-    ClassDB::bind_method(D_METHOD("trial_start", "seed"), &WroughtwildSim::trial_start);
+    ClassDB::bind_method(D_METHOD("trial_start", "seed", "floor_id"), &WroughtwildSim::trial_start, DEFVAL(String()));
+    ClassDB::bind_method(D_METHOD("trial_floors"), &WroughtwildSim::trial_floors);
+    ClassDB::bind_method(D_METHOD("trial_floor"), &WroughtwildSim::trial_floor);
+    ClassDB::bind_method(D_METHOD("market_offers"), &WroughtwildSim::market_offers);
+    ClassDB::bind_method(D_METHOD("buy", "item_id"), &WroughtwildSim::buy);
     ClassDB::bind_method(D_METHOD("trial_active"), &WroughtwildSim::trial_active);
     ClassDB::bind_method(D_METHOD("trial_finished"), &WroughtwildSim::trial_finished);
     ClassDB::bind_method(D_METHOD("trial_player_died"), &WroughtwildSim::trial_player_died);
@@ -301,13 +305,70 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("trial_end"), &WroughtwildSim::trial_end);
 }
 
-bool WroughtwildSim::trial_start(int seed) {
+bool WroughtwildSim::trial_start(int seed, const String& floor_id) {
     if (!require_loaded("trial_start") || trial_) {
         return false;
     }
+    const wroughtwild::tuning::TrialFloor* floor = nullptr;
+    if (!floor_id.is_empty()) {
+        floor = tuning_->trial.findFloor(to_std(floor_id));
+        if (floor == nullptr || !player_->worldEffectActive(floor->requiresWorldEffect)) {
+            return false;
+        }
+    }
     trial_ = std::make_unique<wroughtwild::trial::TrialSession>(
-        *tuning_, *player_, build_tags(), static_cast<uint64_t>(seed));
+        *tuning_, *player_, build_tags(), static_cast<uint64_t>(seed), floor);
     return true;
+}
+
+Array WroughtwildSim::trial_floors() const {
+    Array out;
+    if (!require_loaded("trial_floors")) {
+        return out;
+    }
+    for (const auto& floor : tuning_->trial.floors) {
+        Dictionary d;
+        d["id"] = to_godot(floor.id);
+        d["display_name"] = to_godot(floor.displayName);
+        d["available"] = floor.requiresWorldEffect.empty() || player_->worldEffectActive(floor.requiresWorldEffect);
+        d["done"] = player_->worldEffectActive(floor.completionUnlock);
+        out.push_back(d);
+    }
+    return out;
+}
+
+Dictionary WroughtwildSim::trial_floor() const {
+    Dictionary d;
+    d["id"] = String();
+    if (!require_loaded("trial_floor") || !trial_ || trial_->floor() == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(trial_->floor()->id);
+    d["display_name"] = to_godot(trial_->floor()->displayName);
+    d["completion_text"] = to_godot(trial_->floor()->completionText);
+    return d;
+}
+
+Array WroughtwildSim::market_offers() const {
+    Array out;
+    if (!require_loaded("market_offers")) {
+        return out;
+    }
+    for (const auto& offer : tuning_->crafting.market) {
+        Dictionary d;
+        d["item"] = to_godot(offer.item);
+        d["count"] = offer.count;
+        d["price"] = offer.price;
+        d["currency"] = to_godot(offer.currency);
+        auto have = player_->currency.find(offer.currency);
+        d["affordable"] = have != player_->currency.end() && have->second >= offer.price;
+        out.push_back(d);
+    }
+    return out;
+}
+
+bool WroughtwildSim::buy(const String& item_id) {
+    return require_loaded("buy") && player_->buy(to_std(item_id));
 }
 
 bool WroughtwildSim::trial_active() const { return trial_ != nullptr; }
@@ -578,7 +639,7 @@ Dictionary WroughtwildSim::boss() const {
     if (!require_loaded("boss")) {
         return d;
     }
-    const auto& b = tuning_->trial.boss;
+    const auto& b = (trial_ && trial_->floor() != nullptr) ? trial_->floor()->boss : tuning_->trial.boss;
     d["id"] = to_godot(b.id);
     d["display_name"] = to_godot(b.displayName);
     d["max_life"] = b.maxLife;
@@ -610,6 +671,7 @@ Dictionary WroughtwildSim::realtime() const {
     for (const auto& [id, b] : rt.behaviours) {
         Dictionary entry;
         entry["move_speed_mps"] = b.moveSpeedMps;
+        entry["flees"] = b.flees;
         entry["attack_range_m"] = b.attackRangeM;
         entry["preferred_distance_m"] = b.preferredDistanceM;
         entry["aggro_range_m"] = b.aggroRangeM;
@@ -2550,6 +2612,12 @@ Dictionary WroughtwildSim::era() const {
     d["story"] = to_godot(e.story);
     d["encroachment"] = e.encroachment;
     d["count"] = static_cast<int>(tuning_->eras.eras.size());
+    d["elite_chance_bonus"] = e.eliteChanceBonus;
+    Dictionary escorts;
+    for (const auto& [enemyId, list] : e.packEscorts) {
+        escorts[to_godot(enemyId)] = strings_to_packed(list);
+    }
+    d["pack_escorts"] = escorts;
     return d;
 }
 

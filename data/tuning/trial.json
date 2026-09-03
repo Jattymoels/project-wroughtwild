@@ -115,5 +115,92 @@
     "keep_catalysts_on_death": true,
     "lose_run_materials_on_death": true,
     "design_purpose": "Provisional (D-006): recovered catalysts represent learning and survive a failed attempt so death still advances the crafting plan; ordinary run loot is lost to keep the bank-or-push choice meaningful"
-  }
+  },
+  "floors": [
+    {
+      "id": "deep_forge",
+      "display_name": "The Deeper Forge",
+      "requires_world_effect": "stonecut_blocks",
+      "boss": {
+        "id": "ash_warden",
+        "display_name": "The Ash Warden",
+        "max_life": 260,
+        "claw_damage": 11,
+        "claw_damage_type": "physical",
+        "claw_period_rounds": 1,
+        "breath_damage": 54,
+        "breath_damage_type": "fire",
+        "breath_period_rounds": 2,
+        "breath_telegraph_rounds": 1,
+        "design_purpose": "The Tyrant's warden below: more life and a heavier breath, the same shape - so the era-two build (bronze, breakpoints, the plate) is what makes the difference, not new rules."
+      },
+      "stages": [
+        {
+          "choices": [
+            {
+              "id": "wisp_gallery",
+              "display_name": "The Wisp Gallery",
+              "encounter": [
+                "cinder_wisp",
+                "cinder_wisp",
+                "ember_whelp"
+              ],
+              "reward": "boon_offer"
+            },
+            {
+              "id": "knight_hall",
+              "display_name": "The Hollow Hall",
+              "encounter": [
+                "hollow_knight",
+                "ember_whelp"
+              ],
+              "reward": "weakness_offer"
+            }
+          ]
+        },
+        {
+          "choices": [
+            {
+              "id": "lurker_cistern",
+              "display_name": "The Cistern",
+              "encounter": [
+                "bog_lurker",
+                "marsh_wisp",
+                "marsh_wisp"
+              ],
+              "reward": "materials"
+            },
+            {
+              "id": "shrieker_stair",
+              "display_name": "The Shrieking Stair",
+              "encounter": [
+                "shrieker",
+                "ash_hound",
+                "ash_hound",
+                "cinder_wisp"
+              ],
+              "reward": "catalyst"
+            }
+          ]
+        },
+        {
+          "choices": [
+            {
+              "id": "warden_gate",
+              "display_name": "The Warden's Gate",
+              "encounter": [
+                "ash_warden"
+              ],
+              "reward": "completion"
+            }
+          ]
+        }
+      ],
+      "exit_after_stage": 1,
+      "completion_unlock": "ash_tide",
+      "completion_text": "The Ash Warden falls, and the wastes answer: the ash tide rises, ember-iron glows in the rifts, silver shows in the mountains, and steel can be worked.",
+      "design_purpose": "The trial's second floor (owner, 3 Sep 2026: 'more floors to the trial'): open once the Tyrant has fallen, fought with the new families, ending in the Ash Warden. Its completion effect wakes era three - eras advance on milestones the player chose (D-019). Same room grammar as floor one, so a floor is data."
+    }
+  ],
+  "design_purpose": " floors are deeper runs the gate offers once their requires_world_effect is active; each has its own stages, boss, bank-out point and completion effect."
 }

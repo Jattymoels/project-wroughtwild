@@ -270,8 +270,30 @@ Not yet: refinement (reach) and wrought forms.
 - **The pack**: Drop on a material tile puts the stack at your feet as
   pickups; Discard on a gear card throws it away.
 
-Not yet: the third era, wrought forms and refinement, the wider modifier
-vocabulary (attack and cast speed, stuns) the owner asked for.
+## Implemented: era three and the deeper floor (3 Sep 2026)
+
+- **The trial has floors** (`trial.json` `floors`): a deeper run the gate
+  offers once its `requires_world_effect` is active, with its own stages,
+  boss, bank-out point and completion effect. *The Deeper Forge* opens
+  when the Tyrant has fallen, is fought with the new families (wisps,
+  hollow knights, lurkers, a shrieking stair), and ends at the Ash
+  Warden. The gate presents a choice of floors; the session carries the
+  floor and everything reads it (`TrialSession::stages/boss/exitAfterStage/
+  completionUnlock`).
+- **Era three, The Ash Tide**, triggers on the Warden's fall (`ash_tide`).
+  Ember-iron surfaces in the wastes and silver in the high crags (era-3
+  node types); steel (iron and charcoal at the improved forge) and silver
+  join the families; the plate is 4×4; shriekers call further
+  (`scream_radius_bonus`), hounds and husks run with cinder wisps
+  (`pack_escorts`), and every pack rolls an extra chance of an elite
+  (`elite_chance_bonus`). Eras stay ordered: the tide alone does not skip
+  the deep.
+- A fix found on the way: an order's world effect now goes through the
+  recording path, so reinforcing the mine forges its Foundry ingot and
+  can wake an era.
+
+Not yet: wrought forms and refinement, the wider modifier vocabulary
+(attack and cast speed, stuns) the owner asked for.
 
 ## Open questions
 

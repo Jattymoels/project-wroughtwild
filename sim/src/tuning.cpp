@@ -85,6 +85,7 @@ const ModifierTier* ModifierDef::findTier(int tier) const {
     return nullptr;
 }
 const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
+const TrialFloor* TrialTable::findFloor(const std::string& id) const { return findById(floors, id); }
 const BuildMaterialDef* ConstructionTable::findMaterial(const std::string& id) const { return findById(materials, id); }
 bool BuildMaterialDef::hasTrait(const std::string& trait) const {
     return std::find(traits.begin(), traits.end(), trait) != traits.end();
@@ -178,6 +179,16 @@ CraftingTable loadCrafting(const std::string& path) {
 
     if (auto currencies = doc->find("currencies"))
         table.currencies = readStringArray(*currencies);
+    if (auto market = doc->find("market")) {
+        for (const auto& o : market->get("offers").asArray()) {
+            CraftingTable::MarketOffer offer;
+            offer.item = o->get("item").asString();
+            if (auto n = o->find("count")) offer.count = n->asInt();
+            offer.price = o->get("price").asInt();
+            if (auto cur = o->find("currency")) offer.currency = cur->asString();
+            table.market.push_back(std::move(offer));
+        }
+    }
     if (auto rolls = doc->find("craft_rolls")) {
         table.keenChanceAtLevel1 = rolls->get("keen_chance_at_level_1").asNumber();
         table.keenChancePerLevel = rolls->get("keen_chance_per_level").asNumber();
@@ -435,6 +446,9 @@ EraTable loadEras(const std::string& path) {
         era.story = e->get("story").asString();
         era.triggerWorldEffect = e->get("trigger_world_effect").asString();
         if (auto enc = e->find("encroachment")) era.encroachment = enc->asBool();
+        if (auto bonus = e->find("elite_chance_bonus")) era.eliteChanceBonus = bonus->asNumber();
+        if (auto escorts = e->find("pack_escorts"))
+            for (const auto& [enemyId, list] : escorts->asObject()) era.packEscorts[enemyId] = readStringArray(*list);
         if (auto mechanics = e->find("mob_mechanics")) {
             for (const auto& [enemyId, byName] : mechanics->asObject()) {
                 for (const auto& [name, params] : byName->asObject()) {
@@ -553,6 +567,7 @@ RealtimeTable loadRealtime(const std::string& path) {
     for (const auto& [id, b] : doc->get("behaviours").asObject()) {
         BehaviourRealtime behaviour;
         behaviour.moveSpeedMps = b->get("move_speed_mps").asNumber();
+        if (auto flees = b->find("flees")) behaviour.flees = flees->asBool();
         behaviour.attackRangeM = b->get("attack_range_m").asNumber();
         if (auto preferred = b->find("preferred_distance_m"))
             behaviour.preferredDistanceM = preferred->asNumber();
@@ -788,6 +803,46 @@ TrialTable loadTrial(const std::string& path) {
     table.materialsReward = readIntMap(rewards.get("materials_reward"));
     table.catalystItem = rewards.get("catalyst_item").asString();
     table.completionUnlock = rewards.get("completion_unlock").asString();
+    if (auto floors = doc->find("floors")) {
+        auto readBoss = [](const Value& b) {
+            BossDef boss;
+            boss.id = b.get("id").asString();
+            boss.displayName = b.get("display_name").asString();
+            boss.maxLife = b.get("max_life").asNumber();
+            boss.clawDamage = b.get("claw_damage").asNumber();
+            boss.clawDamageType = b.get("claw_damage_type").asString();
+            boss.clawPeriodRounds = b.get("claw_period_rounds").asInt();
+            boss.breathDamage = b.get("breath_damage").asNumber();
+            boss.breathDamageType = b.get("breath_damage_type").asString();
+            boss.breathPeriodRounds = b.get("breath_period_rounds").asInt();
+            boss.breathTelegraphRounds = b.get("breath_telegraph_rounds").asInt();
+            return boss;
+        };
+        for (const auto& f : floors->asArray()) {
+            TrialFloor floor;
+            floor.id = f->get("id").asString();
+            floor.displayName = f->get("display_name").asString();
+            floor.requiresWorldEffect = f->get("requires_world_effect").asString();
+            floor.boss = readBoss(f->get("boss"));
+            for (const auto& stage : f->get("stages").asArray()) {
+                TrialStage trialStage;
+                for (const auto& ch : stage->get("choices").asArray()) {
+                    RoomChoice choice;
+                    choice.id = ch->get("id").asString();
+                    choice.displayName = ch->get("display_name").asString();
+                    choice.encounter = readStringArray(ch->get("encounter"));
+                    choice.reward = ch->get("reward").asString();
+                    trialStage.choices.push_back(std::move(choice));
+                }
+                floor.stages.push_back(std::move(trialStage));
+            }
+            floor.exitAfterStage = f->get("exit_after_stage").asInt();
+            floor.completionUnlock = f->get("completion_unlock").asString();
+            if (auto text = f->find("completion_text")) floor.completionText = text->asString();
+            if (floor.stages.empty()) throw std::runtime_error("trial: floor " + floor.id + " has no stages");
+            table.floors.push_back(std::move(floor));
+        }
+    }
     if (auto itemRewards = rewards.find("item_rewards")) {
         for (const auto& [rewardType, spec] : itemRewards->asObject()) {
             TrialTable::ItemReward reward;

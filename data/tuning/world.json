@@ -383,6 +383,26 @@
           "chance": 0.04
         }
       ]
+    },
+    {
+      "id": "valley_elk",
+      "display_name": "Valley Elk",
+      "max_life": 24,
+      "behaviour": "grazer",
+      "damage": 0,
+      "damage_type": "physical",
+      "attack_period_rounds": 1,
+      "tint": "#B08A5A",
+      "size_scale": 1.1,
+      "design_purpose": "Life beyond hostiles (owner, 3 Sep 2026): grazers that bolt when you come near and never bite. Hunting them is a choice, and the hide is the start of a leather line.",
+      "loot": [
+        {
+          "item": "hide",
+          "min": 1,
+          "max": 2,
+          "chance": 1.0
+        }
+      ]
     }
   ],
   "elite_modifiers": [

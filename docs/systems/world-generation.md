@@ -175,6 +175,18 @@ The owner's frame: "always worthwhile making the world larger to allow
 for more mob variants". Behaviours are data, so a family is a few lines
 and a look.
 
+## Implemented: life beyond hostiles (3 Sep 2026)
+
+- **The peddler** stands by the order board at the spawn clearing and
+  sells for trade currency (`crafting.json` `market`): a Preserving
+  Catalyst, charcoal, ore, wood. The first thing the currency buys; steep
+  next to gathering so infrastructure stays the dependable route.
+- **Valley elk** graze the meadow and the forest: the `grazer` behaviour
+  `flees` (the state machine turned around: within aggro range they bolt,
+  beyond give-up they settle, they never bite) and they drop hide.
+- **Birds** wheel over the trees near spawn (`flock.gd`), presentation
+  only, so the sky is never still.
+
 ## Implemented: encroachment (Wave 4, D-018, 3 Sep 2026)
 
 The base threat, built to two owner rules: **pressure, never demolition**

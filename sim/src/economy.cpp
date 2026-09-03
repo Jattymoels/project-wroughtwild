@@ -237,7 +237,7 @@ PlayerEconomy::OrderResult PlayerEconomy::fulfillOrder(const std::string& orderI
     }
 
     fulfilledOrders_.push_back(orderId);
-    worldEffects_.push_back(order->worldEffect);
+    recordWorldEffect(order->worldEffect);
     result.fulfilled = true;
     result.worldEffect = order->worldEffect;
     return result;
@@ -270,6 +270,18 @@ void PlayerEconomy::recordWorldEffect(const std::string& effect) {
     // An effect that wakes an era is a milestone of its own.
     for (int era = before + 1; era <= currentEra(); ++era)
         for (const auto& id : foundryEvent("era:" + std::to_string(era))) foundryNotices_.push_back(id);
+}
+
+bool PlayerEconomy::buy(const std::string& itemId) {
+    for (const auto& offer : tuning_.crafting.market) {
+        if (offer.item != itemId) continue;
+        auto have = currency.find(offer.currency);
+        if (have == currency.end() || have->second < offer.price) return false;
+        have->second -= offer.price;
+        inventory[offer.item] += offer.count;
+        return true;
+    }
+    return false;
 }
 
 std::vector<std::string> PlayerEconomy::noteSkillUse(const std::string& skillId) {

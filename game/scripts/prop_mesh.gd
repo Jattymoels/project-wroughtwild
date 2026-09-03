@@ -20,6 +20,8 @@ const IRON_RUST := Color("C4742C")
 ## Era-two ores (D-019): copper glints warm, tin pale.
 const COPPER := Color("C8783C")
 const TIN := Color("C9CCD2")
+const EMBER_ORE := Color("E8642C")
+const SILVER := Color("E4E8F0")
 
 const PHI := 1.618034
 ## Icosahedron faces over the 12 canonical vertices (see _ico_vertices).

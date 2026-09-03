@@ -82,6 +82,14 @@ struct CraftingTable {
     RepetitionDecay repetitionDecay;
     std::map<std::string, int> fuels; // item id -> fuel value per unit
     std::vector<std::string> currencies;
+    // The peddler's stall (market): item, count, price, currency.
+    struct MarketOffer {
+        std::string item;
+        int count = 1;
+        int price = 0;
+        std::string currency = "trade_currency";
+    };
+    std::vector<MarketOffer> market;
     // Crafted gear rolls like a drop (craft_rolls).
     double keenChanceAtLevel1 = 0.0;
     double keenChancePerLevel = 0.0;
@@ -379,9 +387,24 @@ struct TrialStage {
     std::vector<RoomChoice> choices;
 };
 
+// A deeper run the gate offers once its world effect is active (D-019:
+// eras advance on milestones the player chose; a floor's completion is one).
+struct TrialFloor {
+    std::string id;
+    std::string displayName;
+    std::string requiresWorldEffect;
+    BossDef boss;
+    std::vector<TrialStage> stages;
+    int exitAfterStage = -1;
+    std::string completionUnlock;
+    std::string completionText;
+};
+
 struct TrialTable {
     BossDef boss;
     std::vector<TrialStage> stages;
+    std::vector<TrialFloor> floors;
+    const TrialFloor* findFloor(const std::string& id) const;
     int exitAfterStage = -1; // stage index after which the player may bank and leave
     std::map<std::string, int> materialsReward;
     std::string catalystItem;
@@ -465,6 +488,7 @@ struct ConstructionTable {
 // that affect damage, life or mitigation never live here.
 
 struct BehaviourRealtime {
+    bool flees = false; // grazers: run within aggro range, never attack
     double moveSpeedMps = 0.0;
     double attackRangeM = 0.0;
     double preferredDistanceM = 0.0; // 0 = close to melee range
@@ -709,6 +733,8 @@ struct EraDef {
     bool encroachment = false;      // may nests settle in this era
     // enemy id -> mechanic name -> parameters (a bare number is {"value": n})
     std::map<std::string, std::map<std::string, std::map<std::string, double>>> mobMechanics;
+    double eliteChanceBonus = 0.0;                              // added to every pack's elite roll
+    std::map<std::string, std::vector<std::string>> packEscorts; // enemy id -> extra members
     const std::map<std::string, double>* mechanic(const std::string& enemyId, const std::string& name) const;
 };
 

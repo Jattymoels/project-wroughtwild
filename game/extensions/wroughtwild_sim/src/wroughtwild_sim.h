@@ -240,6 +240,16 @@ public:
     // world.json shelter: regen_life_per_round, settle_rounds, max_room_cells.
     Dictionary shelter() const;
 
+    // --- the peddler (crafting.json market) ---
+    // [{item, count, price, currency, affordable}].
+    Array market_offers() const;
+    bool buy(const String& item_id);
+    // --- trial floors (D-019) ---
+    // Deeper runs the gate can offer: [{id, display_name, available, done}].
+    Array trial_floors() const;
+    // The active run's floor: {id, display_name, completion_text}; id "" for the first floor.
+    Dictionary trial_floor() const;
+
     // --- skill mastery (D-019) ---
     // A cast that fired; returns the perk texts it unlocked (usually none).
     PackedStringArray note_skill_use(const String& skill_id);
@@ -438,7 +448,8 @@ public:
     // on deposit, rooms, offers, loot and the death contract) ---
     // Deposits carried materials at the gate and opens a run. False when a
     // run is already open.
-    bool trial_start(int seed);
+    // floor_id "" for the first floor, else a trial_floors() id.
+    bool trial_start(int seed, const String& floor_id);
     bool trial_active() const;
     bool trial_finished() const;
     bool trial_player_died() const;

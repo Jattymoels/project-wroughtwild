@@ -56,6 +56,24 @@ func _build_world(seed_value: int) -> void:
 		terrain.surface_position(terrain.map["gate_x"], terrain.map["gate_z"]))
 	var board := _replace_named(ORDER_BOARD_SCENE, "OrderBoard", spawn + Vector3(4.0, 0.0, 3.0))
 	board.look_at(spawn + Vector3(0.0, board.global_position.y - spawn.y, 0.0), Vector3.UP)
+	# Life beyond hostiles: the peddler by the board, birds over the trees.
+	var old_peddler := get_node_or_null("Peddler")
+	if old_peddler != null:
+		old_peddler.free()
+	var peddler := Peddler.new()
+	peddler.name = "Peddler"
+	add_child(peddler)
+	peddler.global_position = spawn + Vector3(-4.0, 0.0, 3.5)
+	peddler.look_at(spawn + Vector3(0.0, 0.0, 0.0), Vector3.UP)
+	for flock in get_tree().get_nodes_in_group("flocks"):
+		flock.free()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_value
+	for i in 6:
+		var fx := int(spawn.x) + rng.randi_range(-30, 30)
+		var fz := int(spawn.z) + rng.randi_range(-30, 30)
+		var flock := Flock.spawn(self, terrain.surface_position(clampi(fx, 1, terrain.map["width"] - 2), clampi(fz, 1, terrain.map["height"] - 2)), seed_value + i)
+		flock.add_to_group("flocks")
 
 
 func _replace_named(scene: PackedScene, node_name: String, at: Vector3) -> Node3D:
