@@ -153,6 +153,30 @@ still reads the pristine surface heights), a soil material family (dirt
 yields nothing until something wants soil), water, falling-block physics,
 and cave light rules (a lamp item; the dark is honest for now).
 
+## Implemented: encroachment (Wave 4, D-018, 3 Sep 2026)
+
+The base threat, built to two owner rules: **pressure, never demolition**
+(a timber house is a house at every tier) and **a nuisance, never a
+farm** (waiting in your base must not grow loot). Once the player has a
+home - a shelter they have rested in - the sim's `Encroachment` settles a
+**nest** on the fringe ring around it every `settle_seconds`, up to
+`max_nests`, spaced from other nests and fresh scars. A standing nest
+grows a tier every `growth_seconds` (a bigger pack; the top tier brings a
+shrieker to call packs to your walls), refills its fallen every
+`respawn_seconds`, and within `blight_radius_m` rest in the shelter pays
+`uneasy_rest_multiplier` of its regen. Only `nest_loot_fraction` of
+nest-born kills drop anything, and tearing a nest down (E, once nothing
+defends it) drops nothing: it ends the nuisance and scars the spot for
+`scar_seconds`. Numbers in `world.json` `encroachment`; nests are not
+saved, so a loaded game starts quiet. The engine's `encroachment.gd`
+feeds the sim a clock and the home, raises `nest.gd` mounds, fields their
+packs (`Enemy.nest_id`) and routes their kills through the pack loot path
+when the sim says that kill drops.
+
+Next: burrowers that trench the ground between nest and home (the dig
+system turned around - terrain is fair game, walls never are), and the
+shut-door siege (packs massing at the door, the sortie as the moment).
+
 ## Open questions
 
 - How class halls are signposted.

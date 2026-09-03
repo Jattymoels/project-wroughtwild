@@ -8,6 +8,9 @@ extends CharacterBody3D
 
 signal died(enemy: Enemy)
 
+## The nest that fielded this mob (encroachment), 0 for a roaming pack.
+var nest_id := 0
+
 @export var enemy_id: StringName = &"ember_whelp"
 
 var display_name := ""

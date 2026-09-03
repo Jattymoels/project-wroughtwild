@@ -180,6 +180,14 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("structure_enclosure", "seed", "removed_blocks", "at"),
                          &WroughtwildSim::structure_enclosure);
     ClassDB::bind_method(D_METHOD("shelter"), &WroughtwildSim::shelter);
+    ClassDB::bind_method(D_METHOD("encroachment_reset", "seed"), &WroughtwildSim::encroachment_reset);
+    ClassDB::bind_method(D_METHOD("encroachment_tick", "now", "has_home", "home"), &WroughtwildSim::encroachment_tick);
+    ClassDB::bind_method(D_METHOD("encroachment_nests"), &WroughtwildSim::encroachment_nests);
+    ClassDB::bind_method(D_METHOD("encroachment_rest_multiplier", "at"), &WroughtwildSim::encroachment_rest_multiplier);
+    ClassDB::bind_method(D_METHOD("encroachment_clear", "nest_id", "now"), &WroughtwildSim::encroachment_clear);
+    ClassDB::bind_method(D_METHOD("encroachment_kill_drops", "kill_seed"), &WroughtwildSim::encroachment_kill_drops);
+    ClassDB::bind_method(D_METHOD("encroachment_pressure"), &WroughtwildSim::encroachment_pressure);
+    ClassDB::bind_method(D_METHOD("encroachment_rules"), &WroughtwildSim::encroachment_rules);
     ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed", "elite_id"),
                          &WroughtwildSim::enemy_loot, DEFVAL(String()));
     ClassDB::bind_method(D_METHOD("enemy_gear_loot", "enemy_id", "seed", "elite_id"),
@@ -847,6 +855,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         player_.reset();
         world_cache_.reset();
         structure_.clear();
+        encroachment_.reset();
         tuning_ = std::move(loaded);
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);
         temper_seed_ = std::random_device{}();
@@ -2216,6 +2225,90 @@ Dictionary WroughtwildSim::structure_enclosure(int seed, const PackedInt32Array&
     const auto result = wroughtwild::lattice::enclosure(structure_, start, cap, world);
     d["enclosed"] = result.enclosed;
     d["cells"] = result.volumes / (div * div * div);
+    return d;
+}
+
+// --- encroachment ----------------------------------------------------------------
+
+namespace {
+
+Dictionary nest_to(const wroughtwild::encroachment::Encroachment& e, const wroughtwild::encroachment::Nest& n) {
+    Dictionary d;
+    d["id"] = n.id;
+    d["x"] = n.x;
+    d["z"] = n.z;
+    d["tier"] = n.tier;
+    d["pack"] = strings_to_packed(e.packFor(n.tier));
+    return d;
+}
+
+} // namespace
+
+void WroughtwildSim::encroachment_reset(int seed) {
+    if (!require_loaded("encroachment_reset")) {
+        return;
+    }
+    encroachment_ = std::make_unique<wroughtwild::encroachment::Encroachment>(tuning_->world.encroachment,
+                                                                             static_cast<uint64_t>(seed));
+}
+
+Array WroughtwildSim::encroachment_tick(double now, bool has_home, const Vector3& home) {
+    Array out;
+    if (!require_loaded("encroachment_tick")) {
+        return out;
+    }
+    if (!encroachment_) {
+        encroachment_reset(0);
+    }
+    for (const auto& n : encroachment_->tick(now, has_home, home.x, home.z)) {
+        out.push_back(nest_to(*encroachment_, n));
+    }
+    return out;
+}
+
+Array WroughtwildSim::encroachment_nests() const {
+    Array out;
+    if (!require_loaded("encroachment_nests") || !encroachment_) {
+        return out;
+    }
+    for (const auto& n : encroachment_->nests()) {
+        out.push_back(nest_to(*encroachment_, n));
+    }
+    return out;
+}
+
+double WroughtwildSim::encroachment_rest_multiplier(const Vector3& at) const {
+    if (!require_loaded("encroachment_rest_multiplier") || !encroachment_) {
+        return 1.0;
+    }
+    return encroachment_->restMultiplierAt(at.x, at.z);
+}
+
+bool WroughtwildSim::encroachment_clear(int nest_id, double now) {
+    return require_loaded("encroachment_clear") && encroachment_ && encroachment_->clear(nest_id, now);
+}
+
+bool WroughtwildSim::encroachment_kill_drops(int kill_seed) const {
+    return require_loaded("encroachment_kill_drops") && encroachment_ &&
+           encroachment_->killDrops(static_cast<uint64_t>(static_cast<int64_t>(kill_seed)));
+}
+
+int WroughtwildSim::encroachment_pressure() const {
+    return (require_loaded("encroachment_pressure") && encroachment_) ? encroachment_->pressure() : 0;
+}
+
+Dictionary WroughtwildSim::encroachment_rules() const {
+    Dictionary d;
+    if (!require_loaded("encroachment_rules")) {
+        return d;
+    }
+    const auto& e = tuning_->world.encroachment;
+    d["respawn_seconds"] = e.respawnSeconds;
+    d["settle_seconds"] = e.settleSeconds;
+    d["growth_seconds"] = e.growthSeconds;
+    d["blight_radius_m"] = e.blightRadiusM;
+    d["max_nests"] = e.maxNests;
+    d["nest_loot_fraction"] = e.nestLootFraction;
     return d;
 }
 

@@ -106,7 +106,23 @@ func _physics_process(_delta: float) -> void:
 		680:
 			check(is_instance_valid(_pack[0]) and _pack[0].global_position.z > -83.0,
 				"hop: a chaser clears a one-block ledge (z %.1f)" % _pack[0].global_position.z)
-		682:
+			_pack[0].take_damage(100000.0)
+			_run_encroachment_checks()
+		690:
+			# The nest's pack stands; its kills go through the loot guard; an
+			# undefended nest tears down on E and the sim forgets it.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			check(_nest != null and is_instance_valid(_nest) and _nest.defenders().size() >= 1,
+				"encroach: the nest fields its pack (%d)" % (_nest.defenders().size() if _nest else -1))
+			check(not _nest.interact(_player) and is_instance_valid(_nest), "encroach: a defended nest will not come down")
+			for enemy in _nest.defenders():
+				(enemy as Enemy).take_damage(100000.0)
+		694:
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			check(_nest.defenders().is_empty(), "encroach: the pack is dead")
+			check(_nest.interact(_player) and sim.encroachment_nests().is_empty() and _encroachment.nest_count() == 0,
+				"encroach: an undefended nest tears down and the sim forgets it")
+		696:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
 
@@ -137,6 +153,31 @@ func _run_cone_and_dash_checks() -> void:
 	check(stray.state == "idle", "stray: spawns unaware at 20 m")
 	stray.take_damage(1.0)
 	check(stray.state == "chase", "stray: taking a hit pulls it into the fight")
+
+
+## Encroachment (D-018): a home on the floor, the clock run forward until a
+## nest settles on its fringe, raised with its pack by the controller.
+var _encroachment: Encroachment
+var _nest: Nest
+
+
+func _run_encroachment_checks() -> void:
+	var sim: WroughtwildSim = _player.inventory.get_sim()
+	_player.global_position = Vector3(-80, 1.1, 80)
+	_player.combat.has_home = true
+	_player.combat.home_position = _player.global_position
+	_encroachment = Encroachment.new()
+	add_child(_encroachment)
+	_encroachment.setup(null, 11)
+	var rules: Dictionary = sim.encroachment_rules()
+	_encroachment.tick()
+	_encroachment.now += float(rules["settle_seconds"]) + 1.0
+	_encroachment.tick()
+	check(_encroachment.nest_count() == 1 and sim.encroachment_nests().size() == 1, "encroach: the clock settles a nest")
+	_nest = _encroachment.nest_node(int(sim.encroachment_nests()[0]["id"]))
+	check(_nest != null and _nest.global_position.distance_to(_player.global_position) <= float(rules["blight_radius_m"]) + 14.0,
+		"encroach: the nest stands on the fringe of home")
+	check(_nest.interact_label().contains("defended"), "encroach: the label says it is defended")
 
 
 ## Wave 3: the shrieker's aggro chain and the elite modifiers.

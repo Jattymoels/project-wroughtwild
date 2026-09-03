@@ -153,6 +153,28 @@ func _test_lattice() -> void:
 		"shelter: standing outside the box is not sheltered")
 	sim.structure_clear()
 
+	# Encroachment through the door: nothing without a home, a nest on the
+	# fringe with a home, uneasy rest beside it, a scar after clearing.
+	sim.encroachment_reset(5)
+	var enc_rules: Dictionary = sim.encroachment_rules()
+	check(enc_rules["max_nests"] >= 1 and sim.encroachment_tick(10.0, false, Vector3.ZERO).is_empty(),
+		"encroach: nothing settles without a home")
+	sim.encroachment_tick(10.0, true, Vector3(40, 0, 40))
+	var born: Array = sim.encroachment_tick(10.0 + enc_rules["settle_seconds"], true, Vector3(40, 0, 40))
+	check(born.size() == 1 and born[0]["pack"].size() >= 1 and sim.encroachment_nests().size() == 1,
+		"encroach: a nest settles on the fringe with a pack")
+	var at := Vector3(born[0]["x"], 0.0, born[0]["z"])
+	check(at.distance_to(Vector3(40, 0, 40)) <= 31.0 and sim.encroachment_rest_multiplier(at) < 1.0
+		and sim.encroachment_rest_multiplier(Vector3(400, 0, 400)) == 1.0, "encroach: blight only near the nest")
+	var dropped := 0
+	for k in 200:
+		if sim.encroachment_kill_drops(k * 31 + 7):
+			dropped += 1
+	check(dropped > 40 and dropped < 130, "encroach: nest-born kills drop only a fraction of the time")
+	check(sim.encroachment_pressure() == 1 and sim.encroachment_clear(born[0]["id"], 500.0)
+		and sim.encroachment_nests().is_empty() and sim.encroachment_pressure() == 0, "encroach: a nest tears down")
+	sim.encroachment_reset(5)
+
 	# Piece meshes: every form builds, the wedge's hull has six corners.
 	check(PieceMesh.mesh_for("stairs", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE)
 		and PieceMesh.mesh_for("wedge", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE),

@@ -236,6 +236,23 @@ struct ShelterDef {
     int maxRoomCells = 0;
 };
 
+// Encroachment (world.json "encroachment", encroachment.h): nests settle
+// on the fringe of the player's home, grow, blight rest, and drop little.
+struct EncroachmentDef {
+    double settleSeconds = 0.0;       // between nests settling
+    double fringeMinM = 0.0;          // ring around the home where nests appear
+    double fringeMaxM = 0.0;
+    int maxNests = 0;
+    double spacingM = 0.0;            // between nests, and from fresh scars
+    double growthSeconds = 0.0;       // a standing nest gains a tier per this
+    double respawnSeconds = 0.0;      // a fallen nest member returns after this
+    double blightRadiusM = 0.0;       // rest is uneasy within this of a nest
+    double uneasyRestMultiplier = 1.0;
+    double nestLootFraction = 1.0;    // share of nest-born kills that drop at all
+    double scarSeconds = 0.0;         // a cleared spot stays quiet this long
+    std::vector<std::vector<std::string>> tiers; // enemy ids per tier (1-based)
+};
+
 // One line of a mob's loot table. Three kinds (D-016): a material stack, a
 // rolled gear piece of a rarity and tier, or a skill page that teaches one
 // skill the player does not yet know.
@@ -291,6 +308,7 @@ struct EliteModifierDef {
 struct WorldTable {
     PlayerBase playerBase;
     ShelterDef shelter;
+    EncroachmentDef encroachment;
     std::vector<EnemyDef> enemies;
     std::vector<EliteModifierDef> eliteModifiers;
     std::vector<GatherSite> gatheringSites;

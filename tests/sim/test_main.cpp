@@ -10,6 +10,7 @@
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
+#include "wroughtwild/encroachment.h"
 #include "wroughtwild/grammar.h"
 #include "wroughtwild/items.h"
 #include "wroughtwild/lattice.h"
@@ -1732,6 +1733,69 @@ void testLattice(const tuning::Tuning& t) {
     check(!enclosure(s, hollowCell, 3, rock).enclosed, "shelter: a room past the cap is not a shelter");
 }
 
+// Encroachment: nests settle on the fringe of a home, grow, blight rest,
+// drop little, and scar when cleared.
+void testEncroachment(const tuning::Tuning& t) {
+    using namespace encroachment;
+    const auto& d = t.world.encroachment;
+    check(d.settleSeconds > 0.0 && d.maxNests >= 1 && d.tiers.size() >= 2 && d.nestLootFraction < 1.0,
+          "encroach: tunables load");
+    Encroachment e(d, 77);
+    check(e.tick(1000.0, false, 0.0, 0.0).empty() && e.nests().empty(),
+          "encroach: nothing settles without a home");
+    // With a home the settle clock starts now; the first nest comes settle_seconds later.
+    check(e.tick(1000.0, true, 50.0, 50.0).empty(), "encroach: a home starts the clock, nothing yet");
+    check(e.tick(1000.0 + d.settleSeconds - 1.0, true, 50.0, 50.0).empty(), "encroach: not before settle_seconds");
+    auto born = e.tick(1000.0 + d.settleSeconds, true, 50.0, 50.0);
+    check(born.size() == 1 && e.nests().size() == 1 && born[0].tier == 1, "encroach: the first nest settles");
+    const double r = std::sqrt((born[0].x - 50.0) * (born[0].x - 50.0) + (born[0].z - 50.0) * (born[0].z - 50.0));
+    check(r >= d.fringeMinM - 1e-9 && r <= d.fringeMaxM + 1e-9, "encroach: the nest sits on the fringe ring");
+    check(e.packFor(1).size() == d.tiers[0].size() && !e.packFor(1).empty(), "encroach: tier 1 fields the first pack");
+    // More nests to the cap, spaced apart.
+    double now = 1000.0 + d.settleSeconds;
+    for (int i = 0; i < d.maxNests + 2; ++i) {
+        now += d.settleSeconds;
+        e.tick(now, true, 50.0, 50.0);
+    }
+    check(static_cast<int>(e.nests().size()) == d.maxNests, "encroach: nests stop at max_nests");
+    bool spaced = true;
+    for (size_t i = 0; i < e.nests().size(); ++i)
+        for (size_t j = i + 1; j < e.nests().size(); ++j) {
+            const auto &a = e.nests()[i], &b = e.nests()[j];
+            if (std::sqrt((a.x - b.x) * (a.x - b.x) + (a.z - b.z) * (a.z - b.z)) < d.spacingM) spaced = false;
+        }
+    check(spaced, "encroach: nests keep their spacing");
+    // Growth: tiers climb with time to the top tier, no further.
+    now += d.growthSeconds * (d.tiers.size() + 2);
+    e.tick(now, true, 50.0, 50.0);
+    check(e.pressure() == static_cast<int>(d.tiers.size()), "encroach: standing nests grow to the top tier and stop");
+    check(e.packFor(e.pressure()).size() >= e.packFor(1).size(), "encroach: higher tiers field bigger packs");
+    // Blight: rest is uneasy near a nest, clear far away.
+    const Nest first = e.nests().front();
+    check(e.restMultiplierAt(first.x, first.z) < 1.0 && e.restMultiplierAt(first.x + 500.0, first.z) == 1.0,
+          "encroach: rest is uneasy within a nest's blight only");
+    // Loot guard: roughly nest_loot_fraction of nest-born kills drop, never all.
+    int drops = 0;
+    for (uint64_t k = 0; k < 1000; ++k)
+        if (e.killDrops(k * 7919 + 3)) ++drops;
+    check(drops > 250 && drops < 550, "encroach: nest-born kills drop only a fraction of the time");
+    // Clearing scars the spot: nothing resettles there for scar_seconds.
+    const int id = first.id;
+    check(e.clear(id, now) && e.find(id) == nullptr && !e.clear(id, now), "encroach: a nest tears down once");
+    int resettledOnScar = 0;
+    for (int i = 0; i < 3; ++i) {
+        now += d.settleSeconds;
+        for (const auto& n : e.tick(now, true, 50.0, 50.0))
+            if (std::sqrt((n.x - first.x) * (n.x - first.x) + (n.z - first.z) * (n.z - first.z)) < d.spacingM)
+                ++resettledOnScar;
+    }
+    check(resettledOnScar == 0, "encroach: a fresh scar keeps its spot quiet");
+    // Losing the home stops the clock; nests already standing remain.
+    const size_t standing = e.nests().size();
+    e.tick(now + d.settleSeconds * 3, false, 0.0, 0.0);
+    check(e.nests().size() == standing, "encroach: without a home nothing new settles");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -1772,6 +1836,7 @@ int main(int argc, char** argv) {
     testMobGearAndPages(t);
     testElitesAndFamilies(t);
     testLattice(t);
+    testEncroachment(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

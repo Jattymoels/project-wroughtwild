@@ -79,6 +79,11 @@ var _shelter_probe_left := 0.0
 var _settle_left := 0.0
 var _regen_per_second := 0.0
 var _settle_seconds := 0.0
+## Home: the last shelter rested in. Encroachment settles on its fringe.
+var has_home := false
+var home_position := Vector3.ZERO
+## Shelter regen multiplier from the world (1 clear, less in a nest's blight).
+var rest_multiplier := 1.0
 
 
 func _tick_shelter(delta: float) -> void:
@@ -92,8 +97,12 @@ func _tick_shelter(delta: float) -> void:
 			_regen_per_second = float(rules.get("regen_life_per_round", 0.0)) / maxf(round_seconds, 0.01)
 			_settle_seconds = float(rules.get("settle_rounds", 0.0)) * round_seconds
 		set_sheltered(_probe_shelter())
+		if sheltered:
+			has_home = true
+			home_position = get_parent().global_position
+			rest_multiplier = sim.encroachment_rest_multiplier(home_position)
 	if sheltered and _settle_left <= 0.0 and life > 0.0 and life < max_life:
-		life = minf(max_life, life + _regen_per_second * delta)
+		life = minf(max_life, life + _regen_per_second * rest_multiplier * delta)
 		life_changed.emit(life, max_life)
 
 
@@ -117,7 +126,12 @@ func resting() -> bool:
 
 
 func regen_per_second() -> float:
-	return _regen_per_second
+	return _regen_per_second * rest_multiplier
+
+
+## True while a nest's blight makes the rest uneasy.
+func uneasy() -> bool:
+	return sheltered and rest_multiplier < 1.0
 
 
 func _physics_process(delta: float) -> void:
