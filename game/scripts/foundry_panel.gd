@@ -21,6 +21,9 @@ var _tray: VBoxContainer
 var _effects: VBoxContainer
 var _message: Label
 var _selected: StringName = &""
+## A skill picked from the tablet tray, to lay on the next empty cell.
+var _selected_skill: StringName = &""
+var _tablets: VBoxContainer
 ## Test surface: what the last refresh showed.
 var cell_count := 0
 var tray_count := 0
@@ -71,7 +74,7 @@ func _ready() -> void:
 	_grid.add_theme_constant_override("v_separation", 6)
 	left.add_child(_grid)
 	var how := Label.new()
-	how.text = "Beside: a pair makes its mechanic.  In a line of three: the verb again.\nLift an ingot to re-forge; it costs a little metal."
+	how.text = "Beside: a pair makes its mechanic.  In a line of three: the verb again.\nLay a skill's tablet: every ingot beside it supports that skill alone.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free."
 	how.modulate = UiTheme.MUTED
 	left.add_child(how)
 
@@ -82,6 +85,9 @@ func _ready() -> void:
 	right.add_child(_section("Ingots in hand"))
 	_tray = VBoxContainer.new()
 	right.add_child(_tray)
+	right.add_child(_section("Skills to lay"))
+	_tablets = VBoxContainer.new()
+	right.add_child(_tablets)
 	right.add_child(_section("What the plate does"))
 	_effects = VBoxContainer.new()
 	right.add_child(_effects)
@@ -131,15 +137,24 @@ func refresh() -> void:
 		child.queue_free()
 	_grid.columns = cols
 	var placed := {}
+	var tablets := {}
 	for p in view["plate"]:
-		placed[Vector2i(p["row"], p["col"])] = String(p["ingot"])
+		if String(p.get("skill", "")) != "":
+			tablets[Vector2i(p["row"], p["col"])] = String(p["skill"])
+		else:
+			placed[Vector2i(p["row"], p["col"])] = String(p["ingot"])
 	cell_count = 0
 	for r in rows:
 		for c in cols:
 			var cell := Button.new()
 			cell.custom_minimum_size = CELL_SIZE
 			var key := Vector2i(r, c)
-			if placed.has(key):
+			if tablets.has(key):
+				var skill: Dictionary = sim.combat_skill(tablets[key])
+				cell.text = "[ %s ]" % skill.get("display_name", tablets[key])
+				cell.modulate = UiTheme.FROST
+				cell.tooltip_text = "A tablet: the ingots beside it support this skill. Click to lift (free)."
+			elif placed.has(key):
 				var info: Dictionary = sim.foundry_ingot(placed[key])
 				cell.text = info.get("display_name", placed[key]).replace(" Ingot", "")
 				cell.tooltip_text = info.get("sentence", "")
@@ -171,9 +186,27 @@ func refresh() -> void:
 		tray_count += 1
 	if not any:
 		var none := Label.new()
-		none.text = "None in hand. Milestones forge them: first kills, first smelts, the mine, the Tyrant."
+		none.text = "None in hand. Milestones forge them: the first bench, first kills, the first smelt, the first dressed block, the Tyrant."
 		none.modulate = UiTheme.MUTED
 		_tray.add_child(none)
+
+	for child in _tablets.get_children():
+		child.queue_free()
+	var laid_any := false
+	for t in view.get("tablets", []):
+		laid_any = true
+		var button := Button.new()
+		button.text = "Lay %s" % t["display_name"]
+		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		if _selected_skill == StringName(String(t["id"])):
+			button.modulate = UiTheme.GRASS_LIGHT
+		button.pressed.connect(_on_tablet.bind(String(t["id"])))
+		_tablets.add_child(button)
+	if not laid_any:
+		var none := Label.new()
+		none.text = "Every skill you know is on the plate." if not view.get("tablets", []).is_empty() or not view["plate"].is_empty() else "Learn a skill and lay its tablet here."
+		none.modulate = UiTheme.MUTED
+		_tablets.add_child(none)
 
 	for child in _effects.get_children():
 		child.queue_free()
@@ -181,9 +214,11 @@ func refresh() -> void:
 	for effect in sim.foundry_effects():
 		var line := Label.new()
 		var kind: String = effect["kind"]
-		var prefix := "pair" if kind == "pair" else ("line" if kind == "line" else "ingot")
+		var prefix := "pair" if kind == "pair" else ("line" if kind == "line" else ("support" if kind == "support" else "ingot"))
 		line.text = "%s  ·  %s  —  %s" % [prefix, effect["label"], effect["sentence"]]
-		if kind != "ingot":
+		if kind == "support":
+			line.modulate = UiTheme.FROST
+		elif kind != "ingot":
 			line.modulate = UiTheme.SUN_WARM
 		_effects.add_child(line)
 		effect_count += 1
@@ -196,7 +231,15 @@ func refresh() -> void:
 
 func _on_tray(id: String) -> void:
 	_selected = StringName(id) if _selected != StringName(id) else &""
+	_selected_skill = &""
 	_message.text = "Pick a cell for the %s." % sim.foundry_ingot(id).get("display_name", id) if _selected != &"" else ""
+	refresh()
+
+
+func _on_tablet(id: String) -> void:
+	_selected_skill = StringName(id) if _selected_skill != StringName(id) else &""
+	_selected = &""
+	_message.text = "Pick a cell for the %s tablet; the ingots beside it will support it." % sim.combat_skill(id).get("display_name", id) if _selected_skill != &"" else ""
 	refresh()
 
 
@@ -204,15 +247,25 @@ func _on_cell(row: int, col: int) -> void:
 	var view: Dictionary = sim.foundry()
 	for p in view["plate"]:
 		if int(p["row"]) == row and int(p["col"]) == col:
+			var was_tablet: bool = String(p.get("skill", "")) != ""
 			if sim.foundry_remove(row, col):
-				_message.text = "Lifted. The metal is spent."
+				_message.text = "Lifted." if was_tablet else "Lifted. The metal is spent."
 				_after_change()
 			else:
 				_message.text = "Re-forging needs %s." % _cost_text(view.get("reforge_cost", {}))
 				refresh()
 			return
+	if _selected_skill != &"":
+		if sim.foundry_place_skill(row, col, String(_selected_skill)):
+			_selected_skill = &""
+			_message.text = ""
+			_after_change()
+		else:
+			_message.text = "That tablet cannot go there."
+			refresh()
+		return
 	if _selected == &"":
-		_message.text = "Pick an ingot from the tray first."
+		_message.text = "Pick an ingot from the tray, or a skill to lay."
 		refresh()
 		return
 	if sim.foundry_place(row, col, String(_selected)):
@@ -244,6 +297,12 @@ func _after_change() -> void:
 ## Test surface: place through the panel.
 func set_selected(id: StringName) -> void:
 	_selected = id
+	_selected_skill = &""
+
+
+func set_selected_skill(id: StringName) -> void:
+	_selected_skill = id
+	_selected = &""
 
 
 func press_cell(row: int, col: int) -> void:

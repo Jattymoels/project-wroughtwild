@@ -212,6 +212,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("foundry_effects"), &WroughtwildSim::foundry_effects);
     ClassDB::bind_method(D_METHOD("foundry_place", "row", "col", "ingot_id"), &WroughtwildSim::foundry_place);
     ClassDB::bind_method(D_METHOD("foundry_remove", "row", "col"), &WroughtwildSim::foundry_remove);
+    ClassDB::bind_method(D_METHOD("foundry_place_skill", "row", "col", "skill_id"), &WroughtwildSim::foundry_place_skill);
     ClassDB::bind_method(D_METHOD("foundry_event", "event"), &WroughtwildSim::foundry_event);
     ClassDB::bind_method(D_METHOD("foundry_notices"), &WroughtwildSim::foundry_notices);
     ClassDB::bind_method(D_METHOD("era"), &WroughtwildSim::era);
@@ -2548,9 +2549,23 @@ Dictionary WroughtwildSim::foundry() const {
         cell["row"] = p.row;
         cell["col"] = p.col;
         cell["ingot"] = to_godot(p.ingot);
+        cell["skill"] = to_godot(p.skill);
         plate.push_back(cell);
     }
     d["plate"] = plate;
+    // Tablets (D-022): the known skills not yet laid, for the tray.
+    Array tablets;
+    for (const auto& id : player_->knownSkills()) {
+        if (wroughtwild::foundry::tabletFor(state, id) != nullptr) continue;
+        const auto* def = tuning_->skills.findCombatSkill(id);
+        if (def == nullptr) continue;
+        Dictionary t;
+        t["id"] = to_godot(id);
+        t["display_name"] = to_godot(def->displayName);
+        tablets.push_back(t);
+    }
+    d["tablets"] = tablets;
+    d["support_multiplier"] = tuning_->foundry.supportMultiplier;
     Dictionary owned, unplaced;
     for (const auto& [id, count] : state.owned) {
         owned[to_godot(id)] = count;
@@ -2602,10 +2617,11 @@ Array WroughtwildSim::foundry_effects() const {
     if (!require_loaded("foundry_effects")) {
         return out;
     }
-    for (const auto& e : wroughtwild::foundry::effects(tuning_->foundry, player_->foundry(), player_->plateSize())) {
+    for (const auto& e : wroughtwild::foundry::effects(*tuning_, player_->foundry(), player_->plateSize())) {
         Dictionary d;
         d["kind"] = to_godot(e.kind);
         d["label"] = to_godot(e.label);
+        d["skill"] = to_godot(e.skill);
         const auto* def = tuning_->items.findModifier(e.modifier);
         d["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, e.value)) : String();
         d["modifier"] = to_godot(e.modifier);
@@ -2623,6 +2639,10 @@ bool WroughtwildSim::foundry_place(int row, int col, const String& ingot_id) {
 
 bool WroughtwildSim::foundry_remove(int row, int col) {
     return require_loaded("foundry_remove") && player_->foundryRemove(row, col);
+}
+
+bool WroughtwildSim::foundry_place_skill(int row, int col, const String& skill_id) {
+    return require_loaded("foundry_place_skill") && player_->foundryPlaceSkill(row, col, to_std(skill_id));
 }
 
 Array WroughtwildSim::foundry_event(const String& event) {

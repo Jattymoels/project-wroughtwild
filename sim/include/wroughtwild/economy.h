@@ -170,6 +170,9 @@ public:
     // Lifts an ingot off the plate, paying reforge_cost. False when the
     // cell is empty or the metal is short.
     bool foundryRemove(int row, int col);
+    // Lays a known skill's tablet on an empty cell (D-022): false off the
+    // plate, on a taken cell, for an unknown skill, or when already laid.
+    bool foundryPlaceSkill(int row, int col, const std::string& skillId);
     bool canAffordReforge() const;
     // Ingots granted by events the economy raised itself (crafts, world
     // effects, eras), for the host to announce; cleared on read.

@@ -1,4 +1,5 @@
 #include "wroughtwild/foundry.h"
+#include "wroughtwild/grammar.h"
 
 #include <algorithm>
 
@@ -19,6 +20,12 @@ const Placement* at(const State& state, int row, int col) {
     return nullptr;
 }
 
+const Placement* tabletFor(const State& state, const std::string& skill) {
+    for (const auto& p : state.plate)
+        if (p.skill == skill) return &p;
+    return nullptr;
+}
+
 int placedCount(const State& state, const std::string& ingot) {
     int n = 0;
     for (const auto& p : state.plate)
@@ -32,7 +39,8 @@ int unplacedCount(const State& state, const std::string& ingot) {
     return std::max(0, owned - placedCount(state, ingot));
 }
 
-std::vector<Effect> effects(const tuning::FoundryDef& def, const State& state, PlateSize size) {
+std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, PlateSize size) {
+    const tuning::FoundryDef& def = tuning.foundry;
     std::vector<Effect> out;
     auto cell = [&](int r, int c) -> const Placement* {
         if (r < 0 || c < 0 || r >= size.rows || c >= size.cols) return nullptr;
@@ -41,21 +49,22 @@ std::vector<Effect> effects(const tuning::FoundryDef& def, const State& state, P
     // Ingots: every placement inside the plate speaks its verb.
     for (const auto& p : state.plate) {
         if (p.row >= size.rows || p.col >= size.cols) continue; // off a plate that shrank (never, but safe)
+        if (p.isTablet()) continue;
         const auto* ingot = def.findIngot(p.ingot);
         if (!ingot) continue;
-        out.push_back({"ingot", ingot->displayName, ingot->modifier, ingot->value, p.row, p.col});
+        out.push_back({"ingot", ingot->displayName, ingot->modifier, ingot->value, p.row, p.col, std::string()});
     }
     // Pairs: each orthogonal adjacency once (right and down from each cell).
     for (int r = 0; r < size.rows; ++r) {
         for (int c = 0; c < size.cols; ++c) {
             const auto* here = cell(r, c);
-            if (!here) continue;
+            if (!here || here->isTablet()) continue;
             for (const auto& [dr, dc] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}}) {
                 const auto* there = cell(r + dr, c + dc);
-                if (!there) continue;
+                if (!there || there->isTablet()) continue;
                 const auto* pair = def.findPair(here->ingot, there->ingot);
                 if (!pair) continue;
-                out.push_back({"pair", pair->displayName, pair->modifier, pair->value, r, c});
+                out.push_back({"pair", pair->displayName, pair->modifier, pair->value, r, c, std::string()});
             }
         }
     }
@@ -73,7 +82,7 @@ std::vector<Effect> effects(const tuning::FoundryDef& def, const State& state, P
                     const int r = alongRow ? fixed : runStart;
                     const int c = alongRow ? runStart : fixed;
                     out.push_back({"line", ingot->displayName + " line", ingot->modifier,
-                                   ingot->value * def.lineBonus, r, c});
+                                   ingot->value * def.lineBonus, r, c, std::string()});
                 }
             }
         };
@@ -89,6 +98,26 @@ std::vector<Effect> effects(const tuning::FoundryDef& def, const State& state, P
     };
     for (int r = 0; r < size.rows; ++r) scan(r, true);
     for (int c = 0; c < size.cols; ++c) scan(c, false);
+    // Supports (D-022): every ingot orthogonally beside a skill tablet
+    // supports that skill alone, at support_multiplier times its value,
+    // when its verb can apply to the skill at all.
+    for (const auto& p : state.plate) {
+        if (!p.isTablet() || p.row >= size.rows || p.col >= size.cols) continue;
+        const auto* skill = tuning.skills.findCombatSkill(p.skill);
+        if (!skill) continue;
+        const auto skillTags = skill->resolveTags();
+        for (const auto& [dr, dc] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}) {
+            const auto* beside = cell(p.row + dr, p.col + dc);
+            if (!beside || beside->isTablet()) continue;
+            const auto* ingot = def.findIngot(beside->ingot);
+            if (!ingot) continue;
+            const auto* modifier = tuning.items.findModifier(ingot->modifier);
+            if (!modifier || modifier->isSelf()) continue;
+            if (!grammar::modAppliesToTags(modifier->appliesToTags, skillTags)) continue;
+            out.push_back({"support", skill->displayName + " <- " + ingot->displayName, ingot->modifier,
+                           ingot->value * def.supportMultiplier, p.row, p.col, p.skill});
+        }
+    }
     return out;
 }
 

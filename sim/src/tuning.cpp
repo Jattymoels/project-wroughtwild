@@ -406,6 +406,7 @@ FoundryDef loadFoundry(const std::string& path) {
     def.reforgeCost = readIntMap(doc->get("reforge_cost"));
     if (auto n = doc->find("line_length")) def.lineLength = n->asInt();
     if (auto n = doc->find("line_bonus")) def.lineBonus = n->asNumber();
+    if (auto n = doc->find("support_multiplier")) def.supportMultiplier = n->asNumber();
     for (const auto& i : doc->get("ingots").asArray()) {
         IngotDef ingot;
         ingot.id = i->get("id").asString();

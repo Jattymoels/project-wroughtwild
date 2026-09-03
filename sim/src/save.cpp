@@ -129,7 +129,9 @@ std::string toJson(const SaveGame& game) {
     for (size_t i = 0; i < game.economy.foundry.plate.size(); ++i) {
         const auto& p = game.economy.foundry.plate[i];
         if (i) out << ",";
-        out << "{\"row\":" << p.row << ",\"col\":" << p.col << ",\"ingot\":\"" << escape(p.ingot) << "\"}";
+        out << "{\"row\":" << p.row << ",\"col\":" << p.col << ",\"ingot\":\"" << escape(p.ingot) << "\"";
+        if (p.isTablet()) out << ",\"skill\":\"" << escape(p.skill) << "\"";
+        out << "}";
     }
     out << "],\"milestones\":";
     writeStringList(out, game.economy.foundry.milestones);
@@ -182,9 +184,14 @@ SaveGame fromJson(const std::string& text) {
     // Saves written before D-019 carry no Foundry.
     if (auto f = eco.find("foundry")) {
         game.economy.foundry.owned = readIntMap(f->get("owned"));
-        for (const auto& p : f->get("plate").asArray())
-            game.economy.foundry.plate.push_back(
-                {p->get("row").asInt(), p->get("col").asInt(), p->get("ingot").asString()});
+        for (const auto& p : f->get("plate").asArray()) {
+            foundry::Placement placement;
+            placement.row = p->get("row").asInt();
+            placement.col = p->get("col").asInt();
+            placement.ingot = p->get("ingot").asString();
+            if (auto skill = p->find("skill")) placement.skill = skill->asString();
+            game.economy.foundry.plate.push_back(placement);
+        }
         game.economy.foundry.milestones = readStringList(f->get("milestones"));
     }
     if (auto uses = eco.find("skill_uses")) game.economy.skillUses = readIntMap(*uses);

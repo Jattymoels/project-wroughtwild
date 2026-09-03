@@ -70,6 +70,15 @@ func _count_placed_blocks() -> int:
 	return count
 
 
+## The mean of many rolled hits: the sim rolls a band, so a support shows
+## in the average, not in one swing.
+func _mean_hit(sim: WroughtwildSim, skill_id: String) -> float:
+	var total := 0.0
+	for i in 40:
+		total += sim.player_hit_damage(skill_id, false)
+	return total / 40.0
+
+
 func _physics_process(_delta: float) -> void:
 	_frame += 1
 	match _frame:
@@ -267,8 +276,40 @@ func _physics_process(_delta: float) -> void:
 				"foundry: the panel set the ingot and shows its effect")
 			check(sim.foundry_event("first_kill:cinder_archer") == ["reach"] and sim.foundry_place(0, 1, "reach")
 				and sim.foundry_effects().size() == 3, "foundry: reach beside ember makes Wildfire")
+			# D-022 skills on the plate: lay the orb's tablet under reach; reach
+			# supports the orb alone; a tablet lifts free.
+			_player.foundry_panel.refresh()
+			check((sim.foundry()["tablets"] as Array).size() >= 3, "plate: the known skills wait as tablets")
+			# An edge ingot (the first strike-driven split) at (1,0), the heavy
+			# strike's tablet at (1,1): edge supports the strike alone.
+			check(sim.foundry_event("work:strike_split") == ["edge"] and sim.foundry_place(1, 0, "edge"), "plate: an edge ingot for the strike")
+			var heavy_before: float = _mean_hit(sim, "prototype_heavy_strike")
+			var area_before: float = _mean_hit(sim, "prototype_area_strike")
+			_player.foundry_panel.set_selected_skill(&"prototype_heavy_strike")
+			_player.foundry_panel.press_cell(1, 1)
+			var supports := 0
+			for e in sim.foundry_effects():
+				if e["kind"] == "support" and e["skill"] == "prototype_heavy_strike":
+					supports += 1
+			# Six effects: ember, reach, edge; Wildfire and Kindling pairs; the support.
+			check(supports == 1 and _player.foundry_panel.effect_count == 6, "plate: edge beside the strike's tablet supports the strike (%d, %d effects)" % [supports, _player.foundry_panel.effect_count])
+			var heavy_after: float = _mean_hit(sim, "prototype_heavy_strike")
+			var area_after: float = _mean_hit(sim, "prototype_area_strike")
+			check(heavy_after > heavy_before * 1.12 and absf(area_after - area_before) < area_before * 0.06,
+				"plate: the support raises the strike's damage and no other skill's (heavy %.2f -> %.2f, area %.2f -> %.2f)" % [heavy_before, heavy_after, area_before, area_after])
+			var iron_before: int = sim.material_count("iron_ingot")
+			_player.foundry_panel.press_cell(1, 1)
+			check(sim.material_count("iron_ingot") == iron_before and (sim.foundry()["tablets"] as Array).size() >= 3
+				and _player.foundry_panel.message() == "Lifted.", "plate: a tablet lifts for free")
+			# Lift the edge again (metal) so later combat bands see the plain plate.
+			check(sim.foundry_remove(1, 0) and sim.material_count("iron_ingot") == iron_before - 1, "plate: lifting an ingot still costs metal")
+			sim.add_material("iron_ingot", 1)
 			_player.foundry_panel.close_panel()
 			check(not _player.foundry_panel.is_open(), "foundry: panel closes")
+			_player.toggle_foundry()
+			check(_player.foundry_panel.is_open(), "plate: F opens the Foundry anywhere")
+			_player.toggle_foundry()
+			check(not _player.foundry_panel.is_open(), "plate: F closes it again")
 		15:
 			# The door is in the physics space now: shut it collides (so X and
 			# E can reach it), open it does not.

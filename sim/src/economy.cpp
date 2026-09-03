@@ -331,17 +331,36 @@ bool PlayerEconomy::foundryPlace(int row, int col, const std::string& ingot) {
     if (!tuning_.foundry.findIngot(ingot)) return false;
     if (foundry::at(foundry_, row, col) != nullptr) return false;
     if (foundry::unplacedCount(foundry_, ingot) <= 0) return false;
-    foundry_.plate.push_back({row, col, ingot});
+    foundry_.plate.push_back({row, col, ingot, std::string()});
     return true;
 }
 
 bool PlayerEconomy::canAffordReforge() const { return hasAll(inventory, tuning_.foundry.reforgeCost); }
 
+bool PlayerEconomy::foundryPlaceSkill(int row, int col, const std::string& skillId) {
+    const auto size = plateSize();
+    if (row < 0 || col < 0 || row >= size.rows || col >= size.cols) return false;
+    if (std::find(knownSkills_.begin(), knownSkills_.end(), skillId) == knownSkills_.end()) return false;
+    if (foundry::at(foundry_, row, col) != nullptr) return false;
+    if (foundry::tabletFor(foundry_, skillId) != nullptr) return false;
+    foundry::Placement tablet;
+    tablet.row = row;
+    tablet.col = col;
+    tablet.skill = skillId;
+    foundry_.plate.push_back(tablet);
+    return true;
+}
+
+// Lifting an ingot re-forges it (metal); lifting a tablet is free - a
+// tablet is knowledge, not metal.
 bool PlayerEconomy::foundryRemove(int row, int col) {
     auto it = std::find_if(foundry_.plate.begin(), foundry_.plate.end(),
                            [&](const foundry::Placement& p) { return p.row == row && p.col == col; });
-    if (it == foundry_.plate.end() || !canAffordReforge()) return false;
-    remove(inventory, tuning_.foundry.reforgeCost);
+    if (it == foundry_.plate.end()) return false;
+    if (!it->isTablet()) {
+        if (!canAffordReforge()) return false;
+        remove(inventory, tuning_.foundry.reforgeCost);
+    }
     foundry_.plate.erase(it);
     return true;
 }

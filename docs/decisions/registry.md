@@ -122,6 +122,16 @@ Statuses:
   milestone (`work:strike_split`). Archetype-specific work (an archer's
   precision) waits until the grammar proves itself in play.
 
+- **D-022 (3 Sep 2026, skills on the plate):** the owner asked for a
+  support-style category attached to a main skill that does not copy Path
+  of Exile's gems, and worried about action-bar space; they could not find
+  the plate in play (it opened only from the forge, behind the yard) and
+  it held no skills. Landed: skill tablets on the Foundry plate, ingots
+  beside a tablet supporting that skill alone (tag-checked, ×2, free to
+  lift), F opening the Foundry anywhere, the first dressed block as a
+  milestone. Manners learned from mob families remain the accepted source
+  of later supports.
+
 ## Registering a decision
 
 Add an entry when a choice materially affects player experience, save data, system boundaries, architecture or prototype scope. Create a separate ADR when the rationale, alternatives or consequences require more than one table row.
