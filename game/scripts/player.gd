@@ -3,7 +3,7 @@ extends CharacterBody3D
 ## Spike pawn: a controllable capsule with third-person camera, resource
 ## harvesting and grid build mode. Mouse and keyboard only (D-008).
 ## Controls: WASD move, mouse look, Space jump, E harvest, B build mode,
-## LMB place (or harvest outside build mode), X remove, R rotate preview.
+## LMB place (or harvest outside build mode), X remove, R turn an oriented block.
 
 ## Tunable: harvesting pace and how close the player must stand.
 @export var interact_range: float = 3.5

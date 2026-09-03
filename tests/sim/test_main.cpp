@@ -12,6 +12,7 @@
 #include "wroughtwild/economy.h"
 #include "wroughtwild/grammar.h"
 #include "wroughtwild/items.h"
+#include "wroughtwild/lattice.h"
 #include "wroughtwild/loot.h"
 #include "wroughtwild/save.h"
 #include "wroughtwild/stats.h"
@@ -167,12 +168,15 @@ void testShapePlacement(const tuning::Tuning& t) {
     const auto* slab = t.construction.findShape("stonecut_slab");
     check(slab != nullptr && slab->requiresWorldEffect == t.trial.completionUnlock,
           "construction: slab is gated by the trial completion unlock");
-    check(slab->sizeM[1] < slab->sizeM[0], "construction: slab is half height");
-    check(slab->anchor == "centre" && cube->anchor == "centre", "construction: anchor defaults to centre");
+    check(slab->sizeM[1] < slab->sizeM[0], "construction: slab is thinner than it is wide");
+    check(slab->element == "floor" && cube->element == "block", "construction: slab lies on a face, cube fills a cell");
     const auto* panel = t.construction.findShape("wall_panel");
-    check(panel != nullptr && panel->anchor == "face", "construction: wall panel anchors to a cell face");
+    check(panel != nullptr && panel->element == "wall", "construction: wall panel stands on a vertical face");
     const auto* pillar = t.construction.findShape("pillar");
-    check(pillar != nullptr && pillar->anchor == "corner", "construction: pillar anchors to a cell corner");
+    check(pillar != nullptr && pillar->element == "post", "construction: pillar stands on a vertical edge");
+    const auto* beam = t.construction.findShape("beam");
+    check(beam != nullptr && beam->element == "beam", "construction: beam runs along a horizontal edge");
+    check(std::abs(panel->sizeM[2] - slab->sizeM[1]) < 1e-9, "construction: wall and floor share one thickness");
     player.inventory["wood"] = 10;
     check(!player.shapeUnlocked("stonecut_slab") && !player.canAffordPlacement("stonecut_slab", "wood"),
           "construction: slab locked before the boss falls");
@@ -1442,6 +1446,105 @@ void testElitesAndFamilies(const tuning::Tuning& t) {
 }
 
 
+// Wave 4 building lattice: pieces address elements (volume, face, edge) and
+// placement is "the nearest free element of the piece's kind".
+void testLattice(const tuning::Tuning& t) {
+    using namespace lattice;
+    const double g = t.construction.gridSizeMetres;
+    check(std::abs(g - 1.0) < 1e-9, "lattice: tests assume the 1 m grid from construction.json");
+
+    bool threw = false;
+    try {
+        slotFromName("roof");
+    } catch (const std::exception&) {
+        threw = true;
+    }
+    check(threw, "lattice: unknown element names are rejected at load");
+    check(slotFromName("wall") == Slot::Wall && std::string(slotName(Slot::Beam)) == "beam",
+          "lattice: slot names round-trip");
+
+    // Poses: faces sit on their plane, edges on their line, volumes in the cell.
+    const Element faceX{ElementKind::Face, 0, Cell{10, 12, 10}};
+    const Element faceZ{ElementKind::Face, 2, Cell{10, 12, 10}};
+    const Element edgeY{ElementKind::Edge, 1, Cell{10, 12, 10}};
+    const Element edgeX{ElementKind::Edge, 0, Cell{10, 12, 10}};
+    const Element edgeZ{ElementKind::Edge, 2, Cell{10, 12, 10}};
+    const Element cube{ElementKind::Volume, 0, Cell{10, 12, 10}};
+    auto near = [](const Vec3& a, double x, double y, double z) {
+        return std::abs(a.x - x) < 1e-9 && std::abs(a.y - y) < 1e-9 && std::abs(a.z - z) < 1e-9;
+    };
+    check(near(centre(faceX, g), 10.0, 12.5, 10.5) && yawTurns(faceX) == 1, "lattice: x-face pose");
+    check(near(centre(faceZ, g), 10.5, 12.5, 10.0) && yawTurns(faceZ) == 0, "lattice: z-face pose");
+    check(near(centre(edgeY, g), 10.0, 12.5, 10.0) && yawTurns(edgeY) == 0, "lattice: vertical edge pose");
+    check(near(centre(edgeX, g), 10.5, 12.0, 10.0) && yawTurns(edgeX) == 0, "lattice: x-edge pose");
+    check(near(centre(edgeZ, g), 10.0, 12.0, 10.5) && yawTurns(edgeZ) == 1, "lattice: z-edge turns a quarter");
+    check(near(centre(cube, g), 10.5, 12.5, 10.5), "lattice: volume pose");
+    check(slotAccepts(Slot::Wall, faceX) && !slotAccepts(Slot::Wall, Element{ElementKind::Face, 1, Cell{}}) &&
+              slotAccepts(Slot::Floor, Element{ElementKind::Face, 1, Cell{}}) && slotAccepts(Slot::Post, edgeY) &&
+              !slotAccepts(Slot::Post, edgeX) && slotAccepts(Slot::Beam, edgeX) && slotAccepts(Slot::Block, cube),
+          "lattice: slots accept only their element kind");
+
+    // A wall aimed at the ground stands ON the ground, in the nearest plane.
+    auto walls = candidates(Slot::Wall, Vec3{10.4, 12.0, 10.3}, Vec3{0, 1, 0}, g);
+    check(walls.size() == 4, "lattice: four vertical planes box a ground hit in");
+    check(walls[0] == faceZ, "lattice: the nearest plane wins (z = 10, closest to the crosshair)");
+    check(walls[0].cell.y == 12, "lattice: a wall on the ground rises from it, not below it");
+    // ...and aimed at a ceiling hangs from it.
+    auto hanging = candidates(Slot::Wall, Vec3{10.4, 15.0, 10.3}, Vec3{0, -1, 0}, g);
+    check(hanging[0].cell.y == 14, "lattice: a wall aimed at a ceiling hangs below it");
+
+    // One face, one address: the wall's two sides resolve to the same element.
+    auto fromPlusX = candidates(Slot::Wall, Vec3{10.125, 12.5, 10.5}, Vec3{1, 0, 0}, g);
+    auto fromMinusX = candidates(Slot::Wall, Vec3{9.875, 12.5, 10.5}, Vec3{-1, 0, 0}, g);
+    check(fromPlusX[0] == faceX && fromMinusX[0] == faceX, "lattice: a face has one address from either side");
+
+    // Blocks: the cell on the open side of what you hit, and only that.
+    auto onTop = candidates(Slot::Block, Vec3{10.5, 13.0, 10.5}, Vec3{0, 1, 0}, g);
+    check(onTop.size() == 1 && onTop[0] == Element{ElementKind::Volume, 0, Cell{10, 13, 10}},
+          "lattice: a block aimed at a cube's top stacks on it");
+    auto besideWall = candidates(Slot::Block, Vec3{10.125, 12.5, 10.5}, Vec3{1, 0, 0}, g);
+    auto behindWall = candidates(Slot::Block, Vec3{9.875, 12.5, 10.5}, Vec3{-1, 0, 0}, g);
+    check(besideWall[0].cell == Cell{10, 12, 10} && behindWall[0].cell == Cell{9, 12, 10},
+          "lattice: a wall's two sides offer the two cells it divides");
+
+    // Posts: aim at a post's top and the next one stacks; aim at its side
+    // and, the post's own edge being taken, the edge beside it comes next.
+    Structure s;
+    check(s.place(Piece{edgeY, "pillar", "wood", 0}), "lattice: post placed");
+    auto stacked = candidates(Slot::Post, Vec3{10.0, 13.0, 10.05}, Vec3{0, 1, 0}, g);
+    check(stacked[0] == Element{ElementKind::Edge, 1, Cell{10, 13, 10}}, "lattice: a post on a post stacks");
+    auto beside = candidates(Slot::Post, Vec3{10.15, 12.5, 10.02}, Vec3{1, 0, 0}, g);
+    check(beside.size() == 4 && beside[0] == edgeY && s.occupied(beside[0]) && !s.occupied(beside[1]) &&
+              beside[1] == Element{ElementKind::Edge, 1, Cell{11, 12, 10}},
+          "lattice: the taken edge ranks first, the free edge beside it second");
+
+    // Beams: the top of a wall offers the wall plate along it first.
+    auto plate = candidates(Slot::Beam, Vec3{10.5, 13.0, 10.0}, Vec3{0, 1, 0}, g);
+    check(plate.size() == 8 && plate[0] == Element{ElementKind::Edge, 0, Cell{10, 13, 10}},
+          "lattice: a beam aimed at a wall's top runs along it");
+
+    // Occupancy is a set: one piece per element.
+    check(!s.place(Piece{edgeY, "pillar", "wood", 0}), "lattice: a taken element refuses a second piece");
+    check(s.remove(edgeY) && !s.occupied(edgeY) && !s.remove(edgeY), "lattice: remove frees the element once");
+
+    // Corner trims: a lone panel gets posts at both ends, a straight run
+    // only at its ends, an L at the corner too, and a real post replaces one.
+    s.clear();
+    s.place(Piece{faceX, "wall_panel", "wood", 0});
+    check(s.trimEdges().size() == 2, "trim: a lone panel is framed at both ends");
+    s.place(Piece{Element{ElementKind::Face, 0, Cell{10, 12, 11}}, "wall_panel", "wood", 0});
+    auto run = s.trimEdges();
+    check(run.size() == 2, "trim: a straight run stays a wall between its ends");
+    s.place(Piece{Element{ElementKind::Face, 2, Cell{10, 12, 12}}, "wall_panel", "wood", 0});
+    auto corner = s.trimEdges();
+    const Element cornerEdge{ElementKind::Edge, 1, Cell{10, 12, 12}};
+    check(corner.size() == 3 && std::find(corner.begin(), corner.end(), cornerEdge) != corner.end(),
+          "trim: walls meeting at an angle grow a corner post");
+    check(s.wallsAt(cornerEdge).size() == 2, "trim: the corner edge sees both walls");
+    s.place(Piece{cornerEdge, "pillar", "wood", 0});
+    check(s.trimEdges().size() == 2, "trim: a placed post takes over its corner");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -1481,6 +1584,7 @@ int main(int argc, char** argv) {
     testSkillLoadout(t);
     testMobGearAndPages(t);
     testElitesAndFamilies(t);
+    testLattice(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

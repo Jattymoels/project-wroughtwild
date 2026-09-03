@@ -5,12 +5,12 @@ extends RefCounted
 ## saves and text-playtest saves stay interchangeable, plus the engine-side
 ## world: placed shapes, resource nodes and the player's pose.
 ##
-## Schema v1 is not yet declared stable (AGENTS.md); it may change until the
-## vertical slice is accepted.
+## The schema is not yet declared stable (AGENTS.md); it may change until the
+## vertical slice is accepted. v2 (Wave 4): placed pieces are saved by the
+## lattice element they occupy, not by a transform.
 
-const SCHEMA_VERSION := 1
+const SCHEMA_VERSION := 2
 const DEFAULT_PATH := "user://wroughtwild_save.json"
-const PLACED_BLOCK_SCENE := preload("res://scenes/placed_block.tscn")
 const RESOURCE_NODE_SCENE := preload("res://scenes/resource_node.tscn")
 
 var last_error := ""
@@ -45,11 +45,14 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 
 	var block_data: Array = []
 	for block in blocks:
+		var cell: Vector3i = block.element["cell"]
 		block_data.append({
 			"shape": String(block.shape_id),
 			"family": String(block.material_family),
-			"position": _vec(block.global_position),
-			"rotation_y": block.rotation.y,
+			"kind": String(block.element["kind"]),
+			"axis": int(block.element["axis"]),
+			"cell": [cell.x, cell.y, cell.z],
+			"rotation_step": block.rotation_step,
 		})
 
 	var node_data: Array = []
@@ -125,21 +128,22 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	var nodes: Array = []
 	var sites: Array = []
 	_walk(root, blocks, nodes, sites)
-	var grid_size: float = sim.grid_size()
-
-	# Placed shapes: rebuild the set from the save.
+	# Placed pieces: the structure registry and its nodes both rebuild from
+	# the save, so what stands where is exactly what was saved.
 	for block in blocks:
 		block.get_parent().remove_child(block)
 		block.free()
+	sim.structure_clear()
 	for entry in data.get("blocks", []):
-		var block: PlacedBlock = PLACED_BLOCK_SCENE.instantiate()
-		root.add_child(block)
-		block.global_position = _unvec(entry["position"])
-		block.rotation.y = entry["rotation_y"]
-		var info: Dictionary = sim.shape(entry["shape"])
-		var size: Vector3 = info.get("size", Vector3.ONE * grid_size)
-		var anchor := StringName(info.get("anchor", "centre"))
-		block.init_block(StringName(entry["shape"]), StringName(entry["family"]), size, anchor, grid_size)
+		var c: Array = entry["cell"]
+		var element := {
+			"kind": String(entry["kind"]),
+			"axis": int(entry["axis"]),
+			"cell": Vector3i(int(c[0]), int(c[1]), int(c[2])),
+		}
+		player.placement.place_piece(element, StringName(entry["shape"]), StringName(entry["family"]),
+			int(entry.get("rotation_step", 0)))
+	player.placement.refresh_trims()
 
 	# Resource nodes: restore units, respawn ones depleted since the save,
 	# and drop ones the save no longer knows about (depleted before the save).

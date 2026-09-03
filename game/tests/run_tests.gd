@@ -16,7 +16,7 @@ func check(condition: bool, label: String) -> void:
 
 
 func _initialize() -> void:
-	_test_grid()
+	_test_lattice()
 	_test_ui_theme()
 	_test_inventory()
 	_test_sim_gateway()
@@ -31,46 +31,57 @@ func _initialize() -> void:
 	quit(0 if failures == 0 else 1)
 
 
-func _test_grid() -> void:
-	var grid := 1.0
-	check(WroughtwildGrid.snap_to_cell_center(Vector3(0.1, 0.2, 0.3), grid) == Vector3(0.5, 0.5, 0.5),
-		"grid: origin cell")
-	check(WroughtwildGrid.snap_to_cell_center(Vector3(-0.1, -1.7, 0.0), grid) == Vector3(-0.5, -1.5, 0.5),
-		"grid: negative coordinates")
-	check(WroughtwildGrid.snap_to_cell_center(Vector3(0.5, 0.5, 0.5), grid) == Vector3(0.5, 0.5, 0.5),
-		"grid: snapping is idempotent")
-	check(WroughtwildGrid.placement_cell_center(Vector3(0.5, 1.0, 0.5), Vector3.UP, grid) == Vector3(0.5, 1.5, 0.5),
-		"grid: face placement selects adjacent cell")
-	check(WroughtwildGrid.placement_cell_center(Vector3(0.5, 0.5, 0.5), Vector3.UP, grid) == Vector3(0.5, 0.5, 0.5),
-		"grid: the top of a half-height slab still targets its own cell")
-	check(WroughtwildGrid.placement_cell_center(Vector3(0.5, 0.5, 0.0), Vector3.BACK, grid) == Vector3(0.5, 0.5, 0.5),
-		"grid: a face-anchored panel's inner side targets its own cell")
+## Wave 4: the building lattice through the extension. The geometry rules
+## are regression-tested in tests/sim; this proves the door and the
+## Dictionary shape of an element ({kind, axis, cell}).
+func _test_lattice() -> void:
+	if not ClassDB.class_exists(&"WroughtwildSim"):
+		return
+	var sim: RefCounted = ClassDB.instantiate(&"WroughtwildSim")
+	sim.load_tuning(load("res://scripts/sim.gd").get_tuning_directory())
 
-	# Anchored shapes sit flush to the face or corner their rotation selects.
-	var panel := Vector3(1.0, 1.0, 0.25)
-	check(WroughtwildGrid.shape_offset(panel, &"face", 0.0, grid).is_equal_approx(Vector3(0.0, 0.0, -0.375)),
-		"grid: face anchor presses a panel against the -z face")
-	check(WroughtwildGrid.shape_offset(panel, &"face", PI / 2.0, grid).is_equal_approx(Vector3(-0.375, 0.0, 0.0)),
-		"grid: a quarter turn moves the panel to the -x face")
-	check(WroughtwildGrid.shape_offset(Vector3(0.3, 1.0, 0.3), &"corner", 0.0, grid).is_equal_approx(Vector3(-0.35, 0.0, -0.35)),
-		"grid: corner anchor tucks a pillar into the corner")
-	check(WroughtwildGrid.shape_offset(Vector3(1.0, 0.5, 1.0), &"centre", 0.0, grid).is_equal_approx(Vector3(0.0, -0.25, 0.0)),
-		"grid: short centred shapes rest on the cell floor")
-	check(WroughtwildGrid.slot_id(&"face", 0.0) == &"face_0" and WroughtwildGrid.slot_id(&"face", 3.0 * PI / 2.0) == &"face_3",
-		"grid: face slots follow the rotation step")
-	check(WroughtwildGrid.slot_id(&"face", TAU - 1e-6) == &"face_0", "grid: a full turn wraps to the first face")
-	check(WroughtwildGrid.slot_id(&"centre", PI) == &"centre", "grid: centred shapes ignore rotation for their slot")
-	check(WroughtwildGrid.fills_cell(Vector3.ONE, grid) and not WroughtwildGrid.fills_cell(panel, grid),
-		"grid: only a full-size shape fills its cell")
-	check(not WroughtwildGrid.slots_conflict(&"face_0", false, &"face_1", false),
-		"grid: panels on different faces share a cell")
-	check(WroughtwildGrid.slots_conflict(&"face_0", false, &"face_0", false), "grid: the same face is taken once")
-	check(WroughtwildGrid.slots_conflict(&"centre", true, &"face_2", false), "grid: a cube fills its cell")
-	check(not WroughtwildGrid.slots_conflict(&"centre", false, &"corner_1", false),
-		"grid: a slab floor and a corner pillar coexist")
-	var offset := WroughtwildGrid.shape_offset(panel, &"face", PI / 2.0, grid)
-	check(WroughtwildGrid.cell_of(Vector3(2.5, 3.5, -1.5) + offset, offset, grid) == Vector3i(2, 3, -2),
-		"grid: cell recovered from an anchored position")
+	check(sim.shape("wall_panel")["element"] == "wall" and sim.shape("pillar")["element"] == "post"
+		and sim.shape("cube")["element"] == "block" and sim.shape("stonecut_slab")["element"] == "floor",
+		"lattice: shapes name the element kind they occupy")
+
+	# A wall aimed at the ground: the nearest vertical plane, standing on it.
+	var walls: Array = sim.lattice_candidates("wall", Vector3(10.4, 12.0, 10.3), Vector3.UP)
+	check(walls.size() == 4, "lattice: four planes box a ground hit in")
+	var first: Dictionary = walls[0]
+	check(first["kind"] == "face" and first["axis"] == 2 and first["cell"] == Vector3i(10, 12, 10),
+		"lattice: the nearest plane wins")
+	check(first["centre"] == Vector3(10.5, 12.5, 10.0) and first["yaw_turns"] == 0,
+		"lattice: a z-face pose lies on its plane, unturned")
+	check(sim.lattice_pose({"kind": "face", "axis": 0, "cell": Vector3i(10, 12, 10)})["yaw_turns"] == 1,
+		"lattice: an x-face turns a quarter")
+	# A block aimed at a cube's top: the one cell above it.
+	var blocks: Array = sim.lattice_candidates("block", Vector3(10.5, 13.0, 10.5), Vector3.UP)
+	check(blocks.size() == 1 and blocks[0]["cell"] == Vector3i(10, 13, 10), "lattice: blocks stack")
+	check(sim.lattice_slot_accepts("post", {"kind": "edge", "axis": 1, "cell": Vector3i.ZERO})
+		and not sim.lattice_slot_accepts("post", {"kind": "edge", "axis": 0, "cell": Vector3i.ZERO}),
+		"lattice: a post wants a vertical edge")
+
+	# The structure: one piece per element, corners grow trims.
+	var face_x := {"kind": "face", "axis": 0, "cell": Vector3i(5, 3, 5)}
+	var face_z := {"kind": "face", "axis": 2, "cell": Vector3i(5, 3, 5)}
+	check(sim.structure_pieces().is_empty(), "structure: starts empty")
+	check(sim.structure_place(face_x, "wall_panel", "wood", 0), "structure: a wall takes a face")
+	check(not sim.structure_place(face_x, "wall_panel", "wood", 0), "structure: a taken face refuses another")
+	check(not sim.structure_place(face_x, "cube", "wood", 0), "structure: a cube may not stand on a face")
+	check(sim.structure_occupied(face_x) and not sim.structure_occupied(face_z), "structure: occupancy per element")
+	check(sim.structure_piece(face_x)["shape"] == "wall_panel", "structure: the piece reads back")
+	check(sim.structure_trim_edges().size() == 2, "structure: a lone panel is framed at both ends")
+	check(sim.structure_place(face_z, "wall_panel", "wood", 0), "structure: the perpendicular wall joins")
+	var trims: Array = sim.structure_trim_edges()
+	var corner := false
+	for trim in trims:
+		if trim["cell"] == Vector3i(5, 3, 5) and trim["kind"] == "edge":
+			corner = true
+	check(trims.size() == 3 and corner, "structure: the corner grows a post")
+	check(sim.structure_remove(face_x) and not sim.structure_remove(face_x), "structure: remove frees once")
+	check(sim.structure_pieces().size() == 1, "structure: one piece left")
+	sim.structure_clear()
+	check(sim.structure_pieces().is_empty() and sim.structure_trim_edges().is_empty(), "structure: clear empties it")
 
 
 func _test_ui_theme() -> void:

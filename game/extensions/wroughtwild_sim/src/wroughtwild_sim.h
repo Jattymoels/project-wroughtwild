@@ -19,6 +19,7 @@
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/grammar.h"
+#include "wroughtwild/lattice.h"
 #include "wroughtwild/stats.h"
 #include "wroughtwild/trial.h"
 #include "wroughtwild/tuning.h"
@@ -42,8 +43,9 @@ public:
     double salvage_return_fraction() const;
     PackedStringArray shape_ids() const;
     int shape_material_cost(const String& shape_id) const;
-    // Keys: id, display_name, material_cost, size (Vector3), anchor,
-    // requires_world_effect, unlocked.
+    // Keys: id, display_name, material_cost, size (Vector3), element (the
+    // lattice slot: block, wall, floor, post, beam), requires_world_effect,
+    // unlocked.
     Dictionary shape(const String& shape_id) const;
     bool shape_unlocked(const String& shape_id) const;
     double grid_size() const;
@@ -160,6 +162,39 @@ public:
     // Rules for breaking generic terrain blocks, by kind ("surface",
     // "dirt", "stone", "bedrock"): {breakable, dig_seconds, yields}.
     Dictionary block_rules() const;
+
+    // --- the building lattice (Wave 4, lattice.h) ---
+    // An element is a Dictionary {kind: "volume" | "face" | "edge", axis:
+    // 0..2, cell: Vector3i} - the canonical address of a cell, a face two
+    // cells share, or an edge four share. Pieces occupy elements; two pieces
+    // conflict only when they want the same one.
+    //
+    // Elements of `slot` ("block", "wall", "floor", "post", "beam") around a
+    // surface hit, nearest the point first. Each entry is an element plus
+    // centre (Vector3) and yaw_turns (quarter turns for a shape authored
+    // thin along z / long along x). The host filters by what its world
+    // knows (terrain, props) and takes the first survivor.
+    Array lattice_candidates(const String& slot, const Vector3& point, const Vector3& normal) const;
+    // Pose of one element: {centre, yaw_turns}.
+    Dictionary lattice_pose(const Dictionary& element) const;
+    // True when the shape may occupy the element (a wall wants a vertical
+    // face, a post a vertical edge...).
+    bool lattice_slot_accepts(const String& slot, const Dictionary& element) const;
+
+    // The player's structure: what stands on which element. The host
+    // mirrors it with scene nodes and rebuilds it from a save.
+    bool structure_occupied(const Dictionary& element) const;
+    // {shape, family, rotation_step} plus the element keys, or {} when free.
+    Dictionary structure_piece(const Dictionary& element) const;
+    bool structure_place(const Dictionary& element, const String& shape_id, const String& family,
+                         int rotation_step);
+    bool structure_remove(const Dictionary& element);
+    void structure_clear();
+    // Every piece as structure_piece entries.
+    Array structure_pieces() const;
+    // Vertical edges (as elements) that want a corner post drawn: where
+    // walls end or meet at an angle and no real post stands.
+    Array structure_trim_edges() const;
     // Deterministic per-kill drops from the enemy's world.json loot table:
     // material stacks as item -> count. elite_id ("" for none) applies the
     // elite modifier's loot bonuses (Wave 3): extra table passes.
@@ -351,6 +386,7 @@ private:
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
     std::unique_ptr<wroughtwild::worldgen::WorldMap> world_cache_; // last seed's world
+    wroughtwild::lattice::Structure structure_; // the player's placed pieces
     std::set<std::string> active_skill_mods_; // debug toggles (F1-F3)
     uint64_t temper_seed_ = 0;
     String last_error_;

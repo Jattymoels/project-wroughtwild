@@ -94,22 +94,6 @@ func surface_position(x: int, z: int) -> Vector3:
 	return Vector3((x + 0.5) * cell, float(height_at(x, z)), (z + 0.5) * cell)
 
 
-## Centre of the build cell resting on the terrain block under a ground hit.
-func build_cell_center(point: Vector3, grid_size: float) -> Vector3:
-	var cell: float = map["cell_size"]
-	var x := floori(point.x / cell)
-	var z := floori(point.z / cell)
-	return Vector3((x + 0.5) * cell, float(height_at(x, z)) + grid_size * 0.5, (z + 0.5) * cell)
-
-
-## True when a build cell's floor sits on or above the terrain block there.
-func cell_clear_of_ground(cell_center: Vector3, grid_size: float) -> bool:
-	var cell: float = map["cell_size"]
-	var x := floori(cell_center.x / cell)
-	var z := floori(cell_center.z / cell)
-	return cell_center.y - grid_size * 0.5 >= float(height_at(x, z)) - 0.001
-
-
 func _material_for(kind: String) -> StandardMaterial3D:
 	if _materials.has(kind):
 		return _materials[kind]

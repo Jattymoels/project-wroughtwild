@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "prototype-placeholder",
+  "status": "wave-4: pieces occupy lattice elements (volume, face, edge), not cell slots",
   "grid_size_metres": 1.0,
   "placement_range_metres": 10.0,
   "removal_refund_fraction": 0.5,
@@ -10,6 +10,7 @@
       "display_name": "Cube Block",
       "material_cost": 2,
       "size_m": [1.0, 1.0, 1.0],
+      "element": "block",
       "design_purpose": "The starting shape. Two units per block equals one harvest swing, so a small shelter visibly eats into a resource node instead of feeling free."
     },
     {
@@ -17,40 +18,42 @@
       "display_name": "Wall Panel",
       "material_cost": 1,
       "size_m": [1.0, 1.0, 0.25],
-      "anchor": "face",
-      "design_purpose": "A thin partition flush against one face of its cell; R cycles the four faces. Sitting on the face rather than through the cell's middle is what lets two panels meet at a corner and share that corner cell. Half the cost of a cube so walling a shelter is cheaper than filling it."
+      "element": "wall",
+      "design_purpose": "A thin partition standing on a vertical face of the lattice, centred on the plane the two neighbouring cells share, so it belongs to neither cell and a cube can fill either side of it. Snaps to the nearest vertical face to the crosshair - no rotation key. Half the cost of a cube so walling a shelter is cheaper than filling it."
     },
     {
       "id": "pillar",
       "display_name": "Pillar",
       "material_cost": 1,
       "size_m": [0.3, 1.0, 0.3],
-      "anchor": "corner",
-      "design_purpose": "Corner posts and supports for roofs made of slabs and beams; R picks which corner of the cell it stands in, so it lines up with the panels on that cell's faces."
+      "element": "post",
+      "design_purpose": "Stands on a vertical edge of the lattice - the line where up to four walls meet - so it always lines up with the panels around it and stacks on the post below when you aim at its top. Corners where walls meet grow a post visual on their own; the placed post is for free-standing frames and for making a corner load-bearing in the player's eye."
     },
     {
       "id": "beam",
       "display_name": "Beam",
       "material_cost": 1,
       "size_m": [1.0, 0.25, 0.25],
-      "anchor": "face",
-      "design_purpose": "Runs along one face of its cell at floor level (R picks the face); placed in the cell above a wall it becomes a lintel or wall plate."
+      "element": "beam",
+      "design_purpose": "Runs along a horizontal edge of the lattice, the line a wall's top and a floor's rim share, so it reads as a lintel over a doorway, a wall plate along the top of a wall, or a rail along a slab's edge depending only on what it is next to."
     },
     {
       "id": "step",
       "display_name": "Step",
       "material_cost": 1,
       "size_m": [1.0, 0.5, 0.5],
-      "design_purpose": "Half height and half depth so two make a stair; the cheapest way to climb your own building."
+      "element": "block",
+      "design_purpose": "Half height and half depth, resting on the floor of its cell and turned with R (the one starting shape with a direction); the cheapest way to climb your own building. A proper stair piece is slice 2 of the building intensive."
     },
     {
       "id": "stonecut_slab",
       "display_name": "Stonecut Slab",
       "material_cost": 1,
-      "size_m": [1.0, 0.5, 1.0],
+      "size_m": [1.0, 0.25, 1.0],
+      "element": "floor",
       "requires_world_effect": "stonecut_blocks",
-      "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a half-height slab that makes floors and roofs possible, so the trial demonstrably widens what can be built."
+      "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a slab lying on a horizontal face of the lattice - the plane between a cell and the one above - that makes floors and roofs possible, so the trial demonstrably widens what can be built. Same thickness as a wall so a floor's rim and a wall's top meet cleanly."
     }
   ],
-  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. anchor (centre | face | corner, default centre) says where a shape sits inside its cell: centred, flush against the face its rotation points at, or tucked into that corner. Shapes only conflict when one fills its cell or both claim the same slot, which is what lets a wall on two faces, a corner pillar and a slab floor share one cell."
+  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented blocks."
 }

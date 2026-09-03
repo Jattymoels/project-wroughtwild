@@ -39,11 +39,14 @@ Curves, freeform terrain carving, large blueprints and physics-based destruction
 3. Placing a shape consumes an amount derived from its volume or standard recipe cost.
 4. Removing a player-placed shape returns a configurable portion of its material.
 5. Placement uses forgiving snapping and clearly previews invalid collision.
-   Every shape sits inside one grid cell: thin shapes anchor to the face or
-   corner their rotation selects, so panels, beams and pillars in
-   neighbouring cells meet instead of floating mid-cell, and a cell can hold
-   several partial shapes (a wall on two faces, a corner post, a slab floor)
-   but only one shape that fills it.
+   Pieces are addressed by **lattice element**, never by "which cell and
+   where inside it" (D-017): a block occupies a cell, a wall or floor a
+   face two cells share, a post or beam an edge four cells share. The one
+   placement rule is *the nearest free element of the piece's kind to the
+   point you are looking at*; orientation comes from the element, so only
+   oriented blocks turn with R. Two pieces conflict only when they want the
+   same element, which is what lets a cube fill either side of a wall, a
+   post stand where walls meet, and a beam ride a slab's rim.
 6. Functional stations operate without requiring decorative architecture.
 7. More advanced craft skills and facilities may unlock additional cuts and finishes.
 
@@ -65,15 +68,60 @@ Curves, freeform terrain carving, large blueprints and physics-based destruction
 | Rotation increments | Shape flexibility and interface complexity |
 | Material cost per shape | Construction ambition and resource demand |
 | Removal refund | Experimentation freedom versus commitment |
-| Shape anchor | Whether thin shapes meet at corners or float through their cell |
+| Shape element | Which kind of lattice element a shape occupies (block, wall, floor, post, beam) |
 | Snap tolerance | Precision versus frustration |
 | Unlock skill level | Pacing of architectural vocabulary |
 
-Grid size, placement range, per-shape material cost, per-shape anchor and
+Grid size, placement range, per-shape material cost, per-shape element and
 removal refund are
 data in `data/tuning/construction.json`, loaded by the `sim/` library; the
 engine layer reads them and applies placement payment and refunds through
 the rules library rather than computing them in scene scripts.
+
+## Implemented: the building lattice (Wave 4 slice 1, 3 Sep 2026)
+
+The owner's playtest showed four placement failures that were one bug: the
+old scheme chose the *cell* from the camera ray and the *position inside
+the cell* from the rotation key, two independent choices that only agreed
+by luck. The replacement is `sim/lattice.h`:
+
+- **Elements.** Every element of the cubic grid has one canonical address:
+  a volume is its cell; a face is the cell on its positive side plus the
+  normal axis (the face on cell *c*'s min-x side is `face x @ c`); an edge
+  is the cell whose min corner it leaves plus its axis. Shapes declare the
+  element kind they occupy (`element` in `construction.json`).
+- **The rule.** `lattice::candidates(slot, point, normal)` ranks the
+  elements of a kind around a surface hit by distance to the crosshair,
+  after nudging the point 2 cm along the surface normal so a floor or a
+  wall face resolves to its open side. The engine filters that list by
+  what only it knows — the sim's occupancy, terrain solidity (a block
+  cannot go into rock; a face with rock on both sides has nothing to stand
+  against, but a face between rock and open air is a mine lining), and a
+  physics overlap against props, stations and mobs — and takes the first
+  survivor. A block gets a single candidate (the cell on the open side);
+  faces and edges get the four planes or lines boxing the point in.
+- **Occupancy.** `lattice::Structure` is a set keyed by element; place
+  fails when the element is taken. Placed pieces never physically block
+  each other — the registry decides — so a wall standing on a cube's face
+  is legal (it overlaps the cube's skin by half its thickness, on purpose).
+- **Corner trims.** Walls end or meet on vertical edges; where the walls
+  touching an edge are not exactly two collinear ones, and no real post
+  stands, the engine draws a slim post there. A long run stays a wall, a
+  corner reads as a corner, a lone panel is framed, all without the player
+  placing anything. Trims are presentation only: never saved, never
+  collide, never cost.
+- **Saves** (schema v2) store each piece as element + shape + family +
+  rotation step; loading clears the registry and re-places every piece, so
+  what stands is exactly what was saved.
+
+What changed for the starting shapes: the wall panel and the stonecut slab
+are both 0.25 m thick and centred on their plane (a floor's rim and a
+wall's top meet cleanly); the pillar stands on an edge; the beam runs along
+one; the step is the only shape that still turns with R. Next slices:
+vocabulary (stairs, doorway, roof wedge, a floor slab that is not
+boss-gated, half-scale "fine" mode on the same rule at half the cell),
+then enclosure detection — flood-filling volumes bounded by faces — as the
+honest home for rest-in-shelter health regeneration.
 
 ## Interface requirements
 

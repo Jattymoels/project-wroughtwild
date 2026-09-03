@@ -25,6 +25,7 @@ Statuses:
 | D-014 | Itemisation | Wave 2 scope per [systems/items-and-modifiers.md](../systems/items-and-modifiers.md): one modifier pool where mods attach to tags (never sockets) with the increased/more schema; three slots (weapon, chest, charm); rarity by rolled-mod count (plain / keen / wrought) plus hand-authored uniques with rule-bending interactions; any modifier may drop — catalysts target a domain rather than gate it; the weapon carries the delivery skill (working assumption); equipment swaps never destroy a tempered item; upskilling points wait for a later wave | Accepted direction (owner answers 1 Sep 2026) | The first keen/wrought/unique items are playtested |
 | D-015 | Interface | Per [systems/interface.md](../systems/interface.md): four layers only — HUD (life bar, action bar, holdings strip, notices, crosshair), pack screen (I), one work-panel type (cards in a scroll area), help overlay (H); the mouse is captured unless a panel needs it; panels never compute rules and every panel is a headless test surface; one code-built Theme from the master palette | Proposed (first slice implemented 1 Sep 2026) | Owner plays the first interface slice |
 | D-016 | Skills | Skills are found, not worn (supersedes D-014's "the weapon carries the delivery skill" working assumption, per owner direction 2 Sep 2026: PoE's many-skills-with-interacting-grammars over gear-defined archetypes). Each skill is one data entry in `skills.json` — delivery (cone / strike / projectile / dash), tags, payload numbers; the starting four fill a free four-slot bar and the rest are learned from skill pages that mobs drop (weighted among unknown skills, never duplicates). Gear only ever scales skills through tag-targeted modifiers; hooks (shatter, proliferate) trigger by tag, never by skill id, so a page found tomorrow joins the combos it is tagged for. Build identity = the tags on the bar. Statuses are buildup-with-threshold (chill/freeze, ignite/burn, bleed) with the day-one boss resistance multiplier; shatter never executes a boss (`executes_boss` tunable, default false) — the freeze window is the reward | Accepted direction (implemented 2 Sep 2026) | Wave 3 mob families stress the grammar, or a skill that cannot be one data entry appears |
+| D-017 | Building | Pieces are addressed by lattice element, never by cell-plus-slot: a block occupies a cell, a wall or floor a face two cells share, a post or beam an edge four cells share, each with one canonical address (`sim/lattice.h`). The single placement rule is "the nearest free element of the piece's kind to the crosshair"; orientation comes from the element, so only oriented blocks turn with R; two pieces conflict only when they want the same element. Corners where walls end or meet grow a post visual on their own. No structural-support rules — the lattice's shape is all the physical honesty a build needs ([systems/construction.md](../systems/construction.md)) | Accepted direction (owner "lets do it" 3 Sep 2026; slice 1 implemented) | The owner's building playtest, or a piece that cannot be one element (diagonals, curves) |
 
 ## Proposals awaiting acceptance
 
@@ -48,6 +49,14 @@ Statuses:
   skills with interesting grammars interacting") makes skills their own
   found things and leaves gear purely multiplicative. Uniques remain noted
   and deferred in [systems/items-and-modifiers.md](../systems/items-and-modifiers.md).
+- **D-017 (3 Sep 2026):** the owner's four building screenshots (a rotated
+  wall landing on the far side of its cell, a wall refusing to join another,
+  a cube refused beside a panel, a post going sideways instead of stacking)
+  were one bug — cell chosen by the ray, position-in-cell chosen by R. The
+  owner asked for "an innovative thought process ... intuitive from the
+  engine's point of view"; the lattice answer was proposed and accepted
+  ("Okay perfect lets do it"). Slices 2 (vocabulary, fine mode) and 3
+  (enclosure → shelter regen) follow.
 
 ## Registering a decision
 

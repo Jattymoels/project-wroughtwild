@@ -21,7 +21,10 @@ var _death_spot := Vector3.ZERO
 var _wood_before_trial := 0
 var _blocks_before := 0
 var _corner_panel: PlacedBlock
-const CORNER_CELL := Vector3(5.5, 3.5, 5.5)
+## The x-face, z-face and vertical edge that all meet at lattice corner (5, 3, 5).
+const CORNER_FACE_X := {"kind": "face", "axis": 0, "cell": Vector3i(5, 3, 5)}
+const CORNER_FACE_Z := {"kind": "face", "axis": 2, "cell": Vector3i(5, 3, 5)}
+const CORNER_EDGE := {"kind": "edge", "axis": 1, "cell": Vector3i(5, 3, 5)}
 
 
 func check(condition: bool, label: String) -> void:
@@ -75,33 +78,34 @@ func _physics_process(_delta: float) -> void:
 		10:
 			check(_count_placed_blocks() == 0, "integration: removed block left the scene")
 		11:
-			# A wall panel flush to one face of a mid-air cell; the slot rules
-			# are judged next frame, once it is in the physics space.
+			# Wave 4 lattice: a wall panel on the x-face of a mid-air cell; the
+			# world rules are judged next frame, once it is in the physics space.
 			var placement := _player.placement
-			var panel: Dictionary = _player.inventory.get_sim().shape("wall_panel")
-			_corner_panel = placement.PLACED_BLOCK_SCENE.instantiate()
-			get_tree().current_scene.add_child(_corner_panel)
-			_corner_panel.global_position = CORNER_CELL + WroughtwildGrid.shape_offset(
-				panel["size"], &"face", 0.0, placement.grid_size)
-			_corner_panel.rotation.y = 0.0
-			_corner_panel.init_block(&"wall_panel", &"wood", panel["size"], &"face", placement.grid_size)
-			check(_corner_panel.cell == Vector3i(5, 3, 5) and _corner_panel.slot == &"face_0",
-				"corner: panel reads its cell and face back from its transform")
+			_corner_panel = placement.place_piece(CORNER_FACE_X, &"wall_panel", &"wood")
+			check(_corner_panel != null and _corner_panel.element["cell"] == Vector3i(5, 3, 5),
+				"corner: the panel stands on its element")
+			check(_corner_panel.global_position.is_equal_approx(Vector3(5.0, 3.5, 5.5))
+				and absf(_corner_panel.rotation.y - PI / 2.0) < 0.001,
+				"corner: an x-face panel sits on the x = 5 plane, turned a quarter")
+			check(placement.trim_count() == 2, "corner: a lone panel is framed at both ends")
 		13:
 			var placement := _player.placement
 			check(placement.select_shape(&"wall_panel"), "corner: wall panel selectable")
-			placement.preview_rotation = 0.0
-			check(not placement.cell_accepts(CORNER_CELL), "corner: the same face is already taken")
-			placement.preview_rotation = PI / 2.0
-			check(placement.cell_accepts(CORNER_CELL), "corner: a second panel joins on the next face")
+			check(not placement.element_accepts(CORNER_FACE_X), "corner: the same face is already taken")
+			check(placement.element_accepts(CORNER_FACE_Z), "corner: a second panel joins on the shared edge")
 			check(placement.select_shape(&"pillar"), "corner: pillar selectable")
-			check(placement.cell_accepts(CORNER_CELL), "corner: a corner post shares the cell too")
+			check(placement.element_accepts(CORNER_EDGE), "corner: a post stands on the edge the walls share")
+			check(not placement.element_accepts(CORNER_FACE_Z), "corner: a post may not stand on a face")
 			check(placement.select_shape(&"cube"), "corner: cube selectable")
-			placement.preview_rotation = 0.0
-			check(not placement.cell_accepts(CORNER_CELL), "corner: a cube cannot fill a cell holding a panel")
-			check(placement.cell_accepts(CORNER_CELL + Vector3(0.0, 0.0, -1.0)),
-				"corner: the cell on the panel's outer side stays free")
-			_corner_panel.queue_free()
+			check(placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(5, 3, 5)})
+				and placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(4, 3, 5)}),
+				"corner: a cube fills either cell a wall divides - the wall belongs to neither")
+			# The perpendicular wall makes the shared edge a corner: a trim grows there.
+			var second := placement.place_piece(CORNER_FACE_Z, &"wall_panel", &"wood")
+			check(second != null and placement.trim_count() == 3, "corner: walls meeting at an angle grow a post")
+			check(placement.remove_piece(second) and placement.remove_piece(_corner_panel)
+				and placement.trim_count() == 0, "corner: removing the walls removes their trims")
+			check(_player.inventory.get_sim().structure_pieces().is_empty(), "corner: the structure is empty again")
 		12:
 			# Forge site: refused while unaffordable, built through the sim once paid for.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
@@ -200,6 +204,7 @@ func _physics_process(_delta: float) -> void:
 		24:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			check(_count_placed_blocks() == 1, "save: placed block restored")
+			check(sim.structure_pieces().size() == 1, "save: the structure registry restored with it")
 			check(_player.inventory.get_count(&"wood") == _saved_wood, "save: inventory restored")
 			check((_scene.get_node("IronNode") as ResourceNode).remaining_units == 5, "save: resource node units restored")
 			check(sim.has_station("forge_basic") and sim.currency_count("trade_currency") == 40,
@@ -359,7 +364,8 @@ func _physics_process(_delta: float) -> void:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			check(sim.shape_unlocked("stonecut_slab"), "unlock: slab unlocked by the boss kill")
 			check(_player.placement.select_shape(&"stonecut_slab"), "unlock: slab selectable")
-			check(_player.placement.shape_size.y < 1.0, "unlock: slab is half height")
+			check(_player.placement.shape_size.y < 1.0 and _player.placement.shape_slot == &"floor",
+				"unlock: slab is a thin floor piece")
 			_blocks_before = _count_placed_blocks()
 			_player.placement.set_build_mode_enabled(true)
 		66:
