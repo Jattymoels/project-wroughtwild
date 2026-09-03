@@ -278,6 +278,7 @@ public:
     Array foundry_effects() const;
     bool foundry_place(int row, int col, const String& ingot_id);
     bool foundry_remove(int row, int col);
+    bool foundry_place_skill(int row, int col, const String& skill_id);
     // Reports a milestone the engine saw ("first_kill:ash_hound"); returns
     // the ingot ids it granted (each source once).
     Array foundry_event(const String& event);

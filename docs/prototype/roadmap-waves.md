@@ -347,12 +347,14 @@ the world is the campaign. Slices, in order:
    proliferation) so cost follows the crowd, not its square; packs sleep
    again when calm, unhurt and far (survivors return, the dead do not); a
    live-mob cap (`horde.max_live_mobs`); elk herds halved; hounds 5.5 m/s.
-10. **Skills on the plate** *(next)*: a skill tablet laid on the Foundry
-   plate is supported by the ingots touching it, the Foundry reachable
-   from the bench and the first ingot early; then the stone accomplishment
-   pass (seam look, wedge sinking, chunk falling, first dressed block as a
-   beat, a first-hour job for fire), melee's stagger/push/swing armour, and
-   the bench kept alive (bulk wedges, frames for the yard and the forge).
+10. **Skills on the plate** *(landed 3 Sep 2026, D-022)*: skill tablets on
+   the Foundry plate, ingots beside a tablet supporting that skill alone
+   (tag-checked, `support_multiplier`), F opens the Foundry anywhere, the
+   first dressed block a milestone.
+11. **Next**: the stone accomplishment pass (seam look, wedge sinking,
+   chunk falling, first dressed block as a beat, a first-hour job for
+   fire), melee's stagger/push/swing armour, and the bench kept alive
+   (bulk wedges, frames for the yard and the forge).
 
 Owner tuning note (3 Sep): "everything is way too fast/powerful ... to
 feel good you have to start with less damage/more danger" — era one's

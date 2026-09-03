@@ -807,6 +807,7 @@ struct FoundryDef {
     std::map<std::string, int> reforgeCost;     // paid to lift an ingot off the plate
     int lineLength = 3;
     double lineBonus = 1.0; // a line adds the ingot's modifier again at this times its value
+    double supportMultiplier = 2.0; // an ingot beside a skill tablet supports that skill at this times its value
     std::vector<IngotDef> ingots;
     std::vector<IngotPairDef> pairs;
     std::vector<IngotSourceDef> sources;

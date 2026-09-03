@@ -23,7 +23,9 @@ namespace wroughtwild::foundry {
 
 struct Placement {
     int row = 0, col = 0;
-    std::string ingot;
+    std::string ingot; // an ingot placement ("" for a tablet)
+    std::string skill; // a skill tablet (D-022): the skill laid on this cell
+    bool isTablet() const { return !skill.empty(); }
 };
 
 struct State {
@@ -38,11 +40,12 @@ struct PlateSize {
 
 // One thing the plate is doing right now, for the rules and the panel.
 struct Effect {
-    std::string kind;     // ingot | pair | line
-    std::string label;    // Ember Ingot / Wildfire / Ember line
+    std::string kind;     // ingot | pair | line | support
+    std::string label;    // Ember Ingot / Wildfire / Ember line / Frost Orb <- Frost Ingot
     std::string modifier; // items.json modifier id
     double value = 0.0;
-    int row = -1, col = -1; // the placement (ingot) or the first cell (pair, line)
+    int row = -1, col = -1; // the placement (ingot) or the first cell (pair, line, the tablet)
+    std::string skill;    // support: the one skill it applies to
 };
 
 // The plate the era forges (plate_by_era; the last entry serves later eras).
@@ -52,7 +55,12 @@ const Placement* at(const State& state, int row, int col);
 int placedCount(const State& state, const std::string& ingot);
 int unplacedCount(const State& state, const std::string& ingot);
 
-// Ingots, pairs and lines in force on the plate, in that order.
-std::vector<Effect> effects(const tuning::FoundryDef& def, const State& state, PlateSize size);
+// The tablet for a skill, if laid.
+const Placement* tabletFor(const State& state, const std::string& skill);
+
+// Ingots, pairs, lines and supports in force on the plate, in that order.
+// Supports need the skill and modifier tables to know whether an ingot's
+// verb can apply to the skill at all.
+std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, PlateSize size);
 
 } // namespace wroughtwild::foundry

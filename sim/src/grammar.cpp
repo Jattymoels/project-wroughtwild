@@ -117,8 +117,11 @@ ActiveMods masteryMods(const tuning::Tuning& tuning, const std::map<std::string,
 ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state, int era) {
     ActiveMods mods;
     const auto size = foundry::plateSize(tuning.foundry, era);
-    for (const auto& effect : foundry::effects(tuning.foundry, state, size))
-        mods.push_back(modAt(tuning.items, effect.modifier, effect.value, "foundry:" + effect.kind));
+    for (const auto& effect : foundry::effects(tuning, state, size)) {
+        ActiveMod mod = modAt(tuning.items, effect.modifier, effect.value, "foundry:" + effect.kind);
+        if (effect.kind == "support") mod.appliesToTags = {"skill:" + effect.skill}; // that skill alone
+        mods.push_back(std::move(mod));
+    }
     return mods;
 }
 

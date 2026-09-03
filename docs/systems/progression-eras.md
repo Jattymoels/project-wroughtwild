@@ -224,6 +224,25 @@ the era's story when it changes.
 
 Not yet: refinement (reach) and wrought forms.
 
+## Implemented: skills on the plate (3 Sep 2026, D-022)
+
+The support category, without gems. A known skill may be laid on a plate
+cell as a **tablet** (`foundry_place_skill`; `Placement.skill`). Every
+ingot orthogonally beside a tablet **supports** that skill alone: its
+modifier applies to that skill at `support_multiplier` (2.0) times the
+ingot's value, on top of what the ingot does for everyone, and only when
+the modifier can apply to the skill's tags at all (Reach beside Frost Orb
+widens the orb; Ember beside it does nothing, and the effects list says
+so; a self ingot never supports). `foundry::effects` lists supports with
+the skill id, and `grammar::foundryMods` scopes them with a `skill:<id>`
+tag, the same way mastery does. An ingot between two tablets serves both.
+Tablets lift for free (they are knowledge); ingots still re-forge for
+metal. The plate widening with the era is more tablets and more
+neighbours. **F** opens the Foundry anywhere (the forge is where the metal
+comes from, not where the plate lives); the first dressed block is a
+milestone (`recipe:dress_stone` → Plate) beside the first bench, first
+kills and the first smelt.
+
 ## Implemented: items as mechanics (3 Sep 2026)
 
 - **Tiers are breakpoints.** A modifier tier may carry `breakpoints`

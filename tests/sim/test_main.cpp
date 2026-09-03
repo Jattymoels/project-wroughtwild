@@ -2037,7 +2037,7 @@ void testFoundry(const tuning::Tuning& t) {
     check(player.foundryPlace(0, 0, "ember") && !player.foundryPlace(0, 0, "reach"), "foundry: a cell holds one ingot");
     check(!player.foundryPlace(1, 1, "ember"), "foundry: an ingot places once");
     check(player.foundryPlace(0, 1, "reach"), "foundry: reach beside ember");
-    auto effects = foundry::effects(f, player.foundry(), size);
+    auto effects = foundry::effects(t, player.foundry(), size);
     int ingots = 0, pairs = 0, lines = 0;
     for (const auto& e : effects) {
         if (e.kind == "ingot") ++ingots;
@@ -2055,6 +2055,58 @@ void testFoundry(const tuning::Tuning& t) {
     }
     check(fire && wildfire, "foundry: effects resolve through the item modifier pool");
     check(grammar::resolve(mods, {"fire", "spell"}, "damage", 100.0) > 100.0, "foundry: an ember ingot raises fire damage");
+
+    // D-022 skills on the plate: a known skill's tablet beside an ingot is
+    // supported by it, alone, at support_multiplier; a verb that cannot
+    // apply to the skill does nothing; tablets lift free; the save keeps it.
+    {
+        economy::PlayerEconomy sup(t);
+        sup.foundryEvent("first_kill:ember_whelp");   // ember (fire)
+        sup.foundryEvent("recipe:workbench_kit");     // vigour (self)
+        check(!sup.foundryPlaceSkill(0, 0, "prototype_ember_bolt"), "plate: an unknown skill has no tablet");
+        check(sup.foundryPlaceSkill(1, 1, "prototype_frost_orb"), "plate: a known skill lays its tablet");
+        check(!sup.foundryPlaceSkill(1, 1, "prototype_heavy_strike") && !sup.foundryPlaceSkill(0, 0, "prototype_frost_orb"),
+              "plate: one tablet per cell, one per skill");
+        check(!sup.foundryPlace(1, 1, "ember"), "plate: an ingot cannot take a tablet's cell");
+        // A frost ingot through whichever source grants one.
+        std::string frostSource;
+        for (const auto& src : t.foundry.sources) if (src.ingot == "frost" && src.era <= 1) { frostSource = src.event; break; }
+        check(!frostSource.empty() && !sup.foundryEvent(frostSource).empty(), "plate: an era-one source grants frost");
+        check(sup.foundryPlace(1, 0, "frost") && sup.foundryPlace(0, 1, "ember") && sup.foundryPlace(2, 1, "vigour"),
+              "plate: frost, ember and vigour laid around the orb");
+        auto fx = foundry::effects(t, sup.foundry(), sup.plateSize());
+        int supports = 0;
+        bool frostSupport = false, emberSupport = false, vigourSupport = false;
+        for (const auto& e : fx) {
+            if (e.kind != "support") continue;
+            ++supports;
+            check(e.skill == "prototype_frost_orb", "plate: a support names its skill");
+            if (e.modifier == "cold_damage") frostSupport = true;
+            if (e.modifier == "fire_damage") emberSupport = true;
+            if (e.modifier == "max_life") vigourSupport = true;
+        }
+        check(supports == 1 && frostSupport && !emberSupport && !vigourSupport,
+              "plate: frost supports the cold orb; fire and a self ingot cannot");
+        for (const auto& e : fx)
+            if (e.kind == "support" && e.modifier == "cold_damage")
+                checkNear(e.value, t.foundry.findIngot("frost")->value * t.foundry.supportMultiplier, 1e-9,
+                          "plate: a support is the ingot's value times support_multiplier");
+        auto supMods = grammar::foundryMods(t, sup.foundry(), sup.currentEra());
+        double orb = grammar::resolve(supMods, t.skills.findCombatSkill("prototype_frost_orb")->resolveTags(), "damage", 100.0);
+        double nova = grammar::resolve(supMods, t.skills.findCombatSkill("prototype_frost_nova")->resolveTags(), "damage", 100.0);
+        check(orb > nova && nova > 100.0, "plate: the orb gets the support on top of what the frost ingot gives every cold skill");
+        check(sup.foundryRemove(1, 1) && foundry::tabletFor(sup.foundry(), "prototype_frost_orb") == nullptr,
+              "plate: a tablet lifts for free");
+        check(sup.foundryPlaceSkill(1, 1, "prototype_frost_orb"), "plate: and can be laid again");
+        // Save round trip keeps the tablet.
+        save::SaveGame gs;
+        gs.economy = sup.exportState();
+        auto back = save::fromJson(save::toJson(gs));
+        check(foundry::tabletFor(back.economy.foundry, "prototype_frost_orb") != nullptr, "plate: the tablet rides in the save");
+        bool sourceMasonry = false;
+        for (const auto& src : t.foundry.sources) if (src.event == "recipe:dress_stone") sourceMasonry = true;
+        check(sourceMasonry, "plate: the first dressed block is a milestone");
+    }
     // Lines: three embers in a row add the verb again.
     economy::PlayerEconomy liner(t);
     liner.foundryEvent("first_kill:ember_whelp");
@@ -2069,7 +2121,7 @@ void testFoundry(const tuning::Tuning& t) {
     check(foundry::unplacedCount(liner.foundry(), "ember") == 0, "foundry: two embers placed");
     // Borrow a third ember through a fresh source to make the line.
     liner.foundryEvent("first_kill:ember_whelp");
-    auto pre = foundry::effects(f, liner.foundry(), liner.plateSize());
+    auto pre = foundry::effects(t, liner.foundry(), liner.plateSize());
     int preLines = 0;
     for (const auto& e : pre) if (e.kind == "line") ++preLines;
     check(preLines == 0, "foundry: two in a row is no line");

@@ -179,6 +179,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		hud.toggle_help()
 	elif event.is_action_pressed("toggle_inventory"):
 		toggle_inventory()
+	elif event.is_action_pressed("toggle_foundry"):
+		toggle_foundry()
 	elif event.is_action_pressed("save_game"):
 		save_game()
 	elif event.is_action_pressed("load_game"):
@@ -252,6 +254,19 @@ func open_foundry() -> void:
 	work_panel.close_panel()
 	foundry_panel.open_panel()
 	_release_mouse()
+
+
+## F: the plate is yours wherever you stand (D-022). Lifting an ingot
+## still costs metal; the forge is where the metal comes from, not where
+## the plate lives.
+func toggle_foundry() -> void:
+	if foundry_panel.is_open():
+		foundry_panel.close_panel()
+		_capture_mouse()
+		return
+	if work_panel.is_open() or inventory_panel.is_open():
+		return
+	open_foundry()
 
 
 func toggle_inventory() -> void:
