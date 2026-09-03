@@ -341,10 +341,10 @@ struct ShapeDef {
     std::string displayName;
     int materialCost = 1; // units of whichever material family the player selected
     double sizeM[3] = {1.0, 1.0, 1.0};
-    // Where the shape sits inside its grid cell: "centre", "face" (flush
-    // against the side its rotation points at) or "corner" (tucked into that
-    // corner). Presentation reads it to make thin shapes meet at corners.
-    std::string anchor = "centre";
+    // Which kind of lattice element the shape occupies (lattice.h Slot):
+    // "block" (a cell), "wall" (a vertical face), "floor" (a horizontal
+    // face), "post" (a vertical edge) or "beam" (a horizontal edge).
+    std::string element = "block";
     std::string requiresWorldEffect; // empty = available from the start
 };
 

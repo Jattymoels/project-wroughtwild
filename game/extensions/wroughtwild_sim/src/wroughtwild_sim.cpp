@@ -156,6 +156,19 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks"),
                          &WroughtwildSim::world_mesh_chunk);
     ClassDB::bind_method(D_METHOD("block_rules"), &WroughtwildSim::block_rules);
+    ClassDB::bind_method(D_METHOD("lattice_candidates", "slot", "point", "normal"),
+                         &WroughtwildSim::lattice_candidates);
+    ClassDB::bind_method(D_METHOD("lattice_pose", "element"), &WroughtwildSim::lattice_pose);
+    ClassDB::bind_method(D_METHOD("lattice_slot_accepts", "slot", "element"),
+                         &WroughtwildSim::lattice_slot_accepts);
+    ClassDB::bind_method(D_METHOD("structure_occupied", "element"), &WroughtwildSim::structure_occupied);
+    ClassDB::bind_method(D_METHOD("structure_piece", "element"), &WroughtwildSim::structure_piece);
+    ClassDB::bind_method(D_METHOD("structure_place", "element", "shape_id", "family", "rotation_step"),
+                         &WroughtwildSim::structure_place);
+    ClassDB::bind_method(D_METHOD("structure_remove", "element"), &WroughtwildSim::structure_remove);
+    ClassDB::bind_method(D_METHOD("structure_clear"), &WroughtwildSim::structure_clear);
+    ClassDB::bind_method(D_METHOD("structure_pieces"), &WroughtwildSim::structure_pieces);
+    ClassDB::bind_method(D_METHOD("structure_trim_edges"), &WroughtwildSim::structure_trim_edges);
     ClassDB::bind_method(D_METHOD("enemy_loot", "enemy_id", "seed", "elite_id"),
                          &WroughtwildSim::enemy_loot, DEFVAL(String()));
     ClassDB::bind_method(D_METHOD("enemy_gear_loot", "enemy_id", "seed", "elite_id"),
@@ -822,6 +835,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         trial_.reset();
         player_.reset();
         world_cache_.reset();
+        structure_.clear();
         tuning_ = std::move(loaded);
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);
         temper_seed_ = std::random_device{}();
@@ -923,7 +937,7 @@ Dictionary WroughtwildSim::shape(const String& shape_id) const {
     d["material_cost"] = s->materialCost;
     d["size"] = Vector3(static_cast<real_t>(s->sizeM[0]), static_cast<real_t>(s->sizeM[1]),
                         static_cast<real_t>(s->sizeM[2]));
-    d["anchor"] = to_godot(s->anchor);
+    d["element"] = to_godot(s->element);
     d["requires_world_effect"] = to_godot(s->requiresWorldEffect);
     d["unlocked"] = player_->shapeUnlocked(s->id);
     return d;
@@ -1850,6 +1864,165 @@ Dictionary WroughtwildSim::block_rules() const {
         d[to_godot(kind)] = r;
     }
     return d;
+}
+
+// --- the building lattice (Wave 4) ---------------------------------------------
+
+namespace {
+
+using wroughtwild::lattice::Element;
+using wroughtwild::lattice::ElementKind;
+
+const char* kind_name(ElementKind kind) {
+    switch (kind) {
+    case ElementKind::Volume: return "volume";
+    case ElementKind::Face: return "face";
+    case ElementKind::Edge: return "edge";
+    }
+    return "volume";
+}
+
+// Reads an element Dictionary; false when it is not one.
+bool element_from(const Dictionary& d, Element& out) {
+    if (!d.has("kind") || !d.has("cell")) {
+        return false;
+    }
+    const String kind = d["kind"];
+    if (kind == "volume") out.kind = ElementKind::Volume;
+    else if (kind == "face") out.kind = ElementKind::Face;
+    else if (kind == "edge") out.kind = ElementKind::Edge;
+    else return false;
+    out.axis = out.kind == ElementKind::Volume ? 0 : static_cast<int>(d.get("axis", 0));
+    if (out.axis < 0 || out.axis > 2) {
+        return false;
+    }
+    const Vector3i cell = d["cell"];
+    out.cell = wroughtwild::lattice::Cell{cell.x, cell.y, cell.z};
+    return true;
+}
+
+Dictionary element_to(const Element& e) {
+    Dictionary d;
+    d["kind"] = kind_name(e.kind);
+    d["axis"] = e.axis;
+    d["cell"] = Vector3i(e.cell.x, e.cell.y, e.cell.z);
+    return d;
+}
+
+void add_pose(Dictionary& d, const Element& e, double grid) {
+    const auto c = wroughtwild::lattice::centre(e, grid);
+    d["centre"] = Vector3(static_cast<real_t>(c.x), static_cast<real_t>(c.y), static_cast<real_t>(c.z));
+    d["yaw_turns"] = wroughtwild::lattice::yawTurns(e);
+}
+
+bool slot_from(const String& name, wroughtwild::lattice::Slot& out) {
+    try {
+        out = wroughtwild::lattice::slotFromName(to_std(name));
+        return true;
+    } catch (const std::exception& e) {
+        UtilityFunctions::push_error("WroughtwildSim: ", e.what());
+        return false;
+    }
+}
+
+Dictionary piece_to(const wroughtwild::lattice::Piece& piece) {
+    Dictionary d = element_to(piece.element);
+    d["shape"] = to_godot(piece.shapeId);
+    d["family"] = to_godot(piece.family);
+    d["rotation_step"] = piece.rotationStep;
+    return d;
+}
+
+} // namespace
+
+Array WroughtwildSim::lattice_candidates(const String& slot, const Vector3& point, const Vector3& normal) const {
+    Array out;
+    wroughtwild::lattice::Slot s;
+    if (!require_loaded("lattice_candidates") || !slot_from(slot, s)) {
+        return out;
+    }
+    const double grid = tuning_->construction.gridSizeMetres;
+    const auto found = wroughtwild::lattice::candidates(s, {point.x, point.y, point.z},
+                                                        {normal.x, normal.y, normal.z}, grid);
+    for (const auto& e : found) {
+        Dictionary d = element_to(e);
+        add_pose(d, e, grid);
+        out.push_back(d);
+    }
+    return out;
+}
+
+Dictionary WroughtwildSim::lattice_pose(const Dictionary& element) const {
+    Dictionary d;
+    Element e;
+    if (!require_loaded("lattice_pose") || !element_from(element, e)) {
+        return d;
+    }
+    add_pose(d, e, tuning_->construction.gridSizeMetres);
+    return d;
+}
+
+bool WroughtwildSim::lattice_slot_accepts(const String& slot, const Dictionary& element) const {
+    wroughtwild::lattice::Slot s;
+    Element e;
+    return require_loaded("lattice_slot_accepts") && slot_from(slot, s) && element_from(element, e) &&
+           wroughtwild::lattice::slotAccepts(s, e);
+}
+
+bool WroughtwildSim::structure_occupied(const Dictionary& element) const {
+    Element e;
+    return require_loaded("structure_occupied") && element_from(element, e) && structure_.occupied(e);
+}
+
+Dictionary WroughtwildSim::structure_piece(const Dictionary& element) const {
+    Element e;
+    if (!require_loaded("structure_piece") || !element_from(element, e)) {
+        return Dictionary();
+    }
+    const auto* piece = structure_.at(e);
+    return piece == nullptr ? Dictionary() : piece_to(*piece);
+}
+
+bool WroughtwildSim::structure_place(const Dictionary& element, const String& shape_id, const String& family,
+                                     int rotation_step) {
+    Element e;
+    if (!require_loaded("structure_place") || !element_from(element, e)) {
+        return false;
+    }
+    const auto* shape = tuning_->construction.findShape(to_std(shape_id));
+    if (shape == nullptr || !wroughtwild::lattice::slotAccepts(wroughtwild::lattice::slotFromName(shape->element), e)) {
+        return false;
+    }
+    return structure_.place({e, to_std(shape_id), to_std(family), ((rotation_step % 4) + 4) % 4});
+}
+
+bool WroughtwildSim::structure_remove(const Dictionary& element) {
+    Element e;
+    return require_loaded("structure_remove") && element_from(element, e) && structure_.remove(e);
+}
+
+void WroughtwildSim::structure_clear() { structure_.clear(); }
+
+Array WroughtwildSim::structure_pieces() const {
+    Array out;
+    for (const auto& [element, piece] : structure_.pieces()) {
+        out.push_back(piece_to(piece));
+    }
+    return out;
+}
+
+Array WroughtwildSim::structure_trim_edges() const {
+    Array out;
+    if (!require_loaded("structure_trim_edges")) {
+        return out;
+    }
+    const double grid = tuning_->construction.gridSizeMetres;
+    for (const auto& e : structure_.trimEdges()) {
+        Dictionary d = element_to(e);
+        add_pose(d, e, grid);
+        out.push_back(d);
+    }
+    return out;
 }
 
 // --- D-014 itemisation ---------------------------------------------------------

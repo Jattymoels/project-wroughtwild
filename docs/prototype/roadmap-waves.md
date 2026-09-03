@@ -225,6 +225,29 @@ spot: invisible damage from cave dwellers through the floor
 round: building mechanics** — placement still feels "off", above all
 sub-block pieces (a post on a block or wall) inside the cell grid.
 
+### Building intensive — slice 1 landed 3 Sep 2026 (D-017)
+
+The owner's four placement screenshots were one bug: the ray chose the
+cell, R chose the position inside it, and they only agreed by luck. The
+fix is a different addressing scheme, not a patch: pieces occupy **lattice
+elements** — a block a cell, a wall or floor a face two cells share, a
+post or beam an edge four cells share — and placement is one rule, *the
+nearest free element of the piece's kind to the crosshair*
+([systems/construction.md](../systems/construction.md)). Walls join walls,
+posts stack, a cube fills either side of a wall, and corners grow their
+own post trims. `sim/lattice.h` owns the geometry and the occupancy
+registry; the engine filters candidates by terrain and props (a face
+between rock and open air is a mine lining, a block never goes into rock)
+and mirrors the registry with nodes. Saves are schema v2 (element-keyed).
+
+Still ahead in this intensive: **slice 2, vocabulary** — stairs, doorway,
+roof wedge, a floor slab that is not boss-gated, and a half-scale "fine"
+mode that is the same rule on a half-cell lattice (the owner's "post on a
+block" at sub-block scale); **slice 3, enclosure** — flood-fill the
+volumes bounded by faces to know a roofed room, the honest home for
+rest-in-shelter health regeneration (the owner's regen note) and, later,
+for mobs breaking in. Deliberately out: structural-support rules.
+
 ## Wave 4 — Dungeon and Roguelite Iteration
 
 The innovation layer: run structure, boon/build interaction depth, secrets,

@@ -4,7 +4,7 @@ CXXFLAGS ?= -std=c++17 -Wall -Wextra -Werror -O2
 SIM := ../sim
 SIM_SOURCES := $(SIM)/src/json.cpp $(SIM)/src/tuning.cpp $(SIM)/src/economy.cpp \
                $(SIM)/src/items.cpp $(SIM)/src/boons.cpp $(SIM)/src/stats.cpp \
-               $(SIM)/src/combat.cpp $(SIM)/src/trial.cpp $(SIM)/src/save.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/loot.cpp $(SIM)/src/grammar.cpp
+               $(SIM)/src/combat.cpp $(SIM)/src/trial.cpp $(SIM)/src/save.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/loot.cpp $(SIM)/src/grammar.cpp $(SIM)/src/lattice.cpp
 
 .PHONY: all balance playtest clean
 all: build/balance build/playtest
