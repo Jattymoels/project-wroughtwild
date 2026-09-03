@@ -102,6 +102,7 @@ func _on_nest_kill(enemy: Enemy) -> void:
 	var kill_seed := world_seed + 104729 + _kill_counter * 7919
 	if mob_packs != null and _sim().encroachment_kill_drops(kill_seed):
 		mob_packs.drop_loot_for(enemy, kill_seed)
+	MobPacks.note_first_kill(enemy)
 
 
 ## E on an undefended nest: gone, and the spot scars.

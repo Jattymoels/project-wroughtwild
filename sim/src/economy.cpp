@@ -177,6 +177,7 @@ PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, boo
     if (!(forOrder && tuning_.crafting.repetitionDecay.orderCraftingIgnoresDecay))
         craftCounts_[recipeId] += 1;
 
+    for (const auto& id : foundryEvent("recipe:" + recipeId)) foundryNotices_.push_back(id);
     result.crafted = true;
     return result;
 }
@@ -237,7 +238,56 @@ bool PlayerEconomy::worldEffectActive(const std::string& effect) const {
 }
 
 void PlayerEconomy::recordWorldEffect(const std::string& effect) {
-    if (!worldEffectActive(effect)) worldEffects_.push_back(effect);
+    if (worldEffectActive(effect)) return;
+    const int before = currentEra();
+    worldEffects_.push_back(effect);
+    for (const auto& id : foundryEvent("world_effect:" + effect)) foundryNotices_.push_back(id);
+    // An effect that wakes an era is a milestone of its own.
+    for (int era = before + 1; era <= currentEra(); ++era)
+        for (const auto& id : foundryEvent("era:" + std::to_string(era))) foundryNotices_.push_back(id);
+}
+
+foundry::PlateSize PlayerEconomy::plateSize() const { return foundry::plateSize(tuning_.foundry, currentEra()); }
+
+std::vector<std::string> PlayerEconomy::foundryEvent(const std::string& event) {
+    std::vector<std::string> granted;
+    const int era = currentEra();
+    for (const auto& source : tuning_.foundry.sources) {
+        if (source.event != event || source.era > era) continue;
+        if (std::find(foundry_.milestones.begin(), foundry_.milestones.end(), source.id) != foundry_.milestones.end())
+            continue;
+        foundry_.milestones.push_back(source.id);
+        foundry_.owned[source.ingot] += 1;
+        granted.push_back(source.ingot);
+    }
+    return granted;
+}
+
+bool PlayerEconomy::foundryPlace(int row, int col, const std::string& ingot) {
+    const auto size = plateSize();
+    if (row < 0 || col < 0 || row >= size.rows || col >= size.cols) return false;
+    if (!tuning_.foundry.findIngot(ingot)) return false;
+    if (foundry::at(foundry_, row, col) != nullptr) return false;
+    if (foundry::unplacedCount(foundry_, ingot) <= 0) return false;
+    foundry_.plate.push_back({row, col, ingot});
+    return true;
+}
+
+bool PlayerEconomy::canAffordReforge() const { return hasAll(inventory, tuning_.foundry.reforgeCost); }
+
+bool PlayerEconomy::foundryRemove(int row, int col) {
+    auto it = std::find_if(foundry_.plate.begin(), foundry_.plate.end(),
+                           [&](const foundry::Placement& p) { return p.row == row && p.col == col; });
+    if (it == foundry_.plate.end() || !canAffordReforge()) return false;
+    remove(inventory, tuning_.foundry.reforgeCost);
+    foundry_.plate.erase(it);
+    return true;
+}
+
+std::vector<std::string> PlayerEconomy::takeFoundryNotices() {
+    std::vector<std::string> out;
+    out.swap(foundryNotices_);
+    return out;
 }
 
 int PlayerEconomy::currentEra() const {
@@ -348,10 +398,12 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
     state.packItems = packItems;
     state.knownSkills = knownSkills_;
     state.skillBar = skillBar_;
+    state.foundry = foundry_;
     return state;
 }
 
 void PlayerEconomy::importState(const State& state) {
+    foundry_ = state.foundry;
     inventory = state.inventory;
     currency = state.currency;
     skills_.clear();

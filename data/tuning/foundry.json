@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "wave-5 slice 2: the Foundry (D-019)",
+  "plate_by_era": [[3, 3], [3, 4], [4, 4]],
+  "reforge_cost": {"iron_ingot": 1},
+  "line_length": 3,
+  "line_bonus": 1.0,
+  "ingots": [
+    {"id": "ember", "display_name": "Ember Ingot", "verb": "fire", "modifier": "fire_damage", "value": 0.12},
+    {"id": "frost", "display_name": "Frost Ingot", "verb": "cold", "modifier": "cold_damage", "value": 0.12},
+    {"id": "edge", "display_name": "Edge Ingot", "verb": "physical", "modifier": "physical_damage", "value": 0.12},
+    {"id": "reach", "display_name": "Reach Ingot", "verb": "area", "modifier": "area_size", "value": 0.08},
+    {"id": "vigour", "display_name": "Vigour Ingot", "verb": "life", "modifier": "max_life", "value": 12},
+    {"id": "plate", "display_name": "Plate Ingot", "verb": "armour", "modifier": "armour_plating", "value": 8},
+    {"id": "ward", "display_name": "Ward Ingot", "verb": "warding", "modifier": "fire_resistance", "value": 10},
+    {"id": "haste", "display_name": "Haste Ingot", "verb": "speed", "modifier": "swift_hands", "value": 0.08}
+  ],
+  "pairs": [
+    {"a": "ember", "b": "reach", "display_name": "Wildfire", "modifier": "wildfire_reach", "value": 0.3},
+    {"a": "ember", "b": "edge", "display_name": "Kindling", "modifier": "kindling", "value": 0.3},
+    {"a": "ember", "b": "haste", "display_name": "Lingering Flame", "modifier": "lingering_flame", "value": 0.25},
+    {"a": "frost", "b": "reach", "display_name": "Deep Frost", "modifier": "deep_frost", "value": 0.3},
+    {"a": "frost", "b": "edge", "display_name": "Wide Shatter", "modifier": "wide_shatter", "value": 0.3},
+    {"a": "frost", "b": "haste", "display_name": "Frostbite", "modifier": "frostbite", "value": 15},
+    {"a": "edge", "b": "haste", "display_name": "Serration", "modifier": "serration", "value": 0.3},
+    {"a": "edge", "b": "reach", "display_name": "Hemorrhage", "modifier": "hemorrhage", "value": 0.25},
+    {"a": "vigour", "b": "plate", "display_name": "Bulwark", "modifier": "armour_plating", "value": 8},
+    {"a": "ward", "b": "ember", "display_name": "Smouldering", "modifier": "smouldering", "value": 15}
+  ],
+  "sources": [
+    {"id": "first_workbench", "event": "recipe:workbench_kit", "ingot": "vigour", "era": 1},
+    {"id": "first_smelt", "event": "recipe:smelt_iron", "ingot": "ember", "era": 1},
+    {"id": "first_whelp", "event": "first_kill:ember_whelp", "ingot": "ember", "era": 1},
+    {"id": "first_hound", "event": "first_kill:ash_hound", "ingot": "haste", "era": 1},
+    {"id": "first_husk", "event": "first_kill:stone_husk", "ingot": "plate", "era": 1},
+    {"id": "first_archer", "event": "first_kill:cinder_archer", "ingot": "reach", "era": 1},
+    {"id": "first_crawler", "event": "first_kill:gloom_crawler", "ingot": "frost", "era": 1},
+    {"id": "first_shrieker", "event": "first_kill:shrieker", "ingot": "frost", "era": 1},
+    {"id": "mine_reinforced", "event": "world_effect:old_mine_reinforced", "ingot": "edge", "era": 1},
+    {"id": "tyrant", "event": "world_effect:stonecut_blocks", "ingot": "ward", "era": 1},
+    {"id": "deep_wakes", "event": "era:2", "ingot": "reach", "era": 2},
+    {"id": "first_bronze", "event": "recipe:smelt_bronze", "ingot": "edge", "era": 2}
+  ],
+  "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). Two orthogonally adjacent ingots that match a pair make that pair's mechanic (Ember beside Reach: wildfire spreads further); a straight line of line_length matching ingots adds the ingot's modifier again at line_bonus times its value (the set effect). Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once - the first workbench, the first smelt, each family's first kill, the mine reinforced, the Tyrant's fall, the era itself, the first alloy; era gates when a source may grant, so the total available is capped per era and the cap rises with the world. plate_by_era forges the plate a row wider per era (3x3, 3x4, 4x4): space pressure arrives mid-game, not at the start. Re-forging (taking an ingot off the plate) pays reforge_cost, cheap early, so layout is a habit not a commitment. Numbers stay within the threefold budget: ten ingots placed with two pairs is roughly +50% in one element and two mechanics, not a new sheet."
+}

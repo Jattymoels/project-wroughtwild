@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 
+#include "wroughtwild/foundry.h"
 #include "wroughtwild/stats.h"
 #include "wroughtwild/tuning.h"
 
@@ -44,6 +45,11 @@ double resolve(const ActiveMods& active,
 // Every modifier the worn gear supplies: each base's implicit modifiers and
 // each item's rolled modifiers, tagged with their slot as the source.
 ActiveMods gearMods(const tuning::ItemTable& table, const stats::Equipment& equipment);
+
+// Every modifier the Foundry's plate supplies in `era`: each placed ingot's
+// verb, each matching adjacent pair's mechanic, each line's set effect
+// (sources "foundry:ingot" / "foundry:pair" / "foundry:line").
+ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state, int era);
 
 // One modifier at a given magnitude (debug toggles, tests).
 ActiveMod modAt(const tuning::ItemTable& table, const std::string& modifierId, double value,

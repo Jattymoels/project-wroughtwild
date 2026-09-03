@@ -180,6 +180,14 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("structure_enclosure", "seed", "removed_blocks", "at"),
                          &WroughtwildSim::structure_enclosure);
     ClassDB::bind_method(D_METHOD("shelter"), &WroughtwildSim::shelter);
+    ClassDB::bind_method(D_METHOD("foundry"), &WroughtwildSim::foundry);
+    ClassDB::bind_method(D_METHOD("foundry_ingot_ids"), &WroughtwildSim::foundry_ingot_ids);
+    ClassDB::bind_method(D_METHOD("foundry_ingot", "ingot_id"), &WroughtwildSim::foundry_ingot);
+    ClassDB::bind_method(D_METHOD("foundry_effects"), &WroughtwildSim::foundry_effects);
+    ClassDB::bind_method(D_METHOD("foundry_place", "row", "col", "ingot_id"), &WroughtwildSim::foundry_place);
+    ClassDB::bind_method(D_METHOD("foundry_remove", "row", "col"), &WroughtwildSim::foundry_remove);
+    ClassDB::bind_method(D_METHOD("foundry_event", "event"), &WroughtwildSim::foundry_event);
+    ClassDB::bind_method(D_METHOD("foundry_notices"), &WroughtwildSim::foundry_notices);
     ClassDB::bind_method(D_METHOD("era"), &WroughtwildSim::era);
     ClassDB::bind_method(D_METHOD("era_mechanic", "enemy_id", "mechanic"), &WroughtwildSim::era_mechanic);
     ClassDB::bind_method(D_METHOD("record_world_effect", "effect"), &WroughtwildSim::record_world_effect);
@@ -455,7 +463,7 @@ Dictionary WroughtwildSim::derived_stats() const {
     if (!require_loaded("derived_stats")) {
         return d;
     }
-    const auto s = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_, tuning_->items);
+    const auto s = derived_now();
     d["max_life"] = s.maxLife;
     d["armour"] = s.armour;
     d["fire_resistance_percent"] = s.fireResistancePercent;
@@ -679,7 +687,7 @@ double WroughtwildSim::enemy_hit_damage(double raw_damage, const String& damage_
     if (!hits_) {
         begin_fight(0);
     }
-    const auto stats = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_, tuning_->items);
+    const auto stats = derived_now();
     return hits_->enemyHit(raw_damage, to_std(damage_type), stats, tuning_->world.playerBase);
 }
 
@@ -687,7 +695,7 @@ double WroughtwildSim::mitigate(double amount, const String& damage_type) const 
     if (!require_loaded("mitigate")) {
         return amount;
     }
-    const auto stats = wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_, tuning_->items);
+    const auto stats = derived_now();
     return wroughtwild::stats::mitigateDamage(amount, to_std(damage_type), stats, tuning_->world.playerBase);
 }
 
@@ -2257,6 +2265,131 @@ void WroughtwildSim::encroachment_reset(int seed) {
                                                                              static_cast<uint64_t>(seed));
 }
 
+// --- the Foundry ---------------------------------------------------------------
+
+wroughtwild::stats::DerivedStats WroughtwildSim::derived_now() const {
+    std::vector<wroughtwild::stats::ExtraEffect> extra;
+    for (const auto& mod : wroughtwild::grammar::foundryMods(*tuning_, player_->foundry(), player_->currentEra())) {
+        extra.push_back({mod.effectKey, mod.value});
+    }
+    return wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_, tuning_->items, extra);
+}
+
+Dictionary WroughtwildSim::foundry() const {
+    Dictionary d;
+    if (!require_loaded("foundry")) {
+        return d;
+    }
+    const auto size = player_->plateSize();
+    const auto& state = player_->foundry();
+    d["rows"] = size.rows;
+    d["cols"] = size.cols;
+    d["era"] = player_->currentEra();
+    Array plate;
+    for (const auto& p : state.plate) {
+        Dictionary cell;
+        cell["row"] = p.row;
+        cell["col"] = p.col;
+        cell["ingot"] = to_godot(p.ingot);
+        plate.push_back(cell);
+    }
+    d["plate"] = plate;
+    Dictionary owned, unplaced;
+    for (const auto& [id, count] : state.owned) {
+        owned[to_godot(id)] = count;
+        unplaced[to_godot(id)] = wroughtwild::foundry::unplacedCount(state, id);
+    }
+    d["owned"] = owned;
+    d["unplaced"] = unplaced;
+    d["reforge_cost"] = to_dictionary(tuning_->foundry.reforgeCost);
+    d["can_reforge"] = player_->canAffordReforge();
+    return d;
+}
+
+PackedStringArray WroughtwildSim::foundry_ingot_ids() const {
+    PackedStringArray ids;
+    if (!require_loaded("foundry_ingot_ids")) {
+        return ids;
+    }
+    for (const auto& ingot : tuning_->foundry.ingots) {
+        ids.push_back(to_godot(ingot.id));
+    }
+    return ids;
+}
+
+Dictionary WroughtwildSim::foundry_ingot(const String& ingot_id) const {
+    Dictionary d;
+    if (!require_loaded("foundry_ingot")) {
+        return d;
+    }
+    const auto* ingot = tuning_->foundry.findIngot(to_std(ingot_id));
+    if (ingot == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(ingot->id);
+    d["display_name"] = to_godot(ingot->displayName);
+    d["verb"] = to_godot(ingot->verb);
+    d["modifier"] = to_godot(ingot->modifier);
+    d["value"] = ingot->value;
+    const auto* def = tuning_->items.findModifier(ingot->modifier);
+    d["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, ingot->value)) : String();
+    const auto& state = player_->foundry();
+    auto owned = state.owned.find(ingot->id);
+    d["owned"] = owned == state.owned.end() ? 0 : owned->second;
+    d["unplaced"] = wroughtwild::foundry::unplacedCount(state, ingot->id);
+    return d;
+}
+
+Array WroughtwildSim::foundry_effects() const {
+    Array out;
+    if (!require_loaded("foundry_effects")) {
+        return out;
+    }
+    for (const auto& e : wroughtwild::foundry::effects(tuning_->foundry, player_->foundry(), player_->plateSize())) {
+        Dictionary d;
+        d["kind"] = to_godot(e.kind);
+        d["label"] = to_godot(e.label);
+        const auto* def = tuning_->items.findModifier(e.modifier);
+        d["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, e.value)) : String();
+        d["modifier"] = to_godot(e.modifier);
+        d["value"] = e.value;
+        d["row"] = e.row;
+        d["col"] = e.col;
+        out.push_back(d);
+    }
+    return out;
+}
+
+bool WroughtwildSim::foundry_place(int row, int col, const String& ingot_id) {
+    return require_loaded("foundry_place") && player_->foundryPlace(row, col, to_std(ingot_id));
+}
+
+bool WroughtwildSim::foundry_remove(int row, int col) {
+    return require_loaded("foundry_remove") && player_->foundryRemove(row, col);
+}
+
+Array WroughtwildSim::foundry_event(const String& event) {
+    Array out;
+    if (!require_loaded("foundry_event")) {
+        return out;
+    }
+    for (const auto& id : player_->foundryEvent(to_std(event))) {
+        out.push_back(to_godot(id));
+    }
+    return out;
+}
+
+Array WroughtwildSim::foundry_notices() {
+    Array out;
+    if (!require_loaded("foundry_notices")) {
+        return out;
+    }
+    for (const auto& id : player_->takeFoundryNotices()) {
+        out.push_back(to_godot(id));
+    }
+    return out;
+}
+
 Dictionary WroughtwildSim::era() const {
     Dictionary d;
     if (!require_loaded("era")) {
@@ -2360,6 +2493,10 @@ Dictionary WroughtwildSim::encroachment_rules() const {
 
 wroughtwild::grammar::ActiveMods WroughtwildSim::active_mods() const {
     auto mods = wroughtwild::grammar::gearMods(tuning_->items, equipment_);
+    // The Foundry's plate speaks in the same modifiers as gear (D-019).
+    for (auto& mod : wroughtwild::grammar::foundryMods(*tuning_, player_->foundry(), player_->currentEra())) {
+        mods.push_back(std::move(mod));
+    }
     for (const auto& id : active_skill_mods_) {
         const auto* def = tuning_->items.findModifier(id);
         if (def != nullptr) {

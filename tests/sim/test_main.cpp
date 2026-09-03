@@ -11,6 +11,7 @@
 #include "wroughtwild/combat.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/encroachment.h"
+#include "wroughtwild/foundry.h"
 #include "wroughtwild/grammar.h"
 #include "wroughtwild/items.h"
 #include "wroughtwild/lattice.h"
@@ -1830,6 +1831,81 @@ void testEras(const tuning::Tuning& t) {
           "eras: the arch is worked from bronze, not iron");
 }
 
+// The Foundry (D-019): ingots from milestones, placed on the era's plate;
+// pairs and lines are the build.
+void testFoundry(const tuning::Tuning& t) {
+    const auto& f = t.foundry;
+    check(f.ingots.size() >= 8 && f.pairs.size() >= 6 && f.sources.size() >= 8, "foundry: ingots, pairs and sources load");
+    check(f.findPair("ember", "reach") != nullptr && f.findPair("reach", "ember") != nullptr, "foundry: pairs are unordered");
+    economy::PlayerEconomy player(t);
+    auto size = player.plateSize();
+    check(size.rows == 3 && size.cols == 3, "foundry: era one forges a 3x3 plate");
+    check(player.foundryEvent("first_kill:ember_whelp") == std::vector<std::string>{"ember"}, "foundry: a first kill forges its ingot");
+    check(player.foundryEvent("first_kill:ember_whelp").empty(), "foundry: each source grants once");
+    check(player.foundryEvent("era:2").empty(), "foundry: an era-two source waits for its era");
+    check(player.foundryEvent("first_kill:cinder_archer") == std::vector<std::string>{"reach"}, "foundry: another family, another ingot");
+    check(foundry::unplacedCount(player.foundry(), "ember") == 1, "foundry: owned but unplaced");
+    // Placement rules.
+    check(!player.foundryPlace(3, 0, "ember") && !player.foundryPlace(0, 0, "frost"), "foundry: off the plate or unowned is refused");
+    check(player.foundryPlace(0, 0, "ember") && !player.foundryPlace(0, 0, "reach"), "foundry: a cell holds one ingot");
+    check(!player.foundryPlace(1, 1, "ember"), "foundry: an ingot places once");
+    check(player.foundryPlace(0, 1, "reach"), "foundry: reach beside ember");
+    auto effects = foundry::effects(f, player.foundry(), size);
+    int ingots = 0, pairs = 0, lines = 0;
+    for (const auto& e : effects) {
+        if (e.kind == "ingot") ++ingots;
+        if (e.kind == "pair") ++pairs;
+        if (e.kind == "line") ++lines;
+    }
+    check(ingots == 2 && pairs == 1 && lines == 0 && effects.back().label == "Wildfire",
+          "foundry: two ingots and the Wildfire pair, no line");
+    // The plate speaks in modifiers: fire damage up, proliferate reach up.
+    auto mods = grammar::foundryMods(t, player.foundry(), player.currentEra());
+    bool fire = false, wildfire = false;
+    for (const auto& m : mods) {
+        if (m.id == "fire_damage" && m.source == "foundry:ingot") fire = true;
+        if (m.id == "wildfire_reach" && m.source == "foundry:pair") wildfire = true;
+    }
+    check(fire && wildfire, "foundry: effects resolve through the item modifier pool");
+    check(grammar::resolve(mods, {"fire", "spell"}, "damage", 100.0) > 100.0, "foundry: an ember ingot raises fire damage");
+    // Lines: three embers in a row add the verb again.
+    economy::PlayerEconomy liner(t);
+    liner.foundryEvent("first_kill:ember_whelp");
+    liner.foundryEvent("recipe:smelt_iron");
+    liner.recordWorldEffect("stonecut_blocks"); // ward - and it wakes era two: the plate widens, era:2 grants reach
+    check(liner.currentEra() == 2 && liner.plateSize().cols == 4, "foundry: era two forges the plate a row wider");
+    check(liner.foundryEvent("era:2").empty() && foundry::unplacedCount(liner.foundry(), "reach") == 1,
+          "foundry: the era transition granted its ingot itself");
+    liner.foundryEvent("first_kill:ember_whelp"); // no double grant
+    liner.foundryPlace(1, 0, "ember");
+    liner.foundryPlace(1, 1, "ember");
+    check(foundry::unplacedCount(liner.foundry(), "ember") == 0, "foundry: two embers placed");
+    // Borrow a third ember through a fresh source to make the line.
+    liner.foundryEvent("first_kill:ember_whelp");
+    auto pre = foundry::effects(f, liner.foundry(), liner.plateSize());
+    int preLines = 0;
+    for (const auto& e : pre) if (e.kind == "line") ++preLines;
+    check(preLines == 0, "foundry: two in a row is no line");
+    // Re-forging pays metal.
+    check(!liner.foundryRemove(1, 1) && liner.foundry().plate.size() == 2, "foundry: lifting an ingot needs the metal");
+    liner.inventory["iron_ingot"] = 1;
+    check(liner.foundryRemove(1, 1) && liner.inventory["iron_ingot"] == 0 && foundry::unplacedCount(liner.foundry(), "ember") == 1,
+          "foundry: re-forging spends the metal and frees the ingot");
+    check(!liner.foundryRemove(2, 2), "foundry: an empty cell lifts nothing");
+    // Saves carry the plate.
+    save::SaveGame game;
+    game.economy = player.exportState();
+    auto text = save::toJson(game);
+    auto back = save::fromJson(text);
+    check(back.economy.foundry.plate.size() == 2 && back.economy.foundry.owned.at("ember") == 1 &&
+              back.economy.foundry.milestones.size() == 2,
+          "foundry: the plate, the ingots and the milestones round-trip through the save");
+    economy::PlayerEconomy restored(t);
+    restored.importState(back.economy);
+    check(restored.foundry().plate.size() == 2 && restored.foundryEvent("first_kill:ember_whelp").empty(),
+          "foundry: a restored save remembers what it already granted");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -1872,6 +1948,7 @@ int main(int argc, char** argv) {
     testLattice(t);
     testEncroachment(t);
     testEras(t);
+    testFoundry(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

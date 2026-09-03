@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+#include "wroughtwild/foundry.h"
 #include "wroughtwild/items.h"
 #include "wroughtwild/tuning.h"
 
@@ -145,6 +146,24 @@ public:
     bool payPlacement(const std::string& shapeId, const std::string& materialFamily);
     int refundRemoval(const std::string& shapeId, const std::string& materialFamily);
 
+    // --- the Foundry (D-019, foundry.h) ---
+    const foundry::State& foundry() const { return foundry_; }
+    // The plate the current era forges.
+    foundry::PlateSize plateSize() const;
+    // Reports a milestone ("first_kill:ash_hound", "recipe:smelt_iron",
+    // "world_effect:x", "era:2"); returns the ingot ids granted. Each source
+    // grants once, and only from its era on.
+    std::vector<std::string> foundryEvent(const std::string& event);
+    // Sets an unplaced ingot on a free cell of the plate.
+    bool foundryPlace(int row, int col, const std::string& ingot);
+    // Lifts an ingot off the plate, paying reforge_cost. False when the
+    // cell is empty or the metal is short.
+    bool foundryRemove(int row, int col);
+    bool canAffordReforge() const;
+    // Ingots granted by events the economy raised itself (crafts, world
+    // effects, eras), for the host to announce; cleared on read.
+    std::vector<std::string> takeFoundryNotices();
+
     // --- save/load ---
     struct State {
         Inventory inventory;
@@ -157,6 +176,7 @@ public:
         std::vector<items::ItemInstance> packItems;
         std::vector<std::string> knownSkills;
         std::vector<std::string> skillBar;
+        foundry::State foundry;
     };
     State exportState() const;
     // Restores a state; unknown skill ids are dropped, and an empty known
@@ -179,6 +199,8 @@ private:
     std::vector<std::string> worldEffects_;
     std::vector<std::string> knownSkills_;
     std::vector<std::string> skillBar_; // always kSkillBarSize entries
+    foundry::State foundry_;
+    std::vector<std::string> foundryNotices_;
 };
 
 } // namespace wroughtwild::economy

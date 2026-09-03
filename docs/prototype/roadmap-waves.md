@@ -307,9 +307,11 @@ the world is the campaign. Slices, in order:
    light shift); bronze as the alloy family (malleable, tough) and the
    arch as the first curved form; hounds run in bigger packs and whelps
    leave burning ground; encroachment switches on only from era two.
-2. **The Foundry**: a 3×3 plate, about twelve ingot verbs, adjacency pairs
-   and lines, six milestone sources, re-forging at the forge; the plate
-   widens with the era.
+2. **The Foundry** *(landed 3 Sep 2026)*: a 3×3 plate that widens with the
+   era, eight ingot verbs, ten pairs and lines of three, twelve milestone
+   sources (first kills, first smelts, the mine, the Tyrant, the era, the
+   first bronze), re-forging for one iron at the forge; the panel opens
+   from a built forge. Refinement and wrought forms wait for the next pass.
 3. **Items as mechanics**: tier breakpoints for the existing modifiers,
    base capacity per metal, held-back display, the preservation catalyst.
 4. Skill mastery perks; the third era.

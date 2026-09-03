@@ -335,6 +335,57 @@ BoonTable loadBoons(const std::string& path) {
     return table;
 }
 
+const IngotDef* FoundryDef::findIngot(const std::string& id) const { return findById(ingots, id); }
+const IngotPairDef* FoundryDef::findPair(const std::string& a, const std::string& b) const {
+    for (const auto& p : pairs)
+        if ((p.a == a && p.b == b) || (p.a == b && p.b == a)) return &p;
+    return nullptr;
+}
+
+FoundryDef loadFoundry(const std::string& path) {
+    auto doc = json::parseFile(path);
+    FoundryDef def;
+    for (const auto& size : doc->get("plate_by_era").asArray()) {
+        const auto& pair = size->asArray();
+        if (pair.size() != 2) throw std::runtime_error("foundry: plate_by_era entries are [rows, cols]");
+        def.plateByEra.push_back({pair[0]->asInt(), pair[1]->asInt()});
+    }
+    if (def.plateByEra.empty()) throw std::runtime_error("foundry: plate_by_era needs at least one size");
+    def.reforgeCost = readIntMap(doc->get("reforge_cost"));
+    if (auto n = doc->find("line_length")) def.lineLength = n->asInt();
+    if (auto n = doc->find("line_bonus")) def.lineBonus = n->asNumber();
+    for (const auto& i : doc->get("ingots").asArray()) {
+        IngotDef ingot;
+        ingot.id = i->get("id").asString();
+        ingot.displayName = i->get("display_name").asString();
+        ingot.verb = i->get("verb").asString();
+        ingot.modifier = i->get("modifier").asString();
+        ingot.value = i->get("value").asNumber();
+        def.ingots.push_back(std::move(ingot));
+    }
+    for (const auto& p : doc->get("pairs").asArray()) {
+        IngotPairDef pair;
+        pair.a = p->get("a").asString();
+        pair.b = p->get("b").asString();
+        pair.displayName = p->get("display_name").asString();
+        pair.modifier = p->get("modifier").asString();
+        pair.value = p->get("value").asNumber();
+        if (!def.findIngot(pair.a) || !def.findIngot(pair.b))
+            throw std::runtime_error("foundry: pair " + pair.displayName + " names an unknown ingot");
+        def.pairs.push_back(std::move(pair));
+    }
+    for (const auto& s : doc->get("sources").asArray()) {
+        IngotSourceDef source;
+        source.id = s->get("id").asString();
+        source.event = s->get("event").asString();
+        source.ingot = s->get("ingot").asString();
+        if (auto era = s->find("era")) source.era = era->asInt();
+        if (!def.findIngot(source.ingot)) throw std::runtime_error("foundry: source " + source.id + " grants an unknown ingot");
+        def.sources.push_back(std::move(source));
+    }
+    return def;
+}
+
 const std::map<std::string, double>* EraDef::mechanic(const std::string& enemyId, const std::string& name) const {
     auto enemy = mobMechanics.find(enemyId);
     if (enemy == mobMechanics.end()) return nullptr;
@@ -829,6 +880,7 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.crafting = loadCrafting(tuningDirectory + "/crafting.json");
     tuning.construction = loadConstruction(tuningDirectory + "/construction.json");
     tuning.eras = loadEras(tuningDirectory + "/eras.json");
+    tuning.foundry = loadFoundry(tuningDirectory + "/foundry.json");
     tuning.skills = loadSkills(tuningDirectory + "/skills.json");
     tuning.items = loadItems(tuningDirectory + "/items.json");
     tuning.boons = loadBoons(tuningDirectory + "/boons.json");
@@ -837,6 +889,14 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
     tuning.grammar = loadGrammar(tuningDirectory + "/grammar.json");
+    // The Foundry speaks in the item table's modifiers: every ingot and pair
+    // must name one, or a placed ingot would be a silent point.
+    for (const auto& ingot : tuning.foundry.ingots)
+        if (!tuning.items.findModifier(ingot.modifier))
+            throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown modifier " + ingot.modifier);
+    for (const auto& pair : tuning.foundry.pairs)
+        if (!tuning.items.findModifier(pair.modifier))
+            throw std::runtime_error("foundry: pair " + pair.displayName + " names unknown modifier " + pair.modifier);
     return tuning;
 }
 
