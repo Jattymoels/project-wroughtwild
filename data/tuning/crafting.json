@@ -410,5 +410,12 @@
   },
   "currencies": [
     "trade_currency"
-  ]
+  ],
+  "craft_rolls": {
+    "keen_chance_at_level_1": 0.35,
+    "keen_chance_per_level": 0.1,
+    "wrought_chance_from_level": 4,
+    "wrought_chance_per_level": 0.15,
+    "design_purpose": "Crafted gear rolls modifiers like a drop (owner, 3 Sep 2026: 'they come out plain ... a random generation of modifiers is preferred'). A recipe whose output is an item base makes a rolled item in the pack instead of a stack: keen with keen_chance_at_level_1 plus keen_chance_per_level per Blacksmithing level above one, wrought (rolled first) from wrought_chance_from_level at wrought_chance_per_level per level above that, else plain. The tier is the era's, so era two's forge makes era two's rolls, and the seed is the craft count so a save replays its luck. Infrastructure stays the dependable route: the base is certain, the roll is the excitement."
+  }
 }

@@ -240,6 +240,12 @@ public:
     // world.json shelter: regen_life_per_round, settle_rounds, max_room_cells.
     Dictionary shelter() const;
 
+    // --- skill mastery (D-019) ---
+    // A cast that fired; returns the perk texts it unlocked (usually none).
+    PackedStringArray note_skill_use(const String& skill_id);
+    // Throws a pack item away (no refund). False for a bad index.
+    bool discard_pack_item(int index);
+
     // --- items as mechanics (D-019) ---
     // Pack items in the worn item's slot that a Preserving Transfer could
     // carry the worn rolls onto: item entries with index and display_name.

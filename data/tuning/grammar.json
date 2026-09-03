@@ -29,13 +29,16 @@
   },
   "hooks": {
     "shatter": {
-      "trigger_tags": ["attack"],
+      "trigger_tags": [
+        "attack",
+        "shatter"
+      ],
       "nova_damage": 18.0,
       "nova_damage_type": "cold",
       "nova_radius_m": 2.6,
       "executes_frozen": true,
       "executes_boss": false,
-      "design_purpose": "The combo maker: hitting a FROZEN enemy with any skill carrying a trigger tag (every attack - Area Strike, Heavy Strike, Rend) shatters it: an execute plus a cold nova at the corpse. Novas shatter other frozen enemies in radius, so a frozen train cascades down its own line. Spells do not shatter: cold spells set up, attacks cash in. executes_boss false means a frozen boss takes the nova damage and thaws instead of dying - the freeze window is the reward, not a one-shot; flip it (or gate it per-tier) in the mob pass if elites want executes."
+      "design_purpose": "The combo maker: hitting a FROZEN enemy with any skill carrying a trigger tag (every attack - Area Strike, Heavy Strike, Rend) shatters it: an execute plus a cold nova at the corpse. Novas shatter other frozen enemies in radius, so a frozen train cascades down its own line. Spells do not shatter: cold spells set up, attacks cash in. executes_boss false means a frozen boss takes the nova damage and thaws instead of dying - the freeze window is the reward, not a one-shot; flip it (or gate it per-tier) in the mob pass if elites want executes. A skill tagged shatter (the Shatter spell) triggers it too: the one spell that cashes in."
     },
     "proliferate": {
       "enabled": true,

@@ -78,6 +78,10 @@
     "prototype_frost_nova": {
       "cone_degrees": 360.0,
       "design_purpose": "A cone delivery that is a full ring: cone_degrees 360 overrides the player's first-person arc for this skill (its radius is base_area_radius in skills.json, like every cone). Everything within the ring is chilled, behind you included - the panic button."
+    },
+    "prototype_shatter": {
+      "cone_degrees": 360.0,
+      "design_purpose": "Shatter is a full ring around the caster, like the nova: you stand in the frozen train and cash it in."
     }
   },
   "design_purpose": "round_seconds is the bridge between the sim's round-based encounter (the balance oracle) and real time: attack_period_rounds, breath periods and skill cooldowns become seconds by multiplying by it. Everything else here is time-and-space feel that the round model cannot express; damage, life and mitigation never live in this file (ADR-0003).",

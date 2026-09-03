@@ -146,6 +146,13 @@ public:
     bool payPlacement(const std::string& shapeId, const std::string& materialFamily);
     int refundRemoval(const std::string& shapeId, const std::string& materialFamily);
 
+    // --- skill mastery (D-019) ---
+    // A cast that fired. Returns the perk texts this use unlocked (usually none).
+    std::vector<std::string> noteSkillUse(const std::string& skillId);
+    int skillUses(const std::string& skillId) const;
+    // Perks unlocked so far for a skill, in order.
+    std::vector<const tuning::MasteryPerk*> masteryUnlocked(const std::string& skillId) const;
+
     // --- the Foundry (D-019, foundry.h) ---
     const foundry::State& foundry() const { return foundry_; }
     // The plate the current era forges.
@@ -177,6 +184,7 @@ public:
         std::vector<std::string> knownSkills;
         std::vector<std::string> skillBar;
         foundry::State foundry;
+        std::map<std::string, int> skillUses;
     };
     State exportState() const;
     // Restores a state; unknown skill ids are dropped, and an empty known
@@ -201,6 +209,8 @@ private:
     std::vector<std::string> skillBar_; // always kSkillBarSize entries
     foundry::State foundry_;
     std::vector<std::string> foundryNotices_;
+    std::map<std::string, int> skillUses_;
+    int craftedGear_ = 0; // seeds crafted rolls
 };
 
 } // namespace wroughtwild::economy

@@ -47,7 +47,21 @@
       "drop_weight": 0,
       "base_damage": 12,
       "base_area_radius": 2.5,
-      "cooldown_seconds": 0.8
+      "cooldown_seconds": 0.8,
+      "mastery": [
+        {
+          "uses": 30,
+          "modifier": "area_size",
+          "value": 0.1,
+          "text": "the sweep reaches a little further"
+        },
+        {
+          "uses": 120,
+          "modifier": "swift_hands",
+          "value": 0.1,
+          "text": "the sweep recovers faster"
+        }
+      ]
     },
     {
       "id": "prototype_heavy_strike",
@@ -61,7 +75,21 @@
       "starting": true,
       "drop_weight": 0,
       "base_damage": 28,
-      "cooldown_seconds": 1.4
+      "cooldown_seconds": 1.4,
+      "mastery": [
+        {
+          "uses": 30,
+          "modifier": "physical_damage",
+          "value": 0.15,
+          "text": "the blow lands harder"
+        },
+        {
+          "uses": 120,
+          "modifier": "serration",
+          "value": 0.3,
+          "text": "the blow opens deeper wounds"
+        }
+      ]
     },
     {
       "id": "prototype_frost_orb",
@@ -80,7 +108,21 @@
       "fork_count": 1,
       "fork_damage_fraction": 0.7,
       "cooldown_seconds": 1.2,
-      "design_purpose": "The grammar sentence opener: an orb that forks on impact and stacks chill toward the freeze threshold. Its damage is modest on purpose - the payoff lives in the freeze-shatter combo, not the hit. Cooldown 1.2 against chill decay 6/s means a bare caster freezes on the third orb; Deep Frost brings it to two."
+      "design_purpose": "The grammar sentence opener: an orb that forks on impact and stacks chill toward the freeze threshold. Its damage is modest on purpose - the payoff lives in the freeze-shatter combo, not the hit. Cooldown 1.2 against chill decay 6/s means a bare caster freezes on the third orb; Deep Frost brings it to two.",
+      "mastery": [
+        {
+          "uses": 30,
+          "modifier": "deep_frost",
+          "value": 0.2,
+          "text": "the orb chills deeper"
+        },
+        {
+          "uses": 120,
+          "modifier": "forked_lattice",
+          "value": 1,
+          "text": "the orb forks once more"
+        }
+      ]
     },
     {
       "id": "prototype_dash",
@@ -92,7 +134,15 @@
       "starting": true,
       "drop_weight": 0,
       "distance": 4.0,
-      "cooldown_seconds": 2.5
+      "cooldown_seconds": 2.5,
+      "mastery": [
+        {
+          "uses": 40,
+          "modifier": "swift_hands",
+          "value": 0.1,
+          "text": "you recover from the dash sooner"
+        }
+      ]
     },
     {
       "id": "prototype_ember_bolt",
@@ -111,7 +161,21 @@
       "fork_count": 0,
       "fork_damage_fraction": 0.7,
       "cooldown_seconds": 1.0,
-      "design_purpose": "The fire opener: a quick bolt whose hit is small but whose ignite burns for seconds. It does not fork by itself - a Forked Lattice roll (projectile tag) gives it the orb's split, which is the kind of cross-skill grammar D-016 is for. Three bolts ignite a plain mob."
+      "design_purpose": "The fire opener: a quick bolt whose hit is small but whose ignite burns for seconds. It does not fork by itself - a Forked Lattice roll (projectile tag) gives it the orb's split, which is the kind of cross-skill grammar D-016 is for. Three bolts ignite a plain mob.",
+      "mastery": [
+        {
+          "uses": 30,
+          "modifier": "kindling",
+          "value": 0.25,
+          "text": "the bolt kindles faster"
+        },
+        {
+          "uses": 120,
+          "modifier": "fire_damage",
+          "value": 0.15,
+          "text": "the bolt burns hotter"
+        }
+      ]
     },
     {
       "id": "prototype_rend",
@@ -128,7 +192,21 @@
       "base_damage": 18,
       "bleed_buildup": 70,
       "cooldown_seconds": 1.1,
-      "design_purpose": "A heavy strike that trades hit damage for bleed: two rends open a wound, and a bleeding mob that keeps chasing takes the moving multiplier - the anti-kite answer to D-012's stupid-zombie trains. Being an attack it also shatters frozen mobs."
+      "design_purpose": "A heavy strike that trades hit damage for bleed: two rends open a wound, and a bleeding mob that keeps chasing takes the moving multiplier - the anti-kite answer to D-012's stupid-zombie trains. Being an attack it also shatters frozen mobs.",
+      "mastery": [
+        {
+          "uses": 30,
+          "modifier": "serration",
+          "value": 0.25,
+          "text": "the rend bleeds faster"
+        },
+        {
+          "uses": 120,
+          "modifier": "hemorrhage",
+          "value": 0.25,
+          "text": "the wounds run deeper"
+        }
+      ]
     },
     {
       "id": "prototype_frost_nova",
@@ -146,7 +224,53 @@
       "chill_buildup": 45,
       "base_area_radius": 3.0,
       "cooldown_seconds": 2.0,
-      "design_purpose": "A ring of cold around the caster (cone_degrees 360 in combat_realtime.json): low damage, chill on everything close. Three novas freeze a ring bare, two with Deep Frost; with an orb in the mix it is the panic button that sets up a shatter with any attack."
+      "design_purpose": "A ring of cold around the caster (cone_degrees 360 in combat_realtime.json): low damage, chill on everything close. Three novas freeze a ring bare, two with Deep Frost; with an orb in the mix it is the panic button that sets up a shatter with any attack.",
+      "mastery": [
+        {
+          "uses": 30,
+          "modifier": "area_size",
+          "value": 0.1,
+          "text": "the ring spreads wider"
+        },
+        {
+          "uses": 120,
+          "modifier": "deep_frost",
+          "value": 0.2,
+          "text": "the ring chills deeper"
+        }
+      ]
+    },
+    {
+      "id": "prototype_shatter",
+      "display_name": "Shatter",
+      "delivery": "cone",
+      "tags": [
+        "spell",
+        "cold",
+        "shatter",
+        "area"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "base_damage": 4,
+      "base_area_radius": 3.5,
+      "cooldown_seconds": 4.0,
+      "design_purpose": "The owner's missing verb (3 Sep 2026): a ring that cashes in what cold set up. Its own damage is a whisper; it carries the shatter tag, and grammar.json lets a shatter-tagged skill trigger the hook, so every frozen enemy in the ring shatters and the novas cascade. Wide Shatter and every shatter modifier excite it. Long cooldown: it is the sentence's full stop, not its verb.",
+      "mastery": [
+        {
+          "uses": 20,
+          "modifier": "wide_shatter",
+          "value": 0.25,
+          "text": "the shatter reaches further"
+        },
+        {
+          "uses": 80,
+          "modifier": "cold_damage",
+          "value": 0.2,
+          "text": "the novas bite harder"
+        }
+      ]
     }
-  ]
+  ],
+  "design_purpose_mastery": "Skill mastery (D-019): each combat skill has use-milestones, and each milestone unlocks one perk - a modifier from items.json at a flat value that applies to this skill alone (the grammar tags every skill with skill:<id> for that). Uses count in the sim (a cast that fired), ride in the save, and the HUD announces a perk when it arrives. Perks are the third door of every big mechanic: an item tier, a Foundry line, a mastery perk each give the small version; together the full one. Numbers stay inside the threefold budget."
 }

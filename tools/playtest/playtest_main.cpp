@@ -279,6 +279,15 @@ void doOrder(Game& game) {
 }
 
 void doEquip(Game& game) {
+    // Crafted gear now rolls into the pack (D-019); a plain stack still counts.
+    for (size_t i = 0; i < game.economy.packItems.size(); ++i) {
+        if (game.economy.packItems[i].baseId == "iron_chest_armour") {
+            game.equipment.slots["chest"] = game.economy.packItems[i];
+            game.economy.packItems.erase(game.economy.packItems.begin() + static_cast<long>(i));
+            std::cout << "You wear the armour from your pack.\n";
+            return;
+        }
+    }
     auto held = game.economy.inventory.find("iron_chest_armour");
     if (held == game.economy.inventory.end() || held->second < 1) {
         std::cout << "You have no armour to wear. Craft iron_chest_armour first.\n";

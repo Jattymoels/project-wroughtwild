@@ -543,6 +543,13 @@ func _ui_checks() -> void:
 	check(pack.gear_count == 1, "ui: a rolled item shows as a gear card")
 	check(pack.wear_pack_item(0) and sim.equipment().has("weapon"), "ui: wearing from the pack screen")
 	check(pack.take_off(&"weapon") and pack.gear_count == 1, "ui: taking gear off returns it to the pack")
+	# Pack management (owner, 3 Sep): drop a stack at your feet, discard gear.
+	var wood_before: int = sim.material_count("wood")
+	var pickups_before: int = get_tree().get_nodes_in_group("pickups").size()
+	check(pack.drop_material(&"wood", 2) and sim.material_count("wood") == wood_before - 2
+		and get_tree().get_nodes_in_group("pickups").size() > pickups_before, "pack: a dropped stack lies at your feet")
+	var junk := sim.roll_item_into_pack("iron_mace", "plain", 1, 4)
+	check(pack.discard_pack_item(junk) and sim.pack_items().size() == 1, "pack: discarded gear is gone")
 	# Items as mechanics (D-019): a held-back roll on iron, unleashed by a
 	# Preserving Transfer onto bronze at the forge.
 	var held := -1

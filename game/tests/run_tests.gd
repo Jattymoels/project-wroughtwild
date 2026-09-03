@@ -230,7 +230,20 @@ func _test_lattice() -> void:
 	check(sim.catalyst_process("preserving_transfer")["process"] == "catalyst_transfer", "items: the transfer process is visible")
 	sim.structure_clear()
 
-	# Piece meshes: every form builds, the wedge's hull has six corners.
+	# Mastery and the pack: uses unlock a perk, discards throw gear away.
+	check(sim.combat_skill("prototype_frost_orb")["mastery"].size() == 2 and sim.combat_skill("prototype_frost_orb")["uses"] == 0,
+		"mastery: perks visible, no uses yet")
+	var unlocked := PackedStringArray()
+	for i in 30:
+		unlocked.append_array(sim.note_skill_use("prototype_frost_orb"))
+	check(unlocked.size() == 1 and sim.combat_skill("prototype_frost_orb")["mastery"][0]["unlocked"],
+		"mastery: thirty orbs unlock the first perk")
+	check(sim.combat_skill("prototype_shatter")["tags"].has("shatter") and not sim.shatter_for("prototype_shatter").is_empty(),
+		"shatter: the Shatter spell carries the trigger tag")
+	var before_count: int = sim.pack_items().size()
+	var junk: int = sim.roll_item_into_pack("iron_mace", "plain", 1, 3)
+	check(sim.discard_pack_item(junk) and sim.pack_items().size() == before_count and not sim.discard_pack_item(999),
+		"pack: a discarded item is gone")
 	check(PieceMesh.mesh_for("stairs", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE)
 		and PieceMesh.mesh_for("wedge", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE),
 		"piece mesh: stairs and wedge fill their cell")
@@ -439,7 +452,7 @@ func _test_sim_extension() -> void:
 	var heavy: Dictionary = sim.combat_skill("prototype_heavy_strike")
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
 	check(heavy["delivery"] == "strike" and heavy["starting"], "combat: skill view carries delivery and starting (D-016)")
-	check(sim.combat_skill_ids().size() == 7, "combat: seven skills defined (three arrive as pages)")
+	check(sim.combat_skill_ids().size() == 8, "combat: eight skills defined (four arrive as pages)")
 	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 6,
 		"combat: enemy view (shrieker and gloom crawler joined)")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")

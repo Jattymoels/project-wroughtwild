@@ -248,7 +248,30 @@ Not yet: refinement (reach) and wrought forms.
   a base of the same slot in the pack; the old base is spent with the
   catalyst. The forge panel lists one row per target.
 
-Not yet: mastery perks, the third era, wrought forms and refinement.
+## Implemented: skill mastery, crafted rolls, the pack (3 Sep 2026)
+
+- **Mastery.** Every combat skill lists use-milestones (`skills.json`
+  `mastery`); each unlocks one perk, a modifier at a flat value that
+  applies to that skill alone. The grammar tags every skill with
+  `skill:<id>` (`CombatSkillDef::resolveTags`) so a perk can target it
+  without touching its siblings: the orb chills deeper at thirty casts,
+  forks once more at a hundred and twenty; the nova widens; Shatter
+  reaches further. The sim counts casts that fired (`noteSkillUse`),
+  uses ride in the save, the HUD announces a perk, and the pack screen
+  shows progress under each skill. This is the third door.
+- **Shatter.** The owner's missing verb: a ring spell whose own damage is
+  a whisper and whose tag triggers the shatter hook (`grammar.json`
+  `trigger_tags` now include `shatter`), so every frozen enemy in the ring
+  shatters and the novas cascade. It arrives as a page.
+- **Crafted gear rolls** (`crafting.json` `craft_rolls`): a recipe whose
+  output is an item base makes a rolled item in the pack, keen or wrought
+  by Blacksmithing level, at the era's tier, seeded by the craft count.
+  The base is certain, the roll is the excitement.
+- **The pack**: Drop on a material tile puts the stack at your feet as
+  pickups; Discard on a gear card throws it away.
+
+Not yet: the third era, wrought forms and refinement, the wider modifier
+vocabulary (attack and cast speed, stuns) the owner asked for.
 
 ## Open questions
 

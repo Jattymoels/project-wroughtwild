@@ -213,3 +213,11 @@ plain strikes) — cross-pollination without sockets.
   "Ignite-immune husk") so builds meet resistance, PoE-style.
 - **Wave 4** lets boons and dungeon modifiers bend the grammar (the
   roguelite: "your forks chain", "frozen enemies explode twice").
+
+## Mastery and Shatter (D-019, 3 Sep 2026)
+
+Skills carry an implicit `skill:<id>` tag when the grammar resolves them,
+so mastery perks (`skills.json` `mastery`) are ordinary modifiers that
+happen to apply to one skill. The Shatter spell carries the `shatter`
+tag, which the shatter hook now accepts as a trigger beside `attack`: the
+one spell that cashes in a freeze.
