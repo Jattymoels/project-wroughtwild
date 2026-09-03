@@ -153,6 +153,28 @@ still reads the pristine surface heights), a soil material family (dirt
 yields nothing until something wants soil), water, falling-block physics,
 and cave light rules (a lamp item; the dark is honest for now).
 
+## Implemented: the bigger world and the fen (3 Sep 2026)
+
+The map is 224 cells a side (from 160; 196 chunks) with the danger rings
+widened to match (75 m, 150 m) and the gate at least 100 m out. A fifth
+biome, **the fen**, takes the lowest wet band (heights start at the base
+height, so `height_max` 15 with `moisture_min` 0.55; listed before the
+forest so wet low ground is fen and wet high ground forest), on a new
+`marsh` surface with its own mood. Four families joined, all data
+(`world.json` enemies with `tint`, `size_scale` and `immune_statuses`;
+`combat_realtime.json` behaviours `lurker`, `skirmisher`, `knight`):
+
+| Family | Home | Nature |
+| --- | --- | --- |
+| Bog Lurker | fen | slow, thick, bleed-proof: a wall you walk around |
+| Marsh Wisp | fen | fast skirmisher that keeps six metres and pecks |
+| Cinder Wisp | wastes | burning skirmisher, ignite-proof: fire resistance matters outside the trial |
+| Hollow Knight | wastes | armoured melee with a long windup, ignite-proof: cold and bleed are the answers |
+
+The owner's frame: "always worthwhile making the world larger to allow
+for more mob variants". Behaviours are data, so a family is a few lines
+and a look.
+
 ## Implemented: encroachment (Wave 4, D-018, 3 Sep 2026)
 
 The base threat, built to two owner rules: **pressure, never demolition**

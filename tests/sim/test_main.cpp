@@ -2032,6 +2032,26 @@ void testMasteryAndCraftRolls(const tuning::Tuning& t) {
     check(anyRolled, "craft: crafted gear carries rolled modifiers");
 }
 
+// The bigger world (3 Sep 2026): 224 cells, a fen that owns its own packs.
+void testBiggerWorld(const tuning::Tuning& t) {
+    check(t.worldgen.map.widthCells == 224 && t.worldgen.map.heightCells == 224, "world: 224 cells a side");
+    check(t.worldgen.findBiome("fen") != nullptr, "world: the fen exists");
+    auto map = worldgen::generate(t, 9);
+    int fenCells = 0, fenPacks = 0;
+    const int fenIndex = static_cast<int>(t.worldgen.findBiome("fen") - &t.worldgen.biomes.front());
+    for (const auto& cell : map.cells)
+        if (cell.biomeIndex == fenIndex) ++fenCells;
+    for (const auto& pack : map.packs)
+        for (const auto& id : pack.enemies)
+            if (id == "bog_lurker" || id == "marsh_wisp") { ++fenPacks; break; }
+    check(fenCells > 200 && fenPacks > 0, "world: the fen covers ground and fields lurkers and wisps");
+    check(t.world.findEnemy("hollow_knight") != nullptr && t.world.findEnemy("cinder_wisp") != nullptr &&
+              t.world.findEnemy("hollow_knight")->sizeScale > 1.0,
+          "world: the wastes gained a knight and a wisp");
+    check(t.realtime.findBehaviour("lurker") != nullptr && t.realtime.findBehaviour("knight") != nullptr,
+          "world: new behaviours are data");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -2077,6 +2097,7 @@ int main(int argc, char** argv) {
     testFoundry(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
+    testBiggerWorld(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

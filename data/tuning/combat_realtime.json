@@ -44,6 +44,31 @@
       "scream_period_seconds": 4.0,
       "scream_radius_m": 14.0,
       "design_purpose": "The aggro-chainer: hangs back at preferred distance and screams every scream_period_seconds, waking every idle mob within scream_radius_m (D-012's Zombies-wave builder). Weak in the bite; the threat is who it invites. Killing it first is the play."
+    },
+    "lurker": {
+      "move_speed_mps": 1.8,
+      "attack_range_m": 2.4,
+      "aggro_range_m": 11.0,
+      "windup_seconds": 0.9,
+      "give_up_distance_m": 20.0,
+      "design_purpose": "Slow and long-armed: it cannot catch you, but it holds ground you want."
+    },
+    "skirmisher": {
+      "move_speed_mps": 4.0,
+      "attack_range_m": 8.0,
+      "aggro_range_m": 15.0,
+      "preferred_distance_m": 6.0,
+      "windup_seconds": 0.5,
+      "give_up_distance_m": 26.0,
+      "design_purpose": "A ranged mob that moves: keeps six metres and pecks. Faster than the archer, thinner than anything."
+    },
+    "knight": {
+      "move_speed_mps": 2.6,
+      "attack_range_m": 2.0,
+      "aggro_range_m": 13.0,
+      "windup_seconds": 0.7,
+      "give_up_distance_m": 24.0,
+      "design_purpose": "A heavy melee walk with a long windup: the hit is readable, the body is not."
     }
   },
   "boss": {

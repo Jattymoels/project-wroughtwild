@@ -305,6 +305,9 @@ struct EnemyDef {
     double damage = 0.0;
     std::string damageType; // "physical" or "fire"
     int attackPeriodRounds = 1;
+    std::vector<std::string> immuneStatuses; // of: chill, ignite, bleed (a family's nature)
+    std::string tint;       // "#rrggbb" look override (empty = by behaviour)
+    double sizeScale = 1.0; // mesh scale for brutes and wisps
     std::vector<LootEntry> loot;
 };
 

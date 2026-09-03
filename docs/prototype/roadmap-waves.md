@@ -320,8 +320,11 @@ the world is the campaign. Slices, in order:
 4. **Skill mastery** *(landed 3 Sep 2026)*: use-milestones per skill unlock
    per-skill perks through a `skill:<id>` tag; the Shatter spell; crafted
    gear rolls modifiers; pack Drop and Discard (owner's second-arc notes).
-   Still ahead: the third era, more trial floors, more mob variants, life
-   in the world beyond hostiles, and the wider modifier vocabulary.
+   Still ahead: the third era, more trial floors, life in the world beyond
+   hostiles, and the wider modifier vocabulary.
+5. **The bigger world** *(landed 3 Sep 2026)*: 224 cells a side, the fen
+   as a fifth biome, and four new families (bog lurker, marsh wisp, cinder
+   wisp, hollow knight) as data with their own looks and immunities.
 
 Owner tuning note (3 Sep): "everything is way too fast/powerful ... to
 feel good you have to start with less damage/more danger" — era one's
