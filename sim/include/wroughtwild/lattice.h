@@ -144,6 +144,8 @@ public:
     // Placement uses it to let a beam or wall continue out into empty air
     // from what is already built, rather than only onto surfaces.
     bool near(const std::vector<Element>& footprint, int margin) const;
+    // The registry-cell box every covered element lies in. False when empty.
+    bool bounds(Cell& lo, Cell& hi) const;
     // Vertical registry edges that want a corner post drawn: where walls
     // end or meet at an angle (a T, an L, a lone panel's two ends) and no
     // real post stands. A straight run's interior edges carry two
@@ -157,11 +159,19 @@ private:
 };
 
 // What the world (not the structure) says about a registry volume.
-enum class WorldCell { Open = 0, Solid = 1, Outside = 2 };
+// Open: air below the ground surface (a cave); Sky: air at or above it;
+// Solid: rock; Outside: past the world's edge or top.
+enum class WorldCell { Open = 0, Solid = 1, Outside = 2, Sky = 3 };
 
 struct Enclosure {
     bool enclosed = false;
     int volumes = 0; // registry volumes reached (the room's size, or the cap)
+    // Where the fill escaped when it did: the first open volume that met
+    // the sky/edge ("sky"), or the volume that broke the cap ("cap"); the
+    // reason is "" for a closed room. The engine marks it so a builder can
+    // see the gap they cannot find.
+    Cell leak{0, 0, 0};
+    std::string leakReason;
 };
 
 // Is the registry volume `start` inside a shelter? Flood-fills open

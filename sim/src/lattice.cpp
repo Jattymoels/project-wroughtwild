@@ -207,6 +207,19 @@ Vec3 footprintCentre(const Element& anchor, int span, int tall, double registryG
 
 bool Structure::occupied(const Element& element) const { return owner_.count(element) > 0; }
 
+bool Structure::bounds(Cell& lo, Cell& hi) const {
+    if (owner_.empty()) return false;
+    bool first = true;
+    for (const auto& [element, anchor] : owner_) {
+        (void)anchor;
+        const Cell& c = element.cell;
+        if (first) { lo = hi = c; first = false; continue; }
+        lo.x = std::min(lo.x, c.x); lo.y = std::min(lo.y, c.y); lo.z = std::min(lo.z, c.z);
+        hi.x = std::max(hi.x, c.x); hi.y = std::max(hi.y, c.y); hi.z = std::max(hi.z, c.z);
+    }
+    return true;
+}
+
 const Piece* Structure::at(const Element& element) const {
     auto owner = owner_.find(element);
     if (owner == owner_.end()) return nullptr;
@@ -330,7 +343,20 @@ Enclosure enclosure(const Structure& structure, const Element& start, int maxVol
     if (start.kind != ElementKind::Volume || maxVolumes < 1) return result;
     Element origin = start;
     origin.axis = 0;
-    if (structure.occupied(origin) || world(origin.cell) != WorldCell::Open) return result;
+    const WorldCell at = world(origin.cell);
+    if (structure.occupied(origin) || (at != WorldCell::Open && at != WorldCell::Sky)) return result;
+
+    // The house's own footprint, one registry cell of margin: sky met
+    // beyond it is the open air outside, and the volume the fill left
+    // through is the gap a builder wants marked. Caves below the surface
+    // keep filling (a dug-out hollow under a slab is a shelter).
+    Cell lo{0, 0, 0}, hi{0, 0, 0};
+    if (!structure.bounds(lo, hi)) return result;
+    lo.x -= 1; lo.y -= 1; lo.z -= 1;
+    hi.x += 1; hi.y += 1; hi.z += 1;
+    auto inBox = [&](const Cell& c) {
+        return c.x >= lo.x && c.x <= hi.x && c.y >= lo.y && c.y <= hi.y && c.z >= lo.z && c.z <= hi.z;
+    };
 
     std::set<Cell> seen;
     std::vector<Cell> frontier;
@@ -351,14 +377,18 @@ Enclosure enclosure(const Structure& structure, const Element& start, int maxVol
             if (structure.occupied(face)) continue;
             const WorldCell cell = world(next);
             if (cell == WorldCell::Solid) continue;
-            if (cell == WorldCell::Outside) {
+            if (cell == WorldCell::Outside || (cell == WorldCell::Sky && !inBox(next))) {
                 result.volumes = static_cast<int>(seen.size());
+                result.leak = here;
+                result.leakReason = "sky";
                 return result; // open to the sky or the world's edge
             }
             if (structure.occupied(Element{ElementKind::Volume, 0, next})) continue;
             seen.insert(next);
             if (static_cast<int>(seen.size()) > maxVolumes) {
                 result.volumes = static_cast<int>(seen.size());
+                result.leak = next;
+                result.leakReason = "cap";
                 return result; // too big to be a room
             }
             frontier.push_back(next);

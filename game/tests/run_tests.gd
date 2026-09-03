@@ -146,6 +146,9 @@ func _test_lattice() -> void:
 		sim.structure_place({"kind": "face", "axis": wall[0], "cell": wall[1]}, "wall_panel", "wood", 0)
 	sim.structure_place({"kind": "face", "axis": 1, "cell": Vector3i(0, 0, 0)}, "floor_slab", "wood", 0)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: no roof, no shelter")
+	var roofless: Dictionary = sim.structure_enclosure(-1, no_digs, middle)
+	check(roofless["reason"] == "sky" and roofless.has("leak") and (roofless["leak"] as Vector3).y > middle.y,
+		"shelter: a roofless room reports the sky leak above it (%s)" % str(roofless.get("leak")))
 	sim.structure_place({"kind": "face", "axis": 1, "cell": Vector3i(0, 2, 0)}, "floor_slab", "wood", 0)
 	var room: Dictionary = sim.structure_enclosure(-1, no_digs, middle)
 	check(room["enclosed"] and room["cells"] == 1, "shelter: a closed one-cell box is a shelter of one cell")
