@@ -365,6 +365,7 @@ ConstructionTable loadConstruction(const std::string& path) {
         }
         if (auto fine = s->find("fine")) shape.fine = fine->asBool();
         if (auto fineOf = s->find("fine_of")) shape.fineOf = fineOf->asString();
+        if (auto hint = s->find("hint")) shape.hint = hint->asString();
         if (!shape.fineOf.empty() && !shape.fine)
             throw std::runtime_error("construction: shape '" + shape.id + "' names fine_of but is not fine");
         if (auto effect = s->find("requires_world_effect"))

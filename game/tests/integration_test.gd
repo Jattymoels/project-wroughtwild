@@ -21,6 +21,7 @@ var _death_spot := Vector3.ZERO
 var _wood_before_trial := 0
 var _blocks_before := 0
 var _corner_panel: PlacedBlock
+var _door: PlacedBlock
 var _room: Array = []
 ## The x-face, z-face and vertical edge that all meet at build-grid corner
 ## (5, 3, 5) - registry coordinates run at half cells, so (10, 6, 10).
@@ -44,6 +45,19 @@ func _ready() -> void:
 	# and nudge the player off x = 0 so the ray does not graze a cell boundary.
 	(_player.get_node("SpringArm3D") as SpringArm3D).rotation.x = -0.6
 	_player.position.x = 0.3
+
+
+## The placed piece whose collision holds the point, or null.
+func _hits_body(point: Vector3) -> PlacedBlock:
+	var shape := SphereShape3D.new()
+	shape.radius = 0.05
+	var query := PhysicsShapeQueryParameters3D.new()
+	query.shape = shape
+	query.transform = Transform3D(Basis.IDENTITY, point)
+	for result in _player.get_world_3d().direct_space_state.intersect_shape(query, 8):
+		if result["collider"] is PlacedBlock:
+			return result["collider"]
+	return null
 
 
 func _count_placed_blocks() -> int:
@@ -102,8 +116,8 @@ func _physics_process(_delta: float) -> void:
 			check(placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(10, 6, 10)})
 				and placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(8, 6, 10)}),
 				"corner: a cube fills either cell a wall divides - the wall belongs to neither")
-			check(not placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(9, 6, 10)}),
-				"corner: a full-size cube must sit on the build grid")
+			check(placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(9, 6, 10)}),
+				"corner: a full-size cube may sit off the build grid (on a half cube, say)")
 			# The perpendicular wall makes the shared edge a corner: a trim grows there.
 			var second := placement.place_piece(CORNER_FACE_Z, &"wall_panel", &"wood")
 			check(second != null and placement.trim_count() == 6, "corner: walls meeting at an angle grow a post")
@@ -118,7 +132,7 @@ func _physics_process(_delta: float) -> void:
 				and not placement.element_accepts({"kind": "face", "axis": 0, "cell": Vector3i(10, 8, 10)}),
 				"door: the face above it is the door's")
 			check(door.toggle() and door.open and not door.toggle() and not door.open, "door: E swings it open and shut")
-			check(placement.remove_piece(door) and placement.trim_count() == 0, "door: removed with its trims")
+			_door = door
 			# Fine mode: G swaps the selection for its half-scale twin and back.
 			check(placement.select_shape(&"wall_panel") and placement.has_fine_twin()
 				and not placement.select_shape(&"half_wall"), "fine: twins ride on G, never on Tab")
@@ -131,7 +145,6 @@ func _physics_process(_delta: float) -> void:
 				"fine: a shape without a twin stays full size in fine mode")
 			check(not placement.toggle_fine() and placement.select_shape(&"wall_panel")
 				and placement.placing_shape() == &"wall_panel", "fine: G again restores full size")
-			check(_player.inventory.get_sim().structure_pieces().is_empty(), "corner: the structure is empty again")
 		17:
 			# Shelter (building slice 3): walls, floor and roof around the
 			# player's cell make a room; the sim's flood fill says so, and
@@ -199,42 +212,16 @@ func _physics_process(_delta: float) -> void:
 			_player.work_panel.close_panel()
 			check(not _player.work_panel.is_open(), "integration: panel closes")
 		15:
-			# The interface is a headless test surface (interface.md rule 4):
-			# pack screen, help overlay, action bar and work-panel cards.
-			var sim: WroughtwildSim = _player.inventory.get_sim()
-			var pack: InventoryPanel = _player.inventory_panel
-			_player.toggle_inventory()
-			check(pack.is_open(), "ui: I opens the pack screen")
-			var nonzero := 0
-			for id in sim.inventory():
-				if sim.inventory()[id] > 0:
-					nonzero += 1
-			for id in sim.currency():
-				if sim.currency()[id] > 0:
-					nonzero += 1
-			check(pack.tile_count == nonzero and nonzero > 0, "ui: one tile per carried family and currency")
-			pack.set_mod_active(&"deep_frost", true)
-			check(sim.skill_mod_active("deep_frost"), "ui: pack toggles a spike mod through the sim")
-			pack.set_mod_active(&"deep_frost", false)
-			check(not sim.skill_mod_active("deep_frost"), "ui: and back off")
-			check(not pack.wear(&"iron_chest_armour"), "ui: wearing armour you do not carry is refused")
-			sim.roll_item_into_pack("frost_sceptre", "keen", 1, 11)
-			pack.refresh()
-			check(pack.gear_count == 1, "ui: a rolled item shows as a gear card")
-			check(pack.wear_pack_item(0) and sim.equipment().has("weapon"), "ui: wearing from the pack screen")
-			check(pack.take_off(&"weapon") and pack.gear_count == 1, "ui: taking gear off returns it to the pack")
-			_player.toggle_inventory()
-			check(not pack.is_open(), "ui: I closes the pack screen")
-			check(not _player.hud.help_visible(), "ui: help starts hidden")
-			_player.hud.toggle_help()
-			check(_player.hud.help_visible(), "ui: H shows the controls")
-			_player.hud.toggle_help()
-			check(_player.hud.action_bar != null and _player.hud.action_bar.slots.size() == 4, "ui: four action slots")
-			check(_player.hud.action_bar.shown_fraction(PlayerCombat.AREA_SKILL) == 1.0, "ui: a ready skill shows a full sweep")
-			check(_player.hud.holdings_text().contains("wood"), "ui: holdings strip names carried wood")
-			_player.open_hand_crafting()
-			check(_player.work_panel.is_open() and _player.work_panel.row_count() >= 2, "ui: field crafting renders cards")
-			_player.work_panel.close_panel()
+			# The door is in the physics space now: shut it collides (so X and
+			# E can reach it), open it does not.
+			var placement := _player.placement
+			check(_hits_body(Vector3(5.0, 4.0, 5.5)) == _door, "door: the shut leaf collides")
+			_door.toggle()
+			check(_hits_body(Vector3(5.0, 4.0, 5.5)) == null, "door: the open leaf is walked through")
+			_door.toggle()
+			check(placement.remove_piece(_door) and placement.trim_count() == 0, "door: removed with its trims")
+			check(_player.inventory.get_sim().structure_pieces().is_empty(), "corner: the structure is empty again")
+			_ui_checks()
 		16:
 			# Order board: delivery consumes output, pays currency and changes the world.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
@@ -456,3 +443,44 @@ func _physics_process(_delta: float) -> void:
 		68:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
+
+
+## The interface is a headless test surface (interface.md rule 4): pack
+## screen, help overlay, action bar and work-panel cards.
+func _ui_checks() -> void:
+	# The interface is a headless test surface (interface.md rule 4):
+	# pack screen, help overlay, action bar and work-panel cards.
+	var sim: WroughtwildSim = _player.inventory.get_sim()
+	var pack: InventoryPanel = _player.inventory_panel
+	_player.toggle_inventory()
+	check(pack.is_open(), "ui: I opens the pack screen")
+	var nonzero := 0
+	for id in sim.inventory():
+		if sim.inventory()[id] > 0:
+			nonzero += 1
+	for id in sim.currency():
+		if sim.currency()[id] > 0:
+			nonzero += 1
+	check(pack.tile_count == nonzero and nonzero > 0, "ui: one tile per carried family and currency")
+	pack.set_mod_active(&"deep_frost", true)
+	check(sim.skill_mod_active("deep_frost"), "ui: pack toggles a spike mod through the sim")
+	pack.set_mod_active(&"deep_frost", false)
+	check(not sim.skill_mod_active("deep_frost"), "ui: and back off")
+	check(not pack.wear(&"iron_chest_armour"), "ui: wearing armour you do not carry is refused")
+	sim.roll_item_into_pack("frost_sceptre", "keen", 1, 11)
+	pack.refresh()
+	check(pack.gear_count == 1, "ui: a rolled item shows as a gear card")
+	check(pack.wear_pack_item(0) and sim.equipment().has("weapon"), "ui: wearing from the pack screen")
+	check(pack.take_off(&"weapon") and pack.gear_count == 1, "ui: taking gear off returns it to the pack")
+	_player.toggle_inventory()
+	check(not pack.is_open(), "ui: I closes the pack screen")
+	check(not _player.hud.help_visible(), "ui: help starts hidden")
+	_player.hud.toggle_help()
+	check(_player.hud.help_visible(), "ui: H shows the controls")
+	_player.hud.toggle_help()
+	check(_player.hud.action_bar != null and _player.hud.action_bar.slots.size() == 4, "ui: four action slots")
+	check(_player.hud.action_bar.shown_fraction(PlayerCombat.AREA_SKILL) == 1.0, "ui: a ready skill shows a full sweep")
+	check(_player.hud.holdings_text().contains("wood"), "ui: holdings strip names carried wood")
+	_player.open_hand_crafting()
+	check(_player.work_panel.is_open() and _player.work_panel.row_count() >= 2, "ui: field crafting renders cards")
+	_player.work_panel.close_panel()

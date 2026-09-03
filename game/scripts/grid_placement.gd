@@ -18,6 +18,8 @@ const STATION_SITE_SCENE := preload("res://scenes/station_site.tscn")
 const KIT_PREVIEW_SIZE := Vector3(1.8, 1.2, 1.8)
 ## Kits stand in a whole cell: they target the lattice as this shape does.
 const KIT_STAND_IN_SHAPE := &"cube"
+## Metres between samples when the view ray reaches out into empty air.
+const EXTEND_STEP := 0.25
 ## Corner trims: the post visual walls grow where they end or meet.
 const TRIM_SIZE := 0.3
 const TRIM_COLOUR := Color(0.66, 0.66, 0.69)
@@ -361,12 +363,51 @@ func element_accepts(element: Dictionary) -> bool:
 ## The element the selected shape would take for a surface hit: the nearest
 ## acceptable candidate, or the nearest of all when none is (for the red
 ## preview). Empty when the sim has nothing to offer.
-func target_element(point: Vector3, normal: Vector3) -> Dictionary:
-	var candidates: Array = _sim().lattice_candidates(_target_shape(), point, normal)
+func target_element(point: Vector3, normal: Vector3, fine_grid: bool = false) -> Dictionary:
+	var candidates: Array = _sim().lattice_candidates(_target_shape(), point, normal, fine_grid)
 	for candidate in candidates:
 		if element_accepts(candidate):
 			return candidate
 	return candidates[0] if not candidates.is_empty() else {}
+
+
+## The piece you build on decides the grid: a hit on a fine piece, or on a
+## piece standing off the build grid, targets the registry lattice so a
+## full-size piece can sit on a half-scale one.
+func _hit_on_fine_grid(hit: Dictionary) -> bool:
+	var block := hit.get("collider") as PlacedBlock
+	if block == null or block.element.is_empty():
+		return false
+	if _sim().shape(block.shape_id).get("fine", false):
+		return true
+	var cell: Vector3i = block.element["cell"]
+	var div := maxi(1, roundi(grid_size / registry_grid))
+	return cell.x % div != 0 or cell.y % div != 0 or cell.z % div != 0
+
+
+## Reaching out into empty air: walk the view ray from the player outward
+## in EXTEND_STEP hops. Once the ray has passed within a registry cell of
+## something built, the first acceptable element that touches the
+## structure wins - so aiming along a beam's line continues the beam, and
+## aiming past a wall's edge extends the wall over nothing. Empty when the
+## ray never brushes the structure before `reach`. `start` is how far
+## along the ray sampling begins (the camera sits behind the player).
+func extend_target(from: Vector3, dir: Vector3, reach: float, start: float = 0.0) -> Dictionary:
+	if _sim().structure_piece_count() == 0:
+		return {}
+	var shape := _target_shape()
+	var d := start + EXTEND_STEP
+	var passed := false
+	while d < reach - EXTEND_STEP * 0.5:
+		var p := from + dir * d
+		if not passed:
+			passed = _sim().structure_near_point(p)
+		else:
+			for candidate in _sim().lattice_candidates(shape, p, Vector3.ZERO, false):
+				if _sim().structure_touches(shape, candidate) and element_accepts(candidate):
+					return candidate
+		d += EXTEND_STEP
+	return {}
 
 
 func _update_preview() -> void:
@@ -374,11 +415,12 @@ func _update_preview() -> void:
 		return
 
 	var hit := _get_view_trace()
-	if hit.is_empty():
-		_hide_preview()
-		return
-
-	var element := target_element(hit["position"], hit["normal"])
+	var from := camera.global_position
+	var dir := -camera.global_transform.basis.z
+	var reach := placement_range if hit.is_empty() else from.distance_to(hit["position"])
+	var element := extend_target(from, dir, reach, from.distance_to((get_parent() as Node3D).global_position))
+	if element.is_empty() and not hit.is_empty():
+		element = target_element(hit["position"], hit["normal"], _hit_on_fine_grid(hit))
 	if element.is_empty():
 		_hide_preview()
 		return
@@ -542,7 +584,7 @@ func trim_count() -> int:
 ## seed and its dug blocks. {enclosed, cells}; never enclosed with nothing
 ## built, so the common case costs nothing.
 func enclosure_at(position: Vector3) -> Dictionary:
-	if _sim().structure_pieces().is_empty():
+	if _sim().structure_piece_count() == 0:
 		return {"enclosed": false, "cells": 0}
 	var terrain := _find_terrain()
 	var seed_value := -1

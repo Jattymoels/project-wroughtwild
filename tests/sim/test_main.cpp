@@ -1638,6 +1638,17 @@ void testLattice(const tuning::Tuning& t) {
     // rises past the one-cell wall (2): no post grows in the seam itself.
     check(s.trimEdges().size() == 8, "trim: a door continues the run at the seam and is framed where it rises past it");
 
+    // Touching: a piece counts as near the structure when its footprint's
+    // box, grown by the margin, holds any placed element.
+    s.clear();
+    s.place(piece(Element{ElementKind::Edge, 0, Cell{10, 13, 10}}, Slot::Beam, "beam")); // registry (20,26,20)-(21,26,20)
+    check(s.near(footprint(scaled(Element{ElementKind::Edge, 0, Cell{11, 13, 10}}, div), div, 1), 0),
+          "near: the beam continuing along the same line touches");
+    check(s.near(footprint(scaled(Element{ElementKind::Volume, 0, Cell{10, 12, 10}}, div), div, 1), 0),
+          "near: the cube under the beam touches");
+    check(!s.near(footprint(scaled(Element{ElementKind::Edge, 0, Cell{14, 13, 10}}, div), div, 1), 1),
+          "near: a beam three cells on does not");
+
     // Enclosure (slice 3): a hut is a shelter, a hut with a wall missing is
     // not, a door keeps it one, and a hall past the cap is outside.
     check(t.world.shelter.regenLifePerRound > 0.0 && t.world.shelter.maxRoomCells > 0 &&

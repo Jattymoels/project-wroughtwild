@@ -138,6 +138,11 @@ public:
     // Wall-slot pieces on the vertical faces touching a vertical registry
     // edge: up to four (a piece counts once per face it covers).
     std::vector<const Piece*> wallsAt(const Element& verticalEdge) const;
+    // True when some placed piece lies within `margin` registry cells of
+    // the footprint's bounding box: the piece would touch the structure.
+    // Placement uses it to let a beam or wall continue out into empty air
+    // from what is already built, rather than only onto surfaces.
+    bool near(const std::vector<Element>& footprint, int margin) const;
     // Vertical registry edges that want a corner post drawn: where walls
     // end or meet at an angle (a T, an L, a lone panel's two ends) and no
     // real post stands. A straight run's interior edges carry two

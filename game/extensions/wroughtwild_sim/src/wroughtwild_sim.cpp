@@ -157,8 +157,11 @@ void WroughtwildSim::_bind_methods() {
                          &WroughtwildSim::world_mesh_chunk);
     ClassDB::bind_method(D_METHOD("block_rules"), &WroughtwildSim::block_rules);
     ClassDB::bind_method(D_METHOD("lattice_registry_grid"), &WroughtwildSim::lattice_registry_grid);
-    ClassDB::bind_method(D_METHOD("lattice_candidates", "shape_id", "point", "normal"),
-                         &WroughtwildSim::lattice_candidates);
+    ClassDB::bind_method(D_METHOD("lattice_candidates", "shape_id", "point", "normal", "fine_grid"),
+                         &WroughtwildSim::lattice_candidates, DEFVAL(false));
+    ClassDB::bind_method(D_METHOD("structure_touches", "shape_id", "element"), &WroughtwildSim::structure_touches);
+    ClassDB::bind_method(D_METHOD("structure_near_point", "point"), &WroughtwildSim::structure_near_point);
+    ClassDB::bind_method(D_METHOD("structure_piece_count"), &WroughtwildSim::structure_piece_count);
     ClassDB::bind_method(D_METHOD("lattice_pose", "shape_id", "element"), &WroughtwildSim::lattice_pose);
     ClassDB::bind_method(D_METHOD("shape_accepts", "shape_id", "element"), &WroughtwildSim::shape_accepts);
     ClassDB::bind_method(D_METHOD("structure_occupied", "element"), &WroughtwildSim::structure_occupied);
@@ -947,6 +950,7 @@ Dictionary WroughtwildSim::shape(const String& shape_id) const {
     d["cells_tall"] = s->cellsTall;
     d["fine"] = s->fine;
     d["fine_of"] = to_godot(s->fineOf);
+    d["hint"] = to_godot(s->hint);
     d["requires_world_effect"] = to_godot(s->requiresWorldEffect);
     d["unlocked"] = player_->shapeUnlocked(s->id);
     return d;
@@ -1956,10 +1960,6 @@ bool shape_lattice(const wroughtwild::tuning::Tuning& tuning, const String& shap
     return true;
 }
 
-bool aligned(const Element& e, int span) {
-    return e.cell.x % span == 0 && e.cell.y % span == 0 && e.cell.z % span == 0;
-}
-
 Dictionary pose_of(const ShapeLattice& sl, const Element& anchor) {
     Dictionary d;
     d["centre"] = to_vector(wroughtwild::lattice::footprintCentre(anchor, sl.span, sl.tall, sl.registryGrid));
@@ -1976,16 +1976,21 @@ double WroughtwildSim::lattice_registry_grid() const {
     return tuning_->construction.gridSizeMetres / std::max(1, tuning_->construction.latticeDivisions);
 }
 
-Array WroughtwildSim::lattice_candidates(const String& shape_id, const Vector3& point, const Vector3& normal) const {
+Array WroughtwildSim::lattice_candidates(const String& shape_id, const Vector3& point, const Vector3& normal,
+                                         bool fine_grid) const {
     Array out;
     ShapeLattice sl;
     if (!require_loaded("lattice_candidates") || !shape_lattice(*tuning_, shape_id, sl)) {
         return out;
     }
+    // On the fine grid the anchor is any registry element; the footprint
+    // still spans the piece's full size from it.
+    const int step = fine_grid ? 1 : sl.span;
+    const double grid = fine_grid ? sl.registryGrid : sl.pieceGrid;
     const auto found = wroughtwild::lattice::candidates(sl.slot, {point.x, point.y, point.z},
-                                                        {normal.x, normal.y, normal.z}, sl.pieceGrid);
+                                                        {normal.x, normal.y, normal.z}, grid);
     for (const auto& coarse : found) {
-        const Element anchor = wroughtwild::lattice::scaled(coarse, sl.span);
+        const Element anchor = wroughtwild::lattice::scaled(coarse, step);
         Dictionary d = element_to(anchor);
         d.merge(pose_of(sl, anchor));
         out.push_back(d);
@@ -2006,7 +2011,33 @@ bool WroughtwildSim::shape_accepts(const String& shape_id, const Dictionary& ele
     ShapeLattice sl;
     Element e;
     return require_loaded("shape_accepts") && shape_lattice(*tuning_, shape_id, sl) && element_from(element, e) &&
-           wroughtwild::lattice::slotAccepts(sl.slot, e) && aligned(e, sl.span);
+           wroughtwild::lattice::slotAccepts(sl.slot, e);
+}
+
+bool WroughtwildSim::structure_touches(const String& shape_id, const Dictionary& element) const {
+    ShapeLattice sl;
+    Element e;
+    if (!require_loaded("structure_touches") || !shape_lattice(*tuning_, shape_id, sl) || !element_from(element, e)) {
+        return false;
+    }
+    return structure_.near(wroughtwild::lattice::footprint(e, sl.span, sl.tall), 0);
+}
+
+bool WroughtwildSim::structure_near_point(const Vector3& point) const {
+    if (!require_loaded("structure_near_point")) {
+        return false;
+    }
+    const double registry = lattice_registry_grid();
+    Element cell;
+    cell.kind = ElementKind::Volume;
+    cell.cell = wroughtwild::lattice::Cell{static_cast<int>(std::floor(point.x / registry)),
+                                           static_cast<int>(std::floor(point.y / registry)),
+                                           static_cast<int>(std::floor(point.z / registry))};
+    return structure_.near({cell}, 1);
+}
+
+int WroughtwildSim::structure_piece_count() const {
+    return static_cast<int>(structure_.pieces().size());
 }
 
 bool WroughtwildSim::structure_occupied(const Dictionary& element) const {
@@ -2044,7 +2075,7 @@ bool WroughtwildSim::structure_place(const Dictionary& element, const String& sh
     if (!require_loaded("structure_place") || !shape_lattice(*tuning_, shape_id, sl) || !element_from(element, e)) {
         return false;
     }
-    if (!wroughtwild::lattice::slotAccepts(sl.slot, e) || !aligned(e, sl.span)) {
+    if (!wroughtwild::lattice::slotAccepts(sl.slot, e)) {
         return false;
     }
     wroughtwild::lattice::Piece piece;

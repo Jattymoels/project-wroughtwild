@@ -178,7 +178,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		open_hand_crafting()
 	elif event.is_action_pressed("cycle_shape"):
 		placement.cycle_shape()
-		hud.notify("Placing: %s" % placement.selection_label())
+		var hint: String = inventory.get_sim().shape(placement.placing_shape()).get("hint", "")
+		hud.notify("Placing: %s%s" % [placement.selection_label(), "  -  " + hint if hint != "" else ""])
 	elif event.is_action_pressed("skill_slot_1"):
 		combat.use_slot(0)
 	elif event.is_action_pressed("skill_slot_2"):
@@ -289,12 +290,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = dash.x
 		velocity.z = dash.z
 	else:
-		var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		var input := test_walk if test_walk != Vector2.ZERO else Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
 		velocity.x = direction.x * move_speed
 		velocity.z = direction.z * move_speed
 
 	var fall_speed := -velocity.y
+	_step_up(delta)
 	move_and_slide()
 
 	# A hard landing dips the camera briefly - weight without screen shake.
@@ -305,6 +307,46 @@ func _physics_process(delta: float) -> void:
 	spring_arm.position.y = (FP_EYE_HEIGHT if first_person else _tp_arm_position.y) - _land_dip
 
 	_update_digging(delta)
+
+
+## Stairs and half cubes: a CharacterBody3D climbs slopes but never a
+## vertical step, so when the next stride is blocked at foot level, test
+## the same stride from STEP_HEIGHT higher; if it is clear there and there
+## is ground within a step below the far end, lift onto it. Mobs hop
+## (enemy.gd); the player steps.
+const STEP_HEIGHT := 0.55
+## Test hook: a fake stick input (integration tests walk the player).
+var test_walk := Vector2.ZERO
+
+
+func _step_up(delta: float) -> void:
+	if velocity.y > 0.5:
+		return  # jumping
+	var stride := Vector3(velocity.x, 0.0, velocity.z) * delta
+	if stride.length_squared() < 1e-8:
+		return
+	var here := global_transform
+	# Grounded, or as good as: a capsule riding up a block's edge loses its
+	# floor contact, and that is exactly when the step is needed.
+	if not is_on_floor() and not test_move(here, Vector3.DOWN * 0.3):
+		return
+	if not test_move(here, stride):
+		return  # nothing in the way at foot level
+	var lift := Vector3.UP * STEP_HEIGHT
+	if test_move(here, lift):
+		return  # headroom missing
+	var raised := here.translated(lift)
+	if test_move(raised, stride):
+		return  # still blocked higher up: a wall, not a step
+	var landing := KinematicCollision3D.new()
+	var over := raised.translated(stride)
+	if not test_move(over, -lift, landing):
+		return  # no ground within a step below: a ledge, not a step
+	var drop := -landing.get_travel().y
+	if drop < 0.0 or drop > STEP_HEIGHT:
+		return
+	global_position.y += STEP_HEIGHT - drop + 0.01
+	velocity.y = 0.0
 
 
 func _find_terrain() -> Terrain:
