@@ -108,14 +108,15 @@
       "oriented": true,
       "requires_world_effect": "stonecut_blocks",
       "requires_traits": ["masonry"],
-      "hint": "a cut stone form: stone only; R turns it",
+      "unlock_hint": "locked until the Forge Tyrant falls (stonecut mastery); then stone only, Q to pick it",
+      "hint": "a cut stone form: stone only (Q); R turns it",
       "design_purpose": "The visible reward for the first Forge Tyrant kill (trial.json completion_unlock): a 45-degree wedge filling a cell, low at the front and full height at the back, turned with R, so pitched roofs and ramps join the vocabulary. Flat roofs from slabs are always possible; the wedge is what makes a build look finished, which is the right kind of reward - it widens what can be built without gating shelter."
     },
     {
       "id": "girder",
       "display_name": "Girder",
       "material_cost": 2,
-      "size_m": [2.0, 0.25, 0.25],
+      "size_m": [2.0, 0.4, 0.3],
       "element": "beam",
       "cells_long": 2,
       "requires_traits": ["metal"],

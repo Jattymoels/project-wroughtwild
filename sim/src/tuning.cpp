@@ -375,6 +375,7 @@ ConstructionTable loadConstruction(const std::string& path) {
         if (auto fine = s->find("fine")) shape.fine = fine->asBool();
         if (auto fineOf = s->find("fine_of")) shape.fineOf = fineOf->asString();
         if (auto hint = s->find("hint")) shape.hint = hint->asString();
+        if (auto unlockHint = s->find("unlock_hint")) shape.unlockHint = unlockHint->asString();
         if (auto traits = s->find("requires_traits")) shape.requiresTraits = readStringArray(*traits);
         if (auto lengthCells = s->find("cells_long")) {
             shape.cellsLong = lengthCells->asInt();

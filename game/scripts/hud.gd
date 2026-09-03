@@ -411,7 +411,9 @@ func refresh() -> void:
 	if placement != null:
 		if placement.build_mode_enabled:
 			_build_chip.modulate = UiTheme.FROST
-			var refusal := placement.family_refusal()
+			var refusal := placement.lock_reason()
+			if refusal == "":
+				refusal = placement.family_refusal()
 			_build_chip.text = "B  Building: %s  (%s, %d each  ·  Tab change  ·  Q material%s%s%s)" % [
 				placement.selection_label(), placement.material_label(),
 				sim.shape(placement.placing_shape()).get("material_cost", 0),

@@ -155,6 +155,10 @@ func _physics_process(_delta: float) -> void:
 			check(placement.select_shape(&"door") and not placement.family_allowed()
 				and placement.family_refusal().contains("joinery"), "materials: a stone door is refused with a reason")
 			check(placement.select_shape(&"cube") and placement.family_allowed(), "materials: a stone cube is fine")
+			check(placement.select_shape(&"roof_wedge") and placement.locked()
+				and placement.lock_reason().contains("Forge Tyrant"),
+				"locked: the wedge shows before the boss with its unlock reason")
+			check(not sim.can_afford_placement("roof_wedge", "stone"), "locked: and cannot be placed yet")
 			var stone_cube := placement.place_piece({"kind": "volume", "axis": 0, "cell": Vector3i(20, 6, 20)}, &"cube", &"stone")
 			check(stone_cube != null and stone_cube.material_family == &"stone"
 				and PieceLook.material_for(sim, &"stone") != PieceLook.material_for(sim, &"wood"),
@@ -236,6 +240,7 @@ func _physics_process(_delta: float) -> void:
 			check(_hits_body(Vector3(5.0, 4.0, 5.5)) == _door, "door: the shut leaf collides")
 			_door.toggle()
 			check(_hits_body(Vector3(5.0, 4.0, 5.5)) == null, "door: the open leaf is walked through")
+			check(_hits_body(_door.leaf_point()) == _door, "door: the open leaf still catches E to shut it")
 			_door.toggle()
 			check(placement.remove_piece(_door) and placement.trim_count() == 0, "door: removed with its trims")
 			check(_player.inventory.get_sim().structure_pieces().is_empty(), "corner: the structure is empty again")

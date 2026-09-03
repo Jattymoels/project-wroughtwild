@@ -964,6 +964,7 @@ Dictionary WroughtwildSim::shape(const String& shape_id) const {
     d["fine"] = s->fine;
     d["fine_of"] = to_godot(s->fineOf);
     d["hint"] = to_godot(s->hint);
+    d["unlock_hint"] = to_godot(s->unlockHint);
     d["requires_traits"] = strings_to_packed(s->requiresTraits);
     d["cells_long"] = s->cellsLong;
     d["requires_world_effect"] = to_godot(s->requiresWorldEffect);
