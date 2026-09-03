@@ -191,6 +191,48 @@ std::vector<Element> footprint(const Element& anchor, int span, int tall, int lo
     return out;
 }
 
+std::vector<Element> withInterior(const std::vector<Element>& footprint) {
+    std::vector<Element> out = footprint;
+    if (footprint.empty()) return out;
+    std::set<Cell> cells;
+    for (const auto& e : footprint) cells.insert(e.cell);
+    auto has = [&](int x, int y, int z) { return cells.count(Cell{x, y, z}) > 0; };
+    const Element& first = footprint.front();
+    if (first.kind == ElementKind::Volume) {
+        for (const auto& c : cells) {
+            // Faces between this volume and the next along each axis: the
+            // min-side face of the farther cell.
+            if (has(c.x + 1, c.y, c.z)) out.push_back(Element{ElementKind::Face, 0, Cell{c.x + 1, c.y, c.z}});
+            if (has(c.x, c.y + 1, c.z)) out.push_back(Element{ElementKind::Face, 1, Cell{c.x, c.y + 1, c.z}});
+            if (has(c.x, c.y, c.z + 1)) out.push_back(Element{ElementKind::Face, 2, Cell{c.x, c.y, c.z + 1}});
+            // Edges leaving this cell's max corner along each axis, when the
+            // four volumes around that edge are all covered.
+            const Cell m{c.x + 1, c.y + 1, c.z + 1};
+            if (has(c.x, m.y, m.z) && has(c.x, c.y, m.z) && has(c.x, m.y, c.z))
+                out.push_back(Element{ElementKind::Edge, 0, Cell{c.x, m.y, m.z}});
+            if (has(m.x, c.y, m.z) && has(c.x, c.y, m.z) && has(m.x, c.y, c.z))
+                out.push_back(Element{ElementKind::Edge, 1, Cell{m.x, c.y, m.z}});
+            if (has(m.x, m.y, c.z) && has(c.x, m.y, c.z) && has(m.x, c.y, c.z))
+                out.push_back(Element{ElementKind::Edge, 2, Cell{m.x, m.y, c.z}});
+        }
+    } else if (first.kind == ElementKind::Face) {
+        const int n = first.axis;
+        const int b = n == 0 ? 1 : 0;
+        const int c2 = n == 2 ? 1 : 2;
+        for (const auto& c : cells) {
+            // The edge between two faces adjacent along axis b runs along the
+            // third axis at the farther face's cell, and the other way round.
+            Cell nb = c;
+            if (b == 0) nb.x += 1; else if (b == 1) nb.y += 1; else nb.z += 1;
+            if (cells.count(nb)) out.push_back(Element{ElementKind::Edge, c2, nb});
+            Cell nc = c;
+            if (c2 == 0) nc.x += 1; else if (c2 == 1) nc.y += 1; else nc.z += 1;
+            if (cells.count(nc)) out.push_back(Element{ElementKind::Edge, b, nc});
+        }
+    }
+    return out;
+}
+
 Vec3 footprintCentre(const Element& anchor, int span, int tall, double registryGrid, int longCells) {
     bool spans[3];
     spannedAxes(anchor, spans);

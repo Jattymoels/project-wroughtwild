@@ -130,6 +130,18 @@ func _test_lattice() -> void:
 		"touch: the next beam along the line touches")
 	check(not sim.structure_touches("beam", {"kind": "edge", "axis": 0, "cell": Vector3i(28, 26, 20)}),
 		"touch: a beam three cells on does not")
+	# A block owns its interior: a wall cannot be placed through its middle
+	# plane, and a block cannot be placed around an off-grid wall.
+	check(sim.structure_place({"kind": "volume", "axis": 0, "cell": Vector3i(60, 26, 60)}, "cube", "wood", 0),
+		"interior: a cube stands")
+	check(not sim.structure_free_for("wall_panel", {"kind": "face", "axis": 0, "cell": Vector3i(61, 26, 60)})
+		and not sim.structure_place({"kind": "face", "axis": 0, "cell": Vector3i(61, 26, 60)}, "wall_panel", "wood", 0),
+		"interior: no wall through the cube's middle")
+	check(sim.structure_place({"kind": "face", "axis": 0, "cell": Vector3i(71, 26, 60)}, "wall_panel", "wood", 0)
+		and not sim.structure_free_for("cube", {"kind": "volume", "axis": 0, "cell": Vector3i(70, 26, 60)}),
+		"interior: no cube around an off-grid wall")
+	sim.structure_remove({"kind": "volume", "axis": 0, "cell": Vector3i(60, 26, 60)})
+	sim.structure_remove({"kind": "face", "axis": 0, "cell": Vector3i(71, 26, 60)})
 	check(sim.structure_near_point(Vector3(10.5, 13.1, 10.05)) and not sim.structure_near_point(Vector3(15.0, 13.0, 10.0)),
 		"touch: the ray brushes the structure only near the beam")
 	sim.structure_clear()

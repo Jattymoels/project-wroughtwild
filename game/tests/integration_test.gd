@@ -117,8 +117,10 @@ func _physics_process(_delta: float) -> void:
 			check(placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(10, 6, 10)})
 				and placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(8, 6, 10)}),
 				"corner: a cube fills either cell a wall divides - the wall belongs to neither")
-			check(placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(9, 6, 10)}),
+			check(placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(9, 6, 16)}),
 				"corner: a full-size cube may sit off the build grid (on a half cube, say)")
+			check(not placement.element_accepts({"kind": "volume", "axis": 0, "cell": Vector3i(9, 6, 10)}),
+				"corner: but never straddling a wall - a block owns its interior (owner playtest 3 Sep)")
 			# The perpendicular wall makes the shared edge a corner: a trim grows there.
 			var second := placement.place_piece(CORNER_FACE_Z, &"wall_panel", &"wood")
 			check(second != null and placement.trim_count() == 6, "corner: walls meeting at an angle grow a post")

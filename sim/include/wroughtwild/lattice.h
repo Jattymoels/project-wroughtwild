@@ -106,6 +106,12 @@ Element scaled(const Element& element, int factor);
 // (a horizontal edge cannot be tall).
 // `longCells` runs an edge on along its own axis (a girder is two).
 std::vector<Element> footprint(const Element& anchor, int span, int tall, int longCells = 1);
+// The footprint plus everything strictly inside it: the faces between a
+// block's registry volumes and the edges where four of them meet, the
+// edges between a wall's registry faces. A piece owns its interior, so a
+// wall cannot stand through the middle of a block (owner playtest, 3 Sep:
+// a cube preview straddling a wall) and a block cannot swallow a wall.
+std::vector<Element> withInterior(const std::vector<Element>& footprint);
 
 // World-space centre of a whole footprint on a registry lattice of
 // `registryGrid`: what the engine poses the piece at.

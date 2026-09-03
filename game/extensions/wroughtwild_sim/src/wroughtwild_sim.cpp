@@ -2251,7 +2251,8 @@ bool WroughtwildSim::structure_free_for(const String& shape_id, const Dictionary
     if (!require_loaded("structure_free_for") || !shape_lattice(*tuning_, shape_id, sl) || !element_from(element, e)) {
         return false;
     }
-    for (const auto& covered : wroughtwild::lattice::footprint(e, sl.span, sl.tall, sl.longCells)) {
+    for (const auto& covered : wroughtwild::lattice::withInterior(
+             wroughtwild::lattice::footprint(e, sl.span, sl.tall, sl.longCells))) {
         if (structure_.occupied(covered)) {
             return false;
         }
@@ -2281,7 +2282,8 @@ bool WroughtwildSim::structure_place(const Dictionary& element, const String& sh
     wroughtwild::lattice::Piece piece;
     piece.anchor = e;
     piece.slot = sl.slot;
-    piece.footprint = wroughtwild::lattice::footprint(e, sl.span, sl.tall, sl.longCells);
+    piece.footprint = wroughtwild::lattice::withInterior(
+        wroughtwild::lattice::footprint(e, sl.span, sl.tall, sl.longCells));
     piece.shapeId = to_std(shape_id);
     piece.family = to_std(family);
     piece.rotationStep = ((rotation_step % 4) + 4) % 4;
