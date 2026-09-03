@@ -164,32 +164,48 @@ void testShapePlacement(const tuning::Tuning& t) {
     check(!player.payPlacement("no_such_shape", "wood"), "construction: unknown shape refused");
     check(player.refundRemoval("no_such_shape", "wood") == 0, "construction: unknown shape refunds nothing");
 
-    // The trial's completion unlock gates the slab.
-    const auto* slab = t.construction.findShape("stonecut_slab");
-    check(slab != nullptr && slab->requiresWorldEffect == t.trial.completionUnlock,
-          "construction: slab is gated by the trial completion unlock");
+    // The trial's completion unlock gates the roof wedge; the floor slab is
+    // free from the start (a roof is what makes a shelter).
+    const auto* wedge = t.construction.findShape("roof_wedge");
+    check(wedge != nullptr && wedge->requiresWorldEffect == t.trial.completionUnlock,
+          "construction: roof wedge is gated by the trial completion unlock");
+    check(wedge->form == "wedge" && wedge->oriented && wedge->element == "block",
+          "construction: the wedge is an oriented block with its own form");
+    const auto* slab = t.construction.findShape("floor_slab");
+    check(slab != nullptr && slab->requiresWorldEffect.empty(), "construction: floor slab is available from the start");
     check(slab->sizeM[1] < slab->sizeM[0], "construction: slab is thinner than it is wide");
     check(slab->element == "floor" && cube->element == "block", "construction: slab lies on a face, cube fills a cell");
     const auto* panel = t.construction.findShape("wall_panel");
-    check(panel != nullptr && panel->element == "wall", "construction: wall panel stands on a vertical face");
+    check(panel != nullptr && panel->element == "wall" && !panel->oriented,
+          "construction: wall panel stands on a vertical face and never turns");
     const auto* pillar = t.construction.findShape("pillar");
     check(pillar != nullptr && pillar->element == "post", "construction: pillar stands on a vertical edge");
     const auto* beam = t.construction.findShape("beam");
     check(beam != nullptr && beam->element == "beam", "construction: beam runs along a horizontal edge");
     check(std::abs(panel->sizeM[2] - slab->sizeM[1]) < 1e-9, "construction: wall and floor share one thickness");
+    const auto* door = t.construction.findShape("door");
+    check(door != nullptr && door->element == "wall" && door->form == "door" && door->cellsTall == 2 &&
+              std::abs(door->sizeM[1] - 2.0) < 1e-9,
+          "construction: the door is a two-cell-tall wall piece");
+    const auto* stairs = t.construction.findShape("stairs");
+    check(stairs != nullptr && stairs->form == "stairs" && stairs->oriented && cube->form == "box" && cube->cellsTall == 1,
+          "construction: stairs are an oriented block; the cube defaults to a plain box");
+    check(t.construction.latticeDivisions == 2, "construction: the registry runs at half cells");
     player.inventory["wood"] = 10;
-    check(!player.shapeUnlocked("stonecut_slab") && !player.canAffordPlacement("stonecut_slab", "wood"),
-          "construction: slab locked before the boss falls");
+    check(!player.shapeUnlocked("roof_wedge") && !player.canAffordPlacement("roof_wedge", "wood"),
+          "construction: wedge locked before the boss falls");
+    check(player.shapeUnlocked("floor_slab") && player.canAffordPlacement("floor_slab", "wood"),
+          "construction: slab placeable before the boss falls");
     player.recordWorldEffect(t.trial.completionUnlock);
-    check(player.shapeUnlocked("stonecut_slab") && player.payPlacement("stonecut_slab", "wood"),
-          "construction: slab placeable after the unlock");
+    check(player.shapeUnlocked("roof_wedge") && player.payPlacement("roof_wedge", "wood"),
+          "construction: wedge placeable after the unlock");
     check(t.crafting.basicTemper.property == "fire_resistance" && t.crafting.basicTemper.tier == 1,
           "crafting: basic temper config loads");
-    check(t.construction.shapes.size() >= 6, "construction: prototype shape set has at least six shapes");
+    check(t.construction.shapes.size() >= 8, "construction: prototype shape set has at least eight shapes");
     int unlockedFromStart = 0;
     for (const auto& shape : t.construction.shapes)
         if (shape.requiresWorldEffect.empty()) ++unlockedFromStart;
-    check(unlockedFromStart >= 5, "construction: most shapes are available before the trial");
+    check(unlockedFromStart >= 7, "construction: all but the wedge are available before the trial");
 }
 
 void testSkillCurve(const tuning::Tuning& t) {
@@ -1509,13 +1525,28 @@ void testLattice(const tuning::Tuning& t) {
 
     // Posts: aim at a post's top and the next one stacks; aim at its side
     // and, the post's own edge being taken, the edge beside it comes next.
+    // The registry runs at half cells: a full-size piece anchors at the
+    // scaled element and covers a footprint of registry elements.
+    const int div = t.construction.latticeDivisions;
+    auto piece = [&](const Element& coarse, Slot slot, const char* shape, int tall = 1) {
+        Piece p;
+        p.anchor = scaled(coarse, div);
+        p.slot = slot;
+        p.footprint = footprint(p.anchor, div, tall);
+        p.shapeId = shape;
+        p.family = "wood";
+        return p;
+    };
     Structure s;
-    check(s.place(Piece{edgeY, "pillar", "wood", 0}), "lattice: post placed");
+    check(s.place(piece(edgeY, Slot::Post, "pillar")), "lattice: post placed");
+    check(s.occupied(scaled(edgeY, div)) && s.occupied(Element{ElementKind::Edge, 1, Cell{20, 25, 20}}) &&
+              !s.occupied(Element{ElementKind::Edge, 1, Cell{20, 26, 20}}),
+          "lattice: a full-size post covers two registry edges, no more");
     auto stacked = candidates(Slot::Post, Vec3{10.0, 13.0, 10.05}, Vec3{0, 1, 0}, g);
     check(stacked[0] == Element{ElementKind::Edge, 1, Cell{10, 13, 10}}, "lattice: a post on a post stacks");
     auto beside = candidates(Slot::Post, Vec3{10.15, 12.5, 10.02}, Vec3{1, 0, 0}, g);
-    check(beside.size() == 4 && beside[0] == edgeY && s.occupied(beside[0]) && !s.occupied(beside[1]) &&
-              beside[1] == Element{ElementKind::Edge, 1, Cell{11, 12, 10}},
+    check(beside.size() == 4 && beside[0] == edgeY && s.occupied(scaled(beside[0], div)) &&
+              !s.occupied(scaled(beside[1], div)) && beside[1] == Element{ElementKind::Edge, 1, Cell{11, 12, 10}},
           "lattice: the taken edge ranks first, the free edge beside it second");
 
     // Beams: the top of a wall offers the wall plate along it first.
@@ -1523,26 +1554,74 @@ void testLattice(const tuning::Tuning& t) {
     check(plate.size() == 8 && plate[0] == Element{ElementKind::Edge, 0, Cell{10, 13, 10}},
           "lattice: a beam aimed at a wall's top runs along it");
 
-    // Occupancy is a set: one piece per element.
-    check(!s.place(Piece{edgeY, "pillar", "wood", 0}), "lattice: a taken element refuses a second piece");
-    check(s.remove(edgeY) && !s.occupied(edgeY) && !s.remove(edgeY), "lattice: remove frees the element once");
+    // Footprints and poses.
+    check(footprint(scaled(cube, div), div, 1).size() == 8 && footprint(scaled(faceX, div), div, 1).size() == 4 &&
+              footprint(scaled(edgeY, div), div, 1).size() == 2 && footprint(scaled(edgeX, div), div, 1).size() == 2,
+          "lattice: a cube covers eight fine volumes, a wall four faces, a post or beam two edges");
+    check(footprint(scaled(faceX, div), div, 2).size() == 8, "lattice: a two-cell door covers eight fine faces");
+    const double fine = g / div;
+    check(near(footprintCentre(scaled(cube, div), div, 1, fine), 10.5, 12.5, 10.5) &&
+              near(footprintCentre(scaled(faceX, div), div, 1, fine), 10.0, 12.5, 10.5) &&
+              near(footprintCentre(scaled(faceX, div), div, 2, fine), 10.0, 13.0, 10.5) &&
+              near(footprintCentre(scaled(edgeY, div), div, 1, fine), 10.0, 12.5, 10.0) &&
+              near(footprintCentre(scaled(edgeZ, div), div, 1, fine), 10.0, 12.0, 10.5),
+          "lattice: a footprint's centre is the full-size element's centre");
+    Element fineCube{ElementKind::Volume, 0, Cell{20, 24, 20}};
+    check(footprint(fineCube, 1, 1).size() == 1 && near(footprintCentre(fineCube, 1, 1, fine), 10.25, 12.25, 10.25),
+          "lattice: a fine piece is one registry element");
 
-    // Corner trims: a lone panel gets posts at both ends, a straight run
-    // only at its ends, an L at the corner too, and a real post replaces one.
+    // Occupancy is a set: one piece per element, and any covered element
+    // finds (and removes) the whole piece.
+    check(!s.place(piece(edgeY, Slot::Post, "pillar")), "lattice: a taken element refuses a second piece");
+    check(s.at(Element{ElementKind::Edge, 1, Cell{20, 25, 20}})->shapeId == "pillar",
+          "lattice: every covered element finds its piece");
+    check(s.remove(Element{ElementKind::Edge, 1, Cell{20, 25, 20}}) && !s.occupied(scaled(edgeY, div)) &&
+              !s.remove(scaled(edgeY, div)),
+          "lattice: removing through any covered element frees the whole piece once");
+    // A door straddles a wall's cell and the one above: it refuses a wall there.
+    check(s.place(piece(faceX, Slot::Wall, "door", 2)), "lattice: door placed");
+    check(!s.place(piece(Element{ElementKind::Face, 0, Cell{10, 13, 10}}, Slot::Wall, "wall_panel")),
+          "lattice: the face above a door is the door's");
+    check(s.place(piece(Element{ElementKind::Face, 0, Cell{10, 14, 10}}, Slot::Wall, "wall_panel")),
+          "lattice: the face above that is free");
+    // A fine cube shares a cell with nothing full-size, but two fit side by side.
     s.clear();
-    s.place(Piece{faceX, "wall_panel", "wood", 0});
-    check(s.trimEdges().size() == 2, "trim: a lone panel is framed at both ends");
-    s.place(Piece{Element{ElementKind::Face, 0, Cell{10, 12, 11}}, "wall_panel", "wood", 0});
+    Piece half;
+    half.anchor = fineCube;
+    half.slot = Slot::Block;
+    half.footprint = footprint(fineCube, 1, 1);
+    half.shapeId = "half_cube";
+    check(s.place(half), "lattice: a fine cube takes one registry volume");
+    check(!s.place(piece(cube, Slot::Block, "cube")), "lattice: a full cube cannot share the cell");
+    Piece other = half;
+    other.anchor = Element{ElementKind::Volume, 0, Cell{21, 24, 20}};
+    other.footprint = footprint(other.anchor, 1, 1);
+    check(s.place(other), "lattice: two fine cubes share the cell");
+
+    // Corner trims (at registry resolution: a full-size wall's end is two
+    // stacked fine edges): a lone panel gets posts at both ends, a straight
+    // run only at its ends, an L at the corner too, and a real post replaces one.
+    s.clear();
+    s.place(piece(faceX, Slot::Wall, "wall_panel"));
+    check(s.trimEdges().size() == 4, "trim: a lone panel is framed at both ends");
+    s.place(piece(Element{ElementKind::Face, 0, Cell{10, 12, 11}}, Slot::Wall, "wall_panel"));
     auto run = s.trimEdges();
-    check(run.size() == 2, "trim: a straight run stays a wall between its ends");
-    s.place(Piece{Element{ElementKind::Face, 2, Cell{10, 12, 12}}, "wall_panel", "wood", 0});
+    check(run.size() == 4, "trim: a straight run stays a wall between its ends");
+    s.place(piece(Element{ElementKind::Face, 2, Cell{10, 12, 12}}, Slot::Wall, "wall_panel"));
     auto corner = s.trimEdges();
-    const Element cornerEdge{ElementKind::Edge, 1, Cell{10, 12, 12}};
-    check(corner.size() == 3 && std::find(corner.begin(), corner.end(), cornerEdge) != corner.end(),
+    const Element cornerEdge{ElementKind::Edge, 1, Cell{20, 24, 24}};
+    check(corner.size() == 6 && std::find(corner.begin(), corner.end(), cornerEdge) != corner.end(),
           "trim: walls meeting at an angle grow a corner post");
     check(s.wallsAt(cornerEdge).size() == 2, "trim: the corner edge sees both walls");
-    s.place(Piece{cornerEdge, "pillar", "wood", 0});
-    check(s.trimEdges().size() == 2, "trim: a placed post takes over its corner");
+    s.place(piece(Element{ElementKind::Edge, 1, Cell{10, 12, 12}}, Slot::Post, "pillar"));
+    check(s.trimEdges().size() == 4, "trim: a placed post takes over its corner");
+    // A door in a run is a wall for trims: no post grows between them.
+    s.clear();
+    s.place(piece(faceX, Slot::Wall, "wall_panel"));
+    s.place(piece(Element{ElementKind::Face, 0, Cell{10, 12, 11}}, Slot::Wall, "door", 2));
+    // Wall end (2), door's far edge (4), and the door's upper half where it
+    // rises past the one-cell wall (2): no post grows in the seam itself.
+    check(s.trimEdges().size() == 8, "trim: a door continues the run at the seam and is framed where it rises past it");
 }
 
 int main(int argc, char** argv) {

@@ -41,47 +41,70 @@ func _test_lattice() -> void:
 	sim.load_tuning(load("res://scripts/sim.gd").get_tuning_directory())
 
 	check(sim.shape("wall_panel")["element"] == "wall" and sim.shape("pillar")["element"] == "post"
-		and sim.shape("cube")["element"] == "block" and sim.shape("stonecut_slab")["element"] == "floor",
+		and sim.shape("cube")["element"] == "block" and sim.shape("floor_slab")["element"] == "floor",
 		"lattice: shapes name the element kind they occupy")
+	check(sim.shape("door")["form"] == "door" and sim.shape("door")["cells_tall"] == 2
+		and sim.shape("stairs")["oriented"] and not sim.shape("wall_panel")["oriented"],
+		"lattice: forms, height and orientation come from data")
+	check(absf(sim.lattice_registry_grid() - 0.5) < 0.0001, "lattice: the registry runs at half cells")
 
-	# A wall aimed at the ground: the nearest vertical plane, standing on it.
-	var walls: Array = sim.lattice_candidates("wall", Vector3(10.4, 12.0, 10.3), Vector3.UP)
+	# A wall aimed at the ground: the nearest vertical plane, standing on
+	# it. Elements are in registry coordinates (twice the build cell).
+	var walls: Array = sim.lattice_candidates("wall_panel", Vector3(10.4, 12.0, 10.3), Vector3.UP)
 	check(walls.size() == 4, "lattice: four planes box a ground hit in")
 	var first: Dictionary = walls[0]
-	check(first["kind"] == "face" and first["axis"] == 2 and first["cell"] == Vector3i(10, 12, 10),
+	check(first["kind"] == "face" and first["axis"] == 2 and first["cell"] == Vector3i(20, 24, 20),
 		"lattice: the nearest plane wins")
 	check(first["centre"] == Vector3(10.5, 12.5, 10.0) and first["yaw_turns"] == 0,
 		"lattice: a z-face pose lies on its plane, unturned")
-	check(sim.lattice_pose({"kind": "face", "axis": 0, "cell": Vector3i(10, 12, 10)})["yaw_turns"] == 1,
-		"lattice: an x-face turns a quarter")
+	var face_x_far := {"kind": "face", "axis": 0, "cell": Vector3i(20, 24, 20)}
+	check(sim.lattice_pose("wall_panel", face_x_far)["yaw_turns"] == 1, "lattice: an x-face turns a quarter")
+	check(sim.lattice_pose("door", face_x_far)["centre"] == Vector3(10.0, 13.0, 10.5),
+		"lattice: a two-cell door is posed at the centre of both cells")
 	# A block aimed at a cube's top: the one cell above it.
-	var blocks: Array = sim.lattice_candidates("block", Vector3(10.5, 13.0, 10.5), Vector3.UP)
-	check(blocks.size() == 1 and blocks[0]["cell"] == Vector3i(10, 13, 10), "lattice: blocks stack")
-	check(sim.lattice_slot_accepts("post", {"kind": "edge", "axis": 1, "cell": Vector3i.ZERO})
-		and not sim.lattice_slot_accepts("post", {"kind": "edge", "axis": 0, "cell": Vector3i.ZERO}),
-		"lattice: a post wants a vertical edge")
+	var blocks: Array = sim.lattice_candidates("cube", Vector3(10.5, 13.0, 10.5), Vector3.UP)
+	check(blocks.size() == 1 and blocks[0]["cell"] == Vector3i(20, 26, 20), "lattice: blocks stack")
+	check(sim.shape_accepts("pillar", {"kind": "edge", "axis": 1, "cell": Vector3i.ZERO})
+		and not sim.shape_accepts("pillar", {"kind": "edge", "axis": 0, "cell": Vector3i.ZERO})
+		and not sim.shape_accepts("pillar", {"kind": "edge", "axis": 1, "cell": Vector3i(1, 0, 0)}),
+		"lattice: a post wants a vertical edge on the build grid")
 
-	# The structure: one piece per element, corners grow trims.
-	var face_x := {"kind": "face", "axis": 0, "cell": Vector3i(5, 3, 5)}
-	var face_z := {"kind": "face", "axis": 2, "cell": Vector3i(5, 3, 5)}
+	# The structure: one piece per element, footprints, corners grow trims.
+	var face_x := {"kind": "face", "axis": 0, "cell": Vector3i(10, 6, 10)}
+	var face_z := {"kind": "face", "axis": 2, "cell": Vector3i(10, 6, 10)}
 	check(sim.structure_pieces().is_empty(), "structure: starts empty")
 	check(sim.structure_place(face_x, "wall_panel", "wood", 0), "structure: a wall takes a face")
 	check(not sim.structure_place(face_x, "wall_panel", "wood", 0), "structure: a taken face refuses another")
 	check(not sim.structure_place(face_x, "cube", "wood", 0), "structure: a cube may not stand on a face")
-	check(sim.structure_occupied(face_x) and not sim.structure_occupied(face_z), "structure: occupancy per element")
-	check(sim.structure_piece(face_x)["shape"] == "wall_panel", "structure: the piece reads back")
-	check(sim.structure_trim_edges().size() == 2, "structure: a lone panel is framed at both ends")
+	check(sim.structure_occupied(face_x) and sim.structure_occupied({"kind": "face", "axis": 0, "cell": Vector3i(10, 7, 11)})
+		and not sim.structure_occupied(face_z), "structure: a full-size wall covers its four registry faces")
+	check(sim.structure_piece({"kind": "face", "axis": 0, "cell": Vector3i(10, 7, 11)})["shape"] == "wall_panel",
+		"structure: any covered element finds the piece")
+	check(sim.structure_trim_edges().size() == 4, "structure: a lone panel is framed at both ends")
 	check(sim.structure_place(face_z, "wall_panel", "wood", 0), "structure: the perpendicular wall joins")
 	var trims: Array = sim.structure_trim_edges()
 	var corner := false
 	for trim in trims:
-		if trim["cell"] == Vector3i(5, 3, 5) and trim["kind"] == "edge":
+		if trim["cell"] == Vector3i(10, 6, 10) and trim["kind"] == "edge":
 			corner = true
-	check(trims.size() == 3 and corner, "structure: the corner grows a post")
-	check(sim.structure_remove(face_x) and not sim.structure_remove(face_x), "structure: remove frees once")
+	check(trims.size() == 6 and corner, "structure: the corner grows a post")
+	check(sim.structure_remove({"kind": "face", "axis": 0, "cell": Vector3i(10, 7, 11)})
+		and not sim.structure_remove(face_x), "structure: removing through a covered element frees the piece once")
 	check(sim.structure_pieces().size() == 1, "structure: one piece left")
+	var above := {"kind": "face", "axis": 0, "cell": Vector3i(10, 8, 10)}
+	check(sim.structure_free_for("door", face_x) and sim.structure_place(face_x, "door", "wood", 0)
+		and not sim.structure_free_for("wall_panel", above),
+		"structure: a door takes the face above it as well")
 	sim.structure_clear()
 	check(sim.structure_pieces().is_empty() and sim.structure_trim_edges().is_empty(), "structure: clear empties it")
+
+	# Piece meshes: every form builds, the wedge's hull has six corners.
+	check(PieceMesh.mesh_for("stairs", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE)
+		and PieceMesh.mesh_for("wedge", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE),
+		"piece mesh: stairs and wedge fill their cell")
+	check(PieceMesh.collision_for("stairs", Vector3.ONE).size() == 2
+		and (PieceMesh.collision_for("wedge", Vector3.ONE)[0]["shape"] as ConvexPolygonShape3D).points.size() == 6,
+		"piece mesh: stairs collide as two boxes, the wedge as a six-point hull")
 
 
 func _test_ui_theme() -> void:
@@ -399,9 +422,10 @@ func _test_sim_extension() -> void:
 
 	# Shapes: the slab waits on the boss kill; sizes come from data.
 	check(sim.shape("cube")["size"] == Vector3.ONE and sim.shape("cube")["unlocked"], "shape: cube view")
-	check(not sim.shape_unlocked("stonecut_slab"), "shape: slab locked until the completion unlock")
-	check(sim.shape_ids().size() >= 6 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
-		"shape: six-shape set with sizes from data")
+	check(not sim.shape_unlocked("roof_wedge") and sim.shape_unlocked("floor_slab"),
+		"shape: the wedge waits on the completion unlock, the slab does not")
+	check(sim.shape_ids().size() >= 8 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
+		"shape: eight-shape set with sizes from data")
 
 	# Equipment and tempering (the catalyst banked above is still held).
 	check(sim.equipment().is_empty(), "gear: nothing worn")

@@ -312,6 +312,6 @@ func finish_run() -> void:
 		var kept := ", and the catalyst is still in your hand" if sim.material_count("ember_catalyst") > 0 else ""
 		player.hud.notify("You wake at the gate. Your stored goods are untouched%s. The Tyrant's weakness to prepared steel is clearer now." % kept)
 	elif boss_defeated:
-		player.hud.notify("The Forge Tyrant falls! Deep in its forge you find mastery of stonecut blocks: a new material for your constructions.%s" % _completion_items)
+		player.hud.notify("The Forge Tyrant falls! Deep in its forge you find mastery of stonecut blocks: the roof wedge joins your constructions.%s" % _completion_items)
 		_completion_items = ""
 	player.hud.refresh()

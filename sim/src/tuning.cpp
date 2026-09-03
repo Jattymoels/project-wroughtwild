@@ -333,6 +333,10 @@ ConstructionTable loadConstruction(const std::string& path) {
     table.gridSizeMetres = doc->get("grid_size_metres").asNumber();
     table.placementRangeMetres = doc->get("placement_range_metres").asNumber();
     table.removalRefundFraction = doc->get("removal_refund_fraction").asNumber();
+    if (auto divisions = doc->find("lattice_divisions")) {
+        table.latticeDivisions = divisions->asInt();
+        if (table.latticeDivisions < 1) throw std::runtime_error("construction: lattice_divisions must be >= 1");
+    }
 
     for (const auto& s : doc->get("shapes").asArray()) {
         ShapeDef shape;
@@ -348,6 +352,18 @@ ConstructionTable loadConstruction(const std::string& path) {
         } catch (const std::exception& e) {
             throw std::runtime_error("construction: shape '" + shape.id + "': " + e.what());
         }
+        if (auto form = s->find("form")) {
+            shape.form = form->asString();
+            if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door")
+                throw std::runtime_error("construction: shape '" + shape.id +
+                                         "' form must be box, stairs, wedge or door");
+        }
+        if (auto oriented = s->find("oriented")) shape.oriented = oriented->asBool();
+        if (auto tall = s->find("cells_tall")) {
+            shape.cellsTall = tall->asInt();
+            if (shape.cellsTall < 1) throw std::runtime_error("construction: shape '" + shape.id + "' cells_tall must be >= 1");
+        }
+        if (auto fine = s->find("fine")) shape.fine = fine->asBool();
         if (auto effect = s->find("requires_world_effect"))
             shape.requiresWorldEffect = effect->asString();
         table.shapes.push_back(std::move(shape));

@@ -1,18 +1,6 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://scripts/placed_block.gd" id="1_script"]
 
-[sub_resource type="BoxShape3D" id="block_shape"]
-size = Vector3(1, 1, 1)
-
-[sub_resource type="BoxMesh" id="block_mesh"]
-size = Vector3(1, 1, 1)
-
 [node name="PlacedBlock" type="StaticBody3D"]
 script = ExtResource("1_script")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("block_shape")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("block_mesh")

@@ -61,6 +61,18 @@ void addEdges(std::vector<Element>& out, int axis, const Cell& base) {
     }
 }
 
+// Which axes a piece of this element kind extends along (its footprint
+// grows along these).
+void spannedAxes(const Element& e, bool spans[3]) {
+    for (int a = 0; a < 3; ++a) {
+        switch (e.kind) {
+        case ElementKind::Volume: spans[a] = true; break;
+        case ElementKind::Face: spans[a] = a != e.axis; break;
+        case ElementKind::Edge: spans[a] = a == e.axis; break;
+        }
+    }
+}
+
 } // namespace
 
 Slot slotFromName(const std::string& name) {
@@ -155,22 +167,76 @@ std::vector<Element> candidates(Slot slot, Vec3 point, Vec3 normal, double gridS
     return out;
 }
 
-bool Structure::occupied(const Element& element) const { return pieces_.count(element) > 0; }
+Element scaled(const Element& element, int factor) {
+    Element e = element;
+    e.cell = Cell{element.cell.x * factor, element.cell.y * factor, element.cell.z * factor};
+    return e;
+}
+
+std::vector<Element> footprint(const Element& anchor, int span, int tall) {
+    bool spans[3];
+    spannedAxes(anchor, spans);
+    int extent[3];
+    for (int a = 0; a < 3; ++a) extent[a] = spans[a] ? span : 1;
+    if (spans[1]) extent[1] = span * std::max(1, tall);
+    std::vector<Element> out;
+    for (int dx = 0; dx < extent[0]; ++dx)
+        for (int dy = 0; dy < extent[1]; ++dy)
+            for (int dz = 0; dz < extent[2]; ++dz) {
+                Element e = anchor;
+                e.cell = Cell{anchor.cell.x + dx, anchor.cell.y + dy, anchor.cell.z + dz};
+                out.push_back(e);
+            }
+    return out;
+}
+
+Vec3 footprintCentre(const Element& anchor, int span, int tall, double registryGrid) {
+    bool spans[3];
+    spannedAxes(anchor, spans);
+    Vec3 c = centre(anchor, registryGrid);
+    const double half = registryGrid * 0.5;
+    if (spans[0]) c.x += (span - 1) * half;
+    if (spans[1]) c.y += (span * std::max(1, tall) - 1) * half;
+    if (spans[2]) c.z += (span - 1) * half;
+    return c;
+}
+
+bool Structure::occupied(const Element& element) const { return owner_.count(element) > 0; }
 
 const Piece* Structure::at(const Element& element) const {
-    auto it = pieces_.find(element);
+    auto owner = owner_.find(element);
+    if (owner == owner_.end()) return nullptr;
+    auto it = pieces_.find(owner->second);
     return it == pieces_.end() ? nullptr : &it->second;
 }
 
 bool Structure::place(const Piece& piece) {
-    if (occupied(piece.element)) return false;
-    pieces_[piece.element] = piece;
+    if (piece.footprint.empty()) return false;
+    for (const auto& e : piece.footprint)
+        if (occupied(e)) return false;
+    pieces_[piece.anchor] = piece;
+    for (const auto& e : piece.footprint) owner_[e] = piece.anchor;
     return true;
 }
 
-bool Structure::remove(const Element& element) { return pieces_.erase(element) > 0; }
+bool Structure::remove(const Element& element) {
+    auto owner = owner_.find(element);
+    if (owner == owner_.end()) return false;
+    const Element anchor = owner->second;
+    auto it = pieces_.find(anchor);
+    if (it != pieces_.end()) {
+        for (const auto& e : it->second.footprint) owner_.erase(e);
+        pieces_.erase(it);
+    } else {
+        owner_.erase(owner);
+    }
+    return true;
+}
 
-void Structure::clear() { pieces_.clear(); }
+void Structure::clear() {
+    pieces_.clear();
+    owner_.clear();
+}
 
 std::vector<const Piece*> Structure::wallsAt(const Element& edge) const {
     std::vector<const Piece*> walls;
@@ -184,16 +250,20 @@ std::vector<const Piece*> Structure::wallsAt(const Element& edge) const {
         {ElementKind::Face, 2, Cell{c.x, c.y, c.z}},
         {ElementKind::Face, 2, Cell{c.x - 1, c.y, c.z}},
     };
-    for (const auto& face : around)
-        if (const Piece* p = at(face)) walls.push_back(p);
+    for (const auto& face : around) {
+        const Piece* p = at(face);
+        if (p != nullptr && p->slot == Slot::Wall) walls.push_back(p);
+    }
     return walls;
 }
 
 std::vector<Element> Structure::trimEdges() const {
     std::set<Element> edges;
-    for (const auto& [element, piece] : pieces_) {
+    for (const auto& [element, anchor] : owner_) {
         if (element.kind != ElementKind::Face || element.axis == 1) continue;
-        // The two vertical edges bounding this wall's bottom.
+        auto piece = pieces_.find(anchor);
+        if (piece == pieces_.end() || piece->second.slot != Slot::Wall) continue;
+        // The two vertical edges bounding this wall face's bottom.
         const Cell& c = element.cell;
         Element a{ElementKind::Edge, 1, c};
         Element b{ElementKind::Edge, 1, c};
@@ -205,9 +275,23 @@ std::vector<Element> Structure::trimEdges() const {
     std::vector<Element> trims;
     for (const auto& edge : edges) {
         if (occupied(edge)) continue; // a real post stands here
-        const auto walls = wallsAt(edge);
-        if (walls.empty()) continue;
-        if (walls.size() == 2 && walls[0]->element.axis == walls[1]->element.axis) continue; // straight run
+        // Faces, not pieces: a two-cell-wide piece counts per face it covers.
+        const Cell& c = edge.cell;
+        const Element around[4] = {
+            {ElementKind::Face, 0, Cell{c.x, c.y, c.z}},
+            {ElementKind::Face, 0, Cell{c.x, c.y, c.z - 1}},
+            {ElementKind::Face, 2, Cell{c.x, c.y, c.z}},
+            {ElementKind::Face, 2, Cell{c.x - 1, c.y, c.z}},
+        };
+        int count = 0, alongX = 0;
+        for (const auto& face : around) {
+            const Piece* p = at(face);
+            if (p == nullptr || p->slot != Slot::Wall) continue;
+            ++count;
+            if (face.axis == 0) ++alongX;
+        }
+        if (count == 0) continue;
+        if (count == 2 && (alongX == 2 || alongX == 0)) continue; // straight run
         trims.push_back(edge);
     }
     return trims;

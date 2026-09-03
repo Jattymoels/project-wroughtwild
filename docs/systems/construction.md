@@ -114,14 +114,43 @@ by luck. The replacement is `sim/lattice.h`:
   rotation step; loading clears the registry and re-places every piece, so
   what stands is exactly what was saved.
 
-What changed for the starting shapes: the wall panel and the stonecut slab
+What changed for the starting shapes: the wall panel and the floor slab
 are both 0.25 m thick and centred on their plane (a floor's rim and a
 wall's top meet cleanly); the pillar stands on an edge; the beam runs along
-one; the step is the only shape that still turns with R. Next slices:
-vocabulary (stairs, doorway, roof wedge, a floor slab that is not
-boss-gated, half-scale "fine" mode on the same rule at half the cell),
-then enclosure detection — flood-filling volumes bounded by faces — as the
-honest home for rest-in-shelter health regeneration.
+one.
+
+## Implemented: vocabulary and footprints (Wave 4 slice 2, 3 Sep 2026)
+
+- **The registry runs at half cells** (`lattice_divisions: 2`). A
+  full-size piece anchors at a registry element aligned to the build grid
+  and covers a *footprint* of registry elements: a cube eight fine
+  volumes, a wall four fine faces, a post or beam two fine edges. Pieces
+  conflict when footprints share an element, and any covered element finds
+  (or removes) the whole piece. This is one rulebook for two scales: a
+  half-scale "fine" piece is simply a piece whose footprint is one registry
+  element (the `fine` flag; the fine shapes themselves are the next slice).
+  Corner trims are computed on the fine lattice, so a full-size wall's end
+  is two stacked half-cell trims — visually the same post.
+- **Eight shapes**, all but one from the start: cube, wall panel, pillar,
+  beam, **floor slab** (un-gated: a flat roof is what makes a shelter),
+  **stairs** (an oriented block, two half-steps rising toward its back),
+  **door** (a wall piece two cells tall — the player is 1.92 m — whose
+  leaf swings on E, dropping its collision while open; R flips the hinge
+  side; its footprint takes the face above it so nothing can straddle the
+  opening), and the **roof wedge** (a 45° prism filling a cell, the
+  trial's completion reward in place of the old slab: it widens what can
+  be built without gating shelter). The half-block step is gone; stairs
+  replace it.
+- **Forms** (`form`: box, stairs, wedge, door) are how the engine builds a
+  shape: `PieceMesh` makes the mesh and collision (stairs are two boxes,
+  the wedge a six-point convex hull, the door a leaf on a hinge pivot), and
+  `PlacedBlock` no longer scales a unit cube.
+
+Next: **fine mode** — the half-scale wall, post, beam, slab and block on a
+toggle, which is the same rule at half the cell and needs no new
+occupancy logic; then **enclosure detection** — flood-filling volumes
+bounded by faces — as the honest home for rest-in-shelter health
+regeneration.
 
 ## Interface requirements
 

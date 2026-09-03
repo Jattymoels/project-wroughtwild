@@ -465,6 +465,8 @@ func aim_probe() -> Dictionary:
 		return {"state": "interact", "label": "Your dropped pack — E to recover", "target": collider}
 	if collider is TrialGate:
 		return {"state": "interact", "label": "Trial gate — E to enter", "target": collider}
+	if collider is PlacedBlock and (collider as PlacedBlock).is_door():
+		return {"state": "interact", "label": (collider as PlacedBlock).interact_label(), "target": collider}
 	return none
 
 
@@ -502,5 +504,7 @@ func interact() -> void:
 		(collider as OrderBoard).interact(self)
 	elif collider is DroppedBundle:
 		(collider as DroppedBundle).interact(self)
+	elif collider is PlacedBlock:
+		(collider as PlacedBlock).toggle()
 	elif collider is TrialGate:
 		(collider as TrialGate).interact(self)

@@ -1,12 +1,19 @@
 #pragma once
 
-// The building lattice (Wave 4, docs/systems/construction.md): every placed
-// piece occupies one ELEMENT of the cubic grid - a volume (cell), a face
-// shared by two cells, or an edge shared by four. Pieces are addressed by
+// The building lattice (Wave 4, docs/systems/construction.md, D-017): every
+// placed piece occupies ELEMENTS of the cubic grid - volumes (cells), faces
+// shared by two cells, or edges shared by four. Pieces are addressed by
 // element, never by "which cell and where inside it", so a wall on the
 // boundary between two cells belongs to neither, a post on an edge lines up
 // with the walls on the faces around it, and the only placement rule is
 // "the nearest free element of the piece's kind to where you look".
+//
+// The occupancy registry runs at a finer resolution than the build grid
+// (construction.json lattice_divisions, 2 = half cells): a full-size piece
+// occupies a FOOTPRINT of registry elements (a cube eight fine volumes, a
+// wall four fine faces, a post two fine edges; a door two cells tall twice
+// that), so half-scale pieces and full-size pieces conflict through the
+// same set lookup with no second rulebook.
 //
 // Engine-neutral: the engine host converts a camera hit into a point and a
 // surface normal, asks for ranked candidates, filters them by what its own
@@ -68,54 +75,78 @@ struct Vec3 {
     double x = 0.0, y = 0.0, z = 0.0;
 };
 
-// World-space centre of an element (cell centre, face centre, edge midpoint).
+// World-space centre of a single element (cell centre, face centre, edge
+// midpoint) on a lattice of `gridSize`.
 Vec3 centre(const Element& element, double gridSize);
 
 // Quarter turns about y that take a shape authored "thin along z / long
 // along x" onto this element: 1 for faces normal to x and edges along z,
-// 0 otherwise. Volumes turn by the player's own rotation step instead.
+// 0 otherwise. Oriented blocks add the player's own rotation step.
 int yawTurns(const Element& element);
 
 // Elements of `slot` around a surface hit, nearest first (distance from
-// `point` to the element centre). `normal` is the hit surface's normal: the
-// point is nudged a little along it so that a hit on a floor or a wall face
-// resolves to the cells on the open side of that surface. A block gets one
-// candidate (the cell on the open side); faces get the four planes that box
-// the point in; edges the four lines around it per allowed axis.
+// `point` to the element centre), on a lattice of `gridSize` (the piece's
+// own grid: the build grid for full-size pieces, a fraction of it for fine
+// ones). `normal` is the hit surface's normal: the point is nudged a little
+// along it so that a hit on a floor or a wall face resolves to the cells on
+// the open side of that surface. A block gets one candidate (the cell on
+// the open side); faces get the four planes that box the point in; edges
+// the four lines around it per allowed axis.
 std::vector<Element> candidates(Slot slot, Vec3 point, Vec3 normal, double gridSize);
+
+// The same element expressed on a lattice `factor` times finer (a full-size
+// piece's anchor in registry coordinates).
+Element scaled(const Element& element, int factor);
+
+// The registry elements a piece covers from its anchor (in registry
+// coordinates): `span` registry cells per piece cell along every spanned
+// axis, `tall` piece cells stacked upward. A volume spans all three axes, a
+// face the two in its plane, an edge its own axis; `tall` stacks along y
+// (a horizontal edge cannot be tall).
+std::vector<Element> footprint(const Element& anchor, int span, int tall);
+
+// World-space centre of a whole footprint on a registry lattice of
+// `registryGrid`: what the engine poses the piece at.
+Vec3 footprintCentre(const Element& anchor, int span, int tall, double registryGrid);
 
 // One placed piece.
 struct Piece {
-    Element element;
+    Element anchor;                 // registry coordinates; the footprint's min element
+    Slot slot = Slot::Block;
+    std::vector<Element> footprint; // every registry element it covers, anchor included
     std::string shapeId;
     std::string family;
-    int rotationStep = 0; // quarter turns, meaningful for oriented blocks only
+    int rotationStep = 0; // quarter turns, meaningful for oriented shapes only
 };
 
-// The player's structure: what occupies which element. Rules, not
-// presentation - the host mirrors it with scene nodes.
+// The player's structure: what occupies which registry element. Rules,
+// not presentation - the host mirrors it with scene nodes.
 class Structure {
 public:
     bool occupied(const Element& element) const;
+    // The piece covering an element, or nullptr.
     const Piece* at(const Element& element) const;
-    // False (and no change) when the element is taken.
+    // False (and no change) when any element of the footprint is taken.
     bool place(const Piece& piece);
-    // False when nothing stood there.
+    // Removes the piece covering the element. False when nothing stood there.
     bool remove(const Element& element);
     void clear();
+    // Pieces by anchor.
     const std::map<Element, Piece>& pieces() const { return pieces_; }
 
-    // Vertical faces (walls) touching a vertical edge: up to four.
+    // Wall-slot pieces on the vertical faces touching a vertical registry
+    // edge: up to four (a piece counts once per face it covers).
     std::vector<const Piece*> wallsAt(const Element& verticalEdge) const;
-    // Vertical edges that want a corner post drawn: where walls end or
-    // meet at an angle (a T, an L, a lone panel's two ends) and no real post
-    // stands. A straight run's interior edges carry two collinear walls
-    // and get nothing, so a long wall stays a wall and a corner reads as
-    // a corner without the player placing the post.
+    // Vertical registry edges that want a corner post drawn: where walls
+    // end or meet at an angle (a T, an L, a lone panel's two ends) and no
+    // real post stands. A straight run's interior edges carry two
+    // collinear wall faces and get nothing, so a long wall stays a wall
+    // and a corner reads as a corner without the player placing the post.
     std::vector<Element> trimEdges() const;
 
 private:
-    std::map<Element, Piece> pieces_;
+    std::map<Element, Piece> pieces_;     // by anchor
+    std::map<Element, Element> owner_;    // covered element -> anchor
 };
 
 } // namespace wroughtwild::lattice
