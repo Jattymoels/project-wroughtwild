@@ -100,9 +100,11 @@ func unlocked_shapes() -> PackedStringArray:
 	return ids
 
 
+## Locked shapes may be selected (so the palette shows what exists and the
+## chip says how to earn it); they never preview valid.
 func select_shape(shape_id: StringName) -> bool:
 	var info: Dictionary = _sim().shape(shape_id)
-	if info.is_empty() or not info["unlocked"] or info.get("fine", false):
+	if info.is_empty() or info.get("fine", false):
 		return false
 	selected_kit = &""
 	selected_shape = shape_id
@@ -144,7 +146,7 @@ func has_fine_twin() -> bool:
 ## along on G), then crafted kits in the pack.
 func placeables() -> Array:
 	var entries: Array = []
-	for id in unlocked_shapes():
+	for id in _sim().shape_ids():
 		if _sim().shape(id).get("fine", false):
 			continue
 		entries.append({"kind": "shape", "id": StringName(id)})
@@ -236,6 +238,19 @@ func material_label() -> String:
 ## True when the selected family can be worked into the selected shape.
 func family_allowed() -> bool:
 	return selected_kit != &"" or _sim().shape_allows_family(_target_shape(), selected_material_family)
+
+
+## True when the selected shape is still gated (a world effect not yet won).
+func locked() -> bool:
+	return selected_kit == &"" and not _sim().shape_unlocked(_target_shape())
+
+
+## What the HUD says while the selection is locked; "" when it is not.
+func lock_reason() -> String:
+	if not locked():
+		return ""
+	var hint: String = _sim().shape(_target_shape()).get("unlock_hint", "")
+	return hint if hint != "" else "locked"
 
 
 ## Why the family is refused, for the HUD ("needs joinery"); "" when fine.

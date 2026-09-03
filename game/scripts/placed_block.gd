@@ -72,14 +72,16 @@ func _build() -> void:
 	if is_door():
 		mesh.position = Vector3(size.x * 0.5, 0.0, 0.0)
 	# Collision shapes must be direct children of the body (Godot ignores
-	# shapes under an intermediate node), so the door's shut leaf collides
-	# from here and simply switches off while the leaf is swung open.
+	# shapes under an intermediate node), so the door's leaf collides from
+	# here and swings with the mesh: an open door still catches E at the
+	# doorway's edge, which is how it gets shut again.
 	for entry in PieceMesh.collision_for(form, size):
 		var shape := CollisionShape3D.new()
 		shape.shape = entry["shape"]
 		shape.transform = entry["transform"]
 		add_child(shape)
 		_collision_shapes.append(shape)
+	_swing(open)
 
 
 ## Doors: swing the leaf open or shut. Open doors have no collision, so a
@@ -88,11 +90,28 @@ func toggle() -> bool:
 	if not is_door():
 		return false
 	open = not open
-	if _pivot != null:
-		_pivot.rotation.y = -PI / 2.0 if open else 0.0
-	for shape in _collision_shapes:
-		shape.disabled = open
+	_swing(open)
 	return open
+
+
+## Puts the leaf (mesh and collision) shut across the opening or swung a
+## quarter turn about its hinge, standing along the doorway's side.
+func _swing(is_open: bool) -> void:
+	if not is_door():
+		return
+	var hinge := Transform3D(Basis(Vector3.UP, -PI / 2.0 if is_open else 0.0), Vector3(-size.x * 0.5, 0.0, 0.0))
+	var leaf := Transform3D(Basis.IDENTITY, Vector3(size.x * 0.5, 0.0, 0.0))
+	if _pivot != null:
+		_pivot.transform = hinge
+	for shape in _collision_shapes:
+		shape.transform = hinge * leaf
+
+
+## Where the leaf's centre is in the world right now (tests aim at it).
+func leaf_point() -> Vector3:
+	if _collision_shapes.is_empty():
+		return global_position
+	return _collision_shapes[0].global_position
 
 
 ## What the crosshair label should offer for this piece ("" for nothing).

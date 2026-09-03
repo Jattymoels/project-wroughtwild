@@ -388,6 +388,8 @@ struct ShapeDef {
     std::string fineOf;
     // One line the HUD shows when the shape is selected (how to use it).
     std::string hint;
+    // What the HUD says while the shape is still locked.
+    std::string unlockHint;
     std::string requiresWorldEffect; // empty = available from the start
     // Material traits the shape needs (all of them): a door needs joinery,
     // a stone-cut wedge masonry, a girder metal. Empty = any family.
