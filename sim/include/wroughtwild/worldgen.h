@@ -47,6 +47,7 @@ struct MobPack {
     // Danger rings may crown one member with an elite modifier (Wave 3).
     int eliteMemberIndex = -1;   // -1 = no elite in this pack
     std::string eliteModifierId;
+    bool grazer = false;         // life, not threat: placed outside the danger rules
 };
 
 struct WorldMap {

@@ -53,6 +53,15 @@ std::vector<const tuning::ModifierDef*> eligibleModifiers(const tuning::ItemTabl
     return eligible;
 }
 
+std::vector<const tuning::ModifierDef*> eligibleModifiers(const tuning::ItemTable& table,
+                                                          const tuning::ItemBase& base,
+                                                          int tier) {
+    std::vector<const tuning::ModifierDef*> eligible;
+    for (const auto* def : eligibleModifiers(table, base))
+        if (def->fromTier <= tier) eligible.push_back(def);
+    return eligible;
+}
+
 ItemInstance rollItem(const tuning::ItemTable& table,
                       const std::string& baseId,
                       int tier,
@@ -65,7 +74,7 @@ ItemInstance rollItem(const tuning::ItemTable& table,
     item.baseId = baseId;
     item.implicitProperties = base->implicitProperties;
 
-    std::vector<const tuning::ModifierDef*> pool = eligibleModifiers(table, *base);
+    std::vector<const tuning::ModifierDef*> pool = eligibleModifiers(table, *base, tier);
     std::mt19937_64 rng(seed);
 
     int rolls = std::min<int>(propertyCount, static_cast<int>(pool.size()));

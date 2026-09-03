@@ -194,7 +194,8 @@
           "maximum": 2
         }
       ],
-      "design_purpose": "Flat +1 fork for every projectile skill: the orb splits again on first impact, and an Ember Bolt - which does not fork on its own - learns to. The Frost Sceptre carries one as its implicit, so the cold stat-stick is what makes projectiles train-clearers."
+      "design_purpose": "Flat +1 fork for every projectile skill: the orb splits again on first impact, and an Ember Bolt - which does not fork on its own - learns to. The Frost Sceptre carries one as its implicit, so the cold stat-stick is what makes projectiles train-clearers.",
+      "from_tier": 2
     },
     {
       "id": "deep_frost",
@@ -221,7 +222,8 @@
           "maximum": 0.8
         }
       ],
-      "design_purpose": "Increased chill buildup: the top of tier 1 crosses the three-orbs-to-freeze breakpoint down to two, which is the whole point of increased-type mods - visible thresholds."
+      "design_purpose": "Increased chill buildup: the top of tier 1 crosses the three-orbs-to-freeze breakpoint down to two, which is the whole point of increased-type mods - visible thresholds.",
+      "from_tier": 2
     },
     {
       "id": "wide_shatter",
@@ -248,7 +250,8 @@
           "maximum": 0.6
         }
       ],
-      "design_purpose": "A shattered mob reaches further down the train, making cascade chains connect across looser bunches."
+      "design_purpose": "A shattered mob reaches further down the train, making cascade chains connect across looser bunches.",
+      "from_tier": 2
     },
     {
       "id": "frostbite",
@@ -286,7 +289,8 @@
           ]
         }
       ],
-      "design_purpose": "Flat chill on every attack: a skill with no chill of its own gains a payload (the resolver adds before it multiplies). A Frostbite mace freezes with plain strikes and then shatters with the same strikes - the freeze-shatter sentence with no spell in it. Five area strikes at tier 1, faster on top of an orb."
+      "design_purpose": "Flat chill on every attack: a skill with no chill of its own gains a payload (the resolver adds before it multiplies). A Frostbite mace freezes with plain strikes and then shatters with the same strikes - the freeze-shatter sentence with no spell in it. Five area strikes at tier 1, faster on top of an orb.",
+      "from_tier": 2
     },
     {
       "id": "cold_damage",
@@ -303,13 +307,13 @@
       "tiers": [
         {
           "tier": 1,
-          "minimum": 0.1,
-          "maximum": 0.2
+          "minimum": 0.05,
+          "maximum": 0.1
         },
         {
           "tier": 2,
-          "minimum": 0.2,
-          "maximum": 0.35,
+          "minimum": 0.15,
+          "maximum": 0.25,
           "breakpoints": [
             {
               "effect": "increased_chill_buildup",
@@ -323,8 +327,8 @@
         },
         {
           "tier": 3,
-          "minimum": 0.35,
-          "maximum": 0.5,
+          "minimum": 0.3,
+          "maximum": 0.45,
           "breakpoints": [
             {
               "effect": "add_chill_buildup",
@@ -354,13 +358,13 @@
       "tiers": [
         {
           "tier": 1,
-          "minimum": 0.1,
-          "maximum": 0.2
+          "minimum": 0.05,
+          "maximum": 0.1
         },
         {
           "tier": 2,
-          "minimum": 0.2,
-          "maximum": 0.35,
+          "minimum": 0.15,
+          "maximum": 0.25,
           "breakpoints": [
             {
               "effect": "increased_bleed_buildup",
@@ -374,8 +378,8 @@
         },
         {
           "tier": 3,
-          "minimum": 0.35,
-          "maximum": 0.5,
+          "minimum": 0.3,
+          "maximum": 0.45,
           "breakpoints": [
             {
               "effect": "increased_bleed_damage",
@@ -405,13 +409,13 @@
       "tiers": [
         {
           "tier": 1,
-          "minimum": 0.1,
-          "maximum": 0.2
+          "minimum": 0.05,
+          "maximum": 0.1
         },
         {
           "tier": 2,
-          "minimum": 0.2,
-          "maximum": 0.35,
+          "minimum": 0.15,
+          "maximum": 0.25,
           "breakpoints": [
             {
               "effect": "increased_burn_damage",
@@ -425,8 +429,8 @@
         },
         {
           "tier": 3,
-          "minimum": 0.35,
-          "maximum": 0.5,
+          "minimum": 0.3,
+          "maximum": 0.45,
           "breakpoints": [
             {
               "effect": "increased_ignite_duration",
@@ -476,7 +480,8 @@
           ]
         }
       ],
-      "design_purpose": "Increased ignite buildup: the fire line's freeze breakpoint - three Ember Bolts to ignite become two. The Ember Wand's implicit."
+      "design_purpose": "Increased ignite buildup: the fire line's freeze breakpoint - three Ember Bolts to ignite become two. The Ember Wand's implicit.",
+      "from_tier": 2
     },
     {
       "id": "burn_damage",
@@ -503,7 +508,8 @@
           "maximum": 0.6
         }
       ],
-      "design_purpose": "Scales the ignite's damage per second, not the hit: the fire build that wants to set things alight and walk away."
+      "design_purpose": "Scales the ignite's damage per second, not the hit: the fire build that wants to set things alight and walk away.",
+      "from_tier": 2
     },
     {
       "id": "lingering_flame",
@@ -530,7 +536,8 @@
           "maximum": 0.5
         }
       ],
-      "design_purpose": "A longer burn is more total damage and a wider window for proliferate to find a death; the slow-fuse alternative to Burn Damage."
+      "design_purpose": "A longer burn is more total damage and a wider window for proliferate to find a death; the slow-fuse alternative to Burn Damage.",
+      "from_tier": 2
     },
     {
       "id": "wildfire_reach",
@@ -557,7 +564,8 @@
           "maximum": 0.6
         }
       ],
-      "design_purpose": "A burning death reaches further into the pack: the fire mirror of Shatter Radius, making chain-burns connect across looser bunches."
+      "design_purpose": "A burning death reaches further into the pack: the fire mirror of Shatter Radius, making chain-burns connect across looser bunches.",
+      "from_tier": 2
     },
     {
       "id": "smouldering",
@@ -585,7 +593,8 @@
           "maximum": 40
         }
       ],
-      "design_purpose": "Flat ignite on every spell: a Frost Orb that chills and burns, a Frost Nova that sets the whole ring smouldering. The cross-element roll that lets one caster run both sentences at once."
+      "design_purpose": "Flat ignite on every spell: a Frost Orb that chills and burns, a Frost Nova that sets the whole ring smouldering. The cross-element roll that lets one caster run both sentences at once.",
+      "from_tier": 2
     },
     {
       "id": "serration",
@@ -612,7 +621,8 @@
           "maximum": 0.8
         }
       ],
-      "design_purpose": "Increased bleed buildup: the top of tier 1 turns two Rends to open a wound into one."
+      "design_purpose": "Increased bleed buildup: the top of tier 1 turns two Rends to open a wound into one.",
+      "from_tier": 2
     },
     {
       "id": "hemorrhage",
@@ -639,7 +649,8 @@
           "maximum": 0.6
         }
       ],
-      "design_purpose": "Scales the bleed tick, and through it the moving multiplier: the build that wounds and kites."
+      "design_purpose": "Scales the bleed tick, and through it the moving multiplier: the build that wounds and kites.",
+      "from_tier": 2
     },
     {
       "id": "swift_hands",
@@ -700,8 +711,8 @@
       "implicit_properties": {},
       "implicit_modifiers": [
         {
-          "id": "forked_lattice",
-          "value": 1
+          "id": "cold_damage",
+          "value": 0.1
         }
       ],
       "allowed_modifier_tags": [
@@ -795,8 +806,8 @@
       "implicit_properties": {},
       "implicit_modifiers": [
         {
-          "id": "forked_lattice",
-          "value": 1
+          "id": "cold_damage",
+          "value": 0.1
         }
       ],
       "allowed_modifier_tags": [
@@ -826,5 +837,6 @@
       "design_purpose": "Era two's armour: a little more plate than iron and room for tier-three rolls. The number spread between metals stays small on purpose; the tier cap is the point."
     }
   ],
-  "design_purpose": "Every modifier attaches to tags, never to a skill or a socket (D-014), and gear never grants a skill (D-016: skills are learned pages, the bar is free). applies_to ['self'] marks a character stat; anything else names the skill tags the modifier excites - so a mod written today applies to a skill found tomorrow if the tags meet. effect keys follow the resolver's increased-vs-more rule: add_* is flat (and can give a skill a payload it lacks), increased_* sums within its bucket, more_* multiplies. A base's allowed_modifier_tags is the roll pool - specific tags, never the generic offence/defence pair alone, so a sceptre cannot grow physical mods and a mace cannot grow cold-spell ones; rarity is a modifier count (plain 0, keen 1-2, wrought 3-4) and never a stat. Uniques (hand-authored, rule-bending) are the next slice. Tiers are breakpoints (D-019): a tier may carry breakpoints, extra effects the roll brings at that tier and every tier above it (tier-two cold also builds chill faster; tier three chills deeper), so a higher tier is a mechanic, not only a bigger number. tier_cap on a base is the highest tier its metal can express: a roll above the cap is held back - it speaks at the cap tier's best value and shows the rest greyed - until a Preserving Transfer moves it to a base that holds it. That is the early taste: you see what the roll could be and you know which metal unleashes it."
+  "design_purpose": "Every modifier attaches to tags, never to a skill or a socket (D-014), and gear never grants a skill (D-016: skills are learned pages, the bar is free). applies_to ['self'] marks a character stat; anything else names the skill tags the modifier excites - so a mod written today applies to a skill found tomorrow if the tags meet. effect keys follow the resolver's increased-vs-more rule: add_* is flat (and can give a skill a payload it lacks), increased_* sums within its bucket, more_* multiplies. A base's allowed_modifier_tags is the roll pool - specific tags, never the generic offence/defence pair alone, so a sceptre cannot grow physical mods and a mace cannot grow cold-spell ones; rarity is a modifier count (plain 0, keen 1-2, wrought 3-4) and never a stat. Uniques (hand-authored, rule-bending) are the next slice. Tiers are breakpoints (D-019): a tier may carry breakpoints, extra effects the roll brings at that tier and every tier above it (tier-two cold also builds chill faster; tier three chills deeper), so a higher tier is a mechanic, not only a bigger number. tier_cap on a base is the highest tier its metal can express: a roll above the cap is held back - it speaks at the cap tier's best value and shows the rest greyed - until a Preserving Transfer moves it to a base that holds it. That is the early taste: you see what the roll could be and you know which metal unleashes it.",
+  "design_purpose_pool": "The era-one pool (owner, 3 Sep 2026: 'early item mods are more defensive, or small additions to damage, outside of really lucky drops' and 'too much emphasis on forks'): every interaction modifier carries from_tier 2, so a tier-one roll - what era one's mobs drop - can only be life, armour, resistance, reach and a small damage add. Elites roll a tier higher, so the lucky drop still exists and reads as luck; era two opens the pool to everyone. The sceptres' implicit is a small cold add now, not a fork. Damage tiers step 5-10% / 15-25% / 30-45%: within the threefold budget."
 }

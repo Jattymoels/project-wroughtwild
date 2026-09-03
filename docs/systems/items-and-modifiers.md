@@ -90,6 +90,13 @@ direction, 31 Aug 2026).
   and your enemies more"). They need engine hooks beyond the resolver, so
   they arrive after the core loop is judged, not before.
 
+**D-020 (3 Sep 2026), the era-one pool:** modifiers may carry
+`from_tier`; a roll at a lower tier never picks them. Every interaction
+modifier is `from_tier: 2`, so era one's drops are defensive or small
+damage adds unless an elite (a tier higher) or era two opens the pool.
+Damage tiers step 5–10 / 15–25 / 30–45 %. The sceptres' implicit is a
+small cold add, not a fork.
+
 ## Inputs and outputs
 
 | Inputs | Outputs |

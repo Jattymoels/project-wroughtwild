@@ -14,6 +14,12 @@ extends StaticBody3D
 ## Greybox look from worldgen.json's node visual key: tree | boulder |
 ## iron_vein. Empty keeps the scene's default cylinder.
 @export var visual: StringName = &""
+## Fire-setting (D-020): the fire heat this node must be soaked in and then
+## quenched before E works it (0 = hands). Once cracked it stays cracked.
+@export var heat_to_work: int = 0
+var cracked := false
+var hot_level := 0
+var _hot_until := 0
 
 
 ## Yield when the node first appeared, so the visual shrink tracks the
@@ -32,7 +38,7 @@ func _ready() -> void:
 ## Crosshair-hover feedback: a soft glow on the node you would harvest.
 func set_highlight(on: bool) -> void:
 	for material in _own_materials:
-		material.emission_enabled = on
+		material.emission_enabled = on or hot_level > 0
 
 
 ## Deterministic per position and kind, so a rebuilt (or loaded) world
@@ -90,9 +96,66 @@ func _apply_visual() -> void:
 	collider.shape = shape
 
 
+## A fire beside the node soaks it: hot at `heat` for `seconds`.
+func soak(heat: int, seconds: float) -> void:
+	if heat_to_work <= 0 or cracked:
+		return
+	hot_level = maxi(hot_level, heat)
+	_hot_until = Time.get_ticks_msec() + int(seconds * 1000.0)
+	_refresh_state_look()
+
+
+## Cold on a hot node cracks it when the heat met its need. Returns true
+## when it cracked just now.
+func quench() -> bool:
+	if cracked or hot_level <= 0 or hot_level < heat_to_work:
+		return false
+	cracked = true
+	hot_level = 0
+	_refresh_state_look()
+	return true
+
+
+## True when E will take from it.
+func workable() -> bool:
+	return heat_to_work <= 0 or cracked
+
+
+## Why E does nothing yet ("" when it works). The words are the tutorial.
+func work_refusal() -> String:
+	if workable():
+		return ""
+	if hot_level >= heat_to_work:
+		return "glows  ·  cold will crack it"
+	if hot_level > 0:
+		return "warm  ·  wants a hotter fire (charcoal)"
+	return "needs fire against it, then cold" if heat_to_work <= 1 else "needs a charcoal fire, then cold"
+
+
+func _process(_delta: float) -> void:
+	if hot_level > 0 and Time.get_ticks_msec() >= _hot_until:
+		hot_level = 0
+		_refresh_state_look()
+
+
+## Hot nodes glow ember; cracked ones sit darker. Hover highlight rides on
+## top of the state colour.
+func _refresh_state_look() -> void:
+	for material in _own_materials:
+		if hot_level > 0:
+			material.emission = Color(1.0, 0.4, 0.05)
+			material.emission_energy_multiplier = 1.2
+			material.emission_enabled = true
+		else:
+			material.emission = Color(1, 1, 1)
+			material.emission_energy_multiplier = 0.4
+			material.emission_enabled = false
+		material.albedo_color = Color(0.55, 0.5, 0.5) if cracked else Color(1, 1, 1)
+
+
 ## Returns the units actually granted (0 when depleted).
 func harvest() -> int:
-	if remaining_units <= 0:
+	if remaining_units <= 0 or not workable():
 		return 0
 
 	var granted: int = mini(units_per_harvest, remaining_units)

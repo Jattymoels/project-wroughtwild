@@ -180,6 +180,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks"),
                          &WroughtwildSim::world_mesh_chunk);
     ClassDB::bind_method(D_METHOD("block_rules"), &WroughtwildSim::block_rules);
+    ClassDB::bind_method(D_METHOD("fire_setting"), &WroughtwildSim::fire_setting);
     ClassDB::bind_method(D_METHOD("lattice_registry_grid"), &WroughtwildSim::lattice_registry_grid);
     ClassDB::bind_method(D_METHOD("lattice_candidates", "shape_id", "point", "normal", "fine_grid"),
                          &WroughtwildSim::lattice_candidates, DEFVAL(false));
@@ -1111,6 +1112,7 @@ Dictionary WroughtwildSim::build_material(const String& material_id) const {
     d["display_name"] = to_godot(m->displayName);
     d["source"] = to_godot(m->source);
     d["traits"] = strings_to_packed(m->traits);
+    d["only_for_trait"] = to_godot(m->onlyForTrait);
     d["texture"] = to_godot(m->texture);
     d["tint"] = to_godot(m->tint);
     auto carried = player_->inventory.find(m->source);
@@ -1867,6 +1869,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
         n["units_per_harvest"] = typeIt->second.unitsPerHarvest;
         n["visual"] = to_godot(typeIt->second.visual);
         n["era"] = typeIt->second.era;
+        n["heat_to_work"] = typeIt->second.heatToWork;
         nodes.push_back(n);
     }
     d["nodes"] = nodes;
@@ -1884,6 +1887,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
         p["z"] = pack.z;
         p["elite_member"] = pack.eliteMemberIndex;
         p["elite_modifier"] = to_godot(pack.eliteModifierId);
+        p["grazer"] = pack.grazer;
         packs.push_back(p);
     }
     d["packs"] = packs;
@@ -2040,8 +2044,34 @@ Dictionary WroughtwildSim::block_rules() const {
         r["breakable"] = rule.breakable;
         r["dig_seconds"] = rule.digSeconds;
         r["yields"] = to_dictionary(rule.yields);
+        r["by_hand"] = rule.byHand;
+        r["heat_to_crack"] = rule.heatToCrack;
         d[to_godot(kind)] = r;
     }
+    return d;
+}
+
+// Fire-setting (D-020): fuels by building family, reach, soak, how long
+// rock stays hot, and the quench radius. The engine burns and glows; the
+// numbers are the sim's.
+Dictionary WroughtwildSim::fire_setting() const {
+    Dictionary d;
+    if (!require_loaded("fire_setting")) {
+        return d;
+    }
+    const auto& fs = tuning_->worldgen.fireSetting;
+    Dictionary fuels;
+    for (const auto& [family, fuel] : fs.fuels) {
+        Dictionary f;
+        f["heat"] = fuel.heat;
+        f["burn_seconds"] = fuel.burnSeconds;
+        fuels[to_godot(family)] = f;
+    }
+    d["fuels"] = fuels;
+    d["reach_cells"] = fs.reachCells;
+    d["soak_seconds"] = fs.soakSeconds;
+    d["hot_seconds"] = fs.hotSeconds;
+    d["quench_radius_m"] = fs.quenchRadiusM;
     return d;
 }
 

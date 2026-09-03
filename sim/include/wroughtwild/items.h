@@ -32,6 +32,11 @@ struct ItemInstance {
 // Modifiers whose tags intersect the base's allowed tags: the base's roll pool.
 std::vector<const tuning::ModifierDef*> eligibleModifiers(const tuning::ItemTable& table,
                                                           const tuning::ItemBase& base);
+// The pool a roll at this tier may draw from: the base's tags, minus every
+// modifier whose from_tier is above the roll (the era-one pool, D-020).
+std::vector<const tuning::ModifierDef*> eligibleModifiers(const tuning::ItemTable& table,
+                                                          const tuning::ItemBase& base,
+                                                          int tier);
 
 // Creates an item of the given base and rolls up to propertyCount distinct
 // modifiers at the given tier (or the nearest tier the modifier defines),

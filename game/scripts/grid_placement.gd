@@ -591,7 +591,9 @@ func try_remove_block() -> bool:
 	if block == null:
 		return false
 
-	_sim().refund_removal(block.shape_id, block.material_family)
+	# A fire's fuel is spent the moment it is lit: no refund.
+	if not block.is_fire():
+		_sim().refund_removal(block.shape_id, block.material_family)
 	return remove_piece(block)
 
 

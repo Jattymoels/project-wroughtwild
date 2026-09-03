@@ -14,6 +14,9 @@ signal hit_taken(damage: float, source_name: String)
 ## Known skills or the bar changed (page learned, slot assigned, game
 ## loaded); the action bar rebuilds itself from the sim.
 signal loadout_changed
+## Fire-setting (D-020): a skill worked the world ("cracked" or "heated"
+## with a count) - the HUD tells you what the cold did to the rock.
+signal world_worked(what: String, count: int)
 
 ## The four starting skills, named for tests and legacy callers. Everything
 ## else arrives as a skill page and is addressed through the bar (D-016).
@@ -307,11 +310,20 @@ func _use_cone(skill_id: StringName) -> int:
 		return 0
 	_spend(skill_id)
 	var enemies := alive_enemies()
+	var base_radius: float = skills[skill_id]["base_area_radius"] * (1.0 + sim.derived_stats()["area_bonus"])
+	# A cold ring quenches the hot rock around you whether or not anything
+	# is alive in it (D-020 fire-setting: the nova is a quarry tool too).
+	if sim.chill_applied(String(skill_id), false) > 0.0:
+		var terrain := player._find_terrain()
+		if terrain != null and not terrain.map.is_empty():
+			var cracked_count: int = terrain.quench_at(player.global_position, base_radius)
+			if cracked_count > 0:
+				world_worked.emit("cracked", cracked_count)
 	if enemies.is_empty():
 		return 0
 	_ensure_fight()
 	var isolated := enemies.size() == 1
-	var radius: float = skills[skill_id]["base_area_radius"] * (1.0 + sim.derived_stats()["area_bonus"])
+	var radius := base_radius
 	if isolated:
 		radius *= sim.combat_mods()["isolated_area_multiplier"]
 	var spatial: Dictionary = sim.realtime().get("skills", {}).get(String(skill_id), {})

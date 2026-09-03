@@ -330,9 +330,21 @@ the world is the campaign. Slices, in order:
    the Ash Tide - ember-iron, silver, steel, further-calling shriekers,
    wisp escorts, commoner elites; the peddler, grazing elk and birds.
 
+7. **The pacing pass** *(landed 3 Sep 2026, D-020)*: long fights (mob life
+   ×2.5, damage ×0.7), the quiet heartland (first ring at a third density,
+   grazers by their own rule), the era-one modifier pool (`from_tier`),
+   and **fire-setting** as the first capability gate — a campfire against
+   rock, cold cracks what is hot, cracked rock digs by hand; charcoal for
+   the alloy ores.
+8. **Skills on the plate** *(next)*: a skill tablet laid on the Foundry
+   plate is supported by the ingots touching it; later, manners learned
+   from mob families as the support pool.
+
 Owner tuning note (3 Sep): "everything is way too fast/powerful ... to
 feel good you have to start with less damage/more danger" — era one's
-target is slow, poor and dangerous; numbers still held until asked.
+target is slow, poor and dangerous. Released the same evening as D-020's
+pacing pass (the numbers above); combat damage on the player's side is
+still untouched.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 

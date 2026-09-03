@@ -45,6 +45,8 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 
 	var block_data: Array = []
 	for block in blocks:
+		if block.is_fire():
+			continue  # a fire is fuel, not a building: it is out when you return
 		var cell: Vector3i = block.element["cell"]
 		block_data.append({
 			"shape": String(block.shape_id),
@@ -66,6 +68,8 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 			"position": _vec(node.global_position),
 			"remaining_units": node.remaining_units,
 			"units_per_harvest": node.units_per_harvest,
+			"heat_to_work": node.heat_to_work,
+			"cracked": node.cracked,
 		})
 
 	var site_data: Array = []
@@ -101,6 +105,8 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 		for v in terrain.broken:
 			broken_data.append([v.x, v.y, v.z])
 		data["broken_blocks"] = broken_data
+	if terrain != null and not terrain.cracked.is_empty():
+		data["cracked_blocks"] = terrain.cracked_packed_list()
 	return data
 
 
@@ -123,6 +129,7 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	var terrain := root.get_node_or_null("Terrain") as Terrain
 	if terrain != null and not terrain.map.is_empty():
 		terrain.apply_broken_blocks(data.get("broken_blocks", []))
+		terrain.apply_cracked(data.get("cracked_blocks", []))
 
 	var blocks: Array = []
 	var nodes: Array = []
@@ -165,6 +172,8 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 			node.global_position = _unvec(entry["position"])
 		node.remaining_units = int(entry["remaining_units"])
 		node.units_per_harvest = int(entry["units_per_harvest"])
+		node.heat_to_work = int(entry.get("heat_to_work", node.heat_to_work))
+		node.cracked = bool(entry.get("cracked", false))
 	for node in nodes:
 		if not saved_names.has(node.name):
 			node.get_parent().remove_child(node)
