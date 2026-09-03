@@ -63,8 +63,11 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	pack["spawned"] = true
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	var ids: PackedStringArray = pack["enemies"]
-	# Era mechanics (eras.json): some families run in bigger packs now.
+	# Era mechanics (eras.json): some families run in bigger packs now, some
+	# bring escorts, and later eras crown elites more often.
+	var era: Dictionary = sim.era()
 	var bonus_seen := {}
+	var escorts: Dictionary = era.get("pack_escorts", {})
 	for id in pack["enemies"]:
 		if bonus_seen.has(id):
 			continue
@@ -72,13 +75,26 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 		var bonus: Dictionary = sim.era_mechanic(id, "pack_size_bonus")
 		for k in int(bonus.get("value", 0)):
 			ids.append(id)
+		for escort in escorts.get(id, PackedStringArray()):
+			ids.append(escort)
+	var elite_member: int = int(pack["elite_member"])
+	var elite_modifier: String = String(pack["elite_modifier"])
+	var elite_bonus: float = float(era.get("elite_chance_bonus", 0.0))
+	if elite_member < 0 and elite_bonus > 0.0:
+		var roll := RandomNumberGenerator.new()
+		roll.seed = hash(Vector3i(int(pack["x"]), int(pack["y"]), int(pack["z"]))) ^ world_seed
+		if roll.randf() < elite_bonus:
+			var modifiers: PackedStringArray = sim.elite_modifier_ids()
+			if not modifiers.is_empty():
+				elite_member = roll.randi() % ids.size()
+				elite_modifier = modifiers[roll.randi() % modifiers.size()]
 	for i in ids.size():
 		var angle := TAU * float(i) / float(maxi(ids.size(), 1))
 		var offset := Vector3(cos(angle), 0.5, sin(angle)) * 1.6
 		var enemy := Enemy.spawn(get_parent(), StringName(ids[i]), at + offset)
 		# The danger ring may have crowned one member (Wave 3 elites).
-		if i == int(pack["elite_member"]) and String(pack["elite_modifier"]) != "":
-			enemy.make_elite(sim.elite_modifier(pack["elite_modifier"]))
+		if i == elite_member and elite_modifier != "":
+			enemy.make_elite(sim.elite_modifier(elite_modifier))
 		enemy.died.connect(_on_enemy_died)
 
 

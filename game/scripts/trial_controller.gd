@@ -35,10 +35,10 @@ func _find_arena() -> TrialArena:
 	return arena
 
 
-func begin_run() -> bool:
+func begin_run(floor_id: String = "") -> bool:
 	if active() or _find_arena() == null:
 		return false
-	if not sim.trial_start(int(seed_source.randi() & 0x7fffffff)):
+	if not sim.trial_start(int(seed_source.randi() & 0x7fffffff), floor_id):
 		return false
 	return_position = player.global_position
 	player.placement.set_build_mode_enabled(false)
@@ -325,6 +325,10 @@ func finish_run() -> void:
 		var kept := ", and the catalyst is still in your hand" if sim.material_count("ember_catalyst") > 0 else ""
 		player.hud.notify("You wake at the gate. Your stored goods are untouched%s. The Tyrant's weakness to prepared steel is clearer now." % kept)
 	elif boss_defeated:
-		player.hud.notify("The Forge Tyrant falls! Deep in its forge you find mastery of stonecut blocks: the roof wedge joins your constructions.%s" % _completion_items)
+		var floor: Dictionary = sim.trial_floor()
+		if String(floor.get("id", "")) != "":
+			player.hud.notify("%s%s" % [floor.get("completion_text", "The warden falls."), _completion_items])
+		else:
+			player.hud.notify("The Forge Tyrant falls! Deep in its forge you find mastery of stonecut blocks: the roof wedge joins your constructions.%s" % _completion_items)
 		_completion_items = ""
 	player.hud.refresh()

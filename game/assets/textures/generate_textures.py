@@ -102,6 +102,9 @@ def main() -> None:
     write_png("bronze.png", speckle((176, 118, 62), 0.07, rng, ((92, 128, 96), 0.05)))
     # The fen: wet dark ground with standing-water glints.
     write_png("marsh.png", speckle((58, 78, 46), 0.14, rng, ((44, 58, 70), 0.12)))
+    # Era three's metals: blued steel with rivets, bright silver with a tarnish fleck.
+    write_png("steel.png", speckle((96, 104, 118), 0.05, rng, ((60, 64, 74), 0.05)))
+    write_png("silver.png", speckle((206, 210, 218), 0.05, rng, ((140, 136, 128), 0.04)))
 
 
 def banded(pixels: list, seam, period: int, offset: int, brick: bool = False) -> list:

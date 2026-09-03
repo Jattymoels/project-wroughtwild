@@ -244,6 +244,22 @@ func _test_lattice() -> void:
 	var junk: int = sim.roll_item_into_pack("iron_mace", "plain", 1, 3)
 	check(sim.discard_pack_item(junk) and sim.pack_items().size() == before_count and not sim.discard_pack_item(999),
 		"pack: a discarded item is gone")
+	# Era three, floors, the peddler through the door.
+	# A fresh sim: this one already woke the deep above.
+	var fresh: RefCounted = ClassDB.instantiate(&"WroughtwildSim")
+	fresh.load_tuning(load("res://scripts/sim.gd").get_tuning_directory())
+	var floors: Array = fresh.trial_floors()
+	check(floors.size() == 1 and floors[0]["id"] == "deep_forge" and not floors[0]["available"],
+		"floor: the deeper forge waits on the Tyrant")
+	check(not fresh.trial_start(3, "deep_forge"), "floor: it cannot be entered before then")
+	check(sim.trial_floors()[0]["available"] and sim.trial_start(3, "deep_forge") and sim.boss()["id"] == "ash_warden"
+		and sim.trial_floor()["id"] == "deep_forge", "floor: with the deep awake it opens, and its boss is the warden")
+	sim.trial_end()
+	check(sim.market_offers().size() >= 3 and not sim.market_offers()[0]["affordable"], "peddler: offers listed, none affordable yet")
+	check(sim.era()["pack_escorts"].is_empty() and sim.era()["elite_chance_bonus"] == 0.0, "era3: era one escorts nothing")
+	check(sim.realtime()["behaviours"]["grazer"]["flees"] and not sim.realtime()["behaviours"]["melee"].get("flees", false),
+		"life: the grazer behaviour flees")
+
 	# The bigger world and its new families (3 Sep 2026).
 	check(sim.enemy("bog_lurker")["behaviour"] == "lurker" and sim.enemy("bog_lurker")["tint"] == "#4E5E3E"
 		and float(sim.enemy("bog_lurker")["size_scale"]) > 1.0, "world: the bog lurker has its own look")
@@ -459,7 +475,7 @@ func _test_sim_extension() -> void:
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
 	check(heavy["delivery"] == "strike" and heavy["starting"], "combat: skill view carries delivery and starting (D-016)")
 	check(sim.combat_skill_ids().size() == 8, "combat: eight skills defined (four arrive as pages)")
-	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 10,
+	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 11,
 		"combat: enemy view (shrieker and gloom crawler joined)")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
 	var rt: Dictionary = sim.realtime()
@@ -577,7 +593,7 @@ func _test_sim_extension() -> void:
 		"shape: the wedge waits on the completion unlock, the slab does not")
 	check(sim.shape_ids().size() >= 9 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
 		"shape: nine-shape set with sizes from data")
-	check(sim.build_material_ids().size() == 4 and sim.build_material("iron")["source"] == "iron_ingot"
+	check(sim.build_material_ids().size() == 6 and sim.build_material("iron")["source"] == "iron_ingot"
 		and sim.build_material("stone")["texture"] == "masonry", "materials: families through the door")
 	check(sim.shape_allows_family("door", "wood") and not sim.shape_allows_family("door", "stone")
 		and sim.shape("girder")["cells_long"] == 2 and sim.shape("girder")["requires_traits"].has("metal"),

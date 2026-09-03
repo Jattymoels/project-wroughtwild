@@ -69,6 +69,15 @@
       "windup_seconds": 0.7,
       "give_up_distance_m": 24.0,
       "design_purpose": "A heavy melee walk with a long windup: the hit is readable, the body is not."
+    },
+    "grazer": {
+      "move_speed_mps": 5.5,
+      "attack_range_m": 0.0,
+      "aggro_range_m": 9.0,
+      "windup_seconds": 0.0,
+      "give_up_distance_m": 18.0,
+      "flees": true,
+      "design_purpose": "flees turns the state machine around: within aggro range the animal runs, beyond give_up it settles; it never attacks."
     }
   },
   "boss": {

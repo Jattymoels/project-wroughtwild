@@ -2052,6 +2052,54 @@ void testBiggerWorld(const tuning::Tuning& t) {
           "world: new behaviours are data");
 }
 
+// Era three, the deeper floor, the grazer and the peddler (3 Sep 2026).
+void testEraThreeAndLife(const tuning::Tuning& t) {
+    const auto* floor = t.trial.findFloor("deep_forge");
+    check(floor && floor->boss.id == "ash_warden" && floor->stages.size() == 3 && floor->completionUnlock == "ash_tide",
+          "floor: the deeper forge loads with its own boss, stages and completion");
+    economy::PlayerEconomy player(t);
+    check(player.currentEra() == 1, "era3: a new game is era one");
+    player.recordWorldEffect("ash_tide");
+    check(player.currentEra() == 1, "era3: the ash tide alone does not skip the deep (eras are ordered)");
+    player.recordWorldEffect("stonecut_blocks");
+    check(player.currentEra() == 3 && player.era().id == "ash_tide" && player.plateSize().rows == 4,
+          "era3: with the deep awake the tide wakes era three and the plate is 4x4");
+    const auto* scream = player.era().mechanic("shrieker", "scream_radius_bonus");
+    check(scream && scream->at("value") > 0.0 && player.era().eliteChanceBonus > 0.0 &&
+              player.era().packEscorts.count("ash_hound") == 1,
+          "era3: shriekers call further, elites are commoner, hounds run with wisps");
+    // A session on the deeper floor uses that floor's stages and boss.
+    boons::BuildTags tags;
+    trial::TrialSession deeper(t, player, tags, 5, floor);
+    check(deeper.stages().size() == 3 && deeper.boss().id == "ash_warden" && deeper.floor() == floor,
+          "floor: a session on the deeper floor fights its rooms and its warden");
+    trial::TrialSession first(t, player, tags, 5);
+    check(first.stages().size() == t.trial.stages.size() && first.boss().id == "forge_tyrant",
+          "floor: the first floor is unchanged");
+    // Era-three ground and work.
+    check(t.worldgen.nodeTypes.at("ember_iron_vein").era == 3 && t.worldgen.nodeTypes.at("silver_vein").era == 3,
+          "era3: ember-iron and silver surface in the third era");
+    check(t.crafting.findRecipe("smelt_steel") != nullptr && t.construction.findMaterial("steel")->hasTrait("resilient") &&
+              t.construction.findMaterial("silver")->hasTrait("warding"),
+          "era3: steel and silver are families");
+    // The grazer flees; the peddler sells.
+    check(t.realtime.findBehaviour("grazer") != nullptr && t.realtime.findBehaviour("grazer")->flees &&
+              !t.realtime.findBehaviour("melee")->flees && t.world.findEnemy("valley_elk") != nullptr,
+          "life: the valley elk is a grazer that flees");
+    economy::PlayerEconomy buyer(t);
+    check(!buyer.buy("charcoal"), "peddler: no coin, no sale");
+    buyer.currency["trade_currency"] = 10;
+    check(buyer.buy("charcoal") && buyer.inventory["charcoal"] == 4 && buyer.currency["trade_currency"] == 4,
+          "peddler: charcoal for six coin");
+    check(!buyer.buy("preserving_catalyst") && !buyer.buy("no_such_thing"), "peddler: too dear, or not for sale");
+    // An order's world effect now goes through the recording path: the mine
+    // milestone reaches the Foundry.
+    economy::PlayerEconomy miner(t);
+    miner.takeFoundryNotices();
+    miner.recordWorldEffect("old_mine_reinforced");
+    check(!miner.takeFoundryNotices().empty(), "order: the mine reinforced forges its ingot");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -2098,6 +2146,7 @@ int main(int argc, char** argv) {
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);
+    testEraThreeAndLife(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

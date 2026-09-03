@@ -108,6 +108,12 @@ func _physics_process(_delta: float) -> void:
 				"hop: a chaser clears a one-block ledge (z %.1f)" % _pack[0].global_position.z)
 			_pack[0].take_damage(100000.0)
 			_run_encroachment_checks()
+		682:
+			# A grazer bolts and never bites (life beyond hostiles): spawned
+			# five metres off, it must be well past six by frame 694.
+			_player.combat.restore_life()
+			_elk = Enemy.spawn(self, &"valley_elk", _player.global_position + Vector3(0, -0.5, 5.0))
+			_elk_life_before = _player.combat.life
 		690:
 			# The nest's pack stands; its kills go through the loot guard; an
 			# undefended nest tears down on E and the sim forgets it.
@@ -119,6 +125,11 @@ func _physics_process(_delta: float) -> void:
 				(enemy as Enemy).take_damage(100000.0)
 		694:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
+			check(is_instance_valid(_elk) and _elk.state == "flee" and _elk.global_position.distance_to(_player.global_position) > 6.0,
+				"life: the elk runs from you (%.1f m)" % (_elk.global_position.distance_to(_player.global_position) if is_instance_valid(_elk) else 0.0))
+			check(_player.combat.life == _elk_life_before, "life: and never bites")
+			if is_instance_valid(_elk):
+				_elk.take_damage(100000.0)
 			check(_nest.defenders().is_empty(), "encroach: the pack is dead")
 			check(_nest.interact(_player) and sim.encroachment_nests().is_empty() and _encroachment.nest_count() == 0,
 				"encroach: an undefended nest tears down and the sim forgets it")
@@ -159,6 +170,8 @@ func _run_cone_and_dash_checks() -> void:
 ## nest settles on its fringe, raised with its pack by the controller.
 var _encroachment: Encroachment
 var _nest: Nest
+var _elk: Enemy
+var _elk_life_before := 0.0
 
 
 func _run_encroachment_checks() -> void:

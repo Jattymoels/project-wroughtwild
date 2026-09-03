@@ -273,6 +273,7 @@ func _physics_process(_delta: float) -> void:
 			check(sim.currency_count("trade_currency") == 40, "integration: order paid trade currency")
 			check(sim.world_effect_active("old_mine_reinforced"), "integration: world effect recorded")
 			check(not sim.recipe_feeds_open_order("iron_fittings"), "integration: fittings no longer feed an open order")
+			check(sim.foundry_notices().has("edge"), "foundry: the mine reinforced forged an edge ingot (through the recording path)")
 			_player.work_panel.close_panel()
 		18:
 			_player.placement.set_build_mode_enabled(true)
@@ -452,8 +453,9 @@ func _physics_process(_delta: float) -> void:
 				patch.queue_free()
 			_player.combat.restore_life()
 		60:
-			# Death contract through the engine path.
-			(_scene.get_node("TrialGate") as TrialGate).interact(_player)
+			# Death contract through the engine path. The gate now offers floors
+			# (the deep is awake), so start the first floor directly.
+			check(_player.trial.begin_run(), "trial: second run begins on the first floor")
 			check(_player.trial.enter_room(1), "trial: second run, hound kennels")
 			# A roaming whelp far from the arena is not the room's business:
 			# it must not be pulled in, counted, or cleared with the room.
@@ -497,6 +499,13 @@ func _physics_process(_delta: float) -> void:
 			check(_count_placed_blocks() == _blocks_before + 1, "unlock: wedge in the scene")
 			_player.placement.set_build_mode_enabled(false)
 			_player.placement.selected_material_family = &"wood"
+			# The deeper floor opens once the Tyrant has fallen; the peddler sells.
+			var gate_sim: WroughtwildSim = _player.inventory.get_sim()
+			var floors: Array = gate_sim.trial_floors()
+			check(floors.size() == 1 and floors[0]["available"] and not floors[0]["done"], "floor: the deeper forge is open now")
+			var coin_before: int = gate_sim.currency_count("trade_currency")
+			check(coin_before >= 6 and gate_sim.buy("charcoal") and gate_sim.currency_count("trade_currency") == coin_before - 6
+				and gate_sim.material_count("charcoal") >= 4, "peddler: charcoal bought with trade currency")
 			# Wear armour and quench it at the upgraded forge, from the panel.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			sim.add_material("iron_fittings", 6)

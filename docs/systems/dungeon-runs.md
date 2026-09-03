@@ -84,6 +84,13 @@ Boss pressure may ramp through mechanics or attrition. Burst builds shorten expo
 - At least one boon pair creates a discoverable interaction.
 - Death encourages preparation or re-entry rather than save reloading.
 
+## Floors (D-019, 3 Sep 2026)
+
+A trial may have deeper floors (`trial.json` `floors`): each is a run
+with its own stages, boss, bank-out point and completion effect, offered
+by the gate once its `requires_world_effect` is active. Completing a floor
+is one of the milestones that advance the world's era.
+
 ## Open questions
 
 - Treatment of loot found after trial entry but before death.

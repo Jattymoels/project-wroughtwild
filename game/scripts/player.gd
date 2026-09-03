@@ -547,6 +547,8 @@ func aim_probe() -> Dictionary:
 		return {"state": "interact", "label": (collider as PlacedBlock).interact_label(), "target": collider}
 	if collider is Nest:
 		return {"state": "interact", "label": (collider as Nest).interact_label(), "target": collider}
+	if collider is Peddler:
+		return {"state": "interact", "label": (collider as Peddler).interact_label(), "target": collider}
 	return none
 
 
@@ -588,5 +590,7 @@ func interact() -> void:
 		(collider as PlacedBlock).toggle()
 	elif collider is Nest:
 		(collider as Nest).interact(self)
+	elif collider is Peddler:
+		(collider as Peddler).interact(self)
 	elif collider is TrialGate:
 		(collider as TrialGate).interact(self)

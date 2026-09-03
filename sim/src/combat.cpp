@@ -70,8 +70,11 @@ std::vector<Combatant> buildCombatants(const tuning::Tuning& tuning,
     std::vector<Combatant> combatants;
     for (const auto& id : enemyIds) {
         Combatant c;
-        if (id == tuning.trial.boss.id) {
-            const tuning::BossDef& boss = tuning.trial.boss;
+        const tuning::BossDef* bossDef = id == tuning.trial.boss.id ? &tuning.trial.boss : nullptr;
+        for (const auto& floor : tuning.trial.floors)
+            if (id == floor.boss.id) bossDef = &floor.boss;
+        if (bossDef != nullptr) {
+            const tuning::BossDef& boss = *bossDef;
             c.id = boss.id;
             c.displayName = boss.displayName;
             c.life = c.maxLife = boss.maxLife;

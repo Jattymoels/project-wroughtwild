@@ -110,7 +110,8 @@
       "node_density": {
         "boulder": 0.03,
         "iron_vein": 0.016,
-        "tree": 0.004
+        "tree": 0.004,
+        "silver_vein": 0.012
       },
       "pack_density": 0.0045,
       "packs": [
@@ -131,7 +132,8 @@
       "moisture_max": 0.3,
       "node_density": {
         "boulder": 0.012,
-        "tree": 0.002
+        "tree": 0.002,
+        "ember_iron_vein": 0.02
       },
       "pack_density": 0.007,
       "packs": [
@@ -215,6 +217,9 @@
           "shrieker",
           "ash_hound",
           "ash_hound"
+        ],
+        [
+          "valley_elk"
         ]
       ],
       "design_purpose": "Wood country: dense trees with hound packs prowling, so bulk timber runs stay tense; a shrieker among the hounds turns a timber run into a hunt"
@@ -231,6 +236,10 @@
       "packs": [
         [
           "ember_whelp"
+        ],
+        [
+          "valley_elk",
+          "valley_elk"
         ]
       ],
       "design_purpose": "The gentle fallback biome and starting country: sparse resources, near-empty of threats, readable in every direction"
@@ -274,7 +283,23 @@
       "visual": "tin_vein",
       "era": 2
     },
-    "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture. Cave-floor nodes use the same types (caves.node_density decides which). era (default 1) is the era a node type surfaces in (eras.json, D-019): the world map places every node from the seed, and the engine reveals the ones whose era has come - copper and tin glint on the cave floors once the deep wakes."
+    "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture. Cave-floor nodes use the same types (caves.node_density decides which). era (default 1) is the era a node type surfaces in (eras.json, D-019): the world map places every node from the seed, and the engine reveals the ones whose era has come - copper and tin glint on the cave floors once the deep wakes.",
+    "ember_iron_vein": {
+      "display_name": "Ember-Iron Vein",
+      "material_family": "ember_iron_ore",
+      "units": 6,
+      "units_per_harvest": 2,
+      "visual": "ember_vein",
+      "era": 3
+    },
+    "silver_vein": {
+      "display_name": "Silver Vein",
+      "material_family": "silver_ore",
+      "units": 6,
+      "units_per_harvest": 2,
+      "visual": "silver_vein",
+      "era": 3
+    }
   },
   "guarantees": {
     "spawn_biome": "meadow",

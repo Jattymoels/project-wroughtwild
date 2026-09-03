@@ -8,22 +8,32 @@ namespace wroughtwild::trial {
 TrialSession::TrialSession(const tuning::Tuning& tuning,
                            economy::PlayerEconomy& economy,
                            boons::BuildTags buildTags,
-                           uint64_t seed)
-    : tuning_(tuning), economy_(economy), buildTags_(std::move(buildTags)), seed_(seed) {
+                           uint64_t seed,
+                           const tuning::TrialFloor* floor)
+    : tuning_(tuning), economy_(economy), floor_(floor), buildTags_(std::move(buildTags)), seed_(seed) {
     // Deposit ordinary carried possessions at the entrance (D-006).
     depositedInventory_ = economy_.inventory;
     economy_.inventory.clear();
 }
 
+const std::vector<tuning::TrialStage>& TrialSession::stages() const {
+    return floor_ ? floor_->stages : tuning_.trial.stages;
+}
+const tuning::BossDef& TrialSession::boss() const { return floor_ ? floor_->boss : tuning_.trial.boss; }
+int TrialSession::exitAfterStage() const { return floor_ ? floor_->exitAfterStage : tuning_.trial.exitAfterStage; }
+const std::string& TrialSession::completionUnlock() const {
+    return floor_ ? floor_->completionUnlock : tuning_.trial.completionUnlock;
+}
+
 const tuning::TrialStage& TrialSession::currentStage() const {
-    if (stageIndex_ >= static_cast<int>(tuning_.trial.stages.size()))
+    if (stageIndex_ >= static_cast<int>(stages().size()))
         throw std::runtime_error("trial: no stage at index " + std::to_string(stageIndex_));
-    return tuning_.trial.stages[stageIndex_];
+    return stages()[stageIndex_];
 }
 
 bool TrialSession::canBankAndExit() const {
-    return !finished_ && tuning_.trial.exitAfterStage >= 0 &&
-           stageIndex_ > tuning_.trial.exitAfterStage;
+    return !finished_ && exitAfterStage() >= 0 &&
+           stageIndex_ > exitAfterStage();
 }
 
 combat::CombatMods TrialSession::currentMods() const {
@@ -128,7 +138,7 @@ TrialSession::RoomOutcome TrialSession::resolveRoom(bool victory) {
     }
 
     ++stageIndex_;
-    if (stageIndex_ >= static_cast<int>(tuning_.trial.stages.size()))
+    if (stageIndex_ >= static_cast<int>(stages().size()))
         finish(/*died=*/false);
     return outcome;
 }
@@ -183,7 +193,7 @@ void TrialSession::finish(bool died) {
         for (const auto& item : lootItems_) economy_.packItems.push_back(item);
 
     if (bossDefeated_)
-        economy_.recordWorldEffect(tuning_.trial.completionUnlock);
+        economy_.recordWorldEffect(completionUnlock());
 
     // Temporary trial effects never outlive the run (design pillar).
     run_.clear();

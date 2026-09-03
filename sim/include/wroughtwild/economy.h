@@ -146,6 +146,10 @@ public:
     bool payPlacement(const std::string& shapeId, const std::string& materialFamily);
     int refundRemoval(const std::string& shapeId, const std::string& materialFamily);
 
+    // --- the peddler (crafting.json market) ---
+    // Buys an offer by item id with currency; false when unaffordable/unknown.
+    bool buy(const std::string& itemId);
+
     // --- skill mastery (D-019) ---
     // A cast that fired. Returns the perk texts this use unlocked (usually none).
     std::vector<std::string> noteSkillUse(const std::string& skillId);

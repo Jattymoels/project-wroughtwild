@@ -29,6 +29,26 @@
     {
       "id": "preserving_catalyst",
       "display_name": "Preserving Catalyst"
+    },
+    {
+      "id": "ember_iron_ore",
+      "display_name": "Ember-Iron Ore"
+    },
+    {
+      "id": "silver_ore",
+      "display_name": "Silver Ore"
+    },
+    {
+      "id": "steel_ingot",
+      "display_name": "Steel Ingot"
+    },
+    {
+      "id": "silver_ingot",
+      "display_name": "Silver Ingot"
+    },
+    {
+      "id": "hide",
+      "display_name": "Hide"
     }
   ],
   "stations": [
@@ -180,6 +200,48 @@
       ],
       "fuel_cost": 2,
       "design_purpose": "The first alloy (D-019): two ores that only surface once the deep wakes, combined at the forge you already have. Bronze is malleable and tough - the building family that works curved forms and the item base that holds a second modifier tier - so era two's new ground leads straight to era two's new work. Old ores never become trash: bronze needs copper forever."
+    },
+    {
+      "id": "smelt_steel",
+      "display_name": "Smelt Steel Ingot",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 4
+      },
+      "inputs": {
+        "iron_ingot": 2,
+        "charcoal": 2
+      },
+      "outputs": {
+        "steel_ingot": 1
+      },
+      "base_skill_xp": 5,
+      "use_categories": [
+        "processing"
+      ],
+      "fuel_cost": 3,
+      "design_purpose": "Era three's metal: iron worked again with charcoal at the improved forge. Hard and resilient; old iron never becomes trash because steel needs it forever (D-019)."
+    },
+    {
+      "id": "smelt_silver",
+      "display_name": "Smelt Silver Ingot",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "silver_ore": 2,
+        "wood": 1
+      },
+      "outputs": {
+        "silver_ingot": 1
+      },
+      "base_skill_xp": 4,
+      "use_categories": [
+        "processing"
+      ],
+      "fuel_cost": 2,
+      "design_purpose": "Silver from the high crags once the ash tide rises: the warding family, and malleable like bronze."
     },
     {
       "id": "iron_fittings",
@@ -417,5 +479,34 @@
     "wrought_chance_from_level": 4,
     "wrought_chance_per_level": 0.15,
     "design_purpose": "Crafted gear rolls modifiers like a drop (owner, 3 Sep 2026: 'they come out plain ... a random generation of modifiers is preferred'). A recipe whose output is an item base makes a rolled item in the pack instead of a stack: keen with keen_chance_at_level_1 plus keen_chance_per_level per Blacksmithing level above one, wrought (rolled first) from wrought_chance_from_level at wrought_chance_per_level per level above that, else plain. The tier is the era's, so era two's forge makes era two's rolls, and the seed is the craft count so a save replays its luck. Infrastructure stays the dependable route: the base is certain, the roll is the excitement."
+  },
+  "market": {
+    "offers": [
+      {
+        "item": "preserving_catalyst",
+        "count": 1,
+        "price": 30,
+        "currency": "trade_currency"
+      },
+      {
+        "item": "charcoal",
+        "count": 4,
+        "price": 6,
+        "currency": "trade_currency"
+      },
+      {
+        "item": "iron_ore",
+        "count": 3,
+        "price": 5,
+        "currency": "trade_currency"
+      },
+      {
+        "item": "wood",
+        "count": 8,
+        "price": 4,
+        "currency": "trade_currency"
+      }
+    ],
+    "design_purpose": "The peddler at the spawn clearing: the first thing trade currency buys (the survey found it had nowhere to go). Prices are steep next to gathering so infrastructure stays the dependable route; the catalyst is the reason to come - the dependable way to a Preserving Transfer when the husks are unkind."
   }
 }

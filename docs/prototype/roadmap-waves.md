@@ -325,6 +325,10 @@ the world is the campaign. Slices, in order:
 5. **The bigger world** *(landed 3 Sep 2026)*: 224 cells a side, the fen
    as a fifth biome, and four new families (bog lurker, marsh wisp, cinder
    wisp, hollow knight) as data with their own looks and immunities.
+6. **Era three, the deeper floor, life** *(landed 3 Sep 2026)*: the trial
+   gains floors (the Deeper Forge, the Ash Warden) and its completion wakes
+   the Ash Tide - ember-iron, silver, steel, further-calling shriekers,
+   wisp escorts, commoner elites; the peddler, grazing elk and birds.
 
 Owner tuning note (3 Sep): "everything is way too fast/powerful ... to
 feel good you have to start with less damage/more danger" — era one's

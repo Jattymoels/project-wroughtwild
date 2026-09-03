@@ -13,6 +13,8 @@ var nest_id := 0
 ## True for a trial room's own enemies: the room contains, counts and
 ## clears only these, never a roaming pack that wandered near the arena.
 var trial_bound := false
+## Grazers (behaviour flees): run within aggro range, never attack.
+var flees := false
 
 
 ## Era mechanic (eras.json burning_ground): where this family dies, the
@@ -139,6 +141,7 @@ func configure(sim: WroughtwildSim) -> void:
 	var b: Dictionary = rt["behaviours"].get(behaviour, {})
 	# The hastened weakness quickens both feet and attacks in real time.
 	var speed_multiplier: float = sim.combat_mods()["enemy_speed_multiplier"]
+	flees = b.get("flees", false)
 	move_speed = b.get("move_speed_mps", 3.0) * speed_multiplier
 	attack_range = b.get("attack_range_m", 1.5)
 	preferred_distance = b.get("preferred_distance_m", 0.0)
@@ -148,6 +151,8 @@ func configure(sim: WroughtwildSim) -> void:
 	give_up_distance = b.get("give_up_distance_m", 0.0)
 	_scream_period = b.get("scream_period_seconds", 0.0)
 	_scream_radius = b.get("scream_radius_m", 0.0)
+	# Era mechanics: the shriekers call further as the world wakes.
+	_scream_radius += float(sim.era_mechanic(enemy_id, "scream_radius_bonus").get("value", 0.0))
 	_scream_timer = _scream_period
 	var horde: Dictionary = rt.get("horde", {})
 	give_up_seconds = horde.get("give_up_seconds", 2.5)
@@ -406,6 +411,25 @@ func _physics_process(delta: float) -> void:
 	var in_reach := _vertical_gap_to(player) <= vertical_reach
 	_attack_cooldown = maxf(0.0, _attack_cooldown - delta)
 	var planar := Vector3.ZERO
+
+	# Grazers: the state machine turned around. Near you they bolt, far
+	# from you they settle, and they never wind up a bite.
+	if flees:
+		if state == "chase" or state == "windup":
+			state = "flee"
+		if state == "idle" and distance <= aggro_range and in_reach:
+			state = "flee"
+		elif state == "flee" and distance > give_up_distance:
+			state = "idle"
+		if state == "flee":
+			planar = -_chase_direction(player, distance) * move_speed + _separation_push()
+		velocity.x = planar.x
+		velocity.z = planar.z
+		_hop_if_blocked(planar)
+		if planar.length_squared() > 0.0001:
+			look_at(global_position + Vector3(planar.x, 0.0, planar.z), Vector3.UP)
+		move_and_slide()
+		return
 
 	match state:
 		"idle":
