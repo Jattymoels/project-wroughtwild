@@ -171,6 +171,7 @@ public:
     // Rules for breaking generic terrain blocks, by kind ("surface",
     // "dirt", "stone", "bedrock"): {breakable, dig_seconds, yields}.
     Dictionary block_rules() const;
+    Dictionary fire_setting() const;
 
     // --- the building lattice (Wave 4, lattice.h, D-017) ---
     // An element is a Dictionary {kind: "volume" | "face" | "edge", axis:

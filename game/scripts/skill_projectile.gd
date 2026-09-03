@@ -63,6 +63,14 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var step := _speed * delta
+	# The world stops a bolt: terrain and placed pieces. Cold on hot rock
+	# cracks it; fire on rock heats it (D-020 fire-setting).
+	var query := PhysicsRayQueryParameters3D.create(global_position, global_position + direction * (step + _hit_radius))
+	query.exclude = [combat.player.get_rid()]
+	var wall := get_world_3d().direct_space_state.intersect_ray(query)
+	if not wall.is_empty() and not (wall.get("collider") is Enemy):
+		_hit_world(wall)
+		return
 	global_position += direction * step
 	_range_left -= step
 	if _range_left <= 0.0:
@@ -72,6 +80,24 @@ func _physics_process(delta: float) -> void:
 	var target := _enemy_in_radius()
 	if target != null:
 		_hit(target)
+
+
+func _hit_world(hit: Dictionary) -> void:
+	var terrain := combat.player._find_terrain()
+	var id := String(skill_id)
+	if terrain != null and terrain.is_terrain_body(hit.get("collider")):
+		if combat.sim.chill_applied(id, false) > 0.0:
+			var radius: float = terrain.fire_rules.get("quench_radius_m", 2.5)
+			var cracked_count: int = terrain.quench_at(hit["position"], radius)
+			if cracked_count > 0:
+				combat.world_worked.emit("cracked", cracked_count)
+		if combat.sim.ignite_applied(id, false) > 0.0:
+			var cell: Vector3i = terrain.block_from_hit(hit["position"], hit["normal"])
+			if terrain.kind_at(cell.x, cell.y, cell.z) == "":
+				cell = terrain.block_from_hit(hit["position"], -hit["normal"])
+			if terrain.heat_block(cell, 1):
+				combat.world_worked.emit("heated", 1)
+	queue_free()
 
 
 func _enemy_in_radius() -> Enemy:

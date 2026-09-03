@@ -251,6 +251,15 @@ malleable form.
 - Prototype controls must display rotation, removal and material cost clearly.
 - Nearby storage integration is desirable after the basic placement loop works.
 
+## The campfire (3 Sep 2026, D-020)
+
+One shape is fuel, not building: the **campfire** (form `fire`) requires
+the `fuel` trait, so it is laid in timber or charcoal, burns for its fuel's
+`burn_seconds` at its fuel's heat, heats the rock and nodes beside it, and
+is gone with no refund. Charcoal is a building family only for shapes that
+require fuel (`only_for_trait`). See fire-setting in
+[progression-eras.md](progression-eras.md).
+
 ## Failure cases
 
 - Too many shapes make the palette harder than the construction itself.

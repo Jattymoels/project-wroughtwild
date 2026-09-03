@@ -57,7 +57,7 @@
     "rings": [
       {
         "radius_m": 75,
-        "pack_density_multiplier": 1.0,
+        "pack_density_multiplier": 0.35,
         "pack_size_bonus": 0,
         "elite_chance": 0.0
       },
@@ -74,32 +74,37 @@
         "elite_chance": 0.25
       }
     ],
-    "design_purpose": "Danger scales with distance from spawn: the first ring containing a cell multiplies pack density, appends pack_size_bonus extra members drawn from the pack's own kind, and rolls elite_chance for one member to carry an elite modifier (world.json elite_modifiers). The heartland stays learnable and elite-free; the far rings are where packs grow teeth and the elite bounties live."
+    "design_purpose": "Danger scales with distance from spawn: the first ring containing a cell multiplies pack density, appends pack_size_bonus extra members drawn from the pack's own kind, and rolls elite_chance for one member to carry an elite modifier (world.json elite_modifiers). The heartland stays learnable and elite-free; the far rings are where packs grow teeth and the elite bounties live. The quiet heartland (owner, 3 Sep 2026): the first ring runs at a third of the tuned density so the first hour is a world to explore, gather in and figure out - danger is something you walk toward."
   },
   "block_rules": {
     "surface": {
       "breakable": true,
       "dig_seconds": 0.7,
-      "yields": {}
+      "yields": {},
+      "by_hand": true
     },
     "dirt": {
       "breakable": true,
       "dig_seconds": 0.7,
-      "yields": {}
+      "yields": {},
+      "by_hand": true
     },
     "stone": {
       "breakable": true,
-      "dig_seconds": 1.6,
+      "dig_seconds": 1.0,
       "yields": {
         "stone": 1
-      }
+      },
+      "by_hand": false,
+      "heat_to_crack": 1
     },
     "bedrock": {
       "breakable": false,
       "dig_seconds": 0.0,
-      "yields": {}
+      "yields": {},
+      "by_hand": false
     },
-    "design_purpose": "Breaking generic terrain blocks (owner ask, 2 Sep 2026): hold LMB on a block to dig it out. The mechanic's cost is time - dig_seconds per kind, stone slower than soil - with tool tiers deferred until crafting wants them. Soil (surface turf, dirt) yields nothing yet because no soil material family exists; digging soil buys ACCESS (mine down, open a cave, cut a pit the horde falls into). Stone yields the stone family, so rock faces are a real quarry beside boulders. Bedrock at y 0 is the world's floor and never breaks."
+    "design_purpose": "Breaking generic terrain blocks: hold LMB on a block to dig it out over dig_seconds. by_hand (default true) says bare hands can dig it; heat_to_crack (default 0 = never) is the fire heat that makes it crackable - FIRE-SETTING (D-020, owner 3 Sep 2026: the survival-game pickaxe is 'played out'): a campfire against rock heats the blocks beside it, cold on hot rock cracks it, and cracked rock digs by hand at dig_seconds. Soil digs by hand and yields nothing (access: mine down, open a cave, cut a pit). Stone pays the stone family once cracked. Bedrock at y 0 is the world's floor and never breaks."
   },
   "biomes": [
     {
@@ -217,12 +222,15 @@
           "shrieker",
           "ash_hound",
           "ash_hound"
-        ],
+        ]
+      ],
+      "design_purpose": "Wood country: dense trees with hound packs prowling, so bulk timber runs stay tense; a shrieker among the hounds turns a timber run into a hunt",
+      "grazers": [
         [
           "valley_elk"
         ]
       ],
-      "design_purpose": "Wood country: dense trees with hound packs prowling, so bulk timber runs stay tense; a shrieker among the hounds turns a timber run into a hunt"
+      "grazer_density": 0.004
     },
     {
       "id": "meadow",
@@ -236,13 +244,16 @@
       "packs": [
         [
           "ember_whelp"
-        ],
+        ]
+      ],
+      "design_purpose": "The gentle fallback biome and starting country: sparse resources, near-empty of threats, readable in every direction",
+      "grazers": [
         [
           "valley_elk",
           "valley_elk"
         ]
       ],
-      "design_purpose": "The gentle fallback biome and starting country: sparse resources, near-empty of threats, readable in every direction"
+      "grazer_density": 0.004
     }
   ],
   "nodes": {
@@ -258,14 +269,16 @@
       "material_family": "stone",
       "units": 10,
       "units_per_harvest": 2,
-      "visual": "boulder"
+      "visual": "boulder",
+      "heat_to_work": 1
     },
     "iron_vein": {
       "display_name": "Iron Vein",
       "material_family": "iron_ore",
       "units": 8,
       "units_per_harvest": 2,
-      "visual": "iron_vein"
+      "visual": "iron_vein",
+      "heat_to_work": 1
     },
     "copper_vein": {
       "display_name": "Copper Vein",
@@ -273,7 +286,8 @@
       "units": 8,
       "units_per_harvest": 2,
       "visual": "copper_vein",
-      "era": 2
+      "era": 2,
+      "heat_to_work": 2
     },
     "tin_vein": {
       "display_name": "Tin Vein",
@@ -281,16 +295,18 @@
       "units": 6,
       "units_per_harvest": 2,
       "visual": "tin_vein",
-      "era": 2
+      "era": 2,
+      "heat_to_work": 2
     },
-    "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture. Cave-floor nodes use the same types (caves.node_density decides which). era (default 1) is the era a node type surfaces in (eras.json, D-019): the world map places every node from the seed, and the engine reveals the ones whose era has come - copper and tin glint on the cave floors once the deep wakes.",
+    "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture. Cave-floor nodes use the same types (caves.node_density decides which). era (default 1) is the era a node type surfaces in (eras.json, D-019): the world map places every node from the seed, and the engine reveals the ones whose era has come - copper and tin glint on the cave floors once the deep wakes. heat_to_work (default 0 = hands) is the fire heat a node must be soaked in and then quenched before E works it: boulders and iron want a wood fire, the alloy ores and the era-three veins a charcoal fire (the hotter ore wants the hotter fire), trees nothing.",
     "ember_iron_vein": {
       "display_name": "Ember-Iron Vein",
       "material_family": "ember_iron_ore",
       "units": 6,
       "units_per_harvest": 2,
       "visual": "ember_vein",
-      "era": 3
+      "era": 3,
+      "heat_to_work": 2
     },
     "silver_vein": {
       "display_name": "Silver Vein",
@@ -298,7 +314,8 @@
       "units": 6,
       "units_per_harvest": 2,
       "visual": "silver_vein",
-      "era": 3
+      "era": 3,
+      "heat_to_work": 2
     }
   },
   "guarantees": {
@@ -312,7 +329,24 @@
     },
     "gate_biome": "ember_wastes",
     "gate_min_distance_m": 100,
-    "pack_min_distance_from_spawn_m": 22,
+    "pack_min_distance_from_spawn_m": 40,
     "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood/stone/iron within a short walk to reach the forge, keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map"
+  },
+  "fire_setting": {
+    "fuels": {
+      "wood": {
+        "heat": 1,
+        "burn_seconds": 45
+      },
+      "charcoal": {
+        "heat": 2,
+        "burn_seconds": 60
+      }
+    },
+    "reach_cells": 1,
+    "soak_seconds": 4,
+    "hot_seconds": 45,
+    "quench_radius_m": 2.5,
+    "design_purpose": "Fire-setting (D-020): the first capability gate is a verb, not a tool. A campfire (construction.json shape campfire) built from a fuel family burns for burn_seconds at that fuel's heat; after soak_seconds every rock block and node within reach_cells of it is hot (heat level = the fuel's) for hot_seconds after the fire dies. Cold landing on hot rock - the Frost Orb, the nova, the Shatter - cracks everything hot within quench_radius_m, and cracked rock digs by hand. Wood fires crack stone and iron; charcoal (the forge's first refinement) reaches the alloy ores. Real pre-industrial quarrying, and it makes fire and cold the tools of the whole game."
   }
 }

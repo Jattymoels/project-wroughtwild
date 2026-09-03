@@ -562,6 +562,15 @@ void testCombat(const tuning::Tuning& t) {
               a.playerLifeRemaining == b.playerLifeRemaining,
           "combat: deterministic per seed");
     check(a.victory, "combat: bare player clears two whelps");
+    check(a.rounds >= 5, "combat: and it takes a while (D-020 long fights, " + std::to_string(a.rounds) + " rounds)");
+    {
+        const auto* whelp = t.world.findEnemy("ember_whelp");
+        const auto* heavy = t.skills.findCombatSkill("prototype_heavy_strike");
+        check(whelp && heavy && whelp->maxLife > 2.0 * heavy->numbers.at("base_damage"),
+              "combat: a day-one whelp takes three heavy blows, not two");
+        for (const auto& e : t.world.enemies)
+            check(e.damage <= 8.0, "combat: no ordinary mob hits harder than eight (" + e.id + ")");
+    }
 
     // Hastened enemies (weakness) make the same fight strictly more painful.
     combat::CombatMods hastened;
@@ -910,11 +919,68 @@ void testWorldgen(const tuning::Tuning& t) {
     check(t.worldgen.dangerMultiplierAt(30.0) <= t.worldgen.dangerMultiplierAt(200.0) &&
               t.worldgen.dangerMultiplierAt(200.0) > 1.0,
           "worldgen: danger rings scale pack density outward");
+    check(t.worldgen.dangerMultiplierAt(30.0) < 0.5, "worldgen: the heartland is quiet (D-020)");
+    {
+        // Grazers: placed from the biome's grazer list, flagged, never
+        // hostile-listed; hostile packs keep off the doorstep.
+        int herds = 0, hostileNear = 0;
+        const auto& g2 = t.worldgen.guarantees;
+        for (const auto& pack : a.packs) {
+            if (pack.grazer) {
+                ++herds;
+                for (const auto& id : pack.enemies)
+                    check(id == "valley_elk", "worldgen: herds are grazers (" + id + ")");
+                check(pack.eliteMemberIndex < 0, "worldgen: herds are never crowned");
+            } else {
+                double d = std::sqrt(double((pack.x - a.spawnX) * (pack.x - a.spawnX) + (pack.z - a.spawnZ) * (pack.z - a.spawnZ)));
+                if (d < g2.packMinDistanceFromSpawnM) ++hostileNear;
+                for (const auto& id : pack.enemies)
+                    check(id != "valley_elk", "worldgen: hostile packs never carry grazers");
+            }
+        }
+        check(herds > 0, "worldgen: the meadow has herds");
+        check(hostileNear == 0, "worldgen: no hostile pack within the doorstep radius");
+    }
     check(t.worldgen.blockRules.count("stone") == 1 &&
               t.worldgen.blockRules.at("stone").yields.at("stone") == 1 &&
               t.worldgen.blockRules.at("stone").digSeconds > 0.0 &&
               !t.worldgen.blockRules.at("bedrock").breakable,
           "worldgen: block rules load (stone pays stone, bedrock never breaks)");
+
+    // D-020 fire-setting: soil digs by hand, stone must be cracked by a
+    // wood fire and cold, bedrock never; the alloy ores want charcoal.
+    check(t.worldgen.blockRules.at("surface").byHand && t.worldgen.blockRules.at("dirt").byHand &&
+              !t.worldgen.blockRules.at("stone").byHand && t.worldgen.blockRules.at("stone").heatToCrack == 1 &&
+              !t.worldgen.blockRules.at("bedrock").byHand && t.worldgen.blockRules.at("bedrock").heatToCrack == 0,
+          "fire-setting: hands dig soil; stone cracks at heat one; bedrock never");
+    check(t.worldgen.fireSetting.fuelHeat("wood") == 1 && t.worldgen.fireSetting.fuelHeat("charcoal") == 2 &&
+              t.worldgen.fireSetting.fuelHeat("stone") == 0 && t.worldgen.fireSetting.fuels.at("wood").burnSeconds > 0.0 &&
+              t.worldgen.fireSetting.reachCells >= 1 && t.worldgen.fireSetting.hotSeconds > t.worldgen.fireSetting.soakSeconds &&
+              t.worldgen.fireSetting.quenchRadiusM > 0.0,
+          "fire-setting: timber burns at heat one, charcoal at two, stone is no fuel");
+    check(t.worldgen.nodeTypes.at("tree").heatToWork == 0 && t.worldgen.nodeTypes.at("boulder").heatToWork == 1 &&
+              t.worldgen.nodeTypes.at("iron_vein").heatToWork == 1 && t.worldgen.nodeTypes.at("copper_vein").heatToWork == 2 &&
+              t.worldgen.nodeTypes.at("silver_vein").heatToWork == 2,
+          "fire-setting: trees by hand, boulders and iron by wood fire, the alloy ores by charcoal");
+    for (const auto& [id, node] : t.worldgen.nodeTypes)
+        check(node.heatToWork <= 2, "fire-setting: no node wants more heat than charcoal gives (" + id + ")");
+    {
+        const auto* fire = t.construction.findShape("campfire");
+        const auto* charcoal = t.construction.findMaterial("charcoal");
+        const auto* wood = t.construction.findMaterial("wood");
+        const auto* cube = t.construction.findShape("cube");
+        check(fire && charcoal && wood && cube && fire->form == "fire" && fire->element == "block",
+              "fire-setting: the campfire is a block-cell piece of form fire");
+        check(t.construction.shapeAllowsMaterial(*fire, *wood) && t.construction.shapeAllowsMaterial(*fire, *charcoal),
+              "fire-setting: timber and charcoal both lay a campfire");
+        check(!t.construction.shapeAllowsMaterial(*cube, *charcoal) && t.construction.shapeAllowsMaterial(*cube, *wood),
+              "fire-setting: charcoal is fuel, never a wall (only_for_trait)");
+        check(!t.construction.shapeAllowsMaterial(*fire, *t.construction.findMaterial("stone")),
+              "fire-setting: stone does not burn");
+        for (const auto& [family, fuel] : t.worldgen.fireSetting.fuels)
+            check(t.construction.findMaterial(family) != nullptr && t.construction.findMaterial(family)->hasTrait("fuel"),
+                  "fire-setting: every fuel is a building family with the fuel trait (" + family + ")");
+    }
 
     // The guarantees hold across many seeds (D-003: critical progression
     // resources cannot be absent from a valid seed). 24 seeds: the 3D world
@@ -943,6 +1009,7 @@ void testWorldgen(const tuning::Tuning& t) {
             allGood = false; firstBad = "gate too close (seed " + std::to_string(seed) + ")";
         }
         for (const auto& pack : map.packs) {
+            if (pack.grazer) continue; // herds may graze by the door (D-020)
             double d = std::sqrt(
                 static_cast<double>((pack.x - map.spawnX) * (pack.x - map.spawnX) +
                                     (pack.z - map.spawnZ) * (pack.z - map.spawnZ)));
@@ -1164,12 +1231,12 @@ void testStatusGrammar(const tuning::Tuning& t) {
               wand->implicitModifiers.front().id == "kindling",
           "status: the ember wand carries kindling");
     for (uint64_t seed = 0; seed < 40; ++seed) {
-        auto item = items::rollRarityItem(t.items, "ember_wand", "wrought", 1, seed);
+        auto item = items::rollRarityItem(t.items, "ember_wand", "wrought", 2, seed);
         for (const auto& rolled : item.rolledProperties) {
             const auto* def = t.items.findModifier(rolled.propertyId);
             check(def && !def->isSelf(), "status: the wand rolls only skill modifiers (" + rolled.propertyId + ")");
         }
-        auto maceRoll = items::rollRarityItem(t.items, "iron_mace", "wrought", 1, seed);
+        auto maceRoll = items::rollRarityItem(t.items, "iron_mace", "wrought", 2, seed);
         for (const auto& rolled : maceRoll.rolledProperties)
             check(rolled.propertyId != "deep_frost" && rolled.propertyId != "kindling",
                   "status: the mace never grows spell-line mods");
@@ -1329,7 +1396,7 @@ void testItemisation(const tuning::Tuning& t) {
 
     // Rarity is a modifier count within the rarity's range, all distinct, all allowed.
     for (uint64_t seed = 0; seed < 40; ++seed) {
-        auto item = items::rollRarityItem(t.items, "frost_sceptre", "wrought", 1, seed);
+        auto item = items::rollRarityItem(t.items, "frost_sceptre", "wrought", 2, seed);
         check(item.rarity == "wrought", "items: rarity recorded");
         check(item.rolledProperties.size() >= 3 && item.rolledProperties.size() <= 4, "items: wrought rolls 3-4 modifiers");
         std::set<std::string> seen;
@@ -1345,14 +1412,45 @@ void testItemisation(const tuning::Tuning& t) {
     auto high = items::rollRarityItem(t.items, "ember_charm", "wrought", 2, 9);
     check(high.rolledProperties.size() >= 3, "items: higher tiers fall back to defined tiers");
 
+    // D-020 the era-one pool: a tier-one roll never carries an interaction
+    // modifier; tier two (era two, or an elite in era one) opens the pool.
+    {
+        bool interactionAtOne = false, interactionAtTwo = false;
+        for (uint64_t seed = 0; seed < 60; ++seed) {
+            for (const char* base : {"frost_sceptre", "ember_wand", "iron_mace", "ember_charm"}) {
+                for (const auto& rolled : items::rollRarityItem(t.items, base, "wrought", 1, seed).rolledProperties)
+                    if (t.items.findModifier(rolled.propertyId)->fromTier > 1) interactionAtOne = true;
+                for (const auto& rolled : items::rollRarityItem(t.items, base, "keen", 2, seed).rolledProperties)
+                    if (t.items.findModifier(rolled.propertyId)->fromTier > 1) interactionAtTwo = true;
+            }
+        }
+        check(!interactionAtOne, "pool: tier-one rolls are defensive or small adds, never interactions");
+        check(interactionAtTwo, "pool: tier two opens the interactions");
+        check(t.items.findModifier("forked_lattice")->fromTier == 2 && t.items.findModifier("hemorrhage")->fromTier == 2 &&
+                  t.items.findModifier("max_life")->fromTier == 1 && t.items.findModifier("physical_damage")->fromTier == 1,
+              "pool: forks and bleeds wait for tier two; life and a small damage add do not");
+        const auto* phys = t.items.findModifier("physical_damage");
+        check(phys->findTier(1)->maximum <= 0.1 && phys->findTier(3)->maximum <= 0.5,
+              "pool: damage adds start small and stay inside the threefold budget");
+        const auto* sceptre = t.items.findBase("frost_sceptre");
+        check(sceptre->implicitModifiers.size() == 1 && sceptre->implicitModifiers.front().id == "cold_damage",
+              "pool: the sceptre's implicit is no longer a fork");
+    }
+
     // Gear drives the grammar: a plain sceptre's implicit fork doubles the orb.
     stats::Equipment worn;
     items::ItemInstance plainSceptre;
     plainSceptre.baseId = "frost_sceptre";
     worn.slots["weapon"] = plainSceptre;
+    auto implicitOnly = grammar::gearMods(t.items, worn);
+    check(implicitOnly.size() == 1 && implicitOnly.front().source == "weapon" &&
+              implicitOnly.front().id == "cold_damage",
+          "items: the sceptre's implicit is a small cold add, not a fork (D-020)");
+    check(grammar::forkCount(t, implicitOnly, "prototype_frost_orb") == 1, "items: a plain sceptre does not fork");
+    plainSceptre.rolledProperties.push_back({"forked_lattice", 2, 1.0});
+    worn.slots["weapon"] = plainSceptre;
     auto mods = grammar::gearMods(t.items, worn);
-    check(mods.size() == 1 && mods.front().source == "weapon", "items: implicit modifier comes from the weapon slot");
-    check(grammar::forkCount(t, mods, "prototype_frost_orb") == 2, "items: the sceptre's implicit fork counts");
+    check(grammar::forkCount(t, mods, "prototype_frost_orb") == 2, "items: a rolled fork counts");
     check(grammar::forkCount(t, mods, "prototype_area_strike") == 0, "items: fork ignores the cone strike");
 
     // Damage and cooldown modifiers resolve by tag.

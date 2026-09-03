@@ -31,6 +31,7 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 			"z": pack["z"],
 			"elite_member": pack.get("elite_member", -1),
 			"elite_modifier": pack.get("elite_modifier", ""),
+			"grazer": pack.get("grazer", false),
 			"spawned": false,
 		})
 
@@ -63,6 +64,9 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	pack["spawned"] = true
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	var ids: PackedStringArray = pack["enemies"]
+	# Herds (D-020 the quiet heartland) are life, not threat: no escorts,
+	# never crowned.
+	var grazer: bool = pack.get("grazer", false)
 	# Era mechanics (eras.json): some families run in bigger packs now, some
 	# bring escorts, and later eras crown elites more often.
 	var era: Dictionary = sim.era()
@@ -75,12 +79,12 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 		var bonus: Dictionary = sim.era_mechanic(id, "pack_size_bonus")
 		for k in int(bonus.get("value", 0)):
 			ids.append(id)
-		for escort in escorts.get(id, PackedStringArray()):
+		for escort in (PackedStringArray() if grazer else escorts.get(id, PackedStringArray())):
 			ids.append(escort)
 	var elite_member: int = int(pack["elite_member"])
 	var elite_modifier: String = String(pack["elite_modifier"])
 	var elite_bonus: float = float(era.get("elite_chance_bonus", 0.0))
-	if elite_member < 0 and elite_bonus > 0.0:
+	if not grazer and elite_member < 0 and elite_bonus > 0.0:
 		var roll := RandomNumberGenerator.new()
 		roll.seed = hash(Vector3i(int(pack["x"]), int(pack["y"]), int(pack["z"]))) ^ world_seed
 		if roll.randf() < elite_bonus:

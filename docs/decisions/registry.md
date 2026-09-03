@@ -71,6 +71,35 @@ Statuses:
   than zones unlocking. Encroachment slice 1 stays merged but is era two's
   mechanic; nests do not settle in era one.
 
+- **D-020 (3 Sep 2026, progression pacing):** the owner, after the full
+  arc: "we definitely get too powerful too quick ... think of the first
+  time getting into a world and feeling like exploring, originally without
+  danger, figuring out you can't break stone without a tool ... more like
+  early MMOs in terms of combat where there's lots of mobs and it takes a
+  while to kill things ... I'd rather our combat start a bit more powerful
+  though but none of the interactions or powerful +1s ... early item mods
+  are more defensive, or small additions to damage (outside of really
+  lucky drops) ... some sort of support style skill category ... I don't
+  just want it to copy POE." The survey showed the curve was short because
+  the floor sat at the ceiling (a day-one Heavy Strike two-shot every
+  era-one mob). Accepted and landed the same day: **long fights** (mob
+  life ×2.5, mob damage ×0.7, player numbers untouched, bosses untouched,
+  oracle rates in band), **the quiet heartland** (the first danger ring at
+  a third density, hostile packs 40 m off the door, grazers placed by
+  their own rule inside it), **the era-one pool** (`from_tier` on every
+  interaction modifier; sceptres' implicit a small cold add, not a fork;
+  damage tiers 5-10 / 15-25 / 30-45 %), and **fire-setting** as the first
+  capability gate — the owner found the pickaxe "played out" ("almost
+  every survival craft game is sticks trees and rocks"); of the
+  alternatives offered (fire-setting, frame-to-cut, can't-carry, places
+  teach, creatures as excavators) they chose fire-setting: a campfire laid
+  from a fuel family heats the rock beside it, cold cracks what is hot,
+  cracked rock digs by hand; wood fires crack stone and iron, charcoal
+  reaches the alloy ores; bedrock never. **Skills on the Foundry plate**
+  (a skill tablet laid on the plate is supported by the ingots touching
+  it) is the accepted support direction, to build next; "manners learned
+  from mobs" is the accepted source of later supports.
+
 ## Registering a decision
 
 Add an entry when a choice materially affects player experience, save data, system boundaries, architecture or prototype scope. Create a separate ADR when the rationale, alternatives or consequences require more than one table row.

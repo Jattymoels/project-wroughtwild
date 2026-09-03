@@ -12,7 +12,8 @@
       "source": "wood",
       "traits": [
         "timber",
-        "joinery"
+        "joinery",
+        "fuel"
       ],
       "texture": "planks",
       "design_purpose": "The first family: felled wood, worked with nothing but hands. Joinery means it can be hung and swung (doors); it cannot be cut into masonry forms or span a girder. A timber house is still a house - nothing knocks it down."
@@ -76,6 +77,19 @@
       ],
       "texture": "silver",
       "design_purpose": "Warding and malleable: curved forms and, later, the wards that keep the ash out. A precious family - a silver wall is a statement."
+    },
+    {
+      "id": "charcoal",
+      "display_name": "Charcoal",
+      "source": "charcoal",
+      "traits": [
+        "fuel",
+        "hot"
+      ],
+      "texture": "",
+      "tint": "#2A2420",
+      "only_for_trait": "fuel",
+      "design_purpose": "The hotter fuel: a campfire laid in charcoal burns at heat two and reaches the alloy ores (D-020 fire-setting). only_for_trait keeps charcoal out of every shape that does not ask for fuel - nobody builds a charcoal wall."
     }
   ],
   "shapes": [
@@ -298,7 +312,24 @@
       "fine": true,
       "fine_of": "floor_slab",
       "design_purpose": "Fine mode's slab: a quarter of a floor on one registry face, for shelves, steps between half-cubes, and roof edges."
+    },
+    {
+      "id": "campfire",
+      "display_name": "Campfire",
+      "material_cost": 3,
+      "size_m": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "element": "block",
+      "form": "fire",
+      "requires_traits": [
+        "fuel"
+      ],
+      "hint": "lay it against rock: the stone beside it heats, and cold cracks what is hot; timber burns at heat one, charcoal at two",
+      "design_purpose": "Fire-setting's tool (D-020): a fuel piece that burns out. Occupies its cell like a block while it burns (worldgen.json fire_setting says how long and how hot), heats the rock and nodes beside it, then is gone - no refund, the wood is ash. Three timber is one tree's swing: a quarry costs fuel, and charcoal is why the forge matters before iron does."
     }
   ],
-  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented shapes. lattice_divisions is how much finer the occupancy registry is than the build grid (2 = half cells): full-size pieces occupy a footprint of registry elements, which is what lets half-scale pieces (fine mode) share the world with them through one set lookup. form (box | stairs | wedge | door, default box) picks the mesh and collision the engine builds; oriented (default false) says R turns the piece; cells_tall (default 1) stacks the footprint upward, for the two-cell door. fine (default false) marks a half-scale piece that occupies one registry element, and fine_of names the full-size shape it is the fine twin of: fine mode (G) swaps the selection for its twin and back, so the palette stays nine shapes with a scale toggle rather than fourteen. materials are the building families (Q cycles the ones you carry): each is paid in its source item and carries traits; a shape may require traits (requires_traits), which is how looks and forms are gated to what a material can be worked into - joinery for doors, masonry for cut stone forms, metal for spans, and malleable reserved for the alloy family that curved forms will need. cells_long stretches a beam along its edge."
+  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented shapes. lattice_divisions is how much finer the occupancy registry is than the build grid (2 = half cells): full-size pieces occupy a footprint of registry elements, which is what lets half-scale pieces (fine mode) share the world with them through one set lookup. form (box | stairs | wedge | door, default box) picks the mesh and collision the engine builds; oriented (default false) says R turns the piece; cells_tall (default 1) stacks the footprint upward, for the two-cell door. fine (default false) marks a half-scale piece that occupies one registry element, and fine_of names the full-size shape it is the fine twin of: fine mode (G) swaps the selection for its twin and back, so the palette stays nine shapes with a scale toggle rather than fourteen. materials are the building families (Q cycles the ones you carry): each is paid in its source item and carries traits; a shape may require traits (requires_traits), which is how looks and forms are gated to what a material can be worked into - joinery for doors, masonry for cut stone forms, metal for spans, and malleable reserved for the alloy family that curved forms will need. cells_long stretches a beam along its edge. Materials may carry only_for_trait: such a family is refused by every shape that does not require that trait (charcoal is fuel, never a wall)."
 }

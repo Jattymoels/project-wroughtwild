@@ -16,6 +16,8 @@ const ARCH_STRIPS := 12
 ## The render mesh for a form at a size.
 static func mesh_for(form: String, size: Vector3) -> Mesh:
 	match form:
+		"fire":
+			return _fire_mesh(size)
 		"stairs":
 			return _stairs_mesh(size)
 		"wedge":
@@ -45,6 +47,11 @@ static func preview_mesh_for(form: String, size: Vector3) -> Mesh:
 ## space. Stairs are two boxes, the wedge a convex hull, the rest one box.
 static func collision_for(form: String, size: Vector3) -> Array:
 	match form:
+		"fire":
+			# A low pile: the player steps over it, mobs path around it.
+			var box := BoxShape3D.new()
+			box.size = Vector3(size.x * 0.8, size.y * 0.5, size.z * 0.8)
+			return [{"shape": box, "transform": Transform3D(Basis.IDENTITY, Vector3(0.0, -size.y * 0.5 + size.y * 0.25, 0.0))}]
 		"stairs":
 			var lower := BoxShape3D.new()
 			lower.size = Vector3(size.x, size.y * 0.5, size.z)
@@ -168,3 +175,46 @@ static func _add_box(st: SurfaceTool, centre: Vector3, size: Vector3) -> void:
 	_add_quad(st, v[2], v[3], v[7], v[6])  # back (+z)
 	_add_quad(st, v[3], v[0], v[4], v[7])  # left (-x)
 	_add_quad(st, v[1], v[2], v[6], v[5])  # right (+x)
+
+
+## A campfire (D-020 fire-setting): three logs crossed on the cell floor
+## with a low ember heap between them. The piece is half a cell tall; the
+## logs sit on its floor (local y = -size.y/2) so the fire stands on the
+## ground it was laid on.
+static func _fire_mesh(size: Vector3) -> Mesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var floor_y := -size.y * 0.5
+	var log_r := size.y * 0.16
+	for i in 3:
+		var angle := float(i) * PI / 3.0 + 0.3
+		var along := Vector3(cos(angle), 0.0, sin(angle))
+		var across := Vector3(-along.z, 0.0, along.x)
+		var centre := Vector3(0.0, floor_y + log_r, 0.0) + across * (log_r * (i - 1) * 0.6)
+		var half := along * size.x * 0.42
+		_add_prism(st, centre - half, centre + half, log_r)
+	# The ember heap: a squat box between the logs.
+	_add_box(st, Vector3(0.0, floor_y + size.y * 0.18, 0.0), Vector3(size.x * 0.34, size.y * 0.3, size.z * 0.34))
+	st.generate_normals()
+	return st.commit()
+
+
+## A square-section log from a to b with half-width r.
+static func _add_prism(st: SurfaceTool, a: Vector3, b: Vector3, r: float) -> void:
+	var dir := (b - a).normalized()
+	var side := Vector3(-dir.z, 0.0, dir.x) * r
+	var up := Vector3.UP * r
+	var c000 := a - side - up
+	var c010 := a - side + up
+	var c100 := a + side - up
+	var c110 := a + side + up
+	var c001 := b - side - up
+	var c011 := b - side + up
+	var c101 := b + side - up
+	var c111 := b + side + up
+	_add_quad(st, c010, c110, c111, c011) # top
+	_add_quad(st, c100, c000, c001, c101) # bottom
+	_add_quad(st, c000, c010, c011, c001) # -side
+	_add_quad(st, c110, c100, c101, c111) # +side
+	_add_quad(st, c100, c110, c010, c000) # a end
+	_add_quad(st, c001, c011, c111, c101) # b end

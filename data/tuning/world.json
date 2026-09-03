@@ -51,9 +51,9 @@
     {
       "id": "ember_whelp",
       "display_name": "Ember Whelp",
-      "max_life": 30,
+      "max_life": 75,
       "behaviour": "melee",
-      "damage": 6,
+      "damage": 4,
       "damage_type": "physical",
       "attack_period_rounds": 1,
       "design_purpose": "Basic fodder that teaches area clearing",
@@ -84,9 +84,9 @@
     {
       "id": "cinder_archer",
       "display_name": "Cinder Archer",
-      "max_life": 22,
+      "max_life": 55,
       "behaviour": "ranged",
-      "damage": 9,
+      "damage": 6,
       "damage_type": "fire",
       "attack_period_rounds": 2,
       "design_purpose": "Introduces fire damage in small doses before the boss",
@@ -117,9 +117,9 @@
     {
       "id": "ash_hound",
       "display_name": "Ash Hound",
-      "max_life": 18,
+      "max_life": 45,
       "behaviour": "fast",
-      "damage": 4,
+      "damage": 3,
       "damage_type": "physical",
       "attack_period_rounds": 1,
       "design_purpose": "Cheap but quick; the hastened weakness makes packs of these frightening",
@@ -150,9 +150,9 @@
     {
       "id": "stone_husk",
       "display_name": "Stone Husk",
-      "max_life": 45,
+      "max_life": 112,
       "behaviour": "melee",
-      "damage": 9,
+      "damage": 6,
       "damage_type": "physical",
       "attack_period_rounds": 2,
       "loot": [
@@ -189,9 +189,9 @@
     {
       "id": "shrieker",
       "display_name": "Shrieker",
-      "max_life": 16,
+      "max_life": 40,
       "behaviour": "shrieker",
-      "damage": 3,
+      "damage": 2,
       "damage_type": "physical",
       "attack_period_rounds": 2,
       "design_purpose": "The aggro-chainer (D-012, named in the roadmap): it hangs back and SCREAMS - every idle mob in scream radius joins the chase, so a pack with a shrieker recruits the biome. Kill it first or fight everything it can see. Barely dangerous alone; its page chance is the bounty on its head.",
@@ -217,9 +217,9 @@
     {
       "id": "gloom_crawler",
       "display_name": "Gloom Crawler",
-      "max_life": 24,
+      "max_life": 60,
       "behaviour": "fast",
-      "damage": 7,
+      "damage": 5,
       "damage_type": "physical",
       "attack_period_rounds": 1,
       "design_purpose": "The cave dweller: quick in the tunnels where there is no room to kite, guarding the underground iron. Meeting one in the dark is the cost of the richer veins.",
@@ -250,9 +250,9 @@
     {
       "id": "bog_lurker",
       "display_name": "Bog Lurker",
-      "max_life": 70,
+      "max_life": 175,
       "behaviour": "lurker",
-      "damage": 10,
+      "damage": 7,
       "damage_type": "physical",
       "attack_period_rounds": 2,
       "immune_statuses": [
@@ -288,9 +288,9 @@
     {
       "id": "marsh_wisp",
       "display_name": "Marsh Wisp",
-      "max_life": 14,
+      "max_life": 35,
       "behaviour": "skirmisher",
-      "damage": 5,
+      "damage": 4,
       "damage_type": "physical",
       "attack_period_rounds": 1,
       "tint": "#9FC9D8",
@@ -317,9 +317,9 @@
     {
       "id": "cinder_wisp",
       "display_name": "Cinder Wisp",
-      "max_life": 16,
+      "max_life": 40,
       "behaviour": "skirmisher",
-      "damage": 6,
+      "damage": 4,
       "damage_type": "fire",
       "attack_period_rounds": 1,
       "immune_statuses": [
@@ -349,9 +349,9 @@
     {
       "id": "hollow_knight",
       "display_name": "Hollow Knight",
-      "max_life": 90,
+      "max_life": 225,
       "behaviour": "knight",
-      "damage": 12,
+      "damage": 8,
       "damage_type": "physical",
       "attack_period_rounds": 2,
       "immune_statuses": [
@@ -387,7 +387,7 @@
     {
       "id": "valley_elk",
       "display_name": "Valley Elk",
-      "max_life": 24,
+      "max_life": 60,
       "behaviour": "grazer",
       "damage": 0,
       "damage_type": "physical",
@@ -426,7 +426,7 @@
         "ignite"
       ],
       "death_burst": {
-        "damage": 14,
+        "damage": 10,
         "radius_m": 2.6,
         "damage_type": "fire"
       },
@@ -490,5 +490,6 @@
     "dropped_inventory_recoverable": true,
     "design_purpose": "Open-world death drops carried inventory at the site for recovery (D-006); permanent equipment is never dropped"
   },
-  "design_purpose_loot": "Every mob pays out into the survival economy (fuel, ore, stone, coin) so fighting is never dead time next to gathering. Three kinds of entry: {item,min,max,chance} materials; {gear: rarity, tier, chance} a rolled piece on any base (D-014); {skill_page: true, chance} a page teaching one skill the player does not know yet, weighted by skills.json drop_weight (D-016). Page chances are set so a first hour of hunting finds one or two skills; the mob pass will move them onto elites."
+  "design_purpose_loot": "Every mob pays out into the survival economy (fuel, ore, stone, coin) so fighting is never dead time next to gathering. Three kinds of entry: {item,min,max,chance} materials; {gear: rarity, tier, chance} a rolled piece on any base (D-014); {skill_page: true, chance} a page teaching one skill the player does not know yet, weighted by skills.json drop_weight (D-016). Page chances are set so a first hour of hunting finds one or two skills; the mob pass will move them onto elites.",
+  "design_purpose_pacing": "Long fights (owner, 3 Sep 2026: 'we get too powerful too quick ... more like early MMOs, lots of mobs and it takes a while to kill things', combat should 'start a bit more powerful' - the swing stays, the life bars grow). Mob life is two and a half times the first cut and mob damage seven tenths, player numbers untouched: a day-one whelp takes three heavy blows instead of two-and-a-bit, a pack is a thirty-second fight where spacing and the sweep matter, and the first Keen mace no longer ends era one. The trial's bosses keep their numbers; the oracle (tools/balance) holds their win rates in band."
 }

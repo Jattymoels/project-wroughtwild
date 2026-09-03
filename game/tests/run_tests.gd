@@ -475,7 +475,7 @@ func _test_sim_extension() -> void:
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
 	check(heavy["delivery"] == "strike" and heavy["starting"], "combat: skill view carries delivery and starting (D-016)")
 	check(sim.combat_skill_ids().size() == 8, "combat: eight skills defined (four arrive as pages)")
-	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 11,
+	check(sim.enemy("ember_whelp")["max_life"] == 75.0 and sim.enemy_ids().size() == 11,
 		"combat: enemy view (shrieker and gloom crawler joined)")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
 	var rt: Dictionary = sim.realtime()
@@ -593,11 +593,28 @@ func _test_sim_extension() -> void:
 		"shape: the wedge waits on the completion unlock, the slab does not")
 	check(sim.shape_ids().size() >= 9 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
 		"shape: nine-shape set with sizes from data")
-	check(sim.build_material_ids().size() == 6 and sim.build_material("iron")["source"] == "iron_ingot"
+	check(sim.build_material_ids().size() == 7 and sim.build_material("iron")["source"] == "iron_ingot"
 		and sim.build_material("stone")["texture"] == "masonry", "materials: families through the door")
 	check(sim.shape_allows_family("door", "wood") and not sim.shape_allows_family("door", "stone")
 		and sim.shape("girder")["cells_long"] == 2 and sim.shape("girder")["requires_traits"].has("metal"),
 		"materials: trait gating through the door")
+
+	# D-020 fire-setting through the door: hands, heat, fuels, the campfire.
+	var rules: Dictionary = sim.block_rules()
+	check(rules["dirt"]["by_hand"] and not rules["stone"]["by_hand"] and rules["stone"]["heat_to_crack"] == 1
+		and not rules["bedrock"]["by_hand"] and rules["bedrock"]["heat_to_crack"] == 0,
+		"fire: block rules carry hands and heat")
+	var fs: Dictionary = sim.fire_setting()
+	check(fs["fuels"]["wood"]["heat"] == 1 and fs["fuels"]["charcoal"]["heat"] == 2
+		and fs["fuels"]["wood"]["burn_seconds"] > 0.0 and fs["quench_radius_m"] > 0.0 and fs["reach_cells"] >= 1,
+		"fire: fuels through the door")
+	check(sim.shape("campfire")["form"] == "fire" and sim.shape("campfire")["requires_traits"].has("fuel"),
+		"fire: the campfire is a fire-form piece that wants fuel")
+	check(sim.shape_allows_family("campfire", "wood") and sim.shape_allows_family("campfire", "charcoal")
+		and not sim.shape_allows_family("cube", "charcoal") and not sim.shape_allows_family("campfire", "stone"),
+		"fire: charcoal lays a fire and nothing else; stone does not burn")
+	check(sim.build_material("charcoal")["only_for_trait"] == "fuel" and sim.build_material("wood")["traits"].has("fuel"),
+		"fire: timber is fuel too")
 	check(sim.lattice_pose("girder", {"kind": "edge", "axis": 0, "cell": Vector3i(20, 26, 20)})["centre"] == Vector3(11.0, 13.0, 10.0),
 		"materials: a girder is posed across both its cells")
 
@@ -635,9 +652,9 @@ func _test_sim_extension() -> void:
 	var index: int = sim.roll_item_into_pack("frost_sceptre", "keen", 1, 7)
 	check(index == before and sim.pack_items().size() == before + 1 and sim.pack_items()[index]["rarity"] == "keen", "items: a keen sceptre rolled into the pack")
 	var mods: Array = sim.pack_items()[index]["mods"]
-	check(mods.size() >= 2 and String(mods[0]["sentence"]).begins_with("+1 Forks"), "items: the item card lists the implicit fork first")
+	check(mods.size() >= 2 and String(mods[0]["sentence"]).to_lower().contains("cold"), "items: the item card lists the implicit (a small cold add, D-020) first")
 	check(sim.equip_pack_item(index) and sim.equipment().has("weapon") and sim.pack_items().size() == before, "items: wearing from the pack fills the weapon slot")
-	check(sim.fork_count("prototype_frost_orb") == 2, "items: the worn sceptre forks the orb")
+	check(sim.fork_count("prototype_frost_orb") == 1, "items: the worn sceptre no longer forks the orb (D-020: forks wait for tier two)")
 	check(sim.active_modifiers().size() >= 2, "items: active modifiers list the worn gear")
 	check(sim.unequip("weapon") and sim.pack_items().size() == before + 1 and not sim.equipment().has("weapon"), "items: taking it off returns it to the pack with its modifiers")
 	check(sim.fork_count("prototype_frost_orb") == 1, "items: bare again")
@@ -738,6 +755,54 @@ func _test_sandpit_extension() -> void:
 	check(terrain.broken.size() == 1 and terrain.block_at(sx, sh - 2, sz) != 0
 		and terrain.block_at(sx, sh - 1, sz) == 0,
 		"dig: a save's holes restore exactly (dug-since filled back)")
+
+	# D-020 fire-setting on the terrain: stone refuses hands, a fire beside
+	# it soaks it, cold cracks it, cracked stone digs, cracks save.
+	var stone_y := -1
+	for y in range(sh - 3, 0, -1):
+		if terrain.kind_at(sx, y, sz) == "stone":
+			stone_y = y
+			break
+	check(stone_y > 0, "fire: stone lies under the spawn column")
+	var rock := Vector3i(sx, stone_y, sz)
+	check(not terrain.diggable_by_hand(rock) and terrain.break_block(sx, stone_y, sz) == "",
+		"fire: hands cannot dig stone")
+	check(terrain.dig_refusal(rock).contains("fire"), "fire: the refusal names the fire")
+	check(terrain.heat_around(rock + Vector3i(1, 0, 0), 1, 1) >= 1 and terrain.heat_level(rock) == 1,
+		"fire: a fire beside the rock soaks it")
+	check(terrain.dig_refusal(rock).contains("cold"), "fire: hot rock asks for cold")
+	var cs2: float = terrain.map["cell_size"]
+	var hot_centre := Vector3((rock.x + 0.5) * cs2, (rock.y + 0.5) * cs2, (rock.z + 0.5) * cs2)
+	check(terrain.quench_at(hot_centre + Vector3(12, 0, 0), 2.5) == 0 and terrain.heat_level(rock) == 1,
+		"fire: cold far away cracks nothing")
+	check(terrain.quench_at(hot_centre, 2.5) >= 1 and terrain.is_cracked(rock) and terrain.heat_level(rock) == 0,
+		"fire: cold on hot rock cracks it")
+	check(terrain.cracked_packed_list().has([rock.x, rock.y, rock.z]), "fire: cracks list for the save")
+	check(terrain.diggable_by_hand(rock) and terrain.break_block(sx, stone_y, sz) == "stone",
+		"fire: cracked stone digs by hand and pays stone")
+	check(not terrain.is_cracked(rock), "fire: the dug cell forgets its crack")
+	var below := Vector3i(sx, stone_y - 1, sz)
+	if terrain.kind_at(below.x, below.y, below.z) == "stone":
+		terrain.apply_cracked([[below.x, below.y, below.z]])
+		check(terrain.is_cracked(below) and terrain.diggable_by_hand(below), "fire: a save's cracks restore")
+	# Nodes: a boulder wants a fire; soaked and quenched it works.
+	var boulder: ResourceNode = load("res://scenes/resource_node.tscn").instantiate()
+	boulder.material_family = &"stone"
+	boulder.heat_to_work = 1
+	boulder.remaining_units = 4
+	get_root().add_child(boulder)
+	check(not boulder.workable() and boulder.harvest() == 0 and boulder.work_refusal().contains("fire"),
+		"fire: a boulder refuses hands and says why")
+	boulder.soak(1, 30.0)
+	check(not boulder.workable() and boulder.work_refusal().contains("cold") and not boulder.quench() == false,
+		"fire: soaked, it asks for cold; cold cracks it")
+	check(boulder.workable() and boulder.harvest() == 2, "fire: cracked, it works")
+	var tree: ResourceNode = load("res://scenes/resource_node.tscn").instantiate()
+	tree.material_family = &"wood"
+	get_root().add_child(tree)
+	check(tree.workable() and tree.harvest() == 2, "fire: trees are hands' work")
+	boulder.queue_free()
+	tree.queue_free()
 	terrain.queue_free()
 
 	# Wave 3 elites through the binding: views, crowned packs, elite loot.

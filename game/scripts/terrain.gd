@@ -43,6 +43,17 @@ var broken: Array[Vector3i] = []
 ## in _pending_nodes until reveal_era brings their era.
 var current_era := 1
 var _pending_nodes: Array = []
+## Fire-setting (D-020): the sim's rules (fuels, reach, soak, hot_seconds,
+## quench radius), rock that is hot right now (cell -> {heat, until_msec})
+## and rock that has been cracked (cell -> true). Cracked rock digs by
+## hand; hot rock cracks when cold lands on it. Cracks are saved, heat is
+## not (a fire that was burning is out when you come back).
+var fire_rules: Dictionary = {}
+var cracked: Dictionary = {}
+var _hot: Dictionary = {}
+var _overlays: Node3D
+var _overlay_nodes: Dictionary = {}
+var _expire_timer := 0.0
 
 ## Block id -> kind name (worldgen.h's palette).
 const KIND_NAMES := {1: "surface", 2: "dirt", 3: "stone", 4: "bedrock"}
@@ -144,6 +155,13 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 		return
 	_blocks = (map["blocks"] as PackedByteArray).duplicate()
 	block_rules = sim.block_rules()
+	fire_rules = sim.fire_setting()
+	cracked.clear()
+	_hot.clear()
+	_overlay_nodes.clear()
+	_overlays = Node3D.new()
+	_overlays.name = "FireSetting"
+	add_child(_overlays)
 
 	var cell: float = map["cell_size"]
 	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS):
@@ -204,8 +222,12 @@ func break_block(x: int, y: int, z: int) -> String:
 	var kind := kind_at(x, y, z)
 	if kind == "" or not block_rules.get(kind, {}).get("breakable", false):
 		return ""
+	# Fire-setting: rock that hands cannot dig must have been cracked first.
+	if not diggable_by_hand(Vector3i(x, y, z)):
+		return ""
 	_blocks[_cell_index(x, z) * int(map["depth"]) + y] = 0
 	broken.append(Vector3i(x, y, z))
+	_forget_cell(Vector3i(x, y, z))
 	for origin in _touched_chunk_origins(x, z):
 		_rebuild_chunk(origin.x, origin.y)
 	return kind
@@ -292,6 +314,7 @@ func _spawn_resource_node(def: Dictionary) -> void:
 		_pending_nodes.append(def)
 		return
 	var node: ResourceNode = RESOURCE_NODE_SCENE.instantiate()
+	node.heat_to_work = int(def.get("heat_to_work", 0))
 	# y is part of the name: a cave-floor node and a surface node may share
 	# a column, and saves match nodes by name.
 	node.name = "wn_%s_%d_%d_%d" % [def["type"], def["x"], def["y"], def["z"]]
@@ -305,3 +328,192 @@ func _spawn_resource_node(def: Dictionary) -> void:
 	# harness builds the terrain before the first frame.
 	node.position = Vector3(
 		(int(def["x"]) + 0.5) * cell, float(def["y"]), (int(def["z"]) + 0.5) * cell)
+
+
+# --- fire-setting (D-020: heat cracks stone, cold shatters what is hot) -----
+
+func _process(delta: float) -> void:
+	_expire_timer -= delta
+	if _expire_timer > 0.0 or _hot.is_empty():
+		return
+	_expire_timer = 0.5
+	var now := Time.get_ticks_msec()
+	var cooled: Array = []
+	for cell in _hot:
+		if _hot[cell]["until"] <= now:
+			cooled.append(cell)
+	for cell in cooled:
+		_hot.erase(cell)
+		_clear_overlay(cell)
+
+
+## The fire heat a block kind needs before cold can crack it (0 = never).
+func heat_to_crack(kind: String) -> int:
+	return int(block_rules.get(kind, {}).get("heat_to_crack", 0))
+
+
+## Fire heat the cell is soaked in right now (0 when cold).
+func heat_level(cell: Vector3i) -> int:
+	if not _hot.has(cell):
+		return 0
+	return int(_hot[cell]["heat"])
+
+
+func is_cracked(cell: Vector3i) -> bool:
+	return cracked.has(cell)
+
+
+## Hands dig soil, and any rock that has been cracked.
+func diggable_by_hand(cell: Vector3i) -> bool:
+	var kind := kind_at(cell.x, cell.y, cell.z)
+	if kind == "":
+		return false
+	if block_rules.get(kind, {}).get("by_hand", true):
+		return true
+	return cracked.has(cell)
+
+
+## Why LMB does nothing here ("" when it digs). The words are the tutorial.
+func dig_refusal(cell: Vector3i) -> String:
+	var kind := kind_at(cell.x, cell.y, cell.z)
+	if kind == "" or diggable_by_hand(cell):
+		return ""
+	var need := heat_to_crack(kind)
+	if need <= 0 or not block_rules.get(kind, {}).get("breakable", false):
+		return "%s will not break" % Hud.pretty(kind)
+	var heat := heat_level(cell)
+	if heat >= need:
+		return "%s glows  ·  cold will crack it" % Hud.pretty(kind)
+	if heat > 0:
+		return "%s is warm  ·  it wants a hotter fire (charcoal)" % Hud.pretty(kind)
+	return "%s will not yield to hands  ·  fire against it, then cold" % Hud.pretty(kind)
+
+
+## A fire at `centre` soaks every crackable block within `reach` cells
+## (Chebyshev) at `heat`, and every resource node standing that close.
+## Returns how many blocks are hot afterwards.
+func heat_around(centre: Vector3i, heat: int, reach: int) -> int:
+	var count := 0
+	for dz in range(-reach, reach + 1):
+		for dy in range(-reach, reach + 1):
+			for dx in range(-reach, reach + 1):
+				var cell := centre + Vector3i(dx, dy, dz)
+				if heat_block(cell, heat):
+					count += 1
+	var cs: float = map["cell_size"]
+	var at := Vector3((centre.x + 0.5) * cs, float(centre.y), (centre.z + 0.5) * cs)
+	if nodes_root != null:
+		for node in nodes_root.get_children():
+			if node is ResourceNode and (node as ResourceNode).heat_to_work > 0 \
+					and node.position.distance_to(at) <= (reach + 0.75) * cs:
+				(node as ResourceNode).soak(heat, float(fire_rules.get("hot_seconds", 45.0)))
+	return count
+
+
+## One block soaked at `heat` (an Ember Bolt striking rock). False when the
+## cell is not rock that fire can work, or is already cracked.
+func heat_block(cell: Vector3i, heat: int) -> bool:
+	var kind := kind_at(cell.x, cell.y, cell.z)
+	if kind == "" or heat_to_crack(kind) <= 0 or cracked.has(cell):
+		return false
+	var until := Time.get_ticks_msec() + int(float(fire_rules.get("hot_seconds", 45.0)) * 1000.0)
+	var level := heat
+	if _hot.has(cell):
+		level = maxi(level, int(_hot[cell]["heat"]))
+	_hot[cell] = {"heat": level, "until": until}
+	_set_overlay(cell, true)
+	return true
+
+
+## Cold lands at `point`: every hot block within `radius` whose heat meets
+## its kind's need cracks (and stays cracked), and every hot node too.
+## Returns how many blocks cracked.
+func quench_at(point: Vector3, radius: float) -> int:
+	var cs: float = map["cell_size"]
+	var count := 0
+	var hits: Array = []
+	for cell in _hot:
+		var centre := Vector3((cell.x + 0.5) * cs, (cell.y + 0.5) * cs, (cell.z + 0.5) * cs)
+		if centre.distance_to(point) > radius:
+			continue
+		var kind := kind_at(cell.x, cell.y, cell.z)
+		if int(_hot[cell]["heat"]) >= heat_to_crack(kind):
+			hits.append(cell)
+	for cell in hits:
+		_hot.erase(cell)
+		cracked[cell] = true
+		_set_overlay(cell, false)
+		count += 1
+	if nodes_root != null:
+		for node in nodes_root.get_children():
+			if node is ResourceNode and node.position.distance_to(point) <= radius + 0.75 * cs:
+				(node as ResourceNode).quench()
+	return count
+
+
+## Cracked cells as flat x,y,z triples, for the save.
+func cracked_packed_list() -> Array:
+	var out: Array = []
+	for cell in cracked:
+		out.append([cell.x, cell.y, cell.z])
+	return out
+
+
+## SaveManager hook: the save's cracks, exactly (heat never persists).
+func apply_cracked(list: Array) -> void:
+	for cell in cracked.keys():
+		_clear_overlay(cell)
+	cracked.clear()
+	for cell in _hot.keys():
+		_clear_overlay(cell)
+	_hot.clear()
+	for entry in list:
+		if not (entry is Array) or entry.size() != 3:
+			continue
+		var cell := Vector3i(int(entry[0]), int(entry[1]), int(entry[2]))
+		if block_at(cell.x, cell.y, cell.z) == 0:
+			continue
+		cracked[cell] = true
+		_set_overlay(cell, false)
+
+
+func _forget_cell(cell: Vector3i) -> void:
+	_hot.erase(cell)
+	cracked.erase(cell)
+	_clear_overlay(cell)
+
+
+## A thin shell over the block: ember-orange while hot, dark and dull once
+## cracked. One MultiMesh instance cannot be retinted, so the state is a
+## second mesh.
+func _set_overlay(cell: Vector3i, hot: bool) -> void:
+	_clear_overlay(cell)
+	if _overlays == null:
+		return
+	var cs: float = map["cell_size"]
+	var mesh := MeshInstance3D.new()
+	var box := BoxMesh.new()
+	box.size = Vector3.ONE * cs * 1.03
+	var material := StandardMaterial3D.new()
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	if hot:
+		material.albedo_color = Color(1.0, 0.45, 0.1, 0.45)
+		material.emission_enabled = true
+		material.emission = Color(1.0, 0.4, 0.05)
+		material.emission_energy_multiplier = 1.5
+	else:
+		material.albedo_color = Color(0.08, 0.06, 0.06, 0.55)
+	box.material = material
+	mesh.mesh = box
+	mesh.position = Vector3((cell.x + 0.5) * cs, (cell.y + 0.5) * cs, (cell.z + 0.5) * cs)
+	_overlays.add_child(mesh)
+	_overlay_nodes[cell] = mesh
+
+
+func _clear_overlay(cell: Vector3i) -> void:
+	if _overlay_nodes.has(cell):
+		var old: Node = _overlay_nodes[cell]
+		_overlay_nodes.erase(cell)
+		if is_instance_valid(old):
+			old.queue_free()

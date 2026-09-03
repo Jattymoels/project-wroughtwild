@@ -62,6 +62,8 @@ const SPIKE_MODS: Array[StringName] = [&"forked_lattice", &"deep_frost", &"wide_
 var _dig_cell := Vector3i(-1, -1, -1)
 var _dig_progress := 0.0
 var _terrain: Terrain
+## The one-time line when hands first meet rock (D-020 fire-setting).
+var _fire_hint_shown := false
 
 
 func _ready() -> void:
@@ -412,6 +414,13 @@ func _update_digging(delta: float) -> void:
 				if kind != "" and not rule.get("breakable", false):
 					hud.show_dig(kind, -1.0)
 					digging = true
+				elif kind != "" and not terrain.diggable_by_hand(cell):
+					# Fire-setting: rock wants heat and then cold before hands.
+					hud.show_dig_text(terrain.dig_refusal(cell))
+					digging = true
+					if not _fire_hint_shown:
+						_fire_hint_shown = true
+						hud.notify("The rock will not yield to hands. Fire heats stone; cold cracks what is hot.")
 				elif kind != "":
 					if cell != _dig_cell:
 						_dig_cell = cell
@@ -528,6 +537,9 @@ func aim_probe() -> Dictionary:
 		return none
 	if collider is ResourceNode:
 		var node := collider as ResourceNode
+		if not node.workable():
+			return {"state": "interact", "target": node,
+				"label": "%s ×%d — %s" % [Hud.pretty(String(node.material_family)), node.remaining_units, node.work_refusal()]}
 		return {"state": "interact", "target": node,
 			"label": "%s ×%d — E to gather" % [Hud.pretty(String(node.material_family)), node.remaining_units]}
 	if collider is StationSite:
@@ -573,6 +585,9 @@ func interact() -> void:
 	if collider is ResourceNode:
 		var node := collider as ResourceNode
 		var family := node.material_family
+		if not node.workable():
+			hud.notify("%s: %s." % [Hud.pretty(String(family)), node.work_refusal()])
+			return
 		var granted := node.harvest()
 		if granted > 0:
 			# Feel: the yield pops out of the node as physical chips that

@@ -303,3 +303,77 @@ Not yet: wrought forms and refinement, the wider modifier vocabulary
   or an era-two landmark.
 - Day and night as an era-two mob mechanic carrier, versus its own later
   iteration.
+
+
+## Implemented: the pacing pass (3 Sep 2026, D-020)
+
+The owner's full-arc verdict was that power arrived too fast. The numbers
+said something sharper: the floor sat at the ceiling. A day-one Heavy
+Strike (28) two-shot every era-one mob (16–45 life), and the first Keen
+mace made that one shot. There was nothing to grow into. Four changes,
+all data plus one verb:
+
+- **Long fights.** `world.json` mob life ×2.5 and mob damage ×0.7; the
+  player's numbers, the bosses and the trial rooms untouched (the oracle's
+  boss and trial rates held: 33 / 100 %, 59.6 / 85.6 %). A whelp is three
+  heavy blows; a pack is a half-minute where the sweep and spacing matter.
+- **The quiet heartland.** `worldgen.json` first danger ring at 0.35
+  density, hostile packs no nearer than 40 m; **grazers** (`biomes[].grazers`,
+  `grazer_density`) are placed by their own pass outside the danger rules,
+  flagged `grazer` on the pack so the engine never crowns or escorts them.
+  The first hour is a world with elk in it, not a fight.
+- **The era-one pool.** `items.json` modifiers carry `from_tier`; every
+  interaction modifier (forks, deep frost, wide shatter, frostbite,
+  kindling, burn, lingering flame, wildfire reach, smouldering, serration,
+  hemorrhage) is `from_tier: 2`, so a tier-one roll — what era one's mobs
+  drop — is life, armour, resistance, reach or a small damage add
+  (5–10 %). Elites roll a tier higher, so the lucky drop still exists and
+  reads as luck; era two opens the pool to everyone. The sceptres' implicit
+  is a small cold add, not a fork.
+- **Fire-setting** (below): the first "not yet" the world says.
+
+### Fire-setting: the capability gate that is a verb
+
+The owner found the survival-game pickaxe played out. The gate is
+therefore a technique, and it is the game's own grammar: **heat cracks
+stone; cold shatters what is hot.** Real pre-industrial quarrying.
+
+- `worldgen.json block_rules` gain `by_hand` (soil yes, stone no, bedrock
+  no) and `heat_to_crack` (stone 1). Hands dig soil and *cracked* rock.
+- `worldgen.json fire_setting`: fuels by building family (`wood` heat 1,
+  45 s; `charcoal` heat 2, 60 s), `reach_cells` 1, `soak_seconds` 4,
+  `hot_seconds` 45, `quench_radius_m` 2.5.
+- `construction.json`: the **campfire** shape (form `fire`, requires the
+  `fuel` trait; timber has it, and a **charcoal** family exists with
+  `only_for_trait: fuel` so nobody builds a charcoal wall). A campfire is
+  a piece that burns out: it occupies its cell while it burns, heats the
+  rock and nodes within reach, and is gone — no refund, the wood is ash.
+- Nodes carry `heat_to_work`: trees 0, boulders and iron 1, the alloy and
+  era-three ores 2. A soaked node quenched by cold is cracked for good and
+  works on E.
+- The engine (`terrain.gd`) keeps hot cells (heat, expiry) and cracked
+  cells (saved), draws an ember shell over hot rock and a dark one over
+  cracked; `placed_block.gd` burns the fire; the Frost Orb (and Ember
+  Bolt) now stop on the world — cold quenches within the radius, fire
+  heats the struck block; the Frost Nova quenches the ring around you.
+  Refusals under the crosshair are the tutorial: "Stone will not yield to
+  hands · fire against it, then cold" → "Stone glows · cold will crack it".
+
+The chain a fresh player walks: wood by hand → a campfire against a
+boulder or cliff → the Frost Orb → stone and iron → the forge → charcoal →
+the alloy ores. Every rung is a verb they already have.
+
+## Direction: skills on the plate (accepted 3 Sep 2026, to build next)
+
+The support category the owner asked for, without copying gems. **A skill
+tablet is laid on the Foundry plate, and the ingots touching it are that
+skill's supports.** Frost Orb beside Reach is a wider orb; beside Ember it
+leaves burning shards; the same ingot between two tablets serves both.
+Tags must still match (a projectile ingot does nothing for a strike), so
+D-016's grammar stays the rule book. The plate widening with the era is
+more tablets and more neighbours: the support ceiling is forged, not
+granted, and rearranging is respec. Later supports come from **manners
+learned from mobs**: each family teaches one way of fighting after enough
+of them have fallen (the hound's manner hunts, the wisp's casts on the
+retreat, the husk's staggers), so the world advancing is the support pool
+growing. Together they take the burden off items, which is the point.

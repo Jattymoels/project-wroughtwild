@@ -242,6 +242,7 @@ func _ready() -> void:
 	if combat != null:
 		combat.hit_landed.connect(_on_hit_landed)
 		combat.life_changed.connect(_on_life_changed)
+		combat.world_worked.connect(_on_world_worked)
 		combat.hit_taken.connect(_on_hit_taken)
 		combat.shelter_changed.connect(_on_shelter_changed)
 	refresh()
@@ -289,6 +290,12 @@ func show_dig(kind: String, fraction: float) -> void:
 		return
 	var filled := clampi(roundi(fraction * 10.0), 0, 10)
 	_dig_text = "Digging %s  [%s%s]" % [pretty(kind), "#".repeat(filled), "-".repeat(10 - filled)]
+
+
+## A refusal or state line under the crosshair in the dig slot (fire-
+## setting: "Stone glows - cold will crack it").
+func show_dig_text(text: String) -> void:
+	_dig_text = text
 
 
 ## Absorbed pickups accumulate into one line while they keep arriving.
@@ -429,3 +436,10 @@ func refresh() -> void:
 		else:
 			_build_chip.modulate = UiTheme.MUTED
 			_build_chip.text = "B  build"
+
+
+func _on_world_worked(what: String, count: int) -> void:
+	if what == "cracked":
+		notify("The cold cracks the hot rock (%d)." % count if count > 1 else "The cold cracks the hot rock.")
+	elif what == "heated":
+		notify("The rock glows.")

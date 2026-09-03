@@ -399,6 +399,27 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
         }
     }
 
+    // 8b. Grazers: the same stride, no danger scaling, allowed right up to
+    //     the spawn clearing - the heartland has life before it has threat.
+    double clearSafe = g.spawnClearRadiusM / params.cellSizeM;
+    for (int z = 2; z < map.height - 2; z += 4) {
+        for (int x = 2; x < map.width - 2; x += 4) {
+            const tuning::BiomeDef& biome = table.biomes[map.at(x, z).biomeIndex];
+            if (biome.grazers.empty() || biome.grazerDensity <= 0.0) continue;
+            if (distance(x, z, map.spawnX, map.spawnZ) < clearSafe) continue;
+            if (map.topSolid(x, z) != map.at(x, z).height) continue;
+            if (lattice(seed, x, z, 9150) < biome.grazerDensity * 16.0) {
+                MobPack herd;
+                herd.enemies = biome.grazers[hashCoords(seed, x, z, 9250) % biome.grazers.size()];
+                herd.x = x;
+                herd.y = map.at(x, z).height;
+                herd.z = z;
+                herd.grazer = true;
+                map.packs.push_back(std::move(herd));
+            }
+        }
+    }
+
     // 9. Cave packs: dens on roofed cave floors, on the same coarse stride.
     //    The dark has its own residents (and its own elites).
     if (caves.enabled && !caves.packs.empty() && caves.packDensity > 0.0) {

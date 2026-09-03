@@ -172,6 +172,7 @@ struct ModifierDef {
     std::string id;
     std::string displayName;
     std::vector<std::string> tags;          // what it is about; a base's roll pool is by these
+    int fromTier = 1;                       // rolls below this tier never pick it (the era-one pool, D-020)
     std::vector<std::string> appliesToTags; // {"self"} = a character stat; else the skill tags it excites
     std::string effectKey;                  // add_<x> flat | increased_<x> additive | more_<x> multiplicative
     std::string display = "flat";           // "flat" | "percent", for the sentence
@@ -465,6 +466,7 @@ struct BuildMaterialDef {
     std::vector<std::string> traits; // what the family can be worked into
     std::string texture;             // engine texture key for placed pieces
     std::string tint;                // "#rrggbb" multiplier over the texture
+    std::string onlyForTrait;        // when set, only shapes requiring this trait accept the family
     bool hasTrait(const std::string& trait) const;
 };
 
@@ -651,6 +653,8 @@ struct DangerRing {
 struct BlockRule {
     bool breakable = true;
     double digSeconds = 1.0;
+    bool byHand = true;    // bare hands dig it (soil); false = it must be cracked first
+    int heatToCrack = 0;   // fire heat that makes it crackable by cold (0 = never)
     std::map<std::string, int> yields; // material family -> count
 };
 
@@ -667,6 +671,10 @@ struct BiomeDef {
     std::map<std::string, double> nodeDensity; // node type -> per-cell chance
     double packDensity = 0.0;
     std::vector<std::vector<std::string>> packs; // possible pack compositions
+    // Grazers: placed like packs but outside the danger rings and the
+    // spawn's pack exclusion - the heartland has life, not threat.
+    double grazerDensity = 0.0;
+    std::vector<std::vector<std::string>> grazers;
 };
 
 struct NodeTypeDef {
@@ -677,6 +685,23 @@ struct NodeTypeDef {
     int unitsPerHarvest = 2;
     std::string visual;
     int era = 1; // the era this node type surfaces in (eras.json)
+    int heatToWork = 0; // fire heat it must be soaked in and quenched before E works it (0 = hands)
+};
+
+// Fire-setting (D-020): a campfire's heat, how far it reaches, how long
+// rock stays hot, and how far a cold hit quenches.
+struct FireFuelDef {
+    int heat = 1;
+    double burnSeconds = 45.0;
+};
+struct FireSettingDef {
+    std::map<std::string, FireFuelDef> fuels; // by building family id (wood, charcoal)
+    int reachCells = 1;
+    double soakSeconds = 4.0;
+    double hotSeconds = 45.0;
+    double quenchRadiusM = 2.5;
+    // The heat a family burns at (0 when it is not a fuel).
+    int fuelHeat(const std::string& family) const;
 };
 
 struct WorldgenGuarantees {
@@ -697,6 +722,7 @@ struct WorldgenTable {
     CaveParams caves;
     std::vector<DangerRing> dangerRings;
     std::map<std::string, BlockRule> blockRules; // by block kind name
+    FireSettingDef fireSetting;
     std::vector<BiomeDef> biomes;
     std::map<std::string, NodeTypeDef> nodeTypes;
     WorldgenGuarantees guarantees;

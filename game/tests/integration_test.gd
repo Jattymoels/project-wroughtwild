@@ -313,18 +313,18 @@ func _physics_process(_delta: float) -> void:
 			var p := _player.global_position
 			_front = Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(0, 0, -1.5))
 			_back = Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(0, 0, 1.4))
-			check(_front.life == 30.0 and _front.damage == 6.0, "combat: enemy numbers come from the sim")
+			check(_front.life == 75.0 and _front.damage == 4.0, "combat: enemy numbers come from the sim (D-020 long fights)")
 			check(_player.combat.max_life == 100.0 and _player.combat.life == 100.0, "combat: player life from derived stats")
 		28:
 			check(_player.combat.use_heavy(), "combat: heavy strike finds the enemy in front")
 			var dealt := _player.combat.last_hit_dealt
 			check(dealt >= 28.0 * 0.9 and dealt <= 28.0 * 1.1, "combat: heavy damage inside the sim's band (%.2f)" % dealt)
-			check(not is_instance_valid(_front) or _front.life <= 30.0 - dealt + 0.001, "combat: damage applied to the target")
-			check(is_instance_valid(_back) and _back.life == 30.0, "combat: enemy behind untouched by a frontal strike")
+			check(not is_instance_valid(_front) or _front.life <= 75.0 - dealt + 0.001, "combat: damage applied to the target")
+			check(is_instance_valid(_back) and _back.life == 75.0, "combat: enemy behind untouched by a frontal strike")
 			check(not _player.combat.use_heavy(), "combat: cooldown blocks an immediate second strike")
 		30:
 			var taken := _back.force_attack()
-			check(taken >= 6.0 * 0.9 and taken <= 6.0 * 1.1, "combat: whelp hit mitigated by the sim (%.2f)" % taken)
+			check(taken >= 4.0 * 0.9 and taken <= 4.0 * 1.1, "combat: whelp hit mitigated by the sim (%.2f)" % taken)
 			check(absf(_player.combat.life - (100.0 - taken)) < 0.001, "combat: life reduced by exactly the mitigated hit")
 		32:
 			var hits := _player.combat.use_area()

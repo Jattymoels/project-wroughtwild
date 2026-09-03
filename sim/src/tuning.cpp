@@ -93,7 +93,15 @@ bool BuildMaterialDef::hasTrait(const std::string& trait) const {
 bool ConstructionTable::shapeAllowsMaterial(const ShapeDef& shape, const BuildMaterialDef& material) const {
     for (const auto& trait : shape.requiresTraits)
         if (!material.hasTrait(trait)) return false;
+    if (!material.onlyForTrait.empty() &&
+        std::find(shape.requiresTraits.begin(), shape.requiresTraits.end(), material.onlyForTrait) ==
+            shape.requiresTraits.end())
+        return false;
     return true;
+}
+int FireSettingDef::fuelHeat(const std::string& family) const {
+    auto it = fuels.find(family);
+    return it == fuels.end() ? 0 : it->second.heat;
 }
 const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) const {
     auto it = behaviours.find(id);
@@ -295,6 +303,7 @@ ItemTable loadItems(const std::string& path) {
             throw std::runtime_error("items: modifier " + def.id + " effect must start with add_, increased_ or more_");
         if (auto display = m->find("display")) def.display = display->asString();
         if (auto weight = m->find("weight")) def.weight = weight->asNumber();
+        if (auto from = m->find("from_tier")) def.fromTier = from->asInt();
         if (auto purpose = m->find("design_purpose")) def.designPurpose = purpose->asString();
         for (const auto& t : m->get("tiers").asArray()) {
             ModifierTier tier;
@@ -498,9 +507,9 @@ ConstructionTable loadConstruction(const std::string& path) {
         if (auto form = s->find("form")) {
             shape.form = form->asString();
             if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door" &&
-                shape.form != "arch")
+                shape.form != "arch" && shape.form != "fire")
                 throw std::runtime_error("construction: shape '" + shape.id +
-                                         "' form must be box, stairs, wedge, door or arch");
+                                         "' form must be box, stairs, wedge, door, arch or fire");
         }
         if (auto oriented = s->find("oriented")) shape.oriented = oriented->asBool();
         if (auto tall = s->find("cells_tall")) {
@@ -532,6 +541,7 @@ ConstructionTable loadConstruction(const std::string& path) {
         material.traits = readStringArray(m->get("traits"));
         material.texture = m->get("texture").asString();
         if (auto tint = m->find("tint")) material.tint = tint->asString();
+        if (auto only = m->find("only_for_trait")) material.onlyForTrait = only->asString();
         table.materials.push_back(std::move(material));
     }
     if (table.materials.empty()) throw std::runtime_error("construction: at least one building material is needed");
@@ -917,7 +927,22 @@ WorldgenTable loadWorldgen(const std::string& path) {
         r.breakable = rule->get("breakable").asBool();
         r.digSeconds = rule->get("dig_seconds").asNumber();
         if (auto yields = rule->find("yields")) r.yields = readIntMap(*yields);
+        if (auto hand = rule->find("by_hand")) r.byHand = hand->asBool();
+        if (auto heat = rule->find("heat_to_crack")) r.heatToCrack = heat->asInt();
         table.blockRules[kind] = std::move(r);
+    }
+    if (auto fire = doc->find("fire_setting")) {
+        for (const auto& [family, fuel] : fire->get("fuels").asObject()) {
+            if (family == "design_purpose") continue;
+            FireFuelDef f;
+            f.heat = fuel->get("heat").asInt();
+            f.burnSeconds = fuel->get("burn_seconds").asNumber();
+            table.fireSetting.fuels[family] = f;
+        }
+        if (auto v = fire->find("reach_cells")) table.fireSetting.reachCells = v->asInt();
+        if (auto v = fire->find("soak_seconds")) table.fireSetting.soakSeconds = v->asNumber();
+        if (auto v = fire->find("hot_seconds")) table.fireSetting.hotSeconds = v->asNumber();
+        if (auto v = fire->find("quench_radius_m")) table.fireSetting.quenchRadiusM = v->asNumber();
     }
 
     for (const auto& b : doc->get("biomes").asArray()) {
@@ -936,6 +961,10 @@ WorldgenTable loadWorldgen(const std::string& path) {
         if (auto packs = b->find("packs"))
             for (const auto& pack : packs->asArray())
                 biome.packs.push_back(readStringArray(*pack));
+        if (auto v = b->find("grazer_density")) biome.grazerDensity = v->asNumber();
+        if (auto grazers = b->find("grazers"))
+            for (const auto& pack : grazers->asArray())
+                biome.grazers.push_back(readStringArray(*pack));
         table.biomes.push_back(std::move(biome));
     }
 
@@ -949,6 +978,7 @@ WorldgenTable loadWorldgen(const std::string& path) {
         node.unitsPerHarvest = n->get("units_per_harvest").asInt();
         node.visual = n->get("visual").asString();
         if (auto era = n->find("era")) node.era = era->asInt();
+        if (auto heat = n->find("heat_to_work")) node.heatToWork = heat->asInt();
         table.nodeTypes[id] = std::move(node);
     }
 

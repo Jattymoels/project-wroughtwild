@@ -129,6 +129,15 @@ now a **full 3D block field** the sim generates deterministically per seed
   wood/stone/iron within the near radius, packs off the doorstep, the
   gate ≥ 70 m out in the wastes, all held across seeds by tests.
 
+**Fire-setting (3 Sep 2026, D-020):** hands dig soil only. Stone wants a
+campfire against it (`construction.json` campfire, laid in timber or
+charcoal) and then cold: the blocks and nodes within `fire_setting.reach_cells`
+of a burning fire are hot for `hot_seconds`, cold landing within
+`quench_radius_m` cracks every hot block whose heat met its kind's
+`heat_to_crack`, and cracked rock digs by hand at `dig_seconds`. Nodes carry
+`heat_to_work` (boulders and iron 1, the alloy ores 2). Cracks are saved;
+heat is not. See [progression-eras.md](progression-eras.md).
+
 **Digging (slice 2, same day):** hold LMB on any generic terrain block to
 dig it out over its `dig_seconds` (a progress bar fills under the
 crosshair). Rules are data (`worldgen.json block_rules`): soil breaks fast
