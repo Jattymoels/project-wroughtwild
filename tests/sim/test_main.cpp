@@ -921,6 +921,13 @@ void testWorldgen(const tuning::Tuning& t) {
           "worldgen: danger rings scale pack density outward");
     check(t.worldgen.dangerMultiplierAt(30.0) < 0.5, "worldgen: the heartland is quiet (D-020)");
     check(t.world.shelter.maxRoomCells >= 300, "shelter: the room cap is a hall, not a hut (owner playtest 3 Sep)");
+    check(t.realtime.hordeMaxLiveMobs > 0 && t.realtime.hordeSleepRangeM > 28.0 && t.realtime.hordeSleepAfterSeconds > 0.0,
+          "population: a live-mob cap and a sleep range beyond the wake range");
+    {
+        const auto* fast = t.realtime.findBehaviour("fast");
+        check(fast && fast->moveSpeedMps > 5.0 && fast->moveSpeedMps <= 5.6,
+              "population: hounds run faster than you, but only just (owner 3 Sep)");
+    }
     {
         // Grazers: placed from the biome's grazer list, flagged, never
         // hostile-listed; hostile packs keep off the doorstep.

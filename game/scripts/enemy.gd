@@ -73,6 +73,8 @@ var _sim: WroughtwildSim
 ## modifier's multipliers, immunities and death burst; loot rolls carry
 ## the id so elites pay their bounty.
 var elite_id := ""
+## Seconds since something hurt this mob (packs sleep only when calm).
+var since_hurt := 1e9
 var _immune_statuses := PackedStringArray()
 var _burst_damage := 0.0
 var _burst_radius := 0.0
@@ -123,6 +125,8 @@ static func spawn(root: Node, id: StringName, at: Vector3) -> Enemy:
 func _ready() -> void:
 	add_to_group("enemies")
 	configure(load("res://scripts/sim.gd").shared())
+	# Findable from the frame it appears (a scream in the same frame counts).
+	MobGrid.register(self)
 
 
 func configure(sim: WroughtwildSim) -> void:
@@ -380,8 +384,8 @@ func _proliferate() -> void:
 	if not params.get("enabled", false):
 		return
 	var radius: float = params.get("radius_m", 0.0)
-	for node in get_tree().get_nodes_in_group("enemies"):
-		if node == self or not (node is Enemy) or not is_instance_valid(node):
+	for node in MobGrid.near(global_position, radius, self):
+		if not (node is Enemy):
 			continue
 		var other := node as Enemy
 		if global_position.distance_to(other.global_position) > radius:
@@ -390,7 +394,14 @@ func _proliferate() -> void:
 		other.apply_ignite(params.get(key, 0.0))
 
 
+## True while nothing is happening to this mob: a pack of these may sleep.
+func calm() -> bool:
+	return (state == "idle" or state == "flee") and life > 0.0 and not trial_bound and nest_id == 0
+
+
 func _physics_process(delta: float) -> void:
+	MobGrid.register(self)
+	since_hurt += delta
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if _tick_statuses(delta):
@@ -494,8 +505,8 @@ func _hop_if_blocked(planar: Vector3) -> void:
 
 func _separation_push() -> Vector3:
 	var push := Vector3.ZERO
-	for node in get_tree().get_nodes_in_group("enemies"):
-		if node == self or not (node is Enemy) or not is_instance_valid(node):
+	for node in MobGrid.near(global_position, separation_radius, self):
+		if not (node is Enemy):
 			continue
 		var away: Vector3 = global_position - (node as Enemy).global_position
 		away.y = 0.0
@@ -526,13 +537,11 @@ func _chase_direction(player: Node3D, distance: float) -> Vector3:
 ## Zombies-wave builder). Public as the test hook too.
 func force_scream() -> void:
 	_scream_timer = _scream_period
-	for node in get_tree().get_nodes_in_group("enemies"):
-		if node == self or not (node is Enemy) or not is_instance_valid(node):
+	for node in MobGrid.near(global_position, _scream_radius, self):
+		if not (node is Enemy):
 			continue
 		var other := node as Enemy
 		if other.state != "idle" or other.life <= 0.0:
-			continue
-		if _horizontal_distance_to(other) > _scream_radius:
 			continue
 		other.state = "chase"
 	_pulse_ring(_scream_radius, Color(1.0, 0.9, 0.35, 0.4))
@@ -584,6 +593,7 @@ func force_attack() -> float:
 func take_damage(amount: float, flash: bool = true) -> void:
 	if life <= 0.0:
 		return
+	since_hurt = 0.0
 	life = maxf(0.0, life - amount)
 	_refresh_label()
 	# Hit feedback: a brief white-hot flash (DoT ticks pass flash=false so a

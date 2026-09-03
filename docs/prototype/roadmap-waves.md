@@ -342,9 +342,17 @@ the world is the campaign. Slices, in order:
    splits whole), the mason's yard dresses split stone; fire-setting
    reframed as one material response. Two rules: materials have
    responses, skills have properties; Baseline, Exploit, Synergy.
-9. **Skills on the plate** *(next)*: a skill tablet laid on the Foundry
-   plate is supported by the ingots touching it; later, manners learned
-   from mob families as the support pool.
+9. **Population and performance** *(landed 3 Sep 2026)*: a spatial mob
+   grid (`mob_grid.gd`) answers every neighbour query (separation, screams,
+   proliferation) so cost follows the crowd, not its square; packs sleep
+   again when calm, unhurt and far (survivors return, the dead do not); a
+   live-mob cap (`horde.max_live_mobs`); elk herds halved; hounds 5.5 m/s.
+10. **Skills on the plate** *(next)*: a skill tablet laid on the Foundry
+   plate is supported by the ingots touching it, the Foundry reachable
+   from the bench and the first ingot early; then the stone accomplishment
+   pass (seam look, wedge sinking, chunk falling, first dressed block as a
+   beat, a first-hour job for fire), melee's stagger/push/swing armour, and
+   the bench kept alive (bulk wedges, frames for the yard and the forge).
 
 Owner tuning note (3 Sep): "everything is way too fast/powerful ... to
 feel good you have to start with less damage/more danger" — era one's

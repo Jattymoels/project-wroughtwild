@@ -97,3 +97,16 @@ Boons and item properties should query tags rather than hard-code every skill na
 - Passive-tree topology.
 - Respec philosophy.
 - Persistent-to-temporary power budget.
+
+## Population (3 Sep 2026)
+
+The owner's crowds lagged a good PC. Three causes, three rules. Every mob
+registers in `MobGrid` (a 3 m spatial hash, double-buffered per physics
+frame) and every "who is near me" - separation, the shrieker's scream,
+ignite proliferation - reads a few buckets instead of the whole enemies
+group. `MobPacks` caps the live population (`combat_realtime.json`
+`horde.max_live_mobs`) and puts a woken pack back to sleep when all its
+members are calm, unhurt for `sleep_after_seconds` and `sleep_range_m`
+from the player: survivors return at full life when you come back, the
+dead stay dead, and a returning pack is exactly its survivors (no second
+helping of era bonuses). Trial-bound and nest mobs never sleep.

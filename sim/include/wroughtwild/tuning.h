@@ -535,6 +535,9 @@ struct RealtimeTable {
     // A chaser blocked by a ledge hops with this take-off speed: enough
     // for one block, not two, so cliffs stay cliffs.
     double hordeJumpSpeedMps = 5.0;
+    int hordeMaxLiveMobs = 60;          // mobs alive at once; packs beyond it wait
+    double hordeSleepRangeM = 60.0;     // a calm pack this far from the player sleeps
+    double hordeSleepAfterSeconds = 6.0; // unhurt for this long before it may sleep
     // Per-skill space-and-time tunables (projectile speed, ranges...),
     // numeric fields verbatim; keyed by skill id.
     std::map<std::string, std::map<std::string, double>> skillSpatials;

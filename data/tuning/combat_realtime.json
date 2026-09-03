@@ -27,11 +27,11 @@
       "give_up_distance_m": 22.0
     },
     "fast": {
-      "move_speed_mps": 6.5,
+      "move_speed_mps": 5.5,
       "attack_range_m": 1.6,
       "aggro_range_m": 14.0,
       "windup_seconds": 0.25,
-      "design_purpose": "Outruns the player; packs punish standing still and reward area strikes. The long give_up_distance_m makes hounds the dangerous disengage: escaping them costs distance and risk.",
+      "design_purpose": "Outruns the player; packs punish standing still and reward area strikes. The long give_up_distance_m makes hounds the dangerous disengage: escaping them costs distance and risk. 5.5 m/s (from 6.5, owner 3 Sep 2026: 'hounds are a bit too fast'): faster than you, but only just - the pack is the threat, not the closing speed.",
       "give_up_distance_m": 34.0
     },
     "shrieker": {
@@ -125,6 +125,9 @@
     "give_up_seconds": 2.5,
     "vertical_reach_m": 2.5,
     "jump_speed_mps": 5.0,
-    "design_purpose": "D-012 stupid-zombie horde feel. jump_speed_mps (owner playtest, 2 Sep 2026: mobs got stuck on the 3D world's one-block steps, easy kills, less fun): a chaser blocked by a ledge in its path hops at this take-off speed - clears one block, not two, so cliffs and two-high walls still stop the train. Separation makes chasers push apart into a physical train instead of stacking, so bunching them is a skill. give_up_seconds is how long the player must stay beyond a chaser's give_up_distance_m before it loses interest - no eternal aggro, no instant leash. vertical_reach_m is the 3D world's rule (owner playtest, 2 Sep 2026: invisible damage from cave dwellers under the floor): a mob only aggroes on, attacks, and keeps chasing a player within this vertical band - nothing bites through rock, and a target it cannot reach for give_up_seconds is dropped."
+    "design_purpose": "D-012 stupid-zombie horde feel. jump_speed_mps (owner playtest, 2 Sep 2026: mobs got stuck on the 3D world's one-block steps, easy kills, less fun): a chaser blocked by a ledge in its path hops at this take-off speed - clears one block, not two, so cliffs and two-high walls still stop the train. Separation makes chasers push apart into a physical train instead of stacking, so bunching them is a skill. give_up_seconds is how long the player must stay beyond a chaser's give_up_distance_m before it loses interest - no eternal aggro, no instant leash. vertical_reach_m is the 3D world's rule (owner playtest, 2 Sep 2026: invisible damage from cave dwellers under the floor): a mob only aggroes on, attacks, and keeps chasing a player within this vertical band - nothing bites through rock, and a target it cannot reach for give_up_seconds is dropped. Population (owner playtest 3 Sep 2026: crowds lagged a good PC): max_live_mobs is the cap on mobs alive at once - packs beyond it wait to wake; a woken pack whose members are all idle, unhurt for sleep_after_seconds and sleep_range_m from the player goes back to sleep (its survivors return when you do). Neighbour queries run on a spatial grid, so cost follows the crowd, not its square.",
+    "max_live_mobs": 60,
+    "sleep_range_m": 60.0,
+    "sleep_after_seconds": 6.0
   }
 }
