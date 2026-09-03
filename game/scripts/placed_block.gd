@@ -66,13 +66,14 @@ func _build() -> void:
 	parent.add_child(mesh)
 	if is_door():
 		mesh.position = Vector3(size.x * 0.5, 0.0, 0.0)
+	# Collision shapes must be direct children of the body (Godot ignores
+	# shapes under an intermediate node), so the door's shut leaf collides
+	# from here and simply switches off while the leaf is swung open.
 	for entry in PieceMesh.collision_for(form, size):
 		var shape := CollisionShape3D.new()
 		shape.shape = entry["shape"]
 		shape.transform = entry["transform"]
-		if is_door():
-			shape.transform.origin += Vector3(size.x * 0.5, 0.0, 0.0)
-		parent.add_child(shape)
+		add_child(shape)
 		_collision_shapes.append(shape)
 
 

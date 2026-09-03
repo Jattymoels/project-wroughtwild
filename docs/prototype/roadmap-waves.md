@@ -259,9 +259,16 @@ and resting there `settle_rounds` after the last hit regenerates
 `regen_life_per_round` — the owner's regen ask, and the first reason to
 build on day one. A dug hollow with a slab over its mouth counts.
 
+**Owner building playtest (3 Sep 2026):** "within the 1 block building
+feels nice", tension outside it. Fixed the same day: reaching into empty
+air (the view ray snaps to elements touching what is built), the piece you
+build on decides the grid (a full cube on a half cube), a player step-up
+for stairs and half cubes, door collision (a Godot pivot mistake), and
+per-shape hints (floor slabs live between cells).
+
 Still ahead for building: mobs breaking in (wall life, the door as the
 weak point), material families that look different, and the owner's
-building playtest. Deliberately out: structural-support rules.
+next playtest. Deliberately out: structural-support rules.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 

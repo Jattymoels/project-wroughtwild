@@ -110,5 +110,21 @@ func _physics_process(_delta: float) -> void:
 		292:
 			check(_player.velocity.y > 3.0, "jump: buffered jump fires from the floor")
 		300:
+			# Step-up: a row of half cubes ahead is a step, not a wall - the
+			# player walks up onto it (stairs and half cubes, building slice 4).
+			_player.global_position = Vector3(0, 1.1, 0)
+			_player.velocity = Vector3.ZERO
+			_player.rotation.y = 0.0
+			for z in range(-6, -2):
+				for x in [-1, 0]:
+					_player.placement.place_piece({"kind": "volume", "axis": 0, "cell": Vector3i(x, 0, z)},
+						&"half_cube", &"wood")
+			_player.test_walk = Vector2(0, -1)
+		322:
+			check(_player.global_position.y > 1.45 and _player.global_position.z < -1.0,
+				"step: the player walked up onto the half cubes (y %.2f, z %.2f)" % [
+					_player.global_position.y, _player.global_position.z])
+			_player.test_walk = Vector2.ZERO
+		330:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)

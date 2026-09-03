@@ -180,12 +180,23 @@ public:
     // whole footprint's centre) and yaw_turns (quarter turns for a shape
     // authored thin along z / long along x). The host filters by what its
     // world knows (occupancy, terrain, props) and takes the first survivor.
-    Array lattice_candidates(const String& shape_id, const Vector3& point, const Vector3& normal) const;
+    // fine_grid: generate on the registry lattice instead of the build
+    // grid, so a full-size piece can sit on a half-scale one (the piece you
+    // build on decides the grid).
+    Array lattice_candidates(const String& shape_id, const Vector3& point, const Vector3& normal,
+                             bool fine_grid) const;
     // Pose of the shape anchored at an element: {centre, yaw_turns}.
     Dictionary lattice_pose(const String& shape_id, const Dictionary& element) const;
-    // True when the shape may anchor on the element: right kind for its
-    // slot, aligned to its grid.
+    // True when the shape may anchor on the element: the right kind of
+    // element for its slot.
     bool shape_accepts(const String& shape_id, const Dictionary& element) const;
+    // True when the shape anchored here would touch something already
+    // built (its footprint's box grown by one registry cell holds a placed
+    // element): what lets a piece continue out into empty air.
+    bool structure_touches(const String& shape_id, const Dictionary& element) const;
+    // True when a placed element lies within one registry cell of the point.
+    bool structure_near_point(const Vector3& point) const;
+    int structure_piece_count() const;
 
     // The player's structure: what stands on which element. The host
     // mirrors it with scene nodes and rebuilds it from a save.

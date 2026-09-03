@@ -238,6 +238,29 @@ void Structure::clear() {
     owner_.clear();
 }
 
+bool Structure::near(const std::vector<Element>& footprint, int margin) const {
+    if (footprint.empty() || owner_.empty()) return false;
+    Cell lo = footprint.front().cell, hi = lo;
+    for (const auto& e : footprint) {
+        lo.x = std::min(lo.x, e.cell.x); lo.y = std::min(lo.y, e.cell.y); lo.z = std::min(lo.z, e.cell.z);
+        hi.x = std::max(hi.x, e.cell.x); hi.y = std::max(hi.y, e.cell.y); hi.z = std::max(hi.z, e.cell.z);
+    }
+    // One cell either side: the neighbour below shares this box's low
+    // boundary, and faces and edges are keyed by the cell on their positive
+    // side, so the one on the high boundary is keyed one step up.
+    for (int x = lo.x - margin - 1; x <= hi.x + margin + 1; ++x)
+        for (int y = lo.y - margin - 1; y <= hi.y + margin + 1; ++y)
+            for (int z = lo.z - margin - 1; z <= hi.z + margin + 1; ++z) {
+                const Cell c{x, y, z};
+                if (occupied(Element{ElementKind::Volume, 0, c})) return true;
+                for (int axis = 0; axis < 3; ++axis) {
+                    if (occupied(Element{ElementKind::Face, axis, c})) return true;
+                    if (occupied(Element{ElementKind::Edge, axis, c})) return true;
+                }
+            }
+    return false;
+}
+
 std::vector<const Piece*> Structure::wallsAt(const Element& edge) const {
     std::vector<const Piece*> walls;
     if (edge.kind != ElementKind::Edge || edge.axis != 1) return walls;

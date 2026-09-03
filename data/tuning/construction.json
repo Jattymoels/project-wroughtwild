@@ -36,6 +36,7 @@
       "material_cost": 1,
       "size_m": [1.0, 0.25, 0.25],
       "element": "beam",
+      "hint": "aim along a beam's line or a wall's top to run it on into the air",
       "design_purpose": "Runs along a horizontal edge of the lattice, the line a wall's top and a floor's rim share, so it reads as a lintel over a doorway, a wall plate along the top of a wall, or a rail along a slab's edge depending only on what it is next to."
     },
     {
@@ -44,6 +45,7 @@
       "material_cost": 1,
       "size_m": [1.0, 0.25, 1.0],
       "element": "floor",
+      "hint": "lies between cells: aim at the top of a wall to roof a room; for a raised floor use half cubes (G)",
       "design_purpose": "A slab lying on a horizontal face of the lattice - the plane between a cell and the one above - for floors, flat roofs and landings; available from the start because a roof is what makes a shelter (building slice 2 un-gated it; the boss reward is the pitched roof wedge instead). Same thickness as a wall so a floor's rim and a wall's top meet cleanly."
     },
     {
@@ -54,6 +56,7 @@
       "element": "block",
       "form": "stairs",
       "oriented": true,
+      "hint": "R turns them; they rise toward their back",
       "design_purpose": "Two half-height steps in one cell, rising toward the back; R turns them (an oriented block, one of two shapes that use the rotation key). A cube's cost for a cube's cell, so climbing your own building is never cheaper than building it."
     },
     {
@@ -65,6 +68,7 @@
       "form": "door",
       "oriented": true,
       "cells_tall": 2,
+      "hint": "two cells tall; E opens and shuts it, R flips the hinge",
       "design_purpose": "A wall piece two cells tall (the player is 1.92 m) whose leaf swings open on E and closes again; while open its collision is gone and mobs may follow you through. Occupies the face it stands on and the one above, so nothing else can straddle the opening. R flips the hinge to the other side. Costs a cube: a door is the most valuable square metre of a shelter."
     },
     {

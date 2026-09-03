@@ -65,9 +65,8 @@ func _test_lattice() -> void:
 	var blocks: Array = sim.lattice_candidates("cube", Vector3(10.5, 13.0, 10.5), Vector3.UP)
 	check(blocks.size() == 1 and blocks[0]["cell"] == Vector3i(20, 26, 20), "lattice: blocks stack")
 	check(sim.shape_accepts("pillar", {"kind": "edge", "axis": 1, "cell": Vector3i.ZERO})
-		and not sim.shape_accepts("pillar", {"kind": "edge", "axis": 0, "cell": Vector3i.ZERO})
-		and not sim.shape_accepts("pillar", {"kind": "edge", "axis": 1, "cell": Vector3i(1, 0, 0)}),
-		"lattice: a post wants a vertical edge on the build grid")
+		and not sim.shape_accepts("pillar", {"kind": "edge", "axis": 0, "cell": Vector3i.ZERO}),
+		"lattice: a post wants a vertical edge")
 
 	# The structure: one piece per element, footprints, corners grow trims.
 	var face_x := {"kind": "face", "axis": 0, "cell": Vector3i(10, 6, 10)}
@@ -104,8 +103,13 @@ func _test_lattice() -> void:
 	var half_posts: Array = sim.lattice_candidates("half_pillar", Vector3(10.5, 13.0, 10.5), Vector3.UP)
 	check(not half_posts.is_empty() and half_posts[0]["cell"] == mid_top["cell"] and half_posts[0]["kind"] == "edge",
 		"fine: a half post aimed at a cube's top centre takes the edge through it")
-	check(sim.shape_accepts("half_pillar", mid_top) and not sim.shape_accepts("pillar", mid_top),
-		"fine: only the half post may stand off the build grid")
+	check(sim.shape_accepts("half_pillar", mid_top) and sim.shape_accepts("pillar", mid_top),
+		"fine: a full post may stand off the build grid too - the piece you build on decides")
+	# A full cube on a half cube's top: fine-grid candidates put its bottom
+	# on the half cube (y = 12.5), a whole cube tall from there.
+	var on_half: Array = sim.lattice_candidates("cube", Vector3(10.75, 12.5, 10.75), Vector3.UP, true)
+	check(on_half.size() == 1 and on_half[0]["cell"] == Vector3i(21, 25, 21)
+		and on_half[0]["centre"] == Vector3(11.0, 13.0, 11.0), "fine: a full cube sits on a half cube")
 	check(sim.lattice_pose("half_pillar", mid_top)["centre"] == Vector3(10.5, 13.25, 10.5),
 		"fine: a half post is posed at its registry edge")
 	var half_cell := {"kind": "volume", "axis": 0, "cell": Vector3i(21, 24, 21)}
@@ -115,6 +119,19 @@ func _test_lattice() -> void:
 		and not sim.structure_free_for("cube", {"kind": "volume", "axis": 0, "cell": Vector3i(20, 24, 20)})
 		and sim.structure_place({"kind": "volume", "axis": 0, "cell": Vector3i(20, 24, 20)}, "half_cube", "wood", 0),
 		"fine: a half cube blocks the full cube from its cell but not another half cube")
+	sim.structure_clear()
+
+	# Reaching into air: a beam's continuation touches the beam, a beam
+	# three cells on does not; the ray brushes the structure near the beam.
+	var beam_edge := {"kind": "edge", "axis": 0, "cell": Vector3i(20, 26, 20)}
+	check(sim.structure_piece_count() == 0 and sim.structure_place(beam_edge, "beam", "wood", 0)
+		and sim.structure_piece_count() == 1, "touch: one beam placed")
+	check(sim.structure_touches("beam", {"kind": "edge", "axis": 0, "cell": Vector3i(22, 26, 20)}),
+		"touch: the next beam along the line touches")
+	check(not sim.structure_touches("beam", {"kind": "edge", "axis": 0, "cell": Vector3i(28, 26, 20)}),
+		"touch: a beam three cells on does not")
+	check(sim.structure_near_point(Vector3(10.5, 13.1, 10.05)) and not sim.structure_near_point(Vector3(15.0, 13.0, 10.0)),
+		"touch: the ray brushes the structure only near the beam")
 	sim.structure_clear()
 
 	# Shelter: with no terrain (seed -1) the structure alone must close the

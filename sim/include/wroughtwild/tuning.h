@@ -368,6 +368,8 @@ struct ShapeDef {
     // For fine pieces: the full-size shape this is the half-scale twin of
     // (fine mode swaps the selection for its twin). Empty otherwise.
     std::string fineOf;
+    // One line the HUD shows when the shape is selected (how to use it).
+    std::string hint;
     std::string requiresWorldEffect; // empty = available from the start
 };
 

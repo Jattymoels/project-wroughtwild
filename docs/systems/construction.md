@@ -177,8 +177,44 @@ regenerates: the early deprivation the owner asked for stays, and a mob
 that breaks in stops the rest. Numbers live in `world.json` `shelter`; the
 HUD's life line reads "sheltered" or "resting +N/s".
 
+## Implemented: freedom outside the cell (owner playtest fixes, 3 Sep 2026)
+
+The owner's first building playtest: "within the 1 block building feels
+nice but there's still some tension outside of that". Six notes, three
+causes:
+
+- **Reaching into air.** Placement only worked from a surface the ray
+  hit, so extending a beam or a wall over nothing meant hitting a tiny
+  end face or the ground far below. Now the view ray is sampled from the
+  player outward; once it has passed within a registry cell of something
+  built, the first acceptable element that *touches* the structure
+  (`Structure::near`, its footprint's box grown by one registry cell) wins.
+  Aim along a beam's line and it continues; aim past a wall's edge and the
+  wall extends; aim past a pillar's side and the next post lands on the
+  cube top beside it. The surface hit stays the fallback.
+- **The piece you build on decides the grid.** A hit on a fine piece, or on
+  any piece standing off the build grid, generates candidates on the
+  registry lattice, so a full cube sits on a half cube and a wall rises
+  from a half wall. Full-size pieces are no longer forced to the build
+  grid at all; the grid remains the default because terrain and grid
+  pieces are what you usually build on.
+- **Stepping up.** The player had no step-up (CharacterBody3D climbs slopes,
+  never a vertical step), so stairs and half cubes were walls. The player
+  now tests the blocked stride from `STEP_HEIGHT` (0.55 m) higher and,
+  with ground within a step below the far end, lifts onto it; a capsule
+  riding a block's edge counts as grounded for this. Mobs hop; the player
+  steps.
+- **Door collision** was under a hinge pivot node, which Godot ignores, so
+  doors had no collision: walked through, unreachable by E and X. The
+  shape is a direct child now and switches off while the leaf is open.
+- **Floor slabs** are faces and live at cell boundaries (a ceiling, an
+  upper floor); on the ground they are carpet, as the owner saw. Raised
+  half-height floors are half cubes in fine mode. Shapes now carry a
+  one-line `hint` the HUD shows on selection to say such things.
+
 Next for building: mobs breaking in (a wall's life; the door as the weak
-point), material families that look different, and the owner's playtest.
+point), material families that look different, and the owner's next
+playtest.
 
 ## Interface requirements
 
