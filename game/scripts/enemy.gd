@@ -10,6 +10,9 @@ signal died(enemy: Enemy)
 
 ## The nest that fielded this mob (encroachment), 0 for a roaming pack.
 var nest_id := 0
+## True for a trial room's own enemies: the room contains, counts and
+## clears only these, never a roaming pack that wandered near the arena.
+var trial_bound := false
 
 
 ## Era mechanic (eras.json burning_ground): where this family dies, the
