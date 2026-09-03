@@ -104,6 +104,8 @@ def main() -> None:
     write_png("marsh.png", speckle((58, 78, 46), 0.14, rng, ((44, 58, 70), 0.12)))
     # Era three's metals: blued steel with rivets, bright silver with a tarnish fleck.
     write_png("steel.png", speckle((96, 104, 118), 0.05, rng, ((60, 64, 74), 0.05)))
+    # Fieldstone (D-021): rounded grey-brown stones with dark joints, laid dry.
+    write_png("fieldstone.png", banded(speckle((124, 116, 104), 0.12, rng, ((150, 140, 124), 0.1)), (58, 52, 46), 5, 2, brick=True))
     write_png("silver.png", speckle((206, 210, 218), 0.05, rng, ((140, 136, 128), 0.04)))
 
 

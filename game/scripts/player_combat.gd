@@ -375,7 +375,8 @@ func _use_strike(skill_id: StringName) -> bool:
 	_spend(skill_id)
 	var target := _nearest_enemy_in_front(melee_reach)
 	if target == null:
-		return false
+		# No enemy: the blow lands on whatever is in front (D-021).
+		return player.strike_world()
 	_ensure_fight()
 	# An attack on a frozen target cashes in the shatter combo instead.
 	var shatter: Dictionary = sim.shatter_for(String(skill_id))

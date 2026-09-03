@@ -70,6 +70,10 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 			"units_per_harvest": node.units_per_harvest,
 			"heat_to_work": node.heat_to_work,
 			"cracked": node.cracked,
+			"tool_item": String(node.tool_item),
+			"drive_presses": node.drive_presses,
+			"wedge_set": node.wedge_set,
+			"drive_progress": node.drive_progress,
 		})
 
 	var site_data: Array = []
@@ -174,6 +178,12 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		node.units_per_harvest = int(entry["units_per_harvest"])
 		node.heat_to_work = int(entry.get("heat_to_work", node.heat_to_work))
 		node.cracked = bool(entry.get("cracked", false))
+		node.tool_item = StringName(String(entry.get("tool_item", String(node.tool_item))))
+		node.drive_presses = int(entry.get("drive_presses", node.drive_presses))
+		node.wedge_set = bool(entry.get("wedge_set", false))
+		node.drive_progress = int(entry.get("drive_progress", 0))
+		if node.is_inside_tree():
+			node._refresh_wedge_look()
 	for node in nodes:
 		if not saved_names.has(node.name):
 			node.get_parent().remove_child(node)

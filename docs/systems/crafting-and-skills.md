@@ -87,3 +87,13 @@ Automation should make the player appreciate earlier scarcity, but common-resour
 - Whether craft skills belong to the player, recruited specialists or both.
 - Exact anti-spam rule for repeated recipes.
 - How trade demand is generated without feeling infinite and artificial.
+
+
+## The mason's yard (3 Sep 2026, D-021)
+
+A third kit station beside the bench and the forge: `mason_yard_kit`
+(timber and fieldstone at the bench) founds the **Mason's Yard**, whose
+recipe `dress_stone` turns two split stones into one block of the stone
+family. Timber wedges (`timber_wedge`, one timber makes two) are hand-made
+and spent per split at a seam. Masonry is dearer and slower than timber on
+purpose; the forge kit's eight stone is the first masonry ambition.

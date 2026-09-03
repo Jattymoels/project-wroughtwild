@@ -251,6 +251,17 @@ malleable form.
 - Prototype controls must display rotation, removal and material cost clearly.
 - Nearby storage integration is desirable after the basic placement loop works.
 
+## Fieldstone and the low form (3 Sep 2026, D-021)
+
+**Fieldstone** is loose rock from boulders: a family with the `rough`
+trait and `only_for_trait: rough`, so only the **footing** (block element)
+and the **dry wall** (wall element) accept it. Both use form `low`: a box
+that sits at the bottom of its element's extent, half a cell tall. A dry
+wall still occupies its face, so a roofed pen counts as shelter — the
+wooden house on a stone footing is the house the first hour builds.
+Dressed **stone** comes from the mason's yard (see
+[progression-eras.md](progression-eras.md)).
+
 ## The campfire (3 Sep 2026, D-020)
 
 One shape is fuel, not building: the **campfire** (form `fire`) requires

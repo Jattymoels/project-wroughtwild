@@ -17,9 +17,16 @@ extends StaticBody3D
 ## Fire-setting (D-020): the fire heat this node must be soaked in and then
 ## quenched before E works it (0 = hands). Once cracked it stays cracked.
 @export var heat_to_work: int = 0
+## Seams (D-021): the item a split spends ("" for hands' work) and how many
+## E presses drive it. wedge_set/drive_progress are the seam's state.
+@export var tool_item: StringName = &""
+@export var drive_presses: int = 4
+var wedge_set := false
+var drive_progress := 0
 var cracked := false
 var hot_level := 0
 var _hot_until := 0
+var _wedge_mesh: MeshInstance3D
 
 
 ## Yield when the node first appeared, so the visual shrink tracks the
@@ -52,7 +59,7 @@ func _apply_visual() -> void:
 	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
 	if mesh_instance == null or collider == null:
 		return
-	if not (visual in [&"tree", &"boulder", &"iron_vein", &"copper_vein", &"tin_vein", &"ember_vein", &"silver_vein"]):
+	if not (visual in [&"tree", &"boulder", &"iron_vein", &"copper_vein", &"tin_vein", &"ember_vein", &"silver_vein", &"seam"]):
 		return
 
 	# Chunky low-poly props (D-013): flat-shaded facets, palette vertex
@@ -93,12 +100,18 @@ func _apply_visual() -> void:
 			mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.SILVER)
 			shape.size = Vector3(1.2, 0.9, 1.2)
 			collider.position = Vector3(0, 0.45, 0)
+		&"seam":
+			mesh_instance.mesh = PropMesh.build_seam(_visual_seed())
+			shape.size = Vector3(2.0, 0.9, 1.3)
+			collider.position = Vector3(0, 0.45, 0)
 	collider.shape = shape
+	_refresh_wedge_look()
 
 
 ## A fire beside the node soaks it: hot at `heat` for `seconds`.
 func soak(heat: int, seconds: float) -> void:
-	if heat_to_work <= 0 or cracked:
+	# Ores that want heat, and seams (a hot seam splits whole under a blow).
+	if (heat_to_work <= 0 and not is_seam()) or cracked:
 		return
 	hot_level = maxi(hot_level, heat)
 	_hot_until = Time.get_ticks_msec() + int(seconds * 1000.0)
@@ -116,9 +129,100 @@ func quench() -> bool:
 	return true
 
 
-## True when E will take from it.
+## True when the material itself is ready for hands: no heat asked, or hot
+## right now (softened), or cracked for good.
 func workable() -> bool:
-	return heat_to_work <= 0 or cracked
+	return heat_to_work <= 0 or cracked or hot_level >= heat_to_work
+
+
+func is_seam() -> bool:
+	return tool_item != &""
+
+
+## The crosshair line for this node.
+func interact_label(sim: WroughtwildSim) -> String:
+	var name := Hud.pretty(String(material_family))
+	if not workable():
+		return "%s ×%d — %s" % [name, remaining_units, work_refusal()]
+	if is_seam():
+		if wedge_set:
+			var hot := "  ·  hot: one blow takes the whole seam" if hot_level > 0 else ""
+			return "%s ×%d — E drive the wedge (%d/%d), or strike it%s" % [name, remaining_units, drive_progress, drive_presses, hot]
+		var held: int = sim.material_count(String(tool_item))
+		if held > 0:
+			return "%s ×%d — E set a wedge (%s ×%d)" % [name, remaining_units, Hud.pretty(String(tool_item)), held]
+		return "%s ×%d — the seam wants a %s driven into it" % [name, remaining_units, Hud.pretty(String(tool_item))]
+	return "%s ×%d — E to gather" % [name, remaining_units]
+
+
+## E on the node: the BASELINE route, always available (D-021). Returns
+## {granted} when units came out, {text} for a step, {refusal} when not.
+func work(sim: WroughtwildSim) -> Dictionary:
+	if remaining_units <= 0:
+		return {"refusal": "nothing left here"}
+	if not workable():
+		return {"refusal": work_refusal()}
+	if not is_seam():
+		return {"granted": harvest()}
+	if not wedge_set:
+		if not sim.consume_material(String(tool_item), 1):
+			return {"refusal": "the seam wants a %s driven into it (hand-craft them from timber)" % Hud.pretty(String(tool_item))}
+		wedge_set = true
+		drive_progress = 0
+		_refresh_wedge_look()
+		return {"text": "You set a wedge in the seam. Drive it with E, or strike it."}
+	drive_progress += 1
+	if drive_progress < drive_presses:
+		_play_harvest_punch()
+		return {"text": "Driving the wedge (%d/%d)." % [drive_progress, drive_presses]}
+	return {"granted": _split(false)}
+
+
+## A heavy blow on the node: the EXPLOIT route. A set wedge splits at once;
+## a hot seam splits twice over (the SYNERGY); a hot ore cracks. Returns
+## the same shape as work(), plus "synergy" when heat doubled the split.
+func strike() -> Dictionary:
+	if remaining_units <= 0:
+		return {}
+	if is_seam():
+		if not wedge_set:
+			return {"refusal": "the blow rings off the rock: set a wedge first"}
+		var synergy := hot_level > 0
+		return {"granted": _split(synergy), "synergy": synergy, "struck": true}
+	if heat_to_work > 0 and not cracked and hot_level >= heat_to_work:
+		cracked = true
+		hot_level = 0
+		_refresh_state_look()
+		return {"text": "The hot rock cracks under the blow.", "struck": true}
+	return {}
+
+
+func _split(whole: bool) -> int:
+	var granted := harvest()
+	if whole and remaining_units > 0:
+		granted += harvest()
+	wedge_set = false
+	drive_progress = 0
+	_refresh_wedge_look()
+	return granted
+
+
+func _refresh_wedge_look() -> void:
+	if _wedge_mesh != null:
+		_wedge_mesh.queue_free()
+		_wedge_mesh = null
+	if not wedge_set:
+		return
+	_wedge_mesh = MeshInstance3D.new()
+	var box := BoxMesh.new()
+	box.size = Vector3(0.12, 0.34, 0.12)
+	var material := StandardMaterial3D.new()
+	material.albedo_color = PropMesh.BARK
+	box.material = material
+	_wedge_mesh.mesh = box
+	_wedge_mesh.position = Vector3(0.0, 0.62, 0.42)
+	_wedge_mesh.rotation.x = -0.35
+	add_child(_wedge_mesh)
 
 
 ## Why E does nothing yet ("" when it works). The words are the tutorial.

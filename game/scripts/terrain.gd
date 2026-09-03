@@ -315,6 +315,8 @@ func _spawn_resource_node(def: Dictionary) -> void:
 		return
 	var node: ResourceNode = RESOURCE_NODE_SCENE.instantiate()
 	node.heat_to_work = int(def.get("heat_to_work", 0))
+	node.tool_item = StringName(String(def.get("tool_item", "")))
+	node.drive_presses = maxi(int(def.get("drive_presses", 4)), 1)
 	# y is part of the name: a cave-floor node and a surface node may share
 	# a column, and saves match nodes by name.
 	node.name = "wn_%s_%d_%d_%d" % [def["type"], def["x"], def["y"], def["z"]]
@@ -422,6 +424,19 @@ func heat_block(cell: Vector3i, heat: int) -> bool:
 		level = maxi(level, int(_hot[cell]["heat"]))
 	_hot[cell] = {"heat": level, "until": until}
 	_set_overlay(cell, true)
+	return true
+
+
+## A heavy blow on one hot block cracks it (the impact route, D-021).
+func crack_block(cell: Vector3i) -> bool:
+	if not _hot.has(cell):
+		return false
+	var kind := kind_at(cell.x, cell.y, cell.z)
+	if int(_hot[cell]["heat"]) < heat_to_crack(kind):
+		return false
+	_hot.erase(cell)
+	cracked[cell] = true
+	_set_overlay(cell, false)
 	return true
 
 

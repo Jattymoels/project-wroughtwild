@@ -839,9 +839,9 @@ void testEnemyLoot(const tuning::Tuning& t) {
     bool boundsOk = true;
     for (int seed = 0; seed < husks; ++seed) {
         auto drops = loot::rollEnemyLoot(t.world, "stone_husk", seed);
-        if (drops.count("stone")) {
+        if (drops.count("split_stone")) {
             ++stoneDrops;
-            if (drops["stone"] < 2 || drops["stone"] > 4) boundsOk = false;
+            if (drops["split_stone"] < 2 || drops["split_stone"] > 4) boundsOk = false;
         }
         if (drops.count("iron_ore")) ++ironDrops;
     }
@@ -942,10 +942,10 @@ void testWorldgen(const tuning::Tuning& t) {
         check(hostileNear == 0, "worldgen: no hostile pack within the doorstep radius");
     }
     check(t.worldgen.blockRules.count("stone") == 1 &&
-              t.worldgen.blockRules.at("stone").yields.at("stone") == 1 &&
+              t.worldgen.blockRules.at("stone").yields.at("split_stone") == 1 &&
               t.worldgen.blockRules.at("stone").digSeconds > 0.0 &&
               !t.worldgen.blockRules.at("bedrock").breakable,
-          "worldgen: block rules load (stone pays stone, bedrock never breaks)");
+          "worldgen: block rules load (strata pay split stone, bedrock never breaks)");
 
     // D-020 fire-setting: soil digs by hand, stone must be cracked by a
     // wood fire and cold, bedrock never; the alloy ores want charcoal.
@@ -958,10 +958,59 @@ void testWorldgen(const tuning::Tuning& t) {
               t.worldgen.fireSetting.reachCells >= 1 && t.worldgen.fireSetting.hotSeconds > t.worldgen.fireSetting.soakSeconds &&
               t.worldgen.fireSetting.quenchRadiusM > 0.0,
           "fire-setting: timber burns at heat one, charcoal at two, stone is no fuel");
-    check(t.worldgen.nodeTypes.at("tree").heatToWork == 0 && t.worldgen.nodeTypes.at("boulder").heatToWork == 1 &&
-              t.worldgen.nodeTypes.at("iron_vein").heatToWork == 1 && t.worldgen.nodeTypes.at("copper_vein").heatToWork == 2 &&
+    check(t.worldgen.nodeTypes.at("tree").heatToWork == 0 && t.worldgen.nodeTypes.at("boulder").heatToWork == 0 &&
+              t.worldgen.nodeTypes.at("iron_vein").heatToWork == 0 && t.worldgen.nodeTypes.at("copper_vein").heatToWork == 2 &&
               t.worldgen.nodeTypes.at("silver_vein").heatToWork == 2,
-          "fire-setting: trees by hand, boulders and iron by wood fire, the alloy ores by charcoal");
+          "fire-setting: trees, fieldstone and iron by hand; the alloy ores want a charcoal fire");
+
+    // D-021 masonry is the unlock, not stone: boulders pay fieldstone that
+    // lays only footings and dry walls; seams pay split stone through a
+    // timber wedge; the yard dresses split stone into the stone family.
+    {
+        const auto& seam = t.worldgen.nodeTypes.at("stone_seam");
+        check(seam.materialFamily == "split_stone" && seam.toolItem == "timber_wedge" && seam.drivePresses >= 2 &&
+                  seam.unitsPerHarvest >= 1 && seam.era == 1,
+              "seams: a stone seam is worked with a timber wedge over several presses");
+        check(t.worldgen.nodeTypes.at("boulder").materialFamily == "fieldstone" && t.worldgen.nodeTypes.at("boulder").toolItem.empty(),
+              "seams: boulders are fieldstone by hand");
+        check(t.worldgen.guarantees.minNodesNear.count("stone_seam") && t.worldgen.guarantees.minNodesNear.at("stone_seam") >= 1,
+              "seams: seams are guaranteed near spawn");
+        check(t.worldgen.blockRules.at("stone").yields.count("split_stone") == 1 && !t.worldgen.blockRules.at("stone").yields.count("stone"),
+              "seams: cracked strata pay split stone, never dressed stone");
+        const auto* wedge = t.crafting.findRecipe("timber_wedge");
+        const auto* yardKit = t.crafting.findRecipe("mason_yard_kit");
+        const auto* dress = t.crafting.findRecipe("dress_stone");
+        check(wedge && wedge->station.empty() && wedge->inputs.count("wood") && wedge->outputs.at("timber_wedge") >= 1,
+              "seams: wedges are hand-made from timber");
+        check(yardKit && yardKit->station == "workbench" && yardKit->inputs.count("fieldstone") && yardKit->inputs.count("wood"),
+              "seams: the yard's kit costs fieldstone and timber at the bench");
+        check(dress && dress->station == "mason_yard" && dress->inputs.at("split_stone") >= 2 && dress->outputs.at("stone") == 1,
+              "seams: the yard dresses two split stones into one stone");
+        const auto* yard = t.crafting.findStationForKit("mason_yard_kit");
+        check(yard && yard->id == "mason_yard", "seams: the yard is founded from its kit");
+        const auto* forgeKit = t.crafting.findRecipe("forge_kit");
+        check(forgeKit && forgeKit->inputs.count("stone") && !forgeKit->inputs.count("fieldstone"),
+              "seams: the forge kit wants dressed stone - masonry gates the forge");
+        const auto* field = t.construction.findMaterial("fieldstone");
+        const auto* footing = t.construction.findShape("foundation");
+        const auto* dryWall = t.construction.findShape("dry_wall");
+        const auto* cube = t.construction.findShape("cube");
+        const auto* wall = t.construction.findShape("wall_panel");
+        check(field && footing && dryWall && field->onlyForTrait == "rough" && footing->form == "low" && dryWall->form == "low" &&
+                  footing->element == "block" && dryWall->element == "wall" && footing->sizeM[1] < 1.0,
+              "seams: fieldstone and its two low shapes exist");
+        check(t.construction.shapeAllowsMaterial(*footing, *field) && t.construction.shapeAllowsMaterial(*dryWall, *field) &&
+                  !t.construction.shapeAllowsMaterial(*cube, *field) && !t.construction.shapeAllowsMaterial(*wall, *field) &&
+                  !t.construction.shapeAllowsMaterial(*footing, *t.construction.findMaterial("wood")),
+              "seams: fieldstone lays a footing and a dry wall, never a cube or a wall; timber lays no footing");
+        for (const auto& e : t.world.enemies)
+            for (const auto& entry : e.loot)
+                check(entry.item != "stone", "seams: no creature drops dressed stone (" + e.id + ")");
+        bool milestone = false;
+        for (const auto& src : t.foundry.sources)
+            if (src.event == "work:strike_split") milestone = true;
+        check(milestone, "seams: the first strike-driven split is a Foundry milestone");
+    }
     for (const auto& [id, node] : t.worldgen.nodeTypes)
         check(node.heatToWork <= 2, "fire-setting: no node wants more heat than charcoal gives (" + id + ")");
     {
@@ -1376,7 +1425,7 @@ void testMobGearAndPages(const tuning::Tuning& t) {
     check(loot::rollEnemySkillPage(t, "nobody", 1, known).empty(), "drops: unknown enemies drop no pages");
 
     // Material rolls are untouched by the gear and page entries.
-    check(loot::rollEnemyLoot(t.world, "stone_husk", 99).count("stone") == 1,
+    check(loot::rollEnemyLoot(t.world, "stone_husk", 99).count("split_stone") == 1,
           "drops: materials still roll beside gear and pages");
 }
 
