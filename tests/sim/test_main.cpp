@@ -1756,6 +1756,36 @@ void testLattice(const tuning::Tuning& t) {
               footprint(scaled(edgeY, div), div, 1).size() == 2 && footprint(scaled(edgeX, div), div, 1).size() == 2,
           "lattice: a cube covers eight fine volumes, a wall four faces, a post or beam two edges");
     check(footprint(scaled(faceX, div), div, 2).size() == 8, "lattice: a two-cell door covers eight fine faces");
+    {
+        // Interiors (owner playtest 3 Sep: a cube straddling a wall): a block
+        // owns the faces and edges inside it, a wall the edges inside it.
+        auto cubeAll = withInterior(footprint(scaled(cube, div), div, 1));
+        int faces = 0, edges = 0;
+        for (const auto& e : cubeAll) { if (e.kind == ElementKind::Face) ++faces; if (e.kind == ElementKind::Edge) ++edges; }
+        check(cubeAll.size() == 8 + 12 + 6 && faces == 12 && edges == 6,
+              "lattice: a full block owns its 12 interior faces and 6 interior edges");
+        auto wallAll = withInterior(footprint(scaled(faceX, div), div, 1));
+        check(wallAll.size() == 4 + 4, "lattice: a full wall owns the 4 edges between its fine faces");
+        Structure s2;
+        Piece block;
+        block.anchor = scaled(cube, div);
+        block.footprint = cubeAll;
+        check(s2.place(block), "lattice: the block places");
+        Element midFace = block.anchor;
+        midFace.kind = ElementKind::Face; midFace.axis = 0; midFace.cell.x += 1;
+        check(s2.occupied(midFace), "lattice: the plane through the block's middle is taken");
+        Piece wall;
+        wall.anchor = midFace;
+        wall.footprint = withInterior(footprint(midFace, div, 1));
+        check(!s2.place(wall), "lattice: a wall cannot stand through the middle of a block");
+        Element sideFace = block.anchor;
+        sideFace.kind = ElementKind::Face; sideFace.axis = 0;
+        Piece beside;
+        beside.anchor = sideFace;
+        beside.footprint = withInterior(footprint(sideFace, div, 1));
+        check(s2.place(beside), "lattice: a wall on the block's own side face still stands");
+        check(s2.remove(midFace) && !s2.occupied(block.anchor), "lattice: removing by an interior element removes the block");
+    }
     check(footprint(scaled(edgeX, div), div, 1, 2).size() == 4 &&
               near(footprintCentre(scaled(edgeX, div), div, 1, g / div, 2), 11.0, 12.0, 10.0),
           "lattice: a two-cell girder covers four fine edges and is posed at their middle");
