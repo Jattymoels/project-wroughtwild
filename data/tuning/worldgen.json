@@ -3,8 +3,8 @@
   "status": "Wave 3 world slice 1: 3D block field, mountains, caves, danger rings",
   "default_seed": 1,
   "map": {
-    "width_cells": 160,
-    "height_cells": 160,
+    "width_cells": 224,
+    "height_cells": 224,
     "cell_size_m": 1.0,
     "world_depth": 48,
     "base_height": 12,
@@ -12,7 +12,7 @@
     "height_frequency": 0.03,
     "height_octaves": 3,
     "moisture_frequency": 0.017,
-    "design_purpose": "Bounded sandpit dimensions and terrain character (D-003, grown for the Wave 3 world pass). world_depth is the vertical block budget: y=0 bedrock, surface rolls around base_height + noise*height_scale, mountains climb from there and caves wind below. 160x160 at 1 m keeps the world bounded but far enough out that leaving the heartland is a journey."
+    "design_purpose": "Bounded sandpit dimensions and terrain character (D-003, grown for the Wave 3 world pass). world_depth is the vertical block budget: y=0 bedrock, surface rolls around base_height + noise*height_scale, mountains climb from there and caves wind below. 160x160 at 1 m keeps the world bounded but far enough out that leaving the heartland is a journey. 224 cells a side (from 160, owner 3 Sep 2026: 'always worthwhile making the world larger to allow for more mob variants'): room for a fifth biome and the packs that live in it, at 196 chunks."
   },
   "mountains": {
     "extra_scale": 14,
@@ -41,23 +41,64 @@
       "tin_vein": 0.02,
       "boulder": 0.02
     },
-    "packs": [["gloom_crawler"], ["gloom_crawler", "gloom_crawler"]],
+    "packs": [
+      [
+        "gloom_crawler"
+      ],
+      [
+        "gloom_crawler",
+        "gloom_crawler"
+      ]
+    ],
     "pack_density": 0.012,
     "design_purpose": "Carved cave systems: two intersecting 3D noise level-sets (tunnel_width sets how fat the intersection is) wind spaghetti tunnels; a third field above cavern_threshold opens caverns in the lower cavern_max_y_fraction of a column. Tunnels normally keep surface_margin blocks of roof, but breach_chance of columns may carve through the top - natural entrances you can find and drop into. node_density seeds cave floors with nodes: iron runs richer underground, which is the reason to go down before digging exists. packs den Gloom Crawlers on the same floors - the dark is inhabited. The spawn clearing and gate ground are never carved."
   },
   "danger": {
     "rings": [
-      {"radius_m": 55, "pack_density_multiplier": 1.0, "pack_size_bonus": 0, "elite_chance": 0.0},
-      {"radius_m": 110, "pack_density_multiplier": 1.8, "pack_size_bonus": 1, "elite_chance": 0.14},
-      {"radius_m": 100000, "pack_density_multiplier": 2.6, "pack_size_bonus": 2, "elite_chance": 0.25}
+      {
+        "radius_m": 75,
+        "pack_density_multiplier": 1.0,
+        "pack_size_bonus": 0,
+        "elite_chance": 0.0
+      },
+      {
+        "radius_m": 150,
+        "pack_density_multiplier": 1.8,
+        "pack_size_bonus": 1,
+        "elite_chance": 0.14
+      },
+      {
+        "radius_m": 100000,
+        "pack_density_multiplier": 2.6,
+        "pack_size_bonus": 2,
+        "elite_chance": 0.25
+      }
     ],
     "design_purpose": "Danger scales with distance from spawn: the first ring containing a cell multiplies pack density, appends pack_size_bonus extra members drawn from the pack's own kind, and rolls elite_chance for one member to carry an elite modifier (world.json elite_modifiers). The heartland stays learnable and elite-free; the far rings are where packs grow teeth and the elite bounties live."
   },
   "block_rules": {
-    "surface": {"breakable": true, "dig_seconds": 0.7, "yields": {}},
-    "dirt": {"breakable": true, "dig_seconds": 0.7, "yields": {}},
-    "stone": {"breakable": true, "dig_seconds": 1.6, "yields": {"stone": 1}},
-    "bedrock": {"breakable": false, "dig_seconds": 0.0, "yields": {}},
+    "surface": {
+      "breakable": true,
+      "dig_seconds": 0.7,
+      "yields": {}
+    },
+    "dirt": {
+      "breakable": true,
+      "dig_seconds": 0.7,
+      "yields": {}
+    },
+    "stone": {
+      "breakable": true,
+      "dig_seconds": 1.6,
+      "yields": {
+        "stone": 1
+      }
+    },
+    "bedrock": {
+      "breakable": false,
+      "dig_seconds": 0.0,
+      "yields": {}
+    },
     "design_purpose": "Breaking generic terrain blocks (owner ask, 2 Sep 2026): hold LMB on a block to dig it out. The mechanic's cost is time - dig_seconds per kind, stone slower than soil - with tool tiers deferred until crafting wants them. Soil (surface turf, dirt) yields nothing yet because no soil material family exists; digging soil buys ACCESS (mine down, open a cave, cut a pit the horde falls into). Stone yields the stone family, so rock faces are a real quarry beside boulders. Bedrock at y 0 is the world's floor and never breaks."
   },
   "biomes": [
@@ -66,9 +107,21 @@
       "display_name": "Rocky Hills",
       "surface": "rock",
       "height_min": 19,
-      "node_density": {"boulder": 0.030, "iron_vein": 0.016, "tree": 0.004},
+      "node_density": {
+        "boulder": 0.03,
+        "iron_vein": 0.016,
+        "tree": 0.004
+      },
       "pack_density": 0.0045,
-      "packs": [["stone_husk"], ["stone_husk", "ash_hound"]],
+      "packs": [
+        [
+          "stone_husk"
+        ],
+        [
+          "stone_husk",
+          "ash_hound"
+        ]
+      ],
       "design_purpose": "High ground owns stone and iron; Stone Husks make taking them feel like a claim, and the climb telegraphs risk. height_min tracks base_height + 7 so the biome sits on genuinely raised ground"
     },
     {
@@ -76,46 +129,164 @@
       "display_name": "Ember Wastes",
       "surface": "ash",
       "moisture_max": 0.3,
-      "node_density": {"boulder": 0.012, "tree": 0.002},
+      "node_density": {
+        "boulder": 0.012,
+        "tree": 0.002
+      },
       "pack_density": 0.007,
-      "packs": [["ember_whelp", "ember_whelp"], ["cinder_archer", "ember_whelp"], ["ash_hound", "ash_hound", "ash_hound"], ["shrieker", "ember_whelp", "ember_whelp"]],
-      "design_purpose": "The dangerous quarter that holds the trial gate: fire creatures preview the Tyrant's element and the ground itself looks burnt; shrieker packs recruit the wastes against you"
+      "packs": [
+        [
+          "ember_whelp",
+          "ember_whelp"
+        ],
+        [
+          "cinder_archer",
+          "ember_whelp"
+        ],
+        [
+          "ash_hound",
+          "ash_hound",
+          "ash_hound"
+        ],
+        [
+          "shrieker",
+          "ember_whelp",
+          "ember_whelp"
+        ],
+        [
+          "hollow_knight",
+          "cinder_wisp"
+        ],
+        [
+          "cinder_wisp",
+          "cinder_wisp",
+          "ash_hound"
+        ]
+      ],
+      "design_purpose": "The dangerous quarter that holds the trial gate: fire creatures preview the Tyrant's element and the ground itself looks burnt; shrieker packs recruit the wastes against you Hollow knights and cinder wisps (3 Sep 2026) give the wastes an armoured line and a burning skirmisher beside the whelps."
+    },
+    {
+      "id": "fen",
+      "display_name": "The Fen",
+      "surface": "marsh",
+      "height_max": 15,
+      "moisture_min": 0.55,
+      "node_density": {
+        "tree": 0.02,
+        "boulder": 0.004
+      },
+      "pack_density": 0.005,
+      "packs": [
+        [
+          "bog_lurker"
+        ],
+        [
+          "bog_lurker",
+          "marsh_wisp"
+        ],
+        [
+          "marsh_wisp",
+          "marsh_wisp"
+        ],
+        [
+          "bog_lurker",
+          "bog_lurker",
+          "marsh_wisp"
+        ]
+      ],
+      "design_purpose": "Wet lowland where the moisture pools below the valley floor: the fifth biome, and the first whose mobs are not the Tyrant's. Bog lurkers are slow, thick and bleed-proof - a wall you walk around - and marsh wisps skirmish from range and sting; together they teach spacing rather than training. Heights start at the base height (12), so height_max 15 is the lowest band of the noise. Sits before the forest in the list so wet low ground is fen, wet high ground forest."
     },
     {
       "id": "forest",
       "display_name": "Deep Forest",
       "surface": "forest_floor",
       "moisture_min": 0.55,
-      "node_density": {"tree": 0.050, "boulder": 0.006},
+      "node_density": {
+        "tree": 0.05,
+        "boulder": 0.006
+      },
       "pack_density": 0.004,
-      "packs": [["ash_hound", "ash_hound"], ["shrieker", "ash_hound", "ash_hound"]],
+      "packs": [
+        [
+          "ash_hound",
+          "ash_hound"
+        ],
+        [
+          "shrieker",
+          "ash_hound",
+          "ash_hound"
+        ]
+      ],
       "design_purpose": "Wood country: dense trees with hound packs prowling, so bulk timber runs stay tense; a shrieker among the hounds turns a timber run into a hunt"
     },
     {
       "id": "meadow",
       "display_name": "Meadow",
       "surface": "grass",
-      "node_density": {"tree": 0.014, "boulder": 0.008},
+      "node_density": {
+        "tree": 0.014,
+        "boulder": 0.008
+      },
       "pack_density": 0.0015,
-      "packs": [["ember_whelp"]],
+      "packs": [
+        [
+          "ember_whelp"
+        ]
+      ],
       "design_purpose": "The gentle fallback biome and starting country: sparse resources, near-empty of threats, readable in every direction"
     }
   ],
   "nodes": {
-    "tree": {"display_name": "Tree", "material_family": "wood", "units": 12, "units_per_harvest": 3, "visual": "tree"},
-    "boulder": {"display_name": "Boulder", "material_family": "stone", "units": 10, "units_per_harvest": 2, "visual": "boulder"},
-    "iron_vein": {"display_name": "Iron Vein", "material_family": "iron_ore", "units": 8, "units_per_harvest": 2, "visual": "iron_vein"},
-    "copper_vein": {"display_name": "Copper Vein", "material_family": "copper_ore", "units": 8, "units_per_harvest": 2, "visual": "copper_vein", "era": 2},
-    "tin_vein": {"display_name": "Tin Vein", "material_family": "tin_ore", "units": 6, "units_per_harvest": 2, "visual": "tin_vein", "era": 2},
+    "tree": {
+      "display_name": "Tree",
+      "material_family": "wood",
+      "units": 12,
+      "units_per_harvest": 3,
+      "visual": "tree"
+    },
+    "boulder": {
+      "display_name": "Boulder",
+      "material_family": "stone",
+      "units": 10,
+      "units_per_harvest": 2,
+      "visual": "boulder"
+    },
+    "iron_vein": {
+      "display_name": "Iron Vein",
+      "material_family": "iron_ore",
+      "units": 8,
+      "units_per_harvest": 2,
+      "visual": "iron_vein"
+    },
+    "copper_vein": {
+      "display_name": "Copper Vein",
+      "material_family": "copper_ore",
+      "units": 8,
+      "units_per_harvest": 2,
+      "visual": "copper_vein",
+      "era": 2
+    },
+    "tin_vein": {
+      "display_name": "Tin Vein",
+      "material_family": "tin_ore",
+      "units": 6,
+      "units_per_harvest": 2,
+      "visual": "tin_vein",
+      "era": 2
+    },
     "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture. Cave-floor nodes use the same types (caves.node_density decides which). era (default 1) is the era a node type surfaces in (eras.json, D-019): the world map places every node from the seed, and the engine reveals the ones whose era has come - copper and tin glint on the cave floors once the deep wakes."
   },
   "guarantees": {
     "spawn_biome": "meadow",
     "spawn_clear_radius_m": 8,
     "near_radius_m": 40,
-    "min_nodes_near": {"tree": 8, "boulder": 5, "iron_vein": 3},
+    "min_nodes_near": {
+      "tree": 8,
+      "boulder": 5,
+      "iron_vein": 3
+    },
     "gate_biome": "ember_wastes",
-    "gate_min_distance_m": 70,
+    "gate_min_distance_m": 100,
     "pack_min_distance_from_spawn_m": 22,
     "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood/stone/iron within a short walk to reach the forge, keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map"
   }

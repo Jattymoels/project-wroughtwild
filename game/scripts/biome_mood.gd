@@ -31,6 +31,13 @@ const MOODS := {
 		"fog_density": 0.014,
 		"ambient": 0.55,
 	},
+	"fen": {              # low and damp: green-grey haze, softer sun
+		"sun_color": Color(0.9, 0.95, 0.88),
+		"sun_energy": 0.95,
+		"fog_color": Color(0.58, 0.66, 0.6),
+		"fog_density": 0.016,
+		"ambient": 0.5,
+	},
 	"ember_wastes": {     # oppressive and burnt: weak amber sun, heavy haze
 		"sun_color": Color(1.0, 0.62, 0.4),
 		"sun_energy": 0.75,

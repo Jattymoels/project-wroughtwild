@@ -18,6 +18,7 @@ const KIND_TEXTURES := {
 	"forest_floor": "res://assets/textures/forest_floor.png",
 	"rock": "res://assets/textures/rock.png",
 	"ash": "res://assets/textures/ash.png",
+	"marsh": "res://assets/textures/marsh.png",
 	"dirt": "res://assets/textures/dirt.png",
 	"stone": "res://assets/textures/rock.png",
 	"bedrock": "res://assets/textures/rock.png",

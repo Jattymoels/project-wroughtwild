@@ -244,6 +244,12 @@ func _test_lattice() -> void:
 	var junk: int = sim.roll_item_into_pack("iron_mace", "plain", 1, 3)
 	check(sim.discard_pack_item(junk) and sim.pack_items().size() == before_count and not sim.discard_pack_item(999),
 		"pack: a discarded item is gone")
+	# The bigger world and its new families (3 Sep 2026).
+	check(sim.enemy("bog_lurker")["behaviour"] == "lurker" and sim.enemy("bog_lurker")["tint"] == "#4E5E3E"
+		and float(sim.enemy("bog_lurker")["size_scale"]) > 1.0, "world: the bog lurker has its own look")
+	check(sim.realtime()["behaviours"].has("skirmisher") and sim.realtime()["behaviours"]["skirmisher"]["preferred_distance_m"] > 0.0,
+		"world: the skirmisher keeps its distance")
+
 	check(PieceMesh.mesh_for("stairs", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE)
 		and PieceMesh.mesh_for("wedge", Vector3.ONE).get_aabb().size.is_equal_approx(Vector3.ONE),
 		"piece mesh: stairs and wedge fill their cell")
@@ -453,7 +459,7 @@ func _test_sim_extension() -> void:
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
 	check(heavy["delivery"] == "strike" and heavy["starting"], "combat: skill view carries delivery and starting (D-016)")
 	check(sim.combat_skill_ids().size() == 8, "combat: eight skills defined (four arrive as pages)")
-	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 6,
+	check(sim.enemy("ember_whelp")["max_life"] == 30.0 and sim.enemy_ids().size() == 10,
 		"combat: enemy view (shrieker and gloom crawler joined)")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
 	var rt: Dictionary = sim.realtime()
@@ -660,7 +666,7 @@ func _test_sandpit_extension() -> void:
 	var gate_dz: float = float(a["gate_z"] - a["spawn_z"])
 	check(sqrt(gate_dx * gate_dx + gate_dz * gate_dz) >= 70.0, "sandpit: gate far from spawn")
 	check(a["nodes"].size() > 0 and a["packs"].size() > 0, "sandpit: nodes and packs placed")
-	check(a["biome_defs"].size() == 4, "sandpit: four biomes defined")
+	check(a["biome_defs"].size() == 5, "sandpit: five biomes defined")
 
 	# Wave 3 world slice 1: the world is a 3D block field with caves.
 	var blocks: PackedByteArray = a["blocks"]

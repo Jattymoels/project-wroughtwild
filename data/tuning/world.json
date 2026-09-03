@@ -246,6 +246,143 @@
           "chance": 0.05
         }
       ]
+    },
+    {
+      "id": "bog_lurker",
+      "display_name": "Bog Lurker",
+      "max_life": 70,
+      "behaviour": "lurker",
+      "damage": 10,
+      "damage_type": "physical",
+      "attack_period_rounds": 2,
+      "immune_statuses": [
+        "bleed"
+      ],
+      "tint": "#4E5E3E",
+      "size_scale": 1.4,
+      "design_purpose": "The fen's wall: slow, thick, and it does not bleed (nothing to open in that hide). You do not train a lurker, you walk around it - and a wisp behind it makes the walk cost.",
+      "loot": [
+        {
+          "item": "trade_currency",
+          "min": 1,
+          "max": 4,
+          "chance": 0.6
+        },
+        {
+          "item": "iron_ore",
+          "min": 1,
+          "max": 1,
+          "chance": 0.15
+        },
+        {
+          "gear": "keen",
+          "tier": 1,
+          "chance": 0.04
+        },
+        {
+          "skill_page": true,
+          "chance": 0.03
+        }
+      ]
+    },
+    {
+      "id": "marsh_wisp",
+      "display_name": "Marsh Wisp",
+      "max_life": 14,
+      "behaviour": "skirmisher",
+      "damage": 5,
+      "damage_type": "physical",
+      "attack_period_rounds": 1,
+      "tint": "#9FC9D8",
+      "size_scale": 0.7,
+      "design_purpose": "The fen's sting: a fast skirmisher that keeps its distance and pecks. Alone it is a nuisance; behind a lurker it is the reason to bring a projectile.",
+      "loot": [
+        {
+          "item": "trade_currency",
+          "min": 1,
+          "max": 3,
+          "chance": 0.6
+        },
+        {
+          "gear": "keen",
+          "tier": 1,
+          "chance": 0.03
+        },
+        {
+          "skill_page": true,
+          "chance": 0.03
+        }
+      ]
+    },
+    {
+      "id": "cinder_wisp",
+      "display_name": "Cinder Wisp",
+      "max_life": 16,
+      "behaviour": "skirmisher",
+      "damage": 6,
+      "damage_type": "fire",
+      "attack_period_rounds": 1,
+      "immune_statuses": [
+        "ignite"
+      ],
+      "tint": "#FFB347",
+      "size_scale": 0.7,
+      "design_purpose": "The wastes' skirmisher: burning, quick, ignite-proof. It is what makes fire resistance matter outside the trial.",
+      "loot": [
+        {
+          "item": "trade_currency",
+          "min": 1,
+          "max": 3,
+          "chance": 0.6
+        },
+        {
+          "gear": "keen",
+          "tier": 1,
+          "chance": 0.03
+        },
+        {
+          "skill_page": true,
+          "chance": 0.03
+        }
+      ]
+    },
+    {
+      "id": "hollow_knight",
+      "display_name": "Hollow Knight",
+      "max_life": 90,
+      "behaviour": "knight",
+      "damage": 12,
+      "damage_type": "physical",
+      "attack_period_rounds": 2,
+      "immune_statuses": [
+        "ignite"
+      ],
+      "tint": "#3A3A44",
+      "size_scale": 1.25,
+      "design_purpose": "The wastes' armoured line: slow, heavy, and fire does nothing to a hollow suit. Cold and bleed are the answers; it is the first mob that asks the build a question the whelps did not.",
+      "loot": [
+        {
+          "item": "trade_currency",
+          "min": 1,
+          "max": 5,
+          "chance": 0.6
+        },
+        {
+          "item": "iron_ore",
+          "min": 1,
+          "max": 1,
+          "chance": 0.3
+        },
+        {
+          "gear": "keen",
+          "tier": 1,
+          "chance": 0.06
+        },
+        {
+          "skill_page": true,
+          "chance": 0.04
+        }
+      ]
     }
   ],
   "elite_modifiers": [

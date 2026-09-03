@@ -567,6 +567,9 @@ Dictionary WroughtwildSim::enemy(const String& enemy_id) const {
     d["damage"] = e->damage;
     d["damage_type"] = to_godot(e->damageType);
     d["attack_period_rounds"] = e->attackPeriodRounds;
+    d["tint"] = to_godot(e->tint);
+    d["size_scale"] = e->sizeScale;
+    d["immune_statuses"] = strings_to_packed(e->immuneStatuses);
     return d;
 }
 

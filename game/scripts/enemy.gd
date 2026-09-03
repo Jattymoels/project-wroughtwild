@@ -166,6 +166,16 @@ func configure(sim: WroughtwildSim) -> void:
 		"shrieker": _material.albedo_color = Color(0.8, 0.75, 0.25)
 		_: _material.albedo_color = Color(0.9, 0.45, 0.1)
 	_base_albedo = _material.albedo_color
+	# A family's own look (world.json tint, size_scale) over the behaviour's default.
+	# A family's own immunities (elites add theirs on top in make_elite).
+	_immune_statuses = PackedStringArray(def.get("immune_statuses", PackedStringArray()))
+	var tint: String = def.get("tint", "")
+	if tint != "":
+		_material.albedo_color = Color(tint)
+		_base_albedo = _material.albedo_color
+	var size_scale: float = float(def.get("size_scale", 1.0))
+	if size_scale != 1.0 and _mesh != null:
+		_mesh.scale = Vector3.ONE * size_scale
 	_mesh.material_override = _material
 	_refresh_label()
 
@@ -188,7 +198,7 @@ func make_elite(mod: Dictionary) -> void:
 	life = max_life
 	damage *= mod.get("damage_multiplier", 1.0)
 	move_speed *= mod.get("speed_multiplier", 1.0)
-	_immune_statuses = mod.get("immune_statuses", PackedStringArray())
+	_immune_statuses.append_array(mod.get("immune_statuses", PackedStringArray()))
 	_burst_damage = mod.get("death_burst_damage", 0.0)
 	_burst_radius = mod.get("death_burst_radius_m", 0.0)
 	_burst_type = mod.get("death_burst_type", "fire")

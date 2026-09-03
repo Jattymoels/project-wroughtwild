@@ -684,6 +684,9 @@ WorldTable loadWorld(const std::string& path) {
         def.damage = e->get("damage").asNumber();
         def.damageType = e->get("damage_type").asString();
         def.attackPeriodRounds = e->get("attack_period_rounds").asInt();
+        if (auto immune = e->find("immune_statuses")) def.immuneStatuses = readStringArray(*immune);
+        if (auto tint = e->find("tint")) def.tint = tint->asString();
+        if (auto scale = e->find("size_scale")) def.sizeScale = scale->asNumber();
         if (auto loot = e->find("loot")) {
             for (const auto& entry : loot->asArray()) {
                 LootEntry drop;
