@@ -447,7 +447,11 @@ minute; you cannot yet build a house with it.
 
 The chain: wood → wedges and a bench → a seam → split stone; boulders →
 fieldstone → the yard's kit → dressed stone → the forge. Every rung is a
-verb the player already has. Playtest question: did you build a wooden
+verb the player already has. *The accomplishment pass (4 Sep 2026):*
+seams and veins are lines through the stone, flush with the blocks; the
+wedge sinks as it is driven; a split throws a chunk; the first dressed
+block is a beat ("Your first dressed block ... stone is yours to build
+with now"). Engine unit 353, integration 225, grammar 64, feel 17. Playtest question: did you build a wooden
 home and feel clever when you finally worked stone, and did Heavy Strike
 driving the wedge produce the click that your combat ability works on the
 world.

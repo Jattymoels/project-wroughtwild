@@ -324,12 +324,14 @@ func _spawn_resource_node(def: Dictionary) -> void:
 	node.remaining_units = def["units"]
 	node.units_per_harvest = def["units_per_harvest"]
 	node.visual = StringName(def["visual"])
-	nodes_root.add_child(node)
 	var cell: float = map["cell_size"]
 	# Local position: terrain sits at the origin, and this also works when a
-	# harness builds the terrain before the first frame.
+	# harness builds the terrain before the first frame. Set before the node
+	# enters the tree, so its look (seeded by position; a seam's line
+	# following the cells it crosses) is built in the right place.
 	node.position = Vector3(
 		(int(def["x"]) + 0.5) * cell, float(def["y"]), (int(def["z"]) + 0.5) * cell)
+	nodes_root.add_child(node)
 
 
 # --- fire-setting (D-020: heat cracks stone, cold shatters what is hot) -----

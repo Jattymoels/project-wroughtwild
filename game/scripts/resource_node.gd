@@ -70,6 +70,31 @@ func _apply_visual() -> void:
 	mesh_instance.position = Vector3.ZERO
 	mesh_instance.rotation.y = float(_visual_seed() % 628) / 100.0
 	var shape := BoxShape3D.new()
+	# A seam or a vein is a line through the stone (4 Sep 2026): it runs
+	# along a row or a column of cells and follows their surface heights, so
+	# it lies flush on the blocks it crosses. The collider is the line.
+	if visual == &"seam" or String(visual).ends_with("_vein"):
+		var along_x: bool = _visual_seed() % 2 == 0
+		mesh_instance.rotation.y = 0.0 if along_x else PI * 0.5
+		var rises := _rises(along_x)
+		match visual:
+			&"seam":
+				mesh_instance.mesh = PropMesh.build_seam(_visual_seed(), rises)
+			&"iron_vein":
+				mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.IRON_RUST, rises)
+			&"copper_vein":
+				mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.COPPER, rises)
+			&"tin_vein":
+				mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.TIN, rises)
+			&"ember_vein":
+				mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.EMBER_ORE, rises)
+			&"silver_vein":
+				mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.SILVER, rises)
+		shape.size = Vector3(2.6, 0.6, 0.9) if along_x else Vector3(0.9, 0.6, 2.6)
+		collider.position = Vector3(0, 0.3, 0)
+		collider.shape = shape
+		_refresh_wedge_look()
+		return
 	match visual:
 		&"tree":
 			mesh_instance.mesh = PropMesh.build_tree(_visual_seed())
@@ -100,12 +125,35 @@ func _apply_visual() -> void:
 			mesh_instance.mesh = PropMesh.build_vein(_visual_seed(), PropMesh.SILVER)
 			shape.size = Vector3(1.2, 0.9, 1.2)
 			collider.position = Vector3(0, 0.45, 0)
-		&"seam":
-			mesh_instance.mesh = PropMesh.build_seam(_visual_seed())
-			shape.size = Vector3(2.0, 0.9, 1.3)
-			collider.position = Vector3(0, 0.45, 0)
 	collider.shape = shape
 	_refresh_wedge_look()
+
+
+## The terrain this node lies on (a child of its node root), or null when
+## a harness placed the node by hand.
+func _terrain() -> Terrain:
+	var root := get_parent()
+	return root.get_parent() as Terrain if root != null and root.get_parent() is Terrain else null
+
+
+## The surface height of the cell before, the node's own, and the cell
+## after, along a row (x) or a column (z), relative to the node's - what a
+## line through the stone has to step over. Flat when there is no terrain.
+func _rises(along_x: bool) -> Array:
+	var terrain := _terrain()
+	if terrain == null or terrain.map.is_empty():
+		return [0.0, 0.0, 0.0]
+	var cell: float = terrain.map["cell_size"]
+	var cx := int(floor(position.x / cell))
+	var cz := int(floor(position.z / cell))
+	var own := terrain.height_at(cx, cz)
+	var rises: Array = []
+	for d in [-1, 0, 1]:
+		var h := terrain.height_at(cx + d, cz) if along_x else terrain.height_at(cx, cz + d)
+		# A step of more than one block is a cliff, not a line: clamp so the
+		# band never floats or dives.
+		rises.append(float(clampi(h - own, -1, 1)))
+	return rises
 
 
 ## A fire beside the node soaks it: hot at `heat` for `seconds`.
@@ -174,6 +222,7 @@ func work(sim: WroughtwildSim) -> Dictionary:
 	drive_progress += 1
 	if drive_progress < drive_presses:
 		_play_harvest_punch()
+		_refresh_wedge_look()
 		return {"text": "Driving the wedge (%d/%d)." % [drive_progress, drive_presses]}
 	return {"granted": _split(false)}
 
@@ -199,14 +248,45 @@ func strike() -> Dictionary:
 
 func _split(whole: bool) -> int:
 	var granted := harvest()
+	_drop_chunk()
 	if whole and remaining_units > 0:
 		granted += harvest()
+		_drop_chunk()
 	wedge_set = false
 	drive_progress = 0
 	_refresh_wedge_look()
 	return granted
 
 
+## The accomplishment (4 Sep 2026): a split throws a fist of stone off the
+## seam that tumbles and settles before it fades. Feel only; the yield is
+## the chips that fly to the pack.
+func _drop_chunk() -> void:
+	if not is_inside_tree():
+		return
+	var chunk := RigidBody3D.new()
+	chunk.mass = 0.6
+	var shape := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = Vector3(0.26, 0.22, 0.26)
+	shape.shape = box
+	chunk.add_child(shape)
+	var mesh := MeshInstance3D.new()
+	mesh.mesh = PropMesh.build_chunk(_visual_seed() + remaining_units * 17)
+	mesh.material_override = PropMesh.material()
+	chunk.add_child(mesh)
+	get_parent().add_child(chunk)
+	chunk.global_position = global_position + Vector3(0, 0.5, 0)
+	var rng := RandomNumberGenerator.new()
+	rng.seed = _visual_seed() + remaining_units
+	chunk.apply_central_impulse(Vector3(rng.randf_range(-0.9, 0.9), rng.randf_range(1.4, 2.2), rng.randf_range(-0.9, 0.9)))
+	chunk.apply_torque_impulse(Vector3(rng.randf_range(-0.3, 0.3), 0.0, rng.randf_range(-0.3, 0.3)))
+	get_tree().create_timer(2.6).timeout.connect(chunk.queue_free)
+
+
+## The wedge in the seam, sinking as it is driven (4 Sep 2026): each E
+## press seats it deeper and leans it further, so the split is visible
+## before it happens.
 func _refresh_wedge_look() -> void:
 	if _wedge_mesh != null:
 		_wedge_mesh.queue_free()
@@ -220,8 +300,9 @@ func _refresh_wedge_look() -> void:
 	material.albedo_color = PropMesh.BARK
 	box.material = material
 	_wedge_mesh.mesh = box
-	_wedge_mesh.position = Vector3(0.0, 0.62, 0.42)
-	_wedge_mesh.rotation.x = -0.35
+	var sunk := float(drive_progress) / float(maxi(drive_presses, 1))
+	_wedge_mesh.position = Vector3(0.0, 0.3 - 0.22 * sunk, 0.0)
+	_wedge_mesh.rotation.x = -0.35 - 0.4 * sunk
 	add_child(_wedge_mesh)
 
 

@@ -51,7 +51,11 @@ patterns are the Foundry plate's surround from era one. Completing the
 first trial offers a specialisation from the class's two, each shown as
 what every pattern becomes; until the hall is built as an authored
 module, the Tyrant's forge stands in for it. See
-[foundry.md](foundry.md), "Rails".
+[foundry.md](foundry.md), "Rails". The class also sets the starting
+skills (4 Sep 2026, later): a bow shot for the Ranger, strikes and a
+nova for the Warden, a bolt and a burning sweep for the Kindler, the
+Dash for everyone; the base four are pages for the classes without
+them.
 
 ## Tags
 

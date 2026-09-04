@@ -169,8 +169,14 @@ static func amounts_text(amounts: Dictionary) -> String:
 ## to draw the roll's first modifier from its family.
 func craft(recipe_id: StringName, aim_kind: String = "") -> Dictionary:
 	var for_order: bool = sim.recipe_feeds_open_order(recipe_id)
-	var result: Dictionary = sim.craft(recipe_id, for_order, aim_kind)
 	var recipe: Dictionary = sim.recipe(recipe_id)
+	# The first dressed block is a beat (the stone accomplishment pass, 4
+	# Sep 2026): none of its output in the pack before the craft.
+	var first_dressed := String(recipe_id) == "dress_stone"
+	for output_id in recipe.get("outputs", {}):
+		if sim.material_count(String(output_id)) > 0:
+			first_dressed = false
+	var result: Dictionary = sim.craft(recipe_id, for_order, aim_kind)
 	if result["crafted"]:
 		var note := "Crafted %s  (+%d xp" % [recipe.get("display_name", recipe_id), result["xp_granted"]]
 		if result["xp_multiplier"] < 1.0:
@@ -178,6 +184,10 @@ func craft(recipe_id: StringName, aim_kind: String = "") -> Dictionary:
 		if aim_kind != "":
 			note += ", aimed with a %s" % Hud.pretty(aim_kind)
 		_message.text = note + ")"
+		if first_dressed:
+			var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+			if player != null and player.hud != null:
+				player.hud.notify("Your first dressed block. Split from the seam, squared at the yard: stone is yours to build with now, and the forge's eight blocks are a real ambition.")
 	else:
 		match result.get("failure", ""):
 			"station_unavailable": _message.text = "You need a %s for that." % Hud.pretty(recipe.get("station", "station"))

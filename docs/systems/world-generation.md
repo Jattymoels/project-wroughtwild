@@ -132,6 +132,14 @@ now a **full 3D block field** the sim generates deterministically per seed
 **Seams (3 Sep 2026, D-021):** `stone_seam` nodes (three guaranteed inside
 the near radius, densest in the hills) are worked with a `tool_item` (the
 timber wedge) over `drive_presses` presses, or at once by a heavy blow.
+*Look (4 Sep 2026, the stone accomplishment pass):* a seam is a fracture
+line through the exposed stone - a dark torn band with a pale vein
+wandering along it, three cells long along a row or a column, flush with
+the blocks it crosses and stepping with their surface heights
+(`prop_mesh.gd` `_strip`, the node sampling `height_at` for the cells it
+crosses); the ore veins are the same line in the metal's colour with a
+knuckle of ore where it breaks the surface. The wedge sinks and leans as
+it is driven; a split throws a fist of stone off the seam.
 Boulders pay fieldstone by hand; iron is hands' work; the alloy ores keep
 `heat_to_work` and are worked while hot or once cracked. Cracked strata
 pay split stone.
