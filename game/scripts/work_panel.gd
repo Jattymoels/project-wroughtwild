@@ -190,6 +190,21 @@ func craft(recipe_id: StringName, aim_kind: String = "") -> Dictionary:
 	return result
 
 
+## Re-casts one ingot in hand in a wider metal (slice 10) through the sim.
+func recast(ingot_id: String, metal_id: String) -> bool:
+	var ok: bool = sim.foundry_recast(ingot_id, metal_id)
+	if ok:
+		var info: Dictionary = sim.foundry_ingot(ingot_id)
+		_message.text = "The %s is re-cast in %s. F opens the plate." % [info.get("display_name", ingot_id), metal_id]
+		var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+		if player != null and player.hud != null:
+			player.hud.refresh()
+	else:
+		_message.text = "Re-casting needs the alloy in the pack, the era that smelts it, and the ingot in hand."
+	refresh()
+	return ok
+
+
 func upgrade() -> bool:
 	if _station == null:
 		return false
@@ -337,6 +352,23 @@ func _render_crafting() -> void:
 		var view: Dictionary = sim.foundry()
 		_add_row("[b]The Foundry[/b]  —  your ingots on a %d×%d plate; arrangement is the build" % [view["rows"], view["cols"]],
 			"Open", true, _open_foundry)
+		# Re-casting (D-023 slice 10): an ingot in hand re-cast in an alloy
+		# the era allows. Its number never changes; how far it reads does.
+		for m in view.get("metals", []):
+			if not bool(m.get("available", false)):
+				continue
+			for id in sim.foundry_ingot_ids():
+				var counts: Dictionary = view.get("unplaced_by_metal", {}).get(id, {})
+				var narrower := 0
+				for other in view.get("metals", []):
+					if int(other["reach"]) < int(m["reach"]):
+						narrower += int(counts.get(String(other["id"]), 0))
+				if narrower <= 0:
+					continue
+				var info: Dictionary = sim.foundry_ingot(id)
+				_add_row("[b]Re-cast %s in %s[/b]  —  its backing and pairs read %d cells out\n    %s" % [
+					info.get("display_name", id), m["display_name"], int(m["reach"]), cost_bbcode(m["recast_cost"], sim)],
+					"Re-cast", sim.can_recast(id, String(m["id"])), recast.bind(id, String(m["id"])))
 
 	var shows_fuel := false
 	for recipe_id in sim.recipe_ids():

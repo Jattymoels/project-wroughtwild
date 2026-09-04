@@ -132,6 +132,7 @@ std::string toJson(const SaveGame& game) {
         out << "{\"row\":" << p.row << ",\"col\":" << p.col << ",\"ingot\":\"" << escape(p.ingot) << "\"";
         if (p.isTablet()) out << ",\"skill\":\"" << escape(p.skill) << "\"";
         if (p.isCurrency()) out << ",\"currency\":\"" << escape(p.currency) << "\"";
+        if (!p.metal.empty()) out << ",\"metal\":\"" << escape(p.metal) << "\"";
         out << "}";
     }
     out << "],\"milestones\":";
@@ -146,7 +147,16 @@ std::string toJson(const SaveGame& game) {
     }
     out << "],\"kills\":";
     writeIntMap(out, game.economy.foundry.kills);
-    out << "},\"skill_uses\":";
+    // The metals (slice 10): ingot -> metal -> count.
+    out << ",\"metals\":{";
+    bool firstMetal = true;
+    for (const auto& [ingot, counts] : game.economy.foundry.metals) {
+        if (!firstMetal) out << ",";
+        firstMetal = false;
+        out << "\"" << escape(ingot) << "\":";
+        writeIntMap(out, counts);
+    }
+    out << "}},\"skill_uses\":";
     writeIntMap(out, game.economy.skillUses);
     out << "},\"equipment\":{";
 
@@ -202,6 +212,7 @@ SaveGame fromJson(const std::string& text) {
             placement.ingot = p->get("ingot").asString();
             if (auto skill = p->find("skill")) placement.skill = skill->asString();
             if (auto currency = p->find("currency")) placement.currency = currency->asString();
+            if (auto metal = p->find("metal")) placement.metal = metal->asString();
             game.economy.foundry.plate.push_back(placement);
         }
         game.economy.foundry.milestones = readStringList(f->get("milestones"));
@@ -218,6 +229,9 @@ SaveGame fromJson(const std::string& text) {
             }
         }
         if (auto kills = f->find("kills")) game.economy.foundry.kills = readIntMap(*kills);
+        // Saves written before slice 10 carry no metals: all iron on import.
+        if (auto metals = f->find("metals"))
+            for (const auto& [ingot, counts] : metals->asObject()) game.economy.foundry.metals[ingot] = readIntMap(*counts);
     }
     if (auto uses = eco.find("skill_uses")) game.economy.skillUses = readIntMap(*uses);
 

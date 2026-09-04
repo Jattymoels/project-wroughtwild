@@ -3140,6 +3140,7 @@ void testMarrowAndQuicksilverForms(const tuning::Tuning& t) {
     const auto& f = t.foundry;
     int life = 0, speed = 0;
     for (const auto& form : f.forms) {
+        if (!form.metal.empty()) continue; // the compound forms of slice 10 sit on top
         if (form.family == "life") ++life;
         if (form.family == "speed") ++speed;
     }
@@ -3482,6 +3483,159 @@ void testRails(const tuning::Tuning& t) {
           "rails: bare, none of it");
 }
 
+// D-023 slice 10: the metal of an ingot. Every ingot is cast in a metal,
+// iron by default; the forge re-casts one in the era's alloy, which widens
+// how far its backing and pairs are read; elites and the deeper forge
+// pay ingots already cast in alloy; compound forms need the metal.
+void testMetal(const tuning::Tuning& t) {
+    const auto& f = t.foundry;
+    check(f.metals.size() == 3 && f.defaultMetal() == "iron" && f.metalReach("iron") == 1 && f.metalReach("bronze") == 2 &&
+              f.metalReach("steel") == 3 && f.metalReach("") == 1 && f.metalReach("nothing") == 1 && f.maxReach() == 3 &&
+              f.findMetal("bronze")->era == 2 && f.findMetal("bronze")->recastCost.at("bronze_ingot") == 1 && f.findMetal("iron")->recastCost.empty() &&
+              f.alloyForEra(1) == "iron" && f.alloyForEra(2) == "bronze" && f.alloyForEra(3) == "steel" && f.alloyForEra(9) == "steel" &&
+              f.recastStation == "forge_basic",
+          "metal: iron, bronze and steel reach one, two and three; the era's alloy; re-casting at the forge");
+    int alloySources = 0, compound = 0;
+    for (const auto& s : f.sources)
+        if (s.metal == "alloy") ++alloySources;
+    for (const auto& form : f.forms)
+        if (!form.metal.empty()) ++compound;
+    check(alloySources == 4 && compound == 8, "metal: four alloy-cast sources, eight compound forms");
+    auto pairs = [&](const economy::PlayerEconomy& who, const std::string& name) {
+        int n = 0;
+        for (const auto& e : foundry::effects(t, who.foundry(), who.plate()))
+            if (e.kind == "pair" && e.label == name) ++n;
+        return n;
+    };
+    auto count = [&](const economy::PlayerEconomy& who, const std::string& kind) {
+        int n = 0;
+        for (const auto& e : foundry::effects(t, who.foundry(), who.plate()))
+            if (e.kind == kind) ++n;
+        return n;
+    };
+    auto hasForm = [&](const economy::PlayerEconomy& who, const std::string& prefix) {
+        for (const auto& e : foundry::effects(t, who.foundry(), who.plate()))
+            if (e.kind == "form" && e.label.rfind(prefix, 0) == 0) return true;
+        return false;
+    };
+
+    // Every milestone's ingot is iron; a placement carries its metal.
+    economy::PlayerEconomy p(t);
+    p.inventory["iron_ingot"] = 20;
+    p.foundryEvent("first_kill:ember_whelp");   // ember
+    p.foundryEvent("first_kill:cinder_archer"); // reach
+    p.foundryEvent("first_kill:gloom_crawler"); // frost
+    p.foundryEvent("first_kill:shrieker");      // frost
+    check(foundry::castCount(p.foundry(), "ember", "iron") == 1 && foundry::castCount(p.foundry(), "ember", "bronze") == 0 &&
+              foundry::unplacedCountOf(f, p.foundry(), "ember", "iron") == 1 && foundry::castCount(p.foundry(), "frost", "iron") == 2,
+          "metal: a milestone's ingot is cast in iron");
+    check(!p.foundryPlace(1, 0, "ember", "bronze") && !p.foundryPlace(1, 0, "ember", "nothing") && p.foundryPlace(1, 0, "ember") &&
+              foundry::at(p.foundry(), 1, 0)->metal == "iron" && foundry::unplacedCountOf(f, p.foundry(), "ember", "iron") == 0,
+          "metal: placed in the only metal in hand, iron; a metal not in hand is refused");
+    // Re-casting: the era, the forge, the alloy, and an ingot in hand.
+    check(!p.canRecast("ember", "bronze") && !p.foundryRecast("ember", "bronze") && !p.canRecast("ember", "iron") && !p.canRecast("ember", "nothing"),
+          "metal: era one casts nothing in bronze; iron is never re-cast into");
+    p.recordWorldEffect("stonecut_blocks");
+    check(p.currentEra() == 2 && !p.canRecast("ember", "bronze"), "metal: era two, but no forge");
+    p.addAvailableStation("forge_basic");
+    check(!p.canRecast("ember", "bronze"), "metal: a forge, but no bronze");
+    p.inventory["bronze_ingot"] = 2;
+    check(!p.canRecast("ember", "bronze") && !p.foundryRecast("ember", "bronze"), "metal: bronze in the pack, but the Ember is on the plate");
+    check(p.foundryRemove(1, 0) && p.canRecast("ember", "bronze") && p.foundryRecast("ember", "bronze") && p.inventory["bronze_ingot"] == 1 &&
+              foundry::castCount(p.foundry(), "ember", "bronze") == 1 && foundry::castCount(p.foundry(), "ember", "iron") == 0 &&
+              foundry::unplacedCountOf(f, p.foundry(), "ember", "bronze") == 1 && p.foundry().owned.at("ember") == 1,
+          "metal: lifted and re-cast in bronze for one bronze ingot; still one Ember owned");
+    check(!p.canRecast("ember", "bronze") && !p.canRecast("ember", "steel"), "metal: nothing narrower left to re-cast, and steel waits for era three");
+    // A pair read two cells out: the bronze Ember at (0,0) pairs with a Reach at (0,2), the gap ignored.
+    check(p.foundryPlace(0, 0, "ember") && foundry::at(p.foundry(), 0, 0)->metal == "bronze" && p.foundryPlaceSkill(1, 1, "prototype_frost_orb") &&
+              p.foundryPlace(0, 2, "reach") && pairs(p, "Wildfire") == 1,
+          "metal: the bronze Ember pairs with the Reach two cells out (Wildfire), the gap ignored");
+    check(p.foundryPlace(0, 3, "frost") && pairs(p, "Deep Frost") == 1, "metal: the iron Frost beside the Reach still pairs");
+    check(p.foundryRemove(0, 3) && p.foundryRemove(0, 2) && p.foundryPlace(0, 3, "reach") && pairs(p, "Wildfire") == 0,
+          "metal: three cells out is beyond bronze");
+    check(p.foundryRemove(0, 0) && p.foundryRemove(0, 3) && p.foundryPlace(1, 0, "ember") && p.foundryPlace(1, 2, "reach") && pairs(p, "Wildfire") == 0,
+          "metal: the orb's socket between them stops the reading - nothing is read through a socket");
+    check(p.foundryRemove(1, 0) && p.foundryRemove(1, 2) && p.foundryPlace(1, 0, "ember") && p.foundryPlace(0, 2, "frost"),
+          "metal: the Ember back beside the orb, the Frost up on the first row");
+    // Backing read two cells out, never through the socket.
+    p.learnSkill("prototype_ember_bolt");
+    check(p.foundryRemove(0, 2) && p.foundryPlaceSkill(2, 2, "prototype_ember_bolt") && p.foundryPlace(2, 3, "frost") && p.foundryPlace(0, 3, "frost") &&
+              count(p, "backing") == 0,
+          "metal: two iron Frosts two cells apart do not back");
+    p.inventory["bronze_ingot"] = 1;
+    check(p.foundryRemove(0, 3) && p.foundryRecast("frost", "bronze") && p.foundryPlace(0, 3, "frost") && foundry::at(p.foundry(), 0, 3)->metal == "bronze" &&
+              count(p, "backing") == 1,
+          "metal: the bronze Frost two cells up backs the Frost beside the bolt");
+    check(p.foundryRemove(0, 3) && p.foundryRemove(2, 3) && p.foundryPlace(2, 1, "frost", "bronze") && p.foundryPlace(2, 3, "frost", "iron") &&
+              count(p, "support") + count(p, "added") >= 2 && count(p, "backing") == 0,
+          "metal: Frosts on both sides of the bolt's socket are two supports, never each other's backing");
+    // A compound form: the Catalyst's Kindling on a bronze Ember beside the bolt.
+    p.grant("ember_catalyst", 1);
+    check(p.foundryRemove(2, 1) && p.foundryRemove(1, 0) && p.foundryPlace(2, 1, "ember", "bronze") && p.foundryPlaceKind(3, 1, "ember_catalyst") == false,
+          "metal: the Ember moved beside the bolt; the fourth row is not forged yet");
+    check(p.foundryPlaceKind(2, 0, "ember_catalyst") && hasForm(p, "Kindling (") && hasForm(p, "Bronze Kindling ("),
+          "metal: a bronze Ember worked by a Catalyst is Kindling and Bronze Kindling both");
+    p.inventory["iron_ingot"] = 20;
+    check(p.foundryRemove(2, 1) && p.foundryPlace(2, 1, "frost", "bronze") && hasForm(p, "Deep Frost (") && hasForm(p, "Bronze Deep Frost ("),
+          "metal: the bronze Frost there is Deep Frost and Bronze Deep Frost");
+    check(p.foundryRemove(2, 1) && p.foundryRemove(2, 3) && p.foundryPlace(2, 1, "frost", "iron") && !hasForm(p, "Bronze Deep Frost (") && hasForm(p, "Deep Frost ("),
+          "metal: an iron Frost there is Deep Frost alone");
+    // Era three: steel, and the alloy-cast sources.
+    economy::PlayerEconomy k(t);
+    check(k.foundryEvent("elite_kill:ash_hound").empty() && k.foundryEvent("first_kill:ash_hound") == std::vector<std::string>{"haste"},
+          "metal: an elite hound pays nothing in era one; the first hound pays iron Haste");
+    k.recordWorldEffect("stonecut_blocks");
+    check(k.foundryEvent("elite_kill:ash_hound") == std::vector<std::string>{"haste"} && foundry::castCount(k.foundry(), "haste", "bronze") == 1 &&
+              foundry::castCount(k.foundry(), "haste", "iron") == 1 && k.foundryEvent("elite_kill:ash_hound").empty(),
+          "metal: in era two the first elite hound pays a Haste cast in bronze, once");
+    k.recordWorldEffect("ash_tide");
+    check(foundry::castCount(k.foundry(), "frost", "steel") == 1 && k.foundryEvent("elite_kill:hollow_knight") == std::vector<std::string>{"ward"} &&
+              foundry::castCount(k.foundry(), "ward", "steel") == 1,
+          "metal: the deeper forge pays a steel Frost, the first elite knight a steel Ward");
+    k.addAvailableStation("forge_basic");
+    k.inventory["steel_ingot"] = 1;
+    check(k.canRecast("haste", "steel") && k.foundryRecast("haste", "steel") && foundry::castCount(k.foundry(), "haste", "steel") == 1 &&
+              foundry::castCount(k.foundry(), "haste", "iron") == 0 && foundry::castCount(k.foundry(), "haste", "bronze") == 1,
+          "metal: steel re-casts the narrowest casting first - the iron Haste, not the bronze");
+    check(k.foundryPlace(0, 0, "haste") && foundry::at(k.foundry(), 0, 0)->metal == "steel" && k.foundryPlace(3, 0, "frost") &&
+              foundry::at(k.foundry(), 3, 0)->metal == "steel",
+          "metal: placing takes the widest casting in hand");
+    k.foundryEvent("first_kill:ember_whelp");
+    k.inventory["iron_ingot"] = 5;
+    check(k.foundryPlace(3, 3, "ember") && pairs(k, "Lingering Flame") == 0 && k.foundryRemove(3, 3) && k.foundryPlace(0, 3, "ember") &&
+              pairs(k, "Lingering Flame") == 1,
+          "metal: steel Haste at one end of the row reaches the Ember three cells along; a column apart and three down it does not");
+    // The save carries the metals; an older save is all iron; a doctored one is brought back to what is owned.
+    save::SaveGame game;
+    game.economy = k.exportState();
+    auto back = save::fromJson(save::toJson(game));
+    check(back.economy.foundry.metals.at("haste").at("steel") == 1 && back.economy.foundry.metals.at("haste").at("bronze") == 1 &&
+              back.economy.foundry.plate[0].metal == "steel",
+          "metal: the castings and a placement's metal round-trip through the save");
+    economy::PlayerEconomy restored(t);
+    restored.importState(back.economy);
+    check(foundry::castCount(restored.foundry(), "haste", "steel") == 1 && foundry::at(restored.foundry(), 0, 0)->metal == "steel" &&
+              pairs(restored, "Lingering Flame") == 1,
+          "metal: restored, the steel Haste still reads three cells");
+    auto older = back;
+    older.economy.foundry.metals.clear();
+    for (auto& placement : older.economy.foundry.plate) placement.metal.clear();
+    economy::PlayerEconomy old(t);
+    old.importState(older.economy);
+    check(foundry::castCount(old.foundry(), "haste", "iron") == 2 && foundry::castCount(old.foundry(), "haste", "steel") == 0 &&
+              foundry::at(old.foundry(), 0, 0)->metal == "iron" && pairs(old, "Lingering Flame") == 0,
+          "metal: a save from before the metals is all iron");
+    auto doctored = back;
+    doctored.economy.foundry.metals["haste"]["steel"] = 5;
+    doctored.economy.foundry.metals["haste"]["gold"] = 2;
+    economy::PlayerEconomy fixed(t);
+    fixed.importState(doctored.economy);
+    check(foundry::castCount(fixed.foundry(), "haste", "steel") + foundry::castCount(fixed.foundry(), "haste", "bronze") +
+                      foundry::castCount(fixed.foundry(), "haste", "iron") == fixed.foundry().owned.at("haste") &&
+              foundry::castCount(fixed.foundry(), "haste", "steel") >= 1 && foundry::castCount(fixed.foundry(), "haste", "gold") == 0,
+          "metal: a doctored save's castings sum to what is owned, the placed steel kept, an unknown metal dropped");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3532,6 +3686,7 @@ int main(int argc, char** argv) {
     testLinksAndArc(t);
     testMarrowAndQuicksilverForms(t);
     testRails(t);
+    testMetal(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

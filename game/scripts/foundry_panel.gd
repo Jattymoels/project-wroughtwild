@@ -27,6 +27,8 @@ var _tray: VBoxContainer
 var _effects: VBoxContainer
 var _message: Label
 var _selected: StringName = &""
+## The metal of the ingot picked from the tray (slice 10).
+var _selected_metal := ""
 ## A skill picked from the tablet tray, to lay on the next empty cell.
 var _selected_skill: StringName = &""
 var _tablets: VBoxContainer
@@ -180,6 +182,7 @@ func refresh() -> void:
 		rail_slots["%s:%d" % [String(r["axis"]), int(r["index"])]] = r
 	var rails_allowed: int = int(view.get("rails_allowed", 0))
 	var placed := {}
+	var placed_metal := {}
 	var tablets := {}
 	var currencies := {}
 	for p in view["plate"]:
@@ -189,6 +192,14 @@ func refresh() -> void:
 			currencies[Vector2i(p["row"], p["col"])] = String(p["currency"])
 		else:
 			placed[Vector2i(p["row"], p["col"])] = String(p["ingot"])
+			placed_metal[Vector2i(p["row"], p["col"])] = String(p.get("metal", ""))
+	# The metals (slice 10): name and reach by id; the default goes unsaid.
+	var metal_names := {}
+	var metal_reach := {}
+	for m in view.get("metals", []):
+		metal_names[String(m["id"])] = String(m["display_name"])
+		metal_reach[String(m["id"])] = int(m["reach"])
+	var default_metal := String(view.get("default_metal", ""))
 	var kind_names := {}
 	var kind_short := {}
 	for k in view.get("kinds", []):
@@ -272,8 +283,13 @@ func refresh() -> void:
 						lines.append("Its base: %s." % effect["sentence"])
 			elif placed.has(key):
 				var info: Dictionary = sim.foundry_ingot(placed[key])
+				var metal: String = placed_metal.get(key, "")
 				cell.text = info.get("display_name", placed[key]).replace(" Ingot", "")
+				if metal != "" and metal != default_metal:
+					cell.text += " (%s)" % metal_names.get(metal, metal).to_lower()
 				lines.append(info.get("sentence", ""))
+				if metal != "" and metal != default_metal:
+					lines.append("Cast in %s: its backing and pairs are read %d cells out along its row and column." % [metal_names.get(metal, metal).to_lower(), int(metal_reach.get(metal, 1))])
 				if supports.has(key):
 					cell.modulate = UiTheme.SUN_WARM
 			elif _sockets.has(key):
@@ -303,30 +319,39 @@ func refresh() -> void:
 	for child in _tray.get_children():
 		child.queue_free()
 	tray_count = 0
-	var unplaced: Dictionary = view["unplaced"]
+	var by_metal: Dictionary = view.get("unplaced_by_metal", {})
 	var any := false
 	for id in sim.foundry_ingot_ids():
-		var count: int = unplaced.get(id, 0)
-		if count <= 0:
+		var counts: Dictionary = by_metal.get(id, {})
+		if counts.is_empty():
 			continue
-		any = true
 		var info: Dictionary = sim.foundry_ingot(id)
-		var button := Button.new()
-		button.text = "%s  ×%d   %s" % [info["display_name"], count, info["sentence"]]
-		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		button.clip_text = true
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var reads := PackedStringArray()
-		if String(info.get("skill_sentence", "")) != "":
-			reads.append("Beside a skill it can read: %s." % info["skill_sentence"])
-		if String(info.get("added_sentence", "")) != "":
-			reads.append("Beside a skill of another element: %s." % info["added_sentence"])
-		button.tooltip_text = "\n".join(reads)
-		if _selected == StringName(id):
-			button.modulate = UiTheme.GRASS_LIGHT
-		button.pressed.connect(_on_tray.bind(id))
-		_tray.add_child(button)
-		tray_count += 1
+		# One row per casting in hand (slice 10): the alloy named, iron unsaid.
+		for m in view.get("metals", []):
+			var metal := String(m["id"])
+			var count: int = int(counts.get(metal, 0))
+			if count <= 0:
+				continue
+			any = true
+			var button := Button.new()
+			var cast_name: String = "" if metal == default_metal else " (%s)" % String(m["display_name"]).to_lower()
+			button.text = "%s%s  ×%d   %s" % [info["display_name"], cast_name, count, info["sentence"]]
+			button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			button.clip_text = true
+			button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			var reads := PackedStringArray()
+			if String(info.get("skill_sentence", "")) != "":
+				reads.append("Beside a skill it can read: %s." % info["skill_sentence"])
+			if String(info.get("added_sentence", "")) != "":
+				reads.append("Beside a skill of another element: %s." % info["added_sentence"])
+			if metal != default_metal:
+				reads.append("Cast in %s: its backing and pairs are read %d cells out." % [String(m["display_name"]).to_lower(), int(m["reach"])])
+			button.tooltip_text = "\n".join(reads)
+			if _selected == StringName(id) and _selected_metal == metal:
+				button.modulate = UiTheme.GRASS_LIGHT
+			button.pressed.connect(_on_tray.bind(id, metal))
+			_tray.add_child(button)
+			tray_count += 1
 	if not any:
 		var none := Label.new()
 		none.text = "None in hand. Milestones forge them: the first bench, first kills, the first smelt, the first dressed block, the Tyrant."
@@ -560,8 +585,10 @@ func _on_rail(axis: String, index: int) -> void:
 		refresh()
 
 
-func _on_tray(id: String) -> void:
-	_selected = StringName(id) if _selected != StringName(id) else &""
+func _on_tray(id: String, metal: String = "") -> void:
+	var same := _selected == StringName(id) and _selected_metal == metal
+	_selected = &"" if same else StringName(id)
+	_selected_metal = "" if same else metal
 	_selected_skill = &""
 	_selected_subject = &""
 	_selected_pattern = &""
@@ -631,9 +658,13 @@ func _on_cell(row: int, col: int) -> void:
 		_message.text = "Pick an ingot from the tray, or a skill to lay."
 		refresh()
 		return
-	if sim.foundry_place(row, col, String(_selected)):
-		if int(view["unplaced"].get(String(_selected), 0)) <= 1:
+	if sim.foundry_place(row, col, String(_selected), _selected_metal):
+		var left: int = int(view["unplaced"].get(String(_selected), 0))
+		if _selected_metal != "":
+			left = int(view.get("unplaced_by_metal", {}).get(String(_selected), {}).get(_selected_metal, 0))
+		if left <= 1:
 			_selected = &""
+			_selected_metal = ""
 		_message.text = ""
 		_after_change()
 	else:
@@ -658,8 +689,9 @@ func _after_change() -> void:
 
 
 ## Test surface: place through the panel.
-func set_selected(id: StringName) -> void:
+func set_selected(id: StringName, metal: String = "") -> void:
 	_selected = id
+	_selected_metal = metal
 	_selected_skill = &""
 
 

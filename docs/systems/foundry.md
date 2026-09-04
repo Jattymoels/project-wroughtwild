@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) 6 (kinds as variants; the reactions' hooks), 7 (links re-homed; Arc), 8 (the Marrow's and the Quicksilver's forms) and 9 (rails: the class's surround from the start, specialised further at the trial) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) 6 (kinds as variants; the reactions' hooks), 7 (links re-homed; Arc), 8 (the Marrow's and the Quicksilver's forms) 9 (rails: the class's surround from the start, specialised further at the trial) and 10 (the metal of an ingot) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -170,9 +170,22 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
    already holding a pattern becomes with it. The two manners (the
    Hound's, the Husk's) are taught by kills and join the rails.
 
-Still to come from the tables below: Linger, compound forms, the Vanguard
-of dodge and the rest of the variants, the metal of an ingot, the class
-hall proper (D-004). The Reach
+14. The metal of an ingot (slice 10): every ingot is cast in iron;
+   at a built forge an ingot in hand is re-cast in the era's alloy
+   (bronze from era two for a bronze ingot, steel from era three for a
+   steel one), which never changes its number and widens how far its
+   backing and pairs are read - one, two, three cells along its row or
+   column, gaps ignored, never through a socket. The first elite hound,
+   husk and knight and the deeper forge pay an ingot already cast in the
+   era's alloy. Eight compound forms need the support cast in bronze or
+   steel: Bronze Kindling, Bronze Deep Frost, Bronze Serration, Steel
+   Split, Bronze Stand Fast, Bronze Second Wind, Bronze Cauterise, Steel
+   Fleet.
+
+Still to come from the tables below: Linger, the Vanguard of dodge and
+the rest of the variants, compound forms of a kind worked by another
+kind, the class hall proper (D-004, kept in documentation for now: the
+owner, 4 Sep 2026). The Reach
 conflict recorded on 3 Sep is settled: the owner said yes, and the code
 now reads skills with it.
 
@@ -331,6 +344,11 @@ Four axes, every one of them data, none of them a bigger number:
    not proposed here: the metal's trait doing one more thing (ores are
    properties), a malleable bronze ingot keeping its reaction after the
    catalyst is lifted.
+   *As built (slice 10, 4 Sep 2026):* `ingot_metals` iron 1, bronze 2,
+   steel 3, each with the era that allows it and its re-cast cost (one
+   ingot of the alloy, at `recast_station`); re-casting takes the
+   narrowest casting in hand; placing takes the widest; a reading is
+   never taken through a socket; sources may say `metal: "alloy"`.
 4. **Currency kinds.** Which kinds drop, from which families, from which
    era.
 
@@ -860,6 +878,8 @@ multiplies, the numbers stay within threefold.
 | `rows_by_era` | which rows of the 4x4 frame the era has forged | the size gate; when a working becomes whole | `[1,2]`, `[0,2]`, `[0,3]` |
 | `sockets` | the frame cells that take a subject | how many workings and how they overlap | `[[1,1],[2,2]]` |
 | `ingot_metals[].reach` | how far an ingot of that metal is read for backing and pairs | the quality axis; refinement | iron 1, bronze 2, steel 3 |
+| `ingot_metals[].recast_cost` | what re-casting one ingot in the metal costs at the forge | the alloy you can smelt is the quality your ingots reach | one ingot of the alloy |
+| `forms[].metal` | the least metal a compound form needs its support cast in | refinement changing what a kind makes of a support | bronze, steel |
 | `support_multiplier` | a support's value against the ingot's base | how much a working is worth over the bare plate | 2.0 (as now) |
 | `corner_lending_multiplier` | a corner currency's lending against the base | how much defence an offence working can carry | 1.0 |
 | `corner_base_fraction` | a corner currency's own base against its socketed base | whether a corner is worth a currency with no support to work | 0.5 |
@@ -983,6 +1003,8 @@ following.
    two manners, the Tyrant's forge as the first trial, rails set in the
    panel. Still ahead: the class hall as an authored place (D-004) and
    deeper trials as later specialisations, a manner per family.
-10. **The metal of an ingot.** Re-casting at the forge in the era's alloy;
-   reach for backing and pairs; alloy-cast ingots from elites and floors;
-   compound forms conditioned on metal and rarity.
+10. **The metal of an ingot** *(landed 4 Sep 2026)*. Re-casting at the
+   forge in the era's alloy; reach for backing and pairs; alloy-cast
+   ingots from the first elites and the deeper forge; eight compound
+   forms conditioned on the support's metal. Rarity is the alloy from the
+   other end, as the gate above says; no separate rarity field.

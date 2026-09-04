@@ -378,18 +378,72 @@ std::vector<std::string> PlayerEconomy::foundryEvent(const std::string& event) {
             continue;
         foundry_.milestones.push_back(source.id);
         foundry_.owned[source.ingot] += 1;
+        // The metal it is cast in (slice 10): the default, the era's alloy, or as named.
+        const std::string metal = source.metal == "alloy" ? tuning_.foundry.alloyForEra(era)
+                                  : source.metal.empty() ? tuning_.foundry.defaultMetal()
+                                                         : source.metal;
+        if (!metal.empty()) foundry_.metals[source.ingot][metal] += 1;
         granted.push_back(source.ingot);
     }
     return granted;
 }
 
-bool PlayerEconomy::foundryPlace(int row, int col, const std::string& ingot) {
+bool PlayerEconomy::foundryPlace(int row, int col, const std::string& ingot, const std::string& metal) {
     const auto plate = this->plate();
     if (!plate.forged(row, col) || plate.isSocket(row, col)) return false;
     if (!tuning_.foundry.findIngot(ingot)) return false;
     if (foundry::at(foundry_, row, col) != nullptr) return false;
     if (foundry::unplacedCount(foundry_, ingot) <= 0) return false;
-    foundry_.plate.push_back({row, col, ingot, std::string()});
+    const auto& def = tuning_.foundry;
+    std::string cast = metal;
+    if (cast.empty()) {
+        // The widest-reaching casting in hand; an untuned plate has no metals.
+        for (auto m = def.metals.rbegin(); m != def.metals.rend(); ++m)
+            if (foundry::unplacedCountOf(def, foundry_, ingot, m->id) > 0) {
+                cast = m->id;
+                break;
+            }
+        if (cast.empty() && !def.metals.empty()) return false;
+    } else if (!def.findMetal(cast) || foundry::unplacedCountOf(def, foundry_, ingot, cast) <= 0) {
+        return false;
+    }
+    foundry::Placement piece;
+    piece.row = row;
+    piece.col = col;
+    piece.ingot = ingot;
+    piece.metal = cast;
+    foundry_.plate.push_back(piece);
+    return true;
+}
+
+namespace {
+// The narrowest-reaching casting of an ingot in hand below `reach`, or "".
+std::string narrowestInHand(const tuning::FoundryDef& def, const foundry::State& state, const std::string& ingot, int reach) {
+    for (const auto& m : def.metals)
+        if (m.reach < reach && foundry::unplacedCountOf(def, state, ingot, m.id) > 0) return m.id;
+    return std::string();
+}
+} // namespace
+
+bool PlayerEconomy::canRecast(const std::string& ingot, const std::string& metal) const {
+    const auto& def = tuning_.foundry;
+    const auto* target = def.findMetal(metal);
+    if (!target || target->recastCost.empty() || target->era > currentEra()) return false;
+    if (!def.findIngot(ingot)) return false;
+    if (!def.recastStation.empty() && !stationAvailable(def.recastStation)) return false;
+    if (narrowestInHand(def, foundry_, ingot, target->reach).empty()) return false;
+    return hasAll(inventory, target->recastCost);
+}
+
+bool PlayerEconomy::foundryRecast(const std::string& ingot, const std::string& metal) {
+    if (!canRecast(ingot, metal)) return false;
+    const auto& def = tuning_.foundry;
+    const auto* target = def.findMetal(metal);
+    const std::string from = narrowestInHand(def, foundry_, ingot, target->reach);
+    remove(inventory, target->recastCost);
+    auto& counts = foundry_.metals[ingot];
+    if (--counts[from] <= 0) counts.erase(from);
+    counts[metal] += 1;
     return true;
 }
 
@@ -652,6 +706,9 @@ void PlayerEconomy::importState(const State& state) {
     foundry::validate(foundry_, plate(), &lifted);
     for (const auto& p : lifted)
         if (p.isCurrency()) grant(p.currency, 1);
+    // The metals (slice 10): an older save is all iron; a doctored one is
+    // brought back to what is owned.
+    foundry::normaliseMetals(tuning_.foundry, foundry_);
     // The surround: a class or specialisation tuning no longer knows (or
     // a specialisation of another class) is forgotten, and every rail the
     // state cannot hold is dropped (D-023 slice 9).

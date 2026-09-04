@@ -848,12 +848,25 @@ struct FormEffect {
     std::string packet;
 };
 
+// The metal of an ingot (D-023 slice 10): every ingot is cast in a metal,
+// iron by default. Re-casting at the forge in the era's alloy widens
+// REACH - how far the ingot's backing and pairs are read - and never its
+// number. A source may pay an ingot already cast in alloy.
+struct IngotMetalDef {
+    std::string id;
+    std::string displayName;
+    int reach = 1;
+    int era = 1;                           // the era from which the forge casts in it
+    std::map<std::string, int> recastCost; // paid to re-cast one ingot in it ("" cost: never re-cast into)
+};
+
 struct FormDef {
     std::string family;
     std::string kind; // "" for every kind of the family, else one variant
     std::string ingot;
     std::string lane;
     std::string skillTag;
+    std::string metal; // a compound form (slice 10): the least metal the support must be cast in ("" any)
     std::string displayName;
     std::vector<FormEffect> effects;
 };
@@ -867,9 +880,10 @@ struct IngotPairDef {
 
 struct IngotSourceDef {
     std::string id;
-    std::string event; // recipe:<id> | first_kill:<enemy> | world_effect:<id> | era:<n>
+    std::string event; // recipe:<id> | first_kill:<enemy> | elite_kill:<enemy> | world_effect:<id> | era:<n>
     std::string ingot;
     int era = 1;       // the earliest era this source may grant in
+    std::string metal; // "" the default metal, "alloy" the era's alloy when granted, or a metal id (slice 10)
 };
 
 // RAILS (D-023 slice 9; owner, 4 Sep 2026): the plate's surround. A rail
@@ -959,6 +973,14 @@ struct FoundryDef {
     // shared by two sockets, links the two skills laid there.
     std::string linkFamily;
     RailsDef rails; // the exterior (D-023 slice 9)
+    // The metals (slice 10), in reach order; the first is the default.
+    std::vector<IngotMetalDef> metals;
+    std::string recastStation; // the station re-casting needs ("" any)
+    const IngotMetalDef* findMetal(const std::string& id) const;
+    std::string defaultMetal() const;     // the first metal's id ("" when none are tuned)
+    int metalReach(const std::string& id) const; // 1 for "" or an unknown metal
+    int maxReach() const;                 // the widest reach tuned (1 when none)
+    std::string alloyForEra(int era) const; // the widest-reaching metal the era allows
     const KindDef* findKindOnPlate(const std::string& id) const;
     std::string familyName(const std::string& family) const; // "" when unknown
     std::vector<IngotDef> ingots;

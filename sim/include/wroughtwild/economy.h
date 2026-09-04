@@ -181,8 +181,14 @@ public:
     // grants once, and only from its era on.
     std::vector<std::string> foundryEvent(const std::string& event);
     // Sets an unplaced ingot on a free, forged cell of the plate that is
-    // not a socket.
-    bool foundryPlace(int row, int col, const std::string& ingot);
+    // not a socket. metal (slice 10): which casting to set; "" takes the
+    // widest-reaching one in hand.
+    bool foundryPlace(int row, int col, const std::string& ingot, const std::string& metal = "");
+    // Re-casts one unplaced ingot (the narrowest-reaching one in hand) in
+    // a wider metal at the forge (slice 10): the metal's era must have
+    // come, the re-cast station be built, and its cost be in the pack.
+    bool canRecast(const std::string& ingot, const std::string& metal) const;
+    bool foundryRecast(const std::string& ingot, const std::string& metal);
     // Lifts an ingot off the plate, paying reforge_cost. False when the
     // cell is empty or the metal is short.
     bool foundryRemove(int row, int col);

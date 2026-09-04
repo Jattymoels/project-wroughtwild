@@ -234,7 +234,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("foundry_ingot_ids"), &WroughtwildSim::foundry_ingot_ids);
     ClassDB::bind_method(D_METHOD("foundry_ingot", "ingot_id"), &WroughtwildSim::foundry_ingot);
     ClassDB::bind_method(D_METHOD("foundry_effects"), &WroughtwildSim::foundry_effects);
-    ClassDB::bind_method(D_METHOD("foundry_place", "row", "col", "ingot_id"), &WroughtwildSim::foundry_place);
+    ClassDB::bind_method(D_METHOD("foundry_place", "row", "col", "ingot_id", "metal_id"), &WroughtwildSim::foundry_place, DEFVAL(String()));
+    ClassDB::bind_method(D_METHOD("foundry_recast", "ingot_id", "metal_id"), &WroughtwildSim::foundry_recast);
+    ClassDB::bind_method(D_METHOD("can_recast", "ingot_id", "metal_id"), &WroughtwildSim::can_recast);
     ClassDB::bind_method(D_METHOD("foundry_remove", "row", "col"), &WroughtwildSim::foundry_remove);
     ClassDB::bind_method(D_METHOD("foundry_place_skill", "row", "col", "skill_id"), &WroughtwildSim::foundry_place_skill);
     ClassDB::bind_method(D_METHOD("foundry_place_kind", "row", "col", "kind_id"), &WroughtwildSim::foundry_place_kind);
@@ -2816,9 +2818,38 @@ Dictionary WroughtwildSim::foundry() const {
         cell["ingot"] = to_godot(p.ingot);
         cell["skill"] = to_godot(p.skill);
         cell["currency"] = to_godot(p.currency);
+        cell["metal"] = p.isIngot() ? to_godot(wroughtwild::foundry::metalOf(tuning_->foundry, p)) : String();
         plate.push_back(cell);
     }
     d["plate"] = plate;
+    // The metals (slice 10): every metal in reach order with its re-cast
+    // cost and whether the era allows it, the era's alloy, and what is in
+    // hand of each ingot by metal.
+    Array metals;
+    for (const auto& m : tuning_->foundry.metals) {
+        Dictionary entry;
+        entry["id"] = to_godot(m.id);
+        entry["display_name"] = to_godot(m.displayName);
+        entry["reach"] = m.reach;
+        entry["era"] = m.era;
+        entry["recast_cost"] = to_dictionary(m.recastCost);
+        entry["available"] = m.era <= player_->currentEra() && !m.recastCost.empty();
+        metals.push_back(entry);
+    }
+    d["metals"] = metals;
+    d["default_metal"] = to_godot(tuning_->foundry.defaultMetal());
+    d["alloy"] = to_godot(tuning_->foundry.alloyForEra(player_->currentEra()));
+    d["max_reach"] = tuning_->foundry.maxReach();
+    Dictionary byMetal;
+    for (const auto& [id, count] : state.owned) {
+        Dictionary counts;
+        for (const auto& m : tuning_->foundry.metals) {
+            const int n = wroughtwild::foundry::unplacedCountOf(tuning_->foundry, state, id, m.id);
+            if (n > 0) counts[to_godot(m.id)] = n;
+        }
+        if (!counts.is_empty()) byMetal[to_godot(id)] = counts;
+    }
+    d["unplaced_by_metal"] = byMetal;
     // Tablets (D-022): the known skills not yet laid, for the tray.
     Array tablets;
     for (const auto& id : player_->knownSkills()) {
@@ -3042,6 +3073,13 @@ Dictionary WroughtwildSim::foundry_ingot(const String& ingot_id) const {
     auto owned = state.owned.find(ingot->id);
     d["owned"] = owned == state.owned.end() ? 0 : owned->second;
     d["unplaced"] = wroughtwild::foundry::unplacedCount(state, ingot->id);
+    Dictionary cast, unplacedByMetal;
+    for (const auto& m : tuning_->foundry.metals) {
+        cast[to_godot(m.id)] = wroughtwild::foundry::castCount(state, ingot->id, m.id);
+        unplacedByMetal[to_godot(m.id)] = wroughtwild::foundry::unplacedCountOf(tuning_->foundry, state, ingot->id, m.id);
+    }
+    d["cast"] = cast;
+    d["unplaced_by_metal"] = unplacedByMetal;
     return d;
 }
 
@@ -3073,8 +3111,16 @@ Array WroughtwildSim::foundry_effects() const {
     return out;
 }
 
-bool WroughtwildSim::foundry_place(int row, int col, const String& ingot_id) {
-    return require_loaded("foundry_place") && player_->foundryPlace(row, col, to_std(ingot_id));
+bool WroughtwildSim::foundry_place(int row, int col, const String& ingot_id, const String& metal_id) {
+    return require_loaded("foundry_place") && player_->foundryPlace(row, col, to_std(ingot_id), to_std(metal_id));
+}
+
+bool WroughtwildSim::foundry_recast(const String& ingot_id, const String& metal_id) {
+    return require_loaded("foundry_recast") && player_->foundryRecast(to_std(ingot_id), to_std(metal_id));
+}
+
+bool WroughtwildSim::can_recast(const String& ingot_id, const String& metal_id) const {
+    return require_loaded("can_recast") && player_->canRecast(to_std(ingot_id), to_std(metal_id));
 }
 
 bool WroughtwildSim::foundry_remove(int row, int col) {

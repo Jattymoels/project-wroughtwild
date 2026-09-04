@@ -256,6 +256,67 @@ int unplacedCount(const State& state, const std::string& ingot) {
     return std::max(0, owned - placedCount(state, ingot));
 }
 
+// --- the metal of an ingot (D-023 slice 10) -----------------------------------
+
+std::string metalOf(const tuning::FoundryDef& def, const Placement& placement) {
+    return placement.metal.empty() || !def.findMetal(placement.metal) ? def.defaultMetal() : placement.metal;
+}
+
+int castCount(const State& state, const std::string& ingot, const std::string& metal) {
+    const auto it = state.metals.find(ingot);
+    if (it == state.metals.end()) return 0;
+    const auto m = it->second.find(metal);
+    return m == it->second.end() ? 0 : m->second;
+}
+
+int placedCountOf(const tuning::FoundryDef& def, const State& state, const std::string& ingot, const std::string& metal) {
+    int n = 0;
+    for (const auto& p : state.plate)
+        if (p.ingot == ingot && metalOf(def, p) == metal) ++n;
+    return n;
+}
+
+int unplacedCountOf(const tuning::FoundryDef& def, const State& state, const std::string& ingot, const std::string& metal) {
+    return std::max(0, castCount(state, ingot, metal) - placedCountOf(def, state, ingot, metal));
+}
+
+void normaliseMetals(const tuning::FoundryDef& def, State& state) {
+    const std::string base = def.defaultMetal();
+    for (auto& p : state.plate)
+        if (p.isIngot()) p.metal = metalOf(def, p);
+    for (const auto& [ingot, owned] : state.owned) {
+        auto& counts = state.metals[ingot];
+        for (auto it = counts.begin(); it != counts.end();)
+            it = (!def.findMetal(it->first) || it->second <= 0) ? counts.erase(it) : std::next(it);
+        // What is placed in a metal is at least cast in it; the default gives way.
+        for (const auto& m : def.metals) {
+            const int placed = placedCountOf(def, state, ingot, m.id);
+            if (placed > counts[m.id]) counts[m.id] = placed;
+        }
+        int sum = 0;
+        for (const auto& [metal, count] : counts) sum += count;
+        if (sum < owned) counts[base] += owned - sum;
+        else if (sum > owned) {
+            // Too many cast: the default sheds first, then the rest from the widest down.
+            int excess = sum - owned;
+            const int placedBase = placedCountOf(def, state, ingot, base);
+            const int shed = std::min(excess, std::max(0, counts[base] - placedBase));
+            counts[base] -= shed;
+            excess -= shed;
+            for (auto m = def.metals.rbegin(); m != def.metals.rend() && excess > 0; ++m) {
+                const int spare = std::max(0, counts[m->id] - placedCountOf(def, state, ingot, m->id));
+                const int take = std::min(excess, spare);
+                counts[m->id] -= take;
+                excess -= take;
+            }
+        }
+        for (auto it = counts.begin(); it != counts.end();)
+            it = it->second <= 0 ? counts.erase(it) : std::next(it);
+    }
+    for (auto it = state.metals.begin(); it != state.metals.end();)
+        it = state.owned.count(it->first) ? std::next(it) : state.metals.erase(it);
+}
+
 bool flowsToSkill(const State& state, const Plate& plate, int row, int col) {
     // Each step goes to a placed piece one nearer a socket, so the walk
     // always ends; a support (depth 1) reaches the skill only when a
@@ -333,20 +394,28 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
         e.cellCol = p.col;
         out.push_back(e);
     }
-    // Pairs: each orthogonal adjacency once (right and down from each cell).
+    // Pairs: each pair once (right and down from each cell), as far along
+    // the row or column as either ingot's metal reaches (slice 10), gaps
+    // ignored - iron one cell, bronze two, steel three.
+    const int maxReach = def.maxReach();
+    auto reachOf = [&](const Placement& p) { return def.metalReach(metalOf(def, p)); };
     for (int r = 0; r < plate.rows; ++r) {
         for (int c = 0; c < plate.cols; ++c) {
             const auto* here = cell(r, c);
             if (!here || !here->isIngot()) continue;
             for (const auto& [dr, dc] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}}) {
-                const auto* there = cell(r + dr, c + dc);
-                if (!there || !there->isIngot()) continue;
-                const auto* pair = def.findPair(here->ingot, there->ingot);
-                if (!pair) continue;
-                Effect e{"pair", pair->displayName, pair->modifier, pair->value, r, c, std::string()};
-                e.cellRow = r;
-                e.cellCol = c;
-                out.push_back(e);
+                for (int d = 1; d <= maxReach; ++d) {
+                    if (plate.isSocket(r + dr * d, c + dc * d)) break; // never read through a socket
+                    const auto* there = cell(r + dr * d, c + dc * d);
+                    if (!there || !there->isIngot()) continue;
+                    if (std::max(reachOf(*here), reachOf(*there)) < d) continue;
+                    const auto* pair = def.findPair(here->ingot, there->ingot);
+                    if (!pair) continue;
+                    Effect e{"pair", pair->displayName, pair->modifier, pair->value, r, c, std::string()};
+                    e.cellRow = r;
+                    e.cellCol = c;
+                    out.push_back(e);
+                }
             }
         }
     }
@@ -384,15 +453,21 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
             support.cellRow = sr;
             support.cellCol = sc;
             out.push_back(support);
+            // Backing: a matching ingot on any side but the socket's, as far
+            // as either metal reaches (slice 10), never read through the socket.
             for (const auto& [br, bc] : kSides) {
-                const int nr = sr + br, nc = sc + bc;
-                if (nr == p.row && nc == p.col) continue;
-                const auto* backer = cell(nr, nc);
-                if (!backer || !backer->isIngot() || backer->ingot != beside->ingot) continue;
-                Effect backing{"backing", ingot->displayName + " backing " + skill->displayName, modifier->id, value, p.row, p.col, p.skill};
-                backing.cellRow = nr;
-                backing.cellCol = nc;
-                out.push_back(backing);
+                if (sr + br == p.row && sc + bc == p.col) continue;
+                for (int d = 1; d <= maxReach; ++d) {
+                    const int nr = sr + br * d, nc = sc + bc * d;
+                    if (plate.isSocket(nr, nc)) break; // never read through a socket
+                    const auto* backer = cell(nr, nc);
+                    if (!backer || !backer->isIngot() || backer->ingot != beside->ingot) continue;
+                    if (std::max(reachOf(*beside), reachOf(*backer)) < d) continue;
+                    Effect backing{"backing", ingot->displayName + " backing " + skill->displayName, modifier->id, value, p.row, p.col, p.skill};
+                    backing.cellRow = nr;
+                    backing.cellCol = nc;
+                    out.push_back(backing);
+                }
             }
         }
     }
@@ -437,6 +512,8 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
                     if (!form.kind.empty() && form.kind != p.currency) continue;
                     if (!form.lane.empty() && form.lane != lane) continue;
                     if (!form.skillTag.empty() && !hasTag(skillTags, form.skillTag)) continue;
+                    // A compound form (slice 10) needs the support cast in at least its metal.
+                    if (!form.metal.empty() && reachOf(*beside) < def.metalReach(form.metal)) continue;
                     for (const auto& fe : form.effects) {
                         Effect e{"form", form.displayName + " (" + kind->displayName + " on " + ingot->displayName + ")",
                                  fe.modifier, fe.value, socketRow, socketCol, tablet->skill};

@@ -409,6 +409,27 @@ BoonTable loadBoons(const std::string& path) {
 
 const IngotDef* FoundryDef::findIngot(const std::string& id) const { return findById(ingots, id); }
 const KindDef* FoundryDef::findKindOnPlate(const std::string& id) const { return findById(kinds, id); }
+const IngotMetalDef* FoundryDef::findMetal(const std::string& id) const { return findById(metals, id); }
+std::string FoundryDef::defaultMetal() const { return metals.empty() ? std::string() : metals.front().id; }
+int FoundryDef::metalReach(const std::string& id) const {
+    const auto* metal = findMetal(id.empty() ? defaultMetal() : id);
+    return metal ? std::max(1, metal->reach) : 1;
+}
+int FoundryDef::maxReach() const {
+    int widest = 1;
+    for (const auto& m : metals) widest = std::max(widest, m.reach);
+    return widest;
+}
+std::string FoundryDef::alloyForEra(int era) const {
+    std::string best = defaultMetal();
+    int reach = 0;
+    for (const auto& m : metals)
+        if (m.era <= era && m.reach > reach) {
+            best = m.id;
+            reach = m.reach;
+        }
+    return best;
+}
 const RailPatternDef* RailsDef::findPattern(const std::string& id) const { return findById(patterns, id); }
 const ClassDef* RailsDef::findClass(const std::string& id) const { return findById(classes, id); }
 const SpecialisationDef* RailsDef::findSpecialisation(const std::string& id) const { return findById(specialisations, id); }
@@ -480,6 +501,22 @@ FoundryDef loadFoundry(const std::string& path) {
         }
     }
     if (auto links = doc->find("links")) def.linkFamily = links->get("family").asString();
+    if (auto metals = doc->find("ingot_metals")) {
+        for (const auto& m : metals->asArray()) {
+            IngotMetalDef metal;
+            metal.id = m->get("id").asString();
+            metal.displayName = m->get("display_name").asString();
+            metal.reach = m->get("reach").asInt();
+            if (auto era = m->find("era")) metal.era = era->asInt();
+            if (auto cost = m->find("recast_cost")) metal.recastCost = readIntMap(*cost);
+            if (metal.reach < 1) throw std::runtime_error("foundry: metal " + metal.id + " reaches less than one cell");
+            def.metals.push_back(std::move(metal));
+        }
+        for (size_t i = 1; i < def.metals.size(); ++i)
+            if (def.metals[i].reach < def.metals[i - 1].reach)
+                throw std::runtime_error("foundry: ingot_metals must be listed in reach order");
+    }
+    if (auto station = doc->find("recast_station")) def.recastStation = station->asString();
     if (auto names = doc->find("family_names")) {
         for (const auto& [family, name] : names->asObject())
             if (family != "design_purpose") def.familyNames[family] = name->asString();
@@ -492,6 +529,7 @@ FoundryDef loadFoundry(const std::string& path) {
             form.ingot = f->get("ingot").asString();
             if (auto lane = f->find("lane")) form.lane = lane->asString();
             if (auto tag = f->find("skill_tag")) form.skillTag = tag->asString();
+            if (auto metal = f->find("metal")) form.metal = metal->asString();
             form.displayName = f->get("display_name").asString();
             for (const auto& e : f->get("effects").asArray()) {
                 FormEffect effect;
@@ -610,7 +648,10 @@ FoundryDef loadFoundry(const std::string& path) {
         source.event = s->get("event").asString();
         source.ingot = s->get("ingot").asString();
         if (auto era = s->find("era")) source.era = era->asInt();
+        if (auto metal = s->find("metal")) source.metal = metal->asString();
         if (!def.findIngot(source.ingot)) throw std::runtime_error("foundry: source " + source.id + " grants an unknown ingot");
+        if (!source.metal.empty() && source.metal != "alloy" && !def.findMetal(source.metal))
+            throw std::runtime_error("foundry: source " + source.id + " casts in unknown metal " + source.metal);
         def.sources.push_back(std::move(source));
     }
     return def;
@@ -1231,7 +1272,12 @@ Tuning loadAll(const std::string& tuningDirectory) {
         for (const auto& effect : form.effects)
             if (!tuning.items.findModifier(effect.modifier))
                 throw std::runtime_error("foundry: form " + form.displayName + " names unknown modifier " + effect.modifier);
+        if (!form.metal.empty() && !tuning.foundry.findMetal(form.metal))
+            throw std::runtime_error("foundry: form " + form.displayName + " needs unknown metal " + form.metal);
     }
+    // The metals (slice 10): the re-cast station is a known one.
+    if (!tuning.foundry.recastStation.empty() && !tuning.crafting.findStation(tuning.foundry.recastStation))
+        throw std::runtime_error("foundry: recast_station names unknown station " + tuning.foundry.recastStation);
     for (const auto& pair : tuning.foundry.pairs)
         if (!tuning.items.findModifier(pair.modifier))
             throw std::runtime_error("foundry: pair " + pair.displayName + " names unknown modifier " + pair.modifier);
