@@ -147,6 +147,10 @@ public:
     double skill_sear(const String& skill_id) const;
     bool skill_brittle(const String& skill_id) const;
     double skill_arc(const String& skill_id) const;
+    // The Marrow's and the Quicksilver's skill hooks (D-023 slice 8).
+    double skill_life_on_hit(const String& skill_id) const;
+    double skill_refund_on_kill(const String& skill_id) const;
+    double skill_haste_on_kill(const String& skill_id) const;
     // Links (D-023): every link on the plate [{first, second, row, col,
     // support_row, support_col}]; the triggers a skill can fire (freeze,
     // ignite, bleed); the skills that cast themselves when skill_id's

@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) 6 (kinds as variants; the reactions' hooks) and 7 (links re-homed; Arc) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) 6 (kinds as variants; the reactions' hooks), 7 (links re-homed; Arc) and 8 (the Marrow's and the Quicksilver's forms) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -146,9 +146,17 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
    cooldown. Arc: Reach worked by a Catalyst beside a strike sweeps every
    enemy within reach and 1.5 m either side.
 
-Still to come from the tables below: Linger, compound forms, rails,
-Marrow and Quicksilver forms, the Vanguard of dodge and the rest of the
-variants, the metal of an ingot. The Reach
+12. The Marrow's and the Quicksilver's forms (slice 8): sustain twists
+   (Cauterise, Cold Blood, Bloodletting, Far Leech, Hale, Scar Tissue,
+   Warded Blood, Lifeline) and tempo twists (Hot Hands, Cold Snap, Quick
+   Cut, Long Step, Second Breath, Braced Step, Sure Step, Fleet), with
+   their hooks: life on hit, a cooldown refund and a burst of speed on a
+   kill, every heal amplified, and the Dash's reach, life, armour and
+   recovery on the sheet.
+
+Still to come from the tables below: Linger, compound forms, rails (which
+need the class choice and the class hall of D-004), the Vanguard of
+dodge and the rest of the variants, the metal of an ingot. The Reach
 conflict recorded on 3 Sep is settled: the owner said yes, and the code
 now reads skills with it.
 
@@ -911,9 +919,13 @@ following.
 7. **Links** *(landed 4 Sep 2026)*. Re-homed to the corner beyond a
    shared support; cast on trigger at the struck enemy; on or off the
    bar. Arc landed with it. Still ahead: the bar marking a linked skill.
-8. **Rails.** `rail_patterns`, the class hall as the place they are set,
-   two classes' seeds and one manner.
-9. **Marrow and Quicksilver**, their forms and the rest of their variants.
+8. **Marrow and Quicksilver's forms** *(landed 4 Sep 2026, taken before
+   rails because rails need a class choice and a class hall that do not
+   exist yet)*. Sixteen forms; the Dash's on the sheet. Still ahead: the
+   rest of their variants, and the readings that need player statuses or
+   ground hooks (burning ground from a Dash, dashing through enemies).
+9. **Rails.** `rail_patterns`, the class hall as the place they are set,
+   two classes' seeds and one manner. Needs D-004's class at the start.
 10. **The metal of an ingot.** Re-casting at the forge in the era's alloy;
    reach for backing and pairs; alloy-cast ingots from elites and floors;
    compound forms conditioned on metal and rarity.

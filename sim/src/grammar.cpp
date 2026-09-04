@@ -309,6 +309,18 @@ double skillArc(const tuning::Tuning& tuning, const ActiveMods& active, const st
     return skillNumberResolved(tuning, active, skillId, "arc");
 }
 
+double skillLifeOnHit(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
+    return skillNumberResolved(tuning, active, skillId, "life_on_hit");
+}
+
+double skillRefundOnKill(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
+    return std::min(1.0, skillNumberResolved(tuning, active, skillId, "refund_on_kill"));
+}
+
+double skillHasteOnKill(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
+    return skillNumberResolved(tuning, active, skillId, "haste_on_kill");
+}
+
 std::vector<std::string> skillTriggers(const tuning::Tuning& tuning, const ActiveMods& active,
                                        const std::string& skillId) {
     std::vector<std::string> triggers;

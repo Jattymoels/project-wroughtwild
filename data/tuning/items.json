@@ -423,6 +423,168 @@
       "design_purpose": "The Arc form's hook: how far either side of the strike's line the sweep reaches (grammar::skillArc; the engine finds who stands in it). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
+      "id": "life_on_hit",
+      "display_name": "Life on Hit",
+      "applies_to": [],
+      "effect": "add_life_on_hit",
+      "display": "flat",
+      "sentence": "a hit restores {n} life",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1,
+          "maximum": 1
+        }
+      ],
+      "design_purpose": "A form's leech (slice 8): every hit that lands with the skill restores this much life (grammar::skillLifeOnHit; the engine heals as the hit lands). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word.",
+      "tags": [
+        "reading"
+      ]
+    },
+    {
+      "id": "refund_on_kill",
+      "display_name": "Cooldown Refund on Kill",
+      "applies_to": [],
+      "effect": "add_refund_on_kill",
+      "display": "percent",
+      "sentence": "a kill refunds {n} of its cooldown",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.25,
+          "maximum": 0.25
+        }
+      ],
+      "design_purpose": "A form's tempo (slice 8): a kill with the skill takes this fraction off its remaining cooldown (grammar::skillRefundOnKill). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word.",
+      "tags": [
+        "reading"
+      ]
+    },
+    {
+      "id": "haste_on_kill",
+      "display_name": "Haste on Kill",
+      "applies_to": [],
+      "effect": "add_haste_on_kill",
+      "display": "percent",
+      "sentence": "a kill quickens you {n} for a moment",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.16,
+          "maximum": 0.16
+        }
+      ],
+      "design_purpose": "A form's tempo (slice 8): a kill with the skill quickens your walking by this for haste_after_hit_seconds (grammar::skillHasteOnKill). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word.",
+      "tags": [
+        "reading"
+      ]
+    },
+    {
+      "id": "heal_more",
+      "display_name": "Healing",
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_heal_more",
+      "display": "percent",
+      "sentence": "life restored to you from any source is {n} more",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.15,
+          "maximum": 0.15
+        }
+      ],
+      "design_purpose": "The Lifeline form (slice 8): a sheet number the engine multiplies every heal by - kills, hits, the Dash, the shelter. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word.",
+      "tags": [
+        "reading"
+      ]
+    },
+    {
+      "id": "dash_reach",
+      "display_name": "Dash Reach",
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_dash_reach",
+      "display": "flat",
+      "sentence": "your Dash goes {n} m further",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1,
+          "maximum": 1
+        }
+      ],
+      "design_purpose": "The Long Step form (slice 8): metres added to the Dash's distance, on the sheet because the Dash sits on no socket. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word.",
+      "tags": [
+        "reading"
+      ]
+    },
+    {
+      "id": "life_on_dash",
+      "display_name": "Life on Dash",
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_life_on_dash",
+      "display": "flat",
+      "sentence": "a Dash restores {n} life",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 4,
+          "maximum": 4
+        }
+      ],
+      "design_purpose": "The Second Breath form (slice 8): life a Dash restores, on the sheet. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word.",
+      "tags": [
+        "reading"
+      ]
+    },
+    {
+      "id": "armour_on_dash",
+      "display_name": "Armour on Dash",
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_armour_on_dash",
+      "display": "flat",
+      "sentence": "a Dash grants {n} armour for a moment",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 8,
+          "maximum": 8
+        }
+      ],
+      "design_purpose": "The Braced Step form (slice 8): armour a Dash grants for cast_armour_seconds, on the sheet. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word.",
+      "tags": [
+        "reading"
+      ]
+    },
+    {
+      "id": "dash_recovery",
+      "display_name": "Dash Recovery",
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_dash_recovery",
+      "display": "percent",
+      "sentence": "your Dash recovers {n} faster",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.16,
+          "maximum": 0.16
+        }
+      ],
+      "design_purpose": "The Fleet form (slice 8): the Dash's cooldown divided by one plus this, on the sheet. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word.",
+      "tags": [
+        "reading"
+      ]
+    },
+    {
       "id": "area_size",
       "display_name": "Area Size",
       "tags": [
