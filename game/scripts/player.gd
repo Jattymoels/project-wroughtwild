@@ -341,8 +341,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		var input := test_walk if test_walk != Vector2.ZERO else Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
-		velocity.x = direction.x * move_speed
-		velocity.z = direction.z * move_speed
+		velocity.x = direction.x * move_speed * combat.haste_multiplier()
+		velocity.z = direction.z * move_speed * combat.haste_multiplier()
 
 	var fall_speed := -velocity.y
 	_step_up(delta)

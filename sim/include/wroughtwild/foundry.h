@@ -30,9 +30,12 @@ namespace wroughtwild::foundry {
 
 struct Placement {
     int row = 0, col = 0;
-    std::string ingot; // an ingot placement ("" for a tablet)
+    std::string ingot; // an ingot placement ("" for a tablet or a kind)
     std::string skill; // a skill tablet (D-022): the skill laid on this cell
+    std::string currency{}; // a currency kind (D-023 slice 4): a subject in a socket, an augment elsewhere
     bool isTablet() const { return !skill.empty(); }
+    bool isIngot() const { return !ingot.empty(); }
+    bool isCurrency() const { return !currency.empty(); }
 };
 
 struct State {
@@ -60,13 +63,14 @@ struct Plate {
 
 // One thing the plate is doing right now, for the rules and the panel.
 struct Effect {
-    std::string kind;     // ingot | pair | support | added | backing
+    std::string kind;     // ingot | pair | support | added | backing | subject | augment | lending
     std::string label;    // Ember Ingot / Wildfire / Frost Orb <- Frost Ingot / Frost Ingot backing Frost Orb
     std::string modifier; // items.json modifier id
     double value = 0.0;
     int row = -1, col = -1; // the placement (ingot), the first cell (pair) or the socket (support, backing)
-    std::string skill;    // support, backing: the one skill it applies to
+    std::string skill;    // support, added, backing of a skill working: the one skill it applies to
     int cellRow = -1, cellCol = -1; // the ingot cell the effect comes from
+    std::string subject{}; // subject, augment, lending, and a Vanguard working's support and backing: the kind
 };
 
 // The plate the era has forged (rows_by_era; the last entry serves later eras).
@@ -75,7 +79,9 @@ Plate plate(const tuning::FoundryDef& def, int era);
 // Lifts every placement the plate cannot hold - an unforged row, a tablet
 // outside a socket, an ingot inside one, a second thing on a cell, a
 // second tablet for a skill - and returns how many it lifted. Run on load.
-int validate(State& state, const Plate& plate);
+// `lifted`, when given, receives what was lifted (a kind must go back to
+// the purse).
+int validate(State& state, const Plate& plate, std::vector<Placement>* lifted = nullptr);
 
 const Placement* at(const State& state, int row, int col);
 int placedCount(const State& state, const std::string& ingot);
@@ -87,7 +93,10 @@ const Placement* tabletFor(const State& state, const std::string& skill);
 // Ingots, pairs, then each working's readings - a support (the ingot's
 // skill modifier, when it can read the skill's tags) or an added element
 // (an element ingot beside a skill of another element) - each with its
-// backing, in that order. The skill and modifier tables decide which
+// backing; then each Vanguard working (a kind in a socket: its base, and
+// every ingot beside it read as defence); then each augment (a kind on a
+// non-socket cell: a fraction of its base, and its readings lent to the
+// skill supports it touches). The skill and modifier tables decide which
 // reading an ingot gives.
 std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, const Plate& plate);
 

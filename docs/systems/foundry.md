@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill) and 3 (typed currency) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency) and 4 (the Vanguard) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -118,9 +118,16 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
    more by every elite; the peddler changes three of one for one of
    another; a kind added to a gear craft aims its first modifier at the
    kind's family; rare metal casts the three purse kinds.
+9. The Vanguard (slice 4): a kind from the purse in a socket is a defence
+   working (+8 armour; every ingot beside it reads as defence at twice
+   its Vanguard value, backing counting once more); in a corner it gives
+   half its base and lends its readings, at x1, to the skill supports it
+   touches. It lifts for the re-forge cost and returns to the purse. Cold
+   resistance is a derived stat; Barbs, Answer Reach and Haste after a hit
+   are engine hooks reading sim numbers.
 
-Still to come from the tables below: currency on the plate, the Vanguard,
-corners and the reactions, links, rails, the metal of an ingot. The Reach
+Still to come from the tables below: the Catalyst in a corner and the
+reactions, links, rails, Marrow and Quicksilver, the metal of an ingot. The Reach
 conflict recorded on 3 Sep is settled: the owner said yes, and the code
 now reads skills with it.
 
@@ -293,6 +300,17 @@ sim numbers, in the ADR-0003 division.
 
 The owner's example reads straight off the table: a Bulwark Vanguard
 supported by Frost is +10 cold resistance and slower chill on you.
+
+**As built (4 Sep 2026, slice 4).** The Vanguard column is in:
+`foundry.json` `subjects` (the Bulwark Vanguard) and each ingot's
+`vanguard_modifier` / `vanguard_value`. Ember +10 fire resistance, Frost
++10 cold resistance, Edge Barbs 25, Reach the answer's reach 2.5 m, Vigour
++24 life, Plate +16 armour, Ward +5 to every resistance, Haste 16% faster
+for two seconds after a hit. The second halves that need statuses on the
+player (a shorter ignite, slower chill, regeneration after a hit, armour
+against fire at half, statuses decaying faster) wait for player-side
+statuses; the Warding Vanguard, Marrow and Quicksilver columns wait for
+their slices.
 
 ## Corners: the joins
 
@@ -786,9 +804,9 @@ following.
    drops and prices become kinds, the peddler changes kinds;
    `currency_weighting` in a craft; currency lifts from the plate for the
    re-forge cost.
-4. **The Vanguard.** As a subject with its eight readings (cold resistance
-   as a derived stat; Barbs and the answer's reach as engine hooks); as a
-   corner, lending.
+4. **The Vanguard** *(landed 4 Sep 2026)*. As a subject with its eight
+   readings (cold resistance as a derived stat; Barbs and the answer's
+   reach as engine hooks); as a corner, lending.
 5. **Catalyst corners.** Sharpenings first (they reuse keys), then Scald,
    Quench, Temper, Rime; the rest as their hooks land.
 6. **Links.** A Catalyst in a shared support cell; cast-on-trigger; the

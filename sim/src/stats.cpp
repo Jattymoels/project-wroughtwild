@@ -9,6 +9,8 @@ namespace {
 DerivedStats finish(const tuning::PlayerBase& base, DerivedStats stats) {
     stats.fireResistancePercent =
         std::min(stats.fireResistancePercent, base.resistanceCapPercent);
+    stats.coldResistancePercent =
+        std::min(stats.coldResistancePercent, base.resistanceCapPercent);
     return stats;
 }
 
@@ -43,7 +45,14 @@ DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipm
         if (e.key == "add_max_life") stats.maxLife += e.value;
         else if (e.key == "add_armour") stats.armour += e.value;
         else if (e.key == "add_fire_resistance") stats.fireResistancePercent += e.value;
-        else if (e.key == "add_area_size") stats.areaBonus += e.value;
+        else if (e.key == "add_cold_resistance") stats.coldResistancePercent += e.value;
+        else if (e.key == "add_all_resistance") {
+            stats.fireResistancePercent += e.value;
+            stats.coldResistancePercent += e.value;
+        } else if (e.key == "add_area_size") stats.areaBonus += e.value;
+        else if (e.key == "add_barbs") stats.barbsBuildup += e.value;
+        else if (e.key == "add_answer_reach") stats.answerReachM += e.value;
+        else if (e.key == "add_haste_after_hit") stats.hasteAfterHit += e.value;
     }
     return finish(base, stats);
 }
@@ -64,6 +73,8 @@ double mitigateDamage(double amount, const std::string& damageType,
                       const DerivedStats& stats, const tuning::PlayerBase& base) {
     if (damageType == "fire")
         return amount * (1.0 - stats.fireResistancePercent / 100.0);
+    if (damageType == "cold")
+        return amount * (1.0 - stats.coldResistancePercent / 100.0);
     // Everything else counts as physical for the slice.
     double reduction = stats.armour / (stats.armour + base.armourReductionScale);
     return amount * (1.0 - reduction);

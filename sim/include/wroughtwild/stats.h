@@ -21,7 +21,14 @@ struct DerivedStats {
     double maxLife = 0.0;
     double armour = 0.0;
     double fireResistancePercent = 0.0; // already capped
+    double coldResistancePercent = 0.0; // already capped (D-023 slice 4)
     double areaBonus = 0.0;             // fractional area size increase
+    // The Vanguard's answers to a hit (D-023 slice 4), numbers the engine
+    // applies when a hit lands: bleed buildup on the striker, how far the
+    // answer reaches beyond the striker, a burst of speed after a hit.
+    double barbsBuildup = 0.0;
+    double answerReachM = 0.0;
+    double hasteAfterHit = 0.0; // fractional speed increase
 };
 
 // Stats from the item table's modifier pool: implicit properties plus every
@@ -45,7 +52,8 @@ DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipm
 DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment);
 
 // Damage after defences. Physical is reduced by armour
-// (reduction = armour / (armour + scale)); fire by resistance percent.
+// (reduction = armour / (armour + scale)); fire and cold by their
+// resistance percents.
 double mitigateDamage(double amount, const std::string& damageType,
                       const DerivedStats& stats, const tuning::PlayerBase& base);
 

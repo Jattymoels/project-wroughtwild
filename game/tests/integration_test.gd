@@ -432,6 +432,20 @@ func _physics_process(_delta: float) -> void:
 			var taken := _back.force_attack()
 			check(taken >= 4.0 * 0.9 and taken <= 4.0 * 1.1, "combat: whelp hit mitigated by the sim (%.2f)" % taken)
 			check(absf(_player.combat.life - (100.0 - taken)) < 0.001, "combat: life reduced by exactly the mitigated hit")
+		31:
+			# The Vanguard (D-023 slice 4): one of the mine's Vanguards in the
+			# second socket, the Edge north of it reading as Barbs, so the
+			# whelp that strikes you bleeds. Lifted again, back to the purse.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			check(sim.foundry_place(1, 2, "edge") and sim.foundry_place_subject(2, 2, "vanguard")
+				and sim.derived_stats()["barbs"] > 0.0 and sim.currency_count("vanguard") == 2,
+				"vanguard: an edge north of the vanguard's socket reads as Barbs")
+			var bleed_before: float = _back.bleed
+			_back.force_attack()
+			check(_back.bleed > bleed_before, "vanguard: the whelp that struck you bleeds")
+			sim.add_material("iron_ingot", 2)
+			check(sim.foundry_remove(2, 2) and sim.foundry_remove(1, 2) and sim.currency_count("vanguard") == 3
+				and sim.derived_stats()["barbs"] == 0.0, "vanguard: lifted, the kind returns to the purse")
 		32:
 			var hits := _player.combat.use_area()
 			check(hits >= 1, "combat: area strike hits enemies in radius (%d)" % hits)

@@ -217,6 +217,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("foundry_place", "row", "col", "ingot_id"), &WroughtwildSim::foundry_place);
     ClassDB::bind_method(D_METHOD("foundry_remove", "row", "col"), &WroughtwildSim::foundry_remove);
     ClassDB::bind_method(D_METHOD("foundry_place_skill", "row", "col", "skill_id"), &WroughtwildSim::foundry_place_skill);
+    ClassDB::bind_method(D_METHOD("foundry_place_subject", "row", "col", "kind_id"), &WroughtwildSim::foundry_place_subject);
     ClassDB::bind_method(D_METHOD("foundry_event", "event"), &WroughtwildSim::foundry_event);
     ClassDB::bind_method(D_METHOD("foundry_notices"), &WroughtwildSim::foundry_notices);
     ClassDB::bind_method(D_METHOD("era"), &WroughtwildSim::era);
@@ -594,7 +595,12 @@ Dictionary WroughtwildSim::derived_stats() const {
     d["max_life"] = s.maxLife;
     d["armour"] = s.armour;
     d["fire_resistance_percent"] = s.fireResistancePercent;
+    d["cold_resistance_percent"] = s.coldResistancePercent;
     d["area_bonus"] = s.areaBonus;
+    // The Vanguard's answers to a hit (D-023 slice 4), for the engine to apply.
+    d["barbs"] = s.barbsBuildup;
+    d["answer_reach_m"] = s.answerReachM;
+    d["haste_after_hit"] = s.hasteAfterHit;
     return d;
 }
 
@@ -2638,6 +2644,7 @@ Dictionary WroughtwildSim::foundry() const {
         cell["col"] = p.col;
         cell["ingot"] = to_godot(p.ingot);
         cell["skill"] = to_godot(p.skill);
+        cell["currency"] = to_godot(p.currency);
         plate.push_back(cell);
     }
     d["plate"] = plate;
@@ -2653,6 +2660,21 @@ Dictionary WroughtwildSim::foundry() const {
         tablets.push_back(t);
     }
     d["tablets"] = tablets;
+    // Subjects (D-023 slice 4): the kinds that may sit in a socket, with
+    // what the purse holds of each.
+    Array subjects;
+    for (const auto& s : tuning_->foundry.subjects) {
+        Dictionary entry;
+        entry["id"] = to_godot(s.id);
+        entry["display_name"] = to_godot(s.displayName);
+        entry["held"] = player_->held(s.id);
+        const auto* def = tuning_->items.findModifier(s.modifier);
+        entry["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, s.value)) : String();
+        entry["trigger"] = to_godot(s.trigger);
+        subjects.push_back(entry);
+    }
+    d["subjects"] = subjects;
+    d["haste_after_hit_seconds"] = tuning_->foundry.hasteAfterHitSeconds;
     d["support_multiplier"] = tuning_->foundry.supportMultiplier;
     Dictionary owned, unplaced;
     for (const auto& [id, count] : state.owned) {
@@ -2704,6 +2726,10 @@ Dictionary WroughtwildSim::foundry_ingot(const String& ingot_id) const {
     d["added_sentence"] = added ? to_godot(wroughtwild::items::modifierSentence(
                                       *added, ingot->value * tuning_->foundry.supportMultiplier))
                                 : String();
+    const auto* vanguard = tuning_->items.findModifier(ingot->vanguardReading());
+    d["vanguard_sentence"] = vanguard ? to_godot(wroughtwild::items::modifierSentence(
+                                            *vanguard, ingot->vanguardReadingValue() * tuning_->foundry.supportMultiplier))
+                                      : String();
     const auto& state = player_->foundry();
     auto owned = state.owned.find(ingot->id);
     d["owned"] = owned == state.owned.end() ? 0 : owned->second;
@@ -2721,6 +2747,7 @@ Array WroughtwildSim::foundry_effects() const {
         d["kind"] = to_godot(e.kind);
         d["label"] = to_godot(e.label);
         d["skill"] = to_godot(e.skill);
+        d["subject"] = to_godot(e.subject);
         d["cell_row"] = e.cellRow;
         d["cell_col"] = e.cellCol;
         const auto* def = tuning_->items.findModifier(e.modifier);
@@ -2744,6 +2771,10 @@ bool WroughtwildSim::foundry_remove(int row, int col) {
 
 bool WroughtwildSim::foundry_place_skill(int row, int col, const String& skill_id) {
     return require_loaded("foundry_place_skill") && player_->foundryPlaceSkill(row, col, to_std(skill_id));
+}
+
+bool WroughtwildSim::foundry_place_subject(int row, int col, const String& kind_id) {
+    return require_loaded("foundry_place_subject") && player_->foundryPlaceSubject(row, col, to_std(kind_id));
 }
 
 Array WroughtwildSim::foundry_event(const String& event) {

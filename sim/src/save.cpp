@@ -131,6 +131,7 @@ std::string toJson(const SaveGame& game) {
         if (i) out << ",";
         out << "{\"row\":" << p.row << ",\"col\":" << p.col << ",\"ingot\":\"" << escape(p.ingot) << "\"";
         if (p.isTablet()) out << ",\"skill\":\"" << escape(p.skill) << "\"";
+        if (p.isCurrency()) out << ",\"currency\":\"" << escape(p.currency) << "\"";
         out << "}";
     }
     out << "],\"milestones\":";
@@ -190,6 +191,7 @@ SaveGame fromJson(const std::string& text) {
             placement.col = p->get("col").asInt();
             placement.ingot = p->get("ingot").asString();
             if (auto skill = p->find("skill")) placement.skill = skill->asString();
+            if (auto currency = p->find("currency")) placement.currency = currency->asString();
             game.economy.foundry.plate.push_back(placement);
         }
         game.economy.foundry.milestones = readStringList(f->get("milestones"));

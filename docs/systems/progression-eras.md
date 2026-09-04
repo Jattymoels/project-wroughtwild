@@ -676,3 +676,67 @@ purse, charcoal for a Marrow).
 Not yet: currency on the plate (a kind lifts for the re-forge cost once it
 can sit there, slices 4 and 5), a tell when a kind drops beyond the
 material chip, and the tuning itself.
+
+## Implemented: the Vanguard (4 Sep 2026, D-023 slice 4)
+
+The owner: "okay go next slice". The first currency on the plate.
+`data/tuning/foundry.json` (schema 4), `items.json`; `sim/foundry.h`,
+`stats.h`, `economy.h`, `save.cpp`:
+
+- **A kind is a placement.** `foundry::Placement` gains `currency`: a
+  kind from the purse set on a forged cell. In a socket it is a
+  **subject** (`subjects` in foundry.json: the Bulwark Vanguard, base +8
+  armour, its trigger recorded for links); on any other forged cell it is
+  an **augment**. `PlayerEconomy::foundryPlaceSubject` takes it from the
+  purse; lifting pays `reforge_cost` and returns it; a kind the frame
+  cannot hold goes back to the purse on load; the save carries it.
+- **The Vanguard working.** Every ingot beside a Vanguard's socket reads as
+  defence through its `vanguard_modifier` at `vanguard_value` times
+  `support_multiplier` (the self ingots read their base doubled), backing
+  counting once more, exactly as a skill working reads with the subject
+  deciding: Ember +10 fire resistance, Frost +10 cold resistance, Edge
+  Barbs (25 bleed buildup on the striker), Reach Answer Reach (the answers
+  reach every enemy within 2.5 m), Vigour +24 life, Plate +16 armour, Ward
+  +5 to every resistance, Haste 16% faster for `haste_after_hit_seconds`
+  after a hit. No skill reading fires beside a Vanguard.
+- **The corner.** A kind on a non-socket cell gives `corner_base_fraction`
+  of its base (+4 armour) and lends its readings to every ingot it touches
+  that supports a skill's socket, at `corner_lending_multiplier` (x1, the
+  ingot's value, not doubled): the Frost support beside your orb is still
+  +24% cold, and with a Vanguard in the corner it is also +5 cold
+  resistance. This is how an offence working carries defence.
+- **The sheet.** `DerivedStats` gains cold resistance (a second
+  resistance, capped like fire, `mitigateDamage` honouring "cold"),
+  `all_resistance` feeding both, and the answers as numbers: `barbs`,
+  `answer_reach_m`, `haste_after_hit`. New self modifiers
+  `cold_resistance`, `all_resistance`, `barbs`, `answer_reach`,
+  `haste_after_hit`, tagged `reading` so none rolls on gear.
+- **The engine.** After a hit lands, `PlayerCombat` answers it: Barbs
+  bleed the striker and, with Answer Reach, every enemy within reach;
+  Haste quickens walking for a moment. The panel gains a "Kinds to set"
+  tray, draws a socketed kind in brackets and a corner kind in braces,
+  names a Vanguard working's supports and corners, and writes lendings on
+  their cells; the HUD shows cold resistance once something gives it.
+
+Tests: sim 3409 (the subject and its readings; the readings never on
+gear; cold resistance mitigating and capped, all resistance feeding both,
+the answers on the sheet; a Vanguard from the purse in the socket with
+frost, ember and edge beside it, no skill reading firing, the numbers on
+the sheet, backing, lifting for iron back to the purse; a corner Vanguard's
+half base and lending, the orb keeping its support, a touched support lent
+and an untouched one not; the save and a stale kind back to the purse).
+Engine: unit 348 (a Vanguard through the door, the view and stats);
+integration 220 (Barbs through a real hit: the whelp that
+strikes you bleeds).
+
+Fixed on the way: the slice 2 readings (`life_on_kill`, `armour_on_cast`,
+`status_ward`) carried a `defence` tag, which every armour base allows, so
+they had been rolling on crafted and dropped armour; every reading now
+carries only `reading`, and the test checks each base's actual pool.
+
+Not yet: the second Vanguard (Warding, +5 to every resistance as a base),
+the readings' second halves (ignite on you burning shorter, chill building
+slower, regeneration after a hit, armour against fire at half, statuses
+decaying faster) which need player-side statuses that do not exist, boss
+resistance to Barbs, Marrow and Quicksilver as subjects (slice 8), the
+Catalyst in a corner (slice 5), links on the trigger (slice 6).
