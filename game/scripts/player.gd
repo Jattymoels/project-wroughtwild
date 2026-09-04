@@ -46,6 +46,10 @@ var class_panel: ClassPanel
 ## The lamp (Wave 6 slice 5): a small warm light the player carries after
 ## dark, so the night keeps its shapes close by and the way home is walkable.
 var _lamp: OmniLight3D
+## The chest panel (Wave 6 slice 6): E at a placed chest opens its store.
+var chest_panel: ChestPanel
+## When each family was last called full, so the word comes once in a while.
+var _full_said := {}
 var trial: TrialController
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
@@ -115,6 +119,12 @@ func _ready() -> void:
 	class_panel.closed.connect(_capture_mouse)
 	add_child(class_panel)
 
+	chest_panel = ChestPanel.new()
+	chest_panel.sim = inventory.get_sim()
+	chest_panel.player = self
+	chest_panel.closed.connect(_capture_mouse)
+	add_child(chest_panel)
+
 	trial = TrialController.new()
 	trial.setup(self)
 	add_child(trial)
@@ -160,6 +170,26 @@ func open_hand_crafting() -> void:
 	_release_mouse()
 
 
+## E at a placed chest (Wave 6 slice 6): its store opens.
+func open_chest(block: PlacedBlock) -> void:
+	placement.set_build_mode_enabled(false)
+	inventory_panel.close_panel()
+	work_panel.close_panel()
+	chest_panel.open_at(block)
+	_release_mouse()
+
+
+## The pack is full of a family (Wave 6 slice 6): said once in a while,
+## not every frame a chip lies at your feet.
+func note_pack_full(family: String) -> void:
+	var now := Time.get_ticks_msec()
+	if now - int(_full_said.get(family, -100000)) < 8000:
+		return
+	_full_said[family] = now
+	hud.notify("Your pack can carry no more %s (%d). A chest at home would take it." % [
+		Hud.pretty(family), inventory.carry_cap(StringName(family))])
+
+
 func open_custom_panel(title: String, rows: Array, message_text: String = "") -> void:
 	placement.set_build_mode_enabled(false)
 	inventory_panel.close_panel()
@@ -187,6 +217,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			inventory_panel.close_panel()
 		elif foundry_panel.is_open():
 			foundry_panel.close_panel()
+		elif chest_panel.is_open():
+			chest_panel.close_panel()
 		else:
 			work_panel.close_panel()
 	elif event.is_action_pressed("toggle_help"):
@@ -199,7 +231,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		save_game()
 	elif event.is_action_pressed("load_game"):
 		load_game()
-	elif work_panel.is_open() or inventory_panel.is_open() or foundry_panel.is_open() or class_panel.is_open():
+	elif work_panel.is_open() or inventory_panel.is_open() or foundry_panel.is_open() or class_panel.is_open() or chest_panel.is_open():
 		return
 	elif event.is_action_pressed("hand_craft"):
 		open_hand_crafting()
@@ -278,7 +310,7 @@ func toggle_foundry() -> void:
 		foundry_panel.close_panel()
 		_capture_mouse()
 		return
-	if work_panel.is_open() or inventory_panel.is_open() or class_panel.is_open():
+	if work_panel.is_open() or inventory_panel.is_open() or class_panel.is_open() or chest_panel.is_open():
 		return
 	open_foundry()
 
@@ -297,7 +329,7 @@ func offer_class() -> void:
 
 
 func toggle_inventory() -> void:
-	if work_panel.is_open() or foundry_panel.is_open() or class_panel.is_open():
+	if work_panel.is_open() or foundry_panel.is_open() or class_panel.is_open() or chest_panel.is_open():
 		return
 	if inventory_panel.is_open():
 		inventory_panel.close_panel()
@@ -667,7 +699,7 @@ func aim_probe() -> Dictionary:
 		return {"state": "interact", "label": "Your dropped pack — E to recover", "target": collider}
 	if collider is TrialGate:
 		return {"state": "interact", "label": "Trial gate — E to enter", "target": collider}
-	if collider is PlacedBlock and (collider as PlacedBlock).is_door():
+	if collider is PlacedBlock and ((collider as PlacedBlock).is_door() or (collider as PlacedBlock).is_chest()):
 		return {"state": "interact", "label": (collider as PlacedBlock).interact_label(), "target": collider}
 	if collider is Peddler:
 		return {"state": "interact", "label": (collider as Peddler).interact_label(), "target": collider}
@@ -702,7 +734,10 @@ func interact() -> void:
 	elif collider is DroppedBundle:
 		(collider as DroppedBundle).interact(self)
 	elif collider is PlacedBlock:
-		(collider as PlacedBlock).toggle()
+		if (collider as PlacedBlock).is_chest():
+			open_chest(collider as PlacedBlock)
+		else:
+			(collider as PlacedBlock).toggle()
 	elif collider is Peddler:
 		(collider as Peddler).interact(self)
 	elif collider is TrialGate:

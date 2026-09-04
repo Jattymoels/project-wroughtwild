@@ -28,3 +28,20 @@ func add_material(material_family: StringName, amount: int) -> void:
 ## Returns false (and consumes nothing) when fewer than amount are held.
 func consume_material(material_family: StringName, amount: int) -> bool:
 	return get_sim().consume_material(material_family, amount)
+
+
+## The haul (Wave 6 slice 6): what the pack takes from the ground, up to
+## the family's cap. Returns what it took; the rest stays where it lay.
+func haul(material_family: StringName, amount: int) -> int:
+	if amount <= 0:
+		return 0
+	return get_sim().haul(material_family, amount)
+
+
+func has_room(material_family: StringName) -> bool:
+	return get_sim().carry_room(material_family) > 0
+
+
+## The family's cap (0 = uncapped: gear and forged goods).
+func carry_cap(material_family: StringName) -> int:
+	return get_sim().carry_cap(material_family)

@@ -326,6 +326,23 @@
       "design_purpose": "Fine mode's slab: a quarter of a floor on one registry face, for shelves, steps between half-cubes, and roof edges."
     },
     {
+      "id": "chest",
+      "display_name": "Chest",
+      "material_cost": 6,
+      "size_m": [
+        1.0,
+        0.7,
+        0.8
+      ],
+      "element": "block",
+      "form": "chest",
+      "requires_traits": [
+        "joinery"
+      ],
+      "hint": "E opens it; it holds 240 of anything you haul, all families together; break it and it spills at your feet",
+      "design_purpose": "The store (Wave 6 slice 6, D-005 arriving early): a jointed timber box that sits low in its cell and holds chest_units (world.json hauling) of anything the pack hauls. The pack's cap is what makes it matter: you fill in the field, you empty at home. Six timber - a tree's worth - so the first chest is a decision on day one, and the joinery trait keeps it timber (a stone box is a cist, not a chest)."
+    },
+    {
       "id": "campfire",
       "display_name": "Campfire",
       "material_cost": 3,

@@ -85,7 +85,7 @@ var _era_sun_scale := 1.0
 ## the fog and the sun toward the night's blue, and the sun swings over the
 ## valley from dawn to dusk; at night it stays low and faint, the moon's
 ## stand-in, so the dark keeps its shapes.
-const NIGHT_TINT := Color(0.30, 0.36, 0.55)
+const NIGHT_TINT := Color(0.24, 0.30, 0.50)
 const NIGHT_SUN_TINT := Color(0.55, 0.65, 0.95)
 const NIGHT_SUN_FLOOR := 0.12
 const SUN_YAW := 0.45

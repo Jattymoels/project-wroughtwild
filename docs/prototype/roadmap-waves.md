@@ -468,8 +468,20 @@ automation").
    `shelter_night_regen_multiplier`; a carried lamp lights the way. The
    sim owns the clock (`daycycle.h`; `advance_time`, `day`, `day_rules`;
    saved as `day_clock`). Sim 4813, engine unit 371, integration 233.
-6. **Hauling**: a carry cap per family and chests as storage at a placed
-   outpost (D-005 arriving early).
+6. **Hauling** *(landed 4 Sep 2026)*: the pack takes from the ground
+   only up to a cap per family (`world.json` `hauling`: timber sixty, the
+   ores thirty, forty for anything unlisted; forged goods and gear never
+   capped, so only the haul is bounded). A full family leaves its chips
+   where they lie - no magnet - and the HUD says so once in a while; the
+   holdings strip reads "Timber 32/60". The chest is a construction piece
+   (`construction.json` `chest`: six timber, joinery, a lidded box low in
+   its cell) whose store the sim keeps under the piece's element key;
+   E opens the chest panel (`chest_panel.gd`: a row per family, store and
+   take by stack, bounded by the chest's 240 units and the pack's cap),
+   and breaking the chest spills what it held where it stood. Saved with
+   the economy (`stores`). Sim 4835, engine unit 377, integration 244. The
+   owner's storage ask (D-005 arriving early) is met; the outpost around
+   the chest is the player's to build.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 

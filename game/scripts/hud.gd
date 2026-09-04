@@ -402,7 +402,9 @@ func refresh() -> void:
 	var held: Dictionary = sim.inventory()
 	for id in held:
 		if held[id] > 0:
-			parts.append("%s %d" % [pretty(id), held[id]])
+			# The haul (Wave 6 slice 6): a capped family shows its cap.
+			var cap: int = sim.carry_cap(id)
+			parts.append("%s %d/%d" % [pretty(id), held[id], cap] if cap > 0 else "%s %d" % [pretty(id), held[id]])
 	var coins: Dictionary = sim.currency()
 	for id in coins:
 		if coins[id] > 0:

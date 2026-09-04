@@ -726,9 +726,9 @@ ConstructionTable loadConstruction(const std::string& path) {
         if (auto form = s->find("form")) {
             shape.form = form->asString();
             if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door" &&
-                shape.form != "arch" && shape.form != "fire" && shape.form != "low")
+                shape.form != "arch" && shape.form != "fire" && shape.form != "low" && shape.form != "chest")
                 throw std::runtime_error("construction: shape '" + shape.id +
-                                         "' form must be box, stairs, wedge, door, arch, fire or low");
+                                         "' form must be box, stairs, wedge, door, arch, fire, low or chest");
         }
         if (auto oriented = s->find("oriented")) shape.oriented = oriented->asBool();
         if (auto tall = s->find("cells_tall")) {
@@ -927,6 +927,16 @@ WorldTable loadWorld(const std::string& path) {
         if (d.startFraction < 0.0 || d.startFraction >= 1.0) throw std::runtime_error("world: day.start_fraction must be in [0, 1)");
         if (d.exposureFloorFraction < 0.0 || d.exposureFloorFraction > 1.0)
             throw std::runtime_error("world: day.exposure_floor_fraction must be in [0, 1]");
+    }
+    if (auto hauling = doc->find("hauling")) {
+        table.hauling.carryCapDefault = hauling->get("carry_cap_default").asInt();
+        if (auto caps = hauling->find("carry_cap"))
+            for (const auto& [family, cap] : caps->asObject()) table.hauling.carryCap[family] = cap->asInt();
+        table.hauling.chestUnits = hauling->get("chest_units").asInt();
+        if (table.hauling.carryCapDefault < 0 || table.hauling.chestUnits < 0)
+            throw std::runtime_error("world: hauling caps must be >= 0");
+        for (const auto& [family, cap] : table.hauling.carryCap)
+            if (cap < 0) throw std::runtime_error("world: hauling carry_cap." + family + " must be >= 0");
     }
     for (const auto& e : doc->get("enemies").asArray()) {
         EnemyDef def;

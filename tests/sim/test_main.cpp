@@ -3869,6 +3869,68 @@ void testDayAndNight(const tuning::Tuning& t) {
     check(daycycle::info(none, 5000.0).phase == "day" && daycycle::info(none, 5000.0).daylight == 1.0, "day: no day rules means endless day");
 }
 
+void testHauling(const tuning::Tuning& t) {
+    // Wave 6 slice 6 (the owner, 4 Sep 2026: "would definitely need
+    // chests/storage solutions"): the pack takes from the ground up to a
+    // cap per family; a chest holds a bounded store; forged goods and gear
+    // are never capped.
+    const auto& h = t.world.hauling;
+    check(h.carryCapDefault > 0 && h.chestUnits > 0, "haul: a cap and a chest size are tuned");
+    check(h.carryCap.count("wood") && h.carryCap.at("wood") >= 40 && h.carryCap.count("iron_ore") &&
+              h.carryCap.at("iron_ore") < h.carryCap.at("wood"),
+          "haul: timber carries further than iron");
+    const auto* chest = t.construction.findShape("chest");
+    check(chest != nullptr && chest->form == "chest" && chest->element == "block" && chest->materialCost >= 4 &&
+              std::find(chest->requiresTraits.begin(), chest->requiresTraits.end(), "joinery") != chest->requiresTraits.end(),
+          "haul: the chest is a jointed block piece with a form of its own");
+    economy::PlayerEconomy player(t);
+    const int woodCap = player.carryCap("wood");
+    check(woodCap == h.carryCap.at("wood") && player.carryCap("copper_ore") == h.carryCap.at("copper_ore"), "haul: caps read per family");
+    check(player.carryCap("preserving_catalyst") == h.carryCapDefault, "haul: an unlisted material takes the default cap");
+    check(player.carryCap("iron_chest_armour") == 0 && player.carryRoom("iron_chest_armour") > 1000000, "haul: gear is never capped");
+    check(player.haul("wood", 25) == 25 && player.inventory["wood"] == 25, "haul: the pack takes what it has room for");
+    check(player.haul("wood", woodCap) == woodCap - 25 && player.inventory["wood"] == woodCap, "haul: and no more than the cap");
+    check(player.haul("wood", 3) == 0 && player.carryRoom("wood") == 0, "haul: a full family takes nothing");
+    player.inventory["wood"] = woodCap + 10; // a recovered pack may sit over the cap
+    check(player.carryRoom("wood") == 0 && player.haul("wood", 1) == 0, "haul: over the cap the room is nought, not negative");
+    player.inventory["wood"] = woodCap;
+    // The chest.
+    const std::string key = "block:0:3,4,5";
+    check(player.storeRoom(key) == h.chestUnits && player.storeContents(key).empty(), "haul: an untouched chest is empty with its whole room");
+    check(player.storeDeposit(key, "wood", 20) == 20 && player.inventory["wood"] == woodCap - 20 && player.storeContents(key).at("wood") == 20,
+          "haul: a deposit moves timber from the pack to the chest");
+    check(player.storeDeposit(key, "wood", 999) == woodCap - 20 && player.inventory.count("wood") == 0, "haul: a deposit stops at what you hold");
+    check(player.storeDeposit(key, "iron_ore", 5) == 0, "haul: nothing to deposit, nothing moves");
+    const int room = player.storeRoom(key);
+    player.inventory["fieldstone"] = 1000;
+    check(player.storeDeposit(key, "fieldstone", 1000) == room && player.storeRoom(key) == 0 && player.storeUnits(key) == h.chestUnits,
+          "haul: a chest fills to chest_units, all families together");
+    player.inventory["iron_ore"] = 5;
+    check(player.storeDeposit(key, "iron_ore", 5) == 0, "haul: a full chest takes nothing");
+    check(player.storeWithdraw(key, "wood", 10) == 10 && player.inventory["wood"] == 10 && player.storeContents(key).at("wood") == woodCap - 10,
+          "haul: a withdrawal moves back to the pack");
+    player.inventory["wood"] = woodCap - 3;
+    check(player.storeWithdraw(key, "wood", 50) == 3 && player.inventory["wood"] == woodCap, "haul: a withdrawal stops at the pack's room");
+    check(player.storeWithdraw(key, "silver_ore", 5) == 0 && player.storeWithdraw("no-such-chest", "wood", 1) == 0,
+          "haul: nothing there, nothing moves");
+    // The save carries the stores.
+    save::SaveGame game;
+    game.economy = player.exportState();
+    save::SaveGame loaded = save::fromJson(save::toJson(game));
+    economy::PlayerEconomy restored(t);
+    restored.importState(loaded.economy);
+    check(restored.storeContents(key) == player.storeContents(key) && restored.storeUnits(key) == player.storeUnits(key),
+          "haul: the chest's contents round-trip through a save");
+    // Breaking the chest hands back everything it held.
+    const int units = player.storeUnits(key);
+    const auto spilled = player.storeRemove(key);
+    int spilledUnits = 0;
+    for (const auto& [family, count] : spilled) spilledUnits += count;
+    check(spilledUnits == units && units > 0 && player.storeContents(key).empty() && player.stores().count(key) == 0,
+          "haul: a broken chest spills all it held and is gone");
+    check(player.storeRemove(key).empty(), "haul: removing nothing spills nothing");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3924,6 +3986,7 @@ int main(int argc, char** argv) {
     testMelee(t);
     testWorldMadeWhole(t);
     testDayAndNight(t);
+    testHauling(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

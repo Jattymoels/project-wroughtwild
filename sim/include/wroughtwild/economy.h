@@ -231,6 +231,26 @@ public:
     void advanceTime(double seconds);
     void setDayClock(double seconds);
 
+    // --- hauling (Wave 6 slice 6) ---
+    // What the pack takes from the ground. carryCap is 0 for the uncapped
+    // (gear bases, and everything when no default is set); haul adds up to
+    // the room and returns what it took - the rest stays on the ground.
+    int carryCap(const std::string& family) const;
+    int carryRoom(const std::string& family) const; // INT_MAX when uncapped
+    int haul(const std::string& family, int count);
+    // Chests: a store keyed by the engine (a placed piece's element),
+    // holding chestUnits of anything together. Deposit moves from the pack
+    // into the store up to its room; withdraw moves back up to the pack's
+    // room; both return what moved. remove empties the store and returns
+    // what it held (the engine spills it where the chest stood).
+    int storeDeposit(const std::string& key, const std::string& family, int count);
+    int storeWithdraw(const std::string& key, const std::string& family, int count);
+    const Inventory& storeContents(const std::string& key) const;
+    int storeUnits(const std::string& key) const;
+    int storeRoom(const std::string& key) const;
+    Inventory storeRemove(const std::string& key);
+    const std::map<std::string, Inventory>& stores() const { return stores_; }
+
     // --- save/load ---
     struct State {
         Inventory inventory;
@@ -246,6 +266,7 @@ public:
         foundry::State foundry;
         std::map<std::string, int> skillUses;
         double dayClock = 0.0;
+        std::map<std::string, Inventory> stores;
     };
     State exportState() const;
     // Restores a state; unknown skill ids are dropped, and an empty known
@@ -269,6 +290,7 @@ private:
     std::vector<std::string> knownSkills_;
     std::vector<std::string> skillBar_; // always kSkillBarSize entries
     double dayClock_ = 0.0;
+    std::map<std::string, Inventory> stores_;
     foundry::State foundry_;
     std::vector<std::string> foundryNotices_;
     std::map<std::string, int> skillUses_;

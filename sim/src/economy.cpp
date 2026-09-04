@@ -1,5 +1,6 @@
 #include "wroughtwild/economy.h"
 
+#include <climits>
 #include <algorithm>
 #include <random>
 #include <cmath>
@@ -598,6 +599,79 @@ void PlayerEconomy::advanceTime(double seconds) {
 
 void PlayerEconomy::setDayClock(double seconds) { dayClock_ = seconds > 0.0 ? seconds : 0.0; }
 
+int PlayerEconomy::carryCap(const std::string& family) const {
+    if (tuning_.items.findBase(family) != nullptr) return 0;
+    auto it = tuning_.world.hauling.carryCap.find(family);
+    if (it != tuning_.world.hauling.carryCap.end()) return it->second;
+    return tuning_.world.hauling.carryCapDefault;
+}
+
+int PlayerEconomy::carryRoom(const std::string& family) const {
+    const int cap = carryCap(family);
+    if (cap <= 0) return INT_MAX;
+    auto it = inventory.find(family);
+    const int held = it == inventory.end() ? 0 : it->second;
+    return std::max(0, cap - held);
+}
+
+int PlayerEconomy::haul(const std::string& family, int count) {
+    const int taken = std::min(count, carryRoom(family));
+    if (taken <= 0) return 0;
+    inventory[family] += taken;
+    return taken;
+}
+
+int PlayerEconomy::storeUnits(const std::string& key) const {
+    auto it = stores_.find(key);
+    if (it == stores_.end()) return 0;
+    int total = 0;
+    for (const auto& [family, count] : it->second) total += count;
+    return total;
+}
+
+int PlayerEconomy::storeRoom(const std::string& key) const {
+    return std::max(0, tuning_.world.hauling.chestUnits - storeUnits(key));
+}
+
+int PlayerEconomy::storeDeposit(const std::string& key, const std::string& family, int count) {
+    auto held = inventory.find(family);
+    if (held == inventory.end()) return 0;
+    const int moved = std::min({count, held->second, storeRoom(key)});
+    if (moved <= 0) return 0;
+    held->second -= moved;
+    if (held->second == 0) inventory.erase(held);
+    stores_[key][family] += moved;
+    return moved;
+}
+
+int PlayerEconomy::storeWithdraw(const std::string& key, const std::string& family, int count) {
+    auto store = stores_.find(key);
+    if (store == stores_.end()) return 0;
+    auto it = store->second.find(family);
+    if (it == store->second.end()) return 0;
+    const int moved = std::min({count, it->second, carryRoom(family)});
+    if (moved <= 0) return 0;
+    it->second -= moved;
+    if (it->second == 0) store->second.erase(it);
+    if (store->second.empty()) stores_.erase(store);
+    inventory[family] += moved;
+    return moved;
+}
+
+const Inventory& PlayerEconomy::storeContents(const std::string& key) const {
+    static const Inventory empty;
+    auto it = stores_.find(key);
+    return it == stores_.end() ? empty : it->second;
+}
+
+Inventory PlayerEconomy::storeRemove(const std::string& key) {
+    auto it = stores_.find(key);
+    if (it == stores_.end()) return {};
+    Inventory out = std::move(it->second);
+    stores_.erase(it);
+    return out;
+}
+
 bool PlayerEconomy::shapeUnlocked(const std::string& shapeId) const {
     const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
     return shape != nullptr &&
@@ -697,6 +771,7 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
     state.foundry = foundry_;
     state.skillUses = skillUses_;
     state.dayClock = dayClock_;
+    state.stores = stores_;
     return state;
 }
 
@@ -704,6 +779,7 @@ void PlayerEconomy::importState(const State& state) {
     foundry_ = state.foundry;
     skillUses_ = state.skillUses;
     dayClock_ = state.dayClock > 0.0 ? state.dayClock : 0.0;
+    stores_ = state.stores;
     inventory = state.inventory;
     currency = state.currency;
     skills_.clear();

@@ -17,7 +17,7 @@ extends StaticBody3D
 var element: Dictionary = {}
 ## Quarter turns the player gave an oriented piece (R); 0 for the rest.
 var rotation_step := 0
-## construction.json form: box | stairs | wedge | door | arch | fire.
+## construction.json form: box | stairs | wedge | door | arch | fire | chest.
 var form := "box"
 var size := Vector3.ONE
 ## Doors: swung open (no collision) or shut.
@@ -62,6 +62,17 @@ func is_door() -> bool:
 
 func is_fire() -> bool:
 	return form == "fire"
+
+
+## Chests (Wave 6 slice 6): a store the sim keeps under this piece's key.
+func is_chest() -> bool:
+	return form == "chest"
+
+
+## The store key the sim files this piece's contents under: its element.
+func store_key() -> String:
+	var cell: Vector3i = element.get("cell", Vector3i.ZERO)
+	return "%s:%d:%d,%d,%d" % [String(element.get("kind", "block")), int(element.get("axis", 0)), cell.x, cell.y, cell.z]
 
 
 func _build() -> void:
@@ -209,4 +220,6 @@ func leaf_point() -> Vector3:
 func interact_label() -> String:
 	if is_door():
 		return "E close the door" if open else "E open the door"
+	if is_chest():
+		return "E open the chest"
 	return ""

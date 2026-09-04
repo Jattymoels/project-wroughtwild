@@ -300,6 +300,24 @@ public:
     // Tests: set the clock outright (seconds of play).
     void set_day_clock(double seconds);
 
+    // --- hauling (Wave 6 slice 6) ---
+    // world.json hauling: carry_cap_default, chest_units.
+    Dictionary hauling_rules() const;
+    // The pack's cap for a family (0 = uncapped) and the room left in it.
+    int carry_cap(const String& family) const;
+    int carry_room(const String& family) const;
+    // Takes up to the room from the ground; returns what it took.
+    int haul(const String& family, int amount);
+    // Chests, keyed by the engine (a placed piece's element key): move
+    // stacks between the pack and the store (returns what moved), read a
+    // store, its units and its room, and empty one (returns its contents).
+    int store_deposit(const String& key, const String& family, int amount);
+    int store_withdraw(const String& key, const String& family, int amount);
+    Dictionary store_contents(const String& key) const;
+    int store_units(const String& key) const;
+    int store_room(const String& key) const;
+    Dictionary store_remove(const String& key);
+
     // --- the peddler (crafting.json market) ---
     // [{item, count, price, currency, affordable}].
     Array market_offers() const;
