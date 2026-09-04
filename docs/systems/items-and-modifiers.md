@@ -90,6 +90,43 @@ direction, 31 Aug 2026).
   and your enemies more"). They need engine hooks beyond the resolver, so
   they arrive after the core loop is judged, not before.
 
+**The class gear pass (4 Sep 2026).** The owner, with the classes in:
+"items to accommodate, i.e. bows included that enhance projectile
+attacks." So:
+
+- **A fourth slot, the offhand.** A class fantasy is a hand and an
+  offhand; `items.json` `slots` gains `offhand`, and the engine's pack
+  screen, equip and derived stats are generic over the slot list.
+- **Bows and the projectile line** for the Ranger: the Hunting Bow (iron
+  tips, the basic forge, tier cap 2; implicit +10% projectile damage), the
+  Bronze Longbow (era two, cap 3; +15% and a little reach) and the Hide
+  Quiver (the bench, from the elk's hide; +5%). Three modifiers:
+  `projectile_damage` (5-10 / 15-25 / 30-45 %, with pierce at tier two
+  and a fan at tier three as breakpoints), `fletching` (+1 projectile,
+  from tier two) and `barbed_heads` (+1 pierce, from tier two; two and
+  bleeding at three). All speak to the `projectile` tag, so a bow serves
+  the orb and the bolt as much as the Bow Shot; the rails' Volley and
+  Quarry are readings and never roll - these are the gear half of the
+  same verbs.
+- **Shields** for the Warden: the Timber Shield (the bench, 6 armour, cap
+  1) and the Iron Shield (the forge, 10 armour, cap 2, and the on-attack
+  payloads so it can carry Frostbite for the strikes behind it).
+- **A brand and a lantern** for the Kindler: the Charred Brand (the basic
+  forge; +10% fire for the bolt and the sweep, the caster's step before
+  the era-two wand) and the Cinder Lantern (the forge; burns bite 15%
+  harder).
+- Recipes at the bench (quiver, timber shield: hide and wood) and the
+  basic forge (bow, iron shield, brand, lantern), priced like the mace.
+  World drops pick a base uniformly, so the new pieces drop as the old
+  ones do.
+
+Tests: sim 3658 (the bases and their slots and caps; the modifiers and their
+tiers; the bow's implicit for the arrow and the orb and never the strike;
+a wrought bow rolling the fan and the pierce, never a self stat; Fletching
+on the bow and the quiver stacking; the shields on the sheet; the brand
+and the lantern; the recipes at the bench and the forge); engine unit 353;
+integration 225.
+
 **D-020 (3 Sep 2026), the era-one pool:** modifiers may carry
 `from_tier`; a roll at a lower tier never picks them. Every interaction
 modifier is `from_tier: 2`, so era one's drops are defensive or small

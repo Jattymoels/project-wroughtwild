@@ -127,7 +127,11 @@ wave. **First slice landed 1 Sep 2026:** the unified modifier pool in
 implicit modifiers), rolled items that feed both derived stats and the
 active modifier set, trial rooms dropping keen/wrought gear, pack items
 in the save, and item cards in the pack screen. Uniques are deferred by
-owner direction (noted in the items spec). Still ahead: the compare view.
+owner direction (noted in the items spec). **The class gear pass (4 Sep
+2026):** an offhand slot; bows, a quiver and the projectile modifiers
+(damage, Fletching, Barbed Heads) for the Ranger; shields for the Warden;
+a brand and a lantern for the Kindler; recipes at the bench and the
+forge. Still ahead: the compare view.
 
 ### Spell-grammar track *(landed 2 Sep 2026; D-016)*
 
