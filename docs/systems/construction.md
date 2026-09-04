@@ -205,6 +205,14 @@ they do not break. Once the deep wakes the husk breaks timber
 stone, which is the masonry unlock earning its keep. Stone and iron never
 give. Death sends you home, the last shelter you rested in.
 
+**Biome timbers (Wave 8 slice 2):** three more building families with
+every trait of Timber and a colour of their own - `pine` (the forest,
+pale), `bog_oak` (the fen, dark), `ash_wood` (the wastes, bone-pale),
+each paid in its own felled timber, tinted over the plank texture
+(`construction.json` `tint`), hauled at Timber's cap and burning at
+Timber's heat. Q cycles them like any carried family. A house says where
+you have been.
+
 ## Implemented: freedom outside the cell (owner playtest fixes, 3 Sep 2026)
 
 The owner's first building playtest: "within the 1 block building feels

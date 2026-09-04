@@ -784,7 +784,13 @@ func _physics_process(_delta: float) -> void:
 		58:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			check(not sim.trial_active(), "trial: run closed after the boss")
-			check(sim.world_effect_active("stonecut_blocks"), "trial: completion unlock recorded")
+			check(sim.material_count("tyrant_heart") == 1 and not sim.world_effect_active("stonecut_blocks"),
+				"trial: the Tyrant's heart banked, the deep still asleep (Wave 8)")
+			check(sim.curio_hints().size() == 1 and String(sim.curio_hints()[0]).find("cairn") >= 0
+				and bool(sim.landmark_wants("hill_cairn").get("held", false)) and not sim.set_curio("drowned_altar"),
+				"curio: the heart's reading names the cairn, which is the only lock that takes it")
+			check(sim.set_curio("hill_cairn") and sim.world_effect_active("stonecut_blocks") and sim.material_count("tyrant_heart") == 0,
+				"curio: set in the cairn, the deep wakes")
 			check(sim.material_count("wood") == _wood_before_trial, "trial: deposit restored")
 			check(sim.material_count("ember_catalyst") == 1 and sim.material_count("iron_ingot") >= 4, "trial: loot banked")
 			check(_player.global_position.x < 30.0, "trial: player back at the gate")

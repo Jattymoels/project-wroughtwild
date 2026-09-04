@@ -429,6 +429,9 @@ func refresh() -> void:
 		elif phase == "night":
 			when = "  ·  dawn in %s" % clock_text(float(day.get("seconds_to_dawn", 0.0)))
 		lines.append("Day %d, %s%s" % [int(day.get("index", 1)), phase, when])
+	# The curios held (Wave 8 slice 2): each one's reading names its lock.
+	for hint in sim.curio_hints():
+		lines.append(String(hint))
 	# The economy's own milestones (crafts, world effects, eras) forge ingots.
 	for id in sim.foundry_notices():
 		if String(id).begins_with("manner:"):

@@ -137,7 +137,7 @@
       "moisture_max": 0.3,
       "node_density": {
         "boulder": 0.012,
-        "tree": 0.002,
+        "ash_snag": 0.002,
         "ember_iron_vein": 0.02,
         "stone_seam": 0.008
       },
@@ -181,7 +181,7 @@
       "height_max": 15,
       "moisture_min": 0.55,
       "node_density": {
-        "tree": 0.02,
+        "bog_oak": 0.02,
         "boulder": 0.004,
         "stone_seam": 0.002
       },
@@ -213,7 +213,7 @@
       "surface": "forest_floor",
       "moisture_min": 0.55,
       "node_density": {
-        "tree": 0.05,
+        "pine": 0.05,
         "boulder": 0.006,
         "stone_seam": 0.004
       },
@@ -272,6 +272,33 @@
       "drive_presses": 6,
       "visual": "tree",
       "design_purpose": "Trees fall as one (the world made whole, owner 4 Sep 2026: 'making trees harder to cut down, but they fell as one'). Six presses of E, each leaning the trunk further from you, then the whole tree comes down and pays its fourteen wood at once. Wood per minute roughly halves against twelve wood in four chops, and every tree is an event with a stump left behind."
+    },
+    "pine": {
+      "display_name": "Pine",
+      "material_family": "pine",
+      "units": 14,
+      "units_per_harvest": 14,
+      "drive_presses": 6,
+      "visual": "tree",
+      "design_purpose": "The forest's tree (Wave 8 slice 2, biomes as material; the owner, 4 Sep 2026: 'much like Minecraft finding a certain forest biome which means you now have access to orange coloured trees for an orange house'): felled like any tree, it pays pine - a pale timber with the timber's every trait, so a pine house is a house of another colour. The forest is where you go for it."
+    },
+    "bog_oak": {
+      "display_name": "Bog Oak",
+      "material_family": "bog_oak",
+      "units": 14,
+      "units_per_harvest": 14,
+      "drive_presses": 6,
+      "visual": "tree",
+      "design_purpose": "The fen's tree: dark, dense timber the water made. The fen is dense and patrols at night, so a bog-oak house is a house you earned; and the Warden's eye wants the fen's altar, so the walk for the curio is the walk for the timber."
+    },
+    "ash_snag": {
+      "display_name": "Ash Snag",
+      "material_family": "ash_wood",
+      "units": 14,
+      "units_per_harvest": 14,
+      "drive_presses": 6,
+      "visual": "tree",
+      "design_purpose": "The wastes' bare snag: bleached, bone-pale timber from the ash. The rarest of the three, from the most dangerous ground."
     },
     "boulder": {
       "display_name": "Boulder",
@@ -355,8 +382,44 @@
     "patrol_length_m": 70,
     "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood and stone within a short walk, keeps iron a walk away (Wave 6 slice 2, 4 Sep 2026: three veins within far_radius_m, none guaranteed near - the first forge is a journey into the hills and back), keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map Three stone seams within the near radius (D-021): the first quarry is always a short walk."
   },
+  "landmarks": [
+    {
+      "id": "hill_cairn",
+      "display_name": "the cairn on the hill",
+      "biome": "rocky_hills",
+      "look": "cairn",
+      "min_distance_from_spawn_m": 60
+    },
+    {
+      "id": "drowned_altar",
+      "display_name": "the drowned altar",
+      "biome": "fen",
+      "look": "altar",
+      "min_distance_from_spawn_m": 80
+    },
+    {
+      "id": "wastes_rift",
+      "display_name": "the rift in the wastes",
+      "biome": "ember_wastes",
+      "look": "rift",
+      "min_distance_from_spawn_m": 100
+    }
+  ],
+  "design_purpose_landmarks": "The locks (Wave 8 slice 2): one landmark per def, placed deep in its biome - the surface cell nearest the biome's centroid among those at least min_distance_from_spawn_m out, uncarved and unoccupied - so the curio's walk crosses the density and the landmark reads from a distance (the engine builds the look: a cairn with a standing stone, a ring of drowned slabs, a black rift with an ember light). The cairn takes the Tyrant's heart, the altar the Warden's eye; the rift waits for what era four brings.",
   "fire_setting": {
     "fuels": {
+      "pine": {
+        "heat": 1,
+        "burn_seconds": 45
+      },
+      "bog_oak": {
+        "heat": 1,
+        "burn_seconds": 45
+      },
+      "ash_wood": {
+        "heat": 1,
+        "burn_seconds": 45
+      },
       "wood": {
         "heat": 1,
         "burn_seconds": 45

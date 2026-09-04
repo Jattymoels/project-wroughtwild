@@ -665,8 +665,15 @@ void testTrialContracts(const tuning::Tuning& t) {
         check(player.inventory["wood"] == 3, "trial: deposit restored after victory");
         check(player.inventory[t.trial.catalystItem] == 1, "trial: catalyst banked");
         check(player.inventory["iron_ingot"] >= 4, "trial: materials banked");
-        check(player.worldEffectActive(t.trial.completionUnlock),
-              "trial: construction unlock granted");
+        // The curio and the lock (Wave 8 slice 2): the Tyrant's fall leaves
+        // its heart, not the era; the cairn on the hill takes it.
+        check(player.inventory["tyrant_heart"] == 1 && !player.worldEffectActive(t.trial.completionUnlock),
+              "trial: the Tyrant's heart banked, the deep still asleep");
+        check(player.landmarkWants("hill_cairn") == "tyrant_heart" && player.curioHints().size() == 1 &&
+                  !player.setCurio("drowned_altar") && player.setCurio("hill_cairn"),
+              "trial: the cairn takes the heart, the altar does not");
+        check(player.worldEffectActive(t.trial.completionUnlock) && player.inventory["tyrant_heart"] == 0 && player.curioHints().empty(),
+              "trial: set in the cairn, the deep wakes and the heart is spent");
     }
 }
 
@@ -2359,8 +2366,9 @@ void testBiggerWorld(const tuning::Tuning& t) {
 // Era three, the deeper floor, the grazer and the peddler (3 Sep 2026).
 void testEraThreeAndLife(const tuning::Tuning& t) {
     const auto* floor = t.trial.findFloor("deep_forge");
-    check(floor && floor->boss.id == "ash_warden" && floor->stages.size() == 3 && floor->completionUnlock == "ash_tide",
-          "floor: the deeper forge loads with its own boss, stages and completion");
+    check(floor && floor->boss.id == "ash_warden" && floor->stages.size() == 3 && floor->completionUnlock == "ash_tide" &&
+              floor->completionCurio == "warden_eye",
+          "floor: the deeper forge loads with its own boss, stages, completion and curio");
     economy::PlayerEconomy player(t);
     check(player.currentEra() == 1, "era3: a new game is era one");
     player.recordWorldEffect("ash_tide");
@@ -4151,6 +4159,97 @@ void testVerbs(const tuning::Tuning& t) {
     check(meanByBiome["fen"] <= meanByBiome["forest"] * 1.15, "verbs: the fen is a different shape, not a tier above the forest");
 }
 
+void testCurioAndLock(const tuning::Tuning& t) {
+    // Wave 8 slice 2 (the owner, 4 Sep 2026): the trial is the test that
+    // sends you out; its curio is the key; a landmark in another biome is
+    // the lock; and the biome you cross is where its timber is.
+    const auto& trial = t.trial;
+    check(trial.completionCurio == "tyrant_heart" && trial.curios.size() >= 2 && trial.findCurio("warden_eye") != nullptr,
+          "lock: the Tyrant leaves its heart, the Warden its eye");
+    for (const auto& curio : trial.curios) {
+        bool landmarkExists = false;
+        std::string biome;
+        for (const auto& def : t.worldgen.landmarks)
+            if (def.id == curio.landmark) { landmarkExists = true; biome = def.biome; }
+        check(landmarkExists && !curio.unlock.empty() && !curio.reading.empty(), "lock: " + curio.id + " names a landmark, an unlock and a reading");
+        check(biome != t.worldgen.guarantees.gateBiome || curio.id != "tyrant_heart", "lock: the heart's lock is not in the gate's biome");
+    }
+    check(trial.curioForLandmark("hill_cairn") && trial.curioForLandmark("hill_cairn")->unlock == t.eras.eras[1].triggerWorldEffect &&
+              trial.curioForLandmark("drowned_altar") && trial.curioForLandmark("drowned_altar")->unlock == t.eras.eras[2].triggerWorldEffect &&
+              trial.curioForLandmark("wastes_rift") == nullptr,
+          "lock: the cairn turns era two, the altar era three, the rift waits");
+    // Landmarks on the ground: every def placed, in its biome, far enough
+    // out, on the surface, off the nodes; the same twice.
+    auto map = worldgen::generate(t, 7);
+    auto again = worldgen::generate(t, 7);
+    check(map.landmarks.size() == t.worldgen.landmarks.size() && again.landmarks.size() == map.landmarks.size(),
+          "lock: every landmark stands (" + std::to_string(map.landmarks.size()) + ")");
+    for (const auto& placed : map.landmarks) {
+        const tuning::LandmarkDef* def = nullptr;
+        for (const auto& d : t.worldgen.landmarks)
+            if (d.id == placed.id) def = &d;
+        bool same = false;
+        for (const auto& other : again.landmarks) same = same || (other.id == placed.id && other.x == placed.x && other.z == placed.z);
+        bool onNode = false;
+        for (const auto& node : map.nodes) onNode = onNode || (node.x == placed.x && node.z == placed.z);
+        const double d = std::hypot(double(placed.x - map.spawnX), double(placed.z - map.spawnZ));
+        check(def && t.worldgen.biomes[static_cast<size_t>(map.at(placed.x, placed.z).biomeIndex)].id == def->biome &&
+                  d >= def->minDistanceFromSpawnM - 0.5 && map.topSolid(placed.x, placed.z) == map.at(placed.x, placed.z).height && !onNode && same,
+              "lock: " + placed.id + " stands in its biome, far enough out, on the surface, off the nodes, the same twice");
+    }
+    // The key and the lock through the economy.
+    economy::PlayerEconomy player(t);
+    check(!player.setCurio("hill_cairn") && player.currentEra() == 1, "lock: nothing to set, nothing turns");
+    player.grant("tyrant_heart", 1);
+    check(player.curioHints().size() == 1 && player.curioHints().front().find("cairn") != std::string::npos, "lock: the heart's reading names the cairn");
+    check(!player.setCurio("drowned_altar") && player.setCurio("hill_cairn") && player.currentEra() == 2 && !player.curioHeld("tyrant_heart"),
+          "lock: the cairn takes the heart and the deep wakes");
+    player.grant("warden_eye", 1);
+    check(player.setCurio("drowned_altar") && player.currentEra() == 3, "lock: the altar takes the eye and the tide rises");
+    // Trial one is the test that sends you out: the starting kit fails the
+    // Tyrant most times, the second forge's tempered armour passes it.
+    stats::Equipment bare;
+    auto bareStats = stats::deriveStats(t.world.playerBase, bare);
+    stats::Equipment geared;
+    items::ItemInstance armour;
+    armour.baseId = "iron_chest_armour";
+    armour.implicitProperties["armour"] = 20.0;
+    const auto* process = t.crafting.findCatalystProcess("ember_catalyst_tempering");
+    check(process && items::catalystTemper(t.items, *process, armour, 5, 77).applied, "lock: the tempered armour of the second forge");
+    geared.slots["chest"] = armour;
+    auto gearedStats = stats::deriveStats(t.world.playerBase, geared);
+    combat::CombatMods none;
+    int bareWins = 0, gearedWins = 0;
+    for (uint64_t seed = 1; seed <= 12; ++seed) {
+        if (combat::runEncounter(t, bareStats, none, {"forge_tyrant"}, seed, combat::autoPolicy).victory) ++bareWins;
+        if (combat::runEncounter(t, gearedStats, none, {"forge_tyrant"}, seed, combat::autoPolicy).victory) ++gearedWins;
+    }
+    check(bareWins <= 3, "lock: the starting kit fails the Tyrant most times (" + std::to_string(bareWins) + "/12)");
+    check(gearedWins >= 9, "lock: the second forge's tempered armour passes it (" + std::to_string(gearedWins) + "/12)");
+    // Biomes as material: the forest's pine, the fen's bog oak, the wastes' snag.
+    check(t.worldgen.nodeTypes.count("pine") && t.worldgen.nodeTypes.at("pine").materialFamily == "pine" &&
+              t.worldgen.nodeTypes.at("bog_oak").materialFamily == "bog_oak" && t.worldgen.nodeTypes.at("ash_snag").materialFamily == "ash_wood" &&
+              t.worldgen.nodeTypes.at("pine").drivePresses == 6,
+          "timber: three biome trees, felled like any tree, paying their own timber");
+    std::map<std::string, const tuning::BiomeDef*> biomes;
+    for (const auto& b : t.worldgen.biomes) biomes[b.id] = &b;
+    check(biomes["forest"]->nodeDensity.count("pine") && !biomes["forest"]->nodeDensity.count("tree") &&
+              biomes["fen"]->nodeDensity.count("bog_oak") && biomes["ember_wastes"]->nodeDensity.count("ash_snag") &&
+              biomes["meadow"]->nodeDensity.count("tree"),
+          "timber: each biome grows its own, the meadow the plain tree");
+    for (const std::string family : {"pine", "bog_oak", "ash_wood"}) {
+        const auto* material = t.construction.findMaterial(family);
+        check(material && material->hasTrait("timber") && material->hasTrait("joinery") && !material->tint.empty(),
+              "timber: " + family + " builds like timber in its own colour");
+        check(t.world.hauling.carryCap.count(family) && t.world.hauling.carryCap.at(family) == t.world.hauling.carryCap.at("wood"),
+              "timber: " + family + " hauls like timber");
+    }
+    int pines = 0;
+    for (const auto& node : map.nodes)
+        if (node.type == "pine") ++pines;
+    check(pines > 20, "timber: the forest stands in pines (" + std::to_string(pines) + ")");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -4211,6 +4310,7 @@ int main(int argc, char** argv) {
     testWorldABeatAhead(t);
     testHornAndSiege(t);
     testVerbs(t);
+    testCurioAndLock(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

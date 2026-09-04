@@ -324,6 +324,12 @@ public:
     // Equal threat, different shape (Wave 8 slice 1): a family's threat
     // score - damage per round, reach, bulk and its verb's control.
     double threat_score(const String& enemy_id) const;
+    // The curio and the lock (Wave 8 slice 2): set the curio a landmark
+    // wants (false without it); what a landmark wants ({curio,
+    // display_name, held}, empty for nothing); the readings of the curios held.
+    bool set_curio(const String& landmark_id);
+    Dictionary landmark_wants(const String& landmark_id) const;
+    PackedStringArray curio_hints() const;
     // The pack's cap for a family (0 = uncapped) and the room left in it.
     int carry_cap(const String& family) const;
     int carry_room(const String& family) const;

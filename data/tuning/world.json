@@ -40,7 +40,12 @@
       "tin_ore": 30,
       "ember_iron_ore": 30,
       "silver_ore": 30,
-      "shrieker_horn": 1
+      "shrieker_horn": 1,
+      "tyrant_heart": 1,
+      "warden_eye": 1,
+      "pine": 60,
+      "bog_oak": 60,
+      "ash_wood": 60
     },
     "chest_units": 240,
     "design_purpose": "Hauling (Wave 6 slice 6; the owner, 4 Sep 2026: 'would definitely need chests/storage solutions'; D-005 arriving early). The pack takes from the ground only up to a cap per family - carry_cap by family, carry_cap_default for any material not listed; forged goods and gear are never capped, so the forge's output stacks and only the haul is bounded. A full family leaves its chips on the ground and the HUD says so. A chest (construction.json 'chest') holds chest_units of anything together; E at it moves stacks between the pack and the store, and breaking it spills what it held where it stood. Sixty timber is ten trees' worth and one hut; the ores are the heavy things at thirty. The walk between the veins, the felling and the shelter is now a walk with a load: you go out, you fill, you come home and put it in the chest - the shelter is where the wealth is."

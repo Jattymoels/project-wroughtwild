@@ -171,7 +171,14 @@ multiplies. The felt jump at an era is the world's, not the sheet's.
 `data/tuning/eras.json` lists the eras in order; the current era is the
 last whose `trigger_world_effect` is active, stopping at the first unmet
 one (`PlayerEconomy::currentEra`). Era two, *The Deep Wakes*, triggers on
-the Forge Tyrant's fall (`stonecut_blocks`) and changes the three axes:
+`stonecut_blocks`, which since Wave 8 slice 2 (4 Sep 2026) is recorded
+not by the Forge Tyrant's fall but by setting the Tyrant's Cinder Heart
+in the cairn on the hill: the fall leaves the heart, the heart's reading
+names the cairn, the walk crosses the density, and E at the cairn turns
+the era (the curio and the lock; `trial.json` `curios`, `worldgen.json`
+`landmarks`, `PlayerEconomy::setCurio`). Era three's `ash_tide` is the
+Warden's Stone Eye set in the drowned altar in the fen. It changes the
+three axes:
 
 - **Mobs do:** `mob_mechanics` per enemy id. Ash hounds gain a pack
   member (`pack_size_bonus`, applied when a pack spawns); ember whelps

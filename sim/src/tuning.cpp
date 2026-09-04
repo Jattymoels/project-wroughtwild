@@ -85,6 +85,16 @@ const ModifierTier* ModifierDef::findTier(int tier) const {
 }
 const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
 const TrialFloor* TrialTable::findFloor(const std::string& id) const { return findById(floors, id); }
+const CurioDef* TrialTable::findCurio(const std::string& id) const {
+    for (const auto& c : curios)
+        if (c.id == id) return &c;
+    return nullptr;
+}
+const CurioDef* TrialTable::curioForLandmark(const std::string& landmark) const {
+    for (const auto& c : curios)
+        if (c.landmark == landmark) return &c;
+    return nullptr;
+}
 const BuildMaterialDef* ConstructionTable::findMaterial(const std::string& id) const { return findById(materials, id); }
 bool BuildMaterialDef::hasTrait(const std::string& trait) const {
     return std::find(traits.begin(), traits.end(), trait) != traits.end();
@@ -1104,6 +1114,19 @@ TrialTable loadTrial(const std::string& path) {
     table.materialsReward = readIntMap(rewards.get("materials_reward"));
     table.catalystItem = rewards.get("catalyst_item").asString();
     table.completionUnlock = rewards.get("completion_unlock").asString();
+    if (auto curio = rewards.find("completion_curio")) table.completionCurio = curio->asString();
+    if (auto curios = doc->find("curios"))
+        for (const auto& c : curios->asArray()) {
+            CurioDef def;
+            def.id = c->get("id").asString();
+            def.displayName = c->get("display_name").asString();
+            def.landmark = c->get("landmark").asString();
+            def.unlock = c->get("unlock").asString();
+            if (auto reading = c->find("reading")) def.reading = reading->asString();
+            table.curios.push_back(def);
+        }
+    if (!table.completionCurio.empty() && !table.findCurio(table.completionCurio))
+        throw std::runtime_error("trial: completion_curio " + table.completionCurio + " is not a curio");
     if (auto floors = doc->find("floors")) {
         auto readBoss = [](const Value& b) {
             BossDef boss;
@@ -1140,6 +1163,11 @@ TrialTable loadTrial(const std::string& path) {
             floor.exitAfterStage = f->get("exit_after_stage").asInt();
             floor.completionUnlock = f->get("completion_unlock").asString();
             if (auto text = f->find("completion_text")) floor.completionText = text->asString();
+            if (auto curio = f->find("completion_curio")) {
+                floor.completionCurio = curio->asString();
+                if (!table.findCurio(floor.completionCurio))
+                    throw std::runtime_error("trial: floor " + floor.id + " completion_curio is not a curio");
+            }
             if (floor.stages.empty()) throw std::runtime_error("trial: floor " + floor.id + " has no stages");
             table.floors.push_back(std::move(floor));
         }
@@ -1203,6 +1231,16 @@ WorldgenTable loadWorldgen(const std::string& path) {
     if (auto packDensity = caves.find("pack_density"))
         table.caves.packDensity = packDensity->asNumber();
 
+    if (auto landmarks = doc->find("landmarks"))
+        for (const auto& l : landmarks->asArray()) {
+            LandmarkDef def;
+            def.id = l->get("id").asString();
+            def.displayName = l->get("display_name").asString();
+            def.biome = l->get("biome").asString();
+            def.look = l->get("look").asString();
+            if (auto v = l->find("min_distance_from_spawn_m")) def.minDistanceFromSpawnM = v->asNumber();
+            table.landmarks.push_back(def);
+        }
     for (const auto& ring : doc->get("danger").get("rings").asArray()) {
         DangerRing r;
         r.radiusM = ring->get("radius_m").asNumber();

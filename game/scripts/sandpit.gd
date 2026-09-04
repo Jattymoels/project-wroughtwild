@@ -53,6 +53,11 @@ func _build_world(seed_value: int) -> void:
 
 	_replace_named(TRIAL_GATE_SCENE, "TrialGate",
 		terrain.surface_position(terrain.map["gate_x"], terrain.map["gate_z"]))
+	# The locks (Wave 8 slice 2): the landmarks worldgen placed, one per biome.
+	for old_landmark in get_tree().get_nodes_in_group("landmarks"):
+		old_landmark.free()
+	for def in terrain.map.get("landmarks", []):
+		Landmark.spawn(self, def, terrain.surface_position(int(def["x"]), int(def["z"])))
 	var board := _replace_named(ORDER_BOARD_SCENE, "OrderBoard", spawn + Vector3(4.0, 0.0, 3.0))
 	board.look_at(spawn + Vector3(0.0, board.global_position.y - spawn.y, 0.0), Vector3.UP)
 	# Life beyond hostiles: the peddler by the board, birds over the trees.

@@ -19,6 +19,45 @@
       "design_purpose": "The first family: felled wood, worked with nothing but hands. Joinery means it can be hung and swung (doors); it cannot be cut into masonry forms or span a girder. A timber house is still a house - nothing knocks it down."
     },
     {
+      "id": "pine",
+      "display_name": "Pine",
+      "source": "pine",
+      "traits": [
+        "timber",
+        "joinery",
+        "fuel"
+      ],
+      "texture": "planks",
+      "tint": "#e8dab2",
+      "design_purpose": "The forest's timber (Wave 8 slice 2, biomes as material): every trait of Timber, a pale colour of its own. A pine house says where you have been."
+    },
+    {
+      "id": "bog_oak",
+      "display_name": "Bog Oak",
+      "source": "bog_oak",
+      "traits": [
+        "timber",
+        "joinery",
+        "fuel"
+      ],
+      "texture": "planks",
+      "tint": "#4d3b2e",
+      "design_purpose": "The fen's timber: dark and dense. Every trait of Timber; the colour is the point, and the fen is the price."
+    },
+    {
+      "id": "ash_wood",
+      "display_name": "Ash Wood",
+      "source": "ash_wood",
+      "traits": [
+        "timber",
+        "joinery",
+        "fuel"
+      ],
+      "texture": "planks",
+      "tint": "#cdc8bf",
+      "design_purpose": "The wastes' bleached timber: bone-pale. Every trait of Timber, from the most dangerous ground."
+    },
+    {
       "id": "stone",
       "display_name": "Stone",
       "source": "stone",

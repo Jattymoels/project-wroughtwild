@@ -124,6 +124,19 @@ now a **full 3D block field** the sim generates deterministically per seed
   forest edge has stragglers, and the fen, the wastes and the caves are
   dense from day one - the danger is a place with a visible edge, not a
   radius. Every hostile pack carries its biome to the engine.
+- **Landmarks (Wave 8 slice 2, the lock):** `worldgen.json` `landmarks`
+  places one landmark per def deep in its biome - the surface cell
+  nearest the biome's centroid among those at least
+  `min_distance_from_spawn_m` out, uncarved and unoccupied - carried to
+  the engine with its look (`landmark.gd`: a cairn with a standing stone,
+  a ring of drowned slabs, a black rift with an ember light). The cairn
+  takes the Tyrant's heart and the altar the Warden's eye; the rift
+  waits.
+- **Biomes as material (Wave 8 slice 2):** the forest stands in pines,
+  the fen in bog oak, the wastes in ash snags - node types of their own
+  (`pine`, `bog_oak`, `ash_snag`), felled like any tree, each paying a
+  timber family of its own colour. The meadow and the hills keep the
+  plain tree.
 - **Night patrols (Wave 7 slice 1):** a biome marked `patrols` (the
   forest, the fen, the wastes) gives each of its packs a route:
   `patrol_length_m` from its den along the line to the spawn, stopping
