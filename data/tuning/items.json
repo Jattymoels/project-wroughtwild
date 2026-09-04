@@ -171,6 +171,29 @@
       "design_purpose": "Wider cone strike: the train you can pay off in one swing grows, which is the Bulwark/Glacier dance getting easier."
     },
     {
+      "id": "reach",
+      "display_name": "Reach",
+      "tags": [
+        "offence",
+        "reach"
+      ],
+      "applies_to": [
+        "area",
+        "projectile",
+        "single_target"
+      ],
+      "effect": "increased_reach",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.08,
+          "maximum": 0.12
+        }
+      ],
+      "design_purpose": "The Reach ingot's reading beside a skill (D-023 slice 1): one modifier for a skill's spatial extent, whatever its delivery - an area skill's radius, a projectile's flight, a strike's reach - resolved as the 'reach' multiplier (grammar::skillReach) and applied by the engine to the delivery it owns. Its only tag besides offence is 'reach', which no base allows, so it never rolls on gear: it is the plate's word until a base is given the tag."
+    },
+    {
       "id": "forked_lattice",
       "display_name": "Forks",
       "tags": [

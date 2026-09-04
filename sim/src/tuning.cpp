@@ -397,15 +397,32 @@ const IngotPairDef* FoundryDef::findPair(const std::string& a, const std::string
 FoundryDef loadFoundry(const std::string& path) {
     auto doc = json::parseFile(path);
     FoundryDef def;
-    for (const auto& size : doc->get("plate_by_era").asArray()) {
-        const auto& pair = size->asArray();
-        if (pair.size() != 2) throw std::runtime_error("foundry: plate_by_era entries are [rows, cols]");
-        def.plateByEra.push_back({pair[0]->asInt(), pair[1]->asInt()});
+    {
+        const auto& frame = doc->get("frame").asArray();
+        if (frame.size() != 2) throw std::runtime_error("foundry: frame is [rows, cols]");
+        def.frameRows = frame[0]->asInt();
+        def.frameCols = frame[1]->asInt();
+        if (def.frameRows < 1 || def.frameCols < 1) throw std::runtime_error("foundry: the frame needs a row and a column");
     }
-    if (def.plateByEra.empty()) throw std::runtime_error("foundry: plate_by_era needs at least one size");
+    for (const auto& span : doc->get("rows_by_era").asArray()) {
+        const auto& pair = span->asArray();
+        if (pair.size() != 2) throw std::runtime_error("foundry: rows_by_era entries are [first_row, last_row]");
+        const int first = pair[0]->asInt(), last = pair[1]->asInt();
+        if (first < 0 || last < first || last >= def.frameRows)
+            throw std::runtime_error("foundry: a rows_by_era entry lies outside the frame");
+        def.rowsByEra.push_back({first, last});
+    }
+    if (def.rowsByEra.empty()) throw std::runtime_error("foundry: rows_by_era needs at least one era");
+    for (const auto& cell : doc->get("sockets").asArray()) {
+        const auto& pair = cell->asArray();
+        if (pair.size() != 2) throw std::runtime_error("foundry: sockets entries are [row, col]");
+        const int row = pair[0]->asInt(), col = pair[1]->asInt();
+        if (row < 0 || col < 0 || row >= def.frameRows || col >= def.frameCols)
+            throw std::runtime_error("foundry: a socket lies outside the frame");
+        def.sockets.push_back({row, col});
+    }
+    if (def.sockets.empty()) throw std::runtime_error("foundry: sockets needs at least one cell");
     def.reforgeCost = readIntMap(doc->get("reforge_cost"));
-    if (auto n = doc->find("line_length")) def.lineLength = n->asInt();
-    if (auto n = doc->find("line_bonus")) def.lineBonus = n->asNumber();
     if (auto n = doc->find("support_multiplier")) def.supportMultiplier = n->asNumber();
     for (const auto& i : doc->get("ingots").asArray()) {
         IngotDef ingot;
@@ -413,6 +430,7 @@ FoundryDef loadFoundry(const std::string& path) {
         ingot.displayName = i->get("display_name").asString();
         ingot.verb = i->get("verb").asString();
         ingot.modifier = i->get("modifier").asString();
+        if (auto m = i->find("skill_modifier")) ingot.skillModifier = m->asString();
         ingot.value = i->get("value").asNumber();
         def.ingots.push_back(std::move(ingot));
     }
@@ -1017,9 +1035,12 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.grammar = loadGrammar(tuningDirectory + "/grammar.json");
     // The Foundry speaks in the item table's modifiers: every ingot and pair
     // must name one, or a placed ingot would be a silent point.
-    for (const auto& ingot : tuning.foundry.ingots)
+    for (const auto& ingot : tuning.foundry.ingots) {
         if (!tuning.items.findModifier(ingot.modifier))
             throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown modifier " + ingot.modifier);
+        if (!ingot.skillModifier.empty() && !tuning.items.findModifier(ingot.skillModifier))
+            throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown skill modifier " + ingot.skillModifier);
+    }
     for (const auto& pair : tuning.foundry.pairs)
         if (!tuning.items.findModifier(pair.modifier))
             throw std::runtime_error("foundry: pair " + pair.displayName + " names unknown modifier " + pair.modifier);

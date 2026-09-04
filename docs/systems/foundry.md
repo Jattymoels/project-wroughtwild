@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (sockets fixed, a two-row plate in era one, coin retired for now, questions 3 to 9); the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slice 1, the frame, implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -86,23 +86,27 @@ up under [Progression gates on the plate](#progression-gates-on-the-plate).
 
 ## The plate as built (what the code does today)
 
-Four rules, all orthogonal, all in `sim/src/foundry.cpp`:
+Since slice 1 (4 Sep 2026), all in `sim/src/foundry.cpp`:
 
-1. A placed ingot gives its base effect anywhere on the plate.
-2. Two ingots touching that match one of ten pairs add that pair's
+1. The plate is a 4x4 frame; era one has rows 1 and 2 forged, era two adds
+   row 0, era three row 3. Sockets at (1,1) and (2,2) take a tablet and
+   nothing else; an ingot goes on any other forged cell.
+2. A placed ingot gives its base effect anywhere on the plate.
+3. Two ingots touching that match one of ten pairs add that pair's
    mechanic, for everyone.
-3. Three matching ingots in a row or column add the verb again.
-4. An ingot touching a skill tablet supports that skill alone at twice its
-   value, when the modifier can apply to the skill's tags.
+4. An ingot beside a socket supports the socket's skill alone at twice its
+   value, when its skill modifier can read the skill's tags. Ember, Frost
+   and Edge read their own element, Haste reads attacks and spells, Reach
+   reads area, projectile and single-target skills through the `reach`
+   multiplier the engine applies to the delivery.
+5. A matching ingot touching a support from any side but the socket's
+   backs it: the support counts once more. The line rule is gone.
 
-Half the ingots (Reach, Vigour, Plate, Ward) are sheet stats and never
-support a skill. **Conflict on record:** the design doc and the D-022
-commit both use "Reach beside Frost Orb widens the orb" as their example
-of a support; the code marks Reach as a self stat and it never supports
-anything, and the integration test's effect count only passes because it
-does not. Not silently fixed either way (AGENTS.md); the proposal below
-makes Reach read area and projectile skills natively, for the owner to
-confirm.
+Still to come from the tables below: off-element supports adding their
+element (slice 2), the self ingots reading a skill, the currencies, the
+Vanguard, corners, links, rails, the metal of an ingot. The Reach conflict
+recorded on 3 Sep is settled: the owner said yes, and the code now reads
+skills with it.
 
 ## The model: a working
 
@@ -740,12 +744,12 @@ Vanguard: yes). Pending: 4 and 6, explained in place above.
 Each slice is data plus the smallest sim rule, tested headless, the panel
 following.
 
-1. **The frame and the working.** `rows_by_era` and `sockets` on a 4x4
-   frame (era one rows 1 and 2); subjects only in sockets (a tablet
-   outside one lifts free on load); supports rimmed and every reading
-   written on its cell; Reach reads area, projectile and strike skills;
-   backing replaces lines. Save: subject cells validated; placements in
-   forged rows only.
+1. **The frame and the working** *(landed 4 Sep 2026)*. `rows_by_era`
+   and `sockets` on a 4x4 frame (era one rows 1 and 2); subjects only in
+   sockets (a tablet outside one lifts free on load); supports rimmed and
+   every reading written on its cell; Reach reads area, projectile and
+   strike skills; backing replaces lines. Save: subject cells validated;
+   placements in forged rows only.
 2. **Every ingot reads every skill.** The typed packet (`skillHit`),
    added elements, the weak self readings; mob immunities by packet type
    in the engine.

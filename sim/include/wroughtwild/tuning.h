@@ -783,9 +783,12 @@ EraTable loadEras(const std::string& path);
 struct IngotDef {
     std::string id;
     std::string displayName;
-    std::string verb;     // fire, cold, area, life...
-    std::string modifier; // items.json modifier the ingot speaks
-    double value = 0.0;   // flat, never changes
+    std::string verb;          // fire, cold, area, life...
+    std::string modifier;      // items.json modifier the ingot speaks anywhere on the plate (its base)
+    std::string skillModifier; // the modifier it speaks beside a skill tablet, when not its base (D-023: Reach)
+    double value = 0.0;        // flat, never changes
+
+    const std::string& supportModifier() const { return skillModifier.empty() ? modifier : skillModifier; }
 };
 
 struct IngotPairDef {
@@ -803,10 +806,14 @@ struct IngotSourceDef {
 };
 
 struct FoundryDef {
-    std::vector<std::array<int, 2>> plateByEra; // rows, cols per era; the last serves later eras
+    // The frame (D-023): a plate of frameRows by frameCols whose rows the
+    // eras forge. rowsByEra holds the first and last forged row per era
+    // (the last entry serves later eras); sockets are the frame cells that
+    // take a subject (a skill tablet). Nothing on the plate ever moves.
+    int frameRows = 4, frameCols = 4;
+    std::vector<std::array<int, 2>> rowsByEra;
+    std::vector<std::array<int, 2>> sockets;
     std::map<std::string, int> reforgeCost;     // paid to lift an ingot off the plate
-    int lineLength = 3;
-    double lineBonus = 1.0; // a line adds the ingot's modifier again at this times its value
     double supportMultiplier = 2.0; // an ingot beside a skill tablet supports that skill at this times its value
     std::vector<IngotDef> ingots;
     std::vector<IngotPairDef> pairs;

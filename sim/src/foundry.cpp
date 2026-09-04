@@ -5,13 +5,50 @@
 
 namespace wroughtwild::foundry {
 
-PlateSize plateSize(const tuning::FoundryDef& def, int era) {
-    PlateSize size;
-    if (def.plateByEra.empty()) return size;
-    const size_t index = static_cast<size_t>(std::clamp(era, 1, static_cast<int>(def.plateByEra.size())) - 1);
-    size.rows = def.plateByEra[index][0];
-    size.cols = def.plateByEra[index][1];
-    return size;
+bool Plate::inFrame(int row, int col) const {
+    return row >= 0 && col >= 0 && row < rows && col < cols;
+}
+
+bool Plate::forged(int row, int col) const {
+    return inFrame(row, col) && row >= firstRow && row <= lastRow;
+}
+
+bool Plate::isSocket(int row, int col) const {
+    for (const auto& s : sockets)
+        if (s.row == row && s.col == col) return true;
+    return false;
+}
+
+Plate plate(const tuning::FoundryDef& def, int era) {
+    Plate p;
+    p.rows = def.frameRows;
+    p.cols = def.frameCols;
+    if (def.rowsByEra.empty()) {
+        p.firstRow = 0;
+        p.lastRow = p.rows - 1;
+    } else {
+        const size_t index = static_cast<size_t>(std::clamp(era, 1, static_cast<int>(def.rowsByEra.size())) - 1);
+        p.firstRow = def.rowsByEra[index][0];
+        p.lastRow = def.rowsByEra[index][1];
+    }
+    for (const auto& s : def.sockets) p.sockets.push_back({s[0], s[1]});
+    return p;
+}
+
+int validate(State& state, const Plate& plate) {
+    std::vector<Placement> kept;
+    int lifted = 0;
+    for (const auto& p : state.plate) {
+        const bool taken = std::any_of(kept.begin(), kept.end(), [&](const Placement& k) {
+            return (k.row == p.row && k.col == p.col) || (p.isTablet() && k.skill == p.skill);
+        });
+        const bool socket = plate.isSocket(p.row, p.col);
+        const bool holds = plate.forged(p.row, p.col) && !taken && (p.isTablet() ? socket : !socket);
+        if (holds) kept.push_back(p);
+        else ++lifted;
+    }
+    state.plate.swap(kept);
+    return lifted;
 }
 
 const Placement* at(const State& state, int row, int col) {
@@ -39,24 +76,27 @@ int unplacedCount(const State& state, const std::string& ingot) {
     return std::max(0, owned - placedCount(state, ingot));
 }
 
-std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, PlateSize size) {
+std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, const Plate& plate) {
     const tuning::FoundryDef& def = tuning.foundry;
     std::vector<Effect> out;
+    static const std::vector<std::pair<int, int>> kSides{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     auto cell = [&](int r, int c) -> const Placement* {
-        if (r < 0 || c < 0 || r >= size.rows || c >= size.cols) return nullptr;
+        if (!plate.forged(r, c)) return nullptr;
         return at(state, r, c);
     };
-    // Ingots: every placement inside the plate speaks its verb.
+    // Ingots: every ingot on a forged cell speaks its verb.
     for (const auto& p : state.plate) {
-        if (p.row >= size.rows || p.col >= size.cols) continue; // off a plate that shrank (never, but safe)
-        if (p.isTablet()) continue;
+        if (p.isTablet() || !plate.forged(p.row, p.col)) continue;
         const auto* ingot = def.findIngot(p.ingot);
         if (!ingot) continue;
-        out.push_back({"ingot", ingot->displayName, ingot->modifier, ingot->value, p.row, p.col, std::string()});
+        Effect e{"ingot", ingot->displayName, ingot->modifier, ingot->value, p.row, p.col, std::string()};
+        e.cellRow = p.row;
+        e.cellCol = p.col;
+        out.push_back(e);
     }
     // Pairs: each orthogonal adjacency once (right and down from each cell).
-    for (int r = 0; r < size.rows; ++r) {
-        for (int c = 0; c < size.cols; ++c) {
+    for (int r = 0; r < plate.rows; ++r) {
+        for (int c = 0; c < plate.cols; ++c) {
             const auto* here = cell(r, c);
             if (!here || here->isTablet()) continue;
             for (const auto& [dr, dc] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}}) {
@@ -64,58 +104,48 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, Pl
                 if (!there || there->isTablet()) continue;
                 const auto* pair = def.findPair(here->ingot, there->ingot);
                 if (!pair) continue;
-                out.push_back({"pair", pair->displayName, pair->modifier, pair->value, r, c, std::string()});
+                Effect e{"pair", pair->displayName, pair->modifier, pair->value, r, c, std::string()};
+                e.cellRow = r;
+                e.cellCol = c;
+                out.push_back(e);
             }
         }
     }
-    // Lines: runs of line_length matching ingots along a row or a column
-    // (a run of four is one line, not two).
-    auto scan = [&](int fixed, bool alongRow) {
-        const int length = alongRow ? size.cols : size.rows;
-        int runStart = 0;
-        std::string runIngot;
-        auto flush = [&](int end) {
-            const int run = end - runStart;
-            if (run >= def.lineLength && !runIngot.empty()) {
-                const auto* ingot = def.findIngot(runIngot);
-                if (ingot) {
-                    const int r = alongRow ? fixed : runStart;
-                    const int c = alongRow ? runStart : fixed;
-                    out.push_back({"line", ingot->displayName + " line", ingot->modifier,
-                                   ingot->value * def.lineBonus, r, c, std::string()});
-                }
-            }
-        };
-        for (int i = 0; i <= length; ++i) {
-            const Placement* p = i < length ? (alongRow ? cell(fixed, i) : cell(i, fixed)) : nullptr;
-            const std::string id = p ? p->ingot : std::string();
-            if (id != runIngot) {
-                flush(i);
-                runStart = i;
-                runIngot = id;
-            }
-        }
-    };
-    for (int r = 0; r < size.rows; ++r) scan(r, true);
-    for (int c = 0; c < size.cols; ++c) scan(c, false);
-    // Supports (D-022): every ingot orthogonally beside a skill tablet
-    // supports that skill alone, at support_multiplier times its value,
-    // when its verb can apply to the skill at all.
+    // Workings (D-022, D-023): a tablet in a socket reads the ingots
+    // orthogonally beside it. Each support applies the ingot's skill
+    // modifier to that skill alone at support_multiplier times its value,
+    // when the modifier can read the skill's tags; a matching ingot
+    // touching the support from any side but the socket's backs it, and
+    // the support counts once more.
     for (const auto& p : state.plate) {
-        if (!p.isTablet() || p.row >= size.rows || p.col >= size.cols) continue;
+        if (!p.isTablet() || !plate.forged(p.row, p.col) || !plate.isSocket(p.row, p.col)) continue;
         const auto* skill = tuning.skills.findCombatSkill(p.skill);
         if (!skill) continue;
         const auto skillTags = skill->resolveTags();
-        for (const auto& [dr, dc] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}) {
-            const auto* beside = cell(p.row + dr, p.col + dc);
+        for (const auto& [dr, dc] : kSides) {
+            const int sr = p.row + dr, sc = p.col + dc;
+            const auto* beside = cell(sr, sc);
             if (!beside || beside->isTablet()) continue;
             const auto* ingot = def.findIngot(beside->ingot);
             if (!ingot) continue;
-            const auto* modifier = tuning.items.findModifier(ingot->modifier);
+            const auto* modifier = tuning.items.findModifier(ingot->supportModifier());
             if (!modifier || modifier->isSelf()) continue;
             if (!grammar::modAppliesToTags(modifier->appliesToTags, skillTags)) continue;
-            out.push_back({"support", skill->displayName + " <- " + ingot->displayName, ingot->modifier,
-                           ingot->value * def.supportMultiplier, p.row, p.col, p.skill});
+            const double value = ingot->value * def.supportMultiplier;
+            Effect support{"support", skill->displayName + " <- " + ingot->displayName, modifier->id, value, p.row, p.col, p.skill};
+            support.cellRow = sr;
+            support.cellCol = sc;
+            out.push_back(support);
+            for (const auto& [br, bc] : kSides) {
+                const int nr = sr + br, nc = sc + bc;
+                if (nr == p.row && nc == p.col) continue;
+                const auto* backer = cell(nr, nc);
+                if (!backer || backer->isTablet() || backer->ingot != beside->ingot) continue;
+                Effect backing{"backing", ingot->displayName + " backing " + skill->displayName, modifier->id, value, p.row, p.col, p.skill};
+                backing.cellRow = nr;
+                backing.cellCol = nc;
+                out.push_back(backing);
+            }
         }
     }
     return out;

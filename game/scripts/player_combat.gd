@@ -326,7 +326,9 @@ func _use_cone(skill_id: StringName) -> int:
 		return 0
 	_spend(skill_id)
 	var enemies := alive_enemies()
-	var base_radius: float = skills[skill_id]["base_area_radius"] * (1.0 + sim.derived_stats()["area_bonus"])
+	# Area size on the sheet scales every area; reach (D-023) widens this skill alone.
+	var base_radius: float = skills[skill_id]["base_area_radius"] * (1.0 + sim.derived_stats()["area_bonus"]) \
+		* sim.skill_reach(String(skill_id))
 	# A cold ring quenches the hot rock around you whether or not anything
 	# is alive in it (D-020 fire-setting: the nova is a quarry tool too).
 	if sim.chill_applied(String(skill_id), false) > 0.0:
@@ -389,7 +391,8 @@ func _use_strike(skill_id: StringName) -> bool:
 	if not is_ready(skill_id):
 		return false
 	_spend(skill_id)
-	var target := _nearest_enemy_in_front(melee_reach)
+	# Reach (D-023): a Reach ingot beside the skill's socket lengthens the strike.
+	var target := _nearest_enemy_in_front(melee_reach * sim.skill_reach(String(skill_id)))
 	if target == null:
 		# No enemy: the blow lands on whatever is in front (D-021).
 		return player.strike_world()

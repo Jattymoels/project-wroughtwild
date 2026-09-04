@@ -1,11 +1,14 @@
 class_name FoundryPanel
 extends CanvasLayer
-## The Foundry (D-019): the plate of ingots. Opened at a built forge. The
-## plate is a grid of cells; the tray lists the ingots you own but have not
-## placed; the effects list is what the arrangement is doing right now.
-## Click a tray ingot to pick it up, an empty cell to set it, a filled
-## cell to lift it (re-forging, paid in metal). Every button calls one sim
-## method; nothing here computes a rule.
+## The Foundry (D-019, D-023): the plate of ingots, opened anywhere with F.
+## The plate is a frame whose rows the era has forged; the unforged rows
+## are drawn as its unworked edge. Sockets take a skill's tablet; the four
+## cells beside a laid tablet are its supports and the diagonals its
+## corners, and every reading is written on its cell. The tray lists the
+## ingots you own but have not placed; the effects list is what the
+## arrangement is doing right now. Click a tray ingot to pick it up, an
+## empty cell to set it, a filled cell to lift it (re-forging, paid in
+## metal). Every button calls one sim method; nothing here computes a rule.
 
 signal closed
 
@@ -24,8 +27,14 @@ var _selected: StringName = &""
 ## A skill picked from the tablet tray, to lay on the next empty cell.
 var _selected_skill: StringName = &""
 var _tablets: VBoxContainer
-## Test surface: what the last refresh showed.
+## The frame as the last refresh saw it (D-023).
+var _sockets := {}
+var _first_row := 0
+var _last_row := 0
+## Test surface: what the last refresh showed. cell_count is the forged
+## cells; frame_cell_count every cell of the frame.
 var cell_count := 0
+var frame_cell_count := 0
 var tray_count := 0
 var effect_count := 0
 
@@ -74,7 +83,7 @@ func _ready() -> void:
 	_grid.add_theme_constant_override("v_separation", 6)
 	left.add_child(_grid)
 	var how := Label.new()
-	how.text = "Beside: a pair makes its mechanic.  In a line of three: the verb again.\nLay a skill's tablet: every ingot beside it supports that skill alone.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free."
+	how.text = "A socket takes a skill's tablet; the four cells beside it are its supports, the diagonals its corners.\nBeside: a pair makes its mechanic. A matching ingot touching a support backs it: the support counts again.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free."
 	how.modulate = UiTheme.MUTED
 	left.add_child(how)
 
@@ -131,7 +140,12 @@ func refresh() -> void:
 	var view: Dictionary = sim.foundry()
 	var rows: int = view["rows"]
 	var cols: int = view["cols"]
-	_title.text = "The Foundry  —  a %d×%d plate (era %d)" % [rows, cols, view["era"]]
+	_first_row = int(view.get("first_row", 0))
+	_last_row = int(view.get("last_row", rows - 1))
+	_sockets.clear()
+	for s in view.get("sockets", []):
+		_sockets[Vector2i(int(s[0]), int(s[1]))] = true
+	_title.text = "The Foundry  —  era %d: rows %d to %d of the %d×%d frame are forged" % [view["era"], _first_row + 1, _last_row + 1, rows, cols]
 
 	for child in _grid.get_children():
 		child.queue_free()
@@ -143,27 +157,84 @@ func refresh() -> void:
 			tablets[Vector2i(p["row"], p["col"])] = String(p["skill"])
 		else:
 			placed[Vector2i(p["row"], p["col"])] = String(p["ingot"])
+	# Roles (D-023): a laid subject's four supports and four corners.
+	var supports := {}
+	var corners := {}
+	for key in tablets:
+		if not _sockets.has(key):
+			continue
+		var subject: String = sim.combat_skill(tablets[key]).get("display_name", tablets[key])
+		for d in [Vector2i(0, 1), Vector2i(1, 0), Vector2i(0, -1), Vector2i(-1, 0)]:
+			var side: Vector2i = key + d
+			if not supports.has(side):
+				supports[side] = []
+			supports[side].append(subject)
+		for d in [Vector2i(1, 1), Vector2i(1, -1), Vector2i(-1, 1), Vector2i(-1, -1)]:
+			var corner: Vector2i = key + d
+			if not corners.has(corner):
+				corners[corner] = []
+			corners[corner].append(subject)
+	# Every reading written on its cell: what a support or a backing does.
+	var readings := {}
+	var effects: Array = sim.foundry_effects()
+	for effect in effects:
+		var kind: String = effect["kind"]
+		if kind != "support" and kind != "backing":
+			continue
+		var from := Vector2i(int(effect["cell_row"]), int(effect["cell_col"]))
+		if not readings.has(from):
+			readings[from] = []
+		readings[from].append("%s: %s" % [effect["label"], effect["sentence"]])
 	cell_count = 0
+	frame_cell_count = 0
 	for r in rows:
 		for c in cols:
 			var cell := Button.new()
 			cell.custom_minimum_size = CELL_SIZE
 			var key := Vector2i(r, c)
+			frame_cell_count += 1
+			if r < _first_row or r > _last_row:
+				# The plate's unworked edge: the era has not forged this row.
+				cell.text = "unforged"
+				cell.disabled = true
+				cell.modulate = Color(1, 1, 1, 0.35)
+				cell.tooltip_text = "Unforged: the era has not worked this row yet."
+				_grid.add_child(cell)
+				continue
+			cell_count += 1
+			var lines := PackedStringArray()
 			if tablets.has(key):
 				var skill: Dictionary = sim.combat_skill(tablets[key])
-				cell.text = "[ %s ]" % skill.get("display_name", tablets[key])
+				var subject: String = skill.get("display_name", tablets[key])
+				cell.text = "[ %s ]" % subject
 				cell.modulate = UiTheme.FROST
-				cell.tooltip_text = "A tablet: the ingots beside it support this skill. Click to lift (free)."
+				lines.append("A socket holding the %s tablet: the ingots beside it support that skill. Click to lift (free)." % subject)
 			elif placed.has(key):
 				var info: Dictionary = sim.foundry_ingot(placed[key])
 				cell.text = info.get("display_name", placed[key]).replace(" Ingot", "")
-				cell.tooltip_text = info.get("sentence", "")
+				lines.append(info.get("sentence", ""))
+				if supports.has(key):
+					cell.modulate = UiTheme.SUN_WARM
+			elif _sockets.has(key):
+				cell.text = "[    ]"
+				cell.modulate = UiTheme.FROST
+				lines.append("A socket: lay a skill's tablet here and the four cells beside it become its supports.")
 			else:
 				cell.text = "·"
 				cell.modulate = Color(1, 1, 1, 0.6)
+			if supports.has(key) and not tablets.has(key):
+				for subject in supports[key]:
+					lines.append(("Beside %s: an ingot here supports it." if not placed.has(key) else "Beside %s.") % subject)
+				if placed.has(key) and not readings.has(key):
+					lines.append("It does not read the skill beside it yet.")
+			if corners.has(key) and not placed.has(key) and not tablets.has(key) and not _sockets.has(key):
+				lines.append("A corner of the %s working: an ingot here pairs with the supports it touches." % ", ".join(PackedStringArray(corners[key])))
+			if readings.has(key):
+				for reading in readings[key]:
+					lines.append(reading)
+			cell.tooltip_text = "\n".join(lines)
 			cell.pressed.connect(_on_cell.bind(r, c))
 			_grid.add_child(cell)
-			cell_count += 1
 
 	for child in _tray.get_children():
 		child.queue_free()
@@ -211,12 +282,11 @@ func refresh() -> void:
 	for child in _effects.get_children():
 		child.queue_free()
 	effect_count = 0
-	for effect in sim.foundry_effects():
+	for effect in effects:
 		var line := Label.new()
 		var kind: String = effect["kind"]
-		var prefix := "pair" if kind == "pair" else ("line" if kind == "line" else ("support" if kind == "support" else "ingot"))
-		line.text = "%s  ·  %s  —  %s" % [prefix, effect["label"], effect["sentence"]]
-		if kind == "support":
+		line.text = "%s  ·  %s  —  %s" % [kind, effect["label"], effect["sentence"]]
+		if kind == "support" or kind == "backing":
 			line.modulate = UiTheme.FROST
 		elif kind != "ingot":
 			line.modulate = UiTheme.SUN_WARM
@@ -244,6 +314,10 @@ func _on_tablet(id: String) -> void:
 
 
 func _on_cell(row: int, col: int) -> void:
+	if row < _first_row or row > _last_row:
+		_message.text = "The era has not forged this row."
+		refresh()
+		return
 	var view: Dictionary = sim.foundry()
 	for p in view["plate"]:
 		if int(p["row"]) == row and int(p["col"]) == col:
@@ -261,7 +335,7 @@ func _on_cell(row: int, col: int) -> void:
 			_message.text = ""
 			_after_change()
 		else:
-			_message.text = "That tablet cannot go there."
+			_message.text = "A tablet goes in a socket." if not _sockets.has(Vector2i(row, col)) else "That tablet cannot go there."
 			refresh()
 		return
 	if _selected == &"":
@@ -274,7 +348,7 @@ func _on_cell(row: int, col: int) -> void:
 		_message.text = ""
 		_after_change()
 	else:
-		_message.text = "That ingot cannot go there."
+		_message.text = "A socket takes a tablet, not an ingot." if _sockets.has(Vector2i(row, col)) else "That ingot cannot go there."
 		refresh()
 
 

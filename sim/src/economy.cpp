@@ -309,7 +309,7 @@ std::vector<const tuning::MasteryPerk*> PlayerEconomy::masteryUnlocked(const std
     return out;
 }
 
-foundry::PlateSize PlayerEconomy::plateSize() const { return foundry::plateSize(tuning_.foundry, currentEra()); }
+foundry::Plate PlayerEconomy::plate() const { return foundry::plate(tuning_.foundry, currentEra()); }
 
 std::vector<std::string> PlayerEconomy::foundryEvent(const std::string& event) {
     std::vector<std::string> granted;
@@ -326,8 +326,8 @@ std::vector<std::string> PlayerEconomy::foundryEvent(const std::string& event) {
 }
 
 bool PlayerEconomy::foundryPlace(int row, int col, const std::string& ingot) {
-    const auto size = plateSize();
-    if (row < 0 || col < 0 || row >= size.rows || col >= size.cols) return false;
+    const auto plate = this->plate();
+    if (!plate.forged(row, col) || plate.isSocket(row, col)) return false;
     if (!tuning_.foundry.findIngot(ingot)) return false;
     if (foundry::at(foundry_, row, col) != nullptr) return false;
     if (foundry::unplacedCount(foundry_, ingot) <= 0) return false;
@@ -338,8 +338,8 @@ bool PlayerEconomy::foundryPlace(int row, int col, const std::string& ingot) {
 bool PlayerEconomy::canAffordReforge() const { return hasAll(inventory, tuning_.foundry.reforgeCost); }
 
 bool PlayerEconomy::foundryPlaceSkill(int row, int col, const std::string& skillId) {
-    const auto size = plateSize();
-    if (row < 0 || col < 0 || row >= size.rows || col >= size.cols) return false;
+    const auto plate = this->plate();
+    if (!plate.forged(row, col) || !plate.isSocket(row, col)) return false;
     if (std::find(knownSkills_.begin(), knownSkills_.end(), skillId) == knownSkills_.end()) return false;
     if (foundry::at(foundry_, row, col) != nullptr) return false;
     if (foundry::tabletFor(foundry_, skillId) != nullptr) return false;
@@ -509,6 +509,11 @@ void PlayerEconomy::importState(const State& state) {
     skillBar_.assign(kSkillBarSize, "");
     for (size_t i = 0; i < state.skillBar.size() && i < static_cast<size_t>(kSkillBarSize); ++i)
         if (knowsSkill(state.skillBar[i])) setBarSlot(static_cast<int>(i), state.skillBar[i]);
+
+    // The plate holds only what the era has forged (D-023): a save from an
+    // older plate, or a hand-edited one, is lifted free of anything the
+    // frame cannot hold. Nothing is lost: ingots return to the tray.
+    foundry::validate(foundry_, plate());
 }
 
 bool PlayerEconomy::salvage(const std::string& recipeId) {

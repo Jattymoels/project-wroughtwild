@@ -206,11 +206,13 @@ the era's story when it changes.
   (`era:2`), the first bronze. The economy raises its own events from
   crafts and world effects and queues notices for the HUD; kills come in
   through `foundry_event`.
-- **The plate** is `plate_by_era` (3x3, 3x4, 4x4). `foundry::effects`
+- **The plate** was `plate_by_era` (3x3, 3x4, 4x4) until D-023 slice 1
+  forged the frame (see *Implemented: the frame*, below). `foundry::effects`
   lists what the plate does: every placed ingot's verb, every orthogonal
   adjacency that matches a **pair** (Ember beside Reach is Wildfire, Frost
-  beside Edge is Wide Shatter, Vigour beside Plate is Bulwark...), and every
-  straight **line** of three matching ingots, which adds the verb again.
+  beside Edge is Wide Shatter, Vigour beside Plate is Bulwark...), and,
+  since slice 1, each working's supports and their backing (the line of
+  three is gone).
   `grammar::foundryMods` turns those into modifiers in the same pool gear
   uses, so skill numbers, statuses and hooks read the plate with no new
   resolver; stat ingots reach the sheet through `deriveStats`' extra
@@ -474,3 +476,52 @@ rows by four with two sockets (the spec proposes a 4x4 frame whose rows
 the eras forge, so the plate grows without moving anything); the coin is
 retired for now; Reach is to read area and projectile skills, which
 settles the conflict above in this document's favour once implemented.
+
+## Implemented: the frame (4 Sep 2026, D-023 slice 1)
+
+`data/tuning/foundry.json` (schema 2) and `sim/foundry.h`:
+
+- **The frame.** The plate is a `frame` of four rows by four columns whose
+  rows the eras forge: `rows_by_era` names the first and last forged row
+  per era (rows 1 and 2 in era one, the owner's two-row plate; row 0 joins
+  in era two, row 3 in era three). Nothing on the plate ever moves when it
+  grows, and a save needs no migration. `foundry::Plate` carries the
+  frame, the forged rows and the sockets; `foundry::plate(def, era)`
+  forges it.
+- **Sockets** (`sockets`, at (1,1) and (2,2), the recommended layout the
+  owner took) are the only cells that take a tablet, and take nothing
+  else: `foundryPlaceSkill` refuses any other cell, `foundryPlace` refuses
+  a socket, and both refuse an unforged row. A working is a socket, the
+  ingots orthogonally beside it (supports) and the diagonals (corners).
+- **Backing replaces lines.** A matching ingot touching a support from any
+  side but the socket's makes that support count once more
+  (`Effect.kind == "backing"`, scoped to the skill like a support). The
+  line-of-three rule, `line_length` and `line_bonus` are gone.
+- **Reach reads skills.** An ingot may name a `skill_modifier` it speaks
+  beside a skill in place of its base; Reach speaks the new `items.json`
+  modifier `reach` (`increased_reach`, applying to area, projectile and
+  single-target skills, and tagged so no gear pool rolls it). The sim
+  resolves it as one multiplier, `grammar::skillReach`, and the engine
+  applies it to the delivery it owns: an area's radius, a projectile's
+  flight, a strike's reach. Reach's base stays area size on the sheet.
+- **Every reading on its cell.** `Effect` names the cell a support or
+  backing comes from (`cellRow`, `cellCol`); the panel draws the whole
+  frame with unforged rows as its unworked edge, marks sockets, rims a
+  laid tablet's supports, and writes each cell's readings in its tooltip.
+  A refused placement says why ("A tablet goes in a socket.", "A socket
+  takes a tablet, not an ingot.", "The era has not forged this row.").
+- **A stale save is lifted free.** `foundry::validate` runs on import:
+  anything in an unforged row, a tablet outside a socket, an ingot inside
+  one, or a second thing on a cell is lifted, and ingots return to the
+  tray.
+
+Tests: sim 3216 (the frame per era, sockets, placement refusals, supports
+and their cells, Reach on the orb, the strike and the area strike, backing
+and its absence across a socket, era two forging the row above without
+moving anything, re-forging, save round-trip, a stale plate on load); the
+engine's unit and integration tests were rewritten to the frame but not
+run in this session (no Godot binary here).
+
+Not yet: every ingot reading every skill (added elements, slice 2), the
+typed currencies, the Vanguard, corner augments, links, rails, the metal
+of an ingot.
