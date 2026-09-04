@@ -50,6 +50,10 @@ bool modAppliesToTags(const std::vector<std::string>& appliesToTags,
 // applies_to matches and every one of its requiresTags is present.
 bool modApplies(const ActiveMod& mod, const std::vector<std::string>& tags);
 
+// A skill's own damage type: the first grammar.json damage type among its
+// tags (the first of all when it names none).
+std::string nativeType(const tuning::Tuning& tuning, const std::vector<std::string>& skillTags);
+
 // Core resolver: (base + sum of add_<key>) * (1 + sum of increased_<key>)
 // * product(1 + more_<key>), over active mods whose tags match.
 double resolve(const ActiveMods& active,
@@ -133,8 +137,13 @@ using Hit = std::vector<HitPacket>;
 // base_damage times the resolved "as_T" fraction (add_as_T modifiers, the
 // added-element reading), then damage modifiers matching the skill's tags
 // with its element swapped for T. Empty for a skill with no base_damage.
+// targetStatuses (of chill, ignite, bleed): what the struck mob carries;
+// every packet is multiplied by the resolved "damage_vs_<status>" for each
+// (more_damage_vs_ignite: a form's "an ignited enemy takes 20% more").
 Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
              const std::string& skillId);
+Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
+             const std::string& skillId, const std::vector<std::string>& targetStatuses);
 
 // The whole hit as one number: the packets summed.
 double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,

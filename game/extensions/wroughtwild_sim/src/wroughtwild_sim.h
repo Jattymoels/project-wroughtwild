@@ -297,9 +297,9 @@ public:
     bool foundry_place(int row, int col, const String& ingot_id);
     bool foundry_remove(int row, int col);
     bool foundry_place_skill(int row, int col, const String& skill_id);
-    // Sets a currency kind from the purse on a forged cell (D-023 slice 4):
-    // a subject in a socket, an augment elsewhere. Lifting returns it.
-    bool foundry_place_subject(int row, int col, const String& kind_id);
+    // Sets a currency kind from the purse on a forged cell that cannot
+    // touch a socket (D-023, the flow). Lifting returns it to the purse.
+    bool foundry_place_kind(int row, int col, const String& kind_id);
     // Reports a milestone the engine saw ("first_kill:ash_hound"); returns
     // the ingot ids it granted (each source once).
     Array foundry_event(const String& event);
@@ -438,7 +438,9 @@ public:
     // added}], rolled through the fight's stream exactly as
     // player_hit_damage rolls one number. The engine deals each packet and
     // lets the mob refuse the types it is immune to.
-    Array player_hit(const String& skill_id, bool isolated);
+    // target_statuses: what the struck mob carries (of chill, ignite,
+    // bleed), for the forms' reactions ("an ignited enemy takes 20% more").
+    Array player_hit(const String& skill_id, bool isolated, const PackedStringArray& target_statuses = PackedStringArray());
     // Damage the player takes from one enemy hit, after mitigation.
     // bonus_armour: armour the engine is granting right now (the Plate
     // reading's armour on cast), counted with the sheet's.
@@ -522,7 +524,7 @@ private:
 
     const wroughtwild::tuning::CombatSkillDef* find_skill(const String& skill_id) const;
     // One hit of skill_id as typed packets, rolled through the fight's stream.
-    wroughtwild::grammar::Hit rolled_hit(const String& skill_id, bool isolated);
+    wroughtwild::grammar::Hit rolled_hit(const String& skill_id, bool isolated, const PackedStringArray& target_statuses);
     wroughtwild::combat::CombatMods current_mods() const;
     wroughtwild::boons::BuildTags build_tags() const;
     wroughtwild::grammar::ActiveMods active_mods() const;

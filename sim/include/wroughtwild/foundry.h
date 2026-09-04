@@ -12,8 +12,11 @@
 // inert). A matching ingot touching a support from any side but the
 // socket's BACKS it, so the support counts once more. Orthogonally
 // adjacent ingots that match a pair add that pair's mechanic for everyone.
-// Numbers on ingots never change; what scales is count, arrangement and,
-// later, reach.
+// THE FLOW (owner, 4 Sep 2026): only a skill sits in a socket; a currency
+// KIND rests where it cannot touch one, gives its base forward when a
+// chain of pieces leads inward to a laid tablet, and works every support
+// it touches into a FORM that feeds the skill. Numbers on ingots never
+// change; what scales is count, arrangement and, later, reach.
 //
 // Ingots come from milestones (foundry.json sources), never from kills as
 // such, and each source grants once. Re-forging (lifting an ingot off the
@@ -32,7 +35,7 @@ struct Placement {
     int row = 0, col = 0;
     std::string ingot; // an ingot placement ("" for a tablet or a kind)
     std::string skill; // a skill tablet (D-022): the skill laid on this cell
-    std::string currency{}; // a currency kind (D-023 slice 4): a subject in a socket, an augment elsewhere
+    std::string currency{}; // a currency kind (D-023): an augment on a cell that cannot touch a socket
     bool isTablet() const { return !skill.empty(); }
     bool isIngot() const { return !ingot.empty(); }
     bool isCurrency() const { return !currency.empty(); }
@@ -63,24 +66,34 @@ struct Plate {
 
 // One thing the plate is doing right now, for the rules and the panel.
 struct Effect {
-    std::string kind;     // ingot | pair | support | added | backing | subject | augment | lending
+    std::string kind;     // ingot | pair | support | added | backing | augment | form
     std::string label;    // Ember Ingot / Wildfire / Frost Orb <- Frost Ingot / Frost Ingot backing Frost Orb
     std::string modifier; // items.json modifier id
     double value = 0.0;
     int row = -1, col = -1; // the placement (ingot), the first cell (pair) or the socket (support, backing)
     std::string skill;    // support, added, backing of a skill working: the one skill it applies to
     int cellRow = -1, cellCol = -1; // the ingot cell the effect comes from
-    std::string subject{}; // subject, augment, lending, and a Vanguard working's support and backing: the kind
+    std::string subject{}; // augment, form: the kind's family (offence, defence, life, speed)
+    std::string packet{};  // form: the packet type the effect speaks to ("" = the whole skill)
 };
 
 // The plate the era has forged (rows_by_era; the last entry serves later eras).
 Plate plate(const tuning::FoundryDef& def, int era);
 
+// The flow (D-023, owner 4 Sep 2026). A cell's depth is its Manhattan
+// distance to the nearest socket: supports sit at 1, corners at 2, the far
+// cells at 3. A kind rests only at depth 2 or more, where it cannot touch
+// a socket. It flows when a chain of placed pieces, each one step nearer
+// a socket, reaches a support beside a laid tablet.
+int depth(const Plate& plate, int row, int col);
+bool kindMayRest(const Plate& plate, int row, int col);
+bool flowsToSkill(const State& state, const Plate& plate, int row, int col);
+
 // Lifts every placement the plate cannot hold - an unforged row, a tablet
-// outside a socket, an ingot inside one, a second thing on a cell, a
-// second tablet for a skill - and returns how many it lifted. Run on load.
-// `lifted`, when given, receives what was lifted (a kind must go back to
-// the purse).
+// outside a socket, an ingot inside one, a kind touching one, a second
+// thing on a cell, a second tablet for a skill - and returns how many it
+// lifted. Run on load. `lifted`, when given, receives what was lifted (a
+// kind must go back to the purse).
 int validate(State& state, const Plate& plate, std::vector<Placement>* lifted = nullptr);
 
 const Placement* at(const State& state, int row, int col);
@@ -93,11 +106,10 @@ const Placement* tabletFor(const State& state, const std::string& skill);
 // Ingots, pairs, then each working's readings - a support (the ingot's
 // skill modifier, when it can read the skill's tags) or an added element
 // (an element ingot beside a skill of another element) - each with its
-// backing; then each Vanguard working (a kind in a socket: its base, and
-// every ingot beside it read as defence); then each augment (a kind on a
-// non-socket cell: a fraction of its base, and its readings lent to the
-// skill supports it touches). The skill and modifier tables decide which
-// reading an ingot gives.
+// backing; then each kind that flows: its base (augment) and the forms it
+// works the supports it touches into, each feeding the skill that support
+// serves. The skill and modifier tables decide which reading an ingot
+// gives; the kind's family, the ingot and the lane decide the form.
 std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, const Plate& plate);
 
 } // namespace wroughtwild::foundry

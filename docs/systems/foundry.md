@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency) and 4 (the Vanguard) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -118,16 +118,22 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
    more by every elite; the peddler changes three of one for one of
    another; a kind added to a gear craft aims its first modifier at the
    kind's family; rare metal casts the three purse kinds.
-9. The Vanguard (slice 4): a kind from the purse in a socket is a defence
-   working (+8 armour; every ingot beside it reads as defence at twice
-   its Vanguard value, backing counting once more); in a corner it gives
-   half its base and lends its readings, at x1, to the skill supports it
-   touches. It lifts for the re-forge cost and returns to the purse. Cold
-   resistance is a derived stat; Barbs, Answer Reach and Haste after a hit
-   are engine hooks reading sim numbers.
+9. The flow (slices 4 and 5, `sim/src/foundry.cpp`): only a skill sits
+   in a socket; a kind from the purse rests where it cannot touch one,
+   gives its family's base forward while a chain of pieces leads inward
+   to a laid tablet, and works every support it touches into a form
+   (`forms`) that feeds the skill: the Catalyst's sharpenings and
+   reactions, the Vanguard's defensive twists. A form's reaction can
+   make the skill apply the added element's status and deal more to an
+   enemy carrying it (`damage_vs_<status>`; the engine tells the sim
+   what the struck mob carries). Cold resistance is a derived stat;
+   Barbs, Answer Reach and Haste after a hit are engine hooks. It lifts
+   for the re-forge cost and returns to the purse.
 
-Still to come from the tables below: the Catalyst in a corner and the
-reactions, links, rails, Marrow and Quicksilver, the metal of an ingot. The Reach
+Still to come from the tables below: the reactions that need hooks
+(Quench's burst, Rime's novas, Brittle's shatter, Arc, Linger, Echo),
+compound forms, links re-homed, rails, Marrow and Quicksilver forms, the
+metal of an ingot. The Reach
 conflict recorded on 3 Sep is settled: the owner said yes, and the code
 now reads skills with it.
 
@@ -197,6 +203,49 @@ the plate has six free cells, so from the seventh ingot the tray is a
 reserve and one iron re-forges between layouts. If a milestone ingot with
 nowhere to go feels bad in play, move the first-kills of families that
 live beyond the heartland to era two rather than widen the plate.
+
+### The flow (owner, 4 Sep 2026, later that day)
+
+The owner, after seeing the socketed Vanguard and its corner lending:
+"we just don't allow the non-skills to be placed in the main subject of
+the foundry tablet. So vanguards and catalysts can only go into the edge
+cases where they give forward their base to the flow of the tablet, but
+also transform/mutate along the way the ingots/other catalysts or
+vanguards/marrows etc until it hits the skill. We can leave scaling
+defenses to itemisation." And the firm line: **ingots are base;
+catalysts add offensive creativity; vanguards add creative defensives.**
+
+The rule as built:
+
+- **Only a skill sits in a socket.** The Vanguard, Marrow and Quicksilver
+  columns of the subject table below are withdrawn; those kinds are
+  augments, never subjects.
+- **A kind rests where it cannot touch a socket.** A cell's *depth* is
+  its distance to the nearest socket: supports at 1, corners at 2, the
+  far cells at 3. A kind goes at depth 2 or more; a socket or a support
+  cell refuses it.
+- **Everything flows one way, inward.** A kind gives its family's base
+  forward only while a chain of placed pieces, each a step nearer a
+  socket, leads to a support beside a laid tablet. A kind that flows to
+  nothing gives nothing. A far kind flows through a corner kind.
+- **A kind works every support it touches into a form.** The ingot keeps
+  its plain reading and gains the form's, which feeds the skill that
+  support serves; a shared support feeds both skills. The form is the
+  family's, the ingot's and the lane's (`forms`): the Catalyst's
+  same-element lane sharpens (Deep Frost, Kindling, Serration, Split),
+  its added-element lane reacts (Scald, Temper, Quench, Rime, Brittle,
+  Sear); the Vanguard's forms are defensive and sustaining twists (Frost
+  Leech, Quickstep, Barbs, Stand Fast). Every Vanguard row is a proposal
+  drafted from the owner's two examples, one line to strike.
+- **Defence scales on gear**, not the plate; a kind's base is small and
+  flat (the Vanguard +4 armour; the Catalyst none).
+- **Compound forms** (a kind worked by another kind, an ingot's metal or
+  rarity as a condition, the owner's "haste beside a fire catalyst and a
+  rare frost") are the next step; the table has no rows for them yet.
+
+Consequences: the socketed Vanguard of slice 4 is gone (its readings
+live on as Vanguard forms); links, which put a Catalyst in a shared
+support cell, need a new home, since a kind cannot rest beside a socket.
 
 ### Why sockets rather than "a tablet anywhere"
 
@@ -272,6 +321,12 @@ the Catalyst turns into a status and an interaction.
 The new subjects are currencies. Each has a base of its own and a
 **trigger** (used by links):
 
+> **Withdrawn 4 Sep 2026 (the flow).** Currencies never sit in a socket.
+> The rows below for the Vanguard, Marrow and Quicksilver as subjects,
+> and the three subject columns of the readings table, are kept for the
+> record; what a kind does now is under [The flow](#the-flow-owner-4-sep-2026-later-that-day)
+> and the `forms` table in `foundry.json`.
+
 | Subject | Base when socketed | Trigger |
 | --- | --- | --- |
 | Skill tablet | none; the skill itself | the skill's status crossing its threshold on an enemy (freeze, ignite, bleed) |
@@ -301,16 +356,11 @@ sim numbers, in the ADR-0003 division.
 The owner's example reads straight off the table: a Bulwark Vanguard
 supported by Frost is +10 cold resistance and slower chill on you.
 
-**As built (4 Sep 2026, slice 4).** The Vanguard column is in:
-`foundry.json` `subjects` (the Bulwark Vanguard) and each ingot's
-`vanguard_modifier` / `vanguard_value`. Ember +10 fire resistance, Frost
-+10 cold resistance, Edge Barbs 25, Reach the answer's reach 2.5 m, Vigour
-+24 life, Plate +16 armour, Ward +5 to every resistance, Haste 16% faster
-for two seconds after a hit. The second halves that need statuses on the
-player (a shorter ignite, slower chill, regeneration after a hit, armour
-against fire at half, statuses decaying faster) wait for player-side
-statuses; the Warding Vanguard, Marrow and Quicksilver columns wait for
-their slices.
+**As built (4 Sep 2026).** The Vanguard column was built as a socketed
+subject in slice 4 and withdrawn the same day by the flow; its readings
+survive as the Vanguard's forms (Cinder Guard, Cold Ward, Barbs, Far
+Answer, Quickstep, Stand Fast, Frost Leech, Second Wind), each feeding
+the skill whose support the Vanguard touches.
 
 ## Corners: the joins
 
@@ -395,6 +445,12 @@ keeps the table two-dimensional. An open question below asks whether that
 is right.
 
 ## Links: a Catalyst between two subjects
+
+> **Needs a new home (4 Sep 2026, the flow).** A kind can no longer rest
+> in a support cell, so the link as written below cannot be placed. The
+> likely home is the corner a kind shares with both workings' supports
+> (a corner of one socket touching the other's shared support), so the
+> flow from one kind reaches both skills; to be settled with slice 6.
 
 Sockets are never side by side on the frame, but the two workings share
 two support cells from era one. **A Catalyst placed in a shared support
@@ -804,11 +860,14 @@ following.
    drops and prices become kinds, the peddler changes kinds;
    `currency_weighting` in a craft; currency lifts from the plate for the
    re-forge cost.
-4. **The Vanguard** *(landed 4 Sep 2026)*. As a subject with its eight
-   readings (cold resistance as a derived stat; Barbs and the answer's
-   reach as engine hooks); as a corner, lending.
-5. **Catalyst corners.** Sharpenings first (they reuse keys), then Scald,
-   Quench, Temper, Rime; the rest as their hooks land.
+4. **The Vanguard** *(landed 4 Sep 2026 as a socketed subject; withdrawn
+   the same day by the flow, its readings now Vanguard forms)*.
+5. **The flow and the first forms** *(landed 4 Sep 2026)*. Kinds only in
+   the detached cells; the base flowing inward; forms keyed by family,
+   ingot and lane: the sharpenings, Scald, Temper, Quench and Rime as far
+   as existing keys carry them, Brittle and Sear as their "more against a
+   status" halves, the Vanguard's eight proposed forms. Still ahead here:
+   the reactions' hook halves, Echo, Arc, Linger, compound forms.
 6. **Links.** A Catalyst in a shared support cell; cast-on-trigger; the
    linked skill leaves the bar.
 7. **Rails.** `rail_patterns`, the class hall as the place they are set,

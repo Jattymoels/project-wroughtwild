@@ -22,14 +22,6 @@ bool has(const std::vector<std::string>& tags, const std::string& tag) {
     return std::find(tags.begin(), tags.end(), tag) != tags.end();
 }
 
-// The skill's own element: the first grammar damage type among its tags
-// (the first type of all when it names none).
-std::string nativeType(const tuning::Tuning& tuning, const std::vector<std::string>& skillTags) {
-    for (const auto& type : tuning.grammar.damageTypes)
-        if (has(skillTags, type)) return type;
-    return tuning.grammar.damageTypes.empty() ? "physical" : tuning.grammar.damageTypes.front();
-}
-
 // The tags a packet of `type` resolves its damage against: the skill's
 // tags with its element swapped for the packet's, so cold gear scales the
 // cold packet and fire gear the fire one, and a spell's mods scale both.
@@ -72,6 +64,12 @@ bool modApplies(const ActiveMod& mod, const std::vector<std::string>& tags) {
     for (const auto& required : mod.requiresTags)
         if (!has(tags, required)) return false;
     return true;
+}
+
+std::string nativeType(const tuning::Tuning& tuning, const std::vector<std::string>& skillTags) {
+    for (const auto& type : tuning.grammar.damageTypes)
+        if (has(skillTags, type)) return type;
+    return tuning.grammar.damageTypes.empty() ? "physical" : tuning.grammar.damageTypes.front();
 }
 
 double resolve(const ActiveMods& active,
@@ -154,6 +152,13 @@ ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state
         // its modifier is about: a Frost support scales the orb's cold and
         // never the fire an Ember support adds to the same orb.
         if (!effect.skill.empty()) mod.requiresTags = {"skill:" + effect.skill};
+        // A form speaks to the whole skill it feeds, or to the one packet it
+        // names, whatever its modifier's applies_to says (Scald's ignite
+        // lands on a cold orb).
+        if (effect.kind == "form") {
+            mod.appliesToTags.clear();
+            if (!effect.packet.empty()) mod.appliesToTags = {effect.packet};
+        }
         mods.push_back(std::move(mod));
     }
     return mods;
@@ -216,6 +221,11 @@ DotStatus bleedStatus(const tuning::Tuning& tuning, const ActiveMods& active) {
 
 Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
              const std::string& skillId) {
+    return skillHit(tuning, active, skillId, {});
+}
+
+Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
+             const std::string& skillId, const std::vector<std::string>& targetStatuses) {
     Hit hit;
     const auto* def = findSkill(tuning, skillId);
     if (!def) return hit;
@@ -223,7 +233,14 @@ Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
     if (base <= 0.0) return hit; // a movement skill has no hit
     const auto tags = def->resolveTags();
     const std::string native = nativeType(tuning, tags);
-    hit.push_back({native, resolve(active, tags, "damage", base), false});
+    // A form's "an ignited enemy takes 20% more" (D-023): every packet is
+    // multiplied by the resolved damage_vs_<status> for each status the
+    // struck mob carries, against the packet's own tags.
+    auto against = [&](const std::vector<std::string>& packetTags_, double damage) {
+        for (const auto& status : targetStatuses) damage *= resolve(active, packetTags_, "damage_vs_" + status, 1.0);
+        return damage;
+    };
+    hit.push_back({native, against(tags, resolve(active, tags, "damage", base)), false});
     // The added-element lane (D-023 slice 2): each other type the plate
     // adds is its own packet, the same fraction of the base hit the
     // same-element lane would have increased it by, scaled by its own
@@ -232,7 +249,8 @@ Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
         if (type == native) continue;
         const double fraction = resolve(active, tags, "as_" + type, 0.0);
         if (fraction <= 0.0) continue;
-        hit.push_back({type, resolve(active, packetTags(tuning, tags, type), "damage", base * fraction), true});
+        const auto ptags = packetTags(tuning, tags, type);
+        hit.push_back({type, against(ptags, resolve(active, ptags, "damage", base * fraction)), true});
     }
     return hit;
 }

@@ -264,22 +264,31 @@ func _test_lattice() -> void:
 	sim.add_material("iron_ingot", 1)
 	check(sim.foundry_remove(1, 0) and sim.material_count("iron_ingot") == 0 and sim.foundry_effects().size() == 1,
 		"foundry: lifted for one ingot of iron")
-	# D-023 slice 4: a Vanguard from the purse in the socket; its base lands
-	# on the sheet; lifting pays iron and returns it.
+	# D-023, the flow: a kind from the purse rests only in a corner, gives
+	# nothing until a chain leads inward to a laid tablet, then its base
+	# counts and it works the support it touches into a form.
 	var armour_bare: float = sim.derived_stats()["armour"]
 	var vanguards_before: int = sim.currency_count("vanguard")
 	sim.add_materials({"vanguard": 1})
-	check(sim.foundry_place_subject(1, 1, "vanguard") and sim.currency_count("vanguard") == vanguards_before
-		and sim.derived_stats()["armour"] == armour_bare + 8.0, "vanguard: set in the socket, eight armour on the sheet")
+	check(not sim.foundry_place_kind(1, 1, "vanguard") and not sim.foundry_place_kind(1, 0, "vanguard")
+		and sim.foundry_place_kind(0, 0, "vanguard") and sim.currency_count("vanguard") == vanguards_before
+		and sim.derived_stats()["armour"] == armour_bare, "flow: a kind refuses the socket and a support, rests in a corner, and flows to nothing yet")
+	# The plate ingot back at (1,0): its base, the Bulwark pair with the
+	# vigour below it, and now the Vanguard's four flowing in.
+	check(sim.foundry_place(1, 0, "plate") and sim.foundry_place_skill(1, 1, "prototype_frost_orb")
+		and sim.derived_stats()["armour"] == armour_bare + 8.0 + 8.0 + 4.0 and sim.skill_cast_armour("prototype_frost_orb")["armour"] == 4.0 + 8.0,
+		"flow: the plate ingot and the orb close the chain - four armour flows in and the Plate is worked into Stand Fast (%s)" % sim.derived_stats()["armour"])
 	var kinds_on_plate := 0
 	for p in sim.foundry()["plate"]:
 		if String(p.get("currency", "")) == "vanguard":
 			kinds_on_plate += 1
-	check(kinds_on_plate == 1 and sim.foundry()["subjects"].size() == 1 and sim.derived_stats().has("cold_resistance_percent")
-		and sim.derived_stats()["barbs"] == 0.0, "vanguard: the plate view carries the kind, the subjects list and the new stats")
-	sim.add_material("iron_ingot", 1)
-	check(sim.foundry_remove(1, 1) and sim.currency_count("vanguard") == vanguards_before + 1 and sim.derived_stats()["armour"] == armour_bare,
-		"vanguard: lifted for one iron, back in the purse")
+	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 5 and sim.foundry()["flows"].size() == 1
+		and sim.foundry()["flows"][0]["flows"] and sim.derived_stats().has("cold_resistance_percent"),
+		"flow: the plate view carries the kind, every kind's count, and whether it flows")
+	sim.add_material("iron_ingot", 2)
+	check(sim.foundry_remove(1, 1) and sim.foundry_remove(0, 0) and sim.foundry_remove(1, 0)
+		and sim.currency_count("vanguard") == vanguards_before + 1 and sim.derived_stats()["armour"] == armour_bare,
+		"flow: lifted, the kind back in the purse and the sheet bare")
 	check(absf(sim.skill_reach("prototype_frost_orb") - 1.0) < 0.001, "reach: nothing speaks to the orb through the door")
 	check(sim.foundry_notices().is_empty(), "foundry: engine-reported milestones raise no notices of their own")
 
@@ -522,8 +531,9 @@ func _test_sim_extension() -> void:
 	check(order["required_outputs"].get("iron_fittings", 0) == 24 and not order["fulfilled"], "sim: order view")
 	check(sim.fulfill_order("reinforce_old_mine")["missing_outputs"], "sim: order refused without fittings")
 	sim.add_material("iron_fittings", 24)
+	var vanguards_held: int = sim.currency_count("vanguard")
 	check(sim.fulfill_order("reinforce_old_mine")["fulfilled"], "sim: order fulfilled")
-	check(sim.currency_count("vanguard") == 3 and sim.inventory().get("iron_fittings", 0) == 0,
+	check(sim.currency_count("vanguard") == vanguards_held + 3 and sim.inventory().get("iron_fittings", 0) == 0,
 		"sim: order paid three Vanguards and consumed fittings")
 	check(sim.skill_progress("blacksmithing")["level"] >= 2, "sim: order XP reward levelled Blacksmithing")
 	check(sim.fulfill_order("reinforce_old_mine")["already_fulfilled"], "sim: second delivery refused")

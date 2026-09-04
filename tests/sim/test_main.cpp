@@ -2795,159 +2795,177 @@ void testTypedCurrency(const tuning::Tuning& t) {
     check(back.economy.currency.at("quicksilver") == 1, "kinds: the purse rides in the save");
 }
 
-// D-023 slice 4: the Vanguard. A kind from the purse in a socket is a
-// defence working - its base on the sheet, every ingot beside it read as
-// defence; in a corner it gives part of its base and lends its readings to
-// the skill supports it touches. Invested, not spent.
-void testVanguard(const tuning::Tuning& t) {
+// D-023, the flow (owner, 4 Sep 2026): only a skill sits in a socket. A
+// kind rests where it cannot touch one, gives its base forward while a
+// chain of placed pieces leads inward to a laid tablet, and works every
+// support it touches into a FORM that feeds the skill. Ingots are base;
+// Catalysts are offensive creativity; Vanguards defensive.
+void testKindsInCorners(const tuning::Tuning& t) {
     const auto& f = t.foundry;
-    check(f.subjects.size() == 1 && f.findSubject("vanguard") && f.findSubject("vanguard")->modifier == "armour_plating" &&
-              std::abs(f.findSubject("vanguard")->value - 8.0) < 1e-9 && !f.findSubject("vanguard")->trigger.empty() && !f.findSubject("marrow"),
-          "vanguard: the one subject so far, with a base and a trigger on record");
-    check(std::abs(f.cornerLendingMultiplier - 1.0) < 1e-9 && std::abs(f.cornerBaseFraction - 0.5) < 1e-9 && f.hasteAfterHitSeconds > 0.0,
-          "vanguard: a corner reads at x1 and gives half the base");
-    check(f.findIngot("frost")->vanguardReading() == "cold_resistance" && std::abs(f.findIngot("frost")->vanguardReadingValue() - 5.0) < 1e-9 &&
-              f.findIngot("edge")->vanguardReading() == "barbs" && f.findIngot("reach")->vanguardReading() == "answer_reach" &&
-              f.findIngot("ward")->vanguardReading() == "all_resistance" && f.findIngot("haste")->vanguardReading() == "haste_after_hit" &&
-              f.findIngot("ember")->vanguardReading() == "fire_resistance" && f.findIngot("vigour")->vanguardReading() == "max_life" &&
-              f.findIngot("plate")->vanguardReading() == "armour_plating" && std::abs(f.findIngot("plate")->vanguardReadingValue() - 8.0) < 1e-9,
-          "vanguard: eight readings, the self ingots reading their base");
-    // No base's pool holds a reading or an added element: a family tag on a
-    // reading would leak it onto gear (the wand once rolled haste after a hit).
+    check(f.kindFamilies.size() == 4 && f.findKindFamily("defence") && f.findKindFamily("defence")->modifier == "armour_plating" &&
+              std::abs(f.findKindFamily("defence")->value - 4.0) < 1e-9 && f.findKindFamily("offence") &&
+              f.findKindFamily("offence")->modifier.empty() && !f.findKindFamily("nothing"),
+          "flow: four families on the plate; the Vanguard has a base, the Catalyst none");
+    check(f.forms.size() >= 20 && f.hasteAfterHitSeconds > 0.0, "flow: the first forms load");
     bool poolClean = true;
     for (const auto& base : t.items.itemBases)
         for (const auto* def : items::eligibleModifiers(t.items, base))
             for (const auto& tag : def->tags)
                 if (tag == "reading" || tag == "added") poolClean = false;
-    check(poolClean && t.items.findModifier("cold_resistance") && t.items.findModifier("barbs"), "vanguard: the readings exist and never roll on gear");
+    check(poolClean && t.items.findModifier("damage_vs_ignite"), "flow: the reactions exist and never roll on gear");
 
-    // The sheet: cold resistance is a second resistance; all_resistance feeds both; the answers are numbers.
-    stats::DerivedStats sheet;
-    sheet.coldResistancePercent = 50.0;
-    checkNear(stats::mitigateDamage(10.0, "cold", sheet, t.world.playerBase), 5.0, 1e-9, "sheet: cold resistance halves a cold hit");
-    checkNear(stats::mitigateDamage(10.0, "fire", sheet, t.world.playerBase), 10.0, 1e-9, "sheet: and leaves fire alone");
-    auto derived = stats::deriveStats(t.world.playerBase, {}, t.items,
-                                      {{"add_all_resistance", 5.0}, {"add_cold_resistance", 10.0}, {"add_barbs", 25.0},
-                                       {"add_answer_reach", 2.5}, {"add_haste_after_hit", 0.16}});
-    check(std::abs(derived.fireResistancePercent - 5.0) < 1e-9 && std::abs(derived.coldResistancePercent - 15.0) < 1e-9 &&
-              std::abs(derived.barbsBuildup - 25.0) < 1e-9 && std::abs(derived.answerReachM - 2.5) < 1e-9 && std::abs(derived.hasteAfterHit - 0.16) < 1e-9,
-          "sheet: all resistances feed both, and the answers land as numbers");
-    check(stats::deriveStats(t.world.playerBase, {}, t.items, {{"add_cold_resistance", 500.0}}).coldResistancePercent <= t.world.playerBase.resistanceCapPercent,
-          "sheet: cold resistance is capped like fire");
-
-    // A Vanguard from the purse in the socket: its base, and every ingot beside it read as defence.
+    // Depth, and where a kind may rest (era one: rows 1 and 2, sockets (1,1) and (2,2)).
     economy::PlayerEconomy p(t);
+    const auto plate = p.plate();
+    check(foundry::depth(plate, 1, 1) == 0 && foundry::depth(plate, 1, 0) == 1 && foundry::depth(plate, 1, 2) == 1 &&
+              foundry::depth(plate, 2, 0) == 2 && foundry::depth(plate, 1, 3) == 2 && foundry::depth(plate, 0, 3) == 3,
+          "flow: depth is the distance to the nearest socket");
+    check(!foundry::kindMayRest(plate, 1, 1) && !foundry::kindMayRest(plate, 1, 0) && !foundry::kindMayRest(plate, 2, 1) &&
+              foundry::kindMayRest(plate, 2, 0) && foundry::kindMayRest(plate, 1, 3) && !foundry::kindMayRest(plate, 0, 3),
+          "flow: a kind rests only where it cannot touch a socket, on a forged row");
+
+    // Placement: from the purse, only where it may rest.
     p.foundryEvent("first_kill:gloom_crawler"); // frost
-    p.foundryEvent("first_kill:shrieker");      // frost
-    p.foundryEvent("first_kill:ember_whelp");   // ember
-    p.foundryEvent("work:strike_split");        // edge
-    check(!p.foundryPlaceSubject(1, 1, "vanguard"), "vanguard: none in the purse, none set");
-    p.grant("vanguard", 1);
-    check(!p.foundryPlaceSubject(0, 1, "vanguard") && !p.foundryPlaceSubject(1, 1, "marrow"), "vanguard: not on an unforged row, and only a subject kind");
-    check(p.foundryPlaceSubject(1, 1, "vanguard") && p.currency["vanguard"] == 0, "vanguard: set in the socket, taken from the purse");
-    check(!p.foundryPlaceSkill(1, 1, "prototype_frost_orb") && !p.foundryPlace(1, 1, "frost"), "vanguard: the socket is taken");
-    check(p.foundryPlace(1, 0, "frost") && p.foundryPlace(1, 2, "ember") && p.foundryPlace(2, 1, "edge"), "vanguard: frost, ember and edge beside it");
-    auto fx = foundry::effects(t, p.foundry(), p.plate());
-    int subject = 0, supports = 0, skillReadings = 0;
-    std::map<std::string, double> read;
-    for (const auto& e : fx) {
-        if (e.kind == "subject") {
-            ++subject;
-            check(e.subject == "vanguard" && e.modifier == "armour_plating" && std::abs(e.value - 8.0) < 1e-9 && e.row == 1 && e.col == 1,
-                  "vanguard: the subject gives its base at its socket");
-        }
-        if (e.kind == "support" && e.subject == "vanguard") {
-            ++supports;
-            read[e.modifier] += e.value;
-            check(e.skill.empty() && e.row == 1 && e.col == 1, "vanguard: a support names the socket and no skill");
-        }
-        if ((e.kind == "support" || e.kind == "added") && !e.skill.empty()) ++skillReadings;
-    }
-    check(subject == 1 && supports == 3 && skillReadings == 0, "vanguard: one subject, three supports, no skill reading fires beside a Vanguard");
-    check(std::abs(read["cold_resistance"] - 10.0) < 1e-9 && std::abs(read["fire_resistance"] - 10.0) < 1e-9 && std::abs(read["barbs"] - 25.0) < 1e-9,
-          "vanguard: frost is cold resistance, ember fire resistance, edge Barbs, each doubled");
+    p.foundryEvent("first_kill:ash_hound");     // haste
+    check(!p.foundryPlaceKind(2, 0, "vanguard"), "flow: none in the purse, none set");
+    p.grant("vanguard", 2);
+    check(!p.foundryPlaceKind(1, 1, "vanguard") && !p.foundryPlaceKind(1, 0, "vanguard") && !p.foundryPlaceKind(0, 0, "vanguard") &&
+              !p.foundryPlaceKind(2, 0, "wood") && p.currency["vanguard"] == 2,
+          "flow: a socket, a support cell, an unforged row and a material are refused, nothing spent");
+    check(p.foundryPlaceKind(2, 0, "vanguard") && p.currency["vanguard"] == 1, "flow: set in the corner, taken from the purse");
+    check(!p.foundryPlace(2, 0, "frost") && !p.foundryPlaceKind(2, 0, "vanguard"), "flow: the cell is taken");
     auto onSheet = [&](const economy::PlayerEconomy& who) {
         std::vector<stats::ExtraEffect> extra;
         for (const auto& m : grammar::foundryMods(t, who.foundry(), who.currentEra())) extra.push_back({m.effectKey, m.value});
         return stats::deriveStats(t.world.playerBase, {}, t.items, extra);
     };
-    auto sheetNow = onSheet(p);
-    check(std::abs(sheetNow.armour - 8.0) < 1e-9 && std::abs(sheetNow.coldResistancePercent - 10.0) < 1e-9 &&
-              std::abs(sheetNow.fireResistancePercent - 10.0) < 1e-9 && std::abs(sheetNow.barbsBuildup - 25.0) < 1e-9,
-          "vanguard: the readings land on the sheet");
-    // Backing: a second frost below the frost support counts it once more.
-    check(p.foundryPlace(2, 0, "frost"), "vanguard: a second frost backs the first");
-    int backings = 0;
-    for (const auto& e : foundry::effects(t, p.foundry(), p.plate()))
-        if (e.kind == "backing" && e.subject == "vanguard" && e.modifier == "cold_resistance") ++backings;
-    check(backings == 1 && std::abs(onSheet(p).coldResistancePercent - 20.0) < 1e-9, "vanguard: backing doubles the cold resistance");
-    // Lifting pays metal and returns the kind to the purse.
-    check(!p.foundryRemove(1, 1), "vanguard: lifting needs the metal");
-    p.inventory["iron_ingot"] = 1;
-    check(p.foundryRemove(1, 1) && p.currency["vanguard"] == 1 && p.inventory["iron_ingot"] == 0, "vanguard: lifted for one iron, back in the purse");
-    check(std::abs(onSheet(p).armour) < 1e-9 && std::abs(onSheet(p).coldResistancePercent) < 1e-9, "vanguard: lifted, the sheet is bare again");
-
-    // In a corner: half its base, and its readings lent to the skill supports it touches.
-    economy::PlayerEconomy q(t);
-    q.foundryEvent("first_kill:gloom_crawler"); // frost
-    q.foundryEvent("first_kill:ash_hound");     // haste
-    q.grant("vanguard", 1);
-    check(q.foundryPlaceSkill(1, 1, "prototype_frost_orb") && q.foundryPlace(1, 0, "frost") && q.foundryPlaceSubject(2, 0, "vanguard"),
-          "corner: the orb, its frost support, and a Vanguard in the corner below the frost");
-    fx = foundry::effects(t, q.foundry(), q.plate());
-    int augments = 0, lendings = 0, orbSupports = 0;
-    for (const auto& e : fx) {
-        if (e.kind == "augment") {
-            ++augments;
-            check(e.modifier == "armour_plating" && std::abs(e.value - 4.0) < 1e-9 && e.row == 2 && e.col == 0, "corner: half the base at the corner");
+    auto count = [&](const economy::PlayerEconomy& who, const std::string& kind) {
+        int n = 0;
+        for (const auto& e : foundry::effects(t, who.foundry(), who.plate()))
+            if (e.kind == kind) ++n;
+        return n;
+    };
+    // Nothing flows until a chain leads to a laid tablet.
+    check(!foundry::flowsToSkill(p.foundry(), p.plate(), 2, 0) && count(p, "augment") == 0 && std::abs(onSheet(p).armour) < 1e-9,
+          "flow: alone in a corner, a kind gives nothing");
+    check(p.foundryPlace(1, 0, "frost") && !foundry::flowsToSkill(p.foundry(), p.plate(), 2, 0),
+          "flow: a support with no tablet beside it is not a chain");
+    check(p.foundryPlaceSkill(1, 1, "prototype_frost_orb") && foundry::flowsToSkill(p.foundry(), p.plate(), 2, 0),
+          "flow: the orb laid, the chain closes");
+    check(count(p, "augment") == 1 && std::abs(onSheet(p).armour - 4.0) < 1e-9, "flow: the Vanguard's base counts, four armour on the sheet");
+    // The form: Frost beside the orb, touched by a Vanguard, is Frost Leech; the Frost keeps its support.
+    int forms = 0, supports = 0;
+    for (const auto& e : foundry::effects(t, p.foundry(), p.plate())) {
+        if (e.kind == "support" && e.skill == "prototype_frost_orb" && e.modifier == "cold_damage") ++supports;
+        if (e.kind == "form") {
+            ++forms;
+            check(e.skill == "prototype_frost_orb" && e.modifier == "life_on_kill" && std::abs(e.value - 4.0) < 1e-9 && e.cellRow == 1 &&
+                      e.cellCol == 0 && e.row == 1 && e.col == 1 && e.subject == "defence" && e.label.rfind("Frost Leech", 0) == 0,
+                  "flow: Frost Leech names its skill, its support cell, its socket and its family");
         }
-        if (e.kind == "lending") {
-            ++lendings;
-            check(e.modifier == "cold_resistance" && std::abs(e.value - 5.0) < 1e-9 && e.cellRow == 1 && e.cellCol == 0 && e.subject == "vanguard",
-                  "corner: the frost support is lent cold resistance at x1");
-        }
-        if (e.kind == "support" && e.skill == "prototype_frost_orb") ++orbSupports;
     }
-    check(augments == 1 && lendings == 1 && orbSupports == 1, "corner: one augment, one lending, and the frost still supports the orb");
-    auto orbHit = grammar::skillHit(t, grammar::foundryMods(t, q.foundry(), q.currentEra()), "prototype_frost_orb");
-    checkNear(orbHit[0].damage, 9.0 * (1.0 + 0.12 + 0.24), 1e-9, "corner: the orb keeps its +24% cold");
-    check(std::abs(onSheet(q).armour - 4.0) < 1e-9 && std::abs(onSheet(q).coldResistancePercent - 5.0) < 1e-9,
-          "corner: four armour and five cold resistance on the sheet");
-    // An ingot the corner touches is lent only when it supports a skill.
-    check(q.foundryPlace(2, 1, "haste"), "corner: haste south of the orb, east of the corner");
-    lendings = 0;
-    for (const auto& e : foundry::effects(t, q.foundry(), q.plate())) if (e.kind == "lending") ++lendings;
-    check(lendings == 2 && std::abs(onSheet(q).hasteAfterHit - 0.08) < 1e-9, "corner: the haste support is lent haste after a hit");
-    q.inventory["iron_ingot"] = 1;
-    check(q.foundryRemove(2, 1) && q.foundryPlace(1, 2, "haste"), "corner: haste moved beside the orb, away from the corner");
-    lendings = 0;
-    for (const auto& e : foundry::effects(t, q.foundry(), q.plate())) if (e.kind == "lending") ++lendings;
-    check(lendings == 1, "corner: a support the corner does not touch is lent nothing");
+    check(forms == 1 && supports == 1, "flow: one form, and the Frost still supports the orb");
+    auto mods = grammar::foundryMods(t, p.foundry(), p.currentEra());
+    checkNear(grammar::skillLifeOnKill(t, mods, "prototype_frost_orb"), 4.0, 1e-9, "flow: a kill with the orb restores four life");
+    checkNear(grammar::skillHit(t, mods, "prototype_frost_orb")[0].damage, 9.0 * (1.0 + 0.12 + 0.24), 1e-9, "flow: the orb keeps its +24% cold");
+    checkNear(grammar::skillLifeOnKill(t, mods, "prototype_frost_nova"), 0.0, 1e-9, "flow: the nova, in no socket, gets nothing");
+    // A shared support feeds both skills: Haste south of the orb, touched by
+    // the same corner, with the strike in the second socket.
+    check(p.foundryPlace(2, 1, "haste") && p.foundryPlaceSkill(2, 2, "prototype_heavy_strike"),
+          "flow: haste in the shared support, the strike in the second socket");
+    int quicksteps = 0;
+    for (const auto& e : foundry::effects(t, p.foundry(), p.plate()))
+        if (e.kind == "form" && e.modifier == "haste_after_hit") ++quicksteps;
+    check(quicksteps == 2 && std::abs(onSheet(p).hasteAfterHit - 0.32) < 1e-9, "flow: Quickstep feeds both skills the shared support serves");
+    // Lifting pays metal and returns the kind; lifted, nothing flows.
+    check(!p.foundryRemove(2, 0), "flow: lifting needs the metal");
+    p.inventory["iron_ingot"] = 1;
+    check(p.foundryRemove(2, 0) && p.currency["vanguard"] == 2 && count(p, "form") == 0 && std::abs(onSheet(p).armour) < 1e-9,
+          "flow: lifted for one iron, back in the purse, the forms gone");
 
-    // The save carries a kind on the plate; a stale kind is lifted back to the purse on load.
+    // The Catalyst: the same lane sharpens, the added lane reacts.
+    economy::PlayerEconomy c(t);
+    c.foundryEvent("first_kill:gloom_crawler"); // frost
+    c.foundryEvent("first_kill:ember_whelp");   // ember
+    c.grant("ember_catalyst", 1);
+    c.grant("preserving_catalyst", 1);
+    check(c.foundryPlaceSkill(1, 1, "prototype_frost_orb") && c.foundryPlace(1, 0, "ember") && c.foundryPlaceKind(2, 0, "ember_catalyst"),
+          "catalyst: ember west of the orb, a catalyst in the corner below it");
+    check(count(c, "augment") == 0 && foundry::flowsToSkill(c.foundry(), c.plate(), 2, 0), "catalyst: no base of its own, but it flows");
+    bool scald = false;
+    int reactionEffects = 0;
+    for (const auto& e : foundry::effects(t, c.foundry(), c.plate())) {
+        if (e.kind != "form") continue;
+        ++reactionEffects;
+        if (e.label.rfind("Scald", 0) == 0) scald = true;
+        if (e.modifier == "damage_vs_ignite") check(e.packet == "cold", "catalyst: Scald's more damage is on the orb's own cold");
+    }
+    check(scald && reactionEffects == 2, "catalyst: Ember beside a cold orb, worked, is Scald: two effects");
+    auto cm = grammar::foundryMods(t, c.foundry(), c.currentEra());
+    checkNear(grammar::igniteApplied(t, cm, "prototype_frost_orb", false), 15.0, 1e-9, "catalyst: the scalded orb ignites");
+    checkNear(grammar::igniteApplied(t, cm, "prototype_frost_nova", false), 0.0, 1e-9, "catalyst: the nova does not");
+    auto plain = grammar::skillHit(t, cm, "prototype_frost_orb");
+    auto burning = grammar::skillHit(t, cm, "prototype_frost_orb", {"ignite"});
+    auto chilled = grammar::skillHit(t, cm, "prototype_frost_orb", {"chill"});
+    check(plain.size() == 2 && burning.size() == 2, "catalyst: the orb is still a cold-and-fire bolt");
+    checkNear(burning[0].damage, plain[0].damage * 1.2, 1e-9, "catalyst: an ignited enemy takes 20% more of the orb's cold");
+    checkNear(burning[1].damage, plain[1].damage, 1e-9, "catalyst: and no more of its fire");
+    checkNear(chilled[0].damage, plain[0].damage, 1e-9, "catalyst: a merely chilled enemy takes the plain hit");
+    // The same lane: a Frost beside the orb worked by a catalyst is Deep Frost.
+    c.inventory["iron_ingot"] = 1;
+    check(c.foundryRemove(1, 0) && c.foundryPlace(1, 0, "frost"), "catalyst: frost in the ember's place");
+    bool deep = false;
+    for (const auto& e : foundry::effects(t, c.foundry(), c.plate()))
+        if (e.kind == "form" && e.label.rfind("Deep Frost", 0) == 0 && e.modifier == "deep_frost") deep = true;
+    check(deep, "catalyst: Frost beside a cold orb, worked, is Deep Frost");
+    cm = grammar::foundryMods(t, c.foundry(), c.currentEra());
+    check(grammar::chillApplied(t, cm, "prototype_frost_orb", false) > grammar::chillApplied(t, {}, "prototype_frost_orb", false) * 1.29,
+          "catalyst: the orb chills deeper");
+    check(c.foundryPlaceKind(1, 3, "preserving_catalyst") && !foundry::flowsToSkill(c.foundry(), c.plate(), 1, 3),
+          "catalyst: any catalyst is the offence kind; this one touches no support yet");
+
+    // The far cell (era two): a kind at depth three flows through a corner kind.
+    economy::PlayerEconomy far(t);
+    far.recordWorldEffect("stonecut_blocks"); // era two forges row 0
+    far.foundryEvent("work:strike_split");    // edge
+    far.grant("vanguard", 1);
+    far.grant("ember_catalyst", 1);
+    check(far.plate().forged(0, 3) && foundry::kindMayRest(far.plate(), 0, 3), "far: the far cell is forged and rests a kind");
+    check(far.foundryPlaceSkill(2, 2, "prototype_heavy_strike") && far.foundryPlace(1, 2, "edge") && far.foundryPlaceKind(0, 3, "vanguard"),
+          "far: the strike, its edge support, a Vanguard on the far cell");
+    check(!foundry::flowsToSkill(far.foundry(), far.plate(), 0, 3) && std::abs(onSheet(far).armour) < 1e-9, "far: no piece between, no flow");
+    check(far.foundryPlaceKind(1, 3, "ember_catalyst") && foundry::flowsToSkill(far.foundry(), far.plate(), 0, 3) &&
+              std::abs(onSheet(far).armour - 4.0) < 1e-9,
+          "far: a catalyst in the corner between carries the Vanguard's base inward");
+    bool serration = false;
+    for (const auto& e : foundry::effects(t, far.foundry(), far.plate()))
+        if (e.kind == "form" && e.label.rfind("Serration", 0) == 0 && e.skill == "prototype_heavy_strike") serration = true;
+    check(serration, "far: the catalyst works the edge into Serration for the strike");
+
+    // The save carries a corner kind; a stale kind touching a socket goes back to the purse on load.
     save::SaveGame game;
-    game.economy = q.exportState();
+    game.economy = c.exportState();
     auto back = save::fromJson(save::toJson(game));
     bool cornerRides = false;
     for (const auto& pl : back.economy.foundry.plate)
-        if (pl.isCurrency() && pl.currency == "vanguard" && pl.row == 2 && pl.col == 0) cornerRides = true;
-    check(cornerRides, "corner: the kind rides in the save");
-    economy::PlayerEconomy::State stale = q.exportState();
+        if (pl.isCurrency() && pl.currency == "ember_catalyst" && pl.row == 2 && pl.col == 0) cornerRides = true;
+    check(cornerRides, "flow: the kind rides in the save");
+    economy::PlayerEconomy::State stale = p.exportState();
     stale.foundry.plate.clear();
-    foundry::Placement gone;
-    gone.row = 0;
-    gone.col = 0;
-    gone.currency = "vanguard"; // unforged in era one
-    foundry::Placement kept;
-    kept.row = 2;
-    kept.col = 2;
-    kept.currency = "vanguard"; // a socket
-    stale.foundry.plate = {gone, kept};
+    foundry::Placement bad;
+    bad.row = 1;
+    bad.col = 0;
+    bad.currency = "vanguard"; // a support cell
+    foundry::Placement good;
+    good.row = 1;
+    good.col = 3;
+    good.currency = "vanguard"; // a corner
+    stale.foundry.plate = {bad, good};
     stale.currency["vanguard"] = 0;
     economy::PlayerEconomy loaded(t);
     loaded.importState(stale);
     check(loaded.foundry().plate.size() == 1 && loaded.currency["vanguard"] == 1,
-          "corner: a kind the frame cannot hold goes back to the purse on load");
+          "flow: a kind beside a socket is lifted back to the purse on load");
 }
 
 int main(int argc, char** argv) {
@@ -2995,7 +3013,7 @@ int main(int argc, char** argv) {
     testFoundry(t);
     testEveryIngotReadsEverySkill(t);
     testTypedCurrency(t);
-    testVanguard(t);
+    testKindsInCorners(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

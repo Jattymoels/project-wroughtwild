@@ -345,7 +345,7 @@ func _reap(skill_id: StringName, kills: int) -> void:
 func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -> Dictionary:
 	var landed := 0.0
 	var types := PackedStringArray()
-	for packet in sim.player_hit(String(skill_id), isolated):
+	for packet in sim.player_hit(String(skill_id), isolated, enemy.carried_statuses()):
 		var taken: float = enemy.take_typed(float(packet["damage"]) * fraction, String(packet["type"]))
 		if taken > 0.0:
 			landed += taken

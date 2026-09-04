@@ -217,7 +217,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("foundry_place", "row", "col", "ingot_id"), &WroughtwildSim::foundry_place);
     ClassDB::bind_method(D_METHOD("foundry_remove", "row", "col"), &WroughtwildSim::foundry_remove);
     ClassDB::bind_method(D_METHOD("foundry_place_skill", "row", "col", "skill_id"), &WroughtwildSim::foundry_place_skill);
-    ClassDB::bind_method(D_METHOD("foundry_place_subject", "row", "col", "kind_id"), &WroughtwildSim::foundry_place_subject);
+    ClassDB::bind_method(D_METHOD("foundry_place_kind", "row", "col", "kind_id"), &WroughtwildSim::foundry_place_kind);
     ClassDB::bind_method(D_METHOD("foundry_event", "event"), &WroughtwildSim::foundry_event);
     ClassDB::bind_method(D_METHOD("foundry_notices"), &WroughtwildSim::foundry_notices);
     ClassDB::bind_method(D_METHOD("era"), &WroughtwildSim::era);
@@ -288,7 +288,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("combat_mods"), &WroughtwildSim::combat_mods);
     ClassDB::bind_method(D_METHOD("begin_fight", "seed"), &WroughtwildSim::begin_fight);
     ClassDB::bind_method(D_METHOD("player_hit_damage", "skill_id", "isolated"), &WroughtwildSim::player_hit_damage);
-    ClassDB::bind_method(D_METHOD("player_hit", "skill_id", "isolated"), &WroughtwildSim::player_hit);
+    ClassDB::bind_method(D_METHOD("player_hit", "skill_id", "isolated", "target_statuses"), &WroughtwildSim::player_hit, DEFVAL(PackedStringArray()));
     ClassDB::bind_method(D_METHOD("enemy_hit_damage", "raw_damage", "damage_type", "bonus_armour"), &WroughtwildSim::enemy_hit_damage, DEFVAL(0.0));
     ClassDB::bind_method(D_METHOD("mitigate", "amount", "damage_type"), &WroughtwildSim::mitigate);
 
@@ -817,7 +817,8 @@ void WroughtwildSim::begin_fight(int seed) {
     hits_ = std::make_unique<wroughtwild::combat::HitStream>(static_cast<uint64_t>(seed));
 }
 
-wroughtwild::grammar::Hit WroughtwildSim::rolled_hit(const String& skill_id, bool isolated) {
+wroughtwild::grammar::Hit WroughtwildSim::rolled_hit(const String& skill_id, bool isolated,
+                                                     const PackedStringArray& target_statuses) {
     const auto* def = find_skill(skill_id);
     if (def == nullptr) {
         UtilityFunctions::push_error("WroughtwildSim.player_hit: unknown skill ", skill_id);
@@ -826,9 +827,14 @@ wroughtwild::grammar::Hit WroughtwildSim::rolled_hit(const String& skill_id, boo
     if (!hits_) {
         begin_fight(0);
     }
+    std::vector<std::string> carried;
+    for (int i = 0; i < target_statuses.size(); ++i) {
+        carried.push_back(to_std(target_statuses[i]));
+    }
     // The gear and the plate make the hit's typed packets (D-014, D-023
-    // slice 2); the hit stream rolls the whole hit once, for every packet.
-    return hits_->playerHit(wroughtwild::grammar::skillHit(*tuning_, active_mods(), to_std(skill_id)),
+    // slice 2), the struck mob's statuses the forms' reactions; the hit
+    // stream rolls the whole hit once, for every packet.
+    return hits_->playerHit(wroughtwild::grammar::skillHit(*tuning_, active_mods(), to_std(skill_id), carried),
                             current_mods(), isolated);
 }
 
@@ -837,18 +843,18 @@ double WroughtwildSim::player_hit_damage(const String& skill_id, bool isolated) 
         return 0.0;
     }
     double total = 0.0;
-    for (const auto& packet : rolled_hit(skill_id, isolated)) {
+    for (const auto& packet : rolled_hit(skill_id, isolated, PackedStringArray())) {
         total += packet.damage;
     }
     return total;
 }
 
-Array WroughtwildSim::player_hit(const String& skill_id, bool isolated) {
+Array WroughtwildSim::player_hit(const String& skill_id, bool isolated, const PackedStringArray& target_statuses) {
     Array out;
     if (!require_loaded("player_hit")) {
         return out;
     }
-    for (const auto& packet : rolled_hit(skill_id, isolated)) {
+    for (const auto& packet : rolled_hit(skill_id, isolated, target_statuses)) {
         Dictionary d;
         d["type"] = to_godot(packet.type);
         d["damage"] = packet.damage;
@@ -2660,20 +2666,38 @@ Dictionary WroughtwildSim::foundry() const {
         tablets.push_back(t);
     }
     d["tablets"] = tablets;
-    // Subjects (D-023 slice 4): the kinds that may sit in a socket, with
-    // what the purse holds of each.
-    Array subjects;
-    for (const auto& s : tuning_->foundry.subjects) {
+    // Kinds (D-023, the flow): every currency the player holds, with its
+    // family's base on the plate, for the tray.
+    Array kinds;
+    for (const auto& k : tuning_->crafting.currencyKinds) {
+        const auto* family = tuning_->foundry.findKindFamily(k.family);
+        if (family == nullptr) {
+            continue;
+        }
         Dictionary entry;
-        entry["id"] = to_godot(s.id);
-        entry["display_name"] = to_godot(s.displayName);
-        entry["held"] = player_->held(s.id);
-        const auto* def = tuning_->items.findModifier(s.modifier);
-        entry["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, s.value)) : String();
-        entry["trigger"] = to_godot(s.trigger);
-        subjects.push_back(entry);
+        entry["id"] = to_godot(k.id);
+        entry["display_name"] = to_godot(k.displayName);
+        entry["family"] = to_godot(k.family);
+        entry["family_name"] = to_godot(family->displayName);
+        entry["held"] = player_->held(k.id);
+        const auto* def = family->modifier.empty() ? nullptr : tuning_->items.findModifier(family->modifier);
+        entry["base_sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, family->value)) : String("no base of its own");
+        kinds.push_back(entry);
     }
-    d["subjects"] = subjects;
+    d["kinds"] = kinds;
+    // The flow per placed kind: whether a chain leads inward to a skill.
+    Array flows;
+    for (const auto& p : state.plate) {
+        if (!p.isCurrency()) {
+            continue;
+        }
+        Dictionary f;
+        f["row"] = p.row;
+        f["col"] = p.col;
+        f["flows"] = wroughtwild::foundry::flowsToSkill(state, frame, p.row, p.col);
+        flows.push_back(f);
+    }
+    d["flows"] = flows;
     d["haste_after_hit_seconds"] = tuning_->foundry.hasteAfterHitSeconds;
     d["support_multiplier"] = tuning_->foundry.supportMultiplier;
     Dictionary owned, unplaced;
@@ -2726,10 +2750,6 @@ Dictionary WroughtwildSim::foundry_ingot(const String& ingot_id) const {
     d["added_sentence"] = added ? to_godot(wroughtwild::items::modifierSentence(
                                       *added, ingot->value * tuning_->foundry.supportMultiplier))
                                 : String();
-    const auto* vanguard = tuning_->items.findModifier(ingot->vanguardReading());
-    d["vanguard_sentence"] = vanguard ? to_godot(wroughtwild::items::modifierSentence(
-                                            *vanguard, ingot->vanguardReadingValue() * tuning_->foundry.supportMultiplier))
-                                      : String();
     const auto& state = player_->foundry();
     auto owned = state.owned.find(ingot->id);
     d["owned"] = owned == state.owned.end() ? 0 : owned->second;
@@ -2748,6 +2768,7 @@ Array WroughtwildSim::foundry_effects() const {
         d["label"] = to_godot(e.label);
         d["skill"] = to_godot(e.skill);
         d["subject"] = to_godot(e.subject);
+        d["packet"] = to_godot(e.packet);
         d["cell_row"] = e.cellRow;
         d["cell_col"] = e.cellCol;
         const auto* def = tuning_->items.findModifier(e.modifier);
@@ -2773,8 +2794,8 @@ bool WroughtwildSim::foundry_place_skill(int row, int col, const String& skill_i
     return require_loaded("foundry_place_skill") && player_->foundryPlaceSkill(row, col, to_std(skill_id));
 }
 
-bool WroughtwildSim::foundry_place_subject(int row, int col, const String& kind_id) {
-    return require_loaded("foundry_place_subject") && player_->foundryPlaceSubject(row, col, to_std(kind_id));
+bool WroughtwildSim::foundry_place_kind(int row, int col, const String& kind_id) {
+    return require_loaded("foundry_place_kind") && player_->foundryPlaceKind(row, col, to_std(kind_id));
 }
 
 Array WroughtwildSim::foundry_event(const String& event) {
