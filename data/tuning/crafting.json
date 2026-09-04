@@ -130,6 +130,150 @@
   ],
   "recipes": [
     {
+      "id": "hunting_bow",
+      "display_name": "Hunting Bow",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "wood": 4,
+        "iron_ingot": 2
+      },
+      "outputs": {
+        "hunting_bow": 1
+      },
+      "base_skill_xp": 10,
+      "fuel_cost": 2,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "The Ranger's first weapon at the basic forge: a stave and iron tips, as cheap as the mace (the class gear pass, 4 Sep 2026)."
+    },
+    {
+      "id": "bronze_longbow",
+      "display_name": "Bronze Longbow",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "wood": 4,
+        "bronze_ingot": 3
+      },
+      "outputs": {
+        "bronze_longbow": 1
+      },
+      "base_skill_xp": 16,
+      "fuel_cost": 3,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "Era two's bow: bronze limbs, a tier-three base."
+    },
+    {
+      "id": "hide_quiver",
+      "display_name": "Hide Quiver",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "hide": 3,
+        "wood": 1
+      },
+      "outputs": {
+        "hide_quiver": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 0,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "Sewn at the bench from the elk's hide: the Ranger's offhand, and the leather line's first piece."
+    },
+    {
+      "id": "timber_shield",
+      "display_name": "Timber Shield",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 6,
+        "hide": 1
+      },
+      "outputs": {
+        "timber_shield": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 0,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "The first-hour shield: planks and a hide strap at the bench, six armour for anyone."
+    },
+    {
+      "id": "iron_shield",
+      "display_name": "Iron Shield",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "iron_ingot": 6,
+        "wood": 2
+      },
+      "outputs": {
+        "iron_shield": 1
+      },
+      "base_skill_xp": 12,
+      "fuel_cost": 2,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "The Warden's offhand at the basic forge, priced like the mace."
+    },
+    {
+      "id": "charred_brand",
+      "display_name": "Charred Brand",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "wood": 3,
+        "iron_ingot": 2,
+        "charcoal": 1
+      },
+      "outputs": {
+        "charred_brand": 1
+      },
+      "base_skill_xp": 10,
+      "fuel_cost": 2,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "The Kindler's first weapon: a stave shod in iron and charred in the forge's own coals."
+    },
+    {
+      "id": "cinder_lantern",
+      "display_name": "Cinder Lantern",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 2
+      },
+      "inputs": {
+        "iron_ingot": 3,
+        "charcoal": 2
+      },
+      "outputs": {
+        "cinder_lantern": 1
+      },
+      "base_skill_xp": 10,
+      "fuel_cost": 2,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "The Kindler's offhand: an iron lantern of coals."
+    },
+    {
       "id": "workbench_kit",
       "display_name": "Workbench Kit",
       "station": "",

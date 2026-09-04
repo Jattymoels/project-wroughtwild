@@ -769,7 +769,7 @@ func _test_sim_extension() -> void:
 	check(snapshot_with_gear.find("fire_resistance") >= 0, "gear: tempered armour is in the save schema")
 
 	# D-014 itemisation: bases, rarities, pack items, gear-driven grammar.
-	check(sim.slot_ids().size() == 3 and sim.item_base_ids().has("frost_sceptre"), "items: slots and bases from data")
+	check(sim.slot_ids().size() == 4 and sim.item_base_ids().has("frost_sceptre") and sim.item_base_ids().has("hunting_bow"), "items: slots (the offhand among them) and bases from data")
 	check(sim.modifier("deep_frost")["applies_to_tags"].has("chill") and sim.modifier("max_life")["self"], "items: modifier views")
 	# The trial run above banked the gear its rooms dropped, so the pack is not empty.
 	var before: int = sim.pack_items().size()

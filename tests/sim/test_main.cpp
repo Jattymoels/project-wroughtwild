@@ -1441,7 +1441,7 @@ void testMobGearAndPages(const tuning::Tuning& t) {
 // D-014 slice 1: one modifier pool, rarity by count, gear-driven grammar,
 // pack items that save, and trial rooms that drop gear.
 void testItemisation(const tuning::Tuning& t) {
-    check(t.items.slots.size() == 3 && t.items.findRarity("wrought") != nullptr, "items: slots and rarities load");
+    check(t.items.slots.size() == 4 && t.items.findRarity("wrought") != nullptr, "items: slots (the offhand among them) and rarities load");
     const auto* sceptre = t.items.findBase("frost_sceptre");
     check(sceptre != nullptr && sceptre->slot == "weapon" && !sceptre->implicitModifiers.empty(),
           "items: weapon base carries its slot and an implicit (never a skill, D-016)");
@@ -3615,6 +3615,105 @@ void testClassKits(const tuning::Tuning& t) {
           "kits: restored, the Ranger keeps the bow");
 }
 
+// The class gear pass (owner, 4 Sep 2026: "items to accommodate the
+// classes, i.e. bows that enhance projectile attacks"): an offhand slot,
+// bows and projectile modifiers for the Ranger, shields for the Warden, a
+// brand and a lantern for the Kindler, at the bench and the forge.
+void testClassGear(const tuning::Tuning& t) {
+    const auto* bow = t.items.findBase("hunting_bow");
+    const auto* longbow = t.items.findBase("bronze_longbow");
+    const auto* quiver = t.items.findBase("hide_quiver");
+    const auto* timber = t.items.findBase("timber_shield");
+    const auto* shield = t.items.findBase("iron_shield");
+    const auto* brand = t.items.findBase("charred_brand");
+    const auto* lantern = t.items.findBase("cinder_lantern");
+    check(bow && longbow && quiver && timber && shield && brand && lantern && bow->slot == "weapon" && quiver->slot == "offhand" &&
+              timber->slot == "offhand" && shield->slot == "offhand" && lantern->slot == "offhand" && brand->slot == "weapon" &&
+              bow->tierCap == 2 && longbow->tierCap == 3 && timber->tierCap == 1 && t.items.itemBases.size() == 14,
+          "gear: seven new bases in their slots - the offhand is the fourth - with their metals' caps");
+    for (const char* id : {"projectile_damage", "fletching", "barbed_heads"})
+        check(t.items.findModifier(id) != nullptr && !t.items.findModifier(id)->isSelf(), std::string("gear: the modifier ") + id + " loads");
+    check(t.items.findModifier("fletching")->fromTier == 2 && t.items.findModifier("barbed_heads")->fromTier == 2 &&
+              t.items.findModifier("projectile_damage")->fromTier == 1,
+          "gear: the fan and the pierce wait for tier two; the damage line rolls from one");
+    for (const char* id : {"hunting_bow", "bronze_longbow", "hide_quiver", "timber_shield", "iron_shield", "charred_brand", "cinder_lantern"})
+        check(t.crafting.findRecipe(id) != nullptr, std::string("gear: a recipe makes ") + id);
+    check(t.crafting.findRecipe("hide_quiver")->station == "workbench" && t.crafting.findRecipe("timber_shield")->station == "workbench" &&
+              t.crafting.findRecipe("hunting_bow")->station == "forge_basic" && t.crafting.findRecipe("bronze_longbow")->minimumSkill.at("blacksmithing") == 3,
+          "gear: the quiver and the timber shield at the bench, the bow at the forge, the longbow behind Blacksmithing 3");
+
+    // The bow's implicit speaks to projectiles alone: the Bow Shot and the orb, never the strike.
+    auto bare = [&](const std::string& skill) { return grammar::skillDamage(t, {}, skill); };
+    stats::Equipment worn;
+    worn.slots["weapon"] = items::rollRarityItem(t.items, "hunting_bow", "plain", 1, 1);
+    auto mods = grammar::gearMods(t.items, worn);
+    checkNear(grammar::skillDamage(t, mods, "prototype_bow_shot") / bare("prototype_bow_shot"), 1.1, 1e-9, "gear: the bow's implicit is +10% for the Bow Shot");
+    checkNear(grammar::skillDamage(t, mods, "prototype_frost_orb") / bare("prototype_frost_orb"), 1.1, 1e-9, "gear: and for the orb - any projectile");
+    checkNear(grammar::skillDamage(t, mods, "prototype_heavy_strike") / bare("prototype_heavy_strike"), 1.0, 1e-9, "gear: never the strike");
+    check(grammar::skillProjectiles(t, mods, "prototype_bow_shot") == 1 && grammar::skillPierce(t, mods, "prototype_bow_shot") == 0,
+          "gear: a plain bow fans and pierces nothing");
+    // A wrought bow at tier two may roll Fletching and Barbed Heads, never a self stat.
+    bool fanned = false, barbed = false, selfStat = false;
+    for (uint64_t seed = 0; seed < 80; ++seed) {
+        auto item = items::rollRarityItem(t.items, "hunting_bow", "wrought", 2, seed);
+        for (const auto& rolled : item.rolledProperties) {
+            if (rolled.propertyId == "fletching") fanned = true;
+            if (rolled.propertyId == "barbed_heads") barbed = true;
+            if (t.items.findModifier(rolled.propertyId)->isSelf()) selfStat = true;
+        }
+    }
+    check(fanned && barbed && !selfStat, "gear: a wrought bow rolls the fan and the pierce, never life or armour");
+    // Fletching and Barbed Heads worn: the Bow Shot fans and pierces; the quiver stacks a second Fletching.
+    items::ItemInstance fletched = items::rollRarityItem(t.items, "hunting_bow", "plain", 2, 3);
+    fletched.rolledProperties.push_back({"fletching", 2, 1.0});
+    fletched.rolledProperties.push_back({"barbed_heads", 2, 1.0});
+    worn.slots["weapon"] = fletched;
+    items::ItemInstance quiverItem = items::rollRarityItem(t.items, "hide_quiver", "plain", 2, 4);
+    quiverItem.rolledProperties.push_back({"fletching", 2, 1.0});
+    worn.slots["offhand"] = quiverItem;
+    mods = grammar::gearMods(t.items, worn);
+    check(grammar::skillProjectiles(t, mods, "prototype_bow_shot") == 3 && grammar::skillPierce(t, mods, "prototype_bow_shot") == 1 &&
+              grammar::skillProjectiles(t, mods, "prototype_heavy_strike") == 1 && grammar::skillPierce(t, mods, "prototype_ember_bolt") == 1,
+          "gear: Fletching on the bow and the quiver make three arrows, Barbed Heads one pierce, for projectiles alone");
+    checkNear(grammar::skillDamage(t, mods, "prototype_bow_shot") / bare("prototype_bow_shot"), 1.15, 1e-9,
+              "gear: the bow's and the quiver's projectile implicits add - 15% together");
+    // The shields on the sheet: the offhand and the chest both count.
+    stats::Equipment warden;
+    warden.slots["offhand"] = items::rollRarityItem(t.items, "iron_shield", "plain", 1, 5);
+    warden.slots["chest"] = items::rollRarityItem(t.items, "iron_chest_armour", "plain", 1, 6);
+    const auto sheet = stats::deriveStats(t.world.playerBase, warden, t.items);
+    check(std::abs(sheet.armour - (10.0 + 20.0)) < 1e-9, "gear: the iron shield's ten armour with the chest's twenty");
+    // The brand and the lantern: fire for the sweep and the bolt, burns harder.
+    stats::Equipment kindler;
+    kindler.slots["weapon"] = items::rollRarityItem(t.items, "charred_brand", "plain", 1, 7);
+    kindler.slots["offhand"] = items::rollRarityItem(t.items, "cinder_lantern", "plain", 1, 8);
+    mods = grammar::gearMods(t.items, kindler);
+    checkNear(grammar::skillDamage(t, mods, "prototype_cinder_sweep") / bare("prototype_cinder_sweep"), 1.1, 1e-9, "gear: the brand is +10% fire for the sweep");
+    checkNear(grammar::skillDamage(t, mods, "prototype_ember_bolt") / bare("prototype_ember_bolt"), 1.1, 1e-9, "gear: and for the bolt");
+    checkNear(grammar::skillDamage(t, mods, "prototype_bow_shot") / bare("prototype_bow_shot"), 1.0, 1e-9, "gear: never the arrow");
+    check(grammar::igniteStatus(t, mods).damagePerS > grammar::igniteStatus(t, {}).damagePerS, "gear: the lantern's burns bite harder");
+    // Crafting: the quiver at a bench from hide, the bow at the forge.
+    economy::PlayerEconomy p(t);
+    p.addAvailableStation("workbench");
+    p.inventory["hide"] = 3;
+    p.inventory["wood"] = 12;
+    check(p.craft("hide_quiver").crafted && !p.packItems.empty() && p.packItems.back().baseId == "hide_quiver" && p.inventory["hide"] == 0,
+          "gear: a quiver sewn at the bench lands in the pack as a rolled piece");
+    check(p.craft("timber_shield").crafted == false, "gear: the timber shield wants a hide strap too");
+    p.inventory["hide"] = 1;
+    check(p.craft("timber_shield").crafted && p.packItems.back().baseId == "timber_shield" && p.packItems.back().rarity == "plain",
+          "gear: a timber shield lashed at the bench, plain at Blacksmithing 1");
+    check(!p.craft("hunting_bow").crafted, "gear: the bow wants the forge");
+    p.addAvailableStation("forge_basic");
+    p.inventory["iron_ingot"] = 2;
+    p.inventory["wood"] = 8;
+    check(p.craft("hunting_bow").crafted && p.packItems.back().baseId == "hunting_bow" && p.inventory["iron_ingot"] == 0,
+          "gear: a bow strung at the forge for two iron and a stave");
+    // Loot never picks an unknown slot: every base's slot is one of the table's.
+    for (const auto& base : t.items.itemBases)
+        check(std::find(t.items.slots.begin(), t.items.slots.end(), base.slot) != t.items.slots.end(), "gear: " + base.id + " sits in a known slot");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3666,6 +3765,7 @@ int main(int argc, char** argv) {
     testRails(t);
     testMetal(t);
     testClassKits(t);
+    testClassGear(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);
