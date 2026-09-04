@@ -24,6 +24,9 @@ var _speed := 14.0
 var _hit_radius := 0.55
 var _range_left := 20.0
 var _fork_range := 7.0
+## Quarry (a rail, D-023 slice 9): enemies this projectile still flies on
+## through. It forks when it finally stops.
+var _pierce_left := 0
 
 
 static func launch(in_skill: StringName, from_combat: PlayerCombat, root: Node, from: Vector3,
@@ -46,6 +49,7 @@ func _ready() -> void:
 	# Reach (D-023): a Reach ingot beside the skill's socket makes it fly further.
 	_range_left = spatial.get("max_range_m", 20.0) * combat.sim.skill_reach(String(skill_id))
 	_fork_range = spatial.get("fork_range_m", 7.0)
+	_pierce_left = combat.sim.skill_pierce(String(skill_id))
 
 	var look: Dictionary = LOOKS.get(skill_id, {"colour": Color(0.9, 0.9, 0.9), "radius": 0.15})
 	var mesh := MeshInstance3D.new()
@@ -130,6 +134,12 @@ func _hit(enemy: Enemy) -> void:
 		combat.sim.fork_damage_fraction(id, generation))
 	combat.hit_landed.emit(landed["damage"], 1 if landed["kill"] else 0, landed["types"])
 	combat.fire_links(skill_id, crossed, enemy)
+
+	# Pierce (the Quarry rail): fly on through this one; the enemy is
+	# visited, so the same bolt never bites it twice.
+	if _pierce_left > 0:
+		_pierce_left -= 1
+		return
 
 	# Fork: the sim says how many; space says to whom (nearest untouched).
 	var forks: int = combat.sim.fork_count(id)

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <functional>
+#include <string>
 
 namespace wroughtwild::foundry {
 
@@ -95,6 +96,129 @@ int validate(State& state, const Plate& plate, std::vector<Placement>* lifted) {
     }
     state.plate.swap(kept);
     return count;
+}
+
+// --- rails (D-023 slice 9) -----------------------------------------------------
+
+std::vector<Cell> lineCells(const Plate& plate, const std::string& axis, int index) {
+    std::vector<Cell> cells;
+    if (axis == "row") {
+        for (int c = 0; c < plate.cols; ++c)
+            if (plate.forged(index, c)) cells.push_back({index, c});
+    } else if (axis == "column") {
+        for (int r = 0; r < plate.rows; ++r)
+            if (plate.forged(r, index)) cells.push_back({r, index});
+    }
+    return cells;
+}
+
+std::vector<std::string> knownPatterns(const tuning::Tuning& tuning, const State& state) {
+    std::vector<std::string> known;
+    const auto& rails = tuning.foundry.rails;
+    if (const auto* spec = rails.findSpecialisation(state.specialisation))
+        for (const auto& id : spec->patterns)
+            if (rails.findPattern(id) && !hasTag(known, id)) known.push_back(id);
+    for (const auto& pattern : rails.patterns) {
+        if (!pattern.isManner() || hasTag(known, pattern.id)) continue;
+        const auto it = state.kills.find(pattern.taughtByEnemy);
+        if (it != state.kills.end() && it->second >= pattern.taughtKills) known.push_back(pattern.id);
+    }
+    return known;
+}
+
+bool patternKnown(const tuning::Tuning& tuning, const State& state, const std::string& pattern) {
+    return hasTag(knownPatterns(tuning, state), pattern);
+}
+
+const Rail* railAt(const State& state, const std::string& axis, int index) {
+    for (const auto& r : state.rails)
+        if (r.axis == axis && r.index == index) return &r;
+    return nullptr;
+}
+
+RailStatus railStatus(const tuning::Tuning& tuning, const State& state, const Plate& plate, const Rail& rail) {
+    RailStatus status;
+    const auto* pattern = tuning.foundry.rails.findPattern(rail.pattern);
+    if (!pattern || pattern->axis != rail.axis) return status;
+    const auto cells = lineCells(plate, rail.axis, rail.index);
+    if (cells.empty()) return status;
+    const auto& cond = pattern->condition;
+    status.minimum = cond.minimumPlaced;
+    // The line's placed pieces in order: ingots for the condition, tablets
+    // for whom the rule speaks to, kinds for the family the line must hold.
+    std::vector<std::pair<Cell, const Placement*>> ingots;
+    bool skillMet = cond.holdsSkillTag.empty();
+    bool kindMet = cond.holdsKindFamily.empty();
+    for (const auto& cell : cells) {
+        const Placement* p = at(state, cell.row, cell.col);
+        if (!p) continue;
+        if (p->isIngot()) {
+            ingots.push_back({cell, p});
+        } else if (p->isTablet()) {
+            const auto* skill = tuning.skills.findCombatSkill(p->skill);
+            if (!skill) continue;
+            if (cond.holdsSkillTag.empty() || hasTag(skill->resolveTags(), cond.holdsSkillTag)) {
+                status.skills.push_back(p->skill);
+                skillMet = true;
+            }
+        } else if (p->isCurrency()) {
+            const auto* kind = tuning.foundry.findKindOnPlate(p->currency);
+            if (kind && kind->family == cond.holdsKindFamily) kindMet = true;
+        }
+    }
+    status.placed = static_cast<int>(ingots.size());
+    bool ok = status.placed >= status.minimum;
+    auto breaks = [&](const Cell& cell) {
+        for (const auto& b : status.breaking)
+            if (b.row == cell.row && b.col == cell.col) return;
+        status.breaking.push_back(cell);
+        ok = false;
+    };
+    if (!cond.allPlacedAre.empty())
+        for (const auto& [cell, p] : ingots)
+            if (!hasTag(cond.allPlacedAre, p->ingot)) breaks(cell);
+    if (cond.alternating.size() == 2) {
+        for (size_t i = 0; i < ingots.size(); ++i) {
+            const auto& [cell, p] = ingots[i];
+            if (!hasTag(cond.alternating, p->ingot)) breaks(cell);
+            else if (i > 0 && ingots[i - 1].second->ingot == p->ingot) breaks(cell);
+        }
+    }
+    if (cond.endsAre.size() == 2) {
+        const Placement* a = at(state, cells.front().row, cells.front().col);
+        const Placement* b = at(state, cells.back().row, cells.back().col);
+        const std::string ia = a && a->isIngot() ? a->ingot : std::string();
+        const std::string ib = b && b->isIngot() ? b->ingot : std::string();
+        const bool match = (ia == cond.endsAre[0] && ib == cond.endsAre[1]) || (ia == cond.endsAre[1] && ib == cond.endsAre[0]);
+        if (!match) {
+            ok = false;
+            // An end holding the wrong ingot breaks it; an empty end only waits.
+            if (!ia.empty() && (!hasTag(cond.endsAre, ia) || (ia == ib && cond.endsAre[0] != cond.endsAre[1]))) breaks(cells.front());
+            if (!ib.empty() && (!hasTag(cond.endsAre, ib) || (ia == ib && cond.endsAre[0] != cond.endsAre[1]))) breaks(cells.back());
+        }
+    }
+    status.missingSkill = !skillMet;
+    status.missingKind = !kindMet;
+    status.holds = ok && skillMet && kindMet;
+    return status;
+}
+
+int validateRails(const tuning::Tuning& tuning, State& state, const Plate& plate, int allowed) {
+    const auto known = knownPatterns(tuning, state);
+    std::vector<Rail> kept;
+    int dropped = 0;
+    for (const auto& rail : state.rails) {
+        const auto* pattern = tuning.foundry.rails.findPattern(rail.pattern);
+        const bool fits = pattern && pattern->axis == rail.axis && hasTag(known, rail.pattern) &&
+                          !lineCells(plate, rail.axis, rail.index).empty();
+        const bool taken = std::any_of(kept.begin(), kept.end(), [&](const Rail& k) {
+            return (k.axis == rail.axis && k.index == rail.index) || k.pattern == rail.pattern;
+        });
+        if (fits && !taken && static_cast<int>(kept.size()) < allowed) kept.push_back(rail);
+        else ++dropped;
+    }
+    state.rails.swap(kept);
+    return dropped;
 }
 
 const Placement* at(const State& state, int row, int col) {
@@ -329,6 +453,34 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
         e.cellCol = link.supportCol;
         e.subject = kindDef->family;
         out.push_back(e);
+    }
+    // Rails (D-023 slice 9): a pattern set in a rail whose line meets its
+    // condition bends its rule - for the line's skills (or the ones with
+    // the pattern's tag), for every skill with an effect's tag, or on the
+    // sheet when the modifier is a self one.
+    const auto known = knownPatterns(tuning, state);
+    for (const auto& rail : state.rails) {
+        if (!hasTag(known, rail.pattern)) continue;
+        const auto* pattern = def.rails.findPattern(rail.pattern);
+        if (!pattern) continue;
+        const RailStatus status = railStatus(tuning, state, plate, rail);
+        if (!status.holds) continue;
+        const std::string label = pattern->displayName + " (" + rail.axis + " " + std::to_string(rail.index + 1) + ")";
+        const int row = rail.axis == "row" ? rail.index : -1;
+        const int col = rail.axis == "column" ? rail.index : -1;
+        for (const auto& fe : pattern->effects) {
+            const auto* modifier = tuning.items.findModifier(fe.modifier);
+            if (!modifier) continue;
+            auto push = [&](const std::string& skill) {
+                Effect e{"rail", label, fe.modifier, fe.value, row, col, skill};
+                e.subject = pattern->id;
+                e.packet = fe.skillTag;
+                out.push_back(e);
+            };
+            if (modifier->isSelf() || !fe.skillTag.empty()) push(std::string());
+            else
+                for (const auto& skill : status.skills) push(skill);
+        }
     }
     return out;
 }

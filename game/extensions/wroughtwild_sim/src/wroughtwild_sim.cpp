@@ -166,6 +166,12 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_life_on_hit", "skill_id"), &WroughtwildSim::skill_life_on_hit);
     ClassDB::bind_method(D_METHOD("skill_refund_on_kill", "skill_id"), &WroughtwildSim::skill_refund_on_kill);
     ClassDB::bind_method(D_METHOD("skill_haste_on_kill", "skill_id"), &WroughtwildSim::skill_haste_on_kill);
+    ClassDB::bind_method(D_METHOD("skill_projectiles", "skill_id"), &WroughtwildSim::skill_projectiles);
+    ClassDB::bind_method(D_METHOD("skill_pierce", "skill_id"), &WroughtwildSim::skill_pierce);
+    ClassDB::bind_method(D_METHOD("foundry_specialise", "specialisation"), &WroughtwildSim::foundry_specialise);
+    ClassDB::bind_method(D_METHOD("foundry_set_rail", "axis", "index", "pattern"), &WroughtwildSim::foundry_set_rail);
+    ClassDB::bind_method(D_METHOD("foundry_clear_rail", "axis", "index"), &WroughtwildSim::foundry_clear_rail);
+    ClassDB::bind_method(D_METHOD("foundry_pattern", "pattern_id"), &WroughtwildSim::foundry_pattern);
     ClassDB::bind_method(D_METHOD("foundry_links"), &WroughtwildSim::foundry_links);
     ClassDB::bind_method(D_METHOD("skill_triggers", "skill_id"), &WroughtwildSim::skill_triggers);
     ClassDB::bind_method(D_METHOD("linked_casts", "skill_id", "trigger"), &WroughtwildSim::linked_casts);
@@ -620,6 +626,14 @@ Dictionary WroughtwildSim::derived_stats() const {
     d["life_on_dash"] = s.lifeOnDash;
     d["armour_on_dash"] = s.armourOnDash;
     d["dash_recovery"] = s.dashRecovery;
+    // The rails' sheet numbers (D-023 slice 9).
+    d["armour_vs_elements"] = s.armourVsElements;
+    d["barbs_more"] = s.barbsMore;
+    d["barbs_stagger"] = s.barbsStagger;
+    d["proliferate_on_hit"] = s.proliferateOnHit;
+    d["burning_ground_heal"] = s.burningGroundHeal;
+    d["damage_vs_approaching"] = s.damageVsApproaching;
+    d["still_armour"] = s.stillArmour;
     return d;
 }
 
@@ -1965,6 +1979,48 @@ double WroughtwildSim::skill_haste_on_kill(const String& skill_id) const {
     return require_loaded("skill_haste_on_kill") ? wroughtwild::grammar::skillHasteOnKill(*tuning_, active_mods(), to_std(skill_id)) : 0.0;
 }
 
+int WroughtwildSim::skill_projectiles(const String& skill_id) const {
+    return require_loaded("skill_projectiles") ? wroughtwild::grammar::skillProjectiles(*tuning_, active_mods(), to_std(skill_id)) : 1;
+}
+
+int WroughtwildSim::skill_pierce(const String& skill_id) const {
+    return require_loaded("skill_pierce") ? wroughtwild::grammar::skillPierce(*tuning_, active_mods(), to_std(skill_id)) : 0;
+}
+
+bool WroughtwildSim::foundry_specialise(const String& specialisation) {
+    return require_loaded("foundry_specialise") && player_->foundrySpecialise(to_std(specialisation));
+}
+
+bool WroughtwildSim::foundry_set_rail(const String& axis, int index, const String& pattern) {
+    return require_loaded("foundry_set_rail") && player_->foundrySetRail(to_std(axis), index, to_std(pattern));
+}
+
+bool WroughtwildSim::foundry_clear_rail(const String& axis, int index) {
+    return require_loaded("foundry_clear_rail") && player_->foundryClearRail(to_std(axis), index);
+}
+
+Dictionary WroughtwildSim::foundry_pattern(const String& pattern_id) const {
+    Dictionary d;
+    if (!require_loaded("foundry_pattern")) {
+        return d;
+    }
+    const auto* def = tuning_->foundry.rails.findPattern(to_std(pattern_id));
+    if (def == nullptr) {
+        return d;
+    }
+    d["id"] = to_godot(def->id);
+    d["display_name"] = to_godot(def->displayName);
+    d["axis"] = to_godot(def->axis);
+    d["condition_text"] = to_godot(def->conditionText);
+    d["rule_text"] = to_godot(def->ruleText);
+    d["manner"] = def->isManner();
+    d["taught_by"] = to_godot(def->taughtByEnemy);
+    d["taught_kills"] = def->taughtKills;
+    const auto* teacher = def->isManner() ? tuning_->world.findEnemy(def->taughtByEnemy) : nullptr;
+    d["teacher_name"] = teacher ? to_godot(teacher->displayName) : String();
+    return d;
+}
+
 Array WroughtwildSim::foundry_links() const {
     Array out;
     if (!require_loaded("foundry_links")) {
@@ -2799,6 +2855,73 @@ Dictionary WroughtwildSim::foundry() const {
         flows.push_back(f);
     }
     d["flows"] = flows;
+    // The exterior (D-023 slice 9): the specialisation and whether the
+    // choice is open, the patterns known, and every rail slot around the
+    // frame with its pattern and whether the line lights it.
+    const auto& railsDef = tuning_->foundry.rails;
+    d["specialisation"] = to_godot(state.specialisation);
+    const auto* chosen = railsDef.findSpecialisation(state.specialisation);
+    d["specialisation_name"] = chosen ? to_godot(chosen->displayName) : String();
+    d["can_specialise"] = player_->canSpecialise();
+    Array specialisations;
+    for (const auto& s : railsDef.specialisations) {
+        Dictionary entry;
+        entry["id"] = to_godot(s.id);
+        entry["display_name"] = to_godot(s.displayName);
+        Array patterns;
+        for (const auto& id : s.patterns) {
+            patterns.push_back(foundry_pattern(to_godot(id)));
+        }
+        entry["patterns"] = patterns;
+        specialisations.push_back(entry);
+    }
+    d["specialisations"] = specialisations;
+    Array known;
+    for (const auto& id : player_->foundryPatterns()) {
+        known.push_back(foundry_pattern(to_godot(id)));
+    }
+    d["patterns"] = known;
+    d["rails_allowed"] = player_->railsAllowed();
+    d["rails_set"] = static_cast<int>(state.rails.size());
+    Array railSlots;
+    auto slot = [&](const std::string& axis, int index) {
+        Dictionary r;
+        r["axis"] = to_godot(axis);
+        r["index"] = index;
+        r["forged"] = !wroughtwild::foundry::lineCells(frame, axis, index).empty();
+        const auto* rail = wroughtwild::foundry::railAt(state, axis, index);
+        r["pattern"] = rail ? to_godot(rail->pattern) : String();
+        r["holds"] = false;
+        if (rail != nullptr) {
+            const auto* def = railsDef.findPattern(rail->pattern);
+            r["display_name"] = def ? to_godot(def->displayName) : to_godot(rail->pattern);
+            r["condition_text"] = def ? to_godot(def->conditionText) : String();
+            r["rule_text"] = def ? to_godot(def->ruleText) : String();
+            const auto status = wroughtwild::foundry::railStatus(*tuning_, state, frame, *rail);
+            r["holds"] = status.holds;
+            r["placed"] = status.placed;
+            r["minimum"] = status.minimum;
+            r["missing_skill"] = status.missingSkill;
+            r["missing_kind"] = status.missingKind;
+            Array breaking;
+            for (const auto& c : status.breaking) {
+                Array cell;
+                cell.push_back(c.row);
+                cell.push_back(c.col);
+                breaking.push_back(cell);
+            }
+            r["breaking"] = breaking;
+            r["skills"] = strings_to_packed(status.skills);
+        }
+        railSlots.push_back(r);
+    };
+    for (int r = 0; r < frame.rows; ++r) {
+        slot("row", r);
+    }
+    for (int c = 0; c < frame.cols; ++c) {
+        slot("column", c);
+    }
+    d["rails"] = railSlots;
     d["haste_after_hit_seconds"] = tuning_->foundry.hasteAfterHitSeconds;
     d["support_multiplier"] = tuning_->foundry.supportMultiplier;
     Dictionary owned, unplaced;

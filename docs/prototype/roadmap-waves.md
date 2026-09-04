@@ -356,10 +356,11 @@ the world is the campaign. Slices, in order:
    fire), melee's stagger/push/swing armour, and the bench kept alive
    (bulk wedges, frames for the yard and the forge).
 12. **The working** *(proposed 3 Sep 2026, D-023; owner answers 4 Sep;
-   slices 1 to 8 - the frame, every ingot reads every skill, typed
+   slices 1 to 9 - the frame, every ingot reads every skill, typed
    currency, the flow with kinds in the detached cells and the first
    forms, kinds as variants with the reactions' hooks, links and Arc, the
-   Marrow's and the Quicksilver's forms - landed 4 Sep 2026)*:
+   Marrow's and the Quicksilver's forms, rails as the plate's exterior
+   opened by the first hall's test - landed 4 Sep 2026)*:
    the plate worked around sockets - subjects (skill tablets, the
    Vanguard), supports whose reading the subject decides, corners that
    hold ingots or typed currency as augments (a Catalyst makes Scald),

@@ -362,6 +362,16 @@ foundry::Plate PlayerEconomy::plate() const { return foundry::plate(tuning_.foun
 std::vector<std::string> PlayerEconomy::foundryEvent(const std::string& event) {
     std::vector<std::string> granted;
     const int era = currentEra();
+    // Every kill is reported as its family's first_kill event; the kills
+    // count toward the manners the family teaches (D-023 slice 9), and a
+    // manner just taught is announced.
+    static const std::string kKill = "first_kill:";
+    if (event.rfind(kKill, 0) == 0) {
+        const auto before = foundry::knownPatterns(tuning_, foundry_);
+        foundry_.kills[event.substr(kKill.size())] += 1;
+        for (const auto& id : foundry::knownPatterns(tuning_, foundry_))
+            if (std::find(before.begin(), before.end(), id) == before.end()) foundryNotices_.push_back("manner:" + id);
+    }
     for (const auto& source : tuning_.foundry.sources) {
         if (source.event != event || source.era > era) continue;
         if (std::find(foundry_.milestones.begin(), foundry_.milestones.end(), source.id) != foundry_.milestones.end())
@@ -426,6 +436,48 @@ bool PlayerEconomy::foundryRemove(int row, int col) {
     }
     if (it->isCurrency()) grant(it->currency, 1);
     foundry_.plate.erase(it);
+    return true;
+}
+
+bool PlayerEconomy::canSpecialise() const {
+    const auto& rails = tuning_.foundry.rails;
+    return foundry_.specialisation.empty() && !rails.specialisations.empty() &&
+           (rails.specialiseOnWorldEffect.empty() || worldEffectActive(rails.specialiseOnWorldEffect));
+}
+
+bool PlayerEconomy::foundrySpecialise(const std::string& specialisation) {
+    if (!canSpecialise() || !tuning_.foundry.rails.findSpecialisation(specialisation)) return false;
+    foundry_.specialisation = specialisation;
+    return true;
+}
+
+int PlayerEconomy::railsAllowed() const { return tuning_.foundry.rails.allowed(currentEra()); }
+
+std::vector<std::string> PlayerEconomy::foundryPatterns() const { return foundry::knownPatterns(tuning_, foundry_); }
+
+bool PlayerEconomy::foundrySetRail(const std::string& axis, int index, const std::string& pattern) {
+    const auto* def = tuning_.foundry.rails.findPattern(pattern);
+    if (!def || def->axis != axis) return false;
+    if (!foundry::patternKnown(tuning_, foundry_, pattern)) return false;
+    if (foundry::lineCells(plate(), axis, index).empty()) return false;
+    for (const auto& r : foundry_.rails)
+        if (r.pattern == pattern && !(r.axis == axis && r.index == index)) return false; // one rail per pattern
+    auto it = std::find_if(foundry_.rails.begin(), foundry_.rails.end(),
+                           [&](const foundry::Rail& r) { return r.axis == axis && r.index == index; });
+    if (it != foundry_.rails.end()) {
+        it->pattern = pattern; // a set rail takes the new pattern
+        return true;
+    }
+    if (static_cast<int>(foundry_.rails.size()) >= railsAllowed()) return false;
+    foundry_.rails.push_back({axis, index, pattern});
+    return true;
+}
+
+bool PlayerEconomy::foundryClearRail(const std::string& axis, int index) {
+    auto it = std::find_if(foundry_.rails.begin(), foundry_.rails.end(),
+                           [&](const foundry::Rail& r) { return r.axis == axis && r.index == index; });
+    if (it == foundry_.rails.end()) return false;
+    foundry_.rails.erase(it);
     return true;
 }
 
@@ -582,6 +634,10 @@ void PlayerEconomy::importState(const State& state) {
     foundry::validate(foundry_, plate(), &lifted);
     for (const auto& p : lifted)
         if (p.isCurrency()) grant(p.currency, 1);
+    // The exterior: a specialisation tuning no longer knows is forgotten,
+    // and every rail the state cannot hold is dropped (D-023 slice 9).
+    if (!tuning_.foundry.rails.findSpecialisation(foundry_.specialisation)) foundry_.specialisation.clear();
+    foundry::validateRails(tuning_, foundry_, plate(), railsAllowed());
 }
 
 bool PlayerEconomy::salvage(const std::string& recipeId) {

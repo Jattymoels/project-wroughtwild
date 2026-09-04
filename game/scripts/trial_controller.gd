@@ -331,4 +331,8 @@ func finish_run() -> void:
 		else:
 			player.hud.notify("The Forge Tyrant falls! Deep in its forge you find mastery of stonecut blocks: the roof wedge joins your constructions.%s" % _completion_items)
 		_completion_items = ""
+		# The first hall's test (D-023 slice 9): the forge's completion opens
+		# the plate's exterior and offers the specialisation.
+		if bool(sim.foundry().get("can_specialise", false)):
+			player.hud.notify("The forge was your first test. The Foundry offers a specialisation, and rails open on the plate's rows and columns: F opens the plate.")
 	player.hud.refresh()

@@ -60,6 +60,8 @@ var _haste_seconds := 2.0
 
 var _dash_left := 0.0
 var _dash_velocity := Vector3.ZERO
+## The Husk's Manner (a rail, D-023 slice 9): how long you have stood still.
+var _still_seconds := 0.0
 
 
 func setup(in_player: WroughtwildPlayer, in_sim: WroughtwildSim) -> void:
@@ -187,6 +189,9 @@ func _physics_process(delta: float) -> void:
 	_haste_left = maxf(0.0, _haste_left - delta)
 	if _haste_left <= 0.0:
 		_haste = 0.0
+	# Stillness counted for the Husk's Manner; the first step resets it.
+	var planar_speed: float = Vector2(player.velocity.x, player.velocity.z).length() if player != null else 0.0
+	_still_seconds = _still_seconds + delta if planar_speed < 0.1 and _dash_left <= 0.0 else 0.0
 	if fight_active and alive_enemies().is_empty():
 		fight_active = false
 
@@ -327,6 +332,12 @@ func cast_armour() -> float:
 	return _cast_armour if _cast_armour_left > 0.0 else 0.0
 
 
+## The Husk's Manner (a rail, D-023 slice 9): the sheet's still armour once
+## you have stood a second, gone on the first step.
+func still_armour() -> float:
+	return float(sim.derived_stats().get("still_armour", 0.0)) if _still_seconds >= 1.0 else 0.0
+
+
 ## What your walking speed is multiplied by right now (the Haste reading
 ## beside a Vanguard, after a hit).
 func haste_multiplier() -> float:
@@ -339,9 +350,11 @@ func haste_multiplier() -> float:
 ## the clock.
 func _answer_hit(source: Node) -> void:
 	var ds: Dictionary = sim.derived_stats()
-	var barbs: float = float(ds.get("barbs", 0.0))
+	# Riposte (a rail, D-023 slice 9): the Barbs bleed for more and stagger.
+	var barbs: float = float(ds.get("barbs", 0.0)) * (1.0 + float(ds.get("barbs_more", 0.0)))
 	if barbs > 0.0 and source is Enemy:
 		(source as Enemy).apply_bleed(barbs)
+		(source as Enemy).stagger(float(ds.get("barbs_stagger", 0.0)))
 		var reach: float = float(ds.get("answer_reach_m", 0.0))
 		if reach > 0.0:
 			for enemy in alive_enemies():
@@ -386,6 +399,11 @@ func _reap(skill_id: StringName, kills: int) -> void:
 func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -> Dictionary:
 	var landed := 0.0
 	var types := PackedStringArray()
+	# The Hound's Manner (a rail, D-023 slice 9): an enemy moving toward
+	# you takes more. The sim says how much; this reads where it is going.
+	var approaching: float = float(sim.derived_stats().get("damage_vs_approaching", 0.0))
+	if approaching > 0.0 and enemy.approaching(player.global_position):
+		fraction *= 1.0 + approaching
 	for packet in sim.player_hit(String(skill_id), isolated, enemy.carried_statuses()):
 		var taken: float = enemy.take_typed(float(packet["damage"]) * fraction, String(packet["type"]))
 		if taken > 0.0:
@@ -464,7 +482,8 @@ func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool) -> PackedS
 	# Quench and Sear (forms, D-023) ride with the status they belong to:
 	# the mob keeps them for the freeze and the burn this skill causes.
 	enemy.apply_chill(sim.chill_applied(id, is_boss), sim.skill_quenches(id))
-	enemy.apply_ignite(sim.ignite_applied(id, is_boss), sim.skill_sear(id))
+	# Pyre (a rail, D-023 slice 9): an ignite this hit lights spreads at once.
+	enemy.apply_ignite(sim.ignite_applied(id, is_boss), sim.skill_sear(id), float(sim.derived_stats().get("proliferate_on_hit", 0.0)))
 	enemy.apply_bleed(sim.bleed_applied(id, is_boss))
 	var crossed := PackedStringArray()
 	if not was_frozen and enemy.is_frozen():
@@ -670,7 +689,12 @@ func _use_projectile(skill_id: StringName) -> bool:
 	_ensure_fight()
 	var from: Vector3 = player.camera.global_position - player.camera.global_transform.basis.z * 0.6
 	var dir: Vector3 = -player.camera.global_transform.basis.z
-	SkillProjectile.launch(skill_id, self, player.world_root(), from, dir, 0, [])
+	# Volley (a rail, D-023 slice 9): the sim says how many projectiles a
+	# cast fires; they fan out ten degrees apart around the aim.
+	var count: int = sim.skill_projectiles(String(skill_id))
+	for i in count:
+		var yaw := deg_to_rad(10.0) * (float(i) - float(count - 1) / 2.0)
+		SkillProjectile.launch(skill_id, self, player.world_root(), from, dir.rotated(Vector3.UP, yaw), 0, [])
 	return true
 
 
@@ -796,7 +820,7 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	var warded := raw_damage
 	if source is Enemy:
 		warded *= sim.ward_multiplier((source as Enemy).carried_statuses())
-	last_hit_taken = sim.enemy_hit_damage(warded, damage_type, cast_armour())
+	last_hit_taken = sim.enemy_hit_damage(warded, damage_type, cast_armour() + still_armour())
 	life = maxf(0.0, life - last_hit_taken)
 	_settle_left = _settle_seconds
 	life_changed.emit(life, max_life)

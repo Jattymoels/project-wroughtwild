@@ -928,3 +928,55 @@ Not yet: the readings needing player statuses or ground hooks (a Dash
 leaving burning ground, dashing through enemies chilling them, a Dash
 cleansing a status, armour against burns and bleeds, the Marrow's
 regeneration), the rest of the variants, rails, Linger, compound forms.
+
+## Implemented: rails, the plate's exterior (4 Sep 2026, D-023 slice 9)
+
+The owner's answer on class (4 Sep, later): no class at the start, "base
+tablet setups for the base class coming from nothing"; the first class
+hall test's completion offers a specialisation that "changes the exterior
+of the rows/columns upgrades". `data/tuning/foundry.json` (schema 9,
+`rails`), `items.json`; `sim/foundry.h`, `economy.h`, `stats.h`,
+`grammar.h`, `save.cpp`:
+
+- **The test and the choice.** The class hall is not built (D-004), so
+  the Tyrant's forge stands in: recording its completion effect
+  (`rails.specialise_on_world_effect`) offers the choice in the Foundry
+  panel - Ranger (Volley, Quarry), Warden (Shield Wall, Riposte), Kindler
+  (Pyre, Ashen Step) - once. The trial's completion line says so.
+- **Rails.** One outside every row and column. `rails.by_era` allows
+  none in era one, one in era two, two in era three; one rail per
+  pattern; a row rail only on a forged row; set and cleared in the panel
+  for free. A pattern's condition reads the line's placed cells
+  (`all_placed_are`, `alternating`, `ends_are`, `minimum_placed`,
+  `holds_skill_tag`, `holds_kind_family`); the panel's rail button is lit
+  while it holds and says which cell breaks it when it does not. The rule
+  speaks to the line's skills, to every skill with a tag, or to the sheet.
+- **Manners.** The kills the engine already reports count per family;
+  twelve hounds teach the Hound's Manner, eight husks the Husk's, to any
+  specialisation, announced on the HUD.
+- **The engine's half.** `grammar::skillProjectiles` fans a cast out ten
+  degrees apart (Volley); `skillPierce` keeps a projectile flying through
+  that many enemies, forking on its last stop (Quarry); `DerivedStats`
+  gains `armourVsElements` (mitigation applies it after resistance),
+  `barbsMore` and `barbsStagger` (the Barbs' answer doubled, the striker
+  halted half a second with its wind-up lost), `proliferateOnHit` (an
+  ignite a hit lights spreads at once at half the death-spread),
+  `burningGroundHeal` (the ground heals instead of burning),
+  `damageVsApproaching` (a hit on a mob whose velocity points at you) and
+  `stillArmour` (a second of stillness, gone on the first step).
+- **The save** carries the specialisation, the rails and the kills; a
+  load drops a rail its patterns no longer cover or the era does not
+  allow, and forgets an unknown specialisation.
+
+Tests: sim 3578 (the tuning; from nothing; the offer after the test; a
+Ranger once; Volley lit, broken by an Ember, waiting under the minimum
+and without a projectile skill; era three's second rail; Quarry scoped by
+tag; the twelfth hound; alternating; the save round trip and a doctored
+save; the Warden's Shield Wall waiting for its Vanguard and its
+mitigation, Riposte and the ends moving with the era; the Kindler's Pyre
+and Ashen Step, the eighth husk); engine unit 356; integration 220;
+grammar 62 (a bolt through two whelps, three orbs from one cast).
+
+Not yet: the class hall as a place, later halls' exterior options, a
+manner per family, the readings needing player statuses, Linger, compound
+forms.

@@ -409,6 +409,13 @@ BoonTable loadBoons(const std::string& path) {
 
 const IngotDef* FoundryDef::findIngot(const std::string& id) const { return findById(ingots, id); }
 const KindDef* FoundryDef::findKindOnPlate(const std::string& id) const { return findById(kinds, id); }
+const RailPatternDef* RailsDef::findPattern(const std::string& id) const { return findById(patterns, id); }
+const SpecialisationDef* RailsDef::findSpecialisation(const std::string& id) const { return findById(specialisations, id); }
+int RailsDef::allowed(int era) const {
+    if (byEra.empty()) return 0;
+    const size_t index = static_cast<size_t>(std::max(0, era - 1));
+    return byEra[std::min(index, byEra.size() - 1)];
+}
 std::string FoundryDef::familyName(const std::string& family) const {
     auto it = familyNames.find(family);
     return it == familyNames.end() ? std::string() : it->second;
@@ -489,6 +496,56 @@ FoundryDef loadFoundry(const std::string& path) {
             if (!form.lane.empty() && form.lane != "same" && form.lane != "added")
                 throw std::runtime_error("foundry: form " + form.displayName + " names an unknown lane " + form.lane);
             def.forms.push_back(std::move(form));
+        }
+    }
+    if (auto rails = doc->find("rails")) {
+        for (const auto& n : rails->get("by_era").asArray()) def.rails.byEra.push_back(n->asInt());
+        if (def.rails.byEra.empty()) throw std::runtime_error("foundry: rails.by_era needs at least one era");
+        if (auto e = rails->find("specialise_on_world_effect")) def.rails.specialiseOnWorldEffect = e->asString();
+        if (auto specs = rails->find("specialisations")) {
+            for (const auto& s : specs->asArray()) {
+                SpecialisationDef spec;
+                spec.id = s->get("id").asString();
+                spec.displayName = s->get("display_name").asString();
+                spec.patterns = readStringArray(s->get("patterns"));
+                def.rails.specialisations.push_back(std::move(spec));
+            }
+        }
+        if (auto patterns = rails->find("patterns")) {
+            for (const auto& p : patterns->asArray()) {
+                RailPatternDef pattern;
+                pattern.id = p->get("id").asString();
+                pattern.displayName = p->get("display_name").asString();
+                pattern.axis = p->get("axis").asString();
+                if (pattern.axis != "row" && pattern.axis != "column")
+                    throw std::runtime_error("foundry: rail pattern " + pattern.id + " names an unknown axis " + pattern.axis);
+                const auto& c = p->get("condition");
+                if (auto v = c.find("all_placed_are")) pattern.condition.allPlacedAre = readStringArray(*v);
+                if (auto v = c.find("alternating")) pattern.condition.alternating = readStringArray(*v);
+                if (auto v = c.find("ends_are")) pattern.condition.endsAre = readStringArray(*v);
+                if (auto v = c.find("minimum_placed")) pattern.condition.minimumPlaced = v->asInt();
+                if (auto v = c.find("holds_skill_tag")) pattern.condition.holdsSkillTag = v->asString();
+                if (auto v = c.find("holds_kind_family")) pattern.condition.holdsKindFamily = v->asString();
+                if (!pattern.condition.alternating.empty() && pattern.condition.alternating.size() != 2)
+                    throw std::runtime_error("foundry: rail pattern " + pattern.id + " alternates between two ingots");
+                if (!pattern.condition.endsAre.empty() && pattern.condition.endsAre.size() != 2)
+                    throw std::runtime_error("foundry: rail pattern " + pattern.id + " names two ends");
+                if (auto t = p->find("condition_text")) pattern.conditionText = t->asString();
+                if (auto t = p->find("rule_text")) pattern.ruleText = t->asString();
+                for (const auto& e : p->get("effects").asArray()) {
+                    RailEffect effect;
+                    effect.modifier = e->get("modifier").asString();
+                    effect.value = e->get("value").asNumber();
+                    if (auto tag = e->find("skill_tag")) effect.skillTag = tag->asString();
+                    pattern.effects.push_back(std::move(effect));
+                }
+                if (pattern.effects.empty()) throw std::runtime_error("foundry: rail pattern " + pattern.id + " bends no rule");
+                if (auto taught = p->find("taught_by")) {
+                    pattern.taughtByEnemy = taught->get("enemy").asString();
+                    pattern.taughtKills = taught->get("kills").asInt();
+                }
+                def.rails.patterns.push_back(std::move(pattern));
+            }
         }
     }
     for (const auto& i : doc->get("ingots").asArray()) {
@@ -1145,6 +1202,26 @@ Tuning loadAll(const std::string& tuningDirectory) {
     for (const auto& pair : tuning.foundry.pairs)
         if (!tuning.items.findModifier(pair.modifier))
             throw std::runtime_error("foundry: pair " + pair.displayName + " names unknown modifier " + pair.modifier);
+    // Rails (D-023 slice 9): every pattern's condition names known ingots
+    // and a known family, its effects known modifiers, its teacher a known
+    // enemy; every specialisation lists known patterns.
+    for (const auto& p : tuning.foundry.rails.patterns) {
+        for (const auto* list : {&p.condition.allPlacedAre, &p.condition.alternating, &p.condition.endsAre})
+            for (const auto& id : *list)
+                if (!tuning.foundry.findIngot(id))
+                    throw std::runtime_error("foundry: rail pattern " + p.id + " names unknown ingot " + id);
+        if (!p.condition.holdsKindFamily.empty() && tuning.foundry.familyName(p.condition.holdsKindFamily).empty())
+            throw std::runtime_error("foundry: rail pattern " + p.id + " names unknown family " + p.condition.holdsKindFamily);
+        for (const auto& e : p.effects)
+            if (!tuning.items.findModifier(e.modifier))
+                throw std::runtime_error("foundry: rail pattern " + p.id + " names unknown modifier " + e.modifier);
+        if (p.isManner() && !tuning.world.findEnemy(p.taughtByEnemy))
+            throw std::runtime_error("foundry: rail pattern " + p.id + " is taught by unknown enemy " + p.taughtByEnemy);
+    }
+    for (const auto& spec : tuning.foundry.rails.specialisations)
+        for (const auto& id : spec.patterns)
+            if (!tuning.foundry.rails.findPattern(id))
+                throw std::runtime_error("foundry: specialisation " + spec.id + " names unknown rail pattern " + id);
     // Typed currency: the exchange and the families pay in known kinds.
     for (const auto& id : tuning.crafting.exchangeKinds)
         if (!tuning.crafting.findKind(id)) throw std::runtime_error("crafting: market.exchange names unknown kind " + id);

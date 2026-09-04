@@ -37,6 +37,20 @@ struct DerivedStats {
     double lifeOnDash = 0.0;
     double armourOnDash = 0.0;
     double dashRecovery = 0.0;
+    // The rails' sheet numbers (D-023 slice 9): the fraction of armour
+    // that counts against fire and cold (Shield Wall); the Barbs' extra
+    // buildup and the striker's stagger (Riposte); the fraction of the
+    // proliferate spread an ignite gives on the hit (Pyre); life a second
+    // from burning ground (Ashen Step); more against an enemy moving
+    // toward you (the Hound's Manner); armour after a second of stillness
+    // (the Husk's Manner).
+    double armourVsElements = 0.0;
+    double barbsMore = 0.0;
+    double barbsStagger = 0.0;
+    double proliferateOnHit = 0.0;
+    double burningGroundHeal = 0.0;
+    double damageVsApproaching = 0.0;
+    double stillArmour = 0.0;
 };
 
 // Stats from the item table's modifier pool: implicit properties plus every
@@ -61,7 +75,8 @@ DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipm
 
 // Damage after defences. Physical is reduced by armour
 // (reduction = armour / (armour + scale)); fire and cold by their
-// resistance percents.
+// resistance percents, then by the fraction of armour that counts against
+// them (the Shield Wall rail), when any does.
 double mitigateDamage(double amount, const std::string& damageType,
                       const DerivedStats& stats, const tuning::PlayerBase& base);
 

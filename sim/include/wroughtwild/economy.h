@@ -196,8 +196,23 @@ public:
     // is not a kind, none held, a socket, a support cell or a taken cell.
     bool foundryPlaceKind(int row, int col, const std::string& kind);
     bool canAffordReforge() const;
+    // The exterior (D-023 slice 9; owner, 4 Sep 2026). No class at the
+    // start: the bare plate is the base class. Passing the first hall's
+    // test (rails.specialise_on_world_effect recorded) offers a one-time
+    // choice of specialisation, whose patterns may then be set in rails -
+    // as many as the era allows (rails.by_era), one rail per pattern, a
+    // row rail only on a forged row. Manners the world has taught (kills
+    // per family) are patterns too. Setting and clearing a rail is free:
+    // a rail is class, not metal.
+    bool canSpecialise() const;
+    bool foundrySpecialise(const std::string& specialisation);
+    int railsAllowed() const;
+    std::vector<std::string> foundryPatterns() const; // the patterns known: the specialisation's and the manners taught
+    bool foundrySetRail(const std::string& axis, int index, const std::string& pattern);
+    bool foundryClearRail(const std::string& axis, int index);
     // Ingots granted by events the economy raised itself (crafts, world
-    // effects, eras), for the host to announce; cleared on read.
+    // effects, eras), for the host to announce; cleared on read. A manner
+    // the world has just taught is announced as "manner:<pattern id>".
     std::vector<std::string> takeFoundryNotices();
 
     // --- save/load ---

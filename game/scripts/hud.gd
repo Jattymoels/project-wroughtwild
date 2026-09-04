@@ -412,7 +412,12 @@ func refresh() -> void:
 		lines.append("Era %d of %d: %s" % [era["index"], era.get("count", 1), era["display_name"]])
 	# The economy's own milestones (crafts, world effects, eras) forge ingots.
 	for id in sim.foundry_notices():
-		notify("The Foundry: a %s is yours. F opens the plate." % sim.foundry_ingot(id).get("display_name", id))
+		if String(id).begins_with("manner:"):
+			# A manner the world taught (D-023 slice 9): a rail pattern.
+			var pattern: Dictionary = sim.foundry_pattern(String(id).trim_prefix("manner:"))
+			notify("The Foundry: the %ss have taught you %s. It goes in a rail; F opens the plate." % [pattern.get("teacher_name", "fallen"), pattern.get("display_name", id)])
+		else:
+			notify("The Foundry: a %s is yours. F opens the plate." % sim.foundry_ingot(id).get("display_name", id))
 	if sim.trial_active():
 		var state: Dictionary = sim.trial_run_state()
 		var names := PackedStringArray()

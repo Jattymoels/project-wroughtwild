@@ -159,6 +159,9 @@ ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state
             mod.appliesToTags.clear();
             if (!effect.packet.empty()) mod.appliesToTags = {effect.packet};
         }
+        // A rail's rule scoped by a skill tag speaks to every skill with it
+        // (Quarry: your projectiles), whatever the modifier's applies_to.
+        if (effect.kind == "rail" && !effect.packet.empty()) mod.appliesToTags = {effect.packet};
         mods.push_back(std::move(mod));
     }
     return mods;
@@ -311,6 +314,17 @@ double skillArc(const tuning::Tuning& tuning, const ActiveMods& active, const st
 
 double skillLifeOnHit(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
     return skillNumberResolved(tuning, active, skillId, "life_on_hit");
+}
+
+int skillProjectiles(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
+    const auto* def = findSkill(tuning, skillId);
+    if (!def) return 1;
+    const double base = skillNumber(*def, "projectiles", 1.0);
+    return std::max(1, static_cast<int>(std::floor(resolve(active, def->resolveTags(), "projectiles", base))));
+}
+
+int skillPierce(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
+    return static_cast<int>(std::floor(skillNumberResolved(tuning, active, skillId, "pierce")));
 }
 
 double skillRefundOnKill(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {

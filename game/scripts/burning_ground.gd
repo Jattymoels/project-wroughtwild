@@ -68,4 +68,10 @@ func _process(delta: float) -> void:
 		return
 	to.y = 0.0
 	if to.length() <= radius:
-		player.combat.take_hit(damage_per_round * TICK_SECONDS / round_seconds, "fire", "burning ground")
+		# Ashen Step (a rail, D-023 slice 9): the ground is yours - it heals
+		# by the sheet's number a second and never burns you.
+		var heal: float = float(player.combat.sim.derived_stats().get("burning_ground_heal", 0.0))
+		if heal > 0.0:
+			player.combat.heal(heal * TICK_SECONDS)
+		else:
+			player.combat.take_hit(damage_per_round * TICK_SECONDS / round_seconds, "fire", "burning ground")

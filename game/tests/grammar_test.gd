@@ -102,7 +102,11 @@ func _physics_process(_delta: float) -> void:
 			_cast_orb_again()
 		390:
 			_phase_j_checks()
-		395:
+		392:
+			_phase_k_rails()
+		440:
+			_phase_k_checks()
+		445:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
 
@@ -186,6 +190,66 @@ func _phase_j_checks() -> void:
 	check(_link_casts >= 1, "link: the orb froze the whelp and Shatter cast itself (%d)" % _link_casts)
 	check(_player.combat.cooldown_left(&"prototype_shatter") > 0.0, "link: the linked cast spent Shatter's own cooldown")
 	_player.combat.linked_cast.disconnect(_count_link)
+
+
+## Phase K - rails (D-023 slice 9): the Tyrant's forge passed and a Ranger
+## chosen in era three. Quarry with Edge at both ends of the fourth row
+## sends a bolt through the first whelp into the second; Volley with Reach
+## above and below the orb's socket puts three orbs in the air from one cast.
+var _rail_hits := 0
+
+
+func _count_rail_hit(_damage: float, _kills: int, _types: PackedStringArray) -> void:
+	_rail_hits += 1
+
+
+## The link phase's orbs are still flying when this phase starts: they
+## would bite the pierce whelps on the same line, so they go first.
+func _clear_projectiles() -> void:
+	for node in get_children():
+		if node is SkillProjectile:
+			node.set_physics_process(false)
+			node.queue_free()
+
+
+func _phase_k_rails() -> void:
+	_clear_enemies()
+	_clear_projectiles()
+	_face_down_range()
+	_sim.record_world_effect("stonecut_blocks")
+	_sim.record_world_effect("ash_tide")
+	_sim.foundry_event("first_kill:cinder_archer")
+	_sim.foundry_event("work:strike_split")
+	_sim.foundry_event("world_effect:old_mine_reinforced")
+	check(_sim.foundry()["can_specialise"] and _sim.foundry_specialise("ranger") and _sim.foundry()["rails_allowed"] == 2,
+		"rails: the Tyrant's forge passed, a Ranger in era three with two rails")
+	_sim.learn_skill("prototype_ember_bolt")
+	check(_sim.skill_pierce("prototype_ember_bolt") == 0 and _sim.foundry_place(3, 0, "edge") and _sim.foundry_place(3, 3, "edge")
+		and _sim.foundry_set_rail("row", 3, "quarry") and _sim.skill_pierce("prototype_ember_bolt") == 1,
+		"rails: Quarry lit on the fourth row - the bolt pierces one")
+	_rail_hits = 0
+	_player.combat.hit_landed.connect(_count_rail_hit)
+	Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -3.0))
+	Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -6.0))
+	SkillProjectile.launch(&"prototype_ember_bolt", _player.combat, self, Vector3(0.0, 0.8, 0.0), Vector3.FORWARD, 0, [])
+
+
+func _phase_k_checks() -> void:
+	check(_rail_hits == 2, "rails: one bolt bit both whelps in its line (%d)" % _rail_hits)
+	_player.combat.hit_landed.disconnect(_count_rail_hit)
+	_clear_enemies()
+	_clear_projectiles()
+	_face_down_range()
+	check(_sim.foundry_place(0, 1, "reach") and _sim.foundry_place(2, 1, "reach") and _sim.foundry_set_rail("column", 1, "volley")
+		and _sim.skill_projectiles("prototype_frost_orb") == 3 and _sim.skill_projectiles("prototype_ember_bolt") == 1,
+		"rails: Volley lit on the orb's column - the orb fires three, the bolt one")
+	_player.combat.cooldowns[PlayerCombat.ORB_SKILL] = 0.0
+	check(_player.combat.use_orb(), "rails: the orb casts")
+	var flying := 0
+	for node in _player.world_root().get_children():
+		if node is SkillProjectile:
+			flying += 1
+	check(flying == 3, "rails: three orbs in the air from one cast (%d)" % flying)
 
 
 ## Phase A - bare cast: the orb hits the first whelp, one fork reaches the
