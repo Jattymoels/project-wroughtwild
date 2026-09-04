@@ -467,7 +467,7 @@ automation").
    it sends you home - and a shelter's rest pays
    `shelter_night_regen_multiplier`; a carried lamp lights the way. The
    sim owns the clock (`daycycle.h`; `advance_time`, `day`, `day_rules`;
-   saved as `day_clock`). Sim 4813, engine unit 371, integration Godot.
+   saved as `day_clock`). Sim 4813, engine unit 371, integration 233.
 6. **Hauling**: a carry cap per family and chests as storage at a placed
    outpost (D-005 arriving early).
 
