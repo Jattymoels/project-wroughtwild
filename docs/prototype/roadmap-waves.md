@@ -433,9 +433,13 @@ automation").
    metres instead (`far_radius_m`, `min_nodes_far`), placed beyond the
    near radius when a seed comes up short, so the first forge is a walk
    into the hills and back. Sim 3684.
-3. **A wider valley**: 320 m a side, biome and hill noise at half the
-   frequency, the near radius, the danger rings and the gate pushed out;
-   a performance check first.
+3. **A wider valley** *(landed 4 Sep 2026)*: 320 m a side (from 224;
+   400 chunks), the height noise at two thirds and the moisture noise at
+   three fifths of their frequency so biomes and hills are broader, the
+   massifs' fields slower, the near radius 55 m, iron within 120 m, the
+   danger rings at 110 m and 220 m, the gate past 160 m, packs off the
+   doorstep to 50 m. Performance check: the 120-frame headless smoke run
+   took 1.94 s before and 2.583 s after (world build included). Sim 4745.
 4. **The expansive pass**: a rim of massifs at the map edge, ground cover
    per biome in batched meshes, three tree silhouettes by biome, fog that
    deepens with distance, a palette pass; a river from the hills to the

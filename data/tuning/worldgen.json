@@ -3,21 +3,21 @@
   "status": "Wave 3 world slice 1: 3D block field, mountains, caves, danger rings",
   "default_seed": 1,
   "map": {
-    "width_cells": 224,
-    "height_cells": 224,
+    "width_cells": 320,
+    "height_cells": 320,
     "cell_size_m": 1.0,
     "world_depth": 48,
     "base_height": 12,
     "height_scale": 10,
-    "height_frequency": 0.03,
+    "height_frequency": 0.02,
     "height_octaves": 3,
-    "moisture_frequency": 0.017,
-    "design_purpose": "Bounded sandpit dimensions and terrain character (D-003, grown for the Wave 3 world pass). world_depth is the vertical block budget: y=0 bedrock, surface rolls around base_height + noise*height_scale, mountains climb from there and caves wind below. 160x160 at 1 m keeps the world bounded but far enough out that leaving the heartland is a journey. 224 cells a side (from 160, owner 3 Sep 2026: 'always worthwhile making the world larger to allow for more mob variants'): room for a fifth biome and the packs that live in it, at 196 chunks."
+    "moisture_frequency": 0.01,
+    "design_purpose": "Bounded sandpit dimensions and terrain character (D-003, grown for the Wave 3 world pass). world_depth is the vertical block budget: y=0 bedrock, surface rolls around base_height + noise*height_scale, mountains climb from there and caves wind below. 160x160 at 1 m keeps the world bounded but far enough out that leaving the heartland is a journey. 224 cells a side (from 160, owner 3 Sep 2026: 'always worthwhile making the world larger to allow for more mob variants'): room for a fifth biome and the packs that live in it, at 196 chunks. 320 cells a side (from 224, Wave 6 slice 3, 4 Sep 2026: 'making the biomes bigger ... more expansive'): 400 chunks, with the height and moisture noise at two thirds and three fifths of their frequency so every biome and every hill is broader, and every walk longer."
   },
   "mountains": {
     "extra_scale": 14,
-    "frequency": 0.05,
-    "cragginess_frequency": 0.012,
+    "frequency": 0.038,
+    "cragginess_frequency": 0.008,
     "cragginess_threshold": 0.6,
     "design_purpose": "The verticality layer: where the slow cragginess field exceeds its threshold, ridged noise piles up to extra_scale further blocks - localized massifs with cliffs and vistas instead of uniformly lumpy ground. Raising the threshold makes mountains rarer; raising extra_scale makes them taller."
   },
@@ -27,7 +27,7 @@
   },
   "caves": {
     "enabled": true,
-    "tunnel_frequency": 0.06,
+    "tunnel_frequency": 0.05,
     "tunnel_width": 0.075,
     "cavern_frequency": 0.045,
     "cavern_threshold": 0.76,
@@ -56,13 +56,13 @@
   "danger": {
     "rings": [
       {
-        "radius_m": 75,
+        "radius_m": 110,
         "pack_density_multiplier": 0.35,
         "pack_size_bonus": 0,
         "elite_chance": 0.0
       },
       {
-        "radius_m": 150,
+        "radius_m": 220,
         "pack_density_multiplier": 1.8,
         "pack_size_bonus": 1,
         "elite_chance": 0.14
@@ -337,19 +337,19 @@
   "guarantees": {
     "spawn_biome": "meadow",
     "spawn_clear_radius_m": 8,
-    "near_radius_m": 40,
+    "near_radius_m": 55,
     "min_nodes_near": {
       "tree": 8,
       "boulder": 5,
       "stone_seam": 3
     },
-    "far_radius_m": 90,
+    "far_radius_m": 120,
     "min_nodes_far": {
       "iron_vein": 3
     },
     "gate_biome": "ember_wastes",
-    "gate_min_distance_m": 100,
-    "pack_min_distance_from_spawn_m": 40,
+    "gate_min_distance_m": 160,
+    "pack_min_distance_from_spawn_m": 50,
     "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood and stone within a short walk, keeps iron a walk away (Wave 6 slice 2, 4 Sep 2026: three veins within far_radius_m, none guaranteed near - the first forge is a journey into the hills and back), keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map Three stone seams within the near radius (D-021): the first quarry is always a short walk."
   },
   "fire_setting": {
