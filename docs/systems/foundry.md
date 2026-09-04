@@ -71,6 +71,19 @@ size ("only 2 rows era 1") and on **ingot quality, type and rarity**; and
 ingots have properties of their own that crafting can use. Both are taken
 up under [Progression gates on the plate](#progression-gates-on-the-plate).
 
+10. **The recommended socket layout** (a row and one column apart, both
+    workings growing whole on the frame). Yes, 4 Sep.
+11. **Every ingot reads every skill.** The owner: "I don't think we need
+    to restrict 'cold damage incr' to only cold spells ... adding a cold
+    damage on the spell means you might pursue different builds and head
+    towards a 'boil' or 'scald' type build"; the same-element support "is
+    augmenting one lane which may be better early without other
+    interactions available to the player." Taken up under
+    [Subjects](#subjects-and-what-they-make-of-a-support): an element
+    ingot beside a skill of another element adds that element's damage
+    natively, and the Catalyst turns the added element into its status
+    and its interaction.
+
 ## The plate as built (what the code does today)
 
 Four rules, all orthogonal, all in `sim/src/foundry.cpp`:
@@ -213,11 +226,21 @@ below is that table.
 
 The current support rule stays: a support beside a **skill** applies its
 modifier to that skill alone at `support_multiplier` (2.0) times its
-value, when the modifier can read the skill's tags. Two changes: **Reach
-reads area and projectile skills natively** (wider area; a projectile
-flies further), and a support that cannot read its subject is shown as
-**inert** with the fix named ("Vigour cannot read Frost Orb. A Catalyst in
-a touching corner would make it Reap.").
+value. Two changes. **Reach reads area and projectile skills natively**
+(wider area; a projectile flies further). And, the owner's rule (4 Sep):
+**every ingot reads every skill; nothing is inert.** An element ingot
+beside a skill of its own element scales it, the one-lane support that
+is strongest early; beside a skill of another element it **adds that
+element's damage** to the hit as a second packet, so a Frost ingot beside
+Ember Bolt makes a fire-and-cold bolt and a build can head toward boil
+or scald before any catalyst arrives. The owner's words: "I don't think
+we need to restrict 'cold damage incr' to only cold spells ... adding a
+cold damage on the spell means you might pursue different builds." The
+self ingots (Vigour, Plate, Ward) read a skill weakly on their own and
+fully once a Catalyst sharpens them. The two lanes trade the same
+number: +24% increased is the same hit as +24% of the hit added, but the
+added packet is its own type, scaled by that type's gear, and it is what
+the Catalyst turns into a status and an interaction.
 
 The new subjects are currencies. Each has a base of its own and a
 **trigger** (used by links):
@@ -233,13 +256,13 @@ The new subjects are currencies. Each has a base of its own and a
 
 | Ingot | Beside a skill tablet | Beside a Vanguard | Beside a Marrow | Beside a Quicksilver |
 | --- | --- | --- | --- | --- |
-| **Ember** | +24% fire damage (fire skills) | +10 fire resistance; ignite on you burns 25% shorter | Warmth: standing by a fire (a campfire, burning ground) regenerates 2 life a second | your Dash leaves burning ground |
-| **Frost** | +24% cold damage (cold skills) | +10 cold resistance; chill on you builds 25% slower | chilled enemies deal 15% less to you | dashing through enemies chills them |
-| **Edge** | +24% physical damage (physical skills) | Barbs: an enemy that hits you takes 25 bleed buildup | a kill of a bleeding enemy restores 3 life | dashing through enemies bleeds them |
-| **Reach** | area skills 16% wider; projectiles fly 16% further | when you are struck, Barbs and every other answer to the hit reach every enemy within 2.5 m, not only the striker | your shelter's regeneration follows you 10 m past the door | Dash goes 1 m further |
-| **Vigour** | inert | +24 life; 2 life a second for 3 s after a hit | +24 life; the Marrow's regeneration doubles | a Dash restores 4 life |
-| **Plate** | inert | +16 armour; armour counts against fire at half | armour also reduces burn and bleed damage taken | +8 armour for 1.5 s after a Dash |
-| **Ward** | inert | +5 to every resistance; statuses on you decay twice as fast | resistances also slow status buildup on you | a Dash cleanses one status |
+| **Ember** | fire skill: +24% fire damage; any other: adds fire damage equal to 24% of the hit | +10 fire resistance; ignite on you burns 25% shorter | Warmth: standing by a fire (a campfire, burning ground) regenerates 2 life a second | your Dash leaves burning ground |
+| **Frost** | cold skill: +24% cold damage; any other: adds cold damage equal to 24% of the hit | +10 cold resistance; chill on you builds 25% slower | chilled enemies deal 15% less to you | dashing through enemies chills them |
+| **Edge** | physical skill: +24% physical damage; any other: adds physical damage equal to 24% of the hit | Barbs: an enemy that hits you takes 25 bleed buildup | a kill of a bleeding enemy restores 3 life | dashing through enemies bleeds them |
+| **Reach** | area skill 16% wider; projectile flies 16% further; strike reaches 16% further | when you are struck, Barbs and every other answer to the hit reach every enemy within 2.5 m, not only the striker | your shelter's regeneration follows you 10 m past the door | Dash goes 1 m further |
+| **Vigour** | a kill with the skill restores 1 life | +24 life; 2 life a second for 3 s after a hit | +24 life; the Marrow's regeneration doubles | a Dash restores 4 life |
+| **Plate** | casting the skill grants 4 armour for 2 s | +16 armour; armour counts against fire at half | armour also reduces burn and bleed damage taken | +8 armour for 1.5 s after a Dash |
+| **Ward** | an enemy carrying the skill's status deals 5% less to you | +5 to every resistance; statuses on you decay twice as fast | resistances also slow status buildup on you | a Dash cleanses one status |
 | **Haste** | +16% cooldown recovery (attacks and spells) | after a hit you move 15% faster for 2 s | life restored to you from any source is 15% more | Dash recovers 16% faster |
 
 Every number is the ingot's flat value, doubled by the support multiplier
@@ -284,21 +307,25 @@ becomes mandatory" ([combat-and-builds.md](combat-and-builds.md)):
 defence can ride any working.
 
 **A Catalyst in a corner** has no base of its own. It **works the two
-supports it touches** into their strong form. A support that already
-reads the subject is *sharpened*; one that cannot read it is given a
-*reaction*, a cross-element mechanic. This is the owner's Scald,
-generalised.
+supports it touches** into their strong form. A same-element support is
+*sharpened* (its status builds faster); an added-element support gains
+its **reaction**: the added damage now applies its status too, and the
+two elements on one hit interact. This is the owner's Scald, generalised:
+the Frost ingot beside Ember Bolt added cold; with the Catalyst the cold
+also chills, and a burning enemy that freezes is quenched.
 
-### Reactions and sharpenings (skill subjects)
+### Native and sharpened (skill subjects)
+
+The native reading is in the table above; this is what the Catalyst makes of it.
 
 | Support | The skill is... | Becomes | What it does |
 | --- | --- | --- | --- |
-| Ember | cold | **Scald** | the skill's chill also ignites (+15 ignite buildup); an ignited enemy takes 20% more cold damage |
-| Frost | fire | **Quench** | the skill's ignite also chills (+15); a burning enemy that freezes takes the rest of its burn at once |
-| Ember | physical | **Temper** | the attack ignites on hit (+15); an ignited enemy takes 20% more physical from it |
-| Frost | physical | **Rime** | the attack chills on hit (+15); its shatter novas chill (+30) |
-| Edge | cold | **Brittle** | the skill's hits on chilled enemies bleed (+20); a frozen enemy that is bleeding shatters from this spell's own hit |
-| Edge | fire | **Sear** | burning enemies hit by the skill bleed (+20); a bleeding burn ticks 50% faster while the enemy moves |
+| Ember | cold | **Scald** | the added fire also ignites (+15 ignite buildup); an ignited enemy takes 20% more cold damage |
+| Frost | fire | **Quench** | the added cold also chills (+15); a burning enemy that freezes takes the rest of its burn at once |
+| Ember | physical | **Temper** | the added fire also ignites (+15); an ignited enemy takes 20% more physical from it |
+| Frost | physical | **Rime** | the added cold also chills (+15); the attack's shatter novas chill (+30) |
+| Edge | cold | **Brittle** | the added physical also bleeds (+20); a frozen enemy that is bleeding shatters from this spell's own hit |
+| Edge | fire | **Sear** | the added physical also bleeds (+20); a bleeding burn ticks 50% faster while the enemy moves |
 | Reach | single-target | **Arc** | the strike gains a 1.5 m arc: it becomes an area skill and reads area modifiers from then on |
 | Reach | projectile | **Split** | +1 fork |
 | Reach | area | **Linger** | the area persists on the ground for 1.5 s |
@@ -306,15 +333,20 @@ generalised.
 | Ember | fire | **Kindling** | ignite builds 30% faster for this skill |
 | Edge | physical | **Serration** | the skill's hits bleed (+20 buildup); its bleeds build 30% faster |
 | Haste | any | **Echo** | every fourth cast repeats itself |
-| Vigour | any | **Reap** | a kill with the skill restores 3 life |
-| Plate | any | **Bracing** | casting the skill grants 8 armour for 2 s |
-| Ward | any | **Aegis** | an enemy carrying this skill's status deals 15% less damage to you |
+| Vigour | any | **Reap** | a kill with the skill restores 3 life, and 1 life a second for 3 s |
+| Plate | any | **Bracing** | casting the skill grants 8 armour for 2 s, and the cast cannot be interrupted |
+| Ward | any | **Aegis** | an enemy carrying this skill's status deals 15% less to you, and its own status cannot reach you |
 
 Seven of these reuse resolver keys that exist (`add_ignite_buildup`,
 `add_chill_buildup`, `add_fork`, the pair modifiers, the boons'
 `repeat_every_nth_hit`); Scald, Quench, Brittle, Sear, Arc, Linger, Reap,
 Bracing and Aegis need one hook each, tag-gated like shatter and
-proliferate. A Catalyst beside a Vanguard, Marrow or Quicksilver support
+proliferate. The added element itself is the one sim change under all of
+them: `skillDamage` returns one number today and a hit has no type on the
+player's side; an added element makes a hit a list of typed packets
+(`grammar::skillHit`), each scaled by its own type's modifiers and each
+carrying its own status once sharpened, which is the "type mix" the
+grammar always promised. A Catalyst beside a Vanguard, Marrow or Quicksilver support
 sharpens that reading instead (Barbs also stagger; dashing through
 freezes outright); that table waits for the third slice.
 
@@ -448,9 +480,9 @@ the era has forged them.
  {Catalyst}     Haste      [Bulwark Vanguard]   Plate
 ```
 
-- Ember, west of the orb: inert on its own. The Catalyst in the corner
-  touches it: **Scald**. The orb ignites what it chills, and ignited
-  enemies take 20% more cold.
+- Ember, west of the orb: adds fire damage to the orb, a cold-and-fire
+  bolt. The Catalyst in the corner touches it: **Scald**. The added fire
+  ignites, and ignited enemies take 20% more cold.
 - Frost, the shared cell: +24% cold damage to the orb, and +10 cold
   resistance with slower chill on you for the Vanguard.
 - Haste, the other shared cell: the orb recovers 16% faster; you move
@@ -496,10 +528,10 @@ of the plate's best cell.
 
 - Edge, west: +24% physical to Rend. The second Edge in Rend's corner
   **backs** it: +24% again; and touches Haste: **Serration**.
-- Frost, shared: inert for Rend until the Catalyst in the Quicksilver's
-  corner touches it: **Rime**, Rend chills on hit. For the Quicksilver it
-  reads as dashing through chills, sharpened by the same Catalyst: freezes
-  outright.
+- Frost, shared: adds cold to Rend's blow; the Catalyst in the
+  Quicksilver's corner touches it: **Rime**, the added cold chills. For
+  the Quicksilver it reads as dashing through chills, sharpened by the
+  same Catalyst: freezes outright.
 - Haste, shared: Rend recovers faster; Dash recovers faster.
 - Ember, east: Dash leaves burning ground, and the Catalyst makes it burn
   longer. The Quicksilver's own: Dash recovers 20% faster.
@@ -521,11 +553,11 @@ it and the bleed's moving multiplier finishes it. The conga line
 - Edge, west: **Barbs**, attackers bleed; the corner Catalyst touches it:
   Barbs also stagger.
 - Vigour, shared: +24 life and regeneration after a hit for the Vanguard;
-  inert for the strike until the same Catalyst touches it: **Reap**, kills
-  restore life.
-- Frost, shared: cold resistance for the Vanguard; inert for the strike
-  until the strike's corner Catalyst touches it: **Rime**, the strike
-  chills.
+  a life on kill for the strike, and the same Catalyst touches it:
+  **Reap**, kills restore 3 and regenerate.
+- Frost, shared: cold resistance for the Vanguard; added cold on the
+  strike, and the strike's corner Catalyst touches it: **Rime**, the
+  added cold chills.
 - Edge, east of the strike: +24% physical; the Catalyst: **Serration**,
   the strike bleeds.
 - The Marrow touches Plate (armour reduces burns and bleeds) and Frost
@@ -604,8 +636,9 @@ multiplies, the numbers stay within threefold.
   the working that is not yet whole. Setting a subject rims its supports
   and dots its corners; hovering any cell names its role for each
   working it belongs to.
-- An inert support is greyed and says what would read it: "Vigour cannot
-  read Frost Orb. A Catalyst in a touching corner makes it Reap."
+- Every support's reading is written on its cell, and a Catalyst's
+  corner shows what it would make of each: "Frost: adds cold to Ember
+  Bolt. With a Catalyst here: Quench." No cell is ever blank.
 - **Hover preview** for anything in the tray over any cell shows the
   effects list *as it would be* before the click, because lifting costs
   metal.
@@ -641,9 +674,13 @@ multiplies, the numbers stay within threefold.
 
 - **A vanguard working becomes mandatory.** Countered by corner lending:
   any working can carry the defence it needs. Watch the oracle.
-- **Inert supports read as dead cells.** The owner's worry. Countered by
-  naming the fix on the cell and by every ingot having a reading beside
-  every non-skill subject.
+- **The one-lane support always wins.** If +24% of your own element is
+  always better than an added element, no one builds boil or scald.
+  Countered by the added packet scaling with its own type's gear and by
+  the Catalyst's reaction living only on the added lane; watch the ratio
+  in the oracle.
+- **The two-element hit is unreadable.** A bolt that is fire and cold
+  needs both tells on the mob; a packet without a tell is a stat.
 - **Reactions unreadable in first person.** Every reaction needs its tell
   before it ships; a reaction without a silhouette is a stat.
 - **Rails become a fill-in puzzle with one answer.** Conditions are on
@@ -668,8 +705,8 @@ multiplies, the numbers stay within threefold.
       without a number.
 - [ ] The same pieces in two layouts play differently in the next fight
       (D-019's criterion, now testable with a Catalyst corner).
-- [ ] A tester finds an inert support, reads the fix on the cell, and
-      applies it within the session.
+- [ ] A tester builds a two-element skill from the plate alone, and can
+      say what the second element is doing.
 - [ ] The Anvil makes the Tyrant survivable without tempered armour, and
       the oracle's rates stay inside the D-020 band with it.
 - [ ] A linked skill casts itself and the tester notices the bar has a
@@ -687,10 +724,8 @@ start, rails at the hall: yes), 7 (corner cells: yes), 8 (the support and
 subject pick the reaction: yes), 9 (Marrow and Quicksilver after the
 Vanguard: yes). Pending: 4 and 6, explained in place above.
 
-10. **Which socket layout for the two-row plate?** The owner's (sockets a
-    row and two columns apart) or the recommended (a row and one column
-    apart, so both workings grow whole on the 4x4). Recommended: the
-    latter.
+10. Answered 4 Sep: the recommended socket layout, a row and one column
+    apart.
 11. **Does the class hall forge a third socket** at a far cell of the
     frame, (0,3) or (3,0)? Recommended: yes, in era three, as the hall's
     reward alongside the rails.
@@ -707,22 +742,26 @@ following.
 
 1. **The frame and the working.** `rows_by_era` and `sockets` on a 4x4
    frame (era one rows 1 and 2); subjects only in sockets (a tablet
-   outside one lifts free on load); supports rimmed and inert supports
-   named; Reach reads area and projectile skills; backing replaces lines.
-   Save: subject cells validated; placements in forged rows only.
-2. **Typed currency.** Four kinds as materials; family drop kinds; coin
+   outside one lifts free on load); supports rimmed and every reading
+   written on its cell; Reach reads area, projectile and strike skills;
+   backing replaces lines. Save: subject cells validated; placements in
+   forged rows only.
+2. **Every ingot reads every skill.** The typed packet (`skillHit`),
+   added elements, the weak self readings; mob immunities by packet type
+   in the engine.
+4. **Typed currency.** Four kinds as materials; family drop kinds; coin
    retired, its drops and prices become kinds, the peddler changes kinds;
    `currency_weighting` in a craft; currency lifts from the plate for the
    re-forge cost.
-3. **The Vanguard.** As a subject with its eight readings (cold resistance
+4. **The Vanguard.** As a subject with its eight readings (cold resistance
    as a derived stat; Barbs and the answer's reach as engine hooks); as a
    corner, lending.
-4. **Catalyst corners.** Sharpenings first (they reuse keys), then Scald,
+5. **Catalyst corners.** Sharpenings first (they reuse keys), then Scald,
    Quench, Temper, Rime; the rest as their hooks land.
-5. **Links.** A Catalyst in a shared support cell; cast-on-trigger; the
+6. **Links.** A Catalyst in a shared support cell; cast-on-trigger; the
    linked skill leaves the bar.
-6. **Rails.** `rail_patterns`, the class hall as the place they are set,
+7. **Rails.** `rail_patterns`, the class hall as the place they are set,
    two classes' seeds and one manner.
-7. **Marrow and Quicksilver**, their readings and corners.
-8. **The metal of an ingot.** Re-casting at the forge in the era's alloy;
+8. **Marrow and Quicksilver**, their readings and corners.
+9. **The metal of an ingot.** Re-casting at the forge in the era's alloy;
    reach for backing and pairs; alloy-cast ingots from elites and floors.

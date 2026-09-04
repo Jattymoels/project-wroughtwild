@@ -173,6 +173,15 @@ Statuses:
   up in the spec as the frame's rows and the metal of an ingot. Links and
   the folding of lines into backing are explained in the spec and await
   their answer.
+  Later on 4 Sep the owner took the recommended socket layout and set
+  one more rule: "I don't think we need to restrict 'cold damage incr' to
+  only cold spells ... adding a cold damage on the spell means you might
+  pursue different builds and head towards a 'boil' or 'scald' type
+  build"; the same-element support is "augmenting one lane which may be
+  better early". In the spec: every ingot reads every skill, an element
+  ingot beside a skill of another element adds that element's damage as
+  a second packet, the Catalyst turns the added element into its status
+  and its interaction, and no support is ever inert.
 
 ## Registering a decision
 
