@@ -49,6 +49,11 @@ var last_hit_taken := 0.0
 ## has left. The sim says how much; this owns the clock.
 var _cast_armour := 0.0
 var _cast_armour_left := 0.0
+## The Haste reading beside a Vanguard (D-023 slice 4): a burst of speed
+## after a hit. The sim says how much; this owns the clock.
+var _haste := 0.0
+var _haste_left := 0.0
+var _haste_seconds := 2.0
 
 var _dash_left := 0.0
 var _dash_velocity := Vector3.ZERO
@@ -65,6 +70,7 @@ func setup(in_player: WroughtwildPlayer, in_sim: WroughtwildSim) -> void:
 	cone_degrees = rt["player"].get("cone_degrees", 360.0)
 	dash_invulnerable = rt["dash"]["invulnerable_seconds"]
 	dash_duration = rt["dash"]["duration_seconds"]
+	_haste_seconds = float(sim.foundry().get("haste_after_hit_seconds", 2.0))
 	fight_seed_source.randomize()
 	restore_life()
 
@@ -176,6 +182,9 @@ func _physics_process(delta: float) -> void:
 	_cast_armour_left = maxf(0.0, _cast_armour_left - delta)
 	if _cast_armour_left <= 0.0:
 		_cast_armour = 0.0
+	_haste_left = maxf(0.0, _haste_left - delta)
+	if _haste_left <= 0.0:
+		_haste = 0.0
 	if fight_active and alive_enemies().is_empty():
 		fight_active = false
 
@@ -288,6 +297,32 @@ func _brace(skill_id: StringName) -> void:
 ## hit lands.
 func cast_armour() -> float:
 	return _cast_armour if _cast_armour_left > 0.0 else 0.0
+
+
+## What your walking speed is multiplied by right now (the Haste reading
+## beside a Vanguard, after a hit).
+func haste_multiplier() -> float:
+	return 1.0 + _haste if _haste_left > 0.0 else 1.0
+
+
+## The Vanguard's answers to a hit (D-023 slice 4): Barbs bleed the
+## striker and, with Answer Reach, every enemy near you; Haste quickens
+## you for a moment. The sim says the numbers; this finds who and runs
+## the clock.
+func _answer_hit(source: Node) -> void:
+	var ds: Dictionary = sim.derived_stats()
+	var barbs: float = float(ds.get("barbs", 0.0))
+	if barbs > 0.0 and source is Enemy:
+		(source as Enemy).apply_bleed(barbs)
+		var reach: float = float(ds.get("answer_reach_m", 0.0))
+		if reach > 0.0:
+			for enemy in alive_enemies():
+				if enemy != source and _planar_distance(enemy.global_position, player.global_position) <= reach:
+					enemy.apply_bleed(barbs)
+	var haste: float = float(ds.get("haste_after_hit", 0.0))
+	if haste > 0.0:
+		_haste = maxf(_haste, haste)
+		_haste_left = _haste_seconds
 
 
 ## Life restored outside the shelter (the Vigour reading's kills).
@@ -603,6 +638,7 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	_settle_left = _settle_seconds
 	life_changed.emit(life, max_life)
 	hit_taken.emit(last_hit_taken, source_name)
+	_answer_hit(source)
 	if life <= 0.0:
 		died.emit()
 	return last_hit_taken

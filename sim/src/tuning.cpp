@@ -408,6 +408,7 @@ BoonTable loadBoons(const std::string& path) {
 }
 
 const IngotDef* FoundryDef::findIngot(const std::string& id) const { return findById(ingots, id); }
+const SubjectDef* FoundryDef::findSubject(const std::string& id) const { return findById(subjects, id); }
 const IngotPairDef* FoundryDef::findPair(const std::string& a, const std::string& b) const {
     for (const auto& p : pairs)
         if ((p.a == a && p.b == b) || (p.a == b && p.b == a)) return &p;
@@ -445,6 +446,20 @@ FoundryDef loadFoundry(const std::string& path) {
     def.reforgeCost = readIntMap(doc->get("reforge_cost"));
     if (auto n = doc->find("support_multiplier")) def.supportMultiplier = n->asNumber();
     if (auto n = doc->find("cast_armour_seconds")) def.castArmourSeconds = n->asNumber();
+    if (auto n = doc->find("corner_lending_multiplier")) def.cornerLendingMultiplier = n->asNumber();
+    if (auto n = doc->find("corner_base_fraction")) def.cornerBaseFraction = n->asNumber();
+    if (auto n = doc->find("haste_after_hit_seconds")) def.hasteAfterHitSeconds = n->asNumber();
+    if (auto subjects = doc->find("subjects")) {
+        for (const auto& s : subjects->asArray()) {
+            SubjectDef subject;
+            subject.id = s->get("id").asString();
+            subject.displayName = s->get("display_name").asString();
+            subject.modifier = s->get("modifier").asString();
+            subject.value = s->get("value").asNumber();
+            if (auto trigger = s->find("trigger")) subject.trigger = trigger->asString();
+            def.subjects.push_back(std::move(subject));
+        }
+    }
     for (const auto& i : doc->get("ingots").asArray()) {
         IngotDef ingot;
         ingot.id = i->get("id").asString();
@@ -453,8 +468,10 @@ FoundryDef loadFoundry(const std::string& path) {
         ingot.modifier = i->get("modifier").asString();
         if (auto m = i->find("skill_modifier")) ingot.skillModifier = m->asString();
         if (auto m = i->find("added_modifier")) ingot.addedModifier = m->asString();
+        if (auto m = i->find("vanguard_modifier")) ingot.vanguardModifier = m->asString();
         ingot.value = i->get("value").asNumber();
         if (auto v = i->find("skill_value")) ingot.skillValue = v->asNumber();
+        if (auto v = i->find("vanguard_value")) ingot.vanguardValue = v->asNumber();
         def.ingots.push_back(std::move(ingot));
     }
     for (const auto& p : doc->get("pairs").asArray()) {
@@ -1070,6 +1087,14 @@ Tuning loadAll(const std::string& tuningDirectory) {
             throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown skill modifier " + ingot.skillModifier);
         if (!ingot.addedModifier.empty() && !tuning.items.findModifier(ingot.addedModifier))
             throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown added modifier " + ingot.addedModifier);
+        if (!ingot.vanguardModifier.empty() && !tuning.items.findModifier(ingot.vanguardModifier))
+            throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown vanguard modifier " + ingot.vanguardModifier);
+    }
+    for (const auto& subject : tuning.foundry.subjects) {
+        if (!tuning.items.findModifier(subject.modifier))
+            throw std::runtime_error("foundry: subject " + subject.id + " names unknown modifier " + subject.modifier);
+        if (!tuning.crafting.findKind(subject.id))
+            throw std::runtime_error("foundry: subject " + subject.id + " is not a currency kind");
     }
     for (const auto& pair : tuning.foundry.pairs)
         if (!tuning.items.findModifier(pair.modifier))

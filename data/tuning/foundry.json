@@ -1,6 +1,6 @@
 {
-  "schema_version": 3,
-  "status": "D-023 slice 2: every ingot reads every skill - added elements, the self readings",
+  "schema_version": 4,
+  "status": "D-023 slice 4: the Vanguard - a kind in a socket with its readings, a kind in a corner lending them",
   "frame": [
     4,
     4
@@ -34,6 +34,19 @@
   },
   "support_multiplier": 2.0,
   "cast_armour_seconds": 2.0,
+  "corner_lending_multiplier": 1.0,
+  "corner_base_fraction": 0.5,
+  "haste_after_hit_seconds": 2.0,
+  "subjects": [
+    {
+      "id": "vanguard",
+      "display_name": "Bulwark Vanguard",
+      "modifier": "armour_plating",
+      "value": 8,
+      "trigger": "a single hit for more than a tenth of your life",
+      "design_purpose": "The defence subject (D-023 slice 4): a Vanguard from the purse set in a socket is a working of its own - its base is armour on the sheet, and the ingots beside it read as defence (each ingot's vanguard_modifier at vanguard_value x support_multiplier; the self ingots read their base doubled). In a corner it gives corner_base_fraction of its base and lends its reading to the two skill supports it touches at corner_lending_multiplier, so an offence working can carry defence without a second socket. It lifts for the re-forge cost and returns to the purse: invested, not spent. The trigger is recorded for links (slice 6)."
+    }
+  ],
   "ingots": [
     {
       "id": "ember",
@@ -42,7 +55,9 @@
       "modifier": "fire_damage",
       "value": 0.12,
       "added_modifier": "added_fire",
-      "design_purpose": "Beside a fire skill: +24% fire damage for it (value x support_multiplier), the one-lane support that is strongest early. Beside any other skill (owner, 4 Sep 2026: every ingot reads every skill): adds 24% of the hit as a fire packet of its own, scaled by fire gear - a cold-and-fire orb, the start of a scald build."
+      "design_purpose": "Beside a fire skill: +24% fire damage for it (value x support_multiplier), the one-lane support that is strongest early. Beside any other skill (owner, 4 Sep 2026: every ingot reads every skill): adds 24% of the hit as a fire packet of its own, scaled by fire gear - a cold-and-fire orb, the start of a scald build. Beside a Vanguard: +10 fire resistance (vanguard_value x support_multiplier).",
+      "vanguard_modifier": "fire_resistance",
+      "vanguard_value": 5
     },
     {
       "id": "frost",
@@ -51,7 +66,9 @@
       "modifier": "cold_damage",
       "value": 0.12,
       "added_modifier": "added_cold",
-      "design_purpose": "Beside a cold skill: +24% cold damage for it. Beside any other skill: adds 24% of the hit as cold, its own packet - a fire-and-cold bolt heading for quench, a strike that carries cold toward rime."
+      "design_purpose": "Beside a cold skill: +24% cold damage for it. Beside any other skill: adds 24% of the hit as cold, its own packet - a fire-and-cold bolt heading for quench, a strike that carries cold toward rime. Beside a Vanguard: +10 cold resistance, the new derived stat.",
+      "vanguard_modifier": "cold_resistance",
+      "vanguard_value": 5
     },
     {
       "id": "edge",
@@ -60,7 +77,9 @@
       "modifier": "physical_damage",
       "value": 0.12,
       "added_modifier": "added_physical",
-      "design_purpose": "Beside a physical skill: +24% physical damage for it. Beside a spell: adds 24% of the hit as physical, its own packet - an orb with a physical edge, the start of brittle."
+      "design_purpose": "Beside a physical skill: +24% physical damage for it. Beside a spell: adds 24% of the hit as physical, its own packet - an orb with a physical edge, the start of brittle. Beside a Vanguard: Barbs - an enemy that hits you takes 25 bleed buildup.",
+      "vanguard_modifier": "barbs",
+      "vanguard_value": 12.5
     },
     {
       "id": "reach",
@@ -69,7 +88,9 @@
       "modifier": "area_size",
       "value": 0.08,
       "skill_modifier": "reach",
-      "design_purpose": "Reach's base is area size on the sheet; beside a skill it speaks the 'reach' modifier instead (owner, 4 Sep 2026: Reach reads area, projectile and strike skills): a wider area, a further-flying projectile, a longer strike."
+      "design_purpose": "Reach's base is area size on the sheet; beside a skill it speaks the 'reach' modifier instead (owner, 4 Sep 2026: Reach reads area, projectile and strike skills): a wider area, a further-flying projectile, a longer strike. Beside a Vanguard: your answers to a hit (Barbs) reach every enemy within 2.5 m, not only the striker.",
+      "vanguard_modifier": "answer_reach",
+      "vanguard_value": 1.25
     },
     {
       "id": "vigour",
@@ -79,7 +100,7 @@
       "value": 12,
       "skill_modifier": "life_on_kill",
       "skill_value": 0.5,
-      "design_purpose": "Vigour's base is life on the sheet. Beside a skill it reads weakly (D-023 slice 2): a kill with that skill restores skill_value x support_multiplier life (1). The Catalyst's Reap sharpens it later."
+      "design_purpose": "Vigour's base is life on the sheet. Beside a skill it reads weakly (D-023 slice 2): a kill with that skill restores skill_value x support_multiplier life (1). The Catalyst's Reap sharpens it later. Beside a Vanguard: its base doubled, +24 life."
     },
     {
       "id": "plate",
@@ -89,7 +110,7 @@
       "value": 8,
       "skill_modifier": "armour_on_cast",
       "skill_value": 2,
-      "design_purpose": "Plate's base is armour on the sheet. Beside a skill it reads weakly: casting that skill grants skill_value x support_multiplier armour (4) for cast_armour_seconds. The Catalyst's Bracing sharpens it later."
+      "design_purpose": "Plate's base is armour on the sheet. Beside a skill it reads weakly: casting that skill grants skill_value x support_multiplier armour (4) for cast_armour_seconds. The Catalyst's Bracing sharpens it later. Beside a Vanguard: its base doubled, +16 armour."
     },
     {
       "id": "ward",
@@ -99,7 +120,9 @@
       "value": 10,
       "skill_modifier": "status_ward",
       "skill_value": 0.025,
-      "design_purpose": "Ward's base is fire resistance on the sheet. Beside a skill it reads weakly: an enemy carrying that skill's status (the chill, burn or bleed it applies) deals skill_value x support_multiplier less to you (5%). Inert beside a skill that applies no status until something gives it one. The Catalyst's Aegis sharpens it later."
+      "design_purpose": "Ward's base is fire resistance on the sheet. Beside a skill it reads weakly: an enemy carrying that skill's status (the chill, burn or bleed it applies) deals skill_value x support_multiplier less to you (5%). Inert beside a skill that applies no status until something gives it one. The Catalyst's Aegis sharpens it later. Beside a Vanguard: +5 to every resistance.",
+      "vanguard_modifier": "all_resistance",
+      "vanguard_value": 2.5
     },
     {
       "id": "haste",
@@ -107,7 +130,8 @@
       "verb": "speed",
       "modifier": "swift_hands",
       "value": 0.08,
-      "design_purpose": "Beside any attack or spell: +16% cooldown recovery for it (value x support_multiplier). Its base is the same on the sheet for every attack and spell."
+      "design_purpose": "Beside any attack or spell: +16% cooldown recovery for it (value x support_multiplier). Its base is the same on the sheet for every attack and spell. Beside a Vanguard: after a hit you move 16% faster for haste_after_hit_seconds.",
+      "vanguard_modifier": "haste_after_hit"
     }
   ],
   "pairs": [
@@ -270,5 +294,6 @@
       "design_purpose": "The first dressed block (D-021) is a milestone: a Plate ingot, so the yard pays into the Foundry as the bench and the forge do."
     }
   ],
-  "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier, at `skill_value` when the reading has a number of its own. EVERY INGOT READS EVERY SKILL (D-023 slice 2, owner 4 Sep 2026): an element ingot whose modifier cannot read the skill (Ember beside a cold orb) speaks its `added_modifier` instead and ADDS its element to the hit as a second typed packet at the same fraction, scaled by that element's own gear - the added-element lane, where boil and scald builds begin; the self ingots (Vigour, Plate, Ward) read a skill weakly through their skill_modifier (life on kill, armour for cast_armour_seconds after a cast, less damage from enemies carrying the skill's status). Nothing on the plate is inert. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load."
+  "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier, at `skill_value` when the reading has a number of its own. EVERY INGOT READS EVERY SKILL (D-023 slice 2, owner 4 Sep 2026): an element ingot whose modifier cannot read the skill (Ember beside a cold orb) speaks its `added_modifier` instead and ADDS its element to the hit as a second typed packet at the same fraction, scaled by that element's own gear - the added-element lane, where boil and scald builds begin; the self ingots (Vigour, Plate, Ward) read a skill weakly through their skill_modifier (life on kill, armour for cast_armour_seconds after a cast, less damage from enemies carrying the skill's status). Nothing on the plate is inert. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load. THE VANGUARD (slice 4): `subjects` names the currency kinds that may sit in a socket, each with a base of its own; an ingot beside one speaks its `vanguard_modifier` (its base modifier when it names none) at `vanguard_value` (its base value when it names none) times support_multiplier, backing counting once more. A kind on any other forged cell is an augment: corner_base_fraction of its base, and its readings lent to the skill supports it touches at corner_lending_multiplier. Setting a kind takes it from the purse; lifting it pays reforge_cost and returns it.",
+  "design_purpose_corners": "A currency kind on a non-socket forged cell is an AUGMENT (D-023 slice 4). A Vanguard there gives corner_base_fraction of its socketed base and lends its readings to every ingot it orthogonally touches that supports a skill's socket, at corner_lending_multiplier times the ingot's vanguard_value (not doubled: a corner reads at x1, a support at x2). haste_after_hit_seconds is how long the Haste reading beside a Vanguard quickens you after a hit."
 }

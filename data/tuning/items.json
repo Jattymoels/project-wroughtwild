@@ -130,6 +130,109 @@
       "design_purpose": "The Tyrant's answer. Also the catalyst-tempering domain, so a drop and a forge temper compete for the same slot on the same terms (D-014: catalysts target, they do not gate). Tagged resistance, not fire, so the fire weapon's roll pool stays offence."
     },
     {
+      "id": "cold_resistance",
+      "display_name": "Cold Resistance",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_cold_resistance",
+      "display": "flat",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 8,
+          "maximum": 15
+        }
+      ],
+      "design_purpose": "The second resistance (D-023 slice 4): a derived stat the Frost ingot reads as beside a Vanguard. Nothing deals cold to the player yet, so it waits for a cold-breathing mob; it is on the sheet so the reading is real when one arrives. Tagged only 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "all_resistance",
+      "display_name": "All Resistances",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_all_resistance",
+      "display": "flat",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 5,
+          "maximum": 5
+        }
+      ],
+      "design_purpose": "The Ward ingot's reading beside a Vanguard (D-023 slice 4): adds to fire and cold resistance alike. Tagged only 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "barbs",
+      "display_name": "Barbs",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_barbs",
+      "display": "flat",
+      "sentence": "an enemy that hits you takes {n} bleed buildup",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 25,
+          "maximum": 25
+        }
+      ],
+      "design_purpose": "The Edge ingot's reading beside a Vanguard (D-023 slice 4): the answer to a hit. The sim says the buildup; the engine applies it to the striker when a hit lands. Tagged only 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "answer_reach",
+      "display_name": "Answer Reach",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_answer_reach",
+      "display": "flat",
+      "sentence": "your answers to a hit reach every enemy within {n} m",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 2.5,
+          "maximum": 2.5
+        }
+      ],
+      "design_purpose": "The Reach ingot's reading beside a Vanguard (D-023 slice 4): Barbs and every later answer to a hit reach every enemy within this many metres, not only the striker. The engine finds them. Tagged only 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "haste_after_hit",
+      "display_name": "Haste after a Hit",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_haste_after_hit",
+      "display": "percent",
+      "sentence": "after a hit you move {n} faster for a moment",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.16,
+          "maximum": 0.16
+        }
+      ],
+      "design_purpose": "The Haste ingot's reading beside a Vanguard (D-023 slice 4): a burst of speed after a hit, for foundry.json haste_after_hit_seconds. The sim says how much; the engine runs the clock. Tagged only 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
       "id": "area_size",
       "display_name": "Area Size",
       "tags": [
@@ -467,7 +570,6 @@
       "id": "life_on_kill",
       "display_name": "Life on Kill",
       "tags": [
-        "defence",
         "reading"
       ],
       "applies_to": [
@@ -484,13 +586,12 @@
           "maximum": 1
         }
       ],
-      "design_purpose": "The Vigour ingot's weak reading beside a skill (D-023 slice 2): a kill with that skill restores this much life, paid by the engine when the kill lands (grammar::skillLifeOnKill). Its only tag besides defence is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The Vigour ingot's weak reading beside a skill (D-023 slice 2): a kill with that skill restores this much life, paid by the engine when the kill lands (grammar::skillLifeOnKill). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
       "id": "armour_on_cast",
       "display_name": "Armour on Cast",
       "tags": [
-        "defence",
         "reading"
       ],
       "applies_to": [
@@ -507,13 +608,12 @@
           "maximum": 4
         }
       ],
-      "design_purpose": "The Plate ingot's weak reading beside a skill (D-023 slice 2): casting that skill grants this much armour for foundry.json cast_armour_seconds; the sim says how much (grammar::skillCastArmour), the engine runs the clock and hands the armour to mitigation while it lasts. Its only tag besides defence is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The Plate ingot's weak reading beside a skill (D-023 slice 2): casting that skill grants this much armour for foundry.json cast_armour_seconds; the sim says how much (grammar::skillCastArmour), the engine runs the clock and hands the armour to mitigation while it lasts. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
       "id": "status_ward",
       "display_name": "Status Ward",
       "tags": [
-        "defence",
         "reading"
       ],
       "applies_to": [
@@ -530,7 +630,7 @@
           "maximum": 0.05
         }
       ],
-      "design_purpose": "The Ward ingot's weak reading beside a skill (D-023 slice 2): an enemy carrying the status that skill applies (chill, ignite or bleed, from its payload or a modifier) deals this fraction less to you, every such ward multiplying (grammar::wardMultiplier). Beside a skill that applies no status it waits for one. Its only tag besides defence is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The Ward ingot's weak reading beside a skill (D-023 slice 2): an enemy carrying the status that skill applies (chill, ignite or bleed, from its payload or a modifier) deals this fraction less to you, every such ward multiplying (grammar::wardMultiplier). Beside a skill that applies no status it waits for one. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
       "id": "fire_damage",

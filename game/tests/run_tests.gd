@@ -264,6 +264,22 @@ func _test_lattice() -> void:
 	sim.add_material("iron_ingot", 1)
 	check(sim.foundry_remove(1, 0) and sim.material_count("iron_ingot") == 0 and sim.foundry_effects().size() == 1,
 		"foundry: lifted for one ingot of iron")
+	# D-023 slice 4: a Vanguard from the purse in the socket; its base lands
+	# on the sheet; lifting pays iron and returns it.
+	var armour_bare: float = sim.derived_stats()["armour"]
+	var vanguards_before: int = sim.currency_count("vanguard")
+	sim.add_materials({"vanguard": 1})
+	check(sim.foundry_place_subject(1, 1, "vanguard") and sim.currency_count("vanguard") == vanguards_before
+		and sim.derived_stats()["armour"] == armour_bare + 8.0, "vanguard: set in the socket, eight armour on the sheet")
+	var kinds_on_plate := 0
+	for p in sim.foundry()["plate"]:
+		if String(p.get("currency", "")) == "vanguard":
+			kinds_on_plate += 1
+	check(kinds_on_plate == 1 and sim.foundry()["subjects"].size() == 1 and sim.derived_stats().has("cold_resistance_percent")
+		and sim.derived_stats()["barbs"] == 0.0, "vanguard: the plate view carries the kind, the subjects list and the new stats")
+	sim.add_material("iron_ingot", 1)
+	check(sim.foundry_remove(1, 1) and sim.currency_count("vanguard") == vanguards_before + 1 and sim.derived_stats()["armour"] == armour_bare,
+		"vanguard: lifted for one iron, back in the purse")
 	check(absf(sim.skill_reach("prototype_frost_orb") - 1.0) < 0.001, "reach: nothing speaks to the orb through the door")
 	check(sim.foundry_notices().is_empty(), "foundry: engine-reported milestones raise no notices of their own")
 

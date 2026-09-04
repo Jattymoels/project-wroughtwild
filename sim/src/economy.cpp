@@ -399,8 +399,23 @@ bool PlayerEconomy::foundryPlaceSkill(int row, int col, const std::string& skill
     return true;
 }
 
-// Lifting an ingot re-forges it (metal); lifting a tablet is free - a
-// tablet is knowledge, not metal.
+bool PlayerEconomy::foundryPlaceSubject(int row, int col, const std::string& kind) {
+    const auto plate = this->plate();
+    if (!plate.forged(row, col)) return false;
+    if (!tuning_.foundry.findSubject(kind)) return false;
+    if (foundry::at(foundry_, row, col) != nullptr) return false;
+    if (held(kind) < 1) return false;
+    take(kind, 1);
+    foundry::Placement piece;
+    piece.row = row;
+    piece.col = col;
+    piece.currency = kind;
+    foundry_.plate.push_back(piece);
+    return true;
+}
+
+// Lifting an ingot or a kind re-forges it (metal); lifting a tablet is
+// free - a tablet is knowledge, not metal. A kind returns to the purse.
 bool PlayerEconomy::foundryRemove(int row, int col) {
     auto it = std::find_if(foundry_.plate.begin(), foundry_.plate.end(),
                            [&](const foundry::Placement& p) { return p.row == row && p.col == col; });
@@ -409,6 +424,7 @@ bool PlayerEconomy::foundryRemove(int row, int col) {
         if (!canAffordReforge()) return false;
         remove(inventory, tuning_.foundry.reforgeCost);
     }
+    if (it->isCurrency()) grant(it->currency, 1);
     foundry_.plate.erase(it);
     return true;
 }
@@ -561,7 +577,11 @@ void PlayerEconomy::importState(const State& state) {
     // The plate holds only what the era has forged (D-023): a save from an
     // older plate, or a hand-edited one, is lifted free of anything the
     // frame cannot hold. Nothing is lost: ingots return to the tray.
-    foundry::validate(foundry_, plate());
+    // What the frame cannot hold is lifted; a kind lifted goes back to the purse.
+    std::vector<foundry::Placement> lifted;
+    foundry::validate(foundry_, plate(), &lifted);
+    for (const auto& p : lifted)
+        if (p.isCurrency()) grant(p.currency, 1);
 }
 
 bool PlayerEconomy::salvage(const std::string& recipeId) {

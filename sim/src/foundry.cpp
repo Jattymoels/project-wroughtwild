@@ -35,20 +35,26 @@ Plate plate(const tuning::FoundryDef& def, int era) {
     return p;
 }
 
-int validate(State& state, const Plate& plate) {
+int validate(State& state, const Plate& plate, std::vector<Placement>* lifted) {
     std::vector<Placement> kept;
-    int lifted = 0;
+    int count = 0;
     for (const auto& p : state.plate) {
         const bool taken = std::any_of(kept.begin(), kept.end(), [&](const Placement& k) {
             return (k.row == p.row && k.col == p.col) || (p.isTablet() && k.skill == p.skill);
         });
         const bool socket = plate.isSocket(p.row, p.col);
-        const bool holds = plate.forged(p.row, p.col) && !taken && (p.isTablet() ? socket : !socket);
-        if (holds) kept.push_back(p);
-        else ++lifted;
+        // A tablet only in a socket, an ingot never in one, a kind anywhere forged.
+        const bool placeFits = p.isTablet() ? socket : (p.isCurrency() ? true : !socket);
+        const bool holds = plate.forged(p.row, p.col) && !taken && placeFits;
+        if (holds) {
+            kept.push_back(p);
+        } else {
+            ++count;
+            if (lifted) lifted->push_back(p);
+        }
     }
     state.plate.swap(kept);
-    return lifted;
+    return count;
 }
 
 const Placement* at(const State& state, int row, int col) {
@@ -86,7 +92,7 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
     };
     // Ingots: every ingot on a forged cell speaks its verb.
     for (const auto& p : state.plate) {
-        if (p.isTablet() || !plate.forged(p.row, p.col)) continue;
+        if (!p.isIngot() || !plate.forged(p.row, p.col)) continue;
         const auto* ingot = def.findIngot(p.ingot);
         if (!ingot) continue;
         Effect e{"ingot", ingot->displayName, ingot->modifier, ingot->value, p.row, p.col, std::string()};
@@ -98,10 +104,10 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
     for (int r = 0; r < plate.rows; ++r) {
         for (int c = 0; c < plate.cols; ++c) {
             const auto* here = cell(r, c);
-            if (!here || here->isTablet()) continue;
+            if (!here || !here->isIngot()) continue;
             for (const auto& [dr, dc] : std::vector<std::pair<int, int>>{{0, 1}, {1, 0}}) {
                 const auto* there = cell(r + dr, c + dc);
-                if (!there || there->isTablet()) continue;
+                if (!there || !there->isIngot()) continue;
                 const auto* pair = def.findPair(here->ingot, there->ingot);
                 if (!pair) continue;
                 Effect e{"pair", pair->displayName, pair->modifier, pair->value, r, c, std::string()};
@@ -129,7 +135,7 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
         for (const auto& [dr, dc] : kSides) {
             const int sr = p.row + dr, sc = p.col + dc;
             const auto* beside = cell(sr, sc);
-            if (!beside || beside->isTablet()) continue;
+            if (!beside || !beside->isIngot()) continue;
             const auto* ingot = def.findIngot(beside->ingot);
             if (!ingot) continue;
             std::string kind = "support";
@@ -149,12 +155,86 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
                 const int nr = sr + br, nc = sc + bc;
                 if (nr == p.row && nc == p.col) continue;
                 const auto* backer = cell(nr, nc);
-                if (!backer || backer->isTablet() || backer->ingot != beside->ingot) continue;
+                if (!backer || !backer->isIngot() || backer->ingot != beside->ingot) continue;
                 Effect backing{"backing", ingot->displayName + " backing " + skill->displayName, modifier->id, value, p.row, p.col, p.skill};
                 backing.cellRow = nr;
                 backing.cellCol = nc;
                 out.push_back(backing);
             }
+        }
+    }
+    // Vanguard workings (D-023 slice 4): a kind in a socket gives its base
+    // and every ingot beside it reads as defence - its vanguard reading at
+    // support_multiplier - backing counting once more, exactly as a skill
+    // working reads, with the subject deciding the reading.
+    for (const auto& p : state.plate) {
+        if (!p.isCurrency() || !plate.forged(p.row, p.col) || !plate.isSocket(p.row, p.col)) continue;
+        const auto* subject = def.findSubject(p.currency);
+        if (!subject) continue;
+        Effect own{"subject", subject->displayName, subject->modifier, subject->value, p.row, p.col, std::string()};
+        own.subject = p.currency;
+        own.cellRow = p.row;
+        own.cellCol = p.col;
+        out.push_back(own);
+        for (const auto& [dr, dc] : kSides) {
+            const int sr = p.row + dr, sc = p.col + dc;
+            const auto* beside = cell(sr, sc);
+            if (!beside || !beside->isIngot()) continue;
+            const auto* ingot = def.findIngot(beside->ingot);
+            if (!ingot) continue;
+            const auto* modifier = tuning.items.findModifier(ingot->vanguardReading());
+            if (!modifier) continue;
+            const double value = ingot->vanguardReadingValue() * def.supportMultiplier;
+            Effect support{"support", subject->displayName + " <- " + ingot->displayName, modifier->id, value, p.row, p.col, std::string()};
+            support.subject = p.currency;
+            support.cellRow = sr;
+            support.cellCol = sc;
+            out.push_back(support);
+            for (const auto& [br, bc] : kSides) {
+                const int nr = sr + br, nc = sc + bc;
+                if (nr == p.row && nc == p.col) continue;
+                const auto* backer = cell(nr, nc);
+                if (!backer || !backer->isIngot() || backer->ingot != beside->ingot) continue;
+                Effect backing{"backing", ingot->displayName + " backing " + subject->displayName, modifier->id, value, p.row, p.col, std::string()};
+                backing.subject = p.currency;
+                backing.cellRow = nr;
+                backing.cellCol = nc;
+                out.push_back(backing);
+            }
+        }
+    }
+    // Augments: a kind on a non-socket cell gives a fraction of its base and
+    // lends its readings to every ingot it touches that supports a skill's
+    // socket - the way an offence working carries defence.
+    for (const auto& p : state.plate) {
+        if (!p.isCurrency() || !plate.forged(p.row, p.col) || plate.isSocket(p.row, p.col)) continue;
+        const auto* subject = def.findSubject(p.currency);
+        if (!subject) continue;
+        Effect own{"augment", subject->displayName + " in a corner", subject->modifier, subject->value * def.cornerBaseFraction, p.row, p.col, std::string()};
+        own.subject = p.currency;
+        own.cellRow = p.row;
+        own.cellCol = p.col;
+        out.push_back(own);
+        for (const auto& [dr, dc] : kSides) {
+            const int nr = p.row + dr, nc = p.col + dc;
+            const auto* beside = cell(nr, nc);
+            if (!beside || !beside->isIngot()) continue;
+            bool supportsSkill = false;
+            for (const auto& [sr, sc] : kSides) {
+                const auto* socket = cell(nr + sr, nc + sc);
+                if (socket && socket->isTablet() && plate.isSocket(nr + sr, nc + sc)) supportsSkill = true;
+            }
+            if (!supportsSkill) continue;
+            const auto* ingot = def.findIngot(beside->ingot);
+            if (!ingot) continue;
+            const auto* modifier = tuning.items.findModifier(ingot->vanguardReading());
+            if (!modifier) continue;
+            Effect lending{"lending", ingot->displayName + " <- " + subject->displayName, modifier->id,
+                           ingot->vanguardReadingValue() * def.cornerLendingMultiplier, p.row, p.col, std::string()};
+            lending.subject = p.currency;
+            lending.cellRow = nr;
+            lending.cellCol = nc;
+            out.push_back(lending);
         }
     }
     return out;
