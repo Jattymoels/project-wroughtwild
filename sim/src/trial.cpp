@@ -180,11 +180,11 @@ void TrialSession::finish(bool died) {
             // Provisional death contract: catalysts represent learning and
             // survive a failed attempt; ordinary run loot is lost.
             if (isCatalyst && tuning_.trial.keepCatalystsOnDeath)
-                economy_.inventory[id] += amount;
+                economy_.grant(id, amount);
             else if (!isCatalyst && !tuning_.trial.loseRunMaterialsOnDeath)
-                economy_.inventory[id] += amount;
+                economy_.grant(id, amount);
         } else {
-            economy_.inventory[id] += amount;
+            economy_.grant(id, amount);
         }
     }
 

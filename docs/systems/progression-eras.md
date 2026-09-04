@@ -615,3 +615,64 @@ no status waits for one, a mastery perk still scopes to its whole skill
 tell on the mob beyond the hitmarker, and everything after slice 2 in the
 slice order: the typed currencies, the Vanguard, corner augments and the
 reactions, links, rails, the metal of an ingot.
+
+## Implemented: typed currency (4 Sep 2026, D-023 slice 3)
+
+The owner: "Lets do it - i think there is definitely some real razorblade
+tuning of drop rates etc, and whether they can also be crafted if enough
+rare resources are found etc. Anyway dont overthink it, go ahead." The
+coin is retired and four kinds take its place. `data/tuning/crafting.json`,
+`world.json`, `trial.json`; `sim/economy.h`, `items.h`, `loot.h`:
+
+- **The kinds.** `currency_kinds` names five ids in four families: the
+  Ember and Preserving Catalysts (offence), the Vanguard (defence), the
+  Marrow (life) and the Quicksilver (tempo), each with the `items.json`
+  modifier tag it aims a craft at. The three cast kinds live in the purse
+  (`currencies`); the catalysts stay pack materials because tempering
+  consumes them there. `PlayerEconomy::grant`, `take` and `held` route an
+  id to the purse or the pack and read both, and the trial banks its loot
+  through `grant` too.
+- **Families pay by their nature.** Every enemy names a `currency_kind`
+  and carries one loot entry for it, one at a chance of its own (the fire
+  families the Ember Catalyst at 6 to 8%, husks and knights the Vanguard
+  at 12 and 20%, hounds and crawlers the Quicksilver, the living the
+  Marrow); an elite pays one more of its family's kind on every kill
+  (`loot::rollEnemyLoot`). The reinforced mine pays three Vanguards, the
+  trial's loot room a spread of one each, and the forge upgrade costs two
+  Vanguards with the fittings. Every rate is a first guess for the
+  razor-blade pass.
+- **The peddler changes kinds.** Survival goods are priced in a Marrow or
+  a Quicksilver; `market.exchange` changes three of one kind for one of
+  another among four (the Ember Catalyst stays the trial's), so a surplus
+  is never dead and a Preserving Transfer is always three kinds away
+  (`PlayerEconomy::exchange`).
+- **A kind aims a craft.** `craft(recipe, forOrder, aimKind)`: a kind
+  added to a gear recipe is spent, the roll's first modifier is drawn from
+  the kind's family among what the base allows (`items::rollItem`'s
+  `firstFamilyTag`), and a plain result is lifted to
+  `craft_rolls.currency_weighting.aimed_minimum_rarity` (keen). A family
+  the base cannot hold aims nothing and the kind is still spent; a recipe
+  that makes no gear ignores the kind and spends nothing. The forge panel
+  offers one aimed row per kind held under every gear recipe.
+- **Rare metal casts a kind.** Three recipes: two steel make a Vanguard,
+  silver and hide a Marrow, two silver a Quicksilver, on era three's metals
+  so the route exists without outpacing the hunt. Catalysts are never cast.
+- **The engine.** The HUD's purse line and the pack's tiles show the
+  kinds; the peddler's stall lists the offers and one exchange row per
+  kind held enough of, per other kind; the work panel names the family an
+  aimed craft draws first.
+
+Tests: sim 3367 (the kinds and their families; nothing paying or
+pricing in the coin; a knight paying a Vanguard now and then and an elite
+always one more; grant, take and held across purse and pack; the exchange
+and its refusals; a Marrow-aimed armour always keen with a life modifier
+first, a Quicksilver-aimed mace speed first, an unaimed craft unchanged, a
+non-gear recipe keeping the kind; the three cast recipes; the trial's
+spread; the purse in the save). Engine: unit 345 (the order in
+Vanguards, a kind's loot to the purse, the exchange through the door);
+integration 217 (the order, the save and death keeping the
+purse, charcoal for a Marrow).
+
+Not yet: currency on the plate (a kind lifts for the re-forge cost once it
+can sit there, slices 4 and 5), a tell when a kind drops beyond the
+material chip, and the tuning itself.

@@ -507,8 +507,8 @@ func _test_sim_extension() -> void:
 	check(sim.fulfill_order("reinforce_old_mine")["missing_outputs"], "sim: order refused without fittings")
 	sim.add_material("iron_fittings", 24)
 	check(sim.fulfill_order("reinforce_old_mine")["fulfilled"], "sim: order fulfilled")
-	check(sim.currency_count("trade_currency") == 40 and sim.inventory().get("iron_fittings", 0) == 0,
-		"sim: order paid currency and consumed fittings")
+	check(sim.currency_count("vanguard") == 3 and sim.inventory().get("iron_fittings", 0) == 0,
+		"sim: order paid three Vanguards and consumed fittings")
 	check(sim.skill_progress("blacksmithing")["level"] >= 2, "sim: order XP reward levelled Blacksmithing")
 	check(sim.fulfill_order("reinforce_old_mine")["already_fulfilled"], "sim: second delivery refused")
 
@@ -968,11 +968,18 @@ func _test_sandpit_extension() -> void:
 		check(sim.enemy_skill_page("stone_husk", page_seed) == "", "loot: a full spellbook drops no pages")
 
 	# Currency loot lands in the purse, material loot in the pack.
-	var before: int = sim.currency_count("trade_currency")
-	sim.add_materials({"trade_currency": 3, "stone": 2})
-	check(sim.currency_count("trade_currency") == before + 3, "sandpit: currency loot routed to the purse")
+	var before: int = sim.currency_count("marrow")
+	sim.add_materials({"marrow": 3, "stone": 2})
+	check(sim.currency_count("marrow") == before + 3, "sandpit: a kind's loot routed to the purse")
 	check(sim.material_count("stone") == 2, "sandpit: material loot routed to the pack")
-	check(sim.inventory().get("trade_currency", 0) == 0, "sandpit: currency never sits in the pack")
+	check(sim.inventory().get("marrow", 0) == 0, "sandpit: a kind never sits in the pack")
+	# D-023 slice 3: the kinds through the door - the peddler's exchange.
+	var vanguard_before: int = sim.currency_count("vanguard")
+	check(sim.currency_kinds().size() == 5 and sim.exchange_rate() == 3, "kinds: five kinds, three to one")
+	check(sim.can_exchange("marrow", "vanguard") and not sim.can_exchange("marrow", "marrow") and sim.exchange("marrow", "vanguard")
+		and sim.currency_count("marrow") == before and sim.currency_count("vanguard") == vanguard_before + 1,
+		"kinds: three Marrow change for a Vanguard")
+	check(sim.enemy("hollow_knight")["currency_kind"] == "vanguard", "kinds: the knight pays the Vanguard")
 
 	# Hand-crafting through the extension: the start-with-nothing rung.
 	var kit_recipe: Dictionary = sim.recipe("workbench_kit")

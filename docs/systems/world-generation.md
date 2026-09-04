@@ -194,7 +194,7 @@ and a look.
 ## Implemented: life beyond hostiles (3 Sep 2026)
 
 - **The peddler** stands by the order board at the spawn clearing and
-  sells for trade currency (`crafting.json` `market`): a Preserving
+  sells for kinds and changes one kind for another (`crafting.json` `market`, D-023 slice 3): a Preserving
   Catalyst, charcoal, ore, wood. The first thing the currency buys; steep
   next to gathering so infrastructure stays the dependable route.
 - **Valley elk** graze the meadow and the forest: the `grazer` behaviour

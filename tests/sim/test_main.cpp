@@ -335,7 +335,7 @@ void testOrderFulfilment(const tuning::Tuning& t) {
     auto result = player.fulfillOrder("reinforce_old_mine");
     check(result.fulfilled, "order: fulfilment succeeds");
     check(player.inventory["iron_fittings"] == 0, "order: output genuinely consumed");
-    check(player.currency["trade_currency"] == 40, "order: currency reward granted");
+    check(player.currency["vanguard"] == 3, "order: the mine pays three Vanguards, the kind of its work");
     check(player.skillXp("blacksmithing") == xpBefore + 60, "order: xp reward feeds skill");
     check(player.worldEffectActive("old_mine_reinforced"), "order: world effect recorded");
 
@@ -541,10 +541,10 @@ void testStationConstruction(const tuning::Tuning& t) {
     check(player.stationAvailable("forge_basic"), "build: station available");
 
     check(!player.buildStation("forge_improved"), "build: upgrade needs payment");
-    player.currency["trade_currency"] = 30;
+    player.currency["vanguard"] = 2;
     player.inventory["iron_fittings"] = 6;
-    check(player.buildStation("forge_improved"), "build: upgrade paid from currency + goods");
-    check(player.currency["trade_currency"] == 0 && player.inventory["iron_fittings"] == 0,
+    check(player.buildStation("forge_improved"), "build: upgrade paid from the purse + goods");
+    check(player.currency["vanguard"] == 0 && player.inventory["iron_fittings"] == 0,
           "build: upgrade cost consumed");
 }
 
@@ -2432,11 +2432,12 @@ void testEraThreeAndLife(const tuning::Tuning& t) {
               !t.realtime.findBehaviour("melee")->flees && t.world.findEnemy("valley_elk") != nullptr,
           "life: the valley elk is a grazer that flees");
     economy::PlayerEconomy buyer(t);
-    check(!buyer.buy("charcoal"), "peddler: no coin, no sale");
-    buyer.currency["trade_currency"] = 10;
-    check(buyer.buy("charcoal") && buyer.inventory["charcoal"] == 4 && buyer.currency["trade_currency"] == 4,
-          "peddler: charcoal for six coin");
-    check(!buyer.buy("preserving_catalyst") && !buyer.buy("no_such_thing"), "peddler: too dear, or not for sale");
+    check(!buyer.buy("charcoal"), "peddler: no kind, no sale");
+    buyer.currency["marrow"] = 2;
+    check(buyer.buy("charcoal") && buyer.inventory["charcoal"] == 4 && buyer.currency["marrow"] == 1,
+          "peddler: charcoal for a Marrow");
+    check(!buyer.buy("iron_ore") && !buyer.buy("preserving_catalyst") && !buyer.buy("no_such_thing"),
+          "peddler: the wrong kind, or not for sale");
     // An order's world effect now goes through the recording path: the mine
     // milestone reaches the Foundry.
     economy::PlayerEconomy miner(t);
@@ -2656,6 +2657,144 @@ void testEveryIngotReadsEverySkill(const tuning::Tuning& t) {
     }
 }
 
+// D-023 slice 3 (owner, 4 Sep 2026: "go ahead"): typed currency. Four kinds
+// replace the coin: families pay them, elites one more, the peddler
+// changes them, a kind aims a craft, rare metal casts one.
+void testTypedCurrency(const tuning::Tuning& t) {
+    const auto& c = t.crafting;
+    check(c.currencies == std::vector<std::string>{"vanguard", "marrow", "quicksilver"} && !c.isCurrency("trade_currency"),
+          "kinds: the purse holds the three cast kinds and the coin is gone");
+    check(c.currencyKinds.size() == 5 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
+              c.findKind("marrow")->family == "life" && c.findKind("quicksilver")->family == "speed" &&
+              c.findKind("ember_catalyst")->family == "offence" && c.findKind("preserving_catalyst")->family == "offence" &&
+              !c.findKind("trade_currency"),
+          "kinds: five kinds in four families");
+    check(c.exchangeRate == 3 && c.exchangeKinds.size() == 4 &&
+              std::find(c.exchangeKinds.begin(), c.exchangeKinds.end(), "ember_catalyst") == c.exchangeKinds.end(),
+          "kinds: the peddler changes four kinds at three to one; the ember catalyst stays the trial's");
+    check(c.aimedMinimumRarity == "keen", "kinds: an aimed craft is at least keen");
+    bool coinAnywhere = false;
+    for (const auto& enemy : t.world.enemies) {
+        check(c.findKind(enemy.currencyKind) != nullptr, "kinds: " + enemy.id + " pays a known kind");
+        bool paysKind = false;
+        for (const auto& entry : enemy.loot) {
+            if (entry.item == "trade_currency") coinAnywhere = true;
+            if (entry.item == enemy.currencyKind) paysKind = true;
+        }
+        check(paysKind, "kinds: " + enemy.id + "'s loot table carries its kind");
+    }
+    for (const auto& offer : c.market) if (offer.currency == "trade_currency") coinAnywhere = true;
+    for (const auto& order : c.orders) if (order.rewards.count("trade_currency")) coinAnywhere = true;
+    check(!coinAnywhere, "kinds: nothing pays or prices in the coin");
+    check(t.world.findEnemy("hollow_knight")->currencyKind == "vanguard" && t.world.findEnemy("ash_hound")->currencyKind == "quicksilver" &&
+              t.world.findEnemy("valley_elk")->currencyKind == "marrow" && t.world.findEnemy("ember_whelp")->currencyKind == "ember_catalyst",
+          "kinds: families pay by their nature");
+
+    // Loot: a family pays its kind now and then; an elite pays one more every time.
+    int knightsPaying = 0, whelpsPaying = 0;
+    for (uint64_t seed = 1; seed <= 200; ++seed) {
+        if (loot::rollEnemyLoot(t.world, "hollow_knight", seed).count("vanguard")) ++knightsPaying;
+        if (loot::rollEnemyLoot(t.world, "ember_whelp", seed).count("ember_catalyst")) ++whelpsPaying;
+    }
+    check(knightsPaying > 10 && knightsPaying < 100, "loot: a knight pays a Vanguard now and then (" + std::to_string(knightsPaying) + " of 200)");
+    check(whelpsPaying > 0 && whelpsPaying < 40, "loot: a whelp pays an Ember Catalyst rarely (" + std::to_string(whelpsPaying) + " of 200)");
+    tuning::EliteModifierDef elite;
+    elite.id = "test_elite";
+    bool eliteAlways = true;
+    for (uint64_t seed = 1; seed <= 50; ++seed)
+        if (loot::rollEnemyLoot(t.world, "hollow_knight", seed, &elite)["vanguard"] < 1) eliteAlways = false;
+    check(eliteAlways, "loot: an elite knight always pays a Vanguard on top");
+
+    // The purse and the pack: grant routes a kind to the purse, a catalyst
+    // to the pack; held reads both.
+    economy::PlayerEconomy p(t);
+    p.grant("vanguard", 2);
+    p.grant("preserving_catalyst", 1);
+    p.grant("wood", 3);
+    check(p.currency["vanguard"] == 2 && p.inventory.count("vanguard") == 0 && p.inventory["preserving_catalyst"] == 1 &&
+              p.inventory["wood"] == 3 && p.held("vanguard") == 2 && p.held("preserving_catalyst") == 1 && p.held("nothing") == 0,
+          "kinds: a cast kind lands in the purse, a catalyst in the pack, and held reads both");
+
+    // The exchange: three of one for one of another, among the listed kinds.
+    check(!p.canExchange("vanguard", "marrow"), "exchange: two Vanguards are not enough");
+    p.grant("vanguard", 1);
+    check(p.canExchange("vanguard", "marrow") && !p.canExchange("vanguard", "vanguard") && !p.canExchange("vanguard", "ember_catalyst") &&
+              !p.canExchange("vanguard", "wood"),
+          "exchange: three Vanguards change for a Marrow; never for the same kind, the ember catalyst or a material");
+    check(p.exchange("vanguard", "marrow") && p.currency["vanguard"] == 0 && p.currency["marrow"] == 1, "exchange: paid and received");
+    p.inventory["preserving_catalyst"] = 3;
+    check(p.exchange("preserving_catalyst", "quicksilver") && p.inventory["preserving_catalyst"] == 0 && p.currency["quicksilver"] == 1,
+          "exchange: catalysts from the pack change like any kind");
+    p.currency["marrow"] = 3;
+    check(p.exchange("marrow", "preserving_catalyst") && p.inventory["preserving_catalyst"] == 1, "exchange: a Preserving Catalyst is three kinds away");
+    check(!p.exchange("marrow", "vanguard"), "exchange: spent, no change");
+
+    // A kind aims a craft: spent, the first modifier from its family, never plain.
+    economy::PlayerEconomy smith(t);
+    smith.addAvailableStation("forge_basic");
+    smith.addAvailableStation("forge_improved");
+    smith.grantSkillXp("blacksmithing", 1000);
+    smith.inventory["iron_ingot"] = 12;
+    smith.inventory["wood"] = 10;
+    auto refused = smith.craft("iron_chest_armour", false, "marrow");
+    check(!refused.crafted && refused.failure.missingKind && smith.inventory["iron_ingot"] == 12, "aim: no Marrow in hand, nothing spent");
+    check(!smith.craft("iron_chest_armour", false, "no_such_kind").crafted, "aim: an unknown kind is refused");
+    int lifeFirst = 0, plainAimed = 0;
+    for (int i = 0; i < 20; ++i) {
+        smith.inventory["iron_ingot"] = 12;
+        smith.inventory["wood"] = 10;
+        smith.grant("marrow", 1);
+        auto r = smith.craft("iron_chest_armour", false, "marrow");
+        check(r.crafted && smith.currency["marrow"] == 0, "aim: the Marrow is spent on the craft");
+        const auto& item = smith.packItems.back();
+        if (item.rarity == "plain" || item.rolledProperties.empty()) ++plainAimed;
+        else {
+            const auto* def = t.items.findModifier(item.rolledProperties.front().propertyId);
+            if (def && std::find(def->tags.begin(), def->tags.end(), "life") != def->tags.end()) ++lifeFirst;
+        }
+    }
+    check(plainAimed == 0 && lifeFirst == 20, "aim: every Marrow-aimed armour is at least keen with a life modifier first");
+    smith.inventory["iron_ingot"] = 6;
+    smith.inventory["wood"] = 4;
+    smith.grant("quicksilver", 1);
+    check(smith.craft("iron_mace", false, "quicksilver").crafted && !smith.packItems.back().rolledProperties.empty(),
+          "aim: a Quicksilver aims a mace");
+    const auto* first = t.items.findModifier(smith.packItems.back().rolledProperties.front().propertyId);
+    check(first && std::find(first->tags.begin(), first->tags.end(), "speed") != first->tags.end(), "aim: the mace's first modifier is speed");
+    smith.inventory["iron_ingot"] = 12;
+    smith.inventory["wood"] = 10;
+    check(smith.craft("iron_chest_armour").crafted, "aim: an unaimed craft still works");
+    // A kind on a recipe that makes no gear is ignored and kept.
+    smith.grant("vanguard", 1);
+    smith.inventory["wood"] = 8;
+    check(smith.craft("charcoal", false, "vanguard").crafted && smith.currency["vanguard"] == 1, "aim: a non-gear recipe ignores the kind and spends nothing");
+
+    // Rare metal casts a kind into the purse.
+    economy::PlayerEconomy caster(t);
+    caster.addAvailableStation("forge_basic");
+    caster.addAvailableStation("forge_improved");
+    caster.grantSkillXp("blacksmithing", 1000);
+    caster.inventory["steel_ingot"] = 2;
+    caster.inventory["wood"] = 10;
+    check(caster.craft("cast_vanguard").crafted && caster.currency["vanguard"] == 1 && caster.inventory.count("vanguard") == 0,
+          "cast: two steel make a Vanguard, in the purse");
+    caster.inventory["silver_ingot"] = 3;
+    caster.inventory["hide"] = 2;
+    check(caster.craft("cast_marrow").crafted && caster.craft("cast_quicksilver").crafted && caster.currency["marrow"] == 1 &&
+              caster.currency["quicksilver"] == 1,
+          "cast: silver and hide make a Marrow, silver alone a Quicksilver");
+    check(!t.crafting.findRecipe("cast_ember_catalyst") && !t.crafting.findRecipe("cast_preserving_catalyst"),
+          "cast: catalysts are never cast");
+
+    // The trial's loot room pays a spread of kinds; the purse rides in the save.
+    check(t.trial.materialsReward.count("vanguard") && t.trial.materialsReward.count("marrow") && t.trial.materialsReward.count("quicksilver"),
+          "trial: the loot room pays a spread of the kinds");
+    save::SaveGame game;
+    game.economy = p.exportState();
+    auto back = save::fromJson(save::toJson(game));
+    check(back.economy.currency.at("quicksilver") == 1, "kinds: the purse rides in the save");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -2700,6 +2839,7 @@ int main(int argc, char** argv) {
     testEras(t);
     testFoundry(t);
     testEveryIngotReadsEverySkill(t);
+    testTypedCurrency(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);
