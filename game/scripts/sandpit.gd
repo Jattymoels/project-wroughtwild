@@ -19,6 +19,10 @@ const ORDER_BOARD_SCENE := preload("res://scenes/order_board.tscn")
 ## the era's nodes, shifts the light and tells the story.
 var _era_index := 0
 var _era_poll := 0.0
+## The day (Wave 6 slice 5): the sim keeps the clock; the sandpit advances
+## it with play and hands the hour to the light, the packs and the player.
+var _day_phase := ""
+var _day_rules: Dictionary = {}
 @onready var mood: BiomeMood = $Mood
 @onready var player: WroughtwildPlayer = $Player
 
@@ -84,8 +88,11 @@ func _replace_named(scene: PackedScene, node_name: String, at: Vector3) -> Node3
 
 
 func _physics_process(delta: float) -> void:
+	if terrain.map.is_empty():
+		return
+	_tick_day(delta)
 	_era_poll -= delta
-	if _era_poll > 0.0 or terrain.map.is_empty():
+	if _era_poll > 0.0:
 		return
 	_era_poll = 1.0
 	var era: Dictionary = _sim().era()
@@ -102,6 +109,45 @@ func _physics_process(delta: float) -> void:
 	player.hud.notify("Era %d: %s. %s" % [index, era["display_name"], era["story"]])
 	if revealed > 0:
 		player.hud.notify("The strata have cracked: %d new veins surfaced in the deep." % revealed)
+
+
+## Day and night (Wave 6 slice 5; the owner: "imperative there is almost
+## like a forced - go back and continue your shelter, and get lost in that
+## for a bit"). The clock runs with play; the light, the packs and the
+## player's cold follow it, and each phase change is told once. Tests call
+## this with zero delta after setting the sim's clock.
+func _tick_day(delta: float) -> void:
+	var sim := _sim()
+	sim.advance_time(delta)
+	var day: Dictionary = sim.day()
+	if day.is_empty():
+		return
+	if _day_rules.is_empty():
+		_day_rules = sim.day_rules()
+	mood.set_day(day, _day_rules)
+	player.set_day(day, _day_rules)
+	mob_packs.set_night(bool(day.get("night", false)), _day_rules)
+	var phase := String(day.get("phase", "day"))
+	if phase == _day_phase:
+		return
+	var first := _day_phase == ""
+	_day_phase = phase
+	if not first:
+		player.hud.notify(_phase_notice(phase, day))
+
+
+func _phase_notice(phase: String, day: Dictionary) -> String:
+	var home := player.combat.home_text()
+	match phase:
+		"dusk":
+			return "Dusk. The light is going and the cold comes with the dark: get under a roof, and build while the night lasts.%s" % (
+				"  Home is %s." % home if home != "" else "")
+		"night":
+			return "Night. Out here the cold takes what it takes and the packs wake from further; a shelter mends you faster through it.%s" % (
+				"  Home is %s." % home if home != "" else "")
+		"dawn":
+			return "Dawn. The cold lifts."
+	return "Day %d." % int(day.get("index", 1))
 
 
 ## SaveManager hook: a loaded save carries its own seed; rebuild the world

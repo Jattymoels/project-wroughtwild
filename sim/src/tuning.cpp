@@ -908,6 +908,26 @@ WorldTable loadWorld(const std::string& path) {
         table.shelter.maxRoomCells = shelter->get("max_room_cells").asInt();
         if (table.shelter.maxRoomCells < 1) throw std::runtime_error("world: shelter.max_room_cells must be >= 1");
     }
+    if (auto day = doc->find("day")) {
+        auto& d = table.day;
+        d.lengthSeconds = day->get("length_seconds").asNumber();
+        d.startFraction = day->get("start_fraction").asNumber();
+        d.dawnEnd = day->get("dawn_end").asNumber();
+        d.dayEnd = day->get("day_end").asNumber();
+        d.duskEnd = day->get("dusk_end").asNumber();
+        d.nightLight = day->get("night_light").asNumber();
+        d.exposureLifePerRound = day->get("exposure_life_per_round").asNumber();
+        d.exposureFloorFraction = day->get("exposure_floor_fraction").asNumber();
+        d.nightAggroMultiplier = day->get("night_aggro_multiplier").asNumber();
+        d.nightSleepRangeMultiplier = day->get("night_sleep_range_multiplier").asNumber();
+        d.shelterNightRegenMultiplier = day->get("shelter_night_regen_multiplier").asNumber();
+        if (d.lengthSeconds <= 0.0) throw std::runtime_error("world: day.length_seconds must be > 0");
+        if (!(0.0 <= d.dawnEnd && d.dawnEnd <= d.dayEnd && d.dayEnd <= d.duskEnd && d.duskEnd <= 1.0))
+            throw std::runtime_error("world: day phases must run dawn_end <= day_end <= dusk_end within [0, 1]");
+        if (d.startFraction < 0.0 || d.startFraction >= 1.0) throw std::runtime_error("world: day.start_fraction must be in [0, 1)");
+        if (d.exposureFloorFraction < 0.0 || d.exposureFloorFraction > 1.0)
+            throw std::runtime_error("world: day.exposure_floor_fraction must be in [0, 1]");
+    }
     for (const auto& e : doc->get("enemies").asArray()) {
         EnemyDef def;
         def.id = e->get("id").asString();

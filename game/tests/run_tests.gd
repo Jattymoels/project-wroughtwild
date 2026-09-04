@@ -172,6 +172,25 @@ func _test_lattice() -> void:
 	var rules: Dictionary = sim.shelter()
 	check(rules.get("regen_life_per_round", 0.0) > 0.0 and rules.get("max_room_cells", 0) > 0,
 		"shelter: rules come from world.json")
+	# Day and night (Wave 6 slice 5): the sim keeps the clock; a new game
+	# starts in the morning, past dusk it is night and dark, and the rules
+	# (the cold, the wider wake, the faster rest) read from world.json.
+	var day_rules: Dictionary = sim.day_rules()
+	check(float(day_rules.get("length_seconds", 0.0)) >= 600.0 and float(day_rules.get("exposure_life_per_second", 0.0)) > 0.0
+		and float(day_rules.get("night_aggro_multiplier", 1.0)) > 1.0 and float(day_rules.get("shelter_night_regen_multiplier", 1.0)) > 1.0,
+		"day: the rules come from world.json")
+	var day0: Dictionary = sim.day()
+	check(int(day0.get("index", 0)) == 1 and String(day0.get("phase", "")) == "day" and not bool(day0.get("night", true)),
+		"day: a new game starts in the morning of day one")
+	sim.advance_time(float(day0.get("seconds_to_night", 0.0)) + 1.0)
+	var night: Dictionary = sim.day()
+	check(bool(night.get("night", false)) and float(night.get("daylight", 1.0)) < 0.3 and float(night.get("seconds_to_dawn", 0.0)) > 0.0,
+		"day: past dusk it is night, dark, and dawn is coming")
+	sim.set_day_clock(0.0)
+	check(String(sim.day().get("phase", "")) == "day", "day: the clock can be set back")
+	check(Hud.clock_text(245.2) == "4:06" and Hud.clock_text(0.0) == "0:00", "day: the HUD's clock reads minutes and seconds")
+	check(PlayerCombat.compass(Vector3(0, 0, -1)) == "N" and PlayerCombat.compass(Vector3(1, 0, 0)) == "E"
+		and PlayerCombat.compass(Vector3(-1, 0, 1)) == "SW", "day: the way home is told by the eight winds")
 	var no_digs := PackedInt32Array()
 	var middle := Vector3(0.5, 0.5, 0.5)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")

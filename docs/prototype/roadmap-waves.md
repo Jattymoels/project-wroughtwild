@@ -454,9 +454,20 @@ automation").
    hills, least under the trees) with the five palettes warmed, darkened
    or bleached apart. The river from the hills to the fen stays the
    add-on. Sim 4791, engine unit 365.
-5. **Day and night**: a twelve-minute day; at night the light drains,
-   packs roam wider, and the shelter is where you regenerate - the forced
-   return home.
+5. **Day and night** *(landed 4 Sep 2026)*: a twelve-minute day
+   (`world.json` `day`) in dawn, day, dusk and night by fraction, the
+   night the last third - about four minutes, long enough to build
+   through. Dusk is the warning: the notice points home by the eight
+   winds and the HUD counts down to the night, then to dawn. Night: the
+   sky, the fog and the sun go blue and faint (`biome_mood.gd`, the sun
+   swinging from dawn to dusk and sitting low after), every mob wakes
+   from `night_aggro_multiplier` further and a pack stays awake further;
+   out in the open the cold takes `exposure_life_per_round` down to
+   `exposure_floor_fraction` of max life and no further - it never kills,
+   it sends you home - and a shelter's rest pays
+   `shelter_night_regen_multiplier`; a carried lamp lights the way. The
+   sim owns the clock (`daycycle.h`; `advance_time`, `day`, `day_rules`;
+   saved as `day_clock`). Sim 4813, engine unit 371, integration Godot.
 6. **Hauling**: a carry cap per family and chests as storage at a placed
    outpost (D-005 arriving early).
 

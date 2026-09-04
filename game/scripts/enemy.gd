@@ -37,6 +37,7 @@ var move_speed := 3.0
 var attack_range := 1.5
 var preferred_distance := 0.0
 var aggro_range := 10.0
+var base_aggro_range := 10.0
 var windup_seconds := 0.3
 var attack_period_seconds := 1.0
 ## D-012 stupid-zombie chase: once aggroed, press until the player stays
@@ -161,6 +162,7 @@ func configure(sim: WroughtwildSim) -> void:
 	attack_range = b.get("attack_range_m", 1.5)
 	preferred_distance = b.get("preferred_distance_m", 0.0)
 	aggro_range = b.get("aggro_range_m", 10.0)
+	base_aggro_range = aggro_range
 	windup_seconds = b.get("windup_seconds", 0.3)
 	attack_period_seconds = def["attack_period_rounds"] * rt["round_seconds"] / speed_multiplier
 	give_up_distance = b.get("give_up_distance_m", 0.0)
@@ -481,6 +483,12 @@ func _proliferate(fraction: float = 1.0) -> void:
 ## True while nothing is happening to this mob: a pack of these may sleep.
 func calm() -> bool:
 	return (state == "idle" or state == "flee") and life > 0.0 and not trial_bound
+
+
+## The night widens the wake (Wave 6 slice 5): the packs' multiplier over
+## the behaviour's aggro range.
+func set_aggro_multiplier(multiplier: float) -> void:
+	aggro_range = base_aggro_range * multiplier
 
 
 func _physics_process(delta: float) -> void:

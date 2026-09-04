@@ -292,6 +292,12 @@ func _on_life_changed(life: float, _max_life: float) -> void:
 	_last_life = life
 
 
+## "4:05" from seconds.
+static func clock_text(seconds: float) -> String:
+	var whole := maxi(ceili(seconds), 0)
+	return "%d:%02d" % [whole / 60, whole % 60]
+
+
 func notify(text: String) -> void:
 	_notice.text = text
 	_notice_timer = NOTICE_SECONDS
@@ -411,6 +417,16 @@ func refresh() -> void:
 	var era: Dictionary = sim.era()
 	if not era.is_empty():
 		lines.append("Era %d of %d: %s" % [era["index"], era.get("count", 1), era["display_name"]])
+	# The hour (Wave 6 slice 5): dusk counts down to the night, the night to dawn.
+	var day: Dictionary = sim.day()
+	if not day.is_empty():
+		var phase := String(day.get("phase", "day"))
+		var when := ""
+		if phase == "dusk":
+			when = "  ·  night in %s" % clock_text(float(day.get("seconds_to_night", 0.0)))
+		elif phase == "night":
+			when = "  ·  dawn in %s" % clock_text(float(day.get("seconds_to_dawn", 0.0)))
+		lines.append("Day %d, %s%s" % [int(day.get("index", 1)), phase, when])
 	# The economy's own milestones (crafts, world effects, eras) forge ingots.
 	for id in sim.foundry_notices():
 		if String(id).begins_with("manner:"):
@@ -440,6 +456,8 @@ func refresh() -> void:
 		var rest := ""
 		if combat.sheltered:
 			rest = "  ·  resting +%.1f/s" % combat.regen_per_second() if combat.resting() else "  ·  sheltered"
+		elif combat.night_text() != "":
+			rest = "  ·  " + combat.night_text()
 		elif combat.shelter_text() != "":
 			rest = "  ·  " + combat.shelter_text()
 		# Cold resistance (D-023 slice 4) shows once something gives it.

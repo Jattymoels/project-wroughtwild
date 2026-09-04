@@ -592,6 +592,12 @@ int PlayerEconomy::currentEra() const {
 
 const tuning::EraDef& PlayerEconomy::era() const { return tuning_.eras.eras[static_cast<size_t>(currentEra() - 1)]; }
 
+void PlayerEconomy::advanceTime(double seconds) {
+    if (seconds > 0.0) dayClock_ += seconds;
+}
+
+void PlayerEconomy::setDayClock(double seconds) { dayClock_ = seconds > 0.0 ? seconds : 0.0; }
+
 bool PlayerEconomy::shapeUnlocked(const std::string& shapeId) const {
     const tuning::ShapeDef* shape = tuning_.construction.findShape(shapeId);
     return shape != nullptr &&
@@ -690,12 +696,14 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
     state.skillBar = skillBar_;
     state.foundry = foundry_;
     state.skillUses = skillUses_;
+    state.dayClock = dayClock_;
     return state;
 }
 
 void PlayerEconomy::importState(const State& state) {
     foundry_ = state.foundry;
     skillUses_ = state.skillUses;
+    dayClock_ = state.dayClock > 0.0 ? state.dayClock : 0.0;
     inventory = state.inventory;
     currency = state.currency;
     skills_.clear();

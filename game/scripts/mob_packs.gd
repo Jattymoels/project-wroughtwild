@@ -22,6 +22,11 @@ var _check_timer := 0.0
 var max_live_mobs := 60
 var sleep_range_m := 60.0
 var sleep_after_seconds := 6.0
+## The night (Wave 6 slice 5): packs wake from further and stay awake
+## further - the dark is theirs.
+var night := false
+var _night_aggro := 1.0
+var _night_sleep := 1.0
 
 
 func setup(from_terrain: Terrain, seed_value: int) -> void:
@@ -76,6 +81,27 @@ func _physics_process(delta: float) -> void:
 			live += (pack["members"] as Array).size()
 
 
+## The hour from the sandpit: at night every live mob wakes from further.
+func set_night(value: bool, rules: Dictionary) -> void:
+	_night_aggro = float(rules.get("night_aggro_multiplier", 1.0))
+	_night_sleep = float(rules.get("night_sleep_range_multiplier", 1.0))
+	if value == night:
+		return
+	night = value
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node is Enemy and is_instance_valid(node):
+			(node as Enemy).set_aggro_multiplier(aggro_multiplier())
+
+
+func aggro_multiplier() -> float:
+	return _night_aggro if night else 1.0
+
+
+## How far a calm pack must be from the player to sleep: further at night.
+func sleep_range() -> float:
+	return sleep_range_m * (_night_sleep if night else 1.0)
+
+
 ## Mobs alive in the world right now.
 func live_count() -> int:
 	var count := 0
@@ -110,7 +136,7 @@ func sleep_far_packs(player_position: Vector3) -> int:
 			if not enemy.calm() or enemy.since_hurt < sleep_after_seconds:
 				all_calm = false
 				break
-			if enemy.global_position.distance_to(player_position) < sleep_range_m:
+			if enemy.global_position.distance_to(player_position) < sleep_range():
 				all_calm = false
 				break
 			if enemy.elite_id != "":
@@ -124,7 +150,7 @@ func sleep_far_packs(player_position: Vector3) -> int:
 		if not all_calm:
 			continue
 		var anchor := Vector3((pack["x"] + 0.5) * cell, float(pack["y"]), (pack["z"] + 0.5) * cell)
-		if anchor.distance_to(player_position) < sleep_range_m:
+		if anchor.distance_to(player_position) < sleep_range():
 			continue
 		for enemy in survivor_ids:
 			(enemy as Enemy).queue_free()
@@ -178,6 +204,7 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 		var angle := TAU * float(i) / float(maxi(ids.size(), 1))
 		var offset := Vector3(cos(angle), 0.5, sin(angle)) * 1.6
 		var enemy := Enemy.spawn(get_parent(), StringName(ids[i]), at + offset)
+		enemy.set_aggro_multiplier(aggro_multiplier())
 		# The danger ring may have crowned one member (Wave 3 elites).
 		if i == elite_member and elite_modifier != "":
 			enemy.make_elite(sim.elite_modifier(elite_modifier))

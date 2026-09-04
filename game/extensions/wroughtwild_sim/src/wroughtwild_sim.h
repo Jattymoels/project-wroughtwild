@@ -17,6 +17,7 @@
 
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
+#include "wroughtwild/daycycle.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/grammar.h"
 #include "wroughtwild/lattice.h"
@@ -283,6 +284,21 @@ public:
     Dictionary structure_enclosure(int seed, const PackedInt32Array& removed_blocks, const Vector3& at);
     // world.json shelter: regen_life_per_round, settle_rounds, max_room_cells.
     Dictionary shelter() const;
+
+    // --- day and night (Wave 6 slice 5) ---
+    // The sim keeps the clock; the engine advances it by seconds of play.
+    void advance_time(double seconds);
+    // Where the clock stands: index, fraction, phase (dawn|day|dusk|night),
+    // daylight (1 by day, night_light at the dead of night), night,
+    // seconds_to_night, seconds_to_dawn, clock_seconds.
+    Dictionary day() const;
+    // world.json day: length_seconds, night_light, exposure_life_per_second
+    // (already per second of play), exposure_floor_fraction,
+    // night_aggro_multiplier, night_sleep_range_multiplier,
+    // shelter_night_regen_multiplier.
+    Dictionary day_rules() const;
+    // Tests: set the clock outright (seconds of play).
+    void set_day_clock(double seconds);
 
     // --- the peddler (crafting.json market) ---
     // [{item, count, price, currency, affordable}].

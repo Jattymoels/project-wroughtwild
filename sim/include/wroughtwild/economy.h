@@ -224,6 +224,13 @@ public:
     // the world has just taught is announced as "manner:<pattern id>".
     std::vector<std::string> takeFoundryNotices();
 
+    // --- the day (Wave 6 slice 5) ---
+    // Seconds of play since the world began. The engine advances it with
+    // play and reads the hour through daycycle::info; it only runs forward.
+    double dayClock() const { return dayClock_; }
+    void advanceTime(double seconds);
+    void setDayClock(double seconds);
+
     // --- save/load ---
     struct State {
         Inventory inventory;
@@ -238,6 +245,7 @@ public:
         std::vector<std::string> skillBar;
         foundry::State foundry;
         std::map<std::string, int> skillUses;
+        double dayClock = 0.0;
     };
     State exportState() const;
     // Restores a state; unknown skill ids are dropped, and an empty known
@@ -260,6 +268,7 @@ private:
     std::vector<std::string> worldEffects_;
     std::vector<std::string> knownSkills_;
     std::vector<std::string> skillBar_; // always kSkillBarSize entries
+    double dayClock_ = 0.0;
     foundry::State foundry_;
     std::vector<std::string> foundryNotices_;
     std::map<std::string, int> skillUses_;
