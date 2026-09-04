@@ -227,25 +227,32 @@ func _test_lattice() -> void:
 	# takes it, the pair speaks, and the stats read it.
 	var life_before: float = sim.derived_stats()["max_life"]
 	sim.foundry_notices()  # drain what the era test's world effect forged
-	check(sim.foundry()["rows"] == 3 and sim.foundry_ingot_ids().size() >= 8 and sim.foundry_effects().is_empty(),
-		"foundry: a 3x3 plate, bare")
+	# Era two here (the era test above woke the deep): the frame has three
+	# of its four rows forged, and two sockets on the diagonal.
+	check(sim.foundry()["rows"] == 4 and sim.foundry()["cols"] == 4 and sim.foundry()["first_row"] == 0
+		and sim.foundry()["last_row"] == 2 and sim.foundry()["sockets"].size() == 2
+		and sim.foundry_ingot_ids().size() >= 8 and sim.foundry_effects().is_empty(),
+		"foundry: a 4x4 frame with three rows forged, bare")
 	check(sim.foundry_event("first_kill:stone_husk") == ["plate"] and sim.foundry_event("first_kill:stone_husk").is_empty(),
 		"foundry: a first kill forges its ingot once")
 	check(sim.foundry_ingot("plate")["unplaced"] == 1 and sim.foundry_ingot("plate")["sentence"].contains("Armour"),
 		"foundry: the ingot view names its sentence")
-	check(sim.foundry_place(1, 1, "plate") and sim.foundry_effects().size() == 1 and sim.foundry()["unplaced"]["plate"] == 0,
+	check(not sim.foundry_place(3, 0, "plate") and not sim.foundry_place(1, 1, "plate"),
+		"foundry: an unforged row and a socket refuse an ingot")
+	check(sim.foundry_place(1, 0, "plate") and sim.foundry_effects().size() == 1 and sim.foundry()["unplaced"]["plate"] == 0,
 		"foundry: placed, and the plate does one thing")
 	check(sim.derived_stats()["armour"] >= 8.0, "foundry: a plate ingot is armour on the sheet")
-	check(sim.foundry_event("recipe:workbench_kit") == ["vigour"] and sim.foundry_place(1, 2, "vigour"),
-		"foundry: vigour beside plate")
+	check(sim.foundry_event("recipe:workbench_kit") == ["vigour"] and sim.foundry_place(2, 0, "vigour"),
+		"foundry: vigour below plate")
 	var kinds := []
 	for effect in sim.foundry_effects():
 		kinds.append(effect["kind"])
 	check(kinds.count("pair") == 1 and sim.derived_stats()["max_life"] > life_before, "foundry: the Bulwark pair, and life rose")
-	check(not sim.foundry_remove(1, 1), "foundry: re-forging needs metal")
+	check(not sim.foundry_remove(1, 0), "foundry: re-forging needs metal")
 	sim.add_material("iron_ingot", 1)
-	check(sim.foundry_remove(1, 1) and sim.material_count("iron_ingot") == 0 and sim.foundry_effects().size() == 1,
+	check(sim.foundry_remove(1, 0) and sim.material_count("iron_ingot") == 0 and sim.foundry_effects().size() == 1,
 		"foundry: lifted for one ingot of iron")
+	check(absf(sim.skill_reach("prototype_frost_orb") - 1.0) < 0.001, "reach: nothing speaks to the orb through the door")
 	check(sim.foundry_notices().is_empty(), "foundry: engine-reported milestones raise no notices of their own")
 
 	# Items as mechanics through the door: a tier-three roll on iron is

@@ -2018,34 +2018,47 @@ void testEras(const tuning::Tuning& t) {
           "eras: the arch is worked from bronze, not iron");
 }
 
-// The Foundry (D-019): ingots from milestones, placed on the era's plate;
-// pairs and lines are the build.
+// The Foundry (D-019, D-023): ingots from milestones on the frame the era
+// has forged; sockets take tablets; supports, backing and pairs are the
+// build.
 void testFoundry(const tuning::Tuning& t) {
     const auto& f = t.foundry;
     check(f.ingots.size() >= 8 && f.pairs.size() >= 6 && f.sources.size() >= 8, "foundry: ingots, pairs and sources load");
+    check(f.frameRows == 4 && f.frameCols == 4 && f.sockets.size() == 2 && f.rowsByEra.size() == 3,
+          "foundry: a 4x4 frame, two sockets, three eras of rows");
     check(f.findPair("ember", "reach") != nullptr && f.findPair("reach", "ember") != nullptr, "foundry: pairs are unordered");
+    check(f.findIngot("reach") != nullptr && f.findIngot("reach")->supportModifier() == "reach" &&
+              f.findIngot("frost")->supportModifier() == "cold_damage",
+          "foundry: reach speaks its own modifier beside a skill; the rest speak their base");
     economy::PlayerEconomy player(t);
-    auto size = player.plateSize();
-    check(size.rows == 3 && size.cols == 3, "foundry: era one forges a 3x3 plate");
+    auto plate = player.plate();
+    check(plate.rows == 4 && plate.cols == 4 && plate.firstRow == 1 && plate.lastRow == 2 && plate.forgedRows() == 2,
+          "foundry: era one forges rows one and two of the frame");
+    check(plate.isSocket(1, 1) && plate.isSocket(2, 2) && !plate.isSocket(1, 2), "foundry: the sockets sit on the diagonal");
+    check(plate.forged(1, 0) && plate.forged(2, 3) && !plate.forged(0, 0) && !plate.forged(3, 3) && !plate.forged(1, 4),
+          "foundry: forged means inside the frame and in a forged row");
     check(player.foundryEvent("first_kill:ember_whelp") == std::vector<std::string>{"ember"}, "foundry: a first kill forges its ingot");
     check(player.foundryEvent("first_kill:ember_whelp").empty(), "foundry: each source grants once");
     check(player.foundryEvent("era:2").empty(), "foundry: an era-two source waits for its era");
     check(player.foundryEvent("first_kill:cinder_archer") == std::vector<std::string>{"reach"}, "foundry: another family, another ingot");
     check(foundry::unplacedCount(player.foundry(), "ember") == 1, "foundry: owned but unplaced");
-    // Placement rules.
-    check(!player.foundryPlace(3, 0, "ember") && !player.foundryPlace(0, 0, "frost"), "foundry: off the plate or unowned is refused");
-    check(player.foundryPlace(0, 0, "ember") && !player.foundryPlace(0, 0, "reach"), "foundry: a cell holds one ingot");
-    check(!player.foundryPlace(1, 1, "ember"), "foundry: an ingot places once");
-    check(player.foundryPlace(0, 1, "reach"), "foundry: reach beside ember");
-    auto effects = foundry::effects(t, player.foundry(), size);
-    int ingots = 0, pairs = 0, lines = 0;
+    // Placement rules: forged cells only, never a socket, one thing per cell.
+    check(!player.foundryPlace(0, 0, "ember") && !player.foundryPlace(3, 0, "ember"), "foundry: an unforged row is refused");
+    check(!player.foundryPlace(1, 1, "ember") && !player.foundryPlace(2, 2, "ember"), "foundry: a socket takes no ingot");
+    check(!player.foundryPlace(1, 0, "frost"), "foundry: an unowned ingot is refused");
+    check(player.foundryPlace(1, 0, "ember") && !player.foundryPlace(1, 0, "reach"), "foundry: a cell holds one ingot");
+    check(!player.foundryPlace(2, 0, "ember"), "foundry: an ingot places once");
+    check(player.foundryPlace(2, 0, "reach"), "foundry: reach below ember");
+    auto effects = foundry::effects(t, player.foundry(), plate);
+    int ingots = 0, pairs = 0, others = 0;
     for (const auto& e : effects) {
         if (e.kind == "ingot") ++ingots;
-        if (e.kind == "pair") ++pairs;
-        if (e.kind == "line") ++lines;
+        else if (e.kind == "pair") ++pairs;
+        else ++others;
     }
-    check(ingots == 2 && pairs == 1 && lines == 0 && effects.back().label == "Wildfire",
-          "foundry: two ingots and the Wildfire pair, no line");
+    check(ingots == 2 && pairs == 1 && others == 0 && effects.back().label == "Wildfire",
+          "foundry: two ingots and the Wildfire pair, nothing else");
+    check(effects.front().cellRow == 1 && effects.front().cellCol == 0, "foundry: an effect names the cell it comes from");
     // The plate speaks in modifiers: fire damage up, proliferate reach up.
     auto mods = grammar::foundryMods(t, player.foundry(), player.currentEra());
     bool fire = false, wildfire = false;
@@ -2056,37 +2069,41 @@ void testFoundry(const tuning::Tuning& t) {
     check(fire && wildfire, "foundry: effects resolve through the item modifier pool");
     check(grammar::resolve(mods, {"fire", "spell"}, "damage", 100.0) > 100.0, "foundry: an ember ingot raises fire damage");
 
-    // D-022 skills on the plate: a known skill's tablet beside an ingot is
-    // supported by it, alone, at support_multiplier; a verb that cannot
-    // apply to the skill does nothing; tablets lift free; the save keeps it.
+    // D-022 skills on the plate, D-023 sockets: a known skill's tablet goes
+    // in a socket; the ingots beside it support it, alone, at
+    // support_multiplier; a verb that cannot read the skill does nothing
+    // yet; tablets lift free; the save keeps it.
     {
         economy::PlayerEconomy sup(t);
         sup.foundryEvent("first_kill:ember_whelp");   // ember (fire)
         sup.foundryEvent("recipe:workbench_kit");     // vigour (self)
-        check(!sup.foundryPlaceSkill(0, 0, "prototype_ember_bolt"), "plate: an unknown skill has no tablet");
-        check(sup.foundryPlaceSkill(1, 1, "prototype_frost_orb"), "plate: a known skill lays its tablet");
-        check(!sup.foundryPlaceSkill(1, 1, "prototype_heavy_strike") && !sup.foundryPlaceSkill(0, 0, "prototype_frost_orb"),
-              "plate: one tablet per cell, one per skill");
-        check(!sup.foundryPlace(1, 1, "ember"), "plate: an ingot cannot take a tablet's cell");
+        check(!sup.foundryPlaceSkill(1, 1, "prototype_ember_bolt"), "plate: an unknown skill has no tablet");
+        check(!sup.foundryPlaceSkill(1, 0, "prototype_frost_orb") && !sup.foundryPlaceSkill(0, 1, "prototype_frost_orb"),
+              "plate: a tablet goes in a socket, on a forged row");
+        check(sup.foundryPlaceSkill(1, 1, "prototype_frost_orb"), "plate: a known skill lays its tablet in a socket");
+        check(!sup.foundryPlaceSkill(1, 1, "prototype_heavy_strike") && !sup.foundryPlaceSkill(2, 2, "prototype_frost_orb"),
+              "plate: one tablet per socket, one per skill");
+        check(!sup.foundryPlace(1, 1, "ember"), "plate: an ingot cannot take a tablet's socket");
         // A frost ingot through whichever source grants one.
         std::string frostSource;
         for (const auto& src : t.foundry.sources) if (src.ingot == "frost" && src.era <= 1) { frostSource = src.event; break; }
         check(!frostSource.empty() && !sup.foundryEvent(frostSource).empty(), "plate: an era-one source grants frost");
-        check(sup.foundryPlace(1, 0, "frost") && sup.foundryPlace(0, 1, "ember") && sup.foundryPlace(2, 1, "vigour"),
-              "plate: frost, ember and vigour laid around the orb");
-        auto fx = foundry::effects(t, sup.foundry(), sup.plateSize());
+        check(sup.foundryPlace(1, 0, "frost") && sup.foundryPlace(2, 1, "ember") && sup.foundryPlace(1, 2, "vigour"),
+              "plate: frost, ember and vigour laid around the orb's socket");
+        auto fx = foundry::effects(t, sup.foundry(), sup.plate());
         int supports = 0;
         bool frostSupport = false, emberSupport = false, vigourSupport = false;
         for (const auto& e : fx) {
             if (e.kind != "support") continue;
             ++supports;
-            check(e.skill == "prototype_frost_orb", "plate: a support names its skill");
+            check(e.skill == "prototype_frost_orb" && e.row == 1 && e.col == 1 && e.cellRow == 1 && e.cellCol == 0,
+                  "plate: a support names its skill, its socket and its cell");
             if (e.modifier == "cold_damage") frostSupport = true;
             if (e.modifier == "fire_damage") emberSupport = true;
             if (e.modifier == "max_life") vigourSupport = true;
         }
         check(supports == 1 && frostSupport && !emberSupport && !vigourSupport,
-              "plate: frost supports the cold orb; fire and a self ingot cannot");
+              "plate: frost supports the cold orb; fire and a self ingot cannot yet");
         for (const auto& e : fx)
             if (e.kind == "support" && e.modifier == "cold_damage")
                 checkNear(e.value, t.foundry.findIngot("frost")->value * t.foundry.supportMultiplier, 1e-9,
@@ -2107,30 +2124,91 @@ void testFoundry(const tuning::Tuning& t) {
         for (const auto& src : t.foundry.sources) if (src.event == "recipe:dress_stone") sourceMasonry = true;
         check(sourceMasonry, "plate: the first dressed block is a milestone");
     }
-    // Lines: three embers in a row add the verb again.
+    // Reach reads area, projectile and strike skills (owner, 4 Sep 2026):
+    // a wider area, a further-flying projectile, a longer strike - one
+    // 'reach' multiplier the engine applies to the delivery it owns.
+    {
+        economy::PlayerEconomy reacher(t);
+        reacher.foundryEvent("first_kill:cinder_archer"); // reach
+        check(reacher.foundryPlace(1, 0, "reach") && reacher.foundryPlaceSkill(1, 1, "prototype_frost_orb"),
+              "reach: an ingot beside the orb's socket");
+        auto fx = foundry::effects(t, reacher.foundry(), reacher.plate());
+        bool reachSupport = false;
+        for (const auto& e : fx) if (e.kind == "support" && e.modifier == "reach" && e.skill == "prototype_frost_orb") reachSupport = true;
+        check(reachSupport, "reach: the ingot supports the projectile through the reach modifier");
+        auto rm = grammar::foundryMods(t, reacher.foundry(), reacher.currentEra());
+        checkNear(grammar::skillReach(t, rm, "prototype_frost_orb"), 1.0 + t.foundry.findIngot("reach")->value * t.foundry.supportMultiplier,
+                  1e-9, "reach: the orb flies further by the ingot's value times support_multiplier");
+        checkNear(grammar::skillReach(t, rm, "prototype_dash"), 1.0, 1e-9, "reach: a movement skill is untouched");
+        checkNear(grammar::skillReach(t, rm, "prototype_frost_nova"), 1.0, 1e-9, "reach: a skill not in the socket is untouched");
+        check(reacher.foundryRemove(1, 1) && reacher.foundryPlaceSkill(1, 1, "prototype_heavy_strike"), "reach: the strike takes the socket");
+        rm = grammar::foundryMods(t, reacher.foundry(), reacher.currentEra());
+        check(grammar::skillReach(t, rm, "prototype_heavy_strike") > 1.15, "reach: a strike reaches further");
+        check(reacher.foundryRemove(1, 1) && reacher.foundryPlaceSkill(1, 1, "prototype_area_strike"), "reach: the area strike takes the socket");
+        rm = grammar::foundryMods(t, reacher.foundry(), reacher.currentEra());
+        check(grammar::skillReach(t, rm, "prototype_area_strike") > 1.15, "reach: an area grows wider");
+        // The base stays a sheet stat: area_size on the sheet, from anywhere on the plate.
+        bool sheet = false;
+        for (const auto& m : rm) if (m.id == "area_size" && m.source == "foundry:ingot") sheet = true;
+        check(sheet, "reach: the ingot's base is still area size on the sheet");
+    }
+    // Backing replaces lines (owner, 4 Sep 2026): a matching ingot touching a
+    // support from any side but the socket's makes the support count once
+    // more. Two touching ingots, any direction, instead of three in a line.
+    {
+        economy::PlayerEconomy backer(t);
+        int frosts = 0;
+        for (const auto& src : t.foundry.sources)
+            if (src.ingot == "frost" && src.era <= 1 && !backer.foundryEvent(src.event).empty()) ++frosts;
+        check(frosts >= 2, "backing: era one forges two frosts");
+        check(backer.foundryPlaceSkill(1, 1, "prototype_frost_orb") && backer.foundryPlace(1, 0, "frost"), "backing: the orb and its frost support");
+        auto lone = grammar::foundryMods(t, backer.foundry(), backer.currentEra());
+        const double alone = grammar::resolve(lone, t.skills.findCombatSkill("prototype_frost_orb")->resolveTags(), "damage", 100.0);
+        check(backer.foundryPlace(2, 0, "frost"), "backing: a second frost below the support");
+        auto fx = foundry::effects(t, backer.foundry(), backer.plate());
+        int supports = 0, backings = 0;
+        for (const auto& e : fx) {
+            if (e.kind == "support") ++supports;
+            if (e.kind == "backing") {
+                ++backings;
+                check(e.skill == "prototype_frost_orb" && e.modifier == "cold_damage" && e.cellRow == 2 && e.cellCol == 0 &&
+                          std::abs(e.value - t.foundry.findIngot("frost")->value * t.foundry.supportMultiplier) < 1e-9,
+                      "backing: names the skill, the backing cell, and counts the support once more");
+            }
+            check(e.kind != "line", "backing: the line rule is gone");
+        }
+        check(supports == 1 && backings == 1, "backing: one support, one backing");
+        auto backed = grammar::foundryMods(t, backer.foundry(), backer.currentEra());
+        const double withBacking = grammar::resolve(backed, t.skills.findCombatSkill("prototype_frost_orb")->resolveTags(), "damage", 100.0);
+        check(withBacking > alone + 1.0, "backing: the orb hits harder for the second frost");
+        // A matching ingot that does not touch the support (across the socket) backs nothing.
+        backer.inventory["iron_ingot"] = 1;
+        check(backer.foundryRemove(2, 0) && backer.foundryPlace(1, 2, "frost"), "backing: the second frost moved beside the socket");
+        fx = foundry::effects(t, backer.foundry(), backer.plate());
+        supports = 0; backings = 0;
+        for (const auto& e : fx) { if (e.kind == "support") ++supports; if (e.kind == "backing") ++backings; }
+        check(supports == 2 && backings == 0, "backing: two supports that do not touch back nothing");
+    }
+    // Era two forges the row above; the plate grows without moving anything.
     economy::PlayerEconomy liner(t);
     liner.foundryEvent("first_kill:ember_whelp");
     liner.foundryEvent("recipe:smelt_iron");
-    liner.recordWorldEffect("stonecut_blocks"); // ward - and it wakes era two: the plate widens, era:2 grants reach
-    check(liner.currentEra() == 2 && liner.plateSize().cols == 4, "foundry: era two forges the plate a row wider");
+    liner.foundryPlace(1, 0, "ember");
+    liner.recordWorldEffect("stonecut_blocks"); // ward - and it wakes era two, era:2 grants reach
+    check(liner.currentEra() == 2 && liner.plate().firstRow == 0 && liner.plate().lastRow == 2 && liner.plate().forged(0, 0),
+          "foundry: era two forges the row above");
+    check(foundry::at(liner.foundry(), 1, 0) != nullptr && foundry::at(liner.foundry(), 1, 0)->ingot == "ember",
+          "foundry: what was placed stays where it was");
     check(liner.foundryEvent("era:2").empty() && foundry::unplacedCount(liner.foundry(), "reach") == 1,
           "foundry: the era transition granted its ingot itself");
     liner.foundryEvent("first_kill:ember_whelp"); // no double grant
-    liner.foundryPlace(1, 0, "ember");
-    liner.foundryPlace(1, 1, "ember");
-    check(foundry::unplacedCount(liner.foundry(), "ember") == 0, "foundry: two embers placed");
-    // Borrow a third ember through a fresh source to make the line.
-    liner.foundryEvent("first_kill:ember_whelp");
-    auto pre = foundry::effects(t, liner.foundry(), liner.plateSize());
-    int preLines = 0;
-    for (const auto& e : pre) if (e.kind == "line") ++preLines;
-    check(preLines == 0, "foundry: two in a row is no line");
+    check(liner.foundryPlace(0, 0, "ember") && foundry::unplacedCount(liner.foundry(), "ember") == 0, "foundry: the new row takes an ingot");
     // Re-forging pays metal.
-    check(!liner.foundryRemove(1, 1) && liner.foundry().plate.size() == 2, "foundry: lifting an ingot needs the metal");
+    check(!liner.foundryRemove(0, 0) && liner.foundry().plate.size() == 2, "foundry: lifting an ingot needs the metal");
     liner.inventory["iron_ingot"] = 1;
-    check(liner.foundryRemove(1, 1) && liner.inventory["iron_ingot"] == 0 && foundry::unplacedCount(liner.foundry(), "ember") == 1,
+    check(liner.foundryRemove(0, 0) && liner.inventory["iron_ingot"] == 0 && foundry::unplacedCount(liner.foundry(), "ember") == 1,
           "foundry: re-forging spends the metal and frees the ingot");
-    check(!liner.foundryRemove(2, 2), "foundry: an empty cell lifts nothing");
+    check(!liner.foundryRemove(2, 3), "foundry: an empty cell lifts nothing");
     // Saves carry the plate.
     save::SaveGame game;
     game.economy = player.exportState();
@@ -2143,6 +2221,29 @@ void testFoundry(const tuning::Tuning& t) {
     restored.importState(back.economy);
     check(restored.foundry().plate.size() == 2 && restored.foundryEvent("first_kill:ember_whelp").empty(),
           "foundry: a restored save remembers what it already granted");
+    // A save the frame cannot hold is lifted free on load (D-023): an
+    // unforged row, a tablet outside a socket, an ingot inside one, a second
+    // thing on a cell. Nothing is lost - the ingots return to the tray.
+    {
+        economy::PlayerEconomy::State stale = player.exportState();
+        stale.foundry.plate.clear();
+        stale.foundry.owned = {{"ember", 2}, {"frost", 2}};
+        stale.foundry.plate.push_back({0, 0, "ember", ""});                      // unforged in era one
+        stale.foundry.plate.push_back({1, 0, "", "prototype_frost_orb"});        // a tablet outside a socket
+        stale.foundry.plate.push_back({1, 1, "ember", ""});                      // an ingot in a socket
+        stale.foundry.plate.push_back({1, 2, "frost", ""});                      // fine
+        stale.foundry.plate.push_back({1, 2, "frost", ""});                      // a second thing on the cell
+        stale.foundry.plate.push_back({2, 2, "", "prototype_heavy_strike"});     // fine
+        economy::PlayerEconomy loaded(t);
+        loaded.importState(stale);
+        const auto& kept = loaded.foundry().plate;
+        check(kept.size() == 2 && foundry::at(loaded.foundry(), 1, 2) != nullptr && foundry::tabletFor(loaded.foundry(), "prototype_heavy_strike") != nullptr,
+              "foundry: a stale plate keeps only what the frame holds");
+        check(foundry::unplacedCount(loaded.foundry(), "ember") == 2 && foundry::unplacedCount(loaded.foundry(), "frost") == 1,
+              "foundry: lifted ingots are back in the tray");
+        foundry::State again = loaded.foundry();
+        check(foundry::validate(again, loaded.plate()) == 0, "foundry: a valid plate lifts nothing");
+    }
 }
 
 // Items as mechanics (D-019): tiers carry breakpoints, bases cap tiers,
@@ -2299,7 +2400,7 @@ void testEraThreeAndLife(const tuning::Tuning& t) {
     player.recordWorldEffect("ash_tide");
     check(player.currentEra() == 1, "era3: the ash tide alone does not skip the deep (eras are ordered)");
     player.recordWorldEffect("stonecut_blocks");
-    check(player.currentEra() == 3 && player.era().id == "ash_tide" && player.plateSize().rows == 4,
+    check(player.currentEra() == 3 && player.era().id == "ash_tide" && player.plate().firstRow == 0 && player.plate().lastRow == 3,
           "era3: with the deep awake the tide wakes era three and the plate is 4x4");
     const auto* scream = player.era().mechanic("shrieker", "scream_radius_bonus");
     check(scream && scream->at("value") > 0.0 && player.era().eliteChanceBonus > 0.0 &&

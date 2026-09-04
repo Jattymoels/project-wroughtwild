@@ -268,31 +268,43 @@ func _physics_process(_delta: float) -> void:
 			_player.work_panel.close_panel()
 			check(not _player.work_panel.is_open(), "integration: panel closes")
 			_player.open_foundry()
-			check(_player.foundry_panel.is_open() and _player.foundry_panel.cell_count == 9
-				and _player.foundry_panel.tray_count == 1, "foundry: the panel shows a 3x3 plate and one ingot in hand")
+			check(_player.foundry_panel.is_open() and _player.foundry_panel.cell_count == 8
+				and _player.foundry_panel.frame_cell_count == 16
+				and _player.foundry_panel.tray_count == 1, "foundry: the panel shows the two forged rows of the frame and one ingot in hand")
 			_player.foundry_panel.set_selected(&"ember")
 			_player.foundry_panel.press_cell(0, 0)
+			check(sim.foundry()["plate"].size() == 0 and _player.foundry_panel.message() == "The era has not forged this row.",
+				"foundry: an unforged row refuses the ingot and says so")
+			_player.foundry_panel.set_selected(&"ember")
+			_player.foundry_panel.press_cell(1, 1)
+			check(sim.foundry()["plate"].size() == 0 and _player.foundry_panel.message() == "A socket takes a tablet, not an ingot.",
+				"foundry: a socket refuses the ingot and says so")
+			_player.foundry_panel.set_selected(&"ember")
+			_player.foundry_panel.press_cell(1, 0)
 			check(sim.foundry()["plate"].size() == 1 and _player.foundry_panel.effect_count == 1,
 				"foundry: the panel set the ingot and shows its effect")
-			check(sim.foundry_event("first_kill:cinder_archer") == ["reach"] and sim.foundry_place(0, 1, "reach")
-				and sim.foundry_effects().size() == 3, "foundry: reach beside ember makes Wildfire")
-			# D-022 skills on the plate: lay the orb's tablet under reach; reach
-			# supports the orb alone; a tablet lifts free.
+			check(sim.foundry_event("first_kill:cinder_archer") == ["reach"] and sim.foundry_place(2, 0, "reach")
+				and sim.foundry_effects().size() == 3, "foundry: reach below ember makes Wildfire")
+			# D-022 skills on the plate, D-023 sockets: a tablet goes in a socket;
+			# the ingots beside it support that skill alone; a tablet lifts free.
 			_player.foundry_panel.refresh()
 			check((sim.foundry()["tablets"] as Array).size() >= 3, "plate: the known skills wait as tablets")
-			# An edge ingot (the first strike-driven split) at (1,0), the heavy
-			# strike's tablet at (1,1): edge supports the strike alone.
-			check(sim.foundry_event("work:strike_split") == ["edge"] and sim.foundry_place(1, 0, "edge"), "plate: an edge ingot for the strike")
+			# An edge ingot (the first strike-driven split) east of the socket at
+			# (1,1); the heavy strike's tablet in the socket: edge supports it.
+			check(sim.foundry_event("work:strike_split") == ["edge"] and sim.foundry_place(1, 2, "edge"), "plate: an edge ingot for the strike")
 			var heavy_before: float = _mean_hit(sim, "prototype_heavy_strike")
 			var area_before: float = _mean_hit(sim, "prototype_area_strike")
+			_player.foundry_panel.set_selected_skill(&"prototype_heavy_strike")
+			_player.foundry_panel.press_cell(2, 1)
+			check(_player.foundry_panel.message() == "A tablet goes in a socket.", "plate: a tablet outside a socket is refused and says so")
 			_player.foundry_panel.set_selected_skill(&"prototype_heavy_strike")
 			_player.foundry_panel.press_cell(1, 1)
 			var supports := 0
 			for e in sim.foundry_effects():
 				if e["kind"] == "support" and e["skill"] == "prototype_heavy_strike":
 					supports += 1
-			# Six effects: ember, reach, edge; Wildfire and Kindling pairs; the support.
-			check(supports == 1 and _player.foundry_panel.effect_count == 6, "plate: edge beside the strike's tablet supports the strike (%d, %d effects)" % [supports, _player.foundry_panel.effect_count])
+			# Five effects: ember, reach, edge; the Wildfire pair; the support.
+			check(supports == 1 and _player.foundry_panel.effect_count == 5, "plate: edge beside the strike's socket supports the strike (%d, %d effects)" % [supports, _player.foundry_panel.effect_count])
 			var heavy_after: float = _mean_hit(sim, "prototype_heavy_strike")
 			var area_after: float = _mean_hit(sim, "prototype_area_strike")
 			check(heavy_after > heavy_before * 1.12 and absf(area_after - area_before) < area_before * 0.06,
@@ -302,8 +314,16 @@ func _physics_process(_delta: float) -> void:
 			check(sim.material_count("iron_ingot") == iron_before and (sim.foundry()["tablets"] as Array).size() >= 3
 				and _player.foundry_panel.message() == "Lifted.", "plate: a tablet lifts for free")
 			# Lift the edge again (metal) so later combat bands see the plain plate.
-			check(sim.foundry_remove(1, 0) and sim.material_count("iron_ingot") == iron_before - 1, "plate: lifting an ingot still costs metal")
+			check(sim.foundry_remove(1, 2) and sim.material_count("iron_ingot") == iron_before - 1, "plate: lifting an ingot still costs metal")
 			sim.add_material("iron_ingot", 1)
+			# Reach reads the orb (D-023): the reach ingot moved below the orb's
+			# socket, the orb's tablet laid, the orb flies further; lifted, it does not.
+			sim.add_material("iron_ingot", 1)
+			check(sim.foundry_remove(2, 0) and sim.foundry_place(2, 1, "reach"), "reach: the reach ingot moved below the orb's socket")
+			check(absf(sim.skill_reach("prototype_frost_orb") - 1.0) < 0.001, "reach: nothing speaks to the orb yet")
+			check(sim.foundry_place_skill(1, 1, "prototype_frost_orb") and sim.skill_reach("prototype_frost_orb") > 1.15
+				and absf(sim.skill_reach("prototype_heavy_strike") - 1.0) < 0.001, "reach: the orb flies further, the strike is untouched")
+			check(sim.foundry_remove(1, 1) and absf(sim.skill_reach("prototype_frost_orb") - 1.0) < 0.001, "reach: lifted, the orb is plain again")
 			_player.foundry_panel.close_panel()
 			check(not _player.foundry_panel.is_open(), "foundry: panel closes")
 			_player.toggle_foundry()

@@ -107,6 +107,13 @@ double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,
 double skillCooldownSeconds(const tuning::Tuning& tuning, const ActiveMods& active,
                             const std::string& skillId);
 
+// The skill's spatial extent as a multiplier after reach modifiers matching
+// its tags (D-023): an area's radius, a projectile's flight, a strike's
+// reach. The engine applies it to the delivery it owns. 1.0 when nothing
+// speaks.
+double skillReach(const tuning::Tuning& tuning, const ActiveMods& active,
+                  const std::string& skillId);
+
 struct ShatterParams {
     bool enabled = false; // the given skill carries the shatter hook
     double novaDamage = 0.0;

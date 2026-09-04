@@ -38,7 +38,7 @@ purpose.
 3. The game is **first-person** (D-012); **V** toggles third person for
    debugging. The HUD (docs/systems/interface.md) shows a life bar with
    defences bottom-left, the action bar with cooldown sweeps bottom-centre
-   and what you carry top-right; press **I** for the pack screen. Controls: WASD move, mouse look, Space jump, **E** interact (harvest,
+   and what you carry top-right; press **I** for the pack screen and **F** for the Foundry. Controls: WASD move, mouse look, Space jump, **E** interact (harvest,
    work at a station, read the board, open the gate), **C** craft by hand,
    **B** toggle build mode, **Tab** cycle shapes and crafted station kits,
    **LMB** place (or harvest outside build mode), **X** remove block, **R** rotate (for panels, beams and pillars this also picks which face or corner of the cell they sit against), **1** area strike, **2** heavy strike, **3** Frost Orb

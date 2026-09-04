@@ -43,7 +43,8 @@ func _ready() -> void:
 	var spatial: Dictionary = combat.sim.realtime().get("skills", {}).get(String(skill_id), {})
 	_speed = spatial.get("speed_mps", 14.0)
 	_hit_radius = spatial.get("hit_radius_m", 0.55)
-	_range_left = spatial.get("max_range_m", 20.0)
+	# Reach (D-023): a Reach ingot beside the skill's socket makes it fly further.
+	_range_left = spatial.get("max_range_m", 20.0) * combat.sim.skill_reach(String(skill_id))
 	_fork_range = spatial.get("fork_range_m", 7.0)
 
 	var look: Dictionary = LOOKS.get(skill_id, {"colour": Color(0.9, 0.9, 0.9), "radius": 0.15})

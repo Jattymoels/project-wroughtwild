@@ -20,7 +20,7 @@ Q building material: timber, stone or iron from your pack - doors need joinery, 
 1–4 skill bar (assign skills in the pack screen; Shift also dashes)
 Mobs drop skill pages that teach new skills, and rolled gear that scales them
 F1–F3 spike mods (debug: force one modifier on)
-F the Foundry: lay a skill's tablet on the plate and the ingots beside it support that skill
+F the Foundry: lay a skill's tablet in a socket and the ingots beside it support that skill
 V camera  ·  H this help  ·  Esc close  ·  F5 save  ·  F9 load"""
 
 var sim: WroughtwildSim

@@ -175,6 +175,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("active_modifiers"), &WroughtwildSim::active_modifiers);
     ClassDB::bind_method(D_METHOD("roll_item_into_pack", "base_id", "rarity", "tier", "seed"), &WroughtwildSim::roll_item_into_pack);
     ClassDB::bind_method(D_METHOD("skill_cooldown_seconds", "skill_id"), &WroughtwildSim::skill_cooldown_seconds);
+    ClassDB::bind_method(D_METHOD("skill_reach", "skill_id"), &WroughtwildSim::skill_reach);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
     ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells"), &WroughtwildSim::world_mesh);
     ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks"),
@@ -2538,10 +2539,22 @@ Dictionary WroughtwildSim::foundry() const {
     if (!require_loaded("foundry")) {
         return d;
     }
-    const auto size = player_->plateSize();
+    const auto frame = player_->plate();
     const auto& state = player_->foundry();
-    d["rows"] = size.rows;
-    d["cols"] = size.cols;
+    // The frame (D-023): every row is drawn; the era has forged first_row
+    // to last_row; the sockets take a subject.
+    d["rows"] = frame.rows;
+    d["cols"] = frame.cols;
+    d["first_row"] = frame.firstRow;
+    d["last_row"] = frame.lastRow;
+    Array sockets;
+    for (const auto& s : frame.sockets) {
+        Array cell;
+        cell.push_back(s.row);
+        cell.push_back(s.col);
+        sockets.push_back(cell);
+    }
+    d["sockets"] = sockets;
     d["era"] = player_->currentEra();
     Array plate;
     for (const auto& p : state.plate) {
@@ -2617,11 +2630,13 @@ Array WroughtwildSim::foundry_effects() const {
     if (!require_loaded("foundry_effects")) {
         return out;
     }
-    for (const auto& e : wroughtwild::foundry::effects(*tuning_, player_->foundry(), player_->plateSize())) {
+    for (const auto& e : wroughtwild::foundry::effects(*tuning_, player_->foundry(), player_->plate())) {
         Dictionary d;
         d["kind"] = to_godot(e.kind);
         d["label"] = to_godot(e.label);
         d["skill"] = to_godot(e.skill);
+        d["cell_row"] = e.cellRow;
+        d["cell_col"] = e.cellCol;
         const auto* def = tuning_->items.findModifier(e.modifier);
         d["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, e.value)) : String();
         d["modifier"] = to_godot(e.modifier);
@@ -2953,6 +2968,13 @@ double WroughtwildSim::skill_cooldown_seconds(const String& skill_id) const {
         return 0.0;
     }
     return wroughtwild::grammar::skillCooldownSeconds(*tuning_, active_mods(), to_std(skill_id));
+}
+
+double WroughtwildSim::skill_reach(const String& skill_id) const {
+    if (!require_loaded("skill_reach")) {
+        return 1.0;
+    }
+    return wroughtwild::grammar::skillReach(*tuning_, active_mods(), to_std(skill_id));
 }
 
 } // namespace godot

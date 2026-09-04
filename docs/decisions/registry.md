@@ -28,6 +28,7 @@ Statuses:
 | D-017 | Building | Pieces are addressed by lattice element, never by cell-plus-slot: a block occupies a cell, a wall or floor a face two cells share, a post or beam an edge four cells share, each with one canonical address (`sim/lattice.h`). The single placement rule is "the nearest free element of the piece's kind to the crosshair"; orientation comes from the element, so only oriented blocks turn with R; two pieces conflict only when they want the same element. Corners where walls end or meet grow a post visual on their own. No structural-support rules — the lattice's shape is all the physical honesty a build needs ([systems/construction.md](../systems/construction.md)) | Accepted direction (owner "lets do it" 3 Sep 2026; slice 1 implemented) | The owner's building playtest, or a piece that cannot be one element (diagonals, curves) |
 | D-018 | Building materials | Building families are data with a source item, a look and **traits**; shapes require traits, so a material's properties gate the forms it can be worked into (joinery for doors, masonry for cut stone, metal for spans, malleable reserved for the coming alloy and its curved forms) rather than a tech tree. Placed pieces are never demolished by mobs: a timber house is a house at every tier (owner, 3 Sep 2026); base threat is pressure around the build, not damage to it ([systems/construction.md](../systems/construction.md)) | Accepted direction (owner steer 3 Sep 2026; three families + girder implemented) | An alloy family lands, or the base-threat design is playtested |
 | D-019 | Progression | Per [systems/progression-eras.md](../systems/progression-eras.md): **eras are the campaign** (the world changes state on player-chosen milestones; mobs scale per era, never per player; no zones unlock), **the Foundry** is the point system (ingots placed on a forged plate; adjacency, lines, wrought forms; refinement widens reach, numbers stay flat; respec is re-forging), and **ores are properties, not ranks** (one trait vocabulary across building materials, item bases and ingots; modifier tiers are mechanic breakpoints; held-back modifiers as the early taste; a threefold global number budget). Encroachment belongs to era two | Accepted direction (owner "lets do it" 3 Sep 2026) | The first era transition is playtested |
+| D-023 | The Foundry | Per [systems/foundry.md](../systems/foundry.md): the plate is worked in **workings** - a **subject** (a skill tablet, or a typed currency: the **Vanguard** for defence, later Marrow for life and Quicksilver for tempo) sits in a **socket** the era forges; the ingots orthogonally beside it are **supports** whose reading the subject decides (the same Frost ingot is cold damage beside a skill, cold resistance beside a Vanguard); the four **corners** hold ingots (pairs, backing) or currency as **augments** (a Catalyst works a support into a cross-element reaction such as Scald; a Vanguard lends the supports its defensive reading); subjects side by side **link**; class and mob-family manners live in **rails** on the rows and columns. Trade currency splits into typed kinds that serve both crafting (aiming a roll at a modifier family) and the plate | Accepted direction (owner answers 3 and 4 Sep 2026, "start slice one" 4 Sep 2026); slice 1 (the frame, sockets, backing, Reach) implemented 4 Sep 2026; the remaining interactions are proposed | The frame is playtested; the first corner augment lands |
 
 ## Proposals awaiting acceptance
 
@@ -131,6 +132,64 @@ Statuses:
   lift), F opening the Foundry anywhere, the first dressed block as a
   milestone. Manners learned from mob families remain the accepted source
   of later supports.
+
+- **D-023 (3 Sep 2026, the plate as a working):** the owner, on the
+  Foundry as the talent tree: "I was iffy on the Foundry process for a
+  'talent tree' progression mechanic but I think I like it. It limits the
+  amount of spells you can optimise, it also allows creativity in
+  placement to optimise joins between ingot placements." Confirmed
+  orthogonal-only supports ("not the entire tablet"), then set the
+  direction: the plate has "designated spots for the 'active' thing being
+  worked on ie skill or vanguard"; trade currency "can stop being a
+  generic 'trade currency' resource and start to be properly split into
+  things like catalysts, or vanguards (a defensive currency that imbues
+  various list of defenses) and then similar for life, or speed", usable
+  "in crafting gear to augment/weight towards certain modifiers or placed
+  in the Foundry"; "the spare cells in the diagonals can be either placed
+  with ingots or trade currency ... to augment the ingots" (the Scald
+  example: an augmented fire ingot lets a frost skill ignite, and ignited
+  enemies take extra cold); a vanguard in the middle makes every support a
+  benefit to the character ("an 'incr armor' supported by a frost ingot
+  provides additional cold resistance and reduction of chill effect");
+  and class as row/column effects "exterior to the plate" you spec into
+  ("for an archer one column effect ... gives '+2 projectiles shot if all
+  placed spots are 'X' ingot"). Recorded and built out as proposals in
+  [systems/foundry.md](../systems/foundry.md) with nine owner questions
+  and a slice order; nothing is implemented. **Conflict found on the
+  way:** the D-022 doc and commit say "Reach beside Frost Orb widens the
+  orb", but the code marks Reach as a self stat that never supports;
+  neither side was changed (AGENTS.md), question 3 in the spec.
+  **4 Sep 2026:** the owner answered: sockets "fixed for now until we
+  see how it feels", era one a two-row, four-column plate with two
+  sockets (their sketch put them a row and two columns apart; the spec
+  recommends a row and one column apart so both workings grow whole on
+  the 4x4, the owner having invited push-back); the coin retired for now,
+  "a coin/generated town for trading should be something in the future";
+  Reach reads skills (settling the conflict above in the doc's favour,
+  still to be implemented); class at the start with rails at the hall;
+  augments as corner cells; the support and subject pick the reaction;
+  Marrow and Quicksilver after the Vanguard. They also want progression
+  gated on the plate's size and on ingot quality, type and rarity, taken
+  up in the spec as the frame's rows and the metal of an ingot. Links and
+  the folding of lines into backing are explained in the spec and await
+  their answer.
+  Later on 4 Sep the owner took the recommended socket layout and set
+  one more rule: "I don't think we need to restrict 'cold damage incr' to
+  only cold spells ... adding a cold damage on the spell means you might
+  pursue different builds and head towards a 'boil' or 'scald' type
+  build"; the same-element support is "augmenting one lane which may be
+  better early". In the spec: every ingot reads every skill, an element
+  ingot beside a skill of another element adds that element's damage as
+  a second packet, the Catalyst turns the added element into its status
+  and its interaction, and no support is ever inert. The owner then
+  answered 4 (a linked skill leaves the bar: yes) and 6 (lines fold into
+  backing: yes) and said "start slice one". **Slice 1 landed the same
+  day:** the frame (`rows_by_era`, `sockets`), tablets only in sockets,
+  backing in place of lines, Reach reading area, projectile and strike
+  skills through a `reach` multiplier the engine applies, every reading
+  written on its cell, stale saves lifted free on load. Sim tests pass
+  (3216); the engine tests were rewritten to the frame and await a run on
+  a machine with Godot.
 
 ## Registering a decision
 

@@ -116,10 +116,11 @@ ActiveMods masteryMods(const tuning::Tuning& tuning, const std::map<std::string,
 
 ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state, int era) {
     ActiveMods mods;
-    const auto size = foundry::plateSize(tuning.foundry, era);
-    for (const auto& effect : foundry::effects(tuning, state, size)) {
+    const auto plate = foundry::plate(tuning.foundry, era);
+    for (const auto& effect : foundry::effects(tuning, state, plate)) {
         ActiveMod mod = modAt(tuning.items, effect.modifier, effect.value, "foundry:" + effect.kind);
-        if (effect.kind == "support") mod.appliesToTags = {"skill:" + effect.skill}; // that skill alone
+        if (effect.kind == "support" || effect.kind == "backing")
+            mod.appliesToTags = {"skill:" + effect.skill}; // that skill alone
         mods.push_back(std::move(mod));
     }
     return mods;
@@ -185,6 +186,13 @@ double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
     return resolve(active, def->resolveTags(), "damage", skillNumber(*def, "base_damage", 0.0));
+}
+
+double skillReach(const tuning::Tuning& tuning, const ActiveMods& active,
+                  const std::string& skillId) {
+    const auto* def = findSkill(tuning, skillId);
+    if (!def) return 1.0;
+    return resolve(active, def->resolveTags(), "reach", 1.0);
 }
 
 double skillCooldownSeconds(const tuning::Tuning& tuning, const ActiveMods& active,

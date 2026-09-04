@@ -102,6 +102,9 @@ The world is the campaign: it changes state in eras on milestones the
 player chooses to hit, and never adds a zone. Points are ingots placed on
 a forged plate; ores are properties rather than ranks. See
 [systems/progression-eras.md](systems/progression-eras.md) (D-019).
+The plate is worked in **workings**: a subject in a socket, supports
+beside it, augments in the corners, class rails at the edge. See
+[systems/foundry.md](systems/foundry.md) (D-023, proposed).
 
 ## Death contracts
 
@@ -158,5 +161,6 @@ If one route dominates, another major system becomes irrelevant.
 - [systems/loot-and-currency.md](systems/loot-and-currency.md)
 - [systems/world-generation.md](systems/world-generation.md)
 - [systems/progression-eras.md](systems/progression-eras.md)
+- [systems/foundry.md](systems/foundry.md)
 - [decisions/registry.md](decisions/registry.md)
 - [research/engine-ai-integrations.md](research/engine-ai-integrations.md)

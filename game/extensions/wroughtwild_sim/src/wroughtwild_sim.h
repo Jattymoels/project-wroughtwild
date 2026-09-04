@@ -101,6 +101,9 @@ public:
     int roll_item_into_pack(const String& base_id, const String& rarity, int tier, int seed);
     // Cooldown after cooldown-recovery modifiers.
     double skill_cooldown_seconds(const String& skill_id) const;
+    // The skill's spatial extent multiplier after reach modifiers (D-023): an
+    // area's radius, a projectile's flight, a strike's reach.
+    double skill_reach(const String& skill_id) const;
 
     // --- grammar (docs/systems/skill-grammar.md) ---
     // Debug toggles (F1-F3): force one non-self modifier at its tier-1
@@ -267,7 +270,7 @@ public:
     // | missing_catalyst | skill_too_low | bad_target), moved (count).
     Dictionary transfer_with_catalyst(const String& process_id, int target_index);
 
-    // --- the Foundry (foundry.json, D-019): ingots on the era's plate ---
+    // --- the Foundry (foundry.json, D-019, D-023): ingots on the frame the era has forged ---
     // {rows, cols, era, plate: [{row, col, ingot}], owned: {id: n},
     // unplaced: {id: n}, reforge_cost: {item: n}, can_reforge}.
     Dictionary foundry() const;

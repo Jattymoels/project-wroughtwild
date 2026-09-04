@@ -159,19 +159,21 @@ public:
 
     // --- the Foundry (D-019, foundry.h) ---
     const foundry::State& foundry() const { return foundry_; }
-    // The plate the current era forges.
-    foundry::PlateSize plateSize() const;
+    // The plate as the current era has forged it (the frame's rows and sockets).
+    foundry::Plate plate() const;
     // Reports a milestone ("first_kill:ash_hound", "recipe:smelt_iron",
     // "world_effect:x", "era:2"); returns the ingot ids granted. Each source
     // grants once, and only from its era on.
     std::vector<std::string> foundryEvent(const std::string& event);
-    // Sets an unplaced ingot on a free cell of the plate.
+    // Sets an unplaced ingot on a free, forged cell of the plate that is
+    // not a socket.
     bool foundryPlace(int row, int col, const std::string& ingot);
     // Lifts an ingot off the plate, paying reforge_cost. False when the
     // cell is empty or the metal is short.
     bool foundryRemove(int row, int col);
-    // Lays a known skill's tablet on an empty cell (D-022): false off the
-    // plate, on a taken cell, for an unknown skill, or when already laid.
+    // Lays a known skill's tablet in an empty socket (D-022, D-023): false
+    // off the forged plate, outside a socket, on a taken cell, for an
+    // unknown skill, or when already laid.
     bool foundryPlaceSkill(int row, int col, const std::string& skillId);
     bool canAffordReforge() const;
     // Ingots granted by events the economy raised itself (crafts, world
