@@ -39,10 +39,25 @@
       "copper_ore": 30,
       "tin_ore": 30,
       "ember_iron_ore": 30,
-      "silver_ore": 30
+      "silver_ore": 30,
+      "shrieker_horn": 1
     },
     "chest_units": 240,
     "design_purpose": "Hauling (Wave 6 slice 6; the owner, 4 Sep 2026: 'would definitely need chests/storage solutions'; D-005 arriving early). The pack takes from the ground only up to a cap per family - carry_cap by family, carry_cap_default for any material not listed; forged goods and gear are never capped, so the forge's output stacks and only the haul is bounded. A full family leaves its chips on the ground and the HUD says so. A chest (construction.json 'chest') holds chest_units of anything together; E at it moves stacks between the pack and the store, and breaking it spills what it held where it stood. Sixty timber is ten trees' worth and one hut; the ores are the heavy things at thirty. The walk between the veins, the felling and the shelter is now a walk with a load: you go out, you fill, you come home and put it in the chest - the shelter is where the wealth is."
+  },
+  "siege": {
+    "first_night": 2,
+    "chance_per_night": 0.5,
+    "arrive_seconds_into_night": 45,
+    "spawn_radius_m": 22,
+    "home_radius_m": 40,
+    "timber_break_hits": 12,
+    "pack_by_era": {
+      "1": ["ash_hound", "ash_hound"],
+      "2": ["ash_hound", "ash_hound", "stone_husk"],
+      "3": ["ash_hound", "ash_hound", "stone_husk", "stone_husk"]
+    },
+    "design_purpose": "The siege (Wave 7 slice 3; the owner, 4 Sep 2026: the house cycle needs the night to test it). From first_night on, each night rolls chance_per_night from the world seed and the day (a save replays its nights). On a siege night the dusk notice carries the howl, and arrive_seconds_into_night later - if you are within home_radius_m of the shelter you last rested in - the era's pack (pack_by_era, the highest era at or under the current) takes shape spawn_radius_m out in the dark around home, hunting from the start. They circle, they scratch at what they press against (the house shakes and says so), and they are gone with the dawn. In the valley a shut timber door holds. Once the deep wakes the husk breaks timber (eras.json breaks_timber): after timber_break_hits scratches a timber piece gives, so the hut becomes stone - the masonry unlock earning its keep. Stone and iron never give. Not on the first night: the first night is for learning the dark."
   },
   "enemies": [
     {
@@ -203,6 +218,12 @@
       "attack_period_rounds": 2,
       "design_purpose": "The aggro-chainer (D-012, named in the roadmap): it hangs back and SCREAMS - every idle mob in scream radius joins the chase, so a pack with a shrieker recruits the biome. Kill it first or fight everything it can see. Barely dangerous alone; its page chance is the bounty on its head.",
       "loot": [
+        {
+          "item": "shrieker_horn",
+          "min": 1,
+          "max": 1,
+          "chance": 0.5
+        },
         {
           "item": "marrow",
           "min": 1,

@@ -17,6 +17,9 @@
       "armour_reduction_cap": 0.45,
       "story": "The Forge Tyrant falls and the deep answers. The strata crack: copper and tin glint on the cave floors. The hounds run in larger packs, and the Tyrant's whelps burn where they die. Something has begun to gather at the edge of your claim.",
       "mob_mechanics": {
+        "stone_husk": {
+          "breaks_timber": 1
+        },
         "ash_hound": {
           "pack_size_bonus": 1
         },

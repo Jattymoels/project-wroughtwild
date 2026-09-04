@@ -39,6 +39,10 @@
       "display_name": "Bog Iron"
     },
     {
+      "id": "shrieker_horn",
+      "display_name": "Shrieker Horn"
+    },
+    {
       "id": "ember_iron_ore",
       "display_name": "Ember-Iron Ore"
     },

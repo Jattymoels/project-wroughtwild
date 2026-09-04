@@ -58,6 +58,13 @@ var state := "idle"
 const ROAM_SPEED_FRACTION := 0.55
 var roam_target := Vector3.ZERO
 var _roaming := false
+## The siege (Wave 7 slice 3): a mob that came to the lamp, gone with the
+## dawn; and one pressed against a placed piece scratches at it - the
+## house shakes and says so - and a breaker (an era mechanic) wears
+## timber down until it gives.
+var siege := false
+var breaks_timber := false
+var _scratch_timer := 0.0
 
 var _windup_left := 0.0
 var _attack_cooldown := 0.0
@@ -175,6 +182,7 @@ func configure(sim: WroughtwildSim) -> void:
 	_scream_radius = b.get("scream_radius_m", 0.0)
 	# Era mechanics: the shriekers call further as the world wakes.
 	_scream_radius += float(sim.era_mechanic(enemy_id, "scream_radius_bonus").get("value", 0.0))
+	breaks_timber = not sim.era_mechanic(enemy_id, "breaks_timber").is_empty()
 	_scream_timer = _scream_period
 	var horde: Dictionary = rt.get("horde", {})
 	give_up_seconds = horde.get("give_up_seconds", 2.5)
@@ -589,11 +597,26 @@ func _physics_process(delta: float) -> void:
 	velocity.x = planar.x
 	velocity.z = planar.z
 	_hop_if_blocked(planar)
+	_scratch_if_blocked(delta)
 	if planar.length_squared() > 0.0001 and distance > 0.05:
 		var face := roam_target if state == "idle" and _roaming else player.global_position
 		look_at(Vector3(face.x, global_position.y, face.z), Vector3.UP)
 	_apply_shove(delta)
 	move_and_slide()
+
+
+## A chaser pressed against a placed piece scratches at it once a second.
+func _scratch_if_blocked(delta: float) -> void:
+	_scratch_timer = maxf(0.0, _scratch_timer - delta)
+	if state == "idle" or _scratch_timer > 0.0 or not is_on_wall():
+		return
+	for i in get_slide_collision_count():
+		var block := get_slide_collision(i).get_collider() as PlacedBlock
+		if block == null:
+			continue
+		_scratch_timer = 1.0
+		block.scratch(breaks_timber)
+		return
 
 
 ## The pack says where it should be; an idle member walks there.

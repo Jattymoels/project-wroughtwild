@@ -4050,6 +4050,42 @@ void testWorldABeatAhead(const tuning::Tuning& t) {
     checkNear(combat::trainMultiplier(50, rt), 1.0 + rt.hordeTrainMaxBonus, 1e-9, "ahead: and the train caps");
 }
 
+void testHornAndSiege(const tuning::Tuning& t) {
+    // Wave 7 slice 3: the shrieker's horn is density on the player's terms;
+    // the siege is the night testing the house.
+    bool hornDrops = false;
+    for (const auto& entry : t.world.findEnemy("shrieker")->loot)
+        if (entry.kind == "item" && entry.item == "shrieker_horn" && entry.chance >= 0.4) hornDrops = true;
+    check(hornDrops, "horn: a shrieker's kill may leave its horn");
+    check(t.world.hauling.carryCap.count("shrieker_horn") && t.world.hauling.carryCap.at("shrieker_horn") == 1,
+          "horn: the pack carries one horn");
+    check(t.realtime.noiseHornCooldownSeconds >= 30.0 && t.realtime.noiseRadiusM.at("horn") >= 60.0,
+          "horn: it carries far and rings a while between blows");
+    const auto& s = t.world.siege;
+    check(s.firstNight >= 2 && s.chancePerNight > 0.0 && s.chancePerNight < 1.0 && s.arriveSecondsIntoNight > 0.0 &&
+              s.spawnRadiusM > 10.0 && s.homeRadiusM > s.spawnRadiusM && s.timberBreakHits >= 6,
+          "siege: tuned - never the first night, a chance each night after, arriving once the night is old");
+    check(!daycycle::siegeTonight(s, 7, 1) && !daycycle::siegeTonight(s, 99, s.firstNight - 1),
+          "siege: never before the first night");
+    int nights = 0;
+    bool same = true;
+    for (int day = s.firstNight; day < s.firstNight + 200; ++day) {
+        if (daycycle::siegeTonight(s, 7, day)) ++nights;
+        if (daycycle::siegeTonight(s, 7, day) != daycycle::siegeTonight(s, 7, day)) same = false;
+    }
+    check(same && nights > 60 && nights < 140, "siege: rolled per night from the seed, about the tuned chance (" + std::to_string(nights) + "/200)");
+    int differ = 0;
+    for (int day = s.firstNight; day < s.firstNight + 50; ++day)
+        if (daycycle::siegeTonight(s, 7, day) != daycycle::siegeTonight(s, 8, day)) ++differ;
+    check(differ > 5, "siege: another world has other nights");
+    check(daycycle::siegePack(s, 1).size() == 2 && daycycle::siegePack(s, 2).size() >= 3 &&
+              std::find(daycycle::siegePack(s, 2).begin(), daycycle::siegePack(s, 2).end(), "stone_husk") != daycycle::siegePack(s, 2).end() &&
+              daycycle::siegePack(s, 9).size() >= daycycle::siegePack(s, 3).size() && daycycle::siegePack(s, 0).empty(),
+          "siege: the pack grows with the era - hounds in the valley, a husk once the deep wakes");
+    check(t.eras.eras[0].mechanic("stone_husk", "breaks_timber") == nullptr && t.eras.eras[1].mechanic("stone_husk", "breaks_timber") != nullptr,
+          "siege: timber holds in the valley; the deep's husks break it");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -4108,6 +4144,7 @@ int main(int argc, char** argv) {
     testHauling(t);
     testDensityAndFear(t);
     testWorldABeatAhead(t);
+    testHornAndSiege(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

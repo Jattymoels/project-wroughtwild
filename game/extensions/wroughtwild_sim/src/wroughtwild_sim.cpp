@@ -236,6 +236,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("train_rules"), &WroughtwildSim::train_rules);
     ClassDB::bind_method(D_METHOD("train_multiplier", "earlier_hits"), &WroughtwildSim::train_multiplier);
     ClassDB::bind_method(D_METHOD("armour_reduction_cap"), &WroughtwildSim::armour_reduction_cap);
+    ClassDB::bind_method(D_METHOD("siege_rules"), &WroughtwildSim::siege_rules);
+    ClassDB::bind_method(D_METHOD("siege_tonight", "seed", "day_index"), &WroughtwildSim::siege_tonight);
+    ClassDB::bind_method(D_METHOD("siege_pack"), &WroughtwildSim::siege_pack);
     ClassDB::bind_method(D_METHOD("carry_cap", "family"), &WroughtwildSim::carry_cap);
     ClassDB::bind_method(D_METHOD("carry_room", "family"), &WroughtwildSim::carry_room);
     ClassDB::bind_method(D_METHOD("haul", "family", "amount"), &WroughtwildSim::haul);
@@ -2691,7 +2694,37 @@ Dictionary WroughtwildSim::noise_rules() const {
     for (const auto& [kind, radius] : tuning_->realtime.noiseRadiusM) radii[String(kind.c_str())] = radius;
     d["radius_m"] = radii;
     d["muffle"] = tuning_->realtime.noiseMuffle;
+    d["horn_cooldown_seconds"] = tuning_->realtime.noiseHornCooldownSeconds;
     return d;
+}
+
+Dictionary WroughtwildSim::siege_rules() const {
+    Dictionary d;
+    if (!require_loaded("siege_rules")) {
+        return d;
+    }
+    const auto& s = tuning_->world.siege;
+    d["first_night"] = s.firstNight;
+    d["chance_per_night"] = s.chancePerNight;
+    d["arrive_seconds_into_night"] = s.arriveSecondsIntoNight;
+    d["spawn_radius_m"] = s.spawnRadiusM;
+    d["home_radius_m"] = s.homeRadiusM;
+    d["timber_break_hits"] = s.timberBreakHits;
+    return d;
+}
+
+bool WroughtwildSim::siege_tonight(int seed, int day_index) const {
+    return require_loaded("siege_tonight") &&
+           wroughtwild::daycycle::siegeTonight(tuning_->world.siege, static_cast<uint64_t>(seed), day_index);
+}
+
+PackedStringArray WroughtwildSim::siege_pack() const {
+    PackedStringArray out;
+    if (!require_loaded("siege_pack")) {
+        return out;
+    }
+    for (const auto& id : wroughtwild::daycycle::siegePack(tuning_->world.siege, player_->currentEra())) out.push_back(String(id.c_str()));
+    return out;
 }
 
 int WroughtwildSim::carry_cap(const String& family) const {

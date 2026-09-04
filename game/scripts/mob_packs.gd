@@ -40,6 +40,16 @@ var _noise: Dictionary = {}
 var _heard_at := -100000
 ## Test surface: packs woken by noise since setup.
 var woken_by_noise := 0
+## The siege (Wave 7 slice 3): some nights, from the second, the hounds
+## come to the lamp - rolled per night from the seed, spawned at the edge
+## of the dark around home once the night is old enough, hunting from the
+## start, gone with the dawn.
+var siege_tonight := false
+var _siege_rolled_day := -1
+var _siege_spawned_day := -1
+var _siege_members: Array = []
+var _siege: Dictionary = {}
+var _night_length := 1.0
 
 
 func _ready() -> void:
@@ -135,6 +145,7 @@ func pack_position(pack: Dictionary) -> Vector3:
 func set_hour(day: Dictionary, rules: Dictionary) -> void:
 	var length := float(rules.get("length_seconds", 720.0))
 	var night_length := maxf((1.0 - float(rules.get("dusk_end", 0.66))) * length, 1.0)
+	_night_length = night_length
 	night_progress = clampf(1.0 - float(day.get("seconds_to_dawn", 0.0)) / night_length, 0.0, 1.0)
 	set_night(bool(day.get("night", false)), rules)
 
@@ -186,6 +197,79 @@ func noise_at(position: Vector3, kind: String, muffled: bool = false) -> int:
 			if player != null and player.hud != null:
 				player.hud.notify("Something heard that.")
 	return woken
+
+
+## The siege, ticked with the hour: rolls the night once per day, spawns
+## the era's pack around home once the night is old enough and the player
+## is home, and dismisses what is left at dawn.
+func tick_siege(day: Dictionary, player: WroughtwildPlayer, seed_value: int) -> void:
+	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
+	if _siege.is_empty():
+		_siege = sim.siege_rules()
+	var index := int(day.get("index", 1))
+	if index != _siege_rolled_day:
+		_siege_rolled_day = index
+		siege_tonight = sim.siege_tonight(seed_value, index)
+	if not bool(day.get("night", false)):
+		if not _siege_members.is_empty():
+			dismiss_siege()
+		return
+	if not siege_tonight or _siege_spawned_day == index or player == null:
+		return
+	if night_progress * _night_length < float(_siege.get("arrive_seconds_into_night", 0.0)):
+		return
+	if not player.combat.has_home or player.global_position.distance_to(player.combat.home_position) > float(_siege.get("home_radius_m", 0.0)):
+		return
+	spawn_siege(player.combat.home_position, index)
+
+
+## The era's pack takes shape around home, hunting from the start.
+func spawn_siege(home: Vector3, index: int) -> int:
+	_siege_spawned_day = index
+	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
+	if _siege.is_empty():
+		_siege = sim.siege_rules()
+	var ids: PackedStringArray = sim.siege_pack()
+	var radius := float(_siege.get("spawn_radius_m", 20.0))
+	var rng := RandomNumberGenerator.new()
+	rng.seed = world_seed ^ (index * 7919)
+	var first := rng.randf() * TAU
+	for i in ids.size():
+		var angle := first + TAU * float(i) / float(maxi(ids.size(), 1))
+		var at := home + Vector3(cos(angle), 0.0, sin(angle)) * radius
+		if terrain != null and not terrain.map.is_empty():
+			var w := int(terrain.map["width"])
+			var h := int(terrain.map["height"])
+			at = terrain.surface_position(clampi(int(at.x), 1, w - 2), clampi(int(at.z), 1, h - 2)) + Vector3(0, 0.5, 0)
+		var enemy := Enemy.spawn(get_parent(), StringName(ids[i]), at)
+		enemy.siege = true
+		enemy.state = "chase"
+		enemy.set_aggro_multiplier(aggro_multiplier())
+		enemy.died.connect(_on_enemy_died)
+		_siege_members.append(enemy)
+	var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+	if player != null and player.hud != null and not ids.is_empty():
+		player.hud.notify("They have come to the lamp.")
+	return ids.size()
+
+
+## Dawn: what is left of the siege slinks off.
+func dismiss_siege() -> int:
+	var gone := 0
+	for m in _siege_members:
+		if is_instance_valid(m) and (m as Enemy).life > 0.0:
+			(m as Enemy).queue_free()
+			gone += 1
+	_siege_members.clear()
+	if gone > 0:
+		var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+		if player != null and player.hud != null:
+			player.hud.notify("The hounds slink off with the light.")
+	return gone
+
+
+func siege_members() -> Array:
+	return _siege_members
 
 
 ## Noise from anywhere in the world: finds the sandpit's pack system.

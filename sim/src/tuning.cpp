@@ -836,6 +836,7 @@ RealtimeTable loadRealtime(const std::string& path) {
                 if (radius->asNumber() < 0.0) throw std::runtime_error("combat_realtime: noise radius_m." + kind + " must be >= 0");
             }
         if (auto muffle = noise->find("muffle")) table.noiseMuffle = muffle->asNumber();
+        if (auto horn = noise->find("horn_cooldown_seconds")) table.noiseHornCooldownSeconds = horn->asNumber();
         if (table.noiseMuffle < 0.0 || table.noiseMuffle > 1.0) throw std::runtime_error("combat_realtime: noise.muffle must be in [0, 1]");
     }
 
@@ -952,6 +953,19 @@ WorldTable loadWorld(const std::string& path) {
             throw std::runtime_error("world: hauling caps must be >= 0");
         for (const auto& [family, cap] : table.hauling.carryCap)
             if (cap < 0) throw std::runtime_error("world: hauling carry_cap." + family + " must be >= 0");
+    }
+    if (auto siege = doc->find("siege")) {
+        auto& s = table.siege;
+        s.firstNight = siege->get("first_night").asInt();
+        s.chancePerNight = siege->get("chance_per_night").asNumber();
+        s.arriveSecondsIntoNight = siege->get("arrive_seconds_into_night").asNumber();
+        s.spawnRadiusM = siege->get("spawn_radius_m").asNumber();
+        s.homeRadiusM = siege->get("home_radius_m").asNumber();
+        s.timberBreakHits = siege->get("timber_break_hits").asInt();
+        if (auto packs = siege->find("pack_by_era"))
+            for (const auto& [era, list] : packs->asObject()) s.packByEra[std::stoi(era)] = readStringArray(*list);
+        if (s.chancePerNight < 0.0 || s.chancePerNight > 1.0) throw std::runtime_error("world: siege.chance_per_night must be in [0, 1]");
+        if (s.timberBreakHits < 1) throw std::runtime_error("world: siege.timber_break_hits must be >= 1");
     }
     for (const auto& e : doc->get("enemies").asArray()) {
         EnemyDef def;

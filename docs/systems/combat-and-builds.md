@@ -169,3 +169,21 @@ night. Patrolling packs (the biome's `patrols` flag, worldgen's route)
 stand wherever the night has walked them (`pack_position`); their calm
 members roam toward that place at a walk (`Enemy.roam_to`) and are back
 in the den by dawn.
+
+**The horn and the siege (Wave 7 slice 3, 4 Sep 2026).** A shrieker's
+kill may leave its horn; the pack carries one (hauling cap 1). X blows it:
+the `horn` noise, ninety metres, and a ring that tells the radius - every
+idle mob and dormant pack inside it comes. It is PoE's map opened on the
+player's terms, on day two if they dare, for the drop tables' best; it
+rings `horn_cooldown_seconds` between blows. The siege is the night
+testing the house: `world.json` `siege` rolls each night from the second
+(`daycycle::siegeTonight`, seed and day, so a save replays its nights),
+the dusk notice carries the howl, and once the night is old enough and
+the player is home the era's pack takes shape in the dark around home,
+hunting from the start (`MobPacks.tick_siege`, `spawn_siege`); dawn
+dismisses what is left. A chaser pressed against a placed piece
+scratches at it once a second (`Enemy._scratch_if_blocked` →
+`PlacedBlock.scratch`): the piece shakes, the HUD says "Something
+scratches at the wall panel", and a breaker - era 2's husks carry
+`breaks_timber` - wears a timber piece down until it gives. Stone and
+iron never give. Death sends you home once you have one.
