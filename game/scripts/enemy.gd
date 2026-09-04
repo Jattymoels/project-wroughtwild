@@ -53,6 +53,11 @@ var separation_strength := 3.0
 
 ## idle | chase | windup
 var state := "idle"
+## Roaming (Wave 7 slice 1): an idle mob of a patrolling pack walks toward
+## where its pack should be, at a walk, and stops when it gets there.
+const ROAM_SPEED_FRACTION := 0.55
+var roam_target := Vector3.ZERO
+var _roaming := false
 
 var _windup_left := 0.0
 var _attack_cooldown := 0.0
@@ -542,6 +547,8 @@ func _physics_process(delta: float) -> void:
 			if distance <= aggro_range and in_reach:
 				state = "chase"
 				_give_up_timer = 0.0
+			elif _roaming:
+				planar = _roam_step()
 		"chase":
 			# D-012: no leash. The chase only ends when the player genuinely
 			# leaves - staying beyond give_up_distance (or out of vertical
@@ -583,9 +590,32 @@ func _physics_process(delta: float) -> void:
 	velocity.z = planar.z
 	_hop_if_blocked(planar)
 	if planar.length_squared() > 0.0001 and distance > 0.05:
-		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+		var face := roam_target if state == "idle" and _roaming else player.global_position
+		look_at(Vector3(face.x, global_position.y, face.z), Vector3.UP)
 	_apply_shove(delta)
 	move_and_slide()
+
+
+## The pack says where it should be; an idle member walks there.
+func roam_to(target: Vector3) -> void:
+	roam_target = target
+	_roaming = true
+
+
+func stop_roaming() -> void:
+	_roaming = false
+
+
+func roaming() -> bool:
+	return _roaming
+
+
+func _roam_step() -> Vector3:
+	var to := roam_target - global_position
+	to.y = 0.0
+	if to.length() < 1.2:
+		return Vector3.ZERO
+	return to.normalized() * move_speed * ROAM_SPEED_FRACTION
 
 
 ## A chaser pressing into a ledge hops it (one block, not two): the 3D

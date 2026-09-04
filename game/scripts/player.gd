@@ -578,8 +578,15 @@ func _apply_work(node: ResourceNode, result: Dictionary) -> void:
 		return
 	if result.has("text"):
 		hud.notify(result["text"])
+		# A press is heard (Wave 7 slice 1): the world answers what you do.
+		MobPacks.noise(get_tree(), node.global_position, "work", combat.sheltered)
+	if result.get("struck", false):
+		MobPacks.noise(get_tree(), node.global_position, "strike", combat.sheltered)
 	var granted: int = int(result.get("granted", 0))
 	if granted > 0:
+		if node.drive_presses > 1:
+			# A tree coming down, a boulder cracking: heard across the meadow.
+			MobPacks.noise(get_tree(), node.global_position, "tree_fall" if node.visual == &"tree" else "rock_crack", combat.sheltered)
 		# Feel: the yield pops out of the node as physical chips that
 		# vacuum into you; the inventory add happens on absorb.
 		Pickup.scatter(world_root(), node.global_position + Vector3(0, 0.9, 0),

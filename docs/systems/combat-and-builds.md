@@ -141,3 +141,16 @@ members are calm, unhurt for `sleep_after_seconds` and `sleep_range_m`
 from the player: survivors return at full life when you come back, the
 dead stay dead, and a returning pack is exactly its survivors (no second
 helping of era bonuses). Trial-bound mobs never sleep.
+
+**Noise and patrols (Wave 7 slice 1, 4 Sep 2026).** The world hears what
+you do. `combat_realtime.json` `noise` carries a radius per source kind -
+a press (`work`), a blow on a set wedge (`strike`), a boulder cracking
+(`rock_crack`), a tree coming down (`tree_fall`), a hit landing either
+way (`fight`, at most once a second), the shrieker's horn (`horn`, slice
+3) - and `MobPacks.noise_at` wakes every idle mob and dormant pack inside
+it, the shrieker's scream generalised. A source inside a closed room
+carries `muffle` of its radius: walls are why the house matters at
+night. Patrolling packs (the biome's `patrols` flag, worldgen's route)
+stand wherever the night has walked them (`pack_position`); their calm
+members roam toward that place at a walk (`Enemy.roam_to`) and are back
+in the den by dawn.

@@ -390,9 +390,26 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
     // Rounds a rolled pack off with the danger ring's rules: extra members
     // drawn from the pack's own kind, and perhaps one member crowned with
     // an elite modifier (Wave 3: elites are why you hunt the far rings).
-    auto finishPack = [&](std::vector<std::string> enemies, int x, int y, int z) {
+    double packSafe = g.packMinDistanceFromSpawnM / params.cellSizeM;
+    auto finishPack = [&](std::vector<std::string> enemies, int x, int y, int z, const std::string& biomeId, bool patrols) {
         MobPack pack;
         double distanceM = distance(x, z, map.spawnX, map.spawnZ) * params.cellSizeM;
+        pack.biome = biomeId;
+        // Night patrols (Wave 7 slice 1): a deep pack's route runs from its
+        // den along the line to the spawn for patrol_length_m, stopping two
+        // cells short of the doorstep radius; too short a walk is no patrol.
+        if (patrols && g.patrolLengthM > 0.0) {
+            const double dx = map.spawnX - x, dz = map.spawnZ - z;
+            const double len = std::sqrt(dx * dx + dz * dz);
+            if (len > 1e-6) {
+                const double reach = std::min(g.patrolLengthM / params.cellSizeM, std::max(0.0, len - packSafe - 2.0));
+                if (reach > 4.0) {
+                    pack.patrols = true;
+                    pack.routeX = static_cast<int>(std::lround(x + dx / len * reach));
+                    pack.routeZ = static_cast<int>(std::lround(z + dz / len * reach));
+                }
+            }
+        }
         const tuning::DangerRing* ring = table.dangerRingAt(distanceM);
         if (ring != nullptr && !enemies.empty()) {
             for (int i = 0; i < ring->packSizeBonus; ++i)
@@ -416,9 +433,9 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
 
     // 8. Surface mob packs: sparse deterministic rolls on a coarse stride
     //    so packs keep natural spacing; never inside the spawn's protective
-    //    radius, never over a cave entrance, and denser the farther out the
-    //    cell sits (danger rings: leaving the heartland is a choice).
-    double packSafe = g.packMinDistanceFromSpawnM / params.cellSizeM;
+    //    radius, never over a cave entrance. Density is the biome's own
+    //    (Wave 7 slice 1): the meadow a straggler, the fen and the wastes
+    //    dense from day one - the danger is a place you can see the edge of.
     for (int z = 2; z < map.height - 2; z += 4) {
         for (int x = 2; x < map.width - 2; x += 4) {
             const tuning::BiomeDef& biome = table.biomes[map.at(x, z).biomeIndex];
@@ -426,12 +443,11 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
             double fromSpawn = distance(x, z, map.spawnX, map.spawnZ);
             if (fromSpawn < packSafe) continue;
             if (map.topSolid(x, z) != map.at(x, z).height) continue;
-            double danger = table.dangerMultiplierAt(fromSpawn * params.cellSizeM);
             // The stride visits 1/16th of cells; scale the per-cell density up
             // so the tuned value keeps meaning "packs per cell".
-            if (lattice(seed, x, z, 9100) < biome.packDensity * 16.0 * danger) {
+            if (lattice(seed, x, z, 9100) < biome.packDensity * 16.0) {
                 size_t pick = hashCoords(seed, x, z, 9200) % biome.packs.size();
-                finishPack(biome.packs[pick], x, map.at(x, z).height, z);
+                finishPack(biome.packs[pick], x, map.at(x, z).height, z, biome.id, biome.patrols);
             }
         }
     }
@@ -467,7 +483,7 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
                 if (floorY < 0) continue;
                 if (lattice(seed, x, z, 9700) < caves.packDensity * 16.0) {
                     size_t pick = hashCoords(seed, x, z, 9800) % caves.packs.size();
-                    finishPack(caves.packs[pick], x, floorY, z);
+                    finishPack(caves.packs[pick], x, floorY, z, "cave", false);
                 }
             }
         }

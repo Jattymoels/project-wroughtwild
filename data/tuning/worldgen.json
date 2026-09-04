@@ -52,31 +52,28 @@
         "gloom_crawler"
       ]
     ],
-    "pack_density": 0.012,
+    "pack_density": 0.014,
     "design_purpose": "Carved cave systems: two intersecting 3D noise level-sets (tunnel_width sets how fat the intersection is) wind spaghetti tunnels; a third field above cavern_threshold opens caverns in the lower cavern_max_y_fraction of a column. Tunnels normally keep surface_margin blocks of roof, but breach_chance of columns may carve through the top - natural entrances you can find and drop into. node_density seeds cave floors with nodes: iron runs richer underground, which is the reason to go down before digging exists. packs den Gloom Crawlers on the same floors - the dark is inhabited. The spawn clearing and gate ground are never carved."
   },
   "danger": {
     "rings": [
       {
         "radius_m": 110,
-        "pack_density_multiplier": 0.35,
         "pack_size_bonus": 0,
         "elite_chance": 0.0
       },
       {
         "radius_m": 220,
-        "pack_density_multiplier": 1.8,
         "pack_size_bonus": 1,
         "elite_chance": 0.14
       },
       {
         "radius_m": 100000,
-        "pack_density_multiplier": 2.6,
         "pack_size_bonus": 2,
         "elite_chance": 0.25
       }
     ],
-    "design_purpose": "Danger scales with distance from spawn: the first ring containing a cell multiplies pack density, appends pack_size_bonus extra members drawn from the pack's own kind, and rolls elite_chance for one member to carry an elite modifier (world.json elite_modifiers). The heartland stays learnable and elite-free; the far rings are where packs grow teeth and the elite bounties live. The quiet heartland (owner, 3 Sep 2026): the first ring runs at a third of the tuned density so the first hour is a world to explore, gather in and figure out - danger is something you walk toward."
+    "design_purpose": "Danger scales with distance from spawn: the first ring containing a cell appends pack_size_bonus extra members drawn from the pack's own kind, and rolls elite_chance for one member to carry an elite modifier (world.json elite_modifiers). The heartland stays learnable and elite-free; the far rings are where packs grow teeth and the elite bounties live. Density is not the rings' business any more (Wave 7 slice 1, owner 4 Sep 2026: density by ring made here and there feel the same): each biome carries its own pack_density - the meadow a straggler, the fen and the wastes dense from day one - so the danger is a place with a visible edge, and the rings only give a pack its teeth the further out it dens. The quiet heartland (owner, 3 Sep 2026) survives as the meadow's own number."
   },
   "block_rules": {
     "surface": {
@@ -121,7 +118,7 @@
         "silver_vein": 0.012,
         "stone_seam": 0.02
       },
-      "pack_density": 0.0045,
+      "pack_density": 0.0025,
       "packs": [
         [
           "stone_husk"
@@ -144,7 +141,8 @@
         "ember_iron_vein": 0.02,
         "stone_seam": 0.008
       },
-      "pack_density": 0.007,
+      "pack_density": 0.013,
+      "patrols": true,
       "packs": [
         [
           "ember_whelp",
@@ -187,7 +185,8 @@
         "boulder": 0.004,
         "stone_seam": 0.002
       },
-      "pack_density": 0.005,
+      "pack_density": 0.011,
+      "patrols": true,
       "packs": [
         [
           "bog_lurker"
@@ -219,6 +218,7 @@
         "stone_seam": 0.004
       },
       "pack_density": 0.004,
+      "patrols": true,
       "packs": [
         [
           "ash_hound",
@@ -247,7 +247,7 @@
         "boulder": 0.008,
         "stone_seam": 0.004
       },
-      "pack_density": 0.0015,
+      "pack_density": 0.0006,
       "packs": [
         [
           "ember_whelp"
@@ -352,6 +352,7 @@
     "gate_biome": "ember_wastes",
     "gate_min_distance_m": 160,
     "pack_min_distance_from_spawn_m": 50,
+    "patrol_length_m": 70,
     "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood and stone within a short walk, keeps iron a walk away (Wave 6 slice 2, 4 Sep 2026: three veins within far_radius_m, none guaranteed near - the first forge is a journey into the hills and back), keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map Three stone seams within the near radius (D-021): the first quarry is always a short walk."
   },
   "fire_setting": {

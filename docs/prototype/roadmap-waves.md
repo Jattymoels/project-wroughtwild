@@ -483,6 +483,59 @@ automation").
    owner's storage ask (D-005 arriving early) is met; the outpost around
    the chest is the player's to build.
 
+## Wave 7 — Density and Fear *(owner direction 4 Sep 2026)*
+
+**Owner, 4 Sep 2026 (late):** "the combat is in the right direction, I
+think the problem is navigating where those improvements are seen/felt
+... I want the cake and to eat it too: Path of Exile map-like mob
+densities early on as well, but then the improvement of feeling
+confident against them quickly feels like you're unkillable too early
+... I need that friction of stretching it out to be better conducted."
+The diagnosis agreed: the problem is ordering, not combat. Forge 2
+arrives in the first hour, era 1 packs never step up, and density was a
+global dial by danger ring, so here and there felt the same. Minecraft's
+trick is that density is a property of place and hour; PoE's is that you
+choose it. Three slices, all accepted:
+
+1. **Density as place, hour and noise** *(landed 4 Sep 2026)*: pack
+   density is the biome's own (`worldgen.json` biomes `pack_density`;
+   the meadow a straggler at 0.0006, the hills 0.0025, the forest 0.004,
+   the fen 0.011, the wastes 0.013, the caves 0.014) and the danger rings
+   keep only their teeth (size bonus, elite chance). The deep biomes
+   patrol (`patrols`): worldgen gives each of their packs a route from
+   its den `patrol_length_m` toward the spawn, stopping short of the
+   doorstep, and at night `mob_packs.gd` walks the pack's position out
+   over the first half of the night and home over the second, its
+   members roaming toward wherever the pack should be (`enemy.gd`
+   `roam_to`). Noise (`combat_realtime.json` `noise`): a press, a wedge
+   blow, a boulder cracking, a tree falling, a hit landing either way,
+   each with a radius that wakes every idle mob and dormant pack inside
+   it; a source inside a closed room carries `muffle` of its radius. The
+   HUD says "Something heard that." when a pack wakes to it. Sim %s,
+   engine unit %s, integration %s.
+2. **The world a beat ahead**: forge 2 and iron fittings gated on a
+   reagent only the fen drops; catalysts from elites only; near-biome
+   packs fewer and their hits harder; armour capped low until era 2; the
+   train bonus, a pack's bites in the same second stacking. Trials stay
+   the maps.
+3. **The horn and the siege**: the shrieker's throat as a tool that calls
+   every pack in radius (voluntary density on the player's terms); at
+   dusk a howl, some nights hounds come to the lamp, circle and scratch a
+   timber door and leave at dawn; era 2's husks break timber, so the hut
+   becomes stone; death respawns at home.
+
+Rejected: scaling by day index. It would stretch the curve but breaks
+D-019's rule that the world changes on the player's milestones, never
+the clock.
+
+**Drops under density (owner, 4 Sep 2026; not now):** with real density
+the drop tables become the next problem - "will the player be
+over-inundated with crap, or useless early stuff". The direction to keep
+in view: the main items come from trials and world mobs drop only
+foundational things; and PoE's community-driven item filters are a
+design flaw to design around, never a feature to copy. Few, meaningful
+drops by design.
+
 ## Wave 4 — Dungeon and Roguelite Iteration
 
 **Owner, 4 Sep 2026:** "this will be a big iteration intensive, keep as

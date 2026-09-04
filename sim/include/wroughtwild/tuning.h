@@ -576,6 +576,11 @@ struct RealtimeTable {
     int hordeMaxLiveMobs = 60;          // mobs alive at once; packs beyond it wait
     double hordeSleepRangeM = 60.0;     // a calm pack this far from the player sleeps
     double hordeSleepAfterSeconds = 6.0; // unhurt for this long before it may sleep
+    // Noise (Wave 7 slice 1): what the world hears. A source kind's radius
+    // wakes every idle mob and dormant pack within it; a source inside a
+    // closed room carries noiseMuffle of its radius.
+    std::map<std::string, double> noiseRadiusM;
+    double noiseMuffle = 1.0;
     // Per-skill space-and-time tunables (projectile speed, ranges...),
     // numeric fields verbatim; keyed by skill id.
     std::map<std::string, std::map<std::string, double>> skillSpatials;
@@ -697,9 +702,10 @@ struct CaveParams {
 // Danger scales with distance from spawn: the first ring whose radius
 // contains the cell decides pack density, pack size and how often a pack
 // carries an elite.
+// Wave 7 slice 1: the rings give a pack its teeth by distance (size,
+// elites), never its density - density is the biome's own.
 struct DangerRing {
     double radiusM = 0.0;
-    double packDensityMultiplier = 1.0;
     int packSizeBonus = 0;     // extra members appended from the pack's own kind
     double eliteChance = 0.0;  // chance one member spawns with an elite modifier
 };
@@ -728,6 +734,9 @@ struct BiomeDef {
     std::map<std::string, double> nodeDensity; // node type -> per-cell chance
     double packDensity = 0.0;
     std::vector<std::vector<std::string>> packs; // possible pack compositions
+    // Wave 7 slice 1: a deep biome's packs walk toward the heartland at
+    // night (worldgen gives each a route) and are back in their dens by dawn.
+    bool patrols = false;
     // Grazers: placed like packs but outside the danger rings and the
     // spawn's pack exclusion - the heartland has life, not threat.
     double grazerDensity = 0.0;
@@ -778,6 +787,7 @@ struct WorldgenGuarantees {
     std::string gateBiome;
     double gateMinDistanceM = 45.0;
     double packMinDistanceFromSpawnM = 20.0;
+    double patrolLengthM = 0.0; // how far a night patrol walks from its den toward the spawn
 };
 
 struct WorldgenTable {
@@ -795,8 +805,7 @@ struct WorldgenTable {
 
     const BiomeDef* findBiome(const std::string& id) const;
     // The pack-density multiplier for a cell this far from spawn (1.0 when
-    // no rings are tuned).
-    double dangerMultiplierAt(double distanceM) const;
+    // no rings are tuned).
     // The whole ring for a distance (nullptr when none are tuned).
     const DangerRing* dangerRingAt(double distanceM) const;
 };
