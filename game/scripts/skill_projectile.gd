@@ -12,6 +12,7 @@ extends Node3D
 const LOOKS := {
 	&"prototype_frost_orb": {"colour": Color(0.55, 0.8, 1.0), "radius": 0.18},
 	&"prototype_ember_bolt": {"colour": Color(1.0, 0.55, 0.15), "radius": 0.13},
+	&"prototype_bow_shot": {"colour": Color(0.92, 0.86, 0.7), "radius": 0.09},
 }
 
 var skill_id: StringName = &"prototype_frost_orb"

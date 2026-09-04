@@ -32,8 +32,73 @@
       }
     }
   ],
-  "design_purpose_combat_skills": "D-016: skills are learned, not worn. Each entry is one skill: its delivery (the engine's shape: cone, strike, projectile, dash), its tags (what modifiers and hooks latch onto) and its payload numbers. `starting` skills are known from the first moment and fill the bar in this order; the rest are learned from skill pages that mobs drop, weighted by drop_weight among the skills the player does not know yet. Gear never grants a skill - it only scales skills by tag.",
+  "design_purpose_combat_skills": "D-016: skills are learned, not worn. Each entry is one skill: its delivery (the engine's shape: cone, strike, projectile, dash), its tags (what modifiers and hooks latch onto) and its payload numbers. `starting` skills are the base kit (a character with no class yet: tests and harnesses); a class chosen before play (foundry.json rails.classes[].starting_skills, 4 Sep 2026) replaces them with its own kit and fills the bar in that order - a bow shot for the Ranger, strikes for the Warden, a bolt and a sweep for the Kindler - and the base skills a class does not carry become pages. The rest are learned from skill pages that mobs drop, weighted by drop_weight among the skills the player does not know yet. Gear never grants a skill - it only scales skills by tag.",
   "combat_skills": [
+    {
+      "id": "prototype_bow_shot",
+      "display_name": "Bow Shot",
+      "delivery": "projectile",
+      "tags": [
+        "attack",
+        "physical",
+        "projectile",
+        "bleed"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "base_damage": 14,
+      "bleed_buildup": 20,
+      "fork_count": 0,
+      "fork_damage_fraction": 0.7,
+      "cooldown_seconds": 0.9,
+      "design_purpose": "The Ranger's opener (owner, 4 Sep 2026: 'more initial skills, not frost orb - a bow shot'): a quick physical projectile that is an ATTACK, so Frostbite and the shatter rules read it, with a little bleed so the Quarry rail and the Edge ingot have something to sharpen. Thin and fast like the bolt; the skill is the line, not the lead.",
+      "mastery": [
+        {
+          "uses": 30,
+          "modifier": "physical_damage",
+          "value": 0.15,
+          "text": "the shot flies truer"
+        },
+        {
+          "uses": 120,
+          "modifier": "pierce",
+          "value": 1,
+          "text": "the shot goes through"
+        }
+      ]
+    },
+    {
+      "id": "prototype_cinder_sweep",
+      "display_name": "Cinder Sweep",
+      "delivery": "cone",
+      "tags": [
+        "attack",
+        "fire",
+        "ignite",
+        "area"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "base_damage": 10,
+      "ignite_buildup": 35,
+      "base_area_radius": 2.5,
+      "cooldown_seconds": 1.0,
+      "design_purpose": "The Kindler's close answer: a burning sweep in front (the player's cone) that is an ATTACK of fire, so it shatters a frozen ring and lights the packs the bolt cannot single out. Its ignite builds slower than the bolt's; Kindling and the Pyre rail are where it pays.",
+      "mastery": [
+        {
+          "uses": 30,
+          "modifier": "kindling",
+          "value": 0.2,
+          "text": "the sweep lights faster"
+        },
+        {
+          "uses": 120,
+          "modifier": "burn_damage",
+          "value": 0.2,
+          "text": "its burns bite deeper"
+        }
+      ]
+    },
     {
       "id": "prototype_area_strike",
       "display_name": "Area Strike",
@@ -44,7 +109,7 @@
         "area"
       ],
       "starting": true,
-      "drop_weight": 0,
+      "drop_weight": 0.5,
       "base_damage": 12,
       "base_area_radius": 2.5,
       "cooldown_seconds": 0.8,
@@ -73,7 +138,7 @@
         "single_target"
       ],
       "starting": true,
-      "drop_weight": 0,
+      "drop_weight": 0.5,
       "base_damage": 28,
       "cooldown_seconds": 1.4,
       "mastery": [
@@ -102,7 +167,7 @@
         "chill"
       ],
       "starting": true,
-      "drop_weight": 0,
+      "drop_weight": 0.8,
       "base_damage": 9,
       "chill_buildup": 40,
       "fork_count": 1,

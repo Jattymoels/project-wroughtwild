@@ -912,6 +912,7 @@ struct ClassDef {
     std::string displayName;
     std::vector<std::string> patterns;
     std::vector<std::string> specialisations;
+    std::vector<std::string> startingSkills; // the class's kit (owner, 4 Sep 2026): replaces the base starting skills, fills the bar in order
 };
 
 // A specialisation: what each of the class's patterns becomes.

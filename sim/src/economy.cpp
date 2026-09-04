@@ -498,8 +498,29 @@ bool PlayerEconomy::canChooseClass() const {
 }
 
 bool PlayerEconomy::foundryChooseClass(const std::string& classId) {
-    if (!canChooseClass() || !tuning_.foundry.rails.findClass(classId)) return false;
+    const auto* cls = tuning_.foundry.rails.findClass(classId);
+    if (!canChooseClass() || !cls) return false;
     foundry_.chosenClass = classId;
+    // The class's kit (owner, 4 Sep 2026: "more initial skills, not frost
+    // orb - a bow shot, or a strike for a Warden"): it replaces the base
+    // starting skills and fills the bar in its order; what pages taught
+    // stays known; a tablet laid for a skill no longer known lifts free.
+    if (cls->startingSkills.empty()) return true;
+    const auto base = tuning_.skills.startingSkillIds();
+    std::vector<std::string> kept;
+    for (const auto& id : knownSkills_) {
+        const bool inBase = std::find(base.begin(), base.end(), id) != base.end();
+        const bool inKit = std::find(cls->startingSkills.begin(), cls->startingSkills.end(), id) != cls->startingSkills.end();
+        if (!inBase && !inKit) kept.push_back(id);
+    }
+    knownSkills_ = cls->startingSkills;
+    for (const auto& id : kept) knownSkills_.push_back(id);
+    skillBar_.assign(kSkillBarSize, "");
+    for (size_t i = 0; i < cls->startingSkills.size() && i < static_cast<size_t>(kSkillBarSize); ++i)
+        skillBar_[i] = cls->startingSkills[i];
+    foundry_.plate.erase(std::remove_if(foundry_.plate.begin(), foundry_.plate.end(),
+                                        [&](const foundry::Placement& p) { return p.isTablet() && !knowsSkill(p.skill); }),
+                         foundry_.plate.end());
     return true;
 }
 

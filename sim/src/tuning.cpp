@@ -555,6 +555,7 @@ FoundryDef loadFoundry(const std::string& path) {
                 cls.displayName = c->get("display_name").asString();
                 cls.patterns = readStringArray(c->get("patterns"));
                 if (auto s = c->find("specialisations")) cls.specialisations = readStringArray(*s);
+                if (auto k = c->find("starting_skills")) cls.startingSkills = readStringArray(*k);
                 def.rails.classes.push_back(std::move(cls));
             }
         }
@@ -1287,6 +1288,9 @@ Tuning loadAll(const std::string& tuningDirectory) {
             if (!s || s->classId != cls.id)
                 throw std::runtime_error("foundry: class " + cls.id + " names unknown or foreign specialisation " + id);
         }
+        for (const auto& id : cls.startingSkills)
+            if (!tuning.skills.findCombatSkill(id))
+                throw std::runtime_error("foundry: class " + cls.id + " starts with unknown skill " + id);
     }
     for (const auto& spec : tuning.foundry.rails.specialisations) {
         const auto* cls = tuning.foundry.rails.findClass(spec.classId);
