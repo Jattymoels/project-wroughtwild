@@ -638,7 +638,11 @@ Dictionary WroughtwildSim::enemy(const String& enemy_id) const {
     d["tint"] = to_godot(e->tint);
     d["size_scale"] = e->sizeScale;
     d["immune_statuses"] = strings_to_packed(e->immuneStatuses);
-    d["immune_damage"] = strings_to_packed(e->immuneDamage);
+    Dictionary taken;
+    for (const auto& [type, share] : e->damageTaken) {
+        taken[to_godot(type)] = share;
+    }
+    d["damage_taken"] = taken;
     return d;
 }
 
@@ -1631,7 +1635,11 @@ Dictionary WroughtwildSim::elite_modifier(const String& elite_id) const {
     d["speed_multiplier"] = def->speedMultiplier;
     d["damage_multiplier"] = def->damageMultiplier;
     d["immune_statuses"] = strings_to_packed(def->immuneStatuses);
-    d["immune_damage"] = strings_to_packed(def->immuneDamage);
+    Dictionary taken;
+    for (const auto& [type, share] : def->damageTaken) {
+        taken[to_godot(type)] = share;
+    }
+    d["damage_taken"] = taken;
     d["death_burst_damage"] = def->deathBurstDamage;
     d["death_burst_radius_m"] = def->deathBurstRadiusM;
     d["death_burst_type"] = to_godot(def->deathBurstType);

@@ -738,7 +738,7 @@ WorldTable loadWorld(const std::string& path) {
         def.damageType = e->get("damage_type").asString();
         def.attackPeriodRounds = e->get("attack_period_rounds").asInt();
         if (auto immune = e->find("immune_statuses")) def.immuneStatuses = readStringArray(*immune);
-        if (auto immune = e->find("immune_damage")) def.immuneDamage = readStringArray(*immune);
+        if (auto taken = e->find("damage_taken")) def.damageTaken = readNumberMap(*taken);
         if (auto tint = e->find("tint")) def.tint = tint->asString();
         if (auto scale = e->find("size_scale")) def.sizeScale = scale->asNumber();
         if (auto loot = e->find("loot")) {
@@ -778,7 +778,7 @@ WorldTable loadWorld(const std::string& path) {
             if (auto v = e->find("speed_multiplier")) def.speedMultiplier = v->asNumber();
             if (auto v = e->find("damage_multiplier")) def.damageMultiplier = v->asNumber();
             if (auto v = e->find("immune_statuses")) def.immuneStatuses = readStringArray(*v);
-            if (auto v = e->find("immune_damage")) def.immuneDamage = readStringArray(*v);
+            if (auto v = e->find("damage_taken")) def.damageTaken = readNumberMap(*v);
             if (auto burst = e->find("death_burst")) {
                 def.deathBurstDamage = burst->get("damage").asNumber();
                 def.deathBurstRadiusM = burst->get("radius_m").asNumber();

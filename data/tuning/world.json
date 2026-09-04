@@ -327,7 +327,7 @@
       ],
       "tint": "#FFB347",
       "size_scale": 0.7,
-      "design_purpose": "The wastes' skirmisher: burning, quick, ignite-proof, and fire itself does nothing to a thing made of it (immune_damage, D-023 slice 2: a two-element hit lands only its other packet). It is what makes fire resistance matter outside the trial, and the first mob an all-fire plate must find a second element for.",
+      "design_purpose": "The wastes' skirmisher: burning, quick, ignite-proof, and fire barely marks a thing made of it (damage_taken fire 0.25, D-023 slice 2; the owner: heavily reduced, not immune - a two-element hit lands its other packet whole and a quarter of its fire). It is what makes fire resistance matter outside the trial, and the first mob an all-fire plate must find a second element for.",
       "loot": [
         {
           "item": "trade_currency",
@@ -345,9 +345,9 @@
           "chance": 0.03
         }
       ],
-      "immune_damage": [
-        "fire"
-      ]
+      "damage_taken": {
+        "fire": 0.25
+      }
     },
     {
       "id": "hollow_knight",
@@ -362,7 +362,7 @@
       ],
       "tint": "#3A3A44",
       "size_scale": 1.25,
-      "design_purpose": "The wastes' armoured line: slow, heavy, and fire does nothing to a hollow suit - neither the burn (immune_statuses) nor the hit (immune_damage, D-023 slice 2). Cold and bleed are the answers, or a Frost ingot beside the fire skill adding cold; it is the first mob that asks the build a question the whelps did not.",
+      "design_purpose": "The wastes' armoured line: slow, heavy, and fire does little to a hollow suit - it will not burn (immune_statuses) and takes a quarter of a fire hit (damage_taken, D-023 slice 2; the owner: heavily reduced, not immune). Cold and bleed are the answers, or a Frost ingot beside the fire skill adding cold; it is the first mob that asks the build a question the whelps did not.",
       "loot": [
         {
           "item": "trade_currency",
@@ -386,9 +386,9 @@
           "chance": 0.04
         }
       ],
-      "immune_damage": [
-        "fire"
-      ]
+      "damage_taken": {
+        "fire": 0.25
+      }
     },
     {
       "id": "valley_elk",
@@ -465,7 +465,7 @@
       "design_purpose": "Pure pressure: faster than you in a straight line. Chill and pits are the counters - the grammar answers what stats cannot."
     }
   ],
-  "design_purpose_elites": "Wave 3 elite prefixes: worldgen's danger rings decide who spawns elite (farther out, more often); each interacts with the D-016 status grammar rather than only multiplying numbers, and each pays triple gear/page chance plus an extra loot pass - elites are why you hunt the far rings. Trial rooms do not roll elites yet (the dungeon pass owns that).",
+  "design_purpose_elites": "Wave 3 elite prefixes: worldgen's danger rings decide who spawns elite (farther out, more often); each interacts with the D-016 status grammar rather than only multiplying numbers, and each pays triple gear/page chance plus an extra loot pass - elites are why you hunt the far rings. Trial rooms do not roll elites yet (the dungeon pass owns that). A family or a prefix may name damage_taken, its share of each packet type (D-023 slice 2); a prefix's share multiplies onto the family's. 0 would be immunity; the owner asked for heavy reductions instead, so builds meet resistance, never a wall.",
   "gathering_sites": [
     {
       "id": "valley_forest",

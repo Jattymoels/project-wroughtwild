@@ -387,7 +387,7 @@
           "maximum": 0.24
         }
       ],
-      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own cold packet (grammar::skillHit), scaled by cold gear, so a two-element hit meets a mob's immunities packet by packet and, with a Catalyst later, carries cold's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own cold packet (grammar::skillHit), scaled by cold gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries cold's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
       "id": "physical_damage",
@@ -461,7 +461,7 @@
           "maximum": 0.24
         }
       ],
-      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own physical packet (grammar::skillHit), scaled by physical gear, so a two-element hit meets a mob's immunities packet by packet and, with a Catalyst later, carries physical's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own physical packet (grammar::skillHit), scaled by physical gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries physical's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
       "id": "life_on_kill",
@@ -604,7 +604,7 @@
           "maximum": 0.24
         }
       ],
-      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own fire packet (grammar::skillHit), scaled by fire gear, so a two-element hit meets a mob's immunities packet by packet and, with a Catalyst later, carries fire's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own fire packet (grammar::skillHit), scaled by fire gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries fire's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
       "id": "kindling",

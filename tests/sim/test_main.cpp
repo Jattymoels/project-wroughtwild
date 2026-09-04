@@ -2626,11 +2626,11 @@ void testEveryIngotReadsEverySkill(const tuning::Tuning& t) {
     check(lifeOnSheet && wardOnSkill, "self: the base stays on the sheet and the reading goes to the skill");
     checkNear(grammar::skillHit(t, selfMods, orb)[0].damage, 9.0, 1e-9, "self: the weak readings do not touch the hit");
 
-    // Mob immunities by packet type load for the engine to apply.
-    check(t.world.findEnemy("hollow_knight")->immuneDamage == std::vector<std::string>{"fire"} &&
-              t.world.findEnemy("cinder_wisp")->immuneDamage == std::vector<std::string>{"fire"} &&
-              t.world.findEnemy("ember_whelp")->immuneDamage.empty(),
-          "immunity: a hollow suit and a cinder wisp take no fire packet; a whelp takes every packet");
+    // Mob resistance by packet type loads for the engine to apply (owner,
+    // 4 Sep: heavily reduced, not immune).
+    check(t.world.findEnemy("hollow_knight")->damageTaken.at("fire") < 0.5 && t.world.findEnemy("hollow_knight")->damageTaken.at("fire") > 0.0 &&
+              t.world.findEnemy("cinder_wisp")->damageTaken.at("fire") < 0.5 && t.world.findEnemy("ember_whelp")->damageTaken.empty(),
+          "resistance: a hollow suit and a cinder wisp take a small share of a fire packet, never nothing; a whelp takes every packet whole");
 
     // The hit stream rolls packets as it rolls a number: one draw per hit,
     // so packets and the single number stay in step from the same seed.

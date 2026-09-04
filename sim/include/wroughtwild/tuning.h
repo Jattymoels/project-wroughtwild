@@ -320,7 +320,7 @@ struct EnemyDef {
     std::string damageType; // "physical" or "fire"
     int attackPeriodRounds = 1;
     std::vector<std::string> immuneStatuses; // of: chill, ignite, bleed (a family's nature)
-    std::vector<std::string> immuneDamage;   // packet types it takes nothing from (D-023 slice 2: a hollow suit and fire)
+    std::map<std::string, double> damageTaken; // its share of a packet type (D-023 slice 2: a hollow suit takes a quarter of fire); 0 would be immunity
     std::string tint;       // "#rrggbb" look override (empty = by behaviour)
     double sizeScale = 1.0; // mesh scale for brutes and wisps
     std::vector<LootEntry> loot;
@@ -346,7 +346,7 @@ struct EliteModifierDef {
     double speedMultiplier = 1.0;
     double damageMultiplier = 1.0;
     std::vector<std::string> immuneStatuses; // of: chill, ignite, bleed
-    std::vector<std::string> immuneDamage;   // packet types it takes nothing from
+    std::map<std::string, double> damageTaken; // its share of a packet type, multiplied onto the family's
     double deathBurstDamage = 0.0;           // > 0: explodes on death
     double deathBurstRadiusM = 0.0;
     std::string deathBurstType = "fire";
