@@ -9,41 +9,60 @@ extends Node
 ## Colours come from the master palette (docs/art/art-direction.md); keep
 ## this table in sync with it and generate_textures.py.
 
+## The expansive pass (Wave 6 slice 4, 4 Sep 2026) added the sky's two
+## colours and the aerial haze (fog_aerial_perspective: how much the far
+## distance dissolves into the sky) per biome, and warmed, darkened or
+## bleached each palette so the five read as five countries.
 const MOODS := {
-	"meadow": {           # storybook safe: warm bright sun, thin pale haze
-		"sun_color": Color(1.0, 0.96, 0.88),
-		"sun_energy": 1.35,
-		"fog_color": Color(0.76, 0.82, 0.87),
-		"fog_density": 0.005,
-		"ambient": 0.75,
-	},
-	"rocky_hills": {      # crisp and exposed: neutral light, far views
-		"sun_color": Color(0.96, 0.96, 1.0),
-		"sun_energy": 1.2,
-		"fog_color": Color(0.72, 0.76, 0.82),
+	"meadow": {           # storybook safe: warm bright sun, thin pale haze, a high blue sky
+		"sun_color": Color(1.0, 0.95, 0.84),
+		"sun_energy": 1.4,
+		"fog_color": Color(0.78, 0.84, 0.9),
 		"fog_density": 0.004,
-		"ambient": 0.65,
+		"ambient": 0.78,
+		"sky_top": Color(0.34, 0.56, 0.88),
+		"sky_horizon": Color(0.8, 0.86, 0.92),
+		"aerial": 0.45,
 	},
-	"forest": {           # closed-in and watchful: green-filtered, dimmer
-		"sun_color": Color(0.88, 0.94, 0.8),
-		"sun_energy": 1.0,
-		"fog_color": Color(0.55, 0.66, 0.55),
-		"fog_density": 0.014,
-		"ambient": 0.55,
+	"rocky_hills": {      # crisp and exposed: grey-blue light, the farthest views
+		"sun_color": Color(0.95, 0.96, 1.0),
+		"sun_energy": 1.25,
+		"fog_color": Color(0.68, 0.74, 0.84),
+		"fog_density": 0.0025,
+		"ambient": 0.68,
+		"sky_top": Color(0.3, 0.48, 0.8),
+		"sky_horizon": Color(0.74, 0.8, 0.9),
+		"aerial": 0.7,
 	},
-	"fen": {              # low and damp: green-grey haze, softer sun
-		"sun_color": Color(0.9, 0.95, 0.88),
-		"sun_energy": 0.95,
-		"fog_color": Color(0.58, 0.66, 0.6),
-		"fog_density": 0.016,
-		"ambient": 0.5,
-	},
-	"ember_wastes": {     # oppressive and burnt: weak amber sun, heavy haze
-		"sun_color": Color(1.0, 0.62, 0.4),
-		"sun_energy": 0.75,
-		"fog_color": Color(0.38, 0.31, 0.29),
+	"forest": {           # closed-in and watchful: green-filtered, dark, near
+		"sun_color": Color(0.84, 0.92, 0.74),
+		"sun_energy": 0.9,
+		"fog_color": Color(0.44, 0.58, 0.44),
 		"fog_density": 0.02,
-		"ambient": 0.35,
+		"ambient": 0.48,
+		"sky_top": Color(0.3, 0.46, 0.66),
+		"sky_horizon": Color(0.6, 0.7, 0.62),
+		"aerial": 0.3,
+	},
+	"fen": {              # low and damp: teal-grey haze, softer sun
+		"sun_color": Color(0.88, 0.95, 0.9),
+		"sun_energy": 0.9,
+		"fog_color": Color(0.5, 0.63, 0.62),
+		"fog_density": 0.02,
+		"ambient": 0.5,
+		"sky_top": Color(0.4, 0.55, 0.66),
+		"sky_horizon": Color(0.66, 0.76, 0.76),
+		"aerial": 0.5,
+	},
+	"ember_wastes": {     # oppressive and burnt: weak amber sun, ochre-black haze
+		"sun_color": Color(1.0, 0.6, 0.36),
+		"sun_energy": 0.7,
+		"fog_color": Color(0.34, 0.27, 0.23),
+		"fog_density": 0.026,
+		"ambient": 0.32,
+		"sky_top": Color(0.36, 0.28, 0.26),
+		"sky_horizon": Color(0.58, 0.44, 0.32),
+		"aerial": 0.6,
 	},
 }
 const DEFAULT_BIOME := "meadow"
@@ -108,6 +127,14 @@ func _process(delta: float) -> void:
 func _apply(weight: float) -> void:
 	environment.fog_light_color = environment.fog_light_color.lerp(_target["fog_color"] * _era_fog_tint, weight)
 	environment.fog_density = lerpf(environment.fog_density, _target["fog_density"], weight)
+	# The far distance dissolves into the sky (the expansive pass): more in
+	# open country, less under the trees.
+	environment.fog_aerial_perspective = lerpf(environment.fog_aerial_perspective, float(_target.get("aerial", 0.5)), weight)
+	var sky: ProceduralSkyMaterial = (environment.sky.sky_material as ProceduralSkyMaterial) if environment.sky != null else null
+	if sky != null:
+		sky.sky_top_color = sky.sky_top_color.lerp(_target.get("sky_top", sky.sky_top_color) * _era_fog_tint, weight)
+		sky.sky_horizon_color = sky.sky_horizon_color.lerp(_target.get("sky_horizon", sky.sky_horizon_color) * _era_fog_tint, weight)
+		sky.ground_horizon_color = sky.sky_horizon_color
 	environment.ambient_light_sky_contribution = lerpf(
 		environment.ambient_light_sky_contribution, _target["ambient"], weight)
 	if sun != null:

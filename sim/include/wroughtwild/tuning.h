@@ -634,6 +634,11 @@ struct MountainParams {
     double frequency = 0.05;
     double cragginessFrequency = 0.012;
     double cragginessThreshold = 0.62;
+    // The rim (Wave 6 slice 4, the expansive pass): massifs climbing toward
+    // the map's edge over rimWidthCells, up to rimExtraScale blocks, so the
+    // valley reads as a valley from anywhere in it. 0 disables the rim.
+    int rimWidthCells = 0;
+    int rimExtraScale = 0;
 };
 
 struct StrataParams {

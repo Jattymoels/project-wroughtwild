@@ -1198,6 +1198,8 @@ WorldgenTable loadWorldgen(const std::string& path) {
     const Value& g = doc->get("guarantees");
     table.guarantees.spawnBiome = g.get("spawn_biome").asString();
     table.guarantees.spawnClearRadiusM = g.get("spawn_clear_radius_m").asNumber();
+    if (auto rimWidth = doc->get("mountains").find("rim_width_cells")) table.mountains.rimWidthCells = rimWidth->asInt();
+    if (auto rimScale = doc->get("mountains").find("rim_extra_scale")) table.mountains.rimExtraScale = rimScale->asInt();
     table.guarantees.nearRadiusM = g.get("near_radius_m").asNumber();
     table.guarantees.minNodesNear = readIntMap(g.get("min_nodes_near"));
     if (auto far = g.find("far_radius_m")) table.guarantees.farRadiusM = far->asNumber();

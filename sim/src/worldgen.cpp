@@ -181,6 +181,16 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
                     cell.height += static_cast<int>(std::floor(t * ridge * m.extraScale));
                 }
             }
+            // The rim (Wave 6 slice 4): the land climbs toward every edge, a
+            // ring of massifs around the valley, ridged so it is not a wall.
+            if (m.rimWidthCells > 0 && m.rimExtraScale > 0) {
+                const int edge = std::min({x, z, map.width - 1 - x, map.height - 1 - z});
+                if (edge < m.rimWidthCells) {
+                    const double t = smoothstep(1.0 - static_cast<double>(edge) / m.rimWidthCells);
+                    const double ridge = fbm(seed, x, z, m.frequency, 3, 1700);
+                    cell.height += static_cast<int>(std::floor(t * t * (0.55 + 0.45 * ridge) * m.rimExtraScale));
+                }
+            }
             cell.height = std::min(cell.height, map.depth - 2);
             cell.biomeIndex = biomeFor(table, cell.height, moisture);
         }

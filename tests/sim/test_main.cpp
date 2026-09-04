@@ -3784,6 +3784,25 @@ void testWorldMadeWhole(const tuning::Tuning& t) {
         if (map.countNodesNear("iron_vein", map.spawnX, map.spawnZ, g.farRadiusM) >= 3) ++farOk;
     }
     check(farOk == 12, "whole: every seed has its three veins within the walk");
+    // Slice 4: the rim - the land climbs toward every edge, ridged, never a wall.
+    const auto& mtn = t.worldgen.mountains;
+    check(mtn.rimWidthCells > 0 && mtn.rimExtraScale > 0, "whole: the rim is tuned");
+    {
+        auto map = worldgen::generate(t, 3);
+        double rimSum = 0.0, midSum = 0.0;
+        int rimN = 0, midN = 0;
+        int rimMax = 0, rimMin = 999;
+        for (int z = 0; z < map.height; ++z)
+            for (int x = 0; x < map.width; ++x) {
+                const int edge = std::min({x, z, map.width - 1 - x, map.height - 1 - z});
+                const int h = map.at(x, z).height;
+                if (edge < 6) { rimSum += h; ++rimN; rimMax = std::max(rimMax, h); rimMin = std::min(rimMin, h); }
+                else if (edge > mtn.rimWidthCells + 20 && edge < mtn.rimWidthCells + 60) { midSum += h; ++midN; }
+            }
+        check(rimN > 0 && midN > 0 && rimSum / rimN > midSum / midN + 6.0, "whole: the outer band stands well above the country inside the rim");
+        check(rimMax - rimMin >= 4, "whole: the rim is ridged, not a wall");
+        check(map.at(map.spawnX, map.spawnZ).height < 30, "whole: the spawn clearing is not on the rim");
+    }
 }
 
 int main(int argc, char** argv) {
