@@ -525,3 +525,90 @@ run in this session (no Godot binary here).
 Not yet: every ingot reading every skill (added elements, slice 2), the
 typed currencies, the Vanguard, corner augments, links, rails, the metal
 of an ingot.
+
+## Implemented: every ingot reads every skill (4 Sep 2026, D-023 slice 2)
+
+The owner's rule of 4 Sep ("I don't think we need to restrict 'cold damage
+incr' to only cold spells ... adding a cold damage on the spell means you
+might pursue different builds"): nothing on the plate is inert.
+`data/tuning/foundry.json` (schema 3), `items.json`, `grammar.json`,
+`world.json`; `sim/grammar.h`, `sim/foundry.h`, `sim/combat.h`:
+
+- **The hit is typed packets.** `grammar::skillHit` returns a skill's hit
+  as a list of `HitPacket`s (type, damage, added): its own element first
+  (the first `grammar.json` `damage_types` entry among its tags), then one
+  packet per element the plate adds. A packet resolves its damage against
+  the skill's tags with the element swapped for its own, so cold gear
+  scales the cold packet, fire gear the fire one, and a spell's modifiers
+  both. `skillDamage` is the packets summed. The hit stream rolls a hit of
+  packets with one variance draw and one place in the echo count, so a
+  hit asked for as packets sits where a hit asked for as one number would.
+- **The added-element lane.** An element ingot beside a skill of its own
+  element supports it as before (+24% cold on Frost Orb). Beside any other
+  skill its `added_modifier` speaks instead (`added_fire`, `added_cold`,
+  `added_physical`, effect `add_as_<type>`), and the skill gains a packet
+  of that type equal to the same fraction of its base hit (`Effect.kind ==
+  "added"`, written on its cell like a support). +24% increased and +24%
+  of the hit added are the same total; the added packet is its own type,
+  scaled by that type's gear (the ingot's own base among it), refused by a
+  mob immune to it, and is what a Catalyst will later turn into a status
+  and a reaction. Backing counts an added reading once more as it counts a
+  support. A Frost ingot beside Ember Bolt is a fire-and-cold bolt.
+- **A reading keeps its type.** `grammar::ActiveMod` gains `requiresTags`
+  (every one must be present, beside `appliesToTags` where any one may):
+  a support, an added element and a backing keep their modifier's own
+  `applies_to` and require the socket's `skill:<id>` tag, so a Frost
+  support scales the orb's cold packet and never the fire an Ember support
+  adds to the same orb.
+- **The self ingots read a skill weakly.** Vigour, Plate and Ward name a
+  `skill_modifier` and a `skill_value` of their own, spoken at
+  `support_multiplier` like every reading: `life_on_kill` (a kill with the
+  skill restores 1 life; `grammar::skillLifeOnKill`, the engine heals on
+  the kill, shatter kills counting for the skill that cashed them),
+  `armour_on_cast` (casting the skill grants 4 armour for
+  `cast_armour_seconds`; `grammar::skillCastArmour`, the engine runs the
+  clock and hands the armour to mitigation through `enemy_hit_damage`) and
+  `status_ward` (an enemy carrying the status the skill applies deals 5%
+  less to you; `grammar::wardMultiplier` over the statuses the mob carries,
+  wards multiplying). The bases stay on the sheet. Haste read every attack
+  and spell already; Reach read area, projectile and strike skills from
+  slice 1.
+- **Immunities by packet type.** `world.json` enemies and elite prefixes
+  may name `immune_damage`; the engine deals a hit packet by packet
+  (`Enemy.take_typed`) and a mob takes nothing of a type it is immune to.
+  The Hollow Knight, whose purpose already read "fire does nothing to a
+  hollow suit", and the Cinder Wisp are the two fire-proof families; a
+  fire-and-cold bolt lands its cold on them. Shatter novas and the burn
+  and bleed ticks go the same way.
+- **Tells and sentences.** The hitmarker takes the hit's types: white for
+  a plain blow, the element's tint for one element, a doubled mark in the
+  blended tint for a two-element hit. A modifier may carry its own
+  `sentence` in `items.json` (`{n}` for the magnitude) for readings that
+  are mechanics rather than stats ("adds 24% of the hit as fire damage",
+  "a kill restores 1 life"); a tray ingot's tooltip says what it reads as
+  beside a skill. The plate's readings carry the tags `added` and
+  `reading`, which no base allows, so none rolls on gear.
+
+Tests: sim 3294 (the damage types; the readings the ingots name; the pool
+clean; the sentences; a bare skill one packet and a movement skill none;
+the two lanes the same total; ember beside the orb adding fire at the
+support fraction, scaled by fire gear and the ember's own base and never
+by cold; a frost support scaling the cold packet and never the added
+fire; backing an added reading; ember beside a fire skill scaling and
+adding nothing; a strike carrying cold; the three weak readings and their
+numbers, the ward by carried status, the sheet untouched; immunities
+loading; the hit stream rolling packets in step with the number). Engine:
+unit 342 (packets rolled as the number, a dash's empty hit, armour
+granted by the engine counting in mitigation, the ward silent bare, the
+knight's immunity, the Plate reading beside the orb through the door);
+integration 217 (six effects with the ember adding fire to
+the strike, the strike a physical-and-fire blow, a cast of the area strike
+bracing the player for four armour and passing).
+
+Not yet: the Dash tablet reads nothing (no reading speaks to a movement
+skill; the Quicksilver is its subject), Ward beside a skill that applies
+no status waits for one, a mastery perk still scopes to its whole skill
+(every packet) rather than its modifier's type, the added packet has no
+tell on the mob beyond the hitmarker, and everything after slice 2 in the
+slice order: the typed currencies, the Vanguard, corner augments and the
+reactions, links, rails, the metal of an ingot.

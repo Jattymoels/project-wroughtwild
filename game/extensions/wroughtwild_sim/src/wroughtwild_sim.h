@@ -104,6 +104,13 @@ public:
     // The skill's spatial extent multiplier after reach modifiers (D-023): an
     // area's radius, a projectile's flight, a strike's reach.
     double skill_reach(const String& skill_id) const;
+    // The self ingots' readings beside the skill (D-023 slice 2): life a
+    // kill with it restores; {armour, seconds} a cast of it grants.
+    double skill_life_on_kill(const String& skill_id) const;
+    Dictionary skill_cast_armour(const String& skill_id) const;
+    // What an enemy's hit on the player is multiplied by for the statuses
+    // it carries (of chill, ignite, bleed): the Ward reading.
+    double ward_multiplier(const PackedStringArray& carried_statuses) const;
 
     // --- grammar (docs/systems/skill-grammar.md) ---
     // Debug toggles (F1-F3): force one non-self modifier at its tier-1
@@ -277,7 +284,8 @@ public:
     PackedStringArray foundry_ingot_ids() const;
     // {id, display_name, verb, modifier, value, sentence, owned, unplaced}.
     Dictionary foundry_ingot(const String& ingot_id) const;
-    // What the plate does now: [{kind: ingot|pair|line, label, sentence, row, col}].
+    // What the plate does now: [{kind: ingot|pair|support|added|backing,
+    // label, sentence, modifier, value, skill, row, col, cell_row, cell_col}].
     Array foundry_effects() const;
     bool foundry_place(int row, int col, const String& ingot_id);
     bool foundry_remove(int row, int col);
@@ -416,8 +424,15 @@ public:
     // Damage one player hit of skill_id deals; isolated when the target is
     // the only living enemy.
     double player_hit_damage(const String& skill_id, bool isolated);
+    // The same hit as typed packets (D-023 slice 2): [{type, damage,
+    // added}], rolled through the fight's stream exactly as
+    // player_hit_damage rolls one number. The engine deals each packet and
+    // lets the mob refuse the types it is immune to.
+    Array player_hit(const String& skill_id, bool isolated);
     // Damage the player takes from one enemy hit, after mitigation.
-    double enemy_hit_damage(double raw_damage, const String& damage_type);
+    // bonus_armour: armour the engine is granting right now (the Plate
+    // reading's armour on cast), counted with the sheet's.
+    double enemy_hit_damage(double raw_damage, const String& damage_type, double bonus_armour = 0.0);
     // Mitigation without variance, for previews and UI.
     double mitigate(double amount, const String& damage_type) const;
 
@@ -496,6 +511,8 @@ private:
     bool require_loaded(const char* method) const;
 
     const wroughtwild::tuning::CombatSkillDef* find_skill(const String& skill_id) const;
+    // One hit of skill_id as typed packets, rolled through the fight's stream.
+    wroughtwild::grammar::Hit rolled_hit(const String& skill_id, bool isolated);
     wroughtwild::combat::CombatMods current_mods() const;
     wroughtwild::boons::BuildTags build_tags() const;
     wroughtwild::grammar::ActiveMods active_mods() const;

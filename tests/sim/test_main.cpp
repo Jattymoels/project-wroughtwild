@@ -2091,19 +2091,26 @@ void testFoundry(const tuning::Tuning& t) {
         check(sup.foundryPlace(1, 0, "frost") && sup.foundryPlace(2, 1, "ember") && sup.foundryPlace(1, 2, "vigour"),
               "plate: frost, ember and vigour laid around the orb's socket");
         auto fx = foundry::effects(t, sup.foundry(), sup.plate());
-        int supports = 0;
-        bool frostSupport = false, emberSupport = false, vigourSupport = false;
+        int supports = 0, added = 0;
+        bool frostSupport = false, emberSupport = false, vigourSheet = false, vigourWeak = false, emberAdded = false;
         for (const auto& e : fx) {
+            if (e.kind == "added") {
+                ++added;
+                if (e.modifier == "added_fire" && e.skill == "prototype_frost_orb" && e.cellRow == 2 && e.cellCol == 1) emberAdded = true;
+            }
             if (e.kind != "support") continue;
             ++supports;
-            check(e.skill == "prototype_frost_orb" && e.row == 1 && e.col == 1 && e.cellRow == 1 && e.cellCol == 0,
+            check(e.skill == "prototype_frost_orb" && e.row == 1 && e.col == 1 && e.cellRow == 1 &&
+                      (e.cellCol == 0 || e.cellCol == 2),
                   "plate: a support names its skill, its socket and its cell");
             if (e.modifier == "cold_damage") frostSupport = true;
             if (e.modifier == "fire_damage") emberSupport = true;
-            if (e.modifier == "max_life") vigourSupport = true;
+            if (e.modifier == "max_life") vigourSheet = true;
+            if (e.modifier == "life_on_kill") vigourWeak = true;
         }
-        check(supports == 1 && frostSupport && !emberSupport && !vigourSupport,
-              "plate: frost supports the cold orb; fire and a self ingot cannot yet");
+        // Slice 2 (owner, 4 Sep 2026): every ingot reads every skill.
+        check(supports == 2 && frostSupport && !emberSupport && added == 1 && emberAdded && vigourWeak && !vigourSheet,
+              "plate: frost supports the cold orb, ember adds fire to it, vigour reads it weakly");
         for (const auto& e : fx)
             if (e.kind == "support" && e.modifier == "cold_damage")
                 checkNear(e.value, t.foundry.findIngot("frost")->value * t.foundry.supportMultiplier, 1e-9,
@@ -2438,6 +2445,217 @@ void testEraThreeAndLife(const tuning::Tuning& t) {
     check(!miner.takeFoundryNotices().empty(), "order: the mine reinforced forges its ingot");
 }
 
+// D-023 slice 2 (owner, 4 Sep 2026): every ingot reads every skill. An
+// element ingot beside a skill of its own element scales it; beside any
+// other skill it adds its element to the hit as a second typed packet at
+// the same fraction, scaled by that type's own modifiers; the self ingots
+// read a skill weakly. The hit is a list of packets now.
+void testEveryIngotReadsEverySkill(const tuning::Tuning& t) {
+    const std::string orb = "prototype_frost_orb";
+    const std::string strike = "prototype_heavy_strike";
+    const double fraction = t.foundry.findIngot("ember")->value * t.foundry.supportMultiplier; // the support fraction
+    const double emberBase = t.foundry.findIngot("ember")->value;
+    const double frostBase = t.foundry.findIngot("frost")->value;
+    auto scoped = [&](const std::string& modifier, double value, const std::string& skill) {
+        grammar::ActiveMod mod = grammar::modAt(t.items, modifier, value, "test");
+        mod.requiresTags = {"skill:" + skill};
+        return mod;
+    };
+
+    // Data: the packet types, the readings the ingots name, and modifiers
+    // that never roll on gear.
+    check(t.grammar.damageTypes == std::vector<std::string>{"physical", "fire", "cold"}, "packets: three damage types, physical first");
+    check(t.foundry.findIngot("ember")->addedModifier == "added_fire" && t.foundry.findIngot("frost")->addedModifier == "added_cold" &&
+              t.foundry.findIngot("edge")->addedModifier == "added_physical" && t.foundry.findIngot("reach")->addedModifier.empty(),
+          "packets: the element ingots name what they add; the rest add nothing");
+    check(t.foundry.findIngot("vigour")->supportModifier() == "life_on_kill" && std::abs(t.foundry.findIngot("vigour")->supportValue() - 0.5) < 1e-9 &&
+              t.foundry.findIngot("plate")->supportModifier() == "armour_on_cast" && t.foundry.findIngot("ward")->supportModifier() == "status_ward" &&
+              std::abs(t.foundry.findIngot("ember")->supportValue() - emberBase) < 1e-9,
+          "packets: the self ingots name a weak reading with its own number; an element ingot reads at its base value");
+    check(t.foundry.castArmourSeconds > 0.0, "packets: the Plate reading has a duration");
+    bool poolClean = true;
+    for (const auto& base : t.items.itemBases)
+        for (const auto& tag : base.allowedModifierTags)
+            if (tag == "added" || tag == "reading") poolClean = false;
+    check(poolClean, "packets: no base rolls the plate's readings");
+    check(items::modifierSentence(*t.items.findModifier("added_fire"), fraction) == "adds 24% of the hit as fire damage" &&
+              items::modifierSentence(*t.items.findModifier("life_on_kill"), 1.0) == "a kill restores 1 life",
+          "packets: a reading says its whole sentence");
+
+    // A bare skill is one packet of its own element; a movement skill none.
+    grammar::ActiveMods none;
+    auto bare = grammar::skillHit(t, none, orb);
+    check(bare.size() == 1 && bare[0].type == "cold" && !bare[0].added && std::abs(bare[0].damage - 9.0) < 1e-9,
+          "packets: a bare orb is one cold packet");
+    check(grammar::skillHit(t, none, strike).size() == 1 && grammar::skillHit(t, none, strike)[0].type == "physical",
+          "packets: the strike is physical");
+    check(grammar::skillHit(t, none, "prototype_dash").empty() && grammar::skillHit(t, none, "no_such_skill").empty(),
+          "packets: a movement skill and an unknown skill have no hit");
+
+    // The two lanes trade the same number: +24% of the hit added as fire
+    // is the same hit as +24% increased cold, but it is its own type.
+    grammar::ActiveMods addedLane = {scoped("added_fire", fraction, orb)};
+    grammar::ActiveMods sameLane = {scoped("cold_damage", fraction, orb)};
+    checkNear(grammar::skillDamage(t, addedLane, orb), grammar::skillDamage(t, sameLane, orb), 1e-9,
+              "lanes: the added lane and the same-element lane are the same total");
+    check(grammar::skillHit(t, addedLane, orb).size() == 2 && grammar::skillHit(t, sameLane, orb).size() == 1,
+          "lanes: the added lane is two packets, the same-element lane one");
+    check(grammar::skillHit(t, addedLane, "prototype_frost_nova").size() == 1, "lanes: a reading scoped to the orb leaves the nova alone");
+
+    // Ember west of the orb's socket: an added fire packet, not a support.
+    economy::PlayerEconomy p(t);
+    p.foundryEvent("first_kill:ember_whelp");   // ember
+    p.foundryEvent("recipe:smelt_iron");        // ember
+    p.foundryEvent("first_kill:gloom_crawler"); // frost
+    check(p.foundryPlaceSkill(1, 1, orb) && p.foundryPlace(1, 0, "ember"), "added: ember west of the orb");
+    auto fx = foundry::effects(t, p.foundry(), p.plate());
+    int added = 0, supports = 0;
+    for (const auto& e : fx) {
+        if (e.kind == "support") ++supports;
+        if (e.kind != "added") continue;
+        ++added;
+        check(e.modifier == "added_fire" && e.skill == orb && e.row == 1 && e.col == 1 && e.cellRow == 1 && e.cellCol == 0 &&
+                  std::abs(e.value - fraction) < 1e-9 && e.label == "Frost Orb <- Ember Ingot",
+              "added: names its modifier, skill, socket and cell, at the support fraction");
+    }
+    check(added == 1 && supports == 0, "added: an ember beside a cold orb adds fire and does not support");
+    auto mods = grammar::foundryMods(t, p.foundry(), p.currentEra());
+    bool scopedMod = false;
+    for (const auto& m : mods)
+        if (m.source == "foundry:added" && m.id == "added_fire" && m.requiresTags == std::vector<std::string>{"skill:" + orb} &&
+            m.appliesToTags == t.items.findModifier("added_fire")->appliesToTags)
+            scopedMod = true;
+    check(scopedMod, "added: the reading keeps its modifier's applies_to and requires the orb's tag");
+    auto hit = grammar::skillHit(t, mods, orb);
+    check(hit.size() == 2 && hit[0].type == "cold" && !hit[0].added && hit[1].type == "fire" && hit[1].added,
+          "added: the orb is a cold-and-fire bolt");
+    checkNear(hit[0].damage, 9.0, 1e-9, "added: the cold packet is untouched by the ember");
+    // The fire packet is scaled by every fire modifier, the ember's own base among them.
+    checkNear(hit[1].damage, 9.0 * fraction * (1.0 + emberBase), 1e-9, "added: the fire packet is the fraction of the base hit, scaled by fire");
+    checkNear(grammar::skillDamage(t, mods, orb), hit[0].damage + hit[1].damage, 1e-9, "packets: skillDamage is the packets summed");
+    // Fire gear scales the fire packet alone; cold gear the cold alone.
+    auto fiery = mods;
+    fiery.push_back(grammar::modAt(t.items, "fire_damage", 0.5, "test"));
+    auto geared = grammar::skillHit(t, fiery, orb);
+    checkNear(geared[0].damage, 9.0, 1e-9, "added: fire gear leaves the cold packet alone");
+    checkNear(geared[1].damage, 9.0 * fraction * (1.0 + emberBase + 0.5), 1e-9, "added: fire gear scales the fire packet");
+    auto chilly = mods;
+    chilly.push_back(grammar::modAt(t.items, "cold_damage", 0.5, "test"));
+    checkNear(grammar::skillHit(t, chilly, orb)[1].damage, hit[1].damage, 1e-9, "added: cold gear leaves the fire packet alone");
+    // A Frost support beside the same orb scales its cold and never the added fire (the conjunction).
+    check(p.foundryPlace(1, 2, "frost"), "added: frost east of the orb");
+    mods = grammar::foundryMods(t, p.foundry(), p.currentEra());
+    hit = grammar::skillHit(t, mods, orb);
+    check(hit.size() == 2, "added: still two packets with a frost support");
+    checkNear(hit[0].damage, 9.0 * (1.0 + frostBase + fraction), 1e-9, "added: the frost support scales the cold packet");
+    checkNear(hit[1].damage, 9.0 * fraction * (1.0 + emberBase), 1e-9, "added: the frost support never scales the fire packet");
+    // Backing an added reading: the second ember south of the first counts it once more.
+    check(p.foundryPlace(2, 0, "ember"), "added: a second ember below the first");
+    fx = foundry::effects(t, p.foundry(), p.plate());
+    int backings = 0;
+    for (const auto& e : fx)
+        if (e.kind == "backing" && e.modifier == "added_fire" && e.skill == orb && e.cellRow == 2 && e.cellCol == 0) ++backings;
+    check(backings == 1, "added: a matching ingot backs an added reading");
+    mods = grammar::foundryMods(t, p.foundry(), p.currentEra());
+    checkNear(grammar::skillHit(t, mods, orb)[1].damage, 9.0 * 2.0 * fraction * (1.0 + 2.0 * emberBase), 1e-9,
+              "added: backed, the fire packet is twice the fraction, scaled by both embers' bases");
+
+    // Ember beside a fire skill scales it and adds nothing.
+    economy::PlayerEconomy k(t);
+    k.learnSkill("prototype_ember_bolt");
+    k.foundryEvent("first_kill:ember_whelp");
+    check(k.foundryPlaceSkill(1, 1, "prototype_ember_bolt") && k.foundryPlace(1, 0, "ember"), "same: ember beside the bolt");
+    added = 0; supports = 0;
+    for (const auto& e : foundry::effects(t, k.foundry(), k.plate())) {
+        if (e.kind == "added") ++added;
+        if (e.kind == "support" && e.modifier == "fire_damage") ++supports;
+    }
+    check(added == 0 && supports == 1, "same: an ember beside a fire skill supports it and adds nothing");
+    auto bolt = grammar::skillHit(t, grammar::foundryMods(t, k.foundry(), k.currentEra()), "prototype_ember_bolt");
+    check(bolt.size() == 1 && bolt[0].type == "fire", "same: the bolt stays one fire packet");
+    checkNear(bolt[0].damage, 8.0 * (1.0 + emberBase + fraction), 1e-9, "same: scaled by the base and the support");
+
+    // Edge beside a physical strike supports; frost beside it adds cold.
+    economy::PlayerEconomy s(t);
+    s.foundryEvent("work:strike_split");       // edge
+    s.foundryEvent("first_kill:gloom_crawler"); // frost
+    check(s.foundryPlaceSkill(1, 1, strike) && s.foundryPlace(1, 0, "edge") && s.foundryPlace(1, 2, "frost"),
+          "strike: edge west, frost east of the strike");
+    auto blow = grammar::skillHit(t, grammar::foundryMods(t, s.foundry(), s.currentEra()), strike);
+    check(blow.size() == 2 && blow[0].type == "physical" && blow[1].type == "cold" && blow[1].added, "strike: a physical-and-cold blow");
+    checkNear(blow[0].damage, 28.0 * (1.0 + emberBase + fraction), 1e-9, "strike: the edge support scales the physical packet");
+    checkNear(blow[1].damage, 28.0 * fraction * (1.0 + frostBase), 1e-9, "strike: the added cold is scaled by the frost's own base");
+    check(grammar::skillHit(t, grammar::foundryMods(t, s.foundry(), s.currentEra()), "prototype_area_strike").size() == 1,
+          "strike: the area strike, not in the socket, is untouched");
+
+    // The self ingots read a skill weakly: life on kill, armour on cast,
+    // less damage from enemies carrying the skill's status.
+    economy::PlayerEconomy self(t);
+    self.foundryEvent("recipe:workbench_kit");     // vigour
+    self.foundryEvent("first_kill:stone_husk");    // plate
+    self.recordWorldEffect("stonecut_blocks");     // ward; wakes era two, forging row 0
+    check(self.plate().forged(0, 1), "self: era two forged the row above");
+    check(self.foundryPlaceSkill(1, 1, orb) && self.foundryPlace(1, 0, "vigour") && self.foundryPlace(0, 1, "plate") &&
+              self.foundryPlace(1, 2, "ward"),
+          "self: vigour, plate and ward around the orb");
+    int weak = 0;
+    for (const auto& e : foundry::effects(t, self.foundry(), self.plate())) {
+        if (e.kind != "support") continue;
+        ++weak;
+        if (e.modifier == "life_on_kill") checkNear(e.value, 1.0, 1e-9, "self: vigour reads as one life on kill");
+        else if (e.modifier == "armour_on_cast") checkNear(e.value, 4.0, 1e-9, "self: plate reads as four armour on cast");
+        else if (e.modifier == "status_ward") checkNear(e.value, 0.05, 1e-9, "self: ward reads as five percent less");
+        else check(false, "self: an unexpected support " + e.modifier);
+    }
+    check(weak == 3, "self: three weak readings, nothing inert");
+    auto selfMods = grammar::foundryMods(t, self.foundry(), self.currentEra());
+    checkNear(grammar::skillLifeOnKill(t, selfMods, orb), 1.0, 1e-9, "self: a kill with the orb restores one life");
+    checkNear(grammar::skillLifeOnKill(t, selfMods, "prototype_frost_nova"), 0.0, 1e-9, "self: the nova restores nothing");
+    checkNear(grammar::skillCastArmour(t, selfMods, orb), 4.0, 1e-9, "self: casting the orb grants four armour");
+    checkNear(grammar::skillCastArmour(t, selfMods, strike), 0.0, 1e-9, "self: the strike grants none");
+    checkNear(grammar::wardMultiplier(t, selfMods, {"chill"}), 0.95, 1e-9, "self: a chilled enemy deals five percent less");
+    checkNear(grammar::wardMultiplier(t, selfMods, {"ignite", "bleed"}), 1.0, 1e-9, "self: the orb's ward ignores statuses it does not apply");
+    checkNear(grammar::wardMultiplier(t, selfMods, {}), 1.0, 1e-9, "self: nothing carried, nothing warded");
+    checkNear(grammar::wardMultiplier(t, none, {"chill"}), 1.0, 1e-9, "self: no ward reading, no ward");
+    // The sheet is untouched by a weak reading: the ingots' bases still land there.
+    bool lifeOnSheet = false, wardOnSkill = false;
+    for (const auto& m : selfMods) {
+        if (m.id == "max_life" && m.source == "foundry:ingot") lifeOnSheet = true;
+        if (m.id == "status_ward" && m.source == "foundry:support") wardOnSkill = true;
+    }
+    check(lifeOnSheet && wardOnSkill, "self: the base stays on the sheet and the reading goes to the skill");
+    checkNear(grammar::skillHit(t, selfMods, orb)[0].damage, 9.0, 1e-9, "self: the weak readings do not touch the hit");
+
+    // Mob immunities by packet type load for the engine to apply.
+    check(t.world.findEnemy("hollow_knight")->immuneDamage == std::vector<std::string>{"fire"} &&
+              t.world.findEnemy("cinder_wisp")->immuneDamage == std::vector<std::string>{"fire"} &&
+              t.world.findEnemy("ember_whelp")->immuneDamage.empty(),
+          "immunity: a hollow suit and a cinder wisp take no fire packet; a whelp takes every packet");
+
+    // The hit stream rolls packets as it rolls a number: one draw per hit,
+    // so packets and the single number stay in step from the same seed.
+    combat::HitStream one(11), two(11);
+    combat::CombatMods plain;
+    const auto& orbDef = *t.skills.findCombatSkill(orb);
+    for (int i = 0; i < 3; ++i) {
+        const double number = one.playerHit(orbDef, plain, false);
+        auto packets = two.playerHit(grammar::skillHit(t, none, orb), plain, false);
+        check(packets.size() == 1, "stream: a bare orb rolls one packet");
+        checkNear(packets[0].damage, number, 1e-9, "stream: a packet takes the same draw as the number");
+    }
+    combat::HitStream three(11), four(11);
+    const auto resolved = grammar::skillHit(t, mods, orb);
+    for (int i = 0; i < 3; ++i) {
+        const double number = three.playerHit(orbDef, plain, true);
+        auto packets = four.playerHit(resolved, plain, true);
+        check(packets.size() == 2, "stream: a cold-and-fire orb rolls two packets");
+        checkNear(packets[0].damage, number * resolved[0].damage / 9.0, 1e-9,
+                  "stream: the cold packet is the bare number scaled as the resolver says, isolated or not");
+        checkNear(packets[1].damage / packets[0].damage, resolved[1].damage / resolved[0].damage, 1e-9,
+                  "stream: both packets take the one draw, so their ratio is the resolver's");
+    }
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -2481,6 +2699,7 @@ int main(int argc, char** argv) {
     testEncroachment(t);
     testEras(t);
     testFoundry(t);
+    testEveryIngotReadsEverySkill(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

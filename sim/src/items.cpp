@@ -265,6 +265,14 @@ std::string modifierSentence(const tuning::ModifierDef& def, double value) {
     // Percentages read as whole numbers: a 0.4003 roll is "40%", not "40.0%".
     const std::string magnitude =
         percent ? formatNumber(std::round(value * 100.0)) + "%" : formatNumber(value);
+    // A modifier may say its whole sentence itself (the plate's readings
+    // that are mechanics: "adds {n} of the hit as fire damage").
+    if (!def.sentence.empty()) {
+        sentence = def.sentence;
+        const auto at = sentence.find("{n}");
+        if (at != std::string::npos) sentence.replace(at, 3, magnitude);
+        return sentence;
+    }
     if (startsWith(def.effectKey, "add_")) {
         sentence = "+" + magnitude + " " + def.displayName;
     } else if (startsWith(def.effectKey, "increased_")) {

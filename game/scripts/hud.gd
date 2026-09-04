@@ -263,9 +263,26 @@ func _on_hit_taken(damage: float, source_name: String) -> void:
 	notify("-%d  %s" % [ceili(damage), source_name if source_name != "" else "unknown"])
 
 
-func _on_hit_landed(_total_damage: float, kills: int) -> void:
+## The hitmarker tells the hit's types (D-023 slice 2): white for a plain
+## blow, the element's tint for one element, and a doubled mark in the
+## blended tint for a two-element hit - a packet without a tell is a stat.
+const TYPE_TINTS := {
+	"physical": Color(1, 1, 1, 0.9),
+	"fire": Color(1.0, 0.6, 0.2, 0.95),
+	"cold": Color(0.55, 0.8, 1.0, 0.95),
+}
+
+
+func _on_hit_landed(_total_damage: float, kills: int, types: PackedStringArray = PackedStringArray()) -> void:
 	_hitmarker_timer = 0.16
-	_hitmarker.modulate = Color(1.0, 0.35, 0.3, 1.0) if kills > 0 else Color(1, 1, 1, 0.9)
+	_hitmarker.text = "×" if types.size() <= 1 else "×".repeat(types.size())
+	if kills > 0:
+		_hitmarker.modulate = Color(1.0, 0.35, 0.3, 1.0)
+		return
+	var tint: Color = TYPE_TINTS.get(types[0] if not types.is_empty() else "physical", Color(1, 1, 1, 0.9))
+	if types.size() > 1:
+		tint = tint.lerp(TYPE_TINTS.get(types[1], tint), 0.5)
+	_hitmarker.modulate = tint
 
 
 func _on_life_changed(life: float, _max_life: float) -> void:

@@ -120,16 +120,17 @@ func _hit(enemy: Enemy) -> void:
 	var id := String(skill_id)
 	var is_boss := enemy is Boss
 
-	# The sim decides the numbers; the fork generation decays the damage.
-	var damage: float = combat.sim.player_hit_damage(id, combat.alive_enemies().size() == 1)
-	damage *= combat.sim.fork_damage_fraction(id, generation)
-	combat.last_hit_dealt = damage
-	# Payload: whichever statuses the skill carries (0 for the rest).
+	# Payload: whichever statuses the skill carries (0 for the rest). It
+	# lands before the damage so a killing blow that ignites leaves a
+	# burning corpse for proliferate.
 	enemy.apply_chill(combat.sim.chill_applied(id, is_boss))
 	enemy.apply_ignite(combat.sim.ignite_applied(id, is_boss))
 	enemy.apply_bleed(combat.sim.bleed_applied(id, is_boss))
-	enemy.take_damage(damage)
-	combat.hit_landed.emit(damage, 1 if enemy.life <= 0.0 else 0)
+	# The sim decides the numbers, packet by packet (D-023 slice 2); the
+	# fork generation decays every packet alike.
+	var landed := combat.deal(enemy, skill_id, combat.alive_enemies().size() == 1,
+		combat.sim.fork_damage_fraction(id, generation))
+	combat.hit_landed.emit(landed["damage"], 1 if landed["kill"] else 0, landed["types"])
 
 	# Fork: the sim says how many; space says to whom (nearest untouched).
 	var forks: int = combat.sim.fork_count(id)

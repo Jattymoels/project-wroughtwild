@@ -176,6 +176,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("roll_item_into_pack", "base_id", "rarity", "tier", "seed"), &WroughtwildSim::roll_item_into_pack);
     ClassDB::bind_method(D_METHOD("skill_cooldown_seconds", "skill_id"), &WroughtwildSim::skill_cooldown_seconds);
     ClassDB::bind_method(D_METHOD("skill_reach", "skill_id"), &WroughtwildSim::skill_reach);
+    ClassDB::bind_method(D_METHOD("skill_life_on_kill", "skill_id"), &WroughtwildSim::skill_life_on_kill);
+    ClassDB::bind_method(D_METHOD("skill_cast_armour", "skill_id"), &WroughtwildSim::skill_cast_armour);
+    ClassDB::bind_method(D_METHOD("ward_multiplier", "carried_statuses"), &WroughtwildSim::ward_multiplier);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
     ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells"), &WroughtwildSim::world_mesh);
     ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks"),
@@ -284,7 +287,8 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("combat_mods"), &WroughtwildSim::combat_mods);
     ClassDB::bind_method(D_METHOD("begin_fight", "seed"), &WroughtwildSim::begin_fight);
     ClassDB::bind_method(D_METHOD("player_hit_damage", "skill_id", "isolated"), &WroughtwildSim::player_hit_damage);
-    ClassDB::bind_method(D_METHOD("enemy_hit_damage", "raw_damage", "damage_type"), &WroughtwildSim::enemy_hit_damage);
+    ClassDB::bind_method(D_METHOD("player_hit", "skill_id", "isolated"), &WroughtwildSim::player_hit);
+    ClassDB::bind_method(D_METHOD("enemy_hit_damage", "raw_damage", "damage_type", "bonus_armour"), &WroughtwildSim::enemy_hit_damage, DEFVAL(0.0));
     ClassDB::bind_method(D_METHOD("mitigate", "amount", "damage_type"), &WroughtwildSim::mitigate);
 
     ClassDB::bind_method(D_METHOD("trial_start", "seed", "floor_id"), &WroughtwildSim::trial_start, DEFVAL(String()));
@@ -634,6 +638,7 @@ Dictionary WroughtwildSim::enemy(const String& enemy_id) const {
     d["tint"] = to_godot(e->tint);
     d["size_scale"] = e->sizeScale;
     d["immune_statuses"] = strings_to_packed(e->immuneStatuses);
+    d["immune_damage"] = strings_to_packed(e->immuneDamage);
     return d;
 }
 
@@ -767,33 +772,58 @@ void WroughtwildSim::begin_fight(int seed) {
     hits_ = std::make_unique<wroughtwild::combat::HitStream>(static_cast<uint64_t>(seed));
 }
 
-double WroughtwildSim::player_hit_damage(const String& skill_id, bool isolated) {
-    if (!require_loaded("player_hit_damage")) {
-        return 0.0;
-    }
+wroughtwild::grammar::Hit WroughtwildSim::rolled_hit(const String& skill_id, bool isolated) {
     const auto* def = find_skill(skill_id);
     if (def == nullptr) {
-        UtilityFunctions::push_error("WroughtwildSim.player_hit_damage: unknown skill ", skill_id);
-        return 0.0;
+        UtilityFunctions::push_error("WroughtwildSim.player_hit: unknown skill ", skill_id);
+        return {};
     }
     if (!hits_) {
         begin_fight(0);
     }
-    // Gear modifiers scale the skill's base damage by tag before the hit
-    // stream applies variance and run boons (D-014).
-    auto modded = *def;
-    modded.numbers["base_damage"] = wroughtwild::grammar::skillDamage(*tuning_, active_mods(), to_std(skill_id));
-    return hits_->playerHit(modded, current_mods(), isolated);
+    // The gear and the plate make the hit's typed packets (D-014, D-023
+    // slice 2); the hit stream rolls the whole hit once, for every packet.
+    return hits_->playerHit(wroughtwild::grammar::skillHit(*tuning_, active_mods(), to_std(skill_id)),
+                            current_mods(), isolated);
 }
 
-double WroughtwildSim::enemy_hit_damage(double raw_damage, const String& damage_type) {
+double WroughtwildSim::player_hit_damage(const String& skill_id, bool isolated) {
+    if (!require_loaded("player_hit_damage")) {
+        return 0.0;
+    }
+    double total = 0.0;
+    for (const auto& packet : rolled_hit(skill_id, isolated)) {
+        total += packet.damage;
+    }
+    return total;
+}
+
+Array WroughtwildSim::player_hit(const String& skill_id, bool isolated) {
+    Array out;
+    if (!require_loaded("player_hit")) {
+        return out;
+    }
+    for (const auto& packet : rolled_hit(skill_id, isolated)) {
+        Dictionary d;
+        d["type"] = to_godot(packet.type);
+        d["damage"] = packet.damage;
+        d["added"] = packet.added;
+        out.push_back(d);
+    }
+    return out;
+}
+
+double WroughtwildSim::enemy_hit_damage(double raw_damage, const String& damage_type, double bonus_armour) {
     if (!require_loaded("enemy_hit_damage")) {
         return 0.0;
     }
     if (!hits_) {
         begin_fight(0);
     }
-    const auto stats = derived_now();
+    // Armour the engine is granting for a moment (the Plate reading's
+    // armour on cast) counts with the sheet's.
+    auto stats = derived_now();
+    stats.armour += std::max(0.0, bonus_armour);
     return hits_->enemyHit(raw_damage, to_std(damage_type), stats, tuning_->world.playerBase);
 }
 
@@ -1601,6 +1631,7 @@ Dictionary WroughtwildSim::elite_modifier(const String& elite_id) const {
     d["speed_multiplier"] = def->speedMultiplier;
     d["damage_multiplier"] = def->damageMultiplier;
     d["immune_statuses"] = strings_to_packed(def->immuneStatuses);
+    d["immune_damage"] = strings_to_packed(def->immuneDamage);
     d["death_burst_damage"] = def->deathBurstDamage;
     d["death_burst_radius_m"] = def->deathBurstRadiusM;
     d["death_burst_type"] = to_godot(def->deathBurstType);
@@ -2618,6 +2649,17 @@ Dictionary WroughtwildSim::foundry_ingot(const String& ingot_id) const {
     d["value"] = ingot->value;
     const auto* def = tuning_->items.findModifier(ingot->modifier);
     d["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, ingot->value)) : String();
+    // What it reads as beside a skill (D-023 slice 2): its skill modifier at
+    // the support multiplier and, for an element ingot, what it adds to a
+    // skill of another element.
+    const auto* reading = tuning_->items.findModifier(ingot->supportModifier());
+    d["skill_sentence"] = reading ? to_godot(wroughtwild::items::modifierSentence(
+                                        *reading, ingot->supportValue() * tuning_->foundry.supportMultiplier))
+                                  : String();
+    const auto* added = ingot->addedModifier.empty() ? nullptr : tuning_->items.findModifier(ingot->addedModifier);
+    d["added_sentence"] = added ? to_godot(wroughtwild::items::modifierSentence(
+                                      *added, ingot->value * tuning_->foundry.supportMultiplier))
+                                : String();
     const auto& state = player_->foundry();
     auto owned = state.owned.find(ingot->id);
     d["owned"] = owned == state.owned.end() ? 0 : owned->second;
@@ -2975,6 +3017,34 @@ double WroughtwildSim::skill_reach(const String& skill_id) const {
         return 1.0;
     }
     return wroughtwild::grammar::skillReach(*tuning_, active_mods(), to_std(skill_id));
+}
+
+double WroughtwildSim::skill_life_on_kill(const String& skill_id) const {
+    if (!require_loaded("skill_life_on_kill")) {
+        return 0.0;
+    }
+    return wroughtwild::grammar::skillLifeOnKill(*tuning_, active_mods(), to_std(skill_id));
+}
+
+Dictionary WroughtwildSim::skill_cast_armour(const String& skill_id) const {
+    Dictionary d;
+    if (!require_loaded("skill_cast_armour")) {
+        return d;
+    }
+    d["armour"] = wroughtwild::grammar::skillCastArmour(*tuning_, active_mods(), to_std(skill_id));
+    d["seconds"] = tuning_->foundry.castArmourSeconds;
+    return d;
+}
+
+double WroughtwildSim::ward_multiplier(const PackedStringArray& carried_statuses) const {
+    if (!require_loaded("ward_multiplier")) {
+        return 1.0;
+    }
+    std::vector<std::string> carried;
+    for (int i = 0; i < carried_statuses.size(); ++i) {
+        carried.push_back(to_std(carried_statuses[i]));
+    }
+    return wroughtwild::grammar::wardMultiplier(*tuning_, active_mods(), carried);
 }
 
 } // namespace godot

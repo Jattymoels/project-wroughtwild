@@ -305,6 +305,7 @@ ItemTable loadItems(const std::string& path) {
         if (auto weight = m->find("weight")) def.weight = weight->asNumber();
         if (auto from = m->find("from_tier")) def.fromTier = from->asInt();
         if (auto purpose = m->find("design_purpose")) def.designPurpose = purpose->asString();
+        if (auto sentence = m->find("sentence")) def.sentence = sentence->asString();
         for (const auto& t : m->get("tiers").asArray()) {
             ModifierTier tier;
             tier.tier = t->get("tier").asInt();
@@ -424,6 +425,7 @@ FoundryDef loadFoundry(const std::string& path) {
     if (def.sockets.empty()) throw std::runtime_error("foundry: sockets needs at least one cell");
     def.reforgeCost = readIntMap(doc->get("reforge_cost"));
     if (auto n = doc->find("support_multiplier")) def.supportMultiplier = n->asNumber();
+    if (auto n = doc->find("cast_armour_seconds")) def.castArmourSeconds = n->asNumber();
     for (const auto& i : doc->get("ingots").asArray()) {
         IngotDef ingot;
         ingot.id = i->get("id").asString();
@@ -431,7 +433,9 @@ FoundryDef loadFoundry(const std::string& path) {
         ingot.verb = i->get("verb").asString();
         ingot.modifier = i->get("modifier").asString();
         if (auto m = i->find("skill_modifier")) ingot.skillModifier = m->asString();
+        if (auto m = i->find("added_modifier")) ingot.addedModifier = m->asString();
         ingot.value = i->get("value").asNumber();
+        if (auto v = i->find("skill_value")) ingot.skillValue = v->asNumber();
         def.ingots.push_back(std::move(ingot));
     }
     for (const auto& p : doc->get("pairs").asArray()) {
@@ -651,6 +655,8 @@ RealtimeTable loadRealtime(const std::string& path) {
 GrammarTable loadGrammar(const std::string& path) {
     auto doc = json::parseFile(path);
     GrammarTable table;
+    table.damageTypes = readStringArray(doc->get("damage_types"));
+    if (table.damageTypes.empty()) throw std::runtime_error("grammar: damage_types needs at least one type");
 
     const Value& statuses = doc->get("statuses");
     const Value& chill = statuses.get("chill");
@@ -732,6 +738,7 @@ WorldTable loadWorld(const std::string& path) {
         def.damageType = e->get("damage_type").asString();
         def.attackPeriodRounds = e->get("attack_period_rounds").asInt();
         if (auto immune = e->find("immune_statuses")) def.immuneStatuses = readStringArray(*immune);
+        if (auto immune = e->find("immune_damage")) def.immuneDamage = readStringArray(*immune);
         if (auto tint = e->find("tint")) def.tint = tint->asString();
         if (auto scale = e->find("size_scale")) def.sizeScale = scale->asNumber();
         if (auto loot = e->find("loot")) {
@@ -771,6 +778,7 @@ WorldTable loadWorld(const std::string& path) {
             if (auto v = e->find("speed_multiplier")) def.speedMultiplier = v->asNumber();
             if (auto v = e->find("damage_multiplier")) def.damageMultiplier = v->asNumber();
             if (auto v = e->find("immune_statuses")) def.immuneStatuses = readStringArray(*v);
+            if (auto v = e->find("immune_damage")) def.immuneDamage = readStringArray(*v);
             if (auto burst = e->find("death_burst")) {
                 def.deathBurstDamage = burst->get("damage").asNumber();
                 def.deathBurstRadiusM = burst->get("radius_m").asNumber();
@@ -1040,6 +1048,8 @@ Tuning loadAll(const std::string& tuningDirectory) {
             throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown modifier " + ingot.modifier);
         if (!ingot.skillModifier.empty() && !tuning.items.findModifier(ingot.skillModifier))
             throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown skill modifier " + ingot.skillModifier);
+        if (!ingot.addedModifier.empty() && !tuning.items.findModifier(ingot.addedModifier))
+            throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown added modifier " + ingot.addedModifier);
     }
     for (const auto& pair : tuning.foundry.pairs)
         if (!tuning.items.findModifier(pair.modifier))

@@ -248,6 +248,18 @@ func _test_lattice() -> void:
 	for effect in sim.foundry_effects():
 		kinds.append(effect["kind"])
 	check(kinds.count("pair") == 1 and sim.derived_stats()["max_life"] > life_before, "foundry: the Bulwark pair, and life rose")
+	# D-023 slice 2: the self ingots read a skill weakly. The orb's tablet in
+	# the socket at (1,1): the plate beside it at (1,0) reads as armour on
+	# cast; the vigour at (2,0) is a corner, not a support, and reads nothing.
+	check(sim.foundry_place_skill(1, 1, "prototype_frost_orb") and sim.skill_cast_armour("prototype_frost_orb")["armour"] == 4.0
+		and sim.skill_cast_armour("prototype_frost_orb")["seconds"] == 2.0 and sim.skill_life_on_kill("prototype_frost_orb") == 0.0,
+		"foundry: a plate beside the orb's socket grants armour on cast; a corner vigour reads nothing")
+	var weak := 0
+	for effect in sim.foundry_effects():
+		if effect["kind"] == "support" and effect["modifier"] == "armour_on_cast":
+			weak += 1
+	check(weak == 1 and sim.foundry_remove(1, 1) and sim.skill_cast_armour("prototype_frost_orb")["armour"] == 0.0,
+		"foundry: the weak reading is one effect and lifts with the tablet")
 	check(not sim.foundry_remove(1, 0), "foundry: re-forging needs metal")
 	sim.add_material("iron_ingot", 1)
 	check(sim.foundry_remove(1, 0) and sim.material_count("iron_ingot") == 0 and sim.foundry_effects().size() == 1,
@@ -583,6 +595,21 @@ func _test_sim_extension() -> void:
 	check(first[0] >= 28.0 * 0.9 and first[0] <= 28.0 * 1.1, "combat: hit inside variance band")
 	var fire: float = sim.enemy_hit_damage(40.0, "fire")
 	check(fire >= 36.0 and fire <= 44.0, "combat: unresisted fire lands in band")
+	# D-023 slice 2: the hit as typed packets, rolled as the number is.
+	sim.begin_fight(42)
+	var packets: Array = sim.player_hit("prototype_heavy_strike", false)
+	check(packets.size() == 1 and packets[0]["type"] == "physical" and not packets[0]["added"]
+		and absf(packets[0]["damage"] - first[0]) < 0.000001, "combat: a bare strike is one physical packet, rolled as the number was")
+	check(sim.player_hit("prototype_dash", false).is_empty(), "combat: a dash has no packets")
+	sim.begin_fight(7)
+	var plain: float = sim.enemy_hit_damage(40.0, "physical")
+	sim.begin_fight(7)
+	var braced: float = sim.enemy_hit_damage(40.0, "physical", 100.0)
+	check(braced < plain * 0.9, "combat: armour the engine grants for a cast counts in mitigation")
+	check(absf(sim.ward_multiplier(PackedStringArray(["chill", "ignite"])) - 1.0) < 0.000001, "combat: no ward reading, no ward")
+	check(sim.enemy("hollow_knight")["immune_damage"].has("fire") and sim.enemy("ember_whelp")["immune_damage"].is_empty()
+		and sim.elite_modifier("cinder_blooded")["immune_damage"].is_empty(),
+		"world: a hollow knight takes no fire packet; a whelp and the cinder-blooded prefix take every packet")
 
 	# Gathering sites and the open-world death contract's inventory drop.
 	var mine: Dictionary = sim.gather_site("old_mine")

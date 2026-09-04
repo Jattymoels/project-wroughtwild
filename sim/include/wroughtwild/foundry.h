@@ -5,11 +5,15 @@
 // INGOTS - each one verb, a modifier at a flat value - placed on a PLATE.
 // The plate is a FRAME whose rows the eras forge, with SOCKETS that take a
 // subject (a skill tablet). A socket with the ingots orthogonally beside
-// it (its SUPPORTS) is a WORKING: a support reads the socket's skill; a
-// matching ingot touching a support from any side but the socket's BACKS
-// it, so the support counts once more. Orthogonally adjacent ingots that
-// match a pair add that pair's mechanic for everyone. Numbers on ingots
-// never change; what scales is count, arrangement and, later, reach.
+// it (its SUPPORTS) is a WORKING: a support reads the socket's skill, and
+// the skill decides the reading - an element ingot scales a skill of its
+// own element and ADDS its element to any other skill's hit; the self
+// ingots read a skill weakly (D-023 slice 2: nothing on the plate is
+// inert). A matching ingot touching a support from any side but the
+// socket's BACKS it, so the support counts once more. Orthogonally
+// adjacent ingots that match a pair add that pair's mechanic for everyone.
+// Numbers on ingots never change; what scales is count, arrangement and,
+// later, reach.
 //
 // Ingots come from milestones (foundry.json sources), never from kills as
 // such, and each source grants once. Re-forging (lifting an ingot off the
@@ -56,7 +60,7 @@ struct Plate {
 
 // One thing the plate is doing right now, for the rules and the panel.
 struct Effect {
-    std::string kind;     // ingot | pair | support | backing
+    std::string kind;     // ingot | pair | support | added | backing
     std::string label;    // Ember Ingot / Wildfire / Frost Orb <- Frost Ingot / Frost Ingot backing Frost Orb
     std::string modifier; // items.json modifier id
     double value = 0.0;
@@ -80,9 +84,11 @@ int unplacedCount(const State& state, const std::string& ingot);
 // The tablet for a skill, if laid.
 const Placement* tabletFor(const State& state, const std::string& skill);
 
-// Ingots, pairs, then each working's supports and their backing, in that
-// order. Supports need the skill and modifier tables to know whether an
-// ingot's verb can apply to the skill at all.
+// Ingots, pairs, then each working's readings - a support (the ingot's
+// skill modifier, when it can read the skill's tags) or an added element
+// (an element ingot beside a skill of another element) - each with its
+// backing, in that order. The skill and modifier tables decide which
+// reading an ingot gives.
 std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, const Plate& plate);
 
 } // namespace wroughtwild::foundry

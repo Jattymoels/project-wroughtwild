@@ -83,7 +83,7 @@ func _ready() -> void:
 	_grid.add_theme_constant_override("v_separation", 6)
 	left.add_child(_grid)
 	var how := Label.new()
-	how.text = "A socket takes a skill's tablet; the four cells beside it are its supports, the diagonals its corners.\nBeside: a pair makes its mechanic. A matching ingot touching a support backs it: the support counts again.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free."
+	how.text = "A socket takes a skill's tablet; the four cells beside it are its supports, the diagonals its corners.\nEvery ingot reads every skill: an element ingot scales a skill of its own element and adds its element to any other's hit;\nVigour, Plate and Ward read a skill weakly. Beside: a pair makes its mechanic. A matching ingot touching a support backs it.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free."
 	how.modulate = UiTheme.MUTED
 	left.add_child(how)
 
@@ -157,13 +157,15 @@ func refresh() -> void:
 			tablets[Vector2i(p["row"], p["col"])] = String(p["skill"])
 		else:
 			placed[Vector2i(p["row"], p["col"])] = String(p["ingot"])
-	# Roles (D-023): a laid subject's four supports and four corners.
+	# Roles (D-023): every socket's four supports and four corners, named by
+	# the tablet it holds or, bare, by its place on the frame, so no forged
+	# cell is ever blank.
 	var supports := {}
 	var corners := {}
-	for key in tablets:
-		if not _sockets.has(key):
-			continue
-		var subject: String = sim.combat_skill(tablets[key]).get("display_name", tablets[key])
+	for key in _sockets:
+		var subject: String = "the empty socket at row %d, column %d" % [key.x + 1, key.y + 1]
+		if tablets.has(key):
+			subject = "the %s working" % sim.combat_skill(tablets[key]).get("display_name", tablets[key])
 		for d in [Vector2i(0, 1), Vector2i(1, 0), Vector2i(0, -1), Vector2i(-1, 0)]:
 			var side: Vector2i = key + d
 			if not supports.has(side):
@@ -179,7 +181,7 @@ func refresh() -> void:
 	var effects: Array = sim.foundry_effects()
 	for effect in effects:
 		var kind: String = effect["kind"]
-		if kind != "support" and kind != "backing":
+		if kind != "support" and kind != "added" and kind != "backing":
 			continue
 		var from := Vector2i(int(effect["cell_row"]), int(effect["cell_col"]))
 		if not readings.has(from):
@@ -224,14 +226,16 @@ func refresh() -> void:
 				cell.modulate = Color(1, 1, 1, 0.6)
 			if supports.has(key) and not tablets.has(key):
 				for subject in supports[key]:
-					lines.append(("Beside %s: an ingot here supports it." if not placed.has(key) else "Beside %s.") % subject)
+					lines.append(("Beside %s: an ingot here is one of its supports." if not placed.has(key) else "Beside %s.") % subject)
 				if placed.has(key) and not readings.has(key):
 					lines.append("It does not read the skill beside it yet.")
 			if corners.has(key) and not placed.has(key) and not tablets.has(key) and not _sockets.has(key):
-				lines.append("A corner of the %s working: an ingot here pairs with the supports it touches." % ", ".join(PackedStringArray(corners[key])))
+				lines.append("A corner of %s: an ingot here pairs with the supports it touches." % ", ".join(PackedStringArray(corners[key])))
 			if readings.has(key):
 				for reading in readings[key]:
 					lines.append(reading)
+			if lines.is_empty():
+				lines.append("Belongs to no working yet: room for a pair or a backing.")
 			cell.tooltip_text = "\n".join(lines)
 			cell.pressed.connect(_on_cell.bind(r, c))
 			_grid.add_child(cell)
@@ -250,6 +254,12 @@ func refresh() -> void:
 		var button := Button.new()
 		button.text = "%s  ×%d   %s" % [info["display_name"], count, info["sentence"]]
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		var reads := PackedStringArray()
+		if String(info.get("skill_sentence", "")) != "":
+			reads.append("Beside a skill it can read: %s." % info["skill_sentence"])
+		if String(info.get("added_sentence", "")) != "":
+			reads.append("Beside a skill of another element: %s." % info["added_sentence"])
+		button.tooltip_text = "\n".join(reads)
 		if _selected == StringName(id):
 			button.modulate = UiTheme.GRASS_LIGHT
 		button.pressed.connect(_on_tray.bind(id))
@@ -286,7 +296,7 @@ func refresh() -> void:
 		var line := Label.new()
 		var kind: String = effect["kind"]
 		line.text = "%s  ·  %s  —  %s" % [kind, effect["label"], effect["sentence"]]
-		if kind == "support" or kind == "backing":
+		if kind == "support" or kind == "added" or kind == "backing":
 			line.modulate = UiTheme.FROST
 		elif kind != "ingot":
 			line.modulate = UiTheme.SUN_WARM

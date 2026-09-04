@@ -126,7 +126,7 @@ func _physics_process(delta: float) -> void:
 			_windup_left -= delta
 			if _windup_left <= 0.0:
 				if distance <= attack_range * 1.15 and in_reach:
-					player.combat.take_hit(damage, damage_type, display_name)
+					player.combat.take_hit(damage, damage_type, display_name, self)
 				_attack_cooldown = attack_period_seconds
 				state = "chase"
 		"inhale":
@@ -163,7 +163,7 @@ func breathe(player: WroughtwildPlayer) -> float:
 	if not _in_breath_cone(player):
 		player.hud.notify("The fire washes past you.")
 		return 0.0
-	return player.combat.take_hit(breath_damage, breath_damage_type, display_name)
+	return player.combat.take_hit(breath_damage, breath_damage_type, display_name, self)
 
 
 ## Test hook: begin the telegraph immediately.

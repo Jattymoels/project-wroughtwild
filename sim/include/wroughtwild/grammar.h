@@ -23,10 +23,21 @@ namespace wroughtwild::grammar {
 // One modifier in force, with its magnitude and where it came from.
 struct ActiveMod {
     std::string id;
-    std::vector<std::string> appliesToTags; // empty = applies to everything
+    std::vector<std::string> appliesToTags; // empty = applies to everything; else any one must match
     std::string effectKey;                  // add_<key> | increased_<key> | more_<key>
     double value = 0.0;
     std::string source;                     // slot id, "debug", "test"...
+    // Every one of these must also be present (D-023 slice 2): a support
+    // keeps its modifier's own applies_to (cold) and requires its skill's
+    // tag, so a Frost support scales the orb's cold packet and never the
+    // fire packet an Ember support adds to the same orb.
+    std::vector<std::string> requiresTags;
+
+    ActiveMod() = default;
+    ActiveMod(std::string inId, std::vector<std::string> inAppliesTo, std::string inEffectKey, double inValue,
+              std::string inSource, std::vector<std::string> inRequires = {})
+        : id(std::move(inId)), appliesToTags(std::move(inAppliesTo)), effectKey(std::move(inEffectKey)),
+          value(inValue), source(std::move(inSource)), requiresTags(std::move(inRequires)) {}
 };
 using ActiveMods = std::vector<ActiveMod>;
 
@@ -34,6 +45,10 @@ using ActiveMods = std::vector<ActiveMod>;
 // carrying `tags` (an empty applies_to list applies to everything).
 bool modAppliesToTags(const std::vector<std::string>& appliesToTags,
                       const std::vector<std::string>& tags);
+
+// True when the modifier speaks to something carrying `tags`: its
+// applies_to matches and every one of its requiresTags is present.
+bool modApplies(const ActiveMod& mod, const std::vector<std::string>& tags);
 
 // Core resolver: (base + sum of add_<key>) * (1 + sum of increased_<key>)
 // * product(1 + more_<key>), over active mods whose tags match.
@@ -47,8 +62,11 @@ double resolve(const ActiveMods& active,
 ActiveMods gearMods(const tuning::ItemTable& table, const stats::Equipment& equipment);
 
 // Every modifier the Foundry's plate supplies in `era`: each placed ingot's
-// verb, each matching adjacent pair's mechanic, each line's set effect
-// (sources "foundry:ingot" / "foundry:pair" / "foundry:line").
+// verb, each matching adjacent pair's mechanic, and each working's
+// readings - supports, added elements and backing - which keep their
+// modifier's applies_to and require the socket's skill tag (sources
+// "foundry:ingot" / "foundry:pair" / "foundry:support" / "foundry:added" /
+// "foundry:backing").
 ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state, int era);
 
 // Every mastery perk the player's skill uses have unlocked, each targeting
@@ -98,9 +116,46 @@ struct DotStatus {
 DotStatus igniteStatus(const tuning::Tuning& tuning, const ActiveMods& active);
 DotStatus bleedStatus(const tuning::Tuning& tuning, const ActiveMods& active);
 
-// The skill's base_damage after damage modifiers matching its tags.
+// One typed part of a hit (D-023 slice 2). A skill's hit is a list of
+// these: its own element first, then one packet per element the plate
+// adds to it (an Ember ingot beside Frost Orb makes a cold-and-fire bolt).
+// Each packet is scaled by its own type's modifiers, and the engine applies
+// a mob's immunities packet by packet.
+struct HitPacket {
+    std::string type;    // a grammar.json damage type: physical, fire, cold
+    double damage = 0.0;
+    bool added = false;  // true for an element the plate added to the hit
+};
+using Hit = std::vector<HitPacket>;
+
+// The skill's hit as typed packets. The native packet is base_damage after
+// damage modifiers matching the skill's tags. An added packet of type T is
+// base_damage times the resolved "as_T" fraction (add_as_T modifiers, the
+// added-element reading), then damage modifiers matching the skill's tags
+// with its element swapped for T. Empty for a skill with no base_damage.
+Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
+             const std::string& skillId);
+
+// The whole hit as one number: the packets summed.
 double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,
                    const std::string& skillId);
+
+// --- the self ingots' readings beside a skill (D-023 slice 2) ---------------
+// Life a kill with the skill restores (add_life_on_kill; the Vigour reading).
+double skillLifeOnKill(const tuning::Tuning& tuning, const ActiveMods& active,
+                       const std::string& skillId);
+
+// Armour a cast of the skill grants for tuning.foundry.castArmourSeconds
+// (add_armour_on_cast; the Plate reading). The engine runs the clock.
+double skillCastArmour(const tuning::Tuning& tuning, const ActiveMods& active,
+                       const std::string& skillId);
+
+// What an enemy's hit on the player is multiplied by, given the statuses
+// the enemy carries (of chill, ignite, bleed): every skill with a
+// status_ward reading that applies one of those statuses takes its ward
+// off the hit, multiplicatively (the Ward reading). 1.0 when nothing speaks.
+double wardMultiplier(const tuning::Tuning& tuning, const ActiveMods& active,
+                      const std::vector<std::string>& carriedStatuses);
 
 // The skill's cooldown after cooldown-recovery modifiers (recovery speeds
 // the timer: cooldown = base / resolved recovery factor).

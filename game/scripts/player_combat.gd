@@ -6,8 +6,9 @@ extends Node
 
 signal life_changed(life: float, max_life: float)
 signal died
-## A player hit connected with at least one enemy (HUD hitmarker).
-signal hit_landed(total_damage: float, kills: int)
+## A player hit connected with at least one enemy (HUD hitmarker). types:
+## the damage types that landed, so a two-element hit can show both.
+signal hit_landed(total_damage: float, kills: int, types: PackedStringArray)
 ## Damage got through to the player; the HUD names the source so a hit
 ## from out of sight is never a mystery.
 signal hit_taken(damage: float, source_name: String)
@@ -44,6 +45,10 @@ var fight_active := false
 var fight_seed_source := RandomNumberGenerator.new()
 var last_hit_dealt := 0.0
 var last_hit_taken := 0.0
+## The Plate reading (D-023 slice 2): armour a cast granted and how long it
+## has left. The sim says how much; this owns the clock.
+var _cast_armour := 0.0
+var _cast_armour_left := 0.0
 
 var _dash_left := 0.0
 var _dash_velocity := Vector3.ZERO
@@ -168,6 +173,9 @@ func _physics_process(delta: float) -> void:
 	invulnerable_left = maxf(0.0, invulnerable_left - delta)
 	_tick_shelter(delta)
 	_dash_left = maxf(0.0, _dash_left - delta)
+	_cast_armour_left = maxf(0.0, _cast_armour_left - delta)
+	if _cast_armour_left <= 0.0:
+		_cast_armour = 0.0
 	if fight_active and alive_enemies().is_empty():
 		fight_active = false
 
@@ -261,7 +269,57 @@ func use_skill(skill_id: StringName) -> bool:
 			fired = _use_dash(skill_id)
 	if fired:
 		_note_use(skill_id)
+		_brace(skill_id)
 	return fired
+
+
+## The Plate reading: casting a skill it supports grants armour for a
+## moment. The larger grant wins; the clock refreshes.
+func _brace(skill_id: StringName) -> void:
+	var grant: Dictionary = sim.skill_cast_armour(String(skill_id))
+	var armour: float = grant.get("armour", 0.0)
+	if armour <= 0.0:
+		return
+	_cast_armour = maxf(_cast_armour, armour)
+	_cast_armour_left = maxf(_cast_armour_left, float(grant.get("seconds", 0.0)))
+
+
+## Armour a cast is granting right now; counted with the sheet's when a
+## hit lands.
+func cast_armour() -> float:
+	return _cast_armour if _cast_armour_left > 0.0 else 0.0
+
+
+## Life restored outside the shelter (the Vigour reading's kills).
+func heal(amount: float) -> void:
+	if amount <= 0.0 or life <= 0.0:
+		return
+	life = minf(max_life, life + amount)
+	life_changed.emit(life, max_life)
+
+
+## The Vigour reading: kills with a skill it supports restore life.
+func _reap(skill_id: StringName, kills: int) -> void:
+	if kills > 0:
+		heal(kills * sim.skill_life_on_kill(String(skill_id)))
+
+
+## Deals one hit of skill_id to enemy as the sim's typed packets (D-023
+## slice 2), each scaled by `fraction` (a fork generation), each refused by
+## a mob immune to its type. Returns {damage, kill, types}: what landed.
+func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -> Dictionary:
+	var landed := 0.0
+	var types := PackedStringArray()
+	for packet in sim.player_hit(String(skill_id), isolated):
+		var taken: float = enemy.take_typed(float(packet["damage"]) * fraction, String(packet["type"]))
+		if taken > 0.0:
+			landed += taken
+			types.append(String(packet["type"]))
+	last_hit_dealt = landed
+	var kill := enemy.life <= 0.0
+	if kill:
+		_reap(skill_id, 1)
+	return {"damage": landed, "kill": kill, "types": types}
 
 
 ## Mastery (D-019): the sim counts casts that fired; a perk that unlocks
@@ -353,6 +411,7 @@ func _use_cone(skill_id: StringName) -> int:
 	var hits := 0
 	var kills := 0
 	var total := 0.0
+	var types := PackedStringArray()
 	var to_shatter: Array = []
 	var shatter: Dictionary = sim.shatter_for(String(skill_id))
 	for enemy in enemies:
@@ -371,18 +430,23 @@ func _use_cone(skill_id: StringName) -> int:
 			hits += 1
 			continue
 		_apply_payload(enemy, skill_id, enemy is Boss)
-		last_hit_dealt = sim.player_hit_damage(skill_id, isolated)
-		total += last_hit_dealt
-		enemy.take_damage(last_hit_dealt)
-		if enemy.life <= 0.0:
+		var landed := deal(enemy, skill_id, isolated)
+		total += landed["damage"]
+		if landed["kill"]:
 			kills += 1
+		for type in landed["types"]:
+			if not types.has(type):
+				types.append(type)
 		hits += 1
 
 	var cascade := _shatter_cascade(to_shatter, shatter)
 	total += cascade["damage"]
 	kills += cascade["kills"]
+	_reap(skill_id, cascade["kills"])
+	if cascade["damage"] > 0.0 and not types.has(String(shatter.get("nova_damage_type", "cold"))):
+		types.append(String(shatter.get("nova_damage_type", "cold")))
 	if hits > 0:
-		hit_landed.emit(total, kills)
+		hit_landed.emit(total, kills, types)
 	return hits
 
 
@@ -401,12 +465,13 @@ func _use_strike(skill_id: StringName) -> bool:
 	var shatter: Dictionary = sim.shatter_for(String(skill_id))
 	if shatter.get("enabled", false) and target.is_frozen():
 		var cascade := _shatter_cascade([target], shatter)
-		hit_landed.emit(cascade["damage"], cascade["kills"])
+		_reap(skill_id, cascade["kills"])
+		hit_landed.emit(cascade["damage"], cascade["kills"],
+			PackedStringArray([String(shatter.get("nova_damage_type", "cold"))]))
 		return true
 	_apply_payload(target, skill_id, target is Boss)
-	last_hit_dealt = sim.player_hit_damage(skill_id, alive_enemies().size() == 1)
-	target.take_damage(last_hit_dealt)
-	hit_landed.emit(last_hit_dealt, 1 if target.life <= 0.0 else 0)
+	var landed := deal(target, skill_id, alive_enemies().size() == 1)
+	hit_landed.emit(landed["damage"], 1 if landed["kill"] else 0, landed["types"])
 	return true
 
 
@@ -447,6 +512,8 @@ func _shatter_cascade(to_shatter: Array, shatter: Dictionary) -> Dictionary:
 	var total := 0.0
 	var kills := 0
 	var shattered := {}
+	# The nova is typed like any packet: a mob immune to cold shrugs it off.
+	var nova_type := String(shatter.get("nova_damage_type", "cold"))
 	while not to_shatter.is_empty():
 		var victim: Enemy = to_shatter.pop_front()
 		if not is_instance_valid(victim) or shattered.has(victim.get_instance_id()):
@@ -462,8 +529,7 @@ func _shatter_cascade(to_shatter: Array, shatter: Dictionary) -> Dictionary:
 			kills += 1
 		else:
 			victim.thaw()
-			total += shatter["nova_damage"]
-			victim.take_damage(shatter["nova_damage"])
+			total += victim.take_typed(shatter["nova_damage"], nova_type)
 			if victim.life <= 0.0:
 				kills += 1
 		for other in alive_enemies():
@@ -474,8 +540,7 @@ func _shatter_cascade(to_shatter: Array, shatter: Dictionary) -> Dictionary:
 			if other.is_frozen():
 				to_shatter.append(other)
 			else:
-				total += shatter["nova_damage"]
-				other.take_damage(shatter["nova_damage"])
+				total += other.take_typed(shatter["nova_damage"], nova_type)
 				if other.life <= 0.0:
 					kills += 1
 	return {"damage": total, "kills": kills}
@@ -522,12 +587,18 @@ func _nearest_enemy_in_front(reach: float) -> Enemy:
 	return best
 
 
-## An enemy's raw hit arrives here; the sim decides what gets through.
-func take_hit(raw_damage: float, damage_type: String, source_name := "") -> float:
+## An enemy's raw hit arrives here; the sim decides what gets through. The
+## source, when it is a mob, brings the statuses it carries for the Ward
+## reading, and the armour a cast granted counts with the sheet's (D-023
+## slice 2).
+func take_hit(raw_damage: float, damage_type: String, source_name := "", source: Node = null) -> float:
 	if invulnerable_left > 0.0 or life <= 0.0:
 		return 0.0
 	_ensure_fight()
-	last_hit_taken = sim.enemy_hit_damage(raw_damage, damage_type)
+	var warded := raw_damage
+	if source is Enemy:
+		warded *= sim.ward_multiplier((source as Enemy).carried_statuses())
+	last_hit_taken = sim.enemy_hit_damage(warded, damage_type, cast_armour())
 	life = maxf(0.0, life - last_hit_taken)
 	_settle_left = _settle_seconds
 	life_changed.emit(life, max_life)

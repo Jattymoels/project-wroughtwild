@@ -367,6 +367,29 @@
       "design_purpose": "The plain scaling axis for the Glacier line; deliberately smaller than the mechanic mods so a fork or a freeze breakpoint always reads as the bigger prize."
     },
     {
+      "id": "added_cold",
+      "display_name": "Added Cold",
+      "tags": [
+        "offence",
+        "added"
+      ],
+      "applies_to": [
+        "fire",
+        "physical"
+      ],
+      "effect": "add_as_cold",
+      "display": "percent",
+      "sentence": "adds {n} of the hit as cold damage",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.12,
+          "maximum": 0.24
+        }
+      ],
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own cold packet (grammar::skillHit), scaled by cold gear, so a two-element hit meets a mob's immunities packet by packet and, with a Catalyst later, carries cold's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
       "id": "physical_damage",
       "display_name": "Physical Damage",
       "tags": [
@@ -418,6 +441,98 @@
       "design_purpose": "Scales the strikes; the Iron Mace's implicit. Redline's first rung."
     },
     {
+      "id": "added_physical",
+      "display_name": "Added Physical",
+      "tags": [
+        "offence",
+        "added"
+      ],
+      "applies_to": [
+        "fire",
+        "cold"
+      ],
+      "effect": "add_as_physical",
+      "display": "percent",
+      "sentence": "adds {n} of the hit as physical damage",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.12,
+          "maximum": 0.24
+        }
+      ],
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own physical packet (grammar::skillHit), scaled by physical gear, so a two-element hit meets a mob's immunities packet by packet and, with a Catalyst later, carries physical's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "life_on_kill",
+      "display_name": "Life on Kill",
+      "tags": [
+        "defence",
+        "reading"
+      ],
+      "applies_to": [
+        "attack",
+        "spell"
+      ],
+      "effect": "add_life_on_kill",
+      "display": "flat",
+      "sentence": "a kill restores {n} life",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1,
+          "maximum": 1
+        }
+      ],
+      "design_purpose": "The Vigour ingot's weak reading beside a skill (D-023 slice 2): a kill with that skill restores this much life, paid by the engine when the kill lands (grammar::skillLifeOnKill). Its only tag besides defence is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "armour_on_cast",
+      "display_name": "Armour on Cast",
+      "tags": [
+        "defence",
+        "reading"
+      ],
+      "applies_to": [
+        "attack",
+        "spell"
+      ],
+      "effect": "add_armour_on_cast",
+      "display": "flat",
+      "sentence": "casting it grants {n} armour for a moment",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 4,
+          "maximum": 4
+        }
+      ],
+      "design_purpose": "The Plate ingot's weak reading beside a skill (D-023 slice 2): casting that skill grants this much armour for foundry.json cast_armour_seconds; the sim says how much (grammar::skillCastArmour), the engine runs the clock and hands the armour to mitigation while it lasts. Its only tag besides defence is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "status_ward",
+      "display_name": "Status Ward",
+      "tags": [
+        "defence",
+        "reading"
+      ],
+      "applies_to": [
+        "attack",
+        "spell"
+      ],
+      "effect": "add_status_ward",
+      "display": "percent",
+      "sentence": "an enemy carrying its status deals {n} less to you",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.05,
+          "maximum": 0.05
+        }
+      ],
+      "design_purpose": "The Ward ingot's weak reading beside a skill (D-023 slice 2): an enemy carrying the status that skill applies (chill, ignite or bleed, from its payload or a modifier) deals this fraction less to you, every such ward multiplying (grammar::wardMultiplier). Beside a skill that applies no status it waits for one. Its only tag besides defence is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
       "id": "fire_damage",
       "display_name": "Fire Damage",
       "tags": [
@@ -467,6 +582,29 @@
         }
       ],
       "design_purpose": "The plain scaling axis for the fire line; scales the bolt's hit, not its burn (Burn Damage does that), so the two rolls read as different choices."
+    },
+    {
+      "id": "added_fire",
+      "display_name": "Added Fire",
+      "tags": [
+        "offence",
+        "added"
+      ],
+      "applies_to": [
+        "cold",
+        "physical"
+      ],
+      "effect": "add_as_fire",
+      "display": "percent",
+      "sentence": "adds {n} of the hit as fire damage",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.12,
+          "maximum": 0.24
+        }
+      ],
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own fire packet (grammar::skillHit), scaled by fire gear, so a two-element hit meets a mob's immunities packet by packet and, with a Catalyst later, carries fire's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
       "id": "kindling",
