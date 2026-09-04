@@ -407,6 +407,43 @@ target is slow, poor and dangerous. Released the same evening as D-020's
 pacing pass (the numbers above); combat damage on the player's side is
 still untouched.
 
+## Wave 6 — The World Made Whole *(owner direction 4 Sep 2026)*
+
+The owner, with the Foundry order done and the class kits in: "I would
+rather spend some intensives on making the actual world feel more
+complete ... what other options can we have to 'slow down' the
+progression. That could be making the biomes bigger, making trees harder
+to cut down, but they fell as one - make the colours and feel just more
+expansive." Six slices proposed and accepted (4 Sep), in this order; the
+owner on the fifth: "imperative there is almost like a forced - go back
+and continue your shelter, and get lost in that for a bit"; on the
+sixth: "would definitely need chests/storage solutions". Fire stays
+parked and the wedge stays as it is ("maybe once we get down the line of
+automation").
+
+1. **Trees fall as one; boulders crack** *(landed 4 Sep 2026)*: a tree is
+   six presses of E, each leaning the trunk further from you, then it
+   comes down whole from the base and pays fourteen wood at once with a
+   stump left behind; a boulder cracks a chunk of three fieldstone off
+   every third press and rolls over on the last. Meadow trees are sparser
+   and bigger (`worldgen.json` nodes, `drive_presses` on any node). Engine
+   unit %s, sim %s.
+2. **Iron is a walk**: iron leaves the near guarantee and is guaranteed
+   within a farther ring instead, so the first forge is a walk into the
+   hills and back.
+3. **A wider valley**: 320 m a side, biome and hill noise at half the
+   frequency, the near radius, the danger rings and the gate pushed out;
+   a performance check first.
+4. **The expansive pass**: a rim of massifs at the map edge, ground cover
+   per biome in batched meshes, three tree silhouettes by biome, fog that
+   deepens with distance, a palette pass; a river from the hills to the
+   fen as the add-on.
+5. **Day and night**: a twelve-minute day; at night the light drains,
+   packs roam wider, and the shelter is where you regenerate - the forced
+   return home.
+6. **Hauling**: a carry cap per family and chests as storage at a placed
+   outpost (D-005 arriving early).
+
 ## Wave 4 — Dungeon and Roguelite Iteration
 
 **Owner, 4 Sep 2026:** "this will be a big iteration intensive, keep as

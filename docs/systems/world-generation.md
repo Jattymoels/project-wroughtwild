@@ -125,6 +125,12 @@ now a **full 3D block field** the sim generates deterministically per seed
   triangles), so the engine builds one MultiMesh per kind and one trimesh
   body per 16×16 chunk without re-walking a million blocks in script.
   Chunks exist so the digging slice can rebuild one patch, not the world.
+- **Felling and cracking (4 Sep 2026, Wave 6 slice 1):** any node may
+  want `drive_presses` of E per harvest. A tree is six presses that lean
+  it further from you, then the whole tree comes down from the base and
+  pays fourteen wood at once, leaving a stump (`resource_node.gd`
+  `_fell`); a boulder cracks a chunk of three fieldstone off every third
+  press and rolls over on the last. Meadow trees are sparser and bigger.
 - **Guarantees kept (D-003):** safe flat meadow clearing, minimum
   wood/stone/iron within the near radius, packs off the doorstep, the
   gate ≥ 70 m out in the wastes, all held across seeds by tests.
