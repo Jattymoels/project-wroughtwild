@@ -239,6 +239,14 @@ func _test_lattice() -> void:
 	check(by_day.is_equal_approx(Vector3(10.5, 5.0, 10.5)) and midnight.distance_to(Vector3(40.5, 5.0, 10.5)) < 0.01
 		and dawn.distance_to(by_day) < 0.5, "fear: a patrol is home by day, out at midnight, and home again by dawn")
 	system.free()
+	# The world a beat ahead (Wave 7 slice 2): the train's rules and
+	# multiplier, the era's armour ceiling, bog iron on the second forge.
+	var train: Dictionary = sim.train_rules()
+	check(float(train.get("window_seconds", 0.0)) > 0.0 and is_equal_approx(sim.train_multiplier(0), 1.0)
+		and sim.train_multiplier(1) > 1.0 and sim.train_multiplier(99) <= 1.0 + float(train.get("max_bonus", 0.0)) + 0.001,
+		"ahead: the train's rules and multiplier come from the sim")
+	check(sim.armour_reduction_cap() > 0.0 and sim.armour_reduction_cap() <= 0.3, "ahead: the valley caps armour low")
+	check(sim.station("forge_improved").get("upgrade_cost", {}).has("bog_iron"), "ahead: the second forge wants bog iron")
 	var no_digs := PackedInt32Array()
 	var middle := Vector3(0.5, 0.5, 0.5)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")
@@ -855,7 +863,9 @@ func _test_sim_extension() -> void:
 		"gear: derived stats include the worn piece and the pack is lighter")
 	check(sim.temper_basic()["reason"] == "station_unavailable", "temper: quench needs a forge that supports basic_temper")
 	sim.add_material("iron_fittings", 6)
-	check(sim.build_station("forge_improved"), "temper: forge upgraded with the order's pay")
+	check(not sim.build_station("forge_improved"), "temper: the upgrade wants the fen's bog iron (Wave 7)")
+	sim.add_material("bog_iron", 3)
+	check(sim.build_station("forge_improved"), "temper: forge upgraded with the order's pay and the fen's iron")
 	var quench: Dictionary = sim.temper_basic()
 	check(quench["applied"] and absf(quench["value"] - 11.5) < 0.001, "temper: quench sets the tier-1 midpoint")
 	check(absf(sim.derived_stats()["fire_resistance_percent"] - 11.5) < 0.001, "temper: resistance flows into derived stats")

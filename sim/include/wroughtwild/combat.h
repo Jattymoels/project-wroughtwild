@@ -143,4 +143,9 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
 // heavy strike.
 Action autoPolicy(const CombatView& view);
 
+// The train (Wave 7 slice 2): a bite that follows earlierHitsInWindow bites
+// from other mobs inside the horde's train window lands harder - a bonus
+// per earlier mouth, to the cap. A lone mob is a chore; three are a threat.
+double trainMultiplier(int earlierHitsInWindow, const tuning::RealtimeTable& rt);
+
 } // namespace wroughtwild::combat

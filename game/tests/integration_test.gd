@@ -442,7 +442,7 @@ func _physics_process(_delta: float) -> void:
 			var p := _player.global_position
 			_front = Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(0, 0, -1.5))
 			_back = Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(0, 0, 1.4))
-			check(_front.life == 75.0 and _front.damage == 4.0, "combat: enemy numbers come from the sim (D-020 long fights)")
+			check(_front.life == 75.0 and _front.damage == 6.0, "combat: enemy numbers come from the sim (D-020 long fights; Wave 7 hits harder)")
 			check(_player.combat.max_life == 100.0 and _player.combat.life == 100.0, "combat: player life from derived stats")
 		28:
 			check(_player.combat.use_heavy(), "combat: heavy strike finds the enemy in front")
@@ -452,8 +452,9 @@ func _physics_process(_delta: float) -> void:
 			check(is_instance_valid(_back) and _back.life == 75.0, "combat: enemy behind untouched by a frontal strike")
 			check(not _player.combat.use_heavy(), "combat: cooldown blocks an immediate second strike")
 		30:
+			_player.combat.clear_train()  # a clean bite: the train is its own test
 			var taken := _back.force_attack()
-			check(taken >= 4.0 * 0.9 and taken <= 4.0 * 1.1, "combat: whelp hit mitigated by the sim (%.2f)" % taken)
+			check(taken >= 6.0 * 0.9 and taken <= 6.0 * 1.1, "combat: whelp hit mitigated by the sim (%.2f)" % taken)
 			check(absf(_player.combat.life - (100.0 - taken)) < 0.001, "combat: life reduced by exactly the mitigated hit")
 		31:
 			# The flow (D-023): the heavy strike's tablet in the second
@@ -638,6 +639,16 @@ func _physics_process(_delta: float) -> void:
 			check(_noise_packs.noise_at(p, "no_such_noise", false) == 0, "noise: an unknown kind is silent")
 			check(_roamer.roaming() and _roamer.state == "idle", "noise: a roaming mob stays idle until something wakes it")
 		45:
+			# The train (Wave 7 slice 2): after one mob's bite, another mob's
+			# bite inside the window lands harder; the same mob's does not.
+			var combat := _player.combat
+			combat.clear_train()
+			combat.invulnerable_left = 0.0
+			combat.take_hit(1.0, "physical", "test", _far)
+			check(combat.train_multiplier_for(_roamer) > 1.0 and is_equal_approx(combat.train_multiplier_for(_far), 1.0),
+				"train: a second mouth bites harder, the same mouth does not (x%.2f)" % combat.train_multiplier_for(_roamer))
+			check(absf(_player.inventory.get_sim().armour_reduction_cap() - 0.25) < 0.001, "train: the valley caps armour at a quarter")
+			combat.restore_life()
 			var moved := _roamer.global_position.distance_to(_roamer_from)
 			var toward := (_roamer.global_position - _roamer_from).normalized().dot(Vector3(0, 0, 1))
 			check(moved > 0.005 and toward > 0.8, "noise: the roamer walks toward its pack's place (%.3f m)" % moved)
@@ -706,6 +717,7 @@ func _physics_process(_delta: float) -> void:
 				check(boss.breathe(_player) == 0.0, "trial: breath misses outside the cone")
 				boss.force_inhale()
 				boss.look_at(_player.global_position, Vector3.UP)
+				_player.combat.clear_train()
 				var burned := boss.breathe(_player)
 				check(burned >= 42.0 * 0.9 and burned <= 42.0 * 1.1, "trial: unresisted breath lands in band (%.1f)" % burned)
 				boss.take_damage(1000.0)
@@ -790,6 +802,7 @@ func _physics_process(_delta: float) -> void:
 			# Wear armour and quench it at the upgraded forge, from the panel.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			sim.add_material("iron_fittings", 6)
+			sim.add_material("bog_iron", 3)
 			(_scene.get_node("ForgeSite") as StationSite).interact(_player)
 			check(_player.work_panel.is_open(), "gear: forge panel open")
 			check(_player.work_panel.upgrade(), "gear: forge upgraded from the panel")

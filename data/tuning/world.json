@@ -50,7 +50,7 @@
       "display_name": "Ember Whelp",
       "max_life": 75,
       "behaviour": "melee",
-      "damage": 4,
+      "damage": 6,
       "damage_type": "physical",
       "attack_period_rounds": 1,
       "design_purpose": "Basic fodder that teaches area clearing",
@@ -118,7 +118,7 @@
       "display_name": "Ash Hound",
       "max_life": 45,
       "behaviour": "fast",
-      "damage": 3,
+      "damage": 4,
       "damage_type": "physical",
       "attack_period_rounds": 1,
       "design_purpose": "Cheap but quick; the hastened weakness makes packs of these frightening",
@@ -152,7 +152,7 @@
       "display_name": "Stone Husk",
       "max_life": 112,
       "behaviour": "melee",
-      "damage": 6,
+      "damage": 8,
       "damage_type": "physical",
       "attack_period_rounds": 2,
       "loot": [
@@ -277,6 +277,12 @@
       "size_scale": 1.4,
       "design_purpose": "The fen's wall: slow, thick, and it does not bleed (nothing to open in that hide). You do not train a lurker, you walk around it - and a wisp behind it makes the walk cost.",
       "loot": [
+        {
+          "item": "bog_iron",
+          "min": 1,
+          "max": 2,
+          "chance": 0.6
+        },
         {
           "item": "marrow",
           "min": 1,
@@ -313,6 +319,12 @@
       "size_scale": 0.7,
       "design_purpose": "The fen's sting: a fast skirmisher that keeps its distance and pecks. Alone it is a nuisance; behind a lurker it is the reason to bring a projectile.",
       "loot": [
+        {
+          "item": "bog_iron",
+          "min": 1,
+          "max": 1,
+          "chance": 0.15
+        },
         {
           "item": "ember_catalyst",
           "min": 1,
@@ -448,6 +460,20 @@
       "extra_loot_rolls": 1,
       "gear_chance_multiplier": 3.0,
       "page_chance_multiplier": 3.0,
+      "bounty": [
+        {
+          "item": "ember_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.6
+        },
+        {
+          "item": "preserving_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.4
+        }
+      ],
       "design_purpose": "The anti-Glacier elite: chill never sticks, so the freeze-shatter sentence needs a second answer in the pack (D-016 statuses meet resistance, PoE-style)."
     },
     {
@@ -465,6 +491,20 @@
       "extra_loot_rolls": 1,
       "gear_chance_multiplier": 3.0,
       "page_chance_multiplier": 3.0,
+      "bounty": [
+        {
+          "item": "ember_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.6
+        },
+        {
+          "item": "preserving_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.4
+        }
+      ],
       "design_purpose": "The anti-Wildfire elite: it will not burn, and its death is a fire nova - stand back for the kill or eat the burst. Positioning is the counter, as always (D-012)."
     },
     {
@@ -478,6 +518,20 @@
       "extra_loot_rolls": 1,
       "gear_chance_multiplier": 3.0,
       "page_chance_multiplier": 3.0,
+      "bounty": [
+        {
+          "item": "ember_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.6
+        },
+        {
+          "item": "preserving_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.4
+        }
+      ],
       "design_purpose": "The anvil: bleeds find no vein and the life pool is a wall. Slow enough to disengage from - fighting it is a choice you commit to."
     },
     {
@@ -488,10 +542,24 @@
       "extra_loot_rolls": 1,
       "gear_chance_multiplier": 3.0,
       "page_chance_multiplier": 3.0,
+      "bounty": [
+        {
+          "item": "ember_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.6
+        },
+        {
+          "item": "preserving_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.4
+        }
+      ],
       "design_purpose": "Pure pressure: faster than you in a straight line. Chill and pits are the counters - the grammar answers what stats cannot."
     }
   ],
-  "design_purpose_elites": "Wave 3 elite prefixes: worldgen's danger rings decide who spawns elite (farther out, more often); each interacts with the D-016 status grammar rather than only multiplying numbers, and each pays triple gear/page chance plus an extra loot pass - elites are why you hunt the far rings. Trial rooms do not roll elites yet (the dungeon pass owns that). A family or a prefix may name damage_taken, its share of each packet type (D-023 slice 2); a prefix's share multiplies onto the family's. 0 would be immunity; the owner asked for heavy reductions instead, so builds meet resistance, never a wall.",
+  "design_purpose_elites": "The bounty (Wave 7 slice 2; the owner, 4 Sep 2026: the world a beat ahead): every crowned kill also rolls its bounty - an Ember Catalyst six times in ten, a Preserving Catalyst four - so the catalysts that temper come mostly off the crowned, and the crowned den in the far rings and the later eras. The families keep their own rare catalyst drops because the typed currency (D-023 slice 3) needs a family's kind to fall from the family. The heartland's mobs hit harder (whelp 6, hound 4, husk 8; Wave 7 slice 2): fewer mobs there now, deadlier when they land, and the train stacks them. Wave 3 elite prefixes: worldgen's danger rings decide who spawns elite (farther out, more often); each interacts with the D-016 status grammar rather than only multiplying numbers, and each pays triple gear/page chance plus an extra loot pass - elites are why you hunt the far rings. Trial rooms do not roll elites yet (the dungeon pass owns that). A family or a prefix may name damage_taken, its share of each packet type (D-023 slice 2); a prefix's share multiplies onto the family's. 0 would be immunity; the owner asked for heavy reductions instead, so builds meet resistance, never a wall.",
   "gathering_sites": [
     {
       "id": "valley_forest",

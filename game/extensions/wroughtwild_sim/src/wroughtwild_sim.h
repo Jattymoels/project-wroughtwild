@@ -307,6 +307,13 @@ public:
     // source kind (work, tree_fall, rock_crack, strike, fight, horn) and
     // muffle, the fraction a closed room lets out.
     Dictionary noise_rules() const;
+    // The train (Wave 7 slice 2): combat_realtime.json horde train_* -
+    // window_seconds, bonus_per_hit, max_bonus - and the multiplier a bite
+    // lands with after earlier_hits bites from other mobs in the window.
+    Dictionary train_rules() const;
+    double train_multiplier(int earlier_hits) const;
+    // The current era's ceiling on armour's reduction (eras.json).
+    double armour_reduction_cap() const;
     // The pack's cap for a family (0 = uncapped) and the room left in it.
     int carry_cap(const String& family) const;
     int carry_room(const String& family) const;

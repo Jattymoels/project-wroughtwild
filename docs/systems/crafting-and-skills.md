@@ -107,3 +107,18 @@ in the chain for every station the valley founds. The owner (4 Sep) is
 unsure wedges should be a big thing to craft and would like the bench to
 make world and nature pieces - decorations, farming aids; the roadmap
 carries that as the next bench slice.
+
+## Implemented: the world a beat ahead (4 Sep 2026, Wave 7 slice 2)
+
+The owner: "it's so easy to get to a level 2 forge with crafting items
+good enough to feel this power." The rule now: every spike is fetched
+from the next denser place. The improved forge's upgrade wants three
+**bog iron** on top of the Vanguards and the fittings, and only the fen
+drops it (`world.json`: the lurkers most kills, the wisps sometimes) - so
+the quench, the catalyst temper and the iron chest armour all sit behind
+a walk into the fen, which is dense from day one and patrols at night.
+Catalysts come mostly off the crowned: every elite modifier carries a
+`bounty` rolled once per crowned kill (an Ember Catalyst six times in
+ten, a Preserving Catalyst four); the families keep their own rare
+catalyst drops because the typed currency needs a family's kind to fall
+from the family. The peddler and the orders are unchanged.

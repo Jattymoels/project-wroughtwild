@@ -89,11 +89,13 @@ double mitigateDamage(double amount, const std::string& damageType,
         // The Shield Wall rail (D-023 slice 9): a fraction of the armour
         // counts against the elements too, after the resistance.
         const double counted = stats.armour * std::min(1.0, std::max(0.0, stats.armourVsElements));
-        if (counted > 0.0) after *= 1.0 - counted / (counted + base.armourReductionScale);
+        if (counted > 0.0) after *= 1.0 - std::min(base.armourReductionCap, counted / (counted + base.armourReductionScale));
         return after;
     }
     // Everything else counts as physical for the slice.
-    double reduction = stats.armour / (stats.armour + base.armourReductionScale);
+    // The era's ceiling (Wave 7 slice 2): until the deep wakes, armour
+    // takes away no more than the era allows, however much you wear.
+    double reduction = std::min(base.armourReductionCap, stats.armour / (stats.armour + base.armourReductionScale));
     return amount * (1.0 - reduction);
 }
 

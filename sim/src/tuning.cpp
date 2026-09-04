@@ -671,6 +671,11 @@ EraTable loadEras(const std::string& path) {
         era.story = e->get("story").asString();
         era.triggerWorldEffect = e->get("trigger_world_effect").asString();
         if (auto bonus = e->find("elite_chance_bonus")) era.eliteChanceBonus = bonus->asNumber();
+        if (auto cap = e->find("armour_reduction_cap")) {
+            era.armourReductionCap = cap->asNumber();
+            if (era.armourReductionCap < 0.0 || era.armourReductionCap > 1.0)
+                throw std::runtime_error("eras: " + era.id + " armour_reduction_cap must be in [0, 1]");
+        }
         if (auto escorts = e->find("pack_escorts"))
             for (const auto& [enemyId, list] : escorts->asObject()) era.packEscorts[enemyId] = readStringArray(*list);
         if (auto mechanics = e->find("mob_mechanics")) {
@@ -817,7 +822,12 @@ RealtimeTable loadRealtime(const std::string& path) {
             table.hordeJumpSpeedMps = jump->asNumber();
         if (auto cap = horde->find("max_live_mobs")) table.hordeMaxLiveMobs = cap->asInt();
         if (auto range = horde->find("sleep_range_m")) table.hordeSleepRangeM = range->asNumber();
-        if (auto after = horde->find("sleep_after_seconds")) table.hordeSleepAfterSeconds = after->asNumber();
+        if (auto after = horde->find("sleep_after_seconds")) table.hordeSleepAfterSeconds = after->asNumber();
+        if (auto v = horde->find("train_window_seconds")) table.hordeTrainWindowSeconds = v->asNumber();
+        if (auto v = horde->find("train_bonus_per_hit")) table.hordeTrainBonusPerHit = v->asNumber();
+        if (auto v = horde->find("train_max_bonus")) table.hordeTrainMaxBonus = v->asNumber();
+        if (table.hordeTrainWindowSeconds < 0.0 || table.hordeTrainBonusPerHit < 0.0 || table.hordeTrainMaxBonus < 0.0)
+            throw std::runtime_error("combat_realtime: horde train numbers must be >= 0");
     }
     if (auto noise = doc->find("noise")) {
         if (auto radii = noise->find("radius_m"))
@@ -1003,6 +1013,17 @@ WorldTable loadWorld(const std::string& path) {
             if (auto v = e->find("extra_loot_rolls")) def.extraLootRolls = v->asInt();
             if (auto v = e->find("gear_chance_multiplier")) def.gearChanceMultiplier = v->asNumber();
             if (auto v = e->find("page_chance_multiplier")) def.pageChanceMultiplier = v->asNumber();
+            if (auto bounty = e->find("bounty"))
+                for (const auto& b : bounty->asArray()) {
+                    LootEntry entry;
+                    entry.item = b->get("item").asString();
+                    if (auto v = b->find("min")) entry.minCount = v->asInt();
+                    if (auto v = b->find("max")) entry.maxCount = v->asInt();
+                    if (auto v = b->find("chance")) entry.chance = v->asNumber();
+                    if (entry.item.empty() || entry.minCount < 1 || entry.maxCount < entry.minCount)
+                        throw std::runtime_error("world: elite " + def.id + " has a malformed bounty entry");
+                    def.bounty.push_back(entry);
+                }
             table.eliteModifiers.push_back(std::move(def));
         }
     }

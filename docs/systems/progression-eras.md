@@ -1052,3 +1052,15 @@ integration 224; grammar 63.
 Not yet: the metal's trait doing one more thing (a malleable bronze ingot
 keeping its reaction after the catalyst is lifted), compound forms of a
 kind worked by another kind.
+
+## Implemented: the era's ceiling on armour (4 Sep 2026, Wave 7 slice 2)
+
+Each era carries `armour_reduction_cap` (`eras.json`): how much of a hit
+armour may take away this era, whatever you wear - a quarter in the
+valley, 0.45 once the deep wakes, 0.7 in the ash tide. The combat host
+sets it from the current era on every enemy hit (`enemy_hit_damage`) and
+`stats::mitigateDamage` clamps the armour formula to it (the Shield Wall
+rail's share against the elements too). The point is the owner's "unkillable
+too early": early gear buys control and life, never a wall, and the wall
+arrives when the world has already stepped up to meet it. The eras' other
+rules (mechanics, escorts, elite chance) are untouched.

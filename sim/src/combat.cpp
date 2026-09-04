@@ -61,6 +61,11 @@ double HitStream::enemyHit(double rawDamage, const std::string& damageType,
     return stats::mitigateDamage(rawDamage * variance_(rng_), damageType, playerStats, base);
 }
 
+double trainMultiplier(int earlierHitsInWindow, const tuning::RealtimeTable& rt) {
+    if (earlierHitsInWindow <= 0) return 1.0;
+    return 1.0 + std::min(rt.hordeTrainMaxBonus, rt.hordeTrainBonusPerHit * earlierHitsInWindow);
+}
+
 CombatMods buildMods(const tuning::BoonTable& table, const boons::RunState& run) {
     CombatMods mods;
     for (const auto& boon : table.boons)
