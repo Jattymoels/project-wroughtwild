@@ -29,14 +29,31 @@ void applyEffect(CombatMods& mods, const tuning::BoonEffect& effect) {
 
 } // namespace
 
+HitStream::Roll HitStream::roll(const CombatMods& mods) {
+    Roll r;
+    r.variance = variance_(rng_);
+    r.echo = mods.repeatHitCount > 0 && ++hitCounter_ % mods.repeatHitCount == 0;
+    return r;
+}
+
+double HitStream::dealt(double base, const Roll& roll, const CombatMods& mods, bool isolated) const {
+    if (isolated) base *= mods.isolatedDamageMultiplier;
+    double out = base * roll.variance;
+    if (roll.echo) out += base * mods.repeatDamageMultiplier;
+    return out;
+}
+
 double HitStream::playerHit(const tuning::CombatSkillDef& skill, const CombatMods& mods, bool isolated) {
     auto baseIt = skill.numbers.find("base_damage");
-    double base = baseIt == skill.numbers.end() ? 0.0 : baseIt->second;
-    if (isolated) base *= mods.isolatedDamageMultiplier;
-    double dealt = base * variance_(rng_);
-    if (mods.repeatHitCount > 0 && ++hitCounter_ % mods.repeatHitCount == 0)
-        dealt += base * mods.repeatDamageMultiplier;
-    return dealt;
+    const double base = baseIt == skill.numbers.end() ? 0.0 : baseIt->second;
+    return dealt(base, roll(mods), mods, isolated);
+}
+
+std::vector<grammar::HitPacket> HitStream::playerHit(std::vector<grammar::HitPacket> packets,
+                                                     const CombatMods& mods, bool isolated) {
+    const Roll r = roll(mods);
+    for (auto& packet : packets) packet.damage = dealt(packet.damage, r, mods, isolated);
+    return packets;
 }
 
 double HitStream::enemyHit(double rawDamage, const std::string& damageType,

@@ -76,6 +76,9 @@ var elite_id := ""
 ## Seconds since something hurt this mob (packs sleep only when calm).
 var since_hurt := 1e9
 var _immune_statuses := PackedStringArray()
+## Packet types the family or its elite prefix takes nothing from (D-023
+## slice 2): a two-element hit lands only its other packet.
+var _immune_damage := PackedStringArray()
 var _burst_damage := 0.0
 var _burst_radius := 0.0
 var _burst_type := "fire"
@@ -178,6 +181,7 @@ func configure(sim: WroughtwildSim) -> void:
 	# A family's own look (world.json tint, size_scale) over the behaviour's default.
 	# A family's own immunities (elites add theirs on top in make_elite).
 	_immune_statuses = PackedStringArray(def.get("immune_statuses", PackedStringArray()))
+	_immune_damage = PackedStringArray(def.get("immune_damage", PackedStringArray()))
 	var tint: String = def.get("tint", "")
 	if tint != "":
 		_material.albedo_color = Color(tint)
@@ -208,6 +212,7 @@ func make_elite(mod: Dictionary) -> void:
 	damage *= mod.get("damage_multiplier", 1.0)
 	move_speed *= mod.get("speed_multiplier", 1.0)
 	_immune_statuses.append_array(mod.get("immune_statuses", PackedStringArray()))
+	_immune_damage.append_array(mod.get("immune_damage", PackedStringArray()))
 	_burst_damage = mod.get("death_burst_damage", 0.0)
 	_burst_radius = mod.get("death_burst_radius_m", 0.0)
 	_burst_type = mod.get("death_burst_type", "fire")
@@ -320,7 +325,7 @@ func _tick_statuses(delta: float) -> bool:
 	# DoTs tick even through ice: freeze holds the mob, not the fire.
 	if burning_left > 0.0:
 		burning_left -= delta
-		take_damage(_burn_dps * delta, false)
+		take_typed(_burn_dps * delta, "fire", false)
 		if burning_left <= 0.0:
 			_refresh_look()
 	else:
@@ -470,7 +475,7 @@ func _physics_process(delta: float) -> void:
 				# The hit only lands if the player is still in reach: walking
 				# out of the wind-up is a legitimate dodge.
 				if distance <= attack_range * 1.15 and in_reach:
-					player.combat.take_hit(damage, damage_type, display_name)
+					player.combat.take_hit(damage, damage_type, display_name, self)
 				_attack_cooldown = attack_period_seconds
 				state = "chase"
 
@@ -577,7 +582,7 @@ func _death_burst() -> void:
 	if player == null:
 		return
 	if _horizontal_distance_to(player) <= _burst_radius:
-		player.combat.take_hit(_burst_damage, _burst_type, display_name)
+		player.combat.take_hit(_burst_damage, _burst_type, display_name, self)
 
 
 ## Test hook: resolves an attack immediately, ignoring range and wind-up.
@@ -587,7 +592,34 @@ func force_attack() -> float:
 		return 0.0
 	_attack_cooldown = attack_period_seconds
 	state = "chase"
-	return player.combat.take_hit(damage, damage_type, display_name)
+	return player.combat.take_hit(damage, damage_type, display_name, self)
+
+
+## One typed packet of a player's hit (D-023 slice 2): a type the family or
+## its elite prefix is immune to lands as nothing. Returns what landed.
+func take_typed(amount: float, type: String, flash: bool = true) -> float:
+	if amount <= 0.0 or life <= 0.0 or _immune_damage.has(type):
+		return 0.0
+	take_damage(amount, flash)
+	return amount
+
+
+## True when this mob takes nothing of a packet type.
+func immune_to(type: String) -> bool:
+	return _immune_damage.has(type)
+
+
+## The statuses this mob carries right now, for the Ward reading: chill
+## building or a freeze, a burn, a wound.
+func carried_statuses() -> PackedStringArray:
+	var carried := PackedStringArray()
+	if chill > 0.0 or is_frozen():
+		carried.append("chill")
+	if burning_left > 0.0:
+		carried.append("ignite")
+	if bleeding_left > 0.0:
+		carried.append("bleed")
+	return carried
 
 
 func take_damage(amount: float, flash: bool = true) -> void:

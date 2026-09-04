@@ -18,6 +18,30 @@ double skillNumber(const tuning::CombatSkillDef& def, const std::string& key, do
     return it == def.numbers.end() ? fallback : it->second;
 }
 
+bool has(const std::vector<std::string>& tags, const std::string& tag) {
+    return std::find(tags.begin(), tags.end(), tag) != tags.end();
+}
+
+// The skill's own element: the first grammar damage type among its tags
+// (the first type of all when it names none).
+std::string nativeType(const tuning::Tuning& tuning, const std::vector<std::string>& skillTags) {
+    for (const auto& type : tuning.grammar.damageTypes)
+        if (has(skillTags, type)) return type;
+    return tuning.grammar.damageTypes.empty() ? "physical" : tuning.grammar.damageTypes.front();
+}
+
+// The tags a packet of `type` resolves its damage against: the skill's
+// tags with its element swapped for the packet's, so cold gear scales the
+// cold packet and fire gear the fire one, and a spell's mods scale both.
+std::vector<std::string> packetTags(const tuning::Tuning& tuning, const std::vector<std::string>& skillTags,
+                                    const std::string& type) {
+    std::vector<std::string> tags;
+    for (const auto& tag : skillTags)
+        if (!has(tuning.grammar.damageTypes, tag)) tags.push_back(tag);
+    tags.push_back(type);
+    return tags;
+}
+
 // Buildup for one status: the skill's own payload number (0 when it has
 // none - a flat add_* mod matching the tags can still supply one), scaled by
 // mods matching the skill's tags, then by the boss resistance rule.
@@ -43,6 +67,13 @@ bool modAppliesToTags(const std::vector<std::string>& appliesToTags,
     return false;
 }
 
+bool modApplies(const ActiveMod& mod, const std::vector<std::string>& tags) {
+    if (!modAppliesToTags(mod.appliesToTags, tags)) return false;
+    for (const auto& required : mod.requiresTags)
+        if (!has(tags, required)) return false;
+    return true;
+}
+
 double resolve(const ActiveMods& active,
                const std::vector<std::string>& tags,
                const std::string& key,
@@ -54,7 +85,7 @@ double resolve(const ActiveMods& active,
     const std::string inc = "increased_" + key;
     const std::string mre = "more_" + key;
     for (const auto& mod : active) {
-        if (!modAppliesToTags(mod.appliesToTags, tags)) continue;
+        if (!modApplies(mod, tags)) continue;
         if (mod.effectKey == add) flat += mod.value;
         else if (mod.effectKey == inc) increased += mod.value;
         else if (mod.effectKey == mre) more *= (1.0 + mod.value);
@@ -119,8 +150,10 @@ ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state
     const auto plate = foundry::plate(tuning.foundry, era);
     for (const auto& effect : foundry::effects(tuning, state, plate)) {
         ActiveMod mod = modAt(tuning.items, effect.modifier, effect.value, "foundry:" + effect.kind);
-        if (effect.kind == "support" || effect.kind == "backing")
-            mod.appliesToTags = {"skill:" + effect.skill}; // that skill alone
+        // A reading speaks to that skill alone, and only to the part of it
+        // its modifier is about: a Frost support scales the orb's cold and
+        // never the fire an Ember support adds to the same orb.
+        if (!effect.skill.empty()) mod.requiresTags = {"skill:" + effect.skill};
         mods.push_back(std::move(mod));
     }
     return mods;
@@ -181,11 +214,65 @@ DotStatus bleedStatus(const tuning::Tuning& tuning, const ActiveMods& active) {
     return status;
 }
 
+Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
+             const std::string& skillId) {
+    Hit hit;
+    const auto* def = findSkill(tuning, skillId);
+    if (!def) return hit;
+    const double base = skillNumber(*def, "base_damage", 0.0);
+    if (base <= 0.0) return hit; // a movement skill has no hit
+    const auto tags = def->resolveTags();
+    const std::string native = nativeType(tuning, tags);
+    hit.push_back({native, resolve(active, tags, "damage", base), false});
+    // The added-element lane (D-023 slice 2): each other type the plate
+    // adds is its own packet, the same fraction of the base hit the
+    // same-element lane would have increased it by, scaled by its own
+    // type's gear. Where the boil and scald builds start.
+    for (const auto& type : tuning.grammar.damageTypes) {
+        if (type == native) continue;
+        const double fraction = resolve(active, tags, "as_" + type, 0.0);
+        if (fraction <= 0.0) continue;
+        hit.push_back({type, resolve(active, packetTags(tuning, tags, type), "damage", base * fraction), true});
+    }
+    return hit;
+}
+
 double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,
                    const std::string& skillId) {
+    double total = 0.0;
+    for (const auto& packet : skillHit(tuning, active, skillId)) total += packet.damage;
+    return total;
+}
+
+double skillLifeOnKill(const tuning::Tuning& tuning, const ActiveMods& active,
+                       const std::string& skillId) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
-    return resolve(active, def->resolveTags(), "damage", skillNumber(*def, "base_damage", 0.0));
+    return std::max(0.0, resolve(active, def->resolveTags(), "life_on_kill", 0.0));
+}
+
+double skillCastArmour(const tuning::Tuning& tuning, const ActiveMods& active,
+                       const std::string& skillId) {
+    const auto* def = findSkill(tuning, skillId);
+    if (!def) return 0.0;
+    return std::max(0.0, resolve(active, def->resolveTags(), "armour_on_cast", 0.0));
+}
+
+double wardMultiplier(const tuning::Tuning& tuning, const ActiveMods& active,
+                      const std::vector<std::string>& carriedStatuses) {
+    double multiplier = 1.0;
+    if (carriedStatuses.empty()) return multiplier;
+    for (const auto& def : tuning.skills.combatSkills) {
+        const double ward = resolve(active, def.resolveTags(), "status_ward", 0.0);
+        if (ward <= 0.0) continue;
+        // The skill's status is whichever it applies right now: its own
+        // payload, or one a modifier gave it.
+        const bool carried = (has(carriedStatuses, "chill") && chillApplied(tuning, active, def.id, false) > 0.0) ||
+                             (has(carriedStatuses, "ignite") && igniteApplied(tuning, active, def.id, false) > 0.0) ||
+                             (has(carriedStatuses, "bleed") && bleedApplied(tuning, active, def.id, false) > 0.0);
+        if (carried) multiplier *= std::max(0.0, 1.0 - ward);
+    }
+    return multiplier;
 }
 
 double skillReach(const tuning::Tuning& tuning, const ActiveMods& active,

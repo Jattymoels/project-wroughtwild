@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "wroughtwild/boons.h"
+#include "wroughtwild/grammar.h"
 #include "wroughtwild/stats.h"
 #include "wroughtwild/tuning.h"
 
@@ -47,12 +48,26 @@ public:
     // on every nth hit of the stream.
     double playerHit(const tuning::CombatSkillDef& skill, const CombatMods& mods, bool isolated);
 
+    // The same hit as typed packets (D-023 slice 2): one variance draw and
+    // one place in the echo count for the whole hit, applied to every
+    // packet, so a hit asked for as packets sits where a hit asked for as
+    // one number would in the stream.
+    std::vector<grammar::HitPacket> playerHit(std::vector<grammar::HitPacket> packets,
+                                              const CombatMods& mods, bool isolated);
+
     // Damage the player takes from one enemy or boss hit, after armour or
     // resistance mitigation.
     double enemyHit(double rawDamage, const std::string& damageType,
                     const stats::DerivedStats& playerStats, const tuning::PlayerBase& base);
 
 private:
+    struct Roll {
+        double variance = 1.0;
+        bool echo = false; // this is an nth hit: expanding_echo repeats it
+    };
+    Roll roll(const CombatMods& mods);
+    double dealt(double base, const Roll& roll, const CombatMods& mods, bool isolated) const;
+
     std::mt19937_64 rng_;
     std::uniform_real_distribution<double> variance_{0.9, 1.1};
     int hitCounter_ = 0;

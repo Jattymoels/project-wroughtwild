@@ -6,6 +6,7 @@
 #include <array>
 #include <cstdint>
 #include <map>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -179,6 +180,10 @@ struct ModifierDef {
     std::vector<ModifierTier> tiers;
     double weight = 1.0;
     std::string designPurpose;
+    // Optional: the whole sentence the modifier reads as, with {n} for the
+    // magnitude, for readings whose verb is a mechanic rather than a stat
+    // ("adds {n} of the hit as fire damage"). Empty: built from the effect.
+    std::string sentence;
 
     bool isSelf() const;
     const ModifierTier* findTier(int tier) const;
@@ -315,6 +320,7 @@ struct EnemyDef {
     std::string damageType; // "physical" or "fire"
     int attackPeriodRounds = 1;
     std::vector<std::string> immuneStatuses; // of: chill, ignite, bleed (a family's nature)
+    std::vector<std::string> immuneDamage;   // packet types it takes nothing from (D-023 slice 2: a hollow suit and fire)
     std::string tint;       // "#rrggbb" look override (empty = by behaviour)
     double sizeScale = 1.0; // mesh scale for brutes and wisps
     std::vector<LootEntry> loot;
@@ -340,6 +346,7 @@ struct EliteModifierDef {
     double speedMultiplier = 1.0;
     double damageMultiplier = 1.0;
     std::vector<std::string> immuneStatuses; // of: chill, ignite, bleed
+    std::vector<std::string> immuneDamage;   // packet types it takes nothing from
     double deathBurstDamage = 0.0;           // > 0: explodes on death
     double deathBurstRadiusM = 0.0;
     std::string deathBurstType = "fire";
@@ -585,6 +592,9 @@ struct ProliferateHook {
 };
 
 struct GrammarTable {
+    // The packet types a hit can carry (D-023 slice 2). A skill's own type
+    // is the first of these among its tags; an added element is another.
+    std::vector<std::string> damageTypes;
     ChillStatus chill;
     DotStatusDef ignite;
     DotStatusDef bleed;
@@ -785,10 +795,13 @@ struct IngotDef {
     std::string displayName;
     std::string verb;          // fire, cold, area, life...
     std::string modifier;      // items.json modifier the ingot speaks anywhere on the plate (its base)
-    std::string skillModifier; // the modifier it speaks beside a skill tablet, when not its base (D-023: Reach)
+    std::string skillModifier; // the modifier it speaks beside a skill tablet, when not its base (D-023: Reach, the self ingots)
+    std::string addedModifier; // an element ingot beside a skill of another element adds its element to the hit (D-023 slice 2)
     double value = 0.0;        // flat, never changes
+    std::optional<double> skillValue; // the number the skill reading speaks at, when not the base value (the self ingots)
 
     const std::string& supportModifier() const { return skillModifier.empty() ? modifier : skillModifier; }
+    double supportValue() const { return skillValue ? *skillValue : value; }
 };
 
 struct IngotPairDef {
@@ -815,6 +828,7 @@ struct FoundryDef {
     std::vector<std::array<int, 2>> sockets;
     std::map<std::string, int> reforgeCost;     // paid to lift an ingot off the plate
     double supportMultiplier = 2.0; // an ingot beside a skill tablet supports that skill at this times its value
+    double castArmourSeconds = 2.0; // how long the Plate ingot's reading beside a skill (armour on cast) lasts
     std::vector<IngotDef> ingots;
     std::vector<IngotPairDef> pairs;
     std::vector<IngotSourceDef> sources;

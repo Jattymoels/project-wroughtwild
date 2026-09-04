@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "status": "D-023 slice 1: the frame - forged rows, sockets, supports and backing",
+  "schema_version": 3,
+  "status": "D-023 slice 2: every ingot reads every skill - added elements, the self readings",
   "frame": [
     4,
     4
@@ -33,27 +33,34 @@
     "iron_ingot": 1
   },
   "support_multiplier": 2.0,
+  "cast_armour_seconds": 2.0,
   "ingots": [
     {
       "id": "ember",
       "display_name": "Ember Ingot",
       "verb": "fire",
       "modifier": "fire_damage",
-      "value": 0.12
+      "value": 0.12,
+      "added_modifier": "added_fire",
+      "design_purpose": "Beside a fire skill: +24% fire damage for it (value x support_multiplier), the one-lane support that is strongest early. Beside any other skill (owner, 4 Sep 2026: every ingot reads every skill): adds 24% of the hit as a fire packet of its own, scaled by fire gear - a cold-and-fire orb, the start of a scald build."
     },
     {
       "id": "frost",
       "display_name": "Frost Ingot",
       "verb": "cold",
       "modifier": "cold_damage",
-      "value": 0.12
+      "value": 0.12,
+      "added_modifier": "added_cold",
+      "design_purpose": "Beside a cold skill: +24% cold damage for it. Beside any other skill: adds 24% of the hit as cold, its own packet - a fire-and-cold bolt heading for quench, a strike that carries cold toward rime."
     },
     {
       "id": "edge",
       "display_name": "Edge Ingot",
       "verb": "physical",
       "modifier": "physical_damage",
-      "value": 0.12
+      "value": 0.12,
+      "added_modifier": "added_physical",
+      "design_purpose": "Beside a physical skill: +24% physical damage for it. Beside a spell: adds 24% of the hit as physical, its own packet - an orb with a physical edge, the start of brittle."
     },
     {
       "id": "reach",
@@ -69,28 +76,38 @@
       "display_name": "Vigour Ingot",
       "verb": "life",
       "modifier": "max_life",
-      "value": 12
+      "value": 12,
+      "skill_modifier": "life_on_kill",
+      "skill_value": 0.5,
+      "design_purpose": "Vigour's base is life on the sheet. Beside a skill it reads weakly (D-023 slice 2): a kill with that skill restores skill_value x support_multiplier life (1). The Catalyst's Reap sharpens it later."
     },
     {
       "id": "plate",
       "display_name": "Plate Ingot",
       "verb": "armour",
       "modifier": "armour_plating",
-      "value": 8
+      "value": 8,
+      "skill_modifier": "armour_on_cast",
+      "skill_value": 2,
+      "design_purpose": "Plate's base is armour on the sheet. Beside a skill it reads weakly: casting that skill grants skill_value x support_multiplier armour (4) for cast_armour_seconds. The Catalyst's Bracing sharpens it later."
     },
     {
       "id": "ward",
       "display_name": "Ward Ingot",
       "verb": "warding",
       "modifier": "fire_resistance",
-      "value": 10
+      "value": 10,
+      "skill_modifier": "status_ward",
+      "skill_value": 0.025,
+      "design_purpose": "Ward's base is fire resistance on the sheet. Beside a skill it reads weakly: an enemy carrying that skill's status (the chill, burn or bleed it applies) deals skill_value x support_multiplier less to you (5%). Inert beside a skill that applies no status until something gives it one. The Catalyst's Aegis sharpens it later."
     },
     {
       "id": "haste",
       "display_name": "Haste Ingot",
       "verb": "speed",
       "modifier": "swift_hands",
-      "value": 0.08
+      "value": 0.08,
+      "design_purpose": "Beside any attack or spell: +16% cooldown recovery for it (value x support_multiplier). Its base is the same on the sheet for every attack and spell."
     }
   ],
   "pairs": [
@@ -253,5 +270,5 @@
       "design_purpose": "The first dressed block (D-021) is a milestone: a Plate ingot, so the yard pays into the Foundry as the bench and the forge do."
     }
   ],
-  "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load."
+  "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier, at `skill_value` when the reading has a number of its own. EVERY INGOT READS EVERY SKILL (D-023 slice 2, owner 4 Sep 2026): an element ingot whose modifier cannot read the skill (Ember beside a cold orb) speaks its `added_modifier` instead and ADDS its element to the hit as a second typed packet at the same fraction, scaled by that element's own gear - the added-element lane, where boil and scald builds begin; the self ingots (Vigour, Plate, Ward) read a skill weakly through their skill_modifier (life on kill, armour for cast_armour_seconds after a cast, less damage from enemies carrying the skill's status). Nothing on the plate is inert. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load."
 }

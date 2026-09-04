@@ -303,8 +303,33 @@ func _physics_process(_delta: float) -> void:
 			for e in sim.foundry_effects():
 				if e["kind"] == "support" and e["skill"] == "prototype_heavy_strike":
 					supports += 1
-			# Five effects: ember, reach, edge; the Wildfire pair; the support.
-			check(supports == 1 and _player.foundry_panel.effect_count == 5, "plate: edge beside the strike's socket supports the strike (%d, %d effects)" % [supports, _player.foundry_panel.effect_count])
+			# Six effects: ember, reach, edge; the Wildfire pair; the edge
+			# support; and the ember west of the socket adding fire to the
+			# strike (D-023 slice 2: every ingot reads every skill).
+			var added := 0
+			for e in sim.foundry_effects():
+				if e["kind"] == "added" and e["skill"] == "prototype_heavy_strike" and e["modifier"] == "added_fire":
+					added += 1
+			check(supports == 1 and added == 1 and _player.foundry_panel.effect_count == 6, "plate: edge beside the strike's socket supports the strike, ember adds fire to it (%d, %d, %d effects)" % [supports, added, _player.foundry_panel.effect_count])
+			var packets: Array = sim.player_hit("prototype_heavy_strike", false)
+			check(packets.size() == 2 and packets[0]["type"] == "physical" and not packets[0]["added"]
+				and packets[1]["type"] == "fire" and packets[1]["added"] and packets[1]["damage"] > 0.0,
+				"plate: the strike is a physical-and-fire blow")
+			# The Plate ingot's weak reading through the engine: the first husk
+			# forges a plate; east of the second socket, with the area strike's
+			# tablet in it, a cast braces the player for a moment.
+			check(sim.foundry_event("first_kill:stone_husk") == ["plate"] and sim.foundry_place(2, 3, "plate")
+				and sim.foundry_place_skill(2, 2, "prototype_area_strike"), "plate: a plate ingot east of the area strike's socket")
+			check(_player.combat.cast_armour() == 0.0 and _player.combat.use_skill(&"prototype_area_strike")
+				and absf(_player.combat.cast_armour() - 4.0) < 0.001, "plate: casting the area strike grants four armour for a moment")
+			# Leave the plate and the bar as they were: the brace passes, the
+			# cooldown clears, the tablet lifts free, the ingot lifts for one
+			# iron granted here so later iron counts hold.
+			_player.combat._cast_armour_left = 0.0
+			_player.combat.cooldowns[&"prototype_area_strike"] = 0.0
+			sim.add_material("iron_ingot", 1)
+			check(sim.foundry_remove(2, 2) and sim.foundry_remove(2, 3) and _player.combat.cast_armour() == 0.0
+				and sim.foundry()["plate"].size() == 4, "plate: the area tablet lifts free, the plate ingot for its iron, and the brace has passed")
 			var heavy_after: float = _mean_hit(sim, "prototype_heavy_strike")
 			var area_after: float = _mean_hit(sim, "prototype_area_strike")
 			check(heavy_after > heavy_before * 1.12 and absf(area_after - area_before) < area_before * 0.06,

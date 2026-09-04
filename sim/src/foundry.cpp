@@ -112,11 +112,15 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
         }
     }
     // Workings (D-022, D-023): a tablet in a socket reads the ingots
-    // orthogonally beside it. Each support applies the ingot's skill
-    // modifier to that skill alone at support_multiplier times its value,
-    // when the modifier can read the skill's tags; a matching ingot
-    // touching the support from any side but the socket's backs it, and
-    // the support counts once more.
+    // orthogonally beside it, and the skill decides each ingot's reading
+    // (slice 2, owner 4 Sep 2026: every ingot reads every skill). The
+    // ingot's skill modifier speaks when it can read the skill's tags - a
+    // same-element scaling, Reach, the self ingots' weak readings - at
+    // support_multiplier times the reading's value, to that skill alone.
+    // When it cannot, an element ingot adds its element to the hit
+    // instead (kind "added"), the same fraction. A matching ingot touching
+    // the reading's cell from any side but the socket's backs it, and the
+    // reading counts once more.
     for (const auto& p : state.plate) {
         if (!p.isTablet() || !plate.forged(p.row, p.col) || !plate.isSocket(p.row, p.col)) continue;
         const auto* skill = tuning.skills.findCombatSkill(p.skill);
@@ -128,11 +132,16 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
             if (!beside || beside->isTablet()) continue;
             const auto* ingot = def.findIngot(beside->ingot);
             if (!ingot) continue;
+            std::string kind = "support";
+            double value = ingot->supportValue() * def.supportMultiplier;
             const auto* modifier = tuning.items.findModifier(ingot->supportModifier());
-            if (!modifier || modifier->isSelf()) continue;
-            if (!grammar::modAppliesToTags(modifier->appliesToTags, skillTags)) continue;
-            const double value = ingot->value * def.supportMultiplier;
-            Effect support{"support", skill->displayName + " <- " + ingot->displayName, modifier->id, value, p.row, p.col, p.skill};
+            if (!modifier || modifier->isSelf() || !grammar::modAppliesToTags(modifier->appliesToTags, skillTags)) {
+                modifier = ingot->addedModifier.empty() ? nullptr : tuning.items.findModifier(ingot->addedModifier);
+                if (!modifier || !grammar::modAppliesToTags(modifier->appliesToTags, skillTags)) continue;
+                kind = "added";
+                value = ingot->value * def.supportMultiplier;
+            }
+            Effect support{kind, skill->displayName + " <- " + ingot->displayName, modifier->id, value, p.row, p.col, p.skill};
             support.cellRow = sr;
             support.cellCol = sc;
             out.push_back(support);

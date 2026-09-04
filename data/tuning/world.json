@@ -327,7 +327,7 @@
       ],
       "tint": "#FFB347",
       "size_scale": 0.7,
-      "design_purpose": "The wastes' skirmisher: burning, quick, ignite-proof. It is what makes fire resistance matter outside the trial.",
+      "design_purpose": "The wastes' skirmisher: burning, quick, ignite-proof, and fire itself does nothing to a thing made of it (immune_damage, D-023 slice 2: a two-element hit lands only its other packet). It is what makes fire resistance matter outside the trial, and the first mob an all-fire plate must find a second element for.",
       "loot": [
         {
           "item": "trade_currency",
@@ -344,6 +344,9 @@
           "skill_page": true,
           "chance": 0.03
         }
+      ],
+      "immune_damage": [
+        "fire"
       ]
     },
     {
@@ -359,7 +362,7 @@
       ],
       "tint": "#3A3A44",
       "size_scale": 1.25,
-      "design_purpose": "The wastes' armoured line: slow, heavy, and fire does nothing to a hollow suit. Cold and bleed are the answers; it is the first mob that asks the build a question the whelps did not.",
+      "design_purpose": "The wastes' armoured line: slow, heavy, and fire does nothing to a hollow suit - neither the burn (immune_statuses) nor the hit (immune_damage, D-023 slice 2). Cold and bleed are the answers, or a Frost ingot beside the fire skill adding cold; it is the first mob that asks the build a question the whelps did not.",
       "loot": [
         {
           "item": "trade_currency",
@@ -382,6 +385,9 @@
           "skill_page": true,
           "chance": 0.04
         }
+      ],
+      "immune_damage": [
+        "fire"
       ]
     },
     {
