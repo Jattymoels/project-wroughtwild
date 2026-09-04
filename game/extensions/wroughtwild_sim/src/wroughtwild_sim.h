@@ -324,7 +324,10 @@ public:
     // What the plate does now: [{kind: ingot|pair|support|added|backing,
     // label, sentence, modifier, value, skill, row, col, cell_row, cell_col}].
     Array foundry_effects() const;
-    bool foundry_place(int row, int col, const String& ingot_id);
+    bool foundry_place(int row, int col, const String& ingot_id, const String& metal_id = String());
+    // The metal of an ingot (D-023 slice 10): re-casting at the forge.
+    bool foundry_recast(const String& ingot_id, const String& metal_id);
+    bool can_recast(const String& ingot_id, const String& metal_id) const;
     bool foundry_remove(int row, int col);
     bool foundry_place_skill(int row, int col, const String& skill_id);
     // Sets a currency kind from the purse on a forged cell that cannot

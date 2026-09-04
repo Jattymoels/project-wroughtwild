@@ -198,6 +198,10 @@ func _on_enemy_died(enemy: Enemy) -> void:
 static func note_first_kill(enemy: Enemy) -> void:
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	var granted: Array = sim.foundry_event("first_kill:%s" % enemy.enemy_id)
+	# An elite's fall is its own milestone (D-023 slice 10): the first of
+	# a family pays an ingot already cast in the era's alloy.
+	if enemy.elite_id != "":
+		granted.append_array(sim.foundry_event("elite_kill:%s" % enemy.enemy_id))
 	var player := enemy.get_tree().get_first_node_in_group("player") as WroughtwildPlayer
 	if player == null or player.hud == null:
 		return

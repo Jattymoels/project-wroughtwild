@@ -1,6 +1,6 @@
 {
-  "schema_version": 9,
-  "status": "D-023 slice 9: rails - a class chosen at the start sets the plate's surround; the trial opens a specialisation that says what it becomes; manners",
+  "schema_version": 10,
+  "status": "D-023 slice 10: the metal of an ingot - re-cast at the forge in the era's alloy, reach for backing and pairs, alloy-cast ingots from elites and the deeper forge, compound forms on the metal",
   "frame": [
     4,
     4
@@ -35,6 +35,37 @@
   "support_multiplier": 2.0,
   "cast_armour_seconds": 2.0,
   "haste_after_hit_seconds": 2.0,
+  "ingot_metals": [
+    {
+      "id": "iron",
+      "display_name": "Iron",
+      "reach": 1,
+      "era": 1,
+      "design_purpose": "The default: every milestone's ingot is cast in iron and reads its backing and pairs one cell out, as the plate always has."
+    },
+    {
+      "id": "bronze",
+      "display_name": "Bronze",
+      "reach": 2,
+      "era": 2,
+      "recast_cost": {
+        "bronze_ingot": 1
+      },
+      "design_purpose": "Era two's alloy. Re-casting an ingot in it at the forge widens its reach to two cells: a bronze Ember pairs with a Reach across a gap, a bronze Frost is backed by a Frost two cells down. The number never changes (D-019's refinement is reach, not size)."
+    },
+    {
+      "id": "steel",
+      "display_name": "Steel",
+      "reach": 3,
+      "era": 3,
+      "recast_cost": {
+        "steel_ingot": 1
+      },
+      "design_purpose": "Era three's alloy: three cells, the whole plate. Steel needs iron forever (smelt_steel), so old metal never becomes trash."
+    }
+  ],
+  "recast_station": "forge_basic",
+  "design_purpose_metals": "THE METAL OF AN INGOT (D-023 slice 10; docs/systems/foundry.md, progression gate 3). Every ingot is cast in a metal, iron by default (Placement.metal). At a built forge (recast_station) an ingot in hand is re-cast in an alloy the era allows (ingot_metals[].era), paying recast_cost; its number never changes, its REACH does: how far its backing and pairs are read, in cells, along a row or column, gaps ignored (either ingot's reach covers the distance). Supports stay orthogonal and adjacent whatever the metal (the owner's rule), and a backing is never read through the socket. Rarity is the same axis from the other end: a source may pay an ingot already cast in alloy (metal \"alloy\": the era's at the time). Compound forms (forms[].metal) need the support cast in at least that metal.",
   "kinds": [
     {
       "id": "ember_catalyst",
@@ -89,6 +120,114 @@
   ],
   "design_purpose_kinds": "THE FLOW (owner, 4 Sep 2026): only a skill sits in a socket. A currency kind rests only on a forged cell that cannot touch a socket (depth two or more: the corners, and the far cells beyond them). It gives its family's base forward only while a chain of placed pieces, each a step nearer a socket, leads to a support beside a laid tablet - a kind that flows to nothing gives nothing. And it works every support it touches into a FORM (forms below) that feeds the skill that support serves, a shared support feeding both. Ingots are base; Catalysts are offensive creativity; Vanguards, Marrow and Quicksilver are defensive, life and tempo creativity. Setting a kind takes it from the purse; lifting it pays reforge_cost and returns it. A kind lifted on load (a stale save) goes back to the purse. VARIANTS (owner, 4 Sep 2026, later): `kinds` lists every currency id that may rest on the plate with its family, the name a cell shows, and its own base; a family is a list of variants (the Vanguard of armour, of resistances, later of dodge; the Marrow of life, later leech and recoup; the Quicksilver of hands, later move and attack and cast speed) and the forms are the family's, a form's optional `kind` narrowing it to one variant. Catalysts have no base and do the mechanical transformations. `family_names` is how a form names the family that worked it.",
   "forms": [
+    {
+      "family": "offence",
+      "ingot": "ember",
+      "lane": "same",
+      "metal": "bronze",
+      "display_name": "Bronze Kindling",
+      "effects": [
+        {
+          "modifier": "lingering_flame",
+          "value": 0.25
+        }
+      ],
+      "design_purpose": "Compound (slice 10): the Kindling's twist on a bronze or better Ember - its burns also last 25% longer. Stacks on Kindling; the ingot's metal is the condition."
+    },
+    {
+      "family": "offence",
+      "ingot": "frost",
+      "lane": "same",
+      "metal": "bronze",
+      "display_name": "Bronze Deep Frost",
+      "effects": [
+        {
+          "modifier": "wide_shatter",
+          "value": 0.25
+        }
+      ],
+      "design_purpose": "Compound: Deep Frost on a bronze or better Frost - its shatters also reach 25% wider."
+    },
+    {
+      "family": "offence",
+      "ingot": "edge",
+      "lane": "same",
+      "metal": "bronze",
+      "display_name": "Bronze Serration",
+      "effects": [
+        {
+          "modifier": "hemorrhage",
+          "value": 0.25
+        }
+      ],
+      "design_purpose": "Compound: Serration on a bronze or better Edge - its bleeds also deal 25% more."
+    },
+    {
+      "family": "offence",
+      "ingot": "reach",
+      "skill_tag": "projectile",
+      "metal": "steel",
+      "display_name": "Steel Split",
+      "effects": [
+        {
+          "modifier": "forked_lattice",
+          "value": 1
+        }
+      ],
+      "design_purpose": "Compound: Split on a steel Reach beside a projectile skill - it forks once more. Steel is the whole plate; this is the late fan."
+    },
+    {
+      "family": "defence",
+      "ingot": "plate",
+      "metal": "bronze",
+      "display_name": "Bronze Stand Fast",
+      "effects": [
+        {
+          "modifier": "armour_on_dash",
+          "value": 4
+        }
+      ],
+      "design_purpose": "Compound: Stand Fast on a bronze or better Plate - a Dash also grants 4 armour for a moment."
+    },
+    {
+      "family": "defence",
+      "ingot": "vigour",
+      "metal": "bronze",
+      "display_name": "Bronze Second Wind",
+      "effects": [
+        {
+          "modifier": "heal_more",
+          "value": 0.15
+        }
+      ],
+      "design_purpose": "Compound: Second Wind on a bronze or better Vigour - every heal is 15% more."
+    },
+    {
+      "family": "life",
+      "ingot": "ember",
+      "metal": "bronze",
+      "display_name": "Bronze Cauterise",
+      "effects": [
+        {
+          "modifier": "life_on_hit",
+          "value": 1
+        }
+      ],
+      "design_purpose": "Compound: Cauterise on a bronze or better Ember - a hit restores one more life."
+    },
+    {
+      "family": "speed",
+      "ingot": "haste",
+      "metal": "steel",
+      "display_name": "Steel Fleet",
+      "effects": [
+        {
+          "modifier": "dash_recovery",
+          "value": 0.16
+        }
+      ],
+      "design_purpose": "Compound: Fleet on a steel Haste - the Dash recovers 16% faster again."
+    },
     {
       "family": "offence",
       "ingot": "frost",
@@ -1310,6 +1449,38 @@
     }
   ],
   "sources": [
+    {
+      "id": "first_elite_hound",
+      "event": "elite_kill:ash_hound",
+      "ingot": "haste",
+      "metal": "alloy",
+      "era": 2,
+      "design_purpose": "Rarity from the other end: the first elite hound pays a Haste already cast in the era's alloy - bronze in era two, steel in era three. The engine raises elite_kill for a kill that carried an elite modifier."
+    },
+    {
+      "id": "first_elite_husk",
+      "event": "elite_kill:stone_husk",
+      "ingot": "plate",
+      "metal": "alloy",
+      "era": 2,
+      "design_purpose": "The first elite husk pays a Plate in the era's alloy: a wide-reaching backing for a Warden's wall."
+    },
+    {
+      "id": "first_elite_knight",
+      "event": "elite_kill:hollow_knight",
+      "ingot": "ward",
+      "metal": "alloy",
+      "era": 3,
+      "design_purpose": "The first elite hollow knight pays a Ward in steel."
+    },
+    {
+      "id": "deep_forge",
+      "event": "world_effect:ash_tide",
+      "ingot": "frost",
+      "metal": "alloy",
+      "era": 3,
+      "design_purpose": "The deeper forge's completion (the Ash Warden) pays a Frost in steel: a trial floor paying an ingot already cast in alloy."
+    },
     {
       "id": "first_workbench",
       "event": "recipe:workbench_kit",

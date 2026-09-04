@@ -321,6 +321,18 @@ func _test_lattice() -> void:
 		and sim.foundry()["rails"][5]["pattern"] == "fusillade" and sim.foundry()["patterns"][0]["id"] == "fusillade" and not sim.foundry()["can_specialise"],
 		"rails: a Sharpshooter, once - the set rail became Fusillade")
 	check(sim.foundry_clear_rail("column", 1) and not sim.foundry_clear_rail("column", 1) and sim.foundry()["rails_set"] == 0, "rails: cleared")
+	# The metal (D-023 slice 10): every ingot iron so far; the view names the
+	# metals and the era's alloy; nothing in hand to re-cast.
+	var mv: Dictionary = sim.foundry()
+	var all_iron := true
+	for p in mv["plate"]:
+		if String(p["ingot"]) != "" and String(p["metal"]) != "iron":
+			all_iron = false
+	check(mv["metals"].size() == 3 and mv["default_metal"] == "iron" and mv["alloy"] == "bronze" and mv["max_reach"] == 3 and all_iron
+		and mv["unplaced_by_metal"].get("ward", {}).get("iron", 0) == 1 and not sim.can_recast("plate", "bronze")
+		and not sim.foundry_recast("plate", "bronze") and sim.foundry_ingot("plate")["cast"]["iron"] == 1
+		and sim.foundry_ingot("plate")["unplaced_by_metal"]["bronze"] == 0,
+		"metal: three metals, bronze the era's alloy, everything placed is iron, the Ward in hand is iron, no Plate in hand to re-cast")
 	sim.add_material("iron_ingot", 2)
 	check(sim.foundry_remove(1, 1) and sim.foundry_remove(0, 0) and sim.foundry_remove(1, 0)
 		and sim.currency_count("vanguard") == vanguards_before + 1 and sim.derived_stats()["armour"] == armour_bare,

@@ -993,3 +993,46 @@ cast, a Sharpshooter's three through).
 Not yet: the class hall as a place (D-004), deeper trials as later
 specialisations, a manner per family, the readings needing player
 statuses, Linger, compound forms.
+
+## Implemented: the metal of an ingot (4 Sep 2026, D-023 slice 10)
+
+D-019's refinement, built as foundry.md's third progression gate.
+`data/tuning/foundry.json` (schema 10, `ingot_metals`, `recast_station`,
+`forms[].metal`, `sources[].metal`); `sim/foundry.h`, `economy.h`,
+`save.cpp`; the forge panel and the Foundry panel:
+
+- **Every ingot is cast in a metal**, iron by default; a placement
+  carries its metal, the state counts each ingot's castings, and an
+  older save is all iron on load.
+- **Re-casting at the forge.** From era two a built forge re-casts an
+  ingot in hand in bronze for one bronze ingot, from era three in steel
+  for one steel ingot; the narrowest casting in hand goes first, and
+  placing from the tray takes the widest. The number never changes.
+- **Reach.** Iron reads its backing and pairs one cell out, bronze two,
+  steel three, along the row or column, gaps ignored, either ingot's
+  reach covering the distance, and never through a socket. Supports stay
+  orthogonal and adjacent.
+- **Alloy-cast sources.** The first elite hound, husk and hollow knight
+  (the engine raises `elite_kill`) and the deeper forge's completion pay
+  an ingot already cast in the era's alloy.
+- **Compound forms** on the support's metal: Bronze Kindling (the burns
+  last longer), Bronze Deep Frost (wider shatters), Bronze Serration
+  (bleeds deal more), Steel Split (one more fork), Bronze Stand Fast
+  (armour on a Dash), Bronze Second Wind (every heal more), Bronze
+  Cauterise (a hit restores one more), Steel Fleet (the Dash recovers
+  faster again); each sits on top of its base form.
+
+Tests: sim 3619 (the metals and the era's alloy; iron from a milestone;
+placing in a metal in hand; re-casting refused by era, forge, alloy and
+an ingot on the plate, then done; a pair two cells out, three beyond
+bronze, nothing through a socket; a backing two cells up, supports on
+both sides of a socket never each other's; Kindling and Bronze Kindling
+both; the elite hound's bronze Haste once, the deeper forge's steel Frost,
+the knight's steel Ward; steel re-casting the narrowest first and placing
+the widest; a steel Haste reaching three; the save, an older save all
+iron, a doctored save brought back to what is owned); engine unit 358;
+integration 224; grammar 63.
+
+Not yet: the metal's trait doing one more thing (a malleable bronze ingot
+keeping its reaction after the catalyst is lifted), compound forms of a
+kind worked by another kind.

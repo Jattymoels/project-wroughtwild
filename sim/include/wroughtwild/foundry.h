@@ -36,6 +36,7 @@ struct Placement {
     std::string ingot; // an ingot placement ("" for a tablet or a kind)
     std::string skill; // a skill tablet (D-022): the skill laid on this cell
     std::string currency{}; // a currency kind (D-023): an augment on a cell that cannot touch a socket
+    std::string metal{};    // the metal an ingot is cast in (slice 10; "" = the default)
     bool isTablet() const { return !skill.empty(); }
     bool isIngot() const { return !ingot.empty(); }
     bool isCurrency() const { return !currency.empty(); }
@@ -61,6 +62,10 @@ struct State {
     std::string specialisation{};
     std::vector<Rail> rails{};
     std::map<std::string, int> kills{};
+    // The metal of an ingot (slice 10): ingot id -> metal -> how many are
+    // cast in it, placed or not. The counts of an ingot sum to owned[ingot]
+    // once normalised; an older save has none and is all the default.
+    std::map<std::string, std::map<std::string, int>> metals{};
 };
 
 struct Cell {
@@ -157,10 +162,22 @@ const Placement* at(const State& state, int row, int col);
 int placedCount(const State& state, const std::string& ingot);
 int unplacedCount(const State& state, const std::string& ingot);
 
+// The metal of an ingot (D-023 slice 10). The metal a placement is cast
+// in (the default for ""); how many of an ingot are cast in a metal, and
+// how many of those are not on the plate. normaliseMetals makes the
+// counts sum to owned (the default metal absorbs the difference) and
+// gives every placement a known metal; run on load and after a grant.
+std::string metalOf(const tuning::FoundryDef& def, const Placement& placement);
+int castCount(const State& state, const std::string& ingot, const std::string& metal);
+int placedCountOf(const tuning::FoundryDef& def, const State& state, const std::string& ingot, const std::string& metal);
+int unplacedCountOf(const tuning::FoundryDef& def, const State& state, const std::string& ingot, const std::string& metal);
+void normaliseMetals(const tuning::FoundryDef& def, State& state);
+
 // The tablet for a skill, if laid.
 const Placement* tabletFor(const State& state, const std::string& skill);
 
-// Ingots, pairs, then each working's readings - a support (the ingot's
+// Ingots, pairs (either ingot's metal reaching the other along its row or
+// column, gaps ignored), then each working's readings - a support (the ingot's
 // skill modifier, when it can read the skill's tags) or an added element
 // (an element ingot beside a skill of another element) - each with its
 // backing; then each kind that flows: its base (augment) and the forms it
