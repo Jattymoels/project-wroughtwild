@@ -468,3 +468,9 @@ questions and the slice order are in [foundry.md](foundry.md). One
 conflict is on record there: "Reach beside Frost Orb widens the orb"
 above describes what the code does not do; Reach is a self stat and never
 supports.
+
+Owner answers (4 Sep 2026): sockets fixed for now; era one's plate is two
+rows by four with two sockets (the spec proposes a 4x4 frame whose rows
+the eras forge, so the plate grows without moving anything); the coin is
+retired for now; Reach is to read area and projectile skills, which
+settles the conflict above in this document's favour once implemented.

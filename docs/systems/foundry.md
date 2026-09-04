@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; the interactions below are **proposed** and await acceptance (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (sockets fixed, a two-row plate in era one, coin retired for now, questions 3 to 9); the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -47,6 +47,30 @@ Recorded here so the proposal can be checked against it.
   The owner's example: an archer's column where, if every placed cell is
   a certain ingot, the skill shoots two more projectiles.
 
+### Answers (4 Sep 2026)
+
+1. **Sockets fixed** "for now until we see how it feels". Era one is a
+   **two-row, four-column** plate with two sockets; the owner drew them
+   in the top row's second cell and the bottom row's fourth cell, "don't
+   take it as gospel, push back if you think better". The push-back is
+   under [The frame](#the-frame-recommended-4-sep-2026).
+2. **Coin retired** for now; "a coin/generated town for trading should be
+   something in the future".
+3. **Reach reads area and projectile skills natively.** Yes.
+4. Links and the bar: the owner asked what it means; explained under
+   [Links](#links-a-catalyst-between-two-subjects), answer pending.
+5. **Class at the start** (D-004), rails set at the class hall. Yes.
+6. Lines folded into backing: the owner asked what it means; explained
+   under [Corners](#corners-the-joins), answer pending.
+7. **Augments are corner cells**, not infusions. Yes.
+8. **A catalyst's element does not pick the reaction.** Yes.
+9. **Marrow and Quicksilver after the Vanguard** proves the model. Yes.
+
+Two more things the owner said: progression can be gated on the plate's
+size ("only 2 rows era 1") and on **ingot quality, type and rarity**; and
+ingots have properties of their own that crafting can use. Both are taken
+up under [Progression gates on the plate](#progression-gates-on-the-plate).
+
 ## The plate as built (what the code does today)
 
 Four rules, all orthogonal, all in `sim/src/foundry.cpp`:
@@ -90,25 +114,102 @@ rule; the rest is vocabulary.
 | **Rail** | A slot outside the plate on each row and column. A class pattern set in a rail reads the whole line and bends a rule while the line meets its condition. |
 | **Working** | A socket with its supports and corners: the unit the player thinks in. "My orb working", "my anvil". |
 
-A 3x3 plate is one working. A 3x4 plate is two sockets side by side, so
-every cell is a support of one working and a corner of the other, and the
-subjects link. A 4x4 plate is two sockets on a diagonal sharing two
-supports, with room at the edges for backing and rails.
+### The frame (recommended, 4 Sep 2026)
 
-Proposed sockets per era (`foundry.json sockets_by_era`): era one
-`[[1,1]]`; era two `[[1,1],[1,2]]`; era three `[[1,1],[2,2]]`. Whether
-the class hall forges one more is an open question below.
+The plate is a **4x4 frame whose rows the eras unlock**: era one has rows
+1 and 2 (the owner's two-row, four-column plate), era two forges row 0
+above it, era three forges row 3 below (`rows_by_era`). The two sockets
+are forged at (1,1) and (2,2) and never move, so nothing on the plate
+shifts when the plate grows and a save needs no migration. Era one:
+
+```
+   .     [A]      .       .        row 1
+   .      .      [B]      .        row 2
+```
+
+Each era-one working has **three supports and one corner**, and two of
+the supports (the cell between the sockets on each row) serve both
+workings. Neither working is whole: that is the size gate the owner asked
+for. Era two makes A whole (four supports, three corners); era three
+makes B whole. The far cells (0,3) and (3,0) belong to no working: they
+are for backing, rails, or a socket the class hall forges.
+
+**The owner's layout and the push-back.** The owner drew the sockets one
+cell further apart:
+
+```
+   .     [A]      .       .
+   .      .       .      [B]
+```
+
+That gives A three supports and two corners, and B two supports and one
+corner; the two share one support-and-corner pair. B sits on the east
+edge, so it never becomes a whole working on the 4x4 already accepted in
+D-019 (three supports and two corners at best, without a fifth column).
+The recommended layout keeps everything the owner asked for (two rows,
+four columns, two fixed sockets) and moves B one cell west, so that B
+grows whole on the 4x4, and the two workings **share two supports from
+day one**, the join the owner values ("an ingot between two subjects
+serves both"). The decision is the owner's; either is one line of data.
+
+**Space pressure arrives on day one.** Era one forges twelve ingots and
+the plate has six free cells, so from the seventh ingot the tray is a
+reserve and one iron re-forges between layouts. If a milestone ingot with
+nowhere to go feels bad in play, move the first-kills of families that
+live beyond the heartland to era two rather than widen the plate.
 
 ### Why sockets rather than "a tablet anywhere"
 
 Sockets make the working visible before anything is placed: the plate
-shows where the thing goes, and the rim around it shows which four cells
-will read it. They let rails be authored against known positions. And
-they carry the owner's phrase literally: the plate has a place for the
-thing being worked. The cost is that D-022's tablet-anywhere is narrowed;
-a tablet in a non-socket cell would be lifted free when a save loads.
+shows where the thing goes, and the rim around it shows which cells will
+read it. They let rails be authored against known positions. And they
+carry the owner's phrase literally: the plate has a place for the thing
+being worked. The cost is that D-022's tablet-anywhere is narrowed; a
+tablet in a non-socket cell is lifted free when a save loads.
+
+## Progression gates on the plate
+
+Four axes, every one of them data, none of them a bigger number:
+
+1. **Rows.** Two in era one, three in era two, four in era three
+   (`rows_by_era`). A working becomes whole only when the world does.
+2. **Sockets.** Two forged from the start; whether the class hall forges a
+   third at a far cell is open question 10.
+3. **The metal of an ingot (quality and rarity).** Every ingot is cast in
+   a metal, iron by default (`Placement.metal`). At the forge an ingot is
+   **re-cast in the era's alloy**: bronze in era two, steel in era three.
+   This is D-019's refinement. The metal never changes the ingot's number;
+   it widens **reach**: how far the ingot's backing and pairs are read
+   (iron one cell, bronze two, steel three; `ingot_metals[].reach`).
+   Supports stay orthogonal and adjacent whatever the metal, the owner's
+   rule. Rarity is the same axis from the other end: an elite or a trial
+   floor may pay an ingot already cast in alloy. A candidate for later,
+   not proposed here: the metal's trait doing one more thing (ores are
+   properties), a malleable bronze ingot keeping its reaction after the
+   catalyst is lifted.
+4. **Currency kinds.** Which kinds drop, from which families, from which
+   era.
+
+**Ingots and crafting.** Ingots do not go into crafts: they are forged
+once by milestones and never lost (D-019). Crafts go into ingots: the
+forge re-casts them. The consumable that carries a property into a craft
+is the currency kind (a Vanguard aims a chest at defence; an Ember
+Catalyst guarantees fire resistance, as now). So the owner's "ingots have
+properties crafting can use" is true in this direction: the alloy you can
+smelt is the quality your ingots can reach.
 
 ## Subjects and what they make of a support
+
+**What "the subject decides how an ingot reads" means.** An ingot has one
+verb and one number, and it gives its base to you wherever it sits: a
+Frost ingot is +12% cold damage for every cold skill you have, anywhere on
+the plate. Beside a socket it says a second thing, and the thing in the
+socket picks which. Beside Frost Orb's tablet it is +24% cold damage for
+the orb alone. Beside a Bulwark Vanguard it is +10 cold resistance and
+slower chill on you. Beside a Quicksilver it makes your Dash chill what it
+passes through. The player never chooses the reading; placement does. In
+data it is one table, verb by subject kind (`readings`), and the table
+below is that table.
 
 The current support rule stays: a support beside a **skill** applies its
 modifier to that skill alone at `support_multiplier` (2.0) times its
@@ -159,11 +260,19 @@ support *is*.
 **An ingot in a corner** does what ingots do now: its base effect; a pair
 with either support it touches (Ember in a corner between Reach and Haste
 is Wildfire and Lingering Flame at once); **backing** if it matches a
-support it touches. Backing is the proposal that replaces lines: with
-today's sources only Edge can ever make a line of three, so the rule is
-nearly dead, while a duplicate ingot is common. A matching neighbour
-lends its value once; refinement (D-019, later) extends how far a backing
-is read.
+support it touches.
+
+**Backing, and what "fold lines into backing" means (question 6).** Today
+the plate has a rule for three matching ingots in a straight row or
+column: the verb is added once more. It almost never fires, because the
+milestones only ever forge one or two of most ingots (Edge is the only
+ingot that arrives three times, and the third comes in era two). Backing
+is the same reward for a smaller shape: **a second Frost touching your
+Frost support makes that support count once more**. Two ingots, touching,
+in any direction, instead of three in a line. The line rule is dropped
+because backing already covers it (a line into a socket is a support and
+its backing). A duplicate ingot therefore always has a job. Refinement
+(the metal of the ingot, above) widens how far a backing is read.
 
 **A Vanguard, Marrow or Quicksilver in a corner** gives half its socketed
 base (a corner Vanguard: +4 armour) and **lends the two supports it
@@ -195,7 +304,7 @@ generalised.
 | Reach | area | **Linger** | the area persists on the ground for 1.5 s |
 | Frost | cold | **Deep Frost** | chill builds 30% faster for this skill |
 | Ember | fire | **Kindling** | ignite builds 30% faster for this skill |
-| Edge | physical | **Serration** | bleed builds 30% faster for this skill |
+| Edge | physical | **Serration** | the skill's hits bleed (+20 buildup); its bleeds build 30% faster |
 | Haste | any | **Echo** | every fourth cast repeats itself |
 | Vigour | any | **Reap** | a kill with the skill restores 3 life |
 | Plate | any | **Bracing** | casting the skill grants 8 armour for 2 s |
@@ -215,27 +324,37 @@ as the offence kind and the support and subject decide the reaction; this
 keeps the table two-dimensional. An open question below asks whether that
 is right.
 
-## Links: subjects side by side
+## Links: a Catalyst between two subjects
 
-Era two's plate puts two sockets beside each other, so a subject is the
-other subject's support. Proposed readings:
+Sockets are never side by side on the frame, but the two workings share
+two support cells from era one. **A Catalyst placed in a shared support
+cell links the two subjects it touches.** A Catalyst touching only one
+subject has nothing to read, and the panel says so.
 
-- **Skill beside skill: the second casts on the first's trigger.** Frost
-  Orb beside Shatter: whenever the orb freezes an enemy, Shatter casts
-  itself at that enemy, with its own supports, at its own cooldown. **The
-  linked skill leaves the action bar.** This is the answer to the owner's
-  action-bar worry (D-022): a plate with two linked skills runs three or
-  four skills off a bar that shows the ones you press.
-- **Skill beside Vanguard: the Vanguard's trigger casts the skill.** A
-  heavy hit casts Frost Nova around you. Marrow's trigger (half life) and
-  Quicksilver's (a Dash) do the same beside a skill.
-- Vanguard beside Marrow, and the like: the two share their bases (the
+**What "the linked skill leaves the bar" means (question 4).** Today
+every skill you use sits in one of the four action-bar slots and you
+press it. A linked skill is cast *for* you by the other subject's
+trigger, so it no longer needs a slot: Frost Orb linked to Shatter means
+that whenever the orb freezes an enemy, Shatter casts itself at that
+enemy, with its own supports and its own cooldown, and you never press
+Shatter again. The bar slot Shatter used is free for something else.
+That is the whole meaning: the plate can run more skills than the bar
+shows, which was the owner's worry in D-022.
+
+- **Skill and skill:** the second casts on the first's trigger. Which is
+  "first" is whichever trigger fires; a bleed skill linked to a fire skill
+  runs both ways.
+- **Skill and Vanguard, Marrow or Quicksilver:** the currency's trigger
+  casts the skill. A heavy hit casts Frost Nova around you; a Dash casts
+  Rend at the enemy you pass through.
+- **Vanguard and Marrow, and the like:** the two share their bases (the
   Marrow's regeneration also runs for 3 s after the Vanguard triggers).
-  Small on purpose; the sockets are for skills first.
 
-Links are the one part of this proposal that needs an engine hook beyond
-the resolver (cast-on-event), the same family of hook the deferred
-uniques want ([items-and-modifiers.md](items-and-modifiers.md)).
+The link costs one of the two best cells on the plate, a cell that would
+otherwise support both subjects, and a Catalyst. That is the trade: two
+skills as one, for a support. Cast-on-event is an engine hook, the same
+family the deferred uniques want
+([items-and-modifiers.md](items-and-modifiers.md)).
 
 ## Rails: class at the edge of the plate
 
@@ -308,86 +427,115 @@ kinds and changes one kind for another at a rate (`market.exchange`), so
 a surplus of one kind is never dead and no kind is ever just a number.
 This widens what the 31 Aug direction deferred (currency breadth), because
 the owner has now asked for it; the first slice keeps to four kinds, and
-four is the cap for the prototype.
+four is the cap for the prototype. The owner (4 Sep): retire the coin for now;
+a coin and a generated town for trading may return later.
+
+**Currency on the plate is invested, not spent.** A Catalyst or Vanguard
+placed in a corner, a socket or a link lifts for the re-forge cost like
+an ingot and returns to the pack; it is a piece, not a consumable. Only a
+craft consumes a kind.
 
 ## Worked plates
 
 Names are for the doc; the panel says what the working does in a
-sentence. Sockets in brackets, currency in braces.
+sentence. Sockets in brackets, currency in braces, the frame's rows as
+the era has forged them.
 
-### The Scalding Orb (era one, 3x3)
-
-```
-{Catalyst}     Frost      {Vanguard}
-  Ember     [Frost Orb]     Plate
-    .          Haste          .
-```
-
-- Frost, north: +24% cold damage to the orb. The Catalyst touching it:
-  **Deep Frost**, chill builds 30% faster. The Vanguard touching it: +10
-  cold resistance, chill on you builds slower.
-- Ember, west: inert on its own. The Catalyst touching it: **Scald**. The
-  orb ignites what it chills, and ignited enemies take 20% more cold.
-- Plate, east: inert on its own. The Vanguard touching it: +16 armour.
-- Haste, south: the orb recovers 16% faster.
-- Bases: +12% cold and +12% fire for everything, +8 armour, +8% recovery;
-  the corner Vanguard's +4 armour.
-
-Five ingots, two currencies, one tablet, and the orb is a control spell
-with a burn on it while the same plate carries cold resistance and 28
-armour. Two layouts of the same pieces play differently: move the
-Catalyst to the south-east and Ember stays inert while Haste becomes Echo
-and Plate becomes Bracing.
-
-### The Anvil (era one, 3x3)
+### The Scalding Orb (era one)
 
 ```
-    .          Plate         Plate
-  Edge    [Bulwark Vanguard] Vigour
-{Marrow}       Frost           .
+   Ember      [Frost Orb]        Frost          Vigour
+ {Catalyst}     Haste      [Bulwark Vanguard]   Plate
 ```
 
-- Plate, north: +16 armour, and the second Plate in the north-east corner
-  **backs** it: +16 again. That corner Plate also touches Vigour: the
-  **Bulwark** pair, +8.
-- Vigour, east: +24 life and 2 life a second for 3 s after a hit.
-- Edge, west: **Barbs**, attackers bleed.
-- Frost, south: +10 cold resistance, chill on you slower.
-- The Marrow in the south-west touches Edge and Frost: kills of bleeding
-  enemies restore 3 life; chilled enemies deal 15% less to you.
-- Bases: +8 and +8 armour, +12 life, +12% cold and physical for the
-  skills you do have.
+- Ember, west of the orb: inert on its own. The Catalyst in the corner
+  touches it: **Scald**. The orb ignites what it chills, and ignited
+  enemies take 20% more cold.
+- Frost, the shared cell: +24% cold damage to the orb, and +10 cold
+  resistance with slower chill on you for the Vanguard.
+- Haste, the other shared cell: the orb recovers 16% faster; you move
+  faster after a hit. The Catalyst touches it too: **Echo**, every fourth
+  orb repeats.
+- Plate, east of the Vanguard: +16 armour. The Vigour in the Vanguard's
+  corner touches it: the **Bulwark** pair, +8.
+- Bases: +12% fire and cold, +8% recovery, +12 life, +8 armour; the
+  Vanguard's own +8.
 
-Sixty-four armour from the plate against a base of nothing: 39% physical
-reduction at `armour_reduction_scale` 100, plus 136 life. This is the
-era-one defensive spike D-020 asked for ("early item mods are more
-defensive"), made of mechanics rather than a bigger sheet, and the
-balance sim should confirm the boss rates stay in their band with it.
+All eight cells used, five of the twelve ingots era one forges: 40
+armour, 112 life, cold resistance, and a control spell with a burn on it.
+Move the Catalyst and the orb stops scalding; that is the criterion.
 
-### Cast on Freeze (era two, 3x4, linked sockets)
+### Cast on Freeze (era one, a link)
 
 ```
-{Catalyst}     Frost        Frost      {Vanguard}
-  Reach     [Frost Orb]   [Shatter]      Plate
-    .          Haste        Reach       {Marrow}
+   Frost      [Frost Orb]        Reach        {Vanguard}
+ {Catalyst}   {Catalyst}       [Shatter]        Frost
 ```
 
-- The two Frosts back each other: the orb's cold support counts twice, and
-  so does Shatter's.
-- The Catalyst touches the orb's Frost (**Deep Frost**) and its Reach
-  (**Split**: the orb forks twice).
-- **The link:** every freeze the orb lands casts Shatter at the frozen
-  enemy. Shatter leaves the bar; its Reach support makes the ring 16%
+- Frost, west: +24% cold to the orb; the corner Catalyst touches it:
+  **Deep Frost**, chill builds fast.
+- The Catalyst in the shared cell touches both sockets: **the link**.
+  Every freeze the orb lands casts Shatter at the frozen enemy. Shatter
+  leaves the bar.
+- Reach, the other shared cell: the orb flies further; Shatter's ring is
   wider.
-- The Vanguard touches Shatter's Frost (cold resistance) and Plate (+16
-  armour). The Marrow touches Reach (shelter regeneration follows you out
-  the door) and Plate (armour reduces burns and bleeds).
+- Frost, east: +24% cold to Shatter. The Vanguard in Shatter's corner
+  touches it: cold resistance; and Reach: your answers to a hit reach 2.5
+  m. Its own +4 armour.
 
-Six ingots of the fourteen that exist by era two. The plate is not full;
-the working is. This is the owner's Wave 2 sentence (orb, fork, freeze,
-shatter, cascade) running off two bar slots.
+Three ingots, two Catalysts, one Vanguard: the owner's Wave 2 sentence
+(orb, freeze, shatter, cascade) on one bar slot in era one, at the price
+of the plate's best cell.
 
-### Volley (era three, 4x4, a Ranger rail)
+### Redline (era one, a Quicksilver)
+
+```
+   Edge         [Rend]           Frost        {Catalyst}
+   Edge          Haste       [Quicksilver]      Ember
+```
+
+- Edge, west: +24% physical to Rend. The second Edge in Rend's corner
+  **backs** it: +24% again; and touches Haste: **Serration**.
+- Frost, shared: inert for Rend until the Catalyst in the Quicksilver's
+  corner touches it: **Rime**, Rend chills on hit. For the Quicksilver it
+  reads as dashing through chills, sharpened by the same Catalyst: freezes
+  outright.
+- Haste, shared: Rend recovers faster; Dash recovers faster.
+- Ember, east: Dash leaves burning ground, and the Catalyst makes it burn
+  longer. The Quicksilver's own: Dash recovers 20% faster.
+
+Dash through the line and it is frozen and burning behind you; Rend opens
+it and the bleed's moving multiplier finishes it. The conga line
+([skill-grammar.md](skill-grammar.md)).
+
+### The Anvil (era two, row 0 forged)
+
+```
+   Plate         Plate          {Marrow}          .
+   Edge    [Bulwark Vanguard]    Frost        {Catalyst}
+ {Catalyst}     Vigour       [Heavy Strike]     Edge
+```
+
+- Plate, north: +16 armour; the Plate in the corner **backs** it, +16
+  again.
+- Edge, west: **Barbs**, attackers bleed; the corner Catalyst touches it:
+  Barbs also stagger.
+- Vigour, shared: +24 life and regeneration after a hit for the Vanguard;
+  inert for the strike until the same Catalyst touches it: **Reap**, kills
+  restore life.
+- Frost, shared: cold resistance for the Vanguard; inert for the strike
+  until the strike's corner Catalyst touches it: **Rime**, the strike
+  chills.
+- Edge, east of the strike: +24% physical; the Catalyst: **Serration**,
+  the strike bleeds.
+- The Marrow touches Plate (armour reduces burns and bleeds) and Frost
+  (chilled enemies deal 15% less).
+
+Fifty-six armour and 136 life from the plate, the D-020 defensive spike
+in mechanics, and a strike that chills, bleeds and reaps. The far cell
+(0,3) is empty: it belongs to no working yet.
+
+### Volley (era three, a Ranger rail)
 
 ```
               Volley
@@ -411,21 +559,6 @@ shatter, cascade) running off two bar slots.
 
 A fan of burning, forking bolts and a plate that bites back. The rail
 forced the Reaches into one column; the fire working bent around it.
-
-### Redline (era one, 3x3, a Quicksilver working)
-
-```
-    .          Haste           .
-  Frost    [Quicksilver]     Ember
-{Catalyst}     Edge            .
-```
-
-Dash recovers 36% faster; dashing through the train chills and bleeds it
-and leaves burning ground behind you. The Catalyst sharpens Frost
-(dashing through freezes outright) and Edge (the bleed opens at full).
-The train shape this wants is the conga line
-([skill-grammar.md](skill-grammar.md)): run straight, turn, cut back
-through.
 
 ## The ceiling, counted
 
@@ -466,9 +599,11 @@ multiplies, the numbers stay within threefold.
 
 ## Feedback and interface
 
-- Sockets are drawn on the bare plate. Setting a subject rims its four
-  supports and dots its corners; hovering any cell names its role for
-  each working it belongs to.
+- Sockets are drawn on the bare plate, and the rows the era has not
+  forged are drawn as the plate's unworked edge, so the player can see
+  the working that is not yet whole. Setting a subject rims its supports
+  and dots its corners; hovering any cell names its role for each
+  working it belongs to.
 - An inert support is greyed and says what would read it: "Vigour cannot
   read Frost Orb. A Catalyst in a touching corner makes it Reap."
 - **Hover preview** for anything in the tray over any cell shows the
@@ -488,11 +623,12 @@ multiplies, the numbers stay within threefold.
 
 | Parameter | Meaning | Player effect | Initial value |
 | --- | --- | --- | --- |
-| `sockets_by_era` | where the era forges sockets | how many workings and how they overlap | `[[1,1]]`, `[[1,1],[1,2]]`, `[[1,1],[2,2]]` |
+| `rows_by_era` | which rows of the 4x4 frame the era has forged | the size gate; when a working becomes whole | `[1,2]`, `[0,2]`, `[0,3]` |
+| `sockets` | the frame cells that take a subject | how many workings and how they overlap | `[[1,1],[2,2]]` |
+| `ingot_metals[].reach` | how far an ingot of that metal is read for backing and pairs | the quality axis; refinement | iron 1, bronze 2, steel 3 |
 | `support_multiplier` | a support's value against the ingot's base | how much a working is worth over the bare plate | 2.0 (as now) |
 | `corner_lending_multiplier` | a corner currency's lending against the base | how much defence an offence working can carry | 1.0 |
 | `corner_base_fraction` | a corner currency's own base against its socketed base | whether a corner is worth a currency with no support to work | 0.5 |
-| `backing_reach` | how many cells out a matching ingot is read | the value of duplicates; refinement raises it | 1 |
 | `reactions[]` | each reaction's number | the strength of a cross-element build | 15 to 30% band |
 | `subjects[].trigger` | what fires a link | how often linked skills cast | as tabled |
 | `rails_by_era` | rails the player may set | how much class shows on the plate | 0, 1, 2 |
@@ -545,46 +681,48 @@ multiplies, the numbers stay within threefold.
 
 ## Open questions (owner decisions)
 
-1. **Sockets fixed per era, or a subject anywhere with a cap?**
-   Recommended: fixed sockets, positions in data.
-2. **Retire coin?** Recommended: yes, the peddler changes kinds; or keep
-   coin for the peddler only.
-3. **Reach reads area and projectile skills natively?** The doc/code
-   conflict. Recommended: yes.
-4. **Links: does the linked skill leave the bar?** Recommended: yes; it
-   answers the bar worry.
-5. **Class at the start (D-004) with rails set at the hall, or class
-   chosen at the hall?** Recommended: as D-004; the hall is where rails
-   are set and where one more socket may be forged.
-6. **Fold lines into backing?** Recommended: yes; lines are unreachable
-   with the sources that exist.
-7. **Augments as corner cells, or infused into an ingot (no cell)?**
-   Recommended: cells; the owner asked for cells, and geometry is the
-   game.
-8. **Does a catalyst's element pick the reaction?** Recommended: no; the
-   support and subject do. Revisit if the reaction table needs a third
-   axis.
-9. **Do Marrow and Quicksilver come in the first pass, or after the
-   Vanguard proves the model?** Recommended: after.
+Answered 4 Sep 2026: 1 (fixed sockets, two rows by four in era one), 2
+(coin retired for now), 3 (Reach reads natively: yes), 5 (class at the
+start, rails at the hall: yes), 7 (corner cells: yes), 8 (the support and
+subject pick the reaction: yes), 9 (Marrow and Quicksilver after the
+Vanguard: yes). Pending: 4 and 6, explained in place above.
+
+10. **Which socket layout for the two-row plate?** The owner's (sockets a
+    row and two columns apart) or the recommended (a row and one column
+    apart, so both workings grow whole on the 4x4). Recommended: the
+    latter.
+11. **Does the class hall forge a third socket** at a far cell of the
+    frame, (0,3) or (3,0)? Recommended: yes, in era three, as the hall's
+    reward alongside the rails.
+12. **Twelve era-one ingots for six cells:** accept the reserve, or move
+    the beyond-the-heartland first-kills to era two? Recommended: accept
+    it and watch the playtest.
+13. **Currency lifts for the re-forge cost and returns to the pack?**
+    Recommended: yes; it is a piece, not a consumable.
 
 ## Slice order
 
 Each slice is data plus the smallest sim rule, tested headless, the panel
 following.
 
-1. **Sockets and the working.** `sockets_by_era`; subjects only in sockets
-   (a tablet outside one lifts free on load); supports rimmed and inert
-   supports named; Reach reads area and projectile skills; backing
-   replaces lines. Save: subject cells validated.
+1. **The frame and the working.** `rows_by_era` and `sockets` on a 4x4
+   frame (era one rows 1 and 2); subjects only in sockets (a tablet
+   outside one lifts free on load); supports rimmed and inert supports
+   named; Reach reads area and projectile skills; backing replaces lines.
+   Save: subject cells validated; placements in forged rows only.
 2. **Typed currency.** Four kinds as materials; family drop kinds; coin
-   drops become kinds; the peddler prices and changes kinds;
-   `currency_weighting` in a craft.
+   retired, its drops and prices become kinds, the peddler changes kinds;
+   `currency_weighting` in a craft; currency lifts from the plate for the
+   re-forge cost.
 3. **The Vanguard.** As a subject with its eight readings (cold resistance
    as a derived stat; Barbs and the answer's reach as engine hooks); as a
    corner, lending.
 4. **Catalyst corners.** Sharpenings first (they reuse keys), then Scald,
    Quench, Temper, Rime; the rest as their hooks land.
-5. **Links.** Cast-on-trigger; the linked skill leaves the bar.
+5. **Links.** A Catalyst in a shared support cell; cast-on-trigger; the
+   linked skill leaves the bar.
 6. **Rails.** `rail_patterns`, the class hall as the place they are set,
    two classes' seeds and one manner.
 7. **Marrow and Quicksilver**, their readings and corners.
+8. **The metal of an ingot.** Re-casting at the forge in the era's alloy;
+   reach for backing and pairs; alloy-cast ingots from elites and floors.

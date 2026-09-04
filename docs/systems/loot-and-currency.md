@@ -47,8 +47,10 @@ owner asked for trade currency to split into kinds with jobs: catalysts
 Each kind aims a craft toward its modifier family and can be placed on
 the Foundry plate as a subject or an augment. The proposal, including
 retiring the coin in favour of a peddler who changes kinds, is in
-[foundry.md](foundry.md). This widens the 31 Aug deferral of currency
-breadth at the owner's request; four kinds is the prototype cap.
+[foundry.md](foundry.md). The owner (4 Sep 2026): retire the coin for
+now; a coin and a generated town for trading may return later. This
+widens the 31 Aug deferral of currency breadth at the owner's request;
+four kinds is the prototype cap.
 
 ## Prototype recipe
 
