@@ -291,27 +291,35 @@ func _test_lattice() -> void:
 	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 6 and sim.foundry()["flows"].size() == 1
 		and sim.foundry()["flows"][0]["flows"] and sim.derived_stats().has("cold_resistance_percent"),
 		"flow: the plate view carries the kind, every kind's count, and whether it flows")
-	# Rails (D-023 slice 9): era two here with the Tyrant's effect recorded,
-	# so the choice is open. A Ranger sets Volley on an empty column and the
-	# rail waits; nothing bends until the line holds.
+	# Rails (D-023 slice 9): a class is chosen before play; era two here
+	# with the Tyrant's effect recorded, so the specialisation is offered
+	# as soon as one stands. A Ranger sets Volley on the orb's column and
+	# the rail waits; the offer shows what it would become.
 	var fv: Dictionary = sim.foundry()
-	check(fv["can_specialise"] and fv["specialisation"] == "" and fv["rails_allowed"] == 1 and fv["rails"].size() == 8
-		and fv["specialisations"].size() == 3 and fv["patterns"].is_empty() and not sim.foundry_set_rail("column", 1, "volley"),
-		"rails: the test passed, the choice open, no pattern known yet")
-	check(sim.foundry_specialise("ranger") and not sim.foundry_specialise("warden") and sim.foundry()["patterns"].size() == 2
-		and sim.foundry()["specialisation_name"] == "Ranger" and sim.foundry_pattern("volley")["axis"] == "column"
+	check(fv["can_choose_class"] and fv["class"] == "" and fv["classes"].size() == 3 and fv["rails_allowed"] == 2 and fv["rails"].size() == 8
+		and fv["patterns"].is_empty() and not fv["can_specialise"] and not sim.foundry_set_rail("column", 1, "volley"),
+		"rails: no class yet - nothing to set, no specialisation offered")
+	check(sim.foundry_choose_class("ranger") and not sim.foundry_choose_class("warden") and sim.foundry()["class_name"] == "Ranger"
+		and sim.foundry()["patterns"].size() == 2 and sim.foundry()["can_specialise"] and sim.foundry()["specialisations"].size() == 2
+		and sim.foundry()["specialisations"][0]["becomes"].size() == 2 and sim.foundry_pattern("volley")["axis"] == "column"
 		and sim.foundry_pattern("hounds_manner")["manner"] and sim.foundry_pattern("hounds_manner")["teacher_name"] != "",
-		"rails: a Ranger, once, with two patterns; the manner names its teacher")
-	check(sim.foundry_set_rail("column", 1, "volley") and not sim.foundry_set_rail("row", 0, "quarry") and sim.foundry()["rails_set"] == 1,
-		"rails: Volley set; era two allows one rail")
+		"rails: a Ranger, once, with two patterns; the forge behind us, two specialisations with their view")
+	check(sim.foundry_set_rail("column", 1, "volley") and not sim.foundry_set_rail("column", 0, "volley") and sim.foundry()["rails_set"] == 1,
+		"rails: Volley set on the orb's column, once")
 	var waiting := false
+	var view_of := ""
 	for r in sim.foundry()["rails"]:
 		if r["axis"] == "column" and r["index"] == 1:
-			# The orb's tablet sits in this column already: the rail wants only its two Reach.
-			waiting = r["pattern"] == "volley" and not r["holds"] and r["placed"] == 0 and r["minimum"] == 2 and not r["missing_skill"] and not r["missing_kind"]
-	check(waiting and sim.skill_projectiles("prototype_frost_orb") == 1 and sim.skill_pierce("prototype_frost_orb") == 0
+			# The orb's tablet sits in this column already: the rail wants only its Reach.
+			waiting = r["pattern"] == "volley" and not r["holds"] and r["placed"] == 0 and r["minimum"] == 1 and not r["missing_skill"] and not r["missing_kind"]
+			if r["becomes"].size() == 2:
+				view_of = r["becomes"][0]["pattern"]["display_name"]
+	check(waiting and view_of == "Fusillade" and sim.skill_projectiles("prototype_frost_orb") == 1 and sim.skill_pierce("prototype_frost_orb") == 0
 		and sim.derived_stats()["still_armour"] == 0.0 and sim.derived_stats()["armour_vs_elements"] == 0.0,
-		"rails: the column holds the orb and waits for two Reach, and bends nothing")
+		"rails: the column holds the orb and waits for a Reach; the rail shows what it would become")
+	check(sim.foundry_specialise("sharpshooter") and not sim.foundry_specialise("fletcher") and sim.foundry()["specialisation_name"] == "Sharpshooter"
+		and sim.foundry()["rails"][5]["pattern"] == "fusillade" and sim.foundry()["patterns"][0]["id"] == "fusillade" and not sim.foundry()["can_specialise"],
+		"rails: a Sharpshooter, once - the set rail became Fusillade")
 	check(sim.foundry_clear_rail("column", 1) and not sim.foundry_clear_rail("column", 1) and sim.foundry()["rails_set"] == 0, "rails: cleared")
 	sim.add_material("iron_ingot", 2)
 	check(sim.foundry_remove(1, 1) and sim.foundry_remove(0, 0) and sim.foundry_remove(1, 0)

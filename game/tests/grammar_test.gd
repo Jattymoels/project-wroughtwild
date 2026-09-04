@@ -192,10 +192,11 @@ func _phase_j_checks() -> void:
 	_player.combat.linked_cast.disconnect(_count_link)
 
 
-## Phase K - rails (D-023 slice 9): the Tyrant's forge passed and a Ranger
-## chosen in era three. Quarry with Edge at both ends of the fourth row
-## sends a bolt through the first whelp into the second; Volley with Reach
-## above and below the orb's socket puts three orbs in the air from one cast.
+## Phase K - rails (D-023 slice 9): a Ranger from the start, the Tyrant's
+## forge passed, era three. Quarry with Edge at both ends of the fourth
+## row sends a bolt through the first whelp into the second; Volley with
+## Reach above and below the orb's socket puts three orbs in the air from
+## one cast; then a Sharpshooter's rails become Fusillade and Deep Quarry.
 var _rail_hits := 0
 
 
@@ -221,8 +222,8 @@ func _phase_k_rails() -> void:
 	_sim.foundry_event("first_kill:cinder_archer")
 	_sim.foundry_event("work:strike_split")
 	_sim.foundry_event("world_effect:old_mine_reinforced")
-	check(_sim.foundry()["can_specialise"] and _sim.foundry_specialise("ranger") and _sim.foundry()["rails_allowed"] == 2,
-		"rails: the Tyrant's forge passed, a Ranger in era three with two rails")
+	check(_sim.foundry_choose_class("ranger") and _sim.foundry()["can_specialise"] and _sim.foundry()["rails_allowed"] == 3,
+		"rails: a Ranger, the Tyrant's forge passed, era three with three rails")
 	_sim.learn_skill("prototype_ember_bolt")
 	check(_sim.skill_pierce("prototype_ember_bolt") == 0 and _sim.foundry_place(3, 0, "edge") and _sim.foundry_place(3, 3, "edge")
 		and _sim.foundry_set_rail("row", 3, "quarry") and _sim.skill_pierce("prototype_ember_bolt") == 1,
@@ -250,6 +251,9 @@ func _phase_k_checks() -> void:
 		if node is SkillProjectile:
 			flying += 1
 	check(flying == 3, "rails: three orbs in the air from one cast (%d)" % flying)
+	check(_sim.foundry_specialise("sharpshooter") and _sim.skill_projectiles("prototype_frost_orb") == 3 and _sim.skill_pierce("prototype_frost_orb") == 3
+		and _sim.skill_pierce("prototype_ember_bolt") == 2,
+		"rails: a Sharpshooter - the orb's rails became Fusillade and Deep Quarry, three through; the bolt two")
 
 
 ## Phase A - bare cast: the orb hits the first whelp, one fork reaches the

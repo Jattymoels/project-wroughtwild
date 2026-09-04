@@ -168,6 +168,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_haste_on_kill", "skill_id"), &WroughtwildSim::skill_haste_on_kill);
     ClassDB::bind_method(D_METHOD("skill_projectiles", "skill_id"), &WroughtwildSim::skill_projectiles);
     ClassDB::bind_method(D_METHOD("skill_pierce", "skill_id"), &WroughtwildSim::skill_pierce);
+    ClassDB::bind_method(D_METHOD("foundry_choose_class", "class_id"), &WroughtwildSim::foundry_choose_class);
     ClassDB::bind_method(D_METHOD("foundry_specialise", "specialisation"), &WroughtwildSim::foundry_specialise);
     ClassDB::bind_method(D_METHOD("foundry_set_rail", "axis", "index", "pattern"), &WroughtwildSim::foundry_set_rail);
     ClassDB::bind_method(D_METHOD("foundry_clear_rail", "axis", "index"), &WroughtwildSim::foundry_clear_rail);
@@ -1987,6 +1988,10 @@ int WroughtwildSim::skill_pierce(const String& skill_id) const {
     return require_loaded("skill_pierce") ? wroughtwild::grammar::skillPierce(*tuning_, active_mods(), to_std(skill_id)) : 0;
 }
 
+bool WroughtwildSim::foundry_choose_class(const String& class_id) {
+    return require_loaded("foundry_choose_class") && player_->foundryChooseClass(to_std(class_id));
+}
+
 bool WroughtwildSim::foundry_specialise(const String& specialisation) {
     return require_loaded("foundry_specialise") && player_->foundrySpecialise(to_std(specialisation));
 }
@@ -2855,25 +2860,64 @@ Dictionary WroughtwildSim::foundry() const {
         flows.push_back(f);
     }
     d["flows"] = flows;
-    // The exterior (D-023 slice 9): the specialisation and whether the
-    // choice is open, the patterns known, and every rail slot around the
-    // frame with its pattern and whether the line lights it.
+    // The surround (D-023 slice 9): the class chosen before play and
+    // whether the choice is still open, every class with its patterns and
+    // its specialisations (each saying what the patterns become), the
+    // chosen class's specialisations and whether one is offered, the
+    // patterns known, and every rail slot around the frame with its
+    // pattern, whether the line lights it and - while the specialisation
+    // is offered - what it would become.
     const auto& railsDef = tuning_->foundry.rails;
+    auto specialisation_view = [&](const wroughtwild::tuning::SpecialisationDef& s) {
+        Dictionary entry;
+        entry["id"] = to_godot(s.id);
+        entry["display_name"] = to_godot(s.displayName);
+        entry["class"] = to_godot(s.classId);
+        Array becomes;
+        for (const auto& [from, to] : s.becomes) {
+            Dictionary b;
+            b["from"] = foundry_pattern(to_godot(from));
+            b["to"] = foundry_pattern(to_godot(to));
+            becomes.push_back(b);
+        }
+        entry["becomes"] = becomes;
+        return entry;
+    };
+    d["class"] = to_godot(state.chosenClass);
+    const auto* chosenClass = railsDef.findClass(state.chosenClass);
+    d["class_name"] = chosenClass ? to_godot(chosenClass->displayName) : String();
+    d["can_choose_class"] = player_->canChooseClass();
+    Array classes;
+    for (const auto& c : railsDef.classes) {
+        Dictionary entry;
+        entry["id"] = to_godot(c.id);
+        entry["display_name"] = to_godot(c.displayName);
+        Array patterns;
+        for (const auto& id : c.patterns) {
+            patterns.push_back(foundry_pattern(to_godot(id)));
+        }
+        entry["patterns"] = patterns;
+        Array specs;
+        for (const auto& id : c.specialisations) {
+            if (const auto* s = railsDef.findSpecialisation(id)) {
+                specs.push_back(specialisation_view(*s));
+            }
+        }
+        entry["specialisations"] = specs;
+        classes.push_back(entry);
+    }
+    d["classes"] = classes;
     d["specialisation"] = to_godot(state.specialisation);
     const auto* chosen = railsDef.findSpecialisation(state.specialisation);
     d["specialisation_name"] = chosen ? to_godot(chosen->displayName) : String();
     d["can_specialise"] = player_->canSpecialise();
     Array specialisations;
-    for (const auto& s : railsDef.specialisations) {
-        Dictionary entry;
-        entry["id"] = to_godot(s.id);
-        entry["display_name"] = to_godot(s.displayName);
-        Array patterns;
-        for (const auto& id : s.patterns) {
-            patterns.push_back(foundry_pattern(to_godot(id)));
+    if (chosenClass != nullptr) {
+        for (const auto& id : chosenClass->specialisations) {
+            if (const auto* s = railsDef.findSpecialisation(id)) {
+                specialisations.push_back(specialisation_view(*s));
+            }
         }
-        entry["patterns"] = patterns;
-        specialisations.push_back(entry);
     }
     d["specialisations"] = specialisations;
     Array known;
@@ -2912,6 +2956,26 @@ Dictionary WroughtwildSim::foundry() const {
             }
             r["breaking"] = breaking;
             r["skills"] = strings_to_packed(status.skills);
+            // The view: what this rail becomes under each specialisation offered.
+            Array becomes;
+            if (chosenClass != nullptr && player_->canSpecialise()) {
+                for (const auto& id : chosenClass->specialisations) {
+                    const auto* s = railsDef.findSpecialisation(id);
+                    if (s == nullptr) {
+                        continue;
+                    }
+                    const auto it = s->becomes.find(rail->pattern);
+                    if (it == s->becomes.end()) {
+                        continue;
+                    }
+                    Dictionary b;
+                    b["specialisation"] = to_godot(s->id);
+                    b["display_name"] = to_godot(s->displayName);
+                    b["pattern"] = foundry_pattern(to_godot(it->second));
+                    becomes.push_back(b);
+                }
+            }
+            r["becomes"] = becomes;
         }
         railSlots.push_back(r);
     };

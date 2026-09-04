@@ -1,6 +1,6 @@
 {
   "schema_version": 9,
-  "status": "D-023 slice 9: rails - the plate's exterior, opened by the first hall's test; class seeds and manners",
+  "status": "D-023 slice 9: rails - a class chosen at the start sets the plate's surround; the trial opens a specialisation that says what it becomes; manners",
   "frame": [
     4,
     4
@@ -647,18 +647,22 @@
   ],
   "rails": {
     "by_era": [
-      0,
       1,
-      2
+      2,
+      3
     ],
     "specialise_on_world_effect": "stonecut_blocks",
-    "specialisations": [
+    "classes": [
       {
         "id": "ranger",
         "display_name": "Ranger",
         "patterns": [
           "volley",
           "quarry"
+        ],
+        "specialisations": [
+          "sharpshooter",
+          "fletcher"
         ],
         "design_purpose": "The projectile class: Volley fans a column's projectile skill out, Quarry sends every projectile through one more enemy and leaves the ones it passes bleeding. Both want Reach and Edge in lines, so a Ranger's plate is drawn toward long straight runs."
       },
@@ -669,6 +673,10 @@
           "shield_wall",
           "riposte"
         ],
+        "specialisations": [
+          "bulwark",
+          "sentinel"
+        ],
         "design_purpose": "The standing class: Shield Wall makes armour answer fire and cold, Riposte makes the Barbs answer twice as hard and stagger. Both want Plate, Vigour and Edge in lines with a Vanguard resting among them."
       },
       {
@@ -678,7 +686,73 @@
           "pyre",
           "ashen_step"
         ],
+        "specialisations": [
+          "pyromancer",
+          "hearthkeeper"
+        ],
         "design_purpose": "The fire class: Pyre spreads every ignite on the hit rather than the death, Ashen Step makes burning ground yours. Both want Ember in lines, with Haste at the far end of one."
+      }
+    ],
+    "specialisations": [
+      {
+        "id": "sharpshooter",
+        "display_name": "Sharpshooter",
+        "class": "ranger",
+        "becomes": {
+          "volley": "fusillade",
+          "quarry": "deep_quarry"
+        },
+        "design_purpose": "The Ranger who goes through: the Volley's fan pierces, the Quarry pierces twice and cuts deeper."
+      },
+      {
+        "id": "fletcher",
+        "display_name": "Fletcher",
+        "class": "ranger",
+        "becomes": {
+          "volley": "split_volley",
+          "quarry": "hamstring"
+        },
+        "design_purpose": "The Ranger who multiplies: the Volley's bolts fork again, the Quarry's wounds are the mark the next bolt hits harder."
+      },
+      {
+        "id": "bulwark",
+        "display_name": "Bulwark",
+        "class": "warden",
+        "becomes": {
+          "shield_wall": "iron_wall",
+          "riposte": "retaliation"
+        },
+        "design_purpose": "The Warden who is a wall: more armour behind the Shield Wall, and the Riposte reaching everything near you."
+      },
+      {
+        "id": "sentinel",
+        "display_name": "Sentinel",
+        "class": "warden",
+        "becomes": {
+          "shield_wall": "bastion",
+          "riposte": "counterstroke"
+        },
+        "design_purpose": "The Warden who holds ground: the Shield Wall rewards standing still, the Riposte staggers longer and quickens you after."
+      },
+      {
+        "id": "pyromancer",
+        "display_name": "Pyromancer",
+        "class": "kindler",
+        "becomes": {
+          "pyre": "conflagration",
+          "ashen_step": "ash_walker"
+        },
+        "design_purpose": "The Kindler who burns everything: the Pyre spreads at full strength on the hit, the ground heals more and the Dash goes further across it."
+      },
+      {
+        "id": "hearthkeeper",
+        "display_name": "Hearthkeeper",
+        "class": "kindler",
+        "becomes": {
+          "pyre": "smoulder",
+          "ashen_step": "hearth"
+        },
+        "design_purpose": "The Kindler who tends the fire: every fire skill lights faster, and every heal is more."
       }
     ],
     "patterns": [
@@ -690,10 +764,10 @@
           "all_placed_are": [
             "reach"
           ],
-          "minimum_placed": 2,
+          "minimum_placed": 1,
           "holds_skill_tag": "projectile"
         },
-        "condition_text": "every placed ingot is Reach (at least two) and a projectile skill's socket sits in the column",
+        "condition_text": "every placed ingot is Reach and a projectile skill's socket sits in the column",
         "rule_text": "that skill fires two more projectiles",
         "effects": [
           {
@@ -701,7 +775,7 @@
             "value": 2
           }
         ],
-        "design_purpose": "The owner's archer column (4 Sep 2026): if every placed cell is a certain ingot, the skill shoots two more projectiles. The rule speaks to the projectile skill in the column alone; the Reaches keep their plain readings (the bolt flies further)."
+        "design_purpose": "The owner's archer column (4 Sep 2026): if every placed cell is a certain ingot, the skill shoots two more projectiles. The rule speaks to the projectile skill in the column alone; the Reaches keep their plain readings. minimum_placed is one, not the usual two, because in era one a socket's column has a single free cell - the socket itself is the commitment."
       },
       {
         "id": "quarry",
@@ -749,7 +823,7 @@
             "value": 1.0
           }
         ],
-        "design_purpose": "The Warden's row: the D-020 defensive spike, made of the plate. Armour is physical-only everywhere else; here the same number answers the Tyrant's breath. The spec asked for a Vanguard's socket in the row; under the flow a Vanguard rests in the row's far cells instead."
+        "design_purpose": "The Warden's row: the D-020 defensive spike, made of the plate. Armour is physical-only everywhere else; here the same number answers the Tyrant's breath. The spec asked for a Vanguard's socket in the row; under the flow a Vanguard rests in the row's far cell instead."
       },
       {
         "id": "riposte",
@@ -774,7 +848,7 @@
             "value": 0.5
           }
         ],
-        "design_purpose": "The Warden's column: the answer to a hit doubled and given a stagger, so the plate that bites back also makes room. Reads only the two end cells, so the middle of the column is free for a working."
+        "design_purpose": "The Warden's column: the answer to a hit doubled and given a stagger, so the plate that bites back also makes room. Reads only the two end cells, so the middle of the column is free for a working; the ends move when an era forges a row."
       },
       {
         "id": "pyre",
@@ -818,6 +892,224 @@
         "design_purpose": "The Kindler's column: the era's burning ground (whelps burn where they die from era two) becomes the Kindler's own, a place to stand rather than a place to leave."
       },
       {
+        "id": "fusillade",
+        "display_name": "Fusillade",
+        "from": "volley",
+        "rule_text": "that skill fires two more projectiles and each pierces one more enemy",
+        "effects": [
+          {
+            "modifier": "extra_projectiles",
+            "value": 2
+          },
+          {
+            "modifier": "pierce",
+            "value": 1
+          }
+        ],
+        "design_purpose": "What Volley becomes for a Sharpshooter: the fan goes through."
+      },
+      {
+        "id": "deep_quarry",
+        "display_name": "Deep Quarry",
+        "from": "quarry",
+        "rule_text": "your projectiles pierce two more enemies and cut deeper into those they pass through",
+        "effects": [
+          {
+            "modifier": "pierce",
+            "value": 2,
+            "skill_tag": "projectile"
+          },
+          {
+            "modifier": "laceration",
+            "value": 30,
+            "skill_tag": "projectile"
+          }
+        ],
+        "design_purpose": "What Quarry becomes for a Sharpshooter: twice through, and the wound is worse."
+      },
+      {
+        "id": "split_volley",
+        "display_name": "Split Volley",
+        "from": "volley",
+        "rule_text": "that skill fires two more projectiles and each forks once more",
+        "effects": [
+          {
+            "modifier": "extra_projectiles",
+            "value": 2
+          },
+          {
+            "modifier": "forked_lattice",
+            "value": 1
+          }
+        ],
+        "design_purpose": "What Volley becomes for a Fletcher: the fan multiplies at the first impact."
+      },
+      {
+        "id": "hamstring",
+        "display_name": "Hamstring",
+        "from": "quarry",
+        "rule_text": "your projectiles pierce one more enemy, bleed those they pass through, and deal 20% more to bleeding enemies",
+        "effects": [
+          {
+            "modifier": "pierce",
+            "value": 1,
+            "skill_tag": "projectile"
+          },
+          {
+            "modifier": "laceration",
+            "value": 20,
+            "skill_tag": "projectile"
+          },
+          {
+            "modifier": "damage_vs_bleed",
+            "value": 0.2,
+            "skill_tag": "projectile"
+          }
+        ],
+        "design_purpose": "What Quarry becomes for a Fletcher: the first bolt marks, the next bites the mark."
+      },
+      {
+        "id": "iron_wall",
+        "display_name": "Iron Wall",
+        "from": "shield_wall",
+        "rule_text": "your armour counts against fire and cold in full, and you have 8 more of it",
+        "effects": [
+          {
+            "modifier": "armour_vs_elements",
+            "value": 1.0
+          },
+          {
+            "modifier": "armour_plating",
+            "value": 8
+          }
+        ],
+        "design_purpose": "What Shield Wall becomes for a Bulwark: more of the wall."
+      },
+      {
+        "id": "retaliation",
+        "display_name": "Retaliation",
+        "from": "riposte",
+        "rule_text": "your Barbs bleed for twice the buildup, stagger the striker, and reach every enemy within 2.5 m",
+        "effects": [
+          {
+            "modifier": "barbs_more",
+            "value": 1.0
+          },
+          {
+            "modifier": "stagger_on_hit",
+            "value": 0.5
+          },
+          {
+            "modifier": "answer_reach",
+            "value": 2.5
+          }
+        ],
+        "design_purpose": "What Riposte becomes for a Bulwark: the answer to a hit reaches the whole press."
+      },
+      {
+        "id": "bastion",
+        "display_name": "Bastion",
+        "from": "shield_wall",
+        "rule_text": "your armour counts against fire and cold in full, and standing still for a second grants 16 more until you move",
+        "effects": [
+          {
+            "modifier": "armour_vs_elements",
+            "value": 1.0
+          },
+          {
+            "modifier": "still_armour",
+            "value": 16
+          }
+        ],
+        "design_purpose": "What Shield Wall becomes for a Sentinel: hold the line and it holds you."
+      },
+      {
+        "id": "counterstroke",
+        "display_name": "Counterstroke",
+        "from": "riposte",
+        "rule_text": "your Barbs bleed for twice the buildup and stagger the striker a full second, and after a hit you move 16% faster for a moment",
+        "effects": [
+          {
+            "modifier": "barbs_more",
+            "value": 1.0
+          },
+          {
+            "modifier": "stagger_on_hit",
+            "value": 1.0
+          },
+          {
+            "modifier": "haste_after_hit",
+            "value": 0.16
+          }
+        ],
+        "design_purpose": "What Riposte becomes for a Sentinel: the striker stands still and you do not."
+      },
+      {
+        "id": "conflagration",
+        "display_name": "Conflagration",
+        "from": "pyre",
+        "rule_text": "your ignites proliferate on the hit at the full spread",
+        "effects": [
+          {
+            "modifier": "proliferate_on_hit",
+            "value": 1.0
+          }
+        ],
+        "design_purpose": "What Pyre becomes for a Pyromancer: the hit is the death, as far as the fire is concerned."
+      },
+      {
+        "id": "ash_walker",
+        "display_name": "Ash Walker",
+        "from": "ashen_step",
+        "rule_text": "burning ground heals you four life a second and never harms you, and your Dash goes 1 m further",
+        "effects": [
+          {
+            "modifier": "burning_ground_heal",
+            "value": 4
+          },
+          {
+            "modifier": "dash_reach",
+            "value": 1
+          }
+        ],
+        "design_purpose": "What Ashen Step becomes for a Pyromancer: the fire is home, and you cross it fast."
+      },
+      {
+        "id": "smoulder",
+        "display_name": "Smoulder",
+        "from": "pyre",
+        "rule_text": "your ignites proliferate on the hit at half the spread, and every fire skill's ignite builds 30% faster",
+        "effects": [
+          {
+            "modifier": "proliferate_on_hit",
+            "value": 0.5
+          },
+          {
+            "modifier": "kindling",
+            "value": 0.3,
+            "skill_tag": "fire"
+          }
+        ],
+        "design_purpose": "What Pyre becomes for a Hearthkeeper: everything lights sooner."
+      },
+      {
+        "id": "hearth",
+        "display_name": "Hearth",
+        "from": "ashen_step",
+        "rule_text": "burning ground heals you two life a second and never harms you, and life restored to you from any source is 15% more",
+        "effects": [
+          {
+            "modifier": "burning_ground_heal",
+            "value": 2
+          },
+          {
+            "modifier": "heal_more",
+            "value": 0.15
+          }
+        ],
+        "design_purpose": "What Ashen Step becomes for a Hearthkeeper: the fire tends you."
+      },
+      {
         "id": "hounds_manner",
         "display_name": "The Hound's Manner",
         "axis": "row",
@@ -840,7 +1132,7 @@
             "value": 0.25
           }
         ],
-        "design_purpose": "A manner (D-020, D-022): a rail the world teaches rather than the class. After twelve hounds have fallen the pack's own habit - running you down - is yours to punish. Any specialisation may set it; it competes with the class seeds for the rails."
+        "design_purpose": "A manner (D-020, D-022): a rail the world teaches rather than the class. After twelve hounds have fallen the pack's own habit - running you down - is yours to punish. Any class may set it; it competes with the class's patterns for the rails."
       },
       {
         "id": "husks_manner",
@@ -867,7 +1159,7 @@
         "design_purpose": "The husk's manner: it stands and it takes it. After eight have fallen, so can you. A flat integer on the sheet the engine grants after a second of stillness and takes back on the first step."
       }
     ],
-    "design_purpose": "RAILS (D-023 slice 9; owner, 4 Sep 2026): 'you have base tablet setups for the base class coming from nothing, but eventual class halls down the line can give you specialised tablet exterior options - the first class hall test's completion gives you a choice for specialising, and that changes the exterior of the rows/columns upgrades.' So: no class at the start; the bare plate is the base class. Each row and each column has one RAIL outside the grid. Passing the first hall's test (for now the Tyrant's forge, whose completion records specialise_on_world_effect; the class hall proper is D-004's authored module, not built) offers a one-time choice of specialisation, and a specialisation is a list of rail PATTERNS. A pattern names an axis, a condition on the line's PLACED cells (an empty cell never breaks a rail; minimum_placed keeps one ingot from lighting one) and the rule it bends while the condition holds. by_era caps how many rails may be set (none in era one, one in era two, two in era three); one rail per pattern. A rule speaks to the line's skills (a non-self modifier), to every skill with a tag (an effect's skill_tag) or to the sheet (a self modifier). MANNERS are patterns the world teaches: after taught_by.kills of that family have fallen the pattern is known to any specialisation. Rails carry integers and flat numbers; the numbers never change, the lines do."
+    "design_purpose": "RAILS (D-023 slice 9; owner, 4 Sep 2026): 'before you actually begin the game you choose a class, and in era 1 you can still access the plate/foundry, so that base plate's surrounding modifiers are determined by that first selection. Then once you complete trials you specialise further, getting a view of what the surround modifiers can become.' So: a CLASS is chosen before play begins (D-004) and its two PATTERNS are the plate's surround from era one. Each row and each column has one RAIL outside the grid; a pattern set in a rail names an axis, a condition on the line's PLACED cells (an empty cell never breaks a rail; minimum_placed keeps a lone ingot from lighting one, except Volley, whose socket is the commitment) and the rule it bends while the condition holds. by_era caps how many rails may be set (one in era one, two in era two, three in era three); one rail per pattern; set and cleared in the panel for free. Passing the first trial (the Tyrant's forge; specialise_on_world_effect) offers a one-time SPECIALISATION from the class's two: each says what every class pattern BECOMES (`becomes`), the panel shows the view before the choice, and a rail already holding the base pattern becomes the grown one. A grown pattern (`from`) inherits its base's axis and condition and changes only the rule. A rule speaks to the line's skills (a non-self modifier), to every skill with a tag (an effect's skill_tag) or to the sheet (a self modifier). MANNERS are patterns the world teaches: after taught_by.kills of that family have fallen the pattern is known to any class. Rails carry integers and flat numbers; the numbers never change, the lines do."
   },
   "ingots": [
     {

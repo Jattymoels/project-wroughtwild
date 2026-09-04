@@ -136,7 +136,8 @@ std::string toJson(const SaveGame& game) {
     }
     out << "],\"milestones\":";
     writeStringList(out, game.economy.foundry.milestones);
-    // The exterior (D-023 slice 9): the specialisation, the rails, the kills.
+    // The surround (D-023 slice 9): the class, the specialisation, the rails, the kills.
+    out << ",\"class\":\"" << escape(game.economy.foundry.chosenClass) << "\"";
     out << ",\"specialisation\":\"" << escape(game.economy.foundry.specialisation) << "\",\"rails\":[";
     for (size_t i = 0; i < game.economy.foundry.rails.size(); ++i) {
         const auto& r = game.economy.foundry.rails[i];
@@ -204,7 +205,8 @@ SaveGame fromJson(const std::string& text) {
             game.economy.foundry.plate.push_back(placement);
         }
         game.economy.foundry.milestones = readStringList(f->get("milestones"));
-        // Saves written before D-023 slice 9 carry no exterior.
+        // Saves written before D-023 slice 9 carry no surround.
+        if (auto cls = f->find("class")) game.economy.foundry.chosenClass = cls->asString();
         if (auto spec = f->find("specialisation")) game.economy.foundry.specialisation = spec->asString();
         if (auto rails = f->find("rails")) {
             for (const auto& r : rails->asArray()) {

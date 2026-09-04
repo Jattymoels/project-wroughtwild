@@ -53,9 +53,11 @@ struct State {
     std::map<std::string, int> owned;   // ingot id -> total owned (placed and not)
     std::vector<Placement> plate;
     std::vector<std::string> milestones; // source ids already granted
-    // The exterior (D-023 slice 9, owner 4 Sep 2026): the specialisation
-    // chosen at the first hall's test ("" is the base class), the rails
-    // set, and the kills per family that teach the manners.
+    // The surround (D-023 slice 9, owner 4 Sep 2026): the class chosen
+    // before play began, the specialisation chosen after the first trial
+    // ("" until then), the rails set, and the kills per family that teach
+    // the manners.
+    std::string chosenClass{};
     std::string specialisation{};
     std::vector<Rail> rails{};
     std::map<std::string, int> kills{};
@@ -113,13 +115,16 @@ struct Link {
 };
 std::vector<Link> links(const tuning::Tuning& tuning, const State& state, const Plate& plate);
 
-// Rails (D-023 slice 9; owner, 4 Sep 2026: "the first class hall test's
-// completion gives you a choice for specialising, and that changes the
-// exterior of the rows/columns upgrades"). Each row and column has one
-// rail outside the grid; a pattern set in it reads the line's PLACED
-// cells and bends a rule while its condition holds. The patterns a
-// player knows are the chosen specialisation's seeds and the manners the
-// world has taught (kills per family).
+// Rails (D-023 slice 9; owner, 4 Sep 2026: "before you actually begin
+// the game you choose a class ... that base plate's surrounding
+// modifiers are determined by that first selection. Then once you
+// complete trials you specialise further, getting a view of what the
+// surround modifiers can become"). Each row and column has one rail
+// outside the grid; a pattern set in it reads the line's PLACED cells and
+// bends a rule while its condition holds. The patterns a player knows are
+// the class's - each replaced by what the specialisation says it becomes,
+// once one is chosen - and the manners the world has taught (kills per
+// family).
 struct RailStatus {
     bool holds = false;
     int placed = 0;  // ingots placed in the line

@@ -155,6 +155,7 @@ public:
     // enemies each pierces; the specialisation and the rails themselves.
     int skill_projectiles(const String& skill_id) const;
     int skill_pierce(const String& skill_id) const;
+    bool foundry_choose_class(const String& class_id);
     bool foundry_specialise(const String& specialisation);
     bool foundry_set_rail(const String& axis, int index, const String& pattern);
     bool foundry_clear_rail(const String& axis, int index);

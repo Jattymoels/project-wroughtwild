@@ -80,7 +80,7 @@ See [systems/crafting-and-skills.md](systems/crafting-and-skills.md).
 
 Most direct power comes from persistent skills, passive choices and equipment. Baseline equipment permits careful survival; exceptional loot and advanced crafting create speed, damage and defensive power spikes.
 
-There is no starting class (amended 4 Sep 2026, D-004): the bare Foundry plate is the base class. The first authored class hall's test grants a specialisation that opens the plate's exterior, the rails on its rows and columns; later halls add further exterior options.
+A starting class provides initial identity and leads toward an authored class hall that opens a further vertical specialisation path. Concretely (4 Sep 2026, D-004): the class is chosen before play and its patterns are the Foundry plate's surround from the first era; the hall's trial offers a specialisation that shows what each of them becomes.
 
 See [systems/combat-and-builds.md](systems/combat-and-builds.md).
 

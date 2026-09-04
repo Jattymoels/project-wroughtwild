@@ -872,11 +872,12 @@ struct IngotSourceDef {
     int era = 1;       // the earliest era this source may grant in
 };
 
-// RAILS (D-023 slice 9; owner, 4 Sep 2026): the plate's exterior. A rail
+// RAILS (D-023 slice 9; owner, 4 Sep 2026): the plate's surround. A rail
 // pattern names an axis, a condition on the line's placed cells and the
-// rule it bends while the condition holds. Class seeds come with the
-// specialisation chosen at the first hall's test; a manner is taught by a
-// mob family once enough of them have fallen.
+// rule it bends while the condition holds. A class, chosen before play
+// begins (D-004), brings its patterns from era one; a specialisation,
+// chosen after the first trial, says what each of them becomes; a manner
+// is taught by a mob family once enough of them have fallen.
 struct RailCondition {
     std::vector<std::string> allPlacedAre; // every placed ingot in the line is one of these
     std::vector<std::string> alternating;  // the placed ingots alternate between these two, in line order
@@ -902,21 +903,37 @@ struct RailPatternDef {
     std::vector<RailEffect> effects;
     std::string taughtByEnemy; // a manner: the family that teaches it
     int taughtKills = 0;       // after this many of them have fallen
+    std::string from;          // a grown pattern: the base pattern it becomes from (axis and condition inherited)
     bool isManner() const { return !taughtByEnemy.empty(); }
+    bool isGrown() const { return !from.empty(); }
 };
 
-struct SpecialisationDef {
+// A class (D-004): chosen before play begins; its patterns are the plate's
+// surround from era one, and its specialisations are the ways it may
+// grow after the first trial.
+struct ClassDef {
     std::string id;
     std::string displayName;
     std::vector<std::string> patterns;
+    std::vector<std::string> specialisations;
+};
+
+// A specialisation: what each of the class's patterns becomes.
+struct SpecialisationDef {
+    std::string id;
+    std::string displayName;
+    std::string classId;
+    std::map<std::string, std::string> becomes; // base pattern id -> the pattern it becomes
 };
 
 struct RailsDef {
     std::vector<int> byEra;              // rails the player may set per era (the last entry serves later eras)
-    std::string specialiseOnWorldEffect; // the first hall's test: recording this world effect offers the choice
+    std::string specialiseOnWorldEffect; // the first trial: recording this world effect offers the specialisation
+    std::vector<ClassDef> classes;
     std::vector<SpecialisationDef> specialisations;
     std::vector<RailPatternDef> patterns;
     const RailPatternDef* findPattern(const std::string& id) const;
+    const ClassDef* findClass(const std::string& id) const;
     const SpecialisationDef* findSpecialisation(const std::string& id) const;
     int allowed(int era) const; // 0 when no rails are tuned
 };

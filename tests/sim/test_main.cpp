@@ -3227,20 +3227,28 @@ void testMarrowAndQuicksilverForms(const tuning::Tuning& t) {
           "marrow: a bare plate has none of it");
 }
 
-// D-023 slice 9: rails, the plate's exterior. No class at the start; the
-// first hall's test (the Tyrant's forge, for now) offers a specialisation,
-// whose patterns go in the rails outside the rows and columns; manners the
-// world teaches join them.
+// D-023 slice 9: rails, the plate's surround. A class is chosen before
+// play begins and its two patterns go in the rails from era one; the
+// first trial's completion offers a specialisation that says what each
+// pattern becomes; manners the world teaches join them.
 void testRails(const tuning::Tuning& t) {
     const auto& rails = t.foundry.rails;
-    check(rails.byEra == std::vector<int>{0, 1, 2} && rails.specialiseOnWorldEffect == "stonecut_blocks" &&
-              rails.specialisations.size() == 3 && rails.patterns.size() == 8 && rails.findSpecialisation("ranger") &&
-              rails.findSpecialisation("ranger")->patterns == std::vector<std::string>{"volley", "quarry"} &&
-              rails.findPattern("volley") && rails.findPattern("volley")->axis == "column" && !rails.findPattern("volley")->isManner() &&
-              rails.findPattern("hounds_manner") && rails.findPattern("hounds_manner")->isManner() &&
-              rails.findPattern("hounds_manner")->taughtByEnemy == "ash_hound" && rails.allowed(1) == 0 && rails.allowed(2) == 1 &&
-              rails.allowed(3) == 2 && rails.allowed(9) == 2,
-          "rails: three specialisations of two seeds, two manners, none in era one, one in era two, two after");
+    check(rails.byEra == std::vector<int>{1, 2, 3} && rails.specialiseOnWorldEffect == "stonecut_blocks" && rails.classes.size() == 3 &&
+              rails.specialisations.size() == 6 && rails.patterns.size() == 20 && rails.findClass("ranger") &&
+              rails.findClass("ranger")->patterns == std::vector<std::string>{"volley", "quarry"} &&
+              rails.findClass("ranger")->specialisations == std::vector<std::string>{"sharpshooter", "fletcher"} &&
+              rails.findSpecialisation("sharpshooter") && rails.findSpecialisation("sharpshooter")->classId == "ranger" &&
+              rails.findSpecialisation("sharpshooter")->becomes.at("volley") == "fusillade" && rails.findPattern("hounds_manner") &&
+              rails.findPattern("hounds_manner")->isManner() && rails.findPattern("hounds_manner")->taughtByEnemy == "ash_hound" &&
+              rails.allowed(1) == 1 && rails.allowed(2) == 2 && rails.allowed(3) == 3 && rails.allowed(9) == 3,
+          "rails: three classes of two patterns and two specialisations, twenty patterns, one rail in era one, two, then three");
+    const auto* fusillade = rails.findPattern("fusillade");
+    const auto* volley = rails.findPattern("volley");
+    check(fusillade && volley && fusillade->isGrown() && fusillade->from == "volley" && fusillade->axis == "column" &&
+              fusillade->condition.allPlacedAre == volley->condition.allPlacedAre && fusillade->condition.holdsSkillTag == "projectile" &&
+              fusillade->condition.minimumPlaced == 1 && fusillade->conditionText == volley->conditionText && fusillade->effects.size() == 2 &&
+              !volley->isGrown(),
+          "rails: a grown pattern inherits its base's axis, condition and words, and changes the rule");
     for (const char* id : {"extra_projectiles", "pierce", "armour_vs_elements", "barbs_more", "stagger_on_hit", "proliferate_on_hit",
                            "burning_ground_heal", "damage_vs_approaching", "still_armour"})
         check(t.items.findModifier(id) != nullptr, std::string("rails: the modifier ") + id + " loads");
@@ -3255,75 +3263,67 @@ void testRails(const tuning::Tuning& t) {
             if (e.kind == "rail") out.push_back(e);
         return out;
     };
+    auto statusOf = [&](const economy::PlayerEconomy& who, const std::string& axis, int index) {
+        const auto* rail = foundry::railAt(who.foundry(), axis, index);
+        return rail ? foundry::railStatus(t, who.foundry(), who.plate(), *rail) : foundry::RailStatus{};
+    };
 
-    // The base class: nothing at the start, no rails in era one.
+    // Before play begins: the class. Until it is chosen the rails hold nothing.
     economy::PlayerEconomy p(t);
     p.inventory["iron_ingot"] = 20;
-    check(!p.canSpecialise() && p.railsAllowed() == 0 && p.foundryPatterns().empty() && p.foundry().specialisation.empty() &&
-              !p.foundrySpecialise("ranger") && !p.foundrySetRail("column", 1, "volley"),
-          "rails: from nothing - no class, no patterns, no rails, and the choice is not offered before the test");
-    // The Tyrant's forge is the first hall's test: its completion offers the choice.
-    p.recordWorldEffect("stonecut_blocks");
-    check(p.currentEra() == 2 && p.canSpecialise() && p.railsAllowed() == 1 && !p.foundrySpecialise("nothing") && p.foundryPatterns().empty(),
-          "rails: the test passed, the choice is offered, one rail in era two, an unknown specialisation refused");
-    check(p.foundrySpecialise("ranger") && !p.canSpecialise() && !p.foundrySpecialise("warden") && p.foundry().specialisation == "ranger" &&
-              p.foundryPatterns() == std::vector<std::string>{"volley", "quarry"},
-          "rails: a Ranger, once; the Ranger knows Volley and Quarry");
+    check(p.canChooseClass() && !p.canSpecialise() && p.railsAllowed() == 1 && p.foundryPatterns().empty() && p.foundry().chosenClass.empty() &&
+              !p.foundrySetRail("column", 1, "volley") && !p.foundryChooseClass("nothing") && !p.foundrySpecialise("sharpshooter"),
+          "rails: no class yet - a rail allowed in era one but nothing to set, an unknown class refused, no specialising");
+    check(p.foundryChooseClass("ranger") && !p.canChooseClass() && !p.foundryChooseClass("warden") && p.foundry().chosenClass == "ranger" &&
+              p.foundryPatterns() == std::vector<std::string>{"volley", "quarry"} && !p.canSpecialise() && !p.foundrySpecialise("sharpshooter"),
+          "rails: a Ranger, once - Volley and Quarry from the first era, no specialising before the trial");
     check(!p.foundrySetRail("row", 1, "volley") && !p.foundrySetRail("column", 1, "shield_wall") && !p.foundrySetRail("column", 7, "volley") &&
-              !p.foundrySetRail("column", 1, "nothing"),
-          "rails: a column pattern refuses a row, an unlearned pattern is refused, so is a slot off the frame");
-    // Volley: Reach above and below the bolt's socket in column 1.
+              !p.foundrySetRail("column", 1, "fusillade") && !p.foundrySetRail("column", 1, "nothing"),
+          "rails: a column pattern refuses a row; another class's, a grown and an unknown pattern are refused; so is a slot off the frame");
+    // Era one Volley: the bolt's socket in column 1 and one Reach below it - the socket's column has a single free cell.
     p.learnSkill("prototype_ember_bolt");
-    p.foundryEvent("first_kill:cinder_archer"); // reach; the era gave another
-    check(foundry::unplacedCount(p.foundry(), "reach") == 2 && p.foundryPlaceSkill(1, 1, "prototype_ember_bolt") && p.foundryPlace(0, 1, "reach") &&
-              p.foundryPlace(2, 1, "reach"),
-          "rails: the bolt laid with Reach above and below");
-    check(p.foundrySetRail("column", 1, "volley") && p.foundry().rails.size() == 1, "rails: Volley set on column 1");
-    const auto* volley = foundry::railAt(p.foundry(), "column", 1);
-    auto status = foundry::railStatus(t, p.foundry(), p.plate(), *volley);
-    check(status.holds && status.placed == 2 && status.minimum == 2 && status.breaking.empty() && !status.missingSkill &&
+    p.foundryEvent("first_kill:cinder_archer"); // reach
+    check(foundry::unplacedCount(p.foundry(), "reach") == 1 && p.foundryPlaceSkill(1, 1, "prototype_ember_bolt") && p.foundryPlace(2, 1, "reach") &&
+              p.foundrySetRail("column", 1, "volley") && p.foundry().rails.size() == 1,
+          "rails: the bolt laid with a Reach below it, Volley set in era one");
+    auto status = statusOf(p, "column", 1);
+    check(status.holds && status.placed == 1 && status.minimum == 1 && status.breaking.empty() && !status.missingSkill &&
               status.skills == std::vector<std::string>{"prototype_ember_bolt"},
-          "rails: Volley holds - two Reach, the bolt's socket in the column");
+          "rails: Volley holds in era one - the socket is the commitment, one Reach lights it");
     auto pm = grammar::foundryMods(t, p.foundry(), p.currentEra());
     check(grammar::skillProjectiles(t, pm, "prototype_ember_bolt") == 3 && grammar::skillProjectiles(t, pm, "prototype_frost_orb") == 1 &&
               grammar::skillPierce(t, pm, "prototype_ember_bolt") == 0,
           "rails: the bolt fires three projectiles, the orb one; nothing pierces yet");
-    checkNear(grammar::skillReach(t, pm, "prototype_ember_bolt"), 1.0 + 2.0 * t.foundry.findIngot("reach")->supportValue() * t.foundry.supportMultiplier, 1e-9,
-              "rails: the Reaches keep their plain readings under the rail");
+    checkNear(grammar::skillReach(t, pm, "prototype_ember_bolt"), 1.0 + t.foundry.findIngot("reach")->supportValue() * t.foundry.supportMultiplier, 1e-9,
+              "rails: the Reach keeps its plain reading under the rail");
     auto re = railEffects(p);
     check(re.size() == 1 && re[0].label == "Volley (column 2)" && re[0].skill == "prototype_ember_bolt" && re[0].modifier == "extra_projectiles" &&
               re[0].col == 1 && re[0].row == -1 && re[0].subject == "volley",
           "rails: the rule is one effect, named for its line, on the bolt");
-    check(!p.foundrySetRail("column", 0, "volley") && !p.foundrySetRail("row", 0, "quarry"),
-          "rails: one rail per pattern, and era two allows one rail");
-    // Break it: an Ember where a Reach was.
+    check(!p.foundrySetRail("row", 1, "quarry") && !p.foundrySetRail("column", 0, "volley"), "rails: era one allows one rail; one rail per pattern");
+    // Break it: an Ember where the Reach was.
     p.foundryEvent("first_kill:ember_whelp"); // ember
-    check(p.foundryRemove(2, 1) && p.foundryPlace(2, 1, "ember"), "rails: the lower Reach swapped for an Ember");
-    status = foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "column", 1));
-    check(!status.holds && status.placed == 2 && status.breaking.size() == 1 && status.breaking[0].row == 2 && status.breaking[0].col == 1,
+    check(p.foundryRemove(2, 1) && p.foundryPlace(2, 1, "ember"), "rails: the Reach swapped for an Ember");
+    status = statusOf(p, "column", 1);
+    check(!status.holds && status.placed == 1 && status.breaking.size() == 1 && status.breaking[0].row == 2 && status.breaking[0].col == 1,
           "rails: the Ember breaks Volley, and the status names its cell");
     pm = grammar::foundryMods(t, p.foundry(), p.currentEra());
     check(grammar::skillProjectiles(t, pm, "prototype_ember_bolt") == 1 && railEffects(p).empty(), "rails: a broken rail bends nothing");
-    check(p.foundryRemove(2, 1) && p.foundryPlace(2, 1, "reach") && foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "column", 1)).holds,
-          "rails: the Reach back, the rail lit again");
-    // One Reach only: the minimum keeps a lone ingot from lighting it.
-    check(p.foundryRemove(0, 1) && !foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "column", 1)).holds &&
-              foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "column", 1)).breaking.empty() &&
-              p.foundryPlace(0, 1, "reach"),
-          "rails: one Reach is under the minimum, nothing breaks it, it is only waiting");
-    // Without the bolt: the column holds two Reach but no projectile skill.
-    check(p.foundryRemove(1, 1) && foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "column", 1)).missingSkill &&
-              !foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "column", 1)).holds && p.foundryPlaceSkill(1, 1, "prototype_ember_bolt"),
+    check(p.foundryRemove(2, 1) && p.foundryPlace(2, 1, "reach") && statusOf(p, "column", 1).holds, "rails: the Reach back, the rail lit again");
+    check(p.foundryRemove(1, 1) && statusOf(p, "column", 1).missingSkill && !statusOf(p, "column", 1).holds &&
+              p.foundryPlaceSkill(1, 1, "prototype_ember_bolt"),
           "rails: no projectile skill in the column, Volley waits");
 
-    // Era three: two rails, the fourth row forged. Quarry on row 3 with Edge at both ends.
-    p.recordWorldEffect("ash_tide");
-    check(p.currentEra() == 3 && p.railsAllowed() == 2 && foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "column", 1)).holds,
-          "rails: era three allows two, and Volley still holds down the longer column");
-    p.foundryEvent("work:strike_split");                  // edge
-    p.foundryEvent("world_effect:old_mine_reinforced");   // edge
-    check(p.foundryPlace(3, 0, "edge") && p.foundryPlace(3, 3, "edge") && p.foundrySetRail("row", 3, "quarry") && p.foundry().rails.size() == 2,
-          "rails: Quarry set on row 4 with Edge at both ends");
+    // The trial: era two, a second rail, and the specialisation offered - a view of what the rails become.
+    p.recordWorldEffect("stonecut_blocks");
+    check(p.currentEra() == 2 && p.railsAllowed() == 2 && p.canSpecialise() && !p.foundrySpecialise("bulwark") && !p.foundrySpecialise("nothing") &&
+              p.foundry().specialisation.empty() && statusOf(p, "column", 1).holds,
+          "rails: the Tyrant's forge passed - a second rail and the choice offered; a Warden's specialisation is refused to a Ranger");
+    p.foundryEvent("work:strike_split");                // edge
+    p.foundryEvent("world_effect:old_mine_reinforced"); // edge
+    check(p.foundryPlace(0, 0, "edge") && p.foundryPlace(0, 3, "edge") && p.foundrySetRail("row", 0, "quarry") && p.foundry().rails.size() == 2 &&
+              statusOf(p, "row", 0).holds,
+          "rails: Quarry set on row 1 with Edge at both ends");
     pm = grammar::foundryMods(t, p.foundry(), p.currentEra());
     check(grammar::skillPierce(t, pm, "prototype_ember_bolt") == 1 && grammar::skillPierce(t, pm, "prototype_frost_orb") == 1 &&
               grammar::skillPierce(t, pm, "prototype_heavy_strike") == 0,
@@ -3331,66 +3331,94 @@ void testRails(const tuning::Tuning& t) {
     checkNear(grammar::bleedApplied(t, pm, "prototype_frost_orb", false), 20.0, 1e-9, "rails: and the orb's hits bleed");
     checkNear(grammar::bleedApplied(t, pm, "prototype_heavy_strike", false), 0.0, 1e-9, "rails: the strike does not");
     re = railEffects(p);
-    check(re.size() == 3 && re[1].label == "Quarry (row 4)" && re[1].skill.empty() && re[1].packet == "projectile",
+    check(re.size() == 3 && re[1].label == "Quarry (row 1)" && re[1].skill.empty() && re[1].packet == "projectile",
           "rails: Quarry's two effects are scoped by tag, not by the line");
-    check(p.foundrySetRail("row", 3, "quarry") && !p.foundrySetRail("row", 0, "quarry") && !p.foundrySetRail("column", 0, "volley"),
+    check(p.foundrySetRail("row", 0, "quarry") && !p.foundrySetRail("row", 2, "quarry") && !p.foundrySetRail("column", 0, "volley"),
           "rails: a set rail takes its pattern again; the same pattern on a second slot is refused");
-    // Manners: twelve hounds teach theirs.
+    // Specialise: the rails become what the view showed.
+    check(p.foundrySpecialise("sharpshooter") && !p.canSpecialise() && !p.foundrySpecialise("fletcher") && p.foundry().specialisation == "sharpshooter" &&
+              p.foundryPatterns() == std::vector<std::string>{"fusillade", "deep_quarry"} &&
+              foundry::railAt(p.foundry(), "column", 1)->pattern == "fusillade" && foundry::railAt(p.foundry(), "row", 0)->pattern == "deep_quarry",
+          "rails: a Sharpshooter, once - Volley and Quarry become Fusillade and Deep Quarry, and the rails holding them become with them");
+    pm = grammar::foundryMods(t, p.foundry(), p.currentEra());
+    check(grammar::skillProjectiles(t, pm, "prototype_ember_bolt") == 3 && grammar::skillPierce(t, pm, "prototype_ember_bolt") == 3 &&
+              grammar::skillPierce(t, pm, "prototype_frost_orb") == 2 && grammar::skillPierce(t, pm, "prototype_heavy_strike") == 0,
+          "rails: Fusillade pierces once for the bolt in its column, Deep Quarry twice for every projectile");
+    checkNear(grammar::bleedApplied(t, pm, "prototype_frost_orb", false), 30.0, 1e-9, "rails: Deep Quarry cuts deeper");
+    re = railEffects(p);
+    check(re.size() == 4 && re[0].label == "Fusillade (column 2)" && re[2].label == "Deep Quarry (row 1)" && !p.foundrySetRail("column", 3, "volley"),
+          "rails: the rules carry the grown names, and the base pattern is no longer the Ranger's to set");
+    // Manners: twelve hounds teach theirs; era three allows a third rail.
     p.takeFoundryNotices(); // the world effects' ingots
     for (int i = 0; i < 11; ++i) p.foundryEvent("first_kill:ash_hound");
     check(p.foundry().kills.at("ash_hound") == 11 && p.foundryPatterns().size() == 2 && p.takeFoundryNotices().empty(),
           "rails: eleven hounds have taught nothing yet");
     p.foundryEvent("first_kill:ash_hound");
     auto notices = p.takeFoundryNotices();
-    check(p.foundryPatterns() == std::vector<std::string>{"volley", "quarry", "hounds_manner"} && notices == std::vector<std::string>{"manner:hounds_manner"} &&
-              p.takeFoundryNotices().empty(),
+    check(p.foundryPatterns() == std::vector<std::string>{"fusillade", "deep_quarry", "hounds_manner"} &&
+              notices == std::vector<std::string>{"manner:hounds_manner"} && p.takeFoundryNotices().empty(),
           "rails: the twelfth hound teaches the Hound's Manner, announced once");
-    check(!p.foundrySetRail("row", 0, "hounds_manner") && p.foundryClearRail("row", 3) && !p.foundryClearRail("row", 3) &&
-              p.foundrySetRail("row", 3, "hounds_manner"),
-          "rails: both rails taken, Quarry cleared, the manner takes its row");
-    status = foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "row", 3));
-    check(!status.holds && status.breaking.size() == 1 && status.breaking[0].col == 3, "rails: Edge, Edge does not alternate; the second breaks it");
-    p.foundryEvent("first_kill:ash_hound"); // no new pattern
-    check(foundry::unplacedCount(p.foundry(), "haste") == 1 && p.foundryPlace(3, 2, "haste"), "rails: a Haste between them");
-    check(foundry::railStatus(t, p.foundry(), p.plate(), *foundry::railAt(p.foundry(), "row", 3)).holds && std::abs(onSheet(p).damageVsApproaching - 0.25) < 1e-9,
-          "rails: Edge, Haste, Edge alternates - enemies moving toward you take 25% more");
-    // The save carries the exterior, and a fresh economy validates it.
+    check(!p.foundrySetRail("row", 2, "hounds_manner"), "rails: era two's two rails are taken");
+    p.recordWorldEffect("ash_tide");
+    p.foundryEvent("recipe:smelt_bronze"); // a third edge
+    check(p.currentEra() == 3 && p.railsAllowed() == 3 && statusOf(p, "column", 1).holds && p.foundryPlace(3, 0, "edge") &&
+              p.foundrySetRail("row", 3, "hounds_manner") && p.foundry().rails.size() == 3,
+          "rails: era three allows three - the manner set on the fourth row, Fusillade still lit down the longer column");
+    status = statusOf(p, "row", 3);
+    check(!status.holds && status.placed == 1 && status.breaking.empty() && std::abs(onSheet(p).damageVsApproaching) < 1e-9,
+          "rails: one Edge is under the minimum; the manner waits");
+    check(foundry::unplacedCount(p.foundry(), "haste") == 1 && p.foundryPlace(3, 2, "haste") && statusOf(p, "row", 3).holds &&
+              std::abs(onSheet(p).damageVsApproaching - 0.25) < 1e-9,
+          "rails: Edge, Haste alternates - enemies moving toward you take 25% more");
+    check(p.foundryRemove(0, 0) && p.foundryPlace(3, 3, "edge") && statusOf(p, "row", 3).holds && !statusOf(p, "row", 0).holds,
+          "rails: Edge, Haste, Edge alternates too - the Deep Quarry row gave up an Edge for it and waits");
+    check(p.foundryRemove(3, 2) && p.foundryRemove(0, 3) && p.foundryPlace(3, 2, "edge") && !statusOf(p, "row", 3).holds &&
+              statusOf(p, "row", 3).breaking.size() == 2 && statusOf(p, "row", 3).breaking[0].col == 2,
+          "rails: Edge, Edge, Edge does not alternate; each repeat breaks it");
+    check(p.foundryRemove(3, 2) && p.foundryRemove(3, 3) && p.foundryPlace(0, 0, "edge") && p.foundryPlace(0, 3, "edge") &&
+              p.foundryPlace(3, 2, "haste") && statusOf(p, "row", 0).holds && statusOf(p, "row", 3).holds && statusOf(p, "column", 1).holds,
+          "rails: the Edges back on row 1 - Deep Quarry, the manner and Fusillade all lit");
+    // The save carries the surround, and a fresh economy validates it.
     save::SaveGame game;
     game.economy = p.exportState();
     auto back = save::fromJson(save::toJson(game));
-    check(back.economy.foundry.specialisation == "ranger" && back.economy.foundry.rails.size() == 2 && back.economy.foundry.rails[1].pattern == "hounds_manner" &&
-              back.economy.foundry.kills.at("ash_hound") == 13,
-          "rails: the specialisation, the rails and the kills round-trip through the save");
+    check(back.economy.foundry.chosenClass == "ranger" && back.economy.foundry.specialisation == "sharpshooter" && back.economy.foundry.rails.size() == 3 &&
+              back.economy.foundry.rails[2].pattern == "hounds_manner" && back.economy.foundry.kills.at("ash_hound") == 12,
+          "rails: the class, the specialisation, the rails and the kills round-trip through the save");
     economy::PlayerEconomy restored(t);
     restored.importState(back.economy);
-    check(restored.foundry().specialisation == "ranger" && restored.foundry().rails.size() == 2 && restored.railsAllowed() == 2 &&
-              grammar::skillProjectiles(t, grammar::foundryMods(t, restored.foundry(), restored.currentEra()), "prototype_ember_bolt") == 3,
-          "rails: restored, the rails still bend their rules");
-    back.economy.foundry.rails.push_back({"row", 0, "pyre"});    // not a Ranger's
-    back.economy.foundry.rails.push_back({"column", 3, "volley"}); // a second slot for Volley
-    back.economy.foundry.rails.push_back({"column", 2, "volley"}); // and a third
-    back.economy.foundry.specialisation = "nothing";
-    economy::PlayerEconomy doctored(t);
-    doctored.importState(back.economy);
-    check(doctored.foundry().specialisation.empty() && doctored.foundry().rails.size() == 1 && doctored.foundry().rails[0].pattern == "hounds_manner",
-          "rails: a doctored save loses the unknown specialisation and every rail its patterns no longer cover, keeping the manner");
+    check(restored.foundry().chosenClass == "ranger" && restored.foundry().specialisation == "sharpshooter" && restored.foundry().rails.size() == 3 &&
+              !restored.canChooseClass() && !restored.canSpecialise() &&
+              grammar::skillPierce(t, grammar::foundryMods(t, restored.foundry(), restored.currentEra()), "prototype_ember_bolt") == 3,
+          "rails: restored, the class stands and the rails still bend their rules");
+    auto doctored = back;
+    doctored.economy.foundry.specialisation = "bulwark"; // a Warden's
+    doctored.economy.foundry.rails.push_back({"column", 3, "shield_wall"}); // a Warden's pattern
+    economy::PlayerEconomy d1(t);
+    d1.importState(doctored.economy);
+    check(d1.foundry().chosenClass == "ranger" && d1.foundry().specialisation.empty() && d1.canSpecialise() && d1.foundry().rails.size() == 1 &&
+              d1.foundry().rails[0].pattern == "hounds_manner" && d1.foundryPatterns() == std::vector<std::string>{"volley", "quarry", "hounds_manner"},
+          "rails: a save with another class's specialisation forgets it, drops the grown rails and the foreign one, keeps the manner, and offers the choice again");
+    doctored.economy.foundry.chosenClass = "nothing";
+    economy::PlayerEconomy d2(t);
+    d2.importState(doctored.economy);
+    check(d2.foundry().chosenClass.empty() && d2.foundry().specialisation.empty() && d2.canChooseClass() && d2.foundry().rails.size() == 1,
+          "rails: a save with an unknown class starts the choice over, keeping only the manner");
 
-    // The Warden: Shield Wall and Riposte on the sheet, and the ends move with the era.
+    // The Warden: Shield Wall in era one, Riposte after the trial, then a Sentinel.
     economy::PlayerEconomy w(t);
     w.inventory["iron_ingot"] = 20;
-    w.recordWorldEffect("stonecut_blocks");
-    w.foundryEvent("first_kill:stone_husk");   // plate
-    w.foundryEvent("recipe:workbench_kit");    // vigour
-    w.foundryEvent("work:strike_split");       // edge
+    w.foundryEvent("first_kill:stone_husk");            // plate
+    w.foundryEvent("recipe:workbench_kit");             // vigour
+    w.foundryEvent("work:strike_split");                // edge
     w.foundryEvent("world_effect:old_mine_reinforced"); // edge
     w.grant("vanguard", 1);
-    check(w.foundrySpecialise("warden") && w.foundryPatterns() == std::vector<std::string>{"shield_wall", "riposte"} &&
-              w.foundryPlace(0, 0, "plate") && w.foundryPlace(0, 2, "vigour") && w.foundrySetRail("row", 0, "shield_wall"),
-          "rails: a Warden lays Plate and Vigour along row 1 and sets Shield Wall");
-    status = foundry::railStatus(t, w.foundry(), w.plate(), *foundry::railAt(w.foundry(), "row", 0));
+    check(w.foundryChooseClass("warden") && w.foundryPatterns() == std::vector<std::string>{"shield_wall", "riposte"} &&
+              w.foundryPlace(1, 0, "plate") && w.foundryPlace(1, 2, "vigour") && w.foundrySetRail("row", 1, "shield_wall"),
+          "rails: a Warden lays Plate and Vigour along row 2 and sets Shield Wall in era one");
+    status = statusOf(w, "row", 1);
     check(!status.holds && status.missingKind && status.breaking.empty(), "rails: no Vanguard in the row, Shield Wall waits");
-    check(w.foundryPlaceKind(0, 3, "vanguard") && foundry::railStatus(t, w.foundry(), w.plate(), *foundry::railAt(w.foundry(), "row", 0)).holds,
-          "rails: a Vanguard resting in the row lights it");
+    check(w.foundryPlaceKind(1, 3, "vanguard") && statusOf(w, "row", 1).holds, "rails: a Vanguard resting at the row's far cell lights it");
     auto ws = onSheet(w);
     const double plainFire = stats::mitigateDamage(100.0, "fire", stats::deriveStats(t.world.playerBase, {}, t.items, {}), t.world.playerBase);
     const double walledFire = stats::mitigateDamage(100.0, "fire", ws, t.world.playerBase);
@@ -3401,42 +3429,53 @@ void testRails(const tuning::Tuning& t) {
     half.armourVsElements = 0.5;
     check(stats::mitigateDamage(100.0, "cold", half, t.world.playerBase) > walledFire && stats::mitigateDamage(100.0, "cold", half, t.world.playerBase) < plainFire,
           "rails: half the armour counts for half the answer");
-    check(w.foundryClearRail("row", 0) && w.foundryPlace(0, 1, "edge") && w.foundryPlace(2, 1, "edge") && w.foundrySetRail("column", 1, "riposte") &&
-              foundry::railStatus(t, w.foundry(), w.plate(), *foundry::railAt(w.foundry(), "column", 1)).holds,
-          "rails: Riposte - Edge at both ends of column 2 in era two");
+    w.recordWorldEffect("stonecut_blocks");
+    check(w.canSpecialise() && w.railsAllowed() == 2 && w.foundryPlace(0, 0, "edge") && w.foundryPlace(2, 0, "edge") && w.foundrySetRail("column", 0, "riposte") &&
+              statusOf(w, "column", 0).holds,
+          "rails: after the trial, Riposte - Edge at both ends of column 1 in era two");
     ws = onSheet(w);
-    check(std::abs(ws.barbsMore - 1.0) < 1e-9 && std::abs(ws.barbsStagger - 0.5) < 1e-9, "rails: the Barbs bleed for twice and stagger");
+    check(std::abs(ws.barbsMore - 1.0) < 1e-9 && std::abs(ws.barbsStagger - 0.5) < 1e-9 && std::abs(ws.stillArmour) < 1e-9,
+          "rails: the Barbs bleed for twice and stagger half a second");
+    check(w.foundrySpecialise("sentinel") && foundry::railAt(w.foundry(), "row", 1)->pattern == "bastion" &&
+              foundry::railAt(w.foundry(), "column", 0)->pattern == "counterstroke" && statusOf(w, "row", 1).holds && statusOf(w, "column", 0).holds,
+          "rails: a Sentinel - Shield Wall becomes Bastion and Riposte Counterstroke, both still lit");
+    ws = onSheet(w);
+    check(std::abs(ws.armourVsElements - 1.0) < 1e-9 && std::abs(ws.stillArmour - 16.0) < 1e-9 && std::abs(ws.barbsMore - 1.0) < 1e-9 &&
+              std::abs(ws.barbsStagger - 1.0) < 1e-9 && std::abs(ws.hasteAfterHit - 0.16) < 1e-9,
+          "rails: Bastion rewards stillness, Counterstroke staggers a full second and quickens you after a hit");
     w.recordWorldEffect("ash_tide");
-    status = foundry::railStatus(t, w.foundry(), w.plate(), *foundry::railAt(w.foundry(), "column", 1));
+    status = statusOf(w, "column", 0);
     check(!status.holds && status.breaking.empty() && std::abs(onSheet(w).barbsMore) < 1e-9,
-          "rails: era three forges a fourth row - the column's end moved and Riposte waits for an Edge there");
-    check(w.foundryRemove(2, 1) && w.foundryPlace(3, 1, "edge") && foundry::railStatus(t, w.foundry(), w.plate(), *foundry::railAt(w.foundry(), "column", 1)).holds,
-          "rails: the middle Edge moved to the new end - rows 1 and 4 - and Riposte is lit again");
+          "rails: era three forges a fourth row - the column's end moved and Counterstroke waits for an Edge there");
+    check(w.foundryRemove(2, 0) && w.foundryPlace(3, 0, "edge") && statusOf(w, "column", 0).holds,
+          "rails: the middle Edge moved to the new end - rows 1 and 4 - and Counterstroke is lit again");
 
-    // The Kindler: Pyre and Ashen Step, then the Husk's Manner.
+    // The Kindler: Pyre in era one, then a Pyromancer's Conflagration and Ash Walker; the Husk's Manner.
     economy::PlayerEconomy k(t);
     k.inventory["iron_ingot"] = 20;
+    k.foundryEvent("recipe:smelt_iron");      // ember
+    k.foundryEvent("first_kill:ember_whelp"); // ember
+    k.foundryEvent("first_kill:ash_hound");   // haste
+    check(k.foundryChooseClass("kindler") && k.foundryPlace(2, 0, "ember") && k.foundryPlace(2, 3, "ember") && k.foundrySetRail("row", 2, "pyre") &&
+              statusOf(k, "row", 2).holds && std::abs(onSheet(k).proliferateOnHit - 0.5) < 1e-9,
+          "rails: Pyre in era one - two Ember along row 3, ignites proliferate on the hit at half");
     k.recordWorldEffect("stonecut_blocks");
-    k.recordWorldEffect("ash_tide");
-    k.foundryEvent("recipe:smelt_iron");        // ember
-    k.foundryEvent("first_kill:ember_whelp");   // ember
-    k.foundryEvent("first_kill:ash_hound");     // haste
-    check(k.foundrySpecialise("kindler") && k.foundryPlace(0, 0, "ember") && k.foundryPlace(0, 3, "ember") && k.foundrySetRail("row", 0, "pyre") &&
-              std::abs(onSheet(k).proliferateOnHit - 0.5) < 1e-9,
-          "rails: Pyre - two Ember along row 1, ignites proliferate on the hit at half");
-    check(k.foundryPlace(3, 3, "haste") && k.foundrySetRail("column", 3, "ashen_step") && std::abs(onSheet(k).burningGroundHeal - 2.0) < 1e-9,
-          "rails: Ashen Step - Ember at the top of column 4 and Haste at the bottom, burning ground heals");
-    check(k.foundryRemove(0, 0) && k.foundryRemove(3, 3) && k.foundryPlace(3, 3, "ember") &&
-              !foundry::railStatus(t, k.foundry(), k.plate(), *foundry::railAt(k.foundry(), "column", 3)).holds &&
-              foundry::railStatus(t, k.foundry(), k.plate(), *foundry::railAt(k.foundry(), "column", 3)).breaking.size() == 2,
+    check(k.foundrySpecialise("pyromancer") && foundry::railAt(k.foundry(), "row", 2)->pattern == "conflagration" &&
+              std::abs(onSheet(k).proliferateOnHit - 1.0) < 1e-9,
+          "rails: a Pyromancer - Pyre becomes Conflagration, the full spread on the hit");
+    check(k.foundryPlace(0, 3, "haste") && k.foundrySetRail("column", 3, "ash_walker") && statusOf(k, "column", 3).holds &&
+              std::abs(onSheet(k).burningGroundHeal - 4.0) < 1e-9 && std::abs(onSheet(k).dashReachM - 1.0) < 1e-9 && !k.foundrySetRail("column", 0, "ashen_step"),
+          "rails: Ash Walker - Haste at the top of column 4 and Ember at the bottom; the base Ashen Step is no longer the Kindler's");
+    check(k.foundryRemove(0, 3) && k.foundryRemove(2, 0) && k.foundryPlace(0, 3, "ember") && !statusOf(k, "column", 3).holds &&
+              statusOf(k, "column", 3).breaking.size() == 2,
           "rails: Ember at both ends is not Ember and Haste; either end could be the wrong one, so both are named");
     k.takeFoundryNotices();
     for (int i = 0; i < 8; ++i) k.foundryEvent("first_kill:stone_husk");
-    check(k.foundryPatterns() == std::vector<std::string>{"pyre", "ashen_step", "husks_manner"} && k.takeFoundryNotices() == std::vector<std::string>{"manner:husks_manner"},
+    check(k.foundryPatterns() == std::vector<std::string>{"conflagration", "ash_walker", "husks_manner"} &&
+              k.takeFoundryNotices() == std::vector<std::string>{"manner:husks_manner"},
           "rails: eight husks teach theirs to a Kindler too");
-    k.foundryEvent("first_kill:stone_husk"); // plate, and the ninth husk
     check(foundry::unplacedCount(k.foundry(), "plate") == 1, "rails: the first husk's plate");
-    // A bare plate and a base class: nothing on the sheet.
+    // A bare plate and no class: nothing on the sheet.
     const auto bare = stats::deriveStats(t.world.playerBase, {}, t.items, {});
     check(std::abs(bare.armourVsElements) < 1e-9 && std::abs(bare.stillArmour) < 1e-9 && std::abs(bare.damageVsApproaching) < 1e-9 &&
               grammar::skillProjectiles(t, {}, "prototype_frost_orb") == 1 && grammar::skillPierce(t, {}, "prototype_frost_orb") == 0,

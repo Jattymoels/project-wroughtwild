@@ -378,38 +378,42 @@ func refresh() -> void:
 
 	for child in _rails.get_children():
 		child.queue_free()
-	_rails_section.text = "Rails  (%d of %d set)" % [int(view.get("rails_set", 0)), rails_allowed] if rails_allowed > 0 else "Rails"
-	if bool(view.get("can_specialise", false)):
-		var offer := Label.new()
-		offer.text = "The Tyrant's forge was your first test. Choose a specialisation: it decides which patterns your rails may hold. The choice is made once."
-		offer.modulate = UiTheme.SUN_WARM
-		offer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		offer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		_rails.add_child(offer)
-		for s in view.get("specialisations", []):
-			var names := PackedStringArray()
-			var tips := PackedStringArray()
-			for p in s.get("patterns", []):
-				names.append(String(p["display_name"]))
-				tips.append("%s (%s): %s - %s." % [p["display_name"], p["axis"], p["condition_text"], p["rule_text"]])
-			var button := Button.new()
-			button.text = "Specialise as a %s   ·   %s" % [s["display_name"], ", ".join(names)]
-			button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-			button.clip_text = true
-			button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			button.tooltip_text = "\n".join(tips)
-			button.pressed.connect(_on_specialise.bind(String(s["id"])))
-			_rails.add_child(button)
-	elif String(view.get("specialisation", "")) == "":
+	_rails_section.text = "Rails  (%d of %d set)" % [int(view.get("rails_set", 0)), rails_allowed]
+	if String(view.get("class", "")) == "":
 		var none := Label.new()
-		none.text = "The bare plate is your class. The first hall's test - the Tyrant's forge - opens the plate's exterior: a specialisation, and rails on the rows and columns."
+		none.text = "No class stands. The class chosen before play sets the plate's surround: the patterns its rails may hold."
 		none.modulate = UiTheme.MUTED
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		_rails.add_child(none)
 	else:
+		if bool(view.get("can_specialise", false)):
+			# The view (owner, 4 Sep 2026): what the surround can become.
+			var offer := Label.new()
+			offer.text = "The Tyrant's forge is behind you. Specialise further: each way says what your rails become. The choice is made once."
+			offer.modulate = UiTheme.SUN_WARM
+			offer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			offer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			_rails.add_child(offer)
+			for s in view.get("specialisations", []):
+				var button := Button.new()
+				button.text = "Specialise as a %s" % s["display_name"]
+				button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+				button.clip_text = true
+				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				button.pressed.connect(_on_specialise.bind(String(s["id"])))
+				_rails.add_child(button)
+				for b in s.get("becomes", []):
+					var line := Label.new()
+					line.text = "    %s becomes %s: %s." % [b["from"]["display_name"], b["to"]["display_name"], b["to"]["rule_text"]]
+					line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+					line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+					line.modulate = UiTheme.FROST
+					_rails.add_child(line)
 		var who := Label.new()
-		who.text = "A %s. Pick a pattern, then a rail outside the grid: it reads the whole row or column. One rail per pattern; the era allows %d." % [view.get("specialisation_name", ""), rails_allowed]
+		var spec_name: String = String(view.get("specialisation_name", ""))
+		who.text = "A %s%s. Pick a pattern, then a rail outside the grid: it reads the whole row or column. One rail per pattern; the era allows %d." % [
+			view.get("class_name", ""), " (%s)" % spec_name if spec_name != "" else "", rails_allowed]
 		who.modulate = UiTheme.MUTED
 		who.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		who.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -469,7 +473,7 @@ func _rail_button(slot: Dictionary, allowed: int, size: Vector2) -> Button:
 		button.text = "rail"
 		button.disabled = true
 		button.modulate = Color(1, 1, 1, 0.3)
-		button.tooltip_text = "The rail of %s. The plate's exterior opens with the first hall's test: pass the Tyrant's forge and choose a specialisation." % where
+		button.tooltip_text = "The rail of %s. The era allows no rails yet." % where
 	elif String(slot.get("pattern", "")) == "":
 		button.text = "rail"
 		button.modulate = Color(1, 1, 1, 0.5)
@@ -484,6 +488,8 @@ func _rail_button(slot: Dictionary, allowed: int, size: Vector2) -> Button:
 		else:
 			button.modulate = Color(UiTheme.SUN_WARM, 0.45)
 			lines.append("Not lit: %s" % _rail_why(slot))
+		for b in slot.get("becomes", []):
+			lines.append("As a %s it becomes %s: %s." % [b["display_name"], b["pattern"]["display_name"], b["pattern"]["rule_text"]])
 		lines.append("Click to clear the rail.")
 		button.tooltip_text = "\n".join(lines)
 	if not button.disabled:
@@ -522,7 +528,7 @@ func _on_pattern(id: String) -> void:
 
 func _on_specialise(id: String) -> void:
 	if sim.foundry_specialise(id):
-		_message.text = "You are a %s. Your patterns are listed under Rails; the rails outside the grid take them." % sim.foundry().get("specialisation_name", id)
+		_message.text = "You are a %s. Your rails have become what they showed; the patterns under Rails are the grown ones." % sim.foundry().get("specialisation_name", id)
 		_after_change()
 	else:
 		_message.text = "The choice is not open."

@@ -11,7 +11,7 @@ This file defines shared terms used by design documents and future implementatio
 | Build palette | The construction interface for selecting shapes available to the current material family. |
 | Capability | Something the player can now do that was previously impossible or impractical. |
 | Catalyst | A rare crafting input used during a production step to influence or preserve item properties. |
-| Class hall | An authored world location whose test grants a specialisation: the patterns the Foundry plate's rails may hold. There is no starting class; until the hall is built, the trial's forge stands in for its test. |
+| Class hall | An authored world location tied to the starting class whose trial opens a specialisation: what the class's rail patterns on the Foundry plate become. Until it is built, the trial's forge stands in. |
 | Craft skill | Use-developed competence such as blacksmithing that gates more complicated work. |
 | Facility | A station, tool, machine or powered process required to perform a craft operation. |
 | Ingot | A Foundry point: one verb at a flat value, forged by a milestone and placed on the plate. |

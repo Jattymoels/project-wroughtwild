@@ -40,6 +40,9 @@ var hud: Hud
 var work_panel: WorkPanel
 var inventory_panel: InventoryPanel
 var foundry_panel: FoundryPanel
+## The class chosen before play begins (D-004, D-023 slice 9): the sandpit
+## opens this when no class stands; it blocks play until one is chosen.
+var class_panel: ClassPanel
 var trial: TrialController
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
@@ -102,6 +105,12 @@ func _ready() -> void:
 	foundry_panel.player = self
 	foundry_panel.closed.connect(_capture_mouse)
 	add_child(foundry_panel)
+
+	class_panel = ClassPanel.new()
+	class_panel.sim = inventory.get_sim()
+	class_panel.player = self
+	class_panel.closed.connect(_capture_mouse)
+	add_child(class_panel)
 
 	trial = TrialController.new()
 	trial.setup(self)
@@ -169,6 +178,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_cancel"):
 		if hud.help_visible():
 			hud.toggle_help()
+		elif class_panel.is_open():
+			pass # the class is chosen, not dismissed
 		elif inventory_panel.is_open():
 			inventory_panel.close_panel()
 		elif foundry_panel.is_open():
@@ -185,7 +196,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		save_game()
 	elif event.is_action_pressed("load_game"):
 		load_game()
-	elif work_panel.is_open() or inventory_panel.is_open() or foundry_panel.is_open():
+	elif work_panel.is_open() or inventory_panel.is_open() or foundry_panel.is_open() or class_panel.is_open():
 		return
 	elif event.is_action_pressed("hand_craft"):
 		open_hand_crafting()
@@ -264,13 +275,26 @@ func toggle_foundry() -> void:
 		foundry_panel.close_panel()
 		_capture_mouse()
 		return
-	if work_panel.is_open() or inventory_panel.is_open():
+	if work_panel.is_open() or inventory_panel.is_open() or class_panel.is_open():
 		return
 	open_foundry()
 
 
+## Before play begins (D-004): the class. Opened by the sandpit when no
+## class stands; nothing to do once one does.
+func offer_class() -> void:
+	if not bool(inventory.get_sim().foundry().get("can_choose_class", false)):
+		return
+	placement.set_build_mode_enabled(false)
+	inventory_panel.close_panel()
+	work_panel.close_panel()
+	foundry_panel.close_panel()
+	class_panel.open_panel()
+	_release_mouse()
+
+
 func toggle_inventory() -> void:
-	if work_panel.is_open() or foundry_panel.is_open():
+	if work_panel.is_open() or foundry_panel.is_open() or class_panel.is_open():
 		return
 	if inventory_panel.is_open():
 		inventory_panel.close_panel()
@@ -313,6 +337,9 @@ func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 	if ok:
 		# The save restored known skills and the bar; the HUD rebuilds.
 		combat.loadout_changed.emit()
+		# A save that carries a class needs no choosing.
+		if class_panel.is_open() and not bool(inventory.get_sim().foundry().get("can_choose_class", false)):
+			class_panel.close_panel()
 	hud.notify("Loaded." if ok else "Load failed: %s" % manager.last_error)
 	return ok
 
