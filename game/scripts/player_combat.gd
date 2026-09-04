@@ -113,6 +113,17 @@ var home_position := Vector3.ZERO
 ## The last shelter probe as the sim returned it ({enclosed, cells, reason,
 ## leak}), so build mode can mark where a room leaks.
 var last_shelter: Dictionary = {}
+## The night (Wave 6 slice 5): out in the open after dark the cold takes
+## life down to a floor and no further; in a shelter the night mends you
+## faster. The sim's day rules say how much; this pays them per frame.
+const COMPASS := ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+var night := false
+var day_phase := "day"
+## True while the cold is taking life.
+var exposed := false
+var _exposure_per_second := 0.0
+var _exposure_floor_fraction := 0.0
+var _night_regen_multiplier := 1.0
 
 
 func _tick_shelter(delta: float) -> void:
@@ -130,7 +141,14 @@ func _tick_shelter(delta: float) -> void:
 			has_home = true
 			home_position = get_parent().global_position
 	if sheltered and _settle_left <= 0.0 and life > 0.0 and life < max_life:
-		heal(_regen_per_second * delta)
+		heal(regen_per_second() * delta)
+	# The cold: at night, out in the open, life falls to the floor and stops.
+	var floor_life := _exposure_floor_fraction * max_life
+	var cold := night and not sheltered and life > floor_life and life > 0.0 and _exposure_per_second > 0.0
+	if cold:
+		life = maxf(floor_life, life - _exposure_per_second * delta)
+		life_changed.emit(life, max_life)
+	exposed = cold
 
 
 func _probe_shelter() -> bool:
@@ -165,8 +183,50 @@ func resting() -> bool:
 	return sheltered and _settle_left <= 0.0 and life < max_life
 
 
+## What resting pays per second: the shelter's rate, more through the night.
 func regen_per_second() -> float:
-	return _regen_per_second
+	return _regen_per_second * (_night_regen_multiplier if night else 1.0)
+
+
+## The hour and the day rules, from the sandpit each frame.
+func set_day(day: Dictionary, rules: Dictionary) -> void:
+	night = bool(day.get("night", false))
+	day_phase = String(day.get("phase", "day"))
+	_exposure_per_second = float(rules.get("exposure_life_per_second", 0.0))
+	_exposure_floor_fraction = float(rules.get("exposure_floor_fraction", 0.0))
+	_night_regen_multiplier = float(rules.get("shelter_night_regen_multiplier", 1.0))
+
+
+## One line for the HUD about the dark ("" by day or under a roof): the
+## cold's cost and the way home.
+func night_text() -> String:
+	if sheltered:
+		return ""
+	var home := home_text()
+	var way := "  ·  home " + home if home != "" else ""
+	if exposed:
+		return "the cold bites -%.1f/s%s" % [_exposure_per_second, way]
+	if night:
+		return "cold to the bone%s" % way
+	if day_phase == "dusk":
+		return "dusk%s" % way
+	return ""
+
+
+## "84 m NW" to the last shelter rested in ("" without one).
+func home_text() -> String:
+	if not has_home:
+		return ""
+	var to: Vector3 = home_position - (get_parent() as Node3D).global_position
+	to.y = 0.0
+	if to.length() < 6.0:
+		return "right here"
+	return "%d m %s" % [int(to.length()), compass(to)]
+
+
+## Eight winds; -Z is north.
+static func compass(to: Vector3) -> String:
+	return COMPASS[wrapi(roundi(atan2(to.x, -to.z) / (TAU / 8.0)), 0, 8)]
 
 
 func _physics_process(delta: float) -> void:

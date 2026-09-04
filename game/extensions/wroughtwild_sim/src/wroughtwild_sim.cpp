@@ -227,6 +227,10 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("structure_enclosure", "seed", "removed_blocks", "at"),
                          &WroughtwildSim::structure_enclosure);
     ClassDB::bind_method(D_METHOD("shelter"), &WroughtwildSim::shelter);
+    ClassDB::bind_method(D_METHOD("advance_time", "seconds"), &WroughtwildSim::advance_time);
+    ClassDB::bind_method(D_METHOD("day"), &WroughtwildSim::day);
+    ClassDB::bind_method(D_METHOD("day_rules"), &WroughtwildSim::day_rules);
+    ClassDB::bind_method(D_METHOD("set_day_clock", "seconds"), &WroughtwildSim::set_day_clock);
     ClassDB::bind_method(D_METHOD("note_skill_use", "skill_id"), &WroughtwildSim::note_skill_use);
     ClassDB::bind_method(D_METHOD("discard_pack_item", "index"), &WroughtwildSim::discard_pack_item);
     ClassDB::bind_method(D_METHOD("transfer_targets", "process_id"), &WroughtwildSim::transfer_targets);
@@ -2581,6 +2585,50 @@ Dictionary WroughtwildSim::shelter() const {
     d["regen_life_per_round"] = tuning_->world.shelter.regenLifePerRound;
     d["settle_rounds"] = tuning_->world.shelter.settleRounds;
     d["max_room_cells"] = tuning_->world.shelter.maxRoomCells;
+    return d;
+}
+
+void WroughtwildSim::advance_time(double seconds) {
+    if (require_loaded("advance_time")) player_->advanceTime(seconds);
+}
+
+void WroughtwildSim::set_day_clock(double seconds) {
+    if (require_loaded("set_day_clock")) player_->setDayClock(seconds);
+}
+
+Dictionary WroughtwildSim::day() const {
+    Dictionary d;
+    if (!require_loaded("day")) {
+        return d;
+    }
+    const auto info = wroughtwild::daycycle::info(tuning_->world.day, player_->dayClock());
+    d["index"] = info.index;
+    d["fraction"] = info.fraction;
+    d["phase"] = String(info.phase.c_str());
+    d["daylight"] = info.daylight;
+    d["night"] = info.night;
+    d["seconds_to_night"] = info.secondsToNight;
+    d["seconds_to_dawn"] = info.secondsToDawn;
+    d["clock_seconds"] = player_->dayClock();
+    return d;
+}
+
+Dictionary WroughtwildSim::day_rules() const {
+    Dictionary d;
+    if (!require_loaded("day_rules")) {
+        return d;
+    }
+    const auto& r = tuning_->world.day;
+    const double round = tuning_->realtime.roundSeconds > 0.01 ? tuning_->realtime.roundSeconds : 0.01;
+    d["length_seconds"] = r.lengthSeconds;
+    d["night_light"] = r.nightLight;
+    d["dawn_end"] = r.dawnEnd;
+    d["dusk_end"] = r.duskEnd;
+    d["exposure_life_per_second"] = r.exposureLifePerRound / round;
+    d["exposure_floor_fraction"] = r.exposureFloorFraction;
+    d["night_aggro_multiplier"] = r.nightAggroMultiplier;
+    d["night_sleep_range_multiplier"] = r.nightSleepRangeMultiplier;
+    d["shelter_night_regen_multiplier"] = r.shelterNightRegenMultiplier;
     return d;
 }
 

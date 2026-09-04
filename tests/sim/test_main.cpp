@@ -9,6 +9,7 @@
 #include <set>
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
+#include "wroughtwild/daycycle.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/foundry.h"
 #include "wroughtwild/grammar.h"
@@ -3805,6 +3806,69 @@ void testWorldMadeWhole(const tuning::Tuning& t) {
     }
 }
 
+void testDayAndNight(const tuning::Tuning& t) {
+    // Wave 6 slice 5 (the owner, 4 Sep 2026: "imperative there is almost
+    // like a forced - go back and continue your shelter, and get lost in
+    // that for a bit"): the world keeps a clock; the night is dark, cold out
+    // in the open and wider awake, and a shelter mends you faster through it.
+    const auto& d = t.world.day;
+    check(d.lengthSeconds >= 600.0 && d.lengthSeconds <= 900.0, "day: a day is ten to fifteen minutes");
+    check(d.dawnEnd < d.dayEnd && d.dayEnd < d.duskEnd && d.duskEnd < 1.0, "day: dawn, day, dusk and night in order");
+    check(1.0 - d.duskEnd >= 0.3, "day: the night is at least three tenths of the day - long enough to build through");
+    check(d.startFraction >= d.dawnEnd && d.startFraction < d.dayEnd * 0.5, "day: a new game starts early in the day, the first day the longest");
+    check(d.exposureLifePerRound > 0.0 && d.exposureFloorFraction > 0.0 && d.exposureFloorFraction < 0.5,
+          "day: the cold costs, and stops well above dead");
+    check(d.nightAggroMultiplier > 1.0 && d.nightSleepRangeMultiplier > 1.0 && d.shelterNightRegenMultiplier > 1.0,
+          "day: the night is wider awake and the shelter mends faster through it");
+
+    auto at = [&](double fraction, int day) { return daycycle::info(d, (fraction - d.startFraction + day) * d.lengthSeconds); };
+    const auto start = daycycle::info(d, 0.0);
+    check(start.index == 1 && start.phase == "day" && start.daylight == 1.0 && !start.night, "day: a new game starts in the morning of day one");
+    check(std::abs(start.fraction - d.startFraction) < 1e-9, "day: start_fraction into day one");
+    const auto dawnMid = at(d.dawnEnd * 0.5, 1);
+    const auto duskMid = at((d.dayEnd + d.duskEnd) * 0.5, 0);
+    const auto nightMid = at((d.duskEnd + 1.0) * 0.5, 0);
+    check(dawnMid.phase == "dawn" && duskMid.phase == "dusk" && nightMid.phase == "night", "day: the phases fall where the fractions say");
+    check(dawnMid.daylight > d.nightLight && dawnMid.daylight < 1.0 && duskMid.daylight > d.nightLight && duskMid.daylight < 1.0,
+          "day: dawn and dusk sit between night and day");
+    check(nightMid.night && std::abs(nightMid.daylight - d.nightLight) < 1e-9, "day: the dead of night keeps night_light");
+    check(!duskMid.night && duskMid.secondsToNight > 0.0 && duskMid.secondsToNight < (d.duskEnd - d.dayEnd) * d.lengthSeconds,
+          "day: dusk is the warning, not the night, and counts down to it");
+    checkNear(nightMid.secondsToDawn, (1.0 - (d.duskEnd + 1.0) * 0.5) * d.lengthSeconds, 1e-6, "day: the night counts down to dawn");
+    check(at(0.2, 1).index == 2 && at(0.2, 1).phase == "day", "day: a day later is day two");
+    bool monotone = true;
+    for (int i = 1; i <= 20; ++i) {
+        const double a = d.dayEnd + (d.duskEnd - d.dayEnd) * (i - 1) / 20.0;
+        const double b = d.dayEnd + (d.duskEnd - d.dayEnd) * i / 20.0;
+        if (at(b, 0).daylight > at(a, 0).daylight + 1e-9) monotone = false;
+        const double c = d.dawnEnd * (i - 1) / 20.0;
+        const double e = d.dawnEnd * i / 20.0;
+        if (at(e, 1).daylight < at(c, 1).daylight - 1e-9) monotone = false;
+    }
+    check(monotone, "day: dusk only darkens, dawn only brightens");
+    // Exposure: the cold takes life at its rate and stops at the floor.
+    const double round = t.realtime.roundSeconds;
+    const double perSecond = d.exposureLifePerRound / round;
+    checkNear(daycycle::exposed(d, round, 100.0, 100.0, 10.0), 100.0 - perSecond * 10.0, 1e-9, "day: ten seconds in the cold cost ten seconds' worth");
+    checkNear(daycycle::exposed(d, round, 100.0, 100.0, 1e6), d.exposureFloorFraction * 100.0, 1e-9, "day: a whole night out stops at the floor");
+    checkNear(daycycle::exposed(d, round, 10.0, 100.0, 60.0), 10.0, 1e-9, "day: life already under the floor is left alone - the cold never kills");
+    check(perSecond * (1.0 - d.duskEnd) * d.lengthSeconds > (1.0 - d.exposureFloorFraction) * t.world.playerBase.maxLife * 0.5,
+          "day: a night out in the open costs at least half the way to the floor");
+    // The clock is the economy's, only runs forward, and survives a save.
+    economy::PlayerEconomy player(t);
+    player.advanceTime(100.0);
+    player.advanceTime(-5.0);
+    check(std::abs(player.dayClock() - 100.0) < 1e-9, "day: the clock only runs forward");
+    save::SaveGame game;
+    game.economy = player.exportState();
+    save::SaveGame loaded = save::fromJson(save::toJson(game));
+    economy::PlayerEconomy restored(t);
+    restored.importState(loaded.economy);
+    check(std::abs(restored.dayClock() - 100.0) < 1e-9, "day: the clock round-trips through a save");
+    tuning::DayDef none;
+    check(daycycle::info(none, 5000.0).phase == "day" && daycycle::info(none, 5000.0).daylight == 1.0, "day: no day rules means endless day");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3859,6 +3923,7 @@ int main(int argc, char** argv) {
     testClassGear(t);
     testMelee(t);
     testWorldMadeWhole(t);
+    testDayAndNight(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

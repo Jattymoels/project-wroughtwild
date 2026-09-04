@@ -177,6 +177,14 @@ regenerates: the early deprivation the owner asked for stays, and a mob
 that breaks in stops the rest. Numbers live in `world.json` `shelter`; the
 HUD's life line reads "sheltered" or "resting +N/s".
 
+Through the night (Wave 6 slice 5, `world.json` `day`) the shelter is the
+point: out in the open after dark the cold takes `exposure_life_per_round`
+per round down to `exposure_floor_fraction` of max life and no further
+(it never kills; it sends you home), and a sheltered rest pays
+`shelter_night_regen_multiplier` times the regen. The life line reads
+"the cold bites -N/s · home 84 m NW" out there and "resting +N/s" under
+the roof; dusk's notice points home by the eight winds.
+
 ## Implemented: freedom outside the cell (owner playtest fixes, 3 Sep 2026)
 
 The owner's first building playtest: "within the 1 block building feels

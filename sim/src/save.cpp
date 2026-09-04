@@ -123,6 +123,7 @@ std::string toJson(const SaveGame& game) {
     writeStringList(out, game.economy.knownSkills);
     out << ",\"skill_bar\":";
     writeStringList(out, game.economy.skillBar);
+    out << ",\"day_clock\":" << game.economy.dayClock;
     out << ",\"foundry\":{\"owned\":";
     writeIntMap(out, game.economy.foundry.owned);
     out << ",\"plate\":[";
@@ -202,6 +203,8 @@ SaveGame fromJson(const std::string& text) {
     // Saves written before D-016 carry no loadout; importState starts one.
     if (auto known = eco.find("known_skills")) game.economy.knownSkills = readStringList(*known);
     if (auto bar = eco.find("skill_bar")) game.economy.skillBar = readStringList(*bar);
+    // Saves written before Wave 6 slice 5 carry no clock: day one, morning.
+    if (auto clock = eco.find("day_clock")) game.economy.dayClock = clock->asNumber();
     // Saves written before D-019 carry no Foundry.
     if (auto f = eco.find("foundry")) {
         game.economy.foundry.owned = readIntMap(f->get("owned"));

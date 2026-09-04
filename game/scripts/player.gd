@@ -43,6 +43,9 @@ var foundry_panel: FoundryPanel
 ## The class chosen before play begins (D-004, D-023 slice 9): the sandpit
 ## opens this when no class stands; it blocks play until one is chosen.
 var class_panel: ClassPanel
+## The lamp (Wave 6 slice 5): a small warm light the player carries after
+## dark, so the night keeps its shapes close by and the way home is walkable.
+var _lamp: OmniLight3D
 var trial: TrialController
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
@@ -342,6 +345,24 @@ func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 			class_panel.close_panel()
 	hud.notify("Loaded." if ok else "Load failed: %s" % manager.last_error)
 	return ok
+
+
+## The hour, from the sandpit each frame (Wave 6 slice 5): the cold and the
+## night's regen go to combat, the lamp brightens as the daylight goes.
+func set_day(day: Dictionary, rules: Dictionary) -> void:
+	combat.set_day(day, rules)
+	if _lamp == null:
+		_lamp = OmniLight3D.new()
+		_lamp.name = "Lamp"
+		_lamp.light_color = Color(1.0, 0.82, 0.6)
+		_lamp.omni_range = 9.0
+		_lamp.omni_attenuation = 1.4
+		_lamp.shadow_enabled = false
+		_lamp.position = Vector3(0.0, 1.6, 0.0)
+		add_child(_lamp)
+	var dark := 1.0 - clampf(float(day.get("daylight", 1.0)), 0.0, 1.0)
+	_lamp.light_energy = dark * 1.4
+	_lamp.visible = dark > 0.05
 
 
 func _physics_process(delta: float) -> void:

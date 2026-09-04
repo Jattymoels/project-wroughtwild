@@ -13,6 +13,20 @@
     "max_room_cells": 400,
     "design_purpose": "Resting in a shelter is the health-regeneration route (owner playtest 2 Sep 2026: 'you need some passive health regeneration or a way to get health regened'). A shelter is an enclosed room - the sim flood-fills the space around the player through open cells, stopped by placed walls, floors, blocks and by terrain, and it is a shelter when the fill closes before max_room_cells build cells without reaching open sky. Regen starts settle_rounds after the last hit taken and pays regen_life_per_round (per round_seconds of combat_realtime.json), so a hut is worth building on day one, a dug-out hollow with a slab over its mouth counts, and a mob that breaks in stops the rest. Out in the open, nothing regenerates: the deprivation the owner asked for at the start stays. max_room_cells is a cost guard, not a house size (owner playtest 3 Sep 2026: an enclosed house did not count - 96 cells is a 6x6x3 room and a real house is bigger): 400 build cells is a hall, and the sky is what says a room is open."
   },
+  "day": {
+    "length_seconds": 720,
+    "start_fraction": 0.1,
+    "dawn_end": 0.06,
+    "day_end": 0.58,
+    "dusk_end": 0.66,
+    "night_light": 0.14,
+    "exposure_life_per_round": 0.4,
+    "exposure_floor_fraction": 0.3,
+    "night_aggro_multiplier": 1.6,
+    "night_sleep_range_multiplier": 1.5,
+    "shelter_night_regen_multiplier": 2.0,
+    "design_purpose": "Day and night (Wave 6 slice 5; the owner, 4 Sep 2026: 'imperative there is almost like a forced - go back and continue your shelter, and get lost in that for a bit'). A day is length_seconds of play (twelve minutes); a new game starts start_fraction into day one so the first day is long; the phases end at dawn_end, day_end and dusk_end as fractions of the day, so the night is the last third - about four minutes, long enough to build through. Dusk is the warning: the light goes, the HUD counts down and points home. Night: the world keeps night_light of its daylight; out in the open the cold takes exposure_life_per_round per round of combat_realtime.json down to exposure_floor_fraction of max life and no further (it never kills; it sends you home); packs wake from night_aggro_multiplier times as far and stay awake night_sleep_range_multiplier times as far; in a shelter the rest pays shelter_night_regen_multiplier times the shelter's regen. The night is the forced return: the open is worse, the roof is better, and the four minutes are for the shelter."
+  },
   "enemies": [
     {
       "id": "ember_whelp",

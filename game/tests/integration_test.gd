@@ -24,6 +24,8 @@ var _corner_panel: PlacedBlock
 var _stray: Enemy
 var _door: PlacedBlock
 var _room: Array = []
+var _life_before_night := 0.0
+var _night_packs: MobPacks
 ## The x-face, z-face and vertical edge that all meet at build-grid corner
 ## (5, 3, 5) - registry coordinates run at half cells, so (10, 6, 10).
 const CORNER_FACE_X := {"kind": "face", "axis": 0, "cell": Vector3i(10, 6, 10)}
@@ -478,6 +480,55 @@ func _physics_process(_delta: float) -> void:
 			var life_before := _player.combat.life
 			check(_back.force_attack() > 0.0, "combat: dash grants no i-frames - the hit lands")
 			check(_player.combat.life < life_before, "combat: dashing through an attack still costs life")
+		35:
+			# Day and night (Wave 6 slice 5): the clock set past dusk, the
+			# hour handed on as the sandpit does each frame - the player, a
+			# pack system and a mood: every mob wakes from further, a
+			# shelter's rest pays more, the sun sits low, the lamp is lit,
+			# and out in the open the cold takes life toward the floor.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			var combat := _player.combat
+			_life_before_night = combat.life
+			sim.advance_time(float(sim.day().get("seconds_to_night", 0.0)) + 1.0)
+			var day: Dictionary = sim.day()
+			var rules: Dictionary = sim.day_rules()
+			_player.set_day(day, rules)
+			_night_packs = MobPacks.new()
+			add_child(_night_packs)
+			_night_packs.set_night(bool(day.get("night", false)), rules)
+			check(combat.night and _night_packs.night and _night_packs.aggro_multiplier() > 1.0
+				and _night_packs.sleep_range() > _night_packs.sleep_range_m and _back.aggro_range > _back.base_aggro_range,
+				"night: past dusk the player and the packs know it, and every mob wakes from further")
+			var by_day := float(sim.shelter().get("regen_life_per_round", 0.0)) / float(sim.realtime().get("round_seconds", 1.0))
+			check(combat.regen_per_second() > by_day + 0.01, "night: a shelter's rest pays more through the night (%.1f/s)" % combat.regen_per_second())
+			var lamp := _player.get_node_or_null("Lamp") as OmniLight3D
+			check(lamp != null and lamp.visible and lamp.light_energy > 0.5, "night: the lamp is lit after dark")
+			var mood := BiomeMood.new()
+			mood.set_day(day, rules)
+			check(mood.sun_rotation().x > -0.4, "night: the sun sits low")
+			mood.free()
+			combat.has_home = true
+			combat.home_position = _player.global_position + Vector3(30.0, 0.0, -30.0)
+			combat.life = 60.0
+		37:
+			var combat := _player.combat
+			check(combat.life < 60.0 and combat.life > 50.0 and combat.exposed and combat.night_text().begins_with("the cold bites"),
+				"night: out in the open the cold takes life (%.2f) and the HUD says so" % combat.life)
+			check(combat.home_text() == "42 m NE" and combat.night_text().find("home 42 m NE") >= 0,
+				"night: the way home is on the line (%s)" % combat.home_text())
+			combat.life = 10.0
+		39:
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			var combat := _player.combat
+			check(combat.life <= 10.0 and not combat.exposed, "night: under the floor the cold leaves you alone - it never kills")
+			sim.set_day_clock(0.0)
+			_player.set_day(sim.day(), sim.day_rules())
+			_night_packs.set_night(false, sim.day_rules())
+			check(not combat.night and not _night_packs.night and combat.night_text() == "" and _back.aggro_range == _back.base_aggro_range,
+				"night: the clock set back, it is day again and the wake is what it was")
+			_night_packs.free()
+			combat.has_home = false
+			combat.life = _life_before_night
 		40:
 			# Open-world death: the pack drops where you fell, you respawn at camp.
 			var sim: WroughtwildSim = _player.inventory.get_sim()

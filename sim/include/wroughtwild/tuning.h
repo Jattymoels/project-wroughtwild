@@ -298,6 +298,23 @@ struct ShelterDef {
     int maxRoomCells = 0;
 };
 
+// Day and night (world.json "day", Wave 6 slice 5): the clock the world
+// keeps, the four phases as fractions of a day, and what the night does -
+// the light it leaves, the cold it costs out in the open (never past the
+// floor), how much further packs wake and stay awake, and how much faster
+// a shelter mends you through it. length 0 means endless day.
+struct DayDef {
+    double lengthSeconds = 0.0;
+    double startFraction = 0.0;                   // where a new game begins in day one
+    double dawnEnd = 0.0, dayEnd = 0.0, duskEnd = 0.0; // phase ends, fractions of a day
+    double nightLight = 0.0;                      // daylight at the dead of night
+    double exposureLifePerRound = 0.0;            // life lost per round out in the open at night
+    double exposureFloorFraction = 0.0;           // the cold stops here (fraction of max life)
+    double nightAggroMultiplier = 1.0;
+    double nightSleepRangeMultiplier = 1.0;
+    double shelterNightRegenMultiplier = 1.0;
+};
+
 
 // One line of a mob's loot table. Three kinds (D-016): a material stack, a
 // rolled gear piece of a rarity and tier, or a skill page that teaches one
@@ -360,6 +377,7 @@ struct EliteModifierDef {
 struct WorldTable {
     PlayerBase playerBase;
     ShelterDef shelter;
+    DayDef day;
     std::vector<EnemyDef> enemies;
     std::vector<EliteModifierDef> eliteModifiers;
     std::vector<GatherSite> gatheringSites;

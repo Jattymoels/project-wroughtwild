@@ -81,6 +81,37 @@ var _target: Dictionary = MOODS[DEFAULT_BIOME]
 var _era_fog_tint := Color.WHITE
 var _era_sun_scale := 1.0
 
+## The day (Wave 6 slice 5): daylight from the sim's clock darkens the sky,
+## the fog and the sun toward the night's blue, and the sun swings over the
+## valley from dawn to dusk; at night it stays low and faint, the moon's
+## stand-in, so the dark keeps its shapes.
+const NIGHT_TINT := Color(0.30, 0.36, 0.55)
+const NIGHT_SUN_TINT := Color(0.55, 0.65, 0.95)
+const NIGHT_SUN_FLOOR := 0.12
+const SUN_YAW := 0.45
+var _daylight := 1.0
+var _day_fraction := 0.3
+var _dawn_end := 0.06
+var _dusk_end := 0.66
+
+
+func set_day(day: Dictionary, rules: Dictionary) -> void:
+	_daylight = clampf(float(day.get("daylight", 1.0)), 0.0, 1.0)
+	_day_fraction = float(day.get("fraction", 0.3))
+	_dawn_end = float(rules.get("dawn_end", _dawn_end))
+	_dusk_end = float(rules.get("dusk_end", _dusk_end))
+
+
+## The sun's rotation for the hour: rising through the dawn, high at
+## mid-day, setting through the dusk, then low through the night.
+func sun_rotation() -> Vector3:
+	var span := maxf(_dusk_end - _dawn_end, 0.01)
+	var t := clampf((_day_fraction - _dawn_end) / span, 0.0, 1.0)
+	var arc := sin(t * PI)
+	var pitch := -(0.18 + 0.75 * arc)
+	var yaw := SUN_YAW + (t - 0.5) * 1.4
+	return Vector3(pitch, yaw, 0.0)
+
 
 func set_era(index: int) -> void:
 	_era_fog_tint = Color.WHITE if index < 2 else Color(0.9, 0.82, 0.8)
@@ -125,18 +156,20 @@ func _process(delta: float) -> void:
 
 
 func _apply(weight: float) -> void:
-	environment.fog_light_color = environment.fog_light_color.lerp(_target["fog_color"] * _era_fog_tint, weight)
+	var tint := _era_fog_tint * NIGHT_TINT.lerp(Color.WHITE, _daylight)
+	environment.fog_light_color = environment.fog_light_color.lerp(_target["fog_color"] * tint, weight)
 	environment.fog_density = lerpf(environment.fog_density, _target["fog_density"], weight)
 	# The far distance dissolves into the sky (the expansive pass): more in
 	# open country, less under the trees.
 	environment.fog_aerial_perspective = lerpf(environment.fog_aerial_perspective, float(_target.get("aerial", 0.5)), weight)
 	var sky: ProceduralSkyMaterial = (environment.sky.sky_material as ProceduralSkyMaterial) if environment.sky != null else null
 	if sky != null:
-		sky.sky_top_color = sky.sky_top_color.lerp(_target.get("sky_top", sky.sky_top_color) * _era_fog_tint, weight)
-		sky.sky_horizon_color = sky.sky_horizon_color.lerp(_target.get("sky_horizon", sky.sky_horizon_color) * _era_fog_tint, weight)
+		sky.sky_top_color = sky.sky_top_color.lerp(_target.get("sky_top", sky.sky_top_color) * tint, weight)
+		sky.sky_horizon_color = sky.sky_horizon_color.lerp(_target.get("sky_horizon", sky.sky_horizon_color) * tint, weight)
 		sky.ground_horizon_color = sky.sky_horizon_color
 	environment.ambient_light_sky_contribution = lerpf(
 		environment.ambient_light_sky_contribution, _target["ambient"], weight)
 	if sun != null:
-		sun.light_color = sun.light_color.lerp(_target["sun_color"], weight)
-		sun.light_energy = lerpf(sun.light_energy, _target["sun_energy"] * _era_sun_scale, weight)
+		sun.light_color = sun.light_color.lerp(_target["sun_color"] * NIGHT_SUN_TINT.lerp(Color.WHITE, _daylight), weight)
+		sun.light_energy = lerpf(sun.light_energy, _target["sun_energy"] * _era_sun_scale * maxf(_daylight, NIGHT_SUN_FLOOR), weight)
+		sun.rotation = sun.rotation.lerp(sun_rotation(), weight)
