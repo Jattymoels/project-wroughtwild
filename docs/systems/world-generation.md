@@ -189,7 +189,11 @@ and cave light rules (a lamp item; the dark is honest for now).
 
 ## Implemented: the bigger world and the fen (3 Sep 2026)
 
-The map is 224 cells a side (from 160; 196 chunks) with the danger rings
+The map is 320 cells a side since Wave 6 slice 3 (4 Sep 2026; from 224
+and 160 before it; 400 chunks), with the height and moisture noise slowed
+so every biome and hill is broader, and the danger rings pushed out to
+110 m and 220 m, the gate past 160 m. Before that it was 224 cells a side
+(from 160; 196 chunks) with the danger rings
 widened to match (75 m, 150 m) and the gate at least 100 m out. A fifth
 biome, **the fen**, takes the lowest wet band (heights start at the base
 height, so `height_max` 15 with `moisture_min` 0.55; listed before the

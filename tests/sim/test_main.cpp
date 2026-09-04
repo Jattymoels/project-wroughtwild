@@ -2327,7 +2327,7 @@ void testMasteryAndCraftRolls(const tuning::Tuning& t) {
 
 // The bigger world (3 Sep 2026): 224 cells, a fen that owns its own packs.
 void testBiggerWorld(const tuning::Tuning& t) {
-    check(t.worldgen.map.widthCells == 224 && t.worldgen.map.heightCells == 224, "world: 224 cells a side");
+    check(t.worldgen.map.widthCells == 320 && t.worldgen.map.heightCells == 320, "world: 320 cells a side (Wave 6 slice 3)");
     check(t.worldgen.findBiome("fen") != nullptr, "world: the fen exists");
     auto map = worldgen::generate(t, 9);
     int fenCells = 0, fenPacks = 0;
