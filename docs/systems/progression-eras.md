@@ -740,3 +740,71 @@ slower, regeneration after a hit, armour against fire at half, statuses
 decaying faster) which need player-side statuses that do not exist, boss
 resistance to Barbs, Marrow and Quicksilver as subjects (slice 8), the
 Catalyst in a corner (slice 5), links on the trigger (slice 6).
+
+## Implemented: the flow - kinds in the detached cells, the first forms (4 Sep 2026, D-023 slice 5)
+
+The owner, on seeing the socketed Vanguard: "we just don't allow the
+non-skills to be placed in the main subject of the foundry tablet ...
+vanguards and catalysts can only go into the edge cases where they give
+forward their base to the flow of the tablet, but also transform/mutate
+along the way the ingots ... until it hits the skill. We can leave scaling
+defenses to itemisation." This supersedes the socketed Vanguard of slice 4
+the same day. `data/tuning/foundry.json` (schema 5), `items.json`;
+`sim/foundry.h`, `grammar.h`:
+
+- **Only a skill sits in a socket.** `foundry::depth` is a cell's distance
+  to the nearest socket; `kindMayRest` is depth 2 or more on a forged row.
+  `PlayerEconomy::foundryPlaceKind` refuses a socket and a support cell;
+  `validate` lifts a stale kind touching a socket back to the purse.
+- **The flow.** `flowsToSkill` walks a chain of placed pieces, each one
+  step nearer a socket, from the kind to a support beside a laid tablet.
+  Only then does the kind's family base count (`kinds` in foundry.json:
+  the Vanguard +4 armour, the Catalyst none, Marrow and Quicksilver small
+  placeholders) and only then does it work anything. A far kind flows
+  through a corner kind.
+- **Forms.** `forms` in foundry.json, keyed by family, ingot, lane and an
+  optional skill tag, each with one or more effects (a modifier, a value,
+  and for a reaction the packet it speaks to, "native" for the skill's
+  own element). A kind works every support it touches; the ingot keeps
+  its plain reading; the form's effects feed the skill the support serves,
+  both skills for a shared support (`Effect.kind == "form"`). A form
+  speaks to the whole skill whatever its modifier's applies_to says, so
+  Scald's ignite lands on a cold orb.
+- **Reactions.** The Catalyst's same lane sharpens (Deep Frost, Kindling,
+  Serration, Split for projectiles; Quickening a placeholder for Echo);
+  its added lane reacts: the added element also applies its status, and
+  the skill deals 20% more of its own element to an enemy carrying it
+  (Scald, Temper, Quench, Rime; Brittle and Sear as the "more against"
+  half only). `grammar::skillHit` takes the struck mob's statuses and
+  multiplies each packet by the resolved `damage_vs_<status>` (new
+  modifiers `damage_vs_ignite`, `damage_vs_chill`, `damage_vs_bleed`);
+  the engine passes what the enemy carries. Reap, Bracing and Aegis are
+  the sharpened self readings.
+- **The Vanguard's forms**, proposed from the owner's two examples: Frost
+  Leech (4 life on a kill), Quickstep (16% faster after a hit), Barbs,
+  Far Answer, Stand Fast (8 armour on cast), Cinder Guard and Cold Ward
+  (+10 resistance while the flow holds), Second Wind. Marrow and
+  Quicksilver rows wait for slice 8.
+- **The panel** draws a kind in braces, dim until it flows, says what it
+  flows to or that it flows to nothing yet, writes forms on the support
+  cells they work, lists every kind held in "Kinds to set", and refuses a
+  socket or a support cell in words.
+
+Tests: sim 3418 (the families and forms; the pools clean; depth and
+where a kind rests; refusals; a kind alone giving nothing, a support with
+no tablet not a chain, the chain closing; Frost Leech named and felt, the
+Frost keeping its support, the nova untouched; Quickstep through a shared
+support feeding both skills; lifting; the Catalyst without a base that
+still flows; Scald as two effects on the orb's cold, the ignite, 20% more
+against the burning and nothing more against the chilled; Deep Frost on
+the same lane; a Preserving Catalyst as the offence kind; the far cell
+flowing through a corner kind and Serration for the strike; the save; a
+stale kind beside a socket back to the purse). Engine: unit 349 (a
+kind refusing the socket and support, flowing to nothing, then the chain
+closing with Stand Fast); integration 220 (Barbs through a
+real hit from a corner Vanguard).
+
+Not yet: compound forms (a kind worked by another kind; metal and rarity
+as conditions), the reactions' hook halves (Quench's burst, Rime's novas,
+Brittle's shatter), Arc, Linger, Echo, links re-homed, Marrow and
+Quicksilver forms.

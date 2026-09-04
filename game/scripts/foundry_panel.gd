@@ -27,8 +27,8 @@ var _selected: StringName = &""
 ## A skill picked from the tablet tray, to lay on the next empty cell.
 var _selected_skill: StringName = &""
 var _tablets: VBoxContainer
-## A currency kind picked from the purse, to set on the next cell (D-023
-## slice 4): a subject in a socket, an augment in a corner.
+## A currency kind picked from the purse, to set on the next cell (D-023,
+## the flow): a corner, or a far cell beyond one, never touching a socket.
 var _subjects: VBoxContainer
 var _selected_subject: StringName = &""
 ## The frame as the last refresh saw it (D-023).
@@ -167,9 +167,14 @@ func refresh() -> void:
 			currencies[Vector2i(p["row"], p["col"])] = String(p["currency"])
 		else:
 			placed[Vector2i(p["row"], p["col"])] = String(p["ingot"])
-	var subject_names := {}
-	for s in view.get("subjects", []):
-		subject_names[String(s["id"])] = String(s["display_name"])
+	var kind_names := {}
+	var kind_families := {}
+	for k in view.get("kinds", []):
+		kind_names[String(k["id"])] = String(k["display_name"])
+		kind_families[String(k["id"])] = String(k["family_name"])
+	var flowing := {}
+	for f in view.get("flows", []):
+		flowing[Vector2i(int(f["row"]), int(f["col"]))] = bool(f["flows"])
 	# Roles (D-023): every socket's four supports and four corners, named by
 	# the tablet it holds or, bare, by its place on the frame, so no forged
 	# cell is ever blank.
@@ -179,8 +184,6 @@ func refresh() -> void:
 		var subject: String = "the empty socket at row %d, column %d" % [key.x + 1, key.y + 1]
 		if tablets.has(key):
 			subject = "the %s working" % sim.combat_skill(tablets[key]).get("display_name", tablets[key])
-		elif currencies.has(key):
-			subject = "the %s working" % subject_names.get(currencies[key], currencies[key])
 		for d in [Vector2i(0, 1), Vector2i(1, 0), Vector2i(0, -1), Vector2i(-1, 0)]:
 			var side: Vector2i = key + d
 			if not supports.has(side):
@@ -196,7 +199,7 @@ func refresh() -> void:
 	var effects: Array = sim.foundry_effects()
 	for effect in effects:
 		var kind: String = effect["kind"]
-		if kind != "support" and kind != "added" and kind != "backing" and kind != "lending":
+		if kind != "support" and kind != "added" and kind != "backing" and kind != "form":
 			continue
 		var from := Vector2i(int(effect["cell_row"]), int(effect["cell_col"]))
 		if not readings.has(from):
@@ -227,18 +230,16 @@ func refresh() -> void:
 				cell.modulate = UiTheme.FROST
 				lines.append("A socket holding the %s tablet: the ingots beside it support that skill. Click to lift (free)." % subject)
 			elif currencies.has(key):
-				var kind_name: String = subject_names.get(currencies[key], currencies[key])
-				if _sockets.has(key):
-					cell.text = "[ %s ]" % kind_name.replace("Bulwark ", "")
-					cell.modulate = UiTheme.SUN_WARM
-					lines.append("A socket holding a %s: the ingots beside it read as defence. Click to lift (costs metal; it returns to your purse)." % kind_name)
+				var kind_name: String = kind_names.get(currencies[key], currencies[key])
+				cell.text = "{ %s }" % kind_families.get(currencies[key], kind_name)
+				cell.modulate = UiTheme.IRON_RUST if flowing.get(key, false) else Color(UiTheme.IRON_RUST, 0.45)
+				if flowing.get(key, false):
+					lines.append("This %s flows to a skill: its base counts, and it works the supports it touches into forms. Click to lift (costs metal; it returns to your purse)." % kind_name)
 				else:
-					cell.text = "{ %s }" % kind_name.replace("Bulwark ", "")
-					cell.modulate = UiTheme.IRON_RUST
-					lines.append("A %s in a corner: part of its base, and its readings lent to the skill supports it touches. Click to lift (costs metal)." % kind_name)
+					lines.append("This %s flows to nothing yet: no chain of pieces leads inward to a laid tablet. It gives nothing until one does." % kind_name)
 				for effect in effects:
-					if (effect["kind"] == "subject" or effect["kind"] == "augment") and int(effect["cell_row"]) == r and int(effect["cell_col"]) == c:
-						lines.append(effect["sentence"])
+					if effect["kind"] == "augment" and int(effect["cell_row"]) == r and int(effect["cell_col"]) == c:
+						lines.append("Its base: %s." % effect["sentence"])
 			elif placed.has(key):
 				var info: Dictionary = sim.foundry_ingot(placed[key])
 				cell.text = info.get("display_name", placed[key]).replace(" Ingot", "")
@@ -248,7 +249,7 @@ func refresh() -> void:
 			elif _sockets.has(key):
 				cell.text = "[    ]"
 				cell.modulate = UiTheme.FROST
-				lines.append("A socket: lay a skill's tablet or set a Vanguard here, and the four cells beside it become its supports.")
+				lines.append("A socket: lay a skill's tablet here and the four cells beside it become its supports.")
 			else:
 				cell.text = "·"
 				cell.modulate = Color(1, 1, 1, 0.6)
@@ -258,7 +259,7 @@ func refresh() -> void:
 				if placed.has(key) and not readings.has(key):
 					lines.append("It does not read the skill beside it yet.")
 			if corners.has(key) and not placed.has(key) and not tablets.has(key) and not currencies.has(key) and not _sockets.has(key):
-				lines.append("A corner of %s: an ingot here pairs with the supports it touches." % ", ".join(PackedStringArray(corners[key])))
+				lines.append("A corner of %s: an ingot here pairs with the supports it touches; a kind here works them into forms." % ", ".join(PackedStringArray(corners[key])))
 			if readings.has(key):
 				for reading in readings[key]:
 					lines.append(reading)
@@ -320,21 +321,21 @@ func refresh() -> void:
 	for child in _subjects.get_children():
 		child.queue_free()
 	var any_kind := false
-	for s in view.get("subjects", []):
-		if int(s["held"]) <= 0:
+	for k in view.get("kinds", []):
+		if int(k["held"]) <= 0:
 			continue
 		any_kind = true
 		var button := Button.new()
-		button.text = "Set a %s  ×%d   %s when socketed" % [s["display_name"], int(s["held"]), s["sentence"]]
+		button.text = "Set a %s  ×%d   %s" % [k["display_name"], int(k["held"]), k["base_sentence"]]
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		button.tooltip_text = "In a socket: a defence working, the ingots beside it reading as defence.\nIn a corner: part of its base, and its readings lent to the skill supports it touches."
-		if _selected_subject == StringName(String(s["id"])):
+		button.tooltip_text = "In a corner, or a far cell beyond one: its base flows to the skill while a chain of pieces leads inward, and it works every support it touches into a form."
+		if _selected_subject == StringName(String(k["id"])):
 			button.modulate = UiTheme.GRASS_LIGHT
-		button.pressed.connect(_on_subject.bind(String(s["id"])))
+		button.pressed.connect(_on_subject.bind(String(k["id"])))
 		_subjects.add_child(button)
 	if not any_kind:
 		var none := Label.new()
-		none.text = "No kind in the purse to set. Husks and knights pay Vanguards; the reinforced mine pays three."
+		none.text = "No kind in the purse to set. Families pay them: whelps and wisps Catalysts, husks and knights Vanguards; the reinforced mine pays three."
 		none.modulate = UiTheme.MUTED
 		_subjects.add_child(none)
 
@@ -345,7 +346,7 @@ func refresh() -> void:
 		var line := Label.new()
 		var kind: String = effect["kind"]
 		line.text = "%s  ·  %s  —  %s" % [kind, effect["label"], effect["sentence"]]
-		if kind == "support" or kind == "added" or kind == "backing" or kind == "lending":
+		if kind == "support" or kind == "added" or kind == "backing" or kind == "form":
 			line.modulate = UiTheme.FROST
 		elif kind != "ingot":
 			line.modulate = UiTheme.SUN_WARM
@@ -370,7 +371,7 @@ func _on_subject(id: String) -> void:
 	_selected_subject = StringName(id) if _selected_subject != StringName(id) else &""
 	_selected = &""
 	_selected_skill = &""
-	_message.text = "Pick a socket for a working of its own, or a corner to lend its readings." if _selected_subject != &"" else ""
+	_message.text = "Pick a corner: it works the supports it touches into forms, and its base flows to the skill." if _selected_subject != &"" else ""
 	refresh()
 
 
@@ -405,12 +406,12 @@ func _on_cell(row: int, col: int) -> void:
 				refresh()
 			return
 	if _selected_subject != &"":
-		if sim.foundry_place_subject(row, col, String(_selected_subject)):
+		if sim.foundry_place_kind(row, col, String(_selected_subject)):
 			_selected_subject = &""
 			_message.text = ""
 			_after_change()
 		else:
-			_message.text = "That cell will not take it."
+			_message.text = "A kind goes in a corner, where it cannot touch a socket." if _sockets.has(Vector2i(row, col)) or _beside_socket(row, col) else "That cell will not take it."
 			refresh()
 		return
 	if _selected_skill != &"":
@@ -468,6 +469,14 @@ func set_selected_subject(id: StringName) -> void:
 	_selected_subject = id
 	_selected = &""
 	_selected_skill = &""
+
+
+## True when the cell is orthogonally beside a socket (a support cell).
+func _beside_socket(row: int, col: int) -> bool:
+	for d in [Vector2i(0, 1), Vector2i(1, 0), Vector2i(0, -1), Vector2i(-1, 0)]:
+		if _sockets.has(Vector2i(row, col) + d):
+			return true
+	return false
 
 
 func press_cell(row: int, col: int) -> void:

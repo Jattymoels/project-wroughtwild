@@ -2,8 +2,34 @@
 #include "wroughtwild/grammar.h"
 
 #include <algorithm>
+#include <cstdlib>
+#include <functional>
 
 namespace wroughtwild::foundry {
+
+namespace {
+
+const std::vector<std::pair<int, int>> kSides{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+bool hasTag(const std::vector<std::string>& tags, const std::string& tag) {
+    return std::find(tags.begin(), tags.end(), tag) != tags.end();
+}
+
+// Which lane an ingot reads a skill in: "same" when its skill modifier can
+// read the skill (a Frost beside a cold orb), "added" when only its added
+// element can (a Frost beside Ember Bolt), "any" for an ingot with no
+// element to add.
+std::string laneOf(const tuning::Tuning& tuning, const tuning::IngotDef& ingot,
+                   const std::vector<std::string>& skillTags) {
+    if (ingot.addedModifier.empty()) return "any";
+    const auto* own = tuning.items.findModifier(ingot.supportModifier());
+    if (own && !own->isSelf() && grammar::modAppliesToTags(own->appliesToTags, skillTags)) return "same";
+    const auto* added = tuning.items.findModifier(ingot.addedModifier);
+    if (added && grammar::modAppliesToTags(added->appliesToTags, skillTags)) return "added";
+    return "any";
+}
+
+} // namespace
 
 bool Plate::inFrame(int row, int col) const {
     return row >= 0 && col >= 0 && row < rows && col < cols;
@@ -35,6 +61,19 @@ Plate plate(const tuning::FoundryDef& def, int era) {
     return p;
 }
 
+int depth(const Plate& plate, int row, int col) {
+    int best = -1;
+    for (const auto& s : plate.sockets) {
+        const int d = std::abs(s.row - row) + std::abs(s.col - col);
+        if (best < 0 || d < best) best = d;
+    }
+    return best;
+}
+
+bool kindMayRest(const Plate& plate, int row, int col) {
+    return plate.forged(row, col) && depth(plate, row, col) >= 2;
+}
+
 int validate(State& state, const Plate& plate, std::vector<Placement>* lifted) {
     std::vector<Placement> kept;
     int count = 0;
@@ -43,8 +82,9 @@ int validate(State& state, const Plate& plate, std::vector<Placement>* lifted) {
             return (k.row == p.row && k.col == p.col) || (p.isTablet() && k.skill == p.skill);
         });
         const bool socket = plate.isSocket(p.row, p.col);
-        // A tablet only in a socket, an ingot never in one, a kind anywhere forged.
-        const bool placeFits = p.isTablet() ? socket : (p.isCurrency() ? true : !socket);
+        // A tablet only in a socket, an ingot never in one, a kind only
+        // where it cannot touch a socket (the flow, D-023).
+        const bool placeFits = p.isTablet() ? socket : (p.isCurrency() ? kindMayRest(plate, p.row, p.col) : !socket);
         const bool holds = plate.forged(p.row, p.col) && !taken && placeFits;
         if (holds) {
             kept.push_back(p);
@@ -82,10 +122,34 @@ int unplacedCount(const State& state, const std::string& ingot) {
     return std::max(0, owned - placedCount(state, ingot));
 }
 
+bool flowsToSkill(const State& state, const Plate& plate, int row, int col) {
+    // Each step goes to a placed piece one nearer a socket, so the walk
+    // always ends; a support (depth 1) reaches the skill only when a
+    // socket beside it holds a tablet.
+    std::function<bool(int, int)> reaches = [&](int r, int c) -> bool {
+        if (!plate.forged(r, c)) return false;
+        const Placement* here = at(state, r, c);
+        if (!here || here->isTablet()) return false;
+        const int d = depth(plate, r, c);
+        if (d <= 1) {
+            if (!here->isIngot()) return false;
+            for (const auto& [dr, dc] : kSides) {
+                if (!plate.isSocket(r + dr, c + dc) || !plate.forged(r + dr, c + dc)) continue;
+                const Placement* socket = at(state, r + dr, c + dc);
+                if (socket && socket->isTablet()) return true;
+            }
+            return false;
+        }
+        for (const auto& [dr, dc] : kSides)
+            if (plate.forged(r + dr, c + dc) && depth(plate, r + dr, c + dc) == d - 1 && reaches(r + dr, c + dc)) return true;
+        return false;
+    };
+    return reaches(row, col);
+}
+
 std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, const Plate& plate) {
     const tuning::FoundryDef& def = tuning.foundry;
     std::vector<Effect> out;
-    static const std::vector<std::pair<int, int>> kSides{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     auto cell = [&](int r, int c) -> const Placement* {
         if (!plate.forged(r, c)) return nullptr;
         return at(state, r, c);
@@ -163,78 +227,59 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
             }
         }
     }
-    // Vanguard workings (D-023 slice 4): a kind in a socket gives its base
-    // and every ingot beside it reads as defence - its vanguard reading at
-    // support_multiplier - backing counting once more, exactly as a skill
-    // working reads, with the subject deciding the reading.
+    // Kinds (D-023, the flow, owner 4 Sep 2026): a kind rests only where it
+    // cannot touch a socket. When a chain of placed pieces leads from it
+    // inward to a support beside a laid tablet, its family's base counts
+    // (kind "augment") and it works every support it touches into a FORM
+    // (kind "form"): the ingot keeps its plain reading and gains the
+    // form's, which feeds the skill the support serves - both skills, for
+    // a shared support. Which form is the family's, the ingot's and the
+    // lane's (same element, added element, any).
     for (const auto& p : state.plate) {
-        if (!p.isCurrency() || !plate.forged(p.row, p.col) || !plate.isSocket(p.row, p.col)) continue;
-        const auto* subject = def.findSubject(p.currency);
-        if (!subject) continue;
-        Effect own{"subject", subject->displayName, subject->modifier, subject->value, p.row, p.col, std::string()};
-        own.subject = p.currency;
-        own.cellRow = p.row;
-        own.cellCol = p.col;
-        out.push_back(own);
+        if (!p.isCurrency() || !kindMayRest(plate, p.row, p.col)) continue;
+        const auto* currency = tuning.crafting.findKind(p.currency);
+        if (!currency) continue;
+        const auto* family = def.findKindFamily(currency->family);
+        if (!family) continue;
+        if (!flowsToSkill(state, plate, p.row, p.col)) continue;
+        if (!family->modifier.empty()) {
+            Effect own{"augment", family->displayName, family->modifier, family->value, p.row, p.col, std::string()};
+            own.subject = currency->family;
+            own.cellRow = p.row;
+            own.cellCol = p.col;
+            out.push_back(own);
+        }
         for (const auto& [dr, dc] : kSides) {
             const int sr = p.row + dr, sc = p.col + dc;
+            if (!plate.forged(sr, sc) || depth(plate, sr, sc) != 1) continue;
             const auto* beside = cell(sr, sc);
             if (!beside || !beside->isIngot()) continue;
             const auto* ingot = def.findIngot(beside->ingot);
             if (!ingot) continue;
-            const auto* modifier = tuning.items.findModifier(ingot->vanguardReading());
-            if (!modifier) continue;
-            const double value = ingot->vanguardReadingValue() * def.supportMultiplier;
-            Effect support{"support", subject->displayName + " <- " + ingot->displayName, modifier->id, value, p.row, p.col, std::string()};
-            support.subject = p.currency;
-            support.cellRow = sr;
-            support.cellCol = sc;
-            out.push_back(support);
-            for (const auto& [br, bc] : kSides) {
-                const int nr = sr + br, nc = sc + bc;
-                if (nr == p.row && nc == p.col) continue;
-                const auto* backer = cell(nr, nc);
-                if (!backer || !backer->isIngot() || backer->ingot != beside->ingot) continue;
-                Effect backing{"backing", ingot->displayName + " backing " + subject->displayName, modifier->id, value, p.row, p.col, std::string()};
-                backing.subject = p.currency;
-                backing.cellRow = nr;
-                backing.cellCol = nc;
-                out.push_back(backing);
+            for (const auto& [tr, tc] : kSides) {
+                const int socketRow = sr + tr, socketCol = sc + tc;
+                if (!plate.isSocket(socketRow, socketCol)) continue;
+                const auto* tablet = cell(socketRow, socketCol);
+                if (!tablet || !tablet->isTablet()) continue;
+                const auto* skill = tuning.skills.findCombatSkill(tablet->skill);
+                if (!skill) continue;
+                const auto skillTags = skill->resolveTags();
+                const std::string lane = laneOf(tuning, *ingot, skillTags);
+                for (const auto& form : def.forms) {
+                    if (form.family != currency->family || form.ingot != ingot->id) continue;
+                    if (!form.lane.empty() && form.lane != lane) continue;
+                    if (!form.skillTag.empty() && !hasTag(skillTags, form.skillTag)) continue;
+                    for (const auto& fe : form.effects) {
+                        Effect e{"form", form.displayName + " (" + family->displayName + " on " + ingot->displayName + ")",
+                                 fe.modifier, fe.value, socketRow, socketCol, tablet->skill};
+                        e.cellRow = sr;
+                        e.cellCol = sc;
+                        e.subject = currency->family;
+                        e.packet = fe.packet == "native" ? grammar::nativeType(tuning, skillTags) : fe.packet;
+                        out.push_back(e);
+                    }
+                }
             }
-        }
-    }
-    // Augments: a kind on a non-socket cell gives a fraction of its base and
-    // lends its readings to every ingot it touches that supports a skill's
-    // socket - the way an offence working carries defence.
-    for (const auto& p : state.plate) {
-        if (!p.isCurrency() || !plate.forged(p.row, p.col) || plate.isSocket(p.row, p.col)) continue;
-        const auto* subject = def.findSubject(p.currency);
-        if (!subject) continue;
-        Effect own{"augment", subject->displayName + " in a corner", subject->modifier, subject->value * def.cornerBaseFraction, p.row, p.col, std::string()};
-        own.subject = p.currency;
-        own.cellRow = p.row;
-        own.cellCol = p.col;
-        out.push_back(own);
-        for (const auto& [dr, dc] : kSides) {
-            const int nr = p.row + dr, nc = p.col + dc;
-            const auto* beside = cell(nr, nc);
-            if (!beside || !beside->isIngot()) continue;
-            bool supportsSkill = false;
-            for (const auto& [sr, sc] : kSides) {
-                const auto* socket = cell(nr + sr, nc + sc);
-                if (socket && socket->isTablet() && plate.isSocket(nr + sr, nc + sc)) supportsSkill = true;
-            }
-            if (!supportsSkill) continue;
-            const auto* ingot = def.findIngot(beside->ingot);
-            if (!ingot) continue;
-            const auto* modifier = tuning.items.findModifier(ingot->vanguardReading());
-            if (!modifier) continue;
-            Effect lending{"lending", ingot->displayName + " <- " + subject->displayName, modifier->id,
-                           ingot->vanguardReadingValue() * def.cornerLendingMultiplier, p.row, p.col, std::string()};
-            lending.subject = p.currency;
-            lending.cellRow = nr;
-            lending.cellCol = nc;
-            out.push_back(lending);
         }
     }
     return out;

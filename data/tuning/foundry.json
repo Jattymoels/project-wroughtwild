@@ -1,6 +1,6 @@
 {
-  "schema_version": 4,
-  "status": "D-023 slice 4: the Vanguard - a kind in a socket with its readings, a kind in a corner lending them",
+  "schema_version": 5,
+  "status": "D-023 slice 5: the flow - kinds in the detached cells, their base flowing to the skill, forms working the supports",
   "frame": [
     4,
     4
@@ -34,17 +34,338 @@
   },
   "support_multiplier": 2.0,
   "cast_armour_seconds": 2.0,
-  "corner_lending_multiplier": 1.0,
-  "corner_base_fraction": 0.5,
   "haste_after_hit_seconds": 2.0,
-  "subjects": [
+  "kinds": [
     {
-      "id": "vanguard",
-      "display_name": "Bulwark Vanguard",
+      "family": "offence",
+      "display_name": "Catalyst",
+      "design_purpose": "The Catalyst family on the plate (D-023, the flow): no base of its own; its whole worth is the forms it works supports into - the offensive creativity. Its element (Ember, Preserving) matters in crafting, not here."
+    },
+    {
+      "family": "defence",
+      "display_name": "Vanguard",
       "modifier": "armour_plating",
-      "value": 8,
-      "trigger": "a single hit for more than a tenth of your life",
-      "design_purpose": "The defence subject (D-023 slice 4): a Vanguard from the purse set in a socket is a working of its own - its base is armour on the sheet, and the ingots beside it read as defence (each ingot's vanguard_modifier at vanguard_value x support_multiplier; the self ingots read their base doubled). In a corner it gives corner_base_fraction of its base and lends its reading to the two skill supports it touches at corner_lending_multiplier, so an offence working can carry defence without a second socket. It lifts for the re-forge cost and returns to the purse: invested, not spent. The trigger is recorded for links (slice 6)."
+      "value": 4,
+      "design_purpose": "The Vanguard family on the plate: a small flat base that flows to the sheet while a chain leads to a skill, and forms that give the skill a defensive or sustaining twist. Scaling defence is gear's job (owner, 4 Sep 2026); the plate's defence is creative."
+    },
+    {
+      "family": "life",
+      "display_name": "Marrow",
+      "modifier": "max_life",
+      "value": 6,
+      "design_purpose": "The Marrow family on the plate: a little life as its base; its forms wait for slice 8."
+    },
+    {
+      "family": "speed",
+      "display_name": "Quicksilver",
+      "modifier": "swift_hands",
+      "value": 0.04,
+      "design_purpose": "The Quicksilver family on the plate: a little cooldown recovery as its base (a self stat on the sheet? no - swift_hands reads every attack and spell); its forms wait for slice 8."
+    }
+  ],
+  "design_purpose_kinds": "THE FLOW (owner, 4 Sep 2026): only a skill sits in a socket. A currency kind rests only on a forged cell that cannot touch a socket (depth two or more: the corners, and the far cells beyond them). It gives its family's base forward only while a chain of placed pieces, each a step nearer a socket, leads to a support beside a laid tablet - a kind that flows to nothing gives nothing. And it works every support it touches into a FORM (forms below) that feeds the skill that support serves, a shared support feeding both. Ingots are base; Catalysts are offensive creativity; Vanguards, Marrow and Quicksilver are defensive, life and tempo creativity. Setting a kind takes it from the purse; lifting it pays reforge_cost and returns it. A kind lifted on load (a stale save) goes back to the purse.",
+  "forms": [
+    {
+      "family": "offence",
+      "ingot": "frost",
+      "lane": "same",
+      "display_name": "Deep Frost",
+      "effects": [
+        {
+          "modifier": "deep_frost",
+          "value": 0.3
+        }
+      ],
+      "design_purpose": "Sharpening (same lane): the skill's chill builds 30% faster."
+    },
+    {
+      "family": "offence",
+      "ingot": "ember",
+      "lane": "same",
+      "display_name": "Kindling",
+      "effects": [
+        {
+          "modifier": "kindling",
+          "value": 0.3
+        }
+      ],
+      "design_purpose": "Sharpening (same lane): the skill's ignite builds 30% faster."
+    },
+    {
+      "family": "offence",
+      "ingot": "edge",
+      "lane": "same",
+      "display_name": "Serration",
+      "effects": [
+        {
+          "modifier": "serration",
+          "value": 0.3
+        }
+      ],
+      "design_purpose": "Sharpening (same lane): the skill's bleeds build 30% faster. (The zero frostbite is a placeholder for 'its hits bleed +20', which needs a bleed buildup modifier; struck for now.)"
+    },
+    {
+      "family": "offence",
+      "ingot": "reach",
+      "skill_tag": "projectile",
+      "display_name": "Split",
+      "effects": [
+        {
+          "modifier": "forked_lattice",
+          "value": 1
+        }
+      ],
+      "design_purpose": "The projectile forks once more. Reach beside an area or a strike waits for Linger and Arc (hooks)."
+    },
+    {
+      "family": "offence",
+      "ingot": "vigour",
+      "display_name": "Reap",
+      "effects": [
+        {
+          "modifier": "life_on_kill",
+          "value": 3
+        }
+      ],
+      "design_purpose": "A kill with the skill restores 3 life (the sharpened Vigour reading)."
+    },
+    {
+      "family": "offence",
+      "ingot": "plate",
+      "display_name": "Bracing",
+      "effects": [
+        {
+          "modifier": "armour_on_cast",
+          "value": 8
+        }
+      ],
+      "design_purpose": "Casting the skill grants 8 armour for a moment (the sharpened Plate reading)."
+    },
+    {
+      "family": "offence",
+      "ingot": "ward",
+      "display_name": "Aegis",
+      "effects": [
+        {
+          "modifier": "status_ward",
+          "value": 0.15
+        }
+      ],
+      "design_purpose": "An enemy carrying the skill's status deals 15% less to you (the sharpened Ward reading)."
+    },
+    {
+      "family": "offence",
+      "ingot": "haste",
+      "display_name": "Quickening",
+      "effects": [
+        {
+          "modifier": "swift_hands",
+          "value": 0.16
+        }
+      ],
+      "design_purpose": "PROPOSED PLACEHOLDER: 16% more cooldown recovery for the skill; the spec's Echo (every fourth cast repeats) needs a hook."
+    },
+    {
+      "family": "offence",
+      "ingot": "ember",
+      "lane": "added",
+      "skill_tag": "cold",
+      "display_name": "Scald",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 15
+        },
+        {
+          "modifier": "damage_vs_ignite",
+          "value": 0.2,
+          "packet": "native"
+        }
+      ],
+      "design_purpose": "Reaction (added lane, a cold skill): the added fire also ignites (+15 buildup), and an ignited enemy takes 20% more of the skill's cold."
+    },
+    {
+      "family": "offence",
+      "ingot": "ember",
+      "lane": "added",
+      "skill_tag": "physical",
+      "display_name": "Temper",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 15
+        },
+        {
+          "modifier": "damage_vs_ignite",
+          "value": 0.2,
+          "packet": "native"
+        }
+      ],
+      "design_purpose": "Reaction (added lane, a physical skill): the added fire also ignites (+15), and an ignited enemy takes 20% more of the skill's physical."
+    },
+    {
+      "family": "offence",
+      "ingot": "frost",
+      "lane": "added",
+      "skill_tag": "fire",
+      "display_name": "Quench",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "damage_vs_chill",
+          "value": 0.2,
+          "packet": "native"
+        }
+      ],
+      "design_purpose": "Reaction (added lane, a fire skill): the added cold also chills (+15), and a chilled enemy takes 20% more of the skill's fire. (The spec's 'a burning enemy that freezes takes the rest of its burn at once' is a hook for later.)"
+    },
+    {
+      "family": "offence",
+      "ingot": "frost",
+      "lane": "added",
+      "skill_tag": "physical",
+      "display_name": "Rime",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "damage_vs_chill",
+          "value": 0.2,
+          "packet": "native"
+        }
+      ],
+      "design_purpose": "Reaction (added lane, a physical skill): the added cold also chills (+15), and a chilled enemy takes 20% more of the skill's physical. (Shatter novas chilling is a hook for later.)"
+    },
+    {
+      "family": "offence",
+      "ingot": "edge",
+      "lane": "added",
+      "skill_tag": "cold",
+      "display_name": "Brittle",
+      "effects": [
+        {
+          "modifier": "damage_vs_bleed",
+          "value": 0.2,
+          "packet": "native"
+        }
+      ],
+      "design_purpose": "Reaction (added lane, a cold skill): a bleeding enemy takes 20% more of the skill's cold. (The added physical bleeding, and shatter from the spell's own hit, need a bleed buildup modifier and a hook.)"
+    },
+    {
+      "family": "offence",
+      "ingot": "edge",
+      "lane": "added",
+      "skill_tag": "fire",
+      "display_name": "Sear",
+      "effects": [
+        {
+          "modifier": "damage_vs_bleed",
+          "value": 0.2,
+          "packet": "native"
+        }
+      ],
+      "design_purpose": "Reaction (added lane, a fire skill): a bleeding enemy takes 20% more of the skill's fire. (The rest is a hook for later.)"
+    },
+    {
+      "family": "defence",
+      "ingot": "frost",
+      "display_name": "Frost Leech",
+      "effects": [
+        {
+          "modifier": "life_on_kill",
+          "value": 4
+        }
+      ],
+      "design_purpose": "PROPOSED (the owner's example): a kill with the skill restores 4 life."
+    },
+    {
+      "family": "defence",
+      "ingot": "ember",
+      "display_name": "Cinder Guard",
+      "effects": [
+        {
+          "modifier": "fire_resistance",
+          "value": 10
+        }
+      ],
+      "design_purpose": "PROPOSED: +10 fire resistance while the flow holds."
+    },
+    {
+      "family": "defence",
+      "ingot": "edge",
+      "display_name": "Barbs",
+      "effects": [
+        {
+          "modifier": "barbs",
+          "value": 25
+        }
+      ],
+      "design_purpose": "PROPOSED: an enemy that hits you takes 25 bleed buildup (the engine answers the hit)."
+    },
+    {
+      "family": "defence",
+      "ingot": "reach",
+      "display_name": "Far Answer",
+      "effects": [
+        {
+          "modifier": "answer_reach",
+          "value": 2.5
+        }
+      ],
+      "design_purpose": "PROPOSED: your answers to a hit reach every enemy within 2.5 m."
+    },
+    {
+      "family": "defence",
+      "ingot": "vigour",
+      "display_name": "Second Wind",
+      "effects": [
+        {
+          "modifier": "life_on_kill",
+          "value": 2
+        }
+      ],
+      "design_purpose": "PROPOSED: a kill with the skill restores 2 life."
+    },
+    {
+      "family": "defence",
+      "ingot": "plate",
+      "display_name": "Stand Fast",
+      "effects": [
+        {
+          "modifier": "armour_on_cast",
+          "value": 8
+        }
+      ],
+      "design_purpose": "PROPOSED: casting the skill grants 8 armour for a moment."
+    },
+    {
+      "family": "defence",
+      "ingot": "ward",
+      "display_name": "Cold Ward",
+      "effects": [
+        {
+          "modifier": "cold_resistance",
+          "value": 10
+        }
+      ],
+      "design_purpose": "PROPOSED: +10 cold resistance while the flow holds."
+    },
+    {
+      "family": "defence",
+      "ingot": "haste",
+      "display_name": "Quickstep",
+      "effects": [
+        {
+          "modifier": "haste_after_hit",
+          "value": 0.16
+        }
+      ],
+      "design_purpose": "PROPOSED (the owner's Max Speed, without the at-full-life condition, which needs a hook): after a hit you move 16% faster for haste_after_hit_seconds."
     }
   ],
   "ingots": [
@@ -55,9 +376,7 @@
       "modifier": "fire_damage",
       "value": 0.12,
       "added_modifier": "added_fire",
-      "design_purpose": "Beside a fire skill: +24% fire damage for it (value x support_multiplier), the one-lane support that is strongest early. Beside any other skill (owner, 4 Sep 2026: every ingot reads every skill): adds 24% of the hit as a fire packet of its own, scaled by fire gear - a cold-and-fire orb, the start of a scald build. Beside a Vanguard: +10 fire resistance (vanguard_value x support_multiplier).",
-      "vanguard_modifier": "fire_resistance",
-      "vanguard_value": 5
+      "design_purpose": "Beside a fire skill: +24% fire damage for it (value x support_multiplier), the one-lane support that is strongest early. Beside any other skill (owner, 4 Sep 2026: every ingot reads every skill): adds 24% of the hit as a fire packet of its own, scaled by fire gear - a cold-and-fire orb, the start of a scald build."
     },
     {
       "id": "frost",
@@ -66,9 +385,7 @@
       "modifier": "cold_damage",
       "value": 0.12,
       "added_modifier": "added_cold",
-      "design_purpose": "Beside a cold skill: +24% cold damage for it. Beside any other skill: adds 24% of the hit as cold, its own packet - a fire-and-cold bolt heading for quench, a strike that carries cold toward rime. Beside a Vanguard: +10 cold resistance, the new derived stat.",
-      "vanguard_modifier": "cold_resistance",
-      "vanguard_value": 5
+      "design_purpose": "Beside a cold skill: +24% cold damage for it. Beside any other skill: adds 24% of the hit as cold, its own packet - a fire-and-cold bolt heading for quench, a strike that carries cold toward rime."
     },
     {
       "id": "edge",
@@ -77,9 +394,7 @@
       "modifier": "physical_damage",
       "value": 0.12,
       "added_modifier": "added_physical",
-      "design_purpose": "Beside a physical skill: +24% physical damage for it. Beside a spell: adds 24% of the hit as physical, its own packet - an orb with a physical edge, the start of brittle. Beside a Vanguard: Barbs - an enemy that hits you takes 25 bleed buildup.",
-      "vanguard_modifier": "barbs",
-      "vanguard_value": 12.5
+      "design_purpose": "Beside a physical skill: +24% physical damage for it. Beside a spell: adds 24% of the hit as physical, its own packet - an orb with a physical edge, the start of brittle."
     },
     {
       "id": "reach",
@@ -88,9 +403,7 @@
       "modifier": "area_size",
       "value": 0.08,
       "skill_modifier": "reach",
-      "design_purpose": "Reach's base is area size on the sheet; beside a skill it speaks the 'reach' modifier instead (owner, 4 Sep 2026: Reach reads area, projectile and strike skills): a wider area, a further-flying projectile, a longer strike. Beside a Vanguard: your answers to a hit (Barbs) reach every enemy within 2.5 m, not only the striker.",
-      "vanguard_modifier": "answer_reach",
-      "vanguard_value": 1.25
+      "design_purpose": "Reach's base is area size on the sheet; beside a skill it speaks the 'reach' modifier instead (owner, 4 Sep 2026: Reach reads area, projectile and strike skills): a wider area, a further-flying projectile, a longer strike."
     },
     {
       "id": "vigour",
@@ -100,7 +413,7 @@
       "value": 12,
       "skill_modifier": "life_on_kill",
       "skill_value": 0.5,
-      "design_purpose": "Vigour's base is life on the sheet. Beside a skill it reads weakly (D-023 slice 2): a kill with that skill restores skill_value x support_multiplier life (1). The Catalyst's Reap sharpens it later. Beside a Vanguard: its base doubled, +24 life."
+      "design_purpose": "Vigour's base is life on the sheet. Beside a skill it reads weakly (D-023 slice 2): a kill with that skill restores skill_value x support_multiplier life (1). The Catalyst's Reap sharpens it later."
     },
     {
       "id": "plate",
@@ -110,7 +423,7 @@
       "value": 8,
       "skill_modifier": "armour_on_cast",
       "skill_value": 2,
-      "design_purpose": "Plate's base is armour on the sheet. Beside a skill it reads weakly: casting that skill grants skill_value x support_multiplier armour (4) for cast_armour_seconds. The Catalyst's Bracing sharpens it later. Beside a Vanguard: its base doubled, +16 armour."
+      "design_purpose": "Plate's base is armour on the sheet. Beside a skill it reads weakly: casting that skill grants skill_value x support_multiplier armour (4) for cast_armour_seconds. The Catalyst's Bracing sharpens it later."
     },
     {
       "id": "ward",
@@ -120,9 +433,7 @@
       "value": 10,
       "skill_modifier": "status_ward",
       "skill_value": 0.025,
-      "design_purpose": "Ward's base is fire resistance on the sheet. Beside a skill it reads weakly: an enemy carrying that skill's status (the chill, burn or bleed it applies) deals skill_value x support_multiplier less to you (5%). Inert beside a skill that applies no status until something gives it one. The Catalyst's Aegis sharpens it later. Beside a Vanguard: +5 to every resistance.",
-      "vanguard_modifier": "all_resistance",
-      "vanguard_value": 2.5
+      "design_purpose": "Ward's base is fire resistance on the sheet. Beside a skill it reads weakly: an enemy carrying that skill's status (the chill, burn or bleed it applies) deals skill_value x support_multiplier less to you (5%). Inert beside a skill that applies no status until something gives it one. The Catalyst's Aegis sharpens it later."
     },
     {
       "id": "haste",
@@ -130,8 +441,7 @@
       "verb": "speed",
       "modifier": "swift_hands",
       "value": 0.08,
-      "design_purpose": "Beside any attack or spell: +16% cooldown recovery for it (value x support_multiplier). Its base is the same on the sheet for every attack and spell. Beside a Vanguard: after a hit you move 16% faster for haste_after_hit_seconds.",
-      "vanguard_modifier": "haste_after_hit"
+      "design_purpose": "Beside any attack or spell: +16% cooldown recovery for it (value x support_multiplier). Its base is the same on the sheet for every attack and spell."
     }
   ],
   "pairs": [
@@ -294,6 +604,6 @@
       "design_purpose": "The first dressed block (D-021) is a milestone: a Plate ingot, so the yard pays into the Foundry as the bench and the forge do."
     }
   ],
-  "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier, at `skill_value` when the reading has a number of its own. EVERY INGOT READS EVERY SKILL (D-023 slice 2, owner 4 Sep 2026): an element ingot whose modifier cannot read the skill (Ember beside a cold orb) speaks its `added_modifier` instead and ADDS its element to the hit as a second typed packet at the same fraction, scaled by that element's own gear - the added-element lane, where boil and scald builds begin; the self ingots (Vigour, Plate, Ward) read a skill weakly through their skill_modifier (life on kill, armour for cast_armour_seconds after a cast, less damage from enemies carrying the skill's status). Nothing on the plate is inert. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load. THE VANGUARD (slice 4): `subjects` names the currency kinds that may sit in a socket, each with a base of its own; an ingot beside one speaks its `vanguard_modifier` (its base modifier when it names none) at `vanguard_value` (its base value when it names none) times support_multiplier, backing counting once more. A kind on any other forged cell is an augment: corner_base_fraction of its base, and its readings lent to the skill supports it touches at corner_lending_multiplier. Setting a kind takes it from the purse; lifting it pays reforge_cost and returns it.",
-  "design_purpose_corners": "A currency kind on a non-socket forged cell is an AUGMENT (D-023 slice 4). A Vanguard there gives corner_base_fraction of its socketed base and lends its readings to every ingot it orthogonally touches that supports a skill's socket, at corner_lending_multiplier times the ingot's vanguard_value (not doubled: a corner reads at x1, a support at x2). haste_after_hit_seconds is how long the Haste reading beside a Vanguard quickens you after a hit."
+  "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier, at `skill_value` when the reading has a number of its own. EVERY INGOT READS EVERY SKILL (D-023 slice 2, owner 4 Sep 2026): an element ingot whose modifier cannot read the skill (Ember beside a cold orb) speaks its `added_modifier` instead and ADDS its element to the hit as a second typed packet at the same fraction, scaled by that element's own gear - the added-element lane, where boil and scald builds begin; the self ingots (Vigour, Plate, Ward) read a skill weakly through their skill_modifier (life on kill, armour for cast_armour_seconds after a cast, less damage from enemies carrying the skill's status). Nothing on the plate is inert. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load. THE FLOW (owner, 4 Sep 2026; replaces the socketed Vanguard of slice 4): only a skill sits in a socket; a currency kind rests where it cannot touch one, gives its family's base forward while a chain of pieces leads inward to a laid tablet, and works every support it touches into a form (`kinds`, `forms`).",
+  "design_purpose_forms": "FORMS (D-023, the flow): what a kind of a family works a support into. Keyed by family and ingot; `lane` narrows to how the ingot reads the skill (same element sharpens, added element reacts), `skill_tag` to the skill's tags. Each effect names a modifier, a value and, for a reaction, the packet it speaks to ('native' = the skill's own element). The ingot keeps its plain reading; the form's effects feed the skill the support serves. The Catalyst rows are the spec's reactions as far as existing keys carry them; the Vanguard rows are proposals drafted from the owner's two examples (Frost Leech, Max Speed) and slice 4's readings. Marrow and Quicksilver rows wait for slice 8. Compound forms (a kind worked by another kind, an ingot's metal or rarity as a condition) are the next step and have no rows yet."
 }

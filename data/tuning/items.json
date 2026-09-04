@@ -233,6 +233,63 @@
       "design_purpose": "The Haste ingot's reading beside a Vanguard (D-023 slice 4): a burst of speed after a hit, for foundry.json haste_after_hit_seconds. The sim says how much; the engine runs the clock. Tagged only 'reading', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
+      "id": "damage_vs_ignite",
+      "display_name": "Damage against the Burning",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "more_damage_vs_ignite",
+      "display": "percent",
+      "sentence": "deals {n} more to burning enemies",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.2,
+          "maximum": 0.2
+        }
+      ],
+      "design_purpose": "A form's reaction (D-023, the flow): the skill's packet this modifier is scoped to deals this much more to an enemy carrying the status; the engine tells the sim what the struck mob carries (grammar::skillHit with target statuses). Its only tag is 'reading', which no base allows, so it never rolls on gear."
+    },
+    {
+      "id": "damage_vs_chill",
+      "display_name": "Damage against the Chilled",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "more_damage_vs_chill",
+      "display": "percent",
+      "sentence": "deals {n} more to chilled enemies",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.2,
+          "maximum": 0.2
+        }
+      ],
+      "design_purpose": "A form's reaction (D-023, the flow): the skill's packet this modifier is scoped to deals this much more to an enemy carrying the status; the engine tells the sim what the struck mob carries (grammar::skillHit with target statuses). Its only tag is 'reading', which no base allows, so it never rolls on gear."
+    },
+    {
+      "id": "damage_vs_bleed",
+      "display_name": "Damage against the Bleeding",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "more_damage_vs_bleed",
+      "display": "percent",
+      "sentence": "deals {n} more to bleeding enemies",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.2,
+          "maximum": 0.2
+        }
+      ],
+      "design_purpose": "A form's reaction (D-023, the flow): the skill's packet this modifier is scoped to deals this much more to an enemy carrying the status; the engine tells the sim what the struck mob carries (grammar::skillHit with target statuses). Its only tag is 'reading', which no base allows, so it never rolls on gear."
+    },
+    {
       "id": "area_size",
       "display_name": "Area Size",
       "tags": [

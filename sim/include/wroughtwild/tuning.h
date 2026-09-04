@@ -815,26 +815,43 @@ struct IngotDef {
     std::string modifier;      // items.json modifier the ingot speaks anywhere on the plate (its base)
     std::string skillModifier; // the modifier it speaks beside a skill tablet, when not its base (D-023: Reach, the self ingots)
     std::string addedModifier; // an element ingot beside a skill of another element adds its element to the hit (D-023 slice 2)
-    std::string vanguardModifier; // what it reads as beside a Vanguard, when not its base (D-023 slice 4)
     double value = 0.0;        // flat, never changes
     std::optional<double> skillValue; // the number the skill reading speaks at, when not the base value (the self ingots)
-    std::optional<double> vanguardValue; // the number the Vanguard reading speaks at, when not the base value
 
     const std::string& supportModifier() const { return skillModifier.empty() ? modifier : skillModifier; }
     double supportValue() const { return skillValue ? *skillValue : value; }
-    const std::string& vanguardReading() const { return vanguardModifier.empty() ? modifier : vanguardModifier; }
-    double vanguardReadingValue() const { return vanguardValue ? *vanguardValue : value; }
 };
 
-// A currency kind that may sit in a socket as a subject (D-023 slice 4):
-// the Vanguard. Its base is a self modifier; its trigger is recorded for
-// links.
-struct SubjectDef {
-    std::string id;          // the currency kind
-    std::string displayName; // Bulwark Vanguard
-    std::string modifier;    // its base on the sheet when socketed
+// A currency family on the plate (D-023, the flow): what a kind of that
+// family gives forward as its base when it flows to a skill. A family
+// with no modifier has no base of its own (the Catalyst).
+struct KindFamilyDef {
+    std::string family;      // offence | defence | life | speed
+    std::string displayName; // Catalyst, Vanguard, Marrow, Quicksilver
+    std::string modifier;    // a self modifier, or "" for none
     double value = 0.0;
-    std::string trigger;
+};
+
+// A FORM (D-023, the flow): what a kind of a family works a support ingot
+// into. The ingot keeps its plain reading and gains the form's effects,
+// which feed the skill the support serves. `lane` narrows it to how the
+// ingot reads the skill ("same" element, "added" element, "" any); a
+// skillTag narrows it to skills carrying that tag. An effect's packet
+// names which part of the hit it speaks to: "" the whole skill, "native"
+// the skill's own element, else a damage type.
+struct FormEffect {
+    std::string modifier;
+    double value = 0.0;
+    std::string packet;
+};
+
+struct FormDef {
+    std::string family;
+    std::string ingot;
+    std::string lane;
+    std::string skillTag;
+    std::string displayName;
+    std::vector<FormEffect> effects;
 };
 
 struct IngotPairDef {
@@ -862,14 +879,12 @@ struct FoundryDef {
     std::map<std::string, int> reforgeCost;     // paid to lift an ingot off the plate
     double supportMultiplier = 2.0; // an ingot beside a skill tablet supports that skill at this times its value
     double castArmourSeconds = 2.0; // how long the Plate ingot's reading beside a skill (armour on cast) lasts
-    // The Vanguard (D-023 slice 4): subjects that are currency kinds, and
-    // how a kind on a non-socket cell reads - a fraction of its base, and
-    // its readings lent to the skill supports it touches.
-    std::vector<SubjectDef> subjects;
-    double cornerLendingMultiplier = 1.0;
-    double cornerBaseFraction = 0.5;
-    double hasteAfterHitSeconds = 2.0; // the Haste reading beside a Vanguard
-    const SubjectDef* findSubject(const std::string& id) const;
+    // The flow (D-023, owner 4 Sep 2026): the currency families and their
+    // bases, and the forms they work supports into.
+    std::vector<KindFamilyDef> kindFamilies;
+    std::vector<FormDef> forms;
+    double hasteAfterHitSeconds = 2.0; // the Quickstep form
+    const KindFamilyDef* findKindFamily(const std::string& family) const;
     std::vector<IngotDef> ingots;
     std::vector<IngotPairDef> pairs;
     std::vector<IngotSourceDef> sources;

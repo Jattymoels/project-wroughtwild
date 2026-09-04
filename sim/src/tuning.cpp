@@ -408,7 +408,11 @@ BoonTable loadBoons(const std::string& path) {
 }
 
 const IngotDef* FoundryDef::findIngot(const std::string& id) const { return findById(ingots, id); }
-const SubjectDef* FoundryDef::findSubject(const std::string& id) const { return findById(subjects, id); }
+const KindFamilyDef* FoundryDef::findKindFamily(const std::string& family) const {
+    for (const auto& k : kindFamilies)
+        if (k.family == family) return &k;
+    return nullptr;
+}
 const IngotPairDef* FoundryDef::findPair(const std::string& a, const std::string& b) const {
     for (const auto& p : pairs)
         if ((p.a == a && p.b == b) || (p.a == b && p.b == a)) return &p;
@@ -446,18 +450,36 @@ FoundryDef loadFoundry(const std::string& path) {
     def.reforgeCost = readIntMap(doc->get("reforge_cost"));
     if (auto n = doc->find("support_multiplier")) def.supportMultiplier = n->asNumber();
     if (auto n = doc->find("cast_armour_seconds")) def.castArmourSeconds = n->asNumber();
-    if (auto n = doc->find("corner_lending_multiplier")) def.cornerLendingMultiplier = n->asNumber();
-    if (auto n = doc->find("corner_base_fraction")) def.cornerBaseFraction = n->asNumber();
     if (auto n = doc->find("haste_after_hit_seconds")) def.hasteAfterHitSeconds = n->asNumber();
-    if (auto subjects = doc->find("subjects")) {
-        for (const auto& s : subjects->asArray()) {
-            SubjectDef subject;
-            subject.id = s->get("id").asString();
-            subject.displayName = s->get("display_name").asString();
-            subject.modifier = s->get("modifier").asString();
-            subject.value = s->get("value").asNumber();
-            if (auto trigger = s->find("trigger")) subject.trigger = trigger->asString();
-            def.subjects.push_back(std::move(subject));
+    if (auto kinds = doc->find("kinds")) {
+        for (const auto& k : kinds->asArray()) {
+            KindFamilyDef kind;
+            kind.family = k->get("family").asString();
+            kind.displayName = k->get("display_name").asString();
+            if (auto m = k->find("modifier")) kind.modifier = m->asString();
+            if (auto v = k->find("value")) kind.value = v->asNumber();
+            def.kindFamilies.push_back(std::move(kind));
+        }
+    }
+    if (auto forms = doc->find("forms")) {
+        for (const auto& f : forms->asArray()) {
+            FormDef form;
+            form.family = f->get("family").asString();
+            form.ingot = f->get("ingot").asString();
+            if (auto lane = f->find("lane")) form.lane = lane->asString();
+            if (auto tag = f->find("skill_tag")) form.skillTag = tag->asString();
+            form.displayName = f->get("display_name").asString();
+            for (const auto& e : f->get("effects").asArray()) {
+                FormEffect effect;
+                effect.modifier = e->get("modifier").asString();
+                effect.value = e->get("value").asNumber();
+                if (auto packet = e->find("packet")) effect.packet = packet->asString();
+                form.effects.push_back(std::move(effect));
+            }
+            if (form.effects.empty()) throw std::runtime_error("foundry: form " + form.displayName + " has no effects");
+            if (!form.lane.empty() && form.lane != "same" && form.lane != "added")
+                throw std::runtime_error("foundry: form " + form.displayName + " names an unknown lane " + form.lane);
+            def.forms.push_back(std::move(form));
         }
     }
     for (const auto& i : doc->get("ingots").asArray()) {
@@ -468,10 +490,8 @@ FoundryDef loadFoundry(const std::string& path) {
         ingot.modifier = i->get("modifier").asString();
         if (auto m = i->find("skill_modifier")) ingot.skillModifier = m->asString();
         if (auto m = i->find("added_modifier")) ingot.addedModifier = m->asString();
-        if (auto m = i->find("vanguard_modifier")) ingot.vanguardModifier = m->asString();
         ingot.value = i->get("value").asNumber();
         if (auto v = i->find("skill_value")) ingot.skillValue = v->asNumber();
-        if (auto v = i->find("vanguard_value")) ingot.vanguardValue = v->asNumber();
         def.ingots.push_back(std::move(ingot));
     }
     for (const auto& p : doc->get("pairs").asArray()) {
@@ -1087,14 +1107,23 @@ Tuning loadAll(const std::string& tuningDirectory) {
             throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown skill modifier " + ingot.skillModifier);
         if (!ingot.addedModifier.empty() && !tuning.items.findModifier(ingot.addedModifier))
             throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown added modifier " + ingot.addedModifier);
-        if (!ingot.vanguardModifier.empty() && !tuning.items.findModifier(ingot.vanguardModifier))
-            throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown vanguard modifier " + ingot.vanguardModifier);
     }
-    for (const auto& subject : tuning.foundry.subjects) {
-        if (!tuning.items.findModifier(subject.modifier))
-            throw std::runtime_error("foundry: subject " + subject.id + " names unknown modifier " + subject.modifier);
-        if (!tuning.crafting.findKind(subject.id))
-            throw std::runtime_error("foundry: subject " + subject.id + " is not a currency kind");
+    // The flow: every currency family has a kind entry; every form names a
+    // known ingot, a family with an entry, and known modifiers.
+    for (const auto& kind : tuning.foundry.kindFamilies)
+        if (!kind.modifier.empty() && !tuning.items.findModifier(kind.modifier))
+            throw std::runtime_error("foundry: kind family " + kind.family + " names unknown modifier " + kind.modifier);
+    for (const auto& currency : tuning.crafting.currencyKinds)
+        if (!tuning.foundry.findKindFamily(currency.family))
+            throw std::runtime_error("foundry: currency " + currency.id + " belongs to family " + currency.family + " which the plate does not know");
+    for (const auto& form : tuning.foundry.forms) {
+        if (!tuning.foundry.findKindFamily(form.family))
+            throw std::runtime_error("foundry: form " + form.displayName + " names unknown family " + form.family);
+        if (!tuning.foundry.findIngot(form.ingot))
+            throw std::runtime_error("foundry: form " + form.displayName + " names unknown ingot " + form.ingot);
+        for (const auto& effect : form.effects)
+            if (!tuning.items.findModifier(effect.modifier))
+                throw std::runtime_error("foundry: form " + form.displayName + " names unknown modifier " + effect.modifier);
     }
     for (const auto& pair : tuning.foundry.pairs)
         if (!tuning.items.findModifier(pair.modifier))

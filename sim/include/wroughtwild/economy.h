@@ -190,11 +190,11 @@ public:
     // off the forged plate, outside a socket, on a taken cell, for an
     // unknown skill, or when already laid.
     bool foundryPlaceSkill(int row, int col, const std::string& skillId);
-    // Sets a currency kind from the purse on a free, forged cell (D-023
-    // slice 4): a subject in a socket, an augment anywhere else. The kind
-    // is invested, not spent: lifting pays reforge_cost and returns it.
-    // False for a kind that is not a subject, none held, or a taken cell.
-    bool foundryPlaceSubject(int row, int col, const std::string& kind);
+    // Sets a currency kind from the purse on a free, forged cell that
+    // cannot touch a socket (D-023, the flow). The kind is invested, not
+    // spent: lifting pays reforge_cost and returns it. False for an id that
+    // is not a kind, none held, a socket, a support cell or a taken cell.
+    bool foundryPlaceKind(int row, int col, const std::string& kind);
     bool canAffordReforge() const;
     // Ingots granted by events the economy raised itself (crafts, world
     // effects, eras), for the host to announce; cleared on read.
