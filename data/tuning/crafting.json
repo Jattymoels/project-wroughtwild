@@ -35,6 +35,10 @@
       "display_name": "Preserving Catalyst"
     },
     {
+      "id": "bog_iron",
+      "display_name": "Bog Iron"
+    },
+    {
       "id": "ember_iron_ore",
       "display_name": "Ember-Iron Ore"
     },
@@ -113,9 +117,10 @@
       "upgrade_from": "forge_basic",
       "upgrade_cost": {
         "vanguard": 2,
-        "iron_fittings": 6
+        "iron_fittings": 6,
+        "bog_iron": 3
       },
-      "design_purpose": "Upgraded in place at a built forge. Consumes most of the mine-order payment plus useful output, so the upgrade feels earned through work rather than passively unlocked."
+      "design_purpose": "Upgraded in place at a built forge. Consumes most of the mine-order payment plus useful output, so the upgrade feels earned through work rather than passively unlocked. Bog iron (Wave 7 slice 2; the owner, 4 Sep 2026: forge 2 in the first hour was the spike that made you unkillable) is the fen's iron and only the fen drops it - the lurkers most kills, the wisps sometimes - so the second forge, and the tempering and the iron armour behind it, are fetched from the place that is already denser than you: the world steps up a beat before your power does."
     },
     {
       "id": "mason_yard",

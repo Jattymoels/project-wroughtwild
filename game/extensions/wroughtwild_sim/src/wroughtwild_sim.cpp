@@ -233,6 +233,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_day_clock", "seconds"), &WroughtwildSim::set_day_clock);
     ClassDB::bind_method(D_METHOD("hauling_rules"), &WroughtwildSim::hauling_rules);
     ClassDB::bind_method(D_METHOD("noise_rules"), &WroughtwildSim::noise_rules);
+    ClassDB::bind_method(D_METHOD("train_rules"), &WroughtwildSim::train_rules);
+    ClassDB::bind_method(D_METHOD("train_multiplier", "earlier_hits"), &WroughtwildSim::train_multiplier);
+    ClassDB::bind_method(D_METHOD("armour_reduction_cap"), &WroughtwildSim::armour_reduction_cap);
     ClassDB::bind_method(D_METHOD("carry_cap", "family"), &WroughtwildSim::carry_cap);
     ClassDB::bind_method(D_METHOD("carry_room", "family"), &WroughtwildSim::carry_room);
     ClassDB::bind_method(D_METHOD("haul", "family", "amount"), &WroughtwildSim::haul);
@@ -920,7 +923,10 @@ double WroughtwildSim::enemy_hit_damage(double raw_damage, const String& damage_
     // armour on cast) counts with the sheet's.
     auto stats = derived_now();
     stats.armour += std::max(0.0, bonus_armour);
-    return hits_->enemyHit(raw_damage, to_std(damage_type), stats, tuning_->world.playerBase);
+    // The era's ceiling on armour (Wave 7 slice 2): low until the deep wakes.
+    auto base = tuning_->world.playerBase;
+    base.armourReductionCap = player_->era().armourReductionCap;
+    return hits_->enemyHit(raw_damage, to_std(damage_type), stats, base);
 }
 
 double WroughtwildSim::mitigate(double amount, const String& damage_type) const {
@@ -2655,6 +2661,25 @@ Dictionary WroughtwildSim::hauling_rules() const {
     d["carry_cap_default"] = tuning_->world.hauling.carryCapDefault;
     d["chest_units"] = tuning_->world.hauling.chestUnits;
     return d;
+}
+
+Dictionary WroughtwildSim::train_rules() const {
+    Dictionary d;
+    if (!require_loaded("train_rules")) {
+        return d;
+    }
+    d["window_seconds"] = tuning_->realtime.hordeTrainWindowSeconds;
+    d["bonus_per_hit"] = tuning_->realtime.hordeTrainBonusPerHit;
+    d["max_bonus"] = tuning_->realtime.hordeTrainMaxBonus;
+    return d;
+}
+
+double WroughtwildSim::train_multiplier(int earlier_hits) const {
+    return require_loaded("train_multiplier") ? wroughtwild::combat::trainMultiplier(earlier_hits, tuning_->realtime) : 1.0;
+}
+
+double WroughtwildSim::armour_reduction_cap() const {
+    return require_loaded("armour_reduction_cap") ? player_->era().armourReductionCap : 1.0;
 }
 
 Dictionary WroughtwildSim::noise_rules() const {

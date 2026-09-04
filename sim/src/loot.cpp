@@ -29,6 +29,17 @@ std::map<std::string, int> rollEnemyLoot(const tuning::WorldTable& world,
     // An elite pays one more of its family's kind (D-023 slice 3): why
     // the far rings are hunted for a particular currency.
     if (elite && !enemy->currencyKind.empty()) drops[enemy->currencyKind] += 1;
+    // The bounty (Wave 7 slice 2): the crowned carry the catalysts that
+    // temper, so the power is fetched from the rings that crown.
+    if (elite && !elite->bounty.empty()) {
+        std::mt19937_64 rng(seed ^ 0x5851F42D4C957F2Dull);
+        std::uniform_real_distribution<double> roll(0.0, 1.0);
+        for (const auto& entry : elite->bounty) {
+            if (roll(rng) >= entry.chance) continue;
+            std::uniform_int_distribution<int> count(entry.minCount, entry.maxCount);
+            drops[entry.item] += count(rng);
+        }
+    }
     return drops;
 }
 

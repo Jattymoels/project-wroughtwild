@@ -74,7 +74,8 @@ DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipm
 DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipment);
 
 // Damage after defences. Physical is reduced by armour
-// (reduction = armour / (armour + scale)); fire and cold by their
+// (reduction = armour / (armour + scale), never past the era's
+// armourReductionCap); fire and cold by their
 // resistance percents, then by the fraction of armour that counts against
 // them (the Shield Wall rail), when any does.
 double mitigateDamage(double amount, const std::string& damageType,

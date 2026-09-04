@@ -543,8 +543,10 @@ void testStationConstruction(const tuning::Tuning& t) {
     check(!player.buildStation("forge_improved"), "build: upgrade needs payment");
     player.currency["vanguard"] = 2;
     player.inventory["iron_fittings"] = 6;
+    check(!player.buildStation("forge_improved"), "build: upgrade wants the fen's bog iron too (Wave 7)");
+    player.inventory["bog_iron"] = 3;
     check(player.buildStation("forge_improved"), "build: upgrade paid from the purse + goods");
-    check(player.currency["vanguard"] == 0 && player.inventory["iron_fittings"] == 0,
+    check(player.currency["vanguard"] == 0 && player.inventory["iron_fittings"] == 0 && player.inventory["bog_iron"] == 0,
           "build: upgrade cost consumed");
 }
 
@@ -3991,6 +3993,63 @@ void testDensityAndFear(const tuning::Tuning& t) {
           "fear: a falling tree carries further than a press, the horn furthest, and walls keep most of it in");
 }
 
+void testWorldABeatAhead(const tuning::Tuning& t) {
+    // Wave 7 slice 2 (the owner, 4 Sep 2026: "it's so easy to get to a
+    // level 2 forge with crafting items good enough to feel this power"):
+    // every spike is fetched from the next denser place, early hits are
+    // deadlier, armour has the era's ceiling, and a pack's bites stack.
+    const auto* improved = t.crafting.findStation("forge_improved");
+    check(improved != nullptr && improved->upgradeCost.count("bog_iron") && improved->upgradeCost.at("bog_iron") > 0,
+          "ahead: the second forge wants bog iron");
+    bool fenDrops = false, elsewhere = false;
+    for (const auto& e : t.world.enemies)
+        for (const auto& entry : e.loot)
+            if (entry.kind == "item" && entry.item == "bog_iron") {
+                if (e.id == "bog_lurker" || e.id == "marsh_wisp") fenDrops = true;
+                else elsewhere = true;
+            }
+    check(fenDrops && !elsewhere, "ahead: only the fen drops bog iron");
+    // Catalysts ride on the crowned.
+    for (const auto& m : t.world.eliteModifiers) check(!m.bounty.empty(), "ahead: every elite carries a bounty (" + m.id + ")");
+    int bountyPaid = 0, plainPaid = 0;
+    for (uint64_t seed = 1; seed <= 40; ++seed) {
+        auto crowned = loot::rollEnemyLoot(t.world, "ash_hound", seed, &t.world.eliteModifiers.front());
+        if (crowned.count("ember_catalyst") || crowned.count("preserving_catalyst")) ++bountyPaid;
+        auto plain = loot::rollEnemyLoot(t.world, "ash_hound", seed);
+        if (plain.count("ember_catalyst") || plain.count("preserving_catalyst")) ++plainPaid;
+    }
+    check(bountyPaid >= 24 && plainPaid == 0,
+          "ahead: a crowned hound pays a catalyst most kills (" + std::to_string(bountyPaid) + "/40), a plain one never");
+    // The heartland's mobs hit harder.
+    check(t.world.findEnemy("ember_whelp")->damage >= 6.0 && t.world.findEnemy("ash_hound")->damage >= 4.0 &&
+              t.world.findEnemy("stone_husk")->damage >= 8.0,
+          "ahead: the heartland's mobs hit harder - fewer, deadlier");
+    // The era's ceiling on armour.
+    const auto& eras = t.eras.eras;
+    check(eras.size() >= 3 && eras[0].armourReductionCap <= 0.3 && eras[1].armourReductionCap > eras[0].armourReductionCap &&
+              eras[2].armourReductionCap > eras[1].armourReductionCap,
+          "ahead: armour's ceiling rises with the eras");
+    stats::Equipment heavy;
+    items::ItemInstance plate;
+    plate.baseId = "iron_chest_armour";
+    plate.implicitProperties["armour"] = 100.0;
+    heavy.slots["chest"] = plate;
+    auto derived = stats::deriveStats(t.world.playerBase, heavy);
+    auto capped = t.world.playerBase;
+    capped.armourReductionCap = eras[0].armourReductionCap;
+    checkNear(stats::mitigateDamage(10.0, "physical", derived, capped), 10.0 * (1.0 - eras[0].armourReductionCap), 1e-9,
+              "ahead: in the valley armour takes no more than its ceiling, however much you wear");
+    checkNear(stats::mitigateDamage(10.0, "physical", derived, t.world.playerBase), 5.0, 1e-9,
+              "ahead: with no ceiling the formula stands");
+    // The train.
+    const auto& rt = t.realtime;
+    check(rt.hordeTrainWindowSeconds > 0.0 && rt.hordeTrainBonusPerHit > 0.0 && rt.hordeTrainMaxBonus >= rt.hordeTrainBonusPerHit,
+          "ahead: the train is tuned");
+    checkNear(combat::trainMultiplier(0, rt), 1.0, 1e-9, "ahead: a lone bite is a bite");
+    checkNear(combat::trainMultiplier(1, rt), 1.0 + rt.hordeTrainBonusPerHit, 1e-9, "ahead: a second mouth adds its bonus");
+    checkNear(combat::trainMultiplier(50, rt), 1.0 + rt.hordeTrainMaxBonus, 1e-9, "ahead: and the train caps");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -4048,6 +4107,7 @@ int main(int argc, char** argv) {
     testDayAndNight(t);
     testHauling(t);
     testDensityAndFear(t);
+    testWorldABeatAhead(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

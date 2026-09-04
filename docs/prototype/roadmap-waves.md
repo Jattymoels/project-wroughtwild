@@ -513,11 +513,26 @@ choose it. Three slices, all accepted:
    it; a source inside a closed room carries `muffle` of its radius. The
    HUD says "Something heard that." when a pack wakes to it. Sim %s,
    engine unit %s, integration %s.
-2. **The world a beat ahead**: forge 2 and iron fittings gated on a
-   reagent only the fen drops; catalysts from elites only; near-biome
-   packs fewer and their hits harder; armour capped low until era 2; the
-   train bonus, a pack's bites in the same second stacking. Trials stay
-   the maps.
+2. **The world a beat ahead** *(landed 4 Sep 2026)*: the second forge's
+   upgrade wants three **bog iron** (`crafting.json`), and only the fen
+   drops it - the lurkers most kills, the wisps sometimes - so the
+   tempering and the iron armour behind forge 2 are fetched from the place
+   that is already denser than you. Every elite carries a **bounty**
+   (`world.json` `elite_modifiers` `bounty`: an Ember Catalyst six times
+   in ten, a Preserving Catalyst four), so catalysts come mostly off the
+   crowned, who den in the far rings; the families keep their own rare
+   catalyst drops because the typed currency (D-023 slice 3) needs a
+   family's kind to fall from the family, so "elites only" became "elites
+   mostly". The heartland's mobs hit harder (whelp 6, hound 4, husk 8).
+   Each era carries an **armour ceiling** (`eras.json`
+   `armour_reduction_cap`: a quarter in the valley, nearly half once the
+   deep wakes, most of it in the ash tide), applied in `mitigateDamage`
+   through the combat host, so early gear buys control and life, never a
+   wall. The **train** (`combat_realtime.json` horde `train_*`): a bite
+   that follows bites from other mobs inside the window lands 20 percent
+   harder per earlier mouth, to 60 - `player_combat.gd` remembers who bit
+   when, the HUD's hit line says "the train x1.2". Trials stay the maps.
+   Sim 4495, engine unit 384, integration 252.
 3. **The horn and the siege**: the shrieker's throat as a tool that calls
    every pack in radius (voluntary density on the player's terms); at
    dusk a howl, some nights hounds come to the lamp, circle and scratch a

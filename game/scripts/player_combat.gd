@@ -128,6 +128,12 @@ var _night_regen_multiplier := 1.0
 ## at most once a second, so a flurry is one noise.
 const FIGHT_NOISE_SECONDS := 1.0
 var _fight_noise_left := 0.0
+## The train (Wave 7 slice 2): bites from different mobs inside the sim's
+## window stack. The sim says the window and the bonus; this remembers who
+## bit when.
+var _train_hits: Array = []
+var _train_window := -1.0
+var _fight_clock := 0.0
 
 
 func _tick_shelter(delta: float) -> void:
@@ -185,6 +191,32 @@ func set_sheltered(value: bool) -> void:
 ## True while resting is actually paying out.
 func resting() -> bool:
 	return sheltered and _settle_left <= 0.0 and life < max_life
+
+
+## How many other mouths bit inside the train window before this one.
+func train_earlier_hits(source: Node) -> int:
+	if _train_window < 0.0:
+		_train_window = float(sim.train_rules().get("window_seconds", 0.0))
+	var mine: int = source.get_instance_id() if source != null else 0
+	var keep: Array = []
+	var mouths := {}
+	for hit in _train_hits:
+		if _fight_clock - float(hit["at"]) <= _train_window:
+			keep.append(hit)
+			if int(hit["source"]) != mine:
+				mouths[int(hit["source"])] = true
+	_train_hits = keep
+	return mouths.size()
+
+
+## Forgets who bit (a scene change, a test that wants a clean bite).
+func clear_train() -> void:
+	_train_hits.clear()
+
+
+## The multiplier a bite from this mob lands with right now.
+func train_multiplier_for(source: Node) -> float:
+	return sim.train_multiplier(train_earlier_hits(source))
 
 
 ## A hit landing is heard (Wave 7 slice 1), at most once a second.
@@ -246,6 +278,7 @@ func _physics_process(delta: float) -> void:
 		cooldowns[id] = maxf(0.0, cooldowns[id] - delta)
 	invulnerable_left = maxf(0.0, invulnerable_left - delta)
 	_fight_noise_left = maxf(0.0, _fight_noise_left - delta)
+	_fight_clock += delta
 	_tick_shelter(delta)
 	_dash_left = maxf(0.0, _dash_left - delta)
 	_cast_armour_left = maxf(0.0, _cast_armour_left - delta)
@@ -899,11 +932,15 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	var warded := raw_damage
 	if source is Enemy:
 		warded *= sim.ward_multiplier((source as Enemy).carried_statuses())
+	# The train: other mouths that bit inside the window make this one worse.
+	var train := train_multiplier_for(source)
+	warded *= train
 	last_hit_taken = sim.enemy_hit_damage(warded, damage_type, cast_armour() + still_armour())
+	_train_hits.append({"at": _fight_clock, "source": source.get_instance_id() if source != null else 0})
 	life = maxf(0.0, life - last_hit_taken)
 	_settle_left = _settle_seconds
 	life_changed.emit(life, max_life)
-	hit_taken.emit(last_hit_taken, source_name)
+	hit_taken.emit(last_hit_taken, source_name + ("  ·  the train x%.1f" % train if train > 1.0 else ""))
 	_answer_hit(source)
 	fight_noise(get_parent().global_position)
 	if life <= 0.0:

@@ -287,6 +287,10 @@ struct PlayerBase {
     double maxLife = 100.0;
     double armourReductionScale = 100.0;
     double resistanceCapPercent = 75.0;
+    // The era's ceiling on how much of a hit armour may take away (Wave 7
+    // slice 2, eras.json armour_reduction_cap): the combat host sets it
+    // from the current era; 1 = no ceiling.
+    double armourReductionCap = 1.0;
 };
 
 // Resting in a shelter (world.json "shelter", Wave 4 building slice 3):
@@ -383,6 +387,9 @@ struct EliteModifierDef {
     int extraLootRolls = 0;            // extra material-table rolls per kill
     double gearChanceMultiplier = 1.0; // scales every gear loot entry
     double pageChanceMultiplier = 1.0; // scales every skill-page entry
+    // The bounty (Wave 7 slice 2): rolled once per crowned kill, on top of
+    // the family's table - the catalysts that temper come off the crowned.
+    std::vector<LootEntry> bounty;
 };
 
 struct WorldTable {
@@ -581,6 +588,11 @@ struct RealtimeTable {
     // closed room carries noiseMuffle of its radius.
     std::map<std::string, double> noiseRadiusM;
     double noiseMuffle = 1.0;
+    // The train (Wave 7 slice 2): bites from different mobs inside the
+    // window stack a bonus per earlier bite, to a cap.
+    double hordeTrainWindowSeconds = 0.0;
+    double hordeTrainBonusPerHit = 0.0;
+    double hordeTrainMaxBonus = 0.0;
     // Per-skill space-and-time tunables (projectile speed, ranges...),
     // numeric fields verbatim; keyed by skill id.
     std::map<std::string, std::map<std::string, double>> skillSpatials;
@@ -834,6 +846,7 @@ struct EraDef {
     // enemy id -> mechanic name -> parameters (a bare number is {"value": n})
     std::map<std::string, std::map<std::string, std::map<std::string, double>>> mobMechanics;
     double eliteChanceBonus = 0.0;                              // added to every pack's elite roll
+    double armourReductionCap = 1.0; // Wave 7 slice 2: how much of a hit armour may take away this era
     std::map<std::string, std::vector<std::string>> packEscorts; // enemy id -> extra members
     const std::map<std::string, double>* mechanic(const std::string& enemyId, const std::string& name) const;
 };

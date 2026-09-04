@@ -129,6 +129,21 @@ Boons and item properties should query tags rather than hard-code every skill na
 - Respec philosophy.
 - Persistent-to-temporary power budget.
 
+## The train and the ceiling (4 Sep 2026, Wave 7 slice 2)
+
+Density should be the threat. **The train** (`combat_realtime.json`
+`horde` `train_window_seconds`, `train_bonus_per_hit`,
+`train_max_bonus`): a bite that follows bites from *other* mobs inside
+the window lands a bonus harder per earlier mouth, to the cap - a lone
+whelp is a chore, three together are a problem. `combat::trainMultiplier`
+is the rule; `player_combat.gd` remembers who bit when and the HUD's hit
+line reads "Ember Whelp · the train x1.2". **The ceiling**: each era caps
+how much of a hit armour may take away (`eras.json`
+`armour_reduction_cap`; see progression-eras). The heartland's mobs now
+hit harder (whelp 6, hound 4, husk 8) and are fewer (world-generation):
+deadly hits and sparse packs early, dense packs and scaled health later,
+in the trials.
+
 ## Population (3 Sep 2026)
 
 The owner's crowds lagged a good PC. Three causes, three rules. Every mob
