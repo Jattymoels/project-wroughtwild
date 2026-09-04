@@ -66,6 +66,39 @@ double trainMultiplier(int earlierHitsInWindow, const tuning::RealtimeTable& rt)
     return 1.0 + std::min(rt.hordeTrainMaxBonus, rt.hordeTrainBonusPerHit * earlierHitsInWindow);
 }
 
+namespace {
+double controlWeight(const std::string& verb) {
+    if (verb == "harry") return 0.3;
+    if (verb == "guard") return 0.2;
+    if (verb == "mark") return 0.25;
+    if (verb == "root") return 0.35;
+    if (verb == "kindle") return 0.2;
+    if (verb == "swarm") return 0.2;
+    if (verb == "ward") return 0.25;
+    if (verb == "recruit") return 0.5;
+    return 0.0;
+}
+} // namespace
+
+double threatScore(const tuning::EnemyDef& enemy, const tuning::BehaviourRealtime& behaviour) {
+    const double perRound = enemy.damage / static_cast<double>(std::max(1, enemy.attackPeriodRounds));
+    const double reach = behaviour.attackRangeM >= 5.0 ? 1.3 : 1.0;
+    const double bulk = std::sqrt(std::max(1.0, enemy.maxLife) / 75.0);
+    return perRound * reach * bulk * (1.0 + controlWeight(behaviour.verb));
+}
+
+double packThreat(const tuning::WorldTable& world, const tuning::RealtimeTable& rt, const std::vector<std::string>& pack) {
+    double total = 0.0;
+    for (const auto& id : pack) {
+        const auto* enemy = world.findEnemy(id);
+        if (!enemy) continue;
+        const auto* behaviour = rt.findBehaviour(enemy->behaviour);
+        if (!behaviour) continue;
+        total += threatScore(*enemy, *behaviour);
+    }
+    return total;
+}
+
 CombatMods buildMods(const tuning::BoonTable& table, const boons::RunState& run) {
     CombatMods mods;
     for (const auto& boon : table.boons)

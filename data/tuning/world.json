@@ -166,7 +166,7 @@
       "id": "stone_husk",
       "display_name": "Stone Husk",
       "max_life": 112,
-      "behaviour": "melee",
+      "behaviour": "guard",
       "damage": 8,
       "damage_type": "physical",
       "attack_period_rounds": 2,
@@ -247,7 +247,7 @@
       "id": "gloom_crawler",
       "display_name": "Gloom Crawler",
       "max_life": 60,
-      "behaviour": "fast",
+      "behaviour": "swarm",
       "damage": 5,
       "damage_type": "physical",
       "attack_period_rounds": 1,
@@ -286,9 +286,9 @@
     {
       "id": "bog_lurker",
       "display_name": "Bog Lurker",
-      "max_life": 175,
+      "max_life": 120,
       "behaviour": "lurker",
-      "damage": 7,
+      "damage": 6,
       "damage_type": "physical",
       "attack_period_rounds": 2,
       "immune_statuses": [
@@ -403,7 +403,7 @@
     {
       "id": "hollow_knight",
       "display_name": "Hollow Knight",
-      "max_life": 225,
+      "max_life": 170,
       "behaviour": "knight",
       "damage": 8,
       "damage_type": "physical",
@@ -612,5 +612,5 @@
     "design_purpose": "Open-world death drops carried inventory at the site for recovery (D-006); permanent equipment is never dropped"
   },
   "design_purpose_loot": "Every mob pays out into the survival economy (fuel, ore, stone) and, since D-023 slice 3, in a KIND: the coin is retired and each family pays the typed currency its nature suggests (currency_kind: the fire families Ember Catalysts, husks and knights Vanguards, hounds and crawlers Quicksilver, the living Marrow), at a chance of its own in its loot table - one each, rarely, because a kind is worth many coins. An elite pays one more of its family's kind on top of its extra passes. Three kinds of entry: {item,min,max,chance} materials; {gear: rarity, tier, chance} a rolled piece on any base (D-014); {skill_page: true, chance} a page teaching one skill the player does not know yet, weighted by skills.json drop_weight (D-016). Page chances are set so a first hour of hunting finds one or two skills; the mob pass will move them onto elites. Stone creatures pay SPLIT stone (D-021): the yard, not the husk, makes masonry. Razor-blade tuning (owner, 4 Sep): the kind rates are first guesses.",
-  "design_purpose_pacing": "Long fights (owner, 3 Sep 2026: 'we get too powerful too quick ... more like early MMOs, lots of mobs and it takes a while to kill things', combat should 'start a bit more powerful' - the swing stays, the life bars grow). Mob life is two and a half times the first cut and mob damage seven tenths, player numbers untouched: a day-one whelp takes three heavy blows instead of two-and-a-bit, a pack is a thirty-second fight where spacing and the sweep matter, and the first Keen mace no longer ends era one. The trial's bosses keep their numbers; the oracle (tools/balance) holds their win rates in band."
+  "design_purpose_pacing": "Equal threat, different shape (Wave 8 slice 1; the owner, 4 Sep 2026: a slower mob that hits harder is fine as long as the danger feels the same as the faster hounds, and never a Valheim zone ladder): every family's threat score (combat::threatScore - damage per round, reach, bulk, the verb's control) sits in one band; what differs is the verb (combat_realtime.json behaviours). The lurker came down to 120 life and 6 damage and roots; the knight to 170 and wards; the husk guards; the crawler swarms; the hound harries; the archer marks; the wisps kindle; the shrieker recruits and is the one family under the band on purpose - its threat is who it invites. Long fights (owner, 3 Sep 2026: 'we get too powerful too quick ... more like early MMOs, lots of mobs and it takes a while to kill things', combat should 'start a bit more powerful' - the swing stays, the life bars grow). Mob life is two and a half times the first cut and mob damage seven tenths, player numbers untouched: a day-one whelp takes three heavy blows instead of two-and-a-bit, a pack is a thirty-second fight where spacing and the sweep matter, and the first Keen mace no longer ends era one. The trial's bosses keep their numbers; the oracle (tools/balance) holds their win rates in band."
 }

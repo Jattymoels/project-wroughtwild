@@ -134,6 +134,15 @@ var _fight_noise_left := 0.0
 var _train_hits: Array = []
 var _train_window := -1.0
 var _fight_clock := 0.0
+## The verbs suffered (Wave 8 slice 1): harried (slowed), rooted (held
+## until a dash), marked (the hunters sprint at you). The enemy's numbers
+## come from the sim; these are the clocks.
+var _slow_left := 0.0
+var _slow := 0.0
+var _root_left := 0.0
+var _marked_left := 0.0
+var _mark_sprint := 1.0
+var _root_said := -100000
 
 
 func _tick_shelter(delta: float) -> void:
@@ -279,6 +288,9 @@ func _physics_process(delta: float) -> void:
 	invulnerable_left = maxf(0.0, invulnerable_left - delta)
 	_fight_noise_left = maxf(0.0, _fight_noise_left - delta)
 	_fight_clock += delta
+	_slow_left = maxf(0.0, _slow_left - delta)
+	_root_left = maxf(0.0, _root_left - delta)
+	_marked_left = maxf(0.0, _marked_left - delta)
 	_tick_shelter(delta)
 	_dash_left = maxf(0.0, _dash_left - delta)
 	_cast_armour_left = maxf(0.0, _cast_armour_left - delta)
@@ -439,7 +451,65 @@ func still_armour() -> float:
 ## What your walking speed is multiplied by right now (the Haste reading
 ## beside a Vanguard, after a hit).
 func haste_multiplier() -> float:
-	return 1.0 + _haste if _haste_left > 0.0 else 1.0
+	var haste := 1.0 + _haste if _haste_left > 0.0 else 1.0
+	return haste * (1.0 - _slow if _slow_left > 0.0 else 1.0)
+
+
+## --- the verbs suffered (Wave 8 slice 1) ---
+func _suffer_verb(enemy: Enemy) -> void:
+	match enemy.verb:
+		"harry":
+			_slow_left = maxf(_slow_left, enemy.verb_seconds)
+			_slow = clampf(enemy.verb_strength, 0.0, 0.9)
+		"root":
+			_root_left = maxf(_root_left, enemy.verb_seconds)
+			var now := Time.get_ticks_msec()
+			if now - _root_said > 6000 and player != null and player.hud != null:
+				_root_said = now
+				player.hud.notify("Rooted! Dash to break free.")
+		"mark":
+			_marked_left = maxf(_marked_left, enemy.verb_seconds)
+			_mark_sprint = maxf(1.0, enemy.verb_strength)
+
+
+func harried() -> bool:
+	return _slow_left > 0.0
+
+
+func rooted() -> bool:
+	return _root_left > 0.0
+
+
+func marked() -> bool:
+	return _marked_left > 0.0
+
+
+## What the hunters run at while you are marked (1 when you are not).
+func marked_sprint() -> float:
+	return _mark_sprint if _marked_left > 0.0 else 1.0
+
+
+## A dash breaks a root.
+func break_root() -> void:
+	_root_left = 0.0
+
+
+func clear_verbs() -> void:
+	_slow_left = 0.0
+	_root_left = 0.0
+	_marked_left = 0.0
+
+
+## One line for the HUD about the verbs on you ("" when none).
+func verb_text() -> String:
+	var parts := PackedStringArray()
+	if rooted():
+		parts.append("rooted, dash breaks it")
+	if harried():
+		parts.append("harried, slowed")
+	if marked():
+		parts.append("marked, they sprint at you")
+	return "  ·  ".join(parts)
 
 
 ## The Vanguard's answers to a hit (D-023 slice 4): Barbs bleed the
@@ -499,6 +569,13 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -
 	var types := PackedStringArray()
 	# The Hound's Manner (a rail, D-023 slice 9): an enemy moving toward
 	# you takes more. The sim says how much; this reads where it is going.
+	# The guard and the ward (Wave 8 slice 1): a husk's front takes less
+	# from where you stand; a mob beside a standing knight takes less.
+	if enemy.guards_against(player.global_position):
+		fraction *= 1.0 - enemy.verb_strength
+	var warden: Enemy = enemy.warded_by()
+	if warden != null:
+		fraction *= 1.0 - warden.verb_strength
 	var approaching: float = float(sim.derived_stats().get("damage_vs_approaching", 0.0))
 	if approaching > 0.0 and enemy.approaching(player.global_position):
 		fraction *= 1.0 + approaching
@@ -943,6 +1020,8 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	hit_taken.emit(last_hit_taken, source_name + ("  ·  the train x%.1f" % train if train > 1.0 else ""))
 	_answer_hit(source)
 	fight_noise(get_parent().global_position)
+	if source is Enemy:
+		_suffer_verb(source as Enemy)
 	if life <= 0.0:
 		died.emit()
 	return last_hit_taken

@@ -454,8 +454,13 @@ func _physics_process(delta: float) -> void:
 
 	var dash := combat.dash_velocity()
 	if dash != Vector3.ZERO:
+		# A dash breaks a root (Wave 8 slice 1).
+		combat.break_root()
 		velocity.x = dash.x
 		velocity.z = dash.z
+	elif combat.rooted():
+		velocity.x = 0.0
+		velocity.z = 0.0
 	else:
 		var input := test_walk if test_walk != Vector2.ZERO else Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 		var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()

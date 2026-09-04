@@ -260,6 +260,17 @@ func _test_lattice() -> void:
 	check(not sim.siege_tonight(7, 1) and nights > 8 and nights < 32 and sim.siege_tonight(7, 5) == sim.siege_tonight(7, 5),
 		"siege: never the first night, some nights after, the same night every time (%d/40)" % nights)
 	check(sim.siege_pack().size() == 2 and sim.siege_pack()[0] == "ash_hound", "siege: the valley's siege is two hounds")
+	# The verbs (Wave 8 slice 1): each behaviour's verb reaches the engine,
+	# and the threat score keeps the families in one band.
+	var behaviours: Dictionary = sim.realtime().get("behaviours", {})
+	check(String(behaviours.get("fast", {}).get("verb", "")) == "harry" and String(behaviours.get("guard", {}).get("verb", "")) == "guard"
+		and String(behaviours.get("lurker", {}).get("verb", "")) == "root" and float(behaviours.get("knight", {}).get("verb_radius_m", 0.0)) > 0.0,
+		"verbs: each behaviour's verb and numbers reach the engine")
+	var hound: float = sim.threat_score("ash_hound")
+	var lurker: float = sim.threat_score("bog_lurker")
+	var knight: float = sim.threat_score("hollow_knight")
+	check(hound > 0.0 and lurker > 0.0 and lurker < hound * 1.6 and knight < hound * 2.0 and sim.threat_score("no_such_mob") == 0.0,
+		"verbs: the threat score keeps the slow heavy hitters beside the fast biters (%.1f / %.1f / %.1f)" % [hound, lurker, knight])
 	var no_digs := PackedInt32Array()
 	var middle := Vector3(0.5, 0.5, 0.5)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")

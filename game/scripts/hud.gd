@@ -458,6 +458,8 @@ func refresh() -> void:
 		var rest := ""
 		if combat.sheltered:
 			rest = "  ·  resting +%.1f/s" % combat.regen_per_second() if combat.resting() else "  ·  sheltered"
+		elif combat.verb_text() != "":
+			rest = "  ·  " + combat.verb_text()
 		elif combat.night_text() != "":
 			rest = "  ·  " + combat.night_text()
 		elif combat.shelter_text() != "":

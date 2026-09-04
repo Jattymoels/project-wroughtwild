@@ -148,4 +148,11 @@ Action autoPolicy(const CombatView& view);
 // per earlier mouth, to the cap. A lone mob is a chore; three are a threat.
 double trainMultiplier(int earlierHitsInWindow, const tuning::RealtimeTable& rt);
 
+// Equal threat, different shape (Wave 8 slice 1): a family's threat is its
+// damage per round, its reach, its bulk and its verb's control. Every
+// family is meant to sit in one band; what differs is the shape. A pack's
+// threat is the sum of its members'.
+double threatScore(const tuning::EnemyDef& enemy, const tuning::BehaviourRealtime& behaviour);
+double packThreat(const tuning::WorldTable& world, const tuning::RealtimeTable& rt, const std::vector<std::string>& pack);
+
 } // namespace wroughtwild::combat

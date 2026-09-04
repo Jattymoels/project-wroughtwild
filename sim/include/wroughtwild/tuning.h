@@ -566,6 +566,19 @@ struct BehaviourRealtime {
     // the aggro chain that builds the Zombies wave feeling (D-012).
     double screamPeriodSeconds = 0.0;
     double screamRadiusM = 0.0;
+    // The verb (Wave 8 slice 1, equal threat, different shape): the one
+    // thing this behaviour does that changes how you fight. harry (the
+    // bite slows you), guard (its front takes less until staggered), mark
+    // (marked, the hunters sprint at you), root (held until you dash),
+    // kindle (ignites allies, whose bites burn), swarm (each ally near adds
+    // to the bite), ward (allies near take less until it is staggered),
+    // recruit (the scream). "" = none: the baseline whelp.
+    std::string verb;
+    double verbSeconds = 0.0;    // harry/root/mark: how long it lasts; kindle: the period
+    double verbStrength = 0.0;   // harry: the slow; guard/ward: the reduction; mark: the sprint; kindle: the fire bonus; swarm: per ally
+    double verbRadiusM = 0.0;    // kindle/swarm/ward
+    double verbArcDegrees = 0.0; // guard: the front
+    double verbCap = 0.0;        // swarm: the most the allies add
 };
 
 struct BossRealtime {

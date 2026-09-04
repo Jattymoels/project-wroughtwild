@@ -321,6 +321,9 @@ public:
     Dictionary siege_rules() const;
     bool siege_tonight(int seed, int day_index) const;
     PackedStringArray siege_pack() const;
+    // Equal threat, different shape (Wave 8 slice 1): a family's threat
+    // score - damage per round, reach, bulk and its verb's control.
+    double threat_score(const String& enemy_id) const;
     // The pack's cap for a family (0 = uncapped) and the room left in it.
     int carry_cap(const String& family) const;
     int carry_room(const String& family) const;
