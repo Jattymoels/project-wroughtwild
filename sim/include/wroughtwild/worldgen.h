@@ -62,6 +62,12 @@ struct MobPack {
     bool patrols = false;
     int routeX = 0;
     int routeZ = 0;
+    // The mingling (Wave 8 slice 3): the nearest den of another biome
+    // within reach; once an era's patrols cross biomes, the night's route.
+    bool hasForeign = false;
+    int foreignX = 0;
+    int foreignZ = 0;
+    std::string foreignBiome;
 };
 
 struct WorldMap {

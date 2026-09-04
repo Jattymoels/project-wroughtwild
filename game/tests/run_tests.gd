@@ -228,7 +228,8 @@ func _test_lattice() -> void:
 	# night it stands at its route's end; at dusk and dawn it is home.
 	var system := MobPacks.new()
 	system.packs = [{"enemies": PackedStringArray(["ash_hound"]), "x": 10, "y": 5, "z": 10, "elite_member": -1, "elite_modifier": "",
-		"grazer": false, "biome": "fen", "patrols": true, "route": Vector2i(40, 10), "spawned": false, "members": []}]
+		"grazer": false, "biome": "fen", "patrols": true, "route": Vector2i(40, 10), "foreign": Vector2i(60, 10), "foreign_biome": "forest",
+		"has_foreign": true, "spawned": false, "members": []}]
 	var hour_rules := {"length_seconds": 720.0, "dusk_end": 0.66, "night_aggro_multiplier": 1.6, "night_sleep_range_multiplier": 1.5}
 	system.set_hour({"night": false, "seconds_to_dawn": 0.0}, hour_rules)
 	var by_day: Vector3 = system.pack_position(system.packs[0])
@@ -238,6 +239,12 @@ func _test_lattice() -> void:
 	var dawn: Vector3 = system.pack_position(system.packs[0])
 	check(by_day.is_equal_approx(Vector3(10.5, 5.0, 10.5)) and midnight.distance_to(Vector3(40.5, 5.0, 10.5)) < 0.01
 		and dawn.distance_to(by_day) < 0.5, "fear: a patrol is home by day, out at midnight, and home again by dawn")
+	# The mingling (Wave 8 slice 3): once the era's patrols cross biomes,
+	# midnight finds the same patrol at the forest's den instead.
+	system.set_era({"patrols_cross_biomes": true})
+	system.set_hour({"night": true, "seconds_to_dawn": 0.5 * (1.0 - 0.66) * 720.0}, hour_rules)
+	check(system.pack_position(system.packs[0]).distance_to(Vector3(60.5, 5.0, 10.5)) < 0.01,
+		"mingle: with the patrols crossing, midnight finds the fen's pack at the forest's den")
 	system.free()
 	# The world a beat ahead (Wave 7 slice 2): the train's rules and
 	# multiplier, the era's armour ceiling, bog iron on the second forge.
@@ -296,6 +303,22 @@ func _test_lattice() -> void:
 	check(lock_sim.curio_hints().size() == 1 and lock_sim.set_curio("hill_cairn") and lock_sim.world_effect_active("stonecut_blocks")
 		and int(lock_sim.era().get("index", 1)) == 2 and lock_sim.material_count("tyrant_heart") == 0,
 		"lock: with the heart the cairn wakes the deep and the heart is spent")
+	# The mingling (Wave 8 slice 3): the deep's era mingles, its patrols
+	# cross, its verbs transform, and patrol packs know a foreign den.
+	var deep: Dictionary = lock_sim.era()
+	var picks := {}
+	for salt in range(1, 41):
+		picks[String(lock_sim.mingle_pick("meadow", salt))] = true
+	check(not deep.get("mingle", {}).is_empty() and bool(deep.get("patrols_cross_biomes", false)) and picks.has("") and picks.has("ash_hound"),
+		"mingle: the deep sends hounds into some meadow packs, and its patrols cross")
+	check(float(lock_sim.era_mechanic("stone_husk", "guard_arc_bonus").get("value", 0.0)) == 40.0
+		and float(lock_sim.era_mechanic("marsh_wisp", "kindle_two").get("value", 0.0)) == 1.0,
+		"mingle: the deep's husks guard wider and its wisps light two")
+	var crossing := 0
+	for pack in landmark_map.get("packs", []):
+		if bool(pack.get("has_foreign", false)) and String(pack.get("foreign_biome", "")) != String(pack.get("biome", "")):
+			crossing += 1
+	check(crossing > 5, "mingle: patrol packs know a foreign den (%d)" % crossing)
 	var no_digs := PackedInt32Array()
 	var middle := Vector3(0.5, 0.5, 0.5)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")

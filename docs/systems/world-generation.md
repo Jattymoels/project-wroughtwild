@@ -137,6 +137,11 @@ now a **full 3D block field** the sim generates deterministically per seed
   (`pine`, `bog_oak`, `ash_snag`), felled like any tree, each paying a
   timber family of its own colour. The meadow and the hills keep the
   plain tree.
+- **Foreign routes (Wave 8 slice 3, the mingling):** every patrolling
+  pack also knows the nearest den of another biome within a patrol and a
+  half (`has_foreign`, `foreign_x/z`, `foreign_biome`); once an era's
+  patrols cross biomes the night walks it there instead of toward the
+  spawn, so the families literally mingle.
 - **Night patrols (Wave 7 slice 1):** a biome marked `patrols` (the
   forest, the fen, the wastes) gives each of its packs a route:
   `patrol_length_m` from its den along the line to the spawn, stopping

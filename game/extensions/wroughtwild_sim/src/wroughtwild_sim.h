@@ -330,6 +330,9 @@ public:
     bool set_curio(const String& landmark_id);
     Dictionary landmark_wants(const String& landmark_id) const;
     PackedStringArray curio_hints() const;
+    // The mingling (Wave 8 slice 3): the foreign family a pack spawning in
+    // `biome` takes this era, or "" - the sim's pick, deterministic per salt.
+    String mingle_pick(const String& biome, int salt) const;
     // The pack's cap for a family (0 = uncapped) and the room left in it.
     int carry_cap(const String& family) const;
     int carry_room(const String& family) const;

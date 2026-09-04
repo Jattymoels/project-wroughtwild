@@ -243,6 +243,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_curio", "landmark_id"), &WroughtwildSim::set_curio);
     ClassDB::bind_method(D_METHOD("landmark_wants", "landmark_id"), &WroughtwildSim::landmark_wants);
     ClassDB::bind_method(D_METHOD("curio_hints"), &WroughtwildSim::curio_hints);
+    ClassDB::bind_method(D_METHOD("mingle_pick", "biome", "salt"), &WroughtwildSim::mingle_pick);
     ClassDB::bind_method(D_METHOD("carry_cap", "family"), &WroughtwildSim::carry_cap);
     ClassDB::bind_method(D_METHOD("carry_room", "family"), &WroughtwildSim::carry_room);
     ClassDB::bind_method(D_METHOD("haul", "family", "amount"), &WroughtwildSim::haul);
@@ -2197,6 +2198,10 @@ Dictionary WroughtwildSim::world_map(int seed) {
         p["patrols"] = pack.patrols;
         p["route_x"] = pack.routeX;
         p["route_z"] = pack.routeZ;
+        p["has_foreign"] = pack.hasForeign;
+        p["foreign_x"] = pack.foreignX;
+        p["foreign_z"] = pack.foreignZ;
+        p["foreign_biome"] = to_godot(pack.foreignBiome);
         packs.push_back(p);
     }
     d["packs"] = packs;
@@ -3405,7 +3410,22 @@ Dictionary WroughtwildSim::era() const {
         escorts[to_godot(enemyId)] = strings_to_packed(list);
     }
     d["pack_escorts"] = escorts;
+    // The mingling (Wave 8 slice 3).
+    Dictionary mingle;
+    for (const auto& [biome, list] : e.mingle) {
+        mingle[to_godot(biome)] = strings_to_packed(list);
+    }
+    d["mingle"] = mingle;
+    d["mingle_chance"] = e.mingleChance;
+    d["patrols_cross_biomes"] = e.patrolsCrossBiomes;
     return d;
+}
+
+String WroughtwildSim::mingle_pick(const String& biome, int salt) const {
+    if (!require_loaded("mingle_pick")) {
+        return String();
+    }
+    return String(player_->era().minglePick(to_std(biome), static_cast<unsigned long long>(static_cast<long long>(salt))).c_str());
 }
 
 Dictionary WroughtwildSim::era_mechanic(const String& enemy_id, const String& mechanic) const {

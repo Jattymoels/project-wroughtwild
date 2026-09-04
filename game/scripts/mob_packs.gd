@@ -34,6 +34,12 @@ var _night_sleep := 1.0
 ## How far through the night (0 at dusk's end, 1 at dawn): patrols walk
 ## out over the first half and home over the second.
 var night_progress := 0.0
+## The mingling (Wave 8 slice 3): once the era's patrols cross biomes a
+## patrol walks to the nearest den of another biome instead of toward the
+## spawn; and a spawning pack may take a foreign family (the sim's pick).
+var cross_biomes := false
+## Test surface: foreign members mingled into packs since setup.
+var mingled := 0
 ## Noise rules (combat_realtime.json noise): radius per source kind, and
 ## the fraction a closed room lets out.
 var _noise: Dictionary = {}
@@ -72,6 +78,9 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 			"biome": String(pack.get("biome", "")),
 			"patrols": bool(pack.get("patrols", false)),
 			"route": Vector2i(int(pack.get("route_x", 0)), int(pack.get("route_z", 0))),
+			"foreign": Vector2i(int(pack.get("foreign_x", 0)), int(pack.get("foreign_z", 0))),
+			"foreign_biome": String(pack.get("foreign_biome", "")),
+			"has_foreign": bool(pack.get("has_foreign", false)),
 			"spawned": false,
 			"members": [],
 		})
@@ -132,13 +141,18 @@ func pack_position(pack: Dictionary) -> Vector3:
 	var den := Vector3((pack["x"] + 0.5) * cell, float(pack["y"]), (pack["z"] + 0.5) * cell)
 	if not night or not bool(pack.get("patrols", false)):
 		return den
-	var route: Vector2i = pack["route"]
+	var route: Vector2i = pack["foreign"] if cross_biomes and bool(pack.get("has_foreign", false)) else pack["route"]
 	var out: Vector3
 	if terrain != null and not terrain.map.is_empty():
 		out = terrain.surface_position(route.x, route.y)
 	else:
 		out = Vector3((route.x + 0.5) * cell, float(pack["y"]), (route.y + 0.5) * cell)
 	return den.lerp(out, sin(clampf(night_progress, 0.0, 1.0) * PI))
+
+
+## The era from the sandpit: whether its patrols cross biomes.
+func set_era(era: Dictionary) -> void:
+	cross_biomes = bool(era.get("patrols_cross_biomes", false))
 
 
 ## The hour from the sandpit: night or not, and how far through it.
@@ -390,6 +404,13 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 			ids.append(id)
 		for escort in (PackedStringArray() if grazer else escorts.get(id, PackedStringArray())):
 			ids.append(escort)
+	# The mingling (Wave 8 slice 3): from the deep on, a foreign family may
+	# join a pack in this biome - the sim's pick, deterministic per den.
+	if not resting and not grazer:
+		var foreign: String = sim.mingle_pick(String(pack.get("biome", "")), hash(Vector3i(int(pack["x"]), int(pack["y"]), int(pack["z"]))) ^ world_seed)
+		if foreign != "":
+			ids.append(foreign)
+			mingled += 1
 	var elite_member: int = int(pack["elite_member"])
 	var elite_modifier: String = String(pack["elite_modifier"])
 	var elite_bonus: float = float(era.get("elite_chance_bonus", 0.0))
