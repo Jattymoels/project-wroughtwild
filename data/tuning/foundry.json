@@ -1,6 +1,6 @@
 {
-  "schema_version": 7,
-  "status": "D-023 slice 7: links re-homed to the flow (a Catalyst in a corner touching a shared support links two skills), and Arc",
+  "schema_version": 8,
+  "status": "D-023 slice 8: the Marrow's sustain forms and the Quicksilver's tempo forms, with their hooks",
   "frame": [
     4,
     4
@@ -431,6 +431,218 @@
         }
       ],
       "design_purpose": "Reach worked by a Catalyst beside a strike: the strike sweeps every enemy within its reach and 1.5 m either side of the line, a short arc. (Reading area modifiers from then on is not done: the skill keeps its tags.)"
+    },
+    {
+      "family": "life",
+      "ingot": "ember",
+      "display_name": "Cauterise",
+      "effects": [
+        {
+          "modifier": "life_on_hit",
+          "value": 1
+        }
+      ],
+      "design_purpose": "PROPOSED: a hit with the skill restores 1 life - fire that closes what it opens."
+    },
+    {
+      "family": "life",
+      "ingot": "frost",
+      "display_name": "Cold Blood",
+      "effects": [
+        {
+          "modifier": "status_ward",
+          "value": 0.15
+        }
+      ],
+      "design_purpose": "The spec's reading: an enemy carrying the skill's chill deals 15% less to you."
+    },
+    {
+      "family": "life",
+      "ingot": "edge",
+      "display_name": "Bloodletting",
+      "effects": [
+        {
+          "modifier": "life_on_kill",
+          "value": 3
+        }
+      ],
+      "design_purpose": "The spec's reading without its condition: a kill with the skill restores 3 life (the spec says a kill of a bleeding enemy; the condition waits)."
+    },
+    {
+      "family": "life",
+      "ingot": "reach",
+      "display_name": "Far Leech",
+      "effects": [
+        {
+          "modifier": "life_on_hit",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 2
+        }
+      ],
+      "design_purpose": "PROPOSED: hits restore 1 life and kills 2 - the wide skill drinks from the crowd. (The spec's shelter reach following you out of the door is a shelter hook, later.)"
+    },
+    {
+      "family": "life",
+      "ingot": "vigour",
+      "display_name": "Hale",
+      "effects": [
+        {
+          "modifier": "max_life",
+          "value": 24
+        }
+      ],
+      "design_purpose": "The spec's reading: +24 life while the flow holds. (The Marrow's regeneration doubling waits for the Marrow of recoup.)"
+    },
+    {
+      "family": "life",
+      "ingot": "plate",
+      "display_name": "Scar Tissue",
+      "effects": [
+        {
+          "modifier": "max_life",
+          "value": 12
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ],
+      "design_purpose": "PROPOSED: +12 life, and casting the skill grants 4 armour for a moment. (Armour reducing burns and bleeds is a player-status hook, later.)"
+    },
+    {
+      "family": "life",
+      "ingot": "ward",
+      "display_name": "Warded Blood",
+      "effects": [
+        {
+          "modifier": "all_resistance",
+          "value": 5
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.1
+        }
+      ],
+      "design_purpose": "PROPOSED: +5 to every resistance, and an enemy carrying the skill's status deals 10% less to you."
+    },
+    {
+      "family": "life",
+      "ingot": "haste",
+      "display_name": "Lifeline",
+      "effects": [
+        {
+          "modifier": "heal_more",
+          "value": 0.15
+        }
+      ],
+      "design_purpose": "The spec's reading: life restored to you from any source is 15% more while the flow holds."
+    },
+    {
+      "family": "speed",
+      "ingot": "ember",
+      "display_name": "Hot Hands",
+      "effects": [
+        {
+          "modifier": "haste_on_kill",
+          "value": 0.16
+        }
+      ],
+      "design_purpose": "PROPOSED: a kill with the skill quickens you 16% for a moment. (The Dash leaving burning ground is a ground hook, later.)"
+    },
+    {
+      "family": "speed",
+      "ingot": "frost",
+      "display_name": "Cold Snap",
+      "effects": [
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.25
+        }
+      ],
+      "design_purpose": "PROPOSED: a kill with the skill refunds a quarter of its cooldown. (Dashing through enemies chilling them is a dash hook, later.)"
+    },
+    {
+      "family": "speed",
+      "ingot": "edge",
+      "display_name": "Quick Cut",
+      "effects": [
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.15
+        }
+      ],
+      "design_purpose": "PROPOSED: the skill's hits bleed (+20) and a kill refunds 15% of its cooldown."
+    },
+    {
+      "family": "speed",
+      "ingot": "reach",
+      "display_name": "Long Step",
+      "effects": [
+        {
+          "modifier": "dash_reach",
+          "value": 1.0
+        }
+      ],
+      "design_purpose": "The spec's reading: your Dash goes 1 m further while the flow holds."
+    },
+    {
+      "family": "speed",
+      "ingot": "vigour",
+      "display_name": "Second Breath",
+      "effects": [
+        {
+          "modifier": "life_on_dash",
+          "value": 4
+        }
+      ],
+      "design_purpose": "The spec's reading: a Dash restores 4 life."
+    },
+    {
+      "family": "speed",
+      "ingot": "plate",
+      "display_name": "Braced Step",
+      "effects": [
+        {
+          "modifier": "armour_on_dash",
+          "value": 8
+        }
+      ],
+      "design_purpose": "The spec's reading: +8 armour for a moment after a Dash (it shares cast_armour_seconds)."
+    },
+    {
+      "family": "speed",
+      "ingot": "ward",
+      "display_name": "Sure Step",
+      "effects": [
+        {
+          "modifier": "life_on_dash",
+          "value": 2
+        },
+        {
+          "modifier": "armour_on_dash",
+          "value": 4
+        }
+      ],
+      "design_purpose": "PROPOSED: a Dash restores 2 life and grants 4 armour for a moment. (A Dash cleansing a status waits for player statuses.)"
+    },
+    {
+      "family": "speed",
+      "ingot": "haste",
+      "display_name": "Fleet",
+      "effects": [
+        {
+          "modifier": "dash_recovery",
+          "value": 0.16
+        }
+      ],
+      "design_purpose": "The spec's reading: your Dash recovers 16% faster while the flow holds."
     }
   ],
   "ingots": [
@@ -670,7 +882,7 @@
     }
   ],
   "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier, at `skill_value` when the reading has a number of its own. EVERY INGOT READS EVERY SKILL (D-023 slice 2, owner 4 Sep 2026): an element ingot whose modifier cannot read the skill (Ember beside a cold orb) speaks its `added_modifier` instead and ADDS its element to the hit as a second typed packet at the same fraction, scaled by that element's own gear - the added-element lane, where boil and scald builds begin; the self ingots (Vigour, Plate, Ward) read a skill weakly through their skill_modifier (life on kill, armour for cast_armour_seconds after a cast, less damage from enemies carrying the skill's status). Nothing on the plate is inert. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load. THE FLOW (owner, 4 Sep 2026; replaces the socketed Vanguard of slice 4): only a skill sits in a socket; a currency kind rests where it cannot touch one, gives its family's base forward while a chain of pieces leads inward to a laid tablet, and works every support it touches into a form (`kinds`, `forms`).",
-  "design_purpose_forms": "FORMS (D-023, the flow): what a kind of a family works a support into. Keyed by family and ingot; `lane` narrows to how the ingot reads the skill (same element sharpens, added element reacts), `skill_tag` to the skill's tags. Each effect names a modifier, a value and, for a reaction, the packet it speaks to ('native' = the skill's own element). The ingot keeps its plain reading; the form's effects feed the skill the support serves. The Catalyst rows are the spec's reactions, their hook halves now engine hooks reading sim numbers (Echo, Quench, Rime, Sear, Brittle; Arc and Linger still wait); the Vanguard rows are proposals drafted from the owner's two examples (Frost Leech, Max Speed) and slice 4's readings. Marrow and Quicksilver rows wait for slice 8. Compound forms (a kind worked by another kind, an ingot's metal or rarity as a condition) are the next step and have no rows yet.",
+  "design_purpose_forms": "FORMS (D-023, the flow): what a kind of a family works a support into. Keyed by family and ingot; `lane` narrows to how the ingot reads the skill (same element sharpens, added element reacts), `skill_tag` to the skill's tags. Each effect names a modifier, a value and, for a reaction, the packet it speaks to ('native' = the skill's own element). The ingot keeps its plain reading; the form's effects feed the skill the support serves. The Catalyst rows are the spec's reactions, their hook halves now engine hooks reading sim numbers (Echo, Quench, Rime, Sear, Brittle; Arc and Linger still wait); the Vanguard rows are proposals drafted from the owner's two examples (Frost Leech, Max Speed) and slice 4's readings. The Marrow rows are sustain twists and the Quicksilver rows tempo twists (slice 8): the spec's readings where a hook existed or was cheap, proposals where it did not; the Dash forms land on the sheet (the Dash is no skill on the plate) and the rest feed the skill. Compound forms (a kind worked by another kind, an ingot's metal or rarity as a condition) are the next step and have no rows yet.",
   "family_names": {
     "offence": "Catalyst",
     "defence": "Vanguard",

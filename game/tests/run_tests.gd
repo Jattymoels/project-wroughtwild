@@ -282,6 +282,9 @@ func _test_lattice() -> void:
 	for p in sim.foundry()["plate"]:
 		if String(p.get("currency", "")) == "vanguard":
 			kinds_on_plate += 1
+	check(sim.derived_stats().has("heal_more") and sim.derived_stats()["dash_reach_m"] == 0.0
+		and sim.skill_life_on_hit("prototype_frost_orb") == 0.0 and sim.skill_refund_on_kill("prototype_frost_orb") == 0.0
+		and sim.skill_haste_on_kill("prototype_frost_orb") == 0.0, "marrow: the sheet and the skill hooks are silent bare")
 	check(sim.foundry_links().is_empty() and sim.skill_triggers("prototype_frost_orb").has("freeze")
 		and sim.skill_triggers("prototype_heavy_strike").is_empty() and sim.linked_casts("prototype_frost_orb", "freeze").is_empty()
 		and sim.skill_arc("prototype_heavy_strike") == 0.0, "links: a bare plate links nothing; the orb's trigger is a freeze")

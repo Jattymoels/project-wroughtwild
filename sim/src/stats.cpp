@@ -53,6 +53,11 @@ DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipm
         else if (e.key == "add_barbs") stats.barbsBuildup += e.value;
         else if (e.key == "add_answer_reach") stats.answerReachM += e.value;
         else if (e.key == "add_haste_after_hit") stats.hasteAfterHit += e.value;
+        else if (e.key == "add_heal_more") stats.healMore += e.value;
+        else if (e.key == "add_dash_reach") stats.dashReachM += e.value;
+        else if (e.key == "add_life_on_dash") stats.lifeOnDash += e.value;
+        else if (e.key == "add_armour_on_dash") stats.armourOnDash += e.value;
+        else if (e.key == "add_dash_recovery") stats.dashRecovery += e.value;
     }
     return finish(base, stats);
 }

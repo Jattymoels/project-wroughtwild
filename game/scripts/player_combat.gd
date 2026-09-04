@@ -131,8 +131,7 @@ func _tick_shelter(delta: float) -> void:
 			home_position = get_parent().global_position
 			rest_multiplier = sim.encroachment_rest_multiplier(home_position)
 	if sheltered and _settle_left <= 0.0 and life > 0.0 and life < max_life:
-		life = minf(max_life, life + _regen_per_second * rest_multiplier * delta)
-		life_changed.emit(life, max_life)
+		heal(_regen_per_second * rest_multiplier * delta)
 
 
 func _probe_shelter() -> bool:
@@ -223,10 +222,14 @@ func _planar_distance(a: Vector3, b: Vector3) -> float:
 	return Vector2(a.x - b.x, a.z - b.z).length()
 
 
-## The skill's cooldown after gear modifiers (the sim resolves it).
+## The skill's cooldown after gear modifiers (the sim resolves it). The
+## Dash's is divided further by the sheet's dash recovery (Fleet, D-023).
 func cooldown_total(skill_id: StringName) -> float:
 	if sim != null:
-		return sim.skill_cooldown_seconds(String(skill_id))
+		var total: float = sim.skill_cooldown_seconds(String(skill_id))
+		if String(skills.get(skill_id, {}).get("delivery", "")) == "dash":
+			total /= 1.0 + float(sim.derived_stats().get("dash_recovery", 0.0))
+		return total
 	return skills.get(skill_id, {}).get("cooldown_seconds", 1.0)
 
 
@@ -350,18 +353,31 @@ func _answer_hit(source: Node) -> void:
 		_haste_left = _haste_seconds
 
 
-## Life restored outside the shelter (the Vigour reading's kills).
+## Life restored from any source: kills, hits, the Dash, the shelter. The
+## sheet's heal_more (Lifeline, D-023) amplifies every one.
 func heal(amount: float) -> void:
 	if amount <= 0.0 or life <= 0.0:
 		return
+	amount *= 1.0 + float(sim.derived_stats().get("heal_more", 0.0))
 	life = minf(max_life, life + amount)
 	life_changed.emit(life, max_life)
 
 
-## The Vigour reading: kills with a skill it supports restore life.
+## What a kill with a skill pays back: life (the Vigour reading and the
+## Marrow's forms), a cooldown refund and a burst of speed (the
+## Quicksilver's forms).
 func _reap(skill_id: StringName, kills: int) -> void:
-	if kills > 0:
-		heal(kills * sim.skill_life_on_kill(String(skill_id)))
+	if kills <= 0:
+		return
+	var id := String(skill_id)
+	heal(kills * sim.skill_life_on_kill(id))
+	var refund: float = sim.skill_refund_on_kill(id)
+	if refund > 0.0:
+		cooldowns[skill_id] = float(cooldowns.get(skill_id, 0.0)) * (1.0 - refund)
+	var quicken: float = sim.skill_haste_on_kill(id)
+	if quicken > 0.0:
+		_haste = maxf(_haste, quicken)
+		_haste_left = _haste_seconds
 
 
 ## Deals one hit of skill_id to enemy as the sim's typed packets (D-023
@@ -383,6 +399,9 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -
 		if not types.has(String(sim.shatter_rules().get("nova_damage_type", "cold"))):
 			types.append(String(sim.shatter_rules().get("nova_damage_type", "cold")))
 	last_hit_dealt = landed
+	# Life on hit (the Marrow's forms): a hit that lands drinks.
+	if landed > 0.0:
+		heal(sim.skill_life_on_hit(String(skill_id)))
 	var kill := enemy.life <= 0.0
 	if kill:
 		_reap(skill_id, 1)
@@ -664,9 +683,18 @@ func _use_dash(skill_id: StringName) -> bool:
 	var forward := -player.global_transform.basis.z
 	forward.y = 0.0
 	forward = forward.normalized()
-	_dash_velocity = forward * (skills[skill_id].get("distance", 4.0) / dash_duration)
+	# The Quicksilver's Dash forms (D-023 slice 8) live on the sheet: extra
+	# reach, life restored, armour granted for a moment.
+	var ds: Dictionary = sim.derived_stats()
+	var distance: float = float(skills[skill_id].get("distance", 4.0)) + float(ds.get("dash_reach_m", 0.0))
+	_dash_velocity = forward * (distance / dash_duration)
 	_dash_left = dash_duration
 	invulnerable_left = dash_invulnerable
+	heal(float(ds.get("life_on_dash", 0.0)))
+	var braced: float = float(ds.get("armour_on_dash", 0.0))
+	if braced > 0.0:
+		_cast_armour = maxf(_cast_armour, braced)
+		_cast_armour_left = maxf(_cast_armour_left, float(sim.skill_cast_armour(String(skill_id)).get("seconds", 2.0)))
 	return true
 
 

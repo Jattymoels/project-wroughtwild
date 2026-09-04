@@ -163,6 +163,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_sear", "skill_id"), &WroughtwildSim::skill_sear);
     ClassDB::bind_method(D_METHOD("skill_brittle", "skill_id"), &WroughtwildSim::skill_brittle);
     ClassDB::bind_method(D_METHOD("skill_arc", "skill_id"), &WroughtwildSim::skill_arc);
+    ClassDB::bind_method(D_METHOD("skill_life_on_hit", "skill_id"), &WroughtwildSim::skill_life_on_hit);
+    ClassDB::bind_method(D_METHOD("skill_refund_on_kill", "skill_id"), &WroughtwildSim::skill_refund_on_kill);
+    ClassDB::bind_method(D_METHOD("skill_haste_on_kill", "skill_id"), &WroughtwildSim::skill_haste_on_kill);
     ClassDB::bind_method(D_METHOD("foundry_links"), &WroughtwildSim::foundry_links);
     ClassDB::bind_method(D_METHOD("skill_triggers", "skill_id"), &WroughtwildSim::skill_triggers);
     ClassDB::bind_method(D_METHOD("linked_casts", "skill_id", "trigger"), &WroughtwildSim::linked_casts);
@@ -611,6 +614,12 @@ Dictionary WroughtwildSim::derived_stats() const {
     d["barbs"] = s.barbsBuildup;
     d["answer_reach_m"] = s.answerReachM;
     d["haste_after_hit"] = s.hasteAfterHit;
+    // The Marrow's and the Quicksilver's sheet numbers (D-023 slice 8).
+    d["heal_more"] = s.healMore;
+    d["dash_reach_m"] = s.dashReachM;
+    d["life_on_dash"] = s.lifeOnDash;
+    d["armour_on_dash"] = s.armourOnDash;
+    d["dash_recovery"] = s.dashRecovery;
     return d;
 }
 
@@ -1942,6 +1951,18 @@ bool WroughtwildSim::skill_brittle(const String& skill_id) const {
 
 double WroughtwildSim::skill_arc(const String& skill_id) const {
     return require_loaded("skill_arc") ? wroughtwild::grammar::skillArc(*tuning_, active_mods(), to_std(skill_id)) : 0.0;
+}
+
+double WroughtwildSim::skill_life_on_hit(const String& skill_id) const {
+    return require_loaded("skill_life_on_hit") ? wroughtwild::grammar::skillLifeOnHit(*tuning_, active_mods(), to_std(skill_id)) : 0.0;
+}
+
+double WroughtwildSim::skill_refund_on_kill(const String& skill_id) const {
+    return require_loaded("skill_refund_on_kill") ? wroughtwild::grammar::skillRefundOnKill(*tuning_, active_mods(), to_std(skill_id)) : 0.0;
+}
+
+double WroughtwildSim::skill_haste_on_kill(const String& skill_id) const {
+    return require_loaded("skill_haste_on_kill") ? wroughtwild::grammar::skillHasteOnKill(*tuning_, active_mods(), to_std(skill_id)) : 0.0;
 }
 
 Array WroughtwildSim::foundry_links() const {

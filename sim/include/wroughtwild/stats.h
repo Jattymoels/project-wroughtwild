@@ -29,6 +29,14 @@ struct DerivedStats {
     double barbsBuildup = 0.0;
     double answerReachM = 0.0;
     double hasteAfterHit = 0.0; // fractional speed increase
+    // The Marrow's and the Quicksilver's sheet numbers (D-023 slice 8):
+    // every heal amplified; the Dash's extra reach, its life, its armour,
+    // its faster recovery.
+    double healMore = 0.0;
+    double dashReachM = 0.0;
+    double lifeOnDash = 0.0;
+    double armourOnDash = 0.0;
+    double dashRecovery = 0.0;
 };
 
 // Stats from the item table's modifier pool: implicit properties plus every

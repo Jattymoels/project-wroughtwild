@@ -886,3 +886,45 @@ own cooldown).
 
 Not yet: the bar marking a linked skill, Linger, compound forms, rails,
 Marrow and Quicksilver forms, the variants waiting on stats.
+
+## Implemented: the Marrow's and the Quicksilver's forms (4 Sep 2026, D-023 slice 8)
+
+Taken before rails, which need the class choice and the class hall of
+D-004. `data/tuning/foundry.json` (schema 8), `items.json`;
+`sim/stats.h`, `grammar.h`:
+
+- **The Marrow's forms**, sustain twists feeding the skill: Cauterise
+  (Ember: a hit restores 1 life), Cold Blood (Frost: an enemy carrying
+  the skill's chill deals 15% less to you, the spec's reading),
+  Bloodletting (Edge: a kill restores 3), Far Leech (Reach: hits 1 and
+  kills 2), Hale (Vigour: +24 life), Scar Tissue (Plate: +12 life and 4
+  armour on a cast), Warded Blood (Ward: +5 to every resistance and 10%
+  less from an enemy carrying the status), Lifeline (Haste: life restored
+  from any source is 15% more, the spec's reading).
+- **The Quicksilver's forms**, tempo twists: Hot Hands (Ember: a kill
+  quickens you 16% for a moment), Cold Snap (Frost: a kill refunds a
+  quarter of the cooldown), Quick Cut (Edge: the hits bleed and a kill
+  refunds 15%), Long Step (Reach: the Dash goes 1 m further), Second
+  Breath (Vigour: a Dash restores 4 life), Braced Step (Plate: 8 armour
+  for a moment after a Dash), Sure Step (Ward: 2 life and 4 armour on a
+  Dash), Fleet (Haste: the Dash recovers 16% faster). The Dash sits on no
+  socket, so its forms land on the sheet.
+- **The hooks.** `grammar::skillLifeOnHit`, `skillRefundOnKill`,
+  `skillHasteOnKill` per skill; `DerivedStats` gains `healMore`,
+  `dashReachM`, `lifeOnDash`, `armourOnDash`, `dashRecovery`. The engine
+  heals as a hit lands, pays a kill back in life, cooldown and speed,
+  multiplies every heal (kills, hits, the Dash, the shelter) by the
+  sheet's healing, and gives the Dash its extra reach, life and armour
+  and a faster recovery.
+
+Tests: sim 3511 (eight forms each; every modifier; Cold Blood and Hot
+Hands worked on the orb; the Marrow's base; Cauterise and Cold Snap;
+Lifeline and Long Step on the sheet; Hale and Braced Step, then swapped
+corners Second Breath and Scar Tissue on top of the Plate's weak reading;
+Warded Blood and Fleet; Bloodletting and Quick Cut; a bare plate silent);
+engine unit 351; integration 220; grammar 56.
+
+Not yet: the readings needing player statuses or ground hooks (a Dash
+leaving burning ground, dashing through enemies chilling them, a Dash
+cleansing a status, armour against burns and bleeds, the Marrow's
+regeneration), the rest of the variants, rails, Linger, compound forms.

@@ -180,6 +180,12 @@ bool skillBrittle(const tuning::Tuning& tuning, const ActiveMods& active, const 
 // How far either side of a strike's line its sweep reaches, in metres (0:
 // a single target). The Arc form.
 double skillArc(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+// The Marrow's and the Quicksilver's skill hooks (D-023 slice 8): life a
+// hit restores; the fraction of the cooldown a kill refunds; how much a
+// kill quickens you for a moment.
+double skillLifeOnHit(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+double skillRefundOnKill(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+double skillHasteOnKill(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
 
 // --- links (D-023) -----------------------------------------------------------
 // The triggers a skill's payload can fire on an enemy: "freeze" when it

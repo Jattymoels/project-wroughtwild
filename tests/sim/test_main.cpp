@@ -3133,6 +3133,100 @@ void testLinksAndArc(const tuning::Tuning& t) {
           "arc: beside the orb the same reach and catalyst are Split, not Arc");
 }
 
+// D-023 slice 8: the Marrow's sustain forms and the Quicksilver's tempo
+// forms, each a corner kind working a support beside a skill; the Dash's
+// forms land on the sheet because the Dash sits on no socket.
+void testMarrowAndQuicksilverForms(const tuning::Tuning& t) {
+    const auto& f = t.foundry;
+    int life = 0, speed = 0;
+    for (const auto& form : f.forms) {
+        if (form.family == "life") ++life;
+        if (form.family == "speed") ++speed;
+    }
+    check(life == 8 && speed == 8, "marrow: eight forms each for the Marrow and the Quicksilver");
+    for (const char* id : {"life_on_hit", "refund_on_kill", "haste_on_kill", "heal_more", "dash_reach", "life_on_dash", "armour_on_dash", "dash_recovery"})
+        check(t.items.findModifier(id) != nullptr, std::string("marrow: the modifier ") + id + " loads");
+    auto onSheet = [&](const economy::PlayerEconomy& who) {
+        std::vector<stats::ExtraEffect> extra;
+        for (const auto& m : grammar::foundryMods(t, who.foundry(), who.currentEra())) extra.push_back({m.effectKey, m.value});
+        return stats::deriveStats(t.world.playerBase, {}, t.items, extra);
+    };
+    // A working with one kind in each corner: the Marrow below the west
+    // support, the Quicksilver beyond the east one.
+    auto laid = [&](const std::string& west, const std::string& westEvent, const std::string& east, const std::string& eastEvent) {
+        economy::PlayerEconomy e(t);
+        e.foundryEvent(westEvent);
+        if (eastEvent != westEvent) e.foundryEvent(eastEvent);
+        e.grant("marrow", 1);
+        e.grant("quicksilver", 1);
+        check(e.foundryPlaceSkill(1, 1, "prototype_frost_orb") && e.foundryPlace(1, 0, west) && e.foundryPlace(1, 2, east) &&
+                  e.foundryPlaceKind(2, 0, "marrow") && e.foundryPlaceKind(1, 3, "quicksilver"),
+              "marrow: the orb with " + west + " west and " + east + " east, a Marrow and a Quicksilver in the corners");
+        return e;
+    };
+    // Frost (Cold Blood for the Marrow), Ember (Hot Hands for the Quicksilver).
+    auto a = laid("frost", "first_kill:gloom_crawler", "ember", "first_kill:ember_whelp");
+    auto am = grammar::foundryMods(t, a.foundry(), a.currentEra());
+    bool coldBlood = false, hotHands = false;
+    for (const auto& e : foundry::effects(t, a.foundry(), a.plate())) {
+        if (e.kind == "form" && e.label.rfind("Cold Blood (Marrow", 0) == 0 && e.skill == "prototype_frost_orb") coldBlood = true;
+        if (e.kind == "form" && e.label.rfind("Hot Hands (Quicksilver", 0) == 0 && e.skill == "prototype_frost_orb") hotHands = true;
+    }
+    check(coldBlood && hotHands, "marrow: Cold Blood and Hot Hands are worked on the orb's supports");
+    checkNear(grammar::wardMultiplier(t, am, {"chill"}), 0.85, 1e-9, "marrow: Cold Blood - a chilled enemy deals 15% less to you");
+    checkNear(grammar::skillHasteOnKill(t, am, "prototype_frost_orb"), 0.16, 1e-9, "marrow: Hot Hands - a kill with the orb quickens you");
+    checkNear(grammar::skillHasteOnKill(t, am, "prototype_frost_nova"), 0.0, 1e-9, "marrow: and no other skill");
+    auto sheetA = onSheet(a);
+    check(std::abs(sheetA.maxLife - (t.world.playerBase.maxLife + 6.0)) < 1e-9 && std::abs(sheetA.armour) < 1e-9,
+          "marrow: the Marrow's own six life on the sheet, and the Quicksilver's base is no armour");
+    // Ember west (Cauterise) and Frost east (Cold Snap).
+    auto b = laid("ember", "first_kill:ember_whelp", "frost", "first_kill:gloom_crawler");
+    auto bm = grammar::foundryMods(t, b.foundry(), b.currentEra());
+    checkNear(grammar::skillLifeOnHit(t, bm, "prototype_frost_orb"), 1.0, 1e-9, "marrow: Cauterise - a hit with the orb restores one life");
+    checkNear(grammar::skillRefundOnKill(t, bm, "prototype_frost_orb"), 0.25, 1e-9, "marrow: Cold Snap - a kill refunds a quarter of the orb's cooldown");
+    // Haste west (Lifeline) and Reach east (Long Step): both on the sheet.
+    auto c = laid("haste", "first_kill:ash_hound", "reach", "first_kill:cinder_archer");
+    auto sheetC = onSheet(c);
+    check(std::abs(sheetC.healMore - 0.15) < 1e-9 && std::abs(sheetC.dashReachM - 1.0) < 1e-9,
+          "marrow: Lifeline amplifies every heal by 15%, Long Step adds a metre to the Dash");
+    // Vigour west (Hale) and Plate east (Braced Step); then swapped kinds: Scar Tissue and Second Breath.
+    auto d = laid("vigour", "recipe:workbench_kit", "plate", "first_kill:stone_husk");
+    auto sheetD = onSheet(d);
+    check(std::abs(sheetD.maxLife - (t.world.playerBase.maxLife + 6.0 + 12.0 + 24.0)) < 1e-9 && std::abs(sheetD.armourOnDash - 8.0) < 1e-9,
+          "marrow: Hale's 24 life on the sheet with the ingot's 12 and the Marrow's 6; Braced Step's 8 armour on a Dash");
+    d.inventory["iron_ingot"] = 2;
+    check(d.foundryRemove(2, 0) && d.foundryRemove(1, 3) && d.foundryPlaceKind(2, 0, "quicksilver") && d.foundryPlaceKind(1, 3, "marrow"),
+          "marrow: the kinds swap corners");
+    auto sheetD2 = onSheet(d);
+    check(std::abs(sheetD2.lifeOnDash - 4.0) < 1e-9 && std::abs(sheetD2.armourOnDash) < 1e-9 &&
+              std::abs(grammar::skillCastArmour(t, grammar::foundryMods(t, d.foundry(), d.currentEra()), "prototype_frost_orb") - (4.0 + 4.0)) < 1e-9,
+          "marrow: swapped, the vigour is Second Breath and the plate Scar Tissue on top of its weak reading");
+    // Ward (Warded Blood) and Haste (Fleet).
+    auto e = laid("ward", "world_effect:stonecut_blocks", "haste", "first_kill:ash_hound");
+    auto sheetE = onSheet(e);
+    // The Ward ingot's own base is ten fire resistance, and its weak reading (5%) stacks with Warded Blood's 10%.
+    check(std::abs(sheetE.fireResistancePercent - 15.0) < 1e-9 && std::abs(sheetE.coldResistancePercent - 5.0) < 1e-9 &&
+              std::abs(sheetE.dashRecovery - 0.16) < 1e-9,
+          "marrow: Warded Blood's five to every resistance on the ward's ten, Fleet's faster Dash");
+    checkNear(grammar::wardMultiplier(t, grammar::foundryMods(t, e.foundry(), e.currentEra()), {"chill"}), 0.85, 1e-9,
+              "marrow: Warded Blood's 10% on the Ward's own 5% - a chilled enemy deals 15% less");
+    // Edge: Bloodletting and Quick Cut.
+    auto g = laid("edge", "work:strike_split", "frost", "first_kill:gloom_crawler");
+    g.inventory["iron_ingot"] = 3;
+    check(g.foundryRemove(1, 3) && g.foundryRemove(1, 2) && g.foundryPlace(1, 2, "edge") == false, "marrow: one edge only");
+    auto gm = grammar::foundryMods(t, g.foundry(), g.currentEra());
+    checkNear(grammar::skillLifeOnKill(t, gm, "prototype_frost_orb"), 3.0, 1e-9, "marrow: Bloodletting - a kill with the orb restores three life");
+    check(g.foundryRemove(2, 0) && g.foundryPlaceKind(2, 0, "quicksilver"), "marrow: the Quicksilver takes the edge's corner");
+    gm = grammar::foundryMods(t, g.foundry(), g.currentEra());
+    checkNear(grammar::skillRefundOnKill(t, gm, "prototype_frost_orb"), 0.15, 1e-9, "marrow: Quick Cut refunds 15% on a kill");
+    checkNear(grammar::bleedApplied(t, gm, "prototype_frost_orb", false), 20.0, 1e-9, "marrow: and the orb bleeds");
+    // Bare: none of it.
+    grammar::ActiveMods none;
+    check(std::abs(grammar::skillLifeOnHit(t, none, "prototype_frost_orb")) < 1e-9 && std::abs(grammar::skillRefundOnKill(t, none, "prototype_frost_orb")) < 1e-9 &&
+              std::abs(stats::deriveStats(t.world.playerBase, {}, t.items, {}).healMore) < 1e-9,
+          "marrow: a bare plate has none of it");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3181,6 +3275,7 @@ int main(int argc, char** argv) {
     testKindsInCorners(t);
     testVariantsAndHooks(t);
     testLinksAndArc(t);
+    testMarrowAndQuicksilverForms(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);
