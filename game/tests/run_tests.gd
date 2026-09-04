@@ -46,6 +46,10 @@ func _test_lattice() -> void:
 	check(sim.shape("door")["form"] == "door" and sim.shape("door")["cells_tall"] == 2
 		and sim.shape("stairs")["oriented"] and not sim.shape("wall_panel")["oriented"],
 		"lattice: forms, height and orientation come from data")
+	check(sim.shape("chest")["form"] == "chest" and sim.shape("chest")["element"] == "block"
+		and PieceMesh.mesh_for("chest", Vector3(1.0, 0.7, 0.8)).get_aabb().size.y > 0.6
+		and PieceMesh.collision_for("chest", Vector3(1.0, 0.7, 0.8)).size() == 1,
+		"lattice: the chest is a block piece with a lidded mesh and one collision box")
 	check(absf(sim.lattice_registry_grid() - 0.5) < 0.0001, "lattice: the registry runs at half cells")
 
 	# A wall aimed at the ground: the nearest vertical plane, standing on
@@ -191,6 +195,18 @@ func _test_lattice() -> void:
 	check(Hud.clock_text(245.2) == "4:06" and Hud.clock_text(0.0) == "0:00", "day: the HUD's clock reads minutes and seconds")
 	check(PlayerCombat.compass(Vector3(0, 0, -1)) == "N" and PlayerCombat.compass(Vector3(1, 0, 0)) == "E"
 		and PlayerCombat.compass(Vector3(-1, 0, 1)) == "SW", "day: the way home is told by the eight winds")
+	# Hauling (Wave 6 slice 6): the rules, and a chest through the binding.
+	var hauling: Dictionary = sim.hauling_rules()
+	check(int(hauling.get("chest_units", 0)) > 0 and int(hauling.get("carry_cap_default", 0)) > 0
+		and sim.carry_cap("wood") > 0 and sim.carry_cap("iron_chest_armour") == 0,
+		"haul: the rules come from world.json and gear is never capped")
+	sim.add_material("wood", 12)
+	check(sim.store_deposit("block:0:1,2,3", "wood", 5) == 5 and sim.store_contents("block:0:1,2,3").get("wood", 0) == 5
+		and sim.store_units("block:0:1,2,3") == 5 and sim.store_room("block:0:1,2,3") == int(hauling["chest_units"]) - 5
+		and sim.material_count("wood") == 7, "haul: a chest takes a deposit through the binding")
+	check(sim.store_withdraw("block:0:1,2,3", "wood", 99) == 5 and sim.material_count("wood") == 12
+		and sim.store_remove("block:0:1,2,3").is_empty(), "haul: and gives it back")
+	sim.consume_material("wood", 12)
 	var no_digs := PackedInt32Array()
 	var middle := Vector3(0.5, 0.5, 0.5)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")
@@ -431,6 +447,13 @@ func _test_inventory() -> void:
 	check(inventory.get_count(&"wood") == 2, "inventory: count after consume")
 	inventory.add_material(&"wood", -4)
 	check(inventory.get_count(&"wood") == 2, "inventory: negative add ignored")
+	# The haul (Wave 6 slice 6): the pack takes from the ground up to the
+	# family's cap and says how much it took.
+	var cap := inventory.carry_cap(&"wood")
+	check(cap > 0 and inventory.haul(&"wood", cap + 20) == cap - 2 and inventory.get_count(&"wood") == cap
+		and not inventory.has_room(&"wood"), "inventory: the haul fills to the cap (%d) and no further" % cap)
+	check(inventory.haul(&"wood", 1) == 0 and inventory.consume_material(&"wood", cap) and inventory.has_room(&"wood"),
+		"inventory: full takes nothing; spent, there is room again")
 	inventory.free()
 
 

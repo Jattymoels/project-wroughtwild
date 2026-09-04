@@ -27,6 +27,23 @@
     "shelter_night_regen_multiplier": 2.0,
     "design_purpose": "Day and night (Wave 6 slice 5; the owner, 4 Sep 2026: 'imperative there is almost like a forced - go back and continue your shelter, and get lost in that for a bit'). A day is length_seconds of play (twelve minutes); a new game starts start_fraction into day one so the first day is long; the phases end at dawn_end, day_end and dusk_end as fractions of the day, so the night is the last third - about four minutes, long enough to build through. Dusk is the warning: the light goes, the HUD counts down and points home. Night: the world keeps night_light of its daylight; out in the open the cold takes exposure_life_per_round per round of combat_realtime.json down to exposure_floor_fraction of max life and no further (it never kills; it sends you home); packs wake from night_aggro_multiplier times as far and stay awake night_sleep_range_multiplier times as far; in a shelter the rest pays shelter_night_regen_multiplier times the shelter's regen. The night is the forced return: the open is worse, the roof is better, and the four minutes are for the shelter."
   },
+  "hauling": {
+    "carry_cap_default": 40,
+    "carry_cap": {
+      "wood": 60,
+      "fieldstone": 40,
+      "split_stone": 40,
+      "timber_wedge": 40,
+      "hide": 30,
+      "iron_ore": 30,
+      "copper_ore": 30,
+      "tin_ore": 30,
+      "ember_iron_ore": 30,
+      "silver_ore": 30
+    },
+    "chest_units": 240,
+    "design_purpose": "Hauling (Wave 6 slice 6; the owner, 4 Sep 2026: 'would definitely need chests/storage solutions'; D-005 arriving early). The pack takes from the ground only up to a cap per family - carry_cap by family, carry_cap_default for any material not listed; forged goods and gear are never capped, so the forge's output stacks and only the haul is bounded. A full family leaves its chips on the ground and the HUD says so. A chest (construction.json 'chest') holds chest_units of anything together; E at it moves stacks between the pack and the store, and breaking it spills what it held where it stood. Sixty timber is ten trees' worth and one hut; the ores are the heavy things at thirty. The walk between the veins, the felling and the shelter is now a walk with a load: you go out, you fill, you come home and put it in the chest - the shelter is where the wealth is."
+  },
   "enemies": [
     {
       "id": "ember_whelp",

@@ -26,6 +26,8 @@ var _door: PlacedBlock
 var _room: Array = []
 var _life_before_night := 0.0
 var _night_packs: MobPacks
+var _chest: PlacedBlock
+var _chest_wood := 0
 ## The x-face, z-face and vertical edge that all meet at build-grid corner
 ## (5, 3, 5) - registry coordinates run at half cells, so (10, 6, 10).
 const CORNER_FACE_X := {"kind": "face", "axis": 0, "cell": Vector3i(10, 6, 10)}
@@ -550,6 +552,57 @@ func _physics_process(_delta: float) -> void:
 			if bundle != null:
 				bundle.interact(_player)
 			check(sim.material_count("wood") == _wood_before_death, "death: pack recovered restores materials")
+		41:
+			# Hauling (Wave 6 slice 6): a chest placed three cells over, E
+			# opens its store; timber moves in and back out through the
+			# panel; the pack's cap bounds what comes back.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			var placement := _player.placement
+			var p := _player.global_position
+			check(placement.select_shape(&"chest") and placement.placing_shape() == &"chest", "chest: selectable from the start")
+			# The first free cell a few steps from the player, by the sim's own word.
+			var element := {}
+			for offset in [Vector3i(3, 0, 0), Vector3i(-3, 0, 0), Vector3i(0, 0, 3), Vector3i(0, 0, -3),
+					Vector3i(3, 1, 3), Vector3i(-3, 1, -3), Vector3i(4, 1, 0), Vector3i(0, 1, 4)]:
+				var c: Vector3i = Vector3i(floori(p.x), floori(p.y), floori(p.z)) + (offset as Vector3i)
+				var candidate := {"kind": "volume", "axis": 0, "cell": c * 2}
+				if sim.structure_free_for("chest", candidate):
+					element = candidate
+					break
+			_chest = placement.place_piece(element, &"chest", &"wood") if not element.is_empty() else null
+			check(_chest != null and _chest.is_chest() and _chest.interact_label() == "E open the chest"
+				and _chest.store_key().begins_with("volume:0:"), "chest: stands in a free cell and offers E (%s)" % str(element))
+			_chest_wood = sim.material_count("wood")
+			check(_chest_wood > 0, "chest: timber in the pack to store (%d)" % _chest_wood)
+			_player.open_chest(_chest)
+			var panel: ChestPanel = _player.chest_panel
+			check(panel.is_open() and panel.row_count >= 1, "chest: the panel opens with a row per family held")
+			check(panel.store(&"wood", 5) == 5 and sim.store_contents(_chest.store_key()).get("wood", 0) == 5
+				and sim.material_count("wood") == _chest_wood - 5 and panel.message().begins_with("Stored 5"),
+				"chest: five timber stored through the panel")
+			var room: int = sim.carry_room("wood")
+			var back: int = panel.take(&"wood", 99)
+			check(back == mini(5, room) and sim.material_count("wood") == _chest_wood - 5 + back,
+				"chest: taken back up to the pack's room (%d)" % back)
+			sim.add_material("wood", 5 - back)
+			sim.store_remove(_chest.store_key())
+			check(sim.store_deposit(_chest.store_key(), "wood", 1) == 1, "chest: one timber left inside")
+			panel.close_panel()
+			check(not panel.is_open(), "chest: closed again")
+		43:
+			# Broken, the chest spills what it held where it stood.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			var before := get_tree().get_nodes_in_group("pickups").size()
+			check(_player.placement.remove_piece(_chest), "chest: removed")
+			var chips := 0
+			for node in get_tree().get_nodes_in_group("pickups"):
+				if node is Pickup and (node as Pickup).family == "wood":
+					chips += 1
+					node.queue_free()
+			check(get_tree().get_nodes_in_group("pickups").size() > before and chips >= 1
+				and sim.store_contents("block:0:0,0,0").is_empty(), "chest: the timber inside spilled as a chip")
+			sim.add_material("wood", 1)
+			check(sim.material_count("wood") == _chest_wood, "chest: the pack is as it was (%d)" % sim.material_count("wood"))
 		42:
 			# Ambush data flows from world.json; a forced ambush spawns the party.
 			var iron: ResourceNode = _scene.get_node("IronNode")

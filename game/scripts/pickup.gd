@@ -157,10 +157,16 @@ func _physics_process(delta: float) -> void:
 	if player != null:
 		var to_player: Vector3 = player.global_position + Vector3(0, 0.6, 0) - global_position
 		var distance := to_player.length()
-		if distance <= ABSORB_RANGE:
+		# A full family stays on the ground (Wave 6 slice 6): no magnet,
+		# and a word when you stand over it.
+		var full := kind == "material" and distance <= MAGNET_RANGE and not _room_for(player)
+		if full:
+			if distance <= ABSORB_RANGE and player is WroughtwildPlayer:
+				(player as WroughtwildPlayer).note_pack_full(family)
+		elif distance <= ABSORB_RANGE:
 			_absorb(player)
 			return
-		if distance <= MAGNET_RANGE:
+		elif distance <= MAGNET_RANGE:
 			# Vacuum: accelerate straight at the player, ignoring gravity.
 			_velocity = _velocity.move_toward(
 				to_player / distance * MAGNET_MAX_SPEED, MAGNET_ACCEL * delta)
@@ -214,7 +220,23 @@ func _absorb(player: Node3D) -> void:
 				else:
 					wrought_player.hud.notify("Skill page: you learn %s. Assign it in the pack screen (I)." % skill_name)
 		_:
-			sim.add_materials({family: amount})
+			# The haul: the pack takes what it has room for; a chip left
+			# short stays, smaller, on the ground.
+			var taken: int = sim.haul(family, amount)
+			if taken <= 0:
+				wrought_player.note_pack_full(family)
+				return
 			if wrought_player.hud != null:
-				wrought_player.hud.notify_pickup(family, amount)
+				wrought_player.hud.notify_pickup(family, taken)
+			if taken < amount:
+				amount -= taken
+				wrought_player.note_pack_full(family)
+				return
 	queue_free()
+
+
+## Whether the player's pack has room for this chip's family.
+func _room_for(player: Node3D) -> bool:
+	if not (player is WroughtwildPlayer):
+		return true
+	return (player as WroughtwildPlayer).inventory.has_room(StringName(family))

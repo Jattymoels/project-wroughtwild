@@ -231,6 +231,16 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("day"), &WroughtwildSim::day);
     ClassDB::bind_method(D_METHOD("day_rules"), &WroughtwildSim::day_rules);
     ClassDB::bind_method(D_METHOD("set_day_clock", "seconds"), &WroughtwildSim::set_day_clock);
+    ClassDB::bind_method(D_METHOD("hauling_rules"), &WroughtwildSim::hauling_rules);
+    ClassDB::bind_method(D_METHOD("carry_cap", "family"), &WroughtwildSim::carry_cap);
+    ClassDB::bind_method(D_METHOD("carry_room", "family"), &WroughtwildSim::carry_room);
+    ClassDB::bind_method(D_METHOD("haul", "family", "amount"), &WroughtwildSim::haul);
+    ClassDB::bind_method(D_METHOD("store_deposit", "key", "family", "amount"), &WroughtwildSim::store_deposit);
+    ClassDB::bind_method(D_METHOD("store_withdraw", "key", "family", "amount"), &WroughtwildSim::store_withdraw);
+    ClassDB::bind_method(D_METHOD("store_contents", "key"), &WroughtwildSim::store_contents);
+    ClassDB::bind_method(D_METHOD("store_units", "key"), &WroughtwildSim::store_units);
+    ClassDB::bind_method(D_METHOD("store_room", "key"), &WroughtwildSim::store_room);
+    ClassDB::bind_method(D_METHOD("store_remove", "key"), &WroughtwildSim::store_remove);
     ClassDB::bind_method(D_METHOD("note_skill_use", "skill_id"), &WroughtwildSim::note_skill_use);
     ClassDB::bind_method(D_METHOD("discard_pack_item", "index"), &WroughtwildSim::discard_pack_item);
     ClassDB::bind_method(D_METHOD("transfer_targets", "process_id"), &WroughtwildSim::transfer_targets);
@@ -2629,6 +2639,62 @@ Dictionary WroughtwildSim::day_rules() const {
     d["night_aggro_multiplier"] = r.nightAggroMultiplier;
     d["night_sleep_range_multiplier"] = r.nightSleepRangeMultiplier;
     d["shelter_night_regen_multiplier"] = r.shelterNightRegenMultiplier;
+    return d;
+}
+
+Dictionary WroughtwildSim::hauling_rules() const {
+    Dictionary d;
+    if (!require_loaded("hauling_rules")) {
+        return d;
+    }
+    d["carry_cap_default"] = tuning_->world.hauling.carryCapDefault;
+    d["chest_units"] = tuning_->world.hauling.chestUnits;
+    return d;
+}
+
+int WroughtwildSim::carry_cap(const String& family) const {
+    return require_loaded("carry_cap") ? player_->carryCap(to_std(family)) : 0;
+}
+
+int WroughtwildSim::carry_room(const String& family) const {
+    return require_loaded("carry_room") ? player_->carryRoom(to_std(family)) : 0;
+}
+
+int WroughtwildSim::haul(const String& family, int amount) {
+    return require_loaded("haul") ? player_->haul(to_std(family), amount) : 0;
+}
+
+int WroughtwildSim::store_deposit(const String& key, const String& family, int amount) {
+    return require_loaded("store_deposit") ? player_->storeDeposit(to_std(key), to_std(family), amount) : 0;
+}
+
+int WroughtwildSim::store_withdraw(const String& key, const String& family, int amount) {
+    return require_loaded("store_withdraw") ? player_->storeWithdraw(to_std(key), to_std(family), amount) : 0;
+}
+
+Dictionary WroughtwildSim::store_contents(const String& key) const {
+    Dictionary d;
+    if (!require_loaded("store_contents")) {
+        return d;
+    }
+    for (const auto& [family, count] : player_->storeContents(to_std(key))) d[String(family.c_str())] = count;
+    return d;
+}
+
+int WroughtwildSim::store_units(const String& key) const {
+    return require_loaded("store_units") ? player_->storeUnits(to_std(key)) : 0;
+}
+
+int WroughtwildSim::store_room(const String& key) const {
+    return require_loaded("store_room") ? player_->storeRoom(to_std(key)) : 0;
+}
+
+Dictionary WroughtwildSim::store_remove(const String& key) {
+    Dictionary d;
+    if (!require_loaded("store_remove")) {
+        return d;
+    }
+    for (const auto& [family, count] : player_->storeRemove(to_std(key))) d[String(family.c_str())] = count;
     return d;
 }
 

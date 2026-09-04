@@ -30,9 +30,26 @@ static func mesh_for(form: String, size: Vector3) -> Mesh:
 			var leaf := BoxMesh.new()
 			leaf.size = _door_leaf_size(size)
 			return leaf
+		"chest":
+			return _chest_mesh(size)
 	var box := BoxMesh.new()
 	box.size = size
 	return box
+
+
+## The chest (Wave 6 slice 6): a body on the cell's floor with a lid a
+## shade proud of it, so it reads as a box with a top from across a room.
+static func _chest_mesh(size: Vector3) -> Mesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var body := BoxMesh.new()
+	body.size = Vector3(size.x, size.y * 0.72, size.z)
+	var lid := BoxMesh.new()
+	lid.size = Vector3(size.x * 1.06, size.y * 0.28, size.z * 1.06)
+	var floor_y := -0.5
+	st.append_from(body, 0, Transform3D(Basis.IDENTITY, Vector3(0.0, floor_y + body.size.y * 0.5, 0.0)))
+	st.append_from(lid, 0, Transform3D(Basis.IDENTITY, Vector3(0.0, floor_y + body.size.y + lid.size.y * 0.5, 0.0)))
+	return st.commit()
 
 
 ## What the preview shows: the footprint box for boxes and doors (so the
@@ -51,6 +68,10 @@ static func preview_mesh_for(form: String, size: Vector3) -> Mesh:
 ## space. Stairs are two boxes, the wedge a convex hull, the rest one box.
 static func collision_for(form: String, size: Vector3) -> Array:
 	match form:
+		"chest":
+			var chest := BoxShape3D.new()
+			chest.size = size
+			return [{"shape": chest, "transform": Transform3D(Basis.IDENTITY, Vector3(0.0, -(1.0 - size.y) * 0.5, 0.0))}]
 		"low":
 			var low := BoxShape3D.new()
 			low.size = size

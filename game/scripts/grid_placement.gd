@@ -598,9 +598,14 @@ func place_piece(element: Dictionary, shape_id: StringName, family: StringName,
 func remove_piece(block: PlacedBlock) -> bool:
 	if block == null or not _sim().structure_remove(block.element):
 		return false
+	# A chest spills what it held where it stood (Wave 6 slice 6).
+	var spilled: Dictionary = _sim().store_remove(block.store_key()) if block.is_chest() else {}
+	var stood := block.global_position
 	block.get_parent().remove_child(block)
 	block.queue_free()
 	refresh_trims()
+	if not spilled.is_empty():
+		Pickup.scatter(_world_root(), stood + Vector3(0.0, 0.3, 0.0), spilled, hash(block.store_key()), stood.y - 0.45)
 	return true
 
 

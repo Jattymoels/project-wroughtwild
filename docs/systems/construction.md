@@ -185,6 +185,17 @@ per round down to `exposure_floor_fraction` of max life and no further
 "the cold bites -N/s · home 84 m NW" out there and "resting +N/s" under
 the roof; dusk's notice points home by the eight winds.
 
+**The chest (Wave 6 slice 6, hauling):** a block piece with a form of its
+own (`construction.json` `chest`: six timber, joinery, a lidded box that
+sits low in its cell). Its store lives in the sim under the piece's
+element key (`store_deposit`, `store_withdraw`, `store_remove`; saved as
+`stores`), holds `chest_units` (`world.json` `hauling`) of anything
+together, and E opens the chest panel to move stacks either way. The pack
+is what makes it matter: what you haul from the ground stops at a cap per
+family (`carry_cap`, `carry_cap_default`; gear and forged goods never
+capped), a full family's chips stay on the ground, and the walk home is
+where the load goes. Break the chest and it spills where it stood.
+
 ## Implemented: freedom outside the cell (owner playtest fixes, 3 Sep 2026)
 
 The owner's first building playtest: "within the 1 block building feels

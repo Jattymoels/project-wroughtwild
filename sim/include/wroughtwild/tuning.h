@@ -315,6 +315,17 @@ struct DayDef {
     double shelterNightRegenMultiplier = 1.0;
 };
 
+// Hauling (world.json "hauling", Wave 6 slice 6): what the pack takes
+// from the ground - a cap per family, the default for any material not
+// listed; forged goods and gear are never capped - and what one chest
+// holds, all families together. The owner (4 Sep 2026): "would
+// definitely need chests/storage solutions."
+struct HaulingDef {
+    int carryCapDefault = 0;             // 0 = no cap
+    std::map<std::string, int> carryCap; // per material family
+    int chestUnits = 0;                  // units one chest holds
+};
+
 
 // One line of a mob's loot table. Three kinds (D-016): a material stack, a
 // rolled gear piece of a rarity and tier, or a skill page that teaches one
@@ -378,6 +389,7 @@ struct WorldTable {
     PlayerBase playerBase;
     ShelterDef shelter;
     DayDef day;
+    HaulingDef hauling;
     std::vector<EnemyDef> enemies;
     std::vector<EliteModifierDef> eliteModifiers;
     std::vector<GatherSite> gatheringSites;
