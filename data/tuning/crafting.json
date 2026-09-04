@@ -618,6 +618,7 @@
   },
   "currencies": [
     "vanguard",
+    "warding_vanguard",
     "marrow",
     "quicksilver"
   ],
@@ -657,6 +658,7 @@
       "rate": 3,
       "kinds": [
         "vanguard",
+        "warding_vanguard",
         "marrow",
         "quicksilver",
         "preserving_catalyst"
@@ -685,6 +687,12 @@
       "design_purpose": "The defence kind: husks and knights pay it, the reinforced mine pays it, the forge upgrade costs it. In a craft it aims the roll at armour and resistance; on the plate (slice 4) it is the defence subject."
     },
     {
+      "id": "warding_vanguard",
+      "display_name": "Warding Vanguard",
+      "family": "defence",
+      "design_purpose": "The second Vanguard (owner, 4 Sep 2026: a Vanguard is a list of defensives - armour, dodge, resistances): its base on the plate is +5 to every resistance. No family pays it yet; the peddler changes three of any kind for one, so it is reachable from day one and its own drops can come with the razor-blade pass."
+    },
+    {
       "id": "marrow",
       "display_name": "Marrow",
       "family": "life",
@@ -697,5 +705,5 @@
       "design_purpose": "The tempo kind: hounds and crawlers pay it. In a craft it aims the roll at speed; on the plate (later) it is the tempo subject."
     }
   ],
-  "design_purpose_currency_kinds": "Typed currency (docs/systems/foundry.md, D-023 slice 3): every kind is a material or purse id with a job. Each has two uses - in a craft, added to a gear recipe, it makes the roll draw its first modifier from its family (craft_rolls.currency_weighting) and lifts a plain result to keen; on the plate (later slices) it is a subject or an augment. Sources follow the families' natures so farming is a choice of where to hunt (world.json currency_kind and loot); elites pay one more of their family's kind; the trial's loot room pays a spread; orders pay in the kind of their work. Four families is the prototype cap. RAZOR-BLADE TUNING (owner, 4 Sep): every rate here is a first guess to be moved in play."
+  "design_purpose_currency_kinds": "Typed currency (docs/systems/foundry.md, D-023 slice 3): every kind is a material or purse id with a job. Each has two uses - in a craft, added to a gear recipe, it makes the roll draw its first modifier from its family (craft_rolls.currency_weighting) and lifts a plain result to keen; on the plate (later slices) it is a subject or an augment. Sources follow the families' natures so farming is a choice of where to hunt (world.json currency_kind and loot); elites pay one more of their family's kind; the trial's loot room pays a spread; orders pay in the kind of their work. Four families is the prototype cap. RAZOR-BLADE TUNING (owner, 4 Sep): every rate here is a first guess to be moved in play. VARIANTS (owner, 4 Sep 2026, later): a family is a list - the Vanguard of armour, dodge, resistances; the Marrow of life, leech, recoup; the Quicksilver of move, attack and cast speed - each variant a currency id with its own base on the plate (foundry.json kinds) and the family's forms. Catalysts have no base and do the mechanical transformations; a fire catalyst is an 'augment fire'."
 }

@@ -93,8 +93,51 @@ func _physics_process(_delta: float) -> void:
 		310:
 			_phase_h_proliferate_and_boss()
 		320:
+			_phase_i_forms()
+		335:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
+
+
+## Phase I - the forms' hooks (D-023): Quench and Sear through the mob's
+## own status clocks, Rime through the cascade, and Echo through the plate:
+## Haste beside the area strike's tablet with a Catalyst in the corner makes
+## every fourth cast repeat.
+var _echo_hits := 0
+
+
+func _count_hit(_damage: float, _kills: int, _types: PackedStringArray) -> void:
+	_echo_hits += 1
+
+
+func _phase_i_forms() -> void:
+	_clear_enemies()
+	_face_down_range()
+	var whelp := Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -3.0))
+	whelp.apply_ignite(100.0, 0.5)
+	check(whelp.burning_left > 0.0 and whelp._sear == 0.5, "sear: the burn keeps the form's number")
+	var life_before := whelp.life
+	whelp.apply_chill(100.0, true)
+	check(whelp.is_frozen() and whelp.burning_left <= 0.0 and whelp.life < life_before - 1.0,
+		"quench: frozen while burning, the whelp takes the rest of its burn at once")
+	var neighbour := Enemy.spawn(self, &"ember_whelp", Vector3(1.0, 0.6, -3.0))
+	var cascade: Dictionary = _player.combat._shatter_cascade([whelp], _sim.shatter_rules(), 30.0)
+	check(cascade["kills"] >= 1 and is_instance_valid(neighbour) and neighbour.chill >= 30.0,
+		"rime: the shatter nova chills the whelp it reaches")
+	neighbour.take_damage(100000.0)
+	_sim.add_materials({"ember_catalyst": 1})
+	_sim.foundry_event("first_kill:ash_hound")
+	check(_sim.foundry_place_skill(1, 1, "prototype_area_strike") and _sim.foundry_place(1, 0, "haste")
+		and _sim.foundry_place_kind(2, 0, "ember_catalyst") and _sim.skill_echo_every("prototype_area_strike") == 4,
+		"echo: haste beside the area strike, worked by a catalyst, echoes every fourth cast")
+	_echo_hits = 0
+	_player.combat.hit_landed.connect(_count_hit)
+	Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -1.5))
+	for i in 4:
+		_player.combat.cooldowns[PlayerCombat.AREA_SKILL] = 0.0
+		_player.combat.use_skill(PlayerCombat.AREA_SKILL)
+	check(_echo_hits == 5, "echo: four casts land five hits (%d)" % _echo_hits)
+	_player.combat.hit_landed.disconnect(_count_hit)
 
 
 ## Phase A - bare cast: the orb hits the first whelp, one fork reaches the

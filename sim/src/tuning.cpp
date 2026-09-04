@@ -408,10 +408,10 @@ BoonTable loadBoons(const std::string& path) {
 }
 
 const IngotDef* FoundryDef::findIngot(const std::string& id) const { return findById(ingots, id); }
-const KindFamilyDef* FoundryDef::findKindFamily(const std::string& family) const {
-    for (const auto& k : kindFamilies)
-        if (k.family == family) return &k;
-    return nullptr;
+const KindDef* FoundryDef::findKindOnPlate(const std::string& id) const { return findById(kinds, id); }
+std::string FoundryDef::familyName(const std::string& family) const {
+    auto it = familyNames.find(family);
+    return it == familyNames.end() ? std::string() : it->second;
 }
 const IngotPairDef* FoundryDef::findPair(const std::string& a, const std::string& b) const {
     for (const auto& p : pairs)
@@ -453,18 +453,26 @@ FoundryDef loadFoundry(const std::string& path) {
     if (auto n = doc->find("haste_after_hit_seconds")) def.hasteAfterHitSeconds = n->asNumber();
     if (auto kinds = doc->find("kinds")) {
         for (const auto& k : kinds->asArray()) {
-            KindFamilyDef kind;
+            KindDef kind;
+            kind.id = k->get("id").asString();
             kind.family = k->get("family").asString();
             kind.displayName = k->get("display_name").asString();
+            if (auto s = k->find("short_name")) kind.shortName = s->asString();
+            if (kind.shortName.empty()) kind.shortName = kind.displayName;
             if (auto m = k->find("modifier")) kind.modifier = m->asString();
             if (auto v = k->find("value")) kind.value = v->asNumber();
-            def.kindFamilies.push_back(std::move(kind));
+            def.kinds.push_back(std::move(kind));
         }
+    }
+    if (auto names = doc->find("family_names")) {
+        for (const auto& [family, name] : names->asObject())
+            if (family != "design_purpose") def.familyNames[family] = name->asString();
     }
     if (auto forms = doc->find("forms")) {
         for (const auto& f : forms->asArray()) {
             FormDef form;
             form.family = f->get("family").asString();
+            if (auto kind = f->find("kind")) form.kind = kind->asString();
             form.ingot = f->get("ingot").asString();
             if (auto lane = f->find("lane")) form.lane = lane->asString();
             if (auto tag = f->find("skill_tag")) form.skillTag = tag->asString();
@@ -1108,17 +1116,25 @@ Tuning loadAll(const std::string& tuningDirectory) {
         if (!ingot.addedModifier.empty() && !tuning.items.findModifier(ingot.addedModifier))
             throw std::runtime_error("foundry: ingot " + ingot.id + " names unknown added modifier " + ingot.addedModifier);
     }
-    // The flow: every currency family has a kind entry; every form names a
-    // known ingot, a family with an entry, and known modifiers.
-    for (const auto& kind : tuning.foundry.kindFamilies)
+    // The flow: every currency kind has a plate entry in its family; every
+    // form names a known family, ingot, kind and modifiers.
+    for (const auto& kind : tuning.foundry.kinds) {
         if (!kind.modifier.empty() && !tuning.items.findModifier(kind.modifier))
-            throw std::runtime_error("foundry: kind family " + kind.family + " names unknown modifier " + kind.modifier);
+            throw std::runtime_error("foundry: kind " + kind.id + " names unknown modifier " + kind.modifier);
+        const auto* currency = tuning.crafting.findKind(kind.id);
+        if (!currency || currency->family != kind.family)
+            throw std::runtime_error("foundry: kind " + kind.id + " is not a currency kind of family " + kind.family);
+        if (tuning.foundry.familyName(kind.family).empty())
+            throw std::runtime_error("foundry: kind " + kind.id + " belongs to an unnamed family " + kind.family);
+    }
     for (const auto& currency : tuning.crafting.currencyKinds)
-        if (!tuning.foundry.findKindFamily(currency.family))
-            throw std::runtime_error("foundry: currency " + currency.id + " belongs to family " + currency.family + " which the plate does not know");
+        if (!tuning.foundry.findKindOnPlate(currency.id))
+            throw std::runtime_error("foundry: currency " + currency.id + " has no place on the plate (kinds)");
     for (const auto& form : tuning.foundry.forms) {
-        if (!tuning.foundry.findKindFamily(form.family))
+        if (tuning.foundry.familyName(form.family).empty())
             throw std::runtime_error("foundry: form " + form.displayName + " names unknown family " + form.family);
+        if (!form.kind.empty() && !tuning.foundry.findKindOnPlate(form.kind))
+            throw std::runtime_error("foundry: form " + form.displayName + " names unknown kind " + form.kind);
         if (!tuning.foundry.findIngot(form.ingot))
             throw std::runtime_error("foundry: form " + form.displayName + " names unknown ingot " + form.ingot);
         for (const auto& effect : form.effects)

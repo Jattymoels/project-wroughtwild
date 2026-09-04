@@ -808,3 +808,43 @@ Not yet: compound forms (a kind worked by another kind; metal and rarity
 as conditions), the reactions' hook halves (Quench's burst, Rime's novas,
 Brittle's shatter), Arc, Linger, Echo, links re-homed, Marrow and
 Quicksilver forms.
+
+## Implemented: kinds as variants; the reactions' hooks (4 Sep 2026, D-023 slice 6)
+
+The owner: a Vanguard "is a list of various defensives - + armor, +
+dodge, + resistances"; Marrow "+life, +leach, +recoup"; Quicksilver "+
+move speed, + attack speed, + cast speed"; catalysts "dont have a base,
+but they do cooler transformations", a fire catalyst an "augment fire".
+`data/tuning/foundry.json` (schema 6), `crafting.json`, `items.json`;
+`sim/grammar.h`:
+
+- **Kinds are variants.** `kinds` is per currency id: its family, the
+  name a cell shows, and its own base. The Bulwark Vanguard (+4 armour),
+  the Warding Vanguard (+5 to every resistance; the first extra variant,
+  from the peddler's exchange until a family pays it), the Marrow of life
+  (+6), the Quicksilver of hands (+4% cooldown recovery). The forms are
+  the family's; a form may name a `kind` to narrow to one variant, the
+  slot for "augment fire". Waiting for their stats: the Vanguard of
+  dodge, the Marrows of leech and recoup, the Quicksilvers of move, attack
+  and cast speed.
+- **The reactions' hooks**, each a sim number the engine reads
+  (`grammar::skillEchoEvery`, `skillQuenches`, `skillNovaChill`,
+  `skillSear`, `skillBrittle`; modifiers `echo_every`, `quench`,
+  `nova_chill`, `sear`, `brittle`, `laceration`): Echo (Haste worked by a
+  Catalyst: every fourth cast repeats, free of the cooldown; the engine
+  counts casts), Quench (a burning enemy the skill freezes takes the rest
+  of its burn at once, on the mob's freeze), Rime (the skill's shatter
+  novas chill the mobs they reach), Sear (the burn the skill lights ticks
+  50% faster while the mob walks and bleeds; snapshotted at ignition like
+  the tick), Brittle (a frozen, bleeding enemy shatters from the spell's
+  own hit, through the cascade with the hook's plain rules). Serration,
+  Brittle and Sear now bleed (+20) through `laceration`.
+
+Tests: sim 3447 (the variants, the Warding Vanguard's base and forms;
+each hook from its form, scoped to its skill, silent on a bare plate);
+engine unit 349; integration 220; grammar 52
+(Sear's snapshot, Quench's burst on a real freeze, Rime's chilling nova,
+Echo's fifth hit from four casts through the plate).
+
+Not yet: Arc and Linger (new delivery shapes), compound forms, the
+variants waiting on stats, links re-homed, Marrow and Quicksilver forms.

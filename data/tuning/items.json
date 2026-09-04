@@ -290,6 +290,120 @@
       "design_purpose": "A form's reaction (D-023, the flow): the skill's packet this modifier is scoped to deals this much more to an enemy carrying the status; the engine tells the sim what the struck mob carries (grammar::skillHit with target statuses). Its only tag is 'reading', which no base allows, so it never rolls on gear."
     },
     {
+      "id": "laceration",
+      "display_name": "Laceration",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_bleed_buildup",
+      "display": "flat",
+      "sentence": "its hits bleed (+{n} buildup)",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 20,
+          "maximum": 20
+        }
+      ],
+      "design_purpose": "A form's bleed (D-023): flat bleed buildup on the skill's hits, whatever the skill's tags. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "echo_every",
+      "display_name": "Echo",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_echo_every",
+      "display": "flat",
+      "sentence": "every {n}th cast repeats itself",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 4,
+          "maximum": 4
+        }
+      ],
+      "design_purpose": "The Echo form's hook: every nth cast of the skill repeats itself, free of the cooldown. The sim says n (grammar::skillEchoEvery); the engine counts casts. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "quench",
+      "display_name": "Quench",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_quench",
+      "display": "flat",
+      "sentence": "a burning enemy it freezes takes the rest of its burn at once",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1,
+          "maximum": 1
+        }
+      ],
+      "design_purpose": "The Quench form's hook: when this skill's chill freezes a burning enemy, the whole remaining burn lands at once (grammar::skillQuenches; the engine's freeze hook). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "nova_chill",
+      "display_name": "Nova Chill",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_nova_chill",
+      "display": "flat",
+      "sentence": "its shatter novas chill (+{n})",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 30,
+          "maximum": 30
+        }
+      ],
+      "design_purpose": "The Rime form's hook: the shatter novas this skill cashes in apply this much chill to the mobs they reach (grammar::skillNovaChill). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "sear",
+      "display_name": "Sear",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_sear",
+      "display": "percent",
+      "sentence": "the burn it lights ticks {n} faster while the enemy moves and bleeds",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.5,
+          "maximum": 0.5
+        }
+      ],
+      "design_purpose": "The Sear form's hook: a burn this skill lights ticks this much faster while the mob walks and bleeds - the chasing train pays twice (grammar::skillSear; the mob snapshots it at ignition). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "brittle",
+      "display_name": "Brittle",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_brittle",
+      "display": "flat",
+      "sentence": "a frozen, bleeding enemy shatters from its hit",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1,
+          "maximum": 1
+        }
+      ],
+      "design_purpose": "The Brittle form's hook: a spell that would never shatter cashes in a frozen, bleeding enemy with its own hit (grammar::skillBrittle; the engine runs the cascade). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
       "id": "area_size",
       "display_name": "Area Size",
       "tags": [

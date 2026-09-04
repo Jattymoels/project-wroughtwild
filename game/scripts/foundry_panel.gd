@@ -173,10 +173,10 @@ func refresh() -> void:
 		else:
 			placed[Vector2i(p["row"], p["col"])] = String(p["ingot"])
 	var kind_names := {}
-	var kind_families := {}
+	var kind_short := {}
 	for k in view.get("kinds", []):
 		kind_names[String(k["id"])] = String(k["display_name"])
-		kind_families[String(k["id"])] = String(k["family_name"])
+		kind_short[String(k["id"])] = String(k.get("short_name", k["display_name"]))
 	var flowing := {}
 	for f in view.get("flows", []):
 		flowing[Vector2i(int(f["row"]), int(f["col"]))] = bool(f["flows"])
@@ -236,7 +236,7 @@ func refresh() -> void:
 				lines.append("A socket holding the %s tablet: the ingots beside it support that skill. Click to lift (free)." % subject)
 			elif currencies.has(key):
 				var kind_name: String = kind_names.get(currencies[key], currencies[key])
-				cell.text = "{ %s }" % kind_families.get(currencies[key], kind_name)
+				cell.text = "{ %s }" % kind_short.get(currencies[key], kind_name)
 				cell.modulate = UiTheme.IRON_RUST if flowing.get(key, false) else Color(UiTheme.IRON_RUST, 0.45)
 				if flowing.get(key, false):
 					lines.append("This %s flows to a skill: its base counts, and it works the supports it touches into forms. Click to lift (costs metal; it returns to your purse)." % kind_name)

@@ -822,12 +822,15 @@ struct IngotDef {
     double supportValue() const { return skillValue ? *skillValue : value; }
 };
 
-// A currency family on the plate (D-023, the flow): what a kind of that
-// family gives forward as its base when it flows to a skill. A family
-// with no modifier has no base of its own (the Catalyst).
-struct KindFamilyDef {
+// A currency kind on the plate (D-023, the flow): a variant of its family
+// (owner, 4 Sep 2026: a family is a list - the Vanguard of armour, of
+// resistances...) with its own base, given forward when it flows to a
+// skill. A kind with no modifier has no base (the catalysts).
+struct KindDef {
+    std::string id;          // the currency id
     std::string family;      // offence | defence | life | speed
-    std::string displayName; // Catalyst, Vanguard, Marrow, Quicksilver
+    std::string displayName; // Bulwark Vanguard
+    std::string shortName;   // what a plate cell shows
     std::string modifier;    // a self modifier, or "" for none
     double value = 0.0;
 };
@@ -847,6 +850,7 @@ struct FormEffect {
 
 struct FormDef {
     std::string family;
+    std::string kind; // "" for every kind of the family, else one variant
     std::string ingot;
     std::string lane;
     std::string skillTag;
@@ -881,10 +885,12 @@ struct FoundryDef {
     double castArmourSeconds = 2.0; // how long the Plate ingot's reading beside a skill (armour on cast) lasts
     // The flow (D-023, owner 4 Sep 2026): the currency families and their
     // bases, and the forms they work supports into.
-    std::vector<KindFamilyDef> kindFamilies;
+    std::vector<KindDef> kinds;
+    std::map<std::string, std::string> familyNames; // family -> Catalyst, Vanguard...
     std::vector<FormDef> forms;
     double hasteAfterHitSeconds = 2.0; // the Quickstep form
-    const KindFamilyDef* findKindFamily(const std::string& family) const;
+    const KindDef* findKindOnPlate(const std::string& id) const;
+    std::string familyName(const std::string& family) const; // "" when unknown
     std::vector<IngotDef> ingots;
     std::vector<IngotPairDef> pairs;
     std::vector<IngotSourceDef> sources;

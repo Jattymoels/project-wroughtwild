@@ -156,6 +156,12 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("ignite_status"), &WroughtwildSim::ignite_status);
     ClassDB::bind_method(D_METHOD("bleed_status"), &WroughtwildSim::bleed_status);
     ClassDB::bind_method(D_METHOD("shatter_for", "skill_id"), &WroughtwildSim::shatter_for);
+    ClassDB::bind_method(D_METHOD("shatter_rules"), &WroughtwildSim::shatter_rules);
+    ClassDB::bind_method(D_METHOD("skill_echo_every", "skill_id"), &WroughtwildSim::skill_echo_every);
+    ClassDB::bind_method(D_METHOD("skill_quenches", "skill_id"), &WroughtwildSim::skill_quenches);
+    ClassDB::bind_method(D_METHOD("skill_nova_chill", "skill_id"), &WroughtwildSim::skill_nova_chill);
+    ClassDB::bind_method(D_METHOD("skill_sear", "skill_id"), &WroughtwildSim::skill_sear);
+    ClassDB::bind_method(D_METHOD("skill_brittle", "skill_id"), &WroughtwildSim::skill_brittle);
     ClassDB::bind_method(D_METHOD("proliferate_for"), &WroughtwildSim::proliferate_for);
     ClassDB::bind_method(D_METHOD("player_build_tags"), &WroughtwildSim::player_build_tags);
     ClassDB::bind_method(D_METHOD("known_skill_ids"), &WroughtwildSim::known_skill_ids);
@@ -1894,6 +1900,42 @@ Dictionary WroughtwildSim::shatter_for(const String& skill_id) const {
     return d;
 }
 
+Dictionary WroughtwildSim::shatter_rules() const {
+    Dictionary d;
+    d["enabled"] = false;
+    if (!require_loaded("shatter_rules")) {
+        return d;
+    }
+    const auto& hook = tuning_->grammar.shatter;
+    d["enabled"] = true;
+    d["nova_damage"] = hook.novaDamage;
+    d["nova_damage_type"] = to_godot(hook.novaDamageType);
+    d["nova_radius_m"] = hook.novaRadiusM;
+    d["executes_frozen"] = hook.executesFrozen;
+    d["executes_boss"] = hook.executesBoss;
+    return d;
+}
+
+int WroughtwildSim::skill_echo_every(const String& skill_id) const {
+    return require_loaded("skill_echo_every") ? wroughtwild::grammar::skillEchoEvery(*tuning_, active_mods(), to_std(skill_id)) : 0;
+}
+
+bool WroughtwildSim::skill_quenches(const String& skill_id) const {
+    return require_loaded("skill_quenches") && wroughtwild::grammar::skillQuenches(*tuning_, active_mods(), to_std(skill_id));
+}
+
+double WroughtwildSim::skill_nova_chill(const String& skill_id) const {
+    return require_loaded("skill_nova_chill") ? wroughtwild::grammar::skillNovaChill(*tuning_, active_mods(), to_std(skill_id)) : 0.0;
+}
+
+double WroughtwildSim::skill_sear(const String& skill_id) const {
+    return require_loaded("skill_sear") ? wroughtwild::grammar::skillSear(*tuning_, active_mods(), to_std(skill_id)) : 0.0;
+}
+
+bool WroughtwildSim::skill_brittle(const String& skill_id) const {
+    return require_loaded("skill_brittle") && wroughtwild::grammar::skillBrittle(*tuning_, active_mods(), to_std(skill_id));
+}
+
 const wroughtwild::worldgen::WorldMap& WroughtwildSim::cached_world(uint64_t seed) {
     // The 3D world costs real time to generate; world_map and world_mesh
     // are always asked about the same seed back to back, so keep the last
@@ -2666,22 +2708,19 @@ Dictionary WroughtwildSim::foundry() const {
         tablets.push_back(t);
     }
     d["tablets"] = tablets;
-    // Kinds (D-023, the flow): every currency the player holds, with its
-    // family's base on the plate, for the tray.
+    // Kinds (D-023, the flow): every variant that may rest on the plate,
+    // with what the purse holds of it and its own base, for the tray.
     Array kinds;
-    for (const auto& k : tuning_->crafting.currencyKinds) {
-        const auto* family = tuning_->foundry.findKindFamily(k.family);
-        if (family == nullptr) {
-            continue;
-        }
+    for (const auto& k : tuning_->foundry.kinds) {
         Dictionary entry;
         entry["id"] = to_godot(k.id);
         entry["display_name"] = to_godot(k.displayName);
+        entry["short_name"] = to_godot(k.shortName);
         entry["family"] = to_godot(k.family);
-        entry["family_name"] = to_godot(family->displayName);
+        entry["family_name"] = to_godot(tuning_->foundry.familyName(k.family));
         entry["held"] = player_->held(k.id);
-        const auto* def = family->modifier.empty() ? nullptr : tuning_->items.findModifier(family->modifier);
-        entry["base_sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, family->value)) : String("no base of its own");
+        const auto* def = k.modifier.empty() ? nullptr : tuning_->items.findModifier(k.modifier);
+        entry["base_sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, k.value)) : String("no base of its own");
         kinds.push_back(entry);
     }
     d["kinds"] = kinds;

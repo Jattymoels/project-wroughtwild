@@ -237,14 +237,12 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
     // lane's (same element, added element, any).
     for (const auto& p : state.plate) {
         if (!p.isCurrency() || !kindMayRest(plate, p.row, p.col)) continue;
-        const auto* currency = tuning.crafting.findKind(p.currency);
-        if (!currency) continue;
-        const auto* family = def.findKindFamily(currency->family);
-        if (!family) continue;
+        const auto* kind = def.findKindOnPlate(p.currency);
+        if (!kind) continue;
         if (!flowsToSkill(state, plate, p.row, p.col)) continue;
-        if (!family->modifier.empty()) {
-            Effect own{"augment", family->displayName, family->modifier, family->value, p.row, p.col, std::string()};
-            own.subject = currency->family;
+        if (!kind->modifier.empty()) {
+            Effect own{"augment", kind->displayName, kind->modifier, kind->value, p.row, p.col, std::string()};
+            own.subject = kind->family;
             own.cellRow = p.row;
             own.cellCol = p.col;
             out.push_back(own);
@@ -266,15 +264,16 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
                 const auto skillTags = skill->resolveTags();
                 const std::string lane = laneOf(tuning, *ingot, skillTags);
                 for (const auto& form : def.forms) {
-                    if (form.family != currency->family || form.ingot != ingot->id) continue;
+                    if (form.family != kind->family || form.ingot != ingot->id) continue;
+                    if (!form.kind.empty() && form.kind != p.currency) continue;
                     if (!form.lane.empty() && form.lane != lane) continue;
                     if (!form.skillTag.empty() && !hasTag(skillTags, form.skillTag)) continue;
                     for (const auto& fe : form.effects) {
-                        Effect e{"form", form.displayName + " (" + family->displayName + " on " + ingot->displayName + ")",
+                        Effect e{"form", form.displayName + " (" + kind->displayName + " on " + ingot->displayName + ")",
                                  fe.modifier, fe.value, socketRow, socketCol, tablet->skill};
                         e.cellRow = sr;
                         e.cellCol = sc;
-                        e.subject = currency->family;
+                        e.subject = kind->family;
                         e.packet = fe.packet == "native" ? grammar::nativeType(tuning, skillTags) : fe.packet;
                         out.push_back(e);
                     }

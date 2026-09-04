@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) and 6 (kinds as variants; the reactions' hooks) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -130,10 +130,18 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
    Barbs, Answer Reach and Haste after a hit are engine hooks. It lifts
    for the re-forge cost and returns to the purse.
 
-Still to come from the tables below: the reactions that need hooks
-(Quench's burst, Rime's novas, Brittle's shatter, Arc, Linger, Echo),
-compound forms, links re-homed, rails, Marrow and Quicksilver forms, the
-metal of an ingot. The Reach
+10. Kinds as variants and the reactions' hooks (slice 6): every currency
+   id has its own base on the plate; Echo (every fourth cast repeats),
+   Quench (a burning enemy the skill freezes takes the rest of its burn at
+   once), Rime (the skill's shatter novas chill), Sear (the burn it lights
+   ticks faster while the enemy moves and bleeds) and Brittle (a frozen,
+   bleeding enemy shatters from the spell's own hit) are engine hooks
+   reading sim numbers; Serration, Brittle and Sear bleed through
+   `laceration`.
+
+Still to come from the tables below: Arc and Linger, compound forms,
+links re-homed, rails, Marrow and Quicksilver forms, the Vanguard of
+dodge and the rest of the variants, the metal of an ingot. The Reach
 conflict recorded on 3 Sep is settled: the owner said yes, and the code
 now reads skills with it.
 
@@ -246,6 +254,22 @@ The rule as built:
 Consequences: the socketed Vanguard of slice 4 is gone (its readings
 live on as Vanguard forms); links, which put a Catalyst in a shared
 support cell, need a new home, since a kind cannot rest beside a socket.
+
+**Kinds are lists of variants (owner, 4 Sep 2026, later still).** "The
+'Vanguard' is a list of various defensives - i.e. + armor, + dodge, +
+resistances, etc. Marrow can +life, +leach, +recoup, etc. Quicksilver, +
+move speed, + attack speed, + cast speed. I think that moves the
+catalysts into more 'mechanical' changes, fire catalyst may be a
+'augment fire' which has various cool effects like the scald. I think
+yeah they dont have a base, but they do cooler transformations." As
+built: `kinds` in foundry.json is per variant (a currency id, its family,
+the name a cell shows, its own base); the forms are the family's, with an
+optional `kind` to narrow one to a variant, which is where "augment fire"
+will live. Variants in: the Bulwark Vanguard (+4 armour) and the Warding
+Vanguard (+5 to every resistance, from the peddler's exchange for now);
+the Marrow of life (+6); the Quicksilver of hands (+4% cooldown
+recovery). Waiting for their stats: the Vanguard of dodge, the Marrows of
+leech and recoup, the Quicksilvers of move, attack and cast speed.
 
 ### Why sockets rather than "a tablet anywhere"
 
@@ -866,12 +890,17 @@ following.
    the detached cells; the base flowing inward; forms keyed by family,
    ingot and lane: the sharpenings, Scald, Temper, Quench and Rime as far
    as existing keys carry them, Brittle and Sear as their "more against a
-   status" halves, the Vanguard's eight proposed forms. Still ahead here:
-   the reactions' hook halves, Echo, Arc, Linger, compound forms.
-6. **Links.** A Catalyst in a shared support cell; cast-on-trigger; the
-   linked skill leaves the bar.
-7. **Rails.** `rail_patterns`, the class hall as the place they are set,
+   status" halves, the Vanguard's eight proposed forms.
+6. **Kinds as variants; the reactions' hooks** *(landed 4 Sep 2026)*.
+   Every currency id with its own base (the Warding Vanguard the first
+   extra variant); Echo, Quench, Rime, Sear and Brittle as engine hooks;
+   Serration, Brittle and Sear bleeding. Still ahead: Arc, Linger,
+   compound forms, the variants waiting on stats.
+7. **Links.** Re-homed to a corner touching a shared support; cast on
+   trigger; the linked skill leaves the bar.
+8. **Rails.** `rail_patterns`, the class hall as the place they are set,
    two classes' seeds and one manner.
-8. **Marrow and Quicksilver**, their readings and corners.
-9. **The metal of an ingot.** Re-casting at the forge in the era's alloy;
-   reach for backing and pairs; alloy-cast ingots from elites and floors.
+9. **Marrow and Quicksilver**, their forms and the rest of their variants.
+10. **The metal of an ingot.** Re-casting at the forge in the era's alloy;
+   reach for backing and pairs; alloy-cast ingots from elites and floors;
+   compound forms conditioned on metal and rarity.

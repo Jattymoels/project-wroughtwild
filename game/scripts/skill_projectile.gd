@@ -123,9 +123,7 @@ func _hit(enemy: Enemy) -> void:
 	# Payload: whichever statuses the skill carries (0 for the rest). It
 	# lands before the damage so a killing blow that ignites leaves a
 	# burning corpse for proliferate.
-	enemy.apply_chill(combat.sim.chill_applied(id, is_boss))
-	enemy.apply_ignite(combat.sim.ignite_applied(id, is_boss))
-	enemy.apply_bleed(combat.sim.bleed_applied(id, is_boss))
+	combat.apply_payload(enemy, skill_id, is_boss)
 	# The sim decides the numbers, packet by packet (D-023 slice 2); the
 	# fork generation decays every packet alike.
 	var landed := combat.deal(enemy, skill_id, combat.alive_enemies().size() == 1,
