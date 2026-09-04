@@ -239,6 +239,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("siege_rules"), &WroughtwildSim::siege_rules);
     ClassDB::bind_method(D_METHOD("siege_tonight", "seed", "day_index"), &WroughtwildSim::siege_tonight);
     ClassDB::bind_method(D_METHOD("siege_pack"), &WroughtwildSim::siege_pack);
+    ClassDB::bind_method(D_METHOD("threat_score", "enemy_id"), &WroughtwildSim::threat_score);
     ClassDB::bind_method(D_METHOD("carry_cap", "family"), &WroughtwildSim::carry_cap);
     ClassDB::bind_method(D_METHOD("carry_room", "family"), &WroughtwildSim::carry_room);
     ClassDB::bind_method(D_METHOD("haul", "family", "amount"), &WroughtwildSim::haul);
@@ -783,6 +784,12 @@ Dictionary WroughtwildSim::realtime() const {
         entry["give_up_distance_m"] = b.giveUpDistanceM;
         entry["scream_period_seconds"] = b.screamPeriodSeconds;
         entry["scream_radius_m"] = b.screamRadiusM;
+        entry["verb"] = to_godot(b.verb);
+        entry["verb_seconds"] = b.verbSeconds;
+        entry["verb_strength"] = b.verbStrength;
+        entry["verb_radius_m"] = b.verbRadiusM;
+        entry["verb_arc_degrees"] = b.verbArcDegrees;
+        entry["verb_cap"] = b.verbCap;
         behaviours[to_godot(id)] = entry;
     }
     d["behaviours"] = behaviours;
@@ -2696,6 +2703,15 @@ Dictionary WroughtwildSim::noise_rules() const {
     d["muffle"] = tuning_->realtime.noiseMuffle;
     d["horn_cooldown_seconds"] = tuning_->realtime.noiseHornCooldownSeconds;
     return d;
+}
+
+double WroughtwildSim::threat_score(const String& enemy_id) const {
+    if (!require_loaded("threat_score")) {
+        return 0.0;
+    }
+    const auto* enemy = tuning_->world.findEnemy(to_std(enemy_id));
+    const auto* behaviour = enemy ? tuning_->realtime.findBehaviour(enemy->behaviour) : nullptr;
+    return enemy && behaviour ? wroughtwild::combat::threatScore(*enemy, *behaviour) : 0.0;
 }
 
 Dictionary WroughtwildSim::siege_rules() const {

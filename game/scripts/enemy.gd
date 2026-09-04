@@ -65,6 +65,19 @@ var _roaming := false
 var siege := false
 var breaks_timber := false
 var _scratch_timer := 0.0
+## The verb (Wave 8 slice 1, equal threat, different shape): the one thing
+## this family does that changes how you fight. The sim says which and how
+## much (combat_realtime.json behaviours); this does it.
+var verb := ""
+var verb_seconds := 0.0
+var verb_strength := 0.0
+var verb_radius := 0.0
+var verb_arc := 0.0
+var verb_cap := 0.0
+## Kindled by a wisp: the bonus its burning bite carries.
+var kindled_bonus := 0.0
+var _kindle_timer := 0.0
+var _aura: MeshInstance3D
 
 var _windup_left := 0.0
 var _attack_cooldown := 0.0
@@ -178,6 +191,12 @@ func configure(sim: WroughtwildSim) -> void:
 	windup_seconds = b.get("windup_seconds", 0.3)
 	attack_period_seconds = def["attack_period_rounds"] * rt["round_seconds"] / speed_multiplier
 	give_up_distance = b.get("give_up_distance_m", 0.0)
+	verb = String(b.get("verb", ""))
+	verb_seconds = float(b.get("verb_seconds", 0.0))
+	verb_strength = float(b.get("verb_strength", 0.0))
+	verb_radius = float(b.get("verb_radius_m", 0.0))
+	verb_arc = float(b.get("verb_arc_degrees", 0.0))
+	verb_cap = float(b.get("verb_cap", 0.0))
 	_scream_period = b.get("scream_period_seconds", 0.0)
 	_scream_radius = b.get("scream_radius_m", 0.0)
 	# Era mechanics: the shriekers call further as the world wakes.
@@ -199,6 +218,14 @@ func configure(sim: WroughtwildSim) -> void:
 		"fast": _material.albedo_color = Color(0.25, 0.3, 0.45)
 		# The recruiter reads sickly yellow: kill-it-first at a glance.
 		"shrieker": _material.albedo_color = Color(0.8, 0.75, 0.25)
+		# The verbs read at a glance too (Wave 8 slice 1): the guard stone
+		# grey, the swarm the dark's violet, the lurker bog green, the
+		# kindler ember gold, the warden a pale iron.
+		"guard": _material.albedo_color = Color(0.5, 0.5, 0.56)
+		"swarm": _material.albedo_color = Color(0.32, 0.24, 0.42)
+		"lurker": _material.albedo_color = Color(0.24, 0.42, 0.3)
+		"skirmisher": _material.albedo_color = Color(0.95, 0.62, 0.2)
+		"knight": _material.albedo_color = Color(0.62, 0.58, 0.72)
 		_: _material.albedo_color = Color(0.9, 0.45, 0.1)
 	_base_albedo = _material.albedo_color
 	# A family's own look (world.json tint, size_scale) over the behaviour's default.
@@ -507,6 +534,7 @@ func set_aggro_multiplier(multiplier: float) -> void:
 func _physics_process(delta: float) -> void:
 	MobGrid.register(self)
 	since_hurt += delta
+	_refresh_aura()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if _tick_statuses(delta):
@@ -573,14 +601,14 @@ func _physics_process(delta: float) -> void:
 					state = "windup"
 					_windup_left = windup_seconds
 				else:
-					planar = _chase_direction(player, distance) * move_speed
+					planar = _chase_direction(player, distance) * move_speed * chase_speed_multiplier(player)
 		"windup":
 			_windup_left -= delta
 			if _windup_left <= 0.0:
 				# The hit only lands if the player is still in reach: walking
 				# out of the wind-up is a legitimate dodge.
 				if distance <= attack_range * 1.15 and in_reach:
-					player.combat.take_hit(damage, damage_type, display_name, self)
+					player.combat.take_hit(bite_damage(), bite_type(), display_name, self)
 				_attack_cooldown = attack_period_seconds
 				state = "chase"
 
@@ -588,6 +616,12 @@ func _physics_process(delta: float) -> void:
 	# horde forms a physical train instead of a stack of ghosts (D-012).
 	if state != "idle":
 		planar += _separation_push()
+		# The kindler lights an ally now and then while it fights.
+		if verb == "kindle":
+			_kindle_timer -= delta
+			if _kindle_timer <= 0.0:
+				_kindle_timer = verb_seconds
+				kindle_nearest()
 		# Shrieker: the aggro chain. While it fights, it recruits.
 		if _scream_period > 0.0:
 			_scream_timer -= delta
@@ -736,7 +770,126 @@ func force_attack() -> float:
 		return 0.0
 	_attack_cooldown = attack_period_seconds
 	state = "chase"
-	return player.combat.take_hit(damage, damage_type, display_name, self)
+	return player.combat.take_hit(bite_damage(), bite_type(), display_name, self)
+
+
+## --- the verbs (Wave 8 slice 1) ---
+## What this bite is worth right now: the swarm's allies and the kindle's
+## fire on top of the family's damage.
+func bite_damage() -> float:
+	var out := damage * swarm_multiplier()
+	if burning_left > 0.0 and kindled_bonus > 0.0:
+		out *= 1.0 + kindled_bonus
+	return out
+
+
+## A kindled, burning mob bites with fire.
+func bite_type() -> String:
+	return "fire" if burning_left > 0.0 and kindled_bonus > 0.0 else damage_type
+
+
+## Marked by an archer, the hunters (the harriers, the kindlers) sprint.
+func chase_speed_multiplier(player: Node) -> float:
+	if player == null or not (player is WroughtwildPlayer) or (verb != "harry" and verb != "kindle"):
+		return 1.0
+	return (player as WroughtwildPlayer).combat.marked_sprint()
+
+
+## Guard: its front takes less from a hit that comes from `from`, until a
+## stagger drops the guard.
+func guards_against(from: Vector3) -> bool:
+	if verb != "guard" or staggered() or life <= 0.0:
+		return false
+	var facing := -global_transform.basis.z
+	facing.y = 0.0
+	var to := from - global_position
+	to.y = 0.0
+	if facing.length_squared() < 0.0001 or to.length_squared() < 0.0001:
+		return false
+	return facing.normalized().angle_to(to.normalized()) <= deg_to_rad(verb_arc) * 0.5
+
+
+## Ward: this mob shields the allies within its reach while it stands unstaggered.
+func wards() -> bool:
+	return verb == "ward" and not staggered() and life > 0.0
+
+
+## The warden shielding this mob right now (null for none).
+func warded_by() -> Enemy:
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node == self or not (node is Enemy):
+			continue
+		var other := node as Enemy
+		if other.wards() and other.global_position.distance_to(global_position) <= other.verb_radius:
+			return other
+	return null
+
+
+func warded() -> bool:
+	return warded_by() != null
+
+
+## Swarm: each other swarmer within reach adds to the bite, to the cap.
+func swarm_multiplier() -> float:
+	if verb != "swarm":
+		return 1.0
+	var allies := 0
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node == self or not (node is Enemy):
+			continue
+		var other := node as Enemy
+		if other.verb == "swarm" and other.life > 0.0 and other.global_position.distance_to(global_position) <= verb_radius:
+			allies += 1
+	return 1.0 + minf(verb_cap, verb_strength * allies)
+
+
+## Kindle: lights the nearest unlit ally within reach. Returns it (null for none).
+func kindle_nearest() -> Enemy:
+	if verb != "kindle":
+		return null
+	var best: Enemy = null
+	var best_d := verb_radius
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node == self or not (node is Enemy):
+			continue
+		var other := node as Enemy
+		if other.life <= 0.0 or other.verb == "kindle" or other.burning_left > 0.0:
+			continue
+		var d := other.global_position.distance_to(global_position)
+		if d <= best_d:
+			best_d = d
+			best = other
+	if best != null:
+		best.kindle(verb_strength)
+		if is_inside_tree():
+			PulseRing.burst(get_parent(), best.global_position + Vector3(0, 0.3, 0), 1.2, Color(1.0, 0.6, 0.2, 0.5), 0.5)
+	return best
+
+
+## Lit by a wisp: it burns, and its bites burn while it does.
+func kindle(bonus: float) -> void:
+	kindled_bonus = bonus
+	apply_ignite(_ignite_max)
+
+
+## The warden's aura: a translucent sphere at its reach while it wards.
+func _refresh_aura() -> void:
+	if verb != "ward":
+		return
+	if _aura == null:
+		_aura = MeshInstance3D.new()
+		var sphere := SphereMesh.new()
+		sphere.radius = verb_radius
+		sphere.height = verb_radius * 2.0
+		var material := StandardMaterial3D.new()
+		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		material.albedo_color = Color(0.7, 0.7, 0.95, 0.12)
+		material.cull_mode = BaseMaterial3D.CULL_DISABLED
+		sphere.material = material
+		_aura.mesh = sphere
+		_aura.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		add_child(_aura)
+	_aura.visible = wards()
 
 
 ## One typed packet of a player's hit (D-023 slice 2), scaled by this

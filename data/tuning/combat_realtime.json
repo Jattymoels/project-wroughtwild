@@ -23,6 +23,9 @@
       "aggro_range_m": 14.0,
       "preferred_distance_m": 7.0,
       "windup_seconds": 0.6,
+      "verb": "mark",
+      "verb_seconds": 6.0,
+      "verb_strength": 1.35,
       "design_purpose": "Keeps its distance and chips with fire so the player learns fire damage exists before the boss; closing on it is the counter.",
       "give_up_distance_m": 22.0
     },
@@ -31,7 +34,10 @@
       "attack_range_m": 1.6,
       "aggro_range_m": 14.0,
       "windup_seconds": 0.25,
-      "design_purpose": "Outruns the player; packs punish standing still and reward area strikes. The long give_up_distance_m makes hounds the dangerous disengage: escaping them costs distance and risk. 5.5 m/s (from 6.5, owner 3 Sep 2026: 'hounds are a bit too fast'): faster than you, but only just - the pack is the threat, not the closing speed.",
+      "verb": "harry",
+      "verb_seconds": 2.5,
+      "verb_strength": 0.35,
+      "design_purpose": "Harry (Wave 8 slice 1): the hound's bite slows you verb_strength for verb_seconds, so the slow hitters catch you; marked by an archer, hounds sprint. Outruns the player; packs punish standing still and reward area strikes. The long give_up_distance_m makes hounds the dangerous disengage: escaping them costs distance and risk. 5.5 m/s (from 6.5, owner 3 Sep 2026: 'hounds are a bit too fast'): faster than you, but only just - the pack is the threat, not the closing speed.",
       "give_up_distance_m": 34.0
     },
     "shrieker": {
@@ -40,6 +46,7 @@
       "aggro_range_m": 16.0,
       "preferred_distance_m": 8.0,
       "windup_seconds": 0.5,
+      "verb": "recruit",
       "give_up_distance_m": 24.0,
       "scream_period_seconds": 4.0,
       "scream_radius_m": 14.0,
@@ -50,8 +57,10 @@
       "attack_range_m": 2.4,
       "aggro_range_m": 11.0,
       "windup_seconds": 0.9,
+      "verb": "root",
+      "verb_seconds": 1.2,
       "give_up_distance_m": 20.0,
-      "design_purpose": "Slow and long-armed: it cannot catch you, but it holds ground you want."
+      "design_purpose": "Root (Wave 8 slice 1): a grab from the mud holds you verb_seconds unless you dash out of it; an archer or a wisp behind it gets free shots. Slow and long-armed: it cannot catch you, but it holds ground you want."
     },
     "skirmisher": {
       "move_speed_mps": 4.0,
@@ -59,6 +68,10 @@
       "aggro_range_m": 15.0,
       "preferred_distance_m": 6.0,
       "windup_seconds": 0.5,
+      "verb": "kindle",
+      "verb_seconds": 4.0,
+      "verb_radius_m": 6.0,
+      "verb_strength": 0.25,
       "give_up_distance_m": 26.0,
       "design_purpose": "A ranged mob that moves: keeps six metres and pecks. Faster than the archer, thinner than anything."
     },
@@ -67,8 +80,34 @@
       "attack_range_m": 2.0,
       "aggro_range_m": 13.0,
       "windup_seconds": 0.7,
+      "verb": "ward",
+      "verb_radius_m": 5.0,
+      "verb_strength": 0.3,
       "give_up_distance_m": 24.0,
       "design_purpose": "A heavy melee walk with a long windup: the hit is readable, the body is not."
+    },
+    "guard": {
+      "move_speed_mps": 2.8,
+      "attack_range_m": 1.9,
+      "aggro_range_m": 12.0,
+      "windup_seconds": 0.6,
+      "give_up_distance_m": 26.0,
+      "verb": "guard",
+      "verb_strength": 0.6,
+      "verb_arc_degrees": 110.0,
+      "design_purpose": "The husk (Wave 8 slice 1, equal threat, different shape): slow, heavy, and its front takes verb_strength less from anything inside verb_arc_degrees of its facing until a stagger drops the guard. Flank it, stagger it, or pierce past it. Slower than the whelp, harder when it lands - the same danger in a different shape."
+    },
+    "swarm": {
+      "move_speed_mps": 5.0,
+      "attack_range_m": 1.5,
+      "aggro_range_m": 13.0,
+      "windup_seconds": 0.25,
+      "give_up_distance_m": 30.0,
+      "verb": "swarm",
+      "verb_radius_m": 4.0,
+      "verb_strength": 0.15,
+      "verb_cap": 0.6,
+      "design_purpose": "The crawler (Wave 8 slice 1): weak alone, and every other crawler within verb_radius_m adds verb_strength to its bite, to verb_cap - the dark's count is its threat. Area strikes and barbs are the answer; a corridor is a mistake."
     },
     "grazer": {
       "move_speed_mps": 5.5,

@@ -809,6 +809,16 @@ RealtimeTable loadRealtime(const std::string& path) {
             behaviour.screamPeriodSeconds = scream->asNumber();
         if (auto radius = b->find("scream_radius_m"))
             behaviour.screamRadiusM = radius->asNumber();
+        if (auto v = b->find("verb")) behaviour.verb = v->asString();
+        if (auto v = b->find("verb_seconds")) behaviour.verbSeconds = v->asNumber();
+        if (auto v = b->find("verb_strength")) behaviour.verbStrength = v->asNumber();
+        if (auto v = b->find("verb_radius_m")) behaviour.verbRadiusM = v->asNumber();
+        if (auto v = b->find("verb_arc_degrees")) behaviour.verbArcDegrees = v->asNumber();
+        if (auto v = b->find("verb_cap")) behaviour.verbCap = v->asNumber();
+        static const char* const kVerbs[] = {"", "harry", "guard", "mark", "root", "kindle", "swarm", "ward", "recruit"};
+        bool known = false;
+        for (const char* verb : kVerbs) known = known || behaviour.verb == verb;
+        if (!known) throw std::runtime_error("combat_realtime: behaviour '" + id + "' has an unknown verb '" + behaviour.verb + "'");
         table.behaviours[id] = behaviour;
     }
 

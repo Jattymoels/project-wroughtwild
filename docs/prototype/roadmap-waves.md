@@ -564,6 +564,60 @@ foundational things; and PoE's community-driven item filters are a
 design flaw to design around, never a feature to copy. Few, meaningful
 drops by design.
 
+## Wave 8 — Verbs, Curios and the Mingling *(owner direction 4 Sep 2026)*
+
+**Owner, 4 Sep 2026 (late), on Wave 7 slice 2:** "harder mobs in
+different biomes ... lends itself to too much of a Valheim 'unlock the
+next zone' feel. The feel I want really is a Hades style 'this mob is
+different enough in mechanics' that the density/interactions with other
+mobs means you need to adjust playstyle, or build setup. If that mob
+different is just a slower mob that hits harder but slower, I feel
+that's fine as long as the danger levels get the same feel as the faster
+hounds." And on the loop: try the first trial, it is too hard, explore
+to upgrade the forge or grind catalysts, beat it, get a curio or head or
+story item that must be enabled somewhere else to turn the era - the
+adventure is inherent - and on the turn the whole world changes: mobs
+transform, gain powers, or mingle across biomes the way Hades' heat
+options mix its rooms. Three slices, all accepted:
+
+1. **Verbs and the threat band** *(landed 4 Sep 2026)*: one verb per
+   family (`combat_realtime.json` behaviours `verb` and its numbers):
+   the hound **harries** (its bite slows you), the husk **guards** (its
+   front takes 60 percent less until staggered; a new `guard` behaviour),
+   the archer **marks** (marked, the hunters sprint at you), the lurker
+   **roots** (held 1.2 s unless you dash), the wisps **kindle** (light an
+   ally, whose bite then burns), the crawler **swarms** (a new `swarm`
+   behaviour; each crawler near adds to the bite), the knight **wards**
+   (allies in five metres take 30 percent less until it is staggered),
+   the shrieker **recruits** (the scream, as before), the whelp is the
+   baseline. `combat::threatScore` (damage per round, reach, bulk, the
+   verb's control) and the sim's band test keep every family within
+   0.55 to 1.6 of the median and every biome's packs in one band: the
+   lurker came down to 120 life and 6 damage, the knight to 170. The
+   player's answers are the plate's and the swing's: stagger drops a
+   guard and a ward, a dash breaks a root, cold answers the kindle, area
+   answers the swarm. The HUD's life line says "rooted, dash breaks it",
+   "harried, slowed", "marked, they sprint at you". Sim 4518, engine unit
+   389, horde 42.
+2. **The curio and the lock**: trial 1 tuned in the sim's encounter model
+   to fail on the starting kit and pass on forge 2 gear; beating it drops
+   a curio whose reading names a landmark in another biome (a cairn, a
+   drowned altar, a rift; worldgen guarantees one per biome); setting it
+   there turns the era. Era triggers move off the cut-stone milestone;
+   masonry stays what it unlocks.
+3. **The mingling**: on the turn, a per-era mingle table sends foreign
+   members into each biome's packs and re-routes the night patrols to
+   other biomes' dens; families transform (the mechanics exist); a wager
+   at the trial gate for better loot is the heat, later.
+
+**Biomes as material (owner, 4 Sep 2026; to design):** "biomes should be
+interesting for finding cool crafting material too - much like Minecraft
+finding a certain forest biome which means you now have access to
+orange-coloured trees for an orange house." Each biome should yield a
+building family of its own look: the fen's bog oak, the wastes' ash-
+bleached snag, the forest's pale pine, the hills' fieldstone (exists).
+Not built yet; it belongs with the curio's walk into another biome.
+
 ## Wave 4 — Dungeon and Roguelite Iteration
 
 **Owner, 4 Sep 2026:** "this will be a big iteration intensive, keep as

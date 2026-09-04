@@ -129,6 +129,39 @@ Boons and item properties should query tags rather than hard-code every skill na
 - Respec philosophy.
 - Persistent-to-temporary power budget.
 
+## Verbs: equal threat, different shape (4 Sep 2026, Wave 8 slice 1)
+
+The owner: a slower mob that hits harder is fine "as long as the danger
+levels get the same feel as the faster hounds", and never a zone ladder.
+So every family carries one **verb** (`combat_realtime.json` behaviours
+`verb`, `verb_seconds`, `verb_strength`, `verb_radius_m`,
+`verb_arc_degrees`, `verb_cap`), the one thing it does that changes how
+you fight, and the sim keeps every family in one **threat band**
+(`combat::threatScore`: damage per round × reach × bulk × the verb's
+control weight; `tests/sim` asserts each family within 0.55 to 1.6 of
+the median and each biome's mean pack threat in one band, the shrieker
+aside - its threat is who it invites).
+
+| Family | Verb | In play | Your answer |
+| --- | --- | --- | --- |
+| Hound (`fast`) | harry | the bite slows you 35 percent for 2.5 s; marked, it sprints | stagger, push, stillness |
+| Husk (`guard`) | guard | its front (110 degrees) takes 60 percent less until staggered | flank, stagger, pierce |
+| Archer (`ranged`) | mark | marked for 6 s: the hunters run 1.35× at you | kill it first, break the line |
+| Lurker (`lurker`) | root | held 1.2 s unless you dash | dash, cold |
+| Wisps (`skirmisher`) | kindle | every 4 s lights an ally within 6 m; its bite burns, 25 percent more | cold, or the wisp first |
+| Crawler (`swarm`) | swarm | each crawler within 4 m adds 15 percent to the bite, to 60 | area, barbs |
+| Knight (`knight`) | ward | allies within 5 m take 30 percent less until it is staggered | stagger the knight |
+| Shrieker | recruit | the scream (D-012) | kill it first |
+| Whelp (`melee`) | none | the baseline | - |
+
+The engine does what the sim says: `enemy.gd` reads the verb and its
+numbers, `bite_damage`/`bite_type` carry the swarm and the kindle,
+`guards_against`, `wards`/`warded_by`, `swarm_multiplier`,
+`kindle_nearest`; `player_combat.gd` suffers the harry, the root and the
+mark (`_suffer_verb`, the HUD's life line reads them), applies the guard
+and the ward in `deal`, and a dash breaks a root (`player.gd`). The
+knight shows its ward as a pale aura; the verbs colour their families.
+
 ## The train and the ceiling (4 Sep 2026, Wave 7 slice 2)
 
 Density should be the threat. **The train** (`combat_realtime.json`

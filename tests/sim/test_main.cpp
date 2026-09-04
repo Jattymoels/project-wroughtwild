@@ -4086,6 +4086,71 @@ void testHornAndSiege(const tuning::Tuning& t) {
           "siege: timber holds in the valley; the deep's husks break it");
 }
 
+void testVerbs(const tuning::Tuning& t) {
+    // Wave 8 slice 1 (the owner, 4 Sep 2026: Hades-style - "this mob is
+    // different enough in mechanics" - and "danger levels get the same
+    // feel"): one verb per family, and every family in one threat band.
+    const auto& rt = t.realtime;
+    auto verb = [&](const std::string& behaviour) { const auto* b = rt.findBehaviour(behaviour); return b ? b->verb : std::string("missing"); };
+    check(verb("fast") == "harry" && verb("guard") == "guard" && verb("ranged") == "mark" && verb("lurker") == "root" &&
+              verb("skirmisher") == "kindle" && verb("swarm") == "swarm" && verb("knight") == "ward" && verb("shrieker") == "recruit" &&
+              verb("melee").empty() && verb("grazer").empty(),
+          "verbs: one verb per behaviour, the whelp the baseline, the elk none");
+    check(t.world.findEnemy("stone_husk")->behaviour == "guard" && t.world.findEnemy("gloom_crawler")->behaviour == "swarm",
+          "verbs: the husk guards, the crawler swarms");
+    const auto* harry = rt.findBehaviour("fast");
+    const auto* guard = rt.findBehaviour("guard");
+    const auto* mark = rt.findBehaviour("ranged");
+    const auto* root = rt.findBehaviour("lurker");
+    const auto* kindle = rt.findBehaviour("skirmisher");
+    const auto* swarm = rt.findBehaviour("swarm");
+    const auto* ward = rt.findBehaviour("knight");
+    check(harry->verbSeconds > 0.0 && harry->verbStrength > 0.0 && harry->verbStrength <= 0.6, "verbs: the harry is a slow you feel, not a stop");
+    check(guard->verbStrength >= 0.3 && guard->verbStrength <= 0.8 && guard->verbArcDegrees >= 60.0 && guard->verbArcDegrees <= 180.0,
+          "verbs: the guard covers a front, not the whole mob");
+    check(mark->verbSeconds > 0.0 && mark->verbStrength > 1.0, "verbs: a mark makes the hunters faster, for a while");
+    check(root->verbSeconds >= 0.6 && root->verbSeconds <= 2.0, "verbs: a root is a moment, not a cage");
+    check(kindle->verbSeconds > 0.0 && kindle->verbRadiusM > 0.0 && kindle->verbStrength > 0.0, "verbs: the kindle has a period, a reach and a bonus");
+    check(swarm->verbRadiusM > 0.0 && swarm->verbStrength > 0.0 && swarm->verbCap >= swarm->verbStrength, "verbs: the swarm adds per ally, to a cap");
+    check(ward->verbRadiusM > 0.0 && ward->verbStrength > 0.0 && ward->verbStrength <= 0.5, "verbs: the ward shields, it does not make allies immune");
+    // The band: every hostile family's threat within [0.55, 1.6] of the
+    // median, the shrieker aside - its threat is who it invites.
+    std::vector<double> scores;
+    std::map<std::string, double> byFamily;
+    for (const auto& e : t.world.enemies) {
+        const auto* b = rt.findBehaviour(e.behaviour);
+        if (!b || b->flees || b->verb == "recruit") continue;
+        const double s = combat::threatScore(e, *b);
+        byFamily[e.id] = s;
+        scores.push_back(s);
+    }
+    std::sort(scores.begin(), scores.end());
+    const double median = scores[scores.size() / 2];
+    std::string outside;
+    for (const auto& [id, s] : byFamily)
+        if (s < 0.55 * median || s > 1.6 * median) outside += id + " ";
+    check(scores.size() >= 8 && outside.empty(), "verbs: every family sits in the threat band (outside: " + outside + ")");
+    check(byFamily["bog_lurker"] < byFamily["ash_hound"] * 1.6 && byFamily["hollow_knight"] < byFamily["ember_whelp"] * 1.6,
+          "verbs: the slow heavy hitters are no tier above the fast biters");
+    // Packs by biome: the fen's packs are no tier above the forest's; the
+    // biomes' mean pack threat stays in one band (the meadow's straggler aside).
+    std::map<std::string, double> meanByBiome;
+    for (const auto& b : t.worldgen.biomes) {
+        if (b.packs.empty() || b.id == "meadow") continue;
+        double sum = 0.0;
+        for (const auto& pack : b.packs) sum += combat::packThreat(t.world, rt, pack);
+        meanByBiome[b.id] = sum / static_cast<double>(b.packs.size());
+    }
+    double overall = 0.0;
+    for (const auto& [id, m] : meanByBiome) overall += m;
+    overall /= static_cast<double>(std::max<size_t>(1, meanByBiome.size()));
+    std::string offBand;
+    for (const auto& [id, m] : meanByBiome)
+        if (m < 0.7 * overall || m > 1.45 * overall) offBand += id + " ";
+    check(meanByBiome.size() >= 4 && offBand.empty(), "verbs: every biome's packs sit in one band (off: " + offBand + ")");
+    check(meanByBiome["fen"] <= meanByBiome["forest"] * 1.15, "verbs: the fen is a different shape, not a tier above the forest");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -4145,6 +4210,7 @@ int main(int argc, char** argv) {
     testDensityAndFear(t);
     testWorldABeatAhead(t);
     testHornAndSiege(t);
+    testVerbs(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

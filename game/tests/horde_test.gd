@@ -81,6 +81,7 @@ func _physics_process(_delta: float) -> void:
 			_run_cone_and_dash_checks()
 		510:
 			_run_shrieker_and_elite_checks()
+			_run_verb_checks()
 			# The 3D-world rule (owner playtest 2 Sep 2026): a mob under the
 			# floor, 2 m away horizontally, must NOT aggro through the rock.
 			_player.global_position = Vector3(80, 1.1, -80)
@@ -188,6 +189,69 @@ var _elk_life_before := 0.0
 
 
 ## Wave 3: the shrieker's aggro chain and the elite modifiers.
+## The verbs (Wave 8 slice 1): each family's one thing, in play.
+func _run_verb_checks() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		(enemy as Enemy).take_damage(100000.0)
+	var combat := _player.combat
+	combat.restore_life()
+	combat.invulnerable_left = 0.0
+	combat.clear_train()
+	combat.clear_verbs()
+	_player.global_position = Vector3(-100, 1.1, -100)
+	var p := _player.global_position
+	# Harry: the hound's bite slows you for a while.
+	var hound := Enemy.spawn(self, &"ash_hound", p + Vector3(0, -0.5, 1.2))
+	check(hound.verb == "harry" and hound.verb_seconds > 0.0, "verbs: the hound harries (from the sim)")
+	hound.force_attack()
+	check(combat.harried() and combat.haste_multiplier() < 1.0 and combat.verb_text().contains("harried"),
+		"verbs: harried, you are slowed (x%.2f)" % combat.haste_multiplier())
+	# Root: the lurker holds you; a dash breaks it.
+	var lurker := Enemy.spawn(self, &"bog_lurker", p + Vector3(1.5, -0.5, 0))
+	lurker.force_attack()
+	check(combat.rooted() and combat.verb_text().contains("rooted"), "verbs: the lurker roots you")
+	combat.break_root()
+	check(not combat.rooted(), "verbs: a dash breaks the root")
+	# Mark: the archer's hit marks you; the hound sprints while it lasts.
+	var archer := Enemy.spawn(self, &"cinder_archer", p + Vector3(0, -0.5, -5))
+	archer.force_attack()
+	check(combat.marked() and combat.marked_sprint() > 1.0 and hound.chase_speed_multiplier(_player) > 1.0
+		and is_equal_approx(lurker.chase_speed_multiplier(_player), 1.0),
+		"verbs: marked, the hound sprints at you and the lurker does not (x%.2f)" % hound.chase_speed_multiplier(_player))
+	# Guard: the husk's front takes less; behind, or staggered, it does not.
+	var husk := Enemy.spawn(self, &"stone_husk", p + Vector3(0, -0.5, -3))
+	husk.look_at(Vector3(p.x, husk.global_position.y, p.z), Vector3.UP)
+	check(husk.verb == "guard" and husk.guards_against(p) and not husk.guards_against(husk.global_position + Vector3(0, 0, -4)),
+		"verbs: the husk guards its front, not its back")
+	husk.stagger(1.0)
+	check(not husk.guards_against(p), "verbs: a staggered husk drops its guard")
+	# Ward: the knight's aura shields allies near it until it is staggered.
+	var knight := Enemy.spawn(self, &"hollow_knight", p + Vector3(6, -0.5, 6))
+	var squire := Enemy.spawn(self, &"ember_whelp", p + Vector3(7, -0.5, 6))
+	var loner := Enemy.spawn(self, &"ember_whelp", p + Vector3(20, -0.5, 20))
+	check(knight.wards() and squire.warded() and not loner.warded() and not knight.warded(),
+		"verbs: the knight wards the whelp beside it, not the one far off, not itself")
+	knight.stagger(1.0)
+	check(not squire.warded(), "verbs: a staggered knight wards nothing")
+	# Kindle: the wisp lights an ally, whose bite burns.
+	var wisp := Enemy.spawn(self, &"cinder_wisp", p + Vector3(-6, -0.5, 6))
+	var torch := Enemy.spawn(self, &"ember_whelp", p + Vector3(-7, -0.5, 6))
+	var lit := wisp.kindle_nearest()
+	check(lit == torch and torch.burning_left > 0.0 and torch.bite_type() == "fire" and torch.bite_damage() > torch.damage,
+		"verbs: the wisp kindles the whelp, whose bite now burns")
+	# Swarm: crawlers together bite harder than one.
+	var one := Enemy.spawn(self, &"gloom_crawler", p + Vector3(-20, -0.5, -20))
+	check(one.verb == "swarm" and is_equal_approx(one.swarm_multiplier(), 1.0), "verbs: a lone crawler is a lone crawler")
+	Enemy.spawn(self, &"gloom_crawler", p + Vector3(-19, -0.5, -20))
+	Enemy.spawn(self, &"gloom_crawler", p + Vector3(-20, -0.5, -19))
+	check(one.swarm_multiplier() > 1.2 and one.swarm_multiplier() <= 1.0 + one.verb_cap + 0.001,
+		"verbs: three crawlers together bite harder (x%.2f)" % one.swarm_multiplier())
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		(enemy as Enemy).take_damage(100000.0)
+	combat.restore_life()
+	combat.clear_verbs()
+
+
 func _run_shrieker_and_elite_checks() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		(enemy as Enemy).take_damage(100000.0)
