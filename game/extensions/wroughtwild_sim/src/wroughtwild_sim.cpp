@@ -2902,6 +2902,15 @@ Dictionary WroughtwildSim::foundry() const {
             }
         }
         entry["specialisations"] = specs;
+        // The class's kit (4 Sep 2026): the skills it starts with, in bar order.
+        PackedStringArray kit, kitNames;
+        for (const auto& id : c.startingSkills) {
+            kit.push_back(to_godot(id));
+            const auto* skill = tuning_->skills.findCombatSkill(id);
+            kitNames.push_back(to_godot(skill ? skill->displayName : id));
+        }
+        entry["starting_skills"] = kit;
+        entry["starting_skill_names"] = kitNames;
         classes.push_back(entry);
     }
     d["classes"] = classes;

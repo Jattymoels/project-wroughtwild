@@ -280,6 +280,11 @@ func _test_lattice() -> void:
 		and sim.foundry()["specialisations"][0]["becomes"].size() == 2 and sim.foundry_pattern("volley")["axis"] == "column"
 		and sim.foundry_pattern("hounds_manner")["manner"] and sim.foundry_pattern("hounds_manner")["teacher_name"] != "",
 		"rails: a Ranger, once, with two patterns; the forge behind us, two specialisations with their view")
+	# The class's kit (4 Sep 2026): the bow first on the bar, the orb gone (its tablet lifted with it), the strike kept.
+	check(sim.skill_bar()[0] == "prototype_bow_shot" and sim.skill_bar()[3] == "prototype_dash" and not sim.knows_skill("prototype_frost_orb")
+		and sim.knows_skill("prototype_area_strike") and sim.foundry()["plate"].size() == 3 and sim.learn_skill("prototype_frost_orb")
+		and sim.foundry_place_skill(1, 1, "prototype_frost_orb"),
+		"kits: the Ranger's bow leads the bar; the orb's tablet lifted, learned back from a page and laid again")
 	check(sim.foundry_set_rail("column", 1, "volley") and not sim.foundry_set_rail("column", 0, "volley") and sim.foundry()["rails_set"] == 1,
 		"rails: Volley set on the orb's column, once")
 	var waiting := false
@@ -579,7 +584,7 @@ func _test_sim_extension() -> void:
 	var heavy: Dictionary = sim.combat_skill("prototype_heavy_strike")
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
 	check(heavy["delivery"] == "strike" and heavy["starting"], "combat: skill view carries delivery and starting (D-016)")
-	check(sim.combat_skill_ids().size() == 8, "combat: eight skills defined (four arrive as pages)")
+	check(sim.combat_skill_ids().size() == 10, "combat: ten skills defined (the class kits' bow shot and sweep among them)")
 	check(sim.enemy("ember_whelp")["max_life"] == 75.0 and sim.enemy_ids().size() == 11,
 		"combat: enemy view (shrieker and gloom crawler joined)")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
@@ -785,6 +790,7 @@ func _test_sim_extension() -> void:
 	# D-016 loadout: skills are found, not worn. The starting four fill the
 	# bar; pages teach the rest; gear only ever scales skills by tag.
 	check(sim.skill_bar_size() == 4 and sim.skill_bar().size() == 4, "loadout: four bar slots")
+	# A fresh sim has no class: the base four, the kit of tests and harnesses.
 	check(sim.known_skill_ids().size() == 4 and sim.knows_skill("prototype_dash"), "loadout: the starting four are known")
 	check(sim.skill_bar()[0] == "prototype_area_strike" and sim.skill_bar()[3] == "prototype_dash",
 		"loadout: starting skills fill the bar in data order")

@@ -975,6 +975,19 @@ at the trial was corrected the same day. `data/tuning/foundry.json`
   kills; a load drops a rail its patterns no longer cover or the era does
   not allow, forgets an unknown class or a specialisation of another
   class, and offers the choice again.
+- **The class's kit** (later the same day; the owner: "more initial
+  skills, not frost orb - a bow shot, or a strike for warden").
+  `rails.classes[].starting_skills` replaces the base starting skills
+  when the class is chosen and fills the bar in its order: the Ranger's
+  **Bow Shot** (new: a quick physical projectile attack with a little
+  bleed), Rend and Area Strike; the Warden's Heavy Strike, Area Strike
+  and Frost Nova; the Kindler's Ember Bolt, **Cinder Sweep** (new: a
+  burning cone attack) and Frost Orb; everyone's Dash. What pages taught
+  stays known; a tablet laid for a skill the kit does not carry lifts
+  free; the base four are pages for the classes without them (the orb
+  0.8, the strikes 0.5, the Dash never). Tests: sim 3611; engine unit 353
+  (the Ranger's bar); integration 225 (a Warden's kit, the orb as a page);
+  grammar 64.
 
 Tests: sim 3587 (the tuning and a grown pattern's inheritance; no class
 yet; a Ranger once; Volley lit in era one by one Reach, broken by an

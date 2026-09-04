@@ -1410,7 +1410,7 @@ void testMobGearAndPages(const tuning::Tuning& t) {
     }
     double pageRate = static_cast<double>(pages) / kills;
     check(pageRate > 0.035 && pageRate < 0.07, "drops: husk pages land near their 5% chance");
-    check(taught.size() == 4, "drops: every learnable skill turns up on pages");
+    check(taught.size() == 6, "drops: every learnable skill turns up on pages (the pages, the bow shot and the sweep)");
     check(loot::rollEnemySkillPage(t, "stone_husk", 1, known) ==
               loot::rollEnemySkillPage(t, "stone_husk", 1, known),
           "drops: pages are deterministic per seed");
@@ -3571,6 +3571,50 @@ void testMetal(const tuning::Tuning& t) {
           "metal: a doctored save's castings sum to what is owned, the placed steel kept, an unknown metal dropped");
 }
 
+// The class kits (owner, 4 Sep 2026): a class chosen before play starts
+// with its own skills, on the bar in order; the base four stay the kit of
+// a character with no class (tests), and become pages for the rest.
+void testClassKits(const tuning::Tuning& t) {
+    const auto& rails = t.foundry.rails;
+    const auto* ranger = rails.findClass("ranger");
+    const auto* warden = rails.findClass("warden");
+    const auto* kindler = rails.findClass("kindler");
+    check(ranger && warden && kindler && ranger->startingSkills.size() == 4 && ranger->startingSkills[0] == "prototype_bow_shot" &&
+              warden->startingSkills[0] == "prototype_heavy_strike" && kindler->startingSkills[0] == "prototype_ember_bolt" &&
+              kindler->startingSkills[1] == "prototype_cinder_sweep" && t.skills.findCombatSkill("prototype_bow_shot") &&
+              t.skills.findCombatSkill("prototype_cinder_sweep") && t.skills.findCombatSkill("prototype_bow_shot")->delivery == "projectile" &&
+              t.skills.findCombatSkill("prototype_cinder_sweep")->delivery == "cone",
+          "kits: each class starts with four, a bow shot for the Ranger, a strike for the Warden, a bolt and a sweep for the Kindler");
+    check(t.skills.findCombatSkill("prototype_frost_orb")->dropWeight > 0.0 && t.skills.findCombatSkill("prototype_area_strike")->dropWeight > 0.0 &&
+              t.skills.findCombatSkill("prototype_dash")->dropWeight == 0.0 && t.skills.startingSkillIds().size() == 4,
+          "kits: the orb and the strikes are pages for the classes without them; the Dash is everyone's; the base four stand for no class");
+    economy::PlayerEconomy p(t);
+    check(p.knownSkills() == t.skills.startingSkillIds() && p.skillBar()[0] == "prototype_area_strike",
+          "kits: no class yet - the base four, the strike first");
+    check(p.learnSkill("prototype_shatter") && p.foundryPlaceSkill(1, 1, "prototype_frost_orb"), "kits: a page learned and the orb laid before the choice");
+    check(p.foundryChooseClass("ranger") && p.knownSkills() == std::vector<std::string>{"prototype_bow_shot", "prototype_rend", "prototype_area_strike", "prototype_dash", "prototype_shatter"} &&
+              p.skillBar() == std::vector<std::string>{"prototype_bow_shot", "prototype_rend", "prototype_area_strike", "prototype_dash"} &&
+              !p.knowsSkill("prototype_frost_orb") && !p.knowsSkill("prototype_heavy_strike") && p.foundry().plate.empty(),
+          "kits: a Ranger - the bow shot first on the bar, the orb and the heavy strike gone, the page kept, the orb's tablet lifted");
+    check(p.learnSkill("prototype_frost_orb") && p.knowsSkill("prototype_frost_orb"), "kits: the orb comes back as a page");
+    economy::PlayerEconomy w(t);
+    check(w.foundryChooseClass("warden") && w.skillBar() == std::vector<std::string>{"prototype_heavy_strike", "prototype_area_strike", "prototype_frost_nova", "prototype_dash"} &&
+              !w.knowsSkill("prototype_frost_orb"),
+          "kits: a Warden - strikes and a nova, no orb");
+    economy::PlayerEconomy k(t);
+    check(k.foundryChooseClass("kindler") && k.skillBar()[0] == "prototype_ember_bolt" && k.knowsSkill("prototype_cinder_sweep") && k.knowsSkill("prototype_frost_orb") &&
+              !k.knowsSkill("prototype_area_strike"),
+          "kits: a Kindler - the bolt, the sweep, the orb for the scald, no strikes");
+    // The save carries the kit through the class.
+    save::SaveGame game;
+    game.economy = p.exportState();
+    auto back = save::fromJson(save::toJson(game));
+    economy::PlayerEconomy restored(t);
+    restored.importState(back.economy);
+    check(restored.knownSkills()[0] == "prototype_bow_shot" && restored.skillBar()[0] == "prototype_bow_shot" && !restored.canChooseClass(),
+          "kits: restored, the Ranger keeps the bow");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3621,6 +3665,7 @@ int main(int argc, char** argv) {
     testMarrowAndQuicksilverForms(t);
     testRails(t);
     testMetal(t);
+    testClassKits(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

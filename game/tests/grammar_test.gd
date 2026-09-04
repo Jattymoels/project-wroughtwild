@@ -224,6 +224,10 @@ func _phase_k_rails() -> void:
 	_sim.foundry_event("world_effect:old_mine_reinforced")
 	check(_sim.foundry_choose_class("ranger") and _sim.foundry()["can_specialise"] and _sim.foundry()["rails_allowed"] == 3,
 		"rails: a Ranger, the Tyrant's forge passed, era three with three rails")
+	# The Ranger's kit has no orb (4 Sep 2026): its tablet lifted with the
+	# choice; a page teaches it back and it is laid again for the checks.
+	check(not _sim.knows_skill("prototype_frost_orb") and _sim.learn_skill("prototype_frost_orb")
+		and _sim.foundry_place_skill(1, 1, "prototype_frost_orb"), "kits: the orb lifted with the Ranger's choice, learned back and laid")
 	_sim.learn_skill("prototype_ember_bolt")
 	check(_sim.skill_pierce("prototype_ember_bolt") == 0 and _sim.foundry_place(3, 0, "edge") and _sim.foundry_place(3, 3, "edge")
 		and _sim.foundry_set_rail("row", 3, "quarry") and _sim.skill_pierce("prototype_ember_bolt") == 1,

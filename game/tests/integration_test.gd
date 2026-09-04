@@ -295,8 +295,12 @@ func _physics_process(_delta: float) -> void:
 				"class: no class yet, the panel waits")
 			_player.offer_class()
 			check(_player.class_panel.is_open() and _player.class_panel.class_count == 3, "class: the offer shows three classes")
-			check(_player.class_panel.choose("kindler") and not _player.class_panel.is_open() and sim.foundry()["class"] == "kindler"
-				and (sim.foundry()["patterns"] as Array).size() == 2, "class: a Kindler, and the panel closed on the choice")
+			check(_player.class_panel.choose("warden") and not _player.class_panel.is_open() and sim.foundry()["class"] == "warden"
+				and (sim.foundry()["patterns"] as Array).size() == 2, "class: a Warden, and the panel closed on the choice")
+			# The kit (4 Sep 2026): the Warden starts with strikes and a nova; the orb is a page now.
+			check(sim.skill_bar()[0] == "prototype_heavy_strike" and sim.knows_skill("prototype_frost_nova") and not sim.knows_skill("prototype_frost_orb")
+				and _player.hud.action_bar.slots.size() == 4 and sim.learn_skill("prototype_frost_orb"),
+				"class: the Warden's kit on the bar, and the orb learned from a page for the checks below")
 			_player.offer_class()
 			check(not _player.class_panel.is_open() and not _player.class_panel.choose("ranger"), "class: chosen once, the offer does not return")
 			_player.open_foundry()

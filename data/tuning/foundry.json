@@ -1,6 +1,6 @@
 {
   "schema_version": 10,
-  "status": "D-023 slice 10: the metal of an ingot - re-cast at the forge in the era's alloy, reach for backing and pairs, alloy-cast ingots from elites and the deeper forge, compound forms on the metal",
+  "status": "D-023 slice 10 and the class kits (4 Sep 2026): each class starts with its own skills - a bow shot for the Ranger, a strike for the Warden, a bolt and a sweep for the Kindler",
   "frame": [
     4,
     4
@@ -803,6 +803,12 @@
           "sharpshooter",
           "fletcher"
         ],
+        "starting_skills": [
+          "prototype_bow_shot",
+          "prototype_rend",
+          "prototype_area_strike",
+          "prototype_dash"
+        ],
         "design_purpose": "The projectile class: Volley fans a column's projectile skill out, Quarry sends every projectile through one more enemy and leaves the ones it passes bleeding. Both want Reach and Edge in lines, so a Ranger's plate is drawn toward long straight runs."
       },
       {
@@ -816,6 +822,12 @@
           "bulwark",
           "sentinel"
         ],
+        "starting_skills": [
+          "prototype_heavy_strike",
+          "prototype_area_strike",
+          "prototype_frost_nova",
+          "prototype_dash"
+        ],
         "design_purpose": "The standing class: Shield Wall makes armour answer fire and cold, Riposte makes the Barbs answer twice as hard and stagger. Both want Plate, Vigour and Edge in lines with a Vanguard resting among them."
       },
       {
@@ -828,6 +840,12 @@
         "specialisations": [
           "pyromancer",
           "hearthkeeper"
+        ],
+        "starting_skills": [
+          "prototype_ember_bolt",
+          "prototype_cinder_sweep",
+          "prototype_frost_orb",
+          "prototype_dash"
         ],
         "design_purpose": "The fire class: Pyre spreads every ignite on the hit rather than the death, Ashen Step makes burning ground yours. Both want Ember in lines, with Haste at the far end of one."
       }

@@ -168,7 +168,13 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
    first trial: its completion offers a specialisation from the class's
    two, each shown as a view of what every pattern becomes, and a rail
    already holding a pattern becomes with it. The two manners (the
-   Hound's, the Husk's) are taught by kills and join the rails.
+   Hound's, the Husk's) are taught by kills and join the rails. *Later the
+   same day:* the class also sets the starting kit
+   (`rails.classes[].starting_skills`): the Ranger's Bow Shot, Rend and
+   Area Strike; the Warden's Heavy Strike, Area Strike and Frost Nova; the
+   Kindler's Ember Bolt, Cinder Sweep and Frost Orb; everyone's Dash. The
+   base four stay the kit of a character with no class and become pages
+   for the classes without them.
 
 14. The metal of an ingot (slice 10): every ingot is cast in iron;
    at a built forge an ingot in hand is re-cast in the era's alloy

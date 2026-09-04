@@ -98,6 +98,12 @@ func refresh() -> void:
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.pressed.connect(_on_choose.bind(String(c["id"])))
 		box.add_child(button)
+		var kit: PackedStringArray = c.get("starting_skill_names", PackedStringArray())
+		if not kit.is_empty():
+			var starts := Label.new()
+			starts.text = "    Starts with %s." % ", ".join(kit)
+			starts.modulate = UiTheme.SUN_WARM
+			box.add_child(starts)
 		for p in c.get("patterns", []):
 			var line := Label.new()
 			line.text = "    %s (%s): %s - %s." % [p["display_name"], p["axis"], p["condition_text"], p["rule_text"]]
@@ -130,7 +136,10 @@ func choose(id: String) -> bool:
 	var names := PackedStringArray()
 	for p in view.get("patterns", []):
 		names.append(String(p["display_name"]))
-	if player != null and player.hud != null:
-		player.hud.notify("You are a %s. Your rails hold %s from the first era; F opens the plate." % [view.get("class_name", id), " and ".join(names)])
+	if player != null:
+		# The kit replaced the base skills: the bar rebuilds from the sim.
+		player.combat.loadout_changed.emit()
+		if player.hud != null:
+			player.hud.notify("You are a %s. Your rails hold %s from the first era; F opens the plate." % [view.get("class_name", id), " and ".join(names)])
 	close_panel()
 	return true
