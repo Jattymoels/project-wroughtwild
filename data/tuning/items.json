@@ -1,8 +1,9 @@
 {
   "schema_version": 2,
-  "status": "wave-2 (D-014/D-016): one modifier pool, three slots, rarity by modifier count; gear scales skills by tag and never grants one",
+  "status": "the class gear pass (4 Sep 2026): an offhand slot, bows and projectile modifiers, shields, a brand and a lantern; wave-2 (D-014/D-016): one modifier pool, three slots, rarity by modifier count; gear scales skills by tag and never grants one",
   "slots": [
     "weapon",
+    "offhand",
     "chest",
     "charm"
   ],
@@ -27,6 +28,132 @@
     }
   ],
   "modifiers": [
+    {
+      "id": "projectile_damage",
+      "display_name": "Projectile Damage",
+      "tags": [
+        "offence",
+        "projectile"
+      ],
+      "applies_to": [
+        "projectile"
+      ],
+      "effect": "increased_damage",
+      "display": "percent",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.05,
+          "maximum": 0.1
+        },
+        {
+          "tier": 2,
+          "minimum": 0.15,
+          "maximum": 0.25,
+          "breakpoints": [
+            {
+              "effect": "add_pierce",
+              "value": 1,
+              "applies_to": [
+                "projectile"
+              ],
+              "text": "projectiles pierce one more enemy"
+            }
+          ]
+        },
+        {
+          "tier": 3,
+          "minimum": 0.3,
+          "maximum": 0.45,
+          "breakpoints": [
+            {
+              "effect": "add_projectiles",
+              "value": 1,
+              "applies_to": [
+                "projectile"
+              ],
+              "text": "one more projectile"
+            }
+          ]
+        }
+      ],
+      "design_purpose": "The class gear pass (owner, 4 Sep 2026: 'bows that enhance projectile attacks'): the bow's line. Damage for everything with the projectile tag - the Ranger's Bow Shot, the orb, the bolt - so a bow serves any projectile build, and its tiers bring the mechanics the Ranger's rails also carry: pierce at tier two, a fan at three."
+    },
+    {
+      "id": "fletching",
+      "display_name": "Fletching",
+      "tags": [
+        "offence",
+        "projectile"
+      ],
+      "applies_to": [
+        "projectile"
+      ],
+      "effect": "add_projectiles",
+      "display": "flat",
+      "from_tier": 2,
+      "tiers": [
+        {
+          "tier": 2,
+          "minimum": 1,
+          "maximum": 1
+        },
+        {
+          "tier": 3,
+          "minimum": 1,
+          "maximum": 1,
+          "breakpoints": [
+            {
+              "effect": "increased_reach",
+              "value": 0.1,
+              "applies_to": [
+                "projectile"
+              ],
+              "text": "the fan flies 10% further"
+            }
+          ]
+        }
+      ],
+      "design_purpose": "A gear-rolled fan: one more projectile from every projectile skill, from tier two (an elite in era one, anyone from era two), so a Ranger who never finds Volley's Reaches still grows a fan. The Volley rail's extra_projectiles is a reading and never rolls; this is the gear half of the same verb."
+    },
+    {
+      "id": "barbed_heads",
+      "display_name": "Barbed Heads",
+      "tags": [
+        "offence",
+        "projectile",
+        "bleed"
+      ],
+      "applies_to": [
+        "projectile"
+      ],
+      "effect": "add_pierce",
+      "display": "flat",
+      "from_tier": 2,
+      "tiers": [
+        {
+          "tier": 2,
+          "minimum": 1,
+          "maximum": 1
+        },
+        {
+          "tier": 3,
+          "minimum": 1,
+          "maximum": 2,
+          "breakpoints": [
+            {
+              "effect": "add_bleed_buildup",
+              "value": 15,
+              "applies_to": [
+                "projectile"
+              ],
+              "text": "pierced enemies bleed"
+            }
+          ]
+        }
+      ],
+      "design_purpose": "A gear-rolled pierce: projectiles fly on through one more enemy (two at tier three, and then they bleed what they pass). The Quarry rail's pierce is a reading; this is what a bow or a quiver rolls."
+    },
     {
       "id": "extra_projectiles",
       "display_name": "Volley",
@@ -1483,6 +1610,163 @@
     }
   ],
   "item_bases": [
+    {
+      "id": "hunting_bow",
+      "display_name": "Hunting Bow",
+      "slot": "weapon",
+      "material": "iron",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "projectile_damage",
+          "value": 0.1
+        }
+      ],
+      "allowed_modifier_tags": [
+        "physical",
+        "bleed",
+        "projectile",
+        "reach",
+        "speed",
+        "attack"
+      ],
+      "tier_cap": 2,
+      "design_purpose": "The Ranger's first weapon (the class gear pass, 4 Sep 2026): an iron-tipped bow from the basic forge whose implicit is projectile damage, the felt step above bare hands for a Bow Shot. Its pool is the physical line, bleed, projectile (Fletching, Barbed Heads, Forks), reach, speed and the on-attack payloads - so a bow can grow Frostbite and freeze with arrows, but never a cold-spell mod."
+    },
+    {
+      "id": "bronze_longbow",
+      "display_name": "Bronze Longbow",
+      "slot": "weapon",
+      "material": "bronze",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "projectile_damage",
+          "value": 0.15
+        },
+        {
+          "id": "reach",
+          "value": 0.08
+        }
+      ],
+      "allowed_modifier_tags": [
+        "physical",
+        "bleed",
+        "projectile",
+        "reach",
+        "speed",
+        "attack"
+      ],
+      "tier_cap": 3,
+      "design_purpose": "Era two's bow, bronze-limbed: a stronger projectile implicit, a little reach, and a base that holds tier-three rolls (D-019: the alloy you can smelt is the quality your gear can express)."
+    },
+    {
+      "id": "hide_quiver",
+      "display_name": "Hide Quiver",
+      "slot": "offhand",
+      "material": "hide",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "projectile_damage",
+          "value": 0.05
+        }
+      ],
+      "allowed_modifier_tags": [
+        "projectile",
+        "bleed",
+        "physical",
+        "speed"
+      ],
+      "tier_cap": 2,
+      "design_purpose": "The Ranger's offhand, sewn at the bench from the elk's hide: a small projectile add, and a second place for Fletching and Barbed Heads to roll. Offhands are the fourth slot (the class gear pass): a class fantasy is a hand and an offhand, not a weapon alone."
+    },
+    {
+      "id": "timber_shield",
+      "display_name": "Timber Shield",
+      "slot": "offhand",
+      "material": "wood",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "armour_plating",
+          "value": 6
+        }
+      ],
+      "allowed_modifier_tags": [
+        "defence",
+        "life",
+        "resistance"
+      ],
+      "tier_cap": 1,
+      "design_purpose": "The first-hour shield, lashed at the bench: six armour on the offhand for anyone, the Warden's before the forge. Wood holds tier one only (D-019): a keen roll above that waits for the iron shield."
+    },
+    {
+      "id": "iron_shield",
+      "display_name": "Iron Shield",
+      "slot": "offhand",
+      "material": "iron",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "armour_plating",
+          "value": 10
+        }
+      ],
+      "allowed_modifier_tags": [
+        "defence",
+        "life",
+        "resistance",
+        "attack"
+      ],
+      "tier_cap": 2,
+      "design_purpose": "The Warden's offhand from the basic forge: ten armour and the defence, life and resistance lines, plus the on-attack payloads so a shield can carry Frostbite for the strikes behind it. Shield Wall and Riposte are the rails; the shield is what the sheet wears."
+    },
+    {
+      "id": "charred_brand",
+      "display_name": "Charred Brand",
+      "slot": "weapon",
+      "material": "iron",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "fire_damage",
+          "value": 0.1
+        }
+      ],
+      "allowed_modifier_tags": [
+        "fire",
+        "ignite",
+        "proliferate",
+        "attack",
+        "spell",
+        "speed"
+      ],
+      "tier_cap": 2,
+      "design_purpose": "The Kindler's first weapon: an iron-shod brand, charred at the basic forge, whose implicit is fire damage for the bolt and the sweep both. Its pool is the fire line for attacks and spells; the Ember Wand (era two's improved forge) is the caster's step up."
+    },
+    {
+      "id": "cinder_lantern",
+      "display_name": "Cinder Lantern",
+      "slot": "offhand",
+      "material": "iron",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "burn_damage",
+          "value": 0.15
+        }
+      ],
+      "allowed_modifier_tags": [
+        "fire",
+        "ignite",
+        "proliferate",
+        "resistance",
+        "defence"
+      ],
+      "tier_cap": 2,
+      "design_purpose": "The Kindler's offhand: a lantern of coals whose implicit makes every burn bite harder, with the fire line and the resistances to roll. Pyre and Ashen Step are the rails; the lantern is the hand that carries the fire."
+    },
     {
       "id": "iron_mace",
       "display_name": "Iron Mace",
