@@ -1065,6 +1065,12 @@ void testWorldgen(const tuning::Tuning& t) {
                 allGood = false;
                 firstBad = type + " shortfall (seed " + std::to_string(seed) + ")";
             }
+        // Iron is a walk (Wave 6 slice 2): guaranteed within the far ring.
+        for (const auto& [type, minimum] : g.minNodesFar)
+            if (map.countNodesNear(type, map.spawnX, map.spawnZ, g.farRadiusM) < minimum) {
+                allGood = false;
+                firstBad = type + " far shortfall (seed " + std::to_string(seed) + ")";
+            }
         double gateDistance = std::sqrt(
             static_cast<double>((map.gateX - map.spawnX) * (map.gateX - map.spawnX) +
                                 (map.gateZ - map.spawnZ) * (map.gateZ - map.spawnZ)));
@@ -3765,6 +3771,19 @@ void testWorldMadeWhole(const tuning::Tuning& t) {
     for (const auto& biome : t.worldgen.biomes)
         if (biome.id == "meadow")
             check(biome.nodeDensity.at("tree") < 0.01 && biome.nodeDensity.at("tree") > 0.0, "whole: the meadow's trees are sparser, and bigger");
+    // Slice 2: iron is a walk - none guaranteed near, three within the far ring.
+    const auto& g = t.worldgen.guarantees;
+    check(!g.minNodesNear.count("iron_vein") && g.farRadiusM > g.nearRadiusM && g.minNodesFar.at("iron_vein") == 3,
+          "whole: iron leaves the near guarantee for a ring of ninety metres");
+    // Cave veins under the meadow still count as near (iron runs richer
+    // underground, the reason to go down); what the surface no longer
+    // promises is a vein at the door.
+    int farOk = 0;
+    for (uint64_t seed = 1; seed <= 12; ++seed) {
+        auto map = worldgen::generate(t, seed);
+        if (map.countNodesNear("iron_vein", map.spawnX, map.spawnZ, g.farRadiusM) >= 3) ++farOk;
+    }
+    check(farOk == 12, "whole: every seed has its three veins within the walk");
 }
 
 int main(int argc, char** argv) {

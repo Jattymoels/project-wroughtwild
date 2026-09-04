@@ -1200,6 +1200,8 @@ WorldgenTable loadWorldgen(const std::string& path) {
     table.guarantees.spawnClearRadiusM = g.get("spawn_clear_radius_m").asNumber();
     table.guarantees.nearRadiusM = g.get("near_radius_m").asNumber();
     table.guarantees.minNodesNear = readIntMap(g.get("min_nodes_near"));
+    if (auto far = g.find("far_radius_m")) table.guarantees.farRadiusM = far->asNumber();
+    if (auto far = g.find("min_nodes_far")) table.guarantees.minNodesFar = readIntMap(*far);
     table.guarantees.gateBiome = g.get("gate_biome").asString();
     table.guarantees.gateMinDistanceM = g.get("gate_min_distance_m").asNumber();
     table.guarantees.packMinDistanceFromSpawnM =

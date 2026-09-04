@@ -341,13 +341,16 @@
     "min_nodes_near": {
       "tree": 8,
       "boulder": 5,
-      "iron_vein": 3,
       "stone_seam": 3
+    },
+    "far_radius_m": 90,
+    "min_nodes_far": {
+      "iron_vein": 3
     },
     "gate_biome": "ember_wastes",
     "gate_min_distance_m": 100,
     "pack_min_distance_from_spawn_m": 40,
-    "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood/stone/iron within a short walk to reach the forge, keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map Three stone seams within the near radius (D-021): the first quarry is always a short walk."
+    "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood and stone within a short walk, keeps iron a walk away (Wave 6 slice 2, 4 Sep 2026: three veins within far_radius_m, none guaranteed near - the first forge is a journey into the hills and back), keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map Three stone seams within the near radius (D-021): the first quarry is always a short walk."
   },
   "fire_setting": {
     "fuels": {

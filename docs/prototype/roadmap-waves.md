@@ -428,9 +428,11 @@ automation").
    every third press and rolls over on the last. Meadow trees are sparser
    and bigger (`worldgen.json` nodes, `drive_presses` on any node). Engine
    unit %s, sim %s.
-2. **Iron is a walk**: iron leaves the near guarantee and is guaranteed
-   within a farther ring instead, so the first forge is a walk into the
-   hills and back.
+2. **Iron is a walk** *(landed 4 Sep 2026)*: iron leaves the near
+   guarantee (`min_nodes_near`) and is guaranteed within a ring of ninety
+   metres instead (`far_radius_m`, `min_nodes_far`), placed beyond the
+   near radius when a seed comes up short, so the first forge is a walk
+   into the hills and back. Sim 3684.
 3. **A wider valley**: 320 m a side, biome and hill noise at half the
    frequency, the near radius, the danger rings and the gate pushed out;
    a performance check first.

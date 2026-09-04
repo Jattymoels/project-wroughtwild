@@ -350,6 +350,33 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
         }
     }
 
+    // 8. And a farther ring for what should be a walk (Wave 6 slice 2, the
+    //    world made whole, 4 Sep 2026): iron is guaranteed within
+    //    far_radius_m but placed beyond the near radius when the seed comes
+    //    up short, so the first forge is a walk into the hills and back.
+    int farR = static_cast<int>(g.farRadiusM / params.cellSizeM);
+    for (const auto& [type, minimum] : g.minNodesFar) {
+        int have = map.countNodesNear(type, map.spawnX, map.spawnZ, farR);
+        for (int ring = nearR + 1; ring <= farR && have < minimum; ++ring) {
+            for (int z = map.spawnZ - ring; z <= map.spawnZ + ring && have < minimum; ++z) {
+                for (int x = map.spawnX - ring; x <= map.spawnX + ring && have < minimum; ++x) {
+                    if (!map.inBounds(x, z)) continue;
+                    double d = distance(x, z, map.spawnX, map.spawnZ);
+                    if (d < ring - 1 || d > ring) continue;
+                    if (map.topSolid(x, z) != map.at(x, z).height) continue;
+                    bool occupied = false;
+                    for (const auto& node : map.nodes)
+                        if (node.x == x && node.z == z) occupied = true;
+                    if (occupied) continue;
+                    if (lattice(seed, x, z, 8888) < 0.25) {
+                        map.nodes.push_back({type, x, map.at(x, z).height, z});
+                        ++have;
+                    }
+                }
+            }
+        }
+    }
+
     // Rounds a rolled pack off with the danger ring's rules: extra members
     // drawn from the pack's own kind, and perhaps one member crowned with
     // an elite modifier (Wave 3: elites are why you hunt the far rings).
