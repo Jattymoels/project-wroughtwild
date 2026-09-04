@@ -146,6 +146,14 @@ public:
     double skill_nova_chill(const String& skill_id) const;
     double skill_sear(const String& skill_id) const;
     bool skill_brittle(const String& skill_id) const;
+    double skill_arc(const String& skill_id) const;
+    // Links (D-023): every link on the plate [{first, second, row, col,
+    // support_row, support_col}]; the triggers a skill can fire (freeze,
+    // ignite, bleed); the skills that cast themselves when skill_id's
+    // trigger fires.
+    Array foundry_links() const;
+    PackedStringArray skill_triggers(const String& skill_id) const;
+    PackedStringArray linked_casts(const String& skill_id, const String& trigger) const;
     // Keys: enabled, radius_m, spread_buildup, spread_buildup_boss.
     Dictionary proliferate_for() const;
 

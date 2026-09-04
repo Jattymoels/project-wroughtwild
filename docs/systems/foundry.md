@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) and 6 (kinds as variants; the reactions' hooks) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) 6 (kinds as variants; the reactions' hooks) and 7 (links re-homed; Arc) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -139,9 +139,16 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
    reading sim numbers; Serration, Brittle and Sear bleed through
    `laceration`.
 
-Still to come from the tables below: Arc and Linger, compound forms,
-links re-homed, rails, Marrow and Quicksilver forms, the Vanguard of
-dodge and the rest of the variants, the metal of an ingot. The Reach
+11. Links (slice 7, `foundry::links`, `grammar::linkedCasts`): a
+   Catalyst in the corner beyond a support shared by two sockets links
+   the two skills; when one's payload crosses a status threshold on an
+   enemy the other casts itself at that enemy, off the bar, with its own
+   cooldown. Arc: Reach worked by a Catalyst beside a strike sweeps every
+   enemy within reach and 1.5 m either side.
+
+Still to come from the tables below: Linger, compound forms, rails,
+Marrow and Quicksilver forms, the Vanguard of dodge and the rest of the
+variants, the metal of an ingot. The Reach
 conflict recorded on 3 Sep is settled: the owner said yes, and the code
 now reads skills with it.
 
@@ -470,11 +477,16 @@ is right.
 
 ## Links: a Catalyst between two subjects
 
-> **Needs a new home (4 Sep 2026, the flow).** A kind can no longer rest
-> in a support cell, so the link as written below cannot be placed. The
-> likely home is the corner a kind shares with both workings' supports
-> (a corner of one socket touching the other's shared support), so the
-> flow from one kind reaches both skills; to be settled with slice 6.
+> **Re-homed and built (4 Sep 2026, slice 7).** A kind cannot rest in a
+> support cell, so the link lives in the corner beyond a shared support:
+> a Catalyst resting at (1,3) or (2,0) in era one, touching the support
+> both sockets serve, links the two skills laid there. Each casts the
+> other on its own trigger (a freeze, an ignite, a bleed), at the enemy
+> the trigger landed on, with its own cooldown, on or off the bar; a
+> linked cast never fires another link. The Catalyst still works that
+> support into its form: the link is what the corner between two workings
+> does on top. `links.family` in foundry.json names who links. The bar
+> does not yet mark a linked skill; the HUD says when one casts itself.
 
 Sockets are never side by side on the frame, but the two workings share
 two support cells from era one. **A Catalyst placed in a shared support
@@ -896,8 +908,9 @@ following.
    extra variant); Echo, Quench, Rime, Sear and Brittle as engine hooks;
    Serration, Brittle and Sear bleeding. Still ahead: Arc, Linger,
    compound forms, the variants waiting on stats.
-7. **Links.** Re-homed to a corner touching a shared support; cast on
-   trigger; the linked skill leaves the bar.
+7. **Links** *(landed 4 Sep 2026)*. Re-homed to the corner beyond a
+   shared support; cast on trigger at the struck enemy; on or off the
+   bar. Arc landed with it. Still ahead: the bar marking a linked skill.
 8. **Rails.** `rail_patterns`, the class hall as the place they are set,
    two classes' seeds and one manner.
 9. **Marrow and Quicksilver**, their forms and the rest of their variants.

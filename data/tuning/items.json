@@ -404,6 +404,25 @@
       "design_purpose": "The Brittle form's hook: a spell that would never shatter cashes in a frozen, bleeding enemy with its own hit (grammar::skillBrittle; the engine runs the cascade). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
     },
     {
+      "id": "arc",
+      "display_name": "Arc",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_arc",
+      "display": "flat",
+      "sentence": "the strike sweeps every enemy within its reach and {n} m either side",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.5,
+          "maximum": 1.5
+        }
+      ],
+      "design_purpose": "The Arc form's hook: how far either side of the strike's line the sweep reaches (grammar::skillArc; the engine finds who stands in it). Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
       "id": "area_size",
       "display_name": "Area Size",
       "tags": [

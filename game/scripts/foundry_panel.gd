@@ -204,7 +204,7 @@ func refresh() -> void:
 	var effects: Array = sim.foundry_effects()
 	for effect in effects:
 		var kind: String = effect["kind"]
-		if kind != "support" and kind != "added" and kind != "backing" and kind != "form":
+		if kind != "support" and kind != "added" and kind != "backing" and kind != "form" and kind != "link":
 			continue
 		var from := Vector2i(int(effect["cell_row"]), int(effect["cell_col"]))
 		if not readings.has(from):

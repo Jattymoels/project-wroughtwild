@@ -66,7 +66,7 @@ struct Plate {
 
 // One thing the plate is doing right now, for the rules and the panel.
 struct Effect {
-    std::string kind;     // ingot | pair | support | added | backing | augment | form
+    std::string kind;     // ingot | pair | support | added | backing | augment | form | link
     std::string label;    // Ember Ingot / Wildfire / Frost Orb <- Frost Ingot / Frost Ingot backing Frost Orb
     std::string modifier; // items.json modifier id
     double value = 0.0;
@@ -88,6 +88,16 @@ Plate plate(const tuning::FoundryDef& def, int era);
 int depth(const Plate& plate, int row, int col);
 bool kindMayRest(const Plate& plate, int row, int col);
 bool flowsToSkill(const State& state, const Plate& plate, int row, int col);
+
+// A link (D-023, re-homed to the flow): a kind of the link family in a
+// corner touching a support that serves two sockets links the two skills
+// laid there - each casts the other on its own trigger.
+struct Link {
+    std::string first, second;            // the two skills
+    int row = -1, col = -1;               // the kind's cell
+    int supportRow = -1, supportCol = -1; // the shared support it touches
+};
+std::vector<Link> links(const tuning::Tuning& tuning, const State& state, const Plate& plate);
 
 // Lifts every placement the plate cannot hold - an unforged row, a tablet
 // outside a socket, an ingot inside one, a kind touching one, a second

@@ -162,6 +162,10 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_nova_chill", "skill_id"), &WroughtwildSim::skill_nova_chill);
     ClassDB::bind_method(D_METHOD("skill_sear", "skill_id"), &WroughtwildSim::skill_sear);
     ClassDB::bind_method(D_METHOD("skill_brittle", "skill_id"), &WroughtwildSim::skill_brittle);
+    ClassDB::bind_method(D_METHOD("skill_arc", "skill_id"), &WroughtwildSim::skill_arc);
+    ClassDB::bind_method(D_METHOD("foundry_links"), &WroughtwildSim::foundry_links);
+    ClassDB::bind_method(D_METHOD("skill_triggers", "skill_id"), &WroughtwildSim::skill_triggers);
+    ClassDB::bind_method(D_METHOD("linked_casts", "skill_id", "trigger"), &WroughtwildSim::linked_casts);
     ClassDB::bind_method(D_METHOD("proliferate_for"), &WroughtwildSim::proliferate_for);
     ClassDB::bind_method(D_METHOD("player_build_tags"), &WroughtwildSim::player_build_tags);
     ClassDB::bind_method(D_METHOD("known_skill_ids"), &WroughtwildSim::known_skill_ids);
@@ -1936,6 +1940,43 @@ bool WroughtwildSim::skill_brittle(const String& skill_id) const {
     return require_loaded("skill_brittle") && wroughtwild::grammar::skillBrittle(*tuning_, active_mods(), to_std(skill_id));
 }
 
+double WroughtwildSim::skill_arc(const String& skill_id) const {
+    return require_loaded("skill_arc") ? wroughtwild::grammar::skillArc(*tuning_, active_mods(), to_std(skill_id)) : 0.0;
+}
+
+Array WroughtwildSim::foundry_links() const {
+    Array out;
+    if (!require_loaded("foundry_links")) {
+        return out;
+    }
+    for (const auto& link : wroughtwild::foundry::links(*tuning_, player_->foundry(), player_->plate())) {
+        Dictionary d;
+        d["first"] = to_godot(link.first);
+        d["second"] = to_godot(link.second);
+        d["row"] = link.row;
+        d["col"] = link.col;
+        d["support_row"] = link.supportRow;
+        d["support_col"] = link.supportCol;
+        out.push_back(d);
+    }
+    return out;
+}
+
+PackedStringArray WroughtwildSim::skill_triggers(const String& skill_id) const {
+    if (!require_loaded("skill_triggers")) {
+        return PackedStringArray();
+    }
+    return strings_to_packed(wroughtwild::grammar::skillTriggers(*tuning_, active_mods(), to_std(skill_id)));
+}
+
+PackedStringArray WroughtwildSim::linked_casts(const String& skill_id, const String& trigger) const {
+    if (!require_loaded("linked_casts")) {
+        return PackedStringArray();
+    }
+    return strings_to_packed(wroughtwild::grammar::linkedCasts(*tuning_, active_mods(), player_->foundry(), player_->plate(),
+                                                                to_std(skill_id), to_std(trigger)));
+}
+
 const wroughtwild::worldgen::WorldMap& WroughtwildSim::cached_world(uint64_t seed) {
     // The 3D world costs real time to generate; world_map and world_mesh
     // are always asked about the same seed back to back, so keep the last
@@ -2812,6 +2853,9 @@ Array WroughtwildSim::foundry_effects() const {
         d["cell_col"] = e.cellCol;
         const auto* def = tuning_->items.findModifier(e.modifier);
         d["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, e.value)) : String();
+        if (e.kind == "link") {
+            d["sentence"] = String("on either's trigger - a freeze, an ignite, a bleed - the other casts itself at that enemy, off the bar");
+        }
         d["modifier"] = to_godot(e.modifier);
         d["value"] = e.value;
         d["row"] = e.row;

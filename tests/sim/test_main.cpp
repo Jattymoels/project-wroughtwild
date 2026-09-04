@@ -3053,6 +3053,86 @@ void testVariantsAndHooks(const tuning::Tuning& t) {
           "hooks: a bare plate has none of them");
 }
 
+// D-023 slice 7: links re-homed to the flow - a Catalyst in a corner
+// touching a support shared by two sockets links the two skills, each
+// casting the other on its own trigger - and Arc.
+void testLinksAndArc(const tuning::Tuning& t) {
+    const auto& f = t.foundry;
+    check(f.linkFamily == "offence", "links: the Catalyst family links");
+    bool arcForm = false;
+    for (const auto& form : f.forms) if (form.displayName == "Arc" && form.ingot == "reach" && form.skillTag == "single_target") arcForm = true;
+    check(arcForm && t.items.findModifier("arc"), "arc: the form and its modifier load");
+
+    economy::PlayerEconomy p(t);
+    p.learnSkill("prototype_shatter");
+    p.foundryEvent("first_kill:gloom_crawler"); // frost
+    p.foundryEvent("first_kill:ember_whelp");   // ember
+    p.grant("ember_catalyst", 2);
+    p.grant("vanguard", 1);
+    check(p.foundryPlaceSkill(1, 1, "prototype_frost_orb") && p.foundryPlaceSkill(2, 2, "prototype_shatter") && p.foundryPlace(1, 2, "frost"),
+          "links: the orb, Shatter, and a frost in the support they share");
+    check(foundry::links(t, p.foundry(), p.plate()).empty(), "links: no kind in the corner, no link");
+    check(p.foundryPlaceKind(2, 0, "vanguard") && foundry::links(t, p.foundry(), p.plate()).empty(),
+          "links: a Vanguard in a corner links nothing");
+    check(p.foundryPlace(1, 0, "ember") && p.foundryPlaceKind(2, 0, "ember_catalyst") == false, "links: the corner is taken");
+    p.inventory["iron_ingot"] = 1;
+    check(p.foundryRemove(2, 0) && p.foundryPlaceKind(2, 0, "ember_catalyst") && foundry::links(t, p.foundry(), p.plate()).empty(),
+          "links: a catalyst touching a support of one skill alone links nothing");
+    check(p.foundryPlaceKind(1, 3, "ember_catalyst"), "links: a catalyst in the corner beyond the shared support");
+    auto links = foundry::links(t, p.foundry(), p.plate());
+    check(links.size() == 1 && links[0].first == "prototype_frost_orb" && links[0].second == "prototype_shatter" &&
+              links[0].row == 1 && links[0].col == 3 && links[0].supportRow == 1 && links[0].supportCol == 2,
+          "links: the orb and Shatter are linked through the frost they share");
+    bool linkEffect = false, deepFrost = false;
+    for (const auto& e : foundry::effects(t, p.foundry(), p.plate())) {
+        if (e.kind == "link" && e.skill == "prototype_frost_orb" && e.cellRow == 1 && e.cellCol == 2 && e.subject == "offence") linkEffect = true;
+        if (e.kind == "form" && e.label.rfind("Deep Frost", 0) == 0 && e.skill == "prototype_frost_orb") deepFrost = true;
+    }
+    check(linkEffect && deepFrost, "links: the link is an effect on the shared support, and the catalyst still works the frost");
+    auto mods = grammar::foundryMods(t, p.foundry(), p.currentEra());
+    // The other corner's catalyst works the ember west of the orb into Scald, so the orb ignites too: two triggers.
+    check(grammar::skillTriggers(t, mods, "prototype_frost_orb") == std::vector<std::string>{"freeze", "ignite"} &&
+              grammar::skillTriggers(t, mods, "prototype_shatter").empty() && grammar::skillTriggers(t, mods, "prototype_heavy_strike").empty(),
+          "links: the scalded orb's triggers are a freeze and an ignite; Shatter and a plain strike have none");
+    check(grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_frost_orb", "freeze") == std::vector<std::string>{"prototype_shatter"} &&
+              grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_frost_orb", "ignite") == std::vector<std::string>{"prototype_shatter"},
+          "links: on the orb's freeze or its ignite, Shatter casts itself");
+    check(grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_frost_orb", "bleed").empty() &&
+              grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_shatter", "freeze").empty() &&
+              grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_heavy_strike", "bleed").empty(),
+          "links: a trigger the skill cannot fire, or a skill with none, casts nothing");
+    // A bleed skill linked to a fire skill runs both ways.
+    economy::PlayerEconomy b(t);
+    b.learnSkill("prototype_rend");
+    b.learnSkill("prototype_ember_bolt");
+    b.foundryEvent("first_kill:ash_hound"); // haste
+    b.grant("ember_catalyst", 1);
+    check(b.foundryPlaceSkill(1, 1, "prototype_rend") && b.foundryPlaceSkill(2, 2, "prototype_ember_bolt") && b.foundryPlace(2, 1, "haste") &&
+              b.foundryPlaceKind(2, 0, "ember_catalyst"),
+          "links: Rend and Ember Bolt share a haste, a catalyst in the corner by it");
+    auto bm = grammar::foundryMods(t, b.foundry(), b.currentEra());
+    check(grammar::linkedCasts(t, bm, b.foundry(), b.plate(), "prototype_rend", "bleed") == std::vector<std::string>{"prototype_ember_bolt"} &&
+              grammar::linkedCasts(t, bm, b.foundry(), b.plate(), "prototype_ember_bolt", "ignite") == std::vector<std::string>{"prototype_rend"},
+          "links: a bleed skill linked to a fire skill runs both ways");
+
+    // Arc: Reach worked by a catalyst beside a strike sweeps; beside a projectile it splits instead.
+    economy::PlayerEconomy a(t);
+    a.foundryEvent("first_kill:cinder_archer"); // reach
+    a.grant("ember_catalyst", 1);
+    check(a.foundryPlaceSkill(1, 1, "prototype_heavy_strike") && a.foundryPlace(1, 0, "reach") && a.foundryPlaceKind(2, 0, "ember_catalyst"),
+          "arc: reach beside the strike, worked by a catalyst");
+    auto am = grammar::foundryMods(t, a.foundry(), a.currentEra());
+    checkNear(grammar::skillArc(t, am, "prototype_heavy_strike"), 1.5, 1e-9, "arc: the strike sweeps a metre and a half either side");
+    checkNear(grammar::skillArc(t, am, "prototype_area_strike"), 0.0, 1e-9, "arc: the area strike has no arc");
+    check(grammar::forkCount(t, am, "prototype_heavy_strike") == 0, "arc: Split does not land on a strike");
+    a.inventory["iron_ingot"] = 1;
+    check(a.foundryRemove(1, 1) && a.foundryPlaceSkill(1, 1, "prototype_frost_orb"), "arc: the orb takes the socket");
+    am = grammar::foundryMods(t, a.foundry(), a.currentEra());
+    check(grammar::forkCount(t, am, "prototype_frost_orb") == grammar::forkCount(t, {}, "prototype_frost_orb") + 1 &&
+              std::abs(grammar::skillArc(t, am, "prototype_frost_orb")) < 1e-9,
+          "arc: beside the orb the same reach and catalyst are Split, not Arc");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3100,6 +3180,7 @@ int main(int argc, char** argv) {
     testTypedCurrency(t);
     testKindsInCorners(t);
     testVariantsAndHooks(t);
+    testLinksAndArc(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

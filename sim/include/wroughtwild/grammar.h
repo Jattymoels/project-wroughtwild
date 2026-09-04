@@ -177,6 +177,21 @@ double skillNovaChill(const tuning::Tuning& tuning, const ActiveMods& active, co
 double skillSear(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
 // A frozen, bleeding enemy shatters from the skill's own hit. Brittle.
 bool skillBrittle(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+// How far either side of a strike's line its sweep reaches, in metres (0:
+// a single target). The Arc form.
+double skillArc(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+
+// --- links (D-023) -----------------------------------------------------------
+// The triggers a skill's payload can fire on an enemy: "freeze" when it
+// applies chill, "ignite" when it applies ignite, "bleed" when it applies
+// bleed - its own payload or a modifier's.
+std::vector<std::string> skillTriggers(const tuning::Tuning& tuning, const ActiveMods& active,
+                                       const std::string& skillId);
+// The skills that cast themselves when skillId's `trigger` fires: every
+// skill linked to it on the plate, when the trigger is one of skillId's.
+std::vector<std::string> linkedCasts(const tuning::Tuning& tuning, const ActiveMods& active,
+                                     const foundry::State& state, const foundry::Plate& plate,
+                                     const std::string& skillId, const std::string& trigger);
 
 // The skill's cooldown after cooldown-recovery modifiers (recovery speeds
 // the timer: cooldown = base / resolved recovery factor).

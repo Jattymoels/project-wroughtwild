@@ -889,6 +889,9 @@ struct FoundryDef {
     std::map<std::string, std::string> familyNames; // family -> Catalyst, Vanguard...
     std::vector<FormDef> forms;
     double hasteAfterHitSeconds = 2.0; // the Quickstep form
+    // Links (D-023): the family whose kind, in a corner touching a support
+    // shared by two sockets, links the two skills laid there.
+    std::string linkFamily;
     const KindDef* findKindOnPlate(const std::string& id) const;
     std::string familyName(const std::string& family) const; // "" when unknown
     std::vector<IngotDef> ingots;

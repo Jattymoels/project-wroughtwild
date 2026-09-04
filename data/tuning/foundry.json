@@ -1,6 +1,6 @@
 {
-  "schema_version": 6,
-  "status": "D-023 slice 6: kinds as variants with a base each; the reactions given their hooks (Echo, Quench, Rime, Sear, Brittle)",
+  "schema_version": 7,
+  "status": "D-023 slice 7: links re-homed to the flow (a Catalyst in a corner touching a shared support links two skills), and Arc",
   "frame": [
     4,
     4
@@ -418,6 +418,19 @@
         }
       ],
       "design_purpose": "PROPOSED (the owner's Max Speed, without the at-full-life condition, which needs a hook): after a hit you move 16% faster for haste_after_hit_seconds."
+    },
+    {
+      "family": "offence",
+      "ingot": "reach",
+      "skill_tag": "single_target",
+      "display_name": "Arc",
+      "effects": [
+        {
+          "modifier": "arc",
+          "value": 1.5
+        }
+      ],
+      "design_purpose": "Reach worked by a Catalyst beside a strike: the strike sweeps every enemy within its reach and 1.5 m either side of the line, a short arc. (Reading area modifiers from then on is not done: the skill keeps its tags.)"
     }
   ],
   "ingots": [
@@ -663,5 +676,9 @@
     "defence": "Vanguard",
     "life": "Marrow",
     "speed": "Quicksilver"
+  },
+  "links": {
+    "family": "offence",
+    "design_purpose": "LINKS (D-023, re-homed to the flow, 4 Sep 2026): a kind of this family resting in a corner that touches a support serving two sockets links the two skills laid there. When one skill's payload crosses a status threshold on an enemy - a freeze, an ignite, a bleed - the other casts itself at that enemy, with its own supports and its own cooldown, whether or not it sits on the bar; a link runs both ways, each skill on its own trigger. A linked cast never fires another link (the engine's depth guard). The kind still works the shared support into a form: the link is what the corner between two workings does on top. The link costs a Catalyst and that corner."
   }
 }
