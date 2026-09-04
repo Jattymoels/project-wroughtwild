@@ -84,6 +84,8 @@ var _damage_taken := {}
 var _burst_damage := 0.0
 ## Sear (a form): how much faster the current burn ticks while walking and bleeding.
 var _sear := 0.0
+## A stagger (the Riposte rail, D-023 slice 9): seconds the mob stands halted.
+var _stagger_left := 0.0
 var _burst_radius := 0.0
 var _burst_type := "fire"
 
@@ -294,7 +296,10 @@ func _on_frozen() -> void:
 ## reflects the gear that lit it. Re-igniting refreshes, never stacks.
 ## sear (a form, D-023): the burn this ignition lights ticks that much
 ## faster while the mob walks and bleeds; snapshotted like the tick.
-func apply_ignite(amount: float, sear: float = 0.0) -> void:
+## spread (the Pyre rail, D-023 slice 9): when this ignition crosses the
+## threshold, the fire proliferates at once at this fraction of the
+## death-spread; the mobs it reaches get no spread of their own.
+func apply_ignite(amount: float, sear: float = 0.0, spread: float = 0.0) -> void:
 	if amount <= 0.0 or life <= 0.0 or _immune_statuses.has("ignite"):
 		return
 	ignite += amount
@@ -305,6 +310,27 @@ func apply_ignite(amount: float, sear: float = 0.0) -> void:
 		_burn_dps = rules.get("damage_per_s", 0.0)
 		_sear = sear
 		_refresh_look()
+		if spread > 0.0:
+			_proliferate(spread)
+
+
+## A stagger (the Riposte rail, D-023 slice 9): the mob halts for a moment
+## and loses its wind-up. A freeze still outranks it.
+func stagger(seconds: float) -> void:
+	if seconds <= 0.0 or life <= 0.0:
+		return
+	_stagger_left = maxf(_stagger_left, seconds)
+	_windup_left = 0.0
+	if state == "windup":
+		state = "chase"
+
+
+## True while this mob is moving toward the point (the Hound's Manner).
+func approaching(point: Vector3) -> bool:
+	var planar := Vector2(velocity.x, velocity.z)
+	if planar.length() < 0.5:
+		return false
+	return planar.dot(Vector2(point.x - global_position.x, point.z - global_position.z)) > 0.0
 
 
 ## Bleed buildup; crossing the threshold opens a wound that ticks harder
@@ -367,7 +393,9 @@ func _tick_statuses(delta: float) -> bool:
 			thaw()
 		return frozen_left > 0.0
 	chill = maxf(0.0, chill - _chill_decay * delta)
-	return false
+	# Staggered: halted like a freeze, briefly, without the ice.
+	_stagger_left = maxf(0.0, _stagger_left - delta)
+	return _stagger_left > 0.0
 
 
 ## The one place the material is decided. Priority: ice, then the hit
@@ -401,7 +429,7 @@ func _refresh_look() -> void:
 ## A burning mob's death spreads its fire (the proliferate hook): every mob
 ## within the sim's radius receives spread buildup, bosses through their
 ## resistance. A dense pack burns down from one kill.
-func _proliferate() -> void:
+func _proliferate(fraction: float = 1.0) -> void:
 	if _sim == null:
 		return
 	var params: Dictionary = _sim.proliferate_for()
@@ -415,7 +443,7 @@ func _proliferate() -> void:
 		if global_position.distance_to(other.global_position) > radius:
 			continue
 		var key := "spread_buildup_boss" if other is Boss else "spread_buildup"
-		other.apply_ignite(params.get(key, 0.0))
+		other.apply_ignite(float(params.get(key, 0.0)) * fraction)
 
 
 ## True while nothing is happening to this mob: a pack of these may sleep.

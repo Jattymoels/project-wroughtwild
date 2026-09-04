@@ -186,6 +186,11 @@ double skillArc(const tuning::Tuning& tuning, const ActiveMods& active, const st
 double skillLifeOnHit(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
 double skillRefundOnKill(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
 double skillHasteOnKill(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+// The rails' skill hooks (D-023 slice 9): how many projectiles a cast of
+// the skill fires (one, plus Volley's), and how many enemies each flies on
+// through before it stops (Quarry's).
+int skillProjectiles(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+int skillPierce(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
 
 // --- links (D-023) -----------------------------------------------------------
 // The triggers a skill's payload can fire on an enemy: "freeze" when it

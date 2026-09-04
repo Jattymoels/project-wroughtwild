@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) 6 (kinds as variants; the reactions' hooks), 7 (links re-homed; Arc) and 8 (the Marrow's and the Quicksilver's forms) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) 6 (kinds as variants; the reactions' hooks), 7 (links re-homed; Arc), 8 (the Marrow's and the Quicksilver's forms) and 9 (rails: the plate's exterior, opened by the first hall's test) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -59,7 +59,14 @@ Recorded here so the proposal can be checked against it.
 3. **Reach reads area and projectile skills natively.** Yes.
 4. Links and the bar: the owner asked what it means; explained under
    [Links](#links-a-catalyst-between-two-subjects), answer pending.
-5. **Class at the start** (D-004), rails set at the class hall. Yes.
+5. ~~Class at the start (D-004), rails set at the class hall. Yes.~~
+   **Amended later the same day: no class at the start.** The owner:
+   "you have base 'tablet' setups for the base class coming from
+   nothing, but eventual class halls down the line in development can
+   give you specialised tablet exterior options. I.e. first class hall
+   test completion gives you a choice for specialising and that changes
+   the exterior of the rows/columns upgrades." Rails are that exterior;
+   built as slice 9 with the Tyrant's forge standing in for the hall.
 6. Lines folded into backing: the owner asked what it means; explained
    under [Corners](#corners-the-joins), answer pending.
 7. **Augments are corner cells**, not infusions. Yes.
@@ -154,9 +161,18 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
    kill, every heal amplified, and the Dash's reach, life, armour and
    recovery on the sheet.
 
-Still to come from the tables below: Linger, compound forms, rails (which
-need the class choice and the class hall of D-004), the Vanguard of
-dodge and the rest of the variants, the metal of an ingot. The Reach
+13. Rails (slice 9): the plate's exterior. No class at the start; the
+   bare plate is the base class. The Tyrant's forge is the first hall's
+   test for now: its completion offers a one-time specialisation
+   (Ranger, Warden, Kindler), each two patterns, and the rails open -
+   one in era two, two in era three. A pattern set in a rail reads its
+   whole row or column's placed cells and bends its rule while the line
+   holds; the panel says which cell breaks it. The two manners (the
+   Hound's, the Husk's) are taught by kills and join the rails.
+
+Still to come from the tables below: Linger, compound forms, the Vanguard
+of dodge and the rest of the variants, the metal of an ingot, the class
+hall proper (D-004). The Reach
 conflict recorded on 3 Sep is settled: the owner said yes, and the code
 now reads skills with it.
 
@@ -566,6 +582,32 @@ Volley column full of Reach cannot also be the Ember supports of a fire
 working. That collision is the late-game layout puzzle the D-019 curve
 asked for ("the whole plate rearranged around a keystone").
 
+**As built (4 Sep 2026, slice 9).** The owner's later answer replaced
+"class at the start": there is no class at the start, the bare plate is
+the base class, and the first class hall's test grants the
+specialisation that opens the exterior. The class hall is D-004's
+authored module and does not exist yet, so the Tyrant's forge stands in:
+its completion (`rails.specialise_on_world_effect`) offers the choice in
+the Foundry panel, once. The three seeds above are the three
+specialisations, tuned as written with two changes for the flow: Shield
+Wall's "a Vanguard's socket in the row" is "a Vanguard rests in the row"
+(kinds never sit in sockets), and Riposte and Ashen Step read the line's
+two end cells, which move when an era forges a row (an era-two Riposte
+on rows 1 and 3 waits for an Edge on row 4 in era three). Conditions are
+`all_placed_are`, `alternating`, `ends_are`, `minimum_placed`,
+`holds_skill_tag` (the rule speaks to that skill), `holds_kind_family`.
+A rule speaks to the line's skills, to every skill with a tag (Quarry's
+`skill_tag: projectile`) or to the sheet. Rails are set and cleared in
+the panel for free (a rail is class, not metal), one rail per pattern,
+`rails.by_era` many. The manners are taught by kills the engine already
+reports (twelve hounds, eight husks) and any specialisation may set them.
+The engine's half: a projectile fan (Volley), pierce with the fork on the
+last stop (Quarry), armour against the elements after resistance (Shield
+Wall), the Barbs doubled and a half-second stagger (Riposte), the ignite
+spreading on the hit (Pyre), burning ground healing (Ashen Step), more
+against an enemy whose velocity points at you (the Hound's Manner), and
+armour after a second of stillness (the Husk's Manner).
+
 ## Typed currency
 
 The four kinds are the modifier tag families that `items.json` already
@@ -814,8 +856,9 @@ multiplies, the numbers stay within threefold.
 | `corner_base_fraction` | a corner currency's own base against its socketed base | whether a corner is worth a currency with no support to work | 0.5 |
 | `reactions[]` | each reaction's number | the strength of a cross-element build | 15 to 30% band |
 | `subjects[].trigger` | what fires a link | how often linked skills cast | as tabled |
-| `rails_by_era` | rails the player may set | how much class shows on the plate | 0, 1, 2 |
-| `rail_patterns[].minimum_placed` | ingots a rail needs before it lights | rails as a commitment, not a freebie | 2 |
+| `rails.by_era` | rails the player may set | how much class shows on the plate | 0, 1, 2 |
+| `rails.patterns[].condition.minimum_placed` | ingots a rail needs before it lights | rails as a commitment, not a freebie | 2 |
+| `rails.patterns[].taught_by.kills` | kills of a family before its manner is known | the world teaching at the pace of a hunt | hounds 12, husks 8 |
 | `craft_rolls.currency_weighting` | how strongly a kind aims a craft | crafting as targeting | first modifier from the family |
 | `market.exchange` | rate between kinds at the peddler | surplus never dead; farming still a choice | 3:1 |
 | family drop kinds and rates | which kind a family pays | where to hunt for what | one per family, elites +1 |
@@ -924,8 +967,12 @@ following.
    exist yet)*. Sixteen forms; the Dash's on the sheet. Still ahead: the
    rest of their variants, and the readings that need player statuses or
    ground hooks (burning ground from a Dash, dashing through enemies).
-9. **Rails.** `rail_patterns`, the class hall as the place they are set,
-   two classes' seeds and one manner. Needs D-004's class at the start.
+9. **Rails** *(landed 4 Sep 2026 after the owner's answer: no class at
+   the start, the specialisation at the first hall's test)*. Three
+   specialisations of two seeds, two manners, the Tyrant's forge as the
+   test, rails set in the panel. Still ahead: the class hall as an
+   authored place (D-004), later halls' exterior options, a manner per
+   family.
 10. **The metal of an ingot.** Re-casting at the forge in the era's alloy;
    reach for backing and pairs; alloy-cast ingots from elites and floors;
    compound forms conditioned on metal and rarity.

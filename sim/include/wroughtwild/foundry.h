@@ -41,10 +41,24 @@ struct Placement {
     bool isCurrency() const { return !currency.empty(); }
 };
 
+// A rail (D-023 slice 9): a slot outside the grid on one row or column,
+// holding a pattern that reads the whole line.
+struct Rail {
+    std::string axis;    // "row" | "column"
+    int index = 0;       // the row or the column
+    std::string pattern; // a rail pattern id (tuning.foundry.rails.patterns)
+};
+
 struct State {
     std::map<std::string, int> owned;   // ingot id -> total owned (placed and not)
     std::vector<Placement> plate;
     std::vector<std::string> milestones; // source ids already granted
+    // The exterior (D-023 slice 9, owner 4 Sep 2026): the specialisation
+    // chosen at the first hall's test ("" is the base class), the rails
+    // set, and the kills per family that teach the manners.
+    std::string specialisation{};
+    std::vector<Rail> rails{};
+    std::map<std::string, int> kills{};
 };
 
 struct Cell {
@@ -73,8 +87,8 @@ struct Effect {
     int row = -1, col = -1; // the placement (ingot), the first cell (pair) or the socket (support, backing)
     std::string skill;    // support, added, backing of a skill working: the one skill it applies to
     int cellRow = -1, cellCol = -1; // the ingot cell the effect comes from
-    std::string subject{}; // augment, form: the kind's family (offence, defence, life, speed)
-    std::string packet{};  // form: the packet type the effect speaks to ("" = the whole skill)
+    std::string subject{}; // augment, form: the kind's family (offence, defence, life, speed); rail: the pattern id
+    std::string packet{};  // form: the packet type the effect speaks to ("" = the whole skill); rail: the skill tag the rule is scoped to
 };
 
 // The plate the era has forged (rows_by_era; the last entry serves later eras).
@@ -99,6 +113,34 @@ struct Link {
 };
 std::vector<Link> links(const tuning::Tuning& tuning, const State& state, const Plate& plate);
 
+// Rails (D-023 slice 9; owner, 4 Sep 2026: "the first class hall test's
+// completion gives you a choice for specialising, and that changes the
+// exterior of the rows/columns upgrades"). Each row and column has one
+// rail outside the grid; a pattern set in it reads the line's PLACED
+// cells and bends a rule while its condition holds. The patterns a
+// player knows are the chosen specialisation's seeds and the manners the
+// world has taught (kills per family).
+struct RailStatus {
+    bool holds = false;
+    int placed = 0;  // ingots placed in the line
+    int minimum = 0; // the pattern's minimum_placed
+    std::vector<Cell> breaking;      // placed cells that break the condition
+    bool missingSkill = false;       // no socket in the line holds a skill with the pattern's tag
+    bool missingKind = false;        // no kind of the pattern's family rests in the line
+    std::vector<std::string> skills; // the skills laid in the line the rule speaks to
+};
+// The forged cells of a row or column, in line order (empty for a row the
+// era has not forged, or an axis or index off the frame).
+std::vector<Cell> lineCells(const Plate& plate, const std::string& axis, int index);
+std::vector<std::string> knownPatterns(const tuning::Tuning& tuning, const State& state);
+bool patternKnown(const tuning::Tuning& tuning, const State& state, const std::string& pattern);
+const Rail* railAt(const State& state, const std::string& axis, int index);
+RailStatus railStatus(const tuning::Tuning& tuning, const State& state, const Plate& plate, const Rail& rail);
+// Drops every rail the state cannot hold - an unknown or unlearned
+// pattern, an unforged row, a second rail on a slot or a second slot for
+// a pattern, more than `allowed` - keeping the first. Run on load.
+int validateRails(const tuning::Tuning& tuning, State& state, const Plate& plate, int allowed);
+
 // Lifts every placement the plate cannot hold - an unforged row, a tablet
 // outside a socket, an ingot inside one, a kind touching one, a second
 // thing on a cell, a second tablet for a skill - and returns how many it
@@ -119,7 +161,9 @@ const Placement* tabletFor(const State& state, const std::string& skill);
 // backing; then each kind that flows: its base (augment) and the forms it
 // works the supports it touches into, each feeding the skill that support
 // serves. The skill and modifier tables decide which reading an ingot
-// gives; the kind's family, the ingot and the lane decide the form.
+// gives; the kind's family, the ingot and the lane decide the form. Last,
+// each rail whose condition holds: its rule (kind "rail"), to the line's
+// skills, to every skill with a tag, or to the sheet.
 std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, const Plate& plate);
 
 } // namespace wroughtwild::foundry

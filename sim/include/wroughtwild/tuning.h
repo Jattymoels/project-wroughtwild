@@ -872,6 +872,55 @@ struct IngotSourceDef {
     int era = 1;       // the earliest era this source may grant in
 };
 
+// RAILS (D-023 slice 9; owner, 4 Sep 2026): the plate's exterior. A rail
+// pattern names an axis, a condition on the line's placed cells and the
+// rule it bends while the condition holds. Class seeds come with the
+// specialisation chosen at the first hall's test; a manner is taught by a
+// mob family once enough of them have fallen.
+struct RailCondition {
+    std::vector<std::string> allPlacedAre; // every placed ingot in the line is one of these
+    std::vector<std::string> alternating;  // the placed ingots alternate between these two, in line order
+    std::vector<std::string> endsAre;      // the line's two end cells hold these ingots, either way round
+    int minimumPlaced = 2;                 // ingots the line needs before the rail lights
+    std::string holdsSkillTag;             // a socket in the line holds a skill with this tag; the rule speaks to it
+    std::string holdsKindFamily;           // a kind of this family rests in the line
+};
+
+struct RailEffect {
+    std::string modifier;
+    double value = 0.0;
+    std::string skillTag; // "" the line's skills (or the sheet, for a self modifier); else every skill with this tag
+};
+
+struct RailPatternDef {
+    std::string id;
+    std::string displayName;
+    std::string axis; // row | column
+    RailCondition condition;
+    std::string conditionText; // the condition in words, for the rail's header
+    std::string ruleText;      // the rule in words
+    std::vector<RailEffect> effects;
+    std::string taughtByEnemy; // a manner: the family that teaches it
+    int taughtKills = 0;       // after this many of them have fallen
+    bool isManner() const { return !taughtByEnemy.empty(); }
+};
+
+struct SpecialisationDef {
+    std::string id;
+    std::string displayName;
+    std::vector<std::string> patterns;
+};
+
+struct RailsDef {
+    std::vector<int> byEra;              // rails the player may set per era (the last entry serves later eras)
+    std::string specialiseOnWorldEffect; // the first hall's test: recording this world effect offers the choice
+    std::vector<SpecialisationDef> specialisations;
+    std::vector<RailPatternDef> patterns;
+    const RailPatternDef* findPattern(const std::string& id) const;
+    const SpecialisationDef* findSpecialisation(const std::string& id) const;
+    int allowed(int era) const; // 0 when no rails are tuned
+};
+
 struct FoundryDef {
     // The frame (D-023): a plate of frameRows by frameCols whose rows the
     // eras forge. rowsByEra holds the first and last forged row per era
@@ -892,6 +941,7 @@ struct FoundryDef {
     // Links (D-023): the family whose kind, in a corner touching a support
     // shared by two sockets, links the two skills laid there.
     std::string linkFamily;
+    RailsDef rails; // the exterior (D-023 slice 9)
     const KindDef* findKindOnPlate(const std::string& id) const;
     std::string familyName(const std::string& family) const; // "" when unknown
     std::vector<IngotDef> ingots;

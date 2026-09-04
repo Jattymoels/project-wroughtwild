@@ -136,6 +136,15 @@ std::string toJson(const SaveGame& game) {
     }
     out << "],\"milestones\":";
     writeStringList(out, game.economy.foundry.milestones);
+    // The exterior (D-023 slice 9): the specialisation, the rails, the kills.
+    out << ",\"specialisation\":\"" << escape(game.economy.foundry.specialisation) << "\",\"rails\":[";
+    for (size_t i = 0; i < game.economy.foundry.rails.size(); ++i) {
+        const auto& r = game.economy.foundry.rails[i];
+        if (i) out << ",";
+        out << "{\"axis\":\"" << escape(r.axis) << "\",\"index\":" << r.index << ",\"pattern\":\"" << escape(r.pattern) << "\"}";
+    }
+    out << "],\"kills\":";
+    writeIntMap(out, game.economy.foundry.kills);
     out << "},\"skill_uses\":";
     writeIntMap(out, game.economy.skillUses);
     out << "},\"equipment\":{";
@@ -195,6 +204,18 @@ SaveGame fromJson(const std::string& text) {
             game.economy.foundry.plate.push_back(placement);
         }
         game.economy.foundry.milestones = readStringList(f->get("milestones"));
+        // Saves written before D-023 slice 9 carry no exterior.
+        if (auto spec = f->find("specialisation")) game.economy.foundry.specialisation = spec->asString();
+        if (auto rails = f->find("rails")) {
+            for (const auto& r : rails->asArray()) {
+                foundry::Rail rail;
+                rail.axis = r->get("axis").asString();
+                rail.index = r->get("index").asInt();
+                rail.pattern = r->get("pattern").asString();
+                game.economy.foundry.rails.push_back(rail);
+            }
+        }
+        if (auto kills = f->find("kills")) game.economy.foundry.kills = readIntMap(*kills);
     }
     if (auto uses = eco.find("skill_uses")) game.economy.skillUses = readIntMap(*uses);
 

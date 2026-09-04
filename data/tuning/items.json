@@ -28,6 +28,195 @@
   ],
   "modifiers": [
     {
+      "id": "extra_projectiles",
+      "display_name": "Volley",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "projectile"
+      ],
+      "effect": "add_projectiles",
+      "display": "flat",
+      "sentence": "it fires {n} more projectiles",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 2,
+          "maximum": 2
+        }
+      ],
+      "design_purpose": "The Volley rail (D-023 slice 9): grammar::skillProjectiles counts the projectiles a cast fires (one plus this); the engine fans them out. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "pierce",
+      "display_name": "Pierce",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "projectile"
+      ],
+      "effect": "add_pierce",
+      "display": "flat",
+      "sentence": "its projectiles pierce {n} more enemy",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1,
+          "maximum": 1
+        }
+      ],
+      "design_purpose": "The Quarry rail: grammar::skillPierce says how many enemies a projectile flies on through before it stops and forks; the engine keeps it flying. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "armour_vs_elements",
+      "display_name": "Shield Wall",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_armour_vs_elements",
+      "display": "percent",
+      "sentence": "{n} of your armour counts against fire and cold",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "The Shield Wall rail: stats::mitigateDamage applies this fraction of the armour to fire and cold after their resistances. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "barbs_more",
+      "display_name": "Riposte",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_barbs_more",
+      "display": "percent",
+      "sentence": "your Barbs bleed for {n} more",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "The Riposte rail: the engine multiplies the Barbs' buildup by one plus this when it answers a hit. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "stagger_on_hit",
+      "display_name": "Stagger",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_barbs_stagger",
+      "display": "flat",
+      "sentence": "an enemy that hits you staggers for {n} s",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.5,
+          "maximum": 0.5
+        }
+      ],
+      "design_purpose": "The Riposte rail's second half: the engine halts the striker (its wind-up cancelled) for this long when its hit lands. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "proliferate_on_hit",
+      "display_name": "Pyre",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_proliferate_on_hit",
+      "display": "percent",
+      "sentence": "your ignites proliferate on the hit at {n} of the spread",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.5,
+          "maximum": 0.5
+        }
+      ],
+      "design_purpose": "The Pyre rail: when a player's hit lights a mob, the engine spreads the proliferate hook's buildup times this to the mobs around it, at once rather than on its death. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "burning_ground_heal",
+      "display_name": "Ashen Step",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_burning_ground_heal",
+      "display": "flat",
+      "sentence": "burning ground heals you {n} life a second and never harms you",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 2,
+          "maximum": 2
+        }
+      ],
+      "design_purpose": "The Ashen Step rail: the engine's burning ground heals the player standing in it by this a second instead of burning them. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "damage_vs_approaching",
+      "display_name": "The Hound's Manner",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_damage_vs_approaching",
+      "display": "percent",
+      "sentence": "enemies moving toward you take {n} more from your attacks",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.25,
+          "maximum": 0.25
+        }
+      ],
+      "design_purpose": "The Hound's Manner: the engine multiplies a hit on an enemy whose velocity points at the player by one plus this. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
+      "id": "still_armour",
+      "display_name": "The Husk's Manner",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "self"
+      ],
+      "effect": "add_still_armour",
+      "display": "flat",
+      "sentence": "standing still for a second grants {n} armour until you move",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 16,
+          "maximum": 16
+        }
+      ],
+      "design_purpose": "The Husk's Manner: the engine counts the player's stillness and hands this armour to mitigation after a second of it, until the first step. Its only tag is 'reading', which no base allows, so it never rolls on gear: the plate's word."
+    },
+    {
       "id": "max_life",
       "display_name": "Maximum Life",
       "tags": [

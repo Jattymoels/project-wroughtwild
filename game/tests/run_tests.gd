@@ -291,6 +291,28 @@ func _test_lattice() -> void:
 	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 6 and sim.foundry()["flows"].size() == 1
 		and sim.foundry()["flows"][0]["flows"] and sim.derived_stats().has("cold_resistance_percent"),
 		"flow: the plate view carries the kind, every kind's count, and whether it flows")
+	# Rails (D-023 slice 9): era two here with the Tyrant's effect recorded,
+	# so the choice is open. A Ranger sets Volley on an empty column and the
+	# rail waits; nothing bends until the line holds.
+	var fv: Dictionary = sim.foundry()
+	check(fv["can_specialise"] and fv["specialisation"] == "" and fv["rails_allowed"] == 1 and fv["rails"].size() == 8
+		and fv["specialisations"].size() == 3 and fv["patterns"].is_empty() and not sim.foundry_set_rail("column", 1, "volley"),
+		"rails: the test passed, the choice open, no pattern known yet")
+	check(sim.foundry_specialise("ranger") and not sim.foundry_specialise("warden") and sim.foundry()["patterns"].size() == 2
+		and sim.foundry()["specialisation_name"] == "Ranger" and sim.foundry_pattern("volley")["axis"] == "column"
+		and sim.foundry_pattern("hounds_manner")["manner"] and sim.foundry_pattern("hounds_manner")["teacher_name"] != "",
+		"rails: a Ranger, once, with two patterns; the manner names its teacher")
+	check(sim.foundry_set_rail("column", 1, "volley") and not sim.foundry_set_rail("row", 0, "quarry") and sim.foundry()["rails_set"] == 1,
+		"rails: Volley set; era two allows one rail")
+	var waiting := false
+	for r in sim.foundry()["rails"]:
+		if r["axis"] == "column" and r["index"] == 1:
+			# The orb's tablet sits in this column already: the rail wants only its two Reach.
+			waiting = r["pattern"] == "volley" and not r["holds"] and r["placed"] == 0 and r["minimum"] == 2 and not r["missing_skill"] and not r["missing_kind"]
+	check(waiting and sim.skill_projectiles("prototype_frost_orb") == 1 and sim.skill_pierce("prototype_frost_orb") == 0
+		and sim.derived_stats()["still_armour"] == 0.0 and sim.derived_stats()["armour_vs_elements"] == 0.0,
+		"rails: the column holds the orb and waits for two Reach, and bends nothing")
+	check(sim.foundry_clear_rail("column", 1) and not sim.foundry_clear_rail("column", 1) and sim.foundry()["rails_set"] == 0, "rails: cleared")
 	sim.add_material("iron_ingot", 2)
 	check(sim.foundry_remove(1, 1) and sim.foundry_remove(0, 0) and sim.foundry_remove(1, 0)
 		and sim.currency_count("vanguard") == vanguards_before + 1 and sim.derived_stats()["armour"] == armour_bare,

@@ -13,6 +13,9 @@ extends CanvasLayer
 signal closed
 
 const CELL_SIZE := Vector2(104, 76)
+## The rail beside a row (its width) and above a column (its height).
+const RAIL_WIDTH := 96
+const RAIL_HEIGHT := 34
 
 var sim: WroughtwildSim
 var player: WroughtwildPlayer
@@ -31,6 +34,11 @@ var _tablets: VBoxContainer
 ## the flow): a corner, or a far cell beyond one, never touching a socket.
 var _subjects: VBoxContainer
 var _selected_subject: StringName = &""
+## The exterior (D-023 slice 9): the specialisation offer, the patterns
+## known, and the rail selected for setting.
+var _rails: VBoxContainer
+var _rails_section: Label
+var _selected_pattern: StringName = &""
 ## The frame as the last refresh saw it (D-023).
 var _sockets := {}
 var _first_row := 0
@@ -41,6 +49,7 @@ var cell_count := 0
 var frame_cell_count := 0
 var tray_count := 0
 var effect_count := 0
+var rail_count := 0
 
 
 func _ready() -> void:
@@ -87,10 +96,10 @@ func _ready() -> void:
 	_grid.add_theme_constant_override("v_separation", 6)
 	left.add_child(_grid)
 	var how := Label.new()
-	how.text = "A socket takes a skill's tablet; the four cells beside it are its supports, the diagonals its corners.\nEvery ingot reads every skill: an element ingot scales a skill of its own element and adds its element to any other's hit;\nVigour, Plate and Ward read a skill weakly. Beside: a pair makes its mechanic. A matching ingot touching a support backs it.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free."
+	how.text = "A socket takes a skill's tablet; the four cells beside it are its supports, the diagonals its corners.\nEvery ingot reads every skill: an element ingot scales a skill of its own element and adds its element to any other's hit;\nVigour, Plate and Ward read a skill weakly. Beside: a pair makes its mechanic. A matching ingot touching a support backs it.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free.\nOutside the grid every row and column has a rail: a pattern set there reads the whole line and bends a rule while the line meets it."
 	how.modulate = UiTheme.MUTED
 	how.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	how.custom_minimum_size = Vector2(4 * CELL_SIZE.x + 3 * 6, 0)
+	how.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 4 * 6, 0)
 	left.add_child(how)
 
 	var right := VBoxContainer.new()
@@ -109,6 +118,10 @@ func _ready() -> void:
 	right.add_child(_section("Kinds to set"))
 	_subjects = VBoxContainer.new()
 	right.add_child(_subjects)
+	_rails_section = _section("Rails")
+	right.add_child(_rails_section)
+	_rails = VBoxContainer.new()
+	right.add_child(_rails)
 	right.add_child(_section("What the plate does"))
 	_effects = VBoxContainer.new()
 	right.add_child(_effects)
@@ -161,7 +174,11 @@ func refresh() -> void:
 
 	for child in _grid.get_children():
 		child.queue_free()
-	_grid.columns = cols
+	_grid.columns = cols + 1
+	var rail_slots := {}
+	for r in view.get("rails", []):
+		rail_slots["%s:%d" % [String(r["axis"]), int(r["index"])]] = r
+	var rails_allowed: int = int(view.get("rails_allowed", 0))
 	var placed := {}
 	var tablets := {}
 	var currencies := {}
@@ -212,6 +229,14 @@ func refresh() -> void:
 		readings[from].append("%s: %s" % [effect["label"], effect["sentence"]])
 	cell_count = 0
 	frame_cell_count = 0
+	rail_count = 0
+	# The exterior (D-023 slice 9): a rail above every column, then the
+	# corner; a rail beside every row after its cells.
+	for c in cols:
+		_grid.add_child(_rail_button(rail_slots.get("column:%d" % c, {}), rails_allowed, Vector2(CELL_SIZE.x, RAIL_HEIGHT)))
+	var corner := Label.new()
+	corner.text = ""
+	_grid.add_child(corner)
 	for r in rows:
 		for c in cols:
 			var cell := Button.new()
@@ -273,6 +298,7 @@ func refresh() -> void:
 			cell.tooltip_text = "\n".join(lines)
 			cell.pressed.connect(_on_cell.bind(r, c))
 			_grid.add_child(cell)
+		_grid.add_child(_rail_button(rail_slots.get("row:%d" % r, {}), rails_allowed, Vector2(RAIL_WIDTH, CELL_SIZE.y)))
 
 	for child in _tray.get_children():
 		child.queue_free()
@@ -350,6 +376,57 @@ func refresh() -> void:
 		none.modulate = UiTheme.MUTED
 		_subjects.add_child(none)
 
+	for child in _rails.get_children():
+		child.queue_free()
+	_rails_section.text = "Rails  (%d of %d set)" % [int(view.get("rails_set", 0)), rails_allowed] if rails_allowed > 0 else "Rails"
+	if bool(view.get("can_specialise", false)):
+		var offer := Label.new()
+		offer.text = "The Tyrant's forge was your first test. Choose a specialisation: it decides which patterns your rails may hold. The choice is made once."
+		offer.modulate = UiTheme.SUN_WARM
+		offer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		offer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		_rails.add_child(offer)
+		for s in view.get("specialisations", []):
+			var names := PackedStringArray()
+			var tips := PackedStringArray()
+			for p in s.get("patterns", []):
+				names.append(String(p["display_name"]))
+				tips.append("%s (%s): %s - %s." % [p["display_name"], p["axis"], p["condition_text"], p["rule_text"]])
+			var button := Button.new()
+			button.text = "Specialise as a %s   ·   %s" % [s["display_name"], ", ".join(names)]
+			button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			button.clip_text = true
+			button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			button.tooltip_text = "\n".join(tips)
+			button.pressed.connect(_on_specialise.bind(String(s["id"])))
+			_rails.add_child(button)
+	elif String(view.get("specialisation", "")) == "":
+		var none := Label.new()
+		none.text = "The bare plate is your class. The first hall's test - the Tyrant's forge - opens the plate's exterior: a specialisation, and rails on the rows and columns."
+		none.modulate = UiTheme.MUTED
+		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		none.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		_rails.add_child(none)
+	else:
+		var who := Label.new()
+		who.text = "A %s. Pick a pattern, then a rail outside the grid: it reads the whole row or column. One rail per pattern; the era allows %d." % [view.get("specialisation_name", ""), rails_allowed]
+		who.modulate = UiTheme.MUTED
+		who.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		who.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		_rails.add_child(who)
+		for p in view.get("patterns", []):
+			var button := Button.new()
+			var taught: String = "  (the %ss' manner)" % p.get("teacher_name", "") if bool(p.get("manner", false)) else ""
+			button.text = "Set %s (%s)%s   ·   %s - %s" % [p["display_name"], p["axis"], taught, p["condition_text"], p["rule_text"]]
+			button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			button.clip_text = true
+			button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			button.tooltip_text = "%s, a %s pattern: %s.\nWhile it holds: %s." % [p["display_name"], p["axis"], p["condition_text"], p["rule_text"]]
+			if _selected_pattern == StringName(String(p["id"])):
+				button.modulate = UiTheme.GRASS_LIGHT
+			button.pressed.connect(_on_pattern.bind(String(p["id"])))
+			_rails.add_child(button)
+
 	for child in _effects.get_children():
 		child.queue_free()
 	effect_count = 0
@@ -372,10 +449,116 @@ func refresh() -> void:
 		_effects.add_child(none)
 
 
+## A rail slot (D-023 slice 9): its pattern's name when set, lit while the
+## line holds; dim and disabled until the first hall's test opens the
+## exterior; dim on a row the era has not forged.
+func _rail_button(slot: Dictionary, allowed: int, size: Vector2) -> Button:
+	var button := Button.new()
+	button.custom_minimum_size = size
+	button.clip_text = true
+	rail_count += 1
+	var axis := String(slot.get("axis", "row"))
+	var index := int(slot.get("index", 0))
+	var where := "%s %d" % [axis, index + 1]
+	if not bool(slot.get("forged", false)):
+		button.text = "·"
+		button.disabled = true
+		button.modulate = Color(1, 1, 1, 0.25)
+		button.tooltip_text = "The rail of %s: the era has not forged this row." % where
+	elif allowed <= 0:
+		button.text = "rail"
+		button.disabled = true
+		button.modulate = Color(1, 1, 1, 0.3)
+		button.tooltip_text = "The rail of %s. The plate's exterior opens with the first hall's test: pass the Tyrant's forge and choose a specialisation." % where
+	elif String(slot.get("pattern", "")) == "":
+		button.text = "rail"
+		button.modulate = Color(1, 1, 1, 0.5)
+		button.tooltip_text = "The rail of %s, empty. Pick a %s pattern and set it here; it reads the whole line." % [where, axis]
+	else:
+		button.text = String(slot.get("display_name", slot["pattern"]))
+		var lines := PackedStringArray()
+		lines.append("%s on %s: %s." % [slot["display_name"], where, slot["condition_text"]])
+		if bool(slot.get("holds", false)):
+			button.modulate = UiTheme.SUN_WARM
+			lines.append("Lit: %s." % slot["rule_text"])
+		else:
+			button.modulate = Color(UiTheme.SUN_WARM, 0.45)
+			lines.append("Not lit: %s" % _rail_why(slot))
+		lines.append("Click to clear the rail.")
+		button.tooltip_text = "\n".join(lines)
+	if not button.disabled:
+		button.pressed.connect(_on_rail.bind(axis, index))
+	return button
+
+
+## Why a set rail is not lit, in words: which placed cell breaks it, how
+## many ingots it still wants, what the line must hold.
+func _rail_why(slot: Dictionary) -> String:
+	var parts := PackedStringArray()
+	var breaking: Array = slot.get("breaking", [])
+	if not breaking.is_empty():
+		var cells := PackedStringArray()
+		for b in breaking:
+			cells.append("row %d, column %d" % [int(b[0]) + 1, int(b[1]) + 1])
+		parts.append("the ingot at %s breaks it" % ", ".join(cells))
+	if int(slot.get("placed", 0)) < int(slot.get("minimum", 0)):
+		parts.append("%d of the %d ingots it needs are placed" % [int(slot.get("placed", 0)), int(slot.get("minimum", 0))])
+	if bool(slot.get("missing_skill", false)):
+		parts.append("no skill of the right kind is laid in the line")
+	if bool(slot.get("missing_kind", false)):
+		parts.append("no kind of the right family rests in the line")
+	return "; ".join(parts) + "." if not parts.is_empty() else "the line does not meet it yet."
+
+
+func _on_pattern(id: String) -> void:
+	_selected_pattern = StringName(id) if _selected_pattern != StringName(id) else &""
+	_selected = &""
+	_selected_skill = &""
+	_selected_subject = &""
+	var p: Dictionary = sim.foundry_pattern(id)
+	_message.text = "Pick a %s's rail for %s." % [p.get("axis", "line"), p.get("display_name", id)] if _selected_pattern != &"" else ""
+	refresh()
+
+
+func _on_specialise(id: String) -> void:
+	if sim.foundry_specialise(id):
+		_message.text = "You are a %s. Your patterns are listed under Rails; the rails outside the grid take them." % sim.foundry().get("specialisation_name", id)
+		_after_change()
+	else:
+		_message.text = "The choice is not open."
+		refresh()
+
+
+func _on_rail(axis: String, index: int) -> void:
+	var view: Dictionary = sim.foundry()
+	if _selected_pattern != &"":
+		if sim.foundry_set_rail(axis, index, String(_selected_pattern)):
+			_selected_pattern = &""
+			_message.text = ""
+			_after_change()
+		else:
+			var p: Dictionary = sim.foundry_pattern(String(_selected_pattern))
+			if String(p.get("axis", "")) != axis:
+				_message.text = "%s reads a %s, not a %s." % [p.get("display_name", ""), p.get("axis", ""), axis]
+			elif int(view.get("rails_set", 0)) >= int(view.get("rails_allowed", 0)):
+				_message.text = "Every rail the era allows is set (%d). Clear one first." % int(view.get("rails_allowed", 0))
+			else:
+				_message.text = "That pattern is already set in another rail."
+			refresh()
+		return
+	if sim.foundry_clear_rail(axis, index):
+		_message.text = "The rail is cleared."
+		_after_change()
+	else:
+		_message.text = "Pick a pattern to set in a rail."
+		refresh()
+
+
 func _on_tray(id: String) -> void:
 	_selected = StringName(id) if _selected != StringName(id) else &""
 	_selected_skill = &""
 	_selected_subject = &""
+	_selected_pattern = &""
 	_message.text = "Pick a cell for the %s." % sim.foundry_ingot(id).get("display_name", id) if _selected != &"" else ""
 	refresh()
 
@@ -384,6 +567,7 @@ func _on_subject(id: String) -> void:
 	_selected_subject = StringName(id) if _selected_subject != StringName(id) else &""
 	_selected = &""
 	_selected_skill = &""
+	_selected_pattern = &""
 	_message.text = "Pick a corner: it works the supports it touches into forms, and its base flows to the skill." if _selected_subject != &"" else ""
 	refresh()
 
@@ -392,6 +576,7 @@ func _on_tablet(id: String) -> void:
 	_selected_skill = StringName(id) if _selected_skill != StringName(id) else &""
 	_selected = &""
 	_selected_subject = &""
+	_selected_pattern = &""
 	_message.text = "Pick a cell for the %s tablet; the ingots beside it will support it." % sim.combat_skill(id).get("display_name", id) if _selected_skill != &"" else ""
 	refresh()
 
@@ -494,3 +679,18 @@ func _beside_socket(row: int, col: int) -> bool:
 
 func press_cell(row: int, col: int) -> void:
 	_on_cell(row, col)
+
+
+func set_selected_pattern(id: StringName) -> void:
+	_selected_pattern = id
+	_selected = &""
+	_selected_skill = &""
+	_selected_subject = &""
+
+
+func press_rail(axis: String, index: int) -> void:
+	_on_rail(axis, index)
+
+
+func specialise(id: String) -> void:
+	_on_specialise(id)

@@ -45,6 +45,14 @@ The chosen class points toward an authored class hall guaranteed within the gene
 
 The prototype implements only one representative hall and one meaningful choice.
 
+**Amended 4 Sep 2026 (D-023 slice 9, D-004).** There is no starting
+class: the bare Foundry plate is the base class. The first class hall's
+test grants the specialisation - Ranger, Warden or Kindler - and that
+opens the plate's exterior, the rails outside its rows and columns; later
+halls add exterior options. Until the hall is built as an authored
+module, the Tyrant's forge stands in for its test. See
+[foundry.md](foundry.md), "Rails".
+
 ## Tags
 
 Skills and effects should use composable tags such as:

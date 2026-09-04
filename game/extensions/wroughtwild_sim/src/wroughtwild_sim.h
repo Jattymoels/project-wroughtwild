@@ -151,6 +151,14 @@ public:
     double skill_life_on_hit(const String& skill_id) const;
     double skill_refund_on_kill(const String& skill_id) const;
     double skill_haste_on_kill(const String& skill_id) const;
+    // Rails (D-023 slice 9): the projectiles a cast fires and how many
+    // enemies each pierces; the specialisation and the rails themselves.
+    int skill_projectiles(const String& skill_id) const;
+    int skill_pierce(const String& skill_id) const;
+    bool foundry_specialise(const String& specialisation);
+    bool foundry_set_rail(const String& axis, int index, const String& pattern);
+    bool foundry_clear_rail(const String& axis, int index);
+    Dictionary foundry_pattern(const String& pattern_id) const;
     // Links (D-023): every link on the plate [{first, second, row, col,
     // support_row, support_col}]; the triggers a skill can fire (freeze,
     // ignite, bleed); the skills that cast themselves when skill_id's

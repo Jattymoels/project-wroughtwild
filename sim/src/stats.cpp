@@ -58,6 +58,13 @@ DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipm
         else if (e.key == "add_life_on_dash") stats.lifeOnDash += e.value;
         else if (e.key == "add_armour_on_dash") stats.armourOnDash += e.value;
         else if (e.key == "add_dash_recovery") stats.dashRecovery += e.value;
+        else if (e.key == "add_armour_vs_elements") stats.armourVsElements += e.value;
+        else if (e.key == "add_barbs_more") stats.barbsMore += e.value;
+        else if (e.key == "add_barbs_stagger") stats.barbsStagger += e.value;
+        else if (e.key == "add_proliferate_on_hit") stats.proliferateOnHit += e.value;
+        else if (e.key == "add_burning_ground_heal") stats.burningGroundHeal += e.value;
+        else if (e.key == "add_damage_vs_approaching") stats.damageVsApproaching += e.value;
+        else if (e.key == "add_still_armour") stats.stillArmour += e.value;
     }
     return finish(base, stats);
 }
@@ -76,10 +83,15 @@ DerivedStats deriveStats(const tuning::PlayerBase& base, const Equipment& equipm
 
 double mitigateDamage(double amount, const std::string& damageType,
                       const DerivedStats& stats, const tuning::PlayerBase& base) {
-    if (damageType == "fire")
-        return amount * (1.0 - stats.fireResistancePercent / 100.0);
-    if (damageType == "cold")
-        return amount * (1.0 - stats.coldResistancePercent / 100.0);
+    if (damageType == "fire" || damageType == "cold") {
+        const double resistance = damageType == "fire" ? stats.fireResistancePercent : stats.coldResistancePercent;
+        double after = amount * (1.0 - resistance / 100.0);
+        // The Shield Wall rail (D-023 slice 9): a fraction of the armour
+        // counts against the elements too, after the resistance.
+        const double counted = stats.armour * std::min(1.0, std::max(0.0, stats.armourVsElements));
+        if (counted > 0.0) after *= 1.0 - counted / (counted + base.armourReductionScale);
+        return after;
+    }
     // Everything else counts as physical for the slice.
     double reduction = stats.armour / (stats.armour + base.armourReductionScale);
     return amount * (1.0 - reduction);

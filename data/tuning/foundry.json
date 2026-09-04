@@ -1,6 +1,6 @@
 {
-  "schema_version": 8,
-  "status": "D-023 slice 8: the Marrow's sustain forms and the Quicksilver's tempo forms, with their hooks",
+  "schema_version": 9,
+  "status": "D-023 slice 9: rails - the plate's exterior, opened by the first hall's test; class seeds and manners",
   "frame": [
     4,
     4
@@ -645,6 +645,230 @@
       "design_purpose": "The spec's reading: your Dash recovers 16% faster while the flow holds."
     }
   ],
+  "rails": {
+    "by_era": [
+      0,
+      1,
+      2
+    ],
+    "specialise_on_world_effect": "stonecut_blocks",
+    "specialisations": [
+      {
+        "id": "ranger",
+        "display_name": "Ranger",
+        "patterns": [
+          "volley",
+          "quarry"
+        ],
+        "design_purpose": "The projectile class: Volley fans a column's projectile skill out, Quarry sends every projectile through one more enemy and leaves the ones it passes bleeding. Both want Reach and Edge in lines, so a Ranger's plate is drawn toward long straight runs."
+      },
+      {
+        "id": "warden",
+        "display_name": "Warden",
+        "patterns": [
+          "shield_wall",
+          "riposte"
+        ],
+        "design_purpose": "The standing class: Shield Wall makes armour answer fire and cold, Riposte makes the Barbs answer twice as hard and stagger. Both want Plate, Vigour and Edge in lines with a Vanguard resting among them."
+      },
+      {
+        "id": "kindler",
+        "display_name": "Kindler",
+        "patterns": [
+          "pyre",
+          "ashen_step"
+        ],
+        "design_purpose": "The fire class: Pyre spreads every ignite on the hit rather than the death, Ashen Step makes burning ground yours. Both want Ember in lines, with Haste at the far end of one."
+      }
+    ],
+    "patterns": [
+      {
+        "id": "volley",
+        "display_name": "Volley",
+        "axis": "column",
+        "condition": {
+          "all_placed_are": [
+            "reach"
+          ],
+          "minimum_placed": 2,
+          "holds_skill_tag": "projectile"
+        },
+        "condition_text": "every placed ingot is Reach (at least two) and a projectile skill's socket sits in the column",
+        "rule_text": "that skill fires two more projectiles",
+        "effects": [
+          {
+            "modifier": "extra_projectiles",
+            "value": 2
+          }
+        ],
+        "design_purpose": "The owner's archer column (4 Sep 2026): if every placed cell is a certain ingot, the skill shoots two more projectiles. The rule speaks to the projectile skill in the column alone; the Reaches keep their plain readings (the bolt flies further)."
+      },
+      {
+        "id": "quarry",
+        "display_name": "Quarry",
+        "axis": "row",
+        "condition": {
+          "all_placed_are": [
+            "edge"
+          ],
+          "minimum_placed": 2
+        },
+        "condition_text": "every placed ingot is Edge (at least two)",
+        "rule_text": "your projectiles pierce one more enemy and bleed those they pass through",
+        "effects": [
+          {
+            "modifier": "pierce",
+            "value": 1,
+            "skill_tag": "projectile"
+          },
+          {
+            "modifier": "laceration",
+            "value": 20,
+            "skill_tag": "projectile"
+          }
+        ],
+        "design_purpose": "The Ranger's row: Edge in a line turns every projectile into a quarrel that goes through. Scoped by skill tag, not by the line, so a bolt laid anywhere on the plate pierces."
+      },
+      {
+        "id": "shield_wall",
+        "display_name": "Shield Wall",
+        "axis": "row",
+        "condition": {
+          "all_placed_are": [
+            "plate",
+            "vigour"
+          ],
+          "minimum_placed": 2,
+          "holds_kind_family": "defence"
+        },
+        "condition_text": "every placed ingot is Plate or Vigour (at least two) and a Vanguard rests in the row",
+        "rule_text": "your armour counts against fire and cold in full",
+        "effects": [
+          {
+            "modifier": "armour_vs_elements",
+            "value": 1.0
+          }
+        ],
+        "design_purpose": "The Warden's row: the D-020 defensive spike, made of the plate. Armour is physical-only everywhere else; here the same number answers the Tyrant's breath. The spec asked for a Vanguard's socket in the row; under the flow a Vanguard rests in the row's far cells instead."
+      },
+      {
+        "id": "riposte",
+        "display_name": "Riposte",
+        "axis": "column",
+        "condition": {
+          "ends_are": [
+            "edge",
+            "edge"
+          ],
+          "minimum_placed": 2
+        },
+        "condition_text": "Edge at both ends of the column",
+        "rule_text": "your Barbs bleed for twice the buildup and stagger the striker",
+        "effects": [
+          {
+            "modifier": "barbs_more",
+            "value": 1.0
+          },
+          {
+            "modifier": "stagger_on_hit",
+            "value": 0.5
+          }
+        ],
+        "design_purpose": "The Warden's column: the answer to a hit doubled and given a stagger, so the plate that bites back also makes room. Reads only the two end cells, so the middle of the column is free for a working."
+      },
+      {
+        "id": "pyre",
+        "display_name": "Pyre",
+        "axis": "row",
+        "condition": {
+          "all_placed_are": [
+            "ember"
+          ],
+          "minimum_placed": 2
+        },
+        "condition_text": "every placed ingot is Ember (at least two)",
+        "rule_text": "your ignites proliferate on the hit at half the spread, not only on a death",
+        "effects": [
+          {
+            "modifier": "proliferate_on_hit",
+            "value": 0.5
+          }
+        ],
+        "design_purpose": "The Kindler's row: proliferation is the fire build's clear, and it waits for a death; Pyre brings it forward to the hit at half strength, so a pack catches from the first bolt."
+      },
+      {
+        "id": "ashen_step",
+        "display_name": "Ashen Step",
+        "axis": "column",
+        "condition": {
+          "ends_are": [
+            "ember",
+            "haste"
+          ],
+          "minimum_placed": 2
+        },
+        "condition_text": "Ember at one end of the column and Haste at the other",
+        "rule_text": "burning ground heals you two life a second and never harms you",
+        "effects": [
+          {
+            "modifier": "burning_ground_heal",
+            "value": 2
+          }
+        ],
+        "design_purpose": "The Kindler's column: the era's burning ground (whelps burn where they die from era two) becomes the Kindler's own, a place to stand rather than a place to leave."
+      },
+      {
+        "id": "hounds_manner",
+        "display_name": "The Hound's Manner",
+        "axis": "row",
+        "taught_by": {
+          "enemy": "ash_hound",
+          "kills": 12
+        },
+        "condition": {
+          "alternating": [
+            "haste",
+            "edge"
+          ],
+          "minimum_placed": 2
+        },
+        "condition_text": "Haste and Edge alternating along the row (at least two)",
+        "rule_text": "enemies moving toward you take 25% more from your attacks",
+        "effects": [
+          {
+            "modifier": "damage_vs_approaching",
+            "value": 0.25
+          }
+        ],
+        "design_purpose": "A manner (D-020, D-022): a rail the world teaches rather than the class. After twelve hounds have fallen the pack's own habit - running you down - is yours to punish. Any specialisation may set it; it competes with the class seeds for the rails."
+      },
+      {
+        "id": "husks_manner",
+        "display_name": "The Husk's Manner",
+        "axis": "column",
+        "taught_by": {
+          "enemy": "stone_husk",
+          "kills": 8
+        },
+        "condition": {
+          "all_placed_are": [
+            "plate"
+          ],
+          "minimum_placed": 2
+        },
+        "condition_text": "every placed ingot is Plate (at least two)",
+        "rule_text": "standing still for a second grants 16 armour until you move",
+        "effects": [
+          {
+            "modifier": "still_armour",
+            "value": 16
+          }
+        ],
+        "design_purpose": "The husk's manner: it stands and it takes it. After eight have fallen, so can you. A flat integer on the sheet the engine grants after a second of stillness and takes back on the first step."
+      }
+    ],
+    "design_purpose": "RAILS (D-023 slice 9; owner, 4 Sep 2026): 'you have base tablet setups for the base class coming from nothing, but eventual class halls down the line can give you specialised tablet exterior options - the first class hall test's completion gives you a choice for specialising, and that changes the exterior of the rows/columns upgrades.' So: no class at the start; the bare plate is the base class. Each row and each column has one RAIL outside the grid. Passing the first hall's test (for now the Tyrant's forge, whose completion records specialise_on_world_effect; the class hall proper is D-004's authored module, not built) offers a one-time choice of specialisation, and a specialisation is a list of rail PATTERNS. A pattern names an axis, a condition on the line's PLACED cells (an empty cell never breaks a rail; minimum_placed keeps one ingot from lighting one) and the rule it bends while the condition holds. by_era caps how many rails may be set (none in era one, one in era two, two in era three); one rail per pattern. A rule speaks to the line's skills (a non-self modifier), to every skill with a tag (an effect's skill_tag) or to the sheet (a self modifier). MANNERS are patterns the world teaches: after taught_by.kills of that family have fallen the pattern is known to any specialisation. Rails carry integers and flat numbers; the numbers never change, the lines do."
+  },
   "ingots": [
     {
       "id": "ember",
