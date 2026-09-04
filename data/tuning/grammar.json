@@ -46,6 +46,11 @@
       "executes_boss": false,
       "design_purpose": "The combo maker: hitting a FROZEN enemy with any skill carrying a trigger tag (every attack - Area Strike, Heavy Strike, Rend) shatters it: an execute plus a cold nova at the corpse. Novas shatter other frozen enemies in radius, so a frozen train cascades down its own line. Spells do not shatter: cold spells set up, attacks cash in. executes_boss false means a frozen boss takes the nova damage and thaws instead of dying - the freeze window is the reward, not a one-shot; flip it (or gate it per-tier) in the mob pass if elites want executes. A skill tagged shatter (the Shatter spell) triggers it too: the one spell that cashes in."
     },
+    "melee": {
+      "boss_stagger_multiplier": 0.5,
+      "boss_push_multiplier": 0.0,
+      "design_purpose": "Melee's space control (Wave 5 item 11, 4 Sep 2026; the grammar doc's 'knockback / stagger: physical space control'). A skill's stagger_seconds and push_m are its own; a boss takes half the stagger and none of the push, so the Tyrant can be interrupted but never walked across the arena. The engine halts and shoves; the numbers are the sim's."
+    },
     "proliferate": {
       "enabled": true,
       "radius_m": 3.0,

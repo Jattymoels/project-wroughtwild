@@ -107,6 +107,10 @@ func _physics_process(_delta: float) -> void:
 		440:
 			_phase_k_checks()
 		445:
+			_phase_l_melee()
+		452:
+			_phase_l_checks()
+		456:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
 
@@ -237,6 +241,32 @@ func _phase_k_rails() -> void:
 	Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -3.0))
 	Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -6.0))
 	SkillProjectile.launch(&"prototype_ember_bolt", _player.combat, self, Vector3(0.0, 0.8, 0.0), Vector3.FORWARD, 0, [])
+
+
+## Phase L - melee (Wave 5 item 11): a heavy strike staggers the whelp
+## it hits and braces the swinger; the area strike shoves the line back.
+var _shoved: Enemy
+var _shoved_from := 0.0
+
+
+func _phase_l_melee() -> void:
+	_clear_enemies()
+	_clear_projectiles()
+	_face_down_range()
+	var whelp := Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -1.4))
+	_player.combat.cooldowns[PlayerCombat.HEAVY_SKILL] = 0.0
+	check(_player.combat.use_skill(PlayerCombat.HEAVY_SKILL) and whelp.staggered(), "melee: the heavy strike staggers the whelp it hits")
+	check(_player.combat.cast_armour() >= 12.0, "melee: the swing braces you (%.0f)" % _player.combat.cast_armour())
+	whelp.take_damage(100000.0)
+	_shoved = Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -1.6))
+	_shoved_from = _shoved.global_position.distance_to(_player.global_position)
+	_player.combat.cooldowns[PlayerCombat.AREA_SKILL] = 0.0
+	check(_player.combat.use_area() >= 1 and _shoved.staggered(), "melee: the area strike lands on the whelp in front and halts it")
+
+
+func _phase_l_checks() -> void:
+	var now: float = _shoved.global_position.distance_to(_player.global_position) if is_instance_valid(_shoved) else 0.0
+	check(is_instance_valid(_shoved) and now > _shoved_from + 0.5, "melee: the sweep shoved the whelp back (%.2f from %.2f)" % [now, _shoved_from])
 
 
 func _phase_k_checks() -> void:

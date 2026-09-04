@@ -166,6 +166,8 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_life_on_hit", "skill_id"), &WroughtwildSim::skill_life_on_hit);
     ClassDB::bind_method(D_METHOD("skill_refund_on_kill", "skill_id"), &WroughtwildSim::skill_refund_on_kill);
     ClassDB::bind_method(D_METHOD("skill_haste_on_kill", "skill_id"), &WroughtwildSim::skill_haste_on_kill);
+    ClassDB::bind_method(D_METHOD("skill_stagger", "skill_id", "is_boss"), &WroughtwildSim::skill_stagger, DEFVAL(false));
+    ClassDB::bind_method(D_METHOD("skill_push", "skill_id", "is_boss"), &WroughtwildSim::skill_push, DEFVAL(false));
     ClassDB::bind_method(D_METHOD("skill_projectiles", "skill_id"), &WroughtwildSim::skill_projectiles);
     ClassDB::bind_method(D_METHOD("skill_pierce", "skill_id"), &WroughtwildSim::skill_pierce);
     ClassDB::bind_method(D_METHOD("foundry_choose_class", "class_id"), &WroughtwildSim::foundry_choose_class);
@@ -3376,9 +3378,22 @@ Dictionary WroughtwildSim::skill_cast_armour(const String& skill_id) const {
     if (!require_loaded("skill_cast_armour")) {
         return d;
     }
-    d["armour"] = wroughtwild::grammar::skillCastArmour(*tuning_, active_mods(), to_std(skill_id));
-    d["seconds"] = tuning_->foundry.castArmourSeconds;
+    // The skill's own swing armour lasts its swing (melee, Wave 5 item
+    // 11); once a reading speaks, the whole grant lasts the reading's time.
+    const double armour = wroughtwild::grammar::skillCastArmour(*tuning_, active_mods(), to_std(skill_id));
+    const double swing = wroughtwild::grammar::skillSwingSeconds(*tuning_, to_std(skill_id));
+    const double reading = wroughtwild::grammar::skillCastArmour(*tuning_, {}, to_std(skill_id));
+    d["armour"] = armour;
+    d["seconds"] = (armour > reading + 1e-9 || swing <= 0.0) ? tuning_->foundry.castArmourSeconds : swing;
     return d;
+}
+
+double WroughtwildSim::skill_stagger(const String& skill_id, bool is_boss) const {
+    return require_loaded("skill_stagger") ? wroughtwild::grammar::skillStagger(*tuning_, active_mods(), to_std(skill_id), is_boss) : 0.0;
+}
+
+double WroughtwildSim::skill_push(const String& skill_id, bool is_boss) const {
+    return require_loaded("skill_push") ? wroughtwild::grammar::skillPush(*tuning_, active_mods(), to_std(skill_id), is_boss) : 0.0;
 }
 
 double WroughtwildSim::ward_multiplier(const PackedStringArray& carried_statuses) const {

@@ -336,7 +336,7 @@ func _physics_process(_delta: float) -> void:
 			check(sim.foundry_event("first_kill:stone_husk") == ["plate"] and sim.foundry_place(2, 3, "plate")
 				and sim.foundry_place_skill(2, 2, "prototype_area_strike"), "plate: a plate ingot east of the area strike's socket")
 			check(_player.combat.cast_armour() == 0.0 and _player.combat.use_skill(&"prototype_area_strike")
-				and absf(_player.combat.cast_armour() - 4.0) < 0.001, "plate: casting the area strike grants four armour for a moment")
+				and absf(_player.combat.cast_armour() - 12.0) < 0.001, "plate: casting the area strike grants its swing's eight and the plate's four for a moment")
 			# Leave the plate and the bar as they were: the brace passes, the
 			# cooldown clears, the tablet lifts free, the ingot lifts for one
 			# iron granted here so later iron counts hold.

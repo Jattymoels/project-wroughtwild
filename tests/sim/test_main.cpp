@@ -814,15 +814,22 @@ void testHandCraftingAndKits(const tuning::Tuning& t) {
     check(t.crafting.findStationForKit("iron_ingot") == nullptr, "kits: non-kit items map to nothing");
 
     player.addAvailableStation(station->id);
-    // The forge kit needs the workbench plus all three gathered families.
+    // The forge kit needs the workbench, a timber frame jointed there
+    // (the bench kept alive, Wave 5 item 11) and the two stone families.
     auto blocked = player.craft("forge_kit");
     check(!blocked.crafted && blocked.failure.missingInputs, "kits: forge kit needs materials");
     player.inventory["wood"] = 12;
     player.inventory["stone"] = 8;
     player.inventory["iron_ore"] = 4;
+    check(!player.craft("forge_kit").crafted, "kits: timber alone is no frame - the bench joints one first");
+    check(player.craft("timber_frame").crafted && player.inventory["timber_frame"] == 1 && player.inventory["wood"] == 2,
+          "kits: a timber frame from ten timber at the bench");
     auto forge = player.craft("forge_kit");
-    check(forge.crafted && player.inventory["forge_kit"] == 1, "kits: forge kit assembles at the bench");
+    check(forge.crafted && player.inventory["forge_kit"] == 1 && player.inventory["timber_frame"] == 0, "kits: forge kit assembles on the frame at the bench");
     check(player.inventory["stone"] == 0, "kits: stone family consumed");
+    check(player.craft("timber_wedges_bulk").crafted == false, "kits: a bundle of wedges wants three timber");
+    player.inventory["wood"] = 3;
+    check(player.craft("timber_wedges_bulk").crafted && player.inventory["timber_wedge"] == 8, "kits: the bench bundles eight wedges from three timber");
 }
 
 void testEnemyLoot(const tuning::Tuning& t) {
@@ -989,8 +996,8 @@ void testWorldgen(const tuning::Tuning& t) {
         const auto* dress = t.crafting.findRecipe("dress_stone");
         check(wedge && wedge->station.empty() && wedge->inputs.count("wood") && wedge->outputs.at("timber_wedge") >= 1,
               "seams: wedges are hand-made from timber");
-        check(yardKit && yardKit->station == "workbench" && yardKit->inputs.count("fieldstone") && yardKit->inputs.count("wood"),
-              "seams: the yard's kit costs fieldstone and timber at the bench");
+        check(yardKit && yardKit->station == "workbench" && yardKit->inputs.count("fieldstone") && yardKit->inputs.count("timber_frame"),
+              "seams: the yard's kit costs fieldstone and a timber frame at the bench");
         check(dress && dress->station == "mason_yard" && dress->inputs.at("split_stone") >= 2 && dress->outputs.at("stone") == 1,
               "seams: the yard dresses two split stones into one stone");
         const auto* yard = t.crafting.findStationForKit("mason_yard_kit");
@@ -2548,7 +2555,7 @@ void testEveryIngotReadsEverySkill(const tuning::Tuning& t) {
     checkNear(grammar::skillLifeOnKill(t, selfMods, orb), 1.0, 1e-9, "self: a kill with the orb restores one life");
     checkNear(grammar::skillLifeOnKill(t, selfMods, "prototype_frost_nova"), 0.0, 1e-9, "self: the nova restores nothing");
     checkNear(grammar::skillCastArmour(t, selfMods, orb), 4.0, 1e-9, "self: casting the orb grants four armour");
-    checkNear(grammar::skillCastArmour(t, selfMods, strike), 0.0, 1e-9, "self: the strike grants none");
+    checkNear(grammar::skillCastArmour(t, selfMods, strike), 12.0, 1e-9, "self: the strike grants only its own swing armour (melee, Wave 5 item 11)");
     checkNear(grammar::wardMultiplier(t, selfMods, {"chill"}), 0.95, 1e-9, "self: a chilled enemy deals five percent less");
     checkNear(grammar::wardMultiplier(t, selfMods, {"ignite", "bleed"}), 1.0, 1e-9, "self: the orb's ward ignores statuses it does not apply");
     checkNear(grammar::wardMultiplier(t, selfMods, {}), 1.0, 1e-9, "self: nothing carried, nothing warded");
@@ -3714,6 +3721,36 @@ void testClassGear(const tuning::Tuning& t) {
         check(std::find(t.items.slots.begin(), t.items.slots.end(), base.slot) != t.items.slots.end(), "gear: " + base.id + " sits in a known slot");
 }
 
+// Melee's space control (Wave 5 item 11): a strike staggers and shoves the
+// mob it hits and braces the swinger; bosses take their fractions.
+void testMelee(const tuning::Tuning& t) {
+    const auto& m = t.grammar.melee;
+    check(std::abs(m.bossStaggerMultiplier - 0.5) < 1e-9 && std::abs(m.bossPushMultiplier) < 1e-9, "melee: a boss takes half the stagger and none of the push");
+    checkNear(grammar::skillStagger(t, {}, "prototype_heavy_strike", false), 0.4, 1e-9, "melee: the heavy strike staggers 0.4 s");
+    checkNear(grammar::skillStagger(t, {}, "prototype_heavy_strike", true), 0.2, 1e-9, "melee: half of it on a boss");
+    checkNear(grammar::skillPush(t, {}, "prototype_area_strike", false), 1.2, 1e-9, "melee: the area strike shoves 1.2 m");
+    checkNear(grammar::skillPush(t, {}, "prototype_area_strike", true), 0.0, 1e-9, "melee: and never a boss");
+    checkNear(grammar::skillPush(t, {}, "prototype_heavy_strike", false), 0.5, 1e-9, "melee: the heavy strike shoves half a metre");
+    checkNear(grammar::skillStagger(t, {}, "prototype_frost_orb", false), 0.0, 1e-9, "melee: the orb staggers nothing");
+    checkNear(grammar::skillPush(t, {}, "prototype_bow_shot", false), 0.0, 1e-9, "melee: an arrow shoves nothing");
+    checkNear(grammar::skillCastArmour(t, {}, "prototype_heavy_strike"), 12.0, 1e-9, "melee: the heavy strike's swing braces twelve");
+    checkNear(grammar::skillSwingSeconds(t, "prototype_heavy_strike"), 0.5, 1e-9, "melee: for half a second");
+    checkNear(grammar::skillCastArmour(t, {}, "prototype_cinder_sweep"), 6.0, 1e-9, "melee: the sweep braces six");
+    checkNear(grammar::skillSwingSeconds(t, "prototype_frost_orb"), 0.0, 1e-9, "melee: a spell has no swing");
+    // The Plate reading adds to the swing: a strike beside a Plate ingot.
+    economy::PlayerEconomy p(t);
+    p.foundryEvent("first_kill:stone_husk");
+    check(p.foundryPlaceSkill(1, 1, "prototype_heavy_strike") && p.foundryPlace(1, 0, "plate"), "melee: the strike laid with a Plate beside it");
+    checkNear(grammar::skillCastArmour(t, grammar::foundryMods(t, p.foundry(), p.currentEra()), "prototype_heavy_strike"), 12.0 + 4.0, 1e-9,
+              "melee: the reading's four on top of the swing's twelve");
+    // A gear or plate modifier can grow the stagger and the push through the resolver.
+    grammar::ActiveMods heavy;
+    heavy.push_back(grammar::ActiveMod{"test", {"attack"}, "add_push", 1.0, "test"});
+    heavy.push_back(grammar::ActiveMod{"test2", {"attack"}, "add_stagger", 0.2, "test"});
+    checkNear(grammar::skillPush(t, heavy, "prototype_heavy_strike", false), 1.5, 1e-9, "melee: a push modifier adds to the blow");
+    checkNear(grammar::skillStagger(t, heavy, "prototype_rend", false), 0.5, 1e-9, "melee: a stagger modifier adds to the cut");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3766,6 +3803,7 @@ int main(int argc, char** argv) {
     testMetal(t);
     testClassKits(t);
     testClassGear(t);
+    testMelee(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

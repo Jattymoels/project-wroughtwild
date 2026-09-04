@@ -592,6 +592,13 @@ struct ProliferateHook {
     double spreadBuildup = 0.0; // ignite buildup each neighbour receives
 };
 
+// Melee's space control (Wave 5 item 11): what fraction of a skill's
+// stagger and push a boss takes.
+struct MeleeHook {
+    double bossStaggerMultiplier = 1.0;
+    double bossPushMultiplier = 1.0;
+};
+
 struct GrammarTable {
     // The packet types a hit can carry (D-023 slice 2). A skill's own type
     // is the first of these among its tags; an added element is another.
@@ -601,6 +608,7 @@ struct GrammarTable {
     DotStatusDef bleed;
     ShatterHook shatter;
     ProliferateHook proliferate;
+    MeleeHook melee;
 };
 
 // --- worldgen.json -----------------------------------------------------------

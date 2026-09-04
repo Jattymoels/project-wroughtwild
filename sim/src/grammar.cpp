@@ -276,7 +276,27 @@ double skillCastArmour(const tuning::Tuning& tuning, const ActiveMods& active,
                        const std::string& skillId) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
-    return std::max(0.0, resolve(active, def->resolveTags(), "armour_on_cast", 0.0));
+    // The skill's own swing armour is the base the reading adds to.
+    return std::max(0.0, resolve(active, def->resolveTags(), "armour_on_cast", skillNumber(*def, "swing_armour", 0.0)));
+}
+
+double skillSwingSeconds(const tuning::Tuning& tuning, const std::string& skillId) {
+    const auto* def = findSkill(tuning, skillId);
+    return def ? std::max(0.0, skillNumber(*def, "swing_seconds", 0.0)) : 0.0;
+}
+
+double skillStagger(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId, bool isBoss) {
+    const auto* def = findSkill(tuning, skillId);
+    if (!def) return 0.0;
+    const double seconds = std::max(0.0, resolve(active, def->resolveTags(), "stagger", skillNumber(*def, "stagger_seconds", 0.0)));
+    return isBoss ? seconds * tuning.grammar.melee.bossStaggerMultiplier : seconds;
+}
+
+double skillPush(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId, bool isBoss) {
+    const auto* def = findSkill(tuning, skillId);
+    if (!def) return 0.0;
+    const double metres = std::max(0.0, resolve(active, def->resolveTags(), "push", skillNumber(*def, "push_m", 0.0)));
+    return isBoss ? metres * tuning.grammar.melee.bossPushMultiplier : metres;
 }
 
 namespace {
