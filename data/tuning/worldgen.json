@@ -241,7 +241,7 @@
       "display_name": "Meadow",
       "surface": "grass",
       "node_density": {
-        "tree": 0.014,
+        "tree": 0.009,
         "boulder": 0.008,
         "stone_seam": 0.004
       },
@@ -265,16 +265,20 @@
     "tree": {
       "display_name": "Tree",
       "material_family": "wood",
-      "units": 12,
-      "units_per_harvest": 3,
-      "visual": "tree"
+      "units": 14,
+      "units_per_harvest": 14,
+      "drive_presses": 6,
+      "visual": "tree",
+      "design_purpose": "Trees fall as one (the world made whole, owner 4 Sep 2026: 'making trees harder to cut down, but they fell as one'). Six presses of E, each leaning the trunk further from you, then the whole tree comes down and pays its fourteen wood at once. Wood per minute roughly halves against twelve wood in four chops, and every tree is an event with a stump left behind."
     },
     "boulder": {
       "display_name": "Boulder",
       "material_family": "fieldstone",
-      "units": 10,
-      "units_per_harvest": 2,
-      "visual": "boulder"
+      "units": 9,
+      "units_per_harvest": 3,
+      "drive_presses": 3,
+      "visual": "boulder",
+      "design_purpose": "A boulder cracks a chunk of fieldstone off every third press and rolls over on the last: three chunks, nine stone, the same pace as a tree."
     },
     "iron_vein": {
       "display_name": "Iron Vein",

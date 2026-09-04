@@ -316,7 +316,7 @@ func _spawn_resource_node(def: Dictionary) -> void:
 	var node: ResourceNode = RESOURCE_NODE_SCENE.instantiate()
 	node.heat_to_work = int(def.get("heat_to_work", 0))
 	node.tool_item = StringName(String(def.get("tool_item", "")))
-	node.drive_presses = maxi(int(def.get("drive_presses", 4)), 1)
+	node.drive_presses = maxi(int(def.get("drive_presses", 1)), 1)
 	# y is part of the name: a cave-floor node and a surface node may share
 	# a column, and saves match nodes by name.
 	node.name = "wn_%s_%d_%d_%d" % [def["type"], def["x"], def["y"], def["z"]]
