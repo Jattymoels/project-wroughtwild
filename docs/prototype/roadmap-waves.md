@@ -599,12 +599,27 @@ options mix its rooms. Three slices, all accepted:
    answers the swarm. The HUD's life line says "rooted, dash breaks it",
    "harried, slowed", "marked, they sprint at you". Sim 4518, engine unit
    389, horde 42.
-2. **The curio and the lock**: trial 1 tuned in the sim's encounter model
-   to fail on the starting kit and pass on forge 2 gear; beating it drops
-   a curio whose reading names a landmark in another biome (a cairn, a
-   drowned altar, a rift; worldgen guarantees one per biome); setting it
-   there turns the era. Era triggers move off the cut-stone milestone;
-   masonry stays what it unlocks.
+2. **The curio and the lock** *(landed 4 Sep 2026)*: a boss's fall no
+   longer turns the era; it leaves its curio (`trial.json` `curios`,
+   `completion_curio`: the Tyrant's Cinder Heart, the Warden's Stone
+   Eye), and the curio's reading names the landmark in another biome that
+   takes it - the cairn on the hill, the drowned altar in the fen, the
+   rift in the wastes waiting for era four (`worldgen.json` `landmarks`,
+   one per def placed deep in its biome by `worldgen.cpp` pass 10; the
+   engine builds the cairn, the ring of drowned slabs and the lit rift,
+   `landmark.gd`). E at the landmark sets the curio (`set_curio`) and
+   records its unlock, which is the era's trigger as before
+   (`stonecut_blocks`, `ash_tide`), so masonry stays what the deep
+   unlocks. The HUD's status lines carry each held curio's reading. The
+   sim's encounter model now pins trial one as the test that sends you
+   out: the starting kit fails the Tyrant most times and the second
+   forge's tempered armour passes it. **Biomes as material** rode along:
+   the forest stands in pines, the fen in bog oak, the wastes in ash
+   snags (`worldgen.json` node types), each felled like any tree and
+   paying its own timber - three construction families with every trait
+   of Timber and a colour of their own (`construction.json` `pine`,
+   `bog_oak`, `ash_wood`), hauled and burned like timber. Sim 4552, engine
+   unit 393, integration 265.
 3. **The mingling**: on the turn, a per-era mingle table sends foreign
    members into each biome's packs and re-routes the night patrols to
    other biomes' dens; families transform (the mechanics exist); a wager
@@ -613,10 +628,11 @@ options mix its rooms. Three slices, all accepted:
 **Biomes as material (owner, 4 Sep 2026; to design):** "biomes should be
 interesting for finding cool crafting material too - much like Minecraft
 finding a certain forest biome which means you now have access to
-orange-coloured trees for an orange house." Each biome should yield a
-building family of its own look: the fen's bog oak, the wastes' ash-
-bleached snag, the forest's pale pine, the hills' fieldstone (exists).
-Not built yet; it belongs with the curio's walk into another biome.
+orange-coloured trees for an orange house." Built with slice 2: the
+forest's pine, the fen's bog oak, the wastes' ash wood, each a timber of
+its own colour; the hills' fieldstone already was. The rest of the idea
+- a biome's own stone, its own reed, the mountains' silver look - stays
+open.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
 

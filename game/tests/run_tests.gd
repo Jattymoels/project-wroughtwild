@@ -271,6 +271,31 @@ func _test_lattice() -> void:
 	var knight: float = sim.threat_score("hollow_knight")
 	check(hound > 0.0 and lurker > 0.0 and lurker < hound * 1.6 and knight < hound * 2.0 and sim.threat_score("no_such_mob") == 0.0,
 		"verbs: the threat score keeps the slow heavy hitters beside the fast biters (%.1f / %.1f / %.1f)" % [hound, lurker, knight])
+	# The curio and the lock (Wave 8 slice 2): a fresh sim so the era it turns stays here; landmarks reach the engine
+	var lock_sim: RefCounted = ClassDB.instantiate(&"WroughtwildSim")
+	lock_sim.load_tuning(load("res://scripts/sim.gd").get_tuning_directory())
+	# with their looks, the lock refuses without the key and turns the era
+	# with it, and the biome timbers stand in their biomes.
+	var landmark_map: Dictionary = lock_sim.world_map(7)
+	var landmarks: Array = landmark_map.get("landmarks", [])
+	var looks := {}
+	for l in landmarks:
+		looks[String(l.get("look", ""))] = String(l.get("biome", ""))
+	check(landmarks.size() == 3 and looks.get("cairn", "") == "rocky_hills" and looks.get("altar", "") == "fen" and looks.get("rift", "") == "ember_wastes",
+		"lock: three landmarks reach the engine with their looks and biomes")
+	var pines := 0
+	for n in landmark_map.get("nodes", []):
+		if String(n.get("type", "")) == "pine":
+			pines += 1
+	check(pines > 20 and String(lock_sim.build_material("pine").get("tint", "")) != "" and lock_sim.carry_cap("bog_oak") == lock_sim.carry_cap("wood"),
+		"timber: the forest stands in pines (%d), pine builds in its own colour and hauls like timber" % pines)
+	var wants: Dictionary = lock_sim.landmark_wants("hill_cairn")
+	check(String(wants.get("curio", "")) == "tyrant_heart" and not bool(wants.get("held", true)) and lock_sim.landmark_wants("wastes_rift").is_empty()
+		and not lock_sim.set_curio("hill_cairn") and lock_sim.curio_hints().is_empty(), "lock: the cairn wants the heart, the rift nothing, and nothing turns without it")
+	lock_sim.add_material("tyrant_heart", 1)
+	check(lock_sim.curio_hints().size() == 1 and lock_sim.set_curio("hill_cairn") and lock_sim.world_effect_active("stonecut_blocks")
+		and int(lock_sim.era().get("index", 1)) == 2 and lock_sim.material_count("tyrant_heart") == 0,
+		"lock: with the heart the cairn wakes the deep and the heart is spent")
 	var no_digs := PackedInt32Array()
 	var middle := Vector3(0.5, 0.5, 0.5)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")
@@ -852,7 +877,7 @@ func _test_sim_extension() -> void:
 		"shape: the wedge waits on the completion unlock, the slab does not")
 	check(sim.shape_ids().size() >= 9 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
 		"shape: nine-shape set with sizes from data")
-	check(sim.build_material_ids().size() == 8 and sim.build_material("iron")["source"] == "iron_ingot"
+	check(sim.build_material_ids().size() == 11 and sim.build_material("iron")["source"] == "iron_ingot"
 		and sim.build_material("stone")["texture"] == "masonry", "materials: families through the door")
 	check(sim.shape_allows_family("door", "wood") and not sim.shape_allows_family("door", "stone")
 		and sim.shape("girder")["cells_long"] == 2 and sim.shape("girder")["requires_traits"].has("metal"),

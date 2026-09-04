@@ -192,8 +192,14 @@ void TrialSession::finish(bool died) {
     if (!died || !tuning_.trial.loseRunMaterialsOnDeath)
         for (const auto& item : lootItems_) economy_.packItems.push_back(item);
 
-    if (bossDefeated_)
-        economy_.recordWorldEffect(completionUnlock());
+    // The curio and the lock (Wave 8 slice 2): the boss's fall leaves its
+    // curio in your hand, and a landmark in another biome takes it to
+    // record the unlock. A floor without a curio unlocks outright.
+    if (bossDefeated_) {
+        const std::string curio = floor_ ? floor_->completionCurio : tuning_.trial.completionCurio;
+        if (!curio.empty()) economy_.grant(curio, 1);
+        else economy_.recordWorldEffect(completionUnlock());
+    }
 
     // Temporary trial effects never outlive the run (design pillar).
     run_.clear();

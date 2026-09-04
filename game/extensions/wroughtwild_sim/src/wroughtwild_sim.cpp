@@ -240,6 +240,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("siege_tonight", "seed", "day_index"), &WroughtwildSim::siege_tonight);
     ClassDB::bind_method(D_METHOD("siege_pack"), &WroughtwildSim::siege_pack);
     ClassDB::bind_method(D_METHOD("threat_score", "enemy_id"), &WroughtwildSim::threat_score);
+    ClassDB::bind_method(D_METHOD("set_curio", "landmark_id"), &WroughtwildSim::set_curio);
+    ClassDB::bind_method(D_METHOD("landmark_wants", "landmark_id"), &WroughtwildSim::landmark_wants);
+    ClassDB::bind_method(D_METHOD("curio_hints"), &WroughtwildSim::curio_hints);
     ClassDB::bind_method(D_METHOD("carry_cap", "family"), &WroughtwildSim::carry_cap);
     ClassDB::bind_method(D_METHOD("carry_room", "family"), &WroughtwildSim::carry_room);
     ClassDB::bind_method(D_METHOD("haul", "family", "amount"), &WroughtwildSim::haul);
@@ -2159,6 +2162,23 @@ Dictionary WroughtwildSim::world_map(int seed) {
     }
     d["nodes"] = nodes;
 
+    // The locks (Wave 8 slice 2): the landmarks worldgen placed, with their looks.
+    Array landmarks;
+    for (const auto& placed : map.landmarks) {
+        Dictionary l;
+        l["id"] = to_godot(placed.id);
+        l["x"] = placed.x;
+        l["z"] = placed.z;
+        for (const auto& def : tuning_->worldgen.landmarks)
+            if (def.id == placed.id) {
+                l["display_name"] = to_godot(def.displayName);
+                l["look"] = to_godot(def.look);
+                l["biome"] = to_godot(def.biome);
+            }
+        landmarks.push_back(l);
+    }
+    d["landmarks"] = landmarks;
+
     Array packs;
     for (const auto& pack : map.packs) {
         Dictionary p;
@@ -2703,6 +2723,34 @@ Dictionary WroughtwildSim::noise_rules() const {
     d["muffle"] = tuning_->realtime.noiseMuffle;
     d["horn_cooldown_seconds"] = tuning_->realtime.noiseHornCooldownSeconds;
     return d;
+}
+
+bool WroughtwildSim::set_curio(const String& landmark_id) {
+    return require_loaded("set_curio") && player_->setCurio(to_std(landmark_id));
+}
+
+Dictionary WroughtwildSim::landmark_wants(const String& landmark_id) const {
+    Dictionary d;
+    if (!require_loaded("landmark_wants")) {
+        return d;
+    }
+    const auto* curio = tuning_->trial.curioForLandmark(to_std(landmark_id));
+    if (curio == nullptr) {
+        return d;
+    }
+    d["curio"] = String(curio->id.c_str());
+    d["display_name"] = String(curio->displayName.c_str());
+    d["held"] = player_->curioHeld(curio->id);
+    return d;
+}
+
+PackedStringArray WroughtwildSim::curio_hints() const {
+    PackedStringArray out;
+    if (!require_loaded("curio_hints")) {
+        return out;
+    }
+    for (const auto& hint : player_->curioHints()) out.push_back(String(hint.c_str()));
+    return out;
 }
 
 double WroughtwildSim::threat_score(const String& enemy_id) const {

@@ -329,7 +329,10 @@ func finish_run() -> void:
 		if String(floor.get("id", "")) != "":
 			player.hud.notify("%s%s" % [floor.get("completion_text", "The warden falls."), _completion_items])
 		else:
-			player.hud.notify("The Forge Tyrant falls! Deep in its forge you find mastery of stonecut blocks: the roof wedge joins your constructions.%s" % _completion_items)
+			player.hud.notify("The Forge Tyrant falls! In the ash of its forge lies its cinder heart, still warm.%s" % _completion_items)
+		# The curio (Wave 8 slice 2): its reading names the lock.
+		for hint in sim.curio_hints():
+			player.hud.notify(String(hint))
 		_completion_items = ""
 		# The first trial (D-023 slice 9): the forge's completion offers the
 		# specialisation - a view of what the plate's rails can become.

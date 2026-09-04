@@ -461,6 +461,18 @@ struct TrialFloor {
     int exitAfterStage = -1;
     std::string completionUnlock;
     std::string completionText;
+    std::string completionCurio; // Wave 8 slice 2: the curio the boss's fall leaves ("" = the unlock outright)
+};
+
+// The curio and the lock (Wave 8 slice 2): what a trial's completion
+// leaves in your hand, the landmark in another biome that takes it, the
+// world effect setting it records (the era's trigger), and its reading.
+struct CurioDef {
+    std::string id;
+    std::string displayName;
+    std::string landmark;
+    std::string unlock;
+    std::string reading;
 };
 
 struct TrialTable {
@@ -472,6 +484,10 @@ struct TrialTable {
     std::map<std::string, int> materialsReward;
     std::string catalystItem;
     std::string completionUnlock;
+    std::string completionCurio; // the first floor's curio ("" = the unlock outright)
+    std::vector<CurioDef> curios;
+    const CurioDef* findCurio(const std::string& id) const;
+    const CurioDef* curioForLandmark(const std::string& landmark) const;
     // Gear a cleared room drops, keyed by the room's reward type (D-014).
     struct ItemReward {
         std::string rarity;
@@ -833,6 +849,16 @@ struct WorldgenGuarantees {
     double patrolLengthM = 0.0; // how far a night patrol walks from its den toward the spawn
 };
 
+// A landmark (Wave 8 slice 2, the lock): one per def, placed deep in its
+// biome, at least minDistanceFromSpawnM out. The engine builds its look.
+struct LandmarkDef {
+    std::string id;
+    std::string displayName;
+    std::string biome;
+    std::string look; // cairn | altar | rift
+    double minDistanceFromSpawnM = 0.0;
+};
+
 struct WorldgenTable {
     uint64_t defaultSeed = 1;
     MapParams map;
@@ -850,6 +876,7 @@ struct WorldgenTable {
     // The pack-density multiplier for a cell this far from spawn (1.0 when
     // no rings are tuned).
     // The whole ring for a distance (nullptr when none are tuned).
+    std::vector<LandmarkDef> landmarks;
     const DangerRing* dangerRingAt(double distanceM) const;
 };
 

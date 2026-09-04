@@ -39,6 +39,13 @@ struct PlacedNode {
     int z = 0;
 };
 
+// A landmark placed by worldgen (Wave 8 slice 2): the lock a curio opens.
+struct PlacedLandmark {
+    std::string id;
+    int x = 0;
+    int z = 0;
+};
+
 struct MobPack {
     std::vector<std::string> enemies;
     int x = 0;
@@ -67,6 +74,7 @@ struct WorldMap {
     std::vector<uint8_t> blocks; // column-contiguous: (z * width + x) * depth + y
     std::vector<PlacedNode> nodes;
     std::vector<MobPack> packs;
+    std::vector<PlacedLandmark> landmarks;
     int spawnX = 0, spawnZ = 0;
     int gateX = 0, gateZ = 0;
 

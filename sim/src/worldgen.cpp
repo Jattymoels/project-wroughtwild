@@ -1,5 +1,6 @@
 #include "wroughtwild/worldgen.h"
 
+#include <set>
 #include <algorithm>
 #include <cmath>
 
@@ -489,6 +490,40 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
         }
     }
 
+    // 10. Landmarks (Wave 8 slice 2, the curio and the lock): one per def,
+    //     deep in its biome - the surface cell nearest the biome's centroid
+    //     among those far enough from the spawn, uncarved and unoccupied -
+    //     so the curio's walk crosses the density.
+    {
+        std::set<std::pair<int, int>> occupied;
+        for (const auto& node : map.nodes) occupied.insert({node.x, node.z});
+        for (const auto& def : table.landmarks) {
+            int biomeIndex = -1;
+            for (size_t i = 0; i < table.biomes.size(); ++i)
+                if (table.biomes[i].id == def.biome) biomeIndex = static_cast<int>(i);
+            double cx = 0.0, cz = 0.0;
+            int count = 0;
+            for (int z = 0; z < map.height; ++z)
+                for (int x = 0; x < map.width; ++x)
+                    if (map.at(x, z).biomeIndex == biomeIndex) { cx += x; cz += z; ++count; }
+            if (count == 0) continue;
+            cx /= count;
+            cz /= count;
+            const double minD = def.minDistanceFromSpawnM / params.cellSizeM;
+            double best = 1e18;
+            int bx = -1, bz = -1;
+            for (int z = 3; z < map.height - 3; ++z)
+                for (int x = 3; x < map.width - 3; ++x) {
+                    if (map.at(x, z).biomeIndex != biomeIndex) continue;
+                    if (distance(x, z, map.spawnX, map.spawnZ) < minD) continue;
+                    if (map.topSolid(x, z) != map.at(x, z).height) continue;
+                    if (occupied.count({x, z}) || (x == map.gateX && z == map.gateZ)) continue;
+                    const double d = distance(x, z, static_cast<int>(cx), static_cast<int>(cz));
+                    if (d < best) { best = d; bx = x; bz = z; }
+                }
+            if (bx >= 0) map.landmarks.push_back({def.id, bx, bz});
+        }
+    }
     return map;
 }
 

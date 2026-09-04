@@ -98,6 +98,7 @@
     },
     "catalyst_item": "ember_catalyst",
     "completion_unlock": "stonecut_blocks",
+    "completion_curio": "tyrant_heart",
     "item_rewards": {
       "materials": {
         "rarity": "keen",
@@ -119,6 +120,23 @@
     "lose_run_materials_on_death": true,
     "design_purpose": "Provisional (D-006): recovered catalysts represent learning and survive a failed attempt so death still advances the crafting plan; ordinary run loot is lost to keep the bank-or-push choice meaningful"
   },
+  "curios": [
+    {
+      "id": "tyrant_heart",
+      "display_name": "The Tyrant's Cinder Heart",
+      "landmark": "hill_cairn",
+      "unlock": "stonecut_blocks",
+      "reading": "Still warm. It wants the cairn on the hill: set it there and the strata will crack."
+    },
+    {
+      "id": "warden_eye",
+      "display_name": "The Warden's Stone Eye",
+      "landmark": "drowned_altar",
+      "unlock": "ash_tide",
+      "reading": "It looks toward the fen. The drowned altar takes it, and the ash tide rises."
+    }
+  ],
+  "design_purpose_curios": "The curio and the lock (Wave 8 slice 2; the owner, 4 Sep 2026: beat the trial, get a curio or head or story item you need to enable somehow to upgrade your era, that might be in a different biome, then you have inherent adventure quests to move on). A boss's fall no longer turns the era; it leaves its curio in your hand (completion_curio), and the curio's reading names the landmark (worldgen.json landmarks) in another biome that takes it - E there records the unlock, and the era turns. The Tyrant's heart wants the cairn on the hill; the Warden's eye the drowned altar in the fen. The walk between the trial and the lock crosses the density, and the biome you cross is where its timber is.",
   "floors": [
     {
       "id": "deep_forge",
@@ -201,7 +219,8 @@
       ],
       "exit_after_stage": 1,
       "completion_unlock": "ash_tide",
-      "completion_text": "The Ash Warden falls, and the wastes answer: the ash tide rises, ember-iron glows in the rifts, silver shows in the mountains, and steel can be worked.",
+      "completion_curio": "warden_eye",
+      "completion_text": "The Ash Warden falls. Its stone eye is yours, and it looks toward the fen.",
       "design_purpose": "The trial's second floor (owner, 3 Sep 2026: 'more floors to the trial'): open once the Tyrant has fallen, fought with the new families, ending in the Ash Warden. Its completion effect wakes era three - eras advance on milestones the player chose (D-019). Same room grammar as floor one, so a floor is data."
     }
   ],

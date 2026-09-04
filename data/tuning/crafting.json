@@ -43,6 +43,26 @@
       "display_name": "Shrieker Horn"
     },
     {
+      "id": "tyrant_heart",
+      "display_name": "The Tyrant's Cinder Heart"
+    },
+    {
+      "id": "warden_eye",
+      "display_name": "The Warden's Stone Eye"
+    },
+    {
+      "id": "pine",
+      "display_name": "Pine"
+    },
+    {
+      "id": "bog_oak",
+      "display_name": "Bog Oak"
+    },
+    {
+      "id": "ash_wood",
+      "display_name": "Ash Wood"
+    },
+    {
       "id": "ember_iron_ore",
       "display_name": "Ember-Iron Ore"
     },

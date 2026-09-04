@@ -251,6 +251,15 @@ public:
     Inventory storeRemove(const std::string& key);
     const std::map<std::string, Inventory>& stores() const { return stores_; }
 
+    // --- the curio and the lock (Wave 8 slice 2) ---
+    // A trial's completion leaves a curio in your hand; the landmark it
+    // names takes it and records its unlock (the era's trigger). setCurio
+    // is false without the curio the landmark wants.
+    bool setCurio(const std::string& landmarkId);
+    std::string landmarkWants(const std::string& landmarkId) const; // the curio's id, "" for none
+    bool curioHeld(const std::string& curioId) const;
+    std::vector<std::string> curioHints() const; // the readings of the curios held
+
     // --- save/load ---
     struct State {
         Inventory inventory;

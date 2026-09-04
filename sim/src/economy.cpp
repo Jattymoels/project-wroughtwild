@@ -664,6 +664,31 @@ const Inventory& PlayerEconomy::storeContents(const std::string& key) const {
     return it == stores_.end() ? empty : it->second;
 }
 
+bool PlayerEconomy::setCurio(const std::string& landmarkId) {
+    const auto* curio = tuning_.trial.curioForLandmark(landmarkId);
+    if (!curio || !curioHeld(curio->id)) return false;
+    remove(inventory, {{curio->id, 1}});
+    recordWorldEffect(curio->unlock);
+    return true;
+}
+
+std::string PlayerEconomy::landmarkWants(const std::string& landmarkId) const {
+    const auto* curio = tuning_.trial.curioForLandmark(landmarkId);
+    return curio ? curio->id : std::string();
+}
+
+bool PlayerEconomy::curioHeld(const std::string& curioId) const {
+    auto it = inventory.find(curioId);
+    return it != inventory.end() && it->second > 0;
+}
+
+std::vector<std::string> PlayerEconomy::curioHints() const {
+    std::vector<std::string> out;
+    for (const auto& curio : tuning_.trial.curios)
+        if (curioHeld(curio.id)) out.push_back(curio.displayName + ": " + curio.reading);
+    return out;
+}
+
 Inventory PlayerEconomy::storeRemove(const std::string& key) {
     auto it = stores_.find(key);
     if (it == stores_.end()) return {};
