@@ -6,7 +6,7 @@
     "fire",
     "cold"
   ],
-  "design_purpose_damage_types": "The packet types a player's hit can carry (D-023 slice 2). A skill's own type is the first of these among its tags; the plate can add the others as packets of their own (grammar::skillHit), each scaled by its own type's modifiers, each met by a mob's immune_damage on its own. The order is the fallback: a skill naming no type hits as the first.",
+  "design_purpose_damage_types": "The packet types a player's hit can carry (D-023 slice 2). A skill's own type is the first of these among its tags; the plate can add the others as packets of their own (grammar::skillHit), each scaled by its own type's modifiers, each met by a mob's damage_taken share on its own. The order is the fallback: a skill naming no type hits as the first.",
   "statuses": {
     "chill": {
       "buildup_max": 100.0,

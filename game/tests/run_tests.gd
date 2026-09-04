@@ -607,9 +607,9 @@ func _test_sim_extension() -> void:
 	var braced: float = sim.enemy_hit_damage(40.0, "physical", 100.0)
 	check(braced < plain * 0.9, "combat: armour the engine grants for a cast counts in mitigation")
 	check(absf(sim.ward_multiplier(PackedStringArray(["chill", "ignite"])) - 1.0) < 0.000001, "combat: no ward reading, no ward")
-	check(sim.enemy("hollow_knight")["immune_damage"].has("fire") and sim.enemy("ember_whelp")["immune_damage"].is_empty()
-		and sim.elite_modifier("cinder_blooded")["immune_damage"].is_empty(),
-		"world: a hollow knight takes no fire packet; a whelp and the cinder-blooded prefix take every packet")
+	check(sim.enemy("hollow_knight")["damage_taken"].get("fire", 1.0) < 0.5 and sim.enemy("hollow_knight")["damage_taken"]["fire"] > 0.0
+		and sim.enemy("ember_whelp")["damage_taken"].is_empty() and sim.elite_modifier("cinder_blooded")["damage_taken"].is_empty(),
+		"world: a hollow knight takes a small share of a fire packet; a whelp and the cinder-blooded prefix take every packet whole")
 
 	# Gathering sites and the open-world death contract's inventory drop.
 	var mine: Dictionary = sim.gather_site("old_mine")

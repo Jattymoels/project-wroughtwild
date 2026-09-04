@@ -105,9 +105,10 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
 5. A matching ingot touching a support from any side but the socket's
    backs it: the support counts once more. The line rule is gone.
 6. The player's hit is a list of typed packets (`grammar::skillHit`), each
-   scaled by its own type's modifiers, each met by a mob's `immune_damage`
-   on its own (the Hollow Knight and the Cinder Wisp take no fire). A
-   reading keeps its modifier's type and requires its skill's tag.
+   scaled by its own type's modifiers, each met by a mob's `damage_taken`
+   on its own (the Hollow Knight and the Cinder Wisp take a quarter of
+   fire; nothing is immune). A reading keeps its modifier's type and
+   requires its skill's tag.
 7. Vigour, Plate and Ward read a skill weakly: a kill with it restores 1
    life; casting it grants 4 armour for `cast_armour_seconds`; an enemy
    carrying its status deals 5% less to you.

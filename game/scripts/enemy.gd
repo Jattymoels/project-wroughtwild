@@ -76,9 +76,11 @@ var elite_id := ""
 ## Seconds since something hurt this mob (packs sleep only when calm).
 var since_hurt := 1e9
 var _immune_statuses := PackedStringArray()
-## Packet types the family or its elite prefix takes nothing from (D-023
-## slice 2): a two-element hit lands only its other packet.
-var _immune_damage := PackedStringArray()
+## The family's share of each packet type, its elite prefix's multiplied
+## in (D-023 slice 2; world.json damage_taken): a hollow suit takes a
+## quarter of fire, so a two-element hit lands mostly its other packet.
+## Types not named land whole; 0 would be immunity.
+var _damage_taken := {}
 var _burst_damage := 0.0
 var _burst_radius := 0.0
 var _burst_type := "fire"
@@ -181,7 +183,7 @@ func configure(sim: WroughtwildSim) -> void:
 	# A family's own look (world.json tint, size_scale) over the behaviour's default.
 	# A family's own immunities (elites add theirs on top in make_elite).
 	_immune_statuses = PackedStringArray(def.get("immune_statuses", PackedStringArray()))
-	_immune_damage = PackedStringArray(def.get("immune_damage", PackedStringArray()))
+	_damage_taken = Dictionary(def.get("damage_taken", {})).duplicate()
 	var tint: String = def.get("tint", "")
 	if tint != "":
 		_material.albedo_color = Color(tint)
@@ -212,7 +214,9 @@ func make_elite(mod: Dictionary) -> void:
 	damage *= mod.get("damage_multiplier", 1.0)
 	move_speed *= mod.get("speed_multiplier", 1.0)
 	_immune_statuses.append_array(mod.get("immune_statuses", PackedStringArray()))
-	_immune_damage.append_array(mod.get("immune_damage", PackedStringArray()))
+	var taken: Dictionary = mod.get("damage_taken", {})
+	for type in taken:
+		_damage_taken[type] = float(_damage_taken.get(type, 1.0)) * float(taken[type])
 	_burst_damage = mod.get("death_burst_damage", 0.0)
 	_burst_radius = mod.get("death_burst_radius_m", 0.0)
 	_burst_type = mod.get("death_burst_type", "fire")
@@ -595,18 +599,19 @@ func force_attack() -> float:
 	return player.combat.take_hit(damage, damage_type, display_name, self)
 
 
-## One typed packet of a player's hit (D-023 slice 2): a type the family or
-## its elite prefix is immune to lands as nothing. Returns what landed.
+## One typed packet of a player's hit (D-023 slice 2), scaled by this
+## mob's share of the type. Returns what landed.
 func take_typed(amount: float, type: String, flash: bool = true) -> float:
-	if amount <= 0.0 or life <= 0.0 or _immune_damage.has(type):
+	var landed := amount * damage_taken(type)
+	if landed <= 0.0 or life <= 0.0:
 		return 0.0
-	take_damage(amount, flash)
-	return amount
+	take_damage(landed, flash)
+	return landed
 
 
-## True when this mob takes nothing of a packet type.
-func immune_to(type: String) -> bool:
-	return _immune_damage.has(type)
+## This mob's share of a packet type: 1 for a type not named.
+func damage_taken(type: String) -> float:
+	return float(_damage_taken.get(type, 1.0))
 
 
 ## The statuses this mob carries right now, for the Ward reading: chill

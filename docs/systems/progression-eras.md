@@ -573,13 +573,16 @@ might pursue different builds"): nothing on the plate is inert.
   wards multiplying). The bases stay on the sheet. Haste read every attack
   and spell already; Reach read area, projectile and strike skills from
   slice 1.
-- **Immunities by packet type.** `world.json` enemies and elite prefixes
-  may name `immune_damage`; the engine deals a hit packet by packet
-  (`Enemy.take_typed`) and a mob takes nothing of a type it is immune to.
-  The Hollow Knight, whose purpose already read "fire does nothing to a
-  hollow suit", and the Cinder Wisp are the two fire-proof families; a
-  fire-and-cold bolt lands its cold on them. Shatter novas and the burn
-  and bleed ticks go the same way.
+- **Resistance by packet type.** `world.json` enemies and elite prefixes
+  may name `damage_taken`, a multiplier per packet type (a prefix's
+  multiplies onto the family's; 0 would be immunity, and nothing is
+  immune); the engine deals a hit packet by packet (`Enemy.take_typed`)
+  and a mob takes its share of each. The Hollow Knight, whose purpose
+  already read "fire does nothing to a hollow suit", and the Cinder Wisp
+  take a quarter of fire - the owner, on seeing full immunity: "heavy
+  reduced damage taken by fire, not completely fire immune" - so a
+  fire-and-cold bolt lands its cold on them whole and a little of its
+  fire. Shatter novas and the burn and bleed ticks go the same way.
 - **Tells and sentences.** The hitmarker takes the hit's types: white for
   a plain blow, the element's tint for one element, a doubled mark in the
   blended tint for a two-element hit. A modifier may carry its own
@@ -596,11 +599,11 @@ support fraction, scaled by fire gear and the ember's own base and never
 by cold; a frost support scaling the cold packet and never the added
 fire; backing an added reading; ember beside a fire skill scaling and
 adding nothing; a strike carrying cold; the three weak readings and their
-numbers, the ward by carried status, the sheet untouched; immunities
+numbers, the ward by carried status, the sheet untouched; the fire shares
 loading; the hit stream rolling packets in step with the number). Engine:
 unit 342 (packets rolled as the number, a dash's empty hit, armour
 granted by the engine counting in mitigation, the ward silent bare, the
-knight's immunity, the Plate reading beside the orb through the door);
+knight's fire share, the Plate reading beside the orb through the door);
 integration 217 (six effects with the ember adding fire to
 the strike, the strike a physical-and-fire blow, a cast of the area strike
 bracing the player for four armour and passing).
