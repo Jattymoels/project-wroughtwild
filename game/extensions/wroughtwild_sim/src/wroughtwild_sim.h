@@ -152,6 +152,10 @@ public:
     double skill_haste_on_kill(const String& skill_id) const;
     // Rails (D-023 slice 9): the projectiles a cast fires and how many
     // enemies each pierces; the specialisation and the rails themselves.
+    // Melee's space control (Wave 5 item 11): the stagger and the shove a
+    // skill deals the mob it hits.
+    double skill_stagger(const String& skill_id, bool is_boss = false) const;
+    double skill_push(const String& skill_id, bool is_boss = false) const;
     int skill_projectiles(const String& skill_id) const;
     int skill_pierce(const String& skill_id) const;
     bool foundry_choose_class(const String& class_id);

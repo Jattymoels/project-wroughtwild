@@ -96,10 +96,12 @@ func _physics_process(delta: float) -> void:
 	if _tick_statuses(delta):
 		velocity.x = 0.0
 		velocity.z = 0.0
+		_apply_shove(delta)
 		move_and_slide()
 		return
 	var player := _find_player()
 	if player == null:
+		_apply_shove(delta)
 		move_and_slide()
 		return
 
@@ -139,6 +141,7 @@ func _physics_process(delta: float) -> void:
 	_hop_if_blocked(planar)
 	if state != "inhale":
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+	_apply_shove(delta)
 	move_and_slide()
 
 

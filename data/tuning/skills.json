@@ -32,7 +32,7 @@
       }
     }
   ],
-  "design_purpose_combat_skills": "D-016: skills are learned, not worn. Each entry is one skill: its delivery (the engine's shape: cone, strike, projectile, dash), its tags (what modifiers and hooks latch onto) and its payload numbers. `starting` skills are the base kit (a character with no class yet: tests and harnesses); a class chosen before play (foundry.json rails.classes[].starting_skills, 4 Sep 2026) replaces them with its own kit and fills the bar in that order - a bow shot for the Ranger, strikes for the Warden, a bolt and a sweep for the Kindler - and the base skills a class does not carry become pages. The rest are learned from skill pages that mobs drop, weighted by drop_weight among the skills the player does not know yet. Gear never grants a skill - it only scales skills by tag.",
+  "design_purpose_combat_skills": "D-016: skills are learned, not worn. Each entry is one skill: its delivery (the engine's shape: cone, strike, projectile, dash), its tags (what modifiers and hooks latch onto) and its payload numbers. `starting` skills are the base kit (a character with no class yet: tests and harnesses); a class chosen before play (foundry.json rails.classes[].starting_skills, 4 Sep 2026) replaces them with its own kit and fills the bar in that order - a bow shot for the Ranger, strikes for the Warden, a bolt and a sweep for the Kindler - and the base skills a class does not carry become pages. The rest are learned from skill pages that mobs drop, weighted by drop_weight among the skills the player does not know yet. Gear never grants a skill - it only scales skills by tag. MELEE (4 Sep 2026, Wave 5 item 11): a strike or a sweep carries stagger_seconds (the mob it hits halts that long and loses its wind-up), push_m (it is shoved that far back, along the blow) and swing_armour for swing_seconds (the armour committing to the swing grants you, on the same clock as the Plate reading's armour on cast); bosses take grammar.json hooks.melee's fractions of the stagger and the push. All three resolve through the grammar (add_stagger, add_push, add_armour_on_cast), so gear and the plate can grow them.",
   "combat_skills": [
     {
       "id": "prototype_bow_shot",
@@ -83,6 +83,10 @@
       "ignite_buildup": 35,
       "base_area_radius": 2.5,
       "cooldown_seconds": 1.0,
+      "stagger_seconds": 0.1,
+      "push_m": 0.8,
+      "swing_armour": 6,
+      "swing_seconds": 0.4,
       "design_purpose": "The Kindler's close answer: a burning sweep in front (the player's cone) that is an ATTACK of fire, so it shatters a frozen ring and lights the packs the bolt cannot single out. Its ignite builds slower than the bolt's; Kindling and the Pyre rail are where it pays.",
       "mastery": [
         {
@@ -113,6 +117,10 @@
       "base_damage": 12,
       "base_area_radius": 2.5,
       "cooldown_seconds": 0.8,
+      "stagger_seconds": 0.15,
+      "push_m": 1.2,
+      "swing_armour": 8,
+      "swing_seconds": 0.4,
       "mastery": [
         {
           "uses": 30,
@@ -141,6 +149,10 @@
       "drop_weight": 0.5,
       "base_damage": 28,
       "cooldown_seconds": 1.4,
+      "stagger_seconds": 0.4,
+      "push_m": 0.5,
+      "swing_armour": 12,
+      "swing_seconds": 0.5,
       "mastery": [
         {
           "uses": 30,
@@ -257,6 +269,10 @@
       "base_damage": 18,
       "bleed_buildup": 70,
       "cooldown_seconds": 1.1,
+      "stagger_seconds": 0.3,
+      "push_m": 0.3,
+      "swing_armour": 10,
+      "swing_seconds": 0.4,
       "design_purpose": "A heavy strike that trades hit damage for bleed: two rends open a wound, and a bleeding mob that keeps chasing takes the moving multiplier - the anti-kite answer to D-012's stupid-zombie trains. Being an attack it also shatters frozen mobs.",
       "mastery": [
         {

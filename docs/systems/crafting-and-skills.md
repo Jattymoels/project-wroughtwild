@@ -97,3 +97,13 @@ recipe `dress_stone` turns two split stones into one block of the stone
 family. Timber wedges (`timber_wedge`, one timber makes two) are hand-made
 and spent per split at a seam. Masonry is dearer and slower than timber on
 purpose; the forge kit's eight stone is the first masonry ambition.
+
+**The bench kept alive (4 Sep 2026, Wave 5 item 11):** the bench bundles
+eight wedges from three timber (`timber_wedges_bulk`), and joints the
+**timber frame** (`timber_frame`, ten timber) that the forge's and the
+yard's kits are now built on (`forge_kit`: a frame, eight stone, four
+iron ore; `mason_yard_kit`: a frame, six fieldstone), so the bench stays
+in the chain for every station the valley founds. The owner (4 Sep) is
+unsure wedges should be a big thing to craft and would like the bench to
+make world and nature pieces - decorations, farming aids; the roadmap
+carries that as the next bench slice.

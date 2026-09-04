@@ -154,10 +154,20 @@ double skillDamage(const tuning::Tuning& tuning, const ActiveMods& active,
 double skillLifeOnKill(const tuning::Tuning& tuning, const ActiveMods& active,
                        const std::string& skillId);
 
-// Armour a cast of the skill grants for tuning.foundry.castArmourSeconds
-// (add_armour_on_cast; the Plate reading). The engine runs the clock.
+// Armour a cast of the skill grants (add_armour_on_cast; the Plate
+// reading) on top of the skill's own swing_armour (melee, Wave 5 item
+// 11). The engine runs the clock: the skill's swing_seconds, or
+// tuning.foundry.castArmourSeconds when a reading speaks.
 double skillCastArmour(const tuning::Tuning& tuning, const ActiveMods& active,
                        const std::string& skillId);
+// How long the skill's own swing armour lasts (0: the skill has none).
+double skillSwingSeconds(const tuning::Tuning& tuning, const std::string& skillId);
+// Melee's space control (Wave 5 item 11): how long a mob the skill hits
+// halts (its stagger_seconds, resolved as "stagger") and how far it is
+// shoved along the blow (push_m, resolved as "push"); a boss takes the
+// grammar's melee fractions.
+double skillStagger(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId, bool isBoss);
+double skillPush(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId, bool isBoss);
 
 // What an enemy's hit on the player is multiplied by, given the statuses
 // the enemy carries (of chill, ignite, bleed): every skill with a

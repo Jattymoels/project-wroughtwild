@@ -368,10 +368,25 @@ the world is the campaign. Slices, in order:
    waits on a decision, because the class kits changed who can quench
    (only the Kindler and the Warden start with cold; a Ranger cracks hot
    rock only with a blow) - the candidates are an iron vein that wants
-   heat, or a hard seam. **Next**: melee's stagger/push/swing armour, and
-   the bench kept alive (bulk wedges, frames for the yard and the forge).
-   The owner (4 Sep) likes the current tuning: the damage pass is
-   closed.
+   heat, or a hard seam. **Melee's space control** *(landed 4 Sep 2026)*:
+   a strike or a sweep staggers the mob it hits (`stagger_seconds`: it
+   halts and loses its wind-up), shoves it along the blow (`push_m`; the
+   area strike 1.2 m, the sweep's "shove the line, own the space") and
+   braces the swinger (`swing_armour` for `swing_seconds`, on the same
+   clock as the Plate reading's armour on cast); a boss takes half the
+   stagger and none of the push (`grammar.json hooks.melee`); all three
+   resolve through the grammar, so gear and the plate can grow them.
+   **The bench kept alive** *(landed 4 Sep 2026)*: a bundle of eight
+   wedges from three timber, and a **timber frame** (ten timber) that the
+   forge's and the yard's kits are built on, so the bench stays in the
+   chain for every station. The owner (4 Sep): unsure wedges should be a
+   big thing to craft, "okay for now"; and would like the bench to make
+   "world/nature building things ... decorations, or things to help with
+   farming" - recorded here as the next bench slice, with two candidates:
+   decorative pieces that need no system (a fence rail, a lantern post, a
+   planter box) and a garden bed that grows a fibre or a food once a
+   farming loop exists. The owner (4 Sep) likes the current tuning: the
+   damage pass is closed.
 12. **The working** *(proposed 3 Sep 2026, D-023; owner answers 4 Sep;
    slices 1 to 10 - the frame, every ingot reads every skill, typed
    currency, the flow with kinds in the detached cells and the first

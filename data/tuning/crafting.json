@@ -3,6 +3,10 @@
   "status": "prototype-placeholder | D-023 slice 3 (4 Sep 2026): typed currency - four kinds replace the coin",
   "materials": [
     {
+      "id": "timber_frame",
+      "display_name": "Timber Frame"
+    },
+    {
       "id": "wood",
       "display_name": "Wood"
     },
@@ -129,6 +133,42 @@
     }
   ],
   "recipes": [
+    {
+      "id": "timber_wedges_bulk",
+      "display_name": "Timber Wedges (a bundle)",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 3
+      },
+      "outputs": {
+        "timber_wedge": 8
+      },
+      "base_skill_xp": 1,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "The bench kept alive (Wave 5 item 11): a bundle of eight wedges from three timber, against two from one by hand. The owner (4 Sep 2026) is unsure wedges should be a big thing to craft - 'okay for now' - so the bench makes them cheap rather than the seam making them optional."
+    },
+    {
+      "id": "timber_frame",
+      "display_name": "Timber Frame",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 10
+      },
+      "outputs": {
+        "timber_frame": 1
+      },
+      "base_skill_xp": 2,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "The frame the yard's and the forge's kits are built on: jointed at the bench, so the bench stays in the chain for every station the valley founds."
+    },
     {
       "id": "hunting_bow",
       "display_name": "Hunting Bow",
@@ -315,7 +355,7 @@
       "station": "workbench",
       "minimum_skill": {},
       "inputs": {
-        "wood": 10,
+        "timber_frame": 1,
         "fieldstone": 6
       },
       "outputs": {
@@ -352,7 +392,7 @@
       "station": "workbench",
       "minimum_skill": {},
       "inputs": {
-        "wood": 12,
+        "timber_frame": 1,
         "stone": 8,
         "iron_ore": 4
       },

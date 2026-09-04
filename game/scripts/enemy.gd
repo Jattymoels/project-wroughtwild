@@ -82,8 +82,12 @@ var _damage_taken := {}
 var _burst_damage := 0.0
 ## Sear (a form): how much faster the current burn ticks while walking and bleeding.
 var _sear := 0.0
-## A stagger (the Riposte rail, D-023 slice 9): seconds the mob stands halted.
+## A stagger (the Riposte rail, D-023 slice 9; melee, Wave 5 item 11):
+## seconds the mob stands halted. A shove: the displacement still owed
+## to a blow, paid over SHOVE_SECONDS.
 var _stagger_left := 0.0
+var _shove_left := Vector3.ZERO
+const SHOVE_SECONDS := 0.12
 var _burst_radius := 0.0
 var _burst_type := "fire"
 
@@ -323,6 +327,36 @@ func stagger(seconds: float) -> void:
 		state = "chase"
 
 
+## True while a blow has this mob halted (tests, and the HUD's tells).
+func staggered() -> bool:
+	return _stagger_left > 0.0
+
+
+## A shove (melee, Wave 5 item 11): the mob owes `metres` of movement along
+## `direction`, paid over the next SHOVE_SECONDS whatever it was doing -
+## staggered or not. The sim says how far; this pays it.
+func shove(direction: Vector3, metres: float) -> void:
+	if metres <= 0.0 or life <= 0.0:
+		return
+	var planar := Vector3(direction.x, 0.0, direction.z)
+	if planar.length_squared() < 0.0001:
+		return
+	_shove_left += planar.normalized() * metres
+
+
+## Adds this frame's share of the shove to the velocity, called before
+## every move_and_slide so a halted or fleeing mob is shoved too.
+func _apply_shove(delta: float) -> void:
+	if _shove_left.length_squared() < 0.000001:
+		_shove_left = Vector3.ZERO
+		return
+	var share := minf(1.0, delta / SHOVE_SECONDS)
+	var step := _shove_left * share
+	_shove_left -= step
+	velocity.x += step.x / maxf(delta, 0.0001)
+	velocity.z += step.z / maxf(delta, 0.0001)
+
+
 ## True while this mob is moving toward the point (the Hound's Manner).
 func approaching(point: Vector3) -> bool:
 	var planar := Vector2(velocity.x, velocity.z)
@@ -457,11 +491,13 @@ func _physics_process(delta: float) -> void:
 	if _tick_statuses(delta):
 		velocity.x = 0.0
 		velocity.z = 0.0
+		_apply_shove(delta)
 		move_and_slide()
 		return
 
 	var player := _find_player()
 	if player == null:
+		_apply_shove(delta)
 		move_and_slide()
 		return
 
@@ -489,6 +525,7 @@ func _physics_process(delta: float) -> void:
 		_hop_if_blocked(planar)
 		if planar.length_squared() > 0.0001:
 			look_at(global_position + Vector3(planar.x, 0.0, planar.z), Vector3.UP)
+		_apply_shove(delta)
 		move_and_slide()
 		return
 
@@ -539,6 +576,7 @@ func _physics_process(delta: float) -> void:
 	_hop_if_blocked(planar)
 	if planar.length_squared() > 0.0001 and distance > 0.05:
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+	_apply_shove(delta)
 	move_and_slide()
 
 

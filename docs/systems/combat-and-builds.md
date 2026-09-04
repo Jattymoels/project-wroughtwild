@@ -57,6 +57,25 @@ nova for the Warden, a bolt and a burning sweep for the Kindler, the
 Dash for everyone; the base four are pages for the classes without
 them.
 
+## Melee's space control (4 Sep 2026)
+
+The grammar doc's "knockback / stagger: physical space control", built.
+A strike or a sweep carries three numbers in `skills.json`:
+`stagger_seconds` (the mob it hits halts that long and loses its wind-up:
+the heavy strike 0.4, Rend 0.3, the area strike 0.15, the cinder sweep
+0.1), `push_m` (it is shoved that far along the blow: the area strike
+1.2, the sweep 0.8, the heavy strike 0.5, Rend 0.3) and `swing_armour`
+for `swing_seconds` (the armour committing to the swing grants you: the
+heavy strike 12 for half a second, Rend 10, the area strike 8, the sweep
+6 - on the same clock as the Plate reading's armour on cast, which adds
+to it). A boss takes half the stagger and none of the push
+(`grammar.json` `hooks.melee`). The sim resolves all three
+(`add_stagger`, `add_push`, `add_armour_on_cast`), so a modifier or a
+rail can grow them; the engine halts the mob (`Enemy.stagger`) and pays
+the shove over a tenth of a second whatever the mob was doing
+(`Enemy.shove`). Tests: sim 3678, integration 225, grammar 68 (a staggered
+whelp, a braced swing, a shoved line).
+
 ## Tags
 
 Skills and effects should use composable tags such as:

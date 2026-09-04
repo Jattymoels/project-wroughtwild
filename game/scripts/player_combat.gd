@@ -589,6 +589,7 @@ func _use_cone(skill_id: StringName) -> int:
 			if not types.has(type):
 				types.append(type)
 		fire_links(skill_id, crossed, enemy)
+		_space_control(enemy, skill_id, to_enemy / maxf(distance, 0.001))
 		hits += 1
 
 	var cascade := _shatter_cascade(to_shatter, shatter, sim.skill_nova_chill(String(skill_id)))
@@ -640,6 +641,7 @@ func _use_strike(skill_id: StringName) -> bool:
 			if not types.has(type):
 				types.append(type)
 		fire_links(skill_id, crossed, enemy)
+		_space_control(enemy, skill_id, -player.global_transform.basis.z)
 	var cascade := _shatter_cascade(to_shatter, shatter, sim.skill_nova_chill(String(skill_id)))
 	total += cascade["damage"]
 	kills += cascade["kills"]
@@ -648,6 +650,17 @@ func _use_strike(skill_id: StringName) -> bool:
 		types.append(String(shatter.get("nova_damage_type", "cold")))
 	hit_landed.emit(total, kills, types)
 	return true
+
+
+## Melee's space control (Wave 5 item 11): the mob a blow lands on halts
+## for the skill's stagger and is shoved its push along the blow. The sim
+## says both numbers, a boss its fractions; this halts and shoves.
+func _space_control(enemy: Enemy, skill_id: StringName, along: Vector3) -> void:
+	if not is_instance_valid(enemy) or enemy.life <= 0.0:
+		return
+	var id := String(skill_id)
+	enemy.stagger(sim.skill_stagger(id, enemy is Boss))
+	enemy.shove(along, sim.skill_push(id, enemy is Boss))
 
 
 ## Every living enemy in front within `reach` and no more than `half_width`

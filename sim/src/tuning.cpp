@@ -881,6 +881,10 @@ GrammarTable loadGrammar(const std::string& path) {
     table.shatter.executesFrozen = shatter.get("executes_frozen").asBool();
     table.shatter.executesBoss = shatter.get("executes_boss").asBool();
 
+    if (auto melee = hooks.find("melee")) {
+        table.melee.bossStaggerMultiplier = melee->get("boss_stagger_multiplier").asNumber();
+        table.melee.bossPushMultiplier = melee->get("boss_push_multiplier").asNumber();
+    }
     const Value& proliferate = hooks.get("proliferate");
     table.proliferate.enabled = proliferate.get("enabled").asBool();
     table.proliferate.radiusM = proliferate.get("radius_m").asNumber();
