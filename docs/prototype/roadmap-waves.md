@@ -278,7 +278,8 @@ the threat should not vanish at higher tiers either. Threat around a base
 must be *pressure*, not demolition; and it must not become a farm ("an
 exploit to just wait in your base for the mobs to get larger").
 
-**Encroachment slice 1 (landed 3 Sep 2026):** once the player has a home
+**Encroachment slice 1 (landed 3 Sep 2026; retired 4 Sep 2026, D-024):**
+once the player has a home
 (a shelter rested in), packs settle into **nests** on its fringe ring,
 one per `settle_seconds` up to a cap, spaced apart. A standing nest grows
 a tier at a time (bigger pack; the top tier brings a shrieker), refills
@@ -286,10 +287,11 @@ its fallen, and blights rest within its radius (uneasy rest, a fraction
 of the regen). The exploit guard: only a fraction of nest-born kills drop
 anything, and tearing a nest down (E, once undefended) drops nothing —
 it ends the nuisance and scars the spot. Rules in `sim/encroachment.h`,
-numbers in `world.json` `encroachment`; nests are not saved. Next
-slices: burrowers that trench the ground between nest and home (the dig
-system, turned around), and the shut-door siege: packs massing at the
-door, the shrieker calling more, the sortie as the moment.
+numbers in `world.json` `encroachment`; nests are not saved. **Retired
+4 Sep 2026:** the owner found nests "not rewarding" and unnatural to the
+world; the code and data are gone (D-024), and the base threat waits on
+a later reassessment of mob AI behaviours. The burrower and siege slices
+that were to follow are shelved with it.
 
 Still ahead for building: the owner's next playtest, an alloy family.
 Deliberately out: structural-support rules, wall damage.
@@ -306,7 +308,7 @@ the world is the campaign. Slices, in order:
    crack (nodes carry an era; the engine reveals them with a notice and a
    light shift); bronze as the alloy family (malleable, tough) and the
    arch as the first curved form; hounds run in bigger packs and whelps
-   leave burning ground; encroachment switches on only from era two.
+   leave burning ground.
 2. **The Foundry** *(landed 3 Sep 2026)*: a 3×3 plate that widens with the
    era, eight ingot verbs, ten pairs and lines of three, twelve milestone
    sources (first kills, first smelts, the mine, the Tyrant, the era, the

@@ -8,8 +8,6 @@ extends CharacterBody3D
 
 signal died(enemy: Enemy)
 
-## The nest that fielded this mob (encroachment), 0 for a roaming pack.
-var nest_id := 0
 ## True for a trial room's own enemies: the room contains, counts and
 ## clears only these, never a roaming pack that wandered near the arena.
 var trial_bound := false
@@ -448,7 +446,7 @@ func _proliferate(fraction: float = 1.0) -> void:
 
 ## True while nothing is happening to this mob: a pack of these may sleep.
 func calm() -> bool:
-	return (state == "idle" or state == "flee") and life > 0.0 and not trial_bound and nest_id == 0
+	return (state == "idle" or state == "flee") and life > 0.0 and not trial_bound
 
 
 func _physics_process(delta: float) -> void:

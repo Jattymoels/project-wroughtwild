@@ -189,39 +189,15 @@ func _test_lattice() -> void:
 		"shelter: standing outside the box is not sheltered")
 	sim.structure_clear()
 
-	# Encroachment through the door: nothing without a home, a nest on the
-	# fringe with a home, uneasy rest beside it, a scar after clearing.
-	sim.encroachment_reset(5)
-	var enc_rules: Dictionary = sim.encroachment_rules()
-	# Nests belong to era two: with a home in era one nothing settles.
+	# Eras through the door (the nests that once rode them were retired
+	# 4 Sep 2026, D-024).
 	check(sim.era()["index"] == 1, "eras: a fresh sim is era one")
-	sim.encroachment_tick(10.0, true, Vector3(40, 0, 40))
-	check(sim.encroachment_tick(10.0 + enc_rules["settle_seconds"] * 2, true, Vector3(40, 0, 40)).is_empty(),
-		"eras: era one has no nests even with a home")
 	sim.record_world_effect("stonecut_blocks")
-	check(sim.era()["index"] == 2 and sim.era()["id"] == "deep_wakes" and sim.era()["encroachment"],
+	check(sim.era()["index"] == 2 and sim.era()["id"] == "deep_wakes" and not sim.era().has("encroachment"),
 		"eras: the completion effect wakes the deep")
 	check(sim.era_mechanic("ash_hound", "pack_size_bonus").get("value", 0) == 1
 		and sim.era_mechanic("ember_whelp", "burning_ground").has("seconds")
 		and sim.era_mechanic("stone_husk", "burning_ground").is_empty(), "eras: mechanics through the door")
-	sim.encroachment_reset(5)
-	check(enc_rules["max_nests"] >= 1 and sim.encroachment_tick(10.0, false, Vector3.ZERO).is_empty(),
-		"encroach: nothing settles without a home")
-	sim.encroachment_tick(10.0, true, Vector3(40, 0, 40))
-	var born: Array = sim.encroachment_tick(10.0 + enc_rules["settle_seconds"], true, Vector3(40, 0, 40))
-	check(born.size() == 1 and born[0]["pack"].size() >= 1 and sim.encroachment_nests().size() == 1,
-		"encroach: a nest settles on the fringe with a pack")
-	var at := Vector3(born[0]["x"], 0.0, born[0]["z"])
-	check(at.distance_to(Vector3(40, 0, 40)) <= 31.0 and sim.encroachment_rest_multiplier(at) < 1.0
-		and sim.encroachment_rest_multiplier(Vector3(400, 0, 400)) == 1.0, "encroach: blight only near the nest")
-	var dropped := 0
-	for k in 200:
-		if sim.encroachment_kill_drops(k * 31 + 7):
-			dropped += 1
-	check(dropped > 40 and dropped < 130, "encroach: nest-born kills drop only a fraction of the time")
-	check(sim.encroachment_pressure() == 1 and sim.encroachment_clear(born[0]["id"], 500.0)
-		and sim.encroachment_nests().is_empty() and sim.encroachment_pressure() == 0, "encroach: a nest tears down")
-	sim.encroachment_reset(5)
 
 	# The Foundry through the door: a milestone forges an ingot, the plate
 	# takes it, the pair speaks, and the stats read it.

@@ -15,8 +15,6 @@ const ORDER_BOARD_SCENE := preload("res://scenes/order_board.tscn")
 
 @onready var terrain: Terrain = $Terrain
 @onready var mob_packs: MobPacks = $MobPacks
-## Base threat as pressure (D-018): nests on the fringe of the player's home.
-var encroachment: Encroachment
 ## Eras (D-019): the world's state, polled from the sim; a change reveals
 ## the era's nodes, shifts the light and tells the story.
 var _era_index := 0
@@ -41,11 +39,6 @@ func _build_world(seed_value: int) -> void:
 	if terrain.map.is_empty():
 		return
 	mob_packs.setup(terrain, seed_value)
-	if encroachment == null:
-		encroachment = Encroachment.new()
-		encroachment.name = "Encroachment"
-		add_child(encroachment)
-	encroachment.setup(mob_packs, seed_value)
 
 	var spawn := terrain.surface_position(terrain.map["spawn_x"], terrain.map["spawn_z"])
 	player.global_position = spawn + Vector3(0, 1.2, 0)
