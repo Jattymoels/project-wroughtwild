@@ -440,10 +440,20 @@ automation").
    danger rings at 110 m and 220 m, the gate past 160 m, packs off the
    doorstep to 50 m. Performance check: the 120-frame headless smoke run
    took 1.94 s before and 2.583 s after (world build included). Sim 4745.
-4. **The expansive pass**: a rim of massifs at the map edge, ground cover
-   per biome in batched meshes, three tree silhouettes by biome, fog that
-   deepens with distance, a palette pass; a river from the hills to the
-   fen as the add-on.
+4. **The expansive pass** *(landed 4 Sep 2026)*: a rim of massifs
+   climbing over the outer 34 cells to 16 blocks more, ridged by the
+   massif noise (`worldgen.json` mountains `rim_width_cells`,
+   `rim_extra_scale`), so the valley reads as a valley from anywhere;
+   ground cover per biome in one MultiMesh per chunk and kind - tufts and
+   flowers on the meadow, ferns in the forest, reeds in the fen, dead
+   grass on the ash, a rare tuft in the hills (`ground_cover.gd`, placed
+   by a hash of the cell so a rebuilt chunk grows the same); three tree
+   silhouettes by biome - the broadleaf, the forest's pine, the wastes'
+   bare snag (`prop_mesh.gd`); the mood table carrying each biome's sky
+   and aerial haze (the far distance dissolving into the sky, most in the
+   hills, least under the trees) with the five palettes warmed, darkened
+   or bleached apart. The river from the hills to the fen stays the
+   add-on. Sim 4791, engine unit 365.
 5. **Day and night**: a twelve-minute day; at night the light drains,
    packs roam wider, and the shelter is where you regenerate - the forced
    return home.

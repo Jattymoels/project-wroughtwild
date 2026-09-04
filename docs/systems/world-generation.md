@@ -125,6 +125,15 @@ now a **full 3D block field** the sim generates deterministically per seed
   triangles), so the engine builds one MultiMesh per kind and one trimesh
   body per 16×16 chunk without re-walking a million blocks in script.
   Chunks exist so the digging slice can rebuild one patch, not the world.
+- **The expansive pass (4 Sep 2026, Wave 6 slice 4):** the rim - over
+  the outer `rim_width_cells` the land climbs up to `rim_extra_scale`
+  blocks more, ridged by the massif noise, a ring of mountains around the
+  valley and never a wall; the spawn clearing stays inside. Ground cover
+  per biome (`ground_cover.gd`: tufts, flowers, ferns, reeds, dead grass)
+  in one MultiMesh per chunk and kind on the surface blocks, placed by a
+  hash of the cell. Tree silhouettes by biome: the broadleaf, the
+  forest's pine, the wastes' snag. The mood dial (`biome_mood.gd`) now
+  carries each biome's sky colours and aerial haze.
 - **Felling and cracking (4 Sep 2026, Wave 6 slice 1):** any node may
   want `drive_presses` of E per harvest. A tree is six presses that lean
   it further from you, then the whole tree comes down from the base and
