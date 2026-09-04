@@ -735,6 +735,11 @@ struct WorldgenGuarantees {
     double spawnClearRadiusM = 8.0;
     double nearRadiusM = 40.0;
     std::map<std::string, int> minNodesNear; // node type -> minimum count
+    // A farther ring for what should be a walk (Wave 6 slice 2, 4 Sep
+    // 2026): iron is guaranteed within farRadiusM, placed beyond the near
+    // radius when a seed comes up short.
+    double farRadiusM = 0.0;
+    std::map<std::string, int> minNodesFar;
     std::string gateBiome;
     double gateMinDistanceM = 45.0;
     double packMinDistanceFromSpawnM = 20.0;

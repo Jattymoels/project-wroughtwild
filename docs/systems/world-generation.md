@@ -132,8 +132,12 @@ now a **full 3D block field** the sim generates deterministically per seed
   `_fell`); a boulder cracks a chunk of three fieldstone off every third
   press and rolls over on the last. Meadow trees are sparser and bigger.
 - **Guarantees kept (D-003):** safe flat meadow clearing, minimum
-  wood/stone/iron within the near radius, packs off the doorstep, the
-  gate ≥ 70 m out in the wastes, all held across seeds by tests.
+  wood and stone within the near radius, packs off the doorstep, the
+  gate ≥ 70 m out in the wastes, all held across seeds by tests. **Iron
+  is a walk (4 Sep 2026, Wave 6 slice 2):** no iron is guaranteed near;
+  three veins are guaranteed within `far_radius_m` (ninety metres),
+  placed beyond the near radius when a seed comes up short, so the first
+  forge is a journey into the hills and back.
 
 **Seams (3 Sep 2026, D-021):** `stone_seam` nodes (three guaranteed inside
 the near radius, densest in the hills) are worked with a `tool_item` (the
