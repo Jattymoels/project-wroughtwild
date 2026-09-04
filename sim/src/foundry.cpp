@@ -115,9 +115,19 @@ std::vector<Cell> lineCells(const Plate& plate, const std::string& axis, int ind
 std::vector<std::string> knownPatterns(const tuning::Tuning& tuning, const State& state) {
     std::vector<std::string> known;
     const auto& rails = tuning.foundry.rails;
-    if (const auto* spec = rails.findSpecialisation(state.specialisation))
-        for (const auto& id : spec->patterns)
-            if (rails.findPattern(id) && !hasTag(known, id)) known.push_back(id);
+    const auto* cls = rails.findClass(state.chosenClass);
+    const auto* spec = rails.findSpecialisation(state.specialisation);
+    if (spec && (!cls || spec->classId != cls->id)) spec = nullptr;
+    if (cls) {
+        for (const auto& id : cls->patterns) {
+            std::string use = id;
+            if (spec) {
+                const auto it = spec->becomes.find(id);
+                if (it != spec->becomes.end()) use = it->second;
+            }
+            if (rails.findPattern(use) && !hasTag(known, use)) known.push_back(use);
+        }
+    }
     for (const auto& pattern : rails.patterns) {
         if (!pattern.isManner() || hasTag(known, pattern.id)) continue;
         const auto it = state.kills.find(pattern.taughtByEnemy);

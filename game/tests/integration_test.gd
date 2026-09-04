@@ -289,6 +289,17 @@ func _physics_process(_delta: float) -> void:
 			# the ingots beside it support that skill alone; a tablet lifts free.
 			_player.foundry_panel.refresh()
 			check((sim.foundry()["tablets"] as Array).size() >= 3, "plate: the known skills wait as tablets")
+			# The class (D-004, D-023 slice 9): chosen before play begins through
+			# its own panel. The sandpit opens it; a harness does by hand.
+			check(sim.foundry()["can_choose_class"] and _player.class_panel != null and not _player.class_panel.is_open(),
+				"class: no class yet, the panel waits")
+			_player.offer_class()
+			check(_player.class_panel.is_open() and _player.class_panel.class_count == 3, "class: the offer shows three classes")
+			check(_player.class_panel.choose("kindler") and not _player.class_panel.is_open() and sim.foundry()["class"] == "kindler"
+				and (sim.foundry()["patterns"] as Array).size() == 2, "class: a Kindler, and the panel closed on the choice")
+			_player.offer_class()
+			check(not _player.class_panel.is_open() and not _player.class_panel.choose("ranger"), "class: chosen once, the offer does not return")
+			_player.open_foundry()
 			# An edge ingot (the first strike-driven split) east of the socket at
 			# (1,1); the heavy strike's tablet in the socket: edge supports it.
 			check(sim.foundry_event("work:strike_split") == ["edge"] and sim.foundry_place(1, 2, "edge"), "plate: an edge ingot for the strike")

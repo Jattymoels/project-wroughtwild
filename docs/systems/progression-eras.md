@@ -929,28 +929,36 @@ leaving burning ground, dashing through enemies chilling them, a Dash
 cleansing a status, armour against burns and bleeds, the Marrow's
 regeneration), the rest of the variants, rails, Linger, compound forms.
 
-## Implemented: rails, the plate's exterior (4 Sep 2026, D-023 slice 9)
+## Implemented: rails, the class's surround (4 Sep 2026, D-023 slice 9)
 
-The owner's answer on class (4 Sep, later): no class at the start, "base
-tablet setups for the base class coming from nothing"; the first class
-hall test's completion offers a specialisation that "changes the exterior
-of the rows/columns upgrades". `data/tuning/foundry.json` (schema 9,
-`rails`), `items.json`; `sim/foundry.h`, `economy.h`, `stats.h`,
-`grammar.h`, `save.cpp`:
+The owner on class (4 Sep, later): "before you actually begin the game you choose a class, and in era 1 you can still access the plate/foundry, so that base plate's surrounding modifiers are determined by that first selection. Then once you complete trials you specialise further, getting a view of what the surround modifiers can become." A first reading that put the class
+at the trial was corrected the same day. `data/tuning/foundry.json`
+(schema 9, `rails`), `items.json`; `sim/foundry.h`, `economy.h`,
+`stats.h`, `grammar.h`, `save.cpp`; `game/scripts/class_panel.gd`:
 
-- **The test and the choice.** The class hall is not built (D-004), so
-  the Tyrant's forge stands in: recording its completion effect
-  (`rails.specialise_on_world_effect`) offers the choice in the Foundry
-  panel - Ranger (Volley, Quarry), Warden (Shield Wall, Riposte), Kindler
-  (Pyre, Ashen Step) - once. The trial's completion line says so.
+- **The class, before play.** The sandpit opens the class panel when no
+  class stands (a save that carries one never sees it): Ranger (Volley,
+  Quarry), Warden (Shield Wall, Riposte), Kindler (Pyre, Ashen Step),
+  each written out with what it may specialise into. Chosen once; the
+  class's two patterns are the plate's surround from era one.
 - **Rails.** One outside every row and column. `rails.by_era` allows
-  none in era one, one in era two, two in era three; one rail per
+  one in era one, two in era two, three in era three; one rail per
   pattern; a row rail only on a forged row; set and cleared in the panel
   for free. A pattern's condition reads the line's placed cells
   (`all_placed_are`, `alternating`, `ends_are`, `minimum_placed`,
   `holds_skill_tag`, `holds_kind_family`); the panel's rail button is lit
   while it holds and says which cell breaks it when it does not. The rule
   speaks to the line's skills, to every skill with a tag, or to the sheet.
+  Volley's minimum is one Reach: in era one a socket's column has a
+  single free cell, and the socket is the commitment.
+- **The trial and the view.** Recording the Tyrant's forge's completion
+  (`rails.specialise_on_world_effect`) offers, once, one of the class's
+  two specialisations; the offer and every set rail's tooltip write what
+  each pattern becomes (Fusillade or Split Volley, Deep Quarry or
+  Hamstring; Iron Wall or Bastion, Retaliation or Counterstroke;
+  Conflagration or Smoulder, Ash Walker or Hearth), and on the choice a
+  rail holding the base pattern becomes the grown one. A grown pattern
+  inherits its base's axis and condition (`from`) and changes the rule.
 - **Manners.** The kills the engine already reports count per family;
   twelve hounds teach the Hound's Manner, eight husks the Husk's, to any
   specialisation, announced on the HUD.
@@ -964,19 +972,24 @@ of the rows/columns upgrades". `data/tuning/foundry.json` (schema 9,
   `burningGroundHeal` (the ground heals instead of burning),
   `damageVsApproaching` (a hit on a mob whose velocity points at you) and
   `stillArmour` (a second of stillness, gone on the first step).
-- **The save** carries the specialisation, the rails and the kills; a
-  load drops a rail its patterns no longer cover or the era does not
-  allow, and forgets an unknown specialisation.
+- **The save** carries the class, the specialisation, the rails and the
+  kills; a load drops a rail its patterns no longer cover or the era does
+  not allow, forgets an unknown class or a specialisation of another
+  class, and offers the choice again.
 
-Tests: sim 3578 (the tuning; from nothing; the offer after the test; a
-Ranger once; Volley lit, broken by an Ember, waiting under the minimum
-and without a projectile skill; era three's second rail; Quarry scoped by
-tag; the twelfth hound; alternating; the save round trip and a doctored
-save; the Warden's Shield Wall waiting for its Vanguard and its
-mitigation, Riposte and the ends moving with the era; the Kindler's Pyre
-and Ashen Step, the eighth husk); engine unit 356; integration 220;
-grammar 62 (a bolt through two whelps, three orbs from one cast).
+Tests: sim 3587 (the tuning and a grown pattern's inheritance; no class
+yet; a Ranger once; Volley lit in era one by one Reach, broken by an
+Ember, waiting without a projectile skill; the trial's second rail and
+the offer; Quarry scoped by tag; a Sharpshooter's rails becoming
+Fusillade and Deep Quarry; the twelfth hound; alternating; the save round
+trip, a doctored specialisation and a doctored class; the Warden's Shield
+Wall waiting for its Vanguard and its mitigation, Riposte, a Sentinel's
+Bastion and Counterstroke, the ends moving with the era; the Kindler's
+Pyre, a Pyromancer's Conflagration and Ash Walker, the eighth husk);
+engine unit 357; integration 224 (the class panel: three classes, a Kindler
+chosen once); grammar 63 (a bolt through two whelps, three orbs from one
+cast, a Sharpshooter's three through).
 
-Not yet: the class hall as a place, later halls' exterior options, a
-manner per family, the readings needing player statuses, Linger, compound
-forms.
+Not yet: the class hall as a place (D-004), deeper trials as later
+specialisations, a manner per family, the readings needing player
+statuses, Linger, compound forms.

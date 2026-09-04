@@ -45,12 +45,12 @@ The chosen class points toward an authored class hall guaranteed within the gene
 
 The prototype implements only one representative hall and one meaningful choice.
 
-**Amended 4 Sep 2026 (D-023 slice 9, D-004).** There is no starting
-class: the bare Foundry plate is the base class. The first class hall's
-test grants the specialisation - Ranger, Warden or Kindler - and that
-opens the plate's exterior, the rails outside its rows and columns; later
-halls add exterior options. Until the hall is built as an authored
-module, the Tyrant's forge stands in for its test. See
+**Made concrete 4 Sep 2026 (D-023 slice 9).** The class - Ranger,
+Warden or Kindler - is chosen before play begins, and its two rail
+patterns are the Foundry plate's surround from era one. Completing the
+first trial offers a specialisation from the class's two, each shown as
+what every pattern becomes; until the hall is built as an authored
+module, the Tyrant's forge stands in for it. See
 [foundry.md](foundry.md), "Rails".
 
 ## Tags

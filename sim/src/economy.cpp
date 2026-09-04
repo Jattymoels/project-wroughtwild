@@ -439,15 +439,33 @@ bool PlayerEconomy::foundryRemove(int row, int col) {
     return true;
 }
 
+bool PlayerEconomy::canChooseClass() const {
+    return foundry_.chosenClass.empty() && !tuning_.foundry.rails.classes.empty();
+}
+
+bool PlayerEconomy::foundryChooseClass(const std::string& classId) {
+    if (!canChooseClass() || !tuning_.foundry.rails.findClass(classId)) return false;
+    foundry_.chosenClass = classId;
+    return true;
+}
+
 bool PlayerEconomy::canSpecialise() const {
     const auto& rails = tuning_.foundry.rails;
-    return foundry_.specialisation.empty() && !rails.specialisations.empty() &&
+    const auto* cls = rails.findClass(foundry_.chosenClass);
+    return cls && !cls->specialisations.empty() && foundry_.specialisation.empty() &&
            (rails.specialiseOnWorldEffect.empty() || worldEffectActive(rails.specialiseOnWorldEffect));
 }
 
 bool PlayerEconomy::foundrySpecialise(const std::string& specialisation) {
-    if (!canSpecialise() || !tuning_.foundry.rails.findSpecialisation(specialisation)) return false;
+    if (!canSpecialise()) return false;
+    const auto* spec = tuning_.foundry.rails.findSpecialisation(specialisation);
+    if (!spec || spec->classId != foundry_.chosenClass) return false;
     foundry_.specialisation = specialisation;
+    // A rail holding a pattern that becomes something becomes it too.
+    for (auto& rail : foundry_.rails) {
+        const auto it = spec->becomes.find(rail.pattern);
+        if (it != spec->becomes.end()) rail.pattern = it->second;
+    }
     return true;
 }
 
@@ -634,9 +652,13 @@ void PlayerEconomy::importState(const State& state) {
     foundry::validate(foundry_, plate(), &lifted);
     for (const auto& p : lifted)
         if (p.isCurrency()) grant(p.currency, 1);
-    // The exterior: a specialisation tuning no longer knows is forgotten,
-    // and every rail the state cannot hold is dropped (D-023 slice 9).
-    if (!tuning_.foundry.rails.findSpecialisation(foundry_.specialisation)) foundry_.specialisation.clear();
+    // The surround: a class or specialisation tuning no longer knows (or
+    // a specialisation of another class) is forgotten, and every rail the
+    // state cannot hold is dropped (D-023 slice 9).
+    const auto* cls = tuning_.foundry.rails.findClass(foundry_.chosenClass);
+    if (!cls) foundry_.chosenClass.clear();
+    const auto* spec = tuning_.foundry.rails.findSpecialisation(foundry_.specialisation);
+    if (!cls || !spec || spec->classId != cls->id) foundry_.specialisation.clear();
     foundry::validateRails(tuning_, foundry_, plate(), railsAllowed());
 }
 

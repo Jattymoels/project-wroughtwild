@@ -21,6 +21,7 @@ Q building material: timber, stone or iron from your pack - doors need joinery, 
 Mobs drop skill pages that teach new skills, and rolled gear that scales them
 F1–F3 spike mods (debug: force one modifier on)
 F the Foundry: lay a skill's tablet in a socket and the ingots beside it support that skill
+Your class, chosen at the start, sets the plate's rails; the Tyrant's forge opens a further specialisation
 V camera  ·  H this help  ·  Esc close  ·  F5 save  ·  F9 load"""
 
 var sim: WroughtwildSim

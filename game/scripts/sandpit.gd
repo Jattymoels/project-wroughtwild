@@ -27,6 +27,8 @@ var _era_poll := 0.0
 
 func _ready() -> void:
 	_build_world(world_seed)
+	# Before play begins (D-004): the class, unless a save already carries one.
+	player.offer_class()
 
 
 func _sim() -> WroughtwildSim:

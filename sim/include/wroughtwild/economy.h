@@ -196,14 +196,17 @@ public:
     // is not a kind, none held, a socket, a support cell or a taken cell.
     bool foundryPlaceKind(int row, int col, const std::string& kind);
     bool canAffordReforge() const;
-    // The exterior (D-023 slice 9; owner, 4 Sep 2026). No class at the
-    // start: the bare plate is the base class. Passing the first hall's
-    // test (rails.specialise_on_world_effect recorded) offers a one-time
-    // choice of specialisation, whose patterns may then be set in rails -
-    // as many as the era allows (rails.by_era), one rail per pattern, a
-    // row rail only on a forged row. Manners the world has taught (kills
-    // per family) are patterns too. Setting and clearing a rail is free:
-    // a rail is class, not metal.
+    // The surround (D-023 slice 9; owner, 4 Sep 2026). A class is chosen
+    // before play begins (D-004), once; its patterns may be set in the
+    // rails from era one - as many as the era allows (rails.by_era), one
+    // rail per pattern, a row rail only on a forged row. Passing the first
+    // trial (rails.specialise_on_world_effect recorded) offers a one-time
+    // specialisation from the class's own: each of the class's patterns
+    // becomes what it says, and a rail already holding one becomes with
+    // it. Manners the world has taught (kills per family) are patterns
+    // too. Setting and clearing a rail is free: a rail is class, not metal.
+    bool canChooseClass() const;
+    bool foundryChooseClass(const std::string& classId);
     bool canSpecialise() const;
     bool foundrySpecialise(const std::string& specialisation);
     int railsAllowed() const;
