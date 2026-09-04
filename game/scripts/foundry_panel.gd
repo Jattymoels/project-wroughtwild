@@ -89,10 +89,15 @@ func _ready() -> void:
 	var how := Label.new()
 	how.text = "A socket takes a skill's tablet; the four cells beside it are its supports, the diagonals its corners.\nEvery ingot reads every skill: an element ingot scales a skill of its own element and adds its element to any other's hit;\nVigour, Plate and Ward read a skill weakly. Beside: a pair makes its mechanic. A matching ingot touching a support backs it.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free."
 	how.modulate = UiTheme.MUTED
+	how.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	how.custom_minimum_size = Vector2(4 * CELL_SIZE.x + 3 * 6, 0)
 	left.add_child(how)
 
 	var right := VBoxContainer.new()
 	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	# The lists wrap and clip inside a fixed column, so a plate full of forms
+	# never pushes the panel past the window.
+	right.custom_minimum_size = Vector2(760, 0)
 	right.add_theme_constant_override("separation", 6)
 	body.add_child(right)
 	right.add_child(_section("Ingots in hand"))
@@ -283,6 +288,8 @@ func refresh() -> void:
 		var button := Button.new()
 		button.text = "%s  ×%d   %s" % [info["display_name"], count, info["sentence"]]
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		button.clip_text = true
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var reads := PackedStringArray()
 		if String(info.get("skill_sentence", "")) != "":
 			reads.append("Beside a skill it can read: %s." % info["skill_sentence"])
@@ -308,6 +315,8 @@ func refresh() -> void:
 		var button := Button.new()
 		button.text = "Lay %s" % t["display_name"]
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		button.clip_text = true
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		if _selected_skill == StringName(String(t["id"])):
 			button.modulate = UiTheme.GRASS_LIGHT
 		button.pressed.connect(_on_tablet.bind(String(t["id"])))
@@ -328,6 +337,8 @@ func refresh() -> void:
 		var button := Button.new()
 		button.text = "Set a %s  ×%d   %s" % [k["display_name"], int(k["held"]), k["base_sentence"]]
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		button.clip_text = true
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.tooltip_text = "In a corner, or a far cell beyond one: its base flows to the skill while a chain of pieces leads inward, and it works every support it touches into a form."
 		if _selected_subject == StringName(String(k["id"])):
 			button.modulate = UiTheme.GRASS_LIGHT
@@ -346,6 +357,8 @@ func refresh() -> void:
 		var line := Label.new()
 		var kind: String = effect["kind"]
 		line.text = "%s  ·  %s  —  %s" % [kind, effect["label"], effect["sentence"]]
+		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		if kind == "support" or kind == "added" or kind == "backing" or kind == "form":
 			line.modulate = UiTheme.FROST
 		elif kind != "ingot":
