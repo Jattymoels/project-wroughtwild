@@ -3751,6 +3751,22 @@ void testMelee(const tuning::Tuning& t) {
     checkNear(grammar::skillStagger(t, heavy, "prototype_rend", false), 0.5, 1e-9, "melee: a stagger modifier adds to the cut");
 }
 
+// The world made whole (owner, 4 Sep 2026): the slices that slow the game
+// through the world rather than the numbers. Slice 1: trees fall as one,
+// boulders crack chunk by chunk.
+void testWorldMadeWhole(const tuning::Tuning& t) {
+    const auto& tree = t.worldgen.nodeTypes.at("tree");
+    const auto& boulder = t.worldgen.nodeTypes.at("boulder");
+    check(tree.units == 14 && tree.unitsPerHarvest == 14 && tree.drivePresses == 6 && tree.toolItem.empty(),
+          "whole: a tree is six presses and fourteen wood at once, no tool");
+    check(boulder.units == 9 && boulder.unitsPerHarvest == 3 && boulder.drivePresses == 3, "whole: a boulder is three chunks of three, three presses each");
+    check(t.worldgen.nodeTypes.at("iron_vein").drivePresses == 0 && t.worldgen.nodeTypes.at("stone_seam").drivePresses == 4,
+          "whole: a vein is still hands' work per press; the seam keeps its wedge and four presses");
+    for (const auto& biome : t.worldgen.biomes)
+        if (biome.id == "meadow")
+            check(biome.nodeDensity.at("tree") < 0.01 && biome.nodeDensity.at("tree") > 0.0, "whole: the meadow's trees are sparser, and bigger");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3804,6 +3820,7 @@ int main(int argc, char** argv) {
     testClassKits(t);
     testClassGear(t);
     testMelee(t);
+    testWorldMadeWhole(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

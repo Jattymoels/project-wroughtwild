@@ -437,6 +437,34 @@ func _test_resource_node() -> void:
 	check(node.harvest() == 1, "resource: final partial harvest")
 	check(node.harvest() == 0, "resource: depleted node grants nothing")
 	node.free()
+	# Felling (the world made whole, 4 Sep 2026): a tree wants six presses
+	# and then comes down whole; a boulder gives a chunk every third.
+	var tree: ResourceNode = load("res://scenes/resource_node.tscn").instantiate()
+	tree.visual = &"tree"
+	tree.remaining_units = 14
+	tree.units_per_harvest = 14
+	tree.drive_presses = 6
+	var swings := 0
+	for i in 5:
+		var step: Dictionary = tree.work(null)
+		if step.has("text") and not step.has("granted"):
+			swings += 1
+	check(swings == 5 and tree.remaining_units == 14 and tree.drive_progress == 5, "felling: five swings lean the tree and take nothing")
+	check(tree.interact_label(null).contains("falls whole") and tree.interact_label(null).contains("5/6"), "felling: the label counts the swings")
+	var fall: Dictionary = tree.work(null)
+	check(int(fall.get("granted", 0)) == 14 and tree.remaining_units == 0 and tree.drive_progress == 0, "felling: the sixth brings the whole tree down at once")
+	tree.free()
+	var boulder: ResourceNode = load("res://scenes/resource_node.tscn").instantiate()
+	boulder.visual = &"boulder"
+	boulder.remaining_units = 9
+	boulder.units_per_harvest = 3
+	boulder.drive_presses = 3
+	var chunks := 0
+	for i in 9:
+		if int(boulder.work(null).get("granted", 0)) == 3:
+			chunks += 1
+	check(chunks == 3 and boulder.remaining_units == 0, "cracking: nine presses on a boulder are three chunks of fieldstone")
+	boulder.free()
 
 
 func _test_prop_mesh() -> void:

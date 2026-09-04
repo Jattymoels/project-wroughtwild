@@ -99,9 +99,12 @@ func _physics_process(_delta: float) -> void:
 			_player.interact()
 			check(_tree.remaining_units == 0, "harvest: node emptied")
 		280:
-			check(not is_instance_valid(_tree), "harvest: depleted node shrinks away and frees")
 			check(_sim.material_count("wood") == _wood_start + 7,
 				"harvest: final yield granted (+2 wood)")
+		296:
+			# A felled tree swings over from its base (0.9 s) and leaves a
+			# stump before it frees (the world made whole, 4 Sep 2026).
+			check(not is_instance_valid(_tree), "harvest: the depleted tree falls whole and frees")
 		290:
 			# Feed the jump buffer directly (headless input frame-accounting
 			# makes a simulated just-pressed unreliable); the buffered path

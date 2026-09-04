@@ -18,9 +18,12 @@ extends StaticBody3D
 ## quenched before E works it (0 = hands). Once cracked it stays cracked.
 @export var heat_to_work: int = 0
 ## Seams (D-021): the item a split spends ("" for hands' work) and how many
-## E presses drive it. wedge_set/drive_progress are the seam's state.
+## E presses drive it. wedge_set/drive_progress are the seam's state. Since
+## the world-made-whole pass (4 Sep 2026) any node may want drive_presses
+## of E per harvest: a tree is chopped six times and falls whole, a
+## boulder cracks a chunk off every three. One press is the plain gather.
 @export var tool_item: StringName = &""
-@export var drive_presses: int = 4
+@export var drive_presses: int = 1
 var wedge_set := false
 var drive_progress := 0
 var cracked := false
@@ -200,6 +203,9 @@ func interact_label(sim: WroughtwildSim) -> String:
 		if held > 0:
 			return "%s ×%d — E set a wedge (%s ×%d)" % [name, remaining_units, Hud.pretty(String(tool_item)), held]
 		return "%s ×%d — the seam wants a %s driven into it" % [name, remaining_units, Hud.pretty(String(tool_item))]
+	if drive_presses > 1:
+		var verb := "E to chop; it falls whole" if visual == &"tree" else "E to crack a chunk off"
+		return "%s ×%d — %s (%d/%d)" % [name, remaining_units, verb, drive_progress, drive_presses]
 	return "%s ×%d — E to gather" % [name, remaining_units]
 
 
@@ -211,6 +217,19 @@ func work(sim: WroughtwildSim) -> Dictionary:
 	if not workable():
 		return {"refusal": work_refusal()}
 	if not is_seam():
+		# Felling and cracking (the world made whole, 4 Sep 2026): a tree or
+		# a boulder wants drive_presses of E per harvest. Each press on a
+		# tree leans it a little further from you; the last brings the whole
+		# tree down at once. A boulder gives up a chunk per round of presses.
+		if drive_presses > 1:
+			drive_progress += 1
+			if drive_progress < drive_presses:
+				if is_inside_tree():
+					_play_harvest_punch()
+					if visual == &"tree":
+						_lean_from_player()
+				return {"text": "%s (%d/%d)." % ["Chopping" if visual == &"tree" else "Working the rock", drive_progress, drive_presses]}
+			drive_progress = 0
 		return {"granted": harvest()}
 	if not wedge_set:
 		if not sim.consume_material(String(tool_item), 1):
@@ -368,11 +387,115 @@ func _scale_for_remaining() -> Vector3:
 	return Vector3.ONE * lerpf(0.6, 1.0, fraction)
 
 
+## Which way a tree falls or a boulder rolls: away from the player, or
+## along +X when no one is there to have struck it.
+func _fall_direction() -> Vector3:
+	var player := get_tree().get_first_node_in_group("player") as Node3D if is_inside_tree() else null
+	if player == null:
+		return Vector3.RIGHT
+	var away: Vector3 = global_position - player.global_position
+	away.y = 0.0
+	return away.normalized() if away.length_squared() > 0.0001 else Vector3.RIGHT
+
+
+## The trunk's own yaw, kept so the lean and the fall compose with it.
+var _lean := 0.0
+var _yaw := 0.0
+
+
+## Each chop leans the tree a little further from the one chopping it: the
+## fall is announced before it happens.
+func _lean_from_player() -> void:
+	var mesh: MeshInstance3D = get_node_or_null("MeshInstance3D")
+	if mesh == null:
+		return
+	var axis := Vector3.UP.cross(_fall_direction()).normalized()
+	if axis.length_squared() < 0.5:
+		return
+	if _lean == 0.0:
+		_yaw = mesh.rotation.y
+	_lean += deg_to_rad(2.5)
+	mesh.transform.basis = Basis(axis, _lean) * Basis(Vector3.UP, _yaw)
+
+
+## The tree comes down whole: the trunk swings over from the base, away
+## from the chopper, and a stump is left where it stood. The yield is the
+## chips the player scatters; this is the event.
+func _fell() -> void:
+	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
+	if collider != null:
+		collider.set_deferred("disabled", true)
+	var mesh: MeshInstance3D = get_node_or_null("MeshInstance3D")
+	var axis := Vector3.UP.cross(_fall_direction()).normalized()
+	if mesh == null or axis.length_squared() < 0.5:
+		queue_free()
+		return
+	if _lean == 0.0:
+		_yaw = mesh.rotation.y
+	var yaw := _yaw
+	var tween := create_tween()
+	tween.tween_method(func(angle: float) -> void:
+		mesh.transform.basis = Basis(axis, angle) * Basis(Vector3.UP, yaw), _lean, deg_to_rad(88.0), 0.9) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.tween_interval(0.25)
+	tween.tween_callback(_leave_stump)
+	tween.tween_callback(queue_free)
+
+
+## A stump where the tree stood, for the session (nodes are saved by their
+## remaining units; a felled tree is simply gone on load).
+func _leave_stump() -> void:
+	if get_parent() == null:
+		return
+	var stump := MeshInstance3D.new()
+	var trunk := CylinderMesh.new()
+	trunk.top_radius = 0.22
+	trunk.bottom_radius = 0.3
+	trunk.height = 0.42
+	trunk.radial_segments = 7
+	var material := StandardMaterial3D.new()
+	material.albedo_color = PropMesh.BARK_DARK
+	material.roughness = 1.0
+	stump.mesh = trunk
+	stump.material_override = material
+	get_parent().add_child(stump)
+	stump.global_position = global_position + Vector3(0, 0.21, 0)
+
+
+## The boulder's last chunk rolls it over: a quarter turn and a settle
+## into the ground, then gone.
+func _roll_over() -> void:
+	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
+	if collider != null:
+		collider.set_deferred("disabled", true)
+	var mesh: MeshInstance3D = get_node_or_null("MeshInstance3D")
+	var axis := Vector3.UP.cross(_fall_direction()).normalized()
+	if mesh == null or axis.length_squared() < 0.5:
+		queue_free()
+		return
+	var yaw: float = mesh.rotation.y
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_method(func(angle: float) -> void:
+		mesh.transform.basis = Basis(axis, angle) * Basis(Vector3.UP, yaw), 0.0, deg_to_rad(90.0), 0.45) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(mesh, "position:y", -0.45, 0.45).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.set_parallel(false)
+	tween.tween_callback(queue_free)
+
+
 ## The last harvest shrinks the node away instead of blinking it out.
-## Collision goes immediately so the space is usable at once.
+## Collision goes immediately so the space is usable at once. A tree falls
+## whole and a boulder rolls over instead (the world made whole).
 func _deplete() -> void:
 	if not is_inside_tree():
 		queue_free()
+		return
+	if visual == &"tree":
+		_fell()
+		return
+	if visual == &"boulder":
+		_roll_over()
 		return
 	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
 	if collider != null:
