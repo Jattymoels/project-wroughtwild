@@ -265,21 +265,43 @@ func use_skill(skill_id: StringName) -> bool:
 	var def: Dictionary = skills.get(skill_id, {})
 	if def.is_empty() or not is_ready(skill_id):
 		return false
-	var fired := false
-	match String(def.get("delivery", "")):
-		"cone":
-			_use_cone(skill_id)
-			fired = true
-		"strike":
-			fired = _use_strike(skill_id)
-		"projectile":
-			fired = _use_projectile(skill_id)
-		"dash":
-			fired = _use_dash(skill_id)
+	var fired := _cast(skill_id, def)
 	if fired:
 		_note_use(skill_id)
 		_brace(skill_id)
+		_echo(skill_id, def)
 	return fired
+
+
+## One delivery of the skill, whatever its shape.
+func _cast(skill_id: StringName, def: Dictionary) -> bool:
+	var delivery := String(def.get("delivery", ""))
+	if delivery == "cone":
+		_use_cone(skill_id)
+		return true
+	if delivery == "strike":
+		return _use_strike(skill_id)
+	if delivery == "projectile":
+		return _use_projectile(skill_id)
+	if delivery == "dash":
+		return _use_dash(skill_id)
+	return false
+
+
+## Echo (a form, D-023): every nth cast of a skill repeats itself, free of
+## the cooldown. The sim says n; this counts the casts.
+var _casts := {}
+
+
+func _echo(skill_id: StringName, def: Dictionary) -> void:
+	var every: int = sim.skill_echo_every(String(skill_id))
+	if every <= 0:
+		return
+	_casts[skill_id] = int(_casts.get(skill_id, 0)) + 1
+	if int(_casts[skill_id]) % every != 0:
+		return
+	cooldowns[skill_id] = 0.0
+	_cast(skill_id, def)
 
 
 ## The Plate reading: casting a skill it supports grants armour for a
@@ -350,6 +372,13 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -
 		if taken > 0.0:
 			landed += taken
 			types.append(String(packet["type"]))
+	# Brittle (a form): a frozen, bleeding enemy shatters from this hit,
+	# though the skill would never shatter on its own.
+	if enemy.life > 0.0 and enemy.is_frozen() and enemy.bleeding_left > 0.0 and sim.skill_brittle(String(skill_id)):
+		var cascade := _shatter_cascade([enemy], sim.shatter_rules(), sim.skill_nova_chill(String(skill_id)))
+		landed += cascade["damage"]
+		if not types.has(String(sim.shatter_rules().get("nova_damage_type", "cold"))):
+			types.append(String(sim.shatter_rules().get("nova_damage_type", "cold")))
 	last_hit_dealt = landed
 	var kill := enemy.life <= 0.0
 	if kill:
@@ -403,10 +432,12 @@ func use_dash() -> bool:
 ## one (a Frostbite mace chills with plain strikes). Payload lands before
 ## the damage so a killing blow that ignites leaves a burning corpse for
 ## proliferate.
-func _apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool) -> void:
+func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool) -> void:
 	var id := String(skill_id)
-	enemy.apply_chill(sim.chill_applied(id, is_boss))
-	enemy.apply_ignite(sim.ignite_applied(id, is_boss))
+	# Quench and Sear (forms, D-023) ride with the status they belong to:
+	# the mob keeps them for the freeze and the burn this skill causes.
+	enemy.apply_chill(sim.chill_applied(id, is_boss), sim.skill_quenches(id))
+	enemy.apply_ignite(sim.ignite_applied(id, is_boss), sim.skill_sear(id))
 	enemy.apply_bleed(sim.bleed_applied(id, is_boss))
 
 
@@ -464,7 +495,7 @@ func _use_cone(skill_id: StringName) -> int:
 			to_shatter.append(enemy)
 			hits += 1
 			continue
-		_apply_payload(enemy, skill_id, enemy is Boss)
+		apply_payload(enemy, skill_id, enemy is Boss)
 		var landed := deal(enemy, skill_id, isolated)
 		total += landed["damage"]
 		if landed["kill"]:
@@ -474,7 +505,7 @@ func _use_cone(skill_id: StringName) -> int:
 				types.append(type)
 		hits += 1
 
-	var cascade := _shatter_cascade(to_shatter, shatter)
+	var cascade := _shatter_cascade(to_shatter, shatter, sim.skill_nova_chill(String(skill_id)))
 	total += cascade["damage"]
 	kills += cascade["kills"]
 	_reap(skill_id, cascade["kills"])
@@ -499,12 +530,12 @@ func _use_strike(skill_id: StringName) -> bool:
 	# An attack on a frozen target cashes in the shatter combo instead.
 	var shatter: Dictionary = sim.shatter_for(String(skill_id))
 	if shatter.get("enabled", false) and target.is_frozen():
-		var cascade := _shatter_cascade([target], shatter)
+		var cascade := _shatter_cascade([target], shatter, sim.skill_nova_chill(String(skill_id)))
 		_reap(skill_id, cascade["kills"])
 		hit_landed.emit(cascade["damage"], cascade["kills"],
 			PackedStringArray([String(shatter.get("nova_damage_type", "cold"))]))
 		return true
-	_apply_payload(target, skill_id, target is Boss)
+	apply_payload(target, skill_id, target is Boss)
 	var landed := deal(target, skill_id, alive_enemies().size() == 1)
 	hit_landed.emit(landed["damage"], 1 if landed["kill"] else 0, landed["types"])
 	return true
@@ -543,11 +574,12 @@ func _use_dash(skill_id: StringName) -> bool:
 ## its own line. Every mob shatters at most once. A frozen boss takes the
 ## nova and thaws instead of dying, unless executes_boss is tuned on - the
 ## freeze window is the reward, not a one-shot.
-func _shatter_cascade(to_shatter: Array, shatter: Dictionary) -> Dictionary:
+func _shatter_cascade(to_shatter: Array, shatter: Dictionary, nova_chill := 0.0) -> Dictionary:
 	var total := 0.0
 	var kills := 0
 	var shattered := {}
 	# The nova is typed like any packet: a mob immune to cold shrugs it off.
+	# nova_chill (Rime, a form): the nova chills the mobs it reaches.
 	var nova_type := String(shatter.get("nova_damage_type", "cold"))
 	while not to_shatter.is_empty():
 		var victim: Enemy = to_shatter.pop_front()
@@ -576,6 +608,8 @@ func _shatter_cascade(to_shatter: Array, shatter: Dictionary) -> Dictionary:
 				to_shatter.append(other)
 			else:
 				total += other.take_typed(shatter["nova_damage"], nova_type)
+				if nova_chill > 0.0:
+					other.apply_chill(nova_chill)
 				if other.life <= 0.0:
 					kills += 1
 	return {"damage": total, "kills": kills}

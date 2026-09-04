@@ -82,6 +82,8 @@ var _immune_statuses := PackedStringArray()
 ## Types not named land whole; 0 would be immunity.
 var _damage_taken := {}
 var _burst_damage := 0.0
+## Sear (a form): how much faster the current burn ticks while walking and bleeding.
+var _sear := 0.0
 var _burst_radius := 0.0
 var _burst_type := "fire"
 
@@ -264,7 +266,9 @@ func _configure_statuses(sim: WroughtwildSim) -> void:
 
 
 ## Chill from the sim's numbers; crossing the threshold freezes solid.
-func apply_chill(amount: float) -> void:
+## quench (a form, D-023): a burning mob this freeze catches takes the
+## rest of its burn at once.
+func apply_chill(amount: float, quench: bool = false) -> void:
 	if amount <= 0.0 or is_frozen() or life <= 0.0 or _immune_statuses.has("chill"):
 		return
 	chill += amount
@@ -272,6 +276,10 @@ func apply_chill(amount: float) -> void:
 		chill = 0.0
 		frozen_left = _freeze_duration
 		_on_frozen()
+		if quench and burning_left > 0.0:
+			var rest := _burn_dps * burning_left
+			burning_left = 0.0
+			take_typed(rest, "fire")
 		_refresh_look()
 
 
@@ -284,7 +292,9 @@ func _on_frozen() -> void:
 ## Ignite buildup; crossing the threshold sets the mob burning. Duration and
 ## tick are snapshotted from the sim at ignition, so the burn a mob carries
 ## reflects the gear that lit it. Re-igniting refreshes, never stacks.
-func apply_ignite(amount: float) -> void:
+## sear (a form, D-023): the burn this ignition lights ticks that much
+## faster while the mob walks and bleeds; snapshotted like the tick.
+func apply_ignite(amount: float, sear: float = 0.0) -> void:
 	if amount <= 0.0 or life <= 0.0 or _immune_statuses.has("ignite"):
 		return
 	ignite += amount
@@ -293,6 +303,7 @@ func apply_ignite(amount: float) -> void:
 		var rules: Dictionary = _sim.ignite_status() if _sim != null else {}
 		burning_left = rules.get("duration_s", 4.0)
 		_burn_dps = rules.get("damage_per_s", 0.0)
+		_sear = sear
 		_refresh_look()
 
 
@@ -327,9 +338,13 @@ func _tick_statuses(delta: float) -> bool:
 			_refresh_look()
 
 	# DoTs tick even through ice: freeze holds the mob, not the fire.
+	var walking := Vector2(velocity.x, velocity.z).length() > 0.5
 	if burning_left > 0.0:
 		burning_left -= delta
-		take_typed(_burn_dps * delta, "fire", false)
+		var burn_rate := _burn_dps
+		if _sear > 0.0 and walking and bleeding_left > 0.0:
+			burn_rate *= 1.0 + _sear
+		take_typed(burn_rate * delta, "fire", false)
 		if burning_left <= 0.0:
 			_refresh_look()
 	else:

@@ -2662,16 +2662,16 @@ void testEveryIngotReadsEverySkill(const tuning::Tuning& t) {
 // changes them, a kind aims a craft, rare metal casts one.
 void testTypedCurrency(const tuning::Tuning& t) {
     const auto& c = t.crafting;
-    check(c.currencies == std::vector<std::string>{"vanguard", "marrow", "quicksilver"} && !c.isCurrency("trade_currency"),
-          "kinds: the purse holds the three cast kinds and the coin is gone");
-    check(c.currencyKinds.size() == 5 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
+    check(c.currencies == std::vector<std::string>{"vanguard", "warding_vanguard", "marrow", "quicksilver"} && !c.isCurrency("trade_currency"),
+          "kinds: the purse holds the four cast kinds and the coin is gone");
+    check(c.currencyKinds.size() == 6 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
               c.findKind("marrow")->family == "life" && c.findKind("quicksilver")->family == "speed" &&
               c.findKind("ember_catalyst")->family == "offence" && c.findKind("preserving_catalyst")->family == "offence" &&
               !c.findKind("trade_currency"),
-          "kinds: five kinds in four families");
-    check(c.exchangeRate == 3 && c.exchangeKinds.size() == 4 &&
+          "kinds: six kinds in four families");
+    check(c.exchangeRate == 3 && c.exchangeKinds.size() == 5 &&
               std::find(c.exchangeKinds.begin(), c.exchangeKinds.end(), "ember_catalyst") == c.exchangeKinds.end(),
-          "kinds: the peddler changes four kinds at three to one; the ember catalyst stays the trial's");
+          "kinds: the peddler changes five kinds at three to one; the ember catalyst stays the trial's");
     check(c.aimedMinimumRarity == "keen", "kinds: an aimed craft is at least keen");
     bool coinAnywhere = false;
     for (const auto& enemy : t.world.enemies) {
@@ -2802,10 +2802,11 @@ void testTypedCurrency(const tuning::Tuning& t) {
 // Catalysts are offensive creativity; Vanguards defensive.
 void testKindsInCorners(const tuning::Tuning& t) {
     const auto& f = t.foundry;
-    check(f.kindFamilies.size() == 4 && f.findKindFamily("defence") && f.findKindFamily("defence")->modifier == "armour_plating" &&
-              std::abs(f.findKindFamily("defence")->value - 4.0) < 1e-9 && f.findKindFamily("offence") &&
-              f.findKindFamily("offence")->modifier.empty() && !f.findKindFamily("nothing"),
-          "flow: four families on the plate; the Vanguard has a base, the Catalyst none");
+    check(f.kinds.size() == 6 && f.findKindOnPlate("vanguard") && f.findKindOnPlate("vanguard")->modifier == "armour_plating" &&
+              std::abs(f.findKindOnPlate("vanguard")->value - 4.0) < 1e-9 && f.findKindOnPlate("ember_catalyst") &&
+              f.findKindOnPlate("ember_catalyst")->modifier.empty() && f.findKindOnPlate("ember_catalyst")->family == "offence" &&
+              !f.findKindOnPlate("nothing") && f.familyName("offence") == "Catalyst" && f.familyName("nothing").empty(),
+          "flow: six kinds on the plate in four named families; the Vanguard has a base, the Catalyst none");
     check(f.forms.size() >= 20 && f.hasteAfterHitSeconds > 0.0, "flow: the first forms load");
     bool poolClean = true;
     for (const auto& base : t.items.itemBases)
@@ -2968,6 +2969,90 @@ void testKindsInCorners(const tuning::Tuning& t) {
           "flow: a kind beside a socket is lifted back to the purse on load");
 }
 
+// D-023 slice 6 (owner, 4 Sep 2026, later): a family is a list of
+// variants, each with its own base; catalysts have none and do the
+// mechanical transformations, now with their hook halves as sim numbers.
+void testVariantsAndHooks(const tuning::Tuning& t) {
+    const auto& f = t.foundry;
+    // The Warding Vanguard: a second variant of the defence family, reachable from the peddler.
+    const auto* warding = f.findKindOnPlate("warding_vanguard");
+    check(warding && warding->family == "defence" && warding->modifier == "all_resistance" && std::abs(warding->value - 5.0) < 1e-9 &&
+              warding->shortName == "Warding" && t.crafting.isCurrency("warding_vanguard") &&
+              t.crafting.findKind("warding_vanguard") && t.crafting.findKind("warding_vanguard")->family == "defence" &&
+              std::find(t.crafting.exchangeKinds.begin(), t.crafting.exchangeKinds.end(), "warding_vanguard") != t.crafting.exchangeKinds.end(),
+          "variants: the Warding Vanguard is a defence kind with its own base, in the purse and the exchange");
+    check(f.findKindOnPlate("marrow") && f.findKindOnPlate("marrow")->modifier == "max_life" &&
+              f.findKindOnPlate("quicksilver") && f.findKindOnPlate("quicksilver")->modifier == "swift_hands",
+          "variants: Marrow and Quicksilver have small bases of their own");
+    auto onSheet = [&](const economy::PlayerEconomy& who) {
+        std::vector<stats::ExtraEffect> extra;
+        for (const auto& m : grammar::foundryMods(t, who.foundry(), who.currentEra())) extra.push_back({m.effectKey, m.value});
+        return stats::deriveStats(t.world.playerBase, {}, t.items, extra);
+    };
+    economy::PlayerEconomy w(t);
+    w.foundryEvent("first_kill:gloom_crawler"); // frost
+    w.grant("warding_vanguard", 1);
+    check(w.foundryPlaceSkill(1, 1, "prototype_frost_orb") && w.foundryPlace(1, 0, "frost") && w.foundryPlaceKind(2, 0, "warding_vanguard"),
+          "variants: a Warding Vanguard in the corner below the orb's frost");
+    auto sheet = onSheet(w);
+    check(std::abs(sheet.fireResistancePercent - 5.0) < 1e-9 && std::abs(sheet.coldResistancePercent - 5.0) < 1e-9 && std::abs(sheet.armour) < 1e-9,
+          "variants: its base is five to every resistance, not armour");
+    bool leech = false;
+    for (const auto& e : foundry::effects(t, w.foundry(), w.plate()))
+        if (e.kind == "form" && e.label.rfind("Frost Leech (Warding Vanguard", 0) == 0) leech = true;
+    check(leech, "variants: it works the family's forms all the same, and the form names the variant");
+
+    // The hooks as sim numbers, each from its form.
+    auto laid = [&](const std::string& skill, const std::string& ingot, const std::string& event) {
+        economy::PlayerEconomy e(t);
+        e.learnSkill(skill);
+        e.foundryEvent(event);
+        e.grant("ember_catalyst", 1);
+        check(e.foundryPlaceSkill(1, 1, skill) && e.foundryPlace(1, 0, ingot) && e.foundryPlaceKind(2, 0, "ember_catalyst"),
+              "hooks: " + ingot + " beside " + skill + ", a catalyst in the corner");
+        return e;
+    };
+    // Echo: Haste beside any skill, worked, repeats every fourth cast.
+    auto echo = laid("prototype_frost_orb", "haste", "first_kill:ash_hound");
+    auto em = grammar::foundryMods(t, echo.foundry(), echo.currentEra());
+    check(grammar::skillEchoEvery(t, em, "prototype_frost_orb") == 4 && grammar::skillEchoEvery(t, em, "prototype_frost_nova") == 0,
+          "hooks: Echo repeats the orb every fourth cast and no other skill");
+    // Quench: Frost beside a fire skill, worked.
+    auto quench = laid("prototype_ember_bolt", "frost", "first_kill:gloom_crawler");
+    auto qm = grammar::foundryMods(t, quench.foundry(), quench.currentEra());
+    check(grammar::skillQuenches(t, qm, "prototype_ember_bolt") && !grammar::skillQuenches(t, qm, "prototype_frost_orb"),
+          "hooks: Quench belongs to the bolt alone");
+    checkNear(grammar::chillApplied(t, qm, "prototype_ember_bolt", false), 15.0, 1e-9, "hooks: the quenching bolt chills");
+    auto boltPlain = grammar::skillHit(t, qm, "prototype_ember_bolt");
+    auto boltVsChilled = grammar::skillHit(t, qm, "prototype_ember_bolt", {"chill"});
+    checkNear(boltVsChilled[0].damage, boltPlain[0].damage * 1.2, 1e-9, "hooks: a chilled enemy takes 20% more of the bolt's fire");
+    // Rime: Frost beside a physical skill, worked: the novas chill.
+    auto rime = laid("prototype_heavy_strike", "frost", "first_kill:gloom_crawler");
+    auto rm = grammar::foundryMods(t, rime.foundry(), rime.currentEra());
+    checkNear(grammar::skillNovaChill(t, rm, "prototype_heavy_strike"), 30.0, 1e-9, "hooks: Rime's novas chill by thirty");
+    checkNear(grammar::skillNovaChill(t, rm, "prototype_area_strike"), 0.0, 1e-9, "hooks: and no other skill's");
+    // Sear: Edge beside a fire skill, worked: bleeds, more against the bleeding, a faster burn while moving.
+    auto sear = laid("prototype_ember_bolt", "edge", "work:strike_split");
+    auto sm = grammar::foundryMods(t, sear.foundry(), sear.currentEra());
+    checkNear(grammar::skillSear(t, sm, "prototype_ember_bolt"), 0.5, 1e-9, "hooks: Sear's burn ticks half again as fast while moving and bleeding");
+    checkNear(grammar::bleedApplied(t, sm, "prototype_ember_bolt", false), 20.0, 1e-9, "hooks: the searing bolt bleeds");
+    // Brittle: Edge beside a cold skill, worked: bleeds, and a frozen bleeder shatters from the spell's hit.
+    auto brittle = laid("prototype_frost_orb", "edge", "work:strike_split");
+    auto bm = grammar::foundryMods(t, brittle.foundry(), brittle.currentEra());
+    check(grammar::skillBrittle(t, bm, "prototype_frost_orb") && !grammar::skillBrittle(t, bm, "prototype_heavy_strike"),
+          "hooks: Brittle belongs to the orb alone");
+    checkNear(grammar::bleedApplied(t, bm, "prototype_frost_orb", false), 20.0, 1e-9, "hooks: the brittle orb bleeds");
+    // Serration: Edge beside a physical skill, worked: its hits bleed and its bleeds build faster.
+    auto serration = laid("prototype_heavy_strike", "edge", "work:strike_split");
+    auto srm = grammar::foundryMods(t, serration.foundry(), serration.currentEra());
+    checkNear(grammar::bleedApplied(t, srm, "prototype_heavy_strike", false), 20.0 * 1.3, 1e-9, "hooks: Serration bleeds twenty, thirty percent faster");
+    // Nothing of these on a bare plate.
+    grammar::ActiveMods none;
+    check(grammar::skillEchoEvery(t, none, "prototype_frost_orb") == 0 && !grammar::skillQuenches(t, none, "prototype_ember_bolt") &&
+              !grammar::skillBrittle(t, none, "prototype_frost_orb") && std::abs(grammar::skillSear(t, none, "prototype_ember_bolt")) < 1e-9,
+          "hooks: a bare plate has none of them");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3014,6 +3099,7 @@ int main(int argc, char** argv) {
     testEveryIngotReadsEverySkill(t);
     testTypedCurrency(t);
     testKindsInCorners(t);
+    testVariantsAndHooks(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

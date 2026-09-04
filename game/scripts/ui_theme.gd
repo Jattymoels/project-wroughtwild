@@ -31,6 +31,7 @@ const FAMILY_COLOURS := {
 	"ember_catalyst": EMBER,
 	"preserving_catalyst": SUN_WARM,
 	"vanguard": IRON_RUST,
+	"warding_vanguard": IRON_RUST,
 	"marrow": GRASS_LIGHT,
 	"quicksilver": FROST,
 }

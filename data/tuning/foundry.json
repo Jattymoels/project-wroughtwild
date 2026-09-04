@@ -1,6 +1,6 @@
 {
-  "schema_version": 5,
-  "status": "D-023 slice 5: the flow - kinds in the detached cells, their base flowing to the skill, forms working the supports",
+  "schema_version": 6,
+  "status": "D-023 slice 6: kinds as variants with a base each; the reactions given their hooks (Echo, Quench, Rime, Sear, Brittle)",
   "frame": [
     4,
     4
@@ -37,33 +37,57 @@
   "haste_after_hit_seconds": 2.0,
   "kinds": [
     {
+      "id": "ember_catalyst",
       "family": "offence",
-      "display_name": "Catalyst",
-      "design_purpose": "The Catalyst family on the plate (D-023, the flow): no base of its own; its whole worth is the forms it works supports into - the offensive creativity. Its element (Ember, Preserving) matters in crafting, not here."
+      "display_name": "Ember Catalyst",
+      "short_name": "Catalyst",
+      "design_purpose": "No base: a catalyst's whole worth is the forms it works supports into. Its element will pick its own forms (an 'augment fire', owner 4 Sep 2026) when the forms table narrows by kind."
     },
     {
+      "id": "preserving_catalyst",
+      "family": "offence",
+      "display_name": "Preserving Catalyst",
+      "short_name": "Catalyst",
+      "design_purpose": "No base; the offence family's forms. Its own transformations wait for the by-kind narrowing."
+    },
+    {
+      "id": "vanguard",
       "family": "defence",
-      "display_name": "Vanguard",
+      "display_name": "Bulwark Vanguard",
+      "short_name": "Bulwark",
       "modifier": "armour_plating",
       "value": 4,
-      "design_purpose": "The Vanguard family on the plate: a small flat base that flows to the sheet while a chain leads to a skill, and forms that give the skill a defensive or sustaining twist. Scaling defence is gear's job (owner, 4 Sep 2026); the plate's defence is creative."
+      "design_purpose": "The Vanguard of armour: +4 armour flows to the sheet while a chain leads to a skill. Scaling defence is gear's job; this is small and flat."
     },
     {
+      "id": "warding_vanguard",
+      "family": "defence",
+      "display_name": "Warding Vanguard",
+      "short_name": "Warding",
+      "modifier": "all_resistance",
+      "value": 5,
+      "design_purpose": "The Vanguard of resistances: +5 to fire and cold resistance while the flow holds. The Vanguard of dodge waits for a dodge stat."
+    },
+    {
+      "id": "marrow",
       "family": "life",
       "display_name": "Marrow",
+      "short_name": "Marrow",
       "modifier": "max_life",
       "value": 6,
-      "design_purpose": "The Marrow family on the plate: a little life as its base; its forms wait for slice 8."
+      "design_purpose": "The Marrow of life: +6 life while the flow holds. The Marrows of leech and recoup wait for those stats; the family's forms wait for slice 9."
     },
     {
+      "id": "quicksilver",
       "family": "speed",
       "display_name": "Quicksilver",
+      "short_name": "Quicksilver",
       "modifier": "swift_hands",
       "value": 0.04,
-      "design_purpose": "The Quicksilver family on the plate: a little cooldown recovery as its base (a self stat on the sheet? no - swift_hands reads every attack and spell); its forms wait for slice 8."
+      "design_purpose": "The Quicksilver of hands: +4% cooldown recovery for attacks and spells while the flow holds. The Quicksilvers of move speed, attack speed and cast speed wait for those stats to be told apart; the family's forms wait for slice 9."
     }
   ],
-  "design_purpose_kinds": "THE FLOW (owner, 4 Sep 2026): only a skill sits in a socket. A currency kind rests only on a forged cell that cannot touch a socket (depth two or more: the corners, and the far cells beyond them). It gives its family's base forward only while a chain of placed pieces, each a step nearer a socket, leads to a support beside a laid tablet - a kind that flows to nothing gives nothing. And it works every support it touches into a FORM (forms below) that feeds the skill that support serves, a shared support feeding both. Ingots are base; Catalysts are offensive creativity; Vanguards, Marrow and Quicksilver are defensive, life and tempo creativity. Setting a kind takes it from the purse; lifting it pays reforge_cost and returns it. A kind lifted on load (a stale save) goes back to the purse.",
+  "design_purpose_kinds": "THE FLOW (owner, 4 Sep 2026): only a skill sits in a socket. A currency kind rests only on a forged cell that cannot touch a socket (depth two or more: the corners, and the far cells beyond them). It gives its family's base forward only while a chain of placed pieces, each a step nearer a socket, leads to a support beside a laid tablet - a kind that flows to nothing gives nothing. And it works every support it touches into a FORM (forms below) that feeds the skill that support serves, a shared support feeding both. Ingots are base; Catalysts are offensive creativity; Vanguards, Marrow and Quicksilver are defensive, life and tempo creativity. Setting a kind takes it from the purse; lifting it pays reforge_cost and returns it. A kind lifted on load (a stale save) goes back to the purse. VARIANTS (owner, 4 Sep 2026, later): `kinds` lists every currency id that may rest on the plate with its family, the name a cell shows, and its own base; a family is a list of variants (the Vanguard of armour, of resistances, later of dodge; the Marrow of life, later leech and recoup; the Quicksilver of hands, later move and attack and cast speed) and the forms are the family's, a form's optional `kind` narrowing it to one variant. Catalysts have no base and do the mechanical transformations. `family_names` is how a form names the family that worked it.",
   "forms": [
     {
       "family": "offence",
@@ -100,9 +124,13 @@
         {
           "modifier": "serration",
           "value": 0.3
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
         }
       ],
-      "design_purpose": "Sharpening (same lane): the skill's bleeds build 30% faster. (The zero frostbite is a placeholder for 'its hits bleed +20', which needs a bleed buildup modifier; struck for now.)"
+      "design_purpose": "Sharpening (same lane): the skill's hits bleed (+20 buildup) and its bleeds build 30% faster."
     },
     {
       "family": "offence",
@@ -156,14 +184,14 @@
     {
       "family": "offence",
       "ingot": "haste",
-      "display_name": "Quickening",
+      "display_name": "Echo",
       "effects": [
         {
-          "modifier": "swift_hands",
-          "value": 0.16
+          "modifier": "echo_every",
+          "value": 4
         }
       ],
-      "design_purpose": "PROPOSED PLACEHOLDER: 16% more cooldown recovery for the skill; the spec's Echo (every fourth cast repeats) needs a hook."
+      "design_purpose": "Sharpening of Haste: every fourth cast of the skill repeats itself, free of the cooldown (the engine counts casts)."
     },
     {
       "family": "offence",
@@ -218,9 +246,13 @@
           "modifier": "damage_vs_chill",
           "value": 0.2,
           "packet": "native"
+        },
+        {
+          "modifier": "quench",
+          "value": 1
         }
       ],
-      "design_purpose": "Reaction (added lane, a fire skill): the added cold also chills (+15), and a chilled enemy takes 20% more of the skill's fire. (The spec's 'a burning enemy that freezes takes the rest of its burn at once' is a hook for later.)"
+      "design_purpose": "Reaction (added lane, a fire skill): the added cold also chills (+15), a chilled enemy takes 20% more of the skill's fire, and a burning enemy the skill freezes takes the rest of its burn at once (the engine's freeze hook)."
     },
     {
       "family": "offence",
@@ -237,9 +269,13 @@
           "modifier": "damage_vs_chill",
           "value": 0.2,
           "packet": "native"
+        },
+        {
+          "modifier": "nova_chill",
+          "value": 30
         }
       ],
-      "design_purpose": "Reaction (added lane, a physical skill): the added cold also chills (+15), and a chilled enemy takes 20% more of the skill's physical. (Shatter novas chilling is a hook for later.)"
+      "design_purpose": "Reaction (added lane, a physical skill): the added cold also chills (+15), a chilled enemy takes 20% more of the skill's physical, and the skill's shatter novas chill (+30)."
     },
     {
       "family": "offence",
@@ -249,12 +285,20 @@
       "display_name": "Brittle",
       "effects": [
         {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
           "modifier": "damage_vs_bleed",
           "value": 0.2,
           "packet": "native"
+        },
+        {
+          "modifier": "brittle",
+          "value": 1
         }
       ],
-      "design_purpose": "Reaction (added lane, a cold skill): a bleeding enemy takes 20% more of the skill's cold. (The added physical bleeding, and shatter from the spell's own hit, need a bleed buildup modifier and a hook.)"
+      "design_purpose": "Reaction (added lane, a cold skill): the added physical also bleeds (+20), a bleeding enemy takes 20% more of the skill's cold, and a frozen, bleeding enemy shatters from this spell's own hit."
     },
     {
       "family": "offence",
@@ -264,12 +308,20 @@
       "display_name": "Sear",
       "effects": [
         {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
           "modifier": "damage_vs_bleed",
           "value": 0.2,
           "packet": "native"
+        },
+        {
+          "modifier": "sear",
+          "value": 0.5
         }
       ],
-      "design_purpose": "Reaction (added lane, a fire skill): a bleeding enemy takes 20% more of the skill's fire. (The rest is a hook for later.)"
+      "design_purpose": "Reaction (added lane, a fire skill): the added physical also bleeds (+20), a bleeding enemy takes 20% more of the skill's fire, and the burn the skill lights ticks 50% faster while the enemy moves and bleeds."
     },
     {
       "family": "defence",
@@ -605,5 +657,11 @@
     }
   ],
   "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier, at `skill_value` when the reading has a number of its own. EVERY INGOT READS EVERY SKILL (D-023 slice 2, owner 4 Sep 2026): an element ingot whose modifier cannot read the skill (Ember beside a cold orb) speaks its `added_modifier` instead and ADDS its element to the hit as a second typed packet at the same fraction, scaled by that element's own gear - the added-element lane, where boil and scald builds begin; the self ingots (Vigour, Plate, Ward) read a skill weakly through their skill_modifier (life on kill, armour for cast_armour_seconds after a cast, less damage from enemies carrying the skill's status). Nothing on the plate is inert. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load. THE FLOW (owner, 4 Sep 2026; replaces the socketed Vanguard of slice 4): only a skill sits in a socket; a currency kind rests where it cannot touch one, gives its family's base forward while a chain of pieces leads inward to a laid tablet, and works every support it touches into a form (`kinds`, `forms`).",
-  "design_purpose_forms": "FORMS (D-023, the flow): what a kind of a family works a support into. Keyed by family and ingot; `lane` narrows to how the ingot reads the skill (same element sharpens, added element reacts), `skill_tag` to the skill's tags. Each effect names a modifier, a value and, for a reaction, the packet it speaks to ('native' = the skill's own element). The ingot keeps its plain reading; the form's effects feed the skill the support serves. The Catalyst rows are the spec's reactions as far as existing keys carry them; the Vanguard rows are proposals drafted from the owner's two examples (Frost Leech, Max Speed) and slice 4's readings. Marrow and Quicksilver rows wait for slice 8. Compound forms (a kind worked by another kind, an ingot's metal or rarity as a condition) are the next step and have no rows yet."
+  "design_purpose_forms": "FORMS (D-023, the flow): what a kind of a family works a support into. Keyed by family and ingot; `lane` narrows to how the ingot reads the skill (same element sharpens, added element reacts), `skill_tag` to the skill's tags. Each effect names a modifier, a value and, for a reaction, the packet it speaks to ('native' = the skill's own element). The ingot keeps its plain reading; the form's effects feed the skill the support serves. The Catalyst rows are the spec's reactions, their hook halves now engine hooks reading sim numbers (Echo, Quench, Rime, Sear, Brittle; Arc and Linger still wait); the Vanguard rows are proposals drafted from the owner's two examples (Frost Leech, Max Speed) and slice 4's readings. Marrow and Quicksilver rows wait for slice 8. Compound forms (a kind worked by another kind, an ingot's metal or rarity as a condition) are the next step and have no rows yet.",
+  "family_names": {
+    "offence": "Catalyst",
+    "defence": "Vanguard",
+    "life": "Marrow",
+    "speed": "Quicksilver"
+  }
 }

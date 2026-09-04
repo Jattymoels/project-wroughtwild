@@ -137,6 +137,15 @@ public:
     // Keys: enabled, nova_damage, nova_damage_type, nova_radius_m,
     // executes_frozen, executes_boss.
     Dictionary shatter_for(const String& skill_id) const;
+    // The shatter hook's numbers regardless of trigger, for a form that
+    // cashes in a freeze from a spell (Brittle).
+    Dictionary shatter_rules() const;
+    // The reactions' hooks (D-023, the flow), read per skill by the engine.
+    int skill_echo_every(const String& skill_id) const;
+    bool skill_quenches(const String& skill_id) const;
+    double skill_nova_chill(const String& skill_id) const;
+    double skill_sear(const String& skill_id) const;
+    bool skill_brittle(const String& skill_id) const;
     // Keys: enabled, radius_m, spread_buildup, spread_buildup_boss.
     Dictionary proliferate_for() const;
 

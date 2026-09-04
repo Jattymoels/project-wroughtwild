@@ -166,6 +166,18 @@ double skillCastArmour(const tuning::Tuning& tuning, const ActiveMods& active,
 double wardMultiplier(const tuning::Tuning& tuning, const ActiveMods& active,
                       const std::vector<std::string>& carriedStatuses);
 
+// --- the reactions' hooks (D-023, the flow): numbers the engine applies ---
+// Every nth cast of the skill repeats itself (0: never). The Echo form.
+int skillEchoEvery(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+// A burning enemy the skill freezes takes the rest of its burn at once. Quench.
+bool skillQuenches(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+// Chill the skill's shatter novas apply to the mobs they reach. Rime.
+double skillNovaChill(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+// How much faster a burn the skill lights ticks while the mob moves and bleeds. Sear.
+double skillSear(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+// A frozen, bleeding enemy shatters from the skill's own hit. Brittle.
+bool skillBrittle(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId);
+
 // The skill's cooldown after cooldown-recovery modifiers (recovery speeds
 // the timer: cooldown = base / resolved recovery factor).
 double skillCooldownSeconds(const tuning::Tuning& tuning, const ActiveMods& active,

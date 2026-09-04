@@ -282,7 +282,7 @@ func _test_lattice() -> void:
 	for p in sim.foundry()["plate"]:
 		if String(p.get("currency", "")) == "vanguard":
 			kinds_on_plate += 1
-	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 5 and sim.foundry()["flows"].size() == 1
+	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 6 and sim.foundry()["flows"].size() == 1
 		and sim.foundry()["flows"][0]["flows"] and sim.derived_stats().has("cold_resistance_percent"),
 		"flow: the plate view carries the kind, every kind's count, and whether it flows")
 	sim.add_material("iron_ingot", 2)
@@ -1001,7 +1001,7 @@ func _test_sandpit_extension() -> void:
 	check(sim.inventory().get("marrow", 0) == 0, "sandpit: a kind never sits in the pack")
 	# D-023 slice 3: the kinds through the door - the peddler's exchange.
 	var vanguard_before: int = sim.currency_count("vanguard")
-	check(sim.currency_kinds().size() == 5 and sim.exchange_rate() == 3, "kinds: five kinds, three to one")
+	check(sim.currency_kinds().size() == 6 and sim.exchange_rate() == 3, "kinds: six kinds, three to one")
 	check(sim.can_exchange("marrow", "vanguard") and not sim.can_exchange("marrow", "marrow") and sim.exchange("marrow", "vanguard")
 		and sim.currency_count("marrow") == before and sim.currency_count("vanguard") == vanguard_before + 1,
 		"kinds: three Marrow change for a Vanguard")

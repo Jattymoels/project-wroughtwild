@@ -402,8 +402,7 @@ bool PlayerEconomy::foundryPlaceSkill(int row, int col, const std::string& skill
 bool PlayerEconomy::foundryPlaceKind(int row, int col, const std::string& kind) {
     const auto plate = this->plate();
     if (!foundry::kindMayRest(plate, row, col)) return false;
-    const auto* currency = tuning_.crafting.findKind(kind);
-    if (!currency || !tuning_.foundry.findKindFamily(currency->family)) return false;
+    if (!tuning_.foundry.findKindOnPlate(kind)) return false;
     if (foundry::at(foundry_, row, col) != nullptr) return false;
     if (held(kind) < 1) return false;
     take(kind, 1);
