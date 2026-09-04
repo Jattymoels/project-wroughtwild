@@ -27,6 +27,10 @@ var _room: Array = []
 var _life_before_night := 0.0
 var _night_packs: MobPacks
 var _chest: PlacedBlock
+var _noise_packs: MobPacks
+var _far: Enemy
+var _roamer: Enemy
+var _roamer_from := Vector3.ZERO
 var _chest_wood := 0
 ## The x-face, z-face and vertical edge that all meet at build-grid corner
 ## (5, 3, 5) - registry coordinates run at half cells, so (10, 6, 10).
@@ -603,6 +607,12 @@ func _physics_process(_delta: float) -> void:
 				and sim.store_contents("block:0:0,0,0").is_empty(), "chest: the timber inside spilled as a chip")
 			sim.add_material("wood", 1)
 			check(sim.material_count("wood") == _chest_wood, "chest: the pack is as it was (%d)" % sim.material_count("wood"))
+			# A roamer for the next frames (Wave 7 slice 1): spawned now so it
+			# has a full physics tick to walk before it is measured.
+			var p := _player.global_position
+			_roamer = Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(36, 0, 0))
+			_roamer_from = _roamer.global_position
+			_roamer.roam_to(p + Vector3(36, 0, 20))
 		42:
 			# Ambush data flows from world.json; a forced ambush spawns the party.
 			var iron: ResourceNode = _scene.get_node("IronNode")
@@ -611,6 +621,31 @@ func _physics_process(_delta: float) -> void:
 			check(party.size() == 2 and party[0].enemy_id == &"ash_hound", "ambush: two ash hounds per world.json")
 			for enemy in get_tree().get_nodes_in_group("enemies"):
 				enemy.queue_free()
+		44:
+			# Density and fear (Wave 7 slice 1): a felled tree is heard by a
+			# whelp well beyond its own aggro range; the same noise from inside
+			# a closed room is not; a mob told where its pack is walks there.
+			var p := _player.global_position
+			_noise_packs = MobPacks.new()
+			add_child(_noise_packs)
+			_noise_packs.load_rules()
+			_far = Enemy.spawn(get_tree().current_scene, &"ember_whelp", p + Vector3(0, 0, -20))
+			check(_far.state == "idle" and _far.aggro_range < 20.0, "noise: a whelp twenty metres off is idle and out of its own range")
+			check(_noise_packs.noise_at(p, "tree_fall", true) == 0 and _far.state == "idle",
+				"noise: a tree felled inside a closed room is not heard twenty metres off")
+			check(_noise_packs.noise_at(p, "tree_fall", false) >= 1 and _far.state == "chase",
+				"noise: a tree felled in the open wakes the whelp")
+			check(_noise_packs.noise_at(p, "no_such_noise", false) == 0, "noise: an unknown kind is silent")
+			check(_roamer.roaming() and _roamer.state == "idle", "noise: a roaming mob stays idle until something wakes it")
+		45:
+			var moved := _roamer.global_position.distance_to(_roamer_from)
+			var toward := (_roamer.global_position - _roamer_from).normalized().dot(Vector3(0, 0, 1))
+			check(moved > 0.005 and toward > 0.8, "noise: the roamer walks toward its pack's place (%.3f m)" % moved)
+			_roamer.stop_roaming()
+			for enemy in [_far, _roamer]:
+				if is_instance_valid(enemy):
+					enemy.queue_free()
+			_noise_packs.free()
 		46:
 			# Trial: the gate deposits goods and moves the player into the arena.
 			var sim: WroughtwildSim = _player.inventory.get_sim()

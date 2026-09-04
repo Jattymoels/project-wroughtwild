@@ -136,5 +136,17 @@
     "max_live_mobs": 60,
     "sleep_range_m": 60.0,
     "sleep_after_seconds": 6.0
+  },
+  "noise": {
+    "radius_m": {
+      "work": 14.0,
+      "strike": 18.0,
+      "rock_crack": 24.0,
+      "tree_fall": 30.0,
+      "fight": 16.0,
+      "horn": 90.0
+    },
+    "muffle": 0.35,
+    "design_purpose": "Noise (Wave 7 slice 1; the owner, 4 Sep 2026: the felt density must answer what you do). Every source kind carries a radius: a press on a tree or a rock (work), a blow on a set wedge (strike), a boulder cracking (rock_crack), a tree coming down (tree_fall), a hit landing either way (fight), and the shrieker's horn (horn, slice 3). Within it every idle mob wakes and every dormant pack takes shape and comes; the shrieker's scream generalised to the world. A source inside a closed room carries muffle of its radius - walls are why the house matters at night. Chopping at dusk is a decision; a fight is a beacon; the tree you fell is heard across the meadow."
   }
 }

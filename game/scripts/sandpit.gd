@@ -126,7 +126,7 @@ func _tick_day(delta: float) -> void:
 		_day_rules = sim.day_rules()
 	mood.set_day(day, _day_rules)
 	player.set_day(day, _day_rules)
-	mob_packs.set_night(bool(day.get("night", false)), _day_rules)
+	mob_packs.set_hour(day, _day_rules)
 	var phase := String(day.get("phase", "day"))
 	if phase == _day_phase:
 		return

@@ -2,7 +2,11 @@ class_name MobPacks
 extends Node
 ## Roaming mob packs of the sandpit. Each pack from the sim's world map is a
 ## dormant spawn point; when the player first comes near, its enemies appear
-## and hold their ground (aggro is the enemies' own behaviour). Kills roll
+## and hold their ground (aggro is the enemies' own behaviour). Density is
+## the biome's (Wave 7 slice 1): the deep biomes' packs walk their routes
+## toward the heartland at night and are home by dawn, and noise - a press,
+## a felled tree, a fight - wakes every idle mob and dormant pack in its
+## radius. The sim says the radii; walls keep most of it in. Kills roll
 ## the sim's loot tables and scatter physical pickups where the mob fell -
 ## fighting always pays into the survival economy, and walking through
 ## your battlefield hoovers up the reward.
@@ -27,6 +31,19 @@ var sleep_after_seconds := 6.0
 var night := false
 var _night_aggro := 1.0
 var _night_sleep := 1.0
+## How far through the night (0 at dusk's end, 1 at dawn): patrols walk
+## out over the first half and home over the second.
+var night_progress := 0.0
+## Noise rules (combat_realtime.json noise): radius per source kind, and
+## the fraction a closed room lets out.
+var _noise: Dictionary = {}
+var _heard_at := -100000
+## Test surface: packs woken by noise since setup.
+var woken_by_noise := 0
+
+
+func _ready() -> void:
+	add_to_group("mob_packs")
 
 
 func setup(from_terrain: Terrain, seed_value: int) -> void:
@@ -42,13 +59,23 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 			"elite_member": pack.get("elite_member", -1),
 			"elite_modifier": pack.get("elite_modifier", ""),
 			"grazer": pack.get("grazer", false),
+			"biome": String(pack.get("biome", "")),
+			"patrols": bool(pack.get("patrols", false)),
+			"route": Vector2i(int(pack.get("route_x", 0)), int(pack.get("route_z", 0))),
 			"spawned": false,
 			"members": [],
 		})
+	load_rules()
+
+
+## The population and noise rules from the sim (setup calls this; tests
+## on a bare pack system call it alone).
+func load_rules() -> void:
 	var horde: Dictionary = load("res://scripts/sim.gd").shared().realtime().get("horde", {})
 	max_live_mobs = int(horde.get("max_live_mobs", 60))
 	sleep_range_m = float(horde.get("sleep_range_m", 60.0))
 	sleep_after_seconds = float(horde.get("sleep_after_seconds", 6.0))
+	_noise = load("res://scripts/sim.gd").shared().noise_rules()
 
 
 func _physics_process(delta: float) -> void:
@@ -67,18 +94,106 @@ func _physics_process(delta: float) -> void:
 	var live := live_count()
 	for pack in packs:
 		if pack["spawned"]:
+			# A patrol on its feet keeps walking its route: every calm
+			# member roams toward where the pack should be by this hour.
+			if pack["patrols"]:
+				var there := pack_position(pack)
+				for m in pack["members"]:
+					if is_instance_valid(m) and (m as Enemy).life > 0.0:
+						(m as Enemy).roam_to(there)
 			continue
 		# The cap: a crowd is a crowd, however many packs the walk crossed.
 		if live >= max_live_mobs:
 			break
 		# Packs stand at their generated level: the surface, or a cave floor
 		# (cave packs activate when the player is near in 3D - above ground
-		# counts, so descending into a lit-up cave meets its residents).
-		var cell: float = terrain.map["cell_size"]
-		var at := Vector3((pack["x"] + 0.5) * cell, float(pack["y"]), (pack["z"] + 0.5) * cell)
+		# counts, so descending into a lit-up cave meets its residents). A
+		# patrolling pack stands wherever the night has walked it.
+		var at := pack_position(pack)
 		if at.distance_to(player.global_position) <= ACTIVATION_RANGE_M:
 			_spawn_pack(pack, at)
 			live += (pack["members"] as Array).size()
+
+
+## Where a pack is right now: its den by day; at night a patrol is out along
+## its route, furthest at the dead of night and home again by dawn.
+func pack_position(pack: Dictionary) -> Vector3:
+	var cell: float = terrain.map["cell_size"] if terrain != null and not terrain.map.is_empty() else 1.0
+	var den := Vector3((pack["x"] + 0.5) * cell, float(pack["y"]), (pack["z"] + 0.5) * cell)
+	if not night or not bool(pack.get("patrols", false)):
+		return den
+	var route: Vector2i = pack["route"]
+	var out: Vector3
+	if terrain != null and not terrain.map.is_empty():
+		out = terrain.surface_position(route.x, route.y)
+	else:
+		out = Vector3((route.x + 0.5) * cell, float(pack["y"]), (route.y + 0.5) * cell)
+	return den.lerp(out, sin(clampf(night_progress, 0.0, 1.0) * PI))
+
+
+## The hour from the sandpit: night or not, and how far through it.
+func set_hour(day: Dictionary, rules: Dictionary) -> void:
+	var length := float(rules.get("length_seconds", 720.0))
+	var night_length := maxf((1.0 - float(rules.get("dusk_end", 0.66))) * length, 1.0)
+	night_progress = clampf(1.0 - float(day.get("seconds_to_dawn", 0.0)) / night_length, 0.0, 1.0)
+	set_night(bool(day.get("night", false)), rules)
+
+
+## Noise at a point (Wave 7 slice 1): every idle mob within the kind's
+## radius wakes, every dormant pack within it takes shape and comes. A
+## muffled source (inside a closed room) carries the muffle fraction of
+## its radius. Returns how many mobs and packs it woke.
+func noise_at(position: Vector3, kind: String, muffled: bool = false) -> int:
+	var radii: Dictionary = _noise.get("radius_m", {})
+	var radius := float(radii.get(kind, 0.0))
+	if muffled:
+		radius *= float(_noise.get("muffle", 1.0))
+	if radius <= 0.0:
+		return 0
+	var woken := 0
+	if get_tree() == null:
+		return 0
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if not (node is Enemy) or not is_instance_valid(node):
+			continue
+		var enemy := node as Enemy
+		if enemy.life <= 0.0 or enemy.state != "idle" or enemy.trial_bound:
+			continue
+		if enemy.global_position.distance_to(position) > radius:
+			continue
+		enemy.state = "flee" if enemy.flees else "chase"
+		woken += 1
+	var packs_woken := 0
+	var live := live_count()
+	for pack in packs:
+		if pack["spawned"] or pack["grazer"] or live >= max_live_mobs:
+			continue
+		if pack_position(pack).distance_to(position) > radius:
+			continue
+		_spawn_pack(pack, pack_position(pack))
+		for m in pack["members"]:
+			if is_instance_valid(m):
+				(m as Enemy).state = "chase"
+		live += (pack["members"] as Array).size()
+		packs_woken += 1
+		woken += 1
+	woken_by_noise += packs_woken
+	if packs_woken > 0:
+		var now := Time.get_ticks_msec()
+		if now - _heard_at > 12000:
+			_heard_at = now
+			var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+			if player != null and player.hud != null:
+				player.hud.notify("Something heard that.")
+	return woken
+
+
+## Noise from anywhere in the world: finds the sandpit's pack system.
+static func noise(tree: SceneTree, position: Vector3, kind: String, muffled: bool = false) -> int:
+	if tree == null:
+		return 0
+	var system := tree.get_first_node_in_group("mob_packs") as MobPacks
+	return system.noise_at(position, kind, muffled) if system != null else 0
 
 
 ## The hour from the sandpit: at night every live mob wakes from further.
@@ -88,6 +203,9 @@ func set_night(value: bool, rules: Dictionary) -> void:
 	if value == night:
 		return
 	night = value
+	# A bare pack system (tests) has no tree and no mobs to tell.
+	if get_tree() == null:
+		return
 	for node in get_tree().get_nodes_in_group("enemies"):
 		if node is Enemy and is_instance_valid(node):
 			(node as Enemy).set_aggro_multiplier(aggro_multiplier())
@@ -149,7 +267,7 @@ func sleep_far_packs(player_position: Vector3) -> int:
 			continue
 		if not all_calm:
 			continue
-		var anchor := Vector3((pack["x"] + 0.5) * cell, float(pack["y"]), (pack["z"] + 0.5) * cell)
+		var anchor := pack_position(pack)
 		if anchor.distance_to(player_position) < sleep_range():
 			continue
 		for enemy in survivor_ids:

@@ -48,6 +48,13 @@ struct MobPack {
     int eliteMemberIndex = -1;   // -1 = no elite in this pack
     std::string eliteModifierId;
     bool grazer = false;         // life, not threat: placed outside the danger rules
+    // Wave 7 slice 1: the biome the pack dens in ("cave" underground), and
+    // for a deep biome's pack the route it patrols at night - from the den
+    // toward the heartland, stopping short of the doorstep, back by dawn.
+    std::string biome;
+    bool patrols = false;
+    int routeX = 0;
+    int routeZ = 0;
 };
 
 struct WorldMap {

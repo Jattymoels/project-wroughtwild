@@ -923,10 +923,18 @@ void testWorldgen(const tuning::Tuning& t) {
             if (a.topSolid(x, z) != a.at(x, z).height) clearingIntact = false;
         }
     check(clearingIntact, "worldgen: the spawn clearing is never carved beneath");
-    check(t.worldgen.dangerMultiplierAt(30.0) <= t.worldgen.dangerMultiplierAt(200.0) &&
-              t.worldgen.dangerMultiplierAt(200.0) > 1.0,
-          "worldgen: danger rings scale pack density outward");
-    check(t.worldgen.dangerMultiplierAt(30.0) < 0.5, "worldgen: the heartland is quiet (D-020)");
+    // Wave 7 slice 1: density is the biome's own; the rings only give teeth.
+    auto density = [&](const std::string& id) {
+        for (const auto& b : t.worldgen.biomes)
+            if (b.id == id) return b.packDensity;
+        return -1.0;
+    };
+    check(density("meadow") > 0.0 && density("meadow") < density("forest") && density("forest") < density("fen") &&
+              density("fen") <= density("ember_wastes") && density("meadow") * 8.0 < density("fen"),
+          "worldgen: density is the biome's - the meadow a straggler, the fen and the wastes dense (Wave 7)");
+    check(t.worldgen.dangerRingAt(30.0) != nullptr && t.worldgen.dangerRingAt(30.0)->packSizeBonus == 0 &&
+              t.worldgen.dangerRingAt(30.0)->eliteChance == 0.0 && t.worldgen.dangerRingAt(300.0)->packSizeBonus > 0,
+          "worldgen: the rings give teeth by distance, not density");
     check(t.world.shelter.maxRoomCells >= 300, "shelter: the room cap is a hall, not a hut (owner playtest 3 Sep)");
     check(t.realtime.hordeMaxLiveMobs > 0 && t.realtime.hordeSleepRangeM > 28.0 && t.realtime.hordeSleepAfterSeconds > 0.0,
           "population: a live-mob cap and a sleep range beyond the wake range");
@@ -3931,6 +3939,58 @@ void testHauling(const tuning::Tuning& t) {
     check(player.storeRemove(key).empty(), "haul: removing nothing spills nothing");
 }
 
+void testDensityAndFear(const tuning::Tuning& t) {
+    // Wave 7 slice 1 (the owner, 4 Sep 2026: "the problem is navigating
+    // where those improvements are seen/felt" - density by ring made here
+    // and there the same): density is the biome's, the deep biomes patrol
+    // toward the heartland at night, and noise carries.
+    const auto& g = t.worldgen.guarantees;
+    check(g.patrolLengthM >= 40.0 && g.patrolLengthM <= 120.0, "fear: a patrol is a real walk, not a stroll");
+    bool fenPatrols = false, meadowPatrols = false;
+    for (const auto& b : t.worldgen.biomes) {
+        if (b.id == "fen" || b.id == "ember_wastes") fenPatrols = fenPatrols || b.patrols;
+        if (b.id == "meadow") meadowPatrols = b.patrols;
+    }
+    check(fenPatrols && !meadowPatrols, "fear: the deep biomes patrol, the meadow does not");
+    auto map = worldgen::generate(t, 7);
+    std::map<std::string, int> cellsByBiome, packsByBiome;
+    for (const auto& cell : map.cells) ++cellsByBiome[t.worldgen.biomes[static_cast<size_t>(cell.biomeIndex)].id];
+    int patrolPacks = 0, routeBad = 0, cavePatrols = 0, unnamed = 0;
+    const double packSafe = g.packMinDistanceFromSpawnM;
+    for (const auto& pack : map.packs) {
+        if (pack.grazer) continue;
+        if (pack.biome.empty()) ++unnamed;
+        ++packsByBiome[pack.biome];
+        if (pack.biome == "cave" && pack.patrols) ++cavePatrols;
+        if (!pack.patrols) continue;
+        ++patrolPacks;
+        const double denToSpawn = std::hypot(double(pack.x - map.spawnX), double(pack.z - map.spawnZ));
+        const double routeToSpawn = std::hypot(double(pack.routeX - map.spawnX), double(pack.routeZ - map.spawnZ));
+        const double walk = std::hypot(double(pack.routeX - pack.x), double(pack.routeZ - pack.z));
+        if (walk > g.patrolLengthM + 1.5 || walk < 4.0 || routeToSpawn >= denToSpawn || routeToSpawn < packSafe - 0.5 ||
+            pack.routeX < 0 || pack.routeZ < 0 || pack.routeX >= map.width || pack.routeZ >= map.height)
+            ++routeBad;
+    }
+    check(unnamed == 0, "fear: every hostile pack knows the biome it dens in");
+    check(cavePatrols == 0, "fear: cave packs keep to the dark");
+    check(patrolPacks > 5 && routeBad == 0,
+          "fear: every patrol walks toward the heartland, no further than its length, never onto the doorstep (" +
+              std::to_string(patrolPacks) + " patrols)");
+    auto perCell = [&](const std::string& id) {
+        return cellsByBiome[id] > 0 ? double(packsByBiome[id]) / cellsByBiome[id] : 0.0;
+    };
+    check(cellsByBiome["meadow"] > 0 && cellsByBiome["fen"] > 0 && perCell("meadow") * 4.0 < perCell("fen") &&
+              perCell("meadow") * 4.0 < perCell("ember_wastes"),
+          "fear: on the ground the fen and the wastes are many times the meadow's density");
+    // Noise: the rules carry, and a felled tree is heard further than a press.
+    const auto& n = t.realtime.noiseRadiusM;
+    check(n.count("work") && n.count("tree_fall") && n.count("rock_crack") && n.count("fight") && n.count("strike") && n.count("horn"),
+          "fear: every noise the world makes has a radius");
+    check(n.at("tree_fall") > n.at("work") && n.at("rock_crack") > n.at("work") && n.at("horn") > n.at("tree_fall") &&
+              t.realtime.noiseMuffle > 0.0 && t.realtime.noiseMuffle < 0.5,
+          "fear: a falling tree carries further than a press, the horn furthest, and walls keep most of it in");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -3987,6 +4047,7 @@ int main(int argc, char** argv) {
     testWorldMadeWhole(t);
     testDayAndNight(t);
     testHauling(t);
+    testDensityAndFear(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

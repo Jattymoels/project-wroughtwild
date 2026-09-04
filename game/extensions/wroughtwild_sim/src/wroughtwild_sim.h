@@ -303,6 +303,10 @@ public:
     // --- hauling (Wave 6 slice 6) ---
     // world.json hauling: carry_cap_default, chest_units.
     Dictionary hauling_rules() const;
+    // Noise (Wave 7 slice 1): combat_realtime.json noise - radius_m by
+    // source kind (work, tree_fall, rock_crack, strike, fight, horn) and
+    // muffle, the fraction a closed room lets out.
+    Dictionary noise_rules() const;
     // The pack's cap for a family (0 = uncapped) and the room left in it.
     int carry_cap(const String& family) const;
     int carry_room(const String& family) const;

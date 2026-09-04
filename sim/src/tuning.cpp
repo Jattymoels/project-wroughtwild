@@ -68,10 +68,6 @@ const Station* CraftingTable::findStationForKit(const std::string& kitItemId) co
     return nullptr;
 }
 const BiomeDef* WorldgenTable::findBiome(const std::string& id) const { return findById(biomes, id); }
-double WorldgenTable::dangerMultiplierAt(double distanceM) const {
-    const DangerRing* ring = dangerRingAt(distanceM);
-    return ring ? ring->packDensityMultiplier : 1.0;
-}
 const DangerRing* WorldgenTable::dangerRingAt(double distanceM) const {
     for (const auto& ring : dangerRings)
         if (distanceM <= ring.radiusM) return &ring;
@@ -821,7 +817,16 @@ RealtimeTable loadRealtime(const std::string& path) {
             table.hordeJumpSpeedMps = jump->asNumber();
         if (auto cap = horde->find("max_live_mobs")) table.hordeMaxLiveMobs = cap->asInt();
         if (auto range = horde->find("sleep_range_m")) table.hordeSleepRangeM = range->asNumber();
-        if (auto after = horde->find("sleep_after_seconds")) table.hordeSleepAfterSeconds = after->asNumber();
+        if (auto after = horde->find("sleep_after_seconds")) table.hordeSleepAfterSeconds = after->asNumber();
+    }
+    if (auto noise = doc->find("noise")) {
+        if (auto radii = noise->find("radius_m"))
+            for (const auto& [kind, radius] : radii->asObject()) {
+                table.noiseRadiusM[kind] = radius->asNumber();
+                if (radius->asNumber() < 0.0) throw std::runtime_error("combat_realtime: noise radius_m." + kind + " must be >= 0");
+            }
+        if (auto muffle = noise->find("muffle")) table.noiseMuffle = muffle->asNumber();
+        if (table.noiseMuffle < 0.0 || table.noiseMuffle > 1.0) throw std::runtime_error("combat_realtime: noise.muffle must be in [0, 1]");
     }
 
     const Value& boss = doc->get("boss");
@@ -1156,7 +1161,6 @@ WorldgenTable loadWorldgen(const std::string& path) {
     for (const auto& ring : doc->get("danger").get("rings").asArray()) {
         DangerRing r;
         r.radiusM = ring->get("radius_m").asNumber();
-        r.packDensityMultiplier = ring->get("pack_density_multiplier").asNumber();
         if (auto v = ring->find("pack_size_bonus")) r.packSizeBonus = v->asInt();
         if (auto v = ring->find("elite_chance")) r.eliteChance = v->asNumber();
         table.dangerRings.push_back(r);
@@ -1199,6 +1203,7 @@ WorldgenTable loadWorldgen(const std::string& path) {
             for (const auto& [type, value] : density->asObject())
                 biome.nodeDensity[type] = value->asNumber();
         if (auto v = b->find("pack_density")) biome.packDensity = v->asNumber();
+        if (auto v = b->find("patrols")) biome.patrols = v->asBool();
         if (auto packs = b->find("packs"))
             for (const auto& pack : packs->asArray())
                 biome.packs.push_back(readStringArray(*pack));
@@ -1238,6 +1243,7 @@ WorldgenTable loadWorldgen(const std::string& path) {
     table.guarantees.gateMinDistanceM = g.get("gate_min_distance_m").asNumber();
     table.guarantees.packMinDistanceFromSpawnM =
         g.get("pack_min_distance_from_spawn_m").asNumber();
+    if (auto v = g.find("patrol_length_m")) table.guarantees.patrolLengthM = v->asNumber();
 
     return table;
 }

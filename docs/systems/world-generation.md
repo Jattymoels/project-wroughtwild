@@ -117,9 +117,19 @@ now a **full 3D block field** the sim generates deterministically per seed
   entrances you find and drop into. Cave floors host resource nodes (iron
   runs richer underground — the reason to go down). The spawn clearing
   and the trial gate's ground are never carved.
-- **Danger rings:** pack density multiplies with distance from spawn, so
-  the heartland stays learnable and the map edge is genuinely hostile.
-  The Wave 3 mob pass will hang harder compositions off the same rings.
+- **Danger rings:** the rings give a pack its teeth by distance (a size
+  bonus, an elite chance); they no longer touch density. Density is the
+  biome's own (Wave 7 slice 1, 4 Sep 2026): each biome's `pack_density`
+  is what it is wherever the biome lies, so the meadow is a straggler, the
+  forest edge has stragglers, and the fen, the wastes and the caves are
+  dense from day one - the danger is a place with a visible edge, not a
+  radius. Every hostile pack carries its biome to the engine.
+- **Night patrols (Wave 7 slice 1):** a biome marked `patrols` (the
+  forest, the fen, the wastes) gives each of its packs a route:
+  `patrol_length_m` from its den along the line to the spawn, stopping
+  two cells short of the doorstep radius. The engine walks the pack out
+  over the first half of the night and home over the second, so dusk is
+  the hour you meet the wastes coming the other way.
 - **Engine:** the sim also derives the render/collision geometry
   (`world_mesh`: per-chunk visible-block centres by kind plus exposed-face
   triangles), so the engine builds one MultiMesh per kind and one trimesh

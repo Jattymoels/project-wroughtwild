@@ -207,6 +207,38 @@ func _test_lattice() -> void:
 	check(sim.store_withdraw("block:0:1,2,3", "wood", 99) == 5 and sim.material_count("wood") == 12
 		and sim.store_remove("block:0:1,2,3").is_empty(), "haul: and gives it back")
 	sim.consume_material("wood", 12)
+	# Density and fear (Wave 7 slice 1): the noise rules, and packs that
+	# carry their biome and route through the map.
+	var noise: Dictionary = sim.noise_rules()
+	var radii: Dictionary = noise.get("radius_m", {})
+	check(float(radii.get("tree_fall", 0.0)) > float(radii.get("work", 0.0)) and float(radii.get("work", 0.0)) > 0.0
+		and float(noise.get("muffle", 1.0)) < 1.0, "fear: the noise rules come from combat_realtime.json")
+	var map: Dictionary = sim.world_map(7)
+	var patrols := 0
+	var named := 0
+	for pack in map.get("packs", []):
+		if bool(pack.get("grazer", false)):
+			continue
+		if String(pack.get("biome", "")) != "":
+			named += 1
+		if bool(pack.get("patrols", false)) and Vector2i(int(pack["route_x"]), int(pack["route_z"])) != Vector2i(int(pack["x"]), int(pack["z"])):
+			patrols += 1
+	check(named > 0 and patrols > 5, "fear: packs reach the engine with their biome and their night route (%d patrols)" % patrols)
+	# A bare pack system: by day a patrol stands at its den; at the dead of
+	# night it stands at its route's end; at dusk and dawn it is home.
+	var system := MobPacks.new()
+	system.packs = [{"enemies": PackedStringArray(["ash_hound"]), "x": 10, "y": 5, "z": 10, "elite_member": -1, "elite_modifier": "",
+		"grazer": false, "biome": "fen", "patrols": true, "route": Vector2i(40, 10), "spawned": false, "members": []}]
+	var hour_rules := {"length_seconds": 720.0, "dusk_end": 0.66, "night_aggro_multiplier": 1.6, "night_sleep_range_multiplier": 1.5}
+	system.set_hour({"night": false, "seconds_to_dawn": 0.0}, hour_rules)
+	var by_day: Vector3 = system.pack_position(system.packs[0])
+	system.set_hour({"night": true, "seconds_to_dawn": 0.5 * (1.0 - 0.66) * 720.0}, hour_rules)
+	var midnight: Vector3 = system.pack_position(system.packs[0])
+	system.set_hour({"night": true, "seconds_to_dawn": 0.02}, hour_rules)
+	var dawn: Vector3 = system.pack_position(system.packs[0])
+	check(by_day.is_equal_approx(Vector3(10.5, 5.0, 10.5)) and midnight.distance_to(Vector3(40.5, 5.0, 10.5)) < 0.01
+		and dawn.distance_to(by_day) < 0.5, "fear: a patrol is home by day, out at midnight, and home again by dawn")
+	system.free()
 	var no_digs := PackedInt32Array()
 	var middle := Vector3(0.5, 0.5, 0.5)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")

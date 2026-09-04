@@ -124,6 +124,10 @@ var exposed := false
 var _exposure_per_second := 0.0
 var _exposure_floor_fraction := 0.0
 var _night_regen_multiplier := 1.0
+## A fight is a beacon (Wave 7 slice 1): a hit landing either way is heard;
+## at most once a second, so a flurry is one noise.
+const FIGHT_NOISE_SECONDS := 1.0
+var _fight_noise_left := 0.0
 
 
 func _tick_shelter(delta: float) -> void:
@@ -183,6 +187,14 @@ func resting() -> bool:
 	return sheltered and _settle_left <= 0.0 and life < max_life
 
 
+## A hit landing is heard (Wave 7 slice 1), at most once a second.
+func fight_noise(at: Vector3) -> void:
+	if _fight_noise_left > 0.0:
+		return
+	_fight_noise_left = FIGHT_NOISE_SECONDS
+	MobPacks.noise(get_tree(), at, "fight", sheltered)
+
+
 ## What resting pays per second: the shelter's rate, more through the night.
 func regen_per_second() -> float:
 	return _regen_per_second * (_night_regen_multiplier if night else 1.0)
@@ -233,6 +245,7 @@ func _physics_process(delta: float) -> void:
 	for id in cooldowns:
 		cooldowns[id] = maxf(0.0, cooldowns[id] - delta)
 	invulnerable_left = maxf(0.0, invulnerable_left - delta)
+	_fight_noise_left = maxf(0.0, _fight_noise_left - delta)
 	_tick_shelter(delta)
 	_dash_left = maxf(0.0, _dash_left - delta)
 	_cast_armour_left = maxf(0.0, _cast_armour_left - delta)
@@ -472,6 +485,7 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -
 	# Life on hit (the Marrow's forms): a hit that lands drinks.
 	if landed > 0.0:
 		heal(sim.skill_life_on_hit(String(skill_id)))
+		fight_noise(enemy.global_position)
 	var kill := enemy.life <= 0.0
 	if kill:
 		_reap(skill_id, 1)
@@ -891,6 +905,7 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	life_changed.emit(life, max_life)
 	hit_taken.emit(last_hit_taken, source_name)
 	_answer_hit(source)
+	fight_noise(get_parent().global_position)
 	if life <= 0.0:
 		died.emit()
 	return last_hit_taken

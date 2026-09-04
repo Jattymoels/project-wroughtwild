@@ -232,6 +232,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("day_rules"), &WroughtwildSim::day_rules);
     ClassDB::bind_method(D_METHOD("set_day_clock", "seconds"), &WroughtwildSim::set_day_clock);
     ClassDB::bind_method(D_METHOD("hauling_rules"), &WroughtwildSim::hauling_rules);
+    ClassDB::bind_method(D_METHOD("noise_rules"), &WroughtwildSim::noise_rules);
     ClassDB::bind_method(D_METHOD("carry_cap", "family"), &WroughtwildSim::carry_cap);
     ClassDB::bind_method(D_METHOD("carry_room", "family"), &WroughtwildSim::carry_room);
     ClassDB::bind_method(D_METHOD("haul", "family", "amount"), &WroughtwildSim::haul);
@@ -2156,6 +2157,10 @@ Dictionary WroughtwildSim::world_map(int seed) {
         p["elite_member"] = pack.eliteMemberIndex;
         p["elite_modifier"] = to_godot(pack.eliteModifierId);
         p["grazer"] = pack.grazer;
+        p["biome"] = to_godot(pack.biome);
+        p["patrols"] = pack.patrols;
+        p["route_x"] = pack.routeX;
+        p["route_z"] = pack.routeZ;
         packs.push_back(p);
     }
     d["packs"] = packs;
@@ -2649,6 +2654,18 @@ Dictionary WroughtwildSim::hauling_rules() const {
     }
     d["carry_cap_default"] = tuning_->world.hauling.carryCapDefault;
     d["chest_units"] = tuning_->world.hauling.chestUnits;
+    return d;
+}
+
+Dictionary WroughtwildSim::noise_rules() const {
+    Dictionary d;
+    if (!require_loaded("noise_rules")) {
+        return d;
+    }
+    Dictionary radii;
+    for (const auto& [kind, radius] : tuning_->realtime.noiseRadiusM) radii[String(kind.c_str())] = radius;
+    d["radius_m"] = radii;
+    d["muffle"] = tuning_->realtime.noiseMuffle;
     return d;
 }
 
