@@ -31,4 +31,13 @@ Info info(const tuning::DayDef& def, double clockSeconds);
 // kills - it sends you home. Life already under the floor is left alone.
 double exposed(const tuning::DayDef& def, double roundSeconds, double life, double maxLife, double seconds);
 
+// The siege (Wave 7 slice 3): whether the hounds come on this night of the
+// world - never before first_night, then chance_per_night rolled from the
+// seed and the day, so a save replays its nights.
+bool siegeTonight(const tuning::SiegeDef& def, uint64_t seed, int dayIndex);
+
+// The siege pack for an era: the highest era listed at or under it
+// (empty when none is).
+const std::vector<std::string>& siegePack(const tuning::SiegeDef& def, int era);
+
 } // namespace wroughtwild::daycycle

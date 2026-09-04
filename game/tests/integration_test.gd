@@ -31,12 +31,19 @@ var _noise_packs: MobPacks
 var _far: Enemy
 var _roamer: Enemy
 var _roamer_from := Vector3.ZERO
+var _timber_wall: PlacedBlock
+var _stone_wall: PlacedBlock
 var _chest_wood := 0
 ## The x-face, z-face and vertical edge that all meet at build-grid corner
 ## (5, 3, 5) - registry coordinates run at half cells, so (10, 6, 10).
 const CORNER_FACE_X := {"kind": "face", "axis": 0, "cell": Vector3i(10, 6, 10)}
 const CORNER_FACE_Z := {"kind": "face", "axis": 2, "cell": Vector3i(10, 6, 10)}
 const CORNER_EDGE := {"kind": "edge", "axis": 1, "cell": Vector3i(10, 6, 10)}
+
+
+## Whether the sim would take a piece on an element (the tests' free-cell search).
+func sim_free(element: Dictionary, shape: String) -> bool:
+	return _player.inventory.get_sim().structure_free_for(shape, element)
 
 
 func check(condition: bool, label: String) -> void:
@@ -638,6 +645,16 @@ func _physics_process(_delta: float) -> void:
 				"noise: a tree felled in the open wakes the whelp")
 			check(_noise_packs.noise_at(p, "no_such_noise", false) == 0, "noise: an unknown kind is silent")
 			check(_roamer.roaming() and _roamer.state == "idle", "noise: a roaming mob stays idle until something wakes it")
+			# Two walls for the siege's scratching: timber and stone, on free
+			# faces a few cells off.
+			var placement := _player.placement
+			for dx in range(4, 12):
+				var face := {"kind": "face", "axis": 0, "cell": Vector3i(floori(p.x) + dx, floori(p.y), floori(p.z) - 4) * 2}
+				if _timber_wall == null and sim_free(face, "wall_panel"):
+					_timber_wall = placement.place_piece(face, &"wall_panel", &"wood")
+				elif _stone_wall == null and sim_free(face, "wall_panel"):
+					_stone_wall = placement.place_piece(face, &"wall_panel", &"stone")
+			check(_timber_wall != null and _stone_wall != null, "siege: a timber wall and a stone wall stand for the scratching")
 		45:
 			# The train (Wave 7 slice 2): after one mob's bite, another mob's
 			# bite inside the window lands harder; the same mob's does not.
@@ -653,6 +670,49 @@ func _physics_process(_delta: float) -> void:
 			var toward := (_roamer.global_position - _roamer_from).normalized().dot(Vector3(0, 0, 1))
 			check(moved > 0.005 and toward > 0.8, "noise: the roamer walks toward its pack's place (%.3f m)" % moved)
 			_roamer.stop_roaming()
+			# The horn (Wave 7 slice 3): nothing without one; with one, every
+			# mob in ninety metres comes, and it rings a while before the next.
+			var sim: WroughtwildSim = _player.inventory.get_sim()
+			_roamer.state = "idle"
+			check(not _player.blow_horn() and _roamer.state == "idle", "horn: nothing to blow without a horn")
+			sim.add_material("shrieker_horn", 1)
+			check(_player.blow_horn() and _roamer.state == "chase" and _player.horn_cooldown_left() > 0.0,
+				"horn: blown, the whelp thirty-six metres off comes")
+			check(not _player.blow_horn(), "horn: it still rings")
+			sim.consume_material("shrieker_horn", 1)
+			# Home is where death sends you once you have one.
+			combat.has_home = true
+			combat.home_position = _player.global_position + Vector3(9.0, 0.0, 0.0)
+			check(_player.respawn_point().distance_to(combat.home_position + Vector3(0, 1.2, 0)) < 0.01, "siege: death sends you home")
+			# The siege on a bare pack system: on a siege night, deep into
+			# it, with the player home, the era's pack takes shape around
+			# home hunting; dawn dismisses what is left.
+			_noise_packs.siege_tonight = true
+			_noise_packs._siege_rolled_day = 5
+			_noise_packs.set_hour({"night": true, "seconds_to_dawn": 10.0, "index": 5}, {"length_seconds": 720.0, "dusk_end": 0.66})
+			_noise_packs.tick_siege({"night": true, "seconds_to_dawn": 10.0, "index": 5}, _player, 7)
+			var came: Array = _noise_packs.siege_members()
+			check(came.size() == 2 and (came[0] as Enemy).siege and (came[0] as Enemy).state == "chase"
+				and (came[0] as Enemy).global_position.distance_to(combat.home_position) > 15.0,
+				"siege: two hounds come to the lamp, hunting, from the dark around home")
+			_noise_packs.tick_siege({"night": false, "seconds_to_dawn": 0.0, "index": 6}, _player, 7)
+			check(_noise_packs.siege_members().is_empty(), "siege: dawn dismisses them")
+			combat.has_home = false
+			# A timber wall gives to a breaker after the tuned scratches; a
+			# stone wall never does; a plain scratcher only shakes it.
+			var limit := int(sim.siege_rules().get("timber_break_hits", 12))
+			for i in limit + 2:
+				_stone_wall.scratch(true)
+			check(is_instance_valid(_stone_wall) and not sim.structure_piece(_stone_wall.element).is_empty(), "siege: stone never gives")
+			for i in 3:
+				_timber_wall.scratch(false)
+			check(_timber_wall.scratches == 0, "siege: a hound only shakes the timber")
+			var gave := false
+			for i in limit:
+				gave = _timber_wall.scratch(true) or gave
+			check(gave and sim.structure_piece({"kind": "face", "axis": 0, "cell": Vector3i(0, 0, 0)}).is_empty(),
+				"siege: a breaker wears the timber down and it gives")
+			_player.placement.remove_piece(_stone_wall)
 			for enemy in [_far, _roamer]:
 				if is_instance_valid(enemy):
 					enemy.queue_free()

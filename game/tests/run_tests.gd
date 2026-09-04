@@ -247,6 +247,19 @@ func _test_lattice() -> void:
 		"ahead: the train's rules and multiplier come from the sim")
 	check(sim.armour_reduction_cap() > 0.0 and sim.armour_reduction_cap() <= 0.3, "ahead: the valley caps armour low")
 	check(sim.station("forge_improved").get("upgrade_cost", {}).has("bog_iron"), "ahead: the second forge wants bog iron")
+	# The horn and the siege (Wave 7 slice 3): the rules, the night's roll
+	# and the era's pack through the binding.
+	var siege: Dictionary = sim.siege_rules()
+	check(int(siege.get("first_night", 0)) >= 2 and int(siege.get("timber_break_hits", 0)) >= 6
+		and float(sim.noise_rules().get("horn_cooldown_seconds", 0.0)) > 0.0 and sim.carry_cap("shrieker_horn") == 1,
+		"siege: the rules come from world.json and the pack carries one horn")
+	var nights := 0
+	for day in range(2, 42):
+		if sim.siege_tonight(7, day):
+			nights += 1
+	check(not sim.siege_tonight(7, 1) and nights > 8 and nights < 32 and sim.siege_tonight(7, 5) == sim.siege_tonight(7, 5),
+		"siege: never the first night, some nights after, the same night every time (%d/40)" % nights)
+	check(sim.siege_pack().size() == 2 and sim.siege_pack()[0] == "ash_hound", "siege: the valley's siege is two hounds")
 	var no_digs := PackedInt32Array()
 	var middle := Vector3(0.5, 0.5, 0.5)
 	check(not sim.structure_enclosure(-1, no_digs, middle)["enclosed"], "shelter: nothing built, no shelter")

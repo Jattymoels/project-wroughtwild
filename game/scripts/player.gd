@@ -50,6 +50,9 @@ var _lamp: OmniLight3D
 var chest_panel: ChestPanel
 ## When each family was last called full, so the word comes once in a while.
 var _full_said := {}
+## The shrieker's horn (Wave 7 slice 3): X blows it, everything in its
+## radius comes, and it rings a while before it will blow again.
+var _horn_left := 0.0
 var trial: TrialController
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
@@ -227,6 +230,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		toggle_inventory()
 	elif event.is_action_pressed("toggle_foundry"):
 		toggle_foundry()
+	elif event.is_action_pressed("blow_horn"):
+		blow_horn()
 	elif event.is_action_pressed("save_game"):
 		save_game()
 	elif event.is_action_pressed("load_game"):
@@ -397,7 +402,40 @@ func set_day(day: Dictionary, rules: Dictionary) -> void:
 	_lamp.visible = dark > 0.05
 
 
+## The horn: density on your own terms. False without a horn or while it
+## still rings.
+func blow_horn() -> bool:
+	var sim := inventory.get_sim()
+	if inventory.get_count(&"shrieker_horn") <= 0:
+		hud.notify("You have no horn to blow. The shriekers of the forest carry them.")
+		return false
+	if _horn_left > 0.0:
+		hud.notify("The horn still rings (%s)." % Hud.clock_text(_horn_left))
+		return false
+	var rules: Dictionary = sim.noise_rules()
+	_horn_left = float(rules.get("horn_cooldown_seconds", 0.0))
+	var radius := float(rules.get("radius_m", {}).get("horn", 0.0))
+	var woken := MobPacks.noise(get_tree(), global_position, "horn", combat.sheltered)
+	PulseRing.burst(world_root(), global_position + Vector3(0, 0.3, 0), radius * (0.35 if combat.sheltered else 1.0), Color(1.0, 0.75, 0.3, 0.45), 1.2)
+	hud.notify("You blow the shrieker's horn: everything within %d metres is coming%s." % [
+		int(radius), " (%d heard it)" % woken if woken > 0 else ""])
+	return true
+
+
+func horn_cooldown_left() -> float:
+	return _horn_left
+
+
+## Where death sends you (Wave 7 slice 3): home, the last shelter you
+## rested in, or the spawn clearing before you have one.
+func respawn_point() -> Vector3:
+	if combat.has_home:
+		return combat.home_position + Vector3(0, 1.2, 0)
+	return spawn_position
+
+
 func _physics_process(delta: float) -> void:
+	_horn_left = maxf(0.0, _horn_left - delta)
 	if Input.is_action_just_pressed("jump"):
 		_jump_buffer_left = JUMP_BUFFER_SECONDS
 	else:
@@ -562,7 +600,9 @@ func _on_died() -> void:
 	else:
 		hud.notify("You fell.")
 	work_panel.close_panel()
-	global_position = spawn_position
+	if combat.has_home:
+		hud.notify("You wake at home.")
+	global_position = respawn_point()
 	velocity = Vector3.ZERO
 	combat.restore_life()
 	combat.invulnerable_left = 2.0

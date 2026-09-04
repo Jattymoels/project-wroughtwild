@@ -330,6 +330,22 @@ struct HaulingDef {
     int chestUnits = 0;                  // units one chest holds
 };
 
+// The siege (world.json "siege", Wave 7 slice 3): some nights, from the
+// first_night on, the hounds come to the lamp. Rolled per night from the
+// world seed; they arrive once the night is old enough, at the edge of
+// the dark around home, hunting from the start; gone with the dawn. The
+// pack grows with the era, and a breaker (an era mechanic) wears timber
+// down: after timberBreakHits scratches a timber piece gives.
+struct SiegeDef {
+    int firstNight = 0;                 // 0 = never
+    double chancePerNight = 0.0;
+    double arriveSecondsIntoNight = 0.0;
+    double spawnRadiusM = 0.0;          // around home
+    double homeRadiusM = 0.0;           // the player must be this near home
+    int timberBreakHits = 0;
+    std::map<int, std::vector<std::string>> packByEra; // the highest era at or under the current
+};
+
 
 // One line of a mob's loot table. Three kinds (D-016): a material stack, a
 // rolled gear piece of a rarity and tier, or a skill page that teaches one
@@ -397,6 +413,7 @@ struct WorldTable {
     ShelterDef shelter;
     DayDef day;
     HaulingDef hauling;
+    SiegeDef siege;
     std::vector<EnemyDef> enemies;
     std::vector<EliteModifierDef> eliteModifiers;
     std::vector<GatherSite> gatheringSites;
@@ -588,6 +605,7 @@ struct RealtimeTable {
     // closed room carries noiseMuffle of its radius.
     std::map<std::string, double> noiseRadiusM;
     double noiseMuffle = 1.0;
+    double noiseHornCooldownSeconds = 0.0; // the shrieker's horn rings this long between blows
     // The train (Wave 7 slice 2): bites from different mobs inside the
     // window stack a bonus per earlier bite, to a cap.
     double hordeTrainWindowSeconds = 0.0;

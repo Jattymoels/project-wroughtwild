@@ -314,6 +314,13 @@ public:
     double train_multiplier(int earlier_hits) const;
     // The current era's ceiling on armour's reduction (eras.json).
     double armour_reduction_cap() const;
+    // The siege (Wave 7 slice 3): world.json siege - first_night,
+    // chance_per_night, arrive_seconds_into_night, spawn_radius_m,
+    // home_radius_m, timber_break_hits; whether the hounds come on a
+    // night of the world; the current era's siege pack.
+    Dictionary siege_rules() const;
+    bool siege_tonight(int seed, int day_index) const;
+    PackedStringArray siege_pack() const;
     // The pack's cap for a family (0 = uncapped) and the room left in it.
     int carry_cap(const String& family) const;
     int carry_room(const String& family) const;

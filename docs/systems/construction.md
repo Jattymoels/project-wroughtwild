@@ -196,6 +196,15 @@ family (`carry_cap`, `carry_cap_default`; gear and forged goods never
 capped), a full family's chips stay on the ground, and the walk home is
 where the load goes. Break the chest and it spills where it stood.
 
+**The siege and the house (Wave 7 slice 3):** some nights the hounds come
+to the lamp and scratch at what they press against; the piece shakes and
+the HUD says so. In the valley a shut timber door holds - they scratch,
+they do not break. Once the deep wakes the husk breaks timber
+(`eras.json` `breaks_timber`): after `timber_break_hits` (`world.json`
+`siege`) scratches a timber piece gives and is gone, so the hut becomes
+stone, which is the masonry unlock earning its keep. Stone and iron never
+give. Death sends you home, the last shelter you rested in.
+
 ## Implemented: freedom outside the cell (owner playtest fixes, 3 Sep 2026)
 
 The owner's first building playtest: "within the 1 block building feels

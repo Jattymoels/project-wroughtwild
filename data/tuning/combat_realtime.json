@@ -150,6 +150,7 @@
       "horn": 90.0
     },
     "muffle": 0.35,
-    "design_purpose": "Noise (Wave 7 slice 1; the owner, 4 Sep 2026: the felt density must answer what you do). Every source kind carries a radius: a press on a tree or a rock (work), a blow on a set wedge (strike), a boulder cracking (rock_crack), a tree coming down (tree_fall), a hit landing either way (fight), and the shrieker's horn (horn, slice 3). Within it every idle mob wakes and every dormant pack takes shape and comes; the shrieker's scream generalised to the world. A source inside a closed room carries muffle of its radius - walls are why the house matters at night. Chopping at dusk is a decision; a fight is a beacon; the tree you fell is heard across the meadow."
+    "horn_cooldown_seconds": 90,
+    "design_purpose": "Noise (Wave 7 slice 1; the owner, 4 Sep 2026: the felt density must answer what you do). Every source kind carries a radius: a press on a tree or a rock (work), a blow on a set wedge (strike), a boulder cracking (rock_crack), a tree coming down (tree_fall), a hit landing either way (fight), and the shrieker's horn (horn, slice 3). Within it every idle mob wakes and every dormant pack takes shape and comes; the shrieker's scream generalised to the world. A source inside a closed room carries muffle of its radius - walls are why the house matters at night. Chopping at dusk is a decision; a fight is a beacon; the tree you fell is heard across the meadow. The horn (Wave 7 slice 3): a shrieker's kill may leave its horn (world.json loot; the pack carries one); X blows it and everything within horn's radius comes at once - a map you open on your own terms, for the drop tables' best - and it rings horn_cooldown_seconds before it will blow again."
   }
 }

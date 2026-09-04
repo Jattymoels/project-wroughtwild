@@ -36,6 +36,10 @@ var _light: OmniLight3D
 var _pivot: Node3D
 var _collision_shapes: Array[CollisionShape3D] = []
 var _look: Material
+var _mesh: MeshInstance3D
+## The siege (Wave 7 slice 3): scratches a breaker has given this piece.
+var scratches := 0
+static var _scratch_said := -100000
 
 
 ## Builds the piece at its pose. size comes from the shape's size_m; centre
@@ -92,6 +96,7 @@ func _build() -> void:
 	if _look != null:
 		mesh.material_override = _look
 	parent.add_child(mesh)
+	_mesh = mesh
 	if is_door():
 		mesh.position = Vector3(size.x * 0.5, 0.0, 0.0)
 	# Collision shapes must be direct children of the body (Godot ignores
@@ -214,6 +219,48 @@ func leaf_point() -> Vector3:
 	if _collision_shapes.is_empty():
 		return global_position
 	return _collision_shapes[0].global_position
+
+
+## The siege (Wave 7 slice 3): a mob scratching at this piece. The house
+## shakes and says so; a breaker wears timber down and after
+## world.json siege timber_break_hits it gives. Stone and iron never give.
+## Returns true when the piece broke.
+func scratch(breaker: bool) -> bool:
+	_shake()
+	_say_scratched()
+	if not breaker or String(material_family) != "wood":
+		return false
+	scratches += 1
+	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
+	var limit := int(sim.siege_rules().get("timber_break_hits", 12))
+	if scratches < limit:
+		return false
+	var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+	if player != null and player.hud != null:
+		player.hud.notify("The %s gives way!" % Hud.pretty(String(shape_id)).to_lower())
+	if player != null and player.placement != null:
+		return player.placement.remove_piece(self)
+	queue_free()
+	return true
+
+
+func _shake() -> void:
+	if _mesh == null or not is_inside_tree():
+		return
+	var base := _mesh.position
+	var tween := create_tween()
+	tween.tween_property(_mesh, "position", base + Vector3(0.05, 0.0, 0.03), 0.05)
+	tween.tween_property(_mesh, "position", base, 0.09)
+
+
+func _say_scratched() -> void:
+	var now := Time.get_ticks_msec()
+	if now - _scratch_said < 8000 or not is_inside_tree():
+		return
+	_scratch_said = now
+	var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
+	if player != null and player.hud != null:
+		player.hud.notify("Something scratches at the %s." % Hud.pretty(String(shape_id)).to_lower())
 
 
 ## What the crosshair label should offer for this piece ("" for nothing).

@@ -533,11 +533,24 @@ choose it. Three slices, all accepted:
    harder per earlier mouth, to 60 - `player_combat.gd` remembers who bit
    when, the HUD's hit line says "the train x1.2". Trials stay the maps.
    Sim 4495, engine unit 384, integration 252.
-3. **The horn and the siege**: the shrieker's throat as a tool that calls
-   every pack in radius (voluntary density on the player's terms); at
-   dusk a howl, some nights hounds come to the lamp, circle and scratch a
-   timber door and leave at dawn; era 2's husks break timber, so the hut
-   becomes stone; death respawns at home.
+3. **The horn and the siege** *(landed 4 Sep 2026)*: a shrieker's kill
+   may leave its **horn** (`world.json` loot, one carried); X blows it
+   (`player.gd` `blow_horn`) and everything within ninety metres comes -
+   a map opened on the player's terms - and it rings ninety seconds
+   before the next (`combat_realtime.json` noise `horn_cooldown_seconds`).
+   The **siege** (`world.json` `siege`): from the second night, half the
+   nights, rolled from the seed and the day (`daycycle::siegeTonight`);
+   the dusk notice carries the howl; forty-five seconds into the night,
+   if you are within forty metres of home, the era's pack (two hounds in
+   the valley, a husk with them once the deep wakes) takes shape twenty-two
+   metres out in the dark around home, hunting from the start
+   (`mob_packs.gd` `tick_siege`); what is left slinks off at dawn. A mob
+   pressed against a placed piece scratches at it - the house shakes and
+   the HUD says so (`PlacedBlock.scratch`) - and a breaker (era 2's
+   husks, `eras.json` `breaks_timber`) wears timber down: after twelve
+   scratches the piece gives, so the hut becomes stone; stone and iron
+   never give. Death sends you home (`respawn_point`), the spawn clearing
+   only until you have one. Sim 4505, engine unit 387, integration 263.
 
 Rejected: scaling by day index. It would stretch the curve but breaks
 D-019's rule that the world changes on the player's milestones, never

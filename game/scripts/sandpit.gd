@@ -127,6 +127,7 @@ func _tick_day(delta: float) -> void:
 	mood.set_day(day, _day_rules)
 	player.set_day(day, _day_rules)
 	mob_packs.set_hour(day, _day_rules)
+	mob_packs.tick_siege(day, player, world_seed)
 	var phase := String(day.get("phase", "day"))
 	if phase == _day_phase:
 		return
@@ -140,8 +141,9 @@ func _phase_notice(phase: String, day: Dictionary) -> String:
 	var home := player.combat.home_text()
 	match phase:
 		"dusk":
-			return "Dusk. The light is going and the cold comes with the dark: get under a roof, and build while the night lasts.%s" % (
-				"  Home is %s." % home if home != "" else "")
+			return "Dusk. The light is going and the cold comes with the dark: get under a roof, and build while the night lasts.%s%s" % [
+				"  Home is %s." % home if home != "" else "",
+				"  Somewhere in the dark, the hounds howl." if mob_packs.siege_tonight else ""]
 		"night":
 			return "Night. Out here the cold takes what it takes and the packs wake from further; a shelter mends you faster through it.%s" % (
 				"  Home is %s." % home if home != "" else "")
