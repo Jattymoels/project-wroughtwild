@@ -353,10 +353,21 @@ the world is the campaign. Slices, in order:
    the Foundry plate, ingots beside a tablet supporting that skill alone
    (tag-checked, `support_multiplier`), F opens the Foundry anywhere, the
    first dressed block a milestone.
-11. **Next**: the stone accomplishment pass (seam look, wedge sinking,
-   chunk falling, first dressed block as a beat, a first-hour job for
-   fire), melee's stagger/push/swing armour, and the bench kept alive
-   (bulk wedges, frames for the yard and the forge).
+11. **The stone accomplishment pass** *(landed 4 Sep 2026; the owner:
+   "a must")*: seams are lines through the stone now, flush with the
+   blocks they cross and stepping with their heights, and the ore veins
+   take the same line in the metal's colour (the owner: "flush with the
+   exposed stone generated rather than a pebble look ... more of a
+   pattern/line through the stone"); the wedge sinks and leans as it is
+   driven; a split throws a fist of stone off the seam; the first dressed
+   block is a beat on the HUD. Still open: **a first-hour job for fire**
+   waits on a decision, because the class kits changed who can quench
+   (only the Kindler and the Warden start with cold; a Ranger cracks hot
+   rock only with a blow) - the candidates are an iron vein that wants
+   heat, or a hard seam. **Next**: melee's stagger/push/swing armour, and
+   the bench kept alive (bulk wedges, frames for the yard and the forge).
+   The owner (4 Sep) likes the current tuning: the damage pass is
+   closed.
 12. **The working** *(proposed 3 Sep 2026, D-023; owner answers 4 Sep;
    slices 1 to 10 - the frame, every ingot reads every skill, typed
    currency, the flow with kinds in the detached cells and the first
@@ -378,6 +389,12 @@ pacing pass (the numbers above); combat damage on the player's side is
 still untouched.
 
 ## Wave 4 — Dungeon and Roguelite Iteration
+
+**Owner, 4 Sep 2026:** "this will be a big iteration intensive, keep as
+high priority but not now - it needs to be more like a WoW dungeon or a
+late game PoE map but shorter to allow for boon mechanics." So: an
+authored run with rooms and a shape, not the current door-choice ladder;
+shorter than a map, long enough for boons to compound.
 
 The innovation layer: run structure, boon/build interaction depth, secrets,
 story-through-runs, dungeon modifiers the player chooses (risk dials). The

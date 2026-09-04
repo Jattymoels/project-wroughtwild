@@ -141,31 +141,95 @@ static func build_boulder(seed_value: int) -> ArrayMesh:
 	return st.commit()
 
 
-static func build_iron_vein(seed_value: int) -> ArrayMesh:
-	return build_vein(seed_value, IRON_RUST)
+static func build_iron_vein(seed_value: int, rises: Array = [0.0, 0.0, 0.0]) -> ArrayMesh:
+	return build_vein(seed_value, IRON_RUST, rises)
 
 
-## A stone seam (D-021): a long low shelf of rock with a pale fracture
-## line - the thing a wedge goes into.
-static func build_seam(seed_value: int) -> ArrayMesh:
+## A flat quad as two facets, one colour: the flush pieces of a strip.
+static func _slab(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3, color: Color) -> void:
+	_facet(st, a, b, c, color)
+	_facet(st, a, c, d, color)
+
+
+## A line through the stone (the owner, 4 Sep 2026: seams "flush with the
+## exposed stone generated rather than a pebble look", "more of a
+## pattern/line through the stone", carried to the ore veins). Runs along
+## local +X across `rises.size()` cells, one metre each, centred on the
+## node's own cell; rises[i] is that cell's surface height relative to the
+## node's, so the line steps up and down the blocks it crosses instead of
+## floating. A torn band of stone hugs the surface with a thin dark
+## fracture (or metal-coloured vein) wandering along its middle; chips
+## are allowed but off - the owner asked for a line, not a pebble component.
+static func _strip(st: SurfaceTool, rng: RandomNumberGenerator, rises: Array, band: Color, band_dark: Color,
+		vein: Color, vein_width: float, chips: int) -> void:
+	var cells := rises.size()
+	var x0 := -float(cells) * 0.5
+	for i in cells:
+		var y: float = float(rises[i]) + 0.03
+		var xa := x0 + float(i)
+		var xb := xa + 1.0
+		# The band: two or three facets of jittered width, so the edge is torn, not ruled.
+		var pieces := rng.randi_range(2, 3)
+		for p in pieces:
+			var pa := xa + float(p) / float(pieces)
+			var pb := xa + float(p + 1) / float(pieces)
+			var half_a := rng.randf_range(0.2, 0.34)
+			var half_b := rng.randf_range(0.2, 0.34)
+			var colour := band_dark if rng.randf() < 0.45 else band
+			_slab(st, Vector3(pa, y, -half_a), Vector3(pb, y, -half_b), Vector3(pb, y, half_b), Vector3(pa, y, half_a), _jittered(colour, rng))
+		# The vein: a thin bright line wandering along the band, a hair above it.
+		var wander_a := rng.randf_range(-0.08, 0.08)
+		var wander_b := rng.randf_range(-0.08, 0.08)
+		var vy := y + 0.012
+		_slab(st, Vector3(xa, vy, wander_a - vein_width), Vector3(xb, vy, wander_b - vein_width),
+			Vector3(xb, vy, wander_b + vein_width), Vector3(xa, vy, wander_a + vein_width), _jittered(vein, rng))
+		# A riser where the line steps to the next block, so the band reads as one.
+		if i + 1 < cells and rises[i + 1] != rises[i]:
+			var top: float = maxf(float(rises[i]), float(rises[i + 1])) + 0.03
+			var bottom: float = minf(float(rises[i]), float(rises[i + 1]))
+			_slab(st, Vector3(xb - 0.02, bottom, -0.24), Vector3(xb + 0.02, bottom, -0.24),
+				Vector3(xb + 0.02, top, 0.24), Vector3(xb - 0.02, top, 0.24), _jittered(band_dark, rng))
+	for c in chips:
+		var cx := rng.randf_range(x0 + 0.2, -x0 - 0.2)
+		var i := clampi(int(floor(cx - x0)), 0, cells - 1)
+		_blob(st, Vector3(cx, float(rises[i]) + 0.05, rng.randf_range(-0.42, 0.42)), rng.randf_range(0.07, 0.13), 0.5,
+			rng, band, band_dark, 0.4, vein, 0.25)
+
+
+## A stone seam (D-021): a fracture line through the exposed stone, flush
+## with the blocks it crosses - the thing a wedge goes into. `rises` is
+## the surface height of each crossed cell relative to the node's.
+static func build_seam(seed_value: int, rises: Array = [0.0, 0.0, 0.0]) -> ArrayMesh:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	_blob(st, Vector3(-0.45, 0.35, 0), rng.randf_range(0.5, 0.6), 0.55, rng, STONE, STONE_DARK, 0.3, SEAM, 0.22)
-	_blob(st, Vector3(0.4, 0.4, 0.1), rng.randf_range(0.55, 0.68), 0.6, rng, STONE_DARK, STONE, 0.3, SEAM, 0.22)
+	_strip(st, rng, rises, STONE, STONE_DARK, Color("2E3036"), 0.045, 0)
 	st.generate_normals()
 	return st.commit()
 
 
-## A squatter rock shot through with ore facets in the metal's colour -
-## the ore reads from across the valley without a label.
-static func build_vein(seed_value: int, ore: Color) -> ArrayMesh:
+## An ore vein: the metal's colour as a line through the rock, with a squat
+## knuckle of ore where the line breaks the surface - the ore reads from
+## across the valley without a label.
+static func build_vein(seed_value: int, ore: Color, rises: Array = [0.0, 0.0, 0.0]) -> ArrayMesh:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	_blob(st, Vector3(0, 0.4, 0), rng.randf_range(0.62, 0.75), 0.6,
-		rng, STONE, STONE_DARK, 0.25, ore, 0.3)
+	_strip(st, rng, rises, STONE, STONE_DARK, ore, 0.06, 0)
+	_blob(st, Vector3(rng.randf_range(-0.3, 0.3), 0.22, rng.randf_range(-0.2, 0.2)), rng.randf_range(0.34, 0.44), 0.55,
+		rng, STONE, STONE_DARK, 0.25, ore, 0.35)
+	st.generate_normals()
+	return st.commit()
+
+
+## A chunk of split stone that falls off a seam: a fist of rock.
+static func build_chunk(seed_value: int) -> ArrayMesh:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_value
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	_blob(st, Vector3.ZERO, rng.randf_range(0.14, 0.2), 0.8, rng, STONE, STONE_DARK, 0.35, SEAM, 0.15)
 	st.generate_normals()
 	return st.commit()
