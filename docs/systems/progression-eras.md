@@ -848,3 +848,41 @@ Echo's fifth hit from four casts through the plate).
 
 Not yet: Arc and Linger (new delivery shapes), compound forms, the
 variants waiting on stats, links re-homed, Marrow and Quicksilver forms.
+
+## Implemented: links, re-homed to the flow; Arc (4 Sep 2026, D-023 slice 7)
+
+The owner: "Keep going for now ... Continue to be creative with
+interactions." `data/tuning/foundry.json` (schema 7), `items.json`;
+`sim/foundry.h`, `grammar.h`:
+
+- **The link.** `foundry::links`: a kind of `links.family` (the
+  Catalyst) resting in a corner that touches a support serving two
+  sockets links the two skills laid there (`Effect.kind == "link"` on
+  that support). `grammar::skillTriggers` names what a skill's payload can
+  fire on an enemy: a freeze when it applies chill, an ignite, a bleed,
+  its own or a modifier's. `grammar::linkedCasts(skill, trigger)` is
+  every skill linked to it when the trigger is one of its own, so a bleed
+  skill linked to a fire skill runs both ways. The Catalyst still works
+  the shared support into its form.
+- **The engine.** `PlayerCombat.apply_payload` reports the thresholds a
+  hit crossed; `fire_links` casts every linked skill at that enemy (a
+  projectile flies at it; a cone or strike casts as the player would),
+  with its own cooldown, whether or not it sits on the bar, never firing
+  another link in turn (a depth guard). The HUD says who cast itself and
+  why; `linked_cast` is a signal for tests and later tells.
+- **Arc.** Reach worked by a Catalyst beside a single-target skill: the
+  strike sweeps every enemy within its reach and `arc` metres either side
+  of the line (`grammar::skillArc`; `_enemies_in_front`). Beside a
+  projectile the same corner is Split. The skill keeps its tags; reading
+  area modifiers from then on is not done.
+
+Tests: sim 3469 (who links; a Vanguard and a one-skill support link
+nothing; the link as an effect beside the form; the triggers; casts on the
+orb's freeze and not on a trigger it cannot fire; Rend and Ember Bolt both
+ways; Arc on the strike and Split on the orb from the same corner); engine
+unit 350; integration 220; grammar 56 (the orb
+freezes a whelp through the plate and Shatter casts itself, spending its
+own cooldown).
+
+Not yet: the bar marking a linked skill, Linger, compound forms, rails,
+Marrow and Quicksilver forms, the variants waiting on stats.

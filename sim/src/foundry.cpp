@@ -147,6 +147,41 @@ bool flowsToSkill(const State& state, const Plate& plate, int row, int col) {
     return reaches(row, col);
 }
 
+std::vector<Link> links(const tuning::Tuning& tuning, const State& state, const Plate& plate) {
+    std::vector<Link> out;
+    const tuning::FoundryDef& def = tuning.foundry;
+    if (def.linkFamily.empty()) return out;
+    for (const auto& p : state.plate) {
+        if (!p.isCurrency() || !kindMayRest(plate, p.row, p.col)) continue;
+        const auto* kind = def.findKindOnPlate(p.currency);
+        if (!kind || kind->family != def.linkFamily) continue;
+        for (const auto& [dr, dc] : kSides) {
+            const int sr = p.row + dr, sc = p.col + dc;
+            if (!plate.forged(sr, sc) || depth(plate, sr, sc) != 1) continue;
+            const Placement* support = at(state, sr, sc);
+            if (!support || !support->isIngot()) continue;
+            // The skills laid in the sockets this support serves, in the
+            // frame's socket order.
+            std::vector<std::string> served;
+            for (const auto& socket : plate.sockets) {
+                if (std::abs(socket.row - sr) + std::abs(socket.col - sc) != 1 || !plate.forged(socket.row, socket.col)) continue;
+                const Placement* tablet = at(state, socket.row, socket.col);
+                if (tablet && tablet->isTablet() && tuning.skills.findCombatSkill(tablet->skill)) served.push_back(tablet->skill);
+            }
+            if (served.size() < 2) continue;
+            Link link;
+            link.first = served[0];
+            link.second = served[1];
+            link.row = p.row;
+            link.col = p.col;
+            link.supportRow = sr;
+            link.supportCol = sc;
+            out.push_back(link);
+        }
+    }
+    return out;
+}
+
 std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, const Plate& plate) {
     const tuning::FoundryDef& def = tuning.foundry;
     std::vector<Effect> out;
@@ -280,6 +315,20 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
                 }
             }
         }
+    }
+    // Links: the corner between two workings.
+    for (const auto& link : links(tuning, state, plate)) {
+        const auto* first = tuning.skills.findCombatSkill(link.first);
+        const auto* second = tuning.skills.findCombatSkill(link.second);
+        const auto* kind = at(state, link.row, link.col);
+        const auto* kindDef = kind ? def.findKindOnPlate(kind->currency) : nullptr;
+        if (!first || !second || !kindDef) continue;
+        Effect e{"link", first->displayName + " <-> " + second->displayName + " (" + kindDef->displayName + ")", std::string(), 0.0,
+                 link.row, link.col, link.first};
+        e.cellRow = link.supportRow;
+        e.cellCol = link.supportCol;
+        e.subject = kindDef->family;
+        out.push_back(e);
     }
     return out;
 }

@@ -305,6 +305,31 @@ bool skillBrittle(const tuning::Tuning& tuning, const ActiveMods& active, const 
     return skillNumberResolved(tuning, active, skillId, "brittle") > 0.0;
 }
 
+double skillArc(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
+    return skillNumberResolved(tuning, active, skillId, "arc");
+}
+
+std::vector<std::string> skillTriggers(const tuning::Tuning& tuning, const ActiveMods& active,
+                                       const std::string& skillId) {
+    std::vector<std::string> triggers;
+    if (chillApplied(tuning, active, skillId, false) > 0.0) triggers.push_back("freeze");
+    if (igniteApplied(tuning, active, skillId, false) > 0.0) triggers.push_back("ignite");
+    if (bleedApplied(tuning, active, skillId, false) > 0.0) triggers.push_back("bleed");
+    return triggers;
+}
+
+std::vector<std::string> linkedCasts(const tuning::Tuning& tuning, const ActiveMods& active,
+                                     const foundry::State& state, const foundry::Plate& plate,
+                                     const std::string& skillId, const std::string& trigger) {
+    std::vector<std::string> casts;
+    if (!has(skillTriggers(tuning, active, skillId), trigger)) return casts;
+    for (const auto& link : foundry::links(tuning, state, plate)) {
+        const std::string other = link.first == skillId ? link.second : link.second == skillId ? link.first : std::string();
+        if (!other.empty() && !has(casts, other)) casts.push_back(other);
+    }
+    return casts;
+}
+
 double wardMultiplier(const tuning::Tuning& tuning, const ActiveMods& active,
                       const std::vector<std::string>& carriedStatuses) {
     double multiplier = 1.0;

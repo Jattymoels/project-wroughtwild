@@ -94,7 +94,15 @@ func _physics_process(_delta: float) -> void:
 			_phase_h_proliferate_and_boss()
 		320:
 			_phase_i_forms()
-		335:
+		340:
+			_phase_j_link()
+		356:
+			_cast_orb_again()
+		372:
+			_cast_orb_again()
+		390:
+			_phase_j_checks()
+		395:
 			print("%d checks, %d failures" % [_checks, _failures])
 			get_tree().quit(0 if _failures == 0 else 1)
 
@@ -138,6 +146,46 @@ func _phase_i_forms() -> void:
 		_player.combat.use_skill(PlayerCombat.AREA_SKILL)
 	check(_echo_hits == 5, "echo: four casts land five hits (%d)" % _echo_hits)
 	_player.combat.hit_landed.disconnect(_count_hit)
+
+
+## Phase J - the link (D-023): the orb and Shatter share a frost support,
+## a Catalyst in the corner beyond it links them; when the orb freezes a
+## whelp, Shatter casts itself, off the bar.
+var _link_casts := 0
+var _link_target: Enemy
+
+
+func _count_link(_skill: StringName, _trigger: String, _source: StringName) -> void:
+	_link_casts += 1
+
+
+func _phase_j_link() -> void:
+	_clear_enemies()
+	_face_down_range()
+	check(_sim.foundry_remove(1, 1), "link: the area strike's tablet lifts free")
+	_sim.learn_skill("prototype_shatter")
+	_sim.foundry_event("first_kill:gloom_crawler")
+	_sim.add_materials({"ember_catalyst": 1})
+	check(_sim.foundry_place_skill(1, 1, "prototype_frost_orb") and _sim.foundry_place_skill(2, 2, "prototype_shatter")
+		and _sim.foundry_place(1, 2, "frost") and _sim.foundry_place_kind(1, 3, "ember_catalyst")
+		and _sim.foundry_links().size() == 1 and _sim.linked_casts("prototype_frost_orb", "freeze").has("prototype_shatter"),
+		"link: the orb and Shatter are linked through the frost they share")
+	_link_casts = 0
+	_player.combat.linked_cast.connect(_count_link)
+	_link_target = Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -3.0))
+	_cast_orb_again()
+
+
+func _cast_orb_again() -> void:
+	_face_down_range()
+	_player.combat.cooldowns[PlayerCombat.ORB_SKILL] = 0.0
+	_player.combat.use_orb()
+
+
+func _phase_j_checks() -> void:
+	check(_link_casts >= 1, "link: the orb froze the whelp and Shatter cast itself (%d)" % _link_casts)
+	check(_player.combat.cooldown_left(&"prototype_shatter") > 0.0, "link: the linked cast spent Shatter's own cooldown")
+	_player.combat.linked_cast.disconnect(_count_link)
 
 
 ## Phase A - bare cast: the orb hits the first whelp, one fork reaches the

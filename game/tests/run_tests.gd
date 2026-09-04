@@ -282,6 +282,9 @@ func _test_lattice() -> void:
 	for p in sim.foundry()["plate"]:
 		if String(p.get("currency", "")) == "vanguard":
 			kinds_on_plate += 1
+	check(sim.foundry_links().is_empty() and sim.skill_triggers("prototype_frost_orb").has("freeze")
+		and sim.skill_triggers("prototype_heavy_strike").is_empty() and sim.linked_casts("prototype_frost_orb", "freeze").is_empty()
+		and sim.skill_arc("prototype_heavy_strike") == 0.0, "links: a bare plate links nothing; the orb's trigger is a freeze")
 	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 6 and sim.foundry()["flows"].size() == 1
 		and sim.foundry()["flows"][0]["flows"] and sim.derived_stats().has("cold_resistance_percent"),
 		"flow: the plate view carries the kind, every kind's count, and whether it flows")

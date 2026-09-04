@@ -18,6 +18,9 @@ signal loadout_changed
 ## Fire-setting (D-020): a skill worked the world ("cracked" or "heated"
 ## with a count) - the HUD tells you what the cold did to the rock.
 signal world_worked(what: String, count: int)
+## A link fired (D-023): skill_id cast itself because source_skill's
+## trigger (freeze, ignite, bleed) landed on an enemy.
+signal linked_cast(skill_id: StringName, trigger: String, source_skill: StringName)
 
 ## The four starting skills, named for tests and legacy callers. Everything
 ## else arrives as a skill page and is addressed through the bar (D-016).
@@ -432,13 +435,65 @@ func use_dash() -> bool:
 ## one (a Frostbite mace chills with plain strikes). Payload lands before
 ## the damage so a killing blow that ignites leaves a burning corpse for
 ## proliferate.
-func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool) -> void:
+## Returns the triggers this payload crossed on the enemy (freeze, ignite,
+## bleed), for the links.
+func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool) -> PackedStringArray:
 	var id := String(skill_id)
+	var was_frozen := enemy.is_frozen()
+	var was_burning := enemy.burning_left > 0.0
+	var was_bleeding := enemy.bleeding_left > 0.0
 	# Quench and Sear (forms, D-023) ride with the status they belong to:
 	# the mob keeps them for the freeze and the burn this skill causes.
 	enemy.apply_chill(sim.chill_applied(id, is_boss), sim.skill_quenches(id))
 	enemy.apply_ignite(sim.ignite_applied(id, is_boss), sim.skill_sear(id))
 	enemy.apply_bleed(sim.bleed_applied(id, is_boss))
+	var crossed := PackedStringArray()
+	if not was_frozen and enemy.is_frozen():
+		crossed.append("freeze")
+	if not was_burning and enemy.burning_left > 0.0:
+		crossed.append("ignite")
+	if not was_bleeding and enemy.bleeding_left > 0.0:
+		crossed.append("bleed")
+	return crossed
+
+
+## Links (D-023): when a skill's trigger lands on an enemy, every skill
+## linked to it on the plate casts itself at that enemy, with its own
+## cooldown, on or off the bar. A linked cast never fires another link.
+var _link_depth := 0
+
+
+func fire_links(skill_id: StringName, crossed: PackedStringArray, enemy: Enemy) -> void:
+	if _link_depth > 0 or crossed.is_empty() or sim == null:
+		return
+	for trigger in crossed:
+		for other in sim.linked_casts(String(skill_id), trigger):
+			_cast_linked(StringName(other), String(trigger), skill_id, enemy)
+
+
+func _cast_linked(skill_id: StringName, trigger: String, source_skill: StringName, enemy: Enemy) -> void:
+	var def: Dictionary = skills.get(skill_id, {})
+	if def.is_empty() or not is_ready(skill_id):
+		return
+	_link_depth += 1
+	var fired := false
+	if String(def.get("delivery", "")) == "projectile" and is_instance_valid(enemy):
+		# A linked projectile flies at the enemy the trigger landed on.
+		_spend(skill_id)
+		_ensure_fight()
+		var from: Vector3 = player.camera.global_position - player.camera.global_transform.basis.z * 0.6
+		var dir: Vector3 = (enemy.global_position + Vector3(0, 0.5, 0) - from).normalized()
+		SkillProjectile.launch(skill_id, self, player.world_root(), from, dir, 0, [])
+		fired = true
+	else:
+		fired = _cast(skill_id, def)
+	_link_depth -= 1
+	if fired:
+		_note_use(skill_id)
+		linked_cast.emit(skill_id, trigger, source_skill)
+		if player != null and player.hud != null:
+			player.hud.notify("%s casts itself: %s's %s." % [skills[skill_id].get("display_name", String(skill_id)),
+				skills[source_skill].get("display_name", String(source_skill)), trigger])
 
 
 ## Cone delivery: every living enemy inside the radius AND inside the arc
@@ -495,7 +550,7 @@ func _use_cone(skill_id: StringName) -> int:
 			to_shatter.append(enemy)
 			hits += 1
 			continue
-		apply_payload(enemy, skill_id, enemy is Boss)
+		var crossed := apply_payload(enemy, skill_id, enemy is Boss)
 		var landed := deal(enemy, skill_id, isolated)
 		total += landed["damage"]
 		if landed["kill"]:
@@ -503,6 +558,7 @@ func _use_cone(skill_id: StringName) -> int:
 		for type in landed["types"]:
 			if not types.has(type):
 				types.append(type)
+		fire_links(skill_id, crossed, enemy)
 		hits += 1
 
 	var cascade := _shatter_cascade(to_shatter, shatter, sim.skill_nova_chill(String(skill_id)))
@@ -516,29 +572,74 @@ func _use_cone(skill_id: StringName) -> int:
 	return hits
 
 
-## Strike delivery: the nearest living enemy in front within melee reach.
+## Strike delivery: the nearest living enemy in front within melee reach,
+## or, with Arc (a form, D-023), every enemy within reach and the arc's
+## width either side of the line.
 func _use_strike(skill_id: StringName) -> bool:
 	if not is_ready(skill_id):
 		return false
 	_spend(skill_id)
 	# Reach (D-023): a Reach ingot beside the skill's socket lengthens the strike.
-	var target := _nearest_enemy_in_front(melee_reach * sim.skill_reach(String(skill_id)))
-	if target == null:
+	var reach := melee_reach * sim.skill_reach(String(skill_id))
+	var arc: float = sim.skill_arc(String(skill_id))
+	var targets: Array = _enemies_in_front(reach, arc) if arc > 0.0 else []
+	if targets.is_empty():
+		var nearest := _nearest_enemy_in_front(reach)
+		if nearest != null:
+			targets = [nearest]
+	if targets.is_empty():
 		# No enemy: the blow lands on whatever is in front (D-021).
 		return player.strike_world()
 	_ensure_fight()
 	# An attack on a frozen target cashes in the shatter combo instead.
 	var shatter: Dictionary = sim.shatter_for(String(skill_id))
-	if shatter.get("enabled", false) and target.is_frozen():
-		var cascade := _shatter_cascade([target], shatter, sim.skill_nova_chill(String(skill_id)))
-		_reap(skill_id, cascade["kills"])
-		hit_landed.emit(cascade["damage"], cascade["kills"],
-			PackedStringArray([String(shatter.get("nova_damage_type", "cold"))]))
-		return true
-	apply_payload(target, skill_id, target is Boss)
-	var landed := deal(target, skill_id, alive_enemies().size() == 1)
-	hit_landed.emit(landed["damage"], 1 if landed["kill"] else 0, landed["types"])
+	var total := 0.0
+	var kills := 0
+	var types := PackedStringArray()
+	var to_shatter: Array = []
+	for enemy in targets:
+		if shatter.get("enabled", false) and enemy.is_frozen():
+			to_shatter.append(enemy)
+			continue
+		var crossed := apply_payload(enemy, skill_id, enemy is Boss)
+		var landed := deal(enemy, skill_id, alive_enemies().size() == 1)
+		total += landed["damage"]
+		if landed["kill"]:
+			kills += 1
+		for type in landed["types"]:
+			if not types.has(type):
+				types.append(type)
+		fire_links(skill_id, crossed, enemy)
+	var cascade := _shatter_cascade(to_shatter, shatter, sim.skill_nova_chill(String(skill_id)))
+	total += cascade["damage"]
+	kills += cascade["kills"]
+	_reap(skill_id, cascade["kills"])
+	if cascade["damage"] > 0.0 and not types.has(String(shatter.get("nova_damage_type", "cold"))):
+		types.append(String(shatter.get("nova_damage_type", "cold")))
+	hit_landed.emit(total, kills, types)
 	return true
+
+
+## Every living enemy in front within `reach` and no more than `half_width`
+## either side of the facing line: the Arc's sweep.
+func _enemies_in_front(reach: float, half_width: float) -> Array:
+	var forward := -player.global_transform.basis.z
+	forward.y = 0.0
+	forward = forward.normalized()
+	var found: Array = []
+	for enemy in alive_enemies():
+		var to_enemy: Vector3 = enemy.global_position - player.global_position
+		to_enemy.y = 0.0
+		var distance := to_enemy.length()
+		if distance > reach or distance < 0.001:
+			continue
+		var along := forward.dot(to_enemy)
+		if along <= 0.0:
+			continue
+		var aside := (to_enemy - forward * along).length()
+		if aside <= half_width:
+			found.append(enemy)
+	return found
 
 
 ## Projectile delivery: fires from the eyes so first-person aim is the

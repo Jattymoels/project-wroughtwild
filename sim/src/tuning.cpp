@@ -464,6 +464,7 @@ FoundryDef loadFoundry(const std::string& path) {
             def.kinds.push_back(std::move(kind));
         }
     }
+    if (auto links = doc->find("links")) def.linkFamily = links->get("family").asString();
     if (auto names = doc->find("family_names")) {
         for (const auto& [family, name] : names->asObject())
             if (family != "design_purpose") def.familyNames[family] = name->asString();
