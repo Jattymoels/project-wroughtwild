@@ -256,7 +256,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("has_station", "station_id"), &WroughtwildSim::has_station);
     ClassDB::bind_method(D_METHOD("skill_xp", "skill_id"), &WroughtwildSim::skill_xp);
     ClassDB::bind_method(D_METHOD("skill_level", "skill_id"), &WroughtwildSim::skill_level);
-    ClassDB::bind_method(D_METHOD("craft", "recipe_id", "for_order"), &WroughtwildSim::craft, DEFVAL(false));
+    ClassDB::bind_method(D_METHOD("craft", "recipe_id", "for_order", "aim_kind"), &WroughtwildSim::craft, DEFVAL(false), DEFVAL(""));
     ClassDB::bind_method(D_METHOD("salvage", "recipe_id"), &WroughtwildSim::salvage);
     ClassDB::bind_method(D_METHOD("recipe_feeds_open_order", "recipe_id"), &WroughtwildSim::recipe_feeds_open_order);
 
@@ -296,6 +296,10 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("trial_floor"), &WroughtwildSim::trial_floor);
     ClassDB::bind_method(D_METHOD("market_offers"), &WroughtwildSim::market_offers);
     ClassDB::bind_method(D_METHOD("buy", "item_id"), &WroughtwildSim::buy);
+    ClassDB::bind_method(D_METHOD("currency_kinds"), &WroughtwildSim::currency_kinds);
+    ClassDB::bind_method(D_METHOD("exchange_rate"), &WroughtwildSim::exchange_rate);
+    ClassDB::bind_method(D_METHOD("can_exchange", "from_kind", "to_kind"), &WroughtwildSim::can_exchange);
+    ClassDB::bind_method(D_METHOD("exchange", "from_kind", "to_kind"), &WroughtwildSim::exchange);
     ClassDB::bind_method(D_METHOD("trial_active"), &WroughtwildSim::trial_active);
     ClassDB::bind_method(D_METHOD("trial_finished"), &WroughtwildSim::trial_finished);
     ClassDB::bind_method(D_METHOD("trial_player_died"), &WroughtwildSim::trial_player_died);
@@ -376,6 +380,36 @@ Array WroughtwildSim::market_offers() const {
 
 bool WroughtwildSim::buy(const String& item_id) {
     return require_loaded("buy") && player_->buy(to_std(item_id));
+}
+
+Array WroughtwildSim::currency_kinds() const {
+    Array out;
+    if (!require_loaded("currency_kinds")) {
+        return out;
+    }
+    const auto& exchange = tuning_->crafting.exchangeKinds;
+    for (const auto& kind : tuning_->crafting.currencyKinds) {
+        Dictionary d;
+        d["id"] = to_godot(kind.id);
+        d["display_name"] = to_godot(kind.displayName);
+        d["family"] = to_godot(kind.family);
+        d["held"] = player_->held(kind.id);
+        d["exchangeable"] = std::find(exchange.begin(), exchange.end(), kind.id) != exchange.end();
+        out.push_back(d);
+    }
+    return out;
+}
+
+int WroughtwildSim::exchange_rate() const {
+    return require_loaded("exchange_rate") ? tuning_->crafting.exchangeRate : 0;
+}
+
+bool WroughtwildSim::can_exchange(const String& from_kind, const String& to_kind) const {
+    return require_loaded("can_exchange") && player_->canExchange(to_std(from_kind), to_std(to_kind));
+}
+
+bool WroughtwildSim::exchange(const String& from_kind, const String& to_kind) {
+    return require_loaded("exchange") && player_->exchange(to_std(from_kind), to_std(to_kind));
 }
 
 bool WroughtwildSim::trial_active() const { return trial_ != nullptr; }
@@ -638,6 +672,7 @@ Dictionary WroughtwildSim::enemy(const String& enemy_id) const {
     d["tint"] = to_godot(e->tint);
     d["size_scale"] = e->sizeScale;
     d["immune_statuses"] = strings_to_packed(e->immuneStatuses);
+    d["currency_kind"] = to_godot(e->currencyKind);
     Dictionary taken;
     for (const auto& [type, share] : e->damageTaken) {
         taken[to_godot(type)] = share;
@@ -1490,13 +1525,13 @@ int WroughtwildSim::skill_level(const String& skill_id) const {
     return require_loaded("skill_level") ? player_->skillLevel(to_std(skill_id)) : 0;
 }
 
-Dictionary WroughtwildSim::craft(const String& recipe_id, bool for_order) {
+Dictionary WroughtwildSim::craft(const String& recipe_id, bool for_order, const String& aim_kind) {
     Dictionary d;
     d["crafted"] = false;
     if (!require_loaded("craft")) {
         return d;
     }
-    const auto result = player_->craft(to_std(recipe_id), for_order);
+    const auto result = player_->craft(to_std(recipe_id), for_order, to_std(aim_kind));
     d["crafted"] = result.crafted;
     d["xp_granted"] = result.xpGranted;
     d["xp_multiplier"] = result.xpMultiplier;
@@ -1505,6 +1540,7 @@ Dictionary WroughtwildSim::craft(const String& recipe_id, bool for_order) {
         d["failure"] = f.unknownRecipe        ? "unknown_recipe"
                        : f.stationUnavailable ? "station_unavailable"
                        : f.skillTooLow        ? "skill_too_low"
+                       : f.missingKind        ? "missing_kind"
                        : f.missingInputs      ? "missing_inputs"
                        : f.missingFuel        ? "missing_fuel"
                                               : "unknown";

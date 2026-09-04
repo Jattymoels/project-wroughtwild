@@ -58,6 +58,9 @@ const CatalystProcess* CraftingTable::findCatalystProcess(const std::string& id)
 bool CraftingTable::isCurrency(const std::string& id) const {
     return std::find(currencies.begin(), currencies.end(), id) != currencies.end();
 }
+const CraftingTable::CurrencyKind* CraftingTable::findKind(const std::string& id) const {
+    return findById(currencyKinds, id);
+}
 const Station* CraftingTable::findStationForKit(const std::string& kitItemId) const {
     if (kitItemId.empty()) return nullptr;
     for (const auto& station : stations)
@@ -187,6 +190,15 @@ CraftingTable loadCrafting(const std::string& path) {
 
     if (auto currencies = doc->find("currencies"))
         table.currencies = readStringArray(*currencies);
+    if (auto kinds = doc->find("currency_kinds")) {
+        for (const auto& k : kinds->asArray()) {
+            CraftingTable::CurrencyKind kind;
+            kind.id = k->get("id").asString();
+            kind.displayName = k->get("display_name").asString();
+            kind.family = k->get("family").asString();
+            table.currencyKinds.push_back(std::move(kind));
+        }
+    }
     if (auto market = doc->find("market")) {
         for (const auto& o : market->get("offers").asArray()) {
             CraftingTable::MarketOffer offer;
@@ -196,12 +208,19 @@ CraftingTable loadCrafting(const std::string& path) {
             if (auto cur = o->find("currency")) offer.currency = cur->asString();
             table.market.push_back(std::move(offer));
         }
+        if (auto exchange = market->find("exchange")) {
+            table.exchangeRate = exchange->get("rate").asInt();
+            table.exchangeKinds = readStringArray(exchange->get("kinds"));
+            if (table.exchangeRate < 1) throw std::runtime_error("crafting: market.exchange.rate must be at least 1");
+        }
     }
     if (auto rolls = doc->find("craft_rolls")) {
         table.keenChanceAtLevel1 = rolls->get("keen_chance_at_level_1").asNumber();
         table.keenChancePerLevel = rolls->get("keen_chance_per_level").asNumber();
         table.wroughtChanceFromLevel = rolls->get("wrought_chance_from_level").asInt();
         table.wroughtChancePerLevel = rolls->get("wrought_chance_per_level").asNumber();
+        if (auto weighting = rolls->find("currency_weighting"))
+            if (auto rarity = weighting->find("aimed_minimum_rarity")) table.aimedMinimumRarity = rarity->asString();
     }
 
     if (auto fuels = doc->find("fuels")) {
@@ -737,6 +756,7 @@ WorldTable loadWorld(const std::string& path) {
         def.damage = e->get("damage").asNumber();
         def.damageType = e->get("damage_type").asString();
         def.attackPeriodRounds = e->get("attack_period_rounds").asInt();
+        if (auto kind = e->find("currency_kind")) def.currencyKind = kind->asString();
         if (auto immune = e->find("immune_statuses")) def.immuneStatuses = readStringArray(*immune);
         if (auto taken = e->find("damage_taken")) def.damageTaken = readNumberMap(*taken);
         if (auto tint = e->find("tint")) def.tint = tint->asString();
@@ -1054,6 +1074,12 @@ Tuning loadAll(const std::string& tuningDirectory) {
     for (const auto& pair : tuning.foundry.pairs)
         if (!tuning.items.findModifier(pair.modifier))
             throw std::runtime_error("foundry: pair " + pair.displayName + " names unknown modifier " + pair.modifier);
+    // Typed currency: the exchange and the families pay in known kinds.
+    for (const auto& id : tuning.crafting.exchangeKinds)
+        if (!tuning.crafting.findKind(id)) throw std::runtime_error("crafting: market.exchange names unknown kind " + id);
+    for (const auto& enemy : tuning.world.enemies)
+        if (!enemy.currencyKind.empty() && !tuning.crafting.findKind(enemy.currencyKind))
+            throw std::runtime_error("world: enemy " + enemy.id + " pays unknown kind " + enemy.currencyKind);
     for (const auto& skill : tuning.skills.combatSkills)
         for (const auto& perk : skill.mastery)
             if (!tuning.items.findModifier(perk.modifier))

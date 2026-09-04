@@ -52,6 +52,17 @@ now; a coin and a generated town for trading may return later. This
 widens the 31 Aug deferral of currency breadth at the owner's request;
 four kinds is the prototype cap.
 
+**Implemented 4 Sep 2026 (D-023 slice 3).** The coin is gone. Five ids
+in four families (`crafting.json` `currency_kinds`) are paid by the mob
+families whose nature they follow (`world.json` `currency_kind`), once
+more by every elite, by the reinforced mine (three Vanguards) and by the
+trial's loot room (a spread); the peddler prices goods in kinds and
+changes three of one for one of another; a kind added to a gear craft is
+spent to aim the roll's first modifier at its family; era three's steel
+and silver cast the three purse kinds, catalysts never. Rates are first
+guesses for the razor-blade pass. Details in
+[progression-eras.md](progression-eras.md#implemented-typed-currency-4-sep-2026-d-023-slice-3).
+
 ## Prototype recipe
 
 1. Select an iron armour base.

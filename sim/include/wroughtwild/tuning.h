@@ -98,6 +98,23 @@ struct CraftingTable {
     double wroughtChancePerLevel = 0.0; // ids that live in the purse, not the pack
 
     bool isCurrency(const std::string& id) const;
+
+    // Typed currency (D-023 slice 3): every kind is a material or purse id
+    // with a job - the items.json modifier family it aims a craft at.
+    struct CurrencyKind {
+        std::string id;          // vanguard, marrow, quicksilver, ember_catalyst, preserving_catalyst
+        std::string displayName;
+        std::string family;      // offence | defence | life | speed
+    };
+    std::vector<CurrencyKind> currencyKinds;
+    const CurrencyKind* findKind(const std::string& id) const;
+    // The peddler changes exchangeRate of one kind for one of another,
+    // among exchangeKinds (market.exchange).
+    int exchangeRate = 3;
+    std::vector<std::string> exchangeKinds;
+    // An aimed craft (a kind added) is at least this rarity, its first
+    // modifier drawn from the kind's family (craft_rolls.currency_weighting).
+    std::string aimedMinimumRarity = "keen";
     const Station* findStation(const std::string& id) const;
     const Recipe* findRecipe(const std::string& id) const;
     const Order* findOrder(const std::string& id) const;
@@ -319,6 +336,7 @@ struct EnemyDef {
     double damage = 0.0;
     std::string damageType; // "physical" or "fire"
     int attackPeriodRounds = 1;
+    std::string currencyKind; // the kind this family pays; an elite pays one more of it (D-023 slice 3)
     std::vector<std::string> immuneStatuses; // of: chill, ignite, bleed (a family's nature)
     std::map<std::string, double> damageTaken; // its share of a packet type (D-023 slice 2: a hollow suit takes a quarter of fire); 0 would be immunity
     std::string tint;       // "#rrggbb" look override (empty = by behaviour)

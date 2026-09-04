@@ -165,19 +165,24 @@ static func amounts_text(amounts: Dictionary) -> String:
 
 # --- actions (also the test surface) ------------------------------------------
 
-func craft(recipe_id: StringName) -> Dictionary:
+## aim_kind (D-023 slice 3): a currency kind added to a gear craft, spent
+## to draw the roll's first modifier from its family.
+func craft(recipe_id: StringName, aim_kind: String = "") -> Dictionary:
 	var for_order: bool = sim.recipe_feeds_open_order(recipe_id)
-	var result: Dictionary = sim.craft(recipe_id, for_order)
+	var result: Dictionary = sim.craft(recipe_id, for_order, aim_kind)
 	var recipe: Dictionary = sim.recipe(recipe_id)
 	if result["crafted"]:
 		var note := "Crafted %s  (+%d xp" % [recipe.get("display_name", recipe_id), result["xp_granted"]]
 		if result["xp_multiplier"] < 1.0:
 			note += ", reduced: this work serves no real demand"
+		if aim_kind != "":
+			note += ", aimed with a %s" % Hud.pretty(aim_kind)
 		_message.text = note + ")"
 	else:
 		match result.get("failure", ""):
 			"station_unavailable": _message.text = "You need a %s for that." % Hud.pretty(recipe.get("station", "station"))
 			"skill_too_low": _message.text = "Your Blacksmithing is too low."
+			"missing_kind": _message.text = "You hold no %s to aim the roll with." % Hud.pretty(aim_kind)
 			"missing_inputs": _message.text = "Not enough materials."
 			"missing_fuel": _message.text = "The forge is cold: it needs fuel (wood or charcoal)."
 			_: _message.text = "Cannot craft that."
@@ -357,6 +362,19 @@ func _render_crafting() -> void:
 			line += "\n    [color=#%s]★ feeds an open order: full XP[/color]" % UiTheme.SUN_WARM.to_html(false)
 		var craftable: bool = r["station_available"] and r["skill_met"] and r["inputs_met"] and r["fuel_met"]
 		_add_row(line, "Craft", craftable, craft.bind(recipe_id))
+		# A gear recipe can be aimed with a kind in hand (D-023 slice 3):
+		# one row per kind held, saying which family it draws first.
+		var makes_gear := false
+		for output_id in r["outputs"]:
+			if not sim.item_base(output_id).is_empty():
+				makes_gear = true
+		if makes_gear:
+			for kind in sim.currency_kinds():
+				if int(kind["held"]) <= 0:
+					continue
+				_add_row("    aimed with a [b]%s[/b] (you hold %d): the first modifier comes from %s" % [
+					kind["display_name"], int(kind["held"]), String(kind["family"])],
+					"Craft with %s" % kind["display_name"], craftable, craft.bind(recipe_id, String(kind["id"])))
 
 	if shows_fuel:
 		_add_row("Fuel on hand: %d  (wood burns as 1, charcoal as 4)" % sim.fuel_value_held())

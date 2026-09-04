@@ -41,12 +41,16 @@ std::vector<const tuning::ModifierDef*> eligibleModifiers(const tuning::ItemTabl
 // Creates an item of the given base and rolls up to propertyCount distinct
 // modifiers at the given tier (or the nearest tier the modifier defines),
 // uniformly within the tier's range. The same seed always produces the same
-// item. Throws when the base is unknown.
+// item. Throws when the base is unknown. firstFamilyTag (D-023 slice 3, a
+// kind added to a craft): the first modifier is drawn from the eligible
+// modifiers carrying that tag, when the base allows any; the rest roll as
+// they would.
 ItemInstance rollItem(const tuning::ItemTable& table,
                       const std::string& baseId,
                       int tier,
                       int propertyCount,
-                      uint64_t seed);
+                      uint64_t seed,
+                      const std::string& firstFamilyTag = "");
 
 // rollItem with the modifier count drawn from the rarity's range; the item
 // records its rarity. Throws when the base or rarity is unknown.
@@ -54,7 +58,8 @@ ItemInstance rollRarityItem(const tuning::ItemTable& table,
                             const std::string& baseId,
                             const std::string& rarityId,
                             int tier,
-                            uint64_t seed);
+                            uint64_t seed,
+                            const std::string& firstFamilyTag = "");
 
 // Held-back rule (D-019): a base's tier_cap is the highest tier its metal
 // can express. A roll above the cap speaks at the cap tier's best value

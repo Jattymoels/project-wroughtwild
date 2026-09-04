@@ -66,7 +66,8 @@ ItemInstance rollItem(const tuning::ItemTable& table,
                       const std::string& baseId,
                       int tier,
                       int propertyCount,
-                      uint64_t seed) {
+                      uint64_t seed,
+                      const std::string& firstFamilyTag) {
     const tuning::ItemBase* base = table.findBase(baseId);
     if (!base) throw std::runtime_error("items: unknown item base " + baseId);
 
@@ -77,20 +78,35 @@ ItemInstance rollItem(const tuning::ItemTable& table,
     std::vector<const tuning::ModifierDef*> pool = eligibleModifiers(table, *base, tier);
     std::mt19937_64 rng(seed);
 
-    int rolls = std::min<int>(propertyCount, static_cast<int>(pool.size()));
-    for (int i = 0; i < rolls; ++i) {
-        // Weighted pick without replacement.
+    // Weighted pick from a list of candidates.
+    auto pickFrom = [&](const std::vector<const tuning::ModifierDef*>& candidates) {
         double totalWeight = 0.0;
-        for (const auto* def : pool) totalWeight += std::max(def->weight, 0.0);
+        for (const auto* def : candidates) totalWeight += std::max(def->weight, 0.0);
         std::uniform_real_distribution<double> pick(0.0, totalWeight);
         double cursor = pick(rng);
         size_t index = 0;
-        for (; index + 1 < pool.size(); ++index) {
-            cursor -= std::max(pool[index]->weight, 0.0);
+        for (; index + 1 < candidates.size(); ++index) {
+            cursor -= std::max(candidates[index]->weight, 0.0);
             if (cursor <= 0.0) break;
         }
-        const tuning::ModifierDef* def = pool[index];
-        pool.erase(pool.begin() + static_cast<long>(index));
+        return candidates[index];
+    };
+
+    int rolls = std::min<int>(propertyCount, static_cast<int>(pool.size()));
+    for (int i = 0; i < rolls; ++i) {
+        // Weighted pick without replacement; an aimed first pick (D-023
+        // slice 3) is drawn from the family's modifiers when the base
+        // allows any of them.
+        const tuning::ModifierDef* def = nullptr;
+        if (i == 0 && !firstFamilyTag.empty()) {
+            std::vector<const tuning::ModifierDef*> family;
+            for (const auto* candidate : pool)
+                if (std::find(candidate->tags.begin(), candidate->tags.end(), firstFamilyTag) != candidate->tags.end())
+                    family.push_back(candidate);
+            if (!family.empty()) def = pickFrom(family);
+        }
+        if (!def) def = pickFrom(pool);
+        pool.erase(std::find(pool.begin(), pool.end(), def));
 
         const tuning::ModifierTier* tierDef = nearestTier(*def, tier);
         if (!tierDef) throw std::runtime_error("items: modifier " + def->id + " defines no tiers");
@@ -105,12 +121,13 @@ ItemInstance rollRarityItem(const tuning::ItemTable& table,
                             const std::string& baseId,
                             const std::string& rarityId,
                             int tier,
-                            uint64_t seed) {
+                            uint64_t seed,
+                            const std::string& firstFamilyTag) {
     const tuning::RarityDef* rarity = table.findRarity(rarityId);
     if (!rarity) throw std::runtime_error("items: unknown rarity " + rarityId);
     std::mt19937_64 rng(seed ^ 0x5DEECE66Dull);
     std::uniform_int_distribution<int> count(rarity->modifiersMin, rarity->modifiersMax);
-    ItemInstance item = rollItem(table, baseId, tier, count(rng), seed);
+    ItemInstance item = rollItem(table, baseId, tier, count(rng), seed, firstFamilyTag);
     item.rarity = rarity->id;
     return item;
 }

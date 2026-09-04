@@ -25,7 +25,7 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 ## Crafting and skills
 
 - [x] The player can gather iron and produce useful mine-reinforcement components. *(iron node → forge site → smelt → fittings, all via `sim`; integration-tested)*
-- [x] Completing the order consumes output and grants an understandable reward. *(mine board panel: fittings consumed, trade currency + Blacksmithing XP paid, world effect recorded)*
+- [x] Completing the order consumes output and grants an understandable reward. *(mine board panel: fittings consumed, three Vanguards + Blacksmithing XP paid since the kinds replaced the coin (D-023 slice 3), world effect recorded)*
 - [x] Blacksmithing progress is visible and unlocks the forge-upgrade path. *(HUD and panel show level/xp; Improved Forge upgrade row appears at the built forge)*
 - [x] Repeating the cheapest irrelevant recipe is less effective than useful work. *(repetition decay in `sim`; panel marks order-feeding recipes ★ and reports reduced XP)*
 - [x] The upgraded forge can produce baseline fire resistance deterministically. *(Quench at the Improved Forge: tier-1 midpoint from `crafting.json` `basic_temper`, no roll)*

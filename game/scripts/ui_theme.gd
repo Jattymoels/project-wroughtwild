@@ -29,7 +29,10 @@ const FAMILY_COLOURS := {
 	"forge_kit": FROST,
 	"iron_chest_armour": SUN_WARM,
 	"ember_catalyst": EMBER,
-	"trade_currency": IRON_RUST,
+	"preserving_catalyst": SUN_WARM,
+	"vanguard": IRON_RUST,
+	"marrow": GRASS_LIGHT,
+	"quicksilver": FROST,
 }
 
 ## Rarity colours (items-and-modifiers.md): plain reads muted, keen frost,

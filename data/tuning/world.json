@@ -65,10 +65,10 @@
           "chance": 0.35
         },
         {
-          "item": "trade_currency",
+          "item": "ember_catalyst",
           "min": 1,
-          "max": 2,
-          "chance": 0.5
+          "max": 1,
+          "chance": 0.06
         },
         {
           "gear": "keen",
@@ -79,7 +79,8 @@
           "skill_page": true,
           "chance": 0.03
         }
-      ]
+      ],
+      "currency_kind": "ember_catalyst"
     },
     {
       "id": "cinder_archer",
@@ -98,10 +99,10 @@
           "chance": 0.45
         },
         {
-          "item": "trade_currency",
+          "item": "ember_catalyst",
           "min": 1,
-          "max": 3,
-          "chance": 0.5
+          "max": 1,
+          "chance": 0.08
         },
         {
           "gear": "keen",
@@ -112,7 +113,8 @@
           "skill_page": true,
           "chance": 0.04
         }
-      ]
+      ],
+      "currency_kind": "ember_catalyst"
     },
     {
       "id": "ash_hound",
@@ -125,10 +127,10 @@
       "design_purpose": "Cheap but quick; the hastened weakness makes packs of these frightening",
       "loot": [
         {
-          "item": "trade_currency",
+          "item": "quicksilver",
           "min": 1,
-          "max": 3,
-          "chance": 0.6
+          "max": 1,
+          "chance": 0.15
         },
         {
           "item": "iron_ore",
@@ -145,7 +147,8 @@
           "skill_page": true,
           "chance": 0.03
         }
-      ]
+      ],
+      "currency_kind": "quicksilver"
     },
     {
       "id": "stone_husk",
@@ -174,6 +177,12 @@
           "chance": 0.06
         },
         {
+          "item": "vanguard",
+          "min": 1,
+          "max": 1,
+          "chance": 0.12
+        },
+        {
           "skill_page": true,
           "chance": 0.05
         },
@@ -184,7 +193,8 @@
           "chance": 0.05
         }
       ],
-      "design_purpose": "Slow hill guardian that makes stone and iron country feel owned; killing it IS mining, so combat feeds construction directly"
+      "design_purpose": "Slow hill guardian that makes stone and iron country feel owned; killing it IS mining, so combat feeds construction directly",
+      "currency_kind": "vanguard"
     },
     {
       "id": "shrieker",
@@ -197,10 +207,10 @@
       "design_purpose": "The aggro-chainer (D-012, named in the roadmap): it hangs back and SCREAMS - every idle mob in scream radius joins the chase, so a pack with a shrieker recruits the biome. Kill it first or fight everything it can see. Barely dangerous alone; its page chance is the bounty on its head.",
       "loot": [
         {
-          "item": "trade_currency",
-          "min": 2,
-          "max": 4,
-          "chance": 0.7
+          "item": "marrow",
+          "min": 1,
+          "max": 1,
+          "chance": 0.15
         },
         {
           "skill_page": true,
@@ -212,7 +222,8 @@
           "max": 1,
           "chance": 0.05
         }
-      ]
+      ],
+      "currency_kind": "marrow"
     },
     {
       "id": "gloom_crawler",
@@ -237,6 +248,12 @@
           "chance": 0.4
         },
         {
+          "item": "quicksilver",
+          "min": 1,
+          "max": 1,
+          "chance": 0.12
+        },
+        {
           "gear": "keen",
           "tier": 1,
           "chance": 0.05
@@ -245,7 +262,8 @@
           "skill_page": true,
           "chance": 0.05
         }
-      ]
+      ],
+      "currency_kind": "quicksilver"
     },
     {
       "id": "bog_lurker",
@@ -263,10 +281,10 @@
       "design_purpose": "The fen's wall: slow, thick, and it does not bleed (nothing to open in that hide). You do not train a lurker, you walk around it - and a wisp behind it makes the walk cost.",
       "loot": [
         {
-          "item": "trade_currency",
+          "item": "marrow",
           "min": 1,
-          "max": 4,
-          "chance": 0.6
+          "max": 1,
+          "chance": 0.15
         },
         {
           "item": "iron_ore",
@@ -283,7 +301,8 @@
           "skill_page": true,
           "chance": 0.03
         }
-      ]
+      ],
+      "currency_kind": "marrow"
     },
     {
       "id": "marsh_wisp",
@@ -298,10 +317,10 @@
       "design_purpose": "The fen's sting: a fast skirmisher that keeps its distance and pecks. Alone it is a nuisance; behind a lurker it is the reason to bring a projectile.",
       "loot": [
         {
-          "item": "trade_currency",
+          "item": "ember_catalyst",
           "min": 1,
-          "max": 3,
-          "chance": 0.6
+          "max": 1,
+          "chance": 0.08
         },
         {
           "gear": "keen",
@@ -312,7 +331,8 @@
           "skill_page": true,
           "chance": 0.03
         }
-      ]
+      ],
+      "currency_kind": "ember_catalyst"
     },
     {
       "id": "cinder_wisp",
@@ -330,10 +350,10 @@
       "design_purpose": "The wastes' skirmisher: burning, quick, ignite-proof, and fire barely marks a thing made of it (damage_taken fire 0.25, D-023 slice 2; the owner: heavily reduced, not immune - a two-element hit lands its other packet whole and a quarter of its fire). It is what makes fire resistance matter outside the trial, and the first mob an all-fire plate must find a second element for.",
       "loot": [
         {
-          "item": "trade_currency",
+          "item": "ember_catalyst",
           "min": 1,
-          "max": 3,
-          "chance": 0.6
+          "max": 1,
+          "chance": 0.08
         },
         {
           "gear": "keen",
@@ -347,7 +367,8 @@
       ],
       "damage_taken": {
         "fire": 0.25
-      }
+      },
+      "currency_kind": "ember_catalyst"
     },
     {
       "id": "hollow_knight",
@@ -365,10 +386,10 @@
       "design_purpose": "The wastes' armoured line: slow, heavy, and fire does little to a hollow suit - it will not burn (immune_statuses) and takes a quarter of a fire hit (damage_taken, D-023 slice 2; the owner: heavily reduced, not immune). Cold and bleed are the answers, or a Frost ingot beside the fire skill adding cold; it is the first mob that asks the build a question the whelps did not.",
       "loot": [
         {
-          "item": "trade_currency",
+          "item": "vanguard",
           "min": 1,
-          "max": 5,
-          "chance": 0.6
+          "max": 1,
+          "chance": 0.2
         },
         {
           "item": "iron_ore",
@@ -388,7 +409,8 @@
       ],
       "damage_taken": {
         "fire": 0.25
-      }
+      },
+      "currency_kind": "vanguard"
     },
     {
       "id": "valley_elk",
@@ -407,8 +429,15 @@
           "min": 1,
           "max": 2,
           "chance": 1.0
+        },
+        {
+          "item": "marrow",
+          "min": 1,
+          "max": 1,
+          "chance": 0.1
         }
-      ]
+      ],
+      "currency_kind": "marrow"
     }
   ],
   "elite_modifiers": [
@@ -496,6 +525,6 @@
     "dropped_inventory_recoverable": true,
     "design_purpose": "Open-world death drops carried inventory at the site for recovery (D-006); permanent equipment is never dropped"
   },
-  "design_purpose_loot": "Every mob pays out into the survival economy (fuel, ore, stone, coin) so fighting is never dead time next to gathering. Three kinds of entry: {item,min,max,chance} materials; {gear: rarity, tier, chance} a rolled piece on any base (D-014); {skill_page: true, chance} a page teaching one skill the player does not know yet, weighted by skills.json drop_weight (D-016). Page chances are set so a first hour of hunting finds one or two skills; the mob pass will move them onto elites. Stone creatures pay SPLIT stone (D-021): the yard, not the husk, makes masonry.",
+  "design_purpose_loot": "Every mob pays out into the survival economy (fuel, ore, stone) and, since D-023 slice 3, in a KIND: the coin is retired and each family pays the typed currency its nature suggests (currency_kind: the fire families Ember Catalysts, husks and knights Vanguards, hounds and crawlers Quicksilver, the living Marrow), at a chance of its own in its loot table - one each, rarely, because a kind is worth many coins. An elite pays one more of its family's kind on top of its extra passes. Three kinds of entry: {item,min,max,chance} materials; {gear: rarity, tier, chance} a rolled piece on any base (D-014); {skill_page: true, chance} a page teaching one skill the player does not know yet, weighted by skills.json drop_weight (D-016). Page chances are set so a first hour of hunting finds one or two skills; the mob pass will move them onto elites. Stone creatures pay SPLIT stone (D-021): the yard, not the husk, makes masonry. Razor-blade tuning (owner, 4 Sep): the kind rates are first guesses.",
   "design_purpose_pacing": "Long fights (owner, 3 Sep 2026: 'we get too powerful too quick ... more like early MMOs, lots of mobs and it takes a while to kill things', combat should 'start a bit more powerful' - the swing stays, the life bars grow). Mob life is two and a half times the first cut and mob damage seven tenths, player numbers untouched: a day-one whelp takes three heavy blows instead of two-and-a-bit, a pack is a thirty-second fight where spacing and the sweep matter, and the first Keen mace no longer ends era one. The trial's bosses keep their numbers; the oracle (tools/balance) holds their win rates in band."
 }

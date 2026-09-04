@@ -26,6 +26,9 @@ std::map<std::string, int> rollEnemyLoot(const tuning::WorldTable& world,
             drops[entry.item] += count(rng);
         }
     }
+    // An elite pays one more of its family's kind (D-023 slice 3): why
+    // the far rings are hunted for a particular currency.
+    if (elite && !enemy->currencyKind.empty()) drops[enemy->currencyKind] += 1;
     return drops;
 }
 

@@ -1,6 +1,6 @@
 # The Foundry: Workings, Augments and Rails
 
-**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slice 1 (the frame) and slice 2 (every ingot reads every skill) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
+**Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill) and 3 (typed currency) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  
 **Related decisions:** D-004, D-007, D-014, D-016, D-019, D-020, D-022, D-023  
 **Reads with:** [progression-eras.md](progression-eras.md) (the plate as built), [skill-grammar.md](skill-grammar.md) (tags, statuses, hooks), [loot-and-currency.md](loot-and-currency.md), [items-and-modifiers.md](items-and-modifiers.md), [combat-and-builds.md](combat-and-builds.md)
@@ -112,8 +112,14 @@ Since slices 1 and 2 (4 Sep 2026), in `sim/src/foundry.cpp` and
 7. Vigour, Plate and Ward read a skill weakly: a kill with it restores 1
    life; casting it grants 4 armour for `cast_armour_seconds`; an enemy
    carrying its status deals 5% less to you.
+8. Typed currency (slice 3, `sim/src/economy.cpp`): the coin is retired;
+   five ids in four families (the catalysts, the Vanguard, the Marrow, the
+   Quicksilver) are paid by the families whose nature they follow, one
+   more by every elite; the peddler changes three of one for one of
+   another; a kind added to a gear craft aims its first modifier at the
+   kind's family; rare metal casts the three purse kinds.
 
-Still to come from the tables below: the currencies, the Vanguard,
+Still to come from the tables below: currency on the plate, the Vanguard,
 corners and the reactions, links, rails, the metal of an ingot. The Reach
 conflict recorded on 3 Sep is settled: the owner said yes, and the code
 now reads skills with it.
@@ -481,6 +487,18 @@ placed in a corner, a socket or a link lifts for the re-forge cost like
 an ingot and returns to the pack; it is a piece, not a consumable. Only a
 craft consumes a kind.
 
+**As built (4 Sep 2026, slice 3).** `crafting.json` `currency_kinds` (five
+ids: the two catalysts, offence; vanguard, defence; marrow, life;
+quicksilver, speed), `currencies` (the three cast kinds in the purse; the
+catalysts stay pack materials for tempering), `market` (goods for a
+Marrow or a Quicksilver; `exchange` three for one among four kinds, the
+Ember Catalyst excluded), `craft_rolls.currency_weighting`
+(`aimed_minimum_rarity` keen), three `cast_*` recipes on era-three metal;
+`world.json` `currency_kind` per family with one loot entry each, elites
+one more; the reinforced mine pays three Vanguards, the forge upgrade
+costs two, the trial's loot room pays a spread. Every rate is a first
+guess. Currency on the plate waits for the Vanguard and the corners.
+
 ## Worked plates
 
 Names are for the doc; the panel says what the working does in a
@@ -763,8 +781,9 @@ following.
 2. **Every ingot reads every skill** *(landed 4 Sep 2026)*. The typed
    packet (`skillHit`), added elements, the weak self readings; mob
    immunities by packet type in the engine.
-4. **Typed currency.** Four kinds as materials; family drop kinds; coin
-   retired, its drops and prices become kinds, the peddler changes kinds;
+3. **Typed currency** *(landed 4 Sep 2026; the lift from the plate waits
+   for slices 4 and 5)*. Four kinds; family drop kinds; coin retired, its
+   drops and prices become kinds, the peddler changes kinds;
    `currency_weighting` in a craft; currency lifts from the plate for the
    re-forge cost.
 4. **The Vanguard.** As a subject with its eight readings (cold resistance

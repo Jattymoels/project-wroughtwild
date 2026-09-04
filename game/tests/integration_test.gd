@@ -376,7 +376,7 @@ func _physics_process(_delta: float) -> void:
 			var delivered: Dictionary = _player.work_panel.deliver()
 			check(delivered["fulfilled"], "integration: order delivered")
 			check(sim.material_count("iron_fittings") == 0, "integration: order consumed the fittings")
-			check(sim.currency_count("trade_currency") == 40, "integration: order paid trade currency")
+			check(sim.currency_count("vanguard") == 3, "integration: order paid three Vanguards")
 			check(sim.world_effect_active("old_mine_reinforced"), "integration: world effect recorded")
 			check(not sim.recipe_feeds_open_order("iron_fittings"), "integration: fittings no longer feed an open order")
 			check(sim.foundry_notices().has("edge"), "foundry: the mine reinforced forged an edge ingot (through the recording path)")
@@ -408,8 +408,8 @@ func _physics_process(_delta: float) -> void:
 			check(sim.foundry()["plate"].size() == 2, "save: the Foundry's plate restored")
 			check(_player.inventory.get_count(&"wood") == _saved_wood, "save: inventory restored")
 			check((_scene.get_node("IronNode") as ResourceNode).remaining_units == 5, "save: resource node units restored")
-			check(sim.has_station("forge_basic") and sim.currency_count("trade_currency") == 40,
-				"save: stations and currency restored")
+			check(sim.has_station("forge_basic") and sim.currency_count("vanguard") == 3,
+				"save: stations and the purse restored")
 			check(absf(_player.global_position.x - 0.3) < 0.05, "save: player pose restored")
 			DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
 		26:
@@ -455,7 +455,7 @@ func _physics_process(_delta: float) -> void:
 			check(_player.combat.life == _player.combat.max_life, "death: respawned with full life")
 			check(_player.global_position.distance_to(_player.spawn_position) < 0.01, "death: back at the spawn point")
 			check(sim.material_count("wood") == 0, "death: carried materials dropped")
-			check(sim.currency_count("trade_currency") == 40, "death: currency kept")
+			check(sim.currency_count("vanguard") == 3, "death: the purse kept")
 			var bundle: DroppedBundle = null
 			for child in get_tree().current_scene.get_children():
 				if child is DroppedBundle:
@@ -609,9 +609,10 @@ func _physics_process(_delta: float) -> void:
 			var gate_sim: WroughtwildSim = _player.inventory.get_sim()
 			var floors: Array = gate_sim.trial_floors()
 			check(floors.size() == 1 and floors[0]["available"] and not floors[0]["done"], "floor: the deeper forge is open now")
-			var coin_before: int = gate_sim.currency_count("trade_currency")
-			check(coin_before >= 6 and gate_sim.buy("charcoal") and gate_sim.currency_count("trade_currency") == coin_before - 6
-				and gate_sim.material_count("charcoal") >= 4, "peddler: charcoal bought with trade currency")
+			gate_sim.add_materials({"marrow": 1})
+			var marrow_before: int = gate_sim.currency_count("marrow")
+			check(marrow_before >= 1 and gate_sim.buy("charcoal") and gate_sim.currency_count("marrow") == marrow_before - 1
+				and gate_sim.material_count("charcoal") >= 4, "peddler: charcoal bought with a Marrow")
 			# Wear armour and quench it at the upgraded forge, from the panel.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			sim.add_material("iron_fittings", 6)

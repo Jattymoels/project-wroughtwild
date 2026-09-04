@@ -254,6 +254,13 @@ public:
     // --- the peddler (crafting.json market) ---
     // [{item, count, price, currency, affordable}].
     Array market_offers() const;
+    // Typed currency (D-023 slice 3): every kind with what the player holds
+    // of it - [{id, display_name, family, held, exchangeable}] - and the
+    // peddler's exchange: rate of one kind for one of another.
+    Array currency_kinds() const;
+    int exchange_rate() const;
+    bool can_exchange(const String& from_kind, const String& to_kind) const;
+    bool exchange(const String& from_kind, const String& to_kind);
     bool buy(const String& item_id);
     // --- trial floors (D-019) ---
     // Deeper runs the gate can offer: [{id, display_name, available, done}].
@@ -380,7 +387,7 @@ public:
     // Runs the sim's craft rule. Keys: crafted, xp_granted, xp_multiplier and,
     // when not crafted, failure (unknown_recipe | station_unavailable |
     // skill_too_low | missing_inputs).
-    Dictionary craft(const String& recipe_id, bool for_order = false);
+    Dictionary craft(const String& recipe_id, bool for_order = false, const String& aim_kind = "");
     bool salvage(const String& recipe_id);
     bool recipe_feeds_open_order(const String& recipe_id) const;
 

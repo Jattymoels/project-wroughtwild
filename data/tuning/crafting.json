@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "prototype-placeholder",
+  "status": "prototype-placeholder | D-023 slice 3 (4 Sep 2026): typed currency - four kinds replace the coin",
   "materials": [
     {
       "id": "wood",
@@ -108,7 +108,7 @@
       ],
       "upgrade_from": "forge_basic",
       "upgrade_cost": {
-        "trade_currency": 30,
+        "vanguard": 2,
         "iron_fittings": 6
       },
       "design_purpose": "Upgraded in place at a built forge. Consumes most of the mine-order payment plus useful output, so the upgrade feels earned through work rather than passively unlocked."
@@ -329,6 +329,67 @@
       "design_purpose": "Silver from the high crags once the ash tide rises: the warding family, and malleable like bronze."
     },
     {
+      "id": "cast_vanguard",
+      "display_name": "Cast a Vanguard",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 4
+      },
+      "inputs": {
+        "steel_ingot": 2
+      },
+      "outputs": {
+        "vanguard": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "A kind from rare metal (D-023 slice 3): two steel make a Vanguard at the improved forge, so a smith deep in era three can cast the defence kind rather than hunt for it. Steel is era three's alloy; the route never outpaces the hunt before then."
+    },
+    {
+      "id": "cast_marrow",
+      "display_name": "Cast a Marrow",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "silver_ingot": 1,
+        "hide": 2
+      },
+      "outputs": {
+        "marrow": 1
+      },
+      "base_skill_xp": 5,
+      "fuel_cost": 2,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "A kind from rare metal and the living: silver and hide make a Marrow. Silver is era three's; hide is the elk's."
+    },
+    {
+      "id": "cast_quicksilver",
+      "display_name": "Cast a Quicksilver",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 4
+      },
+      "inputs": {
+        "silver_ingot": 2
+      },
+      "outputs": {
+        "quicksilver": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "A kind from rare metal: two silver make a Quicksilver at the improved forge. Catalysts are never cast: the trial and the families hold them."
+    },
+    {
       "id": "iron_fittings",
       "display_name": "Iron Fittings",
       "station": "forge_basic",
@@ -502,7 +563,7 @@
         "iron_fittings": 24
       },
       "rewards": {
-        "trade_currency": 40,
+        "vanguard": 3,
         "blacksmithing_xp": 60
       },
       "world_effect": "old_mine_reinforced"
@@ -556,42 +617,85 @@
     "design_purpose": "Fuel value per unit when a station process burns fuel. Charcoal concentrates wood four-to-one so refining fuel is worth forge time; the first rung of the power ladder (crafting-and-skills.md four gates)."
   },
   "currencies": [
-    "trade_currency"
+    "vanguard",
+    "marrow",
+    "quicksilver"
   ],
   "craft_rolls": {
     "keen_chance_at_level_1": 0.35,
     "keen_chance_per_level": 0.1,
     "wrought_chance_from_level": 4,
     "wrought_chance_per_level": 0.15,
-    "design_purpose": "Crafted gear rolls modifiers like a drop (owner, 3 Sep 2026: 'they come out plain ... a random generation of modifiers is preferred'). A recipe whose output is an item base makes a rolled item in the pack instead of a stack: keen with keen_chance_at_level_1 plus keen_chance_per_level per Blacksmithing level above one, wrought (rolled first) from wrought_chance_from_level at wrought_chance_per_level per level above that, else plain. The tier is the era's, so era two's forge makes era two's rolls, and the seed is the craft count so a save replays its luck. Infrastructure stays the dependable route: the base is certain, the roll is the excitement."
+    "design_purpose": "Crafted gear rolls modifiers like a drop (owner, 3 Sep 2026: 'they come out plain ... a random generation of modifiers is preferred'). A recipe whose output is an item base makes a rolled item in the pack instead of a stack: keen with keen_chance_at_level_1 plus keen_chance_per_level per Blacksmithing level above one, wrought (rolled first) from wrought_chance_from_level at wrought_chance_per_level per level above that, else plain. The tier is the era's, so era two's forge makes era two's rolls, and the seed is the craft count so a save replays its luck. Infrastructure stays the dependable route: the base is certain, the roll is the excitement.",
+    "currency_weighting": {
+      "aimed_minimum_rarity": "keen",
+      "design_purpose": "A kind added to a gear craft (D-023 slice 3) is consumed and aims the roll: the first modifier is drawn from the kind's family (its items.json tag: offence, defence, life, speed) among what the base allows, and a result that would have been plain is at least aimed_minimum_rarity. The base is still certain, the roll is still the excitement, and now it can be aimed. A family the base cannot hold aims nothing and the kind is still spent: the panel says which families a base allows."
+    }
   },
   "market": {
     "offers": [
       {
-        "item": "preserving_catalyst",
-        "count": 1,
-        "price": 30,
-        "currency": "trade_currency"
-      },
-      {
         "item": "charcoal",
         "count": 4,
-        "price": 6,
-        "currency": "trade_currency"
-      },
-      {
-        "item": "iron_ore",
-        "count": 3,
-        "price": 5,
-        "currency": "trade_currency"
+        "price": 1,
+        "currency": "marrow"
       },
       {
         "item": "wood",
         "count": 8,
-        "price": 4,
-        "currency": "trade_currency"
+        "price": 1,
+        "currency": "marrow"
+      },
+      {
+        "item": "iron_ore",
+        "count": 3,
+        "price": 1,
+        "currency": "quicksilver"
       }
     ],
-    "design_purpose": "The peddler at the spawn clearing: the first thing trade currency buys (the survey found it had nowhere to go). Prices are steep next to gathering so infrastructure stays the dependable route; the catalyst is the reason to come - the dependable way to a Preserving Transfer when the husks are unkind."
-  }
+    "exchange": {
+      "rate": 3,
+      "kinds": [
+        "vanguard",
+        "marrow",
+        "quicksilver",
+        "preserving_catalyst"
+      ]
+    },
+    "design_purpose": "The peddler at the spawn clearing prices in kinds now (D-023 slice 3): survival goods for a Marrow or a Quicksilver, steep next to gathering so infrastructure stays the dependable route. The exchange is the reason to come: rate of one kind for one of another among the kinds listed, so a surplus is never dead and a Preserving Transfer is always three kinds away when the husks are unkind. The Ember Catalyst is not for exchange: the trial holds it."
+  },
+  "design_purpose_currencies": "The purse (D-023 slice 3): the three kinds that stack as numbers rather than pack items. The coin is retired (owner, 4 Sep 2026: 'retire the coin for now'); a coin and a generated town may return later. Catalysts stay pack materials because tempering consumes them from the pack; they are a kind all the same (currency_kinds).",
+  "currency_kinds": [
+    {
+      "id": "ember_catalyst",
+      "display_name": "Ember Catalyst",
+      "family": "offence",
+      "design_purpose": "The Catalyst kind (offence): the trial's shrine catalyst, and what the wastes' fire families pay. In a craft it aims the roll at offence; at the forge it keeps its stronger job, ember-tempering."
+    },
+    {
+      "id": "preserving_catalyst",
+      "display_name": "Preserving Catalyst",
+      "family": "offence",
+      "design_purpose": "The Catalyst kind (offence) of the hills: husks and shriekers pay it, and the peddler changes any kind for it, so a Preserving Transfer is always reachable."
+    },
+    {
+      "id": "vanguard",
+      "display_name": "Vanguard",
+      "family": "defence",
+      "design_purpose": "The defence kind: husks and knights pay it, the reinforced mine pays it, the forge upgrade costs it. In a craft it aims the roll at armour and resistance; on the plate (slice 4) it is the defence subject."
+    },
+    {
+      "id": "marrow",
+      "display_name": "Marrow",
+      "family": "life",
+      "design_purpose": "The life kind: the living pay it (elk, the fen's lurkers, shriekers). In a craft it aims the roll at life; it prices the peddler's survival goods; on the plate (later) it is the sustain subject."
+    },
+    {
+      "id": "quicksilver",
+      "display_name": "Quicksilver",
+      "family": "speed",
+      "design_purpose": "The tempo kind: hounds and crawlers pay it. In a craft it aims the roll at speed; on the plate (later) it is the tempo subject."
+    }
+  ],
+  "design_purpose_currency_kinds": "Typed currency (docs/systems/foundry.md, D-023 slice 3): every kind is a material or purse id with a job. Each has two uses - in a craft, added to a gear recipe, it makes the roll draw its first modifier from its family (craft_rolls.currency_weighting) and lifts a plain result to keen; on the plate (later slices) it is a subject or an augment. Sources follow the families' natures so farming is a choice of where to hunt (world.json currency_kind and loot); elites pay one more of their family's kind; the trial's loot room pays a spread; orders pay in the kind of their work. Four families is the prototype cap. RAZOR-BLADE TUNING (owner, 4 Sep): every rate here is a first guess to be moved in play."
 }

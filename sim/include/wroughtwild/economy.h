@@ -70,9 +70,10 @@ public:
         bool skillTooLow = false;
         bool missingInputs = false;
         bool missingFuel = false;
+        bool missingKind = false; // an aimed craft named a kind that is unknown or not held
         bool any() const {
             return unknownRecipe || stationUnavailable || skillTooLow || missingInputs ||
-                   missingFuel;
+                   missingFuel || missingKind;
         }
     };
 
@@ -91,7 +92,17 @@ public:
     // bypasses repetition decay because the output is genuinely consumed.
     // A recipe with an empty station is hand-craftable anywhere and skips
     // the facility and fuel gates.
-    CraftResult craft(const std::string& recipeId, bool forOrder = false);
+    // aimKind (D-023 slice 3): a currency kind added to a gear craft. It is
+    // consumed, the roll's first modifier is drawn from the kind's family,
+    // and a plain result is lifted to the aimed minimum rarity.
+    CraftResult craft(const std::string& recipeId, bool forOrder = false, const std::string& aimKind = "");
+
+    // How many of an id the player holds, in the pack or the purse.
+    int held(const std::string& id) const;
+    // A material lands in the pack, a currency (crafting.json currencies)
+    // in the purse; take is the reverse.
+    void grant(const std::string& id, int amount);
+    void take(const std::string& id, int amount);
 
     // --- fuel (the first rung of the power gate) ---
     // Total fuel value carried: sum of count * fuel value per fuel item.
@@ -149,6 +160,10 @@ public:
     // --- the peddler (crafting.json market) ---
     // Buys an offer by item id with currency; false when unaffordable/unknown.
     bool buy(const std::string& itemId);
+    // Changes exchangeRate of one kind for one of another (D-023 slice 3):
+    // both among market.exchange kinds, not the same, and enough held.
+    bool canExchange(const std::string& from, const std::string& to) const;
+    bool exchange(const std::string& from, const std::string& to);
 
     // --- skill mastery (D-019) ---
     // A cast that fired. Returns the perk texts this use unlocked (usually none).

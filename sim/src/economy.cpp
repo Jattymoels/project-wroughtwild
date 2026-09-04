@@ -135,7 +135,8 @@ bool PlayerEconomy::fuelMet(const std::string& recipeId) const {
     return available >= recipe->fuelCost;
 }
 
-PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, bool forOrder) {
+PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, bool forOrder,
+                                                const std::string& aimKind) {
     CraftResult result;
     const tuning::Recipe* recipe = tuning_.crafting.findRecipe(recipeId);
     if (!recipe) {
@@ -149,9 +150,20 @@ PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, boo
         if (skillLevel(skillId) < level) result.failure.skillTooLow = true;
     if (!hasAll(inventory, recipe->inputs)) result.failure.missingInputs = true;
     if (!fuelMet(recipeId)) result.failure.missingFuel = true;
+    // An aimed craft (D-023 slice 3) needs a kind in hand; a recipe that
+    // makes no gear has nothing to aim and leaves the kind alone.
+    bool makesGear = false;
+    for (const auto& output : recipe->outputs)
+        if (tuning_.items.findBase(output.first)) makesGear = true;
+    const tuning::CraftingTable::CurrencyKind* aim = nullptr;
+    if (!aimKind.empty() && makesGear) {
+        aim = tuning_.crafting.findKind(aimKind);
+        if (!aim || held(aimKind) < 1) result.failure.missingKind = true;
+    }
     if (result.failure.any()) return result;
 
     remove(inventory, recipe->inputs);
+    if (aim) take(aimKind, 1);
 
     // Burn fuel cheapest-value first, so wood feeds the fire before charcoal.
     if (!handCraft && recipe->fuelCost > 0) {
@@ -169,11 +181,12 @@ PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, boo
     }
 
     // Outputs that are item bases become rolled gear in the pack (D-019:
-    // crafted gear rolls like a drop); everything else stacks.
+    // crafted gear rolls like a drop); everything else stacks, a cast kind
+    // in the purse (D-023 slice 3).
     for (const auto& [outputId, count] : recipe->outputs) {
         const tuning::ItemBase* base = tuning_.items.findBase(outputId);
         if (base == nullptr) {
-            add(inventory, {{outputId, count}});
+            grant(outputId, count);
             continue;
         }
         for (int i = 0; i < count; ++i) {
@@ -190,7 +203,11 @@ PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, boo
             const double keen = rolls.keenChanceAtLevel1 + rolls.keenChancePerLevel * std::max(0, level - 1);
             if (roll(rng) < wrought) rarity = "wrought";
             else if (roll(rng) < keen) rarity = "keen";
-            packItems.push_back(items::rollRarityItem(tuning_.items, outputId, rarity, currentEra(), rng()));
+            // A kind aims the roll: at least the aimed rarity, the first
+            // modifier from the kind's family.
+            if (aim && rarity == "plain") rarity = rolls.aimedMinimumRarity;
+            packItems.push_back(items::rollRarityItem(tuning_.items, outputId, rarity, currentEra(), rng(),
+                                                      aim ? aim->family : std::string()));
         }
     }
 
@@ -233,7 +250,7 @@ PlayerEconomy::OrderResult PlayerEconomy::fulfillOrder(const std::string& orderI
                 continue;
             }
         }
-        currency[rewardId] += amount;
+        grant(rewardId, amount);
     }
 
     fulfilledOrders_.push_back(orderId);
@@ -270,6 +287,37 @@ void PlayerEconomy::recordWorldEffect(const std::string& effect) {
     // An effect that wakes an era is a milestone of its own.
     for (int era = before + 1; era <= currentEra(); ++era)
         for (const auto& id : foundryEvent("era:" + std::to_string(era))) foundryNotices_.push_back(id);
+}
+
+int PlayerEconomy::held(const std::string& id) const {
+    auto inPack = inventory.find(id);
+    auto inPurse = currency.find(id);
+    return (inPack != inventory.end() ? inPack->second : 0) + (inPurse != currency.end() ? inPurse->second : 0);
+}
+
+void PlayerEconomy::grant(const std::string& id, int amount) {
+    if (amount <= 0) return;
+    if (tuning_.crafting.isCurrency(id)) currency[id] += amount;
+    else inventory[id] += amount;
+}
+
+void PlayerEconomy::take(const std::string& id, int amount) {
+    if (amount <= 0) return;
+    if (tuning_.crafting.isCurrency(id)) currency[id] -= amount;
+    else inventory[id] -= amount;
+}
+
+bool PlayerEconomy::canExchange(const std::string& from, const std::string& to) const {
+    const auto& kinds = tuning_.crafting.exchangeKinds;
+    auto listed = [&](const std::string& id) { return std::find(kinds.begin(), kinds.end(), id) != kinds.end(); };
+    return from != to && listed(from) && listed(to) && held(from) >= tuning_.crafting.exchangeRate;
+}
+
+bool PlayerEconomy::exchange(const std::string& from, const std::string& to) {
+    if (!canExchange(from, to)) return false;
+    take(from, tuning_.crafting.exchangeRate);
+    grant(to, 1);
+    return true;
 }
 
 bool PlayerEconomy::buy(const std::string& itemId) {
