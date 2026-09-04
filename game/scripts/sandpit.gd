@@ -105,15 +105,32 @@ func _physics_process(delta: float) -> void:
 	if _era_index == 0:
 		_era_index = index
 		mood.set_era(index)
+		mob_packs.set_era(era)
 		return
 	if index == _era_index:
 		return
 	_era_index = index
 	var revealed := terrain.reveal_era(index)
 	mood.set_era(index)
-	player.hud.notify("Era %d: %s. %s" % [index, era["display_name"], era["story"]])
+	mob_packs.set_era(era)
+	player.hud.notify("Era %d: %s. %s%s" % [index, era["display_name"], era["story"], _mingle_notice(era)])
 	if revealed > 0:
 		player.hud.notify("The strata have cracked: %d new veins surfaced in the deep." % revealed)
+
+
+## The mingling told (Wave 8 slice 3): which families now walk which biomes.
+func _mingle_notice(era: Dictionary) -> String:
+	var parts := PackedStringArray()
+	var mingle: Dictionary = era.get("mingle", {})
+	for biome in mingle:
+		var names := PackedStringArray()
+		for id in mingle[biome]:
+			names.append(Hud.pretty(String(id)).to_lower() + "s")
+		parts.append("%s in the %s" % [", ".join(names), Hud.pretty(String(biome)).to_lower()])
+	if parts.is_empty():
+		return ""
+	return "  The packs mingle: %s.%s" % [", ".join(parts),
+		"  The night's patrols cross into other biomes." if bool(era.get("patrols_cross_biomes", false)) else ""]
 
 
 ## Day and night (Wave 6 slice 5; the owner: "imperative there is almost

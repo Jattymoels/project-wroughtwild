@@ -671,6 +671,17 @@ const std::map<std::string, double>* EraDef::mechanic(const std::string& enemyId
     return m == enemy->second.end() ? nullptr : &m->second;
 }
 
+std::string EraDef::minglePick(const std::string& biome, unsigned long long salt) const {
+    auto it = mingle.find(biome);
+    if (it == mingle.end() || it->second.empty() || mingleChance <= 0.0) return std::string();
+    unsigned long long h = salt ^ 0xD6E8FEB86659FD93ull;
+    h ^= h >> 32;
+    h *= 0xD6E8FEB86659FD93ull;
+    h ^= h >> 29;
+    if (static_cast<double>(h % 10007ull) / 10007.0 >= mingleChance) return std::string();
+    return it->second[static_cast<size_t>((h >> 16) % it->second.size())];
+}
+
 EraTable loadEras(const std::string& path) {
     auto doc = json::parseFile(path);
     EraTable table;
@@ -686,6 +697,11 @@ EraTable loadEras(const std::string& path) {
             if (era.armourReductionCap < 0.0 || era.armourReductionCap > 1.0)
                 throw std::runtime_error("eras: " + era.id + " armour_reduction_cap must be in [0, 1]");
         }
+        if (auto mingle = e->find("mingle"))
+            for (const auto& [biome, list] : mingle->asObject()) era.mingle[biome] = readStringArray(*list);
+        if (auto chance = e->find("mingle_chance")) era.mingleChance = chance->asNumber();
+        if (auto cross = e->find("patrols_cross_biomes")) era.patrolsCrossBiomes = cross->asBool();
+        if (era.mingleChance < 0.0 || era.mingleChance > 1.0) throw std::runtime_error("eras: " + era.id + " mingle_chance must be in [0, 1]");
         if (auto escorts = e->find("pack_escorts"))
             for (const auto& [enemyId, list] : escorts->asObject()) era.packEscorts[enemyId] = readStringArray(*list);
         if (auto mechanics = e->find("mob_mechanics")) {

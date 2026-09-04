@@ -161,6 +161,10 @@ numbers, `bite_damage`/`bite_type` carry the swarm and the kindle,
 mark (`_suffer_verb`, the HUD's life line reads them), applies the guard
 and the ward in `deal`, and a dash breaks a root (`player.gd`). The
 knight shows its ward as a pale aura; the verbs colour their families.
+The eras transform the verbs (Wave 8 slice 3, `eras.json`
+`mob_mechanics`): once the deep wakes the husk's guard covers forty
+degrees more and the wisp lights two allies; in the ash tide the lurker
+holds 0.6 s longer and the knight's ward takes fifteen points more.
 
 ## The train and the ceiling (4 Sep 2026, Wave 7 slice 2)
 

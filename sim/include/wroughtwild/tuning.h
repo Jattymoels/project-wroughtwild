@@ -905,6 +905,14 @@ struct EraDef {
     std::map<std::string, std::map<std::string, std::map<std::string, double>>> mobMechanics;
     double eliteChanceBonus = 0.0;                              // added to every pack's elite roll
     double armourReductionCap = 1.0; // Wave 7 slice 2: how much of a hit armour may take away this era
+    // The mingling (Wave 8 slice 3): per biome, the foreign families that
+    // may join its packs from this era on, the chance a spawning pack takes
+    // one, and whether the night patrols walk to other biomes' dens.
+    std::map<std::string, std::vector<std::string>> mingle;
+    double mingleChance = 0.0;
+    bool patrolsCrossBiomes = false;
+    // The foreign member a pack in `biome` takes, or "" - deterministic per salt.
+    std::string minglePick(const std::string& biome, unsigned long long salt) const;
     std::map<std::string, std::vector<std::string>> packEscorts; // enemy id -> extra members
     const std::map<std::string, double>* mechanic(const std::string& enemyId, const std::string& name) const;
 };

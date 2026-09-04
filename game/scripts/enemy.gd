@@ -77,6 +77,8 @@ var verb_cap := 0.0
 ## Kindled by a wisp: the bonus its burning bite carries.
 var kindled_bonus := 0.0
 var _kindle_timer := 0.0
+## How many allies a kindler lights at once (the deep's wisps light two).
+var kindle_count := 1
 var _aura: MeshInstance3D
 
 var _windup_left := 0.0
@@ -202,6 +204,13 @@ func configure(sim: WroughtwildSim) -> void:
 	# Era mechanics: the shriekers call further as the world wakes.
 	_scream_radius += float(sim.era_mechanic(enemy_id, "scream_radius_bonus").get("value", 0.0))
 	breaks_timber = not sim.era_mechanic(enemy_id, "breaks_timber").is_empty()
+	# The eras transform the verbs (Wave 8 slice 3): the deep's husks guard
+	# wider and its wisps light two; the tide's lurkers hold longer and its
+	# knights ward harder.
+	verb_arc += float(sim.era_mechanic(enemy_id, "guard_arc_bonus").get("value", 0.0))
+	verb_seconds += float(sim.era_mechanic(enemy_id, "root_bonus_seconds").get("value", 0.0))
+	verb_strength += float(sim.era_mechanic(enemy_id, "ward_bonus").get("value", 0.0))
+	kindle_count = 1 + int(sim.era_mechanic(enemy_id, "kindle_two").get("value", 0.0))
 	_scream_timer = _scream_period
 	var horde: Dictionary = rt.get("horde", {})
 	give_up_seconds = horde.get("give_up_seconds", 2.5)
@@ -843,27 +852,33 @@ func swarm_multiplier() -> float:
 	return 1.0 + minf(verb_cap, verb_strength * allies)
 
 
-## Kindle: lights the nearest unlit ally within reach. Returns it (null for none).
+## Kindle: lights the nearest unlit allies within reach - one, or two once
+## the deep wakes. Returns the first lit (null for none).
 func kindle_nearest() -> Enemy:
 	if verb != "kindle":
 		return null
-	var best: Enemy = null
-	var best_d := verb_radius
-	for node in get_tree().get_nodes_in_group("enemies"):
-		if node == self or not (node is Enemy):
-			continue
-		var other := node as Enemy
-		if other.life <= 0.0 or other.verb == "kindle" or other.burning_left > 0.0:
-			continue
-		var d := other.global_position.distance_to(global_position)
-		if d <= best_d:
-			best_d = d
-			best = other
-	if best != null:
+	var first: Enemy = null
+	for i in kindle_count:
+		var best: Enemy = null
+		var best_d := verb_radius
+		for node in get_tree().get_nodes_in_group("enemies"):
+			if node == self or not (node is Enemy):
+				continue
+			var other := node as Enemy
+			if other.life <= 0.0 or other.verb == "kindle" or other.burning_left > 0.0:
+				continue
+			var d := other.global_position.distance_to(global_position)
+			if d <= best_d:
+				best_d = d
+				best = other
+		if best == null:
+			break
 		best.kindle(verb_strength)
 		if is_inside_tree():
 			PulseRing.burst(get_parent(), best.global_position + Vector3(0, 0.3, 0), 1.2, Color(1.0, 0.6, 0.2, 0.5), 0.5)
-	return best
+		if first == null:
+			first = best
+	return first
 
 
 ## Lit by a wisp: it burns, and its bites burn while it does.

@@ -620,10 +620,23 @@ options mix its rooms. Three slices, all accepted:
    of Timber and a colour of their own (`construction.json` `pine`,
    `bog_oak`, `ash_wood`), hauled and burned like timber. Sim 4552, engine
    unit 393, integration 265.
-3. **The mingling**: on the turn, a per-era mingle table sends foreign
-   members into each biome's packs and re-routes the night patrols to
-   other biomes' dens; families transform (the mechanics exist); a wager
-   at the trial gate for better loot is the heat, later.
+3. **The mingling** *(landed 4 Sep 2026)*: each era carries a
+   `mingle` table (`eras.json`: biome to the foreign families that may
+   join a pack spawning there), a `mingle_chance` (the deep half its
+   packs, the tide seven in ten), and `patrols_cross_biomes`. From the
+   deep on, hounds run the meadow, wisps drift into the forest, crawlers
+   surface in the hills; the tide adds knights to the hills, husks to the
+   forest, archers to the fen and lurkers to the wastes. `EraDef::
+   minglePick` is the sim's deterministic pick per den (`mob_packs.gd`
+   appends it when a pack takes shape). Worldgen gives every patrolling
+   pack a foreign route too, the nearest den of another biome within a
+   patrol and a half, and once the era's patrols cross biomes
+   `pack_position` walks it there at night instead of toward the spawn.
+   The verbs transform as mob mechanics: the deep's husks guard forty
+   degrees wider and its wisps light two allies; the tide's lurkers hold
+   0.6 s longer and its knights ward fifteen points harder. The era's
+   notice says who now walks where. The wager at the gate stays for
+   later. Sim 4579, engine unit 397, horde 43.
 
 **Biomes as material (owner, 4 Sep 2026; to design):** "biomes should be
 interesting for finding cool crafting material too - much like Minecraft

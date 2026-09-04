@@ -490,6 +490,29 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
         }
     }
 
+    // 9b. Foreign routes (Wave 8 slice 3, the mingling): a patrolling pack
+    //     also knows the nearest den of another biome within a patrol and a
+    //     half; once an era's patrols cross biomes, that is where it walks
+    //     at night, so the families literally mingle.
+    {
+        const double reach = g.patrolLengthM * 1.5 / params.cellSizeM;
+        for (auto& pack : map.packs) {
+            if (!pack.patrols) continue;
+            double best = reach;
+            for (const auto& other : map.packs) {
+                if (&other == &pack || other.grazer || other.biome == pack.biome || other.biome == "cave") continue;
+                const double d = distance(pack.x, pack.z, other.x, other.z);
+                if (d < best && d > 4.0) {
+                    best = d;
+                    pack.foreignX = other.x;
+                    pack.foreignZ = other.z;
+                    pack.foreignBiome = other.biome;
+                    pack.hasForeign = true;
+                }
+            }
+        }
+    }
+
     // 10. Landmarks (Wave 8 slice 2, the curio and the lock): one per def,
     //     deep in its biome - the surface cell nearest the biome's centroid
     //     among those far enough from the spawn, uncarved and unoccupied -

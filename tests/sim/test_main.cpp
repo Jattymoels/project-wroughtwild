@@ -4250,6 +4250,60 @@ void testCurioAndLock(const tuning::Tuning& t) {
     check(pines > 20, "timber: the forest stands in pines (" + std::to_string(pines) + ")");
 }
 
+void testMingling(const tuning::Tuning& t) {
+    // Wave 8 slice 3 (the owner, 4 Sep 2026): on the turn the world changes
+    // shape - foreign families join each biome's packs, the night's patrols
+    // cross into other biomes, and the verbs transform.
+    const auto& eras = t.eras.eras;
+    check(eras.size() >= 3 && eras[0].mingle.empty() && !eras[0].patrolsCrossBiomes, "mingle: the valley keeps its families to their biomes");
+    for (size_t i = 1; i < eras.size(); ++i) {
+        const auto& era = eras[i];
+        check(!era.mingle.empty() && era.mingleChance > 0.0 && era.mingleChance <= 1.0 && era.patrolsCrossBiomes,
+              "mingle: " + era.id + " mingles, at a chance, and its patrols cross");
+        for (const auto& [biome, list] : era.mingle) {
+            bool biomeExists = false;
+            for (const auto& b : t.worldgen.biomes) biomeExists = biomeExists || b.id == biome;
+            check(biomeExists && !list.empty(), "mingle: " + era.id + " names a real biome (" + biome + ")");
+            for (const auto& id : list) check(t.world.findEnemy(id) != nullptr, "mingle: " + id + " is a real family");
+        }
+    }
+    check(eras[2].mingle.size() > eras[1].mingle.size() && eras[2].mingleChance >= eras[1].mingleChance,
+          "mingle: the tide mingles more than the deep");
+    // The pick: deterministic, sometimes nothing, sometimes the family.
+    int some = 0, none = 0;
+    bool same = true;
+    for (unsigned long long salt = 1; salt <= 40; ++salt) {
+        const std::string a = eras[1].minglePick("meadow", salt);
+        if (a.empty()) ++none;
+        else ++some;
+        if (a != eras[1].minglePick("meadow", salt)) same = false;
+        if (!a.empty() && a != "ash_hound") same = false;
+    }
+    check(same && some >= 8 && none >= 8 && eras[0].minglePick("meadow", 3).empty() && eras[1].minglePick("nowhere", 3).empty(),
+          "mingle: the deep sends hounds into some meadow packs, deterministically, and the valley none");
+    // Foreign routes: most patrol packs know a den of another biome within reach.
+    auto map = worldgen::generate(t, 7);
+    int patrols = 0, foreign = 0, bad = 0;
+    const double reach = t.worldgen.guarantees.patrolLengthM * 1.5;
+    for (const auto& pack : map.packs) {
+        if (!pack.patrols) continue;
+        ++patrols;
+        if (!pack.hasForeign) continue;
+        ++foreign;
+        const double d = std::hypot(double(pack.foreignX - pack.x), double(pack.foreignZ - pack.z));
+        if (pack.foreignBiome == pack.biome || pack.foreignBiome == "cave" || pack.foreignBiome.empty() || d > reach + 0.5 || d <= 4.0) ++bad;
+    }
+    check(patrols > 5 && foreign * 2 >= patrols && bad == 0,
+          "mingle: most patrols know a foreign den within reach, always another biome's (" + std::to_string(foreign) + "/" + std::to_string(patrols) + ")");
+    // The verbs transform.
+    check(eras[1].mechanic("stone_husk", "guard_arc_bonus") && eras[1].mechanic("stone_husk", "guard_arc_bonus")->at("value") > 0.0 &&
+              eras[1].mechanic("marsh_wisp", "kindle_two") && eras[0].mechanic("stone_husk", "guard_arc_bonus") == nullptr,
+          "mingle: the deep's husks guard wider and its wisps light two");
+    check(eras[2].mechanic("bog_lurker", "root_bonus_seconds") && eras[2].mechanic("bog_lurker", "root_bonus_seconds")->at("value") > 0.0 &&
+              eras[2].mechanic("hollow_knight", "ward_bonus") && eras[2].mechanic("hollow_knight", "ward_bonus")->at("value") > 0.0,
+          "mingle: the tide's lurkers hold longer and its knights ward harder");
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -4311,6 +4365,7 @@ int main(int argc, char** argv) {
     testHornAndSiege(t);
     testVerbs(t);
     testCurioAndLock(t);
+    testMingling(t);
     testItemsAsMechanics(t);
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);

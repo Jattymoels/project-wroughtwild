@@ -246,6 +246,17 @@ func _run_verb_checks() -> void:
 	Enemy.spawn(self, &"gloom_crawler", p + Vector3(-20, -0.5, -19))
 	check(one.swarm_multiplier() > 1.2 and one.swarm_multiplier() <= 1.0 + one.verb_cap + 0.001,
 		"verbs: three crawlers together bite harder (x%.2f)" % one.swarm_multiplier())
+	# The eras transform the verbs (Wave 8 slice 3): once the deep wakes the
+	# husk guards wider and the wisp lights two.
+	var sim: WroughtwildSim = _player.inventory.get_sim()
+	sim.record_world_effect("stonecut_blocks")
+	var deep_husk := Enemy.spawn(self, &"stone_husk", p + Vector3(10, -0.5, -10))
+	var deep_wisp := Enemy.spawn(self, &"marsh_wisp", p + Vector3(30, -0.5, 30))
+	var pair_a := Enemy.spawn(self, &"ember_whelp", p + Vector3(31, -0.5, 30))
+	var pair_b := Enemy.spawn(self, &"ember_whelp", p + Vector3(30, -0.5, 31))
+	deep_wisp.kindle_nearest()
+	check(deep_husk.verb_arc > husk.verb_arc and deep_wisp.kindle_count == 2 and pair_a.burning_left > 0.0 and pair_b.burning_left > 0.0,
+		"mingle: the deep's husk guards wider (%.0f) and its wisp lights two" % deep_husk.verb_arc)
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		(enemy as Enemy).take_damage(100000.0)
 	combat.restore_life()

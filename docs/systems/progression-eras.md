@@ -1071,3 +1071,20 @@ rail's share against the elements too). The point is the owner's "unkillable
 too early": early gear buys control and life, never a wall, and the wall
 arrives when the world has already stepped up to meet it. The eras' other
 rules (mechanics, escorts, elite chance) are untouched.
+
+## Implemented: the mingling (4 Sep 2026, Wave 8 slice 3)
+
+The owner: on the turn "the whole world is affected and the mobs in each
+area either transform completely, gain more powers, or ... mobs from
+different biomes now come mingle across biomes, causing new interactions
+and dangers". Each era carries `mingle` (biome to the foreign families
+that may join a pack spawning there), `mingle_chance` and
+`patrols_cross_biomes` (`eras.json`). `EraDef::minglePick` is the pick,
+deterministic per den, and `MobPacks._spawn_pack` appends it; worldgen
+gives every patrolling pack the nearest den of another biome as a
+foreign route (`MobPack::foreignX/Z`), and once the era's patrols cross
+biomes `MobPacks.pack_position` walks the night's patrol there. The
+verbs transform through `mob_mechanics` the engine reads at spawn:
+`guard_arc_bonus`, `kindle_two`, `root_bonus_seconds`, `ward_bonus`
+(`enemy.gd`). The era's notice names who now walks where. The trial's
+weaknesses remain the heat; a wager at the gate is a later slice.
