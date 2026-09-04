@@ -107,11 +107,9 @@ var _shelter_probe_left := 0.0
 var _settle_left := 0.0
 var _regen_per_second := 0.0
 var _settle_seconds := 0.0
-## Home: the last shelter rested in. Encroachment settles on its fringe.
+## Home: the last shelter rested in.
 var has_home := false
 var home_position := Vector3.ZERO
-## Shelter regen multiplier from the world (1 clear, less in a nest's blight).
-var rest_multiplier := 1.0
 ## The last shelter probe as the sim returned it ({enclosed, cells, reason,
 ## leak}), so build mode can mark where a room leaks.
 var last_shelter: Dictionary = {}
@@ -131,9 +129,8 @@ func _tick_shelter(delta: float) -> void:
 		if sheltered:
 			has_home = true
 			home_position = get_parent().global_position
-			rest_multiplier = sim.encroachment_rest_multiplier(home_position)
 	if sheltered and _settle_left <= 0.0 and life > 0.0 and life < max_life:
-		heal(_regen_per_second * rest_multiplier * delta)
+		heal(_regen_per_second * delta)
 
 
 func _probe_shelter() -> bool:
@@ -169,12 +166,7 @@ func resting() -> bool:
 
 
 func regen_per_second() -> float:
-	return _regen_per_second * rest_multiplier
-
-
-## True while a nest's blight makes the rest uneasy.
-func uneasy() -> bool:
-	return sheltered and rest_multiplier < 1.0
+	return _regen_per_second
 
 
 func _physics_process(delta: float) -> void:

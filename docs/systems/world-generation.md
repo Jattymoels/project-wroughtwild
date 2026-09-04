@@ -203,7 +203,12 @@ and a look.
 - **Birds** wheel over the trees near spawn (`flock.gd`), presentation
   only, so the sky is never still.
 
-## Implemented: encroachment (Wave 4, D-018, 3 Sep 2026)
+## Retired: encroachment (built 3 Sep 2026, D-018; retired 4 Sep 2026, D-024)
+
+The owner (4 Sep 2026): nests were "not rewarding" and did not "feel
+natural to the world"; mob AI behaviours are to be reassessed later. The
+module, the engine scripts, the tuning block and the era flags are gone.
+What follows records what was built, for that reassessment.
 
 The base threat, built to two owner rules: **pressure, never demolition**
 (a timber house is a house at every tier) and **a nuisance, never a
@@ -223,9 +228,8 @@ feeds the sim a clock and the home, raises `nest.gd` mounds, fields their
 packs (`Enemy.nest_id`) and routes their kills through the pack loot path
 when the sim says that kill drops.
 
-Next: burrowers that trench the ground between nest and home (the dig
-system turned around - terrain is fair game, walls never are), and the
-shut-door siege (packs massing at the door, the sortie as the moment).
+The slices that were to follow (burrowers trenching the ground between
+nest and home, the shut-door siege) are shelved with it.
 
 ## Open questions
 

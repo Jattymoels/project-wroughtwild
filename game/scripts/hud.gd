@@ -439,8 +439,7 @@ func refresh() -> void:
 		_life_bar.value = combat.life
 		var rest := ""
 		if combat.sheltered:
-			var uneasy := "uneasy " if combat.uneasy() else ""
-			rest = "  ·  %sresting +%.1f/s" % [uneasy, combat.regen_per_second()] if combat.resting() else "  ·  sheltered" + ("  ·  a nest is near" if combat.uneasy() else "")
+			rest = "  ·  resting +%.1f/s" % combat.regen_per_second() if combat.resting() else "  ·  sheltered"
 		elif combat.shelter_text() != "":
 			rest = "  ·  " + combat.shelter_text()
 		# Cold resistance (D-023 slice 4) shows once something gives it.

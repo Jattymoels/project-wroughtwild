@@ -117,4 +117,4 @@ group. `MobPacks` caps the live population (`combat_realtime.json`
 members are calm, unhurt for `sleep_after_seconds` and `sleep_range_m`
 from the player: survivors return at full life when you come back, the
 dead stay dead, and a returning pack is exactly its survivors (no second
-helping of era bonuses). Trial-bound and nest mobs never sleep.
+helping of era bonuses). Trial-bound mobs never sleep.

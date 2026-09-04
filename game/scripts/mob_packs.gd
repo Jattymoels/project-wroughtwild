@@ -212,8 +212,7 @@ static func note_first_kill(enemy: Enemy) -> void:
 ## Rolls and scatters a kill's loot for a seed. The three loot kinds
 ## (materials, gear, pages) roll independent streams off this one seed
 ## inside the sim; an elite's id rides along for its bounty (extra passes,
-## tripled gear and page chances). Nest-born kills come here too, when the
-## encroachment rules say that kill drops at all.
+## tripled gear and page chances).
 func drop_loot_for(enemy: Enemy, kill_seed: int) -> void:
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	var elite: String = enemy.elite_id

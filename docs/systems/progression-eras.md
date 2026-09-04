@@ -44,16 +44,17 @@ fresh area in era three is dangerous because the world is in era three, not
 because it read the sheet.
 
 The base is a stake: each era's threat is aimed at the claim. Encroachment
-(nests on the fringe of home, `world.json` `encroachment`) is era two's
-expression of "the mobs organise" and is off in era one; it needs mob
-behaviour to organise with before it is more than scope.
+(nests on the fringe of home) was era two's expression of "the mobs
+organise"; it was built on 3 Sep 2026 and retired on 4 Sep (D-024: not
+rewarding, not natural to the world). The base threat waits for mob
+behaviour to organise with.
 
 Proposed first three eras (defaults, owner to confirm):
 
 | Era | Story | Ground | Work | Mobs |
 | --- | --- | --- | --- | --- |
 | 1 · The Valley | Arrive with nothing | wood, stone, iron | timber, stone, iron; the Foundry's 3×3 plate | the day-one families |
-| 2 · The Deep Wakes (the Tyrant falls) | its kin stir below | copper and tin surface in the deep; strata crack | bronze (copper + tin): malleable, tough; the first curved form; plate 3×4; encroachment on | hounds hunt in wider packs; whelps leave burning ground; nests |
+| 2 · The Deep Wakes (the Tyrant falls) | its kin stir below | copper and tin surface in the deep; strata crack | bronze (copper + tin): malleable, tough; the first curved form; plate 3×4 | hounds hunt in wider packs; whelps leave burning ground |
 | 3 · The Ash Tide (the gate reached, the mine reinforced) | the wastes spill | ember-iron in the rifts; silver in the mountains | steel (iron + charcoal): hard, resilient; ember-iron: fire; silver: warding; plate 4×4 | shriekers call further; elites common beyond the heartland |
 
 Era four is the return: the mountains and the trial's true form, once
@@ -187,8 +188,6 @@ the Forge Tyrant's fall (`stonecut_blocks`) and changes the three axes:
   a wall piece with a half-round opening, requiring `malleable` - the first
   form a material's property unlocks. Iron lost `malleable`: curved forms
   wait for bronze.
-- **Encroachment** is gated by the era's `encroachment` flag: era one has
-  no nests even with a home.
 
 The HUD names the era; the sandpit polls the sim once a second and tells
 the era's story when it changes.
