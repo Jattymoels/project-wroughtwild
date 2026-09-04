@@ -198,6 +198,10 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 		instance.multimesh = multimesh
 		chunk.add_child(instance)
 
+	# Ground cover per biome (Wave 6 slice 4): tufts, ferns, reeds, dead
+	# grass on the surface blocks, batched per chunk and kind.
+	GroundCover.build_for_chunk(chunk, chunk_data, map, cell)
+
 	var faces: PackedVector3Array = chunk_data["faces"]
 	if not faces.is_empty():
 		var shape := ConcavePolygonShape3D.new()

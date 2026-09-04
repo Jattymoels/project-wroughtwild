@@ -798,6 +798,35 @@ func _test_sim_extension() -> void:
 
 	# D-014 itemisation: bases, rarities, pack items, gear-driven grammar.
 	check(sim.slot_ids().size() == 4 and sim.item_base_ids().has("frost_sceptre") and sim.item_base_ids().has("hunting_bow"), "items: slots (the offhand among them) and bases from data")
+	# The expansive pass (Wave 6 slice 4): every biome has a mood with a sky
+	# and an aerial haze, and cover to grow; a meadow chunk grows tufts on
+	# its surface blocks and nothing under them.
+	for biome_id in ["meadow", "rocky_hills", "forest", "fen", "ember_wastes"]:
+		var mood: Dictionary = BiomeMood.mood_for(biome_id)
+		check(mood.has("sky_top") and mood.has("sky_horizon") and mood.has("aerial") and not GroundCover.kinds_for(biome_id).is_empty(),
+			"expansive: %s has a sky, a haze and cover" % biome_id)
+	check(BiomeMood.mood_for("forest")["aerial"] < BiomeMood.mood_for("rocky_hills")["aerial"]
+		and GroundCover.kinds_for("meadow").has("flower") and GroundCover.kinds_for("forest").has("fern"),
+		"expansive: the hills see furthest, the meadow flowers, the forest ferns")
+	var fake_map := {"width": 4, "height": 4, "cell_size": 1.0, "heights": PackedInt32Array(), "biomes": PackedInt32Array(),
+		"biome_defs": [{"id": "meadow", "surface": "grass"}]}
+	for i in 16:
+		fake_map["heights"].append(5)
+		fake_map["biomes"].append(0)
+	var centres := PackedVector3Array()
+	var buried := PackedVector3Array()
+	for cz in 4:
+		for cx in 4:
+			centres.append(Vector3(cx + 0.5, 4.5, cz + 0.5))
+			buried.append(Vector3(cx + 0.5, 3.5, cz + 0.5))
+	var chunk := Node3D.new()
+	var on_top := GroundCover.build_for_chunk(chunk, {"kinds": {"grass": centres}}, fake_map, 1.0)
+	var under := GroundCover.build_for_chunk(Node3D.new(), {"kinds": {"grass": buried}}, fake_map, 1.0)
+	check(on_top > 0 and on_top <= 16 and under == 0 and chunk.get_child_count() >= 1,
+		"expansive: a meadow chunk grows cover on its surface blocks (%d) and none under them" % on_top)
+	var twice := GroundCover.build_for_chunk(Node3D.new(), {"kinds": {"grass": centres}}, fake_map, 1.0)
+	check(twice == on_top, "expansive: a rebuilt chunk grows the same cover")
+	chunk.free()
 	check(sim.modifier("deep_frost")["applies_to_tags"].has("chill") and sim.modifier("max_life")["self"], "items: modifier views")
 	# The trial run above banked the gear its rooms dropped, so the pack is not empty.
 	var before: int = sim.pack_items().size()

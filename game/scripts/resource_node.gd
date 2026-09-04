@@ -100,10 +100,22 @@ func _apply_visual() -> void:
 		return
 	match visual:
 		&"tree":
-			mesh_instance.mesh = PropMesh.build_tree(_visual_seed())
-			# Collision stays the trunk only: you can stand under the canopy.
-			shape.size = Vector3(0.7, 3.0, 0.7)
-			collider.position = Vector3(0, 1.5, 0)
+			# The silhouette is the biome's (Wave 6 slice 4): a pine in the
+			# forest, a snag in the wastes, the broadleaf elsewhere.
+			match _biome_id():
+				"forest":
+					mesh_instance.mesh = PropMesh.build_pine(_visual_seed())
+					shape.size = Vector3(0.7, 3.6, 0.7)
+					collider.position = Vector3(0, 1.8, 0)
+				"ember_wastes":
+					mesh_instance.mesh = PropMesh.build_snag(_visual_seed())
+					shape.size = Vector3(0.6, 2.6, 0.6)
+					collider.position = Vector3(0, 1.3, 0)
+				_:
+					mesh_instance.mesh = PropMesh.build_tree(_visual_seed())
+					# Collision stays the trunk only: you can stand under the canopy.
+					shape.size = Vector3(0.7, 3.0, 0.7)
+					collider.position = Vector3(0, 1.5, 0)
 		&"boulder":
 			mesh_instance.mesh = PropMesh.build_boulder(_visual_seed())
 			shape.size = Vector3(1.4, 1.0, 1.2)
@@ -130,6 +142,22 @@ func _apply_visual() -> void:
 			collider.position = Vector3(0, 0.45, 0)
 	collider.shape = shape
 	_refresh_wedge_look()
+
+
+## The biome under this node ("" when a harness placed it by hand).
+func _biome_id() -> String:
+	var terrain := _terrain()
+	if terrain == null or terrain.map.is_empty():
+		return ""
+	var cell: float = terrain.map["cell_size"]
+	var cx := int(floor(position.x / cell))
+	var cz := int(floor(position.z / cell))
+	var width := int(terrain.map["width"])
+	if cx < 0 or cz < 0 or cx >= width or cz >= int(terrain.map["height"]):
+		return ""
+	var index: int = (terrain.map["biomes"] as PackedInt32Array)[cz * width + cx]
+	var defs: Array = terrain.map.get("biome_defs", [])
+	return String(defs[index].get("id", "")) if index >= 0 and index < defs.size() else ""
 
 
 ## The terrain this node lies on (a child of its node root), or null when

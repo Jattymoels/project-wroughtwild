@@ -130,6 +130,42 @@ static func build_tree(seed_value: int) -> ArrayMesh:
 	return st.commit()
 
 
+## A pine (the forest's silhouette, Wave 6 slice 4): a taller trunk and
+## three squashed tiers of canopy narrowing upward, the dark leaf dominant.
+static func build_pine(seed_value: int) -> ArrayMesh:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_value
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var top := _trunk(st, rng)
+	var tiers := [[0.0, 1.25], [0.95, 0.95], [1.8, 0.62]]
+	for tier in tiers:
+		_blob(st, top + Vector3(0, float(tier[0]), 0), rng.randf_range(0.9, 1.1) * float(tier[1]), 0.62,
+			rng, LEAF_DARK, LEAF, 0.3)
+	_blob(st, top + Vector3(0, 2.45, 0), 0.3, 0.9, rng, LEAF_DARK, LEAF, 0.2)
+	st.generate_normals()
+	return st.commit()
+
+
+## A snag (the wastes' silhouette): a bare, forked trunk, no canopy - what
+## the fire left standing.
+static func build_snag(seed_value: int) -> ArrayMesh:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = seed_value
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var top := _trunk(st, rng)
+	# Two stubs of branch off the crown, charred.
+	for i in 2:
+		var dir := Vector3(rng.randf_range(-1, 1), rng.randf_range(0.3, 0.8), rng.randf_range(-1, 1)).normalized()
+		var base := top - Vector3(0, rng.randf_range(0.4, 0.9), 0)
+		_blob(st, base + dir * 0.45, rng.randf_range(0.16, 0.24), 0.6, rng, BARK_DARK, BARK, 0.4)
+		_blob(st, base + dir * 0.85, rng.randf_range(0.1, 0.16), 0.6, rng, BARK_DARK, BARK, 0.4)
+	_blob(st, top, 0.18, 0.5, rng, BARK_DARK, BARK, 0.5)
+	st.generate_normals()
+	return st.commit()
+
+
 static func build_boulder(seed_value: int) -> ArrayMesh:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value

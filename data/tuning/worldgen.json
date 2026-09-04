@@ -19,7 +19,9 @@
     "frequency": 0.038,
     "cragginess_frequency": 0.008,
     "cragginess_threshold": 0.6,
-    "design_purpose": "The verticality layer: where the slow cragginess field exceeds its threshold, ridged noise piles up to extra_scale further blocks - localized massifs with cliffs and vistas instead of uniformly lumpy ground. Raising the threshold makes mountains rarer; raising extra_scale makes them taller."
+    "rim_width_cells": 34,
+    "rim_extra_scale": 16,
+    "design_purpose": "The rim (Wave 6 slice 4, the expansive pass, 4 Sep 2026): over the outer rim_width_cells the land climbs up to rim_extra_scale blocks more, ridged by the massif noise so it is a ring of mountains and not a wall - the valley reads as a valley from anywhere in it, and its edge is a horizon rather than a cliff into nothing. The verticality layer: where the slow cragginess field exceeds its threshold, ridged noise piles up to extra_scale further blocks - localized massifs with cliffs and vistas instead of uniformly lumpy ground. Raising the threshold makes mountains rarer; raising extra_scale makes them taller."
   },
   "strata": {
     "dirt_depth": 3,
