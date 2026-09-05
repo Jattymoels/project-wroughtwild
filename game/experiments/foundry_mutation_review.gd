@@ -60,11 +60,14 @@ func _ready() -> void:
 	var target := Enemy.spawn(world,&"stone_husk",at)
 	target.set_physics_process(false)
 	target.life = 1000
+	var target_floor := SkillBurst.solid_ray(player.combat,at+Vector3.UP*2,at+Vector3.DOWN*8)
+	if not target_floor.is_empty(): target.global_position=target_floor.position
 	target.apply_ignite(100,0,0,sim.skill_mutation("prototype_ember_bolt"))
-	var field := FoundryField.spawn(player.combat,&"prototype_ember_bolt",at,"impact",sim.skill_mutation("prototype_ember_bolt"))
+	FoundryReactions.contact(player.combat,target,&"prototype_ember_bolt",sim.skill_mutation("prototype_ember_bolt"),{})
+	var field := FoundryCold.live(player.combat,"emberbed")
 	field.set_physics_process(false)
 	field.advance(0.6)
-	review_title.text = "KEPT RIME\nSmoulder burn + retained impact field"
+	review_title.text = "KEPT RIME\nSmoulder + Emberbed: the same stored burn shared over three pulses"
 	await capture("kept-rime-combat")
 	target.queue_free()
 	field.cancel()
@@ -92,7 +95,8 @@ func _ready() -> void:
 	ward.cancel()
 	await evolution_capture(world)
 	await ember_builds_capture(world)
-	print("CODEX_FOUNDRY_MUTATION_REVIEW 14 captures")
+	await cold_builds_capture(world)
+	print("CODEX_FOUNDRY_MUTATION_REVIEW 22 captures")
 	get_tree().quit()
 
 func evolution_capture(world: Sandpit) -> void:
@@ -162,7 +166,7 @@ func ember_builds_capture(world: Sandpit) -> void:
 		{"first":"plate","second":"ward","name":"furnace-cautery","title":"FURNACE PLATE + CAUTERY","sentence":"Ignition readies an affliction ward; a follow-up hit heats your retaliation"},
 	]
 	for recipe in recipes:
-		for group in ["foundry_fields","foundry_embers","foundry_puffs","foundry_returns"]:
+		for group in ["foundry_fields","foundry_embers","foundry_cold","foundry_puffs","foundry_returns"]:
 			for node in get_tree().get_nodes_in_group(group): node.free()
 		for piece in sim.foundry().plate: sim.foundry_remove(piece.row,piece.col)
 		sim.add_materials({"ember_catalyst":1,"iron_ingot":100})
@@ -211,3 +215,73 @@ func ember_builds_capture(world: Sandpit) -> void:
 		if recipe.first == "plate": review_title.text += "\n" + player.combat.verb_text()
 		await capture(recipe.name+"-combat")
 		for actor in [target,other,rear]: actor.queue_free()
+
+func cold_builds_capture(world: Sandpit) -> void:
+	var combat := player.combat
+	var sim := combat.sim
+	var recipes := [
+		{"kind":"frost_catalyst","skill":"prototype_bow_shot","first":"reach","second":"ward","name":"whiteout-stillwater","title":"WHITEOUT + STILLWATER","sentence":"Mist slows incoming shots; a well-timed cast leaves a one-shot ice mirror"},
+		{"kind":"frost_catalyst","skill":"prototype_heavy_strike","first":"edge","second":"haste","name":"rime-hoarfrost","title":"RIME EDGE + HOARFROST","sentence":"Cut across the chilled target's flanks and recover movement to reposition"},
+		{"kind":"preserving_catalyst","skill":"prototype_heavy_strike","first":"ember","second":"reach","name":"emberbed-afterfield","title":"EMBERBED + AFTERFIELD","sentence":"Store part of the burn in the ground; draw new enemies into the remembered hit"},
+		{"kind":"preserving_catalyst","skill":"prototype_bow_shot","first":"vigour","second":"haste","name":"lifebed-lingering","title":"LIFEBED + LINGERING STEP","sentence":"Leave your casting mark, switch skills, then return for a small recovery"},
+	]
+	for recipe in recipes:
+		for group in ["foundry_fields","foundry_embers","foundry_cold","foundry_puffs","foundry_returns","player_projectiles","enemy_projectiles"]:
+			for node in get_tree().get_nodes_in_group(group): node.free()
+		for piece in sim.foundry().plate: sim.foundry_remove(piece.row,piece.col)
+		sim.add_materials({recipe.kind:1,"iron_ingot":100})
+		sim.foundry_place_skill(1,1,recipe.skill)
+		sim.foundry_place(1,0,recipe.first)
+		sim.foundry_place(2,1,recipe.second)
+		sim.foundry_place_kind(2,0,recipe.kind)
+		combat._mutation_cache.clear()
+		combat._reaction_ready.clear()
+		combat._action_contexts.clear()
+		for id in combat.cooldowns: combat.cooldowns[id]=0
+		review_title.visible=false
+		get_window().size=Vector2i(1920,1080)
+		player.foundry_panel.open_panel()
+		for i in 8: await get_tree().process_frame
+		player.foundry_panel._inspect_cell(2,0)
+		await capture(recipe.name+"-foundry")
+		player.foundry_panel.close_panel()
+		get_window().size=Vector2i(1280,720)
+		equip("hunting_bow" if recipe.skill=="prototype_bow_shot" else "iron_mace")
+		var at := player.global_position+Vector3(-.6,-.65,-3.5)
+		var target := Enemy.spawn(world,&"stone_husk",at)
+		var other := Enemy.spawn(world,&"stone_husk",at+Vector3(1.4,0,0))
+		var flank := Enemy.spawn(world,&"stone_husk",at+Vector3(-1.4,0,0))
+		for actor in [target,other,flank]:
+			actor.set_physics_process(false)
+			actor.life=1000
+			var floor_hit := SkillBurst.solid_ray(combat,actor.global_position+Vector3.UP*2,actor.global_position+Vector3.DOWN*8)
+			if not floor_hit.is_empty(): actor.global_position=floor_hit.position
+		var form := combat.mutation(StringName(recipe.skill))
+		if recipe.kind=="frost_catalyst": target.apply_chill(35)
+		elif recipe.first=="ember": target.apply_ignite(100,0,0,form)
+		FoundryReactions.contact(combat,target,StringName(recipe.skill),form,{})
+		if recipe.skill=="prototype_bow_shot": combat.use_skill(StringName(recipe.skill))
+		for node in get_tree().get_nodes_in_group("player_projectiles"): node.set_physics_process(false)
+		var old_position := player.global_position
+		var old_pitch := player.spring_arm.rotation.x
+		var old_yaw := player.rotation.y
+		if recipe.first=="vigour":
+			player.global_position+=Vector3(2.4,0,2.5)
+			player.rotation.y=.65
+			player.spring_arm.rotation.x=-.55
+			combat.cooldowns[StringName(recipe.skill)]=1.5
+		for effect in get_tree().get_nodes_in_group("foundry_cold"):
+			effect.set_physics_process(false)
+			effect.advance(.08 if effect.mode=="edge" else .1)
+		for puff in get_tree().get_nodes_in_group("foundry_puffs"):
+			puff.set_process(false)
+			puff.elapsed=.2
+			puff._sample()
+		review_title.visible=true
+		review_title.text=recipe.title+"\n"+recipe.sentence
+		if recipe.first=="vigour": review_title.text+="\n"+combat.verb_text()
+		await capture(recipe.name+"-combat")
+		player.global_position=old_position
+		player.spring_arm.rotation.x=old_pitch
+		player.rotation.y=old_yaw
+		for actor in [target,other,flank]: actor.queue_free()

@@ -906,15 +906,15 @@
       "id": "ember_catalyst",
       "display_name": "Ember Catalyst",
       "family": "offence",
-      "design_purpose": "Ignition spreads a small fire payload to nearby enemies when a burn starts. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "design_purpose": "Works fire through each ingot's purpose: Ember plants a fuse, Edge cuts a cinder seam, Reach sends a travelling spark, Plate heats a retaliation, Ward cauterises afflictions, Haste releases stored burn early, Vigour sheds healing cinders and Frost interrupts with steam. Downstream of Smoulder, it evolves into Steam Plume. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
       "description": "Works fire through each ingot's purpose: Ember plants a fuse, Edge cuts a cinder seam, Reach sends a travelling spark, Plate heats a retaliation, Ward cauterises afflictions, Haste releases stored burn early, Vigour sheds healing cinders and Frost interrupts with steam. Downstream of Smoulder, it evolves into Steam Plume."
     },
     {
       "id": "preserving_catalyst",
       "display_name": "Preserving Catalyst",
       "family": "offence",
-      "design_purpose": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on."
+      "design_purpose": "Preserves different moments through each ingot: store burn in the ground, hold chill or a wound, echo for new arrivals, return to recover, repel an arrival, shelter at a kill or switch skills to recover time. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
+      "description": "Preserves different moments through each ingot: store burn in the ground, hold chill or a wound, echo for new arrivals, return to recover, repel an arrival, shelter at a kill or switch skills to recover time."
     },
     {
       "id": "vanguard",
@@ -989,8 +989,8 @@
       "display_name": "Frost Catalyst",
       "family": "offence",
       "craft_tag": "cold",
-      "description": "Leaves a cold impact field which continues building chill after the hit. Frost into Ember makes Smoulder, a slowing fire burn.",
-      "design_purpose": "Leaves a cold impact field which continues building chill after the hit. Frost into Ember makes Smoulder, a slowing fire burn. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
+      "description": "Shapes cold into each ingot: Ember smoulders, Frost sends a chill ring, Edge cuts sideways, Reach slows enemy shots, Vigour draws ice skin, Plate binds feet, Ward reflects a shot and Haste recovers movement.",
+      "design_purpose": "Shapes cold into each ingot: Ember smoulders, Frost sends a chill ring, Edge cuts sideways, Reach slows enemy shots, Vigour draws ice skin, Plate binds feet, Ward reflects a shot and Haste recovers movement. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family."
     }
   ],
   "design_purpose_currency_kinds": "D-025: each Kind has a crafting use and an exact Foundry identity. Gear crafts still use craft_tag or the currency family to select their first modifier, and guarantee at least keen. Kinds remain in the four existing families. The pack/purse split and three-for-one exchange are preserved. Frost Catalyst is a pack material dropped by Gloom Crawlers at 7% and available in the exchange; it aims cold crafts and can turn an Ember support into Smoulder. Rare build-defining equipment modifiers remain future work."

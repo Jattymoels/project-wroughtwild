@@ -11,6 +11,7 @@ var source_name := ""
 var source_ref: WeakRef
 var sweep: ShapeCast3D
 var spent := false
+var frostbitten := false
 
 static func make_head(rules: Dictionary) -> MeshInstance3D:
 	var head := MeshInstance3D.new()
@@ -87,8 +88,28 @@ func advance(delta: float) -> void:
 		sweep.target_position = direction * travel
 		sweep.force_shapecast_update()
 	var unobstructed := travel * sweep.get_closest_collision_safe_fraction() if sweep.is_colliding() else travel
+	if not frostbitten:
+		var frost := FoundryCold.frostbite(get_tree(),global_position,global_position+direction*unobstructed)
+		if not frost.is_empty():
+			# Integrate normal travel up to the mist's entry, then slower travel
+			# for the remaining frame. Resweep the shortened segment for cover.
+			var entry := unobstructed*float(frost.at)
+			var time_after := maxf(0,delta-entry/maxf(speed,.001))
+			speed*=1.0-float(frost.slow)
+			travel=minf(remaining,entry+speed*time_after)
+			frostbitten=true
+			sweep.target_position=Vector3.ZERO
+			sweep.force_shapecast_update()
+			if not sweep.is_colliding():
+				sweep.target_position=direction*travel
+				sweep.force_shapecast_update()
+			unobstructed=travel*sweep.get_closest_collision_safe_fraction() if sweep.is_colliding() else travel
 	if FoundryField.intercept(get_tree(), global_position, global_position + direction * unobstructed):
 		spent = true
+		queue_free()
+		return
+	if FoundryCold.intercept(get_tree(),global_position,global_position+direction*unobstructed,source_ref.get_ref() as Enemy):
+		spent=true
 		queue_free()
 		return
 	if sweep.is_colliding():

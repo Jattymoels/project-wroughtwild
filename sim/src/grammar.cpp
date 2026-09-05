@@ -147,6 +147,24 @@ std::map<std::string, double> skillMutation(const tuning::Tuning& tuning, const 
     result["ember_hop_range"] = result["ember_hop_buildup"] <= 0 ? 0 :
         std::max(0.0, resolve(active, hopTags, "proliferate_radius",
             tuning.foundry.mutationLimits.at("ember_hop_radius"))) * skillReach(tuning, active, skillId);
+    auto coldTags = packetTags(tuning, tags, "cold");
+    if (!has(coldTags, "chill")) coldTags.push_back("chill");
+    for (const std::string hook : {"rime_ring", "stillwater"}) {
+        const double base = hook == "rime_ring" ? result["rime_ring_buildup"] :
+            (result["stillwater_fraction"] > 0 ? tuning.foundry.mutationLimits.at("stillwater_chill") : 0);
+        result[hook + "_chill"] = std::max(0.0, resolve(active, coldTags, "chill_buildup", base) - resolve(active, coldTags, "chill_buildup", 0));
+        result[hook + "_chill_boss"] = result[hook + "_chill"] * tuning.grammar.chill.bossBuildupMultiplier;
+    }
+    if (!has(coldTags, "area")) coldTags.push_back("area");
+    for (const std::string hook : {"rime_edge", "stillwater"})
+        result[hook + "_cold_damage"] = baseHit <= 0 ? 0 : std::max(0.0, resolve(active, coldTags, "damage", baseHit)) * result[hook + "_fraction"];
+    const auto originalType = nativeType(tuning, skill->resolveTags());
+    for (const auto& type : tuning.grammar.damageTypes) {
+        auto echoTags = packetTags(tuning, tags, type);
+        if (!has(echoTags, "area")) echoTags.push_back("area");
+        result["afterfield_" + type + "_damage"] = baseHit <= 0 || type != originalType ? 0 :
+            std::max(0.0, resolve(active, echoTags, "damage", baseHit)) * result["afterfield_fraction"];
+    }
     return result;
 }
 

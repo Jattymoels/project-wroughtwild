@@ -392,8 +392,10 @@ func use_skill(skill_id: StringName) -> bool:
 	var def: Dictionary = skills.get(skill_id, {})
 	if def.is_empty() or not is_ready(skill_id):
 		return false
+	var origin := player.global_position+Vector3.UP*.5
 	var fired := _cast(skill_id, def)
 	if fired:
+		FoundryCold.cast(self,skill_id,origin)
 		_note_use(skill_id)
 		_brace(skill_id)
 		_echo(skill_id, def)
@@ -542,6 +544,8 @@ func verb_text() -> String:
 	var parts := PackedStringArray()
 	if FoundryEmber.active(self,"temper") != null: parts.append("Furnace Plate ready")
 	if FoundryEmber.active(self,"cautery") != null: parts.append("Cautery ward ready")
+	if FoundryCold.live(self,"skin") != null: parts.append("Cold Sap ready")
+	if FoundryCold.live(self,"tempo") != null: parts.append("Lingering Step: switch skills")
 	if rooted():
 		parts.append("rooted, dash breaks it")
 	if harried():
@@ -640,6 +644,7 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, s
 	var kill := enemy.life <= 0.0
 	if kill:
 		_reap(skill_id, 1)
+		if not secondary and landed>0: FoundryCold.killed(self,enemy,skill_id)
 		if not secondary and float(mutation(skill_id).get("recovery_on_kill", 0)) > 0:
 			FoundryField.spawn(self, skill_id, enemy.global_position + Vector3.UP * 0.12, "recovery", mutation(skill_id))
 	return {"damage": landed, "kill": kill, "types": types}
@@ -1108,6 +1113,7 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	var train := train_multiplier_for(source)
 	warded *= train
 	last_hit_taken = sim.enemy_hit_damage(warded, damage_type, cast_armour() + still_armour())
+	if source is Enemy: last_hit_taken=FoundryCold.absorb(self,last_hit_taken)
 	_train_hits.append({"at": _fight_clock, "source": source.get_instance_id() if source != null else 0})
 	life = maxf(0.0, life - last_hit_taken)
 	_settle_left = _settle_seconds

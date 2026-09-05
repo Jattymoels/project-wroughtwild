@@ -28,8 +28,10 @@ Era 1 effects with modest damage: the chosen base skill supplies speed, reach,
 area and ailment feel, while the Foundry changes its use. Flashfire, Bloodfire
 and Steambrand received separate timing, collection and control mechanics.
 The owner's subsequent approval completes all eight early Ember readings with
-the five mechanics below. Other Kind/ingot rows still require the same identity
-review; the 96-row coverage count is not 96 distinct mechanics.
+the five mechanics below. The approved continuation now completes Frost and
+Preserving as well: 24 base readings have individual roles. The remaining
+Kind/ingot families still need their identity review; 96 rows do not mean 96
+distinct mechanics.
 
 Evolved forms retain strike, sweep, projectile or ground delivery. Movement
 alone cannot make a damaging contact. Steam Plume shares one first-hit token
@@ -75,7 +77,7 @@ the delay even with normal buildup decay; a resistant boss needs more work.
 Terminal fuse/spark ignition may trigger **only** the separately limited Bloodfire
 cinder and Cautery cleanse/ward. This lets those supports cooperate. It cannot
 make another fuse, spark, seam, link, echo or mastery use. Existing burn-on-death
-proliferation still applies. Other secondary fields retain their previous rules.
+proliferation still applies. Steam Plume and the cold/memory events below have explicit secondary-event contracts.
 There are at most twelve live Ember event nodes per player, independently of the
 existing field/mote limits. Excess events are rejected without a free payout;
 death and save application cancel all of them. No combat charge is saved.
@@ -95,6 +97,80 @@ alloy is required. The cast remains Heavy Strike in each case.
 These are playtest arrangements, not claims of equal damage or solved balance.
 All sixteen skill shells resolve every Ember reading; damaging contact is still
 required. Dash cannot invent a fuse, seam, spark or ignition reward just by moving.
+
+### Frost: space, contact and movement
+
+All eight Frost readings now have separate roles. Smoulder retains its existing
+slowing-burn contract. The other seven supply +35 chill to the main hit;
+Rime Edge also supplies +20 bleed. Their former generic 12% impact fields and
+extra ingot-flavour additions are removed. Direct supports and alloys remain.
+
+| Route | Early mechanic | Bounds and equipment |
+| --- | --- | --- |
+| Frost → Frost: Rimewell | First contact sends a ring to 2 m over 0.8 s; each visible enemy receives 20 chill once, without hit damage | One ring per cast and per player every 2 s. Buildup caps at 35 before increased/more chill and boss resistance; flat main-hit buildup is not paid again. |
+| Frost → Edge: Rime Edge | Hit an already chilled/frozen victim; after 0.2 s two lateral ice cuts hit its neighbours for 6% of base hit as cold | Excludes the original victim. 2.4 m to either side, 0.4 m half-width along the attack direction. One pair per cast/every 2 s; fraction caps at 12%. Cold/area/attack-or-spell damage gear applies; area/reach scales the cuts, cover stops them. No added buildup. |
+| Frost → Reach: Whiteout | Hit a chilled victim to leave a 1.7 m mist for 2.4 s; crossing enemy shots lose 40% speed for their remaining flight | One mist per cast/every 2 s; slow caps at 55%, applied only once per shot. Full swept travel respects cover and integrates the speed change at mist entry. No damage. |
+| Frost → Vigour: Cold Sap | A chilled hit draws ice skin for 2.5 s; the next damaging enemy hit loses up to 3 damage after armour/resistance | One charge every 3 s, never stacks; caps at 6 absorption. Dodged, fully mitigated and environmental hits do not spend it. It does not block an enemy's affliction. |
+| Frost → Plate: Permafrost | Bind an already chilled victim's feet for 0.45 s; it can still attack | One bind per cast/every 2 s; duration caps at 0.65 s. Bosses lose 25% movement instead of stopping. Chill immunity prevents the bind. No stagger, freeze or interrupt. |
+| Frost → Ward: Stillwater | A real cast leaves a 1.3 m ice mirror for 1.6 s; catch one shot and return a needle to its living shooter | One mirror every 3 s. Needle starts at 8% of base hit as cold plus 15 chill; damage fraction caps at 15%, each capability reads its gear and boss resistance. Travels at 12 m/s, expires after 1.2 s, respects cover; no child attacks. |
+| Frost → Haste: Hoarfrost | Hit a chilled enemy to recover 0.35 s of the longest remaining movement cooldown | One recovery per cast/every 2 s; caps at 0.6 s. No attack refund and no banking while movement is ready. |
+
+A Frost contact reads existing chill before that hit's payload. This encourages
+an opener and follow-up; Rimewell can start that control without prior chill.
+The rings, ice cuts, mist and mirror have separate visual geometry. Cold Sap
+shows its available charge in the ordinary combat HUD.
+
+### Preserving: keep a useful moment
+
+Preserving no longer gives all eight supports the same 18% damage/buildup field.
+It keeps time, a position or one future opportunity according to the ingot.
+Ember, Frost and Edge retain +20 ignite, chill and bleed respectively on the main
+hit. Other former flavour bonuses are removed; direct ingot support remains.
+All eight operations have a player-wide 3 s gate per operation. Contact effects
+also spend one eligible-contact token per real cast, shared by fans and forks.
+
+| Route | Early mechanic | Bounds and equipment |
+| --- | --- | --- |
+| Preserving → Ember: Emberbed | A burning hit moves up to 0.6 s of the existing burn into a 1.8 m bed; two pulses 0.8 s apart share that stored fire damage | Removes exactly that time from the burn. Caps at 1 s taken; snapshots originating burn gear/Sear. The original victim inside the bed receives the same total burn budget, while neighbours can receive the redistributed portion. No new buildup or child event. |
+| Preserving → Frost: Cold Reservoir | Hit a chilled victim to hold its buildup against decay for 1.2 s | Base hold caps at 1.8 s; actual freeze duration keeps counting down normally. No additional buildup or damage. |
+| Preserving → Edge: Wound Memory | A bleeding hit gives one wound up to 1 s of stationary preservation; both bleed time and damage pause, resuming while moving or after that credit is spent | Credit caps at 1.5 s, available during the 3.2 s memory window. Refreshing an existing bleed cannot replenish it; a new wound can. A long final bleed tick pays only the actual remaining duration. |
+| Preserving → Reach: Afterfield | First contact leaves a 1.8 m field for 3.2 s; its first new arrival triggers one 12% echo of the original native hit for newcomers inside | Every visible original occupant is remembered and excluded. Fraction caps at 20%; native damage/area/attack-or-spell gear applies. No acquired-element duplication, buildup or child attacks. |
+| Preserving → Vigour: Lifebed | A real cast marks its old position for 3.2 s; leave its 1.8 m bed and return to collect 3 life once | Standing still pays nothing. Base recovery caps at 6 before healing gear. Return must be in range and clear of cover. |
+| Preserving → Plate: Held Ground | A real cast leaves a 1.8 m seal for 3.2 s; shove its first arriving enemy 0.9 m outward | Original occupants are ignored. One charge; push caps at 1.5 m and bosses receive a quarter. No damage. |
+| Preserving → Ward: Sanctuary | A direct-hit kill leaves a 1.8 m ward for 3.2 s; it catches one enemy shot | One charge regardless of duplicate readings, no reflection. Secondary/DoT kills do not create it. Cover before the ward stops the shot first. |
+| Preserving → Haste: Lingering Step | After a real cast, use a different skill within 3.2 s to recover 0.3 s of the first skill's remaining cooldown | One personal memory; refund caps at 0.6 s and floors at zero. Repeats/linked casts neither create nor spend it. The completing skill retains its own cooldown. HUD prompts the switch. |
+
+Kept Rime now extends these memory windows by 0.8 s, capped at 0.8 s across
+copies. Its authoring key is `mutation_memory_extension`, replacing the obsolete
+retained-field duration reading. Cold Reservoir lasts longer; positional memories
+wait longer; Wound Memory's opportunity lasts longer but its pause credit does
+not grow. Emberbed uses three pulses instead of two, dividing **the same** removed
+burn damage across them. It never grants three copies of the stored burn.
+This is a duration refinement; Steam Plume remains the first consuming evolution.
+
+Frost and Preserving share a maximum of sixteen live event nodes per player.
+Excess events are rejected without a free payload. Player death/load cancels
+charges, needles and marks and releases their own temporary status clocks.
+No transient charge is saved. All new values and ceilings are explained beside
+`mutation_limits`; read-only modifier definitions stay outside the loot pool.
+
+All sixteen skill shells resolve these forms. Damage and contact mechanics need
+an actual hit; movement has no base damage. A Dash can plant Stillwater (its
+caught-shot needle has chill but zero invented hit damage), Lifebed or Held
+Ground, or participate in Lingering Step. It cannot seed Rimewell, Smoulder,
+Emberbed or Afterfield just by moving. The Foundry inspector says so explicitly.
+
+### Four more arrangements to playtest
+
+Use the original working: the skill at (1,1), Kind at (2,0), and the two ingots
+at (1,0)/(2,1). These test roles, not claims of equivalent power.
+
+| Skill / Kind / ingots | Intent |
+| --- | --- |
+| Bow Shot / Frost / Reach + Ward | **Whiteout + Stillwater:** shape incoming projectile lanes and time a one-shot return while keeping the bow's original delivery. |
+| Heavy Strike / Frost / Edge + Haste | **Rime Edge + Hoarfrost:** follow a chilled opener with lateral cuts, recovering some movement to reposition. |
+| Heavy Strike / Preserving / Ember + Reach | **Emberbed + Afterfield:** spend part of an existing burn into the ground and draw fresh enemies through the place where you struck. |
+| Bow Shot / Preserving / Vigour + Haste | **Lifebed + Lingering Step:** leave a casting mark, switch to another skill, then return for a small recovery. |
 
 ### Steam Plume contract
 
@@ -164,8 +240,8 @@ ordered readings currently go beyond that default:
 
 | Inward order | Additional reading |
 | --- | --- |
-| Frost → Preserving → ingot | **Kept Rime:** +0.8 seconds of retained field duration, within the 4.8-second cap |
-| Preserving → Frost → ingot | **Rime Memory:** +15 chill buildup per full hit; pulses apply their hit fraction |
+| Frost → Preserving → ingot | **Kept Rime:** +0.8 s to Preserving memory windows; longer Emberbed divides the same stored damage |
+| Preserving → Frost → ingot | **Rime Memory:** +15 chill buildup per full hit; secondary cold/memory events do not pay this again |
 | Frost → Ember → Ember ingot | **Steam Plume:** replaces Smoulder and the participating Kindling reading with the evolved plume contract above |
 
 Every other ordered pair currently has the same combined mechanical result when reversed.
@@ -179,8 +255,8 @@ deliveries need an explicit conflict rule before adding them.
 | Kind | Baseline operation through one iron ingot |
 | --- | --- |
 | Ember Catalyst | +45 ignite buildup; eight distinct ingot mechanics: delayed fuse, chilled interrupt, narrow seam, travelling spark, collectible healing, reactive push, affliction cleanse/ward and stored-burn release. See the early identity table above. |
-| Frost Catalyst | +35 chill; a 1.6 m impact field pulses 12% of hit and buildup three times over 2.4 s; Ember instead becomes Smoulder |
-| Preserving Catalyst | A 1.8 m impact field pulses 18% of hit and buildup three times over 2.4 s |
+| Frost Catalyst | Eight separate cold/control roles: Smoulder, an expanding chill ring, lateral cuts, shot-slowing mist, ice skin, foot binding, a reflected needle and movement recovery. See Frost above. |
+| Preserving Catalyst | Eight separate memory roles: stored burn, retained chill, a held wound, a newcomer echo, return recovery, an arrival shove, a kill ward and a switching refund. See Preserving above. |
 | Piercing Catalyst | Strikes/sweeps become travelling waves; projectiles/waves pierce one extra enemy |
 | Impact Catalyst | Strikes/sweeps become travelling impact waves; projectile contact bursts over 1.8 m, replacing the direct hit; +0.12 s stagger |
 | Bulwark Vanguard | Casting plants a 2 m seal: +10 armour while inside, for 3.2 s; strongest covering seal wins |
@@ -191,11 +267,11 @@ deliveries need an explicit conflict rule before adding them.
 | Striking Quicksilver | Every third attack repeats after 0.12 s; spell tablets do not read this cadence |
 | Casting Quicksilver | Every third spell repeats after 0.55 s; attack tablets do not read this cadence |
 
-Outside the completed Ember family, each ingot adds its own flavour to that operation: Ember +20 ignite, Frost +20
+Outside the completed Ember, Frost and Preserving families, each ingot adds its own flavour to that operation: Ember +20 ignite, Frost +20
 chill, Edge +20 bleed, Reach +18% reach, Vigour +1.5 life on kill, Plate +4 cast
 armour, Ward +5% status ward, Haste +12% cooldown refund on kill. Smoulder has
-its own explicit payload below. The eight Ember readings instead use the
-mechanics above, retaining only Frost's chill and Edge's bleed additions. These are first-pass
+its own explicit payload below. The three completed families use the
+individual mechanics and explicitly retained ailment additions above. These are first-pass
 values, not balance claims.
 
 The current sixteen skills are not all equally useful with every Kind. Movement
@@ -246,7 +322,7 @@ radii. The pulse interval is 0.8 s. A player can have twelve fields and twenty-f
 returning motes; a new field replaces the oldest at capacity. Excess motes pay
 no extra heal. Melee waves travel 12 m at 16 m/s before reach; motes return at 9 m/s.
 
-Pulses apply fractional buildup as well as fractional damage, respect solid
+Legacy generic fields apply fractional buildup as well as fractional damage, respect solid
 cover, and do not shatter, trigger links, create more fields or generate return
 motes/recovery beds. Direct-hit recovery currently excludes shatter-cascade and
 DoT-only kills. This is a reported prototype boundary, not a promise of universal
@@ -300,8 +376,15 @@ retaliation consumption/boss push, single-affliction cleanse/prevention, and
 death/load/budget cleanup. Fourteen rendered captures include three different
 Heavy Strike arrangements alongside the earlier workings and Steam Plume.
 
+The Frost/Preserving continuation adds tests for each role, exact swept mist
+entry, post-mitigation absorption, preserved ailment budgets, movement
+compatibility, entry/return requirements, expiry, cover and death/load cleanup.
+Native checks now total **29,934**, with **449 focused Godot checks** and the complete headless pipeline passing.
+Eight more rendered captures pair real Foundry arrangements
+with their runtime effects.
+
 Run `tools/codex_visual_review.ps1 -Foundry` for the focused gameplay checks and
-fourteen real screenshots. `-Checks` includes this suite in the full pipeline.
+twenty-two real screenshots. `-Checks` includes this suite in the full pipeline.
 
 The following table is the complete current base-name matrix. Numeric effects
 remain authoritative in the tuning file; names never replace persistent IDs.

@@ -855,6 +855,38 @@ func _inspect_cell(row: int, col: int) -> void:
 
 func _resolved_summary(skill: String, form: Dictionary) -> String:
 	var parts := PackedStringArray()
+	var memory := float(form.get("memory_extension",0))
+	if float(form.get("rime_ring_buildup",0))>0:
+		parts.append("Rimewell: an expanding ring carries %.0f chill once; no extra damage" % float(form.rime_ring_chill))
+	if float(form.get("rime_edge_fraction",0))>0:
+		parts.append("Rime Edge: a chilled target opens lateral cuts for %.1f cold; original victim excluded" % float(form.rime_edge_cold_damage))
+	if float(form.get("whiteout_slow",0))>0:
+		parts.append("Whiteout: a chilled target leaves mist; crossing enemy shots lose %.0f%% speed" % (float(form.whiteout_slow)*100))
+	if float(form.get("cold_sap_absorb",0))>0:
+		parts.append("Cold Sap: a chilled hit stores %.0f protection against your next enemy hit" % float(form.cold_sap_absorb))
+	if float(form.get("permafrost_seconds",0))>0:
+		parts.append("Permafrost: bind a chilled target's feet for %.2f s; it can still attack" % float(form.permafrost_seconds))
+	if float(form.get("stillwater_fraction",0))>0:
+		parts.append("Stillwater: casting leaves a one-shot mirror; returns %.1f cold + %.0f chill to the shooter" % [float(form.stillwater_cold_damage),float(form.stillwater_chill)])
+	if float(form.get("hoarfrost_refund",0))>0:
+		parts.append("Hoarfrost: a chilled hit recovers %.2f s of your movement cooldown" % float(form.hoarfrost_refund))
+	if float(form.get("emberbed_seconds",0))>0:
+		parts.append("Emberbed: move %.2f s of an existing burn into %d ground pulses; same burn budget" % [float(form.emberbed_seconds),int(form.limits.emberbed_pulses)+int(floor(memory/float(form.limits.pulse_interval)))])
+	if float(form.get("reservoir_seconds",0))>0:
+		parts.append("Cold Reservoir: hold chill decay for %.1f s; freeze duration stays the same" % (float(form.reservoir_seconds)+memory))
+	if float(form.get("wound_memory_seconds",0))>0:
+		parts.append("Wound Memory: save up to %.1f s of a stationary victim's bleed for when it moves" % float(form.wound_memory_seconds))
+	if float(form.get("afterfield_fraction",0))>0:
+		parts.append("Afterfield: retain %.0f%% of the native hit for new arrivals; original occupants excluded" % (float(form.afterfield_fraction)*100))
+	if float(form.get("lifebed_life",0))>0:
+		parts.append("Lifebed: leave and return to your cast's mark to collect %.0f life once" % float(form.lifebed_life))
+	if float(form.get("held_ground_push",0))>0:
+		parts.append("Held Ground: your cast's seal pushes its first new arrival %.1f m outward" % float(form.held_ground_push))
+	if float(form.get("sanctuary_charges",0))>0:
+		parts.append("Sanctuary: a direct kill leaves a ward that catches one enemy shot")
+	if float(form.get("lingering_refund",0))>0:
+		parts.append("Lingering Step: use a different skill within %.1f s to recover %.2f s of this skill" % [float(form.limits.memory_seconds)+memory,float(form.lingering_refund)])
+	if memory>0: parts.append("Kept Rime: +%.1f s to memory windows; longer Emberbed shares the same stored damage" % memory)
 	if float(form.get("fuse_buildup",0)) > 0:
 		parts.append("Kindling: a %.1f s fuse delivers %.0f ignite" % [float(form.limits.fuse_delay),float(form.fuse_ignite)])
 	if float(form.get("rake_fraction",0)) > 0:
@@ -880,6 +912,8 @@ func _resolved_summary(skill: String, form: Dictionary) -> String:
 	if float(form.get("zone_armour", 0)) > 0: parts.append("Seal: +%.0f armour inside" % float(form.zone_armour))
 	if float(form.get("ward_charges", 0)) > 0: parts.append("Veil: catches %d shots" % int(form.ward_charges))
 	if sim.skill_echo_every(skill) > 0: parts.append("Repeats every %d uses after %.2f s" % [sim.skill_echo_every(skill), float(form.get("echo_delay",0))])
+	if not parts.is_empty() and String(sim.combat_skill(skill).get("delivery",""))=="dash":
+		parts.append("Movement has no hit: only cast-triggered protection, recovery and switching can activate here")
 	return "\n".join(parts)
 
 func _cell_name(name: String) -> String:

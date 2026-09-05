@@ -44,6 +44,20 @@ void testFoundryMutations(const tuning::Tuning& t) {
         check(names.size()==(compatible ? 1u:0u) && provenance,"mutation fixture: identity, compatibility and route "+label);
         auto key=kind.id=="frost_catalyst" && ingot.id=="ember" ? "smoulder_slow" : signature.at(kind.id);
         double expected = compatible ? (kind.id=="frost_catalyst" && ingot.id=="ember" ? .25 : baseline.at(kind.id)) : 0;
+        const std::map<std::string,std::pair<std::string,double>> frostOps={
+            {"frost",{"rime_ring_buildup",20}},{"edge",{"rime_edge_fraction",.06}},
+            {"reach",{"whiteout_slow",.4}},{"vigour",{"cold_sap_absorb",3}},
+            {"plate",{"permafrost_seconds",.45}},{"ward",{"stillwater_fraction",.08}},
+            {"haste",{"hoarfrost_refund",.35}}};
+        const std::map<std::string,std::pair<std::string,double>> memoryOps={
+            {"ember",{"emberbed_seconds",.6}},{"frost",{"reservoir_seconds",1.2}},
+            {"edge",{"wound_memory_seconds",1}},{"reach",{"afterfield_fraction",.12}},
+            {"vigour",{"lifebed_life",3}},{"plate",{"held_ground_push",.9}},
+            {"ward",{"sanctuary_charges",1}},{"haste",{"lingering_refund",.3}}};
+        if(kind.id=="frost_catalyst" && ingot.id!="ember") { key=frostOps.at(ingot.id).first; expected=frostOps.at(ingot.id).second; }
+        if(kind.id=="preserving_catalyst") { key=memoryOps.at(ingot.id).first; expected=memoryOps.at(ingot.id).second; }
+        if(kind.id=="frost_catalyst" || kind.id=="preserving_catalyst")
+            checkNear(mutation.at("field_fraction"),0,1e-9,"Frost/Preserving: no generic damaging pulse is inherited "+label);
         if (kind.id=="ember_catalyst") {
             if (ingot.id=="ember") { key="fuse_buildup"; expected=65; }
             if (ingot.id=="edge") { key="rake_fraction"; expected=.08; }
@@ -124,6 +138,34 @@ void testFoundryMutations(const tuning::Tuning& t) {
         checkNear(grammar::skillMutation(t,grammar::foundryMods(t,ember,3),skill.id).at("cautery_charges"),1,1e-9,"Cautery: multiple routes never create stacked affliction wards");
     }
 
+    for (const auto& skill : t.skills.combatSkills) {
+        foundry::State cold;
+        cold.plate={{1,1,"",skill.id},{1,0,"frost",""},{2,0,"","","frost_catalyst"}};
+        auto cm=grammar::foundryMods(t,cold,1);
+        auto base=grammar::skillMutation(t,cm,skill.id);
+        cm.push_back(grammar::modAt(t.items,"deep_frost",.5,"charm"));
+        cm.push_back(grammar::modAt(t.items,"frostbite",30,"weapon"));
+        const auto ring=grammar::skillMutation(t,cm,skill.id);
+        checkNear(ring.at("rime_ring_chill"),30,1e-9,"Rimewell: chill investment scales the ring without duplicating direct flat buildup");
+        checkNear(ring.at("rime_ring_chill_boss"),30*t.grammar.chill.bossBuildupMultiplier,1e-9,"Rimewell: boss resistance applies to secondary chill");
+        cold.plate[1].ingot="ward";
+        cm=grammar::foundryMods(t,cold,1);
+        base=grammar::skillMutation(t,cm,skill.id);
+        cm.push_back(grammar::modAt(t.items,"fire_damage",.5,"weapon"));
+        checkNear(grammar::skillMutation(t,cm,skill.id).at("stillwater_cold_damage"),base.at("stillwater_cold_damage"),1e-9,"Stillwater: fire gear does not multiply the returned cold needle");
+        cm.push_back(grammar::modAt(t.items,"cold_damage",.5,"weapon"));
+        checkNear(grammar::skillMutation(t,cm,skill.id).at("stillwater_cold_damage"),base.at("stillwater_cold_damage")*1.5,1e-9,"Stillwater: cold gear scales the small return packet");
+        cold.plate[1].ingot="reach";
+        cold.plate[2].currency="preserving_catalyst";
+        cm=grammar::foundryMods(t,cold,1);
+        base=grammar::skillMutation(t,cm,skill.id);
+        const auto type=grammar::nativeType(t,skill.resolveTags());
+        for(const auto& packet:t.grammar.damageTypes) {
+            if(packet!=type || skill.delivery=="dash") checkNear(base.at("afterfield_"+packet+"_damage"),0,1e-9,"Afterfield: only the actual native damage packet is remembered");
+        }
+        if(skill.delivery!="dash") check(base.at("afterfield_"+type+"_damage")>0,"Afterfield: each damaging shell has a small native echo");
+    }
+
     // Gear follows real acquired capabilities, with packet type isolation.
     foundry::State smoulder;
     smoulder.plate={{1,1,"","prototype_ember_bolt"},{1,0,"ember",""},{2,0,"","","frost_catalyst"}};
@@ -164,18 +206,18 @@ void testFoundryMutations(const tuning::Tuning& t) {
     foundry::State compound;
     compound.plate={{0,3,"","","frost_catalyst"},{1,3,"","","preserving_catalyst"},{1,2,"ember",""},{2,2,"","prototype_ember_bolt"}};
     auto values=grammar::skillMutation(t,grammar::foundryMods(t,compound,2),"prototype_ember_bolt");
-    checkNear(values.at("field_seconds"),3.2,1e-9,"compound: Frost then Preserving retains the impact field longer");
+    checkNear(values.at("memory_extension"),.8,1e-9,"compound: Frost then Preserving extends the retained memory window");
     checkNear(values.at("smoulder_slow"),.25,1e-9,"compound: upstream Frost still reaches the Ember through another Kind");
     std::swap(compound.plate[0].currency,compound.plate[1].currency);
     auto reverseMods=grammar::foundryMods(t,compound,2);
-    checkNear(grammar::skillMutation(t,reverseMods,"prototype_ember_bolt").at("field_seconds"),2.4,1e-9,"compound: reversing the order changes the compound rule");
+    checkNear(grammar::skillMutation(t,reverseMods,"prototype_ember_bolt").at("memory_extension"),0,1e-9,"compound: reversing the order changes the compound rule");
     checkNear(grammar::chillApplied(t,reverseMods,"prototype_ember_bolt",false),35,1e-9,"compound: Preserving then Frost gains chill instead of duration");
 
     foundry::State shared;
     shared.plate={{1,3,"","","preserving_catalyst"},{1,2,"ember",""},{1,1,"","prototype_frost_orb"},{2,2,"","prototype_ember_bolt"}};
     auto sharedMods=grammar::foundryMods(t,shared,1);
     for(const auto& skill: {"prototype_frost_orb","prototype_ember_bolt"})
-        checkNear(grammar::skillMutation(t,sharedMods,skill).at("field_fraction"),.18,1e-9,"routes: a shared support delivers its field to both tablets once");
+        checkNear(grammar::skillMutation(t,sharedMods,skill).at("emberbed_seconds"),.6,1e-9,"routes: a shared support delivers its stored-burn operation to both tablets once");
     shared.plate.pop_back();
     check(foundry::routes(shared,frame,1,3).size()==1,"routes: an empty socket receives no flow");
 

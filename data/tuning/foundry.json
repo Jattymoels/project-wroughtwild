@@ -410,23 +410,11 @@
       "kind": "preserving_catalyst",
       "ingot": "ember",
       "display_name": "Emberbed",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "description": "Hit a burning enemy to move up to 0.6 seconds of its remaining burn into a 1.8 m ember bed. Two small pulses share that stored fire damage; the original burn loses exactly the time taken. One bed per cast, at most every 3 seconds. Adds 20 ignite buildup to the main hit.",
       "effects": [
         {
-          "modifier": "mutation_field_fraction",
-          "value": 0.18
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
+          "modifier": "mutation_emberbed_seconds",
+          "value": 0.6
         },
         {
           "modifier": "smouldering",
@@ -448,23 +436,11 @@
       "kind": "preserving_catalyst",
       "ingot": "frost",
       "display_name": "Cold Reservoir",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "description": "Hit a chilled enemy to hold its chill buildup against decay for 1.2 seconds. This does not prolong a freeze or add damage. One held reservoir per cast, at most every 3 seconds. Adds 20 chill buildup to the main hit.",
       "effects": [
         {
-          "modifier": "mutation_field_fraction",
-          "value": 0.18
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
+          "modifier": "mutation_reservoir_seconds",
+          "value": 1.2
         },
         {
           "modifier": "frostbite",
@@ -486,22 +462,10 @@
       "kind": "preserving_catalyst",
       "ingot": "edge",
       "display_name": "Wound Memory",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "description": "Hit a bleeding enemy to preserve up to 1 second of its wound while it stands still. Both bleed time and damage wait, then resume when it moves or the stored second is spent. Each wound can be preserved once. Adds 20 bleed buildup to the main hit.",
       "effects": [
         {
-          "modifier": "mutation_field_fraction",
-          "value": 0.18
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
+          "modifier": "mutation_wound_memory_seconds",
           "value": 1
         },
         {
@@ -524,27 +488,11 @@
       "kind": "preserving_catalyst",
       "ingot": "reach",
       "display_name": "Afterfield",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "description": "The first target struck leaves a 1.8 m afterfield for 3.2 seconds. The first newcomer entering it triggers one 12% echo of the skill's native hit. Enemies already inside when it formed are excluded. No buildup or child attacks. At most one field every 3 seconds.",
       "effects": [
         {
-          "modifier": "mutation_field_fraction",
-          "value": 0.18
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
+          "modifier": "mutation_afterfield_fraction",
+          "value": 0.12
         }
       ],
       "id": "preserving_catalyst:reach"
@@ -554,27 +502,11 @@
       "kind": "preserving_catalyst",
       "ingot": "vigour",
       "display_name": "Lifebed",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "description": "Casting marks a 1.8 m lifebed where you stood for 3.2 seconds. Leave it and return before it fades to recover 3 life once. It never heals just for standing still. At most one bed every 3 seconds; healing gear applies.",
       "effects": [
         {
-          "modifier": "mutation_field_fraction",
-          "value": 0.18
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
+          "modifier": "mutation_lifebed_life",
+          "value": 3
         }
       ],
       "id": "preserving_catalyst:vigour"
@@ -584,27 +516,11 @@
       "kind": "preserving_catalyst",
       "ingot": "plate",
       "display_name": "Held Ground",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "description": "Casting leaves a 1.8 m seal for 3.2 seconds. The first enemy entering it from outside is pushed back 0.9 m; enemies already inside are ignored. Bosses move one quarter as far. One charge, no damage, at most one seal every 3 seconds.",
       "effects": [
         {
-          "modifier": "mutation_field_fraction",
-          "value": 0.18
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
+          "modifier": "mutation_held_ground_push",
+          "value": 0.9
         }
       ],
       "id": "preserving_catalyst:plate"
@@ -614,27 +530,11 @@
       "kind": "preserving_catalyst",
       "ingot": "ward",
       "display_name": "Sanctuary",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "description": "A direct-hit kill leaves a 1.8 m sanctuary at the victim for 3.2 seconds. It catches one incoming enemy projectile. No reflection or extra attack; one sanctuary every 3 seconds.",
       "effects": [
         {
-          "modifier": "mutation_field_fraction",
-          "value": 0.18
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
+          "modifier": "mutation_sanctuary_charges",
           "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
         }
       ],
       "id": "preserving_catalyst:ward"
@@ -644,27 +544,11 @@
       "kind": "preserving_catalyst",
       "ingot": "haste",
       "display_name": "Lingering Step",
-      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "description": "After casting this skill, use a different skill within 3.2 seconds to recover 0.3 seconds of the first skill's remaining cooldown. Repeats and linked casts cannot spend or create this memory. One stored memory every 3 seconds.",
       "effects": [
         {
-          "modifier": "mutation_field_fraction",
-          "value": 0.18
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
+          "modifier": "mutation_lingering_refund",
+          "value": 0.3
         }
       ],
       "id": "preserving_catalyst:haste"
@@ -2788,39 +2672,15 @@
       "kind": "frost_catalyst",
       "ingot": "frost",
       "display_name": "Rimewell",
-      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "description": "The first enemy struck sends an expanding ring of frost out to 2 m over 0.8 seconds. Each visible enemy it reaches receives 20 chill once, without extra hit damage. One ring per cast, at most one every 2 seconds. Adds 35 chill buildup to the main hit.",
       "effects": [
+        {
+          "modifier": "mutation_rime_ring_buildup",
+          "value": 20
+        },
         {
           "modifier": "frostbite",
           "value": 35
-        },
-        {
-          "modifier": "mutation_field_fraction",
-          "value": 0.12
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.6
-        },
-        {
-          "modifier": "capability_cold",
-          "value": 1
-        },
-        {
-          "modifier": "capability_chill",
-          "value": 1
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "frostbite",
-          "value": 20
         },
         {
           "modifier": "capability_cold",
@@ -2838,23 +2698,15 @@
       "kind": "frost_catalyst",
       "ingot": "edge",
       "display_name": "Rime Edge",
-      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "description": "Hit a chilled enemy to open two short ice cuts to its sides. After 0.2 seconds they deal 6% of base hit as cold to enemies beside the target, never the target itself. One pair per cast, at most every 2 seconds. Adds 20 bleed buildup to the main hit. Adds 35 chill buildup to the main hit.",
       "effects": [
+        {
+          "modifier": "mutation_rime_edge_fraction",
+          "value": 0.06
+        },
         {
           "modifier": "frostbite",
           "value": 35
-        },
-        {
-          "modifier": "mutation_field_fraction",
-          "value": 0.12
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.6
         },
         {
           "modifier": "capability_cold",
@@ -2862,10 +2714,6 @@
         },
         {
           "modifier": "capability_chill",
-          "value": 1
-        },
-        {
-          "modifier": "capability_area",
           "value": 1
         },
         {
@@ -2888,23 +2736,15 @@
       "kind": "frost_catalyst",
       "ingot": "reach",
       "display_name": "Whiteout",
-      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "description": "Hit a chilled enemy to leave a 1.7 m mist for 2.4 seconds. Enemy shots crossing it become frostbitten and travel 40% slower for the rest of their flight. Each shot slows only once. One mist per cast, at most every 2 seconds; no added damage. Adds 35 chill buildup to the main hit.",
       "effects": [
+        {
+          "modifier": "mutation_whiteout_slow",
+          "value": 0.4
+        },
         {
           "modifier": "frostbite",
           "value": 35
-        },
-        {
-          "modifier": "mutation_field_fraction",
-          "value": 0.12
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.6
         },
         {
           "modifier": "capability_cold",
@@ -2913,14 +2753,6 @@
         {
           "modifier": "capability_chill",
           "value": 1
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
         }
       ],
       "id": "frost_catalyst:reach"
@@ -2930,23 +2762,15 @@
       "kind": "frost_catalyst",
       "ingot": "vigour",
       "display_name": "Cold Sap",
-      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "description": "Hit a chilled enemy to draw a thin ice skin for 2.5 seconds. It absorbs up to 3 damage from the next damaging enemy hit after your armour and resistances, then breaks. One skin every 3 seconds; charges never stack. Adds 35 chill buildup to the main hit.",
       "effects": [
+        {
+          "modifier": "mutation_cold_sap_absorb",
+          "value": 3
+        },
         {
           "modifier": "frostbite",
           "value": 35
-        },
-        {
-          "modifier": "mutation_field_fraction",
-          "value": 0.12
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.6
         },
         {
           "modifier": "capability_cold",
@@ -2955,14 +2779,6 @@
         {
           "modifier": "capability_chill",
           "value": 1
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
         }
       ],
       "id": "frost_catalyst:vigour"
@@ -2972,23 +2788,15 @@
       "kind": "frost_catalyst",
       "ingot": "plate",
       "display_name": "Permafrost",
-      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "description": "Hit a chilled enemy to bind its feet for 0.45 seconds. It can still attack, but cannot walk. Bosses instead lose 25% movement; chill immunity prevents the bind. One bind per cast, at most every 2 seconds. Adds 35 chill buildup to the main hit.",
       "effects": [
+        {
+          "modifier": "mutation_permafrost_seconds",
+          "value": 0.45
+        },
         {
           "modifier": "frostbite",
           "value": 35
-        },
-        {
-          "modifier": "mutation_field_fraction",
-          "value": 0.12
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.6
         },
         {
           "modifier": "capability_cold",
@@ -2997,14 +2805,6 @@
         {
           "modifier": "capability_chill",
           "value": 1
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
         }
       ],
       "id": "frost_catalyst:plate"
@@ -3014,23 +2814,15 @@
       "kind": "frost_catalyst",
       "ingot": "ward",
       "display_name": "Stillwater",
-      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "description": "Casting plants a 1.3 m ice mirror for 1.6 seconds. It catches one enemy shot and sends a cold needle back to its living shooter: 8% of base hit as cold and 15 chill before gear. No child attacks. At most one mirror every 3 seconds. Adds 35 chill buildup to the main hit.",
       "effects": [
+        {
+          "modifier": "mutation_stillwater_fraction",
+          "value": 0.08
+        },
         {
           "modifier": "frostbite",
           "value": 35
-        },
-        {
-          "modifier": "mutation_field_fraction",
-          "value": 0.12
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.6
         },
         {
           "modifier": "capability_cold",
@@ -3039,14 +2831,6 @@
         {
           "modifier": "capability_chill",
           "value": 1
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
         }
       ],
       "id": "frost_catalyst:ward"
@@ -3056,23 +2840,15 @@
       "kind": "frost_catalyst",
       "ingot": "haste",
       "display_name": "Hoarfrost",
-      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "description": "Hit a chilled enemy to recover 0.35 seconds of your longest remaining movement-skill cooldown. It cannot bank time or reset an attack. One recovery per cast, at most every 2 seconds. Adds 35 chill buildup to the main hit.",
       "effects": [
+        {
+          "modifier": "mutation_hoarfrost_refund",
+          "value": 0.35
+        },
         {
           "modifier": "frostbite",
           "value": 35
-        },
-        {
-          "modifier": "mutation_field_fraction",
-          "value": 0.12
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.6
         },
         {
           "modifier": "capability_cold",
@@ -3081,14 +2857,6 @@
         {
           "modifier": "capability_chill",
           "value": 1
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
         }
       ],
       "id": "frost_catalyst:haste"
@@ -3309,10 +3077,10 @@
       "upstream_kind": "frost_catalyst",
       "ingot": "ember",
       "display_name": "Kept Rime",
-      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "description": "Frost flows into Preserving: memories last 0.8 seconds longer. Stored burn damage is divided across the longer bed, never multiplied.",
       "effects": [
         {
-          "modifier": "mutation_field_seconds",
+          "modifier": "mutation_memory_extension",
           "value": 0.8
         }
       ]
@@ -3345,10 +3113,10 @@
       "upstream_kind": "frost_catalyst",
       "ingot": "frost",
       "display_name": "Kept Rime",
-      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "description": "Frost flows into Preserving: memories last 0.8 seconds longer. Stored burn damage is divided across the longer bed, never multiplied.",
       "effects": [
         {
-          "modifier": "mutation_field_seconds",
+          "modifier": "mutation_memory_extension",
           "value": 0.8
         }
       ]
@@ -3381,10 +3149,10 @@
       "upstream_kind": "frost_catalyst",
       "ingot": "edge",
       "display_name": "Kept Rime",
-      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "description": "Frost flows into Preserving: memories last 0.8 seconds longer. Stored burn damage is divided across the longer bed, never multiplied.",
       "effects": [
         {
-          "modifier": "mutation_field_seconds",
+          "modifier": "mutation_memory_extension",
           "value": 0.8
         }
       ]
@@ -3417,10 +3185,10 @@
       "upstream_kind": "frost_catalyst",
       "ingot": "reach",
       "display_name": "Kept Rime",
-      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "description": "Frost flows into Preserving: memories last 0.8 seconds longer. Stored burn damage is divided across the longer bed, never multiplied.",
       "effects": [
         {
-          "modifier": "mutation_field_seconds",
+          "modifier": "mutation_memory_extension",
           "value": 0.8
         }
       ]
@@ -3453,10 +3221,10 @@
       "upstream_kind": "frost_catalyst",
       "ingot": "vigour",
       "display_name": "Kept Rime",
-      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "description": "Frost flows into Preserving: memories last 0.8 seconds longer. Stored burn damage is divided across the longer bed, never multiplied.",
       "effects": [
         {
-          "modifier": "mutation_field_seconds",
+          "modifier": "mutation_memory_extension",
           "value": 0.8
         }
       ]
@@ -3489,10 +3257,10 @@
       "upstream_kind": "frost_catalyst",
       "ingot": "plate",
       "display_name": "Kept Rime",
-      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "description": "Frost flows into Preserving: memories last 0.8 seconds longer. Stored burn damage is divided across the longer bed, never multiplied.",
       "effects": [
         {
-          "modifier": "mutation_field_seconds",
+          "modifier": "mutation_memory_extension",
           "value": 0.8
         }
       ]
@@ -3525,10 +3293,10 @@
       "upstream_kind": "frost_catalyst",
       "ingot": "ward",
       "display_name": "Kept Rime",
-      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "description": "Frost flows into Preserving: memories last 0.8 seconds longer. Stored burn damage is divided across the longer bed, never multiplied.",
       "effects": [
         {
-          "modifier": "mutation_field_seconds",
+          "modifier": "mutation_memory_extension",
           "value": 0.8
         }
       ]
@@ -3561,10 +3329,10 @@
       "upstream_kind": "frost_catalyst",
       "ingot": "haste",
       "display_name": "Kept Rime",
-      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "description": "Frost flows into Preserving: memories last 0.8 seconds longer. Stored burn damage is divided across the longer bed, never multiplied.",
       "effects": [
         {
-          "modifier": "mutation_field_seconds",
+          "modifier": "mutation_memory_extension",
           "value": 0.8
         }
       ]
@@ -4467,7 +4235,7 @@
     "wave_speed": 16.0,
     "siphon_speed": 9.0,
     "zone_seconds": 3.2,
-    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds. burn_release_seconds: Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget. warm_cinder_life: Maximum base life collected from one warm cinder; heal modifiers still scale the payout. steam_stagger: Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage. steam_fraction: Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. burn_release_cooldown: Seconds between Flashfire releases on one enemy, shared across skills. warm_cinder_cooldown: Seconds between Bloodfire cinder spawns for the player, shared across skills. warm_cinder_lifetime: Seconds a warm cinder waits to be collected before disappearing. warm_cinder_pickup_radius: Metres the player must approach before a warm cinder returns its life. steam_puff_cooldown: Seconds between harmless Steambrand interrupt puffs for the player, shared across skills. steam_puff_radius: Base radius in metres of the harmless steam interrupt puff; area/reach investment applies. steam_boss_stagger_factor: Boss fraction of the steam puff stagger duration. steam_plume_seconds: Lifetime of a Steam Plume: three pulses at the existing 0.8 second field interval. steam_plume_radius: Steam Plume base radius in metres, scaled by area/reach investment. steam_plume_cooldown: Minimum time between Steam Plumes for the player, shared across skills; each cast can seed at most one. fuse_buildup: Caps Kindling delayed ignite buildup before ignition gear and boss resistance; no extra hit packet. rake_fraction: Caps Cinder Edge fire damage as a fraction of the base skill hit, paid once per recipient behind the original victim. ember_hop_buildup: Caps Wildfire spark ignite buildup before ignition gear and boss resistance. temper_push: Caps Furnace Plate knockback in metres before the reduced boss distance; it does not absorb damage. cautery_charges: Cautery stores at most one affliction prevention; duplicate readings never add charges. fuse_delay: Seconds before an attached Kindling fuse pays its ignite buildup; gives the hit a delayed lighting rhythm. fuse_cooldown: Minimum player-wide seconds between Kindling fuses, including separate supported skills. rake_delay: Seconds of visible ground seam before Cinder Edge flashes once. rake_length: Base metres of Cinder Edge seam behind the victim; area and reach gear scale its space. rake_half_width: Base half-width of the Cinder Edge seam; rewards lining enemies up. rake_cooldown: Minimum player-wide seconds between Cinder Edge seams. ember_hop_radius: Base Wildfire target search radius, scaled by skill reach and proliferation radius investment. ember_hop_speed: Metres per second of the visible Wildfire spark; damage is never paid before arrival. ember_hop_seconds: Maximum spark travel time; an escaping or blocked target can waste it. ember_hop_cooldown: Minimum player-wide seconds between Wildfire sparks. temper_seconds: Seconds to receive an enemy hit after heating Furnace Plate; then the single charge expires. temper_radius: Base radius of the Furnace Plate retaliation, scaled by area and reach gear. temper_cooldown: Minimum player-wide seconds between Furnace Plate charges; recasting cannot keep refreshing one. temper_boss_factor: Bosses receive this fraction of the Furnace Plate push to preserve their space pressure. cautery_seconds: Seconds an unused Cautery affliction ward lasts. cautery_cooldown: Minimum player-wide seconds between Cautery cleanses or ward grants. max_ember_effects: Maximum simultaneous fuses, sparks, seams and personal Ember charges per player; reject excess without free payouts.",
+    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds. burn_release_seconds: Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget. warm_cinder_life: Maximum base life collected from one warm cinder; heal modifiers still scale the payout. steam_stagger: Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage. steam_fraction: Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. burn_release_cooldown: Seconds between Flashfire releases on one enemy, shared across skills. warm_cinder_cooldown: Seconds between Bloodfire cinder spawns for the player, shared across skills. warm_cinder_lifetime: Seconds a warm cinder waits to be collected before disappearing. warm_cinder_pickup_radius: Metres the player must approach before a warm cinder returns its life. steam_puff_cooldown: Seconds between harmless Steambrand interrupt puffs for the player, shared across skills. steam_puff_radius: Base radius in metres of the harmless steam interrupt puff; area/reach investment applies. steam_boss_stagger_factor: Boss fraction of the steam puff stagger duration. steam_plume_seconds: Lifetime of a Steam Plume: three pulses at the existing 0.8 second field interval. steam_plume_radius: Steam Plume base radius in metres, scaled by area/reach investment. steam_plume_cooldown: Minimum time between Steam Plumes for the player, shared across skills; each cast can seed at most one. fuse_buildup: Caps Kindling delayed ignite buildup before ignition gear and boss resistance; no extra hit packet. rake_fraction: Caps Cinder Edge fire damage as a fraction of the base skill hit, paid once per recipient behind the original victim. ember_hop_buildup: Caps Wildfire spark ignite buildup before ignition gear and boss resistance. temper_push: Caps Furnace Plate knockback in metres before the reduced boss distance; it does not absorb damage. cautery_charges: Cautery stores at most one affliction prevention; duplicate readings never add charges. fuse_delay: Seconds before an attached Kindling fuse pays its ignite buildup; gives the hit a delayed lighting rhythm. fuse_cooldown: Minimum player-wide seconds between Kindling fuses, including separate supported skills. rake_delay: Seconds of visible ground seam before Cinder Edge flashes once. rake_length: Base metres of Cinder Edge seam behind the victim; area and reach gear scale its space. rake_half_width: Base half-width of the Cinder Edge seam; rewards lining enemies up. rake_cooldown: Minimum player-wide seconds between Cinder Edge seams. ember_hop_radius: Base Wildfire target search radius, scaled by skill reach and proliferation radius investment. ember_hop_speed: Metres per second of the visible Wildfire spark; damage is never paid before arrival. ember_hop_seconds: Maximum spark travel time; an escaping or blocked target can waste it. ember_hop_cooldown: Minimum player-wide seconds between Wildfire sparks. temper_seconds: Seconds to receive an enemy hit after heating Furnace Plate; then the single charge expires. temper_radius: Base radius of the Furnace Plate retaliation, scaled by area and reach gear. temper_cooldown: Minimum player-wide seconds between Furnace Plate charges; recasting cannot keep refreshing one. temper_boss_factor: Bosses receive this fraction of the Furnace Plate push to preserve their space pressure. cautery_seconds: Seconds an unused Cautery affliction ward lasts. cautery_cooldown: Minimum player-wide seconds between Cautery cleanses or ward grants. max_ember_effects: Maximum simultaneous fuses, sparks, seams and personal Ember charges per player; reject excess without free payouts. cold_contact_cooldown: Seconds between each Frost contact operation, shared across skills. cold_charge_cooldown: Seconds between each personal ice skin or mirror grant; avoids stacking protection. memory_cooldown: Seconds between each Preserving operation, shared across skills. rime_ring_radius: Base maximum metres reached by the expanding chill ring; area and reach gear scale it. rime_ring_seconds: Seconds for the chill ring to expand fully; each enemy is touched once. rime_edge_length: Metres the lateral ice cuts extend to either side of the victim before area/reach gear. rime_edge_half_width: Half-width of the lateral cuts along the original attack direction; rewards flanking ranks. rime_edge_delay: Visible delay before the two ice cuts flash once. whiteout_radius: Base radius in metres of projectile-slowing mist before area/reach gear. whiteout_seconds: Seconds a Whiteout mist can frostbite passing enemy shots. cold_sap_seconds: Seconds the ice skin waits for one damaging enemy hit. stillwater_seconds: Seconds the cast mirror waits for one enemy shot. stillwater_radius: Base mirror radius before area/reach gear. stillwater_chill: Cold needle chill before increased/more chill gear and boss resistance. cold_needle_speed: Metres per second of a reflected cold needle; damage waits for arrival and respects cover. cold_needle_seconds: Maximum lifetime of a returning cold needle; a fleeing shooter can escape it. cold_boss_control_factor: Boss share of Permafrost movement loss and Held Ground push. memory_radius: Base radius of the Preserving ground effects before area/reach gear. memory_seconds: Base time to use an afterfield, return to a lifebed, cross Held Ground, catch a shot or alternate skills. emberbed_pulses: Number of pulses sharing the removed burn budget; extra duration redistributes rather than multiplies it. max_cold_memories: Maximum live Frost/Preserving event nodes per player; reject excess without a free payout. rime_ring_buildup: Maximum chill carried by one expanding Rimewell ring before chill gear and boss resistance; duplicate supports cannot give a free freeze. rime_edge_fraction: Maximum fraction of base hit delivered as cold to each flank recipient; keeps Rime Edge a small positional reward. whiteout_slow: Maximum fraction of enemy-shot speed removed once per shot; preserves readable projectile travel. cold_sap_absorb: Maximum damage absorbed after mitigation by one ice skin; additional supports improve the charge rather than stacking charges. permafrost_seconds: Maximum seconds an ordinary chilled enemy can be foot-bound per activation; it retains its attack. stillwater_fraction: Maximum fraction of base hit returned as cold by one caught shot before cold and compatible gear scaling. hoarfrost_refund: Maximum seconds recovered from the longest remaining movement cooldown per contact event; no stored credit. emberbed_seconds: Maximum seconds removed from an existing burn and redistributed through an Emberbed; never multiplies its stored damage budget. reservoir_seconds: Maximum seconds of chill-decay protection before an ordered memory extension; never lengthens a freeze. wound_memory_seconds: Maximum seconds of simultaneous bleed-time and bleed-damage pause available to one stationary wound. afterfield_fraction: Maximum fraction of the original native hit retained for an afterfield entry event before compatible damage gear. lifebed_life: Maximum base life collected once by leaving and returning to a Lifebed; ordinary healing gear scales it. held_ground_push: Maximum metres one arriving enemy is pushed out of a seal; bosses receive the reduced share. sanctuary_charges: Maximum incoming shots a direct kill sanctuary can intercept; duplicate readings cannot stack its charge. lingering_refund: Maximum seconds refunded to the previous skill after a different real cast; echoes and linked casts do not qualify. memory_extension: Maximum extra seconds from Kept Rime on Preserving windows; Emberbed divides the same damage over more pulses.",
     "burn_release_seconds": 0.75,
     "warm_cinder_life": 6,
     "steam_stagger": 0.3,
@@ -4503,6 +4271,43 @@
     "temper_boss_factor": 0.25,
     "cautery_seconds": 3,
     "cautery_cooldown": 3,
-    "max_ember_effects": 12
+    "max_ember_effects": 12,
+    "rime_ring_buildup": 35,
+    "rime_edge_fraction": 0.12,
+    "whiteout_slow": 0.55,
+    "cold_sap_absorb": 6,
+    "permafrost_seconds": 0.65,
+    "stillwater_fraction": 0.15,
+    "hoarfrost_refund": 0.6,
+    "emberbed_seconds": 1,
+    "reservoir_seconds": 1.8,
+    "wound_memory_seconds": 1.5,
+    "afterfield_fraction": 0.2,
+    "lifebed_life": 6,
+    "held_ground_push": 1.5,
+    "sanctuary_charges": 1,
+    "lingering_refund": 0.6,
+    "memory_extension": 0.8,
+    "cold_contact_cooldown": 2,
+    "cold_charge_cooldown": 3,
+    "memory_cooldown": 3,
+    "rime_ring_radius": 2,
+    "rime_ring_seconds": 0.8,
+    "rime_edge_length": 2.4,
+    "rime_edge_half_width": 0.4,
+    "rime_edge_delay": 0.2,
+    "whiteout_radius": 1.7,
+    "whiteout_seconds": 2.4,
+    "cold_sap_seconds": 2.5,
+    "stillwater_seconds": 1.6,
+    "stillwater_radius": 1.3,
+    "stillwater_chill": 15,
+    "cold_needle_speed": 12,
+    "cold_needle_seconds": 1.2,
+    "cold_boss_control_factor": 0.25,
+    "memory_radius": 1.8,
+    "memory_seconds": 3.2,
+    "emberbed_pulses": 2,
+    "max_cold_memories": 16
   }
 }

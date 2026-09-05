@@ -9,8 +9,12 @@ mechanical feel, with the base skill supplying the chosen action's shape. This
 refines D-025's intended outcome. The owner then approved completing the Ember
 family first. All eight early Ember readings and the first consuming Steam Plume
 evolution are now implemented; three two-ingot Heavy Strike arrangements exercise
-spreading ignition, a narrow rear-rank seam and reactive protection. Other Kind
-families retain their first-pass combinations pending their own identity review.
+spreading ignition, a narrow rear-rank seam and reactive protection. The owner
+then approved continuing: Frost and Preserving now also have eight individual
+roles each, including shot slowing/reflection, lateral cuts, stored ailment time,
+arrival/return effects and a skill-switch refund. Kept Rime extends memory
+windows without multiplying stored burn damage. The remaining Kind families
+retain their first-pass combinations pending their own identity review.
 [Recorded gaps and next-pass direction](../systems/foundry-mutations.md#owner-playtest-correction-further-evolution).
 
 Owner correction after the skill expansion, 5 Sep 2026: the Foundry should be

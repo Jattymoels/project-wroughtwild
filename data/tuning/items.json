@@ -2280,6 +2280,310 @@
         }
       ],
       "design_purpose": "Cautery stores at most one affliction prevention; duplicate readings never add charges. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_rime_ring_buildup",
+      "display_name": "Rime Ring Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_rime_ring_buildup",
+      "display": "flat",
+      "sentence": "{n}: Maximum chill carried by one expanding Rimewell ring before chill gear and boss resistance; duplicate supports cannot give a free freeze.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum chill carried by one expanding Rimewell ring before chill gear and boss resistance; duplicate supports cannot give a free freeze. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_rime_edge_fraction",
+      "display_name": "Rime Edge Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_rime_edge_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum fraction of base hit delivered as cold to each flank recipient; keeps Rime Edge a small positional reward.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum fraction of base hit delivered as cold to each flank recipient; keeps Rime Edge a small positional reward. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_whiteout_slow",
+      "display_name": "Whiteout Slow",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_whiteout_slow",
+      "display": "flat",
+      "sentence": "{n}: Maximum fraction of enemy-shot speed removed once per shot; preserves readable projectile travel.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum fraction of enemy-shot speed removed once per shot; preserves readable projectile travel. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_cold_sap_absorb",
+      "display_name": "Cold Sap Absorb",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_cold_sap_absorb",
+      "display": "flat",
+      "sentence": "{n}: Maximum damage absorbed after mitigation by one ice skin; additional supports improve the charge rather than stacking charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum damage absorbed after mitigation by one ice skin; additional supports improve the charge rather than stacking charges. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_permafrost_seconds",
+      "display_name": "Permafrost Seconds",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_permafrost_seconds",
+      "display": "flat",
+      "sentence": "{n}: Maximum seconds an ordinary chilled enemy can be foot-bound per activation; it retains its attack.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum seconds an ordinary chilled enemy can be foot-bound per activation; it retains its attack. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_stillwater_fraction",
+      "display_name": "Stillwater Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_stillwater_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum fraction of base hit returned as cold by one caught shot before cold and compatible gear scaling.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum fraction of base hit returned as cold by one caught shot before cold and compatible gear scaling. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_hoarfrost_refund",
+      "display_name": "Hoarfrost Refund",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_hoarfrost_refund",
+      "display": "flat",
+      "sentence": "{n}: Maximum seconds recovered from the longest remaining movement cooldown per contact event; no stored credit.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum seconds recovered from the longest remaining movement cooldown per contact event; no stored credit. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_emberbed_seconds",
+      "display_name": "Emberbed Seconds",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_emberbed_seconds",
+      "display": "flat",
+      "sentence": "{n}: Maximum seconds removed from an existing burn and redistributed through an Emberbed; never multiplies its stored damage budget.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum seconds removed from an existing burn and redistributed through an Emberbed; never multiplies its stored damage budget. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_reservoir_seconds",
+      "display_name": "Reservoir Seconds",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_reservoir_seconds",
+      "display": "flat",
+      "sentence": "{n}: Maximum seconds of chill-decay protection before an ordered memory extension; never lengthens a freeze.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum seconds of chill-decay protection before an ordered memory extension; never lengthens a freeze. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_wound_memory_seconds",
+      "display_name": "Wound Memory Seconds",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_wound_memory_seconds",
+      "display": "flat",
+      "sentence": "{n}: Maximum seconds of simultaneous bleed-time and bleed-damage pause available to one stationary wound.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum seconds of simultaneous bleed-time and bleed-damage pause available to one stationary wound. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_afterfield_fraction",
+      "display_name": "Afterfield Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_afterfield_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum fraction of the original native hit retained for an afterfield entry event before compatible damage gear.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum fraction of the original native hit retained for an afterfield entry event before compatible damage gear. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_lifebed_life",
+      "display_name": "Lifebed Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_lifebed_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life collected once by leaving and returning to a Lifebed; ordinary healing gear scales it.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life collected once by leaving and returning to a Lifebed; ordinary healing gear scales it. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_held_ground_push",
+      "display_name": "Held Ground Push",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_held_ground_push",
+      "display": "flat",
+      "sentence": "{n}: Maximum metres one arriving enemy is pushed out of a seal; bosses receive the reduced share.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum metres one arriving enemy is pushed out of a seal; bosses receive the reduced share. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_sanctuary_charges",
+      "display_name": "Sanctuary Charges",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_sanctuary_charges",
+      "display": "flat",
+      "sentence": "{n}: Maximum incoming shots a direct kill sanctuary can intercept; duplicate readings cannot stack its charge.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum incoming shots a direct kill sanctuary can intercept; duplicate readings cannot stack its charge. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_lingering_refund",
+      "display_name": "Lingering Refund",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_lingering_refund",
+      "display": "flat",
+      "sentence": "{n}: Maximum seconds refunded to the previous skill after a different real cast; echoes and linked casts do not qualify.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum seconds refunded to the previous skill after a different real cast; echoes and linked casts do not qualify. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_memory_extension",
+      "display_name": "Memory Extension",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_memory_extension",
+      "display": "flat",
+      "sentence": "{n}: Maximum extra seconds from Kept Rime on Preserving windows; Emberbed divides the same damage over more pulses.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum extra seconds from Kept Rime on Preserving windows; Emberbed divides the same damage over more pulses. Authored reading, excluded from random equipment pools."
     }
   ],
   "item_bases": [

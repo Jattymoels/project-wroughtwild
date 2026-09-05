@@ -138,6 +138,12 @@ var ignite := 0.0
 var burning_left := 0.0
 var smoulder_slow := 0.0
 var burn_release_ready := 0.0
+var _rime_bind_left := 0.0
+var _rime_bind_loss := 0.0
+var _reservoir_left := 0.0
+var _wound_memory_left := 0.0
+var _wound_memory_used := false
+var _foundry_marks := {}
 var _burn_mutation := {}
 var bleed := 0.0
 var bleeding_left := 0.0
@@ -450,6 +456,9 @@ func apply_bleed(amount: float) -> void:
 	bleed += amount
 	if bleed >= _bleed_max:
 		bleed = 0.0
+		if bleeding_left<=0:
+			_wound_memory_used=false
+			_wound_memory_left=0
 		var rules: Dictionary = _sim.bleed_status() if _sim != null else {}
 		bleeding_left = rules.get("duration_s", 5.0)
 		_bleed_dps = rules.get("damage_per_s", 0.0)
@@ -467,6 +476,9 @@ func thaw() -> void:
 ## burn and bleed damage. Returns true while frozen - the caller must stand
 ## still and skip its brain. Boss calls this from its own _physics_process.
 func _tick_statuses(delta: float) -> bool:
+	var held_chill := minf(maxf(delta,0),_reservoir_left)
+	_reservoir_left=maxf(0,_reservoir_left-maxf(delta,0))
+	_rime_bind_left=maxf(0,_rime_bind_left-maxf(delta,0))
 	if _flash_left > 0.0:
 		_flash_left -= delta
 		if _flash_left <= 0.0:
@@ -486,10 +498,13 @@ func _tick_statuses(delta: float) -> bool:
 	else:
 		ignite = maxf(0.0, ignite - _ignite_decay * delta)
 	if bleeding_left > 0.0:
-		bleeding_left -= delta
 		var moving := Vector2(velocity.x, velocity.z).length() > 0.5
+		var held := minf(maxf(delta,0),_wound_memory_left) if not moving else 0.0
+		_wound_memory_left-=held
+		var elapsed := minf(maxf(delta-held,0),bleeding_left)
+		bleeding_left-=elapsed
 		var mult := _bleed_move_mult if moving else 1.0
-		take_damage(_bleed_dps * mult * delta, false)
+		take_damage(_bleed_dps * mult * elapsed, false)
 		if bleeding_left <= 0.0:
 			_refresh_look()
 	else:
@@ -502,7 +517,7 @@ func _tick_statuses(delta: float) -> bool:
 		if frozen_left <= 0.0:
 			thaw()
 		return frozen_left > 0.0
-	chill = maxf(0.0, chill - _chill_decay * delta)
+	chill = maxf(0.0, chill - _chill_decay * maxf(0,delta-held_chill))
 	# Staggered: halted like a freeze, briefly, without the ice.
 	_stagger_left = maxf(0.0, _stagger_left - delta)
 	return _stagger_left > 0.0
@@ -1022,4 +1037,5 @@ func take_damage(amount: float, flash: bool = true) -> void:
 
 
 func status_move_multiplier() -> float:
-	return 1.0 - smoulder_slow if burning_left > 0 else 1.0
+	var multiplier := 1.0-smoulder_slow if burning_left>0 else 1.0
+	return multiplier*(1.0-_rime_bind_loss) if _rime_bind_left>0 else multiplier

@@ -6,6 +6,7 @@ static func contact(combat: PlayerCombat, enemy: Enemy, skill: StringName, form:
 	var limits: Dictionary = form.get("limits", {})
 	var at := enemy.global_position + Vector3.UP * 0.5
 	_ember_contact(combat,enemy,skill,form,context)
+	FoundryCold.contact(combat,enemy,skill,form,context)
 	var release := float(form.get("burn_release_seconds", 0))
 	if release > 0 and enemy.burning_left > 0 and combat._fight_clock >= enemy.burn_release_ready:
 		enemy.burn_release_ready = combat._fight_clock + float(limits.burn_release_cooldown)
