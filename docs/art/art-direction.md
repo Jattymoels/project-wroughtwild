@@ -2,6 +2,14 @@
 
 ## Current owner revision — 5 September 2026
 
+Latest clarification: the improved workshop **building** look, including its
+octagonal construction, is approved for normal play along with the stations.
+Ordinary buildings now share the timber boards, darker framing/undersides and
+calm stone treatment. The chamfer/slab/roof catalogue is adopted as recorded in
+[the normal-building report](codex-normal-building-2026-09-05.md), superseding
+the earlier lab-only statements below. The demonstration house is still a
+review scene; the parts, materials and save support are available in normal play.
+
 The owner accepted the crafted terrain/tree/workshop pass for merging into
 `main`, then requested a less cartoon-like direction, further toward grimdark
 than that pass but lighter than their V Rising/Valheim reference point.

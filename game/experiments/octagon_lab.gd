@@ -30,7 +30,10 @@ func _ready() -> void:
 		if file.ends_with(".json"):
 			check(DirAccess.copy_absolute(source.path_join(file), tuning.path_join(file)) == OK, "copy fixture " + file)
 	var construction: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(tuning.path_join("construction.json")))
-	construction["shapes"].append_array(shape_fixtures())
+	# Historical fixtures may override their now-adopted normal catalogue entries.
+	for fixture in shape_fixtures():
+		construction["shapes"] = construction["shapes"].filter(func(entry): return entry.id!=fixture.id)
+		construction["shapes"].append(fixture)
 	var file := FileAccess.open(tuning.path_join("construction.json"), FileAccess.WRITE)
 	file.store_string(JSON.stringify(construction))
 	file.close()

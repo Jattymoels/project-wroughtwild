@@ -323,6 +323,18 @@ require fuel (`only_for_trait`). See fire-setting in
 
 ## Open questions
 
+**Owner adoption, 5 Sep 2026:** the improved building look explicitly includes
+the octagonal build. Chamfer Block and Triangular Slab now appear in the normal
+palette at the cube/slab costs (2/1). Roof Slope, Roof Hip and Roof Valley cost
+one material, require joinery and retain the existing `stonecut_blocks` unlock.
+The earlier study IDs remain stable; no save schema or lattice address changes.
+This supersedes the lab-only catalogue status in the historical notes below.
+Continuous timber boards, darker framing/ceilings and restrained stone now
+apply to ordinary placed and restored pieces. Beams use a 0.4 m square section
+(half beams 0.2 m) so they show beneath 0.25 m ceiling slabs without coplanar
+flicker; mesh and collision agree. Existing saved beams adopt those dimensions.
+See [normal-building evidence](../art/codex-normal-building-2026-09-05.md).
+
 **Codex experiment, 5 Sep 2026 (not Claude):** a lab-only triangular `corner`
 block now tests chamfered rooms on existing volume addresses. Placement,
 convex collision and schema-2 save restoration work with its fixture loaded.

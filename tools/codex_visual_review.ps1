@@ -17,7 +17,8 @@ param(
     [switch]$Characters,
     [switch]$Motion,
     [switch]$Continuation,
-    [switch]$Stations
+    [switch]$Stations,
+    [switch]$Buildings
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -70,7 +71,12 @@ if ($Checks) {
     Invoke-GodotReview 'creature-motion' '--headless res://tests/creature_motion_checks.tscn'
     Invoke-GodotReview 'frontier-continuation' '--headless res://tests/frontier_continuation_checks.tscn'
     Invoke-GodotReview 'stations-headless' '--headless res://experiments/station_review.tscn'
+    Invoke-GodotReview 'buildings-headless' '--headless res://experiments/building_review.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Buildings) {
+    Invoke-GodotReview 'buildings-import' '--headless --import'
+    Invoke-GodotReview 'buildings-headless' '--headless res://experiments/building_review.tscn'
+    Invoke-GodotReview 'buildings-rendered' '--position -9999,-9999 res://experiments/building_review.tscn'
 } elseif ($Stations) {
     Invoke-GodotReview 'stations-import' '--headless --import'
     Invoke-GodotReview 'stations-headless' '--headless res://experiments/station_review.tscn'

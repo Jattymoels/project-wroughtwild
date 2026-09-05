@@ -20,6 +20,14 @@ purpose.
 
 ## Run from a clean checkout
 
+The improved building look now includes normal **octagonal construction**:
+Chamfer Block and Triangular Slab in the build palette, plus Roof Slope, Roof Hip
+and Roof Valley after the existing Forge Tyrant/stonecut unlock. Use B to build,
+Tab for shape, Q for material and R to turn the new pieces. Existing buildings
+gain the timber, framing and stone materials after restarting/loading your save.
+Run the review helper with `-Buildings` for normal-catalogue octagonal placement,
+roof collision and save checks, plus interior/exterior screenshots.
+
 Latest owner refinement: nighttime cold health drain is disabled for now.
 Restart the running game to reload tuning; existing saves remain compatible.
 Normal placed/restored workbenches, mason's yards and forges now share the

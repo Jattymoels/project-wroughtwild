@@ -145,6 +145,42 @@
   ],
   "shapes": [
     {
+      "id":"codex_corner", "display_name":"Chamfer Block", "material_cost":2,
+      "size_m":[1,1,1], "element":"block", "form":"corner", "oriented":true,
+      "hint":"Diagonal wall corner; R turns it. Reserves one block.",
+      "design_purpose":"Owner-approved workshop building look, 5 Sep 2026: diagonal walls use the existing cube cost and full-cell occupancy. The study ID is retained for compatibility."
+    },
+    {
+      "id":"codex_corner_floor", "display_name":"Triangular Slab", "material_cost":1,
+      "size_m":[1,0.25,1], "element":"floor", "form":"corner", "oriented":true,
+      "hint":"Finish a diagonal floor or ceiling; R turns it.",
+      "design_purpose":"Owner-approved workshop building look: a clipped slab at the existing floor-slab cost, on the same saved face addresses."
+    },
+    {
+      "id":"codex_roof_slope", "display_name":"Roof Slope", "material_cost":1,
+      "size_m":[1,0.5,1], "element":"block", "form":"roof_slope", "oriented":true,
+      "requires_traits":["joinery"], "requires_world_effect":"stonecut_blocks",
+      "unlock_hint":"Defeat the Forge Tyrant to unlock pitched roof shapes.",
+      "hint":"Low edge in front, high edge at the back. R turns; reserves one block.",
+      "design_purpose":"Owner-approved workshop roof: half-height pitch at the existing roof-wedge cost and stonecut unlock; joinery families make the timber roof shown in the workshop."
+    },
+    {
+      "id":"codex_roof_hip", "display_name":"Roof Hip", "material_cost":1,
+      "size_m":[1,0.5,1], "element":"block", "form":"roof_hip", "oriented":true,
+      "requires_traits":["joinery"], "requires_world_effect":"stonecut_blocks",
+      "unlock_hint":"Defeat the Forge Tyrant to unlock pitched roof shapes.",
+      "hint":"Outside roof corner, rising to one high corner. R turns.",
+      "design_purpose":"Outside transition for the adopted roof slope, with its same cost, material traits, unlock and full-block occupancy."
+    },
+    {
+      "id":"codex_roof_valley", "display_name":"Roof Valley", "material_cost":1,
+      "size_m":[1,0.5,1], "element":"block", "form":"roof_valley", "oriented":true,
+      "requires_traits":["joinery"], "requires_world_effect":"stonecut_blocks",
+      "unlock_hint":"Defeat the Forge Tyrant to unlock pitched roof shapes.",
+      "hint":"Inside roof corner, dipping to one low corner. R turns.",
+      "design_purpose":"Inside transition for the adopted roof slope, with its same cost, material traits, unlock and full-block occupancy."
+    },
+    {
       "id": "cube",
       "display_name": "Cube Block",
       "material_cost": 2,
@@ -186,12 +222,12 @@
       "material_cost": 1,
       "size_m": [
         1.0,
-        0.25,
-        0.25
+        0.4,
+        0.4
       ],
       "element": "beam",
       "hint": "aim along a beam's line or a wall's top to run it on into the air",
-      "design_purpose": "Runs along a horizontal edge of the lattice, the line a wall's top and a floor's rim share, so it reads as a lintel over a doorway, a wall plate along the top of a wall, or a rail along a slab's edge depending only on what it is next to."
+      "design_purpose": "Owner-approved workshop look, 5 Sep 2026: the beam has a 0.4 m square section so it shows below a 0.25 m ceiling slab without coplanar flicker; collision follows the same dimensions. Runs along a horizontal edge of the lattice, the line a wall's top and a floor's rim share, so it reads as a lintel over a doorway, a wall plate along the top of a wall, or a rail along a slab's edge depending only on what it is next to."
     },
     {
       "id": "floor_slab",
@@ -342,8 +378,8 @@
       "material_cost": 1,
       "size_m": [
         0.5,
-        0.125,
-        0.125
+        0.2,
+        0.2
       ],
       "element": "beam",
       "fine": true,

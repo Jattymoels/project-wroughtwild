@@ -590,7 +590,8 @@ func place_piece(element: Dictionary, shape_id: StringName, family: StringName,
 	var block: PlacedBlock = PLACED_BLOCK_SCENE.instantiate()
 	_world_root().add_child(block)
 	block.init_piece(shape_id, family, element, rotation_step, String(info.get("form", "box")),
-		info["size"], pose["centre"], pose["yaw"], PieceLook.material_for(_sim(), family))
+		info["size"], pose["centre"], pose["yaw"], PieceLook.material_for(_sim(), family,
+			"roof" if String(info.get("form","")).begins_with("roof_") else "door" if info.get("form","")=="door" else "frame" if element.get("kind","")=="edge" else "surface"))
 	refresh_trims()
 	return block
 
@@ -684,7 +685,7 @@ func refresh_trims() -> void:
 		box.size = Vector3(TRIM_SIZE, registry_grid, TRIM_SIZE)
 		trim.mesh = box
 		var family: String = edge.get("family", "")
-		trim.material_override = PieceLook.material_for(_sim(), StringName(family)) if family != "" else _trim_material
+		trim.material_override = PieceLook.material_for(_sim(), StringName(family),"frame") if family != "" else _trim_material
 		_trims_root.add_child(trim)
 		trim.global_position = edge["centre"]
 		_trims[key] = trim

@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner clarification, 5 Sep 2026: “I wanted the improved building look too”,
+including the octagonal build. This adopts the workshop's building materials,
+chamfer blocks, triangular slabs and three roof transitions into normal play.
+The corner/slab costs mirror existing cube/slab costs; pitched roofs keep the
+existing stonecut unlock and wedge cost, with joinery materials for timber roofs.
+The five existing study IDs are retained. This supersedes the earlier lab-only
+building/catalogue statements below. [Implementation](../art/codex-normal-building-2026-09-05.md).
+
 Owner revision, 5 Sep 2026: nighttime cold exposure is disabled for now
 (`world.json` `day.exposure_life_per_round = 0`), superseding the earlier
 forced-return health drain. Night lighting, enemy behaviour and faster shelter

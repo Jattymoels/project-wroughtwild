@@ -47,6 +47,7 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --path . res://tests/creature_motion_checks.tscn
 "$GODOT" --headless --path . res://tests/frontier_continuation_checks.tscn
 "$GODOT" --headless --path . res://experiments/station_review.tscn
+"$GODOT" --headless --path . res://experiments/building_review.tscn
 
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
