@@ -20,6 +20,7 @@ func _ready() -> void:
 	_mesh.material_override = material
 	_mesh.scale = Vector3.ONE * 1.08
 	add_child(_mesh)
+	CreatureMotion.attach(_mesh,self,"peddler")
 	var shape := CollisionShape3D.new()
 	var capsule := CapsuleShape3D.new()
 	capsule.radius = 0.45

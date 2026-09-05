@@ -38,8 +38,11 @@
 <div class="control"><label for="split">Comparison split</label><input id="split" type="range" min="0" max="100" value="50"><output id="amount">50%</output></div>
 <p id="explanation">Same world, terrain geometry, camera and daylight. The latest candidate uses shared lighting normals, a gradual turf edge, restrained colour variation and branching trees. This compares a combined art pass, not a change to generation.</p>
 <small><a id="left-manifest" href="landform-faceted/manifest.json">Left capture records</a> · <a id="right-manifest" href="landform-crafted/manifest.json">Right capture records</a>. Records include frame intervals and geometry counters; these short samples are not isolated GPU benchmarks.</small>
+<h2>Creature motion</h2>
+<p>Creature gaits follow actual travel. Existing wind-up and release events drive anticipation and follow-through; freezing holds the pose and stagger cancels follow-through. The compact rigs remain procedural, without foot placement on uneven ground. <a href="creature-motion/index.html">Play or scrub the six-second Godot motion review</a> (AI paused, timing stretched for inspection).</p>
+<div class="octagon"><figure><a href="creature-motion/windup.png"><img src="creature-motion/windup.png" alt="Three creature rigs anticipating an attack"></a><figcaption>Anticipation</figcaption></figure><figure><a href="creature-motion/release.png"><img src="creature-motion/release.png" alt="The same creatures releasing their attack"></a><figcaption>Release</figcaption></figure></div>
 <h2>Character silhouettes</h2>
-<p>Actual game meshes and materials with AI paused in a studio. These remain rigid procedural prototypes. Damage, freeze, elite colours and the boss breath telegraph retain their existing feedback.</p>
+<p>Actual game meshes and materials held at rest in a studio. Damage, freeze, elite colours and the boss breath telegraph retain their existing feedback.</p>
 <a href="characters/silhouettes.png"><img style="width:100%" src="characters/silhouettes.png" alt="Peddler, whelp, crawler, husk, wisp, knight and Tyrant silhouette study"></a>
 <h2>Branching woodland</h2>
 <p>Meadow crowns spread, forest branches taper to a conifer outline, fen crowns sit low and wide, and the wastes retain bare forks. Existing harvest locations, yields and trunk colliders are unchanged.</p>

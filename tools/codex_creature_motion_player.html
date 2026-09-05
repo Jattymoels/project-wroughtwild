@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wroughtwild — creature motion</title>
+<style>
+  :root {color-scheme:dark;font:16px/1.5 system-ui;background:#18232b;color:#e5e9dc}
+  body {max-width:1280px;margin:24px auto;padding:0 16px}
+  img {display:block;width:100%;aspect-ratio:16/9;background:#28373e}
+  .controls {display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:16px 0}
+  button {font:inherit;padding:8px 20px;background:#d6dcb9;color:#18232b;border:0;border-radius:4px}
+  input {flex:1;min-width:160px;accent-color:#d6dcb9}
+  a {color:#e7dbb2} p {max-width:90ch;color:#bbc9c8}
+</style>
+<h1>Creature motion</h1>
+<p>A six-second Godot capture: movement, anticipation, release, a frozen pose, then settling.
+These are the actual game rigs with AI paused for consistent comparison. In gameplay,
+movement drives the gait and existing combat events drive attacks. Timing here is stretched
+for inspection; it is not a demonstration of enemy attack cadence.</p>
+<img id="capture" src="frame-00.png" alt="Godot creature motion review">
+<div class="controls">
+  <button id="play" type="button">Play</button>
+  <label for="frame">Frame</label><input id="frame" type="range" min="0" max="71" value="0">
+  <output id="counter" for="frame">1 / 72</output>
+  <a id="original" href="frame-00.png">Open image</a>
+</div>
+<p id="status" aria-live="polite">Paused. Playback starts only when you press Play.</p>
+<p><a href="../index.html">Full art comparison gallery</a></p>
+<script>
+  const capture=document.querySelector('#capture'), slider=document.querySelector('#frame');
+  const play=document.querySelector('#play'), status=document.querySelector('#status');
+  const path=i=>`frame-${String(i).padStart(2,'0')}.png`;
+  let current=0, timer=null, loaded=false;
+  const images=[];
+  function show(i) {
+    current=i;capture.src=path(i);slider.value=i;
+    document.querySelector('#counter').value=`${i+1} / 72`;
+    document.querySelector('#original').href=path(i);
+  }
+  function pause() {clearInterval(timer);timer=null;play.textContent='Play';status.textContent='Paused.';}
+  play.onclick=async()=>{
+    if(timer!==null) {pause();return;}
+    if(!loaded) {
+      play.disabled=true;status.textContent='Loading captured frames…';
+      try {
+        await Promise.all(Array.from({length:72},(_,i)=>new Promise((resolve,reject)=>{
+          const img=new Image();images.push(img);img.onload=resolve;img.onerror=reject;img.src=path(i);
+        })));
+        loaded=true;
+      } catch {status.textContent='Some frames are missing. Run the visual review helper with -Motion.';play.disabled=false;return;}
+      play.disabled=false;
+    }
+    timer=setInterval(()=>show((current+1)%72),1000/12);
+    play.textContent='Pause';status.textContent='Playing at 12 frames per second.';
+  };
+  slider.oninput=()=>{pause();show(Number(slider.value));};
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
+</script>
+</html>

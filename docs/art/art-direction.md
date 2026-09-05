@@ -43,6 +43,18 @@ cores recognisable, and uses fewer, smaller, partly buried irregular slabs.
 Uniform pyramid scatter and loud drawn fracture outlines are not the target.
 See [material-join refinement](codex-material-joins-2026-09-05.md).
 
+The owner then invited non-environment work while noting that the world remains
+barren: almost everything rising above tiny grass is a tree or stone. This is
+a content/composition gap as well as a material issue. The proposed environment
+follow-up is a small middle layer of brush, fern beds, deadfall and stumps,
+arranged in habitat patches and clearings, with occasional readable landmarks.
+It is not an instruction to blanket the world with random clutter or add a new
+resource economy. Concrete placement and interaction choices remain follow-up work.
+
+The next implemented presentation slice is creature motion: distance-driven
+gaits and poses tied to the existing combat clocks. See
+[motion evidence and next priorities](codex-creature-motion-2026-09-05.md).
+
 ## Historical brief — 1 September 2026
 
 Status: accepted direction (D-013). Owner's brief (1 Sep 2026): a compromise

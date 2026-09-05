@@ -76,6 +76,7 @@ func configure(sim: WroughtwildSim) -> void:
 	_mesh.mesh = preload("res://art/character_look.tres").build("boss")
 	_mesh.position.y = 0.0
 	_mesh.scale = Vector3(1.9,1.87,1.9)
+	CreatureMotion.attach(_mesh,self,"boss")
 	for material in [_base_material,_telegraph_material]:
 		material.vertex_color_use_as_albedo = true
 		material.vertex_color_is_srgb = true
@@ -134,6 +135,7 @@ func _physics_process(delta: float) -> void:
 		"windup":
 			_windup_left -= delta
 			if _windup_left <= 0.0:
+				attack_released.emit("strike")
 				if distance <= attack_range * 1.15 and in_reach:
 					player.combat.take_hit(damage, damage_type, display_name, self)
 				_attack_cooldown = attack_period_seconds
@@ -166,6 +168,7 @@ func _in_breath_cone(player: Node3D) -> bool:
 ## Ends the telegraph: fire lands on a player inside the cone. Returns the
 ## damage the player actually took (0 when out of the cone or dashing).
 func breathe(player: WroughtwildPlayer) -> float:
+	attack_released.emit("breath")
 	state = "chase"
 	_breath_timer = breath_period_seconds
 	_mesh.material_override = _base_material

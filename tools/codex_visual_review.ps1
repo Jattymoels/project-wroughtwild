@@ -14,7 +14,8 @@ param(
     [switch]$Weathered,
     [switch]$Grounding,
     [switch]$FieldRoute,
-    [switch]$Characters
+    [switch]$Characters,
+    [switch]$Motion
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -64,7 +65,14 @@ if ($Checks) {
     Invoke-GodotReview 'weathered-save' '--headless res://tests/weathered_save.tscn'
     Invoke-GodotReview 'presentation' '--headless res://tests/presentation_checks.tscn'
     Invoke-GodotReview 'material-transitions' '--headless res://tests/material_transitions.tscn'
+    Invoke-GodotReview 'creature-motion' '--headless res://tests/creature_motion_checks.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Motion) {
+    Invoke-GodotReview 'motion-import' '--headless --import'
+    Invoke-GodotReview 'creature-motion' '--headless res://tests/creature_motion_checks.tscn'
+    Invoke-GodotReview 'presentation' '--headless res://tests/presentation_checks.tscn'
+    Invoke-GodotReview 'motion-review' '--position -9999,-9999 res://experiments/creature_motion_review.tscn'
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'codex_creature_motion_player.html') -Destination (Join-Path $repo 'build/codex-aesthetic/creature-motion/index.html')
 } elseif ($Characters) {
     Invoke-GodotReview 'presentation' '--headless res://tests/presentation_checks.tscn'
     Invoke-GodotReview 'characters' '--position -9999,-9999 res://experiments/character_review.tscn'

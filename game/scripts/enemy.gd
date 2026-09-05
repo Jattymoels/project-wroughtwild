@@ -7,6 +7,8 @@ extends CharacterBody3D
 ## what actually gets through.
 
 signal died(enemy: Enemy)
+## Presentation event at the existing attack instant, including a missed blow.
+signal attack_released(kind: String)
 
 ## True for a trial room's own enemies: the room contains, counts and
 ## clears only these, never a roaming pack that wandered near the arena.
@@ -257,6 +259,7 @@ func configure(sim: WroughtwildSim) -> void:
 	_material.vertex_color_use_as_albedo = true
 	_material.vertex_color_is_srgb = true
 	_material.roughness = 1.0
+	CreatureMotion.attach(_mesh,self,"grazer" if flees else behaviour)
 	_label.position.y = _mesh.mesh.get_aabb().end.y * _mesh.scale.y + 0.25
 	_refresh_label()
 
@@ -624,6 +627,7 @@ func _physics_process(delta: float) -> void:
 		"windup":
 			_windup_left -= delta
 			if _windup_left <= 0.0:
+				attack_released.emit("strike")
 				# The hit only lands if the player is still in reach: walking
 				# out of the wind-up is a legitimate dodge.
 				if distance <= attack_range * 1.15 and in_reach:

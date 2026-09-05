@@ -67,6 +67,11 @@ func _ready() -> void:
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		label.position = camera.unproject_position(entry[0].position+Vector3(0,-0.1,0))+Vector2(-100,20)
 		add_child(label)
+	# Keep this historical silhouette fixture at rest; motion has its own review.
+	for entry in captions:
+		var motion := entry[0]._mesh.get_node("Motion") as CreatureMotion
+		motion.set_physics_process(false)
+		motion.rig.reset_bone_poses()
 
 func _process(_delta: float) -> void:
 	frame += 1

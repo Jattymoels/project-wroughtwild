@@ -30,6 +30,9 @@ grain and sparse, low stone fragments. Rebuild the native extension for the new
 optional mesh-palette argument. Character silhouettes remain procedural prototypes; overhead labels cap
 their close-up size. `-Characters` on the PowerShell review helper captures the
 actor studio; `-Grounding` checks plant/chip placement and distance-fade origins.
+Creatures now have distance-driven gaits and poses tied to their existing attack
+timers. `-Motion` records a playable pose review; see the
+[motion report](../docs/art/codex-creature-motion-2026-09-05.md) for controls and limits.
 
 > **Build the rules extension first** (next section). Without it the world
 > loads but nothing is interactable — you can walk, dodge and jump, while
