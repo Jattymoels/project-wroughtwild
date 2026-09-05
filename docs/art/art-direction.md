@@ -36,6 +36,13 @@ pass replaces capsules while preserving their gameplay bodies and threat
 colours. These are procedural prototype forms, not finished animated art.
 See [surface and character follow-through](codex-surface-character-2026-09-05.md).
 
+The next owner review favours the live meadow image but rejects the cliff's
+abrupt rock/soil/turf delineation and the loose stones' amateurish appearance.
+The follow-through now blends actual adjacent surface materials, keeps their
+cores recognisable, and uses fewer, smaller, partly buried irregular slabs.
+Uniform pyramid scatter and loud drawn fracture outlines are not the target.
+See [material-join refinement](codex-material-joins-2026-09-05.md).
+
 ## Historical brief — 1 September 2026
 
 Status: accepted direction (D-013). Owner's brief (1 Sep 2026): a compromise

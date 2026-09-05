@@ -27,6 +27,7 @@ extends Resource
 @export var tree_distance := 0.0
 @export var cover_distance := 0.0
 @export var surface_contrast := 0.0
+@export var blend_materials := false
 @export var strata_metres := 0.32
 @export var grain_metres := 0.065
 @export var scree_density := 0.0
@@ -39,9 +40,9 @@ var _meshes: Dictionary = {}
 var _cover_material: ShaderMaterial
 var _scree_material: StandardMaterial3D
 
-func scree_entry() -> Dictionary:
-	return {"kind":"scree", "on":["rock","stone","dirt","grass","forest_floor","ash"],
-		"density":scree_density,"height":scree_height,"width":scree_width,
+func scree_entry(variant: int = 0) -> Dictionary:
+	return {"kind":"scree_%d" % variant, "on":["rock","stone","dirt","grass","forest_floor","ash"],
+		"density":scree_density/3.0,"height":scree_height,"width":scree_width,"variant":variant,
 		"colour":Color(0.39,0.39,0.36),"dark":Color(0.26,0.27,0.25)}
 
 func scree_material() -> StandardMaterial3D:
@@ -70,6 +71,7 @@ func terrain_material(kind: String, cell: float) -> ShaderMaterial:
 	material.set_shader_parameter("strata_metres", strata_metres)
 	material.set_shader_parameter("grain_metres", grain_metres)
 	material.set_shader_parameter("stony", kind in ["rock", "stone", "bedrock"])
+	material.set_shader_parameter("blend_materials", blend_materials)
 	return material
 
 func cover_density(x: int, z: int) -> float:
@@ -85,25 +87,27 @@ func cover_mesh(entry: Dictionary) -> ArrayMesh:
 	var key := str(entry)
 	if _meshes.has(key):
 		return _meshes[key]
-	if entry.kind == "scree":
+	if String(entry.kind).begins_with("scree"):
 		var chips := SurfaceTool.new()
 		chips.begin(Mesh.PRIMITIVE_TRIANGLES)
 		var w := float(entry.width)*0.5
 		var h := float(entry.height)
-		var rim := [Vector3(-w,0,0),Vector3(0,0,-w*0.75),Vector3(w,0,0),Vector3(0,0,w)]
-		for i in 4:
-			for tip in [Vector3(w*0.12,h,0),Vector3(0,-h*0.4,0)]:
-				var a: Vector3 = rim[i]
-				var b: Vector3 = rim[(i+1)%4]
-				var n: Vector3 = (tip-a).cross(b-a)
-				if n.dot((a+b+tip)/3.0)<0.0:
-					var swap := a
-					a = b
-					b = swap
-				chips.set_normal((tip-a).cross(b-a).normalized())
-				chips.set_color(entry.colour if tip.y>0.0 else entry.dark)
-				for vertex in [a,b,tip]:
-					chips.add_vertex(vertex)
+		var rng := RandomNumberGenerator.new()
+		rng.seed = 341 + int(entry.get("variant",0))*719
+		var lower: Array[Vector3] = []
+		var upper: Array[Vector3] = []
+		for i in 9:
+			var angle := TAU*float(i)/9.0
+			var r := rng.randf_range(0.72,1.15)
+			lower.append(Vector3(cos(angle)*w*r,-h*0.22,sin(angle)*w*r*0.72))
+			upper.append(Vector3(cos(angle)*w*r*0.78,h*(0.7+cos(angle)*0.18),sin(angle)*w*r*0.6))
+		for i in 9:
+			var j := (i+1)%9
+			var shade: Color = (entry.colour as Color).darkened(rng.randf_range(0.0,0.12))
+			_chip_triangle(chips,lower[i],lower[j],upper[j],shade)
+			_chip_triangle(chips,lower[i],upper[j],upper[i],shade)
+			_chip_triangle(chips,upper[i],upper[j],Vector3(w*0.1,h*0.72,0),shade)
+			_chip_triangle(chips,lower[j],lower[i],Vector3(0,-h*0.22,0),entry.dark)
 		var mesh := chips.commit()
 		mesh.surface_set_material(0,scree_material())
 		_meshes[key] = mesh
@@ -134,6 +138,17 @@ func cover_mesh(entry: Dictionary) -> ArrayMesh:
 	mesh.surface_set_material(0, cover_material())
 	_meshes[key] = mesh
 	return mesh
+
+func _chip_triangle(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, colour: Color) -> void:
+	var n := (c-a).cross(b-a)
+	if n.dot((a+b+c)/3.0)<0.0:
+		var swap := a
+		a = b
+		b = swap
+	st.set_normal((c-a).cross(b-a).normalized())
+	st.set_color(colour)
+	for vertex in [a,b,c]:
+		st.add_vertex(vertex)
 
 func cover_material() -> ShaderMaterial:
 	if _cover_material == null:

@@ -28,7 +28,7 @@ func _ready() -> void:
 	terrain.frontier_look = preload("res://art/weathered_look.tres")
 	for x in [144,160]:
 		for z in [144,160]:
-			terrain._build_chunk(sim.world_mesh_chunk(1,16,x,z,PackedInt32Array(),true),1.0)
+			terrain._build_chunk(sim.world_mesh_chunk(1,16,x,z,PackedInt32Array(),true,terrain._blend_palette()),1.0)
 	terrain.nodes_root = Node3D.new()
 	terrain.add_child(terrain.nodes_root)
 	# A seam crosses a chunk boundary and a height change, not just flat ground.

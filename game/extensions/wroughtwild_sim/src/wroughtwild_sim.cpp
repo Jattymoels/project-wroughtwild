@@ -8,6 +8,7 @@
 
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
+#include <godot_cpp/variant/packed_color_array.hpp>
 
 #include "wroughtwild/grammar.h"
 #include "wroughtwild/loot.h"
@@ -202,9 +203,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_cast_armour", "skill_id"), &WroughtwildSim::skill_cast_armour);
     ClassDB::bind_method(D_METHOD("ward_multiplier", "carried_statuses"), &WroughtwildSim::ward_multiplier);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
-    ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells", "faceted"), &WroughtwildSim::world_mesh, DEFVAL(false));
-    ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks", "faceted"),
-                         &WroughtwildSim::world_mesh_chunk, DEFVAL(false));
+    ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells", "faceted", "palette"), &WroughtwildSim::world_mesh, DEFVAL(false), DEFVAL(Dictionary()));
+    ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks", "faceted", "palette"),
+                         &WroughtwildSim::world_mesh_chunk, DEFVAL(false), DEFVAL(Dictionary()));
     ClassDB::bind_method(D_METHOD("block_rules"), &WroughtwildSim::block_rules);
     ClassDB::bind_method(D_METHOD("fire_setting"), &WroughtwildSim::fire_setting);
     ClassDB::bind_method(D_METHOD("lattice_registry_grid"), &WroughtwildSim::lattice_registry_grid);
@@ -2220,7 +2221,8 @@ namespace {
 // reflects the world the player has actually carved.
 Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
                              const wroughtwild::worldgen::WorldMap& map, int cx, int cz,
-                             int chunk_cells, const std::set<int64_t>& removed, bool faceted = false) {
+                             int chunk_cells, const std::set<int64_t>& removed, bool faceted = false,
+                             const Dictionary& palette = Dictionary()) {
     const double cs = map.cellSize;
     using wroughtwild::worldgen::kAir;
     using wroughtwild::worldgen::kBedrock;
@@ -2297,6 +2299,45 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
         {0, 0, -1, {{1, 0, 0}, {1, 1, 0}, {0, 1, 0}, {0, 0, 0}}},
     };
 
+    // Presentation palette is supplied by the engine resource, never by sim
+    // tuning. Shared lattice samples keep colours identical across material
+    // and chunk boundaries. Only exposed solids influence a surface join.
+    std::map<String, Color> paletteColours;
+    for (int i=0; i<palette.size(); ++i) {
+        const String kind = palette.keys()[i];
+        Color colour = Color(palette[kind]).srgb_to_linear();
+        colour.a = (kind == "rock" || kind == "stone" || kind == "bedrock") ? 1.0f : 0.0f;
+        paletteColours[kind] = colour;
+    }
+    auto materialColour = [&](int x, int y, int z) {
+        const auto id = eff(x,y,z);
+        String kind = id == kDirt ? "dirt" : id == kBedrock ? "bedrock" : "stone";
+        if (id == kSurface) kind = to_godot(tuning.worldgen.biomes[map.at(x,z).biomeIndex].surface);
+        auto found = paletteColours.find(kind);
+        return found == paletteColours.end() ? Color(0.2,0.2,0.2,1.0) : found->second;
+    };
+    std::map<int64_t, Color> colourCache;
+    auto surfaceColour = [&](int x, int y, int z) {
+        const int64_t key = (int64_t(z)*(map.width+1)+x)*(map.depth+1)+y;
+        auto found = colourCache.find(key);
+        if (found != colourCache.end()) return found->second;
+        Color sum(0,0,0,0);
+        int count = 0;
+        for (int dz=-1; dz<=0; ++dz) for (int dy=-1; dy<=0; ++dy) for (int dx=-1; dx<=0; ++dx) {
+            const int a=x+dx, b=y+dy, c=z+dz;
+            if (eff(a,b,c)==kAir) continue;
+            // Only faces meeting this corner count. The stencil stays within
+            // its eight cells, matching the existing dig invalidation halo.
+            const bool exposed = eff(x-1-dx,b,c)==kAir || eff(a,y-1-dy,c)==kAir || eff(a,b,z-1-dz)==kAir;
+            if (!exposed) continue;
+            sum += materialColour(a,b,c);
+            ++count;
+        }
+        const Color result = count ? sum / float(count) : Color(0.2,0.2,0.2,1.0);
+        colourCache[key] = result;
+        return result;
+    };
+
     Dictionary chunk;
     chunk["x"] = cx;
     chunk["z"] = cz;
@@ -2305,6 +2346,7 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
     // array per block.
     std::map<String, PackedVector3Array> bucket;
     std::map<String, PackedVector3Array> surfaceBucket, normalBucket, softNormalBucket;
+    std::map<String, PackedColorArray> colourBucket;
     PackedVector3Array sourceCells;
     PackedVector3Array faces;
     for (int z = cz; z < std::min(cz + chunk_cells, map.height); ++z) {
@@ -2332,18 +2374,25 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
                         const Vector3 centre = (Vector3(x+0.5,y+0.5,z+0.5) + Vector3(dir.dx,dir.dy,dir.dz)*0.5) * cs;
                         Vector3 corners[4];
                         Vector3 cornerNormals[4], centreNormal;
+                        Color cornerColours[4], centreColour(0,0,0,0);
                         for (int i=0; i<4; ++i) corners[i] = surfaceVertex(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
                         for (int i=0; i<4; ++i) {
                             cornerNormals[i] = surfaceNormal(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
                             centreNormal += cornerNormals[i];
+                            if (!palette.is_empty()) {
+                                cornerColours[i] = surfaceColour(x+int(dir.corners[i].x),y+int(dir.corners[i].y),z+int(dir.corners[i].z));
+                                centreColour += cornerColours[i] * 0.25f;
+                            }
                         }
                         centreNormal.normalize();
+                        if (!palette.is_empty()) centreColour = centreColour.lerp(materialColour(x,y,z),0.55f);
                         for (int i=0; i<4; ++i) {
                             Vector3 a=corners[i], b=corners[(i+1)%4];
                             Vector3 na=cornerNormals[i], nb=cornerNormals[(i+1)%4];
+                            Color ca=cornerColours[i], cb=cornerColours[(i+1)%4];
                             Vector3 normal = (b-centre).cross(a-centre);
                             if (normal.length_squared() < 1e-12) continue;
-                            if (normal.dot(Vector3(dir.dx,dir.dy,dir.dz)) < 0) { std::swap(a,b); std::swap(na,nb); normal=-normal; }
+                            if (normal.dot(Vector3(dir.dx,dir.dy,dir.dz)) < 0) { std::swap(a,b); std::swap(na,nb); std::swap(ca,cb); normal=-normal; }
                             normal.normalize();
                             for (const auto& vertex : {centre,a,b}) {
                                 faces.push_back(vertex);
@@ -2353,6 +2402,8 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
                             for (const auto& soft : {centreNormal,na,nb})
                                 softNormalBucket[kind].push_back(soft.length_squared() > 0.01 ? soft : normal);
                             sourceCells.push_back(Vector3(x,y,z));
+                            if (!palette.is_empty())
+                                for (const auto& colour : {centreColour,ca,cb}) colourBucket[kind].push_back(colour);
                         }
                         continue;
                     }
@@ -2384,6 +2435,9 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
         chunk["surfaces"] = surfaces;
         chunk["normals"] = normals;
         chunk["soft_normals"] = softNormals;
+        Dictionary colours;
+        for (const auto& entry : colourBucket) colours[entry.first] = entry.second;
+        chunk["blend_colours"] = colours;
         chunk["source_cells"] = sourceCells;
     }
     return chunk;
@@ -2404,7 +2458,7 @@ std::set<int64_t> removed_set(const wroughtwild::worldgen::WorldMap& map,
 
 } // namespace
 
-Array WroughtwildSim::world_mesh(int seed, int chunk_cells, bool faceted) {
+Array WroughtwildSim::world_mesh(int seed, int chunk_cells, bool faceted, const Dictionary& palette) {
     Array chunks;
     if (!require_loaded("world_mesh") || chunk_cells < 1) {
         return chunks;
@@ -2413,21 +2467,21 @@ Array WroughtwildSim::world_mesh(int seed, int chunk_cells, bool faceted) {
     const std::set<int64_t> none;
     for (int cz = 0; cz < map.height; cz += chunk_cells) {
         for (int cx = 0; cx < map.width; cx += chunk_cells) {
-            chunks.push_back(build_world_chunk(*tuning_, map, cx, cz, chunk_cells, none, faceted));
+            chunks.push_back(build_world_chunk(*tuning_, map, cx, cz, chunk_cells, none, faceted, palette));
         }
     }
     return chunks;
 }
 
 Dictionary WroughtwildSim::world_mesh_chunk(int seed, int chunk_cells, int chunk_x, int chunk_z,
-                                            const PackedInt32Array& removed_blocks, bool faceted) {
+                                            const PackedInt32Array& removed_blocks, bool faceted, const Dictionary& palette) {
     Dictionary d;
     if (!require_loaded("world_mesh_chunk") || chunk_cells < 1) {
         return d;
     }
     const auto& map = cached_world(static_cast<uint64_t>(seed));
     return build_world_chunk(*tuning_, map, chunk_x, chunk_z, chunk_cells,
-                             removed_set(map, removed_blocks), faceted);
+                             removed_set(map, removed_blocks), faceted, palette);
 }
 
 Dictionary WroughtwildSim::block_rules() const {

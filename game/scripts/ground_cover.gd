@@ -106,7 +106,8 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 	for definition in defs:
 		var entries: Array = COVER.get(String(definition.get("id","")), []).duplicate()
 		if frontier_look != null and frontier_look.scree_density>0.0:
-			entries.append(frontier_look.scree_entry())
+			for variant in 3:
+				entries.append(frontier_look.scree_entry(variant))
 		cover_by_biome.append(entries)
 	var kinds: Dictionary = chunk_data.get("kinds", {})
 	var placed := 0
@@ -181,7 +182,7 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 		instance.position = batch_origin
 		instance.multimesh = multimesh
 		instance.material_override = _shared_material() if frontier_look == null else frontier_look.cover_material()
-		if kind == "scree" and frontier_look != null:
+		if String(kind).begins_with("scree") and frontier_look != null:
 			instance.material_override = frontier_look.scree_material()
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		if frontier_look != null and frontier_look.cover_distance>0:

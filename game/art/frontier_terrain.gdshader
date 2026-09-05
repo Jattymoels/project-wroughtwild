@@ -19,6 +19,7 @@ uniform float surface_contrast = 0.0;
 uniform float strata_metres = 0.32;
 uniform float grain_metres = 0.065;
 uniform bool stony = false;
+uniform bool blend_materials = false;
 varying vec3 world_position;
 varying vec3 world_normal;
 varying float block_height;
@@ -80,6 +81,11 @@ void fragment() {
 		turf = smoothstep(turf_slope_start, turf_slope_end, normalize(world_normal).y + (broad - 0.5) * 0.12);
 	}
 	vec3 base = grassy ? mix(side_colour.rgb, top_colour.rgb, turf) : top_colour.rgb;
+	float stone_weight = stony ? 1.0 : 0.0;
+	if (blend_materials && world_mesh) {
+		base = COLOR.rgb;
+		stone_weight = COLOR.a;
+	}
 	ALBEDO = base * (1.0 + variation);
 	if (surface_contrast > 0.0) {
 		// World-space detail survives chunk joins and digging. Distinct scales:
@@ -89,32 +95,32 @@ void fragment() {
 		float chips = noise_at(p * 4.5 + vec3(weather * 1.3));
 		float footprint = max(length(dFdx(p)), length(dFdy(p)));
 		float fine_fade = 1.0 - smoothstep(grain_metres * 0.3, grain_metres, footprint);
-		float grit = (noise_at(p / grain_metres) - 0.5) * fine_fade;
+		// Rotated, incommensurate octaves avoid a visible square grain lattice.
+		vec3 grain_point = mat3(vec3(0.8,0.0,0.6),vec3(0.18,0.95,-0.24),vec3(-0.57,0.3,0.76)) * p / grain_metres;
+		float grit = (noise_at(grain_point)*0.65 + noise_at(grain_point*2.03)*0.35 - 0.5) * fine_fade;
 		float slope = 1.0 - smoothstep(0.35, 0.9, normalize(world_normal).y);
 		float layer = abs(sin((p.y / strata_metres + weather * 2.2 + chips * 0.14) * 3.14159));
 		float bedding = 1.0 - smoothstep(0.04, 0.21, layer);
 		// Intersecting irregular fracture lines break up otherwise blank rock tops.
 		float fracture = 0.0;
-		if (stony) {
+		if (stone_weight > 0.01) {
 			vec3 weights = pow(abs(normalize(world_normal)),vec3(4.0));
 			weights /= dot(weights,vec3(1.0));
 			vec3 plate = p * 1.8 + vec3(weather * 0.2);
 			float edge_x = 1.0-smoothstep(0.008,0.035,plate_edge(plate.yz));
 			float edge_y = 1.0-smoothstep(0.008,0.035,plate_edge(plate.xz));
 			float edge_z = 1.0-smoothstep(0.008,0.035,plate_edge(plate.xy));
-			fracture = dot(weights,vec3(edge_x,edge_y,edge_z));
+			fracture = dot(weights,vec3(edge_x,edge_y,edge_z)) * (1.0-smoothstep(0.025,0.12,footprint));
 		}
 		float mineral = smoothstep(0.52, 0.74, weather);
-		if (stony) {
-			ALBEDO *= 1.0 + surface_contrast * ((weather - 0.5) * 0.8 + grit * 0.65 - bedding * slope * 0.52 - fracture * 0.3);
-			ALBEDO = mix(ALBEDO, ALBEDO * vec3(1.14, 1.08, 0.91), mineral * 0.55);
-		} else {
-			float bare = smoothstep(0.43, 0.69, weather + (chips - 0.5) * 0.25);
-			if (grassy) {
+		float bare = smoothstep(0.43, 0.69, weather + (chips - 0.5) * 0.25);
+		if (grassy && !blend_materials) {
 				ALBEDO = mix(ALBEDO, side_colour.rgb, bare * turf * surface_contrast * 0.5);
-			}
-			ALBEDO *= 1.0 + surface_contrast * ((chips - 0.5) * 0.7 + grit * 1.1 - bare * 0.18);
 		}
+		float rock_detail = (weather-0.5)*0.65 + grit*0.45 - bedding*slope*0.2 - fracture*smoothstep(0.25,0.6,chips)*0.2;
+		float earth_detail = (chips-0.5)*0.3 + grit*0.6 - bare*0.12;
+		ALBEDO *= 1.0 + surface_contrast * mix(earth_detail,rock_detail,stone_weight);
+		ALBEDO = mix(ALBEDO, ALBEDO * vec3(1.14,1.08,0.91),mineral*0.3*stone_weight);
 	}
 	ROUGHNESS = 1.0;
 }

@@ -8,11 +8,12 @@ patch_metres = 12.0
 detail_metres = 0.8
 colour_variation = 0.12
 surface_contrast = 0.55
+blend_materials = true
 strata_metres = 0.32
-grain_metres = 0.11
-scree_density = 0.28
-scree_width = 0.34
-scree_height = 0.1
+grain_metres = 0.05
+scree_density = 0.09
+scree_width = 0.24
+scree_height = 0.055
 soft_terrain = true
 turf_slope_start = 0.25
 turf_slope_end = 0.8
@@ -45,9 +46,10 @@ side_colours = {
 "marsh": Color(0.25, 0.235, 0.18, 1)
 }
 design_purpose = {
-"scree_density": "Sparse patches of small, non-harvestable stone chips break up empty ground; 0.28 base chance per supported surface cell.",
-"scree_width": "34-centimetre stone fragments stay visually smaller than harvestable boulders.",
-"scree_height": "Ten-centimetre fragments add real local relief while remaining non-colliding decoration.",
+"blend_materials": "Shared exposed-neighbour colours join rock, soil and turf over the same lattice edges, including chunk boundaries and digging.",
+"scree_density": "A 0.09 total base density, divided across three irregular slab variants, leaves ground largely clear; fragments are non-harvestable.",
+"scree_width": "24-centimetre fragments stay visually smaller than harvestable boulders.",
+"scree_height": "5.5-centimetre fragments sit partly buried, with broad tops instead of pointed pyramid shapes.",
 "surface_contrast": "Strength of slate fractures, soil granules and broken turf colour; zero preserves the earlier smooth material.",
 "strata_metres": "Average spacing of warped stone bedding on exposed banks, independent of voxel boundaries.",
 "grain_metres": "Size of the fine soil/stone grain, filtered out before it can shimmer at distance.",
@@ -60,8 +62,8 @@ design_purpose = {
 "seam_half_width": "A 0.24-metre half-width keeps fractures readable without looking like roads.",
 "seam_surface_lift": "Lift the ribbon 0.018 metres above sampled terrain to avoid coplanar flicker.",
 "soft_terrain": "Shared occupancy normals soften the tiny triangle lighting while leaving collision and editable voxels unchanged.",
-"turf_slope_start": "Steep banks expose soil; turf starts to blend in when the upward normal exceeds this amount.",
-"turf_slope_end": "Gentler slopes become fully grassy, with a gradual transition instead of triangle-shaped colour jumps.",
+"turf_slope_start": "Historical unblended materials: upward normal where slope-based turf begins; shared-colour terrain uses actual neighbouring materials instead.",
+"turf_slope_end": "Historical unblended materials: upward normal where slope-based turf becomes complete.",
 "top_colours": "Owner revision, 5 Sep: earthier olive turf and weathered slate; marsh and strata retain their identity.",
 "side_colours": "Exposed soil beneath turf makes elevation readable without coating every vertical step in grass.",
 "patch_metres": "Twelve-metre colour patches connect neighbouring blocks into larger landforms.",

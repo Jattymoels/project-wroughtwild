@@ -48,15 +48,23 @@ func build(role: String) -> ArrayMesh:
 		var leather := Color(0.36,0.29,0.21)
 		_frustum(st,Vector3(0,0.96,0),0.28,0.21,0.62,cloth)
 		_frustum(st,Vector3(0,0.59,0),0.32,0.21,0.26,cloth.darkened(0.15))
+		_frustum(st,Vector3(0,0.83,0),0.25,0.24,0.055,leather)
+		_limb(st,Vector3(-0.17,1.24,-0.18),Vector3(0.17,0.74,-0.25),0.025,leather)
 		_oval(st,Vector3(0,1.48,0),Vector3(0.35,0.43,0.36),cloth.darkened(0.15))
 		_oval(st,Vector3(0,1.47,-0.145),Vector3(0.21,0.25,0.09),Color(0.26,0.23,0.18))
 		for side in [-1.0,1.0]:
 			_oval(st,Vector3(side*0.26,1.18,0),Vector3(0.3,0.27,0.4),cloth.lightened(0.13))
 			_limb(st,Vector3(side*0.3,1.14,0),Vector3(side*0.39,0.69,-0.04),0.095,cloth)
+			_oval(st,Vector3(side*0.39,0.65,-0.04),Vector3(0.13,0.18,0.15),leather)
 			_limb(st,Vector3(side*0.13,0.57,0),Vector3(side*0.15,0.14,0),0.1,leather)
 			_oval(st,Vector3(side*0.15,0.09,-0.055),Vector3(0.2,0.18,0.33),leather)
 		if role in ["guard","knight","boss"]:
 			_oval(st,Vector3(-0.4,0.9,-0.2),Vector3(0.4,0.7,0.13),Color(0.78,0.78,0.75))
+			_oval(st,Vector3(0,1.09,-0.15),Vector3(0.4,0.37,0.17),Color(0.65,0.66,0.62))
+			_frustum(st,Vector3(0,1.32,0),0.2,0.16,0.08,Color(0.45,0.47,0.44))
+		if role == "boss":
+			for side in [-1.0,1.0]:
+				_limb(st,Vector3(side*0.12,1.6,0),Vector3(side*0.28,1.82,0.06),0.065,Color(0.72,0.68,0.54))
 		if role == "peddler":
 			_oval(st,Vector3(0,1.03,0.32),Vector3(0.66,0.77,0.45),leather)
 			_limb(st,Vector3(0.43,0.04,-0.15),Vector3(0.43,1.49,-0.15),0.035,leather)

@@ -197,7 +197,7 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 
 	var cell: float = map["cell_size"]
 	var geometry_start := Time.get_ticks_msec()
-	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS, faceted_surface):
+	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS, faceted_surface, _blend_palette()):
 		_build_chunk(chunk_data, cell)
 	var resources_start := Time.get_ticks_msec()
 
@@ -209,6 +209,9 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 	build_profile = {"map_ms":geometry_start-build_start,"chunks_ms":resources_start-geometry_start,
 		"resources_ms":Time.get_ticks_msec()-resources_start,"total_ms":Time.get_ticks_msec()-build_start}
 
+
+func _blend_palette() -> Dictionary:
+	return frontier_look.top_colours if frontier_look != null and frontier_look.blend_materials else {}
 
 func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 	var chunk := Node3D.new()
@@ -225,6 +228,8 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 			arrays.resize(Mesh.ARRAY_MAX)
 			arrays[Mesh.ARRAY_VERTEX] = chunk_data["surfaces"][kind]
 			arrays[Mesh.ARRAY_NORMAL] = chunk_data["normals"][kind]
+			if chunk_data.get("blend_colours",{}).has(kind):
+				arrays[Mesh.ARRAY_COLOR] = chunk_data.blend_colours[kind]
 			if frontier_look != null and frontier_look.soft_terrain:
 				arrays[Mesh.ARRAY_NORMAL] = chunk_data["soft_normals"][kind]
 			var surface := ArrayMesh.new()
@@ -328,7 +333,7 @@ func _rebuild_chunk(cx: int, cz: int) -> void:
 		packed.append(v.x)
 		packed.append(v.y)
 		packed.append(v.z)
-	_build_chunk(_sim.world_mesh_chunk(_seed, CHUNK_CELLS, cx, cz, packed, faceted_surface), map["cell_size"])
+	_build_chunk(_sim.world_mesh_chunk(_seed, CHUNK_CELLS, cx, cz, packed, faceted_surface, _blend_palette()), map["cell_size"])
 	if faceted_surface and is_instance_valid(nodes_root):
 		var cell: float = map["cell_size"]
 		for node in nodes_root.get_children():

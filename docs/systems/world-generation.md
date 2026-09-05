@@ -301,6 +301,15 @@ nest and home, the shut-door siege) are shelved with it.
 
 ## Open questions
 
+Owner's next art review, 5 Sep: the GDExtension mesh view accepts an optional
+engine palette and supplies shared linear vertex colours plus a stone-detail
+weight. Each lattice corner averages the exposed solids among its eight cells;
+face centres retain more of their own material. The stencil stays within the
+existing dig/chunk invalidation halo. Geometry, source-cell picking, generation
+and save data are identical with or without a palette. Tests compare shared
+colours across materials/chunks before digging, after a corner dig and after
+restoration. Decorative stones now use three lower, less frequent slab forms.
+
 The owner's follow-up surface-detail pass adds decorative stone fragments and
 repairs ground-cover distance fading: each MultiMesh origin is now centred on
 its own plants, with local instance transforms preserving their world positions.

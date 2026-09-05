@@ -206,12 +206,16 @@ public:
     // PackedVector3Array of visible-block centres; kind is the biome
     // surface key, "dirt", "stone" or "bedrock"}, faces: PackedVector3Array
     // of exposed-face collision triangles (use backface_collision)}.
-    Array world_mesh(int seed, int chunk_cells, bool faceted = false);
+    // Optional engine-authored sRGB palette adds blend_colours to faceted
+    // surfaces: RGB is linear albedo; alpha carries the stone-detail weight.
+    // Empty palette retains the previous output/behaviour, except an empty
+    // blend_colours dictionary. The palette never changes collision or saves.
+    Array world_mesh(int seed, int chunk_cells, bool faceted = false, const Dictionary& palette = Dictionary());
     // One chunk's geometry with engine edits applied: removed_blocks is a
     // flat PackedInt32Array of x,y,z triples (dug blocks) treated as air.
     // The digging loop rebuilds only the touched chunk(s) through this.
     Dictionary world_mesh_chunk(int seed, int chunk_cells, int chunk_x, int chunk_z,
-                                const PackedInt32Array& removed_blocks, bool faceted = false);
+                                const PackedInt32Array& removed_blocks, bool faceted = false, const Dictionary& palette = Dictionary());
     // Rules for breaking generic terrain blocks, by kind ("surface",
     // "dirt", "stone", "bedrock"): {breakable, dig_seconds, yields}.
     Dictionary block_rules() const;

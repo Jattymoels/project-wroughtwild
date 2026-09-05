@@ -1,5 +1,10 @@
 # Decision Registry
 
+Latest owner refinement, 5 Sep 2026: preserve the stronger meadow image; improve
+the quality of rock/soil/turf transitions and replace the amateurish loose-stone
+scatter. This is a further D-013 presentation refinement, not a world-generator
+or gameplay change. [Evidence](../art/codex-material-joins-2026-09-05.md).
+
 Owner follow-through, 5 Sep 2026 (D-013 presentation): retain smoother terrain
 silhouettes but add material definition and ground detail in response to the
 owner's screenshot of bland grey/soil bands. Continue prototype character
