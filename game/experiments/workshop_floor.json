@@ -1,0 +1,10 @@
+{
+  "id": "codex_corner_floor",
+  "display_name": "Experimental Triangular Slab",
+  "material_cost": 1,
+  "size_m": [1.0, 0.25, 1.0],
+  "element": "floor",
+  "form": "corner",
+  "oriented": true,
+  "design_purpose": "Codex lab-only triangular floor/ceiling. Reserves an existing horizontal face; four quarter-turns align its physical edge with the outer chamfer. Cost mirrors the slab for this fixture, not an accepted unlock."
+}

@@ -2,7 +2,11 @@
 param(
     [string]$Godot = 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe',
     [switch]$Checks,
-    [switch]$Octagon
+    [switch]$Octagon,
+    [switch]$Landforms,
+    [switch]$Workshop,
+    [switch]$Terrain,
+    [switch]$Props
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -45,7 +49,19 @@ if ($Checks) {
         Invoke-GodotReview $scene "--headless res://tests/$scene.tscn"
     }
     Invoke-GodotReview 'smoke' '--headless --quit-after 120'
+    Invoke-GodotReview 'faceted-terrain' '--headless res://tests/faceted_terrain.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Props) {
+    Invoke-GodotReview 'prop-repair' '--position -9999,-9999 res://experiments/prop_repair_comparison.tscn'
+} elseif ($Terrain) {
+    Invoke-GodotReview 'faceted-terrain' '--headless res://tests/faceted_terrain.tscn'
+} elseif ($Workshop) {
+    Invoke-GodotReview 'workshop-headless' '--headless res://experiments/workshop_lab.tscn'
+    Invoke-GodotReview 'workshop-windowed' '--position -9999,-9999 res://experiments/workshop_lab.tscn'
+} elseif ($Landforms) {
+    Invoke-GodotReview 'landform-control' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --frontier-look'
+    Invoke-GodotReview 'landform-candidate' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --frontier-look --landform-look'
+    Invoke-GodotReview 'landform-faceted' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --frontier-look --landform-look --faceted-look'
 } elseif ($Octagon) {
     Invoke-GodotReview 'octagon-headless' '--headless res://experiments/octagon_lab.tscn'
     Invoke-GodotReview 'octagon-windowed' '--position -9999,-9999 res://experiments/octagon_lab.tscn'

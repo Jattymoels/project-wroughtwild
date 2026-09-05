@@ -379,14 +379,85 @@ std::vector<Element> Structure::trimEdges() const {
     return trims;
 }
 
+namespace {
+// Positive in the prism's empty half. Matches PieceMesh's four yaw poses.
+double cornerAir(const Piece& piece, const Vec3& point) {
+    const double x = point.x - piece.anchor.cell.x;
+    const double z = point.z - piece.anchor.cell.z;
+    switch (piece.rotationStep % 4) {
+        case 0: return x - z;
+        case 1: return piece.cornerSpan - x - z;
+        case 2: return z - x;
+        default: return x + z - piece.cornerSpan;
+    }
+}
+
+bool volumeOpen(const Structure& structure, const Cell& cell) {
+    const auto* piece = structure.at({ElementKind::Volume, 0, cell});
+    if (!piece) return true;
+    if (!piece->cornerSpan) return false;
+    for (int x = 0; x <= 1; ++x)
+        for (int z = 0; z <= 1; ++z)
+            if (cornerAir(*piece, {double(cell.x + x), double(cell.y), double(cell.z + z)}) > 1e-8)
+                return true;
+    return false;
+}
+
+// Clip the shared face against both prisms' air half-spaces. A point or
+// edge contact is not a passage. This prevents leakage across back-to-back
+// diagonals while allowing the empty part of an internally reserved face.
+bool passageOpen(const Structure& structure, const Cell& here, const Cell& next, const Element& face) {
+    const Piece* pieces[3] = {structure.at(face),
+        structure.at({ElementKind::Volume, 0, here}),
+        structure.at({ElementKind::Volume, 0, next})};
+    bool clipped = false;
+    for (const auto* piece : pieces) {
+        if (piece && !piece->cornerSpan) return false;
+        clipped = clipped || piece != nullptr;
+    }
+    if (!clipped) return true;
+    const int a = (face.axis + 1) % 3, b = (face.axis + 2) % 3;
+    std::vector<Vec3> polygon;
+    for (const auto& offset : std::vector<std::pair<int, int>>{{0,0},{1,0},{1,1},{0,1}}) {
+        double v[3] = {double(face.cell.x), double(face.cell.y), double(face.cell.z)};
+        v[a] += offset.first; v[b] += offset.second;
+        polygon.push_back({v[0], v[1], v[2]});
+    }
+    for (const auto* piece : pieces) {
+        if (!piece) continue;
+        std::vector<Vec3> output;
+        for (size_t i = 0; i < polygon.size(); ++i) {
+            const Vec3 p = polygon[i], q = polygon[(i + 1) % polygon.size()];
+            const double dp = cornerAir(*piece, p) - 1e-8, dq = cornerAir(*piece, q) - 1e-8;
+            if (dp >= 0) output.push_back(p);
+            if ((dp >= 0) != (dq >= 0)) {
+                const double t = dp / (dp - dq);
+                output.push_back({p.x + t*(q.x-p.x), p.y + t*(q.y-p.y), p.z + t*(q.z-p.z)});
+            }
+        }
+        polygon = std::move(output);
+    }
+    double area = 0;
+    for (size_t i = 0; i < polygon.size(); ++i) {
+        const auto& p = polygon[i]; const auto& q = polygon[(i+1)%polygon.size()];
+        const double pv[3] = {p.x,p.y,p.z}, qv[3] = {q.x,q.y,q.z};
+        area += pv[a]*qv[b] - qv[a]*pv[b];
+    }
+    return std::abs(area) > 1e-7;
+}
+} // namespace
+
 Enclosure enclosure(const Structure& structure, const Element& start, int maxVolumes,
-                    const std::function<WorldCell(const Cell&)>& world) {
+                    const std::function<WorldCell(const Cell&)>& world, const Vec3* preciseStart) {
     Enclosure result;
     if (start.kind != ElementKind::Volume || maxVolumes < 1) return result;
     Element origin = start;
     origin.axis = 0;
     const WorldCell at = world(origin.cell);
-    if (structure.occupied(origin) || (at != WorldCell::Open && at != WorldCell::Sky)) return result;
+    if (!volumeOpen(structure, origin.cell) || (at != WorldCell::Open && at != WorldCell::Sky)) return result;
+    const auto* startPiece = structure.at(origin);
+    if (preciseStart && startPiece && startPiece->cornerSpan && cornerAir(*startPiece, *preciseStart) <= 1e-8)
+        return result;
 
     // The house's own footprint, one registry cell of margin: sky met
     // beyond it is the open air outside, and the volume the fill left
@@ -416,7 +487,7 @@ Enclosure enclosure(const Structure& structure, const Element& start, int maxVol
             const int axis = step[0] != 0 ? 0 : (step[1] != 0 ? 1 : 2);
             const bool forward = step[axis] > 0;
             Element face{ElementKind::Face, axis, forward ? next : here};
-            if (structure.occupied(face)) continue;
+            if (!passageOpen(structure, here, next, face)) continue;
             const WorldCell cell = world(next);
             if (cell == WorldCell::Solid) continue;
             if (cell == WorldCell::Outside || (cell == WorldCell::Sky && !inBox(next))) {
@@ -425,7 +496,7 @@ Enclosure enclosure(const Structure& structure, const Element& start, int maxVol
                 result.leakReason = "sky";
                 return result; // open to the sky or the world's edge
             }
-            if (structure.occupied(Element{ElementKind::Volume, 0, next})) continue;
+            if (!volumeOpen(structure, next)) continue;
             seen.insert(next);
             if (static_cast<int>(seen.size()) > maxVolumes) {
                 result.volumes = static_cast<int>(seen.size());

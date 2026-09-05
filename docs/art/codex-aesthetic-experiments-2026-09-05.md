@@ -1,6 +1,14 @@
 # Aesthetic experiments — 5 September 2026
 
 **Author and implementer: Codex (OpenAI), not Claude.**
+
+**Continuation:** [landforms and workshop results](codex-aesthetic-intensive-2026-09-05.md)
+record the subsequently authorised work. The empty-half shelter limitation
+below is now resolved in the lab, and a larger workshop has diagonal exterior
+walls. This report preserves the first pass's observations. A separate prop
+before/after now shows the winding repair; both landscape variants below
+already included it, so they were never a comparison of that repair.
+
 Branch: `codex/aesthetic-experiments`, starting at `e8b8d55`.
 Status: owner-authorised experiments; candidate art and corner shape are
 not accepted default design. D-013 and D-018 are not superseded.

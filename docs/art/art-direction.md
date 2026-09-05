@@ -141,3 +141,9 @@ document continuous terrain materials, tapered cover and a procedural prop
 winding repair. Authored and implemented by **Codex (OpenAI), not Claude**.
 The material candidate is experimental; this accepted direction remains the
 default. The prop repair restores the intended exterior faces in both looks.
+
+The owner-authorised [Codex continuation](codex-aesthetic-intensive-2026-09-05.md)
+adds opt-in faceted terrain, fresh-world contour comparisons and an octagonal
+workshop study. The gallery now separately demonstrates the prop winding
+repair; it did not redesign tree silhouettes or terrain cliffs. No default
+art rule is superseded. The workshop's hipped roof is decorative lab geometry.

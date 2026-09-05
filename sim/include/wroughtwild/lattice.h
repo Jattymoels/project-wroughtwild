@@ -125,6 +125,9 @@ struct Piece {
     std::string shapeId;
     std::string family;
     int rotationStep = 0; // quarter turns, meaningful for oriented shapes only
+    // Codex corner experiment: triangular solid, measured in registry cells.
+    // Placement still reserves the entire footprint; enclosure reads its air.
+    int cornerSpan = 0;
 };
 
 // The player's structure: what occupies which registry element. Rules,
@@ -191,6 +194,7 @@ struct Enclosure {
 // ajar. Terrain is the world's business: a dug-out hollow with a slab
 // over its mouth is as much a shelter as a hut.
 Enclosure enclosure(const Structure& structure, const Element& start, int maxVolumes,
-                    const std::function<WorldCell(const Cell&)>& world);
+                    const std::function<WorldCell(const Cell&)>& world,
+                    const Vec3* preciseStart = nullptr);
 
 } // namespace wroughtwild::lattice

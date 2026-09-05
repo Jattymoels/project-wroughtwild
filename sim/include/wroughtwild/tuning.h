@@ -718,6 +718,8 @@ struct MapParams {
     int heightScale = 6;
     double heightFrequency = 0.03;
     int heightOctaves = 3;
+    double heightWarpMetres = 0.0; // Opt-in contour experiment; zero preserves existing seeds.
+    double heightWarpFrequency = 0.018;
     double moistureFrequency = 0.015;
 };
 

@@ -11,6 +11,7 @@ uniform float colour_variation = 0.12;
 uniform float grass_edge_depth = 0.18;
 uniform float cell_metres = 1.0;
 uniform bool grassy = false;
+uniform bool world_mesh = false;
 varying vec3 world_position;
 varying vec3 world_normal;
 varying float block_height;
@@ -35,6 +36,9 @@ void vertex() {
 	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	world_normal = MODEL_NORMAL_MATRIX * NORMAL;
 	block_height = VERTEX.y / cell_metres + 0.5;
+	if (world_mesh) {
+		block_height = fract(world_position.y / cell_metres - 0.0001);
+	}
 }
 
 void fragment() {

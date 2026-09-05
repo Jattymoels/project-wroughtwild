@@ -314,6 +314,12 @@ not a new accepted decision: D-013 remains the default art direction, and
 D-018's conflict with siege demolition remains unresolved. No D-025 was
 accepted or created by this work.
 
+The owner subsequently asked Codex to continue these recommendations. The
+[continuation report](../art/codex-aesthetic-intensive-2026-09-05.md) records
+faceted terrain, an isolated contour profile and the larger octagonal workshop
+with corner-aware shelter. These remain experiments under that authorisation;
+the default art direction, ordinary shape unlocks and siege policy are unchanged.
+
 ### Procedure
 
 Add an entry when a choice materially affects player experience, save data, system boundaries, architecture or prototype scope. Create a separate ADR when the rationale, alternatives or consequences require more than one table row.

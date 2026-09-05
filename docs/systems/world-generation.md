@@ -301,6 +301,18 @@ nest and home, the shut-door siege) are shelved with it.
 
 ## Open questions
 
+**Codex experiment, 5 Sep 2026 (OpenAI, not Claude):** optional map fields
+`height_warp_metres` (default 0, finite/non-negative) and
+`height_warp_frequency` (default 0.018, finite/positive) bend the height-noise
+coordinates and control the breadth of those bends. Zero amplitude preserves
+existing generation. A copied fresh-world fixture tries 24 metres of warp
+with stronger relief; it never loads player saves. Normal tuning is unchanged.
+Separately, `--faceted-look` presents the existing solid field as rounded
+facets with matching collision and exact source-voxel picking. It does not
+change the generated voxel field or saved excavation representation.
+See [Codex's report](../art/codex-aesthetic-intensive-2026-09-05.md) for controls,
+generation checks and the presentation's resource-grounding limitations.
+
 - How class halls are signposted.
 - When outposts become mechanically worthwhile.
 - Whether cave dark needs its own light rules before torches exist

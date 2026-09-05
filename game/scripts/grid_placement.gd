@@ -342,6 +342,8 @@ func piece_pose(shape_id: StringName, element: Dictionary, rotation_step: int) -
 		centre.y -= (cell_height - size.y) * 0.5
 		if oriented:
 			yaw += float(rotation_step) * PI / 2.0
+	elif oriented and String(info.get("form", "")) == "corner" and element["axis"] == 1:
+		yaw += float(rotation_step) * PI / 2.0
 	elif oriented:
 		yaw += float(rotation_step % 2) * PI
 	return {"centre": centre, "yaw": yaw}

@@ -327,9 +327,15 @@ require fuel (`only_for_trait`). See fire-setting in
 **Codex experiment, 5 Sep 2026 (not Claude):** a lab-only triangular `corner`
 block now tests chamfered rooms on existing volume addresses. Placement,
 convex collision and schema-2 save restoration work with its fixture loaded.
-The empty half of the cell is physically clear but loses shelter; the outside
-of the wall remains stepped. No normal catalogue entry or unlock was added.
-See [findings and limitations](../art/codex-aesthetic-experiments-2026-09-05.md).
+The continuation now clips shelter passages against the prism: its empty half
+can be sheltered, its solid half cannot, and edge-only contact does not leak.
+Partly empty fine volumes count as whole volumes toward the existing size cap.
+Placement still reserves the whole cell. Corner forms must be oriented square
+blocks/floors matching their grid extent; floor corners have four yaw poses.
+A larger workshop uses a thick band of prisms for diagonal inner and outer
+walls and triangular floor/ceiling corners. Its hipped roof/framing are lab
+dressing. No normal catalogue entry or unlock was added.
+See [current findings and limits](../art/codex-aesthetic-intensive-2026-09-05.md).
 
 - Final prototype grid size.
 - Minimum coherent diagonal/transition set.

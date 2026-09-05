@@ -10,7 +10,7 @@
   p { max-width: 85ch; color: #bbc9c8; }
   nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0 16px; }
   button, a { color: #e7dbb2; }
-  button { font: inherit; padding: 8px 18px; background: #273942; border: 1px solid #658078; border-radius: 5px; cursor: pointer; }
+  button, select { font: inherit; padding: 8px 18px; color: #e7dbb2; background: #273942; border: 1px solid #658078; border-radius: 5px; cursor: pointer; }
   button[aria-pressed=true] { color: #19282a; background: #d6dcb9; }
   .compare { position: relative; aspect-ratio: 16/9; background: #0d171c; overflow: hidden; }
   .compare img { position: absolute; width: 100%; height: 100%; object-fit: contain; }
@@ -24,32 +24,57 @@
   .octagon img { width: 100%; }
   small { color: #a3b3b5; }
 </style>
-<h1>Wroughtwild: surfaces and an octagonal room</h1>
-<p>Experiments by <strong>Codex (OpenAI), not Claude</strong> · 5 September 2026. The candidate is opt-in. Both landscape views include the corrected tree and rock faces.</p>
+<h1>Wroughtwild: landforms and an octagonal workshop</h1>
+<p>Experiments by <strong>Codex (OpenAI), not Claude</strong> · 5 September 2026. The candidate is opt-in. Trees and boulder props use the same repaired meshes on both sides. Their repair is shown separately below; it did not redesign their shapes or the terrain cliffs.</p>
 <nav aria-label="Comparison view"></nav>
+<div class="control"><label for="pair">Compare</label><select id="pair"><option value="faceted">Faceted edges — same world</option><option value="contours">Winding contours — regenerated world</option><option value="surfaces">Surface materials — first pass</option></select></div>
 <div class="compare">
-  <img id="baseline" src="baseline/spawn.png" alt="Current pixel surfaces at spawn">
-  <img id="candidate" src="frontier/spawn.png" alt="Experimental continuous surfaces at spawn">
+  <img id="baseline" src="landform-candidate/overlook.png" alt="Cubic edges at the overlook">
+  <img id="candidate" src="landform-faceted/overlook.png" alt="Faceted edges at the same overlook">
   <div id="divider"></div>
-  <span class="tag left">Current surfaces</span><span class="tag right">Candidate</span>
+  <span id="left-label" class="tag left">Cubic edges</span><span id="right-label" class="tag right">Faceted edges</span>
 </div>
 <div class="control"><label for="split">Comparison split</label><input id="split" type="range" min="0" max="100" value="50"><output id="amount">50%</output></div>
-<p>Same seed, class, camera, daylight and world geometry. Look at the ground's visual noise, elevation edges, plant silhouettes and resource visibility. The candidate still has cubic terrain; this tests how much surfaces and cover can improve its identity.</p>
-<small><a href="baseline/manifest.json">Baseline capture records</a> · <a href="frontier/manifest.json">Candidate capture records</a>. Geometry counters are not a GPU performance benchmark.</small>
-<h2>Octagon: block-based feasibility</h2>
-<p>The diagonal inner walls use triangular prisms in existing whole-cell addresses. Collision and save restoration work. The empty half of a corner remains outside shelter, and the exterior is stepped. This shape is available only in the lab fixture.</p>
+<p id="explanation">Same seed, generated world, materials, camera and daylight. Faceted terrain rounds exposed lattice corners and uses the same triangles for rendering and collision. Digging selects the original block from the triangle hit.</p>
+<small><a id="left-manifest" href="landform-candidate/manifest.json">Left capture records</a> · <a id="right-manifest" href="landform-faceted/manifest.json">Right capture records</a>. Geometry counters are not a GPU performance benchmark.</small>
+<h2>Tree and boulder face repair — separate before/after</h2>
+<p>The earlier “fixed hollow-looking tree and rock faces” claim meant correcting inward-facing triangles. It did not mean new tree silhouettes or a rock-face art pass. Every landscape comparison above already contains that fix on both sides.</p>
+<div class="octagon"><figure><a href="prop-repair/before.png"><img src="prop-repair/before.png" alt="Before repair: reconstructed inward-facing tree and boulder triangles"></a><figcaption>Before: original inward-facing triangle order, reconstructed from the repaired mesh.</figcaption></figure><figure><a href="prop-repair/after.png"><img src="prop-repair/after.png" alt="After repair: the same tree and boulder with outward-facing triangles"></a><figcaption>After: exterior faces. Identical vertices, colours, camera and lighting.</figcaption></figure></div>
+<small>Isolated seeded props, not a landscape style comparison. Run the helper with -Props to reproduce.</small>
+<h2>The octagonal workshop</h2>
+<p>Continuous diagonal walls inside and out, clipped floor and ceiling corners, a usable door, three real stations and storage. The empty half of a corner now receives shelter; placement still reserves its whole cell. The hipped roof and exposed framing are lab dressing over the saved construction pieces.</p>
+<a href="workshop/exterior.png"><img style="width:100%;max-width:1200px" src="workshop/exterior.png" alt="Octagonal workshop with stone footing, timber framing and a hipped roof study"></a>
+<div class="octagon"><a href="workshop/cutaway.png"><img src="workshop/cutaway.png" alt="Workshop cutaway showing thick diagonal walls and functional stations"></a><a href="workshop/interior.png"><img src="workshop/interior.png" alt="Workshop interior at eye level"></a></div>
+<p>The forge crafts with the existing fuel rules and the chest preserves stored materials across restoration. An open door still permits shelter, as the construction specification intends. Shape saves require the lab fixture.</p>
+<small><a href="workshop/observations.json">Workshop observations</a>. Roof hidden in cutaway/interior views. Run the helper with -Workshop to reproduce.</small>
+<h2>Earlier single-row corner experiment</h2>
+<p>The original prism row creates diagonal inner walls but a stepped exterior. Its shelter issue is now corrected; the larger workshop above resolves the exterior with a thicker band. These shapes remain available only in lab fixtures.</p>
 <div class="octagon"><a href="octagon/cutaway.png"><img src="octagon/cutaway.png" alt="Octagonal room with its roof hidden, showing thick corner blocks"></a><a href="octagon/interior.png"><img src="octagon/interior.png" alt="Diagonal walls seen from inside the octagonal room"></a></div>
 <small><a href="octagon/observations.json">Recorded octagon observations</a>. Roof hidden for inspection; enclosure checks use the complete roof. Run the review script with -Octagon to generate these images.</small>
 <script>
   const views = {spawn: 'Spawn', overlook: 'Overlook', forest: 'Forest', fen: 'Fen', ember_wastes: 'Ember wastes'};
   const baseline = document.querySelector('#baseline'), candidate = document.querySelector('#candidate');
+  const pairs = {
+    faceted: {left:'landform-candidate', right:'landform-faceted', a:'Cubic edges', b:'Faceted edges', text:'Same seed, generated world, materials, camera and daylight. Faceted terrain rounds exposed lattice corners and uses the same triangles for rendering and collision. Digging selects the original block from the triangle hit.'},
+    contours: {left:'landform-control', right:'landform-candidate', a:'Current contours', b:'Winding contours', text:'Identical seed and cameras, with stronger relief and a bent height-noise domain on the right. Biome boundaries, resources and threats regenerate too. Camera anchors retain their original biome names; a regenerated anchor may belong to another biome. These fresh-world fixtures never load a player save.'},
+    surfaces: {left:'baseline', right:'frontier', a:'Pixel surfaces', b:'Continuous surfaces', text:'The first pass: identical world geometry, camera and daylight. Continuous materials and tapered cover replace repeated pixel tiles and cards. Both views include the repaired outward-facing tree and rock surfaces.'}
+  };
+  let currentView = 'overlook';
+  function update() {
+    const p = pairs[document.querySelector('#pair').value];
+    baseline.src = `${p.left}/${currentView}.png`; candidate.src = `${p.right}/${currentView}.png`;
+    baseline.alt = `${p.a}: ${views[currentView]}`; candidate.alt = `${p.b}: ${views[currentView]}`;
+    document.querySelector('#left-label').textContent = p.a; document.querySelector('#right-label').textContent = p.b;
+    document.querySelector('#explanation').textContent = p.text;
+    document.querySelector('#left-manifest').href = `${p.left}/manifest.json`; document.querySelector('#right-manifest').href = `${p.right}/manifest.json`;
+  }
+  document.querySelector('#pair').onchange = update;
   for (const [id, label] of Object.entries(views)) {
     const button = document.createElement('button');
     button.textContent = label;
-    button.setAttribute('aria-pressed', id === 'spawn');
+    button.setAttribute('aria-pressed', id === currentView);
     button.onclick = () => {
-      baseline.src = `baseline/${id}.png`; candidate.src = `frontier/${id}.png`;
-      baseline.alt = `Current pixel surfaces: ${label}`; candidate.alt = `Experimental surfaces: ${label}`;
+      currentView = id; update();
       document.querySelectorAll('nav button').forEach(other => other.setAttribute('aria-pressed', other === button));
     };
     document.querySelector('nav').append(button);

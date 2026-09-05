@@ -202,9 +202,9 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_cast_armour", "skill_id"), &WroughtwildSim::skill_cast_armour);
     ClassDB::bind_method(D_METHOD("ward_multiplier", "carried_statuses"), &WroughtwildSim::ward_multiplier);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
-    ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells"), &WroughtwildSim::world_mesh);
-    ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks"),
-                         &WroughtwildSim::world_mesh_chunk);
+    ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells", "faceted"), &WroughtwildSim::world_mesh, DEFVAL(false));
+    ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks", "faceted"),
+                         &WroughtwildSim::world_mesh_chunk, DEFVAL(false));
     ClassDB::bind_method(D_METHOD("block_rules"), &WroughtwildSim::block_rules);
     ClassDB::bind_method(D_METHOD("fire_setting"), &WroughtwildSim::fire_setting);
     ClassDB::bind_method(D_METHOD("lattice_registry_grid"), &WroughtwildSim::lattice_registry_grid);
@@ -2220,7 +2220,7 @@ namespace {
 // reflects the world the player has actually carved.
 Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
                              const wroughtwild::worldgen::WorldMap& map, int cx, int cz,
-                             int chunk_cells, const std::set<int64_t>& removed) {
+                             int chunk_cells, const std::set<int64_t>& removed, bool faceted = false) {
     const double cs = map.cellSize;
     using wroughtwild::worldgen::kAir;
     using wroughtwild::worldgen::kBedrock;
@@ -2237,6 +2237,33 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
             return kAir;
         }
         return map.blocks[static_cast<size_t>(idx)];
+    };
+
+    // Codex faceted surface: average solid/air edge crossings in the eight
+    // voxels surrounding a lattice vertex. Neighbour chunks read identical
+    // samples, so their vertices agree. Face centres remain at their voxel
+    // planes, preserving the ground at resource anchors. Both rendering and
+    // collision use these triangles; each triangle retains its source cell.
+    std::map<int64_t, Vector3> surfaceCache;
+    auto surfaceVertex = [&](int x, int y, int z) {
+        const int64_t key = (int64_t(z) * (map.width + 1) + x) * (map.depth + 1) + y;
+        auto found = surfaceCache.find(key);
+        if (found != surfaceCache.end()) return found->second;
+        Vector3 sum;
+        int count = 0;
+        for (int i = 0; i < 8; ++i) {
+            const int a[3] = {x - 1 + (i & 1), y - 1 + ((i >> 1) & 1), z - 1 + ((i >> 2) & 1)};
+            for (int axis = 0; axis < 3; ++axis) {
+                if (i & (1 << axis)) continue;
+                int b[3] = {a[0],a[1],a[2]}; ++b[axis];
+                if ((eff(a[0],a[1],a[2]) == kAir) == (eff(b[0],b[1],b[2]) == kAir)) continue;
+                sum += Vector3((a[0]+b[0]+1)*0.5, (a[1]+b[1]+1)*0.5, (a[2]+b[2]+1)*0.5);
+                ++count;
+            }
+        }
+        const Vector3 result = (count ? sum / count : Vector3(x,y,z)) * cs;
+        surfaceCache[key] = result;
+        return result;
     };
 
     // The six neighbour directions and, for each, the face's four corners
@@ -2259,6 +2286,8 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
     // so growing them in place through the Dictionary would copy the whole
     // array per block.
     std::map<String, PackedVector3Array> bucket;
+    std::map<String, PackedVector3Array> surfaceBucket, normalBucket;
+    PackedVector3Array sourceCells;
     PackedVector3Array faces;
     for (int z = cz; z < std::min(cz + chunk_cells, map.height); ++z) {
         for (int x = cx; x < std::min(cx + chunk_cells, map.width); ++x) {
@@ -2268,12 +2297,38 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
                     continue;
                 }
                 bool visible = false;
+                String kind;
+                switch (id) {
+                    case kSurface: kind = to_godot(tuning.worldgen.biomes[map.at(x,z).biomeIndex].surface); break;
+                    case kDirt: kind = "dirt"; break;
+                    case kBedrock: kind = "bedrock"; break;
+                    default: kind = "stone"; break;
+                }
                 for (const auto& dir : kDirs) {
                     if (eff(x + dir.dx, y + dir.dy, z + dir.dz) != kAir) {
                         continue;
                     }
                     visible = true;
                     const Vector3 base(x * cs, y * cs, z * cs);
+                    if (faceted) {
+                        const Vector3 centre = (Vector3(x+0.5,y+0.5,z+0.5) + Vector3(dir.dx,dir.dy,dir.dz)*0.5) * cs;
+                        Vector3 corners[4];
+                        for (int i=0; i<4; ++i) corners[i] = surfaceVertex(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
+                        for (int i=0; i<4; ++i) {
+                            Vector3 a=corners[i], b=corners[(i+1)%4];
+                            Vector3 normal = (b-centre).cross(a-centre);
+                            if (normal.length_squared() < 1e-12) continue;
+                            if (normal.dot(Vector3(dir.dx,dir.dy,dir.dz)) < 0) { std::swap(a,b); normal=-normal; }
+                            normal.normalize();
+                            for (const auto& vertex : {centre,a,b}) {
+                                faces.push_back(vertex);
+                                surfaceBucket[kind].push_back(vertex);
+                                normalBucket[kind].push_back(normal);
+                            }
+                            sourceCells.push_back(Vector3(x,y,z));
+                        }
+                        continue;
+                    }
                     faces.push_back(base + dir.corners[0] * cs);
                     faces.push_back(base + dir.corners[1] * cs);
                     faces.push_back(base + dir.corners[2] * cs);
@@ -2283,16 +2338,6 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
                 }
                 if (!visible) {
                     continue;
-                }
-                String kind;
-                switch (id) {
-                    case kSurface:
-                        kind = to_godot(tuning.worldgen.biomes[map.at(x, z).biomeIndex].surface);
-                        break;
-                    case kDirt: kind = "dirt"; break;
-                    case kBedrock: kind = "bedrock"; break;
-                    case kStone:
-                    default: kind = "stone"; break;
                 }
                 bucket[kind].push_back(Vector3((x + 0.5) * cs, (y + 0.5) * cs, (z + 0.5) * cs));
             }
@@ -2304,6 +2349,14 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
     }
     chunk["kinds"] = kinds;
     chunk["faces"] = faces;
+    if (faceted) {
+        Dictionary surfaces, normals;
+        for (const auto& entry : surfaceBucket) surfaces[entry.first] = entry.second;
+        for (const auto& entry : normalBucket) normals[entry.first] = entry.second;
+        chunk["surfaces"] = surfaces;
+        chunk["normals"] = normals;
+        chunk["source_cells"] = sourceCells;
+    }
     return chunk;
 }
 
@@ -2322,7 +2375,7 @@ std::set<int64_t> removed_set(const wroughtwild::worldgen::WorldMap& map,
 
 } // namespace
 
-Array WroughtwildSim::world_mesh(int seed, int chunk_cells) {
+Array WroughtwildSim::world_mesh(int seed, int chunk_cells, bool faceted) {
     Array chunks;
     if (!require_loaded("world_mesh") || chunk_cells < 1) {
         return chunks;
@@ -2331,21 +2384,21 @@ Array WroughtwildSim::world_mesh(int seed, int chunk_cells) {
     const std::set<int64_t> none;
     for (int cz = 0; cz < map.height; cz += chunk_cells) {
         for (int cx = 0; cx < map.width; cx += chunk_cells) {
-            chunks.push_back(build_world_chunk(*tuning_, map, cx, cz, chunk_cells, none));
+            chunks.push_back(build_world_chunk(*tuning_, map, cx, cz, chunk_cells, none, faceted));
         }
     }
     return chunks;
 }
 
 Dictionary WroughtwildSim::world_mesh_chunk(int seed, int chunk_cells, int chunk_x, int chunk_z,
-                                            const PackedInt32Array& removed_blocks) {
+                                            const PackedInt32Array& removed_blocks, bool faceted) {
     Dictionary d;
     if (!require_loaded("world_mesh_chunk") || chunk_cells < 1) {
         return d;
     }
     const auto& map = cached_world(static_cast<uint64_t>(seed));
     return build_world_chunk(*tuning_, map, chunk_x, chunk_z, chunk_cells,
-                             removed_set(map, removed_blocks));
+                             removed_set(map, removed_blocks), faceted);
 }
 
 Dictionary WroughtwildSim::block_rules() const {
@@ -2599,6 +2652,7 @@ bool WroughtwildSim::structure_place(const Dictionary& element, const String& sh
     piece.shapeId = to_std(shape_id);
     piece.family = to_std(family);
     piece.rotationStep = ((rotation_step % 4) + 4) % 4;
+    piece.cornerSpan = sl.shape->form == "corner" ? sl.span : 0;
     return structure_.place(piece);
 }
 
@@ -2884,7 +2938,8 @@ Dictionary WroughtwildSim::structure_enclosure(int seed, const PackedInt32Array&
                                             static_cast<int>(std::floor(at.y / registry)),
                                             static_cast<int>(std::floor(at.z / registry))};
     const int cap = tuning_->world.shelter.maxRoomCells * div * div * div;
-    const auto result = wroughtwild::lattice::enclosure(structure_, start, cap, world);
+    const wroughtwild::lattice::Vec3 precise{at.x / registry, at.y / registry, at.z / registry};
+    const auto result = wroughtwild::lattice::enclosure(structure_, start, cap, world, &precise);
     d["enclosed"] = result.enclosed;
     d["cells"] = result.volumes / (div * div * div);
     d["reason"] = to_godot(result.leakReason);

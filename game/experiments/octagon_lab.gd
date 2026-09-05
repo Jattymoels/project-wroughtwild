@@ -22,7 +22,7 @@ func check(condition: bool, label: String) -> void:
 		printerr("FAIL: ", label)
 
 func _ready() -> void:
-	output = ProjectSettings.globalize_path("res://../build/codex-aesthetic/octagon")
+	output = ProjectSettings.globalize_path("res://../build/codex-aesthetic/" + review_id())
 	var tuning := output.path_join("tuning")
 	DirAccess.make_dir_recursive_absolute(tuning)
 	var source := load("res://scripts/sim.gd").get_tuning_directory() as String
@@ -30,7 +30,7 @@ func _ready() -> void:
 		if file.ends_with(".json"):
 			check(DirAccess.copy_absolute(source.path_join(file), tuning.path_join(file)) == OK, "copy fixture " + file)
 	var construction: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(tuning.path_join("construction.json")))
-	construction["shapes"].append(JSON.parse_string(FileAccess.get_file_as_string("res://experiments/octagon_shape.json")))
+	construction["shapes"].append_array(shape_fixtures())
 	var file := FileAccess.open(tuning.path_join("construction.json"), FileAccess.WRITE)
 	file.store_string(JSON.stringify(construction))
 	file.close()
@@ -47,6 +47,12 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_build_room()
 	_setup_view()
+
+func review_id() -> String:
+	return "octagon"
+
+func shape_fixtures() -> Array:
+	return [JSON.parse_string(FileAccess.get_file_as_string("res://experiments/octagon_shape.json"))]
 
 func _place(cell: Vector3i, shape: StringName = &"cube", rotation_step: int = 0, kind: String = "volume", axis: int = 0) -> PlacedBlock:
 	var piece := player.placement.place_piece({"kind": kind, "axis": axis, "cell": cell * 2}, shape, &"wood", rotation_step)
@@ -142,13 +148,15 @@ func _probe() -> void:
 	var solid := physics.intersect_ray(PhysicsRayQueryParameters3D.create(Vector3(2.9, 2.5, 2.9), Vector3(2.1, 2.5, 2.1)))
 	check(not solid.is_empty() and solid.get("collider") == corner, "diagonal face has matching convex collision")
 	observations["empty_half_sheltered"] = player.placement.enclosure_at(Vector3(2.8, 2.5, 2.8))["enclosed"]
+	check(observations["empty_half_sheltered"], "corner's usable half now receives shelter")
+	check(not player.placement.enclosure_at(Vector3(2.1, 2.5, 2.1))["enclosed"], "solid prism is not shelter air")
 	observations["whole_cell_reserved"] = not sim.structure_place(corner.element, "cube", "wood", 0)
 	check(observations["whole_cell_reserved"], "corner reserves the entire block")
 	door.toggle()
 	observations["open_door_sheltered"] = player.placement.enclosure_at(centre)["enclosed"]
 	door.toggle()
-	# Record current behaviour instead of inventing a new shelter rule.
-	print("CODEX_LIMITATION empty-half shelter: ", observations["empty_half_sheltered"], "; open-door shelter: ", observations["open_door_sheltered"])
+	# Open doors count as walls by the accepted construction shelter rule.
+	check(observations["open_door_sheltered"], "open door retains documented shelter behaviour")
 	var removed: PlacedBlock
 	for roof in roofs:
 		if roof.element["cell"] == Vector3i(10, 8, 10):

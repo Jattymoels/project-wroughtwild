@@ -543,7 +543,7 @@ func _update_digging(delta: float) -> void:
 			query.exclude = [self]
 			var hit := get_world_3d().direct_space_state.intersect_ray(query)
 			if not hit.is_empty() and terrain.is_terrain_body(hit.get("collider")):
-				var cell := terrain.block_from_hit(hit["position"], hit["normal"])
+				var cell := terrain.block_from_surface_hit(hit)
 				if terrain.kind_at(cell.x, cell.y, cell.z) == "":
 					# Backface hit: the normal faced away; the block is behind.
 					cell = terrain.block_from_hit(hit["position"], -hit["normal"])
@@ -664,7 +664,7 @@ func strike_world() -> bool:
 		return not result.is_empty()
 	var terrain := _find_terrain()
 	if terrain != null and terrain.is_terrain_body(collider):
-		var cell := terrain.block_from_hit(hit["position"], hit["normal"])
+		var cell := terrain.block_from_surface_hit(hit)
 		if terrain.kind_at(cell.x, cell.y, cell.z) == "":
 			cell = terrain.block_from_hit(hit["position"], -hit["normal"])
 		if terrain.crack_block(cell):

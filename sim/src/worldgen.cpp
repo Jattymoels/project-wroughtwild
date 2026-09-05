@@ -169,7 +169,13 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
     const tuning::MountainParams& m = table.mountains;
     for (int z = 0; z < map.height; ++z) {
         for (int x = 0; x < map.width; ++x) {
-            double h = fbm(seed, x, z, params.heightFrequency, params.heightOctaves, 1);
+            // Codex contour experiment: bend the height-noise domain while
+            // retaining integer editable voxels and matching collision.
+            const double warpX = params.heightWarpMetres == 0 ? 0 : params.heightWarpMetres * (2 * valueNoise(seed,
+                x * params.heightWarpFrequency, z * params.heightWarpFrequency, 8101) - 1);
+            const double warpZ = params.heightWarpMetres == 0 ? 0 : params.heightWarpMetres * (2 * valueNoise(seed,
+                x * params.heightWarpFrequency, z * params.heightWarpFrequency, 8102) - 1);
+            double h = fbm(seed, x + warpX, z + warpZ, params.heightFrequency, params.heightOctaves, 1);
             double moisture = fbm(seed, x, z, params.moistureFrequency, 2, 2000);
             Cell& cell = map.cells[z * map.width + x];
             cell.height = params.baseHeight + static_cast<int>(std::floor(h * params.heightScale));

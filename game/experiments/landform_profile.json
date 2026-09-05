@@ -1,0 +1,19 @@
+{
+  "map": {
+    "base_height": 7,
+    "height_scale": 20,
+    "height_frequency": 0.025,
+    "height_octaves": 3,
+    "height_warp_metres": 24.0,
+    "height_warp_frequency": 0.018
+  },
+  "design_purpose": {
+    "base_height": "Offsets the stronger relief so the average valley stays near its previous elevation.",
+    "height_scale": "Stronger rises and hollows break the long shallow terraces into more distinct landforms.",
+    "height_frequency": "Slightly shorter hill spacing adds local silhouettes without enlarging the world.",
+    "height_octaves": "Retains the existing three terrain detail scales.",
+    "height_warp_metres": "Bends height contours sideways by up to 24 metres in noise space, not world-space displacement of blocks.",
+    "height_warp_frequency": "Controls the breadth of those contour bends; resources and biomes regenerate on the resulting solid field."
+  },
+  "status": "Codex (OpenAI), not Claude. Fresh-world comparison fixture only; never load an existing player save with this profile."
+}

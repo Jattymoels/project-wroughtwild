@@ -4304,6 +4304,75 @@ void testMingling(const tuning::Tuning& t) {
           "mingle: the tide's lurkers hold longer and its knights ward harder");
 }
 
+// Codex: partial-volume air must work in every orientation, while placement
+// remains conservative and a real hole still defeats enclosure.
+void testCornerEnclosure() {
+    using namespace wroughtwild::lattice;
+    for (int rotation = 0; rotation < 4; ++rotation) {
+        Structure structure;
+        for (int x=0; x<5; ++x) for (int y=0; y<5; ++y) for (int z=0; z<5; ++z) {
+            if (x!=0 && x!=4 && y!=0 && y!=4 && z!=0 && z!=4) continue;
+            Piece wall;
+            wall.anchor = {ElementKind::Volume,0,{x,y,z}};
+            wall.footprint = footprint(wall.anchor,1,1);
+            structure.place(wall);
+        }
+        Piece corner;
+        corner.anchor = {ElementKind::Volume,0,{1,1,1}};
+        corner.footprint = withInterior(footprint(corner.anchor,2,1));
+        corner.cornerSpan = 2;
+        corner.rotationStep = rotation;
+        check(structure.place(corner), "Codex corner: prism places inside the test room");
+        const Vec3 air[] = {{2.8,1.5,1.2},{1.2,1.5,1.2},{1.2,1.5,2.8},{2.8,1.5,2.8}};
+        const Vec3 free = air[rotation], solid = air[(rotation+2)%4];
+        auto elementAt = [](const Vec3& v) { return Element{ElementKind::Volume,0,
+            {int(std::floor(v.x)),int(std::floor(v.y)),int(std::floor(v.z))}}; };
+        auto world = [](const Cell&) { return WorldCell::Sky; };
+        check(structure.occupied(elementAt(free)), "Codex corner: empty half remains reserved for placement");
+        check(enclosure(structure,elementAt(free),100,world,&free).enclosed,
+              "Codex corner: empty half connects to shelter at rotation " + std::to_string(rotation));
+        check(!enclosure(structure,elementAt(solid),100,world,&solid).enclosed,
+              "Codex corner: solid half is not air at rotation " + std::to_string(rotation));
+        const Vec3 partial[] = {{1.8,1.5,1.7},{1.8,1.5,2.1},{1.7,1.5,1.8},{2.1,1.5,1.95}};
+        const Vec3 edgeAir = partial[rotation];
+        check(enclosure(structure,elementAt(edgeAir),100,world,&edgeAir).enclosed,
+              "Codex corner: a partly filled fine cell still shelters its air");
+        structure.remove({ElementKind::Volume,0,{3,4,3}});
+        check(!enclosure(structure,elementAt(free),100,world,&free).enclosed,
+              "Codex corner: a roof hole remains a leak");
+    }
+}
+
+void testLandformProfile(const tuning::Tuning& source) {
+    auto t = source;
+    t.worldgen.map.baseHeight = 7;
+    t.worldgen.map.heightScale = 20;
+    t.worldgen.map.heightFrequency = 0.025;
+    t.worldgen.map.heightWarpMetres = 24;
+    t.worldgen.map.heightWarpFrequency = 0.018;
+    for (int seed : {1,7,29}) {
+        auto map = worldgen::generate(t,seed);
+        auto repeated = worldgen::generate(t,seed);
+        auto original = worldgen::generate(source,seed);
+        check(map.blocks == repeated.blocks, "Codex landform: repeated generation agrees");
+        check(map.blocks != original.blocks, "Codex landform: opt-in profile changes relief");
+        bool grounded = true;
+        for (const auto& node : map.nodes)
+            grounded = grounded && map.blockAt(node.x,node.y,node.z) == worldgen::kAir &&
+                map.blockAt(node.x,node.y-1,node.z) != worldgen::kAir;
+        check(grounded, "Codex landform: resources remain grounded on regenerated terrain");
+        const auto& g = t.worldgen.guarantees;
+        for (const auto& node : g.minNodesNear)
+            check(map.countNodesNear(node.first,map.spawnX,map.spawnZ,g.nearRadiusM / map.cellSize) >= node.second,
+                  "Codex landform: near resource guarantee survives: " + node.first);
+        for (const auto& node : g.minNodesFar)
+            check(map.countNodesNear(node.first,map.spawnX,map.spawnZ,g.farRadiusM / map.cellSize) >= node.second,
+                  "Codex landform: distant resource guarantee survives: " + node.first);
+        check(map.blockAt(map.gateX,map.topSolid(map.gateX,map.gateZ)-1,map.gateZ) != worldgen::kAir,
+              "Codex landform: trial entrance has solid ground");
+    }
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -4344,6 +4413,8 @@ int main(int argc, char** argv) {
     testMobGearAndPages(t);
     testElitesAndFamilies(t);
     testLattice(t);
+    testCornerEnclosure();
+    testLandformProfile(t);
     testEras(t);
     testFoundry(t);
     testEveryIngotReadsEverySkill(t);

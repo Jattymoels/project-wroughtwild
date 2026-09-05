@@ -98,7 +98,7 @@ func _hit_world(hit: Dictionary) -> void:
 			if cracked_count > 0:
 				combat.world_worked.emit("cracked", cracked_count)
 		if combat.sim.ignite_applied(id, false) > 0.0:
-			var cell: Vector3i = terrain.block_from_hit(hit["position"], hit["normal"])
+			var cell: Vector3i = terrain.block_from_surface_hit(hit)
 			if terrain.kind_at(cell.x, cell.y, cell.z) == "":
 				cell = terrain.block_from_hit(hit["position"], -hit["normal"])
 			if terrain.heat_block(cell, 1):

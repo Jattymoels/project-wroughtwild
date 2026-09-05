@@ -1,6 +1,7 @@
 #include "wroughtwild/tuning.h"
 
 #include <algorithm>
+#include <cmath>
 
 #include "wroughtwild/json.h"
 #include "wroughtwild/lattice.h"
@@ -776,6 +777,15 @@ ConstructionTable loadConstruction(const std::string& path) {
         }
         if (!shape.fineOf.empty() && !shape.fine)
             throw std::runtime_error("construction: shape '" + shape.id + "' names fine_of but is not fine");
+        if (shape.form == "corner") {
+            const double extent = table.gridSizeMetres / (shape.fine ? table.latticeDivisions : 1);
+            const bool block = shape.element == "block", floor = shape.element == "floor";
+            if ((!block && !floor) || !shape.oriented || shape.cellsTall != 1 || shape.cellsLong != 1 ||
+                std::abs(shape.sizeM[0] - extent) > 1e-8 || std::abs(shape.sizeM[2] - extent) > 1e-8 ||
+                (block && std::abs(shape.sizeM[1] - extent) > 1e-8) ||
+                (floor && (shape.sizeM[1] <= 0 || shape.sizeM[1] > extent)))
+                throw std::runtime_error("construction: corner requires an oriented square block or floor matching its grid extent");
+        }
         if (auto effect = s->find("requires_world_effect"))
             shape.requiresWorldEffect = effect->asString();
         table.shapes.push_back(std::move(shape));
@@ -1219,6 +1229,11 @@ WorldgenTable loadWorldgen(const std::string& path) {
     table.map.heightScale = map.get("height_scale").asInt();
     table.map.heightFrequency = map.get("height_frequency").asNumber();
     table.map.heightOctaves = map.get("height_octaves").asInt();
+    if (auto warp = map.find("height_warp_metres")) table.map.heightWarpMetres = warp->asNumber();
+    if (auto frequency = map.find("height_warp_frequency")) table.map.heightWarpFrequency = frequency->asNumber();
+    if (!std::isfinite(table.map.heightWarpMetres) || table.map.heightWarpMetres < 0 ||
+        !std::isfinite(table.map.heightWarpFrequency) || table.map.heightWarpFrequency <= 0)
+        throw std::runtime_error("worldgen: height warp must be finite and non-negative, frequency positive");
     table.map.moistureFrequency = map.get("moisture_frequency").asNumber();
 
     const Value& mountains = doc->get("mountains");

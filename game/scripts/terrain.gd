@@ -61,6 +61,7 @@ const KIND_NAMES := {1: "surface", 2: "dirt", 3: "stone", 4: "bedrock"}
 var _materials := {}
 ## Codex aesthetic comparison, opt-in; never serialized into a world save.
 var frontier_look: Resource
+var faceted_surface := false
 var _sim: WroughtwildSim
 var _seed := 0
 ## Mutable copy of the sim's block field with the player's digs applied.
@@ -121,6 +122,17 @@ func block_from_hit(hit_position: Vector3, hit_normal: Vector3) -> Vector3i:
 	var inside := hit_position - hit_normal * (cell * 0.5)
 	return Vector3i(floori(inside.x / cell), floori(inside.y / cell), floori(inside.z / cell))
 
+## Faceted triangles carry their exact editable voxel; never guess from a
+## slanted normal. Legacy cubic callers retain their existing conversion.
+func block_from_surface_hit(hit: Dictionary) -> Vector3i:
+	var body: Object = hit.get("collider")
+	var face_index := int(hit.get("face_index", -1))
+	if faceted_surface and body != null and body.has_meta("surface_cells"):
+		var cells: PackedVector3Array = body.get_meta("surface_cells")
+		if face_index >= 0 and face_index < cells.size():
+			return Vector3i(cells[face_index])
+	return block_from_hit(hit["position"], hit["normal"])
+
 
 ## World-space centre of a cell's top face: where things stand.
 func surface_position(x: int, z: int) -> Vector3:
@@ -133,6 +145,7 @@ func _material_for(kind: String) -> Material:
 		return _materials[kind]
 	if frontier_look != null:
 		var frontier_material: Material = frontier_look.terrain_material(kind, float(map.get("cell_size", 1.0)))
+		frontier_material.set_shader_parameter("world_mesh", faceted_surface)
 		_materials[kind] = frontier_material
 		return frontier_material
 	var material := StandardMaterial3D.new()
@@ -146,7 +159,8 @@ func _material_for(kind: String) -> Material:
 
 
 func build(sim: WroughtwildSim, seed_value: int) -> void:
-	if OS.get_cmdline_user_args().has("--frontier-look"):
+	faceted_surface = OS.get_cmdline_user_args().has("--faceted-look")
+	if OS.get_cmdline_user_args().has("--frontier-look") or faceted_surface:
 		frontier_look = preload("res://art/frontier_look.tres")
 	_materials.clear()
 	for child in get_children():
@@ -173,7 +187,7 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 	add_child(_overlays)
 
 	var cell: float = map["cell_size"]
-	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS):
+	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS, faceted_surface):
 		_build_chunk(chunk_data, cell)
 
 	nodes_root = Node3D.new()
@@ -191,6 +205,18 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 
 	var kinds: Dictionary = chunk_data["kinds"]
 	for kind in kinds:
+		if chunk_data.has("surfaces"):
+			var arrays := []
+			arrays.resize(Mesh.ARRAY_MAX)
+			arrays[Mesh.ARRAY_VERTEX] = chunk_data["surfaces"][kind]
+			arrays[Mesh.ARRAY_NORMAL] = chunk_data["normals"][kind]
+			var surface := ArrayMesh.new()
+			surface.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+			var visible := MeshInstance3D.new()
+			visible.mesh = surface
+			visible.material_override = _material_for(String(kind))
+			chunk.add_child(visible)
+			continue
 		var centres: PackedVector3Array = kinds[kind]
 		if centres.is_empty():
 			continue
@@ -220,6 +246,8 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 		var body := StaticBody3D.new()
 		body.name = "ChunkBody"
 		body.set_meta("terrain_chunk", true)
+		if chunk_data.has("source_cells"):
+			body.set_meta("surface_cells", chunk_data["source_cells"])
 		var collider := CollisionShape3D.new()
 		collider.shape = shape
 		body.add_child(collider)
@@ -258,6 +286,14 @@ func _touched_chunk_origins(x: int, z: int) -> Array[Vector2i]:
 		origins.append(Vector2i(x - x % CHUNK_CELLS, z - CHUNK_CELLS))
 	elif z % CHUNK_CELLS == CHUNK_CELLS - 1 and z + 1 < int(map["height"]):
 		origins.append(Vector2i(x - x % CHUNK_CELLS, z + 1))
+	if faceted_surface:
+		# Vertex averaging reads diagonally across a chunk corner as well.
+		var sides := origins.duplicate()
+		for a in sides:
+			for b in sides:
+				var diagonal := Vector2i(a.x, b.y)
+				if not origins.has(diagonal):
+					origins.append(diagonal)
 	return origins
 
 
@@ -275,7 +311,7 @@ func _rebuild_chunk(cx: int, cz: int) -> void:
 		packed.append(v.x)
 		packed.append(v.y)
 		packed.append(v.z)
-	_build_chunk(_sim.world_mesh_chunk(_seed, CHUNK_CELLS, cx, cz, packed), map["cell_size"])
+	_build_chunk(_sim.world_mesh_chunk(_seed, CHUNK_CELLS, cx, cz, packed, faceted_surface), map["cell_size"])
 
 
 ## SaveManager hook: makes the world's digs exactly the save's - undoes

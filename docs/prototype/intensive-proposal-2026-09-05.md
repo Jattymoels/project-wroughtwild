@@ -6,6 +6,13 @@
 
 Implementation: `52a54fd` on `codex/aesthetic-experiments` (Codex).
 
+**Subsequent owner-authorised continuation:** Codex implemented a faceted
+terrain comparison, a fresh-world contour fixture, and an octagonal workshop
+with diagonal exterior walls and corrected empty-half shelter. The earlier
+limitations described below are historical. See the [continuation report](../art/codex-aesthetic-intensive-2026-09-05.md)
+for tested behaviour, remaining roof/placement limits and explicit clarification
+of the tree/boulder repair. Candidate art and shape unlocks remain experiments.
+
 The owner subsequently authorised experiments, prioritising aesthetics and
 allowing progression work only if quick. This replaces the priority order
 in the original assessment below. It does **not** accept all proposed game

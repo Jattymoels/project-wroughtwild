@@ -34,6 +34,9 @@ echo "== grammar test (frost orb fork, freeze breakpoints, shatter cascade) =="
 echo "== feel test (pickup magnet, harvest feedback, jump buffer) =="
 "$GODOT" --headless --path . res://tests/feel.tscn
 
+echo "== Codex faceted terrain =="
+"$GODOT" --headless --path . res://tests/faceted_terrain.tscn
+
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 
