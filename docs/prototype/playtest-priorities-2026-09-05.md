@@ -7,6 +7,8 @@ Owner-approved order, following the normal building/art adoption:
    pacing; each action should communicate work and eventual reward.
 2. **Building usability.** Visual shape picker, easier roof/corner orientation,
    and clearer placement failures, including the adopted octagonal pieces.
+   Implemented in the [building usability pass](../art/codex-building-usability-2026-09-05.md):
+   Tab catalogue, rotation inspection/marker, specific refusals and payment checks.
 3. **Combat feel.** Distinct weapon/cast presentation and incoming-hit direction.
    Investigate the ranged-enemy playtest report first within this pass.
 4. **Reasons to explore.** Small recognisable encounters around existing

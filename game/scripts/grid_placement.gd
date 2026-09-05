@@ -15,6 +15,7 @@ extends Node
 
 const PLACED_BLOCK_SCENE := preload("res://scenes/placed_block.tscn")
 const STATION_SITE_SCENE := preload("res://scenes/station_site.tscn")
+const UI_LOOK = preload("res://art/build_ui_look.tres")
 const KIT_PREVIEW_SIZE := Vector3(1.8, 1.2, 1.8)
 ## Kits stand in a whole cell: they target the lattice as this shape does.
 const KIT_STAND_IN_SHAPE := &"cube"
@@ -61,6 +62,9 @@ var selected_kit: StringName = &""
 @export var inventory: WroughtwildInventory
 
 var build_mode_enabled := false
+var palette_open := false
+var preview_reason := ""
+var _orientation_marker: MeshInstance3D
 var preview_valid := false
 var preview_visible := false
 ## The element the preview targets ({kind, axis, cell}); empty when hidden.
@@ -130,6 +134,7 @@ func _refresh_selection() -> void:
 		shape_oriented = bool(info.get("oriented", false))
 	if _preview_mesh != null:
 		_preview_mesh.mesh = PieceMesh.preview_mesh_for(shape_form, shape_size)
+		_refresh_orientation_marker()
 
 
 ## Fine mode on or off; returns the new state.
@@ -259,8 +264,64 @@ func lock_reason() -> String:
 func family_refusal() -> String:
 	if family_allowed():
 		return ""
-	var traits: PackedStringArray = _sim().shape(_target_shape()).get("requires_traits", PackedStringArray())
-	return "needs " + ", ".join(traits)
+	var suitable := PackedStringArray()
+	var traits: PackedStringArray = _sim().shape(_target_shape()).get("requires_traits",PackedStringArray())
+	for id in _sim().build_material_ids():
+		if _sim().shape_allows_family(_target_shape(),id):
+			suitable.append(_sim().build_material(id).get("display_name",id))
+	var need := " Needs %s." % ", ".join(traits) if not traits.is_empty() else ""
+	return "%s cannot make this shape.%s Choose %s in Tab." % [material_label(),need,", ".join(suitable.slice(0,3))]
+
+func cost_label() -> String:
+	if selected_kit != &"":
+		return "1 kit per placement · %d carried" % _sim().material_count(selected_kit)
+	var info: Dictionary = _sim().build_material(selected_material_family)
+	return "%d %s per piece · %d carried" % [_sim().shape(_target_shape()).get("material_cost",0),material_label(),info.get("carried",0)]
+
+func selection_refusal() -> String:
+	if locked():
+		return lock_reason()
+	if not family_allowed():
+		return family_refusal()
+	if selected_kit != &"":
+		return "No kit left. Craft another at its station." if _sim().material_count(selected_kit) <= 0 else ""
+	if not _sim().can_afford_placement(_target_shape(),selected_material_family):
+		return "Not enough material. "+cost_label()
+	return ""
+
+func orientation_label() -> String:
+	if not rotatable():
+		return "Aligns to the surface you aim at."
+	if shape_form == "door":
+		return "Hinge %d/2 · R flips the hinge" % (preview_rotation_step%2+1)
+	return "Direction %d/4 · arrow marks front · R turns 90°" % (preview_rotation_step+1)
+
+func placement_feedback() -> String:
+	var refusal := selection_refusal()
+	if refusal != "":
+		return refusal
+	if not preview_visible:
+		return "Aim at ground or a building edge within %d m." % placement_range
+	return preview_reason if preview_reason != "" else "Ready · LMB place"
+
+func _refresh_orientation_marker() -> void:
+	if _orientation_marker == null:
+		_orientation_marker = MeshInstance3D.new()
+		var material := StandardMaterial3D.new()
+		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		material.albedo_color = UI_LOOK.arrow_colour
+		_orientation_marker.material_override = material
+		_orientation_marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		_preview_mesh.add_child(_orientation_marker)
+	var mesh := ImmediateMesh.new()
+	var y: float = shape_size.y*0.5+UI_LOOK.arrow_lift
+	var length: float = UI_LOOK.arrow_length
+	mesh.surface_begin(Mesh.PRIMITIVE_LINES)
+	for point in [Vector3(0,y,length*0.3),Vector3(0,y,-length*0.7),Vector3(0,y,-length*0.7),Vector3(-length*0.24,y,-length*0.4),Vector3(0,y,-length*0.7),Vector3(length*0.24,y,-length*0.4)]:
+		mesh.surface_add_vertex(point)
+	mesh.surface_end()
+	_orientation_marker.mesh = mesh
+	_orientation_marker.visible = rotatable()
 
 
 func _find_terrain() -> Terrain:
@@ -310,7 +371,7 @@ func set_build_mode_enabled(enabled: bool) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if build_mode_enabled:
+	if build_mode_enabled and not palette_open:
 		_update_preview()
 
 
@@ -394,16 +455,24 @@ func _buried(element: Dictionary) -> bool:
 ## (nodes, stations, mobs, pickups). Other placed pieces never block - the
 ## structure decides those conflicts.
 func element_accepts(element: Dictionary) -> bool:
+	return element_refusal(element) == ""
+
+func element_refusal(element: Dictionary) -> String:
 	var shape := _target_shape()
 	if element.is_empty() or not _sim().shape_accepts(shape, element):
-		return false
+		return "Aim at a suitable surface or building edge for this shape."
 	if not _sim().structure_free_for(shape, element):
-		return false
+		return "That space is occupied. Aim beside it, or X to remove the existing piece."
 	if _buried(element):
-		return false
+		return "Inside terrain. Aim at the exposed surface or clear the ground first."
 	var pose := piece_pose(shape, element, preview_rotation_step)
 	if pose.is_empty():
-		return false
+		return "This shape cannot fit that surface. Aim at another face."
+	if selected_kit != &"":
+		# Match the displayed kit box's raised centre, rather than testing a
+		# taller box at the cube centre and accidentally clipping into the floor.
+		pose["centre"].y += (KIT_PREVIEW_SIZE.y-grid_size)*0.5
+		pose["yaw"] = float(preview_rotation_step)*PI/2.0
 	var terrain := _find_terrain()
 	var shape_box := BoxShape3D.new()
 	# Slightly smaller than the piece so face-adjacent neighbours do not touch.
@@ -419,8 +488,14 @@ func element_accepts(element: Dictionary) -> bool:
 			continue
 		if terrain != null and terrain.is_terrain_body(collider):
 			continue
-		return false
-	return true
+		if collider is ResourceNode:
+			return "A resource blocks this space. Harvest it or choose another spot."
+		if collider is StationSite:
+			return "A station blocks this space. Leave room around it."
+		if collider is Enemy:
+			return "A creature blocks this space. Wait until it moves clear."
+		return "An object blocks this space. Choose a clear spot."
+	return ""
 
 
 ## The element the selected shape would take for a surface hit: the nearest
@@ -541,13 +616,12 @@ func _update_preview() -> void:
 	if selected_kit != &"":
 		# The kit preview is a stand-in box on the cell floor, not a shape.
 		pose["centre"].y += (KIT_PREVIEW_SIZE.y - grid_size) * 0.5
+		pose["yaw"] = float(preview_rotation_step)*PI/2.0
 
-	var affordable: bool
-	if selected_kit != &"":
-		affordable = _sim().material_count(selected_kit) > 0
-	else:
-		affordable = _sim().can_afford_placement(_target_shape(), selected_material_family)
-	preview_valid = affordable and element_accepts(element)
+	preview_reason = selection_refusal()
+	if preview_reason == "":
+		preview_reason = element_refusal(element)
+	preview_valid = preview_reason == ""
 
 	_preview_mesh.global_position = pose["centre"]
 	_preview_mesh.rotation.y = pose["yaw"]
@@ -560,13 +634,23 @@ func _hide_preview() -> void:
 	_preview_mesh.visible = false
 	preview_visible = false
 	preview_valid = false
+	preview_reason = ""
 	preview_element = {}
 
 
 ## Places the selected piece (or founds a station from a kit) on the
 ## previewed element, paying for it through the sim.
 func try_place_block() -> bool:
-	if not build_mode_enabled or not preview_visible or not preview_valid:
+	if not build_mode_enabled or palette_open:
+		return false
+	# Revalidate the same displayed address before payment: a second click or
+	# a moving creature may invalidate it between physics frames.
+	preview_reason = selection_refusal()
+	if preview_reason == "":
+		preview_reason = element_refusal(preview_element) if preview_visible else "Aim at ground or a building edge within %d m." % placement_range
+	if preview_reason != "":
+		(get_parent() as WroughtwildPlayer).hud.notify(preview_reason)
+		preview_valid = false
 		return false
 	if selected_kit != &"":
 		return _place_kit()
@@ -658,8 +742,9 @@ func try_remove_block() -> bool:
 	return remove_piece(block)
 
 
-func rotate_preview() -> void:
-	preview_rotation_step = (preview_rotation_step + 1) % 4
+func rotate_preview(direction: int = 1) -> void:
+	if rotatable():
+		preview_rotation_step = posmod(preview_rotation_step + direction,4)
 
 
 ## Corner trims: the sim says which vertical registry edges want a post

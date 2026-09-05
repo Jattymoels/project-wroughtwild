@@ -1,5 +1,10 @@
 # Decision Registry
 
+Owner follow-through, 5 Sep 2026: “Lets do it” approves the next building
+usability pass: visual selection, roof/corner orientation and actionable placement
+feedback. Tab while building now opens the catalogue. Existing construction
+rules and unlocks remain; [implementation](../art/codex-building-usability-2026-09-05.md).
+
 Owner prioritisation, 5 Sep 2026: gathering feedback is paramount, followed by
 building usability, combat feel and reasons to explore. Ranged-mob dodge/damage
 concerns and a separate intensive skill-variety task are recorded for later work

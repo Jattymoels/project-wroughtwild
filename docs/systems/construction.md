@@ -281,6 +281,14 @@ malleable form.
 
 ## Interface requirements
 
+Owner-approved usability pass, 5 Sep 2026: Tab in build mode opens a visual
+catalogue with separate material selection, grouped shapes, existing fine twins,
+held kits, costs and unlock hints. Oriented shapes have left/right inspection
+buttons and a front arrow shared with the world ghost. The crosshair explains
+placement failures and suggested remedies; the displayed address is revalidated
+before charging. Ordinary construction rules and schema-2 saves remain unchanged.
+[Controls, tuning and verification](../art/codex-building-usability-2026-09-05.md).
+
 - Material selection and shape selection must be separate concepts.
 - The palette must support filters, favourites and recently used shapes eventually.
 - Prototype controls must display rotation, removal and material cost clearly.

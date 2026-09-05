@@ -22,6 +22,7 @@ const JUMP_BUFFER_SECONDS := 0.12
 @onready var camera: Camera3D = $SpringArm3D/Camera3D
 @onready var inventory: WroughtwildInventory = $Inventory
 @onready var placement: GridPlacement = $Placement
+var build_palette: BuildPalette
 @onready var combat: PlayerCombat = $Combat
 @onready var body_mesh: MeshInstance3D = $MeshInstance3D
 
@@ -139,6 +140,11 @@ func _ready() -> void:
 	chest_panel.player = self
 	chest_panel.closed.connect(_capture_mouse)
 	add_child(chest_panel)
+	build_palette = BuildPalette.new()
+	build_palette.player = self
+	build_palette.placement = placement
+	build_palette.closed.connect(_capture_mouse)
+	add_child(build_palette)
 
 	trial = TrialController.new()
 	trial.setup(self)
@@ -213,6 +219,8 @@ func open_custom_panel(title: String, rows: Array, message_text: String = "") ->
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if build_palette.is_open():
+		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var pitch_limit := FP_PITCH_LIMIT if first_person else TP_PITCH_LIMIT
 		rotation.y -= event.relative.x * mouse_sensitivity
@@ -253,6 +261,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("hand_craft"):
 		open_hand_crafting()
 	elif event.is_action_pressed("cycle_shape"):
+		if placement.build_mode_enabled:
+			build_palette.open_panel()
+			return
 		placement.cycle_shape()
 		var hint: String = inventory.get_sim().shape(placement.placing_shape()).get("hint", "")
 		hud.notify("Placing: %s%s" % [placement.selection_label(), "  -  " + hint if hint != "" else ""])
@@ -448,7 +459,7 @@ func respawn_point() -> Vector3:
 
 func _physics_process(delta: float) -> void:
 	_horn_left = maxf(0.0, _horn_left - delta)
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and not build_palette.is_open():
 		_jump_buffer_left = JUMP_BUFFER_SECONDS
 	else:
 		_jump_buffer_left = maxf(0.0, _jump_buffer_left - delta)
@@ -475,6 +486,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0.0
 	else:
 		var input := test_walk if test_walk != Vector2.ZERO else Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		if build_palette.is_open():
+			input = Vector2.ZERO
 		var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
 		velocity.x = direction.x * move_speed * combat.haste_multiplier()
 		velocity.z = direction.z * move_speed * combat.haste_multiplier()
@@ -601,6 +614,7 @@ func _finish_dig(terrain: Terrain, cell: Vector3i, rule: Dictionary) -> void:
 
 
 func _on_died() -> void:
+	build_palette.close_panel()
 	if trial.active():
 		# Trial death is the sim's contract: deposit safe, run loot lost,
 		# catalysts kept. Nothing drops in the arena.

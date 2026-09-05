@@ -20,6 +20,11 @@ purpose.
 
 ## Run from a clean checkout
 
+Building: press **B**, then **Tab** for the visual shape/material picker.
+Select a card, inspect its direction with the turn buttons, and use the selection.
+**R** rotates in the world; the arrow marks the front. Placement failures now
+explain what is blocking the piece. Restart the game to load this UI update.
+
 Gathering now shows work progress and the next yield under the crosshair, with
 brief hand/impact feedback. Drops count as carried only after pickup. Restart
 the running game to load script changes; existing saves retain their work counts.

@@ -106,6 +106,14 @@ catalysts, sun-warm for currency). Default font, sizes 13–22.
 
 ## Feedback and interface
 
+Building usability continuation, 5 Sep 2026: the building selection panel uses
+the existing work-panel style. Tab opens it while building; shape cards and
+material selection are separate, the detail view rotates the real piece geometry,
+and close/use recaptures the mouse. Long catalogues and details scroll without
+moving the close/use buttons. The crosshair adds specific placement refusals;
+the build chip separates cost, orientation and controls. See the
+[building UI report](../art/codex-building-usability-2026-09-05.md).
+
 Owner-prioritised gathering pass, 5 Sep 2026: a compact meter below the target
 line reads each resource's existing work count and next yield. It hides on target
 loss, depletion, digging, build mode, death and open panels. Successful work has

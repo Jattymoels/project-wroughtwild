@@ -19,7 +19,8 @@ param(
     [switch]$Continuation,
     [switch]$Stations,
     [switch]$Buildings,
-    [switch]$Gathering
+    [switch]$Gathering,
+    [switch]$BuildPicker
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -74,7 +75,12 @@ if ($Checks) {
     Invoke-GodotReview 'stations-headless' '--headless res://experiments/station_review.tscn'
     Invoke-GodotReview 'buildings-headless' '--headless res://experiments/building_review.tscn'
     Invoke-GodotReview 'gathering-feedback' '--headless res://tests/gathering_feedback.tscn'
+    Invoke-GodotReview 'build-usability' '--headless res://tests/build_usability.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($BuildPicker) {
+    Invoke-GodotReview 'build-picker-import' '--headless --import'
+    Invoke-GodotReview 'build-usability' '--headless res://tests/build_usability.tscn'
+    Invoke-GodotReview 'build-picker-review' '--position -9999,-9999 res://experiments/build_picker_review.tscn'
 } elseif ($Gathering) {
     Invoke-GodotReview 'gathering-import' '--headless --import'
     Invoke-GodotReview 'gathering-feedback' '--headless res://tests/gathering_feedback.tscn'

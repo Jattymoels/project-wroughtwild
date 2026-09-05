@@ -14,7 +14,7 @@ const HELP_TEXT := """WASD move  ·  mouse look  ·  Space jump  ·  Shift dash 
 E interact: harvest, work at a station, read the board, open the gate
 LMB harvest  ·  hold LMB on the ground to dig it out (stone pays stone)
 LMB places in build mode  ·  C craft by hand  ·  I pack
-B build mode  ·  Tab shape or kit  ·  X remove  ·  R turn stairs, wedges, a door's hinge
+B build mode  ·  Tab visual shape picker  ·  X remove  ·  R turn corners, roofs or a door's hinge
 Pieces snap to the nearest free cell, face or edge you look at: walls join walls, posts stack
 G fine pieces: half-scale twins of the cube, wall, post, beam and slab  ·  E opens a door
 Q building material: timber, stone or iron from your pack - doors need joinery, cut stone needs stone, girders need iron
@@ -400,6 +400,8 @@ func _refresh_crosshair() -> void:
 		"interact": _crosshair.modulate = CROSSHAIR_INTERACT
 		_: _crosshair.modulate = CROSSHAIR_NEUTRAL
 	_target_label.text = _dig_text if _dig_text != "" else probe["label"]
+	if placement.build_mode_enabled and not placement.palette_open:
+		_target_label.text = placement.placement_feedback()
 
 	# Hover highlight: glow the harvestable you are looking at.
 	var target: Node = probe["target"] as Node
@@ -516,15 +518,9 @@ func refresh() -> void:
 	if placement != null:
 		if placement.build_mode_enabled:
 			_build_chip.modulate = UiTheme.FROST
-			var refusal := placement.lock_reason()
-			if refusal == "":
-				refusal = placement.family_refusal()
-			_build_chip.text = "B  Building: %s  (%s, %d each  ·  Tab change  ·  Q material%s%s%s)" % [
-				placement.selection_label(), placement.material_label(),
-				sim.shape(placement.placing_shape()).get("material_cost", 0),
-				"  ·  R turn" if placement.rotatable() else "",
-				"  ·  G fine" if placement.has_fine_twin() else "",
-				"  ·  " + refusal if refusal != "" else ""]
+			_build_chip.text = "%s · %s\n%s\nTab shapes · Q material · X remove · B finish%s" % [
+				placement.selection_label(),placement.cost_label(),placement.orientation_label(),
+				" · G half-size" if placement.has_fine_twin() else ""]
 		else:
 			_build_chip.modulate = UiTheme.MUTED
 			_build_chip.text = "B  build"
