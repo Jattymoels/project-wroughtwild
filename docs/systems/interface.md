@@ -129,8 +129,20 @@ and why not" — is answerable from one screen without scrolling the HUD.
 - [x] A forge panel with every row available fits on a 720p window with the
       close button reachable.
 - [x] Every panel is driven headless by the integration test.
-- [ ] Wave 2: item cards with rarity colour and per-modifier sentences; a
+- [x] Wave 2: item cards with rarity colour and per-modifier sentences; a
       compare view against the worn item.
+
+Owner-approved comparison continuation, 5 Sep 2026: each carried equipment card
+offers Compare. Current and candidate item cards sit beside each other, followed
+by life, armour, resistances, area bonus and changes to known skills' hit payload,
+cooldown, reach, projectile count and pierce. The native view uses a copied
+equipment set and the existing stat/modifier functions; previewing never changes
+inventory or saves. Payload excludes enemy defence, critical rolls and temporary
+trial boons, and is explicitly not DPS. Conditional effects remain item-card
+sentences. Equip candidate is a separate action, revalidates the item, and returns
+the previous equipment through the existing pack rule. Back/close retain mouse
+capture behaviour; scrolling leaves equip/back accessible at 720p and 1080p.
+See [verification](../art/codex-frontier-continuation-2026-09-05.md).
 
 ## Open questions
 

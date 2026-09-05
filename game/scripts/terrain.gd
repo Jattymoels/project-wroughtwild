@@ -197,6 +197,8 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 
 	var cell: float = map["cell_size"]
 	var geometry_start := Time.get_ticks_msec()
+	if weathered:
+		HabitatCover.prepare(map)
 	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS, faceted_surface, _blend_palette()):
 		_build_chunk(chunk_data, cell)
 	var resources_start := Time.get_ticks_msec()
@@ -258,6 +260,8 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 	# Ground cover per biome (Wave 6 slice 4): tufts, ferns, reeds, dead
 	# grass on the surface blocks, batched per chunk and kind.
 	GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look)
+	if weathered:
+		HabitatCover.build(chunk,chunk_data,map,cell)
 
 	var faces: PackedVector3Array = chunk_data["faces"]
 	if not faces.is_empty():

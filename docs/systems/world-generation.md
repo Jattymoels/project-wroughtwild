@@ -1,5 +1,16 @@
 # World Generation, Settlements and Travel
 
+Owner-approved presentation continuation, 5 Sep 2026: the weathered view adds
+deterministic habitat patches of shrubs, fern beds, short rotten deadfall and
+stumps. Placement uses existing biome and surface data, samples collision
+triangles and excludes steep/unsupported footprints, resource work areas, the
+spawn clearing and progression sites. Chunk rebuilds regenerate the same cover
+from the edited surface. No generation guarantees, resource yields or save
+schema changed. Existing landmark meshes gain worn edges and inlays; nearby
+resource trees present as bare snags to open sightlines while retaining their
+identities, collision and wood. This is presentation, not new world content or
+rewards. [Details](../art/codex-frontier-continuation-2026-09-05.md).
+
 **Status:** Bounded hybrid generation accepted for prototype exploration;
 the Wave 3 world pass answers "final terrain representation and
 destructibility" — see

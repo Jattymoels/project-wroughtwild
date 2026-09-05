@@ -21,6 +21,8 @@ signal world_worked(what: String, count: int)
 ## A link fired (D-023): skill_id cast itself because source_skill's
 ## trigger (freeze, ignite, bleed) landed on an enemy.
 signal linked_cast(skill_id: StringName, trigger: String, source_skill: StringName)
+## A real cooldown was spent (even a missed strike); presentation only.
+signal skill_committed(skill_id: StringName)
 
 ## The four starting skills, named for tests and legacy callers. Everything
 ## else arrives as a skill page and is addressed through the bar (D-016).
@@ -350,6 +352,7 @@ func cooldown_total(skill_id: StringName) -> float:
 
 func _spend(skill_id: StringName) -> void:
 	cooldowns[skill_id] = cooldown_total(skill_id)
+	skill_committed.emit(skill_id)
 
 
 ## --- the skill bar (D-016) ---------------------------------------------------

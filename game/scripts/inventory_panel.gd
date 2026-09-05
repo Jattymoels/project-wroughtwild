@@ -29,6 +29,10 @@ var _vitals: Label
 var _mods: VBoxContainer
 var _debug: VBoxContainer
 var _message: Label
+var comparison: EquipmentCompare
+var _compare_index := -1
+var _compare_base := ""
+var _compare_candidate := {}
 ## Test surface: tiles, gear cards and skill rows shown by the last refresh.
 var tile_count := 0
 var gear_count := 0
@@ -39,7 +43,7 @@ func _ready() -> void:
 	layer = 10
 	_root = PanelContainer.new()
 	_root.theme = UiTheme.theme()
-	_root.set_anchors_preset(Control.PRESET_CENTER)
+	_root.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	_root.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_root.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_root.custom_minimum_size = Vector2(1040, 0)
@@ -120,6 +124,12 @@ func _ready() -> void:
 	_message = Label.new()
 	_message.modulate = UiTheme.EMBER
 	column.add_child(_message)
+	comparison = EquipmentCompare.new()
+	add_child(comparison)
+	comparison.back_requested.connect(_back_to_pack)
+	comparison.equip_requested.connect(equip_compared)
+	_root.resized.connect(_centre_root)
+	get_viewport().size_changed.connect(_fit_height)
 
 
 func _section(text: String) -> Label:
@@ -131,10 +141,11 @@ func _section(text: String) -> Label:
 
 
 func is_open() -> bool:
-	return _root != null and _root.visible
+	return _root != null and (_root.visible or (comparison!=null and comparison.visible))
 
 
 func open_panel() -> void:
+	comparison.hide()
 	_message.text = ""
 	_root.visible = true
 	refresh()
@@ -144,7 +155,35 @@ func close_panel() -> void:
 	if not is_open():
 		return
 	_root.visible = false
+	comparison.hide()
 	closed.emit()
+
+func _back_to_pack() -> void:
+	comparison.hide()
+	_root.show()
+	refresh()
+
+func compare_item(index: int, base_id: String="") -> bool:
+	var preview: Dictionary = sim.compare_equipment(index,base_id)
+	if preview.is_empty():
+		return false
+	_compare_index = index
+	_compare_base = base_id
+	_compare_candidate = preview.candidate.duplicate(true)
+	comparison.display(preview,_item_card)
+	_root.hide()
+	return true
+
+func equip_compared() -> bool:
+	var fresh: Dictionary = sim.compare_equipment(_compare_index,_compare_base)
+	if fresh.is_empty() or fresh.candidate!=_compare_candidate:
+		_back_to_pack()
+		_message.text = "Your pack changed. Compare the item again."
+		return false
+	var ok := sim.equip_pack_item(_compare_index) if _compare_index>=0 else sim.equip_from_inventory(_compare_base)
+	_back_to_pack()
+	_message.text = "Equipped. Previous gear returned to the pack." if ok else "That item is no longer available."
+	return ok
 
 
 func toggle() -> void:
@@ -234,6 +273,10 @@ func _fit_height() -> void:
 	var cap := get_viewport().get_visible_rect().size.y * MAX_HEIGHT_FRACTION
 	var body := _scroll.get_child(0) as Control
 	_scroll.custom_minimum_size.y = clampf(body.size.y + 4.0, 120.0, cap)
+	_centre_root()
+
+func _centre_root() -> void:
+	_root.position = (get_viewport().get_visible_rect().size-_root.size)*0.5
 
 
 func _clear(container: Node) -> void:
@@ -325,6 +368,7 @@ func _item_card(item: Dictionary, button_text: String, on_pressed: Callable) -> 
 	var title := Label.new()
 	title.text = "%s %s  —  %s" % [rarity.capitalize(), item.get("display_name", "?"), Hud.pretty(String(item.get("slot", "")))]
 	title.modulate = UiTheme.rarity_colour(rarity)
+	title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(title)
 	var stats := PackedStringArray()
 	if int(item.get("armour", 0.0)) > 0:
@@ -359,12 +403,14 @@ func _item_card(item: Dictionary, button_text: String, on_pressed: Callable) -> 
 			bp.text = "      tier %d: %s" % [int(mod.get("tier", 0)), text]
 			bp.add_theme_font_size_override("font_size", 12)
 			bp.modulate = UiTheme.SUN_WARM
+			bp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			column.add_child(bp)
 		for text in mod.get("held_breakpoints", []):
 			var bp := Label.new()
 			bp.text = "      held: %s" % text
 			bp.add_theme_font_size_override("font_size", 12)
 			bp.modulate = UiTheme.MUTED
+			bp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			column.add_child(bp)
 	if button_text != "":
 		var button := Button.new()
@@ -373,12 +419,23 @@ func _item_card(item: Dictionary, button_text: String, on_pressed: Callable) -> 
 		button.pressed.connect(on_pressed)
 		row.add_child(button)
 	if item.has("index") and int(item["index"]) >= 0:
+		var compare := Button.new()
+		compare.text = "Compare"
+		compare.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		compare.pressed.connect(compare_item.bind(int(item["index"]),""))
+		row.add_child(compare)
 		var discard := Button.new()
 		discard.text = "Discard"
 		discard.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 		discard.modulate = UiTheme.MUTED
 		discard.pressed.connect(discard_pack_item.bind(int(item["index"])))
 		row.add_child(discard)
+	elif item.has("compare_base"):
+		var compare := Button.new()
+		compare.text = "Compare"
+		compare.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		compare.pressed.connect(compare_item.bind(-1,String(item.compare_base)))
+		row.add_child(compare)
 	return card
 
 
@@ -394,6 +451,7 @@ func _refresh_gear() -> void:
 		if held > 0:
 			var base: Dictionary = sim.item_base(base_id)
 			var plain := {"display_name": "%s ×%d" % [base.get("display_name", base_id), held], "slot": base.get("slot", ""),
+				"compare_base":String(base_id),
 				"rarity": "plain", "mods": base.get("implicit_modifiers", []),
 				"armour": base.get("implicit_properties", {}).get("armour", 0.0)}
 			_gear.add_child(_item_card(plain, "Wear", wear.bind(StringName(base_id))))

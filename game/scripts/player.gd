@@ -99,6 +99,10 @@ func _ready() -> void:
 	body_material.roughness = 1.0
 	body_mesh.material_override = body_material
 	_apply_camera_mode()
+	var hands := FirstPersonHands.new()
+	hands.name = "FirstPersonHands"
+	hands.player = self
+	camera.add_child(hands)
 
 	hud = Hud.new()
 	hud.sim = inventory.get_sim()

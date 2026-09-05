@@ -39,10 +39,10 @@ func _material(colour: Color) -> StandardMaterial3D:
 
 func _box(size: Vector3, at: Vector3, colour: Color, yaw: float = 0.0) -> MeshInstance3D:
 	var mesh := MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size = size
-	box.material = _material(colour)
-	mesh.mesh = box
+	var art := preload("res://art/landmark_look.tres")
+	var shade: Color = art.drowned_colour if look=="altar" else art.rift_colour if look=="rift" else art.stone_colour
+	mesh.mesh = art.stone(size,shade.lerp(colour,0.15),hash(at))
+	mesh.material_override = art.material()
 	mesh.position = at
 	mesh.rotation.y = yaw
 	add_child(mesh)
@@ -59,6 +59,11 @@ func _collide(size: Vector3, at: Vector3) -> void:
 
 
 func _build() -> void:
+	var detail := MeshInstance3D.new()
+	detail.name = "CurioInlay"
+	detail.mesh = preload("res://art/landmark_look.tres").inlay(look)
+	detail.material_override = preload("res://art/landmark_look.tres").material()
+	add_child(detail)
 	match look:
 		"altar":
 			# A ring of drowned slabs around a dark block, low in the reeds.

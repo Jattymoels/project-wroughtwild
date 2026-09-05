@@ -193,6 +193,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("modifier_ids"), &WroughtwildSim::modifier_ids);
     ClassDB::bind_method(D_METHOD("modifier", "modifier_id"), &WroughtwildSim::modifier);
     ClassDB::bind_method(D_METHOD("pack_items"), &WroughtwildSim::pack_items);
+    ClassDB::bind_method(D_METHOD("compare_equipment", "pack_index", "base_id"), &WroughtwildSim::compare_equipment, DEFVAL(String()));
     ClassDB::bind_method(D_METHOD("equip_pack_item", "index"), &WroughtwildSim::equip_pack_item);
     ClassDB::bind_method(D_METHOD("unequip", "slot"), &WroughtwildSim::unequip);
     ClassDB::bind_method(D_METHOD("active_modifiers"), &WroughtwildSim::active_modifiers);
@@ -3145,12 +3146,12 @@ Dictionary WroughtwildSim::transfer_with_catalyst(const String& process_id, int 
 
 // --- the Foundry ---------------------------------------------------------------
 
-wroughtwild::stats::DerivedStats WroughtwildSim::derived_now() const {
+wroughtwild::stats::DerivedStats WroughtwildSim::derived_now(const wroughtwild::stats::Equipment* preview) const {
     std::vector<wroughtwild::stats::ExtraEffect> extra;
     for (const auto& mod : wroughtwild::grammar::foundryMods(*tuning_, player_->foundry(), player_->currentEra())) {
         extra.push_back({mod.effectKey, mod.value});
     }
-    return wroughtwild::stats::deriveStats(tuning_->world.playerBase, equipment_, tuning_->items, extra);
+    return wroughtwild::stats::deriveStats(tuning_->world.playerBase, preview ? *preview : equipment_, tuning_->items, extra);
 }
 
 Dictionary WroughtwildSim::foundry() const {
@@ -3589,8 +3590,8 @@ void WroughtwildSim::record_world_effect(const String& effect) {
 
 // --- D-014 itemisation ---------------------------------------------------------
 
-wroughtwild::grammar::ActiveMods WroughtwildSim::active_mods() const {
-    auto mods = wroughtwild::grammar::gearMods(tuning_->items, equipment_);
+wroughtwild::grammar::ActiveMods WroughtwildSim::active_mods(const wroughtwild::stats::Equipment* preview) const {
+    auto mods = wroughtwild::grammar::gearMods(tuning_->items, preview ? *preview : equipment_);
     // The Foundry's plate speaks in the same modifiers as gear (D-019).
     for (auto& mod : wroughtwild::grammar::foundryMods(*tuning_, player_->foundry(), player_->currentEra())) {
         mods.push_back(std::move(mod));
@@ -3701,6 +3702,69 @@ Array WroughtwildSim::pack_items() const {
         items.push_back(item_entry(*tuning_, player_->packItems[i], static_cast<int>(i)));
     }
     return items;
+}
+
+Dictionary WroughtwildSim::compare_equipment(int pack_index, const String& base_id) const {
+    Dictionary result;
+    if (!require_loaded("compare_equipment")) return result;
+    wroughtwild::items::ItemInstance candidate;
+    if (pack_index >= 0) {
+        if (static_cast<size_t>(pack_index) >= player_->packItems.size()) return result;
+        candidate = player_->packItems[static_cast<size_t>(pack_index)];
+    } else {
+        if (pack_index != -1) return result;
+        const auto* base = tuning_->items.findBase(to_std(base_id));
+        const auto held = player_->inventory.find(to_std(base_id));
+        if (!base || held == player_->inventory.end() || held->second < 1) return result;
+        candidate.baseId = base->id;
+        candidate.implicitProperties = base->implicitProperties;
+    }
+    const auto* base = tuning_->items.findBase(candidate.baseId);
+    if (!base) return result;
+    auto equipment = equipment_;
+    const auto worn = equipment.slots.find(base->slot);
+    result["current"] = worn == equipment.slots.end() ? Dictionary() : item_entry(*tuning_, worn->second, -1);
+    result["candidate"] = item_entry(*tuning_, candidate, -1);
+    result["slot"] = to_godot(base->slot);
+    equipment.slots[base->slot] = candidate;
+    auto stats_view = [](const wroughtwild::stats::DerivedStats& stats) {
+        Dictionary d;
+        d["max_life"] = stats.maxLife;
+        d["armour"] = stats.armour;
+        d["fire_resistance_percent"] = stats.fireResistancePercent;
+        d["cold_resistance_percent"] = stats.coldResistancePercent;
+        d["area_bonus"] = stats.areaBonus;
+        return d;
+    };
+    result["before"] = stats_view(derived_now());
+    result["after"] = stats_view(derived_now(&equipment));
+    const auto before = active_mods();
+    const auto after = active_mods(&equipment);
+    Array skills;
+    for (const auto& id : known_skill_ids()) {
+        const auto skill_id = to_std(String(id));
+        const auto* skill = tuning_->skills.findCombatSkill(skill_id);
+        if (!skill) continue;
+        Dictionary row;
+        row["id"] = String(id);
+        row["display_name"] = to_godot(skill->displayName);
+        auto skill_view = [&](const wroughtwild::grammar::ActiveMods& mods) {
+            Dictionary d;
+            d["hit_payload"] = wroughtwild::grammar::skillDamage(*tuning_, mods, skill_id);
+            d["cooldown_seconds"] = wroughtwild::grammar::skillCooldownSeconds(*tuning_, mods, skill_id);
+            d["reach_multiplier"] = wroughtwild::grammar::skillReach(*tuning_, mods, skill_id);
+            if (skill->delivery == "projectile") {
+                d["projectiles"] = wroughtwild::grammar::skillProjectiles(*tuning_, mods, skill_id);
+                d["pierce"] = wroughtwild::grammar::skillPierce(*tuning_, mods, skill_id);
+            }
+            return d;
+        };
+        row["before"] = skill_view(before);
+        row["after"] = skill_view(after);
+        skills.push_back(row);
+    }
+    result["skills"] = skills;
+    return result;
 }
 
 bool WroughtwildSim::equip_pack_item(int index) {

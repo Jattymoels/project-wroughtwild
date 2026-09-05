@@ -20,6 +20,15 @@ purpose.
 
 ## Run from a clean checkout
 
+The owner-approved [four-part continuation](../docs/art/codex-frontier-continuation-2026-09-05.md)
+adds first-person hands/gestures, habitat patches, revised existing landmarks
+and an equipment comparison in the pack (`I` → Compare → Equip candidate).
+Rebuild the native extension for `compare_equipment`. Run
+`powershell -NoProfile -ExecutionPolicy Bypass -File tools/codex_visual_review.ps1 -Continuation`
+from the repository root for headless/rendered checks and screenshots; open
+`build/codex-aesthetic/index.html` for the gallery. Habitat is decorative and
+does not add materials or alter save data.
+
 The default sandpit uses the owner-approved weathered frontier presentation.
 Append `-- --crafted-look` for the preceding brighter pass or
 `-- --legacy-look` for cubic terrain. These switches do not change the world

@@ -536,6 +536,9 @@ public:
     // Keys per slot: base_id, display_name, armour, fire_resistance,
     // max_life, area_size, rolled (array of {property, tier, value}).
     Dictionary equipment() const;
+    // Read-only swap preview. A nonnegative index selects pack gear; -1 selects
+    // a carried plain base. Rules resolve against a local equipment copy.
+    Dictionary compare_equipment(int pack_index, const String& base_id) const;
     // Takes one plain item of base_id from the inventory and wears it in its
     // base's slot; anything already worn there goes to the pack with its
     // modifiers intact (D-014). False when none is carried.
@@ -611,13 +614,13 @@ private:
     wroughtwild::grammar::Hit rolled_hit(const String& skill_id, bool isolated, const PackedStringArray& target_statuses);
     wroughtwild::combat::CombatMods current_mods() const;
     wroughtwild::boons::BuildTags build_tags() const;
-    wroughtwild::grammar::ActiveMods active_mods() const;
+    wroughtwild::grammar::ActiveMods active_mods(const wroughtwild::stats::Equipment* preview = nullptr) const;
     // Generates (or reuses) the world for a seed; generation costs real time.
     const wroughtwild::worldgen::WorldMap& cached_world(uint64_t seed);
     // The elite modifier for an id, or nullptr for "" / unknown.
     const wroughtwild::tuning::EliteModifierDef* find_elite(const String& elite_id) const;
     // Character stats with the Foundry's stat ingots applied.
-    wroughtwild::stats::DerivedStats derived_now() const;
+    wroughtwild::stats::DerivedStats derived_now(const wroughtwild::stats::Equipment* preview = nullptr) const;
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;

@@ -1,5 +1,12 @@
 # Decision Registry
 
+Owner approval, 5 Sep 2026: “Yep work through those 4” approves first-person
+presence, habitat variety, recognisable places and equipment comparison.
+This continues D-013 presentation and the existing interface/itemisation scope.
+The implementation improves existing landmark sites and adds decorative rotten
+debris, without new progression, yields or save fields.
+[Evidence and limits](../art/codex-frontier-continuation-2026-09-05.md).
+
 Latest owner refinement, 5 Sep 2026: preserve the stronger meadow image; improve
 the quality of rock/soil/turf transitions and replace the amateurish loose-stone
 scatter. This is a further D-013 presentation refinement, not a world-generator

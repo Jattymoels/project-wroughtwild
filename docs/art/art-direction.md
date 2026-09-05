@@ -45,11 +45,15 @@ See [material-join refinement](codex-material-joins-2026-09-05.md).
 
 The owner then invited non-environment work while noting that the world remains
 barren: almost everything rising above tiny grass is a tree or stone. This is
-a content/composition gap as well as a material issue. The proposed environment
-follow-up is a small middle layer of brush, fern beds, deadfall and stumps,
-arranged in habitat patches and clearings, with occasional readable landmarks.
-It is not an instruction to blanket the world with random clutter or add a new
-resource economy. Concrete placement and interaction choices remain follow-up work.
+a content/composition gap as well as a material issue. The owner then approved
+all four follow-ups: first-person presence, environment variety, recognisable
+places and equipment comparison. The implemented middle layer uses brush,
+fern beds, short rotten deadfall and stumps in habitat patches and clearings.
+Existing cairns, altars and rifts gain worn edges and distinct inlays; trees
+immediately around them become bare snags with unchanged harvest behaviour.
+Small rotten debris is decorative, without new yields. See the
+[four-part continuation](codex-frontier-continuation-2026-09-05.md) for evidence,
+tuning and remaining prototype limitations.
 
 The next implemented presentation slice is creature motion: distance-driven
 gaits and poses tied to the existing combat clocks. See

@@ -134,6 +134,13 @@ func _apply_visual() -> void:
 				mesh_instance.mesh = preload("res://art/woodland_look.tres").build_tree(_biome_id(), _visual_seed())
 			if _terrain() != null and _terrain().weathered:
 				mesh_instance.mesh = preload("res://art/weathered_woodland.tres").build_tree(_biome_id(), _visual_seed())
+				# Open a readable landmark approach without deleting saved resources.
+				# These remain harvestable trees with the same anchor, yield and work.
+				for site in _terrain().map.get("landmarks",[]):
+					var anchor := _terrain().surface_position(int(site.x),int(site.z))
+					if Vector2(position.x,position.z).distance_to(Vector2(anchor.x,anchor.z))<preload("res://art/landmark_look.tres").canopy_clearance_metres:
+						mesh_instance.mesh = preload("res://art/weathered_woodland.tres").build_tree("ember_wastes",_visual_seed())
+						break
 		&"boulder":
 			mesh_instance.mesh = PropMesh.build_boulder(_visual_seed())
 			shape.size = Vector3(1.4, 1.0, 1.2)
