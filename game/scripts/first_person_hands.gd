@@ -2,6 +2,7 @@ class_name FirstPersonHands
 extends Node3D
 ## Visual observer of committed skills. Never aims, spends, hits or moves a camera.
 const LOOK = preload("res://art/first_person_look.tres")
+const GATHER = preload("res://art/gathering_look.tres")
 var player: WroughtwildPlayer
 var hands: Array[MeshInstance3D] = []
 var glow: MeshInstance3D
@@ -54,6 +55,12 @@ func present_skill(skill_id: StringName) -> void:
 func _on_hit(_damage: float, _kills: int, _types: PackedStringArray) -> void:
 	impact = LOOK.impact_seconds
 
+func present_work() -> void:
+	active_delivery = "gather"
+	duration = GATHER.hand_seconds
+	remaining = duration
+	elemental = false
+
 func _process(delta: float) -> void:
 	var at := player.global_position
 	var travelled := Vector2(at.x-_previous.x,at.z-_previous.z).length()
@@ -86,7 +93,10 @@ func sample(delta: float) -> void:
 		var hand := hands[i]
 		hand.position = Vector3(side*LOOK.hand_position.x,LOOK.hand_position.y+sin(walk_phase)*LOOK.stride_sway,LOOK.hand_position.z+recoil+wall_retract)
 		hand.rotation = Vector3(-0.13,side*-0.18,side*-0.18)
-		if active_delivery=="strike" and i==1:
+		if active_delivery=="gather" and i==1:
+			hand.position += Vector3(-0.055, 0.045, -GATHER.hand_reach)*strength
+			hand.rotation.x -= strength*0.5
+		elif active_delivery=="strike" and i==1:
 			hand.position += Vector3(-0.09,0.06,-0.18)*strength
 			hand.rotation.x -= strength*0.4
 		elif active_delivery=="cone":

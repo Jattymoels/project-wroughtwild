@@ -627,12 +627,18 @@ func _on_died() -> void:
 
 ## What a node's work() or strike() returned: chips out for a yield, a
 ## line for a step, a refusal. Fires the milestone when a blow did the work.
-func _apply_work(node: ResourceNode, result: Dictionary) -> void:
+func _apply_work(node: ResourceNode, result: Dictionary, hit: Dictionary = {}) -> void:
 	if result.is_empty():
 		return
 	if result.has("refusal"):
 		hud.notify("%s: %s." % [Hud.pretty(String(node.material_family)), result["refusal"]])
 		return
+	if not result.get("struck", false):
+		(camera.get_node("FirstPersonHands") as FirstPersonHands).present_work()
+	if not hit.is_empty():
+		GatheringImpact.spawn(world_root(), hit.position, hit.normal, node.visual == &"tree",
+			node._visual_seed() + node.drive_progress + node.remaining_units)
+	hud._refresh_crosshair()
 	if result.has("text"):
 		hud.notify(result["text"])
 		# A press is heard (Wave 7 slice 1): the world answers what you do.
@@ -641,6 +647,7 @@ func _apply_work(node: ResourceNode, result: Dictionary) -> void:
 		MobPacks.noise(get_tree(), node.global_position, "strike", combat.sheltered)
 	var granted: int = int(result.get("granted", 0))
 	if granted > 0:
+		hud.notify("Freed %d %s · collect the drop." % [granted, Hud.pretty(String(node.material_family))])
 		if node.drive_presses > 1:
 			# A tree coming down, a boulder cracking: heard across the meadow.
 			MobPacks.noise(get_tree(), node.global_position, "tree_fall" if node.visual == &"tree" else "rock_crack", combat.sheltered)
@@ -672,7 +679,7 @@ func strike_world() -> bool:
 	var collider: Object = hit.get("collider")
 	if collider is ResourceNode:
 		var result: Dictionary = (collider as ResourceNode).strike()
-		_apply_work(collider as ResourceNode, result)
+		_apply_work(collider as ResourceNode, result, hit)
 		return not result.is_empty()
 	var terrain := _find_terrain()
 	if terrain != null and terrain.is_terrain_body(collider):
@@ -792,7 +799,7 @@ func interact() -> void:
 	var collider: Object = hit.get("collider")
 	if collider is ResourceNode:
 		var node := collider as ResourceNode
-		_apply_work(node, node.work(inventory.get_sim()))
+		_apply_work(node, node.work(inventory.get_sim()), hit)
 	elif collider is StationSite:
 		(collider as StationSite).interact(self)
 	elif collider is OrderBoard:

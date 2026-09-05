@@ -1,5 +1,12 @@
 # Decision Registry
 
+Owner prioritisation, 5 Sep 2026: gathering feedback is paramount, followed by
+building usability, combat feel and reasons to explore. Ranged-mob dodge/damage
+concerns and a separate intensive skill-variety task are recorded for later work
+in the [playtest priorities](../prototype/playtest-priorities-2026-09-05.md).
+This approves the presentation follow-through; new skills and combat rules are
+not selected by this prioritisation.
+
 Owner clarification, 5 Sep 2026: “I wanted the improved building look too”,
 including the octagonal build. This adopts the workshop's building materials,
 chamfer blocks, triangular slabs and three roof transitions into normal play.

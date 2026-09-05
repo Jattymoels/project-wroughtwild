@@ -38,6 +38,7 @@ var _initial_units := 0
 ## Materials created for this node's own meshes; safe to tint for the
 ## look-at highlight because they are never shared between nodes.
 var _own_materials: Array = []
+var _highlighted := false
 
 
 func _ready() -> void:
@@ -47,8 +48,8 @@ func _ready() -> void:
 
 ## Crosshair-hover feedback: a soft glow on the node you would harvest.
 func set_highlight(on: bool) -> void:
-	for material in _own_materials:
-		material.emission_enabled = on or hot_level > 0
+	_highlighted = on
+	_refresh_state_look()
 
 
 ## Deterministic per position and kind, so a rebuilt (or loaded) world
@@ -273,6 +274,25 @@ func is_seam() -> bool:
 	return tool_item != &""
 
 
+## Read-only work display. The next payout uses the same node values as harvest().
+func work_view(sim: WroughtwildSim) -> Dictionary:
+	if remaining_units <= 0:
+		return {}
+	var label := "Chopping" if visual == &"tree" else "Breaking"
+	var ready := workable()
+	if not ready:
+		label = work_refusal()
+	elif is_seam() and not wedge_set:
+		ready = sim.material_count(String(tool_item)) > 0
+		label = "Set %s" % Hud.pretty(String(tool_item)) if ready else "Needs %s · C to craft" % Hud.pretty(String(tool_item))
+	elif is_seam():
+		label = "Driving wedge"
+	var count := maxi(drive_presses, 1)
+	return {"fraction": float(drive_progress) / count, "ready": ready,
+		"text": "%s · %d/%d · next yield %d %s" % [label, drive_progress, count,
+			mini(units_per_harvest, remaining_units), Hud.pretty(String(material_family))]}
+
+
 ## The crosshair line for this node.
 func interact_label(sim: WroughtwildSim) -> String:
 	var name := Hud.pretty(String(material_family))
@@ -281,14 +301,14 @@ func interact_label(sim: WroughtwildSim) -> String:
 	if is_seam():
 		if wedge_set:
 			var hot := "  ·  hot: one blow takes the whole seam" if hot_level > 0 else ""
-			return "%s ×%d — E drive the wedge (%d/%d), or strike it%s" % [name, remaining_units, drive_progress, drive_presses, hot]
+			return "%s ×%d — E drive the wedge, or strike it%s" % [name, remaining_units, hot]
 		var held: int = sim.material_count(String(tool_item))
 		if held > 0:
 			return "%s ×%d — E set a wedge (%s ×%d)" % [name, remaining_units, Hud.pretty(String(tool_item)), held]
 		return "%s ×%d — the seam wants a %s driven into it" % [name, remaining_units, Hud.pretty(String(tool_item))]
 	if drive_presses > 1:
 		var verb := "E to chop; it falls whole" if visual == &"tree" else "E to crack a chunk off"
-		return "%s ×%d — %s (%d/%d)" % [name, remaining_units, verb, drive_progress, drive_presses]
+		return "%s ×%d — %s" % [name, remaining_units, verb]
 	return "%s ×%d — E to gather" % [name, remaining_units]
 
 
@@ -435,8 +455,8 @@ func _refresh_state_look() -> void:
 			material.emission_enabled = true
 		else:
 			material.emission = Color(1, 1, 1)
-			material.emission_energy_multiplier = 0.4
-			material.emission_enabled = false
+			material.emission_energy_multiplier = preload("res://art/gathering_look.tres").hover_energy
+			material.emission_enabled = _highlighted
 		material.albedo_color = Color(0.55, 0.5, 0.5) if cracked else Color(1, 1, 1)
 
 

@@ -9,6 +9,7 @@ extends CanvasLayer
 
 const NOTICE_SECONDS := 3.0
 const REFRESH_SECONDS := 0.1
+const GATHER = preload("res://art/gathering_look.tres")
 const HELP_TEXT := """WASD move  ·  mouse look  ·  Space jump  ·  Shift dash (movement only)
 E interact: harvest, work at a station, read the board, open the gate
 LMB harvest  ·  hold LMB on the ground to dig it out (stone pays stone)
@@ -54,6 +55,9 @@ var _last_life := -1.0
 # Look-at feedback: the target names itself under the crosshair and
 # harvestables glow while aimed at.
 var _target_label: Label
+var _work_display: VBoxContainer
+var _work_meter: ProgressBar
+var _work_label: Label
 var _hovered: Node = null
 ## While digging, this replaces the target label (set by show_dig).
 var _dig_text := ""
@@ -93,6 +97,7 @@ func _ready() -> void:
 	_notice.modulate = Color(1.0, 0.9, 0.5)
 	column.add_child(_notice)
 	_pickup_label = Label.new()
+	_pickup_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_pickup_label.modulate = UiTheme.GRASS_LIGHT
 	column.add_child(_pickup_label)
 	var reminder := Label.new()
@@ -208,6 +213,26 @@ func _ready() -> void:
 	_target_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_target_label.modulate = Color(1, 1, 1, 0.85)
 	target_column.add_child(_target_label)
+	# Fixed anchors keep a work update from shifting the crosshair or target.
+	_work_display = VBoxContainer.new()
+	_work_display.set_anchors_preset(Control.PRESET_CENTER)
+	_work_display.offset_left = -GATHER.meter_width / 2.0
+	_work_display.offset_right = GATHER.meter_width / 2.0
+	_work_display.offset_top = 72
+	_ui.add_child(_work_display)
+	_work_meter = ProgressBar.new()
+	_work_meter.max_value = 1.0
+	_work_meter.step = 0.0
+	_work_meter.show_percentage = false
+	_work_meter.custom_minimum_size = Vector2(GATHER.meter_width, GATHER.meter_height)
+	_work_meter.add_theme_stylebox_override("background", UiTheme.flat(Color("292a25"), Color("54584a"), 2))
+	_work_meter.add_theme_stylebox_override("fill", UiTheme.flat(Color("abaf83"), Color.TRANSPARENT, 2))
+	_work_display.add_child(_work_meter)
+	_work_label = Label.new()
+	_work_label.add_theme_font_size_override("font_size", 14)
+	_work_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_work_display.add_child(_work_label)
+	_work_display.hide()
 
 	# Help overlay (H): the control list, off by default.
 	_help = PanelContainer.new()
@@ -329,7 +354,7 @@ func notify_pickup(family: String, amount: int) -> void:
 	_pickup_timer = PICKUP_SECONDS
 	var parts := PackedStringArray()
 	for id in _pickup_totals:
-		parts.append("+%d %s" % [_pickup_totals[id], pretty(id)])
+		parts.append("+%d %s · carried %d" % [_pickup_totals[id], pretty(id), sim.material_count(id)])
 	_pickup_label.text = " · ".join(parts)
 	refresh()
 
@@ -378,12 +403,25 @@ func _refresh_crosshair() -> void:
 
 	# Hover highlight: glow the harvestable you are looking at.
 	var target: Node = probe["target"] as Node
+	var show_work := target is ResourceNode and _dig_text == "" and not placement.build_mode_enabled and combat.life > 0.0 and not help_visible()
+	for panel in [player.work_panel, player.inventory_panel, player.foundry_panel, player.class_panel, player.chest_panel]:
+		if panel != null and panel.is_open():
+			show_work = false
+	show_work_view((target as ResourceNode).work_view(sim) if show_work else {})
 	if target != _hovered:
 		if is_instance_valid(_hovered) and _hovered.has_method("set_highlight"):
 			_hovered.set_highlight(false)
 		_hovered = target
 		if is_instance_valid(_hovered) and _hovered.has_method("set_highlight"):
 			_hovered.set_highlight(true)
+
+func show_work_view(view: Dictionary) -> void:
+	_work_display.visible = not view.is_empty()
+	if view.is_empty():
+		return
+	_work_meter.value = view.fraction
+	_work_meter.modulate = Color.WHITE if view.ready else Color("ba8875")
+	_work_label.text = view.text
 
 
 static func pretty(id: String) -> String:

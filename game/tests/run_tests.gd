@@ -604,7 +604,7 @@ func _test_resource_node() -> void:
 		if step.has("text") and not step.has("granted"):
 			swings += 1
 	check(swings == 5 and tree.remaining_units == 14 and tree.drive_progress == 5, "felling: five swings lean the tree and take nothing")
-	check(tree.interact_label(null).contains("falls whole") and tree.interact_label(null).contains("5/6"), "felling: the label counts the swings")
+	check(tree.interact_label(null).contains("falls whole") and tree.work_view(null).text.contains("5/6") and is_equal_approx(tree.work_view(null).fraction, 5.0/6.0), "felling: the work display counts the swings and fills proportionally")
 	var fall: Dictionary = tree.work(null)
 	check(int(fall.get("granted", 0)) == 14 and tree.remaining_units == 0 and tree.drive_progress == 0, "felling: the sixth brings the whole tree down at once")
 	tree.free()

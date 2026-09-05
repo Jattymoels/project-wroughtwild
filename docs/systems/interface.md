@@ -106,6 +106,15 @@ catalysts, sun-warm for currency). Default font, sizes 13–22.
 
 ## Feedback and interface
 
+Owner-prioritised gathering pass, 5 Sep 2026: a compact meter below the target
+line reads each resource's existing work count and next yield. It hides on target
+loss, depletion, digging, build mode, death and open panels. Successful work has
+a hand gesture and brief material flakes at the ray hit; refusals retain their
+explanation without success effects. A completion notice distinguishes freed
+drops from collected inventory; the pickup ticker includes the actual carried
+total after absorption. Presentation tuning and verification are in the
+[playtest work list](../prototype/playtest-priorities-2026-09-05.md).
+
 This *is* the feedback spec; the rule is that every state a tester might ask
 about — "what do I have, what am I wearing, what is active, what can I make
 and why not" — is answerable from one screen without scrolling the HUD.

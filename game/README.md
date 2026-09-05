@@ -20,6 +20,10 @@ purpose.
 
 ## Run from a clean checkout
 
+Gathering now shows work progress and the next yield under the crosshair, with
+brief hand/impact feedback. Drops count as carried only after pickup. Restart
+the running game to load script changes; existing saves retain their work counts.
+
 The improved building look now includes normal **octagonal construction**:
 Chamfer Block and Triangular Slab in the build palette, plus Roof Slope, Roof Hip
 and Roof Valley after the existing Forge Tyrant/stonecut unlock. Use B to build,

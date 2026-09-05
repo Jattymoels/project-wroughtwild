@@ -9,6 +9,12 @@ The player owns a persistent build that becomes faster, stronger and more expres
 
 The target is Path of Exile-like expression, not Path of Exile-scale content.
 
+Owner playtest, 5 Sep 2026: ranged mobs feel overly damaging and undodgeable;
+skills need stronger visual identities and more distinct delivery/spread/area
+behaviours to experiment with. Investigation and a separate skill-vocabulary
+design task are recorded in the [priority work list](../prototype/playtest-priorities-2026-09-05.md).
+The owner retained gathering and building usability ahead of this larger pass.
+
 ## Prototype scope
 
 - one starting class;

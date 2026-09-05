@@ -12,6 +12,11 @@ right. Catalysts remain a farmable currency class (ADR-0002 owner direction).
 Each wave lands as merge-sized slices with headless verification; a wave is
 "done" when the owner has played it and directed the next.
 
+Latest owner-approved follow-through (5 Sep 2026): **gathering feedback first**,
+then building usability, combat feel, and reasons to explore. The
+[playtest work list](playtest-priorities-2026-09-05.md) records the ranged-mob
+dodge/damage report and the separately deferred skill-variety design task.
+
 ## Wave 1 — The Sandpit  *(in progress)*
 
 Start with nothing in a seed-generated bounded world and survive/build up.
