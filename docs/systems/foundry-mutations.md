@@ -1,5 +1,7 @@
 # Foundry mutation grammar
 
+Owner-approved update, 6 September 2026 (D-026): Equipment catalyst grades alias their original Kind during plate evaluation. Grade-specific ownership, placement and lifting remain exact; Faint/Stable/Potent currently share the authored mutation rather than multiplying its damage. See the [forge implementation record](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026) for tuning, sources and save compatibility.
+
 **Status: implemented, owner-approved 5 Sep 2026 (D-025).** The owner approved
 the [direction proposal](../prototype/foundry-mutation-direction-2026-09-05.md)
 and added that weapons/armour must continue helping builds, with rare modifiers

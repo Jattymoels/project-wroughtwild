@@ -56,12 +56,15 @@ std::vector<items::ItemInstance> rollEnemyGear(const tuning::Tuning& tuning,
     // table never changes which materials the same seed drops.
     std::mt19937_64 rng(seed ^ 0x9E3779B97F4A7C15ull);
     std::uniform_real_distribution<double> roll(0.0, 1.0);
-    std::uniform_int_distribution<size_t> pickBase(0, tuning.items.itemBases.size() - 1);
+    std::vector<const tuning::ItemBase*> bases;
+    for (const auto& base : tuning.items.itemBases) if (base.dropEligible) bases.push_back(&base);
+    if (bases.empty()) return drops;
+    std::uniform_int_distribution<size_t> pickBase(0, bases.size() - 1);
     double chanceMultiplier = elite ? elite->gearChanceMultiplier : 1.0;
     for (const auto& entry : enemy->loot) {
         if (entry.kind != "gear") continue;
         if (roll(rng) >= entry.chance * chanceMultiplier) continue;
-        const auto& base = tuning.items.itemBases[pickBase(rng)];
+        const auto& base = *bases[pickBase(rng)];
         const int tier = entry.gearTier + std::max(0, era - 1) + (elite ? 1 : 0);
         drops.push_back(items::rollRarityItem(tuning.items, base.id, entry.gearRarity, tier, rng()));
     }

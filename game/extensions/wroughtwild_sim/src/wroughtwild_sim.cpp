@@ -62,7 +62,8 @@ Dictionary item_entry(const wroughtwild::tuning::Tuning& tuning, const wroughtwi
     d["display_name"] = to_godot(base ? base->displayName : item.baseId);
     d["slot"] = to_godot(base ? base->slot : std::string());
     d["rarity"] = to_godot(item.rarity);
-    d["tier_cap"] = base ? base->tierCap : 99;
+    d["tier_cap"] = item.workpieceTier > 0 ? item.workpieceTier : (base ? base->tierCap : 99);
+    d["workpiece_tier"] = item.workpieceTier;
     d["material"] = to_godot(base ? base->material : std::string());
     const auto totals = wroughtwild::items::statTotals(tuning.items, item);
     d["armour"] = totals.armour;
@@ -89,14 +90,14 @@ Dictionary item_entry(const wroughtwild::tuning::Tuning& tuning, const wroughtwi
             m["full_sentence"] = to_godot(wroughtwild::items::modifierSentence(*def, r.value));
             m["unleashed_by"] = eff.heldBack ? String("a base that holds tier ") + String::num_int64(r.tier) : String();
             Array breakpoints;
-            for (const auto* bp : wroughtwild::items::breakpointsFor(*def, eff.tier)) {
+            for (const auto* bp : wroughtwild::items::breakpointsFor(*def, eff.tier, r.crafted)) {
                 breakpoints.push_back(to_godot(bp->text));
             }
             m["breakpoints"] = breakpoints;
             Array locked;
-            for (const auto* bp : wroughtwild::items::breakpointsFor(*def, r.tier)) {
+            for (const auto* bp : wroughtwild::items::breakpointsFor(*def, r.tier, r.crafted)) {
                 bool have = false;
-                for (const auto* got : wroughtwild::items::breakpointsFor(*def, eff.tier)) have = have || got == bp;
+                for (const auto* got : wroughtwild::items::breakpointsFor(*def, eff.tier, r.crafted)) have = have || got == bp;
                 if (!have) locked.push_back(to_godot(bp->text));
             }
             m["held_breakpoints"] = locked;
@@ -303,7 +304,8 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("has_station", "station_id"), &WroughtwildSim::has_station);
     ClassDB::bind_method(D_METHOD("skill_xp", "skill_id"), &WroughtwildSim::skill_xp);
     ClassDB::bind_method(D_METHOD("skill_level", "skill_id"), &WroughtwildSim::skill_level);
-    ClassDB::bind_method(D_METHOD("craft", "recipe_id", "for_order", "aim_kind"), &WroughtwildSim::craft, DEFVAL(false), DEFVAL(""));
+    ClassDB::bind_method(D_METHOD("craft", "recipe_id", "for_order", "aim_kind", "quality", "quantity"), &WroughtwildSim::craft, DEFVAL(false), DEFVAL(""), DEFVAL(1), DEFVAL(1));
+    ClassDB::bind_method(D_METHOD("craft_preview", "recipe_id", "aim_kind", "quality", "quantity"), &WroughtwildSim::craft_preview, DEFVAL(""), DEFVAL(1), DEFVAL(1));
     ClassDB::bind_method(D_METHOD("salvage", "recipe_id"), &WroughtwildSim::salvage);
     ClassDB::bind_method(D_METHOD("recipe_feeds_open_order", "recipe_id"), &WroughtwildSim::recipe_feeds_open_order);
 
@@ -441,6 +443,8 @@ Array WroughtwildSim::currency_kinds() const {
         d["display_name"] = to_godot(kind.displayName);
         d["family"] = to_godot(kind.family);
         d["craft_tag"] = to_godot(kind.craftTag);
+        d["potency"] = kind.potency;
+        d["canonical_kind"] = to_godot(kind.canonicalKind);
         d["description"] = to_godot(kind.description);
         PackedStringArray sources;
         for (const auto& enemy : tuning_->world.enemies) {
@@ -702,12 +706,17 @@ Dictionary WroughtwildSim::combat_skill(const String& skill_id) const {
     d["starting"] = def->starting;
     d["drop_weight"] = def->dropWeight;
     d["uses"] = player_->skillUses(def->id);
+    d["practice"] = player_->skillPractice(def->id);
     Array mastery;
-    for (const auto& perk : def->mastery) {
+    const auto earned = player_->masteryUnlocked(def->id);
+    for (size_t i = 0; i < def->mastery.size(); ++i) {
+        const auto& perk = i < earned.size() ? *earned[i] : def->mastery[i];
         Dictionary m;
-        m["uses"] = perk.uses;
+        m["uses"] = def->mastery[i].uses;
         m["text"] = to_godot(perk.text);
-        m["unlocked"] = perk.uses <= player_->skillUses(def->id);
+        m["unlocked"] = i < earned.size();
+        m["value"] = perk.value;
+        m["modifier"] = to_godot(perk.modifier);
         mastery.push_back(m);
     }
     d["mastery"] = mastery;
@@ -1195,6 +1204,9 @@ Dictionary WroughtwildSim::recipe(const String& recipe_id) const {
     d["outputs"] = to_dictionary(r->outputs);
     d["base_skill_xp"] = r->baseSkillXp;
     d["fuel_cost"] = r->fuelCost;
+    d["minimum_era"] = r->minimumEra;
+    d["era_met"] = player_->currentEra() >= r->minimumEra;
+    d["use_categories"] = strings_to_packed(r->useCategories);
     // Gate status for UI: the same checks craft() applies. An empty station
     // means hand-crafting: no facility or fuel gate.
     bool skillMet = true;
@@ -1206,7 +1218,7 @@ Dictionary WroughtwildSim::recipe(const String& recipe_id) const {
     d["hand_craftable"] = r->station.empty();
     d["station_available"] = r->station.empty() || player_->stationAvailable(r->station);
     d["skill_met"] = skillMet;
-    d["inputs_met"] = wroughtwild::economy::hasAll(player_->inventory, r->inputs);
+    d["inputs_met"] = !player_->craftPlan(r->id).failure.missingInputs;
     d["fuel_met"] = player_->fuelMet(r->id);
     return d;
 }
@@ -1386,8 +1398,7 @@ Dictionary WroughtwildSim::catalyst_process(const String& process_id) const {
     d["tier_minimum"] = tier ? tier->minimum : 0.0;
     d["tier_maximum"] = tier ? tier->maximum : 0.0;
     d["floor_at_skill"] = tier ? tier->minimum + p->minimumRollFractionAtSkill * (tier->maximum - tier->minimum) : 0.0;
-    auto catalyst = player_->inventory.find(p->catalyst);
-    d["catalyst_held"] = catalyst == player_->inventory.end() ? 0 : catalyst->second;
+    d["catalyst_held"] = player_->held(p->catalyst);
     d["station_available"] = player_->stationAvailable(p->station);
     bool skillMet = true;
     for (const auto& [skillId, level] : p->minimumSkill) {
@@ -1472,8 +1483,7 @@ Dictionary WroughtwildSim::temper_with_catalyst(const String& process_id) {
         d["reason"] = "station_unavailable";
         return d;
     }
-    auto catalyst = player_->inventory.find(p->catalyst);
-    if (catalyst == player_->inventory.end() || catalyst->second < 1) {
+    if (player_->held(p->catalyst) < 1) {
         d["reason"] = "missing_catalyst";
         return d;
     }
@@ -1491,7 +1501,7 @@ Dictionary WroughtwildSim::temper_with_catalyst(const String& process_id) {
         d["reason"] = "wrong_tier";
         return d;
     }
-    catalyst->second -= 1; // consumed only once the temper has applied
+    player_->take(p->catalyst, 1); // consumed only once the temper has applied
     d["applied"] = result.applied;
     d["rolled_value"] = result.rolledValue;
     d["previous_value"] = result.previousValue;
@@ -1630,13 +1640,13 @@ int WroughtwildSim::skill_level(const String& skill_id) const {
     return require_loaded("skill_level") ? player_->skillLevel(to_std(skill_id)) : 0;
 }
 
-Dictionary WroughtwildSim::craft(const String& recipe_id, bool for_order, const String& aim_kind) {
+Dictionary WroughtwildSim::craft(const String& recipe_id, bool for_order, const String& aim_kind, int quality, int quantity) {
     Dictionary d;
     d["crafted"] = false;
     if (!require_loaded("craft")) {
         return d;
     }
-    const auto result = player_->craft(to_std(recipe_id), for_order, to_std(aim_kind));
+    const auto result = player_->craftBatch(to_std(recipe_id), for_order, to_std(aim_kind), quality, quantity);
     d["crafted"] = result.crafted;
     d["xp_granted"] = result.xpGranted;
     d["xp_multiplier"] = result.xpMultiplier;
@@ -1645,11 +1655,126 @@ Dictionary WroughtwildSim::craft(const String& recipe_id, bool for_order, const 
         d["failure"] = f.unknownRecipe        ? "unknown_recipe"
                        : f.stationUnavailable ? "station_unavailable"
                        : f.skillTooLow        ? "skill_too_low"
+                       : f.incompatibleKind   ? "incompatible_kind"
+                       : f.qualityUnavailable ? "quality_unavailable"
+                       : f.invalidQuantity    ? "invalid_quantity"
                        : f.missingKind        ? "missing_kind"
                        : f.missingInputs      ? "missing_inputs"
                        : f.missingFuel        ? "missing_fuel"
                                               : "unknown";
     }
+    return d;
+}
+
+Dictionary WroughtwildSim::craft_preview(const String& recipe_id, const String& aim_kind, int quality, int quantity) const {
+    Dictionary d;
+    if (!require_loaded("craft_preview")) return d;
+    const auto* recipe = tuning_->crafting.findRecipe(to_std(recipe_id));
+    if (!recipe) return d;
+    const auto plan = player_->craftPlan(recipe->id, to_std(aim_kind), quality, quantity);
+    d["ready"] = !plan.failure.any();
+    d["base_id"] = to_godot(plan.baseId); d["quality"] = plan.quality; d["potency"] = plan.potency;
+    d["quantity"] = quantity; d["batch_maximum"] = tuning_->crafting.batchMaximum;
+    d["fuel"] = plan.fuel; d["minimum_count"] = plan.minimumCount;
+    d["roll_floor"] = plan.rollFloor;
+    d["incompatible_kind"] = plan.failure.incompatibleKind;
+    d["quality_available"] = !plan.failure.qualityUnavailable;
+    d["outputs"] = to_dictionary(recipe->outputs);
+    d["comparison"] = plan.baseId.empty() ? Dictionary() : compare_equipment(-2, to_godot(plan.baseId));
+    auto source = [&](const std::string& id) {
+        for (const auto& r : tuning_->crafting.recipes) if (r.outputs.count(id)) return r.id;
+        return std::string();
+    };
+    Array costs;
+    int fuelAvailable = 0;
+    for (const auto& [id, value] : tuning_->crafting.fuels) {
+        auto reserved = plan.costs.find(id);
+        fuelAvailable += std::max(0, player_->held(id) - (reserved == plan.costs.end() ? 0 : reserved->second)) * value;
+    }
+    d["fuel_available"] = fuelAvailable;
+    for (const auto& [id, count] : plan.costs) {
+        Dictionary row;
+        row["id"] = to_godot(id); row["need"] = count; row["have"] = player_->held(id);
+        row["recipe"] = to_godot(source(id)); costs.push_back(row);
+    }
+    d["costs"] = costs;
+    String reason;
+    if (plan.failure.invalidQuantity) reason = "Choose one equipment item or a material batch within the limit.";
+    else if (plan.failure.incompatibleKind) reason = "This Kind has no compatible modifier at this potency. Choose another Kind.";
+    else if (plan.failure.stationUnavailable) reason = "Use " + to_godot(tuning_->crafting.findStation(recipe->station)->displayName) + ".";
+    else if (plan.failure.qualityUnavailable) {
+        const int gradeIndex = std::clamp(std::max(quality, plan.potency), 1, static_cast<int>(tuning_->crafting.grades.size())) - 1;
+        const auto& grade = tuning_->crafting.grades[static_cast<size_t>(gradeIndex)];
+        int requiredSkill = grade.minimumSkill;
+        for (const auto& [skill, minimum] : recipe->minimumSkill) { (void)skill; requiredSkill = std::max(requiredSkill, minimum); }
+        reason = "Requires " + to_godot(grade.station.empty() ? recipe->station : grade.station) + ", Blacksmithing " + String::num_int64(requiredSkill) + ", Era " + String::num_int64(std::max(grade.minimumEra, recipe->minimumEra)) + ".";
+    } else if (plan.failure.skillTooLow) {
+        for (const auto& [skill, level] : recipe->minimumSkill) if (player_->skillLevel(skill) < level) reason = "Requires " + to_godot(skill) + " " + String::num_int64(level) + ".";
+    } else if (plan.failure.missingInputs || plan.failure.missingKind) {
+        for (const auto& [id, count] : plan.costs) if (player_->held(id) < count) {
+            reason = "Need " + String::num_int64(count - player_->held(id)) + " more " + to_godot(id) + "."; break;
+        }
+    } else if (plan.failure.missingFuel) reason = "Add fuel after reserving the recipe ingredients.";
+    else reason = "Ready to make.";
+    d["next_action"] = reason;
+    Array grades;
+    for (const auto& grade : tuning_->crafting.grades) {
+        Dictionary row;
+        row["tier"] = grade.tier; row["quality"] = to_godot(grade.quality); row["potency"] = to_godot(grade.potency);
+        row["station"] = to_godot(grade.station); row["skill"] = grade.minimumSkill; row["era"] = grade.minimumEra;
+        row["available"] = (grade.station.empty() || player_->stationAvailable(grade.station)) && player_->skillLevel("blacksmithing") >= grade.minimumSkill && player_->currentEra() >= grade.minimumEra;
+        row["reinforcement"] = to_dictionary(grade.reinforcement);
+        row["recipe"] = grade.reinforcement.empty() ? String() : to_godot(source(grade.reinforcement.begin()->first));
+        grades.push_back(row);
+    }
+    d["grades"] = grades;
+    Array outcomes;
+    std::map<int, double> chances;
+    for (size_t i = 0; i < plan.counts.size(); ++i) chances[std::max(plan.minimumCount, static_cast<int>(i))] += plan.counts[i];
+    static const std::vector<std::string> names = {"Plain", "Worked", "Keen", "Refined", "Wrought"};
+    for (const auto& [count, chance] : chances) if (chance > 0) {
+        Dictionary row; row["count"] = count; row["chance"] = chance; row["name"] = to_godot(names.at(count)); outcomes.push_back(row);
+    }
+    d["outcomes"] = outcomes;
+    Array kinds;
+    if (!plan.baseId.empty()) for (const auto& kind : tuning_->crafting.currencyKinds) {
+        const auto option = player_->craftPlan(recipe->id, kind.id, quality);
+        Dictionary row;
+        row["id"] = to_godot(kind.id); row["canonical_kind"] = to_godot(kind.canonicalKind);
+        row["display_name"] = to_godot(kind.displayName); row["potency"] = kind.potency;
+        row["family"] = to_godot(kind.craftTag); row["held"] = player_->held(kind.id);
+        row["compatible"] = !option.failure.incompatibleKind; row["process_available"] = !option.failure.qualityUnavailable;
+        row["recipe"] = to_godot(source(kind.id)); kinds.push_back(row);
+    }
+    d["kinds"] = kinds;
+    Array modifiers;
+    const auto* base = tuning_->items.findBase(plan.baseId);
+    const auto* aim = tuning_->crafting.findKind(to_std(aim_kind));
+    if (base) for (const auto* modifier : wroughtwild::items::eligibleModifiers(tuning_->items, *base)) {
+        if (aim && std::find(modifier->tags.begin(), modifier->tags.end(), aim->craftTag) == modifier->tags.end()) continue;
+        Dictionary row; row["name"] = to_godot(modifier->displayName); row["id"] = to_godot(modifier->id);
+        row["eligible"] = modifier->fromTier <= plan.potency;
+        row["from_tier"] = modifier->fromTier;
+        Array bands;
+        for (const auto& band : modifier->craftTiers) {
+            Dictionary range;
+            range["tier"] = band.tier; range["eligible"] = modifier->fromTier <= band.tier;
+            const double floor = band.minimum + plan.rollFloor * (band.maximum - band.minimum);
+            range["minimum"] = floor; range["maximum"] = band.maximum;
+            range["minimum_sentence"] = to_godot(wroughtwild::items::modifierSentence(*modifier, floor));
+            range["maximum_sentence"] = to_godot(wroughtwild::items::modifierSentence(*modifier, band.maximum));
+            auto weak = wroughtwild::items::craftBand(*modifier, quality);
+            range["expressed_maximum"] = quality < band.tier && weak ? std::min(band.maximum, weak->maximum) : band.maximum;
+            range["expressed_sentence"] = to_godot(wroughtwild::items::modifierSentence(*modifier, static_cast<double>(range["expressed_maximum"])));
+            range["held_back"] = quality < band.tier;
+            PackedStringArray breakpoints;
+            for (const auto* bp : wroughtwild::items::breakpointsFor(*modifier, band.tier, true)) breakpoints.push_back(to_godot(bp->text));
+            range["breakpoints"] = breakpoints;
+            bands.push_back(range);
+        }
+        row["bands"] = bands; modifiers.push_back(row);
+    }
+    d["modifiers"] = modifiers;
     return d;
 }
 
@@ -3149,8 +3274,7 @@ Dictionary WroughtwildSim::transfer_with_catalyst(const String& process_id, int 
         d["reason"] = "station_unavailable";
         return d;
     }
-    auto catalyst = player_->inventory.find(p->catalyst);
-    if (catalyst == player_->inventory.end() || catalyst->second < 1) {
+    if (player_->held(p->catalyst) < 1) {
         d["reason"] = "missing_catalyst";
         return d;
     }
@@ -3165,7 +3289,7 @@ Dictionary WroughtwildSim::transfer_with_catalyst(const String& process_id, int 
         return d;
     }
     d["moved"] = static_cast<int>(target.rolledProperties.size());
-    catalyst->second -= 1;
+    player_->take(p->catalyst, 1);
     equipment_.slots.erase(worn); // the old base is spent with the catalyst
     d["applied"] = true;
     return d;
@@ -3258,14 +3382,16 @@ Dictionary WroughtwildSim::foundry() const {
     // Kinds (D-023, the flow): every variant that may rest on the plate,
     // with what the purse holds of it and its own base, for the tray.
     Array kinds;
-    for (const auto& k : tuning_->foundry.kinds) {
+    for (const auto& currency : tuning_->crafting.currencyKinds) {
+        const auto& k = *tuning_->foundry.findKindOnPlate(currency.id);
         Dictionary entry;
-        entry["id"] = to_godot(k.id);
-        entry["display_name"] = to_godot(k.displayName);
+        entry["id"] = to_godot(currency.id);
+        entry["display_name"] = to_godot(currency.displayName);
+        entry["potency"] = currency.potency;
         entry["short_name"] = to_godot(k.shortName);
         entry["family"] = to_godot(k.family);
         entry["family_name"] = to_godot(tuning_->foundry.familyName(k.family));
-        entry["held"] = player_->held(k.id);
+        entry["held"] = player_->held(currency.id);
         const auto* def = k.modifier.empty() ? nullptr : tuning_->items.findModifier(k.modifier);
         entry["base_sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, k.value)) : String("no base of its own");
         kinds.push_back(entry);
@@ -3668,7 +3794,7 @@ wroughtwild::grammar::ActiveMods WroughtwildSim::active_mods(const wroughtwild::
         mods.push_back(std::move(mod));
     }
     // Mastery perks speak to their own skill only.
-    for (auto& mod : wroughtwild::grammar::masteryMods(*tuning_, player_->exportState().skillUses)) {
+    for (auto& mod : wroughtwild::grammar::earnedMasteryMods(*tuning_, player_->exportState().earnedMastery)) {
         mods.push_back(std::move(mod));
     }
     for (const auto& id : active_skill_mods_) {
@@ -3783,10 +3909,10 @@ Dictionary WroughtwildSim::compare_equipment(int pack_index, const String& base_
         if (static_cast<size_t>(pack_index) >= player_->packItems.size()) return result;
         candidate = player_->packItems[static_cast<size_t>(pack_index)];
     } else {
-        if (pack_index != -1) return result;
+        if (pack_index != -1 && pack_index != -2) return result;
         const auto* base = tuning_->items.findBase(to_std(base_id));
         const auto held = player_->inventory.find(to_std(base_id));
-        if (!base || held == player_->inventory.end() || held->second < 1) return result;
+        if (!base || (pack_index == -1 && (held == player_->inventory.end() || held->second < 1))) return result;
         candidate.baseId = base->id;
         candidate.implicitProperties = base->implicitProperties;
     }

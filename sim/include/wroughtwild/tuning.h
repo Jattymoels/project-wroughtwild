@@ -35,6 +35,8 @@ struct Recipe {
     int baseSkillXp = 0;
     int fuelCost = 0; // fuel value burned by the station per craft
     std::vector<std::string> useCategories;
+    int minimumEra = 1;
+    std::string description;
 };
 
 struct Order {
@@ -73,7 +75,21 @@ struct BasicTemper {
     int tier = 1;
 };
 
+struct CraftGrade {
+    int tier = 1, minimumSkill = 1, minimumEra = 1;
+    std::string quality, potency, station;
+    std::map<std::string, int> reinforcement;
+};
+struct CraftProcess {
+    std::string station;
+    int minimumEra = 1, aimedMinimum = 1;
+    std::vector<double> counts;
+};
 struct CraftingTable {
+    std::vector<CraftGrade> grades;
+    std::vector<CraftProcess> craftProcesses;
+    double rollFloorPerLevel = 0.06, rollFloorMaximum = 0.24;
+    int batchMaximum = 20;
     std::vector<Station> stations;
     std::vector<Recipe> recipes;
     std::vector<Order> orders;
@@ -107,6 +123,8 @@ struct CraftingTable {
         std::string family;      // offence | defence | life | speed
         std::string craftTag;    // optional narrower modifier tag; defaults to family
         std::string description; // player-facing use, separate from design notes
+        int potency = 1;
+        std::string canonicalKind;
     };
     std::vector<CurrencyKind> currencyKinds;
     const CurrencyKind* findKind(const std::string& id) const;
@@ -153,13 +171,15 @@ struct CombatSkillDef {
     bool starting = false;   // known from the first moment (and on the round model's bar)
     double dropWeight = 0.0; // relative chance among unknown skills when a page drops (0 = never)
     std::map<std::string, double> numbers; // remaining numeric fields verbatim
-    std::vector<MasteryPerk> mastery;      // in use order
+    std::vector<MasteryPerk> mastery;
+    std::vector<MasteryPerk> legacyMastery;      // in use order
     // The skill's tags plus its own "skill:<id>" tag, so a modifier can
     // target this skill alone (mastery perks).
     std::vector<std::string> resolveTags() const;
 };
 
 struct SkillTable {
+    double practiceSecondsPerPoint = 1.5;
     std::vector<CraftSkillDef> craftSkills;
     std::vector<CombatSkillDef> combatSkills;
 
@@ -198,6 +218,7 @@ struct ModifierDef {
     std::string effectKey;                  // add_<x> flat | increased_<x> additive | more_<x> multiplicative
     std::string display = "flat";           // "flat" | "percent", for the sentence
     std::vector<ModifierTier> tiers;
+    std::vector<ModifierTier> craftTiers;
     double weight = 1.0;
     std::string designPurpose;
     // Optional: the whole sentence the modifier reads as, with {n} for the
@@ -217,6 +238,7 @@ struct ImplicitModifier {
 };
 
 struct ItemBase {
+    bool dropEligible = true; // recipe-only starters must not dilute existing drops
     std::string id;
     std::string displayName;
     std::string material;
@@ -1123,6 +1145,7 @@ struct FoundryDef {
     int metalReach(const std::string& id) const; // 1 for "" or an unknown metal
     int maxReach() const;                 // the widest reach tuned (1 when none)
     std::string alloyForEra(int era) const; // the widest-reaching metal the era allows
+    std::map<std::string, std::string> kindAliases;
     const KindDef* findKindOnPlate(const std::string& id) const;
     std::string familyName(const std::string& family) const; // "" when unknown
     std::vector<IngotDef> ingots;

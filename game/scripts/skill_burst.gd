@@ -41,10 +41,11 @@ static func hit_area(from_combat: PlayerCombat, skill: StringName, at: Vector3,
 		if at.distance_to(target)>in_radius or not solid_ray(from_combat,at,target).is_empty(): continue
 		visited.append(enemy.get_instance_id())
 		if not secondary and enemy.is_frozen() and shatter.get("enabled",false):
+			if not enemy.flees: from_combat.practice_contact(skill, context)
 			frozen.append(enemy)
 			continue
 		var crossed := from_combat.apply_payload(enemy,skill,enemy is Boss,fraction if secondary else 1.0,secondary,context)
-		var landed := from_combat.deal(enemy,skill,enemies.size()==1,fraction,secondary)
+		var landed := from_combat.deal(enemy,skill,enemies.size()==1,fraction,secondary,context)
 		damage += float(landed.damage)
 		kills += 1 if landed.kill else 0
 		for type in landed.types:

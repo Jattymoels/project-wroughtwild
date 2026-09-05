@@ -74,8 +74,12 @@ func _ready() -> void:
 			counts[item.base_id] = int(counts.get(item.base_id, 0)) + 1
 			total += 1
 	check(total > 1000, "audit has enough actual equipment drops to assess distribution")
-	check(counts.size() == sim.item_base_ids().size(), "every equipment base appears")
+	var recipe_only := ["wooden_cudgel","simple_bow","wooden_focus","hide_vest"]
+	check(counts.size() == sim.item_base_ids().size()-recipe_only.size(), "every established drop base appears; starters remain recipe-only")
 	for id in sim.item_base_ids():
+		if id in recipe_only:
+			check(not counts.has(id), "%s does not dilute the existing loot pool" % id)
+			continue
 		var fraction := float(counts.get(id,0)) / total
 		check(fraction > 0.04 and fraction < 0.105, "%s stays near equal base odds in 50,000 kills" % id)
 	print("CODEX_LOOT_PERSISTENCE %d checks, %d failures; %d gear, %d bows" % [checks,failures,total,int(counts.get("hunting_bow",0))+int(counts.get("bronze_longbow",0))])

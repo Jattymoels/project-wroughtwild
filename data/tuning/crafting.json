@@ -175,6 +175,84 @@
   ],
   "recipes": [
     {
+      "id": "hide_vest",
+      "display_name": "Hide Vest",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "hide": 3,
+        "wood": 1
+      },
+      "outputs": {
+        "hide_vest": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "wooden_focus",
+      "display_name": "Wooden Focus",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 4
+      },
+      "outputs": {
+        "wooden_focus": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "simple_bow",
+      "display_name": "Simple Bow",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 4,
+        "hide": 1
+      },
+      "outputs": {
+        "simple_bow": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "wooden_cudgel",
+      "display_name": "Wooden Cudgel",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 4
+      },
+      "outputs": {
+        "wooden_cudgel": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "equipment"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
       "id": "timber_wedges_bulk",
       "display_name": "Timber Wedges (a bundle)",
       "station": "workbench",
@@ -298,7 +376,7 @@
         "blacksmithing": 1
       },
       "inputs": {
-        "iron_ingot": 6,
+        "iron_ingot": 3,
         "wood": 2
       },
       "outputs": {
@@ -309,7 +387,7 @@
       "use_categories": [
         "equipment"
       ],
-      "design_purpose": "The Warden's offhand at the basic forge, priced like the mace."
+      "design_purpose": "Basic forge step above the bench: three ingots keeps melee preparation comparable with the bow while preserving a metalworking trip."
     },
     {
       "id": "charred_brand",
@@ -662,7 +740,7 @@
         "blacksmithing": 1
       },
       "inputs": {
-        "iron_ingot": 6,
+        "iron_ingot": 3,
         "wood": 2
       },
       "outputs": {
@@ -673,7 +751,7 @@
       "use_categories": [
         "equipment"
       ],
-      "design_purpose": "The first weapon, craftable at the basic forge: its implicit physical damage is the first felt step above bare hands (D-014 slice 1)."
+      "design_purpose": "Basic forge step above the bench: three ingots keeps melee preparation comparable with the bow while preserving a metalworking trip."
     },
     {
       "id": "frost_sceptre",
@@ -778,6 +856,613 @@
       ],
       "fuel_cost": 3,
       "design_purpose": "The era-two chest base that holds tier-three defence rolls."
+    },
+    {
+      "id": "work_sound_iron",
+      "display_name": "Work Sound Iron Ingot",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "iron_ingot": 2,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "sound_iron_ingot": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "work_excellent_iron",
+      "display_name": "Work Excellent Iron Ingot",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "sound_iron_ingot": 1,
+        "steel_ingot": 1,
+        "silver_ingot": 1
+      },
+      "outputs": {
+        "excellent_iron_ingot": 1
+      },
+      "base_skill_xp": 8,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "distil_ember",
+      "display_name": "Distil Faint Ember Catalyst",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "iron_ore": 1,
+        "charcoal": 2
+      },
+      "outputs": {
+        "ember_catalyst": 1
+      },
+      "base_skill_xp": 2,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_ember_catalyst",
+      "display_name": "Refine Stable Ember Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "ember_catalyst": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_ember_catalyst": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_ember_catalyst",
+      "display_name": "Refine Potent Ember Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_ember_catalyst": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_ember_catalyst": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_preserving_catalyst",
+      "display_name": "Refine Stable Preserving Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "preserving_catalyst": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_preserving_catalyst": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_preserving_catalyst",
+      "display_name": "Refine Potent Preserving Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_preserving_catalyst": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_preserving_catalyst": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_vanguard",
+      "display_name": "Refine Stable Vanguard",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "vanguard": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_vanguard": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_vanguard",
+      "display_name": "Refine Potent Vanguard",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_vanguard": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_vanguard": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_warding_vanguard",
+      "display_name": "Refine Stable Warding Vanguard",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "warding_vanguard": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_warding_vanguard": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_warding_vanguard",
+      "display_name": "Refine Potent Warding Vanguard",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_warding_vanguard": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_warding_vanguard": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_marrow",
+      "display_name": "Refine Stable Marrow",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "marrow": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_marrow": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_marrow",
+      "display_name": "Refine Potent Marrow",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_marrow": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_marrow": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_quicksilver",
+      "display_name": "Refine Stable Quicksilver",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "quicksilver": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_quicksilver": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_quicksilver",
+      "display_name": "Refine Potent Quicksilver",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_quicksilver": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_quicksilver": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_piercing_catalyst",
+      "display_name": "Refine Stable Piercing Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "piercing_catalyst": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_piercing_catalyst": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_piercing_catalyst",
+      "display_name": "Refine Potent Piercing Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_piercing_catalyst": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_piercing_catalyst": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_impact_catalyst",
+      "display_name": "Refine Stable Impact Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "impact_catalyst": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_impact_catalyst": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_impact_catalyst",
+      "display_name": "Refine Potent Impact Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_impact_catalyst": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_impact_catalyst": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_sipping_marrow",
+      "display_name": "Refine Stable Sipping Marrow",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "sipping_marrow": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_sipping_marrow": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_sipping_marrow",
+      "display_name": "Refine Potent Sipping Marrow",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_sipping_marrow": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_sipping_marrow": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_striking_quicksilver",
+      "display_name": "Refine Stable Striking Quicksilver",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "striking_quicksilver": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_striking_quicksilver": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_striking_quicksilver",
+      "display_name": "Refine Potent Striking Quicksilver",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_striking_quicksilver": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_striking_quicksilver": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_casting_quicksilver",
+      "display_name": "Refine Stable Casting Quicksilver",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "casting_quicksilver": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_casting_quicksilver": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_casting_quicksilver",
+      "display_name": "Refine Potent Casting Quicksilver",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_casting_quicksilver": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_casting_quicksilver": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_stable_frost_catalyst",
+      "display_name": "Refine Stable Frost Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 3
+      },
+      "inputs": {
+        "frost_catalyst": 1,
+        "bog_iron": 1
+      },
+      "outputs": {
+        "stable_frost_catalyst": 1
+      },
+      "base_skill_xp": 4,
+      "fuel_cost": 2,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_potent_frost_catalyst",
+      "display_name": "Refine Potent Frost Catalyst",
+      "station": "forge_improved",
+      "minimum_skill": {
+        "blacksmithing": 5
+      },
+      "inputs": {
+        "stable_frost_catalyst": 1,
+        "silver_ingot": 1,
+        "steel_ingot": 1
+      },
+      "outputs": {
+        "potent_frost_catalyst": 1
+      },
+      "base_skill_xp": 6,
+      "fuel_cost": 3,
+      "minimum_era": 3,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
     }
   ],
   "orders": [
@@ -799,7 +1484,7 @@
       "id": "ember_catalyst_tempering",
       "display_name": "Ember-Tempering",
       "status": "provisional (Proposal C of ADR-0002; D-007 remains open)",
-      "catalyst": "ember_catalyst",
+      "catalyst": "stable_ember_catalyst",
       "station": "forge_improved",
       "process": "catalyst_temper",
       "minimum_skill": {
@@ -808,7 +1493,7 @@
       "guaranteed_property": "fire_resistance",
       "result_tier": 2,
       "minimum_roll_fraction_at_skill": 0.5,
-      "design_purpose": "The catalyst guarantees the domain (fire resistance lands, at tier 2) while the magnitude stays a bounded roll; minimum_roll_fraction raises the roll floor at the required skill so mastery buys consistency, and an existing better roll is never downgraded (preservation)"
+      "design_purpose": "Stable Ember, improved forge and Blacksmithing 5 guarantee the established tier-two fire-resistance temper. Existing rolls are preserved; a Faint Ember no longer bypasses refining."
     },
     {
       "id": "preserving_transfer",
@@ -848,17 +1533,41 @@
     "quicksilver",
     "sipping_marrow",
     "striking_quicksilver",
-    "casting_quicksilver"
+    "casting_quicksilver",
+    "stable_ember_catalyst",
+    "potent_ember_catalyst",
+    "stable_preserving_catalyst",
+    "potent_preserving_catalyst",
+    "stable_vanguard",
+    "potent_vanguard",
+    "stable_warding_vanguard",
+    "potent_warding_vanguard",
+    "stable_marrow",
+    "potent_marrow",
+    "stable_quicksilver",
+    "potent_quicksilver",
+    "stable_piercing_catalyst",
+    "potent_piercing_catalyst",
+    "stable_impact_catalyst",
+    "potent_impact_catalyst",
+    "stable_sipping_marrow",
+    "potent_sipping_marrow",
+    "stable_striking_quicksilver",
+    "potent_striking_quicksilver",
+    "stable_casting_quicksilver",
+    "potent_casting_quicksilver",
+    "stable_frost_catalyst",
+    "potent_frost_catalyst"
   ],
   "craft_rolls": {
     "keen_chance_at_level_1": 0.35,
     "keen_chance_per_level": 0.1,
     "wrought_chance_from_level": 4,
     "wrought_chance_per_level": 0.15,
-    "design_purpose": "Crafted gear rolls modifiers like a drop (owner, 3 Sep 2026: 'they come out plain ... a random generation of modifiers is preferred'). A recipe whose output is an item base makes a rolled item in the pack instead of a stack: keen with keen_chance_at_level_1 plus keen_chance_per_level per Blacksmithing level above one, wrought (rolled first) from wrought_chance_from_level at wrought_chance_per_level per level above that, else plain. The tier is the era's, so era two's forge makes era two's rolls, and the seed is the craft count so a save replays its luck. Infrastructure stays the dependable route: the base is certain, the roll is the excitement.",
+    "design_purpose": "Legacy values retained for historical tooling. New equipment uses quality_progression process count weights and authored items craft_tiers, never the era roll tier.",
     "currency_weighting": {
-      "aimed_minimum_rarity": "keen",
-      "design_purpose": "A kind added to a gear craft (D-023 slice 3) is consumed and aims the roll: the first modifier is drawn from the kind's family (its items.json tag: offence, defence, life, speed) among what the base allows, and a result that would have been plain is at least aimed_minimum_rarity. The base is still certain, the roll is still the excitement, and now it can be aimed. A family the base cannot hold aims nothing and the kind is still spent: the panel says which families a base allows."
+      "aimed_minimum_rarity": "worked",
+      "design_purpose": "A compatible Kind guarantees at least one modifier (two at an improved forge). An incompatible Kind blocks the craft without payment."
     }
   },
   "market": {
@@ -907,42 +1616,55 @@
       "display_name": "Ember Catalyst",
       "family": "offence",
       "design_purpose": "Works fire through each ingot's purpose: Ember plants a fuse, Edge cuts a cinder seam, Reach sends a travelling spark, Plate heats a retaliation, Ward cauterises afflictions, Haste releases stored burn early, Vigour sheds healing cinders and Frost interrupts with steam. Downstream of Smoulder, it evolves into Steam Plume. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
-      "description": "Works fire through each ingot's purpose: Ember plants a fuse, Edge cuts a cinder seam, Reach sends a travelling spark, Plate heats a retaliation, Ward cauterises afflictions, Haste releases stored burn early, Vigour sheds healing cinders and Frost interrupts with steam. Downstream of Smoulder, it evolves into Steam Plume."
+      "description": "Works fire through each ingot's purpose: Ember plants a fuse, Edge cuts a cinder seam, Reach sends a travelling spark, Plate heats a retaliation, Ward cauterises afflictions, Haste releases stored burn early, Vigour sheds healing cinders and Frost interrupts with steam. Downstream of Smoulder, it evolves into Steam Plume.",
+      "potency": 1,
+      "canonical_kind": "ember_catalyst",
+      "craft_tag": "fire"
     },
     {
       "id": "preserving_catalyst",
       "display_name": "Preserving Catalyst",
       "family": "offence",
       "design_purpose": "Preserves different moments through each ingot: store burn in the ground, hold chill or a wound, echo for new arrivals, return to recover, repel an arrival, shelter at a kill or switch skills to recover time. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
-      "description": "Preserves different moments through each ingot: store burn in the ground, hold chill or a wound, echo for new arrivals, return to recover, repel an arrival, shelter at a kill or switch skills to recover time."
+      "description": "Preserves different moments through each ingot: store burn in the ground, hold chill or a wound, echo for new arrivals, return to recover, repel an arrival, shelter at a kill or switch skills to recover time.",
+      "potency": 1,
+      "canonical_kind": "preserving_catalyst"
     },
     {
       "id": "vanguard",
       "display_name": "Vanguard",
       "family": "defence",
       "design_purpose": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection."
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "potency": 1,
+      "canonical_kind": "vanguard"
     },
     {
       "id": "warding_vanguard",
       "display_name": "Warding Vanguard",
       "family": "defence",
       "design_purpose": "Casting plants a veil which catches one incoming enemy projectile before it reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you."
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "potency": 1,
+      "canonical_kind": "warding_vanguard"
     },
     {
       "id": "marrow",
       "display_name": "Marrow",
       "family": "life",
       "design_purpose": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses."
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "potency": 1,
+      "canonical_kind": "marrow"
     },
     {
       "id": "quicksilver",
       "display_name": "Quicksilver",
       "family": "speed",
       "design_purpose": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it."
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "potency": 1,
+      "canonical_kind": "quicksilver"
     },
     {
       "id": "piercing_catalyst",
@@ -950,7 +1672,9 @@
       "family": "offence",
       "craft_tag": "projectile",
       "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
-      "design_purpose": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
+      "design_purpose": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 1,
+      "canonical_kind": "piercing_catalyst"
     },
     {
       "id": "impact_catalyst",
@@ -958,7 +1682,9 @@
       "family": "offence",
       "craft_tag": "physical",
       "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
-      "design_purpose": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
+      "design_purpose": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 1,
+      "canonical_kind": "impact_catalyst"
     },
     {
       "id": "sipping_marrow",
@@ -966,7 +1692,9 @@
       "family": "life",
       "craft_tag": "life",
       "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
-      "design_purpose": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
+      "design_purpose": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 1,
+      "canonical_kind": "sipping_marrow"
     },
     {
       "id": "striking_quicksilver",
@@ -974,7 +1702,9 @@
       "family": "speed",
       "craft_tag": "speed",
       "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
-      "design_purpose": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
+      "design_purpose": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 1,
+      "canonical_kind": "striking_quicksilver"
     },
     {
       "id": "casting_quicksilver",
@@ -982,7 +1712,9 @@
       "family": "speed",
       "craft_tag": "speed",
       "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
-      "design_purpose": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
+      "design_purpose": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 1,
+      "canonical_kind": "casting_quicksilver"
     },
     {
       "id": "frost_catalyst",
@@ -990,8 +1722,326 @@
       "family": "offence",
       "craft_tag": "cold",
       "description": "Shapes cold into each ingot: Ember smoulders, Frost sends a chill ring, Edge cuts sideways, Reach slows enemy shots, Vigour draws ice skin, Plate binds feet, Ward reflects a shot and Haste recovers movement.",
-      "design_purpose": "Shapes cold into each ingot: Ember smoulders, Frost sends a chill ring, Edge cuts sideways, Reach slows enemy shots, Vigour draws ice skin, Plate binds feet, Ward reflects a shot and Haste recovers movement. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family."
+      "design_purpose": "Shapes cold into each ingot: Ember smoulders, Frost sends a chill ring, Edge cuts sideways, Reach slows enemy shots, Vigour draws ice skin, Plate binds feet, Ward reflects a shot and Haste recovers movement. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
+      "potency": 1,
+      "canonical_kind": "frost_catalyst"
+    },
+    {
+      "id": "stable_ember_catalyst",
+      "display_name": "Stable Ember Catalyst",
+      "family": "offence",
+      "design_purpose": "Works fire through each ingot's purpose: Ember plants a fuse, Edge cuts a cinder seam, Reach sends a travelling spark, Plate heats a retaliation, Ward cauterises afflictions, Haste releases stored burn early, Vigour sheds healing cinders and Frost interrupts with steam. Downstream of Smoulder, it evolves into Steam Plume. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
+      "description": "Craft potency 2. On the Foundry plate: the same Ember Catalyst mutation; lifting returns this grade.",
+      "potency": 2,
+      "canonical_kind": "ember_catalyst",
+      "craft_tag": "fire"
+    },
+    {
+      "id": "potent_ember_catalyst",
+      "display_name": "Potent Ember Catalyst",
+      "family": "offence",
+      "design_purpose": "Works fire through each ingot's purpose: Ember plants a fuse, Edge cuts a cinder seam, Reach sends a travelling spark, Plate heats a retaliation, Ward cauterises afflictions, Haste releases stored burn early, Vigour sheds healing cinders and Frost interrupts with steam. Downstream of Smoulder, it evolves into Steam Plume. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
+      "description": "Craft potency 3. On the Foundry plate: the same Ember Catalyst mutation; lifting returns this grade.",
+      "potency": 3,
+      "canonical_kind": "ember_catalyst",
+      "craft_tag": "fire"
+    },
+    {
+      "id": "stable_preserving_catalyst",
+      "display_name": "Stable Preserving Catalyst",
+      "family": "offence",
+      "design_purpose": "Preserves different moments through each ingot: store burn in the ground, hold chill or a wound, echo for new arrivals, return to recover, repel an arrival, shelter at a kill or switch skills to recover time. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
+      "description": "Craft potency 2. On the Foundry plate: the same Preserving Catalyst mutation; lifting returns this grade.",
+      "potency": 2,
+      "canonical_kind": "preserving_catalyst"
+    },
+    {
+      "id": "potent_preserving_catalyst",
+      "display_name": "Potent Preserving Catalyst",
+      "family": "offence",
+      "design_purpose": "Preserves different moments through each ingot: store burn in the ground, hold chill or a wound, echo for new arrivals, return to recover, repel an arrival, shelter at a kill or switch skills to recover time. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
+      "description": "Craft potency 3. On the Foundry plate: the same Preserving Catalyst mutation; lifting returns this grade.",
+      "potency": 3,
+      "canonical_kind": "preserving_catalyst"
+    },
+    {
+      "id": "stable_vanguard",
+      "display_name": "Stable Vanguard",
+      "family": "defence",
+      "design_purpose": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Craft potency 2. On the Foundry plate: the same Vanguard mutation; lifting returns this grade.",
+      "potency": 2,
+      "canonical_kind": "vanguard"
+    },
+    {
+      "id": "potent_vanguard",
+      "display_name": "Potent Vanguard",
+      "family": "defence",
+      "design_purpose": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Craft potency 3. On the Foundry plate: the same Vanguard mutation; lifting returns this grade.",
+      "potency": 3,
+      "canonical_kind": "vanguard"
+    },
+    {
+      "id": "stable_warding_vanguard",
+      "display_name": "Stable Warding Vanguard",
+      "family": "defence",
+      "design_purpose": "Casting plants a veil which catches one incoming enemy projectile before it reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Craft potency 2. On the Foundry plate: the same Warding Vanguard mutation; lifting returns this grade.",
+      "potency": 2,
+      "canonical_kind": "warding_vanguard"
+    },
+    {
+      "id": "potent_warding_vanguard",
+      "display_name": "Potent Warding Vanguard",
+      "family": "defence",
+      "design_purpose": "Casting plants a veil which catches one incoming enemy projectile before it reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Craft potency 3. On the Foundry plate: the same Warding Vanguard mutation; lifting returns this grade.",
+      "potency": 3,
+      "canonical_kind": "warding_vanguard"
+    },
+    {
+      "id": "stable_marrow",
+      "display_name": "Stable Marrow",
+      "family": "life",
+      "design_purpose": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Craft potency 2. On the Foundry plate: the same Marrow mutation; lifting returns this grade.",
+      "potency": 2,
+      "canonical_kind": "marrow"
+    },
+    {
+      "id": "potent_marrow",
+      "display_name": "Potent Marrow",
+      "family": "life",
+      "design_purpose": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Craft potency 3. On the Foundry plate: the same Marrow mutation; lifting returns this grade.",
+      "potency": 3,
+      "canonical_kind": "marrow"
+    },
+    {
+      "id": "stable_quicksilver",
+      "display_name": "Stable Quicksilver",
+      "family": "speed",
+      "design_purpose": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Craft potency 2. On the Foundry plate: the same Quicksilver mutation; lifting returns this grade.",
+      "potency": 2,
+      "canonical_kind": "quicksilver"
+    },
+    {
+      "id": "potent_quicksilver",
+      "display_name": "Potent Quicksilver",
+      "family": "speed",
+      "design_purpose": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Craft potency 3. On the Foundry plate: the same Quicksilver mutation; lifting returns this grade.",
+      "potency": 3,
+      "canonical_kind": "quicksilver"
+    },
+    {
+      "id": "stable_piercing_catalyst",
+      "display_name": "Stable Piercing Catalyst",
+      "family": "offence",
+      "craft_tag": "projectile",
+      "description": "Craft potency 2. On the Foundry plate: the same Piercing Catalyst mutation; lifting returns this grade.",
+      "design_purpose": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 2,
+      "canonical_kind": "piercing_catalyst"
+    },
+    {
+      "id": "potent_piercing_catalyst",
+      "display_name": "Potent Piercing Catalyst",
+      "family": "offence",
+      "craft_tag": "projectile",
+      "description": "Craft potency 3. On the Foundry plate: the same Piercing Catalyst mutation; lifting returns this grade.",
+      "design_purpose": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 3,
+      "canonical_kind": "piercing_catalyst"
+    },
+    {
+      "id": "stable_impact_catalyst",
+      "display_name": "Stable Impact Catalyst",
+      "family": "offence",
+      "craft_tag": "physical",
+      "description": "Craft potency 2. On the Foundry plate: the same Impact Catalyst mutation; lifting returns this grade.",
+      "design_purpose": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 2,
+      "canonical_kind": "impact_catalyst"
+    },
+    {
+      "id": "potent_impact_catalyst",
+      "display_name": "Potent Impact Catalyst",
+      "family": "offence",
+      "craft_tag": "physical",
+      "description": "Craft potency 3. On the Foundry plate: the same Impact Catalyst mutation; lifting returns this grade.",
+      "design_purpose": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 3,
+      "canonical_kind": "impact_catalyst"
+    },
+    {
+      "id": "stable_sipping_marrow",
+      "display_name": "Stable Sipping Marrow",
+      "family": "life",
+      "craft_tag": "life",
+      "description": "Craft potency 2. On the Foundry plate: the same Sipping Marrow mutation; lifting returns this grade.",
+      "design_purpose": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 2,
+      "canonical_kind": "sipping_marrow"
+    },
+    {
+      "id": "potent_sipping_marrow",
+      "display_name": "Potent Sipping Marrow",
+      "family": "life",
+      "craft_tag": "life",
+      "description": "Craft potency 3. On the Foundry plate: the same Sipping Marrow mutation; lifting returns this grade.",
+      "design_purpose": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 3,
+      "canonical_kind": "sipping_marrow"
+    },
+    {
+      "id": "stable_striking_quicksilver",
+      "display_name": "Stable Striking Quicksilver",
+      "family": "speed",
+      "craft_tag": "speed",
+      "description": "Craft potency 2. On the Foundry plate: the same Striking Quicksilver mutation; lifting returns this grade.",
+      "design_purpose": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 2,
+      "canonical_kind": "striking_quicksilver"
+    },
+    {
+      "id": "potent_striking_quicksilver",
+      "display_name": "Potent Striking Quicksilver",
+      "family": "speed",
+      "craft_tag": "speed",
+      "description": "Craft potency 3. On the Foundry plate: the same Striking Quicksilver mutation; lifting returns this grade.",
+      "design_purpose": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 3,
+      "canonical_kind": "striking_quicksilver"
+    },
+    {
+      "id": "stable_casting_quicksilver",
+      "display_name": "Stable Casting Quicksilver",
+      "family": "speed",
+      "craft_tag": "speed",
+      "description": "Craft potency 2. On the Foundry plate: the same Casting Quicksilver mutation; lifting returns this grade.",
+      "design_purpose": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 2,
+      "canonical_kind": "casting_quicksilver"
+    },
+    {
+      "id": "potent_casting_quicksilver",
+      "display_name": "Potent Casting Quicksilver",
+      "family": "speed",
+      "craft_tag": "speed",
+      "description": "Craft potency 3. On the Foundry plate: the same Casting Quicksilver mutation; lifting returns this grade.",
+      "design_purpose": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "potency": 3,
+      "canonical_kind": "casting_quicksilver"
+    },
+    {
+      "id": "stable_frost_catalyst",
+      "display_name": "Stable Frost Catalyst",
+      "family": "offence",
+      "craft_tag": "cold",
+      "description": "Craft potency 2. On the Foundry plate: the same Frost Catalyst mutation; lifting returns this grade.",
+      "design_purpose": "Shapes cold into each ingot: Ember smoulders, Frost sends a chill ring, Edge cuts sideways, Reach slows enemy shots, Vigour draws ice skin, Plate binds feet, Ward reflects a shot and Haste recovers movement. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
+      "potency": 2,
+      "canonical_kind": "frost_catalyst"
+    },
+    {
+      "id": "potent_frost_catalyst",
+      "display_name": "Potent Frost Catalyst",
+      "family": "offence",
+      "craft_tag": "cold",
+      "description": "Craft potency 3. On the Foundry plate: the same Frost Catalyst mutation; lifting returns this grade.",
+      "design_purpose": "Shapes cold into each ingot: Ember smoulders, Frost sends a chill ring, Edge cuts sideways, Reach slows enemy shots, Vigour draws ice skin, Plate binds feet, Ward reflects a shot and Haste recovers movement. Exact identity controls inward Foundry forms; gear crafts still use craft_tag or the currency family.",
+      "potency": 3,
+      "canonical_kind": "frost_catalyst"
     }
   ],
-  "design_purpose_currency_kinds": "D-025: each Kind has a crafting use and an exact Foundry identity. Gear crafts still use craft_tag or the currency family to select their first modifier, and guarantee at least keen. Kinds remain in the four existing families. The pack/purse split and three-for-one exchange are preserved. Frost Catalyst is a pack material dropped by Gloom Crawlers at 7% and available in the exchange; it aims cold crafts and can turn an Ember support into Smoulder. Rare build-defining equipment modifiers remain future work."
+  "design_purpose_currency_kinds": "D-025: each Kind has a crafting use and an exact Foundry identity. Gear crafts still use craft_tag or the currency family to select their first modifier, and guarantee at least keen. Kinds remain in the four existing families. The pack/purse split and three-for-one exchange are preserved. Frost Catalyst is a pack material dropped by Gloom Crawlers at 7% and available in the exchange; it aims cold crafts and can turn an Ember support into Smoulder. Rare build-defining equipment modifiers remain future work.",
+  "quality_progression": {
+    "design_purpose": "Workpiece quality is capacity; catalyst potency is roll strength. Refining spends expedition resources. Skill improves the floor within a band, never unlocks a stronger band by itself. Extra graded iron reinforces the original base without replacing its material identity.",
+    "roll_floor_per_skill_level": 0.06,
+    "roll_floor_maximum": 0.24,
+    "batch_maximum": 20,
+    "grades": [
+      {
+        "tier": 1,
+        "quality": "Rough",
+        "potency": "Faint",
+        "station": "",
+        "minimum_skill": 1,
+        "minimum_era": 1,
+        "reinforcement": {}
+      },
+      {
+        "tier": 2,
+        "quality": "Sound",
+        "potency": "Stable",
+        "station": "forge_improved",
+        "minimum_skill": 3,
+        "minimum_era": 1,
+        "reinforcement": {
+          "sound_iron_ingot": 1
+        }
+      },
+      {
+        "tier": 3,
+        "quality": "Excellent",
+        "potency": "Potent",
+        "station": "forge_improved",
+        "minimum_skill": 5,
+        "minimum_era": 3,
+        "reinforcement": {
+          "excellent_iron_ingot": 1
+        }
+      }
+    ],
+    "processes": [
+      {
+        "station": "workbench",
+        "counts": [
+          0.85,
+          0.15,
+          0,
+          0,
+          0
+        ],
+        "aimed_minimum": 1
+      },
+      {
+        "station": "forge_basic",
+        "counts": [
+          0.65,
+          0.3,
+          0.05,
+          0,
+          0
+        ],
+        "aimed_minimum": 1
+      },
+      {
+        "station": "forge_improved",
+        "counts": [
+          0.2,
+          0.4,
+          0.35,
+          0.05,
+          0
+        ],
+        "aimed_minimum": 2
+      },
+      {
+        "station": "forge_improved",
+        "minimum_era": 3,
+        "counts": [
+          0.05,
+          0.15,
+          0.35,
+          0.35,
+          0.1
+        ],
+        "aimed_minimum": 2
+      }
+    ]
+  }
 }

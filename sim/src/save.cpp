@@ -48,7 +48,7 @@ void writeStringList(std::ostringstream& out, const std::vector<std::string>& li
 // One item: base, rarity, implicit numeric properties, rolled modifiers.
 void writeItem(std::ostringstream& out, const items::ItemInstance& item) {
     out << "{\"base\":\"" << escape(item.baseId) << "\",\"rarity\":\"" << escape(item.rarity)
-        << "\",\"implicit\":{";
+        << "\",\"workpiece_tier\":" << item.workpieceTier << ",\"implicit\":{";
     bool first = true;
     for (const auto& [id, value] : item.implicitProperties) {
         if (!first) out << ",";
@@ -60,7 +60,7 @@ void writeItem(std::ostringstream& out, const items::ItemInstance& item) {
         const auto& rolled = item.rolledProperties[i];
         if (i) out << ",";
         out << "{\"id\":\"" << escape(rolled.propertyId) << "\",\"tier\":" << rolled.tier
-            << ",\"value\":" << rolled.value << "}";
+            << ",\"value\":" << rolled.value << ",\"crafted\":" << (rolled.crafted ? "true" : "false") << "}";
     }
     out << "]}";
 }
@@ -80,6 +80,7 @@ std::vector<std::string> readStringList(const json::Value& v) {
 items::ItemInstance readItem(const json::Value& v) {
     items::ItemInstance item;
     item.baseId = v.get("base").asString();
+    if (auto tier = v.find("workpiece_tier")) item.workpieceTier = tier->asInt();
     if (auto rarity = v.find("rarity")) item.rarity = rarity->asString();
     for (const auto& [id, value] : v.get("implicit").asObject())
         item.implicitProperties[id] = value->asNumber();
@@ -88,6 +89,7 @@ items::ItemInstance readItem(const json::Value& v) {
         property.propertyId = rolled->get("id").asString();
         property.tier = rolled->get("tier").asInt();
         property.value = rolled->get("value").asNumber();
+        if (auto crafted = rolled->find("crafted")) property.crafted = crafted->asBool();
         item.rolledProperties.push_back(std::move(property));
     }
     return item;
@@ -169,7 +171,29 @@ std::string toJson(const SaveGame& game) {
     }
     out << "}},\"skill_uses\":";
     writeIntMap(out, game.economy.skillUses);
-    out << "},\"equipment\":{";
+    out << ",\"mastery_version\":" << game.economy.masteryVersion << ",\"crafted_gear\":" << game.economy.craftedGear;
+    out << ",\"skill_practice\":{";
+    bool firstPractice = true;
+    for (const auto& [id, points] : game.economy.skillPractice) {
+        if (!firstPractice) out << ",";
+        firstPractice = false;
+        out << "\"" << escape(id) << "\":" << points;
+    }
+    out << "},\"earned_mastery\":{";
+    bool firstMastery = true;
+    for (const auto& [id, perks] : game.economy.earnedMastery) {
+        if (!firstMastery) out << ",";
+        firstMastery = false;
+        out << "\"" << escape(id) << "\":[";
+        for (size_t i = 0; i < perks.size(); ++i) {
+            if (i) out << ",";
+            const auto& perk = perks[i];
+            out << "{\"uses\":" << perk.uses << ",\"modifier\":\"" << escape(perk.modifier)
+                << "\",\"value\":" << perk.value << ",\"text\":\"" << escape(perk.text) << "\"}";
+        }
+        out << "]";
+    }
+    out << "}},\"equipment\":{";
 
     bool firstSlot = true;
     for (const auto& [slot, item] : game.equipment.slots) {
@@ -250,6 +274,12 @@ SaveGame fromJson(const std::string& text) {
             for (const auto& [ingot, counts] : metals->asObject()) game.economy.foundry.metals[ingot] = readIntMap(*counts);
     }
     if (auto uses = eco.find("skill_uses")) game.economy.skillUses = readIntMap(*uses);
+    game.economy.masteryVersion = eco.find("mastery_version") ? eco.get("mastery_version").asInt() : 0;
+    if (auto count = eco.find("crafted_gear")) game.economy.craftedGear = count->asInt();
+    if (auto points = eco.find("skill_practice")) for (const auto& [id, value] : points->asObject()) game.economy.skillPractice[id] = value->asNumber();
+    if (auto mastery = eco.find("earned_mastery")) for (const auto& [id, perks] : mastery->asObject()) {
+        for (const auto& p : perks->asArray()) game.economy.earnedMastery[id].push_back({p->get("uses").asInt(), p->get("modifier").asString(), p->get("value").asNumber(), p->get("text").asString()});
+    }
 
     for (const auto& [slot, itemValue] : doc->get("equipment").asObject())
         game.equipment.slots[slot] = readItem(*itemValue);

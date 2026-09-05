@@ -386,7 +386,12 @@ std::vector<Link> links(const tuning::Tuning& tuning, const State& state, const 
     return out;
 }
 
-std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, const Plate& plate) {
+std::vector<Effect> effects(const tuning::Tuning& tuning, const State& original, const Plate& plate) {
+    State state = original;
+    for (auto& placement : state.plate) {
+        const auto* kind = tuning.crafting.findKind(placement.currency);
+        if (kind && !kind->canonicalKind.empty()) placement.currency = kind->canonicalKind;
+    }
     const tuning::FoundryDef& def = tuning.foundry;
     std::vector<Effect> out;
     auto cell = [&](int r, int c) -> const Placement* {

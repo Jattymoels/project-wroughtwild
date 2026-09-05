@@ -38,8 +38,8 @@ public:
 
     Inventory inventory;
     std::map<std::string, int> currency;
-    // Rolled gear (D-014): items with modifiers are instances, not counts;
-    // plain crafted gear stays a count in `inventory` until it is worn.
+    // Gear instances retain their workpiece capacity and exact rolled values.
+    // Newly crafted equipment is an instance even when it is Plain.
     std::vector<items::ItemInstance> packItems;
 
     // --- craft skills ---
@@ -70,10 +70,13 @@ public:
         bool skillTooLow = false;
         bool missingInputs = false;
         bool missingFuel = false;
+        bool incompatibleKind = false;
+        bool qualityUnavailable = false;
+        bool invalidQuantity = false;
         bool missingKind = false; // an aimed craft named a kind that is unknown or not held
         bool any() const {
             return unknownRecipe || stationUnavailable || skillTooLow || missingInputs ||
-                   missingFuel || missingKind;
+                   missingFuel || missingKind || incompatibleKind || qualityUnavailable || invalidQuantity;
         }
     };
 
@@ -95,7 +98,17 @@ public:
     // aimKind (D-023 slice 3): a currency kind added to a gear craft. It is
     // consumed, the roll's first modifier is drawn from the kind's family,
     // and a plain result is lifted to the aimed minimum rarity.
-    CraftResult craft(const std::string& recipeId, bool forOrder = false, const std::string& aimKind = "");
+    CraftResult craft(const std::string& recipeId, bool forOrder = false, const std::string& aimKind = "", int quality = 1);
+    struct CraftPlan {
+        CraftFailure failure;
+        Inventory costs;
+        int fuel = 0, potency = 1, quality = 1, minimumCount = 0;
+        double rollFloor = 0;
+        std::vector<double> counts;
+        std::string baseId;
+    };
+    CraftPlan craftPlan(const std::string& recipeId, const std::string& aimKind = "", int quality = 1, int quantity = 1) const;
+    CraftResult craftBatch(const std::string& recipeId, bool forOrder, const std::string& aimKind, int quality, int quantity);
 
     // How many of an id the player holds, in the pack or the purse.
     int held(const std::string& id) const;
@@ -166,9 +179,11 @@ public:
     bool exchange(const std::string& from, const std::string& to);
 
     // --- skill mastery (D-019) ---
-    // A cast that fired. Returns the perk texts this use unlocked (usually none).
+    // The host reports one qualifying input cast, once across its descendants.
+    // Returns the newly earned perk texts. Empty/automatic casts never call this.
     std::vector<std::string> noteSkillUse(const std::string& skillId);
     int skillUses(const std::string& skillId) const;
+    double skillPractice(const std::string& skillId) const;
     // Perks unlocked so far for a skill, in order.
     std::vector<const tuning::MasteryPerk*> masteryUnlocked(const std::string& skillId) const;
 
@@ -274,6 +289,10 @@ public:
         std::vector<std::string> skillBar;
         foundry::State foundry;
         std::map<std::string, int> skillUses;
+        int masteryVersion = 1;
+        int craftedGear = 0;
+        std::map<std::string, double> skillPractice;
+        std::map<std::string, std::vector<tuning::MasteryPerk>> earnedMastery;
         double dayClock = 0.0;
         std::map<std::string, Inventory> stores;
     };
@@ -303,6 +322,8 @@ private:
     foundry::State foundry_;
     std::vector<std::string> foundryNotices_;
     std::map<std::string, int> skillUses_;
+    std::map<std::string, double> skillPractice_;
+    std::map<std::string, std::vector<tuning::MasteryPerk>> earnedMastery_;
     int craftedGear_ = 0; // seeds crafted rolls
 };
 

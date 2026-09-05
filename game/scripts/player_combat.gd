@@ -353,7 +353,7 @@ func cooldown_total(skill_id: StringName) -> float:
 
 
 func _spend(skill_id: StringName) -> void:
-	_action_contexts[skill_id] = {"steam_used": false}
+	_action_contexts[skill_id] = {"steam_used": false, "practice_allowed": _link_depth == 0, "practice_used": false}
 	cooldowns[skill_id] = cooldown_total(skill_id)
 	skill_committed.emit(skill_id)
 
@@ -396,7 +396,6 @@ func use_skill(skill_id: StringName) -> bool:
 	var fired := _cast(skill_id, def)
 	if fired:
 		FoundryCold.cast(self,skill_id,origin)
-		_note_use(skill_id)
 		_brace(skill_id)
 		_echo(skill_id, def)
 	return fired
@@ -607,7 +606,8 @@ func _reap(skill_id: StringName, kills: int) -> void:
 ## Deals one hit of skill_id to enemy as the sim's typed packets (D-023
 ## slice 2), each scaled by `fraction` (a fork generation), each refused by
 ## a mob immune to its type. Returns {damage, kill, types}: what landed.
-func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, secondary := false) -> Dictionary:
+func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, secondary := false, context: Dictionary = {}) -> Dictionary:
+	var live_hostile := enemy.life > 0 and not enemy.flees
 	var landed := 0.0
 	var types := PackedStringArray()
 	# The Hound's Manner (a rail, D-023 slice 9): an enemy moving toward
@@ -634,6 +634,7 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, s
 		landed += cascade["damage"]
 		if not types.has(String(sim.shatter_rules().get("nova_damage_type", "cold"))):
 			types.append(String(sim.shatter_rules().get("nova_damage_type", "cold")))
+	if landed > 0 and live_hostile and not secondary: practice_contact(skill_id, context)
 	last_hit_dealt = landed
 	# Life on hit (the Marrow's forms): a hit that lands drinks.
 	if landed > 0.0:
@@ -652,6 +653,13 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, s
 
 ## Mastery (D-019): the sim counts casts that fired; a perk that unlocks
 ## is announced and changes this skill's numbers from now on.
+func practice_contact(skill_id: StringName, context: Dictionary = {}) -> void:
+	var cast: Dictionary = action_context(skill_id) if context.is_empty() else context
+	if not bool(cast.get("practice_allowed", false)) or bool(cast.get("practice_used", false)): return
+	cast["practice_used"] = true
+	_note_use(skill_id)
+
+
 func _note_use(skill_id: StringName) -> void:
 	for text in sim.note_skill_use(String(skill_id)):
 		if player != null and player.hud != null:
@@ -699,6 +707,8 @@ func use_dash() -> bool:
 ## Returns the triggers this payload crossed on the enemy (freeze, ignite,
 ## bleed), for the links.
 func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool, fraction := 1.0, secondary := false, context := {}) -> PackedStringArray:
+	var status_before := Vector3(enemy.chill, enemy.ignite, enemy.bleed)
+	var live_hostile := enemy.life > 0 and not enemy.flees
 	var id := String(skill_id)
 	var form := mutation(skill_id)
 	if not secondary:
@@ -722,6 +732,8 @@ func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool, fraction :
 		if not secondary: FoundryReactions.ignited(self, enemy, form)
 	if not was_bleeding and enemy.bleeding_left > 0.0:
 		crossed.append("bleed")
+	if not secondary and live_hostile and (not crossed.is_empty() or status_before != Vector3(enemy.chill, enemy.ignite, enemy.bleed)):
+		practice_contact(skill_id, context)
 	return crossed
 
 
@@ -759,7 +771,6 @@ func _cast_linked(skill_id: StringName, trigger: String, source_skill: StringNam
 		fired = _cast(skill_id, def)
 	_link_depth -= 1
 	if fired:
-		_note_use(skill_id)
 		linked_cast.emit(skill_id, trigger, source_skill)
 		if player != null and player.hud != null:
 			player.hud.notify("%s casts itself: %s's %s." % [skills[skill_id].get("display_name", String(skill_id)),
@@ -817,6 +828,7 @@ func _use_cone(skill_id: StringName) -> int:
 		# The shatter hook: frozen enemies hit by a trigger skill shatter
 		# instead of taking the ordinary hit.
 		if shatter.get("enabled", false) and enemy.is_frozen():
+			if not enemy.flees: practice_contact(skill_id)
 			to_shatter.append(enemy)
 			hits += 1
 			continue
@@ -870,6 +882,7 @@ func _use_strike(skill_id: StringName) -> bool:
 	var to_shatter: Array = []
 	for enemy in targets:
 		if shatter.get("enabled", false) and enemy.is_frozen():
+			if not enemy.flees: practice_contact(skill_id)
 			to_shatter.append(enemy)
 			continue
 		var crossed := apply_payload(enemy, skill_id, enemy is Boss)
@@ -993,6 +1006,10 @@ func _use_dash(skill_id: StringName) -> bool:
 	if not is_ready(skill_id):
 		return false
 	_spend(skill_id)
+	for enemy in alive_enemies():
+		if not enemy.flees and enemy.state in ["chase", "windup"] and enemy._horizontal_distance_to(player) <= enemy.give_up_distance and enemy._vertical_gap_to(player) <= enemy.vertical_reach:
+			practice_contact(skill_id)
+			break
 	var forward := -player.global_transform.basis.z
 	forward.y = 0.0
 	forward = forward.normalized()
@@ -1152,7 +1169,7 @@ var _action_contexts := {}
 var _reaction_ready := {}
 
 func action_context(skill_id: StringName) -> Dictionary:
-	if not _action_contexts.has(skill_id): _action_contexts[skill_id] = {"steam_used": false}
+	if not _action_contexts.has(skill_id): _action_contexts[skill_id] = {"steam_used": false, "practice_allowed": false, "practice_used": false}
 	return _action_contexts[skill_id]
 
 func reaction_ready(key: String, seconds: float) -> bool:

@@ -476,7 +476,8 @@ public:
     // Runs the sim's craft rule. Keys: crafted, xp_granted, xp_multiplier and,
     // when not crafted, failure (unknown_recipe | station_unavailable |
     // skill_too_low | missing_inputs).
-    Dictionary craft(const String& recipe_id, bool for_order = false, const String& aim_kind = "");
+    Dictionary craft(const String& recipe_id, bool for_order = false, const String& aim_kind = "", int quality = 1, int quantity = 1);
+    Dictionary craft_preview(const String& recipe_id, const String& aim_kind = "", int quality = 1, int quantity = 1) const;
     bool salvage(const String& recipe_id);
     bool recipe_feeds_open_order(const String& recipe_id) const;
 

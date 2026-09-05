@@ -137,90 +137,112 @@ bool PlayerEconomy::fuelMet(const std::string& recipeId) const {
     return available >= recipe->fuelCost;
 }
 
+PlayerEconomy::CraftPlan PlayerEconomy::craftPlan(const std::string& recipeId, const std::string& aimKind,
+                                                 int quality, int quantity) const {
+    CraftPlan plan;
+    plan.quality = quality;
+    const auto* recipe = tuning_.crafting.findRecipe(recipeId);
+    if (!recipe) { plan.failure.unknownRecipe = true; return plan; }
+    for (const auto& [output, count] : recipe->outputs)
+        if (tuning_.items.findBase(output)) plan.baseId = output;
+    if (quantity < 1 || quantity > tuning_.crafting.batchMaximum || (!plan.baseId.empty() && quantity != 1)) {
+        plan.failure.invalidQuantity = true; return plan;
+    }
+    if (!recipe->station.empty() && !stationAvailable(recipe->station)) plan.failure.stationUnavailable = true;
+    if (currentEra() < recipe->minimumEra) plan.failure.qualityUnavailable = true;
+    for (const auto& [skill, minimum] : recipe->minimumSkill)
+        if (skillLevel(skill) < minimum) plan.failure.skillTooLow = true;
+    for (const auto& [id, count] : recipe->inputs) plan.costs[id] += count * quantity;
+    plan.fuel = recipe->station.empty() ? 0 : recipe->fuelCost * quantity;
+    if (!plan.baseId.empty()) {
+        const auto& rules = tuning_.crafting;
+        if (quality < 1 || quality > static_cast<int>(rules.grades.size())) { plan.failure.qualityUnavailable = true; return plan; }
+        const auto* aim = aimKind.empty() ? nullptr : rules.findKind(aimKind);
+        if (!aimKind.empty() && (!aim || held(aimKind) < 1)) plan.failure.missingKind = true;
+        plan.potency = aim ? aim->potency : 1;
+        const int processGrade = std::max(quality, plan.potency);
+        if (processGrade < 1 || processGrade > static_cast<int>(rules.grades.size())) { plan.failure.qualityUnavailable = true; return plan; }
+        const auto& gate = rules.grades[static_cast<size_t>(processGrade - 1)];
+        if ((!gate.station.empty() && !stationAvailable(gate.station)) || currentEra() < gate.minimumEra || skillLevel("blacksmithing") < gate.minimumSkill)
+            plan.failure.qualityUnavailable = true;
+        for (const auto& [id, count] : rules.grades[static_cast<size_t>(quality - 1)].reinforcement) plan.costs[id] += count;
+        if (aim) {
+            plan.costs[aimKind] += 1;
+            const auto* base = tuning_.items.findBase(plan.baseId);
+            bool compatible = false;
+            for (const auto* modifier : items::eligibleModifiers(tuning_.items, *base, plan.potency))
+                if (items::craftBand(*modifier, plan.potency) && std::find(modifier->tags.begin(), modifier->tags.end(), aim->craftTag) != modifier->tags.end()) compatible = true;
+            if (!compatible) plan.failure.incompatibleKind = true;
+        }
+        std::string process = recipe->station;
+        if (process == "forge_basic" && stationAvailable("forge_improved")) process = "forge_improved";
+        for (const auto& profile : rules.craftProcesses)
+            if (profile.station == process && currentEra() >= profile.minimumEra) {
+                plan.counts = profile.counts; plan.minimumCount = aim ? profile.aimedMinimum : 0;
+            }
+        if (plan.counts.empty()) plan.counts = {1, 0, 0, 0, 0};
+        const auto* base = tuning_.items.findBase(plan.baseId);
+        const size_t poolSize = items::eligibleModifiers(tuning_.items, *base, plan.potency).size();
+        plan.minimumCount = std::min(plan.minimumCount, static_cast<int>(poolSize));
+        for (size_t i = poolSize + 1; i < plan.counts.size(); ++i) { plan.counts[poolSize] += plan.counts[i]; plan.counts[i] = 0; }
+        plan.rollFloor = std::min(rules.rollFloorMaximum, rules.rollFloorPerLevel * std::max(0, skillLevel("blacksmithing") - 1));
+    }
+    int fuelAvailable = 0;
+    for (const auto& [id, count] : plan.costs) if (held(id) < count) plan.failure.missingInputs = true;
+    for (const auto& [id, value] : tuning_.crafting.fuels) {
+        const auto input = plan.costs.find(id);
+        fuelAvailable += std::max(0, held(id) - (input == plan.costs.end() ? 0 : input->second)) * value;
+    }
+    if (fuelAvailable < plan.fuel) plan.failure.missingFuel = true;
+    return plan;
+}
+
 PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, bool forOrder,
-                                                const std::string& aimKind) {
+                                               const std::string& aimKind, int quality) {
+    return craftBatch(recipeId, forOrder, aimKind, quality, 1);
+}
+
+PlayerEconomy::CraftResult PlayerEconomy::craftBatch(const std::string& recipeId, bool forOrder,
+                                                    const std::string& aimKind, int quality, int quantity) {
     CraftResult result;
-    const tuning::Recipe* recipe = tuning_.crafting.findRecipe(recipeId);
-    if (!recipe) {
-        result.failure.unknownRecipe = true;
-        return result;
-    }
-    // An empty station means hand-crafting: no facility gate, no fuel burned.
-    bool handCraft = recipe->station.empty();
-    if (!handCraft && !stationAvailable(recipe->station)) result.failure.stationUnavailable = true;
-    for (const auto& [skillId, level] : recipe->minimumSkill)
-        if (skillLevel(skillId) < level) result.failure.skillTooLow = true;
-    if (!hasAll(inventory, recipe->inputs)) result.failure.missingInputs = true;
-    if (!fuelMet(recipeId)) result.failure.missingFuel = true;
-    // An aimed craft (D-023 slice 3) needs a kind in hand; a recipe that
-    // makes no gear has nothing to aim and leaves the kind alone.
-    bool makesGear = false;
-    for (const auto& output : recipe->outputs)
-        if (tuning_.items.findBase(output.first)) makesGear = true;
-    const tuning::CraftingTable::CurrencyKind* aim = nullptr;
-    if (!aimKind.empty() && makesGear) {
-        aim = tuning_.crafting.findKind(aimKind);
-        if (!aim || held(aimKind) < 1) result.failure.missingKind = true;
-    }
+    const auto plan = craftPlan(recipeId, aimKind, quality, quantity);
+    result.failure = plan.failure;
     if (result.failure.any()) return result;
-
-    remove(inventory, recipe->inputs);
-    if (aim) take(aimKind, 1);
-
-    // Burn fuel cheapest-value first, so wood feeds the fire before charcoal.
-    if (!handCraft && recipe->fuelCost > 0) {
-        std::vector<std::pair<int, std::string>> byValue;
-        for (const auto& [item, value] : tuning_.crafting.fuels)
-            byValue.push_back({value, item});
-        std::sort(byValue.begin(), byValue.end());
-        int needed = recipe->fuelCost;
-        for (const auto& [value, item] : byValue) {
-            while (needed > 0 && inventory[item] > 0) {
-                inventory[item] -= 1;
-                needed -= value;
+    const auto& recipe = *tuning_.crafting.findRecipe(recipeId);
+    for (const auto& [id, count] : plan.costs) take(id, count);
+    std::vector<std::pair<int, std::string>> fuels;
+    for (const auto& [id, value] : tuning_.crafting.fuels) fuels.push_back({value, id});
+    std::sort(fuels.begin(), fuels.end());
+    int needed = plan.fuel;
+    for (const auto& [value, id] : fuels) while (needed > 0 && held(id) > 0) { take(id, 1); needed -= value; }
+    for (int batch = 0; batch < quantity; ++batch) {
+        for (const auto& [output, count] : recipe.outputs) {
+            if (!tuning_.items.findBase(output)) { grant(output, count); continue; }
+            for (int i = 0; i < count; ++i) {
+                std::mt19937_64 rng(0xC4A1F7ull * static_cast<uint64_t>(++craftedGear_) + 17);
+                std::discrete_distribution<int> pickCount(plan.counts.begin(), plan.counts.end());
+                const int rolls = std::max(plan.minimumCount, pickCount(rng));
+                const auto* aim = tuning_.crafting.findKind(aimKind);
+                auto item = items::rollItem(tuning_.items, output, plan.potency, rolls, rng(), aim ? aim->craftTag : "");
+                item.workpieceTier = quality;
+                static const std::vector<std::string> names = {"plain", "worked", "keen", "refined", "wrought"};
+                item.rarity = names.at(item.rolledProperties.size());
+                for (auto& rolled : item.rolledProperties) {
+                    const auto* def = tuning_.items.findModifier(rolled.propertyId);
+                    const auto* band = items::craftBand(*def, plan.potency);
+                    if (!band) throw std::runtime_error("craft modifier needs authored band: " + rolled.propertyId);
+                    std::uniform_real_distribution<double> range(band->minimum + plan.rollFloor * (band->maximum - band->minimum), band->maximum);
+                    rolled.value = range(rng); rolled.tier = plan.potency; rolled.crafted = true;
+                }
+                packItems.push_back(item);
             }
         }
+        result.xpMultiplier = repetitionMultiplier(recipeId, forOrder);
+        const int xp = static_cast<int>(std::floor(recipe.baseSkillXp * result.xpMultiplier));
+        result.xpGranted += recipe.minimumSkill.empty() ? 0 : xp;
+        for (const auto& [skill, level] : recipe.minimumSkill) grantSkillXp(skill, xp);
+        if (!(forOrder && tuning_.crafting.repetitionDecay.orderCraftingIgnoresDecay)) craftCounts_[recipeId] += 1;
     }
-
-    // Outputs that are item bases become rolled gear in the pack (D-019:
-    // crafted gear rolls like a drop); everything else stacks, a cast kind
-    // in the purse (D-023 slice 3).
-    for (const auto& [outputId, count] : recipe->outputs) {
-        const tuning::ItemBase* base = tuning_.items.findBase(outputId);
-        if (base == nullptr) {
-            grant(outputId, count);
-            continue;
-        }
-        for (int i = 0; i < count; ++i) {
-            const uint64_t seed = 0xC4A1F7ull * static_cast<uint64_t>(++craftedGear_) + 17;
-            std::mt19937_64 rng(seed);
-            std::uniform_real_distribution<double> roll(0.0, 1.0);
-            int level = 0;
-            for (const auto& [skillId, minimum] : recipe->minimumSkill) level = std::max(level, skillLevel(skillId));
-            const auto& rolls = tuning_.crafting;
-            std::string rarity = "plain";
-            const double wrought = level >= rolls.wroughtChanceFromLevel
-                                       ? rolls.wroughtChancePerLevel * (level - rolls.wroughtChanceFromLevel + 1)
-                                       : 0.0;
-            const double keen = rolls.keenChanceAtLevel1 + rolls.keenChancePerLevel * std::max(0, level - 1);
-            if (roll(rng) < wrought) rarity = "wrought";
-            else if (roll(rng) < keen) rarity = "keen";
-            // A kind aims the roll: at least the aimed rarity, the first
-            // modifier from the kind's family or its narrower craft tag.
-            if (aim && rarity == "plain") rarity = rolls.aimedMinimumRarity;
-            packItems.push_back(items::rollRarityItem(tuning_.items, outputId, rarity, currentEra(), rng(),
-                                                      aim ? aim->craftTag : std::string()));
-        }
-    }
-
-    result.xpMultiplier = repetitionMultiplier(recipeId, forOrder);
-    result.xpGranted = static_cast<int>(std::floor(recipe->baseSkillXp * result.xpMultiplier));
-    for (const auto& [skillId, level] : recipe->minimumSkill)
-        grantSkillXp(skillId, result.xpGranted);
-
-    if (!(forOrder && tuning_.crafting.repetitionDecay.orderCraftingIgnoresDecay))
-        craftCounts_[recipeId] += 1;
-
     for (const auto& id : foundryEvent("recipe:" + recipeId)) foundryNotices_.push_back(id);
     result.crafted = true;
     return result;
@@ -305,8 +327,14 @@ void PlayerEconomy::grant(const std::string& id, int amount) {
 
 void PlayerEconomy::take(const std::string& id, int amount) {
     if (amount <= 0) return;
-    if (tuning_.crafting.isCurrency(id)) currency[id] -= amount;
-    else inventory[id] -= amount;
+    if (held(id) < amount) throw std::runtime_error("economy: insufficient stock for " + id);
+    // held() includes both stores. Older saves and inventory imports can carry
+    // a Kind in the pack, so payment must consume the same stock it validated.
+    auto& preferred = tuning_.crafting.isCurrency(id) ? currency : inventory;
+    auto& other = tuning_.crafting.isCurrency(id) ? inventory : currency;
+    const int first = std::min(amount, std::max(0, preferred[id]));
+    preferred[id] -= first;
+    if (first < amount) other[id] -= amount - first;
 }
 
 bool PlayerEconomy::canExchange(const std::string& from, const std::string& to) const {
@@ -336,11 +364,16 @@ bool PlayerEconomy::buy(const std::string& itemId) {
 
 std::vector<std::string> PlayerEconomy::noteSkillUse(const std::string& skillId) {
     std::vector<std::string> unlocked;
-    const tuning::CombatSkillDef* def = tuning_.skills.findCombatSkill(skillId);
-    if (!def) return unlocked;
-    const int uses = ++skillUses_[skillId];
-    for (const auto& perk : def->mastery)
-        if (perk.uses == uses) unlocked.push_back(perk.text);
+    const auto* def = tuning_.skills.findCombatSkill(skillId);
+    if (!def || !knowsSkill(skillId)) return unlocked;
+    ++skillUses_[skillId];
+    auto& progress = skillPractice_[skillId];
+    progress += def->numbers.at("cooldown_seconds") / tuning_.skills.practiceSecondsPerPoint;
+    auto& earned = earnedMastery_[skillId];
+    for (size_t i = earned.size(); i < def->mastery.size(); ++i) {
+        if (progress + 1e-8 < def->mastery[i].uses) break;
+        earned.push_back(def->mastery[i]); unlocked.push_back(def->mastery[i].text);
+    }
     return unlocked;
 }
 
@@ -349,13 +382,15 @@ int PlayerEconomy::skillUses(const std::string& skillId) const {
     return it == skillUses_.end() ? 0 : it->second;
 }
 
+double PlayerEconomy::skillPractice(const std::string& skillId) const {
+    auto it = skillPractice_.find(skillId);
+    return it == skillPractice_.end() ? 0 : it->second;
+}
+
 std::vector<const tuning::MasteryPerk*> PlayerEconomy::masteryUnlocked(const std::string& skillId) const {
     std::vector<const tuning::MasteryPerk*> out;
-    const tuning::CombatSkillDef* def = tuning_.skills.findCombatSkill(skillId);
-    if (!def) return out;
-    const int uses = skillUses(skillId);
-    for (const auto& perk : def->mastery)
-        if (perk.uses <= uses) out.push_back(&perk);
+    auto it = earnedMastery_.find(skillId);
+    if (it != earnedMastery_.end()) for (const auto& perk : it->second) out.push_back(&perk);
     return out;
 }
 
@@ -796,6 +831,7 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
     state.skillBar = skillBar_;
     state.foundry = foundry_;
     state.skillUses = skillUses_;
+    state.skillPractice = skillPractice_; state.earnedMastery = earnedMastery_; state.craftedGear = craftedGear_;
     state.dayClock = dayClock_;
     state.stores = stores_;
     return state;
@@ -804,6 +840,26 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
 void PlayerEconomy::importState(const State& state) {
     foundry_ = state.foundry;
     skillUses_ = state.skillUses;
+    skillPractice_ = state.skillPractice; earnedMastery_ = state.earnedMastery;
+    craftedGear_ = state.craftedGear;
+    if (state.masteryVersion == 0) {
+        for (const auto& def : tuning_.skills.combatSkills) {
+            const int oldUses = skillUses(def.id);
+            if (oldUses <= 0) continue;
+            auto& earned = earnedMastery_[def.id];
+            for (size_t i = 0; i < def.legacyMastery.size(); ++i) {
+                if (oldUses < def.legacyMastery[i].uses) break;
+                auto perk = def.legacyMastery[i];
+                perk.uses = i < def.mastery.size() ? def.mastery[i].uses : perk.uses;
+                earned.push_back(perk);
+            }
+            // Carry unearned effort forward, without awarding another legacy perk.
+            double progress = oldUses * def.numbers.at("cooldown_seconds") / tuning_.skills.practiceSecondsPerPoint;
+            if (!earned.empty()) progress = std::max(progress, static_cast<double>(earned.back().uses));
+            if (earned.size() < def.mastery.size()) progress = std::min(progress, def.mastery[earned.size()].uses - 0.001);
+            skillPractice_[def.id] = progress;
+        }
+    }
     dayClock_ = state.dayClock > 0.0 ? state.dayClock : 0.0;
     stores_ = state.stores;
     inventory = state.inventory;

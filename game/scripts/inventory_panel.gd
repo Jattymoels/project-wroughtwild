@@ -533,7 +533,7 @@ func _refresh_skills() -> void:
 			var parts := PackedStringArray()
 			for perk in perks:
 				parts.append("%s%s (%d)" % ["✓ " if perk["unlocked"] else "", perk["text"], int(perk["uses"])])
-			mastery.text = "mastery %d uses  ·  %s" % [int(view.get("uses", 0)), "  ·  ".join(parts)]
+			mastery.text = "mastery %d practice  ·  %s" % [int(view.get("practice", 0)), "  ·  ".join(parts)]
 			mastery.add_theme_font_size_override("font_size", 12)
 			mastery.modulate = UiTheme.SUN_WARM
 			mastery.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

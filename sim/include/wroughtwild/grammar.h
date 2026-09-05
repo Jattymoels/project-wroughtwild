@@ -81,6 +81,7 @@ ActiveMods foundryMods(const tuning::Tuning& tuning, const foundry::State& state
 // Every mastery perk the player's skill uses have unlocked, each targeting
 // its own skill's "skill:<id>" tag (sources "mastery:<skill>").
 ActiveMods masteryMods(const tuning::Tuning& tuning, const std::map<std::string, int>& skillUses);
+ActiveMods earnedMasteryMods(const tuning::Tuning& tuning, const std::map<std::string, std::vector<tuning::MasteryPerk>>& earned);
 
 // One modifier at a given magnitude (debug toggles, tests).
 ActiveMod modAt(const tuning::ItemTable& table, const std::string& modifierId, double value,

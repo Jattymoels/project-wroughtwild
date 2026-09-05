@@ -184,6 +184,7 @@ func _hit(enemy: Enemy) -> void:
 		visited.append(enemy.get_instance_id())
 		var shatter: Dictionary = combat.sim.shatter_for(id)
 		if enemy.is_frozen() and shatter.get("enabled",false):
+			if enemy.life > 0 and not enemy.flees: combat.practice_contact(skill_id, action_context)
 			var cascade := combat._shatter_cascade([enemy],shatter,combat.sim.skill_nova_chill(id))
 			combat._reap(skill_id,int(cascade.kills))
 			combat.hit_landed.emit(float(cascade.damage),int(cascade.kills),PackedStringArray([String(shatter.get("nova_damage_type","cold"))]))
@@ -191,7 +192,7 @@ func _hit(enemy: Enemy) -> void:
 			var crossed := combat.apply_payload(enemy, skill_id, is_boss, 1.0, false, action_context)
 			# The sim decides the numbers, packet by packet; forks decay all alike.
 			var landed := combat.deal(enemy, skill_id, combat.alive_enemies().size() == 1,
-				combat.sim.fork_damage_fraction(id, generation))
+				combat.sim.fork_damage_fraction(id, generation), false, action_context)
 			combat.hit_landed.emit(landed["damage"], 1 if landed["kill"] else 0, landed["types"])
 			combat._space_control(enemy,skill_id,direction)
 			if allow_links: combat.fire_links(skill_id, crossed, enemy)

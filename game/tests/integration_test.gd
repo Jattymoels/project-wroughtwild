@@ -877,6 +877,7 @@ func _physics_process(_delta: float) -> void:
 			check(_player.work_panel.equip(&"iron_chest_armour"), "gear: armour worn from the panel")
 			check(_player.work_panel.temper_basic()["applied"], "gear: quenched at the Improved Forge")
 			check(sim.derived_stats()["fire_resistance_percent"] > 10.0, "gear: resistance on the build")
+			sim.add_material("stable_ember_catalyst", 1)
 			var refused: Dictionary = _player.work_panel.temper_catalyst(&"ember_catalyst_tempering")
 			check(refused["reason"] == "skill_too_low" and _player.work_panel.message().find("skill") >= 0,
 				"gear: catalyst temper refused and explained below skill 5")

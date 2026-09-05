@@ -20,6 +20,7 @@ struct RolledProperty {
     std::string propertyId;
     int tier = 0;
     double value = 0.0;
+    bool crafted = false;
 };
 
 struct ItemInstance {
@@ -27,6 +28,8 @@ struct ItemInstance {
     std::string rarity = "plain"; // tuning::RarityDef id
     std::map<std::string, double> implicitProperties;
     std::vector<RolledProperty> rolledProperties;
+    int workpieceTier = 0; // 0: original base cap, unchanged legacy/drop item
+
 };
 
 // Modifiers whose tags intersect the base's allowed tags: the base's roll pool.
@@ -73,7 +76,9 @@ EffectiveRoll effectiveRoll(const tuning::ItemTable& table, const ItemInstance& 
                             const RolledProperty& rolled);
 
 // The breakpoints a modifier brings at a tier: its own and every tier below.
-std::vector<const tuning::Breakpoint*> breakpointsFor(const tuning::ModifierDef& def, int tier);
+std::vector<const tuning::Breakpoint*> breakpointsFor(const tuning::ModifierDef& def, int tier, bool crafted = false);
+
+const tuning::ModifierTier* craftBand(const tuning::ModifierDef& def, int tier);
 
 // Preserving Transfer: the source's rolled modifiers and rarity move onto
 // the target (same slot); the target's own rolls are replaced. False when

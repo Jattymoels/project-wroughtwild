@@ -411,7 +411,7 @@ func _test_lattice() -> void:
 	check(sim.foundry_links().is_empty() and sim.skill_triggers("prototype_frost_orb").has("freeze")
 		and sim.skill_triggers("prototype_heavy_strike").is_empty() and sim.linked_casts("prototype_frost_orb", "freeze").is_empty()
 		and sim.skill_arc("prototype_heavy_strike") == 0.0, "links: a bare plate links nothing; the orb's trigger is a freeze")
-	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 12 and sim.foundry()["flows"].size() == 1
+	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 36 and sim.foundry()["flows"].size() == 1
 		and sim.foundry()["flows"][0]["flows"] and sim.derived_stats().has("cold_resistance_percent"),
 		"flow: the plate view carries the kind, every kind's count, and whether it flows")
 	# Rails (D-023 slice 9): a class is chosen before play; era two here
@@ -490,10 +490,10 @@ func _test_lattice() -> void:
 	check(sim.combat_skill("prototype_frost_orb")["mastery"].size() == 2 and sim.combat_skill("prototype_frost_orb")["uses"] == 0,
 		"mastery: perks visible, no uses yet")
 	var unlocked := PackedStringArray()
-	for i in 30:
+	for i in 225:
 		unlocked.append_array(sim.note_skill_use("prototype_frost_orb"))
 	check(unlocked.size() == 1 and sim.combat_skill("prototype_frost_orb")["mastery"][0]["unlocked"],
-		"mastery: thirty orbs unlock the first perk")
+		"mastery: 180 weighted practice unlocks the first perk")
 	check(sim.combat_skill("prototype_shatter")["tags"].has("shatter") and not sim.shatter_for("prototype_shatter").is_empty(),
 		"shatter: the Shatter spell carries the trigger tag")
 	var before_count: int = sim.pack_items().size()
@@ -943,6 +943,7 @@ func _test_sim_extension() -> void:
 	check(absf(sim.derived_stats()["fire_resistance_percent"] - 11.5) < 0.001, "temper: resistance flows into derived stats")
 	check(sim.mitigate(100.0, "fire") < 100.0 and absf(sim.mitigate(100.0, "physical") - 100.0 / (1.0 + 20.0 / 100.0)) < 0.5,
 		"temper: fire and armour both mitigate now")
+	sim.add_material("stable_ember_catalyst", 1)
 	var process: Dictionary = sim.catalyst_process("ember_catalyst_tempering")
 	check(process["catalyst_held"] == 1 and process["tier_minimum"] == 25.0 and absf(process["floor_at_skill"] - 32.5) < 0.001,
 		"temper: catalyst process explained before use")
@@ -1244,7 +1245,7 @@ func _test_sandpit_extension() -> void:
 	check(sim.inventory().get("marrow", 0) == 0, "sandpit: a kind never sits in the pack")
 	# D-023 slice 3: the kinds through the door - the peddler's exchange.
 	var vanguard_before: int = sim.currency_count("vanguard")
-	check(sim.currency_kinds().size() == 12 and sim.exchange_rate() == 3, "kinds: twelve variants, three to one")
+	check(sim.currency_kinds().size() == 36 and sim.exchange_rate() == 3, "kinds: twelve variants, three to one")
 	check(sim.can_exchange("marrow", "vanguard") and not sim.can_exchange("marrow", "marrow") and sim.exchange("marrow", "vanguard")
 		and sim.currency_count("marrow") == before and sim.currency_count("vanguard") == vanguard_before + 1,
 		"kinds: three Marrow change for a Vanguard")

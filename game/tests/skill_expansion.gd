@@ -216,7 +216,7 @@ func _ready() -> void:
 				break
 	check(sim.skill_bar()[3]==String(NEW[0]),"guide slot button assigns the selected skill to the selected bar slot")
 	guide.select_page("Kinds")
-	check(guide.shown_kinds.size()==12,"guide exposes all Kind variants, including ones not held")
+	check(guide.shown_kinds.size()==36,"guide exposes all Kind variants, including ones not held")
 	guide.select_page("Progression")
 	for size in [Vector2i(1280,720),Vector2i(1920,1080)]:
 		get_window().size=size

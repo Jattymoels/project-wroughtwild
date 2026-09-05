@@ -1,5 +1,7 @@
 # Items and Modifiers
 
+Owner-approved update, 6 September 2026 (D-026): Ordinary craft bands are now separate from unchanged drop/legacy bands. Rough/Sound/Excellent workpieces cap expressed potency; Faint/Stable/Potent Kinds choose roll strength. New crafts use Plain/Worked/Keen/Refined/Wrought count labels without increasing the four-modifier ceiling. Existing owned item values and rarity IDs remain. See the [forge implementation record](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026) for tuning, sources and save compatibility.
+
 Owner approval, 5 Sep 2026 (D-025): weapons, armour and charms continue to support
 Foundry builds. Gear scales acquired capabilities such as projectile melee and
 Smoulder's cold buildup. A small set of rare modifiers may later define builds

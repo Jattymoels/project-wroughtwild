@@ -85,6 +85,7 @@ if ($Checks) {
     Invoke-GodotReview 'combat-presentation' '--headless res://tests/combat_presentation.tscn'
     Invoke-GodotReview 'skill-expansion' '--headless res://tests/skill_expansion.tscn'
     Invoke-GodotReview 'foundry-mutations' '--headless res://tests/foundry_mutations.tscn'
+    Invoke-GodotReview 'forge-progression' '--headless res://tests/forge_progression.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
 } elseif ($Foundry) {
     Invoke-GodotReview 'foundry-import' '--headless --import'

@@ -19,6 +19,8 @@ var _title: Label
 var _scroll: ScrollContainer
 var _body: VBoxContainer
 var _message: Label
+var catalogue: ForgeCatalogue
+var _column: VBoxContainer
 
 var _mode := ""  # "crafting" | "order" | "custom" | ""
 var _station: StationSite
@@ -37,6 +39,7 @@ func _ready() -> void:
 	_root.custom_minimum_size = Vector2(780, 0)
 	_root.visible = false
 	add_child(_root)
+	_root.resized.connect(_centre_catalogue)
 
 	var margin := MarginContainer.new()
 	for side in ["margin_left", "margin_right", "margin_top", "margin_bottom"]:
@@ -44,6 +47,7 @@ func _ready() -> void:
 	_root.add_child(margin)
 
 	var column := VBoxContainer.new()
+	_column = column
 	column.add_theme_constant_override("separation", 8)
 	margin.add_child(column)
 
@@ -71,6 +75,12 @@ func _ready() -> void:
 	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_message.modulate = Color(1.0, 0.9, 0.5)
 	column.add_child(_message)
+	catalogue = ForgeCatalogue.new()
+	catalogue.work = self
+	catalogue.visible = false
+	column.add_child(catalogue)
+	column.move_child(catalogue, 1)
+	get_viewport().size_changed.connect(_layout_catalogue)
 
 
 func is_open() -> bool:
@@ -134,7 +144,7 @@ func message() -> String:
 
 ## Test surface: rows shown by the last refresh.
 func row_count() -> int:
-	return _body.get_child_count()
+	return catalogue.card_count if _mode == "crafting" and catalogue != null else _body.get_child_count()
 
 
 ## "iron ore 2 (have 5), wood 1 (have 0)"
@@ -167,7 +177,7 @@ static func amounts_text(amounts: Dictionary) -> String:
 
 ## aim_kind (D-023 slice 3): a currency kind added to a gear craft, spent
 ## to draw the roll's first modifier from its family.
-func craft(recipe_id: StringName, aim_kind: String = "") -> Dictionary:
+func craft(recipe_id: StringName, aim_kind: String = "", quality: int = 1, quantity: int = 1) -> Dictionary:
 	var for_order: bool = sim.recipe_feeds_open_order(recipe_id)
 	var recipe: Dictionary = sim.recipe(recipe_id)
 	# The first dressed block is a beat (the stone accomplishment pass, 4
@@ -176,14 +186,14 @@ func craft(recipe_id: StringName, aim_kind: String = "") -> Dictionary:
 	for output_id in recipe.get("outputs", {}):
 		if sim.material_count(String(output_id)) > 0:
 			first_dressed = false
-	var result: Dictionary = sim.craft(recipe_id, for_order, aim_kind)
+	var result: Dictionary = sim.craft(recipe_id, for_order, aim_kind, quality, quantity)
 	if result["crafted"]:
-		var note := "Crafted %s  (+%d xp" % [recipe.get("display_name", recipe_id), result["xp_granted"]]
-		if result["xp_multiplier"] < 1.0:
-			note += ", reduced: this work serves no real demand"
-		if aim_kind != "":
-			note += ", aimed with a %s" % Hud.pretty(aim_kind)
-		_message.text = note + ")"
+		var note := "Crafted %s" % recipe.get("display_name", recipe_id)
+		if quantity > 1: note += " ×%d" % quantity
+		if int(result.xp_granted) > 0: note += " (+%d xp%s)" % [result.xp_granted, ", repetition reduced" if float(result.xp_multiplier) < 1.0 else ""]
+		if aim_kind != "": note += " · " + Hud.pretty(aim_kind)
+		_message.text = note + "."
+
 		if first_dressed:
 			var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
 			if player != null and player.hud != null:
@@ -192,6 +202,9 @@ func craft(recipe_id: StringName, aim_kind: String = "") -> Dictionary:
 		match result.get("failure", ""):
 			"station_unavailable": _message.text = "You need a %s for that." % Hud.pretty(recipe.get("station", "station"))
 			"skill_too_low": _message.text = "Your Blacksmithing is too low."
+			"incompatible_kind": _message.text = "This Kind cannot imprint a compatible modifier at this potency."
+			"quality_unavailable": _message.text = "This grade needs its refining process, skill and era."
+			"invalid_quantity": _message.text = "Choose a smaller material batch."
 			"missing_kind": _message.text = "You hold no %s to aim the roll with." % Hud.pretty(aim_kind)
 			"missing_inputs": _message.text = "Not enough materials."
 			"missing_fuel": _message.text = "The forge is cold: it needs fuel (wood or charcoal)."
@@ -254,13 +267,13 @@ func temper_catalyst(process_id: StringName) -> Dictionary:
 	var result: Dictionary = sim.temper_with_catalyst(process_id)
 	var p: Dictionary = sim.catalyst_process(process_id)
 	if result["applied"]:
-		_message.text = "The catalyst flares as it burns into the metal. %s is now %d%% (was %d%%)." % [
+		_message.text = "Stored %s: %d%% (was %d%%). Check the item for its expressed value and any held-back potential." % [
 			p["property_display_name"], int(result["rolled_value"]), int(result["previous_value"])]
 	else:
 		match result.get("reason", ""):
 			"no_armour": _message.text = "Wear your armour first."
 			"station_unavailable": _message.text = "Ember-tempering needs the Improved Forge."
-			"missing_catalyst": _message.text = "You need an Ember Catalyst; the trial holds them."
+			"missing_catalyst": _message.text = "Refine a Stable Ember Catalyst at the Improved Forge."
 			"skill_too_low": _message.text = "The catalyst's heat is beyond your skill."
 			_: _message.text = "The catalyst will not take."
 	refresh()
@@ -282,11 +295,17 @@ func deliver() -> Dictionary:
 # --- rendering ---------------------------------------------------------------
 
 func refresh() -> void:
+	if catalogue != null:
+		catalogue.visible = _mode == "crafting"
+		_scroll.visible = _mode != "crafting"
 	for child in _body.get_children():
 		_body.remove_child(child)
 		child.queue_free()
 	match _mode:
-		"crafting": _render_crafting()
+		"crafting":
+			_title.text = "Field Crafting" if _station == null else String(sim.station(_station.current_station_id(sim)).get("display_name", "Workshop"))
+			catalogue.refresh()
+			_layout_catalogue()
 		"order": _render_order()
 		"custom": _render_custom()
 	_fit_height.call_deferred()
@@ -296,7 +315,33 @@ func refresh() -> void:
 ## short lists sit tight and long forges scroll. Rows wrap their text, so
 ## their real height is only known once layout has run: measure after two
 ## frames rather than trusting the pre-layout minimum size.
+func _layout_catalogue() -> void:
+	if _mode != "crafting": return
+	var viewport_size := get_viewport().get_visible_rect().size
+	_root.custom_minimum_size = Vector2(minf(1120, viewport_size.x - 40), 0)
+	catalogue.custom_minimum_size.y = clampf(viewport_size.y - 180, 420, 680)
+	_root.size = Vector2.ZERO
+	_settle_catalogue.call_deferred()
+
+
+func _settle_catalogue() -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if _mode != "crafting": return
+	# Wrapped labels first measure against their previous width. Shrink only
+	# after the new catalogue columns have received their actual widths.
+	_root.size = _root.get_combined_minimum_size()
+	_centre_catalogue()
+
+
+func _centre_catalogue() -> void:
+	if _root != null:
+		_root.position = (get_viewport().get_visible_rect().size - _root.size) * 0.5
+
+
 func _fit_height() -> void:
+	if _mode == "crafting": return
+	_root.custom_minimum_size.x = 780
 	if _scroll == null or not is_inside_tree():
 		return
 	var tree := get_tree()
@@ -306,6 +351,8 @@ func _fit_height() -> void:
 		return
 	var cap := get_viewport().get_visible_rect().size.y * MAX_HEIGHT_FRACTION
 	_scroll.custom_minimum_size.y = clampf(_body.size.y + 4.0, 40.0, cap)
+	_root.size = Vector2.ZERO
+	_centre_catalogue.call_deferred()
 
 
 func _render_custom() -> void:
@@ -339,149 +386,6 @@ func _add_row(text: String, button_text: String = "", enabled := false, on_press
 			button.pressed.connect(on_pressed)
 		row.add_child(button)
 	_body.add_child(card)
-
-
-func _render_crafting() -> void:
-	# The stations this panel works at: none for field crafting, or the
-	# site's built chain (a forge keeps its basic recipes when improved).
-	var chain: Array = []
-	if _station == null:
-		_title.text = "Field Crafting"
-		_add_row("What bare hands can make. A placed workbench unlocks assembly; a forge unlocks metalwork.")
-	else:
-		var station_id: StringName = _station.current_station_id(sim)
-		_title.text = sim.station(station_id).get("display_name", "Forge")
-		chain.append(String(_station.station_id))
-		if _station.upgrade_station_id != &"":
-			chain.append(String(_station.upgrade_station_id))
-
-	var skill: Dictionary = sim.skill_progress("blacksmithing")
-	var next: String = "max" if skill["next_level_xp"] < 0 else str(skill["next_level_xp"])
-	_add_row("%s level %d  (%d / %s xp)" % [skill["display_name"], skill["level"], skill["xp"], next])
-	if _station != null and _station.is_built(sim):
-		var view: Dictionary = sim.foundry()
-		_add_row("[b]The Foundry[/b]  —  your ingots on a %d×%d plate; arrangement is the build" % [view["rows"], view["cols"]],
-			"Open", true, _open_foundry)
-		# Re-casting (D-023 slice 10): an ingot in hand re-cast in an alloy
-		# the era allows. Its number never changes; how far it reads does.
-		for m in view.get("metals", []):
-			if not bool(m.get("available", false)):
-				continue
-			for id in sim.foundry_ingot_ids():
-				var counts: Dictionary = view.get("unplaced_by_metal", {}).get(id, {})
-				var narrower := 0
-				for other in view.get("metals", []):
-					if int(other["reach"]) < int(m["reach"]):
-						narrower += int(counts.get(String(other["id"]), 0))
-				if narrower <= 0:
-					continue
-				var info: Dictionary = sim.foundry_ingot(id)
-				_add_row("[b]Re-cast %s in %s[/b]  —  its backing and pairs read %d cells out\n    %s" % [
-					info.get("display_name", id), m["display_name"], int(m["reach"]), cost_bbcode(m["recast_cost"], sim)],
-					"Re-cast", sim.can_recast(id, String(m["id"])), recast.bind(id, String(m["id"])))
-
-	var shows_fuel := false
-	for recipe_id in sim.recipe_ids():
-		var r: Dictionary = sim.recipe(recipe_id)
-		if _station == null and not r["hand_craftable"]:
-			continue
-		if _station != null and not (r["hand_craftable"] or chain.has(String(r["station"]))):
-			continue
-		var skill_text := ""
-		for skill_id in r["minimum_skill"]:
-			skill_text += "%s %d" % [Hud.pretty(skill_id), r["minimum_skill"][skill_id]]
-		var where: String = "by hand" if r["hand_craftable"] else Hud.pretty(r["station"])
-		var line := "[b]%s[/b]  —  %s%s\n    %s  →  %s" % [
-			r["display_name"], where, ("" if skill_text == "" else ", " + skill_text),
-			cost_bbcode(r["inputs"], sim), amounts_text(r["outputs"])]
-		if int(r["fuel_cost"]) > 0:
-			var fuel_colour: Color = UiTheme.GRASS_LIGHT if r["fuel_met"] else UiTheme.CINDER
-			line += "\n    [color=#%s]burns %d fuel[/color]" % [fuel_colour.to_html(false), int(r["fuel_cost"])]
-			shows_fuel = true
-		if not r["skill_met"]:
-			line += "\n    [color=#%s]Blacksmithing too low[/color]" % UiTheme.CINDER.to_html(false)
-		if sim.recipe_feeds_open_order(recipe_id):
-			line += "\n    [color=#%s]★ feeds an open order: full XP[/color]" % UiTheme.SUN_WARM.to_html(false)
-		var craftable: bool = r["station_available"] and r["skill_met"] and r["inputs_met"] and r["fuel_met"]
-		_add_row(line, "Craft", craftable, craft.bind(recipe_id))
-		# A gear recipe can be aimed with a kind in hand (D-023 slice 3):
-		# one row per kind held, saying which family it draws first.
-		var makes_gear := false
-		for output_id in r["outputs"]:
-			if not sim.item_base(output_id).is_empty():
-				makes_gear = true
-		if makes_gear:
-			for kind in sim.currency_kinds():
-				if int(kind["held"]) <= 0:
-					continue
-				_add_row("    aimed with a [b]%s[/b] (you hold %d): favours %s for the first modifier where this base allows it" % [
-					kind["display_name"], int(kind["held"]), String(kind.get("craft_tag",kind["family"]))],
-					"Craft with %s" % kind["display_name"], craftable, craft.bind(recipe_id, String(kind["id"])))
-
-	if shows_fuel:
-		_add_row("Fuel on hand: %d  (wood burns as 1, charcoal as 4)" % sim.fuel_value_held())
-
-	if _station == null:
-		return
-
-	var upgrade_id: StringName = _station.upgrade_station_id
-	if upgrade_id != &"" and not sim.has_station(upgrade_id):
-		var target: Dictionary = sim.station(upgrade_id)
-		_add_row("[b]Upgrade to %s[/b]  —  %s" % [target.get("display_name", upgrade_id), cost_bbcode(target.get("upgrade_cost", {}), sim)],
-			"Upgrade", sim.can_build_station(upgrade_id), upgrade)
-
-	# Armour work belongs to the forge; the workbench stops here.
-	if _station.station_id != &"forge_basic":
-		return
-
-	# Armour: wear it, then temper it here. The effect of each temper is
-	# stated before anything is consumed.
-	var worn: Dictionary = sim.equipment().get("chest", {})
-	if worn.is_empty():
-		_add_row("Wearing nothing. Craft Iron Chest Armour, then wear it here or from your pack (I).")
-	else:
-		_add_row("Wearing [b]%s[/b]  —  armour %d, fire resistance %d%%" % [
-			worn["display_name"], int(worn["armour"]), int(worn["fire_resistance"])])
-	var armour_held: int = sim.material_count("iron_chest_armour")
-	if armour_held > 0:
-		_add_row("Iron Chest Armour in your pack (%d)" % armour_held, "Wear", true, equip.bind(&"iron_chest_armour"))
-
-	var quench: Dictionary = sim.basic_temper_info()
-	_add_row("[b]Quench[/b]  —  sets %s to at least %d%% (a fixed baseline, no roll). Needs a forge that supports %s%s." % [
-		quench["property_display_name"], int(quench["value"]), Hud.pretty(quench["process"]),
-		"" if quench["station_available"] else " (upgrade first)"],
-		"Quench", quench["armour_equipped"] and quench["station_available"], temper_basic)
-
-	for process_id in sim.catalyst_process_ids():
-		var p: Dictionary = sim.catalyst_process(process_id)
-		if p["process"] == "catalyst_transfer":
-			_render_transfer(process_id, p)
-			continue
-		var skill_text := ""
-		for skill_id in p["minimum_skill"]:
-			skill_text = "%s %d" % [Hud.pretty(skill_id), p["minimum_skill"][skill_id]]
-		var line := "[b]%s[/b]  —  consumes 1 %s. Guarantees %s tier %d: a roll between %d%% and %d%%, floor %d%% at %s; never lowers an existing roll. Needs %s. Catalysts held: %d." % [
-			p["display_name"], Hud.pretty(p["catalyst"]), p["property_display_name"], p["result_tier"],
-			int(p["tier_minimum"]), int(p["tier_maximum"]), int(p["floor_at_skill"]), skill_text,
-			Hud.pretty(p["station"]), p["catalyst_held"]]
-		var can_temper: bool = p["armour_equipped"] and p["station_available"] and p["skill_met"] and p["catalyst_held"] > 0
-		_add_row(line, "Temper", can_temper, temper_catalyst.bind(StringName(process_id)))
-
-
-## Preserving Transfer (D-019): one row per pack item the worn rolls could
-## move onto - the held-back roll's way to the base that holds it.
-func _render_transfer(process_id: String, p: Dictionary) -> void:
-	var targets: Array = sim.transfer_targets(process_id)
-	var held: int = p["catalyst_held"]
-	if targets.is_empty():
-		_add_row("[b]%s[/b]  —  moves a worn item's rolled modifiers, whole, onto a base of the same slot in your pack; the old base is spent. Wear the item and carry the new base. Catalysts held: %d." % [p["display_name"], held])
-		return
-	for target in targets:
-		var line := "[b]%s[/b]  —  move the worn %s's modifiers onto the %s in your pack (holds tier %d). Consumes 1 %s; the old base is spent. Held: %d." % [
-			p["display_name"], target["worn_display_name"], target["display_name"], int(target["tier_cap"]),
-			Hud.pretty(p["catalyst"]), held]
-		_add_row(line, "Transfer", held > 0 and p["station_available"] and p["skill_met"],
-			transfer_catalyst.bind(StringName(process_id), int(target["index"])))
 
 
 func transfer_catalyst(process_id: StringName, target_index: int) -> Dictionary:

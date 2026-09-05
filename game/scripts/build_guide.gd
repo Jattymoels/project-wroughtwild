@@ -90,14 +90,14 @@ func _skills() -> void:
 		if String(skill.get("delivery",""))=="dash":
 			recovery /= 1.0+float(sim.derived_stats().get("dash_recovery",0))
 		_text(column,"%s · %.2f s recovery" % [" / ".join(tags),recovery],UiTheme.FROST)
-		var uses := int(skill.get("uses",0))
+		var uses := int(skill.get("practice",0))
 		var next: Dictionary = {}
 		for perk in skill.get("mastery",[]):
-			_text(column,"%s %s · %d uses" % ["✓" if perk.unlocked else "◇",perk.text,int(perk.uses)],UiTheme.GRASS_LIGHT if perk.unlocked else UiTheme.MUTED)
+			_text(column,"%s %s · %d practice" % ["✓" if perk.unlocked else "◇",perk.text,int(perk.uses)],UiTheme.GRASS_LIGHT if perk.unlocked else UiTheme.MUTED)
 			if next.is_empty() and not perk.unlocked: next = perk
 		if learned:
 			if not next.is_empty():
-				_text(column,"Mastery · %d / %d casts toward the next milestone" % [uses,int(next.uses)],UiTheme.SUN_WARM)
+				_text(column,"Mastery · %d / %d practice toward the next milestone" % [uses,int(next.uses)],UiTheme.SUN_WARM)
 				var progress := ProgressBar.new()
 				progress.max_value = int(next.uses)
 				progress.value = uses

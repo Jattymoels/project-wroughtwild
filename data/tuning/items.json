@@ -25,6 +25,18 @@
       "display_name": "Wrought",
       "modifiers_min": 3,
       "modifiers_max": 4
+    },
+    {
+      "id": "worked",
+      "display_name": "Worked",
+      "modifiers_min": 1,
+      "modifiers_max": 1
+    },
+    {
+      "id": "refined",
+      "display_name": "Refined",
+      "modifiers_min": 3,
+      "modifiers_max": 3
     }
   ],
   "modifiers": [
@@ -77,7 +89,35 @@
           ]
         }
       ],
-      "design_purpose": "The class gear pass (owner, 4 Sep 2026: 'bows that enhance projectile attacks'): the bow's line. Damage for everything with the projectile tag - the Ranger's Bow Shot, the orb, the bolt - so a bow serves any projectile build, and its tiers bring the mechanics the Ranger's rails also carry: pierce at tier two, a fan at three."
+      "design_purpose": "The class gear pass (owner, 4 Sep 2026: 'bows that enhance projectile attacks'): the bow's line. Damage for everything with the projectile tag - the Ranger's Bow Shot, the orb, the bolt - so a bow serves any projectile build, and its tiers bring the mechanics the Ranger's rails also carry: pierce at tier two, a fan at three.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2,
+          "breakpoints": [
+            {
+              "effect": "add_pierce",
+              "value": 1,
+              "applies_to": [
+                "projectile"
+              ],
+              "text": "projectiles pierce one more enemy"
+            }
+          ]
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "fletching",
@@ -114,7 +154,25 @@
           ]
         }
       ],
-      "design_purpose": "A gear-rolled fan: one more projectile from every projectile skill, from tier two (an elite in era one, anyone from era two), so a Ranger who never finds Volley's Reaches still grows a fan. The Volley rail's extra_projectiles is a reading and never rolls; this is the gear half of the same verb."
+      "design_purpose": "A gear-rolled fan: one more projectile from every projectile skill, from tier two (an elite in era one, anyone from era two), so a Ranger who never finds Volley's Reaches still grows a fan. The Volley rail's extra_projectiles is a reading and never rolls; this is the gear half of the same verb.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0,
+          "maximum": 0
+        },
+        {
+          "tier": 2,
+          "minimum": 1,
+          "maximum": 1
+        },
+        {
+          "tier": 3,
+          "minimum": 1,
+          "maximum": 1
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "barbed_heads",
@@ -152,7 +210,25 @@
           ]
         }
       ],
-      "design_purpose": "A gear-rolled pierce: projectiles fly on through one more enemy (two at tier three, and then they bleed what they pass). The Quarry rail's pierce is a reading; this is what a bow or a quiver rolls."
+      "design_purpose": "A gear-rolled pierce: projectiles fly on through one more enemy (two at tier three, and then they bleed what they pass). The Quarry rail's pierce is a reading; this is what a bow or a quiver rolls.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0,
+          "maximum": 0
+        },
+        {
+          "tier": 2,
+          "minimum": 1,
+          "maximum": 1
+        },
+        {
+          "tier": 3,
+          "minimum": 1,
+          "maximum": 2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "extra_projectiles",
@@ -382,7 +458,35 @@
           "maximum": 28
         }
       ],
-      "design_purpose": "The plainest survivability roll; a tester can read +12 life and know exactly what changed."
+      "design_purpose": "The plainest survivability roll; a tester can read +12 life and know exactly what changed.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 3,
+          "maximum": 6
+        },
+        {
+          "tier": 2,
+          "minimum": 7,
+          "maximum": 12
+        },
+        {
+          "tier": 3,
+          "minimum": 13,
+          "maximum": 20,
+          "breakpoints": [
+            {
+              "effect": "add_armour",
+              "value": 4,
+              "applies_to": [
+                "self"
+              ],
+              "text": "+4 armour"
+            }
+          ]
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "armour_plating",
@@ -412,7 +516,25 @@
           "maximum": 20
         }
       ],
-      "design_purpose": "Physical mitigation on top of the base's implicit plate; stacks into the armour formula, so it is worth more early than late."
+      "design_purpose": "Physical mitigation on top of the base's implicit plate; stacks into the armour formula, so it is worth more early than late.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 2,
+          "maximum": 4
+        },
+        {
+          "tier": 2,
+          "minimum": 5,
+          "maximum": 8
+        },
+        {
+          "tier": 3,
+          "minimum": 9,
+          "maximum": 14
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "fire_resistance",
@@ -443,7 +565,25 @@
           "maximum": 22
         }
       ],
-      "design_purpose": "The Tyrant's answer. Also the catalyst-tempering domain, so a drop and a forge temper compete for the same slot on the same terms (D-014: catalysts target, they do not gate). Tagged resistance, not fire, so the fire weapon's roll pool stays offence."
+      "design_purpose": "The Tyrant's answer. Also the catalyst-tempering domain, so a drop and a forge temper compete for the same slot on the same terms (D-014: catalysts target, they do not gate). Tagged resistance, not fire, so the fire weapon's roll pool stays offence.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 3,
+          "maximum": 6
+        },
+        {
+          "tier": 2,
+          "minimum": 7,
+          "maximum": 12
+        },
+        {
+          "tier": 3,
+          "minimum": 13,
+          "maximum": 20
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "cold_resistance",
@@ -939,7 +1079,35 @@
           "maximum": 0.18
         }
       ],
-      "design_purpose": "Wider cone strike: the train you can pay off in one swing grows, which is the Bulwark/Glacier dance getting easier."
+      "design_purpose": "Wider cone strike: the train you can pay off in one swing grows, which is the Bulwark/Glacier dance getting easier.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2,
+          "breakpoints": [
+            {
+              "effect": "increased_proliferate_radius",
+              "value": 0.2,
+              "applies_to": [
+                "proliferate"
+              ],
+              "text": "fire spreads 20% further"
+            }
+          ]
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "reach",
@@ -962,7 +1130,25 @@
           "maximum": 0.12
         }
       ],
-      "design_purpose": "The Reach ingot's reading beside a skill (D-023 slice 1): one modifier for a skill's spatial extent, whatever its delivery - an area skill's radius, a projectile's flight, a strike's reach - resolved as the 'reach' multiplier (grammar::skillReach) and applied by the engine to the delivery it owns. Its only tag besides offence is 'reach', which no base allows, so it never rolls on gear: it is the plate's word until a base is given the tag."
+      "design_purpose": "The Reach ingot's reading beside a skill (D-023 slice 1): one modifier for a skill's spatial extent, whatever its delivery - an area skill's radius, a projectile's flight, a strike's reach - resolved as the 'reach' multiplier (grammar::skillReach) and applied by the engine to the delivery it owns. Its only tag besides offence is 'reach', which no base allows, so it never rolls on gear: it is the plate's word until a base is given the tag.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "forked_lattice",
@@ -989,7 +1175,25 @@
         }
       ],
       "design_purpose": "Flat +1 fork for every projectile skill: the orb splits again on first impact, and an Ember Bolt - which does not fork on its own - learns to. The Frost Sceptre carries one as its implicit, so the cold stat-stick is what makes projectiles train-clearers.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0,
+          "maximum": 0
+        },
+        {
+          "tier": 2,
+          "minimum": 1,
+          "maximum": 1
+        },
+        {
+          "tier": 3,
+          "minimum": 2,
+          "maximum": 2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "deep_frost",
@@ -1017,7 +1221,25 @@
         }
       ],
       "design_purpose": "Increased chill buildup: the top of tier 1 crosses the three-orbs-to-freeze breakpoint down to two, which is the whole point of increased-type mods - visible thresholds.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "wide_shatter",
@@ -1045,7 +1267,25 @@
         }
       ],
       "design_purpose": "A shattered mob reaches further down the train, making cascade chains connect across looser bunches.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "frostbite",
@@ -1084,7 +1324,35 @@
         }
       ],
       "design_purpose": "Flat chill on every attack: a skill with no chill of its own gains a payload (the resolver adds before it multiplies). A Frostbite mace freezes with plain strikes and then shatters with the same strikes - the freeze-shatter sentence with no spell in it. Five area strikes at tier 1, faster on top of an orb.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0,
+          "maximum": 0
+        },
+        {
+          "tier": 2,
+          "minimum": 8,
+          "maximum": 12
+        },
+        {
+          "tier": 3,
+          "minimum": 15,
+          "maximum": 22,
+          "breakpoints": [
+            {
+              "effect": "increased_shatter_radius",
+              "value": 0.2,
+              "applies_to": [
+                "shatter"
+              ],
+              "text": "shatters reach 20% further"
+            }
+          ]
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "cold_damage",
@@ -1135,7 +1403,35 @@
           ]
         }
       ],
-      "design_purpose": "The plain scaling axis for the Glacier line; deliberately smaller than the mechanic mods so a fork or a freeze breakpoint always reads as the bigger prize."
+      "design_purpose": "The plain scaling axis for the Glacier line; deliberately smaller than the mechanic mods so a fork or a freeze breakpoint always reads as the bigger prize.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2,
+          "breakpoints": [
+            {
+              "effect": "increased_chill_buildup",
+              "value": 0.2,
+              "applies_to": [
+                "cold"
+              ],
+              "text": "chill builds 20% faster"
+            }
+          ]
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "added_cold",
@@ -1158,7 +1454,25 @@
           "maximum": 0.24
         }
       ],
-      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own cold packet (grammar::skillHit), scaled by cold gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries cold's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own cold packet (grammar::skillHit), scaled by cold gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries cold's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "physical_damage",
@@ -1209,7 +1523,35 @@
           ]
         }
       ],
-      "design_purpose": "Scales the strikes; the Iron Mace's implicit. Redline's first rung."
+      "design_purpose": "Scales the strikes; the Iron Mace's implicit. Redline's first rung.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2,
+          "breakpoints": [
+            {
+              "effect": "increased_bleed_buildup",
+              "value": 0.25,
+              "applies_to": [
+                "bleed"
+              ],
+              "text": "bleeds build 25% faster"
+            }
+          ]
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "added_physical",
@@ -1232,7 +1574,25 @@
           "maximum": 0.24
         }
       ],
-      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own physical packet (grammar::skillHit), scaled by physical gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries physical's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own physical packet (grammar::skillHit), scaled by physical gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries physical's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "life_on_kill",
@@ -1349,7 +1709,35 @@
           ]
         }
       ],
-      "design_purpose": "The plain scaling axis for the fire line; scales the bolt's hit, not its burn (Burn Damage does that), so the two rolls read as different choices."
+      "design_purpose": "The plain scaling axis for the fire line; scales the bolt's hit, not its burn (Burn Damage does that), so the two rolls read as different choices.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2,
+          "breakpoints": [
+            {
+              "effect": "increased_burn_damage",
+              "value": 0.2,
+              "applies_to": [
+                "ignite"
+              ],
+              "text": "burns deal 20% more"
+            }
+          ]
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "added_fire",
@@ -1372,7 +1760,25 @@
           "maximum": 0.24
         }
       ],
-      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own fire packet (grammar::skillHit), scaled by fire gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries fire's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word."
+      "design_purpose": "The added-element reading (D-023 slice 2, owner 4 Sep 2026: every ingot reads every skill): an element ingot beside a skill of another element adds {n} of the base hit as its own fire packet (grammar::skillHit), scaled by fire gear, so a two-element hit meets a mob's resistances packet by packet and, with a Catalyst later, carries fire's status. Its only tag besides offence is 'added', which no base allows, so it never rolls on gear: the plate's word.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "kindling",
@@ -1410,7 +1816,35 @@
         }
       ],
       "design_purpose": "Increased ignite buildup: the fire line's freeze breakpoint - three Ember Bolts to ignite become two. The Ember Wand's implicit.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2,
+          "breakpoints": [
+            {
+              "effect": "increased_ignite_duration",
+              "value": 0.2,
+              "applies_to": [
+                "ignite"
+              ],
+              "text": "burns last 20% longer"
+            }
+          ]
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "burn_damage",
@@ -1438,7 +1872,25 @@
         }
       ],
       "design_purpose": "Scales the ignite's damage per second, not the hit: the fire build that wants to set things alight and walk away.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "lingering_flame",
@@ -1466,7 +1918,25 @@
         }
       ],
       "design_purpose": "A longer burn is more total damage and a wider window for proliferate to find a death; the slow-fuse alternative to Burn Damage.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "wildfire_reach",
@@ -1494,7 +1964,25 @@
         }
       ],
       "design_purpose": "A burning death reaches further into the pack: the fire mirror of Shatter Radius, making chain-burns connect across looser bunches.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "smouldering",
@@ -1523,7 +2011,25 @@
         }
       ],
       "design_purpose": "Flat ignite on every spell: a Frost Orb that chills and burns, a Frost Nova that sets the whole ring smouldering. The cross-element roll that lets one caster run both sentences at once.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0,
+          "maximum": 0
+        },
+        {
+          "tier": 2,
+          "minimum": 8,
+          "maximum": 12
+        },
+        {
+          "tier": 3,
+          "minimum": 15,
+          "maximum": 22
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "serration",
@@ -1551,7 +2057,25 @@
         }
       ],
       "design_purpose": "Increased bleed buildup: the top of tier 1 turns two Rends to open a wound into one.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "hemorrhage",
@@ -1579,7 +2103,25 @@
         }
       ],
       "design_purpose": "Scales the bleed tick, and through it the moving multiplier: the build that wounds and kites.",
-      "from_tier": 2
+      "from_tier": 2,
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "swift_hands",
@@ -1606,7 +2148,25 @@
           "maximum": 0.3
         }
       ],
-      "design_purpose": "Faster casting is a different dance (drill through the train head-on rather than circle it); kept off movement so the dash stays a fixed rhythm."
+      "design_purpose": "Faster casting is a different dance (drill through the train head-on rather than circle it); kept off movement so the dash stays a fixed rhythm.",
+      "craft_tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.03,
+          "maximum": 0.06
+        },
+        {
+          "tier": 2,
+          "minimum": 0.07,
+          "maximum": 0.12
+        },
+        {
+          "tier": 3,
+          "minimum": 0.13,
+          "maximum": 0.2
+        }
+      ],
+      "craft_design_purpose": "Faint/Stable/Potent ordinary craft ranges; consistency stays within this band. Separate from unchanged drop/legacy rolls. Explicit mechanical breakpoints need the expressed craft tier."
     },
     {
       "id": "impact_stagger",
@@ -2898,6 +3458,95 @@
         "resistance"
       ],
       "design_purpose": "Era two's armour: a little more plate than iron and room for tier-three rolls. The number spread between metals stays small on purpose; the tier cap is the point."
+    },
+    {
+      "id": "wooden_cudgel",
+      "display_name": "Wooden Cudgel",
+      "slot": "weapon",
+      "material": "wood",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "physical_damage",
+          "value": 0.05
+        }
+      ],
+      "allowed_modifier_tags": [
+        "physical",
+        "bleed",
+        "area",
+        "speed",
+        "attack"
+      ],
+      "design_purpose": "Bench-made starter equipment: a useful modest base before metallurgy. No skill granted. Crafted quality may reinforce its capacity later.",
+      "tier_cap": 1,
+      "drop_eligible": false
+    },
+    {
+      "id": "simple_bow",
+      "display_name": "Simple Bow",
+      "slot": "weapon",
+      "material": "wood",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "projectile_damage",
+          "value": 0.05
+        }
+      ],
+      "allowed_modifier_tags": [
+        "physical",
+        "bleed",
+        "projectile",
+        "reach",
+        "speed",
+        "attack"
+      ],
+      "tier_cap": 1,
+      "design_purpose": "Bench-made starter equipment: a useful modest base before metallurgy. No skill granted. Crafted quality may reinforce its capacity later.",
+      "drop_eligible": false
+    },
+    {
+      "id": "wooden_focus",
+      "display_name": "Wooden Focus",
+      "slot": "weapon",
+      "material": "wood",
+      "implicit_properties": {},
+      "implicit_modifiers": [
+        {
+          "id": "fire_damage",
+          "value": 0.05
+        }
+      ],
+      "allowed_modifier_tags": [
+        "fire",
+        "ignite",
+        "proliferate",
+        "attack",
+        "spell",
+        "speed"
+      ],
+      "tier_cap": 1,
+      "design_purpose": "Bench-made starter equipment: a useful modest base before metallurgy. No skill granted. Crafted quality may reinforce its capacity later.",
+      "drop_eligible": false
+    },
+    {
+      "id": "hide_vest",
+      "display_name": "Hide Vest",
+      "slot": "chest",
+      "material": "hide",
+      "implicit_properties": {
+        "armour": 4
+      },
+      "implicit_modifiers": [],
+      "allowed_modifier_tags": [
+        "defence",
+        "life",
+        "resistance"
+      ],
+      "design_purpose": "Bench-made starter equipment: a useful modest base before metallurgy. No skill granted. Crafted quality may reinforce its capacity later.",
+      "tier_cap": 1,
+      "drop_eligible": false
     }
   ],
   "design_purpose": "Every modifier attaches to tags, never to a skill or a socket (D-014), and gear never grants a skill (D-016: skills are learned pages, the bar is free). applies_to ['self'] marks a character stat; anything else names the skill tags the modifier excites - so a mod written today applies to a skill found tomorrow if the tags meet. effect keys follow the resolver's increased-vs-more rule: add_* is flat (and can give a skill a payload it lacks), increased_* sums within its bucket, more_* multiplies. A base's allowed_modifier_tags is the roll pool - specific tags, never the generic offence/defence pair alone, so a sceptre cannot grow physical mods and a mace cannot grow cold-spell ones; rarity is a modifier count (plain 0, keen 1-2, wrought 3-4) and never a stat. Uniques (hand-authored, rule-bending) are the next slice. Tiers are breakpoints (D-019): a tier may carry breakpoints, extra effects the roll brings at that tier and every tier above it (tier-two cold also builds chill faster; tier three chills deeper), so a higher tier is a mechanic, not only a bigger number. tier_cap on a base is the highest tier its metal can express: a roll above the cap is held back - it speaks at the cap tier's best value and shows the rest greyed - until a Preserving Transfer moves it to a base that holds it. That is the early taste: you see what the roll could be and you know which metal unleashes it.",

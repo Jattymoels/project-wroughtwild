@@ -1,5 +1,7 @@
 # Crafting and Skills
 
+Owner-approved update, 6 September 2026 (D-026): New equipment crafts use selected workpiece quality and Kind potency. Starter bench gear, expedition-backed refining, atomic material batches and slower meaningful-use mastery are now installed. Earlier universal Keen targeting and use-count mastery descriptions are historical. See the [forge implementation record](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026) for tuning, sources and save compatibility.
+
 **Status:** Accepted direction; economy provisional  
 **Related decisions:** D-002, D-007
 

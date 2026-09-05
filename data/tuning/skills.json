@@ -55,6 +55,20 @@
       "design_purpose": "The Ranger's opener (owner, 4 Sep 2026: 'more initial skills, not frost orb - a bow shot'): a quick physical projectile that is an ATTACK, so Frostbite and the shatter rules read it, with a little bleed so the Quarry rail and the Edge ingot have something to sharpen. Thin and fast like the bolt; the skill is the line, not the lead.",
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "pierce",
+          "value": 1,
+          "text": "the shot goes through"
+        }
+      ],
+      "legacy_mastery": [
+        {
           "uses": 30,
           "modifier": "physical_damage",
           "value": 0.15,
@@ -92,6 +106,20 @@
       "design_purpose": "The Kindler's close answer: a burning sweep in front (the player's cone) that is an ATTACK of fire, so it shatters a frozen ring and lights the packs the bolt cannot single out. Its ignite builds slower than the bolt's; Kindling and the Pyre rail are where it pays.",
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% wider area"
+        },
+        {
+          "uses": 720,
+          "modifier": "burn_damage",
+          "value": 0.2,
+          "text": "its burns bite deeper"
+        }
+      ],
+      "legacy_mastery": [
+        {
           "uses": 30,
           "modifier": "kindling",
           "value": 0.2,
@@ -126,6 +154,20 @@
       "swing_seconds": 0.4,
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% wider area"
+        },
+        {
+          "uses": 720,
+          "modifier": "swift_hands",
+          "value": 0.1,
+          "text": "the sweep recovers faster"
+        }
+      ],
+      "legacy_mastery": [
+        {
           "uses": 30,
           "modifier": "area_size",
           "value": 0.1,
@@ -158,6 +200,20 @@
       "swing_armour": 12,
       "swing_seconds": 0.5,
       "mastery": [
+        {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "serration",
+          "value": 0.3,
+          "text": "the blow opens deeper wounds"
+        }
+      ],
+      "legacy_mastery": [
         {
           "uses": 30,
           "modifier": "physical_damage",
@@ -193,6 +249,20 @@
       "design_purpose": "The grammar sentence opener: an orb that forks on impact and stacks chill toward the freeze threshold. Its damage is modest on purpose - the payoff lives in the freeze-shatter combo, not the hit. Cooldown 1.2 against chill decay 6/s means a bare caster freezes on the third orb; Deep Frost brings it to two.",
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "forked_lattice",
+          "value": 1,
+          "text": "the orb forks once more"
+        }
+      ],
+      "legacy_mastery": [
+        {
           "uses": 30,
           "modifier": "deep_frost",
           "value": 0.2,
@@ -219,6 +289,14 @@
       "distance": 4.0,
       "cooldown_seconds": 2.5,
       "mastery": [
+        {
+          "uses": 180,
+          "modifier": "swift_hands",
+          "value": 0.06,
+          "text": "6% faster dash recovery"
+        }
+      ],
+      "legacy_mastery": [
         {
           "uses": 40,
           "modifier": "swift_hands",
@@ -247,6 +325,20 @@
       "cooldown_seconds": 1.0,
       "design_purpose": "The fire opener: a quick bolt whose hit is small but whose ignite burns for seconds. It does not fork by itself - a Forked Lattice roll (projectile tag) gives it the orb's split, which is the kind of cross-skill grammar D-016 is for. Three bolts ignite a plain mob.",
       "mastery": [
+        {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "fire_damage",
+          "value": 0.15,
+          "text": "the bolt burns hotter"
+        }
+      ],
+      "legacy_mastery": [
         {
           "uses": 30,
           "modifier": "kindling",
@@ -284,6 +376,20 @@
       "design_purpose": "A heavy strike that trades hit damage for bleed: two rends open a wound, and a bleeding mob that keeps chasing takes the moving multiplier - the anti-kite answer to D-012's stupid-zombie trains. Being an attack it also shatters frozen mobs.",
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "hemorrhage",
+          "value": 0.25,
+          "text": "the wounds run deeper"
+        }
+      ],
+      "legacy_mastery": [
+        {
           "uses": 30,
           "modifier": "serration",
           "value": 0.25,
@@ -317,6 +423,20 @@
       "design_purpose": "A ring of cold around the caster (cone_degrees 360 in combat_realtime.json): low damage, chill on everything close. Three novas freeze a ring bare, two with Deep Frost; with an orb in the mix it is the panic button that sets up a shatter with any attack.",
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% wider area"
+        },
+        {
+          "uses": 720,
+          "modifier": "deep_frost",
+          "value": 0.2,
+          "text": "the ring chills deeper"
+        }
+      ],
+      "legacy_mastery": [
+        {
           "uses": 30,
           "modifier": "area_size",
           "value": 0.1,
@@ -348,6 +468,20 @@
       "cooldown_seconds": 4.0,
       "design_purpose": "The owner's missing verb (3 Sep 2026): a ring that cashes in what cold set up. Its own damage is a whisper; it carries the shatter tag, and grammar.json lets a shatter-tagged skill trigger the hook, so every frozen enemy in the ring shatters and the novas cascade. Wide Shatter and every shatter modifier excite it. Long cooldown: it is the sentence's full stop, not its verb.",
       "mastery": [
+        {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% wider area"
+        },
+        {
+          "uses": 720,
+          "modifier": "cold_damage",
+          "value": 0.2,
+          "text": "the novas bite harder"
+        }
+      ],
+      "legacy_mastery": [
         {
           "uses": 20,
           "modifier": "wide_shatter",
@@ -381,6 +515,21 @@
       "fork_damage_fraction": 0.7,
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "pierce",
+          "value": 1,
+          "text": "each arrow pierces one enemy"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: Three arrows spread across a front. Each enemy can be hit once per fan; spread the pack instead of crowding one target. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged.",
+      "legacy_mastery": [
+        {
           "uses": 40,
           "modifier": "reach",
           "value": 0.1,
@@ -392,8 +541,7 @@
           "value": 1,
           "text": "each arrow pierces one enemy"
         }
-      ],
-      "design_purpose": "5 Sep skill expansion: Three arrows spread across a front. Each enemy can be hit once per fan; spread the pack instead of crowding one target. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+      ]
     },
     {
       "id": "prototype_bodkin_shot",
@@ -414,6 +562,21 @@
       "fork_damage_fraction": 0.7,
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "laceration",
+          "value": 20,
+          "text": "the passing arrow also builds bleed"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: A narrow arrow pierces two enemies. Line up pursuers to reach the archer behind them; recover more slowly than Bow Shot. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged.",
+      "legacy_mastery": [
+        {
           "uses": 40,
           "modifier": "reach",
           "value": 0.1,
@@ -425,8 +588,7 @@
           "value": 20,
           "text": "the passing arrow also builds bleed"
         }
-      ],
-      "design_purpose": "5 Sep skill expansion: A narrow arrow pierces two enemies. Line up pursuers to reach the archer behind them; recover more slowly than Bow Shot. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+      ]
     },
     {
       "id": "prototype_driving_blow",
@@ -450,6 +612,21 @@
       "swing_seconds": 0.5,
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "impact_stagger",
+          "value": 0.15,
+          "text": "the blow staggers for 0.15 seconds longer"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: Drive a long, narrow blow through the enemies ahead. Strong stagger and shove open a way forward, with a longer recovery. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged.",
+      "legacy_mastery": [
+        {
           "uses": 40,
           "modifier": "reach",
           "value": 0.1,
@@ -461,8 +638,7 @@
           "value": 0.15,
           "text": "the blow staggers for 0.15 seconds longer"
         }
-      ],
-      "design_purpose": "5 Sep skill expansion: Drive a long, narrow blow through the enemies ahead. Strong stagger and shove open a way forward, with a longer recovery. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+      ]
     },
     {
       "id": "prototype_reaping_sweep",
@@ -488,6 +664,21 @@
       "swing_seconds": 0.4,
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% wider area"
+        },
+        {
+          "uses": 720,
+          "modifier": "refund_on_kill",
+          "value": 0.1,
+          "text": "a kill refunds 10% of its cooldown"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: Cut a broad close front and build bleed. Wound several pursuers, then move while their wounds do the work. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged.",
+      "legacy_mastery": [
+        {
           "uses": 40,
           "modifier": "serration",
           "value": 0.2,
@@ -499,8 +690,7 @@
           "value": 0.1,
           "text": "a kill refunds 10% of its cooldown"
         }
-      ],
-      "design_purpose": "5 Sep skill expansion: Cut a broad close front and build bleed. Wound several pursuers, then move while their wounds do the work. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+      ]
     },
     {
       "id": "prototype_cinderburst",
@@ -524,6 +714,21 @@
       "fork_damage_fraction": 0.7,
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "kindling",
+          "value": 0.25,
+          "text": "the burst builds ignite 25% faster"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: A slow coal bursts at first contact or its range limit. Catch a tight pack in one blast; cover blocks it. Reach widens the blast and extends flight. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged.",
+      "legacy_mastery": [
+        {
           "uses": 40,
           "modifier": "reach",
           "value": 0.1,
@@ -535,8 +740,7 @@
           "value": 0.25,
           "text": "the burst builds ignite 25% faster"
         }
-      ],
-      "design_purpose": "5 Sep skill expansion: A slow coal bursts at first contact or its range limit. Catch a tight pack in one blast; cover blocks it. Reach widens the blast and extends flight. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+      ]
     },
     {
       "id": "prototype_ashfall",
@@ -558,6 +762,21 @@
       "cooldown_seconds": 3.4,
       "mastery": [
         {
+          "uses": 180,
+          "modifier": "reach",
+          "value": 0.06,
+          "text": "6% more reach"
+        },
+        {
+          "uses": 720,
+          "modifier": "refund_on_kill",
+          "value": 0.1,
+          "text": "a kill refunds 10% of its cooldown"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: Mark a visible surface and detonate there after 0.85 seconds. The mark stays where you cast it: lead the train into the blast. Aim at ground or a wall. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged.",
+      "legacy_mastery": [
+        {
           "uses": 40,
           "modifier": "reach",
           "value": 0.1,
@@ -569,9 +788,12 @@
           "value": 0.1,
           "text": "a kill refunds 10% of its cooldown"
         }
-      ],
-      "design_purpose": "5 Sep skill expansion: Mark a visible surface and detonate there after 0.85 seconds. The mark stays where you cast it: lead the train into the blast. Aim at ground or a wall. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+      ]
     }
   ],
-  "design_purpose_mastery": "Skill mastery (D-019): each combat skill has use-milestones, and each milestone unlocks one perk - a modifier from items.json at a flat value that applies to this skill alone (the grammar tags every skill with skill:<id> for that). Uses count in the sim (a cast that fired), ride in the save, and the HUD announces a perk when it arrives. Perks are the third door of every big mechanic: an item tier, a Foundry line, a mastery perk each give the small version; together the full one. Numbers stay inside the threefold budget."
+  "design_purpose_mastery": "Skill mastery (D-019): each combat skill has use-milestones, and each milestone unlocks one perk - a modifier from items.json at a flat value that applies to this skill alone (the grammar tags every skill with skill:<id> for that). Uses count in the sim (a cast that fired), ride in the save, and the HUD announces a perk when it arrives. Perks are the third door of every big mechanic: an item tier, a Foundry line, a mastery perk each give the small version; together the full one. Numbers stay inside the threefold budget.",
+  "mastery_practice": {
+    "seconds_per_point": 1.5,
+    "design_purpose": "One qualifying input cast earns authored base cooldown / seconds_per_point, once across all targets and delayed children. New thresholds are practice points. Legacy rewards remain snapshots; empty casts and automatic repeats do not train."
+  }
 }

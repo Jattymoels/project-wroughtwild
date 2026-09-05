@@ -1,5 +1,7 @@
 # Interface and In-Game Experience
 
+Owner-approved update, 6 September 2026 (D-026): Ordinary crafting now follows the building catalogue: category/search cards, selected details, grade inspection and a fixed cost/Make footer. Ingredient navigation preserves a back path; a recipe can be pinned during play. Kinds and potency are selected explicitly; exhaustive roll bands remain inspectable. See the [forge implementation record](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026) for tuning, sources and save compatibility.
+
 **Status:** Proposed (Wave 2 kickoff, 1 September 2026) — awaiting owner review as D-015; first slice implemented  
 **Owner:** Unassigned  
 **Related decisions:** D-008 (mouse and keyboard), D-012 (first person), D-013 (art direction), D-015 (proposed)  

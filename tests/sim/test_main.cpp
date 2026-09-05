@@ -1474,6 +1474,153 @@ void testMobGearAndPages(const tuning::Tuning& t) {
           "drops: materials still roll beside gear and pages");
 }
 
+void testForgeProgression(const tuning::Tuning& t) {
+    for (const auto& route : std::vector<std::pair<std::string, std::string>>{{"warden","wooden_cudgel"},{"ranger","simple_bow"},{"kindler","wooden_focus"}}) {
+        economy::PlayerEconomy fresh(t);
+        check(fresh.foundryChooseClass(route.first), "forge route: fresh class chooses its kit");
+        const auto kit = fresh.knownSkills();
+        fresh.grant("wood", 16); fresh.grant("hide", 1);
+        check(fresh.craft("workbench_kit").crafted, "forge route: bench kit can be assembled first");
+        fresh.take("workbench_kit", 1); fresh.addAvailableStation("workbench");
+        check(fresh.craft(route.second).crafted && fresh.knownSkills() == kit, "forge route: starter equipment supports the class without granting skills");
+        // Resource-budget route through actual useful recipes, not an elapsed-time claim.
+        fresh.addAvailableStation("forge_basic");
+        fresh.grant("iron_ore", 32); fresh.grant("wood", 70);
+        check(fresh.craftBatch("smelt_iron", true, "", 1, 16).crafted, "forge route: required ingots smelt within batch cap");
+        check(fresh.craftBatch("iron_fittings", true, "", 1, 6).crafted, "forge route: six useful batches meet mine demand");
+        check(fresh.fulfillOrder("reinforce_old_mine").fulfilled, "forge route: useful work earns mine payment");
+        check(fresh.craftBatch("iron_fittings", false, "", 1, 2).crafted, "forge route: remaining iron supports the upgrade fittings");
+        fresh.grant("bog_iron", 3); // Explicit expedition pickup; the test makes no travel-time claim.
+        check(fresh.buildStation("forge_improved") && fresh.skillLevel("blacksmithing") >= 3,
+              "forge route: useful demand supports Sound processing without disposable XP spam");
+        std::printf("CODEX_FORGE_ROUTE %s: bench starter, mine order, improved forge; Blacksmithing %d\n", route.first.c_str(), fresh.skillLevel("blacksmithing"));
+    }
+    for (const auto& kind : t.crafting.currencyKinds) {
+        foundry::State faint, graded;
+        faint.plate = {{1,1,"","prototype_ember_bolt"},{1,0,"ember",""},{2,0,"","",kind.canonicalKind}};
+        graded = faint; graded.plate.back().currency = kind.id;
+        const auto plate = foundry::plate(t.foundry, 1);
+        const auto before = foundry::effects(t, faint, plate), after = foundry::effects(t, graded, plate);
+        check(before.size() == after.size(), "forge: graded Kind preserves the canonical plate effect count");
+        for (size_t i = 0; i < before.size(); ++i) check(before[i].modifier == after[i].modifier && before[i].value == after[i].value,
+              "forge: potency does not silently multiply or replace the Foundry mutation");
+    }
+
+    economy::PlayerEconomy importedStock(t);
+    importedStock.inventory["stable_ember_catalyst"] = 1;
+    importedStock.take("stable_ember_catalyst", 1);
+    check(importedStock.held("stable_ember_catalyst") == 0 && importedStock.currency["stable_ember_catalyst"] == 0, "forge: imported Kind stock pays from its actual store without negative currency");
+    auto original = t;
+    auto& bases = original.items.itemBases;
+    bases.erase(std::remove_if(bases.begin(), bases.end(), [](const auto& base) { return !base.dropEligible; }), bases.end());
+    check(bases.size() == 14, "forge: four starters are craft-only; original fourteen drop bases remain");
+    for (int seed = 1; seed <= 300; ++seed) {
+        const auto before = loot::rollEnemyGear(original, "ember_whelp", seed);
+        const auto after = loot::rollEnemyGear(t, "ember_whelp", seed);
+        check(before.size() == after.size(), "forge: starter access leaves seeded drop counts unchanged");
+        for (size_t i = 0; i < before.size(); ++i) {
+            check(before[i].baseId == after[i].baseId && before[i].rarity == after[i].rarity, "forge: seeded old drop identities and rarities preserved");
+            checkNear(before[i].rolledProperties.front().value, after[i].rolledProperties.front().value, 1e-12, "forge: seeded old drop values preserved");
+        }
+    }
+    for (const auto& def : t.items.modifiers) {
+        for (const auto& band : def.craftTiers) check(band.minimum <= band.maximum, "forge: authored modifier band is ordered");
+    }
+    for (const auto& skill : t.skills.combatSkills) {
+        if (skill.mastery.empty() || skill.delivery == "dash") continue;
+        const std::map<std::string, std::vector<tuning::MasteryPerk>> earned = {{skill.id, {skill.mastery.front()}}};
+        checkNear(grammar::skillReach(t, grammar::earnedMasteryMods(t, earned), skill.id), 1.06, 1e-12,
+                  "mastery: first handling perk affects the actual spatial lane of " + skill.id);
+    }
+    economy::PlayerEconomy smith(t);
+    smith.addAvailableStation("workbench");
+    smith.grant("wood", 40); smith.grant("hide", 20);
+    for (const char* id : {"wooden_cudgel", "simple_bow", "wooden_focus", "hide_vest"}) {
+        check(smith.craft(id).crafted, std::string("forge: useful bench starter ") + id);
+        check(smith.packItems.back().workpieceTier == 1, "forge: starter has Rough capacity");
+    }
+    check(smith.skillXp("blacksmithing") == 0, "forge: bench UI does not promise unawarded Blacksmithing XP");
+    smith.grant("vanguard", 1);
+    const auto before = smith.exportState();
+    const auto bad = smith.craft("wooden_cudgel", false, "vanguard");
+    check(!bad.crafted && bad.failure.incompatibleKind && smith.held("vanguard") == 1 && smith.inventory == before.inventory,
+          "forge: incompatible Kind rejected atomically");
+    check(smith.craftPlan("simple_bow", "", 1, 2).failure.invalidQuantity, "forge: gear batch cannot bypass one-item confirmation");
+    smith.addAvailableStation("forge_basic");
+    smith.grant("wood", 100); smith.grant("iron_ore", 100);
+    auto plan = smith.craftPlan("smelt_iron", "", 1, 4);
+    check(plan.costs.at("iron_ore") == 8 && plan.costs.at("wood") == 4 && plan.fuel == 8,
+          "forge: batch previews total inputs and additional fuel");
+    check(smith.craftBatch("smelt_iron", false, "", 1, 4).crafted && smith.held("iron_ingot") == 4,
+          "forge: atomic material batch makes four ingots");
+    economy::PlayerEconomy shortFuel(t);
+    shortFuel.addAvailableStation("forge_basic"); shortFuel.grant("iron_ore", 8); shortFuel.grant("wood", 11);
+    const auto inventory = shortFuel.inventory;
+    check(!shortFuel.craftBatch("smelt_iron", false, "", 1, 4).crafted && shortFuel.inventory == inventory,
+          "forge: one short fuel unit blocks entire batch without partial payment");
+    check(!smith.craft("simple_bow", false, "", 2).crafted, "forge: skill alone cannot express Sound without the forge");
+    smith.addAvailableStation("forge_improved"); smith.grantSkillXp("blacksmithing", 1000);
+    smith.grant("bog_iron", 20); smith.grant("iron_ingot", 100);
+    check(smith.craft("work_sound_iron").crafted, "forge: expedition resource and worked iron produce Sound reinforcement");
+    smith.grant("ember_catalyst", 20);
+    check(smith.craft("refine_stable_ember_catalyst").crafted && smith.held("stable_ember_catalyst") == 1,
+          "forge: refining spends a Faint Kind plus bog iron and returns Stable");
+    const auto faint = smith.craftPlan("wooden_focus", "ember_catalyst", 2);
+    check(faint.potency == 1 && faint.quality == 2, "forge: a better blank never upgrades Faint potency");
+    check(smith.craft("wooden_focus", false, "ember_catalyst", 2).crafted, "forge: Sound blank accepts a Faint imprint");
+    for (const auto& rolled : smith.packItems.back().rolledProperties) {
+        const auto* def = t.items.findModifier(rolled.propertyId);
+        const auto* band = items::craftBand(*def, 1);
+        check(rolled.crafted && rolled.tier == 1 && rolled.value >= band->minimum && rolled.value <= band->maximum,
+              "forge: high skill and better blank keep new rolls inside the Faint band");
+    }
+    check(smith.craft("wooden_focus", false, "stable_ember_catalyst", 1).crafted, "forge: weak blank can store stronger potential");
+    const auto weak = smith.packItems.back();
+    for (const auto& rolled : weak.rolledProperties) {
+        const auto effective = items::effectiveRoll(t.items, weak, rolled);
+        check(rolled.tier == 2 && effective.heldBack && effective.tier == 1 && effective.value <= rolled.value,
+              "forge: Stable imprint held back by Rough capacity, full roll retained");
+    }
+    items::ItemInstance sound; sound.baseId = "wooden_focus"; sound.workpieceTier = 2;
+    check(items::catalystTransfer(t.items, weak, sound), "forge: preserving transfer moves graded rolls");
+    for (const auto& rolled : sound.rolledProperties) check(!items::effectiveRoll(t.items, sound, rolled).heldBack,
+              "forge: better ironwork releases preserved potential without rerolling");
+    check(smith.craftPlan("work_excellent_iron").failure.qualityUnavailable, "forge: Excellent cannot bypass era-three expedition materials");
+    save::SaveGame saved; saved.economy = smith.exportState(); saved.equipment.slots["weapon"] = weak;
+    const auto encoded = save::toJson(saved);
+    const auto decoded = save::fromJson(encoded);
+    check(decoded.equipment.slots.at("weapon").workpieceTier == 1 && decoded.equipment.slots.at("weapon").rolledProperties.front().crafted,
+          "forge: save roundtrip retains base capacity and roll-band identity");
+    economy::PlayerEconomy replay(t); replay.importState(decoded.economy);
+    smith.grant("wood", 100); replay.grant("wood", 100);
+    smith.grant("ember_catalyst", 1); replay.grant("ember_catalyst", 1);
+    check(smith.craft("wooden_focus", false, "ember_catalyst").crafted && replay.craft("wooden_focus", false, "ember_catalyst").crafted,
+          "forge: replay craft succeeds");
+    checkNear(smith.packItems.back().rolledProperties.front().value, replay.packItems.back().rolledProperties.front().value, 1e-12,
+              "forge: save persists next crafted-gear RNG position");
+    economy::PlayerEconomy trainee(t);
+    trainee.learnSkill("prototype_bow_shot");
+    for (int i = 0; i < 299; ++i) trainee.noteSkillUse("prototype_bow_shot");
+    check(trainee.masteryUnlocked("prototype_bow_shot").empty(), "mastery: fast skill cannot unlock before 180 practice");
+    check(trainee.noteSkillUse("prototype_bow_shot").size() == 1, "mastery: cooldown-weighted milestone unlocks once");
+    checkNear(trainee.masteryUnlocked("prototype_bow_shot").front()->value, .06, 1e-12, "mastery: new first reward is modest handling");
+    economy::PlayerEconomy::State legacy;
+    legacy.masteryVersion = 0; legacy.skillUses["prototype_bow_shot"] = 120;
+    trainee.importState(legacy);
+    const auto old = trainee.masteryUnlocked("prototype_bow_shot");
+    check(old.size() == 2 && old[0]->modifier == "physical_damage" && old[0]->value == .15 && old[1]->modifier == "pierce",
+          "mastery: existing earned rewards keep their original effects and values");
+    saved.economy = trainee.exportState(); trainee.importState(save::fromJson(save::toJson(saved)).economy);
+    check(trainee.masteryUnlocked("prototype_bow_shot").size() == 2, "mastery: migrated rewards do not duplicate on a second reload");
+    legacy.skillUses["prototype_bow_shot"] = 29; trainee.importState(legacy);
+    check(trainee.masteryUnlocked("prototype_bow_shot").empty(), "mastery: old unearned threshold grants no free perk");
+    const auto practice = trainee.skillPractice("prototype_bow_shot");
+    check(practice > 0 && practice < 180, "mastery: old unearned effort carries into the slower curve");
+    for (const auto& kind : t.crafting.currencyKinds) {
+        check(t.foundry.findKindOnPlate(kind.id) == t.foundry.findKindOnPlate(kind.canonicalKind), "forge: each potency maps to its original Foundry identity");
+    }
+}
+
 } // namespace
 
 // D-014 slice 1: one modifier pool, rarity by count, gear-driven grammar,
@@ -2311,7 +2458,8 @@ void testMasteryAndCraftRolls(const tuning::Tuning& t) {
     check(t.skills.findCombatSkill("prototype_shatter") != nullptr, "mastery: the Shatter spell exists");
     economy::PlayerEconomy player(t);
     std::vector<std::string> unlocked;
-    for (int i = 0; i < orb->mastery.front().uses; ++i) {
+    const int orbCasts = static_cast<int>(std::ceil(orb->mastery.front().uses * t.skills.practiceSecondsPerPoint / orb->numbers.at("cooldown_seconds")));
+    for (int i = 0; i < orbCasts; ++i) {
         auto got = player.noteSkillUse("prototype_frost_orb");
         unlocked.insert(unlocked.end(), got.begin(), got.end());
     }
@@ -2319,19 +2467,19 @@ void testMasteryAndCraftRolls(const tuning::Tuning& t) {
           "mastery: the first perk unlocks exactly at its use count");
     check(player.masteryUnlocked("prototype_frost_orb").size() == 1 && player.masteryUnlocked("prototype_frost_nova").empty(),
           "mastery: one perk on the orb, none on the nova");
-    auto mods = grammar::masteryMods(t, player.exportState().skillUses);
+    auto mods = grammar::earnedMasteryMods(t, player.exportState().earnedMastery);
     check(mods.size() == 1 && mods.front().appliesToTags == std::vector<std::string>{"skill:prototype_frost_orb"},
           "mastery: a perk targets its own skill only");
-    const double orbChill = grammar::chillApplied(t, mods, "prototype_frost_orb", false);
+    const double orbChill = grammar::skillReach(t, mods, "prototype_frost_orb");
     const double novaChill = grammar::chillApplied(t, mods, "prototype_frost_nova", false);
-    const double orbBase = grammar::chillApplied(t, {}, "prototype_frost_orb", false);
+    const double orbBase = grammar::skillReach(t, {}, "prototype_frost_orb");
     const double novaBase = grammar::chillApplied(t, {}, "prototype_frost_nova", false);
     check(orbChill > orbBase && std::abs(novaChill - novaBase) < 1e-9,
-          "mastery: the orb chills deeper, the nova is untouched");
+          "mastery: the orb reaches further, the nova is untouched");
     save::SaveGame game;
     game.economy = player.exportState();
     auto back = save::fromJson(save::toJson(game));
-    check(back.economy.skillUses.at("prototype_frost_orb") == orb->mastery.front().uses, "mastery: uses ride in the save");
+    check(back.economy.skillUses.at("prototype_frost_orb") == orbCasts, "mastery: uses ride in the save");
     // Crafted gear rolls: a forge at level 5 makes keen or wrought more often than plain.
     economy::PlayerEconomy smith(t);
     smith.addAvailableStation("forge_improved");
@@ -2636,17 +2784,17 @@ void testEveryIngotReadsEverySkill(const tuning::Tuning& t) {
 // changes them, a kind aims a craft, rare metal casts one.
 void testTypedCurrency(const tuning::Tuning& t) {
     const auto& c = t.crafting;
-    check(c.currencies == std::vector<std::string>{"vanguard", "warding_vanguard", "marrow", "quicksilver", "sipping_marrow", "striking_quicksilver", "casting_quicksilver"} && !c.isCurrency("trade_currency"),
+    check(c.currencies.size() == 31 && c.isCurrency("vanguard") && c.isCurrency("stable_ember_catalyst") && c.isCurrency("potent_quicksilver") && !c.isCurrency("trade_currency"),
           "kinds: the purse holds the original and expanded cast kinds; the coin is gone");
-    check(c.currencyKinds.size() == 12 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
+    check(c.currencyKinds.size() == 36 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
               c.findKind("marrow")->family == "life" && c.findKind("quicksilver")->family == "speed" &&
               c.findKind("ember_catalyst")->family == "offence" && c.findKind("preserving_catalyst")->family == "offence" &&
               !c.findKind("trade_currency"),
-          "kinds: twelve variants in four families");
+          "kinds: twelve identities with three potencies in four families");
     check(c.exchangeRate == 3 && c.exchangeKinds.size() == 11 &&
               std::find(c.exchangeKinds.begin(), c.exchangeKinds.end(), "ember_catalyst") == c.exchangeKinds.end(),
           "kinds: the peddler changes eleven kinds at three to one; the ember catalyst stays the trial's");
-    check(c.aimedMinimumRarity == "keen", "kinds: an aimed craft is at least keen");
+    check(c.aimedMinimumRarity == "worked", "kinds: an early aimed craft guarantees at least Worked");
     bool coinAnywhere = false;
     for (const auto& enemy : t.world.enemies) {
         check(c.findKind(enemy.currencyKind) != nullptr, "kinds: " + enemy.id + " pays a known kind");
@@ -3562,7 +3710,7 @@ void testClassGear(const tuning::Tuning& t) {
     const auto* lantern = t.items.findBase("cinder_lantern");
     check(bow && longbow && quiver && timber && shield && brand && lantern && bow->slot == "weapon" && quiver->slot == "offhand" &&
               timber->slot == "offhand" && shield->slot == "offhand" && lantern->slot == "offhand" && brand->slot == "weapon" &&
-              bow->tierCap == 2 && longbow->tierCap == 3 && timber->tierCap == 1 && t.items.itemBases.size() == 14,
+              bow->tierCap == 2 && longbow->tierCap == 3 && timber->tierCap == 1 && t.items.itemBases.size() == 18,
           "gear: seven new bases in their slots - the offhand is the fourth - with their metals' caps");
     for (const char* id : {"projectile_damage", "fletching", "barbed_heads"})
         check(t.items.findModifier(id) != nullptr && !t.items.findModifier(id)->isSelf(), std::string("gear: the modifier ") + id + " loads");
@@ -4296,14 +4444,15 @@ void testSkillExpansion(const tuning::Tuning& t) {
         check(dropped && p.learnSkill(id) && !p.learnSkill(id),"expansion: each page can be found and learned once " + id);
         check(p.skillBar()==oldBar,"expansion: learning leaves a full bar intact");
         const auto first = skill->mastery.front();
-        for (int n=1;n<first.uses;++n) check(p.noteSkillUse(id).empty(),"expansion: mastery waits for its threshold");
+        const int casts = static_cast<int>(std::ceil(first.uses * t.skills.practiceSecondsPerPoint / skill->numbers.at("cooldown_seconds")));
+        for (int n=1;n<casts;++n) check(p.noteSkillUse(id).empty(),"expansion: mastery waits for its threshold");
         check(p.noteSkillUse(id).size()==1 && p.masteryUnlocked(id).size()==1,"expansion: mastery unlocks at the threshold");
     }
     check(grammar::skillProjectiles(t,{},ids[0])==3 && grammar::skillPierce(t,{},ids[1])==2,
           "expansion: fan and bodkin base propagation is resolved in the sim");
     check(std::abs(grammar::skillArc(t,{},ids[2])-0.45)<1e-9,"expansion: Driving Blow has its native narrow arc");
     check(t.skills.findCombatSkill(ids[5])->delivery=="ground","expansion: delayed ground delivery loads");
-    auto mods=grammar::masteryMods(t,p.exportState().skillUses);
+    auto mods=grammar::earnedMasteryMods(t,p.exportState().earnedMastery);
     check(grammar::skillReach(t,mods,ids[0])>1 && grammar::skillReach(t,mods,"prototype_bow_shot")==1,
           "expansion: mastery stays scoped to its own skill");
     const std::vector<std::string> kinds={"piercing_catalyst","impact_catalyst","sipping_marrow","striking_quicksilver","casting_quicksilver"};
@@ -4444,6 +4593,7 @@ int main(int argc, char** argv) {
     testEraThreeAndLife(t);
     testSkillExpansion(t);
     testFoundryMutations(t);
+    testForgeProgression(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

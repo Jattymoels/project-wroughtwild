@@ -159,6 +159,8 @@ CraftingTable loadCrafting(const std::string& path) {
     for (const auto& r : doc->get("recipes").asArray()) {
         Recipe recipe;
         recipe.id = r->get("id").asString();
+        if (auto v = r->find("minimum_era")) recipe.minimumEra = v->asInt();
+        if (auto v = r->find("design_purpose")) recipe.description = v->asString();
         recipe.displayName = r->get("display_name").asString();
         recipe.station = r->get("station").asString();
         recipe.minimumSkill = readIntMap(r->get("minimum_skill"));
@@ -202,6 +204,9 @@ CraftingTable loadCrafting(const std::string& path) {
         for (const auto& k : kinds->asArray()) {
             CraftingTable::CurrencyKind kind;
             kind.id = k->get("id").asString();
+            kind.canonicalKind = kind.id;
+            if (auto v = k->find("canonical_kind")) kind.canonicalKind = v->asString();
+            if (auto v = k->find("potency")) kind.potency = v->asInt();
             kind.displayName = k->get("display_name").asString();
             kind.family = k->get("family").asString();
             kind.craftTag = kind.family;
@@ -223,6 +228,30 @@ CraftingTable loadCrafting(const std::string& path) {
             table.exchangeRate = exchange->get("rate").asInt();
             table.exchangeKinds = readStringArray(exchange->get("kinds"));
             if (table.exchangeRate < 1) throw std::runtime_error("crafting: market.exchange.rate must be at least 1");
+        }
+    }
+    if (auto quality = doc->find("quality_progression")) {
+        table.rollFloorPerLevel = quality->get("roll_floor_per_skill_level").asNumber();
+        table.rollFloorMaximum = quality->get("roll_floor_maximum").asNumber();
+        table.batchMaximum = quality->get("batch_maximum").asInt();
+        for (const auto& g : quality->get("grades").asArray()) {
+            CraftGrade grade;
+            grade.tier = g->get("tier").asInt();
+            grade.quality = g->get("quality").asString(); grade.potency = g->get("potency").asString();
+            grade.station = g->get("station").asString();
+            grade.minimumSkill = g->get("minimum_skill").asInt(); grade.minimumEra = g->get("minimum_era").asInt();
+            grade.reinforcement = readIntMap(g->get("reinforcement"));
+            if (grade.tier != static_cast<int>(table.grades.size()) + 1) throw std::runtime_error("craft grades must be sequential");
+            table.grades.push_back(grade);
+        }
+        for (const auto& p : quality->get("processes").asArray()) {
+            CraftProcess process;
+            process.station = p->get("station").asString(); process.aimedMinimum = p->get("aimed_minimum").asInt();
+            if (auto e = p->find("minimum_era")) process.minimumEra = e->asInt();
+            double total = 0;
+            for (const auto& n : p->get("counts").asArray()) { const double value = n->asNumber(); if (value < 0) throw std::runtime_error("negative craft chance"); process.counts.push_back(value); total += value; }
+            if (process.counts.size() != 5 || std::abs(total - 1.0) > 0.00001) throw std::runtime_error("craft counts must total one and cap at four");
+            table.craftProcesses.push_back(process);
         }
     }
     if (auto rolls = doc->find("craft_rolls")) {
@@ -258,6 +287,7 @@ CraftingTable loadCrafting(const std::string& path) {
 SkillTable loadSkills(const std::string& path) {
     auto doc = json::parseFile(path);
     SkillTable table;
+    if (auto practice = doc->find("mastery_practice")) table.practiceSecondsPerPoint = practice->get("seconds_per_point").asNumber();
 
     for (const auto& s : doc->get("craft_skills").asArray()) {
         CraftSkillDef def;
@@ -281,14 +311,14 @@ SkillTable loadSkills(const std::string& path) {
             else if (key == "starting") def.starting = value->asBool();
             else if (key == "drop_weight") def.dropWeight = value->asNumber();
             else if (key == "design_purpose") continue;
-            else if (key == "mastery") {
+            else if (key == "mastery" || key == "legacy_mastery") {
                 for (const auto& m : value->asArray()) {
                     MasteryPerk perk;
                     perk.uses = m->get("uses").asInt();
                     perk.modifier = m->get("modifier").asString();
                     perk.value = m->get("value").asNumber();
                     perk.text = m->get("text").asString();
-                    def.mastery.push_back(std::move(perk));
+                    (key == "mastery" ? def.mastery : def.legacyMastery).push_back(std::move(perk));
                 }
             }
             else def.numbers[key] = value->asNumber();
@@ -337,7 +367,9 @@ ItemTable loadItems(const std::string& path) {
         if (auto from = m->find("from_tier")) def.fromTier = from->asInt();
         if (auto purpose = m->find("design_purpose")) def.designPurpose = purpose->asString();
         if (auto sentence = m->find("sentence")) def.sentence = sentence->asString();
-        for (const auto& t : m->get("tiers").asArray()) {
+        for (const auto* tierKey : {"tiers", "craft_tiers"}) {
+        if (!m->find(tierKey)) continue;
+        for (const auto& t : m->get(tierKey).asArray()) {
             ModifierTier tier;
             tier.tier = t->get("tier").asInt();
             tier.minimum = t->get("minimum").asNumber();
@@ -352,7 +384,9 @@ ItemTable loadItems(const std::string& path) {
                     tier.breakpoints.push_back(std::move(bp));
                 }
             }
-            def.tiers.push_back(tier);
+            if (tier.minimum > tier.maximum) throw std::runtime_error("modifier range inverted: " + def.id);
+            (std::string(tierKey) == "tiers" ? def.tiers : def.craftTiers).push_back(tier);
+        }
         }
         if (def.tiers.empty()) throw std::runtime_error("items: modifier " + def.id + " needs tiers");
         table.modifiers.push_back(std::move(def));
@@ -360,6 +394,7 @@ ItemTable loadItems(const std::string& path) {
 
     for (const auto& b : doc->get("item_bases").asArray()) {
         ItemBase base;
+        if (auto eligible = b->find("drop_eligible")) base.dropEligible = eligible->asBool();
         base.id = b->get("id").asString();
         base.displayName = b->get("display_name").asString();
         base.material = b->get("material").asString();
@@ -420,7 +455,7 @@ BoonTable loadBoons(const std::string& path) {
 }
 
 const IngotDef* FoundryDef::findIngot(const std::string& id) const { return findById(ingots, id); }
-const KindDef* FoundryDef::findKindOnPlate(const std::string& id) const { return findById(kinds, id); }
+const KindDef* FoundryDef::findKindOnPlate(const std::string& id) const { auto alias = kindAliases.find(id); return findById(kinds, alias == kindAliases.end() ? id : alias->second); }
 const IngotMetalDef* FoundryDef::findMetal(const std::string& id) const { return findById(metals, id); }
 std::string FoundryDef::defaultMetal() const { return metals.empty() ? std::string() : metals.front().id; }
 int FoundryDef::metalReach(const std::string& id) const {
@@ -1408,6 +1443,8 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.construction = loadConstruction(tuningDirectory + "/construction.json");
     tuning.eras = loadEras(tuningDirectory + "/eras.json");
     tuning.foundry = loadFoundry(tuningDirectory + "/foundry.json");
+    for (const auto& kind : tuning.crafting.currencyKinds)
+        if (kind.canonicalKind != kind.id) tuning.foundry.kindAliases[kind.id] = kind.canonicalKind;
     tuning.skills = loadSkills(tuningDirectory + "/skills.json");
     tuning.items = loadItems(tuningDirectory + "/items.json");
     tuning.boons = loadBoons(tuningDirectory + "/boons.json");

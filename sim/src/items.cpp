@@ -167,6 +167,7 @@ TemperResult catalystTemper(const tuning::ItemTable& table,
         if (existing.propertyId != process.guaranteedProperty) continue;
         result.previousValue = existing.value;
         if (rolled > existing.value) {
+            existing.crafted = false;
             existing.tier = process.resultTier;
             existing.value = rolled;
             result.rolledValue = rolled;
@@ -195,6 +196,7 @@ bool basicTemper(const tuning::ItemTable& table,
     for (auto& existing : item.rolledProperties) {
         if (existing.propertyId != propertyId) continue;
         if (value > existing.value) {
+            existing.crafted = false;
             existing.tier = tier;
             existing.value = value;
         }
@@ -218,9 +220,14 @@ EffectiveRoll effectiveRoll(const tuning::ItemTable& table, const ItemInstance& 
     EffectiveRoll out{rolled.tier, rolled.value, false};
     const tuning::ItemBase* base = table.findBase(item.baseId);
     const tuning::ModifierDef* def = table.findModifier(rolled.propertyId);
-    if (!base || !def || rolled.tier <= base->tierCap) return out;
-    const tuning::ModifierTier* cap = def->findTier(base->tierCap);
-    if (!cap) cap = nearestTier(*def, base->tierCap);
+    const int capacity = item.workpieceTier > 0 ? item.workpieceTier : (base ? base->tierCap : 99);
+    if (!base || !def || rolled.tier <= capacity) return out;
+    if (rolled.crafted) {
+        const auto* band = craftBand(*def, capacity);
+        out.tier = capacity; out.value = band ? std::min(rolled.value, band->maximum) : 0; out.heldBack = true; return out;
+    }
+    const tuning::ModifierTier* cap = def->findTier(capacity);
+    if (!cap) cap = nearestTier(*def, capacity);
     if (!cap) return out;
     out.tier = cap->tier;
     out.value = cap->maximum;
@@ -228,9 +235,13 @@ EffectiveRoll effectiveRoll(const tuning::ItemTable& table, const ItemInstance& 
     return out;
 }
 
-std::vector<const tuning::Breakpoint*> breakpointsFor(const tuning::ModifierDef& def, int tier) {
+const tuning::ModifierTier* craftBand(const tuning::ModifierDef& def, int tier) {
+    for (const auto& band : def.craftTiers) if (band.tier == tier) return &band;
+    return nullptr;
+}
+std::vector<const tuning::Breakpoint*> breakpointsFor(const tuning::ModifierDef& def, int tier, bool crafted) {
     std::vector<const tuning::Breakpoint*> out;
-    for (const auto& t : def.tiers)
+    for (const auto& t : (crafted ? def.craftTiers : def.tiers))
         if (t.tier <= tier)
             for (const auto& bp : t.breakpoints) out.push_back(&bp);
     return out;
@@ -261,7 +272,7 @@ StatTotals statTotals(const tuning::ItemTable& table, const ItemInstance& item) 
         const EffectiveRoll eff = effectiveRoll(table, item, rolled);
         addStat(totals, def->effectKey, eff.value);
         // A tier's breakpoints that are character stats count on the sheet.
-        for (const auto* bp : breakpointsFor(*def, eff.tier))
+        for (const auto* bp : breakpointsFor(*def, eff.tier, rolled.crafted))
             if (bp->appliesTo.size() == 1 && bp->appliesTo.front() == "self") addStat(totals, bp->effect, bp->value);
     }
     return totals;

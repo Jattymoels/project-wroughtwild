@@ -185,7 +185,7 @@ ActiveMods gearMods(const tuning::ItemTable& table, const stats::Equipment& equi
             // the tier it does say brings its breakpoints with it.
             const items::EffectiveRoll eff = items::effectiveRoll(table, item, rolled);
             mods.push_back({def->id, def->appliesToTags, def->effectKey, eff.value, slot});
-            for (const auto* bp : items::breakpointsFor(*def, eff.tier))
+            for (const auto* bp : items::breakpointsFor(*def, eff.tier, rolled.crafted))
                 mods.push_back({def->id + "@" + bp->effect, bp->appliesTo, bp->effect, bp->value, slot});
         }
     }
@@ -210,12 +210,21 @@ ActiveMods masteryMods(const tuning::Tuning& tuning, const std::map<std::string,
     for (const auto& def : tuning.skills.combatSkills) {
         auto it = skillUses.find(def.id);
         const int uses = it == skillUses.end() ? 0 : it->second;
-        for (const auto& perk : def.mastery) {
+        for (const auto& perk : def.legacyMastery) {
             if (perk.uses > uses) continue;
             ActiveMod mod = modAt(tuning.items, perk.modifier, perk.value, "mastery:" + def.id);
             mod.appliesToTags = {"skill:" + def.id}; // this skill alone
             mods.push_back(std::move(mod));
         }
+    }
+    return mods;
+}
+
+ActiveMods earnedMasteryMods(const tuning::Tuning& tuning, const std::map<std::string, std::vector<tuning::MasteryPerk>>& earned) {
+    ActiveMods mods;
+    for (const auto& [skill, perks] : earned) for (const auto& perk : perks) {
+        auto mod = modAt(tuning.items, perk.modifier, perk.value, "mastery:" + skill);
+        mod.appliesToTags = {"skill:" + skill}; mods.push_back(mod);
     }
     return mods;
 }
