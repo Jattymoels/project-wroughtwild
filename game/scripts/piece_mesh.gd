@@ -16,6 +16,8 @@ const ARCH_STRIPS := 12
 ## The render mesh for a form at a size.
 static func mesh_for(form: String, size: Vector3) -> Mesh:
 	match form:
+		"glazed_window", "light_panel":
+			return _framed_panel(form,size)
 		"roof_slope":
 			return _wedge_mesh(size, true)
 		"roof_hip", "roof_valley":
@@ -46,6 +48,28 @@ static func mesh_for(form: String, size: Vector3) -> Mesh:
 	var box := BoxMesh.new()
 	box.size = size
 	return box
+
+
+static func _framed_panel(form: String, size: Vector3) -> ArrayMesh:
+	var art := preload("res://art/material_library.tres")
+	var width: float = art.window_frame_metres if form=="glazed_window" else art.panel_batten_metres
+	var mesh := ArrayMesh.new()
+	var face := SurfaceTool.new()
+	face.begin(Mesh.PRIMITIVE_TRIANGLES)
+	_add_box(face,Vector3.ZERO,Vector3(size.x-width*2.0,size.y-width*2.0,size.z*0.24))
+	face.generate_normals()
+	face.commit(mesh)
+	var frame := SurfaceTool.new()
+	frame.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for signum in [-1.0,1.0]:
+		_add_box(frame,Vector3(signum*(size.x-width)*0.5,0,0),Vector3(width,size.y,size.z))
+		_add_box(frame,Vector3(0,signum*(size.y-width)*0.5,0),Vector3(size.x-width*2.0,width,size.z))
+	if form=="glazed_window":
+		_add_box(frame,Vector3.ZERO,Vector3(art.window_muntin_metres,size.y-width*2.0,size.z*0.8))
+		_add_box(frame,Vector3.ZERO,Vector3(size.x-width*2.0,art.window_muntin_metres,size.z*0.8))
+	frame.generate_normals()
+	frame.commit(mesh)
+	return mesh
 
 
 ## The chest (Wave 6 slice 6): a body on the cell's floor with a lid a

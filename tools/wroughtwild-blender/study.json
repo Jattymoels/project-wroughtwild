@@ -1,0 +1,20 @@
+{
+  "seed": 6419,
+  "board_count": 5,
+  "seam_metres": 0.008,
+  "edge_bevel_metres": 0.004,
+  "colour_variation": 0.10,
+  "frame_fraction": 0.12,
+  "roughness": 0.87,
+  "grain_strength": 0.16,
+  "purposes": {
+    "seed": "Makes board colours repeatable between reviews.",
+    "board_count": "Controls how finely divided the metre-wide wall appears.",
+    "seam_metres": "Width of recessed board joins; backed by solid timber, never a see-through crack.",
+    "edge_bevel_metres": "Small edge wear that catches daylight without changing the collision envelope.",
+    "colour_variation": "Restrained per-board light/dark variation, as a fraction of the existing timber palette.",
+    "frame_fraction": "Rail height as a fraction of wall height; keeps top and bottom joins legible.",
+    "roughness": "Keeps timber matte in daylight instead of looking varnished.",
+    "grain_strength": "Contrast of baked long wood fibres; restrained enough to read as timber rather than stripes."
+  }
+}

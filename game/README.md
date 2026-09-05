@@ -14,11 +14,34 @@ hand-craft a workbench kit from gathered wood, place it, assemble a forge
 kit, place that, and keep the forge fuelled. On top of the sandpit sits the
 whole vertical-slice loop: the mine order, real-time combat, the trial and
 its boss, armour and catalyst tempering, and save/load (saves carry the
-world seed). Every file except the 16×16 pixel textures is text (`.tscn`
-scenes included) so the project diffs in Git; `.uid` files are committed on
-purpose.
+world seed and generation profile). Scenes and rules remain text; the curated
+Blender-study meshes live under `assets/authored`. `.uid` files are committed
+on purpose.
 
 ## Run from a clean checkout
+
+The approved world/trial intensives add three resource habitats and eight
+finished building materials. New worlds use `frontier_v2`; loading an older save
+keeps its original `legacy_v1` geography. Quarry deposits provide slate and
+shellstone, fen banks provide clay and reed, and oldgrowth provides resinheart
+and separate corkbark. Refine at the existing yard, bench or forge. The build
+palette includes Light Panel and Fixed Glazed Window; reed/cork are coverings,
+and pitched roofs still require the existing stonecut unlock.
+
+Use **E** at the Trial Gate for the two-floor Tyrant, Warden and Ash Tide
+stories. Inside, inspect physical route markers, defeat the local encounter,
+then collect its offering. A cleared descent lift offers Continue, Bank and
+leave, or Suspend and quit. **F5** also suspends when standing at that lift;
+the next normal launch offers Resume. Suspension retains current life, effects
+and unbanked loot. The capstone unlocks selectable repeatable tiers and three
+stable run offers. Numerical difficulty and the twenty-/ten-minute full-run
+targets remain provisional pending combat playtesting.
+
+Review fixtures are `res://tests/world_intensive.tscn`,
+`res://tests/material_intensive.tscn`, `res://tests/trial_intensive.tscn`,
+`res://tests/trial_balance.tscn` and `res://experiments/forge_review.tscn`.
+The first three run in the standard headless check helper. Balance uses actual
+fixed-build casts; the lifecycle test uses forced kills only to verify state.
 
 Building: press **B**, then **Tab** for the visual shape/material picker.
 Select a card, inspect its direction with the turn buttons, and use the selection.
@@ -50,13 +73,13 @@ and an equipment comparison in the pack (`I` → Compare → Equip candidate).
 Rebuild the native extension for `compare_equipment`. Run
 `powershell -NoProfile -ExecutionPolicy Bypass -File tools/codex_visual_review.ps1 -Continuation`
 from the repository root for headless/rendered checks and screenshots; open
-`build/codex-aesthetic/index.html` for the gallery. Habitat is decorative and
-does not add materials or alter save data.
+`build/codex-aesthetic/index.html` for the gallery. That earlier habitat pass
+was decorative; D-027 adds the resource habitats described above.
 
 The default sandpit uses the owner-approved weathered frontier presentation.
 Append `-- --crafted-look` for the preceding brighter pass or
 `-- --legacy-look` for cubic terrain. These switches do not change the world
-seed or save format. The experimental roof workshop retains its separate save.
+seed or generation profile. The experimental roof workshop retains its separate save.
 See [the latest material-join report](../docs/art/codex-material-joins-2026-09-05.md).
 The default now blends neighbouring rock, soil and turf materials, with quieter
 grain and sparse, low stone fragments. Rebuild the native extension for the new

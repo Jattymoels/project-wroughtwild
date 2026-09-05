@@ -205,6 +205,8 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_cast_armour", "skill_id"), &WroughtwildSim::skill_cast_armour);
     ClassDB::bind_method(D_METHOD("ward_multiplier", "carried_statuses"), &WroughtwildSim::ward_multiplier);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
+    ClassDB::bind_method(D_METHOD("set_world_profile", "profile_id"), &WroughtwildSim::set_world_profile);
+    ClassDB::bind_method(D_METHOD("world_profile"), &WroughtwildSim::world_profile);
     ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells", "faceted", "palette"), &WroughtwildSim::world_mesh, DEFVAL(false), DEFVAL(Dictionary()));
     ClassDB::bind_method(D_METHOD("world_mesh_chunk", "seed", "chunk_cells", "chunk_x", "chunk_z", "removed_blocks", "faceted", "palette"),
                          &WroughtwildSim::world_mesh_chunk, DEFVAL(false), DEFVAL(Dictionary()));
@@ -341,6 +343,20 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("mitigate", "amount", "damage_type"), &WroughtwildSim::mitigate);
 
     ClassDB::bind_method(D_METHOD("trial_start", "seed", "floor_id"), &WroughtwildSim::trial_start, DEFVAL(String()));
+    ClassDB::bind_method(D_METHOD("trial_start_story", "seed", "run_id"), &WroughtwildSim::trial_start_story, DEFVAL(String("forge_tyrant")));
+    ClassDB::bind_method(D_METHOD("trial_story_runs"), &WroughtwildSim::trial_story_runs);
+    ClassDB::bind_method(D_METHOD("trial_layout"), &WroughtwildSim::trial_layout);
+    ClassDB::bind_method(D_METHOD("trial_rules"), &WroughtwildSim::trial_rules);
+    ClassDB::bind_method(D_METHOD("trial_map_offers", "tier"), &WroughtwildSim::trial_map_offers);
+    ClassDB::bind_method(D_METHOD("trial_start_map", "tier", "offer_index"), &WroughtwildSim::trial_start_map);
+    ClassDB::bind_method(D_METHOD("trial_map_progress"), &WroughtwildSim::trial_map_progress);
+    ClassDB::bind_method(D_METHOD("trial_continue_floor"), &WroughtwildSim::trial_continue_floor);
+    ClassDB::bind_method(D_METHOD("trial_skip_reward"), &WroughtwildSim::trial_skip_reward);
+    ClassDB::bind_method(D_METHOD("trial_claim_secret"), &WroughtwildSim::trial_claim_secret);
+    ClassDB::bind_method(D_METHOD("trial_checkpoint"), &WroughtwildSim::trial_checkpoint);
+    ClassDB::bind_method(D_METHOD("trial_checkpoint_valid", "text"), &WroughtwildSim::trial_checkpoint_valid);
+    ClassDB::bind_method(D_METHOD("trial_checkpoint_matches", "text", "player_state"), &WroughtwildSim::trial_checkpoint_matches);
+    ClassDB::bind_method(D_METHOD("trial_restore_checkpoint", "text"), &WroughtwildSim::trial_restore_checkpoint);
     ClassDB::bind_method(D_METHOD("trial_floors"), &WroughtwildSim::trial_floors);
     ClassDB::bind_method(D_METHOD("trial_floor"), &WroughtwildSim::trial_floor);
     ClassDB::bind_method(D_METHOD("market_offers"), &WroughtwildSim::market_offers);
@@ -486,6 +502,10 @@ Dictionary WroughtwildSim::trial_stage() const {
         return d;
     }
     d["index"] = trial_->currentStageIndex();
+    d["floor_index"] = trial_->floorIndex();
+    d["floor_count"] = trial_->floorCount();
+    d["awaiting_floor"] = trial_->awaitingFloor();
+    d["can_suspend"] = trial_->canSuspend();
     Array choices;
     for (const auto& choice : trial_->currentStage().choices) {
         Dictionary c;
@@ -497,6 +517,7 @@ Dictionary WroughtwildSim::trial_stage() const {
         }
         c["encounter"] = encounter;
         c["reward"] = to_godot(choice.reward);
+        c["module"] = to_godot(choice.module);
         choices.push_back(c);
     }
     d["choices"] = choices;
@@ -540,6 +561,8 @@ Dictionary WroughtwildSim::trial_resolve_room(bool victory) {
         return d;
     }
     const auto outcome = trial_->resolveRoom(victory);
+    if (outcome.rewardType == "completion" && trial_->tier() > 0 && trial_->bossDefeated())
+        trial_gate_.clearedMap(trial_->tier());
     d["reward_type"] = to_godot(outcome.rewardType);
     Array offer;
     for (const auto* boon : outcome.boonOffer) {
@@ -557,6 +580,7 @@ Dictionary WroughtwildSim::trial_resolve_room(bool victory) {
                 weakness["id"] = to_godot(w.id);
                 weakness["display_name"] = to_godot(w.displayName);
                 weakness["reward_multiplier"] = w.baseRewardMultiplier;
+                weakness["design_purpose"] = to_godot(w.designPurpose);
             }
         }
     }
@@ -910,6 +934,15 @@ Dictionary WroughtwildSim::combat_mods() const {
     d["repeat_damage_multiplier"] = mods.repeatDamageMultiplier;
     d["isolated_damage_multiplier"] = mods.isolatedDamageMultiplier;
     d["isolated_area_multiplier"] = mods.isolatedAreaMultiplier;
+    d["enemy_life_multiplier"] = mods.enemyLifeMultiplier;
+    d["enemy_damage_multiplier"] = mods.enemyDamageMultiplier;
+    d["player_damage_multiplier"] = mods.playerDamageMultiplier;
+    d["incoming_damage_multiplier"] = mods.incomingDamageMultiplier;
+    for (const auto* key : {"melee_reach_multiplier", "staggered_damage_multiplier", "low_life_tempo_multiplier", "control_duration_multiplier", "ailment_duration_multiplier", "boss_recovery_multiplier"})
+        d[key] = 1.0;
+    for (const auto* key : {"projectile_pierce_bonus", "low_life_threshold", "dash_armour", "dash_armour_seconds", "elite_kill_heal_fraction", "ailment_spread_radius_m", "ailment_spread_fraction", "crowded_extra_count", "reinforcement_count", "reinforcement_delay_seconds", "rare_ward_radius_m", "rare_ward_reduction", "volatile_delay_seconds", "volatile_damage", "volatile_radius_m", "crossfire_extra_projectiles", "crossfire_fan_degrees", "guard_arc_bonus_degrees", "extra_vent_count", "enemy_added_fire_fraction"})
+        d[key] = 0.0;
+    for (const auto& [key, value] : mods.trialEffects) d[to_godot(key)] = value;
     return d;
 }
 
@@ -986,7 +1019,7 @@ double WroughtwildSim::mitigate(double amount, const String& damage_type) const 
         return amount;
     }
     const auto stats = derived_now();
-    return wroughtwild::stats::mitigateDamage(amount, to_std(damage_type), stats, tuning_->world.playerBase);
+    return wroughtwild::stats::mitigateDamage(amount * current_mods().incomingDamageMultiplier, to_std(damage_type), stats, tuning_->world.playerBase);
 }
 
 String WroughtwildSim::export_json() const {
@@ -996,6 +1029,7 @@ String WroughtwildSim::export_json() const {
     wroughtwild::save::SaveGame game;
     game.economy = player_->exportState();
     game.equipment = equipment_;
+    game.extra["trial_gate"] = trial_gate_.toJson();
     return to_godot(wroughtwild::save::toJson(game));
 }
 
@@ -1003,10 +1037,18 @@ bool WroughtwildSim::import_json(const String& text) {
     if (!require_loaded("import_json")) {
         return false;
     }
+    if (trial_) {
+        last_error_ = "An active trial must settle before loading another player state.";
+        return false;
+    }
     try {
         const wroughtwild::save::SaveGame game = wroughtwild::save::fromJson(to_std(text));
+        wroughtwild::trial::GateState gate;
+        auto savedGate = game.extra.find("trial_gate");
+        if (savedGate != game.extra.end()) gate = wroughtwild::trial::GateState::fromJson(savedGate->second);
         player_->importState(game.economy);
         equipment_ = game.equipment;
+        trial_gate_ = gate;
         last_error_ = String();
         return true;
     } catch (const std::exception& e) {
@@ -1155,6 +1197,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         trial_.reset();
         player_.reset();
         world_cache_.reset();
+        world_profile_ = "legacy_v1";
         structure_.clear();
         tuning_ = std::move(loaded);
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);
@@ -2247,12 +2290,233 @@ const wroughtwild::worldgen::WorldMap& WroughtwildSim::cached_world(uint64_t see
     // The 3D world costs real time to generate; world_map and world_mesh
     // are always asked about the same seed back to back, so keep the last
     // one. Deterministic generation makes the cache invisible.
-    if (!world_cache_ || world_cache_->seed != seed) {
+    if (!world_cache_ || world_cache_->seed != seed || world_cache_->profileId != world_profile_) {
         world_cache_ = std::make_unique<wroughtwild::worldgen::WorldMap>(
-            wroughtwild::worldgen::generate(*tuning_, seed));
+            wroughtwild::worldgen::generateProfile(*tuning_, seed, world_profile_));
     }
     return *world_cache_;
 }
+
+const wroughtwild::tuning::WorldgenTable& WroughtwildSim::world_table() const {
+    return wroughtwild::worldgen::profileTable(*tuning_, world_profile_);
+}
+
+bool WroughtwildSim::set_world_profile(const String& profile_id) {
+    if (!require_loaded("set_world_profile")) return false;
+    const std::string id = to_std(profile_id);
+    if (!wroughtwild::worldgen::knownProfile(id) ||
+        wroughtwild::worldgen::profileTable(*tuning_, id).generationProfile != id) {
+        last_error_ = "Unknown or unavailable generation profile: " + profile_id;
+        return false;
+    }
+    if (id != world_profile_) {
+        world_profile_ = id;
+        world_cache_.reset();
+    }
+    last_error_ = String();
+    return true;
+}
+
+bool WroughtwildSim::trial_start_story(int seed, const String& run_id) {
+    if (!require_loaded("trial_start_story") || trial_) return false;
+    std::string id = run_id.is_empty() ? "forge_tyrant" : to_std(run_id);
+    const auto* run = tuning_->trial.findExpedition(id);
+    if (!run || (!run->requiresWorldEffect.empty() && !player_->worldEffectActive(run->requiresWorldEffect))) return false;
+    trial_ = std::make_unique<wroughtwild::trial::TrialSession>(*tuning_, *player_, build_tags(), static_cast<uint64_t>(seed), run);
+    return true;
+}
+
+Array WroughtwildSim::trial_story_runs() const {
+    Array out;
+    if (!require_loaded("trial_story_runs")) return out;
+    for (const auto& run : tuning_->trial.expeditions) {
+        Dictionary d;
+        d["id"] = to_godot(run.id);
+        d["display_name"] = to_godot(run.displayName);
+        d["available"] = run.requiresWorldEffect.empty() || player_->worldEffectActive(run.requiresWorldEffect);
+        d["done"] = player_->worldEffectActive(run.completionUnlock);
+        d["boss_id"] = to_godot(run.boss.id);
+        d["boss_preview"] = to_godot(run.bossPreview);
+        d["floor_count"] = run.floorCount;
+        d["completion_text"] = to_godot(run.completionText);
+        out.push_back(d);
+    }
+    return out;
+}
+
+Dictionary WroughtwildSim::trial_rules() const {
+    Dictionary out;
+    if (!require_loaded("trial_rules")) return out;
+    for (const auto& [key, value] : tuning_->trial.engineRules) out[to_godot(key)] = value;
+    out["content_revision"] = tuning_->trial.contentRevision;
+    return out;
+}
+
+Dictionary WroughtwildSim::trial_layout() const {
+    Dictionary out;
+    if (!trial_ || trial_->runKind() == "legacy") return out;
+    out["run_id"] = to_godot(trial_->runId());
+    out["run_kind"] = to_godot(trial_->runKind());
+    out["display_name"] = to_godot(trial_->floor()->displayName);
+    out["seed"] = static_cast<int64_t>(trial_->seed());
+    out["tier"] = trial_->tier();
+    out["material_target"] = to_godot(trial_->materialTarget());
+    out["reward_multiplier"] = trial_->currentMods().rewardQuantityMultiplier;
+    out["content_revision"] = tuning_->trial.contentRevision;
+    out["floor_index"] = trial_->floorIndex();
+    out["floor_count"] = trial_->floorCount();
+    out["boss_id"] = to_godot(trial_->boss().id);
+    out["completion_text"] = to_godot(trial_->floor()->completionText);
+    Array stages;
+    int index = 0;
+    for (const auto& stage : trial_->stages()) {
+        Dictionary s;
+        s["index"] = index++;
+        s["floor_index"] = stage.floorIndex;
+        Array choices;
+        for (const auto& room : stage.choices) {
+            Dictionary c;
+            c["id"] = to_godot(room.id);
+            c["display_name"] = to_godot(room.displayName);
+            c["module"] = to_godot(room.module);
+            c["encounter"] = strings_to_packed(room.encounter);
+            c["reward"] = to_godot(room.reward);
+            choices.push_back(c);
+        }
+        s["choices"] = choices;
+        stages.push_back(s);
+    }
+    out["stages"] = stages;
+    Array conditions;
+    for (const auto& id : trial_->conditions()) {
+        const auto* def = tuning_->trial.findCondition(id);
+        if (!def) continue;
+        Dictionary c;
+        c["id"] = to_godot(id);
+        c["display_name"] = to_godot(def->displayName);
+        c["description"] = to_godot(def->description);
+        conditions.push_back(c);
+    }
+    out["conditions"] = conditions;
+    Array route;
+    for (int choice : trial_->route()) route.push_back(choice);
+    out["route"] = route;
+    return out;
+}
+
+Dictionary WroughtwildSim::trial_map_progress() const {
+    Dictionary out;
+    if (!require_loaded("trial_map_progress")) return out;
+    out["available"] = player_->worldEffectActive("forge_arc_complete");
+    out["max_tier"] = trial_gate_.maxTier;
+    return out;
+}
+
+Array WroughtwildSim::trial_map_offers(int tier) const {
+    Array out;
+    if (!require_loaded("trial_map_offers") || !player_->worldEffectActive("forge_arc_complete")) return out;
+    for (const auto& offer : wroughtwild::trial::mapOffers(*tuning_, trial_gate_, tier)) {
+        Dictionary d;
+        d["id"] = to_godot(offer.id);
+        d["seed"] = static_cast<int64_t>(offer.seed);
+        d["tier"] = offer.tier;
+        d["material_target"] = to_godot(offer.materialTarget);
+        d["reward_multiplier"] = offer.rewardMultiplier;
+        auto haul = tuning_->trial.mapHaulUnits.find(offer.materialTarget);
+        d["target_haul_units"] = haul == tuning_->trial.mapHaulUnits.end() ? 0 : static_cast<int>(std::floor(haul->second * offer.rewardMultiplier));
+        d["boss_id"] = to_godot(offer.bossId);
+        for (const auto& run : tuning_->trial.expeditions)
+            if (run.boss.id == offer.bossId) d["boss_preview"] = to_godot(run.bossPreview);
+        d["module_order"] = strings_to_packed(offer.moduleOrder);
+        Array conditions;
+        for (const auto& id : offer.conditions) {
+            const auto* def = tuning_->trial.findCondition(id);
+            Dictionary c;
+            c["id"] = to_godot(id);
+            c["display_name"] = to_godot(def->displayName);
+            c["description"] = to_godot(def->description);
+            conditions.push_back(c);
+        }
+        d["conditions"] = conditions;
+        out.push_back(d);
+    }
+    return out;
+}
+
+bool WroughtwildSim::trial_start_map(int tier, int offer_index) {
+    if (!require_loaded("trial_start_map") || trial_ || !player_->worldEffectActive("forge_arc_complete")) return false;
+    const auto offers = wroughtwild::trial::mapOffers(*tuning_, trial_gate_, tier);
+    if (offer_index < 0 || offer_index >= static_cast<int>(offers.size())) return false;
+    auto run = std::make_unique<wroughtwild::trial::TrialSession>(*tuning_, *player_, build_tags(), offers[static_cast<size_t>(offer_index)]);
+    trial_ = std::move(run);
+    trial_gate_.enteredMap();
+    return true;
+}
+
+bool WroughtwildSim::trial_continue_floor() { return trial_ && trial_->continueFloor(); }
+void WroughtwildSim::trial_skip_reward() { if (trial_) trial_->skipReward(); }
+Dictionary WroughtwildSim::trial_claim_secret() {
+    Dictionary out;
+    if (!trial_) return out;
+    const auto result = trial_->claimSecret();
+    out["claimed"] = result.rewardType == "secret";
+    out["materials"] = to_dictionary(result.materials);
+    return out;
+}
+
+String WroughtwildSim::trial_checkpoint() const {
+    if (!trial_ || !trial_->canSuspend()) return String();
+    wroughtwild::save::SaveGame payload;
+    payload.extra["trial_host_revision"] = "1";
+    payload.extra["session"] = trial_->checkpoint();
+    payload.extra["hit_stream"] = hits_ ? hits_->checkpoint() : wroughtwild::combat::HitStream(trial_->seed()).checkpoint();
+    // Pair the suspended run with its exact permanent build/progression and
+    // empty carried inventory. A checkpoint cannot be grafted onto another save.
+    payload.extra["player_state"] = to_std(export_json());
+    return to_godot(wroughtwild::save::toJson(payload));
+}
+bool WroughtwildSim::trial_checkpoint_valid(const String& text) const {
+    if (!require_loaded("trial_checkpoint_valid")) return false;
+    try {
+        const auto payload = wroughtwild::save::fromJson(to_std(text));
+        if (payload.extra.at("trial_host_revision") != "1") return false;
+        const auto paired = wroughtwild::save::fromJson(payload.extra.at("player_state"));
+        if (!paired.economy.inventory.empty()) return false;
+        wroughtwild::economy::PlayerEconomy probe(*tuning_);
+        auto session = wroughtwild::trial::TrialSession::restore(*tuning_, probe, payload.extra.at("session"));
+        auto stream = wroughtwild::combat::HitStream::restore(payload.extra.at("hit_stream"));
+        (void)session;
+        (void)stream;
+        return true;
+    } catch (const std::exception&) { return false; }
+}
+bool WroughtwildSim::trial_checkpoint_matches(const String& text, const String& player_state) const {
+    if (!trial_checkpoint_valid(text)) return false;
+    try {
+        const auto payload = wroughtwild::save::fromJson(to_std(text));
+        const auto expected = wroughtwild::save::fromJson(payload.extra.at("player_state"));
+        const auto supplied = wroughtwild::save::fromJson(to_std(player_state));
+        return wroughtwild::save::toJson(expected) == wroughtwild::save::toJson(supplied);
+    } catch (const std::exception&) { return false; }
+}
+bool WroughtwildSim::trial_restore_checkpoint(const String& text) {
+    if (!require_loaded("trial_restore_checkpoint") || trial_) return false;
+    if (!trial_checkpoint_matches(text, export_json())) return false;
+    try {
+        const auto payload = wroughtwild::save::fromJson(to_std(text));
+        if (payload.extra.at("trial_host_revision") != "1") return false;
+        auto session = wroughtwild::trial::TrialSession::restore(*tuning_, *player_, payload.extra.at("session"));
+        auto stream = std::make_unique<wroughtwild::combat::HitStream>(wroughtwild::combat::HitStream::restore(payload.extra.at("hit_stream")));
+        trial_ = std::move(session);
+        hits_ = std::move(stream);
+        return true;
+    } catch (const std::exception& error) {
+        last_error_ = to_godot(error.what());
+        return false;
+    }
+}
+
+String WroughtwildSim::world_profile() const { return to_godot(world_profile_); }
 
 Dictionary WroughtwildSim::world_map(int seed) {
     Dictionary d;
@@ -2260,8 +2524,10 @@ Dictionary WroughtwildSim::world_map(int seed) {
         return d;
     }
     const auto& map = cached_world(static_cast<uint64_t>(seed));
+    const auto& table = world_table();
 
     d["seed"] = seed;
+    d["profile_id"] = to_godot(map.profileId);
     d["width"] = map.width;
     d["height"] = map.height;
     d["depth"] = map.depth;
@@ -2284,7 +2550,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
     d["biomes"] = biome_indices;
 
     Array biome_defs;
-    for (const auto& biome : tuning_->worldgen.biomes) {
+    for (const auto& biome : table.biomes) {
         Dictionary b;
         b["id"] = to_godot(biome.id);
         b["display_name"] = to_godot(biome.displayName);
@@ -2295,17 +2561,20 @@ Dictionary WroughtwildSim::world_map(int seed) {
 
     Array nodes;
     for (const auto& node : map.nodes) {
-        const auto typeIt = tuning_->worldgen.nodeTypes.find(node.type);
-        if (typeIt == tuning_->worldgen.nodeTypes.end()) {
+        const auto typeIt = table.nodeTypes.find(node.type);
+        if (typeIt == table.nodeTypes.end()) {
             continue;
         }
         Dictionary n;
         n["type"] = to_godot(node.type);
+        n["resource_id"] = to_godot(node.resourceId);
+        n["habitat_id"] = to_godot(node.habitatId);
         n["x"] = node.x;
         n["y"] = node.y;
         n["z"] = node.z;
         n["material_family"] = to_godot(typeIt->second.materialFamily);
         n["display_name"] = to_godot(typeIt->second.displayName);
+        n["presentation_label"] = to_godot(typeIt->second.displayName);
         n["units"] = typeIt->second.units;
         n["units_per_harvest"] = typeIt->second.unitsPerHarvest;
         n["visual"] = to_godot(typeIt->second.visual);
@@ -2324,7 +2593,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
         l["id"] = to_godot(placed.id);
         l["x"] = placed.x;
         l["z"] = placed.z;
-        for (const auto& def : tuning_->worldgen.landmarks)
+        for (const auto& def : table.landmarks)
             if (def.id == placed.id) {
                 l["display_name"] = to_godot(def.displayName);
                 l["look"] = to_godot(def.look);
@@ -2333,6 +2602,24 @@ Dictionary WroughtwildSim::world_map(int seed) {
         landmarks.push_back(l);
     }
     d["landmarks"] = landmarks;
+
+    Array habitats;
+    for (const auto& placed : map.habitats) {
+        Dictionary h;
+        h["id"] = to_godot(placed.id);
+        h["biome"] = to_godot(placed.biome);
+        h["x"] = placed.x; h["y"] = placed.y; h["z"] = placed.z;
+        h["radius_m"] = placed.radiusM;
+        for (const auto& def : table.habitats)
+            if (def.id == placed.id) h["display_name"] = to_godot(def.displayName);
+        PackedVector3Array approach;
+        for (const auto& point : placed.approach)
+            approach.push_back(Vector3((point.x + 0.5) * map.cellSize,
+                                       point.y * map.cellSize, (point.z + 0.5) * map.cellSize));
+        h["approach"] = approach;
+        habitats.push_back(h);
+    }
+    d["habitats"] = habitats;
 
     Array packs;
     for (const auto& pack : map.packs) {
@@ -2372,7 +2659,7 @@ namespace {
 // One chunk's render/collision geometry. `removed` are engine edits (dug
 // blocks, as flat block-field indices) treated as air, so a rebuilt chunk
 // reflects the world the player has actually carved.
-Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
+Dictionary build_world_chunk(const wroughtwild::tuning::WorldgenTable& table,
                              const wroughtwild::worldgen::WorldMap& map, int cx, int cz,
                              int chunk_cells, const std::set<int64_t>& removed, bool faceted = false,
                              const Dictionary& palette = Dictionary()) {
@@ -2465,7 +2752,7 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
     auto materialColour = [&](int x, int y, int z) {
         const auto id = eff(x,y,z);
         String kind = id == kDirt ? "dirt" : id == kBedrock ? "bedrock" : "stone";
-        if (id == kSurface) kind = to_godot(tuning.worldgen.biomes[map.at(x,z).biomeIndex].surface);
+        if (id == kSurface) kind = to_godot(table.biomes[map.at(x,z).biomeIndex].surface);
         auto found = paletteColours.find(kind);
         return found == paletteColours.end() ? Color(0.2,0.2,0.2,1.0) : found->second;
     };
@@ -2512,7 +2799,7 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
                 bool visible = false;
                 String kind;
                 switch (id) {
-                    case kSurface: kind = to_godot(tuning.worldgen.biomes[map.at(x,z).biomeIndex].surface); break;
+                    case kSurface: kind = to_godot(table.biomes[map.at(x,z).biomeIndex].surface); break;
                     case kDirt: kind = "dirt"; break;
                     case kBedrock: kind = "bedrock"; break;
                     default: kind = "stone"; break;
@@ -2620,7 +2907,7 @@ Array WroughtwildSim::world_mesh(int seed, int chunk_cells, bool faceted, const 
     const std::set<int64_t> none;
     for (int cz = 0; cz < map.height; cz += chunk_cells) {
         for (int cx = 0; cx < map.width; cx += chunk_cells) {
-            chunks.push_back(build_world_chunk(*tuning_, map, cx, cz, chunk_cells, none, faceted, palette));
+            chunks.push_back(build_world_chunk(world_table(), map, cx, cz, chunk_cells, none, faceted, palette));
         }
     }
     return chunks;
@@ -2633,7 +2920,7 @@ Dictionary WroughtwildSim::world_mesh_chunk(int seed, int chunk_cells, int chunk
         return d;
     }
     const auto& map = cached_world(static_cast<uint64_t>(seed));
-    return build_world_chunk(*tuning_, map, chunk_x, chunk_z, chunk_cells,
+    return build_world_chunk(world_table(), map, chunk_x, chunk_z, chunk_cells,
                              removed_set(map, removed_blocks), faceted, palette);
 }
 
@@ -2642,7 +2929,7 @@ Dictionary WroughtwildSim::block_rules() const {
     if (!require_loaded("block_rules")) {
         return d;
     }
-    for (const auto& [kind, rule] : tuning_->worldgen.blockRules) {
+    for (const auto& [kind, rule] : world_table().blockRules) {
         Dictionary r;
         r["breakable"] = rule.breakable;
         r["dig_seconds"] = rule.digSeconds;

@@ -1,0 +1,110 @@
+{
+  "authoring": "Existing reviewed local Blender 4.5.9 studies. Embedded assets; no external runtime dependency.",
+  "assets": [
+    {
+      "id": "wall_panel",
+      "source": "build/blender-study/ff30d528ef514a67ac060e6fabc3ed34/wall_panel.glb",
+      "sha256": "322fd762273327cf8f1ede2c59312c7650164954c7c1ebc1dff4763bba8dc7db",
+      "bytes": 359876,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "pillar",
+      "source": "build/blender-study/ff30d528ef514a67ac060e6fabc3ed34/pillar.glb",
+      "sha256": "5a12a8dec7d0c82404362e1f3f78884e4708784442b8242ea8b34dfeda9b9d9a",
+      "bytes": 51452,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "beam",
+      "source": "build/blender-study/ff30d528ef514a67ac060e6fabc3ed34/beam.glb",
+      "sha256": "5fa4db44a76d67c21a135916c4abea603a1d20b384ca1e2e92a1f8252e0e2700",
+      "bytes": 50808,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "broadleaf_tree",
+      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/broadleaf_tree.glb",
+      "sha256": "21e96ef39755b217aa5b6cac75dddddddb7ea6601b220133de309b7934f2b691",
+      "bytes": 1013736,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "field_boulder",
+      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/field_boulder.glb",
+      "sha256": "f9838b419d5f4510cabf67aaf45a876d2e184334b1ba9ec8f35e4ca2e5501461",
+      "bytes": 112100,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "shrub",
+      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/shrub.glb",
+      "sha256": "df6a7d197d3f9357a99c2450117ea46b9862e59d9abb57500d397c7c8bb9a99a",
+      "bytes": 55692,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "fern_bed",
+      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/fern_bed.glb",
+      "sha256": "02200ae22fb495784e76958d858f3764616cf59dcd9fb9448471f6ca5751a570",
+      "bytes": 136064,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "deadfall",
+      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/deadfall.glb",
+      "sha256": "55da5c9ba982b3f2386ef5e9536f5ed8cfee34d42988f8808b687b22a62ca672",
+      "bytes": 12680,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "stump",
+      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/stump.glb",
+      "sha256": "94932d37805525d508051a489899c93533bb8679faefd07410deb5bf981af291",
+      "bytes": 20104,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "workbench",
+      "source": "build/blender-study/df9a298ee40b48c0bc1f6d9dfc25cbaf/workbench.glb",
+      "sha256": "ba7f406ccce186f2e927edfa90b8cf2118a30ad57ad571483bac6a2d4569a490",
+      "bytes": 168204,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "mason_yard",
+      "source": "build/blender-study/df9a298ee40b48c0bc1f6d9dfc25cbaf/mason_yard.glb",
+      "sha256": "63f291653a65d89ca60c4b87f114cb9f4075fcbb18290bdc715d75842b02f00c",
+      "bytes": 226636,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "forge_basic",
+      "source": "build/blender-study/df9a298ee40b48c0bc1f6d9dfc25cbaf/forge_basic.glb",
+      "sha256": "a76d5d13846fe9c69bd4679cb01e0036715bfbddbb301eb442890f87464c83e0",
+      "bytes": 300308,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "forge_improved",
+      "source": "build/blender-study/df9a298ee40b48c0bc1f6d9dfc25cbaf/forge_improved.glb",
+      "sha256": "a75f92d063f99e9ad78aa8f3e93fc8408fa492eb6deb488ae89a6d0d0fc3c639",
+      "bytes": 336496,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "chest",
+      "source": "build/blender-study/df9a298ee40b48c0bc1f6d9dfc25cbaf/chest.glb",
+      "sha256": "71b6538b9cfe7c412935566beca26b325cea5661313348d6fc69a1571da5c2f0",
+      "bytes": 226612,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "campfire",
+      "source": "build/blender-study/df9a298ee40b48c0bc1f6d9dfc25cbaf/campfire.glb",
+      "sha256": "c5ff4b9e6ae48e7ffe94c65bc28f6b1f4763a6b5ddbd83d80b52973d0c529df9",
+      "bytes": 133192,
+      "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    }
+  ]
+}

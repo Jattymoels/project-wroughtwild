@@ -166,6 +166,7 @@ func select_material(id: StringName) -> void:
 	if player.inventory.get_sim().build_material(id).is_empty():
 		return
 	placement.selected_material_family = id
+	placement._refresh_selection()
 	refresh()
 
 func turn(direction: int) -> void:
@@ -224,6 +225,7 @@ func refresh() -> void:
 		var icon := BuildThumbnail.new()
 		icon.custom_minimum_size = Vector2(140,66)
 		icon.mesh = _mesh(id,kit)
+		icon.colour = PieceLook.swatch_for(placement.selected_material_family)
 		content.add_child(icon)
 		var label := Label.new()
 		label.text = Hud.pretty(String(id)) if kit else String(info.display_name)
@@ -247,12 +249,14 @@ func _mesh(id: StringName, kit: bool) -> Mesh:
 		return preload("res://art/station_look.tres").mesh_for(StringName(sim.kit_station(id)))
 	var actual: StringName = placement._fine_twins.get(id,id) if placement.fine_mode else id
 	var info: Dictionary = sim.shape(actual)
-	return PieceMesh.mesh_for(info.get("form","box"),info["size"])
+	return PieceLook.mesh_for(actual,info.get("form","box"),info["size"],placement.selected_material_family)
 
 func refresh_detail() -> void:
 	var kit := placement.selected_kit != &""
 	title.text = placement.selection_label()
 	picture.mesh = _mesh(placement.selected_kit if kit else placement.selected_shape,kit)
+	picture.colour = PieceLook.swatch_for(placement.selected_material_family)
+	picture.show_material(player.inventory.get_sim(),placement.selected_material_family,"station" if kit else placement.shape_form)
 	picture.turn = (placement.preview_rotation_step%2)*2 if placement.shape_form == "door" else placement.preview_rotation_step
 	picture.arrow = placement.rotatable()
 	picture.queue_redraw()

@@ -12,6 +12,9 @@ const ORDER_BOARD_SCENE := preload("res://scenes/order_board.tscn")
 ## The world to generate; matches worldgen.json's default_seed on a new game
 ## and is overwritten by saves so a loaded game rebuilds its own world.
 @export var world_seed: int = 1
+## Fresh worlds use the new resource geography; old saves explicitly select
+## legacy_v1 before restoring builds, resource depletion and excavation.
+@export var world_profile: String = "frontier_v2"
 
 @onready var terrain: Terrain = $Terrain
 @onready var mob_packs: MobPacks = $MobPacks
@@ -31,6 +34,9 @@ func _ready() -> void:
 	_build_world(world_seed)
 	# Before play begins (D-004): the class, unless a save already carries one.
 	player.offer_class()
+	# Defer until SceneTree has assigned current_scene; embedded review worlds
+	# must never offer to open the player's normal save.
+	player.offer_saved_trial.call_deferred()
 
 
 func _sim() -> WroughtwildSim:
@@ -43,9 +49,10 @@ func _build_world(seed_value: int) -> void:
 	# Explicit historical look switches keep reproducible comparisons available.
 	var args := OS.get_cmdline_user_args()
 	terrain.weathered = not (args.has("--legacy-look") or args.has("--crafted-look") or args.has("--faceted-look") or args.has("--frontier-look"))
-	terrain.build(_sim(), seed_value)
+	terrain.build(_sim(), seed_value, world_profile)
 	if terrain.map.is_empty():
 		return
+	HabitatSites.build(self, terrain)
 	mob_packs.setup(terrain, seed_value)
 
 	var spawn := terrain.surface_position(terrain.map["spawn_x"], terrain.map["spawn_z"])
@@ -182,6 +189,16 @@ func _phase_notice(phase: String, day: Dictionary) -> String:
 ## when it differs. Placed blocks and stations are restored by the save
 ## after this runs, so nothing dynamic is lost.
 func apply_world_seed(seed_value: int) -> void:
-	if seed_value == world_seed:
-		return
+	apply_world_identity(seed_value, world_profile)
+
+
+## SaveManager validates this before importing mutable player state. Profile
+## and seed are both identity: two profiles may use the same numeric seed.
+func apply_world_identity(seed_value: int, profile_id: String) -> bool:
+	if not _sim().set_world_profile(profile_id):
+		return false
+	if seed_value == world_seed and profile_id == world_profile and not terrain.map.is_empty():
+		return true
+	world_profile = profile_id
 	_build_world(seed_value)
+	return not terrain.map.is_empty() and terrain.world_profile() == profile_id

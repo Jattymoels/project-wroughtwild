@@ -63,6 +63,9 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 			continue
 		node_data.append({
 			"name": node.name,
+			"resource_id": node.resource_id,
+			"habitat_id": node.habitat_id,
+			"presentation_label": node.presentation_label,
 			"parent": String(root.get_path_to(node.get_parent())),
 			"family": String(node.material_family),
 			"visual": String(node.visual),
@@ -103,6 +106,9 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 	# Generated worlds carry their seed so a load rebuilds the same terrain.
 	if "world_seed" in root:
 		data["world_seed"] = root.get("world_seed")
+		data["world_profile"] = root.get("world_profile") if "world_profile" in root else "legacy_v1"
+	if player.trial!=null and player.trial.active():
+		data["trial_boundary"]=player.trial.capture_boundary()
 	# The deterministic drop stream must continue across restarts. Saving
 	# only the world seed replayed its early gear every time the game opened.
 	var mob_packs := root.get_node_or_null("MobPacks") as MobPacks
@@ -124,7 +130,60 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	if data.get("schema_version", -1) != SCHEMA_VERSION:
 		last_error = "unsupported save schema %s" % str(data.get("schema_version"))
 		return false
+	if not _valid_world_payload(data):
+		last_error = "save contains invalid world or player fields"
+		return false
 	var sim: WroughtwildSim = player.inventory.get_sim()
+	# Validate the whole suspended payload and generation identity before either
+	# the player's economy or their terrain changes. Old v2 saves stay legacy.
+	var profile:=String(data.get("world_profile","legacy_v1"))
+	if profile not in ["legacy_v1","frontier_v2"]:
+		last_error="unknown world generation profile: "+profile
+		return false
+	if not data.get("trial_boundary",{}) is Dictionary:
+		last_error="invalid suspended trial boundary"
+		return false
+	var boundary: Dictionary=data.get("trial_boundary",{})
+	if data.has("trial_boundary"):
+		if not _valid_integer(boundary.get("version")) or not _valid_integer(boundary.get("built_floor")) or not _valid_text(boundary.get("checkpoint")):
+			last_error="invalid suspended trial fields"
+			return false
+		for key in ["elapsed_seconds", "completed_encounters", "boss_tells"]:
+			if boundary.has(key) and (not _valid_number(boundary[key]) or float(boundary[key])<0):
+				last_error="invalid suspended trial progress"
+				return false
+		if not boundary.get("combat") is Dictionary:
+			last_error="invalid suspended combat state"
+			return false
+		if int(boundary.get("version",0))!=1 or int(boundary.get("built_floor",-1))!=0 or not _valid_vec(boundary.get("return_position")) or not PlayerCombat.valid_trial_state(boundary["combat"]):
+			last_error="invalid suspended trial boundary"
+			return false
+		if boundary.has("combat_exact"):
+			if not _valid_text(boundary["combat_exact"]):
+				last_error="invalid exact suspended combat state"
+				return false
+			# Godot 4.5's JSON parser can shift a binary64 value by one ULP even
+			# with full-precision output. Keep the readable view, but restore the
+			# checked binary companion. Object deserialization stays disabled.
+			var exact:Variant=Marshalls.base64_to_variant(boundary["combat_exact"],false)
+			if not exact is Dictionary or not PlayerCombat.valid_trial_state(exact):
+				last_error="invalid exact suspended combat state"
+				return false
+			var readable:Variant=JSON.parse_string(JSON.stringify(exact,"",true,true))
+			if boundary["combat"]!=exact and boundary["combat"]!=readable:
+				last_error="suspended combat representations do not match"
+				return false
+			boundary=boundary.duplicate(true)
+			boundary["combat"]=exact
+		if not bool(sim.call("trial_checkpoint_valid",String(boundary.get("checkpoint","")))):
+			last_error="unsupported or damaged suspended trial"
+			return false
+		if not bool(sim.call("trial_checkpoint_matches",String(boundary.get("checkpoint","")),String(data.get("sim","")))):
+			last_error="suspended trial does not match the saved player and world"
+			return false
+		if player.trial.active() or player.trial._find_arena()==null:
+			last_error="cannot restore a suspended run into an active trial or a world without a trial arena"
+			return false
 	if not sim.import_json(data.get("sim", "")):
 		last_error = "rules state rejected: %s" % sim.last_error()
 		return false
@@ -141,7 +200,11 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	player.combat._reaction_ready.clear()
 	# A save from a different generated world rebuilds that world first, so
 	# the node names below resolve against the right terrain.
-	if data.has("world_seed") and root.has_method("apply_world_seed"):
+	if data.has("world_seed") and root.has_method("apply_world_identity"):
+		if not root.call("apply_world_identity",int(data["world_seed"]),profile):
+			last_error="world generation profile could not be restored"
+			return false
+	elif data.has("world_seed") and root.has_method("apply_world_seed"):
 		root.call("apply_world_seed", int(data["world_seed"]))
 	var mob_packs := root.get_node_or_null("MobPacks") as MobPacks
 	if mob_packs != null:
@@ -191,6 +254,9 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		if node == null:
 			node = RESOURCE_NODE_SCENE.instantiate()
 			node.name = entry["name"]
+			node.resource_id=String(entry.get("resource_id",entry["name"]))
+			node.habitat_id=String(entry.get("habitat_id",""))
+			node.presentation_label=String(entry.get("presentation_label",""))
 			node.material_family = StringName(entry["family"])
 			node.visual = StringName(entry.get("visual", ""))
 			# Older schema-2 saves did not store the visual. Recover generated
@@ -251,28 +317,130 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 
 	for site in sites:
 		site.refresh_visual(sim)
+	if not boundary.is_empty() and not player.trial.restore_boundary(boundary):
+		last_error="suspended trial could not be restored"
+		return false
 	if player.hud != null:
 		player.hud.refresh()
 	return true
 
 
 func write(path: String, player: WroughtwildPlayer) -> bool:
-	var file := FileAccess.open(path, FileAccess.WRITE)
+	var data:=capture(player)
+	if player.trial.active() and data.get("trial_boundary",{}).is_empty():
+		last_error="only a fully cleared story-floor boundary can be suspended"
+		return false
+	return write_data(path,data)
+
+static func _valid_vec(value: Variant) -> bool:
+	if not value is Array or value.size()!=3: return false
+	for number in value:
+		if not (number is float or number is int) or not is_finite(float(number)): return false
+	return true
+
+static func _valid_number(value: Variant) -> bool:
+	return (value is float or value is int) and is_finite(float(value))
+
+static func _valid_integer(value: Variant) -> bool:
+	return _valid_number(value) and float(value)==floorf(float(value))
+
+static func _valid_text(value: Variant) -> bool:
+	return value is String or value is StringName
+
+static func _valid_cell(value: Variant) -> bool:
+	if not _valid_vec(value): return false
+	for number in value:
+		if not _valid_integer(number): return false
+	return true
+
+## Validate the fields consumed by world restoration before importing economy
+## or removing live nodes. JSON can parse successfully while still being an
+## incomplete synced save. Missing optional fields retain schema-2 defaults.
+static func _valid_world_payload(data: Dictionary) -> bool:
+	if not _valid_text(data.get("sim")): return false
+	for key in ["world_seed", "loot_kill_counter"]:
+		if data.has(key) and not _valid_integer(data[key]): return false
+	if data.has("world_profile") and not _valid_text(data["world_profile"]): return false
+	for key in ["blocks", "resource_nodes", "stations", "broken_blocks", "cracked_blocks"]:
+		if data.has(key) and not data[key] is Array: return false
+	var pose: Variant=data.get("player",{})
+	if not pose is Dictionary: return false
+	if not pose.is_empty() and (not _valid_vec(pose.get("position")) or not _valid_number(pose.get("yaw")) or not _valid_number(pose.get("pitch"))): return false
+	for entry in data.get("blocks",[]):
+		if not entry is Dictionary or not _valid_cell(entry.get("cell")) or not _valid_integer(entry.get("axis")): return false
+		for key in ["shape", "family", "kind"]:
+			if not _valid_text(entry.get(key)) or String(entry[key]).is_empty(): return false
+		if entry["kind"] not in ["volume", "face", "edge"] or int(entry["axis"]) not in [0,1,2]: return false
+		if entry.has("rotation_step") and not _valid_integer(entry["rotation_step"]): return false
+	for entry in data.get("resource_nodes",[]):
+		if not entry is Dictionary or not _valid_vec(entry.get("position")): return false
+		for key in ["name", "parent", "family"]:
+			if not _valid_text(entry.get(key)) or String(entry[key]).is_empty(): return false
+		for key in ["resource_id", "habitat_id", "presentation_label", "visual", "tool_item"]:
+			if entry.has(key) and not _valid_text(entry[key]): return false
+		for key in ["remaining_units", "units_per_harvest"]:
+			if not _valid_integer(entry.get(key)) or int(entry[key])<0: return false
+		for key in ["heat_to_work", "drive_presses", "drive_progress"]:
+			if entry.has(key) and (not _valid_integer(entry[key]) or int(entry[key])<0): return false
+		for key in ["cracked", "wedge_set"]:
+			if entry.has(key) and not entry[key] is bool: return false
+	for entry in data.get("stations",[]):
+		if not entry is Dictionary or not _valid_vec(entry.get("position")): return false
+		for key in ["station_id", "upgrade_station_id"]:
+			if not _valid_text(entry.get(key)): return false
+		for key in ["parent", "name"]:
+			if entry.has(key) and not _valid_text(entry[key]): return false
+		if entry.has("rotation_y") and not _valid_number(entry["rotation_y"]): return false
+	for key in ["broken_blocks", "cracked_blocks"]:
+		for cell in data.get(key,[]):
+			if not _valid_cell(cell): return false
+	return true
+
+func write_data(path: String, data: Dictionary) -> bool:
+	var temporary:=path+".pending"
+	var backup:=path+".previous"
+	var file := FileAccess.open(temporary, FileAccess.WRITE)
 	if file == null:
 		last_error = "cannot open %s for writing (%s)" % [path, error_string(FileAccess.get_open_error())]
 		return false
-	file.store_string(JSON.stringify(capture(player), "  "))
+	file.store_string(JSON.stringify(data, "  ", true, true))
+	file.flush()
+	var error:=file.get_error()
 	file.close()
+	if error!=OK:
+		last_error="save write failed: "+error_string(error)
+		return false
+	# The previous good file remains available throughout replacement, including
+	# on Windows where rename cannot overwrite an existing destination.
+	var had_previous:=FileAccess.file_exists(path)
+	if had_previous:
+		if FileAccess.file_exists(backup): DirAccess.remove_absolute(backup)
+		error=DirAccess.rename_absolute(path,backup)
+		if error!=OK:
+			last_error="cannot preserve previous save: "+error_string(error)
+			return false
+	error=DirAccess.rename_absolute(temporary,path)
+	if error!=OK:
+		if had_previous: DirAccess.rename_absolute(backup,path)
+		last_error="cannot install save: "+error_string(error)
+		return false
 	return true
 
 
 func read(path: String, player: WroughtwildPlayer) -> bool:
+	if not FileAccess.file_exists(path) and FileAccess.file_exists(path+".previous"):
+		path+=".previous"
 	if not FileAccess.file_exists(path):
 		last_error = "no save at %s" % path
 		return false
 	var text := FileAccess.get_file_as_string(path)
 	var parsed: Variant = JSON.parse_string(text)
 	if typeof(parsed) != TYPE_DICTIONARY:
-		last_error = "save file is not valid JSON"
-		return false
+		# A truncated current file can result from external sync interruption.
+		# Only an intact previous payload is eligible for recovery.
+		if not path.ends_with(".previous") and FileAccess.file_exists(path+".previous"):
+			parsed=JSON.parse_string(FileAccess.get_file_as_string(path+".previous"))
+		if typeof(parsed) != TYPE_DICTIONARY:
+			last_error = "save file is not valid JSON"
+			return false
 	return apply(player, parsed)

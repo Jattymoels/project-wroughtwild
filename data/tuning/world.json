@@ -45,10 +45,18 @@
       "warden_eye": 1,
       "pine": 60,
       "bog_oak": 60,
-      "ash_wood": 60
+      "ash_wood": 60,
+      "raw_slate": 40,
+      "raw_shellstone": 40,
+      "raw_clay": 40,
+      "raw_reed": 60,
+      "resinheart_log": 60,
+      "raw_corkbark": 40,
+      "furnace_slag": 40,
+      "cinderglass_shard": 40
     },
     "chest_units": 240,
-    "design_purpose": "Hauling (Wave 6 slice 6; the owner, 4 Sep 2026: 'would definitely need chests/storage solutions'; D-005 arriving early). The pack takes from the ground only up to a cap per family - carry_cap by family, carry_cap_default for any material not listed; forged goods and gear are never capped, so the forge's output stacks and only the haul is bounded. A full family leaves its chips on the ground and the HUD says so. A chest (construction.json 'chest') holds chest_units of anything together; E at it moves stacks between the pack and the store, and breaking it spills what it held where it stood. Sixty timber is ten trees' worth and one hut; the ores are the heavy things at thirty. The walk between the veins, the felling and the shelter is now a walk with a load: you go out, you fill, you come home and put it in the chest - the shelter is where the wealth is."
+    "design_purpose": "Hauling (Wave 6 slice 6; the owner, 4 Sep 2026: 'would definitely need chests/storage solutions'; D-005 arriving early). The pack takes from the ground only up to a cap per family - carry_cap by family, carry_cap_default for any material not listed; forged goods and gear are never capped, so the forge's output stacks and only the haul is bounded. A full family leaves its chips on the ground and the HUD says so. A chest (construction.json 'chest') holds chest_units of anything together; E at it moves stacks between the pack and the store, and breaking it spills what it held where it stood. Sixty timber is ten trees' worth and one hut; the ores are the heavy things at thirty. The walk between the veins, the felling and the shelter is now a walk with a load: you go out, you fill, you come home and put it in the chest - the shelter is where the wealth is. Habitat sources use the existing finite hauling contract: light logs/reeds cap at sixty, stone/clay/bark/slag/shards at forty; refined construction goods retain current crafted-goods storage behaviour."
   },
   "siege": {
     "first_night": 2,
@@ -312,11 +320,16 @@
       "size_scale": 1.4,
       "design_purpose": "The fen's wall: slow, thick, and it does not bleed (nothing to open in that hide). You do not train a lurker, you walk around it - and a wisp behind it makes the walk cost.",
       "loot": [
-        {
-          "item": "bog_iron",
-          "min": 1,
-          "max": 2,
-          "chance": 0.6
+        {
+
+          "item": "bog_iron",
+
+          "min": 1,
+
+          "max": 2,
+
+          "chance": 0.6
+
         },
         {
           "item": "marrow",
@@ -355,11 +368,16 @@
       "size_scale": 0.7,
       "design_purpose": "The fen's sting: a fast skirmisher that keeps its distance and pecks. Alone it is a nuisance; behind a lurker it is the reason to bring a projectile.",
       "loot": [
-        {
-          "item": "bog_iron",
-          "min": 1,
-          "max": 1,
-          "chance": 0.15
+        {
+
+          "item": "bog_iron",
+
+          "min": 1,
+
+          "max": 1,
+
+          "chance": 0.15
+
         },
         {
           "item": "ember_catalyst",

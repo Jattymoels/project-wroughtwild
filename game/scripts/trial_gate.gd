@@ -1,32 +1,49 @@
 class_name TrialGate
 extends StaticBody3D
-## The sealed gate east of camp. Interacting stows ordinary goods (the sim's
-## TrialSession deposits them) and starts a run; the TrialController owns
-## everything after that.
+## Entry previews never deposit or roll anything. The simulation validates
+## the chosen story/offer and only successful entry consumes an offer batch.
+var selected_tier:=1
 
 
 func interact(player: WroughtwildPlayer) -> void:
 	if player.trial.active():
 		player.trial.reopen()
 		return
-	# Deeper floors the gate can offer (D-019): choose, or take the first.
 	var sim: WroughtwildSim = player.inventory.get_sim()
-	var floors: Array = sim.trial_floors()
-	var offered: Array = []
-	for floor in floors:
-		if floor["available"]:
-			offered.append(floor)
-	if offered.is_empty():
-		if not player.trial.begin_run():
-			player.hud.notify("The gate does not open.")
-		return
-	var rows: Array = [{"text": "[b]The Tyrant's Forge[/b]  —  the first floor: three rooms and the Forge Tyrant.",
-		"button": "Enter", "enabled": true, "callback": _descend.bind(player, "")}]
-	for floor in offered:
-		rows.append({"text": "[b]%s[/b]  —  a deeper run with the wastes' new families and a warden at the end.%s" % [
-			floor["display_name"], "  (cleared)" if floor["done"] else ""],
-			"button": "Descend", "enabled": true, "callback": _descend.bind(player, String(floor["id"]))})
-	player.open_custom_panel("The Trial Gate", rows, "The lockers take your ordinary goods either way.")
+	var rows: Array=[]
+	var stories: Array=sim.call("trial_story_runs")
+	for story in stories:
+		var id:=String(story["id"])
+		var description: String={"forge_tyrant":"Fuel galleries, branching shrines and the Tyrant's fire.","deep_forge":"Guarded halls, cistern routes and the Ash Warden.","forge_capstone":"The furnace core. Break the ward conduits and master the Forge."}.get(id,"")
+		if not bool(story["available"]):
+			description+=" Set the Tyrant's heart at the hill cairn." if id=="deep_forge" else " Set the Warden's eye at the drowned altar to begin Ash Tide."
+		rows.append({"text":"[b]%s[/b] · Two floors · Four boon shrines\n%s%s"%[story["display_name"],description,"  Cleared." if story["done"] else ""],
+			"button":"Enter" if story["available"] else "Sealed","enabled":bool(story["available"]),"callback":_descend.bind(player,id)})
+	var progress: Dictionary=sim.call("trial_map_progress")
+	rows.append({"text":"[b]Repeatable Forge trials[/b]\nChoose a tier and rolled conditions. Target building materials, equipment and Kinds.","button":"Choose run" if progress["available"] else "Complete the Forge arc","enabled":bool(progress["available"]),"callback":show_maps.bind(player,selected_tier)})
+	player.open_custom_panel("The Trial Gate",rows,"Your equipment enters intact. Ordinary possessions wait in the lockers; unbanked trial loot is at risk.")
+
+func show_maps(player: WroughtwildPlayer,tier: int) -> void:
+	var sim:=player.inventory.get_sim()
+	var progress: Dictionary=sim.call("trial_map_progress")
+	if not bool(progress.get("available",false)): return
+	selected_tier=clampi(tier,1,int(progress["max_tier"]))
+	var rows: Array=[]
+	rows.append({"text":"Choose a lower unlocked difficulty.","button":"Tier %d"%maxi(1,selected_tier-1),"enabled":selected_tier>1,"callback":show_maps.bind(player,selected_tier-1)})
+	rows.append({"text":"Clearing your highest tier opens the next.","button":"Tier %d"%(selected_tier+1),"enabled":selected_tier<int(progress["max_tier"]),"callback":show_maps.bind(player,selected_tier+1)})
+	var offers: Array=sim.call("trial_map_offers",selected_tier)
+	for i in offers.size():
+		var offer: Dictionary=offers[i]
+		var details:=PackedStringArray()
+		for condition in offer.get("conditions",[]): details.append("• %s: %s"%[condition["display_name"],condition["description"]])
+		var target:=String(offer.get("material_target","building materials"))
+		rows.append({"text":"[b]Run %d · %s[/b]\n%s\nBoss: %s · rewards ×%.2f\n%s"%[i+1,Hud.pretty(target),"\n".join(details),Hud.pretty(String(offer["boss_id"])),float(offer.get("reward_multiplier",1)),String(offer.get("boss_preview",""))],"button":"Enter","callback":_map.bind(player,selected_tier,i)})
+	rows.append({"text":"Return to the story trials.","button":"Back","callback":interact.bind(player)})
+	player.open_custom_panel("Forge trial · Tier %d"%selected_tier,rows,"One floor · Two boon shrines · Conditions and rewards stay fixed until entry.")
+
+func _map(player: WroughtwildPlayer,tier: int,index: int) -> void:
+	player.work_panel.close_panel()
+	if not player.trial.begin_map(tier,index): player.hud.notify("That run could not be opened. Review the gate again.")
 
 
 func _descend(player: WroughtwildPlayer, floor_id: String) -> void:

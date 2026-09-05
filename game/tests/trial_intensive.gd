@@ -1,0 +1,304 @@
+extends Node3D
+## Spatial/lifecycle regression suite. Forced kills verify ownership and economy;
+## they are deliberately separate from actual-build combat measurements.
+const SAVE_PATH="res://../build/intensives/trial-checkpoint.json"
+var player: WroughtwildPlayer
+var sim: WroughtwildSim
+var trial: TrialController
+var checks:=0
+var failures:=0
+var boon_count:=0
+var branches:=0
+var tested_navigation:=false
+var tested_boss_navigation:=false
+var checked_floor_edges:Dictionary={}
+var baseline_economy: String
+
+func check(ok:bool,label:String)->void:
+	checks+=1
+	if not ok: failures+=1; printerr("FAIL: trial intensive: ",label)
+
+func settle(frames:=3)->void:
+	for i in frames: await get_tree().physics_frame
+
+func _ready()->void:
+	var valley:=preload("res://scenes/spike_valley.tscn").instantiate()
+	add_child(valley)
+	player=valley.get_node("Player")
+	sim=player.inventory.get_sim()
+	player.class_panel.choose("warden")
+	player.set_physics_process(false)
+	player.placement.set_physics_process(false)
+	player.combat.set_physics_process(false)
+	trial=player.trial
+	trial.seed_source.seed=7147
+	trial.set_process(false)
+	await settle()
+	baseline_economy=sim.export_json()
+	check(sim.trial_story_runs().size()==3,"three story identities")
+	check(not sim.trial_map_progress().get("available",true),"repeatable gate locked before capstone")
+	check(trial.begin_run("forge_tyrant"),"live Tyrant starts")
+	check(trial.spatial and trial.built_floor==0,"live gate uses a traversable first floor")
+	await story(true)
+	check(not trial.active(),"Tyrant completion extracts")
+	check(boon_count==4 and branches>=2,"four blessings and two route decisions")
+	check(not sim.world_effect_active("stonecut_blocks"),"boss keeps curio landmark transition")
+	check(sim.set_curio("hill_cairn"),"Tyrant heart activates existing hill cairn")
+	if not sim.world_effect_active("stonecut_blocks"): sim.record_world_effect("stonecut_blocks")
+	check(trial.begin_run("deep_forge"),"Deeper Forge starts after landmark")
+	await story(false)
+	check(sim.set_curio("drowned_altar"),"Warden eye activates existing drowned altar")
+	if not sim.world_effect_active("ash_tide"): sim.record_world_effect("ash_tide")
+	check(trial.begin_run("forge_capstone"),"Ash Tide capstone starts")
+	await story(false)
+	check(sim.world_effect_active("forge_arc_complete"),"capstone records distinct arc flag")
+	check(bool(sim.trial_map_progress().get("available",false)),"capstone opens repeatables")
+	var first_offers: Array=sim.trial_map_offers(1)
+	check(first_offers.size()==3,"three repeatable offers")
+	sim.trial_map_offers(2)
+	check(sim.trial_map_offers(1)==first_offers,"switching tiers cannot reroll offers")
+	var gate_save:=sim.export_json()
+	check(sim.import_json(gate_save) and sim.trial_map_offers(1)==first_offers,"offer batch survives reload")
+	check(trial.begin_map(1,0),"selected map starts")
+	check(int(trial.layout.get("floor_count",0))==1,"repeatable route has one floor")
+	trial.on_player_died()
+	check(int(sim.trial_map_progress().get("max_tier",0))==1,"failure retains access without unlocking next")
+	check(sim.trial_map_offers(1)!=first_offers,"successful entry advances offer batch once")
+	check(trial.begin_map(1,1),"another map can start after failure")
+	boon_count=0
+	var guard:=0
+	while trial.active() and guard<16:
+		guard+=1
+		await clear_next()
+	check(not trial.active() and boon_count==2,"repeatable completes with two boon opportunities")
+	check(int(sim.trial_map_progress().get("max_tier",0))==2,"tier one clear unlocks tier two")
+	check(not SaveManager.new().apply(player,{"schema_version":2,"world_profile":"unknown"}),"unknown generation profile rejected before restore")
+	atomic_save_checks()
+	print("TRIAL_INTENSIVE: ",checks," checks, ",failures," failures")
+	get_tree().quit(1 if failures else 0)
+
+func story(test_suspend:bool)->void:
+	boon_count=0; branches=0
+	var guard:=0
+	while trial.active() and guard<12:
+		guard+=1
+		if trial.state=="boundary":
+			check(trial.completed_encounters==4,"major encounter precedes floor transition")
+			if test_suspend:
+				await suspension()
+				test_suspend=false
+			var life:=player.combat.life
+			check(trial.continue_floor(),"cleared lift continues")
+			check(player.combat.life==life,"floor transition grants no healing")
+			check(trial.built_floor==1,"second floor physically replaces first")
+			await settle()
+		else: await clear_next()
+	check(guard<=10,"mandatory route completes independently of optional rooms")
+
+func clear_next()->void:
+	if not trial.active(): return
+	check(trial.state=="exploring","progression returns to physical exploration")
+	var stage: Dictionary=sim.trial_stage()
+	var choices: Array=stage.get("choices",[])
+	if choices.is_empty(): check(false,"reachable next route exists"); trial.on_player_died(); return
+	if choices.size()>1: branches+=1
+	var choice:=mini(int(stage.get("index",0))%2,choices.size()-1)
+	var room: Dictionary=trial.arena.dungeon.rooms.get("%d:%d"%[int(stage["index"]),choice],{})
+	check(not room.is_empty(),"authored room corresponds to selected choice")
+	if room.is_empty(): trial.on_player_died(); return
+	var door: TrialFixture=room["door"]
+	player.global_position=door.global_position+Vector3(0,.6,1.5)
+	trial.interact_fixture(door)
+	check(trial.state=="fighting","physical route seal starts only its encounter")
+	await settle()
+	for frame in 120:
+		var dungeon:=trial.arena.dungeon
+		if NavigationServer3D.region_get_iteration_id(dungeon.region.get_rid())>0 and NavigationServer3D.map_get_iteration_id(dungeon.navigation_map)>1: break
+		await settle(1)
+	var floor_key:="%s:%d"%[trial.layout.run_id,trial.built_floor]
+	if not checked_floor_edges.has(floor_key):
+		checked_floor_edges[floor_key]=true
+		check_floor_edges()
+	if not tested_navigation:
+		tested_navigation=true
+		await navigation(room)
+	var route_path:=trial.arena.dungeon.path(trial.arena.dungeon.to_global(trial.arena.dungeon.entry),trial.arena.dungeon.to_global(room.reward_at))
+	check(route_path.size()>1 and route_path[-1].distance_to(trial.arena.dungeon.to_global(room.reward_at))<2,"%s floor %s stage %s %s reward has a connected route: %s"%[trial.layout.run_id,trial.built_floor,stage.index,room.module,route_path])
+	var max_alive:=trial.trial_enemies().size()
+	var rounds:=0
+	while (not trial.trial_enemies().is_empty() or not trial.wave_queue.is_empty()) and rounds<30:
+		rounds+=1
+		for enemy in trial.trial_enemies():
+			enemy.set_physics_process(false)
+			if enemy is Boss: await boss_checks(enemy)
+			enemy.take_damage(1000000000)
+		for hazard in trial._hazards(): hazard.cancel()
+		trial._tick_spatial(1)
+		max_alive=maxi(max_alive,trial.trial_enemies().size())
+		await settle(1)
+	check(max_alive<=24,"concurrent population remains bounded")
+	for hazard in trial._hazards(): hazard.cancel()
+	trial._process(0)
+	check(trial.state=="reward","local completion exposes a physical offering")
+	var reward: TrialFixture=trial.arena.dungeon.reward
+	player.global_position=reward.global_position+Vector3(0,.6,1.5)
+	trial.interact_fixture(reward)
+	if not trial.current_offer.is_empty():
+		check(trial.current_offer.size()==3,"blessing offers three compatible choices")
+		boon_count+=1
+		trial.accept_boon(String(trial.current_offer[0]["id"]))
+	elif trial.state=="reward" and trial.active(): trial.skip_offer()
+	await settle(1)
+
+func navigation(room:Dictionary)->void:
+	var dungeon:=trial.arena.dungeon
+	for frame in 120:
+		if NavigationServer3D.region_get_iteration_id(dungeon.region.get_rid())>0 and NavigationServer3D.map_get_iteration_id(dungeon.navigation_map)>1: break
+		await settle(1)
+	check(NavigationServer3D.map_get_iteration_id(dungeon.navigation_map)>0,"navigation map becomes ready")
+	var destination: Vector3=dungeon.to_global(room["spawn_at"])
+	var path:=dungeon.path(player.global_position,destination)
+	check(path.size()>=2 and path[-1].distance_to(destination)<2,"Godot navigation crosses doorway into room: %s -> %s = %s"%[player.global_position,destination,path])
+	var secret_path:=dungeon.path(dungeon.to_global(dungeon.entry),dungeon.secret.global_position)
+	check(secret_path.size()>=2 and secret_path[-1].distance_to(dungeon.secret.global_position)<2,"secret store reachable from entry: %s"%[secret_path])
+	var enemy: Enemy=trial.trial_enemies()[0]
+	for other in trial.trial_enemies(): other.set_physics_process(false)
+	player.global_position=dungeon.to_global(room["centre"]+Vector3(5,.6,8))
+	enemy.global_position=dungeon.to_global(room["centre"]+Vector3(-6,.6,-8))
+	var start:=enemy.global_position.distance_to(player.global_position)
+	player.combat.invulnerable_left=100
+	enemy.set_physics_process(true)
+	await settle(240)
+	check(enemy.global_position.distance_to(player.global_position)<start-5,"enemy negotiates room cover in live physics")
+	enemy.set_physics_process(false)
+	player.combat.invulnerable_left=0
+	var before_recovery:Vector3=dungeon.to_global(room.centre+Vector3(-13,-4,0))
+	player.global_position=before_recovery
+	trial._keep_everyone_in_the_room()
+	check(dungeon.contains_world(player.global_position) and player.global_position.distance_to(before_recovery)<10,"floor rescue returns to nearby clear ground, not the entrance")
+	var config:=trial.rules.duplicate(true)
+	config["hazard_telegraph_seconds"]=1.0
+	var hazard:=trial.spawn_hazard(player.global_position,config)
+	hazard.set_physics_process(false)
+	var life:=player.combat.life
+	hazard.advance(.5)
+	check(player.combat.life==life,"hazard warning cannot deal early damage")
+	hazard.advance(.6)
+	check(player.combat.life<life,"remaining on active warning causes typed damage")
+	check(trial.spawn_hazard(player.global_position,config)!=null and trial.spawn_hazard(player.global_position,config)==null,"major hazard cap is two")
+	for active in trial._hazards(): active.cancel()
+
+func check_floor_edges()->void:
+	var dungeon:=trial.arena.dungeon
+	for rect in dungeon.floor_rects:
+		var edges:=[[rect.position,Vector2(rect.end.x,rect.position.y),Vector2.UP],[Vector2(rect.position.x,rect.end.y),rect.end,Vector2.DOWN],[rect.position,Vector2(rect.position.x,rect.end.y),Vector2.LEFT],[Vector2(rect.end.x,rect.position.y),rect.end,Vector2.RIGHT]]
+		for edge in edges:
+			var count:=ceili(edge[0].distance_to(edge[1]))
+			for i in count:
+				var at:Vector2=edge[0].lerp(edge[1],(i+.5)/count)
+				var inside:Vector2=at-edge[2]*.75
+				var outside:Vector2=at+edge[2]*.75
+				if not dungeon._on_floor(inside) or dungeon._on_floor(outside): continue
+				var ray:=PhysicsRayQueryParameters3D.create(dungeon.to_global(Vector3(inside.x,1.5,inside.y)),dungeon.to_global(Vector3(outside.x,1.5,outside.y)))
+				ray.exclude=[player]
+				var hit:=get_world_3d().direct_space_state.intersect_ray(ray)
+				check(not hit.is_empty() and hit.get("collider") is StaticBody3D,"solid wall closes floor boundary at %s in %s/%s"%[at,trial.layout.run_id,trial.built_floor])
+
+func boss_checks(boss:Boss)->void:
+	if not tested_boss_navigation:
+		tested_boss_navigation=true
+		var centre:Vector3=trial.room_space.centre
+		boss.global_position=trial.arena.dungeon.to_global(centre+Vector3(-6,.6,-8))
+		player.global_position=trial.arena.dungeon.to_global(centre+Vector3(6,.6,8))
+		var start:=boss.global_position.distance_to(player.global_position)
+		boss._breath_timer=100
+		player.combat.invulnerable_left=100
+		boss.set_physics_process(true)
+		await settle(360)
+		check(boss.global_position.distance_to(player.global_position)<start-8,"boss capsule negotiates Forge cover without sticking: %s -> %s"%[start,boss.global_position.distance_to(player.global_position)])
+		boss.set_physics_process(false)
+		player.combat.invulnerable_left=0
+	player.global_position=boss.global_position+Vector3(0,0,-4)
+	boss.look_at(player.global_position)
+	boss.force_inhale()
+	boss._begin_trial_tell()
+	check(is_instance_valid(boss._floor_tell),"boss exposes committed floor tell")
+	player.global_position=boss.global_position+Vector3(4,0,1)
+	var life:=player.combat.life
+	boss.breathe(player)
+	check(player.combat.life==life and boss._recovery_left>0,"leaving committed arc avoids hit and opens recovery")
+	if String(trial.layout.get("run_id",""))=="forge_capstone":
+		check(trial.conduits.size()==3,"capstone has three physical ward conduits")
+		var before:=trial.target_multiplier(boss)
+		for conduit in trial.conduits:
+			player.global_position=conduit.global_position+Vector3(0,.6,1)
+			trial.interact_fixture(conduit)
+		check(trial.target_multiplier(boss)>before,"any class can open conduit vulnerability")
+
+func suspension()->void:
+	check(not trial.suspend_to(SAVE_PATH),"suspension requires physically reaching descent lift")
+	var secret:TrialFixture=trial.arena.dungeon.secret
+	player.global_position=secret.global_position+Vector3(0,.6,1.5)
+	var before_secret:=sim.trial_loot().duplicate(true)
+	trial.interact_fixture(secret)
+	check(secret.claimed and sim.trial_loot()!=before_secret,"cleared floor permits backtracking to its optional secret")
+	var secret_loot:=sim.trial_loot().duplicate(true)
+	trial.interact_fixture(secret)
+	check(sim.trial_loot()==secret_loot,"physical secret cannot award twice")
+	player.global_position=trial.arena.dungeon.boundary.global_position+Vector3(0,.6,1.5)
+	player.combat.life=player.combat.max_life*.4312345678901234
+	player.combat.cooldowns[&"prototype_dash"]=2.751234567890123
+	player.combat._trial_dash_armour=9
+	player.combat._trial_dash_armour_left=.8512345678901234
+	var life:=player.combat.life
+	var economy:=sim.export_json()
+	var loot:=sim.trial_loot().duplicate(true)
+	var choices:=sim.trial_run_state().duplicate(true)
+	check(trial.suspend_to(SAVE_PATH),"cleared floor saves atomically")
+	var file: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH))
+	var checkpoint:=String(file.get("trial_boundary",{}).get("checkpoint",""))
+	check(not checkpoint.is_empty(),"suspension includes native checkpoint")
+	trial.on_player_died()
+	check(not trial.active(),"fixture abandons prior in-memory run")
+	var manager:=SaveManager.new()
+	check(manager.read(SAVE_PATH,player),"paired checkpoint validates and restores: "+manager.last_error)
+	check(trial.active() and trial.state=="boundary","restore resumes same cleared boundary")
+	check(trial.arena.dungeon.secret.claimed,"claimed secret presentation survives suspension")
+	for stage in 4:
+		var key:="%d:%d"%[stage,int(trial.layout.route[stage])]
+		check(not trial.arena.dungeon.rooms[key].seal.visible,"restore keeps completed route door open")
+	check(not bool(sim.trial_claim_secret().get("claimed",false)),"restored checkpoint cannot claim secret again")
+	check(sim.export_json()==economy,"persistent build and deposited economy restore exactly")
+	check(sim.trial_loot()==loot and sim.trial_run_state()==choices,"unbanked loot and choices restore exactly")
+	check(player.combat.life==life and player.combat.cooldowns[&"prototype_dash"]==2.751234567890123,"restore grants no life/cooldown reset, including full binary64 precision")
+	check(player.combat._trial_dash_armour==9 and player.combat._trial_dash_armour_left==.8512345678901234,"temporary effect clocks restore exactly: armour=%.17f timer=%.17f expected=%.17f"%[player.combat._trial_dash_armour,player.combat._trial_dash_armour_left,.8512345678901234])
+	check(not sim.trial_restore_checkpoint(checkpoint),"active checkpoint cannot redeposit inventory")
+	var malformed:=file.duplicate(true)
+	malformed["trial_boundary"]["combat"]["life"]="bad"
+	check(not manager.apply(player,malformed),"damaged checkpoint fails before economy mutation")
+	check(sim.export_json()==economy,"failed restore does not alter valid live economy")
+	malformed=file.duplicate(true)
+	malformed["sim"]=baseline_economy
+	check(not manager.apply(player,malformed),"checkpoint rejects a different saved persistent build")
+	check(sim.export_json()==economy,"mismatched paired state leaves live economy intact")
+	malformed=file.duplicate(true)
+	malformed.trial_boundary.combat_exact=Marshalls.variant_to_base64(7,false)
+	check(not manager.apply(player,malformed) and "combat" in manager.last_error,"exact combat companion rejects non-dictionary payload")
+	malformed=file.duplicate(true)
+	var wrong_combat:Dictionary=Marshalls.base64_to_variant(malformed.trial_boundary.combat_exact,false)
+	wrong_combat.life+=1
+	malformed.trial_boundary.combat_exact=Marshalls.variant_to_base64(wrong_combat,false)
+	check(not manager.apply(player,malformed) and "representations" in manager.last_error,"readable and exact combat state must agree")
+	check(sim.export_json()==economy,"rejected exact payload leaves the live economy intact")
+
+func atomic_save_checks()->void:
+	var path:="res://../build/intensives/atomic-check.json"
+	var manager:=SaveManager.new()
+	check(manager.write_data(path,{"revision":1}),"initial atomic save succeeds")
+	check(manager.write_data(path,{"revision":2}),"replacement atomic save succeeds")
+	check(JSON.parse_string(FileAccess.get_file_as_string(path+".previous")).revision==1,"previous good save retained")
+	var previous:=FileAccess.get_file_as_string(path)
+	check(DirAccess.make_dir_absolute(path+".pending")==OK,"fixture obstructs only its own pending save path")
+	check(not manager.write_data(path,{"revision":3}),"pending write failure is reported")
+	check(FileAccess.get_file_as_string(path)==previous,"failed save keeps exact last good file")
+	DirAccess.remove_absolute(path+".pending")

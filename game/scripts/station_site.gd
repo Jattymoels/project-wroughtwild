@@ -50,7 +50,7 @@ func refresh_visual(sim: WroughtwildSim) -> void:
 	var light := get_node_or_null("HearthLight") as OmniLight3D
 	if sim.has_station(station_id):
 		_mesh.mesh = look.mesh_for(current_station_id(sim))
-		_mesh.material_override = ArtGeometry.material()
+		_mesh.material_override = null if AuthoredAssets.mesh_for(String(current_station_id(sim))) != null else ArtGeometry.material()
 		_mesh.position = Vector3.ZERO
 		if String(station_id).begins_with("forge_"):
 			if light==null:

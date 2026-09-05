@@ -4,6 +4,7 @@ class_name PieceLook
 ## Rules say what a family IS; this only says what it looks like.
 
 const TEXTURE_DIR := "res://assets/textures/"
+const LIBRARY = preload("res://art/material_library.tres")
 
 static var _cache: Dictionary = {}
 
@@ -14,6 +15,27 @@ static func material_for(sim: WroughtwildSim, family: StringName, role: String="
 		return _cache[key]
 	var info: Dictionary = sim.build_material(String(family))
 	var art := preload("res://art/building_look.tres")
+	if LIBRARY.profiles.has(String(family)):
+		var profile: Dictionary = LIBRARY.profiles[String(family)]
+		if family == &"cinderglass":
+			var glass := StandardMaterial3D.new()
+			glass.albedo_color = profile.base
+			glass.albedo_color.a = 0.48
+			glass.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
+			glass.roughness = profile.roughness
+			glass.cull_mode = BaseMaterial3D.CULL_DISABLED
+			_cache[key] = glass
+			return glass
+		var surface := ShaderMaterial.new()
+		surface.shader = preload("res://art/building_surface.gdshader")
+		for parameter in ["base","accent","pattern","spacing","grain","roughness"]:
+			surface.set_shader_parameter(parameter,profile[parameter])
+		surface.set_shader_parameter("object_space",role in ["door","roof"])
+		surface.set_shader_parameter("roof",role=="roof")
+		surface.set_shader_parameter("frame_shade",art.frame_shade if role=="frame" else 1.0)
+		surface.set_shader_parameter("joint_width",0.0 if role=="frame" else art.seam_width)
+		_cache[key] = surface
+		return surface
 	if "timber" in info.get("traits",[]):
 		var boards := ShaderMaterial.new()
 		boards.shader = preload("res://art/workshop_wood.gdshader")
@@ -47,3 +69,40 @@ static func material_for(sim: WroughtwildSim, family: StringName, role: String="
 		material.albedo_color = Color(tint)
 	_cache[key] = material
 	return material
+
+
+static func swatch_for(family: StringName) -> Color:
+	return LIBRARY.profiles.get(String(family),{}).get("base",UiTheme.family_colour(String(family)))
+
+
+## Mesh selection is shared by the placed piece, catalogue and placement ghost.
+## Curated wall/post/beam details fit the existing full and fine envelopes.
+static func mesh_for(shape_id: StringName, form: String, size: Vector3, family: StringName = &"wood") -> Mesh:
+	if family in [&"wood",&"pine",&"bog_oak",&"ash_wood",&"resinheart"]:
+		var id := {"half_wall":"wall_panel","half_pillar":"pillar","half_beam":"beam"}.get(String(shape_id),String(shape_id)) as String
+		var reference := {"wall_panel":Vector3(1,1,0.25),"pillar":Vector3(0.3,1,0.3),"beam":Vector3(1,0.4,0.4)}
+		if reference.has(id):
+			var authored := AuthoredAssets.scaled_mesh(id,size/reference[id])
+			if authored != null:
+				return authored
+	if form in ["chest","fire"]:
+		var authored := AuthoredAssets.mesh_for("campfire" if form=="fire" else "chest")
+		if authored != null:
+			return authored
+	return PieceMesh.mesh_for(form,size)
+
+
+static func apply_to(mesh: MeshInstance3D, form: String, family: StringName, material: Material) -> void:
+	for i in mesh.get_surface_override_material_count():
+		mesh.set_surface_override_material(i,null)
+	mesh.material_override = material
+	if form in ["glazed_window","light_panel"]:
+		mesh.material_override = null
+		mesh.set_surface_override_material(0,material)
+		var frame := StandardMaterial3D.new()
+		frame.albedo_color = LIBRARY.profiles.get(String(family),{}).get("accent",Color("40372e"))
+		frame.roughness = 0.92
+		mesh.set_surface_override_material(1,frame)
+	elif form in ["chest","fire"]:
+		# Authored furnishings retain their embedded wood, iron and ember surfaces.
+		mesh.material_override = null

@@ -723,7 +723,9 @@ func _physics_process(_delta: float) -> void:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			_wood_before_trial = sim.material_count("wood")
 			check(_wood_before_trial > 0, "trial: carrying wood before entering")
-			(_scene.get_node("TrialGate") as TrialGate).interact(_player)
+			# Preserve the original four-stage economy fixture; the physical gate
+			# and full Forge arc have their own trial_intensive integration suite.
+			_player.trial.begin_legacy_run()
 			check(sim.trial_active(), "trial: run opened at the gate")
 			check(sim.material_count("wood") == 0, "trial: goods deposited")
 			check(_player.global_position.x > 60.0, "trial: player moved into the arena")
@@ -814,7 +816,7 @@ func _physics_process(_delta: float) -> void:
 		60:
 			# Death contract through the engine path. The gate now offers floors
 			# (the deep is awake), so start the first floor directly.
-			check(_player.trial.begin_run(), "trial: second run begins on the first floor")
+			check(_player.trial.begin_legacy_run(), "trial: second run begins on the first floor")
 			check(_player.trial.enter_room(1), "trial: second run, hound kennels")
 			# A roaming whelp far from the arena is not the room's business:
 			# it must not be pulled in, counted, or cleared with the room.

@@ -133,7 +133,11 @@ func _refresh_selection() -> void:
 		shape_form = String(info.get("form", "box"))
 		shape_oriented = bool(info.get("oriented", false))
 	if _preview_mesh != null:
-		_preview_mesh.mesh = PieceMesh.preview_mesh_for(shape_form, shape_size)
+		_preview_mesh.mesh = PieceLook.mesh_for(_target_shape(),shape_form,shape_size,selected_material_family)
+		if selected_kit==&"":
+			PieceLook.apply_to(_preview_mesh,shape_form,selected_material_family,PieceLook.material_for(_sim(),selected_material_family,
+				"roof" if shape_form.begins_with("roof_") else "door" if shape_form=="door" else "frame" if shape_slot in [&"post",&"beam"] else "surface"))
+		_preview_mesh.material_overlay = _preview_material
 		_refresh_orientation_marker()
 
 
@@ -235,6 +239,7 @@ func cycle_material() -> StringName:
 		if ids[i] == String(selected_material_family):
 			index = (i + 1) % ids.size()
 	selected_material_family = StringName(ids[index])
+	_refresh_selection()
 	return selected_material_family
 
 
@@ -353,7 +358,7 @@ func _create_preview_mesh() -> void:
 
 	_preview_mesh = MeshInstance3D.new()
 	_preview_mesh.mesh = PieceMesh.preview_mesh_for(shape_form, shape_size)
-	_preview_mesh.material_override = _preview_material
+	_preview_mesh.material_overlay = _preview_material
 	_preview_mesh.visible = false
 	# Added top-level so the preview moves in world space, not with the player.
 	add_child(_preview_mesh)

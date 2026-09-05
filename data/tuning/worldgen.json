@@ -2,6 +2,9 @@
   "schema_version": 2,
   "status": "Wave 3 world slice 1: 3D block field, mountains, caves, danger rings",
   "default_seed": 1,
+  "generation_profile": "frontier_v2",
+  "generation_elite_ids": ["unfreezable", "cinder_blooded", "stonehide", "hastened"],
+  "profile_design_purpose": "New worlds retain the bounded valley and add three finite resource habitats. Saved world identity includes this profile and its seed; legacy saves use the frozen worldgen-legacy-v1.json. Habitat changes never enrich old geography.",
   "map": {
     "width_cells": 320,
     "height_cells": 320,
@@ -264,6 +267,36 @@
     }
   ],
   "nodes": {
+    "slate_outcrop": {
+      "display_name": "Layered Slate", "material_family": "raw_slate",
+      "units": 24, "units_per_harvest": 4, "drive_presses": 4, "visual": "slate_seam",
+      "design_purpose": "Finite quarry layers: four contextual work presses split four raw slate; skill impact speeds work without gating access. Eight deposits make a first roof achievable."
+    },
+    "shellstone_outcrop": {
+      "display_name": "Fossil Shellstone", "material_family": "raw_shellstone",
+      "units": 24, "units_per_harvest": 4, "drive_presses": 4, "visual": "shellstone_seam",
+      "design_purpose": "Pale fossil-bearing quarry stone for dressed masonry; contextual work is complete without an elemental build or a separate tool."
+    },
+    "clay_bank": {
+      "display_name": "Rustclay Bank", "material_family": "raw_clay",
+      "units": 24, "units_per_harvest": 4, "drive_presses": 3, "visual": "clay_bank",
+      "design_purpose": "Finite damp-earth pockets in the fen hollow. Three work presses lift four clay for fired brick, distinguishing gathering from masonry dressing."
+    },
+    "reed_bed": {
+      "display_name": "Weaving Reeds", "material_family": "raw_reed",
+      "units": 24, "units_per_harvest": 6, "drive_presses": 3, "visual": "reed_bed",
+      "design_purpose": "Harvestable reed bundles alongside the fen's decorative reeds; each work cycle supplies a useful panel batch and visible depletion prevents infinite harvesting."
+    },
+    "resinheart_tree": {
+      "display_name": "Resinheart Tree", "material_family": "resinheart_log",
+      "units": 24, "units_per_harvest": 24, "drive_presses": 6, "visual": "resinheart_tree",
+      "design_purpose": "Distinct oldgrowth timber: one deliberate felling pays the whole tree, with the existing contextual gathering route."
+    },
+    "corkbark_deadfall": {
+      "display_name": "Corkbark Deadfall", "material_family": "raw_corkbark",
+      "units": 18, "units_per_harvest": 6, "drive_presses": 3, "visual": "corkbark_deadfall",
+      "design_purpose": "Independent finite deadfall deposits yield bark for light cladding, avoiding renewable bark stripping or two resources sharing one tree's state."
+    },
     "tree": {
       "display_name": "Tree",
       "material_family": "wood",
@@ -382,6 +415,32 @@
     "patrol_length_m": 70,
     "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood and stone within a short walk, keeps iron a walk away (Wave 6 slice 2, 4 Sep 2026: three veins within far_radius_m, none guaranteed near - the first forge is a journey into the hills and back), keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map Three stone seams within the near radius (D-021): the first quarry is always a short walk."
   },
+  "habitats": [
+    {
+      "id": "quarry_escarpment", "display_name": "The Shellcut Escarpment",
+      "biome": "rocky_hills", "fallback_biome": "meadow", "seed_salt": 41021,
+      "radius_m": 12, "min_distance_m": 65, "max_distance_m": 145,
+      "resource_spacing_m": 2.5, "max_surface_step_cells": 1,
+      "resources": [{"node": "slate_outcrop", "count": 8}, {"node": "shellstone_outcrop", "count": 8}],
+      "design_purpose": "A walkable quarry shelf with dark roofing slate and pale fossil masonry. Prefer raised rocky ground; a reachable meadow-edge shelf is the finite fallback when the native biome has no suitable approach. Radius shapes the place, spacing keeps work clear, counts determine the first building's material budget."
+    },
+    {
+      "id": "fen_hollow", "display_name": "The Rustwater Hollow",
+      "biome": "fen", "fallback_biome": "meadow", "seed_salt": 41039,
+      "radius_m": 12, "min_distance_m": 65, "max_distance_m": 145,
+      "resource_spacing_m": 2.5, "max_surface_step_cells": 1,
+      "resources": [{"node": "clay_bank", "count": 8}, {"node": "reed_bed", "count": 8}],
+      "design_purpose": "Low wet ground with readable clay banks and harvestable reeds. A low meadow pocket is the fallback when no reachable fen footprint exists; decorative water never adds swimming or flooding."
+    },
+    {
+      "id": "oldgrowth_grove", "display_name": "The Resinheart Grove",
+      "biome": "forest", "fallback_biome": "meadow", "seed_salt": 41047,
+      "radius_m": 13, "min_distance_m": 65, "max_distance_m": 145,
+      "resource_spacing_m": 3, "max_surface_step_cells": 1,
+      "resources": [{"node": "resinheart_tree", "count": 8}, {"node": "corkbark_deadfall", "count": 8}],
+      "design_purpose": "A finite oldgrowth stand with tall resinheart silhouettes and independent corkbark deadfall. A meadow forest-edge grove is the fallback; trees and bark never share harvest/save state."
+    }
+  ],
   "landmarks": [
     {
       "id": "hill_cairn",

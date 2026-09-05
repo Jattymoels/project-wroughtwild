@@ -78,7 +78,7 @@ static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float)
 		# Retain placement records for headless validation (dummy renderer does
 		# not retain MultiMesh transform buffers) and future clearing queries.
 		batch.set_meta("world_transforms",entry.transforms)
-		batch.material_override = LOOK.material()
+		batch.material_override = null if AuthoredAssets.mesh_for(entry.kind) != null else LOOK.material()
 		batch.position = origin
 		batch.visibility_range_end = LOOK.visibility_metres
 		batch.visibility_range_end_margin = 10.0

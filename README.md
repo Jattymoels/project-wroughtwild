@@ -24,7 +24,9 @@ The intended game combines self-directed construction, persistent ARPG buildcraf
 
 **Phase:** Wave 1 — the sandpit ([roadmap](docs/prototype/roadmap-waves.md), D-011). The game now opens on a seed-generated open world: biome terrain, scattered resources, roaming mob packs with loot, and a start-with-nothing opening (hand-craft a workbench, assemble and fuel a forge). The vertical-slice loop — mine order, armour, trial, catalyst tempering, construction unlock — sits on top and remains completable; `tools/playtest` stays the headless economy oracle. See `docs/prototype/acceptance-criteria.md` for what is ticked and what awaits playtesting.
 
-The prototype intentionally excludes co-op, raids, an infinite world, extensive automation, multiple complete classes and a large construction catalogue. Its purpose is to prove that returning from a trial makes the player excited to improve their build, base or production capability—and that those improvements make them want to venture out again.
+The owner-approved [world intensive](docs/prototype/world-intensive-2026-09-06.md) and [Forge intensive](docs/prototype/trial-intensive-2026-09-06.md) add three resource habitats, eight finished building families, two wall forms and one complete Forge arc followed by selectable repeatable tiers. D-027/D-028 explicitly expand the earlier material and endgame boundaries. Existing saves retain their original generation profile; the first two Forge curios still activate their existing world landmarks.
+
+The prototype excludes co-op, raids, an infinite world, extensive automation and a trading economy. Its purpose is to prove that returning from a trial makes the player excited to improve their build, base or production capability—and that those improvements make them want to venture out again.
 
 ## Repository map
 

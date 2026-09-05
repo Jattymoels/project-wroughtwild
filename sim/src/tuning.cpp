@@ -87,6 +87,8 @@ const ModifierTier* ModifierDef::findTier(int tier) const {
 }
 const ShapeDef* ConstructionTable::findShape(const std::string& id) const { return findById(shapes, id); }
 const TrialFloor* TrialTable::findFloor(const std::string& id) const { return findById(floors, id); }
+const TrialFloor* TrialTable::findExpedition(const std::string& id) const { return findById(expeditions, id); }
+const TrialCondition* TrialTable::findCondition(const std::string& id) const { return findById(conditions, id); }
 const CurioDef* TrialTable::findCurio(const std::string& id) const {
     for (const auto& c : curios)
         if (c.id == id) return &c;
@@ -443,6 +445,7 @@ BoonTable loadBoons(const std::string& path) {
         def.displayName = w->get("display_name").asString();
         def.effects = readEffects(w->get("effects"));
         def.baseRewardMultiplier = w->get("base_reward_multiplier").asNumber();
+        if (auto purpose = w->find("design_purpose")) def.designPurpose = purpose->asString();
         table.weaknesses.push_back(std::move(def));
     }
 
@@ -806,9 +809,9 @@ ConstructionTable loadConstruction(const std::string& path) {
             shape.form = form->asString();
             if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door" &&
                 shape.form != "arch" && shape.form != "fire" && shape.form != "low" && shape.form != "chest" &&
-                shape.form != "corner" && shape.form != "roof_slope" && shape.form != "roof_hip" && shape.form != "roof_valley")
+                shape.form != "corner" && shape.form != "roof_slope" && shape.form != "roof_hip" && shape.form != "roof_valley" && shape.form != "light_panel" && shape.form != "glazed_window")
                 throw std::runtime_error("construction: shape '" + shape.id +
-                                         "' form must be box, stairs, wedge, door, arch, fire, low, chest, corner, roof_slope, roof_hip or roof_valley");
+                                         "' form must be box, stairs, wedge, door, arch, fire, low, chest, corner, roof_slope, roof_hip, roof_valley, light_panel or glazed_window");
         }
         if (auto oriented = s->find("oriented")) shape.oriented = oriented->asBool();
         if (auto tall = s->find("cells_tall")) {
@@ -834,6 +837,10 @@ ConstructionTable loadConstruction(const std::string& path) {
                 std::abs(shape.sizeM[0] - extent) > 1e-8 || std::abs(shape.sizeM[2] - extent) > 1e-8 ||
                 shape.sizeM[1] <= 0 || shape.sizeM[1] > extent)
                 throw std::runtime_error("construction: roof transitions require an oriented square block no taller than its grid extent");
+        }
+        if (shape.form == "light_panel" || shape.form == "glazed_window") {
+            if (shape.element != "wall" || shape.oriented || shape.cellsTall != 1 || shape.cellsLong != 1)
+                throw std::runtime_error("construction: fixed panels/windows occupy one existing wall face");
         }
         if (shape.form == "corner") {
             const double extent = table.gridSizeMetres / (shape.fine ? table.latticeDivisions : 1);
@@ -1285,12 +1292,103 @@ TrialTable loadTrial(const std::string& path) {
     const Value& contract = doc->get("death_contract");
     table.keepCatalystsOnDeath = contract.get("keep_catalysts_on_death").asBool();
     table.loseRunMaterialsOnDeath = contract.get("lose_run_materials_on_death").asBool();
+    if (auto revision = doc->find("content_revision")) table.contentRevision = revision->asInt();
+    if (auto rules = doc->find("engine_rules"))
+        for (const auto& [key, value] : rules->asObject()) {
+            if (value->type == json::Type::Number) table.engineRules[key] = value->asNumber();
+        }
+    if (auto modules = doc->find("modules")) table.modules = readStringArray(*modules);
+    if (auto maps = doc->find("map_rules")) {
+        table.haulItems = readStringArray(maps->get("haul_items"));
+        table.haulUnits = maps->get("haul_units").asInt();
+        table.secretUnits = maps->get("secret_units").asInt();
+        table.mapLifePerTier = maps->get("life_per_tier").asNumber();
+        table.mapDamagePerTier = maps->get("damage_per_tier").asNumber();
+        table.mapRewardPerTier = maps->get("reward_per_tier").asNumber();
+        table.mapRewardPerCondition = maps->get("reward_per_condition").asNumber();
+        table.mapHaulUnits = readIntMap(maps->get("target_haul_units"));
+        for (const auto& pool : maps->get("target_pools").asArray()) table.mapTargetPools.push_back(readStringArray(*pool));
+    }
+    if (auto conditions = doc->find("conditions")) {
+        for (const auto& c : conditions->asArray()) {
+            TrialCondition def;
+            def.id = c->get("id").asString();
+            def.displayName = c->get("display_name").asString();
+            def.description = c->get("description").asString();
+            if (auto incompatible = c->find("incompatible")) def.incompatible = readStringArray(*incompatible);
+            if (auto hazard = c->find("major_hazard")) def.majorHazard = hazard->asBool();
+            for (const auto& [key, value] : c->get("effects").asObject()) def.effects[key] = value->asNumber();
+            if (table.findCondition(def.id)) throw std::runtime_error("trial: duplicate condition " + def.id);
+            table.conditions.push_back(std::move(def));
+        }
+    }
+    if (auto expeditions = doc->find("expeditions")) {
+        for (const auto& f : expeditions->asArray()) {
+            TrialFloor run;
+            run.id = f->get("id").asString();
+            run.displayName = f->get("display_name").asString();
+            run.requiresWorldEffect = f->get("requires_world_effect").asString();
+            run.completionUnlock = f->get("completion_unlock").asString();
+            run.completionCurio = f->get("completion_curio").asString();
+            run.completionText = f->get("completion_text").asString();
+            run.designPurpose = f->get("design_purpose").asString();
+            if (auto preview = f->find("boss_preview")) run.bossPreview = preview->asString();
+            run.floorCount = f->get("floor_count").asInt();
+            run.runKind = "story";
+            run.exitAfterStage = f->get("exit_after_stage").asInt();
+            const Value& b = f->get("boss");
+            run.boss.id = b.get("id").asString();
+            run.boss.displayName = b.get("display_name").asString();
+            run.boss.maxLife = b.get("max_life").asNumber();
+            run.boss.clawDamage = b.get("claw_damage").asNumber();
+            run.boss.clawDamageType = b.get("claw_damage_type").asString();
+            run.boss.clawPeriodRounds = b.get("claw_period_rounds").asInt();
+            run.boss.breathDamage = b.get("breath_damage").asNumber();
+            run.boss.breathDamageType = b.get("breath_damage_type").asString();
+            run.boss.breathPeriodRounds = b.get("breath_period_rounds").asInt();
+            run.boss.breathTelegraphRounds = b.get("breath_telegraph_rounds").asInt();
+            int previousFloor = 0;
+            for (const auto& s : f->get("stages").asArray()) {
+                TrialStage stage;
+                stage.floorIndex = s->get("floor_index").asInt();
+                if (stage.floorIndex < previousFloor || stage.floorIndex > previousFloor + 1 ||
+                    stage.floorIndex < 0 || stage.floorIndex >= run.floorCount)
+                    throw std::runtime_error("trial: invalid floor sequence " + run.id);
+                previousFloor = stage.floorIndex;
+                for (const auto& c : s->get("choices").asArray()) {
+                    RoomChoice room;
+                    room.id = c->get("id").asString();
+                    room.displayName = c->get("display_name").asString();
+                    room.encounter = readStringArray(c->get("encounter"));
+                    room.reward = c->get("reward").asString();
+                    room.module = c->get("module").asString();
+                    if (auto haul = c->find("haul")) room.haul = readIntMap(*haul);
+                    if (std::find(table.modules.begin(), table.modules.end(), room.module) == table.modules.end())
+                        throw std::runtime_error("trial: unknown module " + room.module);
+                    if (room.encounter.empty()) throw std::runtime_error("trial: empty encounter " + room.id);
+                    stage.choices.push_back(std::move(room));
+                }
+                if (stage.choices.empty()) throw std::runtime_error("trial: no routes " + run.id);
+                run.stages.push_back(std::move(stage));
+            }
+            if (run.stages.empty() || run.stages.front().floorIndex != 0 ||
+                run.stages.back().floorIndex != run.floorCount - 1)
+                throw std::runtime_error("trial: incomplete floors " + run.id);
+            if (!run.completionCurio.empty() && !table.findCurio(run.completionCurio))
+                throw std::runtime_error("trial: unknown expedition curio");
+            if (table.findExpedition(run.id)) throw std::runtime_error("trial: duplicate expedition " + run.id);
+            table.expeditions.push_back(std::move(run));
+        }
+    }
     return table;
 }
 
 WorldgenTable loadWorldgen(const std::string& path) {
     auto doc = json::parseFile(path);
     WorldgenTable table;
+
+    if (auto profile = doc->find("generation_profile")) table.generationProfile = profile->asString();
+    if (auto elites = doc->find("generation_elite_ids")) table.generationEliteIds = readStringArray(*elites);
 
     table.defaultSeed = static_cast<uint64_t>(doc->get("default_seed").asNumber());
 
@@ -1434,6 +1532,45 @@ WorldgenTable loadWorldgen(const std::string& path) {
         g.get("pack_min_distance_from_spawn_m").asNumber();
     if (auto v = g.find("patrol_length_m")) table.guarantees.patrolLengthM = v->asNumber();
 
+    if (auto habitats = doc->find("habitats")) {
+        std::set<std::string> ids;
+        std::set<uint32_t> salts;
+        for (const auto& entry : habitats->asArray()) {
+            HabitatDef h;
+            h.id = entry->get("id").asString();
+            h.displayName = entry->get("display_name").asString();
+            h.biome = entry->get("biome").asString();
+            h.fallbackBiome = entry->get("fallback_biome").asString();
+            h.salt = static_cast<uint32_t>(entry->get("seed_salt").asInt());
+            h.radiusM = entry->get("radius_m").asNumber();
+            h.minimumDistanceM = entry->get("min_distance_m").asNumber();
+            h.maximumDistanceM = entry->get("max_distance_m").asNumber();
+            h.minimumSpacingM = entry->get("resource_spacing_m").asNumber();
+            h.maximumSurfaceStep = entry->get("max_surface_step_cells").asInt();
+            if (h.id.empty() || !ids.insert(h.id).second || !salts.insert(h.salt).second ||
+                !table.findBiome(h.biome) || !table.findBiome(h.fallbackBiome) ||
+                !std::isfinite(h.radiusM) || h.radiusM < 3 || h.radiusM > 24 ||
+                !std::isfinite(h.minimumDistanceM) || h.minimumDistanceM < h.radiusM ||
+                !std::isfinite(h.maximumDistanceM) || h.maximumDistanceM <= h.minimumDistanceM ||
+                !std::isfinite(h.minimumSpacingM) || h.minimumSpacingM < 1 ||
+                h.maximumSurfaceStep < 0 || h.maximumSurfaceStep > 1)
+                throw std::runtime_error("worldgen: invalid or duplicate habitat " + h.id);
+            std::set<std::string> resources;
+            for (const auto& resource : entry->get("resources").asArray()) {
+                HabitatResourceDef r;
+                r.nodeType = resource->get("node").asString();
+                r.count = resource->get("count").asInt();
+                if (!table.nodeTypes.count(r.nodeType) || r.count <= 0 || r.count > 8 ||
+                    !resources.insert(r.nodeType).second)
+                    throw std::runtime_error("worldgen: invalid resource in habitat " + h.id);
+                h.resources.push_back(r);
+            }
+            if (h.resources.size() != 2) throw std::runtime_error("worldgen: each habitat has two source types " + h.id);
+            table.habitats.push_back(std::move(h));
+        }
+        if (table.habitats.size() > 3) throw std::runtime_error("worldgen: only three bounded habitats are approved");
+    }
+
     return table;
 }
 
@@ -1452,6 +1589,7 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.trial = loadTrial(tuningDirectory + "/trial.json");
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
+    tuning.legacyWorldgen = loadWorldgen(tuningDirectory + "/worldgen-legacy-v1.json");
     tuning.grammar = loadGrammar(tuningDirectory + "/grammar.json");
     // The Foundry speaks in the item table's modifiers: every ingot and pair
     // must name one, or a placed ingot would be a silent point.

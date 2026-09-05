@@ -1,0 +1,35 @@
+{
+  "seed": 64073,
+  "surface_variation": 0.035,
+  "radial_sides": 10,
+  "body_rings": 5,
+  "roughness": 0.93,
+  "family_colour_fraction": 0.46,
+  "armour_base_rgb": [0.29, 0.305, 0.31],
+  "armour_edge_rgb": [0.44, 0.44, 0.42],
+  "idle_cycle_seconds": 2.0,
+  "walk_cycle_seconds": 1.0,
+  "animation_fps": 100,
+  "purposes": {
+    "seed": "Repeatable small surface colour variation, without gameplay randomness.",
+    "surface_variation": "Small facet value changes make fur, chitin and worn armour readable without noisy patches.",
+    "radial_sides": "Low-poly contour detail shared by limb and body sections.",
+    "body_rings": "Profile detail for organic body volumes.",
+    "roughness": "Dry fur, cloth and tarnished armour rather than shiny toy surfaces.",
+    "family_colour_fraction": "Mix the existing family colour into neutral body materials; stronger accents retain threat recognition.",
+    "armour_base_rgb": "Dark weathered iron/stone plate colour, retaining readable family accents without pale toy armour.",
+    "armour_edge_rgb": "Quieter worn rims and raised plate edges distinguish metal/stone from cloth.",
+    "idle_cycle_seconds": "Length of the isolated breathing/hover preview, not an AI timer.",
+    "walk_cycle_seconds": "Time for one in-place review stride. Runtime pacing must use actual travel, as CreatureMotion already does.",
+    "animation_fps": "Sampling resolution preserves current 0.25/0.22-second windup/recovery values accurately in glTF clips."
+  },
+  "proportion_notes": {
+    "beasts": "Retain the existing low four-legged profile, forward muzzle and six-part bone layout; hounds are lean, whelps stockier, elk carry antlers and hooves.",
+    "crawlers": "Six splayed segmented legs and overlapping chitin ridges use the existing eight-part skeleton; the larger bog lurker remains green.",
+    "humanoids": "Hooded archer with bow, stone-faced shield guard, flared-throat shrieker and armoured knight. Body/head/paired arm-leg pivots follow CharacterLook's current convention.",
+    "wisps": "Small suspended pale or ember core surrounded by broken dark shells, retaining existing family scales and colours.",
+    "tyrant": "Large forged cuirass, shield arm, clawed gauntlet and paired crown horns retain the current boss cues and scale.",
+    "collision": "Original upright CapsuleShape3D dimensions come from enemy.tscn and boss.tscn, never from the art bounds. Model/elite size does not resize these existing bodies; report their visible mismatch without changing combat.",
+    "motion": "Rigid part weights match the prototype's six/eight-part approach. Idle, walk, windup and release are presentation clips; passive elk has no attack clips. Boss inhale uses the existing breath telegraph time. No root travel, hit events, damage, ragdolls or new AI."
+  }
+}

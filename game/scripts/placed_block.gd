@@ -92,9 +92,9 @@ func _build() -> void:
 		_pivot.position = Vector3(-size.x * 0.5, 0.0, 0.0)
 		parent = _pivot
 	var mesh := MeshInstance3D.new()
-	mesh.mesh = PieceMesh.mesh_for(form, size)
+	mesh.mesh = PieceLook.mesh_for(shape_id,form,size,material_family)
 	if _look != null:
-		mesh.material_override = _look
+		PieceLook.apply_to(mesh,form,material_family,_look)
 	parent.add_child(mesh)
 	_mesh = mesh
 	if is_door():

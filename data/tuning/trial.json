@@ -224,5 +224,797 @@
       "design_purpose": "The trial's second floor (owner, 3 Sep 2026: 'more floors to the trial'): open once the Tyrant has fallen, fought with the new families, ending in the Ash Warden. Its completion effect wakes era three - eras advance on milestones the player chose (D-019). Same room grammar as floor one, so a floor is data."
     }
   ],
-  "design_purpose": " floors are deeper runs the gate offers once their requires_world_effect is active; each has its own stages, boss, bank-out point and completion effect."
+  "design_purpose": " floors are deeper runs the gate offers once their requires_world_effect is active; each has its own stages, boss, bank-out point and completion effect.",
+  "content_revision": 1,
+  "modules": [
+    "threshold_gallery",
+    "loading_yard",
+    "fuel_chamber",
+    "kiln_hall",
+    "ward_gallery",
+    "cistern",
+    "secret_crucible",
+    "heart_forge"
+  ],
+  "map_rules": {
+    "haul_items": [
+      "raw_slate",
+      "raw_shellstone",
+      "raw_clay",
+      "raw_reed",
+      "resinheart_log",
+      "raw_corkbark",
+      "furnace_slag",
+      "cinderglass_shard"
+    ],
+    "haul_units": 8,
+    "secret_units": 12,
+    "life_per_tier": 0.12,
+    "damage_per_tier": 0.04,
+    "design_purpose": "Haul units control useful replenishment per salvage room and optional secret. Every chosen tier adds twelve percent base monster life and four percent damage; player power and overworld balance are unchanged. Tiers unlock only by clearing the preceding challenge. Three offers stay stable until a successful entry; tiers 1-3 roll two conditions, 4-7 three, and 8 onward four. Map target pools keep three distinct quarry, living-material and trial-rare ambitions visible at the gate. Target units refine into at least twelve finished material units before reward bonuses; secret caches reinforce the same selected source. Each rolled condition adds ten percent haul and each extra tier adds three percent; curses multiply the shown map reward.",
+    "reward_per_tier": 0.03,
+    "reward_per_condition": 0.1,
+    "target_haul_units": {
+      "raw_slate": 24,
+      "raw_shellstone": 24,
+      "raw_clay": 24,
+      "raw_reed": 12,
+      "resinheart_log": 12,
+      "raw_corkbark": 24,
+      "furnace_slag": 24,
+      "cinderglass_shard": 24
+    },
+    "target_pools": [
+      [
+        "raw_slate",
+        "raw_shellstone"
+      ],
+      [
+        "raw_clay",
+        "raw_reed",
+        "resinheart_log",
+        "raw_corkbark"
+      ],
+      [
+        "furnace_slag",
+        "cinderglass_shard"
+      ]
+    ]
+  },
+  "conditions": [
+    {
+      "id": "crowded_packs",
+      "display_name": "Crowded Packs",
+      "description": "Additional enemies arrive as a separate reinforcement wave.",
+      "effects": {
+        "crowded_extra_count": 3
+      },
+      "design_purpose": "Additional enemies arrive as a separate reinforcement wave.",
+      "incompatible": [],
+      "major_hazard": false
+    },
+    {
+      "id": "roaming_reinforcements",
+      "display_name": "Roaming Reinforcements",
+      "description": "A mixed patrol arrives after combat begins.",
+      "effects": {
+        "reinforcement_count": 3,
+        "reinforcement_delay_seconds": 8
+      },
+      "design_purpose": "A mixed patrol arrives after combat begins.",
+      "incompatible": [],
+      "major_hazard": false
+    },
+    {
+      "id": "warded_rares",
+      "display_name": "Warded Rares",
+      "description": "Rare enemies protect nearby allies until staggered.",
+      "effects": {
+        "rare_ward_radius_m": 5,
+        "rare_ward_reduction": 0.25
+      },
+      "design_purpose": "Rare enemies protect nearby allies until staggered.",
+      "incompatible": [],
+      "major_hazard": false
+    },
+    {
+      "id": "volatile_rares",
+      "display_name": "Volatile Rares",
+      "description": "Rare deaths mark a delayed eruption; leave the marked ground.",
+      "effects": {
+        "volatile_delay_seconds": 1.5,
+        "volatile_damage": 12,
+        "volatile_radius_m": 3
+      },
+      "design_purpose": "Rare deaths mark a delayed eruption; leave the marked ground.",
+      "incompatible": [],
+      "major_hazard": true
+    },
+    {
+      "id": "crossfire",
+      "display_name": "Crossfire",
+      "description": "Ranged enemies fan extra shots from their committed aim.",
+      "effects": {
+        "crossfire_extra_projectiles": 2,
+        "crossfire_fan_degrees": 18
+      },
+      "design_purpose": "Ranged enemies fan extra shots from their committed aim.",
+      "incompatible": [],
+      "major_hazard": false
+    },
+    {
+      "id": "reinforced_guards",
+      "display_name": "Reinforced Guards",
+      "description": "Guards cover a wider frontal arc; flanks and stagger still answer them.",
+      "effects": {
+        "guard_arc_bonus_degrees": 35
+      },
+      "design_purpose": "Guards cover a wider frontal arc; flanks and stagger still answer them.",
+      "incompatible": [],
+      "major_hazard": false
+    },
+    {
+      "id": "relentless_boss",
+      "display_name": "Relentless Boss",
+      "description": "Boss recovery is shorter; attack warnings retain their full duration.",
+      "effects": {
+        "boss_recovery_multiplier": 0.8
+      },
+      "design_purpose": "Boss recovery is shorter; attack warnings retain their full duration.",
+      "incompatible": [],
+      "major_hazard": false
+    },
+    {
+      "id": "furnace_hazards",
+      "display_name": "Furnace Hazards",
+      "description": "An additional vent joins the schedule, within the two-hazard limit.",
+      "effects": {
+        "extra_vent_count": 1
+      },
+      "design_purpose": "An additional vent joins the schedule, within the two-hazard limit.",
+      "incompatible": [],
+      "major_hazard": true
+    }
+  ],
+  "engine_rules": {
+    "hazard_telegraph_seconds": 1.5,
+    "hazard_active_seconds": 3.0,
+    "hazard_tick_seconds": 1.0,
+    "hazard_damage_per_tick": 8.0,
+    "hazard_radius_m": 2.5,
+    "hazard_limit": 2,
+    "living_enemy_limit": 24,
+    "reinforcement_delay_seconds": 8.0,
+    "boss_vent_period_seconds": 7.0,
+    "boss_guard_reduction": 0.4,
+    "boss_guard_arc_degrees": 150.0,
+    "boss_recovery_seconds": 2.0,
+    "conduit_reduction_per_active": 0.15,
+    "conduit_rearm_seconds": 14.0,
+    "elite_life_multiplier": 1.4,
+    "elite_damage_multiplier": 1.1,
+    "encounter_wave_size": 10,
+    "design_purpose": "Telegraph time preserves a spatial escape; active/tick/damage/radius define the cost of remaining in marked ground. At most two major hazards and twenty-four enemies may be live. Reinforcement timing spaces pressure; wave size bounds each arrival. Boss vent cadence and recovery create attack windows; the guard arc/reduction reward a flank or stagger. Up to three active conduits reduce boss damage taken per conduit and return on the rearm clock. Elites are modestly tougher than their family."
+  },
+  "expeditions": [
+    {
+      "id": "forge_tyrant",
+      "display_name": "The Tyrant's Forge",
+      "requires_world_effect": "",
+      "boss": {
+        "id": "forge_tyrant",
+        "display_name": "The Forge Tyrant",
+        "max_life": 160,
+        "claw_damage": 8,
+        "claw_damage_type": "physical",
+        "claw_period_rounds": 1,
+        "breath_damage": 42,
+        "breath_damage_type": "fire",
+        "breath_period_rounds": 2,
+        "breath_telegraph_rounds": 1,
+        "design_purpose": "Substantial periodic fire damage that the armour/tempering path must answer. Breathing faster than the dash recharges means skilled dodging halves the fire taken but can never zero it, so resistance preparation stays mandatory"
+      },
+      "stages": [
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "forge_tyrant_0",
+              "display_name": "The Threshold",
+              "module": "threshold_gallery",
+              "encounter": [
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ash_hound",
+                "ash_hound"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "forge_tyrant_1",
+              "display_name": "The Loading Yard",
+              "module": "loading_yard",
+              "encounter": [
+                "cinder_archer",
+                "cinder_archer",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp"
+              ],
+              "reward": "boon_offer"
+            },
+            {
+              "id": "forge_tyrant_1_side",
+              "display_name": "The Side Loading Yard",
+              "module": "ward_gallery",
+              "encounter": [
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "stone_husk"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "forge_tyrant_2",
+              "display_name": "The Fuel Bargain",
+              "module": "fuel_chamber",
+              "encounter": [
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "stone_husk"
+              ],
+              "reward": "weakness_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "forge_tyrant_3",
+              "display_name": "The Cistern Crossing",
+              "module": "cistern",
+              "encounter": [
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ash_hound",
+                "ash_hound"
+              ],
+              "reward": "materials"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "forge_tyrant_4",
+              "display_name": "The Ward Gallery",
+              "module": "ward_gallery",
+              "encounter": [
+                "cinder_archer",
+                "cinder_archer",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp"
+              ],
+              "reward": "boon_offer"
+            },
+            {
+              "id": "forge_tyrant_4_side",
+              "display_name": "The Side Ward Gallery",
+              "module": "loading_yard",
+              "encounter": [
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "stone_husk"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "forge_tyrant_5",
+              "display_name": "The Kiln Hall",
+              "module": "kiln_hall",
+              "encounter": [
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "stone_husk"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "forge_tyrant_6",
+              "display_name": "The Ember Shrine",
+              "module": "fuel_chamber",
+              "encounter": [
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ash_hound",
+                "ash_hound"
+              ],
+              "reward": "catalyst"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "forge_tyrant_7",
+              "display_name": "The Forge Tyrant",
+              "module": "heart_forge",
+              "encounter": [
+                "forge_tyrant"
+              ],
+              "reward": "completion"
+            }
+          ]
+        }
+      ],
+      "floor_count": 2,
+      "exit_after_stage": 3,
+      "completion_unlock": "stonecut_blocks",
+      "completion_curio": "tyrant_heart",
+      "completion_text": "The Tyrant falls. Its cinder heart wants the cairn on the hill.",
+      "design_purpose": "Two traversable floors with four boon opportunities, a bargain, salvage, a catalyst and the final story boss. The first floor is a settled bank/suspend boundary. Branches preserve reward agency while changing pack composition. Completion keeps the established curio-to-landmark progression.",
+      "boss_preview": "Committed fire sweeps and furnace lanes. Leave the marked arc, then punish its recovery."
+    },
+    {
+      "id": "deep_forge",
+      "display_name": "The Deeper Forge",
+      "requires_world_effect": "stonecut_blocks",
+      "boss": {
+        "id": "ash_warden",
+        "display_name": "The Ash Warden",
+        "max_life": 260,
+        "claw_damage": 11,
+        "claw_damage_type": "physical",
+        "claw_period_rounds": 1,
+        "breath_damage": 54,
+        "breath_damage_type": "fire",
+        "breath_period_rounds": 2,
+        "breath_telegraph_rounds": 1,
+        "design_purpose": "The Tyrant's warden below: more life and a heavier breath, the same shape - so the era-two build (bronze, breakpoints, the plate) is what makes the difference, not new rules."
+      },
+      "stages": [
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "deep_forge_0",
+              "display_name": "The Threshold",
+              "module": "threshold_gallery",
+              "encounter": [
+                "cinder_wisp",
+                "cinder_wisp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "deep_forge_1",
+              "display_name": "The Loading Yard",
+              "module": "loading_yard",
+              "encounter": [
+                "hollow_knight",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "cinder_archer"
+              ],
+              "reward": "boon_offer"
+            },
+            {
+              "id": "deep_forge_1_side",
+              "display_name": "The Side Loading Yard",
+              "module": "ward_gallery",
+              "encounter": [
+                "bog_lurker",
+                "bog_lurker",
+                "marsh_wisp",
+                "marsh_wisp",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "deep_forge_2",
+              "display_name": "The Fuel Bargain",
+              "module": "fuel_chamber",
+              "encounter": [
+                "bog_lurker",
+                "bog_lurker",
+                "marsh_wisp",
+                "marsh_wisp",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler"
+              ],
+              "reward": "weakness_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "deep_forge_3",
+              "display_name": "The Cistern Crossing",
+              "module": "cistern",
+              "encounter": [
+                "cinder_wisp",
+                "cinder_wisp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp"
+              ],
+              "reward": "materials"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "deep_forge_4",
+              "display_name": "The Ward Gallery",
+              "module": "ward_gallery",
+              "encounter": [
+                "hollow_knight",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "cinder_archer"
+              ],
+              "reward": "boon_offer"
+            },
+            {
+              "id": "deep_forge_4_side",
+              "display_name": "The Side Ward Gallery",
+              "module": "loading_yard",
+              "encounter": [
+                "bog_lurker",
+                "bog_lurker",
+                "marsh_wisp",
+                "marsh_wisp",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "deep_forge_5",
+              "display_name": "The Kiln Hall",
+              "module": "kiln_hall",
+              "encounter": [
+                "bog_lurker",
+                "bog_lurker",
+                "marsh_wisp",
+                "marsh_wisp",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "deep_forge_6",
+              "display_name": "The Ember Shrine",
+              "module": "fuel_chamber",
+              "encounter": [
+                "cinder_wisp",
+                "cinder_wisp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp",
+                "ember_whelp"
+              ],
+              "reward": "catalyst"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "deep_forge_7",
+              "display_name": "The Ash Warden",
+              "module": "heart_forge",
+              "encounter": [
+                "ash_warden",
+                "hollow_knight",
+                "cinder_wisp"
+              ],
+              "reward": "completion"
+            }
+          ]
+        }
+      ],
+      "floor_count": 2,
+      "exit_after_stage": 3,
+      "completion_unlock": "ash_tide",
+      "completion_curio": "warden_eye",
+      "completion_text": "The Ash Warden falls. Its stone eye looks toward the drowned altar.",
+      "design_purpose": "Two traversable floors with four boon opportunities, a bargain, salvage, a catalyst and the final story boss. The first floor is a settled bank/suspend boundary. Branches preserve reward agency while changing pack composition. Completion keeps the established curio-to-landmark progression. The finale includes two explicit support enemies for Warden variants, teaching target priority instead of requiring a particular damage type.",
+      "boss_preview": "Frontal protection and heavy committed attacks. A warding knight and fire support reward target priority."
+    },
+    {
+      "id": "forge_capstone",
+      "display_name": "The Heart of the Forge",
+      "requires_world_effect": "ash_tide",
+      "boss": {
+        "id": "forge_heart",
+        "display_name": "The Heart of the Forge",
+        "max_life": 420,
+        "claw_damage": 13,
+        "claw_damage_type": "physical",
+        "claw_period_rounds": 1,
+        "breath_damage": 58,
+        "breath_damage_type": "fire",
+        "breath_period_rounds": 2,
+        "breath_telegraph_rounds": 1,
+        "design_purpose": "Late-era capstone using the existing boss rig; conduit shielding and scheduled vents distinguish its mechanics. The base numbers are a provisional trial fixture, not global combat tuning."
+      },
+      "stages": [
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "forge_capstone_0",
+              "display_name": "The Threshold",
+              "module": "threshold_gallery",
+              "encounter": [
+                "hollow_knight",
+                "hollow_knight",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "forge_capstone_1",
+              "display_name": "The Loading Yard",
+              "module": "loading_yard",
+              "encounter": [
+                "shrieker",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "cinder_wisp",
+                "cinder_wisp"
+              ],
+              "reward": "boon_offer"
+            },
+            {
+              "id": "forge_capstone_1_side",
+              "display_name": "The Side Loading Yard",
+              "module": "ward_gallery",
+              "encounter": [
+                "stone_husk",
+                "stone_husk",
+                "cinder_archer",
+                "cinder_archer",
+                "bog_lurker",
+                "bog_lurker"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "forge_capstone_2",
+              "display_name": "The Fuel Bargain",
+              "module": "fuel_chamber",
+              "encounter": [
+                "stone_husk",
+                "stone_husk",
+                "cinder_archer",
+                "cinder_archer",
+                "bog_lurker",
+                "bog_lurker"
+              ],
+              "reward": "weakness_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 0,
+          "choices": [
+            {
+              "id": "forge_capstone_3",
+              "display_name": "The Cistern Crossing",
+              "module": "cistern",
+              "encounter": [
+                "hollow_knight",
+                "hollow_knight",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler"
+              ],
+              "reward": "materials"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "forge_capstone_4",
+              "display_name": "The Ward Gallery",
+              "module": "ward_gallery",
+              "encounter": [
+                "shrieker",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "ash_hound",
+                "cinder_wisp",
+                "cinder_wisp"
+              ],
+              "reward": "boon_offer"
+            },
+            {
+              "id": "forge_capstone_4_side",
+              "display_name": "The Side Ward Gallery",
+              "module": "loading_yard",
+              "encounter": [
+                "stone_husk",
+                "stone_husk",
+                "cinder_archer",
+                "cinder_archer",
+                "bog_lurker",
+                "bog_lurker"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "forge_capstone_5",
+              "display_name": "The Kiln Hall",
+              "module": "kiln_hall",
+              "encounter": [
+                "stone_husk",
+                "stone_husk",
+                "cinder_archer",
+                "cinder_archer",
+                "bog_lurker",
+                "bog_lurker"
+              ],
+              "reward": "boon_offer"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "forge_capstone_6",
+              "display_name": "The Ember Shrine",
+              "module": "fuel_chamber",
+              "encounter": [
+                "hollow_knight",
+                "hollow_knight",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler",
+                "gloom_crawler"
+              ],
+              "reward": "catalyst"
+            }
+          ]
+        },
+        {
+          "floor_index": 1,
+          "choices": [
+            {
+              "id": "forge_capstone_7",
+              "display_name": "The Heart of the Forge",
+              "module": "heart_forge",
+              "encounter": [
+                "forge_heart",
+                "hollow_knight",
+                "cinder_archer"
+              ],
+              "reward": "completion"
+            }
+          ]
+        }
+      ],
+      "floor_count": 2,
+      "exit_after_stage": 3,
+      "completion_unlock": "forge_arc_complete",
+      "completion_curio": "",
+      "completion_text": "The Heart of the Forge is still. Repeatable Forge expeditions are now available.",
+      "design_purpose": "Two traversable floors with four boon opportunities, a bargain, salvage, a catalyst and the final story boss. The first floor is a settled bank/suspend boundary. Branches preserve reward agency while changing pack composition. Completion keeps the established curio-to-landmark progression. The finale includes two explicit support enemies for Warden variants, teaching target priority instead of requiring a particular damage type.",
+      "boss_preview": "Heavy furnace attacks with warding and ranged support. Story mode adds the core ward conduits; all builds can open vulnerability."
+    }
+  ]
 }

@@ -19,17 +19,23 @@ var _breath_timer := 0.0
 var _telegraph_left := 0.0
 var _base_material: StandardMaterial3D
 var _telegraph_material: StandardMaterial3D
+var _trial_rules: Dictionary={}
+var _trial_kind:=""
+var _recovery_left:=0.0
+var _floor_tell: MeshInstance3D
 
 
 static func spawn_boss(root: Node, at: Vector3) -> Boss:
 	var scene: PackedScene = load("res://scenes/boss.tscn")
 	var boss: Boss = scene.instantiate()
+	boss.position=at
 	root.add_child(boss)
 	boss.global_position = at
 	return boss
 
 
 func configure(sim: WroughtwildSim) -> void:
+	_sim=sim
 	var def: Dictionary = sim.boss()
 	var rt: Dictionary = sim.realtime()
 	var boss_rt: Dictionary = rt["boss"]
@@ -84,6 +90,52 @@ func configure(sim: WroughtwildSim) -> void:
 	state = "chase"
 	_refresh_label()
 
+func configure_trial(controller: Node, rules: Dictionary) -> void:
+	trial_controller=controller
+	_trial_rules=rules
+	# Forge floors are level and navigated around cover. Hopping against a
+	# support enemy would lift the committed attack tell off its floor.
+	jump_speed=0.0
+	_trial_kind=String(controller.layout.get("run_id","forge_tyrant"))
+	if String(enemy_id)!="forge_tyrant":
+		verb="guard"
+		verb_arc=float(rules.get("boss_guard_arc_degrees",130))
+		verb_strength=float(rules.get("boss_guard_reduction",.45))
+		breath_damage_type="physical"
+		_base_material.albedo_color=Color("62695e")
+		_base_albedo=_base_material.albedo_color
+	if _trial_kind=="forge_capstone": controller.build_conduits()
+
+func _begin_trial_tell() -> void:
+	if not is_instance_valid(trial_controller): return
+	trial_controller.boss_tells+=1
+	if is_instance_valid(_floor_tell): _floor_tell.queue_free()
+	_floor_tell=MeshInstance3D.new()
+	var surface:=SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var arc:=deg_to_rad(breath_cone_degrees)*.5
+	for i in 16:
+		var a:=lerpf(-arc,arc,float(i)/16)
+		var b:=lerpf(-arc,arc,float(i+1)/16)
+		surface.add_vertex(Vector3(0,.06,0))
+		surface.add_vertex(Vector3(sin(b)*breath_range,.06,-cos(b)*breath_range))
+		surface.add_vertex(Vector3(sin(a)*breath_range,.06,-cos(a)*breath_range))
+	surface.generate_normals()
+	_floor_tell.mesh=surface.commit()
+	var m:=StandardMaterial3D.new()
+	m.transparency=BaseMaterial3D.TRANSPARENCY_ALPHA
+	m.albedo_color=Color(1,.58,.2,.3)
+	m.emission_enabled=true
+	m.emission=Color(1,.4,.1)
+	m.emission_energy_multiplier=.6
+	m.cull_mode=BaseMaterial3D.CULL_DISABLED
+	_floor_tell.material_override=m
+	add_child(_floor_tell)
+
+func _end_trial_tell() -> void:
+	if is_instance_valid(_floor_tell): _floor_tell.queue_free()
+	_floor_tell=null
+
 
 ## Freezing a boss (through its buildup resistance) interrupts everything,
 ## an inhale included - the earned reward is a stopped breath.
@@ -94,6 +146,7 @@ func _on_frozen() -> void:
 		_telegraph_left = 0.0
 		_mesh.material_override = _base_material
 		_refresh_label()
+		_end_trial_tell()
 
 
 func _physics_process(delta: float) -> void:
@@ -117,6 +170,12 @@ func _physics_process(delta: float) -> void:
 	var in_reach := _vertical_gap_to(player) <= vertical_reach
 	_attack_cooldown = maxf(0.0, _attack_cooldown - delta)
 	var planar := Vector3.ZERO
+	_recovery_left=maxf(0,_recovery_left-delta)
+	if _recovery_left>0:
+		velocity.x=0
+		velocity.z=0
+		move_and_slide()
+		return
 
 	match state:
 		"chase":
@@ -126,7 +185,8 @@ func _physics_process(delta: float) -> void:
 				_telegraph_left = breath_telegraph_seconds
 				_mesh.material_override = _telegraph_material
 				_refresh_label()
-				player.hud.notify("%s inhales deeply. Fire is coming!" % display_name)
+				if trial_bound: _begin_trial_tell()
+				player.hud.notify("%s commits a heavy sweep. Leave its marked arc!" % display_name if trial_bound and breath_damage_type!="fire" else "%s inhales deeply. Fire is coming!" % display_name)
 			elif distance <= attack_range and in_reach and _attack_cooldown <= 0.0:
 				state = "windup"
 				_windup_left = windup_seconds
@@ -149,7 +209,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = planar.x
 	velocity.z = planar.z
 	_hop_if_blocked(planar)
-	if state != "inhale":
+	if state != "inhale" and (not trial_bound or state!="windup"):
 		look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	_apply_shove(delta)
 	move_and_slide()
@@ -172,12 +232,24 @@ func breathe(player: WroughtwildPlayer) -> float:
 	attack_released.emit("breath")
 	state = "chase"
 	_breath_timer = breath_period_seconds
+	if trial_bound and is_instance_valid(trial_controller):
+		_end_trial_tell()
+		_recovery_left=float(_trial_rules.get("boss_recovery_seconds",2.2))*float(trial_controller.run_mods.get("boss_recovery_multiplier",1))
+		_breath_timer*=float(trial_controller.run_mods.get("boss_recovery_multiplier",1))
 	_mesh.material_override = _base_material
 	_refresh_label()
 	if not _in_breath_cone(player):
-		player.hud.notify("The fire washes past you.")
+		player.hud.notify("The sweep passes you." if breath_damage_type!="fire" else "The fire washes past you.")
 		return 0.0
+	if trial_bound:
+		var query:=PhysicsRayQueryParameters3D.create(global_position+Vector3.UP,player.global_position+Vector3.UP)
+		query.exclude=[self]
+		var hit:=get_world_3d().direct_space_state.intersect_ray(query)
+		if not hit.is_empty() and hit.get("collider")!=player: return 0.0
 	return player.combat.take_hit(breath_damage, breath_damage_type, display_name, self)
+
+func guards_against(from: Vector3) -> bool:
+	return _recovery_left<=0 and state!="inhale" and super(from)
 
 
 ## Test hook: begin the telegraph immediately.

@@ -1,6 +1,8 @@
 #include "wroughtwild/save.h"
 
 #include <fstream>
+#include <iomanip>
+#include <limits>
 #include <sstream>
 #include <stdexcept>
 
@@ -97,8 +99,28 @@ items::ItemInstance readItem(const json::Value& v) {
 
 } // namespace
 
+std::string itemListToJson(const std::vector<items::ItemInstance>& items) {
+    std::ostringstream out;
+    out << std::setprecision(std::numeric_limits<double>::max_digits10);
+    out.precision(17);
+    out << '[';
+    for (size_t i = 0; i < items.size(); ++i) {
+        if (i) out << ',';
+        writeItem(out, items[i]);
+    }
+    out << ']';
+    return out.str();
+}
+std::vector<items::ItemInstance> itemListFromJson(const std::string& text) {
+    std::vector<items::ItemInstance> items;
+    auto value = json::parse(text);
+    for (const auto& item : value->asArray()) items.push_back(readItem(*item));
+    return items;
+}
+
 std::string toJson(const SaveGame& game) {
     std::ostringstream out;
+    out << std::setprecision(std::numeric_limits<double>::max_digits10);
     out.precision(17); // round-trip doubles exactly
     out << "{\"schema_version\":" << game.schemaVersion << ",\"economy\":{";
 

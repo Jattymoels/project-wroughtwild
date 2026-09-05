@@ -7,6 +7,18 @@ Owner-approved update, 6 September 2026 (D-026): New equipment crafts use select
 
 ## Purpose and player fantasy
 
+Owner-approved world material expansion, 6 September 2026: eight finished building
+families use one existing station refinement step and no new discovery or recipe
+gate. `refine_slate`, `refine_shellstone` and `refine_vitrified_basalt` dress source
+stone/slag at the mason's yard; `refine_woven_reed`, `refine_resinheart` and
+`refine_corkbark` use the workbench; `refine_rustclay_brick` and
+`refine_cinderglass` fire source clay/shards at the basic forge. Each batch yields
+four finished units. Reed and logs cost four source units; the other six cost
+eight. Fired batches use one heat; other batches use no fuel. This decorative
+work does not supply fast blacksmith mastery. Trials return these same raw source
+ingredients for normal refinement, with no separate material currency. See the
+[world work item](../prototype/world-intensive-2026-09-06.md).
+
 The player becomes capable through useful practice, material knowledge and increasingly sophisticated infrastructure. Repetition is not automatically a problem: it becomes satisfying when the output supports trade, construction, transport or a larger project.
 
 ## Four gates

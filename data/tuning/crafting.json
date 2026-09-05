@@ -109,6 +109,70 @@
     {
       "id": "frost_catalyst",
       "display_name": "Frost Catalyst"
+    },
+    {
+      "id": "raw_slate",
+      "display_name": "Rough Slate"
+    },
+    {
+      "id": "raw_shellstone",
+      "display_name": "Fossil Shellstone"
+    },
+    {
+      "id": "raw_clay",
+      "display_name": "Raw Rustclay"
+    },
+    {
+      "id": "raw_reed",
+      "display_name": "Cut Reeds"
+    },
+    {
+      "id": "resinheart_log",
+      "display_name": "Resinheart Logs"
+    },
+    {
+      "id": "raw_corkbark",
+      "display_name": "Corkbark Strips"
+    },
+    {
+      "id": "furnace_slag",
+      "display_name": "Furnace Slag"
+    },
+    {
+      "id": "cinderglass_shard",
+      "display_name": "Cinderglass Shards"
+    },
+    {
+      "id": "slate",
+      "display_name": "Slate"
+    },
+    {
+      "id": "shellstone",
+      "display_name": "Shellstone"
+    },
+    {
+      "id": "rustclay_brick",
+      "display_name": "Rustclay Brick"
+    },
+    {
+      "id": "woven_reed",
+      "display_name": "Woven Reed"
+    },
+    {
+      "id": "resinheart",
+      "display_name": "Resinheart"
+    },
+    {
+      "id": "corkbark",
+      "display_name": "Corkbark"
+    },
+    {
+      "id": "vitrified_basalt",
+      "display_name": "Vitrified Basalt"
+    },
+    {
+      "id": "cinderglass",
+      "display_name": "Cinderglass"
     }
   ],
   "stations": [
@@ -1463,6 +1527,150 @@
         "processing"
       ],
       "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "refine_slate",
+      "display_name": "Make Slate",
+      "station": "mason_yard",
+      "minimum_skill": {},
+      "inputs": {
+        "raw_slate": 8
+      },
+      "outputs": {
+        "slate": 4
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "One refinement step at the existing mason_yard: 8 raw_slate makes four slate. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. Dressing and weaving use no fuel."
+    },
+    {
+      "id": "refine_shellstone",
+      "display_name": "Make Shellstone",
+      "station": "mason_yard",
+      "minimum_skill": {},
+      "inputs": {
+        "raw_shellstone": 8
+      },
+      "outputs": {
+        "shellstone": 4
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "One refinement step at the existing mason_yard: 8 raw_shellstone makes four shellstone. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. Dressing and weaving use no fuel."
+    },
+    {
+      "id": "refine_rustclay_brick",
+      "display_name": "Make Rustclay Brick",
+      "station": "forge_basic",
+      "minimum_skill": {},
+      "inputs": {
+        "raw_clay": 8
+      },
+      "outputs": {
+        "rustclay_brick": 4
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "One refinement step at the existing forge_basic: 8 raw_clay makes four rustclay_brick. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. One fuel heat fires the whole batch."
+    },
+    {
+      "id": "refine_woven_reed",
+      "display_name": "Make Woven Reed",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "raw_reed": 4
+      },
+      "outputs": {
+        "woven_reed": 4
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "One refinement step at the existing workbench: 4 raw_reed makes four woven_reed. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. Dressing and weaving use no fuel."
+    },
+    {
+      "id": "refine_resinheart",
+      "display_name": "Make Resinheart",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "resinheart_log": 4
+      },
+      "outputs": {
+        "resinheart": 4
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "One refinement step at the existing workbench: 4 resinheart_log makes four resinheart. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. Dressing and weaving use no fuel."
+    },
+    {
+      "id": "refine_corkbark",
+      "display_name": "Make Corkbark",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "raw_corkbark": 8
+      },
+      "outputs": {
+        "corkbark": 4
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "One refinement step at the existing workbench: 8 raw_corkbark makes four corkbark. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. Dressing and weaving use no fuel."
+    },
+    {
+      "id": "refine_vitrified_basalt",
+      "display_name": "Make Vitrified Basalt",
+      "station": "mason_yard",
+      "minimum_skill": {},
+      "inputs": {
+        "furnace_slag": 8
+      },
+      "outputs": {
+        "vitrified_basalt": 4
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "One refinement step at the existing mason_yard: 8 furnace_slag makes four vitrified_basalt. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. Dressing and weaving use no fuel."
+    },
+    {
+      "id": "refine_cinderglass",
+      "display_name": "Make Cinderglass",
+      "station": "forge_basic",
+      "minimum_skill": {},
+      "inputs": {
+        "cinderglass_shard": 8
+      },
+      "outputs": {
+        "cinderglass": 4
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "One refinement step at the existing forge_basic: 8 cinderglass_shard makes four cinderglass. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. One fuel heat fires the whole batch."
     }
   ],
   "orders": [

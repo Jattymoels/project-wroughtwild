@@ -40,6 +40,12 @@ The player begins in a small valley with crude equipment and a basic shelter loc
 
 ## Explicit exclusions
 
+The original exclusions below describe the first slice. Owner-approved
+D-027/D-028 bring forward only the eight-family resource-habitat expansion and
+one Forge endgame loop described in the [world](world-intensive-2026-09-06.md)
+and [trial](trial-intensive-2026-09-06.md) work items. Economy trading, map items,
+new eras and broad production remain excluded.
+
 - multiplayer, co-op and raids;
 - infinite terrain or destructive voxel terrain;
 - multiple finished classes;

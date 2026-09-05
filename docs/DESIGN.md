@@ -126,6 +126,14 @@ beside it, augments in the corners, class rails at the edge. See
 
 ## Prototype boundary
 
+Owner-approved expansion, 6 September 2026 (D-027/D-028): the
+[world intensive](prototype/world-intensive-2026-09-06.md) adds three resource
+habitats, eight finished building families and two wall forms. The
+[Forge intensive](prototype/trial-intensive-2026-09-06.md) brings forward one
+three-run story arc and tiered repeatable trials with cleared-floor suspension.
+This is a bounded exception to the original material/endgame exclusions below;
+no additional era, currency gate, Atlas, multiplayer or broad automation is added.
+
 The first slice is deliberately small:
 
 - one player class and class-hall path;

@@ -386,9 +386,36 @@ func _toggle_spike_mod(index: int) -> void:
 		mod.get("display_name", id), "ON" if now_active else "off", index + 1])
 
 
+func offer_saved_trial() -> void:
+	# Only the real main world offers resume. Embedded review/test worlds never
+	# inspect the player's save or replace their controlled fixture state.
+	if DisplayServer.get_name()=="headless" or get_tree().current_scene!=get_parent(): return
+	if get_parent().scene_file_path!="res://scenes/sandpit.tscn": return
+	var path:=SaveManager.DEFAULT_PATH
+	if not FileAccess.file_exists(path): path+=".previous"
+	if not FileAccess.file_exists(path): return
+	var saved: Variant=JSON.parse_string(FileAccess.get_file_as_string(path))
+	# Match SaveManager.read recovery when sync left a truncated current file.
+	if not saved is Dictionary and not path.ends_with(".previous") and FileAccess.file_exists(path+".previous"):
+		saved=JSON.parse_string(FileAccess.get_file_as_string(path+".previous"))
+	if not saved is Dictionary or not saved.has("trial_boundary"): return
+	class_panel.close_panel()
+	open_custom_panel("A trial waits at the descent lift",[
+		{"text":"Resume the suspended run with its exact life, build, blessings and unbanked haul.","button":"Resume trial","callback":_resume_saved_trial},
+		{"text":"Begin a fresh world. Your previous save remains until you save again.","button":"Start fresh","callback":_decline_saved_trial},
+	],"The saved run has not extracted its rewards.")
+
+func _resume_saved_trial() -> void:
+	if not load_game(): offer_class()
+
+func _decline_saved_trial() -> void:
+	work_panel.close_panel()
+	offer_class()
+
 func save_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 	if trial.active():
-		hud.notify("You cannot save inside the trial.")
+		if trial.spatial and trial.state=="boundary": return trial.suspend_to(path)
+		hud.notify("Reach a cleared floor's descent lift to suspend this run.")
 		return false
 	var manager := SaveManager.new()
 	var ok := manager.write(path, self)
@@ -791,6 +818,8 @@ func aim_probe() -> Dictionary:
 		return {"state": "interact", "label": "Your dropped pack — E to recover", "target": collider}
 	if collider is TrialGate:
 		return {"state": "interact", "label": "Trial gate — E to enter", "target": collider}
+	if collider is TrialFixture:
+		return {"state":"interact","label":collider.trial_label(),"target":collider}
 	if collider is Landmark:
 		return {"state": "interact", "label": (collider as Landmark).interact_label(inventory.get_sim()), "target": collider}
 	if collider is PlacedBlock and ((collider as PlacedBlock).is_door() or (collider as PlacedBlock).is_chest()):
@@ -836,5 +865,7 @@ func interact() -> void:
 		(collider as Peddler).interact(self)
 	elif collider is TrialGate:
 		(collider as TrialGate).interact(self)
+	elif collider is TrialFixture:
+		(collider as TrialFixture).interact(self)
 	elif collider is Landmark:
 		(collider as Landmark).interact(self)

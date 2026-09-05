@@ -871,9 +871,15 @@ func _test_sim_extension() -> void:
 	check(sim.trial_stage()["room_in_progress"], "trial: room in progress")
 	var outcome: Dictionary = sim.trial_resolve_room(true)
 	check(outcome["reward_type"] == "boon_offer" and outcome["boon_offer"].size() >= 1, "trial: boon offer after victory")
-	check(sim.trial_accept_boon(outcome["boon_offer"][0]["id"]), "trial: boon accepted")
+	# The twelve-boon pool now includes conditional bargain rewards. Choose an
+	# unconditional blessing for this immediate-modifier regression.
+	var selected_boon: Dictionary=outcome["boon_offer"][0]
+	for candidate in outcome["boon_offer"]:
+		if candidate["id"]!="pressure_harvest": selected_boon=candidate; break
+	var mods_before_boon: Dictionary=sim.combat_mods().duplicate(true)
+	check(sim.trial_accept_boon(selected_boon["id"]), "trial: boon accepted")
 	check(sim.trial_run_state()["boons"].size() == 1, "trial: run state shows the boon")
-	check(sim.combat_mods() != {} and (sim.combat_mods()["repeat_hit_count"] > 0 or sim.combat_mods()["isolated_damage_multiplier"] > 1.0),
+	check(sim.combat_mods() != {} and sim.combat_mods()!=mods_before_boon,
 		"trial: accepted boon changes combat mods")
 	check(sim.trial_begin_room(1)["started"], "trial: materials room begun")
 	outcome = sim.trial_resolve_room(true)
@@ -900,7 +906,7 @@ func _test_sim_extension() -> void:
 		"shape: the wedge waits on the completion unlock, the slab does not")
 	check(sim.shape_ids().size() >= 9 and sim.shape_unlocked("wall_panel") and sim.shape("wall_panel")["size"].z < 0.5,
 		"shape: nine-shape set with sizes from data")
-	check(sim.build_material_ids().size() == 11 and sim.build_material("iron")["source"] == "iron_ingot"
+	check(sim.build_material_ids().size() == 19 and sim.build_material("iron")["source"] == "iron_ingot"
 		and sim.build_material("stone")["texture"] == "masonry", "materials: families through the door")
 	check(sim.shape_allows_family("door", "wood") and not sim.shape_allows_family("door", "stone")
 		and sim.shape("girder")["cells_long"] == 2 and sim.shape("girder")["requires_traits"].has("metal"),

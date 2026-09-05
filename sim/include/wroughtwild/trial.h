@@ -9,6 +9,7 @@
 
 #include <cstdint>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -20,6 +21,29 @@
 
 namespace wroughtwild::trial {
 
+struct MapOffer {
+    std::string id;
+    uint64_t seed = 0;
+    int tier = 1;
+    std::string bossId;
+    std::vector<std::string> conditions;
+    std::vector<std::string> moduleOrder;
+    std::string materialTarget;
+    double rewardMultiplier = 1.0;
+};
+
+// The three offers are pure functions of saved state and selected tier.
+// Only a successfully opened map advances the batch; clearing unlocks a tier.
+struct GateState {
+    uint64_t batchSeed = 741103;
+    int maxTier = 1;
+    void enteredMap();
+    void clearedMap(int tier);
+    std::string toJson() const;
+    static GateState fromJson(const std::string& text);
+};
+std::vector<MapOffer> mapOffers(const tuning::Tuning& tuning, const GateState& gate, int tier);
+
 class TrialSession {
 public:
     // Constructing the session deposits the player's carried inventory at the
@@ -30,12 +54,32 @@ public:
                  boons::BuildTags buildTags,
                  uint64_t seed,
                  const tuning::TrialFloor* floor = nullptr);
+    TrialSession(const tuning::Tuning& tuning, economy::PlayerEconomy& economy,
+                 boons::BuildTags buildTags, const MapOffer& offer);
 
     const tuning::TrialFloor* floor() const { return floor_; }
     const std::vector<tuning::TrialStage>& stages() const;
     const tuning::BossDef& boss() const;
     int exitAfterStage() const;
     const std::string& completionUnlock() const;
+    std::string runId() const;
+    std::string runKind() const;
+    uint64_t seed() const { return seed_; }
+    int tier() const { return mapTier_; }
+    const std::string& materialTarget() const { return materialTarget_; }
+    int floorIndex() const;
+    int floorCount() const { return floor_ ? floor_->floorCount : 1; }
+    bool awaitingFloor() const { return awaitingFloor_; }
+    bool continueFloor();
+    bool canSuspend() const;
+    void skipReward();
+    const std::vector<std::string>& conditions() const { return conditions_; }
+    const std::vector<int>& route() const { return route_; }
+    // A checkpoint contains a settled floor boundary, never a live encounter.
+    std::string checkpoint() const;
+    static std::unique_ptr<TrialSession> restore(const tuning::Tuning& tuning,
+                                               economy::PlayerEconomy& economy,
+                                               const std::string& text);
 
     // A session ends exactly once: bossDefeated, banked out, or died.
     bool finished() const { return finished_; }
@@ -82,6 +126,7 @@ public:
     };
     RoomStart beginRoom(int choiceIndex);
     RoomOutcome resolveRoom(bool victory);
+    RoomOutcome claimSecret();
     bool roomInProgress() const { return roomInProgress_; }
 
     // Walking out mid-run is a failed attempt: the death contract applies.
@@ -99,14 +144,26 @@ public:
     combat::CombatMods currentMods() const;
 
 private:
+    TrialSession(const tuning::Tuning& tuning, economy::PlayerEconomy& economy,
+                 boons::BuildTags buildTags, uint64_t seed,
+                 const tuning::TrialFloor* floor, bool deposit);
     void finish(bool died);
+    void grantHaul(RoomOutcome& outcome, int units, uint64_t seed);
 
     const tuning::Tuning& tuning_;
     economy::PlayerEconomy& economy_;
     const tuning::TrialFloor* floor_ = nullptr;
+    std::unique_ptr<tuning::TrialFloor> ownedFloor_;
     boons::BuildTags buildTags_;
     uint64_t seed_;
     int roomsEntered_ = 0;
+    int mapTier_ = 0;
+    std::string materialTarget_;
+    double mapRewardMultiplier_ = 1.0;
+    std::vector<std::string> conditions_;
+    std::vector<int> route_;
+    std::vector<int> secretFloors_;
+    bool awaitingFloor_ = false;
 
     economy::Inventory depositedInventory_;
     boons::RunState run_;

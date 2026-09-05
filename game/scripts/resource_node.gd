@@ -14,6 +14,10 @@ extends StaticBody3D
 ## Greybox look from worldgen.json's node visual key: tree | boulder |
 ## iron_vein. Empty keeps the scene's default cylinder.
 @export var visual: StringName = &""
+## Stable generation identity is separate from display wording and source item.
+@export var resource_id: String = ""
+@export var habitat_id: String = ""
+@export var presentation_label: String = ""
 ## Fire-setting (D-020): the fire heat this node must be soaked in and then
 ## quenched before E works it (0 = hands). Once cracked it stays cracked.
 @export var heat_to_work: int = 0
@@ -62,6 +66,9 @@ func _apply_visual() -> void:
 	var mesh_instance: MeshInstance3D = get_node_or_null("MeshInstance3D")
 	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
 	if mesh_instance == null or collider == null:
+		return
+	if HabitatResourceArt.supports(visual):
+		_apply_habitat_visual(mesh_instance,collider)
 		return
 	if not (visual in [&"tree", &"boulder", &"iron_vein", &"copper_vein", &"tin_vein", &"ember_vein", &"silver_vein", &"seam"]):
 		return
@@ -135,6 +142,8 @@ func _apply_visual() -> void:
 				mesh_instance.mesh = preload("res://art/woodland_look.tres").build_tree(_biome_id(), _visual_seed())
 			if _terrain() != null and _terrain().weathered:
 				mesh_instance.mesh = preload("res://art/weathered_woodland.tres").build_tree(_biome_id(), _visual_seed())
+				if _biome_id() in ["meadow","fen"] or _in_oldgrowth():
+					_use_authored(mesh_instance,"broadleaf_tree")
 				# Open a readable landmark approach without deleting saved resources.
 				# These remain harvestable trees with the same anchor, yield and work.
 				for site in _terrain().map.get("landmarks",[]):
@@ -144,6 +153,8 @@ func _apply_visual() -> void:
 						break
 		&"boulder":
 			mesh_instance.mesh = PropMesh.build_boulder(_visual_seed())
+			if _terrain() != null and _terrain().weathered:
+				_use_authored(mesh_instance,"field_boulder")
 			shape.size = Vector3(1.4, 1.0, 1.2)
 			collider.position = Vector3(0, 0.5, 0)
 		&"iron_vein":
@@ -170,6 +181,79 @@ func _apply_visual() -> void:
 	refresh_surface()
 	_refresh_wedge_look()
 
+
+func _use_authored(mesh_instance: MeshInstance3D, id: String) -> void:
+	var authored := AuthoredAssets.mesh_for(id)
+	if authored == null:
+		return
+	mesh_instance.mesh = authored
+	# Imported colour-space/material flags belong to the exported asset.
+	var own := authored.surface_get_material(0).duplicate() as StandardMaterial3D
+	mesh_instance.material_override = own
+	_own_materials.append(own)
+	if id=="broadleaf_tree":
+		var moving := _foliage_material(true,3.0)
+		mesh_instance.material_override = moving
+		_own_materials.append(moving)
+	mesh_instance.visibility_range_end = preload("res://art/material_library.tres").authored_tree_distance if id=="broadleaf_tree" else preload("res://art/material_library.tres").authored_detail_distance
+
+
+func _apply_habitat_visual(mesh_instance: MeshInstance3D, collider: CollisionShape3D) -> void:
+	mesh_instance.mesh = HabitatResourceArt.mesh_for(visual,_visual_seed())
+	mesh_instance.position = Vector3.ZERO
+	# Resource envelopes are axis-aligned and shared with placement checks.
+	mesh_instance.rotation = Vector3(0,float(posmod(_visual_seed(),628))/100.0,0) if _is_tree() else Vector3.ZERO
+	var material := ArtGeometry.material()
+	if visual==&"resinheart_tree":
+		var source := AuthoredAssets.mesh_for("broadleaf_tree")
+		material = source.surface_get_material(0).duplicate() as StandardMaterial3D
+	mesh_instance.material_override = material
+	_own_materials.append(material)
+	if visual in [&"resinheart_tree",&"reed_bed"]:
+		var moving := _foliage_material(visual==&"resinheart_tree",3.0 if _is_tree() else 0.1)
+		mesh_instance.material_override = moving
+		_own_materials.append(moving)
+	var shape := BoxShape3D.new()
+	shape.size = HabitatResourceArt.bounds_for(visual)
+	collider.shape = shape
+	collider.position = Vector3.UP*shape.size.y*0.5
+	mesh_instance.visibility_range_end = preload("res://art/material_library.tres").authored_tree_distance if _is_tree() else preload("res://art/material_library.tres").authored_detail_distance
+	mesh_instance.visibility_range_end_margin = 8.0
+	if presentation_label.is_empty():
+		presentation_label = HabitatResourceArt.LABELS.get(String(visual),"")
+	refresh_surface()
+
+func _foliage_material(linear_colours: bool, root_height: float) -> ShaderMaterial:
+	var art := preload("res://art/habitat_sites_look.tres")
+	var material := ShaderMaterial.new()
+	material.shader = preload("res://art/habitat_motion.gdshader")
+	material.set_shader_parameter("linear_colours",linear_colours)
+	material.set_shader_parameter("wind_metres",art.wind_metres)
+	material.set_shader_parameter("wind_rate",art.wind_rate)
+	material.set_shader_parameter("root_height",root_height)
+	return material
+
+
+func _is_tree() -> bool:
+	return visual in [&"tree",&"resinheart_tree"]
+
+func _in_oldgrowth() -> bool:
+	var terrain := _terrain()
+	if terrain==null: return false
+	var cell:=float(terrain.map.get("cell_size",1.0))
+	for site:Dictionary in terrain.map.get("habitats",[]):
+		if site.get("id","")=="oldgrowth_grove" and Vector2(position.x,position.z).distance_to(Vector2(float(site.x)*cell,float(site.z)*cell))<float(site.radius_m)+2.0:
+			return true
+	return false
+
+
+func _work_verb() -> String:
+	if _is_tree(): return "Chopping"
+	if visual==&"reed_bed": return "Cutting reeds"
+	if visual==&"clay_bank": return "Lifting clay"
+	if visual==&"corkbark_deadfall": return "Peeling bark"
+	return "Breaking"
+
 ## Reproject presentation after a nearby dig without moving the saved resource
 ## anchor, changing its visual seed or resetting harvest/fire-setting state.
 func refresh_surface() -> void:
@@ -195,6 +279,8 @@ func refresh_surface() -> void:
 		var y := terrain.rendered_height(position.x,position.z,position.y)
 		if is_finite(y):
 			mesh.position.y = y-position.y-0.025
+			if HabitatResourceArt.supports(visual):
+				collider.position.y = y-position.y+(collider.shape as BoxShape3D).size.y*0.5
 
 
 ## The biome under this node ("" when a harness placed it by hand).
@@ -278,7 +364,7 @@ func is_seam() -> bool:
 func work_view(sim: WroughtwildSim) -> Dictionary:
 	if remaining_units <= 0:
 		return {}
-	var label := "Chopping" if visual == &"tree" else "Breaking"
+	var label := _work_verb()
 	var ready := workable()
 	if not ready:
 		label = work_refusal()
@@ -295,7 +381,7 @@ func work_view(sim: WroughtwildSim) -> Dictionary:
 
 ## The crosshair line for this node.
 func interact_label(sim: WroughtwildSim) -> String:
-	var name := Hud.pretty(String(material_family))
+	var name := presentation_label if not presentation_label.is_empty() else Hud.pretty(String(material_family))
 	if not workable():
 		return "%s ×%d — %s" % [name, remaining_units, work_refusal()]
 	if is_seam():
@@ -307,7 +393,7 @@ func interact_label(sim: WroughtwildSim) -> String:
 			return "%s ×%d — E set a wedge (%s ×%d)" % [name, remaining_units, Hud.pretty(String(tool_item)), held]
 		return "%s ×%d — the seam wants a %s driven into it" % [name, remaining_units, Hud.pretty(String(tool_item))]
 	if drive_presses > 1:
-		var verb := "E to chop; it falls whole" if visual == &"tree" else "E to crack a chunk off"
+		var verb := "E to chop; it falls whole" if _is_tree() else "E to work a portion free"
 		return "%s ×%d — %s" % [name, remaining_units, verb]
 	return "%s ×%d — E to gather" % [name, remaining_units]
 
@@ -329,9 +415,9 @@ func work(sim: WroughtwildSim) -> Dictionary:
 			if drive_progress < drive_presses:
 				if is_inside_tree():
 					_play_harvest_punch()
-					if visual == &"tree":
+					if _is_tree():
 						_lean_from_player()
-				return {"text": "%s (%d/%d)." % ["Chopping" if visual == &"tree" else "Working the rock", drive_progress, drive_presses]}
+				return {"text": "%s (%d/%d)." % [_work_verb(), drive_progress, drive_presses]}
 			drive_progress = 0
 		return {"granted": harvest()}
 	if not wedge_set:
@@ -355,6 +441,14 @@ func work(sim: WroughtwildSim) -> Dictionary:
 func strike() -> Dictionary:
 	if remaining_units <= 0:
 		return {}
+	if visual in [&"slate_seam",&"shellstone_seam",&"clay_bank",&"corkbark_deadfall"]:
+		# Existing heavy-impact property buys work speed; E still always works.
+		var synergy := hot_level > 0
+		drive_progress = 0
+		var granted := harvest()
+		if synergy and remaining_units > 0:
+			granted += harvest()
+		return {"granted":granted,"synergy":synergy,"struck":true}
 	if is_seam():
 		if not wedge_set:
 			return {"refusal": "the blow rings off the rock: set a wedge first"}
@@ -449,6 +543,10 @@ func _process(_delta: float) -> void:
 ## top of the state colour.
 func _refresh_state_look() -> void:
 	for material in _own_materials:
+		if material is ShaderMaterial:
+			material.set_shader_parameter("state_emission",Color(1.2,0.48,0.06) if hot_level>0 else Color.WHITE*preload("res://art/gathering_look.tres").hover_energy if _highlighted else Color.BLACK)
+			material.set_shader_parameter("tint",Color(0.55,0.5,0.5) if cracked else Color.WHITE)
+			continue
 		if hot_level > 0:
 			material.emission = Color(1.0, 0.4, 0.05)
 			material.emission_energy_multiplier = 1.2
@@ -565,8 +663,12 @@ func _leave_stump() -> void:
 	material.roughness = 1.0
 	stump.mesh = trunk
 	stump.material_override = material
+	var authored := AuthoredAssets.mesh_for("stump")
+	if authored != null:
+		stump.mesh = authored
+		stump.material_override = null
 	get_parent().add_child(stump)
-	stump.global_position = global_position + Vector3(0, 0.21, 0)
+	stump.global_position = global_position + (Vector3.ZERO if authored != null else Vector3(0, 0.21, 0))
 
 
 ## The boulder's last chunk rolls it over: a quarter turn and a settle
@@ -598,12 +700,14 @@ func _deplete() -> void:
 	if not is_inside_tree():
 		queue_free()
 		return
-	if visual == &"tree":
+	if _is_tree():
 		_fell()
 		return
 	if visual == &"boulder":
 		_roll_over()
 		return
+	if HabitatResourceArt.supports(visual):
+		_leave_habitat_remnant()
 	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
 	if collider != null:
 		collider.set_deferred("disabled", true)
@@ -611,3 +715,15 @@ func _deplete() -> void:
 	tween.tween_property(self, "scale", Vector3.ONE * 0.02, 0.3) \
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	tween.tween_callback(queue_free)
+
+## An exhausted bed keeps a low, non-harvestable scar for this visit. It cannot
+## block a work area, yield material, or affect depletion in the save.
+func _leave_habitat_remnant() -> void:
+	var remnant := MeshInstance3D.new()
+	remnant.name = "HarvestAftermath"
+	remnant.mesh = HabitatResourceArt.mesh_for(visual,_visual_seed())
+	remnant.material_override = ArtGeometry.material()
+	remnant.scale = Vector3(0.92,0.08,0.92)
+	remnant.visibility_range_end = preload("res://art/material_library.tres").authored_detail_distance
+	get_parent().add_child(remnant)
+	remnant.global_position = global_position

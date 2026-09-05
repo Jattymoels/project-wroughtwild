@@ -14,6 +14,14 @@ const SHOT_LOOK = preload("res://art/enemy_shot_look.tres")
 ## True for a trial room's own enemies: the room contains, counts and
 ## clears only these, never a roaming pack that wandered near the arena.
 var trial_bound := false
+var trial_encounter_id := ""
+var trial_dungeon: Node3D
+var trial_controller: Node
+var trial_ward_radius := 0.0
+var trial_ward_strength := 0.0
+var trial_guard_multiplier := 1.0
+var _trial_path := PackedVector3Array()
+var _trial_path_left := 0.0
 ## Grazers (behaviour flees): run within aggro range, never attack.
 var flees := false
 
@@ -357,7 +365,7 @@ func apply_chill(amount: float, quench: bool = false) -> void:
 	chill += amount
 	if chill >= _chill_max:
 		chill = 0.0
-		frozen_left = _freeze_duration
+		frozen_left = _freeze_duration * (float(_sim.combat_mods().get("ailment_duration_multiplier",1)) if trial_bound else 1.0)
 		_on_frozen()
 		if quench and burning_left > 0.0:
 			var rest := _burn_dps * burning_left
@@ -388,6 +396,7 @@ func apply_ignite(amount: float, sear: float = 0.0, spread: float = 0.0, mutatio
 		ignite = 0.0
 		var rules: Dictionary = _sim.ignite_status() if _sim != null else {}
 		burning_left = float(mutation.get("burn_seconds", rules.get("duration_s", 4.0)))
+		if trial_bound: burning_left*=float(_sim.combat_mods().get("ailment_duration_multiplier",1))
 		_burn_dps = float(mutation.get("burn_dps", rules.get("damage_per_s", 0.0)))
 		_burn_mutation = mutation.duplicate(true)
 		smoulder_slow = float(mutation.get("smoulder_slow", 0))
@@ -461,6 +470,7 @@ func apply_bleed(amount: float) -> void:
 			_wound_memory_left=0
 		var rules: Dictionary = _sim.bleed_status() if _sim != null else {}
 		bleeding_left = rules.get("duration_s", 5.0)
+		if trial_bound: bleeding_left*=float(_sim.combat_mods().get("ailment_duration_multiplier",1))
 		_bleed_dps = rules.get("damage_per_s", 0.0)
 		_bleed_move_mult = rules.get("moving_multiplier", 1.0)
 		_refresh_look()
@@ -670,6 +680,13 @@ func _physics_process(delta: float) -> void:
 				# out of the wind-up is a legitimate dodge.
 				if not projectile_rules.is_empty():
 					EnemyProjectile.launch(self, _shot_aim, projectile_rules)
+					if trial_bound:
+						var mods: Dictionary=_sim.combat_mods()
+						var extra:=int(mods.get("crossfire_extra_projectiles",0))
+						for shot_index in extra:
+							var angle:=deg_to_rad(float(mods.get("crossfire_fan_degrees",0)))*(float(shot_index)-float(extra-1)*.5)
+							if is_zero_approx(angle): angle=deg_to_rad(float(mods.get("crossfire_fan_degrees",0)))
+							EnemyProjectile.launch(self,global_position+(_shot_aim-global_position).rotated(Vector3.UP,angle),projectile_rules)
 				elif distance <= attack_range * 1.15 and in_reach:
 					player.combat.take_hit(bite_damage(), bite_type(), display_name, self)
 				_attack_cooldown = attack_period_seconds
@@ -787,6 +804,23 @@ func _chase_direction(player: Node3D, distance: float) -> Vector3:
 	if to_player.length_squared() < 0.0001:
 		return Vector3.ZERO
 	to_player = to_player.normalized()
+	if trial_bound and is_instance_valid(trial_dungeon):
+		var unobstructed := true
+		var ray:=PhysicsRayQueryParameters3D.create(global_position+Vector3.UP,player.global_position+Vector3.UP)
+		ray.exclude=[self]
+		var hit:=get_world_3d().direct_space_state.intersect_ray(ray)
+		if not hit.is_empty() and hit.get("collider")!=player: unobstructed=false
+		if not unobstructed or preferred_distance<=0 or distance>preferred_distance+.5:
+			_trial_path_left-=get_physics_process_delta_time()
+			if _trial_path_left<=0:
+				_trial_path=trial_dungeon.path(global_position,player.global_position)
+				_trial_path_left=preload("res://art/forge_look.tres").path_refresh_seconds
+			while _trial_path.size()>1 and Vector2(_trial_path[0].x-global_position.x,_trial_path[0].z-global_position.z).length()<preload("res://art/forge_look.tres").path_arrival_distance:
+				_trial_path.remove_at(0)
+			if not _trial_path.is_empty():
+				var toward:=_trial_path[0]-global_position
+				toward.y=0
+				if toward.length_squared()>.04: return toward.normalized()
 	if preferred_distance > 0.0:
 		# Ranged: hold a firing distance, backing off when crowded.
 		if distance > preferred_distance + 0.5:
@@ -892,7 +926,7 @@ func guards_against(from: Vector3) -> bool:
 
 ## Ward: this mob shields the allies within its reach while it stands unstaggered.
 func wards() -> bool:
-	return verb == "ward" and not staggered() and life > 0.0
+	return (verb == "ward" or trial_ward_radius>0) and not staggered() and life > 0.0
 
 
 ## The warden shielding this mob right now (null for none).
@@ -901,7 +935,7 @@ func warded_by() -> Enemy:
 		if node == self or not (node is Enemy):
 			continue
 		var other := node as Enemy
-		if other.wards() and other.global_position.distance_to(global_position) <= other.verb_radius:
+		if other.wards() and other.trial_bound==trial_bound and other.global_position.distance_to(global_position) <= maxf(other.verb_radius,other.trial_ward_radius):
 			return other
 	return null
 
@@ -983,6 +1017,8 @@ func _refresh_aura() -> void:
 ## mob's share of the type. Returns what landed.
 func take_typed(amount: float, type: String, flash: bool = true) -> float:
 	var landed := amount * damage_taken(type)
+	if trial_bound and is_instance_valid(trial_controller):
+		landed *= trial_controller.target_multiplier(self)
 	if landed <= 0.0 or life <= 0.0:
 		return 0.0
 	take_damage(landed, flash)
@@ -1026,6 +1062,7 @@ func take_damage(amount: float, flash: bool = true) -> void:
 		state = "chase"
 		_give_up_timer = 0.0
 	if life <= 0.0:
+		if trial_bound: _trial_spread_ailments()
 		if burning_left > 0.0:
 			_proliferate()
 		if _burst_damage > 0.0:
@@ -1034,6 +1071,18 @@ func take_damage(amount: float, flash: bool = true) -> void:
 		died.emit(self)
 		remove_from_group("enemies")
 		queue_free()
+
+func _trial_spread_ailments() -> void:
+	if _sim==null: return
+	var mods: Dictionary=_sim.combat_mods()
+	var radius:=float(mods.get("ailment_spread_radius_m",0))
+	if radius<=0: return
+	var fraction:=float(mods.get("ailment_spread_fraction",0))
+	for other in MobGrid.near(global_position,radius,self):
+		if not (other is Enemy) or not other.trial_bound or other.life<=0: continue
+		if burning_left>0: other.apply_ignite(other._ignite_max*fraction)
+		if bleeding_left>0: other.apply_bleed(other._bleed_max*fraction)
+		if frozen_left>0 or chill>0: other.apply_chill(other._chill_max*fraction)
 
 
 func status_move_multiplier() -> float:

@@ -289,6 +289,7 @@ struct WeaknessDef {
     std::string id;
     std::string displayName;
     std::vector<BoonEffect> effects;
+    std::string designPurpose;
     double baseRewardMultiplier = 1.0;
 };
 
@@ -469,10 +470,13 @@ struct RoomChoice {
     std::string displayName;
     std::vector<std::string> encounter; // enemy ids; the boss id means the boss
     std::string reward; // boon_offer | weakness_offer | materials | catalyst | completion
+    std::string module = "threshold_gallery";
+    std::map<std::string, int> haul;
 };
 
 struct TrialStage {
     std::vector<RoomChoice> choices;
+    int floorIndex = 0;
 };
 
 // A deeper run the gate offers once its world effect is active (D-019:
@@ -487,6 +491,19 @@ struct TrialFloor {
     std::string completionUnlock;
     std::string completionText;
     std::string completionCurio; // Wave 8 slice 2: the curio the boss's fall leaves ("" = the unlock outright)
+    int floorCount = 1;
+    std::string runKind = "legacy";
+    std::string designPurpose;
+    std::string bossPreview;
+};
+
+struct TrialCondition {
+    std::string id;
+    std::string displayName;
+    std::string description;
+    std::map<std::string, double> effects;
+    std::vector<std::string> incompatible;
+    bool majorHazard = false;
 };
 
 // The curio and the lock (Wave 8 slice 2): what a trial's completion
@@ -521,6 +538,22 @@ struct TrialTable {
     std::map<std::string, ItemReward> itemRewards;
     bool keepCatalystsOnDeath = true;
     bool loseRunMaterialsOnDeath = true;
+    int contentRevision = 1;
+    std::vector<std::string> modules;
+    std::vector<TrialFloor> expeditions;
+    std::vector<TrialCondition> conditions;
+    std::vector<std::string> haulItems;
+    int haulUnits = 8;
+    int secretUnits = 12;
+    double mapLifePerTier = 0.12;
+    double mapDamagePerTier = 0.04;
+    double mapRewardPerTier = 0.03;
+    double mapRewardPerCondition = 0.1;
+    std::map<std::string, int> mapHaulUnits;
+    std::vector<std::vector<std::string>> mapTargetPools;
+    std::map<std::string, double> engineRules;
+    const TrialFloor* findExpedition(const std::string& id) const;
+    const TrialCondition* findCondition(const std::string& id) const;
 };
 
 // --- construction.json -------------------------------------------------------
@@ -898,7 +931,30 @@ struct LandmarkDef {
     double minDistanceFromSpawnM = 0.0;
 };
 
+// Three bounded authored resource places in frontier_v2. Counts are finite;
+// repeatable trials, never node regeneration, replenish their materials.
+struct HabitatResourceDef {
+    std::string nodeType;
+    int count = 0;
+};
+struct HabitatDef {
+    std::string id;
+    std::string displayName;
+    std::string biome;
+    std::string fallbackBiome;
+    uint32_t salt = 0;
+    double radiusM = 12.0;
+    double minimumDistanceM = 60.0;
+    double maximumDistanceM = 150.0;
+    double minimumSpacingM = 2.5;
+    int maximumSurfaceStep = 1;
+    std::vector<HabitatResourceDef> resources;
+};
+
 struct WorldgenTable {
+    std::string generationProfile;
+    std::vector<std::string> generationEliteIds;
+    std::vector<HabitatDef> habitats;
     uint64_t defaultSeed = 1;
     MapParams map;
     MountainParams mountains;
@@ -1171,6 +1227,7 @@ struct Tuning {
     TrialTable trial;
     RealtimeTable realtime;
     WorldgenTable worldgen;
+    WorldgenTable legacyWorldgen; // immutable legacy_v1 inputs for old saves
     GrammarTable grammar;
 };
 

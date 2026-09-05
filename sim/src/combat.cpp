@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <cmath>
 #include <random>
+#include <sstream>
+#include <stdexcept>
 
 namespace wroughtwild::combat {
 
@@ -25,9 +27,36 @@ void applyEffect(CombatMods& mods, const tuning::BoonEffect& effect) {
         mods.isolatedDamageMultiplier *= param(effect, "value", 1.0);
     else if (effect.operation == "area_multiplier_against_isolated")
         mods.isolatedAreaMultiplier *= param(effect, "value", 1.0);
+    else if (effect.operation == "player_damage_multiplier") mods.playerDamageMultiplier *= param(effect, "value", 1.0);
+    else if (effect.operation == "incoming_damage_multiplier") mods.incomingDamageMultiplier *= param(effect, "value", 1.0);
+    else if (effect.operation == "enemy_life_multiplier") mods.enemyLifeMultiplier *= param(effect, "value", 1.0);
+    else {
+        // Spatial trial boons are interpreted here and timed/applied by Godot.
+        // Distinct effects compose by name; multiplier effects multiply.
+        const bool multiplier = effect.operation.find("multiplier") != std::string::npos;
+        auto [it, inserted] = mods.trialEffects.emplace(effect.operation, multiplier ? 1.0 : 0.0);
+        (void)inserted;
+        if (multiplier) it->second *= param(effect, "value", 1.0);
+        else it->second += param(effect, "value", 0.0);
+    }
 }
 
 } // namespace
+
+std::string HitStream::checkpoint() const {
+    std::ostringstream out;
+    out << hitCounter_ << '\n' << rng_;
+    return out.str();
+}
+HitStream HitStream::restore(const std::string& text) {
+    HitStream restored(0);
+    std::istringstream in(text);
+    if (!(in >> restored.hitCounter_ >> restored.rng_) || restored.hitCounter_ < 0)
+        throw std::runtime_error("combat checkpoint: invalid hit stream");
+    in >> std::ws;
+    if (!in.eof()) throw std::runtime_error("combat checkpoint: trailing data");
+    return restored;
+}
 
 HitStream::Roll HitStream::roll(const CombatMods& mods) {
     Roll r;
@@ -37,6 +66,7 @@ HitStream::Roll HitStream::roll(const CombatMods& mods) {
 }
 
 double HitStream::dealt(double base, const Roll& roll, const CombatMods& mods, bool isolated) const {
+    base *= mods.playerDamageMultiplier;
     if (isolated) base *= mods.isolatedDamageMultiplier;
     double out = base * roll.variance;
     if (roll.echo) out += base * mods.repeatDamageMultiplier;
@@ -121,13 +151,17 @@ int CombatView::aliveEnemyCount() const {
 namespace {
 
 std::vector<Combatant> buildCombatants(const tuning::Tuning& tuning,
-                                       const std::vector<std::string>& enemyIds) {
+                                       const std::vector<std::string>& enemyIds,
+                                       const tuning::BossDef* runBoss) {
     std::vector<Combatant> combatants;
     for (const auto& id : enemyIds) {
         Combatant c;
         const tuning::BossDef* bossDef = id == tuning.trial.boss.id ? &tuning.trial.boss : nullptr;
         for (const auto& floor : tuning.trial.floors)
             if (id == floor.boss.id) bossDef = &floor.boss;
+        for (const auto& expedition : tuning.trial.expeditions)
+            if (!bossDef && id == expedition.boss.id) bossDef = &expedition.boss;
+        if (runBoss && id == runBoss->id) bossDef = runBoss;
         if (bossDef != nullptr) {
             const tuning::BossDef& boss = *bossDef;
             c.id = boss.id;
@@ -193,8 +227,15 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
                              const std::vector<std::string>& enemyIds,
                              uint64_t seed,
                              const Controller& controller,
-                             std::vector<std::string>* log) {
-    std::vector<Combatant> enemies = buildCombatants(tuning, enemyIds);
+                             std::vector<std::string>* log,
+                             const tuning::BossDef* runBoss) {
+    std::vector<Combatant> enemies = buildCombatants(tuning, enemyIds, runBoss);
+    for (auto& enemy : enemies) {
+        enemy.life *= mods.enemyLifeMultiplier;
+        enemy.maxLife *= mods.enemyLifeMultiplier;
+        enemy.damage *= mods.enemyDamageMultiplier;
+        enemy.breathDamage *= mods.enemyDamageMultiplier;
+    }
     HitStream hits(seed);
 
     // The round model fights with the starting bar (D-016): learned skills
@@ -306,7 +347,7 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
                 logLine(log, "You evade " + enemy.displayName + "'s attack.");
                 continue;
             }
-            double taken = hits.enemyHit(incoming, incomingType, playerStats, tuning.world.playerBase);
+            double taken = hits.enemyHit(incoming * mods.incomingDamageMultiplier, incomingType, playerStats, tuning.world.playerBase);
             playerLife -= taken;
             logLine(log, enemy.displayName + " hits you for " +
                              std::to_string(static_cast<int>(taken)) + ".");

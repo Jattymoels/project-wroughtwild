@@ -1,0 +1,41 @@
+{
+  "seed": 64072,
+  "edge_bevel_m": 0.005,
+  "plank_seam_m": 0.006,
+  "grain_strength": 0.14,
+  "stone_mottle_strength": 0.18,
+  "iron_mottle_strength": 0.045,
+  "wood_roughness": 0.88,
+  "iron_roughness": 0.78,
+  "iron_metallic": 0.55,
+  "ember_emission": 1.5,
+  "candidate_collision_height_m": {
+    "workbench": 0.95,
+    "mason_yard": 0.95,
+    "forge_basic": 1.575,
+    "forge_improved": 1.96
+  },
+  "purposes": {
+    "seed": "Repeatable grain, stone mottling and small decorative wear placements.",
+    "edge_bevel_m": "Small worn arrises catch light without enlarging the collision envelope.",
+    "plank_seam_m": "Visible joinery seams distinguish a built furnishing from a solid cube.",
+    "grain_strength": "Restrained wood fibre contrast at player distance.",
+    "stone_mottle_strength": "Stone face variation keeps masonry readable without a checkerboard effect.",
+    "iron_mottle_strength": "Very subtle forged surface variation avoids a striped or polished metal appearance.",
+    "wood_roughness": "Dry weathered timber rather than varnished furniture.",
+    "iron_roughness": "Dull forged metal with broad, quiet highlights.",
+    "iron_metallic": "Restrained metal reflections under both Blender and Godot daylight.",
+    "ember_emission": "Static review ember visibility; no fuel, heat or light gameplay change.",
+    "candidate_collision_height_m": "PROPOSAL ONLY: solid station height in the separate fit exports; clears the air above worktops and forge silhouettes while retaining the original horizontal footprint."
+  },
+  "proportion_notes": {
+    "chest": "Dimensions and cell-bottom pivot from construction/PieceMesh. Lid begins at 72 percent of height, retaining the current split. The lid hinge is at the rear; closed geometry fits the existing box without the old 6 percent overhang.",
+    "workbench": "StationLook's 0.94 by 0.92 m top, 0.95 m top height and four 0.8 m legs. A small vice and hand plane are non-interactive silhouette details.",
+    "mason_yard": "Same station footprint and top height; dressed stone working surface, rough workpiece and small chisel distinguish it from timber joinery.",
+    "forge_basic": "StationLook's 0.9 m base, 0.95 m lintel and 1.575 m maximum height. Open hearth and inset coals face local positive Z.",
+    "forge_improved": "Same base and footprint; taller hood reaches the existing 1.96 m height, with dark iron bands for upgrade recognition.",
+    "campfire": "Construction's fuel pile size and PieceMesh's half-height floor anchor and low collider. Three charred timber logs and coals; no decorative stone ring implying a new material cost.",
+    "candidate_collisions": "PROPOSAL: station collision height 0.95 m at bench/mason worktops, 1.575 m at the basic forge and 1.96 m at the improved forge. Preserve the existing 0.96 m horizontal box, solid underside and ground origin. Small worktop tools remain decorative. Separate fit GLBs only; normal gameplay is unchanged.",
+    "review": "Catalogue positions, neutral plinths, workshop floor and studio lights are presentation aids only."
+  }
+}

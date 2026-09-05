@@ -66,6 +66,8 @@ var weathered := false
 var build_profile: Dictionary = {}
 var _sim: WroughtwildSim
 var _seed := 0
+var _world_profile := "legacy_v1"
+var _habitat_refresh_queued := false
 ## Mutable copy of the sim's block field with the player's digs applied.
 var _blocks := PackedByteArray()
 
@@ -99,6 +101,10 @@ func kind_at(x: int, y: int, z: int) -> String:
 ## The world seed this terrain was built from.
 func seed_value() -> int:
 	return _seed
+
+
+func world_profile() -> String:
+	return _world_profile
 
 
 ## Every dug block as flat x,y,z triples, the form the sim's chunk and
@@ -160,7 +166,12 @@ func _material_for(kind: String) -> Material:
 	return material
 
 
-func build(sim: WroughtwildSim, seed_value: int) -> void:
+func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> void:
+	# Direct old fixtures keep the sim's legacy default; new Sandpit worlds
+	# select frontier_v2 explicitly. Reject before clearing any existing world.
+	if not profile_id.is_empty() and not sim.set_world_profile(profile_id):
+		push_error(sim.last_error())
+		return
 	var build_start := Time.get_ticks_msec()
 	var crafted := OS.get_cmdline_user_args().has("--crafted-look")
 	weathered = weathered or OS.get_cmdline_user_args().has("--weathered-look")
@@ -179,6 +190,7 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 	broken.clear()
 	_sim = sim
 	_seed = seed_value
+	_world_profile = sim.world_profile()
 	current_era = int(sim.era().get("index", 1))
 	_pending_nodes.clear()
 	map = sim.world_map(seed_value)
@@ -324,6 +336,11 @@ func _touched_chunk_origins(x: int, z: int) -> Array[Vector2i]:
 
 
 func _rebuild_chunk(cx: int, cz: int) -> void:
+	# A terrain query must retain this world's full identity even if another
+	# fixture or a preview most recently selected a different sim profile.
+	if not _sim.set_world_profile(_world_profile):
+		push_error(_sim.last_error())
+		return
 	cx -= cx % CHUNK_CELLS
 	cz -= cz % CHUNK_CELLS
 	var key := "%d_%d" % [cx, cz]
@@ -343,6 +360,16 @@ func _rebuild_chunk(cx: int, cz: int) -> void:
 		for node in nodes_root.get_children():
 			if node is ResourceNode and node.position.x >= (cx-2)*cell and node.position.x <= (cx+CHUNK_CELLS+2)*cell and node.position.z >= (cz-2)*cell and node.position.z <= (cz+CHUNK_CELLS+2)*cell:
 				node.refresh_surface()
+	# A dig can touch several chunks; refresh the three compositions once
+	# after the entire edit rather than once for every neighbouring chunk.
+	if get_parent() is Node3D and not _habitat_refresh_queued:
+		_habitat_refresh_queued = true
+		_refresh_habitats.call_deferred()
+
+func _refresh_habitats() -> void:
+	_habitat_refresh_queued = false
+	if get_parent() is Node3D:
+		HabitatSites.refresh(get_parent(), self)
 
 ## Same triangles used by picking and walking. Queries near chunk edges also
 ## consider neighbours because rounded corners can extend over the boundary.
@@ -428,7 +455,11 @@ func _spawn_resource_node(def: Dictionary) -> void:
 	node.drive_presses = maxi(int(def.get("drive_presses", 1)), 1)
 	# y is part of the name: a cave-floor node and a surface node may share
 	# a column, and saves match nodes by name.
-	node.name = "wn_%s_%d_%d_%d" % [def["type"], def["x"], def["y"], def["z"]]
+	var identity := String(def.get("resource_id", "wn_%s_%d_%d_%d" % [def["type"], def["x"], def["y"], def["z"]]))
+	node.name = identity
+	node.resource_id = identity
+	node.habitat_id = String(def.get("habitat_id", ""))
+	node.presentation_label = String(def.get("presentation_label", def.get("display_name", "")))
 	node.material_family = StringName(def["material_family"])
 	node.remaining_units = def["units"]
 	node.units_per_harvest = def["units_per_harvest"]

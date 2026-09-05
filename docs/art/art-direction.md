@@ -1,5 +1,21 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+Owner continuation, 6 Sep 2026: following the Blender building study, the owner
+selected land/nature fixtures. A six-role authored-mesh study now covers the
+existing broadleaf tree, boulder and decorative shrub/fern/deadfall/stump roles.
+This is an export and collision review under the current palette, not adoption
+into normal world generation. [Assets, verification and limits](blender-nature-study-2026-09-06.md).
+
+The next owner continuation covers all six existing furnishings: chest, campfire,
+workbench, mason's yard and both forge tiers. Their Blender studies include
+existing-body collision checks and separate station-height fit proposals.
+[Furnishing assets, collision findings and limits](blender-furnishings-study-2026-09-06.md).
+
+The owner then selected mobs. The Blender pass now covers the existing twelve
+actors, with simple rigs, preview animation clips and an explicit comparison
+against their current capsules. Normal game actors remain on their existing
+presentation path. [Mob assets, motion and hitbox findings](blender-mobs-study-2026-09-06.md).
+
 ## Current owner revision — 5 September 2026
 
 Latest clarification: the improved workshop **building** look, including its

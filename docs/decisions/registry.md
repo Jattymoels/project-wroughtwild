@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner approval, 6 Sep 2026: "PLEASE IMPLEMENT THIS PLAN" accepts the two
+intensives: [places worth discovering](../prototype/world-intensive-2026-09-06.md)
+and [trials worth mastering](../prototype/trial-intensive-2026-09-06.md).
+D-027 approves three resource habitats, eight material families, two wall forms,
+authored visual integration and versioned new-world generation preserving legacy
+geography. D-028 approves one complete Forge arc, floor suspension and selectable
+rolled repeatable trials. These explicitly expand D-001's catalogue/endgame
+boundary within those work items. They preserve D-010, D-017, D-019, D-025 and
+D-026; the previously recorded timber-demolition conflict remains outside scope.
+
 Owner approval, 6 Sep 2026: "Okay enact the proposal" accepts the [forge catalogue and input-quality progression](../prototype/forge-clarity-and-early-pacing-2026-09-06.md), including its catalyst-tier clarification. D-026 governs new crafts and mastery; existing equipment values, earned mastery rewards and early Foundry mutations are preserved.
 
 Owner playtest follow-up, 5 Sep 2026: approved deeper Foundry evolution, where
@@ -110,6 +120,18 @@ Statuses:
 | D-024 | Base threat | Nests (encroachment slice 1, D-018) retired: the owner (4 Sep 2026) found them "not rewarding" and that they "don't feel natural to the world"; mob AI behaviours are to be reassessed later, and the base threat waits for that. The sim module, the engine's nest and encroachment scripts, the world.json block and the era flags are gone; the design record stays in world-generation.md | Accepted (owner, 4 Sep 2026) | Mob AI behaviours are reassessed |
 | D-025 | Foundry mutations and itemisation | Specific Kind identities travel along every occupied, strictly inward branch and transform intermediate ingots and supports. Reconvergence deduplicates readings; ordered Kind rules compose. Direct bronze/steel supports gain additive refinements. Smoulder, fields, travelling melee, bursts, cast seals, returning life and attack/spell cadences provide early mechanical identity. Equipment reads acquired capabilities while damage packets retain their native type. UI shows resolved names and previews; owned IDs remain stable. Rare build-defining item modifiers are future direction, not a new pool in this pass. [Current grammar](../systems/foundry-mutations.md) supersedes D-023 family-wide reaction tables and refines D-019/D-020 early pacing. | Accepted and implemented (owner: "Perfect ... continue to implement that", 5 Sep 2026) | Owner playtesting of the mutation grammar and first itemisation interactions |
 | D-026 | Forge clarity and input-quality progression | Catalogue selection with native cost/outcome previews and atomic batches; modest bench kit; Rough/Sound/Excellent workpiece capacity and Faint/Stable/Potent Kind rolls; slower meaningful-use mastery with explicit legacy reward preservation. Refines D-014/D-019/D-023; keeps D-002 useful work and D-025 early mutations. [Implementation and tuning](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026). | Accepted and implemented (owner: "Okay enact the proposal", 6 Sep 2026) | Human pacing playtests; no new mandatory timers |
+
+## Accepted intensive additions
+
+Accepted additions, 6 September 2026:
+
+- **D-027 — Resource habitats and architectural materials:** implement the
+  owner-approved world intensive. New worlds use versioned geography; old saves
+  retain legacy generation. Material traits express forms, not durability tiers.
+- **D-028 — Forge arc and repeatable trials:** implement the owner-approved trial
+  intensive. Story runs retain curio-driven era changes, the capstone unlocks
+  tiered repeatable trials, and cleared-floor suspension preserves the run.
+  Review duration/difficulty with real builds and the pending human playtest.
 
 ## Proposals awaiting acceptance
 

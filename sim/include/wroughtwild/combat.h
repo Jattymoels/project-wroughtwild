@@ -28,6 +28,11 @@ struct CombatMods {
     // Spatial only: the real-time host scales area radius by this against a
     // lone enemy; the round model has no geometry to apply it to.
     double isolatedAreaMultiplier = 1.0;
+    double enemyLifeMultiplier = 1.0;
+    double enemyDamageMultiplier = 1.0;
+    double playerDamageMultiplier = 1.0;
+    double incomingDamageMultiplier = 1.0;
+    std::map<std::string, double> trialEffects;
 };
 
 // Interprets the effect operations of every active boon and weakness.
@@ -42,6 +47,8 @@ CombatMods buildMods(const tuning::BoonTable& table, const boons::RunState& run)
 class HitStream {
 public:
     explicit HitStream(uint64_t seed) : rng_(seed) {}
+    std::string checkpoint() const;
+    static HitStream restore(const std::string& text);
 
     // Damage one player hit of `skill` deals. isolated: the target is the only
     // living enemy (concentrated_force). Applies expanding_echo's repeat bonus
@@ -136,7 +143,8 @@ EncounterResult runEncounter(const tuning::Tuning& tuning,
                              const std::vector<std::string>& enemyIds,
                              uint64_t seed,
                              const Controller& controller,
-                             std::vector<std::string>* log = nullptr);
+                             std::vector<std::string>* log = nullptr,
+                             const tuning::BossDef* runBoss = nullptr);
 
 // The scripted player used by balance simulations and tests: dashes through
 // telegraphed breath, clears groups with area, focuses lone targets with the

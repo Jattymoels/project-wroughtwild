@@ -58,7 +58,18 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [x] The recovery location is communicated clearly. *(HUD notice + glowing pack; a map marker is a later polish item)*
 - [x] Build-defining equipment is not permanently destroyed. *(`drop_inventory` touches materials only; equipment and currency stay)*
 
-## Slice-level validation
+## Approved world and Forge additions (D-027 / D-028)
+
+- [x] New generation profiles contain reachable quarry, fen and oldgrowth habitats; old saves retain the frozen generator and placement inputs.
+- [x] Eight finished materials have one-step recipes and shared placed/preview/catalogue art. Coverings and glazing respect form restrictions and existing roof unlocks.
+- [x] Three story identities use connected two-floor Forge routes, local encounter ownership, physical rewards, optional secrets and four boon opportunities.
+- [x] The capstone grants `forge_arc_complete`; repeatable offers remain stable across gate reopening, tier changes and save/load, with completion unlocking the next tier.
+- [x] Cleared-floor suspension restores the matching build, inventory deposit, loot, choices, life and effect clocks without another deposit or healing.
+- [ ] Prepared familiar players complete story/repeatable runs near the twenty-/ten-minute targets. Fixed-build encounter samples inform tuning; they do not certify full-run pacing.
+- [ ] Ranger, Warden and Kindler difficulty at tiers 1–10 is accepted after actual combat/class playtests. Higher-tier numerical scaling remains unverified.
+- [ ] Owner accepts the final habitat walks, three material buildings and Forge/boss presentation under Foundry effects.
+
+## Whole-slice playtest
 
 - [ ] The complete loop can be played in approximately 20–40 minutes after onboarding.
 - [ ] A tester can state why they became stronger.

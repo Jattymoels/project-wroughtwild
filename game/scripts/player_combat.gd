@@ -66,6 +66,8 @@ var _dash_left := 0.0
 var _dash_velocity := Vector3.ZERO
 ## The Husk's Manner (a rail, D-023 slice 9): how long you have stood still.
 var _still_seconds := 0.0
+var _trial_dash_armour:=0.0
+var _trial_dash_armour_left:=0.0
 
 
 func setup(in_player: WroughtwildPlayer, in_sim: WroughtwildSim) -> void:
@@ -150,6 +152,9 @@ var _root_said := -100000
 
 
 func _tick_shelter(delta: float) -> void:
+	if sim!=null and sim.trial_active():
+		set_sheltered(false)
+		return
 	_settle_left = maxf(0.0, _settle_left - delta)
 	_shelter_probe_left -= delta
 	if _shelter_probe_left <= 0.0:
@@ -287,6 +292,7 @@ static func compass(to: Vector3) -> String:
 
 
 func _physics_process(delta: float) -> void:
+	_trial_dash_armour_left=maxf(0,_trial_dash_armour_left-delta)
 	for id in cooldowns:
 		cooldowns[id] = maxf(0.0, cooldowns[id] - delta)
 	invulnerable_left = maxf(0.0, invulnerable_left - delta)
@@ -327,6 +333,8 @@ func alive_enemies() -> Array:
 	var alive: Array = []
 	for node in player.get_tree().get_nodes_in_group("enemies"):
 		if is_instance_valid(node) and node is Enemy and node.life > 0.0:
+			if player.trial!=null and player.trial.spatial and sim.trial_active():
+				if not node.trial_bound or node.trial_encounter_id!=player.trial.encounter_id: continue
 			alive.append(node)
 	return alive
 
@@ -348,6 +356,10 @@ func cooldown_total(skill_id: StringName) -> float:
 		var total: float = sim.skill_cooldown_seconds(String(skill_id))
 		if String(skills.get(skill_id, {}).get("delivery", "")) == "dash":
 			total /= 1.0 + float(sim.derived_stats().get("dash_recovery", 0.0))
+		elif sim.trial_active():
+			var mods: Dictionary=sim.combat_mods()
+			if life/maxf(max_life,1)<=float(mods.get("low_life_threshold",0)):
+				total/=float(mods.get("low_life_tempo_multiplier",1))
 		return total
 	return skills.get(skill_id, {}).get("cooldown_seconds", 1.0)
 
@@ -476,7 +488,7 @@ func cast_armour() -> float:
 	var zone := 0.0
 	for field in get_tree().get_nodes_in_group("foundry_fields"):
 		if field.combat == self and field.covers(player.global_position + Vector3.UP * 0.5): zone = maxf(zone, field.armour)
-	return (_cast_armour if _cast_armour_left > 0.0 else 0.0) + zone
+	return (_cast_armour if _cast_armour_left > 0.0 else 0.0) + zone + (_trial_dash_armour if _trial_dash_armour_left>0 else 0.0)
 
 
 ## The Husk's Manner (a rail, D-023 slice 9): the sheet's still armour once
@@ -495,18 +507,19 @@ func haste_multiplier() -> float:
 ## --- the verbs suffered (Wave 8 slice 1) ---
 func _suffer_verb(enemy: Enemy) -> void:
 	if FoundryEmber.prevent(self,enemy.verb): return
+	var control_duration: float=float(sim.combat_mods().get("control_duration_multiplier",1)) if sim.trial_active() else 1.0
 	match enemy.verb:
 		"harry":
-			_slow_left = maxf(_slow_left, enemy.verb_seconds)
+			_slow_left = maxf(_slow_left, enemy.verb_seconds*control_duration)
 			_slow = clampf(enemy.verb_strength, 0.0, 0.9)
 		"root":
-			_root_left = maxf(_root_left, enemy.verb_seconds)
+			_root_left = maxf(_root_left, enemy.verb_seconds*control_duration)
 			var now := Time.get_ticks_msec()
 			if now - _root_said > 6000 and player != null and player.hud != null:
 				_root_said = now
 				player.hud.notify("Rooted! Dash to break free.")
 		"mark":
-			_marked_left = maxf(_marked_left, enemy.verb_seconds)
+			_marked_left = maxf(_marked_left, enemy.verb_seconds*control_duration)
 			_mark_sprint = maxf(1.0, enemy.verb_strength)
 
 
@@ -789,6 +802,8 @@ func _use_cone(skill_id: StringName) -> int:
 	# Area size on the sheet scales every area; reach (D-023) widens this skill alone.
 	var base_radius: float = skills[skill_id]["base_area_radius"] * (1.0 + sim.derived_stats()["area_bonus"]) \
 		* sim.skill_reach(String(skill_id))
+	if "attack" in skills[skill_id].get("tags",[]):
+		base_radius*=float(sim.combat_mods().get("melee_reach_multiplier",1))
 	# A cold ring quenches the hot rock around you whether or not anything
 	# is alive in it (D-020 fire-setting: the nova is a quarry tool too).
 	if sim.chill_applied(String(skill_id), false) > 0.0:
@@ -965,11 +980,13 @@ func _launch_fan(skill_id: StringName, from: Vector3, dir: Vector3) -> void:
 
 func strike_reach(skill_id: StringName) -> float:
 	var spatial: Dictionary = sim.realtime().get("skills",{}).get(String(skill_id),{})
-	return float(spatial.get("melee_reach_m",melee_reach))*sim.skill_reach(String(skill_id))
+	return float(spatial.get("melee_reach_m",melee_reach))*sim.skill_reach(String(skill_id))*float(sim.combat_mods().get("melee_reach_multiplier",1))
 
 
 func area_radius(skill_id: StringName) -> float:
 	var radius: float = maxf(float(skills[skill_id].get("base_area_radius",0.0)), float(mutation(skill_id).get("impact_radius",0))) * (1.0+float(sim.derived_stats()["area_bonus"])) * sim.skill_reach(String(skill_id))
+	if String(skills[skill_id].get("delivery","")) in ["strike","cone"] and "attack" in skills[skill_id].get("tags",[]):
+		radius*=float(sim.combat_mods().get("melee_reach_multiplier",1))
 	if alive_enemies().size()==1:
 		radius *= float(sim.combat_mods()["isolated_area_multiplier"])
 	return radius
@@ -1022,10 +1039,61 @@ func _use_dash(skill_id: StringName) -> bool:
 	invulnerable_left = dash_invulnerable
 	heal(float(ds.get("life_on_dash", 0.0)))
 	var braced: float = float(ds.get("armour_on_dash", 0.0))
+	if sim.trial_active():
+		var mods: Dictionary=sim.combat_mods()
+		_trial_dash_armour=float(mods.get("dash_armour",0))
+		_trial_dash_armour_left=float(mods.get("dash_armour_seconds",0))
 	if braced > 0.0:
 		_cast_armour = maxf(_cast_armour, braced)
 		_cast_armour_left = maxf(_cast_armour_left, float(sim.skill_cast_armour(String(skill_id)).get("seconds", 2.0)))
 	return true
+
+const TRIAL_SCALARS=["life","_cast_armour","_cast_armour_left","_haste","_haste_left","_still_seconds","_settle_left","_fight_clock","_slow_left","_slow","_root_left","_marked_left","_mark_sprint","_trial_dash_armour","_trial_dash_armour_left","invulnerable_left"]
+
+func capture_trial_state() -> Dictionary:
+	var result: Dictionary={"cooldowns":cooldowns.duplicate(true),"casts":_casts.duplicate(true),"reactions":_reaction_ready.duplicate(true),"train_hits":_train_hits.duplicate(true)}
+	for key in TRIAL_SCALARS: result[key]=get(key)
+	return result
+
+static func valid_trial_state(data: Dictionary) -> bool:
+	for key in TRIAL_SCALARS:
+		if not data.has(key) or not (data[key] is float or data[key] is int) or not is_finite(float(data[key])): return false
+	if float(data["life"])<=0: return false
+	for key in ["cooldowns","casts","reactions"]:
+		if not data.get(key) is Dictionary: return false
+		for value in data[key].values():
+			if not (value is float or value is int) or not is_finite(float(value)) or float(value)<0: return false
+	if not data.get("train_hits") is Array: return false
+	for hit in data["train_hits"]:
+		if not hit is Dictionary: return false
+		if not (hit.get("at") is float or hit.get("at") is int): return false
+		if not is_finite(float(hit["at"])) or not (hit.get("source") is int or hit.get("source") is float): return false
+	return true
+
+func restore_trial_state(data: Dictionary) -> void:
+	max_life=float(sim.derived_stats()["max_life"])
+	for key in TRIAL_SCALARS: set(key,float(data[key]))
+	life=minf(life,max_life)
+	for id in sim.combat_skill_ids(): skills[id]=sim.combat_skill(id)
+	cooldowns={}
+	for id in data["cooldowns"]: cooldowns[StringName(id)]=float(data["cooldowns"][id])
+	_casts={}
+	for id in data["casts"]: _casts[StringName(id)]=int(data["casts"][id])
+	_reaction_ready=data["reactions"].duplicate(true)
+	_train_hits=data["train_hits"].duplicate(true)
+	_dash_left=0
+	_dash_velocity=Vector3.ZERO
+	# The validated native checkpoint already restored its exact hit stream.
+	# A cast in this corridor must not reseed it from the engine's RNG.
+	fight_active=true
+	_mutation_cache.clear()
+	_action_contexts.clear()
+	life_changed.emit(life,max_life)
+	loadout_changed.emit()
+
+func clear_trial_effects() -> void:
+	_trial_dash_armour=0
+	_trial_dash_armour_left=0
 
 
 ## Shatter cascade: each shattered mob dies releasing a cold nova; other
@@ -1130,6 +1198,12 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	var train := train_multiplier_for(source)
 	warded *= train
 	last_hit_taken = sim.enemy_hit_damage(warded, damage_type, cast_armour() + still_armour())
+	if source is Enemy and source.trial_bound:
+		# Added Fire is one extra typed component of the same committed hit.
+		# It shares train/ward mitigation and cannot trigger retaliation twice.
+		var added_fire:=float(sim.combat_mods().get("enemy_added_fire_fraction",0))
+		if added_fire>0:
+			last_hit_taken+=sim.enemy_hit_damage(warded*added_fire,"fire",cast_armour()+still_armour())
 	if source is Enemy: last_hit_taken=FoundryCold.absorb(self,last_hit_taken)
 	_train_hits.append({"at": _fight_clock, "source": source.get_instance_id() if source != null else 0})
 	life = maxf(0.0, life - last_hit_taken)

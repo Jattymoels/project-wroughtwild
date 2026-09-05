@@ -10,6 +10,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "wroughtwild/tuning.h"
@@ -33,10 +34,24 @@ struct Cell {
 };
 
 struct PlacedNode {
+    PlacedNode() = default;
+    PlacedNode(std::string inType, int inX, int inY, int inZ)
+        : type(std::move(inType)), x(inX), y(inY), z(inZ) {}
     std::string type; // key into WorldgenTable::nodeTypes
     int x = 0;
     int y = 0; // level the node stands on: the surface, or a cave floor
     int z = 0;
+    std::string resourceId; // persistent identity, independent of scene naming
+    std::string habitatId;  // empty for ordinary scattered resources
+};
+
+struct SurfacePoint { int x = 0, y = 0, z = 0; };
+struct PlacedHabitat {
+    std::string id;
+    std::string biome;
+    int x = 0, y = 0, z = 0;
+    double radiusM = 0;
+    std::vector<SurfacePoint> approach; // connected, clear surface walk from spawn
 };
 
 // A landmark placed by worldgen (Wave 8 slice 2): the lock a curio opens.
@@ -71,6 +86,7 @@ struct MobPack {
 };
 
 struct WorldMap {
+    std::string profileId;
     uint64_t seed = 0;
     int width = 0;
     int height = 0;
@@ -81,6 +97,7 @@ struct WorldMap {
     std::vector<PlacedNode> nodes;
     std::vector<MobPack> packs;
     std::vector<PlacedLandmark> landmarks;
+    std::vector<PlacedHabitat> habitats;
     int spawnX = 0, spawnZ = 0;
     int gateX = 0, gateZ = 0;
 
@@ -100,6 +117,14 @@ struct WorldMap {
 // every map satisfies WorldgenGuarantees (safe spawn clearing, minimum
 // nodes in reach, gate distance) by construction.
 WorldMap generate(const tuning::Tuning& tuning, uint64_t seed);
+
+// Runtime generation uses a named immutable identity. The historical generate
+// entry point remains the tuning-driven base for existing probes and tests.
+bool knownProfile(const std::string& profileId);
+const tuning::WorldgenTable& profileTable(const tuning::Tuning& tuning,
+                                        const std::string& profileId);
+WorldMap generateProfile(const tuning::Tuning& tuning, uint64_t seed,
+                         const std::string& profileId);
 
 // Deterministic per-cell hash in [0, 1); exposed for tests.
 double cellNoise(uint64_t seed, int x, int z, uint32_t salt);

@@ -705,7 +705,8 @@ void testTrialRealtimeHost(const tuning::Tuning& t) {
     check(!session.roomInProgress() && session.currentStageIndex() == 1,
           "host trial: stage advances after resolution");
     check(session.acceptBoonFromOffer(outcome.boonOffer.front()->id), "host trial: boon accepted");
-    check(session.currentMods().repeatHitCount > 0 || session.currentMods().isolatedDamageMultiplier > 1.0,
+    check(session.currentMods().repeatHitCount > 0 || session.currentMods().isolatedDamageMultiplier > 1.0 ||
+              !session.currentMods().trialEffects.empty(),
           "host trial: accepted boon changes the mods the host reads");
 
     check(session.beginRoom(1).started, "host trial: materials room begun");
@@ -4522,6 +4523,8 @@ void testSkillExpansion(const tuning::Tuning& t) {
 }
 
 #include "foundry_mutations.h"
+#include "trial_intensive.h"
+#include "material_intensive.inc"
 
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
@@ -4594,6 +4597,8 @@ int main(int argc, char** argv) {
     testSkillExpansion(t);
     testFoundryMutations(t);
     testForgeProgression(t);
+    testTrialIntensive(t);
+    testMaterialIntensive(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

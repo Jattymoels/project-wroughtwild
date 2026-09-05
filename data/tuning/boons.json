@@ -5,19 +5,33 @@
     {
       "id": "expanding_echo",
       "display_name": "Expanding Echo",
-      "requires_any_tags": ["area"],
+      "requires_any_tags": [
+        "area"
+      ],
       "effects": [
-        {"operation": "repeat_every_nth_hit", "hit_count": 3, "damage_multiplier": 0.6}
+        {
+          "operation": "repeat_every_nth_hit",
+          "hit_count": 3,
+          "damage_multiplier": 0.6
+        }
       ],
       "design_purpose": "Amplify area-clear identity"
     },
     {
       "id": "concentrated_force",
       "display_name": "Concentrated Force",
-      "requires_any_tags": ["area"],
+      "requires_any_tags": [
+        "area"
+      ],
       "effects": [
-        {"operation": "area_multiplier_against_isolated", "value": 0.7},
-        {"operation": "damage_multiplier_against_isolated", "value": 1.45}
+        {
+          "operation": "area_multiplier_against_isolated",
+          "value": 0.7
+        },
+        {
+          "operation": "damage_multiplier_against_isolated",
+          "value": 1.45
+        }
       ],
       "design_purpose": "Trade area coverage for boss damage"
     },
@@ -26,9 +40,138 @@
       "display_name": "Pressure Harvest",
       "requires_weakness": "hastened_enemies",
       "effects": [
-        {"operation": "reward_quantity_multiplier", "value": 1.25}
+        {
+          "operation": "reward_quantity_multiplier",
+          "value": 1.25
+        }
       ],
       "design_purpose": "Create an interaction with an accepted weakness"
+    },
+    {
+      "id": "piercing_route",
+      "display_name": "The Piercing Route",
+      "requires_any_tags": [
+        "projectile"
+      ],
+      "effects": [
+        {
+          "operation": "projectile_pierce_bonus",
+          "value": 1
+        }
+      ],
+      "design_purpose": "Projectiles pass through one additional enemy, rewarding aligned packs."
+    },
+    {
+      "id": "broad_cleave",
+      "display_name": "Broad Cleave",
+      "requires_any_tags": [
+        "attack"
+      ],
+      "effects": [
+        {
+          "operation": "melee_reach_multiplier",
+          "value": 1.2
+        }
+      ],
+      "design_purpose": "Melee reach widens without replacing the skill or its Foundry forms."
+    },
+    {
+      "id": "opened_guard",
+      "display_name": "Opened Guard",
+      "requires_any_tags": [],
+      "effects": [
+        {
+          "operation": "staggered_damage_multiplier",
+          "value": 1.25
+        }
+      ],
+      "design_purpose": "A stagger opens a brief damage opportunity."
+    },
+    {
+      "id": "last_ember",
+      "display_name": "The Last Ember",
+      "requires_any_tags": [],
+      "effects": [
+        {
+          "operation": "low_life_threshold",
+          "value": 0.35
+        },
+        {
+          "operation": "low_life_tempo_multiplier",
+          "value": 1.2
+        }
+      ],
+      "design_purpose": "Below thirty-five percent life your action tempo rises; recovery remains a meaningful choice."
+    },
+    {
+      "id": "sheltering_dash",
+      "display_name": "Sheltering Dash",
+      "requires_any_tags": [
+        "movement"
+      ],
+      "effects": [
+        {
+          "operation": "dash_armour",
+          "value": 12
+        },
+        {
+          "operation": "dash_armour_seconds",
+          "value": 2
+        }
+      ],
+      "design_purpose": "A dash briefly braces armour; movement has no invulnerability."
+    },
+    {
+      "id": "hunters_recovery",
+      "display_name": "Hunter's Recovery",
+      "requires_any_tags": [],
+      "effects": [
+        {
+          "operation": "elite_kill_heal_fraction",
+          "value": 0.12
+        }
+      ],
+      "design_purpose": "Defeating a rare enemy restores a share of maximum life."
+    },
+    {
+      "id": "sure_footing",
+      "display_name": "Sure Footing",
+      "requires_any_tags": [],
+      "effects": [
+        {
+          "operation": "control_duration_multiplier",
+          "value": 0.7
+        }
+      ],
+      "design_purpose": "Hostile control expires sooner, leaving the original counterplay useful."
+    },
+    {
+      "id": "lingering_work",
+      "display_name": "Lingering Work",
+      "requires_any_tags": [],
+      "effects": [
+        {
+          "operation": "ailment_duration_multiplier",
+          "value": 1.25
+        }
+      ],
+      "design_purpose": "Applied ailments last longer, rewarding deliberate tag-and-move play."
+    },
+    {
+      "id": "shared_affliction",
+      "display_name": "Shared Affliction",
+      "requires_any_tags": [],
+      "effects": [
+        {
+          "operation": "ailment_spread_radius_m",
+          "value": 3
+        },
+        {
+          "operation": "ailment_spread_fraction",
+          "value": 0.25
+        }
+      ],
+      "design_purpose": "An afflicted kill passes a small portion of its ailments to nearby enemies."
     }
   ],
   "weaknesses": [
@@ -36,14 +179,43 @@
       "id": "hastened_enemies",
       "display_name": "Hastened Enemies",
       "effects": [
-        {"operation": "enemy_speed_multiplier", "value": 1.2}
+        {
+          "operation": "enemy_speed_multiplier",
+          "value": 1.2
+        }
       ],
-      "base_reward_multiplier": 1.15
+      "base_reward_multiplier": 1.15,
+      "design_purpose": "Enemies move and attack twenty percent faster; ordinary haul rises fifteen percent."
+    },
+    {
+      "id": "reinforced_guards",
+      "display_name": "Reinforced Guards",
+      "effects": [
+        {
+          "operation": "guard_arc_bonus_degrees",
+          "value": 25
+        }
+      ],
+      "base_reward_multiplier": 1.2,
+      "design_purpose": "A wider guard arc rewards flanking and stagger; ordinary haul rises twenty percent."
+    },
+    {
+      "id": "added_fire_pressure",
+      "display_name": "Added Fire Pressure",
+      "effects": [
+        {
+          "operation": "enemy_added_fire_fraction",
+          "value": 0.15
+        }
+      ],
+      "base_reward_multiplier": 1.2,
+      "design_purpose": "Enemy attacks add a separate fire packet worth fifteen percent of base hit damage; ordinary haul rises twenty percent."
     }
   ],
   "offer_rules": {
     "options_per_offer": 3,
     "allow_incompatible_options": false,
     "minimum_unweighted_option_count": 1
-  }
+  },
+  "design_purpose": "Twelve temporary boons preserve the entered build while opening spatial, tempo and recovery interactions. Three optional curses trade understandable pressure for haul quantity; no Resolve meter. Numbers are provisional playtest tuning."
 }

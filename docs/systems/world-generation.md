@@ -1,5 +1,77 @@
 # World Generation, Settlements and Travel
 
+## Approved resource habitats and world identity — 6 September 2026
+
+The [world intensive](../prototype/world-intensive-2026-09-06.md), D-027,
+adds three complete resource habitats to newly created worlds. `frontier_v2`
+keeps the weathered valley and composes finite deposits on reachable, supported
+terrain: the Shellcut Escarpment provides raw slate and shellstone, Rustwater
+Hollow provides clay and weaving reeds, and Resinheart Grove provides logs and
+independent corkbark deadfall. These are source ingredients, not extra entries
+in the finished construction catalogue. Trial caches use these same ingredients.
+
+World identity is `(generation_profile, seed)`. Saves without a profile select
+`legacy_v1`; unknown profiles reject before mutable game state changes. The
+pre-intensive algorithm is frozen in `sim/src/worldgen_legacy_v1.inc`, with
+all its placement inputs in `data/tuning/worldgen-legacy-v1.json`: terrain,
+caves, biome and density ordering, node definitions, packs, guarantees,
+landmarks and elite selection order. Live combat or frontier tuning cannot
+move a legacy world's resources, terrain or encounters. The engine's generation
+cache, mesh queries and node/biome definitions select the same profile. The
+historical tuning-driven `generate` function remains for controlled probes;
+runtime uses validated `generateProfile`.
+
+Each habitat is committed only when its complete resource cluster and approach
+are valid. Native terrain is preferred; the defined meadow-edge fallback keeps
+all three material ambitions available when a natural biome has no safe site.
+A surface flood search reserves an open, supported route from spawn with at
+most one block of rise per cell. Deposits avoid that route, existing resources,
+the starter resource ring, the gate and landmarks. Definition order does not
+change placement: habitat IDs, source IDs and fixed seed salts select a stable
+order. New resource instance IDs identify the habitat, source and deposit;
+legacy IDs preserve existing scene/save names. A presentation label is carried
+separately from the raw material family.
+
+The bounded `worldgen.json` habitat tuning has these purposes:
+
+| Setting | Player effect |
+| --- | --- |
+| `radius_m` | Keeps each place a small recognisable gathering composition (12 m quarry/fen, 13 m grove). |
+| `min_distance_m`, `max_distance_m` | Makes discovery a walk from home while remaining reachable (65–145 m). |
+| `resource_spacing_m` | Leaves working and movement space between finite deposits (2.5 m quarry/fen, 3 m grove). |
+| `max_surface_step_cells` | Limits the guaranteed approach and resource footprints to ordinary walkable rises (1). |
+| `resources[].count` | Sets finite initial building supply (8 deposits of each of the two sources). |
+| `seed_salt` | Keeps each site's seeded variation independent of definition order; it is part of profile identity. |
+| `biome`, `fallback_biome` | Prefers a resource's natural setting while retaining a reachable fallback. |
+| Node `units`, `units_per_harvest`, `drive_presses` | Controls total supply and the pace of contextual work. No new tool or elemental gate. |
+
+`HabitatSites` adds shared, noncolliding authored accents, shallow moving fen
+water and restrained foliage/mote movement. The actual resource nodes retain
+the harvesting/collision authority. Decorative placement keeps approaches and
+work areas clear and refreshes after excavation; rebuilding a profile replaces
+the old habitat presentation. Construction material art is shared with previews
+and the catalogue; see [construction](construction.md).
+
+Verification: `make -C tests/sim world-intensive` checks complete pre-intensive
+world fingerprints for seeds 1, 7, 24 and 91, then reachable, grounded habitats,
+stable resource identities, clear approaches, starter guarantees and the
+material/form matrix across 64 seeds (including widely separated large seeds).
+It passes 595,376 checks. `game/tests/world_intensive.tscn` runs on the actual
+default world: 5,939 headless checks cover profile switching, missing/unknown profiles,
+resource grounding, finite/partial harvesting state, depleted resources,
+excavation, placed materials and atomic disk save restoration. Optional rendered
+execution writes player-height daylight/dusk views, approach sequences and
+frame measurements under `build/intensives/world/`. The fixture also exercises
+contextual work for all six source types and requires visible shallow fen water.
+The final rendered pass adds malformed-save rejection checks and 49 gameplay
+captures, passing 6,043 checks with no failures. Matched dense-grove median/p95
+frame time changes are +0.06%/+1.82% on the review machine; the larger canopy
+increases primitive count and still requires lower-spec hardware review.
+See [habitat review](../art/world-habitat-intensive-2026-09-06.md).
+
+No swimming, flooding, infinite resource regeneration, new discovery currency,
+additional recipe gate or timber-demolition change belongs to this intensive.
+
 Owner-approved presentation continuation, 5 Sep 2026: the weathered view adds
 deterministic habitat patches of shrubs, fern beds, short rotten deadfall and
 stumps. Placement uses existing biome and surface data, samples collision

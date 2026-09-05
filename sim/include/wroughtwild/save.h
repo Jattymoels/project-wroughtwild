@@ -21,6 +21,9 @@ struct SaveGame {
 };
 
 std::string toJson(const SaveGame& game);
+// Shared exact item encoding for temporary trial loot checkpoints.
+std::string itemListToJson(const std::vector<items::ItemInstance>& items);
+std::vector<items::ItemInstance> itemListFromJson(const std::string& text);
 
 // Throws std::runtime_error on malformed input or an unknown schema version.
 SaveGame fromJson(const std::string& text);

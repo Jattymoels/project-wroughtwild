@@ -45,6 +45,9 @@ func material() -> StandardMaterial3D:
 	return _material
 
 func mesh_for(kind: String, variant: int) -> ArrayMesh:
+	var authored := AuthoredAssets.mesh_for(kind)
+	if authored != null:
+		return authored
 	var key := kind+str(variant)
 	if _meshes.has(key):
 		return _meshes[key]

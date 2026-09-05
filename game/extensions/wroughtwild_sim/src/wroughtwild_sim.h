@@ -200,6 +200,10 @@ public:
     // material_family, display_name, units, units_per_harvest, visual}),
     // packs (array of {enemies, x, z}), spawn_x/z, gate_x/z.
     Dictionary world_map(int seed);
+    // Active generation identity. Unknown profiles never replace the current
+    // selection; old direct callers default to legacy_v1.
+    bool set_world_profile(const String& profile_id);
+    String world_profile() const;
     // The world's render/collision geometry, chunked (the sim derives it so
     // the engine never re-walks a million blocks in script): one entry per
     // chunk_cells x chunk_cells column chunk - {x, z, kinds: {kind ->
@@ -572,6 +576,20 @@ public:
     // run is already open.
     // floor_id "" for the first floor, else a trial_floors() id.
     bool trial_start(int seed, const String& floor_id);
+    bool trial_start_story(int seed, const String& run_id);
+    Array trial_story_runs() const;
+    Dictionary trial_layout() const;
+    Dictionary trial_rules() const;
+    Array trial_map_offers(int tier) const;
+    bool trial_start_map(int tier, int offer_index);
+    Dictionary trial_map_progress() const;
+    bool trial_continue_floor();
+    void trial_skip_reward();
+    Dictionary trial_claim_secret();
+    String trial_checkpoint() const;
+    bool trial_checkpoint_valid(const String& text) const;
+    bool trial_checkpoint_matches(const String& text, const String& player_state) const;
+    bool trial_restore_checkpoint(const String& text);
     bool trial_active() const;
     bool trial_finished() const;
     bool trial_player_died() const;
@@ -620,6 +638,7 @@ private:
     wroughtwild::grammar::ActiveMods active_mods(const wroughtwild::stats::Equipment* preview = nullptr) const;
     // Generates (or reuses) the world for a seed; generation costs real time.
     const wroughtwild::worldgen::WorldMap& cached_world(uint64_t seed);
+    const wroughtwild::tuning::WorldgenTable& world_table() const;
     // The elite modifier for an id, or nullptr for "" / unknown.
     const wroughtwild::tuning::EliteModifierDef* find_elite(const String& elite_id) const;
     // Character stats with the Foundry's stat ingots applied.
@@ -629,8 +648,10 @@ private:
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;
     wroughtwild::stats::Equipment equipment_;
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run
+    wroughtwild::trial::GateState trial_gate_;
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
     std::unique_ptr<wroughtwild::worldgen::WorldMap> world_cache_; // last seed's world
+    std::string world_profile_ = "legacy_v1";
     wroughtwild::lattice::Structure structure_; // the player's placed pieces
     std::set<std::string> active_skill_mods_; // debug toggles (F1-F3)
     uint64_t temper_seed_ = 0;

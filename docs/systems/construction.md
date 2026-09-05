@@ -34,6 +34,19 @@ Curves, freeform terrain carving, large blueprints and physics-based destruction
 
 ## Core rules
 
+Owner-approved bounded expansion, 6 September 2026: the
+[world material intensive](../prototype/world-intensive-2026-09-06.md) adds eight
+finished families: Slate, Shellstone, Rustclay Brick, Woven Reed, Resinheart,
+Corkbark, Vitrified Basalt and Cinderglass. Their raw ingredients are not catalogue
+families. Only Light Wall Panel and Fixed Glazed Window are new forms; both occupy
+the existing wall face, seal shelter and block movement/projectiles. The frame
+belongs to each crafted product. `covering` admits light panels and pitched roofs;
+every previously eligible pitched-roof family retains that trait, and
+`stonecut_blocks` remains the unlock. Reed and cork have `only_for_trait: covering`
+and cannot become ordinary blocks, doors or storage. `glazing` similarly restricts
+Cinderglass to fixed windows. Other costs/refunds/addresses remain unchanged.
+See the [art and verification report](../art/world-material-intensive-2026-09-06.md).
+
 1. A harvested material is stored as a family, not as every possible placeable geometry.
 2. Selecting a family opens the shapes currently unlocked for that family.
 3. Placing a shape consumes an amount derived from its volume or standard recipe cost.

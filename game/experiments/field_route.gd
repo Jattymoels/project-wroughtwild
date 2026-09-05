@@ -35,6 +35,10 @@ func _ready() -> void:
 	DirAccess.make_dir_recursive_absolute(output)
 	seed(193)
 	world = preload("res://scenes/sandpit.tscn").instantiate()
+	# The review must be able to match the original route's exact geography
+	# after newer generation profiles become the new-game default.
+	if OS.get_cmdline_user_args().has("--legacy-route"):
+		world.world_profile = "legacy_v1"
 	add_child(world)
 	player = world.player
 	player.class_panel.choose("warden")
@@ -115,6 +119,7 @@ func finish() -> void:
 	check(hits>0,"real enemies land attacks during the fixture")
 	check(player.position.y>world.terrain.height_at(int(player.position.x),int(player.position.z))-1,"player remains above terrain after the route")
 	var result := {"seed":1,"fixture_seed":193,"seconds":elapsed,"distance_m":distance,"peak_enemies":peaks,"casts":casts,"damage_frames":hits,
+		"generation_profile":world.world_profile,
 		"terrain_build":world.terrain.build_profile,
 		"renderer":RenderingServer.get_current_rendering_method(),"resolution":[1920,1080],"fps_cap":120,
 		"scope":"two 16-second samples after settling; full generated world, repeated 13m gentle path, supplied 24-mob pack, fixture healing, no save IO; frame intervals include pacing, not isolated GPU time",

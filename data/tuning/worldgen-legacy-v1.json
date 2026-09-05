@@ -1,0 +1,446 @@
+{
+  "schema_version": 2,
+  "status": "Wave 3 world slice 1: 3D block field, mountains, caves, danger rings",
+  "default_seed": 1,
+  "map": {
+    "width_cells": 320,
+    "height_cells": 320,
+    "cell_size_m": 1.0,
+    "world_depth": 48,
+    "base_height": 12,
+    "height_scale": 10,
+    "height_frequency": 0.02,
+    "height_octaves": 3,
+    "moisture_frequency": 0.01,
+    "design_purpose": "Bounded sandpit dimensions and terrain character (D-003, grown for the Wave 3 world pass). world_depth is the vertical block budget: y=0 bedrock, surface rolls around base_height + noise*height_scale, mountains climb from there and caves wind below. 160x160 at 1 m keeps the world bounded but far enough out that leaving the heartland is a journey. 224 cells a side (from 160, owner 3 Sep 2026: 'always worthwhile making the world larger to allow for more mob variants'): room for a fifth biome and the packs that live in it, at 196 chunks. 320 cells a side (from 224, Wave 6 slice 3, 4 Sep 2026: 'making the biomes bigger ... more expansive'): 400 chunks, with the height and moisture noise at two thirds and three fifths of their frequency so every biome and every hill is broader, and every walk longer."
+  },
+  "mountains": {
+    "extra_scale": 14,
+    "frequency": 0.038,
+    "cragginess_frequency": 0.008,
+    "cragginess_threshold": 0.6,
+    "rim_width_cells": 34,
+    "rim_extra_scale": 16,
+    "design_purpose": "The rim (Wave 6 slice 4, the expansive pass, 4 Sep 2026): over the outer rim_width_cells the land climbs up to rim_extra_scale blocks more, ridged by the massif noise so it is a ring of mountains and not a wall - the valley reads as a valley from anywhere in it, and its edge is a horizon rather than a cliff into nothing. The verticality layer: where the slow cragginess field exceeds its threshold, ridged noise piles up to extra_scale further blocks - localized massifs with cliffs and vistas instead of uniformly lumpy ground. Raising the threshold makes mountains rarer; raising extra_scale makes them taller."
+  },
+  "strata": {
+    "dirt_depth": 3,
+    "design_purpose": "Blocks under the biome surface block: dirt_depth of dirt, then stone to bedrock. What a cliff face or cave wall shows, and (come the digging slice) what shovelling yields before the pick is needed."
+  },
+  "caves": {
+    "enabled": true,
+    "tunnel_frequency": 0.05,
+    "tunnel_width": 0.075,
+    "cavern_frequency": 0.045,
+    "cavern_threshold": 0.76,
+    "cavern_max_y_fraction": 0.5,
+    "min_y": 1,
+    "surface_margin": 2,
+    "breach_chance": 0.35,
+    "node_density": {
+      "iron_vein": 0.05,
+      "copper_vein": 0.03,
+      "tin_vein": 0.02,
+      "boulder": 0.02
+    },
+    "packs": [
+      [
+        "gloom_crawler"
+      ],
+      [
+        "gloom_crawler",
+        "gloom_crawler"
+      ]
+    ],
+    "pack_density": 0.014,
+    "design_purpose": "Carved cave systems: two intersecting 3D noise level-sets (tunnel_width sets how fat the intersection is) wind spaghetti tunnels; a third field above cavern_threshold opens caverns in the lower cavern_max_y_fraction of a column. Tunnels normally keep surface_margin blocks of roof, but breach_chance of columns may carve through the top - natural entrances you can find and drop into. node_density seeds cave floors with nodes: iron runs richer underground, which is the reason to go down before digging exists. packs den Gloom Crawlers on the same floors - the dark is inhabited. The spawn clearing and gate ground are never carved."
+  },
+  "danger": {
+    "rings": [
+      {
+        "radius_m": 110,
+        "pack_size_bonus": 0,
+        "elite_chance": 0.0
+      },
+      {
+        "radius_m": 220,
+        "pack_size_bonus": 1,
+        "elite_chance": 0.14
+      },
+      {
+        "radius_m": 100000,
+        "pack_size_bonus": 2,
+        "elite_chance": 0.25
+      }
+    ],
+    "design_purpose": "Danger scales with distance from spawn: the first ring containing a cell appends pack_size_bonus extra members drawn from the pack's own kind, and rolls elite_chance for one member to carry an elite modifier (world.json elite_modifiers). The heartland stays learnable and elite-free; the far rings are where packs grow teeth and the elite bounties live. Density is not the rings' business any more (Wave 7 slice 1, owner 4 Sep 2026: density by ring made here and there feel the same): each biome carries its own pack_density - the meadow a straggler, the fen and the wastes dense from day one - so the danger is a place with a visible edge, and the rings only give a pack its teeth the further out it dens. The quiet heartland (owner, 3 Sep 2026) survives as the meadow's own number."
+  },
+  "block_rules": {
+    "surface": {
+      "breakable": true,
+      "dig_seconds": 0.7,
+      "yields": {},
+      "by_hand": true
+    },
+    "dirt": {
+      "breakable": true,
+      "dig_seconds": 0.7,
+      "yields": {},
+      "by_hand": true
+    },
+    "stone": {
+      "breakable": true,
+      "dig_seconds": 1.0,
+      "yields": {
+        "split_stone": 1
+      },
+      "by_hand": false,
+      "heat_to_crack": 1
+    },
+    "bedrock": {
+      "breakable": false,
+      "dig_seconds": 0.0,
+      "yields": {},
+      "by_hand": false
+    },
+    "design_purpose": "Breaking generic terrain blocks: hold LMB on a block to dig it out over dig_seconds. by_hand (default true) says bare hands can dig it; heat_to_crack (default 0 = never) is the fire heat that makes it crackable - FIRE-SETTING (D-020, owner 3 Sep 2026: the survival-game pickaxe is 'played out'): a campfire against rock heats the blocks beside it, cold on hot rock cracks it, and cracked rock digs by hand at dig_seconds. Soil digs by hand and yields nothing (access: mine down, open a cave, cut a pit). Cracked strata pay split stone (D-021: the yard dresses it). Bedrock at y 0 is the world's floor and never breaks."
+  },
+  "biomes": [
+    {
+      "id": "rocky_hills",
+      "display_name": "Rocky Hills",
+      "surface": "rock",
+      "height_min": 19,
+      "node_density": {
+        "boulder": 0.03,
+        "iron_vein": 0.016,
+        "tree": 0.004,
+        "silver_vein": 0.012,
+        "stone_seam": 0.02
+      },
+      "pack_density": 0.0025,
+      "packs": [
+        [
+          "stone_husk"
+        ],
+        [
+          "stone_husk",
+          "ash_hound"
+        ]
+      ],
+      "design_purpose": "High ground owns stone and iron; Stone Husks make taking them feel like a claim, and the climb telegraphs risk. height_min tracks base_height + 7 so the biome sits on genuinely raised ground"
+    },
+    {
+      "id": "ember_wastes",
+      "display_name": "Ember Wastes",
+      "surface": "ash",
+      "moisture_max": 0.3,
+      "node_density": {
+        "boulder": 0.012,
+        "ash_snag": 0.002,
+        "ember_iron_vein": 0.02,
+        "stone_seam": 0.008
+      },
+      "pack_density": 0.013,
+      "patrols": true,
+      "packs": [
+        [
+          "ember_whelp",
+          "ember_whelp"
+        ],
+        [
+          "cinder_archer",
+          "ember_whelp"
+        ],
+        [
+          "ash_hound",
+          "ash_hound",
+          "ash_hound"
+        ],
+        [
+          "shrieker",
+          "ember_whelp",
+          "ember_whelp"
+        ],
+        [
+          "hollow_knight",
+          "cinder_wisp"
+        ],
+        [
+          "cinder_wisp",
+          "cinder_wisp",
+          "ash_hound"
+        ]
+      ],
+      "design_purpose": "The dangerous quarter that holds the trial gate: fire creatures preview the Tyrant's element and the ground itself looks burnt; shrieker packs recruit the wastes against you Hollow knights and cinder wisps (3 Sep 2026) give the wastes an armoured line and a burning skirmisher beside the whelps."
+    },
+    {
+      "id": "fen",
+      "display_name": "The Fen",
+      "surface": "marsh",
+      "height_max": 15,
+      "moisture_min": 0.55,
+      "node_density": {
+        "bog_oak": 0.02,
+        "boulder": 0.004,
+        "stone_seam": 0.002
+      },
+      "pack_density": 0.011,
+      "patrols": true,
+      "packs": [
+        [
+          "bog_lurker"
+        ],
+        [
+          "bog_lurker",
+          "marsh_wisp"
+        ],
+        [
+          "marsh_wisp",
+          "marsh_wisp"
+        ],
+        [
+          "bog_lurker",
+          "bog_lurker",
+          "marsh_wisp"
+        ]
+      ],
+      "design_purpose": "Wet lowland where the moisture pools below the valley floor: the fifth biome, and the first whose mobs are not the Tyrant's. Bog lurkers are slow, thick and bleed-proof - a wall you walk around - and marsh wisps skirmish from range and sting; together they teach spacing rather than training. Heights start at the base height (12), so height_max 15 is the lowest band of the noise. Sits before the forest in the list so wet low ground is fen, wet high ground forest."
+    },
+    {
+      "id": "forest",
+      "display_name": "Deep Forest",
+      "surface": "forest_floor",
+      "moisture_min": 0.55,
+      "node_density": {
+        "pine": 0.05,
+        "boulder": 0.006,
+        "stone_seam": 0.004
+      },
+      "pack_density": 0.004,
+      "patrols": true,
+      "packs": [
+        [
+          "ash_hound",
+          "ash_hound"
+        ],
+        [
+          "shrieker",
+          "ash_hound",
+          "ash_hound"
+        ]
+      ],
+      "design_purpose": "Wood country: dense trees with hound packs prowling, so bulk timber runs stay tense; a shrieker among the hounds turns a timber run into a hunt",
+      "grazers": [
+        [
+          "valley_elk"
+        ]
+      ],
+      "grazer_density": 0.002
+    },
+    {
+      "id": "meadow",
+      "display_name": "Meadow",
+      "surface": "grass",
+      "node_density": {
+        "tree": 0.009,
+        "boulder": 0.008,
+        "stone_seam": 0.004
+      },
+      "pack_density": 0.0006,
+      "packs": [
+        [
+          "ember_whelp"
+        ]
+      ],
+      "design_purpose": "The gentle fallback biome and starting country: sparse resources, near-empty of threats, readable in every direction",
+      "grazers": [
+        [
+          "valley_elk",
+          "valley_elk"
+        ]
+      ],
+      "grazer_density": 0.002
+    }
+  ],
+  "nodes": {
+    "tree": {
+      "display_name": "Tree",
+      "material_family": "wood",
+      "units": 14,
+      "units_per_harvest": 14,
+      "drive_presses": 6,
+      "visual": "tree",
+      "design_purpose": "Trees fall as one (the world made whole, owner 4 Sep 2026: 'making trees harder to cut down, but they fell as one'). Six presses of E, each leaning the trunk further from you, then the whole tree comes down and pays its fourteen wood at once. Wood per minute roughly halves against twelve wood in four chops, and every tree is an event with a stump left behind."
+    },
+    "pine": {
+      "display_name": "Pine",
+      "material_family": "pine",
+      "units": 14,
+      "units_per_harvest": 14,
+      "drive_presses": 6,
+      "visual": "tree",
+      "design_purpose": "The forest's tree (Wave 8 slice 2, biomes as material; the owner, 4 Sep 2026: 'much like Minecraft finding a certain forest biome which means you now have access to orange coloured trees for an orange house'): felled like any tree, it pays pine - a pale timber with the timber's every trait, so a pine house is a house of another colour. The forest is where you go for it."
+    },
+    "bog_oak": {
+      "display_name": "Bog Oak",
+      "material_family": "bog_oak",
+      "units": 14,
+      "units_per_harvest": 14,
+      "drive_presses": 6,
+      "visual": "tree",
+      "design_purpose": "The fen's tree: dark, dense timber the water made. The fen is dense and patrols at night, so a bog-oak house is a house you earned; and the Warden's eye wants the fen's altar, so the walk for the curio is the walk for the timber."
+    },
+    "ash_snag": {
+      "display_name": "Ash Snag",
+      "material_family": "ash_wood",
+      "units": 14,
+      "units_per_harvest": 14,
+      "drive_presses": 6,
+      "visual": "tree",
+      "design_purpose": "The wastes' bare snag: bleached, bone-pale timber from the ash. The rarest of the three, from the most dangerous ground."
+    },
+    "boulder": {
+      "display_name": "Boulder",
+      "material_family": "fieldstone",
+      "units": 9,
+      "units_per_harvest": 3,
+      "drive_presses": 3,
+      "visual": "boulder",
+      "design_purpose": "A boulder cracks a chunk of fieldstone off every third press and rolls over on the last: three chunks, nine stone, the same pace as a tree."
+    },
+    "iron_vein": {
+      "display_name": "Iron Vein",
+      "material_family": "iron_ore",
+      "units": 8,
+      "units_per_harvest": 2,
+      "visual": "iron_vein"
+    },
+    "copper_vein": {
+      "display_name": "Copper Vein",
+      "material_family": "copper_ore",
+      "units": 8,
+      "units_per_harvest": 2,
+      "visual": "copper_vein",
+      "era": 2,
+      "heat_to_work": 2
+    },
+    "tin_vein": {
+      "display_name": "Tin Vein",
+      "material_family": "tin_ore",
+      "units": 6,
+      "units_per_harvest": 2,
+      "visual": "tin_vein",
+      "era": 2,
+      "heat_to_work": 2
+    },
+    "design_purpose": "What each scattered node yields per E-press and how much it holds before depleting; visual keys pick the greybox mesh/texture. Cave-floor nodes use the same types (caves.node_density decides which). era (default 1) is the era a node type surfaces in (eras.json, D-019). D-021 (masonry is the unlock, not stone): boulders are FIELDSTONE by hand - loose rock that lays a footing or a dry wall, never a house; STONE SEAMS are worked with a tool_item (a timber wedge, consumed per split) driven by drive_presses presses of E (the baseline), or at once by a heavy impact (the exploit), or twice over when the seam is hot (the synergy) - they pay split stone, which the mason's yard dresses into the stone family. heat_to_work is the fire heat a node must be soaked in (hot when worked, or cracked by cold once) before E works it: the alloy and era-three ores want a charcoal fire; iron and fieldstone are hands' work.",
+    "ember_iron_vein": {
+      "display_name": "Ember-Iron Vein",
+      "material_family": "ember_iron_ore",
+      "units": 6,
+      "units_per_harvest": 2,
+      "visual": "ember_vein",
+      "era": 3,
+      "heat_to_work": 2
+    },
+    "silver_vein": {
+      "display_name": "Silver Vein",
+      "material_family": "silver_ore",
+      "units": 6,
+      "units_per_harvest": 2,
+      "visual": "silver_vein",
+      "era": 3,
+      "heat_to_work": 2
+    },
+    "stone_seam": {
+      "display_name": "Stone Seam",
+      "material_family": "split_stone",
+      "units": 12,
+      "units_per_harvest": 2,
+      "visual": "seam",
+      "tool_item": "timber_wedge",
+      "drive_presses": 4
+    }
+  },
+  "guarantees": {
+    "spawn_biome": "meadow",
+    "spawn_clear_radius_m": 8,
+    "near_radius_m": 55,
+    "min_nodes_near": {
+      "tree": 8,
+      "boulder": 5,
+      "stone_seam": 3
+    },
+    "far_radius_m": 120,
+    "min_nodes_far": {
+      "iron_vein": 3
+    },
+    "gate_biome": "ember_wastes",
+    "gate_min_distance_m": 160,
+    "pack_min_distance_from_spawn_m": 50,
+    "patrol_length_m": 70,
+    "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood and stone within a short walk, keeps iron a walk away (Wave 6 slice 2, 4 Sep 2026: three veins within far_radius_m, none guaranteed near - the first forge is a journey into the hills and back), keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map Three stone seams within the near radius (D-021): the first quarry is always a short walk."
+  },
+  "landmarks": [
+    {
+      "id": "hill_cairn",
+      "display_name": "the cairn on the hill",
+      "biome": "rocky_hills",
+      "look": "cairn",
+      "min_distance_from_spawn_m": 60
+    },
+    {
+      "id": "drowned_altar",
+      "display_name": "the drowned altar",
+      "biome": "fen",
+      "look": "altar",
+      "min_distance_from_spawn_m": 80
+    },
+    {
+      "id": "wastes_rift",
+      "display_name": "the rift in the wastes",
+      "biome": "ember_wastes",
+      "look": "rift",
+      "min_distance_from_spawn_m": 100
+    }
+  ],
+  "design_purpose_landmarks": "The locks (Wave 8 slice 2): one landmark per def, placed deep in its biome - the surface cell nearest the biome's centroid among those at least min_distance_from_spawn_m out, uncarved and unoccupied - so the curio's walk crosses the density and the landmark reads from a distance (the engine builds the look: a cairn with a standing stone, a ring of drowned slabs, a black rift with an ember light). The cairn takes the Tyrant's heart, the altar the Warden's eye; the rift waits for what era four brings.",
+  "fire_setting": {
+    "fuels": {
+      "pine": {
+        "heat": 1,
+        "burn_seconds": 45
+      },
+      "bog_oak": {
+        "heat": 1,
+        "burn_seconds": 45
+      },
+      "ash_wood": {
+        "heat": 1,
+        "burn_seconds": 45
+      },
+      "wood": {
+        "heat": 1,
+        "burn_seconds": 45
+      },
+      "charcoal": {
+        "heat": 2,
+        "burn_seconds": 60
+      }
+    },
+    "reach_cells": 1,
+    "soak_seconds": 4,
+    "hot_seconds": 45,
+    "quench_radius_m": 2.5,
+    "design_purpose": "Fire as one material response (D-020, reframed by D-021): a campfire (construction.json shape campfire) built from a fuel family burns for burn_seconds at that fuel's heat; after soak_seconds every rock block and node within reach_cells of it is hot for hot_seconds after the fire dies. Hot rock is SOFTENED: a heavy impact cracks a hot block, cold landing within quench_radius_m cracks every hot block at once, and a hot seam splits twice over under one blow. Wood fires reach stone; charcoal (the forge's first refinement) reaches the alloy ores. Nothing needs cold; cold is the wide answer where impact is the narrow one."
+  },
+  "generation_profile": "legacy_v1",
+  "generation_elite_ids": [
+    "unfreezable",
+    "cinder_blooded",
+    "stonehide",
+    "hastened"
+  ],
+  "profile_design_purpose": "Immutable legacy_v1 placement snapshot, 6 September 2026. Ordering of biomes, density keys, pack lists and elite IDs is save identity; never retune this file."
+}

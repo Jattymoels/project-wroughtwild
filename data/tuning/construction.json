@@ -13,7 +13,8 @@
       "traits": [
         "timber",
         "joinery",
-        "fuel"
+        "fuel",
+        "covering"
       ],
       "texture": "planks",
       "design_purpose": "The first family: felled wood, worked with nothing but hands. Joinery means it can be hung and swung (doors); it cannot be cut into masonry forms or span a girder. A timber house is still a house - nothing knocks it down."
@@ -25,7 +26,8 @@
       "traits": [
         "timber",
         "joinery",
-        "fuel"
+        "fuel",
+        "covering"
       ],
       "texture": "planks",
       "tint": "#e8dab2",
@@ -38,7 +40,8 @@
       "traits": [
         "timber",
         "joinery",
-        "fuel"
+        "fuel",
+        "covering"
       ],
       "texture": "planks",
       "tint": "#4d3b2e",
@@ -51,7 +54,8 @@
       "traits": [
         "timber",
         "joinery",
-        "fuel"
+        "fuel",
+        "covering"
       ],
       "texture": "planks",
       "tint": "#cdc8bf",
@@ -74,7 +78,8 @@
       "source": "iron_ingot",
       "traits": [
         "metal",
-        "joinery"
+        "joinery",
+        "covering"
       ],
       "texture": "iron_plate",
       "design_purpose": "Smelted at the forge, so a build in iron is a build that has a forge behind it. Metal spans (the girder); joinery for iron doors and hinges. Iron is not malleable: curved forms wait for bronze."
@@ -87,7 +92,8 @@
         "metal",
         "malleable",
         "tough",
-        "joinery"
+        "joinery",
+        "covering"
       ],
       "texture": "bronze",
       "design_purpose": "Era two's alloy (copper and tin, eras.json / D-019): the first malleable family, so it is what the arch and every curved form after it are worked from. Tough is the hook for what may carry what. It also spans and joins, so a bronze build is never worse than iron - it is iron plus curves."
@@ -100,7 +106,8 @@
         "metal",
         "hard",
         "resilient",
-        "joinery"
+        "joinery",
+        "covering"
       ],
       "texture": "steel",
       "design_purpose": "Era three's family: hard and resilient, the traits the third-era forms will require (buttresses, gates). It spans and joins like iron; it is iron that has been through the fire twice."
@@ -141,44 +148,199 @@
       "texture": "fieldstone",
       "only_for_trait": "rough",
       "design_purpose": "Loose rock (D-021): you have stones before you know how to build with them. It lays only what asks for rough stone - a footing, a dry wall - so the first house is timber on a stone footing, not a stone hut. Not a lesser tier of Stone; a different thing."
+    },
+    {
+      "id": "slate",
+      "display_name": "Slate",
+      "source": "slate",
+      "traits": [
+        "masonry",
+        "heavy",
+        "covering"
+      ],
+      "texture": "",
+      "tint": "#454c58",
+      "design_purpose": "Layered dark stone for roofs and paving."
+    },
+    {
+      "id": "shellstone",
+      "display_name": "Shellstone",
+      "source": "shellstone",
+      "traits": [
+        "masonry",
+        "heavy",
+        "covering"
+      ],
+      "texture": "",
+      "tint": "#c7bda0",
+      "design_purpose": "Pale fossil-marked masonry from quarry beds."
+    },
+    {
+      "id": "rustclay_brick",
+      "display_name": "Rustclay Brick",
+      "source": "rustclay_brick",
+      "traits": [
+        "masonry",
+        "heavy",
+        "covering"
+      ],
+      "texture": "",
+      "tint": "#a75d42",
+      "design_purpose": "Warm fired clay masonry from fen banks."
+    },
+    {
+      "id": "woven_reed",
+      "display_name": "Woven Reed",
+      "source": "woven_reed",
+      "traits": [
+        "covering"
+      ],
+      "texture": "",
+      "tint": "#ad9b63",
+      "design_purpose": "Woven panels and layered thatch; never structural blocks or joinery.",
+      "only_for_trait": "covering"
+    },
+    {
+      "id": "resinheart",
+      "display_name": "Resinheart",
+      "source": "resinheart",
+      "traits": [
+        "timber",
+        "joinery",
+        "covering"
+      ],
+      "texture": "",
+      "tint": "#a06839",
+      "design_purpose": "Strongly grained warm wood, refined from separate resinheart trees."
+    },
+    {
+      "id": "corkbark",
+      "display_name": "Corkbark",
+      "source": "corkbark",
+      "traits": [
+        "covering"
+      ],
+      "texture": "",
+      "tint": "#6c5544",
+      "design_purpose": "Thick weathered panels and roofing from finite corkbark trunks.",
+      "only_for_trait": "covering"
+    },
+    {
+      "id": "vitrified_basalt",
+      "display_name": "Vitrified Basalt",
+      "source": "vitrified_basalt",
+      "traits": [
+        "masonry",
+        "heavy",
+        "covering"
+      ],
+      "texture": "",
+      "tint": "#373941",
+      "design_purpose": "Heat-worked dark masonry made from Forge slag."
+    },
+    {
+      "id": "cinderglass",
+      "display_name": "Cinderglass",
+      "source": "cinderglass",
+      "traits": [
+        "glazing"
+      ],
+      "texture": "",
+      "tint": "#727b78",
+      "design_purpose": "Smoky glazed panes with a finished integral frame, made from Forge shards.",
+      "only_for_trait": "glazing"
     }
   ],
   "shapes": [
     {
-      "id":"codex_corner", "display_name":"Chamfer Block", "material_cost":2,
-      "size_m":[1,1,1], "element":"block", "form":"corner", "oriented":true,
-      "hint":"Diagonal wall corner; R turns it. Reserves one block.",
-      "design_purpose":"Owner-approved workshop building look, 5 Sep 2026: diagonal walls use the existing cube cost and full-cell occupancy. The study ID is retained for compatibility."
+      "id": "codex_corner",
+      "display_name": "Chamfer Block",
+      "material_cost": 2,
+      "size_m": [
+        1,
+        1,
+        1
+      ],
+      "element": "block",
+      "form": "corner",
+      "oriented": true,
+      "hint": "Diagonal wall corner; R turns it. Reserves one block.",
+      "design_purpose": "Owner-approved workshop building look, 5 Sep 2026: diagonal walls use the existing cube cost and full-cell occupancy. The study ID is retained for compatibility."
     },
     {
-      "id":"codex_corner_floor", "display_name":"Triangular Slab", "material_cost":1,
-      "size_m":[1,0.25,1], "element":"floor", "form":"corner", "oriented":true,
-      "hint":"Finish a diagonal floor or ceiling; R turns it.",
-      "design_purpose":"Owner-approved workshop building look: a clipped slab at the existing floor-slab cost, on the same saved face addresses."
+      "id": "codex_corner_floor",
+      "display_name": "Triangular Slab",
+      "material_cost": 1,
+      "size_m": [
+        1,
+        0.25,
+        1
+      ],
+      "element": "floor",
+      "form": "corner",
+      "oriented": true,
+      "hint": "Finish a diagonal floor or ceiling; R turns it.",
+      "design_purpose": "Owner-approved workshop building look: a clipped slab at the existing floor-slab cost, on the same saved face addresses."
     },
     {
-      "id":"codex_roof_slope", "display_name":"Roof Slope", "material_cost":1,
-      "size_m":[1,0.5,1], "element":"block", "form":"roof_slope", "oriented":true,
-      "requires_traits":["joinery"], "requires_world_effect":"stonecut_blocks",
-      "unlock_hint":"Defeat the Forge Tyrant to unlock pitched roof shapes.",
-      "hint":"Low edge in front, high edge at the back. R turns; reserves one block.",
-      "design_purpose":"Owner-approved workshop roof: half-height pitch at the existing roof-wedge cost and stonecut unlock; joinery families make the timber roof shown in the workshop."
+      "id": "codex_roof_slope",
+      "display_name": "Roof Slope",
+      "material_cost": 1,
+      "size_m": [
+        1,
+        0.5,
+        1
+      ],
+      "element": "block",
+      "form": "roof_slope",
+      "oriented": true,
+      "requires_traits": [
+        "covering"
+      ],
+      "requires_world_effect": "stonecut_blocks",
+      "unlock_hint": "Defeat the Forge Tyrant to unlock pitched roof shapes.",
+      "hint": "Low edge in front, high edge at the back. R turns; reserves one block.",
+      "design_purpose": "Owner-approved workshop roof: half-height pitch at the existing roof-wedge cost and stonecut unlock; joinery families make the timber roof shown in the workshop. Covering replaces joinery while every previously eligible family retains eligibility. The existing stonecut_blocks unlock remains."
     },
     {
-      "id":"codex_roof_hip", "display_name":"Roof Hip", "material_cost":1,
-      "size_m":[1,0.5,1], "element":"block", "form":"roof_hip", "oriented":true,
-      "requires_traits":["joinery"], "requires_world_effect":"stonecut_blocks",
-      "unlock_hint":"Defeat the Forge Tyrant to unlock pitched roof shapes.",
-      "hint":"Outside roof corner, rising to one high corner. R turns.",
-      "design_purpose":"Outside transition for the adopted roof slope, with its same cost, material traits, unlock and full-block occupancy."
+      "id": "codex_roof_hip",
+      "display_name": "Roof Hip",
+      "material_cost": 1,
+      "size_m": [
+        1,
+        0.5,
+        1
+      ],
+      "element": "block",
+      "form": "roof_hip",
+      "oriented": true,
+      "requires_traits": [
+        "covering"
+      ],
+      "requires_world_effect": "stonecut_blocks",
+      "unlock_hint": "Defeat the Forge Tyrant to unlock pitched roof shapes.",
+      "hint": "Outside roof corner, rising to one high corner. R turns.",
+      "design_purpose": "Outside transition for the adopted roof slope, with its same cost, material traits, unlock and full-block occupancy. Covering replaces joinery while every previously eligible family retains eligibility. The existing stonecut_blocks unlock remains."
     },
     {
-      "id":"codex_roof_valley", "display_name":"Roof Valley", "material_cost":1,
-      "size_m":[1,0.5,1], "element":"block", "form":"roof_valley", "oriented":true,
-      "requires_traits":["joinery"], "requires_world_effect":"stonecut_blocks",
-      "unlock_hint":"Defeat the Forge Tyrant to unlock pitched roof shapes.",
-      "hint":"Inside roof corner, dipping to one low corner. R turns.",
-      "design_purpose":"Inside transition for the adopted roof slope, with its same cost, material traits, unlock and full-block occupancy."
+      "id": "codex_roof_valley",
+      "display_name": "Roof Valley",
+      "material_cost": 1,
+      "size_m": [
+        1,
+        0.5,
+        1
+      ],
+      "element": "block",
+      "form": "roof_valley",
+      "oriented": true,
+      "requires_traits": [
+        "covering"
+      ],
+      "requires_world_effect": "stonecut_blocks",
+      "unlock_hint": "Defeat the Forge Tyrant to unlock pitched roof shapes.",
+      "hint": "Inside roof corner, dipping to one low corner. R turns.",
+      "design_purpose": "Inside transition for the adopted roof slope, with its same cost, material traits, unlock and full-block occupancy. Covering replaces joinery while every previously eligible family retains eligibility. The existing stonecut_blocks unlock remains."
     },
     {
       "id": "cube",
@@ -467,7 +629,41 @@
       ],
       "hint": "a knee-high dry-stone wall: a pen, a garden edge, a parapet - never a room",
       "design_purpose": "Fieldstone's other use: a low wall on a face. It occupies the face like any wall, so it will seal a room for shelter if you roof it - which is the pen-with-a-roof house the owner asked to encourage over a stone one."
+    },
+    {
+      "id": "light_panel",
+      "display_name": "Light Wall Panel",
+      "material_cost": 1,
+      "size_m": [
+        1,
+        1,
+        0.16
+      ],
+      "element": "wall",
+      "form": "light_panel",
+      "requires_traits": [
+        "covering"
+      ],
+      "hint": "A framed covering panel. Seals shelter and blocks movement and shots.",
+      "design_purpose": "One finished material buys a light panel on the existing wall face. Reed and cork belong to covering shapes only."
+    },
+    {
+      "id": "glazed_window",
+      "display_name": "Fixed Glazed Window",
+      "material_cost": 2,
+      "size_m": [
+        1,
+        1,
+        0.16
+      ],
+      "element": "wall",
+      "form": "glazed_window",
+      "requires_traits": [
+        "glazing"
+      ],
+      "hint": "A fixed smoky window with its frame included. Seals shelter and blocks movement and shots.",
+      "design_purpose": "Two finished glass units buy one complete framed window. No separate frame placement, opening state or structural system."
     }
   ],
-  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented shapes. lattice_divisions is how much finer the occupancy registry is than the build grid (2 = half cells): full-size pieces occupy a footprint of registry elements, which is what lets half-scale pieces (fine mode) share the world with them through one set lookup. form (box | stairs | wedge | door, default box) picks the mesh and collision the engine builds; oriented (default false) says R turns the piece; cells_tall (default 1) stacks the footprint upward, for the two-cell door. fine (default false) marks a half-scale piece that occupies one registry element, and fine_of names the full-size shape it is the fine twin of: fine mode (G) swaps the selection for its twin and back, so the palette stays nine shapes with a scale toggle rather than fourteen. materials are the building families (Q cycles the ones you carry): each is paid in its source item and carries traits; a shape may require traits (requires_traits), which is how looks and forms are gated to what a material can be worked into - joinery for doors, masonry for cut stone forms, metal for spans, and malleable reserved for the alloy family that curved forms will need. cells_long stretches a beam along its edge. Materials may carry only_for_trait: such a family is refused by every shape that does not require that trait (charcoal is fuel, never a wall). Form low: a box that sits at the bottom of its element's extent (a footing on the floor, a knee wall on the face), for pieces shorter than a cell."
+  "design_purpose": "grid_size_metres balances Minecraft-like constraint against detail (final value is an open question in construction.md). placement_range_metres is measured from the third-person camera, which sits about 4.5 m behind the player, so it must cover that set-back plus reach; 6 m could not reach the floor in front of the player. removal_refund_fraction controls experimentation freedom versus commitment and deliberately mirrors salvage_return_fraction in crafting.json so building and crafting feel like one economy. element (block | wall | floor | post | beam) says which kind of lattice element a shape occupies: a block takes a whole cell, a wall a vertical face shared by two cells, a floor a horizontal face, a post a vertical edge shared by four cells, a beam a horizontal edge. Placement snaps to the nearest free element of that kind to the crosshair, and two pieces only conflict when they want the same element - which is what lets a cube sit against a wall, a post stand where two walls meet, and a slab rim carry a beam, with no slot bookkeeping and no rotation key for anything but oriented shapes. lattice_divisions is how much finer the occupancy registry is than the build grid (2 = half cells): full-size pieces occupy a footprint of registry elements, which is what lets half-scale pieces (fine mode) share the world with them through one set lookup. form (box | stairs | wedge | door, default box) picks the mesh and collision the engine builds; oriented (default false) says R turns the piece; cells_tall (default 1) stacks the footprint upward, for the two-cell door. fine (default false) marks a half-scale piece that occupies one registry element, and fine_of names the full-size shape it is the fine twin of: fine mode (G) swaps the selection for its twin and back, so the palette stays nine shapes with a scale toggle rather than fourteen. materials are the building families (Q cycles the ones you carry): each is paid in its source item and carries traits; a shape may require traits (requires_traits), which is how looks and forms are gated to what a material can be worked into - joinery for doors, masonry for cut stone forms, metal for spans, and malleable reserved for the alloy family that curved forms will need. cells_long stretches a beam along its edge. Materials may carry only_for_trait: such a family is refused by every shape that does not require that trait (charcoal is fuel, never a wall). Form low: a box that sits at the bottom of its element's extent (a footing on the floor, a knee wall on the face), for pieces shorter than a cell. Owner-approved material intensive: covering admits light panels and pitched roofs; glazing admits fixed framed windows. New materials use one existing refinement station, with no discovery gate."
 }

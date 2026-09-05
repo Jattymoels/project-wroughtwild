@@ -58,6 +58,7 @@ func _ready() -> void:
 	_range_left = spatial.get("max_range_m", 20.0) * combat.sim.skill_reach(String(skill_id))
 	_fork_range = spatial.get("fork_range_m", 7.0)
 	_pierce_left = combat.sim.skill_pierce(String(skill_id))
+	_pierce_left+=int(combat.sim.combat_mods().get("projectile_pierce_bonus",0))
 	mutation = combat.mutation(skill_id).duplicate(true)
 	impact_burst = float(spatial.get("impact_burst",0))>0 or float(mutation.get("impact_radius",0))>0
 	var delivery := String(combat.skills[skill_id].get("delivery", ""))
