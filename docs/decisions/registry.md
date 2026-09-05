@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner correction after the skill expansion, 5 Sep 2026: the Foundry should be
+the main source of transformative build variety. Direct ingots begin as simple
+additions and gain richer additive capabilities through forging/materials;
+specific Catalyst/Kind identities mutate an inward route toward a skill, with
+strong early mechanical identity and later compound builds. Supporting ingots
+should display their resolved form names. This supersedes the generic-catalyst
+interpretation of D-023 and refines D-019/D-020's early pacing, while preserving
+the intent of restrained numerical power. The
+[revised direction and grammar proposal](../prototype/foundry-mutation-direction-2026-09-05.md)
+separates these owner requirements from proposed routing, status and migration
+details. No replacement mechanics have been installed by that design record.
+
 Owner follow-through, 5 Sep 2026: “Lets do it” approves the next building
 usability pass: visual selection, roof/corner orientation and actionable placement
 feedback. Tab while building now opens the catalogue. Existing construction
