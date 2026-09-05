@@ -78,6 +78,7 @@ if ($Checks) {
     Invoke-GodotReview 'gathering-feedback' '--headless res://tests/gathering_feedback.tscn'
     Invoke-GodotReview 'build-usability' '--headless res://tests/build_usability.tscn'
     Invoke-GodotReview 'ranged-fairness' '--headless res://tests/ranged_fairness.tscn'
+    Invoke-GodotReview 'loot-persistence' '--headless res://tests/loot_persistence.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
 } elseif ($Combat) {
     Invoke-GodotReview 'combat-import' '--headless --import'

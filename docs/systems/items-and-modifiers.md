@@ -120,6 +120,31 @@ attacks." So:
   World drops pick a base uniformly, so the new pieces drop as the old
   ones do.
 
+**Loot repetition fix (owner playtest, 5 Sep 2026).** Six of eight observed
+pieces were bows. The base picker is uniform: two bows among fourteen bases.
+An audit through the actual game binding, using the normal seed-1 kill schedule
+for 50,000 whelp kills, produced 1,997 equipment drops, including 294 bows
+(14.7%, versus 14.3% expected). Archer results match at the same gear chance;
+the higher-chance husk sample also reached all fourteen bases.
+
+The seed-1 opening is bow-heavy, and the engine's per-kill loot counter was
+not included in saves. Restarting reset that counter and repeated the opening
+sequence even while previously collected equipment remained saved. The owner's
+save contained duplicate bows with identical modifier values, consistent with
+this defect. SaveManager now writes optional `loot_kill_counter` and restores
+it after any world rebuild, so both a restart and an in-session load resume
+the saved drop sequence. New worlds reset it. Old schema-2 saves remain valid
+and default to zero once because their historical kill count is unavailable;
+subsequent saves preserve it. Existing equipment and all loot weights are
+unchanged. No anti-duplicate or class-biased drop rule was introduced.
+
+`loot_persistence.tscn` verifies continuation with a fresh MobPacks instance,
+in-session rewind, old saves, the real death-to-pickup seed path and equipment
+distribution over 50,000 kills. All 26 dedicated checks and the full engine
+regression pipeline passed. This counter is engine-owned transient history
+persisted alongside the world seed; the native item roll and save schema are
+unchanged.
+
 Tests: sim 3658 (the bases and their slots and caps; the modifiers and their
 tiers; the bow's implicit for the arrow and the orb and never the strike;
 a wrought bow rolling the fan and the pierce, never a self stat; Fletching

@@ -103,6 +103,11 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 	# Generated worlds carry their seed so a load rebuilds the same terrain.
 	if "world_seed" in root:
 		data["world_seed"] = root.get("world_seed")
+	# The deterministic drop stream must continue across restarts. Saving
+	# only the world seed replayed its early gear every time the game opened.
+	var mob_packs := root.get_node_or_null("MobPacks") as MobPacks
+	if mob_packs != null:
+		data["loot_kill_counter"] = mob_packs.loot_kill_counter()
 	# ...and every block the player dug out of it (Wave 3 digging).
 	var terrain := root.get_node_or_null("Terrain") as Terrain
 	if terrain != null and not terrain.broken.is_empty():
@@ -129,6 +134,11 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	# the node names below resolve against the right terrain.
 	if data.has("world_seed") and root.has_method("apply_world_seed"):
 		root.call("apply_world_seed", int(data["world_seed"]))
+	var mob_packs := root.get_node_or_null("MobPacks") as MobPacks
+	if mob_packs != null:
+		# Older v2 saves have no recoverable history: start at zero once.
+		# Subsequent saves preserve the exact sequence, including on F9 load.
+		mob_packs.restore_loot_counter(int(data.get("loot_kill_counter", 0)))
 	# Dug blocks become exactly the save's: holes it has are carved, holes
 	# dug since are filled back in.
 	var terrain := root.get_node_or_null("Terrain") as Terrain

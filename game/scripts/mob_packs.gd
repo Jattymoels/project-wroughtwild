@@ -65,6 +65,7 @@ func _ready() -> void:
 func setup(from_terrain: Terrain, seed_value: int) -> void:
 	terrain = from_terrain
 	world_seed = seed_value
+	_kill_counter = 0
 	packs = []
 	for pack in terrain.map.get("packs", []):
 		packs.append({
@@ -434,6 +435,14 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 		enemy.died.connect(_on_enemy_died)
 		members.append(enemy)
 	pack["members"] = members
+
+
+func loot_kill_counter() -> int:
+	return _kill_counter
+
+
+func restore_loot_counter(value: int) -> void:
+	_kill_counter = maxi(0, value)
 
 
 func _on_enemy_died(enemy: Enemy) -> void:
