@@ -128,8 +128,20 @@ func setup(from_terrain: Terrain, env: Environment, light: DirectionalLight3D) -
 	terrain = from_terrain
 	environment = env
 	sun = light
-	_target = mood_for(_biome_under_player())
+	if terrain.weathered:
+		var look := preload("res://art/weathered_atmosphere.tres")
+		environment.ambient_light_energy = look.ambient_energy
+		sun.directional_shadow_max_distance = look.shadow_distance
+		sun.shadow_bias = look.shadow_bias
+		sun.shadow_normal_bias = look.shadow_normal_bias
+	_target = active_mood(_biome_under_player())
 	_apply(1.0)
+
+func active_mood(biome_id: String) -> Dictionary:
+	if terrain != null and terrain.weathered:
+		var moods: Dictionary = preload("res://art/weathered_atmosphere.tres").moods
+		return moods.get(biome_id,moods[DEFAULT_BIOME])
+	return mood_for(biome_id)
 
 
 func _biome_under_player() -> String:
@@ -151,7 +163,7 @@ func _process(delta: float) -> void:
 	_check_timer -= delta
 	if _check_timer <= 0.0:
 		_check_timer = CHECK_SECONDS
-		_target = mood_for(_biome_under_player())
+		_target = active_mood(_biome_under_player())
 	_apply(1.0 - exp(-BLEND_PER_SECOND * delta))
 
 

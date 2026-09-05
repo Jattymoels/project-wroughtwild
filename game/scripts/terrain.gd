@@ -62,6 +62,8 @@ var _materials := {}
 ## Codex aesthetic comparison, opt-in; never serialized into a world save.
 var frontier_look: Resource
 var faceted_surface := false
+var weathered := false
+var build_profile: Dictionary = {}
 var _sim: WroughtwildSim
 var _seed := 0
 ## Mutable copy of the sim's block field with the player's digs applied.
@@ -159,12 +161,16 @@ func _material_for(kind: String) -> Material:
 
 
 func build(sim: WroughtwildSim, seed_value: int) -> void:
+	var build_start := Time.get_ticks_msec()
 	var crafted := OS.get_cmdline_user_args().has("--crafted-look")
-	faceted_surface = OS.get_cmdline_user_args().has("--faceted-look") or crafted
+	weathered = weathered or OS.get_cmdline_user_args().has("--weathered-look")
+	faceted_surface = OS.get_cmdline_user_args().has("--faceted-look") or crafted or weathered
 	if OS.get_cmdline_user_args().has("--frontier-look") or faceted_surface:
 		frontier_look = preload("res://art/frontier_look.tres")
 	if crafted:
 		frontier_look = preload("res://art/crafted_look.tres")
+	if weathered:
+		frontier_look = preload("res://art/weathered_look.tres")
 	_materials.clear()
 	for child in get_children():
 		remove_child(child)
@@ -190,14 +196,18 @@ func build(sim: WroughtwildSim, seed_value: int) -> void:
 	add_child(_overlays)
 
 	var cell: float = map["cell_size"]
+	var geometry_start := Time.get_ticks_msec()
 	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS, faceted_surface):
 		_build_chunk(chunk_data, cell)
+	var resources_start := Time.get_ticks_msec()
 
 	nodes_root = Node3D.new()
 	nodes_root.name = "ResourceNodes"
 	add_child(nodes_root)
 	for node in map["nodes"]:
 		_spawn_resource_node(node)
+	build_profile = {"map_ms":geometry_start-build_start,"chunks_ms":resources_start-geometry_start,
+		"resources_ms":Time.get_ticks_msec()-resources_start,"total_ms":Time.get_ticks_msec()-build_start}
 
 
 func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
@@ -205,6 +215,8 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 	chunk.name = "Chunk_%d_%d" % [int(chunk_data["x"]), int(chunk_data["z"])]
 	add_child(chunk)
 	chunks["%d_%d" % [int(chunk_data["x"]), int(chunk_data["z"])]] = chunk
+	if faceted_surface:
+		chunk.set_meta("surface_sampler", SurfaceSampler.new(chunk_data["faces"], cell))
 
 	var kinds: Dictionary = chunk_data["kinds"]
 	for kind in kinds:
@@ -317,6 +329,40 @@ func _rebuild_chunk(cx: int, cz: int) -> void:
 		packed.append(v.y)
 		packed.append(v.z)
 	_build_chunk(_sim.world_mesh_chunk(_seed, CHUNK_CELLS, cx, cz, packed, faceted_surface), map["cell_size"])
+	if faceted_surface and is_instance_valid(nodes_root):
+		var cell: float = map["cell_size"]
+		for node in nodes_root.get_children():
+			if node is ResourceNode and node.position.x >= (cx-2)*cell and node.position.x <= (cx+CHUNK_CELLS+2)*cell and node.position.z >= (cz-2)*cell and node.position.z <= (cz+CHUNK_CELLS+2)*cell:
+				node.refresh_surface()
+
+## Same triangles used by picking and walking. Queries near chunk edges also
+## consider neighbours because rounded corners can extend over the boundary.
+func rendered_height(x: float, z: float, reference_y: float, reach := 0.8) -> float:
+	var cell: float = map.get("cell_size",1.0)
+	var cx := floori(x / cell / CHUNK_CELLS) * CHUNK_CELLS
+	var cz := floori(z / cell / CHUNK_CELLS) * CHUNK_CELLS
+	var result := INF
+	var xs := [0]
+	var zs := [0]
+	# Rounded vertices move at most half a cell. Interior samples need only
+	# their own chunk; boundary samples keep the neighbouring triangles.
+	if x/cell-cx<0.5:
+		xs.append(-CHUNK_CELLS)
+	elif x/cell-cx>CHUNK_CELLS-0.5:
+		xs.append(CHUNK_CELLS)
+	if z/cell-cz<0.5:
+		zs.append(-CHUNK_CELLS)
+	elif z/cell-cz>CHUNK_CELLS-0.5:
+		zs.append(CHUNK_CELLS)
+	for dx in xs:
+		for dz in zs:
+			var chunk: Node3D = chunks.get("%d_%d" % [cx+dx,cz+dz])
+			if chunk == null or not chunk.has_meta("surface_sampler"):
+				continue
+			var y: float = chunk.get_meta("surface_sampler").height_at(x,z,reference_y,reach)
+			if is_finite(y) and (not is_finite(result) or absf(y-reference_y)<absf(result-reference_y)):
+				result = y
+	return result
 
 
 ## SaveManager hook: makes the world's digs exactly the save's - undoes

@@ -68,6 +68,12 @@ func _apply_visual() -> void:
 	# Chunky low-poly props (D-013): flat-shaded facets, palette vertex
 	# colours, crooked silhouettes - not Minecraft boxes.
 	var material := PropMesh.material()
+	if _terrain() != null and _terrain().weathered:
+		material.vertex_color_is_srgb = true
+		var look: Resource = _terrain().frontier_look
+		mesh_instance.visibility_range_end = look.tree_distance if visual==&"tree" else look.detail_distance
+		mesh_instance.visibility_range_end_margin = 8.0
+		mesh_instance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 	_own_materials.append(material)
 	mesh_instance.material_override = material
 	mesh_instance.position = Vector3.ZERO
@@ -96,6 +102,7 @@ func _apply_visual() -> void:
 		shape.size = Vector3(2.6, 0.6, 0.9) if along_x else Vector3(0.9, 0.6, 2.6)
 		collider.position = Vector3(0, 0.3, 0)
 		collider.shape = shape
+		refresh_surface()
 		_refresh_wedge_look()
 		return
 	match visual:
@@ -118,6 +125,8 @@ func _apply_visual() -> void:
 					collider.position = Vector3(0, 1.5, 0)
 			if OS.get_cmdline_user_args().has("--crafted-look"):
 				mesh_instance.mesh = preload("res://art/woodland_look.tres").build_tree(_biome_id(), _visual_seed())
+			if _terrain() != null and _terrain().weathered:
+				mesh_instance.mesh = preload("res://art/weathered_woodland.tres").build_tree(_biome_id(), _visual_seed())
 		&"boulder":
 			mesh_instance.mesh = PropMesh.build_boulder(_visual_seed())
 			shape.size = Vector3(1.4, 1.0, 1.2)
@@ -143,7 +152,34 @@ func _apply_visual() -> void:
 			shape.size = Vector3(1.2, 0.9, 1.2)
 			collider.position = Vector3(0, 0.45, 0)
 	collider.shape = shape
+	refresh_surface()
 	_refresh_wedge_look()
+
+## Reproject presentation after a nearby dig without moving the saved resource
+## anchor, changing its visual seed or resetting harvest/fire-setting state.
+func refresh_surface() -> void:
+	var terrain := _terrain()
+	if terrain == null or not terrain.faceted_surface:
+		return
+	var mesh: MeshInstance3D = get_node("MeshInstance3D")
+	var collider: CollisionShape3D = get_node("CollisionShape3D")
+	if visual==&"seam" or String(visual).ends_with("_vein"):
+		var colours := {&"seam":Color("2e3036"),&"iron_vein":PropMesh.IRON_RUST,&"copper_vein":PropMesh.COPPER,
+			&"tin_vein":PropMesh.TIN,&"ember_vein":PropMesh.EMBER_ORE,&"silver_vein":PropMesh.SILVER}
+		var grounded := GroundedSeam.build(self,terrain,_visual_seed()%2==0,colours.get(visual,PropMesh.IRON_RUST))
+		mesh.rotation = Vector3.ZERO
+		mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		mesh.mesh = grounded
+		mesh.visible = grounded != null
+		# Picking follows the visible ribbon instead of a floating three-cell box.
+		collider.set_deferred("disabled",grounded==null)
+		if grounded != null:
+			collider.position = Vector3.ZERO
+			collider.shape = grounded.create_trimesh_shape()
+	else:
+		var y := terrain.rendered_height(position.x,position.z,position.y)
+		if is_finite(y):
+			mesh.position.y = y-position.y-0.025
 
 
 ## The biome under this node ("" when a harness placed it by hand).
@@ -405,6 +441,10 @@ func harvest() -> int:
 ## Feel: each harvest gives the node a quick squash-and-settle, landing on a
 ## scale that tracks how much yield is left - a half-spent tree looks it.
 func _play_harvest_punch() -> void:
+	if _terrain() != null and _terrain().faceted_surface and (visual==&"seam" or String(visual).ends_with("_vein")):
+		# A fracture belongs to the ground. Scaling its node would detach the
+		# sampled vertices; driving the wedge/remaining-unit readout gives feedback.
+		return
 	var target := _scale_for_remaining()
 	scale = target * 0.86
 	var tween := create_tween()

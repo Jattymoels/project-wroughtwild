@@ -73,7 +73,7 @@ func _set_view() -> void:
 	camera.global_position = view["eye"]
 	camera.look_at(view["target"])
 	world.player.global_position = view["eye"] - Vector3(0, 0.72, 0)
-	world.mood._target = BiomeMood.mood_for(world.mood._biome_under_player())
+	world.mood._target = world.mood.active_mood(world.mood._biome_under_player())
 	world.mood._apply(1.0)
 	frame = 0
 	frame_intervals.clear()

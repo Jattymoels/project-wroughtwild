@@ -18,6 +18,14 @@ extends Resource
 @export var soft_terrain := false
 @export var turf_slope_start := 0.25
 @export var turf_slope_end := 0.8
+@export var seam_steps := 24
+@export var seam_half_width := 0.24
+@export var seam_surface_lift := 0.018
+@export var cover_tint := Color.WHITE
+@export var linear_vertex_colours := false
+@export var detail_distance := 0.0
+@export var tree_distance := 0.0
+@export var cover_distance := 0.0
 @export var design_purpose: Dictionary = {}
 
 var _noise: FastNoiseLite
@@ -57,8 +65,11 @@ func cover_mesh(entry: Dictionary) -> ArrayMesh:
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var height := float(entry["height"])
 	var width := float(entry["width"])
-	var bottom: Color = entry["dark"]
-	var top: Color = entry["colour"]
+	var bottom: Color = entry["dark"] * cover_tint
+	var top: Color = entry["colour"] * cover_tint
+	if linear_vertex_colours:
+		bottom = bottom.srgb_to_linear()
+		top = top.srgb_to_linear()
 	for i in blade_count:
 		var angle := TAU * float(i) / float(blade_count)
 		var across := Vector3(cos(angle), 0, sin(angle)) * width * blade_width_fraction

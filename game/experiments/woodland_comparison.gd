@@ -35,6 +35,14 @@ func _ready() -> void:
 	add_child(old_root)
 	add_child(new_root)
 	var profile := preload("res://art/woodland_look.tres")
+	if OS.get_cmdline_user_args().has("--weathered-look"):
+		profile = preload("res://art/weathered_woodland.tres")
+		output = ProjectSettings.globalize_path("res://../build/codex-aesthetic/woodland-weathered")
+		DirAccess.make_dir_recursive_absolute(output)
+		var atmosphere := preload("res://art/weathered_atmosphere.tres")
+		sun.directional_shadow_max_distance = atmosphere.shadow_distance
+		sun.shadow_bias = atmosphere.shadow_bias
+		sun.shadow_normal_bias = atmosphere.shadow_normal_bias
 	var old_meshes := [PropMesh.build_tree(41),PropMesh.build_pine(41),PropMesh.build_tree(41),PropMesh.build_snag(41)]
 	var biomes := ["meadow","forest","fen","ember_wastes"]
 	for i in 4:
@@ -56,6 +64,8 @@ func _ready() -> void:
 			var instance := MeshInstance3D.new()
 			instance.mesh = pair[1]
 			instance.material_override = PropMesh.material()
+			if OS.get_cmdline_user_args().has("--weathered-look"):
+				(instance.material_override as StandardMaterial3D).vertex_color_is_srgb = true
 			instance.position = Vector3(i*6.5,0,0)
 			pair[0].add_child(instance)
 		var label := Label3D.new()

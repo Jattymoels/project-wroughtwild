@@ -136,6 +136,11 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 					size *= float(frontier_look.cover_scale)
 				var offset := Vector3((_roll(cx, cz, String(entry["kind"]), 41) - 0.5) * 0.5, 0.0, (_roll(cx, cz, String(entry["kind"]), 43) - 0.5) * 0.5)
 				var at := Vector3(centre.x, float(surface), centre.z) + offset
+				if chunk.has_meta("surface_sampler"):
+					var grounded: float = chunk.get_meta("surface_sampler").height_at(at.x,at.z,float(surface))
+					if not is_finite(grounded):
+						continue
+					at.y = grounded - 0.015
 				var basis := Basis(Vector3.UP, yaw).scaled(Vector3(size, size, size))
 				if not batches.has(entry["kind"]):
 					batches[entry["kind"]] = {"entry": entry, "transforms": []}
@@ -163,6 +168,10 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 		instance.multimesh = multimesh
 		instance.material_override = _shared_material() if frontier_look == null else frontier_look.cover_material()
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		if frontier_look != null and frontier_look.cover_distance>0:
+			instance.visibility_range_end = frontier_look.cover_distance
+			instance.visibility_range_end_margin = 8.0
+			instance.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 		chunk.add_child(instance)
 		placed += transforms.size()
 	return placed

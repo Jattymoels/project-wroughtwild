@@ -65,6 +65,7 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 			"name": node.name,
 			"parent": String(root.get_path_to(node.get_parent())),
 			"family": String(node.material_family),
+			"visual": String(node.visual),
 			"position": _vec(node.global_position),
 			"remaining_units": node.remaining_units,
 			"units_per_harvest": node.units_per_harvest,
@@ -172,8 +173,17 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 			node = RESOURCE_NODE_SCENE.instantiate()
 			node.name = entry["name"]
 			node.material_family = StringName(entry["family"])
+			node.visual = StringName(entry.get("visual", ""))
+			# Older schema-2 saves did not store the visual. Recover generated
+			# nodes from their stable name instead of restoring a default cylinder.
+			if node.visual==&"" and terrain != null:
+				for def in terrain.map.get("nodes",[]):
+					if "wn_%s_%d_%d_%d" % [def["type"],def["x"],def["y"],def["z"]] == String(node.name):
+						node.visual = StringName(def["visual"])
+						break
+			node.position = (parent as Node3D).to_local(_unvec(entry["position"])) if parent is Node3D else _unvec(entry["position"])
+			node.remaining_units = int(entry["remaining_units"])
 			parent.add_child(node)
-			node.global_position = _unvec(entry["position"])
 		node.remaining_units = int(entry["remaining_units"])
 		node.units_per_harvest = int(entry["units_per_harvest"])
 		node.heat_to_work = int(entry.get("heat_to_work", node.heat_to_work))

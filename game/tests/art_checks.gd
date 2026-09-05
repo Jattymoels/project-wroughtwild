@@ -30,7 +30,7 @@ func _initialize() -> void:
 	check(trunk_outward, "trunk base faces outward")
 	var profile: Resource = preload("res://art/frontier_look.tres")
 	var terrain := Terrain.new()
-	check(terrain.frontier_look == null, "candidate art is opt-in")
+	check(terrain.frontier_look == null, "bare terrain fixture stays neutral; the sandpit selects its look")
 	terrain.free()
 	var broadleaf: Dictionary = GroundCover.COVER["meadow"][0]
 	var hills: Dictionary = GroundCover.COVER["rocky_hills"][0]

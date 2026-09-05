@@ -3,6 +3,9 @@ extends Resource
 ## with ResourceNode; this resource only authors branch and crown geometry.
 @export var profiles: Dictionary = {}
 @export var radial_segments := 9
+@export var irregularity := 0.09
+@export var crown_stagger := 0.6
+@export var foliage_shade := 1.0
 @export var design_purpose: Dictionary = {}
 
 func build_tree(biome: String, seed_value: int) -> ArrayMesh:
@@ -31,7 +34,7 @@ func build_tree(biome: String, seed_value: int) -> ArrayMesh:
 		var fraction := float(i) / float(maxi(1, count - 1))
 		var taper := 1.0 - float(p.get("crown_taper",0.0)) * fraction
 		var spread := float(p.spread) * rng.randf_range(0.83, 1.14) * taper
-		var start := fork.lerp(top, fraction * 0.6)
+		var start := fork.lerp(top, fraction * crown_stagger)
 		var end := start + direction * spread + Vector3.UP * float(p.branch_rise)
 		var knee := start.lerp(end, 0.55) - Vector3.UP * 0.12
 		_tube(st, start, knee, radius * 0.4, radius * 0.22, p.bark)
@@ -83,12 +86,12 @@ func _crown(st: SurfaceTool, centre: Vector3, extent: Vector3, phase: float, lig
 		var ring: Array[Vector3] = []
 		for j in radial_segments:
 			var angle := phase + j * TAU / radial_segments
-			var scallop := 1.0 + 0.09 * sin(angle * 3.0 + phase)
+			var scallop := 1.0 + irregularity * sin(angle * 3.0 + phase)
 			ring.append(centre + Vector3(cos(angle) * extent.x * level.y * scallop,
 				(level.x - 0.4) * extent.y, sin(angle) * extent.z * level.y * scallop))
 		rings.append(ring)
 	for i in 4:
-		var colour := dark.lerp(light, [0.08, 0.35, 0.83, 1.0][i])
+		var colour := dark.lerp(light, [0.08, 0.35, 0.83, 1.0][i]) * Color(foliage_shade,foliage_shade,foliage_shade,1)
 		for j in radial_segments:
 			var next := (j + 1) % radial_segments
 			var a: Vector3 = rings[i][j]

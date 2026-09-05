@@ -20,6 +20,12 @@ purpose.
 
 ## Run from a clean checkout
 
+The default sandpit uses the owner-approved weathered frontier presentation.
+Append `-- --crafted-look` for the preceding brighter pass or
+`-- --legacy-look` for cubic terrain. These switches do not change the world
+seed or save format. The experimental roof workshop retains its separate save.
+See [the latest art report](../docs/art/codex-weathered-frontier-2026-09-05.md).
+
 > **Build the rules extension first** (next section). Without it the world
 > loads but nothing is interactable — you can walk, dodge and jump, while
 > harvesting, building and the forge are all dead, because every interactive

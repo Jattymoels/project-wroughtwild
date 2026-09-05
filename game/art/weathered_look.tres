@@ -1,0 +1,66 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://art/frontier_look.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+patch_metres = 12.0
+detail_metres = 0.8
+colour_variation = 0.12
+soft_terrain = true
+turf_slope_start = 0.25
+turf_slope_end = 0.8
+grass_edge_depth = 0.18
+cover_patch_metres = 9.0
+cover_sparse_multiplier = 0.08
+cover_dense_multiplier = 1.7
+blade_count = 5
+blade_width_fraction = 0.065
+blade_lean_fraction = 0.28
+cover_scale = 1.0
+cover_tint = Color(0.7, 0.73, 0.63, 1)
+linear_vertex_colours = true
+detail_distance = 65.0
+tree_distance = 200.0
+cover_distance = 55.0
+top_colours = {
+"grass": Color(0.285, 0.365, 0.20, 1),
+"forest_floor": Color(0.16, 0.235, 0.155, 1),
+"marsh": Color(0.235, 0.28, 0.205, 1),
+"rock": Color(0.35, 0.365, 0.37, 1),
+"stone": Color(0.337, 0.337, 0.376, 1),
+"dirt": Color(0.416, 0.298, 0.188, 1),
+"ash": Color(0.204, 0.18, 0.18, 1),
+"bedrock": Color(0.173, 0.173, 0.2, 1)
+}
+side_colours = {
+"grass": Color(0.416, 0.298, 0.188, 1),
+"forest_floor": Color(0.337, 0.235, 0.149, 1),
+"marsh": Color(0.25, 0.235, 0.18, 1)
+}
+design_purpose = {
+"linear_vertex_colours": "Convert authored sRGB cover colours to the linear values consumed by the foliage shader.",
+"cover_tint": "Earthier vegetation reduces pale green highlights without changing threat VFX.",
+"detail_distance": "Fade small boulders and mineral ribbons beyond 65 metres, preserving nearby harvesting reads.",
+"tree_distance": "Keep tree silhouettes visible to 200 metres while limiting distant prop submissions.",
+"cover_distance": "Keep grass and reeds within 55 metres; their chunk batches fade over an eight-metre margin.",
+"seam_steps": "24 short spans across a three-metre mineral ribbon let it follow sloping terrain.",
+"seam_half_width": "A 0.24-metre half-width keeps fractures readable without looking like roads.",
+"seam_surface_lift": "Lift the ribbon 0.018 metres above sampled terrain to avoid coplanar flicker.",
+"soft_terrain": "Shared occupancy normals soften the tiny triangle lighting while leaving collision and editable voxels unchanged.",
+"turf_slope_start": "Steep banks expose soil; turf starts to blend in when the upward normal exceeds this amount.",
+"turf_slope_end": "Gentler slopes become fully grassy, with a gradual transition instead of triangle-shaped colour jumps.",
+"top_colours": "Owner revision, 5 Sep: earthier olive turf and weathered slate; marsh and strata retain their identity.",
+"side_colours": "Exposed soil beneath turf makes elevation readable without coating every vertical step in grass.",
+"patch_metres": "Twelve-metre colour patches connect neighbouring blocks into larger landforms.",
+"detail_metres": "Subtle near-ground grain scale, rather than a repeated pixel tile on every cube.",
+"colour_variation": "Restrains surface contrast so resources, silhouettes and threats draw attention.",
+"grass_edge_depth": "How far turf hangs down the top of an exposed soil edge, as a fraction of a block.",
+"cover_patch_metres": "Size of the sparse and lush ground-cover patches; does not move trees or resources.",
+"cover_sparse_multiplier": "How open the sparse patches feel relative to existing biome cover density.",
+"cover_dense_multiplier": "How lush the dense patches feel relative to existing biome cover density.",
+"blade_count": "Five bent blades per tuft trade a few more triangles for a recognisable plant silhouette.",
+"blade_width_fraction": "Narrow tapered blades replace rectangular ground-cover cards.",
+"blade_lean_fraction": "Blade spread gives tufts an irregular outline without animated foliage.",
+"cover_scale": "Scales decorative plants only, so their silhouette reads at first-person height."
+}

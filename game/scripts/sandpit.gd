@@ -39,6 +39,10 @@ func _sim() -> WroughtwildSim:
 
 func _build_world(seed_value: int) -> void:
 	world_seed = seed_value
+	# Owner accepted the smoother presentation and a less cartoon-like tone.
+	# Explicit historical look switches keep reproducible comparisons available.
+	var args := OS.get_cmdline_user_args()
+	terrain.weathered = not (args.has("--legacy-look") or args.has("--crafted-look") or args.has("--faceted-look") or args.has("--frontier-look"))
 	terrain.build(_sim(), seed_value)
 	if terrain.map.is_empty():
 		return

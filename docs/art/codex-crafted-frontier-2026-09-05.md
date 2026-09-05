@@ -10,6 +10,10 @@ unchanged. D-018's previously reported siege-policy conflict remains deferred.
 
 ## What changed and why
 
+Subsequent owner review: this pass was approved and merged into local `main`.
+The [weathered frontier continuation](codex-weathered-frontier-2026-09-05.md)
+records the owner's darker art direction and the following scenery/performance work.
+
 The previous terrain rounded the geometry but gave each small triangle its
 own lighting normal. The hard grass/dirt slope cutoff added another triangle
 pattern. The candidate computes a shared, material-independent normal from

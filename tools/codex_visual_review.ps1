@@ -10,7 +10,10 @@ param(
     [switch]$Crafted,
     [switch]$Roofs,
     [switch]$Woodland,
-    [switch]$Traversal
+    [switch]$Traversal,
+    [switch]$Weathered,
+    [switch]$Grounding,
+    [switch]$FieldRoute
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -57,7 +60,16 @@ if ($Checks) {
     Invoke-GodotReview 'crafted-traversal' '--headless res://tests/crafted_traversal.tscn'
     Invoke-GodotReview 'roof-workshop-headless' '--headless res://experiments/roof_workshop.tscn'
     Invoke-GodotReview 'woodland-headless' '--headless res://experiments/woodland_comparison.tscn'
+    Invoke-GodotReview 'weathered-save' '--headless res://tests/weathered_save.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Weathered) {
+    Invoke-GodotReview 'landform-weathered' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --landform-look --weathered-look'
+    Invoke-GodotReview 'woodland-weathered' '--position -9999,-9999 res://experiments/woodland_comparison.tscn -- --weathered-look'
+} elseif ($Grounding) {
+    Invoke-GodotReview 'grounding' '--position -9999,-9999 res://tests/scenery_grounding.tscn'
+    Invoke-GodotReview 'weathered-save' '--headless res://tests/weathered_save.tscn'
+} elseif ($FieldRoute) {
+    Invoke-GodotReview 'field-route' '--position -9999,-9999 res://experiments/field_route.tscn'
 } elseif ($Crafted) {
     Invoke-GodotReview 'landform-faceted' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --landform-look --frontier-look --faceted-look'
     Invoke-GodotReview 'landform-crafted' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --landform-look --crafted-look'
@@ -84,6 +96,6 @@ if ($Checks) {
     Invoke-GodotReview 'octagon-headless' '--headless res://experiments/octagon_lab.tscn'
     Invoke-GodotReview 'octagon-windowed' '--position -9999,-9999 res://experiments/octagon_lab.tscn'
 } else {
-    Invoke-GodotReview 'baseline' '--position -9999,-9999 --quit-after 400 res://experiments/aesthetic_comparison.tscn'
+    Invoke-GodotReview 'baseline' '--position -9999,-9999 --quit-after 400 res://experiments/aesthetic_comparison.tscn -- --legacy-look'
     Invoke-GodotReview 'frontier' '--position -9999,-9999 --quit-after 400 res://experiments/aesthetic_comparison.tscn -- --frontier-look'
 }

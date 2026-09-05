@@ -301,6 +301,16 @@ nest and home, the shut-door siege) are shelved with it.
 
 ## Open questions
 
+**Owner-approved continuation, 5 Sep 2026:** the normal sandpit now presents
+the same generated/save voxel field through the softer terrain and an earthy,
+less cartoon-like palette (revised D-013). Decorative plants sample the actual
+collision triangles, and seams/ore ribbons follow those surfaces, including
+nearby cave floors. Unsupported ribbon sections stop at holes; picking follows
+the ribbon. A nearby dig or restoration refreshes their geometry without
+moving the resource's saved anchor or resetting its harvest/crack state.
+The source voxel field, yields and unlocks stay unchanged. See
+[evidence and limitations](../art/codex-weathered-frontier-2026-09-05.md).
+
 **Codex experiment, 5 Sep 2026 (OpenAI, not Claude):** optional map fields
 `height_warp_metres` (default 0, finite/non-negative) and
 `height_warp_frequency` (default 0.018, finite/positive) bend the height-noise

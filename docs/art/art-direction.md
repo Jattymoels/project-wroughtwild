@@ -1,4 +1,34 @@
-# Art Direction — "Bright Frontier, Dark Thresholds"
+# Art Direction — "Weathered Frontier, Dark Thresholds"
+
+## Current owner revision — 5 September 2026
+
+The owner accepted the crafted terrain/tree/workshop pass for merging into
+`main`, then requested a less cartoon-like direction, further toward grimdark
+than that pass but lighter than their V Rising/Valheim reference point.
+This deliberately revises D-013's original storybook saturation and cubic-only
+terrain presentation. The older brief below is retained as history.
+
+The current target is **an earthy, weathered frontier with readable daylight**:
+olive and moss greens, slate and loam, restrained warm sun, stronger shape
+shadows and less pale aerial wash. Forest/fen feel watchful; the wastes retain
+their ember accent. Blood, gore and an everywhere-dark exposure are not needed.
+Resources and danger signals must remain distinguishable at player height.
+
+The normal sandpit now uses the smoother editable terrain and the revised
+palette/atmosphere. `--legacy-look`, `--frontier-look`, `--faceted-look` and
+`--crafted-look` retain explicit historical comparison modes. The contour
+generation and modular-roof catalogue remain isolated studies; ordinary world
+generation, construction unlocks and resource economics are unchanged.
+
+Presentation values live in `game/art/weathered_look.tres`,
+`weathered_woodland.tres` and `weathered_atmosphere.tres`. Prop vertex colours
+are authored as sRGB and converted correctly in the new material. The main
+terrain tones are olive `(0.285, 0.365, 0.20)`, forest moss
+`(0.16, 0.235, 0.155)` and weathered slate `(0.35, 0.365, 0.37)`.
+Threat VFX retain their established palette. See the
+[implementation and field evidence](codex-weathered-frontier-2026-09-05.md).
+
+## Historical brief — 1 September 2026
 
 Status: accepted direction (D-013). Owner's brief (1 Sep 2026): a compromise
 between Minecraft's *"always looking over your shoulder within dark places or
