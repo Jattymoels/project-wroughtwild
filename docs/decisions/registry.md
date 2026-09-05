@@ -304,6 +304,18 @@ Statuses:
 
 ## Registering a decision
 
+### Experiment record — Codex, 5 September 2026
+
+The owner authorised aesthetic experiments before progression retuning.
+[Codex's report](../art/codex-aesthetic-experiments-2026-09-05.md) records the
+opt-in material comparison and block-based octagon feasibility test. Author
+and implementer: **Codex (OpenAI), not Claude**. This is an experiment record,
+not a new accepted decision: D-013 remains the default art direction, and
+D-018's conflict with siege demolition remains unresolved. No D-025 was
+accepted or created by this work.
+
+### Procedure
+
 Add an entry when a choice materially affects player experience, save data, system boundaries, architecture or prototype scope. Create a separate ADR when the rationale, alternatives or consequences require more than one table row.
 
 Never rewrite the meaning of an accepted entry without recording what superseded it.
