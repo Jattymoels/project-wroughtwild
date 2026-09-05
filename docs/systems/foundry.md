@@ -4,9 +4,11 @@
 and its inward route must transform supports and skill behaviour. Early ingots
 remain straightforward additions, developed forging adds richer capabilities,
 and Kinds provide noticeable mutations from early play. The previous generic
-family interpretation is superseded as a target; the implementation snapshot
-below describes the still-installed rules. See the
-[revised direction and replacement grammar proposal](../prototype/foundry-mutation-direction-2026-09-05.md).
+family interpretation is superseded. The owner approved implementation and
+continued weapon/armour synergy. [The installed mutation grammar](foundry-mutations.md)
+(D-025) is authoritative for routing, forms, alloy refinements, tags and runtime
+behaviour. The older form tables below are historical; placement, costs, rails
+and ownership still apply unless that grammar explicitly revises them.
 
 **Status:** Owner direction recorded 3 Sep 2026; owner answers 4 Sep 2026 (all thirteen questions); **slices 1 (the frame), 2 (every ingot reads every skill), 3 (typed currency), 4 and 5 (the flow: kinds in the detached cells, the first forms) 6 (kinds as variants; the reactions' hooks), 7 (links re-homed; Arc), 8 (the Marrow's and the Quicksilver's forms) 9 (rails: the class's surround from the start, specialised further at the trial) and 10 (the metal of an ingot) implemented 4 Sep 2026**; the rest of the interactions below are **proposed** (D-023)  
 **Owner:** Human project owner  

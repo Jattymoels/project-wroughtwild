@@ -1,5 +1,10 @@
 # Progression: Eras, the Foundry, and Ores as Properties
 
+Owner approval, 5 Sep 2026 (D-025): early Kinds now provide mechanical
+transformations; direct ingots remain simple at iron and gain additive
+refinements in bronze/steel alongside existing reach. This refines the older
+early-low-complexity passages below. See [the installed grammar](foundry-mutations.md).
+
 **Status:** Accepted direction (owner, 3 Sep 2026); implementation begins with the first era transition  
 **Related decisions:** D-002, D-007, D-014, D-016, D-018, D-019, D-022, D-023
 

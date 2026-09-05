@@ -1,7 +1,10 @@
 # Foundry mutations: the build is made along the path
 
-**Status:** Owner's revised direction recorded; replacement grammar below is a
-design proposal. No replacement rules or save migration have been installed.
+**Status:** Owner approved implementation on 5 Sep 2026, adding continued
+weapon/armour support and future build-defining rare modifiers. The proposal below
+is preserved as the design record. The installed contracts, tuning, completed
+scope and remaining boundaries are in [foundry-mutations.md](../systems/foundry-mutations.md)
+(D-025). No owned skill, item or ingot IDs were migrated or removed.
 
 ## Requested outcome
 

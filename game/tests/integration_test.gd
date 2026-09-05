@@ -473,12 +473,13 @@ func _physics_process(_delta: float) -> void:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			check(sim.foundry_place_skill(2, 2, "prototype_heavy_strike") and sim.foundry_place(1, 2, "edge")
 				and not sim.foundry_place_kind(2, 2, "vanguard") and not sim.foundry_place_kind(2, 3, "vanguard")
-				and sim.foundry_place_kind(1, 3, "vanguard") and sim.derived_stats()["barbs"] > 0.0
+				and sim.foundry_place_kind(1, 3, "vanguard") and sim.skill_mutation("prototype_heavy_strike").zone_armour == 10.0
 				and sim.currency_count("vanguard") == 2,
-				"flow: a kind refuses a socket and a support, takes the corner, and works the Edge into Barbs")
+				"flow: a kind refuses a socket and a support, takes the corner, and works the Edge into Blade Bastion")
 			var bleed_before: float = _back.bleed
-			_back.force_attack()
-			check(_back.bleed > bleed_before, "flow: the whelp that struck you bleeds")
+			_player.combat.apply_payload(_back, PlayerCombat.HEAVY_SKILL, false)
+			check(_back.bleed > bleed_before and sim.derived_stats()["barbs"] == 0.0,
+				"flow: Blade Bastion gives the supported strike a bleed payload; it grants no global thorns")
 			sim.add_material("iron_ingot", 2)
 			check(sim.foundry_remove(2, 2) and sim.foundry_remove(1, 3) and sim.foundry_remove(1, 2)
 				and sim.currency_count("vanguard") == 3 and sim.derived_stats()["barbs"] == 0.0,

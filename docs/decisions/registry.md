@@ -8,9 +8,10 @@ strong early mechanical identity and later compound builds. Supporting ingots
 should display their resolved form names. This supersedes the generic-catalyst
 interpretation of D-023 and refines D-019/D-020's early pacing, while preserving
 the intent of restrained numerical power. The
-[revised direction and grammar proposal](../prototype/foundry-mutation-direction-2026-09-05.md)
-separates these owner requirements from proposed routing, status and migration
-details. No replacement mechanics have been installed by that design record.
+[revised direction](../prototype/foundry-mutation-direction-2026-09-05.md)
+was approved for implementation by the owner, including continued weapon/armour
+support and future build-defining rare modifiers. D-025 and the
+[installed mutation grammar](../systems/foundry-mutations.md) now govern this work.
 
 Owner follow-through, 5 Sep 2026: “Lets do it” approves the next building
 usability pass: visual selection, roof/corner orientation and actionable placement
@@ -88,6 +89,7 @@ Statuses:
 | D-019 | Progression | Per [systems/progression-eras.md](../systems/progression-eras.md): **eras are the campaign** (the world changes state on player-chosen milestones; mobs scale per era, never per player; no zones unlock), **the Foundry** is the point system (ingots placed on a forged plate; adjacency, lines, wrought forms; refinement widens reach, numbers stay flat; respec is re-forging), and **ores are properties, not ranks** (one trait vocabulary across building materials, item bases and ingots; modifier tiers are mechanic breakpoints; held-back modifiers as the early taste; a threefold global number budget). Encroachment belongs to era two | Accepted direction (owner "lets do it" 3 Sep 2026) | The first era transition is playtested |
 | D-023 | The Foundry | Per [systems/foundry.md](../systems/foundry.md): the plate is worked in **workings** - a **subject** (a skill tablet, or a typed currency: the **Vanguard** for defence, later Marrow for life and Quicksilver for tempo) sits in a **socket** the era forges; the ingots orthogonally beside it are **supports** whose reading the subject decides (the same Frost ingot is cold damage beside a skill, cold resistance beside a Vanguard); the four **corners** hold ingots (pairs, backing) or currency as **augments** (a Catalyst works a support into a cross-element reaction such as Scald; a Vanguard lends the supports its defensive reading); subjects side by side **link**; class and mob-family manners live in **rails** on the rows and columns. Trade currency splits into typed kinds that serve both crafting (aiming a roll at a modifier family) and the plate | Accepted direction (owner answers 3 and 4 Sep 2026, "start slice one" 4 Sep 2026); slice 1 (the frame, sockets, backing, Reach), slice 2 (every ingot reads every skill: added elements as typed packets, the self ingots' weak readings, mob resistance by packet type) slice 3 (typed currency: the coin retired for four kinds the families pay, the peddler changes, a craft is aimed with and rare metal casts) slice 4 (the Vanguard as a socketed subject, withdrawn the same day) slice 5 (the flow: only skills in sockets; kinds in the detached cells giving their base forward and working the supports they touch into forms - the Catalyst's sharpenings and reactions, the Vanguard's defensive twists) slice 6 (kinds as lists of variants with a base each; Echo, Quench, Rime, Sear and Brittle as engine hooks) slice 7 (links re-homed to the corner beyond a shared support, casting on trigger at the struck enemy; Arc), slice 8 (the Marrow's sustain forms and the Quicksilver's tempo forms with their hooks) slice 9 (rails: the class's surround from the start, a specialisation at the trial that says what each pattern becomes; two manners) and slice 10 (the metal of an ingot: re-cast at the forge in the era's alloy, reach for backing and pairs, alloy-cast ingots from elites and the deeper forge, compound forms on the metal) implemented 4 Sep 2026; the remaining interactions are proposed | The frame is playtested; the first corner augment lands |
 | D-024 | Base threat | Nests (encroachment slice 1, D-018) retired: the owner (4 Sep 2026) found them "not rewarding" and that they "don't feel natural to the world"; mob AI behaviours are to be reassessed later, and the base threat waits for that. The sim module, the engine's nest and encroachment scripts, the world.json block and the era flags are gone; the design record stays in world-generation.md | Accepted (owner, 4 Sep 2026) | Mob AI behaviours are reassessed |
+| D-025 | Foundry mutations and itemisation | Specific Kind identities travel along every occupied, strictly inward branch and transform intermediate ingots and supports. Reconvergence deduplicates readings; ordered Kind rules compose. Direct bronze/steel supports gain additive refinements. Smoulder, fields, travelling melee, bursts, cast seals, returning life and attack/spell cadences provide early mechanical identity. Equipment reads acquired capabilities while damage packets retain their native type. UI shows resolved names and previews; owned IDs remain stable. Rare build-defining item modifiers are future direction, not a new pool in this pass. [Current grammar](../systems/foundry-mutations.md) supersedes D-023 family-wide reaction tables and refines D-019/D-020 early pacing. | Accepted and implemented (owner: "Perfect ... continue to implement that", 5 Sep 2026) | Owner playtesting of the mutation grammar and first itemisation interactions |
 
 ## Proposals awaiting acceptance
 
@@ -384,8 +386,9 @@ The owner authorised aesthetic experiments before progression retuning.
 opt-in material comparison and block-based octagon feasibility test. Author
 and implementer: **Codex (OpenAI), not Claude**. This is an experiment record,
 not a new accepted decision: D-013 remains the default art direction, and
-D-018's conflict with siege demolition remains unresolved. No D-025 was
-accepted or created by this work.
+D-018's conflict with siege demolition remains unresolved. No new decision was
+accepted or created by that experiment. D-025 was subsequently used for the
+separate, owner-approved Foundry mutation work; it does not resolve this conflict.
 
 The owner subsequently asked Codex to continue these recommendations. The
 [continuation report](../art/codex-aesthetic-intensive-2026-09-05.md) records

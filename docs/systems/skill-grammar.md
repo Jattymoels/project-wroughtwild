@@ -1,5 +1,10 @@
 # The Skill Grammar — First-Person Build Composition
 
+D-025 adds acquired skill capabilities from exact-Kind Foundry routes. Equipment
+reads the resolved tags; native damage packet type stays the base skill's.
+Smoulder, fields, waves, bursts and cadence delivery follow the
+[installed Foundry mutation grammar](foundry-mutations.md).
+
 **Status:** Ideation for Wave 2 (owner-directed, 1 September 2026); the
 first grammar slice is implemented (2 September 2026) — see
 [Implemented](#implemented-the-wave-2-grammar-slice-2-september-2026).

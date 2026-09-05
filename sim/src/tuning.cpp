@@ -469,6 +469,12 @@ static bool p_has_condition(const RailPatternDef& pattern) {
 FoundryDef loadFoundry(const std::string& path) {
     auto doc = json::parseFile(path);
     FoundryDef def;
+    if (auto limits = doc->find("mutation_limits"))
+        for (const auto& [key, value] : limits->asObject()) {
+            if (key == "design_purpose") continue;
+            def.mutationLimits[key] = value->asNumber();
+            if (def.mutationLimits[key] <= 0.0) throw std::runtime_error("foundry: mutation limit must be positive: " + key);
+        }
     {
         const auto& frame = doc->get("frame").asArray();
         if (frame.size() != 2) throw std::runtime_error("foundry: frame is [rows, cols]");
@@ -535,7 +541,10 @@ FoundryDef loadFoundry(const std::string& path) {
     if (auto forms = doc->find("forms")) {
         for (const auto& f : forms->asArray()) {
             FormDef form;
-            form.family = f->get("family").asString();
+            if (auto family = f->find("family")) form.family = family->asString();
+            if (auto support = f->find("support_only")) form.supportOnly = support->asBool();
+            if (auto upstream = f->find("upstream_kind")) form.upstreamKind = upstream->asString();
+            if (auto description = f->find("description")) form.description = description->asString();
             if (auto kind = f->find("kind")) form.kind = kind->asString();
             form.ingot = f->get("ingot").asString();
             if (auto lane = f->find("lane")) form.lane = lane->asString();
@@ -1429,8 +1438,12 @@ Tuning loadAll(const std::string& tuningDirectory) {
         if (!tuning.foundry.findKindOnPlate(currency.id))
             throw std::runtime_error("foundry: currency " + currency.id + " has no place on the plate (kinds)");
     for (const auto& form : tuning.foundry.forms) {
-        if (tuning.foundry.familyName(form.family).empty())
+        if (!form.supportOnly && tuning.foundry.familyName(form.family).empty())
             throw std::runtime_error("foundry: form " + form.displayName + " names unknown family " + form.family);
+        if (!form.upstreamKind.empty() && !tuning.foundry.findKindOnPlate(form.upstreamKind))
+            throw std::runtime_error("foundry: unknown upstream Kind " + form.upstreamKind);
+        if (form.supportOnly && (form.metal.empty() || !form.kind.empty() || !form.upstreamKind.empty()))
+            throw std::runtime_error("foundry: refinement requires a metal and cannot name a Kind");
         if (!form.kind.empty() && !tuning.foundry.findKindOnPlate(form.kind))
             throw std::runtime_error("foundry: form " + form.displayName + " names unknown kind " + form.kind);
         if (!tuning.foundry.findIngot(form.ingot))

@@ -83,6 +83,9 @@ func _skills() -> void:
 		shown_skills.append(id)
 		var status := "Discovered" if learned else "Find its page"
 		var column := _card("%s · %s" % [skill.display_name,status],String(skill.get("description","")))
+		if learned:
+			var working: Dictionary = sim.skill_mutation(id)
+			for form in working.get("forms", []): _text(column, "%s — %s" % [form.form_name, form.description], UiTheme.SUN_WARM)
 		var recovery := sim.skill_cooldown_seconds(id)
 		if String(skill.get("delivery",""))=="dash":
 			recovery /= 1.0+float(sim.derived_stats().get("dash_recovery",0))
@@ -127,9 +130,9 @@ func _progression() -> void:
 	var foundry: Dictionary = sim.foundry()
 	var column := _card("Era %d · %s" % [int(era.index),era.display_name],String(era.story))
 	_text(column,"%d forged rows · two skill sockets · %d of %d rails set" % [int(foundry.last_row)-int(foundry.first_row)+1,int(foundry.rails_set),int(foundry.rails_allowed)],UiTheme.FROST)
-	column = _card("Discover → practise → shape","Find a page, use its skill to reach the listed mastery milestones, then lay its tablet in a Foundry socket. Ingots beside it support it; Kinds in corners transform those supports.")
+	column = _card("Discover → practise → shape","Find a page, use its skill to reach the listed mastery milestones, then lay its tablet in a Foundry socket. Ingots beside it support it; specific Kinds transform every ingot along an inward path.")
 	_text(column,"Milestones forge permanent ingots: useful crafts, first encounters, exploration and trials. Arrange the same pieces differently to try a different build.")
-	column = _card("Forge a wider working","Eras add rows to the plate. At a built forge, re-cast an ingot in hand in an available alloy to extend how far it reads backing and pairs; supports still touch the skill.")
+	column = _card("Forge a wider working","Eras add rows to the plate. At a built forge, re-cast an ingot in hand in an available alloy for richer direct support readings as well as longer backing/pair reach. Bronze Reach adds pierce; steel adds a fork. Supports still touch the skill.")
 	for metal in foundry.get("metals",[]):
 		_text(column,"%s · reach %d %s · available from era %d" % [metal.display_name,int(metal.reach),"cell" if int(metal.reach)==1 else "cells",int(metal.era)],UiTheme.SUN_WARM)
 	column = _card("Choose when the world advances","Trial curios name the place that can receive them. Setting a curio there turns the era; time and skill uses do not advance it. Your existing equipment, skills and buildings carry forward.")

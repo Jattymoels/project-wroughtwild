@@ -1,5 +1,11 @@
 # Items and Modifiers
 
+Owner approval, 5 Sep 2026 (D-025): weapons, armour and charms continue to support
+Foundry builds. Gear scales acquired capabilities such as projectile melee and
+Smoulder's cold buildup. A small set of rare modifiers may later define builds
+or motivate new plate arrangements; no new rare affix pool is added in this pass.
+See [Foundry mutations](foundry-mutations.md) for packet isolation and current limits.
+
 **Status:** Accepted direction (D-014, owner answers 1 September 2026); slice 1 implemented  
 **Owner:** Unassigned  
 **Related decisions:** D-007 (open), D-012, ADR-0002 (proposal C, provisional), D-014 (proposed)  

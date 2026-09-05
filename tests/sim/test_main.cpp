@@ -2638,14 +2638,14 @@ void testTypedCurrency(const tuning::Tuning& t) {
     const auto& c = t.crafting;
     check(c.currencies == std::vector<std::string>{"vanguard", "warding_vanguard", "marrow", "quicksilver", "sipping_marrow", "striking_quicksilver", "casting_quicksilver"} && !c.isCurrency("trade_currency"),
           "kinds: the purse holds the original and expanded cast kinds; the coin is gone");
-    check(c.currencyKinds.size() == 11 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
+    check(c.currencyKinds.size() == 12 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
               c.findKind("marrow")->family == "life" && c.findKind("quicksilver")->family == "speed" &&
               c.findKind("ember_catalyst")->family == "offence" && c.findKind("preserving_catalyst")->family == "offence" &&
               !c.findKind("trade_currency"),
-          "kinds: eleven variants in four families");
-    check(c.exchangeRate == 3 && c.exchangeKinds.size() == 10 &&
+          "kinds: twelve variants in four families");
+    check(c.exchangeRate == 3 && c.exchangeKinds.size() == 11 &&
               std::find(c.exchangeKinds.begin(), c.exchangeKinds.end(), "ember_catalyst") == c.exchangeKinds.end(),
-          "kinds: the peddler changes ten kinds at three to one; the ember catalyst stays the trial's");
+          "kinds: the peddler changes eleven kinds at three to one; the ember catalyst stays the trial's");
     check(c.aimedMinimumRarity == "keen", "kinds: an aimed craft is at least keen");
     bool coinAnywhere = false;
     for (const auto& enemy : t.world.enemies) {
@@ -2776,11 +2776,11 @@ void testTypedCurrency(const tuning::Tuning& t) {
 // Catalysts are offensive creativity; Vanguards defensive.
 void testKindsInCorners(const tuning::Tuning& t) {
     const auto& f = t.foundry;
-    check(f.kinds.size() == 11 && f.findKindOnPlate("vanguard") && f.findKindOnPlate("vanguard")->modifier == "armour_plating" &&
+    check(f.kinds.size() == 12 && f.findKindOnPlate("vanguard") && f.findKindOnPlate("vanguard")->modifier == "armour_plating" &&
               std::abs(f.findKindOnPlate("vanguard")->value - 4.0) < 1e-9 && f.findKindOnPlate("ember_catalyst") &&
               f.findKindOnPlate("ember_catalyst")->modifier.empty() && f.findKindOnPlate("ember_catalyst")->family == "offence" &&
               !f.findKindOnPlate("nothing") && f.familyName("offence") == "Catalyst" && f.familyName("nothing").empty(),
-          "flow: eleven variants on the plate in four families; the Vanguard has a base, the Catalyst none");
+          "flow: twelve variants on the plate in four families; the Vanguard has a base, the Catalyst none");
     check(f.forms.size() >= 20 && f.hasteAfterHitSeconds > 0.0, "flow: the first forms load");
     bool poolClean = true;
     for (const auto& base : t.items.itemBases)
@@ -2834,14 +2834,14 @@ void testKindsInCorners(const tuning::Tuning& t) {
         if (e.kind == "support" && e.skill == "prototype_frost_orb" && e.modifier == "cold_damage") ++supports;
         if (e.kind == "form") {
             ++forms;
-            check(e.skill == "prototype_frost_orb" && e.modifier == "life_on_kill" && std::abs(e.value - 4.0) < 1e-9 && e.cellRow == 1 &&
-                      e.cellCol == 0 && e.row == 1 && e.col == 1 && e.subject == "defence" && e.label.rfind("Frost Leech", 0) == 0,
-                  "flow: Frost Leech names its skill, its support cell, its socket and its family");
+            check(e.skill == "prototype_frost_orb" && !e.modifier.empty() && e.path.size() == 3 && e.cellRow == 1 &&
+                      e.cellCol == 0 && e.row == 1 && e.col == 1 && e.subject == "defence" && e.formName == "Rime Bastion" && e.sourceKind == "vanguard",
+                  "flow: Rime Bastion names its skill, its support cell, its socket and its family");
         }
     }
-    check(forms == 1 && supports == 1, "flow: one form, and the Frost still supports the orb");
+    check(forms == 6 && supports == 1, "flow: one six-effect form, and the Frost still supports the orb");
     auto mods = grammar::foundryMods(t, p.foundry(), p.currentEra());
-    checkNear(grammar::skillLifeOnKill(t, mods, "prototype_frost_orb"), 4.0, 1e-9, "flow: a kill with the orb restores four life");
+    checkNear(grammar::skillMutation(t, mods, "prototype_frost_orb").at("zone_armour"), 10.0, 1e-9, "flow: the orb plants a ten-armour seal");
     checkNear(grammar::skillHit(t, mods, "prototype_frost_orb")[0].damage, 9.0 * (1.0 + 0.12 + 0.24), 1e-9, "flow: the orb keeps its +24% cold");
     checkNear(grammar::skillLifeOnKill(t, mods, "prototype_frost_nova"), 0.0, 1e-9, "flow: the nova, in no socket, gets nothing");
     // A shared support feeds both skills: Haste south of the orb, touched by
@@ -2850,8 +2850,8 @@ void testKindsInCorners(const tuning::Tuning& t) {
           "flow: haste in the shared support, the strike in the second socket");
     int quicksteps = 0;
     for (const auto& e : foundry::effects(t, p.foundry(), p.plate()))
-        if (e.kind == "form" && e.modifier == "haste_after_hit") ++quicksteps;
-    check(quicksteps == 2 && std::abs(onSheet(p).hasteAfterHit - 0.32) < 1e-9, "flow: Quickstep feeds both skills the shared support serves");
+        if (e.kind == "form" && e.formName == "Quickbrace" && e.modifier == "mutation_zone_armour") ++quicksteps;
+    check(quicksteps == 2 && grammar::skillMutation(t, grammar::foundryMods(t,p.foundry(),1), "prototype_heavy_strike").at("zone_armour") == 10, "flow: Quickbrace feeds both skills the shared support serves");
     // Lifting pays metal and returns the kind; lifted, nothing flows.
     check(!p.foundryRemove(2, 0), "flow: lifting needs the metal");
     p.inventory["iron_ingot"] = 1;
@@ -2872,18 +2872,18 @@ void testKindsInCorners(const tuning::Tuning& t) {
     for (const auto& e : foundry::effects(t, c.foundry(), c.plate())) {
         if (e.kind != "form") continue;
         ++reactionEffects;
-        if (e.label.rfind("Scald", 0) == 0) scald = true;
+        if (e.formName == "Kindling") scald = true;
         if (e.modifier == "damage_vs_ignite") check(e.packet == "cold", "catalyst: Scald's more damage is on the orb's own cold");
     }
-    check(scald && reactionEffects == 2, "catalyst: Ember beside a cold orb, worked, is Scald: two effects");
+    check(scald && reactionEffects == 8, "catalyst: Ember Catalyst keeps its Kindling identity on a cold orb");
     auto cm = grammar::foundryMods(t, c.foundry(), c.currentEra());
-    checkNear(grammar::igniteApplied(t, cm, "prototype_frost_orb", false), 15.0, 1e-9, "catalyst: the scalded orb ignites");
+    checkNear(grammar::igniteApplied(t, cm, "prototype_frost_orb", false), 65.0, 1e-9, "catalyst: the Kindling orb gains an ignition payload");
     checkNear(grammar::igniteApplied(t, cm, "prototype_frost_nova", false), 0.0, 1e-9, "catalyst: the nova does not");
     auto plain = grammar::skillHit(t, cm, "prototype_frost_orb");
     auto burning = grammar::skillHit(t, cm, "prototype_frost_orb", {"ignite"});
     auto chilled = grammar::skillHit(t, cm, "prototype_frost_orb", {"chill"});
     check(plain.size() == 2 && burning.size() == 2, "catalyst: the orb is still a cold-and-fire bolt");
-    checkNear(burning[0].damage, plain[0].damage * 1.2, 1e-9, "catalyst: an ignited enemy takes 20% more of the orb's cold");
+    checkNear(burning[0].damage, plain[0].damage, 1e-9, "catalyst: Kindling changes ignition spread, leaving the native cold hit unchanged");
     checkNear(burning[1].damage, plain[1].damage, 1e-9, "catalyst: and no more of its fire");
     checkNear(chilled[0].damage, plain[0].damage, 1e-9, "catalyst: a merely chilled enemy takes the plain hit");
     // The same lane: a Frost beside the orb worked by a catalyst is Deep Frost.
@@ -2891,8 +2891,8 @@ void testKindsInCorners(const tuning::Tuning& t) {
     check(c.foundryRemove(1, 0) && c.foundryPlace(1, 0, "frost"), "catalyst: frost in the ember's place");
     bool deep = false;
     for (const auto& e : foundry::effects(t, c.foundry(), c.plate()))
-        if (e.kind == "form" && e.label.rfind("Deep Frost", 0) == 0 && e.modifier == "deep_frost") deep = true;
-    check(deep, "catalyst: Frost beside a cold orb, worked, is Deep Frost");
+        if (e.kind == "form" && e.formName == "Steambrand" && e.modifier == "frostbite") deep = true;
+    check(deep, "catalyst: Ember Catalyst on Frost is Steambrand");
     cm = grammar::foundryMods(t, c.foundry(), c.currentEra());
     check(grammar::chillApplied(t, cm, "prototype_frost_orb", false) > grammar::chillApplied(t, {}, "prototype_frost_orb", false) * 1.29,
           "catalyst: the orb chills deeper");
@@ -2914,8 +2914,8 @@ void testKindsInCorners(const tuning::Tuning& t) {
           "far: a catalyst in the corner between carries the Vanguard's base inward");
     bool serration = false;
     for (const auto& e : foundry::effects(t, far.foundry(), far.plate()))
-        if (e.kind == "form" && e.label.rfind("Serration", 0) == 0 && e.skill == "prototype_heavy_strike") serration = true;
-    check(serration, "far: the catalyst works the edge into Serration for the strike");
+        if (e.kind == "form" && e.formName == "Cinder Edge" && e.skill == "prototype_heavy_strike") serration = true;
+    check(serration, "far: the Ember Catalyst works the edge into Cinder Edge for the strike");
 
     // The save carries a corner kind; a stale kind touching a socket goes back to the purse on load.
     save::SaveGame game;
@@ -2973,58 +2973,28 @@ void testVariantsAndHooks(const tuning::Tuning& t) {
           "variants: its base is five to every resistance, not armour");
     bool leech = false;
     for (const auto& e : foundry::effects(t, w.foundry(), w.plate()))
-        if (e.kind == "form" && e.label.rfind("Frost Leech (Warding Vanguard", 0) == 0) leech = true;
-    check(leech, "variants: it works the family's forms all the same, and the form names the variant");
+        if (e.kind == "form" && e.formName == "Rime Veil" && e.sourceKind == "warding_vanguard") leech = true;
+    check(leech, "variants: Warding has its own Rime Veil, distinct from Bulwark's armour seal");
 
-    // The hooks as sim numbers, each from its form.
-    auto laid = [&](const std::string& skill, const std::string& ingot, const std::string& event) {
-        economy::PlayerEconomy e(t);
-        e.learnSkill(skill);
-        e.foundryEvent(event);
-        e.grant("ember_catalyst", 1);
-        check(e.foundryPlaceSkill(1, 1, skill) && e.foundryPlace(1, 0, ingot) && e.foundryPlaceKind(2, 0, "ember_catalyst"),
-              "hooks: " + ingot + " beside " + skill + ", a catalyst in the corner");
-        return e;
-    };
-    // Echo: Haste beside any skill, worked, repeats every fourth cast.
-    auto echo = laid("prototype_frost_orb", "haste", "first_kill:ash_hound");
-    auto em = grammar::foundryMods(t, echo.foundry(), echo.currentEra());
-    check(grammar::skillEchoEvery(t, em, "prototype_frost_orb") == 4 && grammar::skillEchoEvery(t, em, "prototype_frost_nova") == 0,
-          "hooks: Echo repeats the orb every fourth cast and no other skill");
-    // Quench: Frost beside a fire skill, worked.
-    auto quench = laid("prototype_ember_bolt", "frost", "first_kill:gloom_crawler");
-    auto qm = grammar::foundryMods(t, quench.foundry(), quench.currentEra());
-    check(grammar::skillQuenches(t, qm, "prototype_ember_bolt") && !grammar::skillQuenches(t, qm, "prototype_frost_orb"),
-          "hooks: Quench belongs to the bolt alone");
-    checkNear(grammar::chillApplied(t, qm, "prototype_ember_bolt", false), 15.0, 1e-9, "hooks: the quenching bolt chills");
-    auto boltPlain = grammar::skillHit(t, qm, "prototype_ember_bolt");
-    auto boltVsChilled = grammar::skillHit(t, qm, "prototype_ember_bolt", {"chill"});
-    checkNear(boltVsChilled[0].damage, boltPlain[0].damage * 1.2, 1e-9, "hooks: a chilled enemy takes 20% more of the bolt's fire");
-    // Rime: Frost beside a physical skill, worked: the novas chill.
-    auto rime = laid("prototype_heavy_strike", "frost", "first_kill:gloom_crawler");
-    auto rm = grammar::foundryMods(t, rime.foundry(), rime.currentEra());
-    checkNear(grammar::skillNovaChill(t, rm, "prototype_heavy_strike"), 30.0, 1e-9, "hooks: Rime's novas chill by thirty");
-    checkNear(grammar::skillNovaChill(t, rm, "prototype_area_strike"), 0.0, 1e-9, "hooks: and no other skill's");
-    // Sear: Edge beside a fire skill, worked: bleeds, more against the bleeding, a faster burn while moving.
-    auto sear = laid("prototype_ember_bolt", "edge", "work:strike_split");
-    auto sm = grammar::foundryMods(t, sear.foundry(), sear.currentEra());
-    checkNear(grammar::skillSear(t, sm, "prototype_ember_bolt"), 0.5, 1e-9, "hooks: Sear's burn ticks half again as fast while moving and bleeding");
-    checkNear(grammar::bleedApplied(t, sm, "prototype_ember_bolt", false), 20.0, 1e-9, "hooks: the searing bolt bleeds");
-    // Brittle: Edge beside a cold skill, worked: bleeds, and a frozen bleeder shatters from the spell's hit.
-    auto brittle = laid("prototype_frost_orb", "edge", "work:strike_split");
-    auto bm = grammar::foundryMods(t, brittle.foundry(), brittle.currentEra());
-    check(grammar::skillBrittle(t, bm, "prototype_frost_orb") && !grammar::skillBrittle(t, bm, "prototype_heavy_strike"),
-          "hooks: Brittle belongs to the orb alone");
-    checkNear(grammar::bleedApplied(t, bm, "prototype_frost_orb", false), 20.0, 1e-9, "hooks: the brittle orb bleeds");
-    // Serration: Edge beside a physical skill, worked: its hits bleed and its bleeds build faster.
-    auto serration = laid("prototype_heavy_strike", "edge", "work:strike_split");
-    auto srm = grammar::foundryMods(t, serration.foundry(), serration.currentEra());
-    checkNear(grammar::bleedApplied(t, srm, "prototype_heavy_strike", false), 20.0 * 1.3, 1e-9, "hooks: Serration bleeds twenty, thirty percent faster");
-    // Nothing of these on a bare plate.
-    grammar::ActiveMods none;
-    check(grammar::skillEchoEvery(t, none, "prototype_frost_orb") == 0 && !grammar::skillQuenches(t, none, "prototype_ember_bolt") &&
-              !grammar::skillBrittle(t, none, "prototype_frost_orb") && std::abs(grammar::skillSear(t, none, "prototype_ember_bolt")) < 1e-9,
-          "hooks: a bare plate has none of them");
+    // Legacy hooks remain supported by gear/debug/save modifiers. Test
+    // their resolver contracts independently of retired family recipes.
+    grammar::ActiveMods hooks;
+    for (const auto& [id, value] : std::vector<std::pair<std::string,double>>{
+            {"echo_every",3},{"quench",1},{"nova_chill",30},{"sear",.5},{"brittle",1},{"laceration",20},{"arc",1.5}}) {
+        auto mod = grammar::modAt(t.items,id,value,"test");
+        mod.appliesToTags.clear(); mod.requiresTags = {"skill:prototype_frost_orb"}; hooks.push_back(mod);
+    }
+    check(grammar::skillEchoEvery(t,hooks,"prototype_frost_orb") == 3, "hooks: cadence resolves for its skill");
+    check(grammar::skillQuenches(t,hooks,"prototype_frost_orb") && grammar::skillBrittle(t,hooks,"prototype_frost_orb"), "hooks: retained boolean hooks resolve");
+    checkNear(grammar::skillNovaChill(t,hooks,"prototype_frost_orb"),30,1e-9,"hooks: nova buildup resolves");
+    checkNear(grammar::skillSear(t,hooks,"prototype_frost_orb"),.5,1e-9,"hooks: Sear resolves");
+    checkNear(grammar::bleedApplied(t,hooks,"prototype_frost_orb",false),20,1e-9,"hooks: added bleed resolves");
+    checkNear(grammar::skillArc(t,hooks,"prototype_frost_orb"),1.5,1e-9,"hooks: arc resolves");
+    check(!grammar::skillQuenches(t,hooks,"prototype_ember_bolt") && grammar::skillEchoEvery(t,hooks,"prototype_ember_bolt")==0,
+          "hooks: scoped modifiers do not leak to another skill");
+    hooks.push_back(hooks.front());
+    check(grammar::skillEchoEvery(t,hooks,"prototype_frost_orb")==3,"hooks: another cadence investment never makes repeats slower");
+
 }
 
 // D-023 slice 7: links re-homed to the flow - a Catalyst in a corner
@@ -3034,8 +3004,8 @@ void testLinksAndArc(const tuning::Tuning& t) {
     const auto& f = t.foundry;
     check(f.linkFamily == "offence", "links: the Catalyst family links");
     bool arcForm = false;
-    for (const auto& form : f.forms) if (form.displayName == "Arc" && form.ingot == "reach" && form.skillTag == "single_target") arcForm = true;
-    check(arcForm && t.items.findModifier("arc"), "arc: the form and its modifier load");
+    for (const auto& form : f.forms) if (form.displayName == "Throughline" && form.ingot == "reach" && form.kind == "piercing_catalyst") arcForm = true;
+    check(arcForm && t.items.findModifier("arc"), "wave: Throughline and the retained arc modifier load");
 
     economy::PlayerEconomy p(t);
     p.learnSkill("prototype_shatter");
@@ -3060,19 +3030,19 @@ void testLinksAndArc(const tuning::Tuning& t) {
     bool linkEffect = false, deepFrost = false;
     for (const auto& e : foundry::effects(t, p.foundry(), p.plate())) {
         if (e.kind == "link" && e.skill == "prototype_frost_orb" && e.cellRow == 1 && e.cellCol == 2 && e.subject == "offence") linkEffect = true;
-        if (e.kind == "form" && e.label.rfind("Deep Frost", 0) == 0 && e.skill == "prototype_frost_orb") deepFrost = true;
+        if (e.kind == "form" && e.formName == "Steambrand" && e.skill == "prototype_frost_orb") deepFrost = true;
     }
     check(linkEffect && deepFrost, "links: the link is an effect on the shared support, and the catalyst still works the frost");
     auto mods = grammar::foundryMods(t, p.foundry(), p.currentEra());
     // The other corner's catalyst works the ember west of the orb into Scald, so the orb ignites too: two triggers.
     check(grammar::skillTriggers(t, mods, "prototype_frost_orb") == std::vector<std::string>{"freeze", "ignite"} &&
-              grammar::skillTriggers(t, mods, "prototype_shatter").empty() && grammar::skillTriggers(t, mods, "prototype_heavy_strike").empty(),
-          "links: the scalded orb's triggers are a freeze and an ignite; Shatter and a plain strike have none");
+              grammar::skillTriggers(t, mods, "prototype_shatter") == std::vector<std::string>{"freeze", "ignite"} && grammar::skillTriggers(t, mods, "prototype_heavy_strike").empty(),
+          "links: both linked tablets gain the shared support payload; an unslotted strike stays plain");
     check(grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_frost_orb", "freeze") == std::vector<std::string>{"prototype_shatter"} &&
               grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_frost_orb", "ignite") == std::vector<std::string>{"prototype_shatter"},
           "links: on the orb's freeze or its ignite, Shatter casts itself");
     check(grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_frost_orb", "bleed").empty() &&
-              grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_shatter", "freeze").empty() &&
+              grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_shatter", "bleed").empty() &&
               grammar::linkedCasts(t, mods, p.foundry(), p.plate(), "prototype_heavy_strike", "bleed").empty(),
           "links: a trigger the skill cannot fire, or a skill with none, casts nothing");
     // A bleed skill linked to a fire skill runs both ways.
@@ -3089,117 +3059,40 @@ void testLinksAndArc(const tuning::Tuning& t) {
               grammar::linkedCasts(t, bm, b.foundry(), b.plate(), "prototype_ember_bolt", "ignite") == std::vector<std::string>{"prototype_rend"},
           "links: a bleed skill linked to a fire skill runs both ways");
 
-    // Arc: Reach worked by a catalyst beside a strike sweeps; beside a projectile it splits instead.
-    economy::PlayerEconomy a(t);
-    a.foundryEvent("first_kill:cinder_archer"); // reach
-    a.grant("ember_catalyst", 1);
-    check(a.foundryPlaceSkill(1, 1, "prototype_heavy_strike") && a.foundryPlace(1, 0, "reach") && a.foundryPlaceKind(2, 0, "ember_catalyst"),
-          "arc: reach beside the strike, worked by a catalyst");
-    auto am = grammar::foundryMods(t, a.foundry(), a.currentEra());
-    checkNear(grammar::skillArc(t, am, "prototype_heavy_strike"), 1.5, 1e-9, "arc: the strike sweeps a metre and a half either side");
-    checkNear(grammar::skillArc(t, am, "prototype_area_strike"), 0.0, 1e-9, "arc: the area strike has no arc");
-    check(grammar::forkCount(t, am, "prototype_heavy_strike") == 0, "arc: Split does not land on a strike");
-    a.inventory["iron_ingot"] = 1;
-    check(a.foundryRemove(1, 1) && a.foundryPlaceSkill(1, 1, "prototype_frost_orb"), "arc: the orb takes the socket");
-    am = grammar::foundryMods(t, a.foundry(), a.currentEra());
-    check(grammar::forkCount(t, am, "prototype_frost_orb") == grammar::forkCount(t, {}, "prototype_frost_orb") + 1 &&
-              std::abs(grammar::skillArc(t, am, "prototype_frost_orb")) < 1e-9,
-          "arc: beside the orb the same reach and catalyst are Split, not Arc");
+    // A Piercing Kind transforms a melee tablet's delivery, so the
+    // projectile equipment vocabulary becomes useful to that attack.
+    foundry::State wave;
+    wave.plate = {{1,1,"","prototype_heavy_strike"},{1,0,"reach",""},{2,0,"","","piercing_catalyst"}};
+    auto am = grammar::foundryMods(t,wave,1);
+    check(grammar::skillMutation(t,am,"prototype_heavy_strike").at("wave")==1 && grammar::skillPierce(t,am,"prototype_heavy_strike")==1,
+          "wave: a strike becomes a piercing travelling wave");
+    const double before = grammar::skillDamage(t,am,"prototype_heavy_strike");
+    am.push_back(grammar::modAt(t.items,"projectile_damage",.25,"weapon"));
+    checkNear(grammar::skillDamage(t,am,"prototype_heavy_strike"),before*1.25,1e-9,"wave: projectile weapon rolls scale the transformed melee hit");
+    check(grammar::skillPierce(t,am,"prototype_frost_orb")==0,"wave: an unslotted projectile gains no pierce");
+
 }
 
 // D-023 slice 8: the Marrow's sustain forms and the Quicksilver's tempo
 // forms, each a corner kind working a support beside a skill; the Dash's
 // forms land on the sheet because the Dash sits on no socket.
 void testMarrowAndQuicksilverForms(const tuning::Tuning& t) {
-    const auto& f = t.foundry;
-    int life = 0, speed = 0;
-    for (const auto& form : f.forms) {
-        if (!form.metal.empty()) continue; // the compound forms of slice 10 sit on top
-        if (form.family == "life") ++life;
-        if (form.family == "speed") ++speed;
+    const std::map<std::string,std::string> operations = {{"marrow","recovery_on_kill"},{"sipping_marrow","siphon"},
+        {"quicksilver","trail_fraction"},{"striking_quicksilver","echo_delay"},{"casting_quicksilver","echo_delay"}};
+    for (const auto& [kind,operation] : operations) {
+        for (const auto& ingot : t.foundry.ingots) {
+            const std::string skill = kind=="striking_quicksilver" ? "prototype_heavy_strike" : "prototype_frost_orb";
+            foundry::State state;
+            state.plate = {{1,1,"",skill},{1,0,ingot.id,""},{2,0,"","",kind}};
+            const auto mods = grammar::foundryMods(t,state,1);
+            check(grammar::skillMutation(t,mods,skill).at(operation)>0,"life/tempo: " + kind + " carries its own operation through " + ingot.id);
+            check(grammar::skillMutation(t,mods,"prototype_ember_bolt").at(operation)==0,"life/tempo: operation is local to its receiving skill");
+            if (kind=="striking_quicksilver" || kind=="casting_quicksilver")
+                check(grammar::skillEchoEvery(t,mods,skill)==3,"tempo: every third compatible use repeats");
+            state.plate.erase(state.plate.begin()+1);
+            check(grammar::skillMutation(t,grammar::foundryMods(t,state,1),skill).at(operation)==0,"life/tempo: removing the route shuts the operation off");
+        }
     }
-    check(life == 8 && speed == 8, "marrow: eight forms each for the Marrow and the Quicksilver");
-    for (const char* id : {"life_on_hit", "refund_on_kill", "haste_on_kill", "heal_more", "dash_reach", "life_on_dash", "armour_on_dash", "dash_recovery"})
-        check(t.items.findModifier(id) != nullptr, std::string("marrow: the modifier ") + id + " loads");
-    auto onSheet = [&](const economy::PlayerEconomy& who) {
-        std::vector<stats::ExtraEffect> extra;
-        for (const auto& m : grammar::foundryMods(t, who.foundry(), who.currentEra())) extra.push_back({m.effectKey, m.value});
-        return stats::deriveStats(t.world.playerBase, {}, t.items, extra);
-    };
-    // A working with one kind in each corner: the Marrow below the west
-    // support, the Quicksilver beyond the east one.
-    auto laid = [&](const std::string& west, const std::string& westEvent, const std::string& east, const std::string& eastEvent) {
-        economy::PlayerEconomy e(t);
-        e.foundryEvent(westEvent);
-        if (eastEvent != westEvent) e.foundryEvent(eastEvent);
-        e.grant("marrow", 1);
-        e.grant("quicksilver", 1);
-        check(e.foundryPlaceSkill(1, 1, "prototype_frost_orb") && e.foundryPlace(1, 0, west) && e.foundryPlace(1, 2, east) &&
-                  e.foundryPlaceKind(2, 0, "marrow") && e.foundryPlaceKind(1, 3, "quicksilver"),
-              "marrow: the orb with " + west + " west and " + east + " east, a Marrow and a Quicksilver in the corners");
-        return e;
-    };
-    // Frost (Cold Blood for the Marrow), Ember (Hot Hands for the Quicksilver).
-    auto a = laid("frost", "first_kill:gloom_crawler", "ember", "first_kill:ember_whelp");
-    auto am = grammar::foundryMods(t, a.foundry(), a.currentEra());
-    bool coldBlood = false, hotHands = false;
-    for (const auto& e : foundry::effects(t, a.foundry(), a.plate())) {
-        if (e.kind == "form" && e.label.rfind("Cold Blood (Marrow", 0) == 0 && e.skill == "prototype_frost_orb") coldBlood = true;
-        if (e.kind == "form" && e.label.rfind("Hot Hands (Quicksilver", 0) == 0 && e.skill == "prototype_frost_orb") hotHands = true;
-    }
-    check(coldBlood && hotHands, "marrow: Cold Blood and Hot Hands are worked on the orb's supports");
-    checkNear(grammar::wardMultiplier(t, am, {"chill"}), 0.85, 1e-9, "marrow: Cold Blood - a chilled enemy deals 15% less to you");
-    checkNear(grammar::skillHasteOnKill(t, am, "prototype_frost_orb"), 0.16, 1e-9, "marrow: Hot Hands - a kill with the orb quickens you");
-    checkNear(grammar::skillHasteOnKill(t, am, "prototype_frost_nova"), 0.0, 1e-9, "marrow: and no other skill");
-    auto sheetA = onSheet(a);
-    check(std::abs(sheetA.maxLife - (t.world.playerBase.maxLife + 6.0)) < 1e-9 && std::abs(sheetA.armour) < 1e-9,
-          "marrow: the Marrow's own six life on the sheet, and the Quicksilver's base is no armour");
-    // Ember west (Cauterise) and Frost east (Cold Snap).
-    auto b = laid("ember", "first_kill:ember_whelp", "frost", "first_kill:gloom_crawler");
-    auto bm = grammar::foundryMods(t, b.foundry(), b.currentEra());
-    checkNear(grammar::skillLifeOnHit(t, bm, "prototype_frost_orb"), 1.0, 1e-9, "marrow: Cauterise - a hit with the orb restores one life");
-    checkNear(grammar::skillRefundOnKill(t, bm, "prototype_frost_orb"), 0.25, 1e-9, "marrow: Cold Snap - a kill refunds a quarter of the orb's cooldown");
-    // Haste west (Lifeline) and Reach east (Long Step): both on the sheet.
-    auto c = laid("haste", "first_kill:ash_hound", "reach", "first_kill:cinder_archer");
-    auto sheetC = onSheet(c);
-    check(std::abs(sheetC.healMore - 0.15) < 1e-9 && std::abs(sheetC.dashReachM - 1.0) < 1e-9,
-          "marrow: Lifeline amplifies every heal by 15%, Long Step adds a metre to the Dash");
-    // Vigour west (Hale) and Plate east (Braced Step); then swapped kinds: Scar Tissue and Second Breath.
-    auto d = laid("vigour", "recipe:workbench_kit", "plate", "first_kill:stone_husk");
-    auto sheetD = onSheet(d);
-    check(std::abs(sheetD.maxLife - (t.world.playerBase.maxLife + 6.0 + 12.0 + 24.0)) < 1e-9 && std::abs(sheetD.armourOnDash - 8.0) < 1e-9,
-          "marrow: Hale's 24 life on the sheet with the ingot's 12 and the Marrow's 6; Braced Step's 8 armour on a Dash");
-    d.inventory["iron_ingot"] = 2;
-    check(d.foundryRemove(2, 0) && d.foundryRemove(1, 3) && d.foundryPlaceKind(2, 0, "quicksilver") && d.foundryPlaceKind(1, 3, "marrow"),
-          "marrow: the kinds swap corners");
-    auto sheetD2 = onSheet(d);
-    check(std::abs(sheetD2.lifeOnDash - 4.0) < 1e-9 && std::abs(sheetD2.armourOnDash) < 1e-9 &&
-              std::abs(grammar::skillCastArmour(t, grammar::foundryMods(t, d.foundry(), d.currentEra()), "prototype_frost_orb") - (4.0 + 4.0)) < 1e-9,
-          "marrow: swapped, the vigour is Second Breath and the plate Scar Tissue on top of its weak reading");
-    // Ward (Warded Blood) and Haste (Fleet).
-    auto e = laid("ward", "world_effect:stonecut_blocks", "haste", "first_kill:ash_hound");
-    auto sheetE = onSheet(e);
-    // The Ward ingot's own base is ten fire resistance, and its weak reading (5%) stacks with Warded Blood's 10%.
-    check(std::abs(sheetE.fireResistancePercent - 15.0) < 1e-9 && std::abs(sheetE.coldResistancePercent - 5.0) < 1e-9 &&
-              std::abs(sheetE.dashRecovery - 0.16) < 1e-9,
-          "marrow: Warded Blood's five to every resistance on the ward's ten, Fleet's faster Dash");
-    checkNear(grammar::wardMultiplier(t, grammar::foundryMods(t, e.foundry(), e.currentEra()), {"chill"}), 0.85, 1e-9,
-              "marrow: Warded Blood's 10% on the Ward's own 5% - a chilled enemy deals 15% less");
-    // Edge: Bloodletting and Quick Cut.
-    auto g = laid("edge", "work:strike_split", "frost", "first_kill:gloom_crawler");
-    g.inventory["iron_ingot"] = 3;
-    check(g.foundryRemove(1, 3) && g.foundryRemove(1, 2) && g.foundryPlace(1, 2, "edge") == false, "marrow: one edge only");
-    auto gm = grammar::foundryMods(t, g.foundry(), g.currentEra());
-    checkNear(grammar::skillLifeOnKill(t, gm, "prototype_frost_orb"), 3.0, 1e-9, "marrow: Bloodletting - a kill with the orb restores three life");
-    check(g.foundryRemove(2, 0) && g.foundryPlaceKind(2, 0, "quicksilver"), "marrow: the Quicksilver takes the edge's corner");
-    gm = grammar::foundryMods(t, g.foundry(), g.currentEra());
-    checkNear(grammar::skillRefundOnKill(t, gm, "prototype_frost_orb"), 0.15, 1e-9, "marrow: Quick Cut refunds 15% on a kill");
-    checkNear(grammar::bleedApplied(t, gm, "prototype_frost_orb", false), 20.0, 1e-9, "marrow: and the orb bleeds");
-    // Bare: none of it.
-    grammar::ActiveMods none;
-    check(std::abs(grammar::skillLifeOnHit(t, none, "prototype_frost_orb")) < 1e-9 && std::abs(grammar::skillRefundOnKill(t, none, "prototype_frost_orb")) < 1e-9 &&
-              std::abs(stats::deriveStats(t.world.playerBase, {}, t.items, {}).healMore) < 1e-9,
-          "marrow: a bare plate has none of it");
 }
 
 // D-023 slice 9: rails, the plate's surround. A class is chosen before
@@ -3474,7 +3367,7 @@ void testMetal(const tuning::Tuning& t) {
         if (s.metal == "alloy") ++alloySources;
     for (const auto& form : f.forms)
         if (!form.metal.empty()) ++compound;
-    check(alloySources == 4 && compound == 8, "metal: four alloy-cast sources, eight compound forms");
+    check(alloySources == 4 && compound == 16, "metal: four alloy-cast sources, sixteen alloy refinements");
     auto pairs = [&](const economy::PlayerEconomy& who, const std::string& name) {
         int n = 0;
         for (const auto& e : foundry::effects(t, who.foundry(), who.plate()))
@@ -3547,13 +3440,13 @@ void testMetal(const tuning::Tuning& t) {
     p.grant("ember_catalyst", 1);
     check(p.foundryRemove(2, 1) && p.foundryRemove(1, 0) && p.foundryPlace(2, 1, "ember", "bronze") && p.foundryPlaceKind(3, 1, "ember_catalyst") == false,
           "metal: the Ember moved beside the bolt; the fourth row is not forged yet");
-    check(p.foundryPlaceKind(2, 0, "ember_catalyst") && hasForm(p, "Kindling (") && hasForm(p, "Bronze Kindling ("),
-          "metal: a bronze Ember worked by a Catalyst is Kindling and Bronze Kindling both");
+    check(p.foundryPlaceKind(2, 0, "ember_catalyst") && hasForm(p, "Kindling") && hasForm(p, "Bronze Ember Mastery"),
+          "metal: a bronze Ember combines Kindling with Bronze Ember Mastery");
     p.inventory["iron_ingot"] = 20;
-    check(p.foundryRemove(2, 1) && p.foundryPlace(2, 1, "frost", "bronze") && hasForm(p, "Deep Frost (") && hasForm(p, "Bronze Deep Frost ("),
-          "metal: the bronze Frost there is Deep Frost and Bronze Deep Frost");
-    check(p.foundryRemove(2, 1) && p.foundryRemove(2, 3) && p.foundryPlace(2, 1, "frost", "iron") && !hasForm(p, "Bronze Deep Frost (") && hasForm(p, "Deep Frost ("),
-          "metal: an iron Frost there is Deep Frost alone");
+    check(p.foundryRemove(2, 1) && p.foundryPlace(2, 1, "frost", "bronze") && hasForm(p, "Steambrand") && hasForm(p, "Bronze Frost Mastery"),
+          "metal: the bronze Frost combines Steambrand with Bronze Frost Mastery");
+    check(p.foundryRemove(2, 1) && p.foundryRemove(2, 3) && p.foundryPlace(2, 1, "frost", "iron") && !hasForm(p, "Bronze Frost Mastery") && hasForm(p, "Steambrand"),
+          "metal: an iron Frost retains Steambrand without the bronze refinement");
     // Era three: steel, and the alloy-cast sources.
     economy::PlayerEconomy k(t);
     check(k.foundryEvent("elite_kill:ash_hound").empty() && k.foundryEvent("first_kill:ash_hound") == std::vector<std::string>{"haste"},
@@ -4436,8 +4329,8 @@ void testSkillExpansion(const tuning::Tuning& t) {
     };
     auto piercing=working(ids[1],kinds[0],"reach");
     mods=grammar::foundryMods(t,piercing.foundry(),1);
-    check(grammar::skillPierce(t,mods,ids[1])==3 && grammar::forkCount(t,mods,ids[1])==1,
-          "expansion: Piercing Catalyst adds Throughline and retains common Split");
+    check(grammar::skillPierce(t,mods,ids[1])==3 && grammar::forkCount(t,mods,ids[1])==0,
+          "expansion: Piercing Catalyst adds Throughline without inheriting another Catalyst reaction");
     check(grammar::skillPierce(t,mods,"prototype_frost_orb")==0,"expansion: variant form is scoped to its working");
     auto impact=working(ids[2],kinds[1],"edge");
     mods=grammar::foundryMods(t,impact.foundry(),1);
@@ -4477,6 +4370,8 @@ void testSkillExpansion(const tuning::Tuning& t) {
     for(const auto& id:ids) check(restored.skillUses(id)==p.skillUses(id),"expansion: mastery survives save " + id);
     for(const auto& id:kinds) check(restored.held(id)==1,"expansion: new Kind survives save " + id);
 }
+
+#include "foundry_mutations.h"
 
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
@@ -4547,6 +4442,7 @@ int main(int argc, char** argv) {
     testBiggerWorld(t);
     testEraThreeAndLife(t);
     testSkillExpansion(t);
+    testFoundryMutations(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

@@ -25,6 +25,10 @@ var _title: Label
 var _grid: GridContainer
 var _tray: VBoxContainer
 var _effects: VBoxContainer
+var _workings: VBoxContainer
+var _preview: RichTextLabel
+var _cell_buttons := {}
+var _flow_overlay: FoundryFlowOverlay
 var _message: Label
 var _selected: StringName = &""
 ## The metal of the ingot picked from the tray (slice 10).
@@ -100,11 +104,20 @@ func _ready() -> void:
 	_grid.add_theme_constant_override("v_separation", 6)
 	left.add_child(_grid)
 	var how := Label.new()
-	how.text = "Lay skills in sockets. Ingots beside them are supports; matching ingots behind them add backing.\nKinds go in corners and flow through supports toward a skill. Hover a piece to read its effects.\nRails shape a row or column while their pattern holds.\nLift an ingot or Kind for a little metal; tablets lift free.\nI → Build guide explains discoveries, Kinds and progression."
+	how.text = "Skills sit in sockets; neighbouring ingots add support.\nKinds transform every ingot on their inward path.\nSelect a piece, then hover an empty cell to preview. Lift costs metal; tablets lift free."
 	how.modulate = UiTheme.MUTED
 	how.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	how.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 4 * 6, 0)
 	left.add_child(how)
+	_preview = RichTextLabel.new()
+	_preview.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 24, 88)
+	_preview.bbcode_enabled = false
+	_preview.scroll_active = true
+	_preview.text = "Hover a transformed ingot to trace its flow."
+	left.add_child(_preview)
+	_flow_overlay = FoundryFlowOverlay.new()
+	_flow_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_flow_overlay)
 
 	_list_scroll = ScrollContainer.new()
 	_list_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -118,6 +131,9 @@ func _ready() -> void:
 	right.custom_minimum_size = Vector2(420, 0)
 	right.add_theme_constant_override("separation", 6)
 	_list_scroll.add_child(right)
+	right.add_child(_section("Your workings"))
+	_workings = VBoxContainer.new()
+	right.add_child(_workings)
 	right.add_child(_section("Ingots in hand"))
 	_tray = VBoxContainer.new()
 	right.add_child(_tray)
@@ -154,6 +170,7 @@ func is_open() -> bool:
 
 func open_panel() -> void:
 	_root.visible = true
+	_flow_overlay.visible = true
 	_message.text = ""
 	refresh()
 
@@ -162,6 +179,7 @@ func close_panel() -> void:
 	if not is_open():
 		return
 	_root.visible = false
+	_flow_overlay.visible = false
 	closed.emit()
 
 
@@ -183,6 +201,9 @@ func refresh() -> void:
 		_sockets[Vector2i(int(s[0]), int(s[1]))] = true
 	_title.text = "The Foundry  —  era %d: rows %d to %d of the %d×%d frame are forged" % [view["era"], _first_row + 1, _last_row + 1, rows, cols]
 
+	_cell_buttons.clear()
+	_flow_overlay.paths = []
+	_flow_overlay.queue_redraw()
 	for child in _grid.get_children():
 		child.queue_free()
 	_grid.columns = cols + 1
@@ -238,8 +259,14 @@ func refresh() -> void:
 			corners[corner].append(subject)
 	# Every reading written on its cell: what a support or a backing does.
 	var readings := {}
+	var form_names := {}
 	var effects: Array = sim.foundry_effects()
 	for effect in effects:
+		var position := Vector2i(int(effect.cell_row), int(effect.cell_col))
+		var name := String(effect.get("form_name", ""))
+		if name != "":
+			if not form_names.has(position): form_names[position] = PackedStringArray()
+			if not form_names[position].has(name): form_names[position].append(name)
 		var kind: String = effect["kind"]
 		if kind != "support" and kind != "added" and kind != "backing" and kind != "form" and kind != "link":
 			continue
@@ -261,8 +288,10 @@ func refresh() -> void:
 		for c in cols:
 			var cell := Button.new()
 			cell.custom_minimum_size = CELL_SIZE
+			cell.add_theme_font_size_override("font_size", 13)
 			cell.clip_text = true
 			var key := Vector2i(r, c)
+			_cell_buttons[key] = cell
 			frame_cell_count += 1
 			if r < _first_row or r > _last_row:
 				# The plate's unworked edge: the era has not forged this row.
@@ -285,7 +314,7 @@ func refresh() -> void:
 				cell.text = "{ %s }" % kind_short.get(currencies[key], kind_name)
 				cell.modulate = UiTheme.IRON_RUST if flowing.get(key, false) else Color(UiTheme.IRON_RUST, 0.45)
 				if flowing.get(key, false):
-					lines.append("This %s flows to a skill: its base counts, and it works the supports it touches into forms. Click to lift (costs metal; it returns to your purse)." % kind_name)
+					lines.append("This %s flows to a skill: its base counts, and its identity travels through every inward ingot. Click to lift (costs metal; it returns to your purse)." % kind_name)
 				else:
 					lines.append("This %s flows to nothing yet: no chain of pieces leads inward to a laid tablet. It gives nothing until one does." % kind_name)
 				for effect in effects:
@@ -295,6 +324,10 @@ func refresh() -> void:
 				var info: Dictionary = sim.foundry_ingot(placed[key])
 				var metal: String = placed_metal.get(key, "")
 				cell.text = info.get("display_name", placed[key]).replace(" Ingot", "")
+				if form_names.has(key):
+					cell.text = String(form_names[key][0])
+					if form_names[key].size() > 1: cell.text += " +%d" % (form_names[key].size()-1)
+					lines.append("%s becomes %s." % [info.display_name, " / ".join(form_names[key])])
 				if metal != "" and metal != default_metal:
 					cell.text += " (%s)" % metal_names.get(metal, metal).to_lower()
 				lines.append(info.get("sentence", ""))
@@ -323,9 +356,28 @@ func refresh() -> void:
 				lines.append("Belongs to no working yet: room for a pair or a backing.")
 			cell.tooltip_text = "\n".join(lines)
 			cell.pressed.connect(_on_cell.bind(r, c))
+			cell.mouse_entered.connect(_inspect_cell.bind(r, c))
 			_grid.add_child(cell)
 		_grid.add_child(_rail_button(rail_slots.get("row:%d" % r, {}), rails_allowed, Vector2(RAIL_WIDTH, CELL_SIZE.y)))
 
+	for child in _workings.get_children(): child.queue_free()
+	for skill in tablets.values():
+		var form: Dictionary = sim.skill_mutation(String(skill))
+		var title := Label.new()
+		title.text = sim.combat_skill(String(skill)).get("display_name", skill)
+		title.modulate = UiTheme.SUN_WARM
+		_workings.add_child(title)
+		var text := Label.new()
+		text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var lines := PackedStringArray()
+		var resolved := _resolved_summary(String(skill), form)
+		if resolved != "": lines.append(resolved)
+		for entry in form.get("forms", []): lines.append("%s — %s" % [entry.form_name, entry.description])
+		if lines.is_empty(): lines.append("Plain support. Add an inward Kind path to transform it.")
+		text.text = "\n".join(lines)
+		text.tooltip_text = "Equipment can read: " + ", ".join(form.get("tags", []))
+		_workings.add_child(text)
 	for child in _tray.get_children():
 		child.queue_free()
 	tray_count = 0
@@ -402,7 +454,7 @@ func refresh() -> void:
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.clip_text = true
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.tooltip_text = "In a corner, or a far cell beyond one: its base flows to the skill while a chain of pieces leads inward, and it works every support it touches into a form."
+		button.tooltip_text = "In a corner, or a far cell beyond one: its base flows to the skill while a chain of pieces leads inward, and it transforms every ingot on those inward paths."
 		for info in sim.currency_kinds():
 			if info.id==k.id and String(info.get("description",""))!="":
 				button.tooltip_text += "\n"+String(info.description)
@@ -758,3 +810,54 @@ func press_rail(axis: String, index: int) -> void:
 
 func specialise(id: String) -> void:
 	_on_specialise(id)
+
+
+func _inspect_cell(row: int, col: int) -> void:
+	if not is_open(): return
+	var selected := String(_selected_subject if _selected_subject != &"" else _selected_skill if _selected_skill != &"" else _selected)
+	var effects: Array = sim.foundry_effects()
+	var lines := PackedStringArray()
+	if selected != "":
+		var preview: Dictionary = sim.foundry_preview(row, col, selected, _selected_metal)
+		if not bool(preview.get("valid", false)):
+			_preview.text = String(preview.get("reason", "This cell cannot take the selected piece."))
+			_flow_overlay.paths = []
+			_flow_overlay.queue_redraw()
+			return
+		effects = preview.get("effects", [])
+		lines.append("AFTER PLACEMENT · no material spent")
+	else:
+		lines.append("CURRENT FLOW")
+	var shown := {}
+	var paths: Array = []
+	for effect in effects:
+		if String(effect.get("form_name", "")) == "": continue
+		var involved := int(effect.cell_row) == row and int(effect.cell_col) == col
+		var points := PackedVector2Array()
+		for step in effect.get("path", []):
+			var cell := Vector2i(int(step[0]), int(step[1]))
+			if cell == Vector2i(row, col): involved = true
+			if _cell_buttons.has(cell): points.append((_cell_buttons[cell] as Button).get_global_rect().get_center())
+		if not involved: continue
+		var key := "%s:%s:%s" % [effect.form_name, effect.skill, effect.get("source_kind", "")]
+		if shown.has(key): continue
+		shown[key] = true
+		paths.append(points)
+		var skill: Dictionary = sim.combat_skill(String(effect.skill))
+		lines.append("%s → %s\n%s" % [effect.form_name, skill.get("display_name", effect.skill), effect.description])
+	if shown.is_empty(): lines.append("No mutation reaches a compatible skill through this cell. Complete an inward chain; Striking reads attacks and Casting reads spells.")
+	_preview.text = "\n".join(lines)
+	_flow_overlay.paths = paths
+	_flow_overlay.queue_redraw()
+
+
+func _resolved_summary(skill: String, form: Dictionary) -> String:
+	var parts := PackedStringArray()
+	if float(form.get("smoulder_slow", 0)) > 0:
+		parts.append("%.0f%% slow · %.0f ignite / %.0f chill per hit" % [float(form.smoulder_slow) * 100, sim.ignite_applied(skill,false), sim.chill_applied(skill,false)])
+	if float(form.get("field_fraction", 0)) > 0:
+		parts.append("Field: %.0f%% hit every %.1f s for %.1f s" % [float(form.field_fraction)*100, float(form.limits.pulse_interval), float(form.field_seconds)])
+	if float(form.get("zone_armour", 0)) > 0: parts.append("Seal: +%.0f armour inside" % float(form.zone_armour))
+	if float(form.get("ward_charges", 0)) > 0: parts.append("Veil: catches %d shots" % int(form.ward_charges))
+	if sim.skill_echo_every(skill) > 0: parts.append("Repeats every %d uses after %.2f s" % [sim.skill_echo_every(skill), float(form.get("echo_delay",0))])
+	return "\n".join(parts)

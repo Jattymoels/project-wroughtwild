@@ -401,7 +401,23 @@ func use_skill(skill_id: StringName) -> bool:
 
 ## One delivery of the skill, whatever its shape.
 func _cast(skill_id: StringName, def: Dictionary) -> bool:
+	var origin := player.global_position + Vector3.UP * 0.12
+	var fired := _deliver(skill_id, def)
+	if fired:
+		var form := mutation(skill_id)
+		if float(form.get("zone_armour", 0)) > 0 or float(form.get("ward_charges", 0)) > 0:
+			FoundryField.spawn(self, skill_id, origin, "guard", form)
+		if float(form.get("trail_fraction", 0)) > 0:
+			FoundryField.spawn(self, skill_id, origin, "trail", form)
+		if String(def.get("delivery", "")) in ["strike", "cone"] and float(form.get("wave", 0)) <= 0:
+			mutation_impact(skill_id, origin - player.global_basis.z * minf(strike_reach(skill_id), 1.5))
+	return fired
+
+
+func _deliver(skill_id: StringName, def: Dictionary) -> bool:
 	var delivery := String(def.get("delivery", ""))
+	if delivery in ["strike", "cone"] and float(mutation(skill_id).get("wave", 0)) > 0:
+		return _use_projectile(skill_id)
 	if delivery == "cone":
 		_use_cone(skill_id)
 		return true
@@ -428,8 +444,17 @@ func _echo(skill_id: StringName, def: Dictionary) -> void:
 	_casts[skill_id] = int(_casts.get(skill_id, 0)) + 1
 	if int(_casts[skill_id]) % every != 0:
 		return
-	cooldowns[skill_id] = 0.0
-	_cast(skill_id, def)
+	var seconds := float(mutation(skill_id).get("echo_delay", 0))
+	if seconds > 0:
+		# A node-owned timer is cancelled by death/load along with other effects.
+		var echo := FoundryEcho.new()
+		echo.combat = self
+		echo.skill_id = skill_id
+		echo.remaining = seconds
+		echo.definition = def
+		player.world_root().add_child(echo)
+	else:
+		repeat_skill(skill_id, def)
 
 
 ## The Plate reading: casting a skill it supports grants armour for a
@@ -446,7 +471,10 @@ func _brace(skill_id: StringName) -> void:
 ## Armour a cast is granting right now; counted with the sheet's when a
 ## hit lands.
 func cast_armour() -> float:
-	return _cast_armour if _cast_armour_left > 0.0 else 0.0
+	var zone := 0.0
+	for field in get_tree().get_nodes_in_group("foundry_fields"):
+		if field.combat == self and field.covers(player.global_position + Vector3.UP * 0.5): zone = maxf(zone, field.armour)
+	return (_cast_armour if _cast_armour_left > 0.0 else 0.0) + zone
 
 
 ## The Husk's Manner (a rail, D-023 slice 9): the sheet's still armour once
@@ -571,7 +599,7 @@ func _reap(skill_id: StringName, kills: int) -> void:
 ## Deals one hit of skill_id to enemy as the sim's typed packets (D-023
 ## slice 2), each scaled by `fraction` (a fork generation), each refused by
 ## a mob immune to its type. Returns {damage, kill, types}: what landed.
-func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -> Dictionary:
+func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, secondary := false) -> Dictionary:
 	var landed := 0.0
 	var types := PackedStringArray()
 	# The Hound's Manner (a rail, D-023 slice 9): an enemy moving toward
@@ -593,7 +621,7 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -
 			types.append(String(packet["type"]))
 	# Brittle (a form): a frozen, bleeding enemy shatters from this hit,
 	# though the skill would never shatter on its own.
-	if enemy.life > 0.0 and enemy.is_frozen() and enemy.bleeding_left > 0.0 and sim.skill_brittle(String(skill_id)):
+	if not secondary and enemy.life > 0.0 and enemy.is_frozen() and enemy.bleeding_left > 0.0 and sim.skill_brittle(String(skill_id)):
 		var cascade := _shatter_cascade([enemy], sim.shatter_rules(), sim.skill_nova_chill(String(skill_id)))
 		landed += cascade["damage"]
 		if not types.has(String(sim.shatter_rules().get("nova_damage_type", "cold"))):
@@ -603,9 +631,13 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0) -
 	if landed > 0.0:
 		heal(sim.skill_life_on_hit(String(skill_id)))
 		fight_noise(enemy.global_position)
+		if not secondary and float(mutation(skill_id).get("siphon", 0)) > 0:
+			FoundryReturn.launch(self, enemy.global_position + Vector3.UP * 0.6, mutation(skill_id))
 	var kill := enemy.life <= 0.0
 	if kill:
 		_reap(skill_id, 1)
+		if not secondary and float(mutation(skill_id).get("recovery_on_kill", 0)) > 0:
+			FoundryField.spawn(self, skill_id, enemy.global_position + Vector3.UP * 0.12, "recovery", mutation(skill_id))
 	return {"damage": landed, "kill": kill, "types": types}
 
 
@@ -657,17 +689,19 @@ func use_dash() -> bool:
 ## proliferate.
 ## Returns the triggers this payload crossed on the enemy (freeze, ignite,
 ## bleed), for the links.
-func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool) -> PackedStringArray:
+func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool, fraction := 1.0) -> PackedStringArray:
 	var id := String(skill_id)
 	var was_frozen := enemy.is_frozen()
 	var was_burning := enemy.burning_left > 0.0
 	var was_bleeding := enemy.bleeding_left > 0.0
 	# Quench and Sear (forms, D-023) ride with the status they belong to:
 	# the mob keeps them for the freeze and the burn this skill causes.
-	enemy.apply_chill(sim.chill_applied(id, is_boss), sim.skill_quenches(id))
+	enemy.apply_chill(sim.chill_applied(id, is_boss) * fraction, sim.skill_quenches(id))
 	# Pyre (a rail, D-023 slice 9): an ignite this hit lights spreads at once.
-	enemy.apply_ignite(sim.ignite_applied(id, is_boss), sim.skill_sear(id), float(sim.derived_stats().get("proliferate_on_hit", 0.0)))
-	enemy.apply_bleed(sim.bleed_applied(id, is_boss))
+	var form := mutation(skill_id)
+	var spread := maxf(float(sim.derived_stats().get("proliferate_on_hit", 0)), float(form.get("ignite_spread", 0)))
+	enemy.apply_ignite(sim.ignite_applied(id, is_boss) * fraction, sim.skill_sear(id), spread, form)
+	enemy.apply_bleed(sim.bleed_applied(id, is_boss) * fraction)
 	var crossed := PackedStringArray()
 	if not was_frozen and enemy.is_frozen():
 		crossed.append("freeze")
@@ -698,7 +732,7 @@ func _cast_linked(skill_id: StringName, trigger: String, source_skill: StringNam
 		return
 	_link_depth += 1
 	var fired := false
-	if String(def.get("delivery", "")) == "projectile" and is_instance_valid(enemy):
+	if (String(def.get("delivery", "")) == "projectile" or (String(def.get("delivery", "")) in ["strike", "cone"] and float(mutation(skill_id).get("wave", 0)) > 0)) and is_instance_valid(enemy):
 		# A linked projectile flies at the enemy the trigger landed on.
 		_spend(skill_id)
 		_ensure_fight()
@@ -909,7 +943,7 @@ func strike_reach(skill_id: StringName) -> float:
 
 
 func area_radius(skill_id: StringName) -> float:
-	var radius: float = float(skills[skill_id].get("base_area_radius",0.0)) * (1.0+float(sim.derived_stats()["area_bonus"])) * sim.skill_reach(String(skill_id))
+	var radius: float = maxf(float(skills[skill_id].get("base_area_radius",0.0)), float(mutation(skill_id).get("impact_radius",0))) * (1.0+float(sim.derived_stats()["area_bonus"])) * sim.skill_reach(String(skill_id))
 	if alive_enemies().size()==1:
 		radius *= float(sim.combat_mods()["isolated_area_multiplier"])
 	return radius
@@ -1083,3 +1117,34 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	if life <= 0.0:
 		died.emit()
 	return last_hit_taken
+
+
+var _mutation_frame := -1
+var _mutation_cache := {}
+
+func mutation(skill_id: StringName) -> Dictionary:
+	var frame := Engine.get_physics_frames()
+	if frame != _mutation_frame:
+		_mutation_cache.clear()
+		_mutation_frame = frame
+	if not _mutation_cache.has(skill_id): _mutation_cache[skill_id] = sim.skill_mutation(String(skill_id))
+	return _mutation_cache[skill_id]
+
+func mutation_radius(skill_id: StringName, base: float) -> float:
+	return base * (1.0 + float(sim.derived_stats().get("area_bonus", 0))) * sim.skill_reach(String(skill_id))
+
+func mutation_impact(skill_id: StringName, at: Vector3, form := {}) -> void:
+	var resolved: Dictionary = mutation(skill_id) if form.is_empty() else form
+	if float(resolved.get("field_fraction", 0)) > 0:
+		FoundryField.spawn(self, skill_id, at, "impact", resolved)
+
+func repeat_skill(skill_id: StringName, def: Dictionary) -> void:
+	# Repetition does not spend or reset the real skill's remaining cooldown,
+	# count mastery, create another echo, or trigger another linked cast.
+	if life <= 0: return
+	var cooldown := float(cooldowns.get(skill_id, 0))
+	cooldowns[skill_id] = 0.0
+	_link_depth += 1
+	_cast(skill_id, def)
+	_link_depth -= 1
+	cooldowns[skill_id] = cooldown

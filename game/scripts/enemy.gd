@@ -136,6 +136,8 @@ var chill := 0.0
 var frozen_left := 0.0
 var ignite := 0.0
 var burning_left := 0.0
+var smoulder_slow := 0.0
+var _burn_mutation := {}
 var bleed := 0.0
 var bleeding_left := 0.0
 var _chill_max := 100.0
@@ -371,15 +373,19 @@ func _on_frozen() -> void:
 ## spread (the Pyre rail, D-023 slice 9): when this ignition crosses the
 ## threshold, the fire proliferates at once at this fraction of the
 ## death-spread; the mobs it reaches get no spread of their own.
-func apply_ignite(amount: float, sear: float = 0.0, spread: float = 0.0) -> void:
+func apply_ignite(amount: float, sear: float = 0.0, spread: float = 0.0, mutation := {}) -> void:
 	if amount <= 0.0 or life <= 0.0 or _immune_statuses.has("ignite"):
 		return
 	ignite += amount
 	if ignite >= _ignite_max:
 		ignite = 0.0
 		var rules: Dictionary = _sim.ignite_status() if _sim != null else {}
-		burning_left = rules.get("duration_s", 4.0)
-		_burn_dps = rules.get("damage_per_s", 0.0)
+		burning_left = float(mutation.get("burn_seconds", rules.get("duration_s", 4.0)))
+		_burn_dps = float(mutation.get("burn_dps", rules.get("damage_per_s", 0.0)))
+		_burn_mutation = mutation.duplicate(true)
+		smoulder_slow = float(mutation.get("smoulder_slow", 0))
+		if self is Boss: smoulder_slow *= float(mutation.get("limits", {}).get("boss_slow_factor", 0.25))
+		if _immune_statuses.has("chill"): smoulder_slow = 0.0
 		_sear = sear
 		_refresh_look()
 		if spread > 0.0:
@@ -515,6 +521,11 @@ func _refresh_look() -> void:
 		_material.emission_enabled = true
 		_material.emission = Color(1.0, 1.0, 0.9)
 		_material.emission_energy_multiplier = 1.6
+	elif burning_left > 0.0 and smoulder_slow > 0.0:
+		_material.albedo_color = _base_albedo.lerp(Color("839b9b"), 0.5)
+		_material.emission_enabled = true
+		_material.emission = Color("b25d36")
+		_material.emission_energy_multiplier = 0.7
 	elif burning_left > 0.0:
 		_material.albedo_color = _base_albedo.lerp(Color(1.0, 0.4, 0.05), 0.55)
 		_material.emission_enabled = true
@@ -545,7 +556,7 @@ func _proliferate(fraction: float = 1.0) -> void:
 		if global_position.distance_to(other.global_position) > radius:
 			continue
 		var key := "spread_buildup_boss" if other is Boss else "spread_buildup"
-		other.apply_ignite(float(params.get(key, 0.0)) * fraction)
+		other.apply_ignite(float(params.get(key, 0.0)) * fraction, _sear, 0.0, _burn_mutation)
 
 
 ## True while nothing is happening to this mob: a pack of these may sleep.
@@ -598,6 +609,7 @@ func _physics_process(delta: float) -> void:
 			state = "idle"
 		if state == "flee":
 			planar = -_chase_direction(player, distance) * move_speed + _separation_push()
+		planar *= status_move_multiplier()
 		velocity.x = planar.x
 		velocity.z = planar.z
 		_hop_if_blocked(planar)
@@ -662,6 +674,7 @@ func _physics_process(delta: float) -> void:
 			if _scream_timer <= 0.0:
 				force_scream()
 
+	planar *= status_move_multiplier()
 	velocity.x = planar.x
 	velocity.z = planar.z
 	_hop_if_blocked(planar)
@@ -972,6 +985,9 @@ func carried_statuses() -> PackedStringArray:
 		carried.append("chill")
 	if burning_left > 0.0:
 		carried.append("ignite")
+		if smoulder_slow > 0.0:
+			carried.append("smoulder")
+			if not carried.has("chill"): carried.append("chill")
 	if bleeding_left > 0.0:
 		carried.append("bleed")
 	return carried
@@ -1001,3 +1017,7 @@ func take_damage(amount: float, flash: bool = true) -> void:
 		died.emit(self)
 		remove_from_group("enemies")
 		queue_free()
+
+
+func status_move_multiplier() -> float:
+	return 1.0 - smoulder_slow if burning_left > 0 else 1.0

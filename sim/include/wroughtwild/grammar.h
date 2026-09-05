@@ -40,6 +40,11 @@ struct ActiveMod {
           value(inValue), source(std::move(inSource)), requiresTags(std::move(inRequires)) {}
 };
 using ActiveMods = std::vector<ActiveMod>;
+// Real acquired capabilities: gear sees these tags; native damage type stays
+// the base skill's. Mutation numbers are bounded by foundry.json.
+std::vector<std::string> effectiveTags(const tuning::Tuning&, const ActiveMods&, const std::string& skillId);
+std::map<std::string, double> skillMutation(const tuning::Tuning&, const ActiveMods&, const std::string& skillId);
+
 
 // True when a modifier with these applies_to tags targets something
 // carrying `tags` (an empty applies_to list applies to everything).

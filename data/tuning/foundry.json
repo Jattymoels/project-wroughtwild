@@ -1,6 +1,6 @@
 {
   "schema_version": 10,
-  "status": "D-023 slice 10 and the class kits (4 Sep 2026): each class starts with its own skills - a bow shot for the Ranger, a strike for the Warden, a bolt and a sweep for the Kindler",
+  "status": "D-025 (5 Sep 2026): exact Kind identities, inward paths, transformative forms, alloy refinements and equipment capabilities; see docs/systems/foundry-mutations.md",
   "frame": [
     4,
     4
@@ -65,20 +65,20 @@
     }
   ],
   "recast_station": "forge_basic",
-  "design_purpose_metals": "THE METAL OF AN INGOT (D-023 slice 10; docs/systems/foundry.md, progression gate 3). Every ingot is cast in a metal, iron by default (Placement.metal). At a built forge (recast_station) an ingot in hand is re-cast in an alloy the era allows (ingot_metals[].era), paying recast_cost; its number never changes, its REACH does: how far its backing and pairs are read, in cells, along a row or column, gaps ignored (either ingot's reach covers the distance). Supports stay orthogonal and adjacent whatever the metal (the owner's rule), and a backing is never read through the socket. Rarity is the same axis from the other end: a source may pay an ingot already cast in alloy (metal \"alloy\": the era's at the time). Compound forms (forms[].metal) need the support cast in at least that metal.",
+  "design_purpose_metals": "Ingots retain their small base reading. Re-casting at the built forge costs the alloy allowed by the era and extends backing/pair reach. A direct support also gains all support_only refinements whose metal requirement it meets: bronze adds mastery/control/recovery and steel adds another capability. Bronze Reach adds projectile pierce and steel adds a fork, including on a melee skill transformed into a travelling wave. Supports remain adjacent and flow never jumps gaps.",
   "kinds": [
     {
       "id": "ember_catalyst",
       "family": "offence",
       "display_name": "Ember Catalyst",
-      "short_name": "Catalyst",
+      "short_name": "Ember",
       "design_purpose": "No base: a catalyst's whole worth is the forms it works supports into. Its element will pick its own forms (an 'augment fire', owner 4 Sep 2026) when the forms table narrows by kind."
     },
     {
       "id": "preserving_catalyst",
       "family": "offence",
       "display_name": "Preserving Catalyst",
-      "short_name": "Catalyst",
+      "short_name": "Preserve",
       "design_purpose": "No base; the offence family's forms. Its own transformations wait for the by-kind narrowing."
     },
     {
@@ -121,7 +121,7 @@
       "id": "piercing_catalyst",
       "display_name": "Piercing Catalyst",
       "family": "offence",
-      "short_name": "Piercing",
+      "short_name": "Pierce",
       "design_purpose": "Works Reach into Throughline (+1 pierce) and Edge into Barbed Flight (+15 bleed buildup) for projectile skills. Common Catalyst forms still apply. An aimed gear craft favours projectile modifiers."
     },
     {
@@ -157,728 +157,3403 @@
       "design_purpose": "While its chain reaches a skill, spells recover 8% faster; attacks do not. It also works supports into Quicksilver forms. Aimed gear crafts favour speed modifiers.",
       "modifier": "casting_recovery",
       "value": 0.08
+    },
+    {
+      "id": "frost_catalyst",
+      "family": "offence",
+      "display_name": "Frost Catalyst",
+      "short_name": "Frost",
+      "modifier": "",
+      "value": 0
     }
   ],
-  "design_purpose_kinds": "THE FLOW (owner, 4 Sep 2026): only a skill sits in a socket. A currency kind rests only on a forged cell that cannot touch a socket (depth two or more: the corners, and the far cells beyond them). It gives its family's base forward only while a chain of placed pieces, each a step nearer a socket, leads to a support beside a laid tablet - a kind that flows to nothing gives nothing. And it works every support it touches into a FORM (forms below) that feeds the skill that support serves, a shared support feeding both. Ingots are base; Catalysts are offensive creativity; Vanguards, Marrow and Quicksilver are defensive, life and tempo creativity. Setting a kind takes it from the purse; lifting it pays reforge_cost and returns it. A kind lifted on load (a stale save) goes back to the purse. VARIANTS (owner, 4 Sep 2026, later): `kinds` lists every currency id that may rest on the plate with its family, the name a cell shows, and its own base; a family is a list of variants (the Vanguard of armour, of resistances, later of dodge; the Marrow of life, later leech and recoup; the Quicksilver of hands, later move and attack and cast speed) and the forms are the family's, a form's optional `kind` narrowing it to one variant. Catalysts have no base and do the mechanical transformations. `family_names` is how a form names the family that worked it.",
+  "design_purpose_kinds": "D-025: only skills occupy sockets. Kinds rest at depth two or greater and conduct through occupied orthogonal cells of strictly decreasing distance to a socket. Every branch reaching a laid tablet transforms every traversed ingot using the exact Kind identity. Reconvergence does not multiply a reading; another Kind carries the upstream identity and adds its own operation. Explicit upstream_kind rules define ordered additions. Setting/lifting uses existing ownership and re-forging costs. Forms expose resolved names without changing persistent ingot IDs.",
   "forms": [
     {
       "family": "offence",
+      "kind": "ember_catalyst",
       "ingot": "ember",
-      "lane": "same",
+      "display_name": "Kindling",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 45
+        },
+        {
+          "modifier": "mutation_ignite_spread",
+          "value": 0.3
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "ember_catalyst",
+      "ingot": "frost",
+      "display_name": "Steambrand",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 45
+        },
+        {
+          "modifier": "mutation_ignite_spread",
+          "value": 0.3
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "ember_catalyst",
+      "ingot": "edge",
+      "display_name": "Cinder Edge",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 45
+        },
+        {
+          "modifier": "mutation_ignite_spread",
+          "value": 0.3
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "ember_catalyst",
+      "ingot": "reach",
+      "display_name": "Wildfire",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 45
+        },
+        {
+          "modifier": "mutation_ignite_spread",
+          "value": 0.3
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "ember_catalyst",
+      "ingot": "vigour",
+      "display_name": "Bloodfire",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 45
+        },
+        {
+          "modifier": "mutation_ignite_spread",
+          "value": 0.3
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "ember_catalyst",
+      "ingot": "plate",
+      "display_name": "Furnace Plate",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 45
+        },
+        {
+          "modifier": "mutation_ignite_spread",
+          "value": 0.3
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "ember_catalyst",
+      "ingot": "ward",
+      "display_name": "Cautery",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 45
+        },
+        {
+          "modifier": "mutation_ignite_spread",
+          "value": 0.3
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "ember_catalyst",
+      "ingot": "haste",
+      "display_name": "Flashfire",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "effects": [
+        {
+          "modifier": "smouldering",
+          "value": 45
+        },
+        {
+          "modifier": "mutation_ignite_spread",
+          "value": 0.3
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "ingot": "ember",
+      "display_name": "Emberbed",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "effects": [
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.18
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "ingot": "frost",
+      "display_name": "Cold Reservoir",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "effects": [
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.18
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "ingot": "edge",
+      "display_name": "Wound Memory",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "effects": [
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.18
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "ingot": "reach",
+      "display_name": "Afterfield",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "effects": [
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.18
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "ingot": "vigour",
+      "display_name": "Lifebed",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "effects": [
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.18
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "ingot": "plate",
+      "display_name": "Held Ground",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "effects": [
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.18
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "ingot": "ward",
+      "display_name": "Sanctuary",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "effects": [
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.18
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "ingot": "haste",
+      "display_name": "Lingering Step",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on.",
+      "effects": [
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.18
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "vanguard",
+      "ingot": "ember",
+      "display_name": "Furnace Bastion",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "effects": [
+        {
+          "modifier": "mutation_zone_armour",
+          "value": 10
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "vanguard",
+      "ingot": "frost",
+      "display_name": "Rime Bastion",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "effects": [
+        {
+          "modifier": "mutation_zone_armour",
+          "value": 10
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "vanguard",
+      "ingot": "edge",
+      "display_name": "Blade Bastion",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "effects": [
+        {
+          "modifier": "mutation_zone_armour",
+          "value": 10
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "vanguard",
+      "ingot": "reach",
+      "display_name": "Broad Bastion",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "effects": [
+        {
+          "modifier": "mutation_zone_armour",
+          "value": 10
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "vanguard",
+      "ingot": "vigour",
+      "display_name": "Living Bastion",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "effects": [
+        {
+          "modifier": "mutation_zone_armour",
+          "value": 10
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "vanguard",
+      "ingot": "plate",
+      "display_name": "Bulwark",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "effects": [
+        {
+          "modifier": "mutation_zone_armour",
+          "value": 10
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "vanguard",
+      "ingot": "ward",
+      "display_name": "Guardpost",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "effects": [
+        {
+          "modifier": "mutation_zone_armour",
+          "value": 10
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "vanguard",
+      "ingot": "haste",
+      "display_name": "Quickbrace",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "effects": [
+        {
+          "modifier": "mutation_zone_armour",
+          "value": 10
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "warding_vanguard",
+      "ingot": "ember",
+      "display_name": "Ember Veil",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_ward_charges",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "warding_vanguard",
+      "ingot": "frost",
+      "display_name": "Rime Veil",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_ward_charges",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "warding_vanguard",
+      "ingot": "edge",
+      "display_name": "Razor Veil",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_ward_charges",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "warding_vanguard",
+      "ingot": "reach",
+      "display_name": "Wide Veil",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_ward_charges",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "warding_vanguard",
+      "ingot": "vigour",
+      "display_name": "Living Veil",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_ward_charges",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "warding_vanguard",
+      "ingot": "plate",
+      "display_name": "Iron Veil",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_ward_charges",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "warding_vanguard",
+      "ingot": "ward",
+      "display_name": "Aegis",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_ward_charges",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "defence",
+      "kind": "warding_vanguard",
+      "ingot": "haste",
+      "display_name": "Fleeting Veil",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_ward_charges",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 2
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "marrow",
+      "ingot": "ember",
+      "display_name": "Phoenix Bed",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "effects": [
+        {
+          "modifier": "mutation_recovery_on_kill",
+          "value": 4.5
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "marrow",
+      "ingot": "frost",
+      "display_name": "Winterroot",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "effects": [
+        {
+          "modifier": "mutation_recovery_on_kill",
+          "value": 4.5
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "marrow",
+      "ingot": "edge",
+      "display_name": "Bloodroot",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "effects": [
+        {
+          "modifier": "mutation_recovery_on_kill",
+          "value": 4.5
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "marrow",
+      "ingot": "reach",
+      "display_name": "Harvest Ground",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "effects": [
+        {
+          "modifier": "mutation_recovery_on_kill",
+          "value": 4.5
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "marrow",
+      "ingot": "vigour",
+      "display_name": "Second Spring",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "effects": [
+        {
+          "modifier": "mutation_recovery_on_kill",
+          "value": 4.5
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "marrow",
+      "ingot": "plate",
+      "display_name": "Ironroot",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "effects": [
+        {
+          "modifier": "mutation_recovery_on_kill",
+          "value": 4.5
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "marrow",
+      "ingot": "ward",
+      "display_name": "Safe Harbour",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "effects": [
+        {
+          "modifier": "mutation_recovery_on_kill",
+          "value": 4.5
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "marrow",
+      "ingot": "haste",
+      "display_name": "Fleet Harvest",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "effects": [
+        {
+          "modifier": "mutation_recovery_on_kill",
+          "value": 4.5
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "quicksilver",
+      "ingot": "ember",
+      "display_name": "Cinder Wake",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "effects": [
+        {
+          "modifier": "mutation_trail_fraction",
+          "value": 0.16
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "quicksilver",
+      "ingot": "frost",
+      "display_name": "Frost Wake",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "effects": [
+        {
+          "modifier": "mutation_trail_fraction",
+          "value": 0.16
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "quicksilver",
+      "ingot": "edge",
+      "display_name": "Razor Wake",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "effects": [
+        {
+          "modifier": "mutation_trail_fraction",
+          "value": 0.16
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "quicksilver",
+      "ingot": "reach",
+      "display_name": "Long Wake",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "effects": [
+        {
+          "modifier": "mutation_trail_fraction",
+          "value": 0.16
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "quicksilver",
+      "ingot": "vigour",
+      "display_name": "Living Wake",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "effects": [
+        {
+          "modifier": "mutation_trail_fraction",
+          "value": 0.16
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "quicksilver",
+      "ingot": "plate",
+      "display_name": "Iron Wake",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "effects": [
+        {
+          "modifier": "mutation_trail_fraction",
+          "value": 0.16
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "quicksilver",
+      "ingot": "ward",
+      "display_name": "Warded Wake",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "effects": [
+        {
+          "modifier": "mutation_trail_fraction",
+          "value": 0.16
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "quicksilver",
+      "ingot": "haste",
+      "display_name": "Afterimage",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "effects": [
+        {
+          "modifier": "mutation_trail_fraction",
+          "value": 0.16
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "ember",
+      "display_name": "Cinder Lance",
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "pierce",
+          "value": 1
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "frost",
+      "display_name": "Ice Lance",
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "pierce",
+          "value": 1
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "edge",
+      "display_name": "Razor Wave",
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "pierce",
+          "value": 1
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "reach",
+      "display_name": "Throughline",
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "pierce",
+          "value": 1
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "vigour",
+      "display_name": "Blood Thread",
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "pierce",
+          "value": 1
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "plate",
+      "display_name": "Breach",
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "pierce",
+          "value": 1
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "ward",
+      "display_name": "Wardneedle",
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "pierce",
+          "value": 1
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "haste",
+      "display_name": "Quicklance",
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "pierce",
+          "value": 1
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "ember",
+      "display_name": "Firebreak",
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_impact_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "impact_stagger",
+          "value": 0.12
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "frost",
+      "display_name": "Glacier Break",
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_impact_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "impact_stagger",
+          "value": 0.12
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "edge",
+      "display_name": "Concussion",
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_impact_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "impact_stagger",
+          "value": 0.12
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "reach",
+      "display_name": "Shock Ring",
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_impact_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "impact_stagger",
+          "value": 0.12
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "vigour",
+      "display_name": "Heartbreak",
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_impact_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "impact_stagger",
+          "value": 0.12
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "plate",
+      "display_name": "Anvil Fall",
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_impact_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "impact_stagger",
+          "value": 0.12
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "ward",
+      "display_name": "Sealbreak",
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_impact_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "impact_stagger",
+          "value": 0.12
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "haste",
+      "display_name": "Snapburst",
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "effects": [
+        {
+          "modifier": "mutation_wave",
+          "value": 1
+        },
+        {
+          "modifier": "mutation_impact_radius",
+          "value": 1.8
+        },
+        {
+          "modifier": "impact_stagger",
+          "value": 0.12
+        },
+        {
+          "modifier": "capability_projectile",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "sipping_marrow",
+      "ingot": "ember",
+      "display_name": "Cinder Siphon",
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_siphon",
+          "value": 0.65
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "sipping_marrow",
+      "ingot": "frost",
+      "display_name": "Cold Siphon",
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_siphon",
+          "value": 0.65
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "sipping_marrow",
+      "ingot": "edge",
+      "display_name": "Bloodletter",
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_siphon",
+          "value": 0.65
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "sipping_marrow",
+      "ingot": "reach",
+      "display_name": "Long Drink",
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_siphon",
+          "value": 0.65
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "sipping_marrow",
+      "ingot": "vigour",
+      "display_name": "Deep Drink",
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_siphon",
+          "value": 0.65
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "sipping_marrow",
+      "ingot": "plate",
+      "display_name": "Iron Drink",
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_siphon",
+          "value": 0.65
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "sipping_marrow",
+      "ingot": "ward",
+      "display_name": "Ward Siphon",
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_siphon",
+          "value": 0.65
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "life",
+      "kind": "sipping_marrow",
+      "ingot": "haste",
+      "display_name": "Quick Sip",
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "effects": [
+        {
+          "modifier": "mutation_siphon",
+          "value": 0.65
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "family": "speed",
+      "kind": "striking_quicksilver",
+      "ingot": "ember",
+      "display_name": "Cinder Refrain",
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.12
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ],
+      "skill_tag": "attack"
+    },
+    {
+      "family": "speed",
+      "kind": "striking_quicksilver",
+      "ingot": "frost",
+      "display_name": "Frost Refrain",
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.12
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ],
+      "skill_tag": "attack"
+    },
+    {
+      "family": "speed",
+      "kind": "striking_quicksilver",
+      "ingot": "edge",
+      "display_name": "Doublecut",
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.12
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ],
+      "skill_tag": "attack"
+    },
+    {
+      "family": "speed",
+      "kind": "striking_quicksilver",
+      "ingot": "reach",
+      "display_name": "Sweeping Refrain",
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.12
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ],
+      "skill_tag": "attack"
+    },
+    {
+      "family": "speed",
+      "kind": "striking_quicksilver",
+      "ingot": "vigour",
+      "display_name": "Sustaining Refrain",
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.12
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ],
+      "skill_tag": "attack"
+    },
+    {
+      "family": "speed",
+      "kind": "striking_quicksilver",
+      "ingot": "plate",
+      "display_name": "Braced Refrain",
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.12
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ],
+      "skill_tag": "attack"
+    },
+    {
+      "family": "speed",
+      "kind": "striking_quicksilver",
+      "ingot": "ward",
+      "display_name": "Guarded Refrain",
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.12
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ],
+      "skill_tag": "attack"
+    },
+    {
+      "family": "speed",
+      "kind": "striking_quicksilver",
+      "ingot": "haste",
+      "display_name": "Threefold Step",
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.12
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ],
+      "skill_tag": "attack"
+    },
+    {
+      "family": "speed",
+      "kind": "casting_quicksilver",
+      "ingot": "ember",
+      "display_name": "Ember Echo",
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.55
+        },
+        {
+          "modifier": "smouldering",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        }
+      ],
+      "skill_tag": "spell"
+    },
+    {
+      "family": "speed",
+      "kind": "casting_quicksilver",
+      "ingot": "frost",
+      "display_name": "Frost Echo",
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.55
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ],
+      "skill_tag": "spell"
+    },
+    {
+      "family": "speed",
+      "kind": "casting_quicksilver",
+      "ingot": "edge",
+      "display_name": "Blade Echo",
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.55
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ],
+      "skill_tag": "spell"
+    },
+    {
+      "family": "speed",
+      "kind": "casting_quicksilver",
+      "ingot": "reach",
+      "display_name": "Wide Echo",
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.55
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ],
+      "skill_tag": "spell"
+    },
+    {
+      "family": "speed",
+      "kind": "casting_quicksilver",
+      "ingot": "vigour",
+      "display_name": "Living Echo",
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.55
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ],
+      "skill_tag": "spell"
+    },
+    {
+      "family": "speed",
+      "kind": "casting_quicksilver",
+      "ingot": "plate",
+      "display_name": "Braced Echo",
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.55
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ],
+      "skill_tag": "spell"
+    },
+    {
+      "family": "speed",
+      "kind": "casting_quicksilver",
+      "ingot": "ward",
+      "display_name": "Warded Echo",
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.55
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ],
+      "skill_tag": "spell"
+    },
+    {
+      "family": "speed",
+      "kind": "casting_quicksilver",
+      "ingot": "haste",
+      "display_name": "Aftercast",
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "effects": [
+        {
+          "modifier": "echo_every",
+          "value": 3
+        },
+        {
+          "modifier": "mutation_echo_delay",
+          "value": 0.55
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ],
+      "skill_tag": "spell"
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "ingot": "ember",
+      "display_name": "Smoulder",
+      "description": "Ignite becomes Smoulder: one fire burn also slows movement by 25%. Separate chill buildup can freeze; fire burn and cold buildup gear both matter. Death spread carries Smoulder.",
+      "effects": [
+        {
+          "modifier": "mutation_smoulder_slow",
+          "value": 0.25
+        },
+        {
+          "modifier": "smouldering",
+          "value": 40
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_proliferate",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "ingot": "frost",
+      "display_name": "Rimewell",
+      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 35
+        },
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.12
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.6
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "ingot": "edge",
+      "display_name": "Rime Edge",
+      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 35
+        },
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.12
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.6
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "laceration",
+          "value": 20
+        },
+        {
+          "modifier": "capability_physical",
+          "value": 1
+        },
+        {
+          "modifier": "capability_bleed",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "ingot": "reach",
+      "display_name": "Whiteout",
+      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 35
+        },
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.12
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.6
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "reach",
+          "value": 0.18
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "ingot": "vigour",
+      "display_name": "Cold Sap",
+      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 35
+        },
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.12
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.6
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "life_on_kill",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "ingot": "plate",
+      "display_name": "Permafrost",
+      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 35
+        },
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.12
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.6
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "armour_on_cast",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "ingot": "ward",
+      "display_name": "Stillwater",
+      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 35
+        },
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.12
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.6
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "status_ward",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "ingot": "haste",
+      "display_name": "Hoarfrost",
+      "description": "Leaves a cold impact field which continues building chill after the hit.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 35
+        },
+        {
+          "modifier": "mutation_field_fraction",
+          "value": 0.12
+        },
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 2.4
+        },
+        {
+          "modifier": "mutation_field_radius",
+          "value": 1.6
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
+          "value": 1
+        },
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.12
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "ember",
       "metal": "bronze",
-      "display_name": "Bronze Kindling",
+      "display_name": "Bronze Ember Mastery",
+      "description": "A direct bronze support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "kindling",
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "ember",
+      "metal": "steel",
+      "display_name": "Steel Ember Mastery",
+      "description": "A direct steel support adds this refinement to its plain reading.",
       "effects": [
         {
           "modifier": "lingering_flame",
           "value": 0.25
         }
-      ],
-      "design_purpose": "Compound (slice 10): the Kindling's twist on a bronze or better Ember - its burns also last 25% longer. Stacks on Kindling; the ingot's metal is the condition."
+      ]
     },
     {
-      "family": "offence",
+      "support_only": true,
       "ingot": "frost",
-      "lane": "same",
       "metal": "bronze",
-      "display_name": "Bronze Deep Frost",
-      "effects": [
-        {
-          "modifier": "wide_shatter",
-          "value": 0.25
-        }
-      ],
-      "design_purpose": "Compound: Deep Frost on a bronze or better Frost - its shatters also reach 25% wider."
-    },
-    {
-      "family": "offence",
-      "ingot": "edge",
-      "lane": "same",
-      "metal": "bronze",
-      "display_name": "Bronze Serration",
-      "effects": [
-        {
-          "modifier": "hemorrhage",
-          "value": 0.25
-        }
-      ],
-      "design_purpose": "Compound: Serration on a bronze or better Edge - its bleeds also deal 25% more."
-    },
-    {
-      "family": "offence",
-      "ingot": "reach",
-      "skill_tag": "projectile",
-      "metal": "steel",
-      "display_name": "Steel Split",
-      "effects": [
-        {
-          "modifier": "forked_lattice",
-          "value": 1
-        }
-      ],
-      "design_purpose": "Compound: Split on a steel Reach beside a projectile skill - it forks once more. Steel is the whole plate; this is the late fan."
-    },
-    {
-      "family": "defence",
-      "ingot": "plate",
-      "metal": "bronze",
-      "display_name": "Bronze Stand Fast",
-      "effects": [
-        {
-          "modifier": "armour_on_dash",
-          "value": 4
-        }
-      ],
-      "design_purpose": "Compound: Stand Fast on a bronze or better Plate - a Dash also grants 4 armour for a moment."
-    },
-    {
-      "family": "defence",
-      "ingot": "vigour",
-      "metal": "bronze",
-      "display_name": "Bronze Second Wind",
-      "effects": [
-        {
-          "modifier": "heal_more",
-          "value": 0.15
-        }
-      ],
-      "design_purpose": "Compound: Second Wind on a bronze or better Vigour - every heal is 15% more."
-    },
-    {
-      "family": "life",
-      "ingot": "ember",
-      "metal": "bronze",
-      "display_name": "Bronze Cauterise",
-      "effects": [
-        {
-          "modifier": "life_on_hit",
-          "value": 1
-        }
-      ],
-      "design_purpose": "Compound: Cauterise on a bronze or better Ember - a hit restores one more life."
-    },
-    {
-      "family": "speed",
-      "ingot": "haste",
-      "metal": "steel",
-      "display_name": "Steel Fleet",
-      "effects": [
-        {
-          "modifier": "dash_recovery",
-          "value": 0.16
-        }
-      ],
-      "design_purpose": "Compound: Fleet on a steel Haste - the Dash recovers 16% faster again."
-    },
-    {
-      "family": "offence",
-      "ingot": "frost",
-      "lane": "same",
-      "display_name": "Deep Frost",
+      "display_name": "Bronze Frost Mastery",
+      "description": "A direct bronze support adds this refinement to its plain reading.",
       "effects": [
         {
           "modifier": "deep_frost",
-          "value": 0.3
+          "value": 0.2
         }
-      ],
-      "design_purpose": "Sharpening (same lane): the skill's chill builds 30% faster."
+      ]
     },
     {
-      "family": "offence",
-      "ingot": "ember",
-      "lane": "same",
-      "display_name": "Kindling",
-      "effects": [
-        {
-          "modifier": "kindling",
-          "value": 0.3
-        }
-      ],
-      "design_purpose": "Sharpening (same lane): the skill's ignite builds 30% faster."
-    },
-    {
-      "family": "offence",
-      "ingot": "edge",
-      "lane": "same",
-      "display_name": "Serration",
-      "effects": [
-        {
-          "modifier": "serration",
-          "value": 0.3
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
-        }
-      ],
-      "design_purpose": "Sharpening (same lane): the skill's hits bleed (+20 buildup) and its bleeds build 30% faster."
-    },
-    {
-      "family": "offence",
-      "ingot": "reach",
-      "skill_tag": "projectile",
-      "display_name": "Split",
-      "effects": [
-        {
-          "modifier": "forked_lattice",
-          "value": 1
-        }
-      ],
-      "design_purpose": "The projectile forks once more. Reach beside an area or a strike waits for Linger and Arc (hooks)."
-    },
-    {
-      "family": "offence",
-      "ingot": "vigour",
-      "display_name": "Reap",
-      "effects": [
-        {
-          "modifier": "life_on_kill",
-          "value": 3
-        }
-      ],
-      "design_purpose": "A kill with the skill restores 3 life (the sharpened Vigour reading)."
-    },
-    {
-      "family": "offence",
-      "ingot": "plate",
-      "display_name": "Bracing",
-      "effects": [
-        {
-          "modifier": "armour_on_cast",
-          "value": 8
-        }
-      ],
-      "design_purpose": "Casting the skill grants 8 armour for a moment (the sharpened Plate reading)."
-    },
-    {
-      "family": "offence",
-      "ingot": "ward",
-      "display_name": "Aegis",
-      "effects": [
-        {
-          "modifier": "status_ward",
-          "value": 0.15
-        }
-      ],
-      "design_purpose": "An enemy carrying the skill's status deals 15% less to you (the sharpened Ward reading)."
-    },
-    {
-      "family": "offence",
-      "ingot": "haste",
-      "display_name": "Echo",
-      "effects": [
-        {
-          "modifier": "echo_every",
-          "value": 4
-        }
-      ],
-      "design_purpose": "Sharpening of Haste: every fourth cast of the skill repeats itself, free of the cooldown (the engine counts casts)."
-    },
-    {
-      "family": "offence",
-      "ingot": "ember",
-      "lane": "added",
-      "skill_tag": "cold",
-      "display_name": "Scald",
-      "effects": [
-        {
-          "modifier": "smouldering",
-          "value": 15
-        },
-        {
-          "modifier": "damage_vs_ignite",
-          "value": 0.2,
-          "packet": "native"
-        }
-      ],
-      "design_purpose": "Reaction (added lane, a cold skill): the added fire also ignites (+15 buildup), and an ignited enemy takes 20% more of the skill's cold."
-    },
-    {
-      "family": "offence",
-      "ingot": "ember",
-      "lane": "added",
-      "skill_tag": "physical",
-      "display_name": "Temper",
-      "effects": [
-        {
-          "modifier": "smouldering",
-          "value": 15
-        },
-        {
-          "modifier": "damage_vs_ignite",
-          "value": 0.2,
-          "packet": "native"
-        }
-      ],
-      "design_purpose": "Reaction (added lane, a physical skill): the added fire also ignites (+15), and an ignited enemy takes 20% more of the skill's physical."
-    },
-    {
-      "family": "offence",
+      "support_only": true,
       "ingot": "frost",
-      "lane": "added",
-      "skill_tag": "fire",
-      "display_name": "Quench",
+      "metal": "steel",
+      "display_name": "Steel Frost Mastery",
+      "description": "A direct steel support adds this refinement to its plain reading.",
       "effects": [
         {
-          "modifier": "frostbite",
-          "value": 15
-        },
-        {
-          "modifier": "damage_vs_chill",
-          "value": 0.2,
-          "packet": "native"
-        },
-        {
-          "modifier": "quench",
-          "value": 1
+          "modifier": "wide_shatter",
+          "value": 0.2
         }
-      ],
-      "design_purpose": "Reaction (added lane, a fire skill): the added cold also chills (+15), a chilled enemy takes 20% more of the skill's fire, and a burning enemy the skill freezes takes the rest of its burn at once (the engine's freeze hook)."
+      ]
     },
     {
-      "family": "offence",
-      "ingot": "frost",
-      "lane": "added",
-      "skill_tag": "physical",
-      "display_name": "Rime",
-      "effects": [
-        {
-          "modifier": "frostbite",
-          "value": 15
-        },
-        {
-          "modifier": "damage_vs_chill",
-          "value": 0.2,
-          "packet": "native"
-        },
-        {
-          "modifier": "nova_chill",
-          "value": 30
-        }
-      ],
-      "design_purpose": "Reaction (added lane, a physical skill): the added cold also chills (+15), a chilled enemy takes 20% more of the skill's physical, and the skill's shatter novas chill (+30)."
-    },
-    {
-      "family": "offence",
+      "support_only": true,
       "ingot": "edge",
-      "lane": "added",
-      "skill_tag": "cold",
-      "display_name": "Brittle",
+      "metal": "bronze",
+      "display_name": "Bronze Edge Mastery",
+      "description": "A direct bronze support adds this refinement to its plain reading.",
       "effects": [
         {
           "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "damage_vs_bleed",
-          "value": 0.2,
-          "packet": "native"
-        },
-        {
-          "modifier": "brittle",
-          "value": 1
-        }
-      ],
-      "design_purpose": "Reaction (added lane, a cold skill): the added physical also bleeds (+20), a bleeding enemy takes 20% more of the skill's cold, and a frozen, bleeding enemy shatters from this spell's own hit."
-    },
-    {
-      "family": "offence",
-      "ingot": "edge",
-      "lane": "added",
-      "skill_tag": "fire",
-      "display_name": "Sear",
-      "effects": [
-        {
-          "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "damage_vs_bleed",
-          "value": 0.2,
-          "packet": "native"
-        },
-        {
-          "modifier": "sear",
-          "value": 0.5
-        }
-      ],
-      "design_purpose": "Reaction (added lane, a fire skill): the added physical also bleeds (+20), a bleeding enemy takes 20% more of the skill's fire, and the burn the skill lights ticks 50% faster while the enemy moves and bleeds."
-    },
-    {
-      "family": "defence",
-      "ingot": "frost",
-      "display_name": "Frost Leech",
-      "effects": [
-        {
-          "modifier": "life_on_kill",
-          "value": 4
-        }
-      ],
-      "design_purpose": "PROPOSED (the owner's example): a kill with the skill restores 4 life."
-    },
-    {
-      "family": "defence",
-      "ingot": "ember",
-      "display_name": "Cinder Guard",
-      "effects": [
-        {
-          "modifier": "fire_resistance",
           "value": 10
         }
-      ],
-      "design_purpose": "PROPOSED: +10 fire resistance while the flow holds."
+      ]
     },
     {
-      "family": "defence",
+      "support_only": true,
       "ingot": "edge",
-      "display_name": "Barbs",
+      "metal": "steel",
+      "display_name": "Steel Edge Mastery",
+      "description": "A direct steel support adds this refinement to its plain reading.",
       "effects": [
         {
-          "modifier": "barbs",
-          "value": 25
-        }
-      ],
-      "design_purpose": "PROPOSED: an enemy that hits you takes 25 bleed buildup (the engine answers the hit)."
-    },
-    {
-      "family": "defence",
-      "ingot": "reach",
-      "display_name": "Far Answer",
-      "effects": [
-        {
-          "modifier": "answer_reach",
-          "value": 2.5
-        }
-      ],
-      "design_purpose": "PROPOSED: your answers to a hit reach every enemy within 2.5 m."
-    },
-    {
-      "family": "defence",
-      "ingot": "vigour",
-      "display_name": "Second Wind",
-      "effects": [
-        {
-          "modifier": "life_on_kill",
-          "value": 2
-        }
-      ],
-      "design_purpose": "PROPOSED: a kill with the skill restores 2 life."
-    },
-    {
-      "family": "defence",
-      "ingot": "plate",
-      "display_name": "Stand Fast",
-      "effects": [
-        {
-          "modifier": "armour_on_cast",
-          "value": 8
-        }
-      ],
-      "design_purpose": "PROPOSED: casting the skill grants 8 armour for a moment."
-    },
-    {
-      "family": "defence",
-      "ingot": "ward",
-      "display_name": "Cold Ward",
-      "effects": [
-        {
-          "modifier": "cold_resistance",
-          "value": 10
-        }
-      ],
-      "design_purpose": "PROPOSED: +10 cold resistance while the flow holds."
-    },
-    {
-      "family": "defence",
-      "ingot": "haste",
-      "display_name": "Quickstep",
-      "effects": [
-        {
-          "modifier": "haste_after_hit",
-          "value": 0.16
-        }
-      ],
-      "design_purpose": "PROPOSED (the owner's Max Speed, without the at-full-life condition, which needs a hook): after a hit you move 16% faster for haste_after_hit_seconds."
-    },
-    {
-      "family": "offence",
-      "ingot": "reach",
-      "skill_tag": "single_target",
-      "display_name": "Arc",
-      "effects": [
-        {
-          "modifier": "arc",
-          "value": 1.5
-        }
-      ],
-      "design_purpose": "Reach worked by a Catalyst beside a strike: the strike sweeps every enemy within its reach and 1.5 m either side of the line, a short arc. (Reading area modifiers from then on is not done: the skill keeps its tags.)"
-    },
-    {
-      "family": "life",
-      "ingot": "ember",
-      "display_name": "Cauterise",
-      "effects": [
-        {
-          "modifier": "life_on_hit",
-          "value": 1
-        }
-      ],
-      "design_purpose": "PROPOSED: a hit with the skill restores 1 life - fire that closes what it opens."
-    },
-    {
-      "family": "life",
-      "ingot": "frost",
-      "display_name": "Cold Blood",
-      "effects": [
-        {
-          "modifier": "status_ward",
-          "value": 0.15
-        }
-      ],
-      "design_purpose": "The spec's reading: an enemy carrying the skill's chill deals 15% less to you."
-    },
-    {
-      "family": "life",
-      "ingot": "edge",
-      "display_name": "Bloodletting",
-      "effects": [
-        {
-          "modifier": "life_on_kill",
-          "value": 3
-        }
-      ],
-      "design_purpose": "The spec's reading without its condition: a kill with the skill restores 3 life (the spec says a kill of a bleeding enemy; the condition waits)."
-    },
-    {
-      "family": "life",
-      "ingot": "reach",
-      "display_name": "Far Leech",
-      "effects": [
-        {
-          "modifier": "life_on_hit",
-          "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 2
-        }
-      ],
-      "design_purpose": "PROPOSED: hits restore 1 life and kills 2 - the wide skill drinks from the crowd. (The spec's shelter reach following you out of the door is a shelter hook, later.)"
-    },
-    {
-      "family": "life",
-      "ingot": "vigour",
-      "display_name": "Hale",
-      "effects": [
-        {
-          "modifier": "max_life",
-          "value": 24
-        }
-      ],
-      "design_purpose": "The spec's reading: +24 life while the flow holds. (The Marrow's regeneration doubling waits for the Marrow of recoup.)"
-    },
-    {
-      "family": "life",
-      "ingot": "plate",
-      "display_name": "Scar Tissue",
-      "effects": [
-        {
-          "modifier": "max_life",
-          "value": 12
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
-        }
-      ],
-      "design_purpose": "PROPOSED: +12 life, and casting the skill grants 4 armour for a moment. (Armour reducing burns and bleeds is a player-status hook, later.)"
-    },
-    {
-      "family": "life",
-      "ingot": "ward",
-      "display_name": "Warded Blood",
-      "effects": [
-        {
-          "modifier": "all_resistance",
-          "value": 5
-        },
-        {
-          "modifier": "status_ward",
+          "modifier": "impact_stagger",
           "value": 0.1
         }
-      ],
-      "design_purpose": "PROPOSED: +5 to every resistance, and an enemy carrying the skill's status deals 10% less to you."
+      ]
     },
     {
-      "family": "life",
-      "ingot": "haste",
-      "display_name": "Lifeline",
-      "effects": [
-        {
-          "modifier": "heal_more",
-          "value": 0.15
-        }
-      ],
-      "design_purpose": "The spec's reading: life restored to you from any source is 15% more while the flow holds."
-    },
-    {
-      "family": "speed",
-      "ingot": "ember",
-      "display_name": "Hot Hands",
-      "effects": [
-        {
-          "modifier": "haste_on_kill",
-          "value": 0.16
-        }
-      ],
-      "design_purpose": "PROPOSED: a kill with the skill quickens you 16% for a moment. (The Dash leaving burning ground is a ground hook, later.)"
-    },
-    {
-      "family": "speed",
-      "ingot": "frost",
-      "display_name": "Cold Snap",
-      "effects": [
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.25
-        }
-      ],
-      "design_purpose": "PROPOSED: a kill with the skill refunds a quarter of its cooldown. (Dashing through enemies chilling them is a dash hook, later.)"
-    },
-    {
-      "family": "speed",
-      "ingot": "edge",
-      "display_name": "Quick Cut",
-      "effects": [
-        {
-          "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.15
-        }
-      ],
-      "design_purpose": "PROPOSED: the skill's hits bleed (+20) and a kill refunds 15% of its cooldown."
-    },
-    {
-      "family": "speed",
+      "support_only": true,
       "ingot": "reach",
-      "display_name": "Long Step",
-      "effects": [
-        {
-          "modifier": "dash_reach",
-          "value": 1.0
-        }
-      ],
-      "design_purpose": "The spec's reading: your Dash goes 1 m further while the flow holds."
-    },
-    {
-      "family": "speed",
-      "ingot": "vigour",
-      "display_name": "Second Breath",
-      "effects": [
-        {
-          "modifier": "life_on_dash",
-          "value": 4
-        }
-      ],
-      "design_purpose": "The spec's reading: a Dash restores 4 life."
-    },
-    {
-      "family": "speed",
-      "ingot": "plate",
-      "display_name": "Braced Step",
-      "effects": [
-        {
-          "modifier": "armour_on_dash",
-          "value": 8
-        }
-      ],
-      "design_purpose": "The spec's reading: +8 armour for a moment after a Dash (it shares cast_armour_seconds)."
-    },
-    {
-      "family": "speed",
-      "ingot": "ward",
-      "display_name": "Sure Step",
-      "effects": [
-        {
-          "modifier": "life_on_dash",
-          "value": 2
-        },
-        {
-          "modifier": "armour_on_dash",
-          "value": 4
-        }
-      ],
-      "design_purpose": "PROPOSED: a Dash restores 2 life and grants 4 armour for a moment. (A Dash cleansing a status waits for player statuses.)"
-    },
-    {
-      "family": "speed",
-      "ingot": "haste",
-      "display_name": "Fleet",
-      "effects": [
-        {
-          "modifier": "dash_recovery",
-          "value": 0.16
-        }
-      ],
-      "design_purpose": "The spec's reading: your Dash recovers 16% faster while the flow holds."
-    },
-    {
-      "family": "offence",
-      "kind": "piercing_catalyst",
-      "ingot": "reach",
+      "metal": "bronze",
+      "display_name": "Bronze Reach",
       "skill_tag": "projectile",
-      "display_name": "Throughline",
+      "description": "A direct bronze support adds this refinement to its plain reading.",
       "effects": [
         {
           "modifier": "pierce",
           "value": 1
         }
-      ],
-      "design_purpose": "5 Sep physical Catalyst variant: this form adds to the common family reading only when kind, support and skill tag match. Its small control/propagation value is provisional tuning."
+      ]
     },
     {
-      "family": "offence",
-      "kind": "piercing_catalyst",
-      "ingot": "edge",
-      "skill_tag": "projectile",
-      "display_name": "Barbed Flight",
-      "effects": [
-        {
-          "modifier": "laceration",
-          "value": 15
-        }
-      ],
-      "design_purpose": "5 Sep physical Catalyst variant: this form adds to the common family reading only when kind, support and skill tag match. Its small control/propagation value is provisional tuning."
-    },
-    {
-      "family": "offence",
-      "kind": "impact_catalyst",
-      "ingot": "edge",
-      "skill_tag": "attack",
-      "display_name": "Concussion",
-      "effects": [
-        {
-          "modifier": "impact_stagger",
-          "value": 0.15
-        }
-      ],
-      "design_purpose": "5 Sep physical Catalyst variant: this form adds to the common family reading only when kind, support and skill tag match. Its small control/propagation value is provisional tuning."
-    },
-    {
-      "family": "offence",
-      "kind": "impact_catalyst",
+      "support_only": true,
       "ingot": "reach",
-      "skill_tag": "attack",
-      "display_name": "Follow Through",
+      "metal": "steel",
+      "display_name": "Steel Branching",
+      "skill_tag": "projectile",
+      "description": "A direct steel support adds this refinement to its plain reading.",
       "effects": [
         {
-          "modifier": "impact_push",
+          "modifier": "forked_lattice",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "vigour",
+      "metal": "bronze",
+      "display_name": "Bronze Recovery",
+      "description": "A direct bronze support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "life_on_kill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "vigour",
+      "metal": "steel",
+      "display_name": "Steel Recovery",
+      "description": "A direct steel support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "life_on_hit",
           "value": 0.5
         }
-      ],
-      "design_purpose": "5 Sep physical Catalyst variant: this form adds to the common family reading only when kind, support and skill tag match. Its small control/propagation value is provisional tuning."
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "plate",
+      "metal": "bronze",
+      "display_name": "Bronze Bracing",
+      "description": "A direct bronze support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "armour_on_cast",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "plate",
+      "metal": "steel",
+      "display_name": "Steel Bracing",
+      "description": "A direct steel support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "armour_on_cast",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "ward",
+      "metal": "bronze",
+      "display_name": "Bronze Guard",
+      "description": "A direct bronze support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "status_ward",
+          "value": 0.025
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "ward",
+      "metal": "steel",
+      "display_name": "Steel Guard",
+      "description": "A direct steel support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "status_ward",
+          "value": 0.025
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "haste",
+      "metal": "bronze",
+      "display_name": "Bronze Tempo",
+      "description": "A direct bronze support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "swift_hands",
+          "value": 0.04
+        }
+      ]
+    },
+    {
+      "support_only": true,
+      "ingot": "haste",
+      "metal": "steel",
+      "display_name": "Steel Tempo",
+      "description": "A direct steel support adds this refinement to its plain reading.",
+      "effects": [
+        {
+          "modifier": "refund_on_kill",
+          "value": 0.08
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "upstream_kind": "frost_catalyst",
+      "ingot": "ember",
+      "display_name": "Kept Rime",
+      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "effects": [
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "upstream_kind": "preserving_catalyst",
+      "ingot": "ember",
+      "display_name": "Rime Memory",
+      "description": "Preserving cooled by Frost: the retained hit builds another 15 chill per full hit, scaled down on pulses.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "upstream_kind": "frost_catalyst",
+      "ingot": "frost",
+      "display_name": "Kept Rime",
+      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "effects": [
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "upstream_kind": "preserving_catalyst",
+      "ingot": "frost",
+      "display_name": "Rime Memory",
+      "description": "Preserving cooled by Frost: the retained hit builds another 15 chill per full hit, scaled down on pulses.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "upstream_kind": "frost_catalyst",
+      "ingot": "edge",
+      "display_name": "Kept Rime",
+      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "effects": [
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "upstream_kind": "preserving_catalyst",
+      "ingot": "edge",
+      "display_name": "Rime Memory",
+      "description": "Preserving cooled by Frost: the retained hit builds another 15 chill per full hit, scaled down on pulses.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "upstream_kind": "frost_catalyst",
+      "ingot": "reach",
+      "display_name": "Kept Rime",
+      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "effects": [
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "upstream_kind": "preserving_catalyst",
+      "ingot": "reach",
+      "display_name": "Rime Memory",
+      "description": "Preserving cooled by Frost: the retained hit builds another 15 chill per full hit, scaled down on pulses.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "upstream_kind": "frost_catalyst",
+      "ingot": "vigour",
+      "display_name": "Kept Rime",
+      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "effects": [
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "upstream_kind": "preserving_catalyst",
+      "ingot": "vigour",
+      "display_name": "Rime Memory",
+      "description": "Preserving cooled by Frost: the retained hit builds another 15 chill per full hit, scaled down on pulses.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "upstream_kind": "frost_catalyst",
+      "ingot": "plate",
+      "display_name": "Kept Rime",
+      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "effects": [
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "upstream_kind": "preserving_catalyst",
+      "ingot": "plate",
+      "display_name": "Rime Memory",
+      "description": "Preserving cooled by Frost: the retained hit builds another 15 chill per full hit, scaled down on pulses.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "upstream_kind": "frost_catalyst",
+      "ingot": "ward",
+      "display_name": "Kept Rime",
+      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "effects": [
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "upstream_kind": "preserving_catalyst",
+      "ingot": "ward",
+      "display_name": "Rime Memory",
+      "description": "Preserving cooled by Frost: the retained hit builds another 15 chill per full hit, scaled down on pulses.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "preserving_catalyst",
+      "upstream_kind": "frost_catalyst",
+      "ingot": "haste",
+      "display_name": "Kept Rime",
+      "description": "Frost held by Preserving: the downstream impact field lasts another 0.8 seconds.",
+      "effects": [
+        {
+          "modifier": "mutation_field_seconds",
+          "value": 0.8
+        }
+      ]
+    },
+    {
+      "family": "offence",
+      "kind": "frost_catalyst",
+      "upstream_kind": "preserving_catalyst",
+      "ingot": "haste",
+      "display_name": "Rime Memory",
+      "description": "Preserving cooled by Frost: the retained hit builds another 15 chill per full hit, scaled down on pulses.",
+      "effects": [
+        {
+          "modifier": "frostbite",
+          "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
     }
   ],
   "rails": {
@@ -1683,7 +4358,7 @@
       "design_purpose": "The first dressed block (D-021) is a milestone: a Plate ingot, so the yard pays into the Foundry as the bench and the forge do."
     }
   ],
-  "design_purpose": "The Foundry is the point system (docs/systems/progression-eras.md, D-019; docs/systems/foundry.md, D-023): points are INGOTS placed on a forged PLATE, and power comes from arrangement, not from the ingot's number. Every ingot is one verb (a modifier from items.json at a flat, small value that never changes). THE FRAME (D-023 slice 1, owner 4 Sep 2026): the plate is a frame of `frame` rows by columns whose rows the eras forge - `rows_by_era` lists the first and last forged row per era (the last entry serves later eras), so era one is a two-row, four-column plate, era two forges the row above it and era three the row below; nothing on the plate ever moves. `sockets` are the frame cells that take a SUBJECT (a skill tablet; later the typed currencies); an ingot never sits in a socket and a tablet never sits outside one. A WORKING is a socket, the ingots orthogonally beside it (its SUPPORTS) and the diagonal cells (its CORNERS). A support applies its modifier to the socket's skill alone at support_multiplier times its value, when the modifier can read the skill's tags; an ingot may name a `skill_modifier` it speaks beside a skill in place of its base modifier, at `skill_value` when the reading has a number of its own. EVERY INGOT READS EVERY SKILL (D-023 slice 2, owner 4 Sep 2026): an element ingot whose modifier cannot read the skill (Ember beside a cold orb) speaks its `added_modifier` instead and ADDS its element to the hit as a second typed packet at the same fraction, scaled by that element's own gear - the added-element lane, where boil and scald builds begin; the self ingots (Vigour, Plate, Ward) read a skill weakly through their skill_modifier (life on kill, armour for cast_armour_seconds after a cast, less damage from enemies carrying the skill's status). Nothing on the plate is inert. BACKING replaces lines (owner, 4 Sep 2026): a matching ingot orthogonally touching a support, from any side but the socket's, makes that support count once more, so a duplicate ingot always has a job. Two orthogonally adjacent ingots that match a pair make that pair's mechanic for everyone. Ingots come from milestones and knowledge, never kills-per-se: sources map an event to one ingot, each once, era-gated. Re-forging (lifting an ingot) pays reforge_cost; tablets are knowledge and lift free. Era one forges twelve ingots for six free cells: the tray is the reserve and re-forging is the way between layouts. Placements a save carries in an unforged row, a tablet outside a socket or an ingot inside one are lifted free on load. THE FLOW (owner, 4 Sep 2026; replaces the socketed Vanguard of slice 4): only a skill sits in a socket; a currency kind rests where it cannot touch one, gives its family's base forward while a chain of pieces leads inward to a laid tablet, and works every support it touches into a form (`kinds`, `forms`).",
+  "design_purpose": "D-025: the Foundry is the point system, built from owned milestone ingots, learned skill tablets and typed Kinds. Iron direct supports give straightforward additions; exact Kind paths supply early mechanical identity. Bronze/steel add richer direct refinements. Frame rows, sockets, costs, sources, class rails and shared-support links retain their existing contracts. This table contains the complete 96 base Kind/ingot forms, 16 alloy refinements and 16 ordered-pair additions. Mutation limits bound runtime operations; current equipment scales acquired tags while damage packets retain their native type. See docs/systems/foundry-mutations.md for stacking, compatibility and save contracts.",
   "design_purpose_forms": "FORMS (D-023, the flow): what a kind of a family works a support into. Keyed by family and ingot; `lane` narrows to how the ingot reads the skill (same element sharpens, added element reacts), `skill_tag` to the skill's tags. Each effect names a modifier, a value and, for a reaction, the packet it speaks to ('native' = the skill's own element). The ingot keeps its plain reading; the form's effects feed the skill the support serves. The Catalyst rows are the spec's reactions, their hook halves now engine hooks reading sim numbers (Echo, Quench, Rime, Sear, Brittle; Arc and Linger still wait); the Vanguard rows are proposals drafted from the owner's two examples (Frost Leech, Max Speed) and slice 4's readings. The Marrow rows are sustain twists and the Quicksilver rows tempo twists (slice 8): the spec's readings where a hook existed or was cheap, proposals where it did not; the Dash forms land on the sheet (the Dash is no skill on the plate) and the rest feed the skill. Compound forms (a kind worked by another kind, an ingot's metal or rarity as a condition) are the next step and have no rows yet.",
   "family_names": {
     "offence": "Catalyst",
@@ -1694,5 +4369,29 @@
   "links": {
     "family": "offence",
     "design_purpose": "LINKS (D-023, re-homed to the flow, 4 Sep 2026): a kind of this family resting in a corner that touches a support serving two sockets links the two skills laid there. When one skill's payload crosses a status threshold on an enemy - a freeze, an ignite, a bleed - the other casts itself at that enemy, with its own supports and its own cooldown, whether or not it sits on the bar; a link runs both ways, each skill on its own trigger. A linked cast never fires another link (the engine's depth guard). The kind still works the shared support into a form: the link is what the corner between two workings does on top. The link costs a Catalyst and that corner."
+  },
+  "mutation_limits": {
+    "smoulder_slow": 0.45,
+    "field_seconds": 4.8,
+    "field_fraction": 0.5,
+    "field_radius": 4.0,
+    "trail_fraction": 0.4,
+    "wave": 1.0,
+    "impact_radius": 3.0,
+    "zone_armour": 24.0,
+    "ward_charges": 3.0,
+    "recovery_on_kill": 10.0,
+    "siphon": 2.0,
+    "echo_delay": 0.8,
+    "ignite_spread": 1.0,
+    "boss_slow_factor": 0.25,
+    "pulse_interval": 0.8,
+    "max_fields": 12.0,
+    "max_returns": 24.0,
+    "wave_range": 12.0,
+    "wave_speed": 16.0,
+    "siphon_speed": 9.0,
+    "zone_seconds": 3.2,
+    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds."
   }
 }

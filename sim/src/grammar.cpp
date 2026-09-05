@@ -43,7 +43,7 @@ double statusApplied(const tuning::Tuning& tuning, const ActiveMods& active,
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
     double base = skillNumber(*def, payloadKey, 0.0);
-    double applied = resolve(active, def->resolveTags(), resolveKey, base);
+    double applied = resolve(active, effectiveTags(tuning, active, skillId), resolveKey, base);
     if (applied <= 0.0) return 0.0;
     if (isBoss) applied *= bossMultiplier;
     return applied;
@@ -89,6 +89,37 @@ double resolve(const ActiveMods& active,
         else if (mod.effectKey == mre) more *= (1.0 + mod.value);
     }
     return (base + flat) * (1.0 + increased) * more;
+}
+
+std::vector<std::string> effectiveTags(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
+    const auto* skill = findSkill(tuning, skillId);
+    if (!skill) return {};
+    auto tags = skill->resolveTags();
+    const auto base = tags; // grants never recursively make other grants eligible
+    const std::string prefix = "add_grant_tag_";
+    for (const auto& mod : active) {
+        if (mod.effectKey.compare(0, prefix.size(), prefix) || mod.value <= 0 || !modApplies(mod, base)) continue;
+        const auto tag = mod.effectKey.substr(prefix.size());
+        if (tag == "projectile" && skill->delivery != "projectile" && skill->delivery != "strike" && skill->delivery != "cone") continue;
+        if (!has(tags, tag)) tags.push_back(tag);
+    }
+    return tags;
+}
+
+std::map<std::string, double> skillMutation(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
+    std::map<std::string, double> result;
+    const auto* skill = findSkill(tuning, skillId);
+    if (!skill) return result;
+    const auto tags = effectiveTags(tuning, active, skillId);
+    for (const auto& [key, cap] : tuning.foundry.mutationLimits)
+        result[key] = std::clamp(resolve(active, tags, "foundry_" + key, 0.0), 0.0, cap);
+    // The burn belongs to this skill. Its acquired tags open gear scaling,
+    // but cold DAMAGE never scales a fire burn: damage packets keep their type.
+    auto burnTags = packetTags(tuning, tags, "fire");
+    if (!has(burnTags, "ignite")) burnTags.push_back("ignite");
+    result["burn_dps"] = std::max(0.0, resolve(active, burnTags, "burn_damage", tuning.grammar.ignite.damagePerS));
+    result["burn_seconds"] = std::max(0.0, resolve(active, burnTags, "ignite_duration", tuning.grammar.ignite.durationS));
+    return result;
 }
 
 ActiveMods gearMods(const tuning::ItemTable& table, const stats::Equipment& equipment) {
@@ -172,7 +203,7 @@ int forkCount(const tuning::Tuning& tuning, const ActiveMods& active,
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0;
     double base = skillNumber(*def, "fork_count", 0.0);
-    return static_cast<int>(std::floor(resolve(active, def->resolveTags(), "fork", base)));
+    return static_cast<int>(std::floor(resolve(active, effectiveTags(tuning, active, skillId), "fork", base)));
 }
 
 double forkDamageFraction(const tuning::Tuning& tuning, const std::string& skillId,
@@ -234,8 +265,8 @@ Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
     if (!def) return hit;
     const double base = skillNumber(*def, "base_damage", 0.0);
     if (base <= 0.0) return hit; // a movement skill has no hit
-    const auto tags = def->resolveTags();
-    const std::string native = nativeType(tuning, tags);
+    const auto tags = effectiveTags(tuning, active, skillId);
+    const std::string native = nativeType(tuning, def->resolveTags());
     // A form's "an ignited enemy takes 20% more" (D-023): every packet is
     // multiplied by the resolved damage_vs_<status> for each status the
     // struck mob carries, against the packet's own tags.
@@ -243,7 +274,8 @@ Hit skillHit(const tuning::Tuning& tuning, const ActiveMods& active,
         for (const auto& status : targetStatuses) damage *= resolve(active, packetTags_, "damage_vs_" + status, 1.0);
         return damage;
     };
-    hit.push_back({native, against(tags, resolve(active, tags, "damage", base)), false});
+    const auto nativeTags = packetTags(tuning, tags, native);
+    hit.push_back({native, against(nativeTags, resolve(active, nativeTags, "damage", base)), false});
     // The added-element lane (D-023 slice 2): each other type the plate
     // adds is its own packet, the same fraction of the base hit the
     // same-element lane would have increased it by, scaled by its own
@@ -269,7 +301,7 @@ double skillLifeOnKill(const tuning::Tuning& tuning, const ActiveMods& active,
                        const std::string& skillId) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
-    return std::max(0.0, resolve(active, def->resolveTags(), "life_on_kill", 0.0));
+    return std::max(0.0, resolve(active, effectiveTags(tuning, active, skillId), "life_on_kill", 0.0));
 }
 
 double skillCastArmour(const tuning::Tuning& tuning, const ActiveMods& active,
@@ -277,7 +309,7 @@ double skillCastArmour(const tuning::Tuning& tuning, const ActiveMods& active,
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
     // The skill's own swing armour is the base the reading adds to.
-    return std::max(0.0, resolve(active, def->resolveTags(), "armour_on_cast", skillNumber(*def, "swing_armour", 0.0)));
+    return std::max(0.0, resolve(active, effectiveTags(tuning, active, skillId), "armour_on_cast", skillNumber(*def, "swing_armour", 0.0)));
 }
 
 double skillSwingSeconds(const tuning::Tuning& tuning, const std::string& skillId) {
@@ -288,14 +320,14 @@ double skillSwingSeconds(const tuning::Tuning& tuning, const std::string& skillI
 double skillStagger(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId, bool isBoss) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
-    const double seconds = std::max(0.0, resolve(active, def->resolveTags(), "stagger", skillNumber(*def, "stagger_seconds", 0.0)));
+    const double seconds = std::max(0.0, resolve(active, effectiveTags(tuning, active, skillId), "stagger", skillNumber(*def, "stagger_seconds", 0.0)));
     return isBoss ? seconds * tuning.grammar.melee.bossStaggerMultiplier : seconds;
 }
 
 double skillPush(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId, bool isBoss) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
-    const double metres = std::max(0.0, resolve(active, def->resolveTags(), "push", skillNumber(*def, "push_m", 0.0)));
+    const double metres = std::max(0.0, resolve(active, effectiveTags(tuning, active, skillId), "push", skillNumber(*def, "push_m", 0.0)));
     return isBoss ? metres * tuning.grammar.melee.bossPushMultiplier : metres;
 }
 
@@ -304,12 +336,17 @@ double skillNumberResolved(const tuning::Tuning& tuning, const ActiveMods& activ
                            const std::string& key) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
-    return std::max(0.0, resolve(active, def->resolveTags(), key, skillNumber(*def, key, 0.0)));
+    return std::max(0.0, resolve(active, effectiveTags(tuning, active, skillId), key, skillNumber(*def, key, 0.0)));
 }
 } // namespace
 
 int skillEchoEvery(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
-    return static_cast<int>(std::floor(skillNumberResolved(tuning, active, skillId, "echo_every")));
+    const auto tags = effectiveTags(tuning, active, skillId);
+    int every = 0;
+    for (const auto& mod : active)
+        if (mod.effectKey == "add_echo_every" && mod.value > 0 && modApplies(mod, tags))
+            every = every == 0 ? static_cast<int>(mod.value) : std::min(every, static_cast<int>(mod.value));
+    return every;
 }
 
 bool skillQuenches(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
@@ -340,7 +377,7 @@ int skillProjectiles(const tuning::Tuning& tuning, const ActiveMods& active, con
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 1;
     const double base = skillNumber(*def, "projectiles", 1.0);
-    return std::max(1, static_cast<int>(std::floor(resolve(active, def->resolveTags(), "projectiles", base))));
+    return std::max(1, static_cast<int>(std::floor(resolve(active, effectiveTags(tuning, active, skillId), "projectiles", base))));
 }
 
 int skillPierce(const tuning::Tuning& tuning, const ActiveMods& active, const std::string& skillId) {
@@ -381,7 +418,7 @@ double wardMultiplier(const tuning::Tuning& tuning, const ActiveMods& active,
     double multiplier = 1.0;
     if (carriedStatuses.empty()) return multiplier;
     for (const auto& def : tuning.skills.combatSkills) {
-        const double ward = resolve(active, def.resolveTags(), "status_ward", 0.0);
+        const double ward = resolve(active, effectiveTags(tuning, active, def.id), "status_ward", 0.0);
         if (ward <= 0.0) continue;
         // The skill's status is whichever it applies right now: its own
         // payload, or one a modifier gave it.
@@ -397,7 +434,7 @@ double skillReach(const tuning::Tuning& tuning, const ActiveMods& active,
                   const std::string& skillId) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 1.0;
-    return resolve(active, def->resolveTags(), "reach", 1.0);
+    return resolve(active, effectiveTags(tuning, active, skillId), "reach", 1.0);
 }
 
 double skillCooldownSeconds(const tuning::Tuning& tuning, const ActiveMods& active,
@@ -405,7 +442,7 @@ double skillCooldownSeconds(const tuning::Tuning& tuning, const ActiveMods& acti
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
     double base = skillNumber(*def, "cooldown_seconds", 0.0);
-    double recovery = resolve(active, def->resolveTags(), "cooldown_recovery", 1.0);
+    double recovery = resolve(active, effectiveTags(tuning, active, skillId), "cooldown_recovery", 1.0);
     return recovery > 0.0 ? base / recovery : base;
 }
 
@@ -414,7 +451,7 @@ ShatterParams shatterFor(const tuning::Tuning& tuning, const ActiveMods& active,
     ShatterParams params;
     const auto& hook = tuning.grammar.shatter;
     const auto* def = findSkill(tuning, skillId);
-    if (!def || !modAppliesToTags(hook.triggerTags, def->resolveTags()) || hook.triggerTags.empty())
+    if (!def || !modAppliesToTags(hook.triggerTags, effectiveTags(tuning, active, skillId)) || hook.triggerTags.empty())
         return params;
     params.enabled = true;
     params.novaDamage = hook.novaDamage;
@@ -422,7 +459,10 @@ ShatterParams shatterFor(const tuning::Tuning& tuning, const ActiveMods& active,
     params.executesFrozen = hook.executesFrozen;
     params.executesBoss = hook.executesBoss;
     // Shatter mods target the "shatter" tag by convention.
-    params.novaRadiusM = resolve(active, {"shatter", "cold"}, "shatter_radius", hook.novaRadiusM);
+    auto novaTags = effectiveTags(tuning, active, skillId);
+    for (const auto& tag : {std::string("shatter"), hook.novaDamageType})
+        if (!has(novaTags, tag)) novaTags.push_back(tag);
+    params.novaRadiusM = resolve(active, novaTags, "shatter_radius", hook.novaRadiusM);
     return params;
 }
 

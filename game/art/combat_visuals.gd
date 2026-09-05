@@ -69,7 +69,19 @@ static func weapon(base: String) -> ArrayMesh:
 static func projectile(profile: String, colour: Color) -> Node3D:
 	var root := Node3D.new()
 	var st := ArtGeometry.begin()
-	if profile in ["arrow","fan","bodkin"]:
+	if profile == "wave":
+		# A low, forward-curving cutting edge reads differently from an orb
+		# or arrow. The hot edge leads the darker, broken wake.
+		for i in 24:
+			var a := lerpf(-1.2, 1.2, float(i) / 24.0)
+			var b := lerpf(-1.2, 1.2, float(i + 1) / 24.0)
+			var p := Vector3(sin(a), 0, -cos(a)) * 0.72
+			var q := Vector3(sin(b), 0, -cos(b)) * 0.72
+			ArtGeometry.triangle(st, p, q, p + Vector3(0, 0.04, 0.13), colour.lightened(0.18))
+			ArtGeometry.triangle(st, q, q + Vector3(0, 0.04, 0.13), p + Vector3(0, 0.04, 0.13), colour)
+			if i % 3 == 0:
+				ArtGeometry.triangle(st, p, p + Vector3(0.035, 0.09, 0.15), p + Vector3(0, 0, 0.48), colour.darkened(0.35))
+	elif profile in ["arrow","fan","bodkin"]:
 		ArtGeometry.branch(st,Vector3(0,0,0.35),Vector3(0,0,-0.3),0.009,Color("887052"),1.0)
 		for i in 3:
 			var a := TAU*float(i)/3

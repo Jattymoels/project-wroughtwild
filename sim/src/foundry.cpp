@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <cstdlib>
 #include <functional>
+#include <set>
+#include <tuple>
 #include <string>
 
 namespace wroughtwild::foundry {
@@ -317,29 +319,36 @@ void normaliseMetals(const tuning::FoundryDef& def, State& state) {
         it = state.owned.count(it->first) ? std::next(it) : state.metals.erase(it);
 }
 
-bool flowsToSkill(const State& state, const Plate& plate, int row, int col) {
-    // Each step goes to a placed piece one nearer a socket, so the walk
-    // always ends; a support (depth 1) reaches the skill only when a
-    // socket beside it holds a tablet.
-    std::function<bool(int, int)> reaches = [&](int r, int c) -> bool {
-        if (!plate.forged(r, c)) return false;
-        const Placement* here = at(state, r, c);
-        if (!here || here->isTablet()) return false;
+std::vector<Route> routes(const State& state, const Plate& plate, int row, int col) {
+    std::vector<Route> out;
+    std::vector<Cell> path;
+    std::function<void(int, int)> walk = [&](int r, int c) {
+        if (!plate.forged(r, c)) return;
+        const auto* here = at(state, r, c);
+        if (!here || here->isTablet()) return;
+        path.push_back({r, c});
         const int d = depth(plate, r, c);
-        if (d <= 1) {
-            if (!here->isIngot()) return false;
-            for (const auto& [dr, dc] : kSides) {
-                if (!plate.isSocket(r + dr, c + dc) || !plate.forged(r + dr, c + dc)) continue;
-                const Placement* socket = at(state, r + dr, c + dc);
-                if (socket && socket->isTablet()) return true;
+        if (d == 1 && here->isIngot()) {
+            for (const auto& socket : plate.sockets) {
+                if (!plate.forged(socket.row, socket.col) || std::abs(socket.row-r)+std::abs(socket.col-c) != 1) continue;
+                const auto* tablet = at(state, socket.row, socket.col);
+                if (!tablet || !tablet->isTablet()) continue;
+                auto complete = path;
+                complete.push_back(socket);
+                out.push_back({tablet->skill, std::move(complete)});
             }
-            return false;
+        } else if (d > 1) {
+            for (const auto& [dr, dc] : kSides)
+                if (depth(plate, r+dr, c+dc) == d-1) walk(r+dr, c+dc);
         }
-        for (const auto& [dr, dc] : kSides)
-            if (plate.forged(r + dr, c + dc) && depth(plate, r + dr, c + dc) == d - 1 && reaches(r + dr, c + dc)) return true;
-        return false;
+        path.pop_back();
     };
-    return reaches(row, col);
+    walk(row, col);
+    return out;
+}
+
+bool flowsToSkill(const State& state, const Plate& plate, int row, int col) {
+    return !routes(state, plate, row, col).empty();
 }
 
 std::vector<Link> links(const tuning::Tuning& tuning, const State& state, const Plate& plate) {
@@ -471,60 +480,95 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
             }
         }
     }
-    // Kinds (D-023, the flow, owner 4 Sep 2026): a kind rests only where it
-    // cannot touch a socket. When a chain of placed pieces leads from it
-    // inward to a support beside a laid tablet, its family's base counts
-    // (kind "augment") and it works every support it touches into a FORM
-    // (kind "form"): the ingot keeps its plain reading and gains the
-    // form's, which feeds the skill the support serves - both skills, for
-    // a shared support. Which form is the family's, the ingot's and the
-    // lane's (same element, added element, any).
+    // A route carries the exact source Kind through EVERY inward ingot.
+    // A support shared by two sockets reads once for each skill. Alternate
+    // routes to the same reading do not multiply it. Different ingot cells
+    // are real investments and add their payloads, within grammar limits.
+    auto emitForm = [&](const tuning::FormDef& form, const Placement& ingot, const Placement& tablet,
+                        const std::string& source, const std::vector<Cell>& path) {
+        const auto* skill = tuning.skills.findCombatSkill(tablet.skill);
+        const auto* definition = def.findIngot(ingot.ingot);
+        if (!skill || !definition) return;
+        auto tags = skill->resolveTags();
+        if (form.supportOnly) {
+            for (const auto& prior : out) {
+                if (prior.skill != tablet.skill) continue;
+                const auto* modifier = tuning.items.findModifier(prior.modifier);
+                const std::string prefix = "add_grant_tag_";
+                if (!modifier || modifier->effectKey.compare(0, prefix.size(), prefix) || prior.value <= 0) continue;
+                const auto tag = modifier->effectKey.substr(prefix.size());
+                if (tag == "projectile" && skill->delivery != "projectile" && skill->delivery != "strike" && skill->delivery != "cone") continue;
+                if (!hasTag(tags, tag)) tags.push_back(tag);
+            }
+        }
+        if (!form.lane.empty() && form.lane != laneOf(tuning, *definition, tags)) return;
+        if (!form.skillTag.empty() && !hasTag(tags, form.skillTag)) return;
+        if (!form.metal.empty() && reachOf(ingot) < def.metalReach(form.metal)) return;
+        for (const auto& fe : form.effects) {
+            Effect e{"form", form.displayName + " <- " + definition->displayName,
+                     fe.modifier, fe.value, tablet.row, tablet.col, tablet.skill};
+            e.cellRow = ingot.row; e.cellCol = ingot.col;
+            e.subject = form.family;
+            e.packet = fe.packet == "native" ? grammar::nativeType(tuning, skill->resolveTags()) : fe.packet;
+            e.formName = form.displayName; e.description = form.description;
+            e.sourceKind = source; e.path = path;
+            out.push_back(std::move(e));
+        }
+    };
     for (const auto& p : state.plate) {
         if (!p.isCurrency() || !kindMayRest(plate, p.row, p.col)) continue;
         const auto* kind = def.findKindOnPlate(p.currency);
-        if (!kind) continue;
-        if (!flowsToSkill(state, plate, p.row, p.col)) continue;
+        const auto paths = routes(state, plate, p.row, p.col);
+        if (!kind || paths.empty()) continue;
         if (!kind->modifier.empty()) {
             Effect own{"augment", kind->displayName, kind->modifier, kind->value, p.row, p.col, std::string()};
-            own.subject = kind->family;
-            own.cellRow = p.row;
-            own.cellCol = p.col;
+            own.subject = kind->family; own.cellRow = p.row; own.cellCol = p.col;
             out.push_back(own);
         }
-        for (const auto& [dr, dc] : kSides) {
-            const int sr = p.row + dr, sc = p.col + dc;
-            if (!plate.forged(sr, sc) || depth(plate, sr, sc) != 1) continue;
-            const auto* beside = cell(sr, sc);
-            if (!beside || !beside->isIngot()) continue;
-            const auto* ingot = def.findIngot(beside->ingot);
-            if (!ingot) continue;
-            for (const auto& [tr, tc] : kSides) {
-                const int socketRow = sr + tr, socketCol = sc + tc;
-                if (!plate.isSocket(socketRow, socketCol)) continue;
-                const auto* tablet = cell(socketRow, socketCol);
-                if (!tablet || !tablet->isTablet()) continue;
-                const auto* skill = tuning.skills.findCombatSkill(tablet->skill);
-                if (!skill) continue;
-                const auto skillTags = skill->resolveTags();
-                const std::string lane = laneOf(tuning, *ingot, skillTags);
-                for (const auto& form : def.forms) {
-                    if (form.family != kind->family || form.ingot != ingot->id) continue;
-                    if (!form.kind.empty() && form.kind != p.currency) continue;
-                    if (!form.lane.empty() && form.lane != lane) continue;
-                    if (!form.skillTag.empty() && !hasTag(skillTags, form.skillTag)) continue;
-                    // A compound form (slice 10) needs the support cast in at least its metal.
-                    if (!form.metal.empty() && reachOf(*beside) < def.metalReach(form.metal)) continue;
-                    for (const auto& fe : form.effects) {
-                        Effect e{"form", form.displayName + " (" + kind->displayName + " on " + ingot->displayName + ")",
-                                 fe.modifier, fe.value, socketRow, socketCol, tablet->skill};
-                        e.cellRow = sr;
-                        e.cellCol = sc;
-                        e.subject = kind->family;
-                        e.packet = fe.packet == "native" ? grammar::nativeType(tuning, skillTags) : fe.packet;
-                        out.push_back(e);
+        std::set<std::tuple<int, int, std::string, size_t>> emitted;
+        for (const auto& route : paths) {
+            const auto& last = route.cells.back();
+            const auto* tablet = cell(last.row, last.col);
+            if (!tablet) continue;
+            std::vector<std::string> upstream;
+            for (const auto& step : route.cells) {
+                const auto* piece = cell(step.row, step.col);
+                if (!piece) continue;
+                if (piece->isCurrency()) { upstream.push_back(piece->currency); continue; }
+                if (!piece->isIngot()) continue;
+                for (size_t i = 0; i < def.forms.size(); ++i) {
+                    const auto& form = def.forms[i];
+                    if (form.supportOnly || form.ingot != piece->ingot) continue;
+                    // Exact identities are mandatory for new forms. The family
+                    // fallback remains a loader compatibility contract only.
+                    if (form.family != kind->family || (!form.kind.empty() && form.kind != p.currency)) continue;
+                    if (!form.upstreamKind.empty()) continue;
+                    if (emitted.emplace(piece->row, piece->col, tablet->skill, i).second)
+                        emitForm(form, *piece, *tablet, p.currency, route.cells);
+                }
+                // Ordered compound rules: a downstream Kind acts on the source
+                // before its reading reaches this ingot, never on a sibling branch.
+                for (size_t k = 1; k < upstream.size(); ++k) {
+                    for (size_t i = 0; i < def.forms.size(); ++i) {
+                        const auto& form = def.forms[i];
+                        if (form.upstreamKind != p.currency || form.kind != upstream[k] || form.ingot != piece->ingot) continue;
+                        if (emitted.emplace(piece->row, piece->col, tablet->skill, i).second)
+                            emitForm(form, *piece, *tablet, p.currency + ">" + upstream[k], route.cells);
                     }
                 }
             }
+        }
+    }
+    // Alloy refinements belong to direct supports, independently of any Kind.
+    for (const auto& p : state.plate) {
+        if (!p.isIngot() || !plate.forged(p.row, p.col)) continue;
+        for (const auto& socket : plate.sockets) {
+            if (!plate.forged(socket.row, socket.col) || std::abs(socket.row-p.row)+std::abs(socket.col-p.col) != 1) continue;
+            const auto* tablet = cell(socket.row, socket.col);
+            if (!tablet || !tablet->isTablet()) continue;
+            for (const auto& form : def.forms)
+                if (form.supportOnly && form.ingot == p.ingot)
+                    emitForm(form, p, *tablet, "", {{p.row, p.col}, socket});
         }
     }
     // Links: the corner between two workings.

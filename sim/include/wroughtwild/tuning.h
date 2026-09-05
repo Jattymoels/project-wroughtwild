@@ -1004,6 +1004,9 @@ struct FormDef {
     std::string metal; // a compound form (slice 10): the least metal the support must be cast in ("" any)
     std::string displayName;
     std::vector<FormEffect> effects;
+    std::string description{};
+    std::string upstreamKind{}; // ordered compound: this Kind occurred earlier on the same inward route
+    bool supportOnly = false; // alloy refinement, independent of a Kind
 };
 
 struct IngotPairDef {
@@ -1089,6 +1092,7 @@ struct RailsDef {
 };
 
 struct FoundryDef {
+    std::map<std::string, double> mutationLimits; // bounded, engine-neutral mutation properties
     // The frame (D-023): a plate of frameRows by frameCols whose rows the
     // eras forge. rowsByEra holds the first and last forged row per era
     // (the last entry serves later eras); sockets are the frame cells that

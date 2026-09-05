@@ -23,7 +23,8 @@ param(
     [switch]$BuildPicker,
     [switch]$Combat,
     [switch]$CombatFeel,
-    [switch]$Skills
+    [switch]$Skills,
+    [switch]$Foundry
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -83,7 +84,12 @@ if ($Checks) {
     Invoke-GodotReview 'loot-persistence' '--headless res://tests/loot_persistence.tscn'
     Invoke-GodotReview 'combat-presentation' '--headless res://tests/combat_presentation.tscn'
     Invoke-GodotReview 'skill-expansion' '--headless res://tests/skill_expansion.tscn'
+    Invoke-GodotReview 'foundry-mutations' '--headless res://tests/foundry_mutations.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Foundry) {
+    Invoke-GodotReview 'foundry-import' '--headless --import'
+    Invoke-GodotReview 'foundry-mutations' '--headless res://tests/foundry_mutations.tscn'
+    Invoke-GodotReview 'foundry-review' '--position -9999,-9999 res://experiments/foundry_mutation_review.tscn'
 } elseif ($Skills) {
     Invoke-GodotReview 'skill-expansion-import' '--headless --import'
     Invoke-GodotReview 'skill-expansion' '--headless res://tests/skill_expansion.tscn'

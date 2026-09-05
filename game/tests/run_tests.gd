@@ -399,8 +399,8 @@ func _test_lattice() -> void:
 	# The plate ingot back at (1,0): its base, the Bulwark pair with the
 	# vigour below it, and now the Vanguard's four flowing in.
 	check(sim.foundry_place(1, 0, "plate") and sim.foundry_place_skill(1, 1, "prototype_frost_orb")
-		and sim.derived_stats()["armour"] == armour_bare + 8.0 + 8.0 + 4.0 and sim.skill_cast_armour("prototype_frost_orb")["armour"] == 4.0 + 8.0,
-		"flow: the plate ingot and the orb close the chain - four armour flows in and the Plate is worked into Stand Fast (%s)" % sim.derived_stats()["armour"])
+		and sim.derived_stats()["armour"] == armour_bare + 8.0 + 8.0 + 4.0 and sim.skill_cast_armour("prototype_frost_orb")["armour"] == 4.0 + 4.0 and sim.skill_mutation("prototype_frost_orb").zone_armour == 10.0,
+		"flow: the plate ingot and the orb close the chain - four armour flows in and the Plate is worked into Bulwark with an additional positional armour seal (%s)" % sim.derived_stats()["armour"])
 	var kinds_on_plate := 0
 	for p in sim.foundry()["plate"]:
 		if String(p.get("currency", "")) == "vanguard":
@@ -411,7 +411,7 @@ func _test_lattice() -> void:
 	check(sim.foundry_links().is_empty() and sim.skill_triggers("prototype_frost_orb").has("freeze")
 		and sim.skill_triggers("prototype_heavy_strike").is_empty() and sim.linked_casts("prototype_frost_orb", "freeze").is_empty()
 		and sim.skill_arc("prototype_heavy_strike") == 0.0, "links: a bare plate links nothing; the orb's trigger is a freeze")
-	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 11 and sim.foundry()["flows"].size() == 1
+	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 12 and sim.foundry()["flows"].size() == 1
 		and sim.foundry()["flows"][0]["flows"] and sim.derived_stats().has("cold_resistance_percent"),
 		"flow: the plate view carries the kind, every kind's count, and whether it flows")
 	# Rails (D-023 slice 9): a class is chosen before play; era two here
@@ -1244,7 +1244,7 @@ func _test_sandpit_extension() -> void:
 	check(sim.inventory().get("marrow", 0) == 0, "sandpit: a kind never sits in the pack")
 	# D-023 slice 3: the kinds through the door - the peddler's exchange.
 	var vanguard_before: int = sim.currency_count("vanguard")
-	check(sim.currency_kinds().size() == 11 and sim.exchange_rate() == 3, "kinds: eleven variants, three to one")
+	check(sim.currency_kinds().size() == 12 and sim.exchange_rate() == 3, "kinds: twelve variants, three to one")
 	check(sim.can_exchange("marrow", "vanguard") and not sim.can_exchange("marrow", "marrow") and sim.exchange("marrow", "vanguard")
 		and sim.currency_count("marrow") == before and sim.currency_count("vanguard") == vanguard_before + 1,
 		"kinds: three Marrow change for a Vanguard")

@@ -264,6 +264,8 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("foundry_ingot_ids"), &WroughtwildSim::foundry_ingot_ids);
     ClassDB::bind_method(D_METHOD("foundry_ingot", "ingot_id"), &WroughtwildSim::foundry_ingot);
     ClassDB::bind_method(D_METHOD("foundry_effects"), &WroughtwildSim::foundry_effects);
+    ClassDB::bind_method(D_METHOD("skill_mutation", "skill_id"), &WroughtwildSim::skill_mutation);
+    ClassDB::bind_method(D_METHOD("foundry_preview", "row", "col", "piece_id", "metal_id"), &WroughtwildSim::foundry_preview);
     ClassDB::bind_method(D_METHOD("foundry_place", "row", "col", "ingot_id", "metal_id"), &WroughtwildSim::foundry_place, DEFVAL(String()));
     ClassDB::bind_method(D_METHOD("foundry_recast", "ingot_id", "metal_id"), &WroughtwildSim::foundry_recast);
     ClassDB::bind_method(D_METHOD("can_recast", "ingot_id", "metal_id"), &WroughtwildSim::can_recast);
@@ -3483,31 +3485,75 @@ Dictionary WroughtwildSim::foundry_ingot(const String& ingot_id) const {
     return d;
 }
 
+namespace {
+Dictionary mutation_effect(const wroughtwild::tuning::Tuning& tuning, const wroughtwild::foundry::Effect& e) {
+    Dictionary d;
+    d["kind"] = String(e.kind.c_str()); d["label"] = String(e.label.c_str());
+    d["skill"] = String(e.skill.c_str()); d["subject"] = String(e.subject.c_str());
+    d["packet"] = String(e.packet.c_str()); d["cell_row"] = e.cellRow; d["cell_col"] = e.cellCol;
+    d["form_name"] = String(e.formName.c_str()); d["description"] = String(e.description.c_str());
+    d["source_kind"] = String(e.sourceKind.c_str());
+    Array path;
+    for (const auto& cell : e.path) { Array pair; pair.push_back(cell.row); pair.push_back(cell.col); path.push_back(pair); }
+    d["path"] = path;
+    const auto* def = tuning.items.findModifier(e.modifier);
+    d["sentence"] = def ? String(wroughtwild::items::modifierSentence(*def, e.value).c_str()) : String();
+    if (e.kind == "link") d["sentence"] = String("on either's new freeze, ignite or bleed, the other casts at that enemy");
+    d["modifier"] = String(e.modifier.c_str()); d["value"] = e.value;
+    d["row"] = e.row; d["col"] = e.col;
+    return d;
+}
+}
+
+Dictionary WroughtwildSim::skill_mutation(const String& skill_id) const {
+    Dictionary d;
+    if (!require_loaded("skill_mutation")) return d;
+    const auto* def = find_skill(skill_id);
+    if (!def) return d;
+    const auto mods = active_mods();
+    for (const auto& [key, value] : wroughtwild::grammar::skillMutation(*tuning_, mods, def->id)) d[to_godot(key)] = value;
+    d["tags"] = strings_to_packed(wroughtwild::grammar::effectiveTags(*tuning_, mods, def->id));
+    Dictionary limits;
+    for (const auto& [key, value] : tuning_->foundry.mutationLimits) limits[to_godot(key)] = value;
+    d["limits"] = limits;
+    Array forms; PackedStringArray names;
+    for (const auto& e : wroughtwild::foundry::effects(*tuning_, player_->foundry(), player_->plate())) {
+        if (e.skill != def->id || e.formName.empty() || names.has(to_godot(e.formName))) continue;
+        names.push_back(to_godot(e.formName)); forms.push_back(mutation_effect(*tuning_, e));
+    }
+    d["forms"] = forms;
+    d["display_name"] = names.is_empty() ? to_godot(def->displayName) : String(" + ").join(names) + " " + to_godot(def->displayName);
+    return d;
+}
+
+Dictionary WroughtwildSim::foundry_preview(int row, int col, const String& piece_id, const String& metal_id) const {
+    Dictionary result;
+    result["valid"] = false;
+    if (!require_loaded("foundry_preview")) return result;
+    // Use the real placement economy on a copy. Affordability, depth, ownership,
+    // learned tablets, occupied cells and alloy availability exactly match commit.
+    auto preview = *player_;
+    bool valid = false;
+    const auto id = to_std(piece_id);
+    if (tuning_->foundry.findIngot(id)) valid = preview.foundryPlace(row, col, id, to_std(metal_id));
+    else if (tuning_->foundry.findKindOnPlate(id)) valid = preview.foundryPlaceKind(row, col, id);
+    else if (tuning_->skills.findCombatSkill(id)) valid = preview.foundryPlaceSkill(row, col, id);
+    result["valid"] = valid;
+    if (!valid) { result["reason"] = String("This piece cannot be placed here, or is not held."); return result; }
+    Array effects;
+    for (const auto& e : wroughtwild::foundry::effects(*tuning_, preview.foundry(), preview.plate()))
+        effects.push_back(mutation_effect(*tuning_, e));
+    result["effects"] = effects;
+    return result;
+}
+
 Array WroughtwildSim::foundry_effects() const {
     Array out;
     if (!require_loaded("foundry_effects")) {
         return out;
     }
-    for (const auto& e : wroughtwild::foundry::effects(*tuning_, player_->foundry(), player_->plate())) {
-        Dictionary d;
-        d["kind"] = to_godot(e.kind);
-        d["label"] = to_godot(e.label);
-        d["skill"] = to_godot(e.skill);
-        d["subject"] = to_godot(e.subject);
-        d["packet"] = to_godot(e.packet);
-        d["cell_row"] = e.cellRow;
-        d["cell_col"] = e.cellCol;
-        const auto* def = tuning_->items.findModifier(e.modifier);
-        d["sentence"] = def ? to_godot(wroughtwild::items::modifierSentence(*def, e.value)) : String();
-        if (e.kind == "link") {
-            d["sentence"] = String("on either's trigger - a freeze, an ignite, a bleed - the other casts itself at that enemy, off the bar");
-        }
-        d["modifier"] = to_godot(e.modifier);
-        d["value"] = e.value;
-        d["row"] = e.row;
-        d["col"] = e.col;
-        out.push_back(d);
-    }
+    for (const auto& e : wroughtwild::foundry::effects(*tuning_, player_->foundry(), player_->plate()))
+        out.push_back(mutation_effect(*tuning_, e));
     return out;
 }
 

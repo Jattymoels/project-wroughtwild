@@ -86,6 +86,11 @@ func advance(delta: float) -> void:
 	if not sweep.is_colliding():
 		sweep.target_position = direction * travel
 		sweep.force_shapecast_update()
+	var unobstructed := travel * sweep.get_closest_collision_safe_fraction() if sweep.is_colliding() else travel
+	if FoundryField.intercept(get_tree(), global_position, global_position + direction * unobstructed):
+		spent = true
+		queue_free()
+		return
 	if sweep.is_colliding():
 		spent = true
 		var body := sweep.get_collider(0)

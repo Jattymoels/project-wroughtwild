@@ -12,11 +12,12 @@
 // inert). A matching ingot touching a support from any side but the
 // socket's BACKS it, so the support counts once more. Orthogonally
 // adjacent ingots that match a pair add that pair's mechanic for everyone.
-// THE FLOW (owner, 4 Sep 2026): only a skill sits in a socket; a currency
+// THE FLOW (D-025, owner, 5 Sep 2026): only a skill sits in a socket; a currency
 // KIND rests where it cannot touch one, gives its base forward when a
-// chain of pieces leads inward to a laid tablet, and works every support
-// it touches into a FORM that feeds the skill. Numbers on ingots never
-// change; what scales is count, arrangement and, later, reach.
+// chain of pieces leads inward to a laid tablet, and transforms every ingot
+// on those routes with its exact identity. Reconvergence never duplicates a
+// reading; ordered Kind rules compose. Alloys add direct-support refinements.
+// See docs/systems/foundry-mutations.md for the current grammar and budgets.
 //
 // Ingots come from milestones (foundry.json sources), never from kills as
 // such, and each source grants once. Re-forging (lifting an ingot off the
@@ -96,6 +97,10 @@ struct Effect {
     int cellRow = -1, cellCol = -1; // the ingot cell the effect comes from
     std::string subject{}; // augment, form: the kind's family (offence, defence, life, speed); rail: the pattern id
     std::string packet{};  // form: the packet type the effect speaks to ("" = the whole skill); rail: the skill tag the rule is scoped to
+    std::string formName{};
+    std::string description{};
+    std::string sourceKind{};
+    std::vector<Cell> path{}; // source to tablet; presentation never recomputes the route
 };
 
 // The plate the era has forged (rows_by_era; the last entry serves later eras).
@@ -109,6 +114,12 @@ Plate plate(const tuning::FoundryDef& def, int era);
 int depth(const Plate& plate, int row, int col);
 bool kindMayRest(const Plate& plate, int row, int col);
 bool flowsToSkill(const State& state, const Plate& plate, int row, int col);
+
+struct Route {
+    std::string skill;
+    std::vector<Cell> cells;
+};
+std::vector<Route> routes(const State& state, const Plate& plate, int row, int col);
 
 // A link (D-023, re-homed to the flow): a kind of the link family in a
 // corner touching a support that serves two sockets links the two skills

@@ -27,7 +27,7 @@ static func solid_ray(from_combat: PlayerCombat, from: Vector3, to: Vector3) -> 
 		PhysicsRayQueryParameters3D.create(from,to,1,excluded))
 
 static func hit_area(from_combat: PlayerCombat, skill: StringName, at: Vector3,
-		in_radius: float, fraction: float, visited: Array, links: bool) -> void:
+		in_radius: float, fraction: float, visited: Array, links: bool, secondary := false) -> void:
 	var enemies := from_combat.alive_enemies()
 	var shatter: Dictionary = from_combat.sim.shatter_for(String(skill))
 	var frozen: Array = []
@@ -39,16 +39,16 @@ static func hit_area(from_combat: PlayerCombat, skill: StringName, at: Vector3,
 		var target: Vector3 = enemy.global_position+Vector3.UP*0.65
 		if at.distance_to(target)>in_radius or not solid_ray(from_combat,at,target).is_empty(): continue
 		visited.append(enemy.get_instance_id())
-		if enemy.is_frozen() and shatter.get("enabled",false):
+		if not secondary and enemy.is_frozen() and shatter.get("enabled",false):
 			frozen.append(enemy)
 			continue
-		var crossed := from_combat.apply_payload(enemy,skill,enemy is Boss)
-		var landed := from_combat.deal(enemy,skill,enemies.size()==1,fraction)
+		var crossed := from_combat.apply_payload(enemy,skill,enemy is Boss,fraction if secondary else 1.0)
+		var landed := from_combat.deal(enemy,skill,enemies.size()==1,fraction,secondary)
 		damage += float(landed.damage)
 		kills += 1 if landed.kill else 0
 		for type in landed.types:
 			if not types.has(type): types.append(type)
-		from_combat._space_control(enemy,skill,at.direction_to(target))
+		if not secondary: from_combat._space_control(enemy,skill,at.direction_to(target))
 		if links: from_combat.fire_links(skill,crossed,enemy)
 	var cascade := from_combat._shatter_cascade(frozen,shatter,from_combat.sim.skill_nova_chill(String(skill)))
 	damage += float(cascade.damage)
@@ -142,6 +142,7 @@ func advance(delta: float) -> void:
 	if not detonated and remaining<=0:
 		detonated = true
 		hit_area(combat,skill_id,global_position,radius,1.0,[],allow_links)
+		combat.mutation_impact(skill_id,global_position)
 		remaining = LOOK.effect_seconds
 	elif detonated and remaining<=0:
 		queue_free()

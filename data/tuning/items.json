@@ -1691,6 +1691,424 @@
         }
       ],
       "design_purpose": "5 Sep expansion: an authored Foundry/mastery reading; does not enter the random gear pool. spells recover {n} faster"
+    },
+    {
+      "id": "mutation_smoulder_slow",
+      "display_name": "Mutation Smoulder Slow",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_smoulder_slow",
+      "display": "flat",
+      "sentence": "{n}: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45% Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_field_seconds",
+      "display_name": "Mutation Field Seconds",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_field_seconds",
+      "display": "flat",
+      "sentence": "{n}: seconds an impact field persists; 4.8 seconds is the stacking ceiling",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: seconds an impact field persists; 4.8 seconds is the stacking ceiling Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_field_fraction",
+      "display_name": "Mutation Field Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_field_fraction",
+      "display": "flat",
+      "sentence": "{n}: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_field_radius",
+      "display_name": "Mutation Field Radius",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_field_radius",
+      "display": "flat",
+      "sentence": "{n}: metres of the field before area and reach gear; at most four base metres",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: metres of the field before area and reach gear; at most four base metres Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_trail_fraction",
+      "display_name": "Mutation Trail Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_trail_fraction",
+      "display": "flat",
+      "sentence": "{n}: fraction of hit and buildup pulsed by the afterimage left at your casting position",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: fraction of hit and buildup pulsed by the afterimage left at your casting position Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_wave",
+      "display_name": "Mutation Wave",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_wave",
+      "display": "flat",
+      "sentence": "{n}: turns a strike or sweep into a travelling wave; projectile skills retain their delivery",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: turns a strike or sweep into a travelling wave; projectile skills retain their delivery Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_impact_radius",
+      "display_name": "Mutation Impact Radius",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_impact_radius",
+      "display": "flat",
+      "sentence": "{n}: metres of an impact burst replacing the direct hit; area and reach gear scale it",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: metres of an impact burst replacing the direct hit; area and reach gear scale it Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_zone_armour",
+      "display_name": "Mutation Zone Armour",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_zone_armour",
+      "display": "flat",
+      "sentence": "{n}: armour while standing in the cast seal; the strongest covering seal wins",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: armour while standing in the cast seal; the strongest covering seal wins Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_ward_charges",
+      "display_name": "Mutation Ward Charges",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_ward_charges",
+      "display": "flat",
+      "sentence": "{n}: incoming projectiles intercepted by one cast seal; maximum three",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: incoming projectiles intercepted by one cast seal; maximum three Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_recovery_on_kill",
+      "display_name": "Mutation Recovery On Kill",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_recovery_on_kill",
+      "display": "flat",
+      "sentence": "{n}: total life in the recovery seal left by a kill; collect it by standing inside",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: total life in the recovery seal left by a kill; collect it by standing inside Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_siphon",
+      "display_name": "Mutation Siphon",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_siphon",
+      "display": "flat",
+      "sentence": "{n}: life returning from a landed direct hit; return must reach you; no field recursion",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: life returning from a landed direct hit; return must reach you; no field recursion Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_echo_delay",
+      "display_name": "Mutation Echo Delay",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_echo_delay",
+      "display": "flat",
+      "sentence": "{n}: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_ignite_spread",
+      "display_name": "Mutation Ignite Spread",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_ignite_spread",
+      "display": "flat",
+      "sentence": "{n}: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "{n}: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_fire",
+      "display_name": "Capability Fire",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_fire",
+      "display": "flat",
+      "sentence": "gains the fire capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the fire capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_ignite",
+      "display_name": "Capability Ignite",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_ignite",
+      "display": "flat",
+      "sentence": "gains the ignite capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the ignite capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_cold",
+      "display_name": "Capability Cold",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_cold",
+      "display": "flat",
+      "sentence": "gains the cold capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the cold capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_chill",
+      "display_name": "Capability Chill",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_chill",
+      "display": "flat",
+      "sentence": "gains the chill capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the chill capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_projectile",
+      "display_name": "Capability Projectile",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_projectile",
+      "display": "flat",
+      "sentence": "gains the projectile capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the projectile capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_area",
+      "display_name": "Capability Area",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_area",
+      "display": "flat",
+      "sentence": "gains the area capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the area capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_bleed",
+      "display_name": "Capability Bleed",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_bleed",
+      "display": "flat",
+      "sentence": "gains the bleed capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the bleed capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_physical",
+      "display_name": "Capability Physical",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_physical",
+      "display": "flat",
+      "sentence": "gains the physical capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the physical capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "capability_proliferate",
+      "display_name": "Capability Proliferate",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_grant_tag_proliferate",
+      "display": "flat",
+      "sentence": "gains the proliferate capability",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "gains the proliferate capability Authored reading; excluded from random item pools."
     }
   ],
   "item_bases": [

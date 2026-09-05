@@ -141,18 +141,20 @@ func _phase_i_forms() -> void:
 	check(cascade["kills"] >= 1 and is_instance_valid(neighbour) and neighbour.chill >= 30.0,
 		"rime: the shatter nova chills the whelp it reaches")
 	neighbour.take_damage(100000.0)
-	_sim.add_materials({"ember_catalyst": 1})
+	_sim.add_materials({"striking_quicksilver": 1})
 	_sim.foundry_event("first_kill:ash_hound")
 	check(_sim.foundry_place_skill(1, 1, "prototype_area_strike") and _sim.foundry_place(1, 0, "haste")
-		and _sim.foundry_place_kind(2, 0, "ember_catalyst") and _sim.skill_echo_every("prototype_area_strike") == 4,
-		"echo: haste beside the area strike, worked by a catalyst, echoes every fourth cast")
+		and _sim.foundry_place_kind(2, 0, "striking_quicksilver") and _sim.skill_echo_every("prototype_area_strike") == 3,
+		"echo: haste beside the area strike, worked by a catalyst, echoes every third attack")
 	_echo_hits = 0
 	_player.combat.hit_landed.connect(_count_hit)
 	Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -1.5))
-	for i in 4:
+	for i in 3:
 		_player.combat.cooldowns[PlayerCombat.AREA_SKILL] = 0.0
 		_player.combat.use_skill(PlayerCombat.AREA_SKILL)
-	check(_echo_hits == 5, "echo: four casts land five hits (%d)" % _echo_hits)
+	check(_echo_hits == 3, "echo: three initial attacks land before their delayed follow-up")
+	for echo in get_tree().get_nodes_in_group("foundry_echoes"): echo._physics_process(1.0)
+	check(_echo_hits == 4, "echo: the third attack repeats once after its delay (%d)" % _echo_hits)
 	_player.combat.hit_landed.disconnect(_count_hit)
 
 

@@ -9,6 +9,8 @@ static func spawn(combat: PlayerCombat, skill: StringName) -> SkillCastEffect:
 	var def: Dictionary = combat.skills.get(skill,{})
 	var spatial: Dictionary = combat.sim.realtime().get("skills",{}).get(String(skill),{})
 	var profile: String = LOOK.profile(def,spatial)
+	if String(def.get("delivery", "")) in ["strike", "cone"] and float(combat.mutation(skill).get("wave",0)) > 0:
+		return null # the travelling edge is the hit shape; no misleading melee-area ring
 	if not profile in ["strike","rend","sweep","nova","drive","reap"]:
 		return null
 	var root := combat.player.world_root()

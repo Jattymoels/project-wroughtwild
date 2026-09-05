@@ -145,6 +145,7 @@ func _physics_process(delta: float) -> void:
 			if _telegraph_left <= 0.0:
 				breathe(player)
 
+	planar *= status_move_multiplier()
 	velocity.x = planar.x
 	velocity.z = planar.z
 	_hop_if_blocked(planar)

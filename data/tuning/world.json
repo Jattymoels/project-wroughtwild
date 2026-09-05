@@ -287,6 +287,12 @@
         {
           "skill_page": true,
           "chance": 0.05
+        },
+        {
+          "item": "frost_catalyst",
+          "min": 1,
+          "max": 1,
+          "chance": 0.07
         }
       ],
       "currency_kind": "quicksilver"

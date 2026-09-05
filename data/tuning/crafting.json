@@ -105,6 +105,10 @@
     {
       "id": "impact_catalyst",
       "display_name": "Impact Catalyst"
+    },
+    {
+      "id": "frost_catalyst",
+      "display_name": "Frost Catalyst"
     }
   ],
   "stations": [
@@ -890,7 +894,8 @@
         "impact_catalyst",
         "sipping_marrow",
         "striking_quicksilver",
-        "casting_quicksilver"
+        "casting_quicksilver",
+        "frost_catalyst"
       ]
     },
     "design_purpose": "The peddler at the spawn clearing prices in kinds now (D-023 slice 3): survival goods for a Marrow or a Quicksilver, steep next to gathering so infrastructure stays the dependable route. The exchange is the reason to come: rate of one kind for one of another among the kinds listed, so a surplus is never dead and a Preserving Transfer is always three kinds away when the husks are unkind. The Ember Catalyst is not for exchange: the trial holds it."
@@ -901,78 +906,92 @@
       "id": "ember_catalyst",
       "display_name": "Ember Catalyst",
       "family": "offence",
-      "design_purpose": "The Catalyst kind (offence): the trial's shrine catalyst, and what the wastes' fire families pay. In a craft it aims the roll at offence; at the forge it keeps its stronger job, ember-tempering."
+      "design_purpose": "Ignition spreads a small fire payload to nearby enemies when a burn starts. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts."
     },
     {
       "id": "preserving_catalyst",
       "display_name": "Preserving Catalyst",
       "family": "offence",
-      "design_purpose": "The Catalyst kind (offence) of the hills: husks and shriekers pay it, and the peddler changes any kind for it, so a Preserving Transfer is always reachable."
+      "design_purpose": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Holds part of the hit at its impact point, pulsing damage and buildup after you move on."
     },
     {
       "id": "vanguard",
       "display_name": "Vanguard",
       "family": "defence",
-      "design_purpose": "The defence kind: husks and knights pay it, the reinforced mine pays it, the forge upgrade costs it. In a craft it aims the roll at armour and resistance; on the plate (slice 4) it is the defence subject."
+      "design_purpose": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection."
     },
     {
       "id": "warding_vanguard",
       "display_name": "Warding Vanguard",
       "family": "defence",
-      "design_purpose": "The second Vanguard (owner, 4 Sep 2026: a Vanguard is a list of defensives - armour, dodge, resistances): its base on the plate is +5 to every resistance. No family pays it yet; the peddler changes three of any kind for one, so it is reachable from day one and its own drops can come with the razor-blade pass."
+      "design_purpose": "Casting plants a veil which catches one incoming enemy projectile before it reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you."
     },
     {
       "id": "marrow",
       "display_name": "Marrow",
       "family": "life",
-      "design_purpose": "The life kind: the living pay it (elk, the fen's lurkers, shriekers). In a craft it aims the roll at life; it prices the peddler's survival goods; on the plate (later) it is the sustain subject."
+      "design_purpose": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses."
     },
     {
       "id": "quicksilver",
       "display_name": "Quicksilver",
       "family": "speed",
-      "design_purpose": "The tempo kind: hounds and crawlers pay it. In a craft it aims the roll at speed; on the plate (later) it is the tempo subject."
+      "design_purpose": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
+      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it."
     },
     {
       "id": "piercing_catalyst",
       "display_name": "Piercing Catalyst",
       "family": "offence",
       "craft_tag": "projectile",
-      "description": "Works Reach into Throughline (+1 pierce) and Edge into Barbed Flight (+15 bleed buildup) for projectile skills. Common Catalyst forms still apply. An aimed gear craft favours projectile modifiers.",
-      "design_purpose": "Works Reach into Throughline (+1 pierce) and Edge into Barbed Flight (+15 bleed buildup) for projectile skills. Common Catalyst forms still apply. An aimed gear craft favours projectile modifiers."
+      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "design_purpose": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
     },
     {
       "id": "impact_catalyst",
       "display_name": "Impact Catalyst",
       "family": "offence",
       "craft_tag": "physical",
-      "description": "Works Edge into Concussion (+0.15 seconds stagger) and Reach into Follow Through (+0.5 metres shove) for attacks. Common Catalyst forms still apply. An aimed gear craft favours physical modifiers.",
-      "design_purpose": "Works Edge into Concussion (+0.15 seconds stagger) and Reach into Follow Through (+0.5 metres shove) for attacks. Common Catalyst forms still apply. An aimed gear craft favours physical modifiers."
+      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "design_purpose": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
     },
     {
       "id": "sipping_marrow",
       "display_name": "Sipping Marrow",
       "family": "life",
       "craft_tag": "life",
-      "description": "While its chain reaches a skill, landed hits restore 0.5 life. It also works adjacent supports into the Marrow family forms. Aimed gear crafts favour life modifiers.",
-      "design_purpose": "While its chain reaches a skill, landed hits restore 0.5 life. It also works adjacent supports into the Marrow family forms. Aimed gear crafts favour life modifiers."
+      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "design_purpose": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
     },
     {
       "id": "striking_quicksilver",
       "display_name": "Striking Quicksilver",
       "family": "speed",
       "craft_tag": "speed",
-      "description": "While its chain reaches a skill, attacks recover 8% faster; spells do not. It also works supports into Quicksilver forms. Aimed gear crafts favour speed modifiers.",
-      "design_purpose": "While its chain reaches a skill, attacks recover 8% faster; spells do not. It also works supports into Quicksilver forms. Aimed gear crafts favour speed modifiers."
+      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "design_purpose": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
     },
     {
       "id": "casting_quicksilver",
       "display_name": "Casting Quicksilver",
       "family": "speed",
       "craft_tag": "speed",
-      "description": "While its chain reaches a skill, spells recover 8% faster; attacks do not. It also works supports into Quicksilver forms. Aimed gear crafts favour speed modifiers.",
-      "design_purpose": "While its chain reaches a skill, spells recover 8% faster; attacks do not. It also works supports into Quicksilver forms. Aimed gear crafts favour speed modifiers."
+      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "design_purpose": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
+    },
+    {
+      "id": "frost_catalyst",
+      "display_name": "Frost Catalyst",
+      "family": "offence",
+      "craft_tag": "cold",
+      "description": "Leaves a cold impact field which continues building chill after the hit. Frost into Ember makes Smoulder, a slowing fire burn.",
+      "design_purpose": "Leaves a cold impact field which continues building chill after the hit. Frost into Ember makes Smoulder, a slowing fire burn. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family."
     }
   ],
-  "design_purpose_currency_kinds": "Typed currency (docs/systems/foundry.md, D-023 slice 3): every kind is a material or purse id with a job. Each has two uses - in a craft, added to a gear recipe, it makes the roll draw its first modifier from its family (craft_rolls.currency_weighting) and lifts a plain result to keen; on the plate (later slices) it is a subject or an augment. Sources follow the families' natures so farming is a choice of where to hunt (world.json currency_kind and loot); elites pay one more of their family's kind; the trial's loot room pays a spread; orders pay in the kind of their work. Four families is the prototype cap. RAZOR-BLADE TUNING (owner, 4 Sep): every rate here is a first guess to be moved in play. VARIANTS (owner, 4 Sep 2026, later): a family is a list - the Vanguard of armour, dodge, resistances; the Marrow of life, leech, recoup; the Quicksilver of move, attack and cast speed - each variant a currency id with its own base on the plate (foundry.json kinds) and the family's forms. Catalysts have no base and do the mechanical transformations; a fire catalyst is an 'augment fire'."
+  "design_purpose_currency_kinds": "D-025: each Kind has a crafting use and an exact Foundry identity. Gear crafts still use craft_tag or the currency family to select their first modifier, and guarantee at least keen. Kinds remain in the four existing families. The pack/purse split and three-for-one exchange are preserved. Frost Catalyst is a pack material dropped by Gloom Crawlers at 7% and available in the exchange; it aims cold crafts and can turn an Ember support into Smoulder. Rare build-defining equipment modifiers remain future work."
 }

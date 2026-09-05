@@ -30,6 +30,8 @@ var spent := false
 var allow_links := true
 var impact_burst := false
 var surface_offset := 0.08
+var mutation: Dictionary
+var field_emitted := false
 
 
 static func launch(in_skill: StringName, from_combat: PlayerCombat, root: Node, from: Vector3,
@@ -54,7 +56,12 @@ func _ready() -> void:
 	_range_left = spatial.get("max_range_m", 20.0) * combat.sim.skill_reach(String(skill_id))
 	_fork_range = spatial.get("fork_range_m", 7.0)
 	_pierce_left = combat.sim.skill_pierce(String(skill_id))
-	impact_burst = float(spatial.get("impact_burst",0))>0
+	mutation = combat.mutation(skill_id).duplicate(true)
+	impact_burst = float(spatial.get("impact_burst",0))>0 or float(mutation.get("impact_radius",0))>0
+	var delivery := String(combat.skills[skill_id].get("delivery", ""))
+	if delivery in ["strike", "cone"] and float(mutation.get("wave", 0)) > 0:
+		_speed = float(mutation.limits.get("wave_speed", 16))
+		_range_left = float(mutation.limits.get("wave_range", 12)) * combat.sim.skill_reach(String(skill_id))
 	surface_offset = float(spatial.get("surface_offset_m",0.08))
 	sweep = ShapeCast3D.new()
 	var shape := SphereShape3D.new()
@@ -67,7 +74,16 @@ func _ready() -> void:
 
 	var def: Dictionary = combat.skills.get(skill_id,{})
 	visual_profile = LOOK.profile(def,spatial)
-	visual = CombatVisuals.projectile(visual_profile,LOOK.colour(def))
+	if float(mutation.get("smoulder_slow", 0)) > 0: visual_profile = "frost"
+	var colour := Color("c9956d") if float(mutation.get("smoulder_slow",0)) > 0 else LOOK.colour(def)
+	if delivery in ["strike", "cone"] and float(mutation.get("wave", 0)) > 0: visual_profile = "wave"
+	visual = CombatVisuals.projectile(visual_profile,colour)
+	if float(mutation.get("smoulder_slow",0)) > 0:
+		var ember := CombatVisuals.projectile("coal", Color("d78043"))
+		ember.scale = Vector3.ONE * 0.6
+		visual.add_child(ember)
+	if delivery in ["strike", "cone"] and float(mutation.get("wave", 0)) > 0:
+		visual.scale = Vector3(1.3, 1.0, 1.0)
 	add_child(visual)
 	visual.quaternion = Quaternion(Vector3.FORWARD,direction)
 
@@ -120,6 +136,7 @@ func advance(delta: float) -> void:
 			return
 	if _range_left<=0:
 		if impact_burst: _burst()
+		_leave_field()
 		cancel()
 
 
@@ -130,6 +147,7 @@ func _burst() -> void:
 
 
 func _hit_world(hit: Dictionary) -> void:
+	_leave_field()
 	if impact_burst:
 		global_position = hit.position+hit.normal*surface_offset
 		_burst()
@@ -153,6 +171,7 @@ func _hit_world(hit: Dictionary) -> void:
 func _hit(enemy: Enemy) -> void:
 	var id := String(skill_id)
 	var is_boss := enemy is Boss
+	_leave_field()
 
 	# Payload: whichever statuses the skill carries (0 for the rest). It
 	# lands before the damage so a killing blow that ignites leaves a
@@ -209,3 +228,9 @@ func _nearest_untouched(count: int) -> Array:
 	for i in mini(count, candidates.size()):
 		targets.append(candidates[i]["enemy"])
 	return targets
+
+
+func _leave_field() -> void:
+	if field_emitted or generation > 0: return
+	field_emitted = true
+	combat.mutation_impact(skill_id,global_position,mutation)
