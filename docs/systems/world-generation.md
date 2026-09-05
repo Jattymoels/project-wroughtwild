@@ -177,11 +177,11 @@ now a **full 3D block field** the sim generates deterministically per seed
   clock (`daycycle.h`, `world.json` `day`): a twelve-minute day in four
   phases, the night the last third. The mood dial darkens the sky, the
   fog and the sun toward the night's blue and swings the sun over the
-  valley; every mob wakes from further and packs stay awake further; out
-  in the open the cold takes life down to a floor and no further; a
-  shelter mends you faster through it. The forced return the owner asked
-  for: the open is worse, the roof is better, and the four minutes are
-  for the shelter.
+  valley; every mob wakes from further and packs stay awake further; a
+  shelter mends you faster through it. **Owner revision, 5 Sep 2026:** the
+  original outdoor cold health drain is disabled for now (exposure rate zero).
+  Night and dusk notices no longer warn of cold damage; the other night
+  settings remain unchanged.
 - **Felling and cracking (4 Sep 2026, Wave 6 slice 1):** any node may
   want `drive_presses` of E per harvest. A tree is six presses that lean
   it further from you, then the whole tree comes down from the base and

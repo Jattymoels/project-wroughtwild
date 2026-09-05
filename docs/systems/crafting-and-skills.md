@@ -91,6 +91,19 @@ Automation should make the player appreciate earlier scarcity, but common-resour
 
 ## The mason's yard (3 Sep 2026, D-021)
 
+Presentation correction, 5 Sep 2026: the roof-workshop study's workbench,
+stone-topped mason's yard and open-hearth forge now render through the normal
+`StationSite` used by crafted kits and restored stations. Improved forges add
+a taller hood and iron bands. `game/art/station_look.tres` controls timber,
+leg, stone, iron and ember colours; `hearth_energy` (1.2) and `hearth_range`
+(3.5 m) control decorative forge illumination, not fuel storage or heat rules.
+Existing costs, recipes, upgrades, one-cell collision and saves are unchanged.
+The surrounding furnished workshop and experimental roof pieces remain a lab.
+The correction passed the full engine headless suite and 4,628 native checks;
+the station review checks normal kit consumption, all three models after save
+restoration, and the distinct improved forge (12 headless / 13 rendered checks,
+including screenshot export). Reproduce with the review helper's `-Stations`.
+
 A third kit station beside the bench and the forge: `mason_yard_kit`
 (timber and fieldstone at the bench) founds the **Mason's Yard**, whose
 recipe `dress_stone` turns two split stones into one block of the stone

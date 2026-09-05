@@ -499,7 +499,7 @@ func _physics_process(_delta: float) -> void:
 			# hour handed on as the sandpit does each frame - the player, a
 			# pack system and a mood: every mob wakes from further, a
 			# shelter's rest pays more, the sun sits low, the lamp is lit,
-			# and out in the open the cold takes life toward the floor.
+			# and the owner-disabled cold drain leaves outdoor life intact.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			var combat := _player.combat
 			_life_before_night = combat.life
@@ -526,15 +526,15 @@ func _physics_process(_delta: float) -> void:
 			combat.life = 60.0
 		37:
 			var combat := _player.combat
-			check(combat.life < 60.0 and combat.life > 50.0 and combat.exposed and combat.night_text().begins_with("the cold bites"),
-				"night: out in the open the cold takes life (%.2f) and the HUD says so" % combat.life)
+			check(is_equal_approx(combat.life,60.0) and not combat.exposed and combat.night_text().begins_with("night"),
+				"night: disabled exposure preserves outdoor life without a cold warning")
 			check(combat.home_text() == "42 m NE" and combat.night_text().find("home 42 m NE") >= 0,
 				"night: the way home is on the line (%s)" % combat.home_text())
 			combat.life = 10.0
 		39:
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			var combat := _player.combat
-			check(combat.life <= 10.0 and not combat.exposed, "night: under the floor the cold leaves you alone - it never kills")
+			check(is_equal_approx(combat.life,10.0) and not combat.exposed, "night: disabled exposure also preserves low life")
 			sim.set_day_clock(0.0)
 			_player.set_day(sim.day(), sim.day_rules())
 			_night_packs.set_night(false, sim.day_rules())

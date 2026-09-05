@@ -46,20 +46,29 @@ func interact(player: WroughtwildPlayer) -> void:
 func refresh_visual(sim: WroughtwildSim) -> void:
 	if _mesh == null:
 		return
+	var look := preload("res://art/station_look.tres")
+	var light := get_node_or_null("HearthLight") as OmniLight3D
+	if sim.has_station(station_id):
+		_mesh.mesh = look.mesh_for(current_station_id(sim))
+		_mesh.material_override = ArtGeometry.material()
+		_mesh.position = Vector3.ZERO
+		if String(station_id).begins_with("forge_"):
+			if light==null:
+				light = OmniLight3D.new()
+				light.name = "HearthLight"
+				light.position = Vector3(0,1.05,-0.3)
+				add_child(light)
+			light.light_color = look.ember
+			light.light_energy = look.hearth_energy
+			light.omni_range = look.hearth_range
+			light.show()
+		return
+	if light!=null:
+		light.hide()
 	var box := BoxMesh.new()
 	var material := StandardMaterial3D.new()
-	if upgrade_station_id != &"" and sim.has_station(upgrade_station_id):
-		box.size = Vector3(0.96, 2.0, 0.96)
-		material.albedo_color = Color(0.35, 0.2, 0.15)
-		material.emission_enabled = true
-		material.emission = Color(1.0, 0.45, 0.1)
-		material.emission_energy_multiplier = 1.5
-	elif sim.has_station(station_id):
-		box.size = Vector3(0.96, 1.4, 0.96)
-		material.albedo_color = Color(0.3, 0.3, 0.32)
-	else:
-		box.size = Vector3(0.96, 0.2, 0.96)
-		material.albedo_color = Color(0.55, 0.5, 0.4)
+	box.size = Vector3(0.96, 0.2, 0.96)
+	material.albedo_color = Color(0.55, 0.5, 0.4)
 	_mesh.mesh = box
 	_mesh.material_override = material
 	_mesh.position.y = box.size.y / 2.0

@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner revision, 5 Sep 2026: nighttime cold exposure is disabled for now
+(`world.json` `day.exposure_life_per_round = 0`), superseding the earlier
+forced-return health drain. Night lighting, enemy behaviour and faster shelter
+healing remain. The owner also identified the missing workshop station visuals:
+the workbench, mason's yard and forge art is now shared with normal placed
+stations rather than confined to the roof-workshop study. The demonstration
+building and roof catalogue remain a separate lab; station rules are unchanged.
+
 Owner approval, 5 Sep 2026: “Yep work through those 4” approves first-person
 presence, habitat variety, recognisable places and equipment comparison.
 This continues D-013 presentation and the existing interface/itemisation scope.

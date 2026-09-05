@@ -3834,8 +3834,8 @@ void testDayAndNight(const tuning::Tuning& t) {
     check(d.dawnEnd < d.dayEnd && d.dayEnd < d.duskEnd && d.duskEnd < 1.0, "day: dawn, day, dusk and night in order");
     check(1.0 - d.duskEnd >= 0.3, "day: the night is at least three tenths of the day - long enough to build through");
     check(d.startFraction >= d.dawnEnd && d.startFraction < d.dayEnd * 0.5, "day: a new game starts early in the day, the first day the longest");
-    check(d.exposureLifePerRound > 0.0 && d.exposureFloorFraction > 0.0 && d.exposureFloorFraction < 0.5,
-          "day: the cold costs, and stops well above dead");
+    check(d.exposureLifePerRound == 0.0,
+          "day: owner disabled nighttime exposure for now");
     check(d.nightAggroMultiplier > 1.0 && d.nightSleepRangeMultiplier > 1.0 && d.shelterNightRegenMultiplier > 1.0,
           "day: the night is wider awake and the shelter mends faster through it");
 
@@ -3866,12 +3866,14 @@ void testDayAndNight(const tuning::Tuning& t) {
     check(monotone, "day: dusk only darkens, dawn only brightens");
     // Exposure: the cold takes life at its rate and stops at the floor.
     const double round = t.realtime.roundSeconds;
-    const double perSecond = d.exposureLifePerRound / round;
-    checkNear(daycycle::exposed(d, round, 100.0, 100.0, 10.0), 100.0 - perSecond * 10.0, 1e-9, "day: ten seconds in the cold cost ten seconds' worth");
-    checkNear(daycycle::exposed(d, round, 100.0, 100.0, 1e6), d.exposureFloorFraction * 100.0, 1e-9, "day: a whole night out stops at the floor");
+    checkNear(daycycle::exposed(d, round, 100.0, 100.0, 1e6), 100.0, 1e-9, "day: disabled exposure preserves full life through a whole night");
+    checkNear(daycycle::exposed(d, round, 60.0, 100.0, 1e6), 60.0, 1e-9, "day: disabled exposure preserves injured life through a whole night");
     checkNear(daycycle::exposed(d, round, 10.0, 100.0, 60.0), 10.0, 1e-9, "day: life already under the floor is left alone - the cold never kills");
-    check(perSecond * (1.0 - d.duskEnd) * d.lengthSeconds > (1.0 - d.exposureFloorFraction) * t.world.playerBase.maxLife * 0.5,
-          "day: a night out in the open costs at least half the way to the floor");
+    // Preserve the optional mechanic's floor/rate contract in an explicit fixture.
+    auto enabled = d;
+    enabled.exposureLifePerRound = 0.4;
+    checkNear(daycycle::exposed(enabled, round, 100.0, 100.0, 10.0), 100.0 - 4.0 / round, 1e-9, "day: explicitly enabled exposure follows its configured rate");
+    checkNear(daycycle::exposed(enabled, round, 100.0, 100.0, 1e6), enabled.exposureFloorFraction * 100.0, 1e-9, "day: explicitly enabled exposure still stops at its floor");
     // The clock is the economy's, only runs forward, and survives a save.
     economy::PlayerEconomy player(t);
     player.advanceTime(100.0);

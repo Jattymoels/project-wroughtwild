@@ -139,35 +139,13 @@ func _box(parent: Node3D, at: Vector3, size: Vector3, colour: Color) -> MeshInst
 	return mesh
 
 func _dress_station(site: StationSite) -> void:
+	site.refresh_visual(sim)
 	if site.has_node("StudyDetails"):
 		return
-	site.get_node("Mesh").hide()
+	# Only the study label lives here; the actual station art is shared with play.
 	var details := Node3D.new()
 	details.name = "StudyDetails"
 	site.add_child(details)
-	# All silhouettes fit the existing station's one-cell collision envelope.
-	if site.station_id == &"forge_basic":
-		_box(details,Vector3(0,0.4,0),Vector3(0.9,0.8,0.9),Color("565860"))
-		for x in [-0.36,0.36]:
-			_box(details,Vector3(x,1.1,0),Vector3(0.18,0.7,0.9),Color("74747a"))
-		_box(details,Vector3(0,1.5,0),Vector3(0.95,0.15,0.95),Color("565860"))
-		_box(details,Vector3(0,0.95,0.35),Vector3(0.6,0.3,0.16),Color("402c1a"))
-		var coal := _box(details,Vector3(0,0.82,0),Vector3(0.6,0.05,0.55),Color("ec6e1e"))
-		coal.material_override.emission_enabled = true
-		coal.material_override.emission = Color("ec6e1e")
-		var fire := OmniLight3D.new()
-		fire.position = Vector3(0,1.05,-0.3)
-		fire.light_color = Color("ff9e66")
-		fire.light_energy = 1.2
-		fire.omni_range = 3.5
-		details.add_child(fire)
-	else:
-		var colour := Color("735132") if site.station_id==&"workbench" else Color("74747a")
-		_box(details,Vector3(0,0.86,0),Vector3(0.94,0.18,0.92),colour)
-		for x in [-0.32,0.32]:
-			for z in [-0.32,0.32]:
-				_box(details,Vector3(x,0.4,z),Vector3(0.16,0.8,0.16),Color("4d3b2e"))
-		_box(details,Vector3(0,1.02,0.12),Vector3(0.5,0.14,0.3),colour.darkened(0.2))
 	var label := Label3D.new()
 	label.text = "WORKBENCH" if site.station_id==&"workbench" else ("MASON'S YARD" if site.station_id==&"mason_yard" else "FORGE")
 	label.position = Vector3(0,1.7,0)

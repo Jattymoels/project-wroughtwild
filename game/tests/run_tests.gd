@@ -180,7 +180,7 @@ func _test_lattice() -> void:
 	# starts in the morning, past dusk it is night and dark, and the rules
 	# (the cold, the wider wake, the faster rest) read from world.json.
 	var day_rules: Dictionary = sim.day_rules()
-	check(float(day_rules.get("length_seconds", 0.0)) >= 600.0 and float(day_rules.get("exposure_life_per_second", 0.0)) > 0.0
+	check(float(day_rules.get("length_seconds", 0.0)) >= 600.0 and float(day_rules.get("exposure_life_per_second", -1.0)) == 0.0
 		and float(day_rules.get("night_aggro_multiplier", 1.0)) > 1.0 and float(day_rules.get("shelter_night_regen_multiplier", 1.0)) > 1.0,
 		"day: the rules come from world.json")
 	var day0: Dictionary = sim.day()

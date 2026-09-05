@@ -262,7 +262,7 @@ func night_text() -> String:
 	if exposed:
 		return "the cold bites -%.1f/s%s" % [_exposure_per_second, way]
 	if night:
-		return "cold to the bone%s" % way
+		return ("cold to the bone%s" if _exposure_per_second>0.0 else "night%s") % way
 	if day_phase == "dusk":
 		return "dusk%s" % way
 	return ""

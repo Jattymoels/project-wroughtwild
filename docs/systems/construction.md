@@ -177,13 +177,12 @@ regenerates: the early deprivation the owner asked for stays, and a mob
 that breaks in stops the rest. Numbers live in `world.json` `shelter`; the
 HUD's life line reads "sheltered" or "resting +N/s".
 
-Through the night (Wave 6 slice 5, `world.json` `day`) the shelter is the
-point: out in the open after dark the cold takes `exposure_life_per_round`
-per round down to `exposure_floor_fraction` of max life and no further
-(it never kills; it sends you home), and a sheltered rest pays
-`shelter_night_regen_multiplier` times the regen. The life line reads
-"the cold bites -N/s · home 84 m NW" out there and "resting +N/s" under
-the roof; dusk's notice points home by the eight winds.
+Owner revision, 5 Sep 2026: outdoor nighttime health drain is disabled for now
+by setting `world.json` `day.exposure_life_per_round` to zero. The optional
+rate/floor controls remain available, but current play does not lose health
+to exposure or show cold warnings. Night still pays
+`shelter_night_regen_multiplier` times the normal sheltered regeneration.
+The life line shows night and the way home outside, and resting indoors.
 
 **The chest (Wave 6 slice 6, hauling):** a block piece with a form of its
 own (`construction.json` `chest`: six timber, joinery, a lidded box that

@@ -167,14 +167,14 @@ func _phase_notice(phase: String, day: Dictionary) -> String:
 	var home := player.combat.home_text()
 	match phase:
 		"dusk":
-			return "Dusk. The light is going and the cold comes with the dark: get under a roof, and build while the night lasts.%s%s" % [
+			return "Dusk. The light is fading and the packs will wake from further away.%s%s" % [
 				"  Home is %s." % home if home != "" else "",
 				"  Somewhere in the dark, the hounds howl." if mob_packs.siege_tonight else ""]
 		"night":
-			return "Night. Out here the cold takes what it takes and the packs wake from further; a shelter mends you faster through it.%s" % (
+			return "Night. The packs wake from further away; resting in a shelter mends you faster.%s" % (
 				"  Home is %s." % home if home != "" else "")
 		"dawn":
-			return "Dawn. The cold lifts."
+			return "Dawn. The light returns."
 	return "Day %d." % int(day.get("index", 1))
 
 

@@ -20,6 +20,13 @@ purpose.
 
 ## Run from a clean checkout
 
+Latest owner refinement: nighttime cold health drain is disabled for now.
+Restart the running game to reload tuning; existing saves remain compatible.
+Normal placed/restored workbenches, mason's yards and forges now share the
+station models from the workshop study. `-Stations` on the PowerShell visual
+review helper verifies kit placement, save restoration and the forge upgrade,
+and captures `build/codex-aesthetic/stations/normal-stations.png`.
+
 The owner-approved [four-part continuation](../docs/art/codex-frontier-continuation-2026-09-05.md)
 adds first-person hands/gestures, habitat patches, revised existing landmarks
 and an equipment comparison in the pack (`I` → Compare → Equip candidate).
