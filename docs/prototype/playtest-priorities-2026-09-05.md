@@ -10,7 +10,9 @@ Owner-approved order, following the normal building/art adoption:
    Implemented in the [building usability pass](../art/codex-building-usability-2026-09-05.md):
    Tab catalogue, rotation inspection/marker, specific refusals and payment checks.
 3. **Combat feel.** Distinct weapon/cast presentation and incoming-hit direction.
-   Investigate the ranged-enemy playtest report first within this pass.
+   Ranged counterplay and the X removal regression are implemented in the
+   [ranged-fairness pass](../art/codex-ranged-fairness-2026-09-05.md).
+   Incoming-hit direction and held-weapon/cast presentation remain next.
 4. **Reasons to explore.** Small recognisable encounters around existing
    resources and landmarks, using current rewards and progression.
 
@@ -18,7 +20,9 @@ Owner-approved order, following the normal building/art adoption:
 
 The owner reports that ranged mobs are the most tedious enemies: they deal a
 lot of damage and their attacks cannot currently be dodged in play. This is
-player feedback, not yet a verified diagnosis of the collision or targeting code.
+player feedback. The subsequent audit confirmed that both ranged behaviours
+used instant radial damage rather than spatial projectiles; this has been replaced
+with committed, travelling shots (see the implementation report above).
 Audit wind-up visibility, aim tracking/commit time, projectile travel, collision,
 cover, range, overlapping pack fire and damage. Reproduce a stationary hit and a
 successful spatial evade with the same enemy before deciding which tuning or

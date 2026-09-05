@@ -847,6 +847,22 @@ RealtimeTable loadRealtime(const std::string& path) {
             behaviour.preferredDistanceM = preferred->asNumber();
         behaviour.aggroRangeM = b->get("aggro_range_m").asNumber();
         behaviour.windupSeconds = b->get("windup_seconds").asNumber();
+        if (auto shot = b->find("projectile")) {
+            auto& p = behaviour.projectile;
+            p.enabled = true;
+            p.speedMps = shot->get("speed_mps").asNumber();
+            p.radiusM = shot->get("radius_m").asNumber();
+            p.maxRangeM = shot->get("max_range_m").asNumber();
+            p.muzzleHeightM = shot->get("muzzle_height_m").asNumber();
+            p.trailLengthM = shot->get("trail_length_m").asNumber();
+            p.glowEnergy = shot->get("glow_energy").asNumber();
+            p.colour = shot->get("colour").asString();
+            if (!(p.speedMps > 0.0 && p.radiusM > 0.0 && p.maxRangeM > 0.0 &&
+                  p.muzzleHeightM >= 0.0 && p.trailLengthM > 0.0 && p.glowEnergy >= 0.0))
+                throw std::runtime_error("combat_realtime: invalid projectile dimensions for '" + id + "'");
+            if (p.colour.size() != 6 || p.colour.find_first_not_of("0123456789abcdefABCDEF") != std::string::npos)
+                throw std::runtime_error("combat_realtime: projectile colour must be six hex digits for '" + id + "'");
+        }
         if (auto giveUp = b->find("give_up_distance_m"))
             behaviour.giveUpDistanceM = giveUp->asNumber();
         if (auto scream = b->find("scream_period_seconds"))

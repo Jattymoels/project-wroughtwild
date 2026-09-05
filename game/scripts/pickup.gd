@@ -229,7 +229,7 @@ func _absorb(player: Node3D) -> void:
 			if wrought_player.hud != null:
 				wrought_player.hud.notify_pickup(family, taken)
 				if family == "shrieker_horn":
-					wrought_player.hud.notify("The shrieker's horn. X blows it, and everything within earshot comes.")
+					wrought_player.hud.notify("The shrieker's horn. X outside build mode blows it, and everything within earshot comes.")
 			if taken < amount:
 				amount -= taken
 				wrought_player.note_pack_full(family)

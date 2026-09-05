@@ -9,6 +9,7 @@ extends CharacterBody3D
 signal died(enemy: Enemy)
 ## Presentation event at the existing attack instant, including a missed blow.
 signal attack_released(kind: String)
+const SHOT_LOOK = preload("res://art/enemy_shot_look.tres")
 
 ## True for a trial room's own enemies: the room contains, counts and
 ## clears only these, never a roaming pack that wandered near the arena.
@@ -41,6 +42,10 @@ var preferred_distance := 0.0
 var aggro_range := 10.0
 var base_aggro_range := 10.0
 var windup_seconds := 0.3
+## Spatial delivery is opted into by behaviour data, never by enemy id.
+var projectile_rules: Dictionary = {}
+var _shot_aim := Vector3.ZERO
+var _shot_tell: MeshInstance3D
 var attack_period_seconds := 1.0
 ## D-012 stupid-zombie chase: once aggroed, press until the player stays
 ## beyond give_up_distance for give_up_seconds. 0 = never gives up.
@@ -193,6 +198,7 @@ func configure(sim: WroughtwildSim) -> void:
 	aggro_range = b.get("aggro_range_m", 10.0)
 	base_aggro_range = aggro_range
 	windup_seconds = b.get("windup_seconds", 0.3)
+	projectile_rules = b.get("projectile", {})
 	attack_period_seconds = def["attack_period_rounds"] * rt["round_seconds"] / speed_multiplier
 	give_up_distance = b.get("give_up_distance_m", 0.0)
 	verb = String(b.get("verb", ""))
@@ -560,6 +566,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if _tick_statuses(delta):
+		_update_shot_tell()
 		velocity.x = 0.0
 		velocity.z = 0.0
 		_apply_shove(delta)
@@ -622,15 +629,19 @@ func _physics_process(delta: float) -> void:
 				if distance <= attack_range and in_reach and _attack_cooldown <= 0.0:
 					state = "windup"
 					_windup_left = windup_seconds
+					if not projectile_rules.is_empty():
+						_shot_aim = player.global_position
 				else:
 					planar = _chase_direction(player, distance) * move_speed * chase_speed_multiplier(player)
 		"windup":
 			_windup_left -= delta
 			if _windup_left <= 0.0:
-				attack_released.emit("strike")
+				attack_released.emit("strike" if projectile_rules.is_empty() else "projectile")
 				# The hit only lands if the player is still in reach: walking
 				# out of the wind-up is a legitimate dodge.
-				if distance <= attack_range * 1.15 and in_reach:
+				if not projectile_rules.is_empty():
+					EnemyProjectile.launch(self, _shot_aim, projectile_rules)
+				elif distance <= attack_range * 1.15 and in_reach:
 					player.combat.take_hit(bite_damage(), bite_type(), display_name, self)
 				_attack_cooldown = attack_period_seconds
 				state = "chase"
@@ -658,8 +669,25 @@ func _physics_process(delta: float) -> void:
 	if planar.length_squared() > 0.0001 and distance > 0.05:
 		var face := roam_target if state == "idle" and _roaming else player.global_position
 		look_at(Vector3(face.x, global_position.y, face.z), Vector3.UP)
+	if state == "windup" and not projectile_rules.is_empty():
+		var committed_face := Vector3(_shot_aim.x, global_position.y, _shot_aim.z)
+		if global_position.distance_squared_to(committed_face) > 0.001:
+			look_at(committed_face, Vector3.UP)
 	_apply_shove(delta)
 	move_and_slide()
+	_update_shot_tell()
+
+
+func _update_shot_tell() -> void:
+	if projectile_rules.is_empty():
+		return
+	if not is_instance_valid(_shot_tell):
+		_shot_tell = EnemyProjectile.make_head(projectile_rules)
+		add_child(_shot_tell)
+		_shot_tell.position = Vector3(0, float(projectile_rules["muzzle_height_m"]), 0)
+	_shot_tell.visible = state == "windup" and life > 0.0 and not staggered()
+	var charge := clampf(1.0 - _windup_left / maxf(windup_seconds, 0.001), 0.0, 1.0)
+	_shot_tell.scale = Vector3.ONE * lerpf(SHOT_LOOK.charge_start_scale, SHOT_LOOK.charge_end_scale, charge)
 
 
 ## A chaser pressed against a placed piece scratches at it once a second.

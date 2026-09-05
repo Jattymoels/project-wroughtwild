@@ -62,6 +62,10 @@ quest log (no quests: D-011), diegetic 3D inventory props.
    / positive; cinder red = missing / cannot; ember = danger and warnings;
    frost = cold and information; iron rust = currency and crafting.
 6. **Scale, not scroll, for the HUD; scroll, not overflow, for panels.**
+7. **The active building tool owns X.** In build mode it removes the aimed
+   piece with the existing refund, even when a horn is carried. A miss never
+   sounds the horn. Outside build mode X blows a carried horn. Interactive
+   panels block either action (owner-reported conflict fixed 5 Sep 2026).
 
 ## Layout
 

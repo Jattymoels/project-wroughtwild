@@ -350,6 +350,16 @@ Statuses:
 
 ## Registering a decision
 
+### Owner-approved combat follow-up — 5 September 2026
+
+Following gathering and building usability, the owner approved addressing
+undodgeable ranged attacks first. Under D-010 / ADR-0003, archers and wisps now
+commit aim at windup start and release physical, cover-blocked projectiles;
+the existing damage rules, cadence and movement-only dash remain. The
+[implementation report](../art/codex-ranged-fairness-2026-09-05.md) records
+the diagnosis, tuning and tests, plus the owner's X building-removal regression.
+This does not accept the separately deferred skill-catalogue proposals.
+
 ### Experiment record — Codex, 5 September 2026
 
 The owner authorised aesthetic experiments before progression retuning.

@@ -15,6 +15,12 @@ behaviours to experiment with. Investigation and a separate skill-vocabulary
 design task are recorded in the [priority work list](../prototype/playtest-priorities-2026-09-05.md).
 The owner retained gathering and building usability ahead of this larger pass.
 
+The approved ranged-fairness follow-up replaces the instant radial hit for
+archers and wisps with aim committed at windup start and a straight travelling
+projectile. Sidestepping and solid cover can prevent contact; existing hit
+damage and movement-only dash remain unchanged. See the
+[implementation and tuning](../art/codex-ranged-fairness-2026-09-05.md).
+
 ## Prototype scope
 
 - one starting class;
@@ -214,7 +220,8 @@ members roam toward that place at a walk (`Enemy.roam_to`) and are back
 in the den by dawn.
 
 **The horn and the siege (Wave 7 slice 3, 4 Sep 2026).** A shrieker's
-kill may leave its horn; the pack carries one (hauling cap 1). X blows it:
+kill may leave its horn; the pack carries one (hauling cap 1). X outside build
+mode blows it (in build mode X removes the aimed piece):
 the `horn` noise, ninety metres, and a ring that tells the radius - every
 idle mob and dormant pack inside it comes. It is PoE's map opened on the
 player's terms, on day two if they dare, for the drop tables' best; it

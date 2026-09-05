@@ -251,7 +251,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("toggle_foundry"):
 		toggle_foundry()
 	elif event.is_action_pressed("blow_horn"):
-		blow_horn()
+		# X is shared: the active building tool owns it, even on a miss.
+		# Never summon a pack because removal found no piece under the cursor.
+		if work_panel.is_open() or inventory_panel.is_open() or foundry_panel.is_open() or class_panel.is_open() or chest_panel.is_open():
+			return
+		if placement.build_mode_enabled:
+			placement.try_remove_block()
+		else:
+			blow_horn()
 	elif event.is_action_pressed("save_game"):
 		save_game()
 	elif event.is_action_pressed("load_game"):

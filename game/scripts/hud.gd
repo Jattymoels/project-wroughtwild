@@ -15,6 +15,7 @@ E interact: harvest, work at a station, read the board, open the gate
 LMB harvest  ·  hold LMB on the ground to dig it out (stone pays stone)
 LMB places in build mode  ·  C craft by hand  ·  I pack
 B build mode  ·  Tab visual shape picker  ·  X remove  ·  R turn corners, roofs or a door's hinge
+X outside build mode blows a carried shrieker's horn
 Pieces snap to the nearest free cell, face or edge you look at: walls join walls, posts stack
 G fine pieces: half-scale twins of the cube, wall, post, beam and slab  ·  E opens a door
 Q building material: timber, stone or iron from your pack - doors need joinery, cut stone needs stone, girders need iron

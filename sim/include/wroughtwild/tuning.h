@@ -567,7 +567,19 @@ struct ConstructionTable {
 // Time-and-space tunables for the real-time engine host (ADR-0003). Numbers
 // that affect damage, life or mitigation never live here.
 
+struct EnemyProjectileRealtime {
+    bool enabled = false; // absent table preserves melee delivery
+    double speedMps = 0.0;
+    double radiusM = 0.0;
+    double maxRangeM = 0.0;
+    double muzzleHeightM = 0.0;
+    double trailLengthM = 0.0;
+    double glowEnergy = 0.0;
+    std::string colour;
+};
+
 struct BehaviourRealtime {
+    EnemyProjectileRealtime projectile;
     bool flees = false; // grazers: run within aggro range, never attack
     double moveSpeedMps = 0.0;
     double attackRangeM = 0.0;

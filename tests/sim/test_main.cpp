@@ -78,6 +78,13 @@ void testOrderDemandAndStationChecks(const tuning::Tuning& t) {
 void testCombatNumbers(const tuning::Tuning& t) {
     // Real-time tunables load and the behaviour keys match the enemy roster.
     check(t.realtime.roundSeconds > 0.0, "realtime: round_seconds loads");
+    const auto& archerShot = t.realtime.findBehaviour("ranged")->projectile;
+    const auto& wispShot = t.realtime.findBehaviour("skirmisher")->projectile;
+    check(archerShot.enabled && wispShot.enabled && !t.realtime.findBehaviour("melee")->projectile.enabled,
+          "realtime: ranged delivery is opt-in and leaves melee unchanged");
+    check(archerShot.maxRangeM > t.realtime.findBehaviour("ranged")->attackRangeM &&
+              wispShot.speedMps < archerShot.speedMps && wispShot.radiusM > archerShot.radiusM,
+          "realtime: ranged shots have finite travel with distinct wisp clearance and speed");
     for (const auto& enemy : t.world.enemies)
         check(t.realtime.findBehaviour(enemy.behaviour) != nullptr,
               "realtime: behaviour tunables exist for " + enemy.id);

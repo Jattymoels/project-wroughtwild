@@ -787,6 +787,18 @@ Dictionary WroughtwildSim::realtime() const {
         entry["preferred_distance_m"] = b.preferredDistanceM;
         entry["aggro_range_m"] = b.aggroRangeM;
         entry["windup_seconds"] = b.windupSeconds;
+        if (b.projectile.enabled) {
+            const auto& p = b.projectile;
+            Dictionary shot;
+            shot["speed_mps"] = p.speedMps;
+            shot["radius_m"] = p.radiusM;
+            shot["max_range_m"] = p.maxRangeM;
+            shot["muzzle_height_m"] = p.muzzleHeightM;
+            shot["trail_length_m"] = p.trailLengthM;
+            shot["glow_energy"] = p.glowEnergy;
+            shot["colour"] = to_godot(p.colour);
+            entry["projectile"] = shot;
+        }
         entry["give_up_distance_m"] = b.giveUpDistanceM;
         entry["scream_period_seconds"] = b.screamPeriodSeconds;
         entry["scream_radius_m"] = b.screamRadiusM;
