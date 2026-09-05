@@ -119,6 +119,15 @@ std::map<std::string, double> skillMutation(const tuning::Tuning& tuning, const 
     if (!has(burnTags, "ignite")) burnTags.push_back("ignite");
     result["burn_dps"] = std::max(0.0, resolve(active, burnTags, "burn_damage", tuning.grammar.ignite.damagePerS));
     result["burn_seconds"] = std::max(0.0, resolve(active, burnTags, "ignite_duration", tuning.grammar.ignite.durationS));
+    // Steam is a small secondary hit with two independently scaled packets.
+    // Its delivery stays local to the plume, not a conversion of the main hit.
+    for (const std::string type : {"fire", "cold"}) {
+        auto steamTags = packetTags(tuning, tags, type);
+        if (!has(steamTags, "area")) steamTags.push_back("area");
+        const double base = skillNumber(*skill, "base_damage", 0.0);
+        result["steam_" + type + "_damage"] = base <= 0 ? 0 :
+            std::max(0.0, resolve(active, steamTags, "damage", base)) * result["steam_fraction"] * 0.5;
+    }
     return result;
 }
 

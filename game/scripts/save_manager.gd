@@ -136,6 +136,9 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 			effect.cancel()
 	player.combat._mutation_cache.clear()
 	player.combat._casts.clear()
+	for puff in player.get_tree().get_nodes_in_group("foundry_puffs"): puff.queue_free()
+	player.combat._action_contexts.clear()
+	player.combat._reaction_ready.clear()
 	# A save from a different generated world rebuilds that world first, so
 	# the node names below resolve against the right terrain.
 	if data.has("world_seed") and root.has_method("apply_world_seed"):

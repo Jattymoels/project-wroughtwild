@@ -32,16 +32,18 @@ var impact_burst := false
 var surface_offset := 0.08
 var mutation: Dictionary
 var field_emitted := false
+var action_context: Dictionary
 
 
 static func launch(in_skill: StringName, from_combat: PlayerCombat, root: Node, from: Vector3,
-		dir: Vector3, in_generation: int, in_visited: Array) -> SkillProjectile:
+		dir: Vector3, in_generation: int, in_visited: Array, context := {}) -> SkillProjectile:
 	var projectile := SkillProjectile.new()
 	projectile.skill_id = in_skill
 	projectile.combat = from_combat
 	projectile.direction = dir.normalized()
 	projectile.generation = in_generation
 	projectile.visited = in_visited
+	projectile.action_context = from_combat.action_context(in_skill) if context.is_empty() else context
 	projectile.allow_links = from_combat._link_depth==0
 	root.add_child(projectile)
 	projectile.global_position = from
@@ -142,7 +144,7 @@ func advance(delta: float) -> void:
 
 func _burst() -> void:
 	var radius := combat.area_radius(skill_id)
-	SkillBurst.hit_area(combat,skill_id,global_position,radius,combat.sim.fork_damage_fraction(String(skill_id),generation),visited,allow_links)
+	SkillBurst.hit_area(combat,skill_id,global_position,radius,combat.sim.fork_damage_fraction(String(skill_id),generation),visited,allow_links,false,action_context)
 	SkillBurst.flash(combat,skill_id,global_position,radius)
 
 
@@ -186,7 +188,7 @@ func _hit(enemy: Enemy) -> void:
 			combat._reap(skill_id,int(cascade.kills))
 			combat.hit_landed.emit(float(cascade.damage),int(cascade.kills),PackedStringArray([String(shatter.get("nova_damage_type","cold"))]))
 		else:
-			var crossed := combat.apply_payload(enemy, skill_id, is_boss)
+			var crossed := combat.apply_payload(enemy, skill_id, is_boss, 1.0, false, action_context)
 			# The sim decides the numbers, packet by packet; forks decay all alike.
 			var landed := combat.deal(enemy, skill_id, combat.alive_enemies().size() == 1,
 				combat.sim.fork_damage_fraction(id, generation))
@@ -207,7 +209,7 @@ func _hit(enemy: Enemy) -> void:
 		for target in targets:
 			var to_target: Vector3 = target.global_position + Vector3(0, 0.5, 0) - global_position
 			var fork := SkillProjectile.launch(skill_id, combat, get_parent(), global_position,
-				to_target, generation + 1, visited)
+				to_target, generation + 1, visited, action_context)
 			fork.allow_links = allow_links
 	cancel()
 

@@ -208,22 +208,19 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "ember_catalyst:ember"
     },
     {
       "family": "offence",
       "kind": "ember_catalyst",
       "ingot": "frost",
       "display_name": "Steambrand",
-      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "description": "Hit an already chilled enemy to release a 1.6 m steam puff that briefly interrupts nearby enemies without extra damage. At most one puff every 1.5 seconds across your skills; bosses receive a quarter-length stagger. Adds 45 ignite and 20 chill buildup; Frost keeps its ordinary damage support.",
       "effects": [
         {
           "modifier": "smouldering",
           "value": 45
-        },
-        {
-          "modifier": "mutation_ignite_spread",
-          "value": 0.3
         },
         {
           "modifier": "capability_fire",
@@ -231,10 +228,6 @@
         },
         {
           "modifier": "capability_ignite",
-          "value": 1
-        },
-        {
-          "modifier": "capability_proliferate",
           "value": 1
         },
         {
@@ -248,8 +241,13 @@
         {
           "modifier": "capability_chill",
           "value": 1
+        },
+        {
+          "modifier": "mutation_steam_stagger",
+          "value": 0.2
         }
-      ]
+      ],
+      "id": "ember_catalyst:frost"
     },
     {
       "family": "offence",
@@ -290,7 +288,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "ember_catalyst:edge"
     },
     {
       "family": "offence",
@@ -323,22 +322,19 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "ember_catalyst:reach"
     },
     {
       "family": "offence",
       "kind": "ember_catalyst",
       "ingot": "vigour",
       "display_name": "Bloodfire",
-      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "description": "Starting a burn sheds a warm cinder at the target. Move within 1.4 m to collect 3 life before it fades after 6 seconds. At most one cinder every 2 seconds across your skills. Adds 45 ignite buildup; the Vigour support keeps its ordinary recovery.",
       "effects": [
         {
           "modifier": "smouldering",
           "value": 45
-        },
-        {
-          "modifier": "mutation_ignite_spread",
-          "value": 0.3
         },
         {
           "modifier": "capability_fire",
@@ -349,14 +345,11 @@
           "value": 1
         },
         {
-          "modifier": "capability_proliferate",
-          "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
+          "modifier": "mutation_warm_cinder_life",
+          "value": 3
         }
-      ]
+      ],
+      "id": "ember_catalyst:vigour"
     },
     {
       "family": "offence",
@@ -389,7 +382,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "ember_catalyst:plate"
     },
     {
       "family": "offence",
@@ -422,22 +416,19 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "ember_catalyst:ward"
     },
     {
       "family": "offence",
       "kind": "ember_catalyst",
       "ingot": "haste",
       "display_name": "Flashfire",
-      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "description": "Follow-up hits release up to 0.45 seconds of an existing burn immediately, spending that remaining burn time. At most once per target each second; adds no second burn. Adds 45 ignite buildup; the Haste support keeps its ordinary recovery.",
       "effects": [
         {
           "modifier": "smouldering",
           "value": 45
-        },
-        {
-          "modifier": "mutation_ignite_spread",
-          "value": 0.3
         },
         {
           "modifier": "capability_fire",
@@ -448,14 +439,11 @@
           "value": 1
         },
         {
-          "modifier": "capability_proliferate",
-          "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
+          "modifier": "mutation_burn_release_seconds",
+          "value": 0.45
         }
-      ]
+      ],
+      "id": "ember_catalyst:haste"
     },
     {
       "family": "offence",
@@ -492,7 +480,8 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "preserving_catalyst:ember"
     },
     {
       "family": "offence",
@@ -529,7 +518,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "preserving_catalyst:frost"
     },
     {
       "family": "offence",
@@ -566,7 +556,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "preserving_catalyst:edge"
     },
     {
       "family": "offence",
@@ -595,7 +586,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "preserving_catalyst:reach"
     },
     {
       "family": "offence",
@@ -624,7 +616,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "preserving_catalyst:vigour"
     },
     {
       "family": "offence",
@@ -653,7 +646,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "preserving_catalyst:plate"
     },
     {
       "family": "offence",
@@ -682,7 +676,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "preserving_catalyst:ward"
     },
     {
       "family": "offence",
@@ -711,7 +706,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "preserving_catalyst:haste"
     },
     {
       "family": "defence",
@@ -744,7 +740,8 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "vanguard:ember"
     },
     {
       "family": "defence",
@@ -777,7 +774,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "vanguard:frost"
     },
     {
       "family": "defence",
@@ -810,7 +808,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "vanguard:edge"
     },
     {
       "family": "defence",
@@ -835,7 +834,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "vanguard:reach"
     },
     {
       "family": "defence",
@@ -860,7 +860,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "vanguard:vigour"
     },
     {
       "family": "defence",
@@ -885,7 +886,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "vanguard:plate"
     },
     {
       "family": "defence",
@@ -910,7 +912,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "vanguard:ward"
     },
     {
       "family": "defence",
@@ -935,7 +938,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "vanguard:haste"
     },
     {
       "family": "defence",
@@ -968,7 +972,8 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "warding_vanguard:ember"
     },
     {
       "family": "defence",
@@ -1001,7 +1006,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "warding_vanguard:frost"
     },
     {
       "family": "defence",
@@ -1034,7 +1040,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "warding_vanguard:edge"
     },
     {
       "family": "defence",
@@ -1059,7 +1066,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "warding_vanguard:reach"
     },
     {
       "family": "defence",
@@ -1084,7 +1092,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "warding_vanguard:vigour"
     },
     {
       "family": "defence",
@@ -1109,7 +1118,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "warding_vanguard:plate"
     },
     {
       "family": "defence",
@@ -1134,7 +1144,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "warding_vanguard:ward"
     },
     {
       "family": "defence",
@@ -1159,7 +1170,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "warding_vanguard:haste"
     },
     {
       "family": "life",
@@ -1192,7 +1204,8 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "marrow:ember"
     },
     {
       "family": "life",
@@ -1225,7 +1238,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "marrow:frost"
     },
     {
       "family": "life",
@@ -1258,7 +1272,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "marrow:edge"
     },
     {
       "family": "life",
@@ -1283,7 +1298,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "marrow:reach"
     },
     {
       "family": "life",
@@ -1308,7 +1324,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "marrow:vigour"
     },
     {
       "family": "life",
@@ -1333,7 +1350,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "marrow:plate"
     },
     {
       "family": "life",
@@ -1358,7 +1376,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "marrow:ward"
     },
     {
       "family": "life",
@@ -1383,7 +1402,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "marrow:haste"
     },
     {
       "family": "speed",
@@ -1420,7 +1440,8 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "quicksilver:ember"
     },
     {
       "family": "speed",
@@ -1457,7 +1478,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "quicksilver:frost"
     },
     {
       "family": "speed",
@@ -1494,7 +1516,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "quicksilver:edge"
     },
     {
       "family": "speed",
@@ -1523,7 +1546,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "quicksilver:reach"
     },
     {
       "family": "speed",
@@ -1552,7 +1576,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "quicksilver:vigour"
     },
     {
       "family": "speed",
@@ -1581,7 +1606,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "quicksilver:plate"
     },
     {
       "family": "speed",
@@ -1610,7 +1636,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "quicksilver:ward"
     },
     {
       "family": "speed",
@@ -1639,7 +1666,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "quicksilver:haste"
     },
     {
       "family": "offence",
@@ -1672,7 +1700,8 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "piercing_catalyst:ember"
     },
     {
       "family": "offence",
@@ -1705,7 +1734,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "piercing_catalyst:frost"
     },
     {
       "family": "offence",
@@ -1738,7 +1768,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "piercing_catalyst:edge"
     },
     {
       "family": "offence",
@@ -1763,7 +1794,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "piercing_catalyst:reach"
     },
     {
       "family": "offence",
@@ -1788,7 +1820,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "piercing_catalyst:vigour"
     },
     {
       "family": "offence",
@@ -1813,7 +1846,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "piercing_catalyst:plate"
     },
     {
       "family": "offence",
@@ -1838,7 +1872,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "piercing_catalyst:ward"
     },
     {
       "family": "offence",
@@ -1863,7 +1898,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "piercing_catalyst:haste"
     },
     {
       "family": "offence",
@@ -1904,7 +1940,8 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "impact_catalyst:ember"
     },
     {
       "family": "offence",
@@ -1945,7 +1982,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "impact_catalyst:frost"
     },
     {
       "family": "offence",
@@ -1986,7 +2024,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "impact_catalyst:edge"
     },
     {
       "family": "offence",
@@ -2019,7 +2058,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "impact_catalyst:reach"
     },
     {
       "family": "offence",
@@ -2052,7 +2092,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "impact_catalyst:vigour"
     },
     {
       "family": "offence",
@@ -2085,7 +2126,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "impact_catalyst:plate"
     },
     {
       "family": "offence",
@@ -2118,7 +2160,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "impact_catalyst:ward"
     },
     {
       "family": "offence",
@@ -2151,7 +2194,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "impact_catalyst:haste"
     },
     {
       "family": "life",
@@ -2176,7 +2220,8 @@
           "modifier": "capability_ignite",
           "value": 1
         }
-      ]
+      ],
+      "id": "sipping_marrow:ember"
     },
     {
       "family": "life",
@@ -2201,7 +2246,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "sipping_marrow:frost"
     },
     {
       "family": "life",
@@ -2226,7 +2272,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "sipping_marrow:edge"
     },
     {
       "family": "life",
@@ -2243,7 +2290,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "sipping_marrow:reach"
     },
     {
       "family": "life",
@@ -2260,7 +2308,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "sipping_marrow:vigour"
     },
     {
       "family": "life",
@@ -2277,7 +2326,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "sipping_marrow:plate"
     },
     {
       "family": "life",
@@ -2294,7 +2344,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "sipping_marrow:ward"
     },
     {
       "family": "life",
@@ -2311,7 +2362,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "sipping_marrow:haste"
     },
     {
       "family": "speed",
@@ -2341,7 +2393,8 @@
           "value": 1
         }
       ],
-      "skill_tag": "attack"
+      "skill_tag": "attack",
+      "id": "striking_quicksilver:ember"
     },
     {
       "family": "speed",
@@ -2371,7 +2424,8 @@
           "value": 1
         }
       ],
-      "skill_tag": "attack"
+      "skill_tag": "attack",
+      "id": "striking_quicksilver:frost"
     },
     {
       "family": "speed",
@@ -2401,7 +2455,8 @@
           "value": 1
         }
       ],
-      "skill_tag": "attack"
+      "skill_tag": "attack",
+      "id": "striking_quicksilver:edge"
     },
     {
       "family": "speed",
@@ -2423,7 +2478,8 @@
           "value": 0.18
         }
       ],
-      "skill_tag": "attack"
+      "skill_tag": "attack",
+      "id": "striking_quicksilver:reach"
     },
     {
       "family": "speed",
@@ -2445,7 +2501,8 @@
           "value": 1.5
         }
       ],
-      "skill_tag": "attack"
+      "skill_tag": "attack",
+      "id": "striking_quicksilver:vigour"
     },
     {
       "family": "speed",
@@ -2467,7 +2524,8 @@
           "value": 4
         }
       ],
-      "skill_tag": "attack"
+      "skill_tag": "attack",
+      "id": "striking_quicksilver:plate"
     },
     {
       "family": "speed",
@@ -2489,7 +2547,8 @@
           "value": 0.05
         }
       ],
-      "skill_tag": "attack"
+      "skill_tag": "attack",
+      "id": "striking_quicksilver:ward"
     },
     {
       "family": "speed",
@@ -2511,7 +2570,8 @@
           "value": 0.12
         }
       ],
-      "skill_tag": "attack"
+      "skill_tag": "attack",
+      "id": "striking_quicksilver:haste"
     },
     {
       "family": "speed",
@@ -2541,7 +2601,8 @@
           "value": 1
         }
       ],
-      "skill_tag": "spell"
+      "skill_tag": "spell",
+      "id": "casting_quicksilver:ember"
     },
     {
       "family": "speed",
@@ -2571,7 +2632,8 @@
           "value": 1
         }
       ],
-      "skill_tag": "spell"
+      "skill_tag": "spell",
+      "id": "casting_quicksilver:frost"
     },
     {
       "family": "speed",
@@ -2601,7 +2663,8 @@
           "value": 1
         }
       ],
-      "skill_tag": "spell"
+      "skill_tag": "spell",
+      "id": "casting_quicksilver:edge"
     },
     {
       "family": "speed",
@@ -2623,7 +2686,8 @@
           "value": 0.18
         }
       ],
-      "skill_tag": "spell"
+      "skill_tag": "spell",
+      "id": "casting_quicksilver:reach"
     },
     {
       "family": "speed",
@@ -2645,7 +2709,8 @@
           "value": 1.5
         }
       ],
-      "skill_tag": "spell"
+      "skill_tag": "spell",
+      "id": "casting_quicksilver:vigour"
     },
     {
       "family": "speed",
@@ -2667,7 +2732,8 @@
           "value": 4
         }
       ],
-      "skill_tag": "spell"
+      "skill_tag": "spell",
+      "id": "casting_quicksilver:plate"
     },
     {
       "family": "speed",
@@ -2689,7 +2755,8 @@
           "value": 0.05
         }
       ],
-      "skill_tag": "spell"
+      "skill_tag": "spell",
+      "id": "casting_quicksilver:ward"
     },
     {
       "family": "speed",
@@ -2711,7 +2778,8 @@
           "value": 0.12
         }
       ],
-      "skill_tag": "spell"
+      "skill_tag": "spell",
+      "id": "casting_quicksilver:haste"
     },
     {
       "family": "offence",
@@ -2752,7 +2820,8 @@
           "modifier": "capability_proliferate",
           "value": 1
         }
-      ]
+      ],
+      "id": "frost_catalyst:ember"
     },
     {
       "family": "offence",
@@ -2801,7 +2870,8 @@
           "modifier": "capability_chill",
           "value": 1
         }
-      ]
+      ],
+      "id": "frost_catalyst:frost"
     },
     {
       "family": "offence",
@@ -2850,7 +2920,8 @@
           "modifier": "capability_bleed",
           "value": 1
         }
-      ]
+      ],
+      "id": "frost_catalyst:edge"
     },
     {
       "family": "offence",
@@ -2891,7 +2962,8 @@
           "modifier": "reach",
           "value": 0.18
         }
-      ]
+      ],
+      "id": "frost_catalyst:reach"
     },
     {
       "family": "offence",
@@ -2932,7 +3004,8 @@
           "modifier": "life_on_kill",
           "value": 1.5
         }
-      ]
+      ],
+      "id": "frost_catalyst:vigour"
     },
     {
       "family": "offence",
@@ -2973,7 +3046,8 @@
           "modifier": "armour_on_cast",
           "value": 4
         }
-      ]
+      ],
+      "id": "frost_catalyst:plate"
     },
     {
       "family": "offence",
@@ -3014,7 +3088,8 @@
           "modifier": "status_ward",
           "value": 0.05
         }
-      ]
+      ],
+      "id": "frost_catalyst:ward"
     },
     {
       "family": "offence",
@@ -3055,7 +3130,8 @@
           "modifier": "refund_on_kill",
           "value": 0.12
         }
-      ]
+      ],
+      "id": "frost_catalyst:haste"
     },
     {
       "support_only": true,
@@ -3544,6 +3620,45 @@
         {
           "modifier": "frostbite",
           "value": 15
+        },
+        {
+          "modifier": "capability_cold",
+          "value": 1
+        },
+        {
+          "modifier": "capability_chill",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "steam_plume",
+      "input_form": "frost_catalyst:ember",
+      "family": "offence",
+      "kind": "ember_catalyst",
+      "ingot": "ember",
+      "display_name": "Steam Plume",
+      "description": "Smoulder evolved by Ember: the first enemy struck by a cast anchors three fire/cold steam pulses, 0.8 seconds apart, in a 1.7 m patch. Each pulse has 6% of base hit damage before its own fire/cold gear scaling. Replaces this route's slowing Smoulder and Kindling; retains 40 ignite and 20 chill buildup. Pulses create no child effects.",
+      "effects": [
+        {
+          "modifier": "mutation_steam_fraction",
+          "value": 0.06
+        },
+        {
+          "modifier": "smouldering",
+          "value": 40
+        },
+        {
+          "modifier": "frostbite",
+          "value": 20
+        },
+        {
+          "modifier": "capability_fire",
+          "value": 1
+        },
+        {
+          "modifier": "capability_ignite",
+          "value": 1
         },
         {
           "modifier": "capability_cold",
@@ -4392,6 +4507,20 @@
     "wave_speed": 16.0,
     "siphon_speed": 9.0,
     "zone_seconds": 3.2,
-    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds."
+    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds. burn_release_seconds: Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget. warm_cinder_life: Maximum base life collected from one warm cinder; heal modifiers still scale the payout. steam_stagger: Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage. steam_fraction: Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. burn_release_cooldown: Seconds between Flashfire releases on one enemy, shared across skills. warm_cinder_cooldown: Seconds between Bloodfire cinder spawns for the player, shared across skills. warm_cinder_lifetime: Seconds a warm cinder waits to be collected before disappearing. warm_cinder_pickup_radius: Metres the player must approach before a warm cinder returns its life. steam_puff_cooldown: Seconds between harmless Steambrand interrupt puffs for the player, shared across skills. steam_puff_radius: Base radius in metres of the harmless steam interrupt puff; area/reach investment applies. steam_boss_stagger_factor: Boss fraction of the steam puff stagger duration. steam_plume_seconds: Lifetime of a Steam Plume: three pulses at the existing 0.8 second field interval. steam_plume_radius: Steam Plume base radius in metres, scaled by area/reach investment. steam_plume_cooldown: Minimum time between Steam Plumes for the player, shared across skills; each cast can seed at most one.",
+    "burn_release_seconds": 0.75,
+    "warm_cinder_life": 6,
+    "steam_stagger": 0.3,
+    "steam_fraction": 0.1,
+    "burn_release_cooldown": 1,
+    "warm_cinder_cooldown": 2,
+    "warm_cinder_lifetime": 6,
+    "warm_cinder_pickup_radius": 1.4,
+    "steam_puff_cooldown": 1.5,
+    "steam_puff_radius": 1.6,
+    "steam_boss_stagger_factor": 0.25,
+    "steam_plume_seconds": 2.4,
+    "steam_plume_radius": 1.7,
+    "steam_plume_cooldown": 2.4
   }
 }

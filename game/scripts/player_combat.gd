@@ -353,6 +353,7 @@ func cooldown_total(skill_id: StringName) -> float:
 
 
 func _spend(skill_id: StringName) -> void:
+	_action_contexts[skill_id] = {"steam_used": false}
 	cooldowns[skill_id] = cooldown_total(skill_id)
 	skill_committed.emit(skill_id)
 
@@ -689,8 +690,12 @@ func use_dash() -> bool:
 ## proliferate.
 ## Returns the triggers this payload crossed on the enemy (freeze, ignite,
 ## bleed), for the links.
-func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool, fraction := 1.0) -> PackedStringArray:
+func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool, fraction := 1.0, secondary := false, context := {}) -> PackedStringArray:
 	var id := String(skill_id)
+	var form := mutation(skill_id)
+	if not secondary:
+		FoundryReactions.contact(self, enemy, skill_id, form, action_context(skill_id) if context.is_empty() else context)
+	if enemy.life <= 0: return PackedStringArray()
 	var was_frozen := enemy.is_frozen()
 	var was_burning := enemy.burning_left > 0.0
 	var was_bleeding := enemy.bleeding_left > 0.0
@@ -698,7 +703,6 @@ func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool, fraction :
 	# the mob keeps them for the freeze and the burn this skill causes.
 	enemy.apply_chill(sim.chill_applied(id, is_boss) * fraction, sim.skill_quenches(id))
 	# Pyre (a rail, D-023 slice 9): an ignite this hit lights spreads at once.
-	var form := mutation(skill_id)
 	var spread := maxf(float(sim.derived_stats().get("proliferate_on_hit", 0)), float(form.get("ignite_spread", 0)))
 	enemy.apply_ignite(sim.ignite_applied(id, is_boss) * fraction, sim.skill_sear(id), spread, form)
 	enemy.apply_bleed(sim.bleed_applied(id, is_boss) * fraction)
@@ -707,6 +711,7 @@ func apply_payload(enemy: Enemy, skill_id: StringName, is_boss: bool, fraction :
 		crossed.append("freeze")
 	if not was_burning and enemy.burning_left > 0.0:
 		crossed.append("ignite")
+		if not secondary: FoundryReactions.ignited(self, enemy, form)
 	if not was_bleeding and enemy.bleeding_left > 0.0:
 		crossed.append("bleed")
 	return crossed
@@ -1132,6 +1137,18 @@ func mutation(skill_id: StringName) -> Dictionary:
 
 func mutation_radius(skill_id: StringName, base: float) -> float:
 	return base * (1.0 + float(sim.derived_stats().get("area_bonus", 0))) * sim.skill_reach(String(skill_id))
+
+var _action_contexts := {}
+var _reaction_ready := {}
+
+func action_context(skill_id: StringName) -> Dictionary:
+	if not _action_contexts.has(skill_id): _action_contexts[skill_id] = {"steam_used": false}
+	return _action_contexts[skill_id]
+
+func reaction_ready(key: String, seconds: float) -> bool:
+	if _fight_clock < float(_reaction_ready.get(key, -1)): return false
+	_reaction_ready[key] = _fight_clock + seconds
+	return true
 
 func mutation_impact(skill_id: StringName, at: Vector3, form := {}) -> void:
 	var resolved: Dictionary = mutation(skill_id) if form.is_empty() else form

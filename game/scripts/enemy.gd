@@ -137,6 +137,7 @@ var frozen_left := 0.0
 var ignite := 0.0
 var burning_left := 0.0
 var smoulder_slow := 0.0
+var burn_release_ready := 0.0
 var _burn_mutation := {}
 var bleed := 0.0
 var bleeding_left := 0.0
@@ -474,11 +475,12 @@ func _tick_statuses(delta: float) -> bool:
 	# DoTs tick even through ice: freeze holds the mob, not the fire.
 	var walking := Vector2(velocity.x, velocity.z).length() > 0.5
 	if burning_left > 0.0:
-		burning_left -= delta
+		var burn_elapsed := minf(maxf(delta, 0), burning_left)
+		burning_left -= burn_elapsed
 		var burn_rate := _burn_dps
 		if _sear > 0.0 and walking and bleeding_left > 0.0:
 			burn_rate *= 1.0 + _sear
-		take_typed(burn_rate * delta, "fire", false)
+		take_typed(burn_rate * burn_elapsed, "fire", false)
 		if burning_left <= 0.0:
 			_refresh_look()
 	else:

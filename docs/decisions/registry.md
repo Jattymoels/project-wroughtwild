@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner playtest follow-up, 5 Sep 2026: approved deeper Foundry evolution, where
+a transformed result can itself be transformed by later Kind influence. The
+reference is Smoulder developing into pulsing fire/cold Steam Plume. The owner
+also identified Flashfire/Bloodfire sharing an ignition-spread event despite
+their different ingots. The owner further specified modest early damage and
+mechanical feel, with the base skill supplying the chosen action's shape. This
+refines D-025's intended outcome. Three distinct early Ember readings and the
+first consuming Steam Plume evolution are now implemented; other rows retain
+the first pass's mostly additive combinations pending their own identity review.
+[Recorded gaps and next-pass direction](../systems/foundry-mutations.md#owner-playtest-correction-further-evolution).
+
 Owner correction after the skill expansion, 5 Sep 2026: the Foundry should be
 the main source of transformative build variety. Direct ingots begin as simple
 additions and gain richer additive capabilities through forging/materials;

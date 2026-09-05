@@ -326,7 +326,9 @@ func refresh() -> void:
 				cell.text = info.get("display_name", placed[key]).replace(" Ingot", "")
 				if form_names.has(key):
 					cell.text = String(form_names[key][0])
-					if form_names[key].size() > 1: cell.text += " +%d" % (form_names[key].size()-1)
+					if form_names[key].size() > 1:
+						cell.text += "\n%d forms" % form_names[key].size()
+						lines.append("%d separate named effects are combined here; this is not an evolution level or a strength multiplier." % form_names[key].size())
 					lines.append("%s becomes %s." % [info.display_name, " / ".join(form_names[key])])
 				if metal != "" and metal != default_metal:
 					cell.text += " (%s)" % metal_names.get(metal, metal).to_lower()
@@ -853,6 +855,14 @@ func _inspect_cell(row: int, col: int) -> void:
 
 func _resolved_summary(skill: String, form: Dictionary) -> String:
 	var parts := PackedStringArray()
+	if float(form.get("steam_fraction", 0)) > 0:
+		parts.append("Steam Plume: 3 pulses · %.1f fire + %.1f cold each · first target per cast" % [float(form.steam_fire_damage), float(form.steam_cold_damage)])
+	if float(form.get("burn_release_seconds", 0)) > 0:
+		parts.append("Flashfire: spend %.2f s of an existing burn immediately" % float(form.burn_release_seconds))
+	if float(form.get("warm_cinder_life", 0)) > 0:
+		parts.append("Bloodfire: collect %.1f life from a newly ignited target" % float(form.warm_cinder_life))
+	if float(form.get("steam_stagger", 0)) > 0:
+		parts.append("Steambrand: chilled targets release an interrupting puff")
 	if float(form.get("smoulder_slow", 0)) > 0:
 		parts.append("%.0f%% slow · %.0f ignite / %.0f chill per hit" % [float(form.smoulder_slow) * 100, sim.ignite_applied(skill,false), sim.chill_applied(skill,false)])
 	if float(form.get("field_fraction", 0)) > 0:

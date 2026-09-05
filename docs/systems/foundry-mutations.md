@@ -9,6 +9,74 @@ This replaces the old family-wide form tables in [foundry.md](foundry.md).
 The existing frame, ownership, placement costs, milestones, classes, rails,
 shared-support links and save IDs remain. All sixteen learned skills remain.
 
+## Owner playtest correction: further evolution
+
+After this first implementation, the owner approved transformations becoming
+inputs to later transformations along a Kind chain. Their reference is Smoulder
+under further Ember influence becoming **Steam Plume**: the supported skill's
+first struck target anchors ground eruptions that pulse fire/cold damage.
+The first concrete evolution is now installed: **Frost Catalyst → Ember Catalyst
+→ Ember ingot → skill**. The input form is Smoulder; the later Ember consumes it
+and its own Kindling reading at that ingot, producing Steam Plume. On longer
+plates the intermediate Ember ingot can also precede the second Kind. Other
+supports/branches remain independent. The detailed contract is below.
+
+The same playtest exposed a local identity gap: Ember + Haste (**Flashfire**) and
+Ember + Vigour (**Bloodfire**) initially shared +45 ignite and 30% ignition spread,
+differing only by a small kill refund or heal. The owner asked for more creative
+Era 1 effects with modest damage: the chosen base skill supplies speed, reach,
+area and ailment feel, while the Foundry changes its use. Flashfire, Bloodfire
+and Steambrand now have separate timing, collection and control mechanics.
+The remaining five Ember readings and other Kind/ingot rows still require the
+same identity review; the 96-row coverage count is not 96 distinct mechanics.
+
+Evolved forms retain strike, sweep, projectile or ground delivery. Movement
+alone cannot make a damaging contact. Steam Plume shares one first-hit token
+across each cast's fan/forks/delayed burst, and a player-wide 2.4-second gate.
+The ambiguous `Smoulder +2` shorthand now says `Smoulder / 3 forms` on two lines;
+the tooltip explains that this counts separate named effects, not evolution level.
+
+### Installed early identity pass
+
+| Route | Mechanic | Budget and gear |
+| --- | --- | --- |
+| Ember → Haste: Flashfire | A follow-up hit releases up to 0.45 s of an existing burn immediately and subtracts that burn time | Once per target per second; copies cap at 0.75 s. It spends the originating burn snapshot, including its burn gear, rather than adding another DoT. |
+| Ember → Vigour: Bloodfire | A new ignition sheds a warm cinder at the victim; approach within 1.4 m to collect 3 life | One cinder per player every 2 s, disappears after 6 s, requires clear cover for pickup. Copies cap at 6 base life; ordinary heal scaling applies. |
+| Ember → Frost: Steambrand | Hit an already chilled enemy to release a 1.6 m steam puff that interrupts nearby enemies for 0.2 s | No puff damage. One puff per player every 1.5 s; area/reach gear scales its space; bosses get one quarter of its stagger. Copies cap at 0.3 s. |
+
+These three retain +45 ignite buildup; Steambrand also retains +20 chill. Their
+old shared ignition-spread hook is removed, along with the form's old 1.5 kill
+heal or 12% kill refund. Ordinary direct ingot support is retained. Secondary
+fields do not trigger these new contact/ignition hooks. A burn's natural last
+tick now stops at its actual remaining time, so a long frame cannot create extra
+damage after Flashfire has spent part of it.
+
+### Steam Plume contract
+
+- The original skill still hits in its chosen delivery and native damage type.
+  The first eligible enemy struck anchors a 1.7 m field for 2.4 s; area/reach gear
+  scales its radius. A missed strike, empty ground detonation or movement alone
+  cannot seed a plume. A cast blocked by the shared time gate cannot seed one on
+  a later contact; a later real cast gets its own first-contact token.
+- Three pulses, 0.8 s apart, each start from 6% of the skill's base hit: half fire,
+  half cold. Each part resolves its own damage/area/attack-or-spell gear in the
+  sim, then snapshots when the field is created. Each enemy applies its own
+  fire/cold resistance, positional guard and ward. Cover blocks the pulse.
+  This is 18% of base hit over the entire field before investment, not three
+  full copies of the skill. Stacked readings cap at 10% per pulse.
+- This route replaces Smoulder's 25% slow and the participating Kindling spread.
+  The main hit retains 40 ignite and 20 chill buildup, so gear can still develop
+  its burn/freeze lanes. Steam pulses themselves apply no buildup, shatter,
+  links, recovery or additional mutation triggers. Existing enemy death rules
+  still apply if a pulse kills an enemy that was already burning.
+- The existing 12-field limit applies. Save application and death cancel fields,
+  cinders and cosmetic puffs. Owned skills, ingots, Kinds and coordinates persist.
+- `FormDef.id` gives a stable authoring identity; `input_form` matches that
+  resolved identity plus the later exact Kind. One physical Kind performs at
+  most one rewrite. The loader rejects missing inputs, duplicate IDs and
+  ambiguous input/Kind rules. This pass authors one evolution, not an automatic
+  recipe for every repeated Kind or a complete late-game progression catalogue.
+
 ## Player contract
 
 - Ingots keep their ordinary additions. Iron is the accessible starting point.
@@ -34,8 +102,9 @@ a laid, known skill. Gaps, diagonals, outward steps and empty tablets do not
 conduct. Alloy reach still applies to backing/pairs, and never jumps a flow gap.
 
 Every branch is followed. A source Kind transforms every ingot encountered,
-including intermediate ingots beyond the direct support. A downstream Kind does
-not erase the upstream identity: both deliver their readings. A shared support
+including intermediate ingots beyond the direct support. A downstream Kind
+normally retains the upstream identity: both deliver their readings. An explicit
+`input_form` evolution consumes the participating local readings instead. A shared support
 can deliver to both socketed skills.
 
 One source Kind, ingot cell, receiving skill and form row is emitted once even
@@ -45,15 +114,16 @@ boolean capabilities do not stack. Multiple cadence readings retain the shortest
 cadence, rather than summing into a slower repeat. Separate overlapping fields
 can contribute, subject to the field budget; numerical balance still needs playtesting.
 
-All ordered Kind pairs compose their individual operations. Two pairs also have
-an explicitly ordered refinement at each downstream ingot:
+Ordered Kind pairs normally compose their individual operations. Three authored
+ordered readings currently go beyond that default:
 
 | Inward order | Additional reading |
 | --- | --- |
 | Frost → Preserving → ingot | **Kept Rime:** +0.8 seconds of retained field duration, within the 4.8-second cap |
 | Preserving → Frost → ingot | **Rime Memory:** +15 chill buildup per full hit; pulses apply their hit fraction |
+| Frost → Ember → Ember ingot | **Steam Plume:** replaces Smoulder and the participating Kindling reading with the evolved plume contract above |
 
-Every other ordered pair has the same combined mechanical result when reversed.
+Every other ordered pair currently has the same combined mechanical result when reversed.
 It does not silently pick whichever Kind was iterated last. This defines the
 current grammar without inventing a bespoke named reaction for all 144 ordered
 pairs. Longer paths use these same composable rules. Future mutually exclusive
@@ -63,7 +133,7 @@ deliveries need an explicit conflict rule before adding them.
 
 | Kind | Baseline operation through one iron ingot |
 | --- | --- |
-| Ember Catalyst | +45 ignite buildup; a newly started burn spreads 30% of the normal death-spread buildup |
+| Ember Catalyst | +45 ignite buildup; Haste releases stored burn, Vigour sheds collectible healing, Frost releases a harmless interrupting puff. The other five ingots retain 30% ignition spread. |
 | Frost Catalyst | +35 chill; a 1.6 m impact field pulses 12% of hit and buildup three times over 2.4 s; Ember instead becomes Smoulder |
 | Preserving Catalyst | A 1.8 m impact field pulses 18% of hit and buildup three times over 2.4 s |
 | Piercing Catalyst | Strikes/sweeps become travelling waves; projectiles/waves pierce one extra enemy |
@@ -79,7 +149,9 @@ deliveries need an explicit conflict rule before adding them.
 Each ingot adds its own flavour to that operation: Ember +20 ignite, Frost +20
 chill, Edge +20 bleed, Reach +18% reach, Vigour +1.5 life on kill, Plate +4 cast
 armour, Ward +5% status ward, Haste +12% cooldown refund on kill. Smoulder has
-its own explicit payload below. These are first-pass values, not balance claims.
+its own explicit payload below. The three revised Ember readings use the
+mechanics above instead of the Vigour/Haste form additions. These are first-pass
+values, not balance claims.
 
 The current sixteen skills are not all equally useful with every Kind. Movement
 tablets have no hit to retain or pierce, although cast seals and trails can be
@@ -171,8 +243,17 @@ travelling melee, one-hit impact bursts, wards, armour position, recovery,
 return timing, echoes, non-mutating previews, 720p layout and death cleanup.
 Existing economy, loot, combat, world and save suites also run.
 
+The evolution follow-up passed **28,519 native checks**, **138 focused Godot
+checks**, and the complete headless pipeline. Added coverage verifies conserved
+Flashfire burn damage, collectible Bloodfire healing, harmless/cover-blocked
+Steambrand control, consuming and order-sensitive evolution across all sixteen
+skills, independently scaled fire/cold steam packets, and one plume across a
+cast's delayed projectiles, sweep or ground detonation. Movement fabricates no
+hit. Eight rendered captures were reviewed, including the new early Ember
+workings and Steam Plume.
+
 Run `tools/codex_visual_review.ps1 -Foundry` for the focused gameplay checks and
-five real screenshots. `-Checks` includes this suite in the full pipeline.
+eight real screenshots. `-Checks` includes this suite in the full pipeline.
 
 The following table is the complete current base-name matrix. Numeric effects
 remain authoritative in the tuning file; names never replace persistent IDs.

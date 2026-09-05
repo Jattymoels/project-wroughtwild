@@ -12,6 +12,7 @@ var allow_links := true
 var ring: MeshInstance3D
 var crown: MeshInstance3D
 var tint: StandardMaterial3D
+var action_context: Dictionary
 
 static func has_room(from_combat: PlayerCombat, limit: int) -> bool:
 	var count := 0
@@ -27,7 +28,7 @@ static func solid_ray(from_combat: PlayerCombat, from: Vector3, to: Vector3) -> 
 		PhysicsRayQueryParameters3D.create(from,to,1,excluded))
 
 static func hit_area(from_combat: PlayerCombat, skill: StringName, at: Vector3,
-		in_radius: float, fraction: float, visited: Array, links: bool, secondary := false) -> void:
+		in_radius: float, fraction: float, visited: Array, links: bool, secondary := false, context := {}) -> void:
 	var enemies := from_combat.alive_enemies()
 	var shatter: Dictionary = from_combat.sim.shatter_for(String(skill))
 	var frozen: Array = []
@@ -42,7 +43,7 @@ static func hit_area(from_combat: PlayerCombat, skill: StringName, at: Vector3,
 		if not secondary and enemy.is_frozen() and shatter.get("enabled",false):
 			frozen.append(enemy)
 			continue
-		var crossed := from_combat.apply_payload(enemy,skill,enemy is Boss,fraction if secondary else 1.0)
+		var crossed := from_combat.apply_payload(enemy,skill,enemy is Boss,fraction if secondary else 1.0,secondary,context)
 		var landed := from_combat.deal(enemy,skill,enemies.size()==1,fraction,secondary)
 		damage += float(landed.damage)
 		kills += 1 if landed.kill else 0
@@ -61,6 +62,7 @@ static func mark(from_combat: PlayerCombat, skill: StringName, at: Vector3, norm
 	var burst := SkillBurst.new()
 	burst.combat = from_combat
 	burst.skill_id = skill
+	burst.action_context = from_combat.action_context(skill)
 	burst.radius = from_combat.area_radius(skill)
 	burst.delay = seconds
 	burst.remaining = seconds
@@ -141,7 +143,7 @@ func advance(delta: float) -> void:
 	remaining = maxf(0,remaining-maxf(0,delta))
 	if not detonated and remaining<=0:
 		detonated = true
-		hit_area(combat,skill_id,global_position,radius,1.0,[],allow_links)
+		hit_area(combat,skill_id,global_position,radius,1.0,[],allow_links,false,action_context)
 		combat.mutation_impact(skill_id,global_position)
 		remaining = LOOK.effect_seconds
 	elif detonated and remaining<=0:

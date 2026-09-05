@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <set>
 
 #include "wroughtwild/json.h"
 #include "wroughtwild/lattice.h"
@@ -541,6 +542,8 @@ FoundryDef loadFoundry(const std::string& path) {
     if (auto forms = doc->find("forms")) {
         for (const auto& f : forms->asArray()) {
             FormDef form;
+            if (auto id = f->find("id")) form.id = id->asString();
+            if (auto input = f->find("input_form")) form.inputForm = input->asString();
             if (auto family = f->find("family")) form.family = family->asString();
             if (auto support = f->find("support_only")) form.supportOnly = support->asBool();
             if (auto upstream = f->find("upstream_kind")) form.upstreamKind = upstream->asString();
@@ -1437,7 +1440,18 @@ Tuning loadAll(const std::string& tuningDirectory) {
     for (const auto& currency : tuning.crafting.currencyKinds)
         if (!tuning.foundry.findKindOnPlate(currency.id))
             throw std::runtime_error("foundry: currency " + currency.id + " has no place on the plate (kinds)");
+    std::set<std::string> formIds;
+    std::set<std::pair<std::string, std::string>> evolutions;
     for (const auto& form : tuning.foundry.forms) {
+        if (!form.id.empty() && !formIds.insert(form.id).second)
+            throw std::runtime_error("foundry: duplicate form id " + form.id);
+        if (!form.inputForm.empty()) {
+            const auto input = std::find_if(tuning.foundry.forms.begin(), tuning.foundry.forms.end(),
+                                           [&](const auto& candidate) { return candidate.id == form.inputForm; });
+            if (form.id.empty() || form.kind.empty() || input == tuning.foundry.forms.end() || input->ingot != form.ingot ||
+                form.supportOnly || !form.upstreamKind.empty() || !evolutions.emplace(form.inputForm, form.kind).second)
+                throw std::runtime_error("foundry: invalid or ambiguous evolution " + form.displayName);
+        }
         if (!form.supportOnly && tuning.foundry.familyName(form.family).empty())
             throw std::runtime_error("foundry: form " + form.displayName + " names unknown family " + form.family);
         if (!form.upstreamKind.empty() && !tuning.foundry.findKindOnPlate(form.upstreamKind))

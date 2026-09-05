@@ -515,6 +515,9 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
             out.push_back(std::move(e));
         }
     };
+    // An evolved reading consumes its downstream Kind's base reading only at
+    // this ingot/skill. Other supports and sibling routes retain their identity.
+    std::set<std::tuple<int, int, int, int, std::string>> consumed;
     for (const auto& p : state.plate) {
         if (!p.isCurrency() || !kindMayRest(plate, p.row, p.col)) continue;
         const auto* kind = def.findKindOnPlate(p.currency);
@@ -542,16 +545,38 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
                     // Exact identities are mandatory for new forms. The family
                     // fallback remains a loader compatibility contract only.
                     if (form.family != kind->family || (!form.kind.empty() && form.kind != p.currency)) continue;
-                    if (!form.upstreamKind.empty()) continue;
-                    if (emitted.emplace(piece->row, piece->col, tablet->skill, i).second)
-                        emitForm(form, *piece, *tablet, p.currency, route.cells);
+                    if (!form.upstreamKind.empty() || !form.inputForm.empty()) continue;
+                    size_t resolved = i;
+                    std::string source = p.currency;
+                    // Read the source's form through later Kinds in path order.
+                    // This works with an ingot before OR after the later Kind;
+                    // the output is still attached to the original ingot cell.
+                    for (size_t stepIndex = 1; stepIndex < route.cells.size(); ++stepIndex) {
+                        const auto& next = route.cells[stepIndex];
+                        const auto* catalyst = cell(next.row, next.col);
+                        if (!catalyst || !catalyst->isCurrency()) continue;
+                        for (size_t candidate = 0; candidate < def.forms.size(); ++candidate) {
+                            const auto& evolution = def.forms[candidate];
+                            if (evolution.inputForm.empty() || evolution.inputForm != def.forms[resolved].id ||
+                                evolution.kind != catalyst->currency || evolution.ingot != piece->ingot) continue;
+                            const auto* skill = tuning.skills.findCombatSkill(tablet->skill);
+                            if (!skill || (!evolution.skillTag.empty() && !hasTag(skill->resolveTags(), evolution.skillTag)) ||
+                                (!evolution.metal.empty() && reachOf(*piece) < def.metalReach(evolution.metal))) continue;
+                            resolved = candidate;
+                            source += ">" + catalyst->currency;
+                            consumed.emplace(next.row, next.col, piece->row, piece->col, tablet->skill);
+                            break; // one rewrite per physical Kind, never repeat until stable
+                        }
+                    }
+                    if (emitted.emplace(piece->row, piece->col, tablet->skill, resolved).second)
+                        emitForm(def.forms[resolved], *piece, *tablet, source, route.cells);
                 }
                 // Ordered compound rules: a downstream Kind acts on the source
                 // before its reading reaches this ingot, never on a sibling branch.
                 for (size_t k = 1; k < upstream.size(); ++k) {
                     for (size_t i = 0; i < def.forms.size(); ++i) {
                         const auto& form = def.forms[i];
-                        if (form.upstreamKind != p.currency || form.kind != upstream[k] || form.ingot != piece->ingot) continue;
+                        if (!form.inputForm.empty() || form.upstreamKind != p.currency || form.kind != upstream[k] || form.ingot != piece->ingot) continue;
                         if (emitted.emplace(piece->row, piece->col, tablet->skill, i).second)
                             emitForm(form, *piece, *tablet, p.currency + ">" + upstream[k], route.cells);
                     }
@@ -559,6 +584,11 @@ std::vector<Effect> effects(const tuning::Tuning& tuning, const State& state, co
             }
         }
     }
+    out.erase(std::remove_if(out.begin(), out.end(), [&](const Effect& effect) {
+        if (effect.kind != "form" || effect.path.empty() || effect.sourceKind.find('>') != std::string::npos) return false;
+        const auto& origin = effect.path.front();
+        return consumed.count({origin.row, origin.col, effect.cellRow, effect.cellCol, effect.skill}) > 0;
+    }), out.end());
     // Alloy refinements belong to direct supports, independently of any Kind.
     for (const auto& p : state.plate) {
         if (!p.isIngot() || !plate.forged(p.row, p.col)) continue;

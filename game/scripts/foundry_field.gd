@@ -30,6 +30,9 @@ static func spawn(owner_combat: PlayerCombat, skill: StringName, at: Vector3, ki
 	field.radius = owner_combat.mutation_radius(skill, float(mutation.get("field_radius", 1.8)))
 	field.pulse_left = float(limits.get("pulse_interval", 0.8))
 	field.remaining = float(mutation.get("field_seconds", 0)) if kind in ["impact", "trail"] else float(limits.get("zone_seconds", 3.2))
+	if kind == "steam":
+		field.remaining = float(limits.steam_plume_seconds)
+		field.radius = owner_combat.mutation_radius(skill, float(limits.steam_plume_radius))
 	field.fraction = float(mutation.get("trail_fraction" if kind == "trail" else "field_fraction", 0)) if kind in ["impact", "trail"] else 0.0
 	if kind == "recovery":
 		field.heal_per_pulse = float(mutation.get("recovery_on_kill", 0)) / maxf(1, floorf(field.remaining / field.pulse_left))
@@ -71,13 +74,33 @@ func advance(delta: float) -> void:
 	pulse_left -= elapsed
 	while pulse_left <= 0.00001:
 		pulse_left += float(rules.limits.get("pulse_interval", 0.8))
+		if mode == "steam": _steam_pulse()
 		if fraction > 0:
 			SkillBurst.hit_area(combat, skill_id, global_position + Vector3.UP * 0.15, radius, fraction, [], false, true)
 		if heal_per_pulse > 0 and global_position.distance_to(combat.player.global_position) <= radius and SkillBurst.solid_ray(combat, global_position + Vector3.UP * 0.15, combat.player.global_position + Vector3.UP * 0.5).is_empty(): combat.heal(heal_per_pulse)
 	if tint != null:
-		tint.albedo_color.a = minf(0.7, remaining * 0.7)
+		tint.albedo_color.a = minf(0.26, remaining * 0.26) if mode == "steam" else minf(0.7, remaining * 0.7)
 		ring.scale.y = 0.7 + 0.3 * sin(pulse_left * TAU)
 	if remaining <= 0: cancel()
+
+func _steam_pulse() -> void:
+	var at := global_position + Vector3.UP * 0.15
+	var total := 0.0
+	var kills := 0
+	for enemy in combat.alive_enemies():
+		var centre: Vector3 = enemy.global_position + Vector3.UP * 0.5
+		if at.distance_to(centre) > radius or not SkillBurst.solid_ray(combat, at, centre).is_empty(): continue
+		var fraction := 1.0
+		if enemy.guards_against(global_position): fraction *= 1.0 - enemy.verb_strength
+		var warden: Enemy = enemy.warded_by()
+		if warden != null: fraction *= 1.0 - warden.verb_strength
+		# Snapshot typed sim damage. Steam cannot ignite, shatter, siphon, link
+		# or make another plume; its damage investment is bounded by three pulses.
+		for type in ["fire", "cold"]:
+			total += enemy.take_typed(float(rules.get("steam_" + type + "_damage", 0)) * fraction, type)
+		if enemy.life <= 0: kills += 1
+	if total > 0: combat.hit_landed.emit(total, kills, PackedStringArray(["fire", "cold"]))
+	FoundryPuff.spawn(combat, at, radius, true)
 
 ## Find the earliest ward along the already cover-limited projectile sweep.
 ## Checking the full segment keeps a fast shot from tunnelling through a veil.
@@ -108,7 +131,8 @@ static func intercept(tree: SceneTree, from: Vector3, to: Vector3) -> bool:
 
 func _make_visual() -> void:
 	var colour := Color("df8449")
-	if float(rules.get("smoulder_slow", 0)) > 0: colour = Color("a6c1bd")
+	if mode == "steam": colour = Color("b4cbc3")
+	elif float(rules.get("smoulder_slow", 0)) > 0: colour = Color("a6c1bd")
 	elif mode == "guard": colour = Color("d4bc7a") if charges == 0 else Color("90becd")
 	elif mode == "recovery": colour = Color("9cad76")
 	elif mode == "trail": colour = Color("b4a8cb")

@@ -2109,6 +2109,82 @@
         }
       ],
       "design_purpose": "gains the proliferate capability Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_burn_release_seconds",
+      "display_name": "Burn Release Seconds",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_burn_release_seconds",
+      "display": "flat",
+      "sentence": "{n}: Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_warm_cinder_life",
+      "display_name": "Warm Cinder Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_warm_cinder_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life collected from one warm cinder; heal modifiers still scale the payout.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life collected from one warm cinder; heal modifiers still scale the payout. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_steam_stagger",
+      "display_name": "Steam Stagger",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_steam_stagger",
+      "display": "flat",
+      "sentence": "{n}: Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_steam_fraction",
+      "display_name": "Steam Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_steam_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. Authored reading; excluded from random item pools."
     }
   ],
   "item_bases": [

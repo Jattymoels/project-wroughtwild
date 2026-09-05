@@ -89,5 +89,64 @@ func _ready() -> void:
 	ward.set_physics_process(false)
 	review_title.text = "RIME VEIL\nA bow cast plants a projectile-catching ward"
 	await capture("rime-veil")
-	print("CODEX_FOUNDRY_MUTATION_REVIEW 5 captures")
+	ward.cancel()
+	await evolution_capture(world)
+	print("CODEX_FOUNDRY_MUTATION_REVIEW 8 captures")
 	get_tree().quit()
+
+func evolution_capture(world: Sandpit) -> void:
+	var sim := player.combat.sim
+	for piece in sim.foundry().plate: sim.foundry_remove(piece.row,piece.col)
+	for event in ["recipe:workbench_kit","first_kill:ash_hound"]: sim.foundry_event(event)
+	sim.add_materials({"ember_catalyst":3,"frost_catalyst":2,"iron_ingot":100})
+	sim.foundry_place_skill(1,1,"prototype_heavy_strike")
+	sim.foundry_place(1,0,"haste")
+	sim.foundry_place(2,1,"vigour")
+	sim.foundry_place_kind(2,0,"ember_catalyst")
+	player.combat._mutation_cache.clear()
+	review_title.visible = false
+	get_window().size = Vector2i(1920,1080)
+	player.foundry_panel.open_panel()
+	for i in 8: await get_tree().process_frame
+	player.foundry_panel._inspect_cell(2,0)
+	await capture("ember-workings-1080")
+	player.foundry_panel.close_panel()
+	get_window().size = Vector2i(1280,720)
+	equip("iron_mace")
+	var target := Enemy.spawn(world,&"stone_husk",player.global_position+Vector3(0,-.65,-3.5))
+	target.set_physics_process(false)
+	target.life = 1000
+	var form := sim.skill_mutation("prototype_heavy_strike")
+	target.apply_ignite(100,0,0,form)
+	FoundryReactions.ignited(player.combat,target,form)
+	FoundryReactions.contact(player.combat,target,&"prototype_heavy_strike",form,{})
+	for puff in get_tree().get_nodes_in_group("foundry_puffs"):
+		puff.set_process(false)
+		puff.elapsed = .22
+		puff._sample()
+	for mote in get_tree().get_nodes_in_group("foundry_returns"): mote.set_physics_process(false)
+	review_title.visible = true
+	review_title.text = "FLASHFIRE + BLOODFIRE\nRelease stored burn; move in to collect its warm cinder"
+	await capture("ember-recovery-combat")
+	for group in ["foundry_puffs","foundry_returns"]:
+		for node in get_tree().get_nodes_in_group(group): node.free()
+	for piece in sim.foundry().plate: sim.foundry_remove(piece.row,piece.col)
+	sim.foundry_place_skill(2,2,"prototype_heavy_strike")
+	sim.foundry_place(1,2,"ember")
+	sim.foundry_place_kind(0,3,"frost_catalyst")
+	sim.foundry_place_kind(1,3,"ember_catalyst")
+	player.combat._mutation_cache.clear()
+	form = player.combat.mutation(&"prototype_heavy_strike")
+	FoundryReactions.contact(player.combat,target,&"prototype_heavy_strike",form,{})
+	for field in get_tree().get_nodes_in_group("foundry_fields"):
+		if field.mode != "steam": continue
+		field.set_physics_process(false)
+		field.advance(.81)
+	for puff in get_tree().get_nodes_in_group("foundry_puffs"):
+		puff.set_process(false)
+		puff.elapsed = .30
+		puff._sample()
+	target._flash_left = 0
+	target._refresh_look()
+	review_title.text = "STEAM PLUME\nSmoulder evolves through Ember into three fire/cold eruptions"
+	await capture("steam-plume-combat")

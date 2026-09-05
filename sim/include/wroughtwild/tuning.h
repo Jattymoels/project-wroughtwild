@@ -1007,6 +1007,8 @@ struct FormDef {
     std::string description{};
     std::string upstreamKind{}; // ordered compound: this Kind occurred earlier on the same inward route
     bool supportOnly = false; // alloy refinement, independent of a Kind
+    std::string id{}; // stable authored form identity, independent of its displayed name
+    std::string inputForm{}; // consumes this resolved form and the downstream Kind's local reading
 };
 
 struct IngotPairDef {
