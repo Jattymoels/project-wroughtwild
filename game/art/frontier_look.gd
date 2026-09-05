@@ -15,6 +15,9 @@ extends Resource
 @export var blade_width_fraction := 0.065
 @export var blade_lean_fraction := 0.28
 @export var cover_scale := 1.2
+@export var soft_terrain := false
+@export var turf_slope_start := 0.25
+@export var turf_slope_end := 0.8
 @export var design_purpose: Dictionary = {}
 
 var _noise: FastNoiseLite
@@ -32,6 +35,9 @@ func terrain_material(kind: String, cell: float) -> ShaderMaterial:
 	material.set_shader_parameter("grass_edge_depth", grass_edge_depth)
 	material.set_shader_parameter("cell_metres", cell)
 	material.set_shader_parameter("grassy", kind in ["grass", "forest_floor", "marsh"])
+	material.set_shader_parameter("soft_terrain", soft_terrain)
+	material.set_shader_parameter("turf_slope_start", turf_slope_start)
+	material.set_shader_parameter("turf_slope_end", turf_slope_end)
 	return material
 
 func cover_density(x: int, z: int) -> float:

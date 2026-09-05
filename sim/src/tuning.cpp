@@ -755,9 +755,9 @@ ConstructionTable loadConstruction(const std::string& path) {
             shape.form = form->asString();
             if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door" &&
                 shape.form != "arch" && shape.form != "fire" && shape.form != "low" && shape.form != "chest" &&
-                shape.form != "corner")
+                shape.form != "corner" && shape.form != "roof_slope" && shape.form != "roof_hip" && shape.form != "roof_valley")
                 throw std::runtime_error("construction: shape '" + shape.id +
-                                         "' form must be box, stairs, wedge, door, arch, fire, low, chest or corner");
+                                         "' form must be box, stairs, wedge, door, arch, fire, low, chest, corner, roof_slope, roof_hip or roof_valley");
         }
         if (auto oriented = s->find("oriented")) shape.oriented = oriented->asBool();
         if (auto tall = s->find("cells_tall")) {
@@ -777,6 +777,13 @@ ConstructionTable loadConstruction(const std::string& path) {
         }
         if (!shape.fineOf.empty() && !shape.fine)
             throw std::runtime_error("construction: shape '" + shape.id + "' names fine_of but is not fine");
+        if (shape.form == "roof_slope" || shape.form == "roof_hip" || shape.form == "roof_valley") {
+            const double extent = table.gridSizeMetres / (shape.fine ? table.latticeDivisions : 1);
+            if (shape.element != "block" || !shape.oriented || shape.cellsTall != 1 || shape.cellsLong != 1 ||
+                std::abs(shape.sizeM[0] - extent) > 1e-8 || std::abs(shape.sizeM[2] - extent) > 1e-8 ||
+                shape.sizeM[1] <= 0 || shape.sizeM[1] > extent)
+                throw std::runtime_error("construction: roof transitions require an oriented square block no taller than its grid extent");
+        }
         if (shape.form == "corner") {
             const double extent = table.gridSizeMetres / (shape.fine ? table.latticeDivisions : 1);
             const bool block = shape.element == "block", floor = shape.element == "floor";

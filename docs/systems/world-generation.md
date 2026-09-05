@@ -313,6 +313,11 @@ change the generated voxel field or saved excavation representation.
 See [Codex's report](../art/codex-aesthetic-intensive-2026-09-05.md) for controls,
 generation checks and the presentation's resource-grounding limitations.
 
+The subsequent `--crafted-look` candidate preserves those triangles and
+collision, adds shared occupancy-gradient lighting normals and branching tree
+presentation, and passes a short actual-controller slope/chunk traversal.
+See [review and measured limits](../art/codex-crafted-frontier-2026-09-05.md).
+
 - How class halls are signposted.
 - When outposts become mechanically worthwhile.
 - Whether cave dark needs its own light rules before torches exist

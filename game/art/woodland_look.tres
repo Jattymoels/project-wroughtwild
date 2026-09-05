@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://art/woodland_look.gd" id="1"]
+[resource]
+script = ExtResource("1")
+radial_segments = 9
+profiles = {
+"meadow": {"height": 3.9, "trunk_radius": 0.3, "lean": 0.26, "branches": 5, "spread": 1.3, "branch_rise": 0.75, "crown_radius": 1.15, "crown_depth": 1.25, "bark": Color(0.36,0.251,0.149,1), "leaf": Color(0.306,0.49,0.192,1), "leaf_dark": Color(0.125,0.298,0.11,1)},
+"forest": {"height": 5.5, "trunk_radius": 0.28, "lean": 0.18, "branches": 8, "spread": 0.7, "branch_rise": 0.18, "crown_radius": 1.35, "crown_depth": 1.8, "crown_taper": 0.65, "pointed": true, "bark": Color(0.36,0.251,0.149,1), "leaf": Color(0.188,0.416,0.165,1), "leaf_dark": Color(0.125,0.298,0.11,1)},
+"fen": {"height": 3.5, "trunk_radius": 0.33, "lean": 0.4, "branches": 6, "spread": 1.65, "branch_rise": 0.35, "crown_radius": 1.15, "crown_depth": 0.85, "bark": Color(0.251,0.173,0.102,1), "leaf": Color(0.24,0.36,0.18,1), "leaf_dark": Color(0.125,0.298,0.11,1)},
+"ember_wastes": {"height": 3.7, "trunk_radius": 0.27, "lean": 0.38, "branches": 5, "spread": 0.85, "branch_rise": 0.95, "crown_radius": 0.0, "crown_depth": 0.0, "bark": Color(0.337,0.235,0.149,1), "leaf": Color(0.188,0.416,0.165,1), "leaf_dark": Color(0.125,0.298,0.11,1)}
+}
+design_purpose = {
+"crown_taper": "Reduce the upper branches and crowns into a recognisable conifer outline; zero keeps broadleaf spread.",
+"pointed": "Conifer crowns rise to a tip instead of a broad flattened upper surface.",
+"height": "Crown height in local metres; trees keep their existing world scale and harvesting origin.",
+"trunk_radius": "Visible trunk girth within the existing trunk collider.",
+"lean": "Sideways drift at the crown, making trunks less pole-like.",
+"branches": "Number of staggered crown-bearing branches; controls silhouette density and mesh cost.",
+"spread": "Branch reach: broad open meadow trees, tight forest trees, spreading fen trees.",
+"branch_rise": "How steeply each branch rises from its fork.",
+"crown_radius": "Width of each overlapping foliage mass; zero makes a bare snag.",
+"crown_depth": "Crown thickness; low fen crowns and deeper forest foliage.",
+"bark": "Bark shades drawn from the master bark/loam palette.",
+"leaf": "Sunward foliage colour drawn from or mixed between master grass/leaf tones.",
+"leaf_dark": "Dark underside gives the crown depth without random face noise.",
+"radial_segments": "Nine sides per foliage ring keep a carved silhouette with broad surfaces."
+}

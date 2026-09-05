@@ -337,6 +337,13 @@ walls and triangular floor/ceiling corners. Its hipped roof/framing are lab
 dressing. No normal catalogue entry or unlock was added.
 See [current findings and limits](../art/codex-aesthetic-intensive-2026-09-05.md).
 
+The owner-authorised [next lab pass](../art/codex-crafted-frontier-2026-09-05.md)
+adds `roof_slope`, `roof_hip` and `roof_valley` forms to an isolated catalogue.
+They are oriented square blocks, no taller than the grid extent; the concave
+valley has two convex collision halves. They retain full-block occupancy and
+the ordinary save representation. The playable scene isolates its save file;
+no normal shape, material cost or progression unlock has changed.
+
 - Final prototype grid size.
 - Minimum coherent diagonal/transition set.
 - Whether rare natural shapes exist as exact decorative objects.

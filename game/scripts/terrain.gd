@@ -159,9 +159,12 @@ func _material_for(kind: String) -> Material:
 
 
 func build(sim: WroughtwildSim, seed_value: int) -> void:
-	faceted_surface = OS.get_cmdline_user_args().has("--faceted-look")
+	var crafted := OS.get_cmdline_user_args().has("--crafted-look")
+	faceted_surface = OS.get_cmdline_user_args().has("--faceted-look") or crafted
 	if OS.get_cmdline_user_args().has("--frontier-look") or faceted_surface:
 		frontier_look = preload("res://art/frontier_look.tres")
+	if crafted:
+		frontier_look = preload("res://art/crafted_look.tres")
 	_materials.clear()
 	for child in get_children():
 		remove_child(child)
@@ -210,6 +213,8 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 			arrays.resize(Mesh.ARRAY_MAX)
 			arrays[Mesh.ARRAY_VERTEX] = chunk_data["surfaces"][kind]
 			arrays[Mesh.ARRAY_NORMAL] = chunk_data["normals"][kind]
+			if frontier_look != null and frontier_look.soft_terrain:
+				arrays[Mesh.ARRAY_NORMAL] = chunk_data["soft_normals"][kind]
 			var surface := ArrayMesh.new()
 			surface.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 			var visible := MeshInstance3D.new()

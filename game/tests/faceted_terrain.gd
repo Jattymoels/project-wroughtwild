@@ -7,6 +7,7 @@ var checks := 0
 var failures := 0
 var target := Vector3i.ZERO
 var originals: Dictionary = {}
+var original_normals: Dictionary = {}
 var old_bodies: Dictionary = {}
 var player: WroughtwildPlayer
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 		for z in [144, 160]:
 			var data: Dictionary = sim.world_mesh_chunk(1, 16, x, z, PackedInt32Array(), true)
 			originals[Vector2i(x,z)] = data["faces"]
+			original_normals[Vector2i(x,z)] = data["soft_normals"]
 			check(data["source_cells"].size() * 3 == data["faces"].size(), "every collision triangle has a source voxel")
 			var rendered := 0
 			for kind in data["surfaces"]:
@@ -86,6 +88,8 @@ func _physics_process(_delta: float) -> void:
 		for coordinate in originals:
 			var data: Dictionary = sim.world_mesh_chunk(1,16,coordinate.x,coordinate.y,terrain.broken_packed(),true)
 			check(data["faces"] == originals[coordinate], "restoration reproduces exact faceted triangles")
+			for kind in data["soft_normals"]:
+				check(data["soft_normals"][kind] == original_normals[coordinate][kind], "restoration reproduces exact lighting normals")
 		var hit := _ray()
 		check(not hit.is_empty() and terrain.block_from_surface_hit(hit) == target, "restored collision selects the restored block")
 		print("Codex faceted terrain: %d checks, %d failures" % [checks,failures])

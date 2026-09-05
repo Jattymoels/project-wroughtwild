@@ -16,11 +16,15 @@ const ARCH_STRIPS := 12
 ## The render mesh for a form at a size.
 static func mesh_for(form: String, size: Vector3) -> Mesh:
 	match form:
+		"roof_slope":
+			return _wedge_mesh(size, true)
+		"roof_hip", "roof_valley":
+			return _roof_mesh(form, size)
 		"corner":
 			# Codex experiment: a roof wedge stood on its end, still one block.
 			var st := SurfaceTool.new()
 			st.begin(Mesh.PRIMITIVE_TRIANGLES)
-			st.append_from(_wedge_mesh(Vector3(size.y, size.x, size.z)), 0,
+			st.append_from(_wedge_mesh(Vector3(size.y, size.x, size.z), true), 0,
 				Transform3D(Basis(Vector3.FORWARD, PI * 0.5), Vector3.ZERO))
 			return st.commit()
 		"fire":
@@ -75,6 +79,19 @@ static func preview_mesh_for(form: String, size: Vector3) -> Mesh:
 ## space. Stairs are two boxes, the wedge a convex hull, the rest one box.
 static func collision_for(form: String, size: Vector3) -> Array:
 	match form:
+		"roof_hip", "roof_valley":
+			# Two convex halves also represent the concave valley accurately.
+			var p := _roof_points(form, size)
+			var result: Array = []
+			for indices in [[0, 1, 2], [0, 2, 3]]:
+				var hull := ConvexPolygonShape3D.new()
+				var points := PackedVector3Array()
+				for i in indices:
+					points.append(p[i])
+					points.append(p[i + 4])
+				hull.points = points
+				result.append({"shape": hull, "transform": Transform3D.IDENTITY})
+			return result
 		"corner":
 			var hull := ConvexPolygonShape3D.new()
 			hull.points = _wedge_points(Vector3(size.y, size.x, size.z))
@@ -101,7 +118,7 @@ static func collision_for(form: String, size: Vector3) -> Array:
 				{"shape": lower, "transform": Transform3D(Basis.IDENTITY, Vector3(0.0, -size.y * 0.25, 0.0))},
 				{"shape": upper, "transform": Transform3D(Basis.IDENTITY, Vector3(0.0, size.y * 0.25, size.z * 0.25))},
 			]
-		"wedge":
+		"wedge", "roof_slope":
 			var hull := ConvexPolygonShape3D.new()
 			hull.points = _wedge_points(size)
 			return [{"shape": hull, "transform": Transform3D.IDENTITY}]
@@ -131,6 +148,34 @@ static func _door_leaf_size(size: Vector3) -> Vector3:
 	return Vector3(size.x - DOOR_LEAF_INSET, size.y - DOOR_LEAF_INSET, size.z * 0.5)
 
 
+## Hip rises to +x/+z; valley dips at -x/-z. Quarter turns use the normal
+## oriented-block pose. The 0--2 diagonal is shared by mesh and collision.
+static func _roof_points(form: String, size: Vector3) -> PackedVector3Array:
+	var points := PackedVector3Array()
+	for xz in [Vector2(-0.5,-0.5), Vector2(0.5,-0.5), Vector2(0.5,0.5), Vector2(-0.5,0.5)]:
+		points.append(Vector3(xz.x * size.x, -size.y * 0.5, xz.y * size.z))
+	var heights := [0.0, 0.0, 1.0, 0.0] if form == "roof_hip" else [0.0, 1.0, 1.0, 1.0]
+	for i in 4:
+		points.append(points[i] + Vector3.UP * float(heights[i]) * size.y)
+	return points
+
+static func _roof_mesh(form: String, size: Vector3) -> ArrayMesh:
+	var p := _roof_points(form, size)
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	st.set_smooth_group(-1)
+	_add_quad(st, p[4],p[5],p[6],p[7])
+	_add_quad(st, p[0],p[3],p[2],p[1])
+	for i in 4:
+		var j := (i+1)%4
+		if not p[i].is_equal_approx(p[i+4]):
+			_add_tri(st,p[i],p[j+4],p[i+4])
+		if not p[j].is_equal_approx(p[j+4]):
+			_add_tri(st,p[i],p[j],p[j+4])
+	st.generate_normals()
+	return st.commit()
+
+
 static func _stairs_mesh(size: Vector3) -> Mesh:
 	# Two boxes merged into one ArrayMesh so the piece is one draw.
 	var st := SurfaceTool.new()
@@ -154,10 +199,12 @@ static func _wedge_points(size: Vector3) -> PackedVector3Array:
 	])
 
 
-static func _wedge_mesh(size: Vector3) -> Mesh:
+static func _wedge_mesh(size: Vector3, flat := false) -> Mesh:
 	var p := _wedge_points(size)
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	if flat:
+		st.set_smooth_group(-1)
 	# Bottom (facing down), back (facing +z), slope (facing up/-z), two sides.
 	_add_quad(st, p[0], p[3], p[2], p[1])
 	_add_quad(st, p[2], p[3], p[5], p[4])

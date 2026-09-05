@@ -11,6 +11,7 @@ var frame := 0
 var capturing := false
 var variant := "baseline"
 var output: String
+var frame_intervals: Array[float] = []
 
 func _ready() -> void:
 	get_window().size = Vector2i(1920, 1080)
@@ -75,11 +76,14 @@ func _set_view() -> void:
 	world.mood._target = BiomeMood.mood_for(world.mood._biome_under_player())
 	world.mood._apply(1.0)
 	frame = 0
+	frame_intervals.clear()
 
 func _process(_delta: float) -> void:
 	if capturing:
 		return
 	frame += 1
+	if frame > 10:
+		frame_intervals.append(_delta * 1000.0)
 	if frame < 45:
 		return
 	capturing = true
@@ -98,6 +102,11 @@ func _process(_delta: float) -> void:
 		"size": [1920, 1080], "day": world.player.inventory.get_sim().day(),
 		"draw_calls": Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME),
 		"primitives": Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME)}
+	frame_intervals.sort()
+	record["frame_interval_median_ms"] = frame_intervals[frame_intervals.size()/2]
+	record["frame_interval_p95_ms"] = frame_intervals[mini(frame_intervals.size()-1,ceili(frame_intervals.size()*0.95)-1)]
+	record["frame_interval_samples"] = frame_intervals.size()
+	record["timing_scope"] = "process frame intervals after 10 settling frames; includes pacing, not isolated GPU time"
 	records.append(record)
 	print("CODEX_CAPTURE ", JSON.stringify(record))
 	index += 1

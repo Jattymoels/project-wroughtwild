@@ -320,6 +320,12 @@ faceted terrain, an isolated contour profile and the larger octagonal workshop
 with corner-aware shelter. These remain experiments under that authorisation;
 the default art direction, ordinary shape unlocks and siege policy are unchanged.
 
+The owner then authorised the next aesthetic steps. The
+[crafted frontier report](../art/codex-crafted-frontier-2026-09-05.md) records
+calmer terrain lighting, branching trees and an editable modular-roof workshop
+with its own save. This remains an experiment record, not adoption of a new
+art policy, construction unlock or siege decision.
+
 ### Procedure
 
 Add an entry when a choice materially affects player experience, save data, system boundaries, architecture or prototype scope. Create a separate ADR when the rationale, alternatives or consequences require more than one table row.

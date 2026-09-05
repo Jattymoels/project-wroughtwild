@@ -116,6 +116,8 @@ func _apply_visual() -> void:
 					# Collision stays the trunk only: you can stand under the canopy.
 					shape.size = Vector3(0.7, 3.0, 0.7)
 					collider.position = Vector3(0, 1.5, 0)
+			if OS.get_cmdline_user_args().has("--crafted-look"):
+				mesh_instance.mesh = preload("res://art/woodland_look.tres").build_tree(_biome_id(), _visual_seed())
 		&"boulder":
 			mesh_instance.mesh = PropMesh.build_boulder(_visual_seed())
 			shape.size = Vector3(1.4, 1.0, 1.2)

@@ -2245,6 +2245,24 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
     // planes, preserving the ground at resource anchors. Both rendering and
     // collision use these triangles; each triangle retains its source cell.
     std::map<int64_t, Vector3> surfaceCache;
+    std::map<int64_t, Vector3> normalCache;
+    // Material-independent occupancy gradient. The same eight samples are
+    // read on either side of a chunk/material boundary, including after digs.
+    auto surfaceNormal = [&](int x, int y, int z) {
+        const int64_t key = (int64_t(z) * (map.width + 1) + x) * (map.depth + 1) + y;
+        auto found = normalCache.find(key);
+        if (found != normalCache.end()) return found->second;
+        Vector3 n;
+        auto solid = [&](int a, int b, int c) { return eff(a,b,c) != kAir ? 1.0f : 0.0f; };
+        for (int a=-1; a<=0; ++a) for (int b=-1; b<=0; ++b) {
+            n.x += solid(x-1,y+a,z+b) - solid(x,y+a,z+b);
+            n.y += solid(x+a,y-1,z+b) - solid(x+a,y,z+b);
+            n.z += solid(x+a,y+b,z-1) - solid(x+a,y+b,z);
+        }
+        n.normalize();
+        normalCache[key] = n;
+        return n;
+    };
     auto surfaceVertex = [&](int x, int y, int z) {
         const int64_t key = (int64_t(z) * (map.width + 1) + x) * (map.depth + 1) + y;
         auto found = surfaceCache.find(key);
@@ -2286,7 +2304,7 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
     // so growing them in place through the Dictionary would copy the whole
     // array per block.
     std::map<String, PackedVector3Array> bucket;
-    std::map<String, PackedVector3Array> surfaceBucket, normalBucket;
+    std::map<String, PackedVector3Array> surfaceBucket, normalBucket, softNormalBucket;
     PackedVector3Array sourceCells;
     PackedVector3Array faces;
     for (int z = cz; z < std::min(cz + chunk_cells, map.height); ++z) {
@@ -2313,18 +2331,27 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
                     if (faceted) {
                         const Vector3 centre = (Vector3(x+0.5,y+0.5,z+0.5) + Vector3(dir.dx,dir.dy,dir.dz)*0.5) * cs;
                         Vector3 corners[4];
+                        Vector3 cornerNormals[4], centreNormal;
                         for (int i=0; i<4; ++i) corners[i] = surfaceVertex(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
                         for (int i=0; i<4; ++i) {
+                            cornerNormals[i] = surfaceNormal(x+int(dir.corners[i].x), y+int(dir.corners[i].y), z+int(dir.corners[i].z));
+                            centreNormal += cornerNormals[i];
+                        }
+                        centreNormal.normalize();
+                        for (int i=0; i<4; ++i) {
                             Vector3 a=corners[i], b=corners[(i+1)%4];
+                            Vector3 na=cornerNormals[i], nb=cornerNormals[(i+1)%4];
                             Vector3 normal = (b-centre).cross(a-centre);
                             if (normal.length_squared() < 1e-12) continue;
-                            if (normal.dot(Vector3(dir.dx,dir.dy,dir.dz)) < 0) { std::swap(a,b); normal=-normal; }
+                            if (normal.dot(Vector3(dir.dx,dir.dy,dir.dz)) < 0) { std::swap(a,b); std::swap(na,nb); normal=-normal; }
                             normal.normalize();
                             for (const auto& vertex : {centre,a,b}) {
                                 faces.push_back(vertex);
                                 surfaceBucket[kind].push_back(vertex);
                                 normalBucket[kind].push_back(normal);
                             }
+                            for (const auto& soft : {centreNormal,na,nb})
+                                softNormalBucket[kind].push_back(soft.length_squared() > 0.01 ? soft : normal);
                             sourceCells.push_back(Vector3(x,y,z));
                         }
                         continue;
@@ -2350,11 +2377,13 @@ Dictionary build_world_chunk(const wroughtwild::tuning::Tuning& tuning,
     chunk["kinds"] = kinds;
     chunk["faces"] = faces;
     if (faceted) {
-        Dictionary surfaces, normals;
+        Dictionary surfaces, normals, softNormals;
         for (const auto& entry : surfaceBucket) surfaces[entry.first] = entry.second;
         for (const auto& entry : normalBucket) normals[entry.first] = entry.second;
+        for (const auto& entry : softNormalBucket) softNormals[entry.first] = entry.second;
         chunk["surfaces"] = surfaces;
         chunk["normals"] = normals;
+        chunk["soft_normals"] = softNormals;
         chunk["source_cells"] = sourceCells;
     }
     return chunk;

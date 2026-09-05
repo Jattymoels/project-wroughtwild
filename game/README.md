@@ -85,6 +85,13 @@ purpose.
 
 ## Build the rules extension (once per checkout, and after `sim/` changes)
 
+**Optional art studies (Codex, 5 Sep 2026):** after building the extension,
+`godot --path game -- --crafted-look` runs normal gameplay with experimental
+terrain lighting and branching trees. The editable workshop is
+`godot --path game res://experiments/roof_workshop.tscn -- --workshop-play`;
+its F5/F9 save is separate from the normal game. See
+[controls, comparison captures and limitations](../docs/art/codex-crafted-frontier-2026-09-05.md).
+
 The economy rules are compiled into the project as a GDExtension
 (`extensions/wroughtwild_sim`, binding the `../sim` library through
 `godot-cpp`). Needs CMake ≥ 3.22, Python 3 (godot-cpp's binding generator)

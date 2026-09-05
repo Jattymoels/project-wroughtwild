@@ -37,6 +37,11 @@ echo "== feel test (pickup magnet, harvest feedback, jump buffer) =="
 echo "== Codex faceted terrain =="
 "$GODOT" --headless --path . res://tests/faceted_terrain.tscn
 
+echo "== Codex crafted terrain, modular workshop and woodland checks =="
+"$GODOT" --headless --path . res://tests/crafted_traversal.tscn
+"$GODOT" --headless --path . res://experiments/roof_workshop.tscn
+"$GODOT" --headless --path . res://experiments/woodland_comparison.tscn
+
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 

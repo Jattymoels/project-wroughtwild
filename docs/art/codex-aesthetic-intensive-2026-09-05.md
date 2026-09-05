@@ -16,6 +16,9 @@ and the D-018 siege conflict remain deferred. No D-025 was created.
 
 ## Result and assessment
 
+Follow-up: [calmer terrain, branching trees and the editable roof workshop](codex-crafted-frontier-2026-09-05.md)
+implements the next visual and traversal experiments, with fresh captures and checks.
+
 The gallery now compares **faceted terrain against cubic terrain in the same
 generated world**, with identical cameras, materials and daylight. This is a
 more substantial visual change than the first surface-material pass: exposed

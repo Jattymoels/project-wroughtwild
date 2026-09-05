@@ -1,0 +1,53 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://art/frontier_look.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+patch_metres = 12.0
+detail_metres = 0.8
+colour_variation = 0.16
+soft_terrain = true
+turf_slope_start = 0.25
+turf_slope_end = 0.8
+grass_edge_depth = 0.18
+cover_patch_metres = 9.0
+cover_sparse_multiplier = 0.08
+cover_dense_multiplier = 1.7
+blade_count = 5
+blade_width_fraction = 0.065
+blade_lean_fraction = 0.28
+cover_scale = 1.2
+top_colours = {
+"grass": Color(0.384, 0.588, 0.243, 1),
+"forest_floor": Color(0.18, 0.329, 0.161, 1),
+"marsh": Color(0.28, 0.36, 0.23, 1),
+"rock": Color(0.455, 0.455, 0.478, 1),
+"stone": Color(0.337, 0.337, 0.376, 1),
+"dirt": Color(0.416, 0.298, 0.188, 1),
+"ash": Color(0.204, 0.18, 0.18, 1),
+"bedrock": Color(0.173, 0.173, 0.2, 1)
+}
+side_colours = {
+"grass": Color(0.416, 0.298, 0.188, 1),
+"forest_floor": Color(0.337, 0.235, 0.149, 1),
+"marsh": Color(0.25, 0.235, 0.18, 1)
+}
+design_purpose = {
+"soft_terrain": "Shared occupancy normals soften the tiny triangle lighting while leaving collision and editable voxels unchanged.",
+"turf_slope_start": "Steep banks expose soil; turf starts to blend in when the upward normal exceeds this amount.",
+"turf_slope_end": "Gentler slopes become fully grassy, with a gradual transition instead of triangle-shaped colour jumps.",
+"top_colours": "D-013 palette translated to continuous surfaces; marsh and underground tints retain their biome/stratum identity.",
+"side_colours": "Exposed soil beneath turf makes elevation readable without coating every vertical step in grass.",
+"patch_metres": "Twelve-metre colour patches connect neighbouring blocks into larger landforms.",
+"detail_metres": "Subtle near-ground grain scale, rather than a repeated pixel tile on every cube.",
+"colour_variation": "Restrains surface contrast so resources, silhouettes and threats draw attention.",
+"grass_edge_depth": "How far turf hangs down the top of an exposed soil edge, as a fraction of a block.",
+"cover_patch_metres": "Size of the sparse and lush ground-cover patches; does not move trees or resources.",
+"cover_sparse_multiplier": "How open the sparse patches feel relative to existing biome cover density.",
+"cover_dense_multiplier": "How lush the dense patches feel relative to existing biome cover density.",
+"blade_count": "Five bent blades per tuft trade a few more triangles for a recognisable plant silhouette.",
+"blade_width_fraction": "Narrow tapered blades replace rectangular ground-cover cards.",
+"blade_lean_fraction": "Blade spread gives tufts an irregular outline without animated foliage.",
+"cover_scale": "Scales decorative plants only, so their silhouette reads at first-person height."
+}

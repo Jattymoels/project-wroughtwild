@@ -147,3 +147,9 @@ adds opt-in faceted terrain, fresh-world contour comparisons and an octagonal
 workshop study. The gallery now separately demonstrates the prop winding
 repair; it did not redesign tree silhouettes or terrain cliffs. No default
 art rule is superseded. The workshop's hipped roof is decorative lab geometry.
+
+The [next experimental pass](codex-crafted-frontier-2026-09-05.md) adds
+`--crafted-look`: shared terrain lighting normals, gradual turf blending and
+branching biome trees. A separate playable workshop uses real modular roof
+pieces and an isolated save. Its framing, station detail and lights remain
+lab dressing; D-013 is still the default direction.

@@ -12,6 +12,9 @@ uniform float grass_edge_depth = 0.18;
 uniform float cell_metres = 1.0;
 uniform bool grassy = false;
 uniform bool world_mesh = false;
+uniform bool soft_terrain = false;
+uniform float turf_slope_start = 0.25;
+uniform float turf_slope_end = 0.8;
 varying vec3 world_position;
 varying vec3 world_normal;
 varying float block_height;
@@ -48,6 +51,10 @@ void fragment() {
 	variation += (grain - 0.5) * colour_variation * 0.3;
 	float edge = smoothstep(1.0 - grass_edge_depth - grain * 0.08, 1.0 - grain * 0.04, block_height);
 	float turf = max(step(0.5, world_normal.y), edge);
+	if (soft_terrain) {
+		// A continuous slope mask; no per-voxel grass stripe on curved ground.
+		turf = smoothstep(turf_slope_start, turf_slope_end, normalize(world_normal).y + (broad - 0.5) * 0.12);
+	}
 	vec3 base = grassy ? mix(side_colour.rgb, top_colour.rgb, turf) : top_colour.rgb;
 	ALBEDO = base * (1.0 + variation);
 	ROUGHNESS = 1.0;

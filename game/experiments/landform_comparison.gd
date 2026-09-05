@@ -29,6 +29,8 @@ func _ready() -> void:
 	variant = "landform-candidate" if use_candidate else "landform-control"
 	if OS.get_cmdline_user_args().has("--faceted-look"):
 		variant = "landform-faceted"
+	if OS.get_cmdline_user_args().has("--crafted-look"):
+		variant = "landform-crafted"
 	output = ProjectSettings.globalize_path("res://../build/codex-aesthetic/" + variant)
 	DirAccess.make_dir_recursive_absolute(output)
 	# Fixed seed-1 anchors taken from the first review. Raise both variants'

@@ -1,0 +1,8 @@
+{
+  "design_purpose": "Experimental roof palette using ordinary block addresses. Half-height pitch, two slope transitions, provisional one-material fixture cost. No normal unlocks changed.",
+  "shapes": [
+    {"id":"codex_roof_slope","display_name":"Study Roof Slope","material_cost":1,"size_m":[1,0.5,1],"element":"block","form":"roof_slope","oriented":true,"requires_traits":["joinery"],"hint":"Roof study: low edge in front, high edge at the back. R turns; reserves one cell."},
+    {"id":"codex_roof_hip","display_name":"Study Roof Hip","material_cost":1,"size_m":[1,0.5,1],"element":"block","form":"roof_hip","oriented":true,"requires_traits":["joinery"],"hint":"Roof study: outside corner, rising to one high corner. R turns; reserves one cell."},
+    {"id":"codex_roof_valley","display_name":"Study Roof Valley","material_cost":1,"size_m":[1,0.5,1],"element":"block","form":"roof_valley","oriented":true,"requires_traits":["joinery"],"hint":"Roof study: inside corner, dipping to one low corner. R turns; reserves one cell."}
+  ]
+}

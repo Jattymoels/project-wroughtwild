@@ -24,19 +24,30 @@
   .octagon img { width: 100%; }
   small { color: #a3b3b5; }
 </style>
-<h1>Wroughtwild: landforms and an octagonal workshop</h1>
-<p>Experiments by <strong>Codex (OpenAI), not Claude</strong> · 5 September 2026. The candidate is opt-in. Trees and boulder props use the same repaired meshes on both sides. Their repair is shown separately below; it did not redesign their shapes or the terrain cliffs.</p>
+<h1>Wroughtwild: a calmer frontier and a buildable workshop</h1>
+<p>Latest pass: softer terrain lighting, branching trees and a modular roof. These are actual Godot captures. The terrain keeps its editable voxel field; the workshop is an isolated, playable study with its own save.</p>
+<p>Experiments by <strong>Codex (OpenAI)</strong> · 5 September 2026. Candidates are opt-in. All views include the earlier outward-face repair. The latest comparison also changes tree silhouettes; the older terrain comparisons retain the same trees on both sides.</p>
 <nav aria-label="Comparison view"></nav>
-<div class="control"><label for="pair">Compare</label><select id="pair"><option value="faceted">Faceted edges — same world</option><option value="contours">Winding contours — regenerated world</option><option value="surfaces">Surface materials — first pass</option></select></div>
+<div class="control"><label for="pair">Compare</label><select id="pair"><option value="crafted">Latest — calmer lighting and branching trees</option><option value="faceted">Faceted edges — same world</option><option value="contours">Winding contours — regenerated world</option><option value="surfaces">Surface materials — first pass</option></select></div>
 <div class="compare">
-  <img id="baseline" src="landform-candidate/overlook.png" alt="Cubic edges at the overlook">
-  <img id="candidate" src="landform-faceted/overlook.png" alt="Faceted edges at the same overlook">
+  <img id="baseline" src="landform-faceted/overlook.png" alt="Previous faceted study at the overlook">
+  <img id="candidate" src="landform-crafted/overlook.png" alt="Latest terrain lighting and trees at the same overlook">
   <div id="divider"></div>
-  <span id="left-label" class="tag left">Cubic edges</span><span id="right-label" class="tag right">Faceted edges</span>
+  <span id="left-label" class="tag left">Previous faceted study</span><span id="right-label" class="tag right">Calmer frontier</span>
 </div>
 <div class="control"><label for="split">Comparison split</label><input id="split" type="range" min="0" max="100" value="50"><output id="amount">50%</output></div>
-<p id="explanation">Same seed, generated world, materials, camera and daylight. Faceted terrain rounds exposed lattice corners and uses the same triangles for rendering and collision. Digging selects the original block from the triangle hit.</p>
-<small><a id="left-manifest" href="landform-candidate/manifest.json">Left capture records</a> · <a id="right-manifest" href="landform-faceted/manifest.json">Right capture records</a>. Geometry counters are not a GPU performance benchmark.</small>
+<p id="explanation">Same world, terrain geometry, camera and daylight. The latest candidate uses shared lighting normals, a gradual turf edge, restrained colour variation and branching trees. This compares a combined art pass, not a change to generation.</p>
+<small><a id="left-manifest" href="landform-faceted/manifest.json">Left capture records</a> · <a id="right-manifest" href="landform-crafted/manifest.json">Right capture records</a>. Records include frame intervals and geometry counters; these short samples are not isolated GPU benchmarks.</small>
+<h2>Branching woodland</h2>
+<p>Meadow crowns spread, forest branches taper to a conifer outline, fen crowns sit low and wide, and the wastes retain bare forks. Existing harvest locations, yields and trunk colliders are unchanged.</p>
+<div class="octagon"><figure><img src="woodland/before.png" alt="Previous tree silhouettes"><figcaption>Previous repaired props</figcaption></figure><figure><img src="woodland/after.png" alt="New branching silhouettes for four biomes"><figcaption>Branch and crown study — same camera, seed and scale</figcaption></figure></div>
+<h2>A modular roof you can edit</h2>
+<p>The raised hipped roof consists of 64 individually removable pieces. Slopes, hips and valleys use the existing block grid and save representation. The lower octagonal ceiling closes the room; roof pieces still reserve whole blocks. Exterior and interior framing, station detail and lights are study dressing.</p>
+<a href="roof-workshop/exterior.png"><img style="width:100%" src="roof-workshop/exterior.png" alt="Workshop with a real modular hipped roof"></a>
+<div class="octagon"><a href="roof-workshop/entrance.png"><img src="roof-workshop/entrance.png" alt="Workshop entrance at eye level"></a><a href="roof-workshop/interior.png"><img src="roof-workshop/interior.png" alt="Roofed workshop interior with forge, mason's yard, bench and storage"></a></div>
+<p>Playable study: WASD/mouse, B to build, Tab for shape, Q for material, R to turn and X to remove. F5/F9 use a separate workshop save. The experiment supplies materials; costs and progression unlocks have not been adopted for the main game.</p>
+<details><summary>Launch from the repository root in PowerShell</summary><pre style="overflow:auto">&amp; C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe --path game res://experiments/roof_workshop.tscn -- --workshop-play</pre></details>
+<small><a href="roof-workshop/observations.json">Workshop check record</a></small>
 <h2>Tree and boulder face repair — separate before/after</h2>
 <p>The earlier “fixed hollow-looking tree and rock faces” claim meant correcting inward-facing triangles. It did not mean new tree silhouettes or a rock-face art pass. Every landscape comparison above already contains that fix on both sides.</p>
 <div class="octagon"><figure><a href="prop-repair/before.png"><img src="prop-repair/before.png" alt="Before repair: reconstructed inward-facing tree and boulder triangles"></a><figcaption>Before: original inward-facing triangle order, reconstructed from the repaired mesh.</figcaption></figure><figure><a href="prop-repair/after.png"><img src="prop-repair/after.png" alt="After repair: the same tree and boulder with outward-facing triangles"></a><figcaption>After: exterior faces. Identical vertices, colours, camera and lighting.</figcaption></figure></div>
@@ -55,6 +66,7 @@
   const views = {spawn: 'Spawn', overlook: 'Overlook', forest: 'Forest', fen: 'Fen', ember_wastes: 'Ember wastes'};
   const baseline = document.querySelector('#baseline'), candidate = document.querySelector('#candidate');
   const pairs = {
+    crafted: {left:'landform-faceted',right:'landform-crafted',a:'Previous faceted study',b:'Calmer frontier',text:'Same world, terrain geometry, camera and daylight. Shared lighting normals, a gradual turf edge, restrained colour variation and branching trees. A combined art pass; generation and editable voxels stay the same.'},
     faceted: {left:'landform-candidate', right:'landform-faceted', a:'Cubic edges', b:'Faceted edges', text:'Same seed, generated world, materials, camera and daylight. Faceted terrain rounds exposed lattice corners and uses the same triangles for rendering and collision. Digging selects the original block from the triangle hit.'},
     contours: {left:'landform-control', right:'landform-candidate', a:'Current contours', b:'Winding contours', text:'Identical seed and cameras, with stronger relief and a bent height-noise domain on the right. Biome boundaries, resources and threats regenerate too. Camera anchors retain their original biome names; a regenerated anchor may belong to another biome. These fresh-world fixtures never load a player save.'},
     surfaces: {left:'baseline', right:'frontier', a:'Pixel surfaces', b:'Continuous surfaces', text:'The first pass: identical world geometry, camera and daylight. Continuous materials and tapered cover replace repeated pixel tiles and cards. Both views include the repaired outward-facing tree and rock surfaces.'}
@@ -69,6 +81,7 @@
     document.querySelector('#left-manifest').href = `${p.left}/manifest.json`; document.querySelector('#right-manifest').href = `${p.right}/manifest.json`;
   }
   document.querySelector('#pair').onchange = update;
+  update();
   for (const [id, label] of Object.entries(views)) {
     const button = document.createElement('button');
     button.textContent = label;

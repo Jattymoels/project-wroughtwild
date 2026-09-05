@@ -6,7 +6,11 @@ param(
     [switch]$Landforms,
     [switch]$Workshop,
     [switch]$Terrain,
-    [switch]$Props
+    [switch]$Props,
+    [switch]$Crafted,
+    [switch]$Roofs,
+    [switch]$Woodland,
+    [switch]$Traversal
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -50,7 +54,21 @@ if ($Checks) {
     }
     Invoke-GodotReview 'smoke' '--headless --quit-after 120'
     Invoke-GodotReview 'faceted-terrain' '--headless res://tests/faceted_terrain.tscn'
+    Invoke-GodotReview 'crafted-traversal' '--headless res://tests/crafted_traversal.tscn'
+    Invoke-GodotReview 'roof-workshop-headless' '--headless res://experiments/roof_workshop.tscn'
+    Invoke-GodotReview 'woodland-headless' '--headless res://experiments/woodland_comparison.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Crafted) {
+    Invoke-GodotReview 'landform-faceted' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --landform-look --frontier-look --faceted-look'
+    Invoke-GodotReview 'landform-crafted' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --landform-look --crafted-look'
+} elseif ($Roofs) {
+    Invoke-GodotReview 'roof-workshop-headless' '--headless res://experiments/roof_workshop.tscn'
+    Invoke-GodotReview 'roof-workshop-windowed' '--position -9999,-9999 res://experiments/roof_workshop.tscn'
+    Invoke-GodotReview 'roof-workshop-playable' '--position -9999,-9999 res://experiments/roof_workshop.tscn -- --workshop-play --workshop-smoke'
+} elseif ($Woodland) {
+    Invoke-GodotReview 'woodland' '--position -9999,-9999 res://experiments/woodland_comparison.tscn'
+} elseif ($Traversal) {
+    Invoke-GodotReview 'crafted-traversal' '--headless res://tests/crafted_traversal.tscn'
 } elseif ($Props) {
     Invoke-GodotReview 'prop-repair' '--position -9999,-9999 res://experiments/prop_repair_comparison.tscn'
 } elseif ($Terrain) {

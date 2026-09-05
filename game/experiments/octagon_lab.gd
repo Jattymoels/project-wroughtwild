@@ -40,6 +40,8 @@ func _ready() -> void:
 		get_tree().quit(1)
 		return
 	player = preload("res://scenes/player.tscn").instantiate()
+	if OS.get_cmdline_user_args().has("--workshop-play"):
+		player.set_script(preload("res://experiments/workshop_player.gd"))
 	add_child(player)
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 	player.global_position = Vector3(5, 1.1, 5)
