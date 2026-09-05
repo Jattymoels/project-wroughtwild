@@ -1607,6 +1607,90 @@
         }
       ],
       "design_purpose": "Faster casting is a different dance (drill through the train head-on rather than circle it); kept off movement so the dash stays a fixed rhythm."
+    },
+    {
+      "id": "impact_stagger",
+      "display_name": "Impact Stagger",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "attack"
+      ],
+      "effect": "add_stagger",
+      "display": "flat",
+      "sentence": "the hit staggers for {n} more seconds",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.15,
+          "maximum": 0.15
+        }
+      ],
+      "design_purpose": "5 Sep expansion: an authored Foundry/mastery reading; does not enter the random gear pool. the hit staggers for {n} more seconds"
+    },
+    {
+      "id": "impact_push",
+      "display_name": "Impact Push",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "attack"
+      ],
+      "effect": "add_push",
+      "display": "flat",
+      "sentence": "the hit pushes {n} metres further",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.5,
+          "maximum": 0.5
+        }
+      ],
+      "design_purpose": "5 Sep expansion: an authored Foundry/mastery reading; does not enter the random gear pool. the hit pushes {n} metres further"
+    },
+    {
+      "id": "striking_recovery",
+      "display_name": "Striking Recovery",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "attack"
+      ],
+      "effect": "increased_cooldown_recovery",
+      "display": "percent",
+      "sentence": "attacks recover {n} faster",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.08,
+          "maximum": 0.08
+        }
+      ],
+      "design_purpose": "5 Sep expansion: an authored Foundry/mastery reading; does not enter the random gear pool. attacks recover {n} faster"
+    },
+    {
+      "id": "casting_recovery",
+      "display_name": "Casting Recovery",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [
+        "spell"
+      ],
+      "effect": "increased_cooldown_recovery",
+      "display": "percent",
+      "sentence": "spells recover {n} faster",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 0.08,
+          "maximum": 0.08
+        }
+      ],
+      "design_purpose": "5 Sep expansion: an authored Foundry/mastery reading; does not enter the random gear pool. spells recover {n} faster"
     }
   ],
   "item_bases": [

@@ -24,6 +24,12 @@ extends Resource
 
 func profile(def: Dictionary, spatial: Dictionary = {}) -> String:
 	var tags: PackedStringArray = def.get("tags", PackedStringArray())
+	if "driving" in tags: return "drive"
+	if "reaping" in tags: return "reap"
+	if "fan" in tags: return "fan"
+	if "precision" in tags: return "bodkin"
+	if "impact" in tags: return "coal"
+	if "delayed" in tags: return "mark"
 	match String(def.get("delivery", "")):
 		"strike": return "rend" if "bleed" in tags else "strike"
 		"cone": return "nova" if float(spatial.get("cone_degrees", 0)) >= 359.0 else "sweep"
@@ -36,8 +42,8 @@ func colour(def: Dictionary) -> Color:
 
 func seconds(profile_name: String) -> float:
 	match profile_name:
-		"strike", "rend": return strike_seconds
-		"sweep": return sweep_seconds
+		"strike", "rend", "drive": return strike_seconds
+		"sweep", "reap": return sweep_seconds
 		"nova": return nova_seconds
-		"arrow": return bow_seconds
+		"arrow", "fan", "bodkin": return bow_seconds
 	return spell_seconds

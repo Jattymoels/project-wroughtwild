@@ -37,6 +37,7 @@
     {
       "id": "prototype_bow_shot",
       "display_name": "Bow Shot",
+      "description": "A quick, straight arrow with light bleed. Pick off a pursuer while keeping your distance.",
       "delivery": "projectile",
       "tags": [
         "attack",
@@ -70,6 +71,7 @@
     {
       "id": "prototype_cinder_sweep",
       "display_name": "Cinder Sweep",
+      "description": "Sweep fire across the nearby front. Catch a gathered pack and build ignite.",
       "delivery": "cone",
       "tags": [
         "attack",
@@ -106,6 +108,7 @@
     {
       "id": "prototype_area_strike",
       "display_name": "Area Strike",
+      "description": "Strike a close group in front and push it back. Make room when the train closes in.",
       "delivery": "cone",
       "tags": [
         "attack",
@@ -139,6 +142,7 @@
     {
       "id": "prototype_heavy_strike",
       "display_name": "Heavy Strike",
+      "description": "A committed close blow that staggers and shoves one enemy. Swing armour helps you hold your ground.",
       "delivery": "strike",
       "tags": [
         "attack",
@@ -171,6 +175,7 @@
     {
       "id": "prototype_frost_orb",
       "display_name": "Frost Orb",
+      "description": "A slow orb builds chill and forks toward fresh targets. Freeze a gathered train before an attack cashes it in.",
       "delivery": "projectile",
       "tags": [
         "spell",
@@ -204,6 +209,7 @@
     {
       "id": "prototype_dash",
       "display_name": "Dash",
+      "description": "Burst in your movement direction to leave an attack's path. Save it for a committed shot or an encircling pack.",
       "delivery": "dash",
       "tags": [
         "movement"
@@ -224,6 +230,7 @@
     {
       "id": "prototype_ember_bolt",
       "display_name": "Ember Bolt",
+      "description": "A fast, narrow fire projectile that builds ignite. Lead a target and let the burn keep working.",
       "delivery": "projectile",
       "tags": [
         "spell",
@@ -257,6 +264,7 @@
     {
       "id": "prototype_rend",
       "display_name": "Rend",
+      "description": "A close physical attack that builds bleed. Cut a pursuer, then move while it suffers.",
       "delivery": "strike",
       "tags": [
         "attack",
@@ -292,6 +300,7 @@
     {
       "id": "prototype_frost_nova",
       "display_name": "Frost Nova",
+      "description": "Chill a full ring around you. Catch enemies behind as well as in front and prepare a freeze.",
       "delivery": "cone",
       "tags": [
         "spell",
@@ -324,6 +333,7 @@
     {
       "id": "prototype_shatter",
       "display_name": "Shatter",
+      "description": "Cash in frozen enemies around you with a shattering ring. Bosses take the limited boss response.",
       "delivery": "cone",
       "tags": [
         "spell",
@@ -351,6 +361,216 @@
           "text": "the novas bite harder"
         }
       ]
+    },
+    {
+      "id": "prototype_fan_shot",
+      "display_name": "Fan Shot",
+      "delivery": "projectile",
+      "tags": [
+        "attack",
+        "physical",
+        "projectile",
+        "fan"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "description": "Three arrows spread across a front. Each enemy can be hit once per fan; spread the pack instead of crowding one target.",
+      "base_damage": 10,
+      "projectiles": 3,
+      "cooldown_seconds": 1.6,
+      "fork_damage_fraction": 0.7,
+      "mastery": [
+        {
+          "uses": 40,
+          "modifier": "reach",
+          "value": 0.1,
+          "text": "the fan reaches 10% further"
+        },
+        {
+          "uses": 140,
+          "modifier": "pierce",
+          "value": 1,
+          "text": "each arrow pierces one enemy"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: Three arrows spread across a front. Each enemy can be hit once per fan; spread the pack instead of crowding one target. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+    },
+    {
+      "id": "prototype_bodkin_shot",
+      "display_name": "Bodkin Shot",
+      "delivery": "projectile",
+      "tags": [
+        "attack",
+        "physical",
+        "projectile",
+        "precision"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "description": "A narrow arrow pierces two enemies. Line up pursuers to reach the archer behind them; recover more slowly than Bow Shot.",
+      "base_damage": 18,
+      "pierce": 2,
+      "cooldown_seconds": 1.8,
+      "fork_damage_fraction": 0.7,
+      "mastery": [
+        {
+          "uses": 40,
+          "modifier": "reach",
+          "value": 0.1,
+          "text": "the shot reaches 10% further"
+        },
+        {
+          "uses": 140,
+          "modifier": "laceration",
+          "value": 20,
+          "text": "the passing arrow also builds bleed"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: A narrow arrow pierces two enemies. Line up pursuers to reach the archer behind them; recover more slowly than Bow Shot. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+    },
+    {
+      "id": "prototype_driving_blow",
+      "display_name": "Driving Blow",
+      "delivery": "strike",
+      "tags": [
+        "attack",
+        "physical",
+        "single_target",
+        "driving"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "description": "Drive a long, narrow blow through the enemies ahead. Strong stagger and shove open a way forward, with a longer recovery.",
+      "base_damage": 22,
+      "arc": 0.45,
+      "cooldown_seconds": 1.8,
+      "stagger_seconds": 0.5,
+      "push_m": 1.4,
+      "swing_armour": 12,
+      "swing_seconds": 0.5,
+      "mastery": [
+        {
+          "uses": 40,
+          "modifier": "reach",
+          "value": 0.1,
+          "text": "the blow reaches 10% further"
+        },
+        {
+          "uses": 140,
+          "modifier": "impact_stagger",
+          "value": 0.15,
+          "text": "the blow staggers for 0.15 seconds longer"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: Drive a long, narrow blow through the enemies ahead. Strong stagger and shove open a way forward, with a longer recovery. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+    },
+    {
+      "id": "prototype_reaping_sweep",
+      "display_name": "Reaping Sweep",
+      "delivery": "cone",
+      "tags": [
+        "attack",
+        "physical",
+        "area",
+        "bleed",
+        "reaping"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "description": "Cut a broad close front and build bleed. Wound several pursuers, then move while their wounds do the work.",
+      "base_damage": 9,
+      "bleed_buildup": 55,
+      "base_area_radius": 2.7,
+      "cooldown_seconds": 2.2,
+      "stagger_seconds": 0.12,
+      "push_m": 0.4,
+      "swing_armour": 8,
+      "swing_seconds": 0.4,
+      "mastery": [
+        {
+          "uses": 40,
+          "modifier": "serration",
+          "value": 0.2,
+          "text": "the sweep builds bleed 20% faster"
+        },
+        {
+          "uses": 140,
+          "modifier": "refund_on_kill",
+          "value": 0.1,
+          "text": "a kill refunds 10% of its cooldown"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: Cut a broad close front and build bleed. Wound several pursuers, then move while their wounds do the work. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+    },
+    {
+      "id": "prototype_cinderburst",
+      "display_name": "Cinderburst",
+      "delivery": "projectile",
+      "tags": [
+        "spell",
+        "fire",
+        "ignite",
+        "projectile",
+        "area",
+        "impact"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "description": "A slow coal bursts at first contact or its range limit. Catch a tight pack in one blast; cover blocks it. Reach widens the blast and extends flight.",
+      "base_damage": 16,
+      "ignite_buildup": 50,
+      "base_area_radius": 2.3,
+      "cooldown_seconds": 2.5,
+      "fork_damage_fraction": 0.7,
+      "mastery": [
+        {
+          "uses": 40,
+          "modifier": "reach",
+          "value": 0.1,
+          "text": "the coal and blast reach 10% further"
+        },
+        {
+          "uses": 140,
+          "modifier": "kindling",
+          "value": 0.25,
+          "text": "the burst builds ignite 25% faster"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: A slow coal bursts at first contact or its range limit. Catch a tight pack in one blast; cover blocks it. Reach widens the blast and extends flight. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
+    },
+    {
+      "id": "prototype_ashfall",
+      "display_name": "Ashfall",
+      "delivery": "ground",
+      "tags": [
+        "spell",
+        "fire",
+        "ignite",
+        "area",
+        "delayed"
+      ],
+      "starting": false,
+      "drop_weight": 0.8,
+      "description": "Mark a visible surface and detonate there after 0.85 seconds. The mark stays where you cast it: lead the train into the blast. Aim at ground or a wall.",
+      "base_damage": 26,
+      "ignite_buildup": 70,
+      "base_area_radius": 2.8,
+      "cooldown_seconds": 3.4,
+      "mastery": [
+        {
+          "uses": 40,
+          "modifier": "reach",
+          "value": 0.1,
+          "text": "the marked blast reaches 10% further"
+        },
+        {
+          "uses": 140,
+          "modifier": "refund_on_kill",
+          "value": 0.1,
+          "text": "a kill refunds 10% of its cooldown"
+        }
+      ],
+      "design_purpose": "5 Sep skill expansion: Mark a visible surface and detonate there after 0.85 seconds. The mark stays where you cast it: lead the train into the blast. Aim at ground or a wall. Payload and cooldown control per-target power and recovery; projectiles/pierce/arc are base grammar values. Mastery follows existing use milestones; drop_weight is relative among unknown pages, with starting kits unchanged."
     }
   ],
   "design_purpose_mastery": "Skill mastery (D-019): each combat skill has use-milestones, and each milestone unlocks one perk - a modifier from items.json at a flat value that applies to this skill alone (the grammar tags every skill with skill:<id> for that). Uses count in the sim (a cast that fired), ride in the save, and the HUD announces a perk when it arrives. Perks are the third door of every big mechanic: an item tier, a Foundry line, a mastery perk each give the small version; together the full one. Numbers stay inside the threefold budget."

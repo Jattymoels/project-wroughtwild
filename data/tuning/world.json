@@ -129,7 +129,8 @@
         {
           "skill_page": true,
           "chance": 0.04
-        }
+        },
+        {"item": "piercing_catalyst", "min": 1, "max": 1, "chance": 0.08}
       ],
       "currency_kind": "ember_catalyst"
     },
@@ -163,7 +164,8 @@
         {
           "skill_page": true,
           "chance": 0.03
-        }
+        },
+        {"item": "striking_quicksilver", "min": 1, "max": 1, "chance": 0.07}
       ],
       "currency_kind": "quicksilver"
     },
@@ -208,7 +210,8 @@
           "min": 1,
           "max": 1,
           "chance": 0.05
-        }
+        },
+        {"item": "impact_catalyst", "min": 1, "max": 1, "chance": 0.06}
       ],
       "design_purpose": "Slow hill guardian that makes stone and iron country feel owned; killing it IS mining, so combat feeds construction directly",
       "currency_kind": "vanguard"
@@ -329,7 +332,8 @@
         {
           "skill_page": true,
           "chance": 0.03
-        }
+        },
+        {"item": "sipping_marrow", "min": 1, "max": 1, "chance": 0.07}
       ],
       "currency_kind": "marrow"
     },
@@ -398,7 +402,8 @@
         {
           "skill_page": true,
           "chance": 0.03
-        }
+        },
+        {"item": "casting_quicksilver", "min": 1, "max": 1, "chance": 0.07}
       ],
       "damage_taken": {
         "fire": 0.25

@@ -37,7 +37,12 @@ damage happens, spreads and covers an area**. A colour swap or another damage
 multiplier would not satisfy this. Their PoE comparison is a vocabulary reference,
 not a request to copy its catalogue or expand to its content scale.
 
-**Separate intensive design task, deferred by the owner:** review the existing
+**Originally deferred; now authorised and implemented in a bounded pass:** see
+[skill expansion and progression](skill-expansion-2026-09-05.md). The owner asked
+to proceed after playtesting the incoming-hit and cast presentation. Six new
+pages and five Kind variants now support more bow, melee and spell builds;
+the pack's Build guide exposes mastery and progression. The following was the
+original brief; persistent moving hazards remain future work. Review the existing
 deliveries and select a small complementary set with distinct targeting, timing,
 space control and Foundry interactions. Candidate contrasts for discussion include
 an impact projectile, a moving persistent hazard, and a delayed expanding blast.

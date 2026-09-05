@@ -40,6 +40,7 @@ var _selected_subject: StringName = &""
 ## known, and the rail selected for setting.
 var _rails: VBoxContainer
 var _rails_section: Label
+var _list_scroll: ScrollContainer
 var _selected_pattern: StringName = &""
 ## The frame as the last refresh saw it (D-023).
 var _sockets := {}
@@ -58,7 +59,7 @@ func _ready() -> void:
 	layer = 10
 	_root = PanelContainer.new()
 	_root.theme = UiTheme.theme()
-	_root.set_anchors_preset(Control.PRESET_CENTER)
+	_root.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	_root.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_root.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_root.custom_minimum_size = Vector2(900, 0)
@@ -77,6 +78,7 @@ func _ready() -> void:
 	column.add_child(header)
 	_title = Label.new()
 	_title.text = "The Foundry"
+	_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_title.add_theme_font_size_override("font_size", 22)
 	_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(_title)
@@ -98,19 +100,24 @@ func _ready() -> void:
 	_grid.add_theme_constant_override("v_separation", 6)
 	left.add_child(_grid)
 	var how := Label.new()
-	how.text = "A socket takes a skill's tablet; the four cells beside it are its supports, the diagonals its corners.\nEvery ingot reads every skill: an element ingot scales a skill of its own element and adds its element to any other's hit;\nVigour, Plate and Ward read a skill weakly. Beside: a pair makes its mechanic. A matching ingot touching a support backs it.\nLift an ingot to re-forge; it costs a little metal. Tablets lift free.\nOutside the grid every row and column has a rail: a pattern set there reads the whole line and bends a rule while the line meets it."
+	how.text = "Lay skills in sockets. Ingots beside them are supports; matching ingots behind them add backing.\nKinds go in corners and flow through supports toward a skill. Hover a piece to read its effects.\nRails shape a row or column while their pattern holds.\nLift an ingot or Kind for a little metal; tablets lift free.\nI → Build guide explains discoveries, Kinds and progression."
 	how.modulate = UiTheme.MUTED
 	how.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	how.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 4 * 6, 0)
 	left.add_child(how)
 
+	_list_scroll = ScrollContainer.new()
+	_list_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_list_scroll.custom_minimum_size = Vector2(440,440)
+	_list_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	body.add_child(_list_scroll)
 	var right := VBoxContainer.new()
 	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	# The lists wrap and clip inside a fixed column, so a plate full of forms
 	# never pushes the panel past the window.
-	right.custom_minimum_size = Vector2(760, 0)
+	right.custom_minimum_size = Vector2(420, 0)
 	right.add_theme_constant_override("separation", 6)
-	body.add_child(right)
+	_list_scroll.add_child(right)
 	right.add_child(_section("Ingots in hand"))
 	_tray = VBoxContainer.new()
 	right.add_child(_tray)
@@ -130,6 +137,7 @@ func _ready() -> void:
 
 	_message = Label.new()
 	_message.modulate = UiTheme.MUTED
+	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(_message)
 
 
@@ -165,6 +173,7 @@ func refresh() -> void:
 	if sim == null or not is_open():
 		return
 	var view: Dictionary = sim.foundry()
+	_fit.call_deferred()
 	var rows: int = view["rows"]
 	var cols: int = view["cols"]
 	_first_row = int(view.get("first_row", 0))
@@ -252,6 +261,7 @@ func refresh() -> void:
 		for c in cols:
 			var cell := Button.new()
 			cell.custom_minimum_size = CELL_SIZE
+			cell.clip_text = true
 			var key := Vector2i(r, c)
 			frame_cell_count += 1
 			if r < _first_row or r > _last_row:
@@ -355,6 +365,7 @@ func refresh() -> void:
 	if not any:
 		var none := Label.new()
 		none.text = "None in hand. Milestones forge them: the first bench, first kills, the first smelt, the first dressed block, the Tyrant."
+		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.modulate = UiTheme.MUTED
 		_tray.add_child(none)
 
@@ -375,6 +386,7 @@ func refresh() -> void:
 	if not laid_any:
 		var none := Label.new()
 		none.text = "Every skill you know is on the plate." if not view.get("tablets", []).is_empty() or not view["plate"].is_empty() else "Learn a skill and lay its tablet here."
+		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.modulate = UiTheme.MUTED
 		_tablets.add_child(none)
 
@@ -391,6 +403,9 @@ func refresh() -> void:
 		button.clip_text = true
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.tooltip_text = "In a corner, or a far cell beyond one: its base flows to the skill while a chain of pieces leads inward, and it works every support it touches into a form."
+		for info in sim.currency_kinds():
+			if info.id==k.id and String(info.get("description",""))!="":
+				button.tooltip_text += "\n"+String(info.description)
 		if _selected_subject == StringName(String(k["id"])):
 			button.modulate = UiTheme.GRASS_LIGHT
 		button.pressed.connect(_on_subject.bind(String(k["id"])))
@@ -398,6 +413,7 @@ func refresh() -> void:
 	if not any_kind:
 		var none := Label.new()
 		none.text = "No kind in the purse to set. Families pay them: whelps and wisps Catalysts, husks and knights Vanguards; the reinforced mine pays three."
+		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.modulate = UiTheme.MUTED
 		_subjects.add_child(none)
 
@@ -476,6 +492,16 @@ func refresh() -> void:
 		none.text = "The plate is bare."
 		none.modulate = UiTheme.MUTED
 		_effects.add_child(none)
+
+
+func _fit() -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if not is_inside_tree(): return
+	var viewport := get_viewport().get_visible_rect().size
+	_list_scroll.custom_minimum_size.y = minf(520,viewport.y*0.61)
+	_root.reset_size()
+	_root.position = (viewport-_root.size)*0.5
 
 
 ## A rail slot (D-023 slice 9): its pattern's name when set, lit while the

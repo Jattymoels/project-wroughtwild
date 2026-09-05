@@ -69,13 +69,19 @@ static func weapon(base: String) -> ArrayMesh:
 static func projectile(profile: String, colour: Color) -> Node3D:
 	var root := Node3D.new()
 	var st := ArtGeometry.begin()
-	if profile == "arrow":
+	if profile in ["arrow","fan","bodkin"]:
 		ArtGeometry.branch(st,Vector3(0,0,0.35),Vector3(0,0,-0.3),0.009,Color("887052"),1.0)
 		for i in 3:
 			var a := TAU*float(i)/3
 			var side := Vector3(cos(a),sin(a),0)*0.045
 			ArtGeometry.triangle(st,Vector3(0,0,0.31),Vector3(0,0,0.13)+side,Vector3(0,0,0.12),Color("aa9e85"))
 			ArtGeometry.triangle(st,Vector3(0,0,-0.44),side*0.7+Vector3(0,0,-0.27),-side*0.7+Vector3(0,0,-0.27),Color("9aaba9"))
+	elif profile == "coal":
+		ArtGeometry.oval(st,Vector3.ZERO,Vector3.ONE*0.28,Color("4b3930"))
+		for i in 7:
+			var a := TAU*float(i)/7
+			var at := Vector3(cos(a)*0.13,sin(a)*0.13,0)
+			ArtGeometry.branch(st,at+Vector3(0,0,0.12),at-Vector3(0,0,0.12),0.015,colour,0.7)
 	elif profile == "frost":
 		ArtGeometry.oval(st,Vector3.ZERO,Vector3.ONE*0.22,colour)
 		for i in 6:
@@ -92,7 +98,7 @@ static func projectile(profile: String, colour: Color) -> Node3D:
 	visual.mesh = st.commit()
 	var material := ArtGeometry.material()
 	material.cull_mode = BaseMaterial3D.CULL_DISABLED
-	if profile != "arrow":
+	if not profile in ["arrow","fan","bodkin","coal"]:
 		material.emission_enabled = true
 		material.emission = colour
 		material.emission_energy_multiplier = 0.6

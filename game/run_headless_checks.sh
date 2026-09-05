@@ -53,6 +53,7 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --path . res://tests/ranged_fairness.tscn
 "$GODOT" --headless --path . res://tests/loot_persistence.tscn
 "$GODOT" --headless --path . res://tests/combat_presentation.tscn
+"$GODOT" --headless --path . res://tests/skill_expansion.tscn
 
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120

@@ -22,7 +22,8 @@ param(
     [switch]$Gathering,
     [switch]$BuildPicker,
     [switch]$Combat,
-    [switch]$CombatFeel
+    [switch]$CombatFeel,
+    [switch]$Skills
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -81,7 +82,12 @@ if ($Checks) {
     Invoke-GodotReview 'ranged-fairness' '--headless res://tests/ranged_fairness.tscn'
     Invoke-GodotReview 'loot-persistence' '--headless res://tests/loot_persistence.tscn'
     Invoke-GodotReview 'combat-presentation' '--headless res://tests/combat_presentation.tscn'
+    Invoke-GodotReview 'skill-expansion' '--headless res://tests/skill_expansion.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Skills) {
+    Invoke-GodotReview 'skill-expansion-import' '--headless --import'
+    Invoke-GodotReview 'skill-expansion' '--headless res://tests/skill_expansion.tscn'
+    Invoke-GodotReview 'skill-expansion-review' '--position -9999,-9999 res://experiments/skill_expansion_review.tscn'
 } elseif ($CombatFeel) {
     Invoke-GodotReview 'combat-feel-import' '--headless --import'
     Invoke-GodotReview 'combat-presentation' '--headless res://tests/combat_presentation.tscn'

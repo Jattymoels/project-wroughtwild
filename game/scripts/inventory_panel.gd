@@ -30,6 +30,9 @@ var _mods: VBoxContainer
 var _debug: VBoxContainer
 var _message: Label
 var comparison: EquipmentCompare
+var guide: BuildGuide
+var _pack_body: Control
+var _guide_button: Button
 var _compare_index := -1
 var _compare_base := ""
 var _compare_candidate := {}
@@ -65,6 +68,10 @@ func _ready() -> void:
 	title.add_theme_font_size_override("font_size", 22)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
+	_guide_button = Button.new()
+	_guide_button.text = "Build guide"
+	_guide_button.pressed.connect(show_guide.bind(true))
+	header.add_child(_guide_button)
 	var close := Button.new()
 	close.text = "Close  (I / Esc)"
 	close.pressed.connect(close_panel)
@@ -77,7 +84,18 @@ func _ready() -> void:
 	var body := HBoxContainer.new()
 	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	body.add_theme_constant_override("separation", 20)
-	_scroll.add_child(body)
+	var pages := VBoxContainer.new()
+	pages.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_scroll.add_child(pages)
+	pages.add_child(body)
+	_pack_body = body
+	guide = BuildGuide.new()
+	guide.sim = sim
+	guide.visible = false
+	guide.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	guide.assign_requested.connect(assign_skill)
+	guide.changed.connect(_fit_height.call_deferred)
+	pages.add_child(guide)
 
 	var left := VBoxContainer.new()
 	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -248,6 +266,8 @@ func assign_skill(skill_id: String, slot: int) -> bool:
 func refresh() -> void:
 	if sim == null:
 		return
+	guide.sim = sim
+	if guide.visible: guide.refresh()
 	_refresh_tiles()
 	_refresh_gear()
 	_refresh_skills()
@@ -257,6 +277,20 @@ func refresh() -> void:
 		int(ds.get("max_life", 0.0)), int(ds.get("armour", 0.0)),
 		int(ds.get("fire_resistance_percent", 0.0)), int(ds.get("area_bonus", 0.0) * 100.0)]
 	_refresh_mods()
+	_fit_height.call_deferred()
+
+
+func show_guide(open: bool) -> void:
+	_pack_body.visible = not open
+	guide.visible = open
+	_guide_button.text = "Back to pack" if open else "Build guide"
+	for connection in _guide_button.pressed.get_connections():
+		_guide_button.pressed.disconnect(connection.callable)
+	_guide_button.pressed.connect(show_guide.bind(not open))
+	_scroll.scroll_vertical = 0
+	if open:
+		guide.sim = sim
+		guide.refresh()
 	_fit_height.call_deferred()
 
 

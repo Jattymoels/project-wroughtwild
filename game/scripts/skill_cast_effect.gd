@@ -9,7 +9,7 @@ static func spawn(combat: PlayerCombat, skill: StringName) -> SkillCastEffect:
 	var def: Dictionary = combat.skills.get(skill,{})
 	var spatial: Dictionary = combat.sim.realtime().get("skills",{}).get(String(skill),{})
 	var profile: String = LOOK.profile(def,spatial)
-	if not profile in ["strike","rend","sweep","nova"]:
+	if not profile in ["strike","rend","sweep","nova","drive","reap"]:
 		return null
 	var root := combat.player.world_root()
 	var active := root.get_tree().get_nodes_in_group("skill_cast_effects")
@@ -21,7 +21,7 @@ static func spawn(combat: PlayerCombat, skill: StringName) -> SkillCastEffect:
 	effect.remaining = LOOK.effect_seconds
 	var st := ArtGeometry.begin()
 	var colour: Color = LOOK.colour(def)
-	if profile in ["sweep","nova"]:
+	if profile in ["sweep","nova","reap"]:
 		var radius: float = float(def.get("base_area_radius",1.0)) * (1.0+float(combat.sim.derived_stats()["area_bonus"])) * combat.sim.skill_reach(String(skill))
 		if combat.alive_enemies().size() == 1:
 			radius *= float(combat.sim.combat_mods()["isolated_area_multiplier"])
@@ -34,7 +34,7 @@ static func spawn(combat: PlayerCombat, skill: StringName) -> SkillCastEffect:
 			ArtGeometry.triangle(st,p*radius,q*radius,p*(radius-0.065),colour)
 			ArtGeometry.triangle(st,q*radius,q*(radius-0.065),p*(radius-0.065),colour)
 	else:
-		var reach := combat.melee_reach * combat.sim.skill_reach(String(skill))
+		var reach := combat.strike_reach(skill)
 		var across := Vector3(0.24,0.16,0) if profile == "rend" else Vector3(0.02,0.3,0)
 		ArtGeometry.triangle(st,Vector3(0,0,-0.65)-across,Vector3(0,0,-reach),Vector3(0,0,-0.65)+across,colour)
 	effect.mesh = st.commit()

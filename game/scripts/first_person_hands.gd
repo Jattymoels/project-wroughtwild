@@ -114,30 +114,42 @@ func sample(delta: float) -> void:
 		if active_delivery=="gather" and i==1:
 			hand.position += Vector3(-0.055, 0.045, -GATHER.hand_reach)*strength
 			hand.rotation.x -= strength*0.5
+		elif active_profile=="drive":
+			hand.position += Vector3(-side*0.4,0.05,-1.35)*FEEL.swing_metres*strength
+			hand.rotation.x -= strength*0.5
 		elif active_profile=="strike" and i==1:
 			hand.position += Vector3(-0.25,-0.35,-1.0)*FEEL.swing_metres*strength
 			hand.rotation.x -= strength*1.1
 		elif active_profile=="rend" and i==1:
 			hand.position += Vector3(-1.0,0.25,-0.6)*FEEL.swing_metres*strength
 			hand.rotation.z += strength*1.15
-		elif active_profile=="sweep":
+		elif active_profile in ["sweep","reap"]:
 			hand.position += Vector3(-1.0,0.2,-0.5)*FEEL.swing_metres*strength
 			hand.rotation.z += strength*0.8
+			if active_profile=="reap": hand.position.y -= strength*0.10
 		elif active_profile=="nova":
 			hand.position += Vector3(side*0.65,0.4,-0.65)*FEEL.swing_metres*strength
 			hand.rotation.z += side*strength*0.8
-		elif active_profile=="arrow":
+		elif active_profile in ["arrow","fan","bodkin"]:
 			hand.position += Vector3(-0.03,0.05,-0.12)*strength if i==0 else Vector3(0.09,0.08,0.12)*strength
 			hand.rotation.y += side*strength*0.4
+			if active_profile=="fan": hand.rotation.z += side*strength*0.35
+			if active_profile=="bodkin" and i==1: hand.position.z += strength*0.08
 		elif active_profile=="frost":
 			hand.position += Vector3(-side*0.10,0.10,-0.10)*strength
 			hand.rotation.z += side*strength*0.6
 		elif active_profile=="ember" and i==1:
 			hand.position += Vector3(-0.04,0.05,-FEEL.swing_metres)*strength
 			hand.rotation.y -= strength*0.65
+		elif active_profile=="coal":
+			hand.position += Vector3(-side*0.13,0.08,-0.15)*strength
+			hand.rotation.z += side*strength*0.55
+		elif active_profile=="mark":
+			hand.position += Vector3(side*0.03,-0.05,-0.10)*strength
+			hand.rotation.x += strength*0.7
 		elif active_delivery=="dash":
 			hand.position += Vector3(side*0.025,-0.08,0.05)*strength
-	glow.visible = elemental and active_delivery in ["projectile","cone"] and remaining>duration*0.55
+	glow.visible = elemental and active_delivery in ["projectile","cone","ground"] and remaining>duration*0.55
 	glow.position = hands[1].position+Vector3(-0.005,0,-0.29)
 	var grip_hand := hands[0] if CombatVisuals.BASE_ROLES.get(weapon_base,"")=="bow" else hands[1]
 	weapon.transform = grip_hand.transform * Transform3D(Basis.IDENTITY.scaled(Vector3.ONE*FEEL.weapon_scale),Vector3(0,0,-0.2))

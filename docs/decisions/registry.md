@@ -393,6 +393,21 @@ a less cartoon-like art direction. The local merge and subsequent
 recorded under the revised D-013 above. This supersedes the earlier opt-in-only
 status for the sandpit presentation; the roof catalogue remains a separate lab.
 
+### Owner-directed skill expansion — 5 September 2026
+
+After playtesting the combat presentation, the owner requested skill expansion,
+progression and catalysts/Kinds serving bow and melee beyond Ember/Frost. The
+[implementation work item](../prototype/skill-expansion-2026-09-05.md) supersedes
+the earlier deferral of skill variety: six discoverable skills, five variants
+within the existing four Kind families, and an in-pack progression guide under
+D-016/D-019/D-023. Existing pages, mastery, class kits, alloys and era gates are
+the progression structure; names and numbers are provisional playtest tuning.
+
+The reload audit also exposed generic starting skills being added to Rangers,
+contrary to class-kit behaviour. The owner explicitly approved fixing future
+reloads while keeping all already owned skills. Saved discoveries remain and
+only the chosen class's kit is ensured on reload. No save-schema change.
+
 ### Procedure
 
 Add an entry when a choice materially affects player experience, save data, system boundaries, architecture or prototype scope. Create a separate ADR when the rationale, alternatives or consequences require more than one table row.

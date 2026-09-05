@@ -130,6 +130,10 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		return false
 
 	var root: Node = player.world_root()
+	# In-flight casts belong to the previous live state, never to a loaded save.
+	for group in ["skill_bursts","player_projectiles"]:
+		for effect in root.get_tree().get_nodes_in_group(group):
+			effect.cancel()
 	# A save from a different generated world rebuilds that world first, so
 	# the node names below resolve against the right terrain.
 	if data.has("world_seed") and root.has_method("apply_world_seed"):

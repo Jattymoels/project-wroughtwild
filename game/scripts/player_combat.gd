@@ -409,6 +409,8 @@ func _cast(skill_id: StringName, def: Dictionary) -> bool:
 		return _use_strike(skill_id)
 	if delivery == "projectile":
 		return _use_projectile(skill_id)
+	if delivery == "ground":
+		return _use_ground(skill_id)
 	if delivery == "dash":
 		return _use_dash(skill_id)
 	return false
@@ -702,8 +704,10 @@ func _cast_linked(skill_id: StringName, trigger: String, source_skill: StringNam
 		_ensure_fight()
 		var from: Vector3 = player.camera.global_position - player.camera.global_transform.basis.z * 0.6
 		var dir: Vector3 = (enemy.global_position + Vector3(0, 0.5, 0) - from).normalized()
-		SkillProjectile.launch(skill_id, self, player.world_root(), from, dir, 0, [])
+		_launch_fan(skill_id, from, dir)
 		fired = true
+	elif String(def.get("delivery", "")) == "ground" and is_instance_valid(enemy):
+		fired = _use_ground(skill_id, enemy.global_position)
 	else:
 		fired = _cast(skill_id, def)
 	_link_depth -= 1
@@ -800,10 +804,10 @@ func _use_strike(skill_id: StringName) -> bool:
 		return false
 	_spend(skill_id)
 	# Reach (D-023): a Reach ingot beside the skill's socket lengthens the strike.
-	var reach := melee_reach * sim.skill_reach(String(skill_id))
+	var reach := strike_reach(skill_id)
 	var arc: float = sim.skill_arc(String(skill_id))
 	var targets: Array = _enemies_in_front(reach, arc) if arc > 0.0 else []
-	if targets.is_empty():
+	if arc<=0.0 and targets.is_empty():
 		var nearest := _nearest_enemy_in_front(reach)
 		if nearest != null:
 			targets = [nearest]
@@ -885,10 +889,54 @@ func _use_projectile(skill_id: StringName) -> bool:
 	var dir: Vector3 = -player.camera.global_transform.basis.z
 	# Volley (a rail, D-023 slice 9): the sim says how many projectiles a
 	# cast fires; they fan out ten degrees apart around the aim.
+	_launch_fan(skill_id, from, dir)
+	return true
+
+
+func _launch_fan(skill_id: StringName, from: Vector3, dir: Vector3) -> void:
+	var spatial: Dictionary = sim.realtime().get("skills",{}).get(String(skill_id),{})
 	var count: int = sim.skill_projectiles(String(skill_id))
+	var shared: Array = []
 	for i in count:
-		var yaw := deg_to_rad(10.0) * (float(i) - float(count - 1) / 2.0)
-		SkillProjectile.launch(skill_id, self, player.world_root(), from, dir.rotated(Vector3.UP, yaw), 0, [])
+		var yaw := deg_to_rad(float(spatial.get("fan_degrees",10.0))) * (float(i)-float(count-1)/2.0)
+		var visited: Array = shared if float(spatial.get("shared_hits",0))>0 else []
+		SkillProjectile.launch(skill_id,self,player.world_root(),from,dir.rotated(Vector3.UP,yaw),0,visited)
+
+
+func strike_reach(skill_id: StringName) -> float:
+	var spatial: Dictionary = sim.realtime().get("skills",{}).get(String(skill_id),{})
+	return float(spatial.get("melee_reach_m",melee_reach))*sim.skill_reach(String(skill_id))
+
+
+func area_radius(skill_id: StringName) -> float:
+	var radius: float = float(skills[skill_id].get("base_area_radius",0.0)) * (1.0+float(sim.derived_stats()["area_bonus"])) * sim.skill_reach(String(skill_id))
+	if alive_enemies().size()==1:
+		radius *= float(sim.combat_mods()["isolated_area_multiplier"])
+	return radius
+
+
+## A ground cast needs a visible solid surface. The cooldown is spent only
+## once targeting and the live-effect budget accept it. The mark is fixed.
+func _use_ground(skill_id: StringName, linked_target := Vector3.INF) -> bool:
+	if not is_ready(skill_id): return false
+	var spatial: Dictionary = sim.realtime().get("skills",{}).get(String(skill_id),{})
+	if not SkillBurst.has_room(self,int(spatial.get("max_live_bursts",12))): return false
+	var origin := player.camera.global_position
+	var maximum := float(spatial.get("max_range_m",14.0))*sim.skill_reach(String(skill_id))
+	var end := origin-player.camera.global_basis.z*maximum
+	if linked_target!=Vector3.INF:
+		# The linked target is a position at trigger time, never a tracked mob.
+		var toward := linked_target-origin
+		end = origin+toward.limit_length(maximum)
+	var hit := SkillBurst.solid_ray(self,origin,end)
+	if hit.is_empty() and linked_target!=Vector3.INF and origin.distance_to(linked_target)<=maximum:
+		hit = SkillBurst.solid_ray(self,linked_target+Vector3.UP*0.5,linked_target+Vector3.DOWN*2)
+	if hit.is_empty():
+		if player.hud!=null: player.hud.notify("Aim at a surface within %.0f metres." % maximum)
+		return false
+	_spend(skill_id)
+	_ensure_fight()
+	SkillBurst.mark(self,skill_id,hit.position+hit.normal*float(spatial.get("surface_offset_m",0.08)),hit.normal,float(spatial.get("delay_seconds",0)))
 	return true
 
 

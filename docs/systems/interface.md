@@ -170,6 +170,17 @@ the previous equipment through the existing pack rule. Back/close retain mouse
 capture behaviour; scrolling leaves equip/back accessible at 720p and 1080p.
 See [verification](../art/codex-frontier-continuation-2026-09-05.md).
 
+## Build guide (owner-directed, 5 Sep 2026)
+
+`I → Build guide` opens Skills, Kinds and Progression inside the pack. The skill
+catalogue includes undiscovered pages, tactical descriptions, tag filters,
+mastery thresholds/use progress and four-slot assignment for learned skills.
+Kinds list connected effects, actual enemy drop sources and exchange rates even
+when none is held. Progression describes current era/plate/rails and the existing
+milestone, alloy and curio loop. The expanded Foundry tray scrolls while the
+plate and close control remain visible. Both panels are checked at 720p/1080p.
+This view exposes existing/new tuning; it grants no skills or progression.
+
 ## Open questions
 
 Owner-authorised presentation continuation, 5 Sep 2026: enemy and peddler

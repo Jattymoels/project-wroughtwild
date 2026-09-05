@@ -304,7 +304,7 @@ double skillNumberResolved(const tuning::Tuning& tuning, const ActiveMods& activ
                            const std::string& key) {
     const auto* def = findSkill(tuning, skillId);
     if (!def) return 0.0;
-    return std::max(0.0, resolve(active, def->resolveTags(), key, 0.0));
+    return std::max(0.0, resolve(active, def->resolveTags(), key, skillNumber(*def, key, 0.0)));
 }
 } // namespace
 

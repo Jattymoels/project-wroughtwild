@@ -1088,3 +1088,14 @@ verbs transform through `mob_mechanics` the engine reads at spawn:
 `guard_arc_bonus`, `kindle_two`, `root_bonus_seconds`, `ward_bonus`
 (`enemy.gd`). The era's notice names who now walks where. The trial's
 weaknesses remain the heat; a wager at the gate is a later slice.
+
+## Skill expansion and visible progression (5 Sep 2026)
+
+The owner-directed [expansion](../prototype/skill-expansion-2026-09-05.md) adds
+six discoverable skills with individual 40/140-use mastery milestones and five
+Kind variants for new Foundry arrangements. `I → Build guide` shows discoveries,
+use progress, Kind sources and the current era/plate/alloy path. Existing era
+turns, ingot milestones, class rails and four bar slots remain. The approved
+reload fix preserves the chosen class's kit plus all saved skill discoveries,
+including skills already granted by the previous reload bug. No reset or new
+character-level currency is introduced.

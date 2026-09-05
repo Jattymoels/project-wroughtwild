@@ -25,6 +25,11 @@ var _fork_range := 7.0
 ## Quarry (a rail, D-023 slice 9): enemies this projectile still flies on
 ## through. It forks when it finally stops.
 var _pierce_left := 0
+var sweep: ShapeCast3D
+var spent := false
+var allow_links := true
+var impact_burst := false
+var surface_offset := 0.08
 
 
 static func launch(in_skill: StringName, from_combat: PlayerCombat, root: Node, from: Vector3,
@@ -35,6 +40,7 @@ static func launch(in_skill: StringName, from_combat: PlayerCombat, root: Node, 
 	projectile.direction = dir.normalized()
 	projectile.generation = in_generation
 	projectile.visited = in_visited
+	projectile.allow_links = from_combat._link_depth==0
 	root.add_child(projectile)
 	projectile.global_position = from
 	return projectile
@@ -48,6 +54,16 @@ func _ready() -> void:
 	_range_left = spatial.get("max_range_m", 20.0) * combat.sim.skill_reach(String(skill_id))
 	_fork_range = spatial.get("fork_range_m", 7.0)
 	_pierce_left = combat.sim.skill_pierce(String(skill_id))
+	impact_burst = float(spatial.get("impact_burst",0))>0
+	surface_offset = float(spatial.get("surface_offset_m",0.08))
+	sweep = ShapeCast3D.new()
+	var shape := SphereShape3D.new()
+	shape.radius = _hit_radius
+	sweep.shape = shape
+	sweep.margin = 0.001
+	add_child(sweep)
+	add_to_group("player_projectiles")
+	combat.died.connect(cancel)
 
 	var def: Dictionary = combat.skills.get(skill_id,{})
 	visual_profile = LOOK.profile(def,spatial)
@@ -61,27 +77,62 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var step := _speed * delta
-	# The world stops a bolt: terrain and placed pieces. Cold on hot rock
-	# cracks it; fire on rock heats it (D-020 fire-setting).
-	var query := PhysicsRayQueryParameters3D.create(global_position, global_position + direction * (step + _hit_radius))
-	query.exclude = [combat.player.get_rid()]
-	var wall := get_world_3d().direct_space_state.intersect_ray(query)
-	if not wall.is_empty() and not (wall.get("collider") is Enemy):
-		_hit_world(wall)
-		return
-	global_position += direction * step
-	_range_left -= step
-	if _range_left <= 0.0:
-		queue_free()
-		return
+	advance(delta)
 
-	var target := _enemy_in_radius()
-	if target != null:
-		_hit(target)
+
+func cancel() -> void:
+	spent = true
+	queue_free()
+
+
+## Sweep all of this frame's travel, including an initial overlap. Piercing
+## arrows resolve enemies and cover in travel order even on a long frame.
+func advance(delta: float) -> void:
+	if spent: return
+	if not is_instance_valid(combat) or not is_instance_valid(combat.player):
+		cancel()
+		return
+	var travel := minf(_speed*maxf(delta,0),_range_left)
+	for _contact in combat.alive_enemies().size()+1:
+		sweep.clear_exceptions()
+		sweep.add_exception(combat.player)
+		for enemy in get_tree().get_nodes_in_group("enemies"):
+			if enemy is Enemy and (enemy.life<=0 or visited.has(enemy.get_instance_id())): sweep.add_exception(enemy)
+		sweep.target_position = Vector3.ZERO
+		sweep.force_shapecast_update()
+		if not sweep.is_colliding():
+			sweep.target_position = direction*travel
+			sweep.force_shapecast_update()
+		if not sweep.is_colliding():
+			global_position += direction*travel
+			_range_left -= travel
+			break
+		var moved := travel*sweep.get_closest_collision_safe_fraction()
+		global_position += direction*moved
+		_range_left -= moved
+		travel -= moved
+		var target := sweep.get_collider(0)
+		if target is Enemy and target.life>0:
+			_hit(target)
+			if spent: return
+		else:
+			_hit_world({"collider":target,"position":sweep.get_collision_point(0),"normal":sweep.get_collision_normal(0)})
+			return
+	if _range_left<=0:
+		if impact_burst: _burst()
+		cancel()
+
+
+func _burst() -> void:
+	var radius := combat.area_radius(skill_id)
+	SkillBurst.hit_area(combat,skill_id,global_position,radius,combat.sim.fork_damage_fraction(String(skill_id),generation),visited,allow_links)
+	SkillBurst.flash(combat,skill_id,global_position,radius)
 
 
 func _hit_world(hit: Dictionary) -> void:
+	if impact_burst:
+		global_position = hit.position+hit.normal*surface_offset
+		_burst()
 	var terrain := combat.player._find_terrain()
 	var id := String(skill_id)
 	if terrain != null and terrain.is_terrain_body(hit.get("collider")):
@@ -96,38 +147,33 @@ func _hit_world(hit: Dictionary) -> void:
 				cell = terrain.block_from_hit(hit["position"], -hit["normal"])
 			if terrain.heat_block(cell, 1):
 				combat.world_worked.emit("heated", 1)
-	queue_free()
-
-
-func _enemy_in_radius() -> Enemy:
-	var shape := SphereShape3D.new()
-	shape.radius = _hit_radius
-	var query := PhysicsShapeQueryParameters3D.new()
-	query.shape = shape
-	query.transform = Transform3D(Basis.IDENTITY, global_position)
-	for hit in get_world_3d().direct_space_state.intersect_shape(query, 8):
-		var collider: Object = hit.get("collider")
-		if collider is Enemy and (collider as Enemy).life > 0.0 \
-				and not visited.has(collider.get_instance_id()):
-			return collider as Enemy
-	return null
+	cancel()
 
 
 func _hit(enemy: Enemy) -> void:
-	visited.append(enemy.get_instance_id())
 	var id := String(skill_id)
 	var is_boss := enemy is Boss
 
 	# Payload: whichever statuses the skill carries (0 for the rest). It
 	# lands before the damage so a killing blow that ignites leaves a
 	# burning corpse for proliferate.
-	var crossed := combat.apply_payload(enemy, skill_id, is_boss)
-	# The sim decides the numbers, packet by packet (D-023 slice 2); the
-	# fork generation decays every packet alike.
-	var landed := combat.deal(enemy, skill_id, combat.alive_enemies().size() == 1,
-		combat.sim.fork_damage_fraction(id, generation))
-	combat.hit_landed.emit(landed["damage"], 1 if landed["kill"] else 0, landed["types"])
-	combat.fire_links(skill_id, crossed, enemy)
+	if impact_burst:
+		_burst()
+	else:
+		visited.append(enemy.get_instance_id())
+		var shatter: Dictionary = combat.sim.shatter_for(id)
+		if enemy.is_frozen() and shatter.get("enabled",false):
+			var cascade := combat._shatter_cascade([enemy],shatter,combat.sim.skill_nova_chill(id))
+			combat._reap(skill_id,int(cascade.kills))
+			combat.hit_landed.emit(float(cascade.damage),int(cascade.kills),PackedStringArray([String(shatter.get("nova_damage_type","cold"))]))
+		else:
+			var crossed := combat.apply_payload(enemy, skill_id, is_boss)
+			# The sim decides the numbers, packet by packet; forks decay all alike.
+			var landed := combat.deal(enemy, skill_id, combat.alive_enemies().size() == 1,
+				combat.sim.fork_damage_fraction(id, generation))
+			combat.hit_landed.emit(landed["damage"], 1 if landed["kill"] else 0, landed["types"])
+			combat._space_control(enemy,skill_id,direction)
+			if allow_links: combat.fire_links(skill_id, crossed, enemy)
 
 	# Pierce (the Quarry rail): fly on through this one; the enemy is
 	# visited, so the same bolt never bites it twice.
@@ -141,9 +187,10 @@ func _hit(enemy: Enemy) -> void:
 		var targets := _nearest_untouched(forks)
 		for target in targets:
 			var to_target: Vector3 = target.global_position + Vector3(0, 0.5, 0) - global_position
-			SkillProjectile.launch(skill_id, combat, get_parent(), global_position,
+			var fork := SkillProjectile.launch(skill_id, combat, get_parent(), global_position,
 				to_target, generation + 1, visited)
-	queue_free()
+			fork.allow_links = allow_links
+	cancel()
 
 
 func _nearest_untouched(count: int) -> Array:

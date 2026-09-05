@@ -105,6 +105,8 @@ struct CraftingTable {
         std::string id;          // vanguard, marrow, quicksilver, ember_catalyst, preserving_catalyst
         std::string displayName;
         std::string family;      // offence | defence | life | speed
+        std::string craftTag;    // optional narrower modifier tag; defaults to family
+        std::string description; // player-facing use, separate from design notes
     };
     std::vector<CurrencyKind> currencyKinds;
     const CurrencyKind* findKind(const std::string& id) const;
@@ -145,7 +147,8 @@ struct MasteryPerk {
 struct CombatSkillDef {
     std::string id;
     std::string displayName;
-    std::string delivery = "strike"; // cone | strike | projectile | dash - the engine's shape
+    std::string delivery = "strike"; // cone | strike | projectile | ground | dash
+    std::string description;
     std::vector<std::string> tags;
     bool starting = false;   // known from the first moment (and on the round model's bar)
     double dropWeight = 0.0; // relative chance among unknown skills when a page drops (0 = never)

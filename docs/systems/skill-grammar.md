@@ -203,6 +203,20 @@ Resolution is the day-one rule throughout:
 roll gives a payload to a skill that lacks it (a Frostbite mace chills with
 plain strikes) — cross-pollination without sockets.
 
+## Owner-directed vocabulary expansion (5 Sep 2026)
+
+The earlier four-delivery snapshot is extended by a bounded `ground` delivery:
+Ashfall marks a visible solid surface and detonates once after its fixed delay.
+Six additional pages bring the catalogue to sixteen: Fan Shot, Bodkin Shot,
+Driving Blow, Reaping Sweep, Cinderburst and Ashfall. Base `projectiles`, `pierce`
+and `arc` values resolve through the same modifier grammar. Cinderburst uses
+projectile travel followed by one covered area hit; it never pays direct and
+splash damage twice. Asynchronous linked casts retain their recursion guard.
+Player projectiles now sweep travel and cover in order, including multiple
+pierces in a long frame; attack projectiles use the same frozen-target shatter
+hook and boss limit as other attacks. See the
+[work item and tuning](../prototype/skill-expansion-2026-09-05.md).
+
 ## What this means per wave
 
 - **Wave 2** implements the grammar's sim side (statuses, hooks, tag-mod

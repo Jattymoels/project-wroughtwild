@@ -1448,7 +1448,7 @@ void testMobGearAndPages(const tuning::Tuning& t) {
     }
     double pageRate = static_cast<double>(pages) / kills;
     check(pageRate > 0.035 && pageRate < 0.07, "drops: husk pages land near their 5% chance");
-    check(taught.size() == 6, "drops: every learnable skill turns up on pages (the pages, the bow shot and the sweep)");
+    check(taught.size() == 12, "drops: every non-starting skill turns up on pages, including the six expansion pages");
     check(loot::rollEnemySkillPage(t, "stone_husk", 1, known) ==
               loot::rollEnemySkillPage(t, "stone_husk", 1, known),
           "drops: pages are deterministic per seed");
@@ -2636,16 +2636,16 @@ void testEveryIngotReadsEverySkill(const tuning::Tuning& t) {
 // changes them, a kind aims a craft, rare metal casts one.
 void testTypedCurrency(const tuning::Tuning& t) {
     const auto& c = t.crafting;
-    check(c.currencies == std::vector<std::string>{"vanguard", "warding_vanguard", "marrow", "quicksilver"} && !c.isCurrency("trade_currency"),
-          "kinds: the purse holds the four cast kinds and the coin is gone");
-    check(c.currencyKinds.size() == 6 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
+    check(c.currencies == std::vector<std::string>{"vanguard", "warding_vanguard", "marrow", "quicksilver", "sipping_marrow", "striking_quicksilver", "casting_quicksilver"} && !c.isCurrency("trade_currency"),
+          "kinds: the purse holds the original and expanded cast kinds; the coin is gone");
+    check(c.currencyKinds.size() == 11 && c.findKind("vanguard") && c.findKind("vanguard")->family == "defence" &&
               c.findKind("marrow")->family == "life" && c.findKind("quicksilver")->family == "speed" &&
               c.findKind("ember_catalyst")->family == "offence" && c.findKind("preserving_catalyst")->family == "offence" &&
               !c.findKind("trade_currency"),
-          "kinds: six kinds in four families");
-    check(c.exchangeRate == 3 && c.exchangeKinds.size() == 5 &&
+          "kinds: eleven variants in four families");
+    check(c.exchangeRate == 3 && c.exchangeKinds.size() == 10 &&
               std::find(c.exchangeKinds.begin(), c.exchangeKinds.end(), "ember_catalyst") == c.exchangeKinds.end(),
-          "kinds: the peddler changes five kinds at three to one; the ember catalyst stays the trial's");
+          "kinds: the peddler changes ten kinds at three to one; the ember catalyst stays the trial's");
     check(c.aimedMinimumRarity == "keen", "kinds: an aimed craft is at least keen");
     bool coinAnywhere = false;
     for (const auto& enemy : t.world.enemies) {
@@ -2776,11 +2776,11 @@ void testTypedCurrency(const tuning::Tuning& t) {
 // Catalysts are offensive creativity; Vanguards defensive.
 void testKindsInCorners(const tuning::Tuning& t) {
     const auto& f = t.foundry;
-    check(f.kinds.size() == 6 && f.findKindOnPlate("vanguard") && f.findKindOnPlate("vanguard")->modifier == "armour_plating" &&
+    check(f.kinds.size() == 11 && f.findKindOnPlate("vanguard") && f.findKindOnPlate("vanguard")->modifier == "armour_plating" &&
               std::abs(f.findKindOnPlate("vanguard")->value - 4.0) < 1e-9 && f.findKindOnPlate("ember_catalyst") &&
               f.findKindOnPlate("ember_catalyst")->modifier.empty() && f.findKindOnPlate("ember_catalyst")->family == "offence" &&
               !f.findKindOnPlate("nothing") && f.familyName("offence") == "Catalyst" && f.familyName("nothing").empty(),
-          "flow: six kinds on the plate in four named families; the Vanguard has a base, the Catalyst none");
+          "flow: eleven variants on the plate in four families; the Vanguard has a base, the Catalyst none");
     check(f.forms.size() >= 20 && f.hasteAfterHitSeconds > 0.0, "flow: the first forms load");
     bool poolClean = true;
     for (const auto& base : t.items.itemBases)
@@ -4382,6 +4382,102 @@ void testLandformProfile(const tuning::Tuning& source) {
     }
 }
 
+void testSkillExpansion(const tuning::Tuning& t) {
+    const std::vector<std::string> ids = {"prototype_fan_shot", "prototype_bodkin_shot", "prototype_driving_blow",
+        "prototype_reaping_sweep", "prototype_cinderburst", "prototype_ashfall"};
+    economy::PlayerEconomy p(t);
+    p.foundryChooseClass("ranger");
+    const auto oldBar = p.skillBar();
+    for (const auto& id : ids) {
+        const auto* skill = t.skills.findCombatSkill(id);
+        check(skill && !skill->starting && skill->dropWeight > 0 && !skill->description.empty(), "expansion: discoverable documented skill " + id);
+        check(!p.knowsSkill(id) && !p.setBarSlot(0,id), "expansion: a new page is not granted or assignable before discovery " + id);
+        auto known = p.knownSkills();
+        for (const auto& other : t.skills.combatSkills) if (other.id != id) known.push_back(other.id);
+        bool dropped = false;
+        for (uint64_t seed=1;seed<=1000;++seed) {
+            const auto page = loot::rollEnemySkillPage(t,"ember_whelp",seed,known);
+            if (!page.empty()) { check(page==id,"expansion: unknown-only pool selects " + id); dropped=true; break; }
+        }
+        check(dropped && p.learnSkill(id) && !p.learnSkill(id),"expansion: each page can be found and learned once " + id);
+        check(p.skillBar()==oldBar,"expansion: learning leaves a full bar intact");
+        const auto first = skill->mastery.front();
+        for (int n=1;n<first.uses;++n) check(p.noteSkillUse(id).empty(),"expansion: mastery waits for its threshold");
+        check(p.noteSkillUse(id).size()==1 && p.masteryUnlocked(id).size()==1,"expansion: mastery unlocks at the threshold");
+    }
+    check(grammar::skillProjectiles(t,{},ids[0])==3 && grammar::skillPierce(t,{},ids[1])==2,
+          "expansion: fan and bodkin base propagation is resolved in the sim");
+    check(std::abs(grammar::skillArc(t,{},ids[2])-0.45)<1e-9,"expansion: Driving Blow has its native narrow arc");
+    check(t.skills.findCombatSkill(ids[5])->delivery=="ground","expansion: delayed ground delivery loads");
+    auto mods=grammar::masteryMods(t,p.exportState().skillUses);
+    check(grammar::skillReach(t,mods,ids[0])>1 && grammar::skillReach(t,mods,"prototype_bow_shot")==1,
+          "expansion: mastery stays scoped to its own skill");
+    const std::vector<std::string> kinds={"piercing_catalyst","impact_catalyst","sipping_marrow","striking_quicksilver","casting_quicksilver"};
+    for (const auto& id:kinds) {
+        check(t.crafting.findKind(id) && t.foundry.findKindOnPlate(id),"expansion: Kind has both crafting and Foundry uses " + id);
+        bool source=false;
+        for(const auto& e:t.world.enemies) for(const auto& d:e.loot) if(d.item==id && d.chance>0) source=true;
+        check(source,"expansion: Kind has a reachable hunt source " + id);
+        p.grant("vanguard",3);
+        check(p.exchange("vanguard",id) && p.held(id)==1,"expansion: exchange pays exactly three for one " + id);
+    }
+    auto working = [&](const std::string& skill,const std::string& kind,const std::string& ingot) {
+        economy::PlayerEconomy who(t);
+        who.learnSkill(skill);
+        who.foundryEvent(ingot=="edge" ? "work:strike_split" : "first_kill:cinder_archer");
+        // Use an explicit fixture state so this test is independent of source selection.
+        auto state=who.exportState();
+        state.foundry.owned[ingot]=1;
+        who.importState(state);
+        who.grant(kind,1);
+        check(who.foundryPlaceSkill(1,1,skill) && who.foundryPlace(1,0,ingot) && who.foundryPlaceKind(2,0,kind),
+              "expansion: Kind flows through a real support to a tablet");
+        return who;
+    };
+    auto piercing=working(ids[1],kinds[0],"reach");
+    mods=grammar::foundryMods(t,piercing.foundry(),1);
+    check(grammar::skillPierce(t,mods,ids[1])==3 && grammar::forkCount(t,mods,ids[1])==1,
+          "expansion: Piercing Catalyst adds Throughline and retains common Split");
+    check(grammar::skillPierce(t,mods,"prototype_frost_orb")==0,"expansion: variant form is scoped to its working");
+    auto impact=working(ids[2],kinds[1],"edge");
+    mods=grammar::foundryMods(t,impact.foundry(),1);
+    check(grammar::skillStagger(t,mods,ids[2],false)>grammar::skillStagger(t,{},ids[2],false),"expansion: Impact Catalyst adds control");
+    auto sipping=working(ids[0],kinds[2],"reach");
+    mods=grammar::foundryMods(t,sipping.foundry(),1);
+    check(grammar::skillLifeOnHit(t,mods,ids[0])>=0.5,"expansion: Sipping Marrow supplies a landed-hit reading");
+    auto striking=working(ids[0],kinds[3],"edge");
+    mods=grammar::foundryMods(t,striking.foundry(),1);
+    check(grammar::skillCooldownSeconds(t,mods,ids[0])<grammar::skillCooldownSeconds(t,{},ids[0]) &&
+          grammar::skillCooldownSeconds(t,mods,"prototype_ember_bolt")==grammar::skillCooldownSeconds(t,{},"prototype_ember_bolt"),
+          "expansion: Striking Quicksilver changes attacks without quickening spells");
+    auto casting=working(ids[5],kinds[4],"edge");
+    mods=grammar::foundryMods(t,casting.foundry(),1);
+    check(grammar::skillCooldownSeconds(t,mods,ids[5])<grammar::skillCooldownSeconds(t,{},ids[5]) &&
+          grammar::skillCooldownSeconds(t,mods,ids[0])==grammar::skillCooldownSeconds(t,{},ids[0]),
+          "expansion: Casting Quicksilver changes spells without quickening attacks");
+    for(const auto& pair:std::vector<std::pair<std::string,std::string>>{{"piercing_catalyst","hunting_bow"},{"impact_catalyst","iron_mace"}}) {
+        const auto* kind=t.crafting.findKind(pair.first);
+        for(uint64_t seed=1;seed<=40;++seed) {
+            auto item=items::rollRarityItem(t.items,pair.second,"keen",1,seed,kind->craftTag);
+            const auto* mod=t.items.findModifier(item.rolledProperties.front().propertyId);
+            check(std::find(mod->tags.begin(),mod->tags.end(),kind->craftTag)!=mod->tags.end(),"expansion: physical catalyst aims its craft domain");
+        }
+    }
+    save::SaveGame saved;
+    saved.economy=p.exportState();
+    economy::PlayerEconomy restored(t);
+    restored.importState(save::fromJson(save::toJson(saved)).economy);
+    check(restored.skillBar()==p.skillBar() && restored.knownSkills()==p.knownSkills(),"expansion: old and new loadout knowledge survives save");
+    check(!restored.knowsSkill("prototype_frost_orb") && !restored.knowsSkill("prototype_heavy_strike"),
+          "expansion: a Ranger reload never grants undiscovered default skills");
+    restored.learnSkill("prototype_frost_orb");
+    auto legacy=restored.exportState();
+    restored.importState(legacy);
+    check(restored.knowsSkill("prototype_frost_orb"),"expansion: previously saved skills remain owned, including earlier accidental grants");
+    for(const auto& id:ids) check(restored.skillUses(id)==p.skillUses(id),"expansion: mastery survives save " + id);
+    for(const auto& id:kinds) check(restored.held(id)==1,"expansion: new Kind survives save " + id);
+}
+
 int main(int argc, char** argv) {
     std::string tuningDir = argc > 1 ? argv[1] : "../../data/tuning";
     tuning::Tuning t;
@@ -4450,6 +4546,7 @@ int main(int argc, char** argv) {
     testMasteryAndCraftRolls(t);
     testBiggerWorld(t);
     testEraThreeAndLife(t);
+    testSkillExpansion(t);
 
     std::printf("%d checks, %d failures\n", checks, failures);
     return failures == 0 ? 0 : 1;

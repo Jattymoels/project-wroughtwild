@@ -411,7 +411,7 @@ func _test_lattice() -> void:
 	check(sim.foundry_links().is_empty() and sim.skill_triggers("prototype_frost_orb").has("freeze")
 		and sim.skill_triggers("prototype_heavy_strike").is_empty() and sim.linked_casts("prototype_frost_orb", "freeze").is_empty()
 		and sim.skill_arc("prototype_heavy_strike") == 0.0, "links: a bare plate links nothing; the orb's trigger is a freeze")
-	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 6 and sim.foundry()["flows"].size() == 1
+	check(kinds_on_plate == 1 and sim.foundry()["kinds"].size() == 11 and sim.foundry()["flows"].size() == 1
 		and sim.foundry()["flows"][0]["flows"] and sim.derived_stats().has("cold_resistance_percent"),
 		"flow: the plate view carries the kind, every kind's count, and whether it flows")
 	# Rails (D-023 slice 9): a class is chosen before play; era two here
@@ -766,7 +766,7 @@ func _test_sim_extension() -> void:
 	var heavy: Dictionary = sim.combat_skill("prototype_heavy_strike")
 	check(heavy["base_damage"] == 28.0 and heavy["tags"].has("single_target"), "combat: skill view")
 	check(heavy["delivery"] == "strike" and heavy["starting"], "combat: skill view carries delivery and starting (D-016)")
-	check(sim.combat_skill_ids().size() == 10, "combat: ten skills defined (the class kits' bow shot and sweep among them)")
+	check(sim.combat_skill_ids().size() == 16, "combat: sixteen skills defined, including six discoverable expansion pages")
 	check(sim.enemy("ember_whelp")["max_life"] == 75.0 and sim.enemy_ids().size() == 11,
 		"combat: enemy view (shrieker and gloom crawler joined)")
 	check(sim.boss()["breath_damage"] == 42.0, "combat: boss view")
@@ -1244,7 +1244,7 @@ func _test_sandpit_extension() -> void:
 	check(sim.inventory().get("marrow", 0) == 0, "sandpit: a kind never sits in the pack")
 	# D-023 slice 3: the kinds through the door - the peddler's exchange.
 	var vanguard_before: int = sim.currency_count("vanguard")
-	check(sim.currency_kinds().size() == 6 and sim.exchange_rate() == 3, "kinds: six kinds, three to one")
+	check(sim.currency_kinds().size() == 11 and sim.exchange_rate() == 3, "kinds: eleven variants, three to one")
 	check(sim.can_exchange("marrow", "vanguard") and not sim.can_exchange("marrow", "marrow") and sim.exchange("marrow", "vanguard")
 		and sim.currency_count("marrow") == before and sim.currency_count("vanguard") == vanguard_before + 1,
 		"kinds: three Marrow change for a Vanguard")

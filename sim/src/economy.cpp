@@ -38,7 +38,8 @@ PlayerEconomy::PlayerEconomy(const tuning::Tuning& tuning) : tuning_(tuning) {
 }
 
 void PlayerEconomy::resetLoadout() {
-    knownSkills_ = tuning_.skills.startingSkillIds();
+    const auto* cls = tuning_.foundry.rails.findClass(foundry_.chosenClass);
+    knownSkills_ = cls && !cls->startingSkills.empty() ? cls->startingSkills : tuning_.skills.startingSkillIds();
     skillBar_.assign(kSkillBarSize, "");
     for (size_t i = 0; i < knownSkills_.size() && i < static_cast<size_t>(kSkillBarSize); ++i)
         skillBar_[i] = knownSkills_[i];
@@ -205,10 +206,10 @@ PlayerEconomy::CraftResult PlayerEconomy::craft(const std::string& recipeId, boo
             if (roll(rng) < wrought) rarity = "wrought";
             else if (roll(rng) < keen) rarity = "keen";
             // A kind aims the roll: at least the aimed rarity, the first
-            // modifier from the kind's family.
+            // modifier from the kind's family or its narrower craft tag.
             if (aim && rarity == "plain") rarity = rolls.aimedMinimumRarity;
             packItems.push_back(items::rollRarityItem(tuning_.items, outputId, rarity, currentEra(), rng(),
-                                                      aim ? aim->family : std::string()));
+                                                      aim ? aim->craftTag : std::string()));
         }
     }
 
@@ -819,10 +820,11 @@ void PlayerEconomy::importState(const State& state) {
     // character would. Otherwise keep what tuning still knows about.
     resetLoadout();
     if (state.knownSkills.empty()) return;
+    const auto startingKit = knownSkills_;
     knownSkills_.clear();
     for (const auto& id : state.knownSkills)
         if (tuning_.skills.findCombatSkill(id) && !knowsSkill(id)) knownSkills_.push_back(id);
-    for (const auto& id : tuning_.skills.startingSkillIds())
+    for (const auto& id : startingKit)
         if (!knowsSkill(id)) knownSkills_.push_back(id); // a new starting skill is never lost
     skillBar_.assign(kSkillBarSize, "");
     for (size_t i = 0; i < state.skillBar.size() && i < static_cast<size_t>(kSkillBarSize); ++i)

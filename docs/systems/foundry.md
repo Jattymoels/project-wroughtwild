@@ -1014,3 +1014,14 @@ following.
    ingots from the first elites and the deeper forge; eight compound
    forms conditioned on the support's metal. Rarity is the alloy from the
    other end, as the gate above says; no separate rarity field.
+
+## Owner-directed variants (5 Sep 2026)
+
+The [skill/progression expansion](../prototype/skill-expansion-2026-09-05.md)
+adds Piercing and Impact Catalysts with four tag-scoped Reach/Edge forms, Sipping
+Marrow with flat life on hit, and Striking/Casting Quicksilver with attack/spell
+recovery. All retain their family's common forms. The existing inward flow,
+placement depth, support scoping, re-forging and alloys remain the rules.
+The catalogue now has eleven variants across four families. The pack's Build
+guide explains sources and effects; the Foundry tray scrolls independently of
+the plate. New values and reproduction checks are recorded in the work item.

@@ -205,6 +205,22 @@ run_headless_checks.sh  The check pipeline above
   After an editor session, check `git status`: the editor may rewrite the
   header comment of `project.godot`; restore it if so.
 
+## Skill expansion playtest (5 Sep 2026)
+
+Six new pages add Fan Shot, Bodkin Shot, Driving Blow, Reaping Sweep, Cinderburst
+and Ashfall. Five more Kind variants support physical/projectile craft rolls,
+Foundry control, life on hit, and attack/spell recovery. Restart the game to load
+the updated library and tuning, then continue an existing save. Pages are found
+through normal drops; characters retain owned skills and mastery.
+
+Open **I → Build guide** for the catalogue, assignment, mastery, Kind hunt sources
+and progression. **F** opens the Foundry. Run
+`powershell -ExecutionPolicy Bypass -File tools/codex_visual_review.ps1 -Skills`
+from the repository root for focused checks and ten rendered review captures;
+`-Checks` includes the tests in the full pipeline. The inspection scene grants
+fixture resources only and never touches the player's save. See
+[tuning and limitations](../docs/prototype/skill-expansion-2026-09-05.md).
+
 ## Known engine issue
 
 On a fresh `.godot/` (clean checkout, or after deleting the cache) the very

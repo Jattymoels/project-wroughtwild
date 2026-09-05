@@ -169,19 +169,59 @@
       "design_purpose": "The bolt is quick and thin next to the orb: a sniping projectile whose skill is the ignite, not the lead. fork_range_m only matters once a Forks roll teaches it to split."
     },
     "prototype_bow_shot": {
-    "speed_mps": 26.0,
-    "hit_radius_m": 0.4,
-    "max_range_m": 26.0,
-    "fork_range_m": 7.0,
-    "design_purpose": "The arrow: the fastest thing in the air, thin, and long in the range - a Ranger leads nothing, they pick."
-  },
-  "prototype_frost_nova": {
+      "speed_mps": 26.0,
+      "hit_radius_m": 0.4,
+      "max_range_m": 26.0,
+      "fork_range_m": 7.0,
+      "design_purpose": "The arrow: the fastest thing in the air, thin, and long in the range - a Ranger leads nothing, they pick."
+    },
+    "prototype_frost_nova": {
       "cone_degrees": 360.0,
       "design_purpose": "A cone delivery that is a full ring: cone_degrees 360 overrides the player's first-person arc for this skill (its radius is base_area_radius in skills.json, like every cone). Everything within the ring is chilled, behind you included - the panic button."
     },
     "prototype_shatter": {
       "cone_degrees": 360.0,
       "design_purpose": "Shatter is a full ring around the caster, like the nova: you stand in the frozen train and cash it in."
+    },
+    "prototype_fan_shot": {
+      "speed_mps": 26,
+      "hit_radius_m": 0.18,
+      "max_range_m": 22,
+      "fork_range_m": 7,
+      "fan_degrees": 14,
+      "shared_hits": 1,
+      "design_purpose": "Arrow flight/clearance/range; fan_degrees is the angle between arrows. shared_hits makes one fan hit each enemy once, so spread is coverage rather than point-blank multiplication."
+    },
+    "prototype_bodkin_shot": {
+      "speed_mps": 30,
+      "hit_radius_m": 0.16,
+      "max_range_m": 30,
+      "fork_range_m": 7,
+      "design_purpose": "A narrow long arrow for lining up pursuers. Speed controls leading, radius the clearance, range the reach; the skill owns its two pierces."
+    },
+    "prototype_driving_blow": {
+      "melee_reach_m": 3.4,
+      "design_purpose": "The driving strike reaches further than an ordinary swing; arc in skills.json supplies its narrow width. Reach supports scale this distance."
+    },
+    "prototype_reaping_sweep": {
+      "cone_degrees": 155,
+      "design_purpose": "Broad forward coverage for a bleeding front; does not reach behind the player."
+    },
+    "prototype_cinderburst": {
+      "speed_mps": 12,
+      "hit_radius_m": 0.22,
+      "max_range_m": 18,
+      "fork_range_m": 6,
+      "impact_burst": 1,
+      "surface_offset_m": 0.08,
+      "design_purpose": "A slower projectile that explodes at contact or range end. impact_burst replaces the direct hit with one radius hit. Pierce continues to another contact; forks launch toward untouched enemies; one cast chain never hits an enemy twice. Surface offset keeps the blast just outside solid cover."
+    },
+    "prototype_ashfall": {
+      "max_range_m": 14,
+      "delay_seconds": 0.85,
+      "surface_offset_m": 0.08,
+      "max_live_bursts": 12,
+      "design_purpose": "Maximum aimed surface distance and delay before the fixed mark explodes. Offset puts the mark just outside the struck surface. Live burst cap bounds stacked delayed casts; reaching it refuses a new cast without spending its cooldown."
     }
   },
   "design_purpose": "round_seconds is the bridge between the sim's round-based encounter (the balance oracle) and real time: attack_period_rounds, breath periods and skill cooldowns become seconds by multiplying by it. Everything else here is time-and-space feel that the round model cannot express; damage, life and mitigation never live in this file (ADR-0003).",

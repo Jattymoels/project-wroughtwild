@@ -414,8 +414,8 @@ func _render_crafting() -> void:
 			for kind in sim.currency_kinds():
 				if int(kind["held"]) <= 0:
 					continue
-				_add_row("    aimed with a [b]%s[/b] (you hold %d): the first modifier comes from %s" % [
-					kind["display_name"], int(kind["held"]), String(kind["family"])],
+				_add_row("    aimed with a [b]%s[/b] (you hold %d): favours %s for the first modifier where this base allows it" % [
+					kind["display_name"], int(kind["held"]), String(kind.get("craft_tag",kind["family"]))],
 					"Craft with %s" % kind["display_name"], craftable, craft.bind(recipe_id, String(kind["id"])))
 
 	if shows_fuel:

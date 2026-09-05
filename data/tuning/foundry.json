@@ -116,6 +116,47 @@
       "modifier": "swift_hands",
       "value": 0.04,
       "design_purpose": "The Quicksilver of hands: +4% cooldown recovery for attacks and spells while the flow holds. The Quicksilvers of move speed, attack speed and cast speed wait for those stats to be told apart; the family's forms wait for slice 9."
+    },
+    {
+      "id": "piercing_catalyst",
+      "display_name": "Piercing Catalyst",
+      "family": "offence",
+      "short_name": "Piercing",
+      "design_purpose": "Works Reach into Throughline (+1 pierce) and Edge into Barbed Flight (+15 bleed buildup) for projectile skills. Common Catalyst forms still apply. An aimed gear craft favours projectile modifiers."
+    },
+    {
+      "id": "impact_catalyst",
+      "display_name": "Impact Catalyst",
+      "family": "offence",
+      "short_name": "Impact",
+      "design_purpose": "Works Edge into Concussion (+0.15 seconds stagger) and Reach into Follow Through (+0.5 metres shove) for attacks. Common Catalyst forms still apply. An aimed gear craft favours physical modifiers."
+    },
+    {
+      "id": "sipping_marrow",
+      "display_name": "Sipping Marrow",
+      "family": "life",
+      "short_name": "Sipping",
+      "design_purpose": "While its chain reaches a skill, landed hits restore 0.5 life. It also works adjacent supports into the Marrow family forms. Aimed gear crafts favour life modifiers.",
+      "modifier": "life_on_hit",
+      "value": 0.5
+    },
+    {
+      "id": "striking_quicksilver",
+      "display_name": "Striking Quicksilver",
+      "family": "speed",
+      "short_name": "Striking",
+      "design_purpose": "While its chain reaches a skill, attacks recover 8% faster; spells do not. It also works supports into Quicksilver forms. Aimed gear crafts favour speed modifiers.",
+      "modifier": "striking_recovery",
+      "value": 0.08
+    },
+    {
+      "id": "casting_quicksilver",
+      "display_name": "Casting Quicksilver",
+      "family": "speed",
+      "short_name": "Casting",
+      "design_purpose": "While its chain reaches a skill, spells recover 8% faster; attacks do not. It also works supports into Quicksilver forms. Aimed gear crafts favour speed modifiers.",
+      "modifier": "casting_recovery",
+      "value": 0.08
     }
   ],
   "design_purpose_kinds": "THE FLOW (owner, 4 Sep 2026): only a skill sits in a socket. A currency kind rests only on a forged cell that cannot touch a socket (depth two or more: the corners, and the far cells beyond them). It gives its family's base forward only while a chain of placed pieces, each a step nearer a socket, leads to a support beside a laid tablet - a kind that flows to nothing gives nothing. And it works every support it touches into a FORM (forms below) that feeds the skill that support serves, a shared support feeding both. Ingots are base; Catalysts are offensive creativity; Vanguards, Marrow and Quicksilver are defensive, life and tempo creativity. Setting a kind takes it from the purse; lifting it pays reforge_cost and returns it. A kind lifted on load (a stale save) goes back to the purse. VARIANTS (owner, 4 Sep 2026, later): `kinds` lists every currency id that may rest on the plate with its family, the name a cell shows, and its own base; a family is a list of variants (the Vanguard of armour, of resistances, later of dodge; the Marrow of life, later leech and recoup; the Quicksilver of hands, later move and attack and cast speed) and the forms are the family's, a form's optional `kind` narrowing it to one variant. Catalysts have no base and do the mechanical transformations. `family_names` is how a form names the family that worked it.",
@@ -782,6 +823,62 @@
         }
       ],
       "design_purpose": "The spec's reading: your Dash recovers 16% faster while the flow holds."
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "reach",
+      "skill_tag": "projectile",
+      "display_name": "Throughline",
+      "effects": [
+        {
+          "modifier": "pierce",
+          "value": 1
+        }
+      ],
+      "design_purpose": "5 Sep physical Catalyst variant: this form adds to the common family reading only when kind, support and skill tag match. Its small control/propagation value is provisional tuning."
+    },
+    {
+      "family": "offence",
+      "kind": "piercing_catalyst",
+      "ingot": "edge",
+      "skill_tag": "projectile",
+      "display_name": "Barbed Flight",
+      "effects": [
+        {
+          "modifier": "laceration",
+          "value": 15
+        }
+      ],
+      "design_purpose": "5 Sep physical Catalyst variant: this form adds to the common family reading only when kind, support and skill tag match. Its small control/propagation value is provisional tuning."
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "edge",
+      "skill_tag": "attack",
+      "display_name": "Concussion",
+      "effects": [
+        {
+          "modifier": "impact_stagger",
+          "value": 0.15
+        }
+      ],
+      "design_purpose": "5 Sep physical Catalyst variant: this form adds to the common family reading only when kind, support and skill tag match. Its small control/propagation value is provisional tuning."
+    },
+    {
+      "family": "offence",
+      "kind": "impact_catalyst",
+      "ingot": "reach",
+      "skill_tag": "attack",
+      "display_name": "Follow Through",
+      "effects": [
+        {
+          "modifier": "impact_push",
+          "value": 0.5
+        }
+      ],
+      "design_purpose": "5 Sep physical Catalyst variant: this form adds to the common family reading only when kind, support and skill tag match. Its small control/propagation value is provisional tuning."
     }
   ],
   "rails": {

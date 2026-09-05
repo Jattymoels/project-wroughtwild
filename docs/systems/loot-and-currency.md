@@ -113,6 +113,17 @@ Only one catalyst family is required for the first implementation. Preservation 
 - The catalyst result meaningfully affects the boss without guaranteeing perfection.
 - Unwanted equipment has a clear salvage or trade use.
 
+## Implemented Kind expansion (5 Sep 2026)
+
+The owner-directed [skill expansion](../prototype/skill-expansion-2026-09-05.md)
+adds Piercing/Impact Catalysts, Sipping Marrow and Striking/Casting Quicksilver
+within the existing four families. Each has a named enemy source, a Foundry
+reading, an aimed gear-craft role and the existing three-for-one exchange.
+Piercing aims projectile modifiers; Impact aims physical modifiers. The optional
+`craft_tag` overrides the default family but never overrides a base's allowed
+modifier pool. Six additional unknown-only skill pages use existing page chances
+and the same persistent loot sequence. Old gear weights are unchanged.
+
 ## Open questions
 
 - Final catalyst operation vocabulary.

@@ -438,6 +438,18 @@ Array WroughtwildSim::currency_kinds() const {
         d["id"] = to_godot(kind.id);
         d["display_name"] = to_godot(kind.displayName);
         d["family"] = to_godot(kind.family);
+        d["craft_tag"] = to_godot(kind.craftTag);
+        d["description"] = to_godot(kind.description);
+        PackedStringArray sources;
+        for (const auto& enemy : tuning_->world.enemies) {
+            for (const auto& entry : enemy.loot) {
+                if (entry.kind == "item" && entry.item == kind.id && entry.chance > 0.0) {
+                    sources.push_back(to_godot(enemy.displayName));
+                    break;
+                }
+            }
+        }
+        d["sources"] = sources;
         d["held"] = player_->held(kind.id);
         d["exchangeable"] = std::find(exchange.begin(), exchange.end(), kind.id) != exchange.end();
         out.push_back(d);
@@ -684,6 +696,7 @@ Dictionary WroughtwildSim::combat_skill(const String& skill_id) const {
     d["id"] = to_godot(def->id);
     d["display_name"] = to_godot(def->displayName);
     d["delivery"] = to_godot(def->delivery);
+    d["description"] = to_godot(def->description);
     d["starting"] = def->starting;
     d["drop_weight"] = def->dropWeight;
     d["uses"] = player_->skillUses(def->id);

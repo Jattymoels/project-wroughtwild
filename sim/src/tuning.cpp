@@ -203,6 +203,9 @@ CraftingTable loadCrafting(const std::string& path) {
             kind.id = k->get("id").asString();
             kind.displayName = k->get("display_name").asString();
             kind.family = k->get("family").asString();
+            kind.craftTag = kind.family;
+            if (auto v = k->find("craft_tag")) kind.craftTag = v->asString();
+            if (auto v = k->find("description")) kind.description = v->asString();
             table.currencyKinds.push_back(std::move(kind));
         }
     }
@@ -265,12 +268,13 @@ SkillTable loadSkills(const std::string& path) {
         table.craftSkills.push_back(std::move(def));
     }
 
-    static const std::vector<std::string> deliveries = {"cone", "strike", "projectile", "dash"};
+    static const std::vector<std::string> deliveries = {"cone", "strike", "projectile", "ground", "dash"};
     for (const auto& s : doc->get("combat_skills").asArray()) {
         CombatSkillDef def;
         for (const auto& [key, value] : s->asObject()) {
             if (key == "id") def.id = value->asString();
             else if (key == "display_name") def.displayName = value->asString();
+            else if (key == "description") def.description = value->asString();
             else if (key == "delivery") def.delivery = value->asString();
             else if (key == "tags") def.tags = readStringArray(*value);
             else if (key == "starting") def.starting = value->asBool();
