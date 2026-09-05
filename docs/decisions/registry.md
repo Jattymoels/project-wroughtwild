@@ -352,6 +352,11 @@ Statuses:
 
 ### Owner-approved combat follow-up — 5 September 2026
 
+The owner subsequently approved incoming-hit direction and existing weapon/cast
+presentation. The [presentation report](../art/codex-combat-presentation-2026-09-05.md)
+records the completed first-person feedback under D-010/D-012/D-013. The separate
+skill-variety design remains unselected; no new skills or combat rules were added.
+
 Following gathering and building usability, the owner approved addressing
 undodgeable ranged attacks first. Under D-010 / ADR-0003, archers and wisps now
 commit aim at windup start and release physical, cover-blocked projectiles;

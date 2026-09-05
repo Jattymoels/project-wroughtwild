@@ -30,6 +30,7 @@ var sim: WroughtwildSim
 var combat: PlayerCombat
 var placement: GridPlacement
 var player: WroughtwildPlayer
+var damage_compass: DamageCompass
 
 var _ui: Control
 var _status: Label
@@ -141,6 +142,7 @@ func _ready() -> void:
 	_life_bar.add_theme_stylebox_override("fill", UiTheme.flat(UiTheme.EMBER, Color(0, 0, 0, 0), 3))
 	vitals.add_child(_life_bar)
 	_life_text = Label.new()
+	_life_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_life_text.add_theme_font_size_override("font_size", 13)
 	vitals.add_child(_life_text)
 
@@ -268,6 +270,9 @@ func _ready() -> void:
 	UiTheme.ignore_mouse(_ui)
 
 	if combat != null:
+		damage_compass = DamageCompass.new()
+		damage_compass.player = player
+		_ui.add_child(damage_compass)
 		combat.hit_landed.connect(_on_hit_landed)
 		combat.life_changed.connect(_on_life_changed)
 		combat.world_worked.connect(_on_world_worked)

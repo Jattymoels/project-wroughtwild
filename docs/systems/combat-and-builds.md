@@ -21,6 +21,11 @@ projectile. Sidestepping and solid cover can prevent contact; existing hit
 damage and movement-only dash remain unchanged. See the
 [implementation and tuning](../art/codex-ranged-fairness-2026-09-05.md).
 
+The subsequent owner-approved [combat presentation pass](../art/codex-combat-presentation-2026-09-05.md)
+adds incoming-hit bearings, actual equipped weapon models, delivery/tag-specific
+hand gestures and distinct arrow/ember/frost projectile shapes. These observe
+existing casts and landed hits; no skill, damage, cooldown or hitbox rule changes.
+
 ## Prototype scope
 
 - one starting class;

@@ -12,7 +12,9 @@ Owner-approved order, following the normal building/art adoption:
 3. **Combat feel.** Distinct weapon/cast presentation and incoming-hit direction.
    Ranged counterplay and the X removal regression are implemented in the
    [ranged-fairness pass](../art/codex-ranged-fairness-2026-09-05.md).
-   Incoming-hit direction and held-weapon/cast presentation remain next.
+   Incoming-hit direction and existing weapon/cast presentation are completed in
+   the [combat presentation pass](../art/codex-combat-presentation-2026-09-05.md).
+   The separate skill-vocabulary design below remains deferred.
 4. **Reasons to explore.** Small recognisable encounters around existing
    resources and landmarks, using current rewards and progression.
 

@@ -91,7 +91,7 @@ func advance(delta: float) -> void:
 		var body := sweep.get_collider(0)
 		if body is WroughtwildPlayer:
 			var source := source_ref.get_ref() as Node
-			body.combat.take_hit(raw_damage, damage_type, source_name, source)
+			body.combat.take_hit(raw_damage, damage_type, source_name, source, -direction)
 		queue_free()
 		return
 	global_position += direction * travel

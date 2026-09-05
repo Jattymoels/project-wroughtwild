@@ -8,12 +8,9 @@ extends Node3D
 ## fork count, decay per generation); this node owns flight, collision and
 ## who a fork jumps to (ADR-0003).
 
-## Greybox looks per skill: tint and size of the flying sphere.
-const LOOKS := {
-	&"prototype_frost_orb": {"colour": Color(0.55, 0.8, 1.0), "radius": 0.18},
-	&"prototype_ember_bolt": {"colour": Color(1.0, 0.55, 0.15), "radius": 0.13},
-	&"prototype_bow_shot": {"colour": Color(0.92, 0.86, 0.7), "radius": 0.09},
-}
+const LOOK = preload("res://art/combat_feel.tres")
+var visual: Node3D
+var visual_profile := ""
 
 var skill_id: StringName = &"prototype_frost_orb"
 var combat: PlayerCombat
@@ -52,19 +49,15 @@ func _ready() -> void:
 	_fork_range = spatial.get("fork_range_m", 7.0)
 	_pierce_left = combat.sim.skill_pierce(String(skill_id))
 
-	var look: Dictionary = LOOKS.get(skill_id, {"colour": Color(0.9, 0.9, 0.9), "radius": 0.15})
-	var mesh := MeshInstance3D.new()
-	var sphere := SphereMesh.new()
-	sphere.radius = look["radius"]
-	sphere.height = look["radius"] * 2.0
-	var material := StandardMaterial3D.new()
-	material.albedo_color = look["colour"]
-	material.emission_enabled = true
-	material.emission = look["colour"]
-	material.emission_energy_multiplier = 2.0
-	sphere.material = material
-	mesh.mesh = sphere
-	add_child(mesh)
+	var def: Dictionary = combat.skills.get(skill_id,{})
+	visual_profile = LOOK.profile(def,spatial)
+	visual = CombatVisuals.projectile(visual_profile,LOOK.colour(def))
+	add_child(visual)
+	visual.quaternion = Quaternion(Vector3.FORWARD,direction)
+
+func _process(delta: float) -> void:
+	if visual_profile == "frost":
+		visual.rotate_object_local(Vector3.FORWARD,delta*2.0)
 
 
 func _physics_process(delta: float) -> void:

@@ -12,6 +12,8 @@ signal hit_landed(total_damage: float, kills: int, types: PackedStringArray)
 ## Damage got through to the player; the HUD names the source so a hit
 ## from out of sight is never a mystery.
 signal hit_taken(damage: float, source_name: String)
+## Presentation-only incoming bearing. Zero means no known planar source.
+signal damage_bearing(damage: float, toward_source: Vector3)
 ## Known skills or the bar changed (page learned, slot assigned, game
 ## loaded); the action bar rebuilds itself from the sim.
 signal loadout_changed
@@ -1005,7 +1007,7 @@ func _nearest_enemy_in_front(reach: float) -> Enemy:
 ## source, when it is a mob, brings the statuses it carries for the Ward
 ## reading, and the armour a cast granted counts with the sheet's (D-023
 ## slice 2).
-func take_hit(raw_damage: float, damage_type: String, source_name := "", source: Node = null) -> float:
+func take_hit(raw_damage: float, damage_type: String, source_name := "", source: Node = null, incoming_direction := Vector3.ZERO) -> float:
 	if invulnerable_left > 0.0 or life <= 0.0:
 		return 0.0
 	_ensure_fight()
@@ -1021,6 +1023,11 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	_settle_left = _settle_seconds
 	life_changed.emit(life, max_life)
 	hit_taken.emit(last_hit_taken, source_name + ("  ·  the train x%.1f" % train if train > 1.0 else ""))
+	if last_hit_taken > 0.0:
+		var bearing: Vector3 = incoming_direction
+		if bearing.is_zero_approx() and source is Node3D:
+			bearing = source.global_position - player.global_position
+		damage_bearing.emit(last_hit_taken, bearing)
 	_answer_hit(source)
 	fight_noise(get_parent().global_position)
 	if source is Enemy:

@@ -66,6 +66,11 @@ quest log (no quests: D-011), diegetic 3D inventory props.
    piece with the existing refund, even when a horn is carried. A miss never
    sounds the horn. Outside build mode X blows a carried horn. Interactive
    panels block either action (owner-reported conflict fixed 5 Sep 2026).
+8. **Landed damage has a bearing, when known.** A brief arc around the
+   crosshair points toward the incoming hit (rear is below). It remembers
+   the hit rather than tracking a live enemy; camera turns reorient it.
+   Non-directional damage uses a faint ring. See the
+   [combat presentation pass](../art/codex-combat-presentation-2026-09-05.md).
 
 ## Layout
 
