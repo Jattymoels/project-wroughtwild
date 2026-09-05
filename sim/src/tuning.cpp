@@ -753,9 +753,10 @@ ConstructionTable loadConstruction(const std::string& path) {
         if (auto form = s->find("form")) {
             shape.form = form->asString();
             if (shape.form != "box" && shape.form != "stairs" && shape.form != "wedge" && shape.form != "door" &&
-                shape.form != "arch" && shape.form != "fire" && shape.form != "low" && shape.form != "chest")
+                shape.form != "arch" && shape.form != "fire" && shape.form != "low" && shape.form != "chest" &&
+                shape.form != "corner")
                 throw std::runtime_error("construction: shape '" + shape.id +
-                                         "' form must be box, stairs, wedge, door, arch, fire, low or chest");
+                                         "' form must be box, stairs, wedge, door, arch, fire, low, chest or corner");
         }
         if (auto oriented = s->find("oriented")) shape.oriented = oriented->asBool();
         if (auto tall = s->find("cells_tall")) {

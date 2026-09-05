@@ -1,0 +1,10 @@
+{
+  "id": "codex_corner",
+  "display_name": "Experimental Chamfer Block",
+  "material_cost": 2,
+  "size_m": [1.0, 1.0, 1.0],
+  "element": "block",
+  "form": "corner",
+  "oriented": true,
+  "design_purpose": "Codex lab only: a triangular prism reserves one whole block. Same placeholder cost as cube, not an accepted unlock or economy decision. Tests whether thick chamfers can support an octagonal home without new lattice addresses."
+}

@@ -324,6 +324,13 @@ require fuel (`only_for_trait`). See fire-setting in
 
 ## Open questions
 
+**Codex experiment, 5 Sep 2026 (not Claude):** a lab-only triangular `corner`
+block now tests chamfered rooms on existing volume addresses. Placement,
+convex collision and schema-2 save restoration work with its fixture loaded.
+The empty half of the cell is physically clear but loses shelter; the outside
+of the wall remains stepped. No normal catalogue entry or unlock was added.
+See [findings and limitations](../art/codex-aesthetic-experiments-2026-09-05.md).
+
 - Final prototype grid size.
 - Minimum coherent diagonal/transition set.
 - Whether rare natural shapes exist as exact decorative objects.

@@ -84,7 +84,10 @@ static func _blob(st: SurfaceTool, center: Vector3, radius: float, squash: float
 			color = accent
 		elif rng.randf() < dark_chance:
 			color = dark
-		_facet(st, warped[face[0]], warped[face[1]], warped[face[2]], _jittered(color, rng))
+		# Codex, 5 Sep 2026: canonical ico faces are counterclockwise;
+		# Godot fronts are clockwise. Reversing prevents hollow canopies
+		# and inward-lit rocks without changing their shape or seed.
+		_facet(st, warped[face[0]], warped[face[2]], warped[face[1]], _jittered(color, rng))
 
 
 ## A tapering, slightly crooked trunk: hexagonal rings whose centres lean
@@ -106,8 +109,8 @@ static func _trunk(st: SurfaceTool, rng: RandomNumberGenerator) -> Vector3:
 		for s in 6:
 			var t: int = (s + 1) % 6
 			var color := _jittered(BARK_DARK if rng.randf() < 0.3 else BARK, rng)
-			_facet(st, rings[i][s], rings[i + 1][s], rings[i][t], color)
-			_facet(st, rings[i][t], rings[i + 1][s], rings[i + 1][t], color)
+			_facet(st, rings[i][s], rings[i][t], rings[i + 1][s], color)
+			_facet(st, rings[i][t], rings[i + 1][t], rings[i + 1][s], color)
 	return Vector3(0, heights[2], 0) + lean
 
 

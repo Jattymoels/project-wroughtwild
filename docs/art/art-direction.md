@@ -132,3 +132,12 @@ bloodless.
 Day/night cycle, weather, character models, animated foliage, post-FX
 beyond fog/tonemap, and any texture above 16×16. Each becomes worth doing
 only after the block world reads coherently with what is here.
+
+## Codex comparison experiment
+
+**Codex experiment note, 5 Sep 2026:** the owner authorised an opt-in aesthetic
+comparison. [Results and reproduction](codex-aesthetic-experiments-2026-09-05.md)
+document continuous terrain materials, tapered cover and a procedural prop
+winding repair. Authored and implemented by **Codex (OpenAI), not Claude**.
+The material candidate is experimental; this accepted direction remains the
+default. The prop repair restores the intended exterior faces in both looks.

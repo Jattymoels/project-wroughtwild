@@ -19,6 +19,9 @@ echo "== import =="
 echo "== unit tests =="
 "$GODOT" --headless --path . --script tests/run_tests.gd
 
+echo "== Codex art regression checks =="
+"$GODOT" --headless --path . --script tests/art_checks.gd
+
 echo "== integration test (physics + placement loop) =="
 "$GODOT" --headless --path . res://tests/integration.tscn
 

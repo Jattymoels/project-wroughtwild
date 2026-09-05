@@ -93,7 +93,8 @@ static func _roll(x: int, z: int, kind: String, salt: int) -> float:
 ## Grows the cover for one chunk from the sim's chunk data (block centres
 ## by kind) and the map (heights and biomes per cell). Only a block whose
 ## top is the surface carries cover. Returns the instances placed.
-static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictionary, cell: float) -> int:
+static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictionary, cell: float,
+		frontier_look: Resource = null) -> int:
 	if map.is_empty() or not map.has("heights") or not map.has("biomes"):
 		return 0
 	var width := int(map["width"])
@@ -124,10 +125,15 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 				if not (String(kind) in entry["on"]):
 					continue
 				var salt := 11
-				if _roll(cx, cz, String(entry["kind"]), salt) >= float(entry["density"]):
+				var density := float(entry["density"])
+				if frontier_look != null:
+					density *= float(frontier_look.cover_density(cx, cz))
+				if _roll(cx, cz, String(entry["kind"]), salt) >= density:
 					continue
 				var yaw := _roll(cx, cz, String(entry["kind"]), 23) * TAU
 				var size := 0.75 + _roll(cx, cz, String(entry["kind"]), 37) * 0.5
+				if frontier_look != null:
+					size *= float(frontier_look.cover_scale)
 				var offset := Vector3((_roll(cx, cz, String(entry["kind"]), 41) - 0.5) * 0.5, 0.0, (_roll(cx, cz, String(entry["kind"]), 43) - 0.5) * 0.5)
 				var at := Vector3(centre.x, float(surface), centre.z) + offset
 				var basis := Basis(Vector3.UP, yaw).scaled(Vector3(size, size, size))
@@ -142,17 +148,20 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 		# A MultiMesh carries colour per instance, not per vertex: each card
 		# is tinted somewhere between the kind's two colours by its cell.
 		multimesh.use_colors = true
-		multimesh.mesh = _mesh_for(entry)
+		multimesh.mesh = _mesh_for(entry) if frontier_look == null else frontier_look.cover_mesh(entry)
 		multimesh.instance_count = transforms.size()
 		for i in transforms.size():
 			multimesh.set_instance_transform(i, transforms[i])
 			var origin: Vector3 = (transforms[i] as Transform3D).origin
 			var blend := _roll(int(floor(origin.x)), int(floor(origin.z)), String(entry["kind"]), 53)
-			multimesh.set_instance_color(i, (entry["dark"] as Color).lerp(entry["colour"], 0.35 + 0.65 * blend))
+			var tint := (entry["dark"] as Color).lerp(entry["colour"], 0.35 + 0.65 * blend)
+			if frontier_look != null:
+				tint = Color.WHITE.darkened(blend * 0.15)
+			multimesh.set_instance_color(i, tint)
 		var instance := MultiMeshInstance3D.new()
 		instance.name = "Cover_%s" % kind
 		instance.multimesh = multimesh
-		instance.material_override = _shared_material()
+		instance.material_override = _shared_material() if frontier_look == null else frontier_look.cover_material()
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		chunk.add_child(instance)
 		placed += transforms.size()

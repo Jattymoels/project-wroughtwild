@@ -1,7 +1,7 @@
 class_name PieceMesh
 ## Meshes and collision for construction pieces by form (construction.json
-## "form"): box, stairs, wedge, door. Static so the placement preview and
-## PlacedBlock build the same geometry, and so the shapes stay testable
+## "form"): box, stairs, wedge, door; lab-only corner. Static so placement
+## previews and PlacedBlock build the same geometry, and shapes stay testable
 ## without a scene. Sizes are metres; every mesh is centred on the piece's
 ## pose, faces -z as "front" (stairs rise toward +z, the wedge's high side
 ## is +z), and the door leaf hangs from the local -x edge.
@@ -16,6 +16,13 @@ const ARCH_STRIPS := 12
 ## The render mesh for a form at a size.
 static func mesh_for(form: String, size: Vector3) -> Mesh:
 	match form:
+		"corner":
+			# Codex experiment: a roof wedge stood on its end, still one block.
+			var st := SurfaceTool.new()
+			st.begin(Mesh.PRIMITIVE_TRIANGLES)
+			st.append_from(_wedge_mesh(Vector3(size.y, size.x, size.z)), 0,
+				Transform3D(Basis(Vector3.FORWARD, PI * 0.5), Vector3.ZERO))
+			return st.commit()
 		"fire":
 			return _fire_mesh(size)
 		"low":
@@ -68,6 +75,10 @@ static func preview_mesh_for(form: String, size: Vector3) -> Mesh:
 ## space. Stairs are two boxes, the wedge a convex hull, the rest one box.
 static func collision_for(form: String, size: Vector3) -> Array:
 	match form:
+		"corner":
+			var hull := ConvexPolygonShape3D.new()
+			hull.points = _wedge_points(Vector3(size.y, size.x, size.z))
+			return [{"shape": hull, "transform": Transform3D(Basis(Vector3.FORWARD, PI * 0.5), Vector3.ZERO)}]
 		"chest":
 			var chest := BoxShape3D.new()
 			chest.size = size

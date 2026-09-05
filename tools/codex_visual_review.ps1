@@ -1,0 +1,55 @@
+# Codex, 5 Sep 2026. Reproduce the aesthetic comparison with stock Godot.
+param(
+    [string]$Godot = 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe',
+    [switch]$Checks,
+    [switch]$Octagon
+)
+$ErrorActionPreference = 'Stop'
+$repo = Split-Path $PSScriptRoot
+$project = Join-Path $repo 'game'
+$logs = Join-Path $repo 'build/codex-aesthetic/logs'
+New-Item -ItemType Directory -Force -Path $logs | Out-Null
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'codex_aesthetic_gallery.html') -Destination (Join-Path $repo 'build/codex-aesthetic/index.html')
+
+function Invoke-GodotReview([string]$Name, [string]$Arguments, [int]$Seconds = 55) {
+    $outLog = Join-Path $logs ($Name + '.out.log')
+    $errLog = Join-Path $logs ($Name + '.err.log')
+    Write-Output "Codex check: $Name"
+    $process = Start-Process -FilePath $Godot -ArgumentList "--path `"$project`" $Arguments" -WindowStyle Hidden -RedirectStandardOutput $outLog -RedirectStandardError $errLog -PassThru
+    $processHandle = $process.Handle # Retain the exit code after Windows closes the process.
+    if (-not $process.WaitForExit($Seconds * 1000)) {
+        # The Windows console wrapper may own a child Godot process. Stop
+        # only this invocation, never an editor/game belonging to the owner.
+        $children = Get-CimInstance Win32_Process -Filter "ParentProcessId = $($process.Id)"
+        foreach ($child in $children) { Stop-Process -Id $child.ProcessId -Force -ErrorAction SilentlyContinue }
+        Stop-Process -Id $process.Id -Force -ErrorAction SilentlyContinue
+        throw "$Name exceeded $Seconds seconds; see $logs"
+    }
+    $text = (Get-Content -LiteralPath $outLog,$errLog -ErrorAction SilentlyContinue) -join "`n"
+    $text -split "`n" | Select-String -Pattern 'CODEX_|checks|FAIL|SCRIPT ERROR|ERROR:|Godot Engine|Vulkan' | ForEach-Object { $_.Line }
+    # Existing unit tests deliberately exercise invalid input and leave some
+    # off-tree render fixtures at exit. Match the original pipeline's exit
+    # contract for that suite, but always reject parse errors/failed checks.
+    $unexpectedEngineError = $Name -ne 'unit' -and $text -match '(?m)^ERROR:'
+    if ($process.ExitCode -ne 0 -or $text -match '(?m)^(SCRIPT ERROR|FAIL)' -or $unexpectedEngineError) {
+        throw "$Name failed (exit $($process.ExitCode)); see $logs"
+    }
+}
+
+if ($Checks) {
+    try { Invoke-GodotReview 'import' '--headless --import' }
+    catch { Invoke-GodotReview 'import-retry' '--headless --import' }
+    Invoke-GodotReview 'unit' '--headless --script res://tests/run_tests.gd'
+    Invoke-GodotReview 'art' '--headless --script res://tests/art_checks.gd'
+    foreach ($scene in @('integration','horde','grammar','feel')) {
+        Invoke-GodotReview $scene "--headless res://tests/$scene.tscn"
+    }
+    Invoke-GodotReview 'smoke' '--headless --quit-after 120'
+    Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Octagon) {
+    Invoke-GodotReview 'octagon-headless' '--headless res://experiments/octagon_lab.tscn'
+    Invoke-GodotReview 'octagon-windowed' '--position -9999,-9999 res://experiments/octagon_lab.tscn'
+} else {
+    Invoke-GodotReview 'baseline' '--position -9999,-9999 --quit-after 400 res://experiments/aesthetic_comparison.tscn'
+    Invoke-GodotReview 'frontier' '--position -9999,-9999 --quit-after 400 res://experiments/aesthetic_comparison.tscn -- --frontier-look'
+}

@@ -59,6 +59,8 @@ var _expire_timer := 0.0
 const KIND_NAMES := {1: "surface", 2: "dirt", 3: "stone", 4: "bedrock"}
 
 var _materials := {}
+## Codex aesthetic comparison, opt-in; never serialized into a world save.
+var frontier_look: Resource
 var _sim: WroughtwildSim
 var _seed := 0
 ## Mutable copy of the sim's block field with the player's digs applied.
@@ -126,9 +128,13 @@ func surface_position(x: int, z: int) -> Vector3:
 	return Vector3((x + 0.5) * cell, float(height_at(x, z)), (z + 0.5) * cell)
 
 
-func _material_for(kind: String) -> StandardMaterial3D:
+func _material_for(kind: String) -> Material:
 	if _materials.has(kind):
 		return _materials[kind]
+	if frontier_look != null:
+		var frontier_material: Material = frontier_look.terrain_material(kind, float(map.get("cell_size", 1.0)))
+		_materials[kind] = frontier_material
+		return frontier_material
 	var material := StandardMaterial3D.new()
 	material.albedo_texture = load(KIND_TEXTURES.get(kind, KIND_TEXTURES["rock"]))
 	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
@@ -140,6 +146,9 @@ func _material_for(kind: String) -> StandardMaterial3D:
 
 
 func build(sim: WroughtwildSim, seed_value: int) -> void:
+	if OS.get_cmdline_user_args().has("--frontier-look"):
+		frontier_look = preload("res://art/frontier_look.tres")
+	_materials.clear()
 	for child in get_children():
 		remove_child(child)
 		child.free()
@@ -200,7 +209,7 @@ func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 
 	# Ground cover per biome (Wave 6 slice 4): tufts, ferns, reeds, dead
 	# grass on the surface blocks, batched per chunk and kind.
-	GroundCover.build_for_chunk(chunk, chunk_data, map, cell)
+	GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look)
 
 	var faces: PackedVector3Array = chunk_data["faces"]
 	if not faces.is_empty():
