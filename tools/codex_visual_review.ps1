@@ -13,7 +13,8 @@ param(
     [switch]$Traversal,
     [switch]$Weathered,
     [switch]$Grounding,
-    [switch]$FieldRoute
+    [switch]$FieldRoute,
+    [switch]$Characters
 )
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot
@@ -61,7 +62,11 @@ if ($Checks) {
     Invoke-GodotReview 'roof-workshop-headless' '--headless res://experiments/roof_workshop.tscn'
     Invoke-GodotReview 'woodland-headless' '--headless res://experiments/woodland_comparison.tscn'
     Invoke-GodotReview 'weathered-save' '--headless res://tests/weathered_save.tscn'
+    Invoke-GodotReview 'presentation' '--headless res://tests/presentation_checks.tscn'
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
+} elseif ($Characters) {
+    Invoke-GodotReview 'presentation' '--headless res://tests/presentation_checks.tscn'
+    Invoke-GodotReview 'characters' '--position -9999,-9999 res://experiments/character_review.tscn'
 } elseif ($Weathered) {
     Invoke-GodotReview 'landform-weathered' '--position -9999,-9999 --quit-after 400 res://experiments/landform_comparison.tscn -- --landform-look --weathered-look'
     Invoke-GodotReview 'woodland-weathered' '--position -9999,-9999 res://experiments/woodland_comparison.tscn -- --weathered-look'

@@ -15,6 +15,10 @@ uniform bool world_mesh = false;
 uniform bool soft_terrain = false;
 uniform float turf_slope_start = 0.25;
 uniform float turf_slope_end = 0.8;
+uniform float surface_contrast = 0.0;
+uniform float strata_metres = 0.32;
+uniform float grain_metres = 0.065;
+uniform bool stony = false;
 varying vec3 world_position;
 varying vec3 world_normal;
 varying float block_height;
@@ -44,6 +48,26 @@ void vertex() {
 	}
 }
 
+// Irregular mineral plates; the nearest-two distance gap marks their joins.
+float plate_edge(vec2 p) {
+	vec2 cell = floor(p);
+	vec2 local = fract(p);
+	float first = 8.0;
+	float second = 8.0;
+	for (int y = -1; y <= 1; y++) {
+		for (int x = -1; x <= 1; x++) {
+			vec2 offset = vec2(float(x),float(y));
+			vec2 id = cell + offset;
+			vec2 jitter = vec2(hash_point(vec3(id,13.0)),hash_point(vec3(id,37.0)));
+			vec2 delta = offset + 0.15 + jitter * 0.7 - local;
+			float distance = dot(delta,delta);
+			second = min(second,max(first,distance));
+			first = min(first,distance);
+		}
+	}
+	return second-first;
+}
+
 void fragment() {
 	float broad = noise_at(world_position / patch_metres);
 	float grain = noise_at(world_position / detail_metres);
@@ -57,5 +81,40 @@ void fragment() {
 	}
 	vec3 base = grassy ? mix(side_colour.rgb, top_colour.rgb, turf) : top_colour.rgb;
 	ALBEDO = base * (1.0 + variation);
+	if (surface_contrast > 0.0) {
+		// World-space detail survives chunk joins and digging. Distinct scales:
+		// metre-wide weathering, broken bedding, then centimetre-scale grit.
+		vec3 p = world_position;
+		float weather = noise_at(p * vec3(0.7, 1.4, 0.7));
+		float chips = noise_at(p * 4.5 + vec3(weather * 1.3));
+		float footprint = max(length(dFdx(p)), length(dFdy(p)));
+		float fine_fade = 1.0 - smoothstep(grain_metres * 0.3, grain_metres, footprint);
+		float grit = (noise_at(p / grain_metres) - 0.5) * fine_fade;
+		float slope = 1.0 - smoothstep(0.35, 0.9, normalize(world_normal).y);
+		float layer = abs(sin((p.y / strata_metres + weather * 2.2 + chips * 0.14) * 3.14159));
+		float bedding = 1.0 - smoothstep(0.04, 0.21, layer);
+		// Intersecting irregular fracture lines break up otherwise blank rock tops.
+		float fracture = 0.0;
+		if (stony) {
+			vec3 weights = pow(abs(normalize(world_normal)),vec3(4.0));
+			weights /= dot(weights,vec3(1.0));
+			vec3 plate = p * 1.8 + vec3(weather * 0.2);
+			float edge_x = 1.0-smoothstep(0.008,0.035,plate_edge(plate.yz));
+			float edge_y = 1.0-smoothstep(0.008,0.035,plate_edge(plate.xz));
+			float edge_z = 1.0-smoothstep(0.008,0.035,plate_edge(plate.xy));
+			fracture = dot(weights,vec3(edge_x,edge_y,edge_z));
+		}
+		float mineral = smoothstep(0.52, 0.74, weather);
+		if (stony) {
+			ALBEDO *= 1.0 + surface_contrast * ((weather - 0.5) * 0.8 + grit * 0.65 - bedding * slope * 0.52 - fracture * 0.3);
+			ALBEDO = mix(ALBEDO, ALBEDO * vec3(1.14, 1.08, 0.91), mineral * 0.55);
+		} else {
+			float bare = smoothstep(0.43, 0.69, weather + (chips - 0.5) * 0.25);
+			if (grassy) {
+				ALBEDO = mix(ALBEDO, side_colour.rgb, bare * turf * surface_contrast * 0.5);
+			}
+			ALBEDO *= 1.0 + surface_contrast * ((chips - 0.5) * 0.7 + grit * 1.1 - bare * 0.18);
+		}
+	}
 	ROUGHNESS = 1.0;
 }

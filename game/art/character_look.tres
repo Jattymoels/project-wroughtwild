@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://art/character_look.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+design_purpose = {
+"name_font_size": "32-pixel source glyphs keep compact enemy names sharp.",
+"name_pixel_size": "World size of each glyph pixel before the close-range size cap.",
+"name_reference_distance": "Within six metres names shrink with distance to avoid filling the screen.",
+"name_distance": "Hide overhead names beyond 24 metres; targeting HUD still reports the aimed enemy.",
+"name_focus_degrees": "Names appear within sixteen degrees of view centre, reducing peripheral crowd clutter."
+}

@@ -83,6 +83,10 @@ func _apply_visual() -> void:
 	# along a row or a column of cells and follows their surface heights, so
 	# it lies flush on the blocks it crosses. The collider is the line.
 	if visual == &"seam" or String(visual).ends_with("_vein"):
+		if _terrain() != null and _terrain().faceted_surface:
+			refresh_surface()
+			_refresh_wedge_look()
+			return
 		var along_x: bool = _visual_seed() % 2 == 0
 		mesh_instance.rotation.y = 0.0 if along_x else PI * 0.5
 		var rises := _rises(along_x)
@@ -111,15 +115,18 @@ func _apply_visual() -> void:
 			# forest, a snag in the wastes, the broadleaf elsewhere.
 			match _biome_id():
 				"forest":
-					mesh_instance.mesh = PropMesh.build_pine(_visual_seed())
+					if not _uses_branching_tree():
+						mesh_instance.mesh = PropMesh.build_pine(_visual_seed())
 					shape.size = Vector3(0.7, 3.6, 0.7)
 					collider.position = Vector3(0, 1.8, 0)
 				"ember_wastes":
-					mesh_instance.mesh = PropMesh.build_snag(_visual_seed())
+					if not _uses_branching_tree():
+						mesh_instance.mesh = PropMesh.build_snag(_visual_seed())
 					shape.size = Vector3(0.6, 2.6, 0.6)
 					collider.position = Vector3(0, 1.3, 0)
 				_:
-					mesh_instance.mesh = PropMesh.build_tree(_visual_seed())
+					if not _uses_branching_tree():
+						mesh_instance.mesh = PropMesh.build_tree(_visual_seed())
 					# Collision stays the trunk only: you can stand under the canopy.
 					shape.size = Vector3(0.7, 3.0, 0.7)
 					collider.position = Vector3(0, 1.5, 0)
@@ -203,6 +210,9 @@ func _biome_id() -> String:
 func _terrain() -> Terrain:
 	var root := get_parent()
 	return root.get_parent() as Terrain if root != null and root.get_parent() is Terrain else null
+
+func _uses_branching_tree() -> bool:
+	return OS.get_cmdline_user_args().has("--crafted-look") or (_terrain() != null and _terrain().weathered)
 
 
 ## The surface height of the cell before, the node's own, and the cell

@@ -26,11 +26,31 @@ extends Resource
 @export var detail_distance := 0.0
 @export var tree_distance := 0.0
 @export var cover_distance := 0.0
+@export var surface_contrast := 0.0
+@export var strata_metres := 0.32
+@export var grain_metres := 0.065
+@export var scree_density := 0.0
+@export var scree_width := 0.34
+@export var scree_height := 0.1
 @export var design_purpose: Dictionary = {}
 
 var _noise: FastNoiseLite
 var _meshes: Dictionary = {}
 var _cover_material: ShaderMaterial
+var _scree_material: StandardMaterial3D
+
+func scree_entry() -> Dictionary:
+	return {"kind":"scree", "on":["rock","stone","dirt","grass","forest_floor","ash"],
+		"density":scree_density,"height":scree_height,"width":scree_width,
+		"colour":Color(0.39,0.39,0.36),"dark":Color(0.26,0.27,0.25)}
+
+func scree_material() -> StandardMaterial3D:
+	if _scree_material == null:
+		_scree_material = StandardMaterial3D.new()
+		_scree_material.vertex_color_use_as_albedo = true
+		_scree_material.vertex_color_is_srgb = true
+		_scree_material.roughness = 1.0
+	return _scree_material
 
 func terrain_material(kind: String, cell: float) -> ShaderMaterial:
 	var material := ShaderMaterial.new()
@@ -46,6 +66,10 @@ func terrain_material(kind: String, cell: float) -> ShaderMaterial:
 	material.set_shader_parameter("soft_terrain", soft_terrain)
 	material.set_shader_parameter("turf_slope_start", turf_slope_start)
 	material.set_shader_parameter("turf_slope_end", turf_slope_end)
+	material.set_shader_parameter("surface_contrast", surface_contrast)
+	material.set_shader_parameter("strata_metres", strata_metres)
+	material.set_shader_parameter("grain_metres", grain_metres)
+	material.set_shader_parameter("stony", kind in ["rock", "stone", "bedrock"])
 	return material
 
 func cover_density(x: int, z: int) -> float:
@@ -61,6 +85,29 @@ func cover_mesh(entry: Dictionary) -> ArrayMesh:
 	var key := str(entry)
 	if _meshes.has(key):
 		return _meshes[key]
+	if entry.kind == "scree":
+		var chips := SurfaceTool.new()
+		chips.begin(Mesh.PRIMITIVE_TRIANGLES)
+		var w := float(entry.width)*0.5
+		var h := float(entry.height)
+		var rim := [Vector3(-w,0,0),Vector3(0,0,-w*0.75),Vector3(w,0,0),Vector3(0,0,w)]
+		for i in 4:
+			for tip in [Vector3(w*0.12,h,0),Vector3(0,-h*0.4,0)]:
+				var a: Vector3 = rim[i]
+				var b: Vector3 = rim[(i+1)%4]
+				var n: Vector3 = (tip-a).cross(b-a)
+				if n.dot((a+b+tip)/3.0)<0.0:
+					var swap := a
+					a = b
+					b = swap
+				chips.set_normal((tip-a).cross(b-a).normalized())
+				chips.set_color(entry.colour if tip.y>0.0 else entry.dark)
+				for vertex in [a,b,tip]:
+					chips.add_vertex(vertex)
+		var mesh := chips.commit()
+		mesh.surface_set_material(0,scree_material())
+		_meshes[key] = mesh
+		return mesh
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var height := float(entry["height"])

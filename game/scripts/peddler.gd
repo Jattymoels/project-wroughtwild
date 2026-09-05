@@ -12,24 +12,14 @@ var _label: Label3D
 func _ready() -> void:
 	add_to_group("peddlers")
 	var material := StandardMaterial3D.new()
-	material.albedo_color = Color(0.55, 0.42, 0.62)
+	material.vertex_color_use_as_albedo = true
+	material.vertex_color_is_srgb = true
+	material.roughness = 1.0
 	_mesh = MeshInstance3D.new()
-	var body := CapsuleMesh.new()
-	body.radius = 0.4
-	body.height = 1.8
-	_mesh.mesh = body
+	_mesh.mesh = preload("res://art/character_look.tres").build("peddler")
 	_mesh.material_override = material
-	_mesh.position = Vector3(0, 0.9, 0)
+	_mesh.scale = Vector3.ONE * 1.08
 	add_child(_mesh)
-	var pack := MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size = Vector3(0.7, 0.8, 0.5)
-	pack.mesh = box
-	var pack_material := StandardMaterial3D.new()
-	pack_material.albedo_color = Color(0.45, 0.32, 0.2)
-	pack.material_override = pack_material
-	pack.position = Vector3(0, 1.1, 0.5)
-	add_child(pack)
 	var shape := CollisionShape3D.new()
 	var capsule := CapsuleShape3D.new()
 	capsule.radius = 0.45
@@ -38,6 +28,7 @@ func _ready() -> void:
 	shape.position = Vector3(0, 0.9, 0)
 	add_child(shape)
 	_label = Label3D.new()
+	_label.set_script(preload("res://scripts/actor_nameplate.gd"))
 	_label.text = "Peddler"
 	_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	_label.font_size = 40

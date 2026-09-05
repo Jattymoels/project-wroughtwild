@@ -1,5 +1,11 @@
 # Decision Registry
 
+Owner follow-through, 5 Sep 2026 (D-013 presentation): retain smoother terrain
+silhouettes but add material definition and ground detail in response to the
+owner's screenshot of bland grey/soil bands. Continue prototype character
+silhouettes, bounded enemy labels, terrain-shadow review and startup optimisation.
+Implementation evidence: [surface/character pass](../art/codex-surface-character-2026-09-05.md).
+
 Statuses:
 
 - **Accepted:** use as a requirement until deliberately superseded.

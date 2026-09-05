@@ -102,6 +102,12 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 	var heights: PackedInt32Array = map["heights"]
 	var biomes: PackedInt32Array = map["biomes"]
 	var defs: Array = map.get("biome_defs", [])
+	var cover_by_biome: Array = []
+	for definition in defs:
+		var entries: Array = COVER.get(String(definition.get("id","")), []).duplicate()
+		if frontier_look != null and frontier_look.scree_density>0.0:
+			entries.append(frontier_look.scree_entry())
+		cover_by_biome.append(entries)
 	var kinds: Dictionary = chunk_data.get("kinds", {})
 	var placed := 0
 	# Gather instances per cover kind, then one MultiMesh each.
@@ -120,8 +126,7 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 			var biome_index := biomes[cz * width + cx]
 			if biome_index < 0 or biome_index >= defs.size():
 				continue
-			var biome_id := String(defs[biome_index].get("id", ""))
-			for entry in COVER.get(biome_id, []):
+			for entry in cover_by_biome[biome_index]:
 				if not (String(kind) in entry["on"]):
 					continue
 				var salt := 11
@@ -155,8 +160,16 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 		multimesh.use_colors = true
 		multimesh.mesh = _mesh_for(entry) if frontier_look == null else frontier_look.cover_mesh(entry)
 		multimesh.instance_count = transforms.size()
+		# Visibility ranges are measured from the instance origin. Keep each
+		# batch centred on its plants, not at the world's distant (0,0,0).
+		var batch_origin := Vector3.ZERO
+		for transform: Transform3D in transforms:
+			batch_origin += transform.origin
+		batch_origin /= float(transforms.size())
 		for i in transforms.size():
-			multimesh.set_instance_transform(i, transforms[i])
+			var local: Transform3D = transforms[i]
+			local.origin -= batch_origin
+			multimesh.set_instance_transform(i, local)
 			var origin: Vector3 = (transforms[i] as Transform3D).origin
 			var blend := _roll(int(floor(origin.x)), int(floor(origin.z)), String(entry["kind"]), 53)
 			var tint := (entry["dark"] as Color).lerp(entry["colour"], 0.35 + 0.65 * blend)
@@ -165,8 +178,11 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 			multimesh.set_instance_color(i, tint)
 		var instance := MultiMeshInstance3D.new()
 		instance.name = "Cover_%s" % kind
+		instance.position = batch_origin
 		instance.multimesh = multimesh
 		instance.material_override = _shared_material() if frontier_look == null else frontier_look.cover_material()
+		if kind == "scree" and frontier_look != null:
+			instance.material_override = frontier_look.scree_material()
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		if frontier_look != null and frontier_look.cover_distance>0:
 			instance.visibility_range_end = frontier_look.cover_distance

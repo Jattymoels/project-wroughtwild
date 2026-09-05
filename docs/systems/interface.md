@@ -134,6 +134,13 @@ and why not" — is answerable from one screen without scrolling the HUD.
 
 ## Open questions
 
+Owner-authorised presentation continuation, 5 Sep 2026: enemy and peddler
+overhead labels now cap their projected size within six metres, remain
+depth-tested, and appear within 24 metres and sixteen degrees of view centre.
+Names, life numbers and elite gold remain; the existing aimed-target HUD is
+unchanged. Values and explanations live in `game/art/character_look.tres`
+(font 32, pixel size 0.006). This controls clutter, not detection or aggro.
+
 - Whether the holdings strip stays once the pack screen exists, or the HUD
   shows only the four construction families.
 - Whether the action bar should also host `E` (context action) as a fifth

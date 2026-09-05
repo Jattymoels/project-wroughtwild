@@ -73,6 +73,13 @@ func configure(sim: WroughtwildSim) -> void:
 	_material = _base_material
 	_base_albedo = _base_material.albedo_color
 	_mesh.material_override = _base_material
+	_mesh.mesh = preload("res://art/character_look.tres").build("boss")
+	_mesh.position.y = 0.0
+	_mesh.scale = Vector3(1.9,1.87,1.9)
+	for material in [_base_material,_telegraph_material]:
+		material.vertex_color_use_as_albedo = true
+		material.vertex_color_is_srgb = true
+		material.roughness = 1.0
 	state = "chase"
 	_refresh_label()
 

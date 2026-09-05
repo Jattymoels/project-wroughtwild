@@ -28,6 +28,14 @@ terrain tones are olive `(0.285, 0.365, 0.20)`, forest moss
 Threat VFX retain their established palette. See the
 [implementation and field evidence](codex-weathered-frontier-2026-09-05.md).
 
+The owner's subsequent screenshot feedback asks for **surface interest without
+returning to the old block distinction**. Smooth silhouettes must not become
+blank moulded surfaces: use broken stone bedding, mineral fractures, granular
+loam, worn turf and sparse physical fragments. The first character silhouette
+pass replaces capsules while preserving their gameplay bodies and threat
+colours. These are procedural prototype forms, not finished animated art.
+See [surface and character follow-through](codex-surface-character-2026-09-05.md).
+
 ## Historical brief — 1 September 2026
 
 Status: accepted direction (D-013). Owner's brief (1 Sep 2026): a compromise

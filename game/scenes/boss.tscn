@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/actor_nameplate.gd" id="2_label"]
 
 [sub_resource type="CapsuleShape3D" id="boss_shape"]
 radius = 0.9
@@ -22,6 +23,7 @@ position = Vector3(0, 1.6, 0)
 mesh = SubResource("boss_mesh")
 
 [node name="Label3D" type="Label3D" parent="."]
+script = ExtResource("2_label")
 position = Vector3(0, 3.8, 0)
 billboard = 1
 font_size = 48

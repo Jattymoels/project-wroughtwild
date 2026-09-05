@@ -1,6 +1,7 @@
 [gd_resource type="Resource" load_steps=2 format=3]
 [ext_resource type="Script" path="res://art/woodland_look.gd" id="1"]
 [resource]
+variant_count = 48
 script = ExtResource("1")
 radial_segments = 7
 irregularity = 0.23
@@ -13,6 +14,7 @@ profiles = {
 "ember_wastes": {"height": 3.7, "trunk_radius": 0.27, "lean": 0.38, "branches": 4, "spread": 0.85, "branch_rise": 0.95, "crown_radius": 0.0, "crown_depth": 0.0, "bark": Color(0.337,0.235,0.149,1), "leaf": Color(0.188,0.416,0.165,1), "leaf_dark": Color(0.125,0.298,0.11,1)}
 }
 design_purpose = {
+"variant_count": "48 deterministic branch shapes per biome share meshes to shorten startup; position, rotation and harvest state remain individual.",
 "irregularity": "Uneven radial crown edges break the symmetry of foliage masses.",
 "crown_stagger": "Spread branch starts farther up the trunk to open gaps between crowns.",
 "foliage_shade": "Lower foliage brightness before correct sRGB material conversion, giving deeper green masses.",

@@ -58,16 +58,23 @@ func _ray(at: Vector3) -> Dictionary:
 func _check_surfaces() -> void:
 	var count := 0
 	var valid := true
+	var centred := true
 	for chunk in terrain.chunks.values():
 		for child in chunk.get_children():
 			if not child is MultiMeshInstance3D or not String(child.name).begins_with("Cover_"):
 				continue
+			var centre := Vector3.ZERO
 			for i in child.multimesh.instance_count:
-				var at: Vector3 = child.multimesh.get_instance_transform(i).origin
+				var at: Vector3 = child.to_global(child.multimesh.get_instance_transform(i).origin)
+				centre += at
 				var hit := _ray(at)
 				valid = valid and not hit.is_empty() and absf(hit.position.y-at.y-0.015)<0.002
 				count += 1
+			centre /= float(child.multimesh.instance_count)
+			centred = centred and centre.distance_to(child.global_position)<0.002
 	check(count>20 and valid,"decorative cover roots lie on collision triangles, including slopes: %d samples" % count)
+	check(centred,"cover distance-fade origins stay at the centre of their actual plants")
+	print("CODEX_COVER_ROOTS ",count)
 	var mesh: MeshInstance3D = seam.get_node("MeshInstance3D")
 	valid = mesh.mesh != null
 	if valid:

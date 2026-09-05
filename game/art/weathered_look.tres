@@ -7,6 +7,12 @@ script = ExtResource("1")
 patch_metres = 12.0
 detail_metres = 0.8
 colour_variation = 0.12
+surface_contrast = 0.55
+strata_metres = 0.32
+grain_metres = 0.11
+scree_density = 0.28
+scree_width = 0.34
+scree_height = 0.1
 soft_terrain = true
 turf_slope_start = 0.25
 turf_slope_end = 0.8
@@ -29,16 +35,22 @@ top_colours = {
 "marsh": Color(0.235, 0.28, 0.205, 1),
 "rock": Color(0.35, 0.365, 0.37, 1),
 "stone": Color(0.337, 0.337, 0.376, 1),
-"dirt": Color(0.416, 0.298, 0.188, 1),
+"dirt": Color(0.35, 0.275, 0.20, 1),
 "ash": Color(0.204, 0.18, 0.18, 1),
 "bedrock": Color(0.173, 0.173, 0.2, 1)
 }
 side_colours = {
-"grass": Color(0.416, 0.298, 0.188, 1),
+"grass": Color(0.35, 0.275, 0.20, 1),
 "forest_floor": Color(0.337, 0.235, 0.149, 1),
 "marsh": Color(0.25, 0.235, 0.18, 1)
 }
 design_purpose = {
+"scree_density": "Sparse patches of small, non-harvestable stone chips break up empty ground; 0.28 base chance per supported surface cell.",
+"scree_width": "34-centimetre stone fragments stay visually smaller than harvestable boulders.",
+"scree_height": "Ten-centimetre fragments add real local relief while remaining non-colliding decoration.",
+"surface_contrast": "Strength of slate fractures, soil granules and broken turf colour; zero preserves the earlier smooth material.",
+"strata_metres": "Average spacing of warped stone bedding on exposed banks, independent of voxel boundaries.",
+"grain_metres": "Size of the fine soil/stone grain, filtered out before it can shimmer at distance.",
 "linear_vertex_colours": "Convert authored sRGB cover colours to the linear values consumed by the foliage shader.",
 "cover_tint": "Earthier vegetation reduces pale green highlights without changing threat VFX.",
 "detail_distance": "Fade small boulders and mineral ribbons beyond 65 metres, preserving nearby harvesting reads.",

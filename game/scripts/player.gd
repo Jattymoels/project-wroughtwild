@@ -90,6 +90,14 @@ func _ready() -> void:
 
 	_tp_arm_length = spring_arm.spring_length
 	_tp_arm_position = spring_arm.position
+	body_mesh.mesh = preload("res://art/character_look.tres").build("player")
+	body_mesh.position.y = -0.96
+	body_mesh.scale = Vector3.ONE * 1.12
+	var body_material := StandardMaterial3D.new()
+	body_material.vertex_color_use_as_albedo = true
+	body_material.vertex_color_is_srgb = true
+	body_material.roughness = 1.0
+	body_mesh.material_override = body_material
 	_apply_camera_mode()
 
 	hud = Hud.new()
@@ -708,7 +716,7 @@ func _apply_camera_mode() -> void:
 	if first_person:
 		spring_arm.spring_length = 0.0
 		spring_arm.position = Vector3(0.0, FP_EYE_HEIGHT, 0.0)
-		# The capsule stays for shadows only, so the camera never sits inside it.
+		# The clothed silhouette casts shadows without obscuring the first-person view.
 		body_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 	else:
 		spring_arm.spring_length = _tp_arm_length

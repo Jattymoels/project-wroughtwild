@@ -301,6 +301,14 @@ nest and home, the shut-door siege) are shelved with it.
 
 ## Open questions
 
+The owner's follow-up surface-detail pass adds decorative stone fragments and
+repairs ground-cover distance fading: each MultiMesh origin is now centred on
+its own plants, with local instance transforms preserving their world positions.
+The sampler caches triangle coefficients using local offsets to preserve precision
+at map edges. Tree presentation shares 48 seeded mesh variants per biome;
+resource positions, individual rotations, collisions and save anchors stay intact.
+No generator, harvest yield or save schema changes accompany this optimisation.
+
 **Owner-approved continuation, 5 Sep 2026:** the normal sandpit now presents
 the same generated/save voxel field through the softer terrain and an earthy,
 less cartoon-like palette (revised D-013). Decorative plants sample the actual

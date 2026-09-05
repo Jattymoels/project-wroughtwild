@@ -4,8 +4,8 @@
 script = ExtResource("1")
 ambient_energy = 0.38
 shadow_distance = 120.0
-shadow_bias = 0.06
-shadow_normal_bias = 1.0
+shadow_bias = 0.08
+shadow_normal_bias = 1.5
 moods = {
 "meadow": {"sun_color":Color(1,0.94,0.84,1),"sun_energy":1.1,"ambient":0.45,"fog_color":Color(0.48,0.52,0.54,1),"fog_density":0.0018,"sky_top":Color(0.23,0.32,0.42,1),"sky_horizon":Color(0.57,0.60,0.61,1),"aerial":0.18},
 "rocky_hills": {"sun_color":Color(0.93,0.96,1,1),"sun_energy":1.05,"ambient":0.4,"fog_color":Color(0.45,0.5,0.56,1),"fog_density":0.0015,"sky_top":Color(0.24,0.32,0.43,1),"sky_horizon":Color(0.55,0.6,0.65,1),"aerial":0.22},
@@ -17,6 +17,6 @@ design_purpose = {
 "ambient_energy":"Reduce flat ambient fill so bark, stone and foliage carry depth; direct daylight stays readable.",
 "shadow_distance":"Concentrate shadow precision within 120 metres of the player; far scenery keeps its silhouette.",
 "shadow_bias":"Depth offset that suppresses thin self-shadow bands on foliage.",
-"shadow_normal_bias":"Normal offset for broad leaf masses; limits shadow acne without removing canopy shadows.",
+"shadow_normal_bias":"Normal offset suppresses terrain self-shadow stippling while retaining canopy shadows; very shallow contacts may soften.",
 "moods":"Per-biome sun energy/colour, ambient sky mix, fog density/colour, sky colours and aerial mix; safe daylight is earthy, forest/fen are watchful and the wastes keep an ember accent."
 }

@@ -24,7 +24,11 @@ The default sandpit uses the owner-approved weathered frontier presentation.
 Append `-- --crafted-look` for the preceding brighter pass or
 `-- --legacy-look` for cubic terrain. These switches do not change the world
 seed or save format. The experimental roof workshop retains its separate save.
-See [the latest art report](../docs/art/codex-weathered-frontier-2026-09-05.md).
+See [the latest surface/character report](../docs/art/codex-surface-character-2026-09-05.md).
+The default now includes material grain, mineral fractures and decorative stone
+chips. Character silhouettes remain procedural prototypes; overhead labels cap
+their close-up size. `-Characters` on the PowerShell review helper captures the
+actor studio; `-Grounding` checks plant/chip placement and distance-fade origins.
 
 > **Build the rules extension first** (next section). Without it the world
 > loads but nothing is interactable — you can walk, dodge and jump, while

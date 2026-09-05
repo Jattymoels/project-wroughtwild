@@ -6,9 +6,20 @@ extends Resource
 @export var irregularity := 0.09
 @export var crown_stagger := 0.6
 @export var foliage_shade := 1.0
+@export var variant_count := 0
 @export var design_purpose: Dictionary = {}
+var _variants: Dictionary = {}
 
 func build_tree(biome: String, seed_value: int) -> ArrayMesh:
+	if variant_count > 0:
+		var variant := posmod(seed_value, variant_count)
+		var key := "%s:%d" % [biome, variant]
+		if not _variants.has(key):
+			_variants[key] = _build_tree(biome, variant * 7919 + 713)
+		return _variants[key]
+	return _build_tree(biome, seed_value)
+
+func _build_tree(biome: String, seed_value: int) -> ArrayMesh:
 	var p: Dictionary = profiles.get(biome, profiles["meadow"])
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value

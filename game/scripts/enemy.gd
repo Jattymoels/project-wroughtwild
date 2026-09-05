@@ -246,9 +246,18 @@ func configure(sim: WroughtwildSim) -> void:
 		_material.albedo_color = Color(tint)
 		_base_albedo = _material.albedo_color
 	var size_scale: float = float(def.get("size_scale", 1.0))
-	if size_scale != 1.0 and _mesh != null:
+	if _mesh != null:
 		_mesh.scale = Vector3.ONE * size_scale
 	_mesh.material_override = _material
+	_mesh.mesh = preload("res://art/character_look.tres").build("grazer" if flees else behaviour)
+	_mesh.position.y = 0.0
+	# Humanoid roles fit the existing 1.3m body; beasts are authored at that height.
+	if not behaviour in ["fast", "melee", "swarm", "lurker"] and not flees:
+		_mesh.scale *= 0.76
+	_material.vertex_color_use_as_albedo = true
+	_material.vertex_color_is_srgb = true
+	_material.roughness = 1.0
+	_label.position.y = _mesh.mesh.get_aabb().end.y * _mesh.scale.y + 0.25
 	_refresh_label()
 
 
@@ -278,7 +287,8 @@ func make_elite(mod: Dictionary) -> void:
 	_burst_radius = mod.get("death_burst_radius_m", 0.0)
 	_burst_type = mod.get("death_burst_type", "fire")
 	if _mesh != null:
-		_mesh.scale = Vector3.ONE * 1.3
+		_mesh.scale *= 1.3
+		_label.position.y = _mesh.mesh.get_aabb().end.y * _mesh.scale.y + 0.25
 	if _label != null:
 		_label.modulate = Color(1.0, 0.85, 0.3)
 	_refresh_label()
