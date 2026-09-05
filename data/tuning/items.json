@@ -2185,6 +2185,101 @@
         }
       ],
       "design_purpose": "Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_fuse_buildup",
+      "display_name": "Fuse Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_fuse_buildup",
+      "display": "flat",
+      "sentence": "{n}: Caps Kindling delayed ignite buildup before ignition gear and boss resistance; no extra hit packet.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Caps Kindling delayed ignite buildup before ignition gear and boss resistance; no extra hit packet. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_rake_fraction",
+      "display_name": "Rake Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_rake_fraction",
+      "display": "flat",
+      "sentence": "{n}: Caps Cinder Edge fire damage as a fraction of the base skill hit, paid once per recipient behind the original victim.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Caps Cinder Edge fire damage as a fraction of the base skill hit, paid once per recipient behind the original victim. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_ember_hop_buildup",
+      "display_name": "Ember Hop Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_ember_hop_buildup",
+      "display": "flat",
+      "sentence": "{n}: Caps Wildfire spark ignite buildup before ignition gear and boss resistance.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Caps Wildfire spark ignite buildup before ignition gear and boss resistance. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_temper_push",
+      "display_name": "Temper Push",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_temper_push",
+      "display": "flat",
+      "sentence": "{n}: Caps Furnace Plate knockback in metres before the reduced boss distance; it does not absorb damage.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Caps Furnace Plate knockback in metres before the reduced boss distance; it does not absorb damage. Authored reading; excluded from random item pools."
+    },
+    {
+      "id": "mutation_cautery_charges",
+      "display_name": "Cautery Charges",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_cautery_charges",
+      "display": "flat",
+      "sentence": "{n}: Cautery stores at most one affliction prevention; duplicate readings never add charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Cautery stores at most one affliction prevention; duplicate readings never add charges. Authored reading; excluded from random item pools."
     }
   ],
   "item_bases": [

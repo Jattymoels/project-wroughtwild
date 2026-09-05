@@ -907,7 +907,7 @@
       "display_name": "Ember Catalyst",
       "family": "offence",
       "design_purpose": "Ignition spreads a small fire payload to nearby enemies when a burn starts. Its exact identity controls inward Foundry forms. Gear crafts still use the craft tag or currency family.",
-      "description": "Works fire through each ingot's purpose: Haste releases stored burn early, Vigour sheds healing cinders, Frost releases interrupting steam. On other ingots it spreads ignition. Downstream of Smoulder, it evolves that form into Steam Plume."
+      "description": "Works fire through each ingot's purpose: Ember plants a fuse, Edge cuts a cinder seam, Reach sends a travelling spark, Plate heats a retaliation, Ward cauterises afflictions, Haste releases stored burn early, Vigour sheds healing cinders and Frost interrupts with steam. Downstream of Smoulder, it evolves into Steam Plume."
     },
     {
       "id": "preserving_catalyst",

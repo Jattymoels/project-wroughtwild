@@ -131,7 +131,7 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 
 	var root: Node = player.world_root()
 	# In-flight casts belong to the previous live state, never to a loaded save.
-	for group in ["skill_bursts", "foundry_fields", "foundry_returns", "foundry_echoes","player_projectiles"]:
+	for group in ["skill_bursts", "foundry_fields", "foundry_returns", "foundry_echoes", "foundry_embers", "player_projectiles"]:
 		for effect in root.get_tree().get_nodes_in_group(group):
 			effect.cancel()
 	player.combat._mutation_cache.clear()

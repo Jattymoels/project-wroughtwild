@@ -26,9 +26,10 @@ Ember + Vigour (**Bloodfire**) initially shared +45 ignite and 30% ignition spre
 differing only by a small kill refund or heal. The owner asked for more creative
 Era 1 effects with modest damage: the chosen base skill supplies speed, reach,
 area and ailment feel, while the Foundry changes its use. Flashfire, Bloodfire
-and Steambrand now have separate timing, collection and control mechanics.
-The remaining five Ember readings and other Kind/ingot rows still require the
-same identity review; the 96-row coverage count is not 96 distinct mechanics.
+and Steambrand received separate timing, collection and control mechanics.
+The owner's subsequent approval completes all eight early Ember readings with
+the five mechanics below. Other Kind/ingot rows still require the same identity
+review; the 96-row coverage count is not 96 distinct mechanics.
 
 Evolved forms retain strike, sweep, projectile or ground delivery. Movement
 alone cannot make a damaging contact. Steam Plume shares one first-hit token
@@ -40,16 +41,60 @@ the tooltip explains that this counts separate named effects, not evolution leve
 
 | Route | Mechanic | Budget and gear |
 | --- | --- | --- |
+| Ember → Ember: Kindling | The first unlit victim carries a 0.9 s fuse that delivers 65 ignite buildup; no extra hit packet | One fuse per cast and one per player every 2.4 s. Copies cap at 100 buildup before ignition gear and boss resistance. Cancels if the target dies or is already burning. |
+| Ember → Edge: Cinder Edge | Hit a burning **or** bleeding enemy to mark a narrow 3 m seam behind it; after 0.25 s it flashes for 8% of the base hit as fire | Excludes the original victim. One seam per cast and every 1.4 s per player; copies cap at 15% per recipient. Fire/area/attack-or-spell gear scales damage; area/reach scales length and 0.55 m half-width. Cover blocks both the visible seam and its damage. |
+| Ember → Reach: Wildfire | Hit a burning victim to send one travelling spark to the nearest visible unlit enemy; it carries 35 ignite buildup and no hit damage | One hop per cast and every 1.5 s per player; copies cap at 60 buildup before ignition gear/boss resistance. 4.5 m search before reach/proliferation gear, 10 m/s travel, 1.2 s lifetime. No retargeting or onward hop; newly blocking cover stops it. |
+| Ember → Plate: Furnace Plate | Hit a burning victim to heat a single personal charge for 2.5 s. The next damaging enemy hit you take spends it on a 2.4 m heat ring that pushes the nearby pack 0.9 m | Once every 3 s per player. Copies cap at 1.5 m push; bosses move one quarter as far. Area/reach scales radius; cover blocks the push. No extra damage, stagger or absorption; dodged hits and environmental damage do not spend it. |
+| Ember → Ward: Cautery | A new ignition clears one active affliction, root before harry before mark. If already clear, it instead stores a 3 s ward against the next of those afflictions | Once every 3 s per player; never more than one charge. The afflicting hit still deals damage. A cleanse does not also award a ward, and other enemy verbs do not spend one. |
 | Ember → Haste: Flashfire | A follow-up hit releases up to 0.45 s of an existing burn immediately and subtracts that burn time | Once per target per second; copies cap at 0.75 s. It spends the originating burn snapshot, including its burn gear, rather than adding another DoT. |
 | Ember → Vigour: Bloodfire | A new ignition sheds a warm cinder at the victim; approach within 1.4 m to collect 3 life | One cinder per player every 2 s, disappears after 6 s, requires clear cover for pickup. Copies cap at 6 base life; ordinary heal scaling applies. |
 | Ember → Frost: Steambrand | Hit an already chilled enemy to release a 1.6 m steam puff that interrupts nearby enemies for 0.2 s | No puff damage. One puff per player every 1.5 s; area/reach gear scales its space; bosses get one quarter of its stagger. Copies cap at 0.3 s. |
 
-These three retain +45 ignite buildup; Steambrand also retains +20 chill. Their
-old shared ignition-spread hook is removed, along with the form's old 1.5 kill
-heal or 12% kill refund. Ordinary direct ingot support is retained. Secondary
-fields do not trigger these new contact/ignition hooks. A burn's natural last
+All eight supply +45 ignite buildup to the main hit; Steambrand also supplies
++20 chill, and Cinder Edge +20 bleed. Their old shared ignition-spread hook and
+generic ingot-flavour additions are removed. Ordinary direct ingot support,
+pairs, backing and alloy refinements remain. A burn's natural last
 tick now stops at its actual remaining time, so a long frame cannot create extra
 damage after Flashfire has spent part of it.
+
+The new contact operations read the ailments present **before** Flashfire spends
+burn time and before this hit applies its payload. Thus Cinder Edge can read an
+existing burn even if Flashfire spends its last fraction. They share each cast's
+context across fans, forks and delayed bursts. Each operation commits its first
+eligible contact even if its player-wide time gate is unavailable. Wildfire needs
+a reachable unlit recipient before committing. A fresh cast cannot refresh an
+attached fuse or an unspent personal charge. Names never determine behaviour.
+
+Fuses and sparks snapshot their sim-resolved buildup, burn and Sear when created;
+seams snapshot their fire packet and geometry. Increased/more ignition investment
+scales their authored buildup; flat buildup still belongs to the main hit and is
+not paid twice. Ordinary boss buildup resistance and ignite immunity apply.
+The base fuse's 65 plus a plain 45-buildup strike can light a normal enemy after
+the delay even with normal buildup decay; a resistant boss needs more work.
+
+Terminal fuse/spark ignition may trigger **only** the separately limited Bloodfire
+cinder and Cautery cleanse/ward. This lets those supports cooperate. It cannot
+make another fuse, spark, seam, link, echo or mastery use. Existing burn-on-death
+proliferation still applies. Other secondary fields retain their previous rules.
+There are at most twelve live Ember event nodes per player, independently of the
+existing field/mote limits. Excess events are rejected without a free payout;
+death and save application cancel all of them. No combat charge is saved.
+
+### Three early arrangements with one skill
+
+All three fit the original era-one working: Heavy Strike at (1,1), an Ember
+Catalyst at (2,0), and the two ingots at (1,0) and (2,1). No new page, rail or
+alloy is required. The cast remains Heavy Strike in each case.
+
+| Ingots | What changes in play |
+| --- | --- |
+| Ember + Reach | **Kindling / Wildfire:** light the first victim with a delayed fuse; follow up to carry ignition to an unlit neighbour. Proliferation reach and ignition gear support this spreading build. |
+| Edge + Haste | **Cinder Edge / Flashfire:** line enemies behind a burning or bleeding victim, then spend burn early while cutting the rear rank. Fire/area investment and ordinary Haste recovery support repeated commitments. |
+| Plate + Ward | **Furnace Plate / Cautery:** ignite to clear or prevent an affliction, then hit the burning victim to prepare a shove when an enemy lands its next hit. Ordinary armour and Ward mitigation still do the actual damage reduction. |
+
+These are playtest arrangements, not claims of equal damage or solved balance.
+All sixteen skill shells resolve every Ember reading; damaging contact is still
+required. Dash cannot invent a fuse, seam, spark or ignition reward just by moving.
 
 ### Steam Plume contract
 
@@ -64,7 +109,7 @@ damage after Flashfire has spent part of it.
   fire/cold resistance, positional guard and ward. Cover blocks the pulse.
   This is 18% of base hit over the entire field before investment, not three
   full copies of the skill. Stacked readings cap at 10% per pulse.
-- This route replaces Smoulder's 25% slow and the participating Kindling spread.
+- This route replaces Smoulder's 25% slow and the participating Kindling fuse.
   The main hit retains 40 ignite and 20 chill buildup, so gear can still develop
   its burn/freeze lanes. Steam pulses themselves apply no buildup, shatter,
   links, recovery or additional mutation triggers. Existing enemy death rules
@@ -133,7 +178,7 @@ deliveries need an explicit conflict rule before adding them.
 
 | Kind | Baseline operation through one iron ingot |
 | --- | --- |
-| Ember Catalyst | +45 ignite buildup; Haste releases stored burn, Vigour sheds collectible healing, Frost releases a harmless interrupting puff. The other five ingots retain 30% ignition spread. |
+| Ember Catalyst | +45 ignite buildup; eight distinct ingot mechanics: delayed fuse, chilled interrupt, narrow seam, travelling spark, collectible healing, reactive push, affliction cleanse/ward and stored-burn release. See the early identity table above. |
 | Frost Catalyst | +35 chill; a 1.6 m impact field pulses 12% of hit and buildup three times over 2.4 s; Ember instead becomes Smoulder |
 | Preserving Catalyst | A 1.8 m impact field pulses 18% of hit and buildup three times over 2.4 s |
 | Piercing Catalyst | Strikes/sweeps become travelling waves; projectiles/waves pierce one extra enemy |
@@ -146,11 +191,11 @@ deliveries need an explicit conflict rule before adding them.
 | Striking Quicksilver | Every third attack repeats after 0.12 s; spell tablets do not read this cadence |
 | Casting Quicksilver | Every third spell repeats after 0.55 s; attack tablets do not read this cadence |
 
-Each ingot adds its own flavour to that operation: Ember +20 ignite, Frost +20
+Outside the completed Ember family, each ingot adds its own flavour to that operation: Ember +20 ignite, Frost +20
 chill, Edge +20 bleed, Reach +18% reach, Vigour +1.5 life on kill, Plate +4 cast
 armour, Ward +5% status ward, Haste +12% cooldown refund on kill. Smoulder has
-its own explicit payload below. The three revised Ember readings use the
-mechanics above instead of the Vigour/Haste form additions. These are first-pass
+its own explicit payload below. The eight Ember readings instead use the
+mechanics above, retaining only Frost's chill and Edge's bleed additions. These are first-pass
 values, not balance claims.
 
 The current sixteen skills are not all equally useful with every Kind. Movement
@@ -243,17 +288,20 @@ travelling melee, one-hit impact bursts, wards, armour position, recovery,
 return timing, echoes, non-mutating previews, 720p layout and death cleanup.
 Existing economy, loot, combat, world and save suites also run.
 
-The evolution follow-up passed **28,519 native checks**, **138 focused Godot
+The completed Ember pass passed **29,038 native checks**, **246 focused Godot
 checks**, and the complete headless pipeline. Added coverage verifies conserved
 Flashfire burn damage, collectible Bloodfire healing, harmless/cover-blocked
 Steambrand control, consuming and order-sensitive evolution across all sixteen
 skills, independently scaled fire/cold steam packets, and one plume across a
 cast's delayed projectiles, sweep or ground detonation. Movement fabricates no
-hit. Eight rendered captures were reviewed, including the new early Ember
-workings and Steam Plume.
+hit. The Ember extension covers fuse timing/decay/immunity, snapshot buildup and
+equipment scaling, one-hop arrival/cover, the seam's shape and single packet,
+retaliation consumption/boss push, single-affliction cleanse/prevention, and
+death/load/budget cleanup. Fourteen rendered captures include three different
+Heavy Strike arrangements alongside the earlier workings and Steam Plume.
 
 Run `tools/codex_visual_review.ps1 -Foundry` for the focused gameplay checks and
-eight real screenshots. `-Checks` includes this suite in the full pipeline.
+fourteen real screenshots. `-Checks` includes this suite in the full pipeline.
 
 The following table is the complete current base-name matrix. Numeric effects
 remain authoritative in the tuning file; names never replace persistent IDs.

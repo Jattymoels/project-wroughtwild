@@ -128,6 +128,25 @@ std::map<std::string, double> skillMutation(const tuning::Tuning& tuning, const 
         result["steam_" + type + "_damage"] = base <= 0 ? 0 :
             std::max(0.0, resolve(active, steamTags, "damage", base)) * result["steam_fraction"] * 0.5;
     }
+    // Authored secondary buildup scales with increased/more ignition gear,
+    // without paying the main hit's flat buildup a second time.
+    for (const std::string hook : {"fuse", "ember_hop"}) {
+        const double base = result[hook + "_buildup"];
+        result[hook + "_ignite"] = std::max(0.0,
+            resolve(active, burnTags, "ignite_buildup", base) - resolve(active, burnTags, "ignite_buildup", 0.0));
+        result[hook + "_ignite_boss"] = result[hook + "_ignite"] * tuning.grammar.ignite.bossBuildupMultiplier;
+    }
+    auto rakeTags = packetTags(tuning, tags, "fire");
+    if (!has(rakeTags, "area")) rakeTags.push_back("area");
+    const double baseHit = skillNumber(*skill, "base_damage", 0.0);
+    result["rake_fire_damage"] = baseHit <= 0 ? 0 :
+        std::max(0.0, resolve(active, rakeTags, "damage", baseHit)) * result["rake_fraction"];
+    // Wildfire is a single propagation hop, not another skill projectile.
+    auto hopTags = burnTags;
+    if (!has(hopTags, "proliferate")) hopTags.push_back("proliferate");
+    result["ember_hop_range"] = result["ember_hop_buildup"] <= 0 ? 0 :
+        std::max(0.0, resolve(active, hopTags, "proliferate_radius",
+            tuning.foundry.mutationLimits.at("ember_hop_radius"))) * skillReach(tuning, active, skillId);
     return result;
 }
 

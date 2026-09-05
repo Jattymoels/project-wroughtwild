@@ -306,7 +306,7 @@ func refresh() -> void:
 			if tablets.has(key):
 				var skill: Dictionary = sim.combat_skill(tablets[key])
 				var subject: String = skill.get("display_name", tablets[key])
-				cell.text = "[ %s ]" % subject
+				cell.text = _cell_name(subject)
 				cell.modulate = UiTheme.FROST
 				lines.append("A socket holding the %s tablet: the ingots beside it support that skill. Click to lift (free)." % subject)
 			elif currencies.has(key):
@@ -325,13 +325,13 @@ func refresh() -> void:
 				var metal: String = placed_metal.get(key, "")
 				cell.text = info.get("display_name", placed[key]).replace(" Ingot", "")
 				if form_names.has(key):
-					cell.text = String(form_names[key][0])
+					cell.text = _cell_name(String(form_names[key][0]))
 					if form_names[key].size() > 1:
 						cell.text += "\n%d forms" % form_names[key].size()
 						lines.append("%d separate named effects are combined here; this is not an evolution level or a strength multiplier." % form_names[key].size())
 					lines.append("%s becomes %s." % [info.display_name, " / ".join(form_names[key])])
 				if metal != "" and metal != default_metal:
-					cell.text += " (%s)" % metal_names.get(metal, metal).to_lower()
+					cell.text += "\n%s" % metal_names.get(metal, metal)
 				lines.append(info.get("sentence", ""))
 				if metal != "" and metal != default_metal:
 					lines.append("Cast in %s: its backing and pairs are read %d cells out along its row and column." % [metal_names.get(metal, metal).to_lower(), int(metal_reach.get(metal, 1))])
@@ -855,6 +855,16 @@ func _inspect_cell(row: int, col: int) -> void:
 
 func _resolved_summary(skill: String, form: Dictionary) -> String:
 	var parts := PackedStringArray()
+	if float(form.get("fuse_buildup",0)) > 0:
+		parts.append("Kindling: a %.1f s fuse delivers %.0f ignite" % [float(form.limits.fuse_delay),float(form.fuse_ignite)])
+	if float(form.get("rake_fraction",0)) > 0:
+		parts.append("Cinder Edge: %.1f fire through a narrow seam behind a burning or bleeding target" % float(form.rake_fire_damage))
+	if float(form.get("ember_hop_buildup",0)) > 0:
+		parts.append("Wildfire: one spark carries %.0f ignite up to %.1f m" % [float(form.ember_hop_ignite),float(form.ember_hop_range)])
+	if float(form.get("temper_push",0)) > 0:
+		parts.append("Furnace Plate: heat on a burning target; the next hit you take pushes the pack %.1f m" % float(form.temper_push))
+	if float(form.get("cautery_charges",0)) > 0:
+		parts.append("Cautery: ignition clears one affliction, or guards against the next")
 	if float(form.get("steam_fraction", 0)) > 0:
 		parts.append("Steam Plume: 3 pulses · %.1f fire + %.1f cold each · first target per cast" % [float(form.steam_fire_damage), float(form.steam_cold_damage)])
 	if float(form.get("burn_release_seconds", 0)) > 0:
@@ -871,3 +881,12 @@ func _resolved_summary(skill: String, form: Dictionary) -> String:
 	if float(form.get("ward_charges", 0)) > 0: parts.append("Veil: catches %d shots" % int(form.ward_charges))
 	if sim.skill_echo_every(skill) > 0: parts.append("Repeats every %d uses after %.2f s" % [sim.skill_echo_every(skill), float(form.get("echo_delay",0))])
 	return "\n".join(parts)
+
+func _cell_name(name: String) -> String:
+	# Split long form names at a word boundary before they clip in the plate.
+	var font := _root.get_theme_default_font()
+	if font.get_string_size(name,HORIZONTAL_ALIGNMENT_LEFT,-1,13).x <= CELL_SIZE.x-20: return name
+	var split := -1
+	for i in name.length():
+		if name[i]==" " and (split<0 or absf(i-name.length()*.5)<absf(split-name.length()*.5)): split = i
+	return name.substr(0,split)+"\n"+name.substr(split+1) if split>0 else name

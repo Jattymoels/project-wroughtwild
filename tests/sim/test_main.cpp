@@ -2875,15 +2875,16 @@ void testKindsInCorners(const tuning::Tuning& t) {
         if (e.formName == "Kindling") scald = true;
         if (e.modifier == "damage_vs_ignite") check(e.packet == "cold", "catalyst: Scald's more damage is on the orb's own cold");
     }
-    check(scald && reactionEffects == 8, "catalyst: Ember Catalyst keeps its Kindling identity on a cold orb");
+    check(scald && reactionEffects == 4, "catalyst: Ember Catalyst keeps its Kindling identity on a cold orb");
     auto cm = grammar::foundryMods(t, c.foundry(), c.currentEra());
-    checkNear(grammar::igniteApplied(t, cm, "prototype_frost_orb", false), 65.0, 1e-9, "catalyst: the Kindling orb gains an ignition payload");
+    checkNear(grammar::igniteApplied(t, cm, "prototype_frost_orb", false), 45.0, 1e-9, "catalyst: the Kindling orb gains the common direct ignition payload");
+    checkNear(grammar::skillMutation(t, cm, "prototype_frost_orb").at("fuse_ignite"), 65.0, 1e-9, "catalyst: Kindling adds a separate delayed fuse payload");
     checkNear(grammar::igniteApplied(t, cm, "prototype_frost_nova", false), 0.0, 1e-9, "catalyst: the nova does not");
     auto plain = grammar::skillHit(t, cm, "prototype_frost_orb");
     auto burning = grammar::skillHit(t, cm, "prototype_frost_orb", {"ignite"});
     auto chilled = grammar::skillHit(t, cm, "prototype_frost_orb", {"chill"});
     check(plain.size() == 2 && burning.size() == 2, "catalyst: the orb is still a cold-and-fire bolt");
-    checkNear(burning[0].damage, plain[0].damage, 1e-9, "catalyst: Kindling changes ignition spread, leaving the native cold hit unchanged");
+    checkNear(burning[0].damage, plain[0].damage, 1e-9, "catalyst: Kindling adds a fuse, leaving the native cold hit unchanged");
     checkNear(burning[1].damage, plain[1].damage, 1e-9, "catalyst: and no more of its fire");
     checkNear(chilled[0].damage, plain[0].damage, 1e-9, "catalyst: a merely chilled enemy takes the plain hit");
     // The same lane: a Frost beside the orb worked by a catalyst is Deep Frost.

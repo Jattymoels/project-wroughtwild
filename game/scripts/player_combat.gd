@@ -493,6 +493,7 @@ func haste_multiplier() -> float:
 
 ## --- the verbs suffered (Wave 8 slice 1) ---
 func _suffer_verb(enemy: Enemy) -> void:
+	if FoundryEmber.prevent(self,enemy.verb): return
 	match enemy.verb:
 		"harry":
 			_slow_left = maxf(_slow_left, enemy.verb_seconds)
@@ -539,6 +540,8 @@ func clear_verbs() -> void:
 ## One line for the HUD about the verbs on you ("" when none).
 func verb_text() -> String:
 	var parts := PackedStringArray()
+	if FoundryEmber.active(self,"temper") != null: parts.append("Furnace Plate ready")
+	if FoundryEmber.active(self,"cautery") != null: parts.append("Cautery ward ready")
 	if rooted():
 		parts.append("rooted, dash breaks it")
 	if harried():
@@ -1115,6 +1118,7 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 		if bearing.is_zero_approx() and source is Node3D:
 			bearing = source.global_position - player.global_position
 		damage_bearing.emit(last_hit_taken, bearing)
+		if source is Enemy: FoundryEmber.retaliate(self)
 	_answer_hit(source)
 	fight_noise(get_parent().global_position)
 	if source is Enemy:

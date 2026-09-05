@@ -174,17 +174,13 @@
       "kind": "ember_catalyst",
       "ingot": "ember",
       "display_name": "Kindling",
-      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "description": "The first unlit target struck carries a 0.9-second ember fuse. It then receives 65 ignite buildup, scaled by ignition gear; no extra hit damage. One fuse per cast, at most one every 2.4 seconds. A target already burning when the fuse ends receives nothing. Adds 45 ignite buildup to the main hit.",
       "effects": [
         {
           "modifier": "smouldering",
           "value": 45
         },
         {
-          "modifier": "mutation_ignite_spread",
-          "value": 0.3
-        },
-        {
           "modifier": "capability_fire",
           "value": 1
         },
@@ -193,20 +189,8 @@
           "value": 1
         },
         {
-          "modifier": "capability_proliferate",
-          "value": 1
-        },
-        {
-          "modifier": "smouldering",
-          "value": 20
-        },
-        {
-          "modifier": "capability_fire",
-          "value": 1
-        },
-        {
-          "modifier": "capability_ignite",
-          "value": 1
+          "modifier": "mutation_fuse_buildup",
+          "value": 65
         }
       ],
       "id": "ember_catalyst:ember"
@@ -254,15 +238,11 @@
       "kind": "ember_catalyst",
       "ingot": "edge",
       "display_name": "Cinder Edge",
-      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "description": "Hit a burning or bleeding enemy to cut a narrow cinder seam 3 m behind them. After 0.25 seconds it flashes once for 8% of base hit as fire damage, excluding the original target. Line up the pack; cover blocks it. One seam per cast, at most one every 1.4 seconds. Adds 45 ignite and 20 bleed buildup to the main hit.",
       "effects": [
         {
           "modifier": "smouldering",
           "value": 45
-        },
-        {
-          "modifier": "mutation_ignite_spread",
-          "value": 0.3
         },
         {
           "modifier": "capability_fire",
@@ -273,8 +253,8 @@
           "value": 1
         },
         {
-          "modifier": "capability_proliferate",
-          "value": 1
+          "modifier": "mutation_rake_fraction",
+          "value": 0.08
         },
         {
           "modifier": "laceration",
@@ -296,15 +276,11 @@
       "kind": "ember_catalyst",
       "ingot": "reach",
       "display_name": "Wildfire",
-      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "description": "Hit a burning enemy to send one visible spark to the nearest unlit enemy within 4.5 m before reach and proliferation gear. It carries 35 ignite buildup, no hit damage, and never jumps again. Cover blocks its travel. One spark per cast, at most one every 1.5 seconds. Adds 45 ignite buildup to the main hit.",
       "effects": [
         {
           "modifier": "smouldering",
           "value": 45
-        },
-        {
-          "modifier": "mutation_ignite_spread",
-          "value": 0.3
         },
         {
           "modifier": "capability_fire",
@@ -315,12 +291,12 @@
           "value": 1
         },
         {
-          "modifier": "capability_proliferate",
-          "value": 1
+          "modifier": "mutation_ember_hop_buildup",
+          "value": 35
         },
         {
-          "modifier": "reach",
-          "value": 0.18
+          "modifier": "capability_proliferate",
+          "value": 1
         }
       ],
       "id": "ember_catalyst:reach"
@@ -356,15 +332,11 @@
       "kind": "ember_catalyst",
       "ingot": "plate",
       "display_name": "Furnace Plate",
-      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "description": "Hit a burning enemy to heat your plate for 2.5 seconds. Your next damaging enemy hit releases a 2.4 m ring that pushes nearby enemies back 0.9 m; bosses move one quarter as far. No added damage or absorption. At most one charge every 3 seconds. Adds 45 ignite buildup; Plate keeps its ordinary cast armour.",
       "effects": [
         {
           "modifier": "smouldering",
           "value": 45
-        },
-        {
-          "modifier": "mutation_ignite_spread",
-          "value": 0.3
         },
         {
           "modifier": "capability_fire",
@@ -375,12 +347,8 @@
           "value": 1
         },
         {
-          "modifier": "capability_proliferate",
-          "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
+          "modifier": "mutation_temper_push",
+          "value": 0.9
         }
       ],
       "id": "ember_catalyst:plate"
@@ -390,15 +358,11 @@
       "kind": "ember_catalyst",
       "ingot": "ward",
       "display_name": "Cautery",
-      "description": "Ignition spreads a small fire payload to nearby enemies when a burn starts.",
+      "description": "Starting a burn removes one affliction: root first, then harry, then mark. If clear, gain a 3-second Cautery ward that prevents the next one of those afflictions, while its hit still deals damage. At most once every 3 seconds; never stacks charges. Adds 45 ignite buildup; Ward keeps its ordinary mitigation.",
       "effects": [
         {
           "modifier": "smouldering",
           "value": 45
-        },
-        {
-          "modifier": "mutation_ignite_spread",
-          "value": 0.3
         },
         {
           "modifier": "capability_fire",
@@ -409,12 +373,8 @@
           "value": 1
         },
         {
-          "modifier": "capability_proliferate",
+          "modifier": "mutation_cautery_charges",
           "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
         }
       ],
       "id": "ember_catalyst:ward"
@@ -4507,7 +4467,7 @@
     "wave_speed": 16.0,
     "siphon_speed": 9.0,
     "zone_seconds": 3.2,
-    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds. burn_release_seconds: Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget. warm_cinder_life: Maximum base life collected from one warm cinder; heal modifiers still scale the payout. steam_stagger: Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage. steam_fraction: Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. burn_release_cooldown: Seconds between Flashfire releases on one enemy, shared across skills. warm_cinder_cooldown: Seconds between Bloodfire cinder spawns for the player, shared across skills. warm_cinder_lifetime: Seconds a warm cinder waits to be collected before disappearing. warm_cinder_pickup_radius: Metres the player must approach before a warm cinder returns its life. steam_puff_cooldown: Seconds between harmless Steambrand interrupt puffs for the player, shared across skills. steam_puff_radius: Base radius in metres of the harmless steam interrupt puff; area/reach investment applies. steam_boss_stagger_factor: Boss fraction of the steam puff stagger duration. steam_plume_seconds: Lifetime of a Steam Plume: three pulses at the existing 0.8 second field interval. steam_plume_radius: Steam Plume base radius in metres, scaled by area/reach investment. steam_plume_cooldown: Minimum time between Steam Plumes for the player, shared across skills; each cast can seed at most one.",
+    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds. burn_release_seconds: Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget. warm_cinder_life: Maximum base life collected from one warm cinder; heal modifiers still scale the payout. steam_stagger: Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage. steam_fraction: Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. burn_release_cooldown: Seconds between Flashfire releases on one enemy, shared across skills. warm_cinder_cooldown: Seconds between Bloodfire cinder spawns for the player, shared across skills. warm_cinder_lifetime: Seconds a warm cinder waits to be collected before disappearing. warm_cinder_pickup_radius: Metres the player must approach before a warm cinder returns its life. steam_puff_cooldown: Seconds between harmless Steambrand interrupt puffs for the player, shared across skills. steam_puff_radius: Base radius in metres of the harmless steam interrupt puff; area/reach investment applies. steam_boss_stagger_factor: Boss fraction of the steam puff stagger duration. steam_plume_seconds: Lifetime of a Steam Plume: three pulses at the existing 0.8 second field interval. steam_plume_radius: Steam Plume base radius in metres, scaled by area/reach investment. steam_plume_cooldown: Minimum time between Steam Plumes for the player, shared across skills; each cast can seed at most one. fuse_buildup: Caps Kindling delayed ignite buildup before ignition gear and boss resistance; no extra hit packet. rake_fraction: Caps Cinder Edge fire damage as a fraction of the base skill hit, paid once per recipient behind the original victim. ember_hop_buildup: Caps Wildfire spark ignite buildup before ignition gear and boss resistance. temper_push: Caps Furnace Plate knockback in metres before the reduced boss distance; it does not absorb damage. cautery_charges: Cautery stores at most one affliction prevention; duplicate readings never add charges. fuse_delay: Seconds before an attached Kindling fuse pays its ignite buildup; gives the hit a delayed lighting rhythm. fuse_cooldown: Minimum player-wide seconds between Kindling fuses, including separate supported skills. rake_delay: Seconds of visible ground seam before Cinder Edge flashes once. rake_length: Base metres of Cinder Edge seam behind the victim; area and reach gear scale its space. rake_half_width: Base half-width of the Cinder Edge seam; rewards lining enemies up. rake_cooldown: Minimum player-wide seconds between Cinder Edge seams. ember_hop_radius: Base Wildfire target search radius, scaled by skill reach and proliferation radius investment. ember_hop_speed: Metres per second of the visible Wildfire spark; damage is never paid before arrival. ember_hop_seconds: Maximum spark travel time; an escaping or blocked target can waste it. ember_hop_cooldown: Minimum player-wide seconds between Wildfire sparks. temper_seconds: Seconds to receive an enemy hit after heating Furnace Plate; then the single charge expires. temper_radius: Base radius of the Furnace Plate retaliation, scaled by area and reach gear. temper_cooldown: Minimum player-wide seconds between Furnace Plate charges; recasting cannot keep refreshing one. temper_boss_factor: Bosses receive this fraction of the Furnace Plate push to preserve their space pressure. cautery_seconds: Seconds an unused Cautery affliction ward lasts. cautery_cooldown: Minimum player-wide seconds between Cautery cleanses or ward grants. max_ember_effects: Maximum simultaneous fuses, sparks, seams and personal Ember charges per player; reject excess without free payouts.",
     "burn_release_seconds": 0.75,
     "warm_cinder_life": 6,
     "steam_stagger": 0.3,
@@ -4521,6 +4481,28 @@
     "steam_boss_stagger_factor": 0.25,
     "steam_plume_seconds": 2.4,
     "steam_plume_radius": 1.7,
-    "steam_plume_cooldown": 2.4
+    "steam_plume_cooldown": 2.4,
+    "fuse_buildup": 100,
+    "rake_fraction": 0.15,
+    "ember_hop_buildup": 60,
+    "temper_push": 1.5,
+    "cautery_charges": 1,
+    "fuse_delay": 0.9,
+    "fuse_cooldown": 2.4,
+    "rake_delay": 0.25,
+    "rake_length": 3,
+    "rake_half_width": 0.55,
+    "rake_cooldown": 1.4,
+    "ember_hop_radius": 4.5,
+    "ember_hop_speed": 10,
+    "ember_hop_seconds": 1.2,
+    "ember_hop_cooldown": 1.5,
+    "temper_seconds": 2.5,
+    "temper_radius": 2.4,
+    "temper_cooldown": 3,
+    "temper_boss_factor": 0.25,
+    "cautery_seconds": 3,
+    "cautery_cooldown": 3,
+    "max_ember_effects": 12
   }
 }

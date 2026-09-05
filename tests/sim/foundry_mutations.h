@@ -45,9 +45,15 @@ void testFoundryMutations(const tuning::Tuning& t) {
         auto key=kind.id=="frost_catalyst" && ingot.id=="ember" ? "smoulder_slow" : signature.at(kind.id);
         double expected = compatible ? (kind.id=="frost_catalyst" && ingot.id=="ember" ? .25 : baseline.at(kind.id)) : 0;
         if (kind.id=="ember_catalyst") {
+            if (ingot.id=="ember") { key="fuse_buildup"; expected=65; }
+            if (ingot.id=="edge") { key="rake_fraction"; expected=.08; }
+            if (ingot.id=="reach") { key="ember_hop_buildup"; expected=35; }
+            if (ingot.id=="plate") { key="temper_push"; expected=.9; }
+            if (ingot.id=="ward") { key="cautery_charges"; expected=1; }
             if (ingot.id=="haste") { key="burn_release_seconds"; expected=.45; }
             if (ingot.id=="vigour") { key="warm_cinder_life"; expected=3; }
             if (ingot.id=="frost") { key="steam_stagger"; expected=.2; }
+            checkNear(mutation.at("ignite_spread"),0,1e-9,"Ember identity: no form inherits the old shared ignition spread "+label);
         }
         checkNear(mutation.at(key),expected,1e-9,"mutation fixture: exact Kind operation and baseline "+label);
         bool bounded=true;
@@ -83,6 +89,41 @@ void testFoundryMutations(const tuning::Tuning& t) {
     }
     check(orderedFixtures==2304,"compound matrix: 144 ordered Kind pairs x eight ingots x attack/spell exercised");
 
+    // Every skill shell retains typed gear scaling on the new small effects.
+    for (const auto& skill : t.skills.combatSkills) {
+        foundry::State ember;
+        ember.plate={{1,1,"",skill.id},{1,0,"ember",""},{2,0,"","","ember_catalyst"}};
+        auto baseMods=grammar::foundryMods(t,ember,1);
+        const auto base=grammar::skillMutation(t,baseMods,skill.id);
+        baseMods.push_back(grammar::modAt(t.items,"kindling",.5,"weapon"));
+        // Flat buildup already belongs to the direct hit; don't duplicate it.
+        baseMods.push_back(grammar::modAt(t.items,"smouldering",30,"weapon"));
+        const auto scaled=grammar::skillMutation(t,baseMods,skill.id);
+        checkNear(base.at("fuse_ignite"),65,1e-9,"Kindling: authored delayed buildup without duplicated direct payload");
+        checkNear(scaled.at("fuse_ignite"),97.5,1e-9,"Kindling: ignition investment scales the delayed payload for "+skill.id);
+        checkNear(scaled.at("fuse_ignite_boss"),97.5*t.grammar.ignite.bossBuildupMultiplier,1e-9,"Kindling: native boss resistance applies to the fuse");
+        ember.plate[1].ingot="reach";
+        baseMods=grammar::foundryMods(t,ember,1);
+        const auto hop=grammar::skillMutation(t,baseMods,skill.id);
+        baseMods.push_back(grammar::modAt(t.items,"wildfire_reach",.4,"charm"));
+        baseMods.push_back(grammar::modAt(t.items,"kindling",.5,"weapon"));
+        const auto wide=grammar::skillMutation(t,baseMods,skill.id);
+        checkNear(wide.at("ember_hop_range"),hop.at("ember_hop_range")*1.4,1e-9,"Wildfire: proliferation gear widens its single target search");
+        checkNear(wide.at("ember_hop_ignite"),52.5,1e-9,"Wildfire: ignition gear scales a hop without adding a main hit");
+        ember.plate[1].ingot="edge";
+        baseMods=grammar::foundryMods(t,ember,1);
+        const auto seam=grammar::skillMutation(t,baseMods,skill.id);
+        baseMods.push_back(grammar::modAt(t.items,"cold_damage",.5,"charm"));
+        checkNear(grammar::skillMutation(t,baseMods,skill.id).at("rake_fire_damage"),seam.at("rake_fire_damage"),1e-9,"Cinder Edge: cold damage never scales the fire seam");
+        baseMods.push_back(grammar::modAt(t.items,"fire_damage",.5,"weapon"));
+        checkNear(grammar::skillMutation(t,baseMods,skill.id).at("rake_fire_damage"),seam.at("rake_fire_damage")*1.5,1e-9,"Cinder Edge: fire gear scales its bounded secondary packet");
+        if (skill.delivery=="dash") checkNear(seam.at("rake_fire_damage"),0,1e-9,"movement has no fabricated Cinder Edge damage");
+        ember.plate.push_back({2,1,"ward",""});
+        ember.plate.push_back({0,0,"","","ember_catalyst"});
+        ember.plate[1].ingot="ward";
+        checkNear(grammar::skillMutation(t,grammar::foundryMods(t,ember,3),skill.id).at("cautery_charges"),1,1e-9,"Cautery: multiple routes never create stacked affliction wards");
+    }
+
     // Gear follows real acquired capabilities, with packet type isolation.
     foundry::State smoulder;
     smoulder.plate={{1,1,"","prototype_ember_bolt"},{1,0,"ember",""},{2,0,"","","frost_catalyst"}};
@@ -111,7 +152,7 @@ void testFoundryMutations(const tuning::Tuning& t) {
     auto readings=foundry::effects(t,branched,larger);
     std::map<std::pair<int,int>,int> spreadReadings;
     for(const auto& e:readings) if(e.modifier=="capability_fire") ++spreadReadings[{e.cellRow,e.cellCol}];
-    const std::map<std::pair<int,int>,int> expectedReadings={{{1,0},2},{{2,0},1},{{1,1},1},{{2,1},1},{{2,2},1},{{2,3},2}};
+    const std::map<std::pair<int,int>,int> expectedReadings={{{1,0},1},{{2,0},1},{{1,1},1},{{2,1},1},{{2,2},1},{{2,3},1}};
     check(spreadReadings==expectedReadings,"routes: six traversed ingots contribute exactly their authored rows after branches merge");
     std::reverse(branched.plate.begin(),branched.plate.end());
     std::map<std::pair<int,int>,int> reversed;
@@ -157,7 +198,7 @@ void testFoundryMutations(const tuning::Tuning& t) {
         auto ev=grammar::skillMutation(t,em,skill.id);
         checkNear(ev.at("steam_fraction"),.06,1e-9,"evolution: Steam Plume resolves for " + skill.id);
         checkNear(ev.at("smoulder_slow"),0,1e-9,"evolution: replaces the Smoulder slow");
-        checkNear(ev.at("ignite_spread"),0,1e-9,"evolution: consumes the participating Kindling spread");
+        checkNear(ev.at("fuse_buildup"),0,1e-9,"evolution: consumes the participating Kindling fuse");
         std::set<std::string> names;
         for(const auto& e:foundry::effects(t,evolved,foundry::plate(t.foundry,2))) if(!e.formName.empty()) names.insert(e.formName);
         check(names==std::set<std::string>{"Steam Plume"},"evolution: one honest resolved name");

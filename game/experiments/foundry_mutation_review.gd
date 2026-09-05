@@ -91,7 +91,8 @@ func _ready() -> void:
 	await capture("rime-veil")
 	ward.cancel()
 	await evolution_capture(world)
-	print("CODEX_FOUNDRY_MUTATION_REVIEW 8 captures")
+	await ember_builds_capture(world)
+	print("CODEX_FOUNDRY_MUTATION_REVIEW 14 captures")
 	get_tree().quit()
 
 func evolution_capture(world: Sandpit) -> void:
@@ -150,3 +151,63 @@ func evolution_capture(world: Sandpit) -> void:
 	target._refresh_look()
 	review_title.text = "STEAM PLUME\nSmoulder evolves through Ember into three fire/cold eruptions"
 	await capture("steam-plume-combat")
+	target.queue_free()
+
+func ember_builds_capture(world: Sandpit) -> void:
+	var sim := player.combat.sim
+	for event in ["first_kill:stone_husk","world_effect:stonecut_blocks"]: sim.foundry_event(event)
+	var recipes := [
+		{"first":"ember","second":"reach","name":"kindling-wildfire","title":"KINDLING + WILDFIRE","sentence":"Light a target with a fuse, then carry its flame into the next rank"},
+		{"first":"edge","second":"haste","name":"cinder-flashfire","title":"CINDER EDGE + FLASHFIRE","sentence":"Spend stored burn early and cut a narrow seam through the rank behind"},
+		{"first":"plate","second":"ward","name":"furnace-cautery","title":"FURNACE PLATE + CAUTERY","sentence":"Ignition readies an affliction ward; a follow-up hit heats your retaliation"},
+	]
+	for recipe in recipes:
+		for group in ["foundry_fields","foundry_embers","foundry_puffs","foundry_returns"]:
+			for node in get_tree().get_nodes_in_group(group): node.free()
+		for piece in sim.foundry().plate: sim.foundry_remove(piece.row,piece.col)
+		sim.add_materials({"ember_catalyst":1,"iron_ingot":100})
+		sim.foundry_place_skill(1,1,"prototype_heavy_strike")
+		sim.foundry_place(1,0,recipe.first)
+		sim.foundry_place(2,1,recipe.second)
+		sim.foundry_place_kind(2,0,"ember_catalyst")
+		player.combat._mutation_cache.clear()
+		player.combat._reaction_ready.clear()
+		player.combat._action_contexts.clear()
+		review_title.visible = false
+		get_window().size = Vector2i(1920,1080)
+		player.foundry_panel.open_panel()
+		for i in 8: await get_tree().process_frame
+		player.foundry_panel._inspect_cell(2,0)
+		await capture(recipe.name+"-foundry")
+		player.foundry_panel.close_panel()
+		get_window().size = Vector2i(1280,720)
+		var at := player.global_position + Vector3(-1.2,-.65,-3.4)
+		var target := Enemy.spawn(world,&"stone_husk",at)
+		var other := Enemy.spawn(world,&"stone_husk",at+Vector3(1.5,0,-1.6))
+		var rear := Enemy.spawn(world,&"stone_husk",at+Vector3(-1.7,0,-2.6))
+		for actor in [target,other,rear]:
+			actor.set_physics_process(false)
+			actor.life = 1000
+			var floor_hit := SkillBurst.solid_ray(player.combat,actor.global_position+Vector3.UP*2,actor.global_position+Vector3.DOWN*8)
+			if not floor_hit.is_empty(): actor.global_position = floor_hit.position
+		var form := player.combat.mutation(&"prototype_heavy_strike")
+		target.apply_ignite(100,0,0,form)
+		FoundryReactions.ignited(player.combat,target,form)
+		FoundryReactions.contact(player.combat,target,&"prototype_heavy_strike",form,{})
+		if recipe.first == "ember":
+			FoundryReactions.contact(player.combat,rear,&"prototype_heavy_strike",form,{})
+		for effect in get_tree().get_nodes_in_group("foundry_embers"):
+			effect.set_physics_process(false)
+			if effect.mode=="spark": effect.advance(.08)
+			elif effect.mode=="fuse": effect.advance(.45)
+			elif effect.mode in ["temper","cautery"]: effect.advance(.01)
+		for puff in get_tree().get_nodes_in_group("foundry_puffs"):
+			puff.set_process(false)
+			puff.elapsed = .2
+			puff._sample()
+		equip("iron_mace")
+		review_title.visible = true
+		review_title.text = recipe.title + "  ·  HEAVY STRIKE\n" + recipe.sentence
+		if recipe.first == "plate": review_title.text += "\n" + player.combat.verb_text()
+		await capture(recipe.name+"-combat")
+		for actor in [target,other,rear]: actor.queue_free()
