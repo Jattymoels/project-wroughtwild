@@ -1,5 +1,10 @@
 # Prototype Roadmap — Waves
 
+**Current tracking (7 September 2026):** use the [intensive queue](intensive-queue.md)
+and [first-hour clarity plan](first-hour-clarity-plan-2026-09-07.md) for upcoming
+work. This document retains the original wave sequence and historical status;
+later accepted work items and decisions supersede its older scope and rules.
+
 **Status:** Owner-directed plan (31 August 2026)
 **Owner direction being implemented:** the world is an **open sandpit** — no
 quest-hub town to return to (unlike Diablo/PoE). Moment-to-moment feel is
@@ -12,7 +17,7 @@ right. Catalysts remain a farmable currency class (ADR-0002 owner direction).
 Each wave lands as merge-sized slices with headless verification; a wave is
 "done" when the owner has played it and directed the next.
 
-Latest owner-approved follow-through (5 Sep 2026): **gathering feedback first**,
+Owner-approved follow-through recorded on 5 Sep 2026: **gathering feedback first**,
 then building usability, combat feel, and reasons to explore. The
 [playtest work list](playtest-priorities-2026-09-05.md) records the ranged-mob
 dodge/damage report and the separately deferred skill-variety design task.

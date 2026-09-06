@@ -22,13 +22,19 @@ The intended game combines self-directed construction, persistent ARPG buildcraf
 
 ## Current phase
 
+The [current intensive queue](docs/prototype/intensive-queue.md) tracks seven
+focused passes that can progress between playtests. First is
+[INT-01: first-hour clarity](docs/prototype/first-hour-clarity-plan-2026-09-07.md):
+accurate recipe pins, useful material explanations and an optional route into
+a first home and workshop. Its plan is ready; implementation has not started.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and
 impact now have individual conditions and explanations. Existing pieces and
 saves retain their identities; final combat balance remains player-tested.
 
-**Phase:** Wave 1 — the sandpit ([roadmap](docs/prototype/roadmap-waves.md), D-011). The game now opens on a seed-generated open world: biome terrain, scattered resources, roaming mob packs with loot, and a start-with-nothing opening (hand-craft a workbench, assemble and fuel a forge). The vertical-slice loop — mine order, armour, trial, catalyst tempering, construction unlock — sits on top and remains completable; `tools/playtest` stays the headless economy oracle. See `docs/prototype/acceptance-criteria.md` for what is ticked and what awaits playtesting.
+**Playable prototype:** the open sandpit established by D-011 now includes the bounded expansions below. The [original wave roadmap](docs/prototype/roadmap-waves.md) records its development history. The game opens on a seed-generated open world: biome terrain, scattered resources, roaming mob packs with loot, and a start-with-nothing opening (hand-craft a workbench, assemble and fuel a forge). The vertical-slice loop — mine order, armour, trial, catalyst tempering, construction unlock — sits on top and remains completable; `tools/playtest` stays the headless economy oracle. See `docs/prototype/acceptance-criteria.md` for what is ticked and what awaits playtesting.
 
 The owner-approved [world intensive](docs/prototype/world-intensive-2026-09-06.md) and [Forge intensive](docs/prototype/trial-intensive-2026-09-06.md) add three resource habitats, eight finished building families, two wall forms and one complete Forge arc followed by selectable repeatable tiers. D-027/D-028 explicitly expand the earlier material and endgame boundaries. Existing saves retain their original generation profile; the first two Forge curios still activate their existing world landmarks.
 

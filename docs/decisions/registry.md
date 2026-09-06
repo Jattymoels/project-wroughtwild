@@ -1,5 +1,12 @@
 # Decision Registry
 
+Owner planning request, 7 September 2026: keep track of the seven discussed
+intensives and prepare the first. The [current queue](../prototype/intensive-queue.md)
+records their status; [INT-01](../prototype/first-hour-clarity-plan-2026-09-07.md)
+plans first-hour clarity using the existing gathering, crafting and building
+rules. This records planning, with implementation not started; it introduces no
+new gameplay decision or blanket approval for the remaining queued ideas.
+
 Owner generation approval, 6 September 2026: “Okay let's do it” accepts the
 [Wide Frontier intensive](../prototype/wide-frontier-intensive-2026-09-06.md).
 D-032 brings forward a finite 1,024 m successor, larger biome interiors with
