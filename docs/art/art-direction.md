@@ -1,5 +1,13 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+Latest owner graphics request, 6 September 2026: the supplied reference brings
+forward a pass on leylines and the five rare resources. Weathered, branching
+dark fractures contain narrow cool light; rough organic/mineral hosts hold
+distinct small cores and fine luminous detail. Ignore the reference character
+and interface. This revises the earlier inert/dotted trace presentation while
+preserving its native placement, accidental origin and gameplay contracts.
+[Approved work and review](../prototype/leyline-resource-visual-2026-09-06.md).
+
 Owner-approved Northstar, 6 September 2026 (D-030): **extreme augmentation**
 already belongs to the forge, bench and Foundry, and now shapes the land and
 living things. The frontier is a low-technology alien world devastated by a

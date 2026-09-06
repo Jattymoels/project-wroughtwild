@@ -573,6 +573,8 @@ func _process(_delta: float) -> void:
 ## Hot nodes glow ember; cracked ones sit darker. Hover highlight rides on
 ## top of the state colour.
 func _refresh_state_look() -> void:
+	if StrangeResourceArt.supports(visual):
+		StrangeResourceArt.update(self,float(drive_progress)/float(maxi(drive_presses,1)),remaining_units<=0)
 	for material in _own_materials:
 		if material is ShaderMaterial:
 			material.set_shader_parameter("state_emission",Color(1.2,0.48,0.06) if hot_level>0 else Color.WHITE*preload("res://art/gathering_look.tres").hover_energy if _highlighted else Color.BLACK)
@@ -607,6 +609,11 @@ func harvest() -> int:
 ## Feel: each harvest gives the node a quick squash-and-settle, landing on a
 ## scale that tracks how much yield is left - a half-spent tree looks it.
 func _play_harvest_punch() -> void:
+	if StrangeResourceArt.supports(visual):
+		# The rare specimen's existing staged pose and contained seams communicate
+		# work directly. Keep its body and its grounded base at the saved scale.
+		StrangeResourceArt.update(self,float(drive_progress)/float(maxi(drive_presses,1)),remaining_units<=0)
+		return
 	if _terrain() != null and _terrain().faceted_surface and (visual==&"seam" or String(visual).ends_with("_vein")):
 		# A fracture belongs to the ground. Scaling its node would detach the
 		# sampled vertices; driving the wedge/remaining-unit readout gives feedback.

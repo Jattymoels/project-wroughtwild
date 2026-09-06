@@ -3,12 +3,14 @@ extends StaticBody3D
 ## The struck hearth predates the cataclysm. Its finite pressure belongs to
 ## the native world ledger; this remnant only exposes that state to the player.
 const LOOK = preload("res://art/contraption_look.tres")
+const FINISH = preload("res://art/rare_finish.tres")
 var source_id := ""
 var record: Dictionary = {}
 var terrain: Terrain
 var sim: WroughtwildSim
 var _membrane: Node3D
 var _highlighted := false
+var _finish: Node3D
 
 
 static func build(root: Node3D, ground: Terrain) -> void:
@@ -59,12 +61,15 @@ func _ready() -> void:
 	casing.scale=Vector3.ONE*LOOK.pocket_casing_scale
 	_membrane=StrangeResourceArt.part(self,"ventlung","PressureMembrane",LOOK.pocket_casing_offset)
 	_membrane.scale=Vector3.ONE*LOOK.pocket_membrane_scale
+	_membrane.material_override=FINISH.surface("pressure")
 	var inlay:=MeshInstance3D.new()
 	inlay.name="ImpactInlay"
 	inlay.mesh=AuthoredAssets.mesh_for("cataclysm_augmentation_inlay")
 	inlay.position=LOOK.pocket_inlay_offset
 	inlay.scale=LOOK.pocket_inlay_scale
 	add_child(inlay)
+	_finish=FINISH.build("pressure")
+	add_child(_finish)
 	refresh_visual()
 
 
@@ -105,7 +110,10 @@ func refresh_visual() -> void:
 	var state:=source_state()
 	var fraction:=float(state.get("remaining",0))/maxf(1,float(state.get("capacity",1)))
 	_membrane.scale=Vector3(1,lerpf(.4,1,fraction),1)*LOOK.pocket_membrane_scale
-	_membrane.visible=fraction>0 or _highlighted
+	# An empty source remains an inspectable old hearth. Hover never revives its
+	# membrane or luminous stock promise, and cannot change the native ledger.
+	_membrane.visible=fraction>0
+	if _finish!=null:FINISH.set_state(_finish,fraction,0,_highlighted)
 
 
 func connection_anchor() -> Vector3:

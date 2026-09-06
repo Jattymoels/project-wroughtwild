@@ -4,6 +4,7 @@ extends RefCounted
 ## Native resources/contraptions own quantities, transfers and work completion.
 const LOOK = preload("res://art/strange_look.tres")
 const MACHINES = preload("res://art/contraption_look.tres")
+const FINISH = preload("res://art/rare_finish.tres")
 const IDS := ["lanternheart","thrumroot","stormglass","pullstone","ventlung"]
 const LABELS := {"lanternheart":"Lanternheart in folded husks","thrumroot":"Braced Thrumroot coil","stormglass":"Intact Stormglass tube","pullstone":"Grit-bearing Pullstone","ventlung":"Breathing Ventlung membrane"}
 static var _fixture_meshes: Dictionary = {}
@@ -36,6 +37,10 @@ static func part(parent: Node3D, id: String, child_name: String, at: Vector3 = V
 	instance.name=child_name
 	instance.mesh=AuthoredAssets.mesh_for("strange_"+id)
 	instance.material_override=material() if look==null else look
+	if id=="lantern_shell" and child_name=="EmptyHousing" and look==null:
+		instance.material_override=FINISH.surface("lantern_shell")
+	if id=="vent_case" and child_name=="EmptyHousing" and look==null:
+		instance.material_override=FINISH.surface("vent_case")
 	instance.position=at
 	instance.visibility_range_end=LOOK.detail_distance_m
 	instance.visibility_range_end_margin=10.0
@@ -50,9 +55,20 @@ static func attach(node: ResourceNode) -> void:
 	node.add_child(root)
 	var mesh:=node.get_node("MeshInstance3D") as MeshInstance3D
 	mesh.hide()
-	var look:=material(LOOK.heart_emission if node.visual==&"lanternheart" else 0.0,LOOK.paper_sway_m if node.visual==&"lanternheart" else 0.0,LOOK.breath_fraction if node.visual==&"ventlung" else 0.0)
+	var look:=FINISH.surface(String(node.visual))
 	var core:=part(root,"thrumroot_core" if node.visual==&"thrumroot" else String(node.visual),"Core",Vector3.ZERO,look)
 	node._own_materials.append(look)
+	root.add_child(FINISH.build(String(node.visual)))
+	# A restored resource's stock appearance uses the frozen generated capacity,
+	# not how many units happened to be left when its scene streamed in.
+	var capacity:=node._initial_units
+	var terrain:=node._terrain()
+	if terrain!=null:
+		for entry: Dictionary in terrain.map.get("nodes",[]):
+			if String(entry.get("resource_id",""))==node.resource_id:
+				capacity=maxi(capacity,int(entry.get("units",capacity)))
+				break
+	root.set_meta("visual_capacity",maxi(capacity,1))
 	if node.visual==&"lanternheart": _light(root)
 	var shape:=BoxShape3D.new()
 	shape.size=bounds_for(node.visual)
@@ -77,7 +93,16 @@ static func update(node: ResourceNode, progress: float, depleted: bool = false) 
 		"stormglass": core.rotation.z=t*.12
 		"pullstone": core.rotation.z=-t*.12; core.position.y=t*.09
 		"ventlung": core.scale=Vector3(1.0-t*.16,1.0-t*.3,1.0-t*.16)
+	var finish:=root.get_node("RareFinish") as Node3D
+	# Filaments follow the worked specimen; host chips remain on its original base.
+	for detail in finish.get_children():
+		if detail.name!=&"HostFragments":detail.transform=core.transform
+	FINISH.set_state(finish,0.0 if depleted else float(node.remaining_units)/float(root.get_meta("visual_capacity",1)),t,node._highlighted)
 	root.visible=not depleted
+	var light:=root.get_node_or_null("WarmInterior") as OmniLight3D
+	if light!=null:
+		light.visible=not depleted and node.remaining_units>0
+		light.light_energy=LOOK.heart_light_energy*clampf(float(node.remaining_units)/float(root.get_meta("visual_capacity",1)),0,1)
 
 static func _light(parent: Node3D) -> OmniLight3D:
 	var light:=OmniLight3D.new()

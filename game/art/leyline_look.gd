@@ -1,0 +1,40 @@
+extends Resource
+## Cosmetic fractures follow the native exposed trace. These values never alter
+## terrain, interaction, stock, collision or the generated network's identity.
+@export var distance_m := 140.0 # Fine ground evidence retires before the distant landscape.
+@export var distance_margin_m := 12.0 # Avoid a hard disappearance while approaching a seam.
+@export var width_fraction := 0.14 # Native trace width controls a narrow mouth, not a paved road.
+@export var minimum_width_m := 0.1 # The short smithy trace remains legible at ordinary eye height.
+@export var maximum_width_m := 0.3 # Even the foreground opening stays a crack rather than a broad trench.
+@export var sample_m := 0.4 # Short facets conform to editable terrain with bounded geometry work.
+@export var lift_m := 0.018 # Keep the dark mouth above the exact ground without z fighting.
+@export var lip_height_m := 0.018 # Uneven small chips shade the light without resembling continuous manufactured bevels.
+@export var maximum_step_m := 0.7 # Stop rather than bridge abrupt excavated edges or unsupported ground.
+@export var meander_m := 0.12 # Small angular deviations break the native centreline into natural fractures.
+@export var branch_spacing_m := 4.0 # About two main side branches per eight metres keep the network local.
+@export var branch_minimum_m := 0.9 # Short cracks give the main split a chipped, tapering edge.
+@export var branch_maximum_m := 2.1 # Branches stay close to the native exposed strip.
+@export var branch_width_fraction := 0.28 # Most side cracks are dark hairlines, visibly smaller than the main fracture.
+@export var branch_light_probability := 0.18 # Only occasional side cracks expose energy; the rest are broken host material.
+@export var branch_light_strength := 0.22 # A lit side crack remains much quieter than the main exposed core.
+@export var edge_width_variation := 0.56 # Independent chipped sides vary the opening instead of forming parallel rails.
+@export var strand_wander_fraction := 0.12 # The fine inner light wanders off-centre inside the dark mouth.
+@export var tip_length_m := 1.0 # True exposed-run ends taper locally; render-tile joins keep their connected width.
+@export var tip_width_fraction := 0.12 # A dying main crack closes to a small mineral split instead of a blunt conduit cap.
+@export var branch_angle_min_degrees := 38.0 # Forks leave the main split obliquely instead of forming a ladder.
+@export var branch_angle_max_degrees := 76.0 # Vary direction without sending a crack backwards along the same strip.
+@export var twig_probability := 0.45 # A few secondary forks make branching feel geological rather than decorative ticks.
+@export var twig_length_m := 0.6 # Secondary forks are hairline chips, not another world-spanning network.
+@export var branches_per_tile := 8 # Hard cap on extra local paths when several trace segments share one tile.
+@export var bounds_padding_m := 3.0 # Stream/build refresh includes every short branch beyond the parent centreline.
+@export var rim_colour := Color("4d5149") # Weathered mineral lips belong to the surrounding earthy palette.
+@export var lip_colour := Color("292f30") # The inward chipped edge visually encloses the dark opening.
+@export var mouth_colour := Color("10171d") # A nearly black recess separates pale energy from normal ground.
+@export var light_colour := Color("c4e3ec") # Narrow cool-white mineral light remains distinct from saturated attack effects.
+@export var emission_strength := 1.25 # Visible contained light in daylight without illuminating the whole region.
+@export var light_variation := 0.025 # Almost imperceptible slow variation avoids attack-like blinking or travelling pulses.
+@export var light_period_seconds := 47.0 # Calm geological light changes over many seconds.
+@export var light_coverage := 0.58 # Interrupted light leaves dark lengths inside an otherwise connected fracture.
+@export var roughness := 0.91 # Broken lips read as dry mineral instead of glossy manufactured trim.
+@export var grain_cells_per_m := 28.0 # Fine mineral flecks remain local detail; the shader fades them below pixel size.
+@export var grain_contrast := 0.13 # Small surface variation keeps dark lips tactile without noisy sparkling.

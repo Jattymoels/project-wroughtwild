@@ -2,6 +2,14 @@
 
 ## Pressure workshop successor — D-031, 6 September 2026
 
+The [owner-directed leyline/resource graphics pass](../prototype/leyline-resource-visual-2026-09-06.md)
+changes presentation within existing profiles: exposed intervals receive dark
+branching surface fissures and contained light; rare hosts gain material and
+stock-state detail. It changes no native trace points, exposure flags, terrain,
+resource identity, quantity or collision. Buried/broken intervals remain absent,
+and building/excavation refresh suppresses unsupported surface geometry. The
+finite source's appearance reads the ledger and cannot replenish it.
+
 Fresh worlds use **`frontier_v5`**. The finite 512 × 512 m landscape, ordinary
 resources, existing rare hauls and approaches reuse the frozen V4 composition.
 One Ventlung-linked ruin is identified as an old **pre-cataclysm blacksmith's

@@ -6,7 +6,7 @@ const LOOK = preload("res://art/cataclysm_look.tres")
 var terrain: Terrain
 var pieces: Array[Node3D] = []
 var traces: Array[MeshInstance3D] = []
-var _trace_material: StandardMaterial3D
+var _fissures := LeylineFissures.new()
 
 static func build(root: Node3D, ground: Terrain) -> CataclysmSites:
 	var old := root.get_node_or_null("CataclysmSites")
@@ -31,8 +31,8 @@ func _compose() -> void:
 			trace.set_meta("record", record)
 			trace.set_meta("site_id", String(data.id))
 			trace.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-			trace.visibility_range_end = LOOK.trace_distance_m
-			trace.visibility_range_end_margin = 12
+			trace.visibility_range_end = LeylineFissures.LOOK.distance_m
+			trace.visibility_range_end_margin = LeylineFissures.LOOK.distance_margin_m
 			add_child(trace)
 			traces.append(trace)
 	refresh_buildings()
@@ -56,16 +56,27 @@ func _trace_records(data: Dictionary) -> Array[Dictionary]:
 				record.id = String(data.id) + "_%d_%d" % [key.x, key.y]
 				record.points = PackedVector3Array()
 				record.exposure = PackedByteArray()
+				record.fissure_tapers = PackedByteArray()
 				tiles[key] = record
 			var record: Dictionary = tiles[key]
 			var points: PackedVector3Array = record.points
 			var states: PackedByteArray = record.exposure
-			if not points.is_empty(): states.append(0)
+			var tapers: PackedByteArray = record.fissure_tapers
+			if not points.is_empty():
+				states.append(0)
+				tapers.append(3)
 			points.append(a)
 			points.append(b)
 			states.append(exposure[i] if i < exposure.size() else 0)
+			# A tile boundary is an implementation detail, not another broken
+			# geological endpoint. Only actual exposed-run ends narrow to a tip.
+			var taper_flags := 0
+			if cut == 0 and (i == 0 or i - 1 >= exposure.size() or exposure[i - 1] != 2): taper_flags |= 1
+			if cut == cuts - 1 and (i + 1 >= exposure.size() or exposure[i + 1] != 2): taper_flags |= 2
+			tapers.append(taper_flags)
 			record.points = points
 			record.exposure = states
+			record.fissure_tapers = tapers
 	for record: Dictionary in tiles.values(): result.append(record)
 	return result
 
@@ -254,76 +265,7 @@ func refresh_all() -> void:
 	refresh_buildings()
 
 func _trace(trace: MeshInstance3D, buildings: Dictionary = {}) -> void:
-	var data: Dictionary = trace.get_meta("record")
-	var path: PackedVector3Array = data.get("points", PackedVector3Array())
-	var exposure: PackedByteArray = data.get("exposure", PackedByteArray())
-	if path.size() < 2: return
-	var colour: Color = LOOK.root_colour if data.get("region_id", "") == "rootvault_wildwood" else LOOK.fen_colour if data.get("region_id", "") == "lantern_fen" else LOOK.upland_colour
-	var surface := SurfaceTool.new()
-	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var width := float(data.get("width_m", 2.0)) * LOOK.trace_width_fraction
-	var count := 0
-	var bounds := Rect2(Vector2(path[0].x, path[0].z), Vector2.ZERO)
-	for point in path: bounds = bounds.expand(Vector2(point.x, point.z))
-	trace.set_meta("xz_bounds", bounds.grow(width + 2.0))
-	for i in range(path.size() - 1):
-		if i >= exposure.size() or exposure[i] != 2: continue
-		var a := path[i]
-		var b := path[i + 1]
-		var delta := Vector3(b.x - a.x, 0, b.z - a.z)
-		if delta.length() < .01: continue
-		var side := delta.normalized().cross(Vector3.UP)
-		var samples := maxi(1, ceili(delta.length() / LOOK.trace_sample_m))
-		for sample in samples:
-			var t0 := float(sample) / samples
-			var t1 := (float(sample) + LOOK.trace_fragment_fraction) / samples
-			var start := a.lerp(b, t0)
-			var end := a.lerp(b, t1)
-			var mid := (start + end) * .5
-			# Worksites and footprints stay clear. Buried/broken segments carry
-			# their meaning through the broader native terrain influence instead.
-			var ground := _ground(mid.x, mid.z)
-			if not ground.is_finite() or StrangeSites._building_overlap(buildings, AABB(ground - Vector3(width, .1, width), Vector3(width * 2, .3, width * 2))): continue
-			count += _ribbon(surface, start, end, side, -width * .5, width * .5, LOOK.channel_colour)
-			count += _ribbon(surface, start, end, side, -width * .24, -width * .13, colour, .004)
-			count += _ribbon(surface, start, end, side, width * .11, width * .17, LOOK.inlay_colour, .004)
-	if count == 0:
-		trace.mesh = null
-		return
-	if _trace_material == null:
-		_trace_material = StandardMaterial3D.new()
-		_trace_material.vertex_color_use_as_albedo = true
-		_trace_material.vertex_color_is_srgb = true
-		_trace_material.roughness = .86
-		_trace_material.cull_mode = BaseMaterial3D.CULL_DISABLED
-	surface.set_material(_trace_material)
-	trace.mesh = surface.commit()
-	trace.set_meta("fragment_count", count / 3)
-
-func _ribbon(surface: SurfaceTool, a: Vector3, b: Vector3, side: Vector3, left: float, right: float, colour: Color, lift := 0.0) -> int:
-	var rows: Array[Vector3] = []
-	var cuts := maxi(2, ceili(a.distance_to(b) / LOOK.trace_conform_step_m))
-	var middle := (left + right) * .5
-	for cut in cuts + 1:
-		var t := float(cut) / cuts
-		var taper := .35 + .65 * sin(t * PI)
-		for offset in [lerpf(middle, left, taper), lerpf(middle, right, taper)]:
-			var raw: Vector3 = a.lerp(b, t) + side * float(offset)
-			var at := _ground(raw.x, raw.z)
-			if not at.is_finite(): return 0
-			rows.append(at + Vector3.UP * (LOOK.trace_lift_m + lift))
-	for cut in cuts:
-		var j := cut * 2
-		for edge in [[j, j + 2], [j + 1, j + 3], [j, j + 1], [j + 2, j + 3]]:
-			if absf(rows[edge[0]].y - rows[edge[1]].y) > LOOK.trace_max_step_m: return 0
-	surface.set_color(colour)
-	for cut in cuts:
-		var j := cut * 2
-		surface.set_normal((rows[j + 1] - rows[j]).cross(rows[j + 2] - rows[j]).normalized())
-		# Godot front faces use clockwise winding. Match the upward normal so
-		# two-sided lighting does not shade an exposed seam as its underside.
-		for i in [j, j + 3, j + 1, j, j + 2, j + 3]: surface.add_vertex(rows[i])
-	return 1
+	_fissures.rebuild(trace, terrain, buildings)
 
 ## Same authored technology inset against the existing dungeon's solid walls.
 ## It changes no corridor widths, navigation polygons, fixtures or boss tells.

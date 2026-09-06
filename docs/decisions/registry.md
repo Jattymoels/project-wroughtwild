@@ -1,5 +1,14 @@
 # Decision Registry
 
+Owner graphics direction, 6 September 2026: refine the existing leylines and
+five rare resources using the supplied environmental reference, excluding its
+character and interface. D-013 now brings forward dark branching fractures,
+narrow buried light and distinct detailed resource hosts. This supersedes the
+earlier graphical deferral and inert/dotted trace preference only for these
+visuals. D-030/D-031's accidental-impact lore and all generation, stock,
+interaction and save contracts remain authoritative. Frozen trace placement
+does not freeze its renderer. [Bounded work and review](../prototype/leyline-resource-visual-2026-09-06.md).
+
 Owner continuation and lore correction, 6 September 2026: current visual finish
 is accepted for now; a later graphical pass remains welcome. Empowerment at an
 old blacksmith's ruin is an accidental consequence of its asteroid strike,
