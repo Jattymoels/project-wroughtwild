@@ -22,6 +22,8 @@
 #include "wroughtwild/tuning.h"
 #include "wroughtwild/worldgen.h"
 
+const std::map<std::string,std::pair<std::string,double>>& completedIdentityOperations();
+
 namespace {
 
 int failures = 0;
@@ -2981,7 +2983,7 @@ void testKindsInCorners(const tuning::Tuning& t) {
     check(p.foundryPlaceSkill(1, 1, "prototype_frost_orb") && foundry::flowsToSkill(p.foundry(), p.plate(), 2, 0),
           "flow: the orb laid, the chain closes");
     check(count(p, "augment") == 1 && std::abs(onSheet(p).armour - 4.0) < 1e-9, "flow: the Vanguard's base counts, four armour on the sheet");
-    // The form: Frost beside the orb, touched by a Vanguard, is Frost Leech; the Frost keeps its support.
+    // The form: Rime Bastion grants newcomer control; Frost keeps its support.
     int forms = 0, supports = 0;
     for (const auto& e : foundry::effects(t, p.foundry(), p.plate())) {
         if (e.kind == "support" && e.skill == "prototype_frost_orb" && e.modifier == "cold_damage") ++supports;
@@ -2992,9 +2994,10 @@ void testKindsInCorners(const tuning::Tuning& t) {
                   "flow: Rime Bastion names its skill, its support cell, its socket and its family");
         }
     }
-    check(forms == 6 && supports == 1, "flow: one six-effect form, and the Frost still supports the orb");
+    check(forms == 4 && supports == 1, "flow: Rime's buildup/area/cold/chill role, and Frost still supports the orb");
     auto mods = grammar::foundryMods(t, p.foundry(), p.currentEra());
-    checkNear(grammar::skillMutation(t, mods, "prototype_frost_orb").at("zone_armour"), 10.0, 1e-9, "flow: the orb plants a ten-armour seal");
+    checkNear(grammar::skillMutation(t, mods, "prototype_frost_orb").at("identity_guard_rime_buildup"), 30.0, 1e-9, "flow: the orb prepares a newcomer chill boundary");
+    checkNear(grammar::skillMutation(t, mods, "prototype_frost_orb").at("zone_armour"), 0.0, 1e-9, "flow: Rime no longer silently grants a generic armour seal");
     checkNear(grammar::skillHit(t, mods, "prototype_frost_orb")[0].damage, 9.0 * (1.0 + 0.12 + 0.24), 1e-9, "flow: the orb keeps its +24% cold");
     checkNear(grammar::skillLifeOnKill(t, mods, "prototype_frost_nova"), 0.0, 1e-9, "flow: the nova, in no socket, gets nothing");
     // A shared support feeds both skills: Haste south of the orb, touched by
@@ -3003,8 +3006,8 @@ void testKindsInCorners(const tuning::Tuning& t) {
           "flow: haste in the shared support, the strike in the second socket");
     int quicksteps = 0;
     for (const auto& e : foundry::effects(t, p.foundry(), p.plate()))
-        if (e.kind == "form" && e.formName == "Quickbrace" && e.modifier == "mutation_zone_armour") ++quicksteps;
-    check(quicksteps == 2 && grammar::skillMutation(t, grammar::foundryMods(t,p.foundry(),1), "prototype_heavy_strike").at("zone_armour") == 10, "flow: Quickbrace feeds both skills the shared support serves");
+        if (e.kind == "form" && e.formName == "Quickbrace" && e.modifier == "mutation_identity_guard_quick_absorb") ++quicksteps;
+    check(quicksteps == 2 && grammar::skillMutation(t, grammar::foundryMods(t,p.foundry(),1), "prototype_heavy_strike").at("identity_guard_quick_absorb") == 5, "flow: Quickbrace feeds its timed frontal absorption to both recipients once");
     // Lifting pays metal and returns the kind; lifted, nothing flows.
     check(!p.foundryRemove(2, 0), "flow: lifting needs the metal");
     p.inventory["iron_ingot"] = 1;
@@ -3231,10 +3234,9 @@ void testLinksAndArc(const tuning::Tuning& t) {
 // forms, each a corner kind working a support beside a skill; the Dash's
 // forms land on the sheet because the Dash sits on no socket.
 void testMarrowAndQuicksilverForms(const tuning::Tuning& t) {
-    const std::map<std::string,std::string> operations = {{"marrow","recovery_on_kill"},{"sipping_marrow","siphon"},
-        {"quicksilver","trail_fraction"},{"striking_quicksilver","echo_delay"},{"casting_quicksilver","echo_delay"}};
-    for (const auto& [kind,operation] : operations) {
+    for (const std::string kind : {"marrow","sipping_marrow","quicksilver","striking_quicksilver","casting_quicksilver"}) {
         for (const auto& ingot : t.foundry.ingots) {
+            const auto& operation=completedIdentityOperations().at(kind+":"+ingot.id).first;
             const std::string skill = kind=="striking_quicksilver" ? "prototype_heavy_strike" : "prototype_frost_orb";
             foundry::State state;
             state.plate = {{1,1,"",skill},{1,0,ingot.id,""},{2,0,"","",kind}};
@@ -3242,7 +3244,7 @@ void testMarrowAndQuicksilverForms(const tuning::Tuning& t) {
             check(grammar::skillMutation(t,mods,skill).at(operation)>0,"life/tempo: " + kind + " carries its own operation through " + ingot.id);
             check(grammar::skillMutation(t,mods,"prototype_ember_bolt").at(operation)==0,"life/tempo: operation is local to its receiving skill");
             if (kind=="striking_quicksilver" || kind=="casting_quicksilver")
-                check(grammar::skillEchoEvery(t,mods,skill)==3,"tempo: every third compatible use repeats");
+                check(grammar::skillEchoEvery(t,mods,skill)==0,"tempo: distinct attack/spell sequences replace the old shared every-third repeat");
             state.plate.erase(state.plate.begin()+1);
             check(grammar::skillMutation(t,grammar::foundryMods(t,state,1),skill).at(operation)==0,"life/tempo: removing the route shuts the operation off");
         }
@@ -4489,7 +4491,12 @@ void testSkillExpansion(const tuning::Tuning& t) {
     check(grammar::skillPierce(t,mods,"prototype_frost_orb")==0,"expansion: variant form is scoped to its working");
     auto impact=working(ids[2],kinds[1],"edge");
     mods=grammar::foundryMods(t,impact.foundry(),1);
-    check(grammar::skillStagger(t,mods,ids[2],false)>grammar::skillStagger(t,{},ids[2],false),"expansion: Impact Catalyst adds control");
+    checkNear(grammar::skillMutation(t,mods,ids[2]).at("identity_concussion_fraction"),.12,1e-9,
+              "expansion: Impact plus Edge prepares Concussion's stagger-window detonation");
+    checkNear(grammar::skillStagger(t,mods,ids[2],false),grammar::skillStagger(t,{},ids[2],false),1e-9,
+              "expansion: Concussion rewards control without silently adding unconditional direct stagger");
+    checkNear(grammar::skillMutation(t,mods,"prototype_frost_orb").at("identity_concussion_fraction"),0,1e-9,
+              "expansion: Concussion remains local to its supported skill");
     auto sipping=working(ids[0],kinds[2],"reach");
     mods=grammar::foundryMods(t,sipping.foundry(),1);
     check(grammar::skillLifeOnHit(t,mods,ids[0])>=0.5,"expansion: Sipping Marrow supplies a landed-hit reading");

@@ -1,5 +1,52 @@
 # Foundry mutation grammar
 
+**Owner-approved completion of all existing inputs, 6 September 2026:** the
+[all-input identity pass](../prototype/foundry-all-inputs-2026-09-06.md) replaces the
+remaining nine first-pass families with 72 authored roles. The older first-pass
+record below is historical where superseded here. All 96 base readings now have
+individual operations; automated verification and player acceptance are recorded
+separately in that work item.
+
+The detailed roles and tuning are in [defence](../prototype/foundry-guard-identities-2026-09-06.md),
+[sustain](../prototype/foundry-sustain-identities-2026-09-06.md),
+[tempo](../prototype/foundry-tempo-identities-2026-09-06.md), and the passage/impact
+table below. Existing IDs, owned grades, alloys, placements, direct ingot additions
+and the completed 24 Ember/Frost/Preserving operations remain. New derived meanings
+load with the game; a running build retains its already loaded code and tuning.
+
+### Passage and impact identities
+
+| Ingot | Piercing Catalyst | Impact Catalyst |
+| --- | --- | --- |
+| Ember | Cinder Lance: first contact sends a small fire lance through the rear rank, excluding the original victim | Firebreak: delayed rear-facing fire crescent at contact, excluding the first victim |
+| Frost | Ice Lance: delayed chill reaches the farthest visible enemy in the narrow line beyond contact | Glacier Break: an already chilled contact shoves the local pack apart without extra damage |
+| Edge | Razor Wave: a small cutting return travels toward the original caster position | Concussion: two different real casts on one marked victim release a small hit and interruption |
+| Reach | Throughline: two victims pierced by the same cast anchor a line that flashes on intervening enemies, excluding the anchors | Shock Ring: a moving outward ring reaches each new recipient once |
+| Vigour | Blood Thread: a further aligned victim behind the first completes one clear-cover recovery | Heartbreak: hitting a victim below 35% life leaves a delayed local fracture |
+| Plate | Breach: a frontal-guard contact interrupts that guard and drives it back | Anvil Fall: settling before contact commits a delayed strike and shove at a fixed spot |
+| Ward | Wardneedle: contact on a protected victim sends a physical travelling interrupt to its protecting warden | Sealbreak: a delayed mark at the protecting warden disrupts warding enemies that remain inside |
+| Haste | Quicklance: a new real cast on a separated victim recovers some skill cooldown | Snapburst: approaching the armed contact point detonates its one local charge |
+
+Piercing retains one extra pierce and travelling melee; the sixteen additions
+above never recursively cast a skill. Impact replaces its earlier generic
+full-hit burst/wave with these small contact operations while retaining the
+player's original skill delivery. Base/cap values, movement prerequisites, widths,
+delays, event budgets and boss fractions live in `foundry.json.mutation_limits`.
+
+All new contact operations snapshot pre-hit conditions but advance only after
+positive direct hostile damage. Echo/linked contexts cannot prepare or complete
+these real-input sequences. Killing blows retain direct attribution before any
+terminal secondary operation runs. Damage packets and status buildup are resolved
+in the simulation with typed gear; flat primary buildup is not paid twice.
+Movement has no base damage. Acquired types do not convert the original packet.
+
+New events are grouped into bounded passage/impact, guard, sustain and tempo
+nodes. They clear on death, ordinary save application, successful trial entry,
+floor transitions and exit. A fresh effect cast at a cleared lift must finish
+before exact suspension; the save refuses to discard an unrepresented charge.
+Projectile wards compete by earliest contact on the world-limited swept segment,
+across all families, before any one-use charge is spent.
+
 Owner-approved update, 6 September 2026 (D-026): Equipment catalyst grades alias their original Kind during plate evaluation. Grade-specific ownership, placement and lifting remain exact; Faint/Stable/Potent currently share the authored mutation rather than multiplying its damage. See the [forge implementation record](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026) for tuning, sources and save compatibility.
 
 **Status: implemented, owner-approved 5 Sep 2026 (D-025).** The owner approved
@@ -31,9 +78,9 @@ area and ailment feel, while the Foundry changes its use. Flashfire, Bloodfire
 and Steambrand received separate timing, collection and control mechanics.
 The owner's subsequent approval completes all eight early Ember readings with
 the five mechanics below. The approved continuation now completes Frost and
-Preserving as well: 24 base readings have individual roles. The remaining
-Kind/ingot families still need their identity review; 96 rows do not mean 96
-distinct mechanics.
+Preserving as well: those 24 base readings have individual roles. The later
+all-input continuation at the top of this specification completes the remaining
+72. Coverage of rows alone is not evidence of enjoyable play.
 
 Evolved forms retain strike, sweep, projectile or ground delivery. Movement
 alone cannot make a damaging contact. Steam Plume shares one first-hit token
@@ -259,26 +306,25 @@ deliveries need an explicit conflict rule before adding them.
 | Ember Catalyst | +45 ignite buildup; eight distinct ingot mechanics: delayed fuse, chilled interrupt, narrow seam, travelling spark, collectible healing, reactive push, affliction cleanse/ward and stored-burn release. See the early identity table above. |
 | Frost Catalyst | Eight separate cold/control roles: Smoulder, an expanding chill ring, lateral cuts, shot-slowing mist, ice skin, foot binding, a reflected needle and movement recovery. See Frost above. |
 | Preserving Catalyst | Eight separate memory roles: stored burn, retained chill, a held wound, a newcomer echo, return recovery, an arrival shove, a kill ward and a switching refund. See Preserving above. |
-| Piercing Catalyst | Strikes/sweeps become travelling waves; projectiles/waves pierce one extra enemy |
-| Impact Catalyst | Strikes/sweeps become travelling impact waves; projectile contact bursts over 1.8 m, replacing the direct hit; +0.12 s stagger |
-| Bulwark Vanguard | Casting plants a 2 m seal: +10 armour while inside, for 3.2 s; strongest covering seal wins |
-| Warding Vanguard | Casting plants a 2 m veil which intercepts one incoming projectile, for 3.2 s |
-| Marrow | A direct-hit kill leaves a 1.8 m recovery bed, paying 4.5 life over four pulses if you stand inside |
-| Sipping Marrow | Each landed direct hit sends 0.65 life back in a visible mote; it pays on arrival |
-| Quicksilver | Casting leaves a 1.8 m afterimage at the casting position; three 16% hit/buildup pulses over 2.4 s |
-| Striking Quicksilver | Every third attack repeats after 0.12 s; spell tablets do not read this cadence |
-| Casting Quicksilver | Every third spell repeats after 0.55 s; attack tablets do not read this cadence |
+| Piercing Catalyst | Travelling melee and one extra pierce, with eight rear-rank, return, guard-breaking and alignment operations; see passage above. |
+| Impact Catalyst | Original delivery plus eight distinct contact events, including delayed crescents, outward rings, a committed anvil and a proximity charge. |
+| Bulwark Vanguard | Eight preparations requiring positioning, an aggressor-specific counter, crossing enemies, a quiet recovery interval or a finite brace. |
+| Warding Vanguard | Eight finite projectile defences with different screens, arming conditions and earned aftermath. Nearest interception wins before spending a charge. |
+| Marrow | Eight recovery obligations: collect, hold near a chilled target, execute a marked enemy, join kills, await quiet, recoup, secure a harbour or chase a pod. |
+| Sipping Marrow | Eight earned returns through a sustained tether, movement skill, repeated bleeding contact, retreat, target sampling, counterhit, cleared control or skill switching. |
+| Quicksilver | Eight footwork operations, including a hit-then-move fire seam and a recast-triggered old-position Afterimage. |
+| Striking Quicksilver | Eight attack sequences based on targets, timing, position and incoming damage; spell tablets do not read them. |
+| Casting Quicksilver | Eight spell aftereffects, including newcomer-only damage, a return line, a hollow ring, delayed defence and a moving metronome. |
 
-Outside the completed Ember, Frost and Preserving families, each ingot adds its own flavour to that operation: Ember +20 ignite, Frost +20
-chill, Edge +20 bleed, Reach +18% reach, Vigour +1.5 life on kill, Plate +4 cast
-armour, Ward +5% status ward, Haste +12% cooldown refund on kill. Smoulder has
-its own explicit payload below. The three completed families use the
-individual mechanics and explicitly retained ailment additions above. These are first-pass
-values, not balance claims.
+All 96 forms now use their individual mechanics. The remaining 72 no longer
+inherit the old shared field/cadence plus generic ingot-flavour additions.
+Ordinary direct ingots, Kind bases, alloy refinements and the explicitly retained
+ailment additions of the completed Ember/Frost/Preserving forms remain independent.
+Authored values are initial tuning, not balance claims.
 
 The current sixteen skills are not all equally useful with every Kind. Movement
-tablets have no hit to retain or pierce, although cast seals and trails can be
-created; trails then only deliver status payloads supplied by the build. A ground
+tablets have no hit to retain or pierce, although compatible cast preparations
+and positional sequences can be created. They do not fabricate damage. A ground
 spell retains its ground delivery when given Impact/Piercing, and never acquires
 a phantom projectile tag. Cadence incompatibility is shown as no compatible
 mutation in the flow inspector. These are deliberate compatibility boundaries.
@@ -316,7 +362,8 @@ Its limits' `design_purpose` explains every number. New modifier entries in
 The native simulation resolves names, paths, modifiers, acquired tags and caps;
 Godot owns collision, cover, time, visuals and choosing spatial recipients.
 
-Initial ceilings: 45% Smoulder slow, 4.8 s retained field, 50% hit/buildup per
+Legacy helper ceilings, retained for existing composed operations and regression
+fixtures: 45% Smoulder slow, 4.8 s retained field, 50% hit/buildup per
 pulse, 4 m base field radius, 40% trail pulse, 3 m base impact radius, 24 seal
 armour, three ward charges, ten recovery life, two siphoned life per hit,
 0.8 s echo delay and 100% ignition spread. Area and reach equipment scale area
@@ -358,7 +405,16 @@ compatibility tests rather than another source of generic damage multipliers.
 
 ## Verification
 
-Native tests cover all 4,608 base Kind/ingot/metal/skill fixtures, all 2,304 ordered
+The all-input completion passes **195,279 native checks**, including 4,608 base
+Kind/ingot/alloy/skill cases, 13,824 grade aliases and 55,296 ordered-pair cases
+across all alloys and skills. Focused runtime suites pass 104 passage/impact,
+385 guard, 273 sustain and 324 tempo checks. The retained Foundry suite passes
+452 checks; trial lifecycle passes 6,193. Nine renderer captures include the same
+Heavy Strike with Cinder Wake, Afterimage and both routes together. See the
+[completion work item](../prototype/foundry-all-inputs-2026-09-06.md) for
+reproduction, broader regressions and the limits of automated evidence.
+
+Historical first-pass evidence: native tests covered all 4,608 base Kind/ingot/metal/skill fixtures, all 2,304 ordered
 Kind-pair/ingot/attack-or-spell fixtures, larger-plate branches and reconvergence,
 packet isolation, gear scaling, scoped burn duration and unchanged save IDs.
 The Godot suite exercises Smoulder, boss slow, spread, pulse timing/cover,

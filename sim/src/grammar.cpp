@@ -165,6 +165,37 @@ std::map<std::string, double> skillMutation(const tuning::Tuning& tuning, const 
         result["afterfield_" + type + "_damage"] = baseHit <= 0 || type != originalType ? 0 :
             std::max(0.0, resolve(active, echoTags, "damage", baseHit)) * result["afterfield_fraction"];
     }
+    // Authored identity events ask for a fraction of one native base hit in
+    // an explicit damage type. Gear scales that packet, never all acquired
+    // elements at once. A movement shell has no base hit to manufacture.
+    // Only actual operation keys (not timing/space limits) produce packets.
+    for (const auto& [key, cap] : tuning.foundry.mutationLimits) {
+        (void)cap;
+        if (key.rfind("identity_", 0) != 0 || result[key] <= 0) continue;
+        if (key.size() > 9 && key.compare(key.size()-9,9,"_fraction") == 0) {
+            const auto prefix = key.substr(0,key.size()-9);
+            for (const auto& type : tuning.grammar.damageTypes) {
+                auto eventTags = packetTags(tuning,tags,type);
+                if (!has(eventTags,"area")) eventTags.push_back("area");
+                result[prefix+"_"+type+"_damage"] = baseHit <= 0 ? 0 :
+                    std::max(0.0,resolve(active,eventTags,"damage",baseHit))*result[key];
+            }
+        }
+        if (key.size() > 8 && key.compare(key.size()-8,8,"_buildup") == 0) {
+            const auto prefix = key.substr(0,key.size()-8);
+            for (const std::string status : {"ignite","chill","bleed"}) {
+                const auto type = status=="ignite" ? "fire" : status=="chill" ? "cold" : "physical";
+                auto eventTags = packetTags(tuning,tags,type);
+                if (!has(eventTags,status)) eventTags.push_back(status);
+                const double value = std::max(0.0,resolve(active,eventTags,status+"_buildup",result[key])-
+                    resolve(active,eventTags,status+"_buildup",0));
+                result[prefix+"_"+status] = value;
+                const double boss = status=="ignite" ? tuning.grammar.ignite.bossBuildupMultiplier :
+                    status=="chill" ? tuning.grammar.chill.bossBuildupMultiplier : tuning.grammar.bleed.bossBuildupMultiplier;
+                result[prefix+"_"+status+"_boss"] = value*boss;
+            }
+        }
+    }
     return result;
 }
 

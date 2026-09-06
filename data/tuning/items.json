@@ -3144,6 +3144,1393 @@
         }
       ],
       "design_purpose": "Maximum extra seconds from Kept Rime on Preserving windows; Emberbed divides the same damage over more pulses. Authored reading, excluded from random equipment pools."
+    },
+    {
+      "id": "mutation_identity_lance_fraction",
+      "display_name": "Identity Lance Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_lance_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Cinder Lance. First contact sends a small fire lance onward through the rear rank. The original victim is excluded; cover stops the travelling lance.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Cinder Lance. First contact sends a small fire lance onward through the rear rank. The original victim is excluded; cover stops the travelling lance. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_ice_buildup",
+      "display_name": "Identity Ice Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_ice_buildup",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Ice Lance. First contact sights a narrow line behind the victim; after a short warning its farthest visible enemy receives chill. No extra hit damage.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Ice Lance. First contact sights a narrow line behind the victim; after a short warning its farthest visible enemy receives chill. No extra hit damage. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_razor_fraction",
+      "display_name": "Identity Razor Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_razor_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Razor Wave. First contact sends a cutting return toward your original position. It cuts intervening enemies once, excluding the struck victim; movement changes the return lane.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Razor Wave. First contact sends a cutting return toward your original position. It cuts intervening enemies once, excluding the struck victim; movement changes the return lane. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_through_fraction",
+      "display_name": "Identity Through Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_through_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Throughline. Pierce two different enemies with the same cast to flash the line between them. The two anchors are excluded; other enemies in that narrow line take one small physical hit.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Throughline. Pierce two different enemies with the same cast to flash the line between them. The two anchors are excluded; other enemies in that narrow line take one small physical hit. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_thread_life",
+      "display_name": "Identity Thread Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_thread_life",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Blood Thread. First contact opens a short blood thread. Hit another enemy behind it along the same lane to recover life once; the return needs clear cover.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Blood Thread. First contact opens a short blood thread. Hit another enemy behind it along the same lane to recover life once; the return needs clear cover. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_breach_push",
+      "display_name": "Identity Breach Push",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_breach_push",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Breach. Hit a frontal guard to break its stance and drive it back. Open the guard with one hit, then exploit the short opening; bosses receive reduced control.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Breach. Hit a frontal guard to break its stance and drive it back. Open the guard with one hit, then exploit the short opening; bosses receive reduced control. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_needle_seconds",
+      "display_name": "Identity Needle Seconds",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_needle_seconds",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Wardneedle. Hit a warded enemy to send a visible needle toward its protecting warden. On arrival it briefly interrupts that warden, dropping its aura; cover can stop the needle.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Wardneedle. Hit a warded enemy to send a visible needle toward its protecting warden. On arrival it briefly interrupts that warden, dropping its aura; cover can stop the needle. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_quick_refund",
+      "display_name": "Identity Quick Refund",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_quick_refund",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Quicklance. Hit one enemy, then use a new cast on a different enemy at least two metres away to recover some of this skill cooldown. One short memory; no reward for repeatedly hitting the same target.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Quicklance. Hit one enemy, then use a new cast on a different enemy at least two metres away to recover some of this skill cooldown. One short memory; no reward for repeatedly hitting the same target. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_firebreak_fraction",
+      "display_name": "Identity Firebreak Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_firebreak_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Firebreak. First contact marks a delayed fire crescent behind the victim. The crescent hits the rear half of the pack once, excluding the original victim; the skill keeps its original delivery.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Firebreak. First contact marks a delayed fire crescent behind the victim. The crescent hits the rear half of the pack once, excluding the original victim; the skill keeps its original delivery. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_glacier_push",
+      "display_name": "Identity Glacier Push",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_glacier_push",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Glacier Break. Impact an already chilled enemy to break the pack apart with a harmless outward shove. Bosses move less; this neither freezes nor adds a damage packet.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Glacier Break. Impact an already chilled enemy to break the pack apart with a harmless outward shove. Bosses move less; this neither freezes nor adds a damage packet. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_concussion_fraction",
+      "display_name": "Identity Concussion Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_concussion_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Concussion. A first hit marks a victim. Strike it again with a different real cast during the short window to discharge one small physical concussion and interrupt its attack.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Concussion. A first hit marks a victim. Strike it again with a different real cast during the short window to discharge one small physical concussion and interrupt its attack. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_shock_fraction",
+      "display_name": "Identity Shock Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_shock_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Shock Ring. First contact launches an expanding shock ring. It reaches new enemies over time and hits each once, excluding the first victim; cover blocks its advance to recipients.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Shock Ring. First contact launches an expanding shock ring. It reaches new enemies over time and hits each once, excluding the first victim; cover blocks its advance to recipients. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_heartbreak_fraction",
+      "display_name": "Identity Heartbreak Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_heartbreak_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Heartbreak. Hit an enemy below 35% life to leave a delayed physical fracture at that position. Draw its neighbours into the marked spot for one small finishing burst.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Heartbreak. Hit an enemy below 35% life to leave a delayed physical fracture at that position. Draw its neighbours into the marked spot for one small finishing burst. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_anvil_fraction",
+      "display_name": "Identity Anvil Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_anvil_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Anvil Fall. Stand still briefly before landing a hit to mark an anvil fall. After a visible delay it strikes that fixed position and shoves survivors; enemies can leave the mark.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Anvil Fall. Stand still briefly before landing a hit to mark an anvil fall. After a visible delay it strikes that fixed position and shoves survivors; enemies can leave the mark. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_sealbreak_seconds",
+      "display_name": "Identity Sealbreak Seconds",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_sealbreak_seconds",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Sealbreak. Hit a protected enemy to mark its warden position. After a warning the mark interrupts warding enemies inside it; moving out or intervening cover defeats it.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Sealbreak. Hit a protected enemy to mark its warden position. After a warning the mark interrupts warding enemies inside it; moving out or intervening cover defeats it. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_snap_fraction",
+      "display_name": "Identity Snap Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_snap_fraction",
+      "display": "flat",
+      "sentence": "{n}: Stacking ceiling for Snapburst. First contact arms a short-lived snap charge at the target position. Approach within one metre to detonate it once; staying at range lets it expire.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Stacking ceiling for Snapburst. First contact arms a short-lived snap charge at the target position. Approach within one metre to detonate it once; staying at range lets it expire. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_furnace_absorb",
+      "display_name": "Identity Guard Furnace Absorb",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_furnace_absorb",
+      "display": "flat",
+      "sentence": "{n}: Maximum post-mitigation damage Furnace Bastion can absorb from its one trigger, including combined copies.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum post-mitigation damage Furnace Bastion can absorb from its one trigger, including combined copies. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_furnace_fraction",
+      "display_name": "Identity Guard Furnace Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_furnace_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum fraction of the supported hit paid by one delayed Furnace heat vent.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum fraction of the supported hit paid by one delayed Furnace heat vent. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_rime_buildup",
+      "display_name": "Identity Guard Rime Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_rime_buildup",
+      "display": "flat",
+      "sentence": "{n}: Maximum base chill paid once per newcomer by Rime Bastion before buildup gear and boss resistance.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base chill paid once per newcomer by Rime Bastion before buildup gear and boss resistance. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_blade_fraction",
+      "display_name": "Identity Guard Blade Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_blade_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum physical counter fraction earned by answering the attacker who struck Blade Bastion.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum physical counter fraction earned by answering the attacker who struck Blade Bastion. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_broad_push",
+      "display_name": "Identity Guard Broad Push",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_broad_push",
+      "display": "flat",
+      "sentence": "{n}: Maximum newcomer displacement from Broad Bastion before boss control reduction.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum newcomer displacement from Broad Bastion before boss control reduction. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_living_recovery",
+      "display_name": "Identity Guard Living Recovery",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_living_recovery",
+      "display": "flat",
+      "sentence": "{n}: Maximum actual damage Living Bastion can remember for its one quiet-residence recovery.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum actual damage Living Bastion can remember for its one quiet-residence recovery. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_plate_absorb",
+      "display_name": "Identity Guard Plate Absorb",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_plate_absorb",
+      "display": "flat",
+      "sentence": "{n}: Maximum finite damage pool earned by settling into Bulwark, including combined copies.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum finite damage pool earned by settling into Bulwark, including combined copies. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_post_reduction",
+      "display_name": "Identity Guard Post Reduction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_post_reduction",
+      "display": "flat",
+      "sentence": "{n}: Maximum damage reduction against Guardpost's single designated aggressor.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum damage reduction against Guardpost's single designated aggressor. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_guard_quick_absorb",
+      "display_name": "Identity Guard Quick Absorb",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_guard_quick_absorb",
+      "display": "flat",
+      "sentence": "{n}: Maximum damage a successful frontal Quickbrace can remove from one hit.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum damage a successful frontal Quickbrace can remove from one hit. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_veil_ember_fraction",
+      "display_name": "Identity Veil Ember Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_veil_ember_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum fire fraction paid once by the spent Ember Veil impact fuse.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum fire fraction paid once by the spent Ember Veil impact fuse. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_veil_rime_buildup",
+      "display_name": "Identity Veil Rime Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_veil_rime_buildup",
+      "display": "flat",
+      "sentence": "{n}: Maximum local chill at the one Rime Veil interception before buildup gear and boss resistance.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum local chill at the one Rime Veil interception before buildup gear and boss resistance. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_veil_razor_fraction",
+      "display_name": "Identity Veil Razor Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_veil_razor_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum physical fraction paid by Razor Veil's one snapped tripwire.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum physical fraction paid by Razor Veil's one snapped tripwire. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_veil_wide_screen",
+      "display_name": "Identity Veil Wide Screen",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_veil_wide_screen",
+      "display": "flat",
+      "sentence": "{n}: Enables one forward Wide Veil screen; duplicate readings never add interception charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Enables one forward Wide Veil screen; duplicate readings never add interception charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_veil_living_life",
+      "display_name": "Identity Veil Living Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_veil_living_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life contained in Living Veil's one physically collected remnant.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life contained in Living Veil's one physically collected remnant. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_veil_iron_absorb",
+      "display_name": "Identity Veil Iron Absorb",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_veil_iron_absorb",
+      "display": "flat",
+      "sentence": "{n}: Maximum damage caught-shot Iron Veil residue absorbs from one subsequent melee hit.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum damage caught-shot Iron Veil residue absorbs from one subsequent melee hit. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_veil_aegis_threshold",
+      "display_name": "Identity Veil Aegis Threshold",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_veil_aegis_threshold",
+      "display": "flat",
+      "sentence": "{n}: Highest fraction of maximum life at which combined Aegis readings can arm the one emergency shot ward.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Highest fraction of maximum life at which combined Aegis readings can arm the one emergency shot ward. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_veil_fleeting_refund",
+      "display_name": "Identity Veil Fleeting Refund",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_veil_fleeting_refund",
+      "display": "flat",
+      "sentence": "{n}: Maximum movement cooldown seconds returned by one successful decoy interception.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum movement cooldown seconds returned by one successful decoy interception. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_phoenix_life",
+      "display_name": "Identity Phoenix Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_phoenix_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Phoenix Bed before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Phoenix Bed before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_winterroot_life",
+      "display_name": "Identity Winterroot Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_winterroot_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Winterroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Winterroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_bloodroot_life",
+      "display_name": "Identity Bloodroot Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_bloodroot_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Bloodroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Bloodroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_harvest_life",
+      "display_name": "Identity Harvest Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_harvest_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Harvest Ground before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Harvest Ground before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_spring_life",
+      "display_name": "Identity Spring Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_spring_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Second Spring before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Second Spring before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_ironroot_life",
+      "display_name": "Identity Ironroot Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_ironroot_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Ironroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Ironroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_harbour_life",
+      "display_name": "Identity Harbour Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_harbour_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Safe Harbour before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Safe Harbour before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_fleet_life",
+      "display_name": "Identity Fleet Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_fleet_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Fleet Harvest before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Fleet Harvest before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_cinder_life",
+      "display_name": "Identity Cinder Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_cinder_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Cinder Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Cinder Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_cold_sip_life",
+      "display_name": "Identity Cold Sip Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_cold_sip_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Cold Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Cold Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_bloodletter_life",
+      "display_name": "Identity Bloodletter Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_bloodletter_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Bloodletter before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Bloodletter before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_long_drink_life",
+      "display_name": "Identity Long Drink Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_long_drink_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Long Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Long Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_deep_drink_life",
+      "display_name": "Identity Deep Drink Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_deep_drink_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Deep Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Deep Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_iron_drink_life",
+      "display_name": "Identity Iron Drink Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_iron_drink_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Iron Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Iron Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_ward_sip_life",
+      "display_name": "Identity Ward Sip Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_ward_sip_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Ward Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Ward Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_quick_sip_life",
+      "display_name": "Identity Quick Sip Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_quick_sip_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum base life paid once by Quick Sip before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum base life paid once by Quick Sip before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_cinder_fraction",
+      "display_name": "Identity Tempo Cinder Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_cinder_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Cinder Wake. After a damaging hit, move away to draw one short fire seam. Enemies crossing it take one fire cut; the original victim is excluded.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Cinder Wake. After a damaging hit, move away to draw one short fire seam. Enemies crossing it take one fire cut; the original victim is excluded. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_frost_buildup",
+      "display_name": "Identity Tempo Frost Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_frost_buildup",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Frost Wake. Cast, then leave your footprint. It chills the first pursuer entering the abandoned space once.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Frost Wake. Cast, then leave your footprint. It chills the first pursuer entering the abandoned space once. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_razor_fraction",
+      "display_name": "Identity Tempo Razor Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_razor_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Razor Wake. Land a hit, then circle to the opposite side of that enemy for one physical aftercut.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Razor Wake. Land a hit, then circle to the opposite side of that enemy for one physical aftercut. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_long_push",
+      "display_name": "Identity Tempo Long Push",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_long_push",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Long Wake. Cast, move away, then hit a distant enemy to pull it toward the old casting position once. Bosses move less.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Long Wake. Cast, move away, then hit a distant enemy to pull it toward the old casting position once. Bosses move less. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_living_life",
+      "display_name": "Identity Tempo Living Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_living_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Living Wake. After a damaging hit, leave its attacking position to recover a little life once.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Living Wake. After a damaging hit, leave its attacking position to recover a little life once. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_iron_push",
+      "display_name": "Identity Tempo Iron Push",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_iron_push",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Iron Wake. Cast and retreat; the next nearby enemy that damages you is shoved away once. Bosses move less.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Iron Wake. Cast and retreat; the next nearby enemy that damages you is shoved away once. Bosses move less. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_ward_cleanse",
+      "display_name": "Identity Tempo Ward Cleanse",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_ward_cleanse",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Warded Wake. After casting, suffer a hit and recast this skill to clear one root, harry or mark, in that order.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Warded Wake. After casting, suffer a hit and recast this skill to clear one root, harry or mark, in that order. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_after_fraction",
+      "display_name": "Identity Tempo After Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_after_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Afterimage. Recast this skill from a new position to discharge one echo at the previous casting position. It uses the skill's damage type; movement skills gain no damage.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Afterimage. Recast this skill from a new position to discharge one echo at the previous casting position. It uses the skill's damage type; movement skills gain no damage. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_s_cinder_fraction",
+      "display_name": "Identity Tempo S Cinder Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_s_cinder_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Cinder Refrain. Hit an enemy, then hit it again while it is already burning to burst behind it. The original victim takes no burst hit. Attacks only.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Cinder Refrain. Hit an enemy, then hit it again while it is already burning to burst behind it. The original victim takes no burst hit. Attacks only. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_s_frost_buildup",
+      "display_name": "Identity Tempo S Frost Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_s_frost_buildup",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Frost Refrain. Hit one enemy, then a different enemy to send a returning chill mote to the first. The mote must arrive. Attacks only.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Frost Refrain. Hit one enemy, then a different enemy to send a returning chill mote to the first. The mote must arrive. Attacks only. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_s_double_fraction",
+      "display_name": "Identity Tempo S Double Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_s_double_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Doublecut. Land a second hit on the same enemy between 0.3 and 1.2 seconds after the first for one physical aftercut. Attacks only.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Doublecut. Land a second hit on the same enemy between 0.3 and 1.2 seconds after the first for one physical aftercut. Attacks only. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_s_sweep_fraction",
+      "display_name": "Identity Tempo S Sweep Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_s_sweep_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Sweeping Refrain. Hit two different enemies to cut the short line between their contact positions once. Both original targets are excluded. Attacks only.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Sweeping Refrain. Hit two different enemies to cut the short line between their contact positions once. Both original targets are excluded. Attacks only. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_s_sustain_life",
+      "display_name": "Identity Tempo S Sustain Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_s_sustain_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Sustaining Refrain. Land three hits from separate casts without taking damage to recover life. Being hit breaks the sequence. Attacks only.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Sustaining Refrain. Land three hits from separate casts without taking damage to recover life. Being hit breaks the sequence. Attacks only. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_s_brace_armour",
+      "display_name": "Identity Tempo S Brace Armour",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_s_brace_armour",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Braced Refrain. Hold your position between two damaging attacks at least 0.6 seconds apart to gain brief armour. Moving breaks the brace.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Braced Refrain. Hold your position between two damaging attacks at least 0.6 seconds apart to gain brief armour. Moving breaks the brace. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_s_guard_stagger",
+      "display_name": "Identity Tempo S Guard Stagger",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_s_guard_stagger",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Guarded Refrain. After casting, answer an enemy that damages you with a landed hit to interrupt it and clear one control. Boss interruption is shorter. Attacks only.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Guarded Refrain. After casting, answer an enemy that damages you with a landed hit to interrupt it and clear one control. Boss interruption is shorter. Attacks only. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_s_step_refund",
+      "display_name": "Identity Tempo S Step Refund",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_s_step_refund",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Threefold Step. Cast this attack from three distinct positions to recover a little of the longest movement cooldown. Echoes do not count.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Threefold Step. Cast this attack from three distinct positions to recover a little of the longest movement cooldown. Echoes do not count. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_c_ember_fraction",
+      "display_name": "Identity Tempo C Ember Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_c_ember_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Ember Echo. A damaging spell hit leaves a delayed fire burst. Only enemies that arrive after the mark appeared can be hit.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Ember Echo. A damaging spell hit leaves a delayed fire burst. Only enemies that arrive after the mark appeared can be hit. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_c_frost_buildup",
+      "display_name": "Identity Tempo C Frost Buildup",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_c_frost_buildup",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Frost Echo. A damaging spell hit schedules one delayed chill ring at your attacking-side footprint. Reposition to lead pursuers into it.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Frost Echo. A damaging spell hit schedules one delayed chill ring at your attacking-side footprint. Reposition to lead pursuers into it. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_c_blade_fraction",
+      "display_name": "Identity Tempo C Blade Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_c_blade_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Blade Echo. A damaging spell hit draws one delayed physical return cut along the short line back toward you. The initial victim is excluded.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Blade Echo. A damaging spell hit draws one delayed physical return cut along the short line back toward you. The initial victim is excluded. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_c_wide_fraction",
+      "display_name": "Identity Tempo C Wide Fraction",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_c_wide_fraction",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Wide Echo. A damaging spell hit leaves a delayed hollow ring in the spell's damage type. Enemies in its centre are safe.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Wide Echo. A damaging spell hit leaves a delayed hollow ring in the spell's damage type. Enemies in its centre are safe. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_c_living_life",
+      "display_name": "Identity Tempo C Living Life",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_c_living_life",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Living Echo. A spell kill leaves a life mote. Cast a different spell to draw it home; healing waits for arrival and cover can block it.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Living Echo. A spell kill leaves a life mote. Cast a different spell to draw it home; healing waits for arrival and cover can block it. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_c_brace_armour",
+      "display_name": "Identity Tempo C Brace Armour",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_c_brace_armour",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Braced Echo. Hold position through a spell's short afterglow to gain brief armour. Moving before it settles cancels it.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Braced Echo. Hold position through a spell's short afterglow to gain brief armour. Moving before it settles cancels it. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_c_ward_charges",
+      "display_name": "Identity Tempo C Ward Charges",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_c_ward_charges",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Warded Echo. A spell leaves a delayed screen at its old casting position. Once active it intercepts one hostile projectile.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Warded Echo. A spell leaves a delayed screen at its old casting position. Once active it intercepts one hostile projectile. Authored reading, excluded from random item pools."
+    },
+    {
+      "id": "mutation_identity_tempo_c_after_refund",
+      "display_name": "Identity Tempo C After Refund",
+      "tags": [
+        "reading"
+      ],
+      "applies_to": [],
+      "effect": "add_foundry_identity_tempo_c_after_refund",
+      "display": "flat",
+      "sentence": "{n}: Maximum stacked budget for Aftercast. A spell leaves a slowly drifting metronome. Meet it after it starts moving and cast a spell there to recover some of that new cast's cooldown.",
+      "tiers": [
+        {
+          "tier": 1,
+          "minimum": 1.0,
+          "maximum": 1.0
+        }
+      ],
+      "design_purpose": "Maximum stacked budget for Aftercast. A spell leaves a slowly drifting metronome. Meet it after it starts moving and cast a spell there to recover some of that new cast's cooldown. Authored reading, excluded from random item pools."
     }
   ],
   "item_bases": [

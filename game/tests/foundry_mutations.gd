@@ -40,7 +40,7 @@ func settle() -> void:
 func clear() -> void:
 	for node in get_children():
 		if node is DroppedBundle: node.free()
-	for group in ["foundry_cold", "enemies", "player_projectiles", "enemy_projectiles", "skill_bursts", "foundry_fields", "foundry_returns", "foundry_echoes", "foundry_puffs", "foundry_embers"]:
+	for group in ["foundry_offence", "foundry_guard", "foundry_sustain", "foundry_tempo", "foundry_cold", "enemies", "player_projectiles", "enemy_projectiles", "skill_bursts", "foundry_fields", "foundry_returns", "foundry_echoes", "foundry_puffs", "foundry_embers"]:
 		for node in get_tree().get_nodes_in_group(group): node.free()
 	for id in combat.cooldowns: combat.cooldowns[id] = 0
 	combat._mutation_cache.clear()
@@ -125,6 +125,12 @@ func _ready() -> void:
 	clear()
 
 	form = lay(BOLT,"quicksilver","ember")
+	check(float(form.trail_fraction)==0,"Cinder Wake no longer inherits the shared legacy afterimage")
+	# Explicit legacy helper fixture: keep pulse/cover/conservation regression
+	# coverage independently of the new native Cinder Wake role tested elsewhere.
+	form.trail_fraction=.16
+	form.field_seconds=2.4
+	form.field_radius=1.8
 	target = enemy(Vector3(0,0,-4))
 	var behind := enemy(Vector3(2,0,-4))
 	var cover := wall(Vector3(1,1,-4),Vector3(0.08,3,4))
@@ -160,6 +166,9 @@ func _ready() -> void:
 	check((form.tags as PackedStringArray).has("attack") and (form.tags as PackedStringArray).has("projectile"),"travelling melee retains attack and gains projectile capability")
 	clear()
 	form = lay(BOLT,"impact_catalyst","reach")
+	check(float(form.impact_radius)==0,"Shock Ring keeps the native bolt instead of replacing it with a full-hit splash")
+	# Exercise the retained generic impact delivery helper with explicit values.
+	form.impact_radius=1.8
 	target = enemy(Vector3(0,0,-4))
 	neighbour = enemy(Vector3(1.3,0,-4))
 	await settle()
@@ -167,20 +176,28 @@ func _ready() -> void:
 	var expected_contact := expected_hit(BOLT,target)
 	var expected_neighbour := expected_hit(BOLT,neighbour)
 	sim.begin_fight(271)
+	combat._mutation_frame=Engine.get_physics_frames()
+	combat._mutation_cache[BOLT]=form
 	var bolt := shot(BOLT)
 	bolt.advance(1)
-	check(target.life<1000 and neighbour.life<1000,"Impact turns an ordinary bolt into a contact burst")
+	check(target.life<1000 and neighbour.life<1000,"legacy impact delivery helper makes a contact burst")
 	near(1000-target.life,expected_contact,"contact target takes exactly one seeded burst hit")
 	near(1000-neighbour.life,expected_neighbour,"neighbour takes exactly one seeded burst hit")
 	clear()
 
 	form = lay(BOLT,"warding_vanguard","ward")
+	check(float(form.ward_charges)==0,"Aegis does not also grant the generic ward")
+	form.ward_charges=1
+	form.field_radius=2
 	var seal := FoundryField.spawn(combat,BOLT,Vector3(0,0.15,0),"guard",form)
 	seal.set_physics_process(false)
 	check(FoundryField.intercept(get_tree(),Vector3(0,0.8,-8),Vector3(0,0.8,0)),"ward intercepts a shot crossing it in one long frame")
 	check(not FoundryField.intercept(get_tree(),Vector3(0,0.8,-8),Vector3(0,0.8,0)),"spent ward cannot intercept a second shot")
 	clear()
 	form = lay(BOLT,"vanguard","plate")
+	check(float(form.zone_armour)==0,"Bulwark does not also grant legacy seal armour")
+	form.zone_armour=10
+	form.field_radius=2
 	seal = FoundryField.spawn(combat,BOLT,Vector3(0,0.15,0),"guard",form)
 	seal.set_physics_process(false)
 	near(combat.cast_armour(),10,"Bulwark armour is active inside its seal")
@@ -190,6 +207,9 @@ func _ready() -> void:
 	clear()
 
 	form = lay(BOLT,"marrow","vigour")
+	check(float(form.recovery_on_kill)==0,"Second Spring does not also create legacy kill healing")
+	form.recovery_on_kill=4.5
+	form.field_radius=1.8
 	combat.life = combat.max_life - 20
 	field = FoundryField.spawn(combat,BOLT,Vector3(0,0.15,0),"recovery",form)
 	field.set_physics_process(false)
@@ -198,6 +218,8 @@ func _ready() -> void:
 	near(combat.life-before,4.5,"standing in a recovery bed collects its entire finite healing budget")
 	clear()
 	form = lay(BOLT,"sipping_marrow","edge")
+	check(float(form.siphon)==0,"Bloodletter does not also pay automatic hit motes")
+	form.siphon=.65
 	combat.life = combat.max_life - 20
 	before = combat.life
 	FoundryReturn.launch(combat,Vector3(0,0.8,-8),form)
@@ -212,11 +234,16 @@ func _ready() -> void:
 	clear()
 
 	form = lay(BOLT,"casting_quicksilver","haste")
-	for i in 3:
-		combat.cooldowns[BOLT] = 0
-		check(combat.use_skill(BOLT),"cadence fixture casts")
-	check(get_tree().get_nodes_in_group("foundry_echoes").size()==1,"three spell uses schedule one delayed echo")
-	var echo: FoundryEcho = get_tree().get_nodes_in_group("foundry_echoes")[0]
+	check(sim.skill_echo_every(BOLT)==0,"Aftercast no longer inherits an automatic third-cast repeat")
+	# Rails/boons can still repeat. Test their terminal helper directly rather
+	# than silently reintroducing the removed generic Casting behaviour.
+	combat.cooldowns[BOLT]=2
+	var echo := FoundryEcho.new()
+	echo.combat=combat
+	echo.skill_id=BOLT
+	echo.remaining=.55
+	echo.definition=combat.skills[BOLT]
+	add_child(echo)
 	echo.set_physics_process(false)
 	before = combat.cooldown_left(BOLT)
 	var uses: int = sim.combat_skill(BOLT).uses

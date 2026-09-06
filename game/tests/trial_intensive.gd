@@ -22,6 +22,7 @@ func settle(frames:=3)->void:
 	for i in frames: await get_tree().physics_frame
 
 func _ready()->void:
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(SAVE_PATH).get_base_dir())
 	var valley:=preload("res://scenes/spike_valley.tscn").instantiate()
 	add_child(valley)
 	player=valley.get_node("Player")
@@ -37,7 +38,9 @@ func _ready()->void:
 	baseline_economy=sim.export_json()
 	check(sim.trial_story_runs().size()==3,"three story identities")
 	check(not sim.trial_map_progress().get("available",true),"repeatable gate locked before capstone")
+	var prepared := identity_cleanup_probes()
 	check(trial.begin_run("forge_tyrant"),"live Tyrant starts")
+	check(prepared.all(func(effect): return effect.is_queued_for_deletion()),"trial entry cancels all four overworld identity groups")
 	check(trial.spatial and trial.built_floor==0,"live gate uses a traversable first floor")
 	await story(true)
 	check(not trial.active(),"Tyrant completion extracts")
@@ -252,6 +255,11 @@ func suspension()->void:
 	player.combat._trial_dash_armour_left=.8512345678901234
 	var life:=player.combat.life
 	var economy:=sim.export_json()
+	var prepared := identity_cleanup_probes()
+	check(not trial.suspend_to(SAVE_PATH) and trial.capture_boundary().is_empty(),"fresh boundary casts cannot silently lose an unrepresented charge on suspension")
+	check(player.combat.life==life and sim.export_json()==economy,"refused suspension preserves exact life, loot and build")
+	trial._cancel_transients()
+	check(prepared.all(func(effect): return effect.is_queued_for_deletion()),"floor cleanup removes all new identity groups without payout")
 	var loot:=sim.trial_loot().duplicate(true)
 	var choices:=sim.trial_run_state().duplicate(true)
 	check(trial.suspend_to(SAVE_PATH),"cleared floor saves atomically")
@@ -290,6 +298,18 @@ func suspension()->void:
 	malformed.trial_boundary.combat_exact=Marshalls.variant_to_base64(wrong_combat,false)
 	check(not manager.apply(player,malformed) and "representations" in manager.last_error,"readable and exact combat state must agree")
 	check(sim.export_json()==economy,"rejected exact payload leaves the live economy intact")
+
+func identity_cleanup_probes() -> Array:
+	# Lifecycle probes deliberately contain no ability payload. Actual native
+	# preparation, collection and combat are covered by the four role suites.
+	var probes: Array=[FoundryOffence.new(),FoundryGuard.new(),FoundrySustain.new(),FoundryTempo.new()]
+	for effect in probes:
+		effect.combat=player.combat
+		effect.remaining=1
+		effect.set_physics_process(false)
+		add_child(effect)
+		if effect is FoundryTempo: effect.add_to_group("foundry_tempo")
+	return probes
 
 func atomic_save_checks()->void:
 	var path:="res://../build/intensives/atomic-check.json"

@@ -85,6 +85,9 @@ if ($Checks) {
     Invoke-GodotReview 'combat-presentation' '--headless res://tests/combat_presentation.tscn'
     Invoke-GodotReview 'skill-expansion' '--headless res://tests/skill_expansion.tscn'
     Invoke-GodotReview 'foundry-mutations' '--headless res://tests/foundry_mutations.tscn'
+    foreach ($identity in @('offence','guard','sustain','tempo')) {
+        Invoke-GodotReview "foundry-$identity-identity" "--headless res://tests/foundry_${identity}_identity.tscn"
+    }
     Invoke-GodotReview 'forge-progression' '--headless res://tests/forge_progression.tscn'
     Invoke-GodotReview 'world-intensive' '--headless res://tests/world_intensive.tscn'
     Invoke-GodotReview 'material-intensive' '--headless res://tests/material_intensive.tscn'
@@ -104,7 +107,11 @@ if ($Checks) {
 } elseif ($Foundry) {
     Invoke-GodotReview 'foundry-import' '--headless --import'
     Invoke-GodotReview 'foundry-mutations' '--headless res://tests/foundry_mutations.tscn'
+    foreach ($identity in @('offence','guard','sustain','tempo')) {
+        Invoke-GodotReview "foundry-$identity-identity" "--headless res://tests/foundry_${identity}_identity.tscn"
+    }
     Invoke-GodotReview 'foundry-review' '--position -9999,-9999 res://experiments/foundry_mutation_review.tscn'
+    Invoke-GodotReview 'foundry-identity-review' '--position -9999,-9999 res://experiments/foundry_identity_review.tscn'
 } elseif ($Skills) {
     Invoke-GodotReview 'skill-expansion-import' '--headless --import'
     Invoke-GodotReview 'skill-expansion' '--headless res://tests/skill_expansion.tscn'

@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner Foundry continuation, 6 September 2026: after confirming that Cinder Wake
+and Afterimage shared one operation, “Lets do it then - cover all inputs” approves
+finishing the remaining nine Kind families under D-025. The [all-input work item](../prototype/foundry-all-inputs-2026-09-06.md)
+supersedes their earlier deferral: 72 individual combat roles alongside the 24
+completed Ember/Frost/Preserving readings. All existing ingots, alloys, grades,
+skills and route compositions are covered; no new currencies or placement rules.
+Impact uses distinct contact events while preserving base delivery; Piercing keeps
+its existing travelling-melee capability. Ordered routes compose unless an explicit
+existing evolution consumes them. This approval is for gameplay distinctions,
+accurate explanations and verification, not merely unique names or test counts.
+
+
 Owner graphics direction, 6 September 2026: refine the existing leylines and
 five rare resources using the supplied environmental reference, excluding its
 character and interface. D-013 now brings forward dark branching fractures,

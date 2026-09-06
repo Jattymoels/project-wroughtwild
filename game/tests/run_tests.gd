@@ -399,8 +399,9 @@ func _test_lattice() -> void:
 	# The plate ingot back at (1,0): its base, the Bulwark pair with the
 	# vigour below it, and now the Vanguard's four flowing in.
 	check(sim.foundry_place(1, 0, "plate") and sim.foundry_place_skill(1, 1, "prototype_frost_orb")
-		and sim.derived_stats()["armour"] == armour_bare + 8.0 + 8.0 + 4.0 and sim.skill_cast_armour("prototype_frost_orb")["armour"] == 4.0 + 4.0 and sim.skill_mutation("prototype_frost_orb").zone_armour == 10.0,
-		"flow: the plate ingot and the orb close the chain - four armour flows in and the Plate is worked into Bulwark with an additional positional armour seal (%s)" % sim.derived_stats()["armour"])
+		and sim.derived_stats()["armour"] == armour_bare + 8.0 + 8.0 + 4.0 and sim.skill_cast_armour("prototype_frost_orb")["armour"] == 4.0
+		and sim.skill_mutation("prototype_frost_orb").identity_guard_plate_absorb == 9.0 and sim.skill_mutation("prototype_frost_orb").zone_armour == 0.0,
+		"flow: closing the chain preserves base/pair armour and direct Plate cast armour, while Bulwark supplies a finite positional absorption pool (%s)" % sim.derived_stats()["armour"])
 	var kinds_on_plate := 0
 	for p in sim.foundry()["plate"]:
 		if String(p.get("currency", "")) == "vanguard":
@@ -983,13 +984,17 @@ func _test_sim_extension() -> void:
 			centres.append(Vector3(cx + 0.5, 4.5, cz + 0.5))
 			buried.append(Vector3(cx + 0.5, 3.5, cz + 0.5))
 	var chunk := Node3D.new()
+	var buried_chunk := Node3D.new()
+	var rebuilt_chunk := Node3D.new()
 	var on_top := GroundCover.build_for_chunk(chunk, {"kinds": {"grass": centres}}, fake_map, 1.0)
-	var under := GroundCover.build_for_chunk(Node3D.new(), {"kinds": {"grass": buried}}, fake_map, 1.0)
+	var under := GroundCover.build_for_chunk(buried_chunk, {"kinds": {"grass": buried}}, fake_map, 1.0)
 	check(on_top > 0 and on_top <= 16 and under == 0 and chunk.get_child_count() >= 1,
 		"expansive: a meadow chunk grows cover on its surface blocks (%d) and none under them" % on_top)
-	var twice := GroundCover.build_for_chunk(Node3D.new(), {"kinds": {"grass": centres}}, fake_map, 1.0)
+	var twice := GroundCover.build_for_chunk(rebuilt_chunk, {"kinds": {"grass": centres}}, fake_map, 1.0)
 	check(twice == on_top, "expansive: a rebuilt chunk grows the same cover")
 	chunk.free()
+	buried_chunk.free()
+	rebuilt_chunk.free()
 	check(sim.modifier("deep_frost")["applies_to_tags"].has("chill") and sim.modifier("max_life")["self"], "items: modifier views")
 	# The trial run above banked the gear its rooms dropped, so the pack is not empty.
 	var before: int = sim.pack_items().size()

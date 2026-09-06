@@ -855,6 +855,13 @@ func _inspect_cell(row: int, col: int) -> void:
 
 func _resolved_summary(skill: String, form: Dictionary) -> String:
 	var parts := PackedStringArray()
+	var shown_identities := {}
+	for effect in form.get("forms",[]):
+		if not String(effect.get("modifier","")).begins_with("mutation_identity_"): continue
+		var name := String(effect.get("form_name",""))
+		if shown_identities.has(name): continue
+		shown_identities[name]=true
+		parts.append(name+": "+String(effect.get("description","")))
 	var memory := float(form.get("memory_extension",0))
 	if float(form.get("rime_ring_buildup",0))>0:
 		parts.append("Rimewell: an expanding ring carries %.0f chill once; no extra damage" % float(form.rime_ring_chill))

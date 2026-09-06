@@ -468,18 +468,36 @@ func _physics_process(_delta: float) -> void:
 			# socket, the Edge north of it a support, and one of the mine's
 			# Vanguards in the corner beyond the Edge: it refuses the socket
 			# and the support cell, takes the corner, and works the Edge into
-			# Barbs, so the whelp that strikes you bleeds. Lifted, back to the
-			# purse.
+			# Blade Bastion. Its counter answers the actual aggressor; it no
+			# longer grants a generic seal or automatic bleed. Lifting still
+			# returns the exact invested Kind to the purse.
 			var sim: WroughtwildSim = _player.inventory.get_sim()
 			check(sim.foundry_place_skill(2, 2, "prototype_heavy_strike") and sim.foundry_place(1, 2, "edge")
 				and not sim.foundry_place_kind(2, 2, "vanguard") and not sim.foundry_place_kind(2, 3, "vanguard")
-				and sim.foundry_place_kind(1, 3, "vanguard") and sim.skill_mutation("prototype_heavy_strike").zone_armour == 10.0
+				and sim.foundry_place_kind(1, 3, "vanguard") and sim.skill_mutation("prototype_heavy_strike").identity_guard_blade_fraction == 0.12
 				and sim.currency_count("vanguard") == 2,
 				"flow: a kind refuses a socket and a support, takes the corner, and works the Edge into Blade Bastion")
 			var bleed_before: float = _back.bleed
 			_player.combat.apply_payload(_back, PlayerCombat.HEAVY_SKILL, false)
-			check(_back.bleed > bleed_before and sim.derived_stats()["barbs"] == 0.0,
-				"flow: Blade Bastion gives the supported strike a bleed payload; it grants no global thorns")
+			check(_back.bleed == bleed_before and sim.derived_stats()["barbs"] == 0.0,
+				"flow: Blade Bastion grants no automatic bleed or global thorns")
+			_player.combat._mutation_cache.clear()
+			_player.combat.cooldowns[PlayerCombat.HEAVY_SKILL] = 0.0
+			check(_player.combat.use_skill(PlayerCombat.HEAVY_SKILL), "flow: a real supported strike prepares Blade Bastion")
+			var counter := FoundryGuard.live(_player.combat, "guard_blade")
+			_player.combat.clear_train()
+			_back.force_attack()
+			check(counter != null and counter.armed and counter.target == _back,
+				"flow: the enemy who actually hurt the player owns the counter")
+			var facing_before: float = _player.rotation.y
+			_player.rotation.y = PI
+			_player.combat.cooldowns[PlayerCombat.HEAVY_SKILL] = 0.0
+			var counter_life_before: float = _back.life
+			check(_player.combat.use_skill(PlayerCombat.HEAVY_SKILL)
+				and counter_life_before - _back.life > _player.combat.last_hit_dealt
+				and counter != null and counter.is_queued_for_deletion(),
+				"flow: answering that aggressor pays one counter beyond the ordinary direct hit")
+			_player.rotation.y = facing_before
 			sim.add_material("iron_ingot", 2)
 			check(sim.foundry_remove(2, 2) and sim.foundry_remove(1, 3) and sim.foundry_remove(1, 2)
 				and sim.currency_count("vanguard") == 3 and sim.derived_stats()["barbs"] == 0.0,

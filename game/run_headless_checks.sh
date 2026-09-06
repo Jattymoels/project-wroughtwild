@@ -69,6 +69,12 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --path . res://tests/combat_presentation.tscn
 "$GODOT" --headless --path . res://tests/skill_expansion.tscn
 
+echo "== Foundry identities and composition =="
+"$GODOT" --headless --path . res://tests/foundry_mutations.tscn
+for identity in offence guard sustain tempo; do
+  "$GODOT" --headless --path . "res://tests/foundry_${identity}_identity.tscn"
+done
+
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 

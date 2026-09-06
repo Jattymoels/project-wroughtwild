@@ -1,0 +1,208 @@
+extends "res://tests/foundry_mutations.gd"
+## These fixtures use real native routes, status application and positive direct
+## hits. Deliberate clocks/positions isolate each operation's combat obligation.
+
+func fresh_context() -> Dictionary:
+	return {"practice_allowed":true,"practice_used":true}
+
+func hit(target: Enemy, context: Dictionary = {}) -> void:
+	if context.is_empty(): context=fresh_context()
+	combat.apply_payload(target,STRIKE,target is Boss,1,false,context)
+	combat.deal(target,STRIKE,false,1,false,context)
+	for node in get_tree().get_nodes_in_group("foundry_offence"): node.set_physics_process(false)
+
+func event(kind: String) -> FoundryOffence:
+	for node in get_tree().get_nodes_in_group("foundry_offence"):
+		if node.mode==kind and node.remaining>0 and not node.is_queued_for_deletion(): return node
+	check(false,"legal route produced actual "+kind+" event")
+	return null
+
+func reset_route(kind: String, ingot: String) -> Dictionary:
+	for group in ["foundry_offence","foundry_guard","foundry_sustain","foundry_tempo"]:
+		for node in get_tree().get_nodes_in_group(group): node.free()
+	clear()
+	player.position=Vector3(0,.3,0)
+	combat._still_seconds=0
+	return lay(STRIKE,kind,ingot)
+
+func _ready() -> void:
+	wall(Vector3(0,-.5,0),Vector3(100,1,100))
+	player=preload("res://scenes/player.tscn").instantiate()
+	add_child(player)
+	player.class_panel.choose("warden")
+	player.set_physics_process(false)
+	player.placement.set_physics_process(false)
+	combat=player.combat
+	combat.set_physics_process(false)
+	sim=combat.sim
+	await settle()
+	var form := reset_route("piercing_catalyst","ember")
+	var first := enemy(Vector3(0,0,-2))
+	var rear := enemy(Vector3(0,0,-4))
+	hit(first)
+	var node := event("lance")
+	var before := first.life
+	if node!=null: node.advance(.3)
+	check(rear.life<1000 and first.life==before,"Cinder Lance travels onward and excludes original contact")
+	form=reset_route("piercing_catalyst","frost")
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(0,0,-6))
+	var middle := enemy(Vector3(0,0,-4))
+	hit(first)
+	node=event("ice")
+	check(rear.chill==0,"Ice Lance warns before paying chill")
+	if node!=null: node.advance(1)
+	check(rear.chill>0 and middle.chill==0,"Ice Lance selects farthest rear-rank recipient only")
+	form=reset_route("piercing_catalyst","edge")
+	first=enemy(Vector3(0,0,-5))
+	middle=enemy(Vector3(0,0,-2))
+	hit(first)
+	node=event("razor")
+	before=first.life
+	if node!=null: node.advance(.5)
+	check(middle.life<1000 and first.life==before,"Razor Wave cuts back toward original cast position")
+	form=reset_route("piercing_catalyst","reach")
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(0,0,-6))
+	middle=enemy(Vector3(0,0,-4))
+	var context := fresh_context()
+	hit(first,context)
+	check(get_tree().get_nodes_in_group("foundry_offence").is_empty(),"Throughline needs two contacts from one cast")
+	hit(rear,context)
+	node=event("through")
+	before=first.life
+	if node!=null: node.advance(1)
+	check(middle.life<1000 and first.life==before,"Throughline flashes between anchors without hitting them again")
+	form=reset_route("piercing_catalyst","vigour")
+	combat.life-=20
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(0,0,-4))
+	hit(first)
+	before=combat.life
+	hit(first)
+	near(combat.life,before,"Blood Thread does not pay for repeated original contact")
+	middle=enemy(Vector3(0,0,-1))
+	hit(middle)
+	near(combat.life,before,"Blood Thread rejects a victim in front of its marked anchor")
+	hit(rear)
+	near(combat.life-before,float(form.identity_thread_life),"Blood Thread pays once for a further aligned victim")
+	form=reset_route("piercing_catalyst","plate")
+	first=enemy(Vector3(0,0,-2))
+	first.verb="guard"
+	first.verb_arc=110
+	first.look_at(player.global_position,Vector3.UP)
+	check(first.guards_against(FoundryIdentity.point(combat)),"Breach fixture presents an actual frontal guard")
+	hit(first)
+	check(first.staggered() and first._shove_left.length()>0,"Breach opens an actual frontal guard and pushes it back")
+	form=reset_route("piercing_catalyst","ward")
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(1,0,-3))
+	rear.verb="ward"
+	rear.verb_radius=5
+	hit(first)
+	node=event("needle")
+	check(not rear.staggered(),"Wardneedle waits for physical arrival")
+	if node!=null: node.advance(.5)
+	check(rear.staggered() and not rear.wards(),"Wardneedle interrupts the protecting warden")
+	form=reset_route("piercing_catalyst","haste")
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(3,0,-3))
+	hit(first)
+	combat.cooldowns[STRIKE]=5
+	hit(rear)
+	near(float(combat.cooldowns[STRIKE]),5-float(form.identity_quick_refund),"Quicklance rewards a fresh cast at a separated target")
+	form=reset_route("impact_catalyst","ember")
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(0,0,-3.3))
+	middle=enemy(Vector3(0,0,-1))
+	hit(first)
+	node=event("firebreak")
+	if node!=null: node.advance(1)
+	check(rear.life<1000 and middle.life==1000,"Firebreak strikes the rear half of the pack, not the front")
+	form=reset_route("impact_catalyst","frost")
+	first=enemy(Vector3(0,0,-2))
+	first.chill=20
+	rear=enemy(Vector3(1,0,-2))
+	hit(first)
+	check(first._shove_left.length()>0 and rear._shove_left.length()>0 and rear.life==1000,"Glacier Break needs prior chill and separates the pack without extra damage")
+	form=reset_route("impact_catalyst","edge")
+	first=enemy(Vector3(0,0,-2))
+	context=fresh_context()
+	hit(first,context)
+	hit(first,context)
+	check(not first.staggered(),"Concussion cannot count a fan's repeated contact as a second cast")
+	hit(first)
+	check(first.staggered(),"Concussion discharges after a distinct real follow-up cast")
+	form=reset_route("impact_catalyst","reach")
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(2,0,-2))
+	hit(first)
+	node=event("shock")
+	if node!=null: node.advance(.05)
+	check(rear.life==1000,"Shock Ring does not hit outside its current edge")
+	if node!=null: node.advance(1)
+	check(rear.life<1000,"Shock Ring reaches the outer recipient later")
+	form=reset_route("impact_catalyst","vigour")
+	first=enemy(Vector3(0,0,-2))
+	hit(first)
+	check(get_tree().get_nodes_in_group("foundry_offence").is_empty(),"Heartbreak rejects a healthy target")
+	first.life=200
+	hit(first)
+	node=event("heartbreak")
+	rear=enemy(Vector3(1,0,-2))
+	if node!=null: node.advance(1)
+	check(rear.life<1000,"Heartbreak's low-life fracture has a delayed local payoff")
+	form=reset_route("impact_catalyst","plate")
+	first=enemy(Vector3(0,0,-2))
+	hit(first)
+	check(get_tree().get_nodes_in_group("foundry_offence").is_empty(),"Anvil Fall rejects an unsettled hit")
+	combat._still_seconds=1
+	hit(first)
+	node=event("anvil")
+	before=first.life
+	first.position.x=8
+	if node!=null: node.advance(1)
+	near(first.life,before,"Anvil Fall strikes a fixed mark; moving out evades it")
+	form=reset_route("impact_catalyst","ward")
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(1,0,-3))
+	rear.verb="ward"
+	rear.verb_radius=5
+	hit(first)
+	node=event("sealbreak")
+	if node!=null: node.advance(1)
+	check(not rear.wards(),"Sealbreak's delayed mark disrupts the protecting aura")
+	form=reset_route("impact_catalyst","haste")
+	first=enemy(Vector3(0,0,-4))
+	hit(first)
+	node=event("snap")
+	before=first.life
+	if node!=null: node.advance(.1)
+	near(first.life,before,"Snapburst waits while the player stays distant")
+	player.position=Vector3(0,.3,-3.5)
+	if node!=null: node.advance(.1)
+	check(first.life<before and node.is_queued_for_deletion(),"Approaching Snapburst detonates exactly once")
+	before=first.life
+	if node!=null: node.advance(1)
+	near(first.life,before,"Spent Snapburst cannot award a second hit")
+	form=reset_route("piercing_catalyst","ember")
+	first=enemy(Vector3(0,0,-2))
+	rear=enemy(Vector3(0,0,-4))
+	var cover := wall(Vector3(0,1,-3),Vector3(5,3,.1))
+	await settle()
+	hit(first)
+	node=event("lance")
+	if node!=null: node.advance(1)
+	near(rear.life,1000,"Passage cannot tunnel through a thin wall in a long frame")
+	cover.free()
+	reset_route("impact_catalyst","reach")
+	first=enemy(Vector3(0,0,-2))
+	hit(first,{"practice_allowed":false})
+	check(get_tree().get_nodes_in_group("foundry_offence").is_empty(),"Linked or repeated contacts cannot create more identity events")
+	hit(first)
+	node=event("shock")
+	combat.died.emit()
+	check(node==null or node.is_queued_for_deletion(),"Death clears passage and impact events")
+	reset_route("impact_catalyst","reach")
+	print("FOUNDRY_OFFENCE_IDENTITY: %d checks, %d failures" % [checks,failures])
+	get_tree().quit(1 if failures else 0)

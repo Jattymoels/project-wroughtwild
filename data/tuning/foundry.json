@@ -558,31 +558,23 @@
       "kind": "vanguard",
       "ingot": "ember",
       "display_name": "Furnace Bastion",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "description": "Stand in your furnace brace to absorb part of one enemy hit; the spent brace vents a delayed heat burst.",
       "effects": [
         {
-          "modifier": "mutation_zone_armour",
-          "value": 10
+          "value": 4,
+          "modifier": "mutation_identity_guard_furnace_absorb"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
+          "value": 0.1,
+          "modifier": "mutation_identity_guard_furnace_fraction"
         },
         {
-          "modifier": "capability_area",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_area"
         },
         {
-          "modifier": "smouldering",
-          "value": 20
-        },
-        {
-          "modifier": "capability_fire",
-          "value": 1
-        },
-        {
-          "modifier": "capability_ignite",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_fire"
         }
       ],
       "id": "vanguard:ember"
@@ -592,31 +584,23 @@
       "kind": "vanguard",
       "ingot": "frost",
       "display_name": "Rime Bastion",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "description": "Plant a rime boundary. Newcomers crossing it are chilled and briefly interrupted; enemies already inside are untouched.",
       "effects": [
         {
-          "modifier": "mutation_zone_armour",
-          "value": 10
+          "value": 30,
+          "modifier": "mutation_identity_guard_rime_buildup"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
+          "value": 1,
+          "modifier": "capability_area"
         },
         {
-          "modifier": "capability_area",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_cold"
         },
         {
-          "modifier": "frostbite",
-          "value": 20
-        },
-        {
-          "modifier": "capability_cold",
-          "value": 1
-        },
-        {
-          "modifier": "capability_chill",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_chill"
         }
       ],
       "id": "vanguard:frost"
@@ -626,31 +610,15 @@
       "kind": "vanguard",
       "ingot": "edge",
       "display_name": "Blade Bastion",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "description": "Arm a riposte. After a nearby enemy hurts you, strike that same attacker before the counter expires.",
       "effects": [
         {
-          "modifier": "mutation_zone_armour",
-          "value": 10
+          "value": 0.12,
+          "modifier": "mutation_identity_guard_blade_fraction"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "capability_physical",
-          "value": 1
-        },
-        {
-          "modifier": "capability_bleed",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "vanguard:edge"
@@ -660,23 +628,15 @@
       "kind": "vanguard",
       "ingot": "reach",
       "display_name": "Broad Bastion",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "description": "Place a broad brace ahead of you. Enemies entering its narrow crossbar are pushed away, opening room to retreat.",
       "effects": [
         {
-          "modifier": "mutation_zone_armour",
-          "value": 10
+          "value": 1.3,
+          "modifier": "mutation_identity_guard_broad_push"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "vanguard:reach"
@@ -686,23 +646,15 @@
       "kind": "vanguard",
       "ingot": "vigour",
       "display_name": "Living Bastion",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "description": "Take damage inside the living brace, then remain there without another hit to recover a small portion. Leaving forfeits it.",
       "effects": [
         {
-          "modifier": "mutation_zone_armour",
-          "value": 10
+          "value": 5,
+          "modifier": "mutation_identity_guard_living_recovery"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "vanguard:vigour"
@@ -712,23 +664,15 @@
       "kind": "vanguard",
       "ingot": "plate",
       "display_name": "Bulwark",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "description": "Settle into your casting position to build a small damage-absorption pool. Moving breaks the stance.",
       "effects": [
         {
-          "modifier": "mutation_zone_armour",
-          "value": 10
+          "value": 9,
+          "modifier": "mutation_identity_guard_plate_absorb"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "vanguard:plate"
@@ -738,23 +682,15 @@
       "kind": "vanguard",
       "ingot": "ward",
       "display_name": "Guardpost",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "description": "Plant a guardpost, then strike an enemy to designate it. Its hits are weaker while you remain at your post.",
       "effects": [
         {
-          "modifier": "mutation_zone_armour",
-          "value": 10
+          "value": 0.2,
+          "modifier": "mutation_identity_guard_post_reduction"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "vanguard:ward"
@@ -764,23 +700,15 @@
       "kind": "vanguard",
       "ingot": "haste",
       "display_name": "Quickbrace",
-      "description": "Casting plants an armour seal. Stand inside to brace; stepping out loses its protection.",
+      "description": "Brace briefly in your casting direction. Catch a frontal enemy hit to absorb damage and recover part of your dash cooldown.",
       "effects": [
         {
-          "modifier": "mutation_zone_armour",
-          "value": 10
+          "value": 5,
+          "modifier": "mutation_identity_guard_quick_absorb"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "vanguard:haste"
@@ -790,31 +718,19 @@
       "kind": "warding_vanguard",
       "ingot": "ember",
       "display_name": "Ember Veil",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "description": "Catch one shot in an ember veil. The impact becomes a short visible fuse before bursting; lure enemies into it.",
       "effects": [
         {
-          "modifier": "mutation_ward_charges",
-          "value": 1
+          "value": 0.1,
+          "modifier": "mutation_identity_veil_ember_fraction"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
+          "value": 1,
+          "modifier": "capability_area"
         },
         {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "smouldering",
-          "value": 20
-        },
-        {
-          "modifier": "capability_fire",
-          "value": 1
-        },
-        {
-          "modifier": "capability_ignite",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_fire"
         }
       ],
       "id": "warding_vanguard:ember"
@@ -824,31 +740,23 @@
       "kind": "warding_vanguard",
       "ingot": "frost",
       "display_name": "Rime Veil",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "description": "Send an expanding rime front outward. Its one intercepted shot releases a local chill burst at the crossing.",
       "effects": [
         {
-          "modifier": "mutation_ward_charges",
-          "value": 1
+          "value": 40,
+          "modifier": "mutation_identity_veil_rime_buildup"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
+          "value": 1,
+          "modifier": "capability_area"
         },
         {
-          "modifier": "capability_area",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_cold"
         },
         {
-          "modifier": "frostbite",
-          "value": 20
-        },
-        {
-          "modifier": "capability_cold",
-          "value": 1
-        },
-        {
-          "modifier": "capability_chill",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_chill"
         }
       ],
       "id": "warding_vanguard:frost"
@@ -858,31 +766,15 @@
       "kind": "warding_vanguard",
       "ingot": "edge",
       "display_name": "Razor Veil",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "description": "Your first damaging contact sets a narrow tripwire halfway to that enemy. One crossing shot snaps it into a cutting line.",
       "effects": [
         {
-          "modifier": "mutation_ward_charges",
-          "value": 1
+          "value": 0.1,
+          "modifier": "mutation_identity_veil_razor_fraction"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "capability_physical",
-          "value": 1
-        },
-        {
-          "modifier": "capability_bleed",
-          "value": 1
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "warding_vanguard:edge"
@@ -892,23 +784,15 @@
       "kind": "warding_vanguard",
       "ingot": "reach",
       "display_name": "Wide Veil",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "description": "Project a wide screen ahead of you, stopping at cover. It catches one shot travelling toward its front; flanking shots pass.",
       "effects": [
         {
-          "modifier": "mutation_ward_charges",
-          "value": 1
+          "value": 1,
+          "modifier": "mutation_identity_veil_wide_screen"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "warding_vanguard:reach"
@@ -918,23 +802,15 @@
       "kind": "warding_vanguard",
       "ingot": "vigour",
       "display_name": "Living Veil",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "description": "Catch one shot, then approach its impact to collect the living mote. Healing waits for collection.",
       "effects": [
         {
-          "modifier": "mutation_ward_charges",
-          "value": 1
+          "value": 3,
+          "modifier": "mutation_identity_veil_living_life"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "warding_vanguard:vigour"
@@ -944,23 +820,15 @@
       "kind": "warding_vanguard",
       "ingot": "plate",
       "display_name": "Iron Veil",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "description": "Catch one shot in an iron veil. Carry its remnant as a shell that absorbs part of your next melee hit.",
       "effects": [
         {
-          "modifier": "mutation_ward_charges",
-          "value": 1
+          "value": 4,
+          "modifier": "mutation_identity_veil_iron_absorb"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "warding_vanguard:plate"
@@ -970,23 +838,15 @@
       "kind": "warding_vanguard",
       "ingot": "ward",
       "display_name": "Aegis",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "description": "Prepare a personal emergency ward. It arms when your life falls below forty percent and catches one shot while following you.",
       "effects": [
         {
-          "modifier": "mutation_ward_charges",
-          "value": 1
+          "value": 0.4,
+          "modifier": "mutation_identity_veil_aegis_threshold"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "warding_vanguard:ward"
@@ -996,23 +856,15 @@
       "kind": "warding_vanguard",
       "ingot": "haste",
       "display_name": "Fleeting Veil",
-      "description": "Casting plants a veil which catches one incoming enemy projectile before it reaches you.",
+      "description": "Leave your casting position to arm a decoy veil. A shot caught behind you restores part of your dash cooldown.",
       "effects": [
         {
-          "modifier": "mutation_ward_charges",
-          "value": 1
+          "value": 0.4,
+          "modifier": "mutation_identity_veil_fleeting_refund"
         },
         {
-          "modifier": "mutation_field_radius",
-          "value": 2
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
+          "value": 1,
+          "modifier": "capability_area"
         }
       ],
       "id": "warding_vanguard:haste"
@@ -1022,31 +874,11 @@
       "kind": "marrow",
       "ingot": "ember",
       "display_name": "Phoenix Bed",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "description": "A direct-hit kill leaves a seed. After 0.7 seconds, approach within 1.2 metres to collect 2.5 life once.",
       "effects": [
         {
-          "modifier": "mutation_recovery_on_kill",
-          "value": 4.5
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "smouldering",
-          "value": 20
-        },
-        {
-          "modifier": "capability_fire",
-          "value": 1
-        },
-        {
-          "modifier": "capability_ignite",
-          "value": 1
+          "modifier": "mutation_identity_phoenix_life",
+          "value": 2.5
         }
       ],
       "id": "marrow:ember"
@@ -1056,31 +888,11 @@
       "kind": "marrow",
       "ingot": "frost",
       "display_name": "Winterroot",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "description": "Hit an already chilled enemy, then stand within 2 metres of it for 1 second to draw 2.5 life; movement resets the hold.",
       "effects": [
         {
-          "modifier": "mutation_recovery_on_kill",
-          "value": 4.5
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "frostbite",
-          "value": 20
-        },
-        {
-          "modifier": "capability_cold",
-          "value": 1
-        },
-        {
-          "modifier": "capability_chill",
-          "value": 1
+          "modifier": "mutation_identity_winterroot_life",
+          "value": 2.5
         }
       ],
       "id": "marrow:frost"
@@ -1090,31 +902,11 @@
       "kind": "marrow",
       "ingot": "edge",
       "display_name": "Bloodroot",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "description": "A real hit marks an already bleeding enemy for 5 seconds. A direct-hit execution within 4 clear metres returns 2.5 life once.",
       "effects": [
         {
-          "modifier": "mutation_recovery_on_kill",
-          "value": 4.5
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "capability_physical",
-          "value": 1
-        },
-        {
-          "modifier": "capability_bleed",
-          "value": 1
+          "modifier": "mutation_identity_bloodroot_life",
+          "value": 2.5
         }
       ],
       "id": "marrow:edge"
@@ -1124,23 +916,11 @@
       "kind": "marrow",
       "ingot": "reach",
       "display_name": "Harvest Ground",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "description": "A direct-hit kill starts a harvest. A second nearby direct kill ripens it; approach within 1.2 metres to collect 2.5 life.",
       "effects": [
         {
-          "modifier": "mutation_recovery_on_kill",
-          "value": 4.5
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
+          "modifier": "mutation_identity_harvest_life",
+          "value": 2.5
         }
       ],
       "id": "marrow:reach"
@@ -1150,23 +930,11 @@
       "kind": "marrow",
       "ingot": "vigour",
       "display_name": "Second Spring",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "description": "A landed hit below half life stores 2.5 recovery. Avoid incoming enemy damage for 2 seconds to receive it; another hit resets that wait.",
       "effects": [
         {
-          "modifier": "mutation_recovery_on_kill",
-          "value": 4.5
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
+          "modifier": "mutation_identity_spring_life",
+          "value": 2.5
         }
       ],
       "id": "marrow:vigour"
@@ -1176,23 +944,11 @@
       "kind": "marrow",
       "ingot": "plate",
       "display_name": "Ironroot",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "description": "A landed hit readies recoup. After the next damaging enemy hit, hold that position for 1 second to recover up to 2.5 life, limited by half the damage taken.",
       "effects": [
         {
-          "modifier": "mutation_recovery_on_kill",
-          "value": 4.5
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
+          "modifier": "mutation_identity_ironroot_life",
+          "value": 2.5
         }
       ],
       "id": "marrow:plate"
@@ -1202,23 +958,11 @@
       "kind": "marrow",
       "ingot": "ward",
       "display_name": "Safe Harbour",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "description": "A direct kill leaves a harbour. Stay near it with no living enemy in its 3-metre clear space for 0.8 seconds to collect 2.5 life.",
       "effects": [
         {
-          "modifier": "mutation_recovery_on_kill",
-          "value": 4.5
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
+          "modifier": "mutation_identity_harbour_life",
+          "value": 2.5
         }
       ],
       "id": "marrow:ward"
@@ -1228,23 +972,11 @@
       "kind": "marrow",
       "ingot": "haste",
       "display_name": "Fleet Harvest",
-      "description": "A direct-hit kill plants a recovery seal at the victim. Move into it to collect its healing pulses.",
+      "description": "A direct kill releases a fleeing pod. Chase it and collect 2.5 life before it expires; remaining at your original position pays nothing.",
       "effects": [
         {
-          "modifier": "mutation_recovery_on_kill",
-          "value": 4.5
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
+          "modifier": "mutation_identity_fleet_life",
+          "value": 2.5
         }
       ],
       "id": "marrow:haste"
@@ -1254,34 +986,18 @@
       "kind": "quicksilver",
       "ingot": "ember",
       "display_name": "Cinder Wake",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "description": "After a damaging hit, move away to draw one short fire seam. Enemies crossing it take one fire cut; the original victim is excluded.",
       "effects": [
         {
-          "modifier": "mutation_trail_fraction",
-          "value": 0.16
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "smouldering",
-          "value": 20
+          "modifier": "mutation_identity_tempo_cinder_fraction",
+          "value": 0.08
         },
         {
           "modifier": "capability_fire",
           "value": 1
         },
         {
-          "modifier": "capability_ignite",
+          "modifier": "capability_area",
           "value": 1
         }
       ],
@@ -1292,26 +1008,10 @@
       "kind": "quicksilver",
       "ingot": "frost",
       "display_name": "Frost Wake",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "description": "Cast, then leave your footprint. It chills the first pursuer entering the abandoned space once.",
       "effects": [
         {
-          "modifier": "mutation_trail_fraction",
-          "value": 0.16
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "frostbite",
+          "modifier": "mutation_identity_tempo_frost_buildup",
           "value": 20
         },
         {
@@ -1320,6 +1020,10 @@
         },
         {
           "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
           "value": 1
         }
       ],
@@ -1330,34 +1034,14 @@
       "kind": "quicksilver",
       "ingot": "edge",
       "display_name": "Razor Wake",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "description": "Land a hit, then circle to the opposite side of that enemy for one physical aftercut.",
       "effects": [
         {
-          "modifier": "mutation_trail_fraction",
-          "value": 0.16
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
+          "modifier": "mutation_identity_tempo_razor_fraction",
+          "value": 0.1
         },
         {
           "modifier": "capability_physical",
-          "value": 1
-        },
-        {
-          "modifier": "capability_bleed",
           "value": 1
         }
       ],
@@ -1368,27 +1052,11 @@
       "kind": "quicksilver",
       "ingot": "reach",
       "display_name": "Long Wake",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "description": "Cast, move away, then hit a distant enemy to pull it toward the old casting position once. Bosses move less.",
       "effects": [
         {
-          "modifier": "mutation_trail_fraction",
-          "value": 0.16
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
+          "modifier": "mutation_identity_tempo_long_push",
+          "value": 0.9
         }
       ],
       "id": "quicksilver:reach"
@@ -1398,27 +1066,11 @@
       "kind": "quicksilver",
       "ingot": "vigour",
       "display_name": "Living Wake",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "description": "After a damaging hit, leave its attacking position to recover a little life once.",
       "effects": [
         {
-          "modifier": "mutation_trail_fraction",
-          "value": 0.16
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
+          "modifier": "mutation_identity_tempo_living_life",
+          "value": 2
         }
       ],
       "id": "quicksilver:vigour"
@@ -1428,27 +1080,11 @@
       "kind": "quicksilver",
       "ingot": "plate",
       "display_name": "Iron Wake",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "description": "Cast and retreat; the next nearby enemy that damages you is shoved away once. Bosses move less.",
       "effects": [
         {
-          "modifier": "mutation_trail_fraction",
-          "value": 0.16
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
+          "modifier": "mutation_identity_tempo_iron_push",
           "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
         }
       ],
       "id": "quicksilver:plate"
@@ -1458,27 +1094,11 @@
       "kind": "quicksilver",
       "ingot": "ward",
       "display_name": "Warded Wake",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "description": "After casting, suffer a hit and recast this skill to clear one root, harry or mark, in that order.",
       "effects": [
         {
-          "modifier": "mutation_trail_fraction",
-          "value": 0.16
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "capability_area",
+          "modifier": "mutation_identity_tempo_ward_cleanse",
           "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
         }
       ],
       "id": "quicksilver:ward"
@@ -1488,27 +1108,15 @@
       "kind": "quicksilver",
       "ingot": "haste",
       "display_name": "Afterimage",
-      "description": "Casting leaves a damaging afterimage at your feet. Reposition to draw enemies through it.",
+      "description": "Recast this skill from a new position to discharge one echo at the previous casting position. It uses the skill's damage type; movement skills gain no damage.",
       "effects": [
         {
-          "modifier": "mutation_trail_fraction",
-          "value": 0.16
-        },
-        {
-          "modifier": "mutation_field_seconds",
-          "value": 2.4
-        },
-        {
-          "modifier": "mutation_field_radius",
-          "value": 1.8
+          "modifier": "mutation_identity_tempo_after_fraction",
+          "value": 0.1
         },
         {
           "modifier": "capability_area",
           "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
         }
       ],
       "id": "quicksilver:haste"
@@ -1518,8 +1126,12 @@
       "kind": "piercing_catalyst",
       "ingot": "ember",
       "display_name": "Cinder Lance",
-      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "description": "First contact sends a small fire lance onward through the rear rank. The original victim is excluded; cover stops the travelling lance.",
       "effects": [
+        {
+          "modifier": "mutation_identity_lance_fraction",
+          "value": 0.1
+        },
         {
           "modifier": "mutation_wave",
           "value": 1
@@ -1533,15 +1145,7 @@
           "value": 1
         },
         {
-          "modifier": "smouldering",
-          "value": 20
-        },
-        {
           "modifier": "capability_fire",
-          "value": 1
-        },
-        {
-          "modifier": "capability_ignite",
           "value": 1
         }
       ],
@@ -1552,8 +1156,12 @@
       "kind": "piercing_catalyst",
       "ingot": "frost",
       "display_name": "Ice Lance",
-      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "description": "First contact sights a narrow line behind the victim; after a short warning its farthest visible enemy receives chill. No extra hit damage.",
       "effects": [
+        {
+          "modifier": "mutation_identity_ice_buildup",
+          "value": 30
+        },
         {
           "modifier": "mutation_wave",
           "value": 1
@@ -1565,10 +1173,6 @@
         {
           "modifier": "capability_projectile",
           "value": 1
-        },
-        {
-          "modifier": "frostbite",
-          "value": 20
         },
         {
           "modifier": "capability_cold",
@@ -1586,8 +1190,12 @@
       "kind": "piercing_catalyst",
       "ingot": "edge",
       "display_name": "Razor Wave",
-      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "description": "First contact sends a cutting return toward your original position. It cuts intervening enemies once, excluding the struck victim; movement changes the return lane.",
       "effects": [
+        {
+          "modifier": "mutation_identity_razor_fraction",
+          "value": 0.1
+        },
         {
           "modifier": "mutation_wave",
           "value": 1
@@ -1598,18 +1206,6 @@
         },
         {
           "modifier": "capability_projectile",
-          "value": 1
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "capability_physical",
-          "value": 1
-        },
-        {
-          "modifier": "capability_bleed",
           "value": 1
         }
       ],
@@ -1620,8 +1216,12 @@
       "kind": "piercing_catalyst",
       "ingot": "reach",
       "display_name": "Throughline",
-      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "description": "Pierce two different enemies with the same cast to flash the line between them. The two anchors are excluded; other enemies in that narrow line take one small physical hit.",
       "effects": [
+        {
+          "modifier": "mutation_identity_through_fraction",
+          "value": 0.08
+        },
         {
           "modifier": "mutation_wave",
           "value": 1
@@ -1633,10 +1233,6 @@
         {
           "modifier": "capability_projectile",
           "value": 1
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
         }
       ],
       "id": "piercing_catalyst:reach"
@@ -1646,8 +1242,12 @@
       "kind": "piercing_catalyst",
       "ingot": "vigour",
       "display_name": "Blood Thread",
-      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "description": "First contact opens a short blood thread. Hit another enemy behind it along the same lane to recover life once; the return needs clear cover.",
       "effects": [
+        {
+          "modifier": "mutation_identity_thread_life",
+          "value": 2
+        },
         {
           "modifier": "mutation_wave",
           "value": 1
@@ -1659,10 +1259,6 @@
         {
           "modifier": "capability_projectile",
           "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
         }
       ],
       "id": "piercing_catalyst:vigour"
@@ -1672,8 +1268,12 @@
       "kind": "piercing_catalyst",
       "ingot": "plate",
       "display_name": "Breach",
-      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "description": "Hit a frontal guard to break its stance and drive it back. Open the guard with one hit, then exploit the short opening; bosses receive reduced control.",
       "effects": [
+        {
+          "modifier": "mutation_identity_breach_push",
+          "value": 0.65
+        },
         {
           "modifier": "mutation_wave",
           "value": 1
@@ -1685,10 +1285,6 @@
         {
           "modifier": "capability_projectile",
           "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
         }
       ],
       "id": "piercing_catalyst:plate"
@@ -1698,8 +1294,12 @@
       "kind": "piercing_catalyst",
       "ingot": "ward",
       "display_name": "Wardneedle",
-      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "description": "Hit a warded enemy to send a visible needle toward its protecting warden. On arrival it briefly interrupts that warden, dropping its aura; cover can stop the needle.",
       "effects": [
+        {
+          "modifier": "mutation_identity_needle_seconds",
+          "value": 0.35
+        },
         {
           "modifier": "mutation_wave",
           "value": 1
@@ -1711,10 +1311,6 @@
         {
           "modifier": "capability_projectile",
           "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
         }
       ],
       "id": "piercing_catalyst:ward"
@@ -1724,8 +1320,12 @@
       "kind": "piercing_catalyst",
       "ingot": "haste",
       "display_name": "Quicklance",
-      "description": "Strikes and sweeps become travelling waves. Projectiles and waves pass through another enemy.",
+      "description": "Hit one enemy, then use a new cast on a different enemy at least two metres away to recover some of this skill cooldown. One short memory; no reward for repeatedly hitting the same target.",
       "effects": [
+        {
+          "modifier": "mutation_identity_quick_refund",
+          "value": 0.3
+        },
         {
           "modifier": "mutation_wave",
           "value": 1
@@ -1737,10 +1337,6 @@
         {
           "modifier": "capability_projectile",
           "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
         }
       ],
       "id": "piercing_catalyst:haste"
@@ -1750,38 +1346,18 @@
       "kind": "impact_catalyst",
       "ingot": "ember",
       "display_name": "Firebreak",
-      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "description": "First contact marks a delayed fire crescent behind the victim. The crescent hits the rear half of the pack once, excluding the original victim; the skill keeps its original delivery.",
       "effects": [
         {
-          "modifier": "mutation_wave",
-          "value": 1
-        },
-        {
-          "modifier": "mutation_impact_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "impact_stagger",
-          "value": 0.12
-        },
-        {
-          "modifier": "capability_projectile",
-          "value": 1
+          "modifier": "mutation_identity_firebreak_fraction",
+          "value": 0.1
         },
         {
           "modifier": "capability_area",
           "value": 1
         },
         {
-          "modifier": "smouldering",
-          "value": 20
-        },
-        {
           "modifier": "capability_fire",
-          "value": 1
-        },
-        {
-          "modifier": "capability_ignite",
           "value": 1
         }
       ],
@@ -1792,31 +1368,15 @@
       "kind": "impact_catalyst",
       "ingot": "frost",
       "display_name": "Glacier Break",
-      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "description": "Impact an already chilled enemy to break the pack apart with a harmless outward shove. Bosses move less; this neither freezes nor adds a damage packet.",
       "effects": [
         {
-          "modifier": "mutation_wave",
-          "value": 1
-        },
-        {
-          "modifier": "mutation_impact_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "impact_stagger",
-          "value": 0.12
-        },
-        {
-          "modifier": "capability_projectile",
-          "value": 1
+          "modifier": "mutation_identity_glacier_push",
+          "value": 0.8
         },
         {
           "modifier": "capability_area",
           "value": 1
-        },
-        {
-          "modifier": "frostbite",
-          "value": 20
         },
         {
           "modifier": "capability_cold",
@@ -1834,38 +1394,14 @@
       "kind": "impact_catalyst",
       "ingot": "edge",
       "display_name": "Concussion",
-      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "description": "A first hit marks a victim. Strike it again with a different real cast during the short window to discharge one small physical concussion and interrupt its attack.",
       "effects": [
         {
-          "modifier": "mutation_wave",
-          "value": 1
-        },
-        {
-          "modifier": "mutation_impact_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "impact_stagger",
+          "modifier": "mutation_identity_concussion_fraction",
           "value": 0.12
         },
         {
-          "modifier": "capability_projectile",
-          "value": 1
-        },
-        {
           "modifier": "capability_area",
-          "value": 1
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "capability_physical",
-          "value": 1
-        },
-        {
-          "modifier": "capability_bleed",
           "value": 1
         }
       ],
@@ -1876,31 +1412,15 @@
       "kind": "impact_catalyst",
       "ingot": "reach",
       "display_name": "Shock Ring",
-      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "description": "First contact launches an expanding shock ring. It reaches new enemies over time and hits each once, excluding the first victim; cover blocks its advance to recipients.",
       "effects": [
         {
-          "modifier": "mutation_wave",
-          "value": 1
-        },
-        {
-          "modifier": "mutation_impact_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "impact_stagger",
-          "value": 0.12
-        },
-        {
-          "modifier": "capability_projectile",
-          "value": 1
+          "modifier": "mutation_identity_shock_fraction",
+          "value": 0.1
         },
         {
           "modifier": "capability_area",
           "value": 1
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
         }
       ],
       "id": "impact_catalyst:reach"
@@ -1910,31 +1430,15 @@
       "kind": "impact_catalyst",
       "ingot": "vigour",
       "display_name": "Heartbreak",
-      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "description": "Hit an enemy below 35% life to leave a delayed physical fracture at that position. Draw its neighbours into the marked spot for one small finishing burst.",
       "effects": [
         {
-          "modifier": "mutation_wave",
-          "value": 1
-        },
-        {
-          "modifier": "mutation_impact_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "impact_stagger",
-          "value": 0.12
-        },
-        {
-          "modifier": "capability_projectile",
-          "value": 1
+          "modifier": "mutation_identity_heartbreak_fraction",
+          "value": 0.14
         },
         {
           "modifier": "capability_area",
           "value": 1
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
         }
       ],
       "id": "impact_catalyst:vigour"
@@ -1944,31 +1448,15 @@
       "kind": "impact_catalyst",
       "ingot": "plate",
       "display_name": "Anvil Fall",
-      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "description": "Stand still briefly before landing a hit to mark an anvil fall. After a visible delay it strikes that fixed position and shoves survivors; enemies can leave the mark.",
       "effects": [
         {
-          "modifier": "mutation_wave",
-          "value": 1
-        },
-        {
-          "modifier": "mutation_impact_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "impact_stagger",
-          "value": 0.12
-        },
-        {
-          "modifier": "capability_projectile",
-          "value": 1
+          "modifier": "mutation_identity_anvil_fraction",
+          "value": 0.14
         },
         {
           "modifier": "capability_area",
           "value": 1
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
         }
       ],
       "id": "impact_catalyst:plate"
@@ -1978,31 +1466,15 @@
       "kind": "impact_catalyst",
       "ingot": "ward",
       "display_name": "Sealbreak",
-      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "description": "Hit a protected enemy to mark its warden position. After a warning the mark interrupts warding enemies inside it; moving out or intervening cover defeats it.",
       "effects": [
         {
-          "modifier": "mutation_wave",
-          "value": 1
-        },
-        {
-          "modifier": "mutation_impact_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "impact_stagger",
-          "value": 0.12
-        },
-        {
-          "modifier": "capability_projectile",
-          "value": 1
+          "modifier": "mutation_identity_sealbreak_seconds",
+          "value": 0.45
         },
         {
           "modifier": "capability_area",
           "value": 1
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
         }
       ],
       "id": "impact_catalyst:ward"
@@ -2012,31 +1484,15 @@
       "kind": "impact_catalyst",
       "ingot": "haste",
       "display_name": "Snapburst",
-      "description": "Strikes and sweeps become travelling impact waves. Projectile contact explodes instead of dealing a second direct hit.",
+      "description": "First contact arms a short-lived snap charge at the target position. Approach within one metre to detonate it once; staying at range lets it expire.",
       "effects": [
         {
-          "modifier": "mutation_wave",
-          "value": 1
-        },
-        {
-          "modifier": "mutation_impact_radius",
-          "value": 1.8
-        },
-        {
-          "modifier": "impact_stagger",
-          "value": 0.12
-        },
-        {
-          "modifier": "capability_projectile",
-          "value": 1
+          "modifier": "mutation_identity_snap_fraction",
+          "value": 0.1
         },
         {
           "modifier": "capability_area",
           "value": 1
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
         }
       ],
       "id": "impact_catalyst:haste"
@@ -2046,23 +1502,11 @@
       "kind": "sipping_marrow",
       "ingot": "ember",
       "display_name": "Cinder Siphon",
-      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "description": "Hit an already burning enemy and maintain a clear tether for 0.8 seconds. A cinder then travels back, restoring 2.5 life only on arrival.",
       "effects": [
         {
-          "modifier": "mutation_siphon",
-          "value": 0.65
-        },
-        {
-          "modifier": "smouldering",
-          "value": 20
-        },
-        {
-          "modifier": "capability_fire",
-          "value": 1
-        },
-        {
-          "modifier": "capability_ignite",
-          "value": 1
+          "modifier": "mutation_identity_cinder_life",
+          "value": 2.5
         }
       ],
       "id": "sipping_marrow:ember"
@@ -2072,23 +1516,11 @@
       "kind": "sipping_marrow",
       "ingot": "frost",
       "display_name": "Cold Siphon",
-      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "description": "A hit on an already chilled enemy stores 2.5 life. Spend the charge by successfully casting a movement skill within 5 seconds.",
       "effects": [
         {
-          "modifier": "mutation_siphon",
-          "value": 0.65
-        },
-        {
-          "modifier": "frostbite",
-          "value": 20
-        },
-        {
-          "modifier": "capability_cold",
-          "value": 1
-        },
-        {
-          "modifier": "capability_chill",
-          "value": 1
+          "modifier": "mutation_identity_cold_sip_life",
+          "value": 2.5
         }
       ],
       "id": "sipping_marrow:frost"
@@ -2098,23 +1530,11 @@
       "kind": "sipping_marrow",
       "ingot": "edge",
       "display_name": "Bloodletter",
-      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "description": "Land three separate real casts on the same bleeding enemy within 5 seconds to drink 2.5 life once.",
       "effects": [
         {
-          "modifier": "mutation_siphon",
-          "value": 0.65
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
-        },
-        {
-          "modifier": "capability_physical",
-          "value": 1
-        },
-        {
-          "modifier": "capability_bleed",
-          "value": 1
+          "modifier": "mutation_identity_bloodletter_life",
+          "value": 2.5
         }
       ],
       "id": "sipping_marrow:edge"
@@ -2124,15 +1544,11 @@
       "kind": "sipping_marrow",
       "ingot": "reach",
       "display_name": "Long Drink",
-      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "description": "Hit from at least 4 metres, keep a clear tether for 1 second, then retreat another metre to draw 2.5 life; closing in breaks it.",
       "effects": [
         {
-          "modifier": "mutation_siphon",
-          "value": 0.65
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
+          "modifier": "mutation_identity_long_drink_life",
+          "value": 2.5
         }
       ],
       "id": "sipping_marrow:reach"
@@ -2142,15 +1558,11 @@
       "kind": "sipping_marrow",
       "ingot": "vigour",
       "display_name": "Deep Drink",
-      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "description": "Sample two different living enemies with separate real casts. Your next successful real cast spends the reservoir for 2.5 life.",
       "effects": [
         {
-          "modifier": "mutation_siphon",
-          "value": 0.65
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
+          "modifier": "mutation_identity_deep_drink_life",
+          "value": 2.5
         }
       ],
       "id": "sipping_marrow:vigour"
@@ -2160,15 +1572,11 @@
       "kind": "sipping_marrow",
       "ingot": "plate",
       "display_name": "Iron Drink",
-      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "description": "A successful cast braces its position. Take an enemy hit there, then counterhit that actual attacker to recover up to 2.5 life, limited by half the damage taken.",
       "effects": [
         {
-          "modifier": "mutation_siphon",
-          "value": 0.65
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
+          "modifier": "mutation_identity_iron_drink_life",
+          "value": 2.5
         }
       ],
       "id": "sipping_marrow:plate"
@@ -2178,15 +1586,11 @@
       "kind": "sipping_marrow",
       "ingot": "ward",
       "display_name": "Ward Siphon",
-      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "description": "While rooted, harried or marked, land a real hit to bank 2.5 life. Recovery arrives only after all those captured afflictions clear; it does not cleanse them.",
       "effects": [
         {
-          "modifier": "mutation_siphon",
-          "value": 0.65
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
+          "modifier": "mutation_identity_ward_sip_life",
+          "value": 2.5
         }
       ],
       "id": "sipping_marrow:ward"
@@ -2196,15 +1600,11 @@
       "kind": "sipping_marrow",
       "ingot": "haste",
       "display_name": "Quick Sip",
-      "description": "Direct hits draw a life mote from the victim. Healing arrives when the mote reaches you.",
+      "description": "Land a real hit, then hit with a different real skill within 2 seconds to drink 2.5 life. Repeating the same skill pays nothing.",
       "effects": [
         {
-          "modifier": "mutation_siphon",
-          "value": 0.65
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
+          "modifier": "mutation_identity_quick_sip_life",
+          "value": 2.5
         }
       ],
       "id": "sipping_marrow:haste"
@@ -2214,26 +1614,18 @@
       "kind": "striking_quicksilver",
       "ingot": "ember",
       "display_name": "Cinder Refrain",
-      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "description": "Hit an enemy, then hit it again while it is already burning to burst behind it. The original victim takes no burst hit. Attacks only.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.12
-        },
-        {
-          "modifier": "smouldering",
-          "value": 20
+          "modifier": "mutation_identity_tempo_s_cinder_fraction",
+          "value": 0.08
         },
         {
           "modifier": "capability_fire",
           "value": 1
         },
         {
-          "modifier": "capability_ignite",
+          "modifier": "capability_area",
           "value": 1
         }
       ],
@@ -2245,19 +1637,11 @@
       "kind": "striking_quicksilver",
       "ingot": "frost",
       "display_name": "Frost Refrain",
-      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "description": "Hit one enemy, then a different enemy to send a returning chill mote to the first. The mote must arrive. Attacks only.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.12
-        },
-        {
-          "modifier": "frostbite",
-          "value": 20
+          "modifier": "mutation_identity_tempo_s_frost_buildup",
+          "value": 25
         },
         {
           "modifier": "capability_cold",
@@ -2276,26 +1660,14 @@
       "kind": "striking_quicksilver",
       "ingot": "edge",
       "display_name": "Doublecut",
-      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "description": "Land a second hit on the same enemy between 0.3 and 1.2 seconds after the first for one physical aftercut. Attacks only.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.12
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
+          "modifier": "mutation_identity_tempo_s_double_fraction",
+          "value": 0.1
         },
         {
           "modifier": "capability_physical",
-          "value": 1
-        },
-        {
-          "modifier": "capability_bleed",
           "value": 1
         }
       ],
@@ -2307,19 +1679,19 @@
       "kind": "striking_quicksilver",
       "ingot": "reach",
       "display_name": "Sweeping Refrain",
-      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "description": "Hit two different enemies to cut the short line between their contact positions once. Both original targets are excluded. Attacks only.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
+          "modifier": "mutation_identity_tempo_s_sweep_fraction",
+          "value": 0.08
         },
         {
-          "modifier": "mutation_echo_delay",
-          "value": 0.12
+          "modifier": "capability_physical",
+          "value": 1
         },
         {
-          "modifier": "reach",
-          "value": 0.18
+          "modifier": "capability_area",
+          "value": 1
         }
       ],
       "skill_tag": "attack",
@@ -2330,19 +1702,11 @@
       "kind": "striking_quicksilver",
       "ingot": "vigour",
       "display_name": "Sustaining Refrain",
-      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "description": "Land three hits from separate casts without taking damage to recover life. Being hit breaks the sequence. Attacks only.",
       "effects": [
         {
-          "modifier": "echo_every",
+          "modifier": "mutation_identity_tempo_s_sustain_life",
           "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.12
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
         }
       ],
       "skill_tag": "attack",
@@ -2353,19 +1717,11 @@
       "kind": "striking_quicksilver",
       "ingot": "plate",
       "display_name": "Braced Refrain",
-      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "description": "Hold your position between two damaging attacks at least 0.6 seconds apart to gain brief armour. Moving breaks the brace.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.12
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
+          "modifier": "mutation_identity_tempo_s_brace_armour",
+          "value": 6
         }
       ],
       "skill_tag": "attack",
@@ -2376,19 +1732,11 @@
       "kind": "striking_quicksilver",
       "ingot": "ward",
       "display_name": "Guarded Refrain",
-      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "description": "After casting, answer an enemy that damages you with a landed hit to interrupt it and clear one control. Boss interruption is shorter. Attacks only.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.12
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
+          "modifier": "mutation_identity_tempo_s_guard_stagger",
+          "value": 0.25
         }
       ],
       "skill_tag": "attack",
@@ -2399,19 +1747,11 @@
       "kind": "striking_quicksilver",
       "ingot": "haste",
       "display_name": "Threefold Step",
-      "description": "Every third attack repeats shortly after the first. Spell tablets do not read this attack cadence.",
+      "description": "Cast this attack from three distinct positions to recover a little of the longest movement cooldown. Echoes do not count.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.12
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
+          "modifier": "mutation_identity_tempo_s_step_refund",
+          "value": 0.6
         }
       ],
       "skill_tag": "attack",
@@ -2422,26 +1762,18 @@
       "kind": "casting_quicksilver",
       "ingot": "ember",
       "display_name": "Ember Echo",
-      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "description": "A damaging spell hit leaves a delayed fire burst. Only enemies that arrive after the mark appeared can be hit.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.55
-        },
-        {
-          "modifier": "smouldering",
-          "value": 20
+          "modifier": "mutation_identity_tempo_c_ember_fraction",
+          "value": 0.1
         },
         {
           "modifier": "capability_fire",
           "value": 1
         },
         {
-          "modifier": "capability_ignite",
+          "modifier": "capability_area",
           "value": 1
         }
       ],
@@ -2453,18 +1785,10 @@
       "kind": "casting_quicksilver",
       "ingot": "frost",
       "display_name": "Frost Echo",
-      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "description": "A damaging spell hit schedules one delayed chill ring at your attacking-side footprint. Reposition to lead pursuers into it.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.55
-        },
-        {
-          "modifier": "frostbite",
+          "modifier": "mutation_identity_tempo_c_frost_buildup",
           "value": 20
         },
         {
@@ -2473,6 +1797,10 @@
         },
         {
           "modifier": "capability_chill",
+          "value": 1
+        },
+        {
+          "modifier": "capability_area",
           "value": 1
         }
       ],
@@ -2484,26 +1812,18 @@
       "kind": "casting_quicksilver",
       "ingot": "edge",
       "display_name": "Blade Echo",
-      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "description": "A damaging spell hit draws one delayed physical return cut along the short line back toward you. The initial victim is excluded.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.55
-        },
-        {
-          "modifier": "laceration",
-          "value": 20
+          "modifier": "mutation_identity_tempo_c_blade_fraction",
+          "value": 0.1
         },
         {
           "modifier": "capability_physical",
           "value": 1
         },
         {
-          "modifier": "capability_bleed",
+          "modifier": "capability_area",
           "value": 1
         }
       ],
@@ -2515,19 +1835,15 @@
       "kind": "casting_quicksilver",
       "ingot": "reach",
       "display_name": "Wide Echo",
-      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "description": "A damaging spell hit leaves a delayed hollow ring in the spell's damage type. Enemies in its centre are safe.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
+          "modifier": "mutation_identity_tempo_c_wide_fraction",
+          "value": 0.1
         },
         {
-          "modifier": "mutation_echo_delay",
-          "value": 0.55
-        },
-        {
-          "modifier": "reach",
-          "value": 0.18
+          "modifier": "capability_area",
+          "value": 1
         }
       ],
       "skill_tag": "spell",
@@ -2538,19 +1854,11 @@
       "kind": "casting_quicksilver",
       "ingot": "vigour",
       "display_name": "Living Echo",
-      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "description": "A spell kill leaves a life mote. Cast a different spell to draw it home; healing waits for arrival and cover can block it.",
       "effects": [
         {
-          "modifier": "echo_every",
+          "modifier": "mutation_identity_tempo_c_living_life",
           "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.55
-        },
-        {
-          "modifier": "life_on_kill",
-          "value": 1.5
         }
       ],
       "skill_tag": "spell",
@@ -2561,19 +1869,11 @@
       "kind": "casting_quicksilver",
       "ingot": "plate",
       "display_name": "Braced Echo",
-      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "description": "Hold position through a spell's short afterglow to gain brief armour. Moving before it settles cancels it.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.55
-        },
-        {
-          "modifier": "armour_on_cast",
-          "value": 4
+          "modifier": "mutation_identity_tempo_c_brace_armour",
+          "value": 7
         }
       ],
       "skill_tag": "spell",
@@ -2584,19 +1884,11 @@
       "kind": "casting_quicksilver",
       "ingot": "ward",
       "display_name": "Warded Echo",
-      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "description": "A spell leaves a delayed screen at its old casting position. Once active it intercepts one hostile projectile.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.55
-        },
-        {
-          "modifier": "status_ward",
-          "value": 0.05
+          "modifier": "mutation_identity_tempo_c_ward_charges",
+          "value": 1
         }
       ],
       "skill_tag": "spell",
@@ -2607,19 +1899,11 @@
       "kind": "casting_quicksilver",
       "ingot": "haste",
       "display_name": "Aftercast",
-      "description": "Every third spell echoes after a delay, following your current aim. Attack tablets do not read this spell cadence.",
+      "description": "A spell leaves a slowly drifting metronome. Meet it after it starts moving and cast a spell there to recover some of that new cast's cooldown.",
       "effects": [
         {
-          "modifier": "echo_every",
-          "value": 3
-        },
-        {
-          "modifier": "mutation_echo_delay",
-          "value": 0.55
-        },
-        {
-          "modifier": "refund_on_kill",
-          "value": 0.12
+          "modifier": "mutation_identity_tempo_c_after_refund",
+          "value": 0.45
         }
       ],
       "skill_tag": "spell",
@@ -4235,7 +3519,7 @@
     "wave_speed": 16.0,
     "siphon_speed": 9.0,
     "zone_seconds": 3.2,
-    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds. burn_release_seconds: Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget. warm_cinder_life: Maximum base life collected from one warm cinder; heal modifiers still scale the payout. steam_stagger: Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage. steam_fraction: Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. burn_release_cooldown: Seconds between Flashfire releases on one enemy, shared across skills. warm_cinder_cooldown: Seconds between Bloodfire cinder spawns for the player, shared across skills. warm_cinder_lifetime: Seconds a warm cinder waits to be collected before disappearing. warm_cinder_pickup_radius: Metres the player must approach before a warm cinder returns its life. steam_puff_cooldown: Seconds between harmless Steambrand interrupt puffs for the player, shared across skills. steam_puff_radius: Base radius in metres of the harmless steam interrupt puff; area/reach investment applies. steam_boss_stagger_factor: Boss fraction of the steam puff stagger duration. steam_plume_seconds: Lifetime of a Steam Plume: three pulses at the existing 0.8 second field interval. steam_plume_radius: Steam Plume base radius in metres, scaled by area/reach investment. steam_plume_cooldown: Minimum time between Steam Plumes for the player, shared across skills; each cast can seed at most one. fuse_buildup: Caps Kindling delayed ignite buildup before ignition gear and boss resistance; no extra hit packet. rake_fraction: Caps Cinder Edge fire damage as a fraction of the base skill hit, paid once per recipient behind the original victim. ember_hop_buildup: Caps Wildfire spark ignite buildup before ignition gear and boss resistance. temper_push: Caps Furnace Plate knockback in metres before the reduced boss distance; it does not absorb damage. cautery_charges: Cautery stores at most one affliction prevention; duplicate readings never add charges. fuse_delay: Seconds before an attached Kindling fuse pays its ignite buildup; gives the hit a delayed lighting rhythm. fuse_cooldown: Minimum player-wide seconds between Kindling fuses, including separate supported skills. rake_delay: Seconds of visible ground seam before Cinder Edge flashes once. rake_length: Base metres of Cinder Edge seam behind the victim; area and reach gear scale its space. rake_half_width: Base half-width of the Cinder Edge seam; rewards lining enemies up. rake_cooldown: Minimum player-wide seconds between Cinder Edge seams. ember_hop_radius: Base Wildfire target search radius, scaled by skill reach and proliferation radius investment. ember_hop_speed: Metres per second of the visible Wildfire spark; damage is never paid before arrival. ember_hop_seconds: Maximum spark travel time; an escaping or blocked target can waste it. ember_hop_cooldown: Minimum player-wide seconds between Wildfire sparks. temper_seconds: Seconds to receive an enemy hit after heating Furnace Plate; then the single charge expires. temper_radius: Base radius of the Furnace Plate retaliation, scaled by area and reach gear. temper_cooldown: Minimum player-wide seconds between Furnace Plate charges; recasting cannot keep refreshing one. temper_boss_factor: Bosses receive this fraction of the Furnace Plate push to preserve their space pressure. cautery_seconds: Seconds an unused Cautery affliction ward lasts. cautery_cooldown: Minimum player-wide seconds between Cautery cleanses or ward grants. max_ember_effects: Maximum simultaneous fuses, sparks, seams and personal Ember charges per player; reject excess without free payouts. cold_contact_cooldown: Seconds between each Frost contact operation, shared across skills. cold_charge_cooldown: Seconds between each personal ice skin or mirror grant; avoids stacking protection. memory_cooldown: Seconds between each Preserving operation, shared across skills. rime_ring_radius: Base maximum metres reached by the expanding chill ring; area and reach gear scale it. rime_ring_seconds: Seconds for the chill ring to expand fully; each enemy is touched once. rime_edge_length: Metres the lateral ice cuts extend to either side of the victim before area/reach gear. rime_edge_half_width: Half-width of the lateral cuts along the original attack direction; rewards flanking ranks. rime_edge_delay: Visible delay before the two ice cuts flash once. whiteout_radius: Base radius in metres of projectile-slowing mist before area/reach gear. whiteout_seconds: Seconds a Whiteout mist can frostbite passing enemy shots. cold_sap_seconds: Seconds the ice skin waits for one damaging enemy hit. stillwater_seconds: Seconds the cast mirror waits for one enemy shot. stillwater_radius: Base mirror radius before area/reach gear. stillwater_chill: Cold needle chill before increased/more chill gear and boss resistance. cold_needle_speed: Metres per second of a reflected cold needle; damage waits for arrival and respects cover. cold_needle_seconds: Maximum lifetime of a returning cold needle; a fleeing shooter can escape it. cold_boss_control_factor: Boss share of Permafrost movement loss and Held Ground push. memory_radius: Base radius of the Preserving ground effects before area/reach gear. memory_seconds: Base time to use an afterfield, return to a lifebed, cross Held Ground, catch a shot or alternate skills. emberbed_pulses: Number of pulses sharing the removed burn budget; extra duration redistributes rather than multiplies it. max_cold_memories: Maximum live Frost/Preserving event nodes per player; reject excess without a free payout. rime_ring_buildup: Maximum chill carried by one expanding Rimewell ring before chill gear and boss resistance; duplicate supports cannot give a free freeze. rime_edge_fraction: Maximum fraction of base hit delivered as cold to each flank recipient; keeps Rime Edge a small positional reward. whiteout_slow: Maximum fraction of enemy-shot speed removed once per shot; preserves readable projectile travel. cold_sap_absorb: Maximum damage absorbed after mitigation by one ice skin; additional supports improve the charge rather than stacking charges. permafrost_seconds: Maximum seconds an ordinary chilled enemy can be foot-bound per activation; it retains its attack. stillwater_fraction: Maximum fraction of base hit returned as cold by one caught shot before cold and compatible gear scaling. hoarfrost_refund: Maximum seconds recovered from the longest remaining movement cooldown per contact event; no stored credit. emberbed_seconds: Maximum seconds removed from an existing burn and redistributed through an Emberbed; never multiplies its stored damage budget. reservoir_seconds: Maximum seconds of chill-decay protection before an ordered memory extension; never lengthens a freeze. wound_memory_seconds: Maximum seconds of simultaneous bleed-time and bleed-damage pause available to one stationary wound. afterfield_fraction: Maximum fraction of the original native hit retained for an afterfield entry event before compatible damage gear. lifebed_life: Maximum base life collected once by leaving and returning to a Lifebed; ordinary healing gear scales it. held_ground_push: Maximum metres one arriving enemy is pushed out of a seal; bosses receive the reduced share. sanctuary_charges: Maximum incoming shots a direct kill sanctuary can intercept; duplicate readings cannot stack its charge. lingering_refund: Maximum seconds refunded to the previous skill after a different real cast; echoes and linked casts do not qualify. memory_extension: Maximum extra seconds from Kept Rime on Preserving windows; Emberbed divides the same damage over more pulses.",
+    "design_purpose": "smoulder_slow: fraction of movement lost while this Smoulder burn lasts; repeated copies stop at 45%. field_seconds: seconds an impact field persists; 4.8 seconds is the stacking ceiling. field_fraction: fraction of the skill hit AND buildup delivered per field pulse; caps at half a hit. field_radius: metres of the field before area and reach gear; at most four base metres. trail_fraction: fraction of hit and buildup pulsed by the afterimage left at your casting position. wave: turns a strike or sweep into a travelling wave; projectile skills retain their delivery. impact_radius: metres of an impact burst replacing the direct hit; area and reach gear scale it. zone_armour: armour while standing in the cast seal; the strongest covering seal wins. ward_charges: incoming projectiles intercepted by one cast seal; maximum three. recovery_on_kill: total life in the recovery seal left by a kill; collect it by standing inside. siphon: life returning from a landed direct hit; return must reach you; no field recursion. echo_delay: seconds before a cadence repeats; quick attack follow-up versus delayed spell echo. ignite_spread: fraction of ignite threshold spread when a new burn starts; no recursive on-hit spreading. boss_slow_factor: bosses suffer one quarter of Smoulder movement loss, independently of freeze resistance. pulse_interval: seconds between field pulses; no pulse on creation, three pulses for an iron field. max_fields: maximum active fields per player; oldest is replaced when a new field is committed. max_returns: maximum returning siphon motes per player; excess motes give no additional heal. wave_range: base metres a melee wave travels; reach gear multiplies this. wave_speed: metres per second a melee wave travels. siphon_speed: metres per second life motes return to the player. zone_seconds: lifetime of cast armour and projectile wards, in seconds. burn_release_seconds: Maximum seconds of an existing burn paid immediately by a follow-up hit; subtract exactly that time to conserve its damage budget. warm_cinder_life: Maximum base life collected from one warm cinder; heal modifiers still scale the payout. steam_stagger: Maximum seconds of steam-puff stagger before the boss fraction; this puff adds no damage. steam_fraction: Maximum fraction of the skill base hit per Steam Plume pulse, split equally into fire and cold and scaled independently by their gear. burn_release_cooldown: Seconds between Flashfire releases on one enemy, shared across skills. warm_cinder_cooldown: Seconds between Bloodfire cinder spawns for the player, shared across skills. warm_cinder_lifetime: Seconds a warm cinder waits to be collected before disappearing. warm_cinder_pickup_radius: Metres the player must approach before a warm cinder returns its life. steam_puff_cooldown: Seconds between harmless Steambrand interrupt puffs for the player, shared across skills. steam_puff_radius: Base radius in metres of the harmless steam interrupt puff; area/reach investment applies. steam_boss_stagger_factor: Boss fraction of the steam puff stagger duration. steam_plume_seconds: Lifetime of a Steam Plume: three pulses at the existing 0.8 second field interval. steam_plume_radius: Steam Plume base radius in metres, scaled by area/reach investment. steam_plume_cooldown: Minimum time between Steam Plumes for the player, shared across skills; each cast can seed at most one. fuse_buildup: Caps Kindling delayed ignite buildup before ignition gear and boss resistance; no extra hit packet. rake_fraction: Caps Cinder Edge fire damage as a fraction of the base skill hit, paid once per recipient behind the original victim. ember_hop_buildup: Caps Wildfire spark ignite buildup before ignition gear and boss resistance. temper_push: Caps Furnace Plate knockback in metres before the reduced boss distance; it does not absorb damage. cautery_charges: Cautery stores at most one affliction prevention; duplicate readings never add charges. fuse_delay: Seconds before an attached Kindling fuse pays its ignite buildup; gives the hit a delayed lighting rhythm. fuse_cooldown: Minimum player-wide seconds between Kindling fuses, including separate supported skills. rake_delay: Seconds of visible ground seam before Cinder Edge flashes once. rake_length: Base metres of Cinder Edge seam behind the victim; area and reach gear scale its space. rake_half_width: Base half-width of the Cinder Edge seam; rewards lining enemies up. rake_cooldown: Minimum player-wide seconds between Cinder Edge seams. ember_hop_radius: Base Wildfire target search radius, scaled by skill reach and proliferation radius investment. ember_hop_speed: Metres per second of the visible Wildfire spark; damage is never paid before arrival. ember_hop_seconds: Maximum spark travel time; an escaping or blocked target can waste it. ember_hop_cooldown: Minimum player-wide seconds between Wildfire sparks. temper_seconds: Seconds to receive an enemy hit after heating Furnace Plate; then the single charge expires. temper_radius: Base radius of the Furnace Plate retaliation, scaled by area and reach gear. temper_cooldown: Minimum player-wide seconds between Furnace Plate charges; recasting cannot keep refreshing one. temper_boss_factor: Bosses receive this fraction of the Furnace Plate push to preserve their space pressure. cautery_seconds: Seconds an unused Cautery affliction ward lasts. cautery_cooldown: Minimum player-wide seconds between Cautery cleanses or ward grants. max_ember_effects: Maximum simultaneous fuses, sparks, seams and personal Ember charges per player; reject excess without free payouts. cold_contact_cooldown: Seconds between each Frost contact operation, shared across skills. cold_charge_cooldown: Seconds between each personal ice skin or mirror grant; avoids stacking protection. memory_cooldown: Seconds between each Preserving operation, shared across skills. rime_ring_radius: Base maximum metres reached by the expanding chill ring; area and reach gear scale it. rime_ring_seconds: Seconds for the chill ring to expand fully; each enemy is touched once. rime_edge_length: Metres the lateral ice cuts extend to either side of the victim before area/reach gear. rime_edge_half_width: Half-width of the lateral cuts along the original attack direction; rewards flanking ranks. rime_edge_delay: Visible delay before the two ice cuts flash once. whiteout_radius: Base radius in metres of projectile-slowing mist before area/reach gear. whiteout_seconds: Seconds a Whiteout mist can frostbite passing enemy shots. cold_sap_seconds: Seconds the ice skin waits for one damaging enemy hit. stillwater_seconds: Seconds the cast mirror waits for one enemy shot. stillwater_radius: Base mirror radius before area/reach gear. stillwater_chill: Cold needle chill before increased/more chill gear and boss resistance. cold_needle_speed: Metres per second of a reflected cold needle; damage waits for arrival and respects cover. cold_needle_seconds: Maximum lifetime of a returning cold needle; a fleeing shooter can escape it. cold_boss_control_factor: Boss share of Permafrost movement loss and Held Ground push. memory_radius: Base radius of the Preserving ground effects before area/reach gear. memory_seconds: Base time to use an afterfield, return to a lifebed, cross Held Ground, catch a shot or alternate skills. emberbed_pulses: Number of pulses sharing the removed burn budget; extra duration redistributes rather than multiplies it. max_cold_memories: Maximum live Frost/Preserving event nodes per player; reject excess without a free payout. rime_ring_buildup: Maximum chill carried by one expanding Rimewell ring before chill gear and boss resistance; duplicate supports cannot give a free freeze. rime_edge_fraction: Maximum fraction of base hit delivered as cold to each flank recipient; keeps Rime Edge a small positional reward. whiteout_slow: Maximum fraction of enemy-shot speed removed once per shot; preserves readable projectile travel. cold_sap_absorb: Maximum damage absorbed after mitigation by one ice skin; additional supports improve the charge rather than stacking charges. permafrost_seconds: Maximum seconds an ordinary chilled enemy can be foot-bound per activation; it retains its attack. stillwater_fraction: Maximum fraction of base hit returned as cold by one caught shot before cold and compatible gear scaling. hoarfrost_refund: Maximum seconds recovered from the longest remaining movement cooldown per contact event; no stored credit. emberbed_seconds: Maximum seconds removed from an existing burn and redistributed through an Emberbed; never multiplies its stored damage budget. reservoir_seconds: Maximum seconds of chill-decay protection before an ordered memory extension; never lengthens a freeze. wound_memory_seconds: Maximum seconds of simultaneous bleed-time and bleed-damage pause available to one stationary wound. afterfield_fraction: Maximum fraction of the original native hit retained for an afterfield entry event before compatible damage gear. lifebed_life: Maximum base life collected once by leaving and returning to a Lifebed; ordinary healing gear scales it. held_ground_push: Maximum metres one arriving enemy is pushed out of a seal; bosses receive the reduced share. sanctuary_charges: Maximum incoming shots a direct kill sanctuary can intercept; duplicate readings cannot stack its charge. lingering_refund: Maximum seconds refunded to the previous skill after a different real cast; echoes and linked casts do not qualify. memory_extension: Maximum extra seconds from Kept Rime on Preserving windows; Emberbed divides the same damage over more pulses. identity_offence_cooldown: Minimum seconds between activations of each passage or impact operation, shared across player skills. identity_offence_cap: Maximum live passage and impact events per player; excess activations grant nothing. identity_offence_delay: Seconds of visible warning before an ordinary delayed impact or connecting-line flash. identity_offence_memory: Seconds to complete a blood thread, new-target refund, concussion follow-up or snap approach. identity_offence_flight: Maximum seconds for a passage projectile or expanding shock; bounds travel and recipients. identity_offence_radius: Base metres of impact space before area and reach equipment. identity_offence_width: Base half-width in metres of passage lanes; rewards aligning a pack. identity_offence_length: Maximum base metres for the cold rear-rank search and blood thread. identity_offence_speed: Metres per second for fire lances, return cuts and ward needles; payload waits for contact. identity_offence_boss_factor: Boss share of passage/impact push and stagger, preserving boss mechanics. identity_quick_distance: Metres between Quicklance targets required to reward changing target lane. identity_concussion_stagger: Seconds of normal-enemy interruption after the second distinct cast lands on a marked victim. identity_breach_stagger: Seconds a Breach guard opening lasts before its stance can recover. identity_heartbreak_threshold: Maximum victim life fraction before a hit can seed Heartbreak. identity_anvil_settle: Seconds of stillness required before contact can mark Anvil Fall. identity_anvil_delay: Seconds before a fixed anvil mark lands, providing an escape and gathering window. identity_anvil_push: Base metres survivors of Anvil Fall are pushed; bosses receive the control fraction. identity_snap_distance: Metres the player must approach an armed Snapburst, with clear cover, to trigger it. identity_lance_fraction: Stacking ceiling for Cinder Lance. First contact sends a small fire lance onward through the rear rank. The original victim is excluded; cover stops the travelling lance. identity_ice_buildup: Stacking ceiling for Ice Lance. First contact sights a narrow line behind the victim; after a short warning its farthest visible enemy receives chill. No extra hit damage. identity_razor_fraction: Stacking ceiling for Razor Wave. First contact sends a cutting return toward your original position. It cuts intervening enemies once, excluding the struck victim; movement changes the return lane. identity_through_fraction: Stacking ceiling for Throughline. Pierce two different enemies with the same cast to flash the line between them. The two anchors are excluded; other enemies in that narrow line take one small physical hit. identity_thread_life: Stacking ceiling for Blood Thread. First contact opens a short blood thread. Hit another enemy behind it along the same lane to recover life once; the return needs clear cover. identity_breach_push: Stacking ceiling for Breach. Hit a frontal guard to break its stance and drive it back. Open the guard with one hit, then exploit the short opening; bosses receive reduced control. identity_needle_seconds: Stacking ceiling for Wardneedle. Hit a warded enemy to send a visible needle toward its protecting warden. On arrival it briefly interrupts that warden, dropping its aura; cover can stop the needle. identity_quick_refund: Stacking ceiling for Quicklance. Hit one enemy, then use a new cast on a different enemy at least two metres away to recover some of this skill cooldown. One short memory; no reward for repeatedly hitting the same target. identity_firebreak_fraction: Stacking ceiling for Firebreak. First contact marks a delayed fire crescent behind the victim. The crescent hits the rear half of the pack once, excluding the original victim; the skill keeps its original delivery. identity_glacier_push: Stacking ceiling for Glacier Break. Impact an already chilled enemy to break the pack apart with a harmless outward shove. Bosses move less; this neither freezes nor adds a damage packet. identity_concussion_fraction: Stacking ceiling for Concussion. A first hit marks a victim. Strike it again with a different real cast during the short window to discharge one small physical concussion and interrupt its attack. identity_shock_fraction: Stacking ceiling for Shock Ring. First contact launches an expanding shock ring. It reaches new enemies over time and hits each once, excluding the first victim; cover blocks its advance to recipients. identity_heartbreak_fraction: Stacking ceiling for Heartbreak. Hit an enemy below 35% life to leave a delayed physical fracture at that position. Draw its neighbours into the marked spot for one small finishing burst. identity_anvil_fraction: Stacking ceiling for Anvil Fall. Stand still briefly before landing a hit to mark an anvil fall. After a visible delay it strikes that fixed position and shoves survivors; enemies can leave the mark. identity_sealbreak_seconds: Stacking ceiling for Sealbreak. Hit a protected enemy to mark its warden position. After a warning the mark interrupts warding enemies inside it; moving out or intervening cover defeats it. identity_snap_fraction: Stacking ceiling for Snapburst. First contact arms a short-lived snap charge at the target position. Approach within one metre to detonate it once; staying at range lets it expire. identity_guard_max_nodes: Caps all live defensive charges and aftermath per player; over-budget events pay nothing. identity_guard_cooldown: Spaces repeat preparation of each defensive operation; new casts cannot refresh an unspent charge. identity_guard_seconds: How long ordinary braces and veils remain available after preparation. identity_guard_radius: Base reach of stationary defensive circles, before area and reach investment. identity_guard_vent_delay: Readable delay between spending Furnace Bastion absorption and its single heat vent. identity_guard_riposte_stagger: Brief interruption earned by striking the attacker marked by Blade Bastion. identity_guard_riposte_window: Time to answer Blade Bastion's attacker after taking the triggering hit. identity_guard_front_dot: How directly an attacker must face Quickbrace's committed casting direction. identity_guard_quick_refund: Seconds returned to the longest running movement cooldown after a successful Quickbrace. identity_guard_quick_seconds: Short timing window in which Quickbrace can catch a frontal enemy hit. identity_guard_broad_offset: Distance ahead of the caster at which Broad Bastion watches for crossing enemies. identity_guard_bar_depth: Half-depth of thin defensive crossing strips; keeps tripwire and shove response directional. identity_guard_bar_height: Vertical half-height of projected screens and crossing strips; shots can pass above them. identity_guard_cover_margin: Small gap in front of existing cover so the projected Wide Veil never appears behind a wall. identity_guard_settle_move: Movement tolerance around the original casting position before Bulwark stance collapses. identity_guard_settle_seconds: Time spent settling in place before Bulwark's absorption pool is available. identity_guard_quiet_seconds: Damage-free residence required to collect Living Bastion's recorded recovery. identity_guard_boss_control: Fraction of ordinary stagger and shove applied to bosses by these defensive reactions; chill uses native gear and boss resistance. identity_guard_rime_stagger: Brief windup interruption when a new enemy crosses Rime Bastion. identity_guard_crossing_cap: Maximum different newcomers affected by one Rime or Broad Bastion; no repeat on re-entry. identity_guard_personal_visual_radius: Small body-sized marker for personal charges so enemy attack tells stay readable. identity_veil_rime_seconds: Lifetime over which the one-charge Rime Veil expands outward. identity_veil_rime_start_radius: Small starting interception radius of Rime Veil. identity_veil_rime_end_radius: Largest radius reached by Rime Veil before expiration, before area and reach investment. identity_veil_rime_burst_radius: Local chill reach at an intercepted Rime Veil projectile, not a full-screen pulse. identity_veil_aegis_seconds: Time during which prepared Aegis can arm at low life and intercept one shot. identity_veil_fleeting_seconds: Time to leave and use Fleeting Veil's stationary decoy. identity_veil_fleeting_leave: Distance the player must leave the decoy before it begins intercepting projectiles. identity_veil_wide_distance: How far ahead Wide Veil projects before existing solid cover shortens its placement. identity_veil_fuse_seconds: Visible fuse at Ember Veil's intercepted shot before its single modest explosion. identity_veil_fuse_radius: Local radius of Ember Veil's delayed impact explosion. identity_veil_pickup_radius: How near the intercepted Living Veil shot the player must approach to collect healing. identity_veil_pickup_seconds: Collection time for Living Veil's physical remnant before it disappears without payment. identity_veil_shell_seconds: Time to use Iron Veil's caught-shot remnant against one melee hit. identity_veil_pickup_visual_radius: Compact visible mote size for Living Veil's uncollected healing. identity_guard_furnace_absorb: Maximum post-mitigation damage Furnace Bastion can absorb from its one trigger, including combined copies. identity_guard_furnace_fraction: Maximum fraction of the supported hit paid by one delayed Furnace heat vent. identity_guard_rime_buildup: Maximum base chill paid once per newcomer by Rime Bastion before buildup gear and boss resistance. identity_guard_blade_fraction: Maximum physical counter fraction earned by answering the attacker who struck Blade Bastion. identity_guard_broad_push: Maximum newcomer displacement from Broad Bastion before boss control reduction. identity_guard_living_recovery: Maximum actual damage Living Bastion can remember for its one quiet-residence recovery. identity_guard_plate_absorb: Maximum finite damage pool earned by settling into Bulwark, including combined copies. identity_guard_post_reduction: Maximum damage reduction against Guardpost's single designated aggressor. identity_guard_quick_absorb: Maximum damage a successful frontal Quickbrace can remove from one hit. identity_veil_ember_fraction: Maximum fire fraction paid once by the spent Ember Veil impact fuse. identity_veil_rime_buildup: Maximum local chill at the one Rime Veil interception before buildup gear and boss resistance. identity_veil_razor_fraction: Maximum physical fraction paid by Razor Veil's one snapped tripwire. identity_veil_wide_screen: Enables one forward Wide Veil screen; duplicate readings never add interception charges. identity_veil_living_life: Maximum base life contained in Living Veil's one physically collected remnant. identity_veil_iron_absorb: Maximum damage caught-shot Iron Veil residue absorbs from one subsequent melee hit. identity_veil_aegis_threshold: Highest fraction of maximum life at which combined Aegis readings can arm the one emergency shot ward. identity_veil_fleeting_refund: Maximum movement cooldown seconds returned by one successful decoy interception. sustain_max_events: Maximum live sustain opportunities per player; reject excess without healing. sustain_window: Seconds to finish one sustain opportunity; recasting cannot refresh it. sustain_quick_window: Seconds to alternate a second real skill for Quick Sip. sustain_contact_cooldown: Player-wide seconds between new opportunities of each contact or brace role. sustain_kill_cooldown: Player-wide seconds between new corpse opportunities of each role. sustain_follow_gate: Minimum seconds between separate-cast progress steps; fan contacts share one step. sustain_low_life: Maximum fraction of current life that can start Second Spring. sustain_pickup_radius: Clear metres required to physically collect a seed, harvest or fleeing pod. sustain_phoenix_delay: Seconds for a Phoenix Bed seed to ripen before collection. sustain_winter_range: Clear metres within which a living chilled target can supply Winterroot. sustain_stand_radius: Metres of permitted position drift during stationary sustain or brace conditions. sustain_winter_hold: Continuous seconds standing near a chilled target to collect Winterroot. sustain_execution_range: Maximum clear metres from a bleeding execution to receive Bloodroot. sustain_harvest_range: Clear metres in which a second direct kill ripens Harvest Ground. sustain_spring_quiet: Seconds without positive enemy damage required for Second Spring payout. sustain_recoup_fraction: Maximum share of triggering post-mitigation damage used as base recoup before healing gear. sustain_iron_hold: Continuous seconds at the damage position to receive Ironroot recoup. sustain_harbour_range: Clear metres containing the player and no living hostile for Safe Harbour. sustain_harbour_quiet: Continuous cleared-space seconds before Safe Harbour pays. sustain_fleet_speed: Metres per second a Fleet Harvest pod flees along its original direction. sustain_fleet_head_start: Seconds before a fleeing pod can be collected. sustain_fleet_chase: Minimum metres the player must leave the kill-time position to collect a fleeing pod. sustain_tether_range: Maximum clear metres before a Cinder Siphon or Long Drink tether breaks. sustain_cinder_hold: Seconds the burning source and clear tether must survive before cinder return. sustain_return_speed: Metres per second a earned cinder travels; recovery waits for arrival. sustain_return_arrival: Metres from the player that count as cinder arrival. sustain_long_min_range: Minimum metres that distinguish Long Drink from close combat; closing breaks the tether. sustain_long_hold: Seconds to hold a clear distant Long Drink tether before drawing life. sustain_long_retreat: Extra metre separation gained by retreating before Long Drink pays. sustain_bloodletter_hits: Separate real cast contacts required on one bleeding enemy; each cast counts once. sustain_deep_targets: Distinct enemy samples from separate real casts before Deep Drink can be spent. sustain_visual_radius: Metres of the small readable sustain marker; cosmetic, without collision. identity_phoenix_life: Maximum base life paid once by Phoenix Bed before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_winterroot_life: Maximum base life paid once by Winterroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_bloodroot_life: Maximum base life paid once by Bloodroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_harvest_life: Maximum base life paid once by Harvest Ground before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_spring_life: Maximum base life paid once by Second Spring before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_ironroot_life: Maximum base life paid once by Ironroot before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_harbour_life: Maximum base life paid once by Safe Harbour before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_fleet_life: Maximum base life paid once by Fleet Harvest before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_cinder_life: Maximum base life paid once by Cinder Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_cold_sip_life: Maximum base life paid once by Cold Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_bloodletter_life: Maximum base life paid once by Bloodletter before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_long_drink_life: Maximum base life paid once by Long Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_deep_drink_life: Maximum base life paid once by Deep Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_iron_drink_life: Maximum base life paid once by Iron Drink before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_ward_sip_life: Maximum base life paid once by Ward Siphon before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_quick_sip_life: Maximum base life paid once by Quick Sip before ordinary healing gear; copies strengthen one opportunity rather than creating extra charges. identity_tempo_cinder_fraction: Maximum stacked budget for Cinder Wake. After a damaging hit, move away to draw one short fire seam. Enemies crossing it take one fire cut; the original victim is excluded. identity_tempo_frost_buildup: Maximum stacked budget for Frost Wake. Cast, then leave your footprint. It chills the first pursuer entering the abandoned space once. identity_tempo_razor_fraction: Maximum stacked budget for Razor Wake. Land a hit, then circle to the opposite side of that enemy for one physical aftercut. identity_tempo_long_push: Maximum stacked budget for Long Wake. Cast, move away, then hit a distant enemy to pull it toward the old casting position once. Bosses move less. identity_tempo_living_life: Maximum stacked budget for Living Wake. After a damaging hit, leave its attacking position to recover a little life once. identity_tempo_iron_push: Maximum stacked budget for Iron Wake. Cast and retreat; the next nearby enemy that damages you is shoved away once. Bosses move less. identity_tempo_ward_cleanse: Maximum stacked budget for Warded Wake. After casting, suffer a hit and recast this skill to clear one root, harry or mark, in that order. identity_tempo_after_fraction: Maximum stacked budget for Afterimage. Recast this skill from a new position to discharge one echo at the previous casting position. It uses the skill's damage type; movement skills gain no damage. identity_tempo_s_cinder_fraction: Maximum stacked budget for Cinder Refrain. Hit an enemy, then hit it again while it is already burning to burst behind it. The original victim takes no burst hit. Attacks only. identity_tempo_s_frost_buildup: Maximum stacked budget for Frost Refrain. Hit one enemy, then a different enemy to send a returning chill mote to the first. The mote must arrive. Attacks only. identity_tempo_s_double_fraction: Maximum stacked budget for Doublecut. Land a second hit on the same enemy between 0.3 and 1.2 seconds after the first for one physical aftercut. Attacks only. identity_tempo_s_sweep_fraction: Maximum stacked budget for Sweeping Refrain. Hit two different enemies to cut the short line between their contact positions once. Both original targets are excluded. Attacks only. identity_tempo_s_sustain_life: Maximum stacked budget for Sustaining Refrain. Land three hits from separate casts without taking damage to recover life. Being hit breaks the sequence. Attacks only. identity_tempo_s_brace_armour: Maximum stacked budget for Braced Refrain. Hold your position between two damaging attacks at least 0.6 seconds apart to gain brief armour. Moving breaks the brace. identity_tempo_s_guard_stagger: Maximum stacked budget for Guarded Refrain. After casting, answer an enemy that damages you with a landed hit to interrupt it and clear one control. Boss interruption is shorter. Attacks only. identity_tempo_s_step_refund: Maximum stacked budget for Threefold Step. Cast this attack from three distinct positions to recover a little of the longest movement cooldown. Echoes do not count. identity_tempo_c_ember_fraction: Maximum stacked budget for Ember Echo. A damaging spell hit leaves a delayed fire burst. Only enemies that arrive after the mark appeared can be hit. identity_tempo_c_frost_buildup: Maximum stacked budget for Frost Echo. A damaging spell hit schedules one delayed chill ring at your attacking-side footprint. Reposition to lead pursuers into it. identity_tempo_c_blade_fraction: Maximum stacked budget for Blade Echo. A damaging spell hit draws one delayed physical return cut along the short line back toward you. The initial victim is excluded. identity_tempo_c_wide_fraction: Maximum stacked budget for Wide Echo. A damaging spell hit leaves a delayed hollow ring in the spell's damage type. Enemies in its centre are safe. identity_tempo_c_living_life: Maximum stacked budget for Living Echo. A spell kill leaves a life mote. Cast a different spell to draw it home; healing waits for arrival and cover can block it. identity_tempo_c_brace_armour: Maximum stacked budget for Braced Echo. Hold position through a spell's short afterglow to gain brief armour. Moving before it settles cancels it. identity_tempo_c_ward_charges: Maximum stacked budget for Warded Echo. A spell leaves a delayed screen at its old casting position. Once active it intercepts one hostile projectile. identity_tempo_c_after_refund: Maximum stacked budget for Aftercast. A spell leaves a slowly drifting metronome. Meet it after it starts moving and cast a spell there to recover some of that new cast's cooldown. identity_tempo_live_cap: Maximum active tempo memories per player; each operation may own only one live memory, and excess births give no payout. identity_tempo_gate_seconds: Minimum seconds between seeding each tempo operation for a player, shared across supported skills; a cast or positive hit can seed only one of each operation. identity_tempo_window_seconds: Seconds a tempo footwork, combo or memory opportunity stays available; repeated input cannot refresh an unspent opportunity. identity_tempo_spacing: Planar metres required to leave a footprint or distinguish the three attack casting positions. identity_tempo_far_distance: Minimum planar metres from the old cast anchor for Long Wake's later positive contact. identity_tempo_target_range: Maximum clear distance for Long Wake's pull and Iron Wake's attacker response. identity_tempo_radius: Base radius of small tempo bursts before area and reach investment. identity_tempo_footprint_radius: Base radius for the abandoned Frost Wake footprint before area and reach investment. identity_tempo_line_half_width: Base half-width of the fire seam and two physical line cuts before area and reach investment. identity_tempo_line_max: Maximum authored length of a movement seam or contact-to-contact line; return cuts retain only the near six metres. identity_tempo_seam_seconds: Maximum time a drawn Cinder Wake seam waits for each crossing enemy; one packet per enemy and no pulse. identity_tempo_echo_delay_seconds: Visible delay before spell contact marks discharge and the old-position projectile screen becomes active. identity_tempo_ring_outer: Base outer radius of Wide Echo before area and reach investment. identity_tempo_ring_inner: Base safe inner radius of Wide Echo before area and reach investment; the echo does not hit its centre. identity_tempo_double_min_seconds: Earliest second positive contact that earns Doublecut; very rapid or repeated callbacks cannot collect it. identity_tempo_double_max_seconds: Latest second positive contact that earns Doublecut; waiting loses the timing opportunity. identity_tempo_brace_seconds: Stationary seconds required between Braced Refrain hits or after a Braced Echo cast. identity_tempo_armour_seconds: Seconds the earned personal armour lasts; it shares the strongest existing personal cast-armour pool. identity_tempo_still_distance: Planar metres of movement that breaks the two bracing opportunities. identity_tempo_orbit_range: Maximum distance to the marked Razor Wake enemy while completing the flank. identity_tempo_orbit_dot: Positive dot magnitude required beyond the marked enemy's flank; the opposite-side test compares against its negative value. identity_tempo_behind_offset: Metres behind the repeatedly struck burning enemy where Cinder Refrain's excluded-target burst is centred. identity_tempo_sequence_count: Separate real casts or positive-hit casts required for the two three-step attack sequences. identity_tempo_metronome_radius: Clear distance in metres at which a new spell can meet Aftercast's moving metronome. identity_tempo_metronome_wait_seconds: Seconds before the metronome starts moving and can reward a follow-up spell. identity_tempo_metronome_speed: Metres per second the metronome drifts along the original spell facing. identity_tempo_metronome_distance: Maximum metres the metronome moves from the original spell position. identity_tempo_mote_speed: Metres per second for returning chill and life motes; no status or healing before arrival. identity_tempo_mote_arrival: Metres from its recipient at which a returning mote pays its one status or healing budget. identity_tempo_boss_control_factor: Boss fraction of the two tempo pushes and the reactive attack stagger; native chill uses its separate existing boss rules. identity_tempo_screen_radius: Base sphere radius of Warded Echo's delayed one-shot interception screen before area and reach investment. identity_tempo_mark_radius: Metres of the compact tempo opportunity marker; it has no collision or gameplay reach. identity_tempo_echo_mark_ratio: Inner visual marker size for Afterimage's paired rings; purely distinguishes the stored echo from footprints. identity_tempo_line_height: Maximum vertical reach above a line cut; ordinary torso height is included while creatures on another floor remain excluded. identity_tempo_ground_probe_depth: Maximum metres below a drawn fire seam endpoint to find supporting ground; no terrain or collider is changed. identity_tempo_ground_offset: Metres the visible fire seam rests above supporting ground to prevent depth flicker. identity_guard_ring_height_ratio: Flattens only the defensive ring mesh so its growing radius does not form a thick band across first-person aim; interception size is unchanged. identity_guard_ring_opacity: Opacity of defensive ring marks; the environment and enemies remain visible through their body-height plane.",
     "burn_release_seconds": 0.75,
     "warm_cinder_life": 6,
     "steam_stagger": 0.3,
@@ -4308,6 +3592,202 @@
     "memory_radius": 1.8,
     "memory_seconds": 3.2,
     "emberbed_pulses": 2,
-    "max_cold_memories": 16
+    "max_cold_memories": 16,
+    "identity_offence_cooldown": 2.2,
+    "identity_offence_cap": 16,
+    "identity_offence_delay": 0.35,
+    "identity_offence_memory": 3.2,
+    "identity_offence_flight": 0.8,
+    "identity_offence_radius": 2.6,
+    "identity_offence_width": 0.48,
+    "identity_offence_length": 7,
+    "identity_offence_speed": 12,
+    "identity_offence_boss_factor": 0.25,
+    "identity_quick_distance": 2,
+    "identity_concussion_stagger": 0.25,
+    "identity_breach_stagger": 0.3,
+    "identity_heartbreak_threshold": 0.35,
+    "identity_anvil_settle": 0.45,
+    "identity_anvil_delay": 0.65,
+    "identity_anvil_push": 0.6,
+    "identity_snap_distance": 1.0,
+    "identity_lance_fraction": 0.18,
+    "identity_ice_buildup": 45,
+    "identity_razor_fraction": 0.18,
+    "identity_through_fraction": 0.15,
+    "identity_thread_life": 4,
+    "identity_breach_push": 1,
+    "identity_needle_seconds": 0.55,
+    "identity_quick_refund": 0.5,
+    "identity_firebreak_fraction": 0.18,
+    "identity_glacier_push": 1.2,
+    "identity_concussion_fraction": 0.2,
+    "identity_shock_fraction": 0.18,
+    "identity_heartbreak_fraction": 0.22,
+    "identity_anvil_fraction": 0.22,
+    "identity_sealbreak_seconds": 0.7,
+    "identity_snap_fraction": 0.18,
+    "identity_guard_max_nodes": 12,
+    "identity_guard_cooldown": 3.0,
+    "identity_guard_seconds": 3.2,
+    "identity_guard_radius": 2.0,
+    "identity_guard_vent_delay": 0.45,
+    "identity_guard_riposte_stagger": 0.2,
+    "identity_guard_riposte_window": 1.6,
+    "identity_guard_front_dot": 0.35,
+    "identity_guard_quick_refund": 0.45,
+    "identity_guard_quick_seconds": 0.5,
+    "identity_guard_broad_offset": 1.1,
+    "identity_guard_bar_depth": 0.3,
+    "identity_guard_bar_height": 1.4,
+    "identity_guard_cover_margin": 0.12,
+    "identity_guard_settle_move": 0.55,
+    "identity_guard_settle_seconds": 0.55,
+    "identity_guard_quiet_seconds": 1.0,
+    "identity_guard_boss_control": 0.25,
+    "identity_guard_rime_stagger": 0.18,
+    "identity_guard_crossing_cap": 3,
+    "identity_guard_personal_visual_radius": 0.55,
+    "identity_veil_rime_seconds": 1.8,
+    "identity_veil_rime_start_radius": 0.65,
+    "identity_veil_rime_end_radius": 3.0,
+    "identity_veil_rime_burst_radius": 1.3,
+    "identity_veil_aegis_seconds": 4.0,
+    "identity_veil_fleeting_seconds": 4.0,
+    "identity_veil_fleeting_leave": 2.5,
+    "identity_veil_wide_distance": 3.5,
+    "identity_veil_fuse_seconds": 0.6,
+    "identity_veil_fuse_radius": 1.5,
+    "identity_veil_pickup_radius": 1.0,
+    "identity_veil_pickup_seconds": 5.0,
+    "identity_veil_shell_seconds": 3.0,
+    "identity_veil_pickup_visual_radius": 0.18,
+    "identity_guard_furnace_absorb": 8,
+    "identity_guard_furnace_fraction": 0.18,
+    "identity_guard_rime_buildup": 50,
+    "identity_guard_blade_fraction": 0.2,
+    "identity_guard_broad_push": 2.0,
+    "identity_guard_living_recovery": 8,
+    "identity_guard_plate_absorb": 14,
+    "identity_guard_post_reduction": 0.3,
+    "identity_guard_quick_absorb": 8,
+    "identity_veil_ember_fraction": 0.18,
+    "identity_veil_rime_buildup": 60,
+    "identity_veil_razor_fraction": 0.18,
+    "identity_veil_wide_screen": 1,
+    "identity_veil_living_life": 5,
+    "identity_veil_iron_absorb": 7,
+    "identity_veil_aegis_threshold": 0.5,
+    "identity_veil_fleeting_refund": 0.7,
+    "sustain_max_events": 16,
+    "sustain_window": 5,
+    "sustain_quick_window": 2,
+    "sustain_contact_cooldown": 3,
+    "sustain_kill_cooldown": 3,
+    "sustain_follow_gate": 0.12,
+    "sustain_low_life": 0.5,
+    "sustain_pickup_radius": 1.2,
+    "sustain_phoenix_delay": 0.7,
+    "sustain_winter_range": 2,
+    "sustain_stand_radius": 0.35,
+    "sustain_winter_hold": 1,
+    "sustain_execution_range": 4,
+    "sustain_harvest_range": 3,
+    "sustain_spring_quiet": 2,
+    "sustain_recoup_fraction": 0.5,
+    "sustain_iron_hold": 1,
+    "sustain_harbour_range": 3,
+    "sustain_harbour_quiet": 0.8,
+    "sustain_fleet_speed": 1.6,
+    "sustain_fleet_head_start": 0.35,
+    "sustain_fleet_chase": 0.6,
+    "sustain_tether_range": 9,
+    "sustain_cinder_hold": 0.8,
+    "sustain_return_speed": 9,
+    "sustain_return_arrival": 0.15,
+    "sustain_long_min_range": 4,
+    "sustain_long_hold": 1,
+    "sustain_long_retreat": 1,
+    "sustain_bloodletter_hits": 3,
+    "sustain_deep_targets": 2,
+    "sustain_visual_radius": 0.45,
+    "identity_phoenix_life": 5,
+    "identity_winterroot_life": 5,
+    "identity_bloodroot_life": 5,
+    "identity_harvest_life": 5,
+    "identity_spring_life": 5,
+    "identity_ironroot_life": 5,
+    "identity_harbour_life": 5,
+    "identity_fleet_life": 5,
+    "identity_cinder_life": 5,
+    "identity_cold_sip_life": 5,
+    "identity_bloodletter_life": 5,
+    "identity_long_drink_life": 5,
+    "identity_deep_drink_life": 5,
+    "identity_iron_drink_life": 5,
+    "identity_ward_sip_life": 5,
+    "identity_quick_sip_life": 5,
+    "identity_tempo_cinder_fraction": 0.14,
+    "identity_tempo_frost_buildup": 35,
+    "identity_tempo_razor_fraction": 0.16,
+    "identity_tempo_long_push": 1.5,
+    "identity_tempo_living_life": 4,
+    "identity_tempo_iron_push": 1.5,
+    "identity_tempo_ward_cleanse": 1,
+    "identity_tempo_after_fraction": 0.18,
+    "identity_tempo_s_cinder_fraction": 0.14,
+    "identity_tempo_s_frost_buildup": 40,
+    "identity_tempo_s_double_fraction": 0.16,
+    "identity_tempo_s_sweep_fraction": 0.14,
+    "identity_tempo_s_sustain_life": 5,
+    "identity_tempo_s_brace_armour": 10,
+    "identity_tempo_s_guard_stagger": 0.4,
+    "identity_tempo_s_step_refund": 0.9,
+    "identity_tempo_c_ember_fraction": 0.16,
+    "identity_tempo_c_frost_buildup": 35,
+    "identity_tempo_c_blade_fraction": 0.16,
+    "identity_tempo_c_wide_fraction": 0.16,
+    "identity_tempo_c_living_life": 5,
+    "identity_tempo_c_brace_armour": 12,
+    "identity_tempo_c_ward_charges": 1,
+    "identity_tempo_c_after_refund": 0.75,
+    "identity_tempo_live_cap": 24,
+    "identity_tempo_gate_seconds": 2,
+    "identity_tempo_window_seconds": 3.2,
+    "identity_tempo_spacing": 1.2,
+    "identity_tempo_far_distance": 4,
+    "identity_tempo_target_range": 8,
+    "identity_tempo_radius": 1.6,
+    "identity_tempo_footprint_radius": 1.1,
+    "identity_tempo_line_half_width": 0.42,
+    "identity_tempo_line_max": 6,
+    "identity_tempo_seam_seconds": 1.6,
+    "identity_tempo_echo_delay_seconds": 0.65,
+    "identity_tempo_ring_outer": 3,
+    "identity_tempo_ring_inner": 1.4,
+    "identity_tempo_double_min_seconds": 0.3,
+    "identity_tempo_double_max_seconds": 1.2,
+    "identity_tempo_brace_seconds": 0.6,
+    "identity_tempo_armour_seconds": 1.8,
+    "identity_tempo_still_distance": 0.4,
+    "identity_tempo_orbit_range": 3.6,
+    "identity_tempo_orbit_dot": 0.35,
+    "identity_tempo_behind_offset": 1.4,
+    "identity_tempo_sequence_count": 3,
+    "identity_tempo_metronome_radius": 1,
+    "identity_tempo_metronome_wait_seconds": 0.55,
+    "identity_tempo_metronome_speed": 1.4,
+    "identity_tempo_metronome_distance": 3,
+    "identity_tempo_mote_speed": 7,
+    "identity_tempo_mote_arrival": 0.2,
+    "identity_tempo_boss_control_factor": 0.25,
+    "identity_tempo_screen_radius": 1.2,
+    "identity_tempo_mark_radius": 0.45,
+    "identity_tempo_echo_mark_ratio": 0.6,
+    "identity_tempo_line_height": 1.6,
+    "identity_tempo_ground_probe_depth": 3,
+    "identity_tempo_ground_offset": 0.08,
+    "identity_guard_ring_height_ratio": 0.12,
+    "identity_guard_ring_opacity": 0.32
   }
 }

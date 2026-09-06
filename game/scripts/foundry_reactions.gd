@@ -5,6 +5,9 @@ extends RefCounted
 static func contact(combat: PlayerCombat, enemy: Enemy, skill: StringName, form: Dictionary, context: Dictionary) -> void:
 	var limits: Dictionary = form.get("limits", {})
 	var at := enemy.global_position + Vector3.UP * 0.5
+	FoundryOffence.contact(combat,enemy,skill,form,context)
+	FoundrySustain.contact(combat,enemy,skill,form,context)
+	FoundryTempo.contact(combat,enemy,skill,form,context)
 	_ember_contact(combat,enemy,skill,form,context)
 	FoundryCold.contact(combat,enemy,skill,form,context)
 	var release := float(form.get("burn_release_seconds", 0))

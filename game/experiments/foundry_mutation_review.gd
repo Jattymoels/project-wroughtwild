@@ -88,9 +88,11 @@ func _ready() -> void:
 	sim.foundry_place_kind(2,0,"warding_vanguard")
 	player.combat._mutation_cache.clear()
 	equip("hunting_bow")
-	var ward := FoundryField.spawn(player.combat,&"prototype_bow_shot",player.global_position-Vector3(0,0.7,2),"guard",sim.skill_mutation("prototype_bow_shot"))
+	FoundryGuard.cast(player.combat,&"prototype_bow_shot",player.global_position+Vector3.UP*.5)
+	var ward := FoundryGuard.live(player.combat,"veil_rime")
 	ward.set_physics_process(false)
-	review_title.text = "RIME VEIL\nA bow cast plants a projectile-catching ward"
+	ward.advance(.8)
+	review_title.text = "RIME VEIL\nA bow cast sends an expanding interception front; one caught shot releases local chill"
 	await capture("rime-veil")
 	ward.cancel()
 	await evolution_capture(world)

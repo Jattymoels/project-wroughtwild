@@ -408,6 +408,9 @@ func use_skill(skill_id: StringName) -> bool:
 	var fired := _cast(skill_id, def)
 	if fired:
 		FoundryCold.cast(self,skill_id,origin)
+		FoundryGuard.cast(self,skill_id,origin)
+		FoundrySustain.cast(self,skill_id,origin)
+		FoundryTempo.cast(self,skill_id,origin)
 		_brace(skill_id)
 		_echo(skill_id, def)
 	return fired
@@ -436,7 +439,11 @@ func _deliver(skill_id: StringName, def: Dictionary) -> bool:
 		_use_cone(skill_id)
 		return true
 	if delivery == "strike":
-		return _use_strike(skill_id)
+		# use_skill already validated readiness. A whiff still commits its
+		# cooldown and can prepare a cast brace, just like an empty sweep.
+		# Contact, mastery and recovery hooks still require a real target.
+		_use_strike(skill_id)
+		return true
 	if delivery == "projectile":
 		return _use_projectile(skill_id)
 	if delivery == "ground":
@@ -640,6 +647,10 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, s
 		if taken > 0.0:
 			landed += taken
 			types.append(String(packet["type"]))
+	# Identity contact and kill ownership belong to this direct packet, before
+	# Brittle's execute/nova adds its legacy aggregate damage and kill feedback.
+	var direct_packet_damage := landed
+	var direct_packet_kill := live_hostile and enemy.life <= 0
 	# Brittle (a form): a frozen, bleeding enemy shatters from this hit,
 	# though the skill would never shatter on its own.
 	if not secondary and enemy.life > 0.0 and enemy.is_frozen() and enemy.bleeding_left > 0.0 and sim.skill_brittle(String(skill_id)):
@@ -655,10 +666,21 @@ func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, s
 		fight_noise(enemy.global_position)
 		if not secondary and float(mutation(skill_id).get("siphon", 0)) > 0:
 			FoundryReturn.launch(self, enemy.global_position + Vector3.UP * 0.6, mutation(skill_id))
+	var direct_kill := enemy.life <= 0
+	if direct_packet_damage > 0 and live_hostile and not secondary:
+		var identity_context: Dictionary = action_context(skill_id) if context.is_empty() else context
+		var identity_form := mutation(skill_id)
+		FoundryOffence.landed(self,enemy,skill_id,identity_form,identity_context)
+		FoundryGuard.landed(self,enemy,skill_id,identity_form,identity_context)
+		FoundrySustain.landed(self,enemy,skill_id,identity_form,identity_context)
+		FoundryTempo.landed(self,enemy,skill_id,identity_form,identity_context)
 	var kill := enemy.life <= 0.0
-	if kill:
+	if direct_kill:
 		_reap(skill_id, 1)
 		if not secondary and landed>0: FoundryCold.killed(self,enemy,skill_id)
+		if not secondary and direct_packet_damage>0 and direct_packet_kill and bool((action_context(skill_id) if context.is_empty() else context).get("practice_allowed",false)):
+			FoundrySustain.killed(self,enemy,skill_id)
+			FoundryTempo.killed(self,enemy,skill_id)
 		if not secondary and float(mutation(skill_id).get("recovery_on_kill", 0)) > 0:
 			FoundryField.spawn(self, skill_id, enemy.global_position + Vector3.UP * 0.12, "recovery", mutation(skill_id))
 	return {"damage": landed, "kill": kill, "types": types}
@@ -1204,7 +1226,9 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 		var added_fire:=float(sim.combat_mods().get("enemy_added_fire_fraction",0))
 		if added_fire>0:
 			last_hit_taken+=sim.enemy_hit_damage(warded*added_fire,"fire",cast_armour()+still_armour())
-	if source is Enemy: last_hit_taken=FoundryCold.absorb(self,last_hit_taken)
+	if source is Enemy:
+		last_hit_taken=FoundryCold.absorb(self,last_hit_taken)
+		last_hit_taken=FoundryGuard.absorb(self,last_hit_taken,source)
 	_train_hits.append({"at": _fight_clock, "source": source.get_instance_id() if source != null else 0})
 	life = maxf(0.0, life - last_hit_taken)
 	_settle_left = _settle_seconds
@@ -1220,6 +1244,10 @@ func take_hit(raw_damage: float, damage_type: String, source_name := "", source:
 	fight_noise(get_parent().global_position)
 	if source is Enemy:
 		_suffer_verb(source as Enemy)
+	if source is Enemy and last_hit_taken>0 and life>0:
+		FoundryGuard.damaged(self,source,last_hit_taken)
+		FoundrySustain.damaged(self,source,last_hit_taken)
+		FoundryTempo.damaged(self,source,last_hit_taken)
 	if life <= 0.0:
 		died.emit()
 	return last_hit_taken

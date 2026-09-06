@@ -303,7 +303,7 @@ func set_night(value: bool, rules: Dictionary) -> void:
 		return
 	night = value
 	# A bare pack system (tests) has no tree and no mobs to tell.
-	if get_tree() == null:
+	if not is_inside_tree():
 		return
 	for node in get_tree().get_nodes_in_group("enemies"):
 		if node is Enemy and is_instance_valid(node):

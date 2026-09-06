@@ -1,5 +1,85 @@
 // Owner-approved transformative Foundry, 5 Sep 2026. Included after the
 // test harness so exhaustive fixtures use the same check/near reporting.
+// Independent expectations: these are authored roles, not values copied at
+// runtime from the same JSON being tested. Display names are not signatures.
+const std::map<std::string,std::pair<std::string,double>>& completedIdentityOperations() {
+    static const std::map<std::string,std::pair<std::string,double>> roles = {
+        {"piercing_catalyst:ember",{"identity_lance_fraction",.10}},
+        {"piercing_catalyst:frost",{"identity_ice_buildup",30}},
+        {"piercing_catalyst:edge",{"identity_razor_fraction",.10}},
+        {"piercing_catalyst:reach",{"identity_through_fraction",.08}},
+        {"piercing_catalyst:vigour",{"identity_thread_life",2}},
+        {"piercing_catalyst:plate",{"identity_breach_push",.65}},
+        {"piercing_catalyst:ward",{"identity_needle_seconds",.35}},
+        {"piercing_catalyst:haste",{"identity_quick_refund",.3}},
+        {"impact_catalyst:ember",{"identity_firebreak_fraction",.10}},
+        {"impact_catalyst:frost",{"identity_glacier_push",.8}},
+        {"impact_catalyst:edge",{"identity_concussion_fraction",.12}},
+        {"impact_catalyst:reach",{"identity_shock_fraction",.10}},
+        {"impact_catalyst:vigour",{"identity_heartbreak_fraction",.14}},
+        {"impact_catalyst:plate",{"identity_anvil_fraction",.14}},
+        {"impact_catalyst:ward",{"identity_sealbreak_seconds",.45}},
+        {"impact_catalyst:haste",{"identity_snap_fraction",.10}},
+        {"vanguard:ember",{"identity_guard_furnace_absorb",4}},
+        {"vanguard:frost",{"identity_guard_rime_buildup",30}},
+        {"vanguard:edge",{"identity_guard_blade_fraction",.12}},
+        {"vanguard:reach",{"identity_guard_broad_push",1.3}},
+        {"vanguard:vigour",{"identity_guard_living_recovery",5}},
+        {"vanguard:plate",{"identity_guard_plate_absorb",9}},
+        {"vanguard:ward",{"identity_guard_post_reduction",.2}},
+        {"vanguard:haste",{"identity_guard_quick_absorb",5}},
+        {"warding_vanguard:ember",{"identity_veil_ember_fraction",.1}},
+        {"warding_vanguard:frost",{"identity_veil_rime_buildup",40}},
+        {"warding_vanguard:edge",{"identity_veil_razor_fraction",.1}},
+        {"warding_vanguard:reach",{"identity_veil_wide_screen",1}},
+        {"warding_vanguard:vigour",{"identity_veil_living_life",3}},
+        {"warding_vanguard:plate",{"identity_veil_iron_absorb",4}},
+        {"warding_vanguard:ward",{"identity_veil_aegis_threshold",.4}},
+        {"warding_vanguard:haste",{"identity_veil_fleeting_refund",.4}},
+        {"marrow:ember",{"identity_phoenix_life",2.5}},
+        {"marrow:frost",{"identity_winterroot_life",2.5}},
+        {"marrow:edge",{"identity_bloodroot_life",2.5}},
+        {"marrow:reach",{"identity_harvest_life",2.5}},
+        {"marrow:vigour",{"identity_spring_life",2.5}},
+        {"marrow:plate",{"identity_ironroot_life",2.5}},
+        {"marrow:ward",{"identity_harbour_life",2.5}},
+        {"marrow:haste",{"identity_fleet_life",2.5}},
+        {"sipping_marrow:ember",{"identity_cinder_life",2.5}},
+        {"sipping_marrow:frost",{"identity_cold_sip_life",2.5}},
+        {"sipping_marrow:edge",{"identity_bloodletter_life",2.5}},
+        {"sipping_marrow:reach",{"identity_long_drink_life",2.5}},
+        {"sipping_marrow:vigour",{"identity_deep_drink_life",2.5}},
+        {"sipping_marrow:plate",{"identity_iron_drink_life",2.5}},
+        {"sipping_marrow:ward",{"identity_ward_sip_life",2.5}},
+        {"sipping_marrow:haste",{"identity_quick_sip_life",2.5}},
+        {"quicksilver:ember",{"identity_tempo_cinder_fraction",.08}},
+        {"quicksilver:frost",{"identity_tempo_frost_buildup",20}},
+        {"quicksilver:edge",{"identity_tempo_razor_fraction",.1}},
+        {"quicksilver:reach",{"identity_tempo_long_push",.9}},
+        {"quicksilver:vigour",{"identity_tempo_living_life",2}},
+        {"quicksilver:plate",{"identity_tempo_iron_push",1}},
+        {"quicksilver:ward",{"identity_tempo_ward_cleanse",1}},
+        {"quicksilver:haste",{"identity_tempo_after_fraction",.1}},
+        {"striking_quicksilver:ember",{"identity_tempo_s_cinder_fraction",.08}},
+        {"striking_quicksilver:frost",{"identity_tempo_s_frost_buildup",25}},
+        {"striking_quicksilver:edge",{"identity_tempo_s_double_fraction",.1}},
+        {"striking_quicksilver:reach",{"identity_tempo_s_sweep_fraction",.08}},
+        {"striking_quicksilver:vigour",{"identity_tempo_s_sustain_life",3}},
+        {"striking_quicksilver:plate",{"identity_tempo_s_brace_armour",6}},
+        {"striking_quicksilver:ward",{"identity_tempo_s_guard_stagger",.25}},
+        {"striking_quicksilver:haste",{"identity_tempo_s_step_refund",.6}},
+        {"casting_quicksilver:ember",{"identity_tempo_c_ember_fraction",.1}},
+        {"casting_quicksilver:frost",{"identity_tempo_c_frost_buildup",20}},
+        {"casting_quicksilver:edge",{"identity_tempo_c_blade_fraction",.1}},
+        {"casting_quicksilver:reach",{"identity_tempo_c_wide_fraction",.1}},
+        {"casting_quicksilver:vigour",{"identity_tempo_c_living_life",3}},
+        {"casting_quicksilver:plate",{"identity_tempo_c_brace_armour",7}},
+        {"casting_quicksilver:ward",{"identity_tempo_c_ward_charges",1}},
+        {"casting_quicksilver:haste",{"identity_tempo_c_after_refund",.45}}
+    };
+    return roles;
+}
+
 void testFoundryMutations(const tuning::Tuning& t) {
     const auto frame = foundry::plate(t.foundry,3);
     std::map<std::string,std::string> signature = {
@@ -13,16 +93,25 @@ void testFoundryMutations(const tuning::Tuning& t) {
         {"preserving_catalyst",.18},{"piercing_catalyst",1},{"impact_catalyst",1.8},{"vanguard",10},
         {"warding_vanguard",1},{"marrow",4.5},{"sipping_marrow",.65},{"quicksilver",.16},
         {"striking_quicksilver",.12},{"casting_quicksilver",.55}};
+    const auto& identities=completedIdentityOperations();
+    check(identities.size()==72,"identity matrix: seventy-two independently enumerated new roles");
     int baseForms=0;
     std::set<std::pair<std::string,std::string>> pairs;
+    std::set<std::vector<std::pair<std::string,double>>> operations;
     for(const auto& form:t.foundry.forms) {
         if(form.supportOnly || !form.upstreamKind.empty() || !form.inputForm.empty()) continue;
         ++baseForms;
         check(!form.kind.empty() && !form.description.empty(),"mutation matrix: exact Kind and player explanation are required");
         check(pairs.emplace(form.kind,form.ingot).second,"mutation matrix: each base pair has one unambiguous rule");
+        std::vector<std::pair<std::string,double>> operation;
+        for(const auto& effect:form.effects)
+            if(effect.modifier.rfind("mutation_",0)==0) operation.push_back({effect.modifier,effect.value});
+        std::sort(operation.begin(),operation.end());
+        check(!operation.empty() && operations.insert(operation).second,"identity matrix: actual operation definitions differ, not just displayed names "+form.id);
     }
     check(baseForms==96 && pairs.size()==96,"mutation matrix: all twelve Kinds by eight ingots are authored");
-    int fixtures=0;
+    check(operations.size()==96,"identity matrix: ninety-six different operation definitions");
+    int fixtures=0, aliasFixtures=0;
     for(const auto& kind:t.foundry.kinds) for(const auto& ingot:t.foundry.ingots)
     for(const auto& metal:t.foundry.metals) for(const auto& skill:t.skills.combatSkills) {
         foundry::State state;
@@ -42,7 +131,7 @@ void testFoundryMutations(const tuning::Tuning& t) {
         }
         const std::string label=kind.id+"/"+ingot.id+"/"+metal.id+"/"+skill.id;
         check(names.size()==(compatible ? 1u:0u) && provenance,"mutation fixture: identity, compatibility and route "+label);
-        auto key=kind.id=="frost_catalyst" && ingot.id=="ember" ? "smoulder_slow" : signature.at(kind.id);
+        std::string key=kind.id=="frost_catalyst" && ingot.id=="ember" ? "smoulder_slow" : signature.at(kind.id);
         double expected = compatible ? (kind.id=="frost_catalyst" && ingot.id=="ember" ? .25 : baseline.at(kind.id)) : 0;
         const std::map<std::string,std::pair<std::string,double>> frostOps={
             {"frost",{"rime_ring_buildup",20}},{"edge",{"rime_edge_fraction",.06}},
@@ -69,6 +158,16 @@ void testFoundryMutations(const tuning::Tuning& t) {
             if (ingot.id=="frost") { key="steam_stagger"; expected=.2; }
             checkNear(mutation.at("ignite_spread"),0,1e-9,"Ember identity: no form inherits the old shared ignition spread "+label);
         }
+        const auto identity=identities.find(kind.id+":"+ingot.id);
+        if(identity!=identities.end()) {
+            key=identity->second.first;
+            expected=compatible ? identity->second.second : 0;
+            // Ingot aliases must not silently carry their retired common pulse,
+            // recovery or every-third-use operation alongside the new identity.
+            for(const auto& retired:{"zone_armour","ward_charges","recovery_on_kill","siphon","trail_fraction","echo_delay"})
+                checkNear(mutation.at(retired),0,1e-9,"identity matrix: retired shared operation remains absent "+label+"/"+retired);
+            check(grammar::skillEchoEvery(t,mods,skill.id)==0,"identity matrix: no automatic every-third repeat remains "+label);
+        }
         checkNear(mutation.at(key),expected,1e-9,"mutation fixture: exact Kind operation and baseline "+label);
         bool bounded=true;
         for(const auto& [property,cap]:t.foundry.mutationLimits)
@@ -76,21 +175,79 @@ void testFoundryMutations(const tuning::Tuning& t) {
         check(bounded,"mutation fixture: every operation is finite and bounded "+label);
         const auto hit=grammar::skillHit(t,mods,skill.id);
         check(hit.empty() || hit.front().type==grammar::nativeType(t,tags),"mutation fixture: acquiring tags never converts the native damage packet "+label);
+        for(const auto& grade:t.crafting.currencyKinds) {
+            if(grade.canonicalKind!=kind.id) continue;
+            auto graded=state;
+            graded.plate.back().currency=grade.id;
+            check(grammar::skillMutation(t,grammar::foundryMods(t,graded,3),skill.id)==mutation,
+                  "identity grades: full resolved behaviour aliases its original Kind "+grade.id+"/"+label);
+            check(graded.plate.back().currency==grade.id,"identity grades: resolution never rewrites placed ownership identity");
+            ++aliasFixtures;
+        }
         ++fixtures;
     }
     check(fixtures==4608,"mutation matrix: 96 pairs x three metals x sixteen skills exercised");
+    check(aliasFixtures==13824,"identity grades: thirty-six owned Kind IDs x eight ingots x three alloys x sixteen skills");
+
+    // Every graded item remains exact inventory through a legal plate/save/lift
+    // lifecycle. Canonical behaviour does not permit paying with another grade.
+    for(const auto& grade:t.crafting.currencyKinds) {
+        economy::PlayerEconomy owner(t);
+        owner.learnSkill("prototype_heavy_strike");
+        owner.foundryEvent("first_kill:ember_whelp");
+        owner.grant(grade.id,1);
+        if(grade.id!=grade.canonicalKind) owner.grant(grade.canonicalKind,1);
+        const int canonicalBefore=owner.held(grade.canonicalKind);
+        check(owner.foundryPlaceSkill(1,1,"prototype_heavy_strike") && owner.foundryPlace(1,0,"ember") && owner.foundryPlaceKind(2,0,grade.id),
+              "identity grades: legal placement pays exact owned grade "+grade.id);
+        check(owner.held(grade.id)==0 && (grade.id==grade.canonicalKind || owner.held(grade.canonicalKind)==canonicalBefore),
+              "identity grades: placing an alias cannot consume canonical stock "+grade.id);
+        owner.grant("iron_ingot",1);
+        save::SaveGame saved; saved.economy=owner.exportState();
+        economy::PlayerEconomy loaded(t); loaded.importState(save::fromJson(save::toJson(saved)).economy);
+        const auto* placed=foundry::at(loaded.foundry(),2,0);
+        check(placed && placed->currency==grade.id && loaded.held(grade.id)==0,
+              "identity grades: save restores the exact invested item, even on an incompatible skill "+grade.id);
+        check(loaded.foundryRemove(2,0) && loaded.held(grade.id)==1 &&
+                  (grade.id==grade.canonicalKind || loaded.held(grade.canonicalKind)==canonicalBefore),
+              "identity grades: paid lifting returns the exact grade once "+grade.id);
+    }
+
+    // A repeated Kind at two independent branches adds its authored value only
+    // to its receiving skill and then obeys the operation-specific ceiling.
+    for(const auto& [id,operation]:identities) {
+        const auto split=id.find(':');
+        const std::string kind=id.substr(0,split);
+        const std::string ingot=id.substr(split+1);
+        const std::string skill=kind=="casting_quicksilver" ? "prototype_ember_bolt" : "prototype_heavy_strike";
+        foundry::State doubled;
+        doubled.plate={{1,1,"",skill},{1,0,ingot,""},{2,0,"","",kind},{0,0,"","",kind}};
+        const auto mods=grammar::foundryMods(t,doubled,3);
+        const auto mutation=grammar::skillMutation(t,mods,skill);
+        checkNear(mutation.at(operation.first),std::min(operation.second*2,t.foundry.mutationLimits.at(operation.first)),1e-9,
+                  "identity copies: duplicate routes obey the authored ceiling "+id);
+        checkNear(grammar::skillMutation(t,mods,"prototype_frost_orb").at(operation.first),0,1e-9,
+                  "identity copies: no leakage to an unconnected skill "+id);
+        std::reverse(doubled.plate.begin(),doubled.plate.end());
+        check(grammar::skillMutation(t,grammar::foundryMods(t,doubled,3),skill)==mutation,
+              "identity copies: reversed container order retains both routes "+id);
+        doubled.plate.erase(std::remove_if(doubled.plate.begin(),doubled.plate.end(),[](const auto& p){return p.row==1 && p.col==0;}),doubled.plate.end());
+        checkNear(grammar::skillMutation(t,grammar::foundryMods(t,doubled,3),skill).at(operation.first),0,1e-9,
+                  "identity copies: removing the sole connecting support removes both readings "+id);
+    }
 
     // Every ordered Kind pair has a defined outcome. Most combine their
     // distinct operations; the two authored ordered recipes intentionally
     // differ. Repeat-Kind copies use the same numeric ceilings.
     int orderedFixtures=0;
     for(const auto& first:t.foundry.kinds) for(const auto& second:t.foundry.kinds)
-    for(const auto& ingot:t.foundry.ingots) for(const auto& skill:{"prototype_heavy_strike","prototype_ember_bolt"}) {
+    for(const auto& ingot:t.foundry.ingots) for(const auto& metal:t.foundry.metals) for(const auto& skillDef:t.skills.combatSkills) {
+        const auto& skill=skillDef.id;
         foundry::State state;
-        state.plate={{0,3,"","",first.id},{1,3,"","",second.id},{1,2,ingot.id,""},{2,2,"",skill}};
-        const auto forward=grammar::skillMutation(t,grammar::foundryMods(t,state,2),skill);
+        state.plate={{0,3,"","",first.id},{1,3,"","",second.id},{1,2,ingot.id,"","",metal.id},{2,2,"",skill}};
+        const auto forward=grammar::skillMutation(t,grammar::foundryMods(t,state,3),skill);
         std::swap(state.plate[0].currency,state.plate[1].currency);
-        const auto backward=grammar::skillMutation(t,grammar::foundryMods(t,state,2),skill);
+        const auto backward=grammar::skillMutation(t,grammar::foundryMods(t,state,3),skill);
         const bool ordered=(first.id=="frost_catalyst" && second.id=="preserving_catalyst") ||
                            (second.id=="frost_catalyst" && first.id=="preserving_catalyst") ||
                            (ingot.id=="ember" && ((first.id=="frost_catalyst" && second.id=="ember_catalyst") ||
@@ -101,7 +258,45 @@ void testFoundryMutations(const tuning::Tuning& t) {
         check(finite,"compound matrix: every ordered pair has a finite result");
         ++orderedFixtures;
     }
-    check(orderedFixtures==2304,"compound matrix: 144 ordered Kind pairs x eight ingots x attack/spell exercised");
+    check(orderedFixtures==55296,"compound matrix: 144 ordered Kind pairs x eight ingots x three alloys x sixteen skills exercised");
+
+    // The new event packet path must preserve typed equipment investment, and
+    // a movement-only shell must never manufacture damage from a fraction.
+    auto value=[](const std::map<std::string,double>& values,const std::string& key) {
+        const auto it=values.find(key); return it==values.end() ? 0.0 : it->second;
+    };
+    int packetFixtures=0, buildupFixtures=0;
+    for(const auto& [id,operation]:identities) for(const auto& skill:t.skills.combatSkills) {
+        const auto split=id.find(':');
+        const std::string kind=id.substr(0,split);
+        const std::string ingot=id.substr(split+1);
+        foundry::State state;
+        state.plate={{1,1,"",skill.id},{1,0,ingot,""},{2,0,"","",kind}};
+        auto mods=grammar::foundryMods(t,state,3);
+        const auto base=grammar::skillMutation(t,mods,skill.id);
+        if(operation.first.size()>9 && operation.first.compare(operation.first.size()-9,9,"_fraction")==0) {
+            const auto prefix=operation.first.substr(0,operation.first.size()-9);
+            mods.push_back(grammar::modAt(t.items,"fire_damage",.5,"weapon"));
+            const auto raised=grammar::skillMutation(t,mods,skill.id);
+            checkNear(value(raised,prefix+"_cold_damage"),value(base,prefix+"_cold_damage"),1e-9,"identity packets: fire equipment leaves cold alone "+id+"/"+skill.id);
+            checkNear(value(raised,prefix+"_physical_damage"),value(base,prefix+"_physical_damage"),1e-9,"identity packets: fire equipment leaves physical alone "+id+"/"+skill.id);
+            if(value(base,prefix+"_fire_damage")>0) check(value(raised,prefix+"_fire_damage")>value(base,prefix+"_fire_damage"),"identity packets: actual fire investment improves fire aftermath "+id+"/"+skill.id);
+            if(skill.delivery=="dash") for(const auto& type:t.grammar.damageTypes)
+                checkNear(value(raised,prefix+"_"+type+"_damage"),0,1e-9,"identity packets: movement has no invented damage "+id);
+            ++packetFixtures;
+        }
+        if(operation.first.size()>8 && operation.first.compare(operation.first.size()-8,8,"_buildup")==0 && base.at(operation.first)>0) {
+            const auto prefix=operation.first.substr(0,operation.first.size()-8);
+            mods.push_back(grammar::modAt(t.items,"deep_frost",.5,"weapon"));
+            mods.push_back(grammar::modAt(t.items,"frostbite",40,"weapon"));
+            const auto raised=grammar::skillMutation(t,mods,skill.id);
+            checkNear(value(raised,prefix+"_chill"),value(base,prefix+"_chill")*1.5,1e-9,"identity buildup: chill investment scales without duplicating flat main-hit buildup "+id+"/"+skill.id);
+            checkNear(value(raised,prefix+"_chill_boss"),value(raised,prefix+"_chill")*t.grammar.chill.bossBuildupMultiplier,1e-9,"identity buildup: native boss resistance remains authoritative "+id+"/"+skill.id);
+            ++buildupFixtures;
+        }
+    }
+    check(packetFixtures>0 && buildupFixtures>0,"identity scaling: authored damage and status paths both exercised");
+    std::printf("FOUNDRY_IDENTITY_MATRIX base=%d aliases=%d ordered=%d packets=%d buildup=%d\n",fixtures,aliasFixtures,orderedFixtures,packetFixtures,buildupFixtures);
 
     // Every skill shell retains typed gear scaling on the new small effects.
     for (const auto& skill : t.skills.combatSkills) {

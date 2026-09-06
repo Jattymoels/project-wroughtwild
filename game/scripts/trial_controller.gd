@@ -79,6 +79,7 @@ func _begin_run(floor_id: String, legacy: bool) -> bool:
 	return true
 
 func _enter_run() -> void:
+	_cancel_transients()
 	return_position = player.global_position
 	elapsed_seconds=0
 	completed_encounters=0
@@ -527,6 +528,9 @@ func continue_floor() -> bool:
 
 func suspend_to(path: String) -> bool:
 	if not spatial or state!="boundary" or not _hazards().is_empty() or not trial_enemies().is_empty(): return false
+	if _has_live_foundry_events():
+		player.hud.notify("Let your active Foundry effects finish before suspending this exact run.")
+		return false
 	if player.global_position.distance_to(arena.dungeon.boundary.global_position)>player.interact_range+2.0:
 		player.hud.notify("Reach the cleared floor's descent lift to suspend.")
 		return false
@@ -540,6 +544,7 @@ func suspend_and_quit() -> void:
 
 func capture_boundary() -> Dictionary:
 	if not spatial or state!="boundary": return {}
+	if _has_live_foundry_events(): return {}
 	var checkpoint: String=sim.call("trial_checkpoint")
 	if checkpoint.is_empty(): return {}
 	var combat_state:=player.combat.capture_trial_state()
@@ -701,7 +706,15 @@ func _clear_conduits() -> void:
 	conduits=[]
 
 func _cancel_transients() -> void:
-	for group in ["enemy_projectiles","player_projectiles","skill_bursts","foundry_fields","foundry_returns","foundry_echoes","foundry_embers","foundry_cold","foundry_puffs","burning_ground"]:
+	for group in ["enemy_projectiles","player_projectiles","skill_bursts","foundry_fields","foundry_returns","foundry_echoes","foundry_embers","foundry_cold","foundry_offence","foundry_guard","foundry_sustain","foundry_tempo","foundry_puffs","burning_ground"]:
 		for effect in player.get_tree().get_nodes_in_group(group):
 			if effect.has_method("cancel"): effect.cancel()
 			else: effect.queue_free()
+
+func _has_live_foundry_events() -> bool:
+	# A cleared floor removes encounter effects. A new cast made at the lift
+	# must finish before an exact checkpoint; it cannot disappear on resume.
+	for group in ["foundry_fields","foundry_returns","foundry_echoes","foundry_embers","foundry_cold","foundry_offence","foundry_guard","foundry_sustain","foundry_tempo","player_projectiles","skill_bursts"]:
+		for effect in player.get_tree().get_nodes_in_group(group):
+			if not effect.is_queued_for_deletion(): return true
+	return false

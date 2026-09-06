@@ -116,9 +116,8 @@ func _physics_process(_delta: float) -> void:
 
 
 ## Phase I - the forms' hooks (D-023): Quench and Sear through the mob's
-## own status clocks, Rime through the cascade, and Echo through the plate:
-## Haste beside the area strike's tablet with a Catalyst in the corner makes
-## every fourth cast repeat.
+## own status clocks, Rime through the cascade, and Threefold Step through
+## the plate: three distinct casting positions recover movement cooldown.
 var _echo_hits := 0
 
 
@@ -144,17 +143,33 @@ func _phase_i_forms() -> void:
 	_sim.add_materials({"striking_quicksilver": 1})
 	_sim.foundry_event("first_kill:ash_hound")
 	check(_sim.foundry_place_skill(1, 1, "prototype_area_strike") and _sim.foundry_place(1, 0, "haste")
-		and _sim.foundry_place_kind(2, 0, "striking_quicksilver") and _sim.skill_echo_every("prototype_area_strike") == 3,
-		"echo: haste beside the area strike, worked by a catalyst, echoes every third attack")
+		and _sim.foundry_place_kind(2, 0, "striking_quicksilver") and _sim.skill_echo_every("prototype_area_strike") == 0
+		and _sim.skill_mutation("prototype_area_strike").identity_tempo_s_step_refund == 0.6,
+		"tempo: Haste and Striking Quicksilver prepare Threefold Step without a generic third-attack echo")
 	_echo_hits = 0
 	_player.combat.hit_landed.connect(_count_hit)
-	Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -1.5))
+	var sequence_target := Enemy.spawn(self, &"ember_whelp", Vector3(0.0, 0.6, -1.5))
+	sequence_target.life = 1000.0
+	sequence_target.max_life = 1000.0
+	sequence_target.set_physics_process(false)
+	_player.combat.cooldowns[&"prototype_dash"] = 2.0
 	for i in 3:
 		_player.combat.cooldowns[PlayerCombat.AREA_SKILL] = 0.0
 		_player.combat.use_skill(PlayerCombat.AREA_SKILL)
-	check(_echo_hits == 3, "echo: three initial attacks land before their delayed follow-up")
+	check(_echo_hits == 3, "tempo: three stationary inputs still produce exactly three ordinary attack hits")
 	for echo in get_tree().get_nodes_in_group("foundry_echoes"): echo._physics_process(1.0)
-	check(_echo_hits == 4, "echo: the third attack repeats once after its delay (%d)" % _echo_hits)
+	check(_echo_hits == 3 and _player.combat.cooldown_left(&"prototype_dash") == 2.0,
+		"tempo: stationary attack spam creates neither an automatic echo nor a movement refund")
+	var spacing: float = _sim.skill_mutation("prototype_area_strike").limits.identity_tempo_spacing + 0.1
+	_player.global_position.x = spacing
+	_player.combat.cooldowns[PlayerCombat.AREA_SKILL] = 0.0
+	check(_player.combat.use_skill(PlayerCombat.AREA_SKILL) and _player.combat.cooldown_left(&"prototype_dash") == 2.0,
+		"tempo: a second distinct casting position is only the second step")
+	_player.global_position.x = -spacing
+	_player.combat.cooldowns[PlayerCombat.AREA_SKILL] = 0.0
+	check(_player.combat.use_skill(PlayerCombat.AREA_SKILL) and absf(_player.combat.cooldown_left(&"prototype_dash") - 1.4) < 0.001,
+		"tempo: the third distinct real attack position returns the authored movement cooldown once")
+	check(_echo_hits == 5, "tempo: moving attacks retain exactly their two direct hits, with no hidden repeat")
 	_player.combat.hit_landed.disconnect(_count_hit)
 
 

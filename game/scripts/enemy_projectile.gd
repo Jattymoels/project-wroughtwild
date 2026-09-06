@@ -104,12 +104,8 @@ func advance(delta: float) -> void:
 				sweep.target_position=direction*travel
 				sweep.force_shapecast_update()
 			unobstructed=travel*sweep.get_closest_collision_safe_fraction() if sweep.is_colliding() else travel
-	if FoundryField.intercept(get_tree(), global_position, global_position + direction * unobstructed):
+	if FoundryIdentity.intercept(get_tree(), global_position, global_position + direction * unobstructed,source_ref.get_ref() as Enemy):
 		spent = true
-		queue_free()
-		return
-	if FoundryCold.intercept(get_tree(),global_position,global_position+direction*unobstructed,source_ref.get_ref() as Enemy):
-		spent=true
 		queue_free()
 		return
 	if sweep.is_colliding():
