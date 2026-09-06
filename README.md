@@ -26,7 +26,10 @@ The [current intensive queue](docs/prototype/intensive-queue.md) tracks seven
 focused passes that can progress between playtests. First is
 [INT-01: first-hour clarity](docs/prototype/first-hour-clarity-plan-2026-09-07.md):
 accurate recipe pins, useful material explanations and an optional route into
-a first home and workshop. Its plan is ready; implementation has not started.
+a first home and workshop. INT-01 is implemented with shorter panel text,
+optional supporting detail and a verified gathering-to-home journey; owner
+review of clarity remains pending. A reproduced loose-drop save issue is
+recorded as the next reliability priority in that queue.
 
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,

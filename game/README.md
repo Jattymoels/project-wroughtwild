@@ -167,11 +167,14 @@ timers. `-Motion` records a playable pose review; see the
    (a pure movement burst - no invulnerability, D-012), **I** pack (what you carry and wear, vitals, spike-mod toggles; wear armour here), **H** help overlay, **Esc** close a panel, **F5** save, **F9** load
    (`user://wroughtwild_save.json`). Dying drops your materials in a pack
    where you fell; walk back for it.
-4. **The first hour, from nothing:** harvest trees (E) → **C** → craft the
-   Workbench Kit → **B**, **Tab** to the kit, place it → E the bench to
-   assemble a Forge Kit (needs wood, stone from boulders, iron ore from
-   veins — the rocky hills have both, and their Stone Husks drop them too)
-   → place the forge → keep it fed with wood or charcoal, because every
+4. **Getting established:** use **I → Guides** for optional home, stoneworking
+   and forge ideas, or **Source / use** on an early pack material. Harvest trees
+   (E), collect their drops, then **C** to craft a Workbench Kit. **B → Tab**
+   selects a held kit; **LMB** places it and **E** operates the station. Make
+   frames at the bench and a yard kit using fieldstone. Hand-made wedges work
+   seams into split stone; the placed yard dresses it into building stone.
+   The forge kit needs a frame, dressed stone and ore. Place the forge and
+   keep it fed with wood or charcoal, because every
    smelt and forging burns fuel. Harvests and mob kills pay out as glowing
    material chips that pop out, bounce, and vacuum into you when you walk
    near (the green ticker under the notices counts them in); nodes visibly

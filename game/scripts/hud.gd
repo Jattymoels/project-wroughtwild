@@ -12,7 +12,7 @@ const REFRESH_SECONDS := 0.1
 const GATHER = preload("res://art/gathering_look.tres")
 const HELP_TEXT := """WASD move  ·  mouse look  ·  Space jump  ·  Shift dash (movement only)
 E interact: harvest, work at a station, read the board, open the gate
-LMB harvest  ·  hold LMB on the ground to dig it out (stone pays stone)
+LMB harvest  ·  hold LMB on the ground to dig it out (stone yields split stone)
 LMB places in build mode  ·  C craft by hand  ·  I pack
 B build mode  ·  Tab visual shape picker  ·  X remove  ·  R turn corners, roofs or a door's hinge
 X outside build mode blows a carried shrieker's horn

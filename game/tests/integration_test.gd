@@ -977,5 +977,22 @@ func _ui_checks() -> void:
 	check(_player.hud.action_bar.shown_fraction(PlayerCombat.AREA_SKILL) == 1.0, "ui: a ready skill shows a full sweep")
 	check(_player.hud.holdings_text().contains("wood"), "ui: holdings strip names carried wood")
 	_player.open_hand_crafting()
-	check(_player.work_panel.is_open() and _player.work_panel.row_count() >= 2, "ui: field crafting renders cards")
+	# D-026 places the two hand recipes in separate categories. The older
+	# minimum-two-in-one-list assertion also fails on the untouched baseline.
+	# Exercise both actual category controls and verify station-local contents.
+	check(_player.work_panel.is_open(), "ui: field crafting opens")
+	var hand_recipes: Array[String] = []
+	for category_name in ["Materials","Stations & upgrades"]:
+		var catalogue := _player.work_panel.catalogue
+		for control in catalogue.find_children("*","Button",true,false):
+			if control.text == category_name:
+				control.pressed.emit()
+				break
+		check(_player.work_panel.row_count()>0, "ui: hand-work category renders cards: "+category_name)
+		for card in catalogue._cards.get_children():
+			if not card.has_meta("recipe_id"): continue
+			var recipe_id := String(card.get_meta("recipe_id"))
+			hand_recipes.append(recipe_id)
+			check(String(sim.recipe(recipe_id).station)=="", "ui: field craft excludes station recipes: "+recipe_id)
+	check(hand_recipes.has("timber_wedge") and hand_recipes.has("workbench_kit"), "ui: both ordinary hand-work routes remain reachable")
 	_player.work_panel.close_panel()

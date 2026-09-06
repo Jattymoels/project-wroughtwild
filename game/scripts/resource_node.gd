@@ -558,10 +558,10 @@ func work_refusal() -> String:
 	if workable():
 		return ""
 	if hot_level >= heat_to_work:
-		return "glows  ·  cold will crack it"
+		return "hot  ·  heavy impact or cold cracks it"
 	if hot_level > 0:
 		return "warm  ·  wants a hotter fire (charcoal)"
-	return "needs fire against it, then cold" if heat_to_work <= 1 else "needs a charcoal fire, then cold"
+	return "heat with fire, then heavy impact or cold" if heat_to_work <= 1 else "heat with a charcoal fire, then heavy impact or cold"
 
 
 func _process(_delta: float) -> void:

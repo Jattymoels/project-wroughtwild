@@ -69,7 +69,7 @@ func _ready() -> void:
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
 	_guide_button = Button.new()
-	_guide_button.text = "Build guide"
+	_guide_button.text = "Guides"
 	_guide_button.pressed.connect(show_guide.bind(true))
 	header.add_child(_guide_button)
 	var close := Button.new()
@@ -94,6 +94,8 @@ func _ready() -> void:
 	guide.visible = false
 	guide.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	guide.assign_requested.connect(assign_skill)
+	guide.recipe_requested.connect(open_recipe)
+	guide.build_requested.connect(open_build)
 	guide.changed.connect(_fit_height.call_deferred)
 	pages.add_child(guide)
 
@@ -132,12 +134,12 @@ func _ready() -> void:
 	_vitals = Label.new()
 	_vitals.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	right.add_child(_vitals)
-	right.add_child(_section("Active modifiers"))
+	var effects := _details(right,"Active modifiers")
 	_mods = VBoxContainer.new()
-	right.add_child(_mods)
-	right.add_child(_section("Debug: force a modifier (F1–F3)"))
+	effects.add_child(_mods)
+	var debug_details := _details(right,"Debug modifiers (F1–F3)")
 	_debug = VBoxContainer.new()
-	right.add_child(_debug)
+	debug_details.add_child(_debug)
 
 	_message = Label.new()
 	_message.modulate = UiTheme.EMBER
@@ -156,6 +158,49 @@ func _section(text: String) -> Label:
 	label.add_theme_font_size_override("font_size", 16)
 	label.modulate = UiTheme.MUTED
 	return label
+
+func _details(parent: Node, title := "Details") -> VBoxContainer:
+	var toggle := Button.new()
+	toggle.text = title
+	toggle.toggle_mode = true
+	parent.add_child(toggle)
+	var body := VBoxContainer.new()
+	body.visible = false
+	parent.add_child(body)
+	toggle.toggled.connect(func(open: bool): body.visible = open; _fit_height.call_deferred())
+	return body
+
+func inspect_material(id: String) -> bool:
+	if MaterialGuide.describe(sim,id).is_empty(): return false
+	show_guide(true)
+	guide.show_material(id)
+	return true
+
+## Deliberate references open hand-work context, never a remote station.
+func open_recipe(id: String) -> bool:
+	if sim.recipe(id).is_empty() or combat == null or combat.player == null: return false
+	combat.player.open_hand_crafting()
+	combat.player.work_panel.catalogue.select_recipe(id)
+	return true
+
+func open_build(id: String, kind := "shape") -> bool:
+	if combat == null or combat.player == null: return false
+	if kind == "kit":
+		if sim.kit_station(id) == "" or sim.material_count(id)<=0: return false
+	elif sim.shape(id).is_empty(): return false
+	close_panel()
+	var palette: BuildPalette = combat.player.build_palette
+	# Guide links name full-size shapes, independent of the last B/G session.
+	# Reveal the linked entry even after a previous catalogue category filter.
+	if kind == "shape" and combat.player.placement.fine_mode:
+		combat.player.placement.toggle_fine()
+	palette.group = "All pieces"
+	palette.group_picker.select(0)
+	palette.open_panel()
+	if not palette.is_open(): return false
+	palette.select_entry(StringName(id),kind)
+	if kind == "shape": palette.select_material(&"wood")
+	return true
 
 
 func is_open() -> bool:
@@ -267,6 +312,7 @@ func refresh() -> void:
 	if sim == null:
 		return
 	guide.sim = sim
+	guide.has_home = combat != null and combat.has_home
 	if guide.visible: guide.refresh()
 	_refresh_tiles()
 	_refresh_gear()
@@ -283,13 +329,14 @@ func refresh() -> void:
 func show_guide(open: bool) -> void:
 	_pack_body.visible = not open
 	guide.visible = open
-	_guide_button.text = "Back to pack" if open else "Build guide"
+	_guide_button.text = "Back to pack" if open else "Guides"
 	for connection in _guide_button.pressed.get_connections():
 		_guide_button.pressed.disconnect(connection.callable)
 	_guide_button.pressed.connect(show_guide.bind(not open))
 	_scroll.scroll_vertical = 0
 	if open:
 		guide.sim = sim
+		guide.has_home = combat != null and combat.has_home
 		guide.refresh()
 	_fit_height.call_deferred()
 
@@ -307,6 +354,8 @@ func _fit_height() -> void:
 	var cap := get_viewport().get_visible_rect().size.y * MAX_HEIGHT_FRACTION
 	var body := _scroll.get_child(0) as Control
 	_scroll.custom_minimum_size.y = clampf(body.size.y + 4.0, 120.0, cap)
+	# A previous long detail must not leave the panel at its expanded size.
+	_root.size = _root.get_combined_minimum_size()
 	_centre_root()
 
 func _centre_root() -> void:
@@ -358,6 +407,12 @@ func _add_tile(id: String, count: int) -> void:
 	amount.add_theme_font_size_override("font_size", 18)
 	amount.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	column.add_child(amount)
+	if not MaterialGuide.describe(sim,id).is_empty():
+		var info := Button.new()
+		info.text = "Source / use"
+		info.add_theme_font_size_override("font_size",11)
+		info.pressed.connect(inspect_material.bind(id))
+		column.add_child(info)
 	# Drop: currencies stay; a stack goes to your feet as pickups.
 	if not sim.currency().has(id):
 		var drop := Button.new()
@@ -418,16 +473,23 @@ func _item_card(item: Dictionary, button_text: String, on_pressed: Callable) -> 
 		stat_line.text = "  ".join(stats)
 		stat_line.add_theme_font_size_override("font_size", 13)
 		column.add_child(stat_line)
-	for mod in item.get("mods", []):
+	var mods: Array = item.get("mods", [])
+	var details: VBoxContainer = _details(column,"Details · %d modifiers" % mods.size()) if not mods.is_empty() else null
+	for mod in mods:
 		var line := Label.new()
 		var held: bool = mod.get("held_back", false)
+		line.text = "  %s%s%s" % [mod["sentence"]," · held back" if held else "", "  (implicit)" if mod.get("source", "") == "implicit" else ""]
 		if held:
-			# The taste (D-019): the roll it could be, greyed, and what unleashes it.
-			line.text = "  %s  (now %s)  —  held back by %s: %s" % [
-				mod.get("full_sentence", mod["sentence"]), mod["sentence"],
+			# Current behaviour stays beside the item, including in comparisons.
+			# The stronger stored roll and how to unleash it are on demand.
+			var potential := Label.new()
+			potential.text = "%s — held back by %s: %s" % [
+				mod.get("full_sentence", mod["sentence"]),
 				Hud.pretty(String(item.get("material", "iron"))), mod.get("unleashed_by", "a better base")]
-		else:
-			line.text = "  %s%s" % [mod["sentence"], "  (implicit)" if mod.get("source", "") == "implicit" else ""]
+			potential.add_theme_font_size_override("font_size",12)
+			potential.modulate = UiTheme.MUTED
+			potential.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			details.add_child(potential)
 		line.add_theme_font_size_override("font_size", 13)
 		line.modulate = UiTheme.MUTED if held or mod.get("source", "") == "implicit" else UiTheme.PARCHMENT
 		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -438,14 +500,14 @@ func _item_card(item: Dictionary, button_text: String, on_pressed: Callable) -> 
 			bp.add_theme_font_size_override("font_size", 12)
 			bp.modulate = UiTheme.SUN_WARM
 			bp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			column.add_child(bp)
+			details.add_child(bp)
 		for text in mod.get("held_breakpoints", []):
 			var bp := Label.new()
 			bp.text = "      held: %s" % text
 			bp.add_theme_font_size_override("font_size", 12)
 			bp.modulate = UiTheme.MUTED
 			bp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			column.add_child(bp)
+			details.add_child(bp)
 	if button_text != "":
 		var button := Button.new()
 		button.text = button_text
@@ -523,12 +585,14 @@ func _refresh_skills() -> void:
 		var detail := Label.new()
 		var tags: PackedStringArray = view.get("tags", PackedStringArray())
 		detail.text = "%s  ·  %s" % [view.get("delivery", "?"), " / ".join(tags)]
+		detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		detail.add_theme_font_size_override("font_size", 12)
 		detail.modulate = UiTheme.MUTED
 		column.add_child(detail)
 		# Mastery: uses so far, and each perk with its threshold.
 		var perks: Array = view.get("mastery", [])
 		if not perks.is_empty():
+			var mastery_details := _details(column,"Mastery · %d practice" % int(view.get("practice",0)))
 			var mastery := Label.new()
 			var parts := PackedStringArray()
 			for perk in perks:
@@ -537,7 +601,7 @@ func _refresh_skills() -> void:
 			mastery.add_theme_font_size_override("font_size", 12)
 			mastery.modulate = UiTheme.SUN_WARM
 			mastery.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			column.add_child(mastery)
+			mastery_details.add_child(mastery)
 		var in_slot := bar.find(id)
 		for slot in bar.size():
 			var button := Button.new()
@@ -581,6 +645,7 @@ func _refresh_mods() -> void:
 	if active.is_empty():
 		var none := Label.new()
 		none.text = "None — your gear carries no modifiers yet."
+		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.modulate = UiTheme.MUTED
 		_mods.add_child(none)
 	for mod in active:
@@ -598,8 +663,15 @@ func _refresh_mods() -> void:
 		toggle.toggle_mode = true
 		toggle.button_pressed = is_on
 		toggle.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		toggle.text = "%s   %s" % ["ON " if is_on else "off", mod.get("sentence", mod.get("display_name", id))]
+		toggle.text = "%s   %s" % ["ON " if is_on else "off", mod.get("display_name", id)]
+		toggle.clip_text = true
 		toggle.add_theme_font_size_override("font_size", 12)
 		toggle.modulate = Color(1, 1, 1, 1.0) if is_on else Color(1, 1, 1, 0.6)
 		toggle.toggled.connect(func(on: bool) -> void: set_mod_active(StringName(id), on))
 		_debug.add_child(toggle)
+		var sentence := Label.new()
+		sentence.text = String(mod.get("sentence",""))
+		sentence.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		sentence.add_theme_font_size_override("font_size",12)
+		sentence.modulate = UiTheme.MUTED
+		_debug.add_child(sentence)

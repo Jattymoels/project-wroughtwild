@@ -1,9 +1,11 @@
 # INT-01 — First-hour clarity
 
-Status: **Plan ready; implementation not started.**
-Owner requested the plan on 7 September 2026. This records a proposed bounded
-implementation, following the accepted station/ingredient presentation rules.
-Baseline: `062b7e7`. [Current intensive queue](intensive-queue.md).
+Status: **Implemented, review pending.**
+Owner requested the plan and approved implementation on 7 September 2026,
+adding a report of excessive tooltip text across panels. This implements the
+bounded plan under the accepted station/ingredient presentation rules.
+Planning baseline: `062b7e7`; implementation and matched-capture baseline:
+`798e0d6`. [Current intensive queue](intensive-queue.md).
 
 ## Outcome
 
@@ -50,6 +52,16 @@ review later. Existing guide/catalogue fixtures often supply stations and stock,
 so they do not establish comprehension of the fresh opening.
 
 ## Implementation slices
+
+### Cross-cutting owner addition: less text overload
+
+Keep the selected action, requirements, blocker and meaningful consequences
+visible. Remove repeated explanations and place supporting guidance, raw
+breakdowns and debugging controls behind explicit details/help. Tooltips stay
+short; no automatic truncation of costs, trial risks or selected effects.
+Review crafting, pack/guide, building, Foundry, chest, contraption and trial
+surfaces at 720p and 1080p, including expanded details. Fix panel overflow
+found in those reviews. This changes presentation, not gameplay rules.
 
 ### 1. Preserve the project the player selected
 
@@ -177,7 +189,84 @@ early-material scope, and session-only UI state. No missing decision blocks the
 first implementation slice. Broader tutorial progression, persistent project
 tracking or economic changes would be separate design choices if later requested.
 
-**Next action:** implement slice 1, with focused failing cases for a multi-batch
-material pin and non-default equipment selection returning from ingredient detail,
-then add the smallest shared selection state that makes those cases correct.
-No runtime or gameplay changes have been made by this planning task.
+The four slices and the owner's text-density addition are implemented. Subsequent
+owner review addresses comprehension and comfort rather than basic operation.
+
+## Implemented outcome — 7 September 2026
+
+- Craft-history snapshots and session Make pins preserve recipe, batch, grade,
+  Kind/potency and parent operation. Native previews still own affordability,
+  fuel reservation and station access. Pins hide behind other panels.
+- Twelve early pack entries and ingredient references share source/work/use
+  notes. Native producers, consumers and building sources supply the links;
+  missing gathering/tool descriptions are bounded presentation metadata.
+- **I → Guides → Getting established** offers home, stone and forge ambitions.
+  It shows one immediate step and directs the player to existing recipes or
+  placement. Explicit building links reveal their category and clear stale
+  half-size selection so the chosen piece matches the advertised cost.
+- Crafting, pack, guide, Foundry, chest, contraption and class surfaces use
+  shorter primary text and optional supporting detail. Current equipment effects,
+  Foundry readings/destinations, action costs and trial consequences remain
+  available where decisions are made. Live workshop refresh preserves an open
+  explanation. Closing it clears that session presentation state.
+- Pack and large-chest overflow are corrected. Chest rows scroll while title
+  and Close stay accessible. Already-triangulated building thumbnails now use
+  triangle primitives; very thin imported faces no longer generate the polygon
+  triangulation errors reproduced in the baseline review.
+- Kit success, storage guidance and the split-stone/fire/impact wording now
+  explain the existing handoffs. Ordinary recipes, materials, yields, combat,
+  generation and save data are unchanged.
+
+The source/use view shows three initial examples to keep a material explanation
+short, with other recipe consumers available through More uses. Chest height
+reuses the existing work-panel viewport fraction. No gameplay tuning values,
+packages, production-art dependencies or persistent objective system were added.
+
+## Evidence and limits
+
+The isolated helper is `tools/first_hour_review.ps1`. It copies game/data into
+`build/first-hour/runtime`, redirects APPDATA under that review directory, and
+runs the installed Godot 4.5 binary in a hidden window. Normal game processes and
+saves are untouched. Generated evidence stays outside Git.
+
+- `first_hour_journey`: **274 checks per class**, passing for Ranger, Warden and
+  Kindler. Starts without supplies in actual V6 seed 77; contextual work and
+  physical pickup supply every paid craft and house piece. Partial work,
+  unplaced kit and home/storage saves restore through SaveManager.
+- `crafting_catalogue`: **52**; `forge_progression`: **58**;
+  `establishment_guide`: **138** passing focused checks. These cover exact
+  selections, native previews, navigation without spending, physical stations,
+  source links, visible equipment effects and small/large panel layouts.
+- `panel_density`: **60** passing headless and rendered checks for disclosure, original actions, shared Foundry
+  destinations, existing trial risks, large-chest transfers/scrolling and all
+  kit thumbnails. Craft progression also verifies visible guaranteed equipment
+  effects and correctly formatted native quench/temper values.
+- Twelve matched before/after panel captures at 720p/1080p live in
+  `build/first-hour/{baseline,runtime}/captures`. The helper produces a local
+  comparison gallery at `build/first-hour/index.html`. Supplied screenshot stock
+  is labelled presentation setup, distinct from the paid journey.
+- `new_world_startup`: **97** checks, including ordinary new-world and Continue
+  paths. The final main-scene smoke launch also passed.
+
+The committed headless pipeline was completed in serial isolated runs, including
+unit, integration, world/material/trial, terrain-stream, workshop, presentation
+and all Foundry identity regressions. Integration passes **273** checks. The
+review helper provisions the historical Strange Frontier fixture's output
+directory inside the copied project. Generated output is not a save owned by
+the player. Focused checks were repeated after the final UI corrections.
+
+The opening test accelerates travel and pickup timing, and disables hostile
+simulation. It establishes the ordinary gather/craft/place/save sequence for
+all classes, not travel difficulty, first-hour duration or enjoyment. No combat
+numbers are calibrated by it.
+
+The untouched baseline also failed the old integration assertion requiring two
+hand-crafting cards in a single category. D-026 already splits hand wedges and
+the bench kit into separate categories. The assertion now operates both real
+category controls, verifies their station-local cards and requires both recipes;
+no gameplay behaviour or existing coverage was removed to accept the change.
+
+The planned loose-drop diagnostic reproduced existing loss/duplication at the
+save boundary. It is recorded separately as the next INT-07 reliability priority
+in the [audit](loose-pickup-save-audit-2026-09-07.md); this UI intensive does not
+silently change that persistence contract.

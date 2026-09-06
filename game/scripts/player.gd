@@ -207,7 +207,7 @@ func note_pack_full(family: String) -> void:
 	if now - int(_full_said.get(family, -100000)) < 8000:
 		return
 	_full_said[family] = now
-	hud.notify("Your pack can carry no more %s (%d). A chest at home would take it." % [
+	hud.notify("Pack full: %s (%d). Use a chest, or find Chest under B → Tab." % [
 		Hud.pretty(family), inventory.carry_cap(StringName(family))])
 
 

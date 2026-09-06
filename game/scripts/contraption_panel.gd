@@ -21,8 +21,8 @@ func refresh_if_open(message_text: String = "") -> void:
 		_refresh(message_text)
 
 
-func _action(label: String, detail: String, callback: Callable, enabled: bool = true) -> Dictionary:
-	return {"text": detail, "button": label, "callback": callback, "enabled": enabled}
+func _action(label: String, detail: String, callback: Callable, enabled: bool = true, explanation: String = "") -> Dictionary:
+	return {"text": detail, "button": label, "callback": callback, "enabled": enabled, "details": explanation}
 
 
 func _refresh(message_text: String = "") -> void:
@@ -36,14 +36,16 @@ func _refresh(message_text: String = "") -> void:
 	match site.kind:
 		"lantern_lamp":
 			rows.append(_action("Shutter" if bool(state.get("lamp_on", true)) else "Open the lamp",
-				"A Lanternheart makes this house or cave entrance warm. A nearby Stormglass lever can switch it.", _operate.bind("toggle")))
+				"Lamp open." if bool(state.get("lamp_on", true)) else "Lamp shuttered.", _operate.bind("toggle"), true,
+				"A linked Stormglass lever can switch the lamp remotely."))
 		"cargo_winch":
 			rows.append(_action("Wind the drum", "Stored winding: %d / %d. Each trip spends winding once." % [energy, capacity],
 				_operate.bind("wind"), energy < capacity and not bool(state.get("moving", false))))
-			rows.append(_action("Choose landing", _link_description(state, "A fixed landing makes a cargo route across one clear span."), _choose_link))
+			rows.append(_action("Choose landing", _link_description(state, "Choose a fixed landing across a clear span."), _choose_link))
 			var basket_location := "travelling" if bool(state.get("moving", false)) else "at the landing" if bool(state.get("at_landing", false)) else "at this drum"
-			rows.append(_action("Crank a trip", "The basket is %s. Load ingredients below; use this crank or a linked Stormglass lever to depart." % basket_location,
-				_operate.bind("start"), not bool(state.get("moving", false)) and not String(state.get("link", "")).is_empty()))
+			rows.append(_action("Crank a trip", "Basket: %s. Load ingredients below." % basket_location,
+				_operate.bind("start"), not bool(state.get("moving", false)) and not String(state.get("link", "")).is_empty(),
+				"Use this crank or a linked Stormglass lever to depart. Loading and collecting require the basket at your end."))
 			_add_cargo(rows, state)
 		"winch_landing":
 			var owner: Dictionary = _landing_owner()
@@ -55,20 +57,20 @@ func _refresh(message_text: String = "") -> void:
 				_add_cargo(rows, owner)
 		"stormglass_lever":
 			rows.append(_action("Choose receiver", _link_description(state, "Link a nearby cargo drum, pressure feeder or Lanternheart lamp."), _choose_link))
-			rows.append(_action("Strike the lever", "Watch the pale pulse reach the receiver. It requests work; a drum still needs winding.",
+			rows.append(_action("Strike the lever", "Drums and feeders need stored drive; lamps switch directly.",
 				_operate.bind("pulse"), not String(state.get("link", "")).is_empty()))
 		"magnetic_sorter":
-			rows.append(_action("Tip one batch", "Hand-feed a mixed batch below. Ordinary iron ingredients follow the magnet; the rest fall into the second tray.", _operate.bind("sort")))
+			rows.append(_action("Tip one batch", "Load a batch below. Iron ingredients and other stock go to separate trays.", _operate.bind("sort")))
 			_add_deposits(rows)
 			_add_withdrawals(rows, "input", state.get("input", {}))
 			_add_withdrawals(rows, "ferrous", state.get("ferrous", {}))
 			_add_withdrawals(rows, "remainder", state.get("remainder", {}))
 		"ventlung_bellows":
-			rows.append(_action("Prime by hand", "Stored pressure: %d / %d. Priming stores your work; the membrane creates no power." % [energy, capacity],
-				_operate.bind("prime"), energy < capacity))
+			rows.append(_action("Prime by hand", "Stored pressure: %d / %d." % [energy, capacity],
+				_operate.bind("prime"), energy < capacity, "Priming stores your work; the membrane creates no power."))
 			var target := site.bellows_target()
 			var target_name := "a nearby set wedge or responsive seam" if target == null else Hud.pretty(String(target.material_family))
-			rows.append(_action("Release pressure", "The pulse will work %s with the existing impact response. Set a wedge first where one is required." % target_name,
+			rows.append(_action("Release pressure", "Target: %s. Set a wedge first if required." % target_name,
 				_release, energy > 0 and target != null))
 		"pressure_feeder":
 			_add_feeder(rows,state,config)
@@ -87,18 +89,19 @@ func _add_feeder(rows: Array, state: Dictionary, config: Dictionary) -> void:
 	var source: Dictionary={}
 	for candidate: Dictionary in site.sim.contraption_pressure_sources():
 		if String(candidate.id)==source_id:source=candidate
-	var attachment:="Choose your own basic forge, and optionally a finite pressure pocket. Each must be within %.0f metres." % float(config.get("feeder_attachment_range",8))
+	var attachment:="Choose your placed basic forge and an optional pressure pocket, each within %.0f m." % float(config.get("feeder_attachment_range",8))
 	if not String(state.get("forge_key","")).is_empty():attachment="Forge attached. "+("Pocket: %d / %d strokes remaining. " % [int(source.get("remaining",0)),int(source.get("capacity",0))] if not source.is_empty() else "Hand-wound drive; no pocket attached. ")+String(status.message)
 	rows.append(_action("Choose forge and pocket",attachment,_choose_feeder_connection,not active))
-	rows.append(_action("Draw pocket pressure","Stored drive: %d / %d; %d stroke is reserved in the current firing. Drawing debits this finite pocket once." % [energy,capacity,int(state.get("escrow_drive",0))],_operate.bind("charge"),bool(status.ready) and not source.is_empty() and int(source.get("remaining",0))>0 and energy+int(state.get("escrow_drive",0))<capacity))
-	rows.append(_action("Wind by hand","Store your own work as one stroke. Winding remains available after the pocket is exhausted.",_operate.bind("wind"),energy+int(state.get("escrow_drive",0))<capacity))
+	rows.append(_action("Draw pocket pressure","Drive: %d / %d stored; %d reserved. Drawing permanently spends pocket stock." % [energy,capacity,int(state.get("escrow_drive",0))],_operate.bind("charge"),bool(status.ready) and not source.is_empty() and int(source.get("remaining",0))>0 and energy+int(state.get("escrow_drive",0))<capacity))
+	rows.append(_action("Wind by hand","Add one stroke; also works with an exhausted pocket.",_operate.bind("wind"),energy+int(state.get("escrow_drive",0))<capacity))
 	var inputs: Dictionary=config.get("feeder_inputs",{})
 	var outputs: Dictionary=config.get("feeder_outputs",{})
-	var recipe_text:="Each cycle: %s + %d fuel heat → %s. The pressure drives the feeder; ordinary fuel heats your forge." % [WorkPanel.cost_text(inputs,site.sim),int(config.get("feeder_fuel_cost",1)),WorkPanel.cost_text(outputs,site.sim)]
-	rows.append(_action("Start %d cycles" % int(config.get("feeder_batch_cycles",4)),recipe_text+" %.0f seconds per cycle; no personal mastery XP." % float(config.get("feeder_cycle_seconds",8)),_operate.bind("start"),not active and bool(status.ready)))
+	var recipe_text:="Per cycle: %s + %d fuel heat → %s." % [WorkPanel.amounts_text(inputs),int(config.get("feeder_fuel_cost",1)),WorkPanel.amounts_text(outputs)]
+	rows.append(_action("Start %d cycles" % int(config.get("feeder_batch_cycles",4)),recipe_text+" %.0f seconds; no personal mastery XP." % float(config.get("feeder_cycle_seconds",8)),_operate.bind("start"),not active and bool(status.ready),
+		"Pressure drives the feeder; ordinary fuel heats your forge. Load ingredients and fuel into the hopper below."))
 	if active:
 		var seconds:=float(state.get("cycle_seconds",0))
-		var detail:="Current firing: %.1f / %.0f seconds · %d cycles left including this one. Inputs and drive are reserved safely." % [seconds,float(config.get("feeder_cycle_seconds",8)),int(state.get("queued_cycles",0))]
+		var detail:="Firing: %.1f / %.0f seconds · %d cycles left, including this one. Inputs and drive reserved." % [seconds,float(config.get("feeder_cycle_seconds",8)),int(state.get("queued_cycles",0))]
 		if not bool(status.ready):detail+=" "+String(status.message)
 		rows.append(_action("Resume" if paused else "Pause",detail,_operate.bind("resume" if paused else "pause"),bool(status.ready) if paused else true))
 		rows.append(_action("Cancel batch","Return this firing's exact reserved ingredients and drive. Completed bricks stay in the tray; the source pocket is not refilled.",_operate.bind("cancel")))
@@ -174,9 +177,9 @@ func _add_deposits(rows: Array) -> void:
 			if not inputs.has(item) and not fuels.has(item):continue
 			var per_cycle:=int(inputs.get(item,1)) if inputs.has(item) else maxi(1,ceili(float(config.get("feeder_fuel_cost",1))/maxf(1,float(fuels[item]))))
 			var requested:=mini(count,per_cycle*int(config.get("feeder_batch_cycles",4)))
-			rows.append(_action("Load %d %s" % [requested,Hud.pretty(String(item))],"In your pack: %d. Load at most one batch's share, leaving hopper room for clay and fuel." % count,_deposit.bind(String(item),requested)))
+			rows.append(_action("Load %d %s" % [requested,Hud.pretty(String(item))],"In pack: %d · up to one batch's share." % count,_deposit.bind(String(item),requested)))
 			continue
-		rows.append(_action("Load %s" % Hud.pretty(String(item)), "In your pack: %d. Move up to this input's remaining capacity." % count,
+		rows.append(_action("Load %s" % Hud.pretty(String(item)), "In pack: %d · limited by free capacity." % count,
 			_deposit.bind(String(item), count)))
 		if count > 10:
 			rows.append(_action("Load 10 %s" % Hud.pretty(String(item)), "Leave room for another ingredient in the mixed batch.", _deposit.bind(String(item), 10)))

@@ -1,5 +1,27 @@
 # Crafting and Skills
 
+**Implemented INT-01 clarity update, 7 September 2026:** current-station
+membership, craftable-first ordering and exact native craft validation remain
+unchanged. Ingredient references and the optional pack guide explain the early
+home/workshop chain using native recipe producers, consumers and previews, plus
+bounded source/work prose for twelve early entries. Fieldstone, split stone and
+dressed stone stay distinct; a recipe naming ordinary wood does not accept other
+timber species. Contextual resource work remains available to every class with
+its existing consumables and work responses; compatible skills provide the
+existing shortcuts. Harvesting frees drops before collection, and stored stock
+must be carried before crafting.
+
+A session-only Make pin tracks the selected recipe, batch, grade and Kind/potency,
+including fuel left after reserving ingredients. Ingredient Back restores the
+parent operation and its choices. Recipe links expose requirements without
+bypassing the physical station. Concise primary information keeps the selected
+effect, costs and consequences visible; exhaustive explanations remain available
+through Details. **Guides → Getting established** offers home, stone and forge
+ambitions without prescribing a compulsory order. No recipe, cost, yield, skill
+or era gate, work timing, save field or automatic objective is added. See
+[INT-01](../prototype/first-hour-clarity-plan-2026-09-07.md) and the current
+[interface contract](interface.md); earlier crafting history below is retained.
+
 **Pressure workshop, D-031 (6 September 2026):** one workbench recipe,
 `assemble_pressure_feeder`, consumes 1 Ventlung, 1 Thrumroot, 8 wood, 2 iron
 ingots and 2 raw reed to make a kit, with no skill/fuel/XP gate. It feeds only

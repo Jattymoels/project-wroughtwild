@@ -84,7 +84,7 @@ func _ready() -> void:
 	# not add the other station's recipe to this bench's normal catalogue.
 	catalogue.select_recipe("forge_kit")
 	catalogue.select_recipe("smelt_iron",true)
-	check(catalogue.history.back()=="forge_kit" and catalogue.selection=="smelt_iron","explicit ingredient inspection retains its parent recipe")
+	check(catalogue.history.back().selection=="forge_kit" and catalogue.selection=="smelt_iron","explicit ingredient inspection retains its parent recipe")
 	check(not cards().has("smelt_iron") and catalogue._action.disabled,"off-station reference is inspectable but absent from bench cards and cannot be made here")
 	check(catalogue._next.text.contains("forge"),"off-station reference says where its actual work belongs")
 	catalogue.query = "smelt"
@@ -151,5 +151,71 @@ func _ready() -> void:
 	panel.open_crafting(bench)
 	catalogue.select_recipe("wooden_focus")
 	check(catalogue.quality==1,"returning to the bench restores ordinary Rough assembly")
+	await _project_context(yard,forge)
 	print("CRAFTING_CATALOGUE %d checks, %d failures" % [checks,failures])
 	get_tree().quit(1 if failures else 0)
+
+func _project_context(yard: StationSite, forge: StationSite) -> void:
+	panel.open_crafting(yard)
+	stock("split_stone",5)
+	catalogue.select_recipe("dress_stone")
+	catalogue.quantity = 4
+	catalogue.query = "dress"
+	catalogue._render_detail()
+	var untouched := sim.export_json()
+	var project := catalogue.selection_state()
+	catalogue.toggle_pin()
+	check(catalogue.pinned_preview()==sim.craft_preview("dress_stone","",1,4),"pin reads the selected four-batch plan rather than one default batch")
+	catalogue.inspect_ingredient("split_stone")
+	check(not catalogue._action.visible and catalogue.history.back()==project,"raw material help retains the full parent and offers no remote Make")
+	check(MaterialGuide.describe(sim,"split_stone").get("work","")!="","early raw ingredient has requested work notes")
+	catalogue.go_back()
+	check(catalogue.selection_state()==project,"raw ingredient Back restores the parent's batch and search")
+	check(sim.export_json()==untouched,"pinning, field notes and Back leave inventory, XP and equipment unchanged")
+	catalogue.quantity = 1
+	catalogue._render_detail()
+	check(int(catalogue.pinned.quantity)==4,"later browsing cannot mutate the stored project")
+	stock("split_stone",20)
+	check(catalogue.pinned_preview()==sim.craft_preview("dress_stone","",1,4) and catalogue.pinned_preview().ready,"pinned requirements update from current stock against the original batch")
+	panel.close_panel()
+	catalogue._pin_clock = 0
+	catalogue._process(0.5)
+	check(catalogue._pin_hud.visible and catalogue._pin_hud.text.contains("4 batches"),"play HUD identifies the pinned batch")
+	panel.open_crafting(forge)
+	stock("wood",15)
+	stock("iron_ore",8)
+	catalogue.select_recipe("smelt_iron")
+	catalogue.quantity = 3
+	catalogue._render_detail()
+	catalogue.toggle_pin()
+	var expected: Dictionary = sim.craft_preview("smelt_iron","",1,3)
+	check(catalogue.pinned_preview().fuel==expected.fuel and catalogue.pinned_preview().fuel_available==expected.fuel_available,"multi-batch pin uses native fuel after ingredient reservation")
+	stock("wood",3)
+	expected = sim.craft_preview("smelt_iron","",1,3)
+	check(not expected.ready and catalogue.pinned_preview()==expected,"pin reports the current native shortfall without borrowing ingredient wood")
+	for resolution in [Vector2i(1280,720),Vector2i(1920,1080)]:
+		get_window().size=resolution
+		panel.refresh()
+		for i in 8: await get_tree().process_frame
+		check(catalogue._action.is_visible_in_tree() and catalogue._action.get_global_rect().end.y<=resolution.y,"action remains visible outside recipe scroll at "+str(resolution))
+		check(catalogue._cost_summary.is_visible_in_tree() and catalogue._next.is_visible_in_tree(),"current cost and native blocker stay visible at "+str(resolution))
+	panel.close_panel()
+	player.inventory_panel.open_panel()
+	catalogue._pin_clock = 0
+	catalogue._process(0.5)
+	check(not catalogue._pin_hud.visible,"recipe pin does not overlay the pack or guides")
+	player.inventory_panel.close_panel()
+	player.foundry_panel.open_panel()
+	catalogue._pin_clock = 0
+	catalogue._process(0.5)
+	check(not catalogue._pin_hud.visible,"recipe pin does not overlay the Foundry")
+	player.foundry_panel.close_panel()
+	player.hud.toggle_help()
+	catalogue._pin_clock = 0
+	catalogue._process(0.5)
+	check(not catalogue._pin_hud.visible,"recipe pin does not overlay requested help")
+	player.hud.toggle_help()
+	catalogue._pin_clock = 0
+	catalogue._process(0.5)
+	check(catalogue._pin_hud.visible,"same session pin returns after closing other panels")
+	catalogue.pinned = {}

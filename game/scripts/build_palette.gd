@@ -265,7 +265,7 @@ func refresh_detail() -> void:
 	turn_left.disabled = not placement.rotatable()
 	turn_right.disabled = not placement.rotatable()
 	var info: Dictionary = player.inventory.get_sim().shape(placement.placing_shape())
-	detail.text = "%s\n\n%s\n\n%s" % [placement.cost_label(),placement.orientation_label(),info.get("hint","") if not kit else "Place this crafted station kit on clear ground."]
+	detail.text = "%s\n%s\n\n%s" % [placement.cost_label(),placement.orientation_label(),info.get("hint","") if not kit else "Use selection → LMB on clear ground → E to operate."]
 	var reason := placement.selection_refusal()
 	if reason != "":
 		detail.text += "\n\n"+reason

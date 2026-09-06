@@ -11,8 +11,11 @@ var potency_choice := 1
 var quantity := 1
 var operation := "Make"
 var query := ""
-var history: Array[String] = []
-var pinned := ""
+var history: Array[Dictionary] = []
+# Session-only UI records. No ownership, unlock or payment state lives here.
+var pinned: Dictionary = {}
+var ingredient := ""
+var details_open := false
 var card_count := 0
 var last_preview: Dictionary = {}
 var _cards: VBoxContainer
@@ -40,14 +43,72 @@ func _process(delta: float) -> void:
 	_pin_clock -= delta
 	if _pin_clock > 0: return
 	_pin_clock = 0.5
-	_pin_hud.visible = not work.is_open() and pinned != ""
-	if pinned == "" or work.sim == null: return
-	var preview: Dictionary = work.sim.craft_preview(pinned)
+	_pin_hud.visible = _pin_unobstructed() and not pinned.is_empty()
+	if pinned.is_empty() or work.sim == null: return
+	var preview := pinned_preview()
 	var parts := PackedStringArray()
 	for cost in preview.get("costs",[]):
 		if int(cost.have) < int(cost.need): parts.append("%s %d/%d" % [Hud.pretty(cost.id),cost.have,cost.need])
 	if int(preview.get("fuel_available",0)) < int(preview.get("fuel",0)): parts.append("Fuel %d/%d" % [preview.fuel_available,preview.fuel])
-	_pin_hud.text = "PINNED · %s\n%s" % [work.sim.recipe(pinned).get("display_name",pinned)," · ".join(parts) if not parts.is_empty() else String(preview.get("next_action",""))]
+	var title := String(work.sim.recipe(pinned.selection).get("display_name",pinned.selection))
+	if String(preview.get("base_id","")) != "":
+		title += " · " + String(preview.grades[int(pinned.quality)-1].quality)
+		if String(pinned.aim) != "": title += " · " + Hud.pretty(pinned.aim)
+	elif int(pinned.quantity)>1:
+		title += " · %d batches" % int(pinned.quantity)
+	_pin_hud.text = "PINNED · %s\n%s" % [title," · ".join(parts) if not parts.is_empty() else String(preview.get("next_action","")).replace("_"," ")]
+
+func _pin_unobstructed() -> bool:
+	if work.is_open(): return false
+	var player := work.get_parent() as WroughtwildPlayer
+	if player == null: return true
+	for panel in [player.inventory_panel,player.foundry_panel,player.class_panel,player.chest_panel,player.build_palette]:
+		if panel != null and panel.is_open(): return false
+	return player.hud == null or not player.hud.help_visible()
+
+func selection_state() -> Dictionary:
+	return {"selection":selection,"aim":aim,"quality":quality,"potency_choice":potency_choice,
+		"quantity":quantity,"operation":operation,"category":category,"query":query,
+		"ingredient":ingredient,"details_open":details_open}
+
+func restore_selection(state: Dictionary) -> void:
+	selection = String(state.selection)
+	aim = String(state.aim)
+	quality = int(state.quality)
+	potency_choice = int(state.potency_choice)
+	quantity = int(state.quantity)
+	operation = String(state.operation)
+	category = String(state.category)
+	query = String(state.query)
+	ingredient = String(state.get("ingredient",""))
+	details_open = bool(state.get("details_open",false))
+	refresh()
+
+func go_back() -> void:
+	if not history.is_empty(): restore_selection(history.pop_back())
+
+func inspect_ingredient(id: String) -> void:
+	history.append(selection_state())
+	ingredient = id
+	_render_detail()
+
+func pinned_preview() -> Dictionary:
+	if pinned.is_empty() or work.sim == null: return {}
+	return work.sim.craft_preview(String(pinned.selection),String(pinned.aim),int(pinned.quality),int(pinned.quantity))
+
+func _same_pin() -> bool:
+	if pinned.is_empty(): return false
+	var state := selection_state()
+	for field in ["selection","aim","quality","potency_choice","quantity","operation"]:
+		if pinned[field] != state[field]: return false
+	return true
+
+func toggle_pin() -> void:
+	# Improve/Transfer act on worn items, not this recipe's Make operation.
+	if operation != "Make" or selection.begins_with("@") or selection == "": return
+	pinned = {} if _same_pin() else selection_state().duplicate(true)
+	_pin_clock = 0
+	_render_detail()
 
 func _clear(node: Node) -> void:
 	for child in node.get_children():
@@ -91,6 +152,8 @@ func open_station() -> void:
 	potency_choice = 1
 	quantity = 1
 	operation = "Make"
+	ingredient = ""
+	details_open = false
 	# Bare-hand work has no equipment category. Start with a real local list
 	# instead of carrying an empty or unrelated list over from the last bench.
 	var categories: Array[String] = []
@@ -129,7 +192,7 @@ func refresh() -> void:
 	var rail := HBoxContainer.new()
 	add_child(rail)
 	for text in ["Equipment","Materials","Stations & upgrades"]:
-		var button := _button(rail,text,func(): category = text; selection = ""; query = ""; aim = ""; quality = 1; quantity = 1; refresh())
+		var button := _button(rail,text,func(): category = text; selection = ""; query = ""; aim = ""; quality = 1; potency_choice = 1; quantity = 1; operation = "Make"; ingredient = ""; details_open = false; history.clear(); refresh())
 		button.toggle_mode = true
 		button.button_pressed = category == text
 	var spacer := Control.new()
@@ -230,13 +293,16 @@ func _render_cards() -> void:
 		card_count += 1
 
 func select_recipe(id: String, remember := false) -> void:
-	if remember and selection != "" and selection != id: history.append(selection)
+	if remember and selection != "" and (selection != id or ingredient != ""): history.append(selection_state())
+	elif not remember: history.clear()
 	selection = id
 	aim = ""
 	potency_choice = 1
 	quality = maxi(1,_local_quality(work.sim.recipe(id)))
 	quantity = 1
 	operation = "Make"
+	ingredient = ""
+	details_open = false
 	category = _category(work.sim.recipe(id))
 	query = ""
 	refresh()
@@ -246,6 +312,9 @@ func _render_detail() -> void:
 	_action.visible = false
 	_next.text = ""
 	_cost_summary.text = ""
+	if ingredient != "":
+		_render_ingredient()
+		return
 	if selection.begins_with("@"):
 		_render_station()
 		return
@@ -269,8 +338,9 @@ func _render_detail() -> void:
 	_label(title,"By hand" if recipe.station == "" else Hud.pretty(recipe.station),UiTheme.MUTED,13)
 	var navigation := HBoxContainer.new()
 	_detail.add_child(navigation)
-	if not history.is_empty(): _button(navigation,"← Back to item",func(): var id: String = history.pop_back(); select_recipe(id))
-	_button(navigation,"Unpin recipe" if pinned == selection else "Pin requirements",func(): pinned = "" if pinned == selection else selection; _render_detail())
+	if not history.is_empty(): _button(navigation,"← Back",go_back)
+	if operation == "Make":
+		_button(navigation,"Unpin project" if _same_pin() else "Pin requirements",toggle_pin).tooltip_text = "Track this exact batch, workpiece and Kind while gathering. Kept for this session."
 	var gear := String(preview.base_id) != ""
 	if gear:
 		var tabs := HBoxContainer.new()
@@ -299,12 +369,14 @@ func _render_detail() -> void:
 		var row := HBoxContainer.new()
 		_detail.add_child(row)
 		var missing := int(cost.have) < int(cost.need)
-		_label(row,"%s  %d / %d" % [Hud.pretty(cost.id),cost.have,cost.need],UiTheme.CINDER if missing else UiTheme.GRASS_LIGHT)
+		var inspect := _button(row,Hud.pretty(cost.id),inspect_ingredient.bind(String(cost.id)))
+		inspect.tooltip_text = "Where it comes from, how to work it and what it makes."
+		_label(row,"%d / %d" % [cost.have,cost.need],UiTheme.CINDER if missing else UiTheme.GRASS_LIGHT)
 		if String(cost.recipe) != "" and String(cost.recipe) != selection:
 			_button(row,"View recipe",select_recipe.bind(String(cost.recipe),true))
 	if int(preview.fuel)>0:
-		_label(_detail,"Fuel after reserving ingredients  %d / %d" % [preview.fuel_available,preview.fuel],UiTheme.GRASS_LIGHT if int(preview.fuel_available)>=int(preview.fuel) else UiTheme.CINDER)
-		_label(_detail,"Wood burns as 1; charcoal as 4. The whole batch is checked before anything is spent.",UiTheme.MUTED,12)
+		var fuel_label := _label(_detail,"Spare fuel  %d / %d heat" % [preview.fuel_available,preview.fuel],UiTheme.GRASS_LIGHT if int(preview.fuel_available)>=int(preview.fuel) else UiTheme.CINDER)
+		fuel_label.tooltip_text = "Wood burns as 1 heat; charcoal as 4. Ingredients are reserved first. The whole batch must be affordable before anything is spent."
 	var cost_parts := PackedStringArray()
 	var all_costs_met := true
 	for cost in preview.costs:
@@ -321,18 +393,28 @@ func _render_detail() -> void:
 	_action.disabled = not bool(preview.ready) or not here
 	_action.visible = true
 
+func _render_ingredient() -> void:
+	_label(_detail,Hud.pretty(ingredient),UiTheme.PARCHMENT,23)
+	_button(_detail,"← Back to project",go_back)
+	var info: Dictionary = MaterialGuide.describe(work.sim,ingredient)
+	if info.is_empty():
+		_label(_detail,"No field notes for this material yet.",UiTheme.MUTED)
+	else:
+		for field in ["source","work","use"]:
+			var value := String(info.get(field,""))
+			if value != "": _label(_detail,value)
+	var recipe_id := String(info.get("recipe",""))
+	if recipe_id == "":
+		# Keep native producer links for ingredients beyond the early field notes.
+		for cost in work.sim.craft_preview(selection,aim,quality,quantity).get("costs",[]):
+			if String(cost.id)==ingredient: recipe_id = String(cost.recipe)
+	if recipe_id != "" and recipe_id != selection:
+		_button(_detail,"View recipe",select_recipe.bind(recipe_id,true))
+
 func _render_equipment(preview: Dictionary) -> void:
 	var comparison: Dictionary = preview.comparison
 	var candidate: Dictionary = comparison.get("candidate",{})
 	var current: Dictionary = comparison.get("current",{})
-	_label(_detail,"Guaranteed base · %s" % Hud.pretty(comparison.get("slot","equipment")),UiTheme.GRASS_LIGHT)
-	for mod in candidate.get("mods",[]): _label(_detail,String(mod.sentence),UiTheme.PARCHMENT)
-	if float(candidate.get("armour",0))>0: _label(_detail,"%g armour" % float(candidate.armour))
-	_label(_detail,"Wearing: %s · base comparison before random rolls" % current.get("display_name","nothing in this slot"),UiTheme.MUTED,12)
-	for skill in comparison.get("skills",[]):
-		var before := float(skill.before.get("hit_payload",0))
-		var after := float(skill.after.get("hit_payload",0))
-		if not is_equal_approx(before,after): _label(_detail,"%s hit: %.1f → %.1f" % [skill.display_name,before,after],UiTheme.MUTED,12)
 	var grade_row := HBoxContainer.new()
 	_detail.add_child(grade_row)
 	_label(grade_row,"Workpiece",UiTheme.MUTED)
@@ -341,7 +423,7 @@ func _render_equipment(preview: Dictionary) -> void:
 	grade_select.select(quality-1)
 	grade_select.item_selected.connect(func(index: int): quality = index+1; _render_detail())
 	grade_row.add_child(grade_select)
-	_label(_detail,"Expresses up to tier %d; stronger rolls keep their stored potential." % quality,UiTheme.MUTED,12)
+	grade_select.tooltip_text = "Workpiece quality limits the strength expressed now. Stronger rolled potential remains stored. Locked grades are safe to inspect."
 	var kind_row := HBoxContainer.new()
 	_detail.add_child(kind_row)
 	_label(kind_row,"Imprint",UiTheme.MUTED).custom_minimum_size.x = 76
@@ -349,6 +431,7 @@ func _render_equipment(preview: Dictionary) -> void:
 	kinds.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	kinds.fit_to_longest_item = false
 	kinds.clip_text = true
+	kinds.tooltip_text = "An optional Kind aims the first roll. No Kind spends no catalyst and uses random Faint rolls."
 	kinds.add_item("No Kind · random Faint rolls")
 	kinds.set_item_metadata(0,"")
 	var canonical := ""
@@ -370,6 +453,7 @@ func _render_equipment(preview: Dictionary) -> void:
 	var potency := OptionButton.new()
 	for grade in preview.grades: potency.add_item(String(grade.potency))
 	potency.select(potency_choice-1)
+	potency.tooltip_text = "Choose which potency of Kind to inspect. Its strength is stored even when the workpiece cannot express all of it."
 	potency.item_selected.connect(func(i: int):
 		potency_choice = i+1
 		if canonical != "":
@@ -377,23 +461,30 @@ func _render_equipment(preview: Dictionary) -> void:
 				if String(kind.canonical_kind)==canonical and int(kind.potency)==potency_choice: aim = String(kind.id)
 		_render_detail())
 	kind_row.add_child(potency)
-	var chance := PackedStringArray()
-	for outcome in preview.outcomes: chance.append("%s %d%% (%d mods)" % [outcome.name,roundi(float(outcome.chance)*100),outcome.count])
-	_label(_detail," · ".join(chance),UiTheme.SUN_WARM,12)
-	_label(_detail,"First roll is drawn from the Kind's family. Rarity counts modifiers; potency sets their strength.",UiTheme.MUTED,12)
-	for modifier in preview.modifiers:
-		if not modifier.eligible: continue
-		var band: Dictionary = modifier.bands[int(preview.potency)-1]
-		_label(_detail,"If rolled: %s → %s" % [band.minimum_sentence,band.maximum_sentence],UiTheme.FROST,12)
-		if band.held_back: _label(_detail,"On this workpiece: up to %s. The stronger roll stays stored." % band.expressed_sentence,UiTheme.SUN_WARM,12)
-		break
+	# The known result belongs beside the craft decision. Only random
+	# possibilities, comparisons and future upgrades need a disclosure.
+	_label(_detail,"Guaranteed base · %s" % Hud.pretty(comparison.get("slot","equipment")),UiTheme.GRASS_LIGHT)
+	for mod in candidate.get("mods",[]): _label(_detail,String(mod.sentence),UiTheme.PARCHMENT)
+	if float(candidate.get("armour",0))>0: _label(_detail,"%s armour" % float(candidate.armour))
 	var potentials := Button.new()
-	potentials.text = "Inspect modifier ranges & next grades"
+	potentials.text = "Hide craft details" if details_open else "Craft details · rolls, comparison & upgrades"
+	potentials.tooltip_text = "Inspect possible outcomes and future grades without changing the selected craft."
+	potentials.set_meta("craft_details_toggle",true)
 	_detail.add_child(potentials)
 	var ranges := VBoxContainer.new()
-	ranges.visible = false
+	ranges.set_meta("craft_details",true)
+	ranges.visible = details_open
 	_detail.add_child(ranges)
-	potentials.pressed.connect(func(): ranges.visible = not ranges.visible)
+	potentials.pressed.connect(func(): details_open = not details_open; _render_detail())
+	_label(ranges,"Wearing: %s · before random rolls" % current.get("display_name","nothing in this slot"),UiTheme.MUTED,12)
+	for skill in comparison.get("skills",[]):
+		var before := float(skill.before.get("hit_payload",0))
+		var after := float(skill.after.get("hit_payload",0))
+		if not is_equal_approx(before,after): _label(ranges,"%s hit: %.1f → %.1f" % [skill.display_name,before,after],UiTheme.MUTED,12)
+	var chance := PackedStringArray()
+	for outcome in preview.outcomes: chance.append("%s %d%% (%d mods)" % [outcome.name,roundi(float(outcome.chance)*100),outcome.count])
+	_label(ranges," · ".join(chance),UiTheme.SUN_WARM,12)
+	_label(ranges,"Rarity counts modifiers; potency sets their strength. A Kind aims the first roll.",UiTheme.MUTED,12)
 	for modifier in preview.modifiers:
 		_label(ranges,String(modifier.name),UiTheme.PARCHMENT,14)
 		for band in modifier.bands:
@@ -402,12 +493,12 @@ func _render_equipment(preview: Dictionary) -> void:
 			if band.held_back: text += "\nOn this base: up to %s; stronger potential stays stored." % band.expressed_sentence
 			for threshold_text in band.breakpoints: text += "\nAt full expression: " + String(threshold_text)
 			_label(ranges,text,UiTheme.MUTED,12)
-	# Keep the next actual upgrade visible before opening the exhaustive ranges.
+	# Progression stays inspectable without preceding the current requirements.
 	var next_tier := mini(3,maxi(quality,int(preview.potency))+1)
 	var next_grade: Dictionary = preview.grades[next_tier-1]
-	_label(_detail,"Next: %s workpiece / %s imprint · Blacksmithing %d · Era %d · %s" % [next_grade.quality,next_grade.potency,next_grade.skill,next_grade.era,Hud.pretty(next_grade.station)],UiTheme.FROST,12)
+	_label(ranges,"Next: %s workpiece / %s imprint · Blacksmithing %d · Era %d · %s" % [next_grade.quality,next_grade.potency,next_grade.skill,next_grade.era,Hud.pretty(next_grade.station)],UiTheme.FROST,12)
 	var links := HBoxContainer.new()
-	_detail.add_child(links)
+	ranges.add_child(links)
 	if String(next_grade.recipe)!="": _button(links,"Better ironwork",select_recipe.bind(String(next_grade.recipe),true))
 	for kind in preview.kinds:
 		if String(kind.canonical_kind)==canonical and int(kind.potency)==mini(3,int(preview.potency)+1) and String(kind.recipe)!="": _button(links,"Better catalyst",select_recipe.bind(String(kind.recipe),true))
@@ -426,10 +517,10 @@ func _render_improve(mode: String) -> void:
 			_button(_detail,"Transfer",work.transfer_catalyst.bind(&"preserving_transfer",int(target.index)),process.station_available and process.skill_met and int(process.catalyst_held)>0)
 	else:
 		var quench: Dictionary = work.sim.basic_temper_info()
-		_label(_detail,"Quench worn chest armour · at least %g%% fire resistance. Fixed baseline; never lowers a better roll." % float(quench.value))
+		_label(_detail,"Quench worn chest armour · at least %s%% fire resistance. Fixed baseline; never lowers a better roll." % float(quench.value))
 		_button(_detail,"Quench",work.temper_basic,quench.armour_equipped and quench.station_available)
 		var temper: Dictionary = work.sim.catalyst_process("ember_catalyst_tempering")
-		_label(_detail,"Ember-temper worn chest armour · %g–%g%% fire resistance; skill raises the floor to %g%%. Requires Blacksmithing 5, Improved Forge and one Stable Ember Catalyst (have %d)." % [temper.tier_minimum,temper.tier_maximum,temper.floor_at_skill,temper.catalyst_held])
+		_label(_detail,"Ember-temper worn chest armour · %s–%s%% fire resistance; skill raises the floor to %s%%. Requires Blacksmithing 5, Improved Forge and one Stable Ember Catalyst (have %d)." % [temper.tier_minimum,temper.tier_maximum,temper.floor_at_skill,temper.catalyst_held])
 		_button(_detail,"Ember-temper",work.temper_catalyst.bind(&"ember_catalyst_tempering"),temper.armour_equipped and temper.station_available and temper.skill_met and int(temper.catalyst_held)>0)
 
 func _render_station() -> void:

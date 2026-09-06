@@ -618,10 +618,10 @@ func dig_refusal(cell: Vector3i) -> String:
 		return "%s will not break" % Hud.pretty(kind)
 	var heat := heat_level(cell)
 	if heat >= need:
-		return "%s glows  ·  cold will crack it" % Hud.pretty(kind)
+		return "%s is hot  ·  heavy impact or cold cracks it" % Hud.pretty(kind)
 	if heat > 0:
 		return "%s is warm  ·  it wants a hotter fire (charcoal)" % Hud.pretty(kind)
-	return "%s will not yield to hands  ·  fire against it, then cold" % Hud.pretty(kind)
+	return "%s needs a fire, then heavy impact or cold" % Hud.pretty(kind)
 
 
 ## A fire at `centre` soaks every crackable block within `reach` cells

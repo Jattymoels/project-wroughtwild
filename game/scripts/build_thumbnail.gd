@@ -92,16 +92,27 @@ func _draw() -> void:
 		var a := view*rotate*(faces[i]-centre)
 		var b := view*rotate*(faces[i+1]-centre)
 		var c := view*rotate*(faces[i+2]-centre)
+		var points := PackedVector2Array([
+			size/2.0+Vector2(a.x,-a.y)*zoom, size/2.0+Vector2(b.x,-b.y)*zoom,
+			size/2.0+Vector2(c.x,-c.y)*zoom])
+		# An otherwise valid 3D face can become a line in this view. Godot's
+		# polygon triangulator cannot draw it, and it covers no thumbnail area.
+		if not projected_face_has_area(points): continue
 		# Godot triangle winding is clockwise; negate the cross for outward normals.
 		var normal := -(b-a).cross(c-a).normalized()
 		var shade := 0.55+0.45*maxf(0.0,normal.dot(Vector3(-0.4,0.7,1).normalized()))
-		tris.append({"z":(a.z+b.z+c.z)/3.0, "points":PackedVector2Array([
-			size/2.0+Vector2(a.x,-a.y)*zoom, size/2.0+Vector2(b.x,-b.y)*zoom,
-			size/2.0+Vector2(c.x,-c.y)*zoom]), "colour":colour*Color(shade,shade,shade,1)})
+		tris.append({"z":(a.z+b.z+c.z)/3.0, "points":points, "colour":colour*Color(shade,shade,shade,1)})
 	tris.sort_custom(func(a: Dictionary,b: Dictionary) -> bool: return a.z < b.z)
 	for tri in tris:
-		draw_colored_polygon(tri.points,tri.colour)
+		# These are already triangles. The polygon ear-clipping path can
+		# reject very thin imported faces after projection; submit the known
+		# primitive directly instead of triangulating it a second time.
+		draw_primitive(tri.points,PackedColorArray([tri.colour,tri.colour,tri.colour]),PackedVector2Array())
 	_draw_arrow()
+
+
+static func projected_face_has_area(points: PackedVector2Array) -> bool:
+	return points.size()==3 and not is_zero_approx((points[1]-points[0]).cross(points[2]-points[0]))
 
 
 func _draw_arrow() -> void:

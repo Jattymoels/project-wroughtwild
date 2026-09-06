@@ -27,6 +27,9 @@ var _station: StationSite
 var _order_id := ""
 var _custom_title := ""
 var _custom_rows: Array = []
+## A working feeder refreshes its status while this panel stays open.
+## Keep an explanation readable across that refresh; never persist it.
+var _expanded_details: Dictionary = {}
 
 
 func _ready() -> void:
@@ -122,8 +125,9 @@ func _open_foundry() -> void:
 
 
 ## Arbitrary choice list: rows are {text, button, enabled (optional),
-## callback (Callable)}. Used for trial doors and offers.
+## callback (Callable), details (optional explanatory text)}. Used for trial doors and offers.
 func open_custom(title: String, rows: Array, message_text: String = "") -> void:
+	if _mode != "custom" or _custom_title != title: _expanded_details.clear()
 	_mode = "custom"
 	_custom_title = title
 	_custom_rows = rows
@@ -137,6 +141,7 @@ func close_panel() -> void:
 		return
 	_root.visible = false
 	_mode = ""
+	_expanded_details.clear()
 	closed.emit()
 
 
@@ -195,11 +200,15 @@ func craft(recipe_id: StringName, aim_kind: String = "", quality: int = 1, quant
 		if int(result.xp_granted) > 0: note += " (+%d xp%s)" % [result.xp_granted, ", repetition reduced" if float(result.xp_multiplier) < 1.0 else ""]
 		if aim_kind != "": note += " · " + Hud.pretty(aim_kind)
 		_message.text = note + "."
+		for output_id in recipe.get("outputs", {}):
+			if sim.kit_item_ids().has(String(output_id)):
+				_message.text += " Kit in pack: close → B → Tab → choose the kit → Use selection → LMB place → E use."
+				break
 
 		if first_dressed:
 			var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
 			if player != null and player.hud != null:
-				player.hud.notify("Your first dressed block. Split from the seam, squared at the yard: stone is yours to build with now, and the forge's eight blocks are a real ambition.")
+				player.hud.notify("First dressed stone: ready for building and forge kits.")
 	else:
 		match result.get("failure", ""):
 			"station_unavailable": _message.text = "You need a %s for that." % Hud.pretty(recipe.get("station", "station"))
@@ -285,7 +294,7 @@ func temper_catalyst(process_id: StringName) -> Dictionary:
 func deliver() -> Dictionary:
 	var result: Dictionary = sim.fulfill_order(_order_id)
 	if result["fulfilled"]:
-		_message.text = "The crew hauls your work away. The old mine is reinforced; its tunnels are safe and the foreman pays well."
+		_message.text = "Order delivered. The mine is reinforced and your reward is in the pack."
 	elif result.get("already_fulfilled", false):
 		_message.text = "This order is already complete."
 	else:
@@ -360,24 +369,49 @@ func _fit_height() -> void:
 func _render_custom() -> void:
 	_title.text = _custom_title
 	for row in _custom_rows:
-		_add_row(row.get("text", ""), row.get("button", ""), row.get("enabled", true), row.get("callback", Callable()))
+		_add_row(row.get("text", ""), row.get("button", ""), row.get("enabled", true), row.get("callback", Callable()), row.get("details", ""))
 
 
 ## One card: text (bbcode allowed) and, optionally, a button.
-func _add_row(text: String, button_text: String = "", enabled := false, on_pressed: Callable = Callable()) -> void:
+func _add_row(text: String, button_text: String = "", enabled := false, on_pressed: Callable = Callable(), explanation: String = "") -> void:
 	var card := PanelContainer.new()
 	card.add_theme_stylebox_override("panel", UiTheme.card(button_text != "" and enabled))
 	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 12)
 	card.add_child(row)
+	var words := VBoxContainer.new()
+	words.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(words)
 	var label := RichTextLabel.new()
 	label.bbcode_enabled = true
 	label.fit_content = true
 	label.scroll_active = false
 	label.text = text
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(label)
+	words.add_child(label)
+	if not explanation.is_empty():
+		var detail_key := button_text + "\n" + explanation
+		var expanded: bool = _expanded_details.get(detail_key,false)
+		var toggle := Button.new()
+		toggle.text = "Less detail" if expanded else "Details"
+		toggle.toggle_mode = true
+		toggle.button_pressed = expanded
+		toggle.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		words.add_child(toggle)
+		var more := RichTextLabel.new()
+		more.bbcode_enabled = true
+		more.fit_content = true
+		more.scroll_active = false
+		more.text = explanation
+		more.modulate = UiTheme.MUTED
+		more.visible = expanded
+		words.add_child(more)
+		toggle.toggled.connect(func(open: bool) -> void:
+			_expanded_details[detail_key] = open
+			more.visible = open
+			toggle.text = "Less detail" if open else "Details"
+			_fit_height.call_deferred())
 	if button_text != "":
 		var button := Button.new()
 		button.text = button_text

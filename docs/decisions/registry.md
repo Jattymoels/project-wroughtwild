@@ -1,5 +1,12 @@
 # Decision Registry
 
+Owner implementation approval, 7 September 2026: “Yep let's go with that first
+plan” accepts [INT-01 first-hour clarity](../prototype/first-hour-clarity-plan-2026-09-07.md).
+The additional playtest report calls for less tooltip/panel text overload.
+Use concise primary information and optional supporting detail, preserving
+visible costs, blockers, effects and consequences. Existing rules and saves
+remain authoritative; this does not approve the other queued intensives.
+
 Owner planning request, 7 September 2026: keep track of the seven discussed
 intensives and prepare the first. The [current queue](../prototype/intensive-queue.md)
 records their status; [INT-01](../prototype/first-hour-clarity-plan-2026-09-07.md)

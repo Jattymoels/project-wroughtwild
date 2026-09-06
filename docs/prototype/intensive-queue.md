@@ -15,18 +15,20 @@ discussion; the suggested execution order follows the table.
 
 | ID | Intensive | Concrete outcome | Status / next step | Later owner review |
 | --- | --- | --- | --- | --- |
-| INT-01 | First-hour clarity | Existing gathering, material processing, crafting and first-home options explain their requirements and next actions. | **Plan ready; implementation not started.** [Plan and code audit](first-hour-clarity-plan-2026-09-07.md). Start with accurate pins and ingredient navigation. | Can the owner understand a material, choose a useful project and find the next step without outside explanation? |
+| INT-01 | First-hour clarity | Existing gathering, material processing, crafting and first-home options explain their requirements and next actions. | **Implemented, review pending.** [Outcome and evidence](first-hour-clarity-plan-2026-09-07.md), including shorter primary panel text and optional detail. | Can the owner understand a material, choose a useful project and find the next step without outside explanation? |
 | INT-02 | Exploration and environmental storytelling | Existing landmarks, approaches and resource clues communicate surviving civilisation, accidental impact and useful discoveries. | Queued for a bounded brief. Reuse the [Northstar premise](../world-premise.md) and current sites; a fuller graphical target needs reference direction. | Are places inviting and clues understandable during ordinary exploration? |
 | INT-03 | Building and home development | Complete houses/workshops expose and resolve awkward placement, joins and interior usability. | Queued. The catalogue, materials and wall forms already exist. A furnishing kit is a separate content selection; farming is not included. | Is making and using a home comfortable and expressive? |
 | INT-04 | Sound, animation and interaction feedback | Existing gathering, footsteps, stations and surroundings gain consistent material and state feedback. | Queued for presentation/asset brief. Use the established local pipeline; new external assets/services require an explicit choice. | Do feedback and ambience feel convincing through repeated use? |
 | INT-05 | Dungeon presentation and traversal | Existing Forge rooms, junctions, secrets, transitions and boss tells are easier to read and traverse. | Queued. The [Forge arc](trial-intensive-2026-09-06.md) already exists. Identify spatial/readability gaps without changing combat numbers. | Do routes and tells make sense, including under Foundry effects? |
 | INT-06 | Workshop usability | The existing finite feeder clearly communicates inputs, output, stored work, source exhaustion and blocked states. | Queued. Demonstrate the existing [pressure-to-brick loop](pressure-workshop-2026-09-06.md); broader lines and renewable supply remain separate proposals. | Can the owner build it, diagnose a stop and see why it is useful? |
-| INT-07 | Performance and reliability | Measured loading/terrain stalls improve, and long travel, large builds and save recovery stay dependable. | Queued technical continuation of [V6 evidence](wide-frontier-intensive-2026-09-06.md#measured-cost-and-remaining-preparation-regression). Start with the documented preparation cost, preserving geography. | Does ordinary play feel smoother on the owner's machine? |
+| INT-07 | Performance and reliability | Measured loading/terrain stalls improve, and long travel, large builds and save recovery stay dependable. | **Next reliability priority:** [reproduced loose-drop save loss/duplication](loose-pickup-save-audit-2026-09-07.md). The [V6 preparation cost](wide-frontier-intensive-2026-09-06.md#measured-cost-and-remaining-preparation-regression) remains tracked separately. | Do saving and ordinary play remain dependable and smooth? |
 
 Suggested sequence: **INT-01 first**, then INT-02; INT-07 can accompany those
 when its changes and measurement workload are independent. Follow with INT-03
 and INT-04, then the focused INT-05/INT-06 refinements as review exposes needs.
 This is a working priority order, not a promise to run every item automatically.
+The loose-drop issue reproduced during INT-01 now takes priority over further
+presentation work when selecting the next implementation.
 
 ## Delivery and tracking
 
@@ -64,3 +66,5 @@ remains outside these slices.
 | --- | --- | --- |
 | 7 Sep 2026 | Queue | Seven discussed intensives recorded at the owner's request. |
 | 7 Sep 2026 | INT-01 | Read-only code/spec audit completed against `062b7e7`; concrete plan written. No gameplay edits or runtime checks performed for the planning task. |
+| 7 Sep 2026 | INT-01 | Four approved slices and the panel-density addition implemented. Native UI checks, three class journeys and matched 720p/1080p captures recorded in the work item. Owner usability review remains pending. |
+| 7 Sep 2026 | INT-07 | Loose-drop loss/duplication reproduced by INT-01's planned save probe. Separate bounded reliability follow-up recorded; ordinary saves and drop rules unchanged by INT-01. |

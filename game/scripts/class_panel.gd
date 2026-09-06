@@ -46,7 +46,7 @@ func _ready() -> void:
 	title.add_theme_font_size_override("font_size", 22)
 	column.add_child(title)
 	var how := Label.new()
-	how.text = "Before you set out. Your class decides the plate's surround: two patterns for the rails outside the Foundry's rows and columns, yours from the first era. A pattern set in a rail reads the whole line and bends a rule while the line meets it. Complete the Tyrant's forge and you specialise further, and see what each pattern can become."
+	how.text = "Choose once. Your class sets your starting skills and Foundry rail patterns. After the Tyrant, choose a specialisation."
 	how.modulate = UiTheme.MUTED
 	how.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	how.custom_minimum_size = Vector2(940, 0)

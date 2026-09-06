@@ -14,6 +14,7 @@ var player: WroughtwildPlayer
 var _root: PanelContainer
 var _title: Label
 var _rows: VBoxContainer
+var _scroll: ScrollContainer
 var _empty: Label
 var _message: Label
 ## The chest open now: its store key in the sim, and the piece in the world.
@@ -27,12 +28,13 @@ func _ready() -> void:
 	layer = 11
 	_root = PanelContainer.new()
 	_root.theme = UiTheme.theme()
-	_root.set_anchors_preset(Control.PRESET_CENTER)
+	_root.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	_root.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_root.grow_vertical = Control.GROW_DIRECTION_BOTH
 	_root.custom_minimum_size = Vector2(820, 0)
 	_root.visible = false
 	add_child(_root)
+	_root.resized.connect(_centre)
 
 	var margin := MarginContainer.new()
 	for side in ["margin_left", "margin_right", "margin_top", "margin_bottom"]:
@@ -55,15 +57,20 @@ func _ready() -> void:
 	header.add_child(close)
 
 	var how := Label.new()
-	how.text = "What you haul from the ground stops at your pack's cap per family; the chest holds a bounded store of anything together. Fill in the field, empty at home."
+	how.text = "Store from your pack or take from this chest. Crafting uses carried stock."
 	how.modulate = UiTheme.MUTED
 	how.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	how.custom_minimum_size = Vector2(780, 0)
 	column.add_child(how)
 
+	_scroll = ScrollContainer.new()
+	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_scroll.custom_minimum_size.y = 40
+	column.add_child(_scroll)
 	_rows = VBoxContainer.new()
+	_rows.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_rows.add_theme_constant_override("separation", 4)
-	column.add_child(_rows)
+	_scroll.add_child(_rows)
 	_empty = Label.new()
 	_empty.text = "Nothing in the pack and nothing in the chest."
 	_empty.modulate = UiTheme.MUTED
@@ -72,6 +79,7 @@ func _ready() -> void:
 	_message = Label.new()
 	_message.modulate = UiTheme.MUTED
 	column.add_child(_message)
+	get_viewport().size_changed.connect(_fit)
 
 
 func is_open() -> bool:
@@ -151,6 +159,24 @@ func refresh() -> void:
 	for id in ids:
 		_add_row(String(id), int(held.get(id, 0)), int(contents.get(id, 0)))
 	_empty.visible = row_count == 0
+	_fit.call_deferred()
+
+
+func _fit() -> void:
+	if not is_inside_tree(): return
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if not is_inside_tree(): return
+	# Use the existing work-panel viewport share: inventory diversity adds
+	# scrollable rows, never pushes the title or close action off screen.
+	_scroll.custom_minimum_size.y = clampf(_rows.size.y+4,40,get_viewport().get_visible_rect().size.y*WorkPanel.MAX_HEIGHT_FRACTION)
+	_root.reset_size()
+	_centre()
+
+
+func _centre() -> void:
+	if _root != null:
+		_root.position=(get_viewport().get_visible_rect().size-_root.size)*0.5
 
 
 func _add_row(id: String, in_pack: int, in_chest: int) -> void:
@@ -163,6 +189,7 @@ func _add_row(id: String, in_pack: int, in_chest: int) -> void:
 	var name := Label.new()
 	name.text = Hud.pretty(id)
 	name.custom_minimum_size = Vector2(170, 0)
+	name.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	row.add_child(name)
 	var cap: int = sim.carry_cap(id)
 	var pack := Label.new()

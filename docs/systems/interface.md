@@ -1,5 +1,32 @@
 # Interface and In-Game Experience
 
+**Implemented INT-01 update, 7 September 2026:** the pack's **Guides** button
+opens optional **Getting established** ambitions for a first home, working
+stone and setting up a forge. Each shows one next step using current native
+requirements and links to the existing recipe or building controls. Skills,
+Kinds, Progression/Foundry and Wild finds remain separate reachable pages.
+Twelve early material, tool and station-kit entries share source/work/use
+information between pack tiles and recipe ingredients. These explain physical
+collection, carried versus stored stock, refinement and placing a crafted kit;
+they add no objectives, rewards or gates.
+
+Recipe **Make** pins retain the chosen batch, workpiece grade and Kind/potency
+for the session. Their requirements refresh from the corresponding native
+preview, including fuel after ingredient reservation. Ingredient Back restores
+the parent selection and operation. References do not permit work at a remote
+station, and browsing or pinning does not spend anything.
+
+Primary views lead with the action, current effect and immediate requirements.
+Long explanations, roll bands, mastery lists and debug information use explicit
+**Details** controls instead of dense default text or hover essays. Current gear
+modifier sentences, selected Foundry effects, costs, refusals and action risks
+remain visible where the player makes the decision. The pack and guide wrap and
+scroll within 1280×720 and 1920×1080 views; expanded details keep navigation and
+Close reachable. These presentation changes add no costs, gameplay gates or save
+fields. This update supersedes earlier guide/navigation descriptions below;
+the original interface history is retained. See the
+[INT-01 implementation record](../prototype/first-hour-clarity-plan-2026-09-07.md).
+
 Owner-approved D-032, 6 September 2026: the initial class chooser shares its
 existing decision with a random or chosen new-world seed and Continue for the
 saved world/suspended trial. Generation waits for that choice so Continue does

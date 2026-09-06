@@ -67,7 +67,7 @@ func _ready() -> void:
 	check(sim.pack_items().back().workpiece_tier==1,"starter result reports Rough capacity")
 	panel.catalogue.select_recipe("charred_brand",true)
 	panel.catalogue.select_recipe("smelt_iron",true)
-	check(panel.catalogue.history.back()=="charred_brand","ingredient navigation retains return path")
+	check(panel.catalogue.history.back().selection=="charred_brand","ingredient navigation retains return path")
 	panel.catalogue.select_recipe("wooden_focus")
 	for resolution in [Vector2i(1280,720),Vector2i(1920,1080)]:
 		get_window().size = resolution
@@ -77,12 +77,13 @@ func _ready() -> void:
 		check(rect.position.x>=0 and rect.position.y>=0 and rect.end.x<=resolution.x+1 and rect.end.y<=resolution.y+1,"forge catalogue fits "+str(resolution)+" "+str(rect))
 		check(panel.catalogue._action.get_global_rect().end.y<=resolution.y,"primary action stays outside scrolling content")
 		await screenshot("starter-"+str(resolution.y))
-	panel.catalogue.pinned = "simple_bow"
+	panel.catalogue.select_recipe("simple_bow")
+	panel.catalogue.toggle_pin()
 	panel.close_panel()
 	panel.catalogue._pin_clock = 0
 	panel.catalogue._process(0.5)
 	check(panel.catalogue._pin_hud.visible and panel.catalogue._pin_hud.text.contains("Simple Bow"),"pinned requirements remain visible during play")
-	panel.catalogue.pinned = ""
+	panel.catalogue.pinned = {}
 	sim.add_station("forge_basic")
 	sim.add_station("forge_improved")
 	var saved: Dictionary = JSON.parse_string(sim.export_json())
@@ -98,6 +99,8 @@ func _ready() -> void:
 	panel.catalogue._render_detail()
 	check(panel.catalogue.last_preview.ready,"graded reagent in purse participates in craft preview")
 	check(panel.catalogue.last_preview.potency==2 and panel.catalogue.last_preview.quality==1,"preview distinguishes stored potency from weak capacity")
+	_guaranteed_effects()
+	await _selection_context()
 	for resolution in [Vector2i(1280,720),Vector2i(1920,1080)]:
 		get_window().size = resolution
 		panel.refresh()
@@ -163,3 +166,92 @@ func _ready() -> void:
 	check(float(sim.combat_skill("prototype_dash").practice)>before,"dash trains during a real hostile engagement")
 	print("%d forge progression checks, %d failures" % [checks,failures])
 	get_tree().quit(1 if failures else 0)
+
+func _label_texts(node: Node, visible_only := false) -> PackedStringArray:
+	var result := PackedStringArray()
+	if node is Label and (not visible_only or node.is_visible_in_tree()): result.append(node.text)
+	for child in node.get_children(): result.append_array(_label_texts(child,visible_only))
+	return result
+
+func _guaranteed_effects() -> void:
+	var catalogue := panel.catalogue
+	var original := catalogue.selection_state()
+	var untouched := sim.export_json()
+	# Exercise a real implicit modifier and real base armour, rather than
+	# injecting presentation-only preview rows that could miss native changes.
+	for recipe_id in ["charred_brand","iron_chest_armour"]:
+		catalogue.select_recipe(recipe_id)
+		var candidate: Dictionary = catalogue.last_preview.comparison.candidate
+		var expected := PackedStringArray()
+		for mod in candidate.get("mods",[]): expected.append(String(mod.sentence))
+		if float(candidate.get("armour",0))>0: expected.append(str(float(candidate.armour))+" armour")
+		check(not expected.is_empty(),recipe_id+" has a real native guaranteed effect to inspect")
+		var visible_labels := _label_texts(catalogue._detail,true)
+		var all_visible := true
+		for sentence in expected: all_visible = all_visible and visible_labels.has(sentence)
+		check(all_visible,recipe_id+" shows its exact guaranteed native effects before opening Details")
+		var details: Control
+		for child in catalogue._detail.get_children():
+			if child.has_meta("craft_details"): details = child
+		var optional_text := "\n".join(_label_texts(details)) if details != null else ""
+		check(details!=null and not details.is_visible_in_tree() and optional_text.contains("Wearing:") and optional_text.contains("Rarity counts modifiers") and optional_text.contains("Next:"),recipe_id+" keeps comparisons, random outcomes and upgrades optional")
+		check(sim.export_json()==untouched,recipe_id+" effect inspection leaves native state untouched")
+	catalogue.operation = "Improve"
+	catalogue._render_detail()
+	var improvement := "\n".join(_label_texts(catalogue._detail,true))
+	var quench: Dictionary = sim.basic_temper_info()
+	var temper: Dictionary = sim.catalyst_process("ember_catalyst_tempering")
+	check(improvement.contains("at least "+str(float(quench.value))+"% fire resistance"),"quench displays its actual native protection value")
+	check(improvement.contains(str(temper.tier_minimum)+"–"+str(temper.tier_maximum)+"% fire resistance"),"specialised temper displays its actual native resistance range")
+	check(sim.export_json()==untouched,"inspecting improvement values changes no worn item or materials")
+	catalogue.restore_selection(original)
+
+func _selection_context() -> void:
+	var catalogue := panel.catalogue
+	var original := catalogue.selection_state()
+	catalogue.quality = 2
+	catalogue.query = "brand"
+	catalogue._render_detail()
+	var project := catalogue.selection_state()
+	var untouched := sim.export_json()
+	catalogue.toggle_pin()
+	check(catalogue.pinned_preview()==sim.craft_preview("charred_brand","stable_ember_catalyst",2,1),"equipment pin retains Sound capacity and the exact Stable Kind")
+	check(int(catalogue.pinned.potency_choice)==2,"pin retains selected potency browsing context")
+	catalogue.select_recipe("work_sound_iron",true)
+	catalogue.quantity = 3
+	catalogue.query = "sound"
+	catalogue._render_detail()
+	var intermediate := catalogue.selection_state()
+	catalogue.select_recipe("smelt_iron",true)
+	catalogue.go_back()
+	check(catalogue.selection_state()==intermediate,"nested ingredient Back retains intermediate quantity, category and search")
+	catalogue.go_back()
+	check(catalogue.selection_state()==project,"second Back restores grade, Kind, potency and the original filter")
+	check(catalogue.pinned_preview()==sim.craft_preview("charred_brand","stable_ember_catalyst",2,1),"nested browsing leaves the pinned equipment project unchanged")
+	check(sim.export_json()==untouched,"nested references and non-default pins do not spend or craft")
+	var details: Control
+	var toggle: Button
+	for child in catalogue._detail.get_children():
+		if child.has_meta("craft_details"): details = child
+		if child.has_meta("craft_details_toggle"): toggle = child
+	check(details!=null and not details.visible,"exhaustive rolls and comparison are collapsed by default")
+	toggle.pressed.emit()
+	check(catalogue.details_open,"the player can request complete craft details")
+	catalogue.operation = "Transfer"
+	catalogue._render_detail()
+	var transfer := catalogue.selection_state()
+	catalogue.select_recipe("work_sound_iron",true)
+	catalogue.go_back()
+	check(catalogue.selection_state()==transfer,"Back also restores the parent operation and detail disclosure")
+	var pin_before := catalogue.pinned.duplicate(true)
+	catalogue.toggle_pin()
+	check(catalogue.pinned==pin_before,"Transfer cannot overwrite a Make pin with unrelated recipe requirements")
+	catalogue.restore_selection(project)
+	for resolution in [Vector2i(1280,720),Vector2i(1920,1080)]:
+		get_window().size = resolution
+		panel.refresh()
+		await settle()
+		check(catalogue._action.is_visible_in_tree() and catalogue._action.get_global_rect().end.y<=resolution.y,"collapsed graded craft keeps its action visible at "+str(resolution))
+		await screenshot("context-"+str(resolution.y))
+	catalogue.pinned = {}
+	catalogue.restore_selection(original)

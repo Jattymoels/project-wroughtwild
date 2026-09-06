@@ -27,6 +27,8 @@ var _tray: VBoxContainer
 var _effects: VBoxContainer
 var _workings: VBoxContainer
 var _preview: RichTextLabel
+var _instructions: Label
+var _effect_toggle: CheckButton
 var _cell_buttons := {}
 var _flow_overlay: FoundryFlowOverlay
 var _message: Label
@@ -86,6 +88,10 @@ func _ready() -> void:
 	_title.add_theme_font_size_override("font_size", 22)
 	_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(_title)
+	var help := Button.new()
+	help.text = "How to use"
+	help.pressed.connect(_show_help)
+	header.add_child(help)
 	var close := Button.new()
 	close.text = "Close  (Esc)"
 	close.pressed.connect(close_panel)
@@ -103,12 +109,11 @@ func _ready() -> void:
 	_grid.add_theme_constant_override("h_separation", 6)
 	_grid.add_theme_constant_override("v_separation", 6)
 	left.add_child(_grid)
-	var how := Label.new()
-	how.text = "Skills sit in sockets; neighbouring ingots add support.\nKinds transform every ingot on their inward path.\nSelect a piece, then hover an empty cell to preview. Lift costs metal; tablets lift free."
-	how.modulate = UiTheme.MUTED
-	how.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	how.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 4 * 6, 0)
-	left.add_child(how)
+	_instructions = Label.new()
+	_instructions.modulate = UiTheme.MUTED
+	_instructions.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_instructions.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 4 * 6, 0)
+	left.add_child(_instructions)
 	_preview = RichTextLabel.new()
 	_preview.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 24, 88)
 	_preview.bbcode_enabled = false
@@ -147,9 +152,13 @@ func _ready() -> void:
 	right.add_child(_rails_section)
 	_rails = VBoxContainer.new()
 	right.add_child(_rails)
-	right.add_child(_section("What the plate does"))
+	_effect_toggle = CheckButton.new()
+	_effect_toggle.text = "Full effect breakdown"
+	right.add_child(_effect_toggle)
 	_effects = VBoxContainer.new()
+	_effects.hide()
 	right.add_child(_effects)
+	_effect_toggle.toggled.connect(_effects.set_visible)
 
 	_message = Label.new()
 	_message.modulate = UiTheme.MUTED
@@ -187,6 +196,12 @@ func message() -> String:
 	return _message.text
 
 
+func _show_help() -> void:
+	_preview.text = "Lay skill tablets in sockets. Adjacent ingots support them.\nKinds transform ingots along an inward chain to a compatible skill.\nSelect a piece, then hover a cell to inspect before placing. Hover an existing piece for its full reading."
+	_flow_overlay.paths = []
+	_flow_overlay.queue_redraw()
+
+
 func refresh() -> void:
 	if sim == null or not is_open():
 		return
@@ -199,7 +214,8 @@ func refresh() -> void:
 	_sockets.clear()
 	for s in view.get("sockets", []):
 		_sockets[Vector2i(int(s[0]), int(s[1]))] = true
-	_title.text = "The Foundry  —  era %d: rows %d to %d of the %d×%d frame are forged" % [view["era"], _first_row + 1, _last_row + 1, rows, cols]
+	_title.text = "The Foundry · era %d · rows %d–%d of %d×%d" % [view["era"], _first_row + 1, _last_row + 1, rows, cols]
+	_instructions.text = "Select a piece; hover a cell to preview.\nLift: %s. Tablets lift free." % _cost_text(view.get("reforge_cost", {}))
 
 	_cell_buttons.clear()
 	_flow_overlay.paths = []
@@ -328,7 +344,7 @@ func refresh() -> void:
 					cell.text = _cell_name(String(form_names[key][0]))
 					if form_names[key].size() > 1:
 						cell.text += "\n%d forms" % form_names[key].size()
-						lines.append("%d separate named effects are combined here; this is not an evolution level or a strength multiplier." % form_names[key].size())
+						lines.append("%d separate effects share this cell." % form_names[key].size())
 					lines.append("%s becomes %s." % [info.display_name, " / ".join(form_names[key])])
 				if metal != "" and metal != default_metal:
 					cell.text += "\n%s" % metal_names.get(metal, metal)
@@ -356,7 +372,18 @@ func refresh() -> void:
 					lines.append(reading)
 			if lines.is_empty():
 				lines.append("Belongs to no working yet: room for a pair or a backing.")
-			cell.tooltip_text = "\n".join(lines)
+			# Keep full native readings in the fixed inspector, not a tooltip
+			# whose height grows with every operation in a branching chain.
+			var unique_lines := PackedStringArray()
+			for line in lines:
+				if not unique_lines.has(line): unique_lines.append(line)
+			cell.set_meta("reading_details", "\n".join(unique_lines))
+			if tablets.has(key):
+				cell.tooltip_text = "Click to lift tablet (free). Full reading below."
+			elif placed.has(key) or currencies.has(key):
+				cell.tooltip_text = "Click to lift: %s. Full reading below." % _cost_text(view.get("reforge_cost", {}))
+			else:
+				cell.tooltip_text = "Select a piece, then preview here."
 			cell.pressed.connect(_on_cell.bind(r, c))
 			cell.mouse_entered.connect(_inspect_cell.bind(r, c))
 			_grid.add_child(cell)
@@ -375,7 +402,12 @@ func refresh() -> void:
 		var lines := PackedStringArray()
 		var resolved := _resolved_summary(String(skill), form)
 		if resolved != "": lines.append(resolved)
-		for entry in form.get("forms", []): lines.append("%s — %s" % [entry.form_name, entry.description])
+		var shown := {}
+		for entry in form.get("forms", []):
+			var name := String(entry.form_name)
+			if shown.has(name) or resolved.contains(name + ":"): continue
+			shown[name] = true
+			lines.append("%s — %s" % [name, entry.description])
 		if lines.is_empty(): lines.append("Plain support. Add an inward Kind path to transform it.")
 		text.text = "\n".join(lines)
 		text.tooltip_text = "Equipment can read: " + ", ".join(form.get("tags", []))
@@ -399,18 +431,11 @@ func refresh() -> void:
 			any = true
 			var button := Button.new()
 			var cast_name: String = "" if metal == default_metal else " (%s)" % String(m["display_name"]).to_lower()
-			button.text = "%s%s  ×%d   %s" % [info["display_name"], cast_name, count, info["sentence"]]
+			button.text = "%s%s  ×%d" % [info["display_name"], cast_name, count]
 			button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			button.clip_text = true
 			button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			var reads := PackedStringArray()
-			if String(info.get("skill_sentence", "")) != "":
-				reads.append("Beside a skill it can read: %s." % info["skill_sentence"])
-			if String(info.get("added_sentence", "")) != "":
-				reads.append("Beside a skill of another element: %s." % info["added_sentence"])
-			if metal != default_metal:
-				reads.append("Cast in %s: its backing and pairs are read %d cells out." % [String(m["display_name"]).to_lower(), int(m["reach"])])
-			button.tooltip_text = "\n".join(reads)
+			button.tooltip_text = "Select to read its effects, then hover a plate cell."
 			if _selected == StringName(id) and _selected_metal == metal:
 				button.modulate = UiTheme.GRASS_LIGHT
 			button.pressed.connect(_on_tray.bind(id, metal))
@@ -418,7 +443,8 @@ func refresh() -> void:
 			tray_count += 1
 	if not any:
 		var none := Label.new()
-		none.text = "None in hand. Milestones forge them: the first bench, first kills, the first smelt, the first dressed block, the Tyrant."
+		none.text = "None in hand. Earn ingots from milestones."
+		none.tooltip_text = "First bench, kills, smelt, dressed stone and the Tyrant each award ingots."
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.modulate = UiTheme.MUTED
 		_tray.add_child(none)
@@ -452,21 +478,19 @@ func refresh() -> void:
 			continue
 		any_kind = true
 		var button := Button.new()
-		button.text = "Set a %s  ×%d   %s" % [k["display_name"], int(k["held"]), k["base_sentence"]]
+		button.text = "Set a %s  ×%d" % [k["display_name"], int(k["held"])]
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.clip_text = true
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.tooltip_text = "In a corner, or a far cell beyond one: its base flows to the skill while a chain of pieces leads inward, and it transforms every ingot on those inward paths."
-		for info in sim.currency_kinds():
-			if info.id==k.id and String(info.get("description",""))!="":
-				button.tooltip_text += "\n"+String(info.description)
+		button.tooltip_text = "Select to read its effect, then preview an inward path."
 		if _selected_subject == StringName(String(k["id"])):
 			button.modulate = UiTheme.GRASS_LIGHT
 		button.pressed.connect(_on_subject.bind(String(k["id"])))
 		_subjects.add_child(button)
 	if not any_kind:
 		var none := Label.new()
-		none.text = "No kind in the purse to set. Families pay them: whelps and wisps Catalysts, husks and knights Vanguards; the reinforced mine pays three."
+		none.text = "No Kinds in your purse. Enemy families and the mine order award them."
+		none.tooltip_text = "Whelps and wisps pay Catalysts; husks and knights pay Vanguards."
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.modulate = UiTheme.MUTED
 		_subjects.add_child(none)
@@ -476,7 +500,7 @@ func refresh() -> void:
 	_rails_section.text = "Rails  (%d of %d set)" % [int(view.get("rails_set", 0)), rails_allowed]
 	if String(view.get("class", "")) == "":
 		var none := Label.new()
-		none.text = "No class stands. The class chosen before play sets the plate's surround: the patterns its rails may hold."
+		none.text = "Choose a class to see its rail patterns."
 		none.modulate = UiTheme.MUTED
 		none.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		none.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -485,7 +509,7 @@ func refresh() -> void:
 		if bool(view.get("can_specialise", false)):
 			# The view (owner, 4 Sep 2026): what the surround can become.
 			var offer := Label.new()
-			offer.text = "The Tyrant's forge is behind you. Specialise further: each way says what your rails become. The choice is made once."
+			offer.text = "Choose a specialisation once. Your rails change as shown below."
 			offer.modulate = UiTheme.SUN_WARM
 			offer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			offer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -507,7 +531,7 @@ func refresh() -> void:
 					_rails.add_child(line)
 		var who := Label.new()
 		var spec_name: String = String(view.get("specialisation_name", ""))
-		who.text = "A %s%s. Pick a pattern, then a rail outside the grid: it reads the whole row or column. One rail per pattern; the era allows %d." % [
+		who.text = "%s%s · choose a pattern, then an outer rail. One rail per pattern; up to %d this era." % [
 			view.get("class_name", ""), " (%s)" % spec_name if spec_name != "" else "", rails_allowed]
 		who.modulate = UiTheme.MUTED
 		who.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -673,6 +697,16 @@ func _on_tray(id: String, metal: String = "") -> void:
 	_selected_subject = &""
 	_selected_pattern = &""
 	_message.text = "Pick a cell for the %s." % sim.foundry_ingot(id).get("display_name", id) if _selected != &"" else ""
+	if _selected != &"":
+		var info: Dictionary = sim.foundry_ingot(id)
+		_preview.text = "%s\n%s" % [info.get("display_name",id), info.get("sentence","")]
+		# These are native descriptions of the selected ingot, before any
+		# cell is chosen. The hover preview then shows its actual placement.
+		for key in ["skill_sentence", "added_sentence"]:
+			if String(info.get(key, "")) != "": _preview.text += "\n" + String(info[key])
+		for alloy: Dictionary in sim.foundry().get("metals", []):
+			if String(alloy.id)==metal:
+				_preview.text += "\n%s · backing and pairs read %d cells out." % [alloy.display_name,int(alloy.reach)]
 	refresh()
 
 
@@ -681,7 +715,13 @@ func _on_subject(id: String) -> void:
 	_selected = &""
 	_selected_skill = &""
 	_selected_pattern = &""
-	_message.text = "Pick a corner: it works the supports it touches into forms, and its base flows to the skill." if _selected_subject != &"" else ""
+	_message.text = "Pick a corner or an outer cell with an inward path." if _selected_subject != &"" else ""
+	if _selected_subject != &"":
+		for kind: Dictionary in sim.foundry().get("kinds", []):
+			if String(kind.id)==id: _preview.text = "%s\n%s" % [kind.display_name,kind.base_sentence]
+		for kind: Dictionary in sim.currency_kinds():
+			if String(kind.id)==id and String(kind.get("description",""))!="":
+				_preview.text += "\n"+String(kind.description)
 	refresh()
 
 
@@ -823,6 +863,9 @@ func _inspect_cell(row: int, col: int) -> void:
 		var preview: Dictionary = sim.foundry_preview(row, col, selected, _selected_metal)
 		if not bool(preview.get("valid", false)):
 			_preview.text = String(preview.get("reason", "This cell cannot take the selected piece."))
+			var current: Button = _cell_buttons.get(Vector2i(row,col))
+			if current != null and current.has_meta("reading_details"):
+				_preview.text += "\nCURRENT READING\n" + String(current.get_meta("reading_details"))
 			_flow_overlay.paths = []
 			_flow_overlay.queue_redraw()
 			return
@@ -830,6 +873,8 @@ func _inspect_cell(row: int, col: int) -> void:
 		lines.append("AFTER PLACEMENT · no material spent")
 	else:
 		lines.append("CURRENT FLOW")
+		var button: Button = _cell_buttons.get(Vector2i(row,col))
+		if button != null: lines.append(String(button.get_meta("reading_details", "")))
 	var shown := {}
 	var paths: Array = []
 	for effect in effects:
@@ -846,8 +891,10 @@ func _inspect_cell(row: int, col: int) -> void:
 		shown[key] = true
 		paths.append(points)
 		var skill: Dictionary = sim.combat_skill(String(effect.skill))
-		lines.append("%s → %s\n%s" % [effect.form_name, skill.get("display_name", effect.skill), effect.description])
-	if shown.is_empty(): lines.append("No mutation reaches a compatible skill through this cell. Complete an inward chain; Striking reads attacks and Casting reads spells.")
+		lines.append("%s → %s" % [effect.form_name, skill.get("display_name", effect.skill)])
+		if not "\n".join(lines).contains(String(effect.description)):
+			lines.append(String(effect.description))
+	if shown.is_empty(): lines.append("No compatible mutation through this cell.")
 	_preview.text = "\n".join(lines)
 	_flow_overlay.paths = paths
 	_flow_overlay.queue_redraw()
