@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: continue the next work while away from
+the local PC. The queue's next priority is [INT-07A loose-drop persistence](../prototype/loose-drop-persistence-2026-09-07.md),
+fixing the loss/duplication reproduced by INT-01. The bounded additive snapshot
+preserves physical drops and death packs beside the world/trial checkpoint,
+validates before mutation and replaces rather than merges live ownership.
+Existing collection, expiry, native loot and trial settlement rules remain;
+older saves without drop records stay readable. INT-01's human review is deferred.
+
 Owner implementation approval, 7 September 2026: “Yep let's go with that first
 plan” accepts [INT-01 first-hour clarity](../prototype/first-hour-clarity-plan-2026-09-07.md).
 The additional playtest report calls for less tooltip/panel text overload.

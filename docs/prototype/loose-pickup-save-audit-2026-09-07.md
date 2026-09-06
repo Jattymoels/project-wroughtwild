@@ -1,11 +1,11 @@
 # Loose material drops at the save boundary
 
-Status: **Reproduced; reliability fix not implemented.** INT-07 follow-up found
+Status: **Resolved by [INT-07A](loose-drop-persistence-2026-09-07.md).** INT-07 follow-up found
 during the approved [first-hour checks](first-hour-clarity-plan-2026-09-07.md).
 This is a pre-existing save issue, not an intended reward rule or a consequence
 of the interface changes.
 
-## Evidence
+## Original evidence before the fix
 
 The isolated V6 seed-77 fixture used an ordinary generated tree, contextual
 work, physical drops, normal pickup absorption and SaveManager. No stock was
@@ -22,19 +22,16 @@ establish its preconditions and save operations; they do **not** endorse these
 outcomes as passing persistence behaviour. The normal collected-material journey
 separately verifies partial work, unplaced kits and stored resources.
 
-## Next bounded reliability slice
+## Bounded reliability follow-up
 
-Define and implement consistent loose-material ownership across save/restore.
-The proposed direction is to save each uncollected amount with its remaining
-lifetime and relevant motion state, validate the full payload before mutation,
-then replace the live drop set during restoration. Loading must never combine
-pre-load drops with restored source stock. Preserve finite sources, pickup
-capacity and ordinary expiry; do not turn drops into automatic collection.
+The audit proposed saving each uncollected amount with its remaining lifetime
+and motion state, validating the full payload before mutation, then replacing
+the live drop set. Finite sources, pickup capacity, ordinary expiry and atomic
+save replacement were to remain unchanged. Compatibility with older files,
+gear/pages, death and suspension was left for the implementation work item.
 
-Before implementation, settle compatibility for old saves without drop records
-and the interaction with gear/page drops, open-world death and trial suspension.
-Those cases need explicit checks; this audit does not silently select new
-persistence rules for them. Keep atomic save/last-good-file behaviour.
-
-For current play, **collect freed materials before saving or loading**. This
-avoids the reproduced loose-drop boundary; it is not a substitute for the fix.
+The implemented follow-up records all existing physical reward kinds and death
+packs, validates before import and replaces the world's saved set. Both original
+cases are now regression assertions in `first_hour_journey`'s separate-process
+pickup probes. Current passing evidence and compatibility details are in the
+linked work item. Older files cannot recover yields that were never recorded.

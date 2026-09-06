@@ -21,14 +21,15 @@ discussion; the suggested execution order follows the table.
 | INT-04 | Sound, animation and interaction feedback | Existing gathering, footsteps, stations and surroundings gain consistent material and state feedback. | Queued for presentation/asset brief. Use the established local pipeline; new external assets/services require an explicit choice. | Do feedback and ambience feel convincing through repeated use? |
 | INT-05 | Dungeon presentation and traversal | Existing Forge rooms, junctions, secrets, transitions and boss tells are easier to read and traverse. | Queued. The [Forge arc](trial-intensive-2026-09-06.md) already exists. Identify spatial/readability gaps without changing combat numbers. | Do routes and tells make sense, including under Foundry effects? |
 | INT-06 | Workshop usability | The existing finite feeder clearly communicates inputs, output, stored work, source exhaustion and blocked states. | Queued. Demonstrate the existing [pressure-to-brick loop](pressure-workshop-2026-09-06.md); broader lines and renewable supply remain separate proposals. | Can the owner build it, diagnose a stop and see why it is useful? |
-| INT-07 | Performance and reliability | Measured loading/terrain stalls improve, and long travel, large builds and save recovery stay dependable. | **Next reliability priority:** [reproduced loose-drop save loss/duplication](loose-pickup-save-audit-2026-09-07.md). The [V6 preparation cost](wide-frontier-intensive-2026-09-06.md#measured-cost-and-remaining-preparation-regression) remains tracked separately. | Do saving and ordinary play remain dependable and smooth? |
+| INT-07 | Performance and reliability | Measured loading/terrain stalls improve, and long travel, large builds and save recovery stay dependable. | **INT-07A implemented, review pending:** [loose-drop persistence](loose-drop-persistence-2026-09-07.md), following the reproduced loss/duplication. The [V6 preparation cost](wide-frontier-intensive-2026-09-06.md#measured-cost-and-remaining-preparation-regression) remains tracked separately. | Do saving and ordinary play remain dependable and smooth? |
 
 Suggested sequence: **INT-01 first**, then INT-02; INT-07 can accompany those
 when its changes and measurement workload are independent. Follow with INT-03
 and INT-04, then the focused INT-05/INT-06 refinements as review exposes needs.
 This is a working priority order, not a promise to run every item automatically.
-The loose-drop issue reproduced during INT-01 now takes priority over further
-presentation work when selecting the next implementation.
+The loose-drop issue reproduced during INT-01 was handled first as INT-07A.
+The next queued brief is INT-02, using existing sites and the accepted Northstar;
+owner playtesting remains deferred while away and does not block that audit.
 
 ## Delivery and tracking
 
@@ -60,6 +61,11 @@ size/profile, combat-number pass, loot economy or furnishing catalogue is not
 implied by a presentation/usability item. The known timber-demolition conflict
 remains outside these slices.
 
+INT-07A also recorded a separate gear-preview issue: native collection uses the
+current era, so advancing an era before collecting can change a previewed
+drop. The save fix preserves the existing claim; an itemisation correction
+needs its own bounded follow-up.
+
 ## Activity
 
 | Date | Item | Result |
@@ -68,3 +74,4 @@ remains outside these slices.
 | 7 Sep 2026 | INT-01 | Read-only code/spec audit completed against `062b7e7`; concrete plan written. No gameplay edits or runtime checks performed for the planning task. |
 | 7 Sep 2026 | INT-01 | Four approved slices and the panel-density addition implemented. Native UI checks, three class journeys and matched 720p/1080p captures recorded in the work item. Owner usability review remains pending. |
 | 7 Sep 2026 | INT-07 | Loose-drop loss/duplication reproduced by INT-01's planned save probe. Separate bounded reliability follow-up recorded; ordinary saves and drop rules unchanged by INT-01. |
+| 7 Sep 2026 | INT-07A | Owner authorised the next work while away. Loose materials, gear, pages and death packs now restore as a single world-owned set; trial suspension and successful New World cleanup covered. Isolated evidence and compatibility limits are in the work item. |

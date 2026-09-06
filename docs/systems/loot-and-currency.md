@@ -1,5 +1,27 @@
 # Loot and Crafting Economy
 
+## Loose world ownership — INT-07A, 7 September 2026
+
+The [save-reliability slice](../prototype/loose-drop-persistence-2026-09-07.md)
+stores uncollected materials, gear, selected skill pages and recoverable death
+packs alongside their corresponding player/world state. Restore replaces that
+world's physical set without collection, rerolling a page or granting inventory.
+Amounts, positions, flight/rest state and elapsed lifetime persist. Existing
+material expiry and hauling capacity remain unchanged; gear and pages do not
+expire. Completed claims cannot pay twice before their nodes leave the scene.
+
+Outer schema 2 gains the optional versioned `world_drops` field. Validate every
+record before importing player state. Missing records in older saves mean an
+empty saved set, so loading clears stale live drops; historical omitted yields
+cannot be reconstructed. A malformed present payload rejects the save. Full
+gear seeds use decimal strings to avoid JSON rounding. Material identifiers
+retain the native inventory's open string/count contract.
+
+World drops and death packs cannot be collected during an active trial, and
+carried materials cannot be dropped from it. Trial rewards remain in the run's
+existing loot record and use its deposit, banking and death rules. Ordinary
+world-drop flight and age continue while the player is in a trial.
+
 ## Rare wild components — D-029, 6 September 2026
 
 Lanternheart, Thrumroot, Stormglass, Pullstone and Ventlung are finite physical

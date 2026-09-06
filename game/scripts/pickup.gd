@@ -40,6 +40,10 @@ var _resting := false
 var _age := 0.0
 var _bob_phase := 0.0
 var _mesh: MeshInstance3D
+## Terminal ownership is committed before callbacks; queued nodes can still
+## receive another call during the same frame. Partial material hauls remain.
+var _claimed := false
+var _absorbing := false
 
 
 ## Spawns one pickup per material family in contents, scattered from `at`
@@ -148,13 +152,18 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if _claimed or _absorbing or is_queued_for_deletion(): return
 	_age += delta
 	if kind == "material" and _age > MAX_AGE_SECONDS:
 		queue_free()
 		return
 
 	var player := get_tree().get_first_node_in_group("player") as Node3D
-	if player != null:
+	# The active trial owns its deposit and rewards. World drops keep their
+	# ordinary age/flight, but never enter or attract toward that run's pack.
+	var wrought_player := player as WroughtwildPlayer
+	var trial_active := wrought_player != null and wrought_player.trial != null and wrought_player.trial.active()
+	if player != null and not trial_active:
 		var to_player: Vector3 = player.global_position + Vector3(0, 0.6, 0) - global_position
 		var distance := to_player.length()
 		# A full family stays on the ground (Wave 6 slice 6): no magnet,
@@ -195,21 +204,26 @@ func _physics_process(delta: float) -> void:
 
 
 func _absorb(player: Node3D) -> void:
+	if _claimed or _absorbing or is_queued_for_deletion(): return
 	var wrought_player := player as WroughtwildPlayer
 	if wrought_player == null:
 		return
+	if wrought_player.trial != null and wrought_player.trial.active(): return
 	var sim: WroughtwildSim = wrought_player.inventory.get_sim()
+	_absorbing = true
 	match kind:
 		"gear":
-			# The claim re-rolls the kill's gear straight into the pack: the
-			# same (enemy, seed) always yields the same item, so the world
-			# never carried item state at all.
+			_claimed = true
+			# Native claim rolls from the saved enemy/seed/elite and current
+			# era, just like preview. The world keeps provenance and display
+			# metadata; freezing a preview across an era change is separate work.
 			for entry in sim.claim_enemy_gear(enemy_id, gear_seed, elite_id):
 				if wrought_player.hud != null:
 					wrought_player.hud.notify("Found: %s %s" % [
 						String(entry.get("rarity", "plain")).capitalize(),
 						entry.get("display_name", "gear")])
 		"page":
+			_claimed = true
 			var skill_name := display_name if display_name != "" else Hud.pretty(page_skill)
 			var learned := wrought_player.combat.learn_skill(page_skill)
 			if wrought_player.hud != null:
@@ -224,16 +238,22 @@ func _absorb(player: Node3D) -> void:
 			# short stays, smaller, on the ground.
 			var taken: int = sim.haul(family, amount)
 			if taken <= 0:
+				_absorbing = false
 				wrought_player.note_pack_full(family)
 				return
+			# Update remaining world ownership before HUD callbacks can observe
+			# or request another collection of this same chip.
+			amount -= taken
+			_claimed = amount <= 0
 			if wrought_player.hud != null:
 				wrought_player.hud.notify_pickup(family, taken)
 				if family == "shrieker_horn":
 					wrought_player.hud.notify("The shrieker's horn. X outside build mode blows it, and everything within earshot comes.")
-			if taken < amount:
-				amount -= taken
+			if not _claimed:
 				wrought_player.note_pack_full(family)
+				_absorbing = false
 				return
+	_absorbing = false
 	queue_free()
 
 

@@ -320,6 +320,9 @@ func _unhandled_input(event: InputEvent) -> void:
 ## Pack management: drop a stack at your feet as pickups (recoverable) -
 ## the sim gives it up, the world keeps it.
 func drop_material(id: StringName, amount: int) -> bool:
+	if trial != null and trial.active():
+		hud.notify("Leave the trial before dropping carried materials.")
+		return false
 	if amount <= 0 or not inventory.consume_material(id, amount):
 		return false
 	Pickup.scatter(world_root(), global_position + Vector3(0, 0.6, 0), {String(id): amount},

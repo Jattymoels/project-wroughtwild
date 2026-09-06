@@ -21,6 +21,13 @@ and sharing. Generation is deterministic for `(profile, seed)`, not a curated
 list of maps. Continue restores saved identity before generating terrain.
 Review scenes retain their deterministic exported seed.
 
+Loose materials, gear, selected pages and death packs now save beside finite
+resource state and the existing identity. Successful load replaces only that
+world's recorded drops; explicit successful New World creation clears its old
+set. No generation profile, terrain, placement input or source yield changes.
+See the [INT-07A persistence contract](../prototype/loose-drop-persistence-2026-09-07.md)
+for old saves, validation and trial boundaries.
+
 V6 exports `home_sites`, `starter_quiet_radius_m`, `hostile_boundary_m` and
 `starter_first_siege_night`. Native composition protects complete ordinary and
 later-era patrol segments from the quiet catchment, including a gathering-noise

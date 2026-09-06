@@ -67,6 +67,14 @@ with object decoding disabled, validates the same bounded combat fields and
 requires agreement with the readable representation before any import.
 Older boundary records without the companion still load through validation.
 
+The paired host save also retains the world's loose drops and death packs
+([INT-07A](../prototype/loose-drop-persistence-2026-09-07.md)). They remain
+separate physical owners, never a second trial deposit or reward payout. Active
+trials block their collection and material dropping; ordinary world-drop age
+and flight continue. Cleared-floor suspension restores the saved world-drop
+state with the run. Missing drop records in an older checkpoint mean an empty
+world set; they do not alter its recorded trial loot.
+
 `GateState` lives in the native save's `extra.trial_gate`. Three offers derive
 from the saved batch seed and selected unlocked tier. Reopening, changing tier
 and reloading cannot change those offers. Only successful map entry advances the

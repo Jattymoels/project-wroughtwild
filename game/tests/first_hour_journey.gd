@@ -240,13 +240,22 @@ func finish() -> void:
 	get_tree().quit(0 if failures==0 else 1)
 
 func pickup_probe() -> void:
-	# Diagnostics for pre-existing INT-07 questions, not assertions blessing the
-	# observed contract. A second process reads the exact after-release save.
+	# INT-07 converts the reproduced diagnostic into a normal-world regression.
+	# A separate process reads the exact checkpoint and its test-only ground truth.
 	var manager := SaveManager.new()
 	var path := ProjectSettings.globalize_path("res://first-hour-pickup-probe.json")
 	if "--pickup-restore" in OS.get_cmdline_user_args():
-		check(manager.read(path,player),"probe can restore after-release payload")
-		print("CODEX_PICKUP_PROBE_RESTART held_wood=%d loose_drops=%d" % [_sim().material_count("wood"),get_tree().get_nodes_in_group("pickups").size()])
+		var manifest: Variant = JSON.parse_string(FileAccess.get_file_as_string(path+".expected"))
+		if not check(manifest is Dictionary and int(manifest.get("amount",0))>0,"restart has the previous process's harvest ground truth"): return
+		if not check(manager.read(path,player),"probe can restore after-release payload"): return
+		var loose := 0
+		for drop in get_tree().get_nodes_in_group("pickups"):
+			if drop.kind=="material" and drop.family=="wood": loose+=drop.amount
+		check(_sim().material_count("wood")==0 and loose==int(manifest.amount),"restart keeps the entire harvested yield loose, without automatic collection")
+		check(not terrain.resource_stream.has_resource(String(manifest.resource_id)),"restart keeps the harvested source depleted")
+		await collect()
+		check(_sim().material_count("wood")==int(manifest.amount),"restored generated-world yield can be collected exactly once")
+		print("CODEX_PICKUP_PROBE_RESTART loose_wood=%d collected_wood=%d" % [loose,_sim().material_count("wood")])
 		return
 	var source := nearest_source("wood")
 	var id := source.resource_id
@@ -256,8 +265,14 @@ func pickup_probe() -> void:
 	var dropped := get_tree().get_nodes_in_group("pickups").size()
 	check(dropped > 0 and _sim().material_count("wood")==0,"probe freed real yield without collection")
 	check(manager.write(path,player),"probe writes actual after-release save")
+	var expected := FileAccess.open(path+".expected",FileAccess.WRITE)
+	if not check(expected!=null,"probe records independent restart ground truth"): return
+	expected.store_string(JSON.stringify({"amount":payout,"resource_id":id}))
+	expected.close()
 	check(manager.apply(player,before),"probe loads before-harvest state")
+	check(get_tree().get_nodes_in_group("pickups").is_empty(),"rewind removes drops released after the saved resource state")
 	source = terrain.resource_stream.materialise(id)
 	for i in source.drive_presses: player._apply_work(source,source.work(_sim()))
 	await collect()
+	check(_sim().material_count("wood")==payout,"rewind and reharvest yield once, without stale-drop duplication")
 	print("CODEX_PICKUP_PROBE_RELOAD single_yield=%d held_after_reload_and_reharvest=%d" % [payout,_sim().material_count("wood")])

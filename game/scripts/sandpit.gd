@@ -59,7 +59,12 @@ func start_chosen_world(seed_value: int) -> bool:
 	_build_world(seed_value)
 	# A normal launch has already used its existing class choice to begin.
 	# No second saved-trial prompt or speculative random world is generated.
-	return not terrain.map.is_empty() and terrain.seed_value()==seed_value and terrain.world_profile()==world_profile
+	var started := not terrain.map.is_empty() and terrain.seed_value()==seed_value and terrain.world_profile()==world_profile
+	if started:
+		# A deliberate new world owns a fresh loose-drop set. Loading an identity
+		# uses _build_world directly and restores its saved drops separately.
+		WorldDrops.restore(self, {"version":1,"pickups":[],"bundles":[]})
+	return started
 
 func saved_world_started() -> void:
 	SEED_CONTROLS.show_identity(player,world_seed,world_profile)

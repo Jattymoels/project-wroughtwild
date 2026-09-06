@@ -10,8 +10,8 @@ param(
     [string]$SceneArguments = '',
     [int]$TimeoutSeconds = 180
 )
-# INT-01 review uses copied content and an isolated user directory. It never
-# reads a normal save or stops an editor/game belonging to the owner.
+# INT-01 and targeted reliability reviews use copied content and isolated user data. They never
+# read a normal save or stop an editor/game belonging to the owner.
 $ErrorActionPreference = 'Stop'
 $intensiveRepo = Split-Path $PSScriptRoot
 if ($Runtime -notmatch '^[a-zA-Z0-9_-]+$') { throw 'Runtime must be a simple directory name.' }
@@ -30,6 +30,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $intensiveGame 'project.godot'))) { 
 # The historical world checkpoint fixture expects its review output directory
 # to exist. Provision it inside the copied project, not the owner's build tree.
 New-Item -ItemType Directory -Force -Path (Join-Path $intensiveCopy 'build/strange-frontier') | Out-Null
+New-Item -ItemType Directory -Force -Path (Join-Path $intensiveCopy 'build/codex-aesthetic') | Out-Null
 $intensiveAppData = Join-Path $intensiveRoot ('appdata/' + $Runtime)
 New-Item -ItemType Directory -Force -Path $intensiveAppData | Out-Null
 $priorIntensiveAppData = $env:APPDATA
@@ -64,6 +65,12 @@ try {
         $intensivePipeline = Get-Content (Join-Path $intensiveGame 'run_headless_checks.sh') -Raw
         $intensiveScenes = [regex]::Matches($intensivePipeline,'res://(?:tests|experiments)/[a-z_]+\.tscn') | ForEach-Object Value | Select-Object -Unique
         foreach ($intensiveScene in $intensiveScenes) { Invoke-IntensiveCheck ([IO.Path]::GetFileNameWithoutExtension($intensiveScene)) "--headless $intensiveScene" }
+        # These two-process checks cannot be collapsed into the unique scene
+        # list: the reader must start after its writer process has exited.
+        Invoke-IntensiveCheck 'loose_drop_write' '--headless res://tests/loose_drop_save.tscn -- --write-checkpoint'
+        Invoke-IntensiveCheck 'loose_drop_read' '--headless res://tests/loose_drop_save.tscn -- --read-checkpoint'
+        Invoke-IntensiveCheck 'world_drop_write' '--headless res://tests/first_hour_journey.tscn -- --pickup-probe'
+        Invoke-IntensiveCheck 'world_drop_read' '--headless res://tests/first_hour_journey.tscn -- --pickup-restore'
         foreach ($intensiveIdentity in @('offence','guard','sustain','tempo')) { Invoke-IntensiveCheck "foundry_${intensiveIdentity}_identity" "--headless res://tests/foundry_${intensiveIdentity}_identity.tscn" }
         Invoke-IntensiveCheck 'smoke' '--headless --quit-after 120'
     }

@@ -98,6 +98,22 @@ func _run() -> void:
 		samples[value] = true
 	check(samples.size()>1,"fresh random choices are not a fixed seed or preset slot")
 	var failed_world := launch("314",SAVE)
+	# Reusing a host is the important ownership boundary: failed generation
+	# must retain its drops, and only a successful explicit New World clears it.
+	var old_drop_owner:=Node3D.new()
+	failed_world.add_child(old_drop_owner)
+	var old_pickup:Pickup=Pickup.scatter(old_drop_owner,Vector3(20,1,20),{"wood":11},73,0)[0]
+	old_pickup.set_physics_process(false)
+	var old_bundle:=preload("res://scenes/dropped_bundle.tscn").instantiate() as DroppedBundle
+	old_bundle.contents={"split_stone":5}
+	old_drop_owner.add_child(old_bundle)
+	old_bundle.global_position=Vector3(22,0,20)
+	var prior_drops:=WorldDrops.capture(failed_world)
+	var unrelated_owner:=Node3D.new()
+	get_tree().root.add_child(unrelated_owner)
+	var unrelated_pickup:Pickup=Pickup.scatter(unrelated_owner,Vector3(50,1,50),{"wood":2},74,0)[0]
+	unrelated_pickup.set_physics_process(false)
+	var unrelated_drops:=WorldDrops.capture(unrelated_owner)
 	failed_world.fail_generation = true
 	var before_failed_choice := sim.export_json()
 	var before_failed_bar := failed_world.player.combat.bar_skills()
@@ -106,6 +122,7 @@ func _run() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	check(failed_world.generations==1 and failed_world.terrain.map.is_empty(),"controlled failed generation leaves an empty world")
+	check(WorldDrops.capture(failed_world)==prior_drops,"failed new-world generation retains the old host's nested pickup and death bundle")
 	check(sim.export_json()==before_failed_choice and failed_world.player.combat.bar_skills()==before_failed_bar,"failed launch restores exact pre-choice class, economy and skill loadout")
 	check(not failed_world.player.is_physics_processing() and not failed_world.player.combat.is_physics_processing() and not failed_world.player.is_processing_unhandled_input(),"failed launch keeps movement, combat and save hotkeys paused")
 	check(failed_world.player.class_panel.is_open() and failed_world.seed_controls._backdrop.is_visible_in_tree() and not failed_world.seed_controls.finished,"failed launch reopens the same class chooser over its backdrop")
@@ -114,6 +131,7 @@ func _run() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	check(failed_world.generations==2 and sim.export_json()==before_failed_choice and failed_world.player.combat.bar_skills()==before_failed_bar,"a second failed class choice cannot accumulate kits or progression")
+	check(WorldDrops.capture(failed_world)==prior_drops,"retrying a refused new world cannot discard its existing loose ownership")
 	failed_world.fail_generation = false
 	failed_world.seed_controls.field.text = "77"
 	failed_world.seed_controls._validate()
@@ -123,7 +141,10 @@ func _run() -> void:
 	freeze(failed_world)
 	check(failed_world.generations==3 and failed_world.world_seed==77 and not failed_world.terrain.map.is_empty() and failed_world.seed_controls.finished,"retry prepares the new selected world once after two refused attempts")
 	check(not failed_world.player.class_panel.is_open() and failed_world.player.is_processing_unhandled_input(),"successful retry releases normal play from the same chooser")
+	check(WorldDrops.capture(failed_world)=={"version":1,"pickups":[],"bundles":[]},"successful explicit new-world start removes prior owned pickups and death bundles, including nested ones")
+	check(is_instance_valid(old_drop_owner) and WorldDrops.capture(unrelated_owner)==unrelated_drops,"new-world cleanup preserves unrelated scene nodes and another root's loose drops")
 	failed_world.free()
+	unrelated_owner.free()
 	check(sim.import_json(pristine),"fresh fixture state after the controlled failure and successful retry")
 	var world := launch("bad seed",SAVE)
 	check(world.generations==0 and world.terrain.map.is_empty(),"chooser does not generate a speculative world")

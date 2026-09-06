@@ -3,7 +3,7 @@ extends RefCounted
 ## Writes and restores the whole game in one file: the rules state (economy,
 ## equipment) as the sim's own SaveGame JSON, kept as opaque text so engine
 ## saves and text-playtest saves stay interchangeable, plus the engine-side
-## world: placed shapes, resource nodes and the player's pose.
+## world: placed shapes, finite resources, loose drops, death packs and pose.
 ##
 ## The schema is not yet declared stable (AGENTS.md); it may change until the
 ## vertical slice is accepted. v2 (Wave 4): placed pieces are saved by the
@@ -105,6 +105,7 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 		"blocks": block_data,
 		"resource_nodes": node_data,
 		"stations": site_data,
+		"world_drops": WorldDrops.capture(root),
 	}
 	# Generated worlds carry their seed so a load rebuilds the same terrain.
 	if "world_seed" in root:
@@ -152,6 +153,12 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		last_error = "new-world seed must be a nonnegative 31-bit number"
 		return false
 	var sim: WroughtwildSim = player.inventory.get_sim()
+	# Missing records in old schema-2 saves mean no recorded loose ownership.
+	# Validate the entire new set before native import or any live-node removal.
+	var drops: Variant = data.get("world_drops", {"version":1,"pickups":[],"bundles":[]})
+	if not WorldDrops.valid(drops,sim):
+		last_error = "invalid saved world drops"
+		return false
 	# Validate the whole suspended payload and generation identity before either
 	# the player's economy or their terrain changes. Old v2 saves stay legacy.
 	var profile:=String(data.get("world_profile","legacy_v1"))
@@ -353,6 +360,9 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	if not boundary.is_empty() and not player.trial.restore_boundary(boundary):
 		last_error="suspended trial could not be restored"
 		return false
+	# Replace only after the world and any trial checkpoint have restored. This
+	# is loose world ownership, never a second deposit or trial reward payout.
+	WorldDrops.restore(root,drops)
 	if player.hud != null:
 		player.hud.refresh()
 	return true
