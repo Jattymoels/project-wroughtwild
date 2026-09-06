@@ -80,6 +80,7 @@ if ($Checks) {
     Invoke-GodotReview 'buildings-headless' '--headless res://experiments/building_review.tscn'
     Invoke-GodotReview 'gathering-feedback' '--headless res://tests/gathering_feedback.tscn'
     Invoke-GodotReview 'build-usability' '--headless res://tests/build_usability.tscn'
+    Invoke-GodotReview 'crafting-catalogue' '--headless res://tests/crafting_catalogue.tscn'
     Invoke-GodotReview 'ranged-fairness' '--headless res://tests/ranged_fairness.tscn'
     Invoke-GodotReview 'loot-persistence' '--headless res://tests/loot_persistence.tscn'
     Invoke-GodotReview 'combat-presentation' '--headless res://tests/combat_presentation.tscn'

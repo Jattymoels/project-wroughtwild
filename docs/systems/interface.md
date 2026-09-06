@@ -1,5 +1,7 @@
 # Interface and In-Game Experience
 
+Owner playtest update, 6 September 2026: crafting cards are limited to the current station family and hand work, with native-ready recipes first. Locked local progression remains visible; Improved Forge cards also retain its existing higher-grade wooden equipment work. Explicit ingredient references keep their back path and destination station. See the [station catalogue implementation](../prototype/crafting-catalogue-station-pass-2026-09-06.md).
+
 Owner-approved update, 6 September 2026 (D-026): Ordinary crafting now follows the building catalogue: category/search cards, selected details, grade inspection and a fixed cost/Make footer. Ingredient navigation preserves a back path; a recipe can be pinned during play. Kinds and potency are selected explicitly; exhaustive roll bands remain inspectable. See the [forge implementation record](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026) for tuning, sources and save compatibility.
 
 **Status:** Proposed (Wave 2 kickoff, 1 September 2026) — awaiting owner review as D-015; first slice implemented  

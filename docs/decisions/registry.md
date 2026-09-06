@@ -1,5 +1,14 @@
 # Decision Registry
 
+Owner playtest and workflow continuation, 6 September 2026: the
+[feedback record](../prototype/playtest-feedback-2026-09-06.md) records rewarding
+but insufficiently differentiated melee/trial progression, current-station
+crafting visibility with craftable entries first, and dissatisfaction with the
+current graphical finish. Crafting presentation follows existing station rules;
+combat tuning and a fuller visual target remain proposed. The owner explicitly
+authorises ordinary commits and pushes for approved work to the existing project
+repository's main branch.
+
 Owner Foundry continuation, 6 September 2026: after confirming that Cinder Wake
 and Afterimage shared one operation, “Lets do it then - cover all inputs” approves
 finishing the remaining nine Kind families under D-025. The [all-input work item](../prototype/foundry-all-inputs-2026-09-06.md)

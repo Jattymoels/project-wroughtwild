@@ -90,6 +90,7 @@ func is_open() -> bool:
 func open_crafting(station: StationSite) -> void:
 	_mode = "crafting"
 	_station = station
+	catalogue.open_station()
 	_message.text = ""
 	_root.visible = true
 	refresh()
@@ -100,6 +101,7 @@ func open_crafting(station: StationSite) -> void:
 func open_hand_crafting() -> void:
 	_mode = "crafting"
 	_station = null
+	catalogue.open_station()
 	_message.text = ""
 	_root.visible = true
 	refresh()

@@ -23,6 +23,7 @@ var _cost_summary: Label
 var _detail_scroll: ScrollContainer
 var _pin_hud: Label
 var _pin_clock := 0.0
+var _opened_where: Array[String] = []
 
 func _ready() -> void:
 	size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -77,6 +78,43 @@ func _where() -> Array[String]:
 		chain.append(String(work._station.station_id))
 		if work._station.upgrade_station_id != &"": chain.append(String(work._station.upgrade_station_id))
 	return chain
+
+func open_station() -> void:
+	var here := _where()
+	if here == _opened_where: return
+	_opened_where = here
+	selection = ""
+	history.clear()
+	query = ""
+	aim = ""
+	quality = 1
+	potency_choice = 1
+	quantity = 1
+	operation = "Make"
+	# Bare-hand work has no equipment category. Start with a real local list
+	# instead of carrying an empty or unrelated list over from the last bench.
+	var categories: Array[String] = []
+	for id in work.sim.recipe_ids():
+		var recipe: Dictionary = work.sim.recipe(id)
+		if _local_quality(recipe) > 0:
+			var local_category := _category(recipe)
+			if not categories.has(local_category): categories.append(local_category)
+	if not categories.has(category):
+		for fallback in ["Equipment","Materials","Stations & upgrades"]:
+			if categories.has(fallback):
+				category = fallback
+				break
+
+func _local_quality(recipe: Dictionary) -> int:
+	if _where().has(String(recipe.station)): return 1
+	# Better fittings are existing forge work, including wooden equipment whose
+	# rough assembly belongs to the bench. Ingredient ownership never hides it.
+	if work._station != null and _category(recipe) == "Equipment":
+		var station := String(work._station.current_station_id(work.sim))
+		var preview: Dictionary = work.sim.craft_preview(String(recipe.id))
+		for grade in preview.grades:
+			if int(grade.tier)>1 and String(grade.station)==station: return int(grade.tier)
+	return 0
 
 func _category(recipe: Dictionary) -> String:
 	for output in recipe.outputs:
@@ -139,24 +177,35 @@ func _render_cards() -> void:
 	_clear(_cards)
 	card_count = 0
 	var ids: Array[String] = []
+	var rows := {}
 	for id in work.sim.recipe_ids():
 		var recipe: Dictionary = work.sim.recipe(id)
 		if _category(recipe) != category: continue
 		if query != "" and not String(recipe.display_name).to_lower().contains(query.to_lower()): continue
+		var local_quality := _local_quality(recipe)
+		if local_quality == 0: continue
 		ids.append(String(id))
+		# Native preview reserves inputs before fuel and includes skill/era gates.
+		# A recipe with all its wood committed cannot also count it as spare heat.
+		rows[String(id)] = {"recipe":recipe,"preview":work.sim.craft_preview(id,"",local_quality),"quality":local_quality}
 	ids.sort_custom(func(a: String,b: String) -> bool:
-		var ra: Dictionary = work.sim.recipe(a)
-		var rb: Dictionary = work.sim.recipe(b)
-		var here_a := _where().has(String(ra.station)) and bool(ra.station_available)
-		var here_b := _where().has(String(rb.station)) and bool(rb.station_available)
-		return here_a if here_a != here_b else String(ra.display_name) < String(rb.display_name))
+		var ready_a := bool(rows[a].preview.ready)
+		var ready_b := bool(rows[b].preview.ready)
+		if ready_a != ready_b: return ready_a
+		var name_a := String(rows[a].recipe.display_name)
+		var name_b := String(rows[b].recipe.display_name)
+		return name_a < name_b if name_a != name_b else a < b)
 	if category == "Stations & upgrades" and work._station != null and work._station.upgrade_station_id != &"":
 		_button(_cards,"Improve this forge",func(): selection = "@upgrade"; _render_detail())
 		_button(_cards,"Recast Foundry alloys",func(): selection = "@alloys"; _render_detail())
-	if selection == "" and not ids.is_empty(): selection = ids[0]
+	if selection == "" and not ids.is_empty():
+		selection = ids[0]
+		quality = int(rows[selection].quality)
 	for id in ids:
-		var recipe: Dictionary = work.sim.recipe(id)
+		var recipe: Dictionary = rows[id].recipe
+		var preview: Dictionary = rows[id].preview
 		var card := Button.new()
+		card.set_meta("recipe_id",id)
 		card.custom_minimum_size = Vector2(318,86)
 		card.toggle_mode = true
 		card.button_pressed = selection == id
@@ -174,9 +223,9 @@ func _render_cards() -> void:
 		text.size = Vector2(225,68)
 		card.add_child(text)
 		_label(text,String(recipe.display_name),UiTheme.PARCHMENT,15).mouse_filter = Control.MOUSE_FILTER_IGNORE
-		var here := _where().has(String(recipe.station))
-		var ready: bool = here and recipe.station_available and recipe.skill_met and recipe.inputs_met and recipe.fuel_met and recipe.era_met
-		var status := "Ready here" if ready else "Needs materials" if here and recipe.station_available and recipe.skill_met and recipe.era_met else "By hand" if recipe.station == "" else Hud.pretty(recipe.station)
+		var ready := bool(preview.ready)
+		var status := "Ready here" if ready else String(preview.next_action).replace("_"," ")
+		if int(rows[id].quality)>1: status = String(preview.grades[int(rows[id].quality)-1].quality)+" forging · "+status
 		_label(text,status,UiTheme.GRASS_LIGHT if ready else UiTheme.MUTED,12).mouse_filter = Control.MOUSE_FILTER_IGNORE
 		card_count += 1
 
@@ -185,7 +234,7 @@ func select_recipe(id: String, remember := false) -> void:
 	selection = id
 	aim = ""
 	potency_choice = 1
-	quality = 1
+	quality = maxi(1,_local_quality(work.sim.recipe(id)))
 	quantity = 1
 	operation = "Make"
 	category = _category(work.sim.recipe(id))

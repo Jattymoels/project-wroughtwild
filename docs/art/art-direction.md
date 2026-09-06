@@ -1,5 +1,13 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+Latest owner playtest, 6 September 2026: the graphics still fall below the desired
+finish, described as resembling an old Newgrounds game. Earlier acceptance was
+temporary; the existing style is not final visual approval. A small playable
+visual target and more specific owner influences are proposed in the
+[feedback record](../prototype/playtest-feedback-2026-09-06.md). The current lore,
+readable daylight and weathered direction remain; no new visual style or asset
+service is adopted by this observation.
+
 Latest owner graphics request, 6 September 2026: the supplied reference brings
 forward a pass on leylines and the five rare resources. Weathered, branching
 dark fractures contain narrow cool light; rough organic/mineral hosts hold

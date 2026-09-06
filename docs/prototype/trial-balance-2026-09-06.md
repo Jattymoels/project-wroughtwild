@@ -1,5 +1,12 @@
 # Forge combat measurement — 6 September 2026
 
+Latest human feedback: melee is tough but rewarding; the trial is understandable
+but still feels too easy and does not yet demonstrate a convincing build identity.
+The [playtest record](playtest-feedback-2026-09-06.md) distinguishes this observation
+from proposed density/difficulty changes. The exact build, run and runtime version
+are unknown. The cohort below predates the completed Foundry identity pass and
+does not establish balance for all 96 current readings.
+
 This is a bounded automated measurement pass for the
 [approved Forge intensive](trial-intensive-2026-09-06.md). It measures actual
 Godot enemy and boss physics, collision, projectiles, skill cooldowns, damage,
