@@ -1,5 +1,39 @@
 # World Generation, Settlements and Travel
 
+## Wide Frontier successor — D-032, 6 September 2026
+
+The owner-approved [Wide Frontier work item](../prototype/wide-frontier-intensive-2026-09-06.md)
+introduces a finite `frontier_v6` measuring 1,024 × 1,024 m with 96 vertical
+cells. Broad region identity is composed separately from local relief, so
+wooded hills remain wooded. Four supported home clearings and a quiet starter
+valley accompany larger biome interiors. Existing finite habitats, rare finds,
+caves, Cataclysm scars and the accidentally struck old smithy remain the
+discovery vocabulary. This is a size/composition expansion, not new extraction
+or resource rules. Implementation evidence remains in the linked work item.
+
+The exact former live inputs are frozen as `worldgen-frontier-v5.json`, and
+V1–V5 helpers retain their prior behaviour. Only V6 reads live `worldgen.json`.
+Existing saves retain their profile, seed, finite stock, partial work, terrain
+edits, buildings and machine associations; no existing world is enlarged.
+
+Normal fresh games select a random 31-bit seed; a chosen seed supports replay
+and sharing. Generation is deterministic for `(profile, seed)`, not a curated
+list of maps. Continue restores saved identity before generating terrain.
+Review scenes retain their deterministic exported seed.
+
+V6 exports `home_sites`, `starter_quiet_radius_m`, `hostile_boundary_m` and
+`starter_first_siege_night`. Native composition protects complete ordinary and
+later-era patrol segments from the quiet catchment, including a gathering-noise
+buffer. V6's first eligible home siege is night three; older profiles retain
+night two. Players may leave the heartland whenever they choose. This is
+opening pacing, not invulnerability or a requirement to wait thirty minutes.
+
+Nearby exact terrain now retires distant unedited mesh, collision and samplers
+and rebuilds from authoritative voxels on return. Excavated chunks and their
+seam neighbours remain pinned to preserve visible edits; resource records keep
+partial work and depletion independently. The native full volume still exists,
+so this change does not provide infinite generation or constant total memory.
+
 ## Pressure workshop successor — D-031, 6 September 2026
 
 The [owner-directed leyline/resource graphics pass](../prototype/leyline-resource-visual-2026-09-06.md)
@@ -10,7 +44,7 @@ resource identity, quantity or collision. Buried/broken intervals remain absent,
 and building/excavation refresh suppresses unsupported surface geometry. The
 finite source's appearance reads the ledger and cannot replenish it.
 
-Fresh worlds use **`frontier_v5`**. The finite 512 × 512 m landscape, ordinary
+Preserved **`frontier_v5`** worlds retain a finite 512 × 512 m landscape. Ordinary
 resources, existing rare hauls and approaches reuse the frozen V4 composition.
 One Ventlung-linked ruin is identified as an old **pre-cataclysm blacksmith's
 smithy**. A small asteroid struck its hearth margin, accidentally sending an
@@ -26,7 +60,8 @@ small smithy strike adds no new region, threat, era or raw resource.
 
 `worldgen-frontier-v4.json` freezes the previous live inputs byte-for-byte;
 V4 helpers remain separate from the V5 composition. V4 and earlier saves gain
-no pressure pockets or rewritten geography. Only V5 uses live `worldgen.json`.
+no pressure pockets or rewritten geography. V5 now uses `worldgen-frontier-v5.json`;
+the D-032 successor is the only profile using live `worldgen.json`.
 The generation matrix verifies 64 V5 seeds and 16 complete historical profile/
 seed fingerprints. [Rules, tuning and evidence](../prototype/pressure-workshop-2026-09-06.md).
 

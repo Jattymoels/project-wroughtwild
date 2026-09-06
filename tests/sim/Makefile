@@ -8,7 +8,7 @@ SOURCES := test_main.cpp $(SIM)/src/json.cpp $(SIM)/src/tuning.cpp \
            $(SIM)/src/save.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(SIM)/src/loot.cpp $(SIM)/src/grammar.cpp $(SIM)/src/lattice.cpp $(SIM)/src/foundry.cpp $(SIM)/src/daycycle.cpp
 BIN := build/sim_tests
 
-.PHONY: test world-intensive strange-frontier cataclysm-world pressure-generation contraptions clean
+.PHONY: test world-intensive strange-frontier cataclysm-world pressure-generation wide-frontier contraptions clean
 test: $(BIN)
 	./$(BIN) ../../data/tuning
 
@@ -29,6 +29,13 @@ build/cataclysm_world_tests: test_cataclysm_world.cpp test_strange_frontier.cpp 
 
 pressure-generation: build/pressure_generation_tests
 	./build/pressure_generation_tests ../../data/tuning
+
+wide-frontier: build/wide_frontier_tests
+	./build/wide_frontier_tests ../../data/tuning
+
+build/wide_frontier_tests: test_wide_frontier.cpp test_strange_frontier.cpp worldgen_history.inc $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(wildcard $(SIM)/src/worldgen_*.inc) $(SIM)/src/tuning.cpp $(SIM)/src/json.cpp $(SIM)/src/lattice.cpp $(wildcard $(SIM)/include/wroughtwild/*.h)
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_wide_frontier.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(SIM)/src/tuning.cpp $(SIM)/src/json.cpp $(SIM)/src/lattice.cpp -o $@
 
 build/pressure_generation_tests: test_pressure_generation.cpp test_strange_frontier.cpp worldgen_history.inc $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(wildcard $(SIM)/src/worldgen_*.inc) $(SIM)/src/tuning.cpp $(SIM)/src/json.cpp $(SIM)/src/lattice.cpp $(wildcard $(SIM)/include/wroughtwild/*.h)
 	@mkdir -p build

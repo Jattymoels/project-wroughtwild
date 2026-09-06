@@ -161,7 +161,7 @@ func _material_for(kind: String) -> Material:
 	if frontier_look != null:
 		var frontier_material: Material = frontier_look.terrain_material(kind, float(map.get("cell_size", 1.0)))
 		frontier_material.set_shader_parameter("world_mesh", faceted_surface)
-		if _world_profile in ["frontier_v4", "frontier_v5"] and _augmentation_texture != null:
+		if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6"] and _augmentation_texture != null:
 			frontier_material.set_shader_parameter("augmentation_enabled", true)
 			frontier_material.set_shader_parameter("augmentation_map", _augmentation_texture)
 			frontier_material.set_shader_parameter("augmentation_extent", Vector2(map.width, map.height) * float(map.cell_size))
@@ -206,7 +206,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	_world_profile = sim.world_profile()
 	atmosphere_look = null
 	_augmentation_texture = null
-	if weathered and _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"]:
+	if weathered and _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6"]:
 		frontier_look = preload("res://art/wildland_look.tres")
 		atmosphere_look = preload("res://art/wildland_atmosphere.tres")
 	current_era = int(sim.era().get("index", 1))
@@ -216,7 +216,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	if map.is_empty():
 		push_error("Terrain: sim.world_map returned nothing")
 		return
-	if _world_profile in ["frontier_v4", "frontier_v5"]:
+	if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6"]:
 		var field: PackedFloat32Array = map.get("augmentation_field", PackedFloat32Array())
 		if field.size() == int(map.width) * int(map.height):
 			_augmentation_texture = ImageTexture.create_from_image(Image.create_from_data(int(map.width), int(map.height), false, Image.FORMAT_RF, field.to_byte_array()))
@@ -234,7 +234,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	var geometry_start := Time.get_ticks_msec()
 	if weathered:
 		HabitatCover.prepare(map)
-	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"]:
+	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6"]:
 		chunk_stream=TerrainChunkStream.new()
 		chunk_stream.setup(self)
 	else:
@@ -245,7 +245,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	nodes_root = Node3D.new()
 	nodes_root.name = "ResourceNodes"
 	add_child(nodes_root)
-	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"]:
+	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6"]:
 		resource_stream = ResourceStream.new()
 		resource_stream.setup(self,map["nodes"])
 		resource_stream.focus(surface_position(int(map.spawn_x),int(map.spawn_z)),true)
@@ -263,6 +263,17 @@ func _blend_palette() -> Dictionary:
 ## Coordinates are local to Terrain, matching surface_position and map nodes.
 func ensure_area(local_position: Vector3,radius_m:=32.0) -> void:
 	if chunk_stream != null: chunk_stream.ensure_area(local_position,radius_m)
+
+## The chunk owns all exact surface samplers, cover transforms and collision.
+## No resource records or excavation state belong to its presentation lifetime.
+func _release_chunk(origin: Vector2i) -> bool:
+	var key := "%d_%d" % [origin.x,origin.y]
+	var chunk: Node3D = chunks.get(key)
+	chunks.erase(key)
+	if not is_instance_valid(chunk): return false
+	remove_child(chunk)
+	chunk.free()
+	return true
 
 func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 	var chunk: Node3D
@@ -319,9 +330,9 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 			chunk.add_child(instance)
 
 	elif phase==2:
-		GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"])
+		GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6"])
 		if weathered:
-			HabitatCover.build(chunk,chunk_data,map,cell,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"])
+			HabitatCover.build(chunk,chunk_data,map,cell,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6"])
 
 	elif phase==3:
 		var faces: PackedVector3Array = chunk_data["faces"]
@@ -341,7 +352,7 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 			chunk.add_child(body)
 		# A placed floor can predate this streamed/rebuilt chunk. Suppress
 		# intersecting V3 cover before publishing any visible grass or shrubs.
-		if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"]: StrangeSites.refresh_cover_chunk(self,chunk)
+		if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6"]: StrangeSites.refresh_cover_chunk(self,chunk)
 		chunks["%d_%d" % [int(chunk_data.x),int(chunk_data.z)]]=chunk
 		chunk.visible=true
 	return chunk
@@ -399,12 +410,7 @@ func _rebuild_chunk(cx: int, cz: int) -> void:
 	cx -= cx % CHUNK_CELLS
 	cz -= cz % CHUNK_CELLS
 	if chunk_stream != null: chunk_stream.cancel_chunk(Vector2i(cx,cz))
-	var key := "%d_%d" % [cx, cz]
-	if chunks.has(key):
-		var old: Node3D = chunks[key]
-		remove_child(old)
-		old.free()
-		chunks.erase(key)
+	_release_chunk(Vector2i(cx,cz))
 	var packed := PackedInt32Array()
 	for v in broken:
 		packed.append(v.x)
@@ -470,7 +476,7 @@ func apply_broken_blocks(list: Array) -> void:
 		for origin in _touched_chunk_origins(v.x, v.z):
 			touched[origin] = true
 	broken.clear()
-	if _world_profile in ["frontier_v4", "frontier_v5"]:
+	if _world_profile in ["frontier_v4", "frontier_v5", "frontier_v6"]:
 		var field: PackedFloat32Array = map.get("augmentation_field", PackedFloat32Array())
 		if field.size() == int(map.width) * int(map.height):
 			_augmentation_texture = ImageTexture.create_from_image(Image.create_from_data(int(map.width), int(map.height), false, Image.FORMAT_RF, field.to_byte_array()))

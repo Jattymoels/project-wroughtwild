@@ -50,6 +50,12 @@ struct PlacedNode {
 };
 
 struct SurfacePoint { int x = 0, y = 0, z = 0; };
+struct PlacedHomeSite {
+    std::string id;
+    int x = 0, y = 0, z = 0;
+    double radiusM = 0;
+    std::vector<SurfacePoint> approach;
+};
 struct PlacedHabitat {
     std::string id;
     std::string biome;
@@ -161,6 +167,9 @@ struct WorldMap {
     std::vector<PlacedLeyline> leylines;
     std::vector<PlacedRuin> ruins;
     std::vector<PlacedPressurePocket> pressurePockets;
+    double starterQuietRadiusM = 0, hostileBoundaryM = 0;
+    int starterFirstSiegeNight = 0; // 0 preserves historical host pacing.
+    std::vector<PlacedHomeSite> homeSites;
     std::vector<float> augmentationField; // v4 only; row-major cells, finite [0,1]
     int spawnX = 0, spawnZ = 0;
     int gateX = 0, gateZ = 0;

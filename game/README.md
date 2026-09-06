@@ -21,15 +21,23 @@ on purpose.
 ## Run from a clean checkout
 
 The approved world/trial intensives add three resource habitats and eight
-finished building materials. New worlds now use `frontier_v5`; loading an older save
-keeps its original `legacy_v1`, `frontier_v2`, `frontier_v3` or `frontier_v4` geography. Quarry deposits provide slate and
+finished building materials. New worlds now use `frontier_v6`; loading an older save
+keeps its original V1–V5 geography. Quarry deposits provide slate and
 shellstone, fen banks provide clay and reed, and oldgrowth provides resinheart
 and separate corkbark. Refine at the existing yard, bench or forge. The build
 palette includes Light Panel and Fixed Glazed Window; reed/cork are coverings,
 and pitched roofs still require the existing stonecut unlock.
 
-The Strange Frontier expands new worlds to 512 × 512 m with Rootvault Wildwood,
-Lantern Fen and Glasswind Uplands. Look for papery husks, taut roots, lightning
+The [Wide Frontier](../docs/prototype/wide-frontier-intensive-2026-09-06.md) expands fresh
+worlds to 1,024 × 1,024 m with larger rolling Rootvault Wildwood, Lantern Fen and
+Glasswind Uplands regions, four home clearings and a quiet starter valley.
+Choose a class with a random or typed seed, or Continue your saved world.
+Seeds range from 0 to 2,147,483,647; the same seed and generation version recreate
+the same geography. Help (**H**) displays both. Loading restores the existing
+world and its changes. Preparation takes several seconds; see the linked
+report for measured performance and remaining limits.
+
+The Strange Frontier's discoveries remain: look for papery husks, taut roots, lightning
 scars, sideways iron grit and empty vent cases. **E** works each finite specimen;
 the inventory guide's **Wild finds** tab explains stages and uses. At a workbench,
 assemble the lamp, winch, landing, lever, sorter or bellows. Place kits with
@@ -40,7 +48,7 @@ and restores partial harvesting, links, energy and cargo mid-trip. Existing save
 can obtain components from the previewed completion haul of repeatable Forge runs.
 
 The approved [Cataclysm intensive](../docs/prototype/cataclysm-world-intensive-2026-09-06.md)
-keeps that finite world size and connects its discoveries through impact scars,
+originally kept the 512 m extent and connects its discoveries through impact scars,
 broken/buried/exposed traces and six small supported ruins. Follow the remnants
 of dwellings, waterworks and shelters toward existing rare sources; the Forge
 also has a related threshold. These places express the same extreme augmentation

@@ -125,6 +125,15 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Whole-slice playtest
 
+The [Wide Frontier intensive](wide-frontier-intensive-2026-09-06.md), D-032,
+adds a finite 1 km successor with random/chosen seeds, broader rolling biome
+interiors, four home clearings and a buffered opening. Its scoped generation,
+save, terrain-retention and performance evidence is tracked in that work item.
+Older worlds retain their original geography.
+
+- [ ] Owner confirms V6 offers appealing home choices and a useful first
+  thirty minutes of gathering/building before outward exploration and pressure.
+
 - [ ] The complete loop can be played in approximately 20–40 minutes after onboarding.
 - [ ] A tester can state why they became stronger.
 - [ ] A tester can identify at least one self-chosen next ambition.

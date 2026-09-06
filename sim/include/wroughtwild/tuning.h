@@ -999,6 +999,18 @@ struct PressureSiteParams {
     int strikeLateralCells = 4, strikeForwardCells = -3;
 };
 
+// V6's calm, useful opening is geography; players may leave at any time.
+struct WideFrontierParams {
+    double quietRadiusM = 150, hostileBoundaryM = 190;
+    int firstSiegeNight = 3, homeCount = 4;
+    double homeRadiusM = 14, homeSkirtM = 18, homeDistanceM = 90;
+    int valleyBaseHeight = 26, valleyReliefCells = 8;
+    double valleyFrequency = 0.012, valleyTransitionM = 45;
+    double rollingFrequency = 0.018, crossFrequency = 0.014;
+    double populationKeep = 0.32;
+    int homeTrees = 4, homeBoulders = 3, homeStone = 2, homeIron = 1;
+};
+
 struct WorldgenTable {
     std::string generationProfile;
     std::vector<std::string> generationEliteIds;
@@ -1008,6 +1020,7 @@ struct WorldgenTable {
     FrontierPopulation frontierPopulation;
     CataclysmParams cataclysm;
     PressureSiteParams pressureSite;
+    WideFrontierParams wideFrontier;
     uint64_t defaultSeed = 1;
     MapParams map;
     MountainParams mountains;
@@ -1284,6 +1297,7 @@ struct Tuning {
     WorldgenTable frontierV2Worldgen; // immutable frontier_v2 geography and placement inputs
     WorldgenTable frontierV3Worldgen; // immutable frontier_v3 geography and placement inputs
     WorldgenTable frontierV4Worldgen; // immutable frontier_v4 topology, history and placement inputs
+    WorldgenTable frontierV5Worldgen; // immutable frontier_v5 pressure geography and placement inputs
     GrammarTable grammar;
 };
 

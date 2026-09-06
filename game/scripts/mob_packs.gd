@@ -15,6 +15,9 @@ extends Node
 ## feel discovered, near enough that distant packs cost nothing.
 const ACTIVATION_RANGE_M := 28.0
 const CHECK_SECONDS := 0.4
+## V6 dormant-search cell width: nearby queries visit a small group of dens
+## and route corridors. This changes search cost, never activation distance.
+@export var dormant_cell_width_m := 64.0
 
 var terrain: Terrain
 var packs: Array = []          # {enemies, x, z, spawned, members}
@@ -56,6 +59,12 @@ var _siege_spawned_day := -1
 var _siege_members: Array = []
 var _siege: Dictionary = {}
 var _night_length := 1.0
+var _first_siege_night := 0
+var _indexed := false
+var _pack_bins: Dictionary = {}
+var _active_pack_ids: Dictionary = {}
+## Diagnostic: candidate packs examined by the last local dormant query.
+var last_candidate_count := 0
 
 
 func _ready() -> void:
@@ -86,6 +95,72 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 			"members": [],
 		})
 	load_rules()
+	_indexed = terrain.world_profile() == "frontier_v6"
+	_first_siege_night = int(terrain.map.get("starter_first_siege_night",0)) if _indexed else 0
+	_siege_rolled_day = -1
+	siege_tonight = false
+	_active_pack_ids.clear()
+	_build_pack_index()
+
+func _build_pack_index() -> void:
+	_pack_bins.clear()
+	if not _indexed: return
+	var cell := float(terrain.map.get("cell_size",1))
+	for index in packs.size():
+		var pack: Dictionary = packs[index]
+		pack["index"] = index
+		var den := Vector2((float(pack.x)+.5)*cell,(float(pack.z)+.5)*cell)
+		var ends: Array[Vector2] = [den]
+		if bool(pack.patrols):
+			ends.append((Vector2(pack.route)+Vector2.ONE*.5)*cell)
+			if bool(pack.has_foreign): ends.append((Vector2(pack.foreign)+Vector2.ONE*.5)*cell)
+		var visited: Dictionary = {}
+		for end in ends:
+			# Conservative bins cover the WHOLE den-to-destination segment,
+			# including the later-era foreign route. Final checks use the actual
+			# interpolated 3D point, so a corridor bin never invents a nearby pack.
+			var low := _pack_bin(Vector2(minf(den.x,end.x),minf(den.y,end.y)))
+			var high := _pack_bin(Vector2(maxf(den.x,end.x),maxf(den.y,end.y)))
+			for z in range(low.y,high.y+1):
+				for x in range(low.x,high.x+1):
+					var key := Vector2i(x,z)
+					if visited.has(key): continue
+					visited[key] = true
+					if not _pack_bins.has(key): _pack_bins[key] = []
+					_pack_bins[key].append(index)
+
+func _pack_bin(at: Vector2) -> Vector2i:
+	return Vector2i(floori(at.x/maxf(dormant_cell_width_m,1)),floori(at.y/maxf(dormant_cell_width_m,1)))
+
+func nearby_dormant_packs(at: Vector3, radius: float) -> Array:
+	if not _indexed:
+		last_candidate_count = packs.size()
+		return packs
+	var low := _pack_bin(Vector2(at.x-radius,at.z-radius))
+	var high := _pack_bin(Vector2(at.x+radius,at.z+radius))
+	var found: Dictionary = {}
+	for z in range(low.y,high.y+1):
+		for x in range(low.x,high.x+1):
+			for index in _pack_bins.get(Vector2i(x,z),[]): found[int(index)] = true
+	var indices: Array = found.keys()
+	indices.sort() # Preserve generated order when the population cap chooses.
+	var result: Array = []
+	for index in indices:
+		if not bool(packs[index].spawned): result.append(packs[index])
+	last_candidate_count = result.size()
+	return result
+
+func _active_packs() -> Array:
+	if not _indexed: return packs
+	var result: Array = []
+	for index in _active_pack_ids: result.append(packs[int(index)])
+	return result
+
+func _move_patrol(pack: Dictionary) -> void:
+	if not bool(pack.patrols): return
+	var there := pack_position(pack)
+	for member in pack.members:
+		if is_instance_valid(member) and (member as Enemy).life > 0: (member as Enemy).roam_to(there)
 
 
 ## The population and noise rules from the sim (setup calls this; tests
@@ -112,15 +187,13 @@ func _physics_process(delta: float) -> void:
 		return
 	sleep_far_packs(player.global_position)
 	var live := live_count()
-	for pack in packs:
+	if _indexed:
+		for pack in _active_packs(): _move_patrol(pack)
+	for pack in nearby_dormant_packs(player.global_position,ACTIVATION_RANGE_M):
 		if pack["spawned"]:
 			# A patrol on its feet keeps walking its route: every calm
 			# member roams toward where the pack should be by this hour.
-			if pack["patrols"]:
-				var there := pack_position(pack)
-				for m in pack["members"]:
-					if is_instance_valid(m) and (m as Enemy).life > 0.0:
-						(m as Enemy).roam_to(there)
+			_move_patrol(pack)
 			continue
 		# The cap: a crowd is a crowd, however many packs the walk crossed.
 		if live >= max_live_mobs:
@@ -191,7 +264,7 @@ func noise_at(position: Vector3, kind: String, muffled: bool = false) -> int:
 		woken += 1
 	var packs_woken := 0
 	var live := live_count()
-	for pack in packs:
+	for pack in nearby_dormant_packs(position,radius):
 		if pack["spawned"] or pack["grazer"] or live >= max_live_mobs:
 			continue
 		if pack_position(pack).distance_to(position) > radius:
@@ -224,7 +297,7 @@ func tick_siege(day: Dictionary, player: WroughtwildPlayer, seed_value: int) -> 
 	var index := int(day.get("index", 1))
 	if index != _siege_rolled_day:
 		_siege_rolled_day = index
-		siege_tonight = sim.siege_tonight(seed_value, index)
+		siege_tonight = index >= _first_siege_night and sim.siege_tonight(seed_value, index)
 	if not bool(day.get("night", false)):
 		if not _siege_members.is_empty():
 			dismiss_siege()
@@ -240,6 +313,7 @@ func tick_siege(day: Dictionary, player: WroughtwildPlayer, seed_value: int) -> 
 
 ## The era's pack takes shape around home, hunting from the start.
 func spawn_siege(home: Vector3, index: int) -> int:
+	if index < _first_siege_night: return 0
 	_siege_spawned_day = index
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	if _siege.is_empty():
@@ -335,7 +409,7 @@ func live_count() -> int:
 func sleep_far_packs(player_position: Vector3) -> int:
 	var slept := 0
 	var cell: float = terrain.map["cell_size"] if terrain != null and not terrain.map.is_empty() else 1.0
-	for pack in packs:
+	for pack in _active_packs():
 		if not pack["spawned"]:
 			continue
 		var members: Array = pack["members"]
@@ -363,6 +437,7 @@ func sleep_far_packs(player_position: Vector3) -> int:
 		if not any_alive:
 			# Everyone died: the pack is spent and will not return.
 			pack["members"] = []
+			if _indexed: _active_pack_ids.erase(int(pack.index))
 			continue
 		if not all_calm:
 			continue
@@ -377,12 +452,14 @@ func sleep_far_packs(player_position: Vector3) -> int:
 		pack["members"] = []
 		pack["spawned"] = false
 		pack["resting"] = true  # spawns as plain members again: bonuses already applied once
+		if _indexed: _active_pack_ids.erase(int(pack.index))
 		slept += 1
 	return slept
 
 
 func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	pack["spawned"] = true
+	if _indexed: _active_pack_ids[int(pack.index)] = true
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
 	var ids: PackedStringArray = (pack["enemies"] as PackedStringArray).duplicate()
 	# Herds (D-020 the quiet heartland) are life, not threat: no escorts,

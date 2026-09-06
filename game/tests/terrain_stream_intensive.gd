@@ -85,7 +85,7 @@ func correctness() -> void:
 	var ordinary_key:="%d_%d" % [remote.x,remote.y]
 	stream.focus(terrain.surface_position(int(terrain.map.spawn_x),int(terrain.map.spawn_z)))
 	var ordinary_parts: PackedStringArray=ordinary_key.split("_")
-	check(not (terrain.chunks[ordinary_key] as Node3D).visible,"distant unmodified detail retires to the coarse native skyline")
+	check(not terrain.chunks.has(ordinary_key),"distant unmodified detail releases its mesh, collision and sampler to the coarse native skyline")
 	check(stream._mask.get_pixel(int(ordinary_parts[0])/16,int(ordinary_parts[1])/16).r<0.5,"retired detail reveals the actual far heightfield")
 	# Restoring excavation rebuilds the exact changed chunks, even if hidden.
 	terrain.apply_broken_blocks([])

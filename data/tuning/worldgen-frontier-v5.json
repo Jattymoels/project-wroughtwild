@@ -1,35 +1,35 @@
 {
   "schema_version": 3,
-  "status": "D-032: finite one-kilometre wide frontier and quiet starter valley",
+  "status": "Wave 3 world slice 1: 3D block field, mountains, caves, danger rings",
   "default_seed": 1,
-  "generation_profile": "frontier_v6",
+  "generation_profile": "frontier_v5",
   "generation_elite_ids": [
     "unfreezable",
     "cinder_blooded",
     "stonehide",
     "hastened"
   ],
-  "profile_design_purpose": "V6 adds wider rolling discovery regions and a geographical quiet opening. V1\u2013V5 are frozen; no old world or stock is migrated.",
+  "profile_design_purpose": "The Strange Frontier adds three continuous outer regions and five finite discoverable capabilities. New worlds use frontier_v3; legacy_v1 and frontier_v2 each retain their exact frozen source and placement data. No rare deposits are inserted into old saves.",
   "map": {
-    "width_cells": 1024,
-    "height_cells": 1024,
+    "width_cells": 512,
+    "height_cells": 512,
     "cell_size_m": 1.0,
-    "world_depth": 96,
-    "base_height": 24,
-    "height_scale": 28,
-    "height_frequency": 0.009,
+    "world_depth": 48,
+    "base_height": 12,
+    "height_scale": 10,
+    "height_frequency": 0.02,
     "height_octaves": 3,
-    "moisture_frequency": 0.0045,
-    "design_purpose": "1024m square and96 vertical cells provide four times V5 land area and room for wooded hills/cave depth. Low frequency broadens rolling contours instead of stretching the one-metre construction grid."
+    "moisture_frequency": 0.01,
+    "design_purpose": "512 metre square, 48 block levels: 2.56 times the previous ground area, with the additional travel in optional outer country. Existing starter radii and material habitat distances remain. Regional masks compose large recognisable places. Population is thinned beyond the existing routes rather than multiplied with area."
   },
   "mountains": {
-    "extra_scale": 25,
-    "frequency": 0.017,
-    "cragginess_frequency": 0.004,
-    "cragginess_threshold": 0.63,
-    "rim_width_cells": 68,
-    "rim_extra_scale": 24,
-    "design_purpose": "Slow localized mountain ridges and a broad outer shoulder provide meaningful elevation without turning the starter valley into cliffs. Extra height remains inside96 levels."
+    "extra_scale": 14,
+    "frequency": 0.038,
+    "cragginess_frequency": 0.008,
+    "cragginess_threshold": 0.6,
+    "rim_width_cells": 34,
+    "rim_extra_scale": 16,
+    "design_purpose": "The rim (Wave 6 slice 4, the expansive pass, 4 Sep 2026): over the outer rim_width_cells the land climbs up to rim_extra_scale blocks more, ridged by the massif noise so it is a ring of mountains and not a wall - the valley reads as a valley from anywhere in it, and its edge is a horizon rather than a cliff into nothing. The verticality layer: where the slow cragginess field exceeds its threshold, ridged noise piles up to extra_scale further blocks - localized massifs with cliffs and vistas instead of uniformly lumpy ground. Raising the threshold makes mountains rarer; raising extra_scale makes them taller."
   },
   "strata": {
     "dirt_depth": 3,
@@ -66,12 +66,12 @@
   "danger": {
     "rings": [
       {
-        "radius_m": 260,
+        "radius_m": 110,
         "pack_size_bonus": 0,
         "elite_chance": 0.0
       },
       {
-        "radius_m": 420,
+        "radius_m": 220,
         "pack_size_bonus": 1,
         "elite_chance": 0.14
       },
@@ -118,7 +118,7 @@
       "id": "rocky_hills",
       "display_name": "Rocky Hills",
       "surface": "rock",
-      "height_min": 53,
+      "height_min": 19,
       "node_density": {
         "boulder": 0.03,
         "iron_vein": 0.016,
@@ -186,7 +186,7 @@
       "id": "fen",
       "display_name": "The Fen",
       "surface": "marsh",
-      "height_max": 32,
+      "height_max": 15,
       "moisture_min": 0.55,
       "node_density": {
         "bog_oak": 0.02,
@@ -520,21 +520,21 @@
   "guarantees": {
     "spawn_biome": "meadow",
     "spawn_clear_radius_m": 8,
-    "near_radius_m": 65,
+    "near_radius_m": 55,
     "min_nodes_near": {
       "tree": 8,
       "boulder": 5,
       "stone_seam": 3
     },
-    "far_radius_m": 135,
+    "far_radius_m": 120,
     "min_nodes_far": {
       "iron_vein": 3
     },
     "gate_biome": "ember_wastes",
-    "gate_min_distance_m": 240,
-    "pack_min_distance_from_spawn_m": 190,
-    "patrol_length_m": 85,
-    "design_purpose": "Ordinary supplies form short valley loops: wood/stone65m, iron135m. Hostile dens start190m out; V6 also validates full patrol segments. The Forge is an outward journey beyond240m, not an opening prerequisite."
+    "gate_min_distance_m": 160,
+    "pack_min_distance_from_spawn_m": 50,
+    "patrol_length_m": 70,
+    "design_purpose": "D-003 authored-content rules: every valid seed starts in a safe flat meadow clearing (never carved beneath), has enough wood and stone within a short walk, keeps iron a walk away (Wave 6 slice 2, 4 Sep 2026: three veins within far_radius_m, none guaranteed near - the first forge is a journey into the hills and back), keeps mob packs off the doorstep, and places the trial gate far away in the wastes so it is an ambition before it is a destination. gate_min_distance grew with the map Three stone seams within the near radius (D-021): the first quarry is always a short walk."
   },
   "habitats": [
     {
@@ -544,8 +544,8 @@
       "fallback_biome": "meadow",
       "seed_salt": 41021,
       "radius_m": 12,
-      "min_distance_m": 100,
-      "max_distance_m": 205,
+      "min_distance_m": 65,
+      "max_distance_m": 145,
       "resource_spacing_m": 2.5,
       "max_surface_step_cells": 1,
       "resources": [
@@ -567,8 +567,8 @@
       "fallback_biome": "meadow",
       "seed_salt": 41039,
       "radius_m": 12,
-      "min_distance_m": 100,
-      "max_distance_m": 205,
+      "min_distance_m": 65,
+      "max_distance_m": 145,
       "resource_spacing_m": 2.5,
       "max_surface_step_cells": 1,
       "resources": [
@@ -590,8 +590,8 @@
       "fallback_biome": "meadow",
       "seed_salt": 41047,
       "radius_m": 13,
-      "min_distance_m": 100,
-      "max_distance_m": 205,
+      "min_distance_m": 65,
+      "max_distance_m": 145,
       "resource_spacing_m": 3,
       "max_surface_step_cells": 1,
       "resources": [
@@ -666,39 +666,39 @@
       "display_name": "Rootvault Wildwood",
       "biome": "forest",
       "seed_salt": 56011,
-      "radius_m": 145,
-      "transition_m": 45,
-      "distance_m": 350,
-      "base_height": 28,
-      "relief_cells": 28,
+      "radius_m": 62,
+      "transition_m": 18,
+      "distance_m": 166,
+      "base_height": 18,
+      "relief_cells": 3,
       "authored_cave": true,
-      "design_purpose": "250\u2013320m biome core with broad independent hills/banks and45m blended margins. Altitude does not replace its forest/fen identity. Seeded orientation varies its outlook; separate rolling wavelengths keep ordinary approaches walkable."
+      "design_purpose": "The core radius supplies a continuous 120 metre identity; the transition blends into existing ground. Distance keeps the new journey outside the familiar heartland. Base height and slow relief distinguish wet shelves, wooded banks and pale uplands. The separate salt changes local composition without depending on definition order."
     },
     {
       "id": "lantern_fen",
       "display_name": "Lantern Fen",
       "biome": "fen",
       "seed_salt": 56021,
-      "radius_m": 125,
-      "transition_m": 45,
-      "distance_m": 340,
-      "base_height": 22,
-      "relief_cells": 28,
+      "radius_m": 60,
+      "transition_m": 20,
+      "distance_m": 166,
+      "base_height": 13,
+      "relief_cells": 2,
       "authored_cave": false,
-      "design_purpose": "250\u2013320m biome core with broad independent hills/banks and45m blended margins. Altitude does not replace its forest/fen identity. Seeded orientation varies its outlook; separate rolling wavelengths keep ordinary approaches walkable."
+      "design_purpose": "The core radius supplies a continuous 120 metre identity; the transition blends into existing ground. Distance keeps the new journey outside the familiar heartland. Base height and slow relief distinguish wet shelves, wooded banks and pale uplands. The separate salt changes local composition without depending on definition order."
     },
     {
       "id": "glasswind_uplands",
       "display_name": "Glasswind Uplands",
       "biome": "rocky_hills",
       "seed_salt": 56039,
-      "radius_m": 160,
-      "transition_m": 45,
-      "distance_m": 365,
-      "base_height": 38,
-      "relief_cells": 35,
+      "radius_m": 64,
+      "transition_m": 18,
+      "distance_m": 168,
+      "base_height": 23,
+      "relief_cells": 4,
       "authored_cave": false,
-      "design_purpose": "250\u2013320m biome core with broad independent hills/banks and45m blended margins. Altitude does not replace its forest/fen identity. Seeded orientation varies its outlook; separate rolling wavelengths keep ordinary approaches walkable."
+      "design_purpose": "The core radius supplies a continuous 120 metre identity; the transition blends into existing ground. Distance keeps the new journey outside the familiar heartland. Base height and slow relief distinguish wet shelves, wooded banks and pale uplands. The separate salt changes local composition without depending on definition order."
     }
   ],
   "rare_sites": [
@@ -776,13 +776,13 @@
     }
   ],
   "frontier_population": {
-    "outer_distance_m": 150,
-    "outer_node_keep": 1.0,
-    "outer_pack_keep": 1.0,
+    "outer_distance_m": 145,
+    "outer_node_keep": 0.28,
+    "outer_pack_keep": 0.3,
     "clue_quiet_radius_m": 8,
-    "gate_target_distance_m": 285,
+    "gate_target_distance_m": 180,
     "exceptional_site_maximum": 2,
-    "design_purpose": "V6 prefilters ordinary outer population before allocation using wide_frontier.population_keep. These historical postfilter values are neutral. Rare/exceptional counts and first quiet clue lanes remain bounded; the gate aims285m out."
+    "design_purpose": "Keep normal supply and danger close to existing travel distances. Only 28 percent of ordinary outer nodes and 30 percent of outer packs survive the larger-area pass; broad regional fields replace scattered trees at rare sites. Eight metre peaceful clue lanes and clear working circles keep exploration readable. Some optional detours retain ordinary guards. Forge distance aims at 180 metres, with its existing 160 metre minimum. Zero to two additional exceptional compositions supply luck without gating capability."
   },
   "cataclysm": {
     "impact_offset_m": 24,
@@ -820,7 +820,7 @@
       "ruin_skirt_m": "Gentle foundation shoulders join rooms to natural terrain.",
       "discovery_distance_m": "Short evidence-led journey from an inhabited remnant to its finite rare source.",
       "path_clearance_m": "Ordinary walking width kept clear of sources and decorative ruin walls.",
-      "threshold_search_m": "Bounded search finds a complete threshold; if the original gate has no viable foundation, relocate the pair within this neighbourhood while keeping its biome and progression distance.",
+      "threshold_search_m": "Bounded fallback radius finds a complete threshold beside rugged gate terrain.",
       "threshold_distance_m": "Prefer a short final approach from the threshold ruin to the existing Forge gate.",
       "regional_ruin_distance_m": "Place former dwellings on the homeward edge of their amplified regional centre.",
       "foundation_relief_cells": "Reject heavily terraced candidates before flattening a ruin foundation; gentle shoulders remain walkable."
@@ -855,46 +855,6 @@
       "pocket_offset_cells": "Lateral and forward source position relative to the pre-cataclysm smithy orientation.",
       "work_offset_cells": "Ordinary grounded interaction point inside the existing three-metre central strip.",
       "strike_offset_cells": "Impact at the old room margin leaves its cause visible and the workshop approach open."
-    }
-  },
-  "wide_frontier": {
-    "quiet_radius_m": 150,
-    "hostile_boundary_m": 190,
-    "first_siege_night": 3,
-    "home_count": 4,
-    "home_radius_m": 14,
-    "home_skirt_m": 18,
-    "home_distance_m": 90,
-    "valley_base_height": 26,
-    "valley_relief_cells": 8,
-    "valley_frequency": 0.012,
-    "valley_transition_m": 45,
-    "rolling_frequency": 0.018,
-    "cross_frequency": 0.014,
-    "population_keep": 0.16,
-    "home_trees": 4,
-    "home_boulders": 3,
-    "home_stone": 2,
-    "home_iron": 1,
-    "purposes": {
-      "quiet_radius_m": "Quiet starter radius containing home and basic supply choices; no immunity timer.",
-      "hostile_boundary_m": "Minimum horizontal distance of every hostile anchor and complete patrol segment, including a 40 m gathering/activation buffer.",
-      "first_siege_night": "First eligible home siege is night three; old profiles retain their own opening.",
-      "home_count": "Four reachable home choices, never a larger settlement catalogue.",
-      "home_radius_m": "Radius of practical circular building ground.",
-      "home_skirt_m": "Soft shoulder blends each clearing into rolling grass rather than a rectangular platform.",
-      "home_distance_m": "Approximate distance of home choices from spawn, within the valley.",
-      "valley_base_height": "Starter valley elevation leaves space beneath for later digging.",
-      "valley_relief_cells": "Gentle vertical range across homeward land.",
-      "valley_frequency": "Broad valley noise changes outlooks without abrupt steps.",
-      "valley_transition_m": "Blend width between quiet rolling ground and surrounding landforms.",
-      "rolling_frequency": "Primary regional hill wavelength; slower than V5 for walking-scale hills.",
-      "cross_frequency": "Cross-direction regional bank wavelength prevents identical contours.",
-      "population_keep": "Stable retained fraction of ordinary outer resources and packs before allocation; composed regions resample their own biome supplies at the same fraction.",
-      "home_trees": "Guaranteed reachable trees beside each home.",
-      "home_boulders": "Guaranteed reachable boulders beside each home.",
-      "home_stone": "Guaranteed reachable stone seams beside each home.",
-      "home_iron": "Guaranteed reachable iron source beside each home; preserves the existing raw item."
     }
   }
 }

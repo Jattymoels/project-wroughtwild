@@ -1,7 +1,9 @@
 class_name TerrainChunkStream
 extends RefCounted
-## The full native world always exists. Only exact near geometry is staged;
-## distant terrain is the same generated heightfield at a coarser resolution.
+## The full native world always exists. Exact near geometry is staged and
+## retired; distant terrain is the same generated surface at lower detail.
+## Excavation and its seam neighbours stay exact until a far edited-surface
+## representation exists. Ordinary exploration does not retain visited chunks.
 var terrain: Terrain
 var _settings: Dictionary
 var _mask: Image
@@ -13,6 +15,11 @@ var _timer := 0.0
 var _mask_dirty := false
 var chunk_build_ms: Array[float] = []
 var phase_build_ms: Array[float] = []
+var chunk_retire_ms: Array[float] = []
+var chunks_built_total := 0
+var chunks_retired_total := 0
+var horizon_build_ms := 0.0
+var horizon_triangles := 0
 var _job: Dictionary = {}
 
 func setup(owner_terrain: Terrain) -> void:
@@ -52,7 +59,8 @@ func _build(origin: Vector2i) -> void:
 	terrain._sim.set_world_profile(terrain.world_profile())
 	var data: Dictionary = terrain._sim.world_mesh_chunk(terrain.seed_value(),Terrain.CHUNK_CELLS,origin.x,origin.y,terrain.broken_packed(),terrain.faceted_surface,terrain._blend_palette())
 	terrain._build_chunk(data,float(terrain.map.cell_size))
-	chunk_build_ms.append((Time.get_ticks_usec()-began)/1000.0)
+	_record(chunk_build_ms,(Time.get_ticks_usec()-began)/1000.0)
+	chunks_built_total+=1
 	set_detail(origin,true)
 	_refresh_nodes(origin)
 
@@ -88,6 +96,9 @@ func _flush_mask() -> void:
 		_mask_dirty=false
 
 func ensure_area(point: Vector3,radius_m:=32.0) -> void:
+	# Restores and teleports also move the retirement focus. Otherwise repeated
+	# synchronous visits could keep whole regions alive without a player tick.
+	focus(point)
 	_finish_job()
 	for origin in _origins(point,radius_m): _build(origin)
 	_flush_mask()
@@ -108,11 +119,38 @@ func focus(point: Vector3) -> void:
 	# must never refill a player-made quarry while looking back from a ridge.
 	for v in terrain.broken:
 		for origin in terrain._touched_chunk_origins(v.x,v.z): keep["%d_%d" % [origin.x,origin.y]]=true
-	for key in terrain.chunks:
+	# A completed stale job would publish collision behind the player after
+	# retirement. Free its partial meshes/sampler as well as its native payload.
+	if not _job.is_empty():
+		var job_key := "%d_%d" % [_job.origin.x,_job.origin.y]
+		if not wanted.has(job_key) and not keep.has(job_key): cancel_chunk(_job.origin)
+	for key in terrain.chunks.keys():
 		if wanted.has(key) or keep.has(key): continue
 		var parts: PackedStringArray=String(key).split("_")
-		set_detail(Vector2i(int(parts[0]),int(parts[1])),false)
+		_retire(Vector2i(int(parts[0]),int(parts[1])))
 	_flush_mask()
+
+func _retire(origin: Vector2i) -> void:
+	var began := Time.get_ticks_usec()
+	set_detail(origin,false)
+	# Samplers, editable-face mappings, cover poses, GPU meshes and physics
+	# shapes are owned by this one node. Freeing it releases them together.
+	if terrain._release_chunk(origin):
+		chunks_retired_total+=1
+		_record(chunk_retire_ms,(Time.get_ticks_usec()-began)/1000.0)
+
+func _record(values: Array[float],milliseconds: float) -> void:
+	values.append(milliseconds)
+	if values.size()>int(_settings.diagnostic_window_samples): values.pop_front()
+
+func retention() -> Dictionary:
+	var pinned := {}
+	for v in terrain.broken:
+		for origin in terrain._touched_chunk_origins(v.x,v.z): pinned["%d_%d" % [origin.x,origin.y]]=true
+	return {"resident_chunks":terrain.chunks.size(),"edited_chunk_bound":pinned.size(),
+		"near_chunk_bound":_origins(_focus,float(_settings.terrain_keep_radius_m)).size() if _focus.is_finite() else 0,
+		"partial_chunks":0 if _job.is_empty() else 1,"built_total":chunks_built_total,"retired_total":chunks_retired_total,
+		"horizon_triangles":horizon_triangles,"horizon_build_ms":horizon_build_ms}
 
 func tick(delta: float,point: Vector3) -> void:
 	# A direct teleport is a supported restore/review path. Even a caller that
@@ -145,10 +183,9 @@ func _step_job() -> void:
 		if int(_job.phase)==4:
 			set_detail(_job.origin,true)
 			_refresh_nodes(_job.origin)
+			chunks_built_total+=1
 			_job.clear()
-	phase_build_ms.append((Time.get_ticks_usec()-began)/1000.0)
-	# Bounded diagnostic window; an afternoon of exploration does not grow a log.
-	if phase_build_ms.size()>512: phase_build_ms.pop_front()
+	_record(phase_build_ms,(Time.get_ticks_usec()-began)/1000.0)
 
 func _finish_job() -> void:
 	while not _job.is_empty(): _step_job()
@@ -174,20 +211,33 @@ func _colour(x: int,z: int) -> Color:
 	return c.srgb_to_linear()
 
 func _build_horizon() -> void:
+	var began := Time.get_ticks_usec()
 	var surface:=SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var step:=int(_settings.terrain_far_step_cells)
 	var width:=int(terrain.map.width)
 	var height:=int(terrain.map.height)
 	var cell:=float(terrain.map.cell_size)
-	for z in range(0,height,step):
-		for x in range(0,width,step):
-			var x1:=mini(x+step,width)
-			var z1:=mini(z+step,height)
-			var points: Array[Vector2i]=[Vector2i(x,z),Vector2i(x,z1),Vector2i(x1,z),Vector2i(x1,z),Vector2i(x,z1),Vector2i(x1,z1)]
-			for p in points:
-				surface.set_color(_colour(p.x,p.y))
-				surface.add_vertex(Vector3(p.x*cell,_height(p.x,p.y)*cell,p.y*cell))
+	# Sample each grid point once, instead of six repeated terrain/palette
+	# lookups per quad. Topology and native heights stay identical at 1 km.
+	var columns:=ceili(float(width)/step)+1
+	var rows:=ceili(float(height)/step)+1
+	var positions:=PackedVector3Array()
+	var colours:=PackedColorArray()
+	positions.resize(columns*rows)
+	colours.resize(columns*rows)
+	for iz in rows:
+		for ix in columns:
+			var x:=mini(ix*step,width)
+			var z:=mini(iz*step,height)
+			positions[iz*columns+ix]=Vector3(x*cell,_height(x,z)*cell,z*cell)
+			colours[iz*columns+ix]=_colour(x,z)
+	for iz in rows-1:
+		for ix in columns-1:
+			var a:=iz*columns+ix
+			for index in [a,a+columns,a+1,a+1,a+columns,a+columns+1]:
+				surface.set_color(colours[index])
+				surface.add_vertex(positions[index])
 	surface.generate_normals()
 	_horizon=MeshInstance3D.new()
 	_horizon.name="StrangeFrontierHorizon"
@@ -198,3 +248,5 @@ func _build_horizon() -> void:
 	material.set_shader_parameter("world_size",Vector2(width*cell,height*cell))
 	_horizon.material_override=material
 	terrain.add_child(_horizon)
+	horizon_triangles=(columns-1)*(rows-1)*2
+	horizon_build_ms=(Time.get_ticks_usec()-began)/1000.0

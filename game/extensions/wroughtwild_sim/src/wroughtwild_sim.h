@@ -677,7 +677,7 @@ private:
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run
     wroughtwild::trial::GateState trial_gate_;
     std::unique_ptr<wroughtwild::combat::HitStream> hits_;
-    std::unique_ptr<wroughtwild::worldgen::WorldMap> world_cache_; // last seed's world
+    mutable std::unique_ptr<wroughtwild::worldgen::WorldMap> world_cache_; // last queried identity, including validated restores
     std::string world_profile_ = "legacy_v1";
     wroughtwild::lattice::Structure structure_; // the player's placed pieces
     std::set<std::string> active_skill_mods_; // debug toggles (F1-F3)

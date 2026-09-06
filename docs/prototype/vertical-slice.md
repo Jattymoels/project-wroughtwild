@@ -40,6 +40,11 @@ The player begins in a small valley with crude equipment and a basic shelter loc
 
 ## Explicit exclusions
 
+Owner-approved D-032 adds the finite [Wide Frontier successor](wide-frontier-intensive-2026-09-06.md):
+1,024 m, larger rolling regions, four home choices and a calmer starter
+catchment. This supersedes the earlier 512 m extent only for new V6 worlds;
+older geography stays frozen. Two-kilometre and infinite worlds remain excluded.
+
 Owner-approved D-030 adds the bounded [cataclysm art/generation intensive](cataclysm-world-intensive-2026-09-06.md)
 to the later prototype: composed impact/leyline/ruin relationships and local
 authored asset integration. It preserves finite world scope and existing gameplay

@@ -63,7 +63,7 @@ void pressureComposition(const tuning::Tuning& t,uint64_t seed) {
  check(m.augmentationField.size()==m.cells.size(),"v5 lost native augmentation field");
  for(auto value:m.augmentationField)check(std::isfinite(value)&&value>=0&&value<=1,"source field became unbounded");
  check(m.augmentationField[p.z*m.width+p.x]>0.5,"native accident lacks visible local influence");
- if(seed==1||seed==7){auto reordered=t;std::reverse(reordered.worldgen.regions.begin(),reordered.worldgen.regions.end());std::reverse(reordered.worldgen.rareSites.begin(),reordered.worldgen.rareSites.end());std::reverse(reordered.worldgen.habitats.begin(),reordered.worldgen.habitats.end());
+ if(seed==1||seed==7){auto reordered=t;std::reverse(reordered.frontierV5Worldgen.regions.begin(),reordered.frontierV5Worldgen.regions.end());std::reverse(reordered.frontierV5Worldgen.rareSites.begin(),reordered.frontierV5Worldgen.rareSites.end());std::reverse(reordered.frontierV5Worldgen.habitats.begin(),reordered.frontierV5Worldgen.habitats.end());
   check(pressureFingerprint(m)==pressureFingerprint(worldgen::generateProfile(reordered,seed,"frontier_v5")),"definition order rerolled pressure identity");}
  std::cout<<"PRESSURE_SEED "<<seed<<" source="<<p.x<<","<<p.y<<","<<p.z<<" work="<<p.workPosition.x<<","<<p.workPosition.y<<","<<p.workPosition.z<<" approach="<<p.approach.size()<<" hash="<<pressureFingerprint(m)<<std::endl;
 }
@@ -71,7 +71,7 @@ void pressureComposition(const tuning::Tuning& t,uint64_t seed) {
 
 int main(int argc,char** argv){try{
  const std::string dir=argc>1?argv[1]:"data/tuning";tuning::Tuning t;
- t.worldgen=tuning::loadWorldgen(dir+"/worldgen.json");t.legacyWorldgen=tuning::loadWorldgen(dir+"/worldgen-legacy-v1.json");
+ t.frontierV5Worldgen=tuning::loadWorldgen(dir+"/worldgen-frontier-v5.json");t.worldgen=t.frontierV5Worldgen;t.legacyWorldgen=tuning::loadWorldgen(dir+"/worldgen-legacy-v1.json");
  t.frontierV2Worldgen=tuning::loadWorldgen(dir+"/worldgen-frontier-v2.json");t.frontierV3Worldgen=tuning::loadWorldgen(dir+"/worldgen-frontier-v3.json");t.frontierV4Worldgen=tuning::loadWorldgen(dir+"/worldgen-frontier-v4.json");
  frozenPressureProfiles(t);
  for(uint64_t sample=1;sample<=64;++sample)pressureComposition(t,sample<=32?sample:sample*2654435761ull);

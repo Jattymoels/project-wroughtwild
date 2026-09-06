@@ -138,11 +138,24 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	if not _valid_world_payload(data):
 		last_error = "save contains invalid world or player fields"
 		return false
+	var root: Node = player.world_root()
+	# A generated world cannot restore an identity-less payload into the new
+	# empty launch scene. Reject before importing economy or enabling movement;
+	# seedless authored greybox saves remain supported by their authored hosts.
+	if (root.has_method("apply_world_identity") or root.has_method("apply_world_seed")) and not data.has("world_seed"):
+		last_error = "generated-world save is missing its world seed"
+		return false
+	if data.has("world_seed") and (float(data.world_seed) < -2147483648.0 or float(data.world_seed) > 2147483647.0):
+		last_error = "world seed is outside the native signed 32-bit range"
+		return false
+	if String(data.get("world_profile", "legacy_v1")) == "frontier_v6" and int(data.get("world_seed", 0)) < 0:
+		last_error = "new-world seed must be a nonnegative 31-bit number"
+		return false
 	var sim: WroughtwildSim = player.inventory.get_sim()
 	# Validate the whole suspended payload and generation identity before either
 	# the player's economy or their terrain changes. Old v2 saves stay legacy.
 	var profile:=String(data.get("world_profile","legacy_v1"))
-	if profile not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5"]:
+	if profile not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6"]:
 		last_error="unknown world generation profile: "+profile
 		return false
 	if not _valid_text(data.get("contraptions","")) or not sim.contraption_validate_world(String(data.get("contraptions","")), profile, int(data.get("world_seed",0))):
@@ -199,7 +212,6 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 		last_error="contraption state rejected: "+sim.last_error()
 		return false
 
-	var root: Node = player.world_root()
 	# In-flight casts belong to the previous live state, never to a loaded save.
 	for group in ["skill_bursts", "foundry_fields", "foundry_returns", "foundry_echoes", "foundry_embers", "foundry_cold", "foundry_offence", "foundry_guard", "foundry_sustain", "foundry_tempo", "player_projectiles"]:
 		for effect in root.get_tree().get_nodes_in_group(group):

@@ -48,13 +48,13 @@ Config feederConfig(Config config, const std::string& directory) {
     return config;
 }
 
-void feederChecks(Config config, const std::string& directory, const std::string& legacySave) {
+void feederChecks(Config config, const std::string& directory, const std::string& legacySave, const std::string& profile) {
     check(!MachineWorld(config).create("unconfigured","pressure_feeder").ok, "unconfigured host cannot create an unsaveable feeder");
     config=feederConfig(std::move(config),directory);
     check(config.pressureSourceStrokes==24 && config.energyCapacity==4 && config.feederInputUnits==64 && config.feederOutputUnits==32 && config.feederBatchCycles==4 && config.feederCycleSeconds==8 && config.feederAttachmentRange==8, "approved pressure budgets are engine-neutral tuning");
     // A seed above JSON's exact numeric integer range exercises the opaque
     // decimal-string identity and prevents accidental lossy seed comparisons.
-    const WorldIdentity identity{"frontier_v5",18446744073709551557ull,{{"ppv5_old_blacksmith",{2,0,0},24}}};
+    const WorldIdentity identity{profile,18446744073709551557ull,{{"ppv5_old_blacksmith",{2,0,0},24}}};
     MachineWorld feeder(config,identity);
     check(feeder.sourceRemaining("ppv5_old_blacksmith")==24 && feeder.sourceRemaining("missing")==-1, "only generated source definitions initialize finite pressure");
     check(feeder.validate(feeder.serialize()), "empty source ledger roundtrips before machinery exists");
@@ -116,7 +116,10 @@ void feederChecks(Config config, const std::string& directory, const std::string
         check(!resumed.restore(bad,&reason) && !reason.empty(), "corrupt pressure save rejected with reason");
         check(resumed.serialize()==before, "corrupt restore preserves machine and finite source ledger atomically");
     };
-    invalid(changed(partial,"\"world_profile\":\"frontier_v5\"","\"world_profile\":\"frontier_v4\""));
+    invalid(changed(partial,"\"world_profile\":\""+profile+"\"","\"world_profile\":\"frontier_v4\""));
+    auto otherProfile=identity;
+    otherProfile.profile=profile=="frontier_v5" ? "frontier_v6" : "frontier_v5";
+    check(!MachineWorld(config,otherProfile).validate(partial), "same seed and source cannot transplant pressure between generations");
     invalid(changed(partial,"\"world_seed\":\"18446744073709551557\"","\"world_seed\":18446744073709551557"));
     invalid(changed(partial,"\"world_seed\":\"18446744073709551557\"","\"world_seed\":\"18446744073709551556\""));
     invalid(changed(partial,"\"sources\":{\"ppv5_old_blacksmith\":20}","\"sources\":{}"));
@@ -310,7 +313,8 @@ int main(int argc, char** argv) {
         invalid(changed(travelling, "\"quarter_turns\":0", "\"quarter_turns\":7"));
         invalid(changed(travelling, "\"position\":[4,1,0]", "\"position\":[40000,1,0]"));
         check(restored.validate(restored.serialize()), "final complete world valid");
-        feederChecks(config,std::string(argc>1 ? argv[1] : "../../data/tuning"),travelling);
+        for (const auto& profile : {"frontier_v5", "frontier_v6"})
+            feederChecks(config,std::string(argc>1 ? argv[1] : "../../data/tuning"),travelling,profile);
         std::cout << "Contraptions: " << checks << " checks, 0 failures\n";
         return 0;
     } catch (const std::exception& error) {

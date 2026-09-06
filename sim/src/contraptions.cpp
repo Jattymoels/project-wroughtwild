@@ -132,7 +132,7 @@ Config Config::load(const std::string& path) {
 
 MachineWorld::MachineWorld(Config config, WorldIdentity identity) : config_(std::move(config)), identity_(std::move(identity)) {
     if (!identity_.profile.empty() && !identifier(identity_.profile)) throw std::runtime_error("contraptions: invalid world profile");
-    if (!identity_.sources.empty() && identity_.profile != "frontier_v5") throw std::runtime_error("contraptions: pressure belongs only to its frozen source profile");
+    if (!identity_.sources.empty() && identity_.profile != "frontier_v5" && identity_.profile != "frontier_v6") throw std::runtime_error("contraptions: pressure belongs only to its frozen source profile");
     for (const auto& source : identity_.sources) {
         if (!identifier(source.id) || source.capacity != config_.pressureSourceStrokes || !sources_.emplace(source.id,source.capacity).second)
             throw std::runtime_error("contraptions: invalid native pressure source");
@@ -505,7 +505,7 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
     const int schema=integer(document->get("schema"),1,2);
     std::map<std::string,int> restoredStocks;
     if (schema==1) {
-        if (identity_.profile=="frontier_v5" || !identity_.sources.empty()) throw std::runtime_error("contraptions: source world requires its complete pressure ledger");
+        if (identity_.profile=="frontier_v5" || identity_.profile=="frontier_v6" || !identity_.sources.empty()) throw std::runtime_error("contraptions: source world requires its complete pressure ledger");
         if (document->find("sources") || document->find("world_profile") || document->find("world_seed")) throw std::runtime_error("contraptions: unscoped save cannot contain source identity");
     } else {
         if (document->get("world_profile").asString()!=identity_.profile || document->get("world_seed").asString()!=std::to_string(identity_.seed))

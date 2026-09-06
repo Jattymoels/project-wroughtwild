@@ -120,12 +120,12 @@ Dictionary WroughtwildSim::contraption_withdraw(const String& key,const String& 
 }
 String WroughtwildSim::contraption_save() const { return contraptions_ ? to_godot(contraptions_->serialize()) : String(); }
 bool WroughtwildSim::contraption_validate(const String& text) const {
-    return contraptions_ && (text.is_empty() ? contraptions_->identity().profile!="frontier_v5" : contraptions_->validate(to_std(text)));
+    return contraptions_ && (text.is_empty() ? contraptions_->identity().sources.empty() : contraptions_->validate(to_std(text)));
 }
 bool WroughtwildSim::contraption_load(const String& text) {
     if (!contraptions_ || trial_) return false;
     if (text.is_empty()) {
-        if (contraptions_->identity().profile=="frontier_v5") { last_error_="Missing pressure-source ledger."; return false; }
+        if (!contraptions_->identity().sources.empty()) { last_error_="Missing pressure-source ledger."; return false; }
         auto c=contraptions_->config(); auto identity=contraptions_->identity();
         contraptions_=std::make_unique<wroughtwild::contraptions::MachineWorld>(c,identity); return true;
     }
@@ -138,12 +138,15 @@ wroughtwild::contraptions::WorldIdentity WroughtwildSim::machine_world_identity(
     if (!tuning_ || !contraptions_ || !wroughtwild::worldgen::knownProfile(id))
         throw std::runtime_error("Unknown pressure-source world.");
     const auto native_seed=static_cast<uint64_t>(seed);
-    std::unique_ptr<wroughtwild::worldgen::WorldMap> generated;
-    const wroughtwild::worldgen::WorldMap* map=world_cache_.get();
-    if (!map || map->profileId!=id || map->seed!=native_seed) {
-        generated=std::make_unique<wroughtwild::worldgen::WorldMap>(wroughtwild::worldgen::generateProfile(*tuning_,native_seed,id));
-        map=generated.get();
+    // Validation may populate the immutable last-world cache, but never changes
+    // the selected profile, player or source ledger. The subsequent load and
+    // terrain build reuse this identity instead of generating a 1 km world three
+    // times. One cache replaces the former temporary second voxel allocation.
+    if (!world_cache_ || world_cache_->profileId!=id || world_cache_->seed!=native_seed) {
+        world_cache_.reset();
+        world_cache_=std::make_unique<wroughtwild::worldgen::WorldMap>(wroughtwild::worldgen::generateProfile(*tuning_,native_seed,id));
     }
+    const auto* map=world_cache_.get();
     wroughtwild::contraptions::WorldIdentity identity;
     identity.profile=id; identity.seed=native_seed;
     for (const auto& source:map->pressurePockets)
@@ -165,8 +168,8 @@ bool WroughtwildSim::contraption_validate_world(const String& text,const String&
     if (!contraptions_) return false;
     try {
         wroughtwild::contraptions::MachineWorld candidate(contraptions_->config(),machine_world_identity(profile,seed));
-        // A V5 save always owns a source ledger, even before the first tap.
-        if (text.is_empty()) return profile!="frontier_v5";
+        // A source world owns its complete ledger even before the first tap.
+        if (text.is_empty()) return candidate.identity().sources.empty();
         return candidate.validate(to_std(text));
     } catch (const std::exception&) { return false; }
 }
@@ -175,7 +178,7 @@ bool WroughtwildSim::contraption_load_world(const String& text,const String& pro
     try {
         auto candidate=std::make_unique<wroughtwild::contraptions::MachineWorld>(contraptions_->config(),machine_world_identity(profile,seed));
         std::string reason;
-        if (text.is_empty() ? profile=="frontier_v5" : !candidate->restore(to_std(text),&reason)) {
+        if (text.is_empty() ? !candidate->identity().sources.empty() : !candidate->restore(to_std(text),&reason)) {
             last_error_=reason.empty() ? String("Missing pressure-source ledger.") : to_godot(reason); return false;
         }
         contraptions_.swap(candidate); return true;

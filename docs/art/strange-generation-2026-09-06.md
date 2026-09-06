@@ -1,5 +1,9 @@
 # The Strange Frontier: generation and terrain delivery
 
+Historical V3 implementation evidence. The approved [Wide Frontier successor](../prototype/wide-frontier-intensive-2026-09-06.md)
+now owns fresh-world size and nearby terrain retention. V3 geography and this
+record's original measurements remain unchanged.
+
 Implemented from the owner-approved [rare-world intensive](../prototype/rare-world-intensive-2026-09-06.md).
 The new `frontier_v3` world is 512 × 512 metres with the existing 48-block
 vertical budget. Rootvault Wildwood, Lantern Fen and Glasswind Uplands have

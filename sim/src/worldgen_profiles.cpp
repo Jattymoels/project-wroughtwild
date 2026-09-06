@@ -9,7 +9,7 @@
 namespace wroughtwild::worldgen {
 
 bool knownProfile(const std::string& profileId) {
-    return profileId == "legacy_v1" || profileId == "frontier_v2" || profileId == "frontier_v3" || profileId == "frontier_v4" || profileId == "frontier_v5";
+    return profileId == "legacy_v1" || profileId == "frontier_v2" || profileId == "frontier_v3" || profileId == "frontier_v4" || profileId == "frontier_v5" || profileId == "frontier_v6";
 }
 
 const tuning::WorldgenTable& profileTable(const tuning::Tuning& tuning,
@@ -18,7 +18,8 @@ const tuning::WorldgenTable& profileTable(const tuning::Tuning& tuning,
     if (profileId == "frontier_v2") return tuning.frontierV2Worldgen;
     if (profileId == "frontier_v3") return tuning.frontierV3Worldgen;
     if (profileId == "frontier_v4") return tuning.frontierV4Worldgen;
-    if (profileId == "frontier_v5") return tuning.worldgen;
+    if (profileId == "frontier_v5") return tuning.frontierV5Worldgen;
+    if (profileId == "frontier_v6") return tuning.worldgen;
     throw std::runtime_error("worldgen: unknown generation profile " + profileId);
 }
 
@@ -39,6 +40,23 @@ using frozen_frontier::placeHabitats;
 namespace pressure_frontier {
 #include "worldgen_frontier_v5.inc"
 }
+namespace frontier_v6_base {
+#include "worldgen_frontier_v6_base.inc"
+}
+namespace wide_frontier {
+using frozen_frontier::stableSalt;
+using frozen_frontier::distanceSquared;
+using frozen_frontier::supportedFootprint;
+using frozen_frontier::approachTo;
+using frozen_frontier::reserveApproach;
+using frozen_frontier::placeHabitats;
+#include "worldgen_frontier_v6_landscape.inc"
+#include "worldgen_frontier_v6_opening.inc"
+}
+namespace wide_pressure {
+#include "worldgen_frontier_v6_pressure.inc"
+}
+
 } // namespace
 
 WorldMap generateProfile(const tuning::Tuning& tuning, uint64_t seed, const std::string& profileId) {
@@ -54,13 +72,17 @@ WorldMap generateProfile(const tuning::Tuning& tuning, uint64_t seed, const std:
         modifier.id = id;
         generationInputs.world.eliteModifiers.push_back(modifier);
     }
-    WorldMap map = generate(generationInputs, seed);
+    WorldMap map = profileId == "frontier_v6" ? frontier_v6_base::generate(generationInputs, seed) : generate(generationInputs, seed);
     map.profileId = profileId;
     for (auto& node : map.nodes) node.resourceId = frozen_frontier::legacyNodeId(node);
     if (profileId == "frontier_v2") frozen_frontier::placeHabitats(map, table);
     if (profileId == "frontier_v3") frozen_frontier::composeFrontierV3(map, table);
     if (profileId == "frontier_v4") cataclysm_frontier::composeFrontierV4(map, table);
     if (profileId == "frontier_v5") pressure_frontier::composeFrontierV5(map, table);
+    if (profileId == "frontier_v6") {
+        wide_pressure::composeFrontierV6Pressure(map,table);
+        wide_frontier::finishWideFrontier(map,table);
+    }
     return map;
 }
 

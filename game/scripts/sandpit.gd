@@ -8,13 +8,15 @@ extends Node3D
 
 const TRIAL_GATE_SCENE := preload("res://scenes/trial_gate.tscn")
 const ORDER_BOARD_SCENE := preload("res://scenes/order_board.tscn")
+const SEED_CONTROLS := preload("res://scripts/world_seed_controls.gd")
 
-## The world to generate; matches worldgen.json's default_seed on a new game
-## and is overwritten by saves so a loaded game rebuilds its own world.
+## Deterministic embedded/review seed. Normal fresh play picks a random seed
+## in the class chooser, before terrain is generated; saves restore their own.
 @export var world_seed: int = 1
 ## Fresh worlds use the new resource geography; old saves explicitly select
 ## legacy_v1 before restoring builds, resource depletion and excavation.
-@export var world_profile: String = "frontier_v5"
+@export var world_profile: String = "frontier_v6"
+var seed_controls: Node
 
 @onready var terrain: Terrain = $Terrain
 @onready var mob_packs: MobPacks = $MobPacks
@@ -31,12 +33,37 @@ var _day_rules: Dictionary = {}
 
 
 func _ready() -> void:
+	var normal_launch := get_parent() == get_tree().root and scene_file_path == "res://scenes/sandpit.tscn"
+	if normal_launch and DisplayServer.get_name() != "headless":
+		seed_controls = SEED_CONTROLS.new()
+		add_child(seed_controls)
+		var explicit_seed := SEED_CONTROLS.argument_seed(OS.get_cmdline_user_args())
+		seed_controls.configure(self,String(explicit_seed.text) if bool(explicit_seed.provided) else str(SEED_CONTROLS.random_seed()))
+		return
+	if normal_launch:
+		var explicit_seed := SEED_CONTROLS.argument_seed(OS.get_cmdline_user_args())
+		if bool(explicit_seed.provided):
+			var parsed := SEED_CONTROLS.parse_seed(String(explicit_seed.text))
+			if not bool(parsed.valid):
+				push_error("World seed must be a whole number from 0 to 2147483647.")
+				return
+			world_seed = int(parsed.seed)
 	_build_world(world_seed)
 	# Before play begins (D-004): the class, unless a save already carries one.
 	player.offer_class()
 	# Defer until SceneTree has assigned current_scene; embedded review worlds
 	# must never offer to open the player's normal save.
 	player.offer_saved_trial.call_deferred()
+
+func start_chosen_world(seed_value: int) -> bool:
+	_build_world(seed_value)
+	# A normal launch has already used its existing class choice to begin.
+	# No second saved-trial prompt or speculative random world is generated.
+	return not terrain.map.is_empty() and terrain.seed_value()==seed_value and terrain.world_profile()==world_profile
+
+func saved_world_started() -> void:
+	SEED_CONTROLS.show_identity(player,world_seed,world_profile)
+	_tick_day(0)
 
 
 func _sim() -> WroughtwildSim:
@@ -55,6 +82,7 @@ func _build_world(seed_value: int) -> void:
 			remove_child(previous)
 			previous.queue_free()
 	world_seed = seed_value
+	SEED_CONTROLS.show_identity(player,world_seed,world_profile)
 	# Owner accepted the smoother presentation and a less cartoon-like tone.
 	# Explicit historical look switches keep reproducible comparisons available.
 	var args := OS.get_cmdline_user_args()

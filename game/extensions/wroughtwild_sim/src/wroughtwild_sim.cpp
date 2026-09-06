@@ -2335,6 +2335,7 @@ const wroughtwild::worldgen::WorldMap& WroughtwildSim::cached_world(uint64_t see
     // are always asked about the same seed back to back, so keep the last
     // one. Deterministic generation makes the cache invisible.
     if (!world_cache_ || world_cache_->seed != seed || world_cache_->profileId != world_profile_) {
+        world_cache_.reset(); // Do not retain the old voxel field during new generation.
         world_cache_ = std::make_unique<wroughtwild::worldgen::WorldMap>(
             wroughtwild::worldgen::generateProfile(*tuning_, seed, world_profile_));
     }
@@ -2355,7 +2356,8 @@ bool WroughtwildSim::set_world_profile(const String& profile_id) {
     }
     if (id != world_profile_) {
         world_profile_ = id;
-        world_cache_.reset();
+        // A validating save restore may already have prepared this profile.
+        if (world_cache_ && world_cache_->profileId != id) world_cache_.reset();
     }
     last_error_ = String();
     return true;
@@ -2569,7 +2571,17 @@ Dictionary WroughtwildSim::world_map(int seed) {
     if (!require_loaded("world_map")) {
         return d;
     }
-    const auto& map = cached_world(static_cast<uint64_t>(seed));
+    const wroughtwild::worldgen::WorldMap* prepared = nullptr;
+    try {
+        prepared = &cached_world(static_cast<uint64_t>(seed));
+    } catch (const std::exception& error) {
+        // A failed composition must not throw across the engine boundary or
+        // leave a fresh launch moving in an empty world. The chooser can keep
+        // its pre-entry state and report this seed without overwriting a save.
+        last_error_ = "World generation failed: " + to_godot(error.what());
+        return d;
+    }
+    const auto& map = *prepared;
     const auto& table = world_table();
 
     d["seed"] = seed;
@@ -2682,6 +2694,19 @@ Dictionary WroughtwildSim::world_map(int seed) {
             result.push_back(Vector3((p.x + 0.5) * map.cellSize, p.y * map.cellSize, (p.z + 0.5) * map.cellSize));
         return result;
     };
+    d["starter_quiet_radius_m"] = map.starterQuietRadiusM;
+    d["hostile_boundary_m"] = map.hostileBoundaryM;
+    d["starter_first_siege_night"] = map.starterFirstSiegeNight;
+    Array home_sites;
+    for (const auto& placed : map.homeSites) {
+        Dictionary h;
+        h["id"] = to_godot(placed.id);
+        h["x"] = placed.x; h["y"] = placed.y; h["z"] = placed.z;
+        h["radius_m"] = placed.radiusM;
+        h["approach"] = route(placed.approach);
+        home_sites.push_back(h);
+    }
+    d["home_sites"] = home_sites;
     Array regions;
     for (const auto& placed : map.regions) {
         Dictionary r;

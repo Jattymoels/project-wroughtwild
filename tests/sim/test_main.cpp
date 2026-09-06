@@ -1804,8 +1804,9 @@ void testElitesAndFamilies(const tuning::Tuning& t) {
     check(t.world.findEliteModifier("nobody") == nullptr, "elites: unknown ids are nothing");
 
     // Danger rings: packs grow and elites appear only farther out.
-    check(t.worldgen.dangerRingAt(200.0)->packSizeBonus > 0 &&
-              t.worldgen.dangerRingAt(200.0)->eliteChance > 0.0 &&
+    const double beyondHeartland = t.worldgen.dangerRings.front().radiusM + 1.0;
+    check(t.worldgen.dangerRingAt(beyondHeartland)->packSizeBonus > 0 &&
+              t.worldgen.dangerRingAt(beyondHeartland)->eliteChance > 0.0 &&
               t.worldgen.dangerRingAt(30.0)->eliteChance == 0.0,
           "elites: rings crown elites only beyond the heartland");
 
@@ -3863,7 +3864,7 @@ void testWorldMadeWhole(const tuning::Tuning& t) {
     const auto& mtn = t.worldgen.mountains;
     check(mtn.rimWidthCells > 0 && mtn.rimExtraScale > 0, "whole: the rim is tuned");
     {
-        auto map = worldgen::generate(t, 3);
+        auto map = worldgen::generateProfile(t, 3, t.worldgen.generationProfile);
         double rimSum = 0.0, midSum = 0.0;
         int rimN = 0, midN = 0;
         int rimMax = 0, rimMin = 999;
@@ -3876,7 +3877,9 @@ void testWorldMadeWhole(const tuning::Tuning& t) {
             }
         check(rimN > 0 && midN > 0 && rimSum / rimN > midSum / midN + 6.0, "whole: the outer band stands well above the country inside the rim");
         check(rimMax - rimMin >= 4, "whole: the rim is ridged, not a wall");
-        check(map.at(map.spawnX, map.spawnZ).height < 30, "whole: the spawn clearing is not on the rim");
+        const int spawnEdge = std::min({map.spawnX, map.spawnZ, map.width-1-map.spawnX, map.height-1-map.spawnZ});
+        check(spawnEdge > mtn.rimWidthCells && map.at(map.spawnX, map.spawnZ).height + 6 < rimSum / rimN,
+              "whole: spawn is inside the valley and meaningfully below the rim");
     }
 }
 

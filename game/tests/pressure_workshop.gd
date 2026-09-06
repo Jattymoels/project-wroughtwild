@@ -10,11 +10,12 @@ var captions: Label
 var captures: Array[String] = []
 
 func _ready() -> void:
+	world_profile="frontier_v5" # Preserve historical workshop geography; explicitly probe V6 too.
 	output=ProjectSettings.globalize_path("res://../build/pressure-workshop")
 	DirAccess.make_dir_recursive_absolute(output)
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--cat-seed="):world_seed=int(arg.get_slice("=",1))
-	# Use the actual fresh-world default, so this detects forgotten profile wiring.
+		if arg.begins_with("--pressure-profile="):world_profile=arg.get_slice("=",1)
 	_build_world(world_seed)
 	player.class_panel.choose("warden")
 	player.set_physics_process(false)
@@ -24,7 +25,7 @@ func _ready() -> void:
 	mob_packs.set_process(false)
 	set_physics_process(false)
 	await get_tree().physics_frame
-	check(world_profile=="frontier_v5", "new game uses the pressure workshop successor")
+	check(world_profile in ["frontier_v5","frontier_v6"], "workshop uses a supported pressure-source profile")
 	check(terrain.map.get("pressure_pockets",[]).size()==1,"one source is generated")
 	if terrain.map.get("pressure_pockets",[]).size()!=1:_finish();return
 	var definition: Dictionary=terrain.map.pressure_pockets[0]

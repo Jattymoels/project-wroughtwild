@@ -1576,6 +1576,33 @@ WorldgenTable loadWorldgen(const std::string& path) {
         if (table.habitats.size() > 3) throw std::runtime_error("worldgen: only three bounded habitats are approved");
     }
 
+    if(auto wide=doc->find("wide_frontier")) {
+        auto& w=table.wideFrontier;
+        const auto value=[&](const std::string& key,double low,double high){const double v=wide->get(key).asNumber();if(!std::isfinite(v)||v<low||v>high)throw std::runtime_error("worldgen: invalid wide frontier "+key);return v;};
+        w.quietRadiusM=value("quiet_radius_m",140,160);
+        w.hostileBoundaryM=value("hostile_boundary_m",190,240);
+        w.firstSiegeNight=static_cast<int>(value("first_siege_night",3,3));
+        w.homeCount=static_cast<int>(value("home_count",4,4));
+        w.homeRadiusM=value("home_radius_m",12,16);
+        w.homeSkirtM=value("home_skirt_m",12,30);
+        w.homeDistanceM=value("home_distance_m",70,115);
+        w.valleyBaseHeight=static_cast<int>(value("valley_base_height",12,40));
+        w.valleyReliefCells=static_cast<int>(value("valley_relief_cells",4,12));
+        w.valleyFrequency=value("valley_frequency",0.006,0.018);
+        w.valleyTransitionM=value("valley_transition_m",30,60);
+        w.rollingFrequency=value("rolling_frequency",0.01,0.025);
+        w.crossFrequency=value("cross_frequency",0.008,0.02);
+        w.populationKeep=value("population_keep",0.1,0.5);
+        w.homeTrees=static_cast<int>(value("home_trees",4,8));
+        w.homeBoulders=static_cast<int>(value("home_boulders",3,5));
+        w.homeStone=static_cast<int>(value("home_stone",2,4));
+        w.homeIron=static_cast<int>(value("home_iron",1,3));
+        if(w.hostileBoundaryM<w.quietRadiusM+40 || w.homeDistanceM+w.homeRadiusM+w.homeSkirtM>w.quietRadiusM)throw std::runtime_error("worldgen: opening buffer or home site exceeds its valley");
+    } else if(table.generationProfile=="frontier_v6")throw std::runtime_error("worldgen: V6 needs explicit opening inputs");
+
+    if(table.generationProfile=="frontier_v6" && (table.map.widthCells!=1024 || table.map.heightCells!=1024 || table.map.worldDepth!=96 || table.map.cellSizeM!=1.0))
+        throw std::runtime_error("worldgen: V6 requires its accepted 1024x1024x96 one-metre extent");
+
     std::set<std::string> regionIds;
     if (auto regions = doc->find("regions")) {
         for (const auto& entry : regions->asArray()) {
@@ -1591,11 +1618,11 @@ WorldgenTable loadWorldgen(const std::string& path) {
             r.reliefCells = entry->get("relief_cells").asInt();
             r.cave = entry->get("authored_cave").asBool();
             if (r.id.empty() || !regionIds.insert(r.id).second || !table.findBiome(r.biome) ||
-                !std::isfinite(r.radiusM) || r.radiusM < 40 || r.radiusM > 70 ||
-                !std::isfinite(r.transitionM) || r.transitionM < 10 || r.transitionM > 30 ||
+                !std::isfinite(r.radiusM) || r.radiusM < 40 || r.radiusM > (table.generationProfile == "frontier_v6" ? 160 : 70) ||
+                !std::isfinite(r.transitionM) || r.transitionM < 10 || r.transitionM > (table.generationProfile == "frontier_v6" ? 60 : 30) ||
                 !std::isfinite(r.distanceM) || r.distanceM < r.radiusM + r.transitionM + table.guarantees.nearRadiusM ||
                 r.baseHeight < 6 || r.baseHeight + r.reliefCells >= table.map.worldDepth - 8 ||
-                r.reliefCells < 0 || r.reliefCells > 8)
+                r.reliefCells < 0 || r.reliefCells > (table.generationProfile == "frontier_v6" ? 40 : 8))
                 throw std::runtime_error("worldgen: invalid discovery region " + r.id);
             table.regions.push_back(std::move(r));
         }
@@ -1675,7 +1702,7 @@ WorldgenTable loadWorldgen(const std::string& path) {
         c.thresholdDistanceM = bounded("threshold_distance_m", 18, 30);
         c.regionalRuinDistanceM = bounded("regional_ruin_distance_m", 20, 40);
         c.foundationReliefCells = static_cast<int>(bounded("foundation_relief_cells", 2, 5));
-    } else if (table.generationProfile == "frontier_v4" || table.generationProfile == "frontier_v5") {
+    } else if (table.generationProfile == "frontier_v4" || table.generationProfile == "frontier_v5" || table.generationProfile == "frontier_v6") {
         throw std::runtime_error("worldgen: cataclysm profile requires explicit cataclysm tuning");
     }
     if (auto p = doc->find("pressure_site")) {
@@ -1704,7 +1731,7 @@ WorldgenTable loadWorldgen(const std::string& path) {
             std::abs(s.strikeLateralCells) < 3 ||
             std::hypot(s.pocketLateralCells-s.workLateralCells, s.pocketForwardCells-s.workForwardCells) > 3)
             throw std::runtime_error("worldgen: pressure site obstructs its ordinary interaction strip");
-    } else if (table.generationProfile == "frontier_v5") {
+    } else if (table.generationProfile == "frontier_v5" || table.generationProfile == "frontier_v6") {
         throw std::runtime_error("worldgen: frontier_v5 requires explicit pressure-site presentation inputs");
     }
     return table;
@@ -1729,6 +1756,7 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.frontierV2Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v2.json");
     tuning.frontierV3Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v3.json");
     tuning.frontierV4Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v4.json");
+    tuning.frontierV5Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v5.json");
     tuning.grammar = loadGrammar(tuningDirectory + "/grammar.json");
     // The Foundry speaks in the item table's modifiers: every ingot and pair
     // must name one, or a placed ingot would be a silent point.

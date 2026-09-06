@@ -39,6 +39,10 @@ if(MINGW)
     target_link_options(wroughtwild_sim PRIVATE -static -static-libgcc -static-libstdc++)
 endif()
 
+# An isolated review build can target its own bin without replacing a library
+# loaded by the owner's running game. The normal developer output is unchanged.
+set(WW_RUNTIME_OUTPUT_DIRECTORY "${REPO_ROOT}/game/bin" CACHE PATH "Directory for the compiled game runtime")
+
 # File name matches the [libraries] table in game/bin/wroughtwild_sim.gdextension.
 string(TOLOWER "${CMAKE_SYSTEM_NAME}" WW_PLATFORM)
 if(WW_PLATFORM STREQUAL "darwin")
@@ -47,5 +51,5 @@ endif()
 set_target_properties(wroughtwild_sim PROPERTIES
     PREFIX "lib"
     OUTPUT_NAME "wroughtwild_sim.${WW_PLATFORM}.x86_64"
-    RUNTIME_OUTPUT_DIRECTORY "${REPO_ROOT}/game/bin"
-    LIBRARY_OUTPUT_DIRECTORY "${REPO_ROOT}/game/bin")
+    RUNTIME_OUTPUT_DIRECTORY "${WW_RUNTIME_OUTPUT_DIRECTORY}"
+    LIBRARY_OUTPUT_DIRECTORY "${WW_RUNTIME_OUTPUT_DIRECTORY}")
