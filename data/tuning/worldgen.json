@@ -1,13 +1,18 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "status": "Wave 3 world slice 1: 3D block field, mountains, caves, danger rings",
   "default_seed": 1,
-  "generation_profile": "frontier_v2",
-  "generation_elite_ids": ["unfreezable", "cinder_blooded", "stonehide", "hastened"],
-  "profile_design_purpose": "New worlds retain the bounded valley and add three finite resource habitats. Saved world identity includes this profile and its seed; legacy saves use the frozen worldgen-legacy-v1.json. Habitat changes never enrich old geography.",
+  "generation_profile": "frontier_v5",
+  "generation_elite_ids": [
+    "unfreezable",
+    "cinder_blooded",
+    "stonehide",
+    "hastened"
+  ],
+  "profile_design_purpose": "The Strange Frontier adds three continuous outer regions and five finite discoverable capabilities. New worlds use frontier_v3; legacy_v1 and frontier_v2 each retain their exact frozen source and placement data. No rare deposits are inserted into old saves.",
   "map": {
-    "width_cells": 320,
-    "height_cells": 320,
+    "width_cells": 512,
+    "height_cells": 512,
     "cell_size_m": 1.0,
     "world_depth": 48,
     "base_height": 12,
@@ -15,7 +20,7 @@
     "height_frequency": 0.02,
     "height_octaves": 3,
     "moisture_frequency": 0.01,
-    "design_purpose": "Bounded sandpit dimensions and terrain character (D-003, grown for the Wave 3 world pass). world_depth is the vertical block budget: y=0 bedrock, surface rolls around base_height + noise*height_scale, mountains climb from there and caves wind below. 160x160 at 1 m keeps the world bounded but far enough out that leaving the heartland is a journey. 224 cells a side (from 160, owner 3 Sep 2026: 'always worthwhile making the world larger to allow for more mob variants'): room for a fifth biome and the packs that live in it, at 196 chunks. 320 cells a side (from 224, Wave 6 slice 3, 4 Sep 2026: 'making the biomes bigger ... more expansive'): 400 chunks, with the height and moisture noise at two thirds and three fifths of their frequency so every biome and every hill is broader, and every walk longer."
+    "design_purpose": "512 metre square, 48 block levels: 2.56 times the previous ground area, with the additional travel in optional outer country. Existing starter radii and material habitat distances remain. Regional masks compose large recognisable places. Population is thinned beyond the existing routes rather than multiplied with area."
   },
   "mountains": {
     "extra_scale": 14,
@@ -268,33 +273,57 @@
   ],
   "nodes": {
     "slate_outcrop": {
-      "display_name": "Layered Slate", "material_family": "raw_slate",
-      "units": 24, "units_per_harvest": 4, "drive_presses": 4, "visual": "slate_seam",
+      "display_name": "Layered Slate",
+      "material_family": "raw_slate",
+      "units": 24,
+      "units_per_harvest": 4,
+      "drive_presses": 4,
+      "visual": "slate_seam",
       "design_purpose": "Finite quarry layers: four contextual work presses split four raw slate; skill impact speeds work without gating access. Eight deposits make a first roof achievable."
     },
     "shellstone_outcrop": {
-      "display_name": "Fossil Shellstone", "material_family": "raw_shellstone",
-      "units": 24, "units_per_harvest": 4, "drive_presses": 4, "visual": "shellstone_seam",
+      "display_name": "Fossil Shellstone",
+      "material_family": "raw_shellstone",
+      "units": 24,
+      "units_per_harvest": 4,
+      "drive_presses": 4,
+      "visual": "shellstone_seam",
       "design_purpose": "Pale fossil-bearing quarry stone for dressed masonry; contextual work is complete without an elemental build or a separate tool."
     },
     "clay_bank": {
-      "display_name": "Rustclay Bank", "material_family": "raw_clay",
-      "units": 24, "units_per_harvest": 4, "drive_presses": 3, "visual": "clay_bank",
+      "display_name": "Rustclay Bank",
+      "material_family": "raw_clay",
+      "units": 24,
+      "units_per_harvest": 4,
+      "drive_presses": 3,
+      "visual": "clay_bank",
       "design_purpose": "Finite damp-earth pockets in the fen hollow. Three work presses lift four clay for fired brick, distinguishing gathering from masonry dressing."
     },
     "reed_bed": {
-      "display_name": "Weaving Reeds", "material_family": "raw_reed",
-      "units": 24, "units_per_harvest": 6, "drive_presses": 3, "visual": "reed_bed",
+      "display_name": "Weaving Reeds",
+      "material_family": "raw_reed",
+      "units": 24,
+      "units_per_harvest": 6,
+      "drive_presses": 3,
+      "visual": "reed_bed",
       "design_purpose": "Harvestable reed bundles alongside the fen's decorative reeds; each work cycle supplies a useful panel batch and visible depletion prevents infinite harvesting."
     },
     "resinheart_tree": {
-      "display_name": "Resinheart Tree", "material_family": "resinheart_log",
-      "units": 24, "units_per_harvest": 24, "drive_presses": 6, "visual": "resinheart_tree",
+      "display_name": "Resinheart Tree",
+      "material_family": "resinheart_log",
+      "units": 24,
+      "units_per_harvest": 24,
+      "drive_presses": 6,
+      "visual": "resinheart_tree",
       "design_purpose": "Distinct oldgrowth timber: one deliberate felling pays the whole tree, with the existing contextual gathering route."
     },
     "corkbark_deadfall": {
-      "display_name": "Corkbark Deadfall", "material_family": "raw_corkbark",
-      "units": 18, "units_per_harvest": 6, "drive_presses": 3, "visual": "corkbark_deadfall",
+      "display_name": "Corkbark Deadfall",
+      "material_family": "raw_corkbark",
+      "units": 18,
+      "units_per_harvest": 6,
+      "drive_presses": 3,
+      "visual": "corkbark_deadfall",
       "design_purpose": "Independent finite deadfall deposits yield bark for light cladding, avoiding renewable bark stripping or two resources sharing one tree's state."
     },
     "tree": {
@@ -394,6 +423,98 @@
       "visual": "seam",
       "tool_item": "timber_wedge",
       "drive_presses": 4
+    },
+    "lanternheart": {
+      "display_name": "Lanternheart",
+      "material_family": "lanternheart",
+      "units": 4,
+      "units_per_harvest": 4,
+      "drive_presses": 4,
+      "visual": "lanternheart",
+      "era": 1,
+      "properties": [
+        "luminous"
+      ],
+      "harvest_stages": [
+        "Fold back the papery husk",
+        "Lift the intact luminous heart"
+      ],
+      "use_preview": "A first haul makes a useful set of warm mounted lamps.",
+      "design_purpose": "One finite intact haul pays enough reusable cores for the first practical creation and a small experiment. Contextual work is sufficient for every class; ordinary compatible impact may save work. The clue, staged labels and aftermath teach the physical property. No heat, equipment or era gate."
+    },
+    "thrumroot": {
+      "display_name": "Thrumroot",
+      "material_family": "thrumroot",
+      "units": 3,
+      "units_per_harvest": 3,
+      "drive_presses": 4,
+      "visual": "thrumroot",
+      "era": 1,
+      "properties": [
+        "tension"
+      ],
+      "harvest_stages": [
+        "Brace the bowed deadfall",
+        "Release the taut roots",
+        "Lift the stored coil"
+      ],
+      "use_preview": "Build a hand-wound cargo winch; winding supplies its energy.",
+      "design_purpose": "One finite intact haul pays enough reusable cores for the first practical creation and a small experiment. Contextual work is sufficient for every class; ordinary compatible impact may save work. The clue, staged labels and aftermath teach the physical property. No heat, equipment or era gate."
+    },
+    "stormglass": {
+      "display_name": "Stormglass",
+      "material_family": "stormglass",
+      "units": 4,
+      "units_per_harvest": 4,
+      "drive_presses": 4,
+      "visual": "stormglass",
+      "era": 1,
+      "properties": [
+        "resonant"
+      ],
+      "harvest_stages": [
+        "Expose the lightning tube",
+        "Separate the ringing glass"
+      ],
+      "use_preview": "Build a lever and receiver; a pulse requests work without powering it.",
+      "design_purpose": "One finite intact haul pays enough reusable cores for the first practical creation and a small experiment. Contextual work is sufficient for every class; ordinary compatible impact may save work. The clue, staged labels and aftermath teach the physical property. No heat, equipment or era gate."
+    },
+    "pullstone": {
+      "display_name": "Pullstone",
+      "material_family": "pullstone",
+      "units": 3,
+      "units_per_harvest": 3,
+      "drive_presses": 4,
+      "visual": "pullstone",
+      "era": 1,
+      "properties": [
+        "magnetic"
+      ],
+      "harvest_stages": [
+        "Brace the clinging grit",
+        "Separate the nodule"
+      ],
+      "use_preview": "Build a hand-fed chute to separate ferrous ingredients.",
+      "design_purpose": "One finite intact haul pays enough reusable cores for the first practical creation and a small experiment. Contextual work is sufficient for every class; ordinary compatible impact may save work. The clue, staged labels and aftermath teach the physical property. No heat, equipment or era gate."
+    },
+    "ventlung": {
+      "display_name": "Ventlung",
+      "material_family": "ventlung",
+      "units": 3,
+      "units_per_harvest": 3,
+      "drive_presses": 4,
+      "visual": "ventlung",
+      "era": 1,
+      "properties": [
+        "pressure"
+      ],
+      "harvest_stages": [
+        "Open the side seam",
+        "Release the stored pressure",
+        "Lift the intact membrane"
+      ],
+      "use_preview": "Build hand-primed bellows to assist a wedge or seam.",
+      "design_purpose": "One finite intact haul pays enough reusable cores for the first practical creation and a small experiment. Contextual work is sufficient for every class; ordinary compatible impact may save work. The clue, staged labels and aftermath teach the physical property. No heat, equipment or era gate."
     }
   },
   "guarantees": {
@@ -417,27 +538,72 @@
   },
   "habitats": [
     {
-      "id": "quarry_escarpment", "display_name": "The Shellcut Escarpment",
-      "biome": "rocky_hills", "fallback_biome": "meadow", "seed_salt": 41021,
-      "radius_m": 12, "min_distance_m": 65, "max_distance_m": 145,
-      "resource_spacing_m": 2.5, "max_surface_step_cells": 1,
-      "resources": [{"node": "slate_outcrop", "count": 8}, {"node": "shellstone_outcrop", "count": 8}],
+      "id": "quarry_escarpment",
+      "display_name": "The Shellcut Escarpment",
+      "biome": "rocky_hills",
+      "fallback_biome": "meadow",
+      "seed_salt": 41021,
+      "radius_m": 12,
+      "min_distance_m": 65,
+      "max_distance_m": 145,
+      "resource_spacing_m": 2.5,
+      "max_surface_step_cells": 1,
+      "resources": [
+        {
+          "node": "slate_outcrop",
+          "count": 8
+        },
+        {
+          "node": "shellstone_outcrop",
+          "count": 8
+        }
+      ],
       "design_purpose": "A walkable quarry shelf with dark roofing slate and pale fossil masonry. Prefer raised rocky ground; a reachable meadow-edge shelf is the finite fallback when the native biome has no suitable approach. Radius shapes the place, spacing keeps work clear, counts determine the first building's material budget."
     },
     {
-      "id": "fen_hollow", "display_name": "The Rustwater Hollow",
-      "biome": "fen", "fallback_biome": "meadow", "seed_salt": 41039,
-      "radius_m": 12, "min_distance_m": 65, "max_distance_m": 145,
-      "resource_spacing_m": 2.5, "max_surface_step_cells": 1,
-      "resources": [{"node": "clay_bank", "count": 8}, {"node": "reed_bed", "count": 8}],
+      "id": "fen_hollow",
+      "display_name": "The Rustwater Hollow",
+      "biome": "fen",
+      "fallback_biome": "meadow",
+      "seed_salt": 41039,
+      "radius_m": 12,
+      "min_distance_m": 65,
+      "max_distance_m": 145,
+      "resource_spacing_m": 2.5,
+      "max_surface_step_cells": 1,
+      "resources": [
+        {
+          "node": "clay_bank",
+          "count": 8
+        },
+        {
+          "node": "reed_bed",
+          "count": 8
+        }
+      ],
       "design_purpose": "Low wet ground with readable clay banks and harvestable reeds. A low meadow pocket is the fallback when no reachable fen footprint exists; decorative water never adds swimming or flooding."
     },
     {
-      "id": "oldgrowth_grove", "display_name": "The Resinheart Grove",
-      "biome": "forest", "fallback_biome": "meadow", "seed_salt": 41047,
-      "radius_m": 13, "min_distance_m": 65, "max_distance_m": 145,
-      "resource_spacing_m": 3, "max_surface_step_cells": 1,
-      "resources": [{"node": "resinheart_tree", "count": 8}, {"node": "corkbark_deadfall", "count": 8}],
+      "id": "oldgrowth_grove",
+      "display_name": "The Resinheart Grove",
+      "biome": "forest",
+      "fallback_biome": "meadow",
+      "seed_salt": 41047,
+      "radius_m": 13,
+      "min_distance_m": 65,
+      "max_distance_m": 145,
+      "resource_spacing_m": 3,
+      "max_surface_step_cells": 1,
+      "resources": [
+        {
+          "node": "resinheart_tree",
+          "count": 8
+        },
+        {
+          "node": "corkbark_deadfall",
+          "count": 8
+        }
+      ],
       "design_purpose": "A finite oldgrowth stand with tall resinheart silhouettes and independent corkbark deadfall. A meadow forest-edge grove is the fallback; trees and bark never share harvest/save state."
     }
   ],
@@ -493,5 +659,202 @@
     "hot_seconds": 45,
     "quench_radius_m": 2.5,
     "design_purpose": "Fire as one material response (D-020, reframed by D-021): a campfire (construction.json shape campfire) built from a fuel family burns for burn_seconds at that fuel's heat; after soak_seconds every rock block and node within reach_cells of it is hot for hot_seconds after the fire dies. Hot rock is SOFTENED: a heavy impact cracks a hot block, cold landing within quench_radius_m cracks every hot block at once, and a hot seam splits twice over under one blow. Wood fires reach stone; charcoal (the forge's first refinement) reaches the alloy ores. Nothing needs cold; cold is the wide answer where impact is the narrow one."
+  },
+  "regions": [
+    {
+      "id": "rootvault_wildwood",
+      "display_name": "Rootvault Wildwood",
+      "biome": "forest",
+      "seed_salt": 56011,
+      "radius_m": 62,
+      "transition_m": 18,
+      "distance_m": 166,
+      "base_height": 18,
+      "relief_cells": 3,
+      "authored_cave": true,
+      "design_purpose": "The core radius supplies a continuous 120 metre identity; the transition blends into existing ground. Distance keeps the new journey outside the familiar heartland. Base height and slow relief distinguish wet shelves, wooded banks and pale uplands. The separate salt changes local composition without depending on definition order."
+    },
+    {
+      "id": "lantern_fen",
+      "display_name": "Lantern Fen",
+      "biome": "fen",
+      "seed_salt": 56021,
+      "radius_m": 60,
+      "transition_m": 20,
+      "distance_m": 166,
+      "base_height": 13,
+      "relief_cells": 2,
+      "authored_cave": false,
+      "design_purpose": "The core radius supplies a continuous 120 metre identity; the transition blends into existing ground. Distance keeps the new journey outside the familiar heartland. Base height and slow relief distinguish wet shelves, wooded banks and pale uplands. The separate salt changes local composition without depending on definition order."
+    },
+    {
+      "id": "glasswind_uplands",
+      "display_name": "Glasswind Uplands",
+      "biome": "rocky_hills",
+      "seed_salt": 56039,
+      "radius_m": 64,
+      "transition_m": 18,
+      "distance_m": 168,
+      "base_height": 23,
+      "relief_cells": 4,
+      "authored_cave": false,
+      "design_purpose": "The core radius supplies a continuous 120 metre identity; the transition blends into existing ground. Distance keeps the new journey outside the familiar heartland. Base height and slow relief distinguish wet shelves, wooded banks and pale uplands. The separate salt changes local composition without depending on definition order."
+    }
+  ],
+  "rare_sites": [
+    {
+      "node": "lanternheart",
+      "regions": [
+        "lantern_fen",
+        "rootvault_wildwood"
+      ],
+      "seed_salt": 57011,
+      "min_sites": 2,
+      "max_sites": 4,
+      "radius_m": 7,
+      "clue_radius_m": 28,
+      "site_spacing_m": 24,
+      "exceptional_units": 8,
+      "design_purpose": "Two to four complete primary sites keep cores scarce without withholding a capability. Seven metres reserves room to work, 28 metres of clues rewards recognition, and 24 metre spacing separates discoveries. Exceptional sites double the intact haul without making ordinary components inferior."
+    },
+    {
+      "node": "thrumroot",
+      "regions": [
+        "rootvault_wildwood"
+      ],
+      "seed_salt": 57112,
+      "min_sites": 2,
+      "max_sites": 4,
+      "radius_m": 7,
+      "clue_radius_m": 28,
+      "site_spacing_m": 24,
+      "exceptional_units": 6,
+      "design_purpose": "Two to four complete primary sites keep cores scarce without withholding a capability. Seven metres reserves room to work, 28 metres of clues rewards recognition, and 24 metre spacing separates discoveries. Exceptional sites double the intact haul without making ordinary components inferior."
+    },
+    {
+      "node": "stormglass",
+      "regions": [
+        "glasswind_uplands"
+      ],
+      "seed_salt": 57213,
+      "min_sites": 2,
+      "max_sites": 4,
+      "radius_m": 7,
+      "clue_radius_m": 28,
+      "site_spacing_m": 24,
+      "exceptional_units": 8,
+      "design_purpose": "Two to four complete primary sites keep cores scarce without withholding a capability. Seven metres reserves room to work, 28 metres of clues rewards recognition, and 24 metre spacing separates discoveries. Exceptional sites double the intact haul without making ordinary components inferior."
+    },
+    {
+      "node": "pullstone",
+      "regions": [
+        "glasswind_uplands"
+      ],
+      "seed_salt": 57314,
+      "min_sites": 2,
+      "max_sites": 4,
+      "radius_m": 7,
+      "clue_radius_m": 28,
+      "site_spacing_m": 24,
+      "exceptional_units": 6,
+      "design_purpose": "Two to four complete primary sites keep cores scarce without withholding a capability. Seven metres reserves room to work, 28 metres of clues rewards recognition, and 24 metre spacing separates discoveries. Exceptional sites double the intact haul without making ordinary components inferior."
+    },
+    {
+      "node": "ventlung",
+      "regions": [
+        "lantern_fen",
+        "glasswind_uplands"
+      ],
+      "seed_salt": 57415,
+      "min_sites": 2,
+      "max_sites": 4,
+      "radius_m": 7,
+      "clue_radius_m": 28,
+      "site_spacing_m": 24,
+      "exceptional_units": 6,
+      "design_purpose": "Two to four complete primary sites keep cores scarce without withholding a capability. Seven metres reserves room to work, 28 metres of clues rewards recognition, and 24 metre spacing separates discoveries. Exceptional sites double the intact haul without making ordinary components inferior."
+    }
+  ],
+  "frontier_population": {
+    "outer_distance_m": 145,
+    "outer_node_keep": 0.28,
+    "outer_pack_keep": 0.3,
+    "clue_quiet_radius_m": 8,
+    "gate_target_distance_m": 180,
+    "exceptional_site_maximum": 2,
+    "design_purpose": "Keep normal supply and danger close to existing travel distances. Only 28 percent of ordinary outer nodes and 30 percent of outer packs survive the larger-area pass; broad regional fields replace scattered trees at rare sites. Eight metre peaceful clue lanes and clear working circles keep exploration readable. Some optional detours retain ordinary guards. Forge distance aims at 180 metres, with its existing 160 metre minimum. Zero to two additional exceptional compositions supply luck without gating capability."
+  },
+  "cataclysm": {
+    "impact_offset_m": 24,
+    "major_radius_m": 19,
+    "secondary_radius_m": 13,
+    "influence_radius_m": 62,
+    "crater_depth_m": 4,
+    "rim_height_m": 3,
+    "region_angle_jitter": 0.12,
+    "region_warp_m": 5,
+    "trace_width_m": 1.2,
+    "trace_influence_m": 18,
+    "trace_bend_m": 38,
+    "trace_segments": 24,
+    "ruin_width_m": 10,
+    "ruin_depth_m": 10,
+    "ruin_skirt_m": 8,
+    "discovery_distance_m": 27,
+    "path_clearance_m": 3,
+    "_purpose": {
+      "impact_offset_m": "Move each impact beyond the regional arrival, leaving calm ground on the homeward side.",
+      "major_radius_m": "Width of the Glasswind primary impact bowl; a visible landform without a traversal wall.",
+      "secondary_radius_m": "Smaller woodland and fen scars imply one shower with different local consequences.",
+      "influence_radius_m": "Distance over which host resources visibly inherit augmentation; no gameplay modifier.",
+      "crater_depth_m": "Shallow walkable bowls expose impact damage while preserving ordinary approaches.",
+      "rim_height_m": "Broken broad rims frame distant scars without making impassable cliff rings.",
+      "region_angle_jitter": "Independent bounded angular displacement avoids three mechanically equal wedges.",
+      "region_warp_m": "Gentle irregular margins follow host landforms rather than perfect biome circles.",
+      "trace_width_m": "Physical presentation width of exposed inactive traces.",
+      "trace_influence_m": "Soft local augmentation around traces, with quieter ground between them.",
+      "trace_bend_m": "Curved connecting traces route around the quiet heartland.",
+      "trace_segments": "Bounded polyline detail for connected traces; independent exposure per segment.",
+      "ruin_width_m": "Flat supported foundation accommodates small vernacular rooms and a clear centre.",
+      "ruin_depth_m": "Foundation depth accommodates the authored ruin kit without floating walls.",
+      "ruin_skirt_m": "Gentle foundation shoulders join rooms to natural terrain.",
+      "discovery_distance_m": "Short evidence-led journey from an inhabited remnant to its finite rare source.",
+      "path_clearance_m": "Ordinary walking width kept clear of sources and decorative ruin walls.",
+      "threshold_search_m": "Bounded fallback radius finds a complete threshold beside rugged gate terrain.",
+      "threshold_distance_m": "Prefer a short final approach from the threshold ruin to the existing Forge gate.",
+      "regional_ruin_distance_m": "Place former dwellings on the homeward edge of their amplified regional centre.",
+      "foundation_relief_cells": "Reject heavily terraced candidates before flattening a ruin foundation; gentle shoulders remain walkable."
+    },
+    "threshold_search_m": 48,
+    "threshold_distance_m": 22,
+    "regional_ruin_distance_m": 30,
+    "foundation_relief_cells": 4
+  },
+  "pressure_site": {
+    "pocket_radius_m": 0.8,
+    "strike_radius_m": 1.25,
+    "influence_radius_m": 12,
+    "trace_width_m": 0.5,
+    "pocket_offset_cells": [
+      2,
+      -2
+    ],
+    "work_offset_cells": [
+      0,
+      -2
+    ],
+    "strike_offset_cells": [
+      4,
+      -3
+    ],
+    "_purpose": {
+      "pocket_radius_m": "Small interaction housing at the broken old hearth; no finite stock is defined in generation.",
+      "strike_radius_m": "A bounded asteroid fragment breaches a side wall without occupying the central path.",
+      "influence_radius_m": "Local visual augmentation around the accidental strike, without widening the biome or adding gameplay energy elsewhere.",
+      "trace_width_m": "A short exposed accidental channel connects the fragment to the old hearth; it is not a constructed pipe.",
+      "pocket_offset_cells": "Lateral and forward source position relative to the pre-cataclysm smithy orientation.",
+      "work_offset_cells": "Ordinary grounded interaction point inside the existing three-metre central strip.",
+      "strike_offset_cells": "Impact at the old room margin leaves its cause visible and the workshop approach open."
+    }
   }
 }

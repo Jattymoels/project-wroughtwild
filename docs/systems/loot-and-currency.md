@@ -1,5 +1,22 @@
 # Loot and Crafting Economy
 
+## Rare wild components — D-029, 6 September 2026
+
+Lanternheart, Thrumroot, Stormglass, Pullstone and Ventlung are finite physical
+finds used in reusable fixtures. They are neither a currency nor a new equipment
+rank. Learnable local clues lead to guaranteed intact opportunities in the new
+regions; ordinary resource nodes do not roll these as jackpot drops. Initial
+normal site hauls are respectively 4, 3, 4, 3 and 3; exceptional sites double a
+haul. This pays for a complete first experiment and some placement freedom.
+Dismantling returns every rare core; existing common-material refunds apply.
+
+Repeatable Forge bosses replenish one displayed component on successful
+completion. Existing haul targets determine it: slate/shellstone → Pullstone,
+clay → Ventlung, reed → Lanternheart, resinheart/cork → Thrumroot, and
+slag/Cinderglass shards → Stormglass. Quantity stays one while ordinary material
+hauls scale. Early extraction or death gives no completion component. Saved
+offer seeds, target rolls, equipment quality and Kind rewards are unchanged.
+
 **Status:** High-priority open design with provisional prototype direction  
 **Related decisions:** D-007
 

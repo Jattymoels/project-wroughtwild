@@ -1307,6 +1307,8 @@ TrialTable loadTrial(const std::string& path) {
         table.mapRewardPerTier = maps->get("reward_per_tier").asNumber();
         table.mapRewardPerCondition = maps->get("reward_per_condition").asNumber();
         table.mapHaulUnits = readIntMap(maps->get("target_haul_units"));
+        if (const auto components=maps->find("completion_components"))
+            for (const auto& [target, counts] : components->asObject()) table.mapCompletionComponents[target]=readIntMap(*counts);
         for (const auto& pool : maps->get("target_pools").asArray()) table.mapTargetPools.push_back(readStringArray(*pool));
     }
     if (auto conditions = doc->find("conditions")) {
@@ -1514,6 +1516,9 @@ WorldgenTable loadWorldgen(const std::string& path) {
         if (auto heat = n->find("heat_to_work")) node.heatToWork = heat->asInt();
         if (auto tool = n->find("tool_item")) node.toolItem = tool->asString();
         if (auto presses = n->find("drive_presses")) node.drivePresses = presses->asInt();
+        if (auto properties = n->find("properties")) node.properties = readStringArray(*properties);
+        if (auto stages = n->find("harvest_stages")) node.harvestStages = readStringArray(*stages);
+        if (auto preview = n->find("use_preview")) node.usePreview = preview->asString();
         table.nodeTypes[id] = std::move(node);
     }
 
@@ -1571,6 +1576,137 @@ WorldgenTable loadWorldgen(const std::string& path) {
         if (table.habitats.size() > 3) throw std::runtime_error("worldgen: only three bounded habitats are approved");
     }
 
+    std::set<std::string> regionIds;
+    if (auto regions = doc->find("regions")) {
+        for (const auto& entry : regions->asArray()) {
+            RegionDef r;
+            r.id = entry->get("id").asString();
+            r.displayName = entry->get("display_name").asString();
+            r.biome = entry->get("biome").asString();
+            r.salt = static_cast<uint32_t>(entry->get("seed_salt").asInt());
+            r.radiusM = entry->get("radius_m").asNumber();
+            r.transitionM = entry->get("transition_m").asNumber();
+            r.distanceM = entry->get("distance_m").asNumber();
+            r.baseHeight = entry->get("base_height").asInt();
+            r.reliefCells = entry->get("relief_cells").asInt();
+            r.cave = entry->get("authored_cave").asBool();
+            if (r.id.empty() || !regionIds.insert(r.id).second || !table.findBiome(r.biome) ||
+                !std::isfinite(r.radiusM) || r.radiusM < 40 || r.radiusM > 70 ||
+                !std::isfinite(r.transitionM) || r.transitionM < 10 || r.transitionM > 30 ||
+                !std::isfinite(r.distanceM) || r.distanceM < r.radiusM + r.transitionM + table.guarantees.nearRadiusM ||
+                r.baseHeight < 6 || r.baseHeight + r.reliefCells >= table.map.worldDepth - 8 ||
+                r.reliefCells < 0 || r.reliefCells > 8)
+                throw std::runtime_error("worldgen: invalid discovery region " + r.id);
+            table.regions.push_back(std::move(r));
+        }
+        if (table.regions.size() != 3) throw std::runtime_error("worldgen: frontier regions require three complete identities");
+    }
+    if (auto sites = doc->find("rare_sites")) {
+        std::set<std::string> types;
+        std::set<uint32_t> salts;
+        for (const auto& entry : sites->asArray()) {
+            RareSiteDef r;
+            r.nodeType = entry->get("node").asString();
+            r.regions = readStringArray(entry->get("regions"));
+            r.salt = static_cast<uint32_t>(entry->get("seed_salt").asInt());
+            r.minimumSites = entry->get("min_sites").asInt();
+            r.maximumSites = entry->get("max_sites").asInt();
+            r.radiusM = entry->get("radius_m").asNumber();
+            r.clueRadiusM = entry->get("clue_radius_m").asNumber();
+            r.minimumSpacingM = entry->get("site_spacing_m").asNumber();
+            r.exceptionalUnits = entry->get("exceptional_units").asInt();
+            if (!table.nodeTypes.count(r.nodeType) || !types.insert(r.nodeType).second ||
+                !salts.insert(r.salt).second || r.regions.empty() ||
+                r.minimumSites < 2 || r.maximumSites < r.minimumSites || r.maximumSites > 4 ||
+                !std::isfinite(r.radiusM) || r.radiusM < 4 || r.radiusM > 10 ||
+                !std::isfinite(r.clueRadiusM) || r.clueRadiusM < 15 || r.clueRadiusM > 35 ||
+                !std::isfinite(r.minimumSpacingM) || r.minimumSpacingM < r.radiusM * 2 ||
+                r.exceptionalUnits < table.nodeTypes.at(r.nodeType).units ||
+                table.nodeTypes.at(r.nodeType).era != 1)
+                throw std::runtime_error("worldgen: invalid rare site " + r.nodeType);
+            for (const auto& id : r.regions) if (!regionIds.count(id))
+                throw std::runtime_error("worldgen: unknown rare-site region " + id);
+            table.rareSites.push_back(std::move(r));
+        }
+        if (table.rareSites.size() != 5) throw std::runtime_error("worldgen: five rare capabilities must be present");
+    }
+    if (auto p = doc->find("frontier_population")) {
+        auto& f = table.frontierPopulation;
+        f.outerDistanceM = p->get("outer_distance_m").asNumber();
+        f.outerNodeKeep = p->get("outer_node_keep").asNumber();
+        f.outerPackKeep = p->get("outer_pack_keep").asNumber();
+        f.clueQuietRadiusM = p->get("clue_quiet_radius_m").asNumber();
+        f.gateTargetDistanceM = p->get("gate_target_distance_m").asNumber();
+        f.exceptionalSiteMaximum = p->get("exceptional_site_maximum").asInt();
+        if (!std::isfinite(f.outerDistanceM) || f.outerDistanceM < table.guarantees.farRadiusM ||
+            !std::isfinite(f.outerNodeKeep) || f.outerNodeKeep < 0 || f.outerNodeKeep > 1 ||
+            !std::isfinite(f.outerPackKeep) || f.outerPackKeep < 0 || f.outerPackKeep > 1 ||
+            !std::isfinite(f.clueQuietRadiusM) || f.clueQuietRadiusM < 4 || f.clueQuietRadiusM > 15 ||
+            !std::isfinite(f.gateTargetDistanceM) || f.gateTargetDistanceM < table.guarantees.gateMinDistanceM ||
+            f.exceptionalSiteMaximum < 0 || f.exceptionalSiteMaximum > 2)
+            throw std::runtime_error("worldgen: invalid bounded frontier population");
+    }
+    if (auto p = doc->find("cataclysm")) {
+        auto& c = table.cataclysm;
+        auto bounded = [&](const std::string& key, double low, double high) {
+            const double value = p->get(key).asNumber();
+            if (!std::isfinite(value) || value < low || value > high)
+                throw std::runtime_error("worldgen: invalid cataclysm " + key);
+            return value;
+        };
+        c.impactOffsetM = bounded("impact_offset_m", 12, 30);
+        c.majorRadiusM = bounded("major_radius_m", 12, 24);
+        c.secondaryRadiusM = bounded("secondary_radius_m", 8, 18);
+        c.influenceRadiusM = bounded("influence_radius_m", 30, 80);
+        c.craterDepthM = bounded("crater_depth_m", 1, 5);
+        c.rimHeightM = bounded("rim_height_m", 1, 4);
+        c.regionAngleJitter = bounded("region_angle_jitter", 0, 0.2);
+        c.regionWarpM = bounded("region_warp_m", 0, 8);
+        c.traceWidthM = bounded("trace_width_m", 0.5, 2);
+        c.traceInfluenceM = bounded("trace_influence_m", 8, 24);
+        c.traceBendM = bounded("trace_bend_m", 20, 60);
+        c.traceSegments = static_cast<int>(bounded("trace_segments", 12, 32));
+        c.ruinWidthM = bounded("ruin_width_m", 10, 14);
+        c.ruinDepthM = bounded("ruin_depth_m", 10, 14);
+        c.ruinSkirtM = bounded("ruin_skirt_m", 6, 12);
+        c.discoveryDistanceM = bounded("discovery_distance_m", 20, 36);
+        c.pathClearanceM = bounded("path_clearance_m", 3, 4);
+        c.thresholdSearchM = bounded("threshold_search_m", 32, 60);
+        c.thresholdDistanceM = bounded("threshold_distance_m", 18, 30);
+        c.regionalRuinDistanceM = bounded("regional_ruin_distance_m", 20, 40);
+        c.foundationReliefCells = static_cast<int>(bounded("foundation_relief_cells", 2, 5));
+    } else if (table.generationProfile == "frontier_v4" || table.generationProfile == "frontier_v5") {
+        throw std::runtime_error("worldgen: cataclysm profile requires explicit cataclysm tuning");
+    }
+    if (auto p = doc->find("pressure_site")) {
+        auto& s = table.pressureSite;
+        const auto bounded = [&](const std::string& key, double low, double high) {
+            const double value = p->get(key).asNumber();
+            if (!std::isfinite(value) || value < low || value > high)
+                throw std::runtime_error("worldgen: invalid pressure site " + key);
+            return value;
+        };
+        s.pocketRadiusM = bounded("pocket_radius_m", 0.5, 1.0);
+        s.strikeRadiusM = bounded("strike_radius_m", 1.0, 1.5);
+        s.influenceRadiusM = bounded("influence_radius_m", 8, 16);
+        s.traceWidthM = bounded("trace_width_m", 0.25, 0.75);
+        const auto offset = [&](const std::string& key, int& lateral, int& forward) {
+            const auto& values = p->get(key).asArray();
+            if (values.size() != 2) throw std::runtime_error("worldgen: pressure offset needs two cells");
+            lateral = values[0]->asInt(); forward = values[1]->asInt();
+            if (std::abs(lateral) > 4 || std::abs(forward) > 4)
+                throw std::runtime_error("worldgen: pressure offset escapes old smithy foundation");
+        };
+        offset("pocket_offset_cells", s.pocketLateralCells, s.pocketForwardCells);
+        offset("work_offset_cells", s.workLateralCells, s.workForwardCells);
+        offset("strike_offset_cells", s.strikeLateralCells, s.strikeForwardCells);
+        if (std::abs(s.workLateralCells) > 1 || std::abs(s.pocketLateralCells) < 2 ||
+            std::abs(s.strikeLateralCells) < 3 ||
+            std::hypot(s.pocketLateralCells-s.workLateralCells, s.pocketForwardCells-s.workForwardCells) > 3)
+            throw std::runtime_error("worldgen: pressure site obstructs its ordinary interaction strip");
+    } else if (table.generationProfile == "frontier_v5") {
+        throw std::runtime_error("worldgen: frontier_v5 requires explicit pressure-site presentation inputs");
+    }
     return table;
 }
 
@@ -1590,6 +1726,9 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
     tuning.legacyWorldgen = loadWorldgen(tuningDirectory + "/worldgen-legacy-v1.json");
+    tuning.frontierV2Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v2.json");
+    tuning.frontierV3Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v3.json");
+    tuning.frontierV4Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v4.json");
     tuning.grammar = loadGrammar(tuningDirectory + "/grammar.json");
     // The Foundry speaks in the item table's modifiers: every ingot and pair
     // must name one, or a placed ingot would be a silent point.

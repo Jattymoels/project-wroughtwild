@@ -40,6 +40,11 @@ The player begins in a small valley with crude equipment and a basic shelter loc
 
 ## Explicit exclusions
 
+Owner-approved D-030 adds the bounded [cataclysm art/generation intensive](cataclysm-world-intensive-2026-09-06.md)
+to the later prototype: composed impact/leyline/ruin relationships and local
+authored asset integration. It preserves finite world scope and existing gameplay
+contracts. No external production-art service or automation network is required.
+
 The original exclusions below describe the first slice. Owner-approved
 D-027/D-028 bring forward only the eight-family resource-habitat expansion and
 one Forge endgame loop described in the [world](world-intensive-2026-09-06.md)
@@ -69,3 +74,12 @@ new eras and broad production remain excluded.
 ## Completion condition
 
 The slice is successful when a new player can complete the loop, explain how each system helped another system, and express a desire to pursue a newly visible ambition without being told what the hypothetical full game contains.
+
+## Bounded pressure workshop — D-031
+
+The owner-approved [pressure workshop](pressure-workshop-2026-09-06.md) adds one
+finite source in a V5 asteroid-struck pre-cataclysm smithy, one kit and one
+existing brick recipe. This narrowly expands the production boundary: no
+offline work, renewable supply or broad factory. The player's construction
+contains accidental pressure; the ruin does not imply civilisation after impact.
+Current visual finish is accepted for now, with a later graphical pass deferred.

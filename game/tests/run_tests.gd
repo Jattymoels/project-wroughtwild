@@ -1206,7 +1206,14 @@ func _test_sandpit_extension() -> void:
 	check(sim.kit_station("workbench_kit") == "workbench", "sandpit: workbench kit maps to workbench")
 	check(sim.kit_station("forge_kit") == "forge_basic", "sandpit: forge kit maps to the forge")
 	check(sim.kit_station("wood") == "", "sandpit: non-kits map to nothing")
-	check(sim.kit_item_ids().size() == 3 and sim.kit_station("mason_yard_kit") == "mason_yard", "sandpit: three kits exist (the yard joined, D-021)")
+	var station_kits := 0
+	var fixture_kits := 0
+	for kit in sim.kit_item_ids():
+		if not sim.kit_station(kit).is_empty(): station_kits += 1
+		if not sim.contraption_kind_for_kit(kit).is_empty(): fixture_kits += 1
+	check(station_kits == 3 and sim.kit_station("mason_yard_kit") == "mason_yard", "sandpit: the three existing station kits remain")
+	check(fixture_kits == 7 and sim.kit_item_ids().size() == 10 and sim.contraption_kind_for_kit("pressure_feeder_kit")=="pressure_feeder",
+		"pressure workshop: one feeder joins the six existing fixtures and three station kits")
 
 	var drops_a: Dictionary = sim.enemy_loot("stone_husk", 77)
 	var drops_b: Dictionary = sim.enemy_loot("stone_husk", 77)

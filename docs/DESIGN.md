@@ -1,14 +1,29 @@
 # Wroughtwild — Master Design
 
-**Status:** Early concept  
+**Status:** Active prototype design
+
 **Design version:** 0.6  
-**Prototype status:** Not yet implemented
+**Prototype status:** Playable sandpit with bounded world, Forge and presentation intensives; human playtesting and visual acceptance remain ongoing
 
 ## Pitch
 
 A self-directed sandbox ARPG where the player builds a frontier operation, explores a dangerous world and uses targeted gathering, useful crafting work and repeatable trials to unlock increasingly expressive construction and persistent character builds.
 
 ## Core fantasy
+
+**Extreme augmentation is the accepted Northstar.** The forge, bench and Foundry
+already express it; the land and living things now share that cause. The
+[world premise](world-premise.md), supplied by the owner on 6 September
+2026 (D-030), is an alien world devastated by a meteorite shower carrying extreme
+augmentation technology. Formerly modest biome and civilisation differences
+become extremes. The player rebuilds from surviving materials, recovers technology
+from enhanced creatures through Kinds/catalysts, and eventually learns to work
+technological leylines for further crafting and automation. D-031 now specifies
+one finite pressure-to-brick loop; wider production remains future design. The
+[approved world intensive](prototype/cataclysm-world-intensive-2026-09-06.md)
+implements this premise through V4 geography and a shared authored art language.
+Surviving local life and craft, directional impact damage, exaggerated host
+properties and deliberate player reuse remain readable as parts of one world.
 
 The player begins with common materials, crude tools and a small shelter. The world already contains visible places, resources and threats beyond their current capability.
 
@@ -51,7 +66,13 @@ These references describe design influences, not a promise to reproduce their co
 
 ### World and settlements
 
-The prototype uses a bounded seed-generated region. Terrain, biome placement, elevation and resources vary, while critical class halls, settlements and trials use authored modules with guaranteed placement rules.
+New prototype worlds use `frontier_v5`, a finite 512 × 512 metre region with three
+broad discovery areas. Terrain, impacts and connected traces compose six supported
+ruins around existing finite discoveries and the Forge threshold. Material habitats,
+starter supplies and progression journeys remain reachable. Legacy, V2 and V3 saves
+retain their frozen geography and resource identities. The longer-term hybrid model
+also calls for authored class halls and settlements; those are not added by this
+intensive. See [world generation](systems/world-generation.md).
 
 The long-term settlement arc is:
 
@@ -104,7 +125,8 @@ a forged plate; ores are properties rather than ranks. See
 [systems/progression-eras.md](systems/progression-eras.md) (D-019).
 The plate is worked in **workings**: a subject in a socket, supports
 beside it, augments in the corners, class rails at the edge. See
-[systems/foundry.md](systems/foundry.md) (D-023, proposed).
+[systems/foundry.md](systems/foundry.md) (D-023, accepted and implemented in slices),
+with current Kind behaviour in [Foundry mutations](systems/foundry-mutations.md) (D-025).
 
 ## Death contracts
 
@@ -122,9 +144,27 @@ beside it, augments in the corners, class rails at the edge. See
 
 **Late game — Master and specialise:** maintain specialised equipment, automate common resources and construct an ambitious main settlement.
 
-**Endgame — Manufacture challenges:** eventually modify increasingly difficult trials for rare build and crafting rewards. Endgame is outside the initial prototype.
+**Endgame — Manufacture challenges:** increasingly difficult trials offer rare
+build and crafting rewards. D-028 brings forward the bounded Forge arc and tiered
+repeatable runs; broader endgame systems remain outside the initial prototype.
 
 ## Prototype boundary
+
+D-030 additionally approves the [cataclysm intensive](prototype/cataclysm-world-intensive-2026-09-06.md):
+implemented `frontier_v4` links impacts, technological leylines, ruins and existing
+discoveries, with shared authored environment/actor/craft presentation. The world
+remains 512 metres; legacy/V2/V3 inputs and geography are frozen. Native and asset
+checks establish bounded behaviour, while normal-world visual acceptance remains open.
+This art/generation expansion brings the crafting premise into the land; new
+D-031 brings forward one finite pressure feeder and the existing brick recipe; wider extraction and production remain future work.
+
+D-029 additionally approves [The Strange Frontier](prototype/rare-world-intensive-2026-09-06.md):
+three broad regions in a finite 512 metre new-world profile, five reusable rare
+components, their useful fixtures and one hand-wound, signal-triggered cargo
+winch. Its `frontier_v3` profile and both earlier world profiles are now frozen.
+This brings forward a small physical automation vocabulary; production lines,
+power sources, renewable
+common supply and offline production remain future work.
 
 Owner-approved expansion, 6 September 2026 (D-027/D-028): the
 [world intensive](prototype/world-intensive-2026-09-06.md) adds three resource
@@ -134,7 +174,7 @@ three-run story arc and tiered repeatable trials with cleared-floor suspension.
 This is a bounded exception to the original material/endgame exclusions below;
 no additional era, currency gate, Atlas, multiplayer or broad automation is added.
 
-The first slice is deliberately small:
+The original first-slice target, before those accepted expansions, was deliberately small:
 
 - one player class and class-hall path;
 - one bounded region;
@@ -172,3 +212,13 @@ If one route dominates, another major system becomes irrelevant.
 - [systems/foundry.md](systems/foundry.md)
 - [decisions/registry.md](decisions/registry.md)
 - [research/engine-ai-integrations.md](research/engine-ai-integrations.md)
+
+### Pressure workshop continuation — 6 September 2026
+
+The owner accepts the current visual finish for now and clarifies that an
+empowered blacksmith ruin predates the catastrophe: an asteroid struck it by
+accident. The player builds the working containment and feeding machinery.
+[D-031](decisions/registry.md) accepts one finite V5 pressure pocket and one
+player-built forge/feeder loop for existing clay bricks, with exact ownership,
+small buffers, manual winding and no offline work. V4 and older geography is
+frozen. [Approved work item](prototype/pressure-workshop-2026-09-06.md).

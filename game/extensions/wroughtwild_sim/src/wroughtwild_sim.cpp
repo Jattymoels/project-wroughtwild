@@ -1,7 +1,9 @@
 #include "wroughtwild_sim.h"
+#include <limits>
 
 #include <algorithm>
 #include <exception>
+#include <cmath>
 #include <random>
 
 #include "wroughtwild/items.h"
@@ -9,6 +11,7 @@
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 #include <godot_cpp/variant/packed_color_array.hpp>
+#include <godot_cpp/variant/packed_float32_array.hpp>
 
 #include "wroughtwild/grammar.h"
 #include "wroughtwild/loot.h"
@@ -117,6 +120,27 @@ Dictionary item_entry(const wroughtwild::tuning::Tuning& tuning, const wroughtwi
 } // namespace
 
 void WroughtwildSim::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("contraption_kinds"), &WroughtwildSim::contraption_kinds);
+    ClassDB::bind_method(D_METHOD("contraption_kind_for_kit", "kit"), &WroughtwildSim::contraption_kind_for_kit);
+    ClassDB::bind_method(D_METHOD("contraption_place", "kind", "key", "position", "rotation"), &WroughtwildSim::contraption_place);
+    ClassDB::bind_method(D_METHOD("contraption_remove", "key"), &WroughtwildSim::contraption_remove);
+    ClassDB::bind_method(D_METHOD("contraption_ids"), &WroughtwildSim::contraption_ids);
+    ClassDB::bind_method(D_METHOD("contraption_state", "key"), &WroughtwildSim::contraption_state);
+    ClassDB::bind_method(D_METHOD("contraption_config"), &WroughtwildSim::contraption_config);
+    ClassDB::bind_method(D_METHOD("contraption_link", "key", "target", "clear"), &WroughtwildSim::contraption_link);
+    ClassDB::bind_method(D_METHOD("contraption_action", "key", "action", "clear", "other_clear", "distance"), &WroughtwildSim::contraption_action, DEFVAL(true), DEFVAL(true), DEFVAL(0.0));
+    ClassDB::bind_method(D_METHOD("contraption_tick", "key", "seconds", "clear"), &WroughtwildSim::contraption_tick);
+    ClassDB::bind_method(D_METHOD("contraption_deposit", "key", "item", "count"), &WroughtwildSim::contraption_deposit);
+    ClassDB::bind_method(D_METHOD("contraption_withdraw", "key", "port", "item", "count"), &WroughtwildSim::contraption_withdraw);
+    ClassDB::bind_method(D_METHOD("contraption_save"), &WroughtwildSim::contraption_save);
+    ClassDB::bind_method(D_METHOD("contraption_validate", "text"), &WroughtwildSim::contraption_validate);
+    ClassDB::bind_method(D_METHOD("contraption_load", "text"), &WroughtwildSim::contraption_load);
+    ClassDB::bind_method(D_METHOD("contraption_bind_world", "profile", "seed"), &WroughtwildSim::contraption_bind_world);
+    ClassDB::bind_method(D_METHOD("contraption_validate_world", "text", "profile", "seed"), &WroughtwildSim::contraption_validate_world);
+    ClassDB::bind_method(D_METHOD("contraption_load_world", "text", "profile", "seed"), &WroughtwildSim::contraption_load_world);
+    ClassDB::bind_method(D_METHOD("contraption_pressure_sources"), &WroughtwildSim::contraption_pressure_sources);
+    ClassDB::bind_method(D_METHOD("contraption_attach_feeder", "key", "source_id", "forge_key", "forge_position", "clear"), &WroughtwildSim::contraption_attach_feeder);
+    ClassDB::bind_method(D_METHOD("rare_resource_guide"), &WroughtwildSim::rare_resource_guide);
     ClassDB::bind_method(D_METHOD("load_tuning", "tuning_directory"), &WroughtwildSim::load_tuning);
     ClassDB::bind_method(D_METHOD("is_loaded"), &WroughtwildSim::is_loaded);
     ClassDB::bind_method(D_METHOD("last_error"), &WroughtwildSim::last_error);
@@ -1192,6 +1216,24 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
     try {
         auto loaded = std::make_unique<wroughtwild::tuning::Tuning>(
             wroughtwild::tuning::loadAll(to_std(tuning_directory)));
+        auto machine_config = wroughtwild::contraptions::Config::load(to_std(tuning_directory.path_join("contraptions.json")));
+        const auto* feeder_recipe = loaded->crafting.findRecipe("refine_rustclay_brick");
+        if (!feeder_recipe || feeder_recipe->station != "forge_basic" || feeder_recipe->baseSkillXp != 0)
+            throw std::runtime_error("Pressure feeder requires the existing zero-mastery basic-forge brick recipe.");
+        machine_config.feederRecipeInputs = feeder_recipe->inputs;
+        machine_config.feederRecipeOutputs = feeder_recipe->outputs;
+        machine_config.feederFuelCost = feeder_recipe->fuelCost;
+        machine_config.feederFuels = loaded->crafting.fuels;
+        for (const auto& recipe : loaded->crafting.recipes) {
+            for (const auto& [id, amount] : recipe.inputs) { (void)amount; machine_config.allowedItems.insert(id); }
+            for (const auto& [id, amount] : recipe.outputs) { (void)amount; machine_config.allowedItems.insert(id); }
+        }
+        for (const auto& [id, node] : loaded->worldgen.nodeTypes) { (void)id; machine_config.allowedItems.insert(node.materialFamily); }
+        // Machinery handles ordinary stacks, never purse entries or equipment
+        // instances whose ownership/quality lives in another economy contract.
+        for (const auto& id : loaded->crafting.currencies) machine_config.allowedItems.erase(id);
+        for (const auto& base : loaded->items.itemBases) machine_config.allowedItems.erase(base.id);
+        auto machines = std::make_unique<wroughtwild::contraptions::MachineWorld>(machine_config);
         // PlayerEconomy keeps a reference to the tuning, so the tuning must
         // outlive it: drop the session and player first, then swap the tuning in.
         trial_.reset();
@@ -1200,6 +1242,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         world_profile_ = "legacy_v1";
         structure_.clear();
         tuning_ = std::move(loaded);
+        contraptions_ = std::move(machines);
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);
         temper_seed_ = std::random_device{}();
         last_error_ = String();
@@ -1850,6 +1893,7 @@ String WroughtwildSim::kit_station(const String& kit_item_id) const {
 PackedStringArray WroughtwildSim::kit_item_ids() const {
     PackedStringArray ids;
     if (require_loaded("kit_item_ids")) {
+        for (const auto& kind : contraption_kinds()) ids.push_back(String(kind) + String("_kit"));
         for (const auto& station : tuning_->crafting.stations) {
             if (!station.kitItem.empty()) {
                 ids.push_back(to_godot(station.kitItem));
@@ -2421,6 +2465,8 @@ Array WroughtwildSim::trial_map_offers(int tier) const {
         d["seed"] = static_cast<int64_t>(offer.seed);
         d["tier"] = offer.tier;
         d["material_target"] = to_godot(offer.materialTarget);
+        auto component=tuning_->trial.mapCompletionComponents.find(offer.materialTarget);
+        d["completion_components"]=component==tuning_->trial.mapCompletionComponents.end() ? Dictionary() : to_dictionary(component->second);
         d["reward_multiplier"] = offer.rewardMultiplier;
         auto haul = tuning_->trial.mapHaulUnits.find(offer.materialTarget);
         d["target_haul_units"] = haul == tuning_->trial.mapHaulUnits.end() ? 0 : static_cast<int>(std::floor(haul->second * offer.rewardMultiplier));
@@ -2569,19 +2615,28 @@ Dictionary WroughtwildSim::world_map(int seed) {
         n["type"] = to_godot(node.type);
         n["resource_id"] = to_godot(node.resourceId);
         n["habitat_id"] = to_godot(node.habitatId);
+        n["site_id"] = to_godot(node.siteId);
+        n["region_id"] = to_godot(node.regionId);
+        n["exceptional"] = node.exceptional;
         n["x"] = node.x;
         n["y"] = node.y;
         n["z"] = node.z;
         n["material_family"] = to_godot(typeIt->second.materialFamily);
         n["display_name"] = to_godot(typeIt->second.displayName);
         n["presentation_label"] = to_godot(typeIt->second.displayName);
-        n["units"] = typeIt->second.units;
+        n["units"] = node.unitsOverride > 0 ? node.unitsOverride : typeIt->second.units;
         n["units_per_harvest"] = typeIt->second.unitsPerHarvest;
         n["visual"] = to_godot(typeIt->second.visual);
         n["era"] = typeIt->second.era;
         n["heat_to_work"] = typeIt->second.heatToWork;
         n["tool_item"] = to_godot(typeIt->second.toolItem);
         n["drive_presses"] = typeIt->second.drivePresses;
+        PackedStringArray properties, stages;
+        for (const auto& value : typeIt->second.properties) properties.push_back(to_godot(value));
+        for (const auto& value : typeIt->second.harvestStages) stages.push_back(to_godot(value));
+        n["properties"] = properties;
+        n["harvest_stages"] = stages;
+        n["use_preview"] = to_godot(typeIt->second.usePreview);
         nodes.push_back(n);
     }
     d["nodes"] = nodes;
@@ -2620,6 +2675,93 @@ Dictionary WroughtwildSim::world_map(int seed) {
         habitats.push_back(h);
     }
     d["habitats"] = habitats;
+
+    const auto route = [&map](const auto& points) {
+        PackedVector3Array result;
+        for (const auto& p : points)
+            result.push_back(Vector3((p.x + 0.5) * map.cellSize, p.y * map.cellSize, (p.z + 0.5) * map.cellSize));
+        return result;
+    };
+    Array regions;
+    for (const auto& placed : map.regions) {
+        Dictionary r;
+        r["id"] = to_godot(placed.id); r["biome"] = to_godot(placed.biome);
+        r["x"] = placed.x; r["y"] = placed.y; r["z"] = placed.z;
+        r["radius_m"] = placed.radiusM; r["transition_m"] = placed.transitionM;
+        r["approach"] = route(placed.approach); r["cave_approach"] = route(placed.caveApproach);
+        r["impact_id"] = to_godot(placed.impactId); r["augmentation_property"] = to_godot(placed.augmentationProperty);
+        regions.push_back(r);
+    }
+    d["regions"] = regions;
+    Array rare_sites;
+    for (const auto& placed : map.rareSites) {
+        Dictionary s;
+        s["id"] = to_godot(placed.id); s["resource_type"] = to_godot(placed.resourceType);
+        s["region_id"] = to_godot(placed.regionId);
+        s["x"] = placed.x; s["y"] = placed.y; s["z"] = placed.z;
+        s["radius_m"] = placed.radiusM; s["clue_radius_m"] = placed.clueRadiusM;
+        s["exceptional"] = placed.exceptional; s["guarded"] = placed.guarded;
+        s["approach"] = route(placed.approach); s["clue_points"] = route(placed.cluePoints);
+        rare_sites.push_back(s);
+    }
+    d["rare_sites"] = rare_sites;
+
+    Array pressure_pockets;
+    for (const auto& source : map.pressurePockets) {
+        Dictionary p;
+        p["id"]=to_godot(source.id); p["x"]=source.x; p["y"]=source.y; p["z"]=source.z;
+        p["radius_m"]=source.radiusM; p["ruin_id"]=to_godot(source.ruinId);
+        p["impact_id"]=to_godot(source.impactId); p["leyline_id"]=to_godot(source.leylineId);
+        p["linked_site_id"]=to_godot(source.linkedSiteId); p["origin"]=to_godot(source.origin);
+        p["accidental"]=source.accidental; p["approach"]=route(source.approach);
+        const auto& work=source.workPosition;
+        p["work_position"]=Vector3((work.x+0.5)*map.cellSize,work.y*map.cellSize,(work.z+0.5)*map.cellSize);
+        pressure_pockets.push_back(p);
+    }
+    d["pressure_pockets"]=pressure_pockets;
+
+    Array impacts;
+    for (const auto& placed : map.impacts) {
+        Dictionary r;
+        r["id"] = to_godot(placed.id); r["region_id"] = to_godot(placed.regionId); r["kind"] = to_godot(placed.kind);
+        r["x"] = placed.x; r["y"] = placed.y; r["z"] = placed.z;
+        r["radius_m"] = placed.radiusM; r["influence_radius_m"] = placed.influenceRadiusM;
+        r["impact_direction"] = Vector3(placed.impactDirection.x, placed.impactDirection.y, placed.impactDirection.z);
+        r["approach"] = route(placed.approach);
+        impacts.push_back(r);
+    }
+    d["impacts"] = impacts;
+    Array leylines;
+    for (const auto& placed : map.leylines) {
+        Dictionary r;
+        r["id"] = to_godot(placed.id); r["region_id"] = to_godot(placed.regionId); r["property"] = to_godot(placed.property);
+        r["from_impact_id"] = to_godot(placed.fromImpactId); r["to_impact_id"] = to_godot(placed.toImpactId);
+        r["width_m"] = placed.widthM; r["influence_radius_m"] = placed.influenceRadiusM;
+        r["points"] = route(placed.points);
+        PackedByteArray exposure;
+        for (const auto value : placed.exposure) exposure.push_back(value);
+        r["exposure"] = exposure;
+        leylines.push_back(r);
+    }
+    d["leylines"] = leylines;
+    Array ruins;
+    for (const auto& placed : map.ruins) {
+        Dictionary r;
+        r["id"] = to_godot(placed.id); r["region_id"] = to_godot(placed.regionId); r["kind"] = to_godot(placed.kind);
+        r["x"] = placed.x; r["y"] = placed.y; r["z"] = placed.z;
+        r["width_m"] = placed.widthM; r["depth_m"] = placed.depthM; r["rotation_quarters"] = placed.rotationQuarters;
+        r["impact_id"] = to_godot(placed.impactId); r["leyline_id"] = to_godot(placed.leylineId);
+        r["linked_site_id"] = to_godot(placed.linkedSiteId); r["augmentation"] = to_godot(placed.augmentation);
+        r["damage_direction"] = Vector3(placed.damageDirection.x, placed.damageDirection.y, placed.damageDirection.z);
+        r["entrance"] = Vector3((placed.entrance.x + 0.5) * map.cellSize, placed.entrance.y * map.cellSize, (placed.entrance.z + 0.5) * map.cellSize);
+        r["approach"] = route(placed.approach); r["discovery_route"] = route(placed.discoveryRoute); r["foundation"] = route(placed.foundation);
+        ruins.push_back(r);
+    }
+    d["ruins"] = ruins;
+    PackedFloat32Array augmentation;
+    augmentation.resize(static_cast<int64_t>(map.augmentationField.size()));
+    for (size_t i = 0; i < map.augmentationField.size(); ++i) augmentation.set(static_cast<int64_t>(i), map.augmentationField[i]);
+    d["augmentation_field"] = augmentation;
 
     Array packs;
     for (const auto& pack : map.packs) {
@@ -4365,5 +4507,7 @@ double WroughtwildSim::ward_multiplier(const PackedStringArray& carried_statuses
     }
     return wroughtwild::grammar::wardMultiplier(*tuning_, active_mods(), carried);
 }
+
+#include "strange_frontier_bindings.inc"
 
 } // namespace godot

@@ -43,6 +43,8 @@ var broken: Array[Vector3i] = []
 ## in _pending_nodes until reveal_era brings their era.
 var current_era := 1
 var _pending_nodes: Array = []
+var resource_stream: ResourceStream
+var chunk_stream: TerrainChunkStream
 ## Fire-setting (D-020): the sim's rules (fuels, reach, soak, hot_seconds,
 ## quench radius), rock that is hot right now (cell -> {heat, until_msec})
 ## and rock that has been cracked (cell -> true). Cracked rock digs by
@@ -61,13 +63,18 @@ const KIND_NAMES := {1: "surface", 2: "dirt", 3: "stone", 4: "bedrock"}
 var _materials := {}
 ## Codex aesthetic comparison, opt-in; never serialized into a world save.
 var frontier_look: Resource
+## Separate v3 presentation: older world profiles keep their prior materials
+## and atmosphere, including when the owner loads one into this same scene.
+var atmosphere_look: Resource
 var faceted_surface := false
 var weathered := false
 var build_profile: Dictionary = {}
+var last_chunk_profile: Dictionary = {}
 var _sim: WroughtwildSim
 var _seed := 0
 var _world_profile := "legacy_v1"
 var _habitat_refresh_queued := false
+var _augmentation_texture: ImageTexture
 ## Mutable copy of the sim's block field with the player's digs applied.
 var _blocks := PackedByteArray()
 
@@ -154,6 +161,11 @@ func _material_for(kind: String) -> Material:
 	if frontier_look != null:
 		var frontier_material: Material = frontier_look.terrain_material(kind, float(map.get("cell_size", 1.0)))
 		frontier_material.set_shader_parameter("world_mesh", faceted_surface)
+		if _world_profile in ["frontier_v4", "frontier_v5"] and _augmentation_texture != null:
+			frontier_material.set_shader_parameter("augmentation_enabled", true)
+			frontier_material.set_shader_parameter("augmentation_map", _augmentation_texture)
+			frontier_material.set_shader_parameter("augmentation_extent", Vector2(map.width, map.height) * float(map.cell_size))
+			frontier_material.set_shader_parameter("augmentation_tint", preload("res://art/cataclysm_look.tres").ground_tint_strength)
 		_materials[kind] = frontier_material
 		return frontier_material
 	var material := StandardMaterial3D.new()
@@ -183,6 +195,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	if weathered:
 		frontier_look = preload("res://art/weathered_look.tres")
 	_materials.clear()
+	chunk_stream=null
 	for child in get_children():
 		remove_child(child)
 		child.free()
@@ -191,12 +204,22 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	_sim = sim
 	_seed = seed_value
 	_world_profile = sim.world_profile()
+	atmosphere_look = null
+	_augmentation_texture = null
+	if weathered and _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"]:
+		frontier_look = preload("res://art/wildland_look.tres")
+		atmosphere_look = preload("res://art/wildland_atmosphere.tres")
 	current_era = int(sim.era().get("index", 1))
 	_pending_nodes.clear()
+	resource_stream = null
 	map = sim.world_map(seed_value)
 	if map.is_empty():
 		push_error("Terrain: sim.world_map returned nothing")
 		return
+	if _world_profile in ["frontier_v4", "frontier_v5"]:
+		var field: PackedFloat32Array = map.get("augmentation_field", PackedFloat32Array())
+		if field.size() == int(map.width) * int(map.height):
+			_augmentation_texture = ImageTexture.create_from_image(Image.create_from_data(int(map.width), int(map.height), false, Image.FORMAT_RF, field.to_byte_array()))
 	_blocks = (map["blocks"] as PackedByteArray).duplicate()
 	block_rules = sim.block_rules()
 	fire_rules = sim.fire_setting()
@@ -211,15 +234,24 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 	var geometry_start := Time.get_ticks_msec()
 	if weathered:
 		HabitatCover.prepare(map)
-	for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS, faceted_surface, _blend_palette()):
-		_build_chunk(chunk_data, cell)
+	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"]:
+		chunk_stream=TerrainChunkStream.new()
+		chunk_stream.setup(self)
+	else:
+		for chunk_data in sim.world_mesh(seed_value, CHUNK_CELLS, faceted_surface, _blend_palette()):
+			_build_chunk(chunk_data, cell)
 	var resources_start := Time.get_ticks_msec()
 
 	nodes_root = Node3D.new()
 	nodes_root.name = "ResourceNodes"
 	add_child(nodes_root)
-	for node in map["nodes"]:
-		_spawn_resource_node(node)
+	if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"]:
+		resource_stream = ResourceStream.new()
+		resource_stream.setup(self,map["nodes"])
+		resource_stream.focus(surface_position(int(map.spawn_x),int(map.spawn_z)),true)
+	else:
+		for node in map["nodes"]:
+			_spawn_resource_node(node)
 	build_profile = {"map_ms":geometry_start-build_start,"chunks_ms":resources_start-geometry_start,
 		"resources_ms":Time.get_ticks_msec()-resources_start,"total_ms":Time.get_ticks_msec()-build_start}
 
@@ -227,69 +259,92 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 func _blend_palette() -> Dictionary:
 	return frontier_look.top_colours if frontier_look != null and frontier_look.blend_materials else {}
 
+## Exact surface/cave collision before a saved pose, review move or teleport.
+## Coordinates are local to Terrain, matching surface_position and map nodes.
+func ensure_area(local_position: Vector3,radius_m:=32.0) -> void:
+	if chunk_stream != null: chunk_stream.ensure_area(local_position,radius_m)
+
 func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
-	var chunk := Node3D.new()
-	chunk.name = "Chunk_%d_%d" % [int(chunk_data["x"]), int(chunk_data["z"])]
-	add_child(chunk)
-	chunks["%d_%d" % [int(chunk_data["x"]), int(chunk_data["z"])]] = chunk
-	if faceted_surface:
-		chunk.set_meta("surface_sampler", SurfaceSampler.new(chunk_data["faces"], cell))
+	var chunk: Node3D
+	var phase_names := ["sampler_ms","meshes_ms","cover_ms","collision_ms"]
+	last_chunk_profile={}
+	for phase in 4:
+		var began:=Time.get_ticks_usec()
+		chunk=_build_chunk_phase(chunk_data,cell,phase,chunk)
+		last_chunk_profile[phase_names[phase]]=(Time.get_ticks_usec()-began)/1000.0
 
-	var kinds: Dictionary = chunk_data["kinds"]
-	for kind in kinds:
-		if chunk_data.has("surfaces"):
-			var arrays := []
-			arrays.resize(Mesh.ARRAY_MAX)
-			arrays[Mesh.ARRAY_VERTEX] = chunk_data["surfaces"][kind]
-			arrays[Mesh.ARRAY_NORMAL] = chunk_data["normals"][kind]
-			if chunk_data.get("blend_colours",{}).has(kind):
-				arrays[Mesh.ARRAY_COLOR] = chunk_data.blend_colours[kind]
-			if frontier_look != null and frontier_look.soft_terrain:
-				arrays[Mesh.ARRAY_NORMAL] = chunk_data["soft_normals"][kind]
-			var surface := ArrayMesh.new()
-			surface.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-			var visible := MeshInstance3D.new()
-			visible.mesh = surface
-			visible.material_override = _material_for(String(kind))
-			chunk.add_child(visible)
-			continue
-		var centres: PackedVector3Array = kinds[kind]
-		if centres.is_empty():
-			continue
-		var mesh := BoxMesh.new()
-		mesh.size = Vector3.ONE * cell
-		mesh.material = _material_for(String(kind))
-		var multimesh := MultiMesh.new()
-		multimesh.transform_format = MultiMesh.TRANSFORM_3D
-		multimesh.mesh = mesh
-		multimesh.instance_count = centres.size()
-		for i in centres.size():
-			multimesh.set_instance_transform(i, Transform3D(Basis.IDENTITY, centres[i]))
-		var instance := MultiMeshInstance3D.new()
-		instance.multimesh = multimesh
-		chunk.add_child(instance)
+## Small independent presentation phases let exploration amortise expensive
+## cover and collision work. Chunks become queryable only after collision exists.
+func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Node3D=null) -> Node3D:
+	if phase==0:
+		chunk = Node3D.new()
+		chunk.name = "Chunk_%d_%d" % [int(chunk_data["x"]), int(chunk_data["z"])]
+		add_child(chunk)
+		if faceted_surface:
+			chunk.set_meta("surface_sampler", SurfaceSampler.new(chunk_data["faces"], cell))
+		chunk.visible=false
+	elif phase==1:
+		var kinds: Dictionary = chunk_data["kinds"]
+		for kind in kinds:
+			if chunk_data.has("surfaces"):
+				var arrays := []
+				arrays.resize(Mesh.ARRAY_MAX)
+				arrays[Mesh.ARRAY_VERTEX] = chunk_data["surfaces"][kind]
+				arrays[Mesh.ARRAY_NORMAL] = chunk_data["normals"][kind]
+				if chunk_data.get("blend_colours",{}).has(kind):
+					arrays[Mesh.ARRAY_COLOR] = chunk_data.blend_colours[kind]
+				if frontier_look != null and frontier_look.soft_terrain:
+					arrays[Mesh.ARRAY_NORMAL] = chunk_data["soft_normals"][kind]
+				var surface := ArrayMesh.new()
+				surface.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+				var visible := MeshInstance3D.new()
+				visible.mesh = surface
+				visible.material_override = _material_for(String(kind))
+				chunk.add_child(visible)
+				continue
+			var centres: PackedVector3Array = kinds[kind]
+			if centres.is_empty():
+				continue
+			var mesh := BoxMesh.new()
+			mesh.size = Vector3.ONE * cell
+			mesh.material = _material_for(String(kind))
+			var multimesh := MultiMesh.new()
+			multimesh.transform_format = MultiMesh.TRANSFORM_3D
+			multimesh.mesh = mesh
+			multimesh.instance_count = centres.size()
+			for i in centres.size():
+				multimesh.set_instance_transform(i, Transform3D(Basis.IDENTITY, centres[i]))
+			var instance := MultiMeshInstance3D.new()
+			instance.multimesh = multimesh
+			chunk.add_child(instance)
 
-	# Ground cover per biome (Wave 6 slice 4): tufts, ferns, reeds, dead
-	# grass on the surface blocks, batched per chunk and kind.
-	GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look)
-	if weathered:
-		HabitatCover.build(chunk,chunk_data,map,cell)
+	elif phase==2:
+		GroundCover.build_for_chunk(chunk, chunk_data, map, cell, frontier_look,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"])
+		if weathered:
+			HabitatCover.build(chunk,chunk_data,map,cell,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"])
 
-	var faces: PackedVector3Array = chunk_data["faces"]
-	if not faces.is_empty():
-		var shape := ConcavePolygonShape3D.new()
-		shape.set_faces(faces)
-		# The sim does not promise a winding; collide from both sides.
-		shape.backface_collision = true
-		var body := StaticBody3D.new()
-		body.name = "ChunkBody"
-		body.set_meta("terrain_chunk", true)
-		if chunk_data.has("source_cells"):
-			body.set_meta("surface_cells", chunk_data["source_cells"])
-		var collider := CollisionShape3D.new()
-		collider.shape = shape
-		body.add_child(collider)
-		chunk.add_child(body)
+	elif phase==3:
+		var faces: PackedVector3Array = chunk_data["faces"]
+		if not faces.is_empty():
+			var shape := ConcavePolygonShape3D.new()
+			shape.set_faces(faces)
+			# The sim does not promise a winding; collide from both sides.
+			shape.backface_collision = true
+			var body := StaticBody3D.new()
+			body.name = "ChunkBody"
+			body.set_meta("terrain_chunk", true)
+			if chunk_data.has("source_cells"):
+				body.set_meta("surface_cells", chunk_data["source_cells"])
+			var collider := CollisionShape3D.new()
+			collider.shape = shape
+			body.add_child(collider)
+			chunk.add_child(body)
+		# A placed floor can predate this streamed/rebuilt chunk. Suppress
+		# intersecting V3 cover before publishing any visible grass or shrubs.
+		if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5"]: StrangeSites.refresh_cover_chunk(self,chunk)
+		chunks["%d_%d" % [int(chunk_data.x),int(chunk_data.z)]]=chunk
+		chunk.visible=true
+	return chunk
 
 
 # --- digging (Wave 3: breaking the generic blocks) ---------------------------
@@ -343,6 +398,7 @@ func _rebuild_chunk(cx: int, cz: int) -> void:
 		return
 	cx -= cx % CHUNK_CELLS
 	cz -= cz % CHUNK_CELLS
+	if chunk_stream != null: chunk_stream.cancel_chunk(Vector2i(cx,cz))
 	var key := "%d_%d" % [cx, cz]
 	if chunks.has(key):
 		var old: Node3D = chunks[key]
@@ -355,6 +411,7 @@ func _rebuild_chunk(cx: int, cz: int) -> void:
 		packed.append(v.y)
 		packed.append(v.z)
 	_build_chunk(_sim.world_mesh_chunk(_seed, CHUNK_CELLS, cx, cz, packed, faceted_surface, _blend_palette()), map["cell_size"])
+	if chunk_stream != null: chunk_stream.set_detail(Vector2i(cx,cz),true)
 	if faceted_surface and is_instance_valid(nodes_root):
 		var cell: float = map["cell_size"]
 		for node in nodes_root.get_children():
@@ -370,6 +427,9 @@ func _refresh_habitats() -> void:
 	_habitat_refresh_queued = false
 	if get_parent() is Node3D:
 		HabitatSites.refresh(get_parent(), self)
+		StrangeSites.refresh(get_parent(), self)
+		var history := get_parent().get_node_or_null("CataclysmSites")
+		if history != null: history.refresh_all()
 
 ## Same triangles used by picking and walking. Queries near chunk edges also
 ## consider neighbours because rounded corners can extend over the boundary.
@@ -410,6 +470,10 @@ func apply_broken_blocks(list: Array) -> void:
 		for origin in _touched_chunk_origins(v.x, v.z):
 			touched[origin] = true
 	broken.clear()
+	if _world_profile in ["frontier_v4", "frontier_v5"]:
+		var field: PackedFloat32Array = map.get("augmentation_field", PackedFloat32Array())
+		if field.size() == int(map.width) * int(map.height):
+			_augmentation_texture = ImageTexture.create_from_image(Image.create_from_data(int(map.width), int(map.height), false, Image.FORMAT_RF, field.to_byte_array()))
 	_blocks = (map["blocks"] as PackedByteArray).duplicate()
 	for entry in list:
 		if not (entry is Array) or entry.size() != 3:
@@ -428,6 +492,12 @@ func apply_broken_blocks(list: Array) -> void:
 ## An era arrives: the nodes that were waiting for it surface. Returns
 ## how many.
 func reveal_era(era: int) -> int:
+	if resource_stream != null:
+		var revealed_count := 0
+		for record in resource_stream.records.values():
+			if int(record.get("era",1))>current_era and int(record.get("era",1))<=era: revealed_count+=1
+		current_era=era
+		return revealed_count
 	current_era = era
 	var revealed := 0
 	var still_waiting: Array = []
@@ -442,6 +512,11 @@ func reveal_era(era: int) -> int:
 
 
 func pending_node_count() -> int:
+	if resource_stream != null:
+		var count := 0
+		for record in resource_stream.records.values():
+			if int(record.get("era",1))>current_era: count+=1
+		return count
 	return _pending_nodes.size()
 
 
@@ -464,6 +539,9 @@ func _spawn_resource_node(def: Dictionary) -> void:
 	node.remaining_units = def["units"]
 	node.units_per_harvest = def["units_per_harvest"]
 	node.visual = StringName(def["visual"])
+	node.set_meta("rare_stages",Array(def.get("harvest_stages",[])))
+	node.set_meta("rare_use",String(def.get("use_preview","")))
+	node.set_meta("site_id",String(def.get("site_id","")))
 	var cell: float = map["cell_size"]
 	# Local position: terrain sits at the origin, and this also works when a
 	# harness builds the terrain before the first frame. Set before the node
@@ -477,6 +555,13 @@ func _spawn_resource_node(def: Dictionary) -> void:
 # --- fire-setting (D-020: heat cracks stone, cold shatters what is hot) -----
 
 func _process(delta: float) -> void:
+	if chunk_stream != null:
+		var geometry_player := get_parent().get_node_or_null("Player") as Node3D
+		if geometry_player != null: chunk_stream.tick(delta,to_local(geometry_player.global_position))
+	if resource_stream != null:
+		var player := get_parent().get_node_or_null("Player") as Node3D
+		if player != null:
+			resource_stream.tick(delta,to_local(player.global_position))
 	_expire_timer -= delta
 	if _expire_timer > 0.0 or _hot.is_empty():
 		return

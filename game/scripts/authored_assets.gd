@@ -20,6 +20,17 @@ static func mesh_for(id: String) -> ArrayMesh:
 		# Nature and most furniture are already one mesh at an applied pivot.
 		# Keep the importer-generated LODs instead of rebuilding its surfaces.
 		var imported := instances[0].mesh as ArrayMesh
+		var visual: MeshInstance3D = instances[0].instance
+		# glTF may put materials on the instance rather than the mesh. Preserve
+		# those overrides when discarding the imported scene, while retaining LODs.
+		var copied := false
+		for surface in imported.get_surface_count():
+			var active := visual.get_active_material(surface)
+			if active != imported.surface_get_material(surface):
+				if not copied:
+					imported = imported.duplicate() as ArrayMesh
+					copied = true
+				imported.surface_set_material(surface, active)
 		root.free()
 		_meshes[id] = imported
 		return imported
@@ -32,7 +43,7 @@ static func mesh_for(id: String) -> ArrayMesh:
 static func _collect_instances(node: Node, parent_transform: Transform3D, output: Array) -> void:
 	var transform := parent_transform
 	if node is Node3D: transform *= (node as Node3D).transform
-	if node is MeshInstance3D: output.append({"mesh":(node as MeshInstance3D).mesh,"transform":transform})
+	if node is MeshInstance3D: output.append({"mesh":(node as MeshInstance3D).mesh,"transform":transform,"instance":node})
 	for child in node.get_children(): _collect_instances(child,transform,output)
 
 static func _collect(node: Node, parent_transform: Transform3D, output: ArrayMesh) -> void:

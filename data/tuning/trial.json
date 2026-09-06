@@ -254,6 +254,17 @@
     "design_purpose": "Haul units control useful replenishment per salvage room and optional secret. Every chosen tier adds twelve percent base monster life and four percent damage; player power and overworld balance are unchanged. Tiers unlock only by clearing the preceding challenge. Three offers stay stable until a successful entry; tiers 1-3 roll two conditions, 4-7 three, and 8 onward four. Map target pools keep three distinct quarry, living-material and trial-rare ambitions visible at the gate. Target units refine into at least twelve finished material units before reward bonuses; secret caches reinforce the same selected source. Each rolled condition adds ten percent haul and each extra tier adds three percent; curses multiply the shown map reward.",
     "reward_per_tier": 0.03,
     "reward_per_condition": 0.1,
+    "completion_components": {
+      "raw_slate": {"pullstone": 1},
+      "raw_shellstone": {"pullstone": 1},
+      "raw_clay": {"ventlung": 1},
+      "raw_reed": {"lanternheart": 1},
+      "resinheart_log": {"thrumroot": 1},
+      "raw_corkbark": {"thrumroot": 1},
+      "furnace_slag": {"stormglass": 1},
+      "cinderglass_shard": {"stormglass": 1}
+    },
+    "completion_component_purpose": "One intact component is previewed against the existing material target and banked once on repeatable boss completion. It permits another lamp or contraption in finite worlds without changing saved offer rolls, multiplying rare cores through every cache, or making them a new currency. Ordinary hauls retain tier and condition rewards; the component count remains one.",
     "target_haul_units": {
       "raw_slate": 24,
       "raw_shellstone": 24,

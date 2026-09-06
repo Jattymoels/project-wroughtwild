@@ -1,6 +1,7 @@
 extends Resource
-## Procedural presentation meshes. Collision, attack ranges and family colours
-## still belong to the existing actors. One surface keeps status flashes intact.
+## Shared canonical pivots and procedural player/fallback meshes. Normal enemy
+## families adopt the reviewed Blender skins through RecoveredActorArt when
+## CreatureMotion attaches; both paths retain one status-aware surface.
 @export var name_font_size := 32
 @export var name_pixel_size := 0.006
 @export var name_reference_distance := 6.0

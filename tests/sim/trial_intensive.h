@@ -136,6 +136,41 @@ void testTrialIntensive(const tuning::Tuning& t) {
         check(targetRun.runLoot() == before, "maps: repeat completion call cannot duplicate a cache");
         targetRun.abandon();
     }
+    auto withoutComponents = t;
+    withoutComponents.trial.mapCompletionComponents.clear();
+    const auto previousOffers = trial::mapOffers(withoutComponents, gate, 1);
+    for (size_t i = 0; i < original.size(); ++i)
+        check(original[i].id == previousOffers[i].id && original[i].conditions == previousOffers[i].conditions &&
+              original[i].materialTarget == previousOffers[i].materialTarget,
+              "strange frontier: component rewards do not reroll saved map offers");
+    check(t.trial.mapCompletionComponents.size() == 8, "strange frontier: all existing haul targets preview a component");
+    for (const auto& [target, components] : t.trial.mapCompletionComponents) {
+        auto offer = original.front();
+        offer.materialTarget = target;
+        for (const bool win : {false, true}) {
+            economy::PlayerEconomy owner(t);
+            trial::TrialSession completion(t, owner, tags, offer);
+            for (int stage = 0; stage < 5; ++stage) {
+                completion.beginRoom(0);
+                completion.resolveRoom(stage != 4 || win);
+                completion.skipReward();
+            }
+            for (const auto& [item, units] : components)
+                check(owner.held(item) == (win ? units : 0),
+                      "strange frontier: component is banked only after the repeatable boss is defeated");
+            const auto inventory = owner.inventory;
+            completion.resolveRoom(true);
+            check(owner.inventory == inventory, "strange frontier: repeated boss completion cannot duplicate a component");
+        }
+        economy::PlayerEconomy owner(t);
+        trial::TrialSession extracted(t, owner, tags, offer);
+        extracted.beginRoom(0); extracted.resolveRoom(true); extracted.skipReward();
+        extracted.abandon();
+        for (const auto& [item, units] : components) {
+            (void)units;
+            check(owner.held(item) == 0, "strange frontier: early extraction does not award a boss component");
+        }
+    }
     std::set<std::string> bargains;
     const auto* firstStory = t.trial.findExpedition("forge_tyrant");
     for (int seed = 1; seed <= 12; ++seed) {

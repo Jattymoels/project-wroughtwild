@@ -190,6 +190,7 @@ func _cover(at: Vector3, size: Vector3, colour: Color) -> void:
 	_box(at+Vector3.UP*size.y*.5, size, colour, true)
 
 func _module_dress(c: Vector3, module: String, variant: int) -> void:
+	CataclysmSites.dress_forge(self, c, LOOK.room_width)
 	var furnish := func(id:String,at:Vector3,scale_value:Vector3,yaw:=0.0)->void:
 		var mesh:=AuthoredAssets.mesh_for(id)
 		if mesh==null: return

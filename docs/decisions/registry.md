@@ -1,5 +1,54 @@
 # Decision Registry
 
+Owner continuation and lore correction, 6 September 2026: current visual finish
+is accepted for now; a later graphical pass remains welcome. Empowerment at an
+old blacksmith's ruin is an accidental consequence of its asteroid strike,
+never evidence of civilisation building or operating there after the catastrophe.
+“Continue” accepts the [finite pressure workshop](../prototype/pressure-workshop-2026-09-06.md)
+and its [concrete proposal](../prototype/leyline-extraction-proposal-2026-09-06.md)
+with this correction. D-031 brings forward one finite source, one feeder and one
+existing brick recipe; it supersedes the extraction deferral below only within
+that scope. Existing V4 geography and decorative traces remain frozen.
+
+Owner implementation approval, 6 September 2026: “Yep let's do it” accepts the
+[cataclysm intensive](../prototype/cataclysm-world-intensive-2026-09-06.md).
+Extreme augmentation is the Northstar already expressed in the forge, bench
+and Foundry; bring that shared cause into land, ruins, living things and visual
+presentation. D-030 now also approves the bounded art integration and successor
+generation profile described there. Implemented `frontier_v4` retains the finite
+512 metre world and links three impacts, nine traces and six supported ruins to
+existing opportunities. V3 inputs and helpers were frozen before this geography;
+legacy, V2 and V3 remain unchanged. The shared kit and reviewed actor/craft assets
+are integrated with existing gameplay contracts. [Native review](../art/cataclysm-generation-2026-09-06.md),
+[kit review](../art/cataclysm-kit-2026-09-06.md), [actor/craft review](../art/cataclysm-actor-craft-2026-09-06.md).
+These implementation records do not certify the final integrated visual finish.
+Extraction and powered production remain follow-on design.
+
+Owner lore direction, 6 September 2026: D-030 records a low-technology alien
+world devastated by meteor-borne augmentation, with technological leylines,
+extreme biome changes and corrupted civilisations. The player rebuilds, recovers
+technology through enemy Kinds/catalysts, and eventually learns leyline extraction
+and automation. [Accepted premise](../world-premise.md). The subsequent owner
+approval above accepts the bounded generation/art intensive; it supersedes its
+earlier proposal status. It does not approve new extraction gates, energy rules
+or migration of existing geography. Existing game contracts remain authoritative.
+
+Owner art correction, 6 September 2026: the Strange Frontier concepts are loved,
+but the screenshots remain “very barren and amateurish”. Continued work now
+prioritises fuller, more natural regional composition, varied authored forms
+and material/lighting depth under D-013/D-029. This does not accept the previous
+visual finish or add new game rules. [Bounded art work item](../prototype/frontier-art-refinement-2026-09-06.md).
+
+Owner approval, 6 September 2026: “Love it - let's go” accepts
+[The Strange Frontier](../prototype/rare-world-intensive-2026-09-06.md).
+D-029 brings forward three composed regions, five finite rare-resource discovery
+loops and their standalone objects, plus a bounded Stormglass-triggered cargo
+winch. A new generation profile preserves both existing profiles. The 512 metre
+world and site counts are measured tuning targets. This explicitly extends the
+earlier small-material/production boundary for these objects; powered production
+lines, renewable supply, broad logistics and offline simulation remain future
+work. D-017/D-019/D-021/D-026 remain authoritative; no timber-demolition change.
+
 Owner approval, 6 Sep 2026: "PLEASE IMPLEMENT THIS PLAN" accepts the two
 intensives: [places worth discovering](../prototype/world-intensive-2026-09-06.md)
 and [trials worth mastering](../prototype/trial-intensive-2026-09-06.md).
@@ -120,10 +169,28 @@ Statuses:
 | D-024 | Base threat | Nests (encroachment slice 1, D-018) retired: the owner (4 Sep 2026) found them "not rewarding" and that they "don't feel natural to the world"; mob AI behaviours are to be reassessed later, and the base threat waits for that. The sim module, the engine's nest and encroachment scripts, the world.json block and the era flags are gone; the design record stays in world-generation.md | Accepted (owner, 4 Sep 2026) | Mob AI behaviours are reassessed |
 | D-025 | Foundry mutations and itemisation | Specific Kind identities travel along every occupied, strictly inward branch and transform intermediate ingots and supports. Reconvergence deduplicates readings; ordered Kind rules compose. Direct bronze/steel supports gain additive refinements. Smoulder, fields, travelling melee, bursts, cast seals, returning life and attack/spell cadences provide early mechanical identity. Equipment reads acquired capabilities while damage packets retain their native type. UI shows resolved names and previews; owned IDs remain stable. Rare build-defining item modifiers are future direction, not a new pool in this pass. [Current grammar](../systems/foundry-mutations.md) supersedes D-023 family-wide reaction tables and refines D-019/D-020 early pacing. | Accepted and implemented (owner: "Perfect ... continue to implement that", 5 Sep 2026) | Owner playtesting of the mutation grammar and first itemisation interactions |
 | D-026 | Forge clarity and input-quality progression | Catalogue selection with native cost/outcome previews and atomic batches; modest bench kit; Rough/Sound/Excellent workpiece capacity and Faint/Stable/Potent Kind rolls; slower meaningful-use mastery with explicit legacy reward preservation. Refines D-014/D-019/D-023; keeps D-002 useful work and D-025 early mutations. [Implementation and tuning](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026). | Accepted and implemented (owner: "Okay enact the proposal", 6 Sep 2026) | Human pacing playtests; no new mandatory timers |
+| D-030 | World premise and Cataclysm intensive | Extreme augmentation is the accepted Northstar: a meteorite shower transformed modest alien life and civilisations, and the player deliberately reuses the same force through existing craft, Kinds/catalysts and the Foundry. The approved regional art language and bounded `frontier_v4` composition connect impacts, traces, ruins and existing finite discoveries within 512 metres. Legacy/V2/V3 geography stays frozen; existing gameplay contracts remain authoritative. Authored actor/craft integration preserves bodies, timing, stock and progression. [Premise](../world-premise.md), [approved scope](../prototype/cataclysm-world-intensive-2026-09-06.md), [native implementation](../art/cataclysm-generation-2026-09-06.md). D-031 subsequently brings forward one finite pressure workshop. | Accepted and implemented in bounded native/art slices (owner: “Yep let's do it”, 6 Sep 2026); current visual finish accepted for now on continuation | Human route/art review; separate concrete extraction/production design or further owner lore |
+
+| D-031 | Accidental impact and bounded pressure workshop | Old smithies predate the catastrophe; accidental asteroid pressure is discovered and contained by the player. One finite V5 pocket powers one new feeder at a player-built forge, using only the existing clay-brick recipe. Exact escrow, small buffers, pause/save recovery, manual winding and core refunds; no offline work or broad production network. V4 and earlier geography remain frozen. [Accepted contract](../prototype/leyline-extraction-proposal-2026-09-06.md), [implementation](../prototype/pressure-workshop-2026-09-06.md). Supersedes D-001/D-029/D-030 automation deferral only for this loop. | Accepted and implemented (owner: “Continue” with lore correction, 6 Sep 2026); current visual finish accepted for now | Human workshop and discovery playtest; any wider automation needs a separate bounded design |
 
 ## Accepted intensive additions
 
 Accepted additions, 6 September 2026:
+
+- **D-030 — Cataclysm world intensive:** the approved survivor workshop → ruin →
+  augmented grove → discovery direction carries across the current regions and
+  Forge. V4 implements composed impact/leyline/ruin relationships without growing
+  the world or changing the five rare-source capabilities. V3 and both older
+  profiles are frozen. The local kit and actor/craft studies are integrated under
+  their existing gameplay contracts. [Scope, sequence and review](../prototype/cataclysm-world-intensive-2026-09-06.md).
+
+- **D-029 — The Strange Frontier:** three broad discovery regions in a new
+  finite profile; five finite rare components; lights, hand-assisted work,
+  sorting and a bounded connected cargo winch. Both old profiles and their
+  placement inputs remain frozen. Reusable rare cores refund fully. One
+  previewed component replenishes on repeatable Forge boss completion without
+  changing offer rolls. Production lines and renewable supply remain a roadmap.
+  [Approved work item](../prototype/rare-world-intensive-2026-09-06.md).
 
 - **D-027 — Resource habitats and architectural materials:** implement the
   owner-approved world intensive. New worlds use versioned geography; old saves
@@ -134,6 +201,12 @@ Accepted additions, 6 September 2026:
   Review duration/difficulty with real builds and the pending human playtest.
 
 ## Proposals awaiting acceptance
+
+- **Further leyline extraction and production:** D-031 now accepts and implements
+  the one finite pressure/brick loop. Renewable supply, additional processes,
+  bigger buffers, broader logistics and offline production remain deferred and
+  need their own concrete design. Decorative traces imply none of these rules.
+  [Original deferred scope](../prototype/cataclysm-world-intensive-2026-09-06.md#the-future-extraction-and-automation-connection).
 
 - [ADR-0002](ADR-0002-catalyst-crafting.md) proposes the *verb shape* for
   catalyst-type items (what applying one does). Proposal C is implemented

@@ -1,5 +1,13 @@
 # Repeatable Trial Runs
 
+**D-029 replenishment addition, 6 September 2026:** each existing repeatable
+material target previews one rare contraption component in the gate offer. Its
+once-only final boss reward banks that component with the completed run. The
+mapping is `trial.json.map_rules.completion_components`; it adds no random draw,
+new offer target, discovery gate or separate currency. Reloading old saved offer
+batches retains their original IDs, conditions and material emphasis. Death and
+early extraction cannot award the boss component. See [loot rules](loot-and-currency.md).
+
 **Status:** Forge intensive approved for implementation, 6 September 2026
 **Related decisions:** D-001, D-006, D-010, D-028
 

@@ -13,7 +13,7 @@ var _meshes := {}
 func mesh_for(id: StringName) -> ArrayMesh:
 	var authored := AuthoredAssets.mesh_for(String(id))
 	if authored != null:
-		return authored
+		return AugmentationDetail.station_mesh(id,authored)
 	if _meshes.has(id):
 		return _meshes[id]
 	var st := ArtGeometry.begin()

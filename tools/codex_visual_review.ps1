@@ -89,6 +89,17 @@ if ($Checks) {
     Invoke-GodotReview 'world-intensive' '--headless res://tests/world_intensive.tscn'
     Invoke-GodotReview 'material-intensive' '--headless res://tests/material_intensive.tscn'
     Invoke-GodotReview 'trial-intensive' '--headless res://tests/trial_intensive.tscn'
+    Invoke-GodotReview 'strange-frontier' '--headless res://tests/strange_frontier.tscn'
+    Invoke-GodotReview 'terrain-stream-intensive' '--headless res://tests/terrain_stream_intensive.tscn'
+    Invoke-GodotReview 'ecology-buildings' '--headless res://tests/ecology_buildings.tscn'
+    Invoke-GodotReview 'contraption-intensive' '--headless res://tests/contraption_intensive.tscn'
+    Invoke-GodotReview 'pressure-feeder-presentation' '--headless res://tests/pressure_feeder_presentation.tscn'
+    Invoke-GodotReview 'pressure-workshop' '--headless res://tests/pressure_workshop.tscn'
+    Invoke-GodotReview 'strange-art' '--headless res://tests/strange_art_review.tscn'
+    Invoke-GodotReview 'strange-frontier-review' '--headless res://tests/strange_frontier_review.tscn'
+    Invoke-GodotReview 'cataclysm-art' '--headless res://tests/cataclysm_art_review.tscn'
+    Invoke-GodotReview 'cataclysm-actor-craft' '--headless res://tests/cataclysm_actor_craft.tscn'
+    Invoke-GodotReview 'cataclysm-world' '--headless res://tests/cataclysm_intensive.tscn' 180
     Write-Output 'All headless checks passed (Codex PowerShell invocation of the existing pipeline).'
 } elseif ($Foundry) {
     Invoke-GodotReview 'foundry-import' '--headless --import'

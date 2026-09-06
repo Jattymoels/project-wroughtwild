@@ -43,6 +43,10 @@ struct PlacedNode {
     int z = 0;
     std::string resourceId; // persistent identity, independent of scene naming
     std::string habitatId;  // empty for ordinary scattered resources
+    std::string siteId;     // repeated rare-site identity, never an array position
+    std::string regionId;
+    bool exceptional = false;
+    int unitsOverride = 0;  // 0 uses node tuning; rich sites contain more intact cores
 };
 
 struct SurfacePoint { int x = 0, y = 0, z = 0; };
@@ -52,6 +56,59 @@ struct PlacedHabitat {
     int x = 0, y = 0, z = 0;
     double radiusM = 0;
     std::vector<SurfacePoint> approach; // connected, clear surface walk from spawn
+};
+
+struct PlacedRegion {
+    std::string id;
+    std::string biome;
+    int x = 0, y = 0, z = 0;
+    double radiusM = 0, transitionM = 0;
+    std::vector<SurfacePoint> approach;
+    std::vector<SurfacePoint> caveApproach;
+    std::string impactId, augmentationProperty; // v4 presentation history; no gameplay effect
+};
+struct WorldDirection { double x = 0, y = 0, z = 0; };
+struct PlacedImpact {
+    std::string id, regionId, kind;
+    int x = 0, y = 0, z = 0;
+    double radiusM = 0, influenceRadiusM = 0;
+    WorldDirection impactDirection;
+    std::vector<SurfacePoint> approach;
+};
+struct PlacedLeyline {
+    std::string id, fromImpactId, toImpactId, regionId, property;
+    double widthM = 0, influenceRadiusM = 0;
+    std::vector<SurfacePoint> points;
+    std::vector<uint8_t> exposure; // per segment: broken, buried, exposed
+};
+struct PlacedRuin {
+    std::string id, regionId, kind, impactId, leylineId, linkedSiteId, augmentation;
+    int x = 0, y = 0, z = 0, rotationQuarters = 0;
+    double widthM = 0, depthM = 0;
+    WorldDirection damageDirection;
+    SurfacePoint entrance;
+    std::vector<SurfacePoint> approach, discoveryRoute, foundation;
+};
+// Geography identifies the one pressure opportunity. Remaining stock and all
+// extraction transactions belong exclusively to the saved MachineWorld.
+struct PlacedPressurePocket {
+    std::string id, ruinId, impactId, leylineId, linkedSiteId;
+    std::string origin;
+    int x = 0, y = 0, z = 0;
+    double radiusM = 0;
+    bool accidental = true;
+    SurfacePoint workPosition;
+    std::vector<SurfacePoint> approach;
+};
+struct PlacedRareSite {
+    std::string id;
+    std::string resourceType;
+    std::string regionId;
+    int x = 0, y = 0, z = 0;
+    double radiusM = 0, clueRadiusM = 0;
+    bool exceptional = false, guarded = false;
+    std::vector<SurfacePoint> approach;
+    std::vector<SurfacePoint> cluePoints;
 };
 
 // A landmark placed by worldgen (Wave 8 slice 2): the lock a curio opens.
@@ -98,6 +155,13 @@ struct WorldMap {
     std::vector<MobPack> packs;
     std::vector<PlacedLandmark> landmarks;
     std::vector<PlacedHabitat> habitats;
+    std::vector<PlacedRegion> regions;
+    std::vector<PlacedRareSite> rareSites;
+    std::vector<PlacedImpact> impacts;
+    std::vector<PlacedLeyline> leylines;
+    std::vector<PlacedRuin> ruins;
+    std::vector<PlacedPressurePocket> pressurePockets;
+    std::vector<float> augmentationField; // v4 only; row-major cells, finite [0,1]
     int spawnX = 0, spawnZ = 0;
     int gateX = 0, gateZ = 0;
 

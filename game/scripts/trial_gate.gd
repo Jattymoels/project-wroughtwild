@@ -37,6 +37,8 @@ func show_maps(player: WroughtwildPlayer,tier: int) -> void:
 		var details:=PackedStringArray()
 		for condition in offer.get("conditions",[]): details.append("• %s: %s"%[condition["display_name"],condition["description"]])
 		var target:=String(offer.get("material_target","building materials"))
+		for component in offer.get("completion_components",{}):
+			details.append("Boss haul: %d %s for a new contraption." % [int(offer.completion_components[component]),Hud.pretty(String(component))])
 		rows.append({"text":"[b]Run %d · %s[/b]\n%s\nBoss: %s · rewards ×%.2f\n%s"%[i+1,Hud.pretty(target),"\n".join(details),Hud.pretty(String(offer["boss_id"])),float(offer.get("reward_multiplier",1)),String(offer.get("boss_preview",""))],"button":"Enter","callback":_map.bind(player,selected_tier,i)})
 	rows.append({"text":"Return to the story trials.","button":"Back","callback":interact.bind(player)})
 	player.open_custom_panel("Forge trial · Tier %d"%selected_tier,rows,"One floor · Two boon shrines · Conditions and rewards stay fixed until entry.")

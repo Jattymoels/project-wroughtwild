@@ -10,7 +10,7 @@ static func prepare(map: Dictionary) -> void:
 				reserved[Vector2i(int(node.x)+dx,int(node.z)+dz)] = true
 	map["habitat_reserved"] = reserved
 
-static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float) -> int:
+static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float, retain_poses: bool = false) -> int:
 	if not chunk.has_meta("surface_sampler"):
 		return 0
 	var sampler: SurfaceSampler = chunk.get_meta("surface_sampler")
@@ -68,16 +68,27 @@ static func build(chunk: Node3D, data: Dictionary, map: Dictionary, cell: float)
 		for transform: Transform3D in entry.transforms:
 			origin += transform.origin
 		origin /= float(mm.instance_count)
+		var displayed: Array=[]
+		var cover_bounds:=AABB()
 		for i in mm.instance_count:
 			var local: Transform3D = entry.transforms[i]
 			local.origin -= origin
 			mm.set_instance_transform(i,local)
+			if retain_poses:
+				displayed.append(local)
+				var bounds: AABB=entry.transforms[i]*mm.mesh.get_aabb()
+				cover_bounds=bounds if i==0 else cover_bounds.merge(bounds)
 		var batch := MultiMeshInstance3D.new()
 		batch.name = "Habitat_"+key
 		batch.multimesh = mm
 		# Retain placement records for headless validation (dummy renderer does
 		# not retain MultiMesh transform buffers) and future clearing queries.
 		batch.set_meta("world_transforms",entry.transforms)
+		if retain_poses:
+			batch.set_meta("terrain_cover",true)
+			batch.set_meta("display_transforms",displayed)
+			batch.set_meta("cover_bounds",cover_bounds)
+			batch.set_meta("hidden_by_building",[])
 		batch.material_override = null if AuthoredAssets.mesh_for(entry.kind) != null else LOOK.material()
 		batch.position = origin
 		batch.visibility_range_end = LOOK.visibility_metres

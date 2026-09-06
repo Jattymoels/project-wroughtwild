@@ -46,6 +46,7 @@ var _highlighted := false
 
 
 func _ready() -> void:
+	add_to_group("resources")
 	_initial_units = maxi(remaining_units, 1)
 	_apply_visual()
 
@@ -66,6 +67,10 @@ func _apply_visual() -> void:
 	var mesh_instance: MeshInstance3D = get_node_or_null("MeshInstance3D")
 	var collider: CollisionShape3D = get_node_or_null("CollisionShape3D")
 	if mesh_instance == null or collider == null:
+		return
+	if StrangeResourceArt.supports(visual):
+		StrangeResourceArt.attach(self)
+		refresh_surface()
 		return
 	if HabitatResourceArt.supports(visual):
 		_apply_habitat_visual(mesh_instance,collider)
@@ -196,6 +201,21 @@ func _use_authored(mesh_instance: MeshInstance3D, id: String) -> void:
 		mesh_instance.material_override = moving
 		_own_materials.append(moving)
 	mesh_instance.visibility_range_end = preload("res://art/material_library.tres").authored_tree_distance if id=="broadleaf_tree" else preload("res://art/material_library.tres").authored_detail_distance
+	# Native v4 influence is presentation context, never a harvest gate. Older
+	# profiles have no field and keep their ordinary common-resource surfaces.
+	var influence := 0.0
+	var terrain := _terrain()
+	if terrain!=null and terrain.world_profile() in ["frontier_v4", "frontier_v5"]:
+		var field: PackedFloat32Array=terrain.map.get("augmentation_field",PackedFloat32Array())
+		var width: int=int(terrain.map.get("width",0))
+		var height: int=int(terrain.map.get("height",0))
+		var cell: float=float(terrain.map.get("cell_size",1.0))
+		var local := terrain.to_local(global_position)
+		var x: int=clampi(floori(local.x/cell),0,maxi(width-1,0))
+		var z: int=clampi(floori(local.z/cell),0,maxi(height-1,0))
+		if width>0 and height>0 and field.size()==width*height:
+			influence=field[z*width+x]
+	AugmentationDetail.attach_resource(mesh_instance,id,influence)
 
 
 func _apply_habitat_visual(mesh_instance: MeshInstance3D, collider: CollisionShape3D) -> void:
@@ -248,6 +268,8 @@ func _in_oldgrowth() -> bool:
 
 
 func _work_verb() -> String:
+	if StrangeResourceArt.supports(visual):
+		return {"lanternheart":"Folding back husks","thrumroot":"Bracing the coil","stormglass":"Separating the tube","pullstone":"Bracing the nodule","ventlung":"Releasing pressure"}.get(String(visual),"Working")
 	if _is_tree(): return "Chopping"
 	if visual==&"reed_bed": return "Cutting reeds"
 	if visual==&"clay_bank": return "Lifting clay"
@@ -262,6 +284,13 @@ func refresh_surface() -> void:
 		return
 	var mesh: MeshInstance3D = get_node("MeshInstance3D")
 	var collider: CollisionShape3D = get_node("CollisionShape3D")
+	if StrangeResourceArt.supports(visual):
+		var y := terrain.rendered_height(position.x,position.z,position.y)
+		var core := get_node_or_null("StrangeCore") as Node3D
+		if is_finite(y) and core!=null:
+			core.position.y=y-position.y
+			collider.position.y=y-position.y+(collider.shape as BoxShape3D).size.y*.5
+		return
 	if visual==&"seam" or String(visual).ends_with("_vein"):
 		var colours := {&"seam":Color("2e3036"),&"iron_vein":PropMesh.IRON_RUST,&"copper_vein":PropMesh.COPPER,
 			&"tin_vein":PropMesh.TIN,&"ember_vein":PropMesh.EMBER_ORE,&"silver_vein":PropMesh.SILVER}
@@ -504,6 +533,8 @@ func _drop_chunk() -> void:
 ## press seats it deeper and leans it further, so the split is visible
 ## before it happens.
 func _refresh_wedge_look() -> void:
+	if StrangeResourceArt.supports(visual):
+		StrangeResourceArt.update(self,float(drive_progress)/float(maxi(drive_presses,1)))
 	if _wedge_mesh != null:
 		_wedge_mesh.queue_free()
 		_wedge_mesh = null
@@ -697,6 +728,8 @@ func _roll_over() -> void:
 ## Collision goes immediately so the space is usable at once. A tree falls
 ## whole and a boulder rolls over instead (the world made whole).
 func _deplete() -> void:
+	if StrangeResourceArt.supports(visual):
+		StrangeResourceArt.update(self,1.0,true)
 	if not is_inside_tree():
 		queue_free()
 		return

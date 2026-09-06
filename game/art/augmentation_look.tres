@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://art/augmentation_look.gd" id="1"]
+[resource]
+script = ExtResource("1")
+design_purpose = {
+"common_influence_threshold":"Ordinary timber and stone remain plain outside meaningful native v4 impact/leyline influence.",
+"creature_inlay_colour":"Pale worn material identifies the same recovered technology in land, creatures and workshops without borrowing enemy danger colours.",
+"creature_inlay_dark":"Recesses keep forked channels readable against skin and plates.",
+"creature_inlay_scale":"Small body-bound fragments suggest uncontrolled embedded augmentation while retaining existing actor silhouettes and capsules.",
+"resource_inlay_scale":"Partial exposed fragments sit inside an ordinary trunk or boulder rather than turning every find into a machine.",
+"craft_inlay_tint":"Worn workshop components sit within timber and masonry rather than reading as white signage.",
+"craft_inlay_roughness":"Contained recovered metal has a dry rubbed finish that stays subordinate to the forge hearth.",
+"craft_inlay_emission_scale":"A quarter of the source seam light suggests residual material without implying that a workstation needs power.",
+"actor_roughness":"Dry subdued highlights reveal the authored creature surfaces without a glossy toy finish."
+}

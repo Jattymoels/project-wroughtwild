@@ -173,6 +173,54 @@
     {
       "id": "cinderglass",
       "display_name": "Cinderglass"
+    },
+    {
+      "id": "lanternheart",
+      "display_name": "Lanternheart"
+    },
+    {
+      "id": "thrumroot",
+      "display_name": "Thrumroot"
+    },
+    {
+      "id": "stormglass",
+      "display_name": "Stormglass"
+    },
+    {
+      "id": "pullstone",
+      "display_name": "Pullstone"
+    },
+    {
+      "id": "ventlung",
+      "display_name": "Ventlung"
+    },
+    {
+      "id": "lantern_lamp_kit",
+      "display_name": "Lanternheart Lamp Kit"
+    },
+    {
+      "id": "cargo_winch_kit",
+      "display_name": "Thrumroot Cargo Winch Kit"
+    },
+    {
+      "id": "winch_landing_kit",
+      "display_name": "Cargo Landing Kit"
+    },
+    {
+      "id": "stormglass_lever_kit",
+      "display_name": "Stormglass Pulse Lever Kit"
+    },
+    {
+      "id": "magnetic_sorter_kit",
+      "display_name": "Pullstone Sorting Chute Kit"
+    },
+    {
+      "id": "ventlung_bellows_kit",
+      "display_name": "Ventlung Bellows Kit"
+    },
+    {
+      "id": "pressure_feeder_kit",
+      "display_name": "Pressure Feeder Kit"
     }
   ],
   "stations": [
@@ -1671,6 +1719,154 @@
         "construction"
       ],
       "design_purpose": "One refinement step at the existing forge_basic: 8 cinderglass_shard makes four cinderglass. No discovery, skill or recipe gate. Four-unit batches reduce menu repetition; construction work gives no fast blacksmith mastery. One fuel heat fires the whole batch."
+    },
+    {
+      "id": "assemble_lantern_lamp",
+      "display_name": "Lanternheart Lamp Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "lanternheart": 1,
+        "wood": 2,
+        "raw_reed": 2
+      },
+      "outputs": {
+        "lantern_lamp_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "A reusable luminous heart in a weathered frame lights a cave or home; the scarce heart is recovered intact on dismantling."
+    },
+    {
+      "id": "assemble_cargo_winch",
+      "display_name": "Thrumroot Cargo Winch Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "thrumroot": 1,
+        "wood": 8,
+        "iron_ingot": 2
+      },
+      "outputs": {
+        "cargo_winch_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "A wound root stores effort for a fixed cargo span. One find makes a working machine without a new facility or mastery gate."
+    },
+    {
+      "id": "assemble_winch_landing",
+      "display_name": "Cargo Landing Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "wood": 6,
+        "iron_ingot": 1
+      },
+      "outputs": {
+        "winch_landing_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "An ordinary frame receives the winch basket; endpoints do not each demand another rare core."
+    },
+    {
+      "id": "assemble_stormglass_lever",
+      "display_name": "Stormglass Pulse Lever Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "stormglass": 1,
+        "wood": 3,
+        "iron_ingot": 1
+      },
+      "outputs": {
+        "stormglass_lever_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "An intact ringing tube sends a visible pulse to a nearby lamp or wound winch. The receiver is integrated into the existing device."
+    },
+    {
+      "id": "assemble_magnetic_sorter",
+      "display_name": "Pullstone Sorting Chute Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "pullstone": 1,
+        "wood": 4,
+        "iron_ingot": 1
+      },
+      "outputs": {
+        "magnetic_sorter_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "A hand-fed chute separates ferrous materials into one tray and everything else into another; sorting never creates resources."
+    },
+    {
+      "id": "assemble_ventlung_bellows",
+      "display_name": "Ventlung Bellows Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "ventlung": 1,
+        "wood": 3,
+        "raw_reed": 2
+      },
+      "outputs": {
+        "ventlung_bellows_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "Hand pressure supplies the existing impact response to a nearby worked seam; it is an optional shortcut available to every class."
+    },
+    {
+      "id": "assemble_pressure_feeder",
+      "display_name": "Pressure Feeder Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": {
+        "ventlung": 1,
+        "thrumroot": 1,
+        "wood": 8,
+        "iron_ingot": 2,
+        "raw_reed": 2
+      },
+      "outputs": {
+        "pressure_feeder_kit": 1
+      },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "construction"
+      ],
+      "design_purpose": "A Ventlung chamber and Thrumroot tension store feed four deliberate firings of the existing clay-brick recipe at a nearby player-built basic forge. Finite pressure or hand winding supplies motion; ordinary fuel supplies heat. No automatic mastery or new material is introduced."
     }
   ],
   "orders": [

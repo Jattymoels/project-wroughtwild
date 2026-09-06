@@ -805,6 +805,10 @@ func aim_probe() -> Dictionary:
 	if collider is ResourceNode:
 		var node := collider as ResourceNode
 		return {"state": "interact", "target": node, "label": node.interact_label(inventory.get_sim())}
+	if collider is ContraptionSite:
+		return {"state":"interact","target":collider,"label":collider.interact_label()}
+	if collider is PressurePocket:
+		return {"state":"interact","target":collider,"label":collider.interact_label()}
 	if collider is StationSite:
 		var site := collider as StationSite
 		var sim := inventory.get_sim()
@@ -852,6 +856,10 @@ func interact() -> void:
 		_apply_work(node, node.work(inventory.get_sim()), hit)
 	elif collider is StationSite:
 		(collider as StationSite).interact(self)
+	elif collider is ContraptionSite:
+		(collider as ContraptionSite).interact(self)
+	elif collider is PressurePocket:
+		(collider as PressurePocket).interact(self)
 	elif collider is OrderBoard:
 		(collider as OrderBoard).interact(self)
 	elif collider is DroppedBundle:

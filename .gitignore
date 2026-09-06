@@ -12,6 +12,11 @@ Thumbs.db
 !.env.example
 *.local
 
+# Local Codex attachments and machine-specific Blender plugin registration.
+.codex-remote-attachments/
+/tools/wroughtwild-blender/.mcp.json
+/tools/wroughtwild-blender/.codex-plugin/
+
 # Logs, temporary files and builds
 *.log
 tmp/

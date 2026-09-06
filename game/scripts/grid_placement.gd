@@ -123,6 +123,8 @@ func select_shape(shape_id: StringName) -> bool:
 func _refresh_selection() -> void:
 	if selected_kit != &"":
 		shape_size = KIT_PREVIEW_SIZE
+		var fixture_kind := _sim().contraption_kind_for_kit(selected_kit)
+		if not fixture_kind.is_empty(): shape_size=ContraptionSite.bounds_for(fixture_kind)
 		shape_slot = &"block"
 		shape_form = "box"
 		shape_oriented = true
@@ -134,6 +136,8 @@ func _refresh_selection() -> void:
 		shape_oriented = bool(info.get("oriented", false))
 	if _preview_mesh != null:
 		_preview_mesh.mesh = PieceLook.mesh_for(_target_shape(),shape_form,shape_size,selected_material_family)
+		if selected_kit != &"" and not _sim().contraption_kind_for_kit(selected_kit).is_empty():
+			_preview_mesh.mesh=StrangeResourceArt.fixture_mesh(_sim().contraption_kind_for_kit(selected_kit))
 		if selected_kit==&"":
 			PieceLook.apply_to(_preview_mesh,shape_form,selected_material_family,PieceLook.material_for(_sim(),selected_material_family,
 				"roof" if shape_form.begins_with("roof_") else "door" if shape_form=="door" else "frame" if shape_slot in [&"post",&"beam"] else "surface"))
@@ -476,7 +480,7 @@ func element_refusal(element: Dictionary) -> String:
 	if selected_kit != &"":
 		# Match the displayed kit box's raised centre, rather than testing a
 		# taller box at the cube centre and accidentally clipping into the floor.
-		pose["centre"].y += (KIT_PREVIEW_SIZE.y-grid_size)*0.5
+		pose["centre"].y += (shape_size.y-grid_size)*0.5
 		pose["yaw"] = float(preview_rotation_step)*PI/2.0
 	var terrain := _find_terrain()
 	var shape_box := BoxShape3D.new()
@@ -489,9 +493,14 @@ func element_refusal(element: Dictionary) -> String:
 	var space := (get_parent() as Node3D).get_world_3d().direct_space_state
 	for result in space.intersect_shape(query, 32):
 		var collider: Object = result["collider"]
-		if collider is PlacedBlock:
+		var fixture_kit := selected_kit != &"" and not _sim().contraption_kind_for_kit(selected_kit).is_empty()
+		if collider is PlacedBlock and not fixture_kit:
 			continue
-		if terrain != null and terrain.is_terrain_body(collider):
+		if terrain != null and terrain.is_terrain_body(collider) and not fixture_kit:
+			continue
+		# Generated ruin remnants are scenery the player can build over. The
+		# same completed placement clears their visual and collision together.
+		if collider is Node and collider.has_meta("cataclysm_solid") and not fixture_kit:
 			continue
 		if collider is ResourceNode:
 			return "A resource blocks this space. Harvest it or choose another spot."
@@ -620,7 +629,7 @@ func _update_preview() -> void:
 	var pose := piece_pose(_target_shape(), element, preview_rotation_step)
 	if selected_kit != &"":
 		# The kit preview is a stand-in box on the cell floor, not a shape.
-		pose["centre"].y += (KIT_PREVIEW_SIZE.y - grid_size) * 0.5
+		pose["centre"].y += (shape_size.y - grid_size) * 0.5
 		pose["yaw"] = float(preview_rotation_step)*PI/2.0
 
 	preview_reason = selection_refusal()
@@ -629,6 +638,9 @@ func _update_preview() -> void:
 	preview_valid = preview_reason == ""
 
 	_preview_mesh.global_position = pose["centre"]
+	if selected_kit != &"" and not _sim().contraption_kind_for_kit(selected_kit).is_empty():
+		# Authored fixtures have a ground pivot; their collision preview uses a centre.
+		_preview_mesh.global_position.y-=shape_size.y*0.5
 	_preview_mesh.rotation.y = pose["yaw"]
 	_preview_mesh.visible = true
 	preview_visible = true
@@ -704,6 +716,20 @@ func remove_piece(block: PlacedBlock) -> bool:
 ## Consumes the kit item, founds its station in the rules, and raises the
 ## station site in the world where the player can work at it.
 func _place_kit() -> bool:
+	var fixture_kind := _sim().contraption_kind_for_kit(selected_kit)
+	if not fixture_kind.is_empty():
+		var c: Vector3i=preview_element.cell
+		var key := "fixture_%d_%d_%d" % [c.x,c.y,c.z]
+		var pose := piece_pose(KIT_STAND_IN_SHAPE,preview_element,0)
+		var at: Vector3=pose.centre-Vector3(0,grid_size*0.5,0)
+		if not _sim().contraption_place(fixture_kind,key,at,preview_rotation_step): return false
+		var fixture := ContraptionSite.new()
+		fixture.machine_key=key
+		fixture.kind=fixture_kind
+		fixture.sim=_sim()
+		_world_root().add_child(fixture)
+		if _sim().material_count(selected_kit)<=0: select_shape(selected_shape)
+		return true
 	var station_id := StringName(_sim().kit_station(selected_kit))
 	if station_id == &"" or not _sim().consume_material(selected_kit, 1):
 		return false
@@ -712,6 +738,7 @@ func _place_kit() -> bool:
 	var site: StationSite = STATION_SITE_SCENE.instantiate()
 	site.station_id = station_id
 	site.upgrade_station_id = &""
+	site.player_built = true
 	# When another station upgrades this one in place, the site offers it.
 	for other_id in _sim().station_ids():
 		if _sim().station(other_id).get("upgrade_from", "") == String(station_id):
@@ -719,6 +746,7 @@ func _place_kit() -> bool:
 	_world_root().add_child(site)
 	var pose := piece_pose(KIT_STAND_IN_SHAPE, preview_element, 0)
 	site.global_position = pose["centre"] + Vector3(0.0, -grid_size * 0.5, 0.0)
+	site.station_key = StationSite.key_at(String(station_id),site.global_position)
 	site.rotation.y = float(preview_rotation_step) * PI / 2.0
 	site.refresh_visual(_sim())
 
@@ -738,6 +766,14 @@ func try_remove_block() -> bool:
 		return false
 
 	var block := hit.get("collider") as PlacedBlock
+	if hit.get("collider") is ContraptionSite:
+		var fixture: ContraptionSite=hit.collider
+		var result: Dictionary=_sim().contraption_remove(fixture.machine_key)
+		if not result.ok: return false
+		fixture.get_parent().remove_child(fixture)
+		fixture.queue_free()
+		(get_parent() as WroughtwildPlayer).hud.notify("Recovered the intact core and reusable frame materials.")
+		return true
 	if block == null:
 		return false
 
@@ -756,6 +792,8 @@ func rotate_preview(direction: int = 1) -> void:
 ## visual (walls ending or meeting at an angle with no real post); this
 ## keeps one slim mesh per such edge and drops the rest. Purely
 ## presentation - trims are never saved, never collide, never cost.
+var _ecology_refresh_queued := false
+
 func refresh_trims() -> void:
 	if _trims_root == null or not is_instance_valid(_trims_root):
 		_trims_root = Node3D.new()
@@ -783,6 +821,21 @@ func refresh_trims() -> void:
 		if not wanted.has(key):
 			_trims[key].queue_free()
 			_trims.erase(key)
+	if not _ecology_refresh_queued and _world_root().has_node("StrangeSites"):
+		_ecology_refresh_queued=true
+		_refresh_ecology_deferred.call_deferred()
+
+func _refresh_ecology_deferred() -> void:
+	if _ecology_refresh_queued: refresh_ecology()
+
+func refresh_ecology() -> void:
+	# Bulk building/restoration can place many pieces in one frame. Update the
+	# decorative view once, after the authoritative structure is complete.
+	_ecology_refresh_queued=false
+	var root:=_world_root()
+	var terrain:=_find_terrain()
+	if root is Node3D and terrain!=null and root.has_node("StrangeSites"):
+		StrangeSites.refresh_buildings(root,terrain)
 
 
 func trim_count() -> int:

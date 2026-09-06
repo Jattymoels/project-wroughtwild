@@ -9,11 +9,16 @@ extends StaticBody3D
 @export var station_id: StringName = &"forge_basic"
 ## Station that upgrades this one (empty for none).
 @export var upgrade_station_id: StringName = &"forge_improved"
+## Physical ownership is separate from the globally unlocked station recipe.
+## Generated ruins and old saves without this evidence cannot power a feeder.
+@export var player_built := false
+@export var station_key := ""
 
 @onready var _mesh: MeshInstance3D = $Mesh
 
 
 func _ready() -> void:
+	add_to_group("crafting_stations")
 	refresh_visual(load("res://scripts/sim.gd").shared())
 
 
@@ -34,6 +39,8 @@ func interact(player: WroughtwildPlayer) -> void:
 	if not is_built(sim):
 		var info: Dictionary = sim.station(station_id)
 		if sim.build_station(station_id):
+			player_built = true
+			if station_key.is_empty(): station_key = key_at(String(station_id), global_position)
 			refresh_visual(sim)
 			player.hud.notify("Built the %s." % info.get("display_name", station_id))
 		else:
@@ -41,6 +48,16 @@ func interact(player: WroughtwildPlayer) -> void:
 				info.get("display_name", station_id), WorkPanel.cost_text(info.get("build_cost", {}), sim)])
 		return
 	player.open_crafting(self)
+
+
+static func key_at(id: String, at: Vector3) -> String:
+	# Millimetre coordinates remain stable through JSON round trips and allow
+	# stations placed on the existing half-grid without colliding identities.
+	return "station_%s_%d_%d_%d" % [id,roundi(at.x*1000),roundi(at.y*1000),roundi(at.z*1000)]
+
+
+func feeder_eligible(rules: WroughtwildSim) -> bool:
+	return player_built and not station_key.is_empty() and station_id == &"forge_basic" and is_built(rules)
 
 
 func refresh_visual(sim: WroughtwildSim) -> void:

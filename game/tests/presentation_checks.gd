@@ -77,5 +77,20 @@ func _ready() -> void:
 			var actual := sampler.height_at(point.x,point.z,point.y)
 			stable = stable and is_finite(actual) and absf(actual-point.y)<0.00005
 	check(stable,"231 far-coordinate slope/edge samples retain precision")
+	var gate: TrialGate = preload("res://scenes/trial_gate.tscn").instantiate()
+	add_child(gate)
+	var gate_body := gate.get_node("CollisionShape3D") as CollisionShape3D
+	check(gate_body.shape is BoxShape3D and gate_body.shape.size==Vector3(1,4,3)
+		and gate_body.position==Vector3(0,2,0),"authored trial gate preserves its exact interaction and collision box")
+	var frame := gate.get_node("Mesh") as MeshInstance3D
+	check(frame.mesh is ArrayMesh and frame.material_override==null
+		and frame.mesh.get_surface_count()>=3,"trial gate uses the shared authored Forge frame and original surface materials")
+	var bounds := frame.transform * frame.mesh.get_aabb()
+	check(bounds.position.y>=-.11 and bounds.end.y<=4.0 and bounds.size.z<=3.0
+		and bounds.position.x>=-.5 and bounds.end.x<=.5,"grounded gate frame stays within the old body envelope except buried feet")
+	var inset := frame.get_node("RecessedEntry") as MeshInstance3D
+	var seal := inset.material_override as StandardMaterial3D
+	check(inset.mesh is QuadMesh and inset.position.z<0 and seal.emission_energy_multiplier<.1
+		and seal.albedo_color.get_luminance()<.2,"recessed gate entry keeps a subdued dusk cue without the orange slab")
 	print("CODEX_PRESENTATION %d checks, %d failures" % [checks,failures])
 	get_tree().quit(0 if failures==0 else 1)

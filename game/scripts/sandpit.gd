@@ -14,7 +14,7 @@ const ORDER_BOARD_SCENE := preload("res://scenes/order_board.tscn")
 @export var world_seed: int = 1
 ## Fresh worlds use the new resource geography; old saves explicitly select
 ## legacy_v1 before restoring builds, resource depletion and excavation.
-@export var world_profile: String = "frontier_v2"
+@export var world_profile: String = "frontier_v5"
 
 @onready var terrain: Terrain = $Terrain
 @onready var mob_packs: MobPacks = $MobPacks
@@ -44,6 +44,16 @@ func _sim() -> WroughtwildSim:
 
 
 func _build_world(seed_value: int) -> void:
+	if not _sim().set_world_profile(world_profile):
+		push_error(_sim().last_error())
+		return
+	# A new terrain map must not re-ground the previous world's decorative
+	# sites as its first streamed chunks arrive. Their state is wholly derived.
+	for name in ["PressurePockets", "CataclysmSites", "StrangeSites", "HabitatSites"]:
+		var previous := get_node_or_null(name)
+		if previous != null:
+			remove_child(previous)
+			previous.queue_free()
 	world_seed = seed_value
 	# Owner accepted the smoother presentation and a less cartoon-like tone.
 	# Explicit historical look switches keep reproducible comparisons available.
@@ -52,7 +62,13 @@ func _build_world(seed_value: int) -> void:
 	terrain.build(_sim(), seed_value, world_profile)
 	if terrain.map.is_empty():
 		return
+	if not _sim().contraption_bind_world(world_profile, seed_value):
+		push_error(_sim().last_error())
+		return
 	HabitatSites.build(self, terrain)
+	StrangeSites.build(self, terrain)
+	CataclysmSites.build(self, terrain)
+	PressurePocket.build(self, terrain)
 	mob_packs.setup(terrain, seed_value)
 
 	var spawn := terrain.surface_position(terrain.map["spawn_x"], terrain.map["spawn_z"])

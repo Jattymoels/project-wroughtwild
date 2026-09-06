@@ -93,6 +93,8 @@ var _daylight := 1.0
 var _day_fraction := 0.3
 var _dawn_end := 0.06
 var _dusk_end := 0.66
+var _presentation_baseline: Dictionary = {}
+var _sky_elapsed := 0.0
 
 
 func set_day(day: Dictionary, rules: Dictionary) -> void:
@@ -128,18 +130,29 @@ func setup(from_terrain: Terrain, env: Environment, light: DirectionalLight3D) -
 	terrain = from_terrain
 	environment = env
 	sun = light
+	if _presentation_baseline.is_empty():
+		for property in ["sky", "ssao_enabled", "ssao_radius", "ssao_intensity", "ssao_power", "ssao_detail", "fog_sky_affect"]:
+			_presentation_baseline[property] = environment.get(property)
+	# A v3 save can be replaced by an older world without keeping v3's sky or
+	# contact shading. Geography and historical comparison looks stay separate.
+	for property in _presentation_baseline:
+		environment.set(property, _presentation_baseline[property])
 	if terrain.weathered:
-		var look := preload("res://art/weathered_atmosphere.tres")
+		var look: Resource = terrain.atmosphere_look if terrain.atmosphere_look != null else preload("res://art/weathered_atmosphere.tres")
 		environment.ambient_light_energy = look.ambient_energy
 		sun.directional_shadow_max_distance = look.shadow_distance
 		sun.shadow_bias = look.shadow_bias
 		sun.shadow_normal_bias = look.shadow_normal_bias
+		if terrain.atmosphere_look != null:
+			look.configure(environment)
+	_sky_elapsed = 0.0
 	_target = active_mood(_biome_under_player())
 	_apply(1.0)
 
 func active_mood(biome_id: String) -> Dictionary:
 	if terrain != null and terrain.weathered:
-		var moods: Dictionary = preload("res://art/weathered_atmosphere.tres").moods
+		var look: Resource = terrain.atmosphere_look if terrain.atmosphere_look != null else preload("res://art/weathered_atmosphere.tres")
+		var moods: Dictionary = look.moods
 		return moods.get(biome_id,moods[DEFAULT_BIOME])
 	return mood_for(biome_id)
 
@@ -161,6 +174,7 @@ func _process(delta: float) -> void:
 	if environment == null:
 		return
 	_check_timer -= delta
+	_sky_elapsed += delta
 	if _check_timer <= 0.0:
 		_check_timer = CHECK_SECONDS
 		_target = active_mood(_biome_under_player())
@@ -179,6 +193,18 @@ func _apply(weight: float) -> void:
 		sky.sky_top_color = sky.sky_top_color.lerp(_target.get("sky_top", sky.sky_top_color) * tint, weight)
 		sky.sky_horizon_color = sky.sky_horizon_color.lerp(_target.get("sky_horizon", sky.sky_horizon_color) * tint, weight)
 		sky.ground_horizon_color = sky.sky_horizon_color
+	elif terrain != null and terrain.atmosphere_look != null and environment.sky != null:
+		var material := environment.sky.sky_material as ShaderMaterial
+		var look: Resource = terrain.atmosphere_look
+		if material != null and (weight >= 1.0 or _sky_elapsed >= look.sky_update_seconds):
+			var sky_weight := 1.0 if weight >= 1.0 else 1.0 - exp(-BLEND_PER_SECOND * _sky_elapsed)
+			var top: Color = material.get_shader_parameter("sky_top")
+			var horizon: Color = material.get_shader_parameter("sky_horizon")
+			material.set_shader_parameter("sky_top", top.lerp(_target.get("sky_top", top) * tint, sky_weight))
+			material.set_shader_parameter("sky_horizon", horizon.lerp(_target.get("sky_horizon", horizon) * tint, sky_weight))
+			material.set_shader_parameter("cloud_colour", look.cloud_colour * tint)
+			material.set_shader_parameter("ground_colour", look.ground_sky_colour * tint)
+			_sky_elapsed = 0.0
 	environment.ambient_light_sky_contribution = lerpf(
 		environment.ambient_light_sky_contribution, _target["ambient"], weight)
 	if sun != null:

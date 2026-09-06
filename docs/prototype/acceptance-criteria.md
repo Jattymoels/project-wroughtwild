@@ -69,6 +69,60 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [ ] Ranger, Warden and Kindler difficulty at tiers 1–10 is accepted after actual combat/class playtests. Higher-tier numerical scaling remains unverified.
 - [ ] Owner accepts the final habitat walks, three material buildings and Forge/boss presentation under Foundry effects.
 
+## The Strange Frontier (D-029)
+
+- [x] `frontier_v3` has three broad regions and reachable finite opportunities
+  for all five rare resources; both old profiles match frozen fingerprints.
+- [x] Contextual gathering and first-haul recipes work without class or discovery
+  gates; fixtures use the existing workbench and kit placement interface.
+- [x] Scene unloading preserves partial harvesting and depletion. Save restoration
+  validates machine state before mutation and preserves mid-trip cargo ownership.
+- [x] Signals request work separately from stored energy. A blocked winch pauses;
+  sorting remains hand-fed; dismantling recovers rare cores and contents.
+- [x] V3 regions use clustered canopy, shoreline growth and weathered shelves;
+  actual authored footprints preserve approaches and gathering spaces.
+- [x] Regional décor, ordinary grass and habitat cover clear around V3 buildings;
+  removal, streamed chunks, excavation and save restoration retain valid poses
+  without altering finite stock or older-profile presentation.
+- [ ] The refined regional art feels convincing during ordinary play. Matched
+  day/dusk captures and walking reviews are available in the
+  [art refinement report](frontier-art-refinement-2026-09-06.md).
+- [ ] Owner accepts discovery excitement, regional travel and contraption usefulness
+  during normal play. Scripted generation, interaction and visual checks establish
+  operation, not this judgement.
+
+## Cataclysm Northstar (D-030)
+
+- [x] New `frontier_v4` worlds compose three impacts, connected technological
+  traces, supported ruins and links to existing finite discoveries; a 64-seed
+  matrix validates the geography. Legacy/v2/v3 complete fingerprints remain exact.
+- [x] Native augmentation influences terrain, vegetation and common-resource
+  presentation. Ruins and the existing craft/actor roster share the authored
+  material vocabulary without changing interaction or combat rules.
+- [x] Normal interaction releases a rare component into physical drops;
+  collecting it enables the existing useful recipe. Partial work and depletion
+  survive the normal save/restore path.
+- [x] Paid building placement clears overlapping ruin visuals and collision;
+  saved buildings retain that clearance, and aimed dismantling restores
+  supported scenery. Real player capsules can traverse ruin interiors.
+- [x] Owner accepts the current visual finish for now (6 September 2026);
+  a later graphical pass remains planned.
+- [ ] Legibility of surviving civilisation, impact damage and augmentation
+  during ordinary discovery and combat has been confirmed in player testing.
+  Evidence and limits: [implementation review](cataclysm-implementation-2026-09-06.md).
+- [x] One bounded pressure-feeder loop has accepted recipe, source/energy,
+  ownership and failure contracts under D-031. Broader production is deferred.
+
+## Pressure workshop (D-031)
+
+- [x] An old blacksmith's ruin accidentally struck by an asteroid supplies one
+  finite pressure pocket in V5; V4 and previous saves retain their geography.
+- [x] Actual local forge/feeder interaction produces the existing clay bricks.
+- [x] Exact source, escrow, buffers and progress survive pause/save/restore;
+  cancellation, extraction and dismantling cannot duplicate items or drive.
+- [x] Rendered site and brick-building review passes; user workshop feel remains
+  a separate playtest. [Work item](pressure-workshop-2026-09-06.md).
+
 ## Whole-slice playtest
 
 - [ ] The complete loop can be played in approximately 20–40 minutes after onboarding.

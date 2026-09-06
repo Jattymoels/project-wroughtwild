@@ -19,6 +19,7 @@ static func attach(mesh: MeshInstance3D, owner_actor: Node3D, actor_role: String
 	var previous := mesh.get_node_or_null("Motion")
 	if previous != null:
 		previous.free()
+	RecoveredActorArt.apply(mesh,owner_actor,actor_role)
 	var motion := CreatureMotion.new()
 	motion.name = "Motion"
 	motion.actor = owner_actor

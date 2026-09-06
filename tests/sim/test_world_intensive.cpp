@@ -58,7 +58,7 @@ void habitats(const tuning::Tuning& t) {
         std::set<std::string> identities;
         for(const auto& node:map.nodes) check(identities.insert(node.resourceId).second,"duplicate resource identity");
         for(const auto& habitat:map.habitats) {
-            const auto& def=*std::find_if(t.worldgen.habitats.begin(),t.worldgen.habitats.end(),[&](const auto& h){return h.id==habitat.id;});
+            const auto& def=*std::find_if(t.frontierV2Worldgen.habitats.begin(),t.frontierV2Worldgen.habitats.end(),[&](const auto& h){return h.id==habitat.id;});
             check(!habitat.approach.empty(),"habitat has no approach");
             const auto& first=habitat.approach.front();
             const auto& last=habitat.approach.back();
@@ -87,13 +87,13 @@ void habitats(const tuning::Tuning& t) {
             }
             if(seed==1)std::cout<<"WORLD_SITE "<<habitat.id<<" "<<habitat.x<<","<<habitat.y<<","<<habitat.z<<" biome="<<habitat.biome<<"\n";
         }
-        const auto& g=t.worldgen.guarantees;
+        const auto& g=t.frontierV2Worldgen.guarantees;
         for(const auto& minimum:g.minNodesNear)check(map.countNodesNear(minimum.first,map.spawnX,map.spawnZ,g.nearRadiusM)>=minimum.second,"starter guarantee changed");
         for(const auto& minimum:g.minNodesFar)check(map.countNodesNear(minimum.first,map.spawnX,map.spawnZ,g.farRadiusM)>=minimum.second,"iron guarantee changed");
         if(seed==7){
             auto reordered=t;
-            std::reverse(reordered.worldgen.habitats.begin(),reordered.worldgen.habitats.end());
-            for(auto& h:reordered.worldgen.habitats)std::reverse(h.resources.begin(),h.resources.end());
+            std::reverse(reordered.frontierV2Worldgen.habitats.begin(),reordered.frontierV2Worldgen.habitats.end());
+            for(auto& h:reordered.frontierV2Worldgen.habitats)std::reverse(h.resources.begin(),h.resources.end());
             const auto again=worldgen::generateProfile(reordered,seed,"frontier_v2");
             check(fingerprint(map)==fingerprint(again),"definition ordering changes resource positions");
             for(size_t i=0;i<map.nodes.size();++i)check(map.nodes[i].resourceId==again.nodes[i].resourceId,"unstable resource ID");
@@ -131,6 +131,7 @@ int main(int argc,char** argv) {
         tuning::Tuning t;
         t.worldgen=tuning::loadWorldgen(dir+"/worldgen.json");
         t.legacyWorldgen=tuning::loadWorldgen(dir+"/worldgen-legacy-v1.json");
+        t.frontierV2Worldgen=tuning::loadWorldgen(dir+"/worldgen-frontier-v2.json");
         t.world=tuning::loadWorld(dir+"/world.json");
         t.construction=tuning::loadConstruction(dir+"/construction.json");
         t.crafting=tuning::loadCrafting(dir+"/crafting.json");

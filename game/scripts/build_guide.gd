@@ -17,7 +17,7 @@ func refresh() -> void:
 	shown_kinds.clear()
 	var tabs := HBoxContainer.new()
 	add_child(tabs)
-	for text in ["Skills","Kinds","Progression"]:
+	for text in ["Skills","Kinds","Progression","Wild finds"]:
 		var button := Button.new()
 		button.text = text
 		button.toggle_mode = true
@@ -28,11 +28,20 @@ func refresh() -> void:
 		"Skills": _skills()
 		"Kinds": _kinds()
 		"Progression": _progression()
+		"Wild finds": _wild_finds()
 	changed.emit()
 
 func select_page(value: String) -> void:
 	page = value
 	refresh()
+
+func _wild_finds() -> void:
+	_text(self,"The fallen technology drives growth, tension, light and pressure beyond their old limits. Follow husks, bent roots, ringing splinters and unusual grit. Ordinary interaction works for every class. Assemble your finds at a workbench, then use B and Tab to place the kit.")
+	for info in sim.rare_resource_guide():
+		var column := _card(String(info.display_name),String(info.use_preview))
+		_text(column,"Property: %s · %d carried" % [", ".join(info.properties),sim.material_count(info.id)],UiTheme.SUN_WARM)
+		_text(column,"Work: "+" → ".join(info.harvest_stages))
+	_text(self,"Wind supplies energy. Stormglass carries a signal. Link a lever to a nearby lamp or winch; link the winch to a landing. Dismantling returns intact rare cores.")
 
 func select_filter(value: String) -> void:
 	filter = value

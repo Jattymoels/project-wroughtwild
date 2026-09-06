@@ -14,6 +14,9 @@ func check(ok: bool, label: String) -> void:
 		printerr("FAIL WORLD: ", label)
 
 func _ready() -> void:
+	# This regression fixture remains the approved v2 habitat world. The new
+	# default profile has its own Strange Frontier lifecycle and generation suite.
+	world_profile="frontier_v2"
 	super._ready()
 	player.class_panel.choose("warden")
 	player.set_physics_process(false)
@@ -22,7 +25,7 @@ func _ready() -> void:
 	mob_packs.set_process(false)
 	output = ProjectSettings.globalize_path("res://../build/intensives/world")
 	DirAccess.make_dir_recursive_absolute(output)
-	check(world_profile == "frontier_v2" and terrain.world_profile() == world_profile, "new game chooses frontier_v2")
+	check(world_profile == "frontier_v2" and terrain.world_profile() == world_profile, "v2 habitat profile remains selectable")
 	check(terrain.map.get("habitats", []).size() == 3, "new game has all three habitats")
 	var fen_art := get_node_or_null("HabitatSites/fen_hollow")
 	check(fen_art != null and fen_art.get_node_or_null("ShallowPool") != null, "fen composition contains shallow moving water")

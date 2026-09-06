@@ -1,0 +1,23 @@
+{
+  "seed": 906301,
+  "surface_texture_px": 128,
+  "edge_wear_m": 0.026,
+  "impact_lean": 0.26,
+  "inlay_emission": 0.10,
+  "palette": {
+    "wood": "71614c", "endgrain": "958263", "char": "403e36",
+    "masonry": "8c8b7a", "shellstone": "aaa992", "slate": "5c6260",
+    "clay": "92735b", "clay_dark": "6c5546", "reed": "a08d60",
+    "moss": "59614a", "basalt": "454c49", "impact": "343d3e",
+    "pale_metal": "b6b5a0", "oxide": "6f786b", "seam": "242e2f",
+    "quiet_light": "c0c5ad"
+  },
+  "purposes": {
+    "seed": "Repeats the authored weathering and damage without rerolling world or loot state.",
+    "surface_texture_px": "Compact original embedded grain reinforces close wood, reed and masonry surfaces.",
+    "edge_wear_m": "Soft worn edges catch light at hand height while preserving each honest placement envelope.",
+    "impact_lean": "Buried shards and broken members share forward +Z displacement from one impact direction.",
+    "inlay_emission": "Only tiny contained pale seams emit; most augmentation is inert and never uses fire/frost danger colours.",
+    "palette": "Warm handmade wood/clay/reed and cool worn shellstone/slate share restrained aged-metal augmentation."
+  }
+}

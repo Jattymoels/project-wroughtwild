@@ -34,6 +34,7 @@ func _ready()->void:
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	Engine.max_fps=120
 	output=ProjectSettings.globalize_path("res://../build/intensives/forge")
+	if "--cataclysm" in OS.get_cmdline_user_args(): output=ProjectSettings.globalize_path("res://../build/cataclysm/forge")
 	boss_only="--boss-only" in OS.get_cmdline_user_args()
 	if boss_only: output=output.path_join("boss")
 	DirAccess.make_dir_recursive_absolute(output)

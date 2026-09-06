@@ -1,0 +1,451 @@
+{
+  "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+  "seed": 906301,
+  "coordinates": "Godot metres. +Z is the damage/impact direction. Ground y=0 with small intentional burial.",
+  "collision": "Visual-only. No exported bodies or resource yield. Runtime keeps paths outside the measured extents.",
+  "material_contract": "Keep imported surfaces for embedded original grain, linear vertex colours, varied roughness and tiny pale seams.",
+  "assets": {
+    "cataclysm_rootvault_wall": {
+      "triangles": 2952,
+      "bounds_min": [
+        -1.462499976158142,
+        -0.05499999225139618,
+        -0.2669387459754944
+      ],
+      "bounds_max": [
+        1.462499976158142,
+        2.254512310028076,
+        0.26204973459243774
+      ],
+      "sha256": "dad93adf23b856000694ae58983bb6d7682d386de274affc6bde565a6a181aef",
+      "materials": [
+        "light",
+        "metal",
+        "stone",
+        "wood"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.01662993032677174,
+        0.025653781478451865,
+        0.026682987204667153
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_rootvault_frame": {
+      "triangles": 2496,
+      "bounds_min": [
+        -1.6624999046325684,
+        -0.05499999225139618,
+        -0.32649970054626465
+      ],
+      "bounds_max": [
+        1.6624999046325684,
+        2.783461809158325,
+        0.3249075412750244
+      ],
+      "sha256": "b8dc80af92fe02b5f678559947ba5e7c886466b92c80b10b4def26e1418eacde",
+      "materials": [
+        "light",
+        "metal",
+        "stone",
+        "wood"
+      ],
+      "clear_aperture": {
+        "width_m": 2.0,
+        "height_m": 2.1
+      },
+      "colour_linear_min": [
+        0.016679650706187096,
+        0.025735596652109918,
+        0.02676852165492461
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_rootvault_roof": {
+      "triangles": 816,
+      "bounds_min": [
+        -1.3789517879486084,
+        -0.028781414031982422,
+        -1.0674999952316284
+      ],
+      "bounds_max": [
+        1.402768850326538,
+        0.5884312987327576,
+        0.9801464676856995
+      ],
+      "sha256": "12719caa1f951c316c433b43009491e80488223a978f4b071e47c621105749b0",
+      "materials": [
+        "wood"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.04781871309267871,
+        0.04494788306557974,
+        0.03448498204798498
+      ],
+      "colour_linear_max": [
+        0.17719028940077208,
+        0.12810794221398605,
+        0.07727474069121656
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_fen_wall": {
+      "triangles": 5304,
+      "bounds_min": [
+        -1.3674999475479126,
+        -0.054999999701976776,
+        -0.2350374460220337
+      ],
+      "bounds_max": [
+        1.3674999475479126,
+        1.6525561809539795,
+        0.24413077533245087
+      ],
+      "sha256": "77640592633ca9531e5854987a8364634d1753cb8a0808fb312fd3905b854d8d",
+      "materials": [
+        "light",
+        "metal",
+        "reed",
+        "stone",
+        "wood"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.016621593113210004,
+        0.025640063474642073,
+        0.02666864566711643
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_fen_cistern": {
+      "triangles": 4080,
+      "bounds_min": [
+        -1.3152467012405396,
+        -0.05000000074505806,
+        -1.137682318687439
+      ],
+      "bounds_max": [
+        1.5099999904632568,
+        0.5969449281692505,
+        1.137682318687439
+      ],
+      "sha256": "62bae9273989a76fd932661df9ffb7a1f0a22d27eb385f70136f732a9d1c0da9",
+      "materials": [
+        "light",
+        "metal",
+        "stone"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.016650417575114745,
+        0.02568749221552035,
+        0.026718230316204662
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_fen_roof": {
+      "triangles": 2992,
+      "bounds_min": [
+        -1.3118243217468262,
+        0.02510794997215271,
+        -0.9250468611717224
+      ],
+      "bounds_max": [
+        1.342868685722351,
+        0.4684999883174896,
+        0.8399999737739563
+      ],
+      "sha256": "5fd66bc3c2453006da96f105feb0434c053b0f99cf76a350a037d1a39dca5048",
+      "materials": [
+        "reed",
+        "wood"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.048328331407755866,
+        0.04542405493127182,
+        0.03484028573332177
+      ],
+      "colour_linear_max": [
+        0.4133094566023706,
+        0.3126373638089848,
+        0.13643135308271756
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_upland_wall": {
+      "triangles": 3060,
+      "bounds_min": [
+        -1.4815326929092407,
+        -0.05499999225139618,
+        -0.3256426453590393
+      ],
+      "bounds_max": [
+        1.5715327262878418,
+        1.5099999904632568,
+        0.414124995470047
+      ],
+      "sha256": "eb687399b8813417e67bfc462e33e3efc9d84451b9646e28f99a83e9a30c9243",
+      "materials": [
+        "light",
+        "metal",
+        "stone"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.01659708911711355,
+        0.025599746287879137,
+        0.026626496048886002
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_upland_shelter": {
+      "triangles": 2788,
+      "bounds_min": [
+        -1.5774999856948853,
+        -0.054999999701976776,
+        -0.5821322798728943
+      ],
+      "bounds_max": [
+        1.5875000953674316,
+        2.389807939529419,
+        0.49812498688697815
+      ],
+      "sha256": "d23f49c23e2663c74a93d63d2f4a99bbc7c2334a48fdca99016fa161a9b7e5a2",
+      "materials": [
+        "light",
+        "metal",
+        "stone"
+      ],
+      "clear_aperture": {
+        "width_m": 2.0,
+        "height_m": 2.02
+      },
+      "colour_linear_min": [
+        0.016654258441332653,
+        0.02569381234720763,
+        0.02672483775480343
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_upland_paving": {
+      "triangles": 680,
+      "bounds_min": [
+        -1.4000000953674316,
+        -0.020000001415610313,
+        -0.8449509739875793
+      ],
+      "bounds_max": [
+        1.3264250755310059,
+        0.08100000023841858,
+        0.6450749635696411
+      ],
+      "sha256": "bdf9976a5adb8ba72bc860c49f9913bffa1ce4f60a22490e23ff885c88e99a03",
+      "materials": [
+        "stone"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.10005381574460281,
+        0.1141215034559313,
+        0.10931221701911306
+      ],
+      "colour_linear_max": [
+        0.4474189960293404,
+        0.4415852187216943,
+        0.31951984788974275
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_impact_fragment": {
+      "triangles": 2108,
+      "bounds_min": [
+        -1.4155436754226685,
+        -0.23196151852607727,
+        -0.6877264976501465
+      ],
+      "bounds_max": [
+        1.5261070728302002,
+        2.4019615650177,
+        0.9553011059761047
+      ],
+      "sha256": "16804ad5caff4073a9e7b59c312bc0180918ea20f73fc4b3dd96c026da7e6207",
+      "materials": [
+        "light",
+        "metal",
+        "stone"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.01662766996896459,
+        0.02565006227214369,
+        0.026679098944481394
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_root_fragment": {
+      "triangles": 3236,
+      "bounds_min": [
+        -1.8121447563171387,
+        -0.3955399990081787,
+        -1.0360172986984253
+      ],
+      "bounds_max": [
+        1.739343285560608,
+        2.263805627822876,
+        1.1800172328948975
+      ],
+      "sha256": "e9db1660b3af6e685fea7ca38a309fd5c57395480ff086fd59fcce131f7a9afa",
+      "materials": [
+        "light",
+        "metal",
+        "stone",
+        "wood"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.01661082816387039,
+        0.025622351283878055,
+        0.02665012842609105
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_augmentation_inlay": {
+      "triangles": 1564,
+      "bounds_min": [
+        -0.3812039792537689,
+        0.009999990463256836,
+        0.0010000001639127731
+      ],
+      "bounds_max": [
+        0.36326855421066284,
+        1.142362356185913,
+        0.11749999970197678
+      ],
+      "sha256": "40591c58d4a1df9b0a4b6994575fe6c8a062cd0e68ce61331a8fc28734183420",
+      "materials": [
+        "light",
+        "metal"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.01666238474801163,
+        0.025707184342499533,
+        0.026738817643742564
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_forge_threshold": {
+      "triangles": 4624,
+      "bounds_min": [
+        -1.7649999856948853,
+        -0.07000000774860382,
+        -0.36997202038764954
+      ],
+      "bounds_max": [
+        1.7649999856948853,
+        2.805082082748413,
+        0.5074999928474426
+      ],
+      "sha256": "c7ee06c7fdac062367ffa5ff2dd55df10274fddc1952d4f7e1d0ce6e42dce848",
+      "materials": [
+        "light",
+        "metal",
+        "stone"
+      ],
+      "clear_aperture": {
+        "width_m": 2.0,
+        "height_m": 2.4
+      },
+      "colour_linear_min": [
+        0.01660703154090913,
+        0.025616104588043562,
+        0.02664359781606966
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    },
+    "cataclysm_forge_lamella": {
+      "triangles": 2380,
+      "bounds_min": [
+        -0.49856236577033997,
+        0.0,
+        -0.1599999964237213
+      ],
+      "bounds_max": [
+        0.4996275305747986,
+        2.0,
+        0.4181250035762787
+      ],
+      "sha256": "da9e2e868d36f614e0a2adb3bfed660939c407916a7be315771e1ce309b8c607",
+      "materials": [
+        "light",
+        "metal",
+        "stone"
+      ],
+      "clear_aperture": null,
+      "colour_linear_min": [
+        0.016624925710833214,
+        0.02564554687974937,
+        0.026674378310404787
+      ],
+      "colour_linear_max": [
+        0.6006417527957763,
+        0.6363625448697738,
+        0.47572636442348676
+      ],
+      "pivot": "lower centre, y=0; imported transform is identity"
+    }
+  }
+}

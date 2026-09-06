@@ -1,0 +1,25 @@
+{
+  "seed": 90637,
+  "radial_sides": 12,
+  "bark_ridge": 0.08,
+  "root_arch_width_m": 14.0,
+  "root_arch_height_m": 9.3,
+  "hollow_trunk_height_m": 4.8,
+  "stone_rib_height_m": 5.6,
+  "palette": {
+    "bark": "4d4735", "bark_light": "746b4a", "heartwood": "9b8864",
+    "paper": "b6b18b", "paper_dark": "777754", "heart": "e3d597",
+    "stone": "b4b4a0", "stone_dark": "787d74", "glass": "d5d2b3",
+    "grit": "343b38", "iron": "4b5452", "rust": "82705b",
+    "membrane": "8d9271", "frame": "69543a", "rope": "a19773"
+  },
+  "purposes": {
+    "seed": "Reproduces the same authored kit without changing world placement seeds.",
+    "radial_sides": "Smooth enough working surfaces at hand distance while keeping a small shared mesh budget.",
+    "bark_ridge": "Restrained longitudinal relief avoids smooth pipe-like roots.",
+    "root_arch_width_m/root_arch_height_m": "The authored elder envelope and crown junction; asymmetric buttress roots make a walkable irregular chamber beneath a living bole.",
+    "hollow_trunk_height_m": "A broken, thick-walled fen trunk with low papery growth; the uneven rim remains below the canopy.",
+    "stone_rib_height_m": "Broad eroded sedimentary shelves replace repeated pointed cones along the upland skyline.",
+    "palette": "Earthy bark, aged paper, milky glass and dark iron distinguish physical jobs; warm cream light is separated from fire and frost danger colours."
+  }
+}

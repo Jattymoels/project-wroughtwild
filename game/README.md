@@ -21,12 +21,51 @@ on purpose.
 ## Run from a clean checkout
 
 The approved world/trial intensives add three resource habitats and eight
-finished building materials. New worlds use `frontier_v2`; loading an older save
-keeps its original `legacy_v1` geography. Quarry deposits provide slate and
+finished building materials. New worlds now use `frontier_v5`; loading an older save
+keeps its original `legacy_v1`, `frontier_v2`, `frontier_v3` or `frontier_v4` geography. Quarry deposits provide slate and
 shellstone, fen banks provide clay and reed, and oldgrowth provides resinheart
 and separate corkbark. Refine at the existing yard, bench or forge. The build
 palette includes Light Panel and Fixed Glazed Window; reed/cork are coverings,
 and pitched roofs still require the existing stonecut unlock.
+
+The Strange Frontier expands new worlds to 512 × 512 m with Rootvault Wildwood,
+Lantern Fen and Glasswind Uplands. Look for papery husks, taut roots, lightning
+scars, sideways iron grit and empty vent cases. **E** works each finite specimen;
+the inventory guide's **Wild finds** tab explains stages and uses. At a workbench,
+assemble the lamp, winch, landing, lever, sorter or bellows. Place kits with
+**B → Tab**, then **E** for controls. Wind/load the winch, link its landing, and
+link a Stormglass lever to trigger it. Ordinary crank operation also works.
+**X** dismantles fixtures and recovers their rare core and contents. F5/F9 saves
+and restores partial harvesting, links, energy and cargo mid-trip. Existing saves
+can obtain components from the previewed completion haul of repeatable Forge runs.
+
+The approved [Cataclysm intensive](../docs/prototype/cataclysm-world-intensive-2026-09-06.md)
+keeps that finite world size and connects its discoveries through impact scars,
+broken/buried/exposed traces and six small supported ruins. Follow the remnants
+of dwellings, waterworks and shelters toward existing rare sources; the Forge
+also has a related threshold. These places express the same extreme augmentation
+already present in the bench, forge and Foundry. V4 traces remain evidence to
+explore; the separate V5 pressure pocket below is the sole source. Old saves
+retain their historical generators and receive no new ruins or geography.
+
+Reviewed local mob meshes now use the normal gameplay spawn and motion paths,
+with existing bodies, attack clocks and status feedback. Workstations share
+restrained recovered components; common broadleaf trees and boulders gain related
+detail only inside V4/V5's native augmentation influence. See [generation and compatibility](../docs/art/cataclysm-generation-2026-09-06.md),
+[authored kit](../docs/art/cataclysm-kit-2026-09-06.md), and [actor/craft integration and limits](../docs/art/cataclysm-actor-craft-2026-09-06.md).
+The owner accepts the current visual finish for now. Performance and ordinary
+discovery/combat playtests remain distinct from native and isolated asset checks.
+
+The [pressure workshop](../docs/prototype/pressure-workshop-2026-09-06.md) adds
+one V5 hearth accidentally struck by an asteroid. It belonged to an old smithy
+before the catastrophe. **E** inspects its finite pressure. At a workbench craft
+a pressure feeder, place it beside your own newly placed basic forge, then use
+**E → Attach forge and pocket**. Load clay and fuel, draw pressure (or wind by
+hand) and start a four-cycle batch. Collect the bricks to build. F5/F9 preserves
+mid-cycle work exactly; leaving the area or entering a trial pauses it. V4 and
+older saves keep their geography; the feeder still works by hand with a newly
+placed forge. Current visual finish is accepted for now; further graphics are
+deferred. Test scenes: `pressure_workshop.tscn` and `pressure_feeder_presentation.tscn`.
 
 Use **E** at the Trial Gate for the two-floor Tyrant, Warden and Ash Tide
 stories. Inside, inspect physical route markers, defeat the local encounter,
@@ -83,8 +122,9 @@ seed or generation profile. The experimental roof workshop retains its separate 
 See [the latest material-join report](../docs/art/codex-material-joins-2026-09-05.md).
 The default now blends neighbouring rock, soil and turf materials, with quieter
 grain and sparse, low stone fragments. Rebuild the native extension for the new
-optional mesh-palette argument. Character silhouettes remain procedural prototypes; overhead labels cap
-their close-up size. `-Characters` on the PowerShell review helper captures the
+optional mesh-palette argument. Character silhouettes now use the reviewed local
+Blender models with the existing runtime pose sampler; they remain faceted
+prototype art. Overhead labels cap their close-up size. `-Characters` on the PowerShell review helper captures the
 actor studio; `-Grounding` checks plant/chip placement and distance-fade origins.
 Creatures now have distance-driven gaits and poses tied to their existing attack
 timers. `-Motion` records a playable pose review; see the
@@ -192,7 +232,12 @@ separation, give-up, cone strike, dash) → the grammar-spike test
 shatter cascade) → the world-feel test (`tests/feel.tscn`: pickup magnet
 and absorb-to-grant, harvest feedback, buffered jump) → a 120-frame smoke
 run of the main
-scene. Non-zero exit on any failure. Run this
+scene, followed by the expanded gameplay and intensive fixtures in the helper.
+The Cataclysm additions are `tests/cataclysm_art_review.tscn`,
+`tests/cataclysm_actor_craft.tscn` and `tests/cataclysm_intensive.tscn`; the authored
+route review is `tests/cataclysm_review.tscn`. Native generation checks are
+`make -C ../tests/sim cataclysm-world` when run from this directory.
+Non-zero exit on any failure. Run this
 before every commit that touches `game/`.
 
 ## Layout

@@ -345,6 +345,12 @@ TrialSession::RoomOutcome TrialSession::resolveRoom(bool victory) {
         outcome.catalystRecovered = true;
     } else if (room.reward == "completion") {
         bossDefeated_ = true;
+        if (mapTier_ > 0) {
+            const auto reward=tuning_.trial.mapCompletionComponents.find(materialTarget_);
+            if (reward!=tuning_.trial.mapCompletionComponents.end()) {
+                for (const auto& [id,units] : reward->second) { loot_[id]+=units; outcome.materials[id]+=units; }
+            }
+        }
         finish(/*died=*/false);
         return outcome;
     }

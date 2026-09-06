@@ -550,6 +550,9 @@ struct TrialTable {
     double mapRewardPerTier = 0.03;
     double mapRewardPerCondition = 0.1;
     std::map<std::string, int> mapHaulUnits;
+    // One previewed physical component on a repeatable boss clear. The
+    // selected material target stays unchanged, preserving existing offers.
+    std::map<std::string, std::map<std::string,int>> mapCompletionComponents;
     std::vector<std::vector<std::string>> mapTargetPools;
     std::map<std::string, double> engineRules;
     const TrialFloor* findExpedition(const std::string& id) const;
@@ -887,6 +890,9 @@ struct NodeTypeDef {
     // and how many E presses drive it - the baseline a heavy blow shortcuts.
     std::string toolItem;
     int drivePresses = 0;
+    std::vector<std::string> properties;
+    std::vector<std::string> harvestStages;
+    std::string usePreview;
 };
 
 // Fire-setting (D-020): a campfire's heat, how far it reaches, how long
@@ -951,10 +957,57 @@ struct HabitatDef {
     std::vector<HabitatResourceDef> resources;
 };
 
+struct RegionDef {
+    std::string id, displayName, biome;
+    uint32_t salt = 0;
+    double radiusM = 60, transitionM = 18, distanceM = 165;
+    int baseHeight = 17, reliefCells = 3;
+    bool cave = false;
+};
+struct RareSiteDef {
+    std::string nodeType;
+    std::vector<std::string> regions;
+    uint32_t salt = 0;
+    int minimumSites = 2, maximumSites = 4;
+    double radiusM = 7, clueRadiusM = 28, minimumSpacingM = 23;
+    int exceptionalUnits = 0;
+};
+struct FrontierPopulation {
+    double outerDistanceM = 145;
+    double outerNodeKeep = 0.28, outerPackKeep = 0.3;
+    double clueQuietRadiusM = 8, gateTargetDistanceM = 180;
+    int exceptionalSiteMaximum = 2;
+};
+
+struct CataclysmParams {
+    double impactOffsetM = 24, majorRadiusM = 19, secondaryRadiusM = 13;
+    double influenceRadiusM = 62, craterDepthM = 4, rimHeightM = 3;
+    double regionAngleJitter = 0.12, regionWarpM = 5;
+    double traceWidthM = 1.2, traceInfluenceM = 18, traceBendM = 38;
+    int traceSegments = 24;
+    double ruinWidthM = 10, ruinDepthM = 10, ruinSkirtM = 8;
+    double discoveryDistanceM = 27, pathClearanceM = 3;
+    double thresholdSearchM = 48, thresholdDistanceM = 22, regionalRuinDistanceM = 30;
+    int foundationReliefCells = 4;
+};
+
+struct PressureSiteParams {
+    double pocketRadiusM = 0.8, strikeRadiusM = 1.25, influenceRadiusM = 12;
+    double traceWidthM = 0.5;
+    int pocketLateralCells = 2, pocketForwardCells = -2;
+    int workLateralCells = 0, workForwardCells = -2;
+    int strikeLateralCells = 4, strikeForwardCells = -3;
+};
+
 struct WorldgenTable {
     std::string generationProfile;
     std::vector<std::string> generationEliteIds;
     std::vector<HabitatDef> habitats;
+    std::vector<RegionDef> regions;
+    std::vector<RareSiteDef> rareSites;
+    FrontierPopulation frontierPopulation;
+    CataclysmParams cataclysm;
+    PressureSiteParams pressureSite;
     uint64_t defaultSeed = 1;
     MapParams map;
     MountainParams mountains;
@@ -1228,6 +1281,9 @@ struct Tuning {
     RealtimeTable realtime;
     WorldgenTable worldgen;
     WorldgenTable legacyWorldgen; // immutable legacy_v1 inputs for old saves
+    WorldgenTable frontierV2Worldgen; // immutable frontier_v2 geography and placement inputs
+    WorldgenTable frontierV3Worldgen; // immutable frontier_v3 geography and placement inputs
+    WorldgenTable frontierV4Worldgen; // immutable frontier_v4 topology, history and placement inputs
     GrammarTable grammar;
 };
 

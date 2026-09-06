@@ -1,11 +1,106 @@
 # World Generation, Settlements and Travel
 
+## Pressure workshop successor — D-031, 6 September 2026
+
+Fresh worlds use **`frontier_v5`**. The finite 512 × 512 m landscape, ordinary
+resources, existing rare hauls and approaches reuse the frozen V4 composition.
+One Ventlung-linked ruin is identified as an old **pre-cataclysm blacksmith's
+smithy**. A small asteroid struck its hearth margin, accidentally sending an
+exposed trace through a pressure pocket. This is destroyed old civilisation;
+only the player constructs a working extraction device and forge.
+
+V5 exports one `pressure_pockets` record with a stable ID, native position,
+approach, work position and ruin/strike/trace/discovery associations. It contains
+no stock. The contraption ledger owns the finite 24 strokes against the exact
+profile, seed and generated ID. Inspection and geometry cannot initialize or
+replenish them. There are four impact records, ten traces and six ruins; the
+small smithy strike adds no new region, threat, era or raw resource.
+
+`worldgen-frontier-v4.json` freezes the previous live inputs byte-for-byte;
+V4 helpers remain separate from the V5 composition. V4 and earlier saves gain
+no pressure pockets or rewritten geography. Only V5 uses live `worldgen.json`.
+The generation matrix verifies 64 V5 seeds and 16 complete historical profile/
+seed fingerprints. [Rules, tuning and evidence](../prototype/pressure-workshop-2026-09-06.md).
+
+## Implemented cataclysm composition — D-030, 6 September 2026
+
+The preceding **`frontier_v4`** retains the finite 512 × 512 metre extent,
+48 vertical cells and three discovery regions. The owner-approved [intensive](../prototype/cataclysm-world-intensive-2026-09-06.md)
+makes extreme augmentation the shared cause of the land, surviving structures,
+creatures and craft. Its [world premise](../world-premise.md) is accepted;
+the separately approved D-031 scope above brings forward one extraction loop.
+
+Native generation composes three regional impact anchors, curved connecting
+traces, irregular regional margins, shallow bowls, broken rims and trace channels.
+Six supported ruins link that history to existing opportunities: five first
+primary rare discoveries and the Forge gate. A constrained Forge foundation is
+reserved first; regional dwellings prefer homeward ground. Complete foundations
+are at least 10 × 10 m with gentle shoulders and a central three-metre walking
+strip. Arrival routes and separate short discovery routes avoid the authored
+wall margins. Rare work circles exclude ruins and impact fragments. Existing
+hauls, site-count budgets, class-independent gathering and era gates are unchanged.
+
+Stable impact, trace and ruin IDs use independent deterministic seed streams.
+Godot receives `impacts`, `leylines`, `ruins`, regional history tags and a row-major
+`augmentation_field` normalized to `[0,1]`. The three main traces connect the
+impacts; six local branches connect ruins. Segments can be broken, buried or
+exposed. The field guides local presentation and protects the starter clearing;
+it is not a power meter, damage field or source of stock. Ruin records include
+their cause, damage direction, foundation, entrance and linked discovery route.
+Simulation owns those relationships; Godot owns their grounded authored meshes.
+
+The exact former live V3 inputs are now frozen in `worldgen-frontier-v3.json`,
+with its placement helpers isolated from V4. `legacy_v1`, `frontier_v2` and
+`frontier_v3` retain their original geography, resource identities and quantities.
+Profile-less saves still mean legacy; loading an old profile does not insert
+ruins, impacts or new terrain. V4 now uses its dedicated frozen snapshot.
+
+The native `cataclysm-world` target passes 25,959,555 checks across 64 seeds,
+including exact complete fingerprints for all three historical profiles on four
+baseline seeds, deterministic regeneration, routes, foundations, finite stock,
+clear workplaces and progression supplies. Existing native generation and
+simulation suites also pass. The [native review](../art/cataclysm-generation-2026-09-06.md)
+records tuning, evidence and limits; integrated visual, save, collision and frame
+time review is tracked by the intensive separately. Generation tests do not
+certify the final visual finish or every possible seed.
+
+## The Strange Frontier — D-029, 6 September 2026
+
+The previous `frontier_v3` profile introduced 512 × 512 metres with broad
+Rootvault Wildwood, Lantern Fen and Glasswind Uplands regions. Regional masks shape the terrain,
+transition areas and ordinary population before finite rare sites are composed.
+Every supported seed has reachable opportunities for all five rare finds;
+exceptional sites are optional. Starter supplies, material habitats and the Forge
+remain nearer home. Extra area does not multiply population at the old density.
+See the [approved work item](../prototype/rare-world-intensive-2026-09-06.md).
+
+At that intensive, both older profiles were frozen. `frontier_v2` reads
+`worldgen-frontier-v2.json` through `worldgen_frontier_v2.inc`; `legacy_v1`
+retains its existing snapshot. Profile-less saves still mean legacy. Loading
+either profile does not add new sites or resize terrain. Recipes and fixtures
+remain available, including rare components from completed repeatable trials.
+
+Region IDs, site-instance IDs and resource IDs are deterministic and independent
+of scene creation order. A rare record carries separate presentation labels,
+properties, work stages and a use preview. Basic contextual work is sufficient;
+each finite first haul supports its useful recipe without another unlock.
+
+For V3 and V4, the complete native voxel field remains authoritative. Godot creates
+nearby exact mesh/collision in stages over a coarse distant surface. Travel
+activation is bounded; edited ground and explicit `Terrain.ensure_area` calls
+preserve exact collision for restored positions and review teleports. Resource
+records persist separately from nearby scenes: unloading retains partial work,
+depletion removes the record, and saving includes distant and future-era records.
+Legacy and V2 retain their eager terrain/resource creation path. Stream distances
+and work budgets live in `game/art/strange_stream.tres`; generation values and
+their purposes live in each profile's selected worldgen table.
+
 ## Approved resource habitats and world identity — 6 September 2026
 
 The [world intensive](../prototype/world-intensive-2026-09-06.md), D-027,
-adds three complete resource habitats to newly created worlds. `frontier_v2`
-keeps the weathered valley and composes finite deposits on reachable, supported
-terrain: the Shellcut Escarpment provides raw slate and shellstone, Rustwater
+introduced three complete resource habitats in `frontier_v2`, retained in its
+successors. It keeps the weathered valley and composes finite deposits on
+reachable, supported terrain: the Shellcut Escarpment provides raw slate and shellstone, Rustwater
 Hollow provides clay and weaving reeds, and Resinheart Grove provides logs and
 independent corkbark deadfall. These are source ingredients, not extra entries
 in the finished construction catalogue. Trial caches use these same ingredients.
@@ -56,8 +151,9 @@ Verification: `make -C tests/sim world-intensive` checks complete pre-intensive
 world fingerprints for seeds 1, 7, 24 and 91, then reachable, grounded habitats,
 stable resource identities, clear approaches, starter guarantees and the
 material/form matrix across 64 seeds (including widely separated large seeds).
-It passes 595,376 checks. `game/tests/world_intensive.tscn` runs on the actual
-default world: 5,939 headless checks cover profile switching, missing/unknown profiles,
+It passes 595,376 checks. The original D-027 review of
+`game/tests/world_intensive.tscn` on its then-default world passed 5,939 headless
+checks covering profile switching, missing/unknown profiles,
 resource grounding, finite/partial harvesting state, depleted resources,
 excavation, placed materials and atomic disk save restoration. Optional rendered
 execution writes player-height daylight/dusk views, approach sequences and

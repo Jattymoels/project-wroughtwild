@@ -1,5 +1,17 @@
 # Progression: Eras, the Foundry, and Ores as Properties
 
+Owner-approved Northstar, 6 September 2026 (D-030): [extreme augmentation](../world-premise.md)
+connects surviving building materials, technology recovered through existing
+enemy Kinds/catalysts, increasingly capable forging, and eventual extraction
+from technological leylines. The approved intensive now expresses that cause
+through V4 impacts, ruins, finite discoveries and shared creature/craft art.
+It preserves today's drops, Foundry mutations, forge quality and era milestones.
+Exact leyline outputs, facility requirements and automation energy remain
+follow-on proposals in the [approved world intensive](../prototype/cataclysm-world-intensive-2026-09-06.md).
+Visible traces do not supply energy or imply a new unlock. Existing manual
+harvesting, five rare-core roles and D-021 property improvements remain available;
+the Cataclysm adds no era or migration gate.
+
 Owner approval, 5 Sep 2026 (D-025): early Kinds now provide mechanical
 transformations; direct ingots remain simple at iron and gain additive
 refinements in bronze/steel alongside existing reach. This refines the older

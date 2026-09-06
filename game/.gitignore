@@ -14,3 +14,8 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Godot extracts these original grain textures from the curated Cataclysm GLBs.
+# The authoring source and embedded images remain authoritative.
+/assets/authored/cataclysm_*_Cataclysm * grain.png
+/assets/authored/cataclysm_*_Cataclysm * grain.png.import

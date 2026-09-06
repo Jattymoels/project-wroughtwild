@@ -1,5 +1,42 @@
 # Crafting and Skills
 
+**Pressure workshop, D-031 (6 September 2026):** one workbench recipe,
+`assemble_pressure_feeder`, consumes 1 Ventlung, 1 Thrumroot, 8 wood, 2 iron
+ingots and 2 raw reed to make a kit, with no skill/fuel/XP gate. It feeds only
+the existing `refine_rustclay_brick` recipe: 8 clay plus 1 ordinary fuel heat
+become 4 bricks. The bridge copies the existing recipe and fuel table; native
+selection removes recipe inputs first, then uses ascending heat value and item
+ID, matching manual crafting. Pressure supplies motion, not heat or quality.
+
+One local start requests four 8-second firings, spending one stored stroke each.
+The player explicitly loads the 64-item hopper and collects the 32-brick tray.
+The pocket holds 24 nonrenewable strokes; a four-stroke store includes reserved
+drive. Hand winding works without a source, including in old profiles. No
+equipment crafting, auto mastery, remote inventory search or offline production.
+Missing supplies/full output stop before the next reservation. Cancellation
+recovers exact inputs, selected fuel and drive once; saved escrow also reserves
+its hopper return space and output tray space. [Contract and purposes](../prototype/leyline-extraction-proposal-2026-09-06.md).
+
+**The Strange Frontier, D-029 (6 September 2026):** five finite wild components
+assemble into useful fixtures at the existing workbench. Recipes are visible
+before discovery and need no skill, fuel, currency or era gate. Each makes one
+kit and grants no mastery XP. The ordinary landing needs no rare component.
+
+| Recipe output | Inputs |
+| --- | --- |
+| Lanternheart Lamp | 1 Lanternheart, 2 wood, 2 raw reed |
+| Cargo Winch | 1 Thrumroot, 8 wood, 2 iron ingots |
+| Winch Landing | 6 wood, 1 iron ingot |
+| Stormglass Lever | 1 Stormglass, 3 wood, 1 iron ingot |
+| Magnetic Sorter | 1 Pullstone, 4 wood, 1 iron ingot |
+| Ventlung Bellows | 1 Ventlung, 3 wood, 2 raw reed |
+
+These six devices establish light, handling, signals and stored energy. D-031
+above adds one finite source and one workshop recipe, with zero automatic
+mastery. Renewable common production and broader automation remain future
+decisions in the [roadmap](../prototype/rare-world-intensive-2026-09-06.md).
+Manual crafting costs, item quality, Kind and personal mastery remain unchanged.
+
 Owner-approved update, 6 September 2026 (D-026): New equipment crafts use selected workpiece quality and Kind potency. Starter bench gear, expedition-backed refining, atomic material batches and slower meaningful-use mastery are now installed. Earlier universal Keen targeting and use-count mastery descriptions are historical. See the [forge implementation record](../prototype/forge-clarity-and-early-pacing-2026-09-06.md#implemented-outcome--6-september-2026) for tuning, sources and save compatibility.
 
 **Status:** Accepted direction; economy provisional  

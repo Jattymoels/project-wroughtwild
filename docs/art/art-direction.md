@@ -1,20 +1,62 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+Owner-approved Northstar, 6 September 2026 (D-030): **extreme augmentation**
+already belongs to the forge, bench and Foundry, and now shapes the land and
+living things. The frontier is a low-technology alien world devastated by a
+meteorite shower carrying augmentation technology. The [accepted premise](../world-premise.md)
+and [approved intensive](../prototype/cataclysm-world-intensive-2026-09-06.md)
+establish one visual sequence: surviving local life and craft → directional
+impact damage → exaggerated host properties → deliberate player reuse.
+
+Rootvault exaggerates growth and stored tension; Lantern Fen concentrates light
+and pressure; Glasswind expresses charge and attraction. Quiet remnants show
+their former scale. These are accepted regional interpretations, not new damage
+types or resource gates. Readable meadow daylight, open approaches and existing
+danger colours remain authoritative. A decorative seam must not imitate an
+attack tell. D-031 now approves one bounded pressure feeder. Its source is an
+accidental strike through an old pre-cataclysm smithy; only the player's newly
+built machinery contains and uses it. The owner accepts the current visual
+finish for now; a later graphical pass is deferred.
+
+Implemented V4 history provides three impact compositions, connected traces and
+six supported ruins linked to existing discoveries. The [shared authored kit](cataclysm-kit-2026-09-06.md)
+uses practical timber/reed/stone structures, worn forked channels, pale embedded
+metal and short lamellae. Mostly inert details connect regional materials to
+the Forge and contained workshop components. [Native placement and compatibility](cataclysm-generation-2026-09-06.md)
+preserve all three older world profiles. Asset-plate and native test evidence
+are separate from the intensive's normal-world visual/performance review;
+implementation does not imply final human acceptance of the art.
+
+Owner correction, 6 September 2026: the Strange Frontier concepts work, but the
+rendered places are still too barren and amateurish. The [approved refinement](../prototype/frontier-art-refinement-2026-09-06.md)
+prioritises connected natural silhouettes, clustered canopy/understory, wet
+margins and broken ground, plus coherent surfaces and atmospheric depth. Preserve
+clear gathering approaches and meadow daylight. More identical oversized props
+or uniformly scattered grass do not meet that direction.
+
 Owner continuation, 6 Sep 2026: following the Blender building study, the owner
 selected land/nature fixtures. A six-role authored-mesh study now covers the
 existing broadleaf tree, boulder and decorative shrub/fern/deadfall/stump roles.
-This is an export and collision review under the current palette, not adoption
-into normal world generation. [Assets, verification and limits](blender-nature-study-2026-09-06.md).
+Those local nature studies subsequently entered normal gameplay through the
+habitat and regional art work. [Original assets, verification and limits](blender-nature-study-2026-09-06.md).
+V4 adds shared augmentation details to common broadleaf trees and field boulders
+only where the native influence field warrants them; older profiles and quiet
+ground retain their plain resource presentation.
 
-The next owner continuation covers all six existing furnishings: chest, campfire,
-workbench, mason's yard and both forge tiers. Their Blender studies include
-existing-body collision checks and separate station-height fit proposals.
+The furnishing continuation covers chest, campfire, workbench, mason's yard and
+both forge tiers. The adopted station meshes now receive restrained contained
+augmentation detail on the workbench, yard and forge tiers. The original studies
+record existing-body collision checks and separate station-height fit proposals;
+the Cataclysm pass does not adopt a new gameplay body or station interaction.
 [Furnishing assets, collision findings and limits](blender-furnishings-study-2026-09-06.md).
 
 The owner then selected mobs. The Blender pass now covers the existing twelve
-actors, with simple rigs, preview animation clips and an explicit comparison
-against their current capsules. Normal game actors remain on their existing
-presentation path. [Mob assets, motion and hitbox findings](blender-mobs-study-2026-09-06.md).
+actors, with simple rigs, preview clips and an explicit comparison against their
+current capsules. Their reviewed meshes are now integrated through the normal
+spawn and `CreatureMotion` path. Existing combat clocks drive the poses; imported
+clips do not change attacks or bodies. Status materials and boss tells remain
+dominant. [Original study](blender-mobs-study-2026-09-06.md) and
+[actor/craft implementation, checks and remaining body-fit limits](cataclysm-actor-craft-2026-09-06.md).
 
 ## Current owner revision — 5 September 2026
 

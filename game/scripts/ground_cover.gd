@@ -94,7 +94,7 @@ static func _roll(x: int, z: int, kind: String, salt: int) -> float:
 ## by kind) and the map (heights and biomes per cell). Only a block whose
 ## top is the surface carries cover. Returns the instances placed.
 static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictionary, cell: float,
-		frontier_look: Resource = null) -> int:
+		frontier_look: Resource = null, retain_poses: bool = false) -> int:
 	if map.is_empty() or not map.has("heights") or not map.has("biomes"):
 		return 0
 	var width := int(map["width"])
@@ -167,10 +167,16 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 		for transform: Transform3D in transforms:
 			batch_origin += transform.origin
 		batch_origin /= float(transforms.size())
+		var displayed: Array=[]
+		var cover_bounds:=AABB()
 		for i in transforms.size():
 			var local: Transform3D = transforms[i]
 			local.origin -= batch_origin
 			multimesh.set_instance_transform(i, local)
+			if retain_poses:
+				displayed.append(local)
+				var bounds: AABB=transforms[i]*multimesh.mesh.get_aabb()
+				cover_bounds=bounds if i==0 else cover_bounds.merge(bounds)
 			var origin: Vector3 = (transforms[i] as Transform3D).origin
 			var blend := _roll(int(floor(origin.x)), int(floor(origin.z)), String(entry["kind"]), 53)
 			var tint := (entry["dark"] as Color).lerp(entry["colour"], 0.35 + 0.65 * blend)
@@ -181,6 +187,14 @@ static func build_for_chunk(chunk: Node3D, chunk_data: Dictionary, map: Dictiona
 		instance.name = "Cover_%s" % kind
 		instance.position = batch_origin
 		instance.multimesh = multimesh
+		if retain_poses:
+			# V3 construction clears only the view. Keep the exact original
+			# positions and colours so demolition can restore this same growth.
+			instance.set_meta("terrain_cover",true)
+			instance.set_meta("world_transforms",transforms)
+			instance.set_meta("display_transforms",displayed)
+			instance.set_meta("cover_bounds",cover_bounds)
+			instance.set_meta("hidden_by_building",[])
 		instance.material_override = _shared_material() if frontier_look == null else frontier_look.cover_material()
 		if String(kind).begins_with("scree") and frontier_look != null:
 			instance.material_override = frontier_look.scree_material()

@@ -1,5 +1,56 @@
 # Construction System
 
+## Pressure feeder — D-031, 6 September 2026
+
+The feeder is one additional kit in the existing picker. Its model, preview and
+collision bounds share the same local art. E opens attach/load/charge/wind/start/
+pause/cancel/collect controls. A Stormglass lever can request the same bounded
+batch; the signal supplies no energy. The hopper, tension drum, pressure chamber
+and output tray show the separate owners of materials and work.
+
+Attachment requires a physically present, player-built basic forge within 8 m;
+an optional pressure pocket must also be within 8 m. A global station unlock or
+old decorative hearth is insufficient. All four device/forge feet and both short
+connections are checked against actual geometry. Changed/missing support, moved
+forge, obstruction, trials or inactive distance pause the exact reserved cycle.
+Reattaching requires cancellation or completion first.
+
+Station saves record `player_built` and stable `station_key` separately from
+their global recipe unlock. Old saves without these fields retain their stations
+but grant no new physical ownership evidence; placing another forge supplies it.
+The world-scoped schema-2 machine ledger stores source stock, attachments, hopper,
+tray, drive, escrow, queued cycles, exact fractional progress and explicit pause.
+SaveManager validates it against the saved profile/seed before changing player
+or world state. Missing V5 ledgers reject; context-free historical fixtures remain
+loadable in older profiles. Source initialization occurs only on fresh world
+binding, and repeat binding of the same identity preserves stock.
+
+X or the panel dismantles once, returns all owned contents and intact rare
+cores, applies existing common-frame refunds and visibly vents unused drive.
+It never refills the source. [Work item and tuning](../prototype/pressure-workshop-2026-09-06.md).
+
+## Rare-resource fixtures — D-029, 6 September 2026
+
+The Strange Frontier adds six crafted fixtures through the existing kit picker:
+Lanternheart Lamp, Cargo Winch, ordinary Winch Landing, Stormglass Lever,
+Magnetic Sorter and Ventlung Bellows. They are workbench products, not additional
+wall materials or structural forms. Placement tests their full authored bounds;
+E opens their contextual controls and X dismantles them through the normal build
+interaction. Previews, catalogue cards and placed fixtures share the same art.
+
+The cargo winch has two supported fixed endpoints, one clear span and one
+authoritative inventory. Winding provides energy; a linked Stormglass pulse
+requests a trip. Blocked spans pause without losing cargo. Removing an endpoint
+recovers or recalls the same cargo; saving preserves exact travel progress.
+Signals do not supply energy. The sorter separates only hand-loaded items using
+the configured ferrous property set. Bellows apply the existing impact response
+to a nearby work target. There is no offline or trial-time machine production.
+
+Dismantling returns every rare core and the normal fraction of common recipe
+inputs, plus stored contents. All quantities, links and transfers are native
+simulation state validated before save restoration. Limits and their player
+purposes are in `data/tuning/contraptions.json`.
+
 **Status:** Accepted direction; prototype details provisional  
 **Related decisions:** D-001, D-003, D-005, D-008
 

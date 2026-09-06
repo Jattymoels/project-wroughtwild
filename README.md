@@ -26,6 +26,12 @@ The intended game combines self-directed construction, persistent ARPG buildcraf
 
 The owner-approved [world intensive](docs/prototype/world-intensive-2026-09-06.md) and [Forge intensive](docs/prototype/trial-intensive-2026-09-06.md) add three resource habitats, eight finished building families, two wall forms and one complete Forge arc followed by selectable repeatable tiers. D-027/D-028 explicitly expand the earlier material and endgame boundaries. Existing saves retain their original generation profile; the first two Forge curios still activate their existing world landmarks.
 
+The [Strange Frontier intensive](docs/prototype/rare-world-intensive-2026-09-06.md), D-029, introduced the finite 512 × 512 m world with three broad discovery regions, five finite rare finds and useful lamps, a hand-wound cargo winch, a signal lever, a sorter and bellows. Fixture recipes use the workbench; rare cores survive dismantling. A small connected winch experiment introduces signals and stored energy while powered production lines remain future work.
+
+The owner's [art refinement](docs/prototype/frontier-art-refinement-2026-09-06.md) develops those regions into clustered woodland, planted wet margins and weathered rock shelves. Matched gameplay captures and walking reviews document the current finish; the owner accepts this visual finish for now, with a later graphical pass deferred.
+
+**New worlds now use `frontier_v5`.** The [Cataclysm intensive](docs/prototype/cataclysm-world-intensive-2026-09-06.md) connects extreme augmentation to impacts, traces, ruins, creatures and craft. The [pressure workshop](docs/prototype/pressure-workshop-2026-09-06.md), D-031, adds one accidental asteroid strike through an old pre-cataclysm smithy. Build your own forge and feeder there: finite pressure provides motion, ordinary clay and fuel make existing bricks. Its small buffers, exact cycle saves and hand-winding fallback introduce one useful production loop. The world remains 512 × 512 m; V4 and all earlier saves retain frozen geography and receive no pressure stock retrofit. Current visuals are accepted for now; wider automation and a later graphical pass remain future work.
+
 The prototype excludes co-op, raids, an infinite world, extensive automation and a trading economy. Its purpose is to prove that returning from a trial makes the player excited to improve their build, base or production capability—and that those improvements make them want to venture out again.
 
 ## Repository map

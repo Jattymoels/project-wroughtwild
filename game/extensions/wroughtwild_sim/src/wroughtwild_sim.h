@@ -17,6 +17,7 @@
 
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
+#include "wroughtwild/contraptions.h"
 #include "wroughtwild/daycycle.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/grammar.h"
@@ -627,6 +628,30 @@ public:
 protected:
     static void _bind_methods();
 
+public:
+    PackedStringArray contraption_kinds() const;
+    String contraption_kind_for_kit(const String& kit) const;
+    bool contraption_place(const String& kind, const String& key, const Vector3& position, int rotation);
+    Dictionary contraption_remove(const String& key);
+    PackedStringArray contraption_ids() const;
+    Dictionary contraption_state(const String& key) const;
+    Dictionary contraption_config() const;
+    Dictionary contraption_link(const String& key, const String& target, bool clear);
+    Dictionary contraption_action(const String& key, const String& action, bool clear=true, bool other_clear=true, double distance=0);
+    Dictionary contraption_tick(const String& key, double seconds, bool clear);
+    Dictionary contraption_deposit(const String& key, const String& item, int count);
+    Dictionary contraption_withdraw(const String& key, const String& port, const String& item, int count);
+    String contraption_save() const;
+    bool contraption_validate(const String& text) const;
+    bool contraption_load(const String& text);
+    bool contraption_bind_world(const String& profile, int seed);
+    bool contraption_validate_world(const String& text, const String& profile, int seed) const;
+    bool contraption_load_world(const String& text, const String& profile, int seed);
+    Array contraption_pressure_sources() const;
+    Dictionary contraption_attach_feeder(const String& key, const String& source_id,
+        const String& forge_key, const Vector3& forge_position, bool clear);
+    Array rare_resource_guide() const;
+
 private:
     bool require_loaded(const char* method) const;
 
@@ -639,12 +664,14 @@ private:
     // Generates (or reuses) the world for a seed; generation costs real time.
     const wroughtwild::worldgen::WorldMap& cached_world(uint64_t seed);
     const wroughtwild::tuning::WorldgenTable& world_table() const;
+    wroughtwild::contraptions::WorldIdentity machine_world_identity(const String& profile, int seed) const;
     // The elite modifier for an id, or nullptr for "" / unknown.
     const wroughtwild::tuning::EliteModifierDef* find_elite(const String& elite_id) const;
     // Character stats with the Foundry's stat ingots applied.
     wroughtwild::stats::DerivedStats derived_now(const wroughtwild::stats::Equipment* preview = nullptr) const;
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
+    std::unique_ptr<wroughtwild::contraptions::MachineWorld> contraptions_;
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;
     wroughtwild::stats::Equipment equipment_;
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run

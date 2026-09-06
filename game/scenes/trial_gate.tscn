@@ -1,18 +1,22 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/trial_gate.gd" id="1_script"]
+[ext_resource type="Script" path="res://art/trial_gate_look.gd" id="2_look"]
 
 [sub_resource type="BoxShape3D" id="gate_shape"]
 size = Vector3(1.0, 4.0, 3.0)
 
-[sub_resource type="BoxMesh" id="gate_mesh"]
-size = Vector3(0.8, 4.0, 3.0)
+[sub_resource type="QuadMesh" id="inset_mesh"]
+size = Vector2(1.95, 2.35)
 
-[sub_resource type="StandardMaterial3D" id="gate_material"]
-albedo_color = Color(0.25, 0.08, 0.06, 1)
+[sub_resource type="StandardMaterial3D" id="inset_material"]
+resource_name = "Charcoal seal; faint residual warmth keeps the entry readable at dusk"
+cull_mode = 2
+albedo_color = Color(0.125, 0.153, 0.133, 1)
+roughness = 0.94
 emission_enabled = true
-emission = Color(1.0, 0.35, 0.05, 1)
-emission_energy_multiplier = 0.8
+emission = Color(0.44, 0.42, 0.34, 1)
+emission_energy_multiplier = 0.07
 
 [node name="TrialGate" type="StaticBody3D"]
 script = ExtResource("1_script")
@@ -22,6 +26,11 @@ position = Vector3(0, 2, 0)
 shape = SubResource("gate_shape")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-position = Vector3(0, 2, 0)
-mesh = SubResource("gate_mesh")
-material_override = SubResource("gate_material")
+rotation = Vector3(0, 1.5707963, 0)
+scale = Vector3(0.84, 1.4, 0.94)
+script = ExtResource("2_look")
+
+[node name="RecessedEntry" type="MeshInstance3D" parent="Mesh"]
+position = Vector3(0, 1.175, -0.12)
+mesh = SubResource("inset_mesh")
+material_override = SubResource("inset_material")

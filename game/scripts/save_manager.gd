@@ -89,11 +89,14 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 			"upgrade_station_id": String(site.upgrade_station_id),
 			"position": _vec(site.global_position),
 			"rotation_y": site.rotation.y,
+			"player_built": site.player_built,
+			"station_key": site.station_key,
 		})
 
 	var data := {
 		"schema_version": SCHEMA_VERSION,
 		"sim": player.inventory.get_sim().export_json(),
+		"contraptions": player.inventory.get_sim().contraption_save(),
 		"player": {
 			"position": _vec(player.global_position),
 			"yaw": player.rotation.y,
@@ -116,6 +119,8 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 		data["loot_kill_counter"] = mob_packs.loot_kill_counter()
 	# ...and every block the player dug out of it (Wave 3 digging).
 	var terrain := root.get_node_or_null("Terrain") as Terrain
+	if terrain != null and terrain.resource_stream != null:
+		data["resource_nodes"]=terrain.resource_stream.capture()
 	if terrain != null and not terrain.broken.is_empty():
 		var broken_data: Array = []
 		for v in terrain.broken:
@@ -137,8 +142,11 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	# Validate the whole suspended payload and generation identity before either
 	# the player's economy or their terrain changes. Old v2 saves stay legacy.
 	var profile:=String(data.get("world_profile","legacy_v1"))
-	if profile not in ["legacy_v1","frontier_v2"]:
+	if profile not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5"]:
 		last_error="unknown world generation profile: "+profile
+		return false
+	if not _valid_text(data.get("contraptions","")) or not sim.contraption_validate_world(String(data.get("contraptions","")), profile, int(data.get("world_seed",0))):
+		last_error="invalid saved contraption state"
 		return false
 	if not data.get("trial_boundary",{}) is Dictionary:
 		last_error="invalid suspended trial boundary"
@@ -186,6 +194,9 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 			return false
 	if not sim.import_json(data.get("sim", "")):
 		last_error = "rules state rejected: %s" % sim.last_error()
+		return false
+	if not sim.contraption_load_world(String(data.get("contraptions","")), profile, int(data.get("world_seed",0))):
+		last_error="contraption state rejected: "+sim.last_error()
 		return false
 
 	var root: Node = player.world_root()
@@ -241,48 +252,51 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 
 	# Resource nodes: restore units, respawn ones depleted since the save,
 	# and drop ones the save no longer knows about (depleted before the save).
-	var saved_names := {}
-	for entry in data.get("resource_nodes", []):
-		saved_names[entry["name"]] = true
-		var parent: Node = root.get_node_or_null(NodePath(entry["parent"]))
-		if parent == null:
-			parent = root
-		var node: ResourceNode = null
-		for candidate in nodes:
-			if candidate.name == entry["name"]:
-				node = candidate
-		if node == null:
-			node = RESOURCE_NODE_SCENE.instantiate()
-			node.name = entry["name"]
-			node.resource_id=String(entry.get("resource_id",entry["name"]))
-			node.habitat_id=String(entry.get("habitat_id",""))
-			node.presentation_label=String(entry.get("presentation_label",""))
-			node.material_family = StringName(entry["family"])
-			node.visual = StringName(entry.get("visual", ""))
-			# Older schema-2 saves did not store the visual. Recover generated
-			# nodes from their stable name instead of restoring a default cylinder.
-			if node.visual==&"" and terrain != null:
-				for def in terrain.map.get("nodes",[]):
-					if "wn_%s_%d_%d_%d" % [def["type"],def["x"],def["y"],def["z"]] == String(node.name):
-						node.visual = StringName(def["visual"])
-						break
-			node.position = (parent as Node3D).to_local(_unvec(entry["position"])) if parent is Node3D else _unvec(entry["position"])
+	if terrain != null and terrain.resource_stream != null:
+		terrain.resource_stream.restore(data.get("resource_nodes",[]))
+	else:
+		var saved_names := {}
+		for entry in data.get("resource_nodes", []):
+			saved_names[entry["name"]] = true
+			var parent: Node = root.get_node_or_null(NodePath(entry["parent"]))
+			if parent == null:
+				parent = root
+			var node: ResourceNode = null
+			for candidate in nodes:
+				if candidate.name == entry["name"]:
+					node = candidate
+			if node == null:
+				node = RESOURCE_NODE_SCENE.instantiate()
+				node.name = entry["name"]
+				node.resource_id=String(entry.get("resource_id",entry["name"]))
+				node.habitat_id=String(entry.get("habitat_id",""))
+				node.presentation_label=String(entry.get("presentation_label",""))
+				node.material_family = StringName(entry["family"])
+				node.visual = StringName(entry.get("visual", ""))
+				# Older schema-2 saves did not store the visual. Recover generated
+				# nodes from their stable name instead of restoring a default cylinder.
+				if node.visual==&"" and terrain != null:
+					for def in terrain.map.get("nodes",[]):
+						if "wn_%s_%d_%d_%d" % [def["type"],def["x"],def["y"],def["z"]] == String(node.name):
+							node.visual = StringName(def["visual"])
+							break
+				node.position = (parent as Node3D).to_local(_unvec(entry["position"])) if parent is Node3D else _unvec(entry["position"])
+				node.remaining_units = int(entry["remaining_units"])
+				parent.add_child(node)
 			node.remaining_units = int(entry["remaining_units"])
-			parent.add_child(node)
-		node.remaining_units = int(entry["remaining_units"])
-		node.units_per_harvest = int(entry["units_per_harvest"])
-		node.heat_to_work = int(entry.get("heat_to_work", node.heat_to_work))
-		node.cracked = bool(entry.get("cracked", false))
-		node.tool_item = StringName(String(entry.get("tool_item", String(node.tool_item))))
-		node.drive_presses = int(entry.get("drive_presses", node.drive_presses))
-		node.wedge_set = bool(entry.get("wedge_set", false))
-		node.drive_progress = int(entry.get("drive_progress", 0))
-		if node.is_inside_tree():
-			node._refresh_wedge_look()
-	for node in nodes:
-		if not saved_names.has(node.name):
-			node.get_parent().remove_child(node)
-			node.free()
+			node.units_per_harvest = int(entry["units_per_harvest"])
+			node.heat_to_work = int(entry.get("heat_to_work", node.heat_to_work))
+			node.cracked = bool(entry.get("cracked", false))
+			node.tool_item = StringName(String(entry.get("tool_item", String(node.tool_item))))
+			node.drive_presses = int(entry.get("drive_presses", node.drive_presses))
+			node.wedge_set = bool(entry.get("wedge_set", false))
+			node.drive_progress = int(entry.get("drive_progress", 0))
+			if node.is_inside_tree():
+				node._refresh_wedge_look()
+		for node in nodes:
+			if not saved_names.has(node.name):
+				node.get_parent().remove_child(node)
+				node.free()
 
 	# Placed station sites: rebuild the set from the save. Saves without the
 	# key (pre-sandpit) keep whatever sites the scene authored.
@@ -298,6 +312,8 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 				site.name = entry["name"]
 			site.station_id = StringName(entry["station_id"])
 			site.upgrade_station_id = StringName(entry["upgrade_station_id"])
+			site.player_built = bool(entry.get("player_built", false))
+			site.station_key = String(entry.get("station_key", ""))
 			var parent: Node = root
 			if entry.has("parent"):
 				parent = root.get_node_or_null(NodePath(entry["parent"]))
@@ -317,6 +333,11 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 
 	for site in sites:
 		site.refresh_visual(sim)
+	ContraptionSite.restore_all(root,sim)
+	if terrain != null: terrain.ensure_area(terrain.to_local(player.global_position))
+	if terrain != null and terrain.resource_stream != null:
+		terrain.resource_stream.focus(terrain.to_local(player.global_position),true)
+	player.placement.refresh_ecology()
 	if not boundary.is_empty() and not player.trial.restore_boundary(boundary):
 		last_error="suspended trial could not be restored"
 		return false
@@ -384,6 +405,7 @@ static func _valid_world_payload(data: Dictionary) -> bool:
 			if entry.has(key) and (not _valid_integer(entry[key]) or int(entry[key])<0): return false
 		for key in ["cracked", "wedge_set"]:
 			if entry.has(key) and not entry[key] is bool: return false
+	var station_keys: Dictionary = {}
 	for entry in data.get("stations",[]):
 		if not entry is Dictionary or not _valid_vec(entry.get("position")): return false
 		for key in ["station_id", "upgrade_station_id"]:
@@ -391,6 +413,13 @@ static func _valid_world_payload(data: Dictionary) -> bool:
 		for key in ["parent", "name"]:
 			if entry.has(key) and not _valid_text(entry[key]): return false
 		if entry.has("rotation_y") and not _valid_number(entry["rotation_y"]): return false
+		if entry.has("player_built") and not entry["player_built"] is bool: return false
+		if entry.has("station_key") and not _valid_text(entry["station_key"]): return false
+		var station_key := String(entry.get("station_key", ""))
+		if bool(entry.get("player_built", false)) and station_key.is_empty(): return false
+		if not station_key.is_empty():
+			if station_keys.has(station_key): return false
+			station_keys[station_key] = true
 	for key in ["broken_blocks", "cracked_blocks"]:
 		for cell in data.get(key,[]):
 			if not _valid_cell(cell): return false

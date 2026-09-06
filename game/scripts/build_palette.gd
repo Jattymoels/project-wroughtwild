@@ -246,6 +246,8 @@ func refresh() -> void:
 func _mesh(id: StringName, kit: bool) -> Mesh:
 	var sim := player.inventory.get_sim()
 	if kit:
+		var kind := sim.contraption_kind_for_kit(id)
+		if not kind.is_empty(): return StrangeResourceArt.fixture_mesh(kind)
 		return preload("res://art/station_look.tres").mesh_for(StringName(sim.kit_station(id)))
 	var actual: StringName = placement._fine_twins.get(id,id) if placement.fine_mode else id
 	var info: Dictionary = sim.shape(actual)

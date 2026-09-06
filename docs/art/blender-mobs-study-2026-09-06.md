@@ -5,6 +5,12 @@ land/nature and furnishing studies. This pass covers the existing roster: ten
 hostile families, the Forge Tyrant and passive Valley Elk. It adds an authoring
 recipe to the local Blender MCP, not new enemies or normal-game integration.
 
+**Later integration, 6 September 2026:** the approved cataclysm intensive now
+uses these twelve reviewed skins in normal actor configuration, adapted to the
+existing combat-driven sampler and body contracts. See the
+[runtime integration and checks](cataclysm-actor-craft-2026-09-06.md). The study
+findings and source review below remain the record of the original art pass.
+
 ## Outcome
 
 Twelve editable Blender rigs export as one skinned mesh and one vertex-colour
