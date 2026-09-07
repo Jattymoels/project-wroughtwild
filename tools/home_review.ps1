@@ -1,6 +1,6 @@
 param(
     [ValidateSet('baseline','current')][string]$Phase = 'current',
-    [ValidateSet('home','home-reliability')][string]$ReviewSet = 'home',
+    [ValidateSet('home','home-reliability','interaction-feedback')][string]$ReviewSet = 'home',
     [string[]]$Scenes = @('home_station_placement','home_material_joins','home_headroom','home_workshop_review'),
     [int]$Seed = 77,
     [switch]$Prepare,
@@ -10,7 +10,7 @@ param(
     [int]$TimeoutSeconds = 420,
     [string]$Godot = 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe'
 )
-# Bounded INT-03 checks/captures. Copies and user data stay in ignored build/;
+# Bounded home/interaction checks and captures. Copies and user data stay in ignored build/;
 # only a process launched by this invocation can be stopped on timeout.
 $ErrorActionPreference = 'Stop'
 $homeRepo = Split-Path $PSScriptRoot
@@ -31,7 +31,11 @@ if ($Prepare) {
 if (-not (Test-Path -LiteralPath (Join-Path $homeGame 'project.godot'))) { throw 'Prepare the isolated project first.' }
 if ($Phase -eq 'baseline') {
     # Replay only the new common review/reproduction fixtures against untouched production.
-    $homeFixtures = if ($ReviewSet -eq 'home-reliability') { @('home_terrain_placement','home_station_clearance','home_door_persistence','home_workshop_review') } else { @('home_station_placement','home_headroom','home_workshop_review') }
+    $homeFixtures = switch ($ReviewSet) {
+        'home-reliability' { @('home_terrain_placement','home_station_clearance','home_door_persistence','home_workshop_review') }
+        'interaction-feedback' { @('interaction_route') }
+        default { @('home_station_placement','home_headroom','home_workshop_review') }
+    }
     foreach ($homeFile in ($homeFixtures | ForEach-Object { "$_.gd"; "$_.tscn" })) {
         if (Test-Path -LiteralPath (Join-Path $homeRepo "game/tests/$homeFile")) {
             Copy-Item -LiteralPath (Join-Path $homeRepo "game/tests/$homeFile") -Destination (Join-Path $homeGame "tests/$homeFile")
@@ -72,6 +76,8 @@ try {
     foreach ($homeScene in $Scenes) {
         if ($homeScene -notmatch '^[a-zA-Z0-9_]+$') { throw 'Scene must be a test basename.' }
         $homeFlags = if ($Rendered) { '--resolution 1440x900 --position -9999,-9999' } else { '--headless' }
+        # Audio samples are exported for review; isolated checks never use the owner's speakers.
+        if ($ReviewSet -eq 'interaction-feedback') { $homeFlags += ' --audio-driver Dummy' }
         $homeMode = if ($Rendered) { 'rendered' } else { 'headless' }
         $homeVariant = if ($ExtraArguments -match '--journey-class=([a-zA-Z0-9_]+)') { '-' + $Matches[1] } else { '' }
         Invoke-HomeCheck "$homeScene-$Seed-$homeMode$homeVariant" "$homeFlags res://tests/$homeScene.tscn -- --home-seed=$Seed --home-phase=$Phase $ExtraArguments"

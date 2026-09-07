@@ -713,10 +713,17 @@ func _apply_work(node: ResourceNode, result: Dictionary, hit: Dictionary = {}) -
 	if result.has("refusal"):
 		hud.notify("%s: %s." % [Hud.pretty(String(node.material_family)), result["refusal"]])
 		return
+	var granted: int = int(result.get("granted", 0))
+	if granted <= 0 and not result.has("text") and not result.get("struck", false):
+		return
+	# Accepted action results own the sound, not animation/stock refreshes.
+	# The scene owns the tail so a depleted node cannot cut its release short.
+	InteractionSound.play(world_root(), hit.get("position", node.global_position),
+		InteractionSound.resource_cue(String(node.visual), granted > 0))
 	if not result.get("struck", false):
 		(camera.get_node("FirstPersonHands") as FirstPersonHands).present_work()
 	if not hit.is_empty():
-		GatheringImpact.spawn(world_root(), hit.position, hit.normal, node.visual == &"tree",
+		GatheringImpact.spawn(world_root(), hit.position, hit.normal, node._is_tree() or node.visual == &"corkbark_deadfall",
 			node._visual_seed() + node.drive_progress + node.remaining_units)
 	hud._refresh_crosshair()
 	if result.has("text"):
@@ -725,7 +732,6 @@ func _apply_work(node: ResourceNode, result: Dictionary, hit: Dictionary = {}) -
 		MobPacks.noise(get_tree(), node.global_position, "work", combat.sheltered)
 	if result.get("struck", false):
 		MobPacks.noise(get_tree(), node.global_position, "strike", combat.sheltered)
-	var granted: int = int(result.get("granted", 0))
 	if granted > 0:
 		hud.notify("Freed %d %s · collect the drop." % [granted, Hud.pretty(String(node.material_family))])
 		if node.drive_presses > 1:

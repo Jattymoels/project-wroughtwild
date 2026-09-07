@@ -195,6 +195,7 @@ func craft(recipe_id: StringName, aim_kind: String = "", quality: int = 1, quant
 			first_dressed = false
 	var result: Dictionary = sim.craft(recipe_id, for_order, aim_kind, quality, quantity)
 	if result["crafted"]:
+		_craft_feedback(recipe, aim_kind, quality)
 		var note := "Crafted %s" % recipe.get("display_name", recipe_id)
 		if quantity > 1: note += " ×%d" % quantity
 		if int(result.xp_granted) > 0: note += " (+%d xp%s)" % [result.xp_granted, ", repetition reduced" if float(result.xp_multiplier) < 1.0 else ""]
@@ -222,6 +223,30 @@ func craft(recipe_id: StringName, aim_kind: String = "", quality: int = 1, quant
 			_: _message.text = "Cannot craft that."
 	refresh()
 	return result
+
+
+## One response to one successful native transaction, including a batch.
+## Panel refresh, replayed save state and known remote station recipes never
+## pretend an idle station has worked. Field work stays at the player's hands.
+func _craft_feedback(recipe: Dictionary, aim_kind: String, quality: int) -> void:
+	if _mode != "crafting" or not is_open(): return
+	var required_station := String(recipe.get("station", ""))
+	if quality > 1 or not aim_kind.is_empty():
+		var preview: Dictionary = sim.craft_preview(String(recipe.id), aim_kind, quality)
+		var grades: Array = preview.get("grades", [])
+		var process_grade := maxi(quality, int(preview.get("potency", 1)))
+		if not String(preview.get("base_id", "")).is_empty() and process_grade > 1 and process_grade <= grades.size():
+			required_station = String(grades[process_grade - 1].station)
+	if _station != null:
+		if is_instance_valid(_station) and _station.is_inside_tree() and not _station.is_queued_for_deletion() and required_station in ["", String(_station.station_id), String(_station.current_station_id(sim))]:
+			_station.craft_completed(sim)
+		return
+	if required_station != "": return
+	var player := get_parent() as WroughtwildPlayer
+	if player == null: return
+	var scene := player.world_root()
+	if scene != null:
+		InteractionSound.play(scene, player.global_position, InteractionSound.craft_cue(""))
 
 
 ## Re-casts one ingot in hand in a wider metal (slice 10) through the sim.

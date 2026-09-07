@@ -84,8 +84,7 @@ static func update(node: ResourceNode, progress: float, depleted: bool = false) 
 	if root==null: return
 	var core:=root.get_node("Core") as Node3D
 	var t:=clampf(progress,0,1)
-	var previous:=float(root.get_meta("work_progress",t))
-	if t>previous and not depleted: preload("res://art/strange_sound.gd").play(node,String(node.visual))
+	# Restore/stream/hover refreshes describe state; only accepted work emits audio.
 	root.set_meta("work_progress",t)
 	match String(node.visual):
 		"lanternheart": core.rotation.z=t*.16; core.position.y=t*.13

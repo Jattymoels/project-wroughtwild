@@ -194,6 +194,23 @@ This *is* the feedback spec; the rule is that every state a tester might ask
 about — "what do I have, what am I wearing, what is active, what can I make
 and why not" — is answerable from one screen without scrolling the HUD.
 
+INT-04A, 7 September 2026: short local sounds now distinguish accepted resource
+work, material release and actual positive material collection. Wood, fibre,
+earth and mineral contact differ; the five rare hosts retain distinct resonance.
+The accepted action result owns playback, never visual progress, hovering or
+save restoration. Freed resources still need collection; full-pack refusals
+remain quiet and rapid absorbed chips share one quiet confirmation. Existing
+hands, flakes, progress text and mob-hearing rules remain; Resinheart and cork
+now use timber flakes. No extra tooltip or HUD line is added.
+
+One successful manual recipe transaction, including a batch, gives a short
+station-specific confirmation and tiny temporary surface flecks. Hand crafting
+confirms at the player. Browsing, failures, idle refresh and globally known
+recipes without the matching active local station produce no craft activity.
+Station bodies and meshes stay fixed. This extends the earlier synthesized
+rare/contraption palette without music, external audio assets or UI click sounds.
+[Scope, tuning and verification](../prototype/interaction-feedback-2026-09-07.md).
+
 ## Failure cases and exploits
 
 - A panel that takes the mouse but forgets to release it on close: covered
@@ -252,5 +269,5 @@ unchanged. Values and explanations live in `game/art/character_look.tres`
   shows only the four construction families.
 - Whether the action bar should also host `E` (context action) as a fifth
   slot, mirroring the crosshair state.
-- Sound: none in the prototype; the first UI sounds should come with the
-  first character art pass (D-013).
+- Footsteps, broader ambience and UI navigation sounds remain separate from
+  INT-04A's action feedback and the existing rare-site/contraption cues.

@@ -245,6 +245,9 @@ func _absorb(player: Node3D) -> void:
 			# or request another collection of this same chip.
 			amount -= taken
 			_claimed = amount <= 0
+			# A freed drop is not yet owned. Confirm only the positive native
+			# haul, after updating this chip; overlapping arrivals are coalesced.
+			InteractionSound.play(wrought_player.world_root(), global_position, "collect")
 			if wrought_player.hud != null:
 				wrought_player.hud.notify_pickup(family, taken)
 				if family == "shrieker_horn":

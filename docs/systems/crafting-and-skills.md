@@ -1,5 +1,14 @@
 # Crafting and Skills
 
+**INT-04A action feedback, 7 September 2026:** successful manual crafting now
+confirms once at the actual active station, with a short local sound and small
+temporary work flecks. Field recipes confirm at the player. Recipe quantities,
+equipment grade, Kind potency, fuel, XP and native RNG remain unchanged. A batch
+does not create repeated per-item effects. Browsing, failed transactions, save
+restoration and remote knowledge do not animate a station. These are cosmetic
+events, not additional crafting timers or automatic production. See the
+[interaction-feedback work item](../prototype/interaction-feedback-2026-09-07.md).
+
 **Implemented INT-01 clarity update, 7 September 2026:** current-station
 membership, craftable-first ordering and exact native craft validation remain
 unchanged. Ingredient references and the optional pack guide explain the early

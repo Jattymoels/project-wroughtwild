@@ -173,6 +173,23 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   during ordinary building. Focused checks pass; this human review remains
   separate. [Scope and evidence](home-placement-persistence-2026-09-07.md).
 
+## Interaction feedback (INT-04A)
+
+- [x] Accepted resource work, release and positive material collection have
+  distinct short cues; refusals, empty results and full packs never sound successful.
+- [x] Wood/fibre/earth/mineral contacts and five rare hosts retain separate
+  timbres; cosmetic variation leaves gameplay RNG unchanged. Rare visual, hover
+  and saved-progress restoration cannot replay work. Finite discovery cues remain.
+- [x] A successful manual craft, including a batch, responds once at the actual
+  local station or player. Surface response has no collision, ownership or fuel
+  effect; failed/browsing/remote/restore paths remain quiet. Grade, potency and
+  exact native costs, XP and item rolls are unchanged.
+- [x] Shared playback caps at eight voices across scene roots, rapid collection
+  coalesces, short voices expire and the fixed cache stays bounded. Actual
+  first-person captures, listening reel and matched timing are recorded in the
+  [work item](interaction-feedback-2026-09-07.md).
+- [ ] Owner accepts timbre, volume and repeated-use comfort in ordinary play.
+
 ## Whole-slice playtest
 
 The [Wide Frontier intensive](wide-frontier-intensive-2026-09-06.md), D-032,

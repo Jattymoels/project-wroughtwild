@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: "Okay continue to the next slice" accepts
+[INT-04A](../prototype/interaction-feedback-2026-09-07.md), the queued local sound
+and interaction-feedback pass. Accepted work, material release, positive hauling
+and successful manual crafting gain short distinct cues through the existing
+local synthesized-audio approach. Rare visual/save refreshes remain silent;
+finite discovery cues and all native work, ownership and mob-hearing rules remain.
+This is bounded presentation under D-013, not adoption of external production
+audio, music, new mechanics or broader automation. Footsteps and ambience remain
+separate; human listening and comfort review stay deferred while the owner is away.
+
 Owner continuation, 7 September 2026: "Looks great - feel free to commit" and
 "Go ahead with next slice" accept [INT-03B](../prototype/home-placement-persistence-2026-09-07.md),
 the three bounded findings from the home audit. Terrain exposure now follows

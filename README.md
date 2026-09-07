@@ -42,6 +42,11 @@ step handling, verified with two complete homes and actual first-home entry.
 checks complete piece footprints against terrain, keeps stations clear of built
 walls and ceilings, and restores open doors in their saved physical pose.
 Existing buildings remain loadable; owner comfort review is still pending.
+[INT-04A interaction feedback](docs/prototype/interaction-feedback-2026-09-07.md)
+adds distinct local work, release and material-collection sounds, plus one
+confirmation at the station completing a manual craft. Save/visual refreshes
+and failed actions stay quiet. Functional checks and local listening samples
+are ready; human listening and repetition comfort remain pending.
 
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
