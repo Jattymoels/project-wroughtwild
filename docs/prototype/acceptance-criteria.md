@@ -190,6 +190,23 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   [work item](interaction-feedback-2026-09-07.md).
 - [ ] Owner accepts timbre, volume and repeated-use comfort in ordinary play.
 
+## Ground and ambience (INT-04B)
+
+[Scope and evidence](footsteps-ambience-2026-09-07.md).
+
+- [x] Actual grounded distance and support drive material contact, including
+  existing built materials, current terrain strata, slopes and narrow ledges.
+  Walls, air, dash, disabled play and panels do not accumulate walking sounds.
+- [x] Existing V1–V6 biome surfaces supply four restrained outdoor beds, reduced
+  by existing shelter. Bounds, invalid maps, trial context and world identity
+  changes cannot carry stale outdoor sound into another place.
+- [x] Same-position loads, trial restore/transition, death and pause clear
+  cosmetic playback without changing native ownership, RNG, hearing or rare
+  finite-stock eligibility. Voice/cache limits, Master mute and independent
+  action feedback are verified; labelled listening samples are available.
+- [ ] Owner accepts walking repetition, material timbre and relative volume
+  alongside combat, work and rare discovery in ordinary play.
+
 ## Whole-slice playtest
 
 The [Wide Frontier intensive](wide-frontier-intensive-2026-09-06.md), D-032,

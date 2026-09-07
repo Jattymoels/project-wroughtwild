@@ -55,6 +55,8 @@ var _full_said := {}
 ## radius comes, and it rings a while before it will blow again.
 var _horn_left := 0.0
 var trial: TrialController
+var footsteps: PlayerFootsteps
+var environment_ambience: EnvironmentAmbience
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
 ## Rolls gathering ambushes; tests seed it or spawn ambushes directly.
@@ -149,6 +151,14 @@ func _ready() -> void:
 	trial = TrialController.new()
 	trial.setup(self)
 	add_child(trial)
+	footsteps = PlayerFootsteps.new()
+	footsteps.name = "Footsteps"
+	footsteps.setup(self)
+	add_child(footsteps)
+	environment_ambience = EnvironmentAmbience.new()
+	environment_ambience.name = "EnvironmentAmbience"
+	environment_ambience.setup(self)
+	add_child(environment_ambience)
 
 	_capture_mouse()
 
@@ -158,6 +168,13 @@ func _ready() -> void:
 func world_root() -> Node:
 	var scene := get_tree().current_scene
 	return scene if scene != null else get_parent()
+
+
+## Presentation has no saved stride or old-location bed. Explicit restoration
+## also covers loading a checkpoint at exactly the position already occupied.
+func reset_environment_feedback() -> void:
+	if is_instance_valid(footsteps): footsteps.reset_context()
+	if is_instance_valid(environment_ambience): environment_ambience.reset_context()
 
 
 func _capture_mouse() -> void:
@@ -530,8 +547,11 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * move_speed * combat.haste_multiplier()
 
 	var fall_speed := -velocity.y
+	var before_motion := global_position
+	var grounded_before := is_on_floor()
 	_step_up(delta)
 	move_and_slide()
+	footsteps.after_motion(before_motion, grounded_before, dash != Vector3.ZERO, delta)
 
 	# A hard landing dips the camera briefly - weight without screen shake.
 	if is_on_floor() and not _was_on_floor and fall_speed > 5.5:
@@ -680,6 +700,7 @@ func _finish_dig(terrain: Terrain, cell: Vector3i, rule: Dictionary) -> void:
 
 
 func _on_died() -> void:
+	reset_environment_feedback()
 	build_palette.close_panel()
 	if trial.active():
 		# Trial death is the sim's contract: deposit safe, run loot lost,

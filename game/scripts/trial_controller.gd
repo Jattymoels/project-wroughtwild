@@ -582,6 +582,7 @@ func restore_boundary(data: Dictionary) -> bool:
 	boss_tells=int(data.get("boss_tells",0))
 	_last_floor_completion=built_floor
 	_show_spatial_route()
+	player.reset_environment_feedback()
 	player.hud.notify("Suspended run restored at the cleared floor. Your haul is still at risk.")
 	return true
 
@@ -706,6 +707,7 @@ func _clear_conduits() -> void:
 	conduits=[]
 
 func _cancel_transients() -> void:
+	player.reset_environment_feedback()
 	for group in ["enemy_projectiles","player_projectiles","skill_bursts","foundry_fields","foundry_returns","foundry_echoes","foundry_embers","foundry_cold","foundry_offence","foundry_guard","foundry_sustain","foundry_tempo","foundry_puffs","burning_ground"]:
 		for effect in player.get_tree().get_nodes_in_group(group):
 			if effect.has_method("cancel"): effect.cancel()

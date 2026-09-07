@@ -370,6 +370,7 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 	# Replace only after the world and any trial checkpoint have restored. This
 	# is loose world ownership, never a second deposit or trial reward payout.
 	WorldDrops.restore(root,drops)
+	player.reset_environment_feedback()
 	if player.hud != null:
 		player.hud.refresh()
 	return true

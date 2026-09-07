@@ -1,5 +1,15 @@
 # World Generation, Settlements and Travel
 
+## Nearby ambience — INT-04B, 7 September 2026
+
+The [ground and ambience slice](../prototype/footsteps-ambience-2026-09-07.md)
+reads each existing profile's row-major biome surface for quiet air, foliage,
+reed or exposed-stone textures. This adds no placement input, geography, resource
+ledger or site marker. Marsh brushing never asserts actual water contact.
+Existing enclosed shelter attenuates the outside; trials and disabled play are
+silent. A world identity change or restore clears the previous place's sound.
+Rare-site discovery below retains its separate finite-stock eligibility.
+
 ## Reading existing discoveries — INT-02A, 7 September 2026
 
 The [exploration storytelling slice](../prototype/exploration-storytelling-2026-09-07.md)

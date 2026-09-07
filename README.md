@@ -47,6 +47,10 @@ adds distinct local work, release and material-collection sounds, plus one
 confirmation at the station completing a manual craft. Save/visual refreshes
 and failed actions stay quiet. Functional checks and local listening samples
 are ready; human listening and repetition comfort remain pending.
+[INT-04B footsteps and ambience](docs/prototype/footsteps-ambience-2026-09-07.md)
+adds contacts from actual walking/support and quiet existing-biome beds that
+soften in shelter. World, save and trial boundaries clear cosmetic audio;
+mob hearing, generation and rare discovery rules remain unchanged.
 
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,

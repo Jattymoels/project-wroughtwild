@@ -1,5 +1,14 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: "Continue on !" accepts
+[INT-04B](../prototype/footsteps-ambience-2026-09-07.md), the queued grounded
+footsteps and nearby ambience pass. Actual support and completed movement own
+footfalls; existing biome surface and shelter state own restrained outdoor beds.
+Short local synthesis under D-013 adds no new world profile, resource hint,
+enemy hearing rule or post-cataclysm machinery. Rare finite-stock cues remain
+separate. Save/respawn/trial boundaries reset cosmetic playback; no sound state
+is persisted. Human listening and comfort review remain pending.
+
 Owner continuation, 7 September 2026: "Okay continue to the next slice" accepts
 [INT-04A](../prototype/interaction-feedback-2026-09-07.md), the queued local sound
 and interaction-feedback pass. Accepted work, material release, positive hauling

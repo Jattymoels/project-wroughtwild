@@ -211,6 +211,15 @@ Station bodies and meshes stay fixed. This extends the earlier synthesized
 rare/contraption palette without music, external audio assets or UI click sounds.
 [Scope, tuning and verification](../prototype/interaction-feedback-2026-09-07.md).
 
+INT-04B adds local footsteps after real grounded movement. Existing construction
+traits and the actual supporting terrain voxel choose the contact texture.
+Blocked walking, air, dash, panels and discontinuous relocation do not accumulate
+footfalls. Save loads, death, pauses and trial transitions discard old contacts.
+These sounds do not create mob-hearing events. Quiet outdoor air/foliage beds
+read the existing biome surface and shelter cache, stop in trials and disabled
+play, and preserve Master mute. No additional HUD text or sound controls are
+introduced. [Scope and evidence](../prototype/footsteps-ambience-2026-09-07.md).
+
 ## Failure cases and exploits
 
 - A panel that takes the mouse but forgets to release it on close: covered
