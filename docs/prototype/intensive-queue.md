@@ -67,6 +67,24 @@ The recorded slices still await owner review.
 Combat-number calibration remains separate. Owner playtesting remains
 deferred while away and does not block independent work.
 
+## Proposed next round after INT-07G
+
+The owner requested another review of worthwhile work while away, with Blender
+creation as a possible next intensive. The [7 September reassessment](away-work-review-2026-09-07.md)
+recommends the following bounded order. These are **proposals**, not accepted
+implementation work or a change to the review status of INT-01 through INT-07.
+
+| ID | Proposed slice | Outcome / dependency |
+| --- | --- | --- |
+| INT-08A | Controls and comfort | Compact persistent player settings and keyboard/mouse bindings, with matching prompts. Actual interaction and restart checks can precede owner comfort review. |
+| INT-08B | Portable Windows playtest build | Export the extension, tuning and assets into a build that works outside the checkout. Verify with isolated existing saves and trial checkpoints; check matching export-template availability. |
+| INT-02B | Finished visual target | Extend the existing Blender pipeline to finish one existing struck smithy, its approach and an existing rare discovery in normal Godot gameplay. Review the target before broad asset production. |
+
+Generation already has a substantial seed matrix. Further broad optimisation
+is not the recommended default without a new measurable concern. The unresolved
+pause, era-sensitive gear preview and owner playtests retain their separate
+follow-ups; the review does not invent an item-roll rule or accept new content.
+
 ## Delivery and tracking
 
 Use these states: **Queued → Plan ready → In progress → Implemented, review
