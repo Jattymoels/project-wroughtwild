@@ -2,6 +2,14 @@
 
 Status: **Implemented, owner review pending.** Baseline: `7cfd781`.
 
+Evidence correction, INT-07G: the seed-1 fen endpoint is 31.552 m from its
+feeder, inside the existing 64 m activity radius. This soak's former “distant”
+tick passed there because streamed support was missing. [The follow-up](frame-pacing-2026-09-07.md#save-probe-correction)
+now verifies unchanged state during travel, moves beyond the actual radius and
+asserts that distance before retaining the original no-offline-production check.
+The earlier ownership/restore evidence remains; that fen assertion did not
+independently verify the distance contract.
+
 The owner's "Yep continue" accepts INT-07B's proposed extended travel,
 built-home return and save-recovery slice. Exercise the existing game for
 repeated expeditions and restores, then correct reproduced lifecycle failures.

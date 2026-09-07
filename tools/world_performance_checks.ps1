@@ -1,6 +1,6 @@
 param(
     [ValidateSet('baseline','current')][string]$Phase = 'current',
-    [ValidateSet('world','travel','scheduling','focus')][string]$ReviewSuite = 'world',
+    [ValidateSet('world','travel','scheduling','focus','pacing')][string]$ReviewSuite = 'world',
     [Alias('Scene')][string[]]$Scenes = @('world_performance_review'),
     [ValidateSet('frontier_v5','frontier_v6')][string]$Profile = 'frontier_v6',
     [int]$Seed = 1,
@@ -8,12 +8,14 @@ param(
     [switch]$Prepare,
     [switch]$Import,
     [switch]$Rendered,
+    [ValidateRange(-1,8)][int]$GpuIndex = -1, # Override only the owned rendered process; -1 uses Godot's default.
+    [ValidateRange(0,100)][int]$FrameDelayMs = 0, # Test-only artificial per-frame delay, never an older-CPU equivalence claim.
     [string]$NativeLibrary = '',
     [string]$ExtraArguments = '',
     [int]$TimeoutSeconds = 420,
     [string]$Godot = 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe'
 )
-# Common INT-07B/D/E/F routes and existing correctness scenes, in separate cold
+# Common INT-07B/D/E/F/G routes and existing correctness scenes, in separate cold
 # processes. Never write to the owner's user data or replace baseline production.
 $ErrorActionPreference = 'Stop'
 if ($ReviewName -notmatch '^[a-z0-9_-]+$') { throw 'ReviewName must be a simple directory name.' }
@@ -29,7 +31,7 @@ $worldLogs = Join-Path $worldRoot "logs/$Phase/$worldLabel"
 $worldOutput = Join-Path $worldRoot "captures/$Phase/$worldLabel"
 New-Item -ItemType Directory -Force -Path $worldLogs,$worldOutput | Out-Null
 if ($Prepare) {
-    if ($Phase -eq 'baseline') { throw 'Preserve the suite baseline separately (world: f08806e; travel: 2500db8; scheduling: e370970; focus: b06da19); this runner never prepares it from current source.' }
+    if ($Phase -eq 'baseline') { throw 'Preserve the suite baseline separately (world: f08806e; travel: 2500db8; scheduling: e370970; focus: b06da19; pacing: f493328); this runner never prepares it from current source.' }
     foreach ($worldFolder in @('game','data')) {
         & robocopy (Join-Path $worldRepo $worldFolder) (Join-Path $worldCopy $worldFolder) /E /XD .godot /NFL /NDL /NJH /NJS /NP | Out-Null
         if ($LASTEXITCODE -ge 8) { throw "Copy failed: $worldFolder" }
@@ -46,7 +48,7 @@ foreach ($worldFixture in @('world_performance_review','world_mesh_equivalence',
         Copy-Item -LiteralPath (Join-Path $worldRepo "game/tests/$worldFixture.$worldExtension") -Destination (Join-Path $worldGame "tests/$worldFixture.$worldExtension") -Force
     }
 }
-if ($ReviewSuite -in @('travel','scheduling','focus')) {
+if ($ReviewSuite -in @('travel','scheduling','focus','pacing')) {
     foreach ($worldFile in @('travel_performance_review.gd','travel_performance_review.tscn','travel_profile_terrain.gd','resource_presentation_review.gd','resource_presentation_review.tscn','leyline_mesh_equivalence.gd','leyline_mesh_equivalence.tscn')) {
         Copy-Item -LiteralPath (Join-Path $worldRepo "game/tests/$worldFile") -Destination (Join-Path $worldGame "tests/$worldFile") -Force
     }
@@ -83,13 +85,15 @@ try {
         $worldText = (Get-Content -LiteralPath $worldOutLog,$worldErrLog -ErrorAction SilentlyContinue) -join "`n"
         $worldText -split "`n" | Select-String -Pattern 'checks|failures|FAIL|SCRIPT ERROR|ERROR:|WORLD_PERFORMANCE|WIDE_TERRAIN|Godot Engine' | ForEach-Object { $_.Line }
         if ($worldProcess.ExitCode -ne 0 -or $worldText -match '(?m)^(SCRIPT ERROR|ERROR:|FAIL)') { throw "$Name failed; logs: $worldLogs" }
-        @{ phase=$Phase; profile=$Profile; seed=$Seed; review=$ReviewName; operation=$Name; process_elapsed_ms=$worldWatch.Elapsed.TotalMilliseconds; exit_code=$worldProcess.ExitCode } |
+        @{ phase=$Phase; profile=$Profile; seed=$Seed; review=$ReviewName; operation=$Name; rendered=($Name -like '*-rendered'); requested_gpu_index=$GpuIndex; requested_frame_delay_ms=$FrameDelayMs; extra_arguments=$ExtraArguments; process_elapsed_ms=$worldWatch.Elapsed.TotalMilliseconds; exit_code=$worldProcess.ExitCode } |
             ConvertTo-Json | Set-Content -LiteralPath (Join-Path $worldLogs "$Name.process.json") -Encoding UTF8
     }
     if ($Import) { Invoke-WorldReview 'import' '--headless --import' }
     foreach ($worldScene in $Scenes) {
         Invoke-WorldReview "$worldScene-parse" "--headless --check-only --script res://tests/$worldScene.gd"
         $worldDisplay = if ($Rendered) { '--resolution 1440x900 --position -9999,-9999' } else { '--headless' }
+        if ($Rendered -and $GpuIndex -ge 0) { $worldDisplay += " --gpu-index $GpuIndex" }
+        if ($Rendered -and $FrameDelayMs -gt 0) { $worldDisplay += " --frame-delay $FrameDelayMs" }
         $worldMode = if ($Rendered) { 'rendered' } else { 'headless' }
         $worldArgs = "--review-phase=$Phase --review-profile=$Profile --review-seed=$Seed --stream-profile=$Profile --review-output=`"$worldOutput`""
         Invoke-WorldReview "$worldScene-$worldMode" "$worldDisplay res://tests/$worldScene.tscn -- $worldArgs $ExtraArguments"

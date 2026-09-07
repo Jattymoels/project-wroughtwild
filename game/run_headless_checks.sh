@@ -85,6 +85,7 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --path . res://tests/trace_surface_cache.tscn
 "$GODOT" --headless --path . res://tests/stream_scheduling.tscn
 "$GODOT" --headless --path . res://tests/focus_scheduling.tscn
+"$GODOT" --headless --path . res://tests/stream_capacity.tscn
 "$GODOT" --headless --path . res://tests/world_mesh_equivalence.tscn
 "$GODOT" --headless --path . res://tests/ecology_buildings.tscn
 "$GODOT" --headless --path . res://tests/contraption_intensive.tscn

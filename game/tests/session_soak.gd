@@ -296,6 +296,23 @@ func _circuit(cycle: int) -> void:
 				terrain.chunk_stream.tick(.2, at)
 				terrain.resource_stream.tick(.2, at)
 			await get_tree().process_frame
+		check(_sim().contraption_save() == ledger, "streaming alone does not advance the explicitly frozen workshop")
+		# A native region endpoint can be near the smithy (seed 1's fen ends
+		# only 31.6 m away). Prove the distance precondition instead of relying
+		# on missing streamed support to block an otherwise local recipe tick.
+		var active_distance := float(ContraptionSite.LOOK.active_distance_m)
+		if player.global_position.distance_to(feeder.global_position) <= active_distance:
+			var away := player.global_position
+			for point in route:
+				var candidate := point+Vector3.UP*1.2
+				if candidate.distance_squared_to(feeder.global_position) > away.distance_squared_to(feeder.global_position): away = candidate
+			await _visit(away)
+		var distant := player.global_position.distance_to(feeder.global_position) > active_distance
+		check(distant, "no-offline-production probe is beyond the actual machine activity radius")
+		if not distant: return
+		print("SESSION_ACTIVITY_PROBE ",JSON.stringify({"region":definition.id,
+			"distance_m":player.global_position.distance_to(feeder.global_position),
+			"active_distance_m":active_distance}))
 		feeder._physics_process(60.0)
 		check(_sim().contraption_save() == ledger, "distant workshop gains no offline or catch-up production")
 	await _visit(_interior())

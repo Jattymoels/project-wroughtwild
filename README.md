@@ -95,6 +95,13 @@ synchronous. Matched worst walking frames improve 24–37%; exact scenery,
 historical worlds and home/save checks pass. An intermittent settled pause
 remains recorded for follow-up; owner review is pending.
 
+[INT-07G frame pacing and slow-frame safety](docs/prototype/frame-pacing-2026-09-07.md)
+protects completed ground when terrain preparation falls behind. Sparse-cadence
+regional travel, older worlds and corrected home/save checks pass. Detailed
+stationary traces and actual Radeon integrated-GPU measurements now cover the
+previous evidence gaps; the earlier intermittent pause did not recur and remains
+unattributed. Normal RTX travel p95 stays effectively unchanged.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and

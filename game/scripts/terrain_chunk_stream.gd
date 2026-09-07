@@ -23,6 +23,7 @@ const REFRESH_STAGES := ["collision_body", "cover_suppression", "resource_refres
 var _preparation_samples: Dictionary = {}
 var chunks_built_total := 0
 var chunks_retired_total := 0
+var safety_refills_total := 0 # Diagnostic only: sparse ticks needed the existing synchronous safety area.
 var horizon_build_ms := 0.0
 var horizon_triangles := 0
 var _job: Dictionary = {}
@@ -168,7 +169,7 @@ func retention() -> Dictionary:
 		for origin in terrain._touched_chunk_origins(v.x,v.z): pinned["%d_%d" % [origin.x,origin.y]]=true
 	return {"resident_chunks":terrain.chunks.size(),"edited_chunk_bound":pinned.size(),
 		"near_chunk_bound":_origins(_focus,float(_settings.terrain_keep_radius_m)).size() if _focus.is_finite() else 0,
-		"partial_chunks":0 if _job.is_empty() else 1,"built_total":chunks_built_total,"retired_total":chunks_retired_total,
+		"partial_chunks":0 if _job.is_empty() else 1,"built_total":chunks_built_total,"retired_total":chunks_retired_total,"safety_refills_total":safety_refills_total,
 		"horizon_triangles":horizon_triangles,"horizon_build_ms":horizon_build_ms}
 
 func tick(delta: float,point: Vector3,prepare := true,refresh := true) -> bool:
@@ -185,6 +186,13 @@ func tick(delta: float,point: Vector3,prepare := true,refresh := true) -> bool:
 		if point.distance_squared_to(_focus)>1.0:
 			focus(point)
 			focused = true
+	# A regularly refreshed focus is not proof that preparation kept up. At
+	# sparse frame cadences the player can approach unfinished ground without
+	# ever moving far enough from that focus to trigger the teleport guard.
+	# Refill the existing safety radius before that backlog reaches their feet.
+	if focused and not _safe_area_ready(point):
+		ensure_area(point,float(_settings.terrain_safe_radius_m))
+		safety_refills_total += 1
 	# A focus can free several complete chunks. Avoid adding native payload,
 	# collision or cosmetic preparation to that same periodic burst.
 	if focused or not prepare:
@@ -198,6 +206,12 @@ func tick(delta: float,point: Vector3,prepare := true,refresh := true) -> bool:
 		if not _step_scenery(): _step_job()
 	_flush_mask()
 	return false
+
+func _safe_area_ready(point: Vector3) -> bool:
+	for origin in _origins(point,float(_settings.terrain_safe_radius_m)):
+		# Only published chunks occur here; a hidden partial job is insufficient.
+		if not terrain.chunks.has("%d_%d" % [origin.x,origin.y]): return false
+	return true
 
 func has_scenery_work() -> bool:
 	var history := terrain.get_parent().get_node_or_null("CataclysmSites")

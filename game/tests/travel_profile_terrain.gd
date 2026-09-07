@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 	var history := get_parent().get_node_or_null("CataclysmSites")
 	var has_scenery_queue := history != null and chunk_stream.has_method("has_scenery_work")
 	var scenery_before: int = history._pending_traces.size() if has_scenery_queue else 0
+	var refills_before := int(chunk_stream.get("safety_refills_total")) if "safety_refills_total" in chunk_stream else 0
 	_frame_retire_ms = 0.0
 	_frame_retire_count = 0
 	_scene_stage = ""
@@ -53,6 +54,7 @@ func _process(delta: float) -> void:
 		"resource_focus_ran": resource_refresh and resource_stream._timer > 0.0,
 		"executed_stage": executed if not executed.is_empty() else "idle",
 		"terrain_retire_ms": _frame_retire_ms, "terrain_retire_count": _frame_retire_count,
+		"safety_refills": int(chunk_stream.get("safety_refills_total"))-refills_before if "safety_refills_total" in chunk_stream else 0,
 		"stage_before": stage, "terrain_refresh": terrain_refresh,
 		"resource_refresh": resource_refresh, "active_before": before_active,
 		"active_after": resource_stream.active.size(), "resource_pending_before": before_pending,

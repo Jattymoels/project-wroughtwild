@@ -20,6 +20,21 @@ not a rollback system for engine failure or power loss. Schema 2, generation
 inputs, finite stock, trial deposits and existing lifetime rules remain unchanged.
 [Reproduction, repeated circuits and limits](../prototype/session-reliability-2026-09-07.md).
 
+## Walking support under overload — INT-07G, 7 September 2026
+
+A recent focus scan does not prove that streamed terrain preparation kept up.
+After a moving scan, the [safety continuation](../prototype/frame-pacing-2026-09-07.md)
+checks published chunks across the existing `terrain_safe_radius_m`. If any
+are incomplete, the existing synchronous area-completion operation restores
+that nearby buffer before backlog reaches the player. Hidden partial chunks
+cannot satisfy the check. This uses the same safety radius and complete geometry,
+collider, scenery and finite-stock contracts as teleports and restoration.
+
+`safety_refills_total` is a transient diagnostic count, not a saved field or
+tuning parameter. Overload recovery may spend longer in that frame: collision
+safety is verified separately from comfortable rendering performance. Ordinary
+phase budgets, detail and retirement radii, generation inputs and saves remain.
+
 ## Nearby refresh coordination — INT-07F, 7 September 2026
 
 The [refresh continuation](../prototype/focus-scheduling-2026-09-07.md) gives

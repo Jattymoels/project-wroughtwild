@@ -1,5 +1,21 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: “Yep go ahead with that remaining” accepts
+[INT-07G](../prototype/frame-pacing-2026-09-07.md), tracing the intermittent pause
+and checking constrained rendering/streaming. Correct a reproduced failure of
+the existing walking-support guarantee while preserving complete publication,
+finite stock, world profiles, save identity and visual definitions. No new game
+rule, world size, production dependency or quality-policy change is approved.
+Actual hardware measurements remain distinct from simulated frame cadences;
+owner usability and combat calibration remain deferred.
+
+INT-07G outcome: a moving scan now verifies the existing safety area is complete
+and refills it synchronously under overload. The reproduced fen ground gap at
+10 simulated fps is fixed; V5/V6 routes and save restoration pass. The session
+soak now explicitly proves its outside-activity-radius precondition. Actual
+integrated-GPU and known-delay traces are recorded; the earlier rare pause did
+not recur and remains unattributed. Production radii, rules and saves are unchanged.
+
 Owner continuation, 7 September 2026: after requesting a quick slice/wave
 overview, the owner asks to continue. [INT-07F](../prototype/focus-scheduling-2026-09-07.md) separates
 coincident nearby-world scans, retirement and preparation under the existing

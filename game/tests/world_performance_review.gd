@@ -43,10 +43,10 @@ func _ready() -> void:
 	set_physics_process(false)
 	_setup_camera()
 	report.merge({"phase": phase, "profile": world_profile, "seed": world_seed,
-		"rendered": rendered, "resolution": [1440, 900], "fps_cap": 120,
+		"rendered": rendered, "resolution": [DisplayServer.window_get_size().x, DisplayServer.window_get_size().y] if rendered else [], "fps_cap": Engine.max_fps,
 		"resource_records": terrain.resource_stream.records.size(), "pack_records": mob_packs.packs.size(),
 		"initial_memory_bytes": Performance.get_monitor(Performance.MEMORY_STATIC),
-		"scope": "Cold isolated process; same native region[0] approach, full world presentation, FOV75 and 1.65m eye. Scripted camera and pawn positions follow the route at 5m/s for 30s (nominal 150m); player physics/combat and world clock disabled, ordinary terrain/resource streaming and biome blending active. This is not a physical traversal or combat playtest. 120fps cap limits spare-capacity conclusions. Memory is engine static allocations, excluding native stdlib/process peak and GPU memory.",
+		"scope": "Cold isolated process; same native region[0] approach, full world presentation, FOV75 and 1.65m eye. Scripted camera and pawn positions follow the route at 5m/s for 30s (nominal 150m); player physics/combat and world clock disabled, ordinary terrain/resource streaming and biome blending active. This is not a physical traversal or combat playtest. The reported frame cap limits spare-capacity conclusions. Memory is engine static allocations, excluding native stdlib/process peak and GPU memory.",
 		"correctness_fixture": "Run wide_terrain_stream separately for exact retired/returned terrain, collision, excavation seams, partial/depleted nodes and save restoration; this timing fixture does not replace those assertions."})
 	check(terrain.world_profile() == world_profile, "terrain and selected identity agree")
 	check(terrain.map.regions.size() == 3 and terrain.map.habitats.size() == 3, "all three regions and building habitats exist")
