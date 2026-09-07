@@ -70,6 +70,12 @@ unchanged leyline tiles. Preserved-world, streamed geometry, excavation and save
 checks accompany matched timing. World size, geography, rendering detail and
 finite resources retain their existing definitions.
 
+[INT-07C session reliability](docs/prototype/session-reliability-2026-09-07.md)
+checks repeated expeditions, built-home returns and fresh-process restoration.
+Damaged saves now recover a validated previous checkpoint explicitly, reject
+invalid building sets before live changes, and retain the good backup when play
+saves again. World profiles and ordinary inventory/workshop rules stay the same.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and

@@ -14,6 +14,7 @@ const DEFAULT_PATH := "user://wroughtwild_save.json"
 const RESOURCE_NODE_SCENE := preload("res://scenes/resource_node.tscn")
 
 var last_error := ""
+var recovered_previous := false
 
 
 static func _vec(v: Vector3) -> Array:
@@ -136,85 +137,119 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 
 
 func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
+	last_error = ""
+	recovered_previous = false
+	var prepared := _prepare_restore(player, data)
+	if prepared.is_empty(): return false
+	return _apply_prepared(player, data, prepared)
+
+
+func _prepare_restore(player: WroughtwildPlayer, data: Dictionary, restoring := true) -> Dictionary:
 	if data.get("schema_version", -1) != SCHEMA_VERSION:
 		last_error = "unsupported save schema %s" % str(data.get("schema_version"))
-		return false
+		return {}
 	if not _valid_world_payload(data):
 		last_error = "save contains invalid world or player fields"
-		return false
+		return {}
 	var root: Node = player.world_root()
 	# A generated world cannot restore an identity-less payload into the new
 	# empty launch scene. Reject before importing economy or enabling movement;
 	# seedless authored greybox saves remain supported by their authored hosts.
 	if (root.has_method("apply_world_identity") or root.has_method("apply_world_seed")) and not data.has("world_seed"):
 		last_error = "generated-world save is missing its world seed"
-		return false
+		return {}
 	if data.has("world_seed") and (float(data.world_seed) < -2147483648.0 or float(data.world_seed) > 2147483647.0):
 		last_error = "world seed is outside the native signed 32-bit range"
-		return false
+		return {}
 	if String(data.get("world_profile", "legacy_v1")) == "frontier_v6" and int(data.get("world_seed", 0)) < 0:
 		last_error = "new-world seed must be a nonnegative 31-bit number"
-		return false
+		return {}
 	var sim: WroughtwildSim = player.inventory.get_sim()
 	# Missing records in old schema-2 saves mean no recorded loose ownership.
 	# Validate the entire new set before native import or any live-node removal.
 	var drops: Variant = data.get("world_drops", {"version":1,"pickups":[],"bundles":[]})
 	if not WorldDrops.valid(drops,sim):
 		last_error = "invalid saved world drops"
-		return false
+		return {}
 	# Validate the whole suspended payload and generation identity before either
 	# the player's economy or their terrain changes. Old v2 saves stay legacy.
 	var profile:=String(data.get("world_profile","legacy_v1"))
 	if profile not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6"]:
 		last_error="unknown world generation profile: "+profile
-		return false
+		return {}
 	if not _valid_text(data.get("contraptions","")) or not sim.contraption_validate_world(String(data.get("contraptions","")), profile, int(data.get("world_seed",0))):
 		last_error="invalid saved contraption state"
-		return false
+		return {}
 	if not data.get("trial_boundary",{}) is Dictionary:
 		last_error="invalid suspended trial boundary"
-		return false
+		return {}
 	var boundary: Dictionary=data.get("trial_boundary",{})
 	if data.has("trial_boundary"):
 		if not _valid_integer(boundary.get("version")) or not _valid_integer(boundary.get("built_floor")) or not _valid_text(boundary.get("checkpoint")):
 			last_error="invalid suspended trial fields"
-			return false
+			return {}
 		for key in ["elapsed_seconds", "completed_encounters", "boss_tells"]:
 			if boundary.has(key) and (not _valid_number(boundary[key]) or float(boundary[key])<0):
 				last_error="invalid suspended trial progress"
-				return false
+				return {}
 		if not boundary.get("combat") is Dictionary:
 			last_error="invalid suspended combat state"
-			return false
+			return {}
 		if int(boundary.get("version",0))!=1 or int(boundary.get("built_floor",-1))!=0 or not _valid_vec(boundary.get("return_position")) or not PlayerCombat.valid_trial_state(boundary["combat"]):
 			last_error="invalid suspended trial boundary"
-			return false
+			return {}
 		if boundary.has("combat_exact"):
 			if not _valid_text(boundary["combat_exact"]):
 				last_error="invalid exact suspended combat state"
-				return false
+				return {}
 			# Godot 4.5's JSON parser can shift a binary64 value by one ULP even
 			# with full-precision output. Keep the readable view, but restore the
 			# checked binary companion. Object deserialization stays disabled.
 			var exact:Variant=Marshalls.base64_to_variant(boundary["combat_exact"],false)
 			if not exact is Dictionary or not PlayerCombat.valid_trial_state(exact):
 				last_error="invalid exact suspended combat state"
-				return false
+				return {}
 			var readable:Variant=JSON.parse_string(JSON.stringify(exact,"",true,true))
 			if boundary["combat"]!=exact and boundary["combat"]!=readable:
 				last_error="suspended combat representations do not match"
-				return false
+				return {}
 			boundary=boundary.duplicate(true)
 			boundary["combat"]=exact
 		if not bool(sim.call("trial_checkpoint_valid",String(boundary.get("checkpoint","")))):
 			last_error="unsupported or damaged suspended trial"
-			return false
+			return {}
 		if not bool(sim.call("trial_checkpoint_matches",String(boundary.get("checkpoint","")),String(data.get("sim","")))):
 			last_error="suspended trial does not match the saved player and world"
-			return false
-		if player.trial.active() or player.trial._find_arena()==null:
+			return {}
+		if restoring and (player.trial.active() or player.trial._find_arena()==null):
 			last_error="cannot restore a suspended run into an active trial or a world without a trial arena"
-			return false
+			return {}
+	# Prove that all saved pieces can coexist using the same native lattice as
+	# restoration, before clearing a single live piece. Do not reapply current
+	# terrain exposure, payment, recipe unlocks or new-placement restrictions.
+	var candidate := WroughtwildSim.new()
+	if not candidate.load_tuning(load("res://scripts/sim.gd").get_tuning_directory()):
+		last_error = "save validation could not load the existing rules"
+		return {}
+	if not candidate.import_json(String(data.sim)):
+		last_error = "rules state rejected: " + candidate.last_error()
+		return {}
+	for entry: Dictionary in data.get("blocks", []):
+		var cell: Array = entry.cell
+		var element := {"kind": String(entry.kind), "axis": int(entry.axis),
+			"cell": Vector3i(int(cell[0]), int(cell[1]), int(cell[2]))}
+		if not candidate.structure_place(element, String(entry.shape), String(entry.family), int(entry.get("rotation_step", 0))):
+			last_error = "save contains unknown, misplaced or overlapping building pieces"
+			return {}
+	return {"profile": profile, "boundary": boundary, "drops": drops}
+
+
+func _apply_prepared(player: WroughtwildPlayer, data: Dictionary, prepared: Dictionary) -> bool:
+	var root: Node = player.world_root()
+	var sim: WroughtwildSim = player.inventory.get_sim()
+	var profile: String = prepared.profile
+	var boundary: Dictionary = prepared.boundary
+	var drops: Dictionary = prepared.drops
 	if not sim.import_json(data.get("sim", "")):
 		last_error = "rules state rejected: %s" % sim.last_error()
 		return false
@@ -381,7 +416,18 @@ func write(path: String, player: WroughtwildPlayer) -> bool:
 	if player.trial.active() and data.get("trial_boundary",{}).is_empty():
 		last_error="only a fully cleared story-floor boundary can be suspended"
 		return false
-	return write_data(path,data)
+	# SaveManager instances are short-lived; the live player remembers only the
+	# path recovered on their last successful load. After recovery, a normal F5
+	# must not rotate the damaged current file over the intact previous one.
+	var recovery_path := String(player.get_meta("recovered_save_path", ""))
+	var preserve_previous := false
+	if recovery_path == ProjectSettings.globalize_path(path) and FileAccess.file_exists(path + ".previous"):
+		var current: Variant = _read_payload(path)
+		preserve_previous = not current is Dictionary or _prepare_restore(player, current, false).is_empty()
+	var written := _write_staged(path, data, preserve_previous)
+	if written and recovery_path == ProjectSettings.globalize_path(path):
+		player.remove_meta("recovered_save_path")
+	return written
 
 static func _valid_vec(value: Variant) -> bool:
 	if not value is Array or value.size()!=3: return false
@@ -401,7 +447,7 @@ static func _valid_text(value: Variant) -> bool:
 static func _valid_cell(value: Variant) -> bool:
 	if not _valid_vec(value): return false
 	for number in value:
-		if not _valid_integer(number): return false
+		if not _valid_integer(number) or float(number)<-2147483648.0 or float(number)>2147483647.0: return false
 	return true
 
 ## Validate the fields consumed by world restoration before importing economy
@@ -457,6 +503,11 @@ static func _valid_world_payload(data: Dictionary) -> bool:
 	return true
 
 func write_data(path: String, data: Dictionary) -> bool:
+	return _write_staged(path, data, false)
+
+
+func _write_staged(path: String, data: Dictionary, preserve_previous: bool) -> bool:
+	last_error = ""
 	var temporary:=path+".pending"
 	var backup:=path+".previous"
 	var file := FileAccess.open(temporary, FileAccess.WRITE)
@@ -473,7 +524,14 @@ func write_data(path: String, data: Dictionary) -> bool:
 	# The previous good file remains available throughout replacement, including
 	# on Windows where rename cannot overwrite an existing destination.
 	var had_previous:=FileAccess.file_exists(path)
-	if had_previous:
+	if had_previous and preserve_previous:
+		# Staging is already flushed. A failed installation or interruption now
+		# leaves the validated previous checkpoint in place for normal recovery.
+		error = DirAccess.remove_absolute(path)
+		if error != OK:
+			last_error = "cannot replace damaged save: " + error_string(error)
+			return false
+	elif had_previous:
 		if FileAccess.file_exists(backup): DirAccess.remove_absolute(backup)
 		error=DirAccess.rename_absolute(path,backup)
 		if error!=OK:
@@ -481,26 +539,56 @@ func write_data(path: String, data: Dictionary) -> bool:
 			return false
 	error=DirAccess.rename_absolute(temporary,path)
 	if error!=OK:
-		if had_previous: DirAccess.rename_absolute(backup,path)
+		if had_previous and not preserve_previous: DirAccess.rename_absolute(backup,path)
 		last_error="cannot install save: "+error_string(error)
 		return false
 	return true
 
 
+## Parse errors are expected recovery input, not engine errors. Object-free JSON
+## parsing never executes saved content or treats a .pending file as committed.
+static func _read_payload(path: String) -> Variant:
+	if not FileAccess.file_exists(path): return null
+	var parser := JSON.new()
+	if parser.parse(FileAccess.get_file_as_string(path)) != OK: return null
+	return parser.data
+
+
 func read(path: String, player: WroughtwildPlayer) -> bool:
-	if not FileAccess.file_exists(path) and FileAccess.file_exists(path+".previous"):
-		path+=".previous"
-	if not FileAccess.file_exists(path):
-		last_error = "no save at %s" % path
+	last_error = ""
+	recovered_previous = false
+	if player.trial != null and player.trial.active():
+		last_error = "cannot load inside an active trial"
 		return false
-	var text := FileAccess.get_file_as_string(path)
-	var parsed: Variant = JSON.parse_string(text)
-	if typeof(parsed) != TYPE_DICTIONARY:
-		# A truncated current file can result from external sync interruption.
-		# Only an intact previous payload is eligible for recovery.
-		if not path.ends_with(".previous") and FileAccess.file_exists(path+".previous"):
-			parsed=JSON.parse_string(FileAccess.get_file_as_string(path+".previous"))
-		if typeof(parsed) != TYPE_DICTIONARY:
-			last_error = "save file is not valid JSON"
+	var parsed: Variant = _read_payload(path)
+	if parsed is Dictionary:
+		# A newer format/profile needs its matching game, not an automatic rewind.
+		if parsed.has("schema_version") and _valid_integer(parsed.schema_version) and int(parsed.schema_version)>SCHEMA_VERSION:
+			last_error = "unsupported save schema %s" % str(parsed.schema_version)
 			return false
-	return apply(player, parsed)
+		if parsed.has("world_profile") and _valid_text(parsed.world_profile) and String(parsed.world_profile) not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6"]:
+			last_error = "unknown world generation profile: " + String(parsed.world_profile)
+			return false
+		var prepared := _prepare_restore(player, parsed)
+		if not prepared.is_empty():
+			var loaded := _apply_prepared(player, parsed, prepared)
+			if loaded and player.has_meta("recovered_save_path"): player.remove_meta("recovered_save_path")
+			return loaded
+	else:
+		last_error = "save file is missing or is not valid JSON"
+	var original_error := last_error
+	# Fall back only after validation rejected the current candidate without
+	# mutation. Runtime failure after restoration begins must never try to merge
+	# another checkpoint into partially applied state. Reading rewrites no file.
+	if not path.ends_with(".previous"):
+		var previous: Variant = _read_payload(path + ".previous")
+		if previous is Dictionary:
+			var prepared := _prepare_restore(player, previous)
+			if not prepared.is_empty():
+				last_error = ""
+				var loaded := _apply_prepared(player, previous, prepared)
+				recovered_previous = loaded
+				if loaded: player.set_meta("recovered_save_path", ProjectSettings.globalize_path(path))
+				return loaded
+	last_error = original_error
+	return false

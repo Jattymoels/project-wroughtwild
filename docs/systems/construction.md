@@ -1,5 +1,17 @@
 # Construction System
 
+## Complete building restoration — INT-07C, 7 September 2026
+
+Save restoration first imports the saved rules into an isolated validator and
+places every recorded piece in its native structure registry. An unknown shape,
+invalid lattice slot, overlapping footprint or out-of-range integer cell rejects
+the complete candidate before changing live possessions, terrain or buildings.
+This uses the existing D-017 lattice, not new-placement terrain, payment or unlock
+checks: older legitimate buildings remain loadable. Schema 2 and door defaults
+are unchanged. A damaged current file can recover its intact previous checkpoint;
+the player sees which file was recovered. See the
+[session reliability evidence](../prototype/session-reliability-2026-09-07.md).
+
 ## Reliable placement and returning home — INT-03B, 7 September 2026
 
 New placement checks every element in the native shape footprint against the

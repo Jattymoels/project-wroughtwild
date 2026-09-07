@@ -457,7 +457,7 @@ func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 		# A save that carries a class needs no choosing.
 		if class_panel.is_open() and not bool(inventory.get_sim().foundry().get("can_choose_class", false)):
 			class_panel.close_panel()
-	hud.notify("Loaded." if ok else "Load failed: %s" % manager.last_error)
+	hud.notify(("Recovered previous save." if manager.recovered_previous else "Loaded.") if ok else "Load failed: %s" % manager.last_error)
 	return ok
 
 

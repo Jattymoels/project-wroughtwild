@@ -1,5 +1,20 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: "Yep continue" accepts
+[INT-07C](../prototype/session-reliability-2026-09-07.md), repeated expeditions,
+built-home return and save recovery under the existing contracts. Reproduce
+lifecycle failures before correcting them; preserve world identity, buildings,
+finite resources, stored possessions and trial checkpoints. Scripted longevity
+checks remain distinct from human playtesting. No new content, combat numbers,
+world profile or offline automation is approved by this reliability slice.
+
+INT-07C outcome: whole-candidate native structure validation, explicit validated
+previous-checkpoint recovery and protection of that checkpoint on the next save
+implement the existing ownership contract. Schema 2 and all generation inputs
+remain unchanged. Repeated circuits, fresh-process restoration, compatibility
+checks and matched load timing are recorded in the work item; human comfort
+review and rendered travel spikes remain open.
+
 Owner continuation, 7 September 2026: "Yes continue" accepts
 [INT-07B](../prototype/world-performance-2026-09-07.md), a measured performance
 pass on the existing D-032 frontier. Optimise equivalent generation and nearby

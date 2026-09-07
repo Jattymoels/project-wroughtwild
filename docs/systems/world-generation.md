@@ -1,5 +1,25 @@
 # World Generation, Settlements and Travel
 
+## Save recovery and repeated travel — INT-07C, 7 September 2026
+
+Normal loading validates the current whole-world candidate before restoration.
+A missing, truncated or invalid current file may recover the validated
+`.previous` checkpoint, including its matching inventory, terrain edits,
+resource work, buildings, stations, machine ledger, loose loot and player pose.
+Loading never merges the two checkpoints or reads uncommitted `.pending` data.
+The HUD reports "Recovered previous save." A recognised future schema or unknown
+generation profile refuses automatic recovery rather than silently rewinding.
+
+Reading changes no save files. After recovery, the next normal save retains the
+intact previous checkpoint instead of rotating the damaged current file over it;
+this works across the short-lived SaveManager instances used by F5/F9.
+Staging is flushed before replacement, and a failed write reports its reason.
+If neither candidate validates, restoration refuses before changing live state.
+Runtime failure after mutation begins does not attempt a second restore; this is
+not a rollback system for engine failure or power loss. Schema 2, generation
+inputs, finite stock, trial deposits and existing lifetime rules remain unchanged.
+[Reproduction, repeated circuits and limits](../prototype/session-reliability-2026-09-07.md).
+
 ## Nearby ambience — INT-04B, 7 September 2026
 
 The [ground and ambience slice](../prototype/footsteps-ambience-2026-09-07.md)

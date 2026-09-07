@@ -21,7 +21,7 @@ discussion; the suggested execution order follows the table.
 | INT-04 | Sound, animation and interaction feedback | Existing gathering, footsteps, stations and surroundings gain consistent material and state feedback. | **INT-04A/B implemented, review pending:** [interaction feedback](interaction-feedback-2026-09-07.md) and [grounded footsteps / nearby ambience](footsteps-ambience-2026-09-07.md). Actual work, hauling, manual crafting, walking support and existing biome/shelter state now own bounded local sound. Listening reels, lifecycle and matched walking evidence are recorded. | Do feedback and ambience feel convincing through repeated use? |
 | INT-05 | Dungeon presentation and traversal | Existing Forge rooms, junctions, secrets, transitions and boss tells are easier to read and traverse. | **INT-05A implemented, review pending:** [read the Forge](forge-readability-2026-09-07.md). Clear branch previews, distinct fixture roles, exact danger outlines and live fixture navigation are verified through 815 m of actual walking, full trial/save checks and matched active-effect captures. | Do routes and tells make sense, including under Foundry effects? |
 | INT-06 | Workshop usability | The existing finite feeder clearly communicates inputs, output, stored work, source exhaustion and blocked states. | **INT-06A implemented, review pending:** [understand and operate the workshop](workshop-usability-2026-09-07.md). Exact readiness/load amounts, short supply/drive pages, retained live controls and truthful load visuals pass actual button, save and matched rendering checks. Broader lines and renewable supply remain separate proposals. | Can the owner build it, diagnose a stop and see why it is useful? |
-| INT-07 | Performance and reliability | Measured loading/terrain stalls improve, and long travel, large builds and save recovery stay dependable. | **INT-07A implemented:** [loose-drop persistence](loose-drop-persistence-2026-09-07.md). **INT-07B implemented, review pending:** [faster preparation of the same frontier](world-performance-2026-09-07.md). Complete setup is 36% faster on the matched route; native world and terrain payload equivalence, collision, excavation, finite state and saves pass. Long-session reliability remains a candidate. | Do saving and ordinary play remain dependable and smooth? |
+| INT-07 | Performance and reliability | Measured loading/terrain stalls improve, and long travel, large builds and save recovery stay dependable. | **INT-07A/B/C implemented, review pending:** [loose-drop persistence](loose-drop-persistence-2026-09-07.md), [faster preparation](world-performance-2026-09-07.md), and [session reliability](session-reliability-2026-09-07.md). Setup improves 36%; sixteen generated-home circuits across two seeds, fresh restarts, exact workshop state and damaged-save recovery pass. Remaining rendered travel spikes are the next technical candidate. | Do saving and ordinary play remain dependable and smooth? |
 
 Suggested sequence: **INT-01 first**, then INT-02; INT-07 can accompany those
 when its changes and measurement workload are independent. Follow with INT-03
@@ -36,10 +36,13 @@ checks, complete lifecycle regression and matched presentation/timing evidence.
 INT-06A now has actual button/ownership checks, a finite source-to-brick handoff,
 720p/1080p comparisons and bounded live-work timing. INT-07B now reduces measured
 V6 generation and terrain-preparation costs with preserved world/mesh output,
-physical lifecycle checks and matched rendering. The next candidate is a bounded
-long-session travel, built-home return and save recovery soak under existing
-rules. A larger world, new generation profile or background automation is not
-implied.
+physical lifecycle checks and matched rendering. INT-07C now records repeated
+travel, large-home returns, exact workshop resumption and repaired save recovery,
+including preservation of the good backup when saving again. Normal populated
+world loads remain about a second; the next technical candidate is investigation
+of the previously measured rendered travel spikes, under the existing world and
+visual rules. A larger world, new generation profile or background automation is
+not implied.
 Combat-number calibration remains separate. Owner playtesting remains
 deferred while away and does not block independent work.
 
@@ -96,3 +99,4 @@ needs its own bounded follow-up.
 | 7 Sep 2026 | INT-05A | Owner said "Yep let's do it". Buried branch plaques, indistinct fixture states and overlapping hostile tells are corrected. Live fixture navigation resolves a reproduced boss/conduit obstruction; fixed floor caching reduces event rebuilds to about 4–5 ms. Actual 815 m walking, both-floor equivalence, full lifecycle and matched rendering pass. Owner visual/comprehension review remains pending; INT-06 is next. |
 | 7 Sep 2026 | INT-06A | Owner said "Continue". Exact native readiness and load amounts replace apparent readiness without supplies; short feeder pages retain live controls and separate input, held work, drive and output. Fuel-only visuals corrected. Actual buttons, full native/save regressions and 72 matched captures pass; bounded timing stays within the 10% regression threshold. Owner usability review remains pending; existing V6 preparation costs are the next candidate. |
 | 7 Sep 2026 | INT-07B | Owner said "Yes continue" and continued the measured pass. Equivalent cave/clearance computation, collision setup and unchanged leyline reuse preserve 64 full worlds and 84 mesh payloads. Native generation improves 57–58%; full setup 36%, pending-work p95 23% on the matched rendered route. Collision, excavation, finite state and save checks pass. Occasional long frames and long-session reliability remain recorded limits. |
+| 7 Sep 2026 | INT-07C | Owner said "Yep continue". Damaged saves now recover a validated previous checkpoint explicitly; invalid building sets reject before live changes, and subsequent normal saves retain the good backup. Sixteen generated-home circuits over two seeds, two fresh-process recipe completions and affected historical/trial checks total 9,188 passing assertions. Matched normal-load median changes less than 1%; no scene-node accumulation observed. Human review and remaining rendered travel spikes stay separate. |
