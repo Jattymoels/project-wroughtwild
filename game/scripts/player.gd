@@ -57,6 +57,7 @@ var _horn_left := 0.0
 var trial: TrialController
 var footsteps: PlayerFootsteps
 var environment_ambience: EnvironmentAmbience
+var audio_preferences := AudioPreferences.new()
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
 ## Rolls gathering ambushes; tests seed it or spawn ambushes directly.
@@ -83,6 +84,7 @@ var _fire_hint_shown := false
 
 
 func _ready() -> void:
+	audio_preferences.load_saved()
 	add_to_group("player")
 	spawn_position = global_position
 	ambush_rng.randomize()
@@ -178,6 +180,13 @@ func reset_environment_feedback() -> void:
 
 
 func _capture_mouse() -> void:
+	if hud != null and hud.help_visible():
+		_release_mouse()
+		return
+	for panel in [work_panel, inventory_panel, foundry_panel, class_panel, chest_panel, build_palette]:
+		if is_instance_valid(panel) and panel.is_open():
+			_release_mouse()
+			return
 	if DisplayServer.get_name() != "headless":
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -237,6 +246,12 @@ func open_custom_panel(title: String, rows: Array, message_text: String = "", co
 
 func _unhandled_input(event: InputEvent) -> void:
 	if build_palette.is_open():
+		return
+	# H now contains interactive sound controls. Its keys/clicks must never
+	# place, attack, save/load, open another panel or rotate the camera behind it.
+	if hud.help_visible():
+		if event.is_action_pressed("toggle_help") or event.is_action_pressed("ui_cancel"):
+			hud.toggle_help()
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var pitch_limit := FP_PITCH_LIMIT if first_person else TP_PITCH_LIMIT
@@ -513,7 +528,9 @@ func respawn_point() -> Vector3:
 
 func _physics_process(delta: float) -> void:
 	_horn_left = maxf(0.0, _horn_left - delta)
-	if Input.is_action_just_pressed("jump") and not build_palette.is_open():
+	if hud.help_visible():
+		_jump_buffer_left = 0.0
+	elif Input.is_action_just_pressed("jump") and not build_palette.is_open():
 		_jump_buffer_left = JUMP_BUFFER_SECONDS
 	else:
 		_jump_buffer_left = maxf(0.0, _jump_buffer_left - delta)
@@ -540,7 +557,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0.0
 	else:
 		var input := test_walk if test_walk != Vector2.ZERO else Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-		if build_palette.is_open():
+		if build_palette.is_open() or hud.help_visible():
 			input = Vector2.ZERO
 		var direction := (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
 		velocity.x = direction.x * move_speed * combat.haste_multiplier()
@@ -645,7 +662,7 @@ func _find_terrain() -> Terrain:
 func _update_digging(delta: float) -> void:
 	var digging := false
 	if Input.is_action_pressed("primary_action") and not placement.build_mode_enabled \
-			and not work_panel.is_open() and not inventory_panel.is_open():
+			and not work_panel.is_open() and not inventory_panel.is_open() and not hud.help_visible():
 		var terrain := _find_terrain()
 		if terrain != null and not terrain.map.is_empty():
 			var from := camera.global_position

@@ -110,6 +110,12 @@ and crafting costs only if a separate measured revision is selected.
 
 ### INT-04C: retire the drone
 
+Owner continuation, 8 September 2026: implemented this next bounded slice after
+INT-03D. [Quiet ambience and controls](quiet-ambience-2026-09-08.md) records the
+continuous baseline, 12–24 second quiet gaps, saved H level/mute controls, actual
+GUI/restart checks and normal-gain listening files. Human listening acceptance
+remains open. INT-01B is next; the original planning requirements follow.
+
 **Outcome:** the world leaves room for work, footsteps, danger and discovery.
 First remove the rejected continuous bed from the default listening experience,
 with an explicit ambience mute/level control. Then audition short, irregular,

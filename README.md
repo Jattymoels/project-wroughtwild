@@ -64,6 +64,10 @@ are ready; human listening and repetition comfort remain pending.
 adds contacts from actual walking/support and quiet existing-biome beds that
 soften in shelter. World, save and trial boundaries clear cosmetic audio;
 mob hearing, generation and rare discovery rules remain unchanged.
+[INT-04C quiet ambience](docs/prototype/quiet-ambience-2026-09-08.md) replaces the
+rejected continuous beds with brief textures and 12–24 second quiet gaps. Press
+**H** for the saved ambience level and mute controls. Work, footsteps and other
+feedback retain their own levels; owner listening comfort remains open.
 
 [INT-05A Forge readability](docs/prototype/forge-readability-2026-09-07.md)
 exposes route previews, distinguishes physical fixtures and outlines existing

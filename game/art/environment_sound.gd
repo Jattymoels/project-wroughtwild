@@ -1,6 +1,7 @@
 class_name EnvironmentSound
 extends RefCounted
-## A closed four-bed PCM palette. Local noise never consumes gameplay RNG.
+## Four ordinary textures, each with three short non-looping PCM variants.
+## Local noise never consumes gameplay RNG.
 const LOOK = preload("res://art/environment_sound_look.tres")
 const BEDS := ["air", "foliage", "reeds", "stone"]
 static var _clips: Dictionary = {}
@@ -14,19 +15,22 @@ static func bed_for_surface(surface: String) -> String:
 	return ""
 
 static func prepare() -> void:
-	for bed: String in BEDS: clip(bed)
+	for bed: String in BEDS:
+		for variant in LOOK.variants: clip(bed, variant)
 
-static func clip(bed: String) -> AudioStreamWAV:
+static func clip(bed: String, variant := 0) -> AudioStreamWAV:
 	if bed not in BEDS: return null
-	if _clips.has(bed): return _clips[bed]
+	variant = posmod(variant, LOOK.variants)
+	var key := "%s:%d" % [bed, variant]
+	if _clips.has(key): return _clips[key]
 	var profile: Array = LOOK.bed_profiles[bed]
 	var rate: int = LOOK.sample_rate
-	var count := maxi(4, int(rate * LOOK.loop_seconds))
-	var overlap := clampi(int(rate * LOOK.loop_overlap_seconds), 2, count >> 1)
-	var samples := PackedFloat32Array()
-	samples.resize(count + overlap)
 	var rng := RandomNumberGenerator.new()
-	rng.seed = int(bed.hash())
+	rng.seed = int(key.hash())
+	var seconds := rng.randf_range(LOOK.clip_seconds.x, LOOK.clip_seconds.y)
+	var count := maxi(4, int(rate * seconds))
+	var samples := PackedFloat32Array()
+	samples.resize(count)
 	var low := 0.0
 	var bottom := 0.0
 	var low_rate := 1.0 - exp(-TAU * float(profile[0]) / rate)
@@ -36,14 +40,10 @@ static func clip(bed: String) -> AudioStreamWAV:
 		low = lerpf(low, white, low_rate)
 		bottom = lerpf(bottom, low, bottom_rate)
 		var value := lerpf(low - bottom, white - low, float(profile[2]))
-		# This slow amplitude motion is not a pitched oscillator or signal.
-		var swell := 1.0 + float(profile[3]) * sin(TAU * float(i) / count)
-		samples[i] = value * swell
-	# The start follows the last ordinary sample, then softly rejoins the head.
-	# No zero pad, onset sound or per-loop release advertises a false interaction.
-	for i in overlap:
-		var blend := 0.5 - 0.5 * cos(PI * float(i) / (overlap - 1))
-		samples[i] = lerpf(samples[count + i], samples[i], blend)
+		# A broad, uneven breath of noise; no tonal oscillator or cue rhythm.
+		var swell := 1.0 + float(profile[3]) * sin(TAU * float(i) / count * (1.3 + variant * 0.35))
+		var edge := clampf(minf(i, count - 1 - i) / (rate * LOOK.edge_seconds), 0.0, 1.0)
+		samples[i] = value * swell * (0.5 - 0.5 * cos(PI * edge))
 	var peak := 0.0001
 	for i in count: peak = maxf(peak, absf(samples[i]))
 	var gain: float = LOOK.pcm_peak_fraction * 32767.0 / peak
@@ -54,9 +54,7 @@ static func clip(bed: String) -> AudioStreamWAV:
 	result.format = AudioStreamWAV.FORMAT_16_BITS
 	result.mix_rate = rate
 	result.stereo = false
-	result.loop_mode = AudioStreamWAV.LOOP_FORWARD
-	result.loop_begin = 0
-	result.loop_end = count
+	result.loop_mode = AudioStreamWAV.LOOP_DISABLED
 	result.data = bytes
-	_clips[bed] = result
+	_clips[key] = result
 	return result

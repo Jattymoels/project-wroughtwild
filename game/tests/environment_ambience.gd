@@ -1,5 +1,5 @@
 extends Node3D
-## INT-04B: actual profile payloads, bounded playback and quiet lifecycle paths.
+## INT-04B/C: actual profile payloads, bounded playback and quiet lifecycle paths.
 ## No user save, external asset or gameplay hearing behaviour is exercised.
 const OUTPUT := "res://../captures/ambience"
 var checks := 0
@@ -58,38 +58,40 @@ func _pcm() -> void:
 	EnvironmentSound._clips.clear()
 	var synthesis_usec := 0
 	var fingerprints := {}
-	for bed: String in EnvironmentSound.BEDS:
+	for index in EnvironmentSound.BEDS.size() * EnvironmentSound.LOOK.variants:
+		var bed: String = EnvironmentSound.BEDS[index / EnvironmentSound.LOOK.variants]
+		var variant := index % EnvironmentSound.LOOK.variants
+		var key := "%s:%d" % [bed, variant]
 		var began := Time.get_ticks_usec()
-		var stream := EnvironmentSound.clip(bed)
+		var stream := EnvironmentSound.clip(bed, variant)
+		var count := stream.data.size() / 2
 		synthesis_usec += Time.get_ticks_usec() - began
-		check(stream != null and stream == EnvironmentSound.clip(bed), bed + " reuses a fixed stream")
-		check(stream.loop_mode == AudioStreamWAV.LOOP_FORWARD and stream.loop_begin == 0, bed + " loops without a one-shot onset")
-		check(stream.loop_end * 2 == stream.data.size() and not stream.stereo, bed + " exact mono loop bounds")
+		check(stream != null and stream == EnvironmentSound.clip(bed, variant), key + " reuses a fixed stream")
+		check(stream.loop_mode == AudioStreamWAV.LOOP_DISABLED, key + " cannot sustain a repeated bed")
+		check(count * 2 == stream.data.size() and not stream.stereo, key + " exact mono PCM bounds")
+		check(stream.get_length() >= EnvironmentSound.LOOK.clip_seconds.x - .001 and stream.get_length() <= EnvironmentSound.LOOK.clip_seconds.y, key + " is a bounded short texture")
 		check(stream.mix_rate == EnvironmentSound.LOOK.sample_rate, bed + " configured bandwidth")
 		var peak := 0
 		var total := 0.0
 		var energy := 0.0
-		var step_energy := 0.0
-		var previous := 0
-		for i in stream.loop_end:
+		for i in count:
 			var value := stream.data.decode_s16(i * 2)
 			peak = maxi(peak, absi(value))
 			total += value
 			energy += float(value) * value
-			if i > 0: step_energy += pow(float(value - previous), 2)
-			previous = value
 		check(peak > 0 and peak <= 32767 * EnvironmentSound.LOOK.pcm_peak_fraction + 1, bed + " bounded nonempty PCM")
-		check(absf(total / stream.loop_end) < sqrt(energy / stream.loop_end) * 0.03, bed + " no material DC offset")
+		check(absf(total / count) < sqrt(energy / count) * 0.03, bed + " no material DC offset")
 		var seam := absf(float(stream.data.decode_s16(0) - stream.data.decode_s16(stream.data.size() - 2)))
-		check(seam <= sqrt(step_energy / (stream.loop_end - 1)) * 5.0, bed + " loop join stays within ordinary broadband variation")
-		fingerprints[bed] = stream.data.hex_encode().hash()
-		evidence[bed] = {"sample_rate":stream.mix_rate,"samples":stream.loop_end,"peak":peak,"seam_step":seam}
+		check(seam == 0 and stream.data.decode_s16(0) == 0, key + " begins and ends at exact silence")
+		fingerprints[key] = stream.data.hex_encode().hash()
+		evidence[key] = {"sample_rate":stream.mix_rate,"samples":count,"peak":peak,"edge_step":seam}
 	evidence["cold_palette_ms"] = synthesis_usec / 1000.0
 	check(EnvironmentSound.clip("lanternheart") == null and EnvironmentSound.clip("ventlung") == null, "rare discovery vocabulary is outside the bed palette")
-	check(EnvironmentSound.clip("unknown") == null and EnvironmentSound._clips.size() == 4, "unknown input cannot expand the cache")
+	check(EnvironmentSound.clip("unknown") == null and EnvironmentSound._clips.size() == 12, "unknown input cannot expand the twelve-clip cache")
 	var distinct := {}
 	for key in fingerprints: distinct[fingerprints[key]] = true
-	check(distinct.size() == 4, "all four broad textures differ")
+	check(distinct.size() == 12, "all four textures and their variants differ")
+	check(EnvironmentSound.clip("air", 300) == EnvironmentSound.clip("air", 0), "arbitrary variant requests reuse the bounded cache")
 	check(randi() == expected_global, "cold synthesis preserves global RNG")
 	check(sim.export_json() == native_before and player.ambush_rng.state == ambush_before and player.combat.fight_seed_source.state == fight_before,
 		"cold synthesis preserves native economy and combat/gathering RNG")
@@ -154,7 +156,10 @@ func _quiet(label: String) -> void:
 		check(not voice.playing and is_zero_approx(voice.volume_linear), label + " stops and silences retained voice")
 
 func _settle() -> void:
-	ambience._process(EnvironmentSound.LOOK.fade_seconds + EnvironmentSound.LOOK.sample_interval_seconds)
+	# Advance the new quiet gap without forcing a private playback function.
+	for attempt in 3:
+		ambience._process(EnvironmentSound.LOOK.quiet_seconds.y + .1)
+		if ambience._target >= 0: return
 
 func _lifecycle() -> void:
 	_small_map()
@@ -163,8 +168,8 @@ func _lifecycle() -> void:
 	var fight_before := player.combat.fight_seed_source.state
 	_settle()
 	check(ambience.active_bed == "air", "enabled live player receives ordinary local air")
-	check(ambience._voices.size() == 2 and ambience.get_child_count() == 2, "only two retained players exist")
-	var ids := [ambience._voices[0].get_instance_id(), ambience._voices[1].get_instance_id()]
+	check(ambience._voices.size() == 1 and ambience.get_child_count() == 1, "only one retained player exists")
+	var voice_id := ambience._voices[0].get_instance_id()
 	var outside := db_to_linear(EnvironmentSound.LOOK.outdoor_gain_db)
 	check(is_equal_approx(ambience._levels[ambience._target], outside), "settled outdoor gain uses presentation setting")
 	player.combat.sheltered = true
@@ -176,8 +181,8 @@ func _lifecycle() -> void:
 			player.position.x = x * 2 + 1
 			ambience._process(EnvironmentSound.LOOK.sample_interval_seconds)
 			check(ambience.active_bed == EnvironmentSound.BEDS[x], "repeated crossing selects the next local surface")
-			check(ambience._voices[0].get_instance_id() == ids[0] and ambience._voices[1].get_instance_id() == ids[1], "crossing never adds or replaces a voice")
-			check(ambience._levels[0] + ambience._levels[1] <= outside + 0.00001, "crossfade keeps the combined gain bounded")
+			check(ambience._voices[0].get_instance_id() == voice_id, "crossing never adds or replaces a voice")
+			check(ambience._levels[0] <= outside + 0.00001, "surface transition keeps gain bounded")
 	var master := AudioServer.get_bus_index(&"Master")
 	var old_mute := AudioServer.is_bus_mute(master)
 	var old_db := AudioServer.get_bus_volume_db(master)
@@ -234,14 +239,15 @@ func _lifecycle() -> void:
 	_quiet("leaving finite map")
 	check(sim.export_json() == native_before and player.ambush_rng.state == ambush_before and player.combat.fight_seed_source.state == fight_before,
 		"ambient context does not alter inventory, choices or gameplay RNG")
-	check(EnvironmentSound._clips.size() == 4, "crossings and lifecycle retain a bounded four-bed cache")
+	check(EnvironmentSound._clips.size() == 12, "crossings and lifecycle retain a bounded twelve-clip cache")
 	player.set_physics_process(false)
 
 func _export() -> void:
 	var directory := ProjectSettings.globalize_path(OUTPUT)
 	DirAccess.make_dir_recursive_absolute(directory)
 	for bed: String in EnvironmentSound.BEDS:
-		check(EnvironmentSound.clip(bed).save_to_wav(directory.path_join(bed + ".wav")) == OK, "export " + bed + " listening loop")
+		for variant in EnvironmentSound.LOOK.variants:
+			check(EnvironmentSound.clip(bed, variant).save_to_wav(directory.path_join("%s-%d.wav" % [bed, variant])) == OK, "export " + bed + " short texture")
 	evidence["checks"] = checks
 	evidence["failures"] = failures
 	var file := FileAccess.open(directory.path_join("ambience-checks.json"), FileAccess.WRITE)

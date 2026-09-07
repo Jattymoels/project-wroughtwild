@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner continuation, 8 September 2026: “Continue to next” selects
+[INT-04C](../prototype/quiet-ambience-2026-09-08.md), after INT-03D. The rejected
+continuous ambient beds are replaced under D-013 with short local textures,
+meaningful quiet gaps and an explicit saved level/mute control in H help.
+This authorizes a bounded device preference separate from world ownership,
+not a broader settings framework. Existing work, footsteps, discovery, combat,
+hearing and save rules remain authoritative. Human listening acceptance is open.
+
 Owner continuation, 8 September 2026: “Okay continue with next” selects
 [INT-03D](../prototype/building-loads-2026-09-08.md), the next bounded playtest
 slice after INT-03C. The measured initial candidate is 240 per common building

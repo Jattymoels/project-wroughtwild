@@ -4,8 +4,8 @@ extends CanvasLayer
 ## the action bar with cooldown sweeps, the build chip, a right-aligned
 ## holdings strip, notices, the pickup ticker, crosshair and target line,
 ## and the H help overlay. Everything shown is read from the sim or from
-## engine-owned timers. Nothing here takes the mouse: every control ignores
-## it, recursively, once built.
+## engine-owned timers. The always-on HUD ignores the mouse; the H overlay's
+## audio controls receive it only while that overlay is visible.
 
 const NOTICE_SECONDS := 3.0
 const REFRESH_SECONDS := 0.1
@@ -43,6 +43,13 @@ var _life_bar: ProgressBar
 var _life_text: Label
 var _build_chip: Label
 var _help: PanelContainer
+var _help_root: Control
+var _help_scroll: ScrollContainer
+var _help_body: Label
+var _ambience_slider: HSlider
+var _ambience_mute: CheckBox
+var _ambience_value: Label
+var _audio_status: Label
 var action_bar: ActionBar
 
 # First-person feedback (D-012): crosshair that reads the aim, a hitmarker
@@ -103,7 +110,7 @@ func _ready() -> void:
 	_pickup_label.modulate = UiTheme.GRASS_LIGHT
 	column.add_child(_pickup_label)
 	var reminder := Label.new()
-	reminder.text = "H help  ·  I pack"
+	reminder.text = "H help / sound  ·  I pack"
 	reminder.add_theme_font_size_override("font_size", 13)
 	reminder.modulate = UiTheme.MUTED
 	column.add_child(reminder)
@@ -238,12 +245,18 @@ func _ready() -> void:
 	_work_display.hide()
 
 	# Help overlay (H): the control list, off by default.
+	var help_layer := CanvasLayer.new()
+	help_layer.layer = 12 # Above work, pack and the initial class chooser.
+	add_child(help_layer)
+	_help_root = Control.new()
+	_help_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_help_root.theme = UiTheme.theme()
+	_help_root.visible = false
+	help_layer.add_child(_help_root)
 	_help = PanelContainer.new()
-	_help.set_anchors_preset(Control.PRESET_CENTER)
-	_help.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	_help.grow_vertical = Control.GROW_DIRECTION_BOTH
+	_help.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	_help.visible = false
-	_ui.add_child(_help)
+	_help_root.add_child(_help)
 	var help_margin := MarginContainer.new()
 	for side in ["margin_left", "margin_right", "margin_top", "margin_bottom"]:
 		help_margin.add_theme_constant_override(side, 18)
@@ -252,14 +265,18 @@ func _ready() -> void:
 	help_column.add_theme_constant_override("separation", 8)
 	help_margin.add_child(help_column)
 	var help_title := Label.new()
-	help_title.text = "Controls"
+	help_title.text = "Controls & sound"
 	help_title.add_theme_font_size_override("font_size", 20)
 	help_column.add_child(help_title)
-	var help_body := Label.new()
-	help_body.text = HELP_TEXT
-	help_body.custom_minimum_size = Vector2(640, 0)
-	help_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	help_column.add_child(help_body)
+	_build_audio_controls(help_column)
+	_help_scroll = ScrollContainer.new()
+	_help_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	help_column.add_child(_help_scroll)
+	_help_body = Label.new()
+	_help_body.text = HELP_TEXT
+	_help_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_help_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_help_scroll.add_child(_help_body)
 	var help_footer := Label.new()
 	help_footer.text = "H or Esc to close"
 	help_footer.modulate = UiTheme.MUTED
@@ -268,6 +285,17 @@ func _ready() -> void:
 	# The 1 Sep 2026 bug: any HUD control left at MOUSE_FILTER_STOP swallows
 	# mouse look under the captured cursor. Never again, for any of them.
 	UiTheme.ignore_mouse(_ui)
+	UiTheme.ignore_mouse(_help_root)
+	# The optional overlay owns input even outside its card. An underlying
+	# pack/class button must not react while sound controls are being adjusted.
+	_help_root.mouse_filter = Control.MOUSE_FILTER_STOP
+	_help.mouse_filter = Control.MOUSE_FILTER_STOP
+	_help_scroll.mouse_filter = Control.MOUSE_FILTER_STOP
+	_help_scroll.get_v_scroll_bar().mouse_filter = Control.MOUSE_FILTER_STOP
+	_ambience_slider.mouse_filter = Control.MOUSE_FILTER_STOP
+	_ambience_mute.mouse_filter = Control.MOUSE_FILTER_STOP
+	get_viewport().size_changed.connect(_fit_help)
+	_fit_help.call_deferred()
 
 	if combat != null:
 		damage_compass = DamageCompass.new()
@@ -367,6 +395,75 @@ func notify_pickup(family: String, amount: int) -> void:
 
 func toggle_help() -> void:
 	_help.visible = not _help.visible
+	_help_root.visible = _help.visible
+	if _help.visible:
+		_refresh_audio_controls()
+		_fit_help.call_deferred()
+		if player != null: player._release_mouse()
+		_ambience_slider.grab_focus()
+	elif player != null: player._capture_mouse()
+
+
+func _build_audio_controls(column: VBoxContainer) -> void:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	column.add_child(row)
+	var label := Label.new()
+	label.text = "Ambience"
+	row.add_child(label)
+	_ambience_slider = HSlider.new()
+	_ambience_slider.min_value = 0
+	_ambience_slider.max_value = 100
+	_ambience_slider.step = 5
+	_ambience_slider.custom_minimum_size.x = 180
+	_ambience_slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_ambience_slider.tooltip_text = "Occasional air and rustle. 0% is silent."
+	row.add_child(_ambience_slider)
+	_ambience_value = Label.new()
+	_ambience_value.custom_minimum_size.x = 48
+	row.add_child(_ambience_value)
+	_ambience_mute = CheckBox.new()
+	_ambience_mute.text = "Mute"
+	row.add_child(_ambience_mute)
+	_audio_status = Label.new()
+	_audio_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_audio_status.custom_minimum_size.x = 300
+	_audio_status.modulate = UiTheme.MUTED
+	column.add_child(_audio_status)
+	_ambience_slider.value_changed.connect(_audio_level_changed)
+	_ambience_mute.toggled.connect(_audio_mute_changed)
+	if player != null:
+		player.audio_preferences.changed.connect(_refresh_audio_controls)
+	_refresh_audio_controls()
+
+
+func _audio_level_changed(value: float) -> void:
+	if player != null: player.audio_preferences.set_ambience(value / 100.0, player.audio_preferences.ambience_muted)
+
+
+func _audio_mute_changed(muted: bool) -> void:
+	if player != null: player.audio_preferences.set_ambience(player.audio_preferences.ambience_level, muted)
+
+
+func _refresh_audio_controls() -> void:
+	if player == null: return
+	var prefs := player.audio_preferences
+	_ambience_slider.set_value_no_signal(prefs.ambience_level * 100.0)
+	_ambience_mute.set_pressed_no_signal(prefs.ambience_muted)
+	_ambience_value.text = "%d%%" % roundi(prefs.ambience_level * 100.0)
+	_audio_status.text = "Occasional air and rustle. Work, footsteps and danger keep their own sound."
+	if prefs.last_error != OK:
+		_audio_status.text = "Audio preference file unavailable. Changes apply now; check again after restarting."
+
+
+func _fit_help() -> void:
+	var viewport := get_viewport().get_visible_rect().size
+	var width := minf(760.0, viewport.x - 24.0)
+	_help.custom_minimum_size.x = width
+	_help_body.custom_minimum_size.x = width - 60.0
+	_help_scroll.custom_minimum_size.y = clampf(viewport.y - 250.0, 100.0, 350.0)
+	_help.size = Vector2(width, 0)
+	_help.position = ((viewport - _help.size) * 0.5).floor()
 
 
 func help_visible() -> bool:

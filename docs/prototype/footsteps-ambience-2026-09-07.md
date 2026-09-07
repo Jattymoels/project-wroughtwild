@@ -2,6 +2,11 @@
 
 Status: **Implemented, owner listening/comfort review pending.** Baseline: `71c6d98`.
 
+8 September update: the owner rejected the continuous ambient drone.
+[INT-04C](quiet-ambience-2026-09-08.md) supersedes this report's loop/crossfade
+design with short textures, quiet gaps and saved level/mute controls. This
+report retains historical evidence; its footstep implementation is unchanged.
+
 The owner's continuation authorises the next recorded INT-04 slice: grounded
 footsteps and restrained nearby ambience. Use existing surfaces and biomes under
 D-013's weathered frontier mood and D-030's devastated, augmented landscape.

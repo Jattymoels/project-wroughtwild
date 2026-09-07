@@ -15,19 +15,18 @@ func check(ok: bool, label: String) -> void:
 		failures += 1
 		printerr("FAIL ENVIRONMENT_MIX: ",label)
 
-func mix_clip(clip: AudioStreamWAV, at: float, db: float, duration := -1.0, envelope := false) -> void:
+func mix_clip(clip: AudioStreamWAV, at: float, db: float) -> void:
 	var count := clip.data.size() / 2
-	var length := duration if duration > 0 else float(count) / clip.mix_rate
+	var length := float(count) / clip.mix_rate
 	var offset := int(at * RATE)
 	for i in int(length * RATE):
 		if offset + i >= samples.size(): break
 		# Linear reconstruction for the 11,025 Hz ambience, exact samples for the
-		# existing 22,050 Hz contacts; wrap only an explicitly repeated bed.
+		# existing 22,050 Hz contacts. Every clip plays once, without wrapping.
 		var source := float(i) * clip.mix_rate / RATE
-		var index := floori(source) % count
-		var value := lerpf(float(clip.data.decode_s16(index * 2)), float(clip.data.decode_s16(((index + 1) % count) * 2)), fposmod(source, 1.0)) / 32767.0
-		var edge := minf(1.0, minf(float(i) / RATE, length - float(i) / RATE) / .35) if envelope else 1.0
-		samples[offset + i] += value * db_to_linear(db) * edge
+		var index := mini(floori(source), count - 1)
+		var value := lerpf(float(clip.data.decode_s16(index * 2)), float(clip.data.decode_s16(mini(index + 1, count - 1) * 2)), fposmod(source, 1.0)) / 32767.0
+		samples[offset + i] += value * db_to_linear(db)
 
 func _ready() -> void:
 	samples.resize(int(RATE * SECONDS))
@@ -36,7 +35,7 @@ func _ready() -> void:
 		var bed: String = EnvironmentSound.BEDS[section]
 		var surface: String = ["grass","timber","fibre","stone"][section]
 		var gain: float = EnvironmentSound.LOOK.outdoor_gain_db
-		mix_clip(EnvironmentSound.clip(bed),at,gain,5,true)
+		mix_clip(EnvironmentSound.clip(bed),at,gain)
 		for step in 10:
 			mix_clip(FootstepSound.clip(surface,step % 3),at + .5 + step * .37,FootstepSound.LOOK.gain_db)
 		var cue := "work_wood" if section < 2 else "work_stone"
@@ -58,7 +57,7 @@ func _ready() -> void:
 	DirAccess.make_dir_recursive_absolute(directory)
 	check(stream.save_to_wav(directory.path_join("environment-mixed-reel.wav")) == OK,"export configured-gain mixed reel")
 	var report := {"checks":checks,"failures":failures,"seconds":SECONDS,"peak_fraction":peak,"segments":entries,
-		"scope":"Offline configured-gain arrangement before 3D attenuation, Master volume and device effects; no normalization. Existing rare clues at 3 and 8 s are included only to assess separation, not emitted by biome ambience."}
+		"scope":"Compressed palette comparison, not gameplay cadence. Offline configured-gain arrangement before 3D attenuation, Master volume and device effects; no normalization. Existing rare clues at 3 and 8 s are included only to assess separation, not emitted by biome ambience. quiet_ambience exports the actual quiet-gap schedule."}
 	var file := FileAccess.open(directory.path_join("environment-mixed-reel.json"),FileAccess.WRITE)
 	check(file != null,"write isolated listening manifest")
 	if file != null: file.store_string(JSON.stringify(report,"  ")); file.close()

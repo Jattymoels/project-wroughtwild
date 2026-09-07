@@ -107,7 +107,7 @@ Four layers, nothing else:
    resistance; the **action bar** (skills with key caps and cooldown
    sweeps, plus the build-mode chip); a right-aligned **holdings strip**
    (non-zero materials and currency); notices and the pickup ticker; the
-   crosshair and target line; a one-line "H help · I pack" reminder.
+   crosshair and target line; a one-line "H help / sound · I pack" reminder.
 2. **Pack screen** (`I`): materials and currency as tiles, what is worn per
    slot with its properties, derived vitals, and the active modifier set
    (spike mods as toggles until gear carries them). Wear armour from here.
@@ -115,8 +115,10 @@ Four layers, nothing else:
    panel type, rows as cards — what it is, what it needs with have/need
    coloured, one button — inside a scroll area so long forges never push the
    close button off screen.
-4. **Help overlay** (`H`): the full control list, replacing the permanent
-   hint paragraph that used to sit over the top-left of the view.
+4. **Help overlay** (`H`): the scrollable full control list and an ambience
+   level/mute row. The two audio preferences apply immediately and persist
+   independently of world saves. This replaces the permanent hint paragraph
+   that used to sit over the top-left of the view.
 
 Excluded: controller (D-008), drag-and-drop, hotbar re-binding, minimap,
 quest log (no quests: D-011), diegetic 3D inventory props.
@@ -132,11 +134,16 @@ quest log (no quests: D-011), diegetic 3D inventory props.
 ## Rules and state transitions
 
 1. **Mouse is captured unless a panel that needs it is open.** Opening the
-   pack screen or a work panel releases it; closing any panel recaptures.
-   The HUD never has a mouse-stopping control (the 1 Sep bug: a spacer
-   swallowed mouse look).
+   pack screen, work panel or H help releases it; closing the last interactive
+   overlay recaptures. The always-on HUD never has a mouse-stopping control
+   (the 1 Sep bug: a spacer swallowed mouse look).
 2. **One panel at a time.** `Esc` closes the top-most; `I` while a work panel
    is open does nothing; a station interaction closes the pack screen first.
+   H help can cover an existing panel without dismissing its selection. While
+   open it owns mouse and keyboard input, including outside the help card;
+   movement, jumping, digging and gameplay shortcuts are suppressed. H/Esc
+   closes help and returns input to the underlying panel. The world continues
+   running, as with existing work and pack panels.
 3. **Panels never compute a rule.** Every number, availability flag and
    failure reason comes from a sim view; a button calls one sim method.
 4. **Every panel is a headless test surface:** `open_*`, `close_panel`,
@@ -241,10 +248,21 @@ INT-04B adds local footsteps after real grounded movement. Existing construction
 traits and the actual supporting terrain voxel choose the contact texture.
 Blocked walking, air, dash, panels and discontinuous relocation do not accumulate
 footfalls. Save loads, death, pauses and trial transitions discard old contacts.
-These sounds do not create mob-hearing events. Quiet outdoor air/foliage beds
-read the existing biome surface and shelter cache, stop in trials and disabled
-play, and preserve Master mute. No additional HUD text or sound controls are
-introduced. [Scope and evidence](../prototype/footsteps-ambience-2026-09-07.md).
+These sounds do not create mob-hearing events. Outdoor air/foliage reads the
+existing biome surface and shelter cache, stops in trials and disabled play,
+and preserves Master mute. [Original scope and evidence](../prototype/footsteps-ambience-2026-09-07.md).
+
+INT-04C, 8 September 2026, supersedes the rejected continuous ambient beds.
+One voice plays a 1.6–2.4 second texture, followed by 12–24 seconds of silence.
+Three cached variants per existing surface family and soft edges avoid a
+repeating seam. Outdoor gain is −36 dB; existing shelter subtracts 18 dB.
+The H overlay exposes an ambience slider (0–100%, steps of 5) and independent
+Mute checkbox. Mute or 0% stops current ambience immediately; unmute and
+context resets start with a fresh quiet gap. `user://audio-preferences.cfg`
+stores only device settings, outside world/checkpoint saves. A failed write
+keeps the live choice and displays that persistence is unavailable. No other
+audio bus, work/contact cue, hearing event or progression rule changes.
+[Implementation, tuning and listening limits](../prototype/quiet-ambience-2026-09-08.md).
 
 ## Failure cases and exploits
 

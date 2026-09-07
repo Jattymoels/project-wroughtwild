@@ -1,13 +1,17 @@
 class_name EnvironmentAmbience
 extends Node
-## The player's current surface supplies quiet outside air. Two retained voices
-## crossfade without object scans, gameplay noise, scene emitters or saved state.
+## The player's current surface supplies brief air/rustle, separated by silence.
+## One retained voice; no object scans, gameplay noise or saved ambient clocks.
+signal clip_started(bed: String, variant: int, stream: AudioStreamWAV, gain: float)
 const LOOK = preload("res://art/environment_sound_look.tres")
 var player: WroughtwildPlayer
 var _voices: Array[AudioStreamPlayer] = []
-var _beds: Array[String] = ["", ""]
-var _levels: Array[float] = [0.0, 0.0]
+var _levels: Array[float] = [0.0]
 var _target := -1
+var _rng := RandomNumberGenerator.new()
+var _quiet_left := -1.0
+var _clip_left := 0.0
+var _last_variant := -1
 var _sample_left := 0.0
 var _last_position := Vector3.ZERO
 var _has_position := false
@@ -17,19 +21,26 @@ var _seed := 0
 var active_bed := ""
 
 func setup(subject: WroughtwildPlayer) -> void:
-	if is_instance_valid(player) and player.combat != null and player.combat.died.is_connected(reset_context):
-		player.combat.died.disconnect(reset_context)
+	if is_instance_valid(player):
+		if player.combat != null and player.combat.died.is_connected(reset_context):
+			player.combat.died.disconnect(reset_context)
+		if player.audio_preferences.changed.is_connected(_preferences_changed):
+			player.audio_preferences.changed.disconnect(_preferences_changed)
 	player = subject
+	_rng.randomize()
 	if is_instance_valid(player) and player.combat != null:
 		player.combat.died.connect(reset_context)
+	if is_instance_valid(player):
+		if not player.audio_preferences.changed.is_connected(_preferences_changed):
+			player.audio_preferences.changed.connect(_preferences_changed)
 	reset_context()
 
 func _ready() -> void:
 	# Fixed cold preparation, not synthesis on a crossing or in each frame.
 	EnvironmentSound.prepare()
-	for i in 2:
+	for i in 1:
 		var voice := AudioStreamPlayer.new()
-		voice.name = "EnvironmentBed" + str(i)
+		voice.name = "EnvironmentTexture" + str(i)
 		voice.bus = &"Master"
 		voice.volume_linear = 0.0
 		add_child(voice)
@@ -48,9 +59,10 @@ func reset_context() -> void:
 		if is_instance_valid(voice):
 			voice.stop()
 			voice.volume_linear = 0.0
-	_beds = ["", ""]
-	_levels = [0.0, 0.0]
+	_levels = [0.0]
 	_target = -1
+	_quiet_left = -1.0
+	_clip_left = 0.0
 	_sample_left = 0.0
 	_has_position = false
 	_terrain_id = 0
@@ -81,7 +93,7 @@ static func bed_at(terrain: Terrain, global_at: Vector3) -> String:
 func _process(delta: float) -> void:
 	if not is_instance_valid(player) or not player.is_inside_tree() or not player.is_physics_processing() \
 		or get_tree().paused or player.combat == null or player.combat.life <= 0.0 \
-		or (player.trial != null and player.trial.active()):
+		or (player.trial != null and player.trial.active()) or player.audio_preferences.gain() <= 0.0:
 		reset_context()
 		return
 	var terrain := player._find_terrain()
@@ -113,23 +125,48 @@ func _process(delta: float) -> void:
 		if bed.is_empty():
 			reset_context()
 			return
-		if bed != active_bed: _select_bed(bed)
-	var outside := db_to_linear(LOOK.outdoor_gain_db - (LOOK.shelter_attenuation_db if player.combat.sheltered else 0.0))
-	for i in _voices.size():
-		_levels[i] = move_toward(_levels[i], outside if i == _target else 0.0,
-			db_to_linear(LOOK.outdoor_gain_db) * delta / maxf(LOOK.fade_seconds, 0.001))
-		_voices[i].volume_linear = _levels[i]
-		if i != _target and is_zero_approx(_levels[i]) and _voices[i].playing: _voices[i].stop()
+		if bed != active_bed:
+			_stop_clip()
+			active_bed = bed
+			_quiet_left = -1.0
+	if _voices.is_empty(): return
+	if _quiet_left < 0.0:
+		_quiet_left = _rng.randf_range(LOOK.quiet_seconds.x, LOOK.quiet_seconds.y)
+		return
+	if _clip_left > 0.0:
+		_clip_left = maxf(0.0, _clip_left - delta)
+		if _clip_left <= 0.0:
+			_stop_clip()
+			_quiet_left = _rng.randf_range(LOOK.quiet_seconds.x, LOOK.quiet_seconds.y)
+		else: _update_gain(delta)
+		return
+	_quiet_left = maxf(0.0, _quiet_left - delta)
+	if _quiet_left > 0.0: return
+	# No catch-up burst after a stall; start at most one short event this turn.
+	var variant := _rng.randi_range(0, LOOK.variants - 1 if _last_variant < 0 else LOOK.variants - 2)
+	if _last_variant >= 0 and variant >= _last_variant: variant += 1
+	_last_variant = variant
+	var stream := EnvironmentSound.clip(active_bed, variant)
+	_target = 0
+	_voices[0].stream = stream
+	_clip_left = stream.get_length()
+	_update_gain(LOOK.fade_seconds)
+	_voices[0].play()
+	clip_started.emit(active_bed, variant, stream, _levels[0])
 
-func _select_bed(bed: String) -> void:
-	if _voices.size() != 2: return
-	active_bed = bed
-	_target = _beds.find(bed)
-	if _target < 0:
-		_target = 0 if _levels[0] <= _levels[1] else 1
-		_voices[_target].stop()
-		_levels[_target] = 0.0
-		_beds[_target] = bed
-		_voices[_target].stream = EnvironmentSound.clip(bed)
-		_voices[_target].volume_linear = 0.0
-	if not _voices[_target].playing: _voices[_target].play()
+func _stop_clip() -> void:
+	if not _voices.is_empty():
+		_voices[0].stop()
+		_voices[0].volume_linear = 0.0
+	_levels = [0.0]
+	_target = -1
+	_clip_left = 0.0
+
+func _update_gain(delta: float) -> void:
+	var outside := db_to_linear(LOOK.outdoor_gain_db - (LOOK.shelter_attenuation_db if player.combat.sheltered else 0.0)) * player.audio_preferences.gain()
+	_levels[0] = move_toward(_levels[0], outside, db_to_linear(LOOK.outdoor_gain_db) * delta / maxf(LOOK.fade_seconds, 0.001))
+	_voices[0].volume_linear = _levels[0]
+
+func _preferences_changed() -> void:
+	if player.audio_preferences.gain() <= 0.0: reset_context()
+	elif _target >= 0: _update_gain(LOOK.fade_seconds)

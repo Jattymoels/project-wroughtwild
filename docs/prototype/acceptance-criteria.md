@@ -235,6 +235,27 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [ ] Owner accepts walking repetition, material timbre and relative volume
   alongside combat, work and rare discovery in ordinary play.
 
+## Quiet ambience and player control (INT-04C)
+
+[Implementation and listening limits](quiet-ambience-2026-09-08.md) supersede
+INT-04B's continuous-bed design following the owner's rejected drone.
+
+- [x] Baseline continuous occupancy is reproduced across four three-minute
+  contexts. Non-looping local textures now leave 12–24 second quiet gaps, keep
+  one retained voice, and do not repeat an adjacent variant.
+- [x] H exposes working mouse/keyboard level and mute controls at 540p, 720p
+  and 1080p. Input cannot pass to gameplay or an underlying pack panel.
+- [x] Mute/zero stops current ambience, unmute starts quietly, and level/mute
+  survive fresh processes and world restore in separate device preferences.
+- [x] V1–V6 surface lookup, shelter, pause/death/trial/restore boundaries and
+  bounded synthesis pass. Native ownership and gameplay RNG remain exact;
+  work/footstep gain and Master are independent of ambient mute.
+- [x] Normal-gain three-minute listening files and mixed work/walking copies
+  are exported, with cold startup and steady route timings recorded separately.
+- [ ] Owner accepts timbre, repetition and relative level during ordinary
+  work, exploration and fights on their listening setup. Offline PCM and
+  Dummy-audio regression do not establish this subjective acceptance.
+
 ## Forge readability and traversal (INT-05A)
 
 [Scope and evidence](forge-readability-2026-09-07.md).
