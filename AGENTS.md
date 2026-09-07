@@ -43,10 +43,13 @@ For every implementation task:
 ## Owner's commit workflow
 
 The owner has given standing permission to commit completed, checked slices to
-`main` without asking again, and prefers ordinary non-force pushes to the
-existing `origin/main`. Record results and limitations with each slice. This
-permission covers this project's approved work, not unrelated changes, history
-rewrites, remote changes or destructive Git operations.
+`main` and make ordinary non-force pushes without asking again. The confirmed
+destination is `origin/main` at
+`https://github.com/Jattymoels/project-wroughtwild.git`. On 7 September 2026 the
+owner explicitly confirmed: "Yes, push to that repository and remember it for
+future slices." Record results and limitations with each slice. This permission
+covers this project's approved work, not unrelated changes, history rewrites,
+remote changes or destructive Git operations.
 
 Repository guidance does not override platform approval controls. If automatic
 approval review rejects publication, explain the stated reason and obtain the
