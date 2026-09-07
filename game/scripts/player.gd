@@ -228,10 +228,10 @@ func note_pack_full(family: String) -> void:
 		Hud.pretty(family), inventory.carry_cap(StringName(family))])
 
 
-func open_custom_panel(title: String, rows: Array, message_text: String = "") -> void:
+func open_custom_panel(title: String, rows: Array, message_text: String = "", context_id: String = "") -> void:
 	placement.set_build_mode_enabled(false)
 	inventory_panel.close_panel()
-	work_panel.open_custom(title, rows, message_text)
+	work_panel.open_custom(title, rows, message_text, context_id)
 	_release_mouse()
 
 

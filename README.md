@@ -58,6 +58,12 @@ boss/furnace danger under overlapping effects. Enemies navigate around live
 conduits and offerings. Existing combat numbers, rewards and suspension rules
 remain; matched captures and physical traversal evidence accompany the slice.
 
+[INT-06A workshop usability](docs/prototype/workshop-usability-2026-09-07.md)
+shows exact reasons a feeder cannot start, separates supplies and drive controls,
+and keeps completed bricks easy to collect. Live pages retain focus and expanded
+details, and the hopper distinguishes actual clay from fuel. The finite source,
+existing recipe and exact saved firing remain the same; owner review is pending.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and

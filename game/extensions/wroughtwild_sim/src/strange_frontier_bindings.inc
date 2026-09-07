@@ -91,6 +91,28 @@ Dictionary WroughtwildSim::contraption_config() const {
     d["feeder_fuels"]=to_dictionary(c.feederFuels); d["feeder_fuel_cost"]=c.feederFuelCost;
     return d;
 }
+Dictionary WroughtwildSim::contraption_feeder_inspect(const String& key,bool physical_ready) const {
+    Dictionary d,actions;
+    Array loads;
+    d["available"]=false;
+    if (!contraptions_ || !player_ || trial_) {
+        d["message"]="Contraptions wait outside trials.";
+        for (const auto* action : {"start","charge","wind","pause","resume","cancel"})
+            actions[action]=machine_unavailable();
+    } else {
+        const auto inspection=contraptions_->inspectFeeder(to_std(key),physical_ready,player_->inventory);
+        d["available"]=inspection.available;
+        d["message"]=to_godot(inspection.message);
+        for (const auto& action : inspection.actions) actions[to_godot(action.first)]=machine_result(action.second);
+        for (const auto& load : inspection.loads) {
+            auto row=machine_result(load.result);
+            row["item"]=to_godot(load.item); row["requested"]=load.requested;
+            loads.push_back(row);
+        }
+    }
+    d["actions"]=actions; d["loads"]=loads;
+    return d;
+}
 Dictionary WroughtwildSim::contraption_link(const String& key,const String& target,bool clear) {
     return contraptions_ && !trial_ ? machine_result(contraptions_->link(to_std(key),to_std(target),clear)) : machine_unavailable();
 }

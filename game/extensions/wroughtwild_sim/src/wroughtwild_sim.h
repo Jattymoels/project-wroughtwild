@@ -639,6 +639,7 @@ public:
     PackedStringArray contraption_ids() const;
     Dictionary contraption_state(const String& key) const;
     Dictionary contraption_config() const;
+    Dictionary contraption_feeder_inspect(const String& key, bool physical_ready) const;
     Dictionary contraption_link(const String& key, const String& target, bool clear);
     Dictionary contraption_action(const String& key, const String& action, bool clear=true, bool other_clear=true, double distance=0);
     Dictionary contraption_tick(const String& key, double seconds, bool clear);

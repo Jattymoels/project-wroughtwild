@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: "Continue" accepts
+[INT-06A](../prototype/workshop-usability-2026-09-07.md), the queued finite
+workshop usability pass. Exact existing transactions supply read-only readiness
+and transfer previews; shorter feeder pages distinguish hopper, held supplies,
+drive and completed output. Live controls retain their identity and focus.
+Separate fuel/clay representations and compact source inspection clarify the
+existing D-031 loop. This does not expand production, change recipes or source
+budgets, add offline work, or change saved ownership/world profiles. Human
+usability review remains pending; the standing ordinary main push applies.
+
 Owner continuation, 7 September 2026: "Yep let's do it" accepts
 [INT-05A](../prototype/forge-readability-2026-09-07.md), the queued Forge
 presentation and traversal pass. Existing physical choices, fixture roles and

@@ -29,8 +29,11 @@ var _last_feeder_status := ""
 var _feeder_pipe: MeshInstance3D
 var _pressure_pipe: MeshInstance3D
 var _hopper_load: MeshInstance3D
+var _fuel_load: MeshInstance3D
 var _output_load: MeshInstance3D
 var _feeder_panel_refresh_left := 0.0
+## Read-only presentation snapshot. Actual operations always check current rules.
+var _feeder_readout: Dictionary = {}
 var _highlighted := false
 var _last_state: Dictionary = {}
 
@@ -112,9 +115,10 @@ func _ready() -> void:
 	_last_arrivals = int(record.get("completed_trips", 0))
 	_last_cycles = int(record.get("completed_cycles",0))
 	if kind=="pressure_feeder":
-		_feeder_pipe=_connection_mesh()
-		_pressure_pipe=_connection_mesh()
+		_feeder_pipe=_connection_mesh(LOOK.feeder_forge_link_colour)
+		_pressure_pipe=_connection_mesh(LOOK.feeder_pressure_link_colour)
 		_hopper_load=_load_mesh(LOOK.feeder_hopper_load,LOOK.feeder_hopper_size,_material(LOOK.feeder_clay_colour))
+		_fuel_load=_load_mesh(LOOK.feeder_fuel_load,LOOK.feeder_fuel_size,_material(LOOK.feeder_fuel_colour))
 		_output_load=_load_mesh(LOOK.feeder_output_load,LOOK.feeder_output_size,PieceLook.material_for(sim,&"rustclay_brick"))
 	refresh_from_sim()
 
@@ -143,7 +147,12 @@ static func _sphere(radius: float, colour: Color) -> MeshInstance3D:
 
 
 func interact_label() -> String:
+	if kind == "pressure_feeder":
+		return "Pressure feeder · %s · E to use" % String(_feeder_readout.get("headline", "Inspect setup"))
 	return "%s · E to use" % LABELS.get(kind, kind)
+
+func feeder_readout() -> Dictionary:
+	return _feeder_readout
 
 
 func interact(player: WroughtwildPlayer) -> void:
@@ -170,23 +179,24 @@ func _physics_process(delta: float) -> void:
 		var current: Dictionary = sim.contraption_state(machine_key)
 		if bool(current.get("moving", false)):
 			sim.contraption_tick(machine_key, delta, span_clear())
+	var feeder_geometry: Dictionary = {}
 	if kind=="pressure_feeder":
 		_feeder_panel_refresh_left-=delta
 		var current: Dictionary=sim.contraption_state(machine_key)
 		if int(current.get("escrow_drive",0))>0:
-			sim.contraption_tick(machine_key,delta,bool(feeder_status(current).ready))
+			feeder_geometry = feeder_status(current)
+			sim.contraption_tick(machine_key,delta,bool(feeder_geometry.ready))
 	if _pulse_left > 0:
 		_pulse_left = maxf(0, _pulse_left - delta)
-	refresh_from_sim()
+	refresh_from_sim(feeder_geometry)
 
 
-func refresh_from_sim() -> void:
+func refresh_from_sim(feeder_geometry: Dictionary = {}) -> void:
 	if sim == null or _visual == null:
 		return
 	var record: Dictionary = sim.contraption_state(machine_key)
 	if record.is_empty():
 		return
-	_last_state = record
 	if int(record.get("pulses", 0)) != _last_pulses:
 		_pulse_left = LOOK.pulse_seconds
 		_last_pulses = int(record.get("pulses", 0))
@@ -217,8 +227,9 @@ func refresh_from_sim() -> void:
 			var capacity: float = float(sim.contraption_config().get("energy_capacity", 4))
 			bladder.scale.y = 0.48 + 0.15 * float(record.get("energy", 0)) / maxf(1, capacity)
 	if kind=="pressure_feeder":
-		_refresh_feeder(record)
+		_refresh_feeder(record, feeder_geometry)
 	_refresh_span(record)
+	_last_state = record
 
 
 func _refresh_span(record: Dictionary) -> void:
@@ -305,10 +316,15 @@ func perform(action: String) -> Dictionary:
 	var before: Dictionary = sim.contraption_state(machine_key)
 	var clear := true
 	var other_clear := true
-	if action == "start": clear = bool(feeder_status(before).ready) if kind=="pressure_feeder" else span_clear()
-	if kind=="pressure_feeder" and action in ["charge","resume"]: clear=bool(feeder_status(before).ready)
+	var feeder_geometry: Dictionary = {}
+	if kind == "pressure_feeder" and action in ["start","charge","resume"]:
+		feeder_geometry = feeder_status(before)
+		clear = bool(feeder_geometry.ready)
+	elif action == "start": clear = span_clear()
 	if kind=="pressure_feeder" and action in ["start","charge","resume"] and not clear:
-		return {"ok":false,"message":String(feeder_status(before).message)}
+		_feeder_panel_refresh_left = 0
+		refresh_from_sim(feeder_geometry)
+		return {"ok":false,"message":String(feeder_geometry.message)}
 	if action == "pulse":
 		clear = span_clear()
 		var record: Dictionary = sim.contraption_state(machine_key)
@@ -319,7 +335,8 @@ func perform(action: String) -> Dictionary:
 		SOUND.play(self, "tick", LOOK.work_volume_db)
 	if action == "sort" and bool(result.get("ok", false)):
 		_animate_sorting(before, sim.contraption_state(machine_key))
-	refresh_from_sim()
+	if kind == "pressure_feeder": _feeder_panel_refresh_left = 0
+	refresh_from_sim(feeder_geometry)
 	if kind=="pressure_feeder":
 		var pocket:=PressurePocket.find_source(get_tree(),String(before.get("source_id","")),get_parent())
 		if pocket!=null:pocket.refresh_visual()
@@ -397,15 +414,24 @@ func _connection_clear(target: StaticBody3D, destination: Vector3) -> bool:
 func attach_feeder(forge_key: String, source_id: String) -> Dictionary:
 	var forge:=feeder_forge(forge_key)
 	var pocket:=PressurePocket.find_source(get_tree(),source_id,get_parent()) if not source_id.is_empty() else null
-	if forge==null or (not source_id.is_empty() and pocket==null):return {"ok":false,"message":"That forge or pocket is no longer here."}
+	if forge==null or (not source_id.is_empty() and pocket==null):
+		_feeder_panel_refresh_left = 0
+		refresh_from_sim()
+		return {"ok":false,"message":"That forge or pocket is no longer here."}
 	var status:=feeder_connection_status(forge,pocket)
-	if not bool(status.ready):return {"ok":false,"message":String(status.message)}
+	if not bool(status.ready):
+		# A rejected candidate does not replace the stored attachment. Refresh its
+		# own current diagnosis, rather than cache the candidate's obstruction.
+		_feeder_panel_refresh_left = 0
+		refresh_from_sim()
+		return {"ok":false,"message":String(status.message)}
 	var result: Dictionary=sim.contraption_attach_feeder(machine_key,source_id,forge_key,forge.global_position,true)
+	_feeder_panel_refresh_left = 0
 	refresh_from_sim()
 	return result
 
 
-func _connection_mesh() -> MeshInstance3D:
+func _connection_mesh(colour: Color) -> MeshInstance3D:
 	var node:=MeshInstance3D.new()
 	var mesh:=CylinderMesh.new()
 	mesh.top_radius=1
@@ -413,7 +439,7 @@ func _connection_mesh() -> MeshInstance3D:
 	mesh.height=1
 	mesh.radial_segments=6
 	node.mesh=mesh
-	node.material_override=_material(LOOK.cable_colour)
+	node.material_override=_material(colour)
 	add_child(node)
 	return node
 
@@ -433,17 +459,26 @@ func _show_connection(node: MeshInstance3D, target: Vector3) -> void:
 	node.global_transform=Transform3D(Basis(across*LOOK.feeder_link_radius_m,up*delta.length(),depth*LOOK.feeder_link_radius_m),(from+target)*.5)
 
 
-func _refresh_feeder(record: Dictionary) -> void:
-	var status:=feeder_status(record)
+func _refresh_feeder(record: Dictionary, geometry: Dictionary = {}) -> void:
+	var status := feeder_status(record) if geometry.is_empty() else geometry
+	var config := sim.contraption_config()
 	var active:=int(record.get("escrow_drive",0))>0
 	var paused:=bool(record.get("feeder_paused",false)) or not bool(status.ready)
-	var progress:=float(record.get("cycle_seconds",0))/maxf(.01,float(sim.contraption_config().get("feeder_cycle_seconds",8)))
+	var progress:=float(record.get("cycle_seconds",0))/maxf(.01,float(config.get("feeder_cycle_seconds",8)))
 	var drum:=_visual.get_node_or_null("Drum") as Node3D
 	if drum!=null:drum.rotation.x=(float(record.get("energy",0))*.25+progress)*TAU
 	var bellows:=_visual.get_node_or_null("Bellows") as Node3D
-	if bellows!=null:bellows.scale.y=.72+(.28*(.5+.5*sin(progress*TAU)) if active else .28*float(record.get("energy",0))/maxf(1,float(sim.contraption_config().get("energy_capacity",4))))
+	if bellows!=null:bellows.scale.y=.72+(.28*(.5+.5*sin(progress*TAU)) if active else .28*float(record.get("energy",0))/maxf(1,float(config.get("energy_capacity",4))))
 	if _receiver!=null:_receiver.visible=active or int(record.get("energy",0))>0 or _highlighted
-	_hopper_load.visible=not Dictionary(record.get("input",{})).is_empty()
+	var inputs: Dictionary = record.get("input", {})
+	var has_clay := false
+	var has_fuel := false
+	for family in config.get("feeder_inputs", {}):
+		if int(inputs.get(family, 0)) > 0: has_clay = true
+	for family in config.get("feeder_fuels", {}):
+		if int(inputs.get(family, 0)) > 0: has_fuel = true
+	_hopper_load.visible = has_clay
+	_fuel_load.visible = has_fuel
 	_output_load.visible=not Dictionary(record.get("output",{})).is_empty()
 	var forge:=feeder_forge(String(record.get("forge_key","")))
 	_show_connection(_feeder_pipe,forge.global_position+Vector3.UP*LOOK.feeder_link_height_m if forge!=null else Vector3.INF)
@@ -451,13 +486,24 @@ func _refresh_feeder(record: Dictionary) -> void:
 	_show_connection(_pressure_pipe,pocket.connection_anchor() if pocket!=null else Vector3.INF)
 	var changed:=int(record.get("completed_cycles",0))!=_last_cycles
 	var status_key:=str(active)+str(paused)+String(status.message)
-	if changed or status_key!=_last_feeder_status:
+	var state_changed := changed or status_key != _last_feeder_status
+	for field in ["input", "output", "energy", "escrow_drive", "queued_cycles", "feeder_paused", "forge_key", "source_id"]:
+		if record.get(field) != _last_state.get(field): state_changed = true
+	var refresh_due := _feeder_panel_refresh_left <= 0
+	var readout_changed := false
+	if state_changed or refresh_due or _feeder_readout.is_empty():
+		var next_readout := FeederReadout.inspect(self, record, status)
+		readout_changed = next_readout != _feeder_readout
+		_feeder_readout = next_readout
+		_feeder_panel_refresh_left = LOOK.feeder_panel_refresh_seconds
+	# Commit the presentation snapshot before a panel callback can inspect us.
+	_last_state = record
+	if state_changed:
 		_last_cycles=int(record.get("completed_cycles",0))
 		_last_feeder_status=status_key
 		if changed:SOUND.play(self,"tick",LOOK.work_volume_db)
 		if _panel!=null:_panel.refresh_if_open("A firing cycle is complete. Bricks are in the output tray." if changed else "")
-	elif active and _panel!=null and _feeder_panel_refresh_left<=0:
-		_feeder_panel_refresh_left=LOOK.feeder_panel_refresh_seconds
+	elif _panel!=null and refresh_due and (active or readout_changed):
 		_panel.refresh_if_open()
 
 

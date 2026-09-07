@@ -27,6 +27,10 @@ var _station: StationSite
 var _order_id := ""
 var _custom_title := ""
 var _custom_rows: Array = []
+var _custom_context := ""
+var _keyed_context := ""
+var _custom_cards: Dictionary = {}
+var _layout_revision := 0
 ## A working feeder refreshes its status while this panel stays open.
 ## Keep an explanation readable across that refresh; never persist it.
 var _expanded_details: Dictionary = {}
@@ -126,10 +130,14 @@ func _open_foundry() -> void:
 
 ## Arbitrary choice list: rows are {text, button, enabled (optional),
 ## callback (Callable), details (optional explanatory text)}. Used for trial doors and offers.
-func open_custom(title: String, rows: Array, message_text: String = "") -> void:
-	if _mode != "custom" or _custom_title != title: _expanded_details.clear()
+## A live page may opt in with a machine/page context and a unique stable `id`
+## on every row. IDs name actions, not changing captions or quantities.
+func open_custom(title: String, rows: Array, message_text: String = "", context_id: String = "") -> void:
+	var same_page := _mode == "custom" and _custom_context == context_id and (not context_id.is_empty() or _custom_title == title)
+	if not same_page: _expanded_details.clear()
 	_mode = "custom"
 	_custom_title = title
+	_custom_context = context_id
 	_custom_rows = rows
 	_message.text = message_text
 	_root.visible = true
@@ -141,6 +149,9 @@ func close_panel() -> void:
 		return
 	_root.visible = false
 	_mode = ""
+	_layout_revision += 1
+	_invalidate_custom_cards()
+	_custom_context = ""
 	_expanded_details.clear()
 	closed.emit()
 
@@ -331,12 +342,19 @@ func deliver() -> Dictionary:
 # --- rendering ---------------------------------------------------------------
 
 func refresh() -> void:
+	_layout_revision += 1
 	if catalogue != null:
 		catalogue.visible = _mode == "crafting"
 		_scroll.visible = _mode != "crafting"
-	for child in _body.get_children():
-		_body.remove_child(child)
-		child.queue_free()
+	var keyed := _mode == "custom" and _custom_rows_are_keyed()
+	if not keyed or _keyed_context != _custom_context:
+		_clear_rows()
+		if keyed: _scroll.scroll_vertical = 0
+	if keyed:
+		_keyed_context = _custom_context
+		_render_keyed_custom()
+		_fit_height.call_deferred()
+		return
 	match _mode:
 		"crafting":
 			_title.text = "Field Crafting" if _station == null else String(sim.station(_station.current_station_id(sim)).get("display_name", "Workshop"))
@@ -381,9 +399,10 @@ func _fit_height() -> void:
 	if _scroll == null or not is_inside_tree():
 		return
 	var tree := get_tree()
+	var revision := _layout_revision
 	await tree.process_frame
 	await tree.process_frame
-	if _scroll == null or not is_inside_tree():
+	if _scroll == null or not is_inside_tree() or not is_open() or _mode == "crafting" or revision != _layout_revision:
 		return
 	var cap := get_viewport().get_visible_rect().size.y * MAX_HEIGHT_FRACTION
 	_scroll.custom_minimum_size.y = clampf(_body.size.y + 4.0, 40.0, cap)
@@ -395,6 +414,131 @@ func _render_custom() -> void:
 	_title.text = _custom_title
 	for row in _custom_rows:
 		_add_row(row.get("text", ""), row.get("button", ""), row.get("enabled", true), row.get("callback", Callable()), row.get("details", ""))
+
+
+func _custom_rows_are_keyed() -> bool:
+	if _custom_context.is_empty(): return false
+	var seen := {}
+	for row: Dictionary in _custom_rows:
+		var id := String(row.get("id", ""))
+		if id.is_empty() or seen.has(id): return false
+		seen[id] = true
+	return true
+
+
+func _invalidate_custom_cards() -> void:
+	for card: PanelContainer in _custom_cards.values():
+		if not is_instance_valid(card): continue
+		var view: Dictionary = card.get_meta("custom_view")
+		view.callback = Callable()
+		(view.button as Button).disabled = true
+	_custom_cards.clear()
+	_keyed_context = ""
+
+
+func _clear_rows() -> void:
+	_invalidate_custom_cards()
+	for child in _body.get_children():
+		_body.remove_child(child)
+		child.queue_free()
+
+
+func _render_keyed_custom() -> void:
+	_title.text = _custom_title
+	var live := {}
+	for index in _custom_rows.size():
+		var row: Dictionary = _custom_rows[index]
+		var id := String(row.id)
+		live[id] = true
+		var card: PanelContainer = _custom_cards.get(id)
+		if card == null:
+			card = _new_keyed_card(id)
+			_custom_cards[id] = card
+		_update_keyed_card(card, row)
+		_body.move_child(card, index)
+	for id in _custom_cards.keys():
+		if live.has(id): continue
+		var card: PanelContainer = _custom_cards[id]
+		var view: Dictionary = card.get_meta("custom_view")
+		view.callback = Callable()
+		(view.button as Button).disabled = true
+		_body.remove_child(card)
+		card.queue_free()
+		_custom_cards.erase(id)
+		_expanded_details.erase(id)
+
+
+func _new_keyed_card(id: String) -> PanelContainer:
+	var card := PanelContainer.new()
+	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 12)
+	card.add_child(row)
+	var words := VBoxContainer.new()
+	words.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(words)
+	var label := RichTextLabel.new()
+	label.bbcode_enabled = true
+	label.fit_content = true
+	label.scroll_active = false
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	words.add_child(label)
+	var toggle := Button.new()
+	toggle.toggle_mode = true
+	toggle.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	words.add_child(toggle)
+	var more := RichTextLabel.new()
+	more.bbcode_enabled = true
+	more.fit_content = true
+	more.scroll_active = false
+	more.modulate = UiTheme.MUTED
+	words.add_child(more)
+	var button := Button.new()
+	button.custom_minimum_size = Vector2(110, 0)
+	button.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	row.add_child(button)
+	card.set_meta("custom_view", {"id":id, "context":_custom_context, "label":label,
+		"toggle":toggle, "more":more, "button":button, "callback":Callable()})
+	# One connection reads the current action. Refreshing never stacks captured
+	# transactions; removed pages and disabled actions are inert even this frame.
+	button.pressed.connect(func() -> void:
+		if not _keyed_card_current(card) or button.disabled or not button.visible: return
+		var callback: Callable = card.get_meta("custom_view").callback
+		if callback.is_valid(): callback.call())
+	toggle.toggled.connect(func(open: bool) -> void:
+		if not _keyed_card_current(card): return
+		_expanded_details[id] = open
+		more.visible = open and not more.text.is_empty()
+		toggle.text = "Less detail" if open else "Details"
+		_fit_height.call_deferred())
+	_body.add_child(card)
+	return card
+
+
+func _keyed_card_current(card: PanelContainer) -> bool:
+	if not is_open() or _mode != "custom" or not is_instance_valid(card) or card.get_parent() != _body: return false
+	var view: Dictionary = card.get_meta("custom_view")
+	return view.context == _custom_context and _custom_cards.get(view.id) == card
+
+
+func _update_keyed_card(card: PanelContainer, row: Dictionary) -> void:
+	var view: Dictionary = card.get_meta("custom_view")
+	(view.label as RichTextLabel).text = String(row.get("text", ""))
+	var button: Button = view.button
+	button.text = String(row.get("button", ""))
+	button.visible = not button.text.is_empty()
+	button.disabled = not bool(row.get("enabled", true))
+	view.callback = row.get("callback", Callable())
+	card.add_theme_stylebox_override("panel", UiTheme.card(button.visible and not button.disabled))
+	var explanation := String(row.get("details", ""))
+	var expanded := bool(_expanded_details.get(view.id, false))
+	var toggle: Button = view.toggle
+	toggle.visible = not explanation.is_empty()
+	toggle.set_pressed_no_signal(expanded)
+	toggle.text = "Less detail" if expanded else "Details"
+	var more: RichTextLabel = view.more
+	more.text = explanation
+	more.visible = expanded and not explanation.is_empty()
 
 
 ## One card: text (bbcode allowed) and, optionally, a button.

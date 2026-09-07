@@ -82,6 +82,8 @@ func source_state() -> Dictionary:
 
 func interact_label() -> String:
 	var state:=source_state()
+	if int(state.get("remaining", 0)) <= 0:
+		return "Struck blacksmith's hearth · Pocket spent · E to inspect"
 	return "Struck blacksmith's hearth · %d pressure strokes · E to inspect" % int(state.get("remaining",0))
 
 
@@ -90,11 +92,14 @@ func interact(player: WroughtwildPlayer) -> void:
 	var kit: Dictionary=sim.recipe("assemble_pressure_feeder")
 	var kit_cost:=WorkPanel.cost_text(kit.get("inputs",{}),sim)
 	var rows: Array=[{
-		"text":"This blacksmith's hearth was here before the catastrophe. The asteroid drove an augmentation trace through its pressure casing by accident.",
+		"text":"An asteroid struck this older blacksmith's hearth.",
+		"details":"This hearth predates the catastrophe. The impact drove an augmentation trace through its pressure casing by accident; it was never built to harness the strike.",
 		"button":"An older workshop", "enabled":false, "callback":func():pass},
-		{"text":"%d / %d strokes remain. Connect your pressure feeder within %.0f metres. Drawing pressure spends this pocket permanently; core harvesting is separate." % [int(state.get("remaining",0)),int(state.get("capacity",0)),float(sim.contraption_config().get("feeder_attachment_range",8))],
+		{"text":"%d / %d strokes remain. %s" % [int(state.get("remaining",0)),int(state.get("capacity",0)), "Hand-winding still works." if int(state.get("remaining",0)) <= 0 else "This pocket never refills."],
+		"details":"Connect a pressure feeder within %.0f metres. Drawing pressure permanently spends pocket stock; stored drive remains usable and core harvesting is separate." % float(sim.contraption_config().get("feeder_attachment_range",8)),
 		"button":"Finite pressure", "enabled":false, "callback":func():pass},
-		{"text":"At your workbench: %s make a pressure feeder. It needs your own basic forge, clay and ordinary fuel. Hand-winding still works when this pocket is empty." % kit_cost,
+		{"text":"Use a bench-built feeder and your own basic forge.",
+		"details":"At your workbench: %s make a pressure feeder. Load clay and ordinary fuel explicitly. Pressure supplies motion; fuel supplies heat. Hand-winding remains available after exhaustion." % kit_cost,
 		"button":"Build a pressure feeder", "enabled":false, "callback":func():pass}]
 	player.open_custom_panel("The struck blacksmith's hearth",rows)
 	refresh_visual()

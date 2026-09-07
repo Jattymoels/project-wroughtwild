@@ -6,18 +6,22 @@ extends RefCounted
 var site: ContraptionSite
 var player: WroughtwildPlayer
 var _title := ""
+var _feeder_page := "main"
 
 
 func open_at(fixture: ContraptionSite, user: WroughtwildPlayer) -> void:
 	site = fixture
 	player = user
 	_title = String(ContraptionSite.LABELS.get(site.kind, site.kind))
+	_feeder_page = "main"
 	_refresh()
 
 
 func refresh_if_open(message_text: String = "") -> void:
 	if not is_instance_valid(player) or not is_instance_valid(site): return
-	if player.work_panel.is_open() and player.work_panel._mode == "custom" and player.work_panel._custom_title == _title and player.work_panel.get_meta("contraption_key", "") == site.machine_key:
+	var own_page := player.work_panel._custom_title == _title
+	if site.kind == "pressure_feeder": own_page = player.work_panel._custom_context == _feeder_context()
+	if player.work_panel.is_open() and player.work_panel._mode == "custom" and own_page and player.work_panel.get_meta("contraption_key", "") == site.machine_key:
 		_refresh(message_text)
 
 
@@ -30,6 +34,9 @@ func _refresh(message_text: String = "") -> void:
 	var state: Dictionary = site.sim.contraption_state(site.machine_key)
 	if state.is_empty(): return
 	var config: Dictionary = site.sim.contraption_config()
+	if site.kind == "pressure_feeder":
+		_refresh_feeder(state, config, message_text)
+		return
 	var rows: Array = []
 	var energy: int = int(state.get("energy", 0))
 	var capacity: int = int(config.get("energy_capacity", 4))
@@ -72,71 +79,141 @@ func _refresh(message_text: String = "") -> void:
 			var target_name := "a nearby set wedge or responsive seam" if target == null else Hud.pretty(String(target.material_family))
 			rows.append(_action("Release pressure", "Target: %s. Set a wedge first if required." % target_name,
 				_release, energy > 0 and target != null))
-		"pressure_feeder":
-			_add_feeder(rows,state,config)
 	rows.append(_action("Dismantle and recover", "Recover intact rare cores, stored ingredients and completed output. Ordinary frame materials use the existing building refund."+(" Unused drive vents; the pocket stays spent." if site.kind=="pressure_feeder" else ""), _dismantle))
 	player.open_custom_panel(_title, rows, message_text)
 	player.work_panel.set_meta("contraption_key", site.machine_key)
 
 
-func _add_feeder(rows: Array, state: Dictionary, config: Dictionary) -> void:
-	var active:=int(state.get("escrow_drive",0))>0
-	var energy:=int(state.get("energy",0))
-	var capacity:=int(config.get("energy_capacity",4))
-	var status:=site.feeder_status(state)
-	var paused:=bool(state.get("feeder_paused",false))
-	var source_id:=String(state.get("source_id",""))
-	var source: Dictionary={}
-	for candidate: Dictionary in site.sim.contraption_pressure_sources():
-		if String(candidate.id)==source_id:source=candidate
-	var attachment:="Choose your placed basic forge and an optional pressure pocket, each within %.0f m." % float(config.get("feeder_attachment_range",8))
-	if not String(state.get("forge_key","")).is_empty():attachment="Forge attached. "+("Pocket: %d / %d strokes remaining. " % [int(source.get("remaining",0)),int(source.get("capacity",0))] if not source.is_empty() else "Hand-wound drive; no pocket attached. ")+String(status.message)
-	rows.append(_action("Choose forge and pocket",attachment,_choose_feeder_connection,not active))
-	rows.append(_action("Draw pocket pressure","Drive: %d / %d stored; %d reserved. Drawing permanently spends pocket stock." % [energy,capacity,int(state.get("escrow_drive",0))],_operate.bind("charge"),bool(status.ready) and not source.is_empty() and int(source.get("remaining",0))>0 and energy+int(state.get("escrow_drive",0))<capacity))
-	rows.append(_action("Wind by hand","Add one stroke; also works with an exhausted pocket.",_operate.bind("wind"),energy+int(state.get("escrow_drive",0))<capacity))
-	var inputs: Dictionary=config.get("feeder_inputs",{})
-	var outputs: Dictionary=config.get("feeder_outputs",{})
-	var recipe_text:="Per cycle: %s + %d fuel heat → %s." % [WorkPanel.amounts_text(inputs),int(config.get("feeder_fuel_cost",1)),WorkPanel.amounts_text(outputs)]
-	rows.append(_action("Start %d cycles" % int(config.get("feeder_batch_cycles",4)),recipe_text+" %.0f seconds; no personal mastery XP." % float(config.get("feeder_cycle_seconds",8)),_operate.bind("start"),not active and bool(status.ready),
-		"Pressure drives the feeder; ordinary fuel heats your forge. Load ingredients and fuel into the hopper below."))
-	if active:
-		var seconds:=float(state.get("cycle_seconds",0))
-		var detail:="Firing: %.1f / %.0f seconds · %d cycles left, including this one. Inputs and drive reserved." % [seconds,float(config.get("feeder_cycle_seconds",8)),int(state.get("queued_cycles",0))]
-		if not bool(status.ready):detail+=" "+String(status.message)
-		rows.append(_action("Resume" if paused else "Pause",detail,_operate.bind("resume" if paused else "pause"),bool(status.ready) if paused else true))
-		rows.append(_action("Cancel batch","Return this firing's exact reserved ingredients and drive. Completed bricks stay in the tray; the source pocket is not refilled.",_operate.bind("cancel")))
-	rows.append(_action("Hopper and output","Hopper: %d / %d items, plus reserved inputs. Output: %d / %d bricks. Work pauses when you leave the area or enter a trial; there is no offline progress." % [ContraptionSite._inventory_units(state.get("input",{})),int(config.get("feeder_input_units",64)),ContraptionSite._inventory_units(state.get("output",{})),int(config.get("feeder_output_units",32))],func():pass,false))
-	_add_deposits(rows)
-	_add_withdrawals(rows,"input",state.get("input",{}))
-	_add_withdrawals(rows,"output",state.get("output",{}))
+func _feeder_context() -> String:
+	return "feeder:%s:%s" % [site.machine_key, _feeder_page]
 
 
-func _choose_feeder_connection() -> void:
-	if not is_instance_valid(site):return
-	var range_m:=float(site.sim.contraption_config().get("feeder_attachment_range",8))
-	var rows: Array=[]
+func _feeder_row(id: String, text: String, button: String = "", callback: Callable = Callable(), enabled: bool = true, details: String = "") -> Dictionary:
+	return {"id": id, "text": text, "button": button, "callback": callback, "enabled": enabled, "details": details}
+
+
+func _show_feeder_page(page: String) -> void:
+	_feeder_page = page
+	_refresh()
+
+
+func _feeder_action(view: Dictionary, action: String, label: String, text: String) -> Dictionary:
+	var accepted := FeederReadout.action_ready(view, action)
+	var reason := String(view.native.get("actions", {}).get(action, {}).get("message", ""))
+	if not accepted and action in ["start", "charge", "resume"] and not bool(view.geometry.get("ready", false)):
+		reason = String(view.geometry.get("message", reason))
+	return _feeder_row("action:" + action, text if accepted else reason, label, _operate.bind(action), accepted)
+
+
+func _refresh_feeder(state: Dictionary, config: Dictionary, message_text: String) -> void:
+	if _feeder_page == "attach":
+		_choose_feeder_connection(message_text)
+		return
+	var view := FeederReadout.inspect(site, state)
+	var rows: Array = []
+	var active := bool(view.active)
+	var available := bool(view.native.get("available", false))
+	var held: Dictionary = state.get("escrow_inputs", {}).duplicate()
+	for item in state.get("escrow_fuel", {}):
+		held[item] = int(held.get(item, 0)) + int(state.escrow_fuel[item])
+	var hopper: Dictionary = state.get("input", {})
+	var output: Dictionary = state.get("output", {})
+	var energy := int(state.get("energy", 0))
+	var reserved := int(state.get("escrow_drive", 0))
+	var capacity := int(config.get("energy_capacity", 4))
+	var heading := _title
+	match _feeder_page:
+		"main":
+			rows.append(_feeder_row("status", "%s · %s" % [view.headline, view.hint], "", Callable(), false, String(view.summary)))
+			if output.is_empty(): rows.append(_feeder_row("output:empty", "Completed bricks · tray empty"))
+			else: _feeder_withdrawals(rows, "output", output, available)
+			if active:
+				rows.append(_feeder_action(view, "resume" if view.paused else "pause", "Resume" if view.paused else "Pause", String(view.summary)))
+			else:
+				var start := _feeder_action(view, "start", "Start up to %d firings" % int(config.get("feeder_batch_cycles", 4)), "")
+				# The current blocker is already above; retain the recipe beside Start.
+				start.text = FeederReadout.recipe_text(config)
+				rows.append(start)
+			rows.append(_feeder_row("page:hopper", "Hopper · " + FeederReadout.stock_text(hopper), "Load / return supplies", _show_feeder_page.bind("hopper"), true,
+				"Held for the current firing: " + FeederReadout.stock_text(held) + ". Loading takes only the selected ingredients from your pack."))
+			rows.append(_feeder_row("page:drive", "Drive · %d stored + %d held / %d total" % [energy, reserved, capacity], "Drive / connections", _show_feeder_page.bind("drive"), true, FeederReadout.source_text(view)))
+			rows.append(_feeder_row("page:help", "Recipe, work limits and recovery", "Workshop details", _show_feeder_page.bind("help")))
+		"hopper":
+			heading += " · supplies"
+			var occupied := ContraptionSite._inventory_units(hopper) + ContraptionSite._inventory_units(held)
+			rows.append(_feeder_row("hopper:stock", "Hopper · %s · %d / %d items including held supplies" % [FeederReadout.stock_text(hopper), occupied, int(config.get("feeder_input_units", 64))], "", Callable(), false,
+				"Held for this firing: %s. Held supplies are protected until completion or cancellation." % FeederReadout.stock_text(held)))
+			var loads: Array = view.native.get("loads", [])
+			if loads.is_empty(): rows.append(_feeder_row("loads:empty", "No raw clay or forge fuel in your pack to load." if available else String(view.native.message)))
+			for load: Dictionary in loads:
+				var item := String(load.item)
+				var moved := int(load.moved)
+				rows.append(_feeder_row("load:" + item, "In pack: %d · hopper: %d" % [int(site.sim.inventory().get(item, 0)), int(hopper.get(item, 0))] if load.ok else String(load.message),
+					"Load %d %s" % [moved, Hud.pretty(item)] if load.ok else "Load " + Hud.pretty(item), _deposit.bind(item, int(load.requested)), bool(load.ok),
+					"Moves only this ingredient, up to one requested batch's share. The amount shown fits alongside held supplies."))
+			_feeder_withdrawals(rows, "input", hopper, available)
+		"drive":
+			heading += " · drive and connections"
+			rows.append(_feeder_row("drive:stock", "Drive · %d stored + %d held / %d total" % [energy, reserved, capacity], "", Callable(), false,
+				"One stroke moves the feeder for one firing. Ordinary fuel supplies the heat separately."))
+			rows.append(_feeder_row("source:stock", FeederReadout.source_text(view)))
+			rows.append(_feeder_action(view, "charge", "Draw pocket pressure", "Transfer available pocket strokes into free drive space; the pocket stays spent."))
+			rows.append(_feeder_action(view, "wind", "Wind by hand", "Store one stroke by hand."))
+			rows.append(_feeder_row("page:attach", String(view.geometry.message), "Choose forge / pocket", _show_feeder_page.bind("attach"), available and not active,
+				"Use your own placed forge. The struck old hearth is a ruined source, not a working station. Finish or cancel the current firing before changing connections."))
+		"help":
+			heading += " · details"
+			rows.append(_feeder_row("recipe", FeederReadout.recipe_text(config), "", Callable(), false,
+				"Start requests up to %d firings. Each reserves its own ingredients, fuel, tray space and drive once. If the next firing lacks anything, the batch stops. Charcoal is consumed per firing; excess fuel heat is not stored. Machinery awards no personal mastery XP." % int(config.get("feeder_batch_cycles", 4))))
+			rows.append(_feeder_row("ownership", "Held supplies · " + FeederReadout.stock_text(held), "", Callable(), false,
+				"Tray: %d / %d completed items. An active firing also holds room for its output. Work waits when you leave the area or enter a trial. Saving keeps the exact firing; there is no offline progress." % [ContraptionSite._inventory_units(output), int(config.get("feeder_output_units", 32))]))
+			rows.append(_feeder_action(view, "cancel", "Cancel requested firings", "Return this firing's exact held ingredients and drive; completed bricks stay in the tray."))
+			rows.append(_feeder_row("dismantle", "Recover cores, stored supplies and completed bricks; unused drive vents.", "Dismantle and recover", _dismantle, available,
+				"The ordinary frame uses the existing building refund. Held ingredients return once. Spent pocket stock is never refilled."))
+	if _feeder_page != "main": rows.append(_feeder_row("page:main", "Return to the feeder overview.", "Back", _show_feeder_page.bind("main")))
+	player.open_custom_panel(heading, rows, message_text, _feeder_context())
+	player.work_panel.set_meta("contraption_key", site.machine_key)
+
+
+func _feeder_withdrawals(rows: Array, port: String, contents: Dictionary, enabled: bool) -> void:
+	var ids: Array = contents.keys()
+	ids.sort()
+	for item in ids:
+		var count := int(contents[item])
+		rows.append(_feeder_row("take:%s:%s" % [port, item], "%s · %d %s" % ["Completed tray" if port == "output" else "Available hopper", count, Hud.pretty(String(item))],
+			("Collect %d %s" if port == "output" else "Return %d %s") % [count, Hud.pretty(String(item))], _withdraw.bind(port, String(item), count), enabled))
+
+
+func _choose_feeder_connection(message_text: String = "") -> void:
+	if not is_instance_valid(site): return
+	var range_m := float(site.sim.contraption_config().get("feeder_attachment_range", 8))
+	var state: Dictionary = site.sim.contraption_state(site.machine_key)
+	var can_attach := int(state.get("escrow_drive", 0)) == 0 and not bool(site.sim.trial_active())
+	var rows: Array = []
 	for node in site.get_tree().get_nodes_in_group("crafting_stations"):
-		if not node is StationSite or not site.get_parent().is_ancestor_of(node):continue
-		var forge:=node as StationSite
-		if not forge.feeder_eligible(site.sim) or forge.global_position.distance_to(site.global_position)>range_m:continue
-		var status:=site.feeder_connection_status(forge)
-		var prefix:="Your forge %.1f m %s" % [forge.global_position.distance_to(site.global_position),_relative_direction(forge)]
-		rows.append(_action("Attach forge · hand-wound",prefix+". "+String(status.message),_attach_feeder.bind(forge.station_key,""),bool(status.ready)))
+		if not node is StationSite or not site.get_parent().is_ancestor_of(node): continue
+		var forge := node as StationSite
+		if not forge.feeder_eligible(site.sim) or forge.global_position.distance_to(site.global_position) > range_m: continue
+		var status := site.feeder_connection_status(forge)
+		var prefix := "Your forge %.1f m %s" % [forge.global_position.distance_to(site.global_position), _relative_direction(forge)]
+		rows.append(_feeder_row("attach:" + forge.station_key + ":hand", prefix + ". " + String(status.message), "Attach forge · hand-wound", _attach_feeder.bind(forge.station_key, ""), can_attach and bool(status.ready)))
 		for source_node in site.get_tree().get_nodes_in_group("pressure_pockets"):
-			if not source_node is PressurePocket or not site.get_parent().is_ancestor_of(source_node):continue
-			var pocket:=source_node as PressurePocket
-			if pocket.global_position.distance_to(site.global_position)>range_m:continue
-			var source:=pocket.source_state()
-			status=site.feeder_connection_status(forge,pocket)
-			rows.append(_action("Attach forge and pocket",prefix+". Pocket %.1f m away, %d strokes remain. %s" % [pocket.global_position.distance_to(site.global_position),int(source.get("remaining",0)),String(status.message)],_attach_feeder.bind(forge.station_key,pocket.source_id),bool(status.ready)))
-	if rows.is_empty():rows.append(_action("Build your forge nearby","Place a basic forge kit within %.0f metres. The struck old hearth is a ruined source, not your crafting station." % range_m,func():pass,false))
-	rows.append(_action("Back","Return to the feeder.",_refresh))
-	player.open_custom_panel(_title+" · attach",rows)
+			if not source_node is PressurePocket or not site.get_parent().is_ancestor_of(source_node): continue
+			var pocket := source_node as PressurePocket
+			if pocket.global_position.distance_to(site.global_position) > range_m: continue
+			var source := pocket.source_state()
+			status = site.feeder_connection_status(forge, pocket)
+			rows.append(_feeder_row("attach:" + forge.station_key + ":" + pocket.source_id, prefix + ". Pocket %.1f m away, %d strokes remain. %s" % [pocket.global_position.distance_to(site.global_position), int(source.get("remaining", 0)), String(status.message)], "Attach forge and pocket", _attach_feeder.bind(forge.station_key, pocket.source_id), can_attach and bool(status.ready)))
+	if rows.is_empty(): rows.append(_feeder_row("attach:empty", "Place your own basic forge within %.0f metres; the old hearth is a ruined source." % range_m))
+	rows.append(_feeder_row("page:drive", "Return to drive and connections.", "Back", _show_feeder_page.bind("drive")))
+	player.open_custom_panel(_title + " · attach", rows, message_text, _feeder_context())
+	player.work_panel.set_meta("contraption_key", site.machine_key)
 
 
 func _attach_feeder(forge_key: String, source_id: String) -> void:
 	if not is_instance_valid(site):return
 	var result:=site.attach_feeder(forge_key,source_id)
+	_feeder_page = "drive"
 	_refresh(String(result.get("message","")))
 
 
@@ -170,15 +247,6 @@ func _add_deposits(rows: Array) -> void:
 	for item in ids:
 		var count := int(inventory[item])
 		if count <= 0 or equipment.has(String(item)): continue
-		if site.kind=="pressure_feeder":
-			var config: Dictionary=site.sim.contraption_config()
-			var inputs: Dictionary=config.get("feeder_inputs",{})
-			var fuels: Dictionary=config.get("feeder_fuels",{})
-			if not inputs.has(item) and not fuels.has(item):continue
-			var per_cycle:=int(inputs.get(item,1)) if inputs.has(item) else maxi(1,ceili(float(config.get("feeder_fuel_cost",1))/maxf(1,float(fuels[item]))))
-			var requested:=mini(count,per_cycle*int(config.get("feeder_batch_cycles",4)))
-			rows.append(_action("Load %d %s" % [requested,Hud.pretty(String(item))],"In pack: %d · up to one batch's share." % count,_deposit.bind(String(item),requested)))
-			continue
 		rows.append(_action("Load %s" % Hud.pretty(String(item)), "In pack: %d · limited by free capacity." % count,
 			_deposit.bind(String(item), count)))
 		if count > 10:
@@ -197,7 +265,7 @@ func _add_withdrawals(rows: Array, port: String, contents: Dictionary) -> void:
 func _operate(action: String) -> void:
 	if not is_instance_valid(site): return
 	var result := site.perform(action)
-	if action in ["start", "pulse", "sort"] and (bool(result.get("ok", false)) or action == "pulse"):
+	if site.kind != "pressure_feeder" and action in ["start", "pulse", "sort"] and (bool(result.get("ok", false)) or action == "pulse"):
 		player.work_panel.close_panel()
 		player.hud.notify(String(result.get("message", "")))
 		return
@@ -217,12 +285,14 @@ func _release() -> void:
 func _deposit(item: String, count: int) -> void:
 	if not is_instance_valid(site): return
 	var result: Dictionary = site.sim.contraption_deposit(site.machine_key, item, count)
+	site.refresh_from_sim()
 	_refresh("%s (%d moved.)" % [String(result.get("message", "")), int(result.get("moved", 0))])
 
 
 func _withdraw(port: String, item: String, count: int) -> void:
 	if not is_instance_valid(site): return
 	var result: Dictionary = site.sim.contraption_withdraw(site.machine_key, port, item, count)
+	site.refresh_from_sim()
 	_refresh("%s (%d moved.)" % [String(result.get("message", "")), int(result.get("moved", 0))])
 
 

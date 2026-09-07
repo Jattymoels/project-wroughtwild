@@ -127,6 +127,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("contraption_ids"), &WroughtwildSim::contraption_ids);
     ClassDB::bind_method(D_METHOD("contraption_state", "key"), &WroughtwildSim::contraption_state);
     ClassDB::bind_method(D_METHOD("contraption_config"), &WroughtwildSim::contraption_config);
+    ClassDB::bind_method(D_METHOD("contraption_feeder_inspect", "key", "physical_ready"), &WroughtwildSim::contraption_feeder_inspect);
     ClassDB::bind_method(D_METHOD("contraption_link", "key", "target", "clear"), &WroughtwildSim::contraption_link);
     ClassDB::bind_method(D_METHOD("contraption_action", "key", "action", "clear", "other_clear", "distance"), &WroughtwildSim::contraption_action, DEFVAL(true), DEFVAL(true), DEFVAL(0.0));
     ClassDB::bind_method(D_METHOD("contraption_tick", "key", "seconds", "clear"), &WroughtwildSim::contraption_tick);

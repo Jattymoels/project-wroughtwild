@@ -59,6 +59,14 @@ pause/cancel/collect controls. A Stormglass lever can request the same bounded
 batch; the signal supplies no energy. The hopper, tension drum, pressure chamber
 and output tray show the separate owners of materials and work.
 
+[INT-06A](../prototype/workshop-usability-2026-09-07.md) separates visible clay
+and fuel shares using the actual recipe/fuel tables; fuel alone no longer looks
+like clay. The two existing connections use distinct matte finishes while
+retaining their paths, radii and collision. A cached readout refreshes on the
+existing half-second cadence and meaningful inventory/connection changes.
+Clock-only visual updates reuse the readiness sample from the actual tick.
+These representations add no item owner, light, collider or production rule.
+
 Attachment requires a physically present, player-built basic forge within 8 m;
 an optional pressure pocket must also be within 8 m. A global station unlock or
 old decorative hearth is insufficient. All four device/forge feet and both short

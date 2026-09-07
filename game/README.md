@@ -68,12 +68,18 @@ The [pressure workshop](../docs/prototype/pressure-workshop-2026-09-06.md) adds
 one V5 hearth accidentally struck by an asteroid. It belonged to an old smithy
 before the catastrophe. **E** inspects its finite pressure. At a workbench craft
 a pressure feeder, place it beside your own newly placed basic forge, then use
-**E → Attach forge and pocket**. Load clay and fuel, draw pressure (or wind by
-hand) and start a four-cycle batch. Collect the bricks to build. F5/F9 preserves
+**E → Drive / connections → Choose forge / pocket**. Use **Load / return
+supplies** for clay and fuel, draw pressure (or wind by
+hand) and request up to four firings. Collect the completed bricks from the
+overview to build. Supply shortages and blocked connections explain why Start
+is unavailable; **Workshop details** contains recipe limits and recovery.
+F5/F9 preserves
 mid-cycle work exactly; leaving the area or entering a trial pauses it. V4 and
 older saves keep their geography; the feeder still works by hand with a newly
 placed forge. Current visual finish is accepted for now; further graphics are
-deferred. Test scenes: `pressure_workshop.tscn` and `pressure_feeder_presentation.tscn`.
+deferred. [Workshop usability and review](../docs/prototype/workshop-usability-2026-09-07.md).
+Test scenes include `pressure_workshop.tscn`, `pressure_feeder_presentation.tscn`,
+`feeder_controls.tscn`, `feeder_visuals.tscn` and `custom_panel_refresh.tscn`.
 
 Use **E** at the Trial Gate for the two-floor Tyrant, Warden and Ash Tide
 stories. Inside, inspect physical route markers, defeat the local encounter,

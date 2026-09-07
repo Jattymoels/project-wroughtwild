@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/sandpit.tscn" id="1"]
+[ext_resource type="Script" path="res://tests/workshop_readability_review.gd" id="2"]
+
+[node name="WorkshopReadabilityReview" instance=ExtResource("1")]
+script = ExtResource("2")

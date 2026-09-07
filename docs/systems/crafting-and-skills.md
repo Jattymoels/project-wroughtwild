@@ -48,6 +48,13 @@ Missing supplies/full output stop before the next reservation. Cancellation
 recovers exact inputs, selected fuel and drive once; saved escrow also reserves
 its hopper return space and output tray space. [Contract and purposes](../prototype/leyline-extraction-proposal-2026-09-06.md).
 
+The [INT-06A usability pass](../prototype/workshop-usability-2026-09-07.md) previews
+these same native transactions on independent copies. Loading shows the exact
+accepted quantity of the selected carried ingredient, bounded to one requested
+batch's share and actual hopper room. It does not calculate firings from total
+fuel heat: one charcoal is consumed per firing and excess heat is not retained.
+Readiness, inspection and opening pages never reserve supplies or advance RNG.
+
 **The Strange Frontier, D-029 (6 September 2026):** five finite wild components
 assemble into useful fixtures at the existing workbench. Recipes are visible
 before discovery and need no skill, fuel, currency or era gate. Each makes one

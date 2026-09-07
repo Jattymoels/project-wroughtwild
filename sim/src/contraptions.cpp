@@ -457,6 +457,45 @@ Result MachineWorld::pause(const std::string& key, bool paused) {
     return yes(paused ? "Paused with the exact firing held safely." : "Resumed the same reserved firing; no extra materials were taken.");
 }
 
+FeederInspection MachineWorld::inspectFeeder(const std::string& key, bool physicalReady,
+                                            const Inventory& pack) const {
+    FeederInspection inspection;
+    const auto* s=state(key);
+    inspection.available=s && s->kind=="pressure_feeder";
+    if (!inspection.available) inspection.message="No pressure feeder is placed here.";
+    for (const auto* action : {"start","charge","wind","pause","resume","cancel"}) {
+        Result result=no(inspection.message);
+        if (inspection.available) {
+            // Each action sees the same original ledger. A successful charge
+            // preview must not make the start or winding preview look ready.
+            MachineWorld copy(*this);
+            const std::string id(action);
+            if (id=="start") result=copy.start(key,physicalReady);
+            else if (id=="charge") result=copy.charge(key,config_.energyCapacity,physicalReady);
+            else if (id=="wind") result=copy.wind(key);
+            else if (id=="pause" || id=="resume") result=copy.pause(key,id=="pause");
+            else if (id=="cancel") result=copy.cancel(key);
+        }
+        inspection.actions.emplace(action,std::move(result));
+    }
+    if (!inspection.available) return inspection;
+    for (const auto& held : pack) {
+        if (held.second<=0 || !feederItem(held.first)) continue;
+        const auto ingredient=config_.feederRecipeInputs.find(held.first);
+        int perCycle=0;
+        if (ingredient!=config_.feederRecipeInputs.end()) perCycle=ingredient->second;
+        else {
+            const int heat=config_.feederFuels.at(held.first);
+            perCycle=std::max(1,(config_.feederFuelCost+heat-1)/heat);
+        }
+        const int requested=static_cast<int>(std::min<long long>(held.second,static_cast<long long>(perCycle)*config_.feederBatchCycles));
+        MachineWorld copy(*this);
+        auto carried=pack;
+        inspection.loads.push_back({held.first,requested,copy.deposit(key,held.first,requested,carried)});
+    }
+    return inspection;
+}
+
 std::string MachineWorld::serialize() const {
     std::ostringstream out;
     out << std::setprecision(std::numeric_limits<double>::max_digits10);

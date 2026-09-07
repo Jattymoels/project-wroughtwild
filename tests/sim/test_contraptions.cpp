@@ -48,9 +48,121 @@ Config feederConfig(Config config, const std::string& directory) {
     return config;
 }
 
+FeederInspection inspectChecked(const MachineWorld& world, bool physicalReady, const Inventory& pack) {
+    const auto saved=world.serialize();
+    const auto carried=pack;
+    const auto inspected=world.inspectFeeder("feeder",physicalReady,pack);
+    check(inspected.available && inspected.actions.size()==6, "inspection exposes six existing feeder operations");
+    for (const auto& action : inspected.actions) {
+        MachineWorld actual(world);
+        Result expected;
+        if (action.first=="start") expected=actual.start("feeder",physicalReady);
+        else if (action.first=="charge") expected=actual.charge("feeder",world.config().energyCapacity,physicalReady);
+        else if (action.first=="wind") expected=actual.wind("feeder");
+        else if (action.first=="pause" || action.first=="resume") expected=actual.pause("feeder",action.first=="pause");
+        else if (action.first=="cancel") expected=actual.cancel("feeder");
+        check(action.second.ok==expected.ok && action.second.moved==expected.moved && action.second.message==expected.message,
+              "every action preview matches the existing transaction and exact reason order");
+    }
+    for (const auto& load : inspected.loads) {
+        MachineWorld actual(world);
+        auto loadedPack=pack;
+        const auto expected=actual.deposit("feeder",load.item,load.requested,loadedPack);
+        check(load.result.ok==expected.ok && load.result.moved==expected.moved && load.result.message==expected.message,
+              "every compatible load preview matches exact native accepted capacity");
+    }
+    const auto repeated=world.inspectFeeder("feeder",physicalReady,pack);
+    check(repeated.actions.size()==inspected.actions.size() && repeated.loads.size()==inspected.loads.size() &&
+          world.serialize()==saved && pack==carried, "repeated inspection leaves all sources machines escrow clocks and pack untouched");
+    return inspected;
+}
+
+void inspectionChecks(const Config& config) {
+    const WorldIdentity identity{"frontier_v6",146,{{"ppv5_old_blacksmith",{2,0,0},24}}};
+    MachineWorld world(config,identity);
+    Inventory pack{{"raw_clay",100},{"wood",100},{"charcoal",100},{"iron_ingot",100}};
+    auto unavailable=world.inspectFeeder("missing",true,pack);
+    check(!unavailable.available && !unavailable.message.empty() && unavailable.loads.empty(),
+          "missing feeder inspection is unavailable without synthetic load rows");
+    check(world.create("feeder","pressure_feeder").ok, "create feeder for read-only action inspection");
+    auto view=inspectChecked(world,true,pack);
+    check(!view.actions.at("start").ok && !view.actions.at("charge").ok && view.actions.at("wind").ok,
+          "unattached feeder previews winding without implying forge or source access");
+    check(view.loads.size()==3, "inspection lists only carried recipe ingredients and configured ordinary fuel");
+    for (const auto& load : view.loads)
+        check(load.requested==(load.item=="raw_clay" ? 32 : 4), "load request retains the existing per-item one-batch share");
+    check(world.attachFeeder("feeder","ppv5_old_blacksmith","forge",{3,0,0},true).ok, "attach inspection feeder");
+    view=inspectChecked(world,true,pack);
+    check(view.actions.at("charge").ok && view.actions.at("charge").moved==4 && !view.actions.at("start").ok,
+          "a successful charge preview does not supply drive to the start preview");
+    inspectChecked(world,false,pack);
+    check(world.charge("feeder",4,true).ok, "charge actual inspection machine");
+    view=inspectChecked(world,true,pack);
+    check(!view.actions.at("charge").ok && !view.actions.at("wind").ok &&
+          view.actions.at("start").message=="Load all clay for one complete firing.",
+          "full drive store still reports missing clay before missing fuel");
+    check(world.deposit("feeder","raw_clay",8,pack).ok, "load actual inspection clay");
+    view=inspectChecked(world,true,pack);
+    check(view.actions.at("start").message=="Load ordinary forge fuel; pressure supplies motion, not heat.",
+          "loaded clay exposes the existing ordinary-fuel refusal");
+    check(world.deposit("feeder","wood",1,pack).ok, "load actual inspection heat");
+    view=inspectChecked(world,true,pack);
+    check(view.actions.at("start").ok && world.state("feeder")->escrowDrive==0,
+          "ready preview does not reserve ingredients or begin firing");
+    check(world.start("feeder",true).ok && world.advance("feeder",2.375,true).ok,
+          "start actual fractional firing for escrow inspection");
+    view=inspectChecked(world,true,pack);
+    check(!view.actions.at("start").ok && view.actions.at("pause").ok && !view.actions.at("resume").ok &&
+          view.actions.at("cancel").ok && !view.actions.at("wind").ok,
+          "active previews respect the held batch and the reserved fourth stroke");
+    check(world.deposit("feeder","raw_clay",54,pack).moved==54, "fill hopper leaving exactly one item of escrow-safe room");
+    view=inspectChecked(world,true,pack);
+    for (const auto& load : view.loads) check(load.result.moved==1, "each alternative load sees the same single free hopper space");
+    check(world.deposit("feeder","wood",1,pack).moved==1, "fill remaining hopper return-safe space");
+    view=inspectChecked(world,true,pack);
+    for (const auto& load : view.loads) check(!load.result.ok && load.result.moved==0, "full hopper previews refuse without swallowing escrow return space");
+    check(world.pause("feeder",true).ok, "pause actual escrow before inspection");
+    view=inspectChecked(world,false,pack);
+    check(view.actions.at("resume").ok && view.actions.at("cancel").ok,
+          "resume preview remains the existing native pause operation; Godot owns its separate physical gate");
+    check(world.cancel("feeder").ok, "cancel actual firing after pure previews");
+    view=inspectChecked(world,true,pack);
+    check(!view.actions.at("cancel").ok && !view.actions.at("pause").ok && !view.actions.at("resume").ok,
+          "cancelled escrow cannot be cancelled or resumed by inspecting it");
+    MachineWorld full(world);
+    check(full.restore(changed(full.serialize(),"\"output\":{}","\"output\":{\"rustclay_brick\":32}")),
+          "restore a valid full output tray for preview");
+    view=inspectChecked(full,true,pack);
+    check(view.actions.at("start").message=="Collect bricks to make room for the complete output.",
+          "full output previews its exact refusal before reserving supplied inputs");
+    MachineWorld counter(full);
+    check(counter.restore(changed(counter.serialize(),"\"completed_cycles\":0","\"completed_cycles\":2147483647")),
+          "restore valid completed counter boundary");
+    view=inspectChecked(counter,true,pack);
+    check(view.actions.at("start").message=="The feeder's completed-cycle counter is full.",
+          "counter guard retains precedence over full output in inspection");
+    MachineWorld spent(config,identity);
+    check(spent.create("feeder","pressure_feeder").ok &&
+          spent.attachFeeder("feeder","ppv5_old_blacksmith","forge",{3,0,0},true).ok &&
+          spent.restore(changed(spent.serialize(),"\"ppv5_old_blacksmith\":24","\"ppv5_old_blacksmith\":0")),
+          "restore a valid exhausted pressure pocket");
+    check(spent.deposit("feeder","raw_clay",8,pack).ok && spent.deposit("feeder","charcoal",1,pack).ok &&
+          spent.wind("feeder").ok, "supply a hand-wound firing after pocket exhaustion");
+    view=inspectChecked(spent,true,pack);
+    check(!view.actions.at("charge").ok && view.actions.at("start").ok && view.actions.at("wind").ok,
+          "exhausted pocket does not disable stored drive or hand winding");
+    MachineWorld manual(config,{"legacy_v1",146,{}});
+    check(manual.create("feeder","pressure_feeder").ok && manual.attachFeeder("feeder","","forge",{3,0,0},true).ok,
+          "attach source-free legacy inspection feeder");
+    view=inspectChecked(manual,true,pack);
+    check(view.actions.at("wind").ok && !view.actions.at("charge").ok,
+          "source-free inspection does not imply retrofitted pressure");
+}
+
 void feederChecks(Config config, const std::string& directory, const std::string& legacySave, const std::string& profile) {
     check(!MachineWorld(config).create("unconfigured","pressure_feeder").ok, "unconfigured host cannot create an unsaveable feeder");
     config=feederConfig(std::move(config),directory);
+    if (profile=="frontier_v6") inspectionChecks(config);
     check(config.pressureSourceStrokes==24 && config.energyCapacity==4 && config.feederInputUnits==64 && config.feederOutputUnits==32 && config.feederBatchCycles==4 && config.feederCycleSeconds==8 && config.feederAttachmentRange==8, "approved pressure budgets are engine-neutral tuning");
     // A seed above JSON's exact numeric integer range exercises the opaque
     // decimal-string identity and prevents accidental lossy seed comparisons.

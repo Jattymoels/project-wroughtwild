@@ -46,18 +46,24 @@ extends Resource
 	{"asset":"ventlung","name":"Bellows","at":Vector3(-.31,.32,.1),"size":Vector3(.42,.5,.46)},
 	{"asset":"drum","name":"Drum","at":Vector3(.33,.66,.02),"size":Vector3(.46,.48,.46)},
 	{"asset":"basket","name":"OutputTray","at":Vector3(.12,.17,.3),"size":Vector3(.74,.18,.62)}]
-## Representative material fills distinguish a loaded hopper from finished output.
-@export var feeder_hopper_load := Vector3(0,1.24,-.26)
-@export var feeder_hopper_size := Vector3(.5,.12,.4)
+## Separate representative shares show actual clay and fuel, including fuel alone.
+## Their combined extent stays inside the existing hopper; they create no items.
+@export var feeder_hopper_load := Vector3(-.14,1.24,-.26)
+@export var feeder_hopper_size := Vector3(.23,.12,.4)
+@export var feeder_fuel_load := Vector3(.14,1.24,-.26)
+@export var feeder_fuel_size := Vector3(.23,.12,.4)
 @export var feeder_output_load := Vector3(.12,.33,.3)
 @export var feeder_output_size := Vector3(.56,.12,.43)
 @export var feeder_clay_colour := Color("8c6550")
+@export var feeder_fuel_colour := Color("494337") # A dark fuel share remains distinct from warm raw clay.
+@export var feeder_forge_link_colour := Color("986c4b") # Warm feed connection identifies the player's hot forge.
+@export var feeder_pressure_link_colour := Color("697f78") # Cool casing metal identifies finite pressure, without emission or flow.
 @export var feeder_link_height_m := 0.85 # Local connections stay above the floor and below the hopper rim.
 @export var feeder_link_radius_m := 0.045 # The short rigid connection must clear real walls and supports.
 @export var feeder_support_half_width_m := 0.46 # Four feet must retain support after digging or building removal.
 @export var station_support_half_width_m := 0.32 # The existing forge's four feet must keep resting on a floor.
 @export var feeder_vent_seconds := 0.6 # Dismantling visibly releases unused drive without creating an item or hazard.
-@export var feeder_panel_refresh_seconds := 0.5 # Inspection shows a progressing firing clock without rebuilding controls every frame.
+@export var feeder_panel_refresh_seconds := 0.5 # Cached aimed status and open inspection follow work without per-frame native previews.
 @export var feeder_vent_colour := Color("a8b5a8") # Quiet pale pressure stays distinct from fire damage.
 ## The source reuses a damaged older hearth and a small split casing, never a free crafting station.
 @export var pocket_bounds := Vector3(1.05,1.25,1.05)

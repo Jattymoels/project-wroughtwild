@@ -86,6 +86,18 @@ struct Result {
     std::string message;
 };
 
+struct FeederLoadPreview {
+    std::string item;
+    int requested = 0;
+    Result result;
+};
+struct FeederInspection {
+    bool available = false;
+    std::string message;
+    std::map<std::string, Result> actions;
+    std::vector<FeederLoadPreview> loads;
+};
+
 class MachineWorld {
 public:
     explicit MachineWorld(Config config, WorldIdentity identity = {});
@@ -130,6 +142,10 @@ public:
     Result charge(const std::string& key, int count, bool ready);
     Result cancel(const std::string& key);
     Result pause(const std::string& key, bool paused);
+    // Preview the existing actions on independent bounded copies. Inspection
+    // neither reserves work nor changes source stock, inventory or saved state.
+    FeederInspection inspectFeeder(const std::string& key, bool physicalReady,
+                                  const economy::Inventory& pack) const;
     std::string serialize() const;
     bool validate(const std::string& source, std::string* reason = nullptr) const;
     // Parses/validates everything into a temporary world before swapping.

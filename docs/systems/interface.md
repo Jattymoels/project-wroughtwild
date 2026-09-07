@@ -1,5 +1,22 @@
 # Interface and In-Game Experience
 
+**INT-06A continuation, 7 September 2026:** the pressure feeder opens a short
+overview with the actual current blocker, completed output and Start/Pause/Resume.
+Separate supplies, drive/connections and recovery pages retain explicit loading,
+collection and cancellation. Start means **up to four firings**, reserving each
+only when its requirements are met. Native read-only transaction previews supply
+button readiness, refusal order and exact load quantities; Godot supplies actual
+connection readiness. Held clay and fuel count against hopper return space.
+Stored drive, held drive and finite source stock remain separate, including when
+an exhausted source leaves usable drive or hand winding.
+
+The feeder stays open after Start to show progress. Optional custom-page context
+and stable row IDs retain controls, focus, scroll and expanded details across
+live refreshes. Removed, disabled and closed actions are inert; actual operations
+still revalidate. Legacy custom callers retain their existing behaviour. Source
+inspection uses three short topics with optional explanation, and aiming reads
+a cached feeder status without geometry probes. [Scope and evidence](../prototype/workshop-usability-2026-09-07.md).
+
 **INT-05A continuation, 7 September 2026:** available Forge route plaques show
 the current section, native reward and encounter in at most three measured-width
 world-text lines; aiming retains the complete preview. Future-route text stays
