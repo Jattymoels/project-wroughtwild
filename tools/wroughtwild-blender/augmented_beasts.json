@@ -1,0 +1,88 @@
+{
+  "seed": 7092026,
+  "voxel_metres": 0.026,
+  "skin_smooth_iterations": 5,
+  "skin_decimate_ratio": 0.42,
+  "tube_sides": 10,
+  "atlas_pixels": 512,
+  "render_samples": 32,
+  "render_pixels": [
+    1600,
+    1100
+  ],
+  "normal_emission_energy": 0.35,
+  "motion": {
+    "knee_bend_radians": 0.52,
+    "ankle_bend_radians": 0.25,
+    "jaw_open_radians": 0.24,
+    "tail_sway_radians": 0.15,
+    "wing_hz": 3.2,
+    "wing_swing_radians": 0.48,
+    "hindwing_lag_radians": 0.38,
+    "antenna_sway_radians": 0.06
+  },
+  "purposes": {
+    "seed": "Reproduce surface grain and fur placement without consuming gameplay randomness.",
+    "voxel_metres": "Resolution used to fuse anatomical volumes into a continuous skin before smoothing.",
+    "skin_smooth_iterations": "Round fused skin transitions while retaining the animal's broad proportions.",
+    "skin_decimate_ratio": "Reduce the fused skin for crowds while retaining silhouette detail.",
+    "tube_sides": "Roundness of tusks, antlers, wing veins and small appendages.",
+    "atlas_pixels": "One embedded material atlas per family for skin, fur, ceramic, horn and narrow energy accents.",
+    "render_samples": "Noise quality of the Blender review images, not runtime rendering.",
+    "render_pixels": "Pixel dimensions of each Blender review image.",
+    "normal_emission_energy": "Quiet light inside growth channels; existing hit, freeze and burn feedback takes priority.",
+    "motion": "Cosmetic joint motion driven by existing travel, idle and attack clocks. Knee/ankle values bend lifted feet; jaw follows existing windup/release; tail/antennae soften idle; wing frequency/swing/lag distinguish a living moth without granting flight physics."
+  },
+  "families": {
+    "ash_hound": {
+      "animal": "wolf",
+      "concept": "rimejaw-wolf-v01.png",
+      "kind": "quicksilver",
+      "coat": "45494b",
+      "light": "90948c",
+      "plate": "b4b5a0",
+      "accent": "8bbdc8",
+      "purpose": "Long lean wolf, grown jaw/shoulder lamellae and silver-blue conducting channels; no new cold damage."
+    },
+    "ember_whelp": {
+      "animal": "boar",
+      "concept": "kilnback-boar-v02.png",
+      "kind": "ember_catalyst",
+      "coat": "50402f",
+      "light": "85735a",
+      "plate": "393834",
+      "accent": "ed8a35",
+      "purpose": "Heavy porcine body, cloven hooves, grown heat shield and paired tusks; uses the existing Whelp role."
+    },
+    "valley_elk": {
+      "animal": "stag",
+      "concept": "vaultcrown-stag-v01.png",
+      "kind": "marrow",
+      "coat": "62513c",
+      "light": "a48c67",
+      "plate": "b7ae8d",
+      "accent": "bcc18b",
+      "purpose": "Long-legged cervid, open two-root crown and visible neck support; remains a passive grazer."
+    },
+    "marsh_wisp": {
+      "animal": "moth",
+      "concept": "lanternveil-moth-v01.png",
+      "kind": "ember_catalyst",
+      "coat": "505744",
+      "light": "899886",
+      "plate": "aaad8f",
+      "accent": "e8cb82",
+      "purpose": "Marsh moth with olive/cool-grey wings and warm stored light; retains its existing Ember Kind."
+    },
+    "cinder_wisp": {
+      "animal": "moth",
+      "concept": "lanternveil-moth-v01.png",
+      "kind": "ember_catalyst",
+      "coat": "42352c",
+      "light": "93613c",
+      "plate": "b1895b",
+      "accent": "ff9a39",
+      "purpose": "Soot/copper moth with ember-orange veins and abdomen; an Ember leyline expression of the same base animal."
+    }
+  }
+}

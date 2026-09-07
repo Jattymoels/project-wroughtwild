@@ -7,9 +7,14 @@ and rock, and extreme changes where meteorite magic travels through veins
 (enlarged trees, lava transitions and icing water). Creature direction mixes
 grimdark with traditional fantasy, showing ordinary Earth-like animals made
 fantastical by alien augmentation. The [first four sheets](concepts/creatures/2026-09-07/README.md)
-are visual proposals with Blender anatomy/material notes; specific designs and
-scales are not selected for runtime integration. This refines D-013/D-030's
-visual target without declaring a new generation, hazard or combat system.
+were subsequently selected for Blender creation: wolf → Ash Hound, boar →
+Whelp, stag → Valley Elk, moth → Wisps. Different leyline colours/influences
+augment the same ordinary animal lineage in different ways; Cinder Wisp is an
+Ember catalyst moth. The [first model adoption](../prototype/augmented-beasts-2026-09-07.md)
+uses five skinned exports, 512px material atlases and local glow channels. This
+bounded actor work supersedes the older placeholder texture limit for these
+skins. The actual model finish is a first playable pass, not final owner visual
+acceptance. No generation, hazard or combat rule is added.
 
 **INT-05A, 7 September 2026:** [Forge readability](../prototype/forge-readability-2026-09-07.md)
 uses the existing dark thresholds and authored room kit. Restrained shared

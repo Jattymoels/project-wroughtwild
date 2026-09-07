@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner creature selection, 7 September 2026: create the selected concepts in
+Blender and use wolf for Ash Hound, boar for the existing Whelp, stag for Valley
+Elk, and moth for both Wisps. The requested "Cinder Whelp" maps to the existing
+`ember_whelp` ID. Different coloured meteorite leylines augment ordinary animals
+in different ways; Cinder Wisp is an Ember catalyst expression of a moth.
+The [bounded adoption](../prototype/augmented-beasts-2026-09-07.md) extends
+D-013/D-030 with editable skins, articulated rigs and local material light.
+Existing combat clocks, Kinds, drops, bodies, world profiles and saves remain
+authoritative. Dynamic exposure and additional animal/leyline combinations are
+future design. Selection supersedes the ancestry proposals below for these
+four animals; the actual model finish still awaits owner visual review.
+
 Owner visual direction, 7 September 2026: establish a lasting image reference
 library and generate creature concepts for later Blender work. The two supplied
 landscapes call for gloomy river woodland, much fuller natural composition and

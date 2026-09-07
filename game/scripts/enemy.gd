@@ -564,6 +564,7 @@ func _refresh_look() -> void:
 	else:
 		_material.albedo_color = _base_albedo
 		_material.emission_enabled = false
+	RecoveredActorArt.refresh_material(self)
 
 
 ## A burning mob's death spreads its fire (the proliferate hook): every mob

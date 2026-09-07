@@ -22,7 +22,8 @@ The intended game combines self-directed construction, persistent ARPG buildcraf
 
 For visual and Blender work, begin with the [visual reference library](docs/art/references/README.md):
 owner-supplied environment references, the qualities to preserve, and versioned
-creature concept sheets with modelling notes.
+creature concept sheets with modelling notes. The selected creatures now have an
+[editable Blender master and game exports](art/blender/README.md).
 
 ## Current phase
 

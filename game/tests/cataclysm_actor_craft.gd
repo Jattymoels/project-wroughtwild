@@ -99,11 +99,22 @@ func _check_actors() -> void:
 		check(source_bounds.position.distance_to(Vector3(expected_min[0],expected_min[1],expected_min[2]))<.001
 			and source_bounds.end.distance_to(Vector3(expected_max[0],expected_max[1],expected_max[2]))<.001,"runtime source silhouette matches reviewed world-metre envelope: "+id)
 		var valid:=true
+		var largest_bind_error:=0.0
+		var largest_weight_error:=0.0
 		for i in vertices.size():
-			var bone:=bones[i*4]
-			valid=valid and bone>=0 and bone<motion.rig.get_bone_count() and is_equal_approx(weights[i*4],1.0)
-			var restored:=motion.rig.get_bone_global_pose(bone)*mesh.skin.get_bind_pose(bone)*vertices[i]
+			var restored:=Vector3.ZERO
+			var total:=0.0
+			for slot in 4:
+				var bone:=bones[i*4+slot]
+				var weight:=weights[i*4+slot]
+				valid=valid and bone>=0 and bone<motion.rig.get_bone_count() and weight>=0.0 and is_finite(weight)
+				total+=weight
+				restored+=(motion.rig.get_bone_global_pose(bone)*mesh.skin.get_bind_pose(bone)*vertices[i])*weight
+			valid=valid and is_equal_approx(total,1.0)
 			valid=valid and restored.is_equal_approx(vertices[i])
+			largest_bind_error=maxf(largest_bind_error,restored.distance_to(vertices[i]))
+			largest_weight_error=maxf(largest_weight_error,absf(total-1.0))
+		if not valid:print("Bind diagnostics ",id," position error ",largest_bind_error," weight error ",largest_weight_error)
 		check(valid,"all imported/detail vertices retain exact bind pose: "+id)
 		var shape_before:=capsule.shape
 		var body_before:=actor.transform
@@ -132,7 +143,9 @@ func _check_actors() -> void:
 		check(actor._material.emission_enabled and actor._material.emission.r>.9,"burn still uses current danger colour: "+id)
 		actor.burning_left=0
 		actor._refresh_look()
-		check(actor._material.albedo_color==Color.WHITE and not actor._material.emission_enabled,"status expiry restores normal tint without double family colour: "+id)
+		var grown_light:=int(definition.get("rig_version",1))==2
+		check(actor._material.albedo_color==Color.WHITE and actor._material.emission_enabled==grown_light
+			and (not grown_light or actor._material.emission_texture!=null),"status expiry restores normal tint and the correct local-light policy: "+id)
 		var original_scale:=mesh.scale
 		actor.configure(load("res://scripts/sim.gd").shared())
 		check(mesh.scale.is_equal_approx(original_scale) and mesh.get_child_count()==1

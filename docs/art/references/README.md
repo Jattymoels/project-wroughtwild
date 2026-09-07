@@ -60,7 +60,9 @@ image dimensions, checksums and concept version status.
 Concept PNGs are selected design artifacts, stored with their brief. They are
 separate from generated Blender builds/caches and from imported runtime assets.
 The existing [Blender pipeline](../../../tools/wroughtwild-blender/README.md#mobs-and-creature-rigs)
-remains the starting point for eventual modelling and Godot review.
+remains available for older studies. The four selected animals now have an
+[editable Blender master and adopted game exports](../../../art/blender/README.md),
+with actual geometry review images and recorded limitations.
 
 ## Adding the next reference
 

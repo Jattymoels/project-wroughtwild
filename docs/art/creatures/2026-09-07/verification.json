@@ -1,0 +1,156 @@
+{
+  "blender": "4.5.9",
+  "godot": "4.5-stable",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "resolution": [
+    1600,
+    1000
+  ],
+  "repeat_geometry_and_glb_identical": true,
+  "assets": {
+    "ash_hound": {
+      "animal": "wolf",
+      "kind": "quicksilver",
+      "triangles": 19416,
+      "visual_bounds": [
+        [
+          -0.3249678611755371,
+          -0.0028198116924613714,
+          -1.2569999694824219
+        ],
+        [
+          0.3249678611755371,
+          1.350000023841858,
+          1.4573746919631958
+        ]
+      ],
+      "sha256": "ec2cded39e9414591991be589608235d20884ff96c020e4bcbc33a6cdd0f0354",
+      "geometry_sha256": "65e3716d7c5302b90c6cf543e20fd19ed0480ee0cdba31bf6ad191234285f0bf",
+      "radial_overhang_m": 1.1078693434398694,
+      "bones": 17,
+      "glb_bytes": 1397716
+    },
+    "ember_whelp": {
+      "animal": "boar",
+      "kind": "ember_catalyst",
+      "triangles": 21070,
+      "visual_bounds": [
+        [
+          -0.5002444386482239,
+          -0.011999998241662979,
+          -1.3629999160766602
+        ],
+        [
+          0.5000607371330261,
+          1.2470027208328247,
+          1.0378851890563965
+        ]
+      ],
+      "sha256": "f28d7edc26bfa6b633d4c42fef82047af1efa94586e3a44e14bd139ff1b89eef",
+      "geometry_sha256": "7e907540e534929f6de9de15c9722148925f3cc49efb6fb9f73992e26df14371",
+      "radial_overhang_m": 1.0143198932303412,
+      "bones": 17,
+      "glb_bytes": 1379472
+    },
+    "valley_elk": {
+      "animal": "stag",
+      "kind": "marrow",
+      "triangles": 24466,
+      "visual_bounds": [
+        [
+          -0.9568421244621277,
+          -0.011999998241662979,
+          -1.2679426670074463
+        ],
+        [
+          0.9568421244621277,
+          3.2817277908325195,
+          0.9238511919975281
+        ]
+      ],
+      "sha256": "9148f6e059967f251fbb239da02569564904a3878407adaa882028e0ad54e7a7",
+      "geometry_sha256": "792eb918e8f580cb86334219f9aef5ee8101f67fd1c2c2c3f66d862bb1ea9a04",
+      "radial_overhang_m": 0.9534890081846769,
+      "bones": 17,
+      "glb_bytes": 1579140
+    },
+    "marsh_wisp": {
+      "animal": "moth",
+      "kind": "ember_catalyst",
+      "triangles": 11236,
+      "visual_bounds": [
+        [
+          -0.7008571028709412,
+          0.6064488887786865,
+          -0.3939633071422577
+        ],
+        [
+          0.7008571028709412,
+          1.1809844970703125,
+          0.41890478134155273
+        ]
+      ],
+      "sha256": "554ec16fe3c7154239682da327d717f694a7ff20c430d27cbaca0266a749e389",
+      "geometry_sha256": "7ed949db8db7416ad61045d789a738d5c8ba4374ebd5449b6dd871159554e242",
+      "radial_overhang_m": 0.45142817774385724,
+      "bones": 21,
+      "glb_bytes": 1046592
+    },
+    "cinder_wisp": {
+      "animal": "moth",
+      "kind": "ember_catalyst",
+      "triangles": 11236,
+      "visual_bounds": [
+        [
+          -0.7008571028709412,
+          0.6064488887786865,
+          -0.3939633071422577
+        ],
+        [
+          0.7008571028709412,
+          1.1809844970703125,
+          0.41890478134155273
+        ]
+      ],
+      "sha256": "0c2769be2ae590b9779b4894441b3dbd3aa156f55ecb5b47d8e60c8d5527b8a5",
+      "geometry_sha256": "6f628202fd8f21ed85ca8505bb64a79f4af4c283b544d879e48f878227df9c7c",
+      "radial_overhang_m": 0.45142817774385724,
+      "bones": 21,
+      "glb_bytes": 1037860
+    }
+  },
+  "headless": {
+    "checks": 167,
+    "crowd": {
+      "actors": 60,
+      "frame_median_ms": 0,
+      "frame_p95_ms": 0,
+      "pose_median_ms": 0.977,
+      "pose_p95_ms": 1.0,
+      "renderer": "headless"
+    },
+    "failures": 0,
+    "scope": "actual normal-spawn actors on an isolated review floor; rendering timings are not normal-world benchmarks"
+  },
+  "rendered": {
+    "checks": 204,
+    "crowd": {
+      "actors": 60,
+      "frame_median_ms": 4.161,
+      "frame_p95_ms": 4.434,
+      "pose_median_ms": 0.997,
+      "pose_p95_ms": 1.121,
+      "renderer": "Windows"
+    },
+    "failures": 0,
+    "scope": "actual normal-spawn actors on an isolated review floor; rendering timings are not normal-world benchmarks"
+  },
+  "other_headless_suites": {
+    "cataclysm_actor_craft": 200,
+    "creature_motion_checks": 100,
+    "combat_presentation": 65,
+    "presentation_checks": 33,
+    "ranged_fairness": 53
+  },
+  "master_sha256": "364d616f69bb7b716ac3b7287372b0c5f016f4d99600e4783c992e9c13a2218c"
+}

@@ -1,6 +1,11 @@
 # Wroughtwild Blender bridge
 
 Local, dependency-free Python MCP server for repeatable Blender building, nature, furnishing and mob studies.
+The selected wolf/boar/stag/moth adoption has a separate local authoring recipe:
+[editable master and regeneration](../../art/blender/README.md). Its script is
+`scripts/build_augmented_beasts.py` and its data is `augmented_beasts.json`.
+The older `--mobs` study remains the legacy comparison; it does not replace the
+selected animals or their articulated manifest automatically.
 The owner requested Blender tooling and selected building meshes/collision fit on
 6 September 2026, then approved an official portable Blender download.
 

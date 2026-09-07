@@ -18,9 +18,20 @@ beasts were ordinary, comparable to Earth's. They did not already embody the
 fantastical tropes seen after the catastrophe. Alien magic/technology corrupted
 and augmented them into their current forms. Earth-like describes the animal
 baseline, not a change of planet or an established history for its civilisations.
-Individual named creature ancestries remain proposals. The
+The owner subsequently selected wolf for Ash Hound, boar for the existing
+Whelp, stag for Valley Elk, and moth for both Wisps. The
 [visual reference library](art/references/README.md) records this direction and
 the first modelling-oriented creature studies.
+
+**Owner leyline clarification, 7 September 2026:** different coloured leylines
+carry different meteorite magic/technology influences. An ordinary animal's
+fantastical expression follows the influence that augmented it; Cinder Wisp is
+a moth affected by Ember catalyst magic. Animal ancestry and leyline influence
+are distinct design dimensions, allowing future forms of the same animal to
+differ in anatomy, materials and colour rather than just changing a tint.
+The first Blender adoption interprets existing family Kind data and preserves
+all current damage/loot rules. Exposure thresholds, inheritance, mixed
+influences and further combinations are not specified by this direction.
 
 ## What happened
 
@@ -58,8 +69,8 @@ implements one finite source and one existing brick recipe within that direction
 
 The sender and purpose of the meteorites, whether the shower was deliberate,
 the time since impact, the player's origin, and the names and histories of the
-former civilisations are not established. Individual enemy ancestries are also
-open; this premise does not require every beast to have been a person.
+former civilisations are not established. Enemy ancestries beyond the selected
+wolf, boar, stag and moth remain open; beasts need not have been people.
 
 “Conquer” describes the player's growing agency. Permanent territorial control,
 purification, restored settlements or removal of all future threats are not yet

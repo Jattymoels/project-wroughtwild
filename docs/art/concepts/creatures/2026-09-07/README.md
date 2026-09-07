@@ -1,7 +1,16 @@
 # Augmented beasts — first design set
 
-**Status:** concept proposals for owner review, 7 September 2026.
+**Status:** selected by the owner for Blender creation, 7 September 2026.
 **Deliverable:** four original image sheets and a Blender modelling brief.
+
+**Subsequent adoption:** wolf → Ash Hound; boar → existing Ember Whelp (called
+Cinder Whelp in the request); stag → Valley Elk; moth → Marsh/Cinder Wisps.
+The [editable model source](../../../../../art/blender/README.md) and
+[implementation record](../../../../prototype/augmented-beasts-2026-09-07.md)
+supersede the original mapping cautions below for these animals. Cinder Wisp
+expresses Ember catalyst influence. The original sheet descriptions remain a
+record of the concept pass; they do not grant the wolf a Frost attack or make
+every depicted material/detail a completed feature of the first 3D models.
 
 The [owner's references and direction](../../../references/README.md) ask for
 ordinary animals made fantastical by meteor-borne augmentation. D-013 supplies
