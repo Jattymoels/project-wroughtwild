@@ -243,6 +243,7 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("structure_near_point", "point"), &WroughtwildSim::structure_near_point);
     ClassDB::bind_method(D_METHOD("structure_piece_count"), &WroughtwildSim::structure_piece_count);
     ClassDB::bind_method(D_METHOD("lattice_pose", "shape_id", "element"), &WroughtwildSim::lattice_pose);
+    ClassDB::bind_method(D_METHOD("lattice_footprint", "shape_id", "element"), &WroughtwildSim::lattice_footprint);
     ClassDB::bind_method(D_METHOD("shape_accepts", "shape_id", "element"), &WroughtwildSim::shape_accepts);
     ClassDB::bind_method(D_METHOD("structure_occupied", "element"), &WroughtwildSim::structure_occupied);
     ClassDB::bind_method(D_METHOD("structure_free_for", "shape_id", "element"), &WroughtwildSim::structure_free_for);
@@ -3267,6 +3268,21 @@ bool WroughtwildSim::shape_accepts(const String& shape_id, const Dictionary& ele
     Element e;
     return require_loaded("shape_accepts") && shape_lattice(*tuning_, shape_id, sl) && element_from(element, e) &&
            wroughtwild::lattice::slotAccepts(sl.slot, e);
+}
+
+Array WroughtwildSim::lattice_footprint(const String& shape_id, const Dictionary& element) const {
+    Array out;
+    ShapeLattice sl;
+    Element e;
+    if (!require_loaded("lattice_footprint") || !shape_lattice(*tuning_, shape_id, sl) ||
+        element.get("cell", Variant()).get_type() != Variant::VECTOR3I || !element_from(element, e) ||
+        !wroughtwild::lattice::slotAccepts(sl.slot, e)) {
+        return out;
+    }
+    for (const auto& covered : wroughtwild::lattice::footprint(e, sl.span, sl.tall, sl.longCells)) {
+        out.push_back(element_to(covered));
+    }
+    return out;
 }
 
 bool WroughtwildSim::structure_touches(const String& shape_id, const Dictionary& element) const {

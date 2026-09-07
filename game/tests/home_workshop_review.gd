@@ -151,10 +151,13 @@ func _home(id: String, origin: Vector3i, developed: bool) -> Dictionary:
 	if _place(&"stairs",&"stone" if developed else &"wood",origin+Vector3i(2,0,-1))==null:return {}
 	check(player.placement.enclosure_at(interior).enclosed,id+" complete roof and walls provide authoritative shelter")
 	await get_tree().physics_frame
-	# Two-metre station spacing also lets the untouched baseline complete these
-	# matched homes. The compact adjacency fault has its own runtime regression.
+	# INT-03B found the old far-right forge's body inside the wall skin. Move
+	# it forward and half a cell inward using the existing off-grid placement;
+	# keep both houses, their catalogue and their paid quantities unchanged.
 	for item in [["workbench_kit",1],["mason_yard_kit",3],["forge_kit",5]]:
-		var site:=_place(StringName(item[0]),floor_family,origin+Vector3i(int(item[1]),1,4),"volume",0,2,true) as StationSite
+		var forge:=String(item[0])=="forge_kit"
+		var cell:=origin+Vector3i(4,1,3) if forge else origin+Vector3i(int(item[1]),1,4)
+		var site:=_place(StringName(item[0]),floor_family,cell,"volume",0,2,true,Vector3i.RIGHT if forge else Vector3i.ZERO) as StationSite
 		if site==null:return {}
 		home.stations[String(site.station_id)]=site.station_key
 		await get_tree().physics_frame
@@ -166,7 +169,7 @@ func _home(id: String, origin: Vector3i, developed: bool) -> Dictionary:
 	await get_tree().physics_frame
 	return home
 
-func _place(id: StringName, family: StringName, cell: Vector3i, kind := "volume", axis := 0, rotation_step := 0, kit := false) -> Node3D:
+func _place(id: StringName, family: StringName, cell: Vector3i, kind := "volume", axis := 0, rotation_step := 0, kit := false, half_offset := Vector3i.ZERO) -> Node3D:
 	var build:=player.placement
 	var palette:=player.build_palette
 	build.set_build_mode_enabled(true)
@@ -183,7 +186,7 @@ func _place(id: StringName, family: StringName, cell: Vector3i, kind := "volume"
 			palette.turn(1)
 		palette.close_panel()
 		selected=selection
-	var element:={"kind":kind,"axis":axis,"cell":cell*2}
+	var element:={"kind":kind,"axis":axis,"cell":cell*2+half_offset}
 	# Addresses are deterministic fixture targets, but ordinary refusal and
 	# payment stay authoritative. No direct place_piece or station creation.
 	player.global_position=Vector3(cell)+Vector3(-2,1.97,-2)
@@ -198,7 +201,7 @@ func _place(id: StringName, family: StringName, cell: Vector3i, kind := "volume"
 	check(sim.material_count(source)==before-cost,"placement pays exactly the native cost: "+String(id))
 	spent[source]=int(spent.get(source,0))+cost
 	if kit:
-		var at:=Vector3(cell)+Vector3(.5,0,.5)
+		var at:=Vector3(cell)+Vector3(.5,0,.5)+Vector3(half_offset)*.5
 		for child in get_children():
 			if child is StationSite and child.player_built and child.global_position.is_equal_approx(at):return child
 	else:
@@ -274,7 +277,7 @@ func _use_home(home: Dictionary) -> void:
 			check(player.work_panel.is_open() and player.work_panel._station==station,id+" E opens this physical station's work panel: "+station_id)
 			player.work_panel.close_panel()
 	var held:=sim.material_count("wood")
-	if check(_aim(chest,origin+Vector3(4.5,1.97,2.9),chest.global_position),id+" real E ray reaches the chest from its working aisle"):
+	if check(_aim(chest,origin+Vector3(3.5,1.97,2.9),chest.global_position),id+" real E ray reaches the chest from its working aisle"):
 		player.interact()
 		check(player.chest_panel.is_open() and player.chest_panel.store_key==String(home.store_key),id+" E opens this chest's native store")
 		check(player.chest_panel.store(&"wood",5)==5 and sim.material_count("wood")==held-5,id+" storage moves five carried timber into this chest exactly once")
@@ -331,7 +334,7 @@ func _save_restore() -> void:
 	for home: Dictionary in homes:
 		var origin:=Vector3(home.origin)
 		var chest:=_piece(home.chest_element)
-		if chest!=null and check(_aim(chest,origin+Vector3(4.5,1.97,2.9),chest.global_position),String(home.id)+" restored chest is physically targetable"):
+		if chest!=null and check(_aim(chest,origin+Vector3(3.5,1.97,2.9),chest.global_position),String(home.id)+" restored chest is physically targetable"):
 			player.interact()
 			check(player.chest_panel.is_open() and int(sim.store_contents(String(home.store_key)).get("wood",0))==3,String(home.id)+" restored E access leaves stored contents unchanged")
 			player.chest_panel.close_panel()

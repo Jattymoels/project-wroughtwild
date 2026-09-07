@@ -17,7 +17,7 @@ discussion; the suggested execution order follows the table.
 | --- | --- | --- | --- | --- |
 | INT-01 | First-hour clarity | Existing gathering, material processing, crafting and first-home options explain their requirements and next actions. | **Implemented, review pending.** [Outcome and evidence](first-hour-clarity-plan-2026-09-07.md), including shorter primary panel text and optional detail. | Can the owner understand a material, choose a useful project and find the next step without outside explanation? |
 | INT-02 | Exploration and environmental storytelling | Existing landmarks, approaches and resource clues communicate surviving civilisation, accidental impact and useful discoveries. | **INT-02A implemented, review pending:** [read the remains, follow the find](exploration-storytelling-2026-09-07.md). Existing smithy route, truthful rare clues and visible work/use handoffs verified; fuller graphical direction remains separate. | Are places inviting and clues understandable during ordinary exploration? |
-| INT-03 | Building and home development | Complete houses/workshops expose and resolve awkward placement, joins and interior usability. | **INT-03A implemented, review pending:** [a home you can build and use](home-workshop-usability-2026-09-07.md). Existing station previews/fit, material joins and actual interior walking verified. Terrain footprint, low built-ceiling station overlap and door-pose persistence are recorded for a bounded INT-03B follow-up. A furnishing kit is a separate content selection; farming is not included. | Is making and using a home comfortable and expressive? |
+| INT-03 | Building and home development | Complete houses/workshops expose and resolve awkward placement, joins and interior usability. | **INT-03A/B implemented, review pending:** [home usability](home-workshop-usability-2026-09-07.md) and [reliable placement/return](home-placement-persistence-2026-09-07.md). Station previews/clearance, material joins, actual walking, complete terrain footprints and saved door poses verified. A furnishing kit is a separate content selection; farming is not included. | Is making and using a home comfortable and expressive? |
 | INT-04 | Sound, animation and interaction feedback | Existing gathering, footsteps, stations and surroundings gain consistent material and state feedback. | Queued for presentation/asset brief. Use the established local pipeline; new external assets/services require an explicit choice. | Do feedback and ambience feel convincing through repeated use? |
 | INT-05 | Dungeon presentation and traversal | Existing Forge rooms, junctions, secrets, transitions and boss tells are easier to read and traverse. | Queued. The [Forge arc](trial-intensive-2026-09-06.md) already exists. Identify spatial/readability gaps without changing combat numbers. | Do routes and tells make sense, including under Foundry effects? |
 | INT-06 | Workshop usability | The existing finite feeder clearly communicates inputs, output, stored work, source exhaustion and blocked states. | Queued. Demonstrate the existing [pressure-to-brick loop](pressure-workshop-2026-09-06.md); broader lines and renewable supply remain separate proposals. | Can the owner build it, diagnose a stop and see why it is useful? |
@@ -29,9 +29,10 @@ and INT-04, then the focused INT-05/INT-06 refinements as review exposes needs.
 This is a working priority order, not a promise to run every item automatically.
 The loose-drop issue reproduced during INT-01 was handled first as INT-07A.
 INT-02A and INT-03A now have isolated gameplay captures and functional evidence.
-The next proposed follow-up is INT-03B: reproduce and bound the remaining
-placement/save cases recorded in the home audit, then continue to INT-04's
-sound and interaction-feedback brief. Owner playtesting remains deferred while
+INT-03B resolves the three placement/save cases recorded in the home audit.
+The next slice is INT-04's sound and interaction-feedback brief: audit existing
+local sounds and triggers, then define a bounded gathering/station pass without
+new external assets or gameplay rules. Owner playtesting remains deferred while
 away and does not block independent work.
 
 ## Delivery and tracking
@@ -81,3 +82,4 @@ needs its own bounded follow-up.
 | 7 Sep 2026 | Publishing | Owner reconfirmed ordinary main pushes; `3229ab4` published to origin/main. |
 | 7 Sep 2026 | INT-02A | Existing smithy gains bounded inert remains; five rare families have truthful clues, finite discovery cues, staged work text and opt-in native use links. Matched day/dusk and 720p/1080p UI captures, V5/V6 smithy checks and affected regressions pass. Owner discovery review remains pending. |
 | 7 Sep 2026 | INT-03A | Shared station previews/body, retained material joins and actual step clearance corrected. Two paid homes, three class journeys, save/storage checks and matched rendering pass. Earlier first-home evidence is corrected to require actual entry. Owner comfort review remains pending; separate placement/save findings are recorded. |
+| 7 Sep 2026 | INT-03B | Owner approved the next slice. Complete native footprints refuse buried ends; station kits clear built obstructions; optional validated door poses survive saves. Focused and affected regression evidence is recorded in the work item. Owner comfort review remains pending. |

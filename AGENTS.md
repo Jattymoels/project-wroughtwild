@@ -40,6 +40,19 @@ For every implementation task:
 7. Run relevant tests and checks.
 8. Report the result, limitations and tuning parameters introduced.
 
+## Owner's commit workflow
+
+The owner has given standing permission to commit completed, checked slices to
+`main` without asking again, and prefers ordinary non-force pushes to the
+existing `origin/main`. Record results and limitations with each slice. This
+permission covers this project's approved work, not unrelated changes, history
+rewrites, remote changes or destructive Git operations.
+
+Repository guidance does not override platform approval controls. If automatic
+approval review rejects publication, explain the stated reason and obtain the
+specific approval it requires; do not retry through another route. A local
+commit and a successful remote push must be reported separately.
+
 ## Prototype boundaries
 
 Unless a human-approved decision changes the boundary, do not introduce:

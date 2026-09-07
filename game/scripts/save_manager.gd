@@ -48,14 +48,17 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 		if block.is_fire():
 			continue  # a fire is fuel, not a building: it is out when you return
 		var cell: Vector3i = block.element["cell"]
-		block_data.append({
+		var entry := {
 			"shape": String(block.shape_id),
 			"family": String(block.material_family),
 			"kind": String(block.element["kind"]),
 			"axis": int(block.element["axis"]),
 			"cell": [cell.x, cell.y, cell.z],
 			"rotation_step": block.rotation_step,
-		})
+		}
+		if block.is_door():
+			entry["door_open"] = block.open
+		block_data.append(entry)
 
 	var node_data: Array = []
 	for node in nodes:
@@ -265,8 +268,12 @@ func apply(player: WroughtwildPlayer, data: Dictionary) -> bool:
 			"axis": int(entry["axis"]),
 			"cell": Vector3i(int(c[0]), int(c[1]), int(c[2])),
 		}
-		player.placement.place_piece(element, StringName(entry["shape"]), StringName(entry["family"]),
+		var block := player.placement.place_piece(element, StringName(entry["shape"]), StringName(entry["family"]),
 			int(entry.get("rotation_step", 0)))
+		if block != null and block.is_door():
+			# Older schema-2 saves have no leaf pose and retain their closed
+			# default. Set once; replaying a load must never toggle a door.
+			block.set_door_open(bool(entry.get("door_open", false)))
 	player.placement.refresh_trims()
 
 	# Resource nodes: restore units, respawn ones depleted since the save,
@@ -415,6 +422,7 @@ static func _valid_world_payload(data: Dictionary) -> bool:
 			if not _valid_text(entry.get(key)) or String(entry[key]).is_empty(): return false
 		if entry["kind"] not in ["volume", "face", "edge"] or int(entry["axis"]) not in [0,1,2]: return false
 		if entry.has("rotation_step") and not _valid_integer(entry["rotation_step"]): return false
+		if entry.has("door_open") and not entry["door_open"] is bool: return false
 	for entry in data.get("resource_nodes",[]):
 		if not entry is Dictionary or not _valid_vec(entry.get("position")): return false
 		for key in ["name", "parent", "family"]:

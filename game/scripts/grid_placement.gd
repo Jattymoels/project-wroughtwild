@@ -432,13 +432,21 @@ func _build_cell(registry_cell: Vector3i) -> Vector3i:
 		floori(float(registry_cell.z) / div))
 
 
-## The terrain's verdict on an element: a block cannot go into rock, and a
-## face or edge with rock on every side has nothing to stand against. A face
-## between rock and open air is fair game - planking a mine wall.
+## Every occupied element needs terrain exposure. The native footprint
+## includes the far end of long/tall pieces and full pieces on the fine grid.
 func _buried(element: Dictionary) -> bool:
 	var terrain := _find_terrain()
 	if terrain == null or terrain.map.is_empty():
 		return false
+	for covered in _sim().lattice_footprint(_target_shape(), element):
+		if _element_buried(terrain, covered):
+			return true
+	return false
+
+
+## A volume cannot go into rock. Faces/edges remain valid when at least
+## one neighbouring cell is air: mine lining, ground carpets and rock edges.
+func _element_buried(terrain: Terrain, element: Dictionary) -> bool:
 	var c: Vector3i = element["cell"]
 	var cells: Array[Vector3i] = []
 	match String(element["kind"]):
@@ -497,11 +505,20 @@ func element_refusal(element: Dictionary) -> String:
 	query.transform = Transform3D(Basis(Vector3.UP, pose["yaw"]), pose["centre"])
 	query.exclude = [get_parent()]
 	var space := (get_parent() as Node3D).get_world_3d().direct_space_state
+	var fixture_kit := selected_kit != &"" and not _sim().contraption_kind_for_kit(selected_kit).is_empty()
 	for result in space.intersect_shape(query, 32):
 		var collider: Object = result["collider"]
-		var fixture_kit := selected_kit != &"" and not _sim().contraption_kind_for_kit(selected_kit).is_empty()
-		if collider is PlacedBlock and not fixture_kit:
-			continue
+		if collider is PlacedBlock:
+			if selected_kit == &"":
+				continue  # ordinary piece-to-piece overlaps belong to the lattice
+			if not fixture_kit:
+				# A horizontal slab straddles its supporting plane by design.
+				# Preserve that floor contact, including half-grid floors, while
+				# walls and higher slabs/beams must clear the station's body.
+				var floor_y: float = pose["centre"].y-shape_size.y*0.5
+				if collider.element.get("kind","") == "face" and collider.element.get("axis",-1) == 1 and is_equal_approx(collider.global_position.y,floor_y):
+					continue
+				return "Building blocks this station. Leave room above and beside it."
 		if terrain != null and terrain.is_terrain_body(collider) and not fixture_kit:
 			continue
 		# Generated ruin remnants are scenery the player can build over. The

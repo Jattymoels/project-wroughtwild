@@ -152,9 +152,26 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [x] Two complete paid homes support E, station/chest use, stairs, shelter and
   exact save/storage restoration. All three class journeys physically enter
   their paid first shelter; matched home and existing-world evidence is recorded.
-- [ ] Owner finds building and using a home comfortable. Separate terrain,
-  built-ceiling station overlap and door-pose save limits remain explicit in
-  the [work item](home-workshop-usability-2026-09-07.md).
+- [ ] Owner finds building and using a home comfortable.
+  [Evidence and limits](home-workshop-usability-2026-09-07.md).
+
+## Placement and returning home (INT-03B)
+
+- [x] Every element of a new piece's native footprint respects edited terrain,
+  including long/tall pieces and fine-grid anchors. Mine lining, exposed edges
+  and ordinary D-017 piece overlaps remain valid; refused placement spends no
+  material. Saved buildings restore without new-placement revalidation.
+- [x] Station kits refuse obstructing player-built walls, beams and ceilings
+  while preserving intended slab contact, neighbouring pieces, existing body
+  dimensions and exact kit payment.
+- [x] Optional boolean door state restores the same leaf and collision pose
+  through atomic saves and repeated loads, with both axes and hinges covered.
+  A player saved in an open doorway remains clear of the restored leaf; real E
+  interaction still works. Malformed state rejects before live mutation; older
+  schema-2 records retain the closed default. Shelter and inventory rules remain.
+- [ ] Owner confirms these placement and return-home interactions feel reliable
+  during ordinary building. Focused checks pass; this human review remains
+  separate. [Scope and evidence](home-placement-persistence-2026-09-07.md).
 
 ## Whole-slice playtest
 

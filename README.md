@@ -38,7 +38,10 @@ Matched captures, interface checks and save/building regressions pass; owner
 discovery review remains pending. [INT-03A home/workshop usability](docs/prototype/home-workshop-usability-2026-09-07.md)
 adds accurate station ghosts and fit, material-correct joins and tight-ceiling
 step handling, verified with two complete homes and actual first-home entry.
-Owner comfort review and the recorded placement/save edge cases remain pending.
+[INT-03B placement/save reliability](docs/prototype/home-placement-persistence-2026-09-07.md)
+checks complete piece footprints against terrain, keeps stations clear of built
+walls and ceilings, and restores open doors in their saved physical pose.
+Existing buildings remain loadable; owner comfort review is still pending.
 
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,

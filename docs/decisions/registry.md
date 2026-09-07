@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: "Looks great - feel free to commit" and
+"Go ahead with next slice" accept [INT-03B](../prototype/home-placement-persistence-2026-09-07.md),
+the three bounded findings from the home audit. Terrain exposure now follows
+the complete native footprint; station bodies clear built walls and ceilings
+while retaining floor contact; optional validated door state restores the
+saved leaf and collision pose. Existing buildings load without applying new
+placement checks. D-017 overlaps, costs, world profiles, shelter and schema-2
+compatibility remain; the D-018 timber-demolition conflict is still separate.
+Ordinary main-branch commit permission is recorded in repository guidance;
+platform publication approval remains independent. Owner comfort review is pending.
+
 Owner continuation, 7 September 2026: “Yep continue” accepts the next bounded
 home/workshop usability slice after INT-02A. [INT-03A](../prototype/home-workshop-usability-2026-09-07.md)
 uses complete existing builds to correct placement previews, joins and interior

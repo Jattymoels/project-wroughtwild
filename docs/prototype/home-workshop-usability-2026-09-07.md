@@ -180,6 +180,6 @@ Owner review remains deferred: making a home, recognizing its entrance, comfort
 in a small room and eventual graphical finish still need human judgment. The
 authored examples expose the existing material range; their flat inspection
 ground does not certify all terrain slopes or seeds. The separately recorded
-placement/save cases above are the proposed INT-03B follow-up before the queued
+placement/save cases above are now addressed by [INT-03B](home-placement-persistence-2026-09-07.md) before the queued
 sound/interaction-feedback brief. No combat calibration, new generation,
 farming, furnishing catalogue or larger automation is implied.

@@ -249,6 +249,9 @@ public:
                              bool fine_grid) const;
     // Pose of the shape anchored at an element: {centre, yaw_turns}.
     Dictionary lattice_pose(const String& shape_id, const Dictionary& element) const;
+    // Exact registry elements covered by a valid shape/anchor. The host
+    // checks terrain exposure for each; span/tall/long stay native rules.
+    Array lattice_footprint(const String& shape_id, const Dictionary& element) const;
     // True when the shape may anchor on the element: the right kind of
     // element for its slot.
     bool shape_accepts(const String& shape_id, const Dictionary& element) const;

@@ -1,5 +1,35 @@
 # Construction System
 
+## Reliable placement and returning home — INT-03B, 7 September 2026
+
+New placement checks every element in the native shape footprint against the
+current edited terrain, including the far end of long or tall pieces and full
+pieces anchored on the fine grid. The existing exposure rule still applies to
+each element: mine-wall lining and exposed edges remain legal. D-017's ordinary
+piece-to-piece overlaps continue to use the native lattice rather than physical
+mesh intersection. Loading does not revalidate or remove existing buildings
+against these new-placement checks.
+
+Ordinary station kits now check their unchanged body against player-built walls,
+beams and ceilings as well as other props. Horizontal slabs on the station's
+supporting plane retain their intended floor contact, including fine-grid floors.
+The existing body dimensions and neighbour contact tolerance remain unchanged;
+a refused placement spends no kit. This resolves INT-03A's built-ceiling limit.
+
+Schema-2 block records optionally carry a boolean `door_open` for doors. The
+whole payload validates this field before inventory, player pose or live nodes
+change. Restoration assigns the state once and moves the visible leaf and its
+collision together, retaining the saved axis and hinge. Repeated loads do not
+toggle doors or pay for them again. Old records without the field retain their
+historical closed default. Doors still seal shelter open or shut; an open leaf
+remains a physical interaction target beside the passable doorway.
+
+The focused terrain, station and door checks pass (174, 84 and 467 checks).
+These establish the placement and persistence contracts; owner comfort review
+remains pending. No new tuning, schema version or construction form is introduced.
+The D-018 timber-demolition conflict stays outside this slice.
+[Scope, verification and limitations](../prototype/home-placement-persistence-2026-09-07.md).
+
 ## Home/workshop usability — INT-03A, 7 September 2026
 
 Ordinary station-kit previews use the placed station's shared current-tier mesh
@@ -7,8 +37,8 @@ and existing 0.96 × 2 × 0.96 m body for prop/station fit. The art keeps its gr
 pivot, including all four rotations; retained forge selections refresh after an
 upgrade or load. The body itself, payment and stable station identity are unchanged.
 This corrects the earlier oversized generic preview and neighbour rejection.
-It does not change the existing exclusion of ordinary placed pieces from these
-physics checks; low built-ceiling overlap is a separately recorded limitation.
+INT-03B above adds clearance against player-built geometry while retaining the
+same body and intended floor contact.
 
 Retained corner posts refresh their material from the native adjoining-family
 result. Catalogue door/post/beam shading uses the same material role as placed

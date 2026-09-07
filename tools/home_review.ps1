@@ -1,5 +1,6 @@
 param(
     [ValidateSet('baseline','current')][string]$Phase = 'current',
+    [ValidateSet('home','home-reliability')][string]$ReviewSet = 'home',
     [string[]]$Scenes = @('home_station_placement','home_material_joins','home_headroom','home_workshop_review'),
     [int]$Seed = 77,
     [switch]$Prepare,
@@ -13,7 +14,7 @@ param(
 # only a process launched by this invocation can be stopped on timeout.
 $ErrorActionPreference = 'Stop'
 $homeRepo = Split-Path $PSScriptRoot
-$homeRoot = Join-Path $homeRepo 'build/home'
+$homeRoot = Join-Path $homeRepo ('build/' + $ReviewSet)
 $homeCopy = Join-Path $homeRoot $Phase
 $homeGame = Join-Path $homeCopy 'game'
 $homeLogs = Join-Path $homeRoot ('logs/' + $Phase)
@@ -30,7 +31,8 @@ if ($Prepare) {
 if (-not (Test-Path -LiteralPath (Join-Path $homeGame 'project.godot'))) { throw 'Prepare the isolated project first.' }
 if ($Phase -eq 'baseline') {
     # Replay only the new common review/reproduction fixtures against untouched production.
-    foreach ($homeFile in @('home_station_placement.gd','home_station_placement.tscn','home_headroom.gd','home_headroom.tscn','home_workshop_review.gd','home_workshop_review.tscn')) {
+    $homeFixtures = if ($ReviewSet -eq 'home-reliability') { @('home_terrain_placement','home_station_clearance','home_door_persistence','home_workshop_review') } else { @('home_station_placement','home_headroom','home_workshop_review') }
+    foreach ($homeFile in ($homeFixtures | ForEach-Object { "$_.gd"; "$_.tscn" })) {
         if (Test-Path -LiteralPath (Join-Path $homeRepo "game/tests/$homeFile")) {
             Copy-Item -LiteralPath (Join-Path $homeRepo "game/tests/$homeFile") -Destination (Join-Path $homeGame "tests/$homeFile")
         }

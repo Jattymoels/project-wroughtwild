@@ -20,7 +20,7 @@ var rotation_step := 0
 ## construction.json form: box | stairs | wedge | door | arch | fire | chest.
 var form := "box"
 var size := Vector3.ONE
-## Doors: swung open (no collision) or shut.
+## Doors: swung open beside the doorway or shut across it, with leaf collision.
 var open := false
 ## Fires (D-020 fire-setting): seconds of fuel left, the heat the fuel
 ## burns at, and the soak clock before the rock beside it counts as hot.
@@ -191,14 +191,22 @@ func _burn_out() -> void:
 	queue_free()
 
 
-## Doors: swing the leaf open or shut. Open doors have no collision, so a
-## mob can follow you through. Returns the new state.
+## Doors: swing the leaf open or shut. The opening becomes passable while
+## the swung leaf remains a physical E target. Returns the new state.
 func toggle() -> bool:
 	if not is_door():
 		return false
-	open = not open
-	_swing(open)
+	set_door_open(not open)
 	return open
+
+
+## Restoring a saved door is an assignment, not another interaction. Keep
+## the logical state, visible leaf and its physical body together.
+func set_door_open(is_open: bool) -> void:
+	if not is_door():
+		return
+	open = is_open
+	_swing(open)
 
 
 ## Puts the leaf (mesh and collision) shut across the opening or swung a
