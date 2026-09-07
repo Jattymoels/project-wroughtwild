@@ -8,6 +8,31 @@ queue; the [numbered waves](roadmap-waves.md) remain a historical record.
 Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
+## Current priority — completed owner playtest, 7 September 2026
+
+The owner has finished this round of notes and asked for the next intensives
+and iterations to be planned. The [complete feedback ledger and slice plans](playtest-iterations-2026-09-07.md)
+include both retained screenshots and the later progression clarification.
+These priorities supersede the convenience/export-first recommendation below.
+All entries below are **Plan ready**, not implemented or finally calibrated.
+
+| Order | Slice | Requested outcome |
+| --- | --- | --- |
+| 1 | INT-03C | Reproduce/fix block-placement stalls, corner station fit and disappearing fixture kits. |
+| 2 | INT-03D | Useful common-resource building loads; separate capacity from actual house cost/yield. |
+| 3 | INT-04C | Retire the rejected ambient drone; quiet gaps and player control. |
+| 4 | INT-01B | Readable CURRENT FLOW and a clear mastery/specialisation/rail explanation. |
+| 5 | INT-05B | Reliable enemy contact and denser, spatially constrained Forge pressure within existing caps. |
+| 6 | INT-05C | Earned power progression, preserving catalyst/proliferation identities and viable early melee. |
+| 7 | INT-02C | Investigate sparse shellstone-area population and distinguish runtime faults from generation design. |
+| 8 | INT-02B | Finish the existing Blender environment target and address regional barrenness while preserving discovery. |
+
+The new owner feedback reopens specific issues within previously implemented
+passes. Technical evidence remains recorded; it does not override this human
+feedback or make all unrelated earlier work invalid. No final tuning values,
+new generator profile, higher enemy cap or dash invulnerability are selected by
+this plan. INT-08A/B remain proposed follow-ups at lower priority.
+
 ## Tracked slices
 
 IDs stay stable when priorities change. The order below preserves the original
