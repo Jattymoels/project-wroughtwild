@@ -248,7 +248,7 @@ func _mesh(id: StringName, kit: bool) -> Mesh:
 	if kit:
 		var kind := sim.contraption_kind_for_kit(id)
 		if not kind.is_empty(): return StrangeResourceArt.fixture_mesh(kind)
-		return preload("res://art/station_look.tres").mesh_for(StringName(sim.kit_station(id)))
+		return StationSite.kit_mesh(sim,id)
 	var actual: StringName = placement._fine_twins.get(id,id) if placement.fine_mode else id
 	var info: Dictionary = sim.shape(actual)
 	return PieceLook.mesh_for(actual,info.get("form","box"),info["size"],placement.selected_material_family)
@@ -258,7 +258,8 @@ func refresh_detail() -> void:
 	title.text = placement.selection_label()
 	picture.mesh = _mesh(placement.selected_kit if kit else placement.selected_shape,kit)
 	picture.colour = PieceLook.swatch_for(placement.selected_material_family)
-	picture.show_material(player.inventory.get_sim(),placement.selected_material_family,"station" if kit else placement.shape_form)
+	var role := "roof" if placement.shape_form.begins_with("roof_") else "door" if placement.shape_form=="door" else "frame" if placement.shape_slot in [&"post",&"beam"] else "surface"
+	picture.show_material(player.inventory.get_sim(),placement.selected_material_family,"station" if kit else placement.shape_form,role)
 	picture.turn = (placement.preview_rotation_step%2)*2 if placement.shape_form == "door" else placement.preview_rotation_step
 	picture.arrow = placement.rotatable()
 	picture.queue_redraw()

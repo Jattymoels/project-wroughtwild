@@ -224,6 +224,14 @@ packages, production-art dependencies or persistent objective system were added.
 
 ## Evidence and limits
 
+**Later correction, INT-03A:** the original journey below tested shelter from a
+teleported interior probe. Its two-cell slab ceiling left only 1.75 m for a
+1.92 m player capsule. The [home/workshop slice](home-workshop-usability-2026-09-07.md)
+replaces that review layout with a paid 46-wood home, a flush raised floor,
+three-metre walls, an exterior approach and actual stair/door traversal. The
+historical 274-check result below established the economic sequence, not
+physical entry. Current traversal results belong to INT-03A.
+
 The isolated helper is `tools/first_hour_review.ps1`. It copies game/data into
 `build/first-hour/runtime`, redirects APPDATA under that review directory, and
 runs the installed Godot 4.5 binary in a hidden window. Normal game processes and

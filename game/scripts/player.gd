@@ -544,9 +544,8 @@ func _physics_process(delta: float) -> void:
 
 
 ## Stairs and half cubes: a CharacterBody3D climbs slopes but never a
-## vertical step, so when the next stride is blocked at foot level, test
-## the same stride from STEP_HEIGHT higher; if it is clear there and there
-## is ground within a step below the far end, lift onto it. Mobs hop
+## vertical step, so when the next stride is blocked at foot level, measure
+## the walkable top within STEP_HEIGHT and sweep at that actual rise. Mobs hop
 ## (enemy.gd); the player steps.
 const STEP_HEIGHT := 0.55
 ## Test hook: a fake stick input (integration tests walk the player).
@@ -564,22 +563,52 @@ func _step_up(delta: float) -> void:
 	# floor contact, and that is exactly when the step is needed.
 	if not is_on_floor() and not test_move(here, Vector3.DOWN * 0.3):
 		return
-	if not test_move(here, stride):
+	var blocked := KinematicCollision3D.new()
+	if not test_move(here, stride, blocked):
 		return  # nothing in the way at foot level
-	var lift := Vector3.UP * STEP_HEIGHT
-	if test_move(here, lift):
-		return  # headroom missing
-	var raised := here.translated(lift)
-	if test_move(raised, stride):
-		return  # still blocked higher up: a wall, not a step
-	var landing := KinematicCollision3D.new()
-	var over := raised.translated(stride)
-	if not test_move(over, -lift, landing):
-		return  # no ground within a step below: a ledge, not a step
-	var drop := -landing.get_travel().y
-	if drop < 0.0 or drop > STEP_HEIGHT:
+	# Measure the real top surface just inside the surface the capsule hit.
+	# A movement-direction probe can miss it on diagonal approaches because
+	# the capsule touches a straight edge before that probe crosses the edge.
+	# A downward capsule cast can report a rounded contact up a taller wall;
+	# repeatedly treating that contact as a landing lets the pawn climb it.
+	var body: CollisionShape3D = $CollisionShape3D
+	var capsule := body.shape as CapsuleShape3D
+	if capsule == null:
 		return
-	global_position.y += STEP_HEIGHT - drop + 0.01
+	var foot := body.global_position - Vector3.UP * capsule.height * 0.5
+	var surface_normal := blocked.get_normal()
+	surface_normal.y = 0.0
+	if surface_normal.is_zero_approx():
+		return
+	var ahead := blocked.get_position() - surface_normal.normalized() * (stride.length() + safe_margin)
+	ahead.y = foot.y
+	var query := PhysicsRayQueryParameters3D.create(
+		ahead + Vector3.UP * (STEP_HEIGHT + safe_margin), ahead - Vector3.UP * safe_margin)
+	query.exclude = [self]
+	query.collision_mask = collision_mask
+	var landing := get_world_3d().direct_space_state.intersect_ray(query)
+	if landing.is_empty() or (landing["normal"] as Vector3).dot(Vector3.UP) < cos(floor_max_angle):
+		return
+	var surface_rise: float = landing["position"].y - foot.y
+	if surface_rise <= 0.0 or surface_rise > STEP_HEIGHT + safe_margin:
+		return
+	# A ceiling may allow the actual rise without allowing the full maximum
+	# probe height. Limit the small landing clearance to clear upward travel,
+	# then validate both movement segments at the real lift below.
+	var available_lift := STEP_HEIGHT
+	var ceiling := KinematicCollision3D.new()
+	if test_move(here, Vector3.UP * available_lift, ceiling):
+		available_lift = maxf(0.0, ceiling.get_travel().y)
+	if available_lift < surface_rise:
+		return
+	# Retain the existing small landing clearance without exceeding either
+	# the maximum step or the ceiling. Both legs of the real path must fit;
+	# a high probe alone is not permission to move through a lower obstacle.
+	var rise := minf(surface_rise + 0.01, available_lift)
+	var actual_lift := Vector3.UP * rise
+	if test_move(here, actual_lift) or test_move(here.translated(actual_lift), stride):
+		return
+	global_position.y += rise
 	velocity.y = 0.0
 
 

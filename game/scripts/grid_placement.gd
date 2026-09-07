@@ -16,7 +16,6 @@ extends Node
 const PLACED_BLOCK_SCENE := preload("res://scenes/placed_block.tscn")
 const STATION_SITE_SCENE := preload("res://scenes/station_site.tscn")
 const UI_LOOK = preload("res://art/build_ui_look.tres")
-const KIT_PREVIEW_SIZE := Vector3(1.8, 1.2, 1.8)
 ## Kits stand in a whole cell: they target the lattice as this shape does.
 const KIT_STAND_IN_SHAPE := &"cube"
 ## Metres between samples when the view ray reaches out into empty air.
@@ -122,7 +121,7 @@ func select_shape(shape_id: StringName) -> bool:
 ## lattice will actually be asked about (the selection or its fine twin).
 func _refresh_selection() -> void:
 	if selected_kit != &"":
-		shape_size = KIT_PREVIEW_SIZE
+		shape_size = StationSite.BODY.size
 		var fixture_kind := _sim().contraption_kind_for_kit(selected_kit)
 		if not fixture_kind.is_empty(): shape_size=ContraptionSite.bounds_for(fixture_kind)
 		shape_slot = &"block"
@@ -135,10 +134,17 @@ func _refresh_selection() -> void:
 		shape_form = String(info.get("form", "box"))
 		shape_oriented = bool(info.get("oriented", false))
 	if _preview_mesh != null:
-		_preview_mesh.mesh = PieceLook.mesh_for(_target_shape(),shape_form,shape_size,selected_material_family)
-		if selected_kit != &"" and not _sim().contraption_kind_for_kit(selected_kit).is_empty():
-			_preview_mesh.mesh=StrangeResourceArt.fixture_mesh(_sim().contraption_kind_for_kit(selected_kit))
-		if selected_kit==&"":
+		# Selection can cross from two-surface glazing to an authored kit.
+		# Clear old overrides before changing meshes so neither inherited glass
+		# nor a previous timber family can repaint the station/fixture.
+		for surface in _preview_mesh.get_surface_override_material_count():
+			_preview_mesh.set_surface_override_material(surface,null)
+		_preview_mesh.material_override = null
+		if selected_kit != &"":
+			var kind := _sim().contraption_kind_for_kit(selected_kit)
+			_preview_mesh.mesh = StrangeResourceArt.fixture_mesh(kind) if not kind.is_empty() else StationSite.kit_mesh(_sim(),selected_kit)
+		else:
+			_preview_mesh.mesh = PieceLook.mesh_for(_target_shape(),shape_form,shape_size,selected_material_family)
 			PieceLook.apply_to(_preview_mesh,shape_form,selected_material_family,PieceLook.material_for(_sim(),selected_material_family,
 				"roof" if shape_form.begins_with("roof_") else "door" if shape_form=="door" else "frame" if shape_slot in [&"post",&"beam"] else "surface"))
 		_preview_mesh.material_overlay = _preview_material
@@ -323,7 +329,7 @@ func _refresh_orientation_marker() -> void:
 		_orientation_marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		_preview_mesh.add_child(_orientation_marker)
 	var mesh := ImmediateMesh.new()
-	var y: float = shape_size.y*0.5+UI_LOOK.arrow_lift
+	var y: float = shape_size.y*(1.0 if selected_kit!=&"" else .5)+UI_LOOK.arrow_lift
 	var length: float = UI_LOOK.arrow_length
 	mesh.surface_begin(Mesh.PRIMITIVE_LINES)
 	for point in [Vector3(0,y,length*0.3),Vector3(0,y,-length*0.7),Vector3(0,y,-length*0.7),Vector3(-length*0.24,y,-length*0.4),Vector3(0,y,-length*0.7),Vector3(length*0.24,y,-length*0.4)]:
@@ -608,6 +614,13 @@ func _update_preview() -> void:
 	_update_leak_marker()
 	if _preview_mesh == null:
 		return
+	# A held forge kit can remain selected across a station upgrade or F9.
+	# Resolve the shared cached mesh when showing it, without requiring the
+	# player to choose the same kit again to see its current station tier.
+	if selected_kit != &"" and _sim().contraption_kind_for_kit(selected_kit).is_empty():
+		var current_mesh := StationSite.kit_mesh(_sim(),selected_kit)
+		if _preview_mesh.mesh != current_mesh:
+			_preview_mesh.mesh = current_mesh
 
 	var hit := _get_view_trace()
 	var from := camera.global_position
@@ -628,7 +641,8 @@ func _update_preview() -> void:
 	preview_element = element
 	var pose := piece_pose(_target_shape(), element, preview_rotation_step)
 	if selected_kit != &"":
-		# The kit preview is a stand-in box on the cell floor, not a shape.
+		# Collision stays centred above the floor; authored kit meshes have
+		# their pivot at that floor, just like the eventual placed objects.
 		pose["centre"].y += (shape_size.y - grid_size) * 0.5
 		pose["yaw"] = float(preview_rotation_step)*PI/2.0
 
@@ -638,7 +652,7 @@ func _update_preview() -> void:
 	preview_valid = preview_reason == ""
 
 	_preview_mesh.global_position = pose["centre"]
-	if selected_kit != &"" and not _sim().contraption_kind_for_kit(selected_kit).is_empty():
+	if selected_kit != &"":
 		# Authored fixtures have a ground pivot; their collision preview uses a centre.
 		_preview_mesh.global_position.y-=shape_size.y*0.5
 	_preview_mesh.rotation.y = pose["yaw"]
@@ -806,14 +820,18 @@ func refresh_trims() -> void:
 		var cell: Vector3i = edge["cell"]
 		var key := "%d_%d_%d" % [cell.x, cell.y, cell.z]
 		wanted[key] = true
+		var family: String = edge.get("family", "")
+		var look: Material = PieceLook.material_for(_sim(), StringName(family),"frame") if family != "" else _trim_material
 		if _trims.has(key):
+			# A shared edge can survive while its adjoining material changes.
+			# Reread the native family after edits and incremental save restore.
+			_trims[key].material_override = look
 			continue
 		var trim := MeshInstance3D.new()
 		var box := BoxMesh.new()
 		box.size = Vector3(TRIM_SIZE, registry_grid, TRIM_SIZE)
 		trim.mesh = box
-		var family: String = edge.get("family", "")
-		trim.material_override = PieceLook.material_for(_sim(), StringName(family),"frame") if family != "" else _trim_material
+		trim.material_override = look
 		_trims_root.add_child(trim)
 		trim.global_position = edge["centre"]
 		_trims[key] = trim

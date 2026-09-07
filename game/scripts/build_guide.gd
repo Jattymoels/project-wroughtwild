@@ -193,7 +193,7 @@ func _established() -> void:
 	var help := _details(column,"How the steps connect")
 	_text(help,"Harvesting frees a physical drop; move close to collect it. Recipe counts use your pack, so take stored materials from a chest first.")
 	_text(help,"Crafted kits stay in your pack until placed: B → Tab → choose the kit → LMB. Use E at the placed station.")
-	_text(help,"For shelter, enclose a room with a doorway and roof. Floor slabs can roof it now; pitched roofs have a later unlock. Build mode marks an opening when the room leaks to the sky.")
+	_text(help,"Enclose a room with a door and roof. Three wall panels above the walking floor leave headroom; keep the doorway flush with that floor. Slabs make an early roof; pitched roofs unlock later. Build mode marks shelter leaks.")
 
 func _text(parent: Node, text: String, colour := UiTheme.MUTED, font_size := 14) -> Label:
 	var label := Label.new()

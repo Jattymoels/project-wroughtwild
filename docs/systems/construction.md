@@ -1,5 +1,26 @@
 # Construction System
 
+## Home/workshop usability — INT-03A, 7 September 2026
+
+Ordinary station-kit previews use the placed station's shared current-tier mesh
+and existing 0.96 × 2 × 0.96 m body for prop/station fit. The art keeps its ground
+pivot, including all four rotations; retained forge selections refresh after an
+upgrade or load. The body itself, payment and stable station identity are unchanged.
+This corrects the earlier oversized generic preview and neighbour rejection.
+It does not change the existing exclusion of ordinary placed pieces from these
+physics checks; low built-ceiling overlap is a separately recorded limitation.
+
+Retained corner posts refresh their material from the native adjoining-family
+result. Catalogue door/post/beam shading uses the same material role as placed
+pieces and world ghosts. Native joins, dimensions and ownership remain unchanged.
+
+The player measures an actual walkable step surface, then sweeps the existing
+capsule at the required rise. A tight ceiling need only fit that rise, while the
+existing 0.55 m maximum and 1.92 m capsule remain. The home guide's optional detail
+recommends three wall panels above the walking floor and a flush doorway; this is
+practical headroom advice, not an additional shelter rule. Complete paid examples,
+walking checks and limitations: [work item](../prototype/home-workshop-usability-2026-09-07.md).
+
 ## Pressure feeder — D-031, 6 September 2026
 
 The feeder is one additional kit in the existing picker. Its model, preview and

@@ -1,5 +1,13 @@
 # Interface and In-Game Experience
 
+**INT-03A continuation, 7 September 2026:** station-kit ghosts and selected
+catalogue previews share the actual current-tier station mesh, including after
+upgrading or loading while retaining the selection. Changing from a glazed
+window clears its surface overrides before showing another kit. Door and frame
+previews use their placed material roles. Optional home detail now explains
+headroom above the walking floor and a flush doorway without adding primary
+panel text. [Scope and evidence](../prototype/home-workshop-usability-2026-09-07.md).
+
 **INT-02A continuation, 7 September 2026:** the existing Source/use entry now
 covers the five rare wild components as well as early materials. Native use
 previews and recipe consumers supply the payoff and navigation. During work,

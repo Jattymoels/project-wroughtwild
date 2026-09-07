@@ -167,23 +167,37 @@ func _run() -> void:
 func build_home() -> void:
 	if not check(find_home_plot(),"a clear first-home plot is available near the start"): return
 	player.global_position = Vector3(home_cell)+Vector3(-2,1,1)
+	var wood_before := _sim().material_count("wood")
+	# A flush cube floor and three-metre walls leave real headroom. Slabs
+	# centred at floor/ceiling y0/y2 gave only1.75m to a1.92m capsule.
+	var floor_cell := home_cell+Vector3i.UP
 	for x in 2:
 		for z in 2:
-			if not place(&"floor_slab",home_cell+Vector3i(x,0,z),"face",1): return
-	for y in 2:
+			if not place(&"cube",home_cell+Vector3i(x,0,z)): return
+	for z in [-3,-2]:
+		if not place(&"floor_slab",home_cell+Vector3i(0,0,z),"face",1): return
+	if not place(&"stairs",home_cell+Vector3i(0,0,-1)): return
+	for y in 3:
 		for i in 2:
 			for wall in [[0,Vector3i(0,y,i)],[0,Vector3i(2,y,i)],[2,Vector3i(i,y,2)]]:
-				if not place(&"wall_panel",home_cell+wall[1],"face",wall[0]): return
-			if i==1 and not place(&"wall_panel",home_cell+Vector3i(i,y,0),"face",2): return
-	if not place(&"door",home_cell,"face",2): return
-	var inside := Vector3(home_cell)+Vector3(.5,1.1,.5)
+				if not place(&"wall_panel",floor_cell+wall[1],"face",wall[0]): return
+			if i==1 and not place(&"wall_panel",floor_cell+Vector3i(i,y,0),"face",2): return
+	if not place(&"wall_panel",floor_cell+Vector3i(0,2,0),"face",2): return
+	if not place(&"door",floor_cell,"face",2): return
+	var inside := Vector3(floor_cell)+Vector3(.57,.98,.6)
 	check(not player.placement.enclosure_at(inside).enclosed,"walls without roof give actionable shelter failure")
 	for x in 2:
 		for z in 2:
-			if not place(&"floor_slab",home_cell+Vector3i(x,2,z),"face",1): return
+			if not place(&"floor_slab",floor_cell+Vector3i(x,3,z),"face",1): return
 	check(player.placement.enclosure_at(inside).enclosed,"paid slab roof and door seal first home before roof unlock")
 	check(not _sim().world_effect_active("stonecut_blocks"),"first home did not grant pitched-roof unlock")
-	if not place(&"chest",home_cell+Vector3i(1,0,1)): return
+	if not place(&"chest",floor_cell+Vector3i(1,0,1)): return
+	var expected_cost := 0
+	var piece_counts := {"cube":4,"wall_panel":22,"door":1,"floor_slab":6,"stairs":1,"chest":1}
+	for id in piece_counts:
+		expected_cost += int(piece_counts[id])*_sim().shape_material_cost(id)
+	check(wood_before-_sim().material_count("wood")==expected_cost,"complete home pays its exact native piece costs (%d wood)" % expected_cost)
+	if not await enter_home(): return
 	var chest: PlacedBlock
 	for block in get_children():
 		if block is PlacedBlock and block.is_chest(): chest=block
@@ -194,7 +208,6 @@ func build_home() -> void:
 	check(player.chest_panel.take(&"wood",2)==2,"stored supplies can be returned to crafting inventory")
 	var key := chest.store_key()
 	player.chest_panel.close_panel()
-	player.global_position=inside
 	player.combat._tick_shelter(1)
 	check(player.combat.sheltered and player.combat.has_home,"ordinary shelter probe establishes home")
 	await reload_boundary("home and stored resources")
@@ -213,6 +226,33 @@ func build_home() -> void:
 		await RenderingServer.frame_post_draw
 		get_viewport().get_texture().get_image().save_png(ProjectSettings.globalize_path("res://first-hour-home.png"))
 
+func enter_home() -> bool:
+	terrain.ensure_area(Vector3(home_cell))
+	var door: PlacedBlock
+	for block in get_children():
+		if block is PlacedBlock and block.is_door(): door=block
+	if not check(door!=null,"paid doorway exists for actual entry"): return false
+	# Travel may be accelerated, but entry is ordinary movement from the
+	# exterior apron, across two half-steps and through the real door body.
+	player.position=Vector3(home_cell)+Vector3(.57,1.105,-1.7)
+	player.rotation=Vector3.ZERO
+	player.velocity=Vector3.ZERO
+	for i in 3: await get_tree().physics_frame
+	player.camera.look_at(door.leaf_point())
+	if not check(player.aim_probe().get("target")==door,"outside camera can reach the real door"): return false
+	player.interact()
+	if not check(door.open,"ordinary E opens the entry"): return false
+	player.test_walk=Vector2(0,1)
+	player.set_physics_process(true)
+	for i in 160:
+		await get_tree().physics_frame
+		if player.position.z>=home_cell.z+.55: break
+	player.test_walk=Vector2.ZERO
+	for i in 4: await get_tree().physics_frame
+	player.set_physics_process(false)
+	return check(player.position.z>home_cell.z+.5 and absf(player.position.y-(home_cell.y+1.96))<.08,
+		"player walks up the paid stair and through the doorway without teleporting inside (%s)" % str(player.position))
+
 func find_home_plot() -> bool:
 	# Query the same refusal path as the preview; choose open ground instead
 	# of deleting a resource or bypassing a valid placement refusal.
@@ -226,7 +266,7 @@ func find_home_plot() -> bool:
 				for z in 3: c.y=maxi(c.y,ceili(terrain.surface_position(c.x+x,c.z+z).y))
 			var clear := true
 			for x in range(-1,3):
-				for z in range(-1,3):
+				for z in range(-3,3):
 					if build.element_refusal({"kind":"volume","axis":0,"cell":(c+Vector3i(x,0,z))*2})!="": clear=false
 			if clear:
 				home_cell=c

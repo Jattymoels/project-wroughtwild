@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: “Yep continue” accepts the next bounded
+home/workshop usability slice after INT-02A. [INT-03A](../prototype/home-workshop-usability-2026-09-07.md)
+uses complete existing builds to correct placement previews, joins and interior
+usability. Existing dimensions, costs, unlocks, saves and gameplay boundaries
+remain; proposed lower station bodies and timber-demolition policy stay separate.
+Implemented evidence now covers two complete paid homes, physical entry for all
+three class journeys, material/preview consistency and isolated save/rendering
+checks. The work item records separate placement/save limits for follow-up;
+owner comfort review remains deferred.
+
 Owner continuation, 7 September 2026: after the INT-07A result, “Yep - you can
 always push there. Continue on” confirms publishing approved work to the existing
 GitHub main branch and continuing the queued exploration work. [INT-02A](../prototype/exploration-storytelling-2026-09-07.md)

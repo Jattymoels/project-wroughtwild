@@ -141,6 +141,21 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [ ] The owner understands the ruined smithy and resource handoff during
   ordinary discovery. [Evidence and limits](exploration-storytelling-2026-09-07.md).
 
+## Home/workshop usability (INT-03A)
+
+- [x] Station ghosts use placed geometry, floor anchor, yaw and current tier;
+  station-to-station fit uses the unchanged body and normal kit payment.
+- [x] Retained mixed-material corners and catalogue frame/door roles match
+  placed materials through edits and repeated restoration.
+- [x] Real capsule walking handles sufficient tight-ceiling steps, including
+  diagonal approaches, while rejecting insufficient clearance and taller walls.
+- [x] Two complete paid homes support E, station/chest use, stairs, shelter and
+  exact save/storage restoration. All three class journeys physically enter
+  their paid first shelter; matched home and existing-world evidence is recorded.
+- [ ] Owner finds building and using a home comfortable. Separate terrain,
+  built-ceiling station overlap and door-pose save limits remain explicit in
+  the [work item](home-workshop-usability-2026-09-07.md).
+
 ## Whole-slice playtest
 
 The [Wide Frontier intensive](wide-frontier-intensive-2026-09-06.md), D-032,

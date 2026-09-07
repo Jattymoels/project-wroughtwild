@@ -35,7 +35,10 @@ load. [INT-02A exploration](docs/prototype/exploration-storytelling-2026-09-07.m
 now adds old craft and damage remains to the existing smithy, distinguishes rare
 clues from intact finds, and exposes their existing work stages and uses.
 Matched captures, interface checks and save/building regressions pass; owner
-discovery review remains pending. Building and home usability is next in the queue.
+discovery review remains pending. [INT-03A home/workshop usability](docs/prototype/home-workshop-usability-2026-09-07.md)
+adds accurate station ghosts and fit, material-correct joins and tight-ceiling
+step handling, verified with two complete homes and actual first-home entry.
+Owner comfort review and the recorded placement/save edge cases remain pending.
 
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,

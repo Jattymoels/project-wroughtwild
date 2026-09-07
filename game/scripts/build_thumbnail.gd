@@ -23,7 +23,7 @@ func _ready() -> void:
 
 ## The selected catalogue item gets one actual rendered material preview.
 ## Grid cards remain inexpensive geometry swatches; only one viewport exists.
-func show_material(sim: WroughtwildSim, family: StringName, form: String) -> void:
+func show_material(sim: WroughtwildSim, family: StringName, form: String, role: String = "") -> void:
 	if _material_view==null:
 		_material_view = SubViewport.new()
 		_material_view.size = Vector2i(520,320)
@@ -52,8 +52,11 @@ func show_material(sim: WroughtwildSim, family: StringName, form: String) -> voi
 		_material_mesh.material_override = null
 		for i in _material_mesh.get_surface_override_material_count(): _material_mesh.set_surface_override_material(i,null)
 	else:
+		# Box geometry alone cannot identify a post or beam. The picker supplies
+		# its native element role; old direct callers retain form-based defaults.
+		if role.is_empty(): role = "roof" if form.begins_with("roof_") else "door" if form=="door" else "surface"
 		PieceLook.apply_to(_material_mesh,form,family,PieceLook.material_for(sim,family,
-			"roof" if form.begins_with("roof_") else "surface"))
+			role))
 	queue_redraw()
 	# Update once after selection; moving the mouse does not render more 3D worlds.
 	if not RenderingServer.frame_post_draw.is_connected(queue_redraw):

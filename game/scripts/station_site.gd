@@ -6,6 +6,19 @@ extends StaticBody3D
 ## fits the one build cell its kit was placed in (owner playtest, 3 Sep: a
 ## two-metre bench engulfed the post standing beside it).
 
+## Shared with the placed scene: preview fit must keep the existing physical
+## body, including the deliberately unchanged air above low work surfaces.
+const BODY = preload("res://scenes/station_body.tres")
+
+static func kit_mesh(sim: WroughtwildSim, kit_id: StringName) -> Mesh:
+	var id := StringName(sim.kit_station(kit_id))
+	# Station upgrades are existing global knowledge. A newly placed basic
+	# forge therefore shows the same upgraded silhouette its site will use.
+	for other in sim.station_ids():
+		if sim.station(other).get("upgrade_from", "") == String(id) and sim.has_station(other):
+			return preload("res://art/station_look.tres").mesh_for(StringName(other))
+	return preload("res://art/station_look.tres").mesh_for(id)
+
 @export var station_id: StringName = &"forge_basic"
 ## Station that upgrades this one (empty for none).
 @export var upgrade_station_id: StringName = &"forge_improved"
