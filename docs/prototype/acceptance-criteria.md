@@ -207,6 +207,27 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [ ] Owner accepts walking repetition, material timbre and relative volume
   alongside combat, work and rare discovery in ordinary play.
 
+## Forge readability and traversal (INT-05A)
+
+[Scope and evidence](forge-readability-2026-09-07.md).
+
+- [x] Both physical branch approaches expose native reward/danger previews;
+  route, offering, lift, secret and conduit roles have restrained distinct forms.
+  Compact world text preserves a full aimed preview, and final galleries do not
+  promise another floor. Secret words remain limited to interaction reach.
+- [x] Actual player movement and interaction traverse all eight room treatments,
+  claim optional and mandatory rewards, suspend/restore at the reached boundary
+  and extract through the existing boss completion.
+- [x] The Warden reaches its existing claw range around runtime conduit bodies;
+  adding/replacing/removing fixture bodies restores the appropriate nav cells
+  while retaining one map/region and cancelling work on floor teardown.
+- [x] Hostile outlines retain the exact existing cone/disc/lane extents and
+  warning clocks; freeze/death cleanup, guard/recovery, cover and actual damage
+  remain correct. Burning ground shows its full affected radius until expiry.
+- [ ] Owner accepts route comprehension and tell recognition during ordinary
+  combat. Difficulty, build strength and target run durations remain uncalibrated
+  by these presentation/forced-clear checks.
+
 ## Whole-slice playtest
 
 The [Wide Frontier intensive](wide-frontier-intensive-2026-09-06.md), D-032,

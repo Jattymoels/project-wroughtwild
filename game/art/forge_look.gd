@@ -10,6 +10,10 @@ extends Resource
 @export var wall_height := 7.0 # High walls preserve an enclosed dungeon silhouette.
 @export var wall_thickness := 0.8 # Solid, readable reveals around thresholds.
 @export var doorway_width := 5.0 # Enough clearance for boss-sized bodies.
+## Route plaques stand before a branch in the gallery, rather than inside its
+## side wall. Their unchanged solid bodies remain outside the doorway itself.
+@export var route_gallery_edge_inset_m := 0.8
+@export var route_approach_offset_m := 8.0
 @export var navigation_cell := 1.0 # Authored floor polygon resolution around cover.
 @export var navigation_clearance := 1.15 # Fits the 0.9 m boss capsule plus corner clearance.
 @export var path_arrival_distance := 0.2 # Close waypoint arrival prevents cutting solid corners.

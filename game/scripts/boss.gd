@@ -23,6 +23,7 @@ var _trial_rules: Dictionary={}
 var _trial_kind:=""
 var _recovery_left:=0.0
 var _floor_tell: MeshInstance3D
+var _tell_boundary: ForgeTell
 
 
 static func spawn_boss(root: Node, at: Vector3) -> Boss:
@@ -88,6 +89,7 @@ func configure(sim: WroughtwildSim) -> void:
 		material.vertex_color_is_srgb = true
 		material.roughness = 1.0
 	state = "chase"
+	if not died.is_connected(_on_tell_owner_died): died.connect(_on_tell_owner_died)
 	_refresh_label()
 
 func configure_trial(controller: Node, rules: Dictionary) -> void:
@@ -109,8 +111,9 @@ func configure_trial(controller: Node, rules: Dictionary) -> void:
 func _begin_trial_tell() -> void:
 	if not is_instance_valid(trial_controller): return
 	trial_controller.boss_tells+=1
-	if is_instance_valid(_floor_tell): _floor_tell.queue_free()
+	_end_trial_tell()
 	_floor_tell=MeshInstance3D.new()
+	_floor_tell.name="BossFloorTell"
 	var surface:=SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var arc:=deg_to_rad(breath_cone_degrees)*.5
@@ -122,19 +125,21 @@ func _begin_trial_tell() -> void:
 		surface.add_vertex(Vector3(sin(a)*breath_range,.06,-cos(a)*breath_range))
 	surface.generate_normals()
 	_floor_tell.mesh=surface.commit()
-	var m:=StandardMaterial3D.new()
-	m.transparency=BaseMaterial3D.TRANSPARENCY_ALPHA
-	m.albedo_color=Color(1,.58,.2,.3)
-	m.emission_enabled=true
-	m.emission=Color(1,.4,.1)
-	m.emission_energy_multiplier=.6
-	m.cull_mode=BaseMaterial3D.CULL_DISABLED
-	_floor_tell.material_override=m
+	_floor_tell.material_override=ForgeTell.LOOK.fill()
+	_floor_tell.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(_floor_tell)
+	_tell_boundary=ForgeTell.attach(_floor_tell,ForgeTell.cone(breath_range,breath_cone_degrees))
+	_tell_boundary.set_warning(_telegraph_left,breath_telegraph_seconds)
 
 func _end_trial_tell() -> void:
-	if is_instance_valid(_floor_tell): _floor_tell.queue_free()
+	if is_instance_valid(_floor_tell):
+		_floor_tell.hide()
+		_floor_tell.queue_free()
 	_floor_tell=null
+	_tell_boundary=null
+
+func _on_tell_owner_died(_enemy: Enemy) -> void:
+	_end_trial_tell()
 
 
 ## Freezing a boss (through its buildup resistance) interrupts everything,
@@ -170,7 +175,9 @@ func _physics_process(delta: float) -> void:
 	var in_reach := _vertical_gap_to(player) <= vertical_reach
 	_attack_cooldown = maxf(0.0, _attack_cooldown - delta)
 	var planar := Vector3.ZERO
+	var was_recovering:=_recovery_left>0
 	_recovery_left=maxf(0,_recovery_left-delta)
+	if was_recovering and _recovery_left<=0: _refresh_label()
 	if _recovery_left>0:
 		velocity.x=0
 		velocity.z=0
@@ -202,6 +209,7 @@ func _physics_process(delta: float) -> void:
 				state = "chase"
 		"inhale":
 			_telegraph_left -= delta
+			if is_instance_valid(_tell_boundary): _tell_boundary.set_warning(_telegraph_left,breath_telegraph_seconds)
 			if _telegraph_left <= 0.0:
 				breathe(player)
 
@@ -257,9 +265,13 @@ func force_inhale() -> void:
 	state = "inhale"
 	_telegraph_left = breath_telegraph_seconds
 	_mesh.material_override = _telegraph_material
+	_refresh_label()
 
 
 func _refresh_label() -> void:
 	if _label != null:
-		var tag := "  (INHALING)" if state == "inhale" else ""
+		var tag := ""
+		if life>0:
+			if state=="inhale": tag="  (FIRE)" if breath_damage_type=="fire" else "  (SWEEP)"
+			elif _recovery_left>0: tag="  (RECOVERING)"
 		_label.text = "%s  %d / %d%s" % [display_name, ceili(life), ceili(max_life), tag]

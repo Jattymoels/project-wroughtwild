@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: "Yep let's do it" accepts
+[INT-05A](../prototype/forge-readability-2026-09-07.md), the queued Forge
+presentation and traversal pass. Existing physical choices, fixture roles and
+danger footprints gain readable approaches and restrained cues under D-013.
+Godot retains space and timing under D-010; D-028's native encounters, rewards,
+floors and checkpoint contract remain authoritative. Hostile outlines follow
+existing clocks and extents, and active burning ground retains its full visual
+radius until expiry. This adds no rooms, bosses, loot gates, enemy population
+or combat-number calibration. Owner visual and route-comprehension review stays
+pending while away.
+
 Owner continuation, 7 September 2026: "Continue on !" accepts
 [INT-04B](../prototype/footsteps-ambience-2026-09-07.md), the queued grounded
 footsteps and nearby ambience pass. Actual support and completed movement own

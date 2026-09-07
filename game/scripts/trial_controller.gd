@@ -132,7 +132,7 @@ func _reward_label(reward: String) -> String:
 		"weakness_offer": return "a cursed altar"
 		"materials": return "salvage"
 		"catalyst": return "the catalyst shrine"
-		"completion": return "the Tyrant's forge"
+		"completion": return "the boss spoils"
 	return reward
 
 
@@ -313,7 +313,10 @@ func _room_won() -> void:
 	if spatial:
 		completed_encounters+=1
 		var reward_type:=String(_pending_outcome.get("reward_type",""))
-		arena.dungeon.place_reward(room_space,"claim "+_reward_label(reward_type))
+		var offering: TrialFixture = arena.dungeon.place_reward(room_space,"claim "+_reward_label(reward_type))
+		offering.payload["reward_type"] = reward_type
+		offering.title = {"boon_offer":"Blessing shrine", "weakness_offer":"Bargain altar", "materials":"Recovered materials", "catalyst":"Catalyst shrine", "completion":"Boss spoils"}.get(reward_type,"Recovered offering")
+		offering.refresh()
 		_clear_conduits()
 		return
 	_present_pending_reward()

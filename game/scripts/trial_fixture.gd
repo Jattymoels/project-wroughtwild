@@ -15,15 +15,69 @@ var entry_point := Vector3.ZERO
 var payload: Dictionary = {}
 
 func trial_label() -> String:
-	if claimed: return "%s — spent" % title
-	return "%s — E to %s" % [title, detail] if available else "%s — sealed" % title
+	var name := _single_line(title)
+	if fixture_kind == "boundary" and bool(payload.get("terminal", false)): return name
+	if claimed: return "%s — %s" % [name, finished_label()]
+	if not available: return "%s — Sealed" % name
+	match fixture_kind:
+		"route":
+			var preview := reward_label()
+			var danger := danger_label()
+			if not danger.is_empty(): preview += " · " + danger
+			return "%s — E · Enter · %s" % [name, preview]
+		"boundary": return "%s — E · Continue, bank or suspend" % name
+		"secret": return "%s — E · Inspect" % name
+		"conduit": return "%s — E · Cool ward protection" % name
+	return "%s — E · %s" % [name, reward_action() if fixture_kind == "reward" else _single_line(detail)]
+
+func finished_label() -> String:
+	match fixture_kind:
+		"route": return "Chosen"
+		"secret": return "Searched"
+		"conduit": return "Cooling"
+	return "Finished"
+
+func reward_label() -> String:
+	var provided := _single_line(String(payload.get("reward_label", "")))
+	if not provided.is_empty(): return provided
+	return {"boon_offer":"Blessing", "weakness_offer":"Bargain", "materials":"Material haul", "catalyst":"Ember Catalyst", "completion":"Boss reward"}.get(String(payload.get("reward", "")), "Encounter")
+
+func reward_action() -> String:
+	return {"boon_offer":"Choose a blessing", "weakness_offer":"Review the bargain", "materials":"Claim materials", "catalyst":"Claim catalyst", "completion":"Claim boss spoils"}.get(String(payload.get("reward_type", "")), _single_line(detail))
+
+func danger_label() -> String:
+	var provided := _single_line(String(payload.get("danger_summary", "")))
+	if not provided.is_empty(): return provided
+	var count: int = payload.get("encounter", []).size()
+	return "%d foe%s" % [count, "" if count == 1 else "s"] if count > 0 else ""
+
+func world_lines() -> PackedStringArray:
+	var lines := PackedStringArray([_single_line(title)])
+	if claimed:
+		lines.append(finished_label())
+	elif not available:
+		lines.append("Sealed")
+	elif fixture_kind == "route":
+		lines.append(reward_label())
+		var danger := danger_label()
+		if not danger.is_empty(): lines.append(danger)
+	elif fixture_kind == "boundary":
+		lines.append("Continue · Bank · Suspend")
+	elif fixture_kind == "secret":
+		lines.append("Inspect the catch")
+	elif fixture_kind == "conduit":
+		lines.append("Cool ward protection")
+	elif fixture_kind == "reward":
+		lines.append(reward_action())
+	else:
+		lines.append(_single_line(detail))
+	return lines
+
+func _single_line(text: String) -> String:
+	return " ".join(text.replace("\n", " ").replace("\r", " ").split(" ", false))
 
 func refresh() -> void:
-	if label != null:
-		label.text = title + ("\n" + detail if available and not claimed else "\nSpent" if claimed else "\nSealed")
-		label.modulate = Color("e2d5b5") if available else Color("807f72")
-	if glow != null:
-		glow.visible = available and not claimed
+	TrialFixtureArt.refresh(self)
 
 func interact(player: WroughtwildPlayer) -> void:
 	if player.trial != null:

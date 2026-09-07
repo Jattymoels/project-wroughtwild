@@ -169,7 +169,18 @@ func navigation(room:Dictionary)->void:
 	var path:=dungeon.path(player.global_position,destination)
 	check(path.size()>=2 and path[-1].distance_to(destination)<2,"Godot navigation crosses doorway into room: %s -> %s = %s"%[player.global_position,destination,path])
 	var secret_path:=dungeon.path(dungeon.to_global(dungeon.entry),dungeon.secret.global_position)
-	check(secret_path.size()>=2 and secret_path[-1].distance_to(dungeon.secret.global_position)<2,"secret store reachable from entry: %s"%[secret_path])
+	check(secret_path.size()>=2,"secret store has a connected route from entry: %s"%[secret_path])
+	if secret_path.size()>=2:
+		# Solid fixtures now occupy navigation clearance. Prove that the path
+		# ends at a usable place rather than demanding entry into that body.
+		var saved_pose:=player.global_transform
+		var saved_view:=player.camera.global_transform
+		var capsule:=player.get_node("CollisionShape3D").shape as CapsuleShape3D
+		player.global_position=secret_path[-1]+Vector3.UP*capsule.height*.5
+		player.camera.look_at(dungeon.secret.global_position+Vector3.UP*1.05)
+		check(player.aim_probe().get("target")==dungeon.secret,"real interaction ray reaches secret from its clear navigation endpoint")
+		player.global_transform=saved_pose
+		player.camera.global_transform=saved_view
 	var enemy: Enemy=trial.trial_enemies()[0]
 	for other in trial.trial_enemies(): other.set_physics_process(false)
 	player.global_position=dungeon.to_global(room["centre"]+Vector3(5,.6,8))

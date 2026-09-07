@@ -36,7 +36,7 @@ func _ready() -> void:
 	disc.height = 0.08
 	disc.radial_segments = 12
 	var material := StandardMaterial3D.new()
-	material.albedo_color = Color(1.0, 0.45, 0.1, 0.85)
+	material.albedo_color = Color(1.0, 0.45, 0.1, ForgeTell.LOOK.burning_ground_initial_alpha)
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	material.emission_enabled = true
 	material.emission = Color(1.0, 0.4, 0.05)
@@ -54,8 +54,9 @@ func _process(delta: float) -> void:
 		queue_free()
 		return
 	if _mesh != null and seconds > 0.0:
-		var fade := clampf(_left / seconds, 0.2, 1.0)
-		_mesh.scale = Vector3(fade, 1.0, fade)
+		# The full radius still burns (or heals through Ashen Step) until expiry.
+		# Fade the existing surface instead of advertising a smaller safe boundary.
+		(_mesh.material_override as StandardMaterial3D).albedo_color.a = ForgeTell.LOOK.burning_ground_initial_alpha * clampf(_left / seconds, 0.0, 1.0)
 	_tick_left -= delta
 	if _tick_left > 0.0:
 		return

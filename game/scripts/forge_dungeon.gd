@@ -21,8 +21,20 @@ var _materials: Dictionary = {}
 var _box_meshes: Dictionary = {}
 var _walk_cells: Dictionary = {}
 var module_ids: Array[String] = []
+var navigation_build_count := 0
+var navigation_last_build_usec := 0
+var navigation_peak_build_usec := 0
+var _authored_obstacles: Array[Rect2] = []
+var _authored_walk_cells: Dictionary = {}
+var _authored_cells_ready := false
+var _fixture_obstacles: Array[Rect2] = []
+var _navigation_fixture_ids: Dictionary = {}
+var _navigation_refresh_queued := false
+var _navigation_closing := false
 
 func _exit_tree() -> void:
+	_navigation_closing = true
+	_navigation_refresh_queued = false
 	if navigation_map.is_valid():
 		NavigationServer3D.free_rid(navigation_map)
 		navigation_map = RID()
@@ -49,8 +61,9 @@ func build(layout: Dictionary, which_floor: int) -> void:
 			_module(centre, module, i + which_floor, side)
 			var key := "%d:%d" % [index, c]
 			var inward := centre.x - side * LOOK.room_width * .5
-			var door_at := Vector3(inward - side * .6, 0, z + 3)
-			var plate := _fixture("route", door_at + Vector3(0, 0, 2.5), String(choice.get("display_name", module)), "enter")
+			var plaque_at := Vector3(side * (LOOK.gallery_width * .5 - LOOK.route_gallery_edge_inset_m), 0,
+				z + LOOK.route_approach_offset_m)
+			var plate := _fixture("route", plaque_at, String(choice.get("display_name", module)), "enter")
 			plate.stage_index = index
 			plate.choice_index = c
 			plate.entry_point = centre + Vector3(-side * 6, .5, 3)
@@ -75,6 +88,10 @@ func build(layout: Dictionary, which_floor: int) -> void:
 				_box(Vector3(side*5,3.5,z+3),Vector3(.6,7,LOOK.doorway_width),LOOK.stone,true)
 	var end_z := -12.0 - float(maxi(stages.size()-1, 0)) * LOOK.row_spacing - 23.0
 	boundary = _fixture("boundary", Vector3(0, 0, end_z), "The descent lift", "choose the next floor")
+	if which_floor + 1 >= int(layout.get("floor_count", 2)):
+		boundary.title = "End of gallery"
+		boundary.payload["terminal"] = true
+		boundary.refresh()
 	# Secret is on the first floor only; both variants occupy real side space.
 	if which_floor == 0:
 		var s := -1.0 if int(layout.get("seed", 0)) % 2 == 0 else 1.0
@@ -105,6 +122,47 @@ func build(layout: Dictionary, which_floor: int) -> void:
 	if which_floor==0:
 		for z in [14.0,22.0]:
 			_box(Vector3(secret_side*6.5,3.5,z),Vector3(3,7,.6),LOOK.stone,true)
+	# Read actual collider poses after route plaque yaw is applied. Pedestals
+	# share the cover clearance map, including offerings and later conduits.
+	_authored_obstacles.assign(obstacles)
+	_refresh_fixture_obstacles()
+	_build_navigation()
+
+func _refresh_fixture_obstacles() -> void:
+	obstacles.assign(_authored_obstacles)
+	_fixture_obstacles.clear()
+	_navigation_fixture_ids.clear()
+	var live: Array = []
+	for candidate in fixtures:
+		if not is_instance_valid(candidate) or candidate.is_queued_for_deletion() or not candidate.is_inside_tree(): continue
+		var fixture: TrialFixture = candidate
+		live.append(fixture)
+		for child in fixture.get_children():
+			if not (child is CollisionShape3D) or child.disabled or not (child.shape is BoxShape3D): continue
+			var shape: BoxShape3D = child.shape
+			var pose: Transform3D = fixture.transform * child.transform
+			var half := shape.size * .5
+			var extent := pose.basis.x.abs() * half.x + pose.basis.y.abs() * half.y + pose.basis.z.abs() * half.z
+			var footprint := Rect2(pose.origin.x - extent.x, pose.origin.z - extent.z, extent.x * 2, extent.z * 2)
+			_fixture_obstacles.append(footprint)
+			obstacles.append(footprint)
+			_navigation_fixture_ids[fixture.get_instance_id()] = true
+	fixtures = live
+
+func _fixture_exiting(instance_id: int) -> void:
+	# A replaced offering can already have been excluded in the pending add
+	# refresh before queue_free emits this signal. Do not build twice for it.
+	if _navigation_fixture_ids.has(instance_id): _queue_navigation_refresh()
+
+func _queue_navigation_refresh() -> void:
+	if _navigation_refresh_queued or _navigation_closing or is_queued_for_deletion() or not is_inside_tree() or not is_instance_valid(region): return
+	_navigation_refresh_queued = true
+	_refresh_navigation.call_deferred()
+
+func _refresh_navigation() -> void:
+	_navigation_refresh_queued = false
+	if _navigation_closing or is_queued_for_deletion() or not is_inside_tree() or not navigation_map.is_valid(): return
+	_refresh_fixture_obstacles()
 	_build_navigation()
 
 func _material(colour: Color, metallic := false) -> Material:
@@ -292,6 +350,7 @@ func _fixture(kind: String, at: Vector3, title: String, detail: String) -> Trial
 	var f := TrialFixture.new()
 	f.fixture_kind = kind
 	f.position = at
+	if kind in ["reward", "boundary", "conduit"]: f.rotation.y = PI
 	f.title = title
 	f.detail = detail
 	add_child(f)
@@ -301,34 +360,11 @@ func _fixture(kind: String, at: Vector3, title: String, detail: String) -> Trial
 	collider.shape = shape
 	collider.position.y=1.05
 	f.add_child(collider)
-	var mesh := MeshInstance3D.new()
-	var box := BoxMesh.new()
-	box.size=shape.size
-	mesh.mesh=box
-	mesh.material_override=_material(LOOK.stone_light)
-	mesh.position.y=1.05
-	f.add_child(mesh)
-	f.label=Label3D.new()
-	f.label.position=Vector3(0,2.55,0)
-	f.label.font_size=30
-	f.label.pixel_size=.008
-	f.label.billboard=BaseMaterial3D.BILLBOARD_ENABLED
-	f.label.no_depth_test=false
-	f.label.visibility_range_end=25
-	f.add_child(f.label)
-	f.glow=MeshInstance3D.new()
-	var gem:=BoxMesh.new()
-	gem.size=Vector3(.5,.1,.76)
-	f.glow.mesh=gem
-	f.glow.position.y=1.55
-	var m:=_material(LOOK.ember).duplicate() as StandardMaterial3D
-	m.emission_enabled=true
-	m.emission=LOOK.ember
-	m.emission_energy_multiplier=.8
-	f.glow.material_override=m
-	f.add_child(f.glow)
+	TrialFixtureArt.build(f, _material(LOOK.stone_light), _material(LOOK.iron))
 	fixtures.append(f)
 	f.refresh()
+	f.tree_exiting.connect(_fixture_exiting.bind(f.get_instance_id()))
+	_queue_navigation_refresh()
 	return f
 
 func select_stage(index: int, choices: Array) -> void:
@@ -337,11 +373,16 @@ func select_stage(index: int, choices: Array) -> void:
 		f.available=f.stage_index==index and not f.claimed
 		if f.available and f.choice_index<choices.size():
 			var choice: Dictionary=choices[f.choice_index]
+			f.payload = choice.duplicate(true)
 			var counts := {}
-			for id in choice.get("encounter",[]): counts[id]=int(counts.get(id,0))+1
+			var sim = load("res://scripts/sim.gd").shared()
+			for id in choice.get("encounter",[]):
+				var display: String = sim.boss()["display_name"] if id == sim.boss()["id"] else sim.enemy(id).get("display_name", id)
+				counts[display]=int(counts.get(display,0))+1
 			var danger := PackedStringArray()
-			for id in counts: danger.append("%d %s" % [counts[id],String(id).replace("_"," ")])
-			f.detail=String(choice.get("reward", "encounter")).replace("_", " ")+" · "+", ".join(danger)
+			for display in counts: danger.append("%d× %s" % [counts[display], display])
+			f.payload["danger_summary"] = ", ".join(danger)
+			f.detail = f.reward_label() + " · " + f.danger_label()
 		f.refresh()
 
 func open_room(index: int, choice: int) -> Dictionary:
@@ -421,44 +462,66 @@ func _on_floor(point: Vector2) -> bool:
 		if rect.has_point(point): return true
 	return false
 
-func _build_navigation() -> void:
-	var vertices:=PackedVector3Array()
-	var polygons: Array[PackedInt32Array]=[]
-	var corners: Dictionary={}
+func _cache_authored_walk_cells() -> void:
+	# This floor's walls, cover and connected walk rectangles never change.
+	# Cache exactly their original eligibility, then consider only the current
+	# small fixture list when a reward or conduit is added or removed.
 	for rect in floor_rects:
 		for x in range(ceili(rect.position.x),floori(rect.end.x)):
 			for z in range(ceili(rect.position.y),floori(rect.end.y)):
 				var cell:=Vector2i(x,z)
-				if _walk_cells.has(cell): continue
+				if _authored_walk_cells.has(cell): continue
 				var blocked:=false
 				# Erode the UNION of connected floors, not each rectangle: a
 				# doorway shared by room/corridor must retain connected polygons.
 				var margin: float=LOOK.navigation_clearance
 				for offset in [Vector2(-margin,-margin),Vector2(margin,-margin),Vector2(-margin,margin),Vector2(margin,margin)]:
 					if not _on_floor(Vector2(x+.5,z+.5)+offset): blocked=true; break
-				for obstacle in obstacles:
+				for obstacle in _authored_obstacles:
 					if obstacle.grow(LOOK.navigation_clearance).intersects(Rect2(x,z,1,1)):
 						blocked=true; break
 				if blocked: continue
-				_walk_cells[cell]=true
-				var poly:=PackedInt32Array()
-				for corner in [cell,cell+Vector2i(0,1),cell+Vector2i(1,1),cell+Vector2i(1,0)]:
-					if not corners.has(corner):
-						corners[corner]=vertices.size()
-						vertices.append(Vector3(corner.x,.05,corner.y))
-					poly.append(corners[corner])
-				polygons.append(poly)
+				_authored_walk_cells[cell]=true
+	_authored_cells_ready = true
+
+func _build_navigation() -> void:
+	var started := Time.get_ticks_usec()
+	if not _authored_cells_ready: _cache_authored_walk_cells()
+	_walk_cells.clear()
+	var vertices:=PackedVector3Array()
+	var polygons: Array[PackedInt32Array]=[]
+	var corners: Dictionary={}
+	var occupied: Array[Rect2] = []
+	for obstacle in _fixture_obstacles: occupied.append(obstacle.grow(LOOK.navigation_clearance))
+	for cell: Vector2i in _authored_walk_cells:
+		var blocked := false
+		for obstacle in occupied:
+			if obstacle.intersects(Rect2(cell.x, cell.y, 1, 1)): blocked = true; break
+		if blocked: continue
+		_walk_cells[cell]=true
+		var poly:=PackedInt32Array()
+		for corner in [cell,cell+Vector2i(0,1),cell+Vector2i(1,1),cell+Vector2i(1,0)]:
+			if not corners.has(corner):
+				corners[corner]=vertices.size()
+				vertices.append(Vector3(corner.x,.05,corner.y))
+			poly.append(corners[corner])
+		polygons.append(poly)
 	var mesh:=NavigationMesh.new()
 	mesh.set_vertices(vertices)
 	for poly in polygons: mesh.add_polygon(poly)
-	navigation_map=NavigationServer3D.map_create()
-	NavigationServer3D.map_set_active(navigation_map,true)
-	NavigationServer3D.map_set_cell_size(navigation_map,.25)
-	NavigationServer3D.map_set_edge_connection_margin(navigation_map,.1)
-	region=NavigationRegion3D.new()
+	if not navigation_map.is_valid():
+		navigation_map=NavigationServer3D.map_create()
+		NavigationServer3D.map_set_active(navigation_map,true)
+		NavigationServer3D.map_set_cell_size(navigation_map,.25)
+		NavigationServer3D.map_set_edge_connection_margin(navigation_map,.1)
+	if not is_instance_valid(region):
+		region=NavigationRegion3D.new()
+		region.set_navigation_map(navigation_map)
+		add_child(region)
 	region.navigation_mesh=mesh
-	region.set_navigation_map(navigation_map)
-	add_child(region)
+	navigation_build_count += 1
+	navigation_last_build_usec = Time.get_ticks_usec() - started
+	navigation_peak_build_usec = maxi(navigation_peak_build_usec, navigation_last_build_usec)
 
 func path(from: Vector3,to: Vector3) -> PackedVector3Array:
 	if not navigation_map.is_valid() or not is_instance_valid(region) or NavigationServer3D.region_get_iteration_id(region.get_rid())==0 or NavigationServer3D.map_get_iteration_id(navigation_map)<2:

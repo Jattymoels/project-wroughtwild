@@ -20,6 +20,32 @@ demolition conflict remains outside this work item.
 
 ## Implemented rules and host contract
 
+The [INT-05A presentation pass](../prototype/forge-readability-2026-09-07.md)
+exposes current route plaques inside the gallery approach with the same solid
+body represented in navigation clearance. Available plaques preview the native
+reward and enemy names in three compact world-text lines; aiming retains the
+full preview. Selected routes say Chosen. Five shared stone/iron fixture shapes
+distinguish route seals, offerings, lifts, secret catches and ward conduits.
+Future routes suppress distant text; secrets use matte catches and words only
+within interaction reach. Final-floor gallery markers offer no fictional descent.
+
+Current solid fixtures also participate in navigation. Adding/removing offerings
+or ward conduits coalesces an update to the same floor map/region, restoring old
+clear cells and excluding live collider poses. Existing enemy path refresh and
+attack reach remain; this corrects the reproduced Warden/conduit obstruction
+without changing collision or introducing continuous rebaking.
+Fixed floor/cover eligibility is cached once per floor; event updates filter
+that same ordered candidate set against live fixture bodies before rebuilding
+the existing polygons. It adds no persistent navigation state.
+
+Boss and furnace warnings retain their native cones, discs and lanes. A dark
+inward perimeter remains visible beneath a warm stroke whose progress follows
+the existing warning clock, including pauses. Depth-tested outlines remain
+occluded by cover. FIRE, SWEEP and RECOVERING name actual boss phases; they do
+not alter attacks, guard protection or recovery duration. Burning-ground opacity
+fades over its existing lifetime while its affected radius remains visible at
+full size. The presentation adds no new hit checks, save fields or gameplay RNG.
+
 `TrialSession` remains the one rules authority. The original four-stage
 `trial_start` entry remains available for the vertical-slice economy regression
 fixture. Normal gameplay uses `trial_start_story(seed, run_id)` with

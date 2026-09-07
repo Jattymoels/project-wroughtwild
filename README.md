@@ -52,6 +52,12 @@ adds contacts from actual walking/support and quiet existing-biome beds that
 soften in shelter. World, save and trial boundaries clear cosmetic audio;
 mob hearing, generation and rare discovery rules remain unchanged.
 
+[INT-05A Forge readability](docs/prototype/forge-readability-2026-09-07.md)
+exposes route previews, distinguishes physical fixtures and outlines existing
+boss/furnace danger under overlapping effects. Enemies navigate around live
+conduits and offerings. Existing combat numbers, rewards and suspension rules
+remain; matched captures and physical traversal evidence accompany the slice.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and

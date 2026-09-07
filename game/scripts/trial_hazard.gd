@@ -15,11 +15,14 @@ var source_name := "Furnace vent"
 var spent := false
 var mesh: MeshInstance3D
 var material: StandardMaterial3D
+var boundary: ForgeTell
+var _warning_seconds := 0.0
 
 func configure(owner_controller: Node, at: Vector3, rules: Dictionary, lane := Vector2.ZERO, title := "Furnace vent") -> void:
 	controller=owner_controller
 	global_position=at+Vector3.UP*.045
 	tell_left=float(rules.get("hazard_telegraph_seconds",1.5))
+	_warning_seconds=tell_left
 	active_left=float(rules.get("hazard_active_seconds",3.0))
 	tick_seconds=float(rules.get("hazard_tick_seconds",.8))
 	raw_damage=float(rules.get("hazard_damage_per_tick",8.0))
@@ -39,15 +42,15 @@ func configure(owner_controller: Node, at: Vector3, rules: Dictionary, lane := V
 		var box:=BoxMesh.new()
 		box.size=Vector3(lane.x,.035,lane.y)
 		mesh.mesh=box
-	material=StandardMaterial3D.new()
-	material.transparency=BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color=Color(1,.55,.14,.25)
-	material.emission_enabled=true
-	material.emission=Color(1,.35,.06)
-	material.emission_energy_multiplier=.6
+	material=ForgeTell.LOOK.fill()
 	mesh.material_override=material
 	mesh.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(mesh)
+	boundary=ForgeTell.attach(mesh,ForgeTell.disc(radius) if lane==Vector2.ZERO else ForgeTell.lane(lane))
+	boundary.set_warning(tell_left,_warning_seconds)
+	if tell_left<=0:
+		material.albedo_color=ForgeTell.LOOK.active_fill
+		boundary.set_active()
 	add_to_group("trial_hazards")
 
 func contains_point(point: Vector3) -> bool:
@@ -68,10 +71,10 @@ func advance(delta: float) -> void:
 		var warning_step:=minf(tell_left,delta)
 		tell_left-=warning_step
 		delta-=warning_step
-		material.albedo_color.a=.3+.12*sin(float(Time.get_ticks_msec())*.01)
+		boundary.set_warning(tell_left,_warning_seconds)
 		if tell_left>0: return
-		material.albedo_color=Color(1,.3,.035,.7)
-		material.emission_energy_multiplier=1.6
+		material.albedo_color=ForgeTell.LOOK.active_fill
+		boundary.set_active()
 	if delta<=0: return
 	active_left-=delta
 	tick_left-=delta
@@ -83,5 +86,6 @@ func advance(delta: float) -> void:
 
 func cancel() -> void:
 	spent=true
+	if is_instance_valid(mesh): mesh.hide()
 	remove_from_group("trial_hazards")
 	queue_free()

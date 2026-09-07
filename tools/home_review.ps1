@@ -1,6 +1,6 @@
 param(
     [ValidateSet('baseline','current')][string]$Phase = 'current',
-    [ValidateSet('home','home-reliability','interaction-feedback','footsteps-ambience')][string]$ReviewSet = 'home',
+    [ValidateSet('home','home-reliability','interaction-feedback','footsteps-ambience','forge-readability')][string]$ReviewSet = 'home',
     [string[]]$Scenes = @('home_station_placement','home_material_joins','home_headroom','home_workshop_review'),
     [int]$Seed = 77,
     [switch]$Prepare,
@@ -35,6 +35,7 @@ if ($Phase -eq 'baseline') {
         'home-reliability' { @('home_terrain_placement','home_station_clearance','home_door_persistence','home_workshop_review') }
         'interaction-feedback' { @('interaction_route') }
         'footsteps-ambience' { @('footsteps_route') }
+        'forge-readability' { @('forge_readability_review') }
         default { @('home_station_placement','home_headroom','home_workshop_review') }
     }
     foreach ($homeFile in ($homeFixtures | ForEach-Object { "$_.gd"; "$_.tscn" })) {
@@ -78,7 +79,7 @@ try {
         if ($homeScene -notmatch '^[a-zA-Z0-9_]+$') { throw 'Scene must be a test basename.' }
         $homeFlags = if ($Rendered) { '--resolution 1440x900 --position -9999,-9999' } else { '--headless' }
         # Audio samples are exported for review; isolated checks never use the owner's speakers.
-        if ($ReviewSet -in @('interaction-feedback','footsteps-ambience')) { $homeFlags += ' --audio-driver Dummy' }
+        if ($ReviewSet -in @('interaction-feedback','footsteps-ambience','forge-readability')) { $homeFlags += ' --audio-driver Dummy' }
         $homeMode = if ($Rendered) { 'rendered' } else { 'headless' }
         $homeVariant = if ($ExtraArguments -match '--journey-class=([a-zA-Z0-9_]+)') { '-' + $Matches[1] } else { '' }
         Invoke-HomeCheck "$homeScene-$Seed-$homeMode$homeVariant" "$homeFlags res://tests/$homeScene.tscn -- --home-seed=$Seed --home-phase=$Phase $ExtraArguments"

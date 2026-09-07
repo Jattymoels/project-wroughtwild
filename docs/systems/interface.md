@@ -1,5 +1,14 @@
 # Interface and In-Game Experience
 
+**INT-05A continuation, 7 September 2026:** available Forge route plaques show
+the current section, native reward and encounter in at most three measured-width
+world-text lines; aiming retains the complete preview. Future-route text stays
+hidden, selected routes say Chosen, and resolved offerings say Finished even
+when a boon was declined. Actual reward identity supplies the short action.
+Cleared lifts retain Continue, bank and suspend; final galleries advertise no
+extra floor. Secret catches stay matte and explain inspection only at reach.
+Boss FIRE / SWEEP / RECOVERING cues follow existing phases. [Scope and evidence](../prototype/forge-readability-2026-09-07.md).
+
 **INT-03A continuation, 7 September 2026:** station-kit ghosts and selected
 catalogue previews share the actual current-tier station mesh, including after
 upgrading or loading while retaining the selection. Changing from a glazed

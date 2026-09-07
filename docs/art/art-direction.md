@@ -1,5 +1,15 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+**INT-05A, 7 September 2026:** [Forge readability](../prototype/forge-readability-2026-09-07.md)
+uses the existing dark thresholds and authored room kit. Restrained shared
+stone/iron silhouettes distinguish physical route seals, offerings, lifts,
+secret catches and ward conduits. Warm ready marks remain dimmer than danger;
+spent marks become cool worn metal and secrets stay matte. Compact current-route
+words avoid filling the gallery with future choices. Exact hostile footprints
+use a dark inward edge and warm clock-driven stroke beneath depth-tested cover;
+player-owned fields remain distinct. This bounded pass does not settle the
+owner's broader graphical finish or select a new art style.
+
 Latest owner playtest, 6 September 2026: the graphics still fall below the desired
 finish, described as resembling an old Newgrounds game. Earlier acceptance was
 temporary; the existing style is not final visual approval. A small playable
