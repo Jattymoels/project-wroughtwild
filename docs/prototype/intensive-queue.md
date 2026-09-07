@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 7 September 2026. Owner: Matty. Delivery: Codex.
+Updated: 8 September 2026. Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -20,7 +20,7 @@ Implementation evidence is recorded separately from these planned outcomes.
 | Order | Slice | Requested outcome |
 | --- | --- | --- |
 | 1 | INT-03C | **Implemented, review pending:** [placement reliability](placement-reliability-2026-09-07.md). Placement-frame medians fall from 242–274 to 9–21 ms; unchanged station bodies seat clear of corner walls. All seven kits pass ownership/visibility/restart checks. Original disappearance remains unreproduced; the densest measured placement still reaches 35 ms. |
-| 2 | INT-03D | Useful common-resource building loads; separate capacity from actual house cost/yield. |
+| 2 | INT-03D | **Implemented, review pending.** [240-unit common loads and 960-unit chests](building-loads-2026-09-08.md). Matched timber/quarry deliveries fall four to one each; harvesting demand and owner comfort remain separate. |
 | 3 | INT-04C | Retire the rejected ambient drone; quiet gaps and player control. |
 | 4 | INT-01B | Readable CURRENT FLOW and a clear mastery/specialisation/rail explanation. |
 | 5 | INT-05B | Reliable enemy contact and denser, spatially constrained Forge pressure within existing caps. |
@@ -150,6 +150,7 @@ needs its own bounded follow-up.
 
 | Date | Item | Result |
 | --- | --- | --- |
+| 8 Sep 2026 | INT-03D | Owner selected the next bounded slice. Common building loads and ordinary storage increased against a measured 225-wood project, preserving costs, finite source stock, special caps and exact ownership. [Measurements, checks and limits](building-loads-2026-09-08.md). INT-04C remains next. |
 | 7 Sep 2026 | INT-03C | Owner selected only this slice from `80dde32`. Local scenery refresh and bounded station seating correct reproduced stalls/refusals. Matched completed-home timing, exact scenery, actual controls, finite-state/home returns and fresh-process fixtures pass. Original disappearance remains unreproduced; other slices are not implemented. [Evidence and limits](placement-reliability-2026-09-07.md). |
 | 7 Sep 2026 | Queue | Seven discussed intensives recorded at the owner's request. |
 | 7 Sep 2026 | INT-01 | Read-only code/spec audit completed against `062b7e7`; concrete plan written. No gameplay edits or runtime checks performed for the planning task. |

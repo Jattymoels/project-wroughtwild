@@ -1,5 +1,15 @@
 # Construction System
 
+## Common building loads — INT-03D, 8 September 2026
+
+Ordinary timber, field/split/dressed stone and all eight habitat ingredients and
+finishes now have explicit 240-unit hauling caps. Each chest holds 960 units
+shared across families. The measured 188-wood six-metre home plus workshop and
+staging chest needs 225 wood, fitting one timber load. Ores, special items,
+equipment, costs, yields, machine buffers and progression retain their rules.
+Pickup/withdrawal caps never clamp crafted output, recovery or existing saves.
+See [the measured candidate and ownership checks](../prototype/building-loads-2026-09-08.md).
+
 ## Corner seating and local placement refresh — INT-03C, 7 September 2026
 
 Station previews and paid placement share a pose that clears adjacent wall skins

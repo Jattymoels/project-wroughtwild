@@ -51,6 +51,10 @@ Existing buildings remain loadable; owner comfort review is still pending.
 restricts costly scenery refresh to changed building areas and seats unchanged
 station bodies clear of corner walls. All seven fixture kits have actual-control
 and restart checks; the owner's original disappearance remains unreproduced.
+[INT-03D building loads](docs/prototype/building-loads-2026-09-08.md) raises common
+building-material hauling to 240 per family and ordinary chests to 960 shared
+units. Matched timber/quarry deliveries drop from four to one each, with the same
+finite harvesting work, paid construction and saved ownership.
 [INT-04A interaction feedback](docs/prototype/interaction-feedback-2026-09-07.md)
 adds distinct local work, release and material-collection sounds, plus one
 confirmation at the station completing a manual craft. Save/visual refreshes

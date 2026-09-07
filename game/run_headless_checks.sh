@@ -23,7 +23,9 @@ echo "== Codex art regression checks =="
 "$GODOT" --headless --path . --script tests/art_checks.gd
 
 echo "== integration test (physics + placement loop) =="
-"$GODOT" --headless --path . res://tests/integration.tscn
+# Numbered physics steps inspect process-owned trial rewards on the next step.
+# Fixed cadence prevents catch-up physics steps from skipping that process turn.
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/integration.tscn
 
 echo "== horde test (D-012 chase, training, cone, dash) =="
 "$GODOT" --headless --path . res://tests/horde.tscn
@@ -33,6 +35,12 @@ echo "== grammar test (frost orb fork, freeze breakpoints, shatter cascade) =="
 
 echo "== feel test (pickup magnet, harvest feedback, jump buffer) =="
 "$GODOT" --headless --path . res://tests/feel.tscn
+
+echo "== common building loads and ownership =="
+"$GODOT" --headless --path . res://tests/building_load_boundaries.tscn
+"$GODOT" --headless --path . res://tests/building_load_boundaries.tscn -- --load-restore-only
+"$GODOT" --headless --path . res://tests/building_load_review.tscn
+"$GODOT" --headless --path . res://tests/building_load_review.tscn -- --load-restore-only
 
 echo "== Codex faceted terrain =="
 "$GODOT" --headless --path . res://tests/faceted_terrain.tscn

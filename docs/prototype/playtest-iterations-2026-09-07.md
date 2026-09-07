@@ -83,6 +83,12 @@ The existing full trim/scenery refresh is a lead, not a diagnosed root cause.
 
 ### INT-03D: a useful building load
 
+Owner continuation, 8 September 2026: implement this next bounded slice after
+INT-03C. The [measured candidate and implementation](building-loads-2026-09-08.md)
+records 240-unit common loads, 960-unit shared chests, unchanged gathering demand
+and exact ownership checks. Owner comfort review remains pending. The original
+baseline and planning requirements follow.
+
 **Outcome:** carry enough ordinary resources to make meaningful progress on a
 small home without constant hauling interruptions.
 

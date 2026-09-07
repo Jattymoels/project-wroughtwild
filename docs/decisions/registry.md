@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner continuation, 8 September 2026: “Okay continue with next” selects
+[INT-03D](../prototype/building-loads-2026-09-08.md), the next bounded playtest
+slice after INT-03C. The measured initial candidate is 240 per common building
+material and 960 shared units per ordinary chest. This revises hauling tuning
+under D-005 while retaining D-006 ownership, construction/recipe costs, finite
+sources, special-item caps, equipment, machine buffers and saved geography.
+Harvest demand and owner building comfort remain separate review questions.
+
 Owner creature selection, 7 September 2026: create the selected concepts in
 Blender and use wolf for Ash Hound, boar for the existing Whelp, stag for Valley
 Elk, and moth for both Wisps. The requested "Cinder Whelp" maps to the existing

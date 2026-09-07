@@ -188,6 +188,19 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   speculative inventory correction is made. [Evidence](placement-reliability-2026-09-07.md).
 - [ ] Owner confirms ordinary corner building and placement comfort.
 
+## Common building loads (INT-03D)
+
+- [x] A useful timber home/workshop and quarry building increment fit one
+  common-material haul each. Matched generated-source work, recipe costs and
+  actual paid construction remain exact.
+- [x] Larger common loads and shared chest capacity preserve partial pickups,
+  special caps, crafted overflow, old/over-cap saves, death recovery and trial
+  deposits. Completed generated homes and ownership checkpoints restore in
+  fresh isolated processes.
+- [ ] Owner accepts ordinary building/hauling comfort. The measured project
+  still requires seventeen trees; capacity changes do not reduce that work.
+  [Evidence and limits](building-loads-2026-09-08.md).
+
 ## Interaction feedback (INT-04A)
 
 - [x] Accepted resource work, release and positive material collection have

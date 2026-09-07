@@ -1,6 +1,6 @@
 param(
     [ValidateSet('baseline','current')][string]$Phase = 'current',
-    [ValidateSet('home','home-reliability','interaction-feedback','footsteps-ambience','forge-readability','workshop-usability','placement-reliability')][string]$ReviewSet = 'home',
+    [ValidateSet('home','home-reliability','interaction-feedback','footsteps-ambience','forge-readability','workshop-usability','placement-reliability','building-loads')][string]$ReviewSet = 'home',
     [string[]]$Scenes = @('home_station_placement','home_material_joins','home_headroom','home_workshop_review'),
     [string[]]$Scripts = @(),
     [int]$Seed = 77,
@@ -33,6 +33,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $homeGame 'project.godot'))) { throw
 if ($Phase -eq 'baseline') {
     # Replay only the new common review/reproduction fixtures against untouched production.
     $homeFixtures = switch ($ReviewSet) {
+        'building-loads' { @('building_load_review','building_load_boundaries') }
         'placement-reliability' { @('placement_transactions','placement_performance_review','placement_scenery','placement_generated_fixtures') }
         'home-reliability' { @('home_terrain_placement','home_station_clearance','home_door_persistence','home_workshop_review') }
         'interaction-feedback' { @('interaction_route') }
@@ -85,10 +86,13 @@ try {
     foreach ($homeScene in $Scenes) {
         if ($homeScene -notmatch '^[a-zA-Z0-9_]+$') { throw 'Scene must be a test basename.' }
         $homeFlags = if ($Rendered) { '--resolution 1440x900 --position -9999,-9999' } else { '--headless' }
+        # This legacy driver asserts process-owned trial rewards on the next
+        # physics step. Keep one process frame between its numbered steps.
+        if ($homeScene -eq 'integration') { $homeFlags += ' --fixed-fps 60' }
         # Audio samples are exported for review; isolated checks never use the owner's speakers.
-        if ($ReviewSet -in @('interaction-feedback','footsteps-ambience','forge-readability','workshop-usability')) { $homeFlags += ' --audio-driver Dummy' }
+        if ($ReviewSet -in @('interaction-feedback','footsteps-ambience','forge-readability','workshop-usability','building-loads')) { $homeFlags += ' --audio-driver Dummy' }
         $homeMode = if ($Rendered) { 'rendered' } else { 'headless' }
-        $homeVariant = if ($ExtraArguments -match '--journey-class=([a-zA-Z0-9_]+)') { '-' + $Matches[1] } elseif ($ExtraArguments -match '--placement-restore-only|--soak-resume') { '-restart' } else { '' }
+        $homeVariant = if ($ExtraArguments -match '--journey-class=([a-zA-Z0-9_]+)') { '-' + $Matches[1] } elseif ($ExtraArguments -match '--load-baseline') { '-baseline-restart' } elseif ($ExtraArguments -match '--placement-restore-only|--soak-resume|--load-restore-only') { '-restart' } else { '' }
         Invoke-HomeCheck "$homeScene-$Seed-$homeMode$homeVariant" "$homeFlags res://tests/$homeScene.tscn -- --home-seed=$Seed --home-phase=$Phase $ExtraArguments"
     }
 } finally { $env:APPDATA = $priorHomeAppData }
