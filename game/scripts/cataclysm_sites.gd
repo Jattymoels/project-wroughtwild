@@ -375,14 +375,60 @@ func refresh_area(cx: int, cz: int, width: int) -> void:
 		node.set_meta("hidden_by_building", hidden)
 		_apply_visibility(node, bool(node.get_meta("supported", false)) and not hidden)
 	for trace in traces:
-		if bounds.intersects(trace.get_meta("xz_bounds", Rect2())): _trace(trace, index)
+		if bounds.intersects(trace.get_meta("xz_bounds", Rect2())): _trace(trace, index, true)
 
 func refresh_all() -> void:
 	for node in pieces: _reground(node)
 	refresh_buildings()
 
-func _trace(trace: MeshInstance3D, buildings: Dictionary = {}) -> void:
+func _trace(trace: MeshInstance3D, buildings: Dictionary = {}, only_surface_changes := false) -> void:
+	# A streamed chunk can overlap the broad refresh margin without changing
+	# any surface a fissure samples. Keep only exact node IDs, never strong
+	# sampler/node references that would defeat distant-terrain retirement.
+	var ids := _trace_surface_ids(trace)
+	if only_surface_changes and trace.get_meta("sampled_chunk_ids", PackedInt64Array()) == ids \
+			and trace.get_meta("sampled_profile", "") == terrain.world_profile() \
+			and int(trace.get_meta("sampled_seed", -1)) == terrain.seed_value():
+		return
 	_fissures.rebuild(trace, terrain, buildings)
+	trace.set_meta("sampled_chunk_ids", ids)
+	trace.set_meta("sampled_profile", terrain.world_profile())
+	trace.set_meta("sampled_seed", terrain.seed_value())
+
+func _trace_surface_ids(trace: MeshInstance3D) -> PackedInt64Array:
+	var ids := PackedInt64Array([terrain.get_instance_id()])
+	var path: PackedVector3Array = trace.get_meta("record", {}).get("points", PackedVector3Array())
+	if path.is_empty(): return ids
+	var bounds := Rect2(Vector2(path[0].x,path[0].z),Vector2.ZERO)
+	for point in path: bounds = bounds.expand(Vector2(point.x,point.z))
+	var look = LeylineFissures.LOOK
+	# Every sampled centre lies on a native interval or a branch/twig. Bound
+	# all three possible curve jitters, the longest branch and a whole twig;
+	# include chipped outer columns and the independently wandering light.
+	var cross_width := 0.0
+	for column in LeylineFissures.CROSS_SECTION: cross_width = maxf(cross_width,absf(column))
+	var edge_stretch := maxf(1.0,absf(1.0-look.edge_width_variation))
+	var half_width := maxf(absf(look.minimum_width_m),absf(look.maximum_width_m))*0.5
+	var width_scale := maxf(1.0,absf(look.branch_width_fraction))
+	var lateral := half_width*width_scale*maxf(cross_width*edge_stretch,0.035+absf(look.strand_wander_fraction))
+	var reach := 3.0*absf(look.meander_m)+maxf(absf(look.branch_minimum_m),absf(look.branch_maximum_m))+absf(look.twig_length_m)+lateral
+	var cell := float(terrain.map.get("cell_size",1.0))
+	# rendered_height also reads neighbours within half a voxel of a seam.
+	# Inclusive limits conservatively retain a boundary neighbour at exact ties.
+	bounds = bounds.grow(reach+cell*0.5)
+	var side := Terrain.CHUNK_CELLS*cell
+	var first := Vector2i(floori(bounds.position.x/side),floori(bounds.position.y/side))
+	var last := Vector2i(floori(bounds.end.x/side),floori(bounds.end.y/side))
+	# Grid coordinates accompany IDs so equal vectors cannot alias footprints.
+	ids.append(first.x)
+	ids.append(first.y)
+	ids.append(last.x)
+	ids.append(last.y)
+	for z in range(first.y,last.y+1):
+		for x in range(first.x,last.x+1):
+			var chunk: Node3D = terrain.chunks.get("%d_%d" % [x*Terrain.CHUNK_CELLS,z*Terrain.CHUNK_CELLS])
+			ids.append(chunk.get_instance_id() if is_instance_valid(chunk) else 0)
+	return ids
 
 ## Same authored technology inset against the existing dungeon's solid walls.
 ## It changes no corridor widths, navigation polygons, fixtures or boss tells.

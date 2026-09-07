@@ -70,6 +70,9 @@ var faceted_surface := false
 var weathered := false
 var build_profile: Dictionary = {}
 var last_chunk_profile: Dictionary = {}
+## Latest final-stage breakdown locates collision construction versus decoration
+## suppression cost; it is transient review data and never controls publication.
+var last_collision_profile: Dictionary = {}
 var _sim: WroughtwildSim
 var _seed := 0
 var _world_profile := "legacy_v1"
@@ -335,12 +338,18 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 			HabitatCover.build(chunk,chunk_data,map,cell,_world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6"])
 
 	elif phase==3:
+		last_collision_profile = {"collision_faces":0.0, "collision_body":0.0, "cover_suppression":0.0}
 		var faces: PackedVector3Array = chunk_data["faces"]
 		if not faces.is_empty():
 			var shape := ConcavePolygonShape3D.new()
-			shape.set_faces(faces)
-			# The sim does not promise a winding; collide from both sides.
+			# Set the final mode on the empty shape before supplying its faces,
+			# avoiding a second configuration of the populated triangle shape.
+			# The published collider keeps the exact faces and two-sided contract.
 			shape.backface_collision = true
+			var began := Time.get_ticks_usec()
+			shape.set_faces(faces)
+			last_collision_profile.collision_faces = (Time.get_ticks_usec()-began)/1000.0
+			began = Time.get_ticks_usec()
 			var body := StaticBody3D.new()
 			body.name = "ChunkBody"
 			body.set_meta("terrain_chunk", true)
@@ -350,9 +359,12 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 			collider.shape = shape
 			body.add_child(collider)
 			chunk.add_child(body)
+			last_collision_profile.collision_body = (Time.get_ticks_usec()-began)/1000.0
 		# A placed floor can predate this streamed/rebuilt chunk. Suppress
 		# intersecting V3 cover before publishing any visible grass or shrubs.
+		var suppression_began := Time.get_ticks_usec()
 		if _world_profile in ["frontier_v3", "frontier_v4", "frontier_v5", "frontier_v6"]: StrangeSites.refresh_cover_chunk(self,chunk)
+		last_collision_profile.cover_suppression = (Time.get_ticks_usec()-suppression_began)/1000.0
 		chunks["%d_%d" % [int(chunk_data.x),int(chunk_data.z)]]=chunk
 		chunk.visible=true
 	return chunk

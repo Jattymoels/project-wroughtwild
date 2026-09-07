@@ -3,7 +3,27 @@
 // This file deliberately does not alter either older profile's generator.
 
 frozen_frontier::SurfaceWalk surfaceWalk(const WorldMap& map,int maxStep) {
-    auto walk=frozen_frontier::surfaceWalk(map,maxStep);
+    // V6 applies ruin walls before flooding. The frozen helper also floods,
+    // but its parents were immediately discarded here. Keep its exact height
+    // and obstacle preparation without doing that unused first route search.
+    frozen_frontier::SurfaceWalk walk;
+    const int size=map.width*map.height;
+    walk.heights.resize(size);
+    walk.clear.resize(size,false);
+    walk.parent.resize(size,-1);
+    for(int z=1;z<map.height-1;++z)for(int x=1;x<map.width-1;++x){
+        const int at=z*map.width+x,y=map.topSolid(x,z);
+        walk.heights[at]=y;
+        walk.clear[at]=y==map.at(x,z).height&&y>0&&y+2<map.depth;
+    }
+    for(const auto& node:map.nodes){
+        if(node.y!=map.at(node.x,node.z).height)continue;
+        for(int dz=-1;dz<=1;++dz)for(int dx=-1;dx<=1;++dx){
+            if(dx*dx+dz*dz>1)continue;
+            const int x=node.x+dx,z=node.z+dz;
+            if(map.inBounds(x,z))walk.clear[z*map.width+x]=false;
+        }
+    }
     // Authored walls line the margins. All native paths use the same central
     // three-metre strip as the Godot ruin kit, including unvisited ruins.
     for(const auto& ruin:map.ruins){
@@ -14,7 +34,6 @@ frozen_frontier::SurfaceWalk surfaceWalk(const WorldMap& map,int maxStep) {
             walk.clear[(ruin.z+dz)*map.width+ruin.x+dx]=false;
         }
     }
-    std::fill(walk.parent.begin(),walk.parent.end(),-1);
     const int start=map.spawnZ*map.width+map.spawnX;
     walk.clear[start]=true;walk.parent[start]=start;
     std::queue<int> pending;pending.push(start);

@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: "Yes continue" accepts
+[INT-07B](../prototype/world-performance-2026-09-07.md), a measured performance
+pass on the existing D-032 frontier. Optimise equivalent generation and nearby
+terrain preparation while preserving exact profile/seed output, finite stock,
+collision, edits, saves, visual detail and retention distances. No new world
+profile, size/content expansion, offline system or dependency is approved by
+this slice. Compare matched timing and retain any unresolved limitations.
+
 Owner continuation, 7 September 2026: "Continue" accepts
 [INT-06A](../prototype/workshop-usability-2026-09-07.md), the queued finite
 workshop usability pass. Exact existing transactions supply read-only readiness

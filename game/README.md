@@ -35,7 +35,8 @@ Choose a class with a random or typed seed, or Continue your saved world.
 Seeds range from 0 to 2,147,483,647; the same seed and generation version recreate
 the same geography. Help (**H**) displays both. Loading restores the existing
 world and its changes. Preparation takes several seconds; see the linked
-report for measured performance and remaining limits.
+report and the [INT-07B preparation pass](../docs/prototype/world-performance-2026-09-07.md)
+for measured performance and remaining limits.
 
 The Strange Frontier's discoveries remain: look for papery husks, taut roots, lightning
 scars, sideways iron grit and empty vent cases. **E** works each finite specimen;

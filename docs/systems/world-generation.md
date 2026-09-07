@@ -69,6 +69,21 @@ seam neighbours remain pinned to preserve visible edits; resource records keep
 partial work and depletion independently. The native full volume still exists,
 so this change does not provide infinite generation or constant total memory.
 
+The [INT-07B preparation pass](../prototype/world-performance-2026-09-07.md)
+retains that exact world. V6 cave noise caches repeated lattice work within one
+column, preserving arithmetic and thresholds; V6 clearance skips an intermediate
+walk whose parents were discarded before the existing final walk. Historical
+helpers and tuning inputs remain frozen. Neither optimisation consumes RNG or
+adds persistent state.
+
+Nearby chunks retain the same payload/sampler/mesh/cover/collision stages and
+publication boundary. Configure collision flags before uploading faces. A
+streamed leyline tile may keep its existing mesh when the exact terrain chunk
+identities over its complete sampling footprint are unchanged. Those transient
+integer IDs retain no nodes or samplers; replacement chunks invalidate them.
+Building and full refreshes always rebuild. Bounded stage diagnostics explain
+preparation stalls without changing the established radii, detail or scheduling.
+
 ## Pressure workshop successor — D-031, 6 September 2026
 
 The [owner-directed leyline/resource graphics pass](../prototype/leyline-resource-visual-2026-09-06.md)

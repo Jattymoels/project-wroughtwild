@@ -64,6 +64,12 @@ and keeps completed bricks easy to collect. Live pages retain focus and expanded
 details, and the hopper distinguishes actual clay from fuel. The finite source,
 existing recipe and exact saved firing remain the same; owner review is pending.
 
+[INT-07B world preparation](docs/prototype/world-performance-2026-09-07.md)
+reduces repeated cave, route and terrain-collision work and avoids rebuilding
+unchanged leyline tiles. Preserved-world, streamed geometry, excavation and save
+checks accompany matched timing. World size, geography, rendering detail and
+finite resources retain their existing definitions.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and

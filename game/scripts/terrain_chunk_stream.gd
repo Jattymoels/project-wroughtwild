@@ -16,6 +16,11 @@ var _mask_dirty := false
 var chunk_build_ms: Array[float] = []
 var phase_build_ms: Array[float] = []
 var chunk_retire_ms: Array[float] = []
+# Per-stage samples locate indivisible travel stalls; each uses the same fixed
+# diagnostic window as the aggregate timings, never a growing journey log.
+const PREPARATION_STAGES := ["payload", "sampler", "meshes", "cover", "collision_refresh"]
+const REFRESH_STAGES := ["collision_faces", "collision_body", "cover_suppression", "resource_refresh", "rare_refresh", "history_refresh"]
+var _preparation_samples: Dictionary = {}
 var chunks_built_total := 0
 var chunks_retired_total := 0
 var horizon_build_ms := 0.0
@@ -25,6 +30,9 @@ var _job: Dictionary = {}
 func setup(owner_terrain: Terrain) -> void:
 	terrain = owner_terrain
 	_settings = preload("res://art/strange_stream.tres").settings()
+	for stage: String in PREPARATION_STAGES + REFRESH_STAGES:
+		var samples: Array[float] = []
+		_preparation_samples[stage] = samples
 	_mask = Image.create(ceili(float(terrain.map.width)/Terrain.CHUNK_CELLS),ceili(float(terrain.map.height)/Terrain.CHUNK_CELLS),false,Image.FORMAT_R8)
 	_mask.fill(Color.BLACK)
 	_mask_texture = ImageTexture.create_from_image(_mask)
@@ -64,20 +72,26 @@ func _build(origin: Vector2i) -> void:
 	set_detail(origin,true)
 	_refresh_nodes(origin)
 
-func _refresh_nodes(origin: Vector2i) -> void:
+func _refresh_nodes(origin: Vector2i, measure := false) -> void:
 	# Nodes can be materialised by a save or a review before its exact mesh.
 	# Reground only that small neighbourhood when the real surface arrives.
+	var began := Time.get_ticks_usec()
 	if is_instance_valid(terrain.nodes_root):
 		var cell := float(terrain.map.cell_size)
 		for node in terrain.nodes_root.get_children():
 			if node is ResourceNode and node.position.x>=(origin.x-1)*cell and node.position.x<=(origin.x+Terrain.CHUNK_CELLS+1)*cell and node.position.z>=(origin.y-1)*cell and node.position.z<=(origin.y+Terrain.CHUNK_CELLS+1)*cell:
 					node.refresh_surface()
+	if measure: _record(_preparation_samples.resource_refresh,(Time.get_ticks_usec()-began)/1000.0)
+	began = Time.get_ticks_usec()
 	var parent:=terrain.get_parent()
 	if parent is Node3D and parent.has_node("StrangeSites"):
 		StrangeSites.refresh_area(parent,terrain,origin.x,origin.y,Terrain.CHUNK_CELLS)
+	if measure: _record(_preparation_samples.rare_refresh,(Time.get_ticks_usec()-began)/1000.0)
+	began = Time.get_ticks_usec()
 	if parent is Node3D:
 		var history := parent.get_node_or_null("CataclysmSites")
 		if history != null: history.refresh_area(origin.x,origin.y,Terrain.CHUNK_CELLS)
+	if measure: _record(_preparation_samples.history_refresh,(Time.get_ticks_usec()-began)/1000.0)
 
 func set_detail(origin: Vector2i,visible: bool) -> void:
 	var key := "%d_%d" % [origin.x,origin.y]
@@ -143,6 +157,11 @@ func _record(values: Array[float],milliseconds: float) -> void:
 	values.append(milliseconds)
 	if values.size()>int(_settings.diagnostic_window_samples): values.pop_front()
 
+func preparation_samples() -> Dictionary:
+	# Review tools receive an independent snapshot and cannot mutate the live
+	# rolling samples. These timings have no generation or scheduling authority.
+	return _preparation_samples.duplicate(true)
+
 func retention() -> Dictionary:
 	var pinned := {}
 	for v in terrain.broken:
@@ -169,6 +188,7 @@ func tick(delta: float,point: Vector3) -> void:
 func _step_job() -> void:
 	if _job.is_empty() and _pending.is_empty(): return
 	var began:=Time.get_ticks_usec()
+	var stage_index := 0 if _job.is_empty() else int(_job.phase) + 1
 	if _job.is_empty():
 		while not _pending.is_empty():
 			var origin: Vector2i=_pending.pop_front()
@@ -182,10 +202,14 @@ func _step_job() -> void:
 		_job.phase=int(_job.phase)+1
 		if int(_job.phase)==4:
 			set_detail(_job.origin,true)
-			_refresh_nodes(_job.origin)
+			for stage: String in terrain.last_collision_profile:
+				_record(_preparation_samples[stage],float(terrain.last_collision_profile[stage]))
+			_refresh_nodes(_job.origin,true)
 			chunks_built_total+=1
 			_job.clear()
-	_record(phase_build_ms,(Time.get_ticks_usec()-began)/1000.0)
+	var elapsed_ms := (Time.get_ticks_usec()-began)/1000.0
+	_record(phase_build_ms,elapsed_ms)
+	_record(_preparation_samples[PREPARATION_STAGES[stage_index]],elapsed_ms)
 
 func _finish_job() -> void:
 	while not _job.is_empty(): _step_job()

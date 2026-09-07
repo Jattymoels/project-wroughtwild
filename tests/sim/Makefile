@@ -8,7 +8,7 @@ SOURCES := test_main.cpp $(SIM)/src/json.cpp $(SIM)/src/tuning.cpp \
            $(SIM)/src/save.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(SIM)/src/loot.cpp $(SIM)/src/grammar.cpp $(SIM)/src/lattice.cpp $(SIM)/src/foundry.cpp $(SIM)/src/daycycle.cpp
 BIN := build/sim_tests
 
-.PHONY: test world-intensive strange-frontier cataclysm-world pressure-generation wide-frontier contraptions clean
+.PHONY: test world-intensive strange-frontier cataclysm-world pressure-generation wide-frontier worldgen-kernels contraptions clean
 test: $(BIN)
 	./$(BIN) ../../data/tuning
 
@@ -32,6 +32,17 @@ pressure-generation: build/pressure_generation_tests
 
 wide-frontier: build/wide_frontier_tests
 	./build/wide_frontier_tests ../../data/tuning
+
+worldgen-kernels: build/worldgen_kernel_tests
+	./build/worldgen_kernel_tests
+
+build/worldgen_kernel_tests: test_worldgen_kernels.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(wildcard $(SIM)/src/worldgen_*.inc) $(SIM)/src/tuning.cpp $(SIM)/src/json.cpp $(SIM)/src/lattice.cpp $(wildcard $(SIM)/include/wroughtwild/*.h)
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_worldgen_kernels.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/tuning.cpp $(SIM)/src/json.cpp $(SIM)/src/lattice.cpp -o $@
+
+build/worldgen_performance: worldgen_performance.cpp worldgen_fingerprint.inc $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(wildcard $(SIM)/src/worldgen_*.inc) $(SIM)/src/tuning.cpp $(SIM)/src/json.cpp $(SIM)/src/lattice.cpp $(wildcard $(SIM)/include/wroughtwild/*.h)
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -I$(SIM)/include worldgen_performance.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(SIM)/src/tuning.cpp $(SIM)/src/json.cpp $(SIM)/src/lattice.cpp -o $@
 
 build/wide_frontier_tests: test_wide_frontier.cpp test_strange_frontier.cpp worldgen_history.inc $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(wildcard $(SIM)/src/worldgen_*.inc) $(SIM)/src/tuning.cpp $(SIM)/src/json.cpp $(SIM)/src/lattice.cpp $(wildcard $(SIM)/include/wroughtwild/*.h)
 	@mkdir -p build

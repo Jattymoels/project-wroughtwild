@@ -92,7 +92,7 @@ double valueNoise3(uint64_t seed, double x, double y, double z, uint32_t salt) {
     return y0v + (y1v - y0v) * tz;
 }
 
-double fbm3(uint64_t seed, double x, double y, double z, double frequency, int octaves,
+[[maybe_unused]] double fbm3(uint64_t seed, double x, double y, double z, double frequency, int octaves,
             uint32_t salt) {
     double total = 0.0, amplitude = 1.0, sum = 0.0;
     for (int i = 0; i < octaves; ++i) {
@@ -104,6 +104,8 @@ double fbm3(uint64_t seed, double x, double y, double z, double frequency, int o
     }
     return total / sum;
 }
+
+#include "worldgen_frontier_v6_noise.inc"
 
 int biomeFor(const tuning::WorldgenTable& table, int height, double moisture) {
     for (size_t i = 0; i < table.biomes.size(); ++i) {
@@ -248,12 +250,15 @@ WorldMap generate(const tuning::Tuning& tuning, uint64_t seed) {
             if (distance(x, z, map.gateX, map.gateZ) <= 3.0) continue;
             bool breach = lattice(seed, x, z, 4600) < caves.breachChance;
             int roof = breach ? 0 : caves.surfaceMargin + 1;
+            CaveColumnNoise tunnelA(seed,x,z,caves.tunnelFrequency,4000);
+            CaveColumnNoise tunnelB(seed,x,z,caves.tunnelFrequency,4200);
+            CaveColumnNoise cavern(seed,x,z,caves.cavernFrequency,4400);
             for (int y = caves.minY; y <= hgt - 1 - roof; ++y) {
-                double t1 = std::abs(fbm3(seed, x, y, z, caves.tunnelFrequency, 2, 4000) - 0.5);
-                double t2 = std::abs(fbm3(seed, x, y, z, caves.tunnelFrequency, 2, 4200) - 0.5);
+                double t1 = std::abs(tunnelA.sample(y) - 0.5);
+                double t2 = std::abs(tunnelB.sample(y) - 0.5);
                 bool carve = t1 + t2 < caves.tunnelWidth;
                 if (!carve && y < hgt * caves.cavernMaxYFraction &&
-                    fbm3(seed, x, y, z, caves.cavernFrequency, 2, 4400) > caves.cavernThreshold)
+                    cavern.sample(y) > caves.cavernThreshold)
                     carve = true;
                 if (carve) column[y] = kAir;
             }
