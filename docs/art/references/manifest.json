@@ -1,0 +1,85 @@
+{
+  "created": "2026-09-07",
+  "purpose": "Visual reference and concept review only",
+  "path_base": "repository root",
+  "prompt_set": "docs/art/concepts/creatures/2026-09-07/prompts.md",
+  "images": [
+    {
+      "id": "ENV-001",
+      "status": "owner_reference",
+      "repository_path": "docs/art/references/environment/env-001-gloom-river-original.png",
+      "source_filename": "codex-clipboard-9bbd4c54-af8c-4fec-9a6a-1971d229ccc7.png",
+      "provenance": "Magnific visible; creator, URL and reuse licence unknown",
+      "width": 1648,
+      "height": 928,
+      "bytes": 2551725,
+      "sha256": "711a2c3da9f1596d1df1997a7ca25d849ede045e67c99045e042de86a5394177"
+    },
+    {
+      "id": "ENV-002",
+      "status": "owner_reference",
+      "repository_path": "docs/art/references/environment/env-002-dense-frontier-original.png",
+      "source_filename": "codex-clipboard-4f8c24e3-37da-4ec9-9834-67de6e080cb4.png",
+      "provenance": "Adobe Stock visible, number 522470037; creator, URL and reuse licence unknown",
+      "width": 1482,
+      "height": 375,
+      "bytes": 924019,
+      "sha256": "46ec1329993b1a04cc1dc114f80d0a5e406fe933761640653a458295598fd7dd"
+    },
+    {
+      "id": "rimejaw-wolf-v01",
+      "status": "concept_for_review",
+      "repository_path": "docs/art/concepts/creatures/2026-09-07/rimejaw-wolf-v01.png",
+      "source_filename": "exec-b7bcb67c-a37b-4a3f-9840-a1b0f2d9c870.png",
+      "provenance": "Built-in image generation; original concept",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2624278,
+      "sha256": "c277ce6a5a13ef6bdf51fc689a2540cf0d862e78ff15a7887243c87cd91810b0"
+    },
+    {
+      "id": "kilnback-boar-v01",
+      "status": "superseded_draft",
+      "repository_path": "docs/art/concepts/creatures/2026-09-07/kilnback-boar-v01.png",
+      "source_filename": "exec-acdd24e2-413c-47ab-81dc-0547da904fe9.png",
+      "provenance": "Built-in image generation; cropped tusk corrected in v02",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2716252,
+      "sha256": "119492832d873753c9fa9a57c572e2a8e6d57b0e5ccb9dcc570b97f87d88f627"
+    },
+    {
+      "id": "kilnback-boar-v02",
+      "status": "concept_for_review",
+      "repository_path": "docs/art/concepts/creatures/2026-09-07/kilnback-boar-v02.png",
+      "source_filename": "exec-82f87359-4a54-454a-8c9b-216ce4692750.png",
+      "provenance": "Built-in image edit of kilnback-boar-v01; framing correction",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2643350,
+      "sha256": "24d7384ab221498022ca18550cccc1d46a5484eb894f1fcc59fd9ebc8a985267"
+    },
+    {
+      "id": "vaultcrown-stag-v01",
+      "status": "concept_for_review",
+      "repository_path": "docs/art/concepts/creatures/2026-09-07/vaultcrown-stag-v01.png",
+      "source_filename": "exec-d4fa6fe0-db9a-4245-8d8a-53014ff0f5fa.png",
+      "provenance": "Built-in image generation; original concept",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2531042,
+      "sha256": "39e5432de3f6d46997e876ed4ef353b07c44a7eeee6658cb0ac6d854b48342ab"
+    },
+    {
+      "id": "lanternveil-moth-v01",
+      "status": "concept_for_review",
+      "repository_path": "docs/art/concepts/creatures/2026-09-07/lanternveil-moth-v01.png",
+      "source_filename": "exec-022f5a72-dc71-4622-951c-60b775d4cc0e.png",
+      "provenance": "Built-in image generation; original concept",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2826106,
+      "sha256": "06a118d5c115ce88a6c15eeb8abd9da82a76a340e2404b8738d04df09e60dc98"
+    }
+  ]
+}

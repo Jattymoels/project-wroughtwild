@@ -1,5 +1,16 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+**Owner reference and concept direction, 7 September 2026:** the
+[visual reference library](references/README.md) preserves two supplied landscape
+images and their intended qualities: gloomy river woodland, layered vegetation
+and rock, and extreme changes where meteorite magic travels through veins
+(enlarged trees, lava transitions and icing water). Creature direction mixes
+grimdark with traditional fantasy, showing ordinary Earth-like animals made
+fantastical by alien augmentation. The [first four sheets](concepts/creatures/2026-09-07/README.md)
+are visual proposals with Blender anatomy/material notes; specific designs and
+scales are not selected for runtime integration. This refines D-013/D-030's
+visual target without declaring a new generation, hazard or combat system.
+
 **INT-05A, 7 September 2026:** [Forge readability](../prototype/forge-readability-2026-09-07.md)
 uses the existing dark thresholds and authored room kit. Restrained shared
 stone/iron silhouettes distinguish physical route seals, offerings, lifts,

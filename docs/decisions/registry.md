@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner visual direction, 7 September 2026: establish a lasting image reference
+library and generate creature concepts for later Blender work. The two supplied
+landscapes call for gloomy river woodland, much fuller natural composition and
+meteor-vein augmentation such as enormous growth, lava transitions and ice.
+Original beasts were ordinary and Earth-like; their fantastical forms result
+from alien magic/technology. This clarifies D-013/D-030 and the
+[world premise](../world-premise.md). The [reference library](../art/references/README.md)
+records the owner's brief separately from the four proposed designs, dimensions
+and ancestry mappings. Concept generation does not approve new runtime actors,
+hazards, hitboxes, rigs, world profiles, loot rules or completed visual acceptance.
+
 Owner continuation, 7 September 2026: “Yep go ahead with that remaining” accepts
 [INT-07G](../prototype/frame-pacing-2026-09-07.md), tracing the intermittent pause
 and checking constrained rendering/streaming. Correct a reproduced failure of

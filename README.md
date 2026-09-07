@@ -20,6 +20,10 @@ The intended game combines self-directed construction, persistent ARPG buildcraf
 4. Read the relevant file under [docs/systems](docs/systems) before implementing a system.
 5. AI coding agents must follow [AGENTS.md](AGENTS.md).
 
+For visual and Blender work, begin with the [visual reference library](docs/art/references/README.md):
+owner-supplied environment references, the qualities to preserve, and versioned
+creature concept sheets with modelling notes.
+
 ## Current phase
 
 The [current intensive queue](docs/prototype/intensive-queue.md) tracks seven

@@ -11,8 +11,16 @@ brings that same Northstar into the land and its inhabitants.
 This was an alien world with low technology and distinct biomes and civilisations.
 Their character was generally near neutral: some places brighter and happier,
 others a little barren, with small patches of dead growth. The world already had
-variation before its devastation. It was not an Earth-like medieval world made
-alien only by the arrival of technology.
+variation before its devastation. The setting itself is alien.
+
+**Owner creature clarification, 7 September 2026:** the original animals and
+beasts were ordinary, comparable to Earth's. They did not already embody the
+fantastical tropes seen after the catastrophe. Alien magic/technology corrupted
+and augmented them into their current forms. Earth-like describes the animal
+baseline, not a change of planet or an established history for its civilisations.
+Individual named creature ancestries remain proposals. The
+[visual reference library](art/references/README.md) records this direction and
+the first modelling-oriented creature studies.
 
 ## What happened
 
