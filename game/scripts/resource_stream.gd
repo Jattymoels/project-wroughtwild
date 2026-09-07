@@ -2,6 +2,9 @@ class_name ResourceStream
 extends RefCounted
 ## Generated resources persist independently of their nearby presentation.
 ## An unloaded node keeps its record; only a depleted node loses its record.
+# Load lazily, then retain once. A script-time preload cycles through
+# ResourceNode -> Terrain -> ResourceStream in terrain-only entry scenes.
+static var _resource_scene: PackedScene
 var terrain: Terrain
 var records: Dictionary = {}
 var active: Dictionary = {}
@@ -101,8 +104,10 @@ func materialise(id: String) -> ResourceNode:
 	if not records.has(id): return null
 	var record: Dictionary = records[id]
 	if int(record.get("era",1))>terrain.current_era: return null
-	var scene: PackedScene=load("res://scenes/resource_node.tscn")
-	var node: ResourceNode = scene.instantiate()
+	# Retain the packed scene: instantiated nodes do not retain the source
+	# PackedScene, so a local load can otherwise reread it for every arrival.
+	if _resource_scene == null: _resource_scene = load("res://scenes/resource_node.tscn")
+	var node: ResourceNode = _resource_scene.instantiate()
 	node.name=id
 	for field in ["resource_id","habitat_id","presentation_label","remaining_units","units_per_harvest","heat_to_work","tool_item","drive_presses","drive_progress","wedge_set","cracked","visual"]:
 		if record.has(field): node.set(field,record[field])

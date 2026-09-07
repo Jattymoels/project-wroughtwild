@@ -8,7 +8,10 @@ const CROSS_SECTION: Array[float] = [-1.12, -1.0, -.8, -.035, .035, .8, 1.0, 1.1
 var _material: ShaderMaterial
 var _terrain: Terrain
 var _buildings: Dictionary
-var _surface: SurfaceTool
+var _vertices := PackedVector3Array()
+var _normals := PackedVector3Array()
+var _colours := PackedColorArray()
+var _uvs := PackedVector2Array()
 var _rng := RandomNumberGenerator.new()
 var _triangles := 0
 var _fragments := 0
@@ -31,8 +34,10 @@ func rebuild(trace: MeshInstance3D, ground: Terrain, buildings: Dictionary) -> v
 	var bounds := Rect2(Vector2(path[0].x, path[0].z), Vector2.ZERO)
 	for point in path: bounds = bounds.expand(Vector2(point.x, point.z))
 	trace.set_meta("xz_bounds", bounds.grow(LOOK.bounds_padding_m))
-	_surface = SurfaceTool.new()
-	_surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	_vertices.clear()
+	_normals.clear()
+	_colours.clear()
+	_uvs.clear()
 	var width := clampf(float(data.get("width_m", 2.0)) * LOOK.width_fraction, LOOK.minimum_width_m, LOOK.maximum_width_m)
 	for i in range(path.size() - 1):
 		# Neither buried (0) nor broken (1) native intervals receive cracks or light.
@@ -75,8 +80,16 @@ func rebuild(trace: MeshInstance3D, ground: Terrain, buildings: Dictionary) -> v
 		_material.set_shader_parameter("mineral_roughness", LOOK.roughness)
 		_material.set_shader_parameter("grain_cells_per_m", LOOK.grain_cells_per_m)
 		_material.set_shader_parameter("grain_contrast", LOOK.grain_contrast)
-	_surface.set_material(_material)
-	trace.mesh = _surface.commit()
+	var arrays: Array = []
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX] = _vertices
+	arrays[Mesh.ARRAY_NORMAL] = _normals
+	arrays[Mesh.ARRAY_COLOR] = _colours
+	arrays[Mesh.ARRAY_TEX_UV] = _uvs
+	var mesh := ArrayMesh.new()
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	mesh.surface_set_material(0, _material)
+	trace.mesh = mesh
 
 func _curve(a: Vector3, b: Vector3, t: float, phase: float) -> Vector3:
 	var side := Vector3(b.x - a.x, 0, b.z - a.z).normalized().cross(Vector3.UP)
@@ -136,14 +149,21 @@ func _add_path(a: Vector3, b: Vector3, width: float, phase: float, branch: bool,
 		for column in range(CROSS_SECTION.size() - 1):
 			var colour: Color = LOOK.rim_colour if column in [0, 6] else LOOK.lip_colour if column in [1, 5] else LOOK.light_colour if column == 3 else LOOK.mouth_colour
 			var normal := (left[column + 1] - left[column]).cross(right[column] - left[column]).normalized()
-			for vertex in [[left[column],first], [right[column + 1],second], [left[column + 1],first], [left[column],first], [right[column],second], [right[column + 1],second]]:
-				var lit := float(vertex[1].light) if column == 3 else 0.0
-				# Unlit lengths retain the same dark opening, not a white painted stripe.
-				var albedo := LOOK.mouth_colour.lerp(colour, lit) if column == 3 else colour
-				_surface.set_color(Color(albedo.r, albedo.g, albedo.b, lit))
-				_surface.set_uv(Vector2(float(column), float(vertex[1].phase)))
-				_surface.set_normal(normal)
-				_surface.add_vertex(vertex[0])
+			# Each row contributes the same colour/UV three times. Assemble the
+			# unchanged unindexed triangles in batches instead of allocating six
+			# temporary vertex/row pairs and issuing 24 SurfaceTool calls per quad.
+			var lit_a := float(first.light) if column == 3 else 0.0
+			var lit_b := float(second.light) if column == 3 else 0.0
+			var albedo_a := LOOK.mouth_colour.lerp(colour, lit_a) if column == 3 else colour
+			var albedo_b := LOOK.mouth_colour.lerp(colour, lit_b) if column == 3 else colour
+			var colour_a := Color(albedo_a.r, albedo_a.g, albedo_a.b, lit_a)
+			var colour_b := Color(albedo_b.r, albedo_b.g, albedo_b.b, lit_b)
+			var uv_a := Vector2(float(column), float(first.phase))
+			var uv_b := Vector2(float(column), float(second.phase))
+			_vertices.append_array(PackedVector3Array([left[column],right[column+1],left[column+1],left[column],right[column],right[column+1]]))
+			_normals.append_array(PackedVector3Array([normal,normal,normal,normal,normal,normal]))
+			_colours.append_array(PackedColorArray([colour_a,colour_b,colour_a,colour_a,colour_b,colour_b]))
+			_uvs.append_array(PackedVector2Array([uv_a,uv_b,uv_a,uv_a,uv_b,uv_b]))
 			_triangles += 2
 		emitted = true
 	if emitted: _fragments += 1

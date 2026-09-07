@@ -1,0 +1,8 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="PackedScene" path="res://scenes/sandpit.tscn" id="1"]
+[ext_resource type="Script" path="res://tests/travel_performance_review.gd" id="2"]
+[ext_resource type="Script" path="res://tests/travel_profile_terrain.gd" id="3"]
+[node name="TravelPerformanceReview" instance=ExtResource("1")]
+script = ExtResource("2")
+[node name="Terrain" parent="." index="2"]
+script = ExtResource("3")

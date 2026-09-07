@@ -49,6 +49,13 @@ func _ready() -> void:
 	add_to_group("resources")
 	_initial_units = maxi(remaining_units, 1)
 	_apply_visual()
+	# Hover and heat share one prepared shader variant. Toggling the emission
+	# feature on the first aimed-at stone otherwise compiles during travel.
+	# Zero energy keeps the initial appearance, including imported materials.
+	for material in _own_materials:
+		if material is BaseMaterial3D:
+			material.emission_enabled = true
+			material.emission_energy_multiplier = 0.0
 
 
 ## Crosshair-hover feedback: a soft glow on the node you would harvest.
@@ -599,11 +606,9 @@ func _refresh_state_look() -> void:
 		if hot_level > 0:
 			material.emission = Color(1.0, 0.4, 0.05)
 			material.emission_energy_multiplier = 1.2
-			material.emission_enabled = true
 		else:
 			material.emission = Color(1, 1, 1)
-			material.emission_energy_multiplier = preload("res://art/gathering_look.tres").hover_energy
-			material.emission_enabled = _highlighted
+			material.emission_energy_multiplier = preload("res://art/gathering_look.tres").hover_energy if _highlighted else 0.0
 		material.albedo_color = Color(0.55, 0.5, 0.5) if cracked else Color(1, 1, 1)
 
 

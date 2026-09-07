@@ -20,6 +20,22 @@ not a rollback system for engine failure or power loss. Schema 2, generation
 inputs, finite stock, trial deposits and existing lifetime rules remain unchanged.
 [Reproduction, repeated circuits and limits](../prototype/session-reliability-2026-09-07.md).
 
+## Travel presentation cost — INT-07D, 7 September 2026
+
+The [travel optimisation](../prototype/travel-performance-2026-09-07.md) preserves
+existing radii, scene detail and the terrain publication boundary. Resource
+scenes retain one shared PackedScene while each actual node keeps its own stock,
+collider and mutable materials. Common-resource emission shaders are prepared
+when the node appears; aiming, heating and cooling change their glow strength
+without compiling a new feature variant during interaction. Zero energy retains
+the ordinary unhighlighted appearance. Rare-resource shader effects remain
+separate and unchanged.
+
+Leyline tiles now assemble the same unindexed vertices, normals, colours and UVs
+in batches. Grounding, gaps, branches, building suppression and sampled-terrain
+cache invalidation retain their existing rules. This changes neither geography
+nor save data and introduces no production tuning values.
+
 ## Nearby ambience — INT-04B, 7 September 2026
 
 The [ground and ambience slice](../prototype/footsteps-ambience-2026-09-07.md)

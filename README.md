@@ -76,6 +76,12 @@ Damaged saves now recover a validated previous checkpoint explicitly, reject
 invalid building sets before live changes, and retain the good backup when play
 saves again. World profiles and ordinary inventory/workshop rules stay the same.
 
+[INT-07D travel optimisation](docs/prototype/travel-performance-2026-09-07.md)
+prepares resource-highlight shaders before interaction, retains the resource
+scene between arrivals and batches equivalent leyline geometry. Matched travel
+measurements and exact presentation comparisons accompany streaming, harvesting
+and save checks; existing scenery detail and world identities remain the same.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and

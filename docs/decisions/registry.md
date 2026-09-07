@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: "Yep keep going with optimisation" accepts
+[INT-07D](../prototype/travel-performance-2026-09-07.md), the remaining rendered
+travel investigation. Preparing resource-highlight shaders, retaining the
+resource PackedScene and batching equivalent leyline vertices implement the
+existing D-010/D-013/D-032 contracts. Existing stock, visual output, generation
+profiles, save schema, distances and scheduling remain authoritative. This
+records an implementation continuation, not a new content or tuning decision.
+
 Owner continuation, 7 September 2026: "Yep continue" accepts
 [INT-07C](../prototype/session-reliability-2026-09-07.md), repeated expeditions,
 built-home return and save recovery under the existing contracts. Reproduce

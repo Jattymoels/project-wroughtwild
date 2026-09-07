@@ -1,5 +1,6 @@
 param(
     [ValidateSet('baseline','current')][string]$Phase = 'current',
+    [ValidateSet('world','travel')][string]$ReviewSuite = 'world',
     [Alias('Scene')][string[]]$Scenes = @('world_performance_review'),
     [ValidateSet('frontier_v5','frontier_v6')][string]$Profile = 'frontier_v6',
     [int]$Seed = 1,
@@ -12,7 +13,7 @@ param(
     [int]$TimeoutSeconds = 420,
     [string]$Godot = 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe'
 )
-# Common INT-07B route and existing correctness scenes, in separate cold
+# Common INT-07B/D routes and existing correctness scenes, in separate cold
 # processes. Never write to the owner's user data or replace baseline production.
 $ErrorActionPreference = 'Stop'
 if ($ReviewName -notmatch '^[a-z0-9_-]+$') { throw 'ReviewName must be a simple directory name.' }
@@ -20,7 +21,7 @@ foreach ($worldScene in $Scenes) {
     if ($worldScene -notmatch '^[A-Za-z0-9_]+$') { throw 'Scene names must be simple test basenames.' }
 }
 $worldRepo = Split-Path $PSScriptRoot
-$worldRoot = Join-Path $worldRepo 'build/world-performance'
+$worldRoot = Join-Path $worldRepo "build/$ReviewSuite-performance"
 $worldCopy = Join-Path $worldRoot $Phase
 $worldGame = Join-Path $worldCopy 'game'
 $worldLabel = "$Profile-$Seed-$ReviewName"
@@ -28,7 +29,7 @@ $worldLogs = Join-Path $worldRoot "logs/$Phase/$worldLabel"
 $worldOutput = Join-Path $worldRoot "captures/$Phase/$worldLabel"
 New-Item -ItemType Directory -Force -Path $worldLogs,$worldOutput | Out-Null
 if ($Prepare) {
-    if ($Phase -eq 'baseline') { throw 'Baseline must be preserved from f08806e separately; this runner never prepares it from current source.' }
+    if ($Phase -eq 'baseline') { throw 'Preserve the suite baseline separately (world: f08806e; travel: 2500db8); this runner never prepares it from current source.' }
     foreach ($worldFolder in @('game','data')) {
         & robocopy (Join-Path $worldRepo $worldFolder) (Join-Path $worldCopy $worldFolder) /E /XD .godot /NFL /NDL /NJH /NJS /NP | Out-Null
         if ($LASTEXITCODE -ge 8) { throw "Copy failed: $worldFolder" }
@@ -43,6 +44,11 @@ if ($NativeLibrary) {
 foreach ($worldFixture in @('world_performance_review','world_mesh_equivalence','terrain_preparation')) {
     foreach ($worldExtension in @('gd','tscn')) {
         Copy-Item -LiteralPath (Join-Path $worldRepo "game/tests/$worldFixture.$worldExtension") -Destination (Join-Path $worldGame "tests/$worldFixture.$worldExtension") -Force
+    }
+}
+if ($ReviewSuite -eq 'travel') {
+    foreach ($worldFile in @('travel_performance_review.gd','travel_performance_review.tscn','travel_profile_terrain.gd','resource_presentation_review.gd','resource_presentation_review.tscn','leyline_mesh_equivalence.gd','leyline_mesh_equivalence.tscn')) {
+        Copy-Item -LiteralPath (Join-Path $worldRepo "game/tests/$worldFile") -Destination (Join-Path $worldGame "tests/$worldFile") -Force
     }
 }
 foreach ($worldFolder in @('cataclysm','codex-aesthetic','strange-frontier')) {
