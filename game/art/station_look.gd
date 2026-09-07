@@ -8,6 +8,9 @@ extends Resource
 ## Decorative hearth illumination, not a fuel meter or heat gameplay source.
 @export var hearth_energy := 1.2
 @export var hearth_range := 3.5
+## Metres of visible/body clearance when seating a station beside wall skins.
+## Two millimetres prevents exact-contact physics noise without shrinking it.
+@export var placement_contact_gap_m := 0.002
 var _meshes := {}
 
 func mesh_for(id: StringName) -> ArrayMesh:

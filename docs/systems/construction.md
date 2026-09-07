@@ -1,5 +1,22 @@
 # Construction System
 
+## Corner seating and local placement refresh — INT-03C, 7 September 2026
+
+Station previews and paid placement share a pose that clears adjacent wall skins
+with the unchanged 0.96 × 2 × 0.96 m body. The closest horizontal offset stays
+within half a registry cell; genuine wall-through-body, beam and ceiling
+obstructions still refuse without spending a kit. Existing vertical contact
+tolerance remains. `station_look.gd: placement_contact_gap_m` adds 0.002 m of
+wall clearance to avoid exact-contact physics noise. Saved positions and station
+keys retain the final pose; older stations are not moved on load.
+
+Placed/removed pieces now restrict deferred scenery clearance to their changed
+bounds. Existing terrain support changes still invalidate affected leyline meshes;
+explicit save/generation refreshes remain complete. No native ownership, terrain,
+cost, refund, source stock or schema changes are introduced. All seven fixture
+types pass actual placement and restart checks, but the owner's original
+disappearance remains unreproduced. [Evidence and limits](../prototype/placement-reliability-2026-09-07.md).
+
 ## Complete building restoration — INT-07C, 7 September 2026
 
 Save restoration first imports the saved rules into an isolated validator and

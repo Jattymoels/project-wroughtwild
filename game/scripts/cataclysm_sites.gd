@@ -354,18 +354,26 @@ func _apply_visibility(node: Node3D, shown: bool) -> void:
 	if body != null:
 		for collision: CollisionShape3D in body.get_children(): collision.set_deferred("disabled", not shown)
 
-func refresh_buildings() -> void:
+func refresh_buildings(changed: Array[AABB] = [], buildings: Dictionary = {}) -> void:
 	if terrain == null: return
-	_pending_traces.clear()
-	var index := StrangeSites._building_index(terrain)
+	if changed.is_empty(): _pending_traces.clear()
+	var index := StrangeSites._building_index(terrain) if buildings.is_empty() else buildings
 	for node in pieces:
 		var visual := node.get_node("Visual") as MeshInstance3D
+		if not StrangeSites.touches_changes(node.transform*visual.mesh.get_aabb(),changed): continue
 		var hidden := StrangeSites._building_overlap(index, node.transform * visual.mesh.get_aabb())
 		node.set_meta("hidden_by_building", hidden)
 		_apply_visibility(node, bool(node.get_meta("supported", false)) and not hidden)
-	# Rebuild only on a building action, never per-frame. Individual strip
-	# segments underneath a placed floor disappear and return on dismantling.
-	for trace in traces: _trace(trace, index)
+	# A local placement must not resample every geological trace in the world.
+	# The conservative sampling bound includes branches and chipped outer edges.
+	for trace in traces:
+		if StrangeSites.rect_touches_changes(trace.get_meta("building_xz_bounds",Rect2()),changed):
+			_trace(trace, index)
+		else:
+			# A preceding synchronous arrival/retirement can also change this
+			# tile's support. Preserve the former full refresh's repair of that
+			# state, while unchanged support IDs avoid expensive resampling.
+			_trace(trace,index,true)
 
 func refresh_area(cx: int, cz: int, width: int, defer_traces := false) -> void:
 	var cell := float(terrain.map.cell_size)
@@ -437,6 +445,7 @@ func _trace_surface_ids(trace: MeshInstance3D) -> PackedInt64Array:
 	# rendered_height also reads neighbours within half a voxel of a seam.
 	# Inclusive limits conservatively retain a boundary neighbour at exact ties.
 	bounds = bounds.grow(reach+cell*0.5)
+	trace.set_meta("building_xz_bounds",bounds)
 	var side := Terrain.CHUNK_CELLS*cell
 	var first := Vector2i(floori(bounds.position.x/side),floori(bounds.position.y/side))
 	var last := Vector2i(floori(bounds.end.x/side),floori(bounds.end.y/side))

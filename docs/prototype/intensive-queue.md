@@ -14,11 +14,12 @@ The owner has finished this round of notes and asked for the next intensives
 and iterations to be planned. The [complete feedback ledger and slice plans](playtest-iterations-2026-09-07.md)
 include both retained screenshots and the later progression clarification.
 These priorities supersede the convenience/export-first recommendation below.
-All entries below are **Plan ready**, not implemented or finally calibrated.
+INT-03C is **Implemented, owner review pending**; the remaining entries are **Plan ready**.
+Implementation evidence is recorded separately from these planned outcomes.
 
 | Order | Slice | Requested outcome |
 | --- | --- | --- |
-| 1 | INT-03C | Reproduce/fix block-placement stalls, corner station fit and disappearing fixture kits. |
+| 1 | INT-03C | **Implemented, review pending:** [placement reliability](placement-reliability-2026-09-07.md). Placement-frame medians fall from 242–274 to 9–21 ms; unchanged station bodies seat clear of corner walls. All seven kits pass ownership/visibility/restart checks. Original disappearance remains unreproduced; the densest measured placement still reaches 35 ms. |
 | 2 | INT-03D | Useful common-resource building loads; separate capacity from actual house cost/yield. |
 | 3 | INT-04C | Retire the rejected ambient drone; quiet gaps and player control. |
 | 4 | INT-01B | Readable CURRENT FLOW and a clear mastery/specialisation/rail explanation. |
@@ -149,6 +150,7 @@ needs its own bounded follow-up.
 
 | Date | Item | Result |
 | --- | --- | --- |
+| 7 Sep 2026 | INT-03C | Owner selected only this slice from `80dde32`. Local scenery refresh and bounded station seating correct reproduced stalls/refusals. Matched completed-home timing, exact scenery, actual controls, finite-state/home returns and fresh-process fixtures pass. Original disappearance remains unreproduced; other slices are not implemented. [Evidence and limits](placement-reliability-2026-09-07.md). |
 | 7 Sep 2026 | Queue | Seven discussed intensives recorded at the owner's request. |
 | 7 Sep 2026 | INT-01 | Read-only code/spec audit completed against `062b7e7`; concrete plan written. No gameplay edits or runtime checks performed for the planning task. |
 | 7 Sep 2026 | INT-01 | Four approved slices and the panel-density addition implemented. Native UI checks, three class journeys and matched 720p/1080p captures recorded in the work item. Owner usability review remains pending. |

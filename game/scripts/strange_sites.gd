@@ -91,7 +91,7 @@ static func refresh_area(root: Node3D, terrain: Terrain, cx: int, cz: int, width
 ## Read current lattice pieces, never scene-name guesses or save records. Batches
 ## keep their authoritative poses while a building temporarily hides intersecting
 ## decor. Removing the piece restores it only when terrain still supports it.
-static func refresh_buildings(root: Node3D, terrain: Terrain) -> void:
+static func refresh_buildings(root: Node3D, terrain: Terrain, changed: Array[AABB] = []) -> void:
 	if root==null or terrain==null: return
 	var dressing:=root.get_node_or_null("StrangeSites")
 	if dressing==null: return
@@ -99,15 +99,16 @@ static func refresh_buildings(root: Node3D, terrain: Terrain) -> void:
 	for group in dressing.get_children():
 		for part in group.get_children():
 			if part is MultiMeshInstance3D:
-				_clear_batch_buildings(part,buildings)
+				_clear_batch_buildings(part,buildings,changed)
 			elif part is MeshInstance3D and part.mesh!=null:
+				if not touches_changes(part.transform*part.mesh.get_aabb(),changed): continue
 				var hidden:=_building_overlap(buildings,part.transform*part.mesh.get_aabb())
 				part.set_meta("hidden_by_building",hidden)
 				part.visible=bool(part.get_meta("ground_supported",true)) and not hidden
 	var history := root.get_node_or_null("CataclysmSites")
-	if history != null: history.refresh_buildings()
+	if history != null: history.refresh_buildings(changed,buildings)
 	if terrain.world_profile() in ["frontier_v3","frontier_v4","frontier_v5","frontier_v6"]:
-		for chunk: Node3D in terrain.chunks.values(): _clear_cover_chunk(chunk,buildings)
+		for chunk: Node3D in terrain.chunks.values(): _clear_cover_chunk(chunk,buildings,changed)
 
 ## Terrain calls this before a streamed/rebuilt chunk is made visible. Older
 ## profiles neither retain these extra poses nor take the clearing path.
@@ -115,25 +116,49 @@ static func refresh_cover_chunk(terrain: Terrain, chunk: Node3D) -> void:
 	if terrain==null or chunk==null or terrain.world_profile() not in ["frontier_v3","frontier_v4","frontier_v5","frontier_v6"]: return
 	_clear_cover_chunk(chunk,_building_index(terrain))
 
-static func _clear_cover_chunk(chunk: Node3D, buildings: Dictionary) -> void:
+static func _clear_cover_chunk(chunk: Node3D, buildings: Dictionary, changed: Array[AABB] = []) -> void:
 	for part in chunk.get_children():
 		if not part is MultiMeshInstance3D or not part.has_meta("terrain_cover"): continue
+		if not touches_changes(part.get_meta("cover_bounds"),changed): continue
 		# Most chunks are far from a home. Their aggregate exact bounds reject
 		# the whole batch before visiting individual grass/fern transforms.
 		if not bool(part.get_meta("cover_has_hidden",false)) and not _building_overlap(buildings,part.get_meta("cover_bounds")):
 			continue
-		_clear_batch_buildings(part,buildings)
+		_clear_batch_buildings(part,buildings,changed)
 		part.set_meta("cover_has_hidden",(part.get_meta("hidden_by_building",[]) as Array).has(true))
 
-static func _clear_batch_buildings(part: MultiMeshInstance3D, buildings: Dictionary) -> void:
+## Compare X/Z conservatively: terrain edits can move retained scenery vertically.
+## Empty means a complete refresh for generation, restoration and explicit audits.
+static func touches_changes(bounds: AABB, changed: Array[AABB]) -> bool:
+	return rect_touches_changes(Rect2(Vector2(bounds.position.x,bounds.position.z),Vector2(bounds.size.x,bounds.size.z)),changed)
+
+static func rect_touches_changes(bounds: Rect2, changed: Array[AABB]) -> bool:
+	if changed.is_empty(): return true
+	for area in changed:
+		if bounds.intersects(Rect2(Vector2(area.position.x,area.position.z),Vector2(area.size.x,area.size.z)),true): return true
+	return false
+
+static func _clear_batch_buildings(part: MultiMeshInstance3D, buildings: Dictionary, changed: Array[AABB] = []) -> void:
 	var transforms: Array=part.get_meta("world_transforms",[])
+	# Computed during initial publication, including the actual mesh overhang.
+	# Regrounding retains X/Z, so this broad-phase bound stays valid after digging.
+	if not part.has_meta("building_xz_bounds"):
+		var bounds:=AABB()
+		for i in transforms.size():
+			var at: AABB=transforms[i]*part.multimesh.mesh.get_aabb()
+			bounds=at if i==0 else bounds.merge(at)
+		part.set_meta("building_xz_bounds",bounds)
+	if not touches_changes(part.get_meta("building_xz_bounds"),changed): return
 	var supported: Array=part.get_meta("ground_supported",[])
 	var previous: Array=part.get_meta("hidden_by_building",[])
 	var displayed: Array=part.get_meta("display_transforms",[])
-	var hidden: Array=[]
+	var hidden: Array=previous.duplicate()
+	if hidden.size()!=transforms.size(): hidden.resize(transforms.size()); hidden.fill(false)
 	for i in transforms.size():
-		var intersects:=_building_overlap(buildings,transforms[i]*part.multimesh.mesh.get_aabb())
-		hidden.append(intersects)
+		var bounds: AABB=transforms[i]*part.multimesh.mesh.get_aabb()
+		if not touches_changes(bounds,changed): continue
+		var intersects:=_building_overlap(buildings,bounds)
+		hidden[i]=intersects
 		if previous.size()==transforms.size() and bool(previous[i])==intersects: continue
 		var local: Transform3D=transforms[i]
 		local.origin-=part.position
@@ -147,8 +172,15 @@ static func _clear_batch_buildings(part: MultiMeshInstance3D, buildings: Diction
 static func _building_index(terrain: Terrain) -> Dictionary:
 	var result: Dictionary={}
 	if terrain._sim==null or terrain._sim.structure_piece_count()==0: return result
+	# Geometry definitions and lattice scales cannot change during this scan.
+	# Read each shape once, rather than crossing the native bridge per piece.
+	var shapes: Dictionary={}
+	var registry_grid:=terrain._sim.lattice_registry_grid()
+	var full_grid:=terrain._sim.grid_size()
 	for piece: Dictionary in terrain._sim.structure_pieces():
-		var shape: Dictionary=terrain._sim.shape(String(piece.shape))
+		var id:=String(piece.shape)
+		if not shapes.has(id): shapes[id]=terrain._sim.shape(id)
+		var shape: Dictionary=shapes[id]
 		var pose: Dictionary=terrain._sim.lattice_pose(String(piece.shape),piece)
 		if shape.is_empty() or pose.is_empty(): continue
 		var size: Vector3=shape.size
@@ -156,7 +188,7 @@ static func _building_index(terrain: Terrain) -> Dictionary:
 		var yaw:=float(pose.yaw_turns)*PI*.5
 		var oriented:=bool(shape.get("oriented",false))
 		if String(piece.kind)=="volume":
-			var grid:=terrain._sim.lattice_registry_grid() if bool(shape.get("fine",false)) else terrain._sim.grid_size()
+			var grid:=registry_grid if bool(shape.get("fine",false)) else full_grid
 			centre.y-=(grid-size.y)*.5
 			if oriented: yaw+=float(piece.get("rotation_step",0))*PI*.5
 		elif oriented and String(shape.get("form",""))=="corner" and int(piece.axis)==1: yaw+=float(piece.get("rotation_step",0))*PI*.5

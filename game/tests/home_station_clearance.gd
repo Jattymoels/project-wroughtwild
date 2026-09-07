@@ -78,7 +78,10 @@ func _run() -> void:
 	await piece(&"beam",address("edge",0,beam+Vector3i(0,3,1)))
 	await station(&"mason_yard_kit",beam,false,"overhead beam blocks the body")
 	var wall:=Vector3i(92,0,14)
-	await piece(&"wall_panel",address("face",0,wall+Vector3i(2,0,0)))
+	# INT-03C can seat beside a neighbouring wall skin without intersection.
+	# Keep the genuine-obstruction control through the centre of the body:
+	# this cannot be cleared by the bounded seating adjustment.
+	await piece(&"wall_panel",address("face",0,wall+Vector3i(1,0,0)))
 	await station(&"forge_kit",wall,false,"wall intrusion blocks the body")
 	await station(&"forge_kit",wall-Vector3i(1,0,0),true,"moving half a cell clears the wall")
 	# A late blocker must be rechecked at the actual payment boundary.

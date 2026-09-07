@@ -1,7 +1,8 @@
 param(
     [ValidateSet('baseline','current')][string]$Phase = 'current',
-    [ValidateSet('home','home-reliability','interaction-feedback','footsteps-ambience','forge-readability','workshop-usability')][string]$ReviewSet = 'home',
+    [ValidateSet('home','home-reliability','interaction-feedback','footsteps-ambience','forge-readability','workshop-usability','placement-reliability')][string]$ReviewSet = 'home',
     [string[]]$Scenes = @('home_station_placement','home_material_joins','home_headroom','home_workshop_review'),
+    [string[]]$Scripts = @(),
     [int]$Seed = 77,
     [switch]$Prepare,
     [switch]$Import,
@@ -32,6 +33,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $homeGame 'project.godot'))) { throw
 if ($Phase -eq 'baseline') {
     # Replay only the new common review/reproduction fixtures against untouched production.
     $homeFixtures = switch ($ReviewSet) {
+        'placement-reliability' { @('placement_transactions','placement_performance_review','placement_scenery','placement_generated_fixtures') }
         'home-reliability' { @('home_terrain_placement','home_station_clearance','home_door_persistence','home_workshop_review') }
         'interaction-feedback' { @('interaction_route') }
         'footsteps-ambience' { @('footsteps_route') }
@@ -76,13 +78,17 @@ try {
         Write-Output "PASS $Phase $Name"
     }
     if ($Import) { Invoke-HomeCheck 'import' '--headless --import' }
+    foreach ($homeScript in $Scripts) {
+        if ($homeScript -notmatch '^[a-zA-Z0-9_]+$') { throw 'Script must be a test basename.' }
+        Invoke-HomeCheck "$homeScript-script" "--headless --script res://tests/$homeScript.gd"
+    }
     foreach ($homeScene in $Scenes) {
         if ($homeScene -notmatch '^[a-zA-Z0-9_]+$') { throw 'Scene must be a test basename.' }
         $homeFlags = if ($Rendered) { '--resolution 1440x900 --position -9999,-9999' } else { '--headless' }
         # Audio samples are exported for review; isolated checks never use the owner's speakers.
         if ($ReviewSet -in @('interaction-feedback','footsteps-ambience','forge-readability','workshop-usability')) { $homeFlags += ' --audio-driver Dummy' }
         $homeMode = if ($Rendered) { 'rendered' } else { 'headless' }
-        $homeVariant = if ($ExtraArguments -match '--journey-class=([a-zA-Z0-9_]+)') { '-' + $Matches[1] } else { '' }
+        $homeVariant = if ($ExtraArguments -match '--journey-class=([a-zA-Z0-9_]+)') { '-' + $Matches[1] } elseif ($ExtraArguments -match '--placement-restore-only|--soak-resume') { '-restart' } else { '' }
         Invoke-HomeCheck "$homeScene-$Seed-$homeMode$homeVariant" "$homeFlags res://tests/$homeScene.tscn -- --home-seed=$Seed --home-phase=$Phase $ExtraArguments"
     }
 } finally { $env:APPDATA = $priorHomeAppData }

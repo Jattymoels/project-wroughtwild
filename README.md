@@ -46,6 +46,10 @@ step handling, verified with two complete homes and actual first-home entry.
 checks complete piece footprints against terrain, keeps stations clear of built
 walls and ceilings, and restores open doors in their saved physical pose.
 Existing buildings remain loadable; owner comfort review is still pending.
+[INT-03C placement reliability](docs/prototype/placement-reliability-2026-09-07.md)
+restricts costly scenery refresh to changed building areas and seats unchanged
+station bodies clear of corner walls. All seven fixture kits have actual-control
+and restart checks; the owner's original disappearance remains unreproduced.
 [INT-04A interaction feedback](docs/prototype/interaction-feedback-2026-09-07.md)
 adds distinct local work, release and material-collection sounds, plus one
 confirmation at the station completing a manual craft. Save/visual refreshes

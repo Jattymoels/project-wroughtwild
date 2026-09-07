@@ -480,6 +480,64 @@ func _element_buried(terrain: Terrain, element: Dictionary) -> bool:
 func element_accepts(element: Dictionary) -> bool:
 	return element_refusal(element) == ""
 
+## Stations keep their body and lattice address, but a wall's skin extends into
+## either cell. Resolve a small horizontal seating offset from actual wall faces.
+## The nearest fitting pose stays within half a registry cell of the anchor;
+## a wall through the middle, a narrow room or an obstructed ceiling still fails.
+func kit_pose(element: Dictionary, turn: int) -> Dictionary:
+	var pose:=piece_pose(KIT_STAND_IN_SHAPE,element,0)
+	if pose.is_empty(): return pose
+	pose.centre.y+=(shape_size.y-grid_size)*.5
+	pose.yaw=float(turn)*PI*.5
+	if not _sim().contraption_kind_for_kit(selected_kit).is_empty(): return pose
+	var box:=BoxShape3D.new()
+	box.size=shape_size
+	# Preserve established vertical floor/ceiling contact tolerance. Horizontal
+	# seating uses the full body width, so it cannot hide a wall intersection.
+	box.size.y*=0.9
+	var query:=PhysicsShapeQueryParameters3D.new()
+	query.shape=box
+	query.exclude=[get_parent()]
+	query.transform=Transform3D(Basis(Vector3.UP,pose.yaw),pose.centre)
+	var space: PhysicsDirectSpaceState3D=(get_parent() as Node3D).get_world_3d().direct_space_state
+	var xs: Array[float]=[0.0]
+	var zs: Array[float]=[0.0]
+	var world_box:=query.transform*AABB(-shape_size*.5,shape_size)
+	var gap: float=preload("res://art/station_look.tres").placement_contact_gap_m
+	for hit in space.intersect_shape(query,32):
+		var wall:=hit.collider as PlacedBlock
+		if wall==null or wall.element.get("kind","")!="face" or wall.element.get("axis",1)==1: continue
+		for collision in wall._collision_shapes:
+			if not collision.shape is BoxShape3D: continue
+			var size: Vector3=collision.shape.size
+			var bounds:=collision.global_transform*AABB(-size*.5,size)
+			var axis: int=wall.element.axis
+			for offset in [bounds.end[axis]-world_box.position[axis]+gap, bounds.position[axis]-world_box.end[axis]-gap]:
+				if absf(offset)>registry_grid*.5: continue
+				if axis==0 and not xs.has(offset): xs.append(offset)
+				if axis==2 and not zs.has(offset): zs.append(offset)
+	var candidates: Array[Vector3]=[]
+	for x in xs:
+		for z in zs: candidates.append(Vector3(x,0,z))
+	candidates.sort_custom(func(a: Vector3,b: Vector3)->bool:return a.length_squared()<b.length_squared())
+	for offset in candidates:
+		query.transform.origin=pose.centre+offset
+		var blocked:=false
+		for hit in space.intersect_shape(query,32):
+			var wall:=hit.collider as PlacedBlock
+			if wall==null: continue # ordinary props retain the existing fit check below
+			if _supporting_slab(wall,pose.centre.y-shape_size.y*.5): continue
+			blocked=true
+			break
+		if not blocked:
+			pose.centre+=offset
+			return pose
+	pose.building_blocked=true
+	return pose
+
+func _supporting_slab(block: PlacedBlock, floor_y: float) -> bool:
+	return block.element.get("kind","")=="face" and block.element.get("axis",-1)==1 and is_equal_approx(block.global_position.y,floor_y)
+
 func element_refusal(element: Dictionary) -> String:
 	var shape := _target_shape()
 	if element.is_empty() or not _sim().shape_accepts(shape, element):
@@ -492,10 +550,8 @@ func element_refusal(element: Dictionary) -> String:
 	if pose.is_empty():
 		return "This shape cannot fit that surface. Aim at another face."
 	if selected_kit != &"":
-		# Match the displayed kit box's raised centre, rather than testing a
-		# taller box at the cube centre and accidentally clipping into the floor.
-		pose["centre"].y += (shape_size.y-grid_size)*0.5
-		pose["yaw"] = float(preview_rotation_step)*PI/2.0
+		pose=kit_pose(element,preview_rotation_step)
+		if pose.get("building_blocked",false): return "Building blocks this station. Leave room above and beside it."
 	var terrain := _find_terrain()
 	var shape_box := BoxShape3D.new()
 	# Slightly smaller than the piece so face-adjacent neighbours do not touch.
@@ -516,7 +572,7 @@ func element_refusal(element: Dictionary) -> String:
 				# Preserve that floor contact, including half-grid floors, while
 				# walls and higher slabs/beams must clear the station's body.
 				var floor_y: float = pose["centre"].y-shape_size.y*0.5
-				if collider.element.get("kind","") == "face" and collider.element.get("axis",-1) == 1 and is_equal_approx(collider.global_position.y,floor_y):
+				if _supporting_slab(collider,floor_y):
 					continue
 				return "Building blocks this station. Leave room above and beside it."
 		if terrain != null and terrain.is_terrain_body(collider) and not fixture_kit:
@@ -658,10 +714,7 @@ func _update_preview() -> void:
 	preview_element = element
 	var pose := piece_pose(_target_shape(), element, preview_rotation_step)
 	if selected_kit != &"":
-		# Collision stays centred above the floor; authored kit meshes have
-		# their pivot at that floor, just like the eventual placed objects.
-		pose["centre"].y += (shape_size.y - grid_size) * 0.5
-		pose["yaw"] = float(preview_rotation_step)*PI/2.0
+		pose=kit_pose(element,preview_rotation_step)
 
 	preview_reason = selection_refusal()
 	if preview_reason == "":
@@ -724,7 +777,7 @@ func place_piece(element: Dictionary, shape_id: StringName, family: StringName,
 	block.init_piece(shape_id, family, element, rotation_step, String(info.get("form", "box")),
 		info["size"], pose["centre"], pose["yaw"], PieceLook.material_for(_sim(), family,
 			"roof" if String(info.get("form","")).begins_with("roof_") else "door" if info.get("form","")=="door" else "frame" if element.get("kind","")=="edge" else "surface"))
-	refresh_trims()
+	_changed_piece(block)
 	return block
 
 
@@ -736,8 +789,10 @@ func remove_piece(block: PlacedBlock) -> bool:
 	# A chest spills what it held where it stood (Wave 6 slice 6).
 	var spilled: Dictionary = _sim().store_remove(block.store_key()) if block.is_chest() else {}
 	var stood := block.global_position
+	var changed_bounds:=_piece_clearance_bounds(block)
 	block.get_parent().remove_child(block)
 	block.queue_free()
+	_record_changed_bounds(changed_bounds)
 	refresh_trims()
 	if not spilled.is_empty():
 		Pickup.scatter(_world_root(), stood + Vector3(0.0, 0.3, 0.0), spilled, hash(block.store_key()), stood.y - 0.45)
@@ -775,8 +830,8 @@ func _place_kit() -> bool:
 		if _sim().station(other_id).get("upgrade_from", "") == String(station_id):
 			site.upgrade_station_id = StringName(other_id)
 	_world_root().add_child(site)
-	var pose := piece_pose(KIT_STAND_IN_SHAPE, preview_element, 0)
-	site.global_position = pose["centre"] + Vector3(0.0, -grid_size * 0.5, 0.0)
+	var pose := kit_pose(preview_element,preview_rotation_step)
+	site.global_position = pose.centre-Vector3.UP*shape_size.y*.5
 	site.station_key = StationSite.key_at(String(station_id),site.global_position)
 	site.rotation.y = float(preview_rotation_step) * PI / 2.0
 	site.refresh_visual(_sim())
@@ -824,6 +879,25 @@ func rotate_preview(direction: int = 1) -> void:
 ## keeps one slim mesh per such edge and drops the rest. Purely
 ## presentation - trims are never saved, never collide, never cost.
 var _ecology_refresh_queued := false
+var _changed_bounds: Array[AABB]=[]
+var _refreshing_changes := false
+
+func _piece_clearance_bounds(block: PlacedBlock) -> AABB:
+	return (block.global_transform*AABB(-block.size*.5,block.size)).grow(StrangeSites.ECOLOGY.building_clearance_m)
+
+func _changed_piece(block: PlacedBlock) -> void:
+	_record_changed_bounds(_piece_clearance_bounds(block))
+	refresh_trims()
+
+func _record_changed_bounds(bounds: AABB) -> void:
+	if not _world_root().has_node("StrangeSites"): return
+	# Rapid building coalesces adjoining edits. Separate distant edits stay
+	# separate so a restored/batched pair never dirties the world between them.
+	for i in _changed_bounds.size():
+		if _changed_bounds[i].intersects(bounds):
+			_changed_bounds[i]=_changed_bounds[i].merge(bounds)
+			return
+	_changed_bounds.append(bounds)
 
 func refresh_trims() -> void:
 	if _trims_root == null or not is_instance_valid(_trims_root):
@@ -833,12 +907,15 @@ func refresh_trims() -> void:
 		_trim_material = StandardMaterial3D.new()
 		_trim_material.albedo_color = TRIM_COLOUR
 	var wanted := {}
+	var looks: Dictionary={}
 	for edge in _sim().structure_trim_edges():
 		var cell: Vector3i = edge["cell"]
 		var key := "%d_%d_%d" % [cell.x, cell.y, cell.z]
 		wanted[key] = true
 		var family: String = edge.get("family", "")
-		var look: Material = PieceLook.material_for(_sim(), StringName(family),"frame") if family != "" else _trim_material
+		if not looks.has(family):
+			looks[family]=PieceLook.material_for(_sim(), StringName(family),"frame") if family!="" else _trim_material
+		var look: Material=looks[family]
 		if _trims.has(key):
 			# A shared edge can survive while its adjoining material changes.
 			# Reread the native family after edits and incremental save restore.
@@ -861,7 +938,10 @@ func refresh_trims() -> void:
 		_refresh_ecology_deferred.call_deferred()
 
 func _refresh_ecology_deferred() -> void:
-	if _ecology_refresh_queued: refresh_ecology()
+	if _ecology_refresh_queued:
+		_refreshing_changes=true
+		refresh_ecology()
+		_refreshing_changes=false
 
 func refresh_ecology() -> void:
 	# Bulk building/restoration can place many pieces in one frame. Update the
@@ -870,7 +950,10 @@ func refresh_ecology() -> void:
 	var root:=_world_root()
 	var terrain:=_find_terrain()
 	if root is Node3D and terrain!=null and root.has_node("StrangeSites"):
-		StrangeSites.refresh_buildings(root,terrain)
+		var changes: Array[AABB]=[]
+		if _refreshing_changes: changes=_changed_bounds
+		StrangeSites.refresh_buildings(root,terrain,changes)
+	_changed_bounds.clear()
 
 
 func trim_count() -> int:

@@ -44,6 +44,10 @@ Those are unknown, not prerequisites for investigating representative cases.
 
 ### INT-03C: placement transactions, corner fit and frame stalls — first
 
+Owner implementation instruction: continue only this bounded slice from planning
+commit `80dde32`, verify, update the queue, commit and push. Current evidence and
+uncertainties: [INT-03C implementation record](placement-reliability-2026-09-07.md).
+
 **Outcome:** legal corner placement works, paid fixtures remain visible and usable,
 and placing a block does not repeatedly interrupt building.
 

@@ -173,6 +173,21 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   during ordinary building. Focused checks pass; this human review remains
   separate. [Scope and evidence](home-placement-persistence-2026-09-07.md).
 
+## Placement reliability (INT-03C)
+
+- [x] Legal full/half-grid corner previews and placed stations share a pose
+  that clears both walls with unchanged body dimensions; actual rays, capsule
+  collision, blocked ceilings/walls, payment and saved offsets are checked.
+- [x] Local construction refresh produces the same completed scenery geometry,
+  visibility and collision as a full refresh through rapid edits and save
+  replacement, with measured placement-frame comparisons.
+- [x] All seven fixture kits survive actual catalogue/camera/click placement,
+  interaction and isolated fresh-process restoration with one owner each.
+- [ ] The original disappearing-kit report is reproduced or explained using
+  its actual saved circumstances. Current representative cases pass; no
+  speculative inventory correction is made. [Evidence](placement-reliability-2026-09-07.md).
+- [ ] Owner confirms ordinary corner building and placement comfort.
+
 ## Interaction feedback (INT-04A)
 
 - [x] Accepted resource work, release and positive material collection have

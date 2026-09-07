@@ -11,6 +11,16 @@ records the owner's brief separately from the four proposed designs, dimensions
 and ancestry mappings. Concept generation does not approve new runtime actors,
 hazards, hitboxes, rigs, world profiles, loot rules or completed visual acceptance.
 
+Owner instruction, 7 September 2026: implement only INT-03C from planning commit
+`80dde32`, then verify, record and publish that bounded slice. The
+[implementation record](../prototype/placement-reliability-2026-09-07.md) covers
+reproduced placement stalls, wall-corner seating with unchanged station bodies,
+and all-kit ownership/visibility/restart checks. This applies existing
+D-010/D-017/D-029/D-031/D-032 contracts without changing geography, progression,
+source stock or save schema. The original disappearing-kit report remains
+unreproduced; no speculative replacement is granted. The other seven planned
+slices and timber-demolition conflict remain separate.
+
 Owner continuation, 7 September 2026: “Yep go ahead with that remaining” accepts
 [INT-07G](../prototype/frame-pacing-2026-09-07.md), tracing the intermittent pause
 and checking constrained rendering/streaming. Correct a reproduced failure of

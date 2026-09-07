@@ -1,5 +1,14 @@
 # World Generation, Settlements and Travel
 
+## Building refresh — INT-03C, 7 September 2026
+
+Construction edits carry their actual clearance bounds into deferred scenery
+refresh. Unaffected regional instances, cover and ruin pieces are retained;
+leyline tiles rebuild for nearby construction or changed terrain support.
+Complete generation/save refreshes remain available as the equivalence reference.
+This changes refresh work, not profile inputs, geography, retention distances,
+finite stock or saved edits. [Placement evidence](../prototype/placement-reliability-2026-09-07.md).
+
 ## Save recovery and repeated travel — INT-07C, 7 September 2026
 
 Normal loading validates the current whole-world candidate before restoration.

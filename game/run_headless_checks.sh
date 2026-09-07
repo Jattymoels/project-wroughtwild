@@ -58,6 +58,11 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --path . res://tests/home_workshop_review.tscn
 "$GODOT" --headless --path . res://tests/home_terrain_placement.tscn
 "$GODOT" --headless --path . res://tests/home_station_clearance.tscn
+"$GODOT" --headless --path . res://tests/placement_transactions.tscn
+"$GODOT" --headless --path . res://tests/placement_transactions.tscn -- --placement-restore-only
+"$GODOT" --headless --path . res://tests/placement_generated_fixtures.tscn
+"$GODOT" --headless --path . res://tests/placement_generated_fixtures.tscn -- --placement-restore-only
+"$GODOT" --headless --path . res://tests/placement_scenery.tscn
 "$GODOT" --headless --path . res://tests/home_door_persistence.tscn
 "$GODOT" --headless --path . res://tests/save_recovery.tscn
 "$GODOT" --headless --path . res://tests/crafting_catalogue.tscn
