@@ -4,6 +4,7 @@ extends RefCounted
 ## regions, sites, approaches and intact specimens; these nodes grant no loot.
 const LOOK = preload("res://art/strange_look.tres")
 const ECOLOGY = preload("res://art/strange_ecology.tres")
+const DISCOVERY = preload("res://art/discovery_look.tres")
 const INDEX_CELL := 4.0
 static var _meshes: Dictionary={}
 static var _materials: Dictionary={}
@@ -19,8 +20,10 @@ static func build(root: Node3D, terrain: Terrain) -> Node3D:
 	dressing.name="StrangeSites"
 	root.add_child(dressing)
 	var reservations:=_reservations(terrain)
+	# One pass over generated identities, not a whole-world scan on every cue.
+	var site_resources:=_site_resource_ids(terrain)
 	for region: Dictionary in terrain.map.get("regions",[]): _region(dressing,terrain,region,reservations)
-	for site: Dictionary in terrain.map.get("rare_sites",[]): _site(dressing,terrain,site)
+	for site: Dictionary in terrain.map.get("rare_sites",[]): _site(dressing,terrain,site,site_resources.get(String(site.id),[]))
 	refresh_buildings(root,terrain)
 	return dressing
 
@@ -571,11 +574,22 @@ static func _pools(parent: Node3D, terrain: Terrain, centre: Vector3, radius: fl
 	return result
 
 
-static func _site(parent: Node3D, terrain: Terrain, data: Dictionary) -> void:
+static func _site_resource_ids(terrain: Terrain) -> Dictionary:
+	var result: Dictionary={}
+	for definition: Dictionary in terrain.map.get("nodes",[]):
+		var site_id:=String(definition.get("site_id",""))
+		var resource_id:=String(definition.get("resource_id",""))
+		if site_id.is_empty() or resource_id.is_empty(): continue
+		if not result.has(site_id): result[site_id]=[]
+		result[site_id].append(resource_id)
+	return result
+
+static func _site(parent: Node3D, terrain: Terrain, data: Dictionary, resource_ids: Array) -> void:
 	var group:=Node3D.new()
 	group.name=String(data.id)
 	group.set_meta("site_id",String(data.id))
 	group.set_meta("resource_type",String(data.get("resource_type","")))
+	group.set_meta("resource_ids",resource_ids.duplicate())
 	parent.add_child(group)
 	var at:=_anchor(terrain,data)
 	if not at.is_finite(): return
@@ -606,14 +620,22 @@ static func _site(parent: Node3D, terrain: Terrain, data: Dictionary) -> void:
 	for point: Vector3 in data.get("clue_points",[]):
 		var clue_at:=_ground(terrain,point.x,point.z)
 		if not clue_at.is_finite(): continue
-		var clue_kind:="empty_husk" if kind=="lanternheart" else "thrumroot_core" if kind=="thrumroot" else "stormglass" if kind=="stormglass" else "pullstone" if kind=="pullstone" else "vent_case"
-		var clue:=StrangeResourceArt.part(group,clue_kind,"Clue_%02d"%clue_index,clue_at)
+		var clue_kind: String={"lanternheart":"empty_husk","thrumroot":"thrumroot_shell","stormglass":"lightning_scar","pullstone":"scree","ventlung":"vent_case"}.get(kind,"")
+		if String(clue_kind).is_empty(): continue
+		# Empty host meshes share the inert material: no intact core, stock glow,
+		# movement, collision or interaction. Keep direct mesh children so the
+		# established support/building refresh restores the same grounded poses.
+		var clue:=StrangeResourceArt.part(group,clue_kind,"Clue_%02d"%clue_index,clue_at,_material("solid"))
+		if clue.mesh==null:
+			clue.free()
+			continue
 		clue.rotation.y=rng.randf_range(-PI,PI)
-		clue.scale=Vector3.ONE*(.3 if kind!="ventlung" else .45)
-		clue.scale.y*=.45 if kind in ["stormglass","thrumroot"] else 1.0
+		var size:=clue.mesh.get_aabb().size
+		clue.scale=DISCOVERY.clue_size(kind)/size
 		clue.set_meta("decorative_clue",true)
+		clue.set_meta("clue_mesh_kind",String(clue_kind))
 		clue.set_meta("ground_y",clue_at.y)
 		clue_index+=1
 	group.set_meta("clue_count",clue_index)
 	group.set_meta("intact_anchor",at)
-	preload("res://art/strange_sound.gd").attach(group,at+Vector3.UP*.7,kind)
+	preload("res://art/strange_sound.gd").attach(group,at+Vector3.UP*.7,kind,terrain,resource_ids)

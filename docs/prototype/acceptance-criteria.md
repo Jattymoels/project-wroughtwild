@@ -128,6 +128,19 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [x] Rendered site and brick-building review passes; user workshop feel remains
   a separate playtest. [Work item](pressure-workshop-2026-09-06.md).
 
+## Exploration clarity (INT-02A)
+
+- [x] Existing V5/V6 smithies gain bounded, grounded old-craft and damage
+  evidence using native route/source associations. Existing collision, paid
+  building suppression, excavation and save restoration remain valid.
+- [x] Five rare families use inert clue remains; periodic discovery cues respect
+  saved finite stock, including unloaded resources and exhaustion.
+- [x] Existing native work stages appear in the compact progress display, and
+  opt-in Source/use pages link actual recipe consumers without granting remote
+  station crafting. Matched world captures and 720p/1080p UI checks pass.
+- [ ] The owner understands the ruined smithy and resource handoff during
+  ordinary discovery. [Evidence and limits](exploration-storytelling-2026-09-07.md).
+
 ## Whole-slice playtest
 
 The [Wide Frontier intensive](wide-frontier-intensive-2026-09-06.md), D-032,

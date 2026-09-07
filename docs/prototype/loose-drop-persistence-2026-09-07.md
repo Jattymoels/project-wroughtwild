@@ -2,6 +2,9 @@
 
 Status: **Implemented; owner review deferred while away.** Baseline: `37a93f5`.
 
+Published as `3229ab4` to origin/main on 7 September after the owner reconfirmed
+ordinary pushes to that destination.
+
 The owner asked to continue the next work while away from the local PC, after
 the [first-hour intensive](first-hour-clarity-plan-2026-09-07.md) identified
 loose-drop loss and duplication as the next reliability priority. This is the

@@ -58,6 +58,9 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --path . res://tests/ranged_fairness.tscn
 "$GODOT" --headless --path . res://tests/loot_persistence.tscn
 "$GODOT" --headless --path . res://tests/loose_drop_save.tscn
+"$GODOT" --headless --path . res://tests/discovery_clarity.tscn
+"$GODOT" --headless --path . res://tests/discovery_sites.tscn
+"$GODOT" --headless --path . res://tests/smithy_story.tscn
 "$GODOT" --headless --path . res://tests/loose_drop_save.tscn -- --write-checkpoint
 "$GODOT" --headless --path . res://tests/loose_drop_save.tscn -- --read-checkpoint
 "$GODOT" --headless --path . res://tests/first_hour_journey.tscn -- --pickup-probe

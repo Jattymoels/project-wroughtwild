@@ -1,5 +1,23 @@
 # World Generation, Settlements and Travel
 
+## Reading existing discoveries — INT-02A, 7 September 2026
+
+The [exploration storytelling slice](../prototype/exploration-storytelling-2026-09-07.md)
+reuses the V5/V6 smithy's native source, impact and discovery associations for
+small inert craft remnants and worn path margins. Existing walls, source,
+walking strip and resource positions remain authoritative. The ordinary ruin
+body carries a short observational target line without a gathering action.
+New remnants participate in the same grounding, excavation and building-hide
+lifecycle as the established ruin kit.
+
+Five rare-site clue families now use empty husks, slack shells, scars and host
+grit rather than miniature collectible cores. Their native clue points stay
+fixed. Periodic discovery sounds read the site's finite resource records:
+unloaded stock can still signal a find; complete depletion silences the cue.
+Empty scenery persists, and no presentation refresh can refill a resource.
+Native work-stage descriptions feed the existing compact gathering display;
+the pack's optional material guide links each component to its actual recipes.
+
 ## Wide Frontier successor — D-032, 6 September 2026
 
 The owner-approved [Wide Frontier work item](../prototype/wide-frontier-intensive-2026-09-06.md)

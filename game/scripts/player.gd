@@ -833,6 +833,10 @@ func aim_probe() -> Dictionary:
 		return {"state": "interact", "label": (collider as PlacedBlock).interact_label(), "target": collider}
 	if collider is Peddler:
 		return {"state": "interact", "label": (collider as Peddler).interact_label(), "target": collider}
+	# Old ruin walls can be read without advertising an interaction or loot.
+	# Keep ordinary resources/stations above this observation-only fallback.
+	if collider is Node and collider.has_meta("story_observation"):
+		return {"state":"none", "label":String(collider.get_meta("story_observation")), "target":null}
 	return none
 
 

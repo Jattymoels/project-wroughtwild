@@ -1,7 +1,7 @@
 class_name MaterialGuide
 extends RefCounted
-## INT-01: missing source/work prose only. Recipes, producers, consumers,
-## building compatibility and fuel values remain native read-only views.
+## INT-01/INT-02A: bounded source/work notes and native rare-find descriptions.
+## Recipes, consumers, building compatibility and fuel stay read-only views.
 const EARLY := ["wood", "fieldstone", "timber_wedge", "split_stone", "stone",
 	"iron_ore", "iron_ingot", "charcoal", "timber_frame", "workbench_kit",
 	"mason_yard_kit", "forge_kit"]
@@ -24,9 +24,20 @@ static func producer(sim: WroughtwildSim, id: String) -> String:
 	return first
 
 static func describe(sim: WroughtwildSim, id: String) -> Dictionary:
-	if sim == null or not EARLY.has(id): return {}
+	if sim == null: return {}
+	var rare: Dictionary = {}
+	if not EARLY.has(id):
+		for entry: Dictionary in sim.rare_resource_guide():
+			if String(entry.id)==id:
+				rare=entry
+				break
+		if rare.is_empty(): return {}
 	var result := {"source":"", "work":"", "use":"", "recipe":producer(sim,id), "uses":[], "shape":""}
-	if SOURCES.has(id):
+	if not rare.is_empty():
+		result.source = "%s · %s · finite world find." % [rare.display_name,", ".join(rare.properties)]
+		result.work = " → ".join(rare.harvest_stages)+". Use E to work it, then collect the freed component."
+		result.use = String(rare.use_preview)
+	elif SOURCES.has(id):
 		result.source = SOURCES[id][0]
 		result.work = SOURCES[id][1]
 	elif result.recipe != "":
@@ -43,7 +54,7 @@ static func describe(sim: WroughtwildSim, id: String) -> Dictionary:
 			# Three examples keep the default explanation short; all actual
 			# consumers remain in `uses` for deliberate navigation.
 			if uses.size() < 3: uses.append(String(row.get("display_name",recipe_id)))
-	if not uses.is_empty(): result.use = "Used for " + ", ".join(uses) + "."
+	if result.use.is_empty() and not uses.is_empty(): result.use = "Used for " + ", ".join(uses) + "."
 	if id == "timber_wedge":
 		# Consumable resource work is not a crafting recipe consumer.
 		result.use = "Set it in a stone seam with E, then drive it with E or a compatible impact."

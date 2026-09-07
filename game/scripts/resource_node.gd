@@ -393,7 +393,8 @@ func is_seam() -> bool:
 func work_view(sim: WroughtwildSim) -> Dictionary:
 	if remaining_units <= 0:
 		return {}
-	var label := _work_verb()
+	var count := maxi(drive_presses, 1)
+	var label := _work_stage(count)
 	var ready := workable()
 	if not ready:
 		label = work_refusal()
@@ -402,10 +403,25 @@ func work_view(sim: WroughtwildSim) -> Dictionary:
 		label = "Set %s" % Hud.pretty(String(tool_item)) if ready else "Needs %s · C to craft" % Hud.pretty(String(tool_item))
 	elif is_seam():
 		label = "Driving wedge"
-	var count := maxi(drive_presses, 1)
 	return {"fraction": float(drive_progress) / count, "ready": ready,
 		"text": "%s · %d/%d · next yield %d %s" % [label, drive_progress, count,
 			mini(units_per_harvest, remaining_units), Hud.pretty(String(material_family))]}
+
+
+## Native stages describe the existing presses; they never add work or gates.
+## A saved profile's metadata wins over current display defaults. Missing or
+## malformed optional notes retain the ordinary work verb.
+func _work_stage(count: int) -> String:
+	var metadata: Variant = get_meta("rare_stages",[])
+	if not (metadata is Array or metadata is PackedStringArray): return _work_verb()
+	var stages := PackedStringArray()
+	for value in metadata:
+		if (value is String or value is StringName) and not String(value).strip_edges().is_empty():
+			stages.append(String(value).strip_edges())
+	if stages.is_empty(): return _work_verb()
+	var fraction := clampf(float(drive_progress)/float(maxi(count,1)),0.0,1.0)
+	var index := mini(stages.size()-1,floori(fraction*stages.size()))
+	return stages[index]
 
 
 ## The crosshair line for this node.

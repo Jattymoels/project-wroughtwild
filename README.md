@@ -31,7 +31,11 @@ optional supporting detail and a verified gathering-to-home journey; owner
 review of clarity remains pending. The follow-up
 [INT-07A save fix](docs/prototype/loose-drop-persistence-2026-09-07.md) preserves
 uncollected materials, gear, pages and death packs and replaces stale drops on
-load. Exploration and environmental storytelling is the next queued brief.
+load. [INT-02A exploration](docs/prototype/exploration-storytelling-2026-09-07.md)
+now adds old craft and damage remains to the existing smithy, distinguishes rare
+clues from intact finds, and exposes their existing work stages and uses.
+Matched captures, interface checks and save/building regressions pass; owner
+discovery review remains pending. Building and home usability is next in the queue.
 
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,

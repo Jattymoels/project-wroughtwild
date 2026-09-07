@@ -4,6 +4,8 @@ const LOOK = preload("res://art/strange_look.tres")
 static var _clips: Dictionary={}
 static var _last_clue_ms: int=-10000
 var kind: String
+var terrain: Terrain
+var resource_ids: Array=[]
 
 static func play(parent: Node3D, sound: String, gain_db: float = -18.0) -> void:
 	if not parent.is_inside_tree() or DisplayServer.get_name()=="headless": return
@@ -16,9 +18,12 @@ static func play(parent: Node3D, sound: String, gain_db: float = -18.0) -> void:
 	player.finished.connect(player.queue_free)
 	player.play()
 
-static func attach(parent: Node3D, at: Vector3, sound: String) -> void:
+static func attach(parent: Node3D, at: Vector3, sound: String, ground: Terrain, ids: Array) -> void:
 	var cue:=load("res://art/strange_sound.gd").new() as Node3D
+	cue.name="DiscoveryCue"
 	cue.kind=sound
+	cue.terrain=ground
+	cue.resource_ids=ids.duplicate()
 	cue.position=at
 	parent.add_child(cue)
 
@@ -29,9 +34,20 @@ func _ready() -> void:
 	add_child(timer)
 	timer.start()
 
+## The same finite records used by save/streaming own this promise. Synchronize
+## only this site's loaded records; unloaded stock does not need a scene, and
+## missing/depleted records must never be reconstructed from generated units.
+func eligible() -> bool:
+	if not is_instance_valid(terrain) or terrain.resource_stream==null: return false
+	var stream:=terrain.resource_stream
+	for id: String in resource_ids:
+		if stream.has_resource(id) and int(stream.records[id].get("remaining_units",0))>0: return true
+	return false
+
 func _clue() -> void:
 	var camera:=get_viewport().get_camera_3d()
 	if camera==null or camera.global_position.distance_to(global_position)>LOOK.clue_sound_distance_m: return
+	if not eligible(): return
 	if Time.get_ticks_msec()-_last_clue_ms<int(LOOK.clue_interval_s*1000): return
 	_last_clue_ms=Time.get_ticks_msec()
 	play(self,kind,LOOK.clue_volume_db)

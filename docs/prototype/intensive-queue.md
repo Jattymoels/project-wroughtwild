@@ -16,7 +16,7 @@ discussion; the suggested execution order follows the table.
 | ID | Intensive | Concrete outcome | Status / next step | Later owner review |
 | --- | --- | --- | --- | --- |
 | INT-01 | First-hour clarity | Existing gathering, material processing, crafting and first-home options explain their requirements and next actions. | **Implemented, review pending.** [Outcome and evidence](first-hour-clarity-plan-2026-09-07.md), including shorter primary panel text and optional detail. | Can the owner understand a material, choose a useful project and find the next step without outside explanation? |
-| INT-02 | Exploration and environmental storytelling | Existing landmarks, approaches and resource clues communicate surviving civilisation, accidental impact and useful discoveries. | Queued for a bounded brief. Reuse the [Northstar premise](../world-premise.md) and current sites; a fuller graphical target needs reference direction. | Are places inviting and clues understandable during ordinary exploration? |
+| INT-02 | Exploration and environmental storytelling | Existing landmarks, approaches and resource clues communicate surviving civilisation, accidental impact and useful discoveries. | **INT-02A implemented, review pending:** [read the remains, follow the find](exploration-storytelling-2026-09-07.md). Existing smithy route, truthful rare clues and visible work/use handoffs verified; fuller graphical direction remains separate. | Are places inviting and clues understandable during ordinary exploration? |
 | INT-03 | Building and home development | Complete houses/workshops expose and resolve awkward placement, joins and interior usability. | Queued. The catalogue, materials and wall forms already exist. A furnishing kit is a separate content selection; farming is not included. | Is making and using a home comfortable and expressive? |
 | INT-04 | Sound, animation and interaction feedback | Existing gathering, footsteps, stations and surroundings gain consistent material and state feedback. | Queued for presentation/asset brief. Use the established local pipeline; new external assets/services require an explicit choice. | Do feedback and ambience feel convincing through repeated use? |
 | INT-05 | Dungeon presentation and traversal | Existing Forge rooms, junctions, secrets, transitions and boss tells are easier to read and traverse. | Queued. The [Forge arc](trial-intensive-2026-09-06.md) already exists. Identify spatial/readability gaps without changing combat numbers. | Do routes and tells make sense, including under Foundry effects? |
@@ -28,8 +28,10 @@ when its changes and measurement workload are independent. Follow with INT-03
 and INT-04, then the focused INT-05/INT-06 refinements as review exposes needs.
 This is a working priority order, not a promise to run every item automatically.
 The loose-drop issue reproduced during INT-01 was handled first as INT-07A.
-The next queued brief is INT-02, using existing sites and the accepted Northstar;
-owner playtesting remains deferred while away and does not block that audit.
+INT-02A now has isolated gameplay captures and functional evidence. The next
+queued brief is INT-03: audit actual home/workshop placement, joins and interior
+use before choosing a bounded fix. Owner playtesting remains deferred while
+away and does not block that audit.
 
 ## Delivery and tracking
 
@@ -75,3 +77,5 @@ needs its own bounded follow-up.
 | 7 Sep 2026 | INT-01 | Four approved slices and the panel-density addition implemented. Native UI checks, three class journeys and matched 720p/1080p captures recorded in the work item. Owner usability review remains pending. |
 | 7 Sep 2026 | INT-07 | Loose-drop loss/duplication reproduced by INT-01's planned save probe. Separate bounded reliability follow-up recorded; ordinary saves and drop rules unchanged by INT-01. |
 | 7 Sep 2026 | INT-07A | Owner authorised the next work while away. Loose materials, gear, pages and death packs now restore as a single world-owned set; trial suspension and successful New World cleanup covered. Isolated evidence and compatibility limits are in the work item. |
+| 7 Sep 2026 | Publishing | Owner reconfirmed ordinary main pushes; `3229ab4` published to origin/main. |
+| 7 Sep 2026 | INT-02A | Existing smithy gains bounded inert remains; five rare families have truthful clues, finite discovery cues, staged work text and opt-in native use links. Matched day/dusk and 720p/1080p UI captures, V5/V6 smithy checks and affected regressions pass. Owner discovery review remains pending. |

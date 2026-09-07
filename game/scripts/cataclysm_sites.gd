@@ -3,6 +3,7 @@ extends Node3D
 ## Native records own history and site identity. These grounded compositions
 ## add space and evidence, never a second resource roll or an extraction gate.
 const LOOK = preload("res://art/cataclysm_look.tres")
+const SMITHY_OBSERVATION := "An abandoned old hearth, split by an accidental asteroid strike."
 var terrain: Terrain
 var pieces: Array[Node3D] = []
 var traces: Array[MeshInstance3D] = []
@@ -87,8 +88,9 @@ func _centre(data: Dictionary) -> Vector3:
 	var cell := float(terrain.map.cell_size)
 	return _ground((float(data.x) + .5) * cell, (float(data.z) + .5) * cell)
 
-func _piece(group: Node3D, id: String, at: Vector3, yaw: float, solid := false, size := Vector3.ONE) -> Node3D:
-	var mesh := AuthoredAssets.mesh_for("cataclysm_" + id)
+func _piece(group: Node3D, id: String, at: Vector3, yaw: float, solid := false, size := Vector3.ONE, authored_id := "") -> Node3D:
+	var mesh_id := "cataclysm_" + id if authored_id.is_empty() else authored_id
+	var mesh := AuthoredAssets.mesh_for(mesh_id)
 	if mesh == null:
 		push_error("Missing cataclysm authored asset: " + id)
 		return null
@@ -98,6 +100,7 @@ func _piece(group: Node3D, id: String, at: Vector3, yaw: float, solid := false, 
 	node.rotation.y = yaw
 	node.scale = size
 	node.set_meta("asset_id", id)
+	node.set_meta("authored_mesh_id", mesh_id)
 	node.set_meta("anchor_y", at.y)
 	node.set_meta("site_id", group.name)
 	node.set_meta("embedded_fragment", id == "impact_fragment")
@@ -111,6 +114,8 @@ func _piece(group: Node3D, id: String, at: Vector3, yaw: float, solid := false, 
 		var body := StaticBody3D.new()
 		body.name = "RuinBody"
 		body.set_meta("cataclysm_solid", true)
+		if String(group.get_meta("record", {}).get("kind", "")) == "pre_cataclysm_blacksmith":
+			body.set_meta("story_observation", SMITHY_OBSERVATION)
 		node.add_child(body)
 		# Only solid low walls use their close authored envelope. Open frames,
 		# fallen roof debris and roots remain outside the walking route.
@@ -199,6 +204,102 @@ func _ruin(data: Dictionary) -> void:
 		if at.is_finite(): _piece(group, "upland_paving", at, yaw, false, Vector3(.75, .45, .8))
 	group.set_meta("linked_site_id", String(data.get("linked_site_id", "")))
 	group.set_meta("open_strip_m", 3.0)
+	if is_smithy: _smithy_story(group, data, centre, basis)
+
+func _smithy_story(group: Node3D, data: Dictionary, centre: Vector3, basis: Basis) -> void:
+	# Select the same source/impact/discovery relationship the native map owns.
+	# No opportunistic nearest-site lookup or a second history roll is needed.
+	var source: Dictionary = {}
+	for candidate: Dictionary in terrain.map.get("pressure_pockets", []):
+		if String(candidate.get("ruin_id", "")) == String(data.id): source = candidate; break
+	if source.is_empty() or not bool(source.get("accidental", false)): return
+	if String(source.get("linked_site_id", "")) != String(data.get("linked_site_id", "")): return
+	group.set_meta("story_source_id", String(source.id))
+	group.set_meta("story_impact_id", String(source.get("impact_id", "")))
+	group.set_meta("story_discovery_id", String(source.get("linked_site_id", "")))
+	var yaw := float(data.get("rotation_quarters", 0)) * PI * .5
+	var damage: Vector3 = data.get("damage_direction", basis * Vector3.FORWARD)
+	damage.y = 0
+	if damage.length_squared() == 0: damage = basis * Vector3.FORWARD
+	damage = damage.normalized()
+	var damage_yaw := atan2(damage.x, damage.z)
+	var craft_offset: Vector2 = LOOK.smithy_craft_offset_m
+	# Read the explicitly serialized packed arrays after resource construction.
+	# Constant-preload analysis can otherwise see null script defaults during
+	# the initial import of the mutually dependent world/actor scripts.
+	var remnant_offsets: PackedVector2Array = LOOK.get("smithy_remnant_offsets_m")
+	var paving_distances: PackedFloat32Array = LOOK.get("smithy_paving_distances_m")
+	if remnant_offsets.is_empty() or paving_distances.is_empty():
+		push_error("Smithy story requires its authored remnant and paving settings.")
+		return
+	_story_piece(group, data, source, "old_craft", "workbench", centre + basis * Vector3(craft_offset.x, 0, craft_offset.y),
+		Basis(Vector3.UP, yaw) * Basis(Vector3.FORWARD, deg_to_rad(LOOK.smithy_craft_roll_degrees)), LOOK.smithy_craft_bounds_m)
+	for offset: Vector2 in remnant_offsets:
+		_story_piece(group, data, source, "impact_remnant", "cataclysm_rootvault_roof", centre + basis * Vector3(offset.x, 0, offset.y),
+			Basis(Vector3.UP, damage_yaw), LOOK.smithy_remnant_bounds_m)
+	for route_name in ["approach", "discovery_route"]:
+		var path: PackedVector3Array = data.get(route_name, PackedVector3Array())
+		if path.size() < 2: continue
+		# A route is world-space and may turn inside the foundation. Its closest
+		# non-central point gives the actual approach/exit, not a cardinal guess.
+		var direction := Vector3.ZERO
+		if route_name == "approach":
+			for index in range(path.size() - 1, -1, -1):
+				direction = Vector3(path[index].x - centre.x, 0, path[index].z - centre.z)
+				if direction.length() >= paving_distances[0]: break
+		else:
+			for point: Vector3 in path:
+				direction = Vector3(point.x - centre.x, 0, point.z - centre.z)
+				if direction.length() >= paving_distances[0]: break
+		if direction.length_squared() == 0: continue
+		direction = direction.normalized()
+		var edge := direction.cross(Vector3.UP) * LOOK.smithy_paving_side_m
+		var role := "arrival_paving" if route_name == "approach" else "discovery_paving"
+		for distance: float in paving_distances:
+			var at := centre + direction * distance + edge
+			var part := _story_piece(group, data, source, role, "cataclysm_upland_paving", at,
+				Basis(Vector3.UP, atan2(direction.x, direction.z)), LOOK.smithy_paving_bounds_m)
+			# The opposite old path margin may be the one clear of the hearth.
+			if part == null:
+				_story_piece(group, data, source, role, "cataclysm_upland_paving", at - edge * 2,
+					Basis(Vector3.UP, atan2(direction.x, direction.z)), LOOK.smithy_paving_bounds_m)
+
+func _story_piece(group: Node3D, ruin: Dictionary, source: Dictionary, role: String, mesh_id: String, at: Vector3, rotation_basis: Basis, maximum_size: Vector3) -> Node3D:
+	var mesh := AuthoredAssets.mesh_for(mesh_id)
+	if mesh == null: return null
+	var rotated := Transform3D(rotation_basis, Vector3.ZERO) * mesh.get_aabb()
+	var fit := maximum_size / rotated.size
+	var scale_factor := minf(fit.x, minf(fit.y, fit.z))
+	var proposed := Transform3D(rotation_basis.scaled(Vector3.ONE * scale_factor), at)
+	var bounds := proposed * mesh.get_aabb()
+	if not _story_clear(ruin, source, bounds): return null
+	var part := _piece(group, "smithy_" + role, at, 0, false, Vector3.ONE, mesh_id)
+	if part == null: return null
+	part.basis = proposed.basis
+	part.set_meta("smithy_evidence", role)
+	part.set_meta("story_damage_direction", ruin.get("damage_direction", Vector3.ZERO))
+	part.get_node("Visual").visibility_range_end = LOOK.detail_distance_m
+	_reground(part)
+	if not bool(part.get_meta("supported", false)):
+		pieces.erase(part)
+		group.remove_child(part)
+		part.queue_free()
+		return null
+	return part
+
+func _story_clear(ruin: Dictionary, source: Dictionary, bounds: AABB) -> bool:
+	var centre := _centre(ruin)
+	var basis := Basis(Vector3.UP, float(ruin.get("rotation_quarters", 0)) * PI * .5)
+	var local := Transform3D(basis, centre).affine_inverse() * bounds
+	var half_width := float(ruin.width_m) * .5 - LOOK.smithy_footprint_inset_m
+	var half_depth := float(ruin.depth_m) * .5 - LOOK.smithy_footprint_inset_m
+	if local.position.x < -half_width or local.end.x > half_width or local.position.z < -half_depth or local.end.z > half_depth: return false
+	if local.position.x < LOOK.smithy_work_strip_half_width_m and local.end.x > -LOOK.smithy_work_strip_half_width_m: return false
+	var cell := float(terrain.map.cell_size)
+	var source_at := Vector2((float(source.x) + .5) * cell, (float(source.z) + .5) * cell)
+	var footprint := Rect2(Vector2(bounds.position.x, bounds.position.z), Vector2(bounds.size.x, bounds.size.z))
+	var source_bounds := Rect2(source_at, Vector2.ZERO).grow(float(source.get("radius_m", .8)) + LOOK.smithy_source_clearance_m)
+	return not footprint.intersects(source_bounds)
 
 func _reground(node: Node3D) -> void:
 	var visual := node.get_node("Visual") as MeshInstance3D
@@ -206,6 +307,17 @@ func _reground(node: Node3D) -> void:
 	var supported := at.is_finite()
 	if supported:
 		node.position.y = at.y - LOOK.bury_m
+		var story := node.has_meta("smithy_evidence")
+		var local_bounds := AABB()
+		var story_bury := LOOK.bury_m
+		var tolerance := LOOK.support_tolerance_m
+		if story:
+			# Fallen craft can be rolled onto its side. Its measured bottom,
+			# rather than the original upright pivot, must meet the ground.
+			local_bounds = Transform3D(node.basis, Vector3.ZERO) * visual.mesh.get_aabb()
+			story_bury = minf(LOOK.bury_m, local_bounds.size.y * LOOK.smithy_bury_height_fraction)
+			tolerance = minf(LOOK.support_tolerance_m, local_bounds.size.y * LOOK.smithy_support_height_fraction)
+			node.position.y = at.y - story_bury - local_bounds.position.y
 		var bounds := node.transform * visual.mesh.get_aabb()
 		var lowest := at.y
 		var highest := at.y
@@ -219,12 +331,17 @@ func _reground(node: Node3D) -> void:
 				else:
 					lowest = minf(lowest, sample.y)
 					highest = maxf(highest, sample.y)
-					if not embedded and absf(sample.y - at.y) > LOOK.support_tolerance_m: supported = false
+					if not embedded and absf(sample.y - at.y) > tolerance: supported = false
 		if embedded:
 			# A buried meteor is not a wall foundation. Sink its broad foot to
 			# the lowest support; retain only fragments with a visible crown.
 			node.position.y = lowest - LOOK.bury_m
 			if highest - lowest > bounds.size.y * (1.0 - LOOK.impact_exposed_fraction): supported = false
+		elif story:
+			# A horizontal worn slab must not float above its lowest corner.
+			# Reject a rise that would conceal its thin top at the other edge.
+			node.position.y = lowest - story_bury - local_bounds.position.y
+			if highest - lowest > tolerance: supported = false
 	node.set_meta("supported", supported)
 	_apply_visibility(node, supported and not bool(node.get_meta("hidden_by_building", false)))
 

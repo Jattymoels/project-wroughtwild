@@ -1,5 +1,12 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: after the INT-07A result, “Yep - you can
+always push there. Continue on” confirms publishing approved work to the existing
+GitHub main branch and continuing the queued exploration work. [INT-02A](../prototype/exploration-storytelling-2026-09-07.md)
+uses existing ruins, rare clues and native work/use descriptions under the
+accepted Northstar. No new geography, loot rule, history of the meteor sender,
+or production scope is selected. Owner playtesting remains deferred while away.
+
 Owner continuation, 7 September 2026: continue the next work while away from
 the local PC. The queue's next priority is [INT-07A loose-drop persistence](../prototype/loose-drop-persistence-2026-09-07.md),
 fixing the loss/duplication reproduced by INT-01. The bounded additive snapshot

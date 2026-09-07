@@ -1,5 +1,14 @@
 # Interface and In-Game Experience
 
+**INT-02A continuation, 7 September 2026:** the existing Source/use entry now
+covers the five rare wild components as well as early materials. Native use
+previews and recipe consumers supply the payoff and navigation. During work,
+the compact progress line uses the saved resource's native harvest stages;
+required presses, yield, refusal and wedge rules retain authority. Looking at
+an existing smithy wall gives one neutral observation about the abandoned
+hearth and accidental impact, without an E prompt, highlight or lore panel.
+[Scope and evidence](../prototype/exploration-storytelling-2026-09-07.md).
+
 **Implemented INT-01 update, 7 September 2026:** the pack's **Guides** button
 opens optional **Getting established** ambitions for a first home, working
 stone and setting up a forge. Each shows one next step using current native

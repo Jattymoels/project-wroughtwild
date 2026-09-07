@@ -2,3 +2,5 @@
 [ext_resource type="Script" path="res://art/cataclysm_look.gd" id="1"]
 [resource]
 script = ExtResource("1")
+smithy_remnant_offsets_m = PackedVector2Array(-2.7, -2.8, 2.7, 2.7)
+smithy_paving_distances_m = PackedFloat32Array(2.3, 4)
