@@ -20,6 +20,31 @@ not a rollback system for engine failure or power loss. Schema 2, generation
 inputs, finite stock, trial deposits and existing lifetime rules remain unchanged.
 [Reproduction, repeated circuits and limits](../prototype/session-reliability-2026-09-07.md).
 
+## Nearby loading schedule — INT-07E, 7 September 2026
+
+The [loading schedule](../prototype/stream-scheduling-2026-09-07.md) separates
+triangle-shape preparation from terrain publication. A prepared shape belongs
+to its hidden partial chunk and has no physics body. Only complete publication
+installs the collider, suppresses building-overlapped cover and makes the chunk
+visible/queryable. Cancellation frees the unpublished shape, meshes and sampler.
+
+Ordinary streamed arrivals still reground resources, rare scenery and solid ruin
+pieces immediately. Their cosmetic leyline tiles enter a coalescing queue, at
+most one integer entry per existing tile. Each complete tile consumes one of
+the existing terrain work slots; terrain preparation continues when that finite
+queue drains. Execution reads current support and building footprints. Explicit
+area preparation drains pending scenery, and edit/build/full-refresh paths
+reconcile it using their existing immediate/deferred event boundaries. World
+scenery replacement owns a fresh queue; it retains no old terrain references.
+
+`resource_build_budget_ms` defaults to 2 ms in `strange_stream.gd`: stop adding
+resource scenes once this frame's creation time reaches the budget. One whole
+node always completes, and the existing 12-node cap also applies. This is a soft
+creation-work budget, not a limit on the entire frame or on an indivisible node.
+Explicit immediate materialisation bypasses it for setup and restoration.
+The terrain slot count remains one, and all detail/retirement radii, geometry,
+finite stock, generation profiles and save schema remain unchanged.
+
 ## Travel presentation cost — INT-07D, 7 September 2026
 
 The [travel optimisation](../prototype/travel-performance-2026-09-07.md) preserves
@@ -112,13 +137,15 @@ walk whose parents were discarded before the existing final walk. Historical
 helpers and tuning inputs remain frozen. Neither optimisation consumes RNG or
 adds persistent state.
 
-Nearby chunks retain the same payload/sampler/mesh/cover/collision stages and
-publication boundary. Configure collision flags before uploading faces. A
+Nearby chunks retain the same payload/sampler/mesh/cover/collision work and
+publication boundary; INT-07E above now splits collision preparation from
+publication and queues cosmetic trace refresh. Configure collision flags before
+uploading faces. A
 streamed leyline tile may keep its existing mesh when the exact terrain chunk
 identities over its complete sampling footprint are unchanged. Those transient
 integer IDs retain no nodes or samplers; replacement chunks invalidate them.
 Building and full refreshes always rebuild. Bounded stage diagnostics explain
-preparation stalls without changing the established radii, detail or scheduling.
+preparation stalls without changing the established radii or detail.
 
 ## Pressure workshop successor — D-031, 6 September 2026
 

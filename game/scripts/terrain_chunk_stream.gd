@@ -18,8 +18,8 @@ var phase_build_ms: Array[float] = []
 var chunk_retire_ms: Array[float] = []
 # Per-stage samples locate indivisible travel stalls; each uses the same fixed
 # diagnostic window as the aggregate timings, never a growing journey log.
-const PREPARATION_STAGES := ["payload", "sampler", "meshes", "cover", "collision_refresh"]
-const REFRESH_STAGES := ["collision_faces", "collision_body", "cover_suppression", "resource_refresh", "rare_refresh", "history_refresh"]
+const PREPARATION_STAGES := ["payload", "sampler", "meshes", "cover", "collision_faces", "collision_refresh"]
+const REFRESH_STAGES := ["collision_body", "cover_suppression", "resource_refresh", "rare_refresh", "history_refresh", "leyline_refresh"]
 var _preparation_samples: Dictionary = {}
 var chunks_built_total := 0
 var chunks_retired_total := 0
@@ -72,7 +72,7 @@ func _build(origin: Vector2i) -> void:
 	set_detail(origin,true)
 	_refresh_nodes(origin)
 
-func _refresh_nodes(origin: Vector2i, measure := false) -> void:
+func _refresh_nodes(origin: Vector2i, measure := false, defer_traces := false) -> void:
 	# Nodes can be materialised by a save or a review before its exact mesh.
 	# Reground only that small neighbourhood when the real surface arrives.
 	var began := Time.get_ticks_usec()
@@ -90,7 +90,7 @@ func _refresh_nodes(origin: Vector2i, measure := false) -> void:
 	began = Time.get_ticks_usec()
 	if parent is Node3D:
 		var history := parent.get_node_or_null("CataclysmSites")
-		if history != null: history.refresh_area(origin.x,origin.y,Terrain.CHUNK_CELLS)
+		if history != null: history.refresh_area(origin.x,origin.y,Terrain.CHUNK_CELLS,defer_traces)
 	if measure: _record(_preparation_samples.history_refresh,(Time.get_ticks_usec()-began)/1000.0)
 
 func set_detail(origin: Vector2i,visible: bool) -> void:
@@ -182,8 +182,25 @@ func tick(delta: float,point: Vector3) -> void:
 		_timer=float(_settings.refresh_seconds)
 		if point.distance_squared_to(_focus)>1.0: focus(point)
 	for i in int(_settings.terrain_chunks_per_frame):
-		_step_job()
+		# Finish nearby cosmetic arrivals in the same bounded work slots as
+		# terrain phases, never stacking a whole trace neighbourhood on the
+		# collision-publication frame. Collision and resource grounding above
+		# remain synchronous; each trace publishes one complete existing tile.
+		if not _step_scenery(): _step_job()
 	_flush_mask()
+
+func has_scenery_work() -> bool:
+	var history := terrain.get_parent().get_node_or_null("CataclysmSites")
+	return history != null and not history._pending_traces.is_empty()
+
+func _step_scenery() -> bool:
+	if not has_scenery_work(): return false
+	var began := Time.get_ticks_usec()
+	terrain.get_parent().get_node("CataclysmSites").step_trace_refresh()
+	var elapsed := (Time.get_ticks_usec()-began)/1000.0
+	_record(phase_build_ms,elapsed)
+	_record(_preparation_samples.leyline_refresh,elapsed)
+	return true
 
 func _step_job() -> void:
 	if _job.is_empty() and _pending.is_empty(): return
@@ -200,11 +217,12 @@ func _step_job() -> void:
 	else:
 		_job.node=terrain._build_chunk_phase(_job.data,float(terrain.map.cell_size),int(_job.phase),_job.node)
 		_job.phase=int(_job.phase)+1
-		if int(_job.phase)==4:
+		if int(_job.phase)==5:
 			set_detail(_job.origin,true)
 			for stage: String in terrain.last_collision_profile:
+				if stage == "collision_faces": continue # Already measured in its own preparation slot.
 				_record(_preparation_samples[stage],float(terrain.last_collision_profile[stage]))
-			_refresh_nodes(_job.origin,true)
+			_refresh_nodes(_job.origin,true,true)
 			chunks_built_total+=1
 			_job.clear()
 	var elapsed_ms := (Time.get_ticks_usec()-began)/1000.0
@@ -213,6 +231,9 @@ func _step_job() -> void:
 
 func _finish_job() -> void:
 	while not _job.is_empty(): _step_job()
+	# Area preparation is also used by saves and teleports. Return with the
+	# exact scenery reconciled, rather than leaving an old arrival queued.
+	while _step_scenery(): pass
 
 func cancel_chunk(origin: Vector2i) -> void:
 	if _job.is_empty() or _job.origin!=origin: return

@@ -1,5 +1,12 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: “Perfect, continue” accepts
+[INT-07E](../prototype/stream-scheduling-2026-09-07.md), spreading remaining
+nearby terrain/scenery work across frames under D-010/D-013/D-032. Preserve
+complete collision publication, synchronous safety, exact visual output,
+finite-resource ownership, existing distances, world profiles and saves.
+This is a bounded presentation scheduling continuation, not a new game rule.
+
 Owner continuation, 7 September 2026: "Yep keep going with optimisation" accepts
 [INT-07D](../prototype/travel-performance-2026-09-07.md), the remaining rendered
 travel investigation. Preparing resource-highlight shaders, retaining the

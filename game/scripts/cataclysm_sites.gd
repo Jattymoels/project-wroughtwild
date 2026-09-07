@@ -8,6 +8,9 @@ var terrain: Terrain
 var pieces: Array[Node3D] = []
 var traces: Array[MeshInstance3D] = []
 var _fissures := LeylineFissures.new()
+# One pending entry per existing tile; integer identities retain no terrain or
+# scene nodes. Only ordinary distant chunk arrivals use this cosmetic queue.
+var _pending_traces: Dictionary = {}
 
 static func build(root: Node3D, ground: Terrain) -> CataclysmSites:
 	var old := root.get_node_or_null("CataclysmSites")
@@ -353,6 +356,7 @@ func _apply_visibility(node: Node3D, shown: bool) -> void:
 
 func refresh_buildings() -> void:
 	if terrain == null: return
+	_pending_traces.clear()
 	var index := StrangeSites._building_index(terrain)
 	for node in pieces:
 		var visual := node.get_node("Visual") as MeshInstance3D
@@ -363,7 +367,7 @@ func refresh_buildings() -> void:
 	# segments underneath a placed floor disappear and return on dismantling.
 	for trace in traces: _trace(trace, index)
 
-func refresh_area(cx: int, cz: int, width: int) -> void:
+func refresh_area(cx: int, cz: int, width: int, defer_traces := false) -> void:
 	var cell := float(terrain.map.cell_size)
 	var bounds := Rect2(Vector2(cx - 5, cz - 5) * cell, Vector2.ONE * (width + 10) * cell)
 	var index := StrangeSites._building_index(terrain)
@@ -374,14 +378,31 @@ func refresh_area(cx: int, cz: int, width: int) -> void:
 		var hidden := StrangeSites._building_overlap(index, node.transform * visual.mesh.get_aabb())
 		node.set_meta("hidden_by_building", hidden)
 		_apply_visibility(node, bool(node.get_meta("supported", false)) and not hidden)
-	for trace in traces:
-		if bounds.intersects(trace.get_meta("xz_bounds", Rect2())): _trace(trace, index, true)
+	for i in traces.size():
+		var trace := traces[i]
+		if not bounds.intersects(trace.get_meta("xz_bounds", Rect2())): continue
+		if defer_traces:
+			_pending_traces[trace.get_instance_id()] = i
+		else:
+			_trace(trace, index, true)
+
+func step_trace_refresh() -> bool:
+	if _pending_traces.is_empty(): return false
+	var id: int = _pending_traces.keys()[0]
+	var index: int = _pending_traces[id]
+	_pending_traces.erase(id)
+	if index < traces.size() and is_instance_valid(traces[index]) and traces[index].get_instance_id() == id:
+		# Re-read current support and buildings, never publish an old prepared
+		# snapshot after a dig, retirement, replacement or building action.
+		_trace(traces[index], StrangeSites._building_index(terrain), true)
+	return true
 
 func refresh_all() -> void:
 	for node in pieces: _reground(node)
 	refresh_buildings()
 
 func _trace(trace: MeshInstance3D, buildings: Dictionary = {}, only_surface_changes := false) -> void:
+	_pending_traces.erase(trace.get_instance_id())
 	# A streamed chunk can overlap the broad refresh margin without changing
 	# any surface a fissure samples. Keep only exact node IDs, never strong
 	# sampler/node references that would defeat distant-terrain retirement.

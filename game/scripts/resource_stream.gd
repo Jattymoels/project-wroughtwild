@@ -15,6 +15,7 @@ var _focus := Vector3.INF
 var radius_m := 120.0
 var retire_margin_m := 32.0
 var nodes_per_frame := 12
+var resource_build_budget_ms: float
 var refresh_seconds := 0.25
 var _pending: Array[String] = []
 
@@ -24,6 +25,7 @@ func setup(owner_terrain: Terrain, definitions: Array) -> void:
 	radius_m = settings.radius_m
 	retire_margin_m = settings.retire_margin_m
 	nodes_per_frame = settings.nodes_per_frame
+	resource_build_budget_ms = settings.resource_build_budget_ms
 	refresh_seconds = settings.refresh_seconds
 	for def in definitions:
 		var id := String(def.get("resource_id", "wn_%s_%d_%d_%d" % [def.type,def.x,def.y,def.z]))
@@ -157,8 +159,10 @@ func tick(delta: float, at: Vector3) -> void:
 	if _timer<=0:
 		_timer=refresh_seconds
 		focus(at)
+	var began := Time.get_ticks_usec()
 	for i in mini(nodes_per_frame,_pending.size()):
 		materialise(_pending.pop_front())
+		if (Time.get_ticks_usec()-began)/1000.0 >= resource_build_budget_ms: break
 
 func has_resource(id: String) -> bool:
 	if active.has(id): _remember(id)

@@ -82,6 +82,12 @@ scene between arrivals and batches equivalent leyline geometry. Matched travel
 measurements and exact presentation comparisons accompany streaming, harvesting
 and save checks; existing scenery detail and world identities remain the same.
 
+[INT-07E loading schedule](docs/prototype/stream-scheduling-2026-09-07.md)
+separates collision preparation from publication and gives queued leyline tiles
+their own terrain work slots. Resource creation also stops at an elapsed-work
+budget. Exact output, interruption, paced coverage and fresh-process home/save
+checks accompany matched travel measurements; synchronous safety remains intact.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and

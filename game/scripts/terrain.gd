@@ -280,9 +280,9 @@ func _release_chunk(origin: Vector2i) -> bool:
 
 func _build_chunk(chunk_data: Dictionary, cell: float) -> void:
 	var chunk: Node3D
-	var phase_names := ["sampler_ms","meshes_ms","cover_ms","collision_ms"]
+	var phase_names := ["sampler_ms","meshes_ms","cover_ms","collision_faces_ms","collision_ms"]
 	last_chunk_profile={}
-	for phase in 4:
+	for phase in phase_names.size():
 		var began:=Time.get_ticks_usec()
 		chunk=_build_chunk_phase(chunk_data,cell,phase,chunk)
 		last_chunk_profile[phase_names[phase]]=(Time.get_ticks_usec()-began)/1000.0
@@ -349,7 +349,15 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 			var began := Time.get_ticks_usec()
 			shape.set_faces(faces)
 			last_collision_profile.collision_faces = (Time.get_ticks_usec()-began)/1000.0
-			began = Time.get_ticks_usec()
+			# The prepared shape belongs to the hidden partial chunk. It has no
+			# body in the physics world until the next publication phase, and
+			# cancellation frees it with the unpublished meshes and sampler.
+			chunk.set_meta("prepared_collision", shape)
+
+	elif phase==4:
+		var shape: ConcavePolygonShape3D = chunk.get_meta("prepared_collision", null)
+		if shape != null:
+			var began := Time.get_ticks_usec()
 			var body := StaticBody3D.new()
 			body.name = "ChunkBody"
 			body.set_meta("terrain_chunk", true)
@@ -360,6 +368,7 @@ func _build_chunk_phase(chunk_data: Dictionary,cell: float,phase: int,chunk: Nod
 			body.add_child(collider)
 			chunk.add_child(body)
 			last_collision_profile.collision_body = (Time.get_ticks_usec()-began)/1000.0
+			chunk.remove_meta("prepared_collision")
 		# A placed floor can predate this streamed/rebuilt chunk. Suppress
 		# intersecting V3 cover before publishing any visible grass or shrubs.
 		var suppression_began := Time.get_ticks_usec()
