@@ -69,6 +69,12 @@ rejected continuous beds with brief textures and 12–24 second quiet gaps. Pres
 **H** for the saved ambience level and mute controls. Work, footsteps and other
 feedback retain their own levels; owner listening comfort remains open.
 
+[INT-01B Foundry clarity](docs/prototype/foundry-clarity-2026-09-08.md) gives
+CURRENT FLOW a larger independent reading area, concise routes and pinned
+Details. Specialisations show native before/after changes before a permanent
+choice; guides distinguish automatic mastery and freely arranged conditional
+rails. Actual controls and saved ownership/effects pass; owner review remains.
+
 [INT-05A Forge readability](docs/prototype/forge-readability-2026-09-07.md)
 exposes route previews, distinguishes physical fixtures and outlines existing
 boss/furnace danger under overlapping effects. Enemies navigate around live

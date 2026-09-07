@@ -7,6 +7,11 @@ bounded plan under the accepted station/ingredient presentation rules.
 Planning baseline: `062b7e7`; implementation and matched-capture baseline:
 `798e0d6`. [Current intensive queue](intensive-queue.md).
 
+The owner's later CURRENT FLOW and mastery feedback is addressed separately by
+[INT-01B](foundry-clarity-2026-09-08.md): readable pinned inspection, native
+specialisation comparison and consistent progression wording. That report
+supersedes this pass's inspector presentation; human comprehension remains open.
+
 ## Outcome
 
 The player can recognise what they gathered, understand what makes it useful,

@@ -114,7 +114,7 @@ Owner continuation, 8 September 2026: implemented this next bounded slice after
 INT-03D. [Quiet ambience and controls](quiet-ambience-2026-09-08.md) records the
 continuous baseline, 12–24 second quiet gaps, saved H level/mute controls, actual
 GUI/restart checks and normal-gain listening files. Human listening acceptance
-remains open. INT-01B is next; the original planning requirements follow.
+remains open. The original planning requirements follow.
 
 **Outcome:** the world leaves room for work, footsteps, danger and discovery.
 First remove the rejected continuous bed from the default listening experience,
@@ -131,6 +131,14 @@ the listener and preferences are the affected presentation systems under D-013.
 Human listening acceptance remains open; a waveform test cannot establish it.
 
 ### INT-01B: Foundry flow and mastery explanation
+
+Owner continuation, 8 September 2026: “Let's continue” selects this bounded
+slice after INT-04C. **Implemented, owner review pending.** The
+[implementation and evidence](foundry-clarity-2026-09-08.md) record the reproduced
+88-pixel inspector, larger readable summaries and pinned scrolling detail,
+native specialisation comparisons, automatic mastery wording, actual controls
+and six fresh-process saves. Exact owner layout/comprehension remain open.
+INT-05B is next; the original planning requirements follow.
 
 **Outcome:** inspecting a cell gives a readable consequence without covering the
 plate or losing the useful workings panel. Reproduce CURRENT FLOW with short and

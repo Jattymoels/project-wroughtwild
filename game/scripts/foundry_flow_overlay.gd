@@ -13,7 +13,7 @@ func _draw() -> void:
 			drawn[key] = true
 			var direction := start.direction_to(end)
 			# Keep arrows in the cell gaps so long resolved names remain legible.
-			var edge := 48.0 if absf(direction.x) > absf(direction.y) else 34.0
+			var edge := maxf(0.0, (start.distance_to(end) - 12.0) * .5)
 			var a := start + direction * edge
 			var b := end - direction * edge
 			var colour := Color("b9d1bc")

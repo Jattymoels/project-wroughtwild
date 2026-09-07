@@ -122,6 +122,7 @@ func _run() -> void:
 	for cell: Vector2i in [Vector2i(1,1),Vector2i(1,2),Vector2i(1,3)]:
 		var refusal: Dictionary=sim.foundry_preview(cell.x,cell.y,"frost","iron")
 		foundry._inspect_cell(cell.x,cell.y)
+		foundry._inspection_details.button_pressed = true
 		check(not bool(refusal.valid) and foundry._preview.text.contains(String(refusal.reason)) and foundry._preview.text.contains(String(foundry._cell_buttons[cell].get_meta("reading_details"))), "occupied-cell refusal preserves the current tablet, ingot or Kind reading")
 	foundry._on_subject("vanguard")
 	for kind: Dictionary in sim.foundry().kinds:

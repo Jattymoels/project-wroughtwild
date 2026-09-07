@@ -309,6 +309,22 @@ milestone, alloy and curio loop. The expanded Foundry tray scrolls while the
 plate and close control remain visible. Both panels are checked at 720p/1080p.
 This view exposes existing/new tuning; it grants no skills or progression.
 
+INT-01B, 8 September 2026: the Foundry inspector has a concise CURRENT FLOW
+summary naming all receiving skills, with complete native readings in Details.
+Right-click pins the cell; hover or keyboard focus changes it when unpinned.
+The opaque, wrapped 16-pixel body scrolls independently of the workings and
+grows from 144 to 240 pixels high. Full plate, costs and controls remain visible
+at 720p. Preview and refusal labels explicitly distinguish hypothetical results.
+
+Compare opens each specialisation's unchanged conditions and native current/grown
+rules before a separate **Choose [name] permanently** action. Known rails remain
+free arrangements within native limits, active only while their condition holds.
+The initial class descriptions scroll beneath the fixed introductory contract.
+Skills, the pack mastery disclosure and Progression explain automatic qualifying
+practice, including no award for empty casts or automatic repeats. The guide
+names the next native milestone; learned tablets need not wait for mastery.
+[Measured layouts, control/save checks and limits](../prototype/foundry-clarity-2026-09-08.md).
+
 ## Open questions
 
 Owner-authorised presentation continuation, 5 Sep 2026: enemy and peddler

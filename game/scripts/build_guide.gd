@@ -220,7 +220,9 @@ func _card(title: String, subtitle: String) -> VBoxContainer:
 func _skills() -> void:
 	var known := sim.known_skill_ids()
 	_text(self,"%d / %d skills discovered · Choose a learned skill for your bar." % [known.size(),sim.combat_skill_ids().size()])
+	_text(self,"Mastery is automatic: qualifying practice unlocks each listed milestone. You do not choose between perks.",UiTheme.PARCHMENT)
 	_text(_details(self,"Learning and shaping skills"),"Pages teach skills you do not know. Any class can learn any page. Support a learned skill's tablet in the Foundry (F).")
+	_text(_details(self,"What counts as practice?"),"A cast must affect a live hostile; movement skills practise during a real threat. Empty casts, automatic repeats and secondary ticks do not award their own practice.")
 	var filters := HBoxContainer.new()
 	add_child(filters)
 	for value in ["All","Attacks","Spells","Undiscovered"]:
@@ -257,7 +259,7 @@ func _skills() -> void:
 			if next.is_empty() and not perk.unlocked: next = perk
 		if learned:
 			if not next.is_empty():
-				_text(column,"Mastery · %d / %d practice toward the next milestone" % [uses,int(next.uses)],UiTheme.SUN_WARM)
+				_text(column,"Automatic mastery · %d / %d practice\nNext: %s" % [uses,int(next.uses),next.text],UiTheme.SUN_WARM)
 				var progress := ProgressBar.new()
 				progress.max_value = int(next.uses)
 				progress.value = uses
@@ -294,9 +296,17 @@ func _progression() -> void:
 	var column := _card("Era %d · %s" % [int(era.index),era.display_name],"")
 	_text(_details(column,"This era"),String(era.story))
 	_text(column,"%d forged rows · two skill sockets · %d of %d rails set" % [int(foundry.last_row)-int(foundry.first_row)+1,int(foundry.rails_set),int(foundry.rails_allowed)],UiTheme.FROST)
+	column = _card("Practice, specialisation and rails","Three different parts of your build.")
+	_text(column,"Skill mastery is automatic. Qualifying practice unlocks listed milestones; there is no perk choice.",UiTheme.PARCHMENT)
+	var spec_name := String(foundry.get("specialisation_name", ""))
+	if spec_name != "":
+		_text(column,"Class specialisation: %s — your permanent choice." % spec_name,UiTheme.SUN_WARM)
+	else:
+		_text(column,"Class specialisation is one permanent choice after the Tyrant unlock. Compare what your rail patterns become in the Foundry (F).",UiTheme.PARCHMENT)
+	_text(column,"Rail patterns are arrangements: set or clear known patterns freely within the limit. A pattern only works while its line condition holds.",UiTheme.PARCHMENT)
 	column = _card("Discover → practise → shape","Find skills, practise them, then shape their workings in the Foundry (F).")
 	var details := _details(column)
-	_text(details,"Find a page, use its skill to reach the listed mastery milestones, then lay its tablet in a Foundry socket. Ingots beside it support it; specific Kinds transform every ingot along an inward path.")
+	_text(details,"A page teaches a skill. Qualifying practice unlocks its mastery milestones automatically. A learned skill can be laid in a socket without waiting for mastery. Adjacent ingots support it; specific Kinds transform every ingot along an inward path.")
 	_text(details,"Milestones forge permanent ingots: useful crafts, first encounters, exploration and trials. Arrange the same pieces differently to try a different build.")
 	column = _card("Forge a wider working","New eras and available alloys broaden your existing pieces.")
 	details = _details(column)
@@ -308,4 +318,4 @@ func _progression() -> void:
 	_text(details,"Setting a curio there turns the era; time and skill uses do not advance it. Your existing equipment, skills and buildings carry forward.")
 	for hint in sim.curio_hints(): _text(details,String(hint),UiTheme.FROST)
 	if bool(foundry.get("can_specialise",false)):
-		_text(column,"Your trial specialisation is ready. Open the Foundry (F) to compare and choose it.",UiTheme.GRASS_LIGHT)
+		_text(column,"Your class specialisation is ready. Open the Foundry (F) to compare before making this permanent choice.",UiTheme.GRASS_LIGHT)

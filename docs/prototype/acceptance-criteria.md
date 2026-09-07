@@ -256,6 +256,26 @@ INT-04B's continuous-bed design following the owner's rejected drone.
   work, exploration and fights on their listening setup. Offline PCM and
   Dummy-audio regression do not establish this subjective acceptance.
 
+## Foundry flow and progression explanation (INT-01B)
+
+[Implementation and limitations](foundry-clarity-2026-09-08.md).
+
+- [x] Matched short/shared and long/branched readings reproduce the cramped
+  baseline at 720p, 1080p and both supplied screenshot sizes. Current summaries
+  retain destinations with readable body type and independent scrolling.
+- [x] Actual hover/focus, right-click pin, Details and wheel input preserve the
+  plate, useful workings, native descriptions and current/preview distinction.
+  Browsing spends nothing; paid placement/lifting and refused actions conserve
+  exactly the native ownership and effects.
+- [x] All six specialisations show conditions and native before/after rules
+  before permanent confirmation. Comparison/cancel are free; actual grown-rail
+  controls remain free and breaking their line removes the conditional effect.
+- [x] Skill/pack/progression wording distinguishes automatic qualifying practice,
+  permanent class specialisation and free rail arrangement. Six fresh-process
+  saves retain exact ownership, earned mastery, specialisation and rail effects.
+- [ ] Owner accepts readability and understands these distinctions in ordinary
+  play. The owner's exact arrangement and intended mastery screen remain unknown.
+
 ## Forge readability and traversal (INT-05A)
 
 [Scope and evidence](forge-readability-2026-09-07.md).

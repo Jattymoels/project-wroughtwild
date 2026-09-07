@@ -592,12 +592,12 @@ func _refresh_skills() -> void:
 		# Mastery: uses so far, and each perk with its threshold.
 		var perks: Array = view.get("mastery", [])
 		if not perks.is_empty():
-			var mastery_details := _details(column,"Mastery · %d practice" % int(view.get("practice",0)))
+			var mastery_details := _details(column,"Automatic mastery · %d practice" % int(view.get("practice",0)))
 			var mastery := Label.new()
 			var parts := PackedStringArray()
 			for perk in perks:
 				parts.append("%s%s (%d)" % ["✓ " if perk["unlocked"] else "", perk["text"], int(perk["uses"])])
-			mastery.text = "mastery %d practice  ·  %s" % [int(view.get("practice", 0)), "  ·  ".join(parts)]
+			mastery.text = "Qualifying practice unlocks these milestones automatically; no perk choice. Empty casts and automatic repeats do not train.\n%d practice · %s" % [int(view.get("practice", 0)), "  ·  ".join(parts)]
 			mastery.add_theme_font_size_override("font_size", 12)
 			mastery.modulate = UiTheme.SUN_WARM
 			mastery.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

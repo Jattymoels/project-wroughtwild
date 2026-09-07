@@ -16,6 +16,7 @@ var player: WroughtwildPlayer
 
 var _root: PanelContainer
 var _choices: VBoxContainer
+var _scroll: ScrollContainer
 var _message: Label
 
 ## Test surface.
@@ -46,19 +47,24 @@ func _ready() -> void:
 	title.add_theme_font_size_override("font_size", 22)
 	column.add_child(title)
 	var how := Label.new()
-	how.text = "Choose once. Your class sets your starting skills and Foundry rail patterns. After the Tyrant, choose a specialisation."
+	how.text = "Choose once. Your class sets starting skills and Foundry rail patterns. After the Tyrant, compare and choose a permanent specialisation. Skill mastery comes automatically from practice."
 	how.modulate = UiTheme.MUTED
 	how.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	how.custom_minimum_size = Vector2(940, 0)
 	column.add_child(how)
 
+	_scroll = ScrollContainer.new()
+	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	column.add_child(_scroll)
 	_choices = VBoxContainer.new()
+	_choices.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_choices.add_theme_constant_override("separation", 8)
-	column.add_child(_choices)
+	_scroll.add_child(_choices)
 
 	_message = Label.new()
 	_message.modulate = UiTheme.MUTED
 	column.add_child(_message)
+	get_viewport().size_changed.connect(_fit)
 
 
 func is_open() -> bool:
@@ -120,6 +126,17 @@ func refresh() -> void:
 			later.modulate = UiTheme.MUTED
 			box.add_child(later)
 		class_count += 1
+	_fit.call_deferred()
+
+
+func _fit() -> void:
+	# Leave the introduction outside the scroll so the permanent choice stays clear.
+	_scroll.custom_minimum_size.y = minf(620, get_viewport().get_visible_rect().size.y - 190)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if not is_inside_tree(): return
+	_root.reset_size()
+	_root.position = (get_viewport().get_visible_rect().size - _root.size) * 0.5
 
 
 func _on_choose(id: String) -> void:

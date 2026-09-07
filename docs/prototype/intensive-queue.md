@@ -14,8 +14,8 @@ The owner has finished this round of notes and asked for the next intensives
 and iterations to be planned. The [complete feedback ledger and slice plans](playtest-iterations-2026-09-07.md)
 include both retained screenshots and the later progression clarification.
 These priorities supersede the convenience/export-first recommendation below.
-INT-03C, INT-03D and INT-04C are **Implemented, owner review pending**;
-INT-01B is next, and the remaining entries are **Plan ready**.
+INT-03C, INT-03D, INT-04C and INT-01B are **Implemented, owner review pending**;
+INT-05B is next, and the remaining entries are **Plan ready**.
 Implementation evidence is recorded separately from these planned outcomes.
 
 | Order | Slice | Requested outcome |
@@ -23,7 +23,7 @@ Implementation evidence is recorded separately from these planned outcomes.
 | 1 | INT-03C | **Implemented, review pending:** [placement reliability](placement-reliability-2026-09-07.md). Placement-frame medians fall from 242–274 to 9–21 ms; unchanged station bodies seat clear of corner walls. All seven kits pass ownership/visibility/restart checks. Original disappearance remains unreproduced; the densest measured placement still reaches 35 ms. |
 | 2 | INT-03D | **Implemented, review pending.** [240-unit common loads and 960-unit chests](building-loads-2026-09-08.md). Matched timber/quarry deliveries fall four to one each; harvesting demand and owner comfort remain separate. |
 | 3 | INT-04C | **Implemented, review pending:** [quiet ambience and saved H controls](quiet-ambience-2026-09-08.md). Short textures leave 12–24 second gaps; four three-minute contexts are 89–92% silent. Normal-gain listening, input, restart and regression checks are recorded; owner timbre/comfort remains open. |
-| 4 | INT-01B | Readable CURRENT FLOW and a clear mastery/specialisation/rail explanation. |
+| 4 | INT-01B | **Implemented, review pending:** [readable flow and progression](foundry-clarity-2026-09-08.md). Larger independent inspector, concise routes and pinned detail; native specialisation comparisons precede permanent choice. Actual controls, exact ownership/effects and six fresh-process saves pass. Owner comprehension remains open. |
 | 5 | INT-05B | Reliable enemy contact and denser, spatially constrained Forge pressure within existing caps. |
 | 6 | INT-05C | Earned power progression, preserving catalyst/proliferation identities and viable early melee. |
 | 7 | INT-02C | Investigate sparse shellstone-area population and distinguish runtime faults from generation design. |
@@ -42,7 +42,7 @@ discussion; the suggested execution order follows the table.
 
 | ID | Intensive | Concrete outcome | Status / next step | Later owner review |
 | --- | --- | --- | --- | --- |
-| INT-01 | First-hour clarity | Existing gathering, material processing, crafting and first-home options explain their requirements and next actions. | **Implemented, review pending.** [Outcome and evidence](first-hour-clarity-plan-2026-09-07.md), including shorter primary panel text and optional detail. | Can the owner understand a material, choose a useful project and find the next step without outside explanation? |
+| INT-01 | First-hour clarity | Existing gathering, material processing, crafting and first-home options explain their requirements and next actions. | **INT-01 and INT-01B implemented, review pending.** [First-hour evidence](first-hour-clarity-plan-2026-09-07.md), plus [readable Foundry flow and progression](foundry-clarity-2026-09-08.md). | Can the owner understand a material, choose a useful project and find the next step without outside explanation? |
 | INT-02 | Exploration and environmental storytelling | Existing landmarks, approaches and resource clues communicate surviving civilisation, accidental impact and useful discoveries. | **INT-02A implemented, review pending:** [read the remains, follow the find](exploration-storytelling-2026-09-07.md). Existing smithy route, truthful rare clues and visible work/use handoffs verified; fuller graphical direction remains separate. | Are places inviting and clues understandable during ordinary exploration? |
 | INT-03 | Building and home development | Complete houses/workshops expose and resolve awkward placement, joins and interior usability. | **INT-03A/B implemented, review pending:** [home usability](home-workshop-usability-2026-09-07.md) and [reliable placement/return](home-placement-persistence-2026-09-07.md). Station previews/clearance, material joins, actual walking, complete terrain footprints and saved door poses verified. A furnishing kit is a separate content selection; farming is not included. | Is making and using a home comfortable and expressive? |
 | INT-04 | Sound, animation and interaction feedback | Existing gathering, footsteps, stations and surroundings gain consistent material and state feedback. | **INT-04A/B/C implemented, review pending:** [interaction feedback](interaction-feedback-2026-09-07.md), [grounded footsteps](footsteps-ambience-2026-09-07.md), and [quiet ambience / saved controls](quiet-ambience-2026-09-08.md). INT-04C retires the rejected continuous bed. Listening files, lifecycle, input/restart and matched walking evidence are recorded. | Do feedback and ambience feel convincing through repeated use? |

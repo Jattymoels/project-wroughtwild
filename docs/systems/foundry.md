@@ -866,6 +866,14 @@ multiplies, the numbers stay within threefold.
 
 ## Feedback and interface
 
+INT-01B, 8 September 2026, refines the implemented interface below. CURRENT FLOW
+summarises named forms and receiving skills; pinned Details preserves full native
+readings in an independent scroll area. Preview/refusal labels and lifting costs
+remain explicit. Class specialisation has a native before/after comparison before
+permanent confirmation; mastery is automatic practice and rail arrangement is
+free within existing conditional limits. No rule or tuning change is implied.
+[Implementation, measured layouts and checks](../prototype/foundry-clarity-2026-09-08.md).
+
 - Sockets are drawn on the bare plate, and the rows the era has not
   forged are drawn as the plate's unworked edge, so the player can see
   the working that is not yet whole. Setting a subject rims its supports

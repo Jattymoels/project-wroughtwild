@@ -1,5 +1,14 @@
 # Decision Registry
 
+Owner continuation, 8 September 2026: “Let's continue” selects
+[INT-01B](../prototype/foundry-clarity-2026-09-08.md), after INT-04C. CURRENT FLOW
+gains readable independent inspection and intentional detail; permanent class
+specialisation shows native before/after rules before committing. Guides
+distinguish automatic qualifying practice, one permanent specialisation and
+freely arranged conditional rails. This is a presentation clarification under
+D-004/D-023/D-025/D-026; native progression, effects, costs and saves are
+unchanged. Owner comprehension and comfort remain open.
+
 Owner continuation, 8 September 2026: “Continue to next” selects
 [INT-04C](../prototype/quiet-ambience-2026-09-08.md), after INT-03D. The rejected
 continuous ambient beds are replaced under D-013 with short local textures,

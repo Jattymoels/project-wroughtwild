@@ -16,6 +16,10 @@ const CELL_SIZE := Vector2(104, 76)
 ## The rail beside a row (its width) and above a column (its height).
 const RAIL_WIDTH := 96
 const RAIL_HEIGHT := 34
+## Shorter cells at 720p leave room for readable inspection without hiding rows.
+const COMPACT_CELL_HEIGHT := 56.0
+## Scrollable body, excluding its fixed controls; grows on taller displays.
+const INSPECTOR_HEIGHT := Vector2(144, 240)
 
 var sim: WroughtwildSim
 var player: WroughtwildPlayer
@@ -27,6 +31,14 @@ var _tray: VBoxContainer
 var _effects: VBoxContainer
 var _workings: VBoxContainer
 var _preview: RichTextLabel
+var _inspection_details: CheckButton
+var _inspection_pin: CheckButton
+var _inspection_summary := ""
+var _inspection_full := ""
+var _inspection_key := ""
+var _inspected_cell := Vector2i(-1, -1)
+var _pending_specialisation := ""
+var _specialisation_review: Label
 var _instructions: Label
 var _effect_toggle: CheckButton
 var _cell_buttons := {}
@@ -114,12 +126,31 @@ func _ready() -> void:
 	_instructions.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_instructions.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 4 * 6, 0)
 	left.add_child(_instructions)
+	var inspection := VBoxContainer.new()
+	inspection.add_theme_constant_override("separation", 4)
+	left.add_child(inspection)
+	var inspection_header := HBoxContainer.new()
+	inspection.add_child(inspection_header)
+	var inspection_title := _section("Cell inspection")
+	inspection_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	inspection_header.add_child(inspection_title)
+	_inspection_pin = CheckButton.new()
+	_inspection_pin.text = "Pin reading"
+	_inspection_pin.tooltip_text = "Keep this cell while moving the mouse. Right-click a cell to pin it."
+	inspection_header.add_child(_inspection_pin)
+	_inspection_details = CheckButton.new()
+	_inspection_details.text = "Details"
+	_inspection_details.toggled.connect(func(_open: bool): _render_inspection())
+	inspection_header.add_child(_inspection_details)
 	_preview = RichTextLabel.new()
-	_preview.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 24, 88)
+	_preview.custom_minimum_size = Vector2(4 * CELL_SIZE.x + RAIL_WIDTH + 24, INSPECTOR_HEIGHT.x)
+	_preview.add_theme_font_size_override("normal_font_size", 16)
+	_preview.add_theme_stylebox_override("normal", UiTheme.flat(UiTheme.INK, Color(UiTheme.MUTED, .6), 5))
 	_preview.bbcode_enabled = false
 	_preview.scroll_active = true
-	_preview.text = "Hover a transformed ingot to trace its flow."
-	left.add_child(_preview)
+	_preview.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	inspection.add_child(_preview)
+	_set_inspection("welcome", "CELL INSPECTION\nHover or focus a cell to read its effect. Right-click to pin it while reading Details.")
 	_flow_overlay = FoundryFlowOverlay.new()
 	_flow_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_flow_overlay)
@@ -164,6 +195,7 @@ func _ready() -> void:
 	_message.modulate = UiTheme.MUTED
 	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(_message)
+	get_viewport().size_changed.connect(_fit)
 
 
 func _section(text: String) -> Label:
@@ -189,6 +221,7 @@ func close_panel() -> void:
 		return
 	_root.visible = false
 	_flow_overlay.visible = false
+	_pending_specialisation = ""
 	closed.emit()
 
 
@@ -197,7 +230,10 @@ func message() -> String:
 
 
 func _show_help() -> void:
-	_preview.text = "Lay skill tablets in sockets. Adjacent ingots support them.\nKinds transform ingots along an inward chain to a compatible skill.\nSelect a piece, then hover a cell to inspect before placing. Hover an existing piece for its full reading."
+	_inspected_cell = Vector2i(-1, -1)
+	_inspection_pin.set_pressed_no_signal(false)
+	_set_inspection("help", "HOW TO USE\nLay skill tablets in sockets; adjacent ingots support them. Select a piece, then hover a cell to preview without spending. Right-click a cell to pin its reading.",
+		"HOW TO USE\nLay skill tablets in sockets. Adjacent ingots support them. Kinds transform ingots along an inward chain to a compatible skill.\nRight-click a cell to pin its reading; Details shows the complete native readings and routes. Clicking a placed piece still lifts it for the displayed cost.\nSkill mastery is automatic practice, not a perk choice. Specialisation is a permanent choice after the Tyrant. Rail patterns are free arrangements, active only while their line conditions hold.")
 	_flow_overlay.paths = []
 	_flow_overlay.queue_redraw()
 
@@ -215,7 +251,7 @@ func refresh() -> void:
 	for s in view.get("sockets", []):
 		_sockets[Vector2i(int(s[0]), int(s[1]))] = true
 	_title.text = "The Foundry · era %d · rows %d–%d of %d×%d" % [view["era"], _first_row + 1, _last_row + 1, rows, cols]
-	_instructions.text = "Select a piece; hover a cell to preview.\nLift: %s. Tablets lift free." % _cost_text(view.get("reforge_cost", {}))
+	_instructions.text = "Hover to read · right-click to pin · click to place/lift.\nLift: %s. Tablets lift free." % _cost_text(view.get("reforge_cost", {}))
 
 	_cell_buttons.clear()
 	_flow_overlay.paths = []
@@ -386,6 +422,8 @@ func refresh() -> void:
 				cell.tooltip_text = "Select a piece, then preview here."
 			cell.pressed.connect(_on_cell.bind(r, c))
 			cell.mouse_entered.connect(_inspect_cell.bind(r, c))
+			cell.focus_entered.connect(_inspect_cell.bind(r, c))
+			cell.gui_input.connect(_cell_inspection_input.bind(r, c))
 			_grid.add_child(cell)
 		_grid.add_child(_rail_button(rail_slots.get("row:%d" % r, {}), rails_allowed, Vector2(RAIL_WIDTH, CELL_SIZE.y)))
 
@@ -506,32 +544,51 @@ func refresh() -> void:
 		none.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		_rails.add_child(none)
 	else:
+		if not bool(view.get("can_specialise", false)) and String(view.get("specialisation", "")) == "":
+			var locked := _section("Specialisation unlocks after the Tyrant. Skill mastery grows automatically through practice.")
+			locked.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			locked.modulate = UiTheme.MUTED
+			_rails.add_child(locked)
 		if bool(view.get("can_specialise", false)):
 			# The view (owner, 4 Sep 2026): what the surround can become.
 			var offer := Label.new()
-			offer.text = "Choose a specialisation once. Your rails change as shown below."
+			offer.text = "Class specialisation · one permanent choice. Compare the changes before choosing."
 			offer.modulate = UiTheme.SUN_WARM
 			offer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			offer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			_rails.add_child(offer)
 			for s in view.get("specialisations", []):
 				var button := Button.new()
-				button.text = "Specialise as a %s" % s["display_name"]
+				button.text = "Compare %s" % s["display_name"]
 				button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 				button.clip_text = true
 				button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-				button.pressed.connect(_on_specialise.bind(String(s["id"])))
+				button.pressed.connect(_review_specialisation.bind(String(s["id"])))
 				_rails.add_child(button)
+				if _pending_specialisation != String(s.id): continue
+				var warning := _section("Permanent: %s. This cannot be changed later." % s.display_name)
+				_specialisation_review = warning
+				warning.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+				warning.modulate = UiTheme.SUN_WARM
+				_rails.add_child(warning)
 				for b in s.get("becomes", []):
 					var line := Label.new()
-					line.text = "    %s becomes %s: %s." % [b["from"]["display_name"], b["to"]["display_name"], b["to"]["rule_text"]]
+					line.text = "%s → %s\nCondition stays: %s.\nNow: %s.\nAfter choosing: %s." % [b["from"]["display_name"], b["to"]["display_name"], b["from"]["condition_text"], b["from"]["rule_text"], b["to"]["rule_text"]]
 					line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 					line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 					line.modulate = UiTheme.FROST
 					_rails.add_child(line)
+				var confirm := Button.new()
+				confirm.text = "Choose %s permanently" % s.display_name
+				confirm.pressed.connect(_on_specialise.bind(String(s.id)))
+				_rails.add_child(confirm)
+				var cancel := Button.new()
+				cancel.text = "Keep comparing"
+				cancel.pressed.connect(_review_specialisation.bind(""))
+				_rails.add_child(cancel)
 		var who := Label.new()
 		var spec_name: String = String(view.get("specialisation_name", ""))
-		who.text = "%s%s · choose a pattern, then an outer rail. One rail per pattern; up to %d this era." % [
+		who.text = "%s%s · set and clear patterns freely. One rail per pattern; up to %d this era. Effects apply only while that line's condition holds." % [
 			view.get("class_name", ""), " (%s)" % spec_name if spec_name != "" else "", rails_allowed]
 		who.modulate = UiTheme.MUTED
 		who.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -577,9 +634,18 @@ func _fit() -> void:
 	await get_tree().process_frame
 	if not is_inside_tree(): return
 	var viewport := get_viewport().get_visible_rect().size
-	_list_scroll.custom_minimum_size.y = minf(520,viewport.y*0.61)
+	var cell_height := clampf((viewport.y - 496.0) / 4.0, COMPACT_CELL_HEIGHT, CELL_SIZE.y)
+	for child in _grid.get_children():
+		if child is Button and child.custom_minimum_size.y > RAIL_HEIGHT:
+			child.custom_minimum_size.y = cell_height
+	_preview.custom_minimum_size.y = clampf(viewport.y - 576.0, INSPECTOR_HEIGHT.x, INSPECTOR_HEIGHT.y)
+	_list_scroll.custom_minimum_size.y = minf(740, viewport.y - 160)
+	await get_tree().process_frame
+	if not is_inside_tree(): return
 	_root.reset_size()
 	_root.position = (viewport-_root.size)*0.5
+	await get_tree().process_frame
+	if is_inside_tree() and _inspected_cell.x >= 0: _inspect_cell(_inspected_cell.x, _inspected_cell.y, true)
 
 
 ## A rail slot (D-023 slice 9): its pattern's name when set, lit while the
@@ -646,13 +712,25 @@ func _rail_why(slot: Dictionary) -> String:
 
 
 func _on_pattern(id: String) -> void:
+	_clear_inspection_pin()
 	_selected_pattern = StringName(id) if _selected_pattern != StringName(id) else &""
 	_selected = &""
 	_selected_skill = &""
 	_selected_subject = &""
 	var p: Dictionary = sim.foundry_pattern(id)
-	_message.text = "Pick a %s's rail for %s." % [p.get("axis", "line"), p.get("display_name", id)] if _selected_pattern != &"" else ""
+	_message.text = "Pick a %s's rail for %s (free)." % [p.get("axis", "line"), p.get("display_name", id)] if _selected_pattern != &"" else ""
+	if _selected_pattern != &"":
+		_set_inspection("pattern:" + id, "RAIL PATTERN · not set yet\n%s · %s\nWhile its line holds: %s.\nSet or clear freely within the current limit." % [p.get("display_name",id),p.get("condition_text",""),p.get("rule_text","")])
 	refresh()
+
+
+func _review_specialisation(id: String) -> void:
+	_pending_specialisation = id
+	refresh()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if id != "" and is_open() and is_instance_valid(_specialisation_review):
+		_list_scroll.scroll_vertical += roundi(_specialisation_review.global_position.y - _list_scroll.global_position.y)
 
 
 func _on_specialise(id: String) -> void:
@@ -690,6 +768,7 @@ func _on_rail(axis: String, index: int) -> void:
 
 
 func _on_tray(id: String, metal: String = "") -> void:
+	_clear_inspection_pin()
 	var same := _selected == StringName(id) and _selected_metal == metal
 	_selected = &"" if same else StringName(id)
 	_selected_metal = "" if same else metal
@@ -699,42 +778,50 @@ func _on_tray(id: String, metal: String = "") -> void:
 	_message.text = "Pick a cell for the %s." % sim.foundry_ingot(id).get("display_name", id) if _selected != &"" else ""
 	if _selected != &"":
 		var info: Dictionary = sim.foundry_ingot(id)
-		_preview.text = "%s\n%s" % [info.get("display_name",id), info.get("sentence","")]
+		var description := "%s\n%s" % [info.get("display_name",id), info.get("sentence","")]
 		# These are native descriptions of the selected ingot, before any
 		# cell is chosen. The hover preview then shows its actual placement.
 		for key in ["skill_sentence", "added_sentence"]:
-			if String(info.get(key, "")) != "": _preview.text += "\n" + String(info[key])
+			if String(info.get(key, "")) != "": description += "\n" + String(info[key])
 		for alloy: Dictionary in sim.foundry().get("metals", []):
 			if String(alloy.id)==metal:
-				_preview.text += "\n%s · backing and pairs read %d cells out." % [alloy.display_name,int(alloy.reach)]
+				description += "\n%s · backing and pairs read %d cells out." % [alloy.display_name,int(alloy.reach)]
+		_set_inspection("ingot:" + id + metal, "SELECTED INGOT · not placed\n" + description)
 	refresh()
 
 
 func _on_subject(id: String) -> void:
+	_clear_inspection_pin()
 	_selected_subject = StringName(id) if _selected_subject != StringName(id) else &""
 	_selected = &""
 	_selected_skill = &""
 	_selected_pattern = &""
 	_message.text = "Pick a corner or an outer cell with an inward path." if _selected_subject != &"" else ""
 	if _selected_subject != &"":
+		var description := ""
 		for kind: Dictionary in sim.foundry().get("kinds", []):
-			if String(kind.id)==id: _preview.text = "%s\n%s" % [kind.display_name,kind.base_sentence]
+			if String(kind.id)==id: description = "%s\n%s" % [kind.display_name,kind.base_sentence]
 		for kind: Dictionary in sim.currency_kinds():
 			if String(kind.id)==id and String(kind.get("description",""))!="":
-				_preview.text += "\n"+String(kind.description)
+				description += "\n"+String(kind.description)
+		_set_inspection("kind:" + id, "SELECTED KIND · not placed\n" + description)
 	refresh()
 
 
 func _on_tablet(id: String) -> void:
+	_clear_inspection_pin()
 	_selected_skill = StringName(id) if _selected_skill != StringName(id) else &""
 	_selected = &""
 	_selected_subject = &""
 	_selected_pattern = &""
 	_message.text = "Pick a cell for the %s tablet; the ingots beside it will support it." % sim.combat_skill(id).get("display_name", id) if _selected_skill != &"" else ""
+	_set_inspection("tablet:" + id, "SELECTED TABLET · not placed\n%s\nLay in a socket. Skill mastery comes automatically from qualifying practice; it is not a perk choice." % sim.combat_skill(id).get("display_name",id))
 	refresh()
 
 
 func _on_cell(row: int, col: int) -> void:
+	_inspection_pin.set_pressed_no_signal(false)
+	_inspected_cell = Vector2i(row, col)
 	if row < _first_row or row > _last_row:
 		_message.text = "The era has not forged this row."
 		refresh()
@@ -801,6 +888,7 @@ func _cost_text(cost: Dictionary) -> String:
 
 ## The plate changed: stats and skill numbers may have moved.
 func _after_change() -> void:
+	_pending_specialisation = ""
 	if player != null:
 		player.combat.refresh_stats()
 		if player.hud != null:
@@ -854,28 +942,40 @@ func specialise(id: String) -> void:
 	_on_specialise(id)
 
 
-func _inspect_cell(row: int, col: int) -> void:
+func _inspect_cell(row: int, col: int, force := false) -> void:
 	if not is_open(): return
+	if _inspection_pin.button_pressed and not force: return
+	_inspected_cell = Vector2i(row, col)
 	var selected := String(_selected_subject if _selected_subject != &"" else _selected_skill if _selected_skill != &"" else _selected)
 	var effects: Array = sim.foundry_effects()
 	var lines := PackedStringArray()
+	var summary := PackedStringArray()
+	var key := "%s:%s:%d:%d" % [selected,_selected_metal,row,col]
+	var cost := "Lift: %s. Tablets lift free." % _cost_text(sim.foundry().get("reforge_cost",{}))
 	if selected != "":
 		var preview: Dictionary = sim.foundry_preview(row, col, selected, _selected_metal)
 		if not bool(preview.get("valid", false)):
-			_preview.text = String(preview.get("reason", "This cell cannot take the selected piece."))
+			var refusal := "PLACEMENT REFUSED · no material spent\n" + String(preview.get("reason", "This cell cannot take the selected piece."))
+			var detail := refusal
 			var current: Button = _cell_buttons.get(Vector2i(row,col))
 			if current != null and current.has_meta("reading_details"):
-				_preview.text += "\nCURRENT READING\n" + String(current.get_meta("reading_details"))
+				detail += "\nCURRENT READING\n" + String(current.get_meta("reading_details"))
+			detail += "\n" + cost
+			_set_inspection(key, refusal + "\n" + cost + "\nDetails retains this cell's current reading.", detail)
 			_flow_overlay.paths = []
 			_flow_overlay.queue_redraw()
 			return
 		effects = preview.get("effects", [])
 		lines.append("AFTER PLACEMENT · no material spent")
+		summary.append(lines[0])
 	else:
 		lines.append("CURRENT FLOW")
+		summary.append("CURRENT FLOW · row %d, column %d" % [row+1,col+1])
 		var button: Button = _cell_buttons.get(Vector2i(row,col))
 		if button != null: lines.append(String(button.get_meta("reading_details", "")))
 	var shown := {}
+	var descriptions := PackedStringArray()
+	var destinations := {}
 	var paths: Array = []
 	for effect in effects:
 		if String(effect.get("form_name", "")) == "": continue
@@ -886,18 +986,72 @@ func _inspect_cell(row: int, col: int) -> void:
 			if cell == Vector2i(row, col): involved = true
 			if _cell_buttons.has(cell): points.append((_cell_buttons[cell] as Button).get_global_rect().get_center())
 		if not involved: continue
-		var key := "%s:%s:%s" % [effect.form_name, effect.skill, effect.get("source_kind", "")]
-		if shown.has(key): continue
-		shown[key] = true
 		paths.append(points)
+		var effect_key := "%s:%s:%s" % [effect.form_name, effect.skill, effect.get("source_kind", "")]
+		if shown.has(effect_key): continue
+		shown[effect_key] = true
 		var skill: Dictionary = sim.combat_skill(String(effect.skill))
 		lines.append("%s → %s" % [effect.form_name, skill.get("display_name", effect.skill)])
+		var form_name := String(effect.form_name)
+		if not destinations.has(form_name): destinations[form_name] = PackedStringArray()
+		var destination := String(skill.get("display_name", effect.skill))
+		if not destinations[form_name].has(destination): destinations[form_name].append(destination)
+		if not descriptions.has(String(effect.description)): descriptions.append(String(effect.description))
 		if not "\n".join(lines).contains(String(effect.description)):
 			lines.append(String(effect.description))
-	if shown.is_empty(): lines.append("No compatible mutation through this cell.")
-	_preview.text = "\n".join(lines)
+	for form_name in destinations:
+		# Keep every destination visible; the complete native prose is in Details.
+		summary.append("%s %s" % [form_name, " · ".join(Array(destinations[form_name]).map(func(name): return "→ " + name))])
+	if shown.is_empty():
+		lines.append("No compatible mutation through this cell.")
+		# Ordinary support effects remain readable even without a mutation.
+		var button: Button = _cell_buttons.get(Vector2i(row,col))
+		if selected == "" and button != null:
+			summary.append(String(button.get_meta("reading_details", "No piece here yet.")))
+		else:
+			for effect in effects:
+				if int(effect.cell_row)==row and int(effect.cell_col)==col:
+					var reading := "%s: %s" % [effect.label,effect.sentence]
+					summary.append(reading)
+					lines.append(reading)
+		summary.append("No compatible mutation through this cell.")
+	elif descriptions.size() == 1:
+		summary.append(descriptions[0])
+	else:
+		summary.append("%d distinct readings. Open Details for their complete effects and routes." % descriptions.size())
+	lines.append(cost)
+	_set_inspection(key, "\n".join(summary), "\n".join(lines))
 	_flow_overlay.paths = paths
 	_flow_overlay.queue_redraw()
+
+
+func _set_inspection(key: String, summary: String, full := "") -> void:
+	if key != _inspection_key:
+		_inspection_details.set_pressed_no_signal(false)
+		_preview.scroll_to_line(0)
+	_inspection_key = key
+	_inspection_summary = summary
+	_inspection_full = full if full != "" else summary
+	_render_inspection()
+
+
+func _render_inspection() -> void:
+	_preview.text = _inspection_full if _inspection_details.button_pressed else _inspection_summary
+	_preview.scroll_to_line(0)
+
+
+func _clear_inspection_pin() -> void:
+	_inspection_pin.set_pressed_no_signal(false)
+	_inspected_cell = Vector2i(-1, -1)
+	_flow_overlay.paths = []
+	_flow_overlay.queue_redraw()
+
+
+func _cell_inspection_input(event: InputEvent, row: int, col: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		_inspect_cell(row, col, true)
+		_inspection_pin.button_pressed = true
+		get_viewport().set_input_as_handled()
 
 
 func _resolved_summary(skill: String, form: Dictionary) -> String:
