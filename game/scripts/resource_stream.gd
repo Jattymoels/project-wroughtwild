@@ -154,11 +154,18 @@ func focus(at: Vector3, immediate := false) -> void:
 		for id in _pending: materialise(id)
 		_pending.clear()
 
-func tick(delta: float, at: Vector3) -> void:
+func refresh_due(delta: float) -> bool:
+	return _timer <= delta
+
+func tick(delta: float, at: Vector3, allow_work := true, refresh := true) -> void:
 	_timer-=delta
-	if _timer<=0:
+	# Terrain focus takes precedence for one frame; retain the due timer and
+	# pending IDs so stationary next-frame processing cannot lose this work.
+	if not allow_work: return
+	if _timer<=0 and refresh:
 		_timer=refresh_seconds
 		focus(at)
+		return # Freeing distant nodes and creating arrivals use separate frames.
 	var began := Time.get_ticks_usec()
 	for i in mini(nodes_per_frame,_pending.size()):
 		materialise(_pending.pop_front())

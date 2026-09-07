@@ -290,8 +290,11 @@ func _circuit(cycle: int) -> void:
 			var at := route[index] + Vector3.UP * 1.2
 			stream_metres += player.position.distance_to(at)
 			player.position = at
-			terrain.chunk_stream.tick(.2, at)
-			terrain.resource_stream.tick(.2, at)
+			if terrain.has_method("_tick_streaming"):
+				terrain.call("_tick_streaming", .2, at)
+			else:
+				terrain.chunk_stream.tick(.2, at)
+				terrain.resource_stream.tick(.2, at)
 			await get_tree().process_frame
 		feeder._physics_process(60.0)
 		check(_sim().contraption_save() == ledger, "distant workshop gains no offline or catch-up production")

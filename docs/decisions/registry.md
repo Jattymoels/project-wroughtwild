@@ -1,5 +1,18 @@
 # Decision Registry
 
+Owner continuation, 7 September 2026: after requesting a quick slice/wave
+overview, the owner asks to continue. [INT-07F](../prototype/focus-scheduling-2026-09-07.md) separates
+coincident nearby-world scans, retirement and preparation under the existing
+D-010/D-013/D-032 contracts. Preserve exact output, bounded work, collision
+safety, finite stock, existing radii, historical profiles and saves. No new
+game rule, world scale or production scope is approved by this continuation.
+
+INT-07F outcome: separate scan/preparation turns preserve eventual progress,
+immediate collision safety and exact scenery. Matched worst walking frames
+improve 24–37%; historical and home/save checks pass. An intermittent settled
+pause also appears in the preserved baseline and remains unattributed. No new
+tuning, save field or design boundary is introduced; owner review is pending.
+
 Owner continuation, 7 September 2026: “Perfect, continue” accepts
 [INT-07E](../prototype/stream-scheduling-2026-09-07.md), spreading remaining
 nearby terrain/scenery work across frames under D-010/D-013/D-032. Preserve

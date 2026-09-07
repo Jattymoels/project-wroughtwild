@@ -20,6 +20,22 @@ not a rollback system for engine failure or power loss. Schema 2, generation
 inputs, finite stock, trial deposits and existing lifetime rules remain unchanged.
 [Reproduction, repeated circuits and limits](../prototype/session-reliability-2026-09-07.md).
 
+## Nearby refresh coordination — INT-07F, 7 September 2026
+
+The [refresh continuation](../prototype/focus-scheduling-2026-09-07.md) gives
+periodic terrain scanning/retirement its own frame, followed by a due resource
+scan and then preparation. Terrain coordinates both existing streams. A delayed
+scan retains its due timer; the transient order guarantees preparation a turn
+even when scan timers are continuously overdue. A new world resets that order.
+It is not persisted and introduces no numerical tuning or generation input.
+
+The teleport guard and explicit area completion remain synchronous regardless
+of whose turn it is. Immediate resource focus/restoration bypasses ordinary
+separation. Detail masks still flush on scan frames. Complete publication,
+finite stock, existing preparation budgets and distances remain authoritative.
+Tests exercise both normal and overdue cadences and historical worlds; matched
+timing and unresolved frame gaps are recorded in the work item.
+
 ## Nearby loading schedule — INT-07E, 7 September 2026
 
 The [loading schedule](../prototype/stream-scheduling-2026-09-07.md) separates
@@ -140,8 +156,7 @@ adds persistent state.
 Nearby chunks retain the same payload/sampler/mesh/cover/collision work and
 publication boundary; INT-07E above now splits collision preparation from
 publication and queues cosmetic trace refresh. Configure collision flags before
-uploading faces. A
-streamed leyline tile may keep its existing mesh when the exact terrain chunk
+uploading faces. A streamed leyline tile may keep its existing mesh when the exact terrain chunk
 identities over its complete sampling footprint are unchanged. Those transient
 integer IDs retain no nodes or samplers; replacement chunks invalidate them.
 Building and full refreshes always rebuild. Bounded stage diagnostics explain

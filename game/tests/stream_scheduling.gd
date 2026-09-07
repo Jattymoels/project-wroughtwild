@@ -72,8 +72,7 @@ func _paced_coverage() -> void:
 			var travelled := minf(metres, float(frame+1)*5.0/fps)
 			while cursor+1 < distances.size()-1 and distances[cursor+1] < travelled: cursor += 1
 			var at := route[cursor].lerp(route[cursor+1], clampf((travelled-distances[cursor])/maxf(.001,distances[cursor+1]-distances[cursor]),0,1))
-			terrain.chunk_stream.tick(1.0/fps, at)
-			terrain.resource_stream.tick(1.0/fps, at)
+			_advance_streams(1.0/fps, at)
 			max_pending = maxi(max_pending, history._pending_traces.size())
 			at.y = terrain.height_at(floori(at.x), floori(at.z))
 			var supported := is_finite(terrain.rendered_height(at.x,at.z,at.y))
@@ -87,6 +86,13 @@ func _paced_coverage() -> void:
 		check(history._pending_traces.is_empty(), "paced route can finish without stranded cosmetic work")
 		_bounded("after %d fps paced route" % fps)
 		print("STREAM_SCHEDULING_ROUTE fps=",fps," metres=",metres," max_pending_tiles=",max_pending)
+
+func _advance_streams(delta: float, at: Vector3) -> void:
+	if terrain.has_method("_tick_streaming"):
+		terrain.call("_tick_streaming", delta, at)
+	else:
+		terrain.chunk_stream.tick(delta, at)
+		terrain.resource_stream.tick(delta, at)
 
 func _queue_network() -> void:
 	history.refresh_area(0, 0, maxi(int(terrain.map.width), int(terrain.map.height)), true)

@@ -45,6 +45,10 @@ var current_era := 1
 var _pending_nodes: Array = []
 var resource_stream: ResourceStream
 var chunk_stream: TerrainChunkStream
+# Give deferred scans and preparation a turn even after repeated slow frames.
+# This transient ordering has no world/save identity or timing parameter.
+enum StreamTurn { ANY, RESOURCE_FOCUS, PREPARATION }
+var _stream_turn := StreamTurn.ANY
 ## Fire-setting (D-020): the sim's rules (fuels, reach, soak, hot_seconds,
 ## quench radius), rock that is hot right now (cell -> {heat, until_msec})
 ## and rock that has been cracked (cell -> true). Cracked rock digs by
@@ -199,6 +203,7 @@ func build(sim: WroughtwildSim, seed_value: int, profile_id: String = "") -> voi
 		frontier_look = preload("res://art/weathered_look.tres")
 	_materials.clear()
 	chunk_stream=null
+	_stream_turn = StreamTurn.ANY
 	for child in get_children():
 		remove_child(child)
 		child.free()
@@ -581,14 +586,28 @@ func _spawn_resource_node(def: Dictionary) -> void:
 
 # --- fire-setting (D-020: heat cracks stone, cold shatters what is hot) -----
 
-func _process(delta: float) -> void:
+func _tick_streaming(delta: float, local_position: Vector3) -> void:
+	# Focus scans also retire old scenes. Give them their own frames before
+	# preparing new objects; a deferred resource scan remains due next frame.
+	# Terrain's teleport/restore guard always runs, even when preparation waits.
+	var preparation_turn := _stream_turn == StreamTurn.PREPARATION
+	var resource_focus_due := resource_stream != null and resource_stream.refresh_due(delta) and not preparation_turn
+	var terrain_focused := false
 	if chunk_stream != null:
-		var geometry_player := get_parent().get_node_or_null("Player") as Node3D
-		if geometry_player != null: chunk_stream.tick(delta,to_local(geometry_player.global_position))
+		terrain_focused = chunk_stream.tick(delta,local_position,not resource_focus_due,_stream_turn == StreamTurn.ANY)
 	if resource_stream != null:
+		resource_stream.tick(delta,local_position,not terrain_focused,not preparation_turn)
+	if terrain_focused and resource_stream != null:
+		_stream_turn = StreamTurn.RESOURCE_FOCUS
+	elif resource_focus_due:
+		_stream_turn = StreamTurn.PREPARATION
+	else:
+		_stream_turn = StreamTurn.ANY
+
+func _process(delta: float) -> void:
+	if chunk_stream != null or resource_stream != null:
 		var player := get_parent().get_node_or_null("Player") as Node3D
-		if player != null:
-			resource_stream.tick(delta,to_local(player.global_position))
+		if player != null: _tick_streaming(delta,to_local(player.global_position))
 	_expire_timer -= delta
 	if _expire_timer > 0.0 or _hot.is_empty():
 		return

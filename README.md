@@ -88,6 +88,13 @@ their own terrain work slots. Resource creation also stops at an elapsed-work
 budget. Exact output, interruption, paced coverage and fresh-process home/save
 checks accompany matched travel measurements; synchronous safety remains intact.
 
+[INT-07F nearby-world refresh](docs/prototype/focus-scheduling-2026-09-07.md)
+gives terrain scanning, resource scanning and new preparation separate turns.
+Overdue scans still allow loading to progress, and teleport/restore safety stays
+synchronous. Matched worst walking frames improve 24–37%; exact scenery,
+historical worlds and home/save checks pass. An intermittent settled pause
+remains recorded for follow-up; owner review is pending.
+
 The owner-approved [Foundry completion pass](docs/prototype/foundry-all-inputs-2026-09-06.md)
 finishes the remaining 72 Kind–ingot identities alongside the 24 existing Ember,
 Frost and Preserving roles. Footwork, sequences, defence, recovery, passage and

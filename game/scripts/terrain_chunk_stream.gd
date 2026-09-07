@@ -171,16 +171,25 @@ func retention() -> Dictionary:
 		"partial_chunks":0 if _job.is_empty() else 1,"built_total":chunks_built_total,"retired_total":chunks_retired_total,
 		"horizon_triangles":horizon_triangles,"horizon_build_ms":horizon_build_ms}
 
-func tick(delta: float,point: Vector3) -> void:
+func tick(delta: float,point: Vector3,prepare := true,refresh := true) -> bool:
+	var focused := false
 	# A direct teleport is a supported restore/review path. Even a caller that
 	# missed ensure_area receives collision before ordinary travel continues.
 	if not _focus.is_finite() or point.distance_to(_focus)>float(_settings.terrain_safe_radius_m):
 		ensure_area(point,float(_settings.terrain_safe_radius_m))
 		focus(point)
+		focused = true
 	_timer-=delta
-	if _timer<=0.0:
+	if _timer<=0.0 and refresh:
 		_timer=float(_settings.refresh_seconds)
-		if point.distance_squared_to(_focus)>1.0: focus(point)
+		if point.distance_squared_to(_focus)>1.0:
+			focus(point)
+			focused = true
+	# A focus can free several complete chunks. Avoid adding native payload,
+	# collision or cosmetic preparation to that same periodic burst.
+	if focused or not prepare:
+		_flush_mask()
+		return focused
 	for i in int(_settings.terrain_chunks_per_frame):
 		# Finish nearby cosmetic arrivals in the same bounded work slots as
 		# terrain phases, never stacking a whole trace neighbourhood on the
@@ -188,6 +197,7 @@ func tick(delta: float,point: Vector3) -> void:
 		# remain synchronous; each trace publishes one complete existing tile.
 		if not _step_scenery(): _step_job()
 	_flush_mask()
+	return false
 
 func has_scenery_work() -> bool:
 	var history := terrain.get_parent().get_node_or_null("CataclysmSites")

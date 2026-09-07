@@ -3,6 +3,7 @@ extends "res://tests/world_performance_review.gd"
 ## Bounded in-memory rows are written only after the timed route.
 var _process_began := 0
 var _draw_began := 0
+var _draw_ended := 0
 var _draw_sample: Dictionary = {}
 
 func _build_world(seed_value: int) -> void:
@@ -16,6 +17,9 @@ func _build_world(seed_value: int) -> void:
 
 func _measure_process_start() -> void:
 	_process_began = Time.get_ticks_usec()
+	# The preceding post-draw -> process-signal interval includes the engine's
+	# frame wait and unobserved engine/physics work. It is not a GPU-only timer.
+	if _draw_ended > 0: _draw_sample["post_draw_to_process_ms"] = (_process_began-_draw_ended)/1000.0
 
 func _measure_draw_start() -> void:
 	_draw_began = Time.get_ticks_usec()
@@ -28,6 +32,7 @@ func _measure_draw_end() -> void:
 	_draw_sample["pipeline_surface"] = RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_PIPELINE_COMPILATIONS_SURFACE)
 	_draw_sample["pipeline_draw"] = RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_PIPELINE_COMPILATIONS_DRAW)
 	_draw_sample["pipeline_specialization"] = RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_PIPELINE_COMPILATIONS_SPECIALIZATION)
+	_draw_ended = Time.get_ticks_usec()
 
 func _finish_review() -> void:
 	if terrain.chunk_stream != null and terrain.resource_stream != null:
