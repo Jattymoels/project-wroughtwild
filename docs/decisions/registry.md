@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner meteorite direction, 8 September 2026: D-030 extends from coloured leyline
+appearance into differentiated impact-borne influences connecting seeded places,
+altered animal encounters and useful extracted augmentations. The owner cites
+the existing white-coloured smithy and envisages red, blue and green influences.
+The [direction and candidate identities](../prototype/meteorite-influences-2026-09-08.md)
+distinguish accepted intent from unselected colour effects, generation guarantees,
+mob combinations, extraction outputs and recipes. D-031's finite pressure loop
+remains the implemented example. No new generator, save migration, combat rule
+or broader extraction implementation is selected by this direction.
+
 Owner art continuation, 8 September 2026: develop one wolf and one woodland/river
 study while ordinary playtesting waits. The current mammals' visual quality is
 rejected; the moth and the selected concepts remain liked. Under D-013/D-030,

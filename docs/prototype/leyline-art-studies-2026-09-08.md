@@ -15,6 +15,13 @@ explicitly preserve the connection to the lore: ordinary animals corrupted or
 enhanced by impact-borne leyline magic, carrying currents and glowing scars like
 the surrounding world.
 
+Further owner direction on 8 September links different meteorite influences to
+seeded habitats, distinct mob combat experiences and recovered augmentations.
+The [meteorite influence record](meteorite-influences-2026-09-08.md) preserves that
+direction and marks candidate colour meanings as proposals. This art study
+should establish a reusable host/scar language without assigning new colour
+mechanics or expanding into every animal/influence combination.
+
 ## Outcome and boundaries
 
 Produce reviewable, editable studies that establish a visual standard before

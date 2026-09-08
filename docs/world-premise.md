@@ -58,6 +58,17 @@ the one who learns to contain that pressure and builds the new working machinery
 
 ## The player's place
 
+**Owner direction, 8 September 2026:** different meteorites carry different
+magic/technology. The owner identifies the existing white-coloured smithy example
+and envisages red, blue and green influences in seed-generated worlds. Each
+influence should change hosts and mob combat experiences in its own way, and
+extraction should link to useful augmentations so the player seeks the source
+that serves their current ambition. The
+[influence design record](prototype/meteorite-influences-2026-09-08.md) separates
+this accepted direction from proposed colour meanings and unimplemented rules.
+The current shared cool-white trace appearance is not yet a typed meteorite
+catalogue; the finite smithy pressure loop is the existing extraction example.
+
 The player survives, discovers how the changed world works, rebuilds and
 eventually conquers the land. Surviving pre-cataclysm materials support the first
 shelter and workshop. Technology recovered from enhanced enemies gives a world

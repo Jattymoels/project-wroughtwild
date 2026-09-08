@@ -17,6 +17,11 @@ ancestry and the impact-borne currents/glowing scars shared with the land. The
 first deliverable is an isolated shape/composition checkpoint; final art approval,
 runtime adoption and any external asset service remain separate.
 
+Related owner direction: [meteorite influences](meteorite-influences-2026-09-08.md)
+connect seeded impact types, altered encounters and extracted augmentations.
+Specific colour functions and a first gameplay slice remain to be selected;
+this design record does not replace the active art study or queue all variants.
+
 ## Previous slice — INT-08B portable Windows build
 
 The owner's “Continue” on 8 September selects
