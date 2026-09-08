@@ -153,6 +153,14 @@ before adoption; never infer combat timing from this decorative pulse.
 
 ## Publication and next item
 
+Implementation and verification: **Codex (OpenAI)**. Local implementation commit
+`f7250f4` was created and successfully pushed by an ordinary non-force push to
+`origin/main`, `https://github.com/Jattymoels/project-wroughtwild.git`.
+Its Git author/committer metadata inherited the repository's pre-existing
+`Claude <noreply@anthropic.com>` identity; that is not this work's actual authorship.
+This note corrects the attribution without rewriting the published commit or
+changing the owner's Git configuration.
+
 Only ART-01 tools, settings, documentation and selected review evidence are scoped
 for publication. Generated source/runtime working assets stay in the local ignored
 handoff, following the roadmap's separate source-promotion boundary. The source
