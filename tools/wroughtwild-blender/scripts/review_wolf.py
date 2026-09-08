@@ -77,6 +77,7 @@ def material(name, colour):
     return result
 
 clay = material('Neutral clay - no textures or emission', (.34, .35, .36))
+clay.use_fake_user = True  # Keep clay available after saving with the final material view.
 floor_material = material('Neutral ground', (.17, .18, .19))
 bpy.ops.mesh.primitive_plane_add(size=200, location=(0, 0, lo.z - .005))
 floor = bpy.context.object

@@ -1,0 +1,131 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "Raw export hash matches the inspected input",
+      "passed": true
+    },
+    {
+      "name": "Normalization uses the current documented configuration",
+      "passed": true
+    },
+    {
+      "name": "Reviewed GLB matches the prepared export",
+      "passed": true
+    },
+    {
+      "name": "Original game wolf remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Moth game asset remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original editable beast master remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Exactly the six baseline views exist",
+      "passed": true
+    },
+    {
+      "name": "Exact baseline camera: clay-side",
+      "passed": true
+    },
+    {
+      "name": "Exact baseline camera: clay-front",
+      "passed": true
+    },
+    {
+      "name": "Exact baseline camera: clay-rear",
+      "passed": true
+    },
+    {
+      "name": "Exact baseline camera: clay-three-quarter",
+      "passed": true
+    },
+    {
+      "name": "Exact baseline camera: clay-head",
+      "passed": true
+    },
+    {
+      "name": "Exact baseline camera: material-three-quarter",
+      "passed": true
+    },
+    {
+      "name": "Supplementary cameras are explicitly recorded",
+      "passed": true
+    },
+    {
+      "name": "Rendered PNG 1280x960: clay-side",
+      "passed": true
+    },
+    {
+      "name": "Rendered PNG 1280x960: clay-front",
+      "passed": true
+    },
+    {
+      "name": "Rendered PNG 1280x960: clay-rear",
+      "passed": true
+    },
+    {
+      "name": "Rendered PNG 1280x960: clay-three-quarter",
+      "passed": true
+    },
+    {
+      "name": "Rendered PNG 1280x960: clay-head",
+      "passed": true
+    },
+    {
+      "name": "Rendered PNG 1280x960: material-three-quarter",
+      "passed": true
+    },
+    {
+      "name": "Rendered PNG 1280x960: head-lowered",
+      "passed": true
+    },
+    {
+      "name": "Rendered PNG 1280x960: underside",
+      "passed": true
+    },
+    {
+      "name": "Editable candidate reopens as one preserved mesh",
+      "passed": true
+    },
+    {
+      "name": "Editable candidate retains raw vertex/triangle counts",
+      "passed": true
+    },
+    {
+      "name": "Editable candidate retains configured shading",
+      "passed": true
+    },
+    {
+      "name": "Candidate has grounded metre height",
+      "passed": true
+    },
+    {
+      "name": "Reimported GLB retains triangle count",
+      "passed": true
+    },
+    {
+      "name": "GLB roundtrip preserves every surface vertex within one micrometre",
+      "passed": true
+    },
+    {
+      "name": "Review reopens with a working camera and three lights",
+      "passed": true
+    },
+    {
+      "name": "Clay material survives reopening after final material-view save",
+      "passed": true
+    },
+    {
+      "name": "Raw input remains unchanged after verification",
+      "passed": true
+    }
+  ],
+  "maximum_glb_roundtrip_error_metres": 0.0,
+  "limitations": "No self-intersection, deformation, crowd performance or art acceptance claim."
+}

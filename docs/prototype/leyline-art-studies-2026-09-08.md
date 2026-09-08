@@ -5,8 +5,20 @@ playtest build. Baseline: `dc64aea`, clean `main`.
 
 Current checkpoint: [baseline inspection and composition trial](../art/leyline-studies/2026-09-08/README.md)
 are prepared. The trial remains below the intended art standard and is not
-adopted. A new wolf mesh has not been authored; the starting-mesh route is awaiting
-owner direction. This is not completion of the proposed wolf/woodland quality pass.
+adopted. The bounded [image-to-3D/Blender experiment](../art/leyline-studies/2026-09-08/wolf-image3d/README.md)
+is now complete: two generated models, preserved raw 6 Lite export, normalized
+editable Blender candidate, corrected shading, actual matched clay views and
+31 passed handoff/reopening checks. It supplies a better starting animal, but
+weak eyes, a fused mouth, smoothed coat and merged plate details remain below
+the brief. Meshy 7 has also been visually compared using the owner's larger
+screenshot; its exported geometry is not locally inspected. Neither model is adopted, and
+this is not completion of the broader wolf/woodland quality pass.
+
+The owner explicitly approved publication of the raw Meshy GLB as an intentional
+art source on 8 September, resolving the initial automatic-review staging
+rejection. The [lower-cost alternatives review](../art/leyline-studies/2026-09-08/wolf-image3d/pipeline-options-2026-09-08.md)
+records current prices and local hardware feasibility; no alternative service
+upload, purchase or installation has been performed.
 
 The owner rejects the mammal models' rounded, awkward appearance while liking
 the moth and the selected concepts. They approve developing one convincing wolf
@@ -49,8 +61,11 @@ Read [the visual references](../art/references/README.md),
   transformation. Review geometry with emission and textures removed.
 - Landscape composition uses a small authored review setting. It does not
   change saved terrain, resource placement, harvest stock, traversal or damage.
-- No third-party asset, account, subscription or paid generation has been
-  selected by this scope. Starting-mesh route is being clarified separately.
+- The owner approved an image-to-3D starting-mesh experiment on 8 September.
+  Meshy is the first service being tried. Account creation, subscriptions and
+  purchases have not been authorized. The owner resolved the upload approval
+  required by automatic review: "Signed in - you may upload the wolf image to
+  Meshy". Existing free credits funded the two generated candidates.
 - Existing gameplay clocks, body shapes, inventory and progression are outside
   this work. Imported animation requires a deliberate future adapter step.
 

@@ -30,7 +30,11 @@ The untextured views expose the broad rounded muzzle, bead eyes without a fitted
 socket/lid structure, smooth inflated shoulders/haunches, simplified limb joints
 and flat projecting cheek plates. More glow or a larger texture will not fix
 those forms. A new starting mesh has **not** been created or selected in this
-checkpoint; the local-versus-image-to-3D route is awaiting owner direction.
+checkpoint. The owner subsequently approved an image-to-3D experiment; see the
+[completed generation/Blender experiment](wolf-image3d/README.md). The 6 Lite
+candidate now has a preserved raw export, editable Blender copy, matched clay
+renders and verified handoff. It improves the starting animal but remains below
+the concept's finish target; no game replacement has occurred.
 
 The review script accepts an optional baseline report. With it, later candidates
 reuse the exact cameras, targets and orthographic spans rather than fitting each
@@ -87,9 +91,12 @@ placements, plant-group spread, palette, narrow-current intensity, sky fill,
 sunlight, atmospheric density and offline render quality. They do not configure
 runtime density, budgets or resource amounts.
 
-This work uses only the already installed Blender and repository assets. No
-external upload, image-to-3D job, new package, purchase or game replacement has
-occurred. Original references, the liked moth, normal saves, portable playtest
+This initial baseline/composition checkpoint used only installed Blender and
+repository assets. No external upload, image-to-3D job, new package, purchase
+or game replacement had occurred at that checkpoint. The subsequent
+[Meshy experiment](wolf-image3d/README.md) records the authorized upload and
+generated candidates separately. Original references, the liked moth, normal
+saves, portable playtest
 packages and game assets remain intact. Runtime animation, scene streaming and
 performance have not been evaluated for this isolated composition.
 

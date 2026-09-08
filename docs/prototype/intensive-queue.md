@@ -14,8 +14,13 @@ Owner continuation, 8 September: establish one appealing wolf and one small
 woodland/river scene while playtesting waits. **In progress:**
 [leyline art studies](leyline-art-studies-2026-09-08.md). Preserve ordinary animal
 ancestry and the impact-borne currents/glowing scars shared with the land. The
-first deliverable is an isolated shape/composition checkpoint; final art approval,
-runtime adoption and any external asset service remain separate.
+first deliverable is an isolated shape/composition checkpoint; final art approval and
+runtime adoption remain separate. The owner approved the Meshy experiment and
+specific wolf-image upload. The [bounded experiment is complete](../art/leyline-studies/2026-09-08/wolf-image3d/README.md):
+actual generated/imported 6 Lite geometry, preserved raw source, editable Blender
+review and 31 passed checks. It is a better starting animal, but eyes/mouth,
+fur, plate separation and deformation need another bounded art pass. Neither
+candidate is adopted; the woodland study remains below target.
 
 Related owner direction: [meteorite influences](meteorite-influences-2026-09-08.md)
 connect seeded impact types, altered encounters and extracted augmentations.

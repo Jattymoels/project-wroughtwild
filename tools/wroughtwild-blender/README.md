@@ -217,6 +217,14 @@ by this art recipe.
 
 ## Scope and next work
 
+The isolated [Meshy wolf experiment](../../docs/art/leyline-studies/2026-09-08/wolf-image3d/README.md)
+adds `prepare_meshy_wolf.py`, `extra_wolf_views.py` and
+`verify_meshy_wolf_review.py` around the existing `review_wolf.py`.
+`meshy_wolf_review.json` pins the raw input hash and explains normalization,
+shading and supplementary-camera controls. These inspect an owner-authorized
+generated mesh; they do not generate a wolf from primitives or adopt it into
+the game. The preserved CC BY 4.0 source and exact commands are linked there.
+
 This proves mesh/export/collision conventions, not production art or a complete
 asset editor. Building pieces, six nature fixtures, six furnishings and the 12-actor mob roster are the current recipes. Extend the reviewed
 Blender script for subsequent asset studies; the MCP has no freeform modelling

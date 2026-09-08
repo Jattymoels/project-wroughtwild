@@ -1,0 +1,21 @@
+{
+  "source_sha256": "be617990bd397254ead88d5a59ea002c27c852dca60048a41c527bbdb723baff",
+  "yaw_degrees": 180.0,
+  "target_height_metres": 1.05,
+  "face_area_epsilon": 1e-12,
+  "smooth_shading": true,
+  "sharp_edge_angle_degrees": 55.0,
+  "extra_views": [
+    {"name": "head-lowered", "camera": [-2, 4, 0.85], "target": [0, 0.95, 0.5], "ortho_scale": 0.95, "show_floor": true},
+    {"name": "underside", "camera": [-3.2, 2, -1.8], "target": [0, 0, 0.5], "ortho_scale": 2.8, "show_floor": false}
+  ],
+  "purpose": {
+    "source_sha256": "Limit this normalization recipe to the inspected Meshy 6 Lite wolf export.",
+    "yaw_degrees": "Raw Blender inspection shows the nose points -Y; rotate it to the existing +Y-front review convention.",
+    "target_height_metres": "The crouched candidate's highest point is its withers/fur ridge. Uniformly set that height to the concept's proposed 1.05 metres, then ground and centre it. This does not change gameplay size.",
+    "face_area_epsilon": "Flag effectively zero-area triangles in source units for inspection; never silently remove them.",
+    "smooth_shading": "Correct the export's flat face shading on the review copy without moving any vertices or hiding silhouette defects.",
+    "sharp_edge_angle_degrees": "Keep normal discontinuities at folds sharper than this angle so smoothing does not erase plate edges.",
+    "extra_views": "Supplement the unchanged baseline cameras with a close view of the lowered head and a floor-free underside inspection. These are explicitly not matched comparison views."
+  }
+}
