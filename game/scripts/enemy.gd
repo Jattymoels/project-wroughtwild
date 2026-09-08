@@ -82,6 +82,11 @@ var separation_strength := 3.0
 
 ## idle | chase | windup
 var state := "idle"
+## Bounded LF-3 habitat patrol. AI owns travel; the art adapter only poses scars.
+var habit_points := PackedVector3Array()
+var habit_pause_seconds := 5.0
+var _habit_left := 0.0
+var _habit_index := 0
 ## Roaming (Wave 7 slice 1): an idle mob of a patrolling pack walks toward
 ## where its pack should be, at a walk, and stops when it gets there.
 const ROAM_SPEED_FRACTION := 0.55
@@ -658,6 +663,7 @@ func _physics_process(delta: float) -> void:
 	# your feet stay in their cave until you drop in.
 	var in_reach := _vertical_gap_to(player) <= vertical_reach
 	_attack_cooldown = maxf(0.0, _attack_cooldown - delta)
+	_advance_habit(delta)
 	var planar := Vector3.ZERO
 	var release_strike := false
 	var release_contact := false
@@ -672,6 +678,8 @@ func _physics_process(delta: float) -> void:
 			state = "flee"
 		elif state == "flee" and distance > give_up_distance:
 			state = "idle"
+		if state == "idle" and _roaming:
+			planar = _roam_step()
 		if state == "flee":
 			planar = -_chase_direction(player, distance) * move_speed + _separation_push()
 		planar *= status_move_multiplier()
@@ -857,6 +865,17 @@ func _scratch_if_blocked(delta: float) -> void:
 
 
 ## The pack says where it should be; an idle member walks there.
+func _advance_habit(delta: float) -> void:
+	if habit_points.is_empty() or state != "idle": return
+	if _roaming and Vector2(global_position.x-roam_target.x,global_position.z-roam_target.z).length()<1.2:
+		stop_roaming()
+		_habit_left=habit_pause_seconds
+	if not _roaming: _habit_left-=delta
+	if not _roaming and _habit_left<=0:
+		_habit_index=(_habit_index+1)%habit_points.size()
+		roam_to(habit_points[_habit_index])
+
+
 func roam_to(target: Vector3) -> void:
 	roam_target = target
 	_roaming = true

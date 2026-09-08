@@ -9,7 +9,7 @@
 namespace wroughtwild::worldgen {
 
 bool knownProfile(const std::string& profileId) {
-    return profileId == "legacy_v1" || profileId == "frontier_v2" || profileId == "frontier_v3" || profileId == "frontier_v4" || profileId == "frontier_v5" || profileId == "frontier_v6" || profileId == "living_frontier_wave1";
+    return profileId == "legacy_v1" || profileId == "frontier_v2" || profileId == "frontier_v3" || profileId == "frontier_v4" || profileId == "frontier_v5" || profileId == "frontier_v6" || profileId == "living_frontier_wave1" || profileId == "living_frontier_wave3";
 }
 
 const tuning::WorldgenTable& profileTable(const tuning::Tuning& tuning,
@@ -21,6 +21,7 @@ const tuning::WorldgenTable& profileTable(const tuning::Tuning& tuning,
     if (profileId == "frontier_v5") return tuning.frontierV5Worldgen;
     if (profileId == "frontier_v6") return tuning.worldgen;
     if (profileId == "living_frontier_wave1") return tuning.livingFrontierWorldgen;
+    if (profileId == "living_frontier_wave3") return tuning.livingFrontierWave3Worldgen;
     throw std::runtime_error("worldgen: unknown generation profile " + profileId);
 }
 
@@ -58,6 +59,10 @@ namespace wide_pressure {
 #include "worldgen_frontier_v6_pressure.inc"
 }
 
+namespace living_frontier_wave3 {
+#include "worldgen_living_frontier_wave3.inc"
+}
+
 } // namespace
 
 WorldMap generateProfile(const tuning::Tuning& tuning, uint64_t seed, const std::string& profileId) {
@@ -73,7 +78,7 @@ WorldMap generateProfile(const tuning::Tuning& tuning, uint64_t seed, const std:
         modifier.id = id;
         generationInputs.world.eliteModifiers.push_back(modifier);
     }
-    const bool wide = profileId == "frontier_v6" || profileId == "living_frontier_wave1";
+    const bool wide = profileId == "frontier_v6" || profileId == "living_frontier_wave1" || profileId == "living_frontier_wave3";
     WorldMap map = wide ? frontier_v6_base::generate(generationInputs, seed) : generate(generationInputs, seed);
     map.profileId = profileId;
     for (auto& node : map.nodes) node.resourceId = frozen_frontier::legacyNodeId(node);
@@ -85,6 +90,7 @@ WorldMap generateProfile(const tuning::Tuning& tuning, uint64_t seed, const std:
         wide_pressure::composeFrontierV6Pressure(map,table);
         wide_frontier::finishWideFrontier(map,table);
     }
+    if (profileId == "living_frontier_wave3") living_frontier_wave3::compose(map,tuning.livingFrontier);
     return map;
 }
 

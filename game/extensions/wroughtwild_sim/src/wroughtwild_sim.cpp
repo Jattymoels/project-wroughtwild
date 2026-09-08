@@ -2821,6 +2821,33 @@ Dictionary WroughtwildSim::world_map(int seed) {
     for (size_t i = 0; i < map.augmentationField.size(); ++i) augmentation.set(static_cast<int64_t>(i), map.augmentationField[i]);
     d["augmentation_field"] = augmentation;
 
+    Array frontier_hosts, laboratories, transforms;
+    const auto position = [&](const wroughtwild::worldgen::SurfacePoint& p) {
+        return Vector3((p.x+.5)*map.cellSize,p.y*map.cellSize,(p.z+.5)*map.cellSize);
+    };
+    for (const auto& host : map.frontierHosts) {
+        Dictionary h; h["id"]=to_godot(host.id); h["source_id"]=to_godot(host.sourceId);
+        h["enemy_id"]=to_godot(host.enemyId); h["influence"]=to_godot(host.influence);
+        h["position"]=position(host.at); h["approach"]=route(host.approach);
+        h["source_route"]=route(host.sourceRoute); h["habits"]=route(host.habits); frontier_hosts.push_back(h);
+    }
+    for (const auto& lab : map.laboratories) {
+        Dictionary l; l["id"]=to_godot(lab.id); l["label"]=to_godot(lab.label); l["region_id"]=to_godot(lab.regionId);
+        l["position"]=position(lab.at); l["approach"]=route(lab.approach);
+        l["size"]=Vector3(lab.widthM,lab.heightM,lab.depthM); laboratories.push_back(l);
+    }
+    for (const auto& region : map.futureTransformations) {
+        Dictionary r; r["id"]=to_godot(region.id); r["region_id"]=to_godot(region.regionId);
+        r["position"]=position(region.at); r["radius_m"]=region.radiusM; r["active"]=false; transforms.push_back(r);
+    }
+    d["frontier_hosts"]=frontier_hosts; d["laboratories"]=laboratories;
+    d["future_transformations"]=transforms; d["laboratory_trail"]=route(map.laboratoryTrail);
+    Dictionary frontier_rules;
+    frontier_rules["habit_pause_seconds"]=tuning_->livingFrontier.habitPauseSeconds;
+    frontier_rules["habitat_cue_spacing_m"]=tuning_->livingFrontier.habitatCueSpacingM;
+    frontier_rules["trail_spacing_m"]=tuning_->livingFrontier.trailSpacingM;
+    d["frontier_rules"]=frontier_rules;
+
     Array packs;
     for (const auto& pack : map.packs) {
         Dictionary p;
@@ -2829,6 +2856,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
             enemies.push_back(to_godot(id));
         }
         p["enemies"] = enemies;
+        p["frontier_host_id"] = to_godot(pack.frontierHostId);
         p["x"] = pack.x;
         p["y"] = pack.y;
         p["z"] = pack.z;

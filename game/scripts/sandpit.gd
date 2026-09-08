@@ -35,6 +35,8 @@ var _day_rules: Dictionary = {}
 func _ready() -> void:
 	if OS.get_cmdline_user_args().has("--living-frontier"):
 		world_profile = "living_frontier_wave1"
+	if OS.get_cmdline_user_args().has("--living-frontier-wave3"):
+		world_profile = "living_frontier_wave3"
 	var normal_launch := get_parent() == get_tree().root and scene_file_path == "res://scenes/sandpit.tscn"
 	if normal_launch and DisplayServer.get_name() != "headless":
 		seed_controls = SEED_CONTROLS.new()
@@ -83,7 +85,7 @@ func _build_world(seed_value: int) -> void:
 		return
 	# A new terrain map must not re-ground the previous world's decorative
 	# sites as its first streamed chunks arrive. Their state is wholly derived.
-	for name in ["LeylineSources", "PressurePockets", "CataclysmSites", "StrangeSites", "HabitatSites"]:
+	for name in ["FrontierSites", "LeylineSources", "PressurePockets", "CataclysmSites", "StrangeSites", "HabitatSites"]:
 		var previous := get_node_or_null(name)
 		if previous != null:
 			remove_child(previous)
@@ -108,6 +110,7 @@ func _build_world(seed_value: int) -> void:
 		push_error("Could not bind Living Frontier sources.")
 		return
 	LeylineSource.build(self,terrain)
+	FrontierSites.build(self,terrain)
 	mob_packs.setup(terrain, seed_value)
 
 	var spawn := terrain.surface_position(terrain.map["spawn_x"], terrain.map["spawn_z"])
@@ -162,7 +165,7 @@ func _physics_process(delta: float) -> void:
 	if terrain.map.is_empty():
 		return
 	_tick_day(delta)
-	if world_profile == "living_frontier_wave1" and not player.trial.active() and player.combat.life > 0 and not player.work_panel.is_open() and not player.inventory_panel.is_open() and not player.class_panel.is_open() and not player.foundry_panel.is_open() and not player.chest_panel.is_open() and not player.hud.help_visible():
+	if world_profile in ["living_frontier_wave1","living_frontier_wave3"] and not player.trial.active() and player.combat.life > 0 and not player.work_panel.is_open() and not player.inventory_panel.is_open() and not player.class_panel.is_open() and not player.foundry_panel.is_open() and not player.chest_panel.is_open() and not player.hud.help_visible():
 		var blocked := PackedStringArray()
 		for source in get_tree().get_nodes_in_group("leyline_sources"):
 			if is_ancestor_of(source):

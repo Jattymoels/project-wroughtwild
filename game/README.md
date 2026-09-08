@@ -339,6 +339,19 @@ documentation for the newly discovered GDExtension
 The import work itself completes and every later run is clean;
 `run_headless_checks.sh` retries the import once for this reason. Opening the
 project in the editor for the first time may likewise crash once — reopen it.
+# Living Frontier Wave 3 experiment
+
+Use `-- --living-frontier-wave3 --world-seed=77` for the separate opt-in animal,
+habitat and laboratory-trail sample. It uses `user://living_frontier_wave3.json`.
+Red and Blue boars live beyond the calm home/source margins: leave Red's circle,
+sidestep Blue's held straight charge, or interrupt either with ordinary skills.
+White stag and Green moth remain passive. Their scars and nearby ground cues
+lead back to useful source materials. Three sealed laboratory shells and two
+inactive future transformation regions exist from this world's first save;
+there are no laboratory encounters. Normal startup remains V6, and loading keeps
+the saved identity. Existing experimental worlds are not converted or reseeded.
+See [Wave 3 contract and evidence](../docs/prototype/living-frontier-wave3-2026-09-09.md).
+
 # Living Frontier Waves 1–2 experiment
 
 Run the normal scene with `-- --living-frontier --world-seed=77` appended to

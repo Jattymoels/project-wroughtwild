@@ -37,6 +37,10 @@ echo "== horde test (D-012 chase, training, cone, dash) =="
 echo "== Living Frontier Wave 3 host contact and ordinary classes =="
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_hosts.tscn
 
+echo "== Living Frontier Wave 3 habitat and finite reward restart =="
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_habitat.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_habitat.tscn -- --lf3-restore
+
 echo "== INT-05C dead-target and reaction recovery boundaries =="
 "$GODOT" --headless --fixed-fps 240 --path . res://tests/power_progression_review.tscn -- --boundary-only --expect-fixed
 

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "host_minimum_spawn_m": 170,
+  "host_source_minimum_m": 65,
+  "host_source_maximum_m": 130,
+  "host_separation_m": 60,
+  "encounter_clear_radius_m": 18,
+  "lab_width_m": 6,
+  "lab_depth_m": 5,
+  "lab_height_m": 4,
+  "lab_search_m": 100,
+  "transform_radius_m": 40,
+  "habit_pause_seconds": 5,
+  "habitat_cue_spacing_m": 12,
+  "trail_spacing_m": 9,
+  "hosts": [
+    {"id":"lf3_red_rooting", "source_id":"red_home_margin", "enemy_id":"lf_red_boar", "influence":"red", "home_index":0},
+    {"id":"lf3_white_grazing", "source_id":"white_home_margin", "enemy_id":"lf_white_stag", "influence":"white", "home_index":1},
+    {"id":"lf3_blue_rooting", "source_id":"blue_home_margin", "enemy_id":"lf_blue_boar", "influence":"blue", "home_index":2},
+    {"id":"lf3_green_visiting", "source_id":"green_home_margin", "enemy_id":"lf_green_moth", "influence":"green", "home_index":3}
+  ],
+  "laboratories": [
+    {"id":"lf3_collection_annex", "label":"Collection Annex", "region_id":"rootvault_wildwood"},
+    {"id":"lf3_pairing_hall", "label":"Pairing Hall", "region_id":"lantern_fen"},
+    {"id":"lf3_central_laboratory", "label":"Central Laboratory", "region_id":"glasswind_uplands"}
+  ],
+  "purposes": {
+    "host_minimum_spawn_m":"Host bodies begin beyond the quiet 150 m starter valley with room for ordinary aggro. Sources and homes remain calm.",
+    "host_source_minimum_m_and_maximum_m":"Bound the four source-to-animal walks without putting combat in source workplaces.",
+    "host_separation_m":"Teach each influence independently, with Red and Blue never one mixed pack.",
+    "encounter_clear_radius_m":"Remove nearby ordinary pack anchors from each small teaching clearing; no resource or source stock is removed.",
+    "lab_width_m_depth_m_height_m":"Actual visible sealed exterior dimensions; only physical walls occupy building space.",
+    "lab_search_m":"Search near each region's inward margin for a supported reachable exterior without altering terrain or resource ownership.",
+    "transform_radius_m":"Future declared local transformation envelope, inactive and not a building prohibition.",
+    "habit_pause_seconds":"Quiet hosts pause between grazing/rooting or connected-growth visits; danger still uses normal combat states.",
+    "habitat_cue_spacing_m":"Sparse small matching scars connect source and animal along a reachable walk.",
+    "trail_spacing_m":"Maximum walking interval between repeated artificial trail marks toward the Collection Annex.",
+    "hosts_and_laboratories":"Four stable finite host identities and three visible site identities frozen with the new opt-in world profile. All older profiles remain unchanged."
+  }
+}

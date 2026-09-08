@@ -79,6 +79,7 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 	for pack in terrain.map.get("packs", []):
 		packs.append({
 			"enemies": pack["enemies"],
+			"frontier_host_id": pack.get("frontier_host_id", ""),
 			"x": pack["x"],
 			"y": pack.get("y", 0),
 			"z": pack["z"],
@@ -95,7 +96,7 @@ func setup(from_terrain: Terrain, seed_value: int) -> void:
 			"members": [],
 		})
 	load_rules()
-	_indexed = terrain.world_profile() in ["frontier_v6","living_frontier_wave1"]
+	_indexed = terrain.world_profile() in ["frontier_v6","living_frontier_wave1","living_frontier_wave3"]
 	_first_siege_night = int(terrain.map.get("starter_first_siege_night",0)) if _indexed else 0
 	_siege_rolled_day = -1
 	siege_tonight = false
@@ -490,10 +491,15 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	pack["spawned"] = true
 	if _indexed: _active_pack_ids[int(pack.index)] = true
 	var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
+	var frontier_id := String(pack.get("frontier_host_id", ""))
+	if not frontier_id.is_empty() and sim.world_effect_active("host_defeated:" + frontier_id):
+		pack["members"] = []
+		return
 	var ids: PackedStringArray = (pack["enemies"] as PackedStringArray).duplicate()
 	# Herds (D-020 the quiet heartland) are life, not threat: no escorts,
 	# never crowned.
 	var grazer: bool = pack.get("grazer", false)
+	var bounded := not frontier_id.is_empty()
 	# A pack returning from sleep is exactly its survivors: era bonuses and
 	# escorts were added the first time and are in the list already.
 	var resting: bool = pack.get("resting", false)
@@ -502,7 +508,7 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	var era: Dictionary = sim.era()
 	var bonus_seen := {}
 	var escorts: Dictionary = era.get("pack_escorts", {})
-	for id in (PackedStringArray() if resting else pack["enemies"]):
+	for id in (PackedStringArray() if resting or bounded else pack["enemies"]):
 		if bonus_seen.has(id):
 			continue
 		bonus_seen[id] = true
@@ -513,7 +519,7 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 			ids.append(escort)
 	# The mingling (Wave 8 slice 3): from the deep on, a foreign family may
 	# join a pack in this biome - the sim's pick, deterministic per den.
-	if not resting and not grazer:
+	if not resting and not grazer and not bounded:
 		var foreign: String = sim.mingle_pick(String(pack.get("biome", "")), hash(Vector3i(int(pack["x"]), int(pack["y"]), int(pack["z"]))) ^ world_seed)
 		if foreign != "":
 			ids.append(foreign)
@@ -521,7 +527,7 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	var elite_member: int = int(pack["elite_member"])
 	var elite_modifier: String = String(pack["elite_modifier"])
 	var elite_bonus: float = float(era.get("elite_chance_bonus", 0.0))
-	if not grazer and elite_member < 0 and elite_bonus > 0.0:
+	if not grazer and not bounded and elite_member < 0 and elite_bonus > 0.0:
 		var roll := RandomNumberGenerator.new()
 		roll.seed = hash(Vector3i(int(pack["x"]), int(pack["y"]), int(pack["z"]))) ^ world_seed
 		if roll.randf() < elite_bonus:
@@ -535,7 +541,7 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 		var offset := Vector3(cos(angle), 0.5, sin(angle)) * 1.6
 		var enemy: Enemy = preload("res://scenes/enemy.tscn").instantiate()
 		enemy.enemy_id = StringName(ids[i])
-		var position := at + offset
+		var position := at + (Vector3.UP * .5 if bounded else offset)
 		if terrain != null and not terrain.map.is_empty() and String(pack.get("biome",""))!="cave":
 			var body := enemy.get_node("CollisionShape3D") as CollisionShape3D
 			position = _surface_member_position(position,(body.shape as CapsuleShape3D).radius,offset.y)
@@ -544,6 +550,12 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 		enemy.position = (get_parent() as Node3D).to_local(position) if get_parent() is Node3D else position
 		get_parent().add_child(enemy)
 		enemy.set_aggro_multiplier(aggro_multiplier())
+		if bounded:
+			enemy.set_meta("frontier_host_id",frontier_id)
+			for habitat: Dictionary in terrain.map.get("frontier_hosts",[]):
+				if String(habitat.id) == frontier_id:
+					enemy.habit_points = habitat.habits
+					enemy.habit_pause_seconds = float(terrain.map.frontier_rules.habit_pause_seconds)
 		# The danger ring may have crowned one member (Wave 3 elites).
 		if i == elite_member and elite_modifier != "":
 			enemy.make_elite(sim.elite_modifier(elite_modifier))
@@ -561,6 +573,12 @@ func restore_loot_counter(value: int) -> void:
 
 
 func _on_enemy_died(enemy: Enemy) -> void:
+	var id := String(enemy.get_meta("frontier_host_id", ""))
+	if not id.is_empty():
+		var sim: WroughtwildSim = load("res://scripts/sim.gd").shared()
+		var effect := "host_defeated:" + id
+		if sim.world_effect_active(effect): return
+		sim.record_world_effect(effect)
 	_kill_counter += 1
 	# Per-kill deterministic seed: replaying a save replays its luck.
 	drop_loot_for(enemy, world_seed + _kill_counter * 7919)

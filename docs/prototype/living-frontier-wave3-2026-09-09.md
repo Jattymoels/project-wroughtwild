@@ -152,3 +152,97 @@ After isolating the opt-in native roster, rebuilt the extension and repeated
 the 222-check host fixture successfully; the full pipeline preceded that final
 roster-only correction. Logs are under `build/lf3/`. LF-3A remains a comparison
 fixture until LF-3B ships the new world identity.
+
+Local commit `df5a0c1`; ordinary push to `origin/main` succeeded.
+
+### LF-3B placement selection, recorded before implementation
+
+Four finite hosts use a small sample, not a biome-wide recolouring. Their source
+links extend out from the four existing home margins to clear supported ground
+at least 170 m from spawn; the 150 m quiet valley and home/source workplaces
+remain calm. Red and Blue have independent approaches, no escorts or elites.
+Each host yields four matching raw units plus hide (boars one, stag two) or two
+raw reeds (moth). These modest drops fund two matching utility parts; they do not
+replace bulk extraction. Death is remembered by stable host identity in the
+existing saved world-effect ledger; no source or reward rerolls on streaming.
+
+The new profile establishes all three exterior laboratory footprints in this
+slice: Collection Annex near Rootvault Wildwood, Pairing Hall near Lantern Fen,
+and Central Laboratory near Glasswind Uplands. Each is a visible sealed shell
+on supported ground with a connected exterior approach. No interior encounter
+or progression gate is enabled. Two declared future envelopes, **Retained Fen**
+and **Excited Uplands**, use their respective region centres and 40 m radii.
+Their eventual changes are held water/bridges and heat-fused ground/vent channels;
+these remain future selections subject to the construction protection contract.
+No present terrain transformation or invisible building exclusion is installed.
+LF-3C adds non-blocking trail details to these existing sites, so a Wave 3 save
+never acquires a new laboratory underneath a paid home.
+
+LF-3B focused engine results: **76 habitat/payment/save checks + 18 fresh-process
+checks, zero failures**; LF-3A's 222 combat checks still pass. The fixture observes
+ordinary host habits, passive flight, physical loot, duplicate death callbacks,
+save-before-collection, exact source non-interference, death-pack recovery and
+actual laboratory collision. It gathers real timber and pays for blocks inside
+both future regions, then reloads them. Killing is dispatched directly for loot
+isolation; the separate LF-3A class fights supply combat evidence.
+
+The first placement candidate required a nine-cell-wide perfectly level clearing
+and rejected seed 0. The final search requires five-cell-wide level clear ground
+for hosts and nine-cell-wide ground within one level for shells. Terrain and
+resource arrays remain untouched. The extended **37-seed** sweep passes:
+0–31, 42, 77, 256, 1337 and 2147483647, **16,809 checks, zero failures**.
+The main native suite passes 224,380 checks; Wave 1 213,482; Wave 2 601.
+Full engine run: **109 ordered invocations plus four Foundry identity scenes,
+all exit zero**. Published paid source/workshop, loot, save, generation and
+combat regressions pass. The final controlled habitat rerun also passes 76 + 18.
+Source routes begin at the exact four existing +8 m home anchors. Native source
+payloads retain the published Wave 1 format tag; the outer world profile and
+machine identity distinguish the new world. No source-format conversion occurs.
+
+Habits move between two points two metres from the host centre, pausing five
+seconds between visits. Quiet boar/stag heads use 0.22/0.48 radian prototype
+rooting/grazing poses; moth wings retain their existing authored gait. Source
+cues appear every 12 walking cells. Colour stays local to the retained scar mask.
+The Green moth flees at 4 m/s inside six metres and settles beyond eighteen;
+the White stag retains the existing grazer rules. All four hosts are finite.
+
+Rendered and inspected: [Red](../../captures/lf3/habitat-red.png),
+[Blue](../../captures/lf3/habitat-blue.png),
+[White](../../captures/lf3/habitat-white.png),
+[Green](../../captures/lf3/habitat-green.png),
+[Collection Annex](../../captures/lf3/lf3_collection_annex.png),
+[Pairing Hall](../../captures/lf3/lf3_pairing_hall.png),
+[Central Laboratory](../../captures/lf3/lf3_central_laboratory.png).
+Shells are deliberately simple 6 × 5 × 4 m placeholders with distinct roof
+counts, sealed framed doors and the same triple-cut emblem. They establish
+visible physical ownership, not final architecture or owner visual acceptance.
+
+Commands: `tools/living_frontier_wave3_checks.ps1 -Hosts -Habitat -HabitatRestore`,
+`-HabitatVisuals`, `-Native`, `-FocusedNative` and `-Full`. Logs:
+`build/lf3/final-ai-b.log`, `final-habitat-b.log`, `native-full-b.log`,
+`extended-seeds-b.log`, `visual-b.log` and `full-engine-b.log`.
+The final habitat movement lives in the enemy controller; the scar adapter only
+poses and renders the animal. Repeated the 222 + 76 + 18 focused checks after that
+separation; all pass. The full pipeline's host scenes preceded this final move.
+
+### LF-3C selected proof and trail
+
+After LF-3B's checked commit, use a fresh seed-77 Wave 3 economy with no supplied
+inventory, stations or unlocks. Gather timber, build a bench and pay for an
+ordinary cudgel; fight the actual Red boar. Its four Salt fund two brick batches.
+Build the ordinary masonry yard/forge and place paid bricks. Draw seven Red lots,
+six Blue lots and six Green lots; seed 77 has no rare result in those particular
+lots. Manufacture all five Faint identities using the existing exact recipes.
+White needs twelve lots across two manifestations; exhaust its first eight,
+spend the accepted 600 active-world seconds and draw four further lots. No rare
+find, inventory grant, raised odds, source reset or trial reward funds the proof.
+Time and travel may be accelerated, with that limitation recorded explicitly.
+
+The single artificial trail follows the native reserved walk from the Red source
+to the Collection Annex. Repeated triple-cut marks, metal clamps and short
+straight feed sections distinguish later collection work from natural scars.
+These details have no collision, resource yield or reward interaction. They
+yield locally to paid construction and do not change saved lab footprints.
+Source inspection connects observed animal behaviour, useful raw drops and the
+existing ordinary manufacture costs. No discovery gate or laboratory encounter
+is introduced. Current Forge/curio rewards remain coherent until later waves.

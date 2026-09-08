@@ -12,6 +12,9 @@ var actor: Enemy
 var clock := 0.0
 var tell: MeshInstance3D
 var scar: ShaderMaterial
+## Head lowering is a quiet rooting/grazing pose over the retained authored rig.
+@export var graze_radians := 0.48
+@export var root_radians := 0.22
 
 static func attach(host: Enemy) -> void:
 	var old := host.get_node_or_null("FrontierHostLook")
@@ -68,6 +71,14 @@ func _build() -> void:
 
 func _physics_process(delta: float) -> void:
 	clock += delta
+	if actor.life > 0 and actor.state == "idle" and not actor.is_frozen() and not actor.staggered():
+		if actor.velocity.length_squared() < .1:
+			var motion := actor._mesh.get_node_or_null("Motion") as CreatureMotion
+			if motion != null and not motion._authored.is_empty():
+				for i in range(1,motion.rig.get_bone_count()):
+					if String(motion._authored.rig[i].motion) == "head":
+						var angle := graze_radians if actor.influence == "white" else root_radians
+						motion.rig.set_bone_pose_rotation(i,Quaternion.from_euler(Vector3(angle*(.65+.35*sin(clock)),0,0)))
 	if scar != null:
 		var weight := (sin(clock*TAU/pulse_seconds)+1.0)*.5
 		scar.set_shader_parameter("strength", lerpf(scar_low, scar_high, weight))

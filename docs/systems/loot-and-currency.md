@@ -1,5 +1,14 @@
 # Loot and Crafting Economy
 
+**LF-3B (9 September 2026):** only the new `living_frontier_wave3` profile
+places four finite influenced animals. Each yields four guaranteed matching raw
+units, plus ordinary hide (one per boar, two per stag) or two reeds (moth).
+The existing saved world-effect ledger remembers each stable host's defeat;
+ordinary physical chips, hauling, expiry and recoverable death packs own the
+reward afterward. Reload/streaming cannot pay a second kill or renew a source.
+Published acquisition policy and ordinary recipes remain, including all five
+raw-material manufacture recipes. [Bounded contract](../prototype/living-frontier-wave3-2026-09-09.md).
+
 **LF-1A, D-033 (8 September 2026):** the opt-in Living Frontier Red host
 reliably releases raw Salt and has one 4% Faint Ember opportunity per fixed lot.
 The native source owns uncollected raw/rare claims until a capacity-checked

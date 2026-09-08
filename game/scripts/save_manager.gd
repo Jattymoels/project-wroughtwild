@@ -12,6 +12,7 @@ extends RefCounted
 const SCHEMA_VERSION := 2
 const DEFAULT_PATH := "user://wroughtwild_save.json"
 static func default_path() -> String:
+	if OS.get_cmdline_user_args().has("--living-frontier-wave3"): return "user://living_frontier_wave3.json"
 	return "user://living_frontier_wave1.json" if OS.get_cmdline_user_args().has("--living-frontier") else DEFAULT_PATH
 
 const RESOURCE_NODE_SCENE := preload("res://scenes/resource_node.tscn")
@@ -165,7 +166,7 @@ func _prepare_restore(player: WroughtwildPlayer, data: Dictionary, restoring := 
 	if data.has("world_seed") and (float(data.world_seed) < -2147483648.0 or float(data.world_seed) > 2147483647.0):
 		last_error = "world seed is outside the native signed 32-bit range"
 		return {}
-	if String(data.get("world_profile", "legacy_v1")) in ["frontier_v6","living_frontier_wave1"] and int(data.get("world_seed", 0)) < 0:
+	if String(data.get("world_profile", "legacy_v1")) in ["frontier_v6","living_frontier_wave1","living_frontier_wave3"] and int(data.get("world_seed", 0)) < 0:
 		last_error = "new-world seed must be a nonnegative 31-bit number"
 		return {}
 	var sim: WroughtwildSim = player.inventory.get_sim()
@@ -178,7 +179,7 @@ func _prepare_restore(player: WroughtwildPlayer, data: Dictionary, restoring := 
 	# Validate the whole suspended payload and generation identity before either
 	# the player's economy or their terrain changes. Old v2 saves stay legacy.
 	var profile:=String(data.get("world_profile","legacy_v1"))
-	if profile not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6","living_frontier_wave1"]:
+	if profile not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6","living_frontier_wave1","living_frontier_wave3"]:
 		last_error="unknown world generation profile: "+profile
 		return {}
 	if not _valid_text(data.get("contraptions","")) or not sim.contraption_validate_world(String(data.get("contraptions","")), profile, int(data.get("world_seed",0))):
@@ -586,7 +587,7 @@ func read(path: String, player: WroughtwildPlayer) -> bool:
 		if parsed.has("schema_version") and _valid_integer(parsed.schema_version) and int(parsed.schema_version)>SCHEMA_VERSION:
 			last_error = "unsupported save schema %s" % str(parsed.schema_version)
 			return false
-		if parsed.has("world_profile") and _valid_text(parsed.world_profile) and String(parsed.world_profile) not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6","living_frontier_wave1"]:
+		if parsed.has("world_profile") and _valid_text(parsed.world_profile) and String(parsed.world_profile) not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6","living_frontier_wave1","living_frontier_wave3"]:
 			last_error = "unknown world generation profile: " + String(parsed.world_profile)
 			return false
 		var prepared := _prepare_restore(player, parsed)

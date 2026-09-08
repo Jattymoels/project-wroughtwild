@@ -14,15 +14,15 @@ const char* machine_kinds[] = {"lantern_lamp","cargo_winch","winch_landing","sto
 
 PackedStringArray WroughtwildSim::contraption_kinds() const {
     PackedStringArray ids; for (auto kind : machine_kinds) ids.push_back(kind);
-    if (world_profile_==wroughtwild::leyline::profile) { ids.push_back("white_connection"); ids.push_back("blue_delay"); ids.push_back("green_junction"); ids.push_back("red_heat_buffer"); }
+    if (wroughtwild::leyline::supports(world_profile_)) { ids.push_back("white_connection"); ids.push_back("blue_delay"); ids.push_back("green_junction"); ids.push_back("red_heat_buffer"); }
     return ids;
 }
 String WroughtwildSim::contraption_kind_for_kit(const String& kit) const {
     for (auto kind : machine_kinds) if (kit==String(kind)+"_kit") return kind;
-    if (world_profile_==wroughtwild::leyline::profile && kit=="white_connection_kit") return "white_connection";
-    if (world_profile_==wroughtwild::leyline::profile && kit=="blue_delay_kit") return "blue_delay";
-    if (world_profile_==wroughtwild::leyline::profile && kit=="green_junction_kit") return "green_junction";
-    if (world_profile_==wroughtwild::leyline::profile && kit=="red_heat_buffer_kit") return "red_heat_buffer";
+    if (wroughtwild::leyline::supports(world_profile_) && kit=="white_connection_kit") return "white_connection";
+    if (wroughtwild::leyline::supports(world_profile_) && kit=="blue_delay_kit") return "blue_delay";
+    if (wroughtwild::leyline::supports(world_profile_) && kit=="green_junction_kit") return "green_junction";
+    if (wroughtwild::leyline::supports(world_profile_) && kit=="red_heat_buffer_kit") return "red_heat_buffer";
     return {};
 }
 bool WroughtwildSim::contraption_place(const String& kind, const String& key, const Vector3& at, int rotation) {

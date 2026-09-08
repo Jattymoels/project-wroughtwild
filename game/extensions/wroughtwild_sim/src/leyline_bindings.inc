@@ -7,7 +7,7 @@ Dictionary leyline_result(const wroughtwild::leyline::Result& result) {
 }
 bool WroughtwildSim::leyline_bind_world(const String& profile, int seed) {
     if (!tuning_ || trial_) return false;
-    if (profile != wroughtwild::leyline::profile) { leylines_.reset(); leyline_positions_.clear(); return true; }
+    if (!wroughtwild::leyline::supports(to_std(profile))) { leylines_.reset(); leyline_positions_.clear(); return true; }
     if (seed < 0) return false;
     if (!leylines_ || leylines_->seed() != static_cast<uint64_t>(seed))
         leylines_ = std::make_unique<wroughtwild::leyline::World>(leyline_config_,static_cast<uint64_t>(seed));
@@ -55,14 +55,14 @@ void WroughtwildSim::leyline_tick(double seconds,const PackedStringArray& blocke
 }
 String WroughtwildSim::leyline_save() const { return leylines_ ? to_godot(leylines_->serialize()) : String(); }
 bool WroughtwildSim::leyline_validate_world(const String& text,const String& profile,int seed) const {
-    if (profile != wroughtwild::leyline::profile) return text.is_empty();
+    if (!wroughtwild::leyline::supports(to_std(profile))) return text.is_empty();
     if (!tuning_ || seed < 0 || text.is_empty()) return false;
     wroughtwild::leyline::World candidate(leyline_config_,static_cast<uint64_t>(seed));
     return candidate.restore(to_std(text));
 }
 bool WroughtwildSim::leyline_load_world(const String& text,const String& profile,int seed) {
     if (trial_ || !leyline_validate_world(text,profile,seed)) return false;
-    if (profile != wroughtwild::leyline::profile) { leylines_.reset(); leyline_positions_.clear(); return true; }
+    if (!wroughtwild::leyline::supports(to_std(profile))) { leylines_.reset(); leyline_positions_.clear(); return true; }
     auto candidate=std::make_unique<wroughtwild::leyline::World>(leyline_config_,static_cast<uint64_t>(seed));
     if (!candidate->restore(to_std(text))) return false;
     leylines_.swap(candidate); return leyline_bind_world(profile,seed);

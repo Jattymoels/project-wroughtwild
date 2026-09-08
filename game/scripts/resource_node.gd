@@ -212,7 +212,7 @@ func _use_authored(mesh_instance: MeshInstance3D, id: String) -> void:
 	# profiles have no field and keep their ordinary common-resource surfaces.
 	var influence := 0.0
 	var terrain := _terrain()
-	if terrain!=null and terrain.world_profile() in ["frontier_v4", "frontier_v5", "frontier_v6","living_frontier_wave1"]:
+	if terrain!=null and terrain.world_profile() in ["frontier_v4", "frontier_v5", "frontier_v6","living_frontier_wave1","living_frontier_wave3"]:
 		var field: PackedFloat32Array=terrain.map.get("augmentation_field",PackedFloat32Array())
 		var width: int=int(terrain.map.get("width",0))
 		var height: int=int(terrain.map.get("height",0))

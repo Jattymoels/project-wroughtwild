@@ -1765,6 +1765,40 @@ WorldgenTable loadWorldgen(const std::string& path) {
     return table;
 }
 
+LivingFrontierTable loadLivingFrontier(const std::string& path) {
+    const auto doc = json::parseFile(path);
+    if (doc->get("version").asNumber() != 1) throw std::runtime_error("living frontier: unknown composition version");
+    LivingFrontierTable t;
+    const auto number = [&](const std::string& key) {
+        const double v = doc->get(key).asNumber();
+        if (!std::isfinite(v) || v <= 0 || v > 200) throw std::runtime_error("living frontier: invalid " + key);
+        return v;
+    };
+    t.hostMinimumSpawnM = number("host_minimum_spawn_m");
+    t.hostSourceMinimumM = number("host_source_minimum_m");
+    t.hostSourceMaximumM = number("host_source_maximum_m");
+    t.hostSeparationM = number("host_separation_m");
+    t.encounterClearRadiusM = number("encounter_clear_radius_m");
+    t.labWidthM = number("lab_width_m"); t.labDepthM = number("lab_depth_m");
+    t.labHeightM = number("lab_height_m"); t.labSearchM = number("lab_search_m");
+    t.transformRadiusM = number("transform_radius_m");
+    t.habitPauseSeconds = number("habit_pause_seconds");
+    t.habitatCueSpacingM = number("habitat_cue_spacing_m"); t.trailSpacingM = number("trail_spacing_m");
+    for (const auto& h : doc->get("hosts").asArray()) {
+        FrontierHostDef host;
+        host.id=h->get("id").asString(); host.sourceId=h->get("source_id").asString();
+        host.enemyId=h->get("enemy_id").asString(); host.influence=h->get("influence").asString();
+        host.homeIndex=static_cast<int>(h->get("home_index").asNumber());
+        if (host.homeIndex<0 || host.homeIndex>3) throw std::runtime_error("living frontier: bad source home");
+        t.hosts.push_back(host);
+    }
+    for (const auto& l : doc->get("laboratories").asArray())
+        t.labs.push_back({l->get("id").asString(),l->get("label").asString(),l->get("region_id").asString()});
+    if (t.hosts.size()!=4 || t.labs.size()!=3 || t.hostSourceMinimumM>=t.hostSourceMaximumM)
+        throw std::runtime_error("living frontier: bounded composition incomplete");
+    return t;
+}
+
 Tuning loadAll(const std::string& tuningDirectory) {
     Tuning tuning;
     tuning.crafting = loadCrafting(tuningDirectory + "/crafting.json");
@@ -1780,6 +1814,9 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.trial = loadTrial(tuningDirectory + "/trial.json");
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
+    tuning.livingFrontier = loadLivingFrontier(tuningDirectory + "/living_frontier.json");
+    tuning.livingFrontierWave3Worldgen = tuning.worldgen;
+    tuning.livingFrontierWave3Worldgen.generationProfile = "living_frontier_wave3";
     tuning.livingFrontierWorldgen = tuning.worldgen;
     tuning.livingFrontierWorldgen.generationProfile = "living_frontier_wave1";
     tuning.legacyWorldgen = loadWorldgen(tuningDirectory + "/worldgen-legacy-v1.json");

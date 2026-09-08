@@ -9,6 +9,11 @@
     "cone_degrees": 100.0
   },
   "behaviours": {
+    "frontier_moth": {
+      "move_speed_mps":4, "attack_range_m":0, "aggro_range_m":6, "windup_seconds":0,
+      "give_up_distance_m":18, "flees":true,
+      "design_purpose":"Green moth calmly visits nearby growth. Within six metres it bolts at ordinary walking pace and settles beyond eighteen; never attacks."
+    },
     "excited_boar": {
       "move_speed_mps": 3.5,
       "attack_range_m": 3.2,

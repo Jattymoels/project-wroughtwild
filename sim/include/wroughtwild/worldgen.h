@@ -50,6 +50,18 @@ struct PlacedNode {
 };
 
 struct SurfacePoint { int x = 0, y = 0, z = 0; };
+struct PlacedFrontierHost {
+    std::string id, sourceId, enemyId, influence;
+    SurfacePoint at;
+    std::vector<SurfacePoint> approach, sourceRoute, habits;
+};
+struct PlacedLaboratory {
+    std::string id, label, regionId;
+    SurfacePoint at;
+    std::vector<SurfacePoint> approach;
+    double widthM = 0, depthM = 0, heightM = 0;
+};
+struct FutureTransformation { std::string id, regionId; SurfacePoint at; double radiusM = 0; };
 struct PlacedHomeSite {
     std::string id;
     int x = 0, y = 0, z = 0;
@@ -125,6 +137,7 @@ struct PlacedLandmark {
 };
 
 struct MobPack {
+    std::string frontierHostId; // finite LF-3 owner, never an ordinary respawning den
     std::vector<std::string> enemies;
     int x = 0;
     int y = 0; // the level the pack stands on: the surface, or a cave floor
@@ -167,6 +180,10 @@ struct WorldMap {
     std::vector<PlacedLeyline> leylines;
     std::vector<PlacedRuin> ruins;
     std::vector<PlacedPressurePocket> pressurePockets;
+    std::vector<PlacedFrontierHost> frontierHosts;
+    std::vector<PlacedLaboratory> laboratories;
+    std::vector<FutureTransformation> futureTransformations;
+    std::vector<SurfacePoint> laboratoryTrail;
     double starterQuietRadiusM = 0, hostileBoundaryM = 0;
     int starterFirstSiegeNight = 0; // 0 preserves historical host pacing.
     std::vector<PlacedHomeSite> homeSites;

@@ -29,8 +29,10 @@ struct Recipe {
     std::string worldProfile; // empty = no required profile
     std::string excludedWorldProfile; // a selected replacement keeps legacy costs intact
     bool availableIn(const std::string& profile) const {
-        return (worldProfile.empty() || worldProfile == profile) &&
-               (excludedWorldProfile.empty() || excludedWorldProfile != profile);
+        // Wave 3 deliberately inherits the published experimental recipe policy.
+        const std::string policy = profile == "living_frontier_wave3" ? "living_frontier_wave1" : profile;
+        return (worldProfile.empty() || worldProfile == policy) &&
+               (excludedWorldProfile.empty() || excludedWorldProfile != policy);
     }
     std::string id;
     std::string displayName;
@@ -1026,6 +1028,16 @@ struct WideFrontierParams {
     int homeTrees = 4, homeBoulders = 3, homeStone = 2, homeIron = 1;
 };
 
+struct FrontierHostDef { std::string id, sourceId, enemyId, influence; int homeIndex = 0; };
+struct FrontierLabDef { std::string id, label, regionId; };
+struct LivingFrontierTable {
+    double hostMinimumSpawnM = 0, hostSourceMinimumM = 0, hostSourceMaximumM = 0;
+    double hostSeparationM = 0, encounterClearRadiusM = 0, labWidthM = 0, labDepthM = 0;
+    double labHeightM = 0, labSearchM = 0, transformRadiusM = 0, habitPauseSeconds = 0;
+    double habitatCueSpacingM = 0, trailSpacingM = 0;
+    std::vector<FrontierHostDef> hosts;
+    std::vector<FrontierLabDef> labs;
+};
 struct WorldgenTable {
     std::string generationProfile;
     std::vector<std::string> generationEliteIds;
@@ -1313,6 +1325,8 @@ struct Tuning {
     WorldgenTable frontierV3Worldgen; // immutable frontier_v3 geography and placement inputs
     WorldgenTable frontierV4Worldgen; // immutable frontier_v4 topology, history and placement inputs
     WorldgenTable frontierV5Worldgen; // immutable frontier_v5 pressure geography and placement inputs
+    LivingFrontierTable livingFrontier;
+    WorldgenTable livingFrontierWave3Worldgen;
     WorldgenTable livingFrontierWorldgen; // opt-in LF-1 uses identical V6 base geography
     GrammarTable grammar;
 };

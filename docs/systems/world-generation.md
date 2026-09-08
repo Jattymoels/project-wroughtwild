@@ -1,5 +1,14 @@
 # World Generation, Settlements and Travel
 
+**LF-3B (9 September 2026):** the separate opt-in `living_frontier_wave3`
+identity retains V6 terrain, resource identities and the four published source
+anchors. Four finite influenced hosts occupy supported clearings beyond the
+150 m quiet valley, with separate source cue walks and no elite/escort additions.
+Three visible sealed laboratory exteriors and two inactive 40 m future envelopes
+exist from its first save. Actual solid walls occupy space; envelopes impose no
+building exclusion. Older LF saves keep their exact geography. Normal startup
+remains V6. [Contract, tuning and evidence](../prototype/living-frontier-wave3-2026-09-09.md).
+
 **LF-2A (8 September 2026):** the same opt-in profile adds Blue Flakes on home
 margin 2 (+8 m X), retaining the existing lot/work/formation limits and adding
 a fixed 4% Faint Frost bonus per lot. Version 3 requires Red, White and Blue;
