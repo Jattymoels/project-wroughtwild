@@ -5,6 +5,9 @@ without expensive premium subscriptions. This is research and a proposed next
 experiment, not approval of a new dependency, service upload or purchase.
 [Actual wolf experiment and visual assessment](README.md).
 
+Subsequent owner selection: [set up and test TRELLIS.2 locally](trellis-local/README.md).
+The shortlist below records the research before that installation trial.
+
 ## Shortlist
 
 Prices below are advertised USD generation charges checked on this date, before

@@ -1,0 +1,42 @@
+{
+  "source_sha256": "584b615a050af649602c2b09aeffbb649f4727f4fc8095874ad7c073c70d5e1f",
+  "yaw_degrees": 220.0,
+  "target_height_metres": 1.05,
+  "extra_views": [
+    {
+      "name": "head-lowered",
+      "camera": [
+        -2,
+        4,
+        0.85
+      ],
+      "target": [
+        0,
+        0.95,
+        0.5
+      ],
+      "ortho_scale": 0.95,
+      "show_floor": true
+    },
+    {
+      "name": "underside",
+      "camera": [
+        -3.2,
+        2,
+        -1.8
+      ],
+      "target": [
+        0,
+        0,
+        0.5
+      ],
+      "ortho_scale": 2.8,
+      "show_floor": false
+    }
+  ],
+  "purpose": {
+    "yaw_degrees": "The raw top view puts the head toward -X/-Y. Rotate its approximate body axis to the shared +Y-front convention; retain the generated pose.",
+    "target_height_metres": "Uniformly set the lowered-pose maximum height to the same 1.05 m comparison height as Meshy. This is not gameplay scale.",
+    "extra_views": "Reuse the separately labelled lowered-head and underside cameras from the Meshy review."
+  }
+}

@@ -17,8 +17,18 @@ this is not completion of the broader wolf/woodland quality pass.
 The owner explicitly approved publication of the raw Meshy GLB as an intentional
 art source on 8 September, resolving the initial automatic-review staging
 rejection. The [lower-cost alternatives review](../art/leyline-studies/2026-09-08/wolf-image3d/pipeline-options-2026-09-08.md)
-records current prices and local hardware feasibility; no alternative service
-upload, purchase or installation has been performed.
+records prices and local hardware feasibility at that checkpoint; it was a
+read-only review, followed by the explicitly selected installation below.
+
+The owner then selected local TRELLIS.2 setup. The [local trial](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
+is now complete: the isolated Windows community port generates a textured wolf
+in about 183 seconds on the RTX 5090, with 295,880 triangles. All ten model files
+are hash-verified, the desktop app launches, and 32 Blender handoff checks pass.
+Coat and plate forms improve over the tested Meshy 6 Lite source, but weak eyes,
+an unproven moving jaw and raised cable-like scars remain below the brief. The
+actual renders and local editable files are recorded in the trial. Replacement
+game art and the broader woodland pass remain separate; this checkpoint does
+not adopt the candidate or mark the broader art work complete.
 
 The owner rejects the mammal models' rounded, awkward appearance while liking
 the moth and the selected concepts. They approve developing one convincing wolf

@@ -1,0 +1,49 @@
+{
+  "runtime": "pwilkin/trellis.cpp",
+  "runtime_version": "v0.6.0",
+  "release_target_commit": "06fc9000719c912ddc4929d21db075972c26ac3e",
+  "model_repository": "ilintar/trellis2-gguf",
+  "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+  "input_sha256": "603da99abb16c5a34295ab8e5bf8117cd0fea05bb0f8b9cb24c9765eb80b2126",
+  "geometry_only": false,
+  "arguments": [
+    "--image",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-08\\wolf-image3d\\input-three-quarter-v01.png",
+    "--output",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\output\\wolf-1024-seed42-20260908-221914-245\\wolf.glb",
+    "--models",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+    "--gpu",
+    "0",
+    "--require-gpu",
+    "--res",
+    "1024",
+    "--seed",
+    "42",
+    "--bg-removal",
+    "birefnet",
+    "--dump-bg",
+    "--webp",
+    "off",
+    "--threads",
+    "8"
+  ],
+  "status": "exported; Blender inspection pending",
+  "started_utc": "2026-09-08T12:49:14.2540180Z",
+  "seconds": 182.8611431,
+  "exit_code": 0,
+  "glb_sha256": "584b615a050af649602c2b09aeffbb649f4727f4fc8095874ad7c073c70d5e1f",
+  "glb_bytes": 23587696,
+  "export_asset_metadata": {
+    "version": "2.0",
+    "minVersion": "2.0",
+    "generator": "trellis.cpp v0.6.0",
+    "extras": {
+      "seed": 42,
+      "commit": "16f3109e82f3922033bfa62b83c42899678b7b6f",
+      "backend": "cuda",
+      "build": "2026-08-21T08:39:09Z",
+      "generated": "2026-09-08T12:52:15Z"
+    }
+  }
+}

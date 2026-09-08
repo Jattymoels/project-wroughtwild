@@ -1,0 +1,118 @@
+{
+  "input": "wolf-normalized.glb",
+  "sha256": "0245276461c8562f26a6053a58d8bc831a70ab8238498b22d1568e6e8ea9a9e0",
+  "coordinates": "Blender metres: +Y front, +Z up",
+  "bounds": [
+    [
+      -0.30951908230781555,
+      -0.8096851706504822,
+      0.0
+    ],
+    [
+      0.30951908230781555,
+      0.8096851706504822,
+      1.0499999523162842
+    ]
+  ],
+  "meshes": [
+    {
+      "name": "Mesh_0",
+      "triangles": 295880,
+      "materials": 1
+    }
+  ],
+  "views": [
+    {
+      "name": "clay-side",
+      "camera": [
+        -6.0,
+        -0.10018736124038696,
+        0.6735901236534119
+      ],
+      "target": [
+        0.0,
+        -0.10018736124038696,
+        0.6735901236534119
+      ],
+      "ortho_scale": 3.257249450683594,
+      "material_override": "clay"
+    },
+    {
+      "name": "clay-front",
+      "camera": [
+        0.0,
+        5.899812698364258,
+        0.6735901236534119
+      ],
+      "target": [
+        0.0,
+        -0.10018736124038696,
+        0.6735901236534119
+      ],
+      "ortho_scale": 2.117212142944336,
+      "material_override": "clay"
+    },
+    {
+      "name": "clay-rear",
+      "camera": [
+        0.0,
+        -6.100187301635742,
+        0.6735901236534119
+      ],
+      "target": [
+        0.0,
+        -0.10018736124038696,
+        0.6735901236534119
+      ],
+      "ortho_scale": 2.117212142944336,
+      "material_override": "clay"
+    },
+    {
+      "name": "clay-three-quarter",
+      "camera": [
+        -4.0,
+        5.899812698364258,
+        2.473590135574341
+      ],
+      "target": [
+        0.0,
+        -0.10018736124038696,
+        0.6735901236534119
+      ],
+      "ortho_scale": 3.121530723571777,
+      "material_override": "clay"
+    },
+    {
+      "name": "clay-head",
+      "camera": [
+        -2.0,
+        4.956999778747559,
+        1.6700000762939453
+      ],
+      "target": [
+        0.0,
+        0.9569999575614929,
+        0.9700000286102295
+      ],
+      "ortho_scale": 1.1943247985839844,
+      "material_override": "clay"
+    },
+    {
+      "name": "material-three-quarter",
+      "camera": [
+        -4.0,
+        5.899812698364258,
+        2.473590135574341
+      ],
+      "target": [
+        0.0,
+        -0.10018736124038696,
+        0.6735901236534119
+      ],
+      "ortho_scale": 3.121530723571777,
+      "material_override": null
+    }
+  ],
+  "stage": "Actual imported geometry review; no art acceptance implied.",
+  "matched_to_sha256": "ec2cded39e9414591991be589608235d20884ff96c020e4bcbc33a6cdd0f0354"
+}

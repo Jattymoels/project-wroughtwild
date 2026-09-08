@@ -1,0 +1,145 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "Raw export matches the inspected input",
+      "passed": true
+    },
+    {
+      "name": "Normalization uses the documented configuration",
+      "passed": true
+    },
+    {
+      "name": "Reviewed GLB is the prepared export",
+      "passed": true
+    },
+    {
+      "name": "Game wolf remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Moth remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Editable beast master remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Meshy source remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Comparison image remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "All six cameras exactly match the baseline",
+      "passed": true
+    },
+    {
+      "name": "Supplementary cameras are recorded separately",
+      "passed": true
+    },
+    {
+      "name": "Rendered 1280x960 PNG: clay-side",
+      "passed": true
+    },
+    {
+      "name": "Rendered 1280x960 PNG: clay-front",
+      "passed": true
+    },
+    {
+      "name": "Rendered 1280x960 PNG: clay-rear",
+      "passed": true
+    },
+    {
+      "name": "Rendered 1280x960 PNG: clay-three-quarter",
+      "passed": true
+    },
+    {
+      "name": "Rendered 1280x960 PNG: clay-head",
+      "passed": true
+    },
+    {
+      "name": "Rendered 1280x960 PNG: material-three-quarter",
+      "passed": true
+    },
+    {
+      "name": "Rendered 1280x960 PNG: head-lowered",
+      "passed": true
+    },
+    {
+      "name": "Rendered 1280x960 PNG: underside",
+      "passed": true
+    },
+    {
+      "name": "Both embedded PNGs survive byte-for-byte",
+      "passed": true
+    },
+    {
+      "name": "Texture source and sampler mappings survive",
+      "passed": true
+    },
+    {
+      "name": "Opaque PBR material and texture roles preserved: trellis.cpp v0.6.0",
+      "passed": true
+    },
+    {
+      "name": "Opaque PBR material and texture roles preserved: Khronos glTF Blender I/O v4.5.51",
+      "passed": true
+    },
+    {
+      "name": "Editable candidate reopens with one mesh and UV layer",
+      "passed": true
+    },
+    {
+      "name": "Editable candidate retains imported counts",
+      "passed": true
+    },
+    {
+      "name": "Candidate texture images remain packed",
+      "passed": true
+    },
+    {
+      "name": "Candidate is grounded at the comparison height",
+      "passed": true
+    },
+    {
+      "name": "Export reimports with the triangle count and UV layer",
+      "passed": true
+    },
+    {
+      "name": "GLB roundtrip preserves surface vertices within one micrometre",
+      "passed": true
+    },
+    {
+      "name": "Review reopens with its camera and three lights",
+      "passed": true
+    },
+    {
+      "name": "Clay override survives reopening",
+      "passed": true
+    },
+    {
+      "name": "No rig or animation has been claimed or introduced",
+      "passed": true
+    },
+    {
+      "name": "Raw source remains intact after verification",
+      "passed": true
+    }
+  ],
+  "maximum_glb_roundtrip_error_metres": 0.0,
+  "source_samplers": [
+    {}
+  ],
+  "normalized_samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "sampler_note": "Source leaves filters unspecified; Blender exports linear/mipmapped-linear filtering explicitly. Both textures use the same sampler and embedded images are byte-identical.",
+  "limitations": "No self-intersection, deformation, crowd performance or art acceptance claim."
+}

@@ -1,0 +1,35 @@
+{
+  "stage": "Supplementary detail views; cameras differ from baseline.",
+  "views": [
+    {
+      "name": "head-lowered",
+      "camera": [
+        -2,
+        4,
+        0.85
+      ],
+      "target": [
+        0,
+        0.95,
+        0.5
+      ],
+      "ortho_scale": 0.95,
+      "show_floor": true
+    },
+    {
+      "name": "underside",
+      "camera": [
+        -3.2,
+        2,
+        -1.8
+      ],
+      "target": [
+        0,
+        0,
+        0.5
+      ],
+      "ortho_scale": 2.8,
+      "show_floor": false
+    }
+  ]
+}
