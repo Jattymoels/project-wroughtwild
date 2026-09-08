@@ -4,8 +4,14 @@ Owner campaign/extraction direction, 8 September 2026: the owner supports the
 White/Impulse, Red/Excitation, Blue/Retention and Green/Propagation foundations
 and requests coordinated intensives/waves before a moth implementation.
 Normal leyline extraction should yield a useful magical material for craft,
-refining and building; Catalysts are rare intact finds or later perfected
-manufacture from that material. A corrupted human's laboratories around the
+refining and building; Catalysts are rare intact finds or costly ordinary
+forge/bench recipes from that material. The latest clarification simplifies
+manufacture: substantial input cost or possibly longer processing, without the
+draft's extra mastery/lesson system. These same materials should support
+placeable working connections/devices with distinct colour roles, similar in
+purpose to redstone. The revised roadmap recommends material cost first and
+seven waves of playable slices; exact circuit parts/timing remain proposals.
+A corrupted human's laboratories around the
 world carry failsafes: designated Trial victories cause global resonance and
 progressively more extreme terrain, biomes and fauna. An eventual human
 uber-boss grants control and optional harder, more rewarding configurations.

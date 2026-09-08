@@ -6,7 +6,9 @@ Owner request: 8 September 2026. Author: Codex. Audited baseline: `a3204d9`.
 **Later owner steering, 8 September:** the four influence directions are
 supported as foundations, but the owner requests coordinated waves before the
 moth. Normal extraction should pay a useful magical material; intact Catalysts
-are rare finds, with perfected manufacture later. Laboratory failsafes cause
+are rare finds, with costly ordinary forge/bench manufacture. The latest
+clarification adds useful coloured connections/devices and removes the extra
+perfection ladder. Laboratory failsafes cause
 world-transforming eras, followed by a human uber-boss and captured difficulty
 controls. The [Living Frontier roadmap](living-frontier-roadmap-2026-09-08.md)
 and [extraction proposal](leyline-catalyst-extraction-2026-09-08.md) now govern

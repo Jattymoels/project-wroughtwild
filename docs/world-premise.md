@@ -88,10 +88,14 @@ implements one finite source and one existing brick recipe within that direction
 The owner now supports White/Impulse, Red/Excitation, Blue/Retention and
 Green/Propagation as working foundations. The main extract is a useful magical
 material for crafting, refining and building. An intact Catalyst is a rare
-discovery; mastery can eventually manufacture one from that material. This
+discovery; ordinary forge/bench recipes can manufacture one at substantial
+material cost. The latest clarification removes a special mastery/perfection
+ladder; longer processing is an optional alternative to consider. The same
+materials should also make working connections and devices, similar in purpose
+to redstone but with different useful jobs for each influence. This
 develops the earlier recovery premise without yet changing current loot or
 recipe rules. The [extraction proposal](prototype/leyline-catalyst-extraction-2026-09-08.md)
-separates ordinary useful work, rare finds and perfected production.
+separates useful materials, rare finds and costly ordinary production.
 
 The intended campaign connects a corrupted human survivor's laboratories to
 further animal augmentation and forced combinations. Their installed failsafes

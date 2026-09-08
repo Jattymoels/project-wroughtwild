@@ -9,7 +9,11 @@ Green/Propagation as foundations to tune. They ask for intensives and waves
 before the moth variant, then clarify the core progression:
 
 - Extract useful magical **material**, with a rare chance of an intact Catalyst.
-  Eventually perfect a process that deliberately manufactures Catalysts.
+  Manufacture Catalysts through ordinary forge/bench recipes at substantial
+  material cost. The latest clarification removes the proposed special
+  learning/perfection ladder; longer processing is an alternative to consider.
+- Use those same materials in placeable connections and working devices,
+  similar in purpose to redstone, with different jobs for each influence.
 - A corrupted human survivor establishes laboratories around the world,
   experimenting on animals and combining influences.
 - Defeating a major Trial triggers a laboratory failsafe and massive leyline
@@ -21,7 +25,7 @@ before the moth variant, then clarify the core progression:
 This supersedes the moth-first sequence in [INT-09](meteorite-leyline-intensive-2026-09-08.md).
 It also supersedes this planning pass's initial direct-Catalyst extraction
 assumption: **the normal yield is material; the Catalyst is the exceptional find
-or perfected product**. These are owner-directed design goals. Exact materials,
+or costly crafted product**. These are owner-directed design goals. Exact materials,
 recipes, odds, lab count, era transforms and Heat rules below remain proposals
 to select in bounded implementation work items.
 
@@ -38,7 +42,8 @@ flowchart TD
     B --> D[Extractable magical materials]
     D --> E[Useful refining, craft and construction]
     D --> F[Rare intact Catalysts]
-    E --> G[Mastered Catalyst manufacture]
+    D --> G[Costly ordinary Catalyst recipes]
+    E --> O[Coloured connections and working fixtures]
     F --> H[Persistent Foundry and equipment builds]
     G --> H
     C --> I[Survivor collects and combines specimens]
@@ -58,29 +63,38 @@ campaign state distinct. They connect through authored rules. A colour is not
 an automatic damage type, rarity, grade or aggression level. A mixture need
 not introduce another inventory currency.
 
-## 2. Three levels of learning and reward
+## 2. One material, practical uses and exceptional results
 
 | Level | Player gain | Purpose |
 | --- | --- | --- |
 | **Work the influence** | Reliable raw material from a readable source | An expedition can improve craft, a workshop or a building without a lucky drop |
-| **Find a perfected pattern** | A rare intact Catalyst during extraction | An exciting early shortcut into a powerful mechanical interaction |
-| **Understand the process** | A demanding, dependable method of Catalyst manufacture | Long-term agency without making the exceptional item cheap |
+| **Find an intact pattern** | A rare Catalyst during extraction | An exciting shortcut into a powerful mechanical interaction |
+| **Invest in a Catalyst** | A normal forge/bench recipe consuming substantial raw material | A dependable alternative to luck, competing with useful construction spending |
 
 The raw material needs an immediate practical consumer before its first source
-ships. A rare find cannot be required to make the first extractor, learn its
-own manufacture or survive the only encounter that teaches it. Starting skills,
+ships. A rare find cannot be required to make the first extractor, unlock its
+own recipe or survive the only encounter guarding its source. Starting skills,
 direct ingots, ordinary equipment and existing non-Catalyst Kinds must support
 those journeys. Catalyst rarity is separate from Faint/Stable/Potent quality.
 
 The [companion extraction proposal](leyline-catalyst-extraction-2026-09-08.md)
-details physical work, primary media, rare opportunities, mastery, supply and
+details physical work, primary media, rare opportunities, ordinary recipes, supply and
 replacement of current acquisition paths.
+
+Recommend **cost first**: a large raw-material input produces one existing
+Faint Catalyst through the ordinary recipe catalogue. Keep ordinary facility,
+craft-skill and era requirements where selected; add no research tree, special
+lesson, perfection state or mandatory multi-stage ingredient chain. Existing
+grade refinement stays separate. A long-running recipe can be added if play
+shows a need, but is not necessary for the first result. Today's ordinary
+crafts are immediate transactions; a real timer would also need saved work,
+reserved inputs, output capacity and cancellation.
 
 ## 3. Four useful materials beneath the Catalysts
 
 These describe candidate material roles, not approved item names or recipes.
 Recommend one main harvested material per influence, used directly by practical
-recipes and later Catalyst manufacture. Avoid a compulsory ladder of dust,
+recipes and costly Catalyst manufacture. Avoid a compulsory ladder of dust,
 essence, charge and purified essence.
 
 | Influence | Host and work | Candidate medium property | Practical consumer to choose first |
@@ -101,6 +115,34 @@ eventually add selected forms, material character or useful fixtures while a
 timber home remains worthwhile. Avoid four reskinned complete catalogues or a
 new per-block upgrade system. A treated family or functional piece needs its
 own concrete effect, recipe and save/placement scope.
+
+### Coloured construction: connect, trigger and observe
+
+The owner's redstone comparison calls for **buildable working connections**.
+Make the first circuit physical: place a connection between a known input and
+an existing fixture, activate it and see useful work. Use the building interface
+and declared attachment ports, with a visible route and readable disconnected
+state. Exact part names and connection geometry are proposed, not settled.
+
+| Influence | First proposed component | Small complete demonstration |
+| --- | --- | --- |
+| **White — Impulse** | Carries one action pulse to an actuator | Stormglass Lever → placed White connection → already wound Cargo Winch, with linked Landing and cargo; one request, one paid trip |
+| **Blue — Retention** | Holds one pending pulse for a visible delay | Trigger the same winch, move into position, then receive the delayed trip |
+| **Green — Propagation** | Branches one pulse into two requests | One lever activates two independently powered fixtures; no extra energy or materials appear |
+| **Red — Excitation** | Stores and releases a bounded amount of paid heat | One fuel/input → small Red buffer → existing brick firing, still paying clay and mechanical work |
+
+Stormglass remains an input, Thrumroot/winding stores mechanical work, and
+Ventlung/pressure retains its existing motion role. Connections do not replace
+those cores. Keep signal, mechanical work and heat distinct: a White request
+cannot move an uncharged winch; Blue cannot create work; Green copies a request,
+not fuel; Red does not also pay the machine's movement or material bill.
+
+Start with one input/receiver, one pending delay and two branches. Bound pulse
+propagation, reject unsupported loops and prevent duplicate execution after
+save/reload or reconnection. A broken or dismantled connection must leave
+recoverable state. No conveyor system, automated mining, remote chest crafting,
+offline factory work or general-purpose logic computer is needed for this proof.
+Cheap utility parts should be affordable well before a costly Catalyst.
 
 ## 4. Extraction and the living habitat
 
@@ -318,50 +360,118 @@ All new entries are **planned**, not blanket implementation approval.
 
 | ID | Intensive and complete outcome | Dependencies / limits |
 | --- | --- | --- |
-| **INT-10** | **Influence, material and campaign contract:** primary materials/consumers, Catalyst map, supply, era event graph and old-world policy | First work; choose concrete outputs, processes and triggers before data |
-| **INT-11** | **Extraction and useful processing:** one source pays useful material, may rarely pay a Catalyst, and feeds one real practical result; later prove mastered manufacture | INT-10; all-class bootstrap, saved lots, no unnecessary intermediates |
+| **INT-10** | **Influence, material and campaign contract:** primary materials/consumers, Catalyst map, supply, era event graph and old-world policy | Decide the rules needed by each slice; not a separate design-only delivery wave |
+| **INT-11** | **Extraction and ordinary recipes:** useful raw yields, rare finds, expensive Catalyst conversion and practical material uses | INT-10; all-class bootstrap, saved lots, no special mastery ladder |
 | **INT-12** | **Living hosts and capabilities:** sources, animals and scenery share a cause; one same-animal comparison | INT-10/11; small authored roster; moth is a candidate, not a prerequisite |
-| **INT-13** | **Tools and source outposts:** one reusable aid and one local fixture improve a real material/exploration circuit | INT-11 demand measured first; no broad autonomous factory or prescribed base |
+| **INT-13** | **Coloured connections and useful outposts:** placed pulse, delay, branch and heat components operate existing fixtures; later select a field aid if useful | INT-11 supply; distinct signal/energy ledgers, bounded circuits, no broad autonomous factory |
 | **INT-14** | **Laboratories and campaign trail:** distinct world entrances and the existing three-run arc show the survivor's intervention | INT-10 history; reused rooms with distinct purpose; old smithy stays accidental |
 | **INT-15** | **Resonance and the evolving world:** first-clear event physically transforms a known region with safe ownership/routes/restart, then extends to both transitions | Substantive generation/save work, not merely an art pass |
 | **INT-16** | **Forced combinations and uber-boss:** one ordered hybrid, then the designed human finale built on learned mechanics | INT-12/14 and era context; dedicated boss production required for completion |
 | **INT-17** | **Captured apparatus and Heat:** voluntary challenge and targetable rewards extend replay after story resolution | INT-16; one system built on current offers/tiers |
 | **INT-18** | **Economy, continuity and whole-campaign proof:** raw usefulness, rarity, manufacture, world evolution and saved work coexist | Starts with INT-10 and gates every wave, not a final cleanup phase |
 
-## 10. Waves: when a player loop becomes whole
+## 10. Proposed execution: seven waves, playable slices
 
-These **LF** labels do not renumber the historical [development waves](roadmap-waves.md).
+This replaces the earlier LF-0–LF-6 sequence following the simpler-recipe and
+coloured-construction clarification. **LF** is local to this roadmap, not a
+renumbering of the historical [development waves](roadmap-waves.md). INT IDs
+above identify affected systems; the slices below give the actual work order.
+Each slice contains its necessary decisions, implementation and checks, so a
+separate planning wave does not postpone the first playable result.
 
-| Wave | Delivery bundle | Exit condition |
+### LF-1 — Extract, craft and make something work
+
+| Slice | Complete player-facing result | Required proof |
 | --- | --- | --- |
-| **LF-0 — Agree the rules** | INT-10/18: medium/consumer, rare lot, eventual manufacture, supply, era causes, build protection and successor policy | Complete first-work packet; no circular gates or missing ownership/source paths |
-| **LF-1 — Work a changed place** | INT-11: one Red source and useful processing/building return, rare-find path and existing Foundry use; add contrasting Blue next | A zero-Catalyst expedition still pays off; rare success and real ownership/restart work; no new moth needed |
-| **LF-2 — Learn living influences** | Selected remaining material/source roles, INT-12 creatures and INT-13 field aid/outpost; keep acquisition replacement provisional until all affected identities have access and luck-independent manufacture is proved | Four useful influences, one changed same-animal response, sustainable consumption |
-| **LF-3 — Break the first lab** | INT-14 first distinct lab, INT-15 first failsafe and real era-two transformation, one earned processing improvement | Win, return, walk a changed familiar route, use a new opportunity; home/stock/unlocks/restart remain sound |
-| **LF-4 — Follow the combinations** | Second lab, first INT-16 hybrid, second resonance and era-three opportunity; deepen deliberate manufacture | Mixture follows learned rules; lesson needs no lucky Catalyst; physical transformation preserves progress |
-| **LF-5 — Confront the maker** | Central lab and fully designed human uber-boss; once-only control transfer | Real finale delivered; campaign resolves and controls belong to the player |
-| **LF-6 — Choose the next limit** | INT-17 Heat and INT-18 repeated circuit/crafting/campaign checks | Declared harder-run rewards, no repeated eras or broken homes, sustainable useful supply |
+| **1A: Red source to useful material** | Find and manually work one Red node, collect reliable material with a rare intact Ember chance, then fire existing bricks through one ordinary alternative recipe consuming Red | Preserve the original recipe and its clay/output amounts; explicitly replace its fuel cost in this variant, without adding Red to the global fuel table; zero-Catalyst work is useful and saved lots/renewal/claims remain exact |
+| **1B: Ordinary Catalyst recipe** | Spend a substantial amount of that material at the ordinary forge to make one Faint Ember, then use its existing persistent Foundry effect | Recipe appears in the ordinary catalogue with selected normal requirements; no research/lesson gate; a full recipe fits permitted carried stock; existing grade refinement still works |
+| **1C: First constructed connection** | Add a White source and inexpensive connection recipe; place Stormglass Lever → White connection → an already wound Cargo Winch, link its Landing and transport actual cargo | Every part is actually acquired, placed and connected, with a clear linked span; the winch spends its existing work; missing connection, empty drive and reload behave clearly |
 
-Isolate experimental source/era work until its full loop passes. Do not remove
-current acquisition globally during partial LF-1. INT-18 must prove the no-
-Catalyst opening, replacement access and luck-independent manufacture before
-successor acquisition becomes default. If the selected manufacturing lesson
-arrives in LF-3/4, that cutover waits for its reachable, paid proof; access to
-rare rolls alone does not satisfy the replacement contract.
-The bounded candidate remains one finite world, three labs, two era transitions
-and one control handoff; larger campaign counts wait for pacing evidence.
+**First playable checkpoint:** a useful harvest, a deliberate Catalyst purchase
+with materials, and one working construction. Stop for playtesting here before
+expanding every influence or building a new creature. Red's heat role and
+White's impulse role remain distinct even in this small demonstration.
 
-Lab history, transform envelopes and acquisition migration can be planned
-alongside source prototyping. Mixed combat depends on readable single
-influences; Heat depends on control. The wolf image-to-3D study remains
-independent, and no new implementation task is dispatched by this roadmap.
+### LF-2 — Give all four materials a construction purpose
+
+| Slice | Complete player-facing result | Required proof |
+| --- | --- | --- |
+| **2A: Blue source and delay** | Harvest Blue, craft/place a delay, trigger the winch and move into position before it runs | One visible pending request survives pause/restart; disconnect/dismantle cannot duplicate the trip |
+| **2B: Green source and junction** | Harvest Green and branch a lever request to two independently powered fixtures | Both consumers pay their own costs; unsupported loops/reconvergence cannot multiply work |
+| **2C: Red heat buffer** | Build one small buffer, charge it with the selected paid heat input and feed the existing brick-firing process | Finite capacity, preserved clay/output costs, separate mechanical work, exact cancellation and dismantle returns |
+| **2D: Complete recipes and a useful workshop** | All four sources support inexpensive utility recipes and the five existing offensive Catalyst identities; combine the selected parts into one useful workshop | White supports the proposed Impact/Piercing recipes, Blue Frost and Green Preserving subject to identity review; recipes work without lucky finds; carrying limits, source renewal and everyday building demand fit together |
+
+This is the bounded redstone-like foundation. Timed Catalyst processing is an
+optional later addition to INT-11 if material cost alone feels unsatisfying;
+it is not required to finish this wave. Do not add automation infrastructure
+merely to make Catalyst crafting appear more elaborate.
+
+### LF-3 — Make the inhabitants and rewards share those rules
+
+| Slice | Complete player-facing result | Required proof |
+| --- | --- | --- |
+| **3A: One animal, two influences** | Meet two recognisably related hosts with different tells, capabilities and counterplay | A new colour changes a combat decision; ordinary movement/equipment remains a sufficient answer |
+| **3B: Small living habitat** | Establish a minimum four-influence sample with matching scars, source cues, passive habits and useful host drops | Teach Red and Blue individually before their later hybrid; keep calm places and avoid a full colour variant of every animal |
+| **3C: Connect the economy and campaign trail** | Complete replacement rewards, all five manufacture routes and one artificial trace leading toward a laboratory | No-Catalyst opening and unlucky progression work; new acquisition becomes default only after all paths pass; legacy worlds keep their selected policy |
+
+Before the successor becomes a normal saved-world choice, generate all three
+physical laboratory sites and define both later transformation regions. Visible
+site geometry and approaches establish their space from the beginning; later
+waves complete interiors and encounters. Do not insert a future entrance under
+a paid home or introduce invisible blanket building exclusions.
+
+### LF-4 — First laboratory, first changing era
+
+| Slice | Complete player-facing result | Required proof |
+| --- | --- | --- |
+| **4A: A real changing landmark** | In an isolated test world, amplify one familiar river/grove/source route with changed physical terrain and collision | Homes, supports, excavations, fixtures, stored materials and recovery routes survive; pending-event restart succeeds before live progression is enabled |
+| **4B: Outer laboratory Trial** | Enter the first distinct laboratory and discover containment equipment, altered specimens and the survivor's intervention | Existing Forge content gains a coherent purpose; environmental evidence foreshadows the failsafe |
+| **4C: Victory to era two** | First victory queues resonance; safe return changes the actual world and opens a useful new material/traversal opportunity | Revised campaign unlocks replace the old curio gate coherently; one event/one reward; repeated victories do not rerun the transformation |
+
+**Campaign checkpoint:** return from a meaningful victory, recognise home
+country, see and traverse what changed, and find a reason to explore it again.
+Physical evolution and animal/resource changes must both be present; a global
+tint or stronger enemy numbers do not complete the wave.
+
+### LF-5 — Forced combinations and a more extreme world
+
+| Slice | Complete player-facing result | Required proof |
+| --- | --- | --- |
+| **5A: First combined specimen** | Encounter a taught Blue-held charge followed by a warned Red release | One ordered hybrid decision, with readable apparatus and baseline counterplay, rather than two simultaneous full kits |
+| **5B: Pairing laboratory** | Reach the second physical lab and confront deliberate experiments built around that combination | The lab advances the human antagonist's story and pays useful rewards; no lucky Catalyst is required to enter or win |
+| **5C: Era three** | Its first-clear failsafe produces a second physical amplification, changed fauna distribution/capabilities and new useful opportunities | Retain stock/work/structures; extend the tested transform approach; more extreme geography creates choices without erasing the player's base |
+
+Additional hybrids and biome transformations follow only if the first examples
+are readable and useful. Eras need distinctive opportunities, not mandatory
+replacement of every tool, house material and Catalyst grade.
+
+### LF-6 — Fight the human behind it
+
+| Slice | Complete player-facing result | Required proof |
+| --- | --- | --- |
+| **6A: Central installation and boss kit** | Complete the third lab and a playable dedicated human antagonist encounter built from the learned channels and combinations | Prototype the actual moves, tells, recovery and apparatus interactions; a renamed existing Warden does not complete this slice |
+| **6B: Finale and captured apparatus** | Deliver the tuned uber-boss battle, once-only story resolution and visible transfer of control | Different builds can succeed; save/restart preserves ownership and ending; the controls explain that future experiments can be configured |
+
+### LF-7 — Choose how far to push it
+
+| Slice | Complete player-facing result | Required proof |
+| --- | --- | --- |
+| **7A: Configured challenge** | Use captured controls to choose a bounded harder laboratory run with a clear reward preview | Extend existing offers/tiers in one interface; commit the selected settings at entry; keep campaign era separate |
+| **7B: Rewarding repeat play** | Finish, get the stated rewards and choose another configuration while continuing field extraction and building | Harder play remains worthwhile without making the frontier obsolete; no repeated story/era events, duplicate payouts or offline production; full campaign/restart/performance checks pass |
+
+The bounded campaign candidate remains one finite world, three labs, two era
+transitions and one control handoff. Exact counts and pacing can expand after
+this loop works. INT-18's economy and continuity checks run in every slice.
+Isolate early experiments; never remove current acquisition globally during a
+partial wave. The wolf image-to-3D study remains independent, and this plan
+does not itself dispatch gameplay implementation.
 
 ## 11. Consequences and promising additions
 
 | Opportunity / risk | Why it matters | Response or later small experiment |
 | --- | --- | --- |
 | **Victory changes home country** | Gives eras a visible personal consequence | Before/after familiar route, intact paid home and changed surroundings |
-| **Rarity becomes a build lottery** | Some players get power early while others find none | Useful guaranteed media, luck-independent mastery access and baseline-capable fights; measure droughts |
+| **Rarity becomes a build lottery** | Some players get power early while others find none | Useful guaranteed media, affordable utility parts, costly ordinary Catalyst recipes and baseline-capable fights; measure droughts |
 | **All raw material gets hoarded** | Every unit may feel like a future Catalyst | Clear immediate craft value, adequate supply and measured manufacture/build trade-offs |
 | **Extraction postpones the fun** | Extra machines/steps could gate all expression | Manual useful work first; tool convenience afterward |
 | **Era rebuilding refills resources** | Terrain regeneration can duplicate discoveries | Separate physical transforms, finite stock and manifestation ownership |
@@ -369,13 +479,16 @@ independent, and no new implementation task is dispatched by this roadmap.
 | **A block stops the apocalypse** | Protection can trivialise transforms or destroy work | Bounded physical envelopes; test scattered builds, long bridges and excavations |
 | **Escaped specimens guide exploration** | Strange pairings can point toward labs | One authored host/trail; no endless ecology or spawn framework |
 | **Enemy abilities help work** | Connects combat and material responses | Bait one committed impact into a stressed shell; manual work still works and no home-damage rule is added |
-| **Lab knowledge improves an outpost** | A victory changes how the player makes things | One earned containment/process improvement |
+| **Lab apparatus improves an outpost** | A victory changes how the player makes things | A later optional device improvement; no special Catalyst knowledge gate |
+| **All colours become interchangeable wire** | Their world and combat identities lose meaning | Pulse, delay, branch and heat have distinct visible uses |
+| **Signals accidentally become free power** | A small junction invalidates fuel, storage and source demand | Separate requests from the work/heat/material each consumer spends |
+| **Expensive recipe exceeds the inventory limit** | A listed recipe becomes impossible to pay | Document a bulk-medium carrying cap that fits one full recipe; no implicit nearby-chest access |
 | **Artificial traces tell a story** | Intervention becomes discoverable before text | A seeded field-to-Forge splice trail with distinct new fittings |
 | **Harder runs replace the frontier** | Reward efficiency can make field exploration pointless | Useful field media/building demand remains alongside challenge rewards |
 | **Replay undoes the ending** | Repeated villain deaths/era events erase resolution | Once-only story, captured apparatus and separate run settings |
 
 These do not imply morality scoring, purification, extra eras, multiplayer,
-infinite terrain or a general automation network.
+infinite terrain or large-scale factory automation.
 
 ## 12. Compatibility, verification and next work
 
@@ -392,11 +505,12 @@ needs interrupted/pending-event recovery and duplicate-completion checks.
 Player acceptance separately asks whether raw work pays off without luck, the
 world feels connected, transitions matter and the finale earns continued play.
 
-Prepare **INT-10A: raw medium, first practical process, rare finding and resonance
-contracts**. Select one Red medium and actual consumer, saved-lot semantics,
-eventual manufacture requirements, renewal policy and first lab/era transition.
-Then prepare **INT-11A: one complete manual extraction and useful return**,
-followed by a contrasting source. A new moth belongs later in INT-12.
+Start with **LF-1A: one Red source and a useful paid heat process**, covering
+the necessary INT-10/11/18 decisions and behaviour together. Select the exact
+medium, existing recipe consumer, saved lots, rare chance, renewable limits and
+experimental-world boundary in that small work item. Follow with **LF-1B's
+costly ordinary Ember recipe** and **LF-1C's first White construction**. A new
+moth belongs in LF-3/INT-12, after the material and building loop is playable.
 
 This fixes the consequential foundations before tuning: what is owned, what
 creates stock, what causes an era, what changes physically, what protects the
@@ -411,7 +525,8 @@ Sources: [original intent](meteorite-leyline-intensive-2026-09-08.md),
 Independent read-only audits cover acquisition, world/extraction and Trial/lore.
 No runtime tuning, game changes or future playtest success is claimed.
 
-Planning verification: all 180 local file links across the seven affected
-documents resolve. The three independent reviews are complete; their source,
-replenishment and acquisition-cutover corrections are incorporated. The scoped
-documentation diff is checked for whitespace before publication.
+Planning verification: local file links and the scoped whitespace diff are
+checked before publication. Independent extraction, construction and campaign
+reviews inform this revision. Recipe carrying limits, separate signal/energy
+costs, source availability and future laboratory placement are included in the
+slice gates. These are planning checks, not evidence of implemented gameplay.

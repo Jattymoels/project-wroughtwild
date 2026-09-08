@@ -8,7 +8,8 @@ The owner's subsequent requests are developed in the
 newer [Living Frontier roadmap](living-frontier-roadmap-2026-09-08.md).
 The four broad influence proposals now have owner support as foundations.
 The roadmap supersedes the moth-first sequence: useful magical raw materials,
-rare intact Catalysts and perfected manufacture connect to laboratory
+rare intact Catalysts, costly ordinary forge recipes and coloured connections
+connect to laboratory
 failsafes, physically transforming eras, a human uber-boss and captured
 difficulty controls. [Extraction and process design](leyline-catalyst-extraction-2026-09-08.md).
 Exact outputs, odds, recipes, transforms, campaign count and migration remain

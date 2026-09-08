@@ -1,4 +1,4 @@
-# Leyline extraction — useful media, rare finds and perfected Catalysts
+# Leyline extraction — useful media, rare finds and ordinary Catalyst recipes
 
 **Status: Design proposal; acquisition rules unchanged.**
 Owner clarification: 8 September 2026. Baseline: `49edab9`.
@@ -8,8 +8,12 @@ Companion to the [Living Frontier roadmap](living-frontier-roadmap-2026-09-08.md
 
 The owner specifies a primary magic resource **other than a Catalyst**, useful
 for crafting, refining and building. An intact Catalyst can rarely be found
-during extraction; eventually the player perfects a process to manufacture one.
-Catalysts should remain rare or difficult because their effects are distinctive.
+during extraction. The latest clarification simplifies manufacture to ordinary
+forge/bench recipes: substantial material conversion cost, or possibly longer
+processing, rather than a special learning/perfection system. Catalysts should
+remain rare or difficult because their effects are distinctive. The same raw
+materials should also support redstone-like construction, with each influence
+doing a different useful job.
 
 This replaces the earlier two-Faint-Catalysts introductory-haul assumption and
 the proposed prohibition on new manufacture. **Vein material supplies ordinary
@@ -25,7 +29,7 @@ acquisition as a bug or confiscate already owned items.
 ## 2. A useful primary material
 
 Recommend one harvested medium per influence, used directly in a practical
-process and eventually Catalyst manufacture. Four materials now have an
+process, placeable connections/devices and costly Catalyst manufacture. Four materials have an
 explicit purpose from the user's brief. They are material inputs, not new
 trade currencies, quality ranks or an extra talent system.
 
@@ -36,12 +40,14 @@ trade currencies, quality ranks or an extra talent system.
 | Blue | Binding flakes; controlled material/process retention | One setting/refining operation or retaining fixture |
 | Green | Pattern-bearing resin; repeated binding/growth | One useful wood/fibre assembly or bounded transfer process |
 
-Names, recipe amounts and effects are unselected. For the first Red proof,
-choose either an additive to an existing firing process or one selected
-material treatment. Specify what inputs it replaces/supplements, what changes
-and why the result is useful. No current recipe already accepts these proposed
-media. Cinderglass/windows provide a possible destination, but a cosmetic
-window alone does not prove a useful new magical processing property.
+Names and recipe amounts remain unselected. The revised first Red proposal is
+an ordinary alternative recipe that uses Red material to fire existing bricks.
+Keep the original recipe and clay/output amounts; explicitly substitute the
+variant's fuel cost with the selected Red ingredient debit. The current fuel
+table applies globally, so do not register a universal fuel just to prove this
+one use. No current recipe already accepts this proposed medium. Cinderglass/
+windows provide another possible destination, but a cosmetic window alone does
+not prove a useful new magical processing property.
 
 Avoid a compulsory medium → powder → essence → refined essence ladder.
 Local capture/processing state can stay in a device transaction. An intermediate
@@ -91,34 +97,43 @@ their actual effect in Details.
 Measure droughts as well as averages. For illustration only, a 5% chance leaves
 about 36% of players without a find after 20 independent opportunities. This is
 not a recommended rate; it shows why rare randomness cannot be the sole
-progression route. Useful guaranteed material and later luck-independent
+progression route. Useful guaranteed material and costly luck-independent
 manufacture provide alternatives. No pity-counter system is required initially.
 
-## 5. Perfecting Catalyst manufacture
+## 5. Ordinary recipes, expensive conversion
 
-| Stage | Capability | Meaningful requirement |
-| --- | --- | --- |
-| Raw work | Use the medium in a practical process | Ordinary source, station and inputs |
-| Controlled work | Improve one process through reusable equipment | Useful completed work and a concrete investment |
-| Learn the pattern | Understand a lab method or useful craft milestone | An earned lesson reachable without a Catalyst |
-| Perfect the process | Dependably manufacture a selected Catalyst | Substantial matching medium, ordinary process inputs, known method, facility and craft competence |
-| Refine quality | Upgrade Faint → Stable → Potent | Existing same-identity D-026 material/skill/facility/era costs |
+**Recommend material cost first.** A normal forge/bench recipe consumes a
+substantial quantity of matching raw medium plus its selected ordinary inputs
+and produces one existing Faint Catalyst. It appears in the ordinary catalogue;
+no special lesson, research tree, perfection state or repeated investigation is
+required. Ordinary station/skill/era requirements still follow the selected
+recipe. The proposed first Ember recipe is available in the early forge loop,
+superseding this draft's earlier recommendation to defer manufacture to a lab
+lesson. Its expense, rather than a new knowledge gate, makes it a deliberate
+investment.
 
-Recommend deterministic manufacture once requirements are met. Difficulty comes
-from learning, preparation and expenditure, rather than an expensive random
-failure destroying the whole investment. Raw material remains useful before
-mastery; unsuccessful optional investigation must not become compulsory junk
-production.
+The recipe takes raw material without requiring an input Catalyst, so an
+unlucky player can pay for the same identity. Manufacture succeeds when its
+normal requirements are met. Retain the existing same-identity Faint → Stable
+→ Potent refinement costs and requirements; rarity and potency stay separate.
 
-The perfected recipe takes **raw medium**, not an input Catalyst. It therefore
-works for an unlucky player. Its lesson/facility cannot require a lucky Catalyst
-or a boss balanced around having one. Earn competence through useful work under
-the existing craft-skill discipline, not a separate valve-turning XP bar.
+Use that material in inexpensive practical parts as well. A useful connection
+should cost much less than a Catalyst, so construction experimentation remains
+approachable. Set costs against actual extraction hauls and recurring supply;
+exact ratios are tuning, not selected production numbers here.
 
-Select a substantial material cost alongside ordinary craft/build demand, so
-manufacture is a deliberate choice. Do not let a trivial recipe flood early
-play with transformative items. No numeric cost or exact lesson gate is selected
-here; measure the journey before fixing one.
+The whole recipe must fit normal carried inventory. Unlisted materials
+currently default to a 40-unit carrying cap, and ordinary crafting does not
+draw from nearby chests. If the chosen recipe exceeds that cap, give its raw
+medium a documented bulk-material allowance. Do not publish an unreachable
+recipe or silently add remote storage consumption.
+
+Long processing remains an optional alternative if cost alone does not feel
+right. Ordinary crafting currently completes atomically. A real timed craft
+needs a saved station queue, reserved inputs/output space, cancellation and
+pause/unload/restart behaviour. The existing timed pressure-brick process does
+not automatically provide that for all recipes. Do not add a cosmetic wait or
+make this infrastructure a prerequisite for the first costly Catalyst recipe.
 
 ## 6. Four media, five existing offensive identities
 
@@ -131,21 +146,21 @@ making an existing identity unobtainable.
 | Red heat pattern | Ember | Directly matches the owner's Cinder moth example |
 | Blue binding pattern | Frost | Preserve actual Frost/control mechanics |
 | White compression | Impact | A contact/release identity rather than merely more damage |
-| White channel/through-flow | Piercing | Same medium with a distinct learned process or host form |
+| White channel/through-flow | Piercing | Same medium with a distinct ordinary recipe or host form |
 | Green pattern carried onward | Preserving | Proposed fit with held-effect/newcomer/return readings; inspect those mechanics before selecting |
 
 Blue could also support Preserving. Green might later justify a new Propagating
 identity, but that requires its own Foundry/crafting compatibility design. Choose
 the map in INT-10 rather than forcing lore around a name or silently adding a
-sixth family. An intact host uses an authored eligible pool; perfected recipes
-choose a known result. Mixing media need not create new currencies when existing
+sixth family. An intact host uses an authored eligible pool; ordinary recipes
+choose a declared result. Mixing media need not create new currencies when existing
 Kinds and ordered Foundry interactions already express combinations.
 
 ## 7. Recurring nodes and sustainable raw supply
 
 Recommend a **finite seeded network, fixed eligible hosts, finite individual
 lots and bounded recurring magical material**. This is a proposed renewability
-exception for the selected media. It supports consumed magical craft and later
+exception for the selected media. It supports consumed magical craft and costly
 Catalyst manufacture in a finite world.
 
 A permanent anchor persists after extraction. Each manifestation owns finite
@@ -173,6 +188,22 @@ capstone compulsory for sustainable crafting.
 
 ## 8. Tools and outposts after manual work proves itself
 
+The owner's latest request adds an earlier practical reason to build:
+**placeable coloured connections and components**. Proposed first jobs are
+White pulse to a wound winch, Blue one-request delay, Green two-way signal
+junction and Red a small paid heat buffer for existing brick firing. See the
+[roadmap's actual demonstrations and slice order](living-frontier-roadmap-2026-09-08.md#10-proposed-execution-seven-waves-playable-slices).
+Each component uses its actual harvested material and the ordinary recipe and
+building interfaces. Keep Stormglass inputs, Thrumroot/winding energy and
+Ventlung motion distinct. A connection routes a request or its declared paid
+quantity; it does not create free work, fuel or duplicated inventory.
+
+Bound pending requests and propagation. Unsupported loops cannot amplify work;
+disconnecting or reloading cannot execute a pulse again. Start with visible
+ports and short routes to existing receivers, then prove one useful workshop.
+Automatic mining, conveyors and a general factory system are outside this
+bounded construction proposal.
+
 A reusable brace can reduce repeated preparation; a survey aid improves local
 direction/type reading; a collector supplies clear work controls and a small
 output holder. Choose one benefit and compare it with manual work before adding
@@ -183,7 +214,7 @@ storage, shelter and a useful route. It remains valuable between formations and
 after resonance. Approved fixture attachment positions and work circles must
 survive building/excavation; occupying the only node is not mandatory.
 
-Assistance does not grant unattended mastery, duplicate rare rolls or remote
+Assistance does not grant unattended skill XP, duplicate rare rolls or remote
 access to chests/death packs. Natural formation while distant is not permission
 for machines to run offscreen. Signals request work; energy and inputs pay.
 Efficiency initially changes effort/handling rather than secretly raising rare
@@ -208,7 +239,7 @@ policy is selected:
 | Guaranteed elite family-Kind award | Prevent unintended offensive creation; explicitly select its retained reward |
 | Four elite-prefix bounties | Audit their independent Ember/Preserving grants, beyond the family table |
 | Legacy/story/repeatable `catalyst` room | Adapt to a real source/processing opportunity and chosen protection contract; no disguised corpse/button grant |
-| `distil_ember` from iron/charcoal alone | Retire/rework only under the new policy after raw usefulness and later manufacture exist; current behaviour is accepted D-026 |
+| `distil_ember` from iron/charcoal alone | Rework only under the new policy after raw usefulness and the costly ordinary replacement recipe work; current behaviour is accepted D-026 |
 | Peddler exchange into Frost/Preserving/Piercing/Impact | Remove or explicitly restrict the bypass; Ember is already outside that exchange set |
 | Same-identity Faint → Stable → Potent | Preserve unless deliberately revised; this transforms owned stock with current costs |
 | Lifting/refunds/deposits/saved drops/earned rewards | Preserve exact ownership; these are transfers rather than new source creation |
@@ -261,8 +292,10 @@ never default to a new full source.
 | Work effort | Tangible extraction without delaying all expression behind chores |
 | Rare chance per canonical lot / pool | Frequency and identity of intact patterns, independent of input spam |
 | Formation cadence / stock / credit caps | Useful revisit circuits versus camping and unlimited hoarding |
-| Direct-use recipes | Material has value before manufacture |
-| Perfected process cost / lesson / facility | A chosen Catalyst is hard-earned but luck-independent |
+| Direct-use recipes / utility-part cost | Material has immediate value and construction experiments are affordable |
+| Catalyst conversion cost / ordinary requirements | A chosen Catalyst takes a deliberate investment without a special learning gate |
+| Raw-medium carrying limit | One full expensive recipe is actually payable through ordinary inventory |
+| Component capacity / delay / branch limits | Built circuits are useful, understandable and bounded |
 | Tool/process benefit | Effort, throughput, quality and rare chance remain explicit separate effects |
 | Era source changes | More extreme places provide new opportunities without resetting old work |
 | Heat reward axes | Harder runs improve declared opportunities, not automatic potency |

@@ -30,17 +30,23 @@ coordinated intensives/waves before the moth. **Roadmap ready; no gameplay
 implementation started:** [Living Frontier](living-frontier-roadmap-2026-09-08.md)
 and [extraction/processing proposal](leyline-catalyst-extraction-2026-09-08.md).
 Normal extraction yields useful magical materials; intact Catalysts are rare,
-with deliberate perfected manufacture later. A corrupted human's laboratories
+with costly ordinary forge/bench recipes as the dependable alternative. Latest
+steering removes the proposed special mastery ladder and adds placeable
+connections/devices with different jobs for each colour. A corrupted human's laboratories
 trigger failsafe resonance on first campaign defeats, physically amplifying
 the same world through eras. An eventual uber-boss grants control and optional
 higher challenge settings.
 
-The roadmap proposes source/process contracts → useful extraction → living
-hosts/outposts → first lab and physical era change → combinations/second era
-change → human finale → captured Heat. Exact recipes, odds, supply, lab count,
+The revised seven waves are **extract/craft/first connection → four-colour
+construction → living hosts/rewards → first lab and era two → combinations
+and era three → human finale → captured Heat**. The roadmap breaks each into
+playable slices; decisions and checks accompany their behaviour. Exact recipes, odds, supply, lab count,
 trigger revisions, home protection and migration require bounded work items.
-INT-18 economy/save verification gates every wave. The next recommended packet
-is INT-10A, followed by INT-11A; no new moth or campaign code is dispatched.
+INT-18 economy/save verification gates every wave. Start with **LF-1A**, one
+Red source and useful paid heat process; **LF-1B** adds a costly ordinary Ember
+recipe, and **LF-1C** adds White extraction and a placed lever-to-winch
+connection. Playtest that loop before expanding; no new moth or campaign code
+is dispatched by this planning record.
 The [initial INT-09 map](meteorite-leyline-intensive-2026-09-08.md) retains source
 history, but its moth-first sequence is superseded. The wolf art study keeps
 its separate ownership and review status.
