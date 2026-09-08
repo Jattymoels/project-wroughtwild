@@ -41,6 +41,14 @@ existing casts and landed hits; no skill, damage, cooldown or hitbox rule change
 
 ## Prototype scope
 
+[INT-05C progression checks](../prototype/forge-progression-2026-09-08.md)
+set Heavy Strike's base recovery to 1.2 seconds (previously 1.4), keeping its
+28 damage, 0.4-second stagger and 0.5-second swing-armour window. A target
+already killed by a reaction or another contact cannot pay another direct hit/
+kill recovery. Existing positive hits, fresh kills, identity payoffs and
+proliferation remain. Graded equipment gives measured benefits across different
+targets; final difficulty and the owner's exact initial power spike remain open.
+
 - one starting class;
 - two or three active skills;
 - a small passive or upgrade tree;

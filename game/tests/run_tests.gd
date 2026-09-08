@@ -1008,7 +1008,7 @@ func _test_sim_extension() -> void:
 	check(sim.active_modifiers().size() >= 2, "items: active modifiers list the worn gear")
 	check(sim.unequip("weapon") and sim.pack_items().size() == before + 1 and not sim.equipment().has("weapon"), "items: taking it off returns it to the pack with its modifiers")
 	check(sim.fork_count("prototype_frost_orb") == 1, "items: bare again")
-	check(absf(sim.skill_cooldown_seconds("prototype_heavy_strike") - 1.4) < 0.000001, "items: cooldown view matches skills.json bare")
+	check(absf(sim.skill_cooldown_seconds("prototype_heavy_strike") - 1.2) < 0.000001, "items: cooldown view matches INT-05C skills.json bare")
 	check(sim.export_json().find("pack_items") >= 0, "items: pack items are in the save schema")
 	check(sim.roll_item_into_pack("no_such_base", "keen", 1, 1) == -1 and sim.pack_items().size() == before + 1, "items: unknown bases roll nothing")
 

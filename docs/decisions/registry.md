@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner continuation, 8 September 2026: “Continue” selects the next queued
+[INT-05C](../prototype/forge-progression-2026-09-08.md) after INT-05B. Under
+D-010/ADR-0003, D-012, D-025/D-026 and D-028, a demonstrated dead-target/reaction
+path loses duplicate direct-kill recovery. Heavy Strike's base recovery changes
+from 1.4 to 1.2 seconds to improve its unmodified opening. Legal catalyst,
+proliferation and recovery identities, owned equipment/mastery, save schemas,
+enemy pressure and movement-only dash remain. Paired graded builds, story
+attempts and tiers 1–10 are measured; owner difficulty and satisfaction remain
+open. This is a bounded tuning/correctness continuation, not a new combat rule
+or approval to implement the remaining frontier slices.
+
 Owner continuation, 8 September 2026: “Awesome, continue on with 05B” selects
 [INT-05B](../prototype/forge-pressure-2026-09-08.md) only. Under D-010 / ADR-0003,
 D-012 and D-028, measured contact corrections add a short committed hound bite

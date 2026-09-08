@@ -30,6 +30,9 @@ echo "== integration test (physics + placement loop) =="
 echo "== horde test (D-012 chase, training, cone, dash) =="
 "$GODOT" --headless --path . res://tests/horde.tscn
 
+echo "== INT-05C dead-target and reaction recovery boundaries =="
+"$GODOT" --headless --fixed-fps 240 --path . res://tests/power_progression_review.tscn -- --boundary-only --expect-fixed
+
 echo "== grammar test (frost orb fork, freeze breakpoints, shatter cascade) =="
 "$GODOT" --headless --path . res://tests/grammar.tscn
 

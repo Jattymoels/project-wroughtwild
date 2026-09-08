@@ -203,6 +203,12 @@ put each range, speed, timing and population revision in documented tuning.
 
 ### INT-05C: the first upgrade reveals a build; progression strengthens it
 
+**Implementation:** [INT-05C measured progression](forge-progression-2026-09-08.md),
+8 September 2026. Dead-target/reaction kills cannot pay duplicate recovery;
+Heavy Strike recovery is 1.2 s. Graded gear, paired arrangements, full story
+attempts and all tiers 1–10 are checked. The owner's exact power spike remains
+unconfirmed; class balance and satisfaction await owner review.
+
 **Outcome:** preserve proliferation/catalyst identities while making equipment
 and subsequent investment matter. Preserve a workable early melee opening.
 

@@ -1,6 +1,6 @@
 param(
     [ValidateSet('baseline','current')][string]$Phase = 'current',
-    [ValidateSet('home','home-reliability','interaction-feedback','footsteps-ambience','forge-readability','workshop-usability','placement-reliability','building-loads','quiet-ambience','foundry-clarity','forge-pressure')][string]$ReviewSet = 'home',
+    [ValidateSet('home','home-reliability','interaction-feedback','footsteps-ambience','forge-readability','workshop-usability','placement-reliability','building-loads','quiet-ambience','foundry-clarity','forge-pressure','forge-progression')][string]$ReviewSet = 'home',
     [string[]]$Scenes = @('home_station_placement','home_material_joins','home_headroom','home_workshop_review'),
     [string[]]$Scripts = @(),
     [int]$Seed = 77,
@@ -33,6 +33,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $homeGame 'project.godot'))) { throw
 if ($Phase -eq 'baseline') {
     # Replay only the new common review/reproduction fixtures against untouched production.
     $homeFixtures = switch ($ReviewSet) {
+        'forge-progression' { @('power_progression_review','progression_journey','progression_meter','progression_controlled') }
         'forge-pressure' { @('enemy_contact_review','forge_pressure_review') }
         'foundry-clarity' { @('foundry_flow_review') }
         'quiet-ambience' { @('ambient_quiet_review') }
@@ -92,8 +93,11 @@ try {
         # This legacy driver asserts process-owned trial rewards on the next
         # physics step. Keep one process frame between its numbered steps.
         if ($homeScene -in @('integration','enemy_contact_review','forge_pressure_review','forge_pressure_checks')) { $homeFlags += ' --fixed-fps 60' }
+        # One process frame per accelerated physics step keeps trial reserve
+        # clocks comparable even while another isolated check is compiling.
+        if ($ReviewSet -eq 'forge-progression' -and $homeScene -in @('power_progression_review','progression_controlled','progression_journey','trial_balance')) { $homeFlags += ' --fixed-fps 240' }
         # Audio samples are exported for review; isolated checks never use the owner's speakers.
-        if ($ReviewSet -in @('interaction-feedback','footsteps-ambience','forge-readability','workshop-usability','building-loads','quiet-ambience','foundry-clarity','forge-pressure')) { $homeFlags += ' --audio-driver Dummy' }
+        if ($ReviewSet -in @('interaction-feedback','footsteps-ambience','forge-readability','workshop-usability','building-loads','quiet-ambience','foundry-clarity','forge-pressure','forge-progression')) { $homeFlags += ' --audio-driver Dummy' }
         $homeMode = if ($Rendered) { 'rendered' } else { 'headless' }
         $homeVariant = if ($ExtraArguments -match '--forge-contact') { '-forge' } elseif ($ExtraArguments -match '--restore-baseline|--load-baseline') { '-baseline-restart' } elseif ($ExtraArguments -match '--journey-class=([a-zA-Z0-9_]+)') { '-' + $Matches[1] } elseif ($ExtraArguments -match '--placement-restore-only|--soak-resume|--load-restore-only|--audio-restore-only|--foundry-restore-only') { '-restart' } else { '' }
         Invoke-HomeCheck "$homeScene-$Seed-$homeMode$homeVariant" "$homeFlags res://tests/$homeScene.tscn -- --home-seed=$Seed --home-phase=$Phase $ExtraArguments"

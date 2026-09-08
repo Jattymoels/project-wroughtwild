@@ -298,6 +298,23 @@ INT-04B's continuous-bed design following the owner's rejected drone.
   sample has four deaths/two timeouts and no clears; this is initial tuning,
   not validated balance. INT-05C power/sustain work remains separate.
 
+## Earned power and early melee (INT-05C)
+
+[Implementation, measurements and limits](forge-progression-2026-09-08.md).
+
+- [x] Dead-target replay and a real pre-payload Flashfire kill cannot pay a
+  duplicate direct kill/recovery; another live kill still pays normally.
+- [x] Plain, ingot-only and three two-ingot/one-Kind arrangements are compared
+  for all three classes, including unarmoured wooden weapons and genuine graded
+  aimed equipment. Controlled secondary damage excludes hostile self-burning.
+- [x] Heavy Strike's 1.2-second recovery improves its measured plain opening;
+  movement-only dash, damage and control windows retain their rules.
+- [x] Full story combat attempts and all repeatable tiers 1–10 are measured;
+  native, identity, combat, ownership and old-boundary checks pass.
+- [ ] Owner accepts build satisfaction, class balance and early difficulty.
+  The exact reported arrangement remains unknown. Scripted travel and isolated
+  map encounters cannot certify the provisional 20-/10-minute run targets.
+
 ## Forge readability and traversal (INT-05A)
 
 [Scope and evidence](forge-readability-2026-09-07.md).

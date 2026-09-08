@@ -88,6 +88,12 @@ remaining dodgeable. Existing chambers receive mixed groups, two-second arrival
 warnings and checked spawn clearance within the same caps. Saved boundaries,
 native ownership and progression pass; owner difficulty review remains open.
 
+[INT-05C earned power](docs/prototype/forge-progression-2026-09-08.md) removes
+duplicate kill recovery from dead/reaction targets and shortens Heavy Strike's
+base recovery to 1.2 seconds. Catalyst identities, proliferation and saved
+progression remain. Paired graded builds, full story attempts and tiers 1–10
+are checked; the exact owner power spike and final difficulty remain open.
+
 [INT-06A workshop usability](docs/prototype/workshop-usability-2026-09-07.md)
 shows exact reasons a feeder cannot start, separates supplies and drive controls,
 and keeps completed bricks easy to collect. Live pages retain focus and expanded

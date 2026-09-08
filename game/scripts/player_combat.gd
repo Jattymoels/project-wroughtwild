@@ -627,6 +627,12 @@ func _reap(skill_id: StringName, kills: int) -> void:
 ## slice 2), each scaled by `fraction` (a fork generation), each refused by
 ## a mob immune to its type. Returns {damage, kill, types}: what landed.
 func deal(enemy: Enemy, skill_id: StringName, isolated: bool, fraction := 1.0, secondary := false, context: Dictionary = {}) -> Dictionary:
+	# Payload reactions can kill before this packet, and a cleave's snapshot
+	# can retain a target killed by another victim's cascade. Neither is a new
+	# hit/kill: do not roll damage, refund recovery or publish duplicate credit.
+	if enemy.life <= 0.0:
+		last_hit_dealt = 0.0
+		return {"damage": 0.0, "kill": false, "types": PackedStringArray()}
 	var live_hostile := enemy.life > 0 and not enemy.flees
 	var landed := 0.0
 	var types := PackedStringArray()

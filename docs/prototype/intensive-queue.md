@@ -14,8 +14,8 @@ The owner has finished this round of notes and asked for the next intensives
 and iterations to be planned. The [complete feedback ledger and slice plans](playtest-iterations-2026-09-07.md)
 include both retained screenshots and the later progression clarification.
 These priorities supersede the convenience/export-first recommendation below.
-INT-03C, INT-03D, INT-04C, INT-01B and INT-05B are **Implemented, owner review pending**;
-INT-05C is next, and the remaining entries are **Plan ready**.
+INT-03C, INT-03D, INT-04C, INT-01B, INT-05B and INT-05C are **Implemented, owner review pending**;
+INT-02C is next, and the remaining entries are **Plan ready**.
 Implementation evidence is recorded separately from these planned outcomes.
 
 | Order | Slice | Requested outcome |
@@ -25,7 +25,7 @@ Implementation evidence is recorded separately from these planned outcomes.
 | 3 | INT-04C | **Implemented, review pending:** [quiet ambience and saved H controls](quiet-ambience-2026-09-08.md). Short textures leave 12–24 second gaps; four three-minute contexts are 89–92% silent. Normal-gain listening, input, restart and regression checks are recorded; owner timbre/comfort remains open. |
 | 4 | INT-01B | **Implemented, review pending:** [readable flow and progression](foundry-clarity-2026-09-08.md). Larger independent inspector, concise routes and pinned detail; native specialisation comparisons precede permanent choice. Actual controls, exact ownership/effects and six fresh-process saves pass. Owner comprehension remains open. |
 | 5 | INT-05B | **Implemented, review pending:** [enemy contact and Forge pressure](forge-pressure-2026-09-08.md). Committed hound steps, cover-aware firing, faster dodgeable shots and mixed warned reserves pass contact/ownership/route/old-boundary checks. Dense p95 is +8.7%; the live bot sample has four deaths/two timeouts, so difficulty is provisional. |
-| 6 | INT-05C | Earned power progression, preserving catalyst/proliferation identities and viable early melee. |
+| 6 | INT-05C | **Implemented, review pending:** [earned power and melee recovery](forge-progression-2026-09-08.md). Dead/reaction targets no longer pay duplicate kill recovery; Heavy Strike recovers in 1.2 s. Graded builds, nine story attempts and tiers 1–10 are measured per version. Exact owner spike and final class difficulty remain unresolved. |
 | 7 | INT-02C | Investigate sparse shellstone-area population and distinguish runtime faults from generation design. |
 | 8 | INT-02B | Finish the existing Blender environment target and address regional barrenness while preserving discovery. |
 

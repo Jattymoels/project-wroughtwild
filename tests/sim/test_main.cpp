@@ -1714,7 +1714,9 @@ void testItemisation(const tuning::Tuning& t) {
               "items: mace implicit is 10% increased physical damage");
     checkNear(grammar::skillDamage(t, maceMods, "prototype_frost_orb"), 9.0, 1e-9,
               "items: physical damage leaves the cold orb alone");
-    checkNear(grammar::skillCooldownSeconds(t, maceMods, "prototype_heavy_strike"), 1.4 / 1.25, 1e-9,
+    checkNear(grammar::skillCooldownSeconds(t, {}, "prototype_heavy_strike"), 1.2, 1e-9,
+              "INT-05C: unmodified Heavy Strike recovers without Foundry investment");
+    checkNear(grammar::skillCooldownSeconds(t, maceMods, "prototype_heavy_strike"), 1.2 / 1.25, 1e-9,
               "items: cooldown recovery shortens the cooldown");
     checkNear(grammar::skillCooldownSeconds(t, maceMods, "prototype_dash"), 2.5, 1e-9,
               "items: recovery is attack/spell only, never movement");
