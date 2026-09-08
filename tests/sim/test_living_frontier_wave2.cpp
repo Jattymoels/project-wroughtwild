@@ -1,5 +1,6 @@
 #include "wroughtwild/leyline.h"
 #include "wroughtwild/contraptions.h"
+#include "wroughtwild/grammar.h"
 #include <iostream>
 #include <limits>
 #include <tuple>
@@ -208,12 +209,65 @@ void heat(const tuning::Tuning& tuning,contraptions::Config config) {
     bad=saved; replaceAll(bad,"\"escrow_heat\":0","\"escrow_heat\":1");
     check(!m.restore(bad) && m.serialize()==saved,"orphaned thermal escrow refuses atomically");
 }
+void catalysts(const tuning::Tuning& tuning) {
+    const std::map<std::string,std::pair<std::string,std::string>> identities{
+        {"ember",{"red_salt","Kindling"}},{"frost",{"blue_flake","Smoulder"}},
+        {"preserving",{"green_resin","Emberbed"}},{"piercing",{"white_mineral","Cinder Lance"}},{"impact",{"white_mineral","Firebreak"}}};
+    const std::map<std::string,std::string> operations{{"ember","fuse_buildup"},{"frost","smoulder_slow"},
+        {"preserving","emberbed_seconds"},{"piercing","identity_lance_fraction"},{"impact","identity_firebreak_fraction"}};
+    for (const auto& [id,identity] : identities) {
+        const auto* recipe=tuning.crafting.findRecipe("forge_faint_"+id);
+        check(recipe!=nullptr,"ordinary manufacture exists for "+id); if (!recipe) continue;
+        const auto output=id+"_catalyst";
+        const economy::Inventory cost{{identity.first,96},{"iron_ingot",id=="impact" ? 6 : 4},{"charcoal",id=="impact" ? 4 : 8}};
+        check(recipe->inputs==cost && recipe->outputs==economy::Inventory{{output,1}} && recipe->fuelCost==0 && recipe->station=="forge_basic" && recipe->minimumEra==1,"complete costly colour recipe: "+id);
+        economy::PlayerEconomy p(tuning); p.worldProfile=leyline::profile; p.inventory=cost;
+        check(!p.craft(recipe->id).crafted && p.inventory==cost,"owned forge required: "+id);
+        p.addAvailableStation("forge_basic");
+        for (const auto& [item,n] : cost) {
+            check(n<=p.carryCap(item),"whole Catalyst recipe fits carried "+item);
+            p.inventory=cost; --p.inventory[item]; const auto before=p.inventory;
+            check(!p.craft(recipe->id).crafted && p.inventory==before,"missing "+item+" refuses before payment for "+id);
+        }
+        for (const auto* profile : {"legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6"}) {
+            p.worldProfile=profile; p.inventory=cost;
+            check(!p.craft(recipe->id).crafted && p.inventory==cost,"normal world recipe policy unchanged: "+std::string(profile));
+        }
+        p.worldProfile=leyline::profile; p.inventory=cost;
+        check(p.craft(recipe->id).crafted && p.held(output)==1,"actual ordinary manufacture: "+id);
+        for (const auto& [item,n] : cost) { (void)n; check(p.held(item)==0,"exact Catalyst debit: "+item); }
+        const auto crafted=p.exportState();
+        economy::PlayerEconomy loaded(tuning); loaded.importState(crafted);
+        check(loaded.held(output)==1,"manufactured output retains existing save ownership: "+id);
+        // The player flow earns this event by real smelting; this native fixture
+        // isolates each newly manufactured currency's unchanged Foundry route.
+        p.foundryEvent("recipe:smelt_iron");
+        check(p.foundryPlaceSkill(1,1,"prototype_heavy_strike") && p.foundryPlace(1,0,"ember") && p.foundryPlaceKind(2,0,output) && p.held(output)==0,"manufactured Catalyst invests into its existing identity: "+id);
+        bool named=false;
+        for (const auto& effect : foundry::effects(tuning,p.foundry(),p.plate())) if (effect.sourceKind==output && effect.formName==identity.second) named=true;
+        const auto form=grammar::skillMutation(tuning,grammar::foundryMods(tuning,p.foundry(),1),"prototype_heavy_strike");
+        check(named && form.at(operations.at(id))>0,"manufactured identity retains actual distinct operation: "+id);
+        loaded.importState(p.exportState());
+        check(grammar::skillMutation(tuning,grammar::foundryMods(tuning,loaded.foundry(),1),"prototype_heavy_strike")==form,"saved crafted identity recomputes exactly: "+id);
+        // Grade input fixtures retain the existing campaign gates, station and
+        // fuel rules. No grade stock is supplied in the paid engine journey.
+        loaded.importState(crafted); loaded.addAvailableStation("forge_improved"); loaded.grantSkillXp("blacksmithing",10000);
+        for (const auto& era : tuning.eras.eras) if (!era.triggerWorldEffect.empty()) loaded.recordWorldEffect(era.triggerWorldEffect);
+        const auto* stable=tuning.crafting.findRecipe("refine_stable_"+id+"_catalyst");
+        const auto* potent=tuning.crafting.findRecipe("refine_potent_"+id+"_catalyst");
+        check(stable && potent && stable->inputs==economy::Inventory{{output,1},{"bog_iron",1}} && stable->fuelCost==2 && potent->inputs==economy::Inventory{{"stable_"+output,1},{"silver_ingot",1},{"steel_ingot",1}} && potent->fuelCost==3 && potent->minimumEra==3,"published grade recipes stay exact: "+id);
+        loaded.grant("bog_iron",1); loaded.grant("wood",5); loaded.grant("silver_ingot",1); loaded.grant("steel_ingot",1);
+        check(loaded.craft(stable->id).crafted && loaded.held(output)==0 && loaded.held("stable_"+output)==1,"existing Stable transformation consumes crafted Faint: "+id);
+        check(loaded.craft(potent->id).crafted && loaded.held("stable_"+output)==0 && loaded.held("potent_"+output)==1,"existing Potent transformation consumes owned Stable: "+id);
+    }
+}
 int main(int argc,char** argv) {
     const std::string path=argc>1 ? argv[1] : "data/tuning";
     const auto tuning=tuning::loadAll(path);
     blue(tuning,leyline::Config::load(path+"/leyline.json"),contraptions::Config::load(path+"/contraptions.json"));
     green(tuning,leyline::Config::load(path+"/leyline.json"),contraptions::Config::load(path+"/contraptions.json"));
     heat(tuning,contraptions::Config::load(path+"/contraptions.json"));
+    catalysts(tuning);
     std::cout<<"LF2_NATIVE "<<checks<<" checks, "<<failures<<" failures\n";
     return failures ? 1 : 0;
 }

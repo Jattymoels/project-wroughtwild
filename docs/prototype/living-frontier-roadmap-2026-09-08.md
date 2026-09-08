@@ -1,8 +1,10 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
-**Status: Wave 1 (LF-1A/B/C) implemented in an opt-in experiment; later waves remain proposals.**
-See the [implemented Wave 1 contract and handoff](living-frontier-wave1-2026-09-08.md)
-for exact tuning, compatibility, evidence and owner playtests. Wave 2 is not cleared.
+**Status: Waves 1–2 implemented in the opt-in experiment; Wave 3 and later remain proposals.**
+See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
+[Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
+for selected tuning, compatibility, evidence and remaining owner playtests.
+Wave 3 requires a separate orchestrator review.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 
@@ -525,7 +527,9 @@ Sources: [original intent](meteorite-leyline-intensive-2026-09-08.md),
 [D-026](forge-clarity-and-early-pacing-2026-09-06.md),
 [Trials](../systems/dungeon-runs.md) and [eras](../systems/progression-eras.md).
 Independent read-only audits cover acquisition, world/extraction and Trial/lore.
-No runtime tuning, game changes or future playtest success is claimed.
+The original planning pass made no runtime changes or playtest claims. Later
+Wave 1–2 implementation and automated evidence are recorded in the linked
+bounded work items; human acceptance remains separate.
 
 Planning verification: local file links and the scoped whitespace diff are
 checked before publication. Independent extraction, construction and campaign

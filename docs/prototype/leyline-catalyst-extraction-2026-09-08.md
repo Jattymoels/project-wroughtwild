@@ -1,9 +1,14 @@
 # Leyline extraction — useful media, rare finds and ordinary Catalyst recipes
 
-**Status: Broader design proposal; only LF-1A/B/C implemented in the opt-in Wave 1 experiment.**
+**Status: Broader design proposal; LF-1A/B/C and LF-2A/B/C/D implemented in the opt-in experiment.**
 Normal V1–V6 acquisition remains unchanged. The [Wave 1 record](living-frontier-wave1-2026-09-08.md)
 selects Red/White media, useful bricks, costly ordinary Ember, a White connection
-and exact save ownership. Later acquisition/campaign changes remain unapproved.
+and exact save ownership. The [Wave 2 record](living-frontier-wave2-2026-09-08.md)
+selects Blue delay, Green branching, paid Red heat storage and all five ordinary
+offensive Catalyst recipes after inspecting their actual mechanics. White
+compression pays for Impact; White through-flow pays for Piercing. Existing
+identities and grades remain. Later acquisition/campaign changes remain
+unapproved; Wave 3 requires a separate orchestrator review.
 Owner clarification: 8 September 2026. Baseline: `49edab9`.
 Companion to the [Living Frontier roadmap](living-frontier-roadmap-2026-09-08.md).
 
@@ -43,12 +48,15 @@ trade currencies, quality ranks or an extra talent system.
 | Blue | Binding flakes; controlled material/process retention | One setting/refining operation or retaining fixture |
 | Green | Pattern-bearing resin; repeated binding/growth | One useful wood/fibre assembly or bounded transfer process |
 
-Names and recipe amounts remain unselected. The revised first Red proposal is
-an ordinary alternative recipe that uses Red material to fire existing bricks.
+The bounded Wave 1–2 records select Red Salt, White Mineral, Blue Flakes and
+Green Resin and their exact affordable utility and costly Catalyst recipes.
+The remaining alternatives here are broader proposals. The first Red process
+is an ordinary alternative recipe using Red material to fire existing bricks.
 Keep the original recipe and clay/output amounts; explicitly substitute the
 variant's fuel cost with the selected Red ingredient debit. The current fuel
 table applies globally, so do not register a universal fuel just to prove this
-one use. No current recipe already accepts this proposed medium. Cinderglass/
+one use. At the proposal baseline no recipe accepted this medium; the selected
+Red brick variant now does. Cinderglass/
 windows provide another possible destination, but a cosmetic window alone does
 not prove a useful new magical processing property.
 

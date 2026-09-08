@@ -1,5 +1,7 @@
 # Living Frontier Wave 2 — bounded implementation
 
+**Completed and checked: 9 September 2026. Wave 3 requires a separate review.**
+
 Owner authorization: 8 September 2026. Repair LF1-R1 and verify it before
 implementing LF-2A, LF-2B, LF-2C and LF-2D, in order. Stop before Wave 3;
 Wave 3 needs a separate orchestrator review. Preserve the independent wolf study.
@@ -259,3 +261,394 @@ refunds only the ordinary frame share.
 Commands: `tools/living_frontier_wave2_checks.ps1 -Native`,
 `-Heat -Rendered -HeatRestore`, and `-Regression`. Store/firing panel captures
 are in `captures/lf2/`; the thermal store panel was visually inspected.
+
+LF-2C commit: `75ae963`, pushed successfully to `origin/main` after the
+complete repository engine pipeline passed, including main-scene smoke.
+Log: `build/lf2/full-engine-c.log`. The full fresh-bootstrap run also passed
+324 heat-journey checks and 14 restart checks (the historical schema-4
+migration run above has 303, because it compares fewer pre-existing fields).
+Standalone contraptions passed 602. The interruption's incomplete run was
+replaced by this complete successful run on 9 September; it is not counted
+as a pass.
+
+## LF-2D — selected contract before implementation
+
+Actual mechanics were inspected in `data/tuning/foundry.json`,
+`game/scripts/foundry_offence.gd`, `foundry_cold.gd`, `foundry_ember.gd`,
+`foundry_echo.gd` and the existing identity tests. Keep all canonical IDs,
+grade refinement, ordered interactions and combat effects unchanged:
+
+| Source/process | Existing identity | Mechanical fit checked |
+| --- | --- | --- |
+| Red heat pattern | Ember | Kindling attaches its authored delayed ignite fuse; the obsolete shared ignite-spread operation stays zero |
+| Blue binding | Frost | Chill/control; Whiteout slows each crossing shot once, not a generic damage bonus |
+| Green carried pattern | Preserving | Emberbed transfers existing burn budget; Cold Reservoir holds chill; Wound Memory holds existing bleed; newcomer/return effects retain their own rules |
+| White compression | Impact | Firebreak's delayed rear crescent, Glacier Break's conditional shove and the other distinct contact/release events |
+| White through-flow | Piercing | Cinder Lance, Throughline and the existing passage/contact operations |
+
+Each recipe is immediate at the basic forge, Blacksmithing 1 / era 1, with 2
+base XP and zero extra fuel. Charcoal is already its explicit thermal cost.
+Ember remains **96 Red + 4 iron + 8 charcoal**. Add Frost **96 Blue + 4 iron +
+8 charcoal**, Preserving **96 Green + 4 iron + 8 charcoal**, Piercing **96 White
++ 4 iron + 8 charcoal**, and Impact **96 White + 6 iron + 4 charcoal**. The last
+two are distinct ordinary recipes using the same medium; compression uses more
+iron and less charcoal. No sixth identity, new grade, lesson, research,
+perfection step, recipe timer or new acquisition restriction is selected.
+
+All full inputs fit carried family limits. Two-unit signal parts and the
+four-unit buffer frame remain affordable beside the 96-unit Catalyst debit.
+Existing Faint → Stable → Potent recipes and their actual station/skill/era/fuel
+costs stay exact. These remain additional opt-in manufacture routes; encounter,
+trial and peddler acquisition changes belong to a later separately reviewed wave.
+
+The useful combined workshop will continue the paid A/B/C checkpoints: lever →
+White → Blue → Green requests a loaded cargo trip and a Red-heated brick firing.
+Each winding is supplied separately, the clay comes from finite gathering,
+the heat is already paid Salt, and the cargo is the workshop's real fired bricks.
+Delivered bricks then pay for ordinary building pieces. Manufacture uses actual
+manual lots plus normal gathered/smelted iron and charcoal, retaining rare finds
+as optional separately owned bonuses. Two White Catalysts need one already
+accepted capped source reformation; that source clock is not a recipe timer.
+
+
+## Paid owner walkthrough — Wave 2
+
+Launch `godot --path game -- --living-frontier --world-seed=77`. Continue an
+existing experimental save or choose a class and gather in a new world. The
+profile and `user://living_frontier_wave1.json` filename are unchanged. F5/F9
+and restart keep this world separate from ordinary saves. Published Wave 1
+worlds acquire only their missing Blue/Green introductions during migration.
+
+1. Gather finite wood/ore and build your ordinary bench and basic forge. Smelt
+   iron at that forge; this also earns the existing Ember ingot. Follow the
+   coloured scars around the home opportunities. At each supported source,
+   aim and press E, perform its four named work steps, then collect the raw
+   material and any separately released rare claim. Each lot yields 16 raw;
+   eight lots exhaust a manifestation. Restore excavated ground with actual
+   paid construction touching the existing anchor and leave its workspace clear.
+2. Craft the inexpensive parts at the bench. Acquire Stormglass from its real
+   seam, Thrumroot and Ventlung from their existing contextual-work hosts,
+   and reeds from finite gathering. Rare finds are not required for any part.
+   All listed ingredient quantities are paid once; place each owned kit with B
+   and a normal click on a supported, unobstructed footprint.
+
+| Placed component | Bench payment |
+| --- | --- |
+| Stormglass lever | 1 Stormglass, 3 wood, 1 iron ingot |
+| Cargo winch | 1 Thrumroot, 8 wood, 2 iron ingots |
+| Fixed landing | 6 wood, 1 iron ingot |
+| White connection | 2 White Mineral, 2 wood |
+| Blue delay | 2 Blue Flakes, 2 wood |
+| Green junction | 2 Green Resin, 2 wood |
+| Pressure feeder | 1 Ventlung, 1 Thrumroot, 8 wood, 2 iron ingots, 2 reeds |
+| Red heat buffer | 4 Red Salt, 4 wood, 2 iron ingots |
+
+3. At seed 77, the checked workshop places lever `(500.5,31,510.5)`, White
+   `(504.5,31,511.5)`, Blue `(508.5,31,510.5)`, Green `(512.5,31,508.5)`,
+   drum `(504.5,31,506.5)`, landing `(518.5,31,506.5)`, feeder
+   `(517.5,31,518.5)` and buffer `(515.5,31,520.5)`. These are examples,
+   not required coordinates. Keep the feeder beside your own forge, with
+   clear visible spans and support under every fixture.
+4. Choose the landing at the drum. Choose White at the lever, Blue at White,
+   Green at Blue, drum at Green's first port and feeder at its second. At the
+   feeder, use **Drive / connections → Choose forge / pocket → Attach forge ·
+   hand-wound**. At the buffer, **Choose heat receiver** selects that feeder.
+   The short thermal pipe is separate from the two Green signal branches.
+5. At the buffer, pay 2 Salt per heat, up to 4 available plus held heat. At the
+   feeder, load 8 clay and wind by hand once. At the drum, load actual materials
+   from your pack and wind once. Strike the lever: Blue holds one request for
+   3 seconds, then Green attempts both operations. The basket spends its own
+   winding; the feeder separately reserves 8 clay, 1 winding, 1 paid heat and
+   room for 4 bricks. After the existing 8-second firing, collect the bricks.
+6. Pause/resume/cancel the delay at Blue. F5 during its countdown and restart
+   resumes only its remainder; leaving the active area or obstructing Blue's
+   output holds it. Rewiring the selected route cancels it, and reconnecting
+   requires a new lever strike. A blocked Green branch or unpaid receiver can
+   refuse while the other operates. No receiver repeats from that same request.
+7. Feed the newly made bricks into the actual cargo basket on its return.
+   A further paid lever request can deliver the bricks while firing the next
+   batch. Collect at the landing and use B to build with Rustclay Brick. Each
+   ordinary cube consumes 2 delivered bricks. The saved automated walkthrough
+   delivers 16 existing bricks, builds four cubes from 8, leaves 8 in the pack,
+   makes a further 4 in the feeder and retains 2 paid heat in the buffer.
+8. Manufacture the five offensive Catalysts at the basic forge using the selected
+   Catalyst costs: 96 of its colour, 4 iron and 8 charcoal; Impact instead uses
+   6 iron and 4 charcoal. Gather the whole displayed debit into your own pack; the forge never
+   silently withdraws from a chest or hopper. Each raw family holds up to 128.
+   Two White recipes plus the connection need more than the first 128 White:
+   exhaust and collect that manifestation, spend ten minutes of active overworld
+   play doing other work, then manually extract the one reformed manifestation.
+   Ready stock never banks additional formations. No recipe has a timer.
+9. In F, use your earned Ember ingot beside Heavy Strike and invest each crafted
+   Catalyst at the same adjoining Kind cell. The existing forms are Kindling,
+   Smoulder, Emberbed, Firebreak and Cinder Lance. Lifting a Kind uses the
+   unchanged one-iron payment and returns that owned Kind. Stable and Potent
+   remain the existing ordinary refinement routes with their existing forge,
+   skill, era, material and fuel requirements.
+
+For the Red buffer, cancel a firing at the feeder to return its exact reserved
+clay, winding and heat once. Finish or cancel before detaching/removing the
+buffer. Removing an idle buffer vents its unused heat and returns only the
+ordinary half-frame refund (2 Salt, 2 wood, 1 iron); charge Salt never reappears.
+Removing the feeder returns its held heat to the still-present buffer, along
+with its actual ingredients/output to the player, and vents unused drive.
+
+
+## LF-2D result and verification
+
+The actual rendered journey passed **488 checks**, then a fresh process passed
+**10**, all with zero failures. It loaded the paid C completion without changing
+any existing source/machine field, then manually extracted 96 Red, 96 Blue,
+96 Green and 192 White in total. Every released claim was collected. The source
+clock formed exactly one new Red and White manifestation after 600 active
+seconds; it did not assign stock or alter saved outcomes. The new Red lots
+happened to release two bonus Ember Catalysts and Green one bonus Preserving;
+these remain separately owned and are not counted as manufactured outputs.
+
+Nine ordinary six-ore trips paid for 27 smelts. Those smelts and 18 charcoal
+batches consumed 54 gathered ore and 153 wood, leaving the starting wood stock
+217 → 64. Twenty-two of the real iron ingots and all 36 charcoal paid for one
+of each offensive Catalyst; five further iron paid the existing Kind lifts.
+The initial harness attempt tried to gather 54 ore before smelting and stopped
+at the existing 30-ore carrying cap. The successful journey uses normal smaller
+hauls; neither the cap nor a recipe was relaxed.
+
+Each manufactured identity was placed through the actual Foundry controls beside
+the earned Ember ingot and Heavy Strike, producing the existing named form. The
+native fixture separately checks the actual operation values, recipe deficits,
+normal-world refusal, exact save ownership and unchanged Stable/Potent costs,
+including consuming the actual manufactured Faint through both grades. The
+obsolete shared Ember ignite-spread assertion was corrected to the current
+Kindling fuse; combat tuning and runtime identity code were not changed.
+
+The combined lever → White → Blue → Green route held one request for three
+seconds, moved 16 real bricks and started one independently paid Red-heated
+firing. Its final ledger owns 8 carried bricks, four cubes built from 8 delivered
+bricks, 4 new feeder bricks and 2 unused paid heat. The drum is empty; all
+winding is spent. Pending-request and completed-construction checkpoints both
+survive fresh-process restoration exactly, with no duplicate trip or firing.
+
+Final native checks pass: source **213,482**, Wave 2 **601**, standalone
+contraptions **602**. Commands and final full-suite receipt are below. Rendered
+captures include all five recipe panels, all five manufactured Foundry forms,
+the connected workshop and the paid brick foundation. Impact's actual cost
+panel, Cinder Lance's reading, the workshop's separate branches/thermal pipe
+and the finished brick construction were visually inspected.
+
+## Final automated receipt — 9 September 2026
+
+The complete `game/run_headless_checks.sh` passed with **zero failures**, ending
+in `All headless checks passed.` and its 120-frame main-scene smoke run. The
+final log has no `FAIL`, `SCRIPT ERROR` or `ERROR:` entries. Runtime/tuning stayed
+unchanged for this full run. Log: `build/lf2/full-engine-d.log`.
+
+| Final check actually run | Result |
+| --- | --- |
+| Original native rules, rebuilt with `-Wall -Wextra -Werror` | 224,380 / 0 failures |
+| Native source/save/seed suite | 213,482 / 0 failures |
+| Native Blue/Green/Red/Catalyst suite | 601 / 0 failures |
+| Standalone native contraptions | 602 / 0 failures |
+| Red/White support repair + fresh restart | 154 + 64 / 0 failures |
+| Full paid Wave 1 bootstrap + fresh restart | 733 + 15 / 0 failures |
+| Final full-run Blue + restart | 216 + 26 / 0 failures |
+| Final full-run Green + restart | 129 + 9 / 0 failures |
+| Final full-run Red heat + restart | 324 + 14 / 0 failures |
+| Paid all-Catalyst workshop + restart (rendered and full-run headless) | 488 + 10 / 0 failures |
+| Ordinary catalogue, contraptions, pressure workshop, loose-drop save, save recovery, weathered save, wide-frontier pacing | 52 / 85 / 60 / 148 / 175 / 21 / 319; all 0 failures |
+| Final Markdown local-link check | 6 changed documents, 0 missing targets |
+
+The complete pipeline also retains all its terrain, building, trial, identity,
+combat and save fixtures. Blue/heat full-run totals exceed their historical
+migration journeys because those compare fewer fields in published older
+payloads; both forms passed. Native logs use `build/lf2/*-final.log`; the paid
+rendered/restart logs use `build/lf2/workshop-*.{out,err}.log`.
+
+## Verification commands and compatibility ledger
+
+From the repository root, after building the existing GDExtension:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/living_frontier_checks.ps1 -Repair
+powershell -ExecutionPolicy Bypass -File tools/living_frontier_wave2_checks.ps1 -Native
+powershell -ExecutionPolicy Bypass -File tools/living_frontier_wave2_checks.ps1 -Bootstrap -Blue -Restore -Green -GreenRestore -Heat -HeatRestore -Workshop -WorkshopRestore -Rendered
+powershell -ExecutionPolicy Bypass -File tools/living_frontier_wave2_checks.ps1 -Regression
+```
+
+The PowerShell runners use isolated `build/lf1/appdata` and `build/lf2/appdata`.
+`game/run_headless_checks.sh` includes the repair, all four paid Wave 2 scenes
+and each restart, plus all existing engine checks. Point `GODOT` at the pinned
+Godot 4.5-stable binary. `make -C tests/sim` includes the original rules, source
+and Wave 2 native targets; `make -C tests/sim contraptions` checks the standalone
+contraption target. Tests supply native boundary fixtures where explicitly
+commented; the paid engine chain contains no inventory/core/drive grants.
+
+| Saved payload | Published versions retained | Current addition |
+| --- | --- | --- |
+| Source ledger | Red 1, Red/White 2, Blue 3 | Green 4; older existing hosts retain exact lots, partial work, claims, outcomes and formation |
+| Experimental machines | Original/White 1–2, Blue 3, Green 4 | Red 5; add zero-default thermal fields and preserve all prior fields |
+| Ordinary machines | Existing 1–2 | No new fields or version promotion |
+| Player/world save and identity | Existing profile, seed, filename, inventory and earned Foundry state | No reset, relocation or acquisition/campaign migration |
+
+Future source/machine payloads refuse before mutation and without silently
+recovering an older `.previous` ledger. Missing state already mandatory in a
+published version refuses; only later source introductions initialize. One
+Blue request and two terminal Green ports are fixed bounds, enforced during
+linking and loading. There is no arbitrary signal graph or generated job queue.
+
+## Limits and remaining owner playtests
+
+- The harness accelerates travel, finite gathering/pickup dispatch and active
+  machine/source time, and holds enemy AI during the paid route. It verifies
+  actual payments, controls, collision and saved ownership; it does not measure
+  ten minutes of human play, source discovery, combat pressure or novice comfort.
+- Sources remain one fixed host per colour on existing home margins. Four safe
+  work steps, eight 16-unit lots, 128 raw carrying limits, 4% optional Red/Blue/
+  Green finds and the existing capped 600-second reformation are initial tuning.
+  White has no new rare pool. No core or Catalyst is required for manual work.
+- Delay is fixed at 3 seconds; Green supports two distinct drum/feeder terminals
+  in the selected ordered route. Requests never provide drive or ingredients.
+  No adjustable timers, cascaded junctions, general routing or automatic mining.
+- Red has four total available/held heat, two Salt per charge and one feeder.
+  Its charge, delivery, loading and winding are deliberate player operations.
+  Machines keep the existing nearby/live-overworld rule and no offline work.
+- Owner playtests: find all four hosts without coordinates; repair a dug host
+  through ordinary B placement; judge work repetition and the 96-raw Catalyst
+  cost; verify the three-second move-into-position window; read both Green
+  branches and the thermal pipe in a personal workshop; compare hand firing
+  with Red heat storage; play save/restart/disconnect/removal in a real session.
+  Grade/Foundry combat regressions pass, but long-term balance remains an owner
+  judgement. The experiment is still opt-in and is not a default-world rollout.
+- **Wave 3 is not implemented or authorized by this completion.** Its inhabitants,
+  reward/campaign changes, labs, eras and later factory ambitions require the
+  separately requested orchestrator review. The wolf/TRELLIS/art session's
+  commits and working files are outside these slices and are preserved.
+
+
+## Scoped file manifest
+Each prior slice lists only its committed paths. D lists its own final files;
+concurrent wolf/art planning changes are excluded.
+
+### LF1-R1 — `51ce129`
+- `docs/decisions/registry.md`
+- `docs/prototype/living-frontier-wave1-review-2026-09-08.md`
+- `docs/prototype/living-frontier-wave2-2026-09-08.md`
+- `docs/systems/construction.md`
+- `game/art/leyline_source_look.gd`
+- `game/run_headless_checks.sh`
+- `game/scripts/leyline_source.gd`
+- `game/tests/leyline_support_repair.gd`
+- `game/tests/leyline_support_repair.gd.uid`
+- `game/tests/leyline_support_repair.tscn`
+- `tools/living_frontier_checks.ps1`
+
+### LF-2A — `4718317`
+- `captures/lf2/blue-held.png`
+- `captures/lf2/blue-paused.png`
+- `captures/lf2/blue-source.png`
+- `captures/lf2/blue-workshop.png`
+- `data/tuning/contraptions.json`
+- `data/tuning/crafting.json`
+- `data/tuning/leyline.json`
+- `data/tuning/world.json`
+- `docs/prototype/acceptance-criteria.md`
+- `docs/prototype/living-frontier-wave2-2026-09-08.md`
+- `docs/systems/construction.md`
+- `docs/systems/crafting-and-skills.md`
+- `docs/systems/world-generation.md`
+- `game/art/contraption_look.gd`
+- `game/art/leyline_source_look.gd`
+- `game/extensions/wroughtwild_sim/src/strange_frontier_bindings.inc`
+- `game/extensions/wroughtwild_sim/src/wroughtwild_sim.cpp`
+- `game/extensions/wroughtwild_sim/src/wroughtwild_sim.h`
+- `game/run_headless_checks.sh`
+- `game/scripts/contraption_panel.gd`
+- `game/scripts/contraption_site.gd`
+- `game/scripts/leyline_source.gd`
+- `game/scripts/save_manager.gd`
+- `game/scripts/strange_resource_art.gd`
+- `game/tests/living_frontier_flow.gd`
+- `game/tests/living_frontier_wave2_flow.gd`
+- `game/tests/living_frontier_wave2_flow.gd.uid`
+- `game/tests/living_frontier_wave2_flow.tscn`
+- `sim/include/wroughtwild/contraptions.h`
+- `sim/include/wroughtwild/leyline.h`
+- `sim/src/contraptions.cpp`
+- `sim/src/leyline.cpp`
+- `tests/sim/Makefile`
+- `tests/sim/test_leyline.cpp`
+- `tests/sim/test_living_frontier_wave2.cpp`
+- `tools/living_frontier_wave2_checks.ps1`
+
+### LF-2B — `4bda377`
+- `captures/lf2/green-ports.png`
+- `captures/lf2/green-source.png`
+- `captures/lf2/green-workshop.png`
+- `data/tuning/crafting.json`
+- `data/tuning/leyline.json`
+- `data/tuning/world.json`
+- `docs/prototype/living-frontier-wave2-2026-09-08.md`
+- `docs/systems/construction.md`
+- `docs/systems/crafting-and-skills.md`
+- `game/art/contraption_look.gd`
+- `game/art/leyline_source_look.gd`
+- `game/extensions/wroughtwild_sim/src/strange_frontier_bindings.inc`
+- `game/extensions/wroughtwild_sim/src/wroughtwild_sim.cpp`
+- `game/extensions/wroughtwild_sim/src/wroughtwild_sim.h`
+- `game/run_headless_checks.sh`
+- `game/scripts/contraption_panel.gd`
+- `game/scripts/contraption_site.gd`
+- `game/scripts/leyline_source.gd`
+- `game/scripts/save_manager.gd`
+- `game/scripts/strange_resource_art.gd`
+- `game/tests/living_frontier_green_flow.gd`
+- `game/tests/living_frontier_green_flow.gd.uid`
+- `game/tests/living_frontier_green_flow.tscn`
+- `sim/include/wroughtwild/contraptions.h`
+- `sim/include/wroughtwild/leyline.h`
+- `sim/src/contraptions.cpp`
+- `sim/src/leyline.cpp`
+- `tests/sim/test_living_frontier_wave2.cpp`
+- `tools/living_frontier_wave2_checks.ps1`
+
+### LF-2C — `75ae963`
+- `captures/lf2/red-heat-firing.png`
+- `captures/lf2/red-heat-store.png`
+- `data/tuning/contraptions.json`
+- `data/tuning/crafting.json`
+- `docs/prototype/living-frontier-wave2-2026-09-08.md`
+- `docs/systems/construction.md`
+- `docs/systems/crafting-and-skills.md`
+- `game/art/contraption_look.gd`
+- `game/extensions/wroughtwild_sim/src/strange_frontier_bindings.inc`
+- `game/run_headless_checks.sh`
+- `game/scripts/contraption_panel.gd`
+- `game/scripts/contraption_site.gd`
+- `game/scripts/feeder_readout.gd`
+- `game/scripts/feeder_readout.gd.uid`
+- `game/scripts/save_manager.gd`
+- `game/scripts/strange_resource_art.gd`
+- `game/tests/living_frontier_heat_flow.gd`
+- `game/tests/living_frontier_heat_flow.gd.uid`
+- `game/tests/living_frontier_heat_flow.tscn`
+- `sim/include/wroughtwild/contraptions.h`
+- `sim/src/contraptions.cpp`
+- `tests/sim/test_living_frontier_wave2.cpp`
+- `tools/living_frontier_wave2_checks.ps1`
+
+### LF-2D — recipes, paid workshop and handoff
+- `README.md`
+- `data/tuning/crafting.json`
+- `docs/prototype/leyline-catalyst-extraction-2026-09-08.md`
+- `docs/prototype/living-frontier-roadmap-2026-09-08.md`
+- `docs/prototype/living-frontier-wave2-2026-09-08.md`
+- `docs/systems/crafting-and-skills.md`
+- `game/README.md`
+- `game/run_headless_checks.sh`
+- `game/tests/living_frontier_workshop_flow.gd`
+- `game/tests/living_frontier_workshop_flow.gd.uid`
+- `game/tests/living_frontier_workshop_flow.tscn`
+- `tests/sim/test_living_frontier_wave2.cpp`
+- `tools/living_frontier_wave2_checks.ps1`
+- `captures/lf2/catalyst-{ember,frost,impact,piercing,preserving}.png`
+- `captures/lf2/manufactured-{ember,frost,impact,piercing,preserving}.png`
+- `captures/lf2/complete-paid-workshop.png` and `paid-brick-foundation.png`

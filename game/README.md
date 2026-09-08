@@ -339,7 +339,7 @@ documentation for the newly discovered GDExtension
 The import work itself completes and every later run is clean;
 `run_headless_checks.sh` retries the import once for this reason. Opening the
 project in the editor for the first time may likewise crash once — reopen it.
-# Living Frontier Wave 1 experiment
+# Living Frontier Waves 1–2 experiment
 
 Run the normal scene with `-- --living-frontier --world-seed=77` appended to
 the Godot launch command. Class/seed choice and Continue work normally; F5/F9
@@ -358,6 +358,29 @@ White, and White at the lever. Load the drum and wind it once; striking the leve
 requests a paid trip. Collect at the landing. F5 during travel and F9/restart
 preserve that trip, cargo and spent winding. Detailed costs and tested seed-77
 positions are in the work item below.
-The [Wave 1 work item](../docs/prototype/living-frontier-wave1-2026-09-08.md)
-records current completion, exact costs, checks and limitations. This opt-in
-profile does not clear Wave 2 or change the existing campaign.
+Blue and Green clues now lead to their own manual sources. Two Blue Flakes and
+two wood make a three-second delay; two Green Resin and two wood make a junction.
+Connect lever → White → Blue → Green, then select two distinct drums/feeders at
+Green. Each receiver requires its own winding and materials. Blue holds one
+request: pause/restart keep its exact remainder, while rewiring cancels it.
+
+The bench also makes a Red Heat Buffer Kit (4 Salt, 4 wood, 2 iron). Place it
+beside your pressure feeder, choose that feeder as its heat receiver and pay
+2 Salt per stored heat, up to 4 including any heat held by a firing. The feeder
+still requires 8 clay and one separate winding to make 4 bricks. Cancellation
+returns the held heat once. Finish/cancel before detaching the buffer; removing
+an idle buffer vents unused heat and refunds only its ordinary frame share.
+
+At the basic forge, 96 Blue makes existing Faint Frost, 96 Green makes
+Preserving and 96 White makes Piercing, each also consuming 4 iron and
+8 charcoal. White's distinct Impact recipe uses 96 White, 6 iron and 4 charcoal.
+Ember and all existing grade-refinement recipes retain their identities/costs.
+All are ordinary costly recipes; there is no Catalyst research or craft timer.
+
+The [Wave 1 record](../docs/prototype/living-frontier-wave1-2026-09-08.md)
+and [Wave 2 work item and paid walkthrough](../docs/prototype/living-frontier-wave2-2026-09-08.md)
+record exact costs, placements, checks and owner playtests. Repaired paid
+physical support restores excavated sources at their existing anchors; keep
+their workspaces clear. Source payload 4 and machine schema 5 migrate published
+experimental ledgers without resetting them. The existing campaign is unchanged.
+**Stop at Wave 2: Wave 3 needs a separate orchestrator review.**

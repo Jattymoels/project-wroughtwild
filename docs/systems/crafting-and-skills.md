@@ -1,5 +1,18 @@
 # Crafting and Skills
 
+**LF-2D (9 September 2026):** the same opt-in basic forge also manufactures
+Faint Frost from 96 Blue Flakes, Preserving from 96 Green Resin and Piercing
+from 96 White Mineral, each plus 4 iron ingots and 8 charcoal. White's separate
+Impact compression recipe uses 96 White, 6 iron and 4 charcoal. Each is
+Blacksmithing 1 / era 1, 2 base XP, immediate and zero extra fuel. Ember stays
+96 Red / 4 iron / 8 charcoal. All five outputs are the existing offensive Kind
+IDs and use their unchanged Foundry effects and Stable/Potent refinement.
+Utility parts remain 2–4 raw beside a 96-raw Catalyst. These extra manufacture
+routes do not replace ordinary-world loot/campaign policy. No lucky find,
+research, perfection step or mandatory craft timer is required. The
+[paid workshop and verification](../prototype/living-frontier-wave2-2026-09-08.md)
+stop at Wave 2; later acquisition changes require a separate review.
+
 **LF-2C:** a workbench Red Heat Buffer Kit costs 4 Red Salt, 4 wood and 2 iron
 ingots. Each separate two-salt charge provides one heat for the existing feeder's
 eight-clay/four-brick process. The feeder still pays its own mechanical stroke;

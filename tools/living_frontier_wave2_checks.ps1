@@ -1,4 +1,4 @@
-param([switch]$Native, [switch]$Blue, [switch]$Restore, [switch]$Rendered, [switch]$Bootstrap, [switch]$Regression, [switch]$Green, [switch]$GreenRestore, [switch]$Heat, [switch]$HeatRestore)
+param([switch]$Native, [switch]$Blue, [switch]$Restore, [switch]$Rendered, [switch]$Bootstrap, [switch]$Regression, [switch]$Green, [switch]$GreenRestore, [switch]$Heat, [switch]$HeatRestore, [switch]$Workshop, [switch]$WorkshopRestore)
 $ErrorActionPreference = 'Stop'
 $lf2Options = @{} + $PSBoundParameters
 . (Join-Path $PSScriptRoot 'living_frontier_checks.ps1')
@@ -47,3 +47,10 @@ if ($lf2Options.Heat) {
     Invoke-LFEngine 'heat-flow' ($lfMode + @('res://tests/living_frontier_heat_flow.tscn'))
 }
 if ($lf2Options.HeatRestore) { Invoke-LFEngine 'heat-restart' @('--headless','res://tests/living_frontier_heat_flow.tscn','--','--heat-restore') }
+
+if ($lf2Options.Workshop) {
+    $lfMode = @('--headless')
+    if ($lf2Options.Rendered) { $lfMode = @('--position','-9999,-9999','--audio-driver','Dummy') }
+    Invoke-LFEngine 'workshop-flow' ($lfMode + @('res://tests/living_frontier_workshop_flow.tscn'))
+}
+if ($lf2Options.WorkshopRestore) { Invoke-LFEngine 'workshop-restart' @('--headless','res://tests/living_frontier_workshop_flow.tscn','--','--workshop-restore') }

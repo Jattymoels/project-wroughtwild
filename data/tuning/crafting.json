@@ -1067,6 +1067,102 @@
       "design_purpose": "Living Frontier: one immediate ordinary craft consumes six Red lots, four iron ingots and eight charcoal for one existing Faint Ember. The charcoal is the complete heat payment. All inputs fit carried stock; no lesson, research, perfection or timer. This replaces iron-only distillation in the experiment; legacy worlds keep it. Stable and Potent refinement remain separate."
     },
     {
+      "id": "forge_faint_frost",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Forge Faint Frost from Blue Flakes",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "blue_flake": 96,
+        "iron_ingot": 4,
+        "charcoal": 8
+      },
+      "outputs": {
+        "frost_catalyst": 1
+      },
+      "base_skill_xp": 2,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Blue binding supplies the existing Frost control identity, including chill and flight control. Six raw lots and the displayed iron/charcoal pay once at the basic forge. Charcoal is the complete heat payment. No timer or research; existing identity and grade refinement remain unchanged."
+    },
+    {
+      "id": "forge_faint_preserving",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Forge Faint Preserving from Green Resin",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "green_resin": 96,
+        "iron_ingot": 4,
+        "charcoal": 8
+      },
+      "outputs": {
+        "preserving_catalyst": 1
+      },
+      "base_skill_xp": 2,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "Green carried patterns supply the existing Preserving identity: held effects, transferred burn budget and newcomer or return operations. Six raw lots and the displayed iron/charcoal pay once at the basic forge. Charcoal is the complete heat payment. No timer or research; existing identity and grade refinement remain unchanged."
+    },
+    {
+      "id": "forge_faint_impact",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Compress Faint Impact from White Mineral",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "white_mineral": 96,
+        "iron_ingot": 6,
+        "charcoal": 4
+      },
+      "outputs": {
+        "impact_catalyst": 1
+      },
+      "base_skill_xp": 2,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "White compression supplies the existing Impact contact and release identity; more iron and less charcoal distinguish this ordinary recipe. Six raw lots and the displayed iron/charcoal pay once at the basic forge. Charcoal is the complete heat payment. No timer or research; existing identity and grade refinement remain unchanged."
+    },
+    {
+      "id": "forge_faint_piercing",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Channel Faint Piercing from White Mineral",
+      "station": "forge_basic",
+      "minimum_skill": {
+        "blacksmithing": 1
+      },
+      "inputs": {
+        "white_mineral": 96,
+        "iron_ingot": 4,
+        "charcoal": 8
+      },
+      "outputs": {
+        "piercing_catalyst": 1
+      },
+      "base_skill_xp": 2,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": [
+        "processing"
+      ],
+      "design_purpose": "White through-flow supplies the existing Piercing passage and contact identity; it remains distinct from Impact. Six raw lots and the displayed iron/charcoal pay once at the basic forge. Charcoal is the complete heat payment. No timer or research; existing identity and grade refinement remain unchanged."
+    },
+    {
       "id": "refine_stable_ember_catalyst",
       "display_name": "Refine Stable Ember Catalyst",
       "station": "forge_improved",

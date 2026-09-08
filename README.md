@@ -28,6 +28,14 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
+[Living Frontier Waves 1–2](docs/prototype/living-frontier-wave2-2026-09-08.md)
+add opt-in manual Red/White/Blue/Green extraction, affordable signal delay and
+branching, paid Red heat storage, five ordinary offensive Catalyst recipes and
+a paid brick-making/hauling workshop. Existing experimental worlds continue
+without resets; ordinary launches retain their acquisition and campaign.
+The work item records tests, exact costs and a reproducible player walkthrough.
+Wave 3 requires a separate orchestrator review.
+
 [INT-08B portable Windows build](docs/prototype/portable-build-2026-09-08.md)
 adds an isolated export helper and tracked preset, executable-relative tuning,
 source version and complete package instructions. First launch, paid gathering/
