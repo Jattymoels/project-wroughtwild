@@ -1,0 +1,389 @@
+{
+  "source_sha256": "2a889ab30879bf6a4854ebe6def3e1b696d8a411ffaee6f215c7398bebe7abef",
+  "surface_sha256": "f2a20b983ff78ea58e470ad9ba37df9e47add83665dec31f7066a1e256739842",
+  "settings": {
+    "near_triangles": 110000,
+    "mid_triangles": 65000,
+    "far_triangles": 10000,
+    "far_voxel_metres": 0.014,
+    "far_texture_pixels": 1024,
+    "normal_pixels": 2048,
+    "breath_metres": 0.006,
+    "stance_sink_metres": 0.05,
+    "step_metres": 0.16,
+    "hoof_lift_metres": 0.065,
+    "root_radians": 0.22,
+    "turn_radians": 0.24,
+    "windup_radians": 0.13,
+    "release_radians": 0.17,
+    "release_head_lift_radians": 0.45,
+    "purposes": {
+      "near_triangles": "First measured simplification candidate; inspect the shield, face and silhouette before selecting a final budget.",
+      "mid_triangles": "Retain the tusks and coat after the 36k collapse proved too aggressive at encounter distance; not an automatic game LOD switch.",
+      "far_triangles": "Distant silhouette candidate, preserving broad shield and tusks.",
+      "far_voxel_metres": "Distant volume sampling closes small generated gaps before simplification; larger values erase fine silhouette detail.",
+      "far_texture_pixels": "Rebaked distant material and scar atlas; compare at 18 metres.",
+      "normal_pixels": "Bake fine bristles, plate relief and the shallow scar into the retained UV atlas.",
+      "breath_metres": "Gentle idle motion, with analytic limb targets rather than hovering hooves.",
+      "stance_sink_metres": "Settle the shoulders into reachable planted-hoof poses; leaning additionally lowers the body by its raised hip displacement.",
+      "step_metres": "Short in-place walking preview; actual game travel/stride adaptation remains separate.",
+      "hoof_lift_metres": "Clear the ground during swing while keeping the stance hoof flat.",
+      "root_radians": "Bound the head's ordinary rooting pose without adding a gameplay action.",
+      "turn_radians": "Review neck and plate clearance during a modest head turn.",
+      "windup_radians": "Existing CreatureMotion's 0.13 rad anticipation, sampled over the native melee windup.",
+      "release_radians": "Existing CreatureMotion's 0.17 rad response, displayed during its 0.22-second release window.",
+      "release_head_lift_radians": "Lift the already lowered muzzle through the release so solid tusks clear the floor; does not change the attack clock, reach or collision."
+    }
+  },
+  "bones": [
+    {
+      "name": "body",
+      "parent": null,
+      "head": [
+        0,
+        -0.12,
+        0.66
+      ],
+      "tail": [
+        0,
+        0.18,
+        0.68
+      ]
+    },
+    {
+      "name": "chest",
+      "parent": "body",
+      "head": [
+        0,
+        0.12,
+        0.73
+      ],
+      "tail": [
+        0,
+        0.34,
+        0.75
+      ]
+    },
+    {
+      "name": "head",
+      "parent": "chest",
+      "head": [
+        0,
+        0.36,
+        0.68
+      ],
+      "tail": [
+        0,
+        0.71,
+        0.41
+      ]
+    },
+    {
+      "name": "tail",
+      "parent": "body",
+      "head": [
+        0,
+        -0.67,
+        0.69
+      ],
+      "tail": [
+        0,
+        -0.78,
+        0.59
+      ]
+    },
+    {
+      "name": "front_L_upper",
+      "parent": "chest",
+      "head": [
+        -0.1586252748966217,
+        0.20000000298023224,
+        0.6600000262260437
+      ],
+      "tail": [
+        -0.1586252748966217,
+        0.2318783402442932,
+        0.3400000035762787
+      ]
+    },
+    {
+      "name": "front_L_lower",
+      "parent": "front_L_upper",
+      "head": [
+        -0.1586252748966217,
+        0.2318783402442932,
+        0.3400000035762787
+      ],
+      "tail": [
+        -0.1586252748966217,
+        0.19375668466091156,
+        0.10006462782621384
+      ]
+    },
+    {
+      "name": "front_L_hoof",
+      "parent": "front_L_lower",
+      "head": [
+        -0.1586252748966217,
+        0.19375668466091156,
+        0.10006462782621384
+      ],
+      "tail": [
+        -0.1586252748966217,
+        0.2937566936016083,
+        0.10006462782621384
+      ]
+    },
+    {
+      "name": "front_R_upper",
+      "parent": "chest",
+      "head": [
+        0.15434294939041138,
+        0.20000000298023224,
+        0.6600000262260437
+      ],
+      "tail": [
+        0.15434294939041138,
+        0.23120953142642975,
+        0.3400000035762787
+      ]
+    },
+    {
+      "name": "front_R_lower",
+      "parent": "front_R_upper",
+      "head": [
+        0.15434294939041138,
+        0.23120953142642975,
+        0.3400000035762787
+      ],
+      "tail": [
+        0.15434294939041138,
+        0.19241906702518463,
+        0.10004279017448425
+      ]
+    },
+    {
+      "name": "front_R_hoof",
+      "parent": "front_R_lower",
+      "head": [
+        0.15434294939041138,
+        0.19241906702518463,
+        0.10004279017448425
+      ],
+      "tail": [
+        0.15434294939041138,
+        0.29241907596588135,
+        0.10004279017448425
+      ]
+    },
+    {
+      "name": "rear_L_upper",
+      "parent": "body",
+      "head": [
+        -0.23539933562278748,
+        -0.4699999988079071,
+        0.6399999856948853
+      ],
+      "tail": [
+        -0.23539933562278748,
+        -0.5877974033355713,
+        0.3400000035762787
+      ]
+    },
+    {
+      "name": "rear_L_lower",
+      "parent": "rear_L_upper",
+      "head": [
+        -0.23539933562278748,
+        -0.5877974033355713,
+        0.3400000035762787
+      ],
+      "tail": [
+        -0.23539933562278748,
+        -0.6255947351455688,
+        0.11481673270463943
+      ]
+    },
+    {
+      "name": "rear_L_hoof",
+      "parent": "rear_L_lower",
+      "head": [
+        -0.23539933562278748,
+        -0.6255947351455688,
+        0.11481673270463943
+      ],
+      "tail": [
+        -0.23539933562278748,
+        -0.5255947113037109,
+        0.11481673270463943
+      ]
+    },
+    {
+      "name": "rear_R_upper",
+      "parent": "body",
+      "head": [
+        0.2270725965499878,
+        -0.4699999988079071,
+        0.6399999856948853
+      ],
+      "tail": [
+        0.2270725965499878,
+        -0.5876458883285522,
+        0.3400000035762787
+      ]
+    },
+    {
+      "name": "rear_R_lower",
+      "parent": "rear_R_upper",
+      "head": [
+        0.2270725965499878,
+        -0.5876458883285522,
+        0.3400000035762787
+      ],
+      "tail": [
+        0.2270725965499878,
+        -0.6252917647361755,
+        0.11570652574300766
+      ]
+    },
+    {
+      "name": "rear_R_hoof",
+      "parent": "rear_R_lower",
+      "head": [
+        0.2270725965499878,
+        -0.6252917647361755,
+        0.11570652574300766
+      ],
+      "tail": [
+        0.2270725965499878,
+        -0.5252917408943176,
+        0.11570652574300766
+      ]
+    }
+  ],
+  "feet": [
+    {
+      "name": "front_L",
+      "side": -1,
+      "front": true,
+      "hip": [
+        -0.1586252748966217,
+        0.20000000298023224,
+        0.6600000262260437
+      ],
+      "knee": [
+        -0.1586252748966217,
+        0.2318783402442932,
+        0.3400000035762787
+      ],
+      "foot": [
+        -0.1586252748966217,
+        0.19375668466091156,
+        0.10006462782621384
+      ],
+      "sole": 6.462548481067643e-05
+    },
+    {
+      "name": "front_R",
+      "side": 1,
+      "front": true,
+      "hip": [
+        0.15434294939041138,
+        0.20000000298023224,
+        0.6600000262260437
+      ],
+      "knee": [
+        0.15434294939041138,
+        0.23120953142642975,
+        0.3400000035762787
+      ],
+      "foot": [
+        0.15434294939041138,
+        0.19241906702518463,
+        0.10004279017448425
+      ],
+      "sole": 4.279355925973505e-05
+    },
+    {
+      "name": "rear_L",
+      "side": -1,
+      "front": false,
+      "hip": [
+        -0.23539933562278748,
+        -0.4699999988079071,
+        0.6399999856948853
+      ],
+      "knee": [
+        -0.23539933562278748,
+        -0.5877974033355713,
+        0.3400000035762787
+      ],
+      "foot": [
+        -0.23539933562278748,
+        -0.6255947351455688,
+        0.11481673270463943
+      ],
+      "sole": 0.01481673028320074
+    },
+    {
+      "name": "rear_R",
+      "side": 1,
+      "front": false,
+      "hip": [
+        0.2270725965499878,
+        -0.4699999988079071,
+        0.6399999856948853
+      ],
+      "knee": [
+        0.2270725965499878,
+        -0.5876458883285522,
+        0.3400000035762787
+      ],
+      "foot": [
+        0.2270725965499878,
+        -0.6252917647361755,
+        0.11570652574300766
+      ],
+      "sole": 0.01570652425289154
+    }
+  ],
+  "clips_seconds": {
+    "idle": 4.0,
+    "walk": 1.6,
+    "root": 3.0,
+    "turn": 3.0,
+    "windup": 0.4,
+    "release": 0.22
+  },
+  "variants": [
+    {
+      "name": "near",
+      "vertices": 49834,
+      "triangles": 109972,
+      "uv_layers": 1,
+      "materials": 1,
+      "max_weights": 4
+    },
+    {
+      "name": "mid",
+      "vertices": 27347,
+      "triangles": 64983,
+      "uv_layers": 1,
+      "materials": 1,
+      "max_weights": 4
+    },
+    {
+      "name": "far",
+      "vertices": 12406,
+      "triangles": 35123,
+      "uv_layers": 1,
+      "materials": 1,
+      "max_weights": 4
+    }
+  ],
+  "max_ik_segment_length_error_metres": 1.3303142484821784e-07,
+  "welded_source_vertices": 134889,
+  "max_unreachable_hoof_target_metres": 0.0,
+  "max_evaluated_hoof_target_error_metres": 1.2489448945403256e-07,
+  "limitations": "Generated triangle topology and fitted weights; not hand-authored quad retopology. In-place preview locomotion is not an actual Enemy integration or terrain IK test."
+}

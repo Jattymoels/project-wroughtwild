@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (art planning and Wave 2 review). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-01 handoff and Wave 2 review). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -12,16 +12,21 @@ game rules. Existing accepted work items and decisions remain authoritative.
 
 Owner planning request, 9 September: the local TRELLIS boar is liked; emphasise
 pulsing magic cracks and build assets that share the world's lore. The
-[asset roadmap](leyline-asset-roadmap-2026-09-09.md) is prepared. Proposed order:
+[asset roadmap](leyline-asset-roadmap-2026-09-09.md) is prepared. The subsequent
+"Alright let's do it" selected [ART-01](boar-living-scars-2026-09-09.md), now
+technically delivered as an isolated editable boar, living-scar material, rig,
+movement/detail comparisons and measured handoff. Owner visual approval and
+ordinary game adoption remain separate. Sequence:
 **ART-01 boar/scar handoff → ART-02 affected grove → ART-03 small fauna set →
-ART-04 sources and workshop → ART-05 one actual world route.** Start with the
-existing boar and separate surface/light authoring. These are proposed production
-slices, not five implemented or automatically adopted asset batches.
+ART-04 sources and workshop → ART-05 one actual world route.** ART-02 is next
+proposed after reviewing the boar. ART-02–05 were not started or automatically
+selected by this continuation.
 
 The [local TRELLIS wolf experiment](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
 completed generation and 32 Blender handoff checks after the earlier Meshy review.
-The overnight boar has also been inspected read-only. Both are dense unrigged
-sources; the [wolf/woodland study](leyline-art-studies-2026-09-08.md) still needs
+The original overnight boar remains intact; its new ART-01 working copy has a
+fitted rig and authored scars. The original generated files remain dense unrigged
+sources. The [wolf/woodland study](leyline-art-studies-2026-09-08.md) still needs
 visual finishing and runtime proof. Preserve the liked moth, ordinary animal
 ancestry and current game assets while establishing that standard.
 

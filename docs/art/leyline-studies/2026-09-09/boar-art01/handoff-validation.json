@@ -1,0 +1,166 @@
+{
+  "exports": [
+    {
+      "lod": "near",
+      "sha256": "c34787ba52bcc69cde87ef1f5a6d4b326fa68ac30482c7be45253c25cf7d658f",
+      "bytes": 34869324,
+      "triangles": 109972,
+      "exported_vertices_after_uv_normal_splits": 147646,
+      "surfaces": 1,
+      "bones": 16,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "root": 3.0,
+        "turn": 3.0,
+        "windup": 0.4000000059604645,
+        "release": 0.2199999988079071
+      },
+      "bounds_min": [
+        -0.44366419315338135,
+        4.279355925973505e-05,
+        -0.8147769570350647
+      ],
+      "bounds_max": [
+        0.443693071603775,
+        1.2001352310180664,
+        0.8148022890090942
+      ]
+    },
+    {
+      "lod": "mid",
+      "sha256": "19bfba5868dfe0d5732d69e0d5af887b1a0b699e121e511450436e38a5ffc3dc",
+      "bytes": 31051048,
+      "triangles": 64983,
+      "exported_vertices_after_uv_normal_splits": 96421,
+      "surfaces": 1,
+      "bones": 16,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "root": 3.0,
+        "turn": 3.0,
+        "windup": 0.4000000059604645,
+        "release": 0.2199999988079071
+      },
+      "bounds_min": [
+        -0.4456300735473633,
+        4.279355925973505e-05,
+        -0.8134505748748779
+      ],
+      "bounds_max": [
+        0.44339126348495483,
+        1.2008839845657349,
+        0.8148022890090942
+      ]
+    },
+    {
+      "lod": "far",
+      "sha256": "ab60a8f5205404ea519d30e5403eba21a6b821ce09bb19c81f6de004478220cc",
+      "bytes": 4048904,
+      "triangles": 10000,
+      "exported_vertices_after_uv_normal_splits": 9212,
+      "surfaces": 1,
+      "bones": 16,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "root": 3.0,
+        "turn": 3.0,
+        "windup": 0.4000000059604645,
+        "release": 0.2199999988079071
+      },
+      "bounds_min": [
+        -0.4390821158885956,
+        0.00010494246089365333,
+        -0.8126068115234375
+      ],
+      "bounds_max": [
+        0.4381447434425354,
+        1.1928400993347168,
+        0.8026126027107239
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "name": "base.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "png_bits_per_channel": 8,
+      "bytes": 9206434
+    },
+    {
+      "name": "orm.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "png_bits_per_channel": 8,
+      "bytes": 5425928
+    },
+    {
+      "name": "scar-mask.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "png_bits_per_channel": 16,
+      "bytes": 3049226
+    },
+    {
+      "name": "normal.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "png_bits_per_channel": 8,
+      "bytes": 9270700
+    },
+    {
+      "name": "far-base.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "png_bits_per_channel": 8,
+      "bytes": 984507
+    },
+    {
+      "name": "far-orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "png_bits_per_channel": 8,
+      "bytes": 1106466
+    },
+    {
+      "name": "far-scar.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "png_bits_per_channel": 8,
+      "bytes": 388492
+    },
+    {
+      "name": "far-normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "png_bits_per_channel": 8,
+      "bytes": 1222229
+    }
+  ],
+  "preserved_sha256": {
+    "build/trellis-local/studio/data/output/Screenshot 2026-09-08 224118_1024_seed42_mtsp0zp4-77uj0z.glb": "2a889ab30879bf6a4854ebe6def3e1b696d8a411ffaee6f215c7398bebe7abef",
+    "game/assets/authored/mobs/ash_hound.glb": "ec2cded39e9414591991be589608235d20884ff96c020e4bcbc33a6cdd0f0354",
+    "game/assets/authored/mobs/marsh_wisp.glb": "554ec16fe3c7154239682da327d717f694a7ff20c430d27cbaca0266a749e389",
+    "art/blender/augmented-beasts-v01.blend": "364d616f69bb7b716ac3b7287372b0c5f016f4d99600e4783c992e9c13a2218c"
+  },
+  "note": "Checks inspect the actual GLB streams; source-rig far collapse results are superseded by the separate rebaked far export."
+}

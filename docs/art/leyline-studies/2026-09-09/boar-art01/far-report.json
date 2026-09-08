@@ -1,0 +1,9 @@
+{
+  "voxel_metres": 0.014,
+  "texture_pixels": 1024,
+  "volume_triangles": 74884,
+  "final_triangles": 10000,
+  "vertices": 5000,
+  "max_weight_transfer_distance_metres": 0.036143358796834946,
+  "purpose": "Volume sampling closes fine source gaps at distance; rebaked maps preserve the original material and attached scar in a new UV atlas. Inspect at 18 m before adoption."
+}

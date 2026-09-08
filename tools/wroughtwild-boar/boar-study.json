@@ -1,0 +1,40 @@
+{
+  "source": "build/trellis-local/studio/data/output/Screenshot 2026-09-08 224118_1024_seed42_mtsp0zp4-77uj0z.glb",
+  "source_sha256": "2a889ab30879bf6a4854ebe6def3e1b696d8a411ffaee6f215c7398bebe7abef",
+  "yaw_degrees": 180,
+  "height_metres": 1.2,
+  "scar": {
+    "half_width_metres": 0.016,
+    "core_half_width_metres": 0.0045,
+    "recess_metres": 0.004,
+    "projection_step_metres": 0.012,
+    "mask_size": 2048,
+    "peak_emission": 3.2,
+    "minimum_light": 0.25,
+    "period_seconds": 4.0,
+    "crest_width": 0.18,
+    "colour": [1.0, 0.12, 0.012],
+    "paths": [
+      {"name":"left_shield","side":-1,"width":1.0,"offset":0.0,"points":[[0.08,1.04],[0.15,0.99],[0.12,0.92],[0.22,0.86],[0.18,0.80],[0.27,0.73],[0.25,0.65],[0.32,0.58]]},
+      {"name":"left_rear_branch","side":-1,"width":0.7,"offset":0.33,"points":[[0.22,0.86],[0.05,0.84],[-0.01,0.78],[-0.12,0.75],[-0.18,0.68],[-0.27,0.69]]},
+      {"name":"left_forward_branch","side":-1,"width":0.65,"offset":0.18,"points":[[0.15,0.99],[0.28,0.98],[0.31,0.91],[0.39,0.87],[0.40,0.80]]},
+      {"name":"right_shield","side":1,"width":0.9,"offset":0.10,"points":[[0.10,1.05],[0.13,0.99],[0.21,0.95],[0.18,0.88],[0.25,0.83],[0.21,0.75],[0.29,0.69],[0.28,0.59]]},
+      {"name":"right_branch","side":1,"width":0.6,"offset":0.38,"points":[[0.18,0.88],[0.03,0.86],[-0.05,0.78],[-0.14,0.81],[-0.23,0.75]]}
+    ]
+  },
+  "purposes": {
+    "yaw_degrees": "The inspected raw boar faces -Y. Rotate to Blender +Y front / Godot -Z front without changing anatomy.",
+    "height_metres": "Review scale from ground to tallest bristle; not a new enemy body or gameplay scale.",
+    "scar_paths": "Authored side-projected paths in normalized body Y/Z metres. Break across a few shield plates into tough hide; preserve face, joints and most coat.",
+    "half_width_metres": "Width of the dark scar mouth, separate from its narrow luminous core.",
+    "core_half_width_metres": "Keep light inside the fracture; large enough to read at ordinary encounter distance.",
+    "recess_metres": "Shallow physical incision retains solid backing and reads with emission disabled.",
+    "projection_step_metres": "Resolve the surface of individual shield plates instead of floating a tube above them.",
+    "mask_size": "Shared linear RGBA mask: core, damaged host, branch travel, opaque reserved channel; follows existing UVs through skinning.",
+    "peak_emission": "Local Red core brightness at pulse peak; does not add a light or change scene exposure.",
+    "minimum_light": "Keep a faint interior between passing crests.",
+    "period_seconds": "Smooth, visible four-second current; compared with a 2.5-second option.",
+    "crest_width": "Fraction of branch travel illuminated by the moving crest.",
+    "colour": "Ember-associated art colour; adds no Red gameplay transformation or damage."
+  }
+}

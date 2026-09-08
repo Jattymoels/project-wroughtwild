@@ -1,0 +1,16 @@
+{
+	"bloom": false,
+	"camera": "[X: (-0.712325, 0.0, 0.70185), Y: (0.210418, 0.954, 0.213559), Z: (-0.669565, 0.299805, -0.679558), O: (-2.142608, 1.519377, -2.174587)]",
+	"day_sun_energy": 1.5,
+	"description": "Deterministically sampled engine frames, not a real-time FPS claim.",
+	"distance_metres": 3.2,
+	"duration_seconds": 8,
+	"fov": 40.0,
+	"frames_per_second": 24,
+	"resolution": [
+		1280,
+		960
+	],
+	"shade_sun_energy": 0.15,
+	"sun_rotation_degrees": "(-48.0, -35.0, 0.0)"
+}

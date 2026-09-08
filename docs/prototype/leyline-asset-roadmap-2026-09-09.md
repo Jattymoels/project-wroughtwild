@@ -1,11 +1,14 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: planning complete; production slices proposed.** Owner request,
+**Status: ART-01 selected and technically delivered for owner review; ART-02–05 proposed.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
 This records that visual direction and a bounded production sequence. It does
-not implement the sequence, accept every generated mesh, or expand gameplay.
+not accept every generated mesh or expand gameplay. The owner's subsequent
+"Alright let's do it" selected [ART-01](boar-living-scars-2026-09-09.md): the
+existing boar now has an isolated scar, skin, movement and detail-level handoff.
+See that result for checks and limits; ordinary game adoption remains separate.
 
 ## Outcome and current evidence
 
@@ -171,7 +174,8 @@ check the selected renderer and low-glow fallback during the engine proof.
 
 ## ART-01 starting controls and acceptance
 
-These are **proposed comparison settings**, not installed tuning. Store selected
+These began as **proposed comparison settings**. ART-01 now supplies the isolated
+comparison and records its selected defaults; they are not installed game tuning. Store selected
 values together in a named presentation resource with plain-language comments.
 
 | Control | Initial comparison | What it controls |
@@ -197,15 +201,17 @@ by this plan.
 
 ## Delivery boundaries and open decisions
 
-This planning pass changes documentation only. It inspected the local boar in a
+The original planning pass changed documentation only. It inspected the local boar in a
 new background Blender process and left the Studio output, normal saves, running
 playtests and concurrent Living Frontier changes intact. Original input hash was
 checked after rendering; documentation links and the scoped Git diff are checked
 before publication. No new asset dependency, generation job, shader, rig or game
 asset is installed by writing this roadmap.
 
-Recommended next work item: **ART-01, the existing boar with authored pulsing
-scars**, with static material evidence before investing in the full rig. Routine
+Current handoff: **ART-01, the existing boar with authored pulsing scars**, whose
+[implementation report](boar-living-scars-2026-09-09.md) records the completed
+surface/movement proof and limitations. Owner visual approval remains separate.
+**ART-02, one affected grove**, is next proposed after that review. Routine
 mask placement and review setup follow the brief. Decisions that change gameplay
 bodies, saved placement, supported renderer policy or campaign/encounter behaviour
 need their own selected scope. Source promotion into long-term versioned art is
