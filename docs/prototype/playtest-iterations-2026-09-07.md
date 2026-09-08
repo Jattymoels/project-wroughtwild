@@ -244,6 +244,14 @@ D-010/D-012/D-025/D-028. No removal of the approved interaction vocabulary.
 
 ### INT-02C: explain and repair empty stretches
 
+**Implemented and checked, owner review pending (8 September 2026):**
+[population audit and runtime correction](frontier-population-2026-09-08.md).
+Generated hills reproduce buried night patrols and embedded daytime members;
+surface grounding now preserves their native routes, cave floors and ownership.
+Three seeds retain exact geography/resource/pack identities. Their sampled
+quarry approaches remain sparse; a generator successor is only a proposal.
+The original approved scope below is retained separately from that evidence.
+
 Audit native pack counts, regional/biome mapping, starter exclusions, activation,
 despawn and pathing along quarry/shellstone approaches. Shellstone is a resource
 habitat, not proof of a separate enemy biome; identify the actual underlying

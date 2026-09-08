@@ -221,7 +221,36 @@ func pack_position(pack: Dictionary) -> Vector3:
 		out = terrain.surface_position(route.x, route.y)
 	else:
 		out = Vector3((route.x + 0.5) * cell, float(pack["y"]), (route.y + 0.5) * cell)
-	return den.lerp(out, sin(clampf(night_progress, 0.0, 1.0) * PI))
+	var at := den.lerp(out, sin(clampf(night_progress, 0.0, 1.0) * PI))
+	if terrain != null and not terrain.map.is_empty():
+		# Routes describe horizontal travel. Interpolating endpoint heights cuts
+		# through hills (or hangs over valleys), corrupting activation and spawns.
+		at.y = terrain.surface_position(floori(at.x/cell),floori(at.z/cell)).y
+	return at
+
+
+## Surface members share a den, not a floor height: their spread can cross a
+## steep cell boundary. Use the scene's actual body footprint and the mutable
+## terrain support, so excavation stays real. Cave members retain their native
+## interior floor; they must never be projected onto the roof above them.
+func _surface_member_position(at: Vector3, radius: float, settling_height: float) -> Vector3:
+	var cell := float(terrain.map.cell_size)
+	var highest := -INF
+	for z in range(floori((at.z-radius)/cell),floori((at.z+radius)/cell)+1):
+		for x in range(floori((at.x-radius)/cell),floori((at.x+radius)/cell)+1):
+			var support := terrain.surface_position(x,z).y
+			if not terrain._blocks.is_empty():
+				var y := floori(support/cell)-1
+				while y>=0 and terrain.block_at(x,y,z)==0: y-=1
+				support = (y+1)*cell
+			var px := clampf(at.x,x*cell,(x+1)*cell)
+			var pz := clampf(at.z,z*cell,(z+1)*cell)
+			var rendered := terrain.rendered_height(px,pz,support,cell)
+			if is_finite(rendered): support = maxf(support,rendered)
+			highest = maxf(highest,support)
+	# Keep the existing settling allowance from the spawn ring's Y offset.
+	at.y = highest + settling_height
+	return at
 
 
 ## The era from the sandpit: whether its patrols cross biomes.
@@ -504,7 +533,16 @@ func _spawn_pack(pack: Dictionary, at: Vector3) -> void:
 	for i in ids.size():
 		var angle := TAU * float(i) / float(maxi(ids.size(), 1))
 		var offset := Vector3(cos(angle), 0.5, sin(angle)) * 1.6
-		var enemy := Enemy.spawn(get_parent(), StringName(ids[i]), at + offset)
+		var enemy: Enemy = preload("res://scenes/enemy.tscn").instantiate()
+		enemy.enemy_id = StringName(ids[i])
+		var position := at + offset
+		if terrain != null and not terrain.map.is_empty() and String(pack.get("biome",""))!="cave":
+			var body := enemy.get_node("CollisionShape3D") as CollisionShape3D
+			position = _surface_member_position(position,(body.shape as CapsuleShape3D).radius,offset.y)
+		# Set the final pose before entering the tree, as Enemy.spawn does: no
+		# transient body at the scene origin and a correct first MobGrid entry.
+		enemy.position = (get_parent() as Node3D).to_local(position) if get_parent() is Node3D else position
+		get_parent().add_child(enemy)
 		enemy.set_aggro_multiplier(aggro_multiplier())
 		# The danger ring may have crowned one member (Wave 3 elites).
 		if i == elite_member and elite_modifier != "":

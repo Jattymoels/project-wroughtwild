@@ -522,6 +522,11 @@ now a **full 3D block field** the sim generates deterministically per seed
   two cells short of the doorstep radius. The engine walks the pack out
   over the first half of the night and home over the second, so dusk is
   the hour you meet the wastes coming the other way.
+  Runtime patrol height follows the surface at the current horizontal route
+  position, rather than interpolating endpoint heights through hills. Each
+  surface member grounds its body footprint on current terrain support, including
+  excavation; cave members keep their interior floor. This changes no generated
+  den, route, density or save identity. [INT-02C evidence](../prototype/frontier-population-2026-09-08.md).
 - **Engine:** the sim also derives the render/collision geometry
   (`world_mesh`: per-chunk visible-block centres by kind plus exposed-face
   triangles), so the engine builds one MultiMesh per kind and one trimesh
