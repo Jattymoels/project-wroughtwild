@@ -158,7 +158,7 @@ State* MachineWorld::mutableState(const std::string& key) {
 }
 bool MachineWorld::knownKind(const std::string& kind) {
     return kind == "lantern_lamp" || kind == "cargo_winch" || kind == "winch_landing" ||
-           kind == "stormglass_lever" || kind == "magnetic_sorter" || kind == "ventlung_bellows" || kind == "pressure_feeder";
+           kind == "stormglass_lever" || kind == "magnetic_sorter" || kind == "ventlung_bellows" || kind == "pressure_feeder" || kind == "white_connection";
 }
 bool MachineWorld::itemAllowed(const std::string& item) const {
     return identifier(item) && (config_.allowedItems.empty() || config_.allowedItems.count(item) > 0);
@@ -166,6 +166,7 @@ bool MachineWorld::itemAllowed(const std::string& item) const {
 Result MachineWorld::create(const std::string& key, const std::string& kind,
                             const std::array<double, 3>& position, int quarterTurns) {
     if (!knownKind(kind) || !identifier(key)) return no("Unknown fixture or invalid placement key.");
+    if (kind=="white_connection" && identity_.profile!="living_frontier_wave1") return no("White connections belong to the Living Frontier experiment.");
     if (kind=="pressure_feeder" && !feederRecipeReady()) return no("The existing decorative forge recipe is unavailable.");
     if (state(key)) return no("That placement already contains a fixture.");
     if (states_.size() >= static_cast<size_t>(config_.maximumMachines)) return no("The world's fixture limit is reached.");
@@ -199,6 +200,10 @@ Result MachineWorld::erase(const std::string& key, Inventory& pack) {
 }
 Result MachineWorld::link(const std::string& source, const std::string& target, bool clear) {
     auto* from = mutableState(source);
+    if (from && target.empty() && (from->kind=="stormglass_lever" || from->kind=="white_connection")) {
+        from->link.clear(); from->spanLength=0;
+        return yes("Signal disconnected. A departed basket keeps its paid trip and cargo.");
+    }
     const auto* to = state(target);
     if (!from || !to || from == to) return no("Choose two different placed fixtures.");
     if (!clear) return no("The supported span must be clear.");
@@ -211,8 +216,11 @@ Result MachineWorld::link(const std::string& source, const std::string& target, 
             if (entry.first != source && entry.second.kind == "cargo_winch" && entry.second.link == target)
                 return no("That landing already belongs to another drum.");
     } else if (from->kind == "stormglass_lever") {
-        if (to->kind != "cargo_winch" && to->kind != "lantern_lamp" && to->kind != "pressure_feeder") return no("Stormglass requests one local operation or feeder batch.");
+        if (to->kind != "cargo_winch" && to->kind != "lantern_lamp" && to->kind != "pressure_feeder" && to->kind != "white_connection") return no("Stormglass requests one local operation or a White connection.");
         if (length > config_.signalRange) return no("The receiver is outside local signal range.");
+    } else if (from->kind == "white_connection") {
+        if (to->kind != "cargo_winch") return no("A White connection forwards one request to one cargo drum.");
+        if (length > config_.signalRange) return no("The drum is outside local signal range.");
     } else return no("This fixture does not send a link.");
     from->link = target; from->spanLength = length;
     return yes("Linked. Signals request work; the drum still needs winding.");
@@ -282,10 +290,17 @@ Result MachineWorld::pulse(const std::string& key, bool signalClear, bool spanCl
     auto* s = mutableState(key);
     if (!s || s->kind != "stormglass_lever") return no("This is not a Stormglass lever.");
     auto* target = mutableState(s->link);
-    if (!target) return no("Link a nearby drum or lamp receiver first.");
+    if (!target) return no("Link a nearby White connection or receiver first.");
+    State* connection = target->kind=="white_connection" ? target : nullptr;
+    if (connection) {
+        target=mutableState(connection->link);
+        if (!target || target->kind!="cargo_winch") return no("The White connection is disconnected. Choose its cargo drum.");
+        if (connection->pulses==std::numeric_limits<int>::max()) return no("The connection's pulse counter is full.");
+    }
     if (!signalClear) return no("The signal connection is obstructed.");
     if (s->pulses == std::numeric_limits<int>::max()) return no("The lever's pulse counter is full.");
     ++s->pulses; // A visible signal may be received by an unwound drum.
+    if (connection) ++connection->pulses; // no pending request: one synchronous delivery
     if (target->kind == "lantern_lamp") return toggleLamp(target->key);
     return start(target->key, spanClear);
 }
@@ -599,7 +614,8 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
         for (const auto& item : s.ferrous) if (!config_.ferrousItems.count(item.first)) throw std::runtime_error("contraptions: nonferrous magnetic output");
         for (const auto& item : s.remainder) if (config_.ferrousItems.count(item.first)) throw std::runtime_error("contraptions: ferrous ordinary output");
         if (s.kind != "cargo_winch" && s.kind != "ventlung_bellows" && s.kind!="pressure_feeder" && s.energy != 0) throw std::runtime_error("contraptions: invalid stored energy");
-        if (s.kind != "stormglass_lever" && s.pulses != 0) throw std::runtime_error("contraptions: invalid signal counter");
+        if (s.kind != "stormglass_lever" && s.kind != "white_connection" && s.pulses != 0) throw std::runtime_error("contraptions: invalid signal counter");
+        if (s.kind == "white_connection" && identity_.profile != "living_frontier_wave1") throw std::runtime_error("contraptions: White connection outside its experiment");
         if (!s.moving && s.progress != 0) throw std::runtime_error("contraptions: stationary basket has progress");
         if (s.moving && (s.progress >= 1 || s.completedTrips == std::numeric_limits<int>::max())) throw std::runtime_error("contraptions: invalid travelling basket");
         if (schema==2) {
@@ -659,8 +675,10 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
             if (t.kind != "winch_landing" || length <= 0 || length > config_.maximumSpan || !usedLandings.insert(t.key).second)
                 throw std::runtime_error("contraptions: invalid or shared landing");
         } else if (s.kind == "stormglass_lever") {
-            if ((t.kind != "cargo_winch" && t.kind != "lantern_lamp" && t.kind!="pressure_feeder") || length > config_.signalRange)
+            if ((t.kind != "cargo_winch" && t.kind != "lantern_lamp" && t.kind!="pressure_feeder" && t.kind!="white_connection") || length > config_.signalRange)
                 throw std::runtime_error("contraptions: invalid signal receiver");
+        } else if (s.kind == "white_connection") {
+            if (t.kind != "cargo_winch" || length > config_.signalRange) throw std::runtime_error("contraptions: invalid White receiver");
         } else throw std::runtime_error("contraptions: this fixture cannot send links");
     }
     if (stocks) stocks->swap(restoredStocks);

@@ -107,7 +107,7 @@ void World::advance(double seconds, const std::set<std::string>& blocked) {
 }
 std::string World::serialize() const {
     std::ostringstream out; out << std::setprecision(17);
-    out << "{\"version\":1,\"profile\":\"" << profile << "\",\"seed\":\"" << seed_ << "\",\"sources\":{";
+    out << "{\"version\":2,\"profile\":\"" << profile << "\",\"seed\":\"" << seed_ << "\",\"sources\":{";
     bool first = true;
     for (const auto& [id,s] : states_) {
         if (!first) out << ',';
@@ -123,12 +123,19 @@ std::string World::serialize() const {
 bool World::restore(const std::string& text, std::string* reason) {
     try {
         const auto doc = json::parse(text);
-        integer(doc->get("version"),1,1);
+        const int version = integer(doc->get("version"),1,2);
         if (doc->get("profile").asString() != profile || doc->get("seed").asString() != std::to_string(seed_)) throw std::runtime_error("Leyline world identity mismatch.");
         const auto& records = doc->get("sources").asObject();
-        if (records.size() != config_.sources.size()) throw std::runtime_error("Missing or unknown leyline source.");
+        // Only the published Red-only version may acquire the newly added White
+        // host. Current saves must contain both; a lost ledger never refills one.
+        if (version == 1) {
+            if (records.size() != 1 || !records.count("red_home_margin")) throw std::runtime_error("Invalid Red-only leyline checkpoint.");
+        } else if (records.size() != config_.sources.size()) throw std::runtime_error("Missing or unknown leyline source.");
         std::map<std::string,State> next;
         for (const auto& def : config_.sources) {
+            if (version == 1 && def.id == "white_home_margin") {
+                State fresh; form(def,fresh); next.emplace(def.id,fresh); continue;
+            }
             const auto& record = *records.at(def.id); State s;
             s.manifestation = integer(record.get("manifestation"),0,1000000000);
             s.lot = integer(record.get("lot"),0,def.lots);

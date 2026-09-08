@@ -14,11 +14,25 @@
       "rare_per_10000": 400,
       "formation_seconds": 600,
       "work_stages": ["Expose the casing", "Vent the inclusion", "Settle the flow", "Draw the lot"]
+    },
+    {
+      "id": "white_home_margin",
+      "label": "White mineral inclusion",
+      "material": "white_mineral",
+      "rare_item": "",
+      "home_index": 1,
+      "offset_x_m": 8,
+      "offset_z_m": 0,
+      "lots": 8,
+      "units_per_lot": 16,
+      "rare_per_10000": 0,
+      "formation_seconds": 600,
+      "work_stages": ["Expose the casing", "Brace the inclusion", "Settle the impulse", "Draw the lot"]
     }
   ],
   "purposes": {
     "home_index_and_offsets": "A discoverable source on the clear margin of an existing reachable home opportunity, leaving its building centre free. Only the opt-in Living Frontier world owns these hosts.",
-    "lots_and_units_per_lot": "Eight fixed lots supply 128 Red Salt: enough for useful bricks and a later costly Catalyst. Each lot has exactly one rare opportunity, regardless of clicks or collection splits.",
+    "lots_and_units_per_lot": "Each host holds eight fixed lots of sixteen units. Red supplies useful bricks and costly Ember; one White lot supplies eight cheap connections. White has no rare pool in Wave 1. Red's opportunity is fixed regardless of work or collection splits.",
     "rare_per_10000": "Four percent per Red lot offers a bonus Faint Ember; useful raw output and ordinary manufacture never require luck. Outcomes are fixed and saved at formation.",
     "formation_seconds": "After all eight lots and claims are exhausted, ten minutes of active overworld play reforms one manifestation. No offline, paused or trial growth. Ready stock banks no credit; an obstructed host holds at most one formation's credit.",
     "work_stages": "Four safe manual operations make the material's expose, vent, settle and draw sequence tangible for every class. Interruptions retain work; collection is a separate native transfer."

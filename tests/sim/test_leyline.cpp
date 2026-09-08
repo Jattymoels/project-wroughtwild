@@ -1,5 +1,6 @@
 #include "wroughtwild/leyline.h"
 #include "wroughtwild/json.h"
+#include "wroughtwild/contraptions.h"
 #include <iostream>
 #include <cmath>
 #include <limits>
@@ -12,6 +13,44 @@ int main(int argc,char** argv) {
     const auto tuning=tuning::loadAll(path);
     const auto config=leyline::Config::load(path+"/leyline.json");
     const auto& source=config.sources.front();
+    const auto& white=config.sources.at(1);
+    check(white.material=="white_mineral" && white.rareItem.empty() && white.rarePer10000==0,"White is useful raw only in Wave 1");
+    for (int seed=0;seed<32;++seed) {
+        auto oldConfig=config; oldConfig.sources.resize(1);
+        leyline::World oldWorld(oldConfig,seed), migrated(config,seed);
+        // Exact schema published in LF-1A/B, interrupted or holding a raw/rare claim.
+        for (int i=0;i<1+seed%4;++i) oldWorld.work(source.id);
+        auto v1=oldWorld.serialize(); v1.replace(v1.find("\"version\":2"),11,"\"version\":1");
+        check(migrated.restore(v1),"published Red-only ledger migrates");
+        check(migrated.state(source.id).outcomes==oldWorld.state(source.id).outcomes && migrated.state(source.id).work==oldWorld.state(source.id).work && migrated.state(source.id).claim==oldWorld.state(source.id).claim,"migration keeps exact Red work, rare rolls and claims");
+        check(migrated.state(white.id).lot==0 && migrated.state(white.id).work==0,"migration introduces White once at its authored initial stock");
+        const auto before=migrated.serialize();
+        check(!migrated.restore(oldWorld.serialize()) && migrated.serialize()==before,"current schema missing White rejects without refilling");
+        economy::PlayerEconomy holder(tuning);
+        for (int lot=0;lot<white.lots;++lot) {
+            for (size_t step=0;step<white.stages.size();++step) {
+                check(migrated.work(white.id).ok,"White safe manual work");
+                leyline::World reloaded(config,seed);
+                check(reloaded.restore(migrated.serialize()) && reloaded.serialize()==migrated.serialize(),"White interruption restores exactly");
+            }
+            holder.inventory[white.material]=holder.carryCap(white.material);
+            check(!migrated.collect(white.id,white.material,holder).ok,"full White family retains released output");
+            holder.inventory[white.material]-=3;
+            check(migrated.collect(white.id,white.material,holder).moved==3,"White partial claim transfers once");
+            const auto partial=migrated.serialize();
+            check(migrated.restore(partial) && migrated.serialize()==partial,"White partial claim survives reload");
+            holder.inventory.clear();
+            check(migrated.collect(white.id,white.material,holder).moved==white.units-3,"White remaining claim conserved");
+            check(!migrated.collect(white.id,white.material,holder).ok,"White claim cannot duplicate");
+        }
+        migrated.advance(123,{});
+        const auto spent=migrated.serialize();
+        check(migrated.restore(spent) && migrated.state(white.id).formation==123,"spent White formation clock persists");
+        migrated.advance(9999,{white.id});
+        check(migrated.state(white.id).manifestation==0 && migrated.state(white.id).formation==white.formationSeconds,"blocked White caps one formation");
+        migrated.advance(.1,{});
+        check(migrated.state(white.id).manifestation==1 && migrated.state(white.id).lot==0,"White reforms once after active credit");
+    }
     int winners=0, lots=0, droughts=0;
     for (int seed=0;seed<256;++seed) {
         leyline::World world(config,seed), other(config,seed);
@@ -102,6 +141,41 @@ int main(int argc,char** argv) {
     check(grades.craft("refine_stable_ember_catalyst").crafted && grades.held("ember_catalyst")==0 && grades.held("stable_ember_catalyst")==1,"existing paid Stable refinement preserved");
     grades.grant("silver_ingot",1); grades.grant("steel_ingot",1);
     check(grades.craft("refine_potent_ember_catalyst").crafted && grades.held("stable_ember_catalyst")==0 && grades.held("potent_ember_catalyst")==1,"existing paid Potent refinement preserved");
+    player.inventory={{"white_mineral",2},{"wood",2}}; player.addAvailableStation("workbench");
+    check(player.craft("assemble_white_connection").crafted && player.held("white_connection_kit")==1 && player.held("white_mineral")==0 && player.held("wood")==0,"cheap White kit pays both ordinary ingredients");
+    const auto machines=contraptions::Config::load(path+"/contraptions.json");
+    contraptions::MachineWorld machine(machines,{leyline::profile,77,{}}), legacy(machines);
+    check(!legacy.create("white","white_connection").ok,"legacy machine worlds reject experimental placement");
+    for (const auto& entry : std::vector<std::pair<std::string,std::array<double,3>>>{{"stormglass_lever",{0,0,0}},{"white_connection",{6,0,0}},{"cargo_winch",{12,0,0}},{"winch_landing",{24,0,0}}})
+        check(machine.create(entry.first,entry.first,entry.second).ok,"ordinary native fixture placement: "+entry.first);
+    check(machine.link("cargo_winch","winch_landing",true).ok && machine.link("stormglass_lever","white_connection",true).ok,"connect landing and White input");
+    check(!machine.pulse("stormglass_lever",true,true).ok,"disconnected White cannot request movement");
+    check(!machine.link("white_connection","stormglass_lever",true).ok && !machine.link("white_connection","white_connection",true).ok,"bounded topology rejects cycles and self links");
+    check(machine.link("white_connection","cargo_winch",true).ok,"White selects its one cargo drum");
+    check(!machine.wind("white_connection").ok,"connection cannot store drive");
+    check(!machine.pulse("stormglass_lever",true,true).ok && machine.state("cargo_winch")->energy==0 && machine.state("white_connection")->pulses==1,"empty drive receives visible request without motion or energy");
+    auto idle=machine.serialize(); check(machine.restore(idle) && machine.serialize()==idle,"failed request is not a queued restart task");
+    economy::Inventory cargo{{"red_salt",16}};
+    check(machine.deposit("cargo_winch","red_salt",16,cargo).moved==16 && cargo.empty(),"real cargo has one drum owner");
+    check(machine.wind("cargo_winch").ok,"manual winding supplies work");
+    idle=machine.serialize();
+    check(!machine.pulse("stormglass_lever",false,true).ok && machine.serialize()==idle,"blocked signal preserves exact drive, cargo and counters");
+    check(!machine.pulse("stormglass_lever",true,false).ok && machine.state("cargo_winch")->energy==1,"blocked cargo span cannot spend winding");
+    check(machine.pulse("stormglass_lever",true,true).ok && machine.state("cargo_winch")->energy==0 && machine.state("cargo_winch")->moving,"White request spends exactly the drum's one stored work");
+    check(!machine.pulse("stormglass_lever",true,true).ok && machine.state("cargo_winch")->energy==0,"repeated signal cannot start a second trip");
+    check(machine.advance("cargo_winch",.5,true).ok,"paid trip starts to travel");
+    auto travelling=machine.serialize();
+    check(!machine.advance("cargo_winch",100,false).ok && machine.serialize()==travelling,"blocked travelling cargo pauses intact");
+    check(machine.link("white_connection","",true).ok && machine.state("cargo_winch")->moving,"disconnect does not recall or clone in-flight cargo");
+    travelling=machine.serialize();
+    check(machine.restore(travelling) && machine.serialize()==travelling,"mid-trip disconnect and cargo restore exactly");
+    check(machine.advance("cargo_winch",100,true).ok && machine.state("cargo_winch")->atLanding && machine.state("cargo_winch")->completedTrips==1,"saved paid trip arrives once");
+    check(!machine.withdraw("winch_landing","cargo","red_salt",16,0,cargo).ok,"full landing collection keeps drum cargo");
+    check(machine.withdraw("winch_landing","cargo","red_salt",16,3,cargo).moved==3,"partial landing collection");
+    const auto delivered=machine.serialize();
+    check(machine.restore(delivered) && machine.withdraw("winch_landing","cargo","red_salt",16,40,cargo).moved==13 && cargo.at("red_salt")==16,"restart retains exact remaining landing cargo");
+    check(!machine.withdraw("winch_landing","cargo","red_salt",16,40,cargo).ok,"delivered cargo cannot be collected twice");
+    check(machine.erase("white_connection",cargo).ok && machine.state("stormglass_lever")->link.empty() && machine.state("cargo_winch")->completedTrips==1,"dismantling disconnects input while retaining delivered trip");
     for (int seed : {1,77,2026}) {
         const auto map=worldgen::generateProfile(tuning,seed,leyline::profile);
         check(map.profileId==leyline::profile && map.homeSites.size()==4,"opt-in world has existing guaranteed approaches");

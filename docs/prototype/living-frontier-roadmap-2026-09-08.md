@@ -1,6 +1,8 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
-**Status: Coordinated roadmap ready for review; no gameplay implemented.**
+**Status: Wave 1 (LF-1A/B/C) implemented in an opt-in experiment; later waves remain proposals.**
+See the [implemented Wave 1 contract and handoff](living-frontier-wave1-2026-09-08.md)
+for exact tuning, compatibility, evidence and owner playtests. Wave 2 is not cleared.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 

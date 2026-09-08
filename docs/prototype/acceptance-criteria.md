@@ -10,7 +10,10 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [x] Fixed lots, hidden rare outcomes, interrupted work, full families and
   partial native claims restore without rerolling or duplicate collection.
 - [x] LF-1B costly ordinary Faint Ember manufacture and persistent Foundry proof.
-- [ ] LF-1C paid White connection and wound winch/landing cargo delivery.
+- [x] LF-1C paid White connection and wound winch/landing cargo delivery.
+- [x] Full/partial landing collection, physical obstruction of both signal
+  spans and cargo span, empty drive, disconnect/dismantle, in-flight save and
+  fresh-process delivery preserve exact work and cargo ownership.
 - [ ] Owner accepts discovery, extraction effort, spending trade-offs and circuit
   usefulness. [Evidence and limitations](living-frontier-wave1-2026-09-08.md).
 

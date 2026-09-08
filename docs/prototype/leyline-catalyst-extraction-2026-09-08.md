@@ -1,6 +1,9 @@
 # Leyline extraction — useful media, rare finds and ordinary Catalyst recipes
 
-**Status: Design proposal; acquisition rules unchanged.**
+**Status: Broader design proposal; only LF-1A/B/C implemented in the opt-in Wave 1 experiment.**
+Normal V1–V6 acquisition remains unchanged. The [Wave 1 record](living-frontier-wave1-2026-09-08.md)
+selects Red/White media, useful bricks, costly ordinary Ember, a White connection
+and exact save ownership. Later acquisition/campaign changes remain unapproved.
 Owner clarification: 8 September 2026. Baseline: `49edab9`.
 Companion to the [Living Frontier roadmap](living-frontier-roadmap-2026-09-08.md).
 

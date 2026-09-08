@@ -5,8 +5,14 @@ reliably releases raw Salt and has one 4% Faint Ember opportunity per fixed lot.
 The native source owns uncollected raw/rare claims until a capacity-checked
 transfer. Fixed outcomes and partial collection persist together; no expiry or
 roll on clicking/reloading. Current material-category death rules and every
-existing acquisition path remain. Normal V1–V6 worlds receive no sources or
+existing acquisition path outside the experiment remain. Normal V1–V6 worlds receive no sources or
 recipe changes. [Selected stock/renewal policy](../prototype/living-frontier-wave1-2026-09-08.md).
+
+LF-1B replaces iron-only Ember distillation solely in the experiment with the
+96-Salt ordinary recipe; existing grades/owned effects and other acquisition
+remain. LF-1C adds White Mineral with the same exact raw-claim ownership and
+128 carried capacity, but no White rare Catalyst pool in this wave. Source save
+version 2 preserves published Red-only saves through explicit migration.
 
 ## Loose world ownership — INT-07A, 7 September 2026
 

@@ -1,5 +1,19 @@
 # Construction System
 
+## Living Frontier White connection — LF-1C, 8 September 2026
+
+In the opt-in experiment, two White Mineral and two wood make one normal
+workbench kit. Place it with the ordinary preview, select its Cargo Winch and
+select the White post from a Stormglass Lever. It forwards one request along
+two supported, unobstructed segments of at most 24 m each. The winch requires
+its existing landing, clear basket span and stored winding; White creates none.
+The native drum remains sole cargo owner. No queued/delayed/branching requests
+are introduced. Existing direct links remain compatible. Disconnecting or
+dismantling a post leaves a departed paid trip intact. White's ordinary half
+refund returns one White and one wood. Both raw media carry at 128 per family;
+forged output and recovery retain existing uncapped ownership.
+[Exact behaviour, costs and paid evidence](../prototype/living-frontier-wave1-2026-09-08.md).
+
 ## Common building loads — INT-03D, 8 September 2026
 
 Ordinary timber, field/split/dressed stone and all eight habitat ingredients and

@@ -9,7 +9,7 @@ const LABELS := {
 	"lantern_lamp": "Lanternheart lamp", "cargo_winch": "Thrumroot cargo drum",
 	"winch_landing": "Fixed cargo landing", "stormglass_lever": "Stormglass lever",
 	"magnetic_sorter": "Pullstone sorting chute", "ventlung_bellows": "Ventlung bellows",
-	"pressure_feeder": "Pressure feeder"
+	"pressure_feeder": "Pressure feeder", "white_connection": "White connection"
 }
 
 var machine_key := ""
@@ -44,6 +44,7 @@ static func bounds_for(fixture_kind: String) -> Vector3:
 		"magnetic_sorter": return LOOK.sorter_bounds
 		"ventlung_bellows": return LOOK.bellows_bounds
 		"stormglass_lever": return LOOK.lever_bounds
+		"white_connection": return LOOK.white_connection_bounds
 		"pressure_feeder": return LOOK.feeder_bounds
 	return LOOK.lamp_bounds
 
@@ -94,7 +95,7 @@ func _ready() -> void:
 	if kind == "cargo_winch":
 		_basket = StrangeResourceArt.fixture_visual("cargo_basket")
 		add_child(_basket)
-	if kind in ["cargo_winch", "stormglass_lever"]:
+	if kind in ["cargo_winch", "stormglass_lever", "white_connection"]:
 		_cable = MeshInstance3D.new()
 		var cylinder := CylinderMesh.new()
 		cylinder.top_radius = 1.0
@@ -102,12 +103,12 @@ func _ready() -> void:
 		cylinder.height = 1.0
 		cylinder.radial_segments = 6
 		_cable.mesh = cylinder
-		_cable.material_override = _material(LOOK.cable_colour)
+		_cable.material_override = _material(LOOK.white_connection_colour if kind == "white_connection" else LOOK.cable_colour)
 		add_child(_cable)
 		_pulse = _sphere(LOOK.pulse_radius_m, LOOK.pulse_colour)
 		add_child(_pulse)
 		_pulse.hide()
-	if kind in ["cargo_winch", "lantern_lamp", "pressure_feeder"]:
+	if kind in ["cargo_winch", "lantern_lamp", "pressure_feeder", "white_connection"]:
 		_receiver = _sphere(LOOK.receiver_radius_m, LOOK.receiver_colour)
 		_receiver.position = Vector3(0, bounds_for(kind).y + 0.04, 0)
 		add_child(_receiver)
@@ -289,6 +290,8 @@ func supported() -> bool:
 
 func link_clear(target: ContraptionSite) -> bool:
 	if target == null or not is_inside_tree(): return false
+	if kind == "white_connection" or target.kind == "white_connection":
+		if not supported() or not target.supported(): return false
 	if kind == "cargo_winch":
 		if not supported() or not target.supported(): return false
 		var shape := SphereShape3D.new()
@@ -329,6 +332,10 @@ func perform(action: String) -> Dictionary:
 		clear = span_clear()
 		var record: Dictionary = sim.contraption_state(machine_key)
 		var receiver := find_site(get_tree(), String(record.get("link", "")))
+		if receiver != null and receiver.kind == "white_connection":
+			clear = clear and receiver.span_clear()
+			var relay: Dictionary = sim.contraption_state(receiver.machine_key)
+			receiver = find_site(get_tree(), String(relay.get("link", "")))
 		other_clear = receiver != null and (receiver.span_clear() if receiver.kind=="cargo_winch" else bool(receiver.feeder_status().ready) if receiver.kind=="pressure_feeder" else true)
 	var result: Dictionary = sim.contraption_action(machine_key, action, clear, other_clear, 0.0)
 	if bool(result.get("ok", false)) and action in ["wind", "prime", "start", "sort","charge"]:

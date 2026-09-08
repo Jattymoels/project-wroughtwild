@@ -351,6 +351,13 @@ For a deliberate Faint Ember purchase, carry 96 Salt, 4 iron ingots and 8 charco
 to that forge. Smelting earns an Ember ingot. In F, lay Heavy Strike at row 2 /
 column 2, Ember at row 2 / column 1 and the Catalyst at row 3 / column 1 to see
 Kindling. Rows/columns here are counted from one.
+White clues lead to a second inclusion. Its raw mineral makes a White Connection
+Kit at the bench (2 White + 2 wood). Acquire the real Stormglass/Thrumroot cores
+and craft/place a lever, winch and landing. Choose landing at the drum, drum at
+White, and White at the lever. Load the drum and wind it once; striking the lever
+requests a paid trip. Collect at the landing. F5 during travel and F9/restart
+preserve that trip, cargo and spent winding. Detailed costs and tested seed-77
+positions are in the work item below.
 The [Wave 1 work item](../docs/prototype/living-frontier-wave1-2026-09-08.md)
 records current completion, exact costs, checks and limitations. This opt-in
 profile does not clear Wave 2 or change the existing campaign.

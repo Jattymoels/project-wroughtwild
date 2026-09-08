@@ -1,4 +1,4 @@
-param([switch]$Native, [switch]$Flow, [switch]$Restore, [switch]$Rendered, [switch]$Regression)
+param([switch]$Native, [switch]$Flow, [switch]$Restore, [switch]$Rendered, [switch]$Regression, [switch]$ContinueFrom1B)
 $ErrorActionPreference = 'Stop'
 $lfRoot = Split-Path $PSScriptRoot
 Set-Location -LiteralPath $lfRoot
@@ -37,8 +37,10 @@ if ($Native) {
     }
 }
 if ($Flow) {
-    if ($Rendered) { Invoke-LFEngine 'flow-rendered' @('--position', '-9999,-9999', '--audio-driver', 'Dummy', 'res://tests/living_frontier_flow.tscn') }
-    else { Invoke-LFEngine 'flow' @('--headless', 'res://tests/living_frontier_flow.tscn') }
+    $lfExtra = @()
+    if ($ContinueFrom1B) { $lfExtra = @('--', '--lf-continue-c') }
+    if ($Rendered) { Invoke-LFEngine 'flow-rendered' (@('--position', '-9999,-9999', '--audio-driver', 'Dummy', 'res://tests/living_frontier_flow.tscn') + $lfExtra) }
+    else { Invoke-LFEngine 'flow' (@('--headless', 'res://tests/living_frontier_flow.tscn') + $lfExtra) }
 }
 if ($Restore) { Invoke-LFEngine 'flow-restart' @('--headless', 'res://tests/living_frontier_flow.tscn', '--', '--lf-restore') }
 if ($Regression) {

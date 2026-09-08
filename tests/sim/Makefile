@@ -7,8 +7,9 @@ SOURCES := test_main.cpp $(SIM)/src/json.cpp $(SIM)/src/tuning.cpp \
            $(SIM)/src/stats.cpp $(SIM)/src/combat.cpp $(SIM)/src/trial.cpp \
            $(SIM)/src/save.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(SIM)/src/loot.cpp $(SIM)/src/grammar.cpp $(SIM)/src/lattice.cpp $(SIM)/src/foundry.cpp $(SIM)/src/daycycle.cpp
 BIN := build/sim_tests
+.DEFAULT_GOAL := test
 
-.PHONY: test world-intensive strange-frontier cataclysm-world pressure-generation wide-frontier worldgen-kernels contraptions clean
+.PHONY: test leyline world-intensive strange-frontier cataclysm-world pressure-generation wide-frontier worldgen-kernels contraptions clean
 
 leyline: build/leyline_tests
 	./build/leyline_tests ../../data/tuning
@@ -16,8 +17,9 @@ leyline: build/leyline_tests
 build/leyline_tests: test_leyline.cpp $(wildcard $(SIM)/src/*.cpp) $(wildcard $(SIM)/include/wroughtwild/*.h)
 	@mkdir -p build
 	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_leyline.cpp $(wildcard $(SIM)/src/*.cpp) -o $@
-test: $(BIN)
+test: $(BIN) build/leyline_tests
 	./$(BIN) ../../data/tuning
+	./build/leyline_tests ../../data/tuning
 
 # Complete terrain/pack fingerprints from before the intensive, multi-seed
 # reachable habitat guarantees, and the approved material/form matrix.

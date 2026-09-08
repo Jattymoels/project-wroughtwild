@@ -134,6 +134,18 @@ static func fixture_visual(kind: String) -> Node3D:
 		"stormglass_lever":
 			part(root,"lever","Housing")
 			part(root,"arm","Lever",Vector3(0,.4,0))
+		"white_connection":
+			for entry: Dictionary in MACHINES.white_connection_parts:
+				var child := MeshInstance3D.new()
+				var mesh := BoxMesh.new()
+				mesh.size = entry.size
+				child.mesh = mesh
+				child.position = entry.at
+				var finish := StandardMaterial3D.new()
+				finish.albedo_color = entry.colour
+				finish.roughness = .9
+				child.material_override = finish
+				root.add_child(child)
 		"magnetic_sorter": part(root,"sorter","Housing")
 		"ventlung_bellows":
 			part(root,"bellows","Housing")

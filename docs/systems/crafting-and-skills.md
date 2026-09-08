@@ -16,6 +16,11 @@ inputs and fuel. Existing Stable/Potent refinement, Foundry identity, lifting,
 equipment use and death ownership are unchanged. Forged outputs retain the
 existing rule that crafting can exceed gathering caps without loss.
 
+**LF-1C:** in that same opt-in catalogue, `assemble_white_connection` costs two
+White Mineral and two wood at the workbench (era 1, no skill gate, zero XP/fuel)
+for one placeable kit. This is a signal input to the existing winch, with no
+new energy or processing rules. White carries up to 128 units per family.
+
 **INT-04A action feedback, 7 September 2026:** successful manual crafting now
 confirms once at the actual active station, with a short local sound and small
 temporary work flecks. Field recipes confirm at the player. Recipe quantities,

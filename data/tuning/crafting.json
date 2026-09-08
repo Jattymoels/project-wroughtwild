@@ -3,6 +3,7 @@
   "status": "prototype-placeholder | D-023 slice 3 (4 Sep 2026): typed currency - four kinds replace the coin",
   "materials": [
     {"id": "red_salt", "display_name": "Red Salt"},
+    {"id": "white_mineral", "display_name": "White Mineral"},
     {
       "id": "timber_frame",
       "display_name": "Timber Frame"
@@ -1769,6 +1770,20 @@
         "construction"
       ],
       "design_purpose": "A reusable luminous heart in a weathered frame lights a cave or home; the scarce heart is recovered intact on dismantling."
+    },
+    {
+      "id": "assemble_white_connection",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "White Connection Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": { "white_mineral": 2, "wood": 2 },
+      "outputs": { "white_connection_kit": 1 },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": ["construction"],
+      "design_purpose": "Living Frontier: one White lot supplies eight inexpensive placeable signal connections. A Stormglass lever sends one request through one connection to a Cargo Winch; the winch spends its own stored winding. No energy, queued requests, delay, branching or automatic extraction. Ordinary frame removal refunds apply."
     },
     {
       "id": "assemble_cargo_winch",

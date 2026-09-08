@@ -25,8 +25,8 @@ it does not replace this separate art study or queue every animal variant.
 
 ## Parallel planning — Living Frontier, INT-10 through INT-18
 
-**Wave 1 selected for implementation, 8 September:** the owner's explicit
-request authorises LF-1A → LF-1B → LF-1C only. The [bounded implementation and
+**Wave 1 implemented, 8 September:** the owner's explicit
+request authorised LF-1A → LF-1B → LF-1C only. The [bounded implementation and
 handoff](living-frontier-wave1-2026-09-08.md) records opt-in compatibility,
 source/recipe tuning, paid player flows and per-slice verification. Stop after
 the first constructed connection for owner review. Wave 2 remains unselected;

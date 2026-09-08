@@ -575,7 +575,7 @@ func read(path: String, player: WroughtwildPlayer) -> bool:
 		# A newer format/profile needs its matching game, not an automatic rewind.
 		if parsed.get("leylines", "") is String and not String(parsed.get("leylines", "")).is_empty():
 			var leyline_data: Variant = JSON.parse_string(parsed.leylines)
-			if leyline_data is Dictionary and _valid_integer(leyline_data.get("version")) and int(leyline_data.version) > 1:
+			if leyline_data is Dictionary and _valid_integer(leyline_data.get("version")) and int(leyline_data.version) > 2:
 				last_error = "unsupported leyline save version"
 				return false
 		if parsed.has("schema_version") and _valid_integer(parsed.schema_version) and int(parsed.schema_version)>SCHEMA_VERSION:

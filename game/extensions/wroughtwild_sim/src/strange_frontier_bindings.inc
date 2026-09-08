@@ -9,10 +9,13 @@ const char* machine_kinds[] = {"lantern_lamp","cargo_winch","winch_landing","sto
 }
 
 PackedStringArray WroughtwildSim::contraption_kinds() const {
-    PackedStringArray ids; for (auto kind : machine_kinds) ids.push_back(kind); return ids;
+    PackedStringArray ids; for (auto kind : machine_kinds) ids.push_back(kind);
+    if (world_profile_==wroughtwild::leyline::profile) ids.push_back("white_connection");
+    return ids;
 }
 String WroughtwildSim::contraption_kind_for_kit(const String& kit) const {
     for (auto kind : machine_kinds) if (kit==String(kind)+"_kit") return kind;
+    if (world_profile_==wroughtwild::leyline::profile && kit=="white_connection_kit") return "white_connection";
     return {};
 }
 bool WroughtwildSim::contraption_place(const String& kind, const String& key, const Vector3& at, int rotation) {

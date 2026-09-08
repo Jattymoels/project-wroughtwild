@@ -26,7 +26,7 @@ struct Station {
 };
 
 struct Recipe {
-    std::string worldProfile; // empty = existing acquisition in every world
+    std::string worldProfile; // empty = no required profile
     std::string excludedWorldProfile; // a selected replacement keeps legacy costs intact
     bool availableIn(const std::string& profile) const {
         return (worldProfile.empty() || worldProfile == profile) &&

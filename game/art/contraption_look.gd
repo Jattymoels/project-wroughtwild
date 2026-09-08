@@ -36,6 +36,14 @@ extends Resource
 @export var sorter_bounds := Vector3(1.3, 1.3, 0.85)
 @export var bellows_bounds := Vector3(0.92, 0.97, 1.15)
 @export var lever_bounds := Vector3(0.65, 0.95, 0.5)
+## White is a small supported signal post; its high crystal exposes both cables.
+@export var white_connection_bounds := Vector3(.65, 1.18, .55)
+@export var white_connection_colour := Color("e6e1bd")
+## Primitive frame and crystal share their dimensions across catalogue and world.
+@export var white_connection_parts: Array[Dictionary] = [
+	{"size":Vector3(.65,.15,.55),"at":Vector3(0,.075,0),"colour":Color("756048")},
+	{"size":Vector3(.15,.85,.15),"at":Vector3(0,.55,0),"colour":Color("756048")},
+	{"size":Vector3(.34,.42,.3),"at":Vector3(0,.97,0),"colour":Color("e6e1bd")}]
 @export var lamp_bounds := Vector3(0.55, 1.06, 0.45)
 ## A compact hopper, tension drum and pressure chamber beside the player's forge.
 @export var feeder_bounds := Vector3(1.5, 1.45, 1.45)

@@ -63,9 +63,13 @@ func _refresh(message_text: String = "") -> void:
 				rows.append(_action("Fixed landing", status + " Use a Stormglass lever linked to its drum to request the return trip.", func(): pass, false))
 				_add_cargo(rows, owner)
 		"stormglass_lever":
-			rows.append(_action("Choose receiver", _link_description(state, "Link a nearby cargo drum, pressure feeder or Lanternheart lamp."), _choose_link))
-			rows.append(_action("Strike the lever", "Drums and feeders need stored drive; lamps switch directly.",
+			rows.append(_action("Choose receiver", _link_description(state, "Link a White connection or an existing local receiver."), _choose_link))
+			rows.append(_action("Strike the lever", _signal_description(state),
 				_operate.bind("pulse"), not String(state.get("link", "")).is_empty()))
+		"white_connection":
+			rows.append(_action("Choose cargo drum", _link_description(state, "Disconnected. Choose one placed cargo drum."), _choose_link))
+			rows.append(_action("Signal only", "A linked Stormglass lever requests one trip. Wind the drum and link its landing first.", Callable(), false,
+				"Both signal spans must be clear and supported. This connection stores no energy or pending requests. White cannot branch, delay, loop or operate another White connection."))
 		"magnetic_sorter":
 			rows.append(_action("Tip one batch", "Load a batch below. Iron ingredients and other stock go to separate trays.", _operate.bind("sort")))
 			_add_deposits(rows)
@@ -79,6 +83,8 @@ func _refresh(message_text: String = "") -> void:
 			var target_name := "a nearby set wedge or responsive seam" if target == null else Hud.pretty(String(target.material_family))
 			rows.append(_action("Release pressure", "Target: %s. Set a wedge first if required." % target_name,
 				_release, energy > 0 and target != null))
+	if site.kind in ["stormglass_lever","white_connection"] and not String(state.link).is_empty():
+		rows.append(_action("Disconnect signal", "Stop later requests. A basket already travelling keeps its paid trip and cargo.", _link.bind("")))
 	rows.append(_action("Dismantle and recover", "Recover intact rare cores, stored ingredients and completed output. Ordinary frame materials use the existing building refund."+(" Unused drive vents; the pocket stays spent." if site.kind=="pressure_feeder" else ""), _dismantle))
 	player.open_custom_panel(_title, rows, message_text)
 	player.work_panel.set_meta("contraption_key", site.machine_key)
@@ -225,6 +231,23 @@ func _link_description(state: Dictionary, empty_text: String) -> String:
 		float(state.get("span_length", 0)), "The connection is clear." if site.span_clear() else "The connection or its support is obstructed."]
 
 
+func _signal_description(state: Dictionary) -> String:
+	var connection := ContraptionSite.find_site(site.get_tree(),String(state.get("link","")))
+	if connection == null or connection.kind != "white_connection":
+		return "Drums and feeders need stored drive; lamps switch directly."
+	var relay: Dictionary = site.sim.contraption_state(connection.machine_key)
+	var drum := ContraptionSite.find_site(site.get_tree(),String(relay.get("link","")))
+	if drum == null: return "White output disconnected. Choose its cargo drum at the White post."
+	if not site.span_clear() or not connection.span_clear(): return "Clear and support both signal spans before requesting a trip."
+	var drive: Dictionary = site.sim.contraption_state(drum.machine_key)
+	if String(drive.link).is_empty(): return "Choose the drum's fixed landing first."
+	if not drum.span_clear(): return "Clear the cargo span and support both endpoints."
+	if bool(drive.moving): return "Basket travelling. Another request cannot start a second trip."
+	var cost := int(site.sim.contraption_config().trip_energy)
+	if int(drive.energy)<cost: return "White route ready; drum unwound. Wind it before requesting a trip."
+	return "White route ready. Drum: %d stored work; next trip spends %d." % [int(drive.energy),cost]
+
+
 func _landing_owner() -> Dictionary:
 	for key in site.sim.contraption_ids():
 		var state: Dictionary = site.sim.contraption_state(key)
@@ -305,7 +328,8 @@ func _choose_link() -> void:
 		if not node is ContraptionSite or node == site: continue
 		var target := node as ContraptionSite
 		if site.kind == "cargo_winch" and target.kind != "winch_landing": continue
-		if site.kind == "stormglass_lever" and not target.kind in ["cargo_winch", "lantern_lamp","pressure_feeder"]: continue
+		if site.kind == "stormglass_lever" and not target.kind in ["cargo_winch", "lantern_lamp","pressure_feeder","white_connection"]: continue
+		if site.kind == "white_connection" and target.kind != "cargo_winch": continue
 		var distance_m := site.global_position.distance_to(target.global_position)
 		if distance_m > range_m: continue
 		var clear := site.link_clear(target)

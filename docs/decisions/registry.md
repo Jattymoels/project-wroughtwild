@@ -14,6 +14,10 @@ This supersedes the extraction deferral only for Wave 1; Wave 2 is not cleared.
 LF-1B selects 96 Red Salt + 4 iron ingots + 8 charcoal for one immediate
 ordinary Faint Ember craft. It replaces iron-only `distil_ember` solely in this
 experiment; its normal-world costs and all owned-grade refinements remain.
+LF-1C selects 2 White Mineral + 2 wood for a placed one-output connection.
+White forwards one lever request to the existing cargo drum, which spends its
+own winding. Existing direct links remain compatible. Source payload version 2
+explicitly migrates published Red-only ledgers before introducing White once.
 
 Owner campaign/extraction direction, 8 September 2026: the owner supports the
 White/Impulse, Red/Excitation, Blue/Retention and Green/Propagation foundations

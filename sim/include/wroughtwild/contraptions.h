@@ -115,7 +115,8 @@ public:
     // destroy cargo. Erasing a landing recalls its basket, including mid-trip.
     Result erase(const std::string& key, economy::Inventory& pack);
     // Host certifies unobstructed supported endpoints; native verifies actual
-    // saved positions, distance and allowed one-hop topology as well.
+    // saved positions, distance and bounded receiver topology as well. LF-1
+    // additionally permits lever -> one White connection -> cargo drum.
     Result link(const std::string& source, const std::string& target, bool clear);
     Result wind(const std::string& key);
     Result start(const std::string& key, bool clear);
