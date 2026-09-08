@@ -3,6 +3,13 @@
 Status: **Owner-approved direction; detailed rules proposed, not implemented.**
 8 September 2026. Source baseline: `d466256`.
 
+The owner's subsequent request to map this intent across world design,
+crafting, building and combat is developed in
+[INT-09: Meteorite influences across the living world](meteorite-leyline-intensive-2026-09-08.md).
+That intensive recovers the original conversation wording, proposes a complete
+red-moth/glassbank return loop and separates later palette/extraction work.
+Its detailed rules remain proposals; this link does not select implementation.
+
 ## Owner direction
 
 Different meteorites carry different magic/technology. Their influence travels

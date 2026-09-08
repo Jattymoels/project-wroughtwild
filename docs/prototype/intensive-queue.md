@@ -22,6 +22,18 @@ connect seeded impact types, altered encounters and extracted augmentations.
 Specific colour functions and a first gameplay slice remain to be selected;
 this design record does not replace the active art study or queue all variants.
 
+## Parallel planning — INT-09 meteorite influences
+
+Owner request, 8 September: recover the coloured-meteorite lore from the prior
+conversations and map it into world design, mobs, drops, crafting, building and
+combat while image-to-3D setup waits. **Plan ready:**
+[INT-09: Meteorite influences across the living world](meteorite-leyline-intensive-2026-09-08.md).
+The proposed first proof joins one seeded red source and Cinder moth encounter
+to existing Ember buildcraft and Cinderglass windows. A finite field shard host
+and signature vent would be new selected behaviour. Exact colour meanings,
+successor-world compatibility and gameplay slices await selection; the separate
+wolf/woodland study retains its current ownership and review status.
+
 ## Previous slice — INT-08B portable Windows build
 
 The owner's “Continue” on 8 September selects
