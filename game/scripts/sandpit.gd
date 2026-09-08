@@ -33,12 +33,14 @@ var _day_rules: Dictionary = {}
 
 
 func _ready() -> void:
+	if OS.get_cmdline_user_args().has("--living-frontier"):
+		world_profile = "living_frontier_wave1"
 	var normal_launch := get_parent() == get_tree().root and scene_file_path == "res://scenes/sandpit.tscn"
 	if normal_launch and DisplayServer.get_name() != "headless":
 		seed_controls = SEED_CONTROLS.new()
 		add_child(seed_controls)
 		var explicit_seed := SEED_CONTROLS.argument_seed(OS.get_cmdline_user_args())
-		seed_controls.configure(self,String(explicit_seed.text) if bool(explicit_seed.provided) else str(SEED_CONTROLS.random_seed()))
+		seed_controls.configure(self,String(explicit_seed.text) if bool(explicit_seed.provided) else str(SEED_CONTROLS.random_seed()),SaveManager.default_path())
 		return
 	if normal_launch:
 		var explicit_seed := SEED_CONTROLS.argument_seed(OS.get_cmdline_user_args())
@@ -81,7 +83,7 @@ func _build_world(seed_value: int) -> void:
 		return
 	# A new terrain map must not re-ground the previous world's decorative
 	# sites as its first streamed chunks arrive. Their state is wholly derived.
-	for name in ["PressurePockets", "CataclysmSites", "StrangeSites", "HabitatSites"]:
+	for name in ["LeylineSources", "PressurePockets", "CataclysmSites", "StrangeSites", "HabitatSites"]:
 		var previous := get_node_or_null(name)
 		if previous != null:
 			remove_child(previous)
@@ -102,6 +104,10 @@ func _build_world(seed_value: int) -> void:
 	StrangeSites.build(self, terrain)
 	CataclysmSites.build(self, terrain)
 	PressurePocket.build(self, terrain)
+	if not _sim().leyline_bind_world(world_profile,seed_value):
+		push_error("Could not bind Living Frontier sources.")
+		return
+	LeylineSource.build(self,terrain)
 	mob_packs.setup(terrain, seed_value)
 
 	var spawn := terrain.surface_position(terrain.map["spawn_x"], terrain.map["spawn_z"])
@@ -156,6 +162,13 @@ func _physics_process(delta: float) -> void:
 	if terrain.map.is_empty():
 		return
 	_tick_day(delta)
+	if world_profile == "living_frontier_wave1" and not player.trial.active() and player.combat.life > 0 and not player.work_panel.is_open() and not player.inventory_panel.is_open() and not player.class_panel.is_open() and not player.foundry_panel.is_open() and not player.chest_panel.is_open() and not player.hud.help_visible():
+		var blocked := PackedStringArray()
+		for source in get_tree().get_nodes_in_group("leyline_sources"):
+			if is_ancestor_of(source):
+				if not source.supported(): blocked.append(source.source_id)
+				source.refresh()
+		_sim().leyline_tick(delta,blocked)
 	_era_poll -= delta
 	if _era_poll > 0.0:
 		return

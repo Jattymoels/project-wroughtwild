@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner implementation approval, 8 September 2026: implement Living Frontier
+**Wave 1 only**, LF-1A → LF-1B → LF-1C. **D-033** selects an opt-in
+`living_frontier_wave1` experiment reusing V6 geography, with independent saved
+source lots/claims, useful raw Red and White media, an ordinary Red brick fuel
+variant, costly ordinary Faint Ember manufacture and one placed White pulse
+connection to the existing hand-wound winch. The [bounded work item](../prototype/living-frontier-wave1-2026-09-08.md)
+records exact tuning, ownership and evidence. Normal V1–V6 geography/acquisition,
+owned grades/refinement, existing campaign triggers and finite ordinary/rare-core/
+pressure stock remain. Only these magical hosts receive capped active-overworld
+renewal. No research, lessons, perfection ladder or mandatory craft timers.
+This supersedes the extraction deferral only for Wave 1; Wave 2 is not cleared.
+
 Owner campaign/extraction direction, 8 September 2026: the owner supports the
 White/Impulse, Red/Excitation, Blue/Retention and Green/Propagation foundations
 and requests coordinated intensives/waves before a moth implementation.

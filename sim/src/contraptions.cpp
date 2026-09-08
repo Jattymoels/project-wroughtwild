@@ -132,7 +132,7 @@ Config Config::load(const std::string& path) {
 
 MachineWorld::MachineWorld(Config config, WorldIdentity identity) : config_(std::move(config)), identity_(std::move(identity)) {
     if (!identity_.profile.empty() && !identifier(identity_.profile)) throw std::runtime_error("contraptions: invalid world profile");
-    if (!identity_.sources.empty() && identity_.profile != "frontier_v5" && identity_.profile != "frontier_v6") throw std::runtime_error("contraptions: pressure belongs only to its frozen source profile");
+    if (!identity_.sources.empty() && identity_.profile != "frontier_v5" && identity_.profile != "frontier_v6" && identity_.profile != "living_frontier_wave1") throw std::runtime_error("contraptions: pressure belongs only to its frozen source profile");
     for (const auto& source : identity_.sources) {
         if (!identifier(source.id) || source.capacity != config_.pressureSourceStrokes || !sources_.emplace(source.id,source.capacity).second)
             throw std::runtime_error("contraptions: invalid native pressure source");

@@ -137,6 +137,14 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("contraption_validate", "text"), &WroughtwildSim::contraption_validate);
     ClassDB::bind_method(D_METHOD("contraption_load", "text"), &WroughtwildSim::contraption_load);
     ClassDB::bind_method(D_METHOD("contraption_bind_world", "profile", "seed"), &WroughtwildSim::contraption_bind_world);
+    ClassDB::bind_method(D_METHOD("leyline_bind_world", "profile", "seed"), &WroughtwildSim::leyline_bind_world);
+    ClassDB::bind_method(D_METHOD("leyline_sources"), &WroughtwildSim::leyline_sources);
+    ClassDB::bind_method(D_METHOD("leyline_work", "id"), &WroughtwildSim::leyline_work);
+    ClassDB::bind_method(D_METHOD("leyline_collect", "id", "item"), &WroughtwildSim::leyline_collect);
+    ClassDB::bind_method(D_METHOD("leyline_tick", "seconds", "blocked"), &WroughtwildSim::leyline_tick);
+    ClassDB::bind_method(D_METHOD("leyline_save"), &WroughtwildSim::leyline_save);
+    ClassDB::bind_method(D_METHOD("leyline_validate_world", "text", "profile", "seed"), &WroughtwildSim::leyline_validate_world);
+    ClassDB::bind_method(D_METHOD("leyline_load_world", "text", "profile", "seed"), &WroughtwildSim::leyline_load_world);
     ClassDB::bind_method(D_METHOD("contraption_validate_world", "text", "profile", "seed"), &WroughtwildSim::contraption_validate_world);
     ClassDB::bind_method(D_METHOD("contraption_load_world", "text", "profile", "seed"), &WroughtwildSim::contraption_load_world);
     ClassDB::bind_method(D_METHOD("contraption_pressure_sources"), &WroughtwildSim::contraption_pressure_sources);
@@ -1238,6 +1246,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         for (const auto& id : loaded->crafting.currencies) machine_config.allowedItems.erase(id);
         for (const auto& base : loaded->items.itemBases) machine_config.allowedItems.erase(base.id);
         auto machines = std::make_unique<wroughtwild::contraptions::MachineWorld>(machine_config);
+        auto leyline_config = wroughtwild::leyline::Config::load(to_std(tuning_directory.path_join("leyline.json")));
         // PlayerEconomy keeps a reference to the tuning, so the tuning must
         // outlive it: drop the session and player first, then swap the tuning in.
         trial_.reset();
@@ -1247,6 +1256,9 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         structure_.clear();
         tuning_ = std::move(loaded);
         contraptions_ = std::move(machines);
+        leylines_.reset();
+        leyline_positions_.clear();
+        leyline_config_ = std::move(leyline_config);
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);
         temper_seed_ = std::random_device{}();
         last_error_ = String();
@@ -1272,6 +1284,7 @@ PackedStringArray WroughtwildSim::recipe_ids() const {
         return ids;
     }
     for (const auto& recipe : tuning_->crafting.recipes) {
+        if (!recipe.worldProfile.empty() && recipe.worldProfile != world_profile_) continue;
         ids.push_back(to_godot(recipe.id));
     }
     return ids;
@@ -1283,7 +1296,7 @@ Dictionary WroughtwildSim::recipe(const String& recipe_id) const {
         return d;
     }
     const auto* r = tuning_->crafting.findRecipe(to_std(recipe_id));
-    if (r == nullptr) {
+    if (r == nullptr || (!r->worldProfile.empty() && r->worldProfile != world_profile_)) {
         return d;
     }
     d["id"] = to_godot(r->id);
@@ -1297,6 +1310,7 @@ Dictionary WroughtwildSim::recipe(const String& recipe_id) const {
     d["minimum_era"] = r->minimumEra;
     d["era_met"] = player_->currentEra() >= r->minimumEra;
     d["use_categories"] = strings_to_packed(r->useCategories);
+    d["description"] = to_godot(r->description);
     // Gate status for UI: the same checks craft() applies. An empty station
     // means hand-crafting: no facility or fuel gate.
     bool skillMet = true;
@@ -2363,6 +2377,7 @@ bool WroughtwildSim::set_world_profile(const String& profile_id) {
         // A validating save restore may already have prepared this profile.
         if (world_cache_ && world_cache_->profileId != id) world_cache_.reset();
     }
+    player_->worldProfile = id;
     last_error_ = String();
     return true;
 }
@@ -4553,5 +4568,6 @@ double WroughtwildSim::ward_multiplier(const PackedStringArray& carried_statuses
 }
 
 #include "strange_frontier_bindings.inc"
+#include "leyline_bindings.inc"
 
 } // namespace godot

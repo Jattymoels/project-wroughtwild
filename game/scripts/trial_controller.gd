@@ -545,7 +545,7 @@ func suspend_to(path: String) -> bool:
 	return success
 
 func suspend_and_quit() -> void:
-	if suspend_to(SaveManager.DEFAULT_PATH): player.get_tree().quit()
+	if suspend_to(SaveManager.default_path()): player.get_tree().quit()
 
 func capture_boundary() -> Dictionary:
 	if not spatial or state!="boundary": return {}

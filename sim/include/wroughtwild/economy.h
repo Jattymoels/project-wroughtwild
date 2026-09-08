@@ -37,6 +37,8 @@ public:
     explicit PlayerEconomy(const tuning::Tuning& tuning);
 
     Inventory inventory;
+    // Host selects this from the outer saved-world identity, never item data.
+    std::string worldProfile;
     std::map<std::string, int> currency;
     // Gear instances retain their workpiece capacity and exact rolled values.
     // Newly crafted equipment is an instance even when it is Plain.

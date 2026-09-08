@@ -1,5 +1,12 @@
 # Crafting and Skills
 
+**LF-1A, D-033 (8 September 2026):** the opt-in Living Frontier experiment
+adds `fire_red_brick`: 8 raw clay + 2 Red Salt → 4 Rustclay Brick at the basic
+forge, immediate and zero XP. Salt replaces only this variant's one fuel heat;
+the original brick recipe and global fuel table remain exact. Red Salt carries
+up to 128 units per family. No remote chest consumption, special lessons or
+processing timers. [Contract and evidence](../prototype/living-frontier-wave1-2026-09-08.md).
+
 **INT-04A action feedback, 7 September 2026:** successful manual crafting now
 confirms once at the actual active station, with a short local sound and small
 temporary work flecks. Field recipes confirm at the player. Recipe quantities,

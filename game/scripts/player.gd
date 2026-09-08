@@ -435,7 +435,7 @@ func offer_saved_trial() -> void:
 	# inspect the player's save or replace their controlled fixture state.
 	if DisplayServer.get_name()=="headless" or get_tree().current_scene!=get_parent(): return
 	if get_parent().scene_file_path!="res://scenes/sandpit.tscn": return
-	var path:=SaveManager.DEFAULT_PATH
+	var path:=SaveManager.default_path()
 	if not FileAccess.file_exists(path): path+=".previous"
 	if not FileAccess.file_exists(path): return
 	var saved: Variant=JSON.parse_string(FileAccess.get_file_as_string(path))
@@ -456,7 +456,8 @@ func _decline_saved_trial() -> void:
 	work_panel.close_panel()
 	offer_class()
 
-func save_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
+func save_game(path: String = "") -> bool:
+	if path.is_empty(): path = SaveManager.default_path()
 	if trial.active():
 		if trial.spatial and trial.state=="boundary": return trial.suspend_to(path)
 		hud.notify("Reach a cleared floor's descent lift to suspend this run.")
@@ -467,7 +468,8 @@ func save_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
 	return ok
 
 
-func load_game(path: String = SaveManager.DEFAULT_PATH) -> bool:
+func load_game(path: String = "") -> bool:
+	if path.is_empty(): path = SaveManager.default_path()
 	if trial.active():
 		hud.notify("You cannot load inside the trial.")
 		return false
@@ -912,6 +914,8 @@ func aim_probe() -> Dictionary:
 		return {"state":"interact","target":collider,"label":collider.interact_label()}
 	if collider is PressurePocket:
 		return {"state":"interact","target":collider,"label":collider.interact_label()}
+	if collider is LeylineSource:
+		return {"state":"interact","target":collider,"label":collider.interact_label()}
 	if collider is StationSite:
 		var site := collider as StationSite
 		var sim := inventory.get_sim()
@@ -967,6 +971,8 @@ func interact() -> void:
 		(collider as ContraptionSite).interact(self)
 	elif collider is PressurePocket:
 		(collider as PressurePocket).interact(self)
+	elif collider is LeylineSource:
+		(collider as LeylineSource).interact(self)
 	elif collider is OrderBoard:
 		(collider as OrderBoard).interact(self)
 	elif collider is DroppedBundle:

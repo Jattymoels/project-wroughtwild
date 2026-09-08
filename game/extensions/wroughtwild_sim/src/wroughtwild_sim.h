@@ -18,6 +18,7 @@
 #include "wroughtwild/boons.h"
 #include "wroughtwild/combat.h"
 #include "wroughtwild/contraptions.h"
+#include "wroughtwild/leyline.h"
 #include "wroughtwild/daycycle.h"
 #include "wroughtwild/economy.h"
 #include "wroughtwild/grammar.h"
@@ -633,6 +634,14 @@ protected:
 
 public:
     PackedStringArray contraption_kinds() const;
+    bool leyline_bind_world(const String& profile, int seed);
+    Array leyline_sources() const;
+    Dictionary leyline_work(const String& id);
+    Dictionary leyline_collect(const String& id, const String& item);
+    void leyline_tick(double seconds, const PackedStringArray& blocked);
+    String leyline_save() const;
+    bool leyline_validate_world(const String& text, const String& profile, int seed) const;
+    bool leyline_load_world(const String& text, const String& profile, int seed);
     String contraption_kind_for_kit(const String& kit) const;
     bool contraption_place(const String& kind, const String& key, const Vector3& position, int rotation);
     Dictionary contraption_remove(const String& key);
@@ -676,6 +685,9 @@ private:
 
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::contraptions::MachineWorld> contraptions_;
+    wroughtwild::leyline::Config leyline_config_;
+    std::unique_ptr<wroughtwild::leyline::World> leylines_;
+    std::map<std::string, Vector3> leyline_positions_; // bound geography, independent of validation's cache
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;
     wroughtwild::stats::Equipment equipment_;
     std::unique_ptr<wroughtwild::trial::TrialSession> trial_; // null outside a run

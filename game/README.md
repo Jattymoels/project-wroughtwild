@@ -339,3 +339,14 @@ documentation for the newly discovered GDExtension
 The import work itself completes and every later run is clean;
 `run_headless_checks.sh` retries the import once for this reason. Opening the
 project in the editor for the first time may likewise crash once — reopen it.
+# Living Frontier Wave 1 experiment
+
+Run the normal scene with `-- --living-frontier --world-seed=77` appended to
+the Godot launch command. Class/seed choice and Continue work normally; F5/F9
+use `user://living_frontier_wave1.json`, separately from your normal save.
+Normal launches still create V6 worlds. Follow Red scars from the starting
+valley toward the first home clearing, work the Red host and collect its raw
+Salt. At your basic forge, 8 clay and 2 Salt fire 4 existing bricks.
+The [Wave 1 work item](../docs/prototype/living-frontier-wave1-2026-09-08.md)
+records current completion, exact costs, checks and limitations. This opt-in
+profile does not clear Wave 2 or change the existing campaign.

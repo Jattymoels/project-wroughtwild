@@ -2,6 +2,20 @@
 
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
+## Living Frontier Wave 1 (D-033)
+
+- [x] LF-1A opt-in Red extraction supplies useful raw material without a Catalyst;
+  paid ordinary forging produces the existing bricks with an explicit Salt fuel
+  replacement. Original clay/output/fuel recipe remains available.
+- [x] Fixed lots, hidden rare outcomes, interrupted work, full families and
+  partial native claims restore without rerolling or duplicate collection.
+- [ ] LF-1B costly ordinary Faint Ember manufacture and persistent Foundry proof.
+- [ ] LF-1C paid White connection and wound winch/landing cargo delivery.
+- [ ] Owner accepts discovery, extraction effort, spending trade-offs and circuit
+  usefulness. [Evidence and limitations](living-frontier-wave1-2026-09-08.md).
+
+Wave 2 is not cleared by this checklist.
+
 ## Repository and configuration
 
 - [x] The selected engine and version are recorded in an accepted ADR. *(ADR-0001, Godot 4.5-stable)*

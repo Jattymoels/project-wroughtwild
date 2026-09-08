@@ -160,6 +160,7 @@ CraftingTable loadCrafting(const std::string& path) {
 
     for (const auto& r : doc->get("recipes").asArray()) {
         Recipe recipe;
+        if (auto v = r->find("world_profile")) recipe.worldProfile = v->asString();
         recipe.id = r->get("id").asString();
         if (auto v = r->find("minimum_era")) recipe.minimumEra = v->asInt();
         if (auto v = r->find("design_purpose")) recipe.description = v->asString();
@@ -1758,6 +1759,8 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.trial = loadTrial(tuningDirectory + "/trial.json");
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
+    tuning.livingFrontierWorldgen = tuning.worldgen;
+    tuning.livingFrontierWorldgen.generationProfile = "living_frontier_wave1";
     tuning.legacyWorldgen = loadWorldgen(tuningDirectory + "/worldgen-legacy-v1.json");
     tuning.frontierV2Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v2.json");
     tuning.frontierV3Worldgen = loadWorldgen(tuningDirectory + "/worldgen-frontier-v3.json");

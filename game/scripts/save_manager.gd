@@ -11,6 +11,9 @@ extends RefCounted
 
 const SCHEMA_VERSION := 2
 const DEFAULT_PATH := "user://wroughtwild_save.json"
+static func default_path() -> String:
+	return "user://living_frontier_wave1.json" if OS.get_cmdline_user_args().has("--living-frontier") else DEFAULT_PATH
+
 const RESOURCE_NODE_SCENE := preload("res://scenes/resource_node.tscn")
 
 var last_error := ""
@@ -101,6 +104,7 @@ func capture(player: WroughtwildPlayer) -> Dictionary:
 		"schema_version": SCHEMA_VERSION,
 		"sim": player.inventory.get_sim().export_json(),
 		"contraptions": player.inventory.get_sim().contraption_save(),
+		"leylines": player.inventory.get_sim().leyline_save(),
 		"player": {
 			"position": _vec(player.global_position),
 			"yaw": player.rotation.y,
@@ -161,7 +165,7 @@ func _prepare_restore(player: WroughtwildPlayer, data: Dictionary, restoring := 
 	if data.has("world_seed") and (float(data.world_seed) < -2147483648.0 or float(data.world_seed) > 2147483647.0):
 		last_error = "world seed is outside the native signed 32-bit range"
 		return {}
-	if String(data.get("world_profile", "legacy_v1")) == "frontier_v6" and int(data.get("world_seed", 0)) < 0:
+	if String(data.get("world_profile", "legacy_v1")) in ["frontier_v6","living_frontier_wave1"] and int(data.get("world_seed", 0)) < 0:
 		last_error = "new-world seed must be a nonnegative 31-bit number"
 		return {}
 	var sim: WroughtwildSim = player.inventory.get_sim()
@@ -174,11 +178,14 @@ func _prepare_restore(player: WroughtwildPlayer, data: Dictionary, restoring := 
 	# Validate the whole suspended payload and generation identity before either
 	# the player's economy or their terrain changes. Old v2 saves stay legacy.
 	var profile:=String(data.get("world_profile","legacy_v1"))
-	if profile not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6"]:
+	if profile not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6","living_frontier_wave1"]:
 		last_error="unknown world generation profile: "+profile
 		return {}
 	if not _valid_text(data.get("contraptions","")) or not sim.contraption_validate_world(String(data.get("contraptions","")), profile, int(data.get("world_seed",0))):
 		last_error="invalid saved contraption state"
+		return {}
+	if not _valid_text(data.get("leylines","")) or not sim.leyline_validate_world(String(data.get("leylines","")),profile,int(data.get("world_seed",0))):
+		last_error="invalid saved leyline lots or claims"
 		return {}
 	if not data.get("trial_boundary",{}) is Dictionary:
 		last_error="invalid suspended trial boundary"
@@ -255,6 +262,9 @@ func _apply_prepared(player: WroughtwildPlayer, data: Dictionary, prepared: Dict
 		return false
 	if not sim.contraption_load_world(String(data.get("contraptions","")), profile, int(data.get("world_seed",0))):
 		last_error="contraption state rejected: "+sim.last_error()
+		return false
+	if not sim.leyline_load_world(String(data.get("leylines","")),profile,int(data.get("world_seed",0))):
+		last_error="leyline state rejected"
 		return false
 
 	# In-flight casts belong to the previous live state, never to a loaded save.
@@ -563,10 +573,15 @@ func read(path: String, player: WroughtwildPlayer) -> bool:
 	var parsed: Variant = _read_payload(path)
 	if parsed is Dictionary:
 		# A newer format/profile needs its matching game, not an automatic rewind.
+		if parsed.get("leylines", "") is String and not String(parsed.get("leylines", "")).is_empty():
+			var leyline_data: Variant = JSON.parse_string(parsed.leylines)
+			if leyline_data is Dictionary and _valid_integer(leyline_data.get("version")) and int(leyline_data.version) > 1:
+				last_error = "unsupported leyline save version"
+				return false
 		if parsed.has("schema_version") and _valid_integer(parsed.schema_version) and int(parsed.schema_version)>SCHEMA_VERSION:
 			last_error = "unsupported save schema %s" % str(parsed.schema_version)
 			return false
-		if parsed.has("world_profile") and _valid_text(parsed.world_profile) and String(parsed.world_profile) not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6"]:
+		if parsed.has("world_profile") and _valid_text(parsed.world_profile) and String(parsed.world_profile) not in ["legacy_v1","frontier_v2","frontier_v3","frontier_v4","frontier_v5","frontier_v6","living_frontier_wave1"]:
 			last_error = "unknown world generation profile: " + String(parsed.world_profile)
 			return false
 		var prepared := _prepare_restore(player, parsed)

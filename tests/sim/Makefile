@@ -9,6 +9,13 @@ SOURCES := test_main.cpp $(SIM)/src/json.cpp $(SIM)/src/tuning.cpp \
 BIN := build/sim_tests
 
 .PHONY: test world-intensive strange-frontier cataclysm-world pressure-generation wide-frontier worldgen-kernels contraptions clean
+
+leyline: build/leyline_tests
+	./build/leyline_tests ../../data/tuning
+
+build/leyline_tests: test_leyline.cpp $(wildcard $(SIM)/src/*.cpp) $(wildcard $(SIM)/include/wroughtwild/*.h)
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_leyline.cpp $(wildcard $(SIM)/src/*.cpp) -o $@
 test: $(BIN)
 	./$(BIN) ../../data/tuning
 

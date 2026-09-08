@@ -30,6 +30,7 @@
   "hauling": {
     "carry_cap_default": 40,
     "carry_cap": {
+      "red_salt": 128,
       "wood": 240,
       "fieldstone": 240,
       "split_stone": 240,

@@ -1,5 +1,13 @@
 # World Generation, Settlements and Travel
 
+**LF-1A, D-033 (8 September 2026):** `living_frontier_wave1` is an explicitly
+opt-in experiment on the exact V6 base geography, not the default successor
+campaign. A reachable home-clearing margin supports one native Red host; its
+lot stock, fixed outcomes, partial work, claims and capped active-overworld
+formation live in a separate complete source ledger. V1–V6 generation and
+acquisition stay unchanged. Normal launch still uses V6, and the experiment
+uses a separate default save. [Work item and tuning](../prototype/living-frontier-wave1-2026-09-08.md).
+
 ## Building refresh — INT-03C, 7 September 2026
 
 Construction edits carry their actual clearance bounds into deferred scenery

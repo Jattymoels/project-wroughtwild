@@ -2,6 +2,7 @@
   "schema_version": 1,
   "status": "prototype-placeholder | D-023 slice 3 (4 Sep 2026): typed currency - four kinds replace the coin",
   "materials": [
+    {"id": "red_salt", "display_name": "Red Salt"},
     {
       "id": "timber_frame",
       "display_name": "Timber Frame"
@@ -286,6 +287,19 @@
     }
   ],
   "recipes": [
+    {
+      "id": "fire_red_brick",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Fire Rustclay Brick with Red Salt",
+      "station": "forge_basic",
+      "minimum_skill": {},
+      "inputs": {"raw_clay": 8, "red_salt": 2},
+      "outputs": {"rustclay_brick": 4},
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "use_categories": ["construction"],
+      "design_purpose": "LF-1A: 2 Red Salt replaces only this variant's 1 ordinary fuel heat. The original 8 clay and 4 brick output stay exact. Salt never enters the global fuel table, supplies no drive, and grants no fast mastery. Only the opt-in Living Frontier experiment exposes this recipe."
+    },
     {
       "id": "hide_vest",
       "display_name": "Hide Vest",

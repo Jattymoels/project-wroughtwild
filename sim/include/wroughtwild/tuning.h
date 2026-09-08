@@ -26,6 +26,7 @@ struct Station {
 };
 
 struct Recipe {
+    std::string worldProfile; // empty = existing acquisition in every world
     std::string id;
     std::string displayName;
     std::string station; // "" = hand-craftable anywhere, no facility or fuel gate
@@ -1300,6 +1301,7 @@ struct Tuning {
     WorldgenTable frontierV3Worldgen; // immutable frontier_v3 geography and placement inputs
     WorldgenTable frontierV4Worldgen; // immutable frontier_v4 topology, history and placement inputs
     WorldgenTable frontierV5Worldgen; // immutable frontier_v5 pressure geography and placement inputs
+    WorldgenTable livingFrontierWorldgen; // opt-in LF-1 uses identical V6 base geography
     GrammarTable grammar;
 };
 
