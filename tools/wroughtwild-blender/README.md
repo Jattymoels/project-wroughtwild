@@ -255,3 +255,25 @@ References: [Blender command line](https://docs.blender.org/manual/en/4.2/advanc
 [Godot collision import suffixes](https://docs.godotengine.org/en/4.5/tutorials/assets_pipeline/importing_3d_scenes/node_type_customization.html),
 [MCP stdio](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports),
 [Codex MCP configuration](https://developers.openai.com/codex/mcp/).
+
+## Adopted INT-02B environment target
+
+The 8 September target extends these recipes around the existing struck smithy
+and its linked Ventlung. `build_nature.py --assets-only` exports a source master
+and the six nature roles plus a separate distant broadleaf mesh without gallery
+renders. `build_strange.py --only=ventlung` preserves recipe seed indices while
+exporting just that specimen. The ordinary unfiltered commands still work.
+
+Broader folded leaves, fuller ferns and leaning mineral ledges retain the old
+resource/habitat envelopes. The nine adopted ruin surfaces have stronger original
+grain and damp lower surfaces, with exactly the old triangle geometry. Ventlung
+pleats are curved inside the existing bounds. New recipe numbers and their
+purposes live in the existing three JSON files.
+
+Editable masters and regeneration instructions are in
+[`art/blender`](../../art/blender/README.md#int-02b-environment-target-8-september-2026).
+The durable export contract is
+`game/assets/authored/environment_target_manifest.json`; validate it with
+`python tools/check_environment_target.py`. The full-scene Godot review preceded
+adoption of the same surface treatment on rootvault/upland variants. See the
+[target report](../../docs/prototype/environment-target-2026-09-08.md).

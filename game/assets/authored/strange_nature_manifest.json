@@ -136,8 +136,8 @@
       ]
     },
     "strange_ventlung": {
-      "triangles": 520,
-      "sha256": "57b4b7a1abc5bb0659be340929712c380fc3a78eb1fb70eaab15cef5e743493b",
+      "triangles": 2300,
+      "sha256": "d9c80ddbde17d06a9166815c9e6e7a19be0d1929ff9b2e9b956685cbfbdfecbc",
       "bounds_min": [
         -0.5797747373580933,
         0.006099723279476166,

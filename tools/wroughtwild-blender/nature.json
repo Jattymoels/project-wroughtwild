@@ -1,15 +1,52 @@
 {
   "seed": 64071,
   "branch_sides": 8,
-  "bark_ridge_fraction": 0.10,
-  "leaf_colour_variation": 0.10,
+  "bark_ridge_fraction": 0.1,
+  "leaf_colour_variation": 0.1,
   "rock_colour_variation": 0.065,
-  "tree": {"height": 3.9, "trunk_radius": 0.3, "crown_spread": 1.45, "branches": 7, "sprays_per_branch": 5, "leaves_per_spray": 38, "leaf_length": 0.20},
-  "boulder": {"width": 1.4, "height": 1.0, "depth": 1.2, "burial": 0.10, "moss_coverage": 0.26},
-  "shrub": {"radius": 0.56, "height": 0.78, "branches": 9},
-  "fern_bed": {"radius": 0.49, "height": 0.45, "fronds": 11, "leaf_pairs": 9},
-  "deadfall": {"length": 1.44, "radius": 0.145, "burial": 0.035},
-  "stump": {"height": 0.42, "radius": 0.21, "root_radius": 0.36, "burial": 0.06},
+  "tree": {
+    "height": 3.9,
+    "trunk_radius": 0.3,
+    "crown_spread": 1.45,
+    "branches": 7,
+    "sprays_per_branch": 5,
+    "leaves_per_spray": 38,
+    "leaf_length": 0.34,
+    "leaf_width_fraction": 0.34,
+    "distant_triangle_fraction": 0.14
+  },
+  "boulder": {
+    "width": 1.4,
+    "height": 1.0,
+    "depth": 1.2,
+    "burial": 0.1,
+    "moss_coverage": 0.4,
+    "bedding_twist": 0.24,
+    "bedding_lean": 0.22
+  },
+  "shrub": {
+    "radius": 0.56,
+    "height": 0.78,
+    "branches": 9,
+    "leaf_width": 0.07
+  },
+  "fern_bed": {
+    "radius": 0.49,
+    "height": 0.45,
+    "fronds": 15,
+    "leaf_pairs": 12
+  },
+  "deadfall": {
+    "length": 1.44,
+    "radius": 0.145,
+    "burial": 0.035
+  },
+  "stump": {
+    "height": 0.42,
+    "radius": 0.21,
+    "root_radius": 0.36,
+    "burial": 0.06
+  },
   "purposes": {
     "seed": "Repeatable authored geometry and review composition; does not change the game world seed.",
     "branch_sides": "Eight-sided wood keeps irregular trunks readable at player height within a small mesh budget.",
@@ -22,7 +59,7 @@
     "tree.branches": "Asymmetric scaffold branches supporting the crown silhouette, plus one terminal crown spray.",
     "tree.sprays_per_branch": "Small overlapping leaf sprays instead of solid ball-shaped crowns.",
     "tree.leaves_per_spray": "Foliage density and triangle cost; foliage remains opaque geometry.",
-    "tree.leaf_length": "Leaf scale relative to a one-metre player view; keeps the canopy from looking like grass.",
+    "tree.leaf_length": "Broader overlapping leaf sprays make an occupied canopy rather than isolated twigs; the entire tree retains its previous outer envelope.",
     "boulder.width/height/depth": "Main rock silhouette scaled to the existing boulder collider dimensions.",
     "boulder.burial": "Rock below its surface anchor so the foot settles into soil.",
     "boulder.moss_coverage": "Sparse moss on upper weathered ledges; retains the harvestable stone read.",
@@ -33,6 +70,50 @@
     "deadfall.length/radius": "Short rotten debris consistent with the current non-harvestable habitat detail.",
     "deadfall.burial": "A partly embedded base prevents floating woody debris.",
     "stump.height/radius/root_radius": "Low stump with exposed roots fitting the current 0.4-metre footprint.",
-    "stump.burial": "Root ends sink below the surface anchor rather than hovering."
+    "stump.burial": "Root ends sink below the surface anchor rather than hovering.",
+    "tree.leaf_width_fraction": "Leaf half-width relative to length; .34 gives broad, folded leaves with irregular sky gaps.",
+    "shrub.leaf_width": "Seven-centimetre leaf half-width joins existing brush into readable understory masses.",
+    "retained_bounds": "INT-02B compatibility envelopes measured from the accepted GLBs at a7c3854. Fit changed foliage to these extents; no wider scenery/build exclusion or body.",
+    "tree.distant_triangle_fraction": "Fourteen percent of the near triangles bounds the cost of distant surviving-resource canopies; close interaction retains the full mesh.",
+    "boulder.bedding_twist": "Twist upper mineral ledges by up to .24 radians to break the symmetrical rounded rock silhouette.",
+    "boulder.bedding_lean": "Lean the layered crown .22 recipe units before fitting the original 1.4 by 1.1 by 1.2 metre envelope; the runtime body is unchanged."
+  },
+  "retained_bounds": {
+    "broadleaf_tree": [
+      [
+        -2.148118734359741,
+        -0.11148659884929657,
+        -1.9348770380020142
+      ],
+      [
+        2.1362617015838623,
+        4.58300256729126,
+        1.9670532941818237
+      ]
+    ],
+    "shrub": [
+      [
+        -0.46362489461898804,
+        -0.04293787479400635,
+        -0.47354841232299805
+      ],
+      [
+        0.4800032675266266,
+        0.7666866779327393,
+        0.4503054618835449
+      ]
+    ],
+    "fern_bed": [
+      [
+        -0.4311841130256653,
+        -0.0247527826577425,
+        -0.44280582666397095
+      ],
+      [
+        0.45742690563201904,
+        0.41456443071365356,
+        0.4398244619369507
+      ]
+    ]
   }
 }

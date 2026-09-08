@@ -9,5 +9,10 @@ extends Resource
 ## Small physical battens hold a light panel together without new inventory.
 @export var panel_batten_metres := 0.045
 ## Shared visibility controls bound tree/detail geometry cost in the field.
-@export var authored_tree_distance := 75.0
+@export var authored_tree_distance := 200.0
 @export var authored_detail_distance := 48.0
+## Batches of surviving meadow/fen tree records carry woodland into the middle
+## distance. They contain no colliders, gathering state or generated positions.
+@export var distant_canopy_distance := 320.0
+## A soft far fade avoids a hard ring while bounding distant draw submissions.
+@export var distant_canopy_fade_margin := 24.0

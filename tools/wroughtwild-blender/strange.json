@@ -7,11 +7,21 @@
   "hollow_trunk_height_m": 4.8,
   "stone_rib_height_m": 5.6,
   "palette": {
-    "bark": "4d4735", "bark_light": "746b4a", "heartwood": "9b8864",
-    "paper": "b6b18b", "paper_dark": "777754", "heart": "e3d597",
-    "stone": "b4b4a0", "stone_dark": "787d74", "glass": "d5d2b3",
-    "grit": "343b38", "iron": "4b5452", "rust": "82705b",
-    "membrane": "8d9271", "frame": "69543a", "rope": "a19773"
+    "bark": "4d4735",
+    "bark_light": "746b4a",
+    "heartwood": "9b8864",
+    "paper": "b6b18b",
+    "paper_dark": "777754",
+    "heart": "e3d597",
+    "stone": "b4b4a0",
+    "stone_dark": "787d74",
+    "glass": "d5d2b3",
+    "grit": "343b38",
+    "iron": "4b5452",
+    "rust": "82705b",
+    "membrane": "8d9271",
+    "frame": "69543a",
+    "rope": "a19773"
   },
   "purposes": {
     "seed": "Reproduces the same authored kit without changing world placement seeds.",
@@ -20,6 +30,21 @@
     "root_arch_width_m/root_arch_height_m": "The authored elder envelope and crown junction; asymmetric buttress roots make a walkable irregular chamber beneath a living bole.",
     "hollow_trunk_height_m": "A broken, thick-walled fen trunk with low papery growth; the uneven rim remains below the canopy.",
     "stone_rib_height_m": "Broad eroded sedimentary shelves replace repeated pointed cones along the upland skyline.",
-    "palette": "Earthy bark, aged paper, milky glass and dark iron distinguish physical jobs; warm cream light is separated from fire and frost danger colours."
-  }
+    "palette": "Earthy bark, aged paper, milky glass and dark iron distinguish physical jobs; warm cream light is separated from fire and frost danger colours.",
+    "ventlung_curve_steps": "Four spans per rib segment make the existing membrane curved rather than angular; nine radial sides retain readable pleats.",
+    "ventlung_retained_bounds": "Measured a7c3854 mesh envelope. Curved ribs are fitted to the same ground pivot and extents; runtime body, finish, work and stock are unchanged."
+  },
+  "ventlung_curve_steps": 4,
+  "ventlung_retained_bounds": [
+    [
+      -0.5797747373580933,
+      0.006099723279476166,
+      -0.5606815814971924
+    ],
+    [
+      0.5797747373580933,
+      1.1048634052276611,
+      0.5606815814971924
+    ]
+  ]
 }

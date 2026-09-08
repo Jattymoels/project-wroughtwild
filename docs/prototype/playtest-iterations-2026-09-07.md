@@ -267,6 +267,15 @@ player-height population maps/walks and normal enemy activation evidence.
 
 ### INT-02B: one finished place, then its reusable surroundings
 
+**Implemented, owner review pending — 8 September 2026.** The
+[struck-smithy target report](environment-target-2026-09-08.md) records the clean
+`a7c3854` baseline, editable Blender sources, retained geometry/envelopes,
+surviving-resource distant canopies, two-seed day/dusk comparisons and 1,960
+current checks. Native geography and stock remain identical. The measured
+woodland static p95 rises 4–11%; ordinary-play art acceptance, other distant
+tree families and the frozen sparse distribution remain limitations. The brief
+below is retained as the approved scope, not substituted for that evidence.
+
 Develop the existing proposed Blender visual target around an asteroid-struck
 pre-cataclysm smithy, its approach and an existing rare host. Work on distinctive
 rock/tree silhouettes, clustered understory, weathered ruin materials, ground

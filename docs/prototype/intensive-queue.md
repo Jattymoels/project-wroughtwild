@@ -14,8 +14,8 @@ The owner has finished this round of notes and asked for the next intensives
 and iterations to be planned. The [complete feedback ledger and slice plans](playtest-iterations-2026-09-07.md)
 include both retained screenshots and the later progression clarification.
 These priorities supersede the convenience/export-first recommendation below.
-INT-03C, INT-03D, INT-04C, INT-01B, INT-05B, INT-05C and INT-02C are **Implemented, owner review pending**;
-INT-02B is the next separate slice and remains **Plan ready**.
+All eight slices — INT-03C, INT-03D, INT-04C, INT-01B, INT-05B, INT-05C,
+INT-02C and INT-02B — are **Implemented, owner review pending**.
 Implementation evidence is recorded separately from these planned outcomes.
 
 | Order | Slice | Requested outcome |
@@ -27,7 +27,7 @@ Implementation evidence is recorded separately from these planned outcomes.
 | 5 | INT-05B | **Implemented, review pending:** [enemy contact and Forge pressure](forge-pressure-2026-09-08.md). Committed hound steps, cover-aware firing, faster dodgeable shots and mixed warned reserves pass contact/ownership/route/old-boundary checks. Dense p95 is +8.7%; the live bot sample has four deaths/two timeouts, so difficulty is provisional. |
 | 6 | INT-05C | **Implemented, review pending:** [earned power and melee recovery](forge-progression-2026-09-08.md). Dead/reaction targets no longer pay duplicate kill recovery; Heavy Strike recovers in 1.2 s. Graded builds, nine story attempts and tiers 1–10 are measured per version. Exact owner spike and final class difficulty remain unresolved. |
 | 7 | INT-02C | **Implemented, review pending:** [surface population and quarry approaches](frontier-population-2026-09-08.md). Buried patrols and embedded surface members reproduce and are corrected; 2,221 checks and three unchanged native identities pass. Sampled quarry approaches remain sparse by distribution; a new generator is only a proposal. |
-| 8 | INT-02B | Finish the existing Blender environment target and address regional barrenness while preserving discovery. |
+| 8 | INT-02B | **Implemented, review pending:** [struck-smithy environment target](environment-target-2026-09-08.md). Fuller bounded nature meshes, weathered existing ruins and surviving-resource distant canopies; editable sources, two-seed comparisons and 1,960 checks. Woodland static p95 rises 4–11%; owner art acceptance and other distant tree families remain open. |
 
 The new owner feedback reopens specific issues within previously implemented
 passes. Technical evidence remains recorded; it does not override this human
@@ -43,7 +43,7 @@ discussion; the suggested execution order follows the table.
 | ID | Intensive | Concrete outcome | Status / next step | Later owner review |
 | --- | --- | --- | --- | --- |
 | INT-01 | First-hour clarity | Existing gathering, material processing, crafting and first-home options explain their requirements and next actions. | **INT-01 and INT-01B implemented, review pending.** [First-hour evidence](first-hour-clarity-plan-2026-09-07.md), plus [readable Foundry flow and progression](foundry-clarity-2026-09-08.md). | Can the owner understand a material, choose a useful project and find the next step without outside explanation? |
-| INT-02 | Exploration and environmental storytelling | Existing landmarks, approaches and resource clues communicate surviving civilisation, accidental impact and useful discoveries. | **INT-02A/C implemented, review pending:** [read the remains, follow the find](exploration-storytelling-2026-09-07.md), then [grounded population and quarry audit](frontier-population-2026-09-08.md). Native identities, real activation, finite-source lifecycle and three-seed walks pass. Sparse distribution remains documented; INT-02B is next. | Are places inviting and clues understandable during ordinary exploration? |
+| INT-02 | Exploration and environmental storytelling | Existing landmarks, approaches and resource clues communicate surviving civilisation, accidental impact and useful discoveries. | **INT-02A/B/C implemented, review pending:** [read the remains, follow the find](exploration-storytelling-2026-09-07.md), [grounded population and quarry audit](frontier-population-2026-09-08.md), and [struck-smithy visual target](environment-target-2026-09-08.md). Native identities, finite stock and existing footprints remain; sparse distribution and final art acceptance remain open. | Are places inviting and clues understandable during ordinary exploration? |
 | INT-03 | Building and home development | Complete houses/workshops expose and resolve awkward placement, joins and interior usability. | **INT-03A/B implemented, review pending:** [home usability](home-workshop-usability-2026-09-07.md) and [reliable placement/return](home-placement-persistence-2026-09-07.md). Station previews/clearance, material joins, actual walking, complete terrain footprints and saved door poses verified. A furnishing kit is a separate content selection; farming is not included. | Is making and using a home comfortable and expressive? |
 | INT-04 | Sound, animation and interaction feedback | Existing gathering, footsteps, stations and surroundings gain consistent material and state feedback. | **INT-04A/B/C implemented, review pending:** [interaction feedback](interaction-feedback-2026-09-07.md), [grounded footsteps](footsteps-ambience-2026-09-07.md), and [quiet ambience / saved controls](quiet-ambience-2026-09-08.md). INT-04C retires the rejected continuous bed. Listening files, lifecycle, input/restart and matched walking evidence are recorded. | Do feedback and ambience feel convincing through repeated use? |
 | INT-05 | Dungeon presentation, traversal and pressure | Existing Forge rooms, routes and threats are readable, traversable and able to create pressure. | **INT-05A/B/C implemented, review pending:** [read the Forge](forge-readability-2026-09-07.md), [contact and mixed reinforcements](forge-pressure-2026-09-08.md), and [earned power and melee recovery](forge-progression-2026-09-08.md). Physical traversal, cover, ownership and graded progression pass; final class difficulty and the owner's exact power spike remain open. | Do routes, tells and encounter pressure work during ordinary play, including under Foundry effects? |
@@ -105,7 +105,7 @@ implementation work or a change to the review status of INT-01 through INT-07.
 | --- | --- | --- |
 | INT-08A | Controls and comfort | Compact persistent player settings and keyboard/mouse bindings, with matching prompts. Actual interaction and restart checks can precede owner comfort review. |
 | INT-08B | Portable Windows playtest build | Export the extension, tuning and assets into a build that works outside the checkout. Verify with isolated existing saves and trial checkpoints; check matching export-template availability. |
-| INT-02B | Finished visual target | Extend the existing Blender pipeline to finish one existing struck smithy, its approach and an existing rare discovery in normal Godot gameplay. Review the target before broad asset production. |
+| INT-02B | Finished visual target | Subsequently selected and **implemented, owner review pending** in the [8 September target](environment-target-2026-09-08.md). The full Godot scene preceded reuse of its surface treatment. |
 
 Generation already has a substantial seed matrix. Further broad optimisation
 is not the recommended default without a new measurable concern. The unresolved

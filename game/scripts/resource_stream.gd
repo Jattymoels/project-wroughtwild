@@ -18,6 +18,7 @@ var nodes_per_frame := 12
 var resource_build_budget_ms: float
 var refresh_seconds := 0.25
 var _pending: Array[String] = []
+var canopies: ResourceCanopies
 
 func setup(owner_terrain: Terrain, definitions: Array) -> void:
 	terrain = owner_terrain
@@ -45,6 +46,8 @@ func setup(owner_terrain: Terrain, definitions: Array) -> void:
 		for field in ["visual","resource_id","habitat_id","presentation_label","era","site_id","harvest_stages","use_preview"]:
 			_presentation_defaults[id][field]=records[id][field]
 	_reindex()
+	canopies = ResourceCanopies.new()
+	canopies.setup(self)
 
 func _reindex() -> void:
 	buckets.clear()
@@ -71,6 +74,7 @@ func _remember(id: String) -> void:
 func _exiting(id: String) -> void:
 	_remember(id)
 	active.erase(id)
+	if canopies != null: canopies.update(id)
 
 func capture() -> Array:
 	for id in active.keys(): _remember(id)
@@ -100,6 +104,7 @@ func restore(saved: Array) -> void:
 		records[id] = restored
 	_reindex()
 	_focus=Vector3.INF
+	if canopies != null: canopies.rebuild()
 
 func materialise(id: String) -> ResourceNode:
 	if active.has(id) and is_instance_valid(active[id]): return active[id]
@@ -121,6 +126,7 @@ func materialise(id: String) -> ResourceNode:
 	node.set_meta("site_id",record.get("site_id",""))
 	terrain.nodes_root.add_child(node)
 	active[id]=node
+	if canopies != null: canopies.update(id)
 	node.tree_exiting.connect(_exiting.bind(id))
 	node._refresh_wedge_look()
 	return node

@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner continuation, 8 September 2026: “Yep let's go” selects the final queued
+[INT-02B environment target](../prototype/environment-target-2026-09-08.md) after
+INT-02C. Under D-013/D-030/D-031/D-032, existing Blender nature/ruin/membrane
+sources gain bounded visual refinement, and surviving broadleaf resource records
+gain distant render-only silhouettes. Native positions, finite stock, terrain,
+ruin triangle geometry, collision and progression remain authoritative. The
+full smithy/approach/host scene precedes reuse of the surface treatment on other
+existing ruin variants. This records the approved presentation continuation;
+ordinary-play art acceptance remains pending and no generator profile is added.
+
 Owner continuation, 8 September 2026: “Continue” selects the next queued
 [INT-05C](../prototype/forge-progression-2026-09-08.md) after INT-05B. Under
 D-010/ADR-0003, D-012, D-025/D-026 and D-028, a demonstrated dead-target/reaction

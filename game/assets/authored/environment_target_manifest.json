@@ -1,0 +1,257 @@
+{
+  "baseline": "a7c3854a4e8804b27853b23cd3dc9ceed6457ac6",
+  "scope": "Visual-only INT-02B curation. Bounds and ruin triangle geometry are retained contracts from the baseline, not new collision shapes.",
+  "assets": {
+    "broadleaf_tree": {
+      "sha256": "b3e52a9c3ba440a7d6ea345a90b593c5839dcd47604d31732afc9905083a4bef",
+      "retained_bounds": [
+        [
+          -2.148118734359741,
+          -0.11148659884929657,
+          -1.9348770380020142
+        ],
+        [
+          2.1362617015838623,
+          4.58300256729126,
+          1.9670532941818237
+        ]
+      ],
+      "triangle_budget": 12000
+    },
+    "broadleaf_tree_far": {
+      "sha256": "86bbd972b2514fa0019aafecf1c3ac67b4cca2d93521a1ff5ea94e07cfae3764",
+      "retained_bounds": [
+        [
+          -2.148118734359741,
+          -0.11148659884929657,
+          -1.9348770380020142
+        ],
+        [
+          2.1362617015838623,
+          4.58300256729126,
+          1.9670532941818237
+        ]
+      ],
+      "triangle_budget": 2000
+    },
+    "shrub": {
+      "sha256": "2bbc16311f241ab0ded47c63bd47847045af7b40ab72f470cd7f371a8346127d",
+      "retained_bounds": [
+        [
+          -0.46362489461898804,
+          -0.04293787479400635,
+          -0.47354841232299805
+        ],
+        [
+          0.4800032675266266,
+          0.7666866779327393,
+          0.4503054618835449
+        ]
+      ],
+      "triangle_budget": 3000,
+      "habitat_radius": 0.65
+    },
+    "fern_bed": {
+      "sha256": "429c8c7bd4460d5ad4624d6c01f73032d00559a729613f57934f4f228b6b002a",
+      "retained_bounds": [
+        [
+          -0.4311841130256653,
+          -0.0247527826577425,
+          -0.44280582666397095
+        ],
+        [
+          0.45742690563201904,
+          0.41456443071365356,
+          0.4398244619369507
+        ]
+      ],
+      "triangle_budget": 3000,
+      "habitat_radius": 0.5
+    },
+    "strange_ventlung": {
+      "sha256": "d9c80ddbde17d06a9166815c9e6e7a19be0d1929ff9b2e9b956685cbfbdfecbc",
+      "retained_bounds": [
+        [
+          -0.5797747373580933,
+          0.006099723279476166,
+          -0.5606815814971924
+        ],
+        [
+          0.5797747373580933,
+          1.1048634052276611,
+          0.5606815814971924
+        ]
+      ],
+      "triangle_budget": 3000
+    },
+    "cataclysm_fen_wall": {
+      "sha256": "d6007df97d8d75564f70a23af245e73c98419264a4bd5bbb0b30e4290faf5459",
+      "retained_bounds": [
+        [
+          -1.3674999475479126,
+          -0.054999999701976776,
+          -0.2350374460220337
+        ],
+        [
+          1.3674999475479126,
+          1.6525561809539795,
+          0.24413077533245087
+        ]
+      ],
+      "triangle_budget": 5304,
+      "retained_triangle_geometry_sha256": "4ee9f922965b3322b58200c836073adfe7fcca91c03a992cb6a44187dc2a6862"
+    },
+    "cataclysm_fen_roof": {
+      "sha256": "1b0919a8c7c6cda37a90d6c9f2d6f7336e8b70ca4dfc624b56fc1d872659028b",
+      "retained_bounds": [
+        [
+          -1.3118243217468262,
+          0.02510794997215271,
+          -0.9250468611717224
+        ],
+        [
+          1.342868685722351,
+          0.4684999883174896,
+          0.8399999737739563
+        ]
+      ],
+      "triangle_budget": 2992,
+      "retained_triangle_geometry_sha256": "10d145e0efb2732917273af1348385499496c92b7a9023f019976387e73ce12b"
+    },
+    "cataclysm_fen_cistern": {
+      "sha256": "24ca4e2fffe22a6d25666bd33876cc81d44a55ba950d020e9ff8ac9aba439555",
+      "retained_bounds": [
+        [
+          -1.3152467012405396,
+          -0.05000000074505806,
+          -1.137682318687439
+        ],
+        [
+          1.5099999904632568,
+          0.5969449281692505,
+          1.137682318687439
+        ]
+      ],
+      "triangle_budget": 4080,
+      "retained_triangle_geometry_sha256": "a8e0dd1d2bad7c0e23ba6c787988b6b0a7c238f93aea294ddcafde7aa425471c"
+    },
+    "cataclysm_rootvault_wall": {
+      "sha256": "0f06baaeb8f17c035b29053ad844b90c02818c9644daa8335eb329d737a012e2",
+      "retained_bounds": [
+        [
+          -1.462499976158142,
+          -0.05499999225139618,
+          -0.2669387459754944
+        ],
+        [
+          1.462499976158142,
+          2.254512310028076,
+          0.26204973459243774
+        ]
+      ],
+      "triangle_budget": 2952,
+      "retained_triangle_geometry_sha256": "bd76612e899de73d301c9ccd920597c70f3b14bd614ded57b800abfa8b2e4065"
+    },
+    "cataclysm_rootvault_frame": {
+      "sha256": "a3f4e9aa2a8c34582def6de86abf4768a1e379f0b729d9ddd8a324c787975114",
+      "retained_bounds": [
+        [
+          -1.6624999046325684,
+          -0.05499999225139618,
+          -0.32649970054626465
+        ],
+        [
+          1.6624999046325684,
+          2.783461809158325,
+          0.3249075412750244
+        ]
+      ],
+      "triangle_budget": 2496,
+      "retained_triangle_geometry_sha256": "2bf1090faaf5feec454a017d1458a24e26c954020d475ce840f20275a1a76f47"
+    },
+    "cataclysm_rootvault_roof": {
+      "sha256": "5ed36544e560ed58319111154015f3e8249bd08d72a5ddd5a451f93fdf8981b9",
+      "retained_bounds": [
+        [
+          -1.3789517879486084,
+          -0.028781414031982422,
+          -1.0674999952316284
+        ],
+        [
+          1.402768850326538,
+          0.5884312987327576,
+          0.9801464676856995
+        ]
+      ],
+      "triangle_budget": 816,
+      "retained_triangle_geometry_sha256": "32d12b481abd352aa9ffbc35c053c4404ca1ca52d5ec519d88781b6a88315b97"
+    },
+    "cataclysm_upland_wall": {
+      "sha256": "64a9e098be0a45f7d63759e41e00ae9f6d593776ec0f0a7709418722477125a8",
+      "retained_bounds": [
+        [
+          -1.4815326929092407,
+          -0.05499999225139618,
+          -0.3256426453590393
+        ],
+        [
+          1.5715327262878418,
+          1.5099999904632568,
+          0.414124995470047
+        ]
+      ],
+      "triangle_budget": 3060,
+      "retained_triangle_geometry_sha256": "d37d87377fe20ec52af5dad0aa65992e2b08539e2b2648a1eb6ed15e71f0ff12"
+    },
+    "cataclysm_upland_shelter": {
+      "sha256": "be7da6daa2bff2d70e7d67002a585dece81b65d5621b971f1fcfe2a8f42a95ec",
+      "retained_bounds": [
+        [
+          -1.5774999856948853,
+          -0.054999999701976776,
+          -0.5821322798728943
+        ],
+        [
+          1.5875000953674316,
+          2.389807939529419,
+          0.49812498688697815
+        ]
+      ],
+      "triangle_budget": 2788,
+      "retained_triangle_geometry_sha256": "4763e081cb0db7b3f14297f3d5d9af369d70ea6c8215c4c8b9245040a818368a"
+    },
+    "cataclysm_upland_paving": {
+      "sha256": "d6e188429b21e16780c8d10968a780ce1ca4e35542a941819ce696532e511623",
+      "retained_bounds": [
+        [
+          -1.4000000953674316,
+          -0.020000001415610313,
+          -0.8449509739875793
+        ],
+        [
+          1.3264250755310059,
+          0.08100000023841858,
+          0.6450749635696411
+        ]
+      ],
+      "triangle_budget": 680,
+      "retained_triangle_geometry_sha256": "054200b47c252a74a3e3711ef24be345eeb8203010df12ab9e9bf53779e50a10"
+    },
+    "field_boulder": {
+      "sha256": "0c4524f30fbf52e65e35fe3e7ff37ff284c34b832c0607a59617c09813c00970",
+      "retained_bounds": [
+        [
+          -0.699999988079071,
+          -0.10000000149011612,
+          -0.6000000238418579
+        ],
+        [
+          0.699999988079071,
+          1.0,
+          0.6000000238418579
+        ]
+      ],
+      "triangle_budget": 2000
+    }
+  }
+}

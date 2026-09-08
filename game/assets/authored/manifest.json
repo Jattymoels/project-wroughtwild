@@ -24,30 +24,30 @@
     },
     {
       "id": "broadleaf_tree",
-      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/broadleaf_tree.glb",
-      "sha256": "21e96ef39755b217aa5b6cac75dddddddb7ea6601b220133de309b7934f2b691",
+      "source": "tools/wroughtwild-blender/scripts/build_nature.py",
+      "sha256": "b3e52a9c3ba440a7d6ea345a90b593c5839dcd47604d31732afc9905083a4bef",
       "bytes": 1013736,
       "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
     },
     {
       "id": "field_boulder",
-      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/field_boulder.glb",
-      "sha256": "f9838b419d5f4510cabf67aaf45a876d2e184334b1ba9ec8f35e4ca2e5501461",
+      "source": "tools/wroughtwild-blender/scripts/build_nature.py",
+      "sha256": "0c4524f30fbf52e65e35fe3e7ff37ff284c34b832c0607a59617c09813c00970",
       "bytes": 112100,
       "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
     },
     {
       "id": "shrub",
-      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/shrub.glb",
-      "sha256": "df6a7d197d3f9357a99c2450117ea46b9862e59d9abb57500d397c7c8bb9a99a",
+      "source": "tools/wroughtwild-blender/scripts/build_nature.py",
+      "sha256": "2bbc16311f241ab0ded47c63bd47847045af7b40ab72f470cd7f371a8346127d",
       "bytes": 55692,
       "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
     },
     {
       "id": "fern_bed",
-      "source": "build/blender-study/4edb355cba98473a959dc83e4235c986/fern_bed.glb",
-      "sha256": "02200ae22fb495784e76958d858f3764616cf59dcd9fb9448471f6ca5751a570",
-      "bytes": 136064,
+      "source": "tools/wroughtwild-blender/scripts/build_nature.py",
+      "sha256": "429c8c7bd4460d5ad4624d6c01f73032d00559a729613f57934f4f228b6b002a",
+      "bytes": 226160,
       "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
     },
     {
@@ -105,6 +105,83 @@
       "sha256": "c5ff4b9e6ae48e7ffe94c65bc28f6b1f4763a6b5ddbd83d80b52973d0c529df9",
       "bytes": 133192,
       "collision": "visual only; retain existing PieceMesh or ResourceNode/StationSite body"
+    },
+    {
+      "id": "broadleaf_tree_far",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_nature.py",
+      "sha256": "86bbd972b2514fa0019aafecf1c3ac67b4cca2d93521a1ff5ea94e07cfae3764",
+      "bytes": 162144
+    },
+    {
+      "id": "strange_ventlung",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_strange.py",
+      "sha256": "d9c80ddbde17d06a9166815c9e6e7a19be0d1929ff9b2e9b956685cbfbdfecbc",
+      "bytes": 177016
+    },
+    {
+      "id": "cataclysm_fen_wall",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "d6007df97d8d75564f70a23af245e73c98419264a4bd5bbb0b30e4290faf5459",
+      "bytes": 500684
+    },
+    {
+      "id": "cataclysm_fen_roof",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "1b0919a8c7c6cda37a90d6c9f2d6f7336e8b70ca4dfc624b56fc1d872659028b",
+      "bytes": 267148
+    },
+    {
+      "id": "cataclysm_fen_cistern",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "24ca4e2fffe22a6d25666bd33876cc81d44a55ba950d020e9ff8ac9aba439555",
+      "bytes": 369340
+    },
+    {
+      "id": "cataclysm_rootvault_wall",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "0f06baaeb8f17c035b29053ad844b90c02818c9644daa8335eb329d737a012e2",
+      "bytes": 301672
+    },
+    {
+      "id": "cataclysm_rootvault_frame",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "a3f4e9aa2a8c34582def6de86abf4768a1e379f0b729d9ddd8a324c787975114",
+      "bytes": 266772
+    },
+    {
+      "id": "cataclysm_rootvault_roof",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "5ed36544e560ed58319111154015f3e8249bd08d72a5ddd5a451f93fdf8981b9",
+      "bytes": 81684
+    },
+    {
+      "id": "cataclysm_upland_wall",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "64a9e098be0a45f7d63759e41e00ae9f6d593776ec0f0a7709418722477125a8",
+      "bytes": 282100
+    },
+    {
+      "id": "cataclysm_upland_shelter",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "be7da6daa2bff2d70e7d67002a585dece81b65d5621b971f1fcfe2a8f42a95ec",
+      "bytes": 270392
+    },
+    {
+      "id": "cataclysm_upland_paving",
+      "collision": "visual only; retain existing bodies",
+      "source": "tools/wroughtwild-blender/scripts/build_cataclysm.py",
+      "sha256": "d6e188429b21e16780c8d10968a780ce1ca4e35542a941819ce696532e511623",
+      "bytes": 71280
     }
   ]
 }

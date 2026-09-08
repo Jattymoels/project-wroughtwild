@@ -120,6 +120,7 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --path . res://tests/strange_art_review.tscn
 "$GODOT" --headless --path . res://tests/strange_frontier_review.tscn
 "$GODOT" --headless --path . res://tests/cataclysm_art_review.tscn
+"$GODOT" --headless --path . res://tests/environment_target_checks.tscn
 "$GODOT" --headless --path . res://tests/cataclysm_actor_craft.tscn
 "$GODOT" --headless --path . res://tests/augmented_beasts.tscn
 "$GODOT" --headless --path . res://tests/cataclysm_intensive.tscn

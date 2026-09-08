@@ -1,0 +1,84 @@
+{
+  "baseline": "a7c3854",
+  "current_checks": 1960,
+  "export_checks": 71,
+  "runs": [
+    {
+      "fixture": "environment_target_checks-77-headless",
+      "checks": 19,
+      "failures": 0
+    },
+    {
+      "fixture": "smithy_story-77-headless",
+      "checks": 122,
+      "failures": 0
+    },
+    {
+      "fixture": "discovery_sites-77-headless",
+      "checks": 183,
+      "failures": 0
+    },
+    {
+      "fixture": "discovery_clarity-77-headless",
+      "checks": 249,
+      "failures": 0
+    },
+    {
+      "fixture": "pressure_workshop-77-headless",
+      "checks": 60,
+      "failures": 0
+    },
+    {
+      "fixture": "ecology_buildings-77-headless",
+      "checks": 102,
+      "failures": 0
+    },
+    {
+      "fixture": "weathered_save-77-headless",
+      "checks": 21,
+      "failures": 0
+    },
+    {
+      "fixture": "wide_terrain_stream-77-headless",
+      "checks": 75,
+      "failures": 0
+    },
+    {
+      "fixture": "environment_target_checks-77-rendered",
+      "checks": 23,
+      "failures": 0
+    },
+    {
+      "fixture": "cataclysm_art_review-77-rendered",
+      "checks": 455,
+      "failures": 0
+    },
+    {
+      "fixture": "ecology_buildings-77-rendered",
+      "checks": 113,
+      "failures": 0
+    },
+    {
+      "fixture": "placement_generated_fixtures-77-rendered",
+      "checks": 44,
+      "failures": 0
+    },
+    {
+      "fixture": "leyline_visual_review-77-rendered",
+      "checks": 169,
+      "failures": 0
+    },
+    {
+      "fixture": "environment_target_review-77-rendered",
+      "checks": 129,
+      "failures": 0
+    },
+    {
+      "fixture": "environment_target_review-1-rendered",
+      "checks": 125,
+      "failures": 0
+    }
+  ],
+  "baseline_scene_walk_checks": 232,
+  "scope": "Isolated copied projects and APPDATA. Rendered checks use real MultiMesh readback. Complete repository suite and ordinary owner playtest are separate."
+}

@@ -129,6 +129,23 @@ Empty scenery persists, and no presentation refresh can refill a resource.
 Native work-stage descriptions feed the existing compact gathering display;
 the pack's optional material guide links each component to its actual recipes.
 
+## Finite woodland presentation — INT-02B, 8 September 2026
+
+The [struck-smithy target](../prototype/environment-target-2026-09-08.md) adds
+distant render-only meadow/fen broadleaf batches in weathered V3–V6 worlds.
+They derive exclusively from the current ResourceStream ledger, including saved
+depletion, and carry no bodies, gathering authority, new positions or save fields.
+Normal materialisation hides the matching distant instance immediately;
+retirement shows it only while its record survives. Restore rebuilds from saved
+survivors. The existing horizon mask and coarse triangle heights ground distant
+representations where exact terrain is absent.
+
+The 120 m resource stream and 32 m retirement margin remain. Authored near trees
+now use the existing 200 m visual limit instead of the former 75 m override;
+distant broadleaf batches fade at 320 m. Refined nature meshes retain their old
+envelopes, and the nine weathered ruin assets retain their exact triangle geometry.
+This changes presentation within saved geography, not native generation inputs.
+
 ## Wide Frontier successor — D-032, 6 September 2026
 
 The owner-approved [Wide Frontier work item](../prototype/wide-frontier-intensive-2026-09-06.md)

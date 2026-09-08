@@ -14,7 +14,9 @@ import sys
 import bpy
 from mathutils import Vector
 
-project, output = map(Path, sys.argv[sys.argv.index('--') + 1:])
+arguments = sys.argv[sys.argv.index('--') + 1:]
+project, output = map(Path, arguments[:2])
+selected = next((a.split('=',1)[1].split(',') for a in arguments[2:] if a.startswith('--only=')), [])
 output.mkdir(parents=True, exist_ok=True)
 config = json.loads((Path(__file__).resolve().parents[1] / 'strange.json').read_text())
 palette = {key: tuple(int(value[i:i+2], 16)/255 for i in (0,2,4)) for key,value in config['palette'].items()}
@@ -169,7 +171,21 @@ def membrane(g):
     for i in range(10):
         a=i*math.tau/10
         pts=[(math.cos(a)*.23,.08,math.sin(a)*.23),(math.cos(a)*.45,.35,math.sin(a)*.45),(math.cos(a)*.35,.79,math.sin(a)*.35),(math.cos(a)*.11,1.08,math.sin(a)*.11)]
-        g.tube(pts,[.12,.135,.09,.04],shade(palette['membrane'],.93+.12*(i%3)/2),sides=7)
+        # Curved, uneven pleats keep the breathing membrane recognizable close
+        # up; the old endpoints and outer envelope remain the placement contract.
+        points=list(map(Vector,pts));radii=[.12,.135,.09,.04];smooth=[];widths=[]
+        for k in range(3):
+            p0=points[max(0,k-1)];p1=points[k];p2=points[k+1];p3=points[min(3,k+2)]
+            for j in range(config['ventlung_curve_steps']):
+                t=j/config['ventlung_curve_steps']
+                smooth.append(.5*((2*p1)+(-p0+p2)*t+(2*p0-5*p1+4*p2-p3)*t*t+(-p0+3*p1-3*p2+p3)*t*t*t))
+                widths.append(radii[k]*(1-t)+radii[k+1]*t)
+        smooth.append(points[-1]);widths.append(radii[-1])
+        g.tube(smooth,widths,shade(palette['membrane'],.88+.16*(i%3)/2),sides=9)
+    bounds=config['ventlung_retained_bounds']
+    low=[min(p[a] for p in g.vertices) for a in range(3)]
+    high=[max(p[a] for p in g.vertices) for a in range(3)]
+    g.vertices=[tuple(bounds[0][a]+(p[a]-low[a])/(high[a]-low[a])*(bounds[1][a]-bounds[0][a]) for a in range(3)) for p in g.vertices]
 
 def vent(g):
     for i in range(9):
@@ -256,6 +272,7 @@ install(recipes,Geometry,palette,config)
 report={'study_type':'strange_frontier','author':'Codex (OpenAI)','seed':config['seed'],'assets':{},'collision':'visual-only; gameplay bodies remain in Godot'}
 objects=[]
 for index,(name,recipe) in enumerate(recipes.items()):
+    if selected and name not in selected: continue
     seed=config['seed']+index*997
     geometry=Geometry(seed);recipe(geometry)
     repeated=Geometry(seed);recipe(repeated)

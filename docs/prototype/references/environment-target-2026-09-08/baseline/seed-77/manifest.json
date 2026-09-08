@@ -1,0 +1,258 @@
+{
+	"checks": 118,
+	"failures": 0,
+	"native_signature": {
+		"blocks": "c9a0a3990d1e5955bd050f623df31aa74139faab445cd7efd439430e7081bf9f",
+		"heights": "203a2052a880ee3a4ca3a0910b4dad71d4ced4309b258606c408a864d968a9e1",
+		"impacts": "7ca3b72baa5dfc048d588ee2b97249a3571a0dd8112bfed59ea39b73c41d112b",
+		"leylines": "90df12fa23551ac3e6d415b2d4dfb85cb3619d46d4339076a6d629d341fa3624",
+		"nodes": "01bc0ad9f160278061cb7c8da698c7b50771e2fe4208c46cd9bea2a8e5ca55a9",
+		"pressure_ledger": "d949bbb157ca65c2fc826755a672ac10b628055c0235c58cd64986ca9b38f944",
+		"pressure_pockets": "e6b0f8a8f8cb0dad5e6103783b30ff3d49ff896d31b3105c90ec553a7fb7d187",
+		"rare_sites": "62cb33065e8427aafb0b2d4c0f22ed21ee902fd35b2036156109f6ee6f27e4af",
+		"ruins": "d249f71edf802efad34c7754e4be59d4d2db27ebb599dbb5e9c822cd98b898bc"
+	},
+	"phase": "baseline",
+	"profile": "frontier_v6",
+	"route": {
+		"native_id": "ruv6_old_blacksmith",
+		"path_length": 38,
+		"samples": 38,
+		"scope": "Ground and actual player-capsule samples along the native route; not a timed player journey."
+	},
+	"scope": "Actual V6 world, 1440x900 Forward+, FOV75, grounded 1.65m eye, fixed daylight/dusk. Warm 600-frame samples exclude screenshots. Automated presentation and route checks; human discovery review remains pending.",
+	"seed": 77,
+	"terrain_startup": {
+		"chunks_ms": 1531,
+		"map_ms": 2130,
+		"resources_ms": 681,
+		"total_ms": 4342
+	},
+	"views": [
+		{
+			"camera_position": [
+				229.5,
+				29.649999618530273,
+				660.5
+			],
+			"day": {
+				"active_resources": 210,
+				"draw_calls": 693,
+				"loaded_chunks": 69,
+				"max_ms": 1.306,
+				"median_ms": 0.83499999999999996,
+				"p95_ms": 0.98099999999999998,
+				"primitives": 1530328,
+				"samples": 600
+			},
+			"dusk": {
+				"active_resources": 210,
+				"draw_calls": 693,
+				"loaded_chunks": 69,
+				"max_ms": 1.1240000000000001,
+				"median_ms": 0.80100000000000005,
+				"p95_ms": 0.93200000000000005,
+				"primitives": 1530320,
+				"samples": 600
+			},
+			"id": "smithy_arrival",
+			"native_id": "ruv6_old_blacksmith",
+			"target": [
+				216.5,
+				29.0,
+				660.5
+			]
+		},
+		{
+			"camera_position": [
+				212.69999694824219,
+				29.649999618530273,
+				662.5
+			],
+			"id": "smithy_breach",
+			"native_id": "ppv6_old_blacksmith",
+			"target": [
+				214.5,
+				28.649999618530273,
+				658.5
+			]
+		},
+		{
+			"camera_position": [
+				220.5,
+				29.649999618530273,
+				660.5
+			],
+			"id": "smithy_departure",
+			"native_id": "ruv6_old_blacksmith",
+			"target": [
+				222.5,
+				28.600000381469727,
+				654.5
+			]
+		},
+		{
+			"camera_position": [
+				261.40988159179687,
+				27.649999618530273,
+				691.522705078125
+			],
+			"id": "clue_lanternheart",
+			"native_id": "rsv6_lanternheart_primary_0",
+			"target": [
+				258.5,
+				26.120000839233398,
+				692.5
+			]
+		},
+		{
+			"camera_position": [
+				774.21466064453125,
+				62.578224182128906,
+				653.71240234375
+			],
+			"id": "clue_pullstone",
+			"native_id": "rsv6_pullstone_primary_0",
+			"target": [
+				775.5,
+				62.119998931884766,
+				656.5
+			]
+		},
+		{
+			"camera_position": [
+				796.4173583984375,
+				61.650001525878906,
+				625.627685546875
+			],
+			"id": "clue_stormglass",
+			"native_id": "rsv6_stormglass_primary_0",
+			"target": [
+				797.5,
+				60.119998931884766,
+				628.5
+			]
+		},
+		{
+			"camera_position": [
+				521.6854248046875,
+				33.650001525878906,
+				236.33148193359375
+			],
+			"id": "clue_thrumroot",
+			"native_id": "rsv6_thrumroot_primary_0",
+			"target": [
+				520.5,
+				32.119998931884766,
+				233.5
+			]
+		},
+		{
+			"camera_position": [
+				247.40988159179687,
+				33.672473907470703,
+				629.522705078125
+			],
+			"day": {
+				"active_resources": 231,
+				"draw_calls": 715,
+				"loaded_chunks": 69,
+				"max_ms": 2.8239999999999998,
+				"median_ms": 0.82899999999999996,
+				"p95_ms": 1.165,
+				"primitives": 1516819,
+				"samples": 600
+			},
+			"dusk": {
+				"active_resources": 231,
+				"draw_calls": 715,
+				"loaded_chunks": 69,
+				"max_ms": 1.331,
+				"median_ms": 0.85999999999999999,
+				"p95_ms": 1.02,
+				"primitives": 1516811,
+				"samples": 600
+			},
+			"id": "clue_ventlung",
+			"native_id": "rsv6_ventlung_primary_0",
+			"target": [
+				244.5,
+				32.119998931884766,
+				630.5
+			]
+		},
+		{
+			"camera_position": [
+				259.5,
+				30.649999618530273,
+				660.5
+			],
+			"day": {
+				"active_resources": 262,
+				"draw_calls": 796,
+				"loaded_chunks": 88,
+				"max_ms": 1.3240000000000001,
+				"median_ms": 0.89000000000000001,
+				"p95_ms": 1.03,
+				"primitives": 1813942,
+				"samples": 600
+			},
+			"dusk": {
+				"active_resources": 262,
+				"draw_calls": 796,
+				"loaded_chunks": 88,
+				"max_ms": 1.244,
+				"median_ms": 0.89000000000000001,
+				"p95_ms": 1.006,
+				"primitives": 1813934,
+				"samples": 600
+			},
+			"id": "smithy_woodland",
+			"native_id": "ruv6_old_blacksmith",
+			"target": [
+				216.5,
+				30.5,
+				660.5
+			]
+		},
+		{
+			"camera_position": [
+				219.5,
+				32.650001525878906,
+				636.5
+			],
+			"id": "ventlung_host",
+			"native_id": "rsv6_ventlung_primary_0",
+			"target": [
+				217.5,
+				32.099998474121094,
+				633.5
+			]
+		}
+	],
+	"walks": [
+		{
+			"frames": 913,
+			"light": "day",
+			"max_ms": 11.018000000000001,
+			"median_ms": 2.4319999999999999,
+			"metres": 76.0,
+			"p95_ms": 5.0209999999999999,
+			"scope": "Fixed-step 5 m/s, 60 simulation ticks/s camera traverse through production streaming; rendered wall-frame costs exclude captures. No player-input or combat claim.",
+			"stream_max_ms": 7.3730000000000002,
+			"stream_p95_ms": 3.2440000000000002
+		},
+		{
+			"frames": 913,
+			"light": "dusk",
+			"max_ms": 7.7800000000000002,
+			"median_ms": 1.3149999999999999,
+			"metres": 76.0,
+			"p95_ms": 4.2370000000000001,
+			"scope": "Fixed-step 5 m/s, 60 simulation ticks/s camera traverse through production streaming; rendered wall-frame costs exclude captures. No player-input or combat claim.",
+			"stream_max_ms": 6.0640000000000001,
+			"stream_p95_ms": 2.714
+		}
+	],
+	"world_setup_ms": 4908
+}

@@ -3,13 +3,23 @@
   "surface_texture_px": 128,
   "edge_wear_m": 0.026,
   "impact_lean": 0.26,
-  "inlay_emission": 0.10,
+  "inlay_emission": 0.1,
   "palette": {
-    "wood": "71614c", "endgrain": "958263", "char": "403e36",
-    "masonry": "8c8b7a", "shellstone": "aaa992", "slate": "5c6260",
-    "clay": "92735b", "clay_dark": "6c5546", "reed": "a08d60",
-    "moss": "59614a", "basalt": "454c49", "impact": "343d3e",
-    "pale_metal": "b6b5a0", "oxide": "6f786b", "seam": "242e2f",
+    "wood": "71614c",
+    "endgrain": "958263",
+    "char": "403e36",
+    "masonry": "8c8b7a",
+    "shellstone": "aaa992",
+    "slate": "5c6260",
+    "clay": "92735b",
+    "clay_dark": "6c5546",
+    "reed": "a08d60",
+    "moss": "59614a",
+    "basalt": "454c49",
+    "impact": "343d3e",
+    "pale_metal": "b6b5a0",
+    "oxide": "6f786b",
+    "seam": "242e2f",
     "quiet_light": "c0c5ad"
   },
   "purposes": {
@@ -18,6 +28,10 @@
     "edge_wear_m": "Soft worn edges catch light at hand height while preserving each honest placement envelope.",
     "impact_lean": "Buried shards and broken members share forward +Z displacement from one impact direction.",
     "inlay_emission": "Only tiny contained pale seams emit; most augmentation is inert and never uses fire/frost danger colours.",
-    "palette": "Warm handmade wood/clay/reed and cool worn shellstone/slate share restrained aged-metal augmentation."
-  }
+    "palette": "Warm handmade wood/clay/reed and cool worn shellstone/slate share restrained aged-metal augmentation.",
+    "weathering_grain": "Strength of original close wood streaks and mineral mottling in the embedded texture; no geometry displacement.",
+    "base_weathering": "Groundward darkening and patchy moss on existing smithy surfaces; .32 grounds the ruin while retaining its original colours and exact bounds."
+  },
+  "weathering_grain": 0.13,
+  "base_weathering": 0.32
 }

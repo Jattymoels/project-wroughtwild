@@ -71,3 +71,38 @@ scar/fur bakes, terrain-aware foot placement or appendage hurtboxes. The
 existing capsule is deliberately retained; antlers, tails, tusks and wing tips
 can extend beyond it. Those presentation limits are documented rather than
 silently changing combat reach or collision.
+
+## INT-02B environment target, 8 September 2026
+
+Three additional editable masters contain the actual curated environment meshes:
+
+- `environment-target-nature-v01.blend`: broadleaf, its 1,436-triangle distant
+  silhouette, field boulder, shrub and fern; retained deadfall/stump sources.
+- `environment-target-ruins-v01.blend`: the existing fourteen ruin recipes.
+  Only the nine fen/rootvault/upland surfaces were adopted in this slice.
+- `environment-target-ventlung-v01.blend`: the existing membrane with curved
+  pleats, inside its previous envelope. Its runtime case and light remain separate.
+
+Source meshes sit at the origin in Godot metres (Blender X,Y,Z = Godot X,-Z,Y).
+The ruin, membrane and distant-LOD meshes are hidden after export; unhide the
+named object to edit it. These are authoring masters, not a new generated level.
+The complete place is assembled and reviewed in the normal Godot world.
+
+Rebuild with the installed local Blender, using unique ignored output folders:
+
+```text
+blender --background --python-exit-code 1 --python tools/wroughtwild-blender/scripts/build_nature.py -- REPOSITORY OUTPUT/nature --assets-only
+blender --background --python-exit-code 1 --python tools/wroughtwild-blender/scripts/build_cataclysm.py -- REPOSITORY OUTPUT/ruins
+blender --background --python-exit-code 1 --python tools/wroughtwild-blender/scripts/build_strange.py -- REPOSITORY OUTPUT/ventlung --only=ventlung
+```
+
+The adjacent `nature.json`, `cataclysm.json` and `strange.json` recipes explain
+every changed number. Preserve deliberate Blender edits before regeneration;
+they are not reverse-translated into recipes. Curate only reviewed exports into
+`game/assets/authored`, update their hashes, then run
+`python tools/check_environment_target.py` and the isolated Godot review.
+The retained ruin triangle contracts must not be regenerated from changed walls:
+their exact geometry also defines existing runtime collision.
+
+[Implementation and matched field evidence](../../docs/prototype/environment-target-2026-09-08.md)
+records the visual target, source limits, save checks and performance.

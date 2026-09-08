@@ -14,7 +14,9 @@ import sys
 import bpy
 from mathutils import Vector
 
-project, output = map(Path, sys.argv[sys.argv.index('--') + 1:])
+arguments = sys.argv[sys.argv.index('--') + 1:]
+project, output = map(Path, arguments[:2])
+output.mkdir(parents=True, exist_ok=True)
 config = json.loads((Path(__file__).resolve().parents[1] / 'nature.json').read_text())
 habitat = (project / 'game/art/habitat_look.gd').read_text()
 weathered = (project / 'game/art/weathered_look.tres').read_text()
@@ -186,7 +188,7 @@ def tree(g):
                 direction = Vector((math.cos(phase), g.rng.uniform(-.25, .35), math.sin(phase)))
                 length = p['leaf_length'] * g.rng.uniform(.75, 1.25)
                 colour = mix(pal['leaf_dark'], pal['leaf'], g.rng.uniform(.25, .9))
-                g.leaf(centre, centre+direction*length, length*.25,
+                g.leaf(centre, centre+direction*length, length*p['leaf_width_fraction'],
                        shade(colour, 1+g.rng.uniform(-config['leaf_colour_variation'], config['leaf_colour_variation'])))
 
 
@@ -197,9 +199,9 @@ def boulder(g):
     for level, radius in [(-p['burial'], .75), (.08, 1), (.38, .98), (.73, .82), (1, .43)]:
         ring = []
         for j in range(sides):
-            angle = j*math.tau/sides + .14
+            angle = j*math.tau/sides + .14 + level*p['bedding_twist']
             r = radius*(1 + .1*math.sin(j*2.3) + .045*math.cos(j*.8+level*9))
-            ring.append(Vector((math.cos(angle)*r, level + .035*math.sin(j*1.7), math.sin(angle)*r*.86)))
+            ring.append(Vector((math.cos(angle)*r+level*p['bedding_lean'], level + .065*math.sin(j*1.7), math.sin(angle)*r*.86)))
         rings.append(ring)
     # Enforce the existing resource footprint while retaining irregular contours.
     all_points = [v for ring in rings for v in ring]
@@ -249,7 +251,7 @@ def shrub(g):
             at = end*(.32+k*.075)
             phase = angle+k*2.4
             vector = Vector((math.cos(phase)*.16, .06, math.sin(phase)*.16))
-            g.leaf(at, at+vector, .045, shade(pal['shrub_green'], g.rng.uniform(.9, 1.14)))
+            g.leaf(at, at+vector, p['leaf_width'], shade(pal['shrub_green'], g.rng.uniform(.9, 1.14)))
 
 
 def fern(g):
@@ -326,6 +328,17 @@ BUILDERS = {'broadleaf_tree': tree, 'field_boulder': boulder, 'shrub': shrub,
             'fern_bed': fern, 'deadfall': lambda g: rotten(g), 'stump': lambda g: rotten(g, True)}
 
 
+def retain_envelope(g, name):
+    """Keep the accepted visual footprint as well as the unchanged body boxes."""
+    envelope = config.get('retained_bounds', {}).get(name)
+    if not envelope:
+        return
+    low = [min(p[a] for p in g.vertices) for a in range(3)]
+    high = [max(p[a] for p in g.vertices) for a in range(3)]
+    g.vertices = [tuple(envelope[0][a] + (p[a]-low[a])/(high[a]-low[a]) *
+                        (envelope[1][a]-envelope[0][a]) for a in range(3)) for p in g.vertices]
+
+
 def export(path, objects):
     bpy.ops.object.select_all(action='DESELECT')
     for obj in objects:
@@ -348,9 +361,11 @@ for index, (name, build) in enumerate(BUILDERS.items()):
     seed = config['seed'] + index*7919
     g = Geometry(seed)
     build(g)
+    retain_envelope(g, name)
     # Test repeatability over geometry AND authored colours, not Blender metadata.
     twin = Geometry(seed)
     build(twin)
+    retain_envelope(twin, name)
     payload = [g.vertices, g.faces, g.colours]
     assert payload == [twin.vertices, twin.faces, twin.colours], name + ' not deterministic'
     assert all(math.isfinite(n) for point in g.vertices for n in point)
@@ -367,6 +382,23 @@ for index, (name, build) in enumerate(BUILDERS.items()):
     if name in footprints:
         assert radius <= footprints[name], (name, radius, footprints[name])
     export(output / (name + '.glb'), [obj])
+    if name == 'broadleaf_tree':
+        far = obj.copy()
+        far.data = obj.data.copy()
+        far.name = 'broadleaf_tree_far'
+        bpy.context.collection.objects.link(far)
+        bpy.context.view_layer.objects.active = far
+        modifier = far.modifiers.new('Distant canopy silhouette', 'DECIMATE')
+        modifier.ratio = config['tree']['distant_triangle_fraction']
+        bpy.ops.object.modifier_apply(modifier=modifier.name)
+        export(output / 'broadleaf_tree_far.glb', [far])
+        far.data.calc_loop_triangles()
+        report['distant_canopy'] = {'triangles': len(far.data.loop_triangles),
+            'purpose': 'Visual-only ledger canopy beyond normal resource streaming; no collision export.'}
+        # Keep the alternate representation out of the ordinary gallery render.
+        far.select_set(False)
+        far.hide_render = True
+        far.hide_set(True)
     report['assets'][name] = {'visual_bounds': bounds, 'triangles': sum(len(f)-2 for f in g.faces),
                              'geometry_sha256': hashlib.sha256(json.dumps(payload).encode()).hexdigest(),
                              'mesh_parts': 1, 'materials': 1, 'ground_pivot': True,
@@ -381,6 +413,12 @@ for index, (name, build) in enumerate(BUILDERS.items()):
         bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
         export(output / (name+'_collision.glb'), [proxy])
         bpy.data.objects.remove(proxy, do_unlink=True)
+
+if '--assets-only' in arguments:
+    bpy.ops.wm.save_as_mainfile(filepath=str(output / 'nature-source.blend'))
+    (output / 'report.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    print('WROUGHTWILD_NATURE_OK ' + str(output))
+    raise SystemExit(0)
 
 # Keep a small contextual land surface for reviewing grounding and composition.
 # It is a render aid; editable game terrain continues to be generated by Godot.

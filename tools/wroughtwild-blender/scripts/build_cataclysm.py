@@ -38,7 +38,8 @@ for name,rough,metal in [('stone',.93,0),('wood',.88,0),('reed',.91,0),('metal',
         for x in range(size):
             noise=rng.random()
             streak=math.sin(x*.51+math.sin(y*.046)*2.2)*math.sin(x*.139+y*.008)
-            amount=.90+noise*.075+(streak*.042 if name in ['wood','reed'] else math.sin(x*1.9+y*2.7)*.013)
+            grain = streak if name in ['wood','reed'] else math.sin(x*.19+math.sin(y*.08)*2)*math.cos(y*.21)
+            amount=.88+noise*.075+grain*config['weathering_grain']
             pixels.extend([amount,amount,amount,1])
     image.pixels=pixels;image.pack()
     tex=nodes.new('ShaderNodeTexImage');tex.image=image;tex.interpolation='Linear';tex.extension='REPEAT'
@@ -324,6 +325,17 @@ for index,(name,recipe) in enumerate(recipes.items()):
     for face in g.faces:
         a,b,c=[Vector(g.vertices[i]) for i in face[:3]]
         assert (b-a).cross(c-a).length>1e-9,(name,face)
+    # Last-stage colour treatment leaves every vertex, aperture and derived
+    # runtime body exactly where the accepted kit put it. Apply only once,
+    # after nested recipes have composed their parts.
+    for i, (face, kind) in enumerate(zip(g.faces, g.kinds)):
+        if kind == 'light': continue
+        p=sum((Vector(g.vertices[v]) for v in face),Vector())/len(face)
+        damp=math.exp(-max(0,p.y)/.48)*config['base_weathering']
+        patch=(math.sin(p.x*2.3+p.z)+math.cos(p.z*3.1-p.y))*.25+.5
+        c=tint(g.colours[i],1-damp)
+        moss=damp*patch*.55 if kind in ['stone','wood','reed'] else 0
+        g.colours[i]=tuple(v*(1-moss)+palette['moss'][a]*moss for a,v in enumerate(c))
     obj=g.object('cataclysm_'+name)
     bpy.ops.object.select_all(action='DESELECT');obj.select_set(True);bpy.context.view_layer.objects.active=obj
     path=output/('cataclysm_'+name+'.glb')
