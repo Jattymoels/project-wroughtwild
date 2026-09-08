@@ -24,6 +24,8 @@ var room_space: Dictionary = {}
 var encounter_id := ""
 var wave_queue: Array = []
 var wave_left := 0.0
+var _wave_number := 0
+var _wave_announced := false
 var rules: Dictionary = {}
 var run_mods: Dictionary = {}
 var vent_left := 0.0
@@ -592,6 +594,8 @@ func restore_boundary(data: Dictionary) -> bool:
 func _spawn_spatial_encounter(ids: PackedStringArray) -> void:
 	var boss_id:=String(sim.boss()["id"])
 	wave_queue=[]
+	_wave_number=0
+	_wave_announced=false
 	for id in ids: wave_queue.append(String(id))
 	var ordinary: Array=[]
 	for id in ids:
@@ -609,13 +613,27 @@ func _release_wave() -> void:
 	if wave_queue.is_empty(): return
 	var max_alive:=int(rules.get("living_enemy_limit",24))
 	var count:=mini(mini(int(rules.get("encounter_wave_size",10)),wave_queue.size()),max_alive-trial_enemies().size())
-	if count<=0: return
-	var points:=arena.dungeon.spawn_points(room_space,count)
+	if count<=0:
+		wave_left=float(rules.get("reinforcement_notice_seconds",2.0))
+		return
+	var occupied: Array=[]
+	for e in trial_enemies(): occupied.append(e.global_position)
+	# Reserve the boss's fixed, clear central footprint before choosing escorts.
+	var boss_at: Vector3=arena.dungeon.to_global(room_space.get("centre",Vector3.ZERO))+Vector3(0,.5,-4)
+	if String(sim.boss()["id"]) in wave_queue.slice(0,count): occupied.append(boss_at)
+	var points:=arena.dungeon.spawn_points(room_space,count,player.global_position,occupied,rules,_wave_number)
+	count=mini(count,points.size())
+	if count<=0:
+		wave_left=float(rules.get("reinforcement_notice_seconds",2.0))
+		return
 	for i in count:
 		var id:=String(wave_queue.pop_front())
 		var enemy: Enemy
 		if id==String(sim.boss()["id"]):
-			enemy=Boss.spawn_boss(player.world_root(),arena.dungeon.to_global(room_space.get("centre",Vector3.ZERO))+Vector3(0,.5,-4))
+			var clear_boss := Vector2(boss_at.x-player.global_position.x,boss_at.z-player.global_position.z).length() >= float(rules["spawn_player_clearance_m"])
+			for e in trial_enemies():
+				if Vector2(boss_at.x-e.global_position.x,boss_at.z-e.global_position.z).length() < float(rules["spawn_spacing_m"]): clear_boss=false
+			enemy=Boss.spawn_boss(player.world_root(),boss_at if clear_boss else points[i])
 		else:
 			enemy=Enemy.spawn(player.world_root(),StringName(id),points[i])
 		_make_relentless(enemy)
@@ -632,11 +650,20 @@ func _release_wave() -> void:
 				enemy.verb_radius=enemy.trial_ward_radius
 				enemy.verb_strength=enemy.trial_ward_strength
 			enemy._refresh_label()
+	if _wave_number>0: player.hud.notify("Reinforcements: %d enemies have entered the chamber." % count)
+	_wave_number+=1
+	_wave_announced=false
 	wave_left=float(run_mods.get("reinforcement_delay_seconds",rules.get("reinforcement_delay_seconds",8.0)))
 
 func _tick_spatial(delta: float) -> void:
 	wave_left-=delta
-	if not wave_queue.is_empty() and (wave_left<=0 or trial_enemies().is_empty()): _release_wave()
+	if not wave_queue.is_empty():
+		var notice := float(rules.get("reinforcement_notice_seconds",2.0))
+		if not _wave_announced and (wave_left<=notice or trial_enemies().is_empty()):
+			_wave_announced=true
+			wave_left=notice
+			player.hud.notify("Reinforcements approaching — keep moving or use cover.")
+		elif _wave_announced and wave_left<=0: _release_wave()
 	vent_left-=delta
 	var boss_alive:=false
 	for e in trial_enemies():

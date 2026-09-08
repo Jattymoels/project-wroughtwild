@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner continuation, 8 September 2026: “Awesome, continue on with 05B” selects
+[INT-05B](../prototype/forge-pressure-2026-09-08.md) only. Under D-010 / ADR-0003,
+D-012 and D-028, measured contact corrections add a short committed hound bite
+step/forward sector, physical cover checks and faster committed ranged shots.
+Existing Forge rooms receive ordered mixed reserves, safe compact arrivals and
+advance warnings within the unchanged 24 living/two major-hazard limits.
+Story topology, saved boundaries, rewards, damage/life and player progression
+remain unchanged. These are measured initial contact/encounter values; owner
+difficulty acceptance and the separate INT-05C power/sustain pass remain open.
+
 Owner continuation, 8 September 2026: “Let's continue” selects
 [INT-01B](../prototype/foundry-clarity-2026-09-08.md), after INT-04C. CURRENT FLOW
 gains readable independent inspection and intentional detail; permanent class

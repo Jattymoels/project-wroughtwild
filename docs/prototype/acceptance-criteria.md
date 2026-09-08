@@ -276,6 +276,28 @@ INT-04B's continuous-bed design following the owner's rejected drone.
 - [ ] Owner accepts readability and understands these distinctions in ordinary
   play. The owner's exact arrangement and intended mastery screen remain unknown.
 
+## Enemy contact and encounter pressure (INT-05B)
+
+[Implementation, measured tuning and limits](forge-pressure-2026-09-08.md).
+
+- [x] Matching open-ground and existing-module cases distinguish stationary,
+  straight retreat and deliberate clear sidesteps. Actual releases/hits,
+  distances and shot flight are recorded; cover prevents damage.
+- [x] Hound steps are physically bounded and directionally committed at 20/60
+  ticks per second; stagger cancels them. Shooters navigate around real kiln
+  cover using clearance for their actual projectile radius and muzzle.
+- [x] Native mixed groups arrive with an advance warning, safe player/body
+  clearance and exact queue accounting. Blocked arrivals wait; clearing and
+  leaving the run cannot duplicate rewards or retain queued reinforcements.
+- [x] The original eight modules, physical route, optional rewards and lift
+  remain traversable. Old-version boundaries restore exact ownership and
+  combat state in a fresh process. Living/hazard caps remain 24/two.
+- [x] Matched dense-fight timing investigates the initial >10% p95 change;
+  six existing legal-build live fights per version record actual outcomes.
+- [ ] Owner accepts pressure, readability and difficulty. The current bot
+  sample has four deaths/two timeouts and no clears; this is initial tuning,
+  not validated balance. INT-05C power/sustain work remains separate.
+
 ## Forge readability and traversal (INT-05A)
 
 [Scope and evidence](forge-readability-2026-09-07.md).

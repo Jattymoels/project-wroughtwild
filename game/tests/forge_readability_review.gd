@@ -145,6 +145,13 @@ func story(run_id: String) -> void:
 		if index == 0 and run_id == "forge_tyrant":
 			pose(room.centre + Vector3(6,1.68,8),room.centre + Vector3(0,1.3,-3))
 			await snap("threshold-chamber","Existing module and live encounter, normal first-person height")
+			if "--pressure-captures" in OS.get_cmdline_user_args():
+				pose(room.centre + Vector3(0,1.68,8),room.centre + Vector3(0,1.3,-2))
+				trial._tick_spatial(float(trial.rules.reinforcement_delay_seconds)-float(trial.rules.reinforcement_notice_seconds)+.01)
+				await snap("reinforcement-warning","Actual HUD warning before the native reserve group arrives")
+				trial._tick_spatial(float(trial.rules.reinforcement_notice_seconds)+.01)
+				for enemy in trial.trial_enemies(): enemy.set_physics_process(false)
+				await snap("mixed-reinforcements","Two native groups occupy entry lanes and rear cover inside the original chamber")
 		for enemy in trial.trial_enemies():
 			if enemy is Boss: await boss_views(run_id,enemy,room)
 		var waves := 0

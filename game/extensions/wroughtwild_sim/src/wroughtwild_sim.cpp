@@ -861,6 +861,8 @@ Dictionary WroughtwildSim::realtime() const {
         entry["preferred_distance_m"] = b.preferredDistanceM;
         entry["aggro_range_m"] = b.aggroRangeM;
         entry["windup_seconds"] = b.windupSeconds;
+        entry["windup_advance_m"] = b.windupAdvanceM;
+        entry["attack_arc_degrees"] = b.attackArcDegrees;
         if (b.projectile.enabled) {
             const auto& p = b.projectile;
             Dictionary shot;

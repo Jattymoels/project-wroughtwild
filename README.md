@@ -81,6 +81,13 @@ boss/furnace danger under overlapping effects. Enemies navigate around live
 conduits and offerings. Existing combat numbers, rewards and suspension rules
 remain; matched captures and physical traversal evidence accompany the slice.
 
+[INT-05B enemy contact and Forge pressure](docs/prototype/forge-pressure-2026-09-08.md)
+gives hounds a committed forward bite step and makes shooters clear their actual
+projectile footprint around cover. Faster straight shots constrain retreat while
+remaining dodgeable. Existing chambers receive mixed groups, two-second arrival
+warnings and checked spawn clearance within the same caps. Saved boundaries,
+native ownership and progression pass; owner difficulty review remains open.
+
 [INT-06A workshop usability](docs/prototype/workshop-usability-2026-09-07.md)
 shows exact reasons a feeder cannot start, separates supplies and drive controls,
 and keeps completed bricks easy to collect. Live pages retain focus and expanded

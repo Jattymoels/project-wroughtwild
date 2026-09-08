@@ -24,14 +24,14 @@
       "preferred_distance_m": 7.0,
       "windup_seconds": 0.6,
       "projectile": {
-        "speed_mps": 10.0,
+        "speed_mps": 18.0,
         "radius_m": 0.14,
         "max_range_m": 14.0,
         "muzzle_height_m": 1.05,
         "trail_length_m": 0.85,
         "colour": "e8a060",
         "glow_energy": 1.2,
-        "design_purpose": "Aim commits at the start of the existing windup. Speed gives about 0.7 seconds of flight at preferred range; radius sets the physical dodge clearance. Range bounds missed shots; muzzle height sets the launch point. Trail length, colour and glow make the charging head and flight readable. Solid bodies stop the shot; damage and mark apply only on player contact."
+        "design_purpose": "Aim commits at windup start: no leading or homing. INT-05B speed gives about 0.39 seconds of flight at preferred range, so straight retreat no longer outruns the finite shot; the unchanged 0.6-second charge and lateral dodge remain. Radius sets physical clearance, range bounds misses, muzzle height sets launch point; trail, colour and glow make charge/flight readable. Solid bodies stop the shot; damage and mark apply only on player contact."
       },
       "verb": "mark",
       "verb_seconds": 6.0,
@@ -44,10 +44,12 @@
       "attack_range_m": 1.6,
       "aggro_range_m": 14.0,
       "windup_seconds": 0.25,
+      "windup_advance_m": 1.1,
+      "attack_arc_degrees": 100.0,
       "verb": "harry",
       "verb_seconds": 2.5,
       "verb_strength": 0.35,
-      "design_purpose": "Harry (Wave 8 slice 1): the hound's bite slows you verb_strength for verb_seconds, so the slow hitters catch you; marked by an archer, hounds sprint. Outruns the player; packs punish standing still and reward area strikes. The long give_up_distance_m makes hounds the dangerous disengage: escaping them costs distance and risk. 5.5 m/s (from 6.5, owner 3 Sep 2026: 'hounds are a bit too fast'): faster than you, but only just - the pack is the threat, not the closing speed.",
+      "design_purpose": "Harry slows a bitten player by verb_strength for verb_seconds; marked by an archer, hounds sprint. Keep the owner-approved 5.5 m/s chase. INT-05B windup_advance_m is a collision-respecting 1.1m step over the existing bite charge, committed to its starting direction so straight walking can be caught. attack_arc_degrees limits the bite to that forward sector: a deliberate sidestep, distance, cover or stagger still avoids it. Slow reduces the step. give_up_distance_m keeps escape a meaningful disengagement.",
       "give_up_distance_m": 34.0
     },
     "shrieker": {
@@ -79,14 +81,14 @@
       "preferred_distance_m": 6.0,
       "windup_seconds": 0.5,
       "projectile": {
-        "speed_mps": 8.0,
+        "speed_mps": 16.0,
         "radius_m": 0.19,
-        "max_range_m": 12.0,
+        "max_range_m": 14.0,
         "muzzle_height_m": 0.9,
         "trail_length_m": 0.55,
         "colour": "c7cc8c",
         "glow_energy": 1.0,
-        "design_purpose": "A broader, slower mote distinguishes the mobile kindler from the archer. Uses the same committed-aim and solid-cover rules. Speed/radius control flight and dodge clearance, max range bounds misses, muzzle height sets launch point, trail/colour/glow control readability."
+        "design_purpose": "A broader, slightly slower mote distinguishes the mobile kindler from the archer. INT-05B speed/range let a committed shot catch straight retreat from preferred distance; the existing half-second charge remains dodgeable. No leading or homing; solid cover stops contact. Radius controls clearance, max range bounds misses, muzzle height sets launch point, trail/colour/glow control readability."
       },
       "verb": "kindle",
       "verb_seconds": 4.0,

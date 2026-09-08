@@ -138,7 +138,7 @@ slice after INT-04C. **Implemented, owner review pending.** The
 88-pixel inspector, larger readable summaries and pinned scrolling detail,
 native specialisation comparisons, automatic mastery wording, actual controls
 and six fresh-process saves. Exact owner layout/comprehension remain open.
-INT-05B is next; the original planning requirements follow.
+INT-05B has since been implemented; INT-05C is next. The original planning requirements follow.
 
 **Outcome:** inspecting a cell gives a readable consequence without covering the
 plate or losing the useful workings panel. Reproduce CURRENT FLOW with short and
@@ -169,6 +169,15 @@ and interface wording under D-023/D-025/D-026; no new currency or mastery system
 ## Intensive C — Threatening encounters and earned power
 
 ### INT-05B: enemies that can create pressure
+
+**Implemented, owner review pending — 8 September 2026.** “Awesome, continue
+on with 05B” selected this slice. [Implementation and measurements](forge-pressure-2026-09-08.md)
+record reproduced missed bites, bites through cover, unsafe arrivals and shots
+clipping kiln corners. Contact, warned mixed groups, full traversal and old
+boundary ownership pass. Dense p95 is 8.7% above baseline after query pruning.
+The six live bot fights produce four deaths/two timeouts: pressure is real,
+but final difficulty is unvalidated. INT-05C remains separate and unstarted.
+The original approved requirements follow.
 
 **Outcome:** hounds can threaten an inattentive player and ranged enemies constrain
 movement while remaining dodgeable. Test contact before increasing damage.

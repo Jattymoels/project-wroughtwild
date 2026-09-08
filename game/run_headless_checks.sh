@@ -82,6 +82,10 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --audio-driver Dummy --path . res://tests/foundry_clarity.tscn -- --foundry-restore-only
 "$GODOT" --headless --path . res://tests/first_hour_journey.tscn
 "$GODOT" --headless --path . res://tests/ranged_fairness.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/enemy_contact_review.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/enemy_contact_review.tscn -- --forge-contact
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/forge_pressure_review.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/forge_pressure_checks.tscn
 "$GODOT" --headless --path . res://tests/loot_persistence.tscn
 "$GODOT" --headless --path . res://tests/loose_drop_save.tscn
 "$GODOT" --headless --path . res://tests/discovery_clarity.tscn

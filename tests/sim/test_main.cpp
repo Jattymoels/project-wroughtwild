@@ -92,6 +92,12 @@ void testCombatNumbers(const tuning::Tuning& t) {
               "realtime: behaviour tunables exist for " + enemy.id);
     check(t.realtime.boss.breathTelegraphSeconds > 0.0, "realtime: boss telegraph loads");
     check(t.realtime.findBehaviour("fast")->aggroRangeM > 0.0, "realtime: aggro range loads");
+    const auto& bite = *t.realtime.findBehaviour("fast");
+    check(bite.windupAdvanceM > 0.0 && bite.attackArcDegrees < 180.0 && bite.windupSeconds >= 0.25,
+          "contact: advancing bite retains readable windup and a dodgeable forward sector");
+    check(t.realtime.findBehaviour("melee")->windupAdvanceM == 0.0 &&
+              t.realtime.findBehaviour("melee")->attackArcDegrees == 360.0,
+          "contact: other melee behaviours preserve stationary delivery defaults");
     check(t.world.findSite("old_mine")->ambushRemovedByWorldEffect == "old_mine_reinforced",
           "world: mine ambush is removed by the reinforcement effect");
     check(t.world.findSite("valley_forest")->ambushRemovedByWorldEffect.empty(),

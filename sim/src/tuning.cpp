@@ -905,6 +905,12 @@ RealtimeTable loadRealtime(const std::string& path) {
             behaviour.preferredDistanceM = preferred->asNumber();
         behaviour.aggroRangeM = b->get("aggro_range_m").asNumber();
         behaviour.windupSeconds = b->get("windup_seconds").asNumber();
+        if (auto v = b->find("windup_advance_m")) behaviour.windupAdvanceM = v->asNumber();
+        if (auto v = b->find("attack_arc_degrees")) behaviour.attackArcDegrees = v->asNumber();
+        if (behaviour.windupAdvanceM < 0.0 ||
+            (behaviour.windupAdvanceM > 0.0 && behaviour.windupSeconds <= 0.0) ||
+            behaviour.attackArcDegrees <= 0.0 || behaviour.attackArcDegrees > 360.0)
+            throw std::runtime_error("invalid committed melee delivery: " + id);
         if (auto shot = b->find("projectile")) {
             auto& p = behaviour.projectile;
             p.enabled = true;

@@ -50,10 +50,14 @@ var preferred_distance := 0.0
 var aggro_range := 10.0
 var base_aggro_range := 10.0
 var windup_seconds := 0.3
+var windup_advance := 0.0
+var attack_arc_degrees := 360.0
+var _strike_direction := Vector3.ZERO
 ## Spatial delivery is opted into by behaviour data, never by enemy id.
 var projectile_rules: Dictionary = {}
 var _shot_aim := Vector3.ZERO
 var _shot_tell: MeshInstance3D
+var _shot_clearance_shape: SphereShape3D
 var attack_period_seconds := 1.0
 ## D-012 stupid-zombie chase: once aggroed, press until the player stays
 ## beyond give_up_distance for give_up_seconds. 0 = never gives up.
@@ -215,6 +219,8 @@ func configure(sim: WroughtwildSim) -> void:
 	aggro_range = b.get("aggro_range_m", 10.0)
 	base_aggro_range = aggro_range
 	windup_seconds = b.get("windup_seconds", 0.3)
+	windup_advance = b.get("windup_advance_m", 0.0)
+	attack_arc_degrees = b.get("attack_arc_degrees", 360.0)
 	projectile_rules = b.get("projectile", {})
 	attack_period_seconds = def["attack_period_rounds"] * rt["round_seconds"] / speed_multiplier
 	give_up_distance = b.get("give_up_distance_m", 0.0)
@@ -625,6 +631,7 @@ func _physics_process(delta: float) -> void:
 	var in_reach := _vertical_gap_to(player) <= vertical_reach
 	_attack_cooldown = maxf(0.0, _attack_cooldown - delta)
 	var planar := Vector3.ZERO
+	var release_strike := false
 
 	# Grazers: the state machine turned around. Near you they bolt, far
 	# from you they settle, and they never wind up a bite.
@@ -666,20 +673,28 @@ func _physics_process(delta: float) -> void:
 			else:
 				_give_up_timer = 0.0
 			if state == "chase":
-				if distance <= attack_range and in_reach and _attack_cooldown <= 0.0:
+				var ready_to_attack := distance <= attack_range and in_reach and _attack_cooldown <= 0.0
+				var blocked_attack := ready_to_attack and not _attack_line_clear(player)
+				if ready_to_attack and not blocked_attack:
 					state = "windup"
 					_windup_left = windup_seconds
+					_strike_direction = (player.global_position - global_position) * Vector3(1,0,1)
+					_strike_direction = _strike_direction.normalized()
 					if not projectile_rules.is_empty():
 						_shot_aim = player.global_position
 				else:
-					planar = _chase_direction(player, distance) * move_speed * chase_speed_multiplier(player)
+					planar = _chase_direction(player, distance, blocked_attack) * move_speed * chase_speed_multiplier(player)
 		"windup":
+			# A short physical step along the direction shown at commitment.
+			# Slow, collision and stagger still apply; neither the step nor bite tracks a dodge.
+			if projectile_rules.is_empty() and windup_advance > 0.0:
+				planar = _strike_direction * windup_advance / windup_seconds * minf(delta, maxf(0.0, _windup_left)) / delta
 			_windup_left -= delta
 			if _windup_left <= 0.0:
-				attack_released.emit("strike" if projectile_rules.is_empty() else "projectile")
 				# The hit only lands if the player is still in reach: walking
 				# out of the wind-up is a legitimate dodge.
 				if not projectile_rules.is_empty():
+					attack_released.emit("projectile")
 					EnemyProjectile.launch(self, _shot_aim, projectile_rules)
 					if trial_bound:
 						var mods: Dictionary=_sim.combat_mods()
@@ -688,8 +703,8 @@ func _physics_process(delta: float) -> void:
 							var angle:=deg_to_rad(float(mods.get("crossfire_fan_degrees",0)))*(float(shot_index)-float(extra-1)*.5)
 							if is_zero_approx(angle): angle=deg_to_rad(float(mods.get("crossfire_fan_degrees",0)))
 							EnemyProjectile.launch(self,global_position+(_shot_aim-global_position).rotated(Vector3.UP,angle),projectile_rules)
-				elif distance <= attack_range * 1.15 and in_reach:
-					player.combat.take_hit(bite_damage(), bite_type(), display_name, self)
+				else:
+					release_strike = true
 				_attack_cooldown = attack_period_seconds
 				state = "chase"
 
@@ -721,9 +736,39 @@ func _physics_process(delta: float) -> void:
 		var committed_face := Vector3(_shot_aim.x, global_position.y, _shot_aim.z)
 		if global_position.distance_squared_to(committed_face) > 0.001:
 			look_at(committed_face, Vector3.UP)
+	elif (state == "windup" or release_strike) and windup_advance > 0.0 and not _strike_direction.is_zero_approx():
+		look_at(global_position + _strike_direction, Vector3.UP)
 	_apply_shove(delta)
 	move_and_slide()
+	if release_strike:
+		attack_released.emit("strike")
+		var to_player := (player.global_position - global_position) * Vector3(1,0,1)
+		var in_arc := attack_arc_degrees >= 360.0 or to_player.is_zero_approx() or _strike_direction.dot(to_player.normalized()) >= cos(deg_to_rad(attack_arc_degrees * .5))
+		if to_player.length() <= attack_range * 1.15 and _vertical_gap_to(player) <= vertical_reach and in_arc and _attack_line_clear(player):
+			player.combat.take_hit(bite_damage(), bite_type(), display_name, self)
 	_update_shot_tell()
+
+
+func _attack_line_clear(player: Node3D) -> bool:
+	if not projectile_rules.is_empty():
+		# A thin sight ray can clear a corner that still catches the physical shot.
+		if _shot_clearance_shape == null:
+			_shot_clearance_shape = SphereShape3D.new()
+			_shot_clearance_shape.radius = float(projectile_rules["radius_m"])
+		var shot_query := PhysicsShapeQueryParameters3D.new()
+		shot_query.shape = _shot_clearance_shape
+		shot_query.transform = Transform3D(Basis.IDENTITY,global_position+Vector3.UP*float(projectile_rules["muzzle_height_m"]))
+		shot_query.motion = player.global_position-shot_query.transform.origin
+		shot_query.collision_mask = collision_mask
+		shot_query.exclude = [get_rid(),player.get_rid()]
+		var space := get_world_3d().direct_space_state
+		if not space.intersect_shape(shot_query,1).is_empty(): return false
+		return space.cast_motion(shot_query)[0] >= 1.0
+	# Body-centre line: floors/walls/cover must stop a bite as they stop a shot.
+	var query := PhysicsRayQueryParameters3D.create(global_position + Vector3.UP * .65, player.global_position)
+	query.exclude = [self]
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	return hit.is_empty() or hit.get("collider") == player
 
 
 func _update_shot_tell() -> void:
@@ -799,19 +844,22 @@ func _separation_push() -> Vector3:
 	return push * separation_strength
 
 
-func _chase_direction(player: Node3D, distance: float) -> Vector3:
+func _chase_direction(player: Node3D, distance: float, blocked_attack := false) -> Vector3:
 	var to_player := player.global_position - global_position
 	to_player.y = 0.0
 	if to_player.length_squared() < 0.0001:
 		return Vector3.ZERO
 	to_player = to_player.normalized()
 	if trial_bound and is_instance_valid(trial_dungeon):
-		var unobstructed := true
-		var ray:=PhysicsRayQueryParameters3D.create(global_position+Vector3.UP,player.global_position+Vector3.UP)
-		ray.exclude=[self]
-		var hit:=get_world_3d().direct_space_state.intersect_ray(ray)
-		if not hit.is_empty() and hit.get("collider")!=player: unobstructed=false
-		if not unobstructed or preferred_distance<=0 or distance>preferred_distance+.5:
+		var needs_path := blocked_attack or preferred_distance<=0 or distance>preferred_distance+.5
+		# Melee, distant shooters and known blocked attacks already require a path.
+		# Only test sight when it can change that decision.
+		if not needs_path:
+			var ray:=PhysicsRayQueryParameters3D.create(global_position+Vector3.UP,player.global_position+Vector3.UP)
+			ray.exclude=[self]
+			var hit:=get_world_3d().direct_space_state.intersect_ray(ray)
+			needs_path = not hit.is_empty() and hit.get("collider")!=player
+		if needs_path:
 			_trial_path_left-=get_physics_process_delta_time()
 			if _trial_path_left<=0:
 				_trial_path=trial_dungeon.path(global_position,player.global_position)
@@ -822,7 +870,7 @@ func _chase_direction(player: Node3D, distance: float) -> Vector3:
 				var toward:=_trial_path[0]-global_position
 				toward.y=0
 				if toward.length_squared()>.04: return toward.normalized()
-	if preferred_distance > 0.0:
+	if preferred_distance > 0.0 and not blocked_attack:
 		# Ranged: hold a firing distance, backing off when crowded.
 		if distance > preferred_distance + 0.5:
 			return to_player

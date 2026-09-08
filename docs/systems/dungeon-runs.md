@@ -20,6 +20,26 @@ demolition conflict remains outside this work item.
 
 ## Implemented rules and host contract
 
+[INT-05B](../prototype/forge-pressure-2026-09-08.md) concentrates mixed arrivals
+around the existing entry lanes and cover. Ordinary story encounters contain
+12/14/16 enemies in Tyrant/Deep/Capstone respectively, ordered into groups of at
+most six. Boss rosters and all eight module geometries remain unchanged. The
+normal interval is six seconds, including a two-second HUD warning; map-specific
+intervals still apply. Clearing early also allows the full warning before the
+next group. At most 24 enemies and two major hazards remain live.
+
+`trial.json.engine_rules` documents arrival area, front/rear/side offsets,
+1.7 m spacing and 5 m player clearance. Spawn selection uses current navigable
+floor cells and surviving body positions, alternates the group's preferred
+side and never falls back into blocked space. Unplaced enemies remain queued;
+a full/blocked arrival retries after the notice interval. The boss keeps its
+central position when clear, otherwise uses a checked room point. There is no
+new lock-in: existing retreat, optional routes, rewards and lift rules remain.
+The native encounter arrays also drive previews. Cleared-boundary checkpoints
+store route/ownership rather than enemy arrays, so old boundaries restore
+exactly and the next uncleared encounter uses current tuning without a schema
+or content-revision change.
+
 The [INT-05A presentation pass](../prototype/forge-readability-2026-09-07.md)
 exposes current route plaques inside the gallery approach with the same solid
 body represented in navigation clearance. Available plaques preview the native

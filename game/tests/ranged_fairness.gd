@@ -83,7 +83,8 @@ func _ready() -> void:
 			for frame in fps:
 				player.position.x += player.move_speed / float(fps)
 				await get_tree().physics_frame
-				shot.advance(1.0 / float(fps))
+				# A faster finite shot can expire before the one-second walk ends.
+				if is_instance_valid(shot): shot.advance(1.0 / float(fps))
 			check(player.combat.life == full, "%s flight sidestep at %d FPS avoids damage" % [id, fps])
 			clear_shots()
 		# Thin solid cover and initial overlap are both checked by the sweep.

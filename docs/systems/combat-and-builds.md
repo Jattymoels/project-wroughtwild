@@ -21,6 +21,19 @@ projectile. Sidestepping and solid cover can prevent contact; existing hit
 damage and movement-only dash remain unchanged. See the
 [implementation and tuning](../art/codex-ranged-fairness-2026-09-05.md).
 
+[INT-05B contact corrections](../prototype/forge-pressure-2026-09-08.md) retain
+that commitment rule and the existing 0.6/0.5-second ranged windups. Archer and
+wisp shots travel at 18/16 m/s, both bounded to 14 m. Firing clearance uses their
+actual muzzle and radius; a blocked trial shooter continues along navigation
+around cover. Damage, mark, kindle, shot radius and cadence remain unchanged.
+The `fast` behaviour retains its 5.5 m/s chase and 0.25-second bite windup, but
+physically advances up to 1.1 m along its committed direction. Its 100-degree
+forward bite sector permits a lateral dodge. Movement collision, slow and
+stagger still apply; release checks current reach, height, direction and solid
+cover. Other melee behaviours retain stationary delivery and their original
+reach, with the corrected cover check. Engine-neutral values and their player
+purposes live in `combat_realtime.json`; no new save state is required.
+
 The subsequent owner-approved [combat presentation pass](../art/codex-combat-presentation-2026-09-05.md)
 adds incoming-hit bearings, actual equipped weapon models, delivery/tag-specific
 hand gestures and distinct arrow/ember/frost projectile shapes. These observe

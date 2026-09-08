@@ -438,23 +438,43 @@ func nearest_floor(p: Vector3) -> Vector3:
 		if d<distance: best=candidate; distance=d
 	return to_global(best)
 
-func spawn_points(room: Dictionary,count: int) -> Array:
+func spawn_points(room: Dictionary,count: int, player_at := Vector3.INF, occupied: Array = [], rules: Dictionary = {}, wave := 0) -> Array:
 	var points: Array=[]
 	var centre: Vector3=room.get("spawn_at",Vector3.ZERO)
+	var room_centre: Vector3=room.get("centre",centre)
+	# Alternate a close entry-side group and a rear group around existing cover.
+	# All points stay in the same compact occupied area; room/exit geometry is unchanged.
+	if not rules.is_empty():
+		centre = room_centre + Vector3(-signf(room_centre.x) * float(rules["spawn_group_side_m"]) * (1 if wave % 2 == 0 else -1), .6, float(rules["spawn_front_m"] if wave % 2 == 0 else rules["spawn_rear_m"]))
 	var candidates: Array[Vector3]=[]
 	var bounds: Rect2=room.get("rect",Rect2())
+	if not rules.is_empty():
+		var size := Vector2(float(rules["spawn_area_width_m"]),float(rules["spawn_area_depth_m"]))
+		bounds = bounds.intersection(Rect2(Vector2(room_centre.x,room_centre.z) - size*.5,size))
+	var spacing := float(rules.get("spawn_spacing_m",1.7))
+	var player_clearance := float(rules.get("spawn_player_clearance_m",5.0))
 	for cell in _walk_cells:
 		var candidate:=Vector3(cell.x+.5,.6,cell.y+.5)
-		if bounds.grow(-1).has_point(Vector2(candidate.x,candidate.z)): candidates.append(candidate)
+		if not bounds.grow(-1).has_point(Vector2(candidate.x,candidate.z)): continue
+		var world_candidate := to_global(candidate)
+		if Vector2(world_candidate.x-player_at.x,world_candidate.z-player_at.z).length() < player_clearance: continue
+		var clear := true
+		for used in occupied:
+			if Vector2(world_candidate.x-used.x,world_candidate.z-used.z).length() < spacing: clear=false; break
+		if clear: candidates.append(candidate)
 	candidates.sort_custom(func(a:Vector3,b:Vector3)->bool:return a.distance_squared_to(centre)<b.distance_squared_to(centre))
 	for i in count:
-		var p:=centre
+		var found := false
 		for candidate in candidates:
 			var clear:=true
 			for used in points:
-				if to_local(used).distance_to(candidate)<1.7: clear=false; break
-			if clear: p=candidate; break
-		points.append(to_global(p))
+				if to_local(used).distance_to(candidate)<spacing: clear=false; break
+			if clear:
+				points.append(to_global(candidate))
+				found = true
+				break
+		# No fallback into a wall/body: the controller retains unplaced reserves.
+		if not found: break
 	return points
 
 func _on_floor(point: Vector2) -> bool:

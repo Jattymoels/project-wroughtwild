@@ -647,6 +647,8 @@ struct BehaviourRealtime {
     double preferredDistanceM = 0.0; // 0 = close to melee range
     double aggroRangeM = 0.0;
     double windupSeconds = 0.0;
+    double windupAdvanceM = 0.0;
+    double attackArcDegrees = 360.0;
     // D-012: chase persists until the player stays beyond this for the
     // horde's give_up_seconds; 0 means "never gives up".
     double giveUpDistanceM = 0.0;

@@ -395,7 +395,8 @@
     "hazard_radius_m": 2.5,
     "hazard_limit": 2,
     "living_enemy_limit": 24,
-    "reinforcement_delay_seconds": 8.0,
+    "reinforcement_delay_seconds": 6.0,
+    "reinforcement_notice_seconds": 2.0,
     "boss_vent_period_seconds": 7.0,
     "boss_guard_reduction": 0.4,
     "boss_guard_arc_degrees": 150.0,
@@ -404,8 +405,15 @@
     "conduit_rearm_seconds": 14.0,
     "elite_life_multiplier": 1.4,
     "elite_damage_multiplier": 1.1,
-    "encounter_wave_size": 10,
-    "design_purpose": "Telegraph time preserves a spatial escape; active/tick/damage/radius define the cost of remaining in marked ground. At most two major hazards and twenty-four enemies may be live. Reinforcement timing spaces pressure; wave size bounds each arrival. Boss vent cadence and recovery create attack windows; the guard arc/reduction reward a flank or stagger. Up to three active conduits reduce boss damage taken per conduit and return on the rearm clock. Elites are modestly tougher than their family."
+    "encounter_wave_size": 6,
+    "spawn_area_width_m": 16.0,
+    "spawn_area_depth_m": 16.0,
+    "spawn_group_side_m": 2.0,
+    "spawn_front_m": 2.0,
+    "spawn_rear_m": -3.0,
+    "spawn_spacing_m": 1.7,
+    "spawn_player_clearance_m": 5.0,
+    "design_purpose": "Telegraph time preserves a spatial escape; active/tick/damage/radius define the cost of marked ground. Limits remain two major hazards and twenty-four living enemies. INT-05B sends at most six arrivals every six seconds, with a two-second warning even if the preceding group dies early. Encounter arrays author ordered mixed groups and total population (12 Tyrant, 14 Deep, 16 Capstone ordinary rooms; boss rosters unchanged). spawn_area dimensions concentrate arrivals in the central room area with a one-metre inset; front/rear offsets and alternating side offset put groups around existing cover and closer to entry lanes. spawn_spacing prevents stacked capsules, player clearance prevents close surprise arrivals. Unplaceable reserves wait, retaining ownership. Boss vent cadence/recovery create attack windows; guard arc/reduction reward a flank or stagger. Up to three conduits reduce boss damage taken per conduit and return on the rearm clock. Elite multipliers are unchanged."
   },
   "expeditions": [
     {
@@ -435,10 +443,16 @@
               "module": "threshold_gallery",
               "encounter": [
                 "ember_whelp",
-                "ember_whelp",
-                "ember_whelp",
+                "ash_hound",
+                "cinder_archer",
                 "ember_whelp",
                 "ash_hound",
+                "marsh_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "ember_whelp",
+                "stone_husk",
+                "marsh_wisp",
                 "ash_hound"
               ],
               "reward": "boon_offer"
@@ -453,11 +467,17 @@
               "display_name": "The Loading Yard",
               "module": "loading_yard",
               "encounter": [
+                "ash_hound",
                 "cinder_archer",
+                "ember_whelp",
+                "stone_husk",
+                "marsh_wisp",
+                "ash_hound",
+                "stone_husk",
+                "ash_hound",
                 "cinder_archer",
-                "ember_whelp",
-                "ember_whelp",
-                "ember_whelp",
+                "ash_hound",
+                "marsh_wisp",
                 "ember_whelp"
               ],
               "reward": "boon_offer"
@@ -467,12 +487,18 @@
               "display_name": "The Side Loading Yard",
               "module": "ward_gallery",
               "encounter": [
+                "stone_husk",
                 "ash_hound",
+                "cinder_archer",
                 "ash_hound",
+                "marsh_wisp",
+                "ember_whelp",
+                "ember_whelp",
                 "ash_hound",
+                "cinder_archer",
+                "ember_whelp",
                 "ash_hound",
-                "ash_hound",
-                "stone_husk"
+                "marsh_wisp"
               ],
               "reward": "boon_offer"
             }
@@ -486,12 +512,18 @@
               "display_name": "The Fuel Bargain",
               "module": "fuel_chamber",
               "encounter": [
+                "stone_husk",
                 "ash_hound",
+                "cinder_archer",
                 "ash_hound",
+                "marsh_wisp",
+                "ember_whelp",
+                "ember_whelp",
                 "ash_hound",
+                "cinder_archer",
+                "ember_whelp",
                 "ash_hound",
-                "ash_hound",
-                "stone_husk"
+                "marsh_wisp"
               ],
               "reward": "weakness_offer"
             }
@@ -506,10 +538,16 @@
               "module": "cistern",
               "encounter": [
                 "ember_whelp",
-                "ember_whelp",
-                "ember_whelp",
+                "ash_hound",
+                "cinder_archer",
                 "ember_whelp",
                 "ash_hound",
+                "marsh_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "ember_whelp",
+                "stone_husk",
+                "marsh_wisp",
                 "ash_hound"
               ],
               "reward": "materials"
@@ -524,11 +562,17 @@
               "display_name": "The Ward Gallery",
               "module": "ward_gallery",
               "encounter": [
+                "ash_hound",
                 "cinder_archer",
+                "ember_whelp",
+                "stone_husk",
+                "marsh_wisp",
+                "ash_hound",
+                "stone_husk",
+                "ash_hound",
                 "cinder_archer",
-                "ember_whelp",
-                "ember_whelp",
-                "ember_whelp",
+                "ash_hound",
+                "marsh_wisp",
                 "ember_whelp"
               ],
               "reward": "boon_offer"
@@ -538,12 +582,18 @@
               "display_name": "The Side Ward Gallery",
               "module": "loading_yard",
               "encounter": [
+                "stone_husk",
                 "ash_hound",
+                "cinder_archer",
                 "ash_hound",
+                "marsh_wisp",
+                "ember_whelp",
+                "ember_whelp",
                 "ash_hound",
+                "cinder_archer",
+                "ember_whelp",
                 "ash_hound",
-                "ash_hound",
-                "stone_husk"
+                "marsh_wisp"
               ],
               "reward": "boon_offer"
             }
@@ -557,12 +607,18 @@
               "display_name": "The Kiln Hall",
               "module": "kiln_hall",
               "encounter": [
+                "stone_husk",
                 "ash_hound",
+                "cinder_archer",
                 "ash_hound",
+                "marsh_wisp",
+                "ember_whelp",
+                "ember_whelp",
                 "ash_hound",
+                "cinder_archer",
+                "ember_whelp",
                 "ash_hound",
-                "ash_hound",
-                "stone_husk"
+                "marsh_wisp"
               ],
               "reward": "boon_offer"
             }
@@ -577,10 +633,16 @@
               "module": "fuel_chamber",
               "encounter": [
                 "ember_whelp",
-                "ember_whelp",
-                "ember_whelp",
+                "ash_hound",
+                "cinder_archer",
                 "ember_whelp",
                 "ash_hound",
+                "marsh_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "ember_whelp",
+                "stone_husk",
+                "marsh_wisp",
                 "ash_hound"
               ],
               "reward": "catalyst"
@@ -636,12 +698,20 @@
               "display_name": "The Threshold",
               "module": "threshold_gallery",
               "encounter": [
+                "hollow_knight",
+                "ash_hound",
                 "cinder_wisp",
+                "ember_whelp",
+                "cinder_archer",
+                "marsh_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "hollow_knight",
+                "ash_hound",
                 "cinder_wisp",
                 "ember_whelp",
-                "ember_whelp",
-                "ember_whelp",
-                "ember_whelp"
+                "ash_hound",
+                "cinder_archer"
               ],
               "reward": "boon_offer"
             }
@@ -655,12 +725,20 @@
               "display_name": "The Loading Yard",
               "module": "loading_yard",
               "encounter": [
+                "ash_hound",
+                "cinder_archer",
                 "hollow_knight",
                 "ash_hound",
-                "ash_hound",
-                "ash_hound",
-                "ash_hound",
-                "cinder_archer"
+                "cinder_wisp",
+                "ember_whelp",
+                "bog_lurker",
+                "gloom_crawler",
+                "marsh_wisp",
+                "gloom_crawler",
+                "cinder_archer",
+                "bog_lurker",
+                "bog_lurker",
+                "gloom_crawler"
               ],
               "reward": "boon_offer"
             },
@@ -670,12 +748,19 @@
               "module": "ward_gallery",
               "encounter": [
                 "bog_lurker",
+                "gloom_crawler",
+                "marsh_wisp",
+                "gloom_crawler",
+                "cinder_archer",
                 "bog_lurker",
+                "hollow_knight",
+                "ash_hound",
+                "cinder_wisp",
+                "ember_whelp",
+                "cinder_archer",
                 "marsh_wisp",
-                "marsh_wisp",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler"
+                "hollow_knight",
+                "ash_hound"
               ],
               "reward": "boon_offer"
             }
@@ -690,12 +775,19 @@
               "module": "fuel_chamber",
               "encounter": [
                 "bog_lurker",
+                "gloom_crawler",
+                "marsh_wisp",
+                "gloom_crawler",
+                "cinder_archer",
                 "bog_lurker",
+                "hollow_knight",
+                "ash_hound",
+                "cinder_wisp",
+                "ember_whelp",
+                "cinder_archer",
                 "marsh_wisp",
-                "marsh_wisp",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler"
+                "hollow_knight",
+                "ash_hound"
               ],
               "reward": "weakness_offer"
             }
@@ -709,12 +801,20 @@
               "display_name": "The Cistern Crossing",
               "module": "cistern",
               "encounter": [
+                "hollow_knight",
+                "ash_hound",
                 "cinder_wisp",
+                "ember_whelp",
+                "cinder_archer",
+                "marsh_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "hollow_knight",
+                "ash_hound",
                 "cinder_wisp",
                 "ember_whelp",
-                "ember_whelp",
-                "ember_whelp",
-                "ember_whelp"
+                "ash_hound",
+                "cinder_archer"
               ],
               "reward": "materials"
             }
@@ -728,12 +828,20 @@
               "display_name": "The Ward Gallery",
               "module": "ward_gallery",
               "encounter": [
+                "ash_hound",
+                "cinder_archer",
                 "hollow_knight",
                 "ash_hound",
-                "ash_hound",
-                "ash_hound",
-                "ash_hound",
-                "cinder_archer"
+                "cinder_wisp",
+                "ember_whelp",
+                "bog_lurker",
+                "gloom_crawler",
+                "marsh_wisp",
+                "gloom_crawler",
+                "cinder_archer",
+                "bog_lurker",
+                "bog_lurker",
+                "gloom_crawler"
               ],
               "reward": "boon_offer"
             },
@@ -743,12 +851,19 @@
               "module": "loading_yard",
               "encounter": [
                 "bog_lurker",
+                "gloom_crawler",
+                "marsh_wisp",
+                "gloom_crawler",
+                "cinder_archer",
                 "bog_lurker",
+                "hollow_knight",
+                "ash_hound",
+                "cinder_wisp",
+                "ember_whelp",
+                "cinder_archer",
                 "marsh_wisp",
-                "marsh_wisp",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler"
+                "hollow_knight",
+                "ash_hound"
               ],
               "reward": "boon_offer"
             }
@@ -763,12 +878,19 @@
               "module": "kiln_hall",
               "encounter": [
                 "bog_lurker",
+                "gloom_crawler",
+                "marsh_wisp",
+                "gloom_crawler",
+                "cinder_archer",
                 "bog_lurker",
+                "hollow_knight",
+                "ash_hound",
+                "cinder_wisp",
+                "ember_whelp",
+                "cinder_archer",
                 "marsh_wisp",
-                "marsh_wisp",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler"
+                "hollow_knight",
+                "ash_hound"
               ],
               "reward": "boon_offer"
             }
@@ -782,12 +904,20 @@
               "display_name": "The Ember Shrine",
               "module": "fuel_chamber",
               "encounter": [
+                "hollow_knight",
+                "ash_hound",
                 "cinder_wisp",
+                "ember_whelp",
+                "cinder_archer",
+                "marsh_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "hollow_knight",
+                "ash_hound",
                 "cinder_wisp",
                 "ember_whelp",
-                "ember_whelp",
-                "ember_whelp",
-                "ember_whelp"
+                "ash_hound",
+                "cinder_archer"
               ],
               "reward": "catalyst"
             }
@@ -845,12 +975,21 @@
               "module": "threshold_gallery",
               "encounter": [
                 "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler",
+                "cinder_wisp",
                 "hollow_knight",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler"
+                "shrieker",
+                "ash_hound",
+                "cinder_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "ash_hound",
+                "shrieker",
+                "ash_hound",
+                "cinder_wisp",
+                "ash_hound"
               ],
               "reward": "boon_offer"
             }
@@ -866,11 +1005,20 @@
               "encounter": [
                 "shrieker",
                 "ash_hound",
-                "ash_hound",
-                "ash_hound",
-                "ash_hound",
                 "cinder_wisp",
-                "cinder_wisp"
+                "ash_hound",
+                "cinder_archer",
+                "ash_hound",
+                "stone_husk",
+                "bog_lurker",
+                "cinder_archer",
+                "ash_hound",
+                "marsh_wisp",
+                "stone_husk",
+                "stone_husk",
+                "bog_lurker",
+                "cinder_archer",
+                "ash_hound"
               ],
               "reward": "boon_offer"
             },
@@ -880,11 +1028,21 @@
               "module": "ward_gallery",
               "encounter": [
                 "stone_husk",
-                "stone_husk",
-                "cinder_archer",
-                "cinder_archer",
                 "bog_lurker",
-                "bog_lurker"
+                "cinder_archer",
+                "ash_hound",
+                "marsh_wisp",
+                "stone_husk",
+                "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler",
+                "cinder_wisp",
+                "hollow_knight",
+                "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler"
               ],
               "reward": "boon_offer"
             }
@@ -899,11 +1057,21 @@
               "module": "fuel_chamber",
               "encounter": [
                 "stone_husk",
-                "stone_husk",
-                "cinder_archer",
-                "cinder_archer",
                 "bog_lurker",
-                "bog_lurker"
+                "cinder_archer",
+                "ash_hound",
+                "marsh_wisp",
+                "stone_husk",
+                "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler",
+                "cinder_wisp",
+                "hollow_knight",
+                "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler"
               ],
               "reward": "weakness_offer"
             }
@@ -918,12 +1086,21 @@
               "module": "cistern",
               "encounter": [
                 "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler",
+                "cinder_wisp",
                 "hollow_knight",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler"
+                "shrieker",
+                "ash_hound",
+                "cinder_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "ash_hound",
+                "shrieker",
+                "ash_hound",
+                "cinder_wisp",
+                "ash_hound"
               ],
               "reward": "materials"
             }
@@ -939,11 +1116,20 @@
               "encounter": [
                 "shrieker",
                 "ash_hound",
-                "ash_hound",
-                "ash_hound",
-                "ash_hound",
                 "cinder_wisp",
-                "cinder_wisp"
+                "ash_hound",
+                "cinder_archer",
+                "ash_hound",
+                "stone_husk",
+                "bog_lurker",
+                "cinder_archer",
+                "ash_hound",
+                "marsh_wisp",
+                "stone_husk",
+                "stone_husk",
+                "bog_lurker",
+                "cinder_archer",
+                "ash_hound"
               ],
               "reward": "boon_offer"
             },
@@ -953,11 +1139,21 @@
               "module": "loading_yard",
               "encounter": [
                 "stone_husk",
-                "stone_husk",
-                "cinder_archer",
-                "cinder_archer",
                 "bog_lurker",
-                "bog_lurker"
+                "cinder_archer",
+                "ash_hound",
+                "marsh_wisp",
+                "stone_husk",
+                "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler",
+                "cinder_wisp",
+                "hollow_knight",
+                "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler"
               ],
               "reward": "boon_offer"
             }
@@ -972,11 +1168,21 @@
               "module": "kiln_hall",
               "encounter": [
                 "stone_husk",
-                "stone_husk",
-                "cinder_archer",
-                "cinder_archer",
                 "bog_lurker",
-                "bog_lurker"
+                "cinder_archer",
+                "ash_hound",
+                "marsh_wisp",
+                "stone_husk",
+                "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler",
+                "cinder_wisp",
+                "hollow_knight",
+                "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler"
               ],
               "reward": "boon_offer"
             }
@@ -991,12 +1197,21 @@
               "module": "fuel_chamber",
               "encounter": [
                 "hollow_knight",
+                "gloom_crawler",
+                "cinder_archer",
+                "gloom_crawler",
+                "cinder_wisp",
                 "hollow_knight",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler",
-                "gloom_crawler"
+                "shrieker",
+                "ash_hound",
+                "cinder_wisp",
+                "ash_hound",
+                "cinder_archer",
+                "ash_hound",
+                "shrieker",
+                "ash_hound",
+                "cinder_wisp",
+                "ash_hound"
               ],
               "reward": "catalyst"
             }
