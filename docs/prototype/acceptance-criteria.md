@@ -9,7 +9,7 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   replacement. Original clay/output/fuel recipe remains available.
 - [x] Fixed lots, hidden rare outcomes, interrupted work, full families and
   partial native claims restore without rerolling or duplicate collection.
-- [ ] LF-1B costly ordinary Faint Ember manufacture and persistent Foundry proof.
+- [x] LF-1B costly ordinary Faint Ember manufacture and persistent Foundry proof.
 - [ ] LF-1C paid White connection and wound winch/landing cargo delivery.
 - [ ] Owner accepts discovery, extraction effort, spending trade-offs and circuit
   usefulness. [Evidence and limitations](living-frontier-wave1-2026-09-08.md).

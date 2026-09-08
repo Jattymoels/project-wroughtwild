@@ -27,6 +27,11 @@ struct Station {
 
 struct Recipe {
     std::string worldProfile; // empty = existing acquisition in every world
+    std::string excludedWorldProfile; // a selected replacement keeps legacy costs intact
+    bool availableIn(const std::string& profile) const {
+        return (worldProfile.empty() || worldProfile == profile) &&
+               (excludedWorldProfile.empty() || excludedWorldProfile != profile);
+    }
     std::string id;
     std::string displayName;
     std::string station; // "" = hand-craftable anywhere, no facility or fuel gate

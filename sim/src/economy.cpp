@@ -142,7 +142,7 @@ PlayerEconomy::CraftPlan PlayerEconomy::craftPlan(const std::string& recipeId, c
     CraftPlan plan;
     plan.quality = quality;
     const auto* recipe = tuning_.crafting.findRecipe(recipeId);
-    if (!recipe || (!recipe->worldProfile.empty() && recipe->worldProfile != worldProfile)) { plan.failure.unknownRecipe = true; return plan; }
+    if (!recipe || !recipe->availableIn(worldProfile)) { plan.failure.unknownRecipe = true; return plan; }
     for (const auto& [output, count] : recipe->outputs)
         if (tuning_.items.findBase(output)) plan.baseId = output;
     if (quantity < 1 || quantity > tuning_.crafting.batchMaximum || (!plan.baseId.empty() && quantity != 1)) {

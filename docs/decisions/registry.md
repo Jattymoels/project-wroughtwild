@@ -11,6 +11,9 @@ owned grades/refinement, existing campaign triggers and finite ordinary/rare-cor
 pressure stock remain. Only these magical hosts receive capped active-overworld
 renewal. No research, lessons, perfection ladder or mandatory craft timers.
 This supersedes the extraction deferral only for Wave 1; Wave 2 is not cleared.
+LF-1B selects 96 Red Salt + 4 iron ingots + 8 charcoal for one immediate
+ordinary Faint Ember craft. It replaces iron-only `distil_ember` solely in this
+experiment; its normal-world costs and all owned-grade refinements remain.
 
 Owner campaign/extraction direction, 8 September 2026: the owner supports the
 White/Impulse, Red/Excitation, Blue/Retention and Green/Propagation foundations

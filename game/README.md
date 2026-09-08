@@ -347,6 +347,10 @@ use `user://living_frontier_wave1.json`, separately from your normal save.
 Normal launches still create V6 worlds. Follow Red scars from the starting
 valley toward the first home clearing, work the Red host and collect its raw
 Salt. At your basic forge, 8 clay and 2 Salt fire 4 existing bricks.
+For a deliberate Faint Ember purchase, carry 96 Salt, 4 iron ingots and 8 charcoal
+to that forge. Smelting earns an Ember ingot. In F, lay Heavy Strike at row 2 /
+column 2, Ember at row 2 / column 1 and the Catalyst at row 3 / column 1 to see
+Kindling. Rows/columns here are counted from one.
 The [Wave 1 work item](../docs/prototype/living-frontier-wave1-2026-09-08.md)
 records current completion, exact costs, checks and limitations. This opt-in
 profile does not clear Wave 2 or change the existing campaign.

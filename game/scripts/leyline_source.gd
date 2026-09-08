@@ -117,7 +117,7 @@ func _open(message := "") -> void:
 	for item: String in s.claim:
 		rows.append({"text":"%d %s waiting in the host." % [s.claim[item],Hud.pretty(item)],"button":"Collect " + Hud.pretty(item),"enabled":ready,"callback":_collect.bind(item)})
 	rows.append({"text":"Red Salt fires bricks: 8 clay + 2 salt → 4 bricks at your forge." if s.material == "red_salt" else "White mineral carries a request through a placed connection.","button":"Material use","enabled":false,
-		"details":"Red Salt replaces the brick variant's fuel only. It supplies no mechanical winding. An intact Faint Ember has a %.1f%% chance per fixed Red lot and uses its existing Foundry rules; it is a bonus, not a required harvest." % (float(s.rare_per_10000)/100.0) if s.material == "red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding."})
+		"details":"Red Salt replaces the brick variant's fuel only. Forge Faint Ember: 96 salt + 4 iron ingots + 8 charcoal, immediately at a basic forge (Blacksmithing 1). An intact Faint Ember has a %.1f%% chance per fixed Red lot; it is a bonus. Salt supplies no mechanical winding." % (float(s.rare_per_10000)/100.0) if s.material == "red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding."})
 	if not ready: message = "Clear the host's workspace and restore its ground support to work or collect."
 	_panel_player.open_custom_panel(s.label,rows,message,"leyline:"+source_id)
 	refresh()

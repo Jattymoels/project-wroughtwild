@@ -7,6 +7,15 @@ the original brick recipe and global fuel table remain exact. Red Salt carries
 up to 128 units per family. No remote chest consumption, special lessons or
 processing timers. [Contract and evidence](../prototype/living-frontier-wave1-2026-09-08.md).
 
+**LF-1B:** `forge_faint_ember` spends 96 Red Salt + 4 iron ingots + 8 charcoal
+at a basic forge (Blacksmithing 1, era 1), immediately making one existing Faint
+Ember with 2 base XP and no additional fuel. Charcoal is the entire explicit
+heat payment. The full recipe fits carried family limits. Only in the experiment
+it replaces `distil_ember`; all historical worlds retain that recipe's accepted
+inputs and fuel. Existing Stable/Potent refinement, Foundry identity, lifting,
+equipment use and death ownership are unchanged. Forged outputs retain the
+existing rule that crafting can exceed gathering caps without loss.
+
 **INT-04A action feedback, 7 September 2026:** successful manual crafting now
 confirms once at the actual active station, with a short local sound and small
 temporary work flecks. Field recipes confirm at the player. Recipe quantities,

@@ -25,6 +25,7 @@ func _run_lf() -> void:
 		check(_sim().leyline_save() == saved.leylines,"fresh process exact lots, outcomes, work, claims and formation")
 		check(JSON.parse_string(_sim().export_json()) == JSON.parse_string(saved.sim),"fresh process exact owned inventory and progression")
 		check(JSON.parse_string(_sim().contraption_save()) == JSON.parse_string(saved.contraptions),"fresh process exact machinery")
+		check(kindling_active(),"fresh process restores the manufactured Kindling effect")
 		return _finish_lf()
 	check(_sim().inventory().is_empty(),"no supplied inventory")
 	check(_sim().recipe_ids().has("fire_red_brick"),"ordinary catalogue exposes Red brick variant in experiment")
@@ -79,7 +80,67 @@ func _run_lf() -> void:
 	await snap("red-brick-catalogue")
 	player.work_panel.close_panel()
 	await checkpoint("paid Red bricks")
+	# LF-1B: six further draws, ordinary smelting and charcoal; no rare find.
+	for lot in 6:
+		await aim_at(red)
+		player.interact()
+		for step in 4: await press(String(red.state().next_work))
+		await press("Collect Red Salt")
+	player.work_panel.close_panel()
+	check(_sim().material_count("ember_catalyst")==0,"the chosen fixed lots need no rare success")
+	if not await gather("wood",32): return _finish_lf()
+	if not await gather("iron_ore",8): return _finish_lf()
+	if not craft("smelt_iron",4,forge): return _finish_lf()
+	if not craft("charcoal",4,forge): return _finish_lf()
+	await aim_at(forge)
+	forge.interact(player)
+	player.work_panel.catalogue.select_recipe("forge_faint_ember")
+	check(not _sim().recipe_ids().has("distil_ember"),"experiment catalogue uses costly replacement")
+	for item: String in _sim().recipe("forge_faint_ember").inputs:
+		check(_sim().material_count(item)>=int(_sim().recipe("forge_faint_ember").inputs[item]) and int(_sim().recipe("forge_faint_ember").inputs[item])<=_sim().carry_cap(item),"whole recipe carried together: "+item)
+	await snap("ember-recipe")
+	before = _sim().inventory()
+	if not craft("forge_faint_ember",1,forge): return _finish_lf()
+	check(_sim().material_count("red_salt")==int(before.red_salt)-96 and _sim().material_count("iron_ingot")==int(before.iron_ingot)-4 and _sim().material_count("charcoal")==int(before.charcoal)-8,"costly recipe pays all three inputs exactly")
+	await demonstrate_foundry()
+	await checkpoint("manufactured persistent Kindling")
+	check(kindling_active(),"manufactured Kindling survives full checkpoint restore")
 	_finish_lf()
+
+func demonstrate_foundry() -> void:
+	var panel := player.foundry_panel
+	var event := InputEventAction.new()
+	event.action = "toggle_foundry"
+	event.pressed = true
+	player._unhandled_input(event)
+	check(panel.is_open(),"normal Foundry action opens the plate")
+	await foundry_button(panel._tablets,"Lay "+String(_sim().combat_skill("prototype_heavy_strike").display_name))
+	panel._cell_buttons[Vector2i(1,1)].pressed.emit()
+	await get_tree().process_frame
+	await foundry_button(panel._tray,"Ember")
+	panel._cell_buttons[Vector2i(1,0)].pressed.emit()
+	await get_tree().process_frame
+	for kind: Dictionary in _sim().foundry().kinds:
+		if kind.id == "ember_catalyst": await foundry_button(panel._subjects,"Set a "+String(kind.display_name))
+	panel._cell_buttons[Vector2i(2,0)].pressed.emit()
+	await get_tree().process_frame
+	check(_sim().material_count("ember_catalyst")==0 and kindling_active(),"earned Ember ingot and manufactured Faint Kind create existing Kindling")
+	await snap("ember-foundry")
+	panel.close_panel()
+
+func kindling_active() -> bool:
+	for form: Dictionary in _sim().skill_mutation("prototype_heavy_strike").forms:
+		if form.form_name == "Kindling": return true
+	return false
+
+func foundry_button(container: Node, prefix: String) -> void:
+	for button in container.get_children():
+		if button is Button and not button.is_queued_for_deletion() and button.text.begins_with(prefix):
+			button.pressed.emit()
+			await get_tree().process_frame
+			check(true,"Foundry player control: "+prefix)
+			return
+	check(false,"Foundry player control exists: "+prefix)
 
 func checkpoint(label: String) -> void:
 	player.work_panel.close_panel()
@@ -95,6 +156,10 @@ func checkpoint(label: String) -> void:
 	check(_sim().leyline_bind_world(world_profile,world_seed) && _sim().leyline_save()==sources,label+" repeated binding cannot refill or reroll")
 	await get_tree().process_frame
 	for source in get_tree().get_nodes_in_group("leyline_sources"): source.refresh()
+	for station in get_tree().get_nodes_in_group("crafting_stations"):
+		if station.player_built:
+			if station.station_id == &"workbench": bench = station
+			if station.station_id == &"forge_basic": forge = station
 
 func aim_at(node: Node3D) -> void:
 	player.work_panel.close_panel()

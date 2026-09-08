@@ -1,6 +1,6 @@
 # Living Frontier Wave 1 — implementation and handoff
 
-**Owner-authorised 8 September 2026. LF-1A implemented; LF-1B/C next.** Baseline `8401b1a`.
+**Owner-authorised 8 September 2026. LF-1A/B implemented; LF-1C next.** Baseline `8401b1a`.
 Scope: LF-1A, LF-1B, LF-1C, in that order. Wave 2 requires separate review.
 The independent wolf/image-to-3D study is outside this change.
 
@@ -74,6 +74,37 @@ malformed LF ledgers cannot initialize a fresh source. Existing saves need no
 migration and retain owned Kinds, gear, progression, loose drops and machinery.
 
 ## Evidence and limitations
+
+### LF-1B — ordinary manufacture and persistent use
+
+`forge_faint_ember`: **96 Red Salt + 4 iron ingots + 8 charcoal → one Faint
+Ember**, immediately at the basic forge, Blacksmithing 1, era 1, 2 base XP.
+Charcoal is paid as an ingredient, with zero additional fuel. Six lots are a
+deliberate purchase; one full Red manifestation leaves 32 Salt for brick firing
+(30 after the LF-1A demonstration). Input caps are checked independently and
+the engine journey carries the entire recipe together. No additional progression
+state or processing timer exists.
+
+The experiment hides/refuses `distil_ember` only after its useful raw route and
+replacement exist. Normal V1–V6 retain the original recipe, loot and trade.
+Stable and Potent refinement are unchanged paid transformations of owned
+Catalysts. Crafting retains the existing uncapped forged-output rule; gathering
+and collection still respect family caps. No owned stock is clamped on reload.
+
+The paid journey earns its Ember ingot by smelting, places the known Heavy Strike
+tablet at row 2 / column 2, Ember at row 2 / column 1 and the manufactured
+Catalyst at row 3 / column 1 using ordinary Foundry controls. Native readings
+produce existing **Kindling**, retained by checkpoint and fresh-process saves.
+These are human-facing one-based coordinates. Stable/Potent tests use separate
+native progression fixtures; the paid era-one journey does not grant later eras.
+
+LF-1B verification: **81,794 native checks**, **310 paid journey checks**, **5
+fresh-process checks**, all passing. The seven affected engine regressions listed
+below passed again. The catalogue and Kindling plate captures (`ember-recipe.png`,
+`ember-foundry.png`) were rendered at 1280×720 and visually inspected. Exact
+three-input payment, each missing ingredient, carried capacity, uncapped crafted
+output/reload, legacy distillation and both paid grade refinements are covered.
+Recipe cost versus extraction effort remains an owner pacing playtest.
 
 LF-1A verification: `test_leyline` passes 81,776 checks, including 2,048 lots
 over 256 seeds (77 winning lots, 188 initial manifestations without an Ember),

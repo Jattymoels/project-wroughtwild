@@ -68,6 +68,40 @@ int main(int argc,char** argv) {
     check(!tuning.crafting.fuels.count("red_salt"),"Red is not universal fuel");
     const auto* original=tuning.crafting.findRecipe("refine_rustclay_brick");
     check(original && original->inputs==economy::Inventory{{"raw_clay",8}} && original->outputs==economy::Inventory{{"rustclay_brick",4}} && original->fuelCost==1,"original bricks unchanged");
+    const auto* catalyst=tuning.crafting.findRecipe("forge_faint_ember");
+    check(catalyst && catalyst->inputs==economy::Inventory{{"red_salt",96},{"iron_ingot",4},{"charcoal",8}} && catalyst->fuelCost==0,"costly ordinary Ember has its complete heat in explicit inputs");
+    for (const auto& [item,count] : catalyst->inputs) check(count<=player.carryCap(item),"whole conversion fits permitted carried family: "+item);
+    for (const auto& missing : catalyst->inputs) {
+        player.inventory=catalyst->inputs; --player.inventory[missing.first];
+        const auto before=player.inventory;
+        check(!player.craft(catalyst->id).crafted && player.inventory==before,"missing ordinary input refuses without payment");
+    }
+    player.inventory=catalyst->inputs;
+    check(player.craft(catalyst->id).crafted && player.held("ember_catalyst")==1 && player.held("red_salt")==0 && player.held("iron_ingot")==0 && player.held("charcoal")==0,"exact paid Faint manufacture");
+    check(player.foundryPlaceSkill(1,1,"prototype_heavy_strike"),"ordinary known tablet fits first-era socket");
+    player.foundryEvent("recipe:smelt_iron"); // native fixture; engine journey earns this by paid smelting
+    check(player.foundryPlace(1,0,"ember") && player.foundryPlaceKind(2,0,"ember_catalyst") && player.held("ember_catalyst")==0,"manufactured existing Kind takes its normal persistent route");
+    economy::PlayerEconomy restored(tuning); restored.importState(player.exportState());
+    check(restored.foundry().plate.size()==player.foundry().plate.size(),"persistent Kind layout survives economy restoration");
+    player.inventory={{"iron_ore",1},{"charcoal",2},{"wood",2}};
+    check(!player.craft("distil_ember").crafted,"experiment closes replaced iron-only recipe");
+    for (const auto& profile : {"legacy_v1","frontier_v6"}) {
+        player.worldProfile=profile;
+        check(!player.craft(catalyst->id).crafted && player.craft("distil_ember").crafted,"legacy keeps original acquisition");
+        player.inventory={{"iron_ore",1},{"charcoal",2},{"wood",2}};
+    }
+    player.worldProfile=leyline::profile; player.inventory=catalyst->inputs;
+    player.inventory["ember_catalyst"]=player.carryCap("ember_catalyst");
+    check(player.craft(catalyst->id).crafted && player.held("ember_catalyst")==player.carryCap("ember_catalyst")+1,"full gathered family preserves existing uncapped crafted-output rule");
+    restored.importState(player.exportState());
+    check(restored.held("ember_catalyst")==player.held("ember_catalyst"),"above-gathering-cap forged output survives restore without loss");
+    economy::PlayerEconomy grades(tuning); grades.worldProfile=leyline::profile;
+    grades.addAvailableStation("forge_improved"); grades.grantSkillXp("blacksmithing",10000);
+    for (const auto& era : tuning.eras.eras) if (!era.triggerWorldEffect.empty()) grades.recordWorldEffect(era.triggerWorldEffect);
+    grades.grant("ember_catalyst",1); grades.grant("bog_iron",1); grades.grant("wood",5);
+    check(grades.craft("refine_stable_ember_catalyst").crafted && grades.held("ember_catalyst")==0 && grades.held("stable_ember_catalyst")==1,"existing paid Stable refinement preserved");
+    grades.grant("silver_ingot",1); grades.grant("steel_ingot",1);
+    check(grades.craft("refine_potent_ember_catalyst").crafted && grades.held("stable_ember_catalyst")==0 && grades.held("potent_ember_catalyst")==1,"existing paid Potent refinement preserved");
     for (int seed : {1,77,2026}) {
         const auto map=worldgen::generateProfile(tuning,seed,leyline::profile);
         check(map.profileId==leyline::profile && map.homeSites.size()==4,"opt-in world has existing guaranteed approaches");

@@ -161,6 +161,7 @@ CraftingTable loadCrafting(const std::string& path) {
     for (const auto& r : doc->get("recipes").asArray()) {
         Recipe recipe;
         if (auto v = r->find("world_profile")) recipe.worldProfile = v->asString();
+        if (auto v = r->find("excluded_world_profile")) recipe.excludedWorldProfile = v->asString();
         recipe.id = r->get("id").asString();
         if (auto v = r->find("minimum_era")) recipe.minimumEra = v->asInt();
         if (auto v = r->find("design_purpose")) recipe.description = v->asString();

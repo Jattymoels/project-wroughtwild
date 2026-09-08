@@ -10,7 +10,15 @@ function Invoke-LFEngine([string]$Name, [string[]]$Arguments) {
     $lfErr = Join-Path $lfLogs ($Name + '.err.log')
     $lfProcess = Start-Process -FilePath $lfGodot -ArgumentList (@('--path', 'game') + $Arguments) -WindowStyle Hidden -RedirectStandardOutput $lfOut -RedirectStandardError $lfErr -PassThru
     $lfHandle = $lfProcess.Handle
-    while (-not $lfProcess.WaitForExit(1000)) { }
+    $lfStarted = Get-Date
+    while (-not $lfProcess.WaitForExit(1000)) {
+        $lfLiveErrors = (Get-Content -LiteralPath $lfErr -ErrorAction SilentlyContinue) -join "`n"
+        if ($lfLiveErrors -match '(?m)^(SCRIPT ERROR|ERROR:)' -or ((Get-Date) - $lfStarted).TotalMinutes -gt 8) {
+            $lfProcess.Kill()
+            $lfProcess.WaitForExit()
+            throw "$Name stopped after engine error or eight-minute test timeout: $lfLiveErrors"
+        }
+    }
     $lfText = (Get-Content -LiteralPath $lfOut,$lfErr -ErrorAction SilentlyContinue) -join "`n"
     Write-Output ($Name + ': exit ' + $lfProcess.ExitCode)
     $lfText -split "`n" | Select-String -Pattern 'checks|FAIL|SCRIPT ERROR|ERROR:|LF1_|CODEX_' | ForEach-Object { $_.Line }

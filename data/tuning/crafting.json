@@ -1030,6 +1030,7 @@
     },
     {
       "id": "distil_ember",
+      "excluded_world_profile": "living_frontier_wave1",
       "display_name": "Distil Faint Ember Catalyst",
       "station": "forge_basic",
       "minimum_skill": {
@@ -1049,6 +1050,20 @@
         "processing"
       ],
       "design_purpose": "Owner-approved forge progression: useful inputs for stronger crafting; grade resources preserve expedition and facility requirements."
+    },
+    {
+      "id": "forge_faint_ember",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Forge Faint Ember from Red Salt",
+      "station": "forge_basic",
+      "minimum_skill": { "blacksmithing": 1 },
+      "inputs": { "red_salt": 96, "iron_ingot": 4, "charcoal": 8 },
+      "outputs": { "ember_catalyst": 1 },
+      "base_skill_xp": 2,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": ["processing"],
+      "design_purpose": "Living Frontier: one immediate ordinary craft consumes six Red lots, four iron ingots and eight charcoal for one existing Faint Ember. The charcoal is the complete heat payment. All inputs fit carried stock; no lesson, research, perfection or timer. This replaces iron-only distillation in the experiment; legacy worlds keep it. Stable and Potent refinement remain separate."
     },
     {
       "id": "refine_stable_ember_catalyst",

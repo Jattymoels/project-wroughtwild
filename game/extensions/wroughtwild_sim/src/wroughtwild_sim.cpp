@@ -1284,7 +1284,7 @@ PackedStringArray WroughtwildSim::recipe_ids() const {
         return ids;
     }
     for (const auto& recipe : tuning_->crafting.recipes) {
-        if (!recipe.worldProfile.empty() && recipe.worldProfile != world_profile_) continue;
+        if (!recipe.availableIn(world_profile_)) continue;
         ids.push_back(to_godot(recipe.id));
     }
     return ids;
@@ -1296,7 +1296,7 @@ Dictionary WroughtwildSim::recipe(const String& recipe_id) const {
         return d;
     }
     const auto* r = tuning_->crafting.findRecipe(to_std(recipe_id));
-    if (r == nullptr || (!r->worldProfile.empty() && r->worldProfile != world_profile_)) {
+    if (r == nullptr || !r->availableIn(world_profile_)) {
         return d;
     }
     d["id"] = to_godot(r->id);
@@ -1774,7 +1774,7 @@ Dictionary WroughtwildSim::craft_preview(const String& recipe_id, const String& 
     Dictionary d;
     if (!require_loaded("craft_preview")) return d;
     const auto* recipe = tuning_->crafting.findRecipe(to_std(recipe_id));
-    if (!recipe) return d;
+    if (!recipe || !recipe->availableIn(world_profile_)) return d;
     const auto plan = player_->craftPlan(recipe->id, to_std(aim_kind), quality, quantity);
     d["ready"] = !plan.failure.any();
     d["base_id"] = to_godot(plan.baseId); d["quality"] = plan.quality; d["potency"] = plan.potency;
@@ -1786,7 +1786,7 @@ Dictionary WroughtwildSim::craft_preview(const String& recipe_id, const String& 
     d["outputs"] = to_dictionary(recipe->outputs);
     d["comparison"] = plan.baseId.empty() ? Dictionary() : compare_equipment(-2, to_godot(plan.baseId));
     auto source = [&](const std::string& id) {
-        for (const auto& r : tuning_->crafting.recipes) if (r.outputs.count(id)) return r.id;
+        for (const auto& r : tuning_->crafting.recipes) if (r.availableIn(world_profile_) && r.outputs.count(id)) return r.id;
         return std::string();
     };
     Array costs;
