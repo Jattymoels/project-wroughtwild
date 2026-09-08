@@ -41,6 +41,16 @@ extends Resource
 @export var white_connection_colour := Color("e6e1bd")
 @export var blue_delay_colour := Color("74b3dc")
 @export var green_junction_colour := Color("77b987")
+@export var red_heat_colour := Color("e56937")
+@export var red_heat_bounds := Vector3(1,1.2,1)
+@export var red_heat_support_half_width_m := .35 # Four feet must retain real support before charging or firing.
+## Small casing, two iron straps and a visible heat-bearing inclusion.
+@export var red_heat_parts: Array[Dictionary] = [
+	{"size":Vector3(1,.16,1),"at":Vector3(0,.08,0),"colour":Color("756048")},
+	{"size":Vector3(.72,.8,.72),"at":Vector3(0,.56,0),"colour":Color("343a37")},
+	{"size":Vector3(.8,.12,.8),"at":Vector3(0,.34,0),"colour":Color("898b81")},
+	{"size":Vector3(.8,.12,.8),"at":Vector3(0,.83,0),"colour":Color("898b81")},
+	{"size":Vector3(.38,.3,.38),"at":Vector3(0,1.04,0),"colour":Color("e56937")}]
 ## Two exposed resin branches identify the two independent output ports.
 @export var green_junction_parts: Array[Dictionary] = [
 	{"size":Vector3(.65,.15,.55),"at":Vector3(0,.075,0),"colour":Color("756048")},

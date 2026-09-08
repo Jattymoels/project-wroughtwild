@@ -196,3 +196,66 @@ captures are in `captures/lf2/`; the two-port panel was visually inspected.
 Travel/work acceleration and held hostile AI remain harness limitations.
 The seven affected ordinary-world regressions passed again (52/85/60/148/175/
 21/319 checks). Blue's paid journey and restart passed **182 + 26** after Green.
+The complete engine pipeline passed (`build/lf2/full-engine-b.log`).
+LF-2B commit **`4bda377`** was pushed successfully to `origin/main`.
+
+## LF-2C — selected contract before implementation
+
+The ordinary workbench makes a Red Heat Buffer Kit for 4 Red Salt, 4 wood and
+2 iron ingots. Its four-unit thermal store accepts one deliberate **2 Red Salt
+→ 1 heat** charge at a time, only with physical support. This matches the
+accepted Red brick variant's thermal payment without changing the global fuel
+table. Conversion is immediate; it grants neither winding nor personal XP.
+
+One buffer attaches to one existing feeder within eight metres; a feeder can
+select only one buffer. Its short visible thermal connection is separate from
+the Green signal and any pressure source. An attached feeder uses one heat per
+firing instead of ordinary fuel, still reserving all eight clay, one mechanical
+stroke and space for four existing bricks. Empty/blocked heat refuses or pauses;
+there is no fallback that silently consumes a different fuel. Detaching an idle
+buffer restores the feeder's existing ordinary-fuel operation.
+
+Heat reserved by an active firing retains its return slot in the buffer.
+Cancellation returns the exact heat once plus clay and mechanical work. Changing
+thermal attachments or dismantling the buffer refuses while its feeder owns a
+firing: finish or cancel first. Dismantling a feeder returns its reserved heat to
+the buffer and recovers ingredients/output under existing rules. Dismantling an
+idle buffer explicitly vents unused heat; spent charge salt never returns as a
+material. The ordinary kit-frame refund remains separate from thermal contents.
+This avoids silently converting thermal energy back into raw material.
+
+Experimental machine payload **5** adds heat, heat owner and reserved heat.
+Versions 1–4 default to no heat attachment/content and retain every existing
+ledger field, including Green ports and Blue requests. Source payload remains 4.
+No passive heat loss, offline production, universal fuel or new crafting timer.
+
+### LF-2C result and verification
+
+The paid rendered heat journey passed **303** checks; fresh restart passed
+**14**, all with zero failures. It migrated the published Green pending save,
+preserved every prior machine field and source, then continued its actual paid
+completion. The bench consumed the buffer frame; normal B placement put it at
+`(515.5,31,520.5)`, 2.8 metres from the feeder. Four deliberate charges consumed
+eight more acquired Red Salt. One firing reserved heat independently of winding
+and clay, survived a physical thermal-span obstruction and a paused 2.25-second
+save, cancelled exactly, then made four existing bricks. Capacity, active
+removal refusal, idle venting and active feeder dismantling passed. Its saved
+completion retains 3 heat and 12 actual feeder bricks for the combined workshop.
+
+Native source **213,482** and Wave 2 **471** checks pass. Zero-count entries in
+the crafting inventory required an assertion correction; exact kit debits and
+thermal conservation remained the acceptance criteria. The buffer uses only
+the existing small fixture/inventory rules, without adding an economy link
+dependency to the standalone contraption target.
+
+Reproduce C after B: craft the Red Heat Buffer Kit, place it beside the feeder,
+choose that feeder at the buffer, and pay two Salt per stored heat. Load eight
+clay and wind the feeder separately. Start a firing or strike its linked lever.
+Inspect Drive / connections to see the selected Red heat source. Pause/cancel
+at the feeder; finish/cancel before detaching or removing the buffer. F5/restart
+retains stored and held heat. Dismantling the idle buffer vents unused heat and
+refunds only the ordinary frame share.
+
+Commands: `tools/living_frontier_wave2_checks.ps1 -Native`,
+`-Heat -Rendered -HeatRestore`, and `-Regression`. Store/firing panel captures
+are in `captures/lf2/`; the thermal store panel was visually inspected.

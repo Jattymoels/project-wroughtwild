@@ -1,5 +1,14 @@
 # Construction System
 
+## Living Frontier Red heat buffer — LF-2C, 8 September 2026
+
+A supported four-unit buffer pays two Red Salt per stored heat and serves one
+nearby existing feeder. Heat, mechanical drive and clay retain separate owners.
+Cancellation returns held heat to its reserved slot; active buffer removal
+refuses until finish/cancel. Idle removal vents heat. Experimental machine
+payload 5 migrates versions 1–4 additively; source payload remains 4.
+[Exact payment, cancellation and restart evidence](../prototype/living-frontier-wave2-2026-09-08.md).
+
 ## Living Frontier Green junction — LF-2B, 8 September 2026
 
 Two Green Resin plus two wood buy a workbench kit with two visible selected

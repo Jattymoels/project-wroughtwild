@@ -575,7 +575,7 @@ func read(path: String, player: WroughtwildPlayer) -> bool:
 		# A newer format/profile needs its matching game, not an automatic rewind.
 		if parsed.get("contraptions", "") is String and not String(parsed.get("contraptions", "")).is_empty():
 			var machine_data: Variant = JSON.parse_string(parsed.contraptions)
-			if machine_data is Dictionary and _valid_integer(machine_data.get("schema")) and int(machine_data.schema) > 4:
+			if machine_data is Dictionary and _valid_integer(machine_data.get("schema")) and int(machine_data.schema) > 5:
 				last_error = "unsupported contraption save version"
 				return false
 		if parsed.get("leylines", "") is String and not String(parsed.get("leylines", "")).is_empty():

@@ -21,8 +21,12 @@
   "feeder_batch_cycles": 4,
   "feeder_cycle_seconds": 8.0,
   "feeder_attachment_range": 8.0,
+  "heat_capacity": 4,
+  "heat_input": {"red_salt": 2},
   "ferrous_items": ["iron_ore", "iron_ingot", "iron_fittings", "bog_iron"],
   "purposes": {
+    "heat_capacity": "Four paid Red heat units cover a small workshop batch. Reserved heat retains a return slot, so cancellation cannot overfill the store.",
+    "heat_input": "One deliberate charge consumes two Red Salt for one brick firing, matching the existing Red variant. Stored heat never becomes winding or raw salt; unused heat vents on buffer dismantling.",
     "delay_seconds": "Blue holds one request for three nearby active seconds so the player can move before a paid trip. Pauses and blocked signal support preserve the exact remaining delay; no catch-up or second queued request.",
     "maximum_machines": "Bounds fixture persistence and active presentation in this first local experiment.",
     "cargo_units": "A basket can carry a useful construction haul without adding a player carrying penalty.",

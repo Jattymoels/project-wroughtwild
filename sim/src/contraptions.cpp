@@ -123,6 +123,13 @@ Config Config::load(const std::string& path) {
     c.feederBatchCycles = integer(root->get("feeder_batch_cycles"),1,100);
     c.feederCycleSeconds = finite(root->get("feeder_cycle_seconds"),.01,3600);
     c.feederAttachmentRange = finite(root->get("feeder_attachment_range"),.01,64);
+    c.heatCapacity = integer(root->get("heat_capacity"),1,100);
+    c.heatInput.clear();
+    for (const auto& [id,n] : root->get("heat_input").asObject()) {
+        if (!identifier(id)) throw std::runtime_error("contraptions: invalid thermal input");
+        c.heatInput[id]=integer(*n,1,100000);
+    }
+    if (c.heatInput.empty()) throw std::runtime_error("contraptions: heat must be paid");
     for (const auto& item : root->get("ferrous_items").asArray()) {
         if (!identifier(item->asString()) || !c.ferrousItems.insert(item->asString()).second)
             throw std::runtime_error("contraptions: duplicate or invalid ferrous item");
@@ -159,7 +166,7 @@ State* MachineWorld::mutableState(const std::string& key) {
 }
 bool MachineWorld::knownKind(const std::string& kind) {
     return kind == "lantern_lamp" || kind == "cargo_winch" || kind == "winch_landing" ||
-           kind == "stormglass_lever" || kind == "magnetic_sorter" || kind == "ventlung_bellows" || kind == "pressure_feeder" || kind == "white_connection" || kind == "blue_delay" || kind == "green_junction";
+           kind == "stormglass_lever" || kind == "magnetic_sorter" || kind == "ventlung_bellows" || kind == "pressure_feeder" || kind == "white_connection" || kind == "blue_delay" || kind == "green_junction" || kind == "red_heat_buffer";
 }
 bool MachineWorld::itemAllowed(const std::string& item) const {
     return identifier(item) && (config_.allowedItems.empty() || config_.allowedItems.count(item) > 0);
@@ -167,7 +174,7 @@ bool MachineWorld::itemAllowed(const std::string& item) const {
 Result MachineWorld::create(const std::string& key, const std::string& kind,
                             const std::array<double, 3>& position, int quarterTurns) {
     if (!knownKind(kind) || !identifier(key)) return no("Unknown fixture or invalid placement key.");
-    if ((kind=="white_connection" || kind=="blue_delay" || kind=="green_junction") && identity_.profile!="living_frontier_wave1") return no("Coloured components belong to the Living Frontier experiment.");
+    if ((kind=="white_connection" || kind=="blue_delay" || kind=="green_junction" || kind=="red_heat_buffer") && identity_.profile!="living_frontier_wave1") return no("Coloured components belong to the Living Frontier experiment.");
     if (kind=="pressure_feeder" && !feederRecipeReady()) return no("The existing decorative forge recipe is unavailable.");
     if (state(key)) return no("That placement already contains a fixture.");
     if (states_.size() >= static_cast<size_t>(config_.maximumMachines)) return no("The world's fixture limit is reached.");
@@ -182,10 +189,23 @@ Result MachineWorld::create(const std::string& key, const std::string& kind,
 Result MachineWorld::erase(const std::string& key, Inventory& pack) {
     const auto* current = state(key);
     if (!current) return no("The fixture is already removed.");
+    if (current->kind=="red_heat_buffer") {
+        const auto* feeder=state(current->link);
+        if (feeder && feeder->escrowDrive) return no("Finish or cancel the firing before dismantling its heat buffer.");
+    }
     Inventory returned = pack;
     for (const Inventory* contents : {&current->cargo, &current->input, &current->ferrous, &current->remainder,
                                     &current->output, &current->escrowInputs, &current->escrowFuel})
         if (!addSafe(returned, *contents)) return no("The recovered contents would overflow the pack.");
+    const int vented=current->heat;
+    if (current->escrowHeat) {
+        auto* buffer=mutableState(current->heatKey);
+        if (!buffer || buffer->heat>config_.heatCapacity-current->escrowHeat) return no("Reserved heat cannot return to its owner.");
+        buffer->heat+=current->escrowHeat;
+    }
+    if (current->kind=="red_heat_buffer") {
+        if (auto* feeder=mutableState(current->link)) feeder->heatKey.clear();
+    }
     invalidateDelays(key);
     // Recall a basket before destroying its landing. Keep its one inventory at
     // the drum; a signal link never owns or receives cargo.
@@ -199,10 +219,11 @@ Result MachineWorld::erase(const std::string& key, Inventory& pack) {
     for (auto& [id,s] : states_) if (s.secondLink==key) { (void)id; s.secondLink.clear(); s.secondSpanLength=0; }
     pack.swap(returned);
     states_.erase(key);
-    return yes("Recovered the fixture and all its contents.");
+    return yes(vented ? "Recovered the frame; vented "+std::to_string(vented)+" unused heat. Spent charge salt does not return." : "Recovered the fixture and all its contents.");
 }
 Result MachineWorld::link(const std::string& source, const std::string& target, bool clear) {
     auto* from = mutableState(source);
+    if (from && from->kind=="red_heat_buffer") return linkHeat(*from,target,clear);
     if (from && target.empty() && (from->kind=="stormglass_lever" || from->kind=="white_connection" || from->kind=="blue_delay" || from->kind=="green_junction")) {
         invalidateDelays(source);
         from->link.clear(); from->spanLength=0;
@@ -250,6 +271,35 @@ Result MachineWorld::linkSecond(const std::string& source, const std::string& ta
     from->secondLink=target; from->secondSpanLength=distance(*from,*to);
     return yes("Second receiver linked. It pays its own work and materials.");
 }
+Result MachineWorld::linkHeat(State& buffer, const std::string& target, bool clear) {
+    auto* previous=mutableState(buffer.link);
+    if (previous && previous->escrowDrive) return no("Finish or cancel the firing before changing its thermal connection.");
+    auto* feeder=mutableState(target);
+    if (!target.empty()) {
+        if (!feeder || feeder->kind!="pressure_feeder" || feeder->escrowDrive) return no("Choose an idle pressure feeder.");
+        if (!feeder->heatKey.empty() && feeder->heatKey!=buffer.key) return no("That feeder already owns a heat connection.");
+        if (!clear || distance(buffer,*feeder)>config_.feederAttachmentRange) return no("Support both ends and clear the local thermal connection.");
+    }
+    if (previous) previous->heatKey.clear();
+    buffer.link=target; buffer.spanLength=feeder ? distance(buffer,*feeder) : 0;
+    if (feeder) feeder->heatKey=buffer.key;
+    return yes(feeder ? "Red heat attached. The feeder pays one stored heat and its own winding per firing." : "Heat disconnected. The feeder uses its ordinary fuel again.");
+}
+Result MachineWorld::chargeHeat(const std::string& key, Inventory& pack, bool supported) {
+    auto* buffer=mutableState(key);
+    if (!buffer || buffer->kind!="red_heat_buffer") return no("No Red heat buffer is placed here.");
+    if (!supported) return no("Restore physical support before charging heat.");
+    const auto* feeder=state(buffer->link);
+    const int reserved=feeder ? feeder->escrowHeat : 0;
+    if (buffer->heat+reserved>=config_.heatCapacity) return no("The heat buffer is full, including reserved heat's return space.");
+    for (const auto& [item,count] : config_.heatInput) {
+        const auto held=pack.find(item);
+        if (held==pack.end() || held->second<count) return no("Carry every displayed ingredient for one paid heat charge.");
+    }
+    for (const auto& [item,count] : config_.heatInput) reduce(pack,item,count);
+    ++buffer->heat;
+    return yes("Paid for one stored heat. Mechanical winding remains separate.",1);
+}
 Result MachineWorld::wind(const std::string& key) {
     auto* s = mutableState(key);
     if (!s || (s->kind != "cargo_winch" && s->kind != "pressure_feeder")) return no("Only a Thrumroot drum or feeder stores winding.");
@@ -289,7 +339,7 @@ Result MachineWorld::advance(const std::string& key, double seconds, bool clear)
         s->cycleSeconds=std::min(config_.feederCycleSeconds,s->cycleSeconds+seconds);
         if (s->cycleSeconds<config_.feederCycleSeconds) return yes("The feeder is firing its reserved batch.");
         addSafe(s->output,config_.feederRecipeOutputs); // Space belongs to this escrow already.
-        s->escrowInputs.clear(); s->escrowFuel.clear(); s->escrowDrive=0; s->cycleSeconds=0;
+        s->escrowInputs.clear(); s->escrowFuel.clear(); s->escrowHeat=0; s->escrowDrive=0; s->cycleSeconds=0;
         ++s->completedCycles; --s->queuedCycles;
         if (s->queuedCycles>0) {
             auto next=reserveFeeder(*s);
@@ -497,11 +547,16 @@ Result MachineWorld::reserveFeeder(State& s) {
         reduce(available,item.first,item.second);
     }
     Inventory fuel;
-    if (!selectFuel(available,config_,fuel)) return no("Load ordinary forge fuel; pressure supplies motion, not heat.");
+    State* buffer=nullptr;
+    if (!s.heatKey.empty()) {
+        buffer=mutableState(s.heatKey);
+        if (!buffer || buffer->kind!="red_heat_buffer" || buffer->link!=s.key || buffer->heat<1) return no("Charge the attached Red buffer; stored drive supplies motion, not heat.");
+    } else if (!selectFuel(available,config_,fuel)) return no("Load ordinary forge fuel; pressure supplies motion, not heat.");
     for (const auto& item : fuel) reduce(available,item.first,item.second);
     s.input.swap(available); s.escrowInputs=config_.feederRecipeInputs; s.escrowFuel=std::move(fuel);
+    if (buffer) { --buffer->heat; s.escrowHeat=1; }
     --s.energy; s.escrowDrive=1; s.cycleSeconds=0;
-    return yes("Reserved one firing's exact clay, fuel, drive and output space.");
+    return yes("Reserved one firing's exact clay, heat, drive and output space.");
 }
 Result MachineWorld::attachFeeder(const std::string& key, const std::string& sourceId,
                                 const std::string& forgeKey, const std::array<double,3>& forgePosition, bool ready) {
@@ -542,9 +597,14 @@ Result MachineWorld::cancel(const std::string& key) {
     Inventory returned=s->input;
     if (!addSafe(returned,s->escrowInputs) || !addSafe(returned,s->escrowFuel) || units(returned)>config_.feederInputUnits ||
         s->energy+s->escrowDrive>config_.energyCapacity) return no("Reserved contents cannot be returned safely.");
-    s->input.swap(returned); s->energy+=s->escrowDrive;
+    if (s->escrowHeat) {
+        auto* buffer=mutableState(s->heatKey);
+        if (!buffer || buffer->heat>config_.heatCapacity-s->escrowHeat) return no("Reserved heat cannot return to its owner.");
+        buffer->heat+=s->escrowHeat;
+    }
+    s->input.swap(returned); s->energy+=s->escrowDrive; s->escrowHeat=0;
     s->escrowInputs.clear(); s->escrowFuel.clear(); s->escrowDrive=0; s->queuedCycles=0; s->cycleSeconds=0; s->feederPaused=false;
-    return yes("Cancelled. Reserved clay, exact fuel and drive returned once; completed bricks remain bricks.");
+    return yes("Cancelled. Reserved clay, exact thermal payment and drive returned once; completed bricks remain bricks.");
 }
 Result MachineWorld::pause(const std::string& key, bool paused) {
     auto* s=mutableState(key);
@@ -638,7 +698,8 @@ std::string MachineWorld::serialize() const {
         }
         if (experimental) out << ",\"pending_request\":" << (s.pendingRequest ? "true" : "false")
             << ",\"delay_paused\":" << (s.delayPaused ? "true" : "false") << ",\"delay_seconds\":" << s.delaySeconds
-            << ",\"second_link\":" << quoted(s.secondLink) << ",\"second_span_length\":" << s.secondSpanLength;
+            << ",\"second_link\":" << quoted(s.secondLink) << ",\"second_span_length\":" << s.secondSpanLength
+            << ",\"heat\":" << s.heat << ",\"heat_key\":" << quoted(s.heatKey) << ",\"escrow_heat\":" << s.escrowHeat;
         out << '}';
     }
     out << "]}";
@@ -707,7 +768,13 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
         for (const auto& item : s.remainder) if (config_.ferrousItems.count(item.first)) throw std::runtime_error("contraptions: ferrous ordinary output");
         if (s.kind != "cargo_winch" && s.kind != "ventlung_bellows" && s.kind!="pressure_feeder" && s.energy != 0) throw std::runtime_error("contraptions: invalid stored energy");
         if (s.kind != "stormglass_lever" && s.kind != "white_connection" && s.kind != "blue_delay" && s.kind != "green_junction" && s.pulses != 0) throw std::runtime_error("contraptions: invalid signal counter");
-        if ((s.kind == "white_connection" || s.kind == "blue_delay" || s.kind == "green_junction") && identity_.profile != "living_frontier_wave1") throw std::runtime_error("contraptions: coloured component outside its experiment");
+        if ((s.kind == "white_connection" || s.kind == "blue_delay" || s.kind == "green_junction" || s.kind=="red_heat_buffer") && identity_.profile != "living_frontier_wave1") throw std::runtime_error("contraptions: coloured component outside its experiment");
+        if (schema>=5) {
+            s.heat=integer(record->get("heat"),0,config_.heatCapacity);
+            s.heatKey=record->get("heat_key").asString();
+            s.escrowHeat=integer(record->get("escrow_heat"),0,1);
+        } else if (s.kind=="red_heat_buffer" || record->find("heat") || record->find("heat_key") || record->find("escrow_heat")) throw std::runtime_error("contraptions: thermal state needs its complete schema");
+        if ((s.kind!="red_heat_buffer" && s.heat) || (s.kind!="pressure_feeder" && (!s.heatKey.empty() || s.escrowHeat))) throw std::runtime_error("contraptions: thermal stock has the wrong owner");
         if (schema>=4) {
             s.secondLink=record->get("second_link").asString();
             s.secondSpanLength=finite(record->get("second_span_length"),0,config_.signalRange);
@@ -754,9 +821,10 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
             if (s.escrowDrive) {
                 Inventory exactFuel;
                 if (s.queuedCycles==0 || s.cycleSeconds>=config_.feederCycleSeconds || s.completedCycles==std::numeric_limits<int>::max() ||
-                    s.escrowInputs!=config_.feederRecipeInputs || !selectFuel(s.escrowFuel,config_,exactFuel) || exactFuel!=s.escrowFuel ||
+                    s.escrowInputs!=config_.feederRecipeInputs ||
+                    (s.heatKey.empty() ? s.escrowHeat!=0 || !selectFuel(s.escrowFuel,config_,exactFuel) || exactFuel!=s.escrowFuel : s.escrowHeat!=1 || !s.escrowFuel.empty()) ||
                     units(s.output)>config_.feederOutputUnits-units(config_.feederRecipeOutputs)) throw std::runtime_error("contraptions: invalid reserved firing");
-            } else if (s.queuedCycles || s.cycleSeconds!=0 || s.feederPaused || !s.escrowInputs.empty() || !s.escrowFuel.empty()) throw std::runtime_error("contraptions: idle feeder owns orphaned escrow");
+            } else if (s.escrowHeat || s.queuedCycles || s.cycleSeconds!=0 || s.feederPaused || !s.escrowInputs.empty() || !s.escrowFuel.empty()) throw std::runtime_error("contraptions: idle feeder owns orphaned escrow");
         } else if (!s.sourceId.empty() || !s.forgeKey.empty() || s.forgePosition!=std::array<double,3>{0,0,0} ||
                    !s.output.empty() || !s.escrowInputs.empty() || !s.escrowFuel.empty() || s.escrowDrive || s.queuedCycles || s.completedCycles || s.cycleSeconds!=0 || s.feederPaused) {
             throw std::runtime_error("contraptions: recipe escrow belongs only to its feeder");
@@ -766,6 +834,11 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
     std::set<std::string> usedLandings;
     for (const auto& entry : result) {
         const State& s = entry.second;
+        if (!s.heatKey.empty()) {
+            const auto found=result.find(s.heatKey);
+            if (found==result.end() || found->second.kind!="red_heat_buffer" || found->second.link!=s.key ||
+                found->second.heat+s.escrowHeat>config_.heatCapacity) throw std::runtime_error("contraptions: invalid thermal owner or return capacity");
+        }
         if (s.secondLink.empty()) {
             if (s.secondSpanLength!=0) throw std::runtime_error("contraptions: disconnected second port has a span");
         } else {
@@ -793,6 +866,8 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
             if ((t.kind != "cargo_winch" && t.kind!="pressure_feeder" && t.kind!="blue_delay" && t.kind!="green_junction") || length > config_.signalRange) throw std::runtime_error("contraptions: invalid White receiver");
         } else if (s.kind == "blue_delay") {
             if ((t.kind != "cargo_winch" && t.kind!="pressure_feeder" && t.kind!="green_junction") || length > config_.signalRange) throw std::runtime_error("contraptions: invalid Blue receiver");
+        } else if (s.kind == "red_heat_buffer") {
+            if (t.kind!="pressure_feeder" || t.heatKey!=s.key || length>config_.feederAttachmentRange) throw std::runtime_error("contraptions: invalid thermal connection");
         } else if (s.kind == "green_junction") {
             if ((t.kind!="cargo_winch" && t.kind!="pressure_feeder") || length>config_.signalRange || s.link==s.secondLink) throw std::runtime_error("contraptions: invalid or duplicate Green receiver");
         } else throw std::runtime_error("contraptions: this fixture cannot send links");

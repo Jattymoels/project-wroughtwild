@@ -9,7 +9,7 @@ const LABELS := {
 	"lantern_lamp": "Lanternheart lamp", "cargo_winch": "Thrumroot cargo drum",
 	"winch_landing": "Fixed cargo landing", "stormglass_lever": "Stormglass lever",
 	"magnetic_sorter": "Pullstone sorting chute", "ventlung_bellows": "Ventlung bellows",
-	"pressure_feeder": "Pressure feeder", "white_connection": "White connection", "blue_delay": "Blue delay", "green_junction": "Green junction"
+	"pressure_feeder": "Pressure feeder", "white_connection": "White connection", "blue_delay": "Blue delay", "green_junction": "Green junction", "red_heat_buffer": "Red heat buffer"
 }
 
 var machine_key := ""
@@ -18,6 +18,9 @@ var sim: WroughtwildSim
 var _visual: Node3D
 var _basket: Node3D
 var _cable: MeshInstance3D
+var _heat_pipe: MeshInstance3D
+var _heat_label: Label3D
+var _heat_refresh_left := 0.0
 var _branch_cable: MeshInstance3D
 var _pulse: MeshInstance3D
 var _receiver: MeshInstance3D
@@ -48,6 +51,7 @@ static func bounds_for(fixture_kind: String) -> Vector3:
 		"ventlung_bellows": return LOOK.bellows_bounds
 		"stormglass_lever": return LOOK.lever_bounds
 		"white_connection", "blue_delay", "green_junction": return LOOK.white_connection_bounds
+		"red_heat_buffer": return LOOK.red_heat_bounds
 		"pressure_feeder": return LOOK.feeder_bounds
 	return LOOK.lamp_bounds
 
@@ -124,6 +128,14 @@ func _ready() -> void:
 		_delay_label.pixel_size = .006
 		_delay_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		add_child(_delay_label)
+	if kind=="red_heat_buffer":
+		_heat_pipe = _connection_mesh(LOOK.red_heat_colour)
+		_heat_label = Label3D.new()
+		_heat_label.position.y = bounds_for(kind).y+.25
+		_heat_label.font_size=32
+		_heat_label.pixel_size=.006
+		_heat_label.billboard=BaseMaterial3D.BILLBOARD_ENABLED
+		add_child(_heat_label)
 	_last_pulses = int(record.get("pulses", 0))
 	_last_arrivals = int(record.get("completed_trips", 0))
 	_last_cycles = int(record.get("completed_cycles",0))
@@ -186,6 +198,7 @@ func _physics_process(delta: float) -> void:
 	var player := get_tree().get_first_node_in_group("player") as Node3D
 	if player == null or player.global_position.distance_squared_to(global_position) > LOOK.active_distance_m * LOOK.active_distance_m:
 		return
+	if kind=="red_heat_buffer": _heat_refresh_left-=delta
 	if kind=="blue_delay":
 		if get_tree().paused or (player is WroughtwildPlayer and player.combat.life<=0): return
 		var current: Dictionary = sim.contraption_state(machine_key)
@@ -256,6 +269,14 @@ func refresh_from_sim(feeder_geometry: Dictionary = {}) -> void:
 		if _delay_refresh_left<=0:
 			_delay_refresh_left = LOOK.signal_panel_refresh_seconds
 			if _panel!=null: _panel.refresh_if_open()
+	if kind=="red_heat_buffer":
+		var feeder := find_site(get_tree(),String(record.link))
+		var reserved := int(sim.contraption_state(feeder.machine_key).escrow_heat) if feeder!=null else 0
+		_heat_label.text = "Heat %d + %d held / %d" % [int(record.heat),reserved,int(sim.contraption_config().heat_capacity)]
+		_show_connection(_heat_pipe,feeder.global_position+Vector3.UP*LOOK.feeder_link_height_m if feeder!=null else Vector3.INF)
+		if _heat_refresh_left<=0:
+			_heat_refresh_left=LOOK.signal_panel_refresh_seconds
+			if _panel!=null: _panel.refresh_if_open()
 	if _branch_cable!=null:
 		var second := find_site(get_tree(),String(record.get("second_link","")))
 		_show_connection(_branch_cable,second.cable_anchor() if second!=null else Vector3.INF,cable_anchor(),LOOK.cable_radius_m)
@@ -320,6 +341,8 @@ func supported() -> bool:
 
 func link_clear(target: ContraptionSite) -> bool:
 	if target == null or not is_inside_tree(): return false
+	if kind=="red_heat_buffer":
+		return target.kind=="pressure_feeder" and _feeder_support(self,LOOK.red_heat_support_half_width_m) and _feeder_support(target,LOOK.feeder_support_half_width_m) and _connection_clear(target,target.global_position+Vector3.UP*LOOK.feeder_link_height_m)
 	if kind in ["white_connection","blue_delay","green_junction"] or target.kind in ["white_connection","blue_delay","green_junction"]:
 		if not supported() or not target.supported(): return false
 	if kind == "cargo_winch":
@@ -385,13 +408,14 @@ func perform(action: String) -> Dictionary:
 	if kind == "pressure_feeder" and action in ["start","charge","resume"]:
 		feeder_geometry = feeder_status(before)
 		clear = bool(feeder_geometry.ready)
+	elif action == "heat": clear = _feeder_support(self,LOOK.red_heat_support_half_width_m)
 	elif action == "start": clear = span_clear()
 	if kind=="pressure_feeder" and action in ["start","charge","resume"] and not clear:
 		_feeder_panel_refresh_left = 0
 		refresh_from_sim(feeder_geometry)
 		return {"ok":false,"message":String(feeder_geometry.message)}
 	var result: Dictionary = sim.contraption_request(machine_key,signal_space()) if action=="pulse" else sim.contraption_action(machine_key, action, clear, other_clear, 0.0)
-	if bool(result.get("ok", false)) and action in ["wind", "prime", "start", "sort","charge"]:
+	if bool(result.get("ok", false)) and action in ["wind", "prime", "start", "sort","charge","heat"]:
 		SOUND.play(self, "tick", LOOK.work_volume_db)
 	if action == "sort" and bool(result.get("ok", false)):
 		_animate_sorting(before, sim.contraption_state(machine_key))
@@ -419,7 +443,12 @@ func feeder_status(state: Dictionary = {}) -> Dictionary:
 	if not source_id.is_empty() and pocket==null:return {"ready":false,"message":"The pressure pocket is not present. Work is paused."}
 	if forge.global_position.distance_to(Vector3(state.get("forge_position",Vector3.INF)))>.01:
 		return {"ready":false,"message":"The forge moved. Reattach it before starting."}
-	return feeder_connection_status(forge,pocket)
+	var geometry := feeder_connection_status(forge,pocket)
+	if not geometry.ready: return geometry
+	if not String(state.get("heat_key","")).is_empty():
+		var buffer := find_site(get_tree(),String(state.heat_key))
+		if buffer==null or not buffer.link_clear(self): return {"ready":false,"message":"Support and clear the separate Red heat connection."}
+	return geometry
 
 
 func feeder_connection_status(forge: StationSite, pocket: PressurePocket = null) -> Dictionary:
@@ -547,7 +576,7 @@ func _refresh_feeder(record: Dictionary, geometry: Dictionary = {}) -> void:
 	var changed:=int(record.get("completed_cycles",0))!=_last_cycles
 	var status_key:=str(active)+str(paused)+String(status.message)
 	var state_changed := changed or status_key != _last_feeder_status
-	for field in ["input", "output", "energy", "escrow_drive", "queued_cycles", "feeder_paused", "forge_key", "source_id"]:
+	for field in ["input", "output", "energy", "escrow_drive", "queued_cycles", "feeder_paused", "forge_key", "source_id", "heat_key", "escrow_heat"]:
 		if record.get(field) != _last_state.get(field): state_changed = true
 	var refresh_due := _feeder_panel_refresh_left <= 0
 	var readout_changed := false

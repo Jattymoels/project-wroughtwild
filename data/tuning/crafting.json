@@ -1814,6 +1814,20 @@
       "design_purpose": "Two resin and two wood buy an inexpensive two-port junction. One incoming request attempts each distinct cargo drum or pressure feeder once; each receiver pays its own drive and supplies. A blocked branch does not spend the other branch's work. Fixed ordered signal links exclude loops and reconvergence."
     },
     {
+      "id": "assemble_red_heat_buffer",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Red Heat Buffer Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": { "red_salt": 4, "wood": 4, "iron_ingot": 2 },
+      "outputs": { "red_heat_buffer_kit": 1 },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": ["construction"],
+      "design_purpose": "A small affordable supported heat store links to one existing feeder. Its frame contains four Red Salt, four wood and two iron, separate from each two-salt heat charge. Ordinary half-frame refunds apply; unused thermal contents vent. Heat never creates mechanical work."
+    },
+    {
       "id": "assemble_cargo_winch",
       "display_name": "Thrumroot Cargo Winch Kit",
       "station": "workbench",

@@ -24,17 +24,19 @@ static func inspect(site: ContraptionSite, state: Dictionary = {}, physical: Dic
 		hint = String(physical.get("message", "Check the forge connection."))
 	elif active:
 		headline = "Paused by you" if paused else "Firing bricks"
-		hint = "Resume the same firing; its supplies are already held." if paused else "This firing already owns its clay, fuel and drive."
+		hint = "Resume the same firing; its supplies are already held." if paused else "This firing already owns its clay, heat and drive."
 	elif not bool(native.get("actions", {}).get("start", {}).get("ok", false)):
 		headline = "Waiting to fire"
 		hint = String(native.get("actions", {}).get("start", {}).get("message", "Inspect the workshop."))
-	var summary := "%.1f / %.0f s · %d requested firings remain, including this one." % [float(state.get("cycle_seconds", 0)), seconds, int(state.get("queued_cycles", 0))] if active else recipe_text(config)
+	var summary := "%.1f / %.0f s · %d requested firings remain, including this one." % [float(state.get("cycle_seconds", 0)), seconds, int(state.get("queued_cycles", 0))] if active else recipe_text(config,state)
 	return {"headline": headline, "summary": summary, "hint": hint,
 		"progress": clampf(float(state.get("cycle_seconds", 0)) / maxf(.001, seconds), 0, 1),
-		"source": source, "geometry": physical, "native": native, "state": state, "config": config,
+		"heat":site.sim.contraption_state(String(state.get("heat_key",""))), "source": source, "geometry": physical, "native": native, "state": state, "config": config,
 		"active": active, "paused": paused}
 
-static func recipe_text(config: Dictionary) -> String:
+static func recipe_text(config: Dictionary, state: Dictionary = {}) -> String:
+	if not String(state.get("heat_key","")).is_empty():
+		return "%s + 1 stored Red heat → %s · %.0f s per firing." % [WorkPanel.amounts_text(config.get("feeder_inputs",{})),WorkPanel.amounts_text(config.get("feeder_outputs",{})),float(config.get("feeder_cycle_seconds",8))]
 	return "%s + %d fuel heat → %s · %.0f s per firing." % [WorkPanel.amounts_text(config.get("feeder_inputs", {})), int(config.get("feeder_fuel_cost", 1)), WorkPanel.amounts_text(config.get("feeder_outputs", {})), float(config.get("feeder_cycle_seconds", 8))]
 
 static func stock_text(contents: Dictionary) -> String:
@@ -51,3 +53,7 @@ static func action_ready(view: Dictionary, action: String) -> bool:
 	if not bool(view.native.get("available", false)): return false
 	if action in ["start", "charge", "resume"] and not bool(view.geometry.get("ready", false)): return false
 	return bool(view.native.get("actions", {}).get(action, {}).get("ok", false))
+
+static func heat_text(view: Dictionary) -> String:
+	if String(view.state.get("heat_key","")).is_empty(): return "Heat · ordinary hopper fuel. Drive is paid separately."
+	return "Red heat · %d available + %d held. Charge at the buffer. Hopper fuel remains unused while attached." % [int(view.heat.get("heat",0)),int(view.state.get("escrow_heat",0))]

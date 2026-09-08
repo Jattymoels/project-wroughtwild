@@ -1,4 +1,4 @@
-param([switch]$Native, [switch]$Blue, [switch]$Restore, [switch]$Rendered, [switch]$Bootstrap, [switch]$Regression, [switch]$Green, [switch]$GreenRestore)
+param([switch]$Native, [switch]$Blue, [switch]$Restore, [switch]$Rendered, [switch]$Bootstrap, [switch]$Regression, [switch]$Green, [switch]$GreenRestore, [switch]$Heat, [switch]$HeatRestore)
 $ErrorActionPreference = 'Stop'
 $lf2Options = @{} + $PSBoundParameters
 . (Join-Path $PSScriptRoot 'living_frontier_checks.ps1')
@@ -40,3 +40,10 @@ if ($lf2Options.Green) {
     Invoke-LFEngine 'green-flow' ($lfMode + @('res://tests/living_frontier_green_flow.tscn'))
 }
 if ($lf2Options.GreenRestore) { Invoke-LFEngine 'green-restart' @('--headless','res://tests/living_frontier_green_flow.tscn','--','--green-restore') }
+
+if ($lf2Options.Heat) {
+    $lfMode = @('--headless')
+    if ($lf2Options.Rendered) { $lfMode = @('--position','-9999,-9999','--audio-driver','Dummy') }
+    Invoke-LFEngine 'heat-flow' ($lfMode + @('res://tests/living_frontier_heat_flow.tscn'))
+}
+if ($lf2Options.HeatRestore) { Invoke-LFEngine 'heat-restart' @('--headless','res://tests/living_frontier_heat_flow.tscn','--','--heat-restore') }

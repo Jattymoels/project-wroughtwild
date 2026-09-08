@@ -14,7 +14,7 @@ const char* machine_kinds[] = {"lantern_lamp","cargo_winch","winch_landing","sto
 
 PackedStringArray WroughtwildSim::contraption_kinds() const {
     PackedStringArray ids; for (auto kind : machine_kinds) ids.push_back(kind);
-    if (world_profile_==wroughtwild::leyline::profile) { ids.push_back("white_connection"); ids.push_back("blue_delay"); ids.push_back("green_junction"); }
+    if (world_profile_==wroughtwild::leyline::profile) { ids.push_back("white_connection"); ids.push_back("blue_delay"); ids.push_back("green_junction"); ids.push_back("red_heat_buffer"); }
     return ids;
 }
 String WroughtwildSim::contraption_kind_for_kit(const String& kit) const {
@@ -22,6 +22,7 @@ String WroughtwildSim::contraption_kind_for_kit(const String& kit) const {
     if (world_profile_==wroughtwild::leyline::profile && kit=="white_connection_kit") return "white_connection";
     if (world_profile_==wroughtwild::leyline::profile && kit=="blue_delay_kit") return "blue_delay";
     if (world_profile_==wroughtwild::leyline::profile && kit=="green_junction_kit") return "green_junction";
+    if (world_profile_==wroughtwild::leyline::profile && kit=="red_heat_buffer_kit") return "red_heat_buffer";
     return {};
 }
 bool WroughtwildSim::contraption_place(const String& kind, const String& key, const Vector3& at, int rotation) {
@@ -72,6 +73,7 @@ Dictionary WroughtwildSim::contraption_state(const String& key) const {
     d["quarter_turns"]=s->quarterTurns; d["link"]=to_godot(s->link);
     d["span_length"]=s->spanLength; d["energy"]=s->energy; d["lamp_on"]=s->lampOn;
     d["second_link"]=to_godot(s->secondLink); d["second_span_length"]=s->secondSpanLength;
+    d["heat"]=s->heat; d["heat_key"]=to_godot(s->heatKey); d["escrow_heat"]=s->escrowHeat;
     d["moving"]=s->moving; d["at_landing"]=s->atLanding; d["progress"]=s->progress;
     d["completed_trips"]=s->completedTrips; d["pulses"]=s->pulses;
     d["pending_request"]=s->pendingRequest; d["delay_paused"]=s->delayPaused; d["delay_seconds"]=s->delaySeconds;
@@ -93,7 +95,7 @@ Dictionary WroughtwildSim::contraption_config() const {
     d["sorter_batch_units"]=c.sorterBatchUnits; d["energy_capacity"]=c.energyCapacity;
     d["winding_energy"]=c.windingEnergy; d["trip_energy"]=c.tripEnergy; d["bellows_energy"]=c.bellowsEnergy;
     d["maximum_span"]=c.maximumSpan; d["signal_range"]=c.signalRange; d["bellows_range"]=c.bellowsRange;
-    d["delay_seconds"]=c.delaySeconds;
+    d["delay_seconds"]=c.delaySeconds; d["heat_capacity"]=c.heatCapacity; d["heat_input"]=to_dictionary(c.heatInput);
     d["cargo_metres_per_second"]=c.cargoMetresPerSecond; d["minimum_trip_seconds"]=c.minimumTripSeconds;
     d["pressure_source_strokes"]=c.pressureSourceStrokes;
     d["feeder_input_units"]=c.feederInputUnits; d["feeder_output_units"]=c.feederOutputUnits;
@@ -140,6 +142,7 @@ Dictionary WroughtwildSim::contraption_request_tick(const String& key,double sec
 Dictionary WroughtwildSim::contraption_action(const String& key,const String& action,bool clear,bool other_clear,double distance) {
     if (!contraptions_ || trial_) return machine_unavailable();
     const auto id=to_std(key);
+    if (action=="heat") return machine_result(contraptions_->chargeHeat(id,player_->inventory,clear));
     if (action=="wind") return machine_result(contraptions_->wind(id));
     if (action=="start") return machine_result(contraptions_->start(id,clear));
     if (action=="pulse") return machine_result(contraptions_->pulse(id,clear,other_clear));

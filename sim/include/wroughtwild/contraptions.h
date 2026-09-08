@@ -13,7 +13,7 @@
 #include "wroughtwild/economy.h"
 
 namespace wroughtwild::contraptions {
-inline constexpr int saveSchema = 4;
+inline constexpr int saveSchema = 5;
 
 // Physical facts for the selected ordered path and at most two leaf ports.
 // These are not energy or ownership and never persist as queued work.
@@ -45,6 +45,8 @@ struct Config {
     int feederBatchCycles = 4;
     double feederCycleSeconds = 8;
     double feederAttachmentRange = 8;
+    int heatCapacity = 4;
+    economy::Inventory heatInput{{"red_salt",2}};
     // Host copies the approved existing recipe and fuel table from Tuning.
     economy::Inventory feederRecipeInputs, feederRecipeOutputs, feederFuels;
     int feederFuelCost = 0;
@@ -91,6 +93,9 @@ struct State {
     int escrowDrive = 0, queuedCycles = 0, completedCycles = 0;
     double cycleSeconds = 0;
     bool feederPaused = false;
+    // Thermal stock is neither mechanical work nor a second inventory.
+    int heat = 0, escrowHeat = 0;
+    std::string heatKey;
 };
 
 struct Result {
@@ -132,6 +137,7 @@ public:
     // additionally permits lever -> one White connection -> cargo drum.
     Result link(const std::string& source, const std::string& target, bool clear);
     Result linkSecond(const std::string& source, const std::string& target, bool clear);
+    Result chargeHeat(const std::string& key, economy::Inventory& pack, bool supported);
     Result wind(const std::string& key);
     Result start(const std::string& key, bool clear);
     Result advance(const std::string& key, double seconds, bool clear);
@@ -184,6 +190,7 @@ private:
     bool feederItem(const std::string& item) const;
     bool feederRecipeReady() const;
     Result reserveFeeder(State& state);
+    Result linkHeat(State& buffer, const std::string& target, bool clear);
     std::map<std::string, State> parse(const std::string& source, std::map<std::string,int>* stocks = nullptr) const;
 };
 

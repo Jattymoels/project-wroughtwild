@@ -1,5 +1,11 @@
 # Crafting and Skills
 
+**LF-2C:** a workbench Red Heat Buffer Kit costs 4 Red Salt, 4 wood and 2 iron
+ingots. Each separate two-salt charge provides one heat for the existing feeder's
+eight-clay/four-brick process. The feeder still pays its own mechanical stroke;
+an attached buffer replaces only its ordinary fuel payment. Salt is not global
+fuel. No XP, research or manual-crafting timer is introduced.
+
 **LF-2B:** a Green lot supplies 16 Green Resin. Two resin plus two wood make one
 ordinary Green Junction Kit, with the same workbench, era, zero XP/fuel and
 half-frame refund policy as White and Blue. Resin carries 128; its optional

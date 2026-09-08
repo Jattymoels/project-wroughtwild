@@ -78,6 +78,7 @@ void blue(const tuning::Tuning& tuning,const leyline::Config& sources,contraptio
     replaceAll(v2,"\"schema\":"+std::to_string(contraptions::saveSchema),"\"schema\":2");
     replaceAll(v2,",\"pending_request\":false,\"delay_paused\":false,\"delay_seconds\":0","");
     replaceAll(v2,",\"second_link\":\"\",\"second_span_length\":0","");
+    replaceAll(v2,",\"heat\":0,\"heat_key\":\"\",\"escrow_heat\":0","");
     check(m.restore(v2) && m.serialize()==saved,"published Wave 1 machine payload migrates without reset");
 }
 void green(const tuning::Tuning& tuning,const leyline::Config& sources,contraptions::Config config) {
@@ -143,13 +144,76 @@ void green(const tuning::Tuning& tuning,const leyline::Config& sources,contrapti
     saved=m.serialize(); auto v3=saved;
     replaceAll(v3,"\"schema\":"+std::to_string(contraptions::saveSchema),"\"schema\":3");
     replaceAll(v3,",\"second_link\":\"\",\"second_span_length\":0","");
+    replaceAll(v3,",\"heat\":0,\"heat_key\":\"\",\"escrow_heat\":0","");
     check(m.restore(v3) && m.serialize()==saved,"published Blue payload preserves paused fractional request on Green migration");
+}
+void heat(const tuning::Tuning& tuning,contraptions::Config config) {
+    const auto* recipe=tuning.crafting.findRecipe("refine_rustclay_brick");
+    config.feederRecipeInputs=recipe->inputs; config.feederRecipeOutputs=recipe->outputs;
+    config.feederFuelCost=recipe->fuelCost; config.feederFuels=tuning.crafting.fuels;
+    economy::PlayerEconomy maker(tuning); maker.worldProfile=leyline::profile; maker.addAvailableStation("workbench");
+    maker.inventory={{"red_salt",4},{"wood",4},{"iron_ingot",2}};
+    check(maker.craft("assemble_red_heat_buffer").crafted && maker.held("red_heat_buffer_kit")==1 && !maker.held("red_salt") && !maker.held("wood") && !maker.held("iron_ingot"),"buffer kit pays its ordinary frame recipe");
+    check(config.heatInput==economy::Inventory{{"red_salt",2}} && config.heatCapacity==4,"paid heat tuning matches Red firing cost");
+    check(!tuning.crafting.fuels.count("red_salt"),"Red is not a universal fuel");
+    contraptions::MachineWorld m(config,{leyline::profile,77,{}}),normal(config);
+    check(!normal.create("red","red_heat_buffer").ok,"heat buffer stays opt-in");
+    for (const auto& [key,kind,x] : std::vector<std::tuple<std::string,std::string,double>>{
+        {"red","red_heat_buffer",0},{"other","red_heat_buffer",2},{"feeder","pressure_feeder",4},{"far","pressure_feeder",20},
+        {"lever","stormglass_lever",6},{"blue","blue_delay",8},{"green","green_junction",10},{"drum","cargo_winch",12},{"landing","winch_landing",24}})
+        check(m.create(key,kind,{x,0,0}).ok,"thermal fixture "+key);
+    check(m.attachFeeder("feeder","","forge",{4,0,2},true).ok,"thermal feeder owns its forge");
+    check(!m.link("red","far",true).ok && !m.link("red","feeder",false).ok && !m.link("red","blue",true).ok,"thermal connection needs nearby clear useful receiver");
+    check(m.link("red","feeder",true).ok && m.state("feeder")->heatKey=="red","thermal attachment records both exact owners");
+    check(!m.link("other","feeder",true).ok && !m.link("lever","red",true).ok && !m.link("green","red",true).ok,"one heat owner, separate from signals");
+    economy::Inventory pack{{"red_salt",20},{"raw_clay",24},{"wood",4}};
+    auto saved=m.serialize(); auto inventory=pack;
+    check(!m.chargeHeat("red",pack,false).ok && pack==inventory && m.serialize()==saved,"unsupported charging spends no heat input");
+    for (int i=0;i<4;++i) check(m.chargeHeat("red",pack,true).ok,"each heat unit is paid");
+    check(pack.at("red_salt")==12 && m.state("red")->heat==4 && !m.wind("red").ok,"thermal stock is paid and cannot wind");
+    saved=m.serialize(); inventory=pack;
+    check(!m.chargeHeat("red",pack,true).ok && m.serialize()==saved && pack==inventory,"capacity refuses without payment");
+    check(m.deposit("feeder","raw_clay",24,pack).moved==24 && m.deposit("feeder","wood",4,pack).moved==4,"actual ordinary recipe inputs enter hopper");
+    check(!m.start("feeder",true).ok && m.state("red")->heat==4,"heat cannot substitute mechanical work");
+    m.wind("feeder"); check(m.start("feeder",true).ok,"paid Red firing starts");
+    check(m.state("red")->heat==3 && m.state("feeder")->escrowHeat==1 && m.state("feeder")->escrowInputs==config.feederRecipeInputs && m.state("feeder")->escrowFuel.empty() && m.state("feeder")->input.at("wood")==4,"reserve heat separately, preserving clay/output and ordinary fuel");
+    check(!m.chargeHeat("red",pack,true).ok,"reserved thermal return slot prevents overcharging");
+    m.advance("feeder",2.25,true); saved=m.serialize();
+    check(m.restore(saved) && m.serialize()==saved,"fractional thermal firing and capacity survive restore");
+    check(!m.advance("feeder",100,false).ok && m.serialize()==saved,"blocked thermal geometry preserves every held payment");
+    check(!m.link("red","",true).ok && !m.erase("red",pack).ok && m.serialize()==saved,"active buffer cannot disconnect or dismantle");
+    check(m.cancel("feeder").ok && m.state("red")->heat==4 && m.state("feeder")->energy==1 && m.state("feeder")->input==economy::Inventory{{"raw_clay",24},{"wood",4}},"cancel returns exact heat clay and drive");
+    saved=m.serialize(); check(!m.cancel("feeder").ok && m.serialize()==saved,"second cancel cannot duplicate heat");
+    check(m.start("feeder",true).ok && m.advance("feeder",8,true).ok && m.state("red")->heat==3 && m.state("feeder")->output==config.feederRecipeOutputs,"completed firing spends one heat for four real bricks");
+    m.wind("feeder"); m.start("feeder",true);
+    check(m.erase("feeder",pack).ok && m.state("red")->heat==3 && m.state("red")->link.empty() && pack.at("raw_clay")==16 && pack.at("wood")==4 && pack.at("rustclay_brick")==4,"feeder dismantle returns reserved heat and exact owned materials/output once");
+    const auto salt=pack.at("red_salt");
+    check(m.erase("red",pack).ok && pack.at("red_salt")==salt,"idle buffer dismantle vents heat instead of inventing raw salt");
+    check(!m.erase("red",pack).ok,"buffer dismantle cannot duplicate contents");
+    // An empty attached buffer never silently burns ordinary hopper fuel.
+    m.create("feeder","pressure_feeder",{4,0,0}); m.attachFeeder("feeder","","forge",{4,0,2},true);
+    m.link("other","feeder",true); m.deposit("feeder","raw_clay",8,pack); m.deposit("feeder","wood",1,pack); m.wind("feeder");
+    saved=m.serialize();
+    check(!m.start("feeder",true).ok && m.serialize()==saved,"empty attached heat refuses without ordinary fuel fallback");
+    check(m.link("other","",true).ok && m.start("feeder",true).ok && m.state("feeder")->escrowFuel==economy::Inventory{{"wood",1}},"explicit detachment restores original fuel rule");
+    check(m.erase("other",pack).ok,"remove thermal fixture before historical payload check");
+    m.link("lever","blue",true); m.link("blue","green",true); m.link("green","drum",true); m.linkSecond("green","feeder",true); m.link("drum","landing",true);
+    m.request("lever",{}); m.advanceDelay("blue",.625,{}); m.pause("blue",true);
+    saved=m.serialize(); auto v4=saved;
+    replaceAll(v4,"\"schema\":"+std::to_string(contraptions::saveSchema),"\"schema\":4");
+    replaceAll(v4,",\"heat\":0,\"heat_key\":\"\",\"escrow_heat\":0","");
+    check(m.restore(v4) && m.serialize()==saved,"published Green migration preserves both ports, pending Blue and active ordinary firing");
+    auto bad=saved; replaceAll(bad,"\"heat\":0","\"heat\":5");
+    check(!m.restore(bad) && m.serialize()==saved,"over-capacity/wrong-owner heat refuses atomically");
+    bad=saved; replaceAll(bad,"\"escrow_heat\":0","\"escrow_heat\":1");
+    check(!m.restore(bad) && m.serialize()==saved,"orphaned thermal escrow refuses atomically");
 }
 int main(int argc,char** argv) {
     const std::string path=argc>1 ? argv[1] : "data/tuning";
     const auto tuning=tuning::loadAll(path);
     blue(tuning,leyline::Config::load(path+"/leyline.json"),contraptions::Config::load(path+"/contraptions.json"));
     green(tuning,leyline::Config::load(path+"/leyline.json"),contraptions::Config::load(path+"/contraptions.json"));
+    heat(tuning,contraptions::Config::load(path+"/contraptions.json"));
     std::cout<<"LF2_NATIVE "<<checks<<" checks, "<<failures<<" failures\n";
     return failures ? 1 : 0;
 }

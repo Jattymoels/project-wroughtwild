@@ -85,6 +85,17 @@ func _refresh(message_text: String = "") -> void:
 			rows.append(_action("Choose second receiver",_link_description(state,"Second port disconnected.",2),_choose_link.bind(2)))
 			rows.append(_action("One request · two receivers","Each clear branch attempts one operation. Each receiver pays its own winding, materials and heat.",Callable(),false,"Only two distinct drums or feeders. One refusal leaves the other branch usable. No queue, component loops or repeated execution."))
 			if not String(state.second_link).is_empty(): rows.append(_action("Disconnect second signal","Cancel pending Blue requests on this route.",_disconnect.bind(2)))
+		"red_heat_buffer":
+			var receiver: Dictionary = site.sim.contraption_state(String(state.link))
+			var reserved := int(receiver.get("escrow_heat",0))
+			var room := int(state.heat)+reserved<int(config.heat_capacity)
+			var affordable := true
+			for item: String in config.heat_input:
+				if site.sim.material_count(item)<int(config.heat_input[item]): affordable=false
+			rows.append(_action("Thermal store","Heat: %d available + %d held / %d total. Winding is separate." % [int(state.heat),reserved,int(config.heat_capacity)],Callable(),false))
+			rows.append(_action("Pay for 1 heat",WorkPanel.amounts_text(config.heat_input)+" → 1 stored heat.",_operate.bind("heat"),room and affordable,"Charge while supported. Held heat keeps its return slot; cancelling a firing returns it once. No raw salt returns from spent heat."))
+			rows.append(_action("Choose heat receiver",_link_description(state,"Choose one nearby pressure feeder."),_choose_link,not bool(receiver.get("escrow_drive",0))))
+			if not String(state.link).is_empty(): rows.append(_action("Disconnect heat","Return to ordinary feeder fuel. Finish or cancel its firing first.",_disconnect.bind(1),int(receiver.get("escrow_drive",0))==0))
 		"magnetic_sorter":
 			rows.append(_action("Tip one batch", "Load a batch below. Iron ingredients and other stock go to separate trays.", _operate.bind("sort")))
 			_add_deposits(rows)
@@ -100,7 +111,7 @@ func _refresh(message_text: String = "") -> void:
 				_release, energy > 0 and target != null))
 	if site.kind in ["stormglass_lever","white_connection","blue_delay","green_junction"] and not String(state.link).is_empty():
 		rows.append(_action("Disconnect signal", "Cancel pending Blue requests on this route. A basket already travelling keeps its paid trip and cargo.", _disconnect.bind(1)))
-	rows.append(_action("Dismantle and recover", "Recover intact rare cores, stored ingredients and completed output. Ordinary frame materials use the existing building refund."+(" Unused drive vents; the pocket stays spent." if site.kind=="pressure_feeder" else ""), _dismantle))
+	rows.append(_action("Dismantle and recover", "Recover intact rare cores, stored ingredients and completed output. Ordinary frame materials use the existing building refund."+(" Unused heat vents; spent charge salt never returns. Finish or cancel the firing first." if site.kind=="red_heat_buffer" else " Unused drive vents; the pocket stays spent." if site.kind=="pressure_feeder" else ""), _dismantle))
 	player.open_custom_panel(_title, rows, message_text)
 	player.work_panel.set_meta("contraption_key", site.machine_key)
 
@@ -153,7 +164,7 @@ func _refresh_feeder(state: Dictionary, config: Dictionary, message_text: String
 			else:
 				var start := _feeder_action(view, "start", "Start up to %d firings" % int(config.get("feeder_batch_cycles", 4)), "")
 				# The current blocker is already above; retain the recipe beside Start.
-				start.text = FeederReadout.recipe_text(config)
+				start.text = FeederReadout.recipe_text(config,state)
 				rows.append(start)
 			rows.append(_feeder_row("page:hopper", "Hopper · " + FeederReadout.stock_text(hopper), "Load / return supplies", _show_feeder_page.bind("hopper"), true,
 				"Held for the current firing: " + FeederReadout.stock_text(held) + ". Loading takes only the selected ingredients from your pack."))
@@ -168,6 +179,7 @@ func _refresh_feeder(state: Dictionary, config: Dictionary, message_text: String
 			if loads.is_empty(): rows.append(_feeder_row("loads:empty", "No raw clay or forge fuel in your pack to load." if available else String(view.native.message)))
 			for load: Dictionary in loads:
 				var item := String(load.item)
+				if not String(state.get("heat_key","")).is_empty() and config.feeder_fuels.has(item): continue
 				var moved := int(load.moved)
 				rows.append(_feeder_row("load:" + item, "In pack: %d · hopper: %d" % [int(site.sim.inventory().get(item, 0)), int(hopper.get(item, 0))] if load.ok else String(load.message),
 					"Load %d %s" % [moved, Hud.pretty(item)] if load.ok else "Load " + Hud.pretty(item), _deposit.bind(item, int(load.requested)), bool(load.ok),
@@ -176,7 +188,8 @@ func _refresh_feeder(state: Dictionary, config: Dictionary, message_text: String
 		"drive":
 			heading += " · drive and connections"
 			rows.append(_feeder_row("drive:stock", "Drive · %d stored + %d held / %d total" % [energy, reserved, capacity], "", Callable(), false,
-				"One stroke moves the feeder for one firing. Ordinary fuel supplies the heat separately."))
+				"One stroke moves the feeder for one firing. Its selected thermal source pays for heat separately."))
+			rows.append(_feeder_row("heat:stock",FeederReadout.heat_text(view)))
 			rows.append(_feeder_row("source:stock", FeederReadout.source_text(view)))
 			rows.append(_feeder_action(view, "charge", "Draw pocket pressure", "Transfer available pocket strokes into free drive space; the pocket stays spent."))
 			rows.append(_feeder_action(view, "wind", "Wind by hand", "Store one stroke by hand."))
@@ -184,13 +197,13 @@ func _refresh_feeder(state: Dictionary, config: Dictionary, message_text: String
 				"Use your own placed forge. The struck old hearth is a ruined source, not a working station. Finish or cancel the current firing before changing connections."))
 		"help":
 			heading += " · details"
-			rows.append(_feeder_row("recipe", FeederReadout.recipe_text(config), "", Callable(), false,
-				"Start requests up to %d firings. Each reserves its own ingredients, fuel, tray space and drive once. If the next firing lacks anything, the batch stops. Charcoal is consumed per firing; excess fuel heat is not stored. Machinery awards no personal mastery XP." % int(config.get("feeder_batch_cycles", 4))))
+			rows.append(_feeder_row("recipe", FeederReadout.recipe_text(config,state), "", Callable(), false,
+				"Start requests up to %d firings. Each reserves its own ingredients, thermal payment, tray space and drive once. If the next firing lacks anything, the batch stops. Charcoal is consumed per firing; excess fuel heat is not stored. Machinery awards no personal mastery XP." % int(config.get("feeder_batch_cycles", 4))))
 			rows.append(_feeder_row("ownership", "Held supplies · " + FeederReadout.stock_text(held), "", Callable(), false,
 				"Tray: %d / %d completed items. An active firing also holds room for its output. Work waits when you leave the area or enter a trial. Saving keeps the exact firing; there is no offline progress." % [ContraptionSite._inventory_units(output), int(config.get("feeder_output_units", 32))]))
 			rows.append(_feeder_action(view, "cancel", "Cancel requested firings", "Return this firing's exact held ingredients and drive; completed bricks stay in the tray."))
 			rows.append(_feeder_row("dismantle", "Recover cores, stored supplies and completed bricks; unused drive vents.", "Dismantle and recover", _dismantle, available,
-				"The ordinary frame uses the existing building refund. Held ingredients return once. Spent pocket stock is never refilled."))
+				"The ordinary frame uses the existing building refund. Held ingredients and any reserved Red heat return once to their owners. Spent pocket stock is never refilled."))
 	if _feeder_page != "main": rows.append(_feeder_row("page:main", "Return to the feeder overview.", "Back", _show_feeder_page.bind("main")))
 	player.open_custom_panel(heading, rows, message_text, _feeder_context())
 	player.work_panel.set_meta("contraption_key", site.machine_key)
@@ -345,11 +358,12 @@ func _choose_link(port: int = 1) -> void:
 	_link_port = port
 	if not is_instance_valid(site): return
 	var config: Dictionary = site.sim.contraption_config()
-	var range_m: float = float(config.get("maximum_span", 32)) if site.kind == "cargo_winch" else float(config.get("signal_range", 24))
+	var range_m: float = float(config.get("maximum_span", 32)) if site.kind == "cargo_winch" else float(config.get("feeder_attachment_range",8)) if site.kind=="red_heat_buffer" else float(config.get("signal_range", 24))
 	var rows: Array = []
 	for node in site.get_tree().get_nodes_in_group("contraptions"):
 		if not node is ContraptionSite or node == site: continue
 		var target := node as ContraptionSite
+		if site.kind=="red_heat_buffer" and target.kind!="pressure_feeder": continue
 		if site.kind == "cargo_winch" and target.kind != "winch_landing": continue
 		if site.kind == "stormglass_lever" and not target.kind in ["cargo_winch", "lantern_lamp","pressure_feeder","white_connection","blue_delay","green_junction"]: continue
 		if site.kind == "white_connection" and target.kind not in ["cargo_winch","pressure_feeder","blue_delay","green_junction"]: continue
