@@ -7,6 +7,7 @@ var site: ContraptionSite
 var player: WroughtwildPlayer
 var _title := ""
 var _feeder_page := "main"
+var _link_port := 1
 
 
 func open_at(fixture: ContraptionSite, user: WroughtwildPlayer) -> void:
@@ -14,6 +15,7 @@ func open_at(fixture: ContraptionSite, user: WroughtwildPlayer) -> void:
 	player = user
 	_title = String(ContraptionSite.LABELS.get(site.kind, site.kind))
 	_feeder_page = "main"
+	_link_port = 1
 	_refresh()
 
 
@@ -67,17 +69,22 @@ func _refresh(message_text: String = "") -> void:
 			rows.append(_action("Strike the lever", _signal_description(state),
 				_operate.bind("pulse"), not String(state.get("link", "")).is_empty()))
 		"white_connection":
-			rows.append(_action("Choose receiver", _link_description(state, "Disconnected. Choose one cargo drum or Blue delay."), _choose_link))
-			rows.append(_action("Signal only", "A linked Stormglass lever requests one trip. Wind the drum and link its landing first.", Callable(), false,
-				"Each signal span must be clear and supported. White stores no energy or pending requests. It can forward to Blue, but cannot operate another White connection."))
+			rows.append(_action("Choose receiver", _link_description(state, "Disconnected. Choose a receiver, Blue delay or Green junction."), _choose_link))
+			rows.append(_action("Signal only", "A linked lever requests work. Each drum or feeder needs its own winding and supplies.", Callable(), false,
+				"Each signal span must be clear and supported. White stores no energy or pending requests. White can forward to Blue or Green; the ordered links cannot loop."))
 		"blue_delay":
-			rows.append(_action("Choose receiver",_link_description(state,"Disconnected. Choose one placed cargo drum."),_choose_link))
+			rows.append(_action("Choose receiver",_link_description(state,"Disconnected. Choose a receiver or Green junction."),_choose_link))
 			var pending := bool(state.pending_request)
 			var held := "Paused" if bool(state.delay_paused) or not site.span_clear() else "Holding"
-			rows.append(_action("One held request", "%s · %.1f / %.1f seconds remain." % [held,float(config.delay_seconds)-float(state.delay_seconds),float(config.delay_seconds)] if pending else "Ready · a lever request waits %.1f seconds before the drum pays its winding." % float(config.delay_seconds),Callable(),false,
-				"One pending request only. Pause, trials, blocked output support/span and leaving the local area preserve its exact delay. Rewiring any part of this route cancels it. At release, an unwound or blocked drum refuses and the request is spent. No offline work."))
+			rows.append(_action("One held request", "%s · %.1f / %.1f seconds remain." % [held,float(config.delay_seconds)-float(state.delay_seconds),float(config.delay_seconds)] if pending else "Ready · a lever request waits %.1f seconds before each receiver pays its own work." % float(config.delay_seconds),Callable(),false,
+				"One pending request only. Pause, trials, blocked output support/span and leaving the local area preserve its exact delay. Rewiring any part of this route cancels it. At release, an unwound, unfuelled or blocked receiver refuses and the request is spent. No offline work."))
 			rows.append(_action("Resume" if bool(state.delay_paused) else "Pause","Hold or resume the exact remaining delay.",_operate.bind("resume" if bool(state.delay_paused) else "pause"),pending))
 			rows.append(_action("Cancel request","Clear the held request without spending receiver work.",_operate.bind("cancel"),pending))
+		"green_junction":
+			rows.append(_action("Choose first receiver",_link_description(state,"First port disconnected."),_choose_link.bind(1)))
+			rows.append(_action("Choose second receiver",_link_description(state,"Second port disconnected.",2),_choose_link.bind(2)))
+			rows.append(_action("One request · two receivers","Each clear branch attempts one operation. Each receiver pays its own winding, materials and heat.",Callable(),false,"Only two distinct drums or feeders. One refusal leaves the other branch usable. No queue, component loops or repeated execution."))
+			if not String(state.second_link).is_empty(): rows.append(_action("Disconnect second signal","Cancel pending Blue requests on this route.",_disconnect.bind(2)))
 		"magnetic_sorter":
 			rows.append(_action("Tip one batch", "Load a batch below. Iron ingredients and other stock go to separate trays.", _operate.bind("sort")))
 			_add_deposits(rows)
@@ -91,8 +98,8 @@ func _refresh(message_text: String = "") -> void:
 			var target_name := "a nearby set wedge or responsive seam" if target == null else Hud.pretty(String(target.material_family))
 			rows.append(_action("Release pressure", "Target: %s. Set a wedge first if required." % target_name,
 				_release, energy > 0 and target != null))
-	if site.kind in ["stormglass_lever","white_connection","blue_delay"] and not String(state.link).is_empty():
-		rows.append(_action("Disconnect signal", "Cancel pending Blue requests on this route. A basket already travelling keeps its paid trip and cargo.", _link.bind("")))
+	if site.kind in ["stormglass_lever","white_connection","blue_delay","green_junction"] and not String(state.link).is_empty():
+		rows.append(_action("Disconnect signal", "Cancel pending Blue requests on this route. A basket already travelling keeps its paid trip and cargo.", _disconnect.bind(1)))
 	rows.append(_action("Dismantle and recover", "Recover intact rare cores, stored ingredients and completed output. Ordinary frame materials use the existing building refund."+(" Unused drive vents; the pocket stays spent." if site.kind=="pressure_feeder" else ""), _dismantle))
 	player.open_custom_panel(_title, rows, message_text)
 	player.work_panel.set_meta("contraption_key", site.machine_key)
@@ -231,12 +238,12 @@ func _attach_feeder(forge_key: String, source_id: String) -> void:
 	_refresh(String(result.get("message","")))
 
 
-func _link_description(state: Dictionary, empty_text: String) -> String:
-	var target_key := String(state.get("link", ""))
+func _link_description(state: Dictionary, empty_text: String, port: int = 1) -> String:
+	var target_key := String(state.get("link" if port==1 else "second_link", ""))
 	if target_key.is_empty(): return empty_text
 	var target: Dictionary = site.sim.contraption_state(target_key)
 	return "Linked to %s, %.1f m away. %s" % [ContraptionSite.LABELS.get(String(target.get("kind", "")), "receiver"),
-		float(state.get("span_length", 0)), "The connection is clear." if site.span_clear() else "The connection or its support is obstructed."]
+		float(state.get("span_length" if port==1 else "second_span_length", 0)), "The connection is clear." if site.link_clear(ContraptionSite.find_site(site.get_tree(),target_key)) else "The connection or its support is obstructed."]
 
 
 func _signal_description(state: Dictionary) -> String:
@@ -251,6 +258,7 @@ func _signal_description(state: Dictionary) -> String:
 		if not connection.span_clear(): return "Clear and support the signal spans before requesting a trip."
 		connection = ContraptionSite.find_site(site.get_tree(),String(relay.link))
 		if connection==null: return "Connection output disconnected."
+	if connection.kind=="green_junction": return "Green requests both selected receivers once. Wind each receiver and load its own supplies; a blocked branch refuses independently."
 	var drum := connection
 	if drum.kind!="cargo_winch": return "Drums and feeders need their own stored drive and supplies; lamps switch directly."
 	var drive: Dictionary = site.sim.contraption_state(drum.machine_key)
@@ -333,7 +341,8 @@ func _withdraw(port: String, item: String, count: int) -> void:
 	_refresh("%s (%d moved.)" % [String(result.get("message", "")), int(result.get("moved", 0))])
 
 
-func _choose_link() -> void:
+func _choose_link(port: int = 1) -> void:
+	_link_port = port
 	if not is_instance_valid(site): return
 	var config: Dictionary = site.sim.contraption_config()
 	var range_m: float = float(config.get("maximum_span", 32)) if site.kind == "cargo_winch" else float(config.get("signal_range", 24))
@@ -342,9 +351,11 @@ func _choose_link() -> void:
 		if not node is ContraptionSite or node == site: continue
 		var target := node as ContraptionSite
 		if site.kind == "cargo_winch" and target.kind != "winch_landing": continue
-		if site.kind == "stormglass_lever" and not target.kind in ["cargo_winch", "lantern_lamp","pressure_feeder","white_connection","blue_delay"]: continue
-		if site.kind == "white_connection" and target.kind not in ["cargo_winch","blue_delay"]: continue
-		if site.kind == "blue_delay" and target.kind != "cargo_winch": continue
+		if site.kind == "stormglass_lever" and not target.kind in ["cargo_winch", "lantern_lamp","pressure_feeder","white_connection","blue_delay","green_junction"]: continue
+		if site.kind == "white_connection" and target.kind not in ["cargo_winch","pressure_feeder","blue_delay","green_junction"]: continue
+		if site.kind == "blue_delay" and target.kind not in ["cargo_winch","pressure_feeder","green_junction"]: continue
+		if site.kind=="green_junction" and target.kind not in ["cargo_winch","pressure_feeder"]: continue
+		if site.kind=="green_junction" and target.machine_key==String(site.sim.contraption_state(site.machine_key).get("second_link" if port==1 else "link","")): continue
 		var distance_m := site.global_position.distance_to(target.global_position)
 		if distance_m > range_m: continue
 		var clear := site.link_clear(target)
@@ -370,9 +381,14 @@ func _relative_direction(target: Node3D) -> String:
 func _link(target_key: String) -> void:
 	if not is_instance_valid(site): return
 	var target := ContraptionSite.find_site(site.get_tree(), target_key)
-	var result: Dictionary = site.sim.contraption_link(site.machine_key, target_key, site.link_clear(target))
+	var result: Dictionary = site.sim.contraption_link_second(site.machine_key,target_key,site.link_clear(target)) if _link_port==2 else site.sim.contraption_link(site.machine_key, target_key, site.link_clear(target))
 	site.refresh_from_sim()
 	_refresh(String(result.get("message", "")))
+
+
+func _disconnect(port: int) -> void:
+	_link_port = port
+	_link("")
 
 
 func _dismantle() -> void:

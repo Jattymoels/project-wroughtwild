@@ -159,7 +159,7 @@ State* MachineWorld::mutableState(const std::string& key) {
 }
 bool MachineWorld::knownKind(const std::string& kind) {
     return kind == "lantern_lamp" || kind == "cargo_winch" || kind == "winch_landing" ||
-           kind == "stormglass_lever" || kind == "magnetic_sorter" || kind == "ventlung_bellows" || kind == "pressure_feeder" || kind == "white_connection" || kind == "blue_delay";
+           kind == "stormglass_lever" || kind == "magnetic_sorter" || kind == "ventlung_bellows" || kind == "pressure_feeder" || kind == "white_connection" || kind == "blue_delay" || kind == "green_junction";
 }
 bool MachineWorld::itemAllowed(const std::string& item) const {
     return identifier(item) && (config_.allowedItems.empty() || config_.allowedItems.count(item) > 0);
@@ -167,7 +167,7 @@ bool MachineWorld::itemAllowed(const std::string& item) const {
 Result MachineWorld::create(const std::string& key, const std::string& kind,
                             const std::array<double, 3>& position, int quarterTurns) {
     if (!knownKind(kind) || !identifier(key)) return no("Unknown fixture or invalid placement key.");
-    if ((kind=="white_connection" || kind=="blue_delay") && identity_.profile!="living_frontier_wave1") return no("Coloured components belong to the Living Frontier experiment.");
+    if ((kind=="white_connection" || kind=="blue_delay" || kind=="green_junction") && identity_.profile!="living_frontier_wave1") return no("Coloured components belong to the Living Frontier experiment.");
     if (kind=="pressure_feeder" && !feederRecipeReady()) return no("The existing decorative forge recipe is unavailable.");
     if (state(key)) return no("That placement already contains a fixture.");
     if (states_.size() >= static_cast<size_t>(config_.maximumMachines)) return no("The world's fixture limit is reached.");
@@ -196,13 +196,14 @@ Result MachineWorld::erase(const std::string& key, Inventory& pack) {
             source.moving = false; source.atLanding = false; source.progress = 0;
         }
     }
+    for (auto& [id,s] : states_) if (s.secondLink==key) { (void)id; s.secondLink.clear(); s.secondSpanLength=0; }
     pack.swap(returned);
     states_.erase(key);
     return yes("Recovered the fixture and all its contents.");
 }
 Result MachineWorld::link(const std::string& source, const std::string& target, bool clear) {
     auto* from = mutableState(source);
-    if (from && target.empty() && (from->kind=="stormglass_lever" || from->kind=="white_connection" || from->kind=="blue_delay")) {
+    if (from && target.empty() && (from->kind=="stormglass_lever" || from->kind=="white_connection" || from->kind=="blue_delay" || from->kind=="green_junction")) {
         invalidateDelays(source);
         from->link.clear(); from->spanLength=0;
         return yes("Signal disconnected. A departed basket keeps its paid trip and cargo.");
@@ -219,18 +220,35 @@ Result MachineWorld::link(const std::string& source, const std::string& target, 
             if (entry.first != source && entry.second.kind == "cargo_winch" && entry.second.link == target)
                 return no("That landing already belongs to another drum.");
     } else if (from->kind == "stormglass_lever") {
-        if (to->kind != "cargo_winch" && to->kind != "lantern_lamp" && to->kind != "pressure_feeder" && to->kind != "white_connection" && to->kind != "blue_delay") return no("Stormglass requests one local operation or a coloured connection.");
+        if (to->kind != "cargo_winch" && to->kind != "lantern_lamp" && to->kind != "pressure_feeder" && to->kind != "white_connection" && to->kind != "blue_delay" && to->kind != "green_junction") return no("Stormglass requests one local operation or a coloured connection.");
         if (length > config_.signalRange) return no("The receiver is outside local signal range.");
     } else if (from->kind == "white_connection") {
-        if (to->kind != "cargo_winch" && to->kind != "blue_delay") return no("White forwards one request to a cargo drum or Blue delay.");
+        if (to->kind != "cargo_winch" && to->kind != "pressure_feeder" && to->kind != "blue_delay" && to->kind != "green_junction") return no("White forwards one request to a paid receiver, Blue delay or Green junction.");
         if (length > config_.signalRange) return no("The drum is outside local signal range.");
     } else if (from->kind == "blue_delay") {
-        if (to->kind != "cargo_winch") return no("Blue releases its held request to one cargo drum.");
+        if (to->kind != "cargo_winch" && to->kind != "pressure_feeder" && to->kind != "green_junction") return no("Blue releases to a paid receiver or Green junction.");
+        if (length > config_.signalRange) return no("The receiver is outside local signal range.");
+    } else if (from->kind == "green_junction") {
+        if ((to->kind!="cargo_winch" && to->kind!="pressure_feeder") || target==from->secondLink) return no("Choose a distinct paid receiver for each Green port.");
         if (length > config_.signalRange) return no("The receiver is outside local signal range.");
     } else return no("This fixture does not send a link.");
     if (from->link != target) invalidateDelays(source);
     from->link = target; from->spanLength = length;
     return yes("Linked. Signals request work; the drum still needs winding.");
+}
+Result MachineWorld::linkSecond(const std::string& source, const std::string& target, bool clear) {
+    auto* from=mutableState(source);
+    if (!from || from->kind!="green_junction") return no("Only Green has a second signal port.");
+    if (target.empty()) {
+        invalidateDelays(source); from->secondLink.clear(); from->secondSpanLength=0;
+        return yes("Second signal disconnected; any held request on this route was cancelled.");
+    }
+    const auto* to=state(target);
+    if (!to || target==from->link || (to->kind!="cargo_winch" && to->kind!="pressure_feeder")) return no("Choose a distinct paid receiver for each Green port.");
+    if (!clear || distance(*from,*to)>config_.signalRange) return no("The supported second signal span must be clear and local.");
+    if (from->secondLink!=target) invalidateDelays(source);
+    from->secondLink=target; from->secondSpanLength=distance(*from,*to);
+    return yes("Second receiver linked. It pays its own work and materials.");
 }
 Result MachineWorld::wind(const std::string& key) {
     auto* s = mutableState(key);
@@ -295,37 +313,48 @@ Result MachineWorld::advance(const std::string& key, double seconds, bool clear)
     return yes("The basket is travelling.");
 }
 Result MachineWorld::pulse(const std::string& key, bool signalClear, bool spanClear) {
-    auto* s = mutableState(key);
-    if (!s || s->kind != "stormglass_lever") return no("This is not a Stormglass lever.");
-    auto* target = mutableState(s->link);
-    if (!target) return no("Link a nearby White connection or receiver first.");
-    State* connection = target->kind=="white_connection" ? target : nullptr;
-    if (connection) {
-        target=mutableState(connection->link);
-        if (!target) return no("The White connection is disconnected. Choose its receiver.");
-        if (connection->pulses==std::numeric_limits<int>::max()) return no("The connection's pulse counter is full.");
+    return request(key,{signalClear,true,true,spanClear,spanClear});
+}
+Result MachineWorld::request(const std::string& key, const SignalSpace& space) {
+    auto* s=mutableState(key);
+    if (!s || s->kind!="stormglass_lever") return no("This is not a Stormglass lever.");
+    return forward(*s,space);
+}
+Result MachineWorld::forward(State& from, const SignalSpace& space) {
+    auto* target=mutableState(from.link);
+    if (!target) return no("Signal output disconnected. Choose its receiver.");
+    auto* white=target->kind=="white_connection" ? target : nullptr;
+    if (white) {
+        target=mutableState(white->link);
+        if (!target) return no("White output disconnected. Choose its receiver.");
     }
-    if (!signalClear) return no("The signal connection is obstructed.");
-    if (target->kind=="blue_delay") {
-        if (!state(target->link)) return no("Blue output disconnected. Choose its receiver.");
-        if (target->pendingRequest) return no("Blue already holds one request. Wait, pause or cancel it.");
-        if (target->pulses==std::numeric_limits<int>::max()) return no("The delay's pulse counter is full.");
-    }
-    if (s->pulses == std::numeric_limits<int>::max()) return no("The lever's pulse counter is full.");
-    ++s->pulses; // A visible signal may be received by an unwound drum.
-    if (connection) ++connection->pulses; // no pending request: one synchronous delivery
+    if (!space.path) return no("Clear and support the signal path.");
+    if (target->kind=="blue_delay" && (!state(target->link) || target->pendingRequest)) return no("Blue is disconnected or already holds one request.");
+    if ((from.kind=="stormglass_lever" && from.pulses==std::numeric_limits<int>::max()) || (white && white->pulses==std::numeric_limits<int>::max()) ||
+        ((target->kind=="blue_delay" || target->kind=="green_junction") && target->pulses==std::numeric_limits<int>::max())) return no("The signal counter is full.");
+    if (from.kind=="stormglass_lever") ++from.pulses;
+    if (white) ++white->pulses;
     if (target->kind=="blue_delay") {
         ++target->pulses; target->pendingRequest=true; target->delayPaused=false; target->delaySeconds=0;
-        return yes("Blue holds one request. The receiver will pay its own work at release.");
+        return yes("Blue holds one request. Each receiver pays its own work at release.");
     }
-    if (target->kind == "lantern_lamp") return toggleLamp(target->key);
-    return start(target->key, spanClear);
+    if (target->kind=="green_junction") {
+        ++target->pulses;
+        // Ports cannot share a receiver or target another component. No loop,
+        // reconvergence, recursion or queued child request is possible.
+        auto first=space.firstLink ? start(target->link,space.firstReceiver) : no("First signal span blocked.");
+        auto second=space.secondLink ? start(target->secondLink,space.secondReceiver) : no("Second signal span blocked.");
+        return {first.ok || second.ok,static_cast<int>(first.ok)+static_cast<int>(second.ok),"First: "+first.message+" Second: "+second.message};
+    }
+    if (target->kind=="lantern_lamp") return toggleLamp(target->key);
+    return start(target->key,space.firstReceiver);
 }
 bool MachineWorld::signalReaches(const std::string& from, const std::string& target) const {
     const State* s=state(from);
     // The ordered lever -> White -> Blue -> receiver topology is acyclic.
-    for (int step=0; s && step<4; ++step) {
+    for (int step=0; s && step<5; ++step) {
         if (s->key==target) return true;
+        if (s->kind=="green_junction") return s->link==target || s->secondLink==target;
         if (s->kind!="stormglass_lever" && s->kind!="white_connection" && s->kind!="blue_delay") break;
         s=state(s->link);
     }
@@ -338,15 +367,18 @@ void MachineWorld::invalidateDelays(const std::string& changed) {
     }
 }
 Result MachineWorld::advanceDelay(const std::string& key, double seconds, bool signalClear, bool receiverClear) {
+    return advanceDelay(key,seconds,{signalClear,true,true,receiverClear,receiverClear});
+}
+Result MachineWorld::advanceDelay(const std::string& key, double seconds, const SignalSpace& space) {
     auto* s=mutableState(key);
     if (!s || s->kind!="blue_delay" || !s->pendingRequest) return no("Blue has no pending request.");
     if (!std::isfinite(seconds) || seconds<0) return no("Invalid elapsed time.");
-    if (s->delayPaused || !signalClear) return no("Blue is holding: paused or its output span/support is blocked.");
+    if (s->delayPaused || !space.path) return no("Blue is holding: paused or its output span/support is blocked.");
     if (!state(s->link)) return no("Blue output is disconnected.");
     s->delaySeconds=std::min(config_.delaySeconds,s->delaySeconds+seconds);
     if (s->delaySeconds<config_.delaySeconds) return yes("Blue holds one request during its visible delay.");
     s->pendingRequest=false; s->delayPaused=false; s->delaySeconds=0;
-    const auto result=start(s->link,receiverClear);
+    const auto result=forward(*s,space);
     return {result.ok,result.moved,"Blue released its request once. "+result.message};
 }
 Result MachineWorld::toggleLamp(const std::string& key) {
@@ -572,7 +604,7 @@ std::string MachineWorld::serialize() const {
     bool scoped=!identity_.profile.empty();
     for (const auto& entry : states_) if (entry.second.kind=="pressure_feeder") scoped=true;
     const bool experimental=identity_.profile=="living_frontier_wave1";
-    out << "{\"schema\":" << (experimental ? 3 : scoped ? 2 : 1);
+    out << "{\"schema\":" << (experimental ? saveSchema : scoped ? 2 : 1);
     if (scoped) {
         out << ",\"world_profile\":" << quoted(identity_.profile) << ",\"world_seed\":" << quoted(std::to_string(identity_.seed)) << ",\"sources\":";
         writeInventory(out,sources_);
@@ -605,7 +637,8 @@ std::string MachineWorld::serialize() const {
             out << ",\"escrow_fuel\":"; writeInventory(out,s.escrowFuel);
         }
         if (experimental) out << ",\"pending_request\":" << (s.pendingRequest ? "true" : "false")
-            << ",\"delay_paused\":" << (s.delayPaused ? "true" : "false") << ",\"delay_seconds\":" << s.delaySeconds;
+            << ",\"delay_paused\":" << (s.delayPaused ? "true" : "false") << ",\"delay_seconds\":" << s.delaySeconds
+            << ",\"second_link\":" << quoted(s.secondLink) << ",\"second_span_length\":" << s.secondSpanLength;
         out << '}';
     }
     out << "]}";
@@ -614,7 +647,7 @@ std::string MachineWorld::serialize() const {
 
 std::map<std::string, State> MachineWorld::parse(const std::string& source, std::map<std::string,int>* stocks) const {
     const auto document = json::parse(source);
-    const int schema=integer(document->get("schema"),1,3);
+    const int schema=integer(document->get("schema"),1,saveSchema);
     if (schema>=3 && identity_.profile!="living_frontier_wave1") throw std::runtime_error("contraptions: experimental schema outside its world");
     std::map<std::string,int> restoredStocks;
     if (schema==1) {
@@ -673,8 +706,13 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
         for (const auto& item : s.ferrous) if (!config_.ferrousItems.count(item.first)) throw std::runtime_error("contraptions: nonferrous magnetic output");
         for (const auto& item : s.remainder) if (config_.ferrousItems.count(item.first)) throw std::runtime_error("contraptions: ferrous ordinary output");
         if (s.kind != "cargo_winch" && s.kind != "ventlung_bellows" && s.kind!="pressure_feeder" && s.energy != 0) throw std::runtime_error("contraptions: invalid stored energy");
-        if (s.kind != "stormglass_lever" && s.kind != "white_connection" && s.kind != "blue_delay" && s.pulses != 0) throw std::runtime_error("contraptions: invalid signal counter");
-        if ((s.kind == "white_connection" || s.kind == "blue_delay") && identity_.profile != "living_frontier_wave1") throw std::runtime_error("contraptions: coloured component outside its experiment");
+        if (s.kind != "stormglass_lever" && s.kind != "white_connection" && s.kind != "blue_delay" && s.kind != "green_junction" && s.pulses != 0) throw std::runtime_error("contraptions: invalid signal counter");
+        if ((s.kind == "white_connection" || s.kind == "blue_delay" || s.kind == "green_junction") && identity_.profile != "living_frontier_wave1") throw std::runtime_error("contraptions: coloured component outside its experiment");
+        if (schema>=4) {
+            s.secondLink=record->get("second_link").asString();
+            s.secondSpanLength=finite(record->get("second_span_length"),0,config_.signalRange);
+        } else if (s.kind=="green_junction" || record->find("second_link") || record->find("second_span_length")) throw std::runtime_error("contraptions: Green needs its complete port schema");
+        if (s.kind!="green_junction" && (!s.secondLink.empty() || s.secondSpanLength!=0)) throw std::runtime_error("contraptions: only Green has a second signal port");
         if (schema>=3) {
             s.pendingRequest=record->get("pending_request").asBool();
             s.delayPaused=record->get("delay_paused").asBool();
@@ -728,6 +766,14 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
     std::set<std::string> usedLandings;
     for (const auto& entry : result) {
         const State& s = entry.second;
+        if (s.secondLink.empty()) {
+            if (s.secondSpanLength!=0) throw std::runtime_error("contraptions: disconnected second port has a span");
+        } else {
+            const auto t=result.find(s.secondLink);
+            if (s.kind!="green_junction" || s.secondLink==s.link || t==result.end() ||
+                (t->second.kind!="cargo_winch" && t->second.kind!="pressure_feeder") || distance(s,t->second)>config_.signalRange ||
+                std::abs(distance(s,t->second)-s.secondSpanLength)>.000001) throw std::runtime_error("contraptions: invalid or duplicate second receiver");
+        }
         if (s.link.empty()) {
             if (s.spanLength != 0 || s.moving || s.atLanding) throw std::runtime_error("contraptions: unlinked active basket");
             continue;
@@ -741,12 +787,14 @@ std::map<std::string, State> MachineWorld::parse(const std::string& source, std:
             if (t.kind != "winch_landing" || length <= 0 || length > config_.maximumSpan || !usedLandings.insert(t.key).second)
                 throw std::runtime_error("contraptions: invalid or shared landing");
         } else if (s.kind == "stormglass_lever") {
-            if ((t.kind != "cargo_winch" && t.kind != "lantern_lamp" && t.kind!="pressure_feeder" && t.kind!="white_connection" && t.kind!="blue_delay") || length > config_.signalRange)
+            if ((t.kind != "cargo_winch" && t.kind != "lantern_lamp" && t.kind!="pressure_feeder" && t.kind!="white_connection" && t.kind!="blue_delay" && t.kind!="green_junction") || length > config_.signalRange)
                 throw std::runtime_error("contraptions: invalid signal receiver");
         } else if (s.kind == "white_connection") {
-            if ((t.kind != "cargo_winch" && t.kind!="blue_delay") || length > config_.signalRange) throw std::runtime_error("contraptions: invalid White receiver");
+            if ((t.kind != "cargo_winch" && t.kind!="pressure_feeder" && t.kind!="blue_delay" && t.kind!="green_junction") || length > config_.signalRange) throw std::runtime_error("contraptions: invalid White receiver");
         } else if (s.kind == "blue_delay") {
-            if (t.kind != "cargo_winch" || length > config_.signalRange) throw std::runtime_error("contraptions: invalid Blue receiver");
+            if ((t.kind != "cargo_winch" && t.kind!="pressure_feeder" && t.kind!="green_junction") || length > config_.signalRange) throw std::runtime_error("contraptions: invalid Blue receiver");
+        } else if (s.kind == "green_junction") {
+            if ((t.kind!="cargo_winch" && t.kind!="pressure_feeder") || length>config_.signalRange || s.link==s.secondLink) throw std::runtime_error("contraptions: invalid or duplicate Green receiver");
         } else throw std::runtime_error("contraptions: this fixture cannot send links");
     }
     if (stocks) stocks->swap(restoredStocks);

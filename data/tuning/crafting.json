@@ -1800,6 +1800,20 @@
       "design_purpose": "One Blue lot pays for eight inexpensive delays. Each holds one signal for three active nearby seconds, never supplies energy and has explicit pause/cancel controls. Ordinary half-frame refunds apply. Blue carries 128 units so a whole costly Catalyst recipe can fit later."
     },
     {
+      "id": "assemble_green_junction",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Green Junction Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": { "green_resin": 2, "wood": 2 },
+      "outputs": { "green_junction_kit": 1 },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": ["construction"],
+      "design_purpose": "Two resin and two wood buy an inexpensive two-port junction. One incoming request attempts each distinct cargo drum or pressure feeder once; each receiver pays its own drive and supplies. A blocked branch does not spend the other branch's work. Fixed ordered signal links exclude loops and reconvergence."
+    },
+    {
       "id": "assemble_cargo_winch",
       "display_name": "Thrumroot Cargo Winch Kit",
       "station": "workbench",

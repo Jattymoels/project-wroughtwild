@@ -1,5 +1,15 @@
 # Construction System
 
+## Living Frontier Green junction — LF-2B, 8 September 2026
+
+Two Green Resin plus two wood buy a workbench kit with two visible selected
+ports. A lever → optional White → optional Blue → optional Green route reaches
+two distinct drums/feeders at most once each. Every receiver checks its own
+space and pays its own drive and ingredients. Green cannot link to another
+signal component; duplicate destinations refuse, including on restore.
+Experimental source and machine payloads are now 4, preserving versions 1–3.
+[Paid workshop and migration evidence](../prototype/living-frontier-wave2-2026-09-08.md).
+
 ## Living Frontier Blue delay — LF-2A, 8 September 2026
 
 The opt-in workbench makes Blue Delay Kits from two harvested Blue Flakes and

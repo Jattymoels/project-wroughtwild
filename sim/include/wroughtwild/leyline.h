@@ -8,7 +8,7 @@
 
 namespace wroughtwild::leyline {
 inline constexpr const char* profile = "living_frontier_wave1";
-inline constexpr int saveVersion = 3;
+inline constexpr int saveVersion = 4;
 struct Source {
     std::string id, label, material, rareItem;
     int homeIndex = 0, lots = 8, units = 16, rarePer10000 = 0;

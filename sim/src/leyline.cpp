@@ -50,7 +50,7 @@ Config Config::load(const std::string& path) {
         if (s.stages.empty() || s.stages.size() > 16 || (s.rareItem.empty() && s.rarePer10000)) throw std::runtime_error("Invalid leyline work/rare definition.");
         c.sources.push_back(s);
     }
-    if (c.sources.empty() || c.sources.size() > 3) throw std::runtime_error("LF-2A permits Red, White and Blue hosts only.");
+    if (c.sources.empty() || c.sources.size() > 4) throw std::runtime_error("LF-2 permits four coloured hosts only.");
     return c;
 }
 World::World(Config config, uint64_t seed) : config_(std::move(config)), seed_(seed) {

@@ -1,5 +1,10 @@
 # Crafting and Skills
 
+**LF-2B:** a Green lot supplies 16 Green Resin. Two resin plus two wood make one
+ordinary Green Junction Kit, with the same workbench, era, zero XP/fuel and
+half-frame refund policy as White and Blue. Resin carries 128; its optional
+fixed Preserving find never gates the part. Receivers own all work and supplies.
+
 **LF-2A (8 September 2026):** two Blue Flakes and two wood make one Blue Delay
 Kit at the ordinary workbench in the Living Frontier experiment, with no added
 fuel/XP/skill requirement. One 16-unit Blue lot funds eight parts; Blue carries

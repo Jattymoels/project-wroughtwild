@@ -13,6 +13,14 @@
 #include "wroughtwild/economy.h"
 
 namespace wroughtwild::contraptions {
+inline constexpr int saveSchema = 4;
+
+// Physical facts for the selected ordered path and at most two leaf ports.
+// These are not energy or ownership and never persist as queued work.
+struct SignalSpace {
+    bool path = true, firstLink = true, secondLink = true;
+    bool firstReceiver = true, secondReceiver = true;
+};
 
 struct Config {
     int maximumMachines = 128;
@@ -64,6 +72,8 @@ struct State {
     int quarterTurns = 0;
     std::string link;
     double spanLength = 0;
+    std::string secondLink;
+    double secondSpanLength = 0;
     int energy = 0;
     bool lampOn = true;
     bool moving = false;
@@ -121,11 +131,14 @@ public:
     // saved positions, distance and bounded receiver topology as well. LF-1
     // additionally permits lever -> one White connection -> cargo drum.
     Result link(const std::string& source, const std::string& target, bool clear);
+    Result linkSecond(const std::string& source, const std::string& target, bool clear);
     Result wind(const std::string& key);
     Result start(const std::string& key, bool clear);
     Result advance(const std::string& key, double seconds, bool clear);
     Result pulse(const std::string& key, bool signalClear, bool spanClear);
+    Result request(const std::string& key, const SignalSpace& space);
     Result advanceDelay(const std::string& key, double seconds, bool signalClear, bool receiverClear);
+    Result advanceDelay(const std::string& key, double seconds, const SignalSpace& space);
     Result toggleLamp(const std::string& key);
     Result prime(const std::string& key);
     // Caller first validates a nearby ResourceNode with a current impact
@@ -165,6 +178,7 @@ private:
     State* cargoOwner(const std::string& key);
     bool signalReaches(const std::string& from, const std::string& target) const;
     void invalidateDelays(const std::string& changed);
+    Result forward(State& from, const SignalSpace& space);
     bool itemAllowed(const std::string& item) const;
     const PressureSource* sourceDefinition(const std::string& id) const;
     bool feederItem(const std::string& item) const;

@@ -130,3 +130,69 @@ No test materials are granted. Travel and work are accelerated and hostile AI
 is held by the harness; ordinary discovery, timing feel and construction
 visibility remain owner playtests. The full engine pipeline includes the new
 journey and fresh restart; test saves stay isolated under `build/lf2`.
+
+LF-2A commit: `4718317`, pushed successfully to `origin/main`.
+The complete engine pipeline also passed through its final main-scene smoke
+run (`build/lf2/full-engine-a.log`), including every Foundry identity suite.
+
+## LF-2B — selected contract before implementation
+
+Green Resin uses home margin 3 (+8 m X), eight 16-unit lots, four safe manual
+steps, 128 carried units and the same capped 600 active-second formation.
+A fixed lot has a 4% bonus Faint Preserving opportunity. Its ordinary workbench
+kit costs 2 Resin + 2 wood, zero fuel/XP/skill gate, with half-frame refunds.
+
+Green has exactly two selected ports to distinct existing cargo drums or
+pressure feeders. Each branch independently checks its signal span and receiver;
+one refusal does not consume that receiver's winding, clay or fuel or undo a
+successful other branch. Green copies a request, never ownership or energy.
+The paid demonstration uses the acquired existing winch plus a newly acquired
+Ventlung/Thrumroot feeder and the existing eight-clay/one-fuel brick firing.
+
+The fixed grammar is lever → optional White → optional Blue → optional Green
+→ receivers. A Green cannot target any signal component; Blue cannot target
+Blue/White/lever; White cannot target White/lever. No path exceeds four signal
+edges. Duplicate Green destinations refuse at linking and save validation, so
+neither loops nor reconvergence can duplicate a request. Each new lever press
+remains a new request. Green stores no pending work. A held Blue request still
+cancels if its selected Green ports are rewired or removed before release.
+
+Source payload **4** introduces only Green during migrations from 1/2/3.
+Experimental machine payload **4** adds the second link/span, with empty values
+for published earlier machines. Existing ledgers, partial work, claims, winding,
+cargo and pending Blue state are preserved exactly. No ordinary world changes.
+
+### LF-2B result and verification
+
+Implemented Green extraction, affordable paid placement, two visible cables,
+separate port selection/disconnection, independent physical branch inspection
+and native receiver payment. The fourth approach exposed an infinite-height
+cosmetic marker sample; markers now use the existing terrain query and skip
+voids. Fixed anchors and source ledgers never move.
+
+Native source checks: **213,482**, Wave 2 checks: **427**, all passing. The paid
+rendered journey passed **129** checks and its fresh process passed **9**.
+It loaded the actual published schema-3 paused Blue checkpoint before continuing
+the paid A completion, gathered Green plus finite Ventlung/Thrumroot/iron/timber,
+made and placed both kits, attached the owned forge, and linked both ports.
+A physical first-span wall left the drum's winding untouched while the feeder
+spent eight clay, one wood and one hand stroke to make four bricks. A later
+delayed request operated both receivers; cargo and eight total bricks had real
+owners across restart. Native corruption, loops, duplicate ports, cancellation
+and schemas 1–3 migration also passed. LF1-R1 again passed **154 + 64**.
+
+Reproduce B: after A, harvest a Green lot and craft the two-resin/two-wood kit.
+Gather the existing feeder recipe's rare cores and ordinary frame ingredients;
+place it within eight metres of your built forge and attach that forge. Point
+Blue at Green; choose the drum and feeder as Green's distinct outputs. Load clay
+and ordinary wood fuel into the feeder and wind it separately. Load/wind the
+drum. Strike the lever: after three seconds each receiver attempts its own work.
+Keep signal cables, basket route, feeder/forge connection and feet clear.
+
+Commands: `tools/living_frontier_wave2_checks.ps1 -Native`,
+`-Green -Rendered -GreenRestore`, `-Regression`, and
+`tools/living_frontier_checks.ps1 -Repair`. Green source, port panel and workshop
+captures are in `captures/lf2/`; the two-port panel was visually inspected.
+Travel/work acceleration and held hostile AI remain harness limitations.
+The seven affected ordinary-world regressions passed again (52/85/60/148/175/
+21/319 checks). Blue's paid journey and restart passed **182 + 26** after Green.

@@ -5,18 +5,23 @@ Dictionary machine_result(const wroughtwild::contraptions::Result& r) {
     Dictionary d; d["ok"]=r.ok; d["moved"]=r.moved; d["message"]=to_godot(r.message); return d;
 }
 Dictionary machine_unavailable() { return machine_result({false,0,"Contraptions wait outside trials."}); }
+wroughtwild::contraptions::SignalSpace machine_space(const Dictionary& d) {
+    return {bool(d.get("path",false)),bool(d.get("first_link",false)),bool(d.get("second_link",false)),
+            bool(d.get("first_receiver",false)),bool(d.get("second_receiver",false))};
+}
 const char* machine_kinds[] = {"lantern_lamp","cargo_winch","winch_landing","stormglass_lever","magnetic_sorter","ventlung_bellows","pressure_feeder"};
 }
 
 PackedStringArray WroughtwildSim::contraption_kinds() const {
     PackedStringArray ids; for (auto kind : machine_kinds) ids.push_back(kind);
-    if (world_profile_==wroughtwild::leyline::profile) { ids.push_back("white_connection"); ids.push_back("blue_delay"); }
+    if (world_profile_==wroughtwild::leyline::profile) { ids.push_back("white_connection"); ids.push_back("blue_delay"); ids.push_back("green_junction"); }
     return ids;
 }
 String WroughtwildSim::contraption_kind_for_kit(const String& kit) const {
     for (auto kind : machine_kinds) if (kit==String(kind)+"_kit") return kind;
     if (world_profile_==wroughtwild::leyline::profile && kit=="white_connection_kit") return "white_connection";
     if (world_profile_==wroughtwild::leyline::profile && kit=="blue_delay_kit") return "blue_delay";
+    if (world_profile_==wroughtwild::leyline::profile && kit=="green_junction_kit") return "green_junction";
     return {};
 }
 bool WroughtwildSim::contraption_place(const String& kind, const String& key, const Vector3& at, int rotation) {
@@ -66,6 +71,7 @@ Dictionary WroughtwildSim::contraption_state(const String& key) const {
     d["position"]=Vector3(s->position[0],s->position[1],s->position[2]);
     d["quarter_turns"]=s->quarterTurns; d["link"]=to_godot(s->link);
     d["span_length"]=s->spanLength; d["energy"]=s->energy; d["lamp_on"]=s->lampOn;
+    d["second_link"]=to_godot(s->secondLink); d["second_span_length"]=s->secondSpanLength;
     d["moving"]=s->moving; d["at_landing"]=s->atLanding; d["progress"]=s->progress;
     d["completed_trips"]=s->completedTrips; d["pulses"]=s->pulses;
     d["pending_request"]=s->pendingRequest; d["delay_paused"]=s->delayPaused; d["delay_seconds"]=s->delaySeconds;
@@ -121,6 +127,15 @@ Dictionary WroughtwildSim::contraption_feeder_inspect(const String& key,bool phy
 }
 Dictionary WroughtwildSim::contraption_link(const String& key,const String& target,bool clear) {
     return contraptions_ && !trial_ ? machine_result(contraptions_->link(to_std(key),to_std(target),clear)) : machine_unavailable();
+}
+Dictionary WroughtwildSim::contraption_link_second(const String& key,const String& target,bool clear) {
+    return contraptions_ && !trial_ ? machine_result(contraptions_->linkSecond(to_std(key),to_std(target),clear)) : machine_unavailable();
+}
+Dictionary WroughtwildSim::contraption_request(const String& key,const Dictionary& space) {
+    return contraptions_ && !trial_ ? machine_result(contraptions_->request(to_std(key),machine_space(space))) : machine_unavailable();
+}
+Dictionary WroughtwildSim::contraption_request_tick(const String& key,double seconds,const Dictionary& space) {
+    return contraptions_ && !trial_ ? machine_result(contraptions_->advanceDelay(to_std(key),seconds,machine_space(space))) : machine_unavailable();
 }
 Dictionary WroughtwildSim::contraption_action(const String& key,const String& action,bool clear,bool other_clear,double distance) {
     if (!contraptions_ || trial_) return machine_unavailable();

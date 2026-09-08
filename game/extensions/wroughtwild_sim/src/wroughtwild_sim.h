@@ -650,6 +650,9 @@ public:
     Dictionary contraption_config() const;
     Dictionary contraption_feeder_inspect(const String& key, bool physical_ready) const;
     Dictionary contraption_link(const String& key, const String& target, bool clear);
+    Dictionary contraption_link_second(const String& key, const String& target, bool clear);
+    Dictionary contraption_request(const String& key, const Dictionary& space);
+    Dictionary contraption_request_tick(const String& key, double seconds, const Dictionary& space);
     Dictionary contraption_action(const String& key, const String& action, bool clear=true, bool other_clear=true, double distance=0);
     Dictionary contraption_tick(const String& key, double seconds, bool clear);
     Dictionary contraption_delay_tick(const String& key, double seconds, bool clear, bool receiver_clear);

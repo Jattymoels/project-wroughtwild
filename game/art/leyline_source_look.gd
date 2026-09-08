@@ -8,6 +8,7 @@ extends Resource
 @export var red := Color("e56937")
 @export var white := Color("d9e6dd")
 @export var blue := Color("74b3dc")
+@export var green := Color("77b987")
 @export var casing := Color("343a37")
 @export var emission_energy := 0.55
 @export var clue_spacing_m := 8.0

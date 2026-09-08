@@ -29,7 +29,9 @@ static func build(root: Node3D, ground: Terrain) -> void:
 		var distance := spawn.distance_to(source.position)
 		for i in range(1, int(distance / LOOK.clue_spacing_m)):
 			var at := spawn.lerp(source.position, float(i) * LOOK.clue_spacing_m / distance)
-			at.y = ground.rendered_height(at.x, at.z, at.y) + 0.035
+			at = StrangeSites._ground(ground,at.x,at.z)
+			if not at.is_finite(): continue
+			at.y += 0.035
 			var clue := source._box(group, Vector3(.08,.025,LOOK.clue_length_m), at, source._colour)
 			clue.look_at(Vector3(source.position.x, at.y, source.position.z), Vector3.UP)
 
@@ -41,7 +43,7 @@ func state() -> Dictionary:
 func _ready() -> void:
 	add_to_group("leyline_sources")
 	var record := state()
-	_colour = {"red_salt":LOOK.red,"white_mineral":LOOK.white,"blue_flake":LOOK.blue}.get(record.get("material",""),LOOK.white)
+	_colour = {"red_salt":LOOK.red,"white_mineral":LOOK.white,"blue_flake":LOOK.blue,"green_resin":LOOK.green}.get(record.get("material",""),LOOK.white)
 	var collision := CollisionShape3D.new()
 	var box := BoxShape3D.new()
 	box.size = LOOK.bounds
@@ -124,7 +126,7 @@ func _open(message := "") -> void:
 		rows.append({"text":"Forming · %.0f / %.0f seconds of overworld activity. Return after exploring or building." % [s.formation,s.formation_seconds],"button":"Forming","enabled":false})
 	for item: String in s.claim:
 		rows.append({"text":"%d %s waiting in the host." % [s.claim[item],Hud.pretty(item)],"button":"Collect " + Hud.pretty(item),"enabled":ready,"callback":_collect.bind(item)})
-	var uses := {"red_salt":"Red Salt fires bricks: 8 clay + 2 salt → 4 bricks at your forge.","white_mineral":"Workbench: 2 White Mineral + 2 wood → 1 White Connection Kit.","blue_flake":"Workbench: 2 Blue Flakes + 2 wood → 1 Blue Delay Kit."}
+	var uses := {"red_salt":"Red Salt fires bricks: 8 clay + 2 salt → 4 bricks at your forge.","white_mineral":"Workbench: 2 White Mineral + 2 wood → 1 White Connection Kit.","blue_flake":"Workbench: 2 Blue Flakes + 2 wood → 1 Blue Delay Kit.","green_resin":"Workbench: 2 Green Resin + 2 wood → 1 Green Junction Kit."}
 	var detail := "Red Salt replaces the brick variant's fuel only. Forge Faint Ember: 96 salt + 4 iron ingots + 8 charcoal, immediately at a basic forge (Blacksmithing 1). Salt supplies no mechanical winding." if s.material=="red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding. Blue holds one request for three active nearby seconds, with Pause, Resume and Cancel controls."
 	if not String(s.rare_item).is_empty(): detail += " Each fixed lot has a %.1f%% bonus %s opportunity, independent of work or collection splits." % [float(s.rare_per_10000)/100.0,Hud.pretty(String(s.rare_item))]
 	rows.append({"text":uses.get(s.material,""),"button":"Material use","enabled":false,"details":detail})

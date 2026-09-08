@@ -9,7 +9,7 @@ const LABELS := {
 	"lantern_lamp": "Lanternheart lamp", "cargo_winch": "Thrumroot cargo drum",
 	"winch_landing": "Fixed cargo landing", "stormglass_lever": "Stormglass lever",
 	"magnetic_sorter": "Pullstone sorting chute", "ventlung_bellows": "Ventlung bellows",
-	"pressure_feeder": "Pressure feeder", "white_connection": "White connection", "blue_delay": "Blue delay"
+	"pressure_feeder": "Pressure feeder", "white_connection": "White connection", "blue_delay": "Blue delay", "green_junction": "Green junction"
 }
 
 var machine_key := ""
@@ -18,6 +18,7 @@ var sim: WroughtwildSim
 var _visual: Node3D
 var _basket: Node3D
 var _cable: MeshInstance3D
+var _branch_cable: MeshInstance3D
 var _pulse: MeshInstance3D
 var _receiver: MeshInstance3D
 var _panel: ContraptionPanel
@@ -46,7 +47,7 @@ static func bounds_for(fixture_kind: String) -> Vector3:
 		"magnetic_sorter": return LOOK.sorter_bounds
 		"ventlung_bellows": return LOOK.bellows_bounds
 		"stormglass_lever": return LOOK.lever_bounds
-		"white_connection", "blue_delay": return LOOK.white_connection_bounds
+		"white_connection", "blue_delay", "green_junction": return LOOK.white_connection_bounds
 		"pressure_feeder": return LOOK.feeder_bounds
 	return LOOK.lamp_bounds
 
@@ -97,7 +98,7 @@ func _ready() -> void:
 	if kind == "cargo_winch":
 		_basket = StrangeResourceArt.fixture_visual("cargo_basket")
 		add_child(_basket)
-	if kind in ["cargo_winch", "stormglass_lever", "white_connection", "blue_delay"]:
+	if kind in ["cargo_winch", "stormglass_lever", "white_connection", "blue_delay", "green_junction"]:
 		_cable = MeshInstance3D.new()
 		var cylinder := CylinderMesh.new()
 		cylinder.top_radius = 1.0
@@ -105,15 +106,17 @@ func _ready() -> void:
 		cylinder.height = 1.0
 		cylinder.radial_segments = 6
 		_cable.mesh = cylinder
-		_cable.material_override = _material(LOOK.blue_delay_colour if kind=="blue_delay" else LOOK.white_connection_colour if kind == "white_connection" else LOOK.cable_colour)
+		_cable.material_override = _material(LOOK.green_junction_colour if kind=="green_junction" else LOOK.blue_delay_colour if kind=="blue_delay" else LOOK.white_connection_colour if kind == "white_connection" else LOOK.cable_colour)
 		add_child(_cable)
 		_pulse = _sphere(LOOK.pulse_radius_m, LOOK.pulse_colour)
 		add_child(_pulse)
 		_pulse.hide()
-	if kind in ["cargo_winch", "lantern_lamp", "pressure_feeder", "white_connection", "blue_delay"]:
+	if kind in ["cargo_winch", "lantern_lamp", "pressure_feeder", "white_connection", "blue_delay", "green_junction"]:
 		_receiver = _sphere(LOOK.receiver_radius_m, LOOK.receiver_colour)
 		_receiver.position = Vector3(0, bounds_for(kind).y + 0.04, 0)
 		add_child(_receiver)
+	if kind=="green_junction":
+		_branch_cable = _connection_mesh(LOOK.green_junction_colour)
 	if kind=="blue_delay":
 		_delay_label = Label3D.new()
 		_delay_label.position.y = bounds_for(kind).y + .3
@@ -187,8 +190,7 @@ func _physics_process(delta: float) -> void:
 		if get_tree().paused or (player is WroughtwildPlayer and player.combat.life<=0): return
 		var current: Dictionary = sim.contraption_state(machine_key)
 		if bool(current.get("pending_request",false)):
-			var target := find_site(get_tree(),String(current.link))
-			var result := sim.contraption_delay_tick(machine_key,delta,span_clear(),target!=null and target.span_clear())
+			var result := sim.contraption_request_tick(machine_key,delta,signal_space())
 			if not sim.contraption_state(machine_key).pending_request and _panel!=null: _panel.refresh_if_open(String(result.message))
 		_delay_refresh_left -= delta
 	if kind == "cargo_winch":
@@ -254,6 +256,9 @@ func refresh_from_sim(feeder_geometry: Dictionary = {}) -> void:
 		if _delay_refresh_left<=0:
 			_delay_refresh_left = LOOK.signal_panel_refresh_seconds
 			if _panel!=null: _panel.refresh_if_open()
+	if _branch_cable!=null:
+		var second := find_site(get_tree(),String(record.get("second_link","")))
+		_show_connection(_branch_cable,second.cable_anchor() if second!=null else Vector3.INF,cable_anchor(),LOOK.cable_radius_m)
 	_refresh_span(record)
 	_last_state = record
 
@@ -315,7 +320,7 @@ func supported() -> bool:
 
 func link_clear(target: ContraptionSite) -> bool:
 	if target == null or not is_inside_tree(): return false
-	if kind in ["white_connection","blue_delay"] or target.kind in ["white_connection","blue_delay"]:
+	if kind in ["white_connection","blue_delay","green_junction"] or target.kind in ["white_connection","blue_delay","green_junction"]:
 		if not supported() or not target.supported(): return false
 	if kind == "cargo_winch":
 		if not supported() or not target.supported(): return false
@@ -340,6 +345,38 @@ func span_clear() -> bool:
 	return link_clear(find_site(get_tree(), String(record.get("link", ""))))
 
 
+func signal_space() -> Dictionary:
+	# Spatial facts for the native fixed grammar, never energy or item authority.
+	# A lever reaching Blue has delivered its request; Blue checks its output later.
+	var result := {"path":true,"first_link":true,"second_link":true,"first_receiver":false,"second_receiver":false}
+	var current := self
+	for edge in 4:
+		var state: Dictionary = sim.contraption_state(current.machine_key)
+		if current.kind=="green_junction":
+			for port in ["first","second"]:
+				var target := find_site(get_tree(),String(state.get("link" if port=="first" else "second_link","")))
+				result[port+"_link"] = current.link_clear(target)
+				result[port+"_receiver"] = _receiver_clear(target)
+			return result
+		var next := find_site(get_tree(),String(state.link))
+		result.path = result.path and current.link_clear(next)
+		if next==null: return result
+		if next.kind=="blue_delay" and kind!="blue_delay": return result
+		if next.kind not in ["white_connection","green_junction"]:
+			result.first_receiver = _receiver_clear(next)
+			return result
+		current = next
+	result.path = false
+	return result
+
+
+func _receiver_clear(target: ContraptionSite) -> bool:
+	if target==null: return false
+	if target.kind=="cargo_winch": return target.span_clear()
+	if target.kind=="pressure_feeder": return bool(target.feeder_status().ready)
+	return target.kind=="lantern_lamp"
+
+
 func perform(action: String) -> Dictionary:
 	var before: Dictionary = sim.contraption_state(machine_key)
 	var clear := true
@@ -353,16 +390,7 @@ func perform(action: String) -> Dictionary:
 		_feeder_panel_refresh_left = 0
 		refresh_from_sim(feeder_geometry)
 		return {"ok":false,"message":String(feeder_geometry.message)}
-	if action == "pulse":
-		clear = span_clear()
-		var record: Dictionary = sim.contraption_state(machine_key)
-		var receiver := find_site(get_tree(), String(record.get("link", "")))
-		if receiver != null and receiver.kind == "white_connection":
-			clear = clear and receiver.span_clear()
-			var relay: Dictionary = sim.contraption_state(receiver.machine_key)
-			receiver = find_site(get_tree(), String(relay.get("link", "")))
-		other_clear = receiver != null and (receiver.span_clear() if receiver.kind=="cargo_winch" else bool(receiver.feeder_status().ready) if receiver.kind=="pressure_feeder" else true)
-	var result: Dictionary = sim.contraption_action(machine_key, action, clear, other_clear, 0.0)
+	var result: Dictionary = sim.contraption_request(machine_key,signal_space()) if action=="pulse" else sim.contraption_action(machine_key, action, clear, other_clear, 0.0)
 	if bool(result.get("ok", false)) and action in ["wind", "prime", "start", "sort","charge"]:
 		SOUND.play(self, "tick", LOOK.work_volume_db)
 	if action == "sort" and bool(result.get("ok", false)):
@@ -476,10 +504,10 @@ func _connection_mesh(colour: Color) -> MeshInstance3D:
 	return node
 
 
-func _show_connection(node: MeshInstance3D, target: Vector3) -> void:
+func _show_connection(node: MeshInstance3D, target: Vector3, origin: Vector3 = Vector3.INF, radius: float = LOOK.feeder_link_radius_m) -> void:
 	node.visible=target.is_finite()
 	if not node.visible:return
-	var from:=global_position+Vector3.UP*LOOK.feeder_link_height_m
+	var from:=global_position+Vector3.UP*LOOK.feeder_link_height_m if not origin.is_finite() else origin
 	var delta:=target-from
 	if delta.length()<.01:
 		node.hide()
@@ -488,7 +516,7 @@ func _show_connection(node: MeshInstance3D, target: Vector3) -> void:
 	var across:=Vector3.UP.cross(up).normalized()
 	if across.length_squared()<.1:across=Vector3.RIGHT
 	var depth:=across.cross(up).normalized()
-	node.global_transform=Transform3D(Basis(across*LOOK.feeder_link_radius_m,up*delta.length(),depth*LOOK.feeder_link_radius_m),(from+target)*.5)
+	node.global_transform=Transform3D(Basis(across*radius,up*delta.length(),depth*radius),(from+target)*.5)
 
 
 func _refresh_feeder(record: Dictionary, geometry: Dictionary = {}) -> void:

@@ -40,6 +40,14 @@ extends Resource
 @export var white_connection_bounds := Vector3(.65, 1.18, .55)
 @export var white_connection_colour := Color("e6e1bd")
 @export var blue_delay_colour := Color("74b3dc")
+@export var green_junction_colour := Color("77b987")
+## Two exposed resin branches identify the two independent output ports.
+@export var green_junction_parts: Array[Dictionary] = [
+	{"size":Vector3(.65,.15,.55),"at":Vector3(0,.075,0),"colour":Color("756048")},
+	{"size":Vector3(.15,.85,.15),"at":Vector3(0,.55,0),"colour":Color("756048")},
+	{"size":Vector3(.5,.14,.3),"at":Vector3(0,.84,0),"colour":Color("77b987")},
+	{"size":Vector3(.14,.28,.3),"at":Vector3(-.18,1.03,0),"colour":Color("77b987")},
+	{"size":Vector3(.14,.28,.3),"at":Vector3(.18,1.03,0),"colour":Color("77b987")}]
 @export var signal_panel_refresh_seconds := 0.1 # Keep a held request's countdown readable in its normal panel.
 @export var blue_delay_parts: Array[Dictionary] = [
 	{"size":Vector3(.65,.15,.55),"at":Vector3(0,.075,0),"colour":Color("756048")},
