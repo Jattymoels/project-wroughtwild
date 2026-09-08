@@ -8,7 +8,16 @@ queue; the [numbered waves](roadmap-waves.md) remain a historical record.
 Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
-## Current priority — INT-08B portable Windows build
+## Current priority — wolf and woodland art studies
+
+Owner continuation, 8 September: establish one appealing wolf and one small
+woodland/river scene while playtesting waits. **In progress:**
+[leyline art studies](leyline-art-studies-2026-09-08.md). Preserve ordinary animal
+ancestry and the impact-borne currents/glowing scars shared with the land. The
+first deliverable is an isolated shape/composition checkpoint; final art approval,
+runtime adoption and any external asset service remain separate.
+
+## Previous slice — INT-08B portable Windows build
 
 The owner's “Continue” on 8 September selects
 [INT-08B](portable-build-2026-09-08.md) after INT-08A. **Implemented, review

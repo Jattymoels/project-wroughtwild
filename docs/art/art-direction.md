@@ -1,5 +1,14 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+**Owner visual review, 8 September 2026:** the moth remains liked; the mammal
+meshes are rejected as awkward/rounded compared with the selected concepts.
+The [wolf and woodland studies](../prototype/leyline-art-studies-2026-09-08.md)
+establish a stronger visual standard before wider production. Recognisable
+ordinary animals must retain impact-borne leyline currents and glowing scars,
+sharing the same transformation language as the landscape. The first checkpoint
+is isolated shape/composition review, not a replacement of the game art or a
+selection of an external asset service.
+
 **Owner reference and concept direction, 7 September 2026:** the
 [visual reference library](references/README.md) preserves two supplied landscape
 images and their intended qualities: gloomy river woodland, layered vegetation

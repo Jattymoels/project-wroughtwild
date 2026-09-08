@@ -1,0 +1,42 @@
+{
+  "reopened_scenes": 2,
+  "checks_passed": 8,
+  "repeat_pixels": [
+    {
+      "name": "clay-front.png",
+      "max_channel_difference": 0.0,
+      "mean_channel_difference": 0.0,
+      "changed_channels": 0
+    },
+    {
+      "name": "clay-head.png",
+      "max_channel_difference": 0.0,
+      "mean_channel_difference": 0.0,
+      "changed_channels": 0
+    },
+    {
+      "name": "clay-rear.png",
+      "max_channel_difference": 0.0,
+      "mean_channel_difference": 0.0,
+      "changed_channels": 0
+    },
+    {
+      "name": "clay-side.png",
+      "max_channel_difference": 0.0,
+      "mean_channel_difference": 0.0,
+      "changed_channels": 0
+    },
+    {
+      "name": "clay-three-quarter.png",
+      "max_channel_difference": 0.0,
+      "mean_channel_difference": 0.0,
+      "changed_channels": 0
+    },
+    {
+      "name": "material-three-quarter.png",
+      "max_channel_difference": 0.0,
+      "mean_channel_difference": 0.0,
+      "changed_channels": 0
+    }
+  ]
+}

@@ -35,6 +35,13 @@ influences and further combinations are not specified by this direction.
 
 ## What happened
 
+**Owner art clarification, 8 September 2026:** creatures should visibly share the
+world's leyline currents and glowing scars. Their recognisable animal bodies are
+corrupted/enhanced hosts of the same impact-borne force visible in land, rock and
+roots. Better anatomy must preserve this connection. The
+[wolf and woodland studies](prototype/leyline-art-studies-2026-09-08.md) develop
+that appearance; this does not introduce exposure simulation or new combat rules.
+
 A shower of meteorites carrying extremely advanced augmentation technology
 devastated the land. That technology pushed existing qualities to extremes.
 Technological leylines spread through the world; civilisations were destroyed

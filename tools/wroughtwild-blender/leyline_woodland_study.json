@@ -1,0 +1,40 @@
+{
+  "seed": 80926,
+  "purpose": "Isolated river-bank composition study; these values never configure the game world.",
+  "render": {"pixels": [1440, 960], "samples": 32, "world_strength": 0.45, "sun_energy": 2.0, "mist_density": 0.009},
+  "palette": {"loam": [0.075, 0.055, 0.036], "moss": [0.13, 0.17, 0.073], "root": [0.095, 0.076, 0.052], "water": [0.034, 0.080, 0.075], "scar_edge": [0.028, 0.039, 0.042], "current": [0.12, 0.50, 0.68]},
+  "current_energy": 1.4,
+  "surface": {"moss_scale": 1.8, "grain_scale": 90, "grain_strength": 0.3, "grain_distance": 0.035},
+  "scar": {"edge_half_width": 0.06, "current_half_width": 0.008, "edge_lift": 0.008, "current_lift": 0.011, "segment_samples": 12},
+  "foreground_roots": 5,
+  "trees": [
+    [-7,-5,1.8,0.4], [5,-1,1.9,2.3], [-5,3,1.9,1.2], [7,5,2.0,0.3],
+    [-9,7,1.6,2.7], [4,10,1.5,1.9], [-5,12,1.7,3.8], [9,12,1.8,2.3],
+    [-10,15,2.0,4.3], [5,17,1.8,3.1], [-6,19,1.6,0.4], [10,21,2.1,2.4],
+    [-11,24,2.0,1.4], [-4,25,1.9,4.1], [5,26,1.8,3.6], [11,28,2.1,2.1],
+    [-9,31,2.0,3.1], [-3,33,1.8,2.8], [5,34,2.2,0.7], [12,35,2.1,1.0],
+    [-12,39,2.3,4.1], [-6,40,2.2,5.3], [0,41,2.0,2.4], [6,42,2.0,3.2], [12,43,2.4,2.1]
+  ],
+  "undergrowth_patches": [[-5,-5,1.6], [5,-3,1.6], [-5,3,1.4], [5,4,1.6], [-5,8,2.0], [6,11,1.8], [-6,16,1.8], [6,19,1.5], [-6,24,1.8], [7,28,1.8]],
+  "views": [
+    {"name": "river-approach", "eye_xy": [3.2,-10.5], "eye_height": 1.65, "target": [-0.2,15,2.0], "lens": 30},
+    {"name": "bank-and-current", "eye_xy": [3.8,-3.0], "eye_height": 1.65, "target": [0,5.5,0.9], "lens": 38},
+    {"name": "layout-overview", "eye": [20,-19,23], "target": [0,13,1], "lens": 36}
+  ],
+  "controls": {
+    "seed": "Repeat the small variation within each deliberately positioned plant/stone group.",
+    "render.pixels": "Review image dimensions; not a runtime resolution setting.",
+    "render.samples": "Offline noise reduction effort; not runtime cost.",
+    "render.world_strength": "Ambient sky fill keeps shaded ground and creatures readable.",
+    "render.sun_energy": "Daylight contrast in the neutral composition review.",
+    "render.mist_density": "Distance separation; a clear-air comparison is also rendered.",
+    "palette": "Linear scene colours for earthy hosts, quiet water and narrow cool currents.",
+    "current_energy": "Strength of the small recessed current, not whole-object glow.",
+    "surface": "Object-space moss/grain frequency and bump strength/depth; keeps ground detail in metres instead of stretching it over the whole scene.",
+    "scar": "Dark-edge and luminous half-widths, small surface offsets and intermediate samples to seat the study ribbons against the curved bank. These are not sculpted depth or gameplay radii.",
+    "foreground_roots": "Visible anchoring roots per near tree.",
+    "trees": "Authored x/y ground positions, size multipliers and yaw, in Blender coordinates; no gameplay placements.",
+    "undergrowth_patches": "Centres and spread of connected low plant groups, leaving the river and approach open.",
+    "views": "Repeatable eye-height and overview comparisons. Eye height is above the study bank surface."
+  }
+}

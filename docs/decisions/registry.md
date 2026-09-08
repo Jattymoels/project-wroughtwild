@@ -1,5 +1,14 @@
 # Decision Registry
 
+Owner art continuation, 8 September 2026: develop one wolf and one woodland/river
+study while ordinary playtesting waits. The current mammals' visual quality is
+rejected; the moth and the selected concepts remain liked. Under D-013/D-030,
+recognisable ordinary animals carry impact-borne leyline currents and glowing
+scars like the world around them. The [bounded study](../prototype/leyline-art-studies-2026-09-08.md)
+establishes shape/composition before finishing or adoption. It does not select a
+paid/external service, a new world profile, replacement gameplay bodies or broader
+roster production. Technical validation does not establish owner art acceptance.
+
 Owner continuation, 8 September 2026: “Continue” selects
 [INT-08B portable Windows build](../prototype/portable-build-2026-09-08.md) after
 INT-08A. Under D-009/ADR-0001, export the pinned engine, fresh native extension,

@@ -1,0 +1,9 @@
+{
+  "checks_passed": 44,
+  "blender_reopen_checks": 8,
+  "wolf_repeat_images_pixel_identical": 6,
+  "new_wolf_created": false,
+  "woodland_art_accepted": false,
+  "runtime_assets_unchanged": true,
+  "note": "PNG file bytes differ; decoded RGBA pixels are identical. No image tolerance was used."
+}

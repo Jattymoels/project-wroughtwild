@@ -1,5 +1,11 @@
 # Augmented beasts: editable sources
 
+Owner review, 8 September: the moth is liked; the mammals' visual quality is
+rejected relative to the selected concepts. The
+[new bounded studies](../../docs/prototype/leyline-art-studies-2026-09-08.md)
+retain these assets as baselines while establishing a better wolf and woodland
+standard. Current game files remain the earlier playable pass.
+
 Open [augmented-beasts-v01.blend](augmented-beasts-v01.blend) in Blender 4.5.
 This is the first playable interpretation of the owner's selected creature
 concepts. The game uses the five corresponding GLBs in
