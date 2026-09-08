@@ -395,6 +395,9 @@ struct LootEntry {
 struct EnemyDef {
     std::string id;
     std::string displayName;
+    std::string visualId; // reuse an existing animal skin without coupling it to combat
+    std::string influence; // authored habitat identity, not a damage type
+    std::string worldProfile; // optional authored roster visibility; old pools stay unchanged
     double maxLife = 1.0;
     std::string behaviour;
     double damage = 0.0;
@@ -447,6 +450,7 @@ struct WorldTable {
     HaulingDef hauling;
     SiegeDef siege;
     std::vector<EnemyDef> enemies;
+    std::vector<EnemyDef> frontierEnemies; // bounded opt-in hosts; never part of legacy reward/catalogue pools
     std::vector<EliteModifierDef> eliteModifiers;
     std::vector<GatherSite> gatheringSites;
     bool droppedInventoryRecoverable = true;
@@ -647,6 +651,9 @@ struct EnemyProjectileRealtime {
 
 struct BehaviourRealtime {
     EnemyProjectileRealtime projectile;
+    std::string releaseShape; // empty = existing delivery; radial or charge
+    double releaseSeconds = 0.0, releaseDistanceM = 0.0, releaseRadiusM = 0.0;
+    double recoverySeconds = 0.0;
     bool flees = false; // grazers: run within aggro range, never attack
     double moveSpeedMps = 0.0;
     double attackRangeM = 0.0;

@@ -34,6 +34,9 @@ echo "== integration test (physics + placement loop) =="
 echo "== horde test (D-012 chase, training, cone, dash) =="
 "$GODOT" --headless --path . res://tests/horde.tscn
 
+echo "== Living Frontier Wave 3 host contact and ordinary classes =="
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_hosts.tscn
+
 echo "== INT-05C dead-target and reaction recovery boundaries =="
 "$GODOT" --headless --fixed-fps 240 --path . res://tests/power_progression_review.tscn -- --boundary-only --expect-fixed
 

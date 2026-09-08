@@ -1,5 +1,18 @@
 # Decision Registry
 
+Owner implementation authorization, 9 September 2026: implement **Living
+Frontier Wave 3 only**, in LF-3A → LF-3B → LF-3C order, after the accepted
+[Wave 2 review](../prototype/living-frontier-wave2-review-2026-09-09.md).
+The [bounded contract](../prototype/living-frontier-wave3-2026-09-09.md) extends
+D-033 with an opt-in related-boar comparison, four-influence habitat and useful
+reward/manufacture trail toward visible laboratory ambitions. Published worlds,
+source/machine ownership, ordinary recipes and separate signal/work/heat costs
+remain. Incomplete successor work stays opt-in; existing experimental saves are
+not reseeded. Three visible sites and two declared future transformation regions
+precede any normal successor choice. Laboratory encounters, hybrids, era changes,
+the human boss and configurable Heat remain later waves. Stop after Wave 3 for
+orchestrator review; automated evidence does not substitute for owner playtesting.
+
 Owner art planning direction, 9 September 2026: the owner likes their local
 TRELLIS boar and requests a coherent asset plan, especially **pulsing cracks of
 magic scarred through assets**. Under D-013/D-030, the

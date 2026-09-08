@@ -9,6 +9,32 @@
     "cone_degrees": 100.0
   },
   "behaviours": {
+    "excited_boar": {
+      "move_speed_mps": 3.5,
+      "attack_range_m": 3.2,
+      "aggro_range_m": 10.0,
+      "windup_seconds": 1.0,
+      "give_up_distance_m": 26.0,
+      "release_shape": "radial",
+      "release_seconds": 0.15,
+      "release_distance_m": 0.0,
+      "release_radius_m": 3.2,
+      "recovery_seconds": 1.1,
+      "design_purpose": "LF-3 Red boar replaces its bite with one warned nearby release. The one-second planted windup lets ordinary walking clear the exact 3.2m ring; 1.1s planted recovery rewards returning to attack. Six fire damage, no burn or immunity. Cover, stagger and freeze remain answers. Release duration shows the one contact, never repeated ticks."
+    },
+    "retained_boar": {
+      "move_speed_mps": 3.5,
+      "attack_range_m": 6.0,
+      "aggro_range_m": 10.0,
+      "windup_seconds": 1.0,
+      "give_up_distance_m": 26.0,
+      "release_shape": "charge",
+      "release_seconds": 0.4,
+      "release_distance_m": 6.0,
+      "release_radius_m": 1.1,
+      "recovery_seconds": 1.5,
+      "design_purpose": "LF-3 Blue boar holds a straight six-metre charge for one second without tracking. The 1.1m half-width lane covers real body contact at 20/60 physics ticks and teaches a sidestep; 0.4s travel can catch late straight retreat, solid cover stops the body, and 1.5s planted recovery rewards the flank. One six-damage physical contact per charge, never Frost or a root. Stagger/freeze cancel it."
+    },
     "melee": {
       "move_speed_mps": 3.5,
       "attack_range_m": 1.8,

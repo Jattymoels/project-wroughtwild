@@ -1,5 +1,16 @@
 # Combat and Persistent Builds
 
+**Living Frontier LF-3A (9 September 2026):** the opt-in comparison adds two
+hosts of the same existing boar. Red warns a 3.2 m circular release for one
+second, pays one ordinary six-damage fire hit and recovers for 1.1 seconds.
+Blue holds a committed six-metre charge for one second, travels for 0.4 seconds
+with a 1.1 m contact half-width, pays one ordinary six-damage physical hit and
+recovers for 1.5 seconds. Both retain 75 life and all ordinary damage/control
+answers. Solid cover and stagger/freeze prevent contact. These deliveries
+replace the bite and have no compulsory element, root, burn or building damage.
+The new native roster is separate from all eleven published ordinary enemies.
+[Bounded contract and evidence](../prototype/living-frontier-wave3-2026-09-09.md).
+
 **Status:** Core philosophy accepted; implementation open  
 **Related decisions:** D-001, D-004
 

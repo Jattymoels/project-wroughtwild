@@ -40,6 +40,16 @@ func _leave_burning_ground() -> void:
 
 var display_name := ""
 var behaviour := "melee"
+var visual_id := ""
+var influence := ""
+var release_shape := ""
+var release_seconds := 0.0
+var release_distance := 0.0
+var release_radius := 0.0
+var recovery_seconds := 0.0
+var _release_left := 0.0
+var _release_hit := false
+var _frontier_recovery_left := 0.0
 var max_life := 1.0
 var life := 1.0
 var damage := 0.0
@@ -203,6 +213,8 @@ func configure(sim: WroughtwildSim) -> void:
 		return
 	display_name = def["display_name"]
 	behaviour = def["behaviour"]
+	visual_id = String(def.get("visual_id", ""))
+	influence = String(def.get("influence", ""))
 	max_life = def["max_life"]
 	life = max_life
 	damage = def["damage"]
@@ -210,6 +222,11 @@ func configure(sim: WroughtwildSim) -> void:
 
 	var rt: Dictionary = sim.realtime()
 	var b: Dictionary = rt["behaviours"].get(behaviour, {})
+	release_shape = String(b.get("release_shape", ""))
+	release_seconds = float(b.get("release_seconds", 0.0))
+	release_distance = float(b.get("release_distance_m", 0.0))
+	release_radius = float(b.get("release_radius_m", 0.0))
+	recovery_seconds = float(b.get("recovery_seconds", 0.0))
 	# The hastened weakness quickens both feet and attacks in real time.
 	var speed_multiplier: float = sim.combat_mods()["enemy_speed_multiplier"]
 	flees = b.get("flees", false)
@@ -283,12 +300,13 @@ func configure(sim: WroughtwildSim) -> void:
 	_mesh.mesh = preload("res://art/character_look.tres").build("grazer" if flees else behaviour)
 	_mesh.position.y = 0.0
 	# Humanoid roles fit the existing 1.3m body; beasts are authored at that height.
-	if not behaviour in ["fast", "melee", "swarm", "lurker"] and not flees:
+	if not behaviour in ["fast", "melee", "swarm", "lurker"] and not flees and visual_id.is_empty():
 		_mesh.scale *= 0.76
 	_material.vertex_color_use_as_albedo = true
 	_material.vertex_color_is_srgb = true
 	_material.roughness = 1.0
 	CreatureMotion.attach(_mesh,self,"grazer" if flees else behaviour)
+	if not influence.is_empty(): FrontierHostLook.attach(self)
 	_label.position.y = _mesh.mesh.get_aabb().end.y * _mesh.scale.y + 0.25
 	_refresh_label()
 
@@ -384,6 +402,13 @@ func apply_chill(amount: float, quench: bool = false) -> void:
 ## to cancel an inhale.
 func _on_frozen() -> void:
 	_windup_left = 0.0
+	if not release_shape.is_empty(): _cancel_release()
+
+func _cancel_release() -> void:
+	_release_left = 0.0
+	_release_hit = true
+	_frontier_recovery_left = recovery_seconds
+	state = "recover"
 
 
 ## Ignite buildup; crossing the threshold sets the mob burning. Duration and
@@ -420,6 +445,9 @@ func stagger(seconds: float) -> void:
 	if seconds <= 0.0 or life <= 0.0:
 		return
 	_stagger_left = maxf(_stagger_left, seconds)
+	if not release_shape.is_empty():
+		_cancel_release()
+		return
 	_windup_left = 0.0
 	if state == "windup":
 		state = "chase"
@@ -632,6 +660,8 @@ func _physics_process(delta: float) -> void:
 	_attack_cooldown = maxf(0.0, _attack_cooldown - delta)
 	var planar := Vector3.ZERO
 	var release_strike := false
+	var release_contact := false
+	var release_from := global_position
 
 	# Grazers: the state machine turned around. Near you they bolt, far
 	# from you they settle, and they never wind up a bite.
@@ -693,7 +723,14 @@ func _physics_process(delta: float) -> void:
 			if _windup_left <= 0.0:
 				# The hit only lands if the player is still in reach: walking
 				# out of the wind-up is a legitimate dodge.
-				if not projectile_rules.is_empty():
+				if not release_shape.is_empty():
+					_release_left = release_seconds
+					_release_hit = false
+					state = "release"
+					attack_released.emit(release_shape)
+					# Radial contact belongs to the warned release instant.
+					release_contact = release_shape == "radial"
+				elif not projectile_rules.is_empty():
 					attack_released.emit("projectile")
 					EnemyProjectile.launch(self, _shot_aim, projectile_rules)
 					if trial_bound:
@@ -706,11 +743,22 @@ func _physics_process(delta: float) -> void:
 				else:
 					release_strike = true
 				_attack_cooldown = attack_period_seconds
-				state = "chase"
+				if release_shape.is_empty(): state = "chase"
+		"release":
+			if release_shape == "charge":
+				planar = _strike_direction * release_distance / release_seconds * minf(delta, _release_left) / delta
+				release_contact = true
+			_release_left = maxf(0.0, _release_left - delta)
+			if _release_left <= 0.0:
+				_frontier_recovery_left = recovery_seconds
+				state = "recover"
+		"recover":
+			_frontier_recovery_left = maxf(0.0, _frontier_recovery_left - delta)
+			if _frontier_recovery_left <= 0.0: state = "chase"
 
 	# Separation steering: chasers shoulder each other apart, so a trained
 	# horde forms a physical train instead of a stack of ghosts (D-012).
-	if state != "idle":
+	if state != "idle" and (release_shape.is_empty() or state == "chase"):
 		planar += _separation_push()
 		# The kindler lights an ally now and then while it fights.
 		if verb == "kindle":
@@ -728,6 +776,8 @@ func _physics_process(delta: float) -> void:
 	velocity.x = planar.x
 	velocity.z = planar.z
 	_hop_if_blocked(planar)
+	# A charge stops at physical cover instead of climbing over it.
+	if release_contact and release_shape == "charge": velocity.y = minf(velocity.y, 0.0)
 	_scratch_if_blocked(delta)
 	if planar.length_squared() > 0.0001 and distance > 0.05:
 		var face := roam_target if state == "idle" and _roaming else player.global_position
@@ -736,10 +786,19 @@ func _physics_process(delta: float) -> void:
 		var committed_face := Vector3(_shot_aim.x, global_position.y, _shot_aim.z)
 		if global_position.distance_squared_to(committed_face) > 0.001:
 			look_at(committed_face, Vector3.UP)
-	elif (state == "windup" or release_strike) and windup_advance > 0.0 and not _strike_direction.is_zero_approx():
+	elif (state == "windup" or state == "release" or release_strike or release_contact) and (windup_advance > 0.0 or not release_shape.is_empty()) and not _strike_direction.is_zero_approx():
 		look_at(global_position + _strike_direction, Vector3.UP)
 	_apply_shove(delta)
 	move_and_slide()
+	if release_contact and not _release_hit:
+		var closest := global_position
+		if release_shape == "charge":
+			var swept := Geometry2D.get_closest_point_to_segment(Vector2(player.global_position.x, player.global_position.z), Vector2(release_from.x, release_from.z), Vector2(global_position.x, global_position.z))
+			closest = Vector3(swept.x, global_position.y, swept.y)
+		var offset := (player.global_position - closest) * Vector3(1,0,1)
+		if offset.length() <= release_radius and _vertical_gap_to(player) <= vertical_reach and _attack_line_clear(player):
+			_release_hit = true
+			player.combat.take_hit(bite_damage(), bite_type(), display_name, self)
 	if release_strike:
 		attack_released.emit("strike")
 		var to_player := (player.global_position - global_position) * Vector3(1,0,1)

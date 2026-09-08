@@ -797,8 +797,11 @@ PackedStringArray WroughtwildSim::enemy_ids() const {
     PackedStringArray ids;
     if (require_loaded("enemy_ids")) {
         for (const auto& e : tuning_->world.enemies) {
+            if (!e.worldProfile.empty() && e.worldProfile != world_profile_) continue;
             ids.push_back(to_godot(e.id));
         }
+        for (const auto& e : tuning_->world.frontierEnemies)
+            if (e.worldProfile == world_profile_) ids.push_back(to_godot(e.id));
     }
     return ids;
 }
@@ -823,6 +826,8 @@ Dictionary WroughtwildSim::enemy(const String& enemy_id) const {
     d["size_scale"] = e->sizeScale;
     d["immune_statuses"] = strings_to_packed(e->immuneStatuses);
     d["currency_kind"] = to_godot(e->currencyKind);
+    d["visual_id"] = to_godot(e->visualId);
+    d["influence"] = to_godot(e->influence);
     Dictionary taken;
     for (const auto& [type, share] : e->damageTaken) {
         taken[to_godot(type)] = share;
@@ -874,6 +879,11 @@ Dictionary WroughtwildSim::realtime() const {
         entry["aggro_range_m"] = b.aggroRangeM;
         entry["windup_seconds"] = b.windupSeconds;
         entry["windup_advance_m"] = b.windupAdvanceM;
+        entry["release_shape"] = to_godot(b.releaseShape);
+        entry["release_seconds"] = b.releaseSeconds;
+        entry["release_distance_m"] = b.releaseDistanceM;
+        entry["release_radius_m"] = b.releaseRadiusM;
+        entry["recovery_seconds"] = b.recoverySeconds;
         entry["attack_arc_degrees"] = b.attackArcDegrees;
         if (b.projectile.enabled) {
             const auto& p = b.projectile;

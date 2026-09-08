@@ -120,7 +120,10 @@ const BehaviourRealtime* RealtimeTable::findBehaviour(const std::string& id) con
     auto it = behaviours.find(id);
     return it == behaviours.end() ? nullptr : &it->second;
 }
-const EnemyDef* WorldTable::findEnemy(const std::string& id) const { return findById(enemies, id); }
+const EnemyDef* WorldTable::findEnemy(const std::string& id) const {
+    if (const auto* enemy = findById(enemies, id)) return enemy;
+    return findById(frontierEnemies, id);
+}
 const EliteModifierDef* WorldTable::findEliteModifier(const std::string& id) const {
     return findById(eliteModifiers, id);
 }
@@ -908,6 +911,17 @@ RealtimeTable loadRealtime(const std::string& path) {
         behaviour.aggroRangeM = b->get("aggro_range_m").asNumber();
         behaviour.windupSeconds = b->get("windup_seconds").asNumber();
         if (auto v = b->find("windup_advance_m")) behaviour.windupAdvanceM = v->asNumber();
+        if (auto v = b->find("release_shape")) {
+            behaviour.releaseShape = v->asString();
+            behaviour.releaseSeconds = b->get("release_seconds").asNumber();
+            behaviour.releaseDistanceM = b->get("release_distance_m").asNumber();
+            behaviour.releaseRadiusM = b->get("release_radius_m").asNumber();
+            behaviour.recoverySeconds = b->get("recovery_seconds").asNumber();
+            if ((behaviour.releaseShape != "radial" && behaviour.releaseShape != "charge") ||
+                behaviour.releaseSeconds <= 0 || behaviour.releaseRadiusM <= 0 ||
+                behaviour.releaseDistanceM < 0 || behaviour.recoverySeconds <= 0 || behaviour.windupSeconds <= 0)
+                throw std::runtime_error("realtime: invalid committed release");
+        }
         if (auto v = b->find("attack_arc_degrees")) behaviour.attackArcDegrees = v->asNumber();
         if (behaviour.windupAdvanceM < 0.0 ||
             (behaviour.windupAdvanceM > 0.0 && behaviour.windupSeconds <= 0.0) ||
@@ -1107,6 +1121,9 @@ WorldTable loadWorld(const std::string& path) {
         EnemyDef def;
         def.id = e->get("id").asString();
         def.displayName = e->get("display_name").asString();
+        if (auto v = e->find("visual_id")) def.visualId = v->asString();
+        if (auto v = e->find("influence")) def.influence = v->asString();
+        if (auto v = e->find("world_profile")) def.worldProfile = v->asString();
         def.maxLife = e->get("max_life").asNumber();
         def.behaviour = e->get("behaviour").asString();
         def.damage = e->get("damage").asNumber();
@@ -1142,7 +1159,10 @@ WorldTable loadWorld(const std::string& path) {
                 def.loot.push_back(std::move(drop));
             }
         }
-        table.enemies.push_back(std::move(def));
+        if (!def.worldProfile.empty()) {
+            if (def.worldProfile != "living_frontier_wave3") throw std::runtime_error("world: unknown host profile");
+            table.frontierEnemies.push_back(std::move(def));
+        } else table.enemies.push_back(std::move(def));
     }
 
     if (auto elites = doc->find("elite_modifiers")) {
@@ -1874,6 +1894,11 @@ Tuning loadAll(const std::string& tuningDirectory) {
     for (const auto& enemy : tuning.world.enemies)
         if (!enemy.currencyKind.empty() && !tuning.crafting.findKind(enemy.currencyKind))
             throw std::runtime_error("world: enemy " + enemy.id + " pays unknown kind " + enemy.currencyKind);
+    for (const auto& host : tuning.world.frontierEnemies) {
+        if (!tuning.world.findEnemy(host.visualId) || !tuning.realtime.findBehaviour(host.behaviour) ||
+            (host.influence != "red" && host.influence != "white" && host.influence != "blue" && host.influence != "green"))
+            throw std::runtime_error("world: invalid Living Frontier host " + host.id);
+    }
     for (const auto& skill : tuning.skills.combatSkills)
         for (const auto& perk : skill.mastery)
             if (!tuning.items.findModifier(perk.modifier))

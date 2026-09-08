@@ -16,6 +16,7 @@ static func definitions() -> Dictionary:
 static func apply(mesh: MeshInstance3D, actor: Node3D, role: String) -> void:
 	if not actor is Enemy: return
 	var id: String=String(actor.enemy_id)
+	if not actor.visual_id.is_empty(): id = actor.visual_id
 	# The Warden/capstone retain the current shared Tyrant body/rig contract.
 	if actor is Boss: id="forge_tyrant"
 	if not definitions().has(id): return
@@ -45,6 +46,7 @@ static func apply(mesh: MeshInstance3D, actor: Node3D, role: String) -> void:
 ## Status emission remains unmasked across the complete creature surface.
 static func refresh_material(actor: Enemy) -> void:
 	var id := String(actor.enemy_id)
+	if not actor.visual_id.is_empty(): id = actor.visual_id
 	if not definitions().has(id) or int(definitions()[id].get("rig_version",1))!=2: return
 	if not _materials.has(id): return
 	if actor.is_frozen() or actor._flash_left>0.0 or actor.burning_left>0.0 or actor.bleeding_left>0.0:
@@ -57,6 +59,8 @@ static func refresh_material(actor: Enemy) -> void:
 	actor._material.emission=Color.WHITE
 	actor._material.emission_energy_multiplier=float(definitions()[id].normal_emission_energy)
 	actor._material.emission_enabled=true
+	# LF hosts render the same mask through their own local scar material.
+	if not actor.influence.is_empty(): actor._material.emission_enabled=false
 
 static func mesh_for(id: String, role: String) -> ArrayMesh:
 	if _meshes.has(id): return _meshes[id]

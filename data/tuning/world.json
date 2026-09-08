@@ -87,6 +87,24 @@
   },
   "enemies": [
     {
+      "id": "lf_red_boar", "display_name": "Red-scar Boar",
+      "world_profile": "living_frontier_wave3",
+      "visual_id": "ember_whelp", "influence": "red",
+      "max_life": 75, "behaviour": "excited_boar", "damage": 6,
+      "damage_type": "fire", "attack_period_rounds": 1,
+      "loot": [{"item": "hide", "min": 1, "max": 1, "chance": 1.0}],
+      "design_purpose": "Opt-in LF-3 only. Same boar ancestry and life/bite budget; excitation changes its delivery, without elemental resistance or extra attacks."
+    },
+    {
+      "id": "lf_blue_boar", "display_name": "Blue-scar Boar",
+      "world_profile": "living_frontier_wave3",
+      "visual_id": "ember_whelp", "influence": "blue",
+      "max_life": 75, "behaviour": "retained_boar", "damage": 6,
+      "damage_type": "physical", "attack_period_rounds": 1,
+      "loot": [{"item": "hide", "min": 1, "max": 1, "chance": 1.0}],
+      "design_purpose": "Opt-in LF-3 only. Retention holds a committed charge rather than freezing the player. Same boar body, life and damage budget as Red."
+    },
+    {
       "id": "ember_whelp",
       "display_name": "Ember Whelp",
       "max_life": 75,
