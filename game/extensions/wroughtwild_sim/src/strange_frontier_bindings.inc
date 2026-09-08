@@ -10,12 +10,13 @@ const char* machine_kinds[] = {"lantern_lamp","cargo_winch","winch_landing","sto
 
 PackedStringArray WroughtwildSim::contraption_kinds() const {
     PackedStringArray ids; for (auto kind : machine_kinds) ids.push_back(kind);
-    if (world_profile_==wroughtwild::leyline::profile) ids.push_back("white_connection");
+    if (world_profile_==wroughtwild::leyline::profile) { ids.push_back("white_connection"); ids.push_back("blue_delay"); }
     return ids;
 }
 String WroughtwildSim::contraption_kind_for_kit(const String& kit) const {
     for (auto kind : machine_kinds) if (kit==String(kind)+"_kit") return kind;
     if (world_profile_==wroughtwild::leyline::profile && kit=="white_connection_kit") return "white_connection";
+    if (world_profile_==wroughtwild::leyline::profile && kit=="blue_delay_kit") return "blue_delay";
     return {};
 }
 bool WroughtwildSim::contraption_place(const String& kind, const String& key, const Vector3& at, int rotation) {
@@ -67,6 +68,7 @@ Dictionary WroughtwildSim::contraption_state(const String& key) const {
     d["span_length"]=s->spanLength; d["energy"]=s->energy; d["lamp_on"]=s->lampOn;
     d["moving"]=s->moving; d["at_landing"]=s->atLanding; d["progress"]=s->progress;
     d["completed_trips"]=s->completedTrips; d["pulses"]=s->pulses;
+    d["pending_request"]=s->pendingRequest; d["delay_paused"]=s->delayPaused; d["delay_seconds"]=s->delaySeconds;
     d["cargo"]=to_dictionary(s->cargo); d["input"]=to_dictionary(s->input);
     d["ferrous"]=to_dictionary(s->ferrous); d["remainder"]=to_dictionary(s->remainder);
     d["source_id"]=to_godot(s->sourceId); d["forge_key"]=to_godot(s->forgeKey);
@@ -85,6 +87,7 @@ Dictionary WroughtwildSim::contraption_config() const {
     d["sorter_batch_units"]=c.sorterBatchUnits; d["energy_capacity"]=c.energyCapacity;
     d["winding_energy"]=c.windingEnergy; d["trip_energy"]=c.tripEnergy; d["bellows_energy"]=c.bellowsEnergy;
     d["maximum_span"]=c.maximumSpan; d["signal_range"]=c.signalRange; d["bellows_range"]=c.bellowsRange;
+    d["delay_seconds"]=c.delaySeconds;
     d["cargo_metres_per_second"]=c.cargoMetresPerSecond; d["minimum_trip_seconds"]=c.minimumTripSeconds;
     d["pressure_source_strokes"]=c.pressureSourceStrokes;
     d["feeder_input_units"]=c.feederInputUnits; d["feeder_output_units"]=c.feederOutputUnits;
@@ -136,6 +139,9 @@ Dictionary WroughtwildSim::contraption_action(const String& key,const String& ac
 }
 Dictionary WroughtwildSim::contraption_tick(const String& key,double seconds,bool clear) {
     return contraptions_ && !trial_ ? machine_result(contraptions_->advance(to_std(key),seconds,clear)) : machine_unavailable();
+}
+Dictionary WroughtwildSim::contraption_delay_tick(const String& key,double seconds,bool clear,bool receiver_clear) {
+    return contraptions_ && !trial_ ? machine_result(contraptions_->advanceDelay(to_std(key),seconds,clear,receiver_clear)) : machine_unavailable();
 }
 Dictionary WroughtwildSim::contraption_deposit(const String& key,const String& item,int count) {
     return contraptions_ && !trial_ ? machine_result(contraptions_->deposit(to_std(key),to_std(item),count,player_->inventory)) : machine_unavailable();

@@ -17,7 +17,9 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [ ] Owner accepts discovery, extraction effort, spending trade-offs and circuit
   usefulness. [Evidence and limitations](living-frontier-wave1-2026-09-08.md).
 
-Wave 2 is not cleared by this checklist.
+The owner subsequently authorized Wave 2 only, after the LF1-R1 repair gate.
+The [Wave 2 work item](living-frontier-wave2-2026-09-08.md) records each result.
+Wave 3 requires a separate orchestrator review.
 
 ## Repository and configuration
 

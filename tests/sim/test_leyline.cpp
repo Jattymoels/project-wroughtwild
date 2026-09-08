@@ -20,7 +20,7 @@ int main(int argc,char** argv) {
         leyline::World oldWorld(oldConfig,seed), migrated(config,seed);
         // Exact schema published in LF-1A/B, interrupted or holding a raw/rare claim.
         for (int i=0;i<1+seed%4;++i) oldWorld.work(source.id);
-        auto v1=oldWorld.serialize(); v1.replace(v1.find("\"version\":2"),11,"\"version\":1");
+        auto v1=oldWorld.serialize(); v1.replace(v1.find("\"version\":"+std::to_string(leyline::saveVersion)),11,"\"version\":1");
         check(migrated.restore(v1),"published Red-only ledger migrates");
         check(migrated.state(source.id).outcomes==oldWorld.state(source.id).outcomes && migrated.state(source.id).work==oldWorld.state(source.id).work && migrated.state(source.id).claim==oldWorld.state(source.id).claim,"migration keeps exact Red work, rare rolls and claims");
         check(migrated.state(white.id).lot==0 && migrated.state(white.id).work==0,"migration introduces White once at its authored initial stock");

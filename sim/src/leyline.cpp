@@ -41,6 +41,7 @@ Config Config::load(const std::string& path) {
         if (!identifier(s.id) || !identifier(s.material) || (!s.rareItem.empty() && !identifier(s.rareItem)) || !ids.insert(s.id).second)
             throw std::runtime_error("Invalid or duplicate leyline source.");
         s.homeIndex = integer(value->get("home_index"), 0, 3);
+        s.introducedVersion = integer(value->get("introduced_version"), 1, saveVersion);
         s.offsetX = number(value->get("offset_x_m"), -10, 10); s.offsetZ = number(value->get("offset_z_m"), -10, 10);
         s.lots = integer(value->get("lots"), 1, 32); s.units = integer(value->get("units_per_lot"), 1, 240);
         s.rarePer10000 = integer(value->get("rare_per_10000"), 0, 10000);
@@ -49,7 +50,7 @@ Config Config::load(const std::string& path) {
         if (s.stages.empty() || s.stages.size() > 16 || (s.rareItem.empty() && s.rarePer10000)) throw std::runtime_error("Invalid leyline work/rare definition.");
         c.sources.push_back(s);
     }
-    if (c.sources.empty() || c.sources.size() > 2) throw std::runtime_error("LF-1 permits one Red and one White host only.");
+    if (c.sources.empty() || c.sources.size() > 3) throw std::runtime_error("LF-2A permits Red, White and Blue hosts only.");
     return c;
 }
 World::World(Config config, uint64_t seed) : config_(std::move(config)), seed_(seed) {
@@ -107,7 +108,7 @@ void World::advance(double seconds, const std::set<std::string>& blocked) {
 }
 std::string World::serialize() const {
     std::ostringstream out; out << std::setprecision(17);
-    out << "{\"version\":2,\"profile\":\"" << profile << "\",\"seed\":\"" << seed_ << "\",\"sources\":{";
+    out << "{\"version\":" << saveVersion << ",\"profile\":\"" << profile << "\",\"seed\":\"" << seed_ << "\",\"sources\":{";
     bool first = true;
     for (const auto& [id,s] : states_) {
         if (!first) out << ',';
@@ -123,17 +124,20 @@ std::string World::serialize() const {
 bool World::restore(const std::string& text, std::string* reason) {
     try {
         const auto doc = json::parse(text);
-        const int version = integer(doc->get("version"),1,2);
+        const int version = integer(doc->get("version"),1,saveVersion);
         if (doc->get("profile").asString() != profile || doc->get("seed").asString() != std::to_string(seed_)) throw std::runtime_error("Leyline world identity mismatch.");
         const auto& records = doc->get("sources").asObject();
-        // Only the published Red-only version may acquire the newly added White
-        // host. Current saves must contain both; a lost ledger never refills one.
-        if (version == 1) {
-            if (records.size() != 1 || !records.count("red_home_margin")) throw std::runtime_error("Invalid Red-only leyline checkpoint.");
-        } else if (records.size() != config_.sources.size()) throw std::runtime_error("Missing or unknown leyline source.");
+        // Published versions must contain their complete declared source set.
+        // Only a source introduced later can receive initial stock on migration.
+        size_t expected = 0;
+        for (const auto& def : config_.sources) if (def.introducedVersion <= version) {
+            ++expected;
+            if (!records.count(def.id)) throw std::runtime_error("Missing published leyline source.");
+        }
+        if (records.size() != expected) throw std::runtime_error("Missing or unknown leyline source.");
         std::map<std::string,State> next;
         for (const auto& def : config_.sources) {
-            if (version == 1 && def.id == "white_home_margin") {
+            if (def.introducedVersion > version) {
                 State fresh; form(def,fresh); next.emplace(def.id,fresh); continue;
             }
             const auto& record = *records.at(def.id); State s;

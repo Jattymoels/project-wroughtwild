@@ -39,6 +39,14 @@ extends Resource
 ## White is a small supported signal post; its high crystal exposes both cables.
 @export var white_connection_bounds := Vector3(.65, 1.18, .55)
 @export var white_connection_colour := Color("e6e1bd")
+@export var blue_delay_colour := Color("74b3dc")
+@export var signal_panel_refresh_seconds := 0.1 # Keep a held request's countdown readable in its normal panel.
+@export var blue_delay_parts: Array[Dictionary] = [
+	{"size":Vector3(.65,.15,.55),"at":Vector3(0,.075,0),"colour":Color("756048")},
+	{"size":Vector3(.15,.85,.15),"at":Vector3(0,.55,0),"colour":Color("756048")},
+	{"size":Vector3(.48,.12,.4),"at":Vector3(0,.78,0),"colour":Color("74b3dc")},
+	{"size":Vector3(.4,.12,.34),"at":Vector3(0,.94,0),"colour":Color("74b3dc")},
+	{"size":Vector3(.32,.12,.28),"at":Vector3(0,1.10,0),"colour":Color("74b3dc")}]
 ## Primitive frame and crystal share their dimensions across catalogue and world.
 @export var white_connection_parts: Array[Dictionary] = [
 	{"size":Vector3(.65,.15,.55),"at":Vector3(0,.075,0),"colour":Color("756048")},

@@ -26,6 +26,7 @@ struct Config {
     int bellowsEnergy = 1;
     double maximumSpan = 32;
     double signalRange = 24;
+    double delaySeconds = 3;
     double bellowsRange = 3;
     double cargoMetresPerSecond = 3;
     double minimumTripSeconds = 0.5;
@@ -70,6 +71,8 @@ struct State {
     double progress = 0;
     int completedTrips = 0;
     int pulses = 0;
+    bool pendingRequest = false, delayPaused = false;
+    double delaySeconds = 0;
     // A travelling basket has ONE owner, its winch. A landing has no copy.
     economy::Inventory cargo, input, ferrous, remainder;
     std::string sourceId, forgeKey;
@@ -122,6 +125,7 @@ public:
     Result start(const std::string& key, bool clear);
     Result advance(const std::string& key, double seconds, bool clear);
     Result pulse(const std::string& key, bool signalClear, bool spanClear);
+    Result advanceDelay(const std::string& key, double seconds, bool signalClear, bool receiverClear);
     Result toggleLamp(const std::string& key);
     Result prime(const std::string& key);
     // Caller first validates a nearby ResourceNode with a current impact
@@ -159,6 +163,8 @@ private:
     std::map<std::string, State> states_;
     State* mutableState(const std::string& key);
     State* cargoOwner(const std::string& key);
+    bool signalReaches(const std::string& from, const std::string& target) const;
+    void invalidateDelays(const std::string& changed);
     bool itemAllowed(const std::string& item) const;
     const PressureSource* sourceDefinition(const std::string& id) const;
     bool feederItem(const std::string& item) const;

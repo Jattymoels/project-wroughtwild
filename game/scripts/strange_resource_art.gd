@@ -134,8 +134,8 @@ static func fixture_visual(kind: String) -> Node3D:
 		"stormglass_lever":
 			part(root,"lever","Housing")
 			part(root,"arm","Lever",Vector3(0,.4,0))
-		"white_connection":
-			for entry: Dictionary in MACHINES.white_connection_parts:
+		"white_connection", "blue_delay":
+			for entry: Dictionary in MACHINES.blue_delay_parts if kind=="blue_delay" else MACHINES.white_connection_parts:
 				var child := MeshInstance3D.new()
 				var mesh := BoxMesh.new()
 				mesh.size = entry.size

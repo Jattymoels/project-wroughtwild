@@ -32,6 +32,7 @@
     "carry_cap": {
       "red_salt": 128,
       "white_mineral": 128,
+      "blue_flake": 128,
       "wood": 240,
       "fieldstone": 240,
       "split_stone": 240,

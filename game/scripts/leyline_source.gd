@@ -41,7 +41,7 @@ func state() -> Dictionary:
 func _ready() -> void:
 	add_to_group("leyline_sources")
 	var record := state()
-	_colour = LOOK.red if record.get("material", "") == "red_salt" else LOOK.white
+	_colour = {"red_salt":LOOK.red,"white_mineral":LOOK.white,"blue_flake":LOOK.blue}.get(record.get("material",""),LOOK.white)
 	var collision := CollisionShape3D.new()
 	var box := BoxShape3D.new()
 	box.size = LOOK.bounds
@@ -124,8 +124,10 @@ func _open(message := "") -> void:
 		rows.append({"text":"Forming · %.0f / %.0f seconds of overworld activity. Return after exploring or building." % [s.formation,s.formation_seconds],"button":"Forming","enabled":false})
 	for item: String in s.claim:
 		rows.append({"text":"%d %s waiting in the host." % [s.claim[item],Hud.pretty(item)],"button":"Collect " + Hud.pretty(item),"enabled":ready,"callback":_collect.bind(item)})
-	rows.append({"text":"Red Salt fires bricks: 8 clay + 2 salt → 4 bricks at your forge." if s.material == "red_salt" else "Workbench: 2 White Mineral + 2 wood → 1 White Connection Kit.","button":"Material use","enabled":false,
-		"details":"Red Salt replaces the brick variant's fuel only. Forge Faint Ember: 96 salt + 4 iron ingots + 8 charcoal, immediately at a basic forge (Blacksmithing 1). An intact Faint Ember has a %.1f%% chance per fixed Red lot; it is a bonus. Salt supplies no mechanical winding." % (float(s.rare_per_10000)/100.0) if s.material == "red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding."})
+	var uses := {"red_salt":"Red Salt fires bricks: 8 clay + 2 salt → 4 bricks at your forge.","white_mineral":"Workbench: 2 White Mineral + 2 wood → 1 White Connection Kit.","blue_flake":"Workbench: 2 Blue Flakes + 2 wood → 1 Blue Delay Kit."}
+	var detail := "Red Salt replaces the brick variant's fuel only. Forge Faint Ember: 96 salt + 4 iron ingots + 8 charcoal, immediately at a basic forge (Blacksmithing 1). Salt supplies no mechanical winding." if s.material=="red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding. Blue holds one request for three active nearby seconds, with Pause, Resume and Cancel controls."
+	if not String(s.rare_item).is_empty(): detail += " Each fixed lot has a %.1f%% bonus %s opportunity, independent of work or collection splits." % [float(s.rare_per_10000)/100.0,Hud.pretty(String(s.rare_item))]
+	rows.append({"text":uses.get(s.material,""),"button":"Material use","enabled":false,"details":detail})
 	if not ready: message = "Clear the host's workspace and restore its ground support to work or collect."
 	_panel_player.open_custom_panel(s.label,rows,message,"leyline:"+source_id)
 	refresh()

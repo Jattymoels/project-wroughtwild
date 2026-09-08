@@ -1783,7 +1783,21 @@
       "fuel_cost": 0,
       "minimum_era": 1,
       "use_categories": ["construction"],
-      "design_purpose": "Living Frontier: one White lot supplies eight inexpensive placeable signal connections. A Stormglass lever sends one request through one connection to a Cargo Winch; the winch spends its own stored winding. No energy, queued requests, delay, branching or automatic extraction. Ordinary frame removal refunds apply."
+      "design_purpose": "Living Frontier: one White lot supplies eight inexpensive placeable signal connections. White forwards one immediate request to the selected cargo drum or Blue delay. White owns no winding or pending request; the receiver pays its own work. No automatic extraction. Ordinary frame removal refunds apply."
+    },
+    {
+      "id": "assemble_blue_delay",
+      "world_profile": "living_frontier_wave1",
+      "display_name": "Blue Delay Kit",
+      "station": "workbench",
+      "minimum_skill": {},
+      "inputs": { "blue_flake": 2, "wood": 2 },
+      "outputs": { "blue_delay_kit": 1 },
+      "base_skill_xp": 0,
+      "fuel_cost": 0,
+      "minimum_era": 1,
+      "use_categories": ["construction"],
+      "design_purpose": "One Blue lot pays for eight inexpensive delays. Each holds one signal for three active nearby seconds, never supplies energy and has explicit pause/cancel controls. Ordinary half-frame refunds apply. Blue carries 128 units so a whole costly Catalyst recipe can fit later."
     },
     {
       "id": "assemble_cargo_winch",

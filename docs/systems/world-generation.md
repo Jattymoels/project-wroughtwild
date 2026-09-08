@@ -1,5 +1,12 @@
 # World Generation, Settlements and Travel
 
+**LF-2A (8 September 2026):** the same opt-in profile adds Blue Flakes on home
+margin 2 (+8 m X), retaining the existing lot/work/formation limits and adding
+a fixed 4% Faint Frost bonus per lot. Version 3 requires Red, White and Blue;
+versions 1/2 introduce only later hosts while preserving their complete old
+records. Geography, finite ordinary resources and pressure remain exact.
+[Implementation and checks](../prototype/living-frontier-wave2-2026-09-08.md).
+
 **LF-1A, D-033 (8 September 2026):** `living_frontier_wave1` is an explicitly
 opt-in experiment on the exact V6 base geography, not the default successor
 campaign. A reachable home-clearing margin supports one native Red host; its

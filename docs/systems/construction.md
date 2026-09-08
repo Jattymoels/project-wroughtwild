@@ -1,5 +1,16 @@
 # Construction System
 
+## Living Frontier Blue delay — LF-2A, 8 September 2026
+
+The opt-in workbench makes Blue Delay Kits from two harvested Blue Flakes and
+two wood. White may forward to Blue, which holds one visible request for three
+nearby active seconds before asking the existing drum to pay its own winding.
+Explicit pause, obstruction, distance, restart, cancellation and signal-route
+rewiring preserve the declared one-request contract. Source payload 3 migrates
+published Red/White ledgers; experimental machine payload 3 adds saved delay
+state while normal schemas remain unchanged.
+[Exact behavior and paid verification](../prototype/living-frontier-wave2-2026-09-08.md).
+
 ## Living Frontier source support repair — LF1-R1, 8 September 2026
 
 A fixed extraction host accepts its original terrain support or an actual

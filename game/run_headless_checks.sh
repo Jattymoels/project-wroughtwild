@@ -92,6 +92,8 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --path . res://tests/leyline_support_repair.tscn -- --repair-restore
 "$GODOT" --headless --path . res://tests/living_frontier_flow.tscn
 "$GODOT" --headless --path . res://tests/living_frontier_flow.tscn -- --lf-restore
+"$GODOT" --headless --path . res://tests/living_frontier_wave2_flow.tscn -- --lf2-bootstrap
+"$GODOT" --headless --path . res://tests/living_frontier_wave2_flow.tscn -- --lf2-restore
 "$GODOT" --headless --path . res://tests/ranged_fairness.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/enemy_contact_review.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/enemy_contact_review.tscn -- --forge-contact

@@ -17,9 +17,13 @@ leyline: build/leyline_tests
 build/leyline_tests: test_leyline.cpp $(wildcard $(SIM)/src/*.cpp) $(wildcard $(SIM)/include/wroughtwild/*.h)
 	@mkdir -p build
 	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_leyline.cpp $(wildcard $(SIM)/src/*.cpp) -o $@
-test: $(BIN) build/leyline_tests
+build/living_frontier_wave2_tests: test_living_frontier_wave2.cpp $(wildcard $(SIM)/src/*.cpp) $(wildcard $(SIM)/include/wroughtwild/*.h)
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_living_frontier_wave2.cpp $(wildcard $(SIM)/src/*.cpp) -o $@
+test: $(BIN) build/leyline_tests build/living_frontier_wave2_tests
 	./$(BIN) ../../data/tuning
 	./build/leyline_tests ../../data/tuning
+	./build/living_frontier_wave2_tests ../../data/tuning
 
 # Complete terrain/pack fingerprints from before the intensive, multi-seed
 # reachable habitat guarantees, and the approved material/form matrix.

@@ -652,6 +652,7 @@ public:
     Dictionary contraption_link(const String& key, const String& target, bool clear);
     Dictionary contraption_action(const String& key, const String& action, bool clear=true, bool other_clear=true, double distance=0);
     Dictionary contraption_tick(const String& key, double seconds, bool clear);
+    Dictionary contraption_delay_tick(const String& key, double seconds, bool clear, bool receiver_clear);
     Dictionary contraption_deposit(const String& key, const String& item, int count);
     Dictionary contraption_withdraw(const String& key, const String& port, const String& item, int count);
     String contraption_save() const;

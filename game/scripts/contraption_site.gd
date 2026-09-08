@@ -9,7 +9,7 @@ const LABELS := {
 	"lantern_lamp": "Lanternheart lamp", "cargo_winch": "Thrumroot cargo drum",
 	"winch_landing": "Fixed cargo landing", "stormglass_lever": "Stormglass lever",
 	"magnetic_sorter": "Pullstone sorting chute", "ventlung_bellows": "Ventlung bellows",
-	"pressure_feeder": "Pressure feeder", "white_connection": "White connection"
+	"pressure_feeder": "Pressure feeder", "white_connection": "White connection", "blue_delay": "Blue delay"
 }
 
 var machine_key := ""
@@ -36,6 +36,8 @@ var _feeder_panel_refresh_left := 0.0
 var _feeder_readout: Dictionary = {}
 var _highlighted := false
 var _last_state: Dictionary = {}
+var _delay_label: Label3D
+var _delay_refresh_left := 0.0
 
 
 static func bounds_for(fixture_kind: String) -> Vector3:
@@ -44,7 +46,7 @@ static func bounds_for(fixture_kind: String) -> Vector3:
 		"magnetic_sorter": return LOOK.sorter_bounds
 		"ventlung_bellows": return LOOK.bellows_bounds
 		"stormglass_lever": return LOOK.lever_bounds
-		"white_connection": return LOOK.white_connection_bounds
+		"white_connection", "blue_delay": return LOOK.white_connection_bounds
 		"pressure_feeder": return LOOK.feeder_bounds
 	return LOOK.lamp_bounds
 
@@ -95,7 +97,7 @@ func _ready() -> void:
 	if kind == "cargo_winch":
 		_basket = StrangeResourceArt.fixture_visual("cargo_basket")
 		add_child(_basket)
-	if kind in ["cargo_winch", "stormglass_lever", "white_connection"]:
+	if kind in ["cargo_winch", "stormglass_lever", "white_connection", "blue_delay"]:
 		_cable = MeshInstance3D.new()
 		var cylinder := CylinderMesh.new()
 		cylinder.top_radius = 1.0
@@ -103,15 +105,22 @@ func _ready() -> void:
 		cylinder.height = 1.0
 		cylinder.radial_segments = 6
 		_cable.mesh = cylinder
-		_cable.material_override = _material(LOOK.white_connection_colour if kind == "white_connection" else LOOK.cable_colour)
+		_cable.material_override = _material(LOOK.blue_delay_colour if kind=="blue_delay" else LOOK.white_connection_colour if kind == "white_connection" else LOOK.cable_colour)
 		add_child(_cable)
 		_pulse = _sphere(LOOK.pulse_radius_m, LOOK.pulse_colour)
 		add_child(_pulse)
 		_pulse.hide()
-	if kind in ["cargo_winch", "lantern_lamp", "pressure_feeder", "white_connection"]:
+	if kind in ["cargo_winch", "lantern_lamp", "pressure_feeder", "white_connection", "blue_delay"]:
 		_receiver = _sphere(LOOK.receiver_radius_m, LOOK.receiver_colour)
 		_receiver.position = Vector3(0, bounds_for(kind).y + 0.04, 0)
 		add_child(_receiver)
+	if kind=="blue_delay":
+		_delay_label = Label3D.new()
+		_delay_label.position.y = bounds_for(kind).y + .3
+		_delay_label.font_size = 32
+		_delay_label.pixel_size = .006
+		_delay_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		add_child(_delay_label)
 	_last_pulses = int(record.get("pulses", 0))
 	_last_arrivals = int(record.get("completed_trips", 0))
 	_last_cycles = int(record.get("completed_cycles",0))
@@ -174,6 +183,14 @@ func _physics_process(delta: float) -> void:
 	var player := get_tree().get_first_node_in_group("player") as Node3D
 	if player == null or player.global_position.distance_squared_to(global_position) > LOOK.active_distance_m * LOOK.active_distance_m:
 		return
+	if kind=="blue_delay":
+		if get_tree().paused or (player is WroughtwildPlayer and player.combat.life<=0): return
+		var current: Dictionary = sim.contraption_state(machine_key)
+		if bool(current.get("pending_request",false)):
+			var target := find_site(get_tree(),String(current.link))
+			var result := sim.contraption_delay_tick(machine_key,delta,span_clear(),target!=null and target.span_clear())
+			if not sim.contraption_state(machine_key).pending_request and _panel!=null: _panel.refresh_if_open(String(result.message))
+		_delay_refresh_left -= delta
 	if kind == "cargo_winch":
 		# A neighbouring lever may have changed the drum since its last frame.
 		# Query authority before advancing, so signals take effect immediately.
@@ -229,6 +246,14 @@ func refresh_from_sim(feeder_geometry: Dictionary = {}) -> void:
 			bladder.scale.y = 0.48 + 0.15 * float(record.get("energy", 0)) / maxf(1, capacity)
 	if kind=="pressure_feeder":
 		_refresh_feeder(record, feeder_geometry)
+	if kind=="blue_delay":
+		var pending := bool(record.pending_request)
+		var remaining := maxf(0.0,float(sim.contraption_config().delay_seconds)-float(record.delay_seconds))
+		_delay_label.text = ("Paused · " if bool(record.delay_paused) or not span_clear() else "Held · ") + "%.1f s" % remaining if pending else "Blue · ready"
+		if _receiver!=null: _receiver.visible = pending or _highlighted
+		if _delay_refresh_left<=0:
+			_delay_refresh_left = LOOK.signal_panel_refresh_seconds
+			if _panel!=null: _panel.refresh_if_open()
 	_refresh_span(record)
 	_last_state = record
 
@@ -290,7 +315,7 @@ func supported() -> bool:
 
 func link_clear(target: ContraptionSite) -> bool:
 	if target == null or not is_inside_tree(): return false
-	if kind == "white_connection" or target.kind == "white_connection":
+	if kind in ["white_connection","blue_delay"] or target.kind in ["white_connection","blue_delay"]:
 		if not supported() or not target.supported(): return false
 	if kind == "cargo_winch":
 		if not supported() or not target.supported(): return false

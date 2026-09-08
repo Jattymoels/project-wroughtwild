@@ -1,5 +1,11 @@
 # Crafting and Skills
 
+**LF-2A (8 September 2026):** two Blue Flakes and two wood make one Blue Delay
+Kit at the ordinary workbench in the Living Frontier experiment, with no added
+fuel/XP/skill requirement. One 16-unit Blue lot funds eight parts; Blue carries
+128 units. Source work and exact claims follow D-033. This grants no winding or
+automatic extraction. [Wave 2 contract](../prototype/living-frontier-wave2-2026-09-08.md).
+
 **LF-1A, D-033 (8 September 2026):** the opt-in Living Frontier experiment
 adds `fire_red_brick`: 8 raw clay + 2 Red Salt → 4 Rustclay Brick at the basic
 forge, immediate and zero XP. Salt replaces only this variant's one fuel heat;
