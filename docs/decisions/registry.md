@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner art planning direction, 9 September 2026: the owner likes their local
+TRELLIS boar and requests a coherent asset plan, especially **pulsing cracks of
+magic scarred through assets**. Under D-013/D-030, the
+[asset roadmap](../prototype/leyline-asset-roadmap-2026-09-09.md) proposes an
+existing-boar material/movement proof and small habitat before wider reuse.
+The shared mark is recessed host damage with narrow living light, rather than
+uniform glowing outlines. Visible pulsing is now a study target beyond the
+old almost-static ground treatment. Source/work state and combat tells retain
+their separate meanings. This authorizes planning and records the visual
+direction; it does not adopt raw generated assets, select new gameplay rules,
+change saved geography or extend Living Frontier beyond its bounded work item.
+
 Owner implementation authorization, 8 September 2026: repair and verify
 LF1-R1 before extending **D-033 through Wave 2 only**, in LF-2A/B/C/D order.
 The [bounded work item](../prototype/living-frontier-wave2-2026-09-08.md) records

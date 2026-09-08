@@ -1,5 +1,16 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+**Owner continuation, 9 September 2026:** the local TRELLIS boar is liked as a
+starting asset. Plan a coherent asset set with much clearer **pulsing cracks of
+magic scarred through the hosts**. The [asset roadmap](../prototype/leyline-asset-roadmap-2026-09-09.md)
+proposes boar/scar proof → affected grove → small fauna set → source/workshop
+continuity → one checked world route. Dark recessed damage and narrow moving
+light should connect hide, bark, rock and deliberately worked material while
+preserving each host's identity. This brings visible pulsing forward for the
+new study, beyond the current almost-static ground material. Ambient life,
+native source/work state and immediate attack warnings remain distinct. This is
+planning direction, not adoption of raw meshes or a global shader replacement.
+
 **Owner visual review, 8 September 2026:** the moth remains liked; the mammal
 meshes are rejected as awkward/rounded compared with the selected concepts.
 The [wolf and woodland studies](../prototype/leyline-art-studies-2026-09-08.md)

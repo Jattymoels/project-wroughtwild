@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 8 September 2026. Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (art planning). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -8,19 +8,22 @@ queue; the [numbered waves](roadmap-waves.md) remain a historical record.
 Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
-## Current priority — wolf and woodland art studies
+## Current art priority — boar scars and a coherent habitat
 
-Owner continuation, 8 September: establish one appealing wolf and one small
-woodland/river scene while playtesting waits. **In progress:**
-[leyline art studies](leyline-art-studies-2026-09-08.md). Preserve ordinary animal
-ancestry and the impact-borne currents/glowing scars shared with the land. The
-first deliverable is an isolated shape/composition checkpoint; final art approval and
-runtime adoption remain separate. The owner approved the Meshy experiment and
-specific wolf-image upload. The [bounded experiment is complete](../art/leyline-studies/2026-09-08/wolf-image3d/README.md):
-actual generated/imported 6 Lite geometry, preserved raw source, editable Blender
-review and 31 passed checks. It is a better starting animal, but eyes/mouth,
-fur, plate separation and deformation need another bounded art pass. Neither
-candidate is adopted; the woodland study remains below target.
+Owner planning request, 9 September: the local TRELLIS boar is liked; emphasise
+pulsing magic cracks and build assets that share the world's lore. The
+[asset roadmap](leyline-asset-roadmap-2026-09-09.md) is prepared. Proposed order:
+**ART-01 boar/scar handoff → ART-02 affected grove → ART-03 small fauna set →
+ART-04 sources and workshop → ART-05 one actual world route.** Start with the
+existing boar and separate surface/light authoring. These are proposed production
+slices, not five implemented or automatically adopted asset batches.
+
+The [local TRELLIS wolf experiment](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
+completed generation and 32 Blender handoff checks after the earlier Meshy review.
+The overnight boar has also been inspected read-only. Both are dense unrigged
+sources; the [wolf/woodland study](leyline-art-studies-2026-09-08.md) still needs
+visual finishing and runtime proof. Preserve the liked moth, ordinary animal
+ancestry and current game assets while establishing that standard.
 
 Related owner direction: [meteorite influences](meteorite-influences-2026-09-08.md)
 connect seeded impact types, altered encounters and extracted augmentations.

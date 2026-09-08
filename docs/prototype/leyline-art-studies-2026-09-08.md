@@ -3,6 +3,13 @@
 Status: **In progress.** Owner direction, 8 September 2026, after the portable
 playtest build. Baseline: `dc64aea`, clean `main`.
 
+**Continuation, 9 September:** local TRELLIS generation works and the owner likes
+their overnight boar. The [asset roadmap](leyline-asset-roadmap-2026-09-09.md)
+plans clearer pulsing scars across creatures, habitats and useful recovered
+materials. Its recommended next checkpoint is the existing boar's scar/material
+proof, followed by a small grove; the wolf and woodland quality goals remain
+open. The new plan does not mark either study adopted or start broad production.
+
 Current checkpoint: [baseline inspection and composition trial](../art/leyline-studies/2026-09-08/README.md)
 are prepared. The trial remains below the intended art standard and is not
 adopted. The bounded [image-to-3D/Blender experiment](../art/leyline-studies/2026-09-08/wolf-image3d/README.md)
