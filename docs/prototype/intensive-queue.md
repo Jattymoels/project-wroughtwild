@@ -19,20 +19,31 @@ runtime adoption and any external asset service remain separate.
 
 Related owner direction: [meteorite influences](meteorite-influences-2026-09-08.md)
 connect seeded impact types, altered encounters and extracted augmentations.
-Specific colour functions and a first gameplay slice remain to be selected;
-this design record does not replace the active art study or queue all variants.
+The owner now supports the four broad colour/process directions. The Living
+Frontier planning entry below supersedes the moth-first gameplay recommendation;
+it does not replace this separate art study or queue every animal variant.
 
-## Parallel planning — INT-09 meteorite influences
+## Parallel planning — Living Frontier, INT-10 through INT-18
 
-Owner request, 8 September: recover the coloured-meteorite lore from the prior
-conversations and map it into world design, mobs, drops, crafting, building and
-combat while image-to-3D setup waits. **Plan ready:**
-[INT-09: Meteorite influences across the living world](meteorite-leyline-intensive-2026-09-08.md).
-The proposed first proof joins one seeded red source and Cinder moth encounter
-to existing Ember buildcraft and Cinderglass windows. A finite field shard host
-and signature vent would be new selected behaviour. Exact colour meanings,
-successor-world compatibility and gameplay slices await selection; the separate
-wolf/woodland study retains its current ownership and review status.
+Owner steering, 8 September: retain the four influence foundations and prepare
+coordinated intensives/waves before the moth. **Roadmap ready; no gameplay
+implementation started:** [Living Frontier](living-frontier-roadmap-2026-09-08.md)
+and [extraction/processing proposal](leyline-catalyst-extraction-2026-09-08.md).
+Normal extraction yields useful magical materials; intact Catalysts are rare,
+with deliberate perfected manufacture later. A corrupted human's laboratories
+trigger failsafe resonance on first campaign defeats, physically amplifying
+the same world through eras. An eventual uber-boss grants control and optional
+higher challenge settings.
+
+The roadmap proposes source/process contracts → useful extraction → living
+hosts/outposts → first lab and physical era change → combinations/second era
+change → human finale → captured Heat. Exact recipes, odds, supply, lab count,
+trigger revisions, home protection and migration require bounded work items.
+INT-18 economy/save verification gates every wave. The next recommended packet
+is INT-10A, followed by INT-11A; no new moth or campaign code is dispatched.
+The [initial INT-09 map](meteorite-leyline-intensive-2026-09-08.md) retains source
+history, but its moth-first sequence is superseded. The wolf art study keeps
+its separate ownership and review status.
 
 ## Previous slice — INT-08B portable Windows build
 

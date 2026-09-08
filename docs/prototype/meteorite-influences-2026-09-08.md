@@ -3,12 +3,16 @@
 Status: **Owner-approved direction; detailed rules proposed, not implemented.**
 8 September 2026. Source baseline: `d466256`.
 
-The owner's subsequent request to map this intent across world design,
-crafting, building and combat is developed in
-[INT-09: Meteorite influences across the living world](meteorite-leyline-intensive-2026-09-08.md).
-That intensive recovers the original conversation wording, proposes a complete
-red-moth/glassbank return loop and separates later palette/extraction work.
-Its detailed rules remain proposals; this link does not select implementation.
+The owner's subsequent requests are developed in the
+[initial INT-09 system map](meteorite-leyline-intensive-2026-09-08.md) and the
+newer [Living Frontier roadmap](living-frontier-roadmap-2026-09-08.md).
+The four broad influence proposals now have owner support as foundations.
+The roadmap supersedes the moth-first sequence: useful magical raw materials,
+rare intact Catalysts and perfected manufacture connect to laboratory
+failsafes, physically transforming eras, a human uber-boss and captured
+difficulty controls. [Extraction and process design](leyline-catalyst-extraction-2026-09-08.md).
+Exact outputs, odds, recipes, transforms, campaign count and migration remain
+proposed; the owner requested planning before implementation.
 
 ## Owner direction
 
@@ -55,10 +59,11 @@ Evidence: [world generation](../systems/world-generation.md),
 `sim/src/worldgen_frontier_v6_pressure.inc`,
 `game/art/leyline_look.gd`, and `data/tuning/world.json`.
 
-## Candidate identities — proposals for discussion
+## Working identities — direction supported, details proposed
 
-The owner has **not** assigned these exact colour meanings, attacks, outputs or
-recipes. These examples illustrate the connection, not an accepted catalogue.
+The owner subsequently supports these broad colour/process directions as
+foundations to tune. The specific attacks, outputs and recipes remain examples,
+not an accepted implementation catalogue.
 
 | Colour | Candidate principle | Example creature expression | Example recovered use |
 | --- | --- | --- | --- |
@@ -93,7 +98,11 @@ Overlap, mixed influences, dynamic exposure/transformation, purification,
 renewability and broader automation remain undecided. No new generator profile,
 spawn system, recipe or save schema is implemented or selected here.
 
-## Recommended first gameplay proof — not queued implementation
+## Original first gameplay recommendation — superseded by the roadmap
+
+The original recommendation below is retained as history. The owner now asks
+for extraction/campaign foundations before the moth; use the Living Frontier
+roadmap above for the current sequence.
 
 After the visual standard is established, choose one additional influence and
 one existing animal. Trace one complete example from seeded impact and habitat

@@ -83,6 +83,36 @@ forge quality, manual gathering and finite rare-component rules remain in force.
 The separately approved [pressure workshop slice](prototype/pressure-workshop-2026-09-06.md)
 implements one finite source and one existing brick recipe within that direction.
 
+## Campaign and extraction continuation — owner direction, 8 September 2026
+
+The owner now supports White/Impulse, Red/Excitation, Blue/Retention and
+Green/Propagation as working foundations. The main extract is a useful magical
+material for crafting, refining and building. An intact Catalyst is a rare
+discovery; mastery can eventually manufacture one from that material. This
+develops the earlier recovery premise without yet changing current loot or
+recipe rules. The [extraction proposal](prototype/leyline-catalyst-extraction-2026-09-08.md)
+separates ordinary useful work, rare finds and perfected production.
+
+The intended campaign connects a corrupted human survivor's laboratories to
+further animal augmentation and forced combinations. Their installed failsafes
+react to designated Trial victories with massive leyline resonance. Each new
+era should physically make the same world, biomes and fauna more extreme.
+Eventually the player confronts the survivor as an uber-boss and gains control
+of the apparatus, enabling voluntarily harder challenges for more rewards.
+
+These proposed later laboratories are deliberate interventions after the
+catastrophe. They do not reinterpret the existing old smithy, whose pressure
+remains an accidental impact on a pre-cataclysm ruin. The survivor's exact name,
+motive, history and final encounter remain open; “human” does not establish an
+Earth origin or change the alien setting.
+
+The [Living Frontier roadmap](prototype/living-frontier-roadmap-2026-09-08.md)
+plans this before creature implementation. Three lab sites, two era transitions,
+protected player-built geometry and per-run Heat are implementation candidates,
+not a final campaign length or accepted detailed generation/save policy.
+Current curio-driven eras and acquisition remain implemented until a selected
+compatible successor replaces them.
+
 ## Mysteries left open
 
 The sender and purpose of the meteorites, whether the shower was deliberate,

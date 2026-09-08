@@ -1,7 +1,17 @@
 # INT-09 — Meteorite influences across the living world
 
-**Status: Plan ready; gameplay implementation not selected.**
+**Status: Initial system map; implementation sequence superseded, no gameplay started.**
 Owner request: 8 September 2026. Author: Codex. Audited baseline: `a3204d9`.
+
+**Later owner steering, 8 September:** the four influence directions are
+supported as foundations, but the owner requests coordinated waves before the
+moth. Normal extraction should pay a useful magical material; intact Catalysts
+are rare finds, with perfected manufacture later. Laboratory failsafes cause
+world-transforming eras, followed by a human uber-boss and captured difficulty
+controls. The [Living Frontier roadmap](living-frontier-roadmap-2026-09-08.md)
+and [extraction proposal](leyline-catalyst-extraction-2026-09-08.md) now govern
+planning. The original economy, moth-first sequence and selected-event
+assumptions below are historical proposals, not the next implementation order.
 
 The requested outcome is a coherent design intensive connecting different
 asteroid-borne technologies to seeded places, ground leylines, augmented animals,
@@ -81,8 +91,9 @@ mechanic need not be exclusive to one geography.
 
 ## 3. Four proposed influence identities
 
-These develop the earlier candidate table. The owner has named the colours,
-but has not approved this exact catalogue or its working labels.
+These develop the earlier candidate table. The owner subsequently supports
+the four broad directions as foundations to tune. Exact host examples,
+mechanics and recipes remain proposals; see the newer roadmap above.
 
 | Colour / working identity | Core process | Land and water expression | Animal / combat expression | Desired player capability |
 | --- | --- | --- | --- | --- |

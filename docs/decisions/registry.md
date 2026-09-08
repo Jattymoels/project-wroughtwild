@@ -1,5 +1,25 @@
 # Decision Registry
 
+Owner campaign/extraction direction, 8 September 2026: the owner supports the
+White/Impulse, Red/Excitation, Blue/Retention and Green/Propagation foundations
+and requests coordinated intensives/waves before a moth implementation.
+Normal leyline extraction should yield a useful magical material for craft,
+refining and building; Catalysts are rare intact finds or later perfected
+manufacture from that material. A corrupted human's laboratories around the
+world carry failsafes: designated Trial victories cause global resonance and
+progressively more extreme terrain, biomes and fauna. An eventual human
+uber-boss grants control and optional harder, more rewarding configurations.
+[Living Frontier roadmap](../prototype/living-frontier-roadmap-2026-09-08.md),
+[extraction proposal](../prototype/leyline-catalyst-extraction-2026-09-08.md).
+This records the requested direction and planning scope, not implementation
+of all proposed details. It supersedes the initial INT-09 moth-first planning
+sequence. Exact source outputs/odds/recipes, renewability, lab/era counts,
+world transforms, build protection and Heat settings remain proposed. The
+victory-driven era direction needs a concrete replacement of D-019/D-028's
+current curio-at-landmark triggers; acquisition changes likewise need an
+explicit D-026/loot and legacy-world contract. No current save, recipe, reward,
+geography or campaign trigger is changed by this planning record.
+
 Owner meteorite direction, 8 September 2026: D-030 extends from coloured leyline
 appearance into differentiated impact-borne influences connecting seeded places,
 altered animal encounters and useful extracted augmentations. The owner cites
