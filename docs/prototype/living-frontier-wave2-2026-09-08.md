@@ -2,6 +2,10 @@
 
 **Completed and checked: 9 September 2026. Wave 3 requires a separate review.**
 
+**Orchestrator review, 9 September:** [technical all-clear](living-frontier-wave2-review-2026-09-09.md).
+LF1-R1 and all four Wave 2 slices pass independent checks. A bounded Wave 3
+work item can start; owner pacing and comfort playtests remain separate.
+
 Owner authorization: 8 September 2026. Repair LF1-R1 and verify it before
 implementing LF-2A, LF-2B, LF-2C and LF-2D, in order. Stop before Wave 3;
 Wave 3 needs a separate orchestrator review. Preserve the independent wolf study.

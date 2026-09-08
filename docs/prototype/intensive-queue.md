@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (art planning). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (art planning and Wave 2 review). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -33,21 +33,19 @@ it does not replace this separate art study or queue every animal variant.
 
 ## Parallel planning — Living Frontier, INT-10 through INT-18
 
-**Wave 1 implemented, 8 September:** the owner's explicit
-request authorised LF-1A → LF-1B → LF-1C only. The [bounded implementation and
-handoff](living-frontier-wave1-2026-09-08.md) records opt-in compatibility,
-source/recipe tuning, paid player flows and per-slice verification. Stop after
-the first constructed connection for owner review. Wave 2 remains unselected;
-the separate wolf/image-to-3D study retains its independent work and review.
-
-**Orchestrator review:** standard suites pass, but
-[LF1-R1](living-frontier-wave1-review-2026-09-08.md) blocks the all-clear:
-excavating below a source leaves it unusable even after paid support repair.
-Repair and verify this before extending the source rules into Wave 2.
+**Waves 1–2 implemented; technical review passed, 9 September.**
+The [Wave 1 handoff](living-frontier-wave1-2026-09-08.md) and
+[Wave 2 implementation](living-frontier-wave2-2026-09-08.md) record the opt-in
+extraction, ordinary Catalyst recipes and four-colour paid workshop.
+The [Wave 2 orchestrator review](living-frontier-wave2-review-2026-09-09.md)
+independently verifies the LF1-R1 support repair and all four Wave 2 slices,
+with no blocking finding. A bounded LF-3A → LF-3B → LF-3C work item can start.
+Owner discovery, pacing and comfort playtests remain open. The separate
+animal/image-to-3D study retains its own work and review.
 
 Owner steering, 8 September: retain the four influence foundations and prepare
-coordinated intensives/waves before the moth. **Roadmap ready; no gameplay
-implementation started:** [Living Frontier](living-frontier-roadmap-2026-09-08.md)
+coordinated intensives/waves before the moth. The original planning context is
+[Living Frontier](living-frontier-roadmap-2026-09-08.md)
 and [extraction/processing proposal](leyline-catalyst-extraction-2026-09-08.md).
 Normal extraction yields useful magical materials; intact Catalysts are rare,
 with costly ordinary forge/bench recipes as the dependable alternative. Latest
@@ -61,12 +59,14 @@ The revised seven waves are **extract/craft/first connection → four-colour
 construction → living hosts/rewards → first lab and era two → combinations
 and era three → human finale → captured Heat**. The roadmap breaks each into
 playable slices; decisions and checks accompany their behaviour. Exact recipes, odds, supply, lab count,
-trigger revisions, home protection and migration require bounded work items.
-INT-18 economy/save verification gates every wave. Start with **LF-1A**, one
-Red source and useful paid heat process; **LF-1B** adds a costly ordinary Ember
-recipe, and **LF-1C** adds White extraction and a placed lever-to-winch
-connection. Playtest that loop before expanding; no new moth or campaign code
-is dispatched by this planning record.
+trigger revisions, home protection and migration require bounded work items;
+selected Wave 1–2 values are recorded in their implementation contracts.
+INT-18 economy/save verification gates every wave. The next boundary is **LF-3**:
+related animals with distinct influence decisions, a small four-influence habitat,
+and coherent drops/acquisition with a laboratory trail. Before a successor becomes
+a normal saved-world choice, establish all three visible laboratory sites and
+define both later transformation regions. Preserve existing saved-world policies;
+lab encounters, hybrids and actual era transitions remain later waves.
 The [initial INT-09 map](meteorite-leyline-intensive-2026-09-08.md) retains source
 history, but its moth-first sequence is superseded. The wolf art study keeps
 its separate ownership and review status.

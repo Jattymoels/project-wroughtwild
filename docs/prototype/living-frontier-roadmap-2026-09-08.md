@@ -4,7 +4,8 @@
 See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
 [Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
 for selected tuning, compatibility, evidence and remaining owner playtests.
-Wave 3 requires a separate orchestrator review.
+The [9 September orchestrator review](living-frontier-wave2-review-2026-09-09.md)
+clears the foundation for a bounded Wave 3 work item; later waves remain proposals.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 
