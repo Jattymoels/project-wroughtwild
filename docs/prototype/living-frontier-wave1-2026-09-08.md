@@ -2,6 +2,10 @@
 
 **Owner-authorised 8 September 2026. LF-1A, LF-1B and LF-1C implemented.** Baseline `8401b1a`.
 Scope: LF-1A, LF-1B, LF-1C, in that order. Wave 2 requires separate review.
+**Orchestrator review:** the independent rerun passes, but
+[LF1-R1](living-frontier-wave1-review-2026-09-08.md) reproduces a source that
+cannot recover after excavation and paid support repair. Resolve it before
+expanding the source rules into Wave 2; implementation evidence below remains.
 The independent wolf/image-to-3D study is outside this change.
 The [per-slice changed-file manifest](living-frontier-wave1-files-2026-09-08.md)
 lists every implementation, specification, test, tool and capture changed.

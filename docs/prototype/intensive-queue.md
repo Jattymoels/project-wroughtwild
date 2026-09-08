@@ -32,6 +32,11 @@ source/recipe tuning, paid player flows and per-slice verification. Stop after
 the first constructed connection for owner review. Wave 2 remains unselected;
 the separate wolf/image-to-3D study retains its independent work and review.
 
+**Orchestrator review:** standard suites pass, but
+[LF1-R1](living-frontier-wave1-review-2026-09-08.md) blocks the all-clear:
+excavating below a source leaves it unusable even after paid support repair.
+Repair and verify this before extending the source rules into Wave 2.
+
 Owner steering, 8 September: retain the four influence foundations and prepare
 coordinated intensives/waves before the moth. **Roadmap ready; no gameplay
 implementation started:** [Living Frontier](living-frontier-roadmap-2026-09-08.md)
