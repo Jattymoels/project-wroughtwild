@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner implementation authorization, 8 September 2026: repair and verify
+LF1-R1 before extending **D-033 through Wave 2 only**, in LF-2A/B/C/D order.
+The [bounded work item](../prototype/living-frontier-wave2-2026-09-08.md) records
+selected decisions and evidence. A fixed source accepts real paid construction
+support after excavation while retaining its workspace check and exact ledger.
+Blue delay, Green two-way requests, bounded paid Red heat and five ordinary
+costly offensive Catalyst recipes stay opt-in. Preserve published source and
+machine payloads with explicit migrations and retain ordinary-world acquisition
+and campaign. Wave 3 requires a separate orchestrator review. This supersedes
+the earlier Wave-1-only authorization below solely within the current work item.
+
 Owner implementation approval, 8 September 2026: implement Living Frontier
 **Wave 1 only**, LF-1A → LF-1B → LF-1C. **D-033** selects an opt-in
 `living_frontier_wave1` experiment reusing V6 geography, with independent saved

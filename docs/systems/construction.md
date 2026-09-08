@@ -1,5 +1,15 @@
 # Construction System
 
+## Living Frontier source support repair — LF1-R1, 8 September 2026
+
+A fixed extraction host accepts its original terrain support or an actual
+upward-facing placed-block surface within the existing anchor contact allowance.
+Both paths require the original unobstructed workspace. Excavation and paid
+repair preserve partial work, released claims, fixed outcomes and formation,
+including already-undermined saved hosts. There is no relocation, protected
+no-dig region, stock reset or save migration.
+[Regression evidence](../prototype/living-frontier-wave2-2026-09-08.md#lf1-r1--physical-support-repair).
+
 ## Living Frontier White connection — LF-1C, 8 September 2026
 
 In the opt-in experiment, two White Mineral and two wood make one normal

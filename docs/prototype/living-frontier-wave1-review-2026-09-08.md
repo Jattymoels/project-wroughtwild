@@ -1,5 +1,9 @@
 # Living Frontier Wave 1 — orchestrator review
 
+Implementation follow-up: LF1-R1's Red/White repair and saved-undermining
+regressions now pass; see [repair evidence](living-frontier-wave2-2026-09-08.md#lf1-r1--physical-support-repair).
+The original independent findings and before evidence below are retained.
+
 8 September 2026. Reviewed baseline: `ecd0bdc2354bcbf24d1152ecd58951878e1cd992`.
 The three implementation commits are `e6feb0b`, `42ee83d` and `ecd0bdc`;
 local `main` and `origin/main` both point to the reviewed final commit.

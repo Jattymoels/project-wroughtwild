@@ -1,9 +1,11 @@
-param([switch]$Native, [switch]$Flow, [switch]$Restore, [switch]$Rendered, [switch]$Regression, [switch]$ContinueFrom1B)
+param([switch]$Native, [switch]$Flow, [switch]$Restore, [switch]$Rendered, [switch]$Regression, [switch]$ContinueFrom1B, [switch]$Repair)
 $ErrorActionPreference = 'Stop'
 $lfRoot = Split-Path $PSScriptRoot
 Set-Location -LiteralPath $lfRoot
 $lfLogs = Join-Path $lfRoot 'build/lf1'
 New-Item -ItemType Directory -Force -Path $lfLogs | Out-Null
+$env:APPDATA = Join-Path $lfLogs 'appdata'
+New-Item -ItemType Directory -Force -Path $env:APPDATA | Out-Null
 $lfGodot = 'C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe'
 function Invoke-LFEngine([string]$Name, [string[]]$Arguments) {
     $lfOut = Join-Path $lfLogs ($Name + '.out.log')
@@ -23,6 +25,10 @@ function Invoke-LFEngine([string]$Name, [string[]]$Arguments) {
     Write-Output ($Name + ': exit ' + $lfProcess.ExitCode)
     $lfText -split "`n" | Select-String -Pattern 'checks|FAIL|SCRIPT ERROR|ERROR:|LF1_|CODEX_' | ForEach-Object { $_.Line }
     if ($lfProcess.ExitCode -ne 0 -or $lfText -match '(?m)^(SCRIPT ERROR|FAIL|ERROR:)') { throw "$Name failed; see $lfLogs" }
+}
+if ($Repair) {
+    Invoke-LFEngine 'support-repair' @('--headless', 'res://tests/leyline_support_repair.tscn')
+    Invoke-LFEngine 'support-repair-restart' @('--headless', 'res://tests/leyline_support_repair.tscn', '--', '--repair-restore')
 }
 if ($Native) {
     $lfCompiler = 'C:/Users/Matty/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/bin/g++.exe'

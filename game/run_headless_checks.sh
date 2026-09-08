@@ -88,6 +88,8 @@ echo "== Codex crafted terrain, modular workshop and woodland checks =="
 "$GODOT" --headless --audio-driver Dummy --path . res://tests/foundry_clarity.tscn
 "$GODOT" --headless --audio-driver Dummy --path . res://tests/foundry_clarity.tscn -- --foundry-restore-only
 "$GODOT" --headless --path . res://tests/first_hour_journey.tscn
+"$GODOT" --headless --path . res://tests/leyline_support_repair.tscn
+"$GODOT" --headless --path . res://tests/leyline_support_repair.tscn -- --repair-restore
 "$GODOT" --headless --path . res://tests/living_frontier_flow.tscn
 "$GODOT" --headless --path . res://tests/living_frontier_flow.tscn -- --lf-restore
 "$GODOT" --headless --path . res://tests/ranged_fairness.tscn

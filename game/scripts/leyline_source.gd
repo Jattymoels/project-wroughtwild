@@ -82,7 +82,15 @@ func _box(parent: Node3D, size: Vector3, at: Vector3, colour: Color) -> MeshInst
 
 func supported() -> bool:
 	var at := StrangeSites._ground(terrain, global_position.x, global_position.z)
-	if not at.is_finite() or absf(at.y-global_position.y) > .4: return false
+	if not at.is_finite() or absf(at.y-global_position.y) > LOOK.support_tolerance_m:
+		# Excavation does not move the anchor. A real built surface can restore
+		# it, including when the excavation was saved by an older game version.
+		var ray := PhysicsRayQueryParameters3D.create(
+			global_position + Vector3.UP * LOOK.support_tolerance_m,
+			global_position - Vector3.UP * LOOK.support_tolerance_m)
+		ray.exclude = [get_rid()]
+		var hit := get_world_3d().direct_space_state.intersect_ray(ray)
+		if not hit.get("collider") is PlacedBlock or hit.normal.y < LOOK.support_normal_y: return false
 	# Fixed hosts never relocate through paid structures or excavations.
 	var query := PhysicsShapeQueryParameters3D.new()
 	var shape := BoxShape3D.new()
