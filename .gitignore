@@ -24,5 +24,7 @@ temp/
 build/
 dist/
 exports/
+__pycache__/
+*.pyc
 
 # Engine-specific (Godot) rules live in game/.gitignore, per ADR-0001.

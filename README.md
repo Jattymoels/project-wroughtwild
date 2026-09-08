@@ -9,6 +9,7 @@ The intended game combines self-directed construction, persistent ARPG buildcraf
 ## Run it
 
 - **Engine project:** download Godot 4.5-stable (single executable) and open `game/project.godot`, or `godot --path game`. Headless checks: `GODOT=/path/to/godot game/run_headless_checks.sh`. See [game/README.md](game/README.md).
+- **Windows playtest export:** [build and verification instructions](docs/prototype/portable-build-2026-09-08.md). The extracted folder includes the engine, rules DLL, tuning and assets; no checkout is needed to play.
 - **Rules tests (no engine, needs g++ and make):** `cd tests/sim && make`.
 - **Text playtest of the whole slice:** `cd tools && make build/playtest && ./build/playtest ../data/tuning`.
 
@@ -27,14 +28,19 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
+[INT-08B portable Windows build](docs/prototype/portable-build-2026-09-08.md)
+adds an isolated export helper and tracked preset, executable-relative tuning,
+source version and complete package instructions. First launch, paid gathering/
+crafting and existing world/trial restarts are checked outside the checkout.
+Other-machine compatibility remains unverified.
+
 [INT-08A controls and comfort](docs/prototype/controls-comfort-2026-09-08.md)
 adds **H → Camera / Sound / Display / Bindings / Help**. Sensitivity, inversion,
 field of view, optional cosmetic motion, volume and keyboard/mouse controls
 persist separately from worlds; prompts follow the selected keys. Original
 bindings remain the defaults, including the shared removal/horn key. Actual
 input, reset/restart and world/trial ownership checks pass. Owner comfort and
-fullscreen/multi-monitor review remain pending; portable export is a separate
-proposed next slice.
+fullscreen/multi-monitor review remain pending.
 
 The [current intensive queue](docs/prototype/intensive-queue.md) tracks seven
 focused passes that can progress between playtests. First is

@@ -28,16 +28,25 @@ const TUNING_HELP := """WROUGHTWILD - TUNING DATA NOT LOADED
 The rules extension is built and loaded, but data/tuning could not be
 read, so every interaction is disabled.
 
-Expected location: the data/tuning directory of the repository,
-one level above the game/ project (%s).
+Expected location: %s
 
 Run the game from a full repository checkout (godot --path game),
 not from a copied-out game folder.
 
 Details: %s"""
 
+const PACKAGE_HELP := """WROUGHTWILD - INCOMPLETE PLAYTEST BUILD
+
+The game could not load its rules library or tuning data.
+Extract the entire original ZIP again to a new folder, keeping the EXE,
+PCK, rules DLL and data folder together. Then restart Wroughtwild.
+
+Details: %s"""
+
 
 func _ready() -> void:
+	var version := String(ProjectSettings.get_setting("application/config/version", "development"))
+	DisplayServer.window_set_title("Wroughtwild · " + version)
 	# Sim's own autoload _init runs before this _ready, so its state is final.
 	if not ClassDB.class_exists("WroughtwildSim"):
 		_fail(BUILD_HELP)
@@ -55,6 +64,8 @@ func _ready() -> void:
 
 
 func _fail(message: String) -> void:
+	if not OS.has_feature("editor"):
+		message = PACKAGE_HELP % message.get_slice("Details: ", 1) if "Details: " in message else PACKAGE_HELP % "Rules DLL is missing or incompatible."
 	push_error(message)
 	printerr(message)
 	if DisplayServer.get_name() == "headless":

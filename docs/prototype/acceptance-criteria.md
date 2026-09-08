@@ -352,6 +352,21 @@ INT-04B's continuous-bed design following the owner's rejected drone.
   other keyboard layouts and multi-monitor behaviour remain unverified.
   [Implementation and evidence](controls-comfort-2026-09-08.md).
 
+## Portable Windows playtest (INT-08B)
+
+- [x] Isolated local export includes the pinned Godot engine, freshly compiled
+  native extension, unchanged tuning, settings and required authored assets.
+- [x] An extracted folder runs outside the checkout and unrelated working
+  directory; native tuning resolves only beside its executable. An incomplete
+  copy gives package recovery instructions instead of using repository data.
+- [x] Normal class/seed startup, finite gathering, paid kit crafting/placement,
+  independent preferences and fresh-process saves work in the rendered export.
+- [x] A previous generated built-home save and pre-change generated suspended
+  trial retain exact ownership/geography; resumed trial life, cooldowns, loot
+  and choices remain, and its cleared lift enters the next floor.
+- [ ] Other-machine compatibility and ordinary owner play are verified.
+  [Implementation, commands and evidence](portable-build-2026-09-08.md).
+
 ## Whole-slice playtest
 
 The [Wide Frontier intensive](wide-frontier-intensive-2026-09-06.md), D-032,

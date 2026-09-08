@@ -16,9 +16,12 @@ func _init() -> void:
 		push_error("Sim tuning failed to load: %s" % sim.last_error())
 
 
-## Resolves the repository's data/tuning directory. The game project lives
-## at game/, so tuning sits one level above the project root.
+## Native std::ifstream requires real disk files, not files inside the PCK.
+## Editor runs retain the repository layout. Exported builds use only their
+## own sibling data directory, independent of the process working directory.
 static func get_tuning_directory() -> String:
+	if not OS.has_feature("editor"):
+		return OS.get_executable_path().get_base_dir().path_join("data/tuning")
 	return ProjectSettings.globalize_path("res://").path_join("../data/tuning")
 
 

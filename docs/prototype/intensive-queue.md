@@ -8,14 +8,21 @@ queue; the [numbered waves](roadmap-waves.md) remain a historical record.
 Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
-## Current priority — INT-08A controls and comfort
+## Current priority — INT-08B portable Windows build
+
+The owner's “Continue” on 8 September selects
+[INT-08B](portable-build-2026-09-08.md) after INT-08A. **Implemented, review
+pending:** isolated repeatable export, packaged rules/assets/settings, source
+identity and 497 focused checks covering first launch and existing world/trial
+ownership. Other-machine verification remains separate.
+
+## Previous slice — INT-08A controls and comfort
 
 The owner's “Yep go” on 8 September selects [INT-08A](controls-comfort-2026-09-08.md)
 after the eight playtest slices below. **Implemented, owner comfort review
 pending.** Saved camera, sound, display and keyboard/mouse controls extend the
 existing H overlay. Actual input, 540p–1080p layouts, fresh restarts and unchanged
-world/trial ownership pass. INT-08B remains a separate proposed portable-build
-slice; desktop fullscreen and multi-monitor review remain open.
+world/trial ownership pass. Desktop fullscreen and multi-monitor review remain open.
 
 ## Completed owner playtest round, 7 September 2026
 
@@ -42,7 +49,7 @@ The new owner feedback reopens specific issues within previously implemented
 passes. Technical evidence remains recorded; it does not override this human
 feedback or make all unrelated earlier work invalid. No final tuning values,
 new generator profile, higher enemy cap or dash invulnerability are selected by
-this plan. INT-08A was subsequently selected above; INT-08B remains proposed.
+this plan. INT-08A and INT-08B were subsequently selected above.
 
 ## Tracked slices
 
@@ -113,7 +120,7 @@ they do not change the owner-review status of INT-01 through INT-07.
 | ID | Proposed slice | Outcome / dependency |
 | --- | --- | --- |
 | INT-08A | Controls and comfort | **Implemented, owner review pending:** [saved settings and matching bindings](controls-comfort-2026-09-08.md). Actual input, conflict/reset behaviour, small-window layouts, independent restarts and exact world/trial state pass. |
-| INT-08B | Portable Windows playtest build | Export the extension, tuning and assets into a build that works outside the checkout. Verify with isolated existing saves and trial checkpoints; check matching export-template availability. |
+| INT-08B | Portable Windows playtest build | **Implemented, other-machine review pending:** [portable export and verification](portable-build-2026-09-08.md). Isolated native rebuild, assets/tuning, source identification, normal startup and exact existing world/trial ownership pass outside the checkout. |
 | INT-02B | Finished visual target | Subsequently selected and **implemented, owner review pending** in the [8 September target](environment-target-2026-09-08.md). The full Godot scene preceded reuse of its surface treatment. |
 
 Generation already has a substantial seed matrix. Further broad optimisation

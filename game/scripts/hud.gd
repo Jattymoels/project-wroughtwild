@@ -267,6 +267,9 @@ func _ready() -> void:
 	help_margin.add_child(help_column)
 	var help_title := Label.new()
 	help_title.text = "Controls & comfort"
+	var build_version := String(ProjectSettings.get_setting("application/config/version", ""))
+	if not build_version.is_empty():
+		help_title.text += " · " + build_version
 	help_title.add_theme_font_size_override("font_size", 20)
 	help_column.add_child(help_title)
 	comfort = ComfortControls.new()

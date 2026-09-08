@@ -1,0 +1,146 @@
+{
+  "package": {
+    "version": "c4f7fa1843f8-review-cc98bf27",
+    "revision": "c4f7fa1843f852be71d128960b7e355097eed987",
+    "dirty": true,
+    "source_sha256": "cc98bf27edef95cc3f32eb201dc71556b91e2d0f1a0c70e219e284df4849130e",
+    "godot": "4.5.stable.official.876b29033",
+    "godot_cpp": "e83fd0904c13356ed1d4c3d09f8bb9132bdc6b77",
+    "template_sha256": "5bae54022c7e699b6f0f26230cf49a01c3582640623c6cf7f055c15eac9c5f29",
+    "files": {
+      "data/tuning/boons.json": "1b0919dda0907e29d27313c37bfa48cd032b9e8585ad84dfda469a1bbf8a6eb4",
+      "data/tuning/combat_realtime.json": "2241ca7ac304ebce4004d8a876efd18ee2a06e4c12e1f74d4799e359437db57d",
+      "data/tuning/construction.json": "2c815e617586d677c3b44f0679ad8787f649f7cb72d7e465737f6d2076bbdb1a",
+      "data/tuning/contraptions.json": "2ecea7c75ac02858f724755678f081537e984dd21dd4738b87a7f7ef2ef89a11",
+      "data/tuning/crafting.json": "2fc34a630e2d8047b5d58688030fff8195270858f410c87423f3d59ead5b0f13",
+      "data/tuning/eras.json": "23636c97e5637398440b29bb935b352ecc00792b88f427710f872750f0fbb00b",
+      "data/tuning/foundry.json": "b8b2b88b05cfa7abdb19fdec2b7b9e256c5115180b48b7a8517947c4b22d96ea",
+      "data/tuning/grammar.json": "8d655a917d854eea60125c44515eb1a41fc160e720fab18f30d60bc503dcb183",
+      "data/tuning/items.json": "83ee3d622a1fbafae29abe6b3fe8d0af36465f791db9391b09fe44283ab3e61a",
+      "data/tuning/skills.json": "d676635e77ea549fc736c563d00c184ed5f7c02f4391c9f9ee62214faaa75912",
+      "data/tuning/trial.json": "97aad193ab6cf75939fde5da1c59b0506e5b0c20ecee33d27f727d6651b6975e",
+      "data/tuning/world.json": "24e300c9de0ef84ff2ac22f12ff200c3af65cdff000b643b0bdabe4ecd3e71a1",
+      "data/tuning/worldgen-frontier-v2.json": "ffbc59030ad439882ac7d9a3d653cc575ee65c7cf1dd8586c68e08153d68650f",
+      "data/tuning/worldgen-frontier-v3.json": "b9d995244092780009a45d5194fa9c15de948eab3db9541efb34af3b1ae0074e",
+      "data/tuning/worldgen-frontier-v4.json": "bca786c65ceaa3b149666ca292f9a1b0b1859817ee5b8976f619be976c70734b",
+      "data/tuning/worldgen-frontier-v5.json": "473ac7fc294443b00535a12f368c99fa2cf1fff90587153673ca102736c89876",
+      "data/tuning/worldgen-legacy-v1.json": "084161027bc1d2b77fd0c4cc01f0189d2753a7c6c2e3c10bee6cacf62e267304",
+      "data/tuning/worldgen.json": "823760abe56a97debfb16749ee8c3468a0136a7bbfca8d8bbead2de4915a7479",
+      "godot-cpp-LICENSE.md": "26a5b210d90760156ce886267ce9df235787dcc6cebfd7ecd95ef5b6fdcc95bf",
+      "Godot-NOTICES.json": "f3f816902f29fe6b7ca5ed43c9cda8a9c043b880bce523ceb6d4288caad2757a",
+      "libwroughtwild_sim.windows.x86_64.dll": "05136e40f48377644c90f1272e06bd9fced72aa835679782b16068c4e1497c14",
+      "README.txt": "433cb418444d67245ce49a8cdc4f667b00c874e2c020abef699c1d99220c6d0a",
+      "Wroughtwild.exe": "5bae54022c7e699b6f0f26230cf49a01c3582640623c6cf7f055c15eac9c5f29",
+      "Wroughtwild.pck": "d22728d10269892f45e4b19188be411de996d03d6d6ab716a7613e028dc6e1d7"
+    }
+  },
+  "runs": {
+    "existing": {
+      "checks": 94,
+      "engine": {
+        "build": "official",
+        "hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+        "hex": 263424,
+        "major": 4,
+        "minor": 5,
+        "patch": 0,
+        "status": "stable",
+        "string": "4.5-stable (official)",
+        "timestamp": 0
+      },
+      "executable": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/Relocated game with spaces/Wroughtwild.exe",
+      "failures": 0,
+      "mode": "existing",
+      "user_data": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/existing/appdata/Godot/app_userdata/Wroughtwild"
+    },
+    "fresh": {
+      "checks": 116,
+      "engine": {
+        "build": "official",
+        "hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+        "hex": 263424,
+        "major": 4,
+        "minor": 5,
+        "patch": 0,
+        "status": "stable",
+        "string": "4.5-stable (official)",
+        "timestamp": 0
+      },
+      "executable": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/Relocated game with spaces/Wroughtwild.exe",
+      "failures": 0,
+      "mode": "fresh",
+      "user_data": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/fresh/appdata/Godot/app_userdata/Wroughtwild"
+    },
+    "prepare-trial": {
+      "checks": 93,
+      "engine": {
+        "build": "official",
+        "hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+        "hex": 263424,
+        "major": 4,
+        "minor": 5,
+        "patch": 0,
+        "status": "stable",
+        "string": "4.5-stable (official)",
+        "timestamp": 0
+      },
+      "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64.exe",
+      "failures": 0,
+      "mode": "prepare-trial",
+      "user_data": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/prepare-trial/appdata/Godot/app_userdata/Wroughtwild"
+    },
+    "restart": {
+      "checks": 95,
+      "engine": {
+        "build": "official",
+        "hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+        "hex": 263424,
+        "major": 4,
+        "minor": 5,
+        "patch": 0,
+        "status": "stable",
+        "string": "4.5-stable (official)",
+        "timestamp": 0
+      },
+      "executable": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/Relocated game with spaces/Wroughtwild.exe",
+      "failures": 0,
+      "mode": "restart",
+      "user_data": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/fresh/appdata/Godot/app_userdata/Wroughtwild"
+    },
+    "trial": {
+      "checks": 98,
+      "engine": {
+        "build": "official",
+        "hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+        "hex": 263424,
+        "major": 4,
+        "minor": 5,
+        "patch": 0,
+        "status": "stable",
+        "string": "4.5-stable (official)",
+        "timestamp": 0
+      },
+      "executable": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/Relocated game with spaces/Wroughtwild.exe",
+      "failures": 0,
+      "mode": "trial",
+      "user_data": "C:/Users/Matty/AppData/Local/Temp/Wroughtwild-export-check-i7msho8u/trial/appdata/Godot/app_userdata/Wroughtwild"
+    },
+    "missing-tuning": {
+      "checks": 1,
+      "failures": 0,
+      "evidence": "missing-tuning.txt"
+    }
+  },
+  "full_suite": {
+    "full-suite": {
+      "passing_reports": 64,
+      "passing_checks": 27258,
+      "script_errors": 0
+    },
+    "full-suite-completion": {
+      "passing_reports": 29,
+      "passing_checks": 84445,
+      "script_errors": 0
+    }
+  }
+}

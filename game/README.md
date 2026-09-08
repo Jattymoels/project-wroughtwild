@@ -244,6 +244,20 @@ committed `bin/wroughtwild_sim.gdextension`. Binaries are ignored by Git.
 Without it the project still opens, but `tests/run_tests.gd` fails its
 `sim:` checks and any script calling `WroughtwildSim` errors.
 
+## Portable Windows playtest
+
+Use `python tools/export_windows.py` from the repository root with the pinned
+Godot editor, official 4.5 export templates and the existing MinGW/CMake toolchain.
+The [INT-08B runbook](../docs/prototype/portable-build-2026-09-08.md) has exact
+arguments, source checks, isolated verification and limitations. It builds its
+own DLL without replacing one loaded by a running checkout.
+
+Extract the entire resulting ZIP and launch `Wroughtwild.exe`. Tuning lives in
+`data/tuning` beside that EXE, assets/settings in the PCK, and the extension DLL
+beside it. The normal Windows save and preferences location remains
+`%APPDATA%/Godot/app_userdata/Wroughtwild/`; no owner save ships in the package.
+Window/help show the source revision. Keep the complete folder together.
+
 ## Automated checks (headless, no GPU)
 
 ```sh
@@ -291,7 +305,8 @@ run_headless_checks.sh  The check pipeline above
   `sim/` into Godot is a GDExtension using `godot-cpp`, the one third-party
   dependency approved by ADR-0001.
 - The `Sim` autoload (`scripts/sim.gd`) owns the one `WroughtwildSim`
-  instance and loads `../data/tuning/*.json` through it at startup. Inventory
+  instance and loads `../data/tuning/*.json` through it during editor runs, or
+  executable-relative `data/tuning/*.json` in exports. Inventory
   counts, construction costs and refunds, grid size and placement range all
   come from there; never hard-code tunables in scripts. Headless `--script`
   tests get an isolated instance via `sim.gd`'s `shared()` fallback.

@@ -1,0 +1,79 @@
+== import ==
+== unit tests ==
+398 checks, 0 failures
+== INT-08A controls, comfort and independent preference restart ==
+CONTROLS_COMFORT 142 checks, 0 failures
+CONTROLS_COMFORT 8 checks, 0 failures
+== Codex art regression checks ==
+Codex art: 11 checks, 0 failures
+== integration test (physics + placement loop) ==
+273 checks, 0 failures
+== horde test (D-012 chase, training, cone, dash) ==
+43 checks, 0 failures
+== INT-05C dead-target and reaction recovery boundaries ==
+== grammar test (frost orb fork, freeze breakpoints, shatter cascade) ==
+72 checks, 0 failures
+== feel test (pickup magnet, harvest feedback, jump buffer) ==
+17 checks, 0 failures
+== common building loads and ownership ==
+BUILDING_LOAD_BOUNDARIES 201 checks, 0 failures
+BUILDING_LOAD_BOUNDARIES 6 checks, 0 failures
+BUILDING_LOAD_REVIEW 1299 checks, 0 failures
+BUILDING_LOAD_REVIEW 14 checks, 0 failures
+== Codex faceted terrain ==
+Codex faceted terrain: 66 checks, 0 failures
+== Codex crafted terrain, modular workshop and woodland checks ==
+23 checks, 0 failures
+774 checks, 0 failures
+Codex woodland: 16 checks, 0 failures
+CODEX_WEATHERED_SAVE 21 checks, 0 failures
+CODEX_PRESENTATION 33 checks, 0 failures
+CODEX_MATERIAL_TRANSITIONS 74 checks, 0 failures
+CODEX_CREATURE_MOTION 100 checks, 0 failures
+CODEX_FRONTIER_CONTINUATION 98 checks, 0 failures
+CODEX_STATIONS 12 checks, 0 failures
+803 checks, 0 failures
+CODEX_GATHERING 22 checks, 0 failures
+INTERACTION_FEEDBACK 417 checks, 0 failures
+WORKSHOP_FEEDBACK 328 checks, 0 failures
+CODEX_BUILD_USABILITY 39 checks, 0 failures
+HOME_STATION_PLACEMENT 98 checks, 0 failures
+HOME_MATERIAL_JOINS 141 checks, 0 failures
+CODEX_HOME_HEADROOM 30 checks, 0 failures
+HOME_WORKSHOP_REVIEW 1027 checks, 0 failures
+HOME_TERRAIN_PLACEMENT 174 checks, 0 failures
+HOME_STATION_CLEARANCE 84 checks, 0 failures
+PLACEMENT_TRANSACTIONS 470 checks, 0 failures
+PLACEMENT_RESTART 60 checks, 0 failures
+GENERATED_FIXTURES 44 checks, 0 failures
+GENERATED_FIXTURES 25 checks, 0 failures
+PLACEMENT_SCENERY 4974 checks, 0 failures
+HOME_DOOR_PERSISTENCE 467 checks, 0 failures
+SAVE_RECOVERY 175 checks, 0 failures
+CRAFTING_CATALOGUE 52 checks, 0 failures
+ESTABLISHMENT_GUIDE 138 checks, 0 failures
+CODEX_PANEL_DENSITY 60 checks, 0 failures
+FOUNDRY_FLOW_REVIEW 59 checks, 0 failures
+FOUNDRY_CLARITY 315 checks, 0 failures
+FOUNDRY_CLARITY 28 checks, 0 failures
+CODEX_FIRST_HOUR_JOURNEY 290 checks, 0 failures; class warden
+CODEX_RANGED_FAIRNESS 53 checks, 0 failures
+ENEMY_CONTACT_REVIEW 20 checks, 0 failures
+ENEMY_CONTACT_REVIEW 20 checks, 0 failures
+FORGE_PRESSURE_REVIEW 22 checks, 0 failures
+FORGE_PRESSURE_CHECKS 24 checks, 0 failures
+CODEX_LOOT_PERSISTENCE 30 checks, 0 failures; 1997 gear, 294 bows
+LOOSE_DROP_SAVE 148 checks, 0 failures
+DISCOVERY_CLARITY 249 checks, 0 failures
+DISCOVERY_SITES 183 checks, 0 failures
+SMITHY_STORY 122 checks, 0 failures; frontier_v6 seed 1
+LOOSE_DROP_SAVE 6 checks, 0 failures
+LOOSE_DROP_SAVE 13 checks, 0 failures
+CODEX_FIRST_HOUR_JOURNEY 6 checks, 0 failures; class warden
+CODEX_FIRST_HOUR_JOURNEY 5 checks, 0 failures; class warden
+WORLD_ENGINE_INTENSIVE 5957 checks, 0 failures
+MATERIAL_INTENSIVE 158 checks, 0 failures
+TRIAL_INTENSIVE: 6221 checks, 0 failures
+FAIL STRANGE: atomic world and machine save writes
+FAIL STRANGE: atomic world and machine save reads
+STRANGE_FRONTIER: 7073 checks, 2 failures; startup {"chunks_ms":2037,"map_ms":419,"resources_ms":1236,"total_ms":3692}

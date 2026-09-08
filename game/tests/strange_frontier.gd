@@ -89,6 +89,7 @@ func _ready() -> void:
 	check(sim.rare_resource_guide().size()==5,"existing guide presents five resource properties")
 	var final_snapshot:=manager.capture(player)
 	var path:=ProjectSettings.globalize_path("res://../build/strange-frontier/world-checkpoint.json")
+	check(DirAccess.make_dir_recursive_absolute(path.get_base_dir()) == OK, "isolated checkpoint directory exists")
 	check(manager.write_data(path,final_snapshot),"atomic world and machine save writes")
 	check(manager.read(path,player),"atomic world and machine save reads")
 	evidence.checks=checks

@@ -55,7 +55,9 @@ func configure(host: Node3D, seed_text: String, path := SaveManager.DEFAULT_PATH
 	player.class_panel.closed.connect(_chosen)
 	row = VBoxContainer.new()
 	row.name = "WorldSeedChoices"
-	var column := player.class_panel._choices.get_parent()
+	# ClassPanel scrolls its choices inside the outer introduction column.
+	# Seed/Continue controls belong beside that scroll, not inside it.
+	var column := player.class_panel._scroll.get_parent()
 	column.add_child(row)
 	column.move_child(row,2)
 	var inputs := HBoxContainer.new()

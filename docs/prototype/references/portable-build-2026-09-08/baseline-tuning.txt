@@ -1,0 +1,103 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+
+WARNING: WroughtwildSim.load_tuning failed: json: cannot open file ../data/tuning/crafting.json
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+ERROR: Sim tuning failed to load: json: cannot open file ../data/tuning/crafting.json
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WROUGHTWILD - TUNING DATA NOT LOADED
+
+The rules extension is built and loaded, but data/tuning could not be
+read, so every interaction is disabled.
+
+Expected location: the data/tuning directory of the repository,
+one level above the game/ project (../data/tuning).
+
+Run the game from a full repository checkout (godot --path game),
+not from a copied-out game folder.
+
+Details: json: cannot open file ../data/tuning/crafting.json
+   at: push_error (core/variant/variant_utility.cpp:1024)
+WROUGHTWILD - TUNING DATA NOT LOADED
+
+The rules extension is built and loaded, but data/tuning could not be
+read, so every interaction is disabled.
+
+Expected location: the data/tuning directory of the repository,
+one level above the game/ project (../data/tuning).
+
+Run the game from a full repository checkout (godot --path game),
+not from a copied-out game folder.
+
+Details: json: cannot open file ../data/tuning/crafting.json
+ERROR: WroughtwildSim.grid_size called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.placement_range called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.lattice_registry_grid called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.shape_ids called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.shape called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.combat_skill_ids called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.realtime called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.foundry called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.derived_stats called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.equipment called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.skill_bar called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.skill_bar called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.inventory called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.currency called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.skill_progress called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.era called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.day called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.curio_hints called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.foundry_notices called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.derived_stats called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.equipment called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.set_world_profile called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: json: cannot open file ../data/tuning/crafting.json
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.foundry called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.shelter called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.realtime called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.equipment called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.inventory called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.currency called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.skill_progress called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.era called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.day called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.curio_hints called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.foundry_notices called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.derived_stats called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)
+ERROR: WroughtwildSim.equipment called before load_tuning()
+   at: push_error (core/variant/variant_utility.cpp:1024)

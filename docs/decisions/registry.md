@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner continuation, 8 September 2026: “Continue” selects
+[INT-08B portable Windows build](../prototype/portable-build-2026-09-08.md) after
+INT-08A. Under D-009/ADR-0001, export the pinned engine, fresh native extension,
+unchanged tuning and required assets with source identification. Existing user
+save/preferences locations, geography and D-028 trial ownership remain.
+This authorizes a bounded local playtest package and its isolated verification;
+it adds no installer, update service, gameplay tuning or store publication.
+
 Owner continuation, 8 September 2026: “Yep go” selects
 [INT-08A controls and comfort](../prototype/controls-comfort-2026-09-08.md) from
 the next-round proposal. Under D-008/D-012/D-013, the existing H overlay gains
@@ -8,7 +16,7 @@ This extends the earlier interface exclusion of key rebinding; skill assignment
 and native gameplay/save contracts remain unchanged. Device preferences retain
 existing ambience choices separately from world/trial saves. One binding per
 action, conflict refusal and fixed Escape/menu navigation bound this prototype
-pass; controller input and INT-08B export remain outside this selection.
+pass; controller input and INT-08B export remain outside that selection.
 
 Owner continuation, 8 September 2026: “Yep let's go” selects the final queued
 [INT-02B environment target](../prototype/environment-target-2026-09-08.md) after

@@ -1,0 +1,32 @@
+STRANGE_FRONTIER: 7074 checks, 0 failures; startup {"chunks_ms":2025,"map_ms":425,"resources_ms":1236,"total_ms":3686}
+TERRAIN_STREAM_INTENSIVE 57897 checks, 0 failures
+WIDE_TERRAIN_STREAM 75 checks, 0 failures
+TERRAIN_PREPARATION 105 checks, 0 failures
+TRACE_SURFACE_CACHE 27 checks, 0 failures
+STREAM_SCHEDULING 5654 checks, 0 failures
+FOCUS_SCHEDULING 27 checks, 0 failures
+STREAM_CAPACITY 10198 checks, 0 failures
+WORLD_MESH_EQUIVALENCE 147 checks, 0 failures
+ECOLOGY_BUILDINGS 102 checks, 0 failures
+CONTRAPTION_INTENSIVE 85 checks, 0 failures
+PRESSURE_FEEDER_PRESENTATION 22 checks, 0 failures
+CUSTOM_PANEL_REFRESH 38 checks, 0 failures
+FEEDER_VISUALS 59 checks, 0 failures
+FEEDER_CONTROLS 195 checks, 0 failures
+PRESSURE_WORKSHOP 60 checks, 0 failures
+STRANGE_ART_REVIEW 60 checks, 0 failures
+STRANGE_WORLD_REVIEW 6 checks, 0 failures
+CATACLYSM_ART_REVIEW 455 checks, 0 failures
+ENVIRONMENT_TARGET 19 checks, 0 failures
+CATACLYSM_ACTOR_CRAFT 200 checks, 0 failures
+AUGMENTED_BEASTS 167 checks, 0 failures
+CATACLYSM_INTENSIVE 170 checks, 0 failures
+CODEX_COMBAT_PRESENTATION 65 checks, 0 failures
+== Foundry identities and composition ==
+452 checks, 0 failures (Foundry mutations)
+FOUNDRY_OFFENCE_IDENTITY: 104 checks, 0 failures
+FoundryGuardIdentity: 385 checks, 0 failures
+FOUNDRY_SUSTAIN_IDENTITY 273 checks, 0 failures
+FOUNDRY_TEMPO_IDENTITY: 324 checks, 0 failures
+== main scene smoke run (120 frames) ==
+All headless checks passed.
