@@ -109,7 +109,8 @@ func sample(delta: float) -> void:
 	for i in 2:
 		var side := -1.0 if i==0 else 1.0
 		var hand := hands[i]
-		hand.position = Vector3(side*LOOK.hand_position.x,LOOK.hand_position.y+sin(walk_phase)*LOOK.stride_sway,LOOK.hand_position.z+recoil+wall_retract)
+		var sway := sin(walk_phase)*LOOK.stride_sway if player.preferences.values.hand_sway else 0.0
+		hand.position = Vector3(side*LOOK.hand_position.x,LOOK.hand_position.y+sway,LOOK.hand_position.z+recoil+wall_retract)
 		hand.rotation = Vector3(-0.13,side*-0.18,side*-0.18)
 		if active_delivery=="gather" and i==1:
 			hand.position += Vector3(-0.055, 0.045, -GATHER.hand_reach)*strength

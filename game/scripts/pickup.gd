@@ -232,7 +232,7 @@ func _absorb(player: Node3D) -> void:
 				elif sim.skill_bar().has(page_skill):
 					wrought_player.hud.notify("Skill page: you learn %s. It joins your bar." % skill_name)
 				else:
-					wrought_player.hud.notify("Skill page: you learn %s. Assign it in the pack screen (I)." % skill_name)
+					wrought_player.hud.notify(InputPrompts.formatted("Skill page: you learn %s. Assign it in the pack screen ({toggle_inventory}).", skill_name))
 		_:
 			# The haul: the pack takes what it has room for; a chip left
 			# short stays, smaller, on the ground.
@@ -251,7 +251,7 @@ func _absorb(player: Node3D) -> void:
 			if wrought_player.hud != null:
 				wrought_player.hud.notify_pickup(family, taken)
 				if family == "shrieker_horn":
-					wrought_player.hud.notify("The shrieker's horn. X outside build mode blows it, and everything within earshot comes.")
+					wrought_player.hud.notify(InputPrompts.text("The shrieker's horn. {remove_block} outside build mode blows it, and everything within earshot comes."))
 			if not _claimed:
 				wrought_player.note_pack_full(family)
 				_absorbing = false

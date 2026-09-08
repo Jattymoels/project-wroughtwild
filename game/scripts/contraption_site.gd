@@ -148,8 +148,8 @@ static func _sphere(radius: float, colour: Color) -> MeshInstance3D:
 
 func interact_label() -> String:
 	if kind == "pressure_feeder":
-		return "Pressure feeder · %s · E to use" % String(_feeder_readout.get("headline", "Inspect setup"))
-	return "%s · E to use" % LABELS.get(kind, kind)
+		return InputPrompts.formatted("Pressure feeder · %s · {interact} to use", String(_feeder_readout.get("headline", "Inspect setup")))
+	return InputPrompts.formatted("%s · {interact} to use", LABELS.get(kind, kind))
 
 func feeder_readout() -> Dictionary:
 	return _feeder_readout

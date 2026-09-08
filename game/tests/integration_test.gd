@@ -601,8 +601,8 @@ func _physics_process(_delta: float) -> void:
 					element = candidate
 					break
 			_chest = placement.place_piece(element, &"chest", &"wood") if not element.is_empty() else null
-			check(_chest != null and _chest.is_chest() and _chest.interact_label() == "E open the chest"
-				and _chest.store_key().begins_with("volume:0:"), "chest: stands in a free cell and offers E (%s)" % str(element))
+			check(_chest != null and _chest.is_chest() and _chest.interact_label() == InputPrompts.text("{interact} open the chest")
+				and _chest.store_key().begins_with("volume:0:"), "chest: stands in a free cell and offers the current interaction key (%s)" % str(element))
 			_chest_wood = sim.material_count("wood")
 			check(_chest_wood > 0, "chest: timber in the pack to store (%d)" % _chest_wood)
 			_player.open_chest(_chest)

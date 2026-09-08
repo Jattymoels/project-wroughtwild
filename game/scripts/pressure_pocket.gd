@@ -83,8 +83,8 @@ func source_state() -> Dictionary:
 func interact_label() -> String:
 	var state:=source_state()
 	if int(state.get("remaining", 0)) <= 0:
-		return "Struck blacksmith's hearth · Pocket spent · E to inspect"
-	return "Struck blacksmith's hearth · %d pressure strokes · E to inspect" % int(state.get("remaining",0))
+		return InputPrompts.text("Struck blacksmith's hearth · Pocket spent · {interact} to inspect")
+	return InputPrompts.formatted("Struck blacksmith's hearth · %d pressure strokes · {interact} to inspect", int(state.get("remaining",0)))
 
 
 func interact(player: WroughtwildPlayer) -> void:

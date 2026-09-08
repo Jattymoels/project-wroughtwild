@@ -19,6 +19,10 @@ echo "== import =="
 echo "== unit tests =="
 "$GODOT" --headless --path . --script tests/run_tests.gd
 
+echo "== INT-08A controls, comfort and independent preference restart =="
+"$GODOT" --headless --path . res://tests/controls_comfort.tscn
+"$GODOT" --headless --path . res://tests/controls_comfort.tscn -- --comfort-restore-only
+
 echo "== Codex art regression checks =="
 "$GODOT" --headless --path . --script tests/art_checks.gd
 

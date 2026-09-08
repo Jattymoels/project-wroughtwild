@@ -1,0 +1,23 @@
+{
+  "options": [
+    {"id":"sensitivity","page":"Camera","label":"Mouse sensitivity","default":1.0,"min":0.1,"max":3.0,"step":0.1,"suffix":"×","help":"Lower for finer aim; higher for quicker turns."},
+    {"id":"invert_y","page":"Camera","label":"Invert vertical look","default":false,"help":"Move the mouse down to look up."},
+    {"id":"fov","page":"Camera","label":"Field of view","default":75.0,"min":60.0,"max":100.0,"step":1.0,"suffix":"°","help":"Vertical camera angle. Wider views show more at the edges."},
+    {"id":"landing_motion","page":"Camera","label":"Landing camera dip","default":true,"help":"Brief cosmetic camera dip after hard landings."},
+    {"id":"hand_sway","page":"Camera","label":"Walking hand sway","default":true,"help":"Idle hand movement while walking. Work and attack gestures remain."},
+    {"id":"master_level","page":"Sound","label":"Master volume","default":1.0,"min":0.0,"max":1.0,"step":0.05,"suffix":"%","help":"Scales every game sound. Zero is silent."},
+    {"id":"master_muted","page":"Sound","label":"Mute all sound","default":false,"help":"Silences all sound without changing the selected volume."},
+    {"id":"window_mode","page":"Display","label":"Window mode","default":"current","choices":["current","windowed","fullscreen"],"names":["Keep launch mode","Windowed","Fullscreen"],"help":"Fullscreen uses this display's desktop resolution."},
+    {"id":"vsync","page":"Display","label":"VSync","default":"current","choices":["current","on","off"],"names":["Keep launch setting","On","Off"],"help":"On synchronises frames with the display; Off may tear."}
+  ],
+  "actions": {
+    "move_forward":"Move forward", "move_back":"Move backward", "move_left":"Move left", "move_right":"Move right",
+    "jump":"Jump", "interact":"Interact / work", "primary_action":"Harvest / dig / place", "dash":"Dash",
+    "skill_slot_1":"Skill slot 1", "skill_slot_2":"Skill slot 2", "skill_slot_3":"Skill slot 3", "skill_slot_4":"Skill slot 4",
+    "toggle_build_mode":"Building mode", "cycle_shape":"Building catalogue", "cycle_material":"Building material",
+    "rotate_preview":"Rotate building piece", "toggle_fine":"Half-size pieces", "remove_block":"Remove piece / blow horn",
+    "hand_craft":"Hand crafting", "toggle_inventory":"Pack", "toggle_foundry":"Foundry", "toggle_help":"Help / settings",
+    "save_game":"Save game", "load_game":"Load game", "toggle_camera":"Debug camera",
+    "spike_mod_1":"Debug modifier 1", "spike_mod_2":"Debug modifier 2", "spike_mod_3":"Debug modifier 3"
+  }
+}

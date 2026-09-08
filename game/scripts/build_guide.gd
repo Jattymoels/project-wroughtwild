@@ -51,7 +51,7 @@ func _wild_finds() -> void:
 		var details := _details(column)
 		_text(details,"Property: %s" % ", ".join(info.properties))
 		_text(details,"Work: "+" → ".join(info.harvest_stages))
-	_text(_details(self,"Making and connecting fixtures"),"Assemble at the workbench, then B → Tab to place the kit. Wind supplies energy; Stormglass carries a signal. Link a lever to a nearby lamp or winch, and a winch to its landing. Dismantling returns intact rare cores.")
+	_text(_details(self,"Making and connecting fixtures"),"Assemble at the workbench, then {toggle_build_mode} → {cycle_shape} to place the kit. Wind supplies energy; Stormglass carries a signal. Link a lever to a nearby lamp or winch, and a winch to its landing. Dismantling returns intact rare cores.")
 
 func select_filter(value: String) -> void:
 	page = "Skills"
@@ -115,7 +115,7 @@ func _station_step(id: String, visited: Array[String]) -> Dictionary:
 	if id == "" or station.is_empty() or bool(station.get("available",false)): return {}
 	var kit := String(station.get("kit_item",""))
 	if kit != "" and sim.material_count(kit)>0:
-		return {"kind":"kit","id":kit,"next":"Place your %s, then use E at it." % station.display_name}
+		return {"kind":"kit","id":kit,"next":"Place your %s, then use {interact} at it." % station.display_name}
 	return _recipe_step(MaterialGuide.producer(sim,kit),visited)
 
 func _recipe_step(id: String, visited: Array[String]) -> Dictionary:
@@ -192,12 +192,12 @@ func _established() -> void:
 			_text(column,"Build directly with carried timber. You do not need a bench first.")
 	var help := _details(column,"How the steps connect")
 	_text(help,"Harvesting frees a physical drop; move close to collect it. Recipe counts use your pack, so take stored materials from a chest first.")
-	_text(help,"Crafted kits stay in your pack until placed: B → Tab → choose the kit → LMB. Use E at the placed station.")
+	_text(help,"Crafted kits stay in your pack until placed: {toggle_build_mode} → {cycle_shape} → choose the kit → {primary_action}. Use {interact} at the placed station.")
 	_text(help,"Enclose a room with a door and roof. Three wall panels above the walking floor leave headroom; keep the doorway flush with that floor. Slabs make an early roof; pitched roofs unlock later. Build mode marks shelter leaks.")
 
 func _text(parent: Node, text: String, colour := UiTheme.MUTED, font_size := 14) -> Label:
 	var label := Label.new()
-	label.text = text
+	InputPrompts.bind(label, text)
 	label.modulate = colour
 	label.add_theme_font_size_override("font_size",font_size)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -221,7 +221,7 @@ func _skills() -> void:
 	var known := sim.known_skill_ids()
 	_text(self,"%d / %d skills discovered · Choose a learned skill for your bar." % [known.size(),sim.combat_skill_ids().size()])
 	_text(self,"Mastery is automatic: qualifying practice unlocks each listed milestone. You do not choose between perks.",UiTheme.PARCHMENT)
-	_text(_details(self,"Learning and shaping skills"),"Pages teach skills you do not know. Any class can learn any page. Support a learned skill's tablet in the Foundry (F).")
+	_text(_details(self,"Learning and shaping skills"),"Pages teach skills you do not know. Any class can learn any page. Support a learned skill's tablet in the Foundry ({toggle_foundry}).")
 	_text(_details(self,"What counts as practice?"),"A cast must affect a live hostile; movement skills practise during a real threat. Empty casts, automatic repeats and secondary ticks do not award their own practice.")
 	var filters := HBoxContainer.new()
 	add_child(filters)
@@ -302,9 +302,9 @@ func _progression() -> void:
 	if spec_name != "":
 		_text(column,"Class specialisation: %s — your permanent choice." % spec_name,UiTheme.SUN_WARM)
 	else:
-		_text(column,"Class specialisation is one permanent choice after the Tyrant unlock. Compare what your rail patterns become in the Foundry (F).",UiTheme.PARCHMENT)
+		_text(column,"Class specialisation is one permanent choice after the Tyrant unlock. Compare what your rail patterns become in the Foundry ({toggle_foundry}).",UiTheme.PARCHMENT)
 	_text(column,"Rail patterns are arrangements: set or clear known patterns freely within the limit. A pattern only works while its line condition holds.",UiTheme.PARCHMENT)
-	column = _card("Discover → practise → shape","Find skills, practise them, then shape their workings in the Foundry (F).")
+	column = _card("Discover → practise → shape","Find skills, practise them, then shape their workings in the Foundry ({toggle_foundry}).")
 	var details := _details(column)
 	_text(details,"A page teaches a skill. Qualifying practice unlocks its mastery milestones automatically. A learned skill can be laid in a socket without waiting for mastery. Adjacent ingots support it; specific Kinds transform every ingot along an inward path.")
 	_text(details,"Milestones forge permanent ingots: useful crafts, first encounters, exploration and trials. Arrange the same pieces differently to try a different build.")
@@ -318,4 +318,4 @@ func _progression() -> void:
 	_text(details,"Setting a curio there turns the era; time and skill uses do not advance it. Your existing equipment, skills and buildings carry forward.")
 	for hint in sim.curio_hints(): _text(details,String(hint),UiTheme.FROST)
 	if bool(foundry.get("can_specialise",false)):
-		_text(column,"Your class specialisation is ready. Open the Foundry (F) to compare before making this permanent choice.",UiTheme.GRASS_LIGHT)
+		_text(column,"Your class specialisation is ready. Open the Foundry ({toggle_foundry}) to compare before making this permanent choice.",UiTheme.GRASS_LIGHT)

@@ -10,21 +10,21 @@ extends CanvasLayer
 const NOTICE_SECONDS := 3.0
 const REFRESH_SECONDS := 0.1
 const GATHER = preload("res://art/gathering_look.tres")
-const HELP_TEXT := """WASD move  ·  mouse look  ·  Space jump  ·  Shift dash (movement only)
-E interact: harvest, work at a station, read the board, open the gate
-LMB harvest  ·  hold LMB on the ground to dig it out (stone yields split stone)
-LMB places in build mode  ·  C craft by hand  ·  I pack
-B build mode  ·  Tab visual shape picker  ·  X remove  ·  R turn corners, roofs or a door's hinge
-X outside build mode blows a carried shrieker's horn
+const HELP_TEXT := """{move_forward}/{move_left}/{move_back}/{move_right} move  ·  mouse look  ·  {jump} jump  ·  {dash} dash (movement only)
+{interact} interact: harvest, work at a station, read the board, open the gate
+{primary_action} harvest  ·  hold {primary_action} on the ground to dig it out (stone yields split stone)
+{primary_action} places in build mode  ·  {hand_craft} craft by hand  ·  {toggle_inventory} pack
+{toggle_build_mode} build mode  ·  {cycle_shape} visual shape picker  ·  {remove_block} remove  ·  {rotate_preview} turn corners, roofs or a door's hinge
+{remove_block} outside build mode blows a carried shrieker's horn
 Pieces snap to the nearest free cell, face or edge you look at: walls join walls, posts stack
-G fine pieces: half-scale twins of the cube, wall, post, beam and slab  ·  E opens a door
-Q building material: timber, stone or iron from your pack - doors need joinery, cut stone needs stone, girders need iron
-1–4 skill bar (assign skills in the pack screen; Shift also dashes)
+{toggle_fine} fine pieces: half-scale twins of the cube, wall, post, beam and slab  ·  {interact} opens a door
+{cycle_material} building material: timber, stone or iron from your pack - doors need joinery, cut stone needs stone, girders need iron
+{skill_slot_1}/{skill_slot_2}/{skill_slot_3}/{skill_slot_4} skill bar (assign skills in the pack screen; {dash} also dashes)
 Mobs drop skill pages that teach new skills, and rolled gear that scales them
-F1–F3 spike mods (debug: force one modifier on)
-F the Foundry: lay a skill's tablet in a socket and the ingots beside it support that skill
+{spike_mod_1}/{spike_mod_2}/{spike_mod_3} spike mods (debug: force one modifier on)
+{toggle_foundry} the Foundry: lay a skill's tablet in a socket and the ingots beside it support that skill
 Your class, chosen at the start, sets the plate's rails; the Tyrant's forge opens a further specialisation
-V camera  ·  H this help  ·  Esc close  ·  F5 save  ·  F9 load"""
+{toggle_camera} camera  ·  {toggle_help} this help  ·  Esc close  ·  {save_game} save  ·  {load_game} load"""
 
 var sim: WroughtwildSim
 var combat: PlayerCombat
@@ -50,6 +50,7 @@ var _ambience_slider: HSlider
 var _ambience_mute: CheckBox
 var _ambience_value: Label
 var _audio_status: Label
+var comfort: ComfortControls
 var action_bar: ActionBar
 
 # First-person feedback (D-012): crosshair that reads the aim, a hitmarker
@@ -110,7 +111,7 @@ func _ready() -> void:
 	_pickup_label.modulate = UiTheme.GRASS_LIGHT
 	column.add_child(_pickup_label)
 	var reminder := Label.new()
-	reminder.text = "H help / sound  ·  I pack"
+	InputPrompts.bind(reminder, "{toggle_help} help / settings  ·  {toggle_inventory} pack")
 	reminder.add_theme_font_size_override("font_size", 13)
 	reminder.modulate = UiTheme.MUTED
 	column.add_child(reminder)
@@ -265,36 +266,28 @@ func _ready() -> void:
 	help_column.add_theme_constant_override("separation", 8)
 	help_margin.add_child(help_column)
 	var help_title := Label.new()
-	help_title.text = "Controls & sound"
+	help_title.text = "Controls & comfort"
 	help_title.add_theme_font_size_override("font_size", 20)
 	help_column.add_child(help_title)
-	_build_audio_controls(help_column)
-	_help_scroll = ScrollContainer.new()
-	_help_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	help_column.add_child(_help_scroll)
-	_help_body = Label.new()
-	_help_body.text = HELP_TEXT
-	_help_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_help_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_help_scroll.add_child(_help_body)
-	var help_footer := Label.new()
-	help_footer.text = "H or Esc to close"
-	help_footer.modulate = UiTheme.MUTED
-	help_column.add_child(help_footer)
+	comfort = ComfortControls.new()
+	comfort.preferences = player.preferences
+	comfort.hud = self
+	help_column.add_child(comfort)
+	_help_scroll = comfort.scroll
 
 	# The 1 Sep 2026 bug: any HUD control left at MOUSE_FILTER_STOP swallows
 	# mouse look under the captured cursor. Never again, for any of them.
 	UiTheme.ignore_mouse(_ui)
-	UiTheme.ignore_mouse(_help_root)
 	# The optional overlay owns input even outside its card. An underlying
 	# pack/class button must not react while sound controls are being adjusted.
 	_help_root.mouse_filter = Control.MOUSE_FILTER_STOP
 	_help.mouse_filter = Control.MOUSE_FILTER_STOP
 	_help_scroll.mouse_filter = Control.MOUSE_FILTER_STOP
 	_help_scroll.get_v_scroll_bar().mouse_filter = Control.MOUSE_FILTER_STOP
-	_ambience_slider.mouse_filter = Control.MOUSE_FILTER_STOP
-	_ambience_mute.mouse_filter = Control.MOUSE_FILTER_STOP
 	get_viewport().size_changed.connect(_fit_help)
+	# Wrapped text can revise its minimum after its first container layout.
+	# Refit that measured result as well as the window-resize event.
+	_help.minimum_size_changed.connect(_fit_help.call_deferred)
 	_fit_help.call_deferred()
 
 	if combat != null:
@@ -397,11 +390,18 @@ func toggle_help() -> void:
 	_help.visible = not _help.visible
 	_help_root.visible = _help.visible
 	if _help.visible:
-		_refresh_audio_controls()
+		comfort.refresh()
 		_fit_help.call_deferred()
 		if player != null: player._release_mouse()
-		_ambience_slider.grab_focus()
-	elif player != null: player._capture_mouse()
+		for button in comfort.tabs.get_children():
+			if not button.disabled:
+				button.grab_focus()
+				break
+	elif player != null:
+		comfort.cancel_capture()
+		for action in player.preferences.actions: Input.action_release(action)
+		Input.action_release("blow_horn")
+		player._capture_mouse()
 
 
 func _build_audio_controls(column: VBoxContainer) -> void:
@@ -432,7 +432,7 @@ func _build_audio_controls(column: VBoxContainer) -> void:
 	column.add_child(_audio_status)
 	_ambience_slider.value_changed.connect(_audio_level_changed)
 	_ambience_mute.toggled.connect(_audio_mute_changed)
-	if player != null:
+	if player != null and not player.audio_preferences.changed.is_connected(_refresh_audio_controls):
 		player.audio_preferences.changed.connect(_refresh_audio_controls)
 	_refresh_audio_controls()
 
@@ -446,7 +446,7 @@ func _audio_mute_changed(muted: bool) -> void:
 
 
 func _refresh_audio_controls() -> void:
-	if player == null: return
+	if player == null or not is_instance_valid(_ambience_slider): return
 	var prefs := player.audio_preferences
 	_ambience_slider.set_value_no_signal(prefs.ambience_level * 100.0)
 	_ambience_mute.set_pressed_no_signal(prefs.ambience_muted)
@@ -460,8 +460,11 @@ func _fit_help() -> void:
 	var viewport := get_viewport().get_visible_rect().size
 	var width := minf(760.0, viewport.x - 24.0)
 	_help.custom_minimum_size.x = width
-	_help_body.custom_minimum_size.x = width - 60.0
-	_help_scroll.custom_minimum_size.y = clampf(viewport.y - 250.0, 100.0, 350.0)
+	if is_instance_valid(_help_body): _help_body.custom_minimum_size.x = width - 60.0
+	comfort.custom_minimum_size.x = width - 56.0
+	comfort.status.custom_minimum_size.x = width - 56.0
+	var available := clampf(viewport.y - 260.0, 150.0, 450.0)
+	_help_scroll.custom_minimum_size.y = clampf(comfort.body.get_combined_minimum_size().y, 150.0, available)
 	_help.size = Vector2(width, 0)
 	_help.position = ((viewport - _help.size) * 0.5).floor()
 
@@ -580,9 +583,9 @@ func refresh() -> void:
 		if String(id).begins_with("manner:"):
 			# A manner the world taught (D-023 slice 9): a rail pattern.
 			var pattern: Dictionary = sim.foundry_pattern(String(id).trim_prefix("manner:"))
-			notify("The Foundry: the %ss have taught you %s. It goes in a rail; F opens the plate." % [pattern.get("teacher_name", "fallen"), pattern.get("display_name", id)])
+			notify(InputPrompts.formatted("The Foundry: the %ss have taught you %s. It goes in a rail; {toggle_foundry} opens the plate.", [pattern.get("teacher_name", "fallen"), pattern.get("display_name", id)]))
 		else:
-			notify("The Foundry: a %s is yours. F opens the plate." % sim.foundry_ingot(id).get("display_name", id))
+			notify(InputPrompts.formatted("The Foundry: a %s is yours. {toggle_foundry} opens the plate.", sim.foundry_ingot(id).get("display_name", id)))
 	if sim.trial_active():
 		var state: Dictionary = sim.trial_run_state()
 		var names := PackedStringArray()
@@ -621,12 +624,12 @@ func refresh() -> void:
 	if placement != null:
 		if placement.build_mode_enabled:
 			_build_chip.modulate = UiTheme.FROST
-			_build_chip.text = "%s · %s\n%s\nTab shapes · Q material · X remove · B finish%s" % [
+			_build_chip.text = InputPrompts.formatted("%s · %s\n%s\n{cycle_shape} shapes · {cycle_material} material · {remove_block} remove · {toggle_build_mode} finish%s", [
 				placement.selection_label(),placement.cost_label(),placement.orientation_label(),
-				" · G half-size" if placement.has_fine_twin() else ""]
+				InputPrompts.text(" · {toggle_fine} half-size") if placement.has_fine_twin() else ""])
 		else:
 			_build_chip.modulate = UiTheme.MUTED
-			_build_chip.text = "B  build"
+			InputPrompts.bind(_build_chip, "{toggle_build_mode}  build")
 
 
 func _on_world_worked(what: String, count: int) -> void:

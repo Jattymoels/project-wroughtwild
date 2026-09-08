@@ -127,7 +127,7 @@ func _label(parent: Node, text: String, colour: Color = UiTheme.PARCHMENT, font_
 
 func _button(parent: Node, text: String, callback: Callable, enabled := true) -> Button:
 	var button := Button.new()
-	button.text = text
+	InputPrompts.bind(button, text)
 	button.disabled = not enabled
 	button.pressed.connect(callback)
 	parent.add_child(button)
@@ -198,7 +198,7 @@ func refresh() -> void:
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	rail.add_child(spacer)
-	_button(rail,"Foundry  F",work._open_foundry)
+	_button(rail,"Foundry  {toggle_foundry}",work._open_foundry)
 	var columns := HBoxContainer.new()
 	columns.add_theme_constant_override("separation",18)
 	columns.size_flags_vertical = Control.SIZE_EXPAND_FILL

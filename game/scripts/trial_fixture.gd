@@ -24,11 +24,11 @@ func trial_label() -> String:
 			var preview := reward_label()
 			var danger := danger_label()
 			if not danger.is_empty(): preview += " · " + danger
-			return "%s — E · Enter · %s" % [name, preview]
-		"boundary": return "%s — E · Continue, bank or suspend" % name
-		"secret": return "%s — E · Inspect" % name
-		"conduit": return "%s — E · Cool ward protection" % name
-	return "%s — E · %s" % [name, reward_action() if fixture_kind == "reward" else _single_line(detail)]
+			return InputPrompts.formatted("%s — {interact} · Enter · %s", [name, preview])
+		"boundary": return InputPrompts.formatted("%s — {interact} · Continue, bank or suspend", name)
+		"secret": return InputPrompts.formatted("%s — {interact} · Inspect", name)
+		"conduit": return InputPrompts.formatted("%s — {interact} · Cool ward protection", name)
+	return InputPrompts.formatted("%s — {interact} · %s", [name, reward_action() if fixture_kind == "reward" else _single_line(detail)])
 
 func finished_label() -> String:
 	match fixture_kind:

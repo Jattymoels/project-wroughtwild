@@ -287,9 +287,9 @@ func prompt() -> String:
 			var remaining := trial_enemies().size()
 			return "Clear the room  —  %d remain" % remaining if remaining != 1 else "Clear the room  —  1 remains"
 		"doors":
-			return "" if player.work_panel.is_open() else "E  —  choose the next door"
+			return "" if player.work_panel.is_open() else InputPrompts.text("{interact}  —  choose the next door")
 		"reward":
-			return "" if player.work_panel.is_open() else "E  —  answer the shrine"
+			return "" if player.work_panel.is_open() else InputPrompts.text("{interact}  —  answer the shrine")
 	return ""
 
 
@@ -460,7 +460,7 @@ func finish_run() -> void:
 		# The first trial (D-023 slice 9): the forge's completion offers the
 		# specialisation - a view of what the plate's rails can become.
 		if bool(sim.foundry().get("can_specialise", false)):
-			player.hud.notify("The forge was your first trial. You may specialise further: F opens the plate and shows what your rails can become.")
+			player.hud.notify(InputPrompts.text("The forge was your first trial. You may specialise further: {toggle_foundry} opens the plate and shows what your rails can become."))
 	player.hud.refresh()
 	if spatial:
 		player.hud.notify("Trial %s · %.1f minutes · %d encounters · %d boss tells" % ["failed" if died else "complete" if boss_defeated else "extracted",elapsed_seconds/60.0,completed_encounters,boss_tells])

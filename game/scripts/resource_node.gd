@@ -407,7 +407,7 @@ func work_view(sim: WroughtwildSim) -> Dictionary:
 		label = work_refusal()
 	elif is_seam() and not wedge_set:
 		ready = sim.material_count(String(tool_item)) > 0
-		label = "Set %s" % Hud.pretty(String(tool_item)) if ready else "Needs %s · C to craft" % Hud.pretty(String(tool_item))
+		label = "Set %s" % Hud.pretty(String(tool_item)) if ready else InputPrompts.formatted("Needs %s · {hand_craft} to craft", Hud.pretty(String(tool_item)))
 	elif is_seam():
 		label = "Driving wedge"
 	return {"fraction": float(drive_progress) / count, "ready": ready,
@@ -439,15 +439,15 @@ func interact_label(sim: WroughtwildSim) -> String:
 	if is_seam():
 		if wedge_set:
 			var hot := "  ·  hot: one blow takes the whole seam" if hot_level > 0 else ""
-			return "%s ×%d — E drive the wedge, or strike it%s" % [name, remaining_units, hot]
+			return InputPrompts.formatted("%s ×%d — {interact} drive the wedge, or strike it%s", [name, remaining_units, hot])
 		var held: int = sim.material_count(String(tool_item))
 		if held > 0:
-			return "%s ×%d — E set a wedge (%s ×%d)" % [name, remaining_units, Hud.pretty(String(tool_item)), held]
+			return InputPrompts.formatted("%s ×%d — {interact} set a wedge (%s ×%d)", [name, remaining_units, Hud.pretty(String(tool_item)), held])
 		return "%s ×%d — the seam wants a %s driven into it" % [name, remaining_units, Hud.pretty(String(tool_item))]
 	if drive_presses > 1:
-		var verb := "E to chop; it falls whole" if _is_tree() else "E to work a portion free"
+		var verb := InputPrompts.text("{interact} to chop; it falls whole") if _is_tree() else InputPrompts.text("{interact} to work a portion free")
 		return "%s ×%d — %s" % [name, remaining_units, verb]
-	return "%s ×%d — E to gather" % [name, remaining_units]
+	return InputPrompts.formatted("%s ×%d — {interact} to gather", [name, remaining_units])
 
 
 ## E on the node: the BASELINE route, always available (D-021). Returns
@@ -478,7 +478,7 @@ func work(sim: WroughtwildSim) -> Dictionary:
 		wedge_set = true
 		drive_progress = 0
 		_refresh_wedge_look()
-		return {"text": "You set a wedge in the seam. Drive it with E, or strike it."}
+		return {"text": InputPrompts.text("You set a wedge in the seam. Drive it with {interact}, or strike it.")}
 	drive_progress += 1
 	if drive_progress < drive_presses:
 		_play_harvest_punch()

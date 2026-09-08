@@ -336,6 +336,22 @@ INT-04B's continuous-bed design following the owner's rejected drone.
   combat. Difficulty, build strength and target run durations remain uncalibrated
   by these presentation/forced-clear checks.
 
+## Controls and comfort (INT-08A)
+
+- [x] Camera, master/ambience sound, display and single keyboard/mouse bindings
+  persist independently of world/checkpoint saves, retaining old ambience data.
+- [x] Actual clicks, keyboard navigation, conflict refusal, Escape cancellation,
+  reset and fresh-process restore pass. Startup/underlying panels retain their
+  state; settings suppress gameplay and held keys cannot leak on close.
+- [x] HUD, help, building, interaction and guide prompts follow current bindings.
+  Remapped movement, mouse casting and station interaction work; layouts fit
+  540p, 720p and 1080p and preserve the world identity display.
+- [x] Native/world capture and actual suspended-trial ownership, life, timers,
+  deposit and loot remain exact. VSync is checked through the actual backend.
+- [ ] Owner accepts camera and listening comfort. Desktop fullscreen transitions,
+  other keyboard layouts and multi-monitor behaviour remain unverified.
+  [Implementation and evidence](controls-comfort-2026-09-08.md).
+
 ## Whole-slice playtest
 
 The [Wide Frontier intensive](wide-frontier-intensive-2026-09-06.md), D-032,

@@ -20,6 +20,14 @@ on purpose.
 
 ## Run from a clean checkout
 
+**Controls and comfort:** press **H** (default) for Camera, Sound, Display,
+Bindings and Help. Settings apply immediately and persist independently of
+world saves. Rebind one key or mouse button per action; conflicts name the
+existing control. Escape cancels capture/closes settings, and Reset all defaults
+restores original keys and preferences. The keys described below are defaults;
+in-game prompts follow your bindings. Existing ambience choices are retained in
+`user://audio-preferences.cfg`. [Checks and limits](../docs/prototype/controls-comfort-2026-09-08.md).
+
 The approved world/trial intensives add three resource habitats and eight
 finished building materials. New worlds now use `frontier_v6`; loading an older save
 keeps its original V1–V5 geography. Quarry deposits provide slate and

@@ -73,7 +73,7 @@ func _ready() -> void:
 	_guide_button.pressed.connect(show_guide.bind(true))
 	header.add_child(_guide_button)
 	var close := Button.new()
-	close.text = "Close  (I / Esc)"
+	InputPrompts.bind(close, "Close  ({toggle_inventory} / Esc)")
 	close.pressed.connect(close_panel)
 	header.add_child(close)
 
@@ -110,14 +110,14 @@ func _ready() -> void:
 	_tiles.add_theme_constant_override("v_separation", 6)
 	left.add_child(_tiles)
 	_empty = Label.new()
-	_empty.text = "Nothing carried yet. Harvest trees and boulders with E."
+	InputPrompts.bind(_empty, "Nothing carried yet. Harvest trees and boulders with {interact}.")
 	_empty.modulate = UiTheme.MUTED
 	left.add_child(_empty)
 	left.add_child(_section("Gear in pack"))
 	_gear = VBoxContainer.new()
 	_gear.add_theme_constant_override("separation", 6)
 	left.add_child(_gear)
-	left.add_child(_section("Skills — press 1–4 to slot (Shift dashes)"))
+	left.add_child(_section("Skills — assign with the slot buttons ({dash} also dashes)"))
 	_skills = VBoxContainer.new()
 	_skills.add_theme_constant_override("separation", 6)
 	left.add_child(_skills)
@@ -154,7 +154,7 @@ func _ready() -> void:
 
 func _section(text: String) -> Label:
 	var label := Label.new()
-	label.text = text
+	InputPrompts.bind(label, text)
 	label.add_theme_font_size_override("font_size", 16)
 	label.modulate = UiTheme.MUTED
 	return label

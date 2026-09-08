@@ -157,6 +157,6 @@ func choose(id: String) -> bool:
 		# The kit replaced the base skills: the bar rebuilds from the sim.
 		player.combat.loadout_changed.emit()
 		if player.hud != null:
-			player.hud.notify("You are a %s. Your rails hold %s from the first era; F opens the plate." % [view.get("class_name", id), " and ".join(names)])
+			player.hud.notify(InputPrompts.formatted("You are a %s. Your rails hold %s from the first era; {toggle_foundry} opens the plate.", [view.get("class_name", id), " and ".join(names)]))
 	close_panel()
 	return true

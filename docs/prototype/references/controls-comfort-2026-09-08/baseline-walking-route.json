@@ -1,0 +1,14 @@
+{
+  "checks": 4,
+  "cold_player_ready_ms": 140.096,
+  "distance_m": 59.999927520752,
+  "failures": 0,
+  "frame_median_ms": 0.341,
+  "frame_p95_ms": 0.631,
+  "frames": 32342,
+  "max_ambient_voices": 1,
+  "max_step_voices": 1,
+  "physics_frames": 720,
+  "scope": "1280x720 Forward+, VSync disabled, 60 m of real walking over four constructed materials and biome beds; authored support/map, Dummy audio. Excludes native world generation, device mix and dense combat.",
+  "warmup_physics_frames": 120
+}

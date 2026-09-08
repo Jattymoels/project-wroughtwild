@@ -27,6 +27,15 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
+[INT-08A controls and comfort](docs/prototype/controls-comfort-2026-09-08.md)
+adds **H → Camera / Sound / Display / Bindings / Help**. Sensitivity, inversion,
+field of view, optional cosmetic motion, volume and keyboard/mouse controls
+persist separately from worlds; prompts follow the selected keys. Original
+bindings remain the defaults, including the shared removal/horn key. Actual
+input, reset/restart and world/trial ownership checks pass. Owner comfort and
+fullscreen/multi-monitor review remain pending; portable export is a separate
+proposed next slice.
+
 The [current intensive queue](docs/prototype/intensive-queue.md) tracks seven
 focused passes that can progress between playtests. First is
 [INT-01: first-hour clarity](docs/prototype/first-hour-clarity-plan-2026-09-07.md):

@@ -63,6 +63,8 @@ func _run() -> void:
 	add_child(sun)
 	var player_started := Time.get_ticks_usec()
 	player = preload("res://scenes/player.tscn").instantiate()
+	# Matched measurements use the same defaults, independent of earlier UI probes.
+	player.audio_preferences.path = "res://../build/intensives/route-preferences.cfg"
 	player.position = Vector3(8,.97,74)
 	add_child(player)
 	player.class_panel.choose("warden")

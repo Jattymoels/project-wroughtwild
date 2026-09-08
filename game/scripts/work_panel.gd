@@ -214,7 +214,7 @@ func craft(recipe_id: StringName, aim_kind: String = "", quality: int = 1, quant
 		_message.text = note + "."
 		for output_id in recipe.get("outputs", {}):
 			if sim.kit_item_ids().has(String(output_id)):
-				_message.text += " Kit in pack: close → B → Tab → choose the kit → Use selection → LMB place → E use."
+				_message.text += InputPrompts.text(" Kit in pack: close → {toggle_build_mode} → {cycle_shape} → choose the kit → Use selection → {primary_action} place → {interact} use.")
 				break
 
 		if first_dressed:
@@ -265,7 +265,7 @@ func recast(ingot_id: String, metal_id: String) -> bool:
 	var ok: bool = sim.foundry_recast(ingot_id, metal_id)
 	if ok:
 		var info: Dictionary = sim.foundry_ingot(ingot_id)
-		_message.text = "The %s is re-cast in %s. F opens the plate." % [info.get("display_name", ingot_id), metal_id]
+		_message.text = InputPrompts.formatted("The %s is re-cast in %s. {toggle_foundry} opens the plate.", [info.get("display_name", ingot_id), metal_id])
 		var player := get_tree().get_first_node_in_group("player") as WroughtwildPlayer
 		if player != null and player.hud != null:
 			player.hud.refresh()

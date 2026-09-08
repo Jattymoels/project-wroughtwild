@@ -57,7 +57,9 @@ var _horn_left := 0.0
 var trial: TrialController
 var footsteps: PlayerFootsteps
 var environment_ambience: EnvironmentAmbience
-var audio_preferences := AudioPreferences.new()
+var preferences := PlayerPreferences.new()
+# Retain the existing ambience interface and file; one owner, one save.
+var audio_preferences: AudioPreferences = preferences
 ## Where the player returns after an open-world death.
 var spawn_position := Vector3.ZERO
 ## Rolls gathering ambushes; tests seed it or spawn ambushes directly.
@@ -85,6 +87,9 @@ var _fire_hint_shown := false
 
 func _ready() -> void:
 	audio_preferences.load_saved()
+	preferences.changed.connect(_apply_preferences)
+	preferences.bindings_changed.connect(_refresh_input_prompts)
+	_apply_preferences()
 	add_to_group("player")
 	spawn_position = global_position
 	ambush_rng.randomize()
@@ -233,8 +238,8 @@ func note_pack_full(family: String) -> void:
 	if now - int(_full_said.get(family, -100000)) < 8000:
 		return
 	_full_said[family] = now
-	hud.notify("Pack full: %s (%d). Use a chest, or find Chest under B → Tab." % [
-		Hud.pretty(family), inventory.carry_cap(StringName(family))])
+	hud.notify(InputPrompts.formatted("Pack full: %s (%d). Use a chest, or find Chest under {toggle_build_mode} → {cycle_shape}.", [
+		Hud.pretty(family), inventory.carry_cap(StringName(family))]))
 
 
 func open_custom_panel(title: String, rows: Array, message_text: String = "", context_id: String = "") -> void:
@@ -245,19 +250,23 @@ func open_custom_panel(title: String, rows: Array, message_text: String = "", co
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if build_palette.is_open():
-		return
 	# H now contains interactive sound controls. Its keys/clicks must never
 	# place, attack, save/load, open another panel or rotate the camera behind it.
 	if hud.help_visible():
 		if event.is_action_pressed("toggle_help") or event.is_action_pressed("ui_cancel"):
 			hud.toggle_help()
 		return
+	if event.is_action_pressed("toggle_help"):
+		hud.toggle_help()
+		get_viewport().set_input_as_handled()
+		return
+	if build_palette.is_open():
+		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		var pitch_limit := FP_PITCH_LIMIT if first_person else TP_PITCH_LIMIT
-		rotation.y -= event.relative.x * mouse_sensitivity
+		rotation.y -= event.relative.x * mouse_sensitivity * float(preferences.values.sensitivity)
 		spring_arm.rotation.x = clampf(
-			spring_arm.rotation.x - event.relative.y * mouse_sensitivity,
+			spring_arm.rotation.x - event.relative.y * mouse_sensitivity * float(preferences.values.sensitivity) * (-1.0 if preferences.values.invert_y else 1.0),
 			-pitch_limit, pitch_limit)
 	elif event.is_action_pressed("toggle_camera"):
 		first_person = not first_person
@@ -417,8 +426,8 @@ func _toggle_spike_mod(index: int) -> void:
 	var now_active := not sim.skill_mod_active(id)
 	sim.set_skill_mod_active(id, now_active)
 	var mod: Dictionary = sim.skill_mod(id)
-	hud.notify("%s %s (spike mod F%d)" % [
-		mod.get("display_name", id), "ON" if now_active else "off", index + 1])
+	hud.notify("%s %s (spike mod %s)" % [
+		mod.get("display_name", id), "ON" if now_active else "off", InputPrompts.key("spike_mod_%d" % (index + 1))])
 
 
 func offer_saved_trial() -> void:
@@ -571,13 +580,31 @@ func _physics_process(delta: float) -> void:
 	footsteps.after_motion(before_motion, grounded_before, dash != Vector3.ZERO, delta)
 
 	# A hard landing dips the camera briefly - weight without screen shake.
-	if is_on_floor() and not _was_on_floor and fall_speed > 5.5:
+	if preferences.values.landing_motion and is_on_floor() and not _was_on_floor and fall_speed > 5.5:
 		_land_dip = clampf(fall_speed * 0.014, 0.04, 0.13)
 	_was_on_floor = is_on_floor()
 	_land_dip = move_toward(_land_dip, 0.0, delta * 0.7)
 	spring_arm.position.y = (FP_EYE_HEIGHT if first_person else _tp_arm_position.y) - _land_dip
 
 	_update_digging(delta)
+
+
+func _apply_preferences() -> void:
+	preferences.apply_device()
+	if is_instance_valid(camera): camera.fov = float(preferences.values.fov)
+	if not preferences.values.landing_motion:
+		_land_dip = 0.0
+		if is_instance_valid(spring_arm): spring_arm.position.y = FP_EYE_HEIGHT if first_person else _tp_arm_position.y
+
+
+func _refresh_input_prompts() -> void:
+	if is_instance_valid(hud):
+		InputPrompts.refresh_tree(self)
+		if is_instance_valid(hud.action_bar): hud.action_bar.rebuild()
+		hud.refresh()
+		if is_instance_valid(inventory_panel) and inventory_panel.is_open(): inventory_panel.refresh()
+		if is_instance_valid(work_panel) and work_panel.is_open(): work_panel.refresh()
+		if is_instance_valid(build_palette) and build_palette.is_open(): build_palette.refresh()
 
 
 ## Stairs and half cubes: a CharacterBody3D climbs slopes but never a
@@ -889,15 +916,15 @@ func aim_probe() -> Dictionary:
 		var site := collider as StationSite
 		var sim := inventory.get_sim()
 		var info: Dictionary = sim.station(site.current_station_id(sim))
-		var verb := "E to work" if site.is_built(sim) else "E to build"
+		var verb := InputPrompts.text("{interact} to work") if site.is_built(sim) else InputPrompts.text("{interact} to build")
 		return {"state": "interact", "target": site,
 			"label": "%s — %s" % [info.get("display_name", "Station"), verb]}
 	if collider is OrderBoard:
-		return {"state": "interact", "label": "Order board — E to read", "target": collider}
+		return {"state": "interact", "label": InputPrompts.text("Order board — {interact} to read"), "target": collider}
 	if collider is DroppedBundle:
-		return {"state": "interact", "label": "Your dropped pack — E to recover", "target": collider}
+		return {"state": "interact", "label": InputPrompts.text("Your dropped pack — {interact} to recover"), "target": collider}
 	if collider is TrialGate:
-		return {"state": "interact", "label": "Trial gate — E to enter", "target": collider}
+		return {"state": "interact", "label": InputPrompts.text("Trial gate — {interact} to enter"), "target": collider}
 	if collider is TrialFixture:
 		return {"state":"interact","label":collider.trial_label(),"target":collider}
 	if collider is Landmark:

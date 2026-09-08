@@ -281,6 +281,17 @@ func suspension()->void:
 	check(prepared.all(func(effect): return effect.is_queued_for_deletion()),"floor cleanup removes all new identity groups without payout")
 	var loot:=sim.trial_loot().duplicate(true)
 	var choices:=sim.trial_run_state().duplicate(true)
+	# INT-08A: device settings cannot enter or alter the owned run checkpoint.
+	var boundary_before := trial.capture_boundary()
+	var original_preference_path := player.preferences.path
+	player.preferences.path = "res://../build/intensives/trial-comfort.cfg"
+	player.preferences.set_option("fov", 89.0)
+	var comfort_key := InputEventKey.new()
+	comfort_key.physical_keycode = KEY_J
+	check(player.preferences.rebind("interact", comfort_key).is_empty(), "trial permits a separate device binding change")
+	player.hud.toggle_help()
+	player.hud.toggle_help()
+	check(trial.capture_boundary() == boundary_before and sim.export_json() == economy, "settings preserve exact trial boundary, timers, life and native ownership")
 	check(trial.suspend_to(SAVE_PATH),"cleared floor saves atomically")
 	var file: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH))
 	var checkpoint:=String(file.get("trial_boundary",{}).get("checkpoint",""))
@@ -308,6 +319,10 @@ func suspension()->void:
 	check(player.combat.life==life and player.combat.cooldowns[&"prototype_dash"]==2.751234567890123,"restore grants no life/cooldown reset, including full binary64 precision")
 	check(player.combat._trial_dash_armour==9 and player.combat._trial_dash_armour_left==.8512345678901234,"temporary effect clocks restore exactly: armour=%.17f timer=%.17f expected=%.17f"%[player.combat._trial_dash_armour,player.combat._trial_dash_armour_left,.8512345678901234])
 	check(trial.elapsed_seconds==123.5,"loose-drop restoration does not advance or reset the suspended run clock")
+	check(player.camera.fov == 89.0 and InputPrompts.key("interact") == "J", "trial restore retains current device settings")
+	player.preferences.path = original_preference_path
+	player.preferences.load_saved()
+	player._apply_preferences()
 	check(not sim.trial_restore_checkpoint(checkpoint),"active checkpoint cannot redeposit inventory")
 	var malformed:=file.duplicate(true)
 	malformed["trial_boundary"]["combat"]["life"]="bad"

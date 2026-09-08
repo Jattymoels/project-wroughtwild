@@ -1,5 +1,15 @@
 # Decision Registry
 
+Owner continuation, 8 September 2026: “Yep go” selects
+[INT-08A controls and comfort](../prototype/controls-comfort-2026-09-08.md) from
+the next-round proposal. Under D-008/D-012/D-013, the existing H overlay gains
+saved camera, sound, display and keyboard/mouse bindings with matching prompts.
+This extends the earlier interface exclusion of key rebinding; skill assignment
+and native gameplay/save contracts remain unchanged. Device preferences retain
+existing ambience choices separately from world/trial saves. One binding per
+action, conflict refusal and fixed Escape/menu navigation bound this prototype
+pass; controller input and INT-08B export remain outside this selection.
+
 Owner continuation, 8 September 2026: “Yep let's go” selects the final queued
 [INT-02B environment target](../prototype/environment-target-2026-09-08.md) after
 INT-02C. Under D-013/D-030/D-031/D-032, existing Blender nature/ruin/membrane

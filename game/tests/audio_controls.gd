@@ -3,6 +3,8 @@ extends "res://tests/environment_ambience.gd"
 const CHECKPOINT := "res://audio-controls-world.json"
 
 func _run() -> void:
+	# INT-08A retains these controls on the explicit Sound page.
+	player.hud.comfort.show_page("Sound")
 	var prefs := player.audio_preferences
 	if "--audio-restore-only" in OS.get_cmdline_user_args():
 		check(is_equal_approx(prefs.ambience_level, .35) and prefs.ambience_muted, "fresh process loads saved level and mute before building the HUD")

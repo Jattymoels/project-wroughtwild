@@ -274,7 +274,7 @@ func _say_scratched() -> void:
 ## What the crosshair label should offer for this piece ("" for nothing).
 func interact_label() -> String:
 	if is_door():
-		return "E close the door" if open else "E open the door"
+		return InputPrompts.text("{interact} close the door") if open else InputPrompts.text("{interact} open the door")
 	if is_chest():
-		return "E open the chest"
+		return InputPrompts.text("{interact} open the chest")
 	return ""

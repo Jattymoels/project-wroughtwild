@@ -1,5 +1,30 @@
 # Interface and In-Game Experience
 
+**INT-08A continuation, 8 September 2026:** H opens Controls & comfort with
+Camera, Sound, Display, Bindings and Help pages. Saved sensitivity/inversion,
+75° default field of view, optional landing dip/walking hand sway, master and
+existing ambience controls, window mode and VSync are device preferences in the
+existing `user://audio-preferences.cfg`, separate from world/trial saves.
+Defaults retain prior behaviour; invalid data recovers usable defaults and a
+write failure is visible. `game/settings.json` defines ranges and explanations.
+
+The owner-approved [controls slice](../prototype/controls-comfort-2026-09-08.md)
+supersedes the earlier exclusion of key rebinding below. Each gameplay/debug
+action has one keyboard or mouse-button binding; prompts and open panels follow
+the live map. Conflict refusal names the existing action without displacing it.
+Removal/horn share one contextual binding. Escape and ordinary menu navigation
+remain fixed; chords, wheel, controller and multiple bindings remain excluded.
+Reset restores device defaults and original keys without reassigning skills.
+
+Settings can cover the class chooser, pack, station or building catalogue.
+They consume gameplay input and capture consumes menu shortcuts too; Escape
+first cancels capture, then closes settings back to the underlying panel or
+mouse look. Closing clears held gameplay actions. The world continues running.
+Short pages fit their contents; long pages scroll with tabs, Reset, Close and
+existing world identity reachable at 540p, 720p and 1080p. Combat/work gestures,
+danger cues, ownership and checkpoint rules remain unchanged. Subjective comfort
+and fullscreen/multi-monitor review remain separate from the recorded checks.
+
 **INT-06A continuation, 7 September 2026:** the pressure feeder opens a short
 overview with the actual current blocker, completed output and Start/Pause/Resume.
 Separate supplies, drive/connections and recovery pages retain explicit loading,

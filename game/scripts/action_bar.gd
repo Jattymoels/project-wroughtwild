@@ -46,7 +46,8 @@ func rebuild() -> void:
 		column.add_child(head)
 		var key := Label.new()
 		# Shift stays the dash reflex key wherever Dash is slotted.
-		key.text = "%d/Shift" % (i + 1) if i == dash_slot else str(i + 1)
+		key.text = InputPrompts.key("skill_slot_%d" % (i + 1))
+		if i == dash_slot: key.text += "/" + InputPrompts.key("dash")
 		key.add_theme_font_size_override("font_size", 12)
 		key.modulate = UiTheme.SUN_WARM
 		head.add_child(key)

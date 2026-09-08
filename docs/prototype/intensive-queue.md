@@ -8,7 +8,16 @@ queue; the [numbered waves](roadmap-waves.md) remain a historical record.
 Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
-## Current priority — completed owner playtest, 7 September 2026
+## Current priority — INT-08A controls and comfort
+
+The owner's “Yep go” on 8 September selects [INT-08A](controls-comfort-2026-09-08.md)
+after the eight playtest slices below. **Implemented, owner comfort review
+pending.** Saved camera, sound, display and keyboard/mouse controls extend the
+existing H overlay. Actual input, 540p–1080p layouts, fresh restarts and unchanged
+world/trial ownership pass. INT-08B remains a separate proposed portable-build
+slice; desktop fullscreen and multi-monitor review remain open.
+
+## Completed owner playtest round, 7 September 2026
 
 The owner has finished this round of notes and asked for the next intensives
 and iterations to be planned. The [complete feedback ledger and slice plans](playtest-iterations-2026-09-07.md)
@@ -33,7 +42,7 @@ The new owner feedback reopens specific issues within previously implemented
 passes. Technical evidence remains recorded; it does not override this human
 feedback or make all unrelated earlier work invalid. No final tuning values,
 new generator profile, higher enemy cap or dash invulnerability are selected by
-this plan. INT-08A/B remain proposed follow-ups at lower priority.
+this plan. INT-08A was subsequently selected above; INT-08B remains proposed.
 
 ## Tracked slices
 
@@ -98,12 +107,12 @@ deferred while away and does not block independent work.
 
 The owner requested another review of worthwhile work while away, with Blender
 creation as a possible next intensive. The [7 September reassessment](away-work-review-2026-09-07.md)
-recommends the following bounded order. These are **proposals**, not accepted
-implementation work or a change to the review status of INT-01 through INT-07.
+recommends the following bounded order. Later selections are recorded explicitly;
+they do not change the owner-review status of INT-01 through INT-07.
 
 | ID | Proposed slice | Outcome / dependency |
 | --- | --- | --- |
-| INT-08A | Controls and comfort | Compact persistent player settings and keyboard/mouse bindings, with matching prompts. Actual interaction and restart checks can precede owner comfort review. |
+| INT-08A | Controls and comfort | **Implemented, owner review pending:** [saved settings and matching bindings](controls-comfort-2026-09-08.md). Actual input, conflict/reset behaviour, small-window layouts, independent restarts and exact world/trial state pass. |
 | INT-08B | Portable Windows playtest build | Export the extension, tuning and assets into a build that works outside the checkout. Verify with isolated existing saves and trial checkpoints; check matching export-template availability. |
 | INT-02B | Finished visual target | Subsequently selected and **implemented, owner review pending** in the [8 September target](environment-target-2026-09-08.md). The full Godot scene preceded reuse of its surface treatment. |
 
@@ -151,6 +160,7 @@ needs its own bounded follow-up.
 
 | Date | Item | Result |
 | --- | --- | --- |
+| 8 Sep 2026 | INT-08A | Owner selected “Yep go” after the next-slice recommendation. Existing H gains saved camera, audio, display and keyboard/mouse controls with truthful prompts. Actual input, malformed data, conflict/reset, startup/underlying panels, layouts, restarts and exact trial/world ownership pass. [Evidence and limits](controls-comfort-2026-09-08.md); INT-08B remains proposed. |
 | 8 Sep 2026 | INT-03D | Owner selected the next bounded slice. Common building loads and ordinary storage increased against a measured 225-wood project, preserving costs, finite source stock, special caps and exact ownership. [Measurements, checks and limits](building-loads-2026-09-08.md). INT-04C remains next. |
 | 8 Sep 2026 | INT-04C | Owner selected the next bounded slice. Reproduced continuous ambience, replaced it with short textures and 12–24 second quiet gaps, and added saved H level/mute controls. Input isolation, fresh restarts, historical maps, unchanged gameplay RNG and audio regression pass. [Measurements and listening limits](quiet-ambience-2026-09-08.md). INT-01B is next. |
 | 7 Sep 2026 | INT-03C | Owner selected only this slice from `80dde32`. Local scenery refresh and bounded station seating correct reproduced stalls/refusals. Matched completed-home timing, exact scenery, actual controls, finite-state/home returns and fresh-process fixtures pass. Original disappearance remains unreproduced; other slices are not implemented. [Evidence and limits](placement-reliability-2026-09-07.md). |

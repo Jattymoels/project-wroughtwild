@@ -285,7 +285,7 @@ func family_refusal() -> String:
 		if _sim().shape_allows_family(_target_shape(),id):
 			suitable.append(_sim().build_material(id).get("display_name",id))
 	var need := " Needs %s." % ", ".join(traits) if not traits.is_empty() else ""
-	return "%s cannot make this shape.%s Choose %s in Tab." % [material_label(),need,", ".join(suitable.slice(0,3))]
+	return InputPrompts.formatted("%s cannot make this shape.%s Choose %s in {cycle_shape}.", [material_label(),need,", ".join(suitable.slice(0,3))])
 
 func cost_label() -> String:
 	if selected_kit != &"":
@@ -308,8 +308,8 @@ func orientation_label() -> String:
 	if not rotatable():
 		return "Aligns to the surface you aim at."
 	if shape_form == "door":
-		return "Hinge %d/2 · R flips the hinge" % (preview_rotation_step%2+1)
-	return "Direction %d/4 · arrow marks front · R turns 90°" % (preview_rotation_step+1)
+		return InputPrompts.formatted("Hinge %d/2 · {rotate_preview} flips the hinge", (preview_rotation_step%2+1))
+	return InputPrompts.formatted("Direction %d/4 · arrow marks front · {rotate_preview} turns 90°", (preview_rotation_step+1))
 
 func placement_feedback() -> String:
 	var refusal := selection_refusal()
@@ -317,7 +317,7 @@ func placement_feedback() -> String:
 		return refusal
 	if not preview_visible:
 		return "Aim at ground or a building edge within %d m." % placement_range
-	return preview_reason if preview_reason != "" else "Ready · LMB place"
+	return preview_reason if preview_reason != "" else InputPrompts.text("Ready · {primary_action} place")
 
 func _refresh_orientation_marker() -> void:
 	if _orientation_marker == null:
@@ -543,7 +543,7 @@ func element_refusal(element: Dictionary) -> String:
 	if element.is_empty() or not _sim().shape_accepts(shape, element):
 		return "Aim at a suitable surface or building edge for this shape."
 	if not _sim().structure_free_for(shape, element):
-		return "That space is occupied. Aim beside it, or X to remove the existing piece."
+		return InputPrompts.text("That space is occupied. Aim beside it, or {remove_block} to remove the existing piece.")
 	if _buried(element):
 		return "Inside terrain. Aim at the exposed surface or clear the ground first."
 	var pose := piece_pose(shape, element, preview_rotation_step)

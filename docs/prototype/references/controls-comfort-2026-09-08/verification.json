@@ -1,0 +1,117 @@
+{
+  "baseline": "c2253fe",
+  "scope": "INT-08A isolated Godot checks; counts are assertions, not owner acceptance. Native library/tuning unchanged.",
+  "current_assertions": 8806,
+  "checks": [
+    {
+      "run": "controls_baseline-77-headless",
+      "checks": 2,
+      "failures": 0
+    },
+    {
+      "run": "controls_comfort-77-headless",
+      "checks": 142,
+      "failures": 0
+    },
+    {
+      "run": "controls_comfort-77-rendered",
+      "checks": 159,
+      "failures": 0
+    },
+    {
+      "run": "controls_comfort-77-headless-restart",
+      "checks": 8,
+      "failures": 0
+    },
+    {
+      "run": "controls_comfort-77-rendered-restart",
+      "checks": 8,
+      "failures": 0
+    },
+    {
+      "run": "audio_controls-77-headless",
+      "checks": 48,
+      "failures": 0
+    },
+    {
+      "run": "audio_controls-77-rendered",
+      "checks": 54,
+      "failures": 0
+    },
+    {
+      "run": "audio_controls-77-headless-restart",
+      "checks": 4,
+      "failures": 0
+    },
+    {
+      "run": "audio_controls-77-rendered-restart",
+      "checks": 4,
+      "failures": 0
+    },
+    {
+      "run": "run_tests-script",
+      "checks": 398,
+      "failures": 0
+    },
+    {
+      "run": "panel_density-77-headless",
+      "checks": 60,
+      "failures": 0
+    },
+    {
+      "run": "grounded_footsteps-77-headless",
+      "checks": 47,
+      "failures": 0
+    },
+    {
+      "run": "integration-77-headless",
+      "checks": 273,
+      "failures": 0
+    },
+    {
+      "run": "trial_intensive-77-headless",
+      "checks": 6221,
+      "failures": 0
+    },
+    {
+      "run": "loose_drop_save-77-headless",
+      "checks": 148,
+      "failures": 0
+    },
+    {
+      "run": "placement_generated_fixtures-77-headless",
+      "checks": 44,
+      "failures": 0
+    },
+    {
+      "run": "home_station_placement-77-headless",
+      "checks": 98,
+      "failures": 0
+    },
+    {
+      "run": "environment_ambience-77-headless",
+      "checks": 337,
+      "failures": 0
+    },
+    {
+      "run": "interaction_feedback-77-headless",
+      "checks": 417,
+      "failures": 0
+    },
+    {
+      "run": "workshop_feedback-77-headless",
+      "checks": 328,
+      "failures": 0
+    },
+    {
+      "run": "footsteps_route-77-rendered",
+      "checks": 6,
+      "failures": 0
+    }
+  ],
+  "baseline_reproduction": {
+    "checks": 2,
+    "expected_failures": 2
+  },
+  "baseline_route_checks": 6
+}

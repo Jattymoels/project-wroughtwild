@@ -39,7 +39,7 @@ func _ready() -> void:
 	heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(heading)
 	var close := Button.new()
-	close.text = "Close · Tab / Esc"
+	InputPrompts.bind(close, "Close · {cycle_shape} / Esc")
 	close.pressed.connect(close_panel)
 	header.add_child(close)
 	var choices := HBoxContainer.new()
@@ -147,6 +147,7 @@ func _process(_delta: float) -> void:
 			return
 
 func _input(event: InputEvent) -> void:
+	if player.hud.help_visible(): return
 	if not is_open():
 		return
 	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("cycle_shape"):
@@ -266,7 +267,7 @@ func refresh_detail() -> void:
 	turn_left.disabled = not placement.rotatable()
 	turn_right.disabled = not placement.rotatable()
 	var info: Dictionary = player.inventory.get_sim().shape(placement.placing_shape())
-	detail.text = "%s\n%s\n\n%s" % [placement.cost_label(),placement.orientation_label(),info.get("hint","") if not kit else "Use selection → LMB on clear ground → E to operate."]
+	detail.text = "%s\n%s\n\n%s" % [placement.cost_label(),placement.orientation_label(),info.get("hint","") if not kit else InputPrompts.text("Use selection → {primary_action} on clear ground → {interact} to operate.")]
 	var reason := placement.selection_refusal()
 	if reason != "":
 		detail.text += "\n\n"+reason

@@ -83,7 +83,7 @@ func _run() -> void:
 	var crafted := work.craft("workbench_kit")
 	check(bool(crafted.crafted) and sim.material_count("workbench_kit")==kit_before+int(recipe.outputs.workbench_kit), "kit handoff follows an actual native craft with the exact output")
 	check(sim.has_station("workbench")==station_before and player.placement.placeables().has({"kind":"kit","id":&"workbench_kit"}), "crafting leaves a selectable kit instead of auto-placing a station")
-	check(work.message().contains("B → Tab") and work.message().contains("LMB") and work.message().contains("E use"), "successful kit craft supplies the full build and operate handoff")
+	check(work.message().contains(InputPrompts.text("{toggle_build_mode} → {cycle_shape}")) and work.message().contains(InputPrompts.key("primary_action")) and work.message().contains(InputPrompts.text("{interact} use")), "successful kit craft supplies the full build and operate handoff with current controls")
 	work.close_panel()
 
 	# A shared support reads two real skill sockets, with one identity body.

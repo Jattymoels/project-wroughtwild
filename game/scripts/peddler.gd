@@ -39,7 +39,7 @@ func _ready() -> void:
 
 
 func interact_label() -> String:
-	return "Peddler — E to trade"
+	return InputPrompts.text("Peddler — {interact} to trade")
 
 
 ## Opens the stall: one row per offer, Buy where affordable; then the

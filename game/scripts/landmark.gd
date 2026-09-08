@@ -105,7 +105,7 @@ func interact_label(sim: WroughtwildSim) -> String:
 	if wants.is_empty():
 		return "%s — it wants nothing yet" % title
 	if bool(wants.get("held", false)):
-		return "%s — E set %s" % [title, wants.get("display_name", "the curio")]
+		return InputPrompts.formatted("%s — {interact} set %s", [title, wants.get("display_name", "the curio")])
 	return "%s — it waits for %s" % [title, wants.get("display_name", "something")]
 
 
