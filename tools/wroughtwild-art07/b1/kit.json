@@ -1,0 +1,60 @@
+{
+  "seed": 42,
+  "broadleaf": {
+    "height_m": 8,
+    "sprays": 580,
+    "leaf_length_m": [
+      0.22,
+      0.33
+    ],
+    "trunk_triangles": [
+      42000,
+      18000,
+      3500
+    ],
+    "cut_height_m": 1.25,
+    "burial_m": 0.65
+  },
+  "pine": {
+    "height_m": 9,
+    "sprays": 680,
+    "leaf_length_m": [
+      0.18,
+      0.29
+    ],
+    "trunk_triangles": [
+      35000,
+      15000,
+      3000
+    ],
+    "cut_height_m": 1.0,
+    "burial_m": 0.55
+  },
+  "lod_distances_m": [
+    18,
+    55
+  ],
+  "wind_tip_m": 0.055,
+  "wind_period_seconds": 4.8,
+  "scar": {
+    "damage_half_width_m": 0.18,
+    "core_half_width_m": 0.055,
+    "depth_m": 0.1,
+    "period_seconds": 4.0,
+    "peak_emission": 2.8,
+    "minimum_light": 0.22
+  },
+  "purpose": {
+    "seed": "Reproducible canopy variants; never consumes native gameplay randomness.",
+    "height_m": "Source height in game metres before the stated root burial; not a change to native bodies.",
+    "sprays": "Connected branchlets supporting a layered broadleaf crown or irregular conifer tiers.",
+    "leaf_length_m": "Broadleaf leaf size or pine needle-bearing shoot length, with natural variation.",
+    "trunk_triangles": "Explicit near/middle/far candidate mesh targets retaining bark, forks and silhouettes; measured below, not approved production budgets.",
+    "cut_height_m": "Matching stump cut plane in this source; supplies presentation only for existing finite felling.",
+    "burial_m": "Seat reconstructed root tips in review ground; not world-generation height tuning.",
+    "lod_distances_m": "Review switches after 18 and 55 metres; near leaf edges, middle folded clusters and distant branch-linked silhouettes.",
+    "wind_tip_m": "Maximum leaf-tip cosmetic offset; zero at attachment sockets.",
+    "wind_period_seconds": "Slow pause-aware foliage sway, no simulation effect.",
+    "scar": "Ten-centimetre maximum geometric incision under a broad broken margin; narrower recessed energy follows the approved oak paths. Four-second ambient pulse, never work or success."
+  }
+}

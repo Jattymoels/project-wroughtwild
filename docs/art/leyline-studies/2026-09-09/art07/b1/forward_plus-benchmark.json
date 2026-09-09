@@ -1,0 +1,70 @@
+{
+	"adapter": "NVIDIA GeForce RTX 5090",
+	"bloom": false,
+	"cases": [
+		{
+			"draw_calls": 133.0,
+			"gpu_p50_ms": 1.15900003910065,
+			"gpu_p95_ms": 1.75800001621246,
+			"lod": "near-only",
+			"mood": 0,
+			"primitives": 8690009.0,
+			"samples": 300,
+			"texture_bytes": 400126464.0,
+			"wall_p50_ms": 1.26,
+			"wall_p95_ms": 1.864,
+			"wall_worst_ms": 2.445,
+			"warmup": 90
+		},
+		{
+			"draw_calls": 133.0,
+			"gpu_p50_ms": 1.1599999666214,
+			"gpu_p95_ms": 1.69900000095367,
+			"lod": "near-only",
+			"mood": 2,
+			"primitives": 8690009.0,
+			"samples": 300,
+			"texture_bytes": 400126464.0,
+			"wall_p50_ms": 1.264,
+			"wall_p95_ms": 1.813,
+			"wall_worst_ms": 3.42,
+			"warmup": 90
+		},
+		{
+			"draw_calls": 133.0,
+			"gpu_p50_ms": 0.691999971866608,
+			"gpu_p95_ms": 1.192999958992,
+			"lod": "distance",
+			"mood": 0,
+			"primitives": 4245653.0,
+			"samples": 300,
+			"texture_bytes": 400126464.0,
+			"wall_p50_ms": 0.8,
+			"wall_p95_ms": 1.375,
+			"wall_worst_ms": 1.617,
+			"warmup": 90
+		},
+		{
+			"draw_calls": 133.0,
+			"gpu_p50_ms": 0.726000010967255,
+			"gpu_p95_ms": 1.30799996852875,
+			"lod": "distance",
+			"mood": 2,
+			"primitives": 4245653.0,
+			"samples": 300,
+			"texture_bytes": 400126464.0,
+			"wall_p50_ms": 0.815,
+			"wall_p95_ms": 1.4,
+			"wall_worst_ms": 1.92,
+			"warmup": 90
+		}
+	],
+	"msaa": 4,
+	"notes": "Nine posed trees. No capture readback or competing generator. Compatibility GPU timings may be unavailable (zero). Not full-world or lower-spec approval.",
+	"renderer": "forward_plus",
+	"size": [
+		1440,
+		900
+	],
+	"vsync": false
+}

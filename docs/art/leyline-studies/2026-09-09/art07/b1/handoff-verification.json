@@ -1,0 +1,1566 @@
+{
+  "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02",
+  "manifest_sha256": "00a244253614b8c58213a15f929e48fd65c9aec0bb3489600646497bfcbaf7d0",
+  "files_reverified_after_import": 1533,
+  "canonical_hash_failures": [],
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\handoff-reopen-v02",
+  "launch_log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\handoff-reopen-v02\\review.log",
+  "launch_pass": true,
+  "jobs": {
+    "blender.log.job.json": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\final-handoff\\user",
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/handoff-reopen-v02/recipe/audit_blender.py",
+        "--",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/final-handoff/blender-audit.json",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/handoff-reopen-v02/models/broadleaf",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/handoff-reopen-v02/models/pine"
+      ],
+      "gpu_slot": true,
+      "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+      "pid": 38428,
+      "seconds": 13.2369766,
+      "exit": 0
+    },
+    "compatibility.log.job.json": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\final-handoff\\user",
+      "arguments": [
+        "--path",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/handoff-reopen-v02/review",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--",
+        "--capture"
+      ],
+      "gpu_slot": true,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 36440,
+      "seconds": 4.2435959,
+      "exit": 0
+    },
+    "native-final.log.job.json": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\final-handoff\\user",
+      "arguments": [
+        "--headless",
+        "--path",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/handoff-reopen-v02/native/game",
+        "--fixed-fps",
+        "60",
+        "--audio-driver",
+        "Dummy",
+        "res://b1/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "gpu_slot": true,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 16848,
+      "seconds": 1.8685043,
+      "exit": 0
+    },
+    "native-flow.log.job.json": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\final-handoff\\user",
+      "arguments": [
+        "--headless",
+        "--path",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/handoff-reopen-v02/native/game",
+        "--fixed-fps",
+        "60",
+        "--audio-driver",
+        "Dummy",
+        "res://b1/native_review.tscn"
+      ],
+      "gpu_slot": true,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 20488,
+      "seconds": 1.8768435,
+      "exit": 0
+    },
+    "native-import.log.job.json": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\final-handoff\\user",
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--import",
+        "--path",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/handoff-reopen-v02/native/game",
+        "--quit"
+      ],
+      "gpu_slot": true,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 28532,
+      "seconds": 19.8492036,
+      "exit": 0
+    },
+    "native-partial.log.job.json": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\final-handoff\\user",
+      "arguments": [
+        "--headless",
+        "--path",
+        "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/handoff-reopen-v02/native/game",
+        "--fixed-fps",
+        "60",
+        "--audio-driver",
+        "Dummy",
+        "res://b1/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "gpu_slot": true,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 13976,
+      "seconds": 1.7778271,
+      "exit": 0
+    }
+  },
+  "blender": {
+    "masters": [
+      {
+        "file": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\handoff-reopen-v02\\models\\broadleaf\\broadleaf-master.blend",
+        "packed_images": 6,
+        "collections": [
+          "01 SOURCE",
+          "02 FINISHED",
+          "03 RUNTIME",
+          "04 REVIEW"
+        ],
+        "independent_measured_scar_depth_m": 0.09992749531513745
+      },
+      {
+        "file": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\handoff-reopen-v02\\models\\pine\\pine-master.blend",
+        "packed_images": 5,
+        "collections": [
+          "01 SOURCE",
+          "02 FINISHED",
+          "03 RUNTIME",
+          "04 REVIEW"
+        ]
+      }
+    ],
+    "exports": [
+      {
+        "file": "broadleaf-a-lod0.glb",
+        "triangles": 219474,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.09669828414917,
+            -3.601966619491577,
+            0.00843413919210434
+          ],
+          [
+            4.223137855529785,
+            4.193358898162842,
+            8.580297470092773
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.007604145910590887,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.009160863235592842
+      },
+      {
+        "file": "broadleaf-a-lod1.glb",
+        "triangles": 98032,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.08023738861084,
+            -3.3523049354553223,
+            0.03348498046398163
+          ],
+          [
+            4.215907573699951,
+            4.195178031921387,
+            8.562625885009766
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.007604310754686594,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.009416766464710236
+      },
+      {
+        "file": "broadleaf-a-lod2.glb",
+        "triangles": 65232,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.0824737548828125,
+            -2.006535053253174,
+            0.30371251702308655
+          ],
+          [
+            4.213953971862793,
+            4.202667236328125,
+            8.562625885009766
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.0076042283326387405,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.008603198453783989
+      },
+      {
+        "file": "broadleaf-altered-lod0.glb",
+        "triangles": 219473,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.09669828414917,
+            -3.601966619491577,
+            0.00843413919210434
+          ],
+          [
+            4.218193531036377,
+            4.200547218322754,
+            8.580297470092773
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.007604145910590887,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.009160863235592842
+      },
+      {
+        "file": "broadleaf-altered-lod1.glb",
+        "triangles": 98032,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.08023738861084,
+            -3.3523049354553223,
+            0.03348498046398163
+          ],
+          [
+            4.219415187835693,
+            4.202667236328125,
+            8.562625885009766
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.007604310754686594,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.008603198453783989
+      },
+      {
+        "file": "broadleaf-altered-lod2.glb",
+        "triangles": 65238,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.0824737548828125,
+            -2.006535053253174,
+            0.30371251702308655
+          ],
+          [
+            4.219572067260742,
+            4.202667236328125,
+            8.562625885009766
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.0076042283326387405,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.009416766464710236
+      },
+      {
+        "file": "broadleaf-b-lod0.glb",
+        "triangles": 219474,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.322175025939941,
+            -3.601966619491577,
+            0.00843413919210434
+          ],
+          [
+            4.320868968963623,
+            4.19644832611084,
+            8.319479942321777
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.007604327518492937,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.00913203414529562
+      },
+      {
+        "file": "broadleaf-b-lod1.glb",
+        "triangles": 98032,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.306158542633057,
+            -3.3523049354553223,
+            0.03348498046398163
+          ],
+          [
+            4.3221869468688965,
+            4.190802574157715,
+            8.305931091308594
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.007604327518492937,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.00833198893815279
+      },
+      {
+        "file": "broadleaf-b-lod2.glb",
+        "triangles": 65232,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -4.306158542633057,
+            -2.2461509704589844,
+            0.30371251702308655
+          ],
+          [
+            4.3202338218688965,
+            4.190802574157715,
+            8.305931091308594
+          ]
+        ],
+        "leaf_roots": 16240,
+        "max_leaf_to_twig_surface_m": 0.007604327518492937,
+        "branchlets": 580,
+        "max_branchlet_to_trunk_surface_m": 0.009465432725846767
+      },
+      {
+        "file": "broadleaf-deadwood.glb",
+        "triangles": 16663,
+        "degenerate_triangles": 0,
+        "surfaces": 2,
+        "bounds_blender_m": [
+          [
+            -6.868533830584056e-08,
+            -1.4726905822753906,
+            0.0
+          ],
+          [
+            0.800000011920929,
+            1.0342097282409668,
+            2.2688467502593994
+          ]
+        ]
+      },
+      {
+        "file": "broadleaf-root-skirt.glb",
+        "triangles": 26655,
+        "degenerate_triangles": 0,
+        "surfaces": 2,
+        "bounds_blender_m": [
+          [
+            -3.2108919620513916,
+            -3.602910280227661,
+            0.0021446796599775553
+          ],
+          [
+            3.757687568664551,
+            3.601288318634033,
+            1.3300000429153442
+          ]
+        ]
+      },
+      {
+        "file": "broadleaf-stump.glb",
+        "triangles": 25229,
+        "degenerate_triangles": 0,
+        "surfaces": 2,
+        "bounds_blender_m": [
+          [
+            -3.2108919620513916,
+            -3.602910280227661,
+            0.0021446796599775553
+          ],
+          [
+            3.757687568664551,
+            3.601288318634033,
+            1.25
+          ]
+        ]
+      },
+      {
+        "file": "pine-a-lod0.glb",
+        "triangles": 395397,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -3.2265820503234863,
+            -3.0152571201324463,
+            -0.002841588342562318
+          ],
+          [
+            3.2506964206695557,
+            2.7693588733673096,
+            9.16031551361084
+          ]
+        ],
+        "leaf_roots": 24480,
+        "max_leaf_to_twig_surface_m": 0.007603791076689959,
+        "branchlets": 680,
+        "max_branchlet_to_trunk_surface_m": 0.00818734709173441
+      },
+      {
+        "file": "pine-a-lod1.glb",
+        "triangles": 130597,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -3.2298851013183594,
+            -2.998002767562866,
+            -0.0003691725432872772
+          ],
+          [
+            3.2436039447784424,
+            2.7662758827209473,
+            9.157492637634277
+          ]
+        ],
+        "leaf_roots": 24480,
+        "max_leaf_to_twig_surface_m": 0.007603791076689959,
+        "branchlets": 680,
+        "max_branchlet_to_trunk_surface_m": 0.008383811451494694
+      },
+      {
+        "file": "pine-a-lod2.glb",
+        "triangles": 69637,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -3.225550413131714,
+            -3.0026662349700928,
+            0.012035530060529709
+          ],
+          [
+            3.257200002670288,
+            2.7689731121063232,
+            9.156060218811035
+          ]
+        ],
+        "leaf_roots": 24480,
+        "max_leaf_to_twig_surface_m": 0.007603791076689959,
+        "branchlets": 680,
+        "max_branchlet_to_trunk_surface_m": 0.008548269048333168
+      },
+      {
+        "file": "pine-b-lod0.glb",
+        "triangles": 395397,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -3.15329909324646,
+            -3.0895144939422607,
+            -0.002841588342562318
+          ],
+          [
+            3.2192554473876953,
+            2.99483060836792,
+            9.413354873657227
+          ]
+        ],
+        "leaf_roots": 24480,
+        "max_leaf_to_twig_surface_m": 0.007603941019624472,
+        "branchlets": 680,
+        "max_branchlet_to_trunk_surface_m": 0.008570050820708275
+      },
+      {
+        "file": "pine-b-lod1.glb",
+        "triangles": 130597,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -3.1537110805511475,
+            -3.081435203552246,
+            -0.0003691725432872772
+          ],
+          [
+            3.215625762939453,
+            2.9844889640808105,
+            9.408191680908203
+          ]
+        ],
+        "leaf_roots": 24480,
+        "max_leaf_to_twig_surface_m": 0.007603941019624472,
+        "branchlets": 680,
+        "max_branchlet_to_trunk_surface_m": 0.006841239519417286
+      },
+      {
+        "file": "pine-b-lod2.glb",
+        "triangles": 69637,
+        "degenerate_triangles": 0,
+        "surfaces": 3,
+        "bounds_blender_m": [
+          [
+            -3.1810529232025146,
+            -3.0778486728668213,
+            0.012035530060529709
+          ],
+          [
+            3.2208662033081055,
+            2.9690823554992676,
+            9.385089874267578
+          ]
+        ],
+        "leaf_roots": 24480,
+        "max_leaf_to_twig_surface_m": 0.007603941019624472,
+        "branchlets": 680,
+        "max_branchlet_to_trunk_surface_m": 0.008188711479306221
+      },
+      {
+        "file": "pine-deadwood.glb",
+        "triangles": 15192,
+        "degenerate_triangles": 0,
+        "surfaces": 2,
+        "bounds_blender_m": [
+          [
+            -6.158096255148848e-08,
+            -1.794236183166504,
+            0.0
+          ],
+          [
+            1.0499999523162842,
+            0.44513556361198425,
+            1.08024263381958
+          ]
+        ]
+      },
+      {
+        "file": "pine-root-skirt.glb",
+        "triangles": 74166,
+        "degenerate_triangles": 0,
+        "surfaces": 2,
+        "bounds_blender_m": [
+          [
+            -2.427764654159546,
+            -1.924845814704895,
+            0.0
+          ],
+          [
+            1.77829909324646,
+            1.7696014642715454,
+            1.0800000429153442
+          ]
+        ]
+      },
+      {
+        "file": "pine-stump.glb",
+        "triangles": 73276,
+        "degenerate_triangles": 0,
+        "surfaces": 2,
+        "bounds_blender_m": [
+          [
+            -2.427764654159546,
+            -1.924845814704895,
+            0.0
+          ],
+          [
+            1.77829909324646,
+            1.7696014642715454,
+            1.0
+          ]
+        ]
+      }
+    ]
+  },
+  "review": {
+    "forward_plus": {
+      "adapter": "NVIDIA GeForce RTX 5090",
+      "engine": {
+        "build": "official",
+        "hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+        "hex": 263424,
+        "major": 4,
+        "minor": 5,
+        "patch": 0,
+        "status": "stable",
+        "string": "4.5-stable (official)",
+        "timestamp": 0
+      },
+      "exactly_one_visible_lod": true,
+      "models": [
+        {
+          "bounds_godot_m": [
+            [
+              -4.09669828414917,
+              0.00843413919210434,
+              -4.19335889816284
+            ],
+            [
+              8.3198356628418,
+              8.57186317443848,
+              7.79532527923584
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08023738861084,
+              0.0334849804639816,
+              -4.19517803192139
+            ],
+            [
+              8.29614448547363,
+              8.52914047241211,
+              7.54748249053955
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08247375488281,
+              0.303712517023087,
+              -4.20266723632813
+            ],
+            [
+              8.29642772674561,
+              8.25891304016113,
+              6.2092022895813
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22658205032349,
+              -0.00284158834256232,
+              -2.76935887336731
+            ],
+            [
+              6.47727870941162,
+              9.16315746307373,
+              5.78461599349976
+            ]
+          ],
+          "lod": 0,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22988510131836,
+              -0.000369172543287277,
+              -2.76627588272095
+            ],
+            [
+              6.47348880767822,
+              9.15786170959473,
+              5.76427841186523
+            ]
+          ],
+          "lod": 1,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22555041313171,
+              0.0120355300605297,
+              -2.76897311210632
+            ],
+            [
+              6.482750415802,
+              9.14402484893799,
+              5.77163934707642
+            ]
+          ],
+          "lod": 2,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.09669828414917,
+              0.00843413919210434,
+              -4.20054721832275
+            ],
+            [
+              8.31489181518555,
+              8.57186317443848,
+              7.80251407623291
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-altered"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08023738861084,
+              0.0334849804639816,
+              -4.20266723632813
+            ],
+            [
+              8.29965209960938,
+              8.52914047241211,
+              7.55497169494629
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-altered"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08247375488281,
+              0.303712517023087,
+              -4.20266723632813
+            ],
+            [
+              8.30204582214355,
+              8.25891304016113,
+              6.2092022895813
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-altered"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.15329909324646,
+              -0.00284158834256232,
+              -2.99483060836792
+            ],
+            [
+              6.37255477905273,
+              9.41619682312012,
+              6.0843448638916
+            ]
+          ],
+          "lod": 0,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.15371108055115,
+              -0.000369172543287277,
+              -2.98448896408081
+            ],
+            [
+              6.36933708190918,
+              9.40856075286865,
+              6.06592416763306
+            ]
+          ],
+          "lod": 1,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.18105292320251,
+              0.0120355300605297,
+              -2.96908235549927
+            ],
+            [
+              6.4019193649292,
+              9.37305450439453,
+              6.04693126678467
+            ]
+          ],
+          "lod": 2,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.32217502593994,
+              0.00843413919210434,
+              -4.19644832611084
+            ],
+            [
+              8.64304351806641,
+              8.31104564666748,
+              7.79841470718384
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.30615854263306,
+              0.0334849804639816,
+              -4.19080257415771
+            ],
+            [
+              8.62834548950195,
+              8.27244567871094,
+              7.54310750961304
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.30615854263306,
+              0.303712517023087,
+              -4.19080257415771
+            ],
+            [
+              8.62639236450195,
+              8.00221824645996,
+              6.4369535446167
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22658205032349,
+              -0.00284158834256232,
+              -2.76935887336731
+            ],
+            [
+              6.47727870941162,
+              9.16315746307373,
+              5.78461599349976
+            ]
+          ],
+          "lod": 0,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22988510131836,
+              -0.000369172543287277,
+              -2.76627588272095
+            ],
+            [
+              6.47348880767822,
+              9.15786170959473,
+              5.76427841186523
+            ]
+          ],
+          "lod": 1,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22555041313171,
+              0.0120355300605297,
+              -2.76897311210632
+            ],
+            [
+              6.482750415802,
+              9.14402484893799,
+              5.77163934707642
+            ]
+          ],
+          "lod": 2,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.09669828414917,
+              0.00843413919210434,
+              -4.19335889816284
+            ],
+            [
+              8.3198356628418,
+              8.57186317443848,
+              7.79532527923584
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08023738861084,
+              0.0334849804639816,
+              -4.19517803192139
+            ],
+            [
+              8.29614448547363,
+              8.52914047241211,
+              7.54748249053955
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08247375488281,
+              0.303712517023087,
+              -4.20266723632813
+            ],
+            [
+              8.29642772674561,
+              8.25891304016113,
+              6.2092022895813
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.15329909324646,
+              -0.00284158834256232,
+              -2.99483060836792
+            ],
+            [
+              6.37255477905273,
+              9.41619682312012,
+              6.0843448638916
+            ]
+          ],
+          "lod": 0,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.15371108055115,
+              -0.000369172543287277,
+              -2.98448896408081
+            ],
+            [
+              6.36933708190918,
+              9.40856075286865,
+              6.06592416763306
+            ]
+          ],
+          "lod": 1,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.18105292320251,
+              0.0120355300605297,
+              -2.96908235549927
+            ],
+            [
+              6.4019193649292,
+              9.37305450439453,
+              6.04693126678467
+            ]
+          ],
+          "lod": 2,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.32217502593994,
+              0.00843413919210434,
+              -4.19644832611084
+            ],
+            [
+              8.64304351806641,
+              8.31104564666748,
+              7.79841470718384
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.30615854263306,
+              0.0334849804639816,
+              -4.19080257415771
+            ],
+            [
+              8.62834548950195,
+              8.27244567871094,
+              7.54310750961304
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.30615854263306,
+              0.303712517023087,
+              -4.19080257415771
+            ],
+            [
+              8.62639236450195,
+              8.00221824645996,
+              6.4369535446167
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-b"
+        }
+      ],
+      "pause_clock_unchanged": true,
+      "renderer": "forward_plus",
+      "scope": "Static source-kit composition; native resource checks are separate."
+    },
+    "gl_compatibility": {
+      "adapter": "NVIDIA GeForce RTX 5090",
+      "engine": {
+        "build": "official",
+        "hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+        "hex": 263424,
+        "major": 4,
+        "minor": 5,
+        "patch": 0,
+        "status": "stable",
+        "string": "4.5-stable (official)",
+        "timestamp": 0
+      },
+      "exactly_one_visible_lod": true,
+      "models": [
+        {
+          "bounds_godot_m": [
+            [
+              -4.09669828414917,
+              0.00843413919210434,
+              -4.19335889816284
+            ],
+            [
+              8.3198356628418,
+              8.57186317443848,
+              7.79532527923584
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08023738861084,
+              0.0334849804639816,
+              -4.19517803192139
+            ],
+            [
+              8.29614448547363,
+              8.52914047241211,
+              7.54748249053955
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08247375488281,
+              0.303712517023087,
+              -4.20266723632813
+            ],
+            [
+              8.29642772674561,
+              8.25891304016113,
+              6.2092022895813
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22658205032349,
+              -0.00284158834256232,
+              -2.76935887336731
+            ],
+            [
+              6.47727870941162,
+              9.16315746307373,
+              5.78461599349976
+            ]
+          ],
+          "lod": 0,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22988510131836,
+              -0.000369172543287277,
+              -2.76627588272095
+            ],
+            [
+              6.47348880767822,
+              9.15786170959473,
+              5.76427841186523
+            ]
+          ],
+          "lod": 1,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22555041313171,
+              0.0120355300605297,
+              -2.76897311210632
+            ],
+            [
+              6.482750415802,
+              9.14402484893799,
+              5.77163934707642
+            ]
+          ],
+          "lod": 2,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.09669828414917,
+              0.00843413919210434,
+              -4.20054721832275
+            ],
+            [
+              8.31489181518555,
+              8.57186317443848,
+              7.80251407623291
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-altered"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08023738861084,
+              0.0334849804639816,
+              -4.20266723632813
+            ],
+            [
+              8.29965209960938,
+              8.52914047241211,
+              7.55497169494629
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-altered"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08247375488281,
+              0.303712517023087,
+              -4.20266723632813
+            ],
+            [
+              8.30204582214355,
+              8.25891304016113,
+              6.2092022895813
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-altered"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.15329909324646,
+              -0.00284158834256232,
+              -2.99483060836792
+            ],
+            [
+              6.37255477905273,
+              9.41619682312012,
+              6.0843448638916
+            ]
+          ],
+          "lod": 0,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.15371108055115,
+              -0.000369172543287277,
+              -2.98448896408081
+            ],
+            [
+              6.36933708190918,
+              9.40856075286865,
+              6.06592416763306
+            ]
+          ],
+          "lod": 1,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.18105292320251,
+              0.0120355300605297,
+              -2.96908235549927
+            ],
+            [
+              6.4019193649292,
+              9.37305450439453,
+              6.04693126678467
+            ]
+          ],
+          "lod": 2,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.32217502593994,
+              0.00843413919210434,
+              -4.19644832611084
+            ],
+            [
+              8.64304351806641,
+              8.31104564666748,
+              7.79841470718384
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.30615854263306,
+              0.0334849804639816,
+              -4.19080257415771
+            ],
+            [
+              8.62834548950195,
+              8.27244567871094,
+              7.54310750961304
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.30615854263306,
+              0.303712517023087,
+              -4.19080257415771
+            ],
+            [
+              8.62639236450195,
+              8.00221824645996,
+              6.4369535446167
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22658205032349,
+              -0.00284158834256232,
+              -2.76935887336731
+            ],
+            [
+              6.47727870941162,
+              9.16315746307373,
+              5.78461599349976
+            ]
+          ],
+          "lod": 0,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22988510131836,
+              -0.000369172543287277,
+              -2.76627588272095
+            ],
+            [
+              6.47348880767822,
+              9.15786170959473,
+              5.76427841186523
+            ]
+          ],
+          "lod": 1,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.22555041313171,
+              0.0120355300605297,
+              -2.76897311210632
+            ],
+            [
+              6.482750415802,
+              9.14402484893799,
+              5.77163934707642
+            ]
+          ],
+          "lod": 2,
+          "role": "pine-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.09669828414917,
+              0.00843413919210434,
+              -4.19335889816284
+            ],
+            [
+              8.3198356628418,
+              8.57186317443848,
+              7.79532527923584
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08023738861084,
+              0.0334849804639816,
+              -4.19517803192139
+            ],
+            [
+              8.29614448547363,
+              8.52914047241211,
+              7.54748249053955
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.08247375488281,
+              0.303712517023087,
+              -4.20266723632813
+            ],
+            [
+              8.29642772674561,
+              8.25891304016113,
+              6.2092022895813
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-a"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.15329909324646,
+              -0.00284158834256232,
+              -2.99483060836792
+            ],
+            [
+              6.37255477905273,
+              9.41619682312012,
+              6.0843448638916
+            ]
+          ],
+          "lod": 0,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.15371108055115,
+              -0.000369172543287277,
+              -2.98448896408081
+            ],
+            [
+              6.36933708190918,
+              9.40856075286865,
+              6.06592416763306
+            ]
+          ],
+          "lod": 1,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -3.18105292320251,
+              0.0120355300605297,
+              -2.96908235549927
+            ],
+            [
+              6.4019193649292,
+              9.37305450439453,
+              6.04693126678467
+            ]
+          ],
+          "lod": 2,
+          "role": "pine-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.32217502593994,
+              0.00843413919210434,
+              -4.19644832611084
+            ],
+            [
+              8.64304351806641,
+              8.31104564666748,
+              7.79841470718384
+            ]
+          ],
+          "lod": 0,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.30615854263306,
+              0.0334849804639816,
+              -4.19080257415771
+            ],
+            [
+              8.62834548950195,
+              8.27244567871094,
+              7.54310750961304
+            ]
+          ],
+          "lod": 1,
+          "role": "broadleaf-b"
+        },
+        {
+          "bounds_godot_m": [
+            [
+              -4.30615854263306,
+              0.303712517023087,
+              -4.19080257415771
+            ],
+            [
+              8.62639236450195,
+              8.00221824645996,
+              6.4369535446167
+            ]
+          ],
+          "lod": 2,
+          "role": "broadleaf-b"
+        }
+      ],
+      "pause_clock_unchanged": true,
+      "renderer": "gl_compatibility",
+      "scope": "Static source-kit composition; native resource checks are separate."
+    }
+  },
+  "native": {
+    "flow": {
+      "checks": 15,
+      "failures": 0,
+      "fit": [
+        {
+          "burial_m": 0.65,
+          "horizontal_scale": 0.236831120445477,
+          "native_body": "(0.7, 3.0, 0.7)",
+          "source_walk_height_radius": 1.44828939437866,
+          "vertical_scale": 1.0
+        },
+        {
+          "burial_m": 0.55,
+          "horizontal_scale": 0.131167973943034,
+          "native_body": "(0.7, 3.0, 0.7)",
+          "source_walk_height_radius": 2.61496758460999,
+          "vertical_scale": 1.0
+        }
+      ],
+      "fixture": "Authored current native rules; normal _apply_work, fall tween and _absorb. Compact body-fit presentation only; no normal-world adoption.",
+      "pine": 14,
+      "wood": 14
+    },
+    "partial-restart": {
+      "checks": 6,
+      "failures": 0,
+      "fit": [
+        {
+          "burial_m": 0.65,
+          "horizontal_scale": 0.236831120445477,
+          "native_body": "(0.7, 3.0, 0.7)",
+          "source_walk_height_radius": 1.44828939437866,
+          "vertical_scale": 1.0
+        },
+        {
+          "burial_m": 0.55,
+          "horizontal_scale": 0.131167973943034,
+          "native_body": "(0.7, 3.0, 0.7)",
+          "source_walk_height_radius": 2.61496758460999,
+          "vertical_scale": 1.0
+        }
+      ],
+      "fixture": "Authored current native rules; normal _apply_work, fall tween and _absorb. Compact body-fit presentation only; no normal-world adoption.",
+      "pine": 0,
+      "wood": 0
+    },
+    "final-restart": {
+      "checks": 6,
+      "failures": 0,
+      "fit": [
+        {
+          "burial_m": 0.65,
+          "horizontal_scale": 0.236831120445477,
+          "native_body": "(0.7, 3.0, 0.7)",
+          "source_walk_height_radius": 1.44828939437866,
+          "vertical_scale": 1.0
+        },
+        {
+          "burial_m": 0.55,
+          "horizontal_scale": 0.131167973943034,
+          "native_body": "(0.7, 3.0, 0.7)",
+          "source_walk_height_radius": 2.61496758460999,
+          "vertical_scale": 1.0
+        }
+      ],
+      "fixture": "Authored current native rules; normal _apply_work, fall tween and _absorb. Compact body-fit presentation only; no normal-world adoption.",
+      "pine": 14,
+      "wood": 14
+    }
+  }
+}

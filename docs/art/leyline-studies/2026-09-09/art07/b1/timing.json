@@ -1,0 +1,4 @@
+{
+  "canopy": "Every second actual capture: 6 fps, 6.9 s camera pass plus 4 s pulse. Offline clock samples, not benchmark FPS.",
+  "native": "Actual native .9 s fall + .25 s hold, captured every 2 fixed 60 Hz physics frames. Intro/stump held for review. No interpolated frames."
+}

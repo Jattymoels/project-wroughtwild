@@ -1,0 +1,1448 @@
+{
+  "runtime_asset_metadata": {
+    "version": "2.0",
+    "minVersion": "2.0",
+    "generator": "trellis.cpp v0.6.0",
+    "extras": {
+      "seed": 42,
+      "commit": "16f3109e82f3922033bfa62b83c42899678b7b6f",
+      "backend": "cuda",
+      "build": "2026-08-21T08:39:09Z",
+      "generated": "2026-09-09T12:47:57Z"
+    }
+  },
+  "runtime_extras": null,
+  "generation": {
+    "input_sha256": "059db0d3ca4f43a8019702b0073ea9dd8d26ada102cb872d68b267330ef0dcdc",
+    "duration_seconds": 48.7023176,
+    "files": {
+      "generation.log": {
+        "sha256": "de6f5bc0b49693a38d976c75a980f3a2f96c3d4edaab2a20e13ebbf8dd17484a",
+        "bytes": 6217
+      },
+      "pine_cutout.png": {
+        "sha256": "98217b43062391645973818eab9bca5a8523b2ef6bbf87c67903f22b80687cfe",
+        "bytes": 981269
+      },
+      "pine.ply": {
+        "sha256": "dd30646176079d2b30f3b53c412b4ba70b2ac88580c59fb8ad92ae0159dbc410",
+        "bytes": 30415074
+      },
+      "pine_base.png": {
+        "sha256": "3c50cd50875bf8c62b0c2ccec78e5b31909f02e9070791dce51092e7f0075a08",
+        "bytes": 9176063
+      },
+      "pine.glb": {
+        "sha256": "823624aa81da64fd87c611c15e9088e1fdcf5e6debc4054f838631a4b471a4f8",
+        "bytes": 21709656
+      }
+    },
+    "cli_sha256": "e3d075612388a42fcb9bea73377feac4149e3a463cff2d2e11b24975e85d427d",
+    "arguments": [
+      "--image",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\docs\\art\\leyline-studies\\2026-09-09\\art07\\b1\\pine-input-v01.png",
+      "--output",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\pine-source/pine.glb",
+      "--models",
+      "C:/Users/Matty/Dev/project-wroughtwild/build/trellis-local/models",
+      "--gpu",
+      "0",
+      "--require-gpu",
+      "--res",
+      "1024",
+      "--seed",
+      "42",
+      "--bg-removal",
+      "birefnet",
+      "--dump-bg",
+      "--webp",
+      "off",
+      "--threads",
+      "8"
+    ],
+    "input": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\docs\\art\\leyline-studies\\2026-09-09\\art07\\b1\\pine-input-v01.png",
+    "start": "2026-09-09T22:17:10.2772850+09:30",
+    "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+    "exit": 0
+  },
+  "exports": {
+    "broadleaf-a-lod0": {
+      "triangles": 219474,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.09669828414917,
+          -3.601966619491577,
+          0.00843413919210434
+        ],
+        [
+          4.223137855529785,
+          4.193358898162842,
+          8.580297470092773
+        ]
+      ],
+      "dimensions_m": [
+        8.319836139678955,
+        7.795325517654419,
+        8.571863330900669
+      ],
+      "sha256": "1d0f5379d7265ea8f481465104cdd0a2a6e605bbb1c62242eaeb8512763cce6c",
+      "file_bytes": 27820192,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "broadleaf-b-lod0": {
+      "triangles": 219474,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.322175025939941,
+          -3.601966619491577,
+          0.00843413919210434
+        ],
+        [
+          4.320868968963623,
+          4.19644832611084,
+          8.319479942321777
+        ]
+      ],
+      "dimensions_m": [
+        8.643043994903564,
+        7.798414945602417,
+        8.311045803129673
+      ],
+      "sha256": "aa9f4c055efac864ddcb53f5eaeed57f5ce74ba32a01cb3b5ee60d343ae91cf7",
+      "file_bytes": 27820192,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "broadleaf-a-lod1": {
+      "triangles": 98032,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.08023738861084,
+          -3.3523049354553223,
+          0.03348498046398163
+        ],
+        [
+          4.215907573699951,
+          4.195178031921387,
+          8.562625885009766
+        ]
+      ],
+      "dimensions_m": [
+        8.296144962310791,
+        7.547482967376709,
+        8.529140904545784
+      ],
+      "sha256": "d7a857fd2d814f1c9d8e7b34043df16a1ba34ac3e122f379160d22d9042bc5aa",
+      "file_bytes": 15274016,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "broadleaf-b-lod1": {
+      "triangles": 98032,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.306158542633057,
+          -3.3523049354553223,
+          0.03348498046398163
+        ],
+        [
+          4.3221869468688965,
+          4.190802574157715,
+          8.305931091308594
+        ]
+      ],
+      "dimensions_m": [
+        8.628345489501953,
+        7.543107509613037,
+        8.272446110844612
+      ],
+      "sha256": "2f614e08b106057949814ad5cef1b33e484304f68b1036069bde61e9e84a552b",
+      "file_bytes": 15274020,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "broadleaf-a-lod2": {
+      "triangles": 65232,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.0824737548828125,
+          -2.006535053253174,
+          0.30371251702308655
+        ],
+        [
+          4.213953971862793,
+          4.202667236328125,
+          8.562625885009766
+        ]
+      ],
+      "dimensions_m": [
+        8.296427726745605,
+        6.209202289581299,
+        8.258913367986679
+      ],
+      "sha256": "6eec6ec10807fb051fa9995b818d7bbb002cf110bf36c1603b3561f587162971",
+      "file_bytes": 11477088,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "broadleaf-b-lod2": {
+      "triangles": 65232,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.306158542633057,
+          -2.2461509704589844,
+          0.30371251702308655
+        ],
+        [
+          4.3202338218688965,
+          4.190802574157715,
+          8.305931091308594
+        ]
+      ],
+      "dimensions_m": [
+        8.626392364501953,
+        6.436953544616699,
+        8.002218574285507
+      ],
+      "sha256": "c5978707cfa3d522411732cf104f04cac15c0d564fb0457783a82fc49986f938",
+      "file_bytes": 11477088,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "broadleaf-stump": {
+      "triangles": 25229,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -3.2108919620513916,
+          -3.602910280227661,
+          0.0021446796599775553
+        ],
+        [
+          3.757687568664551,
+          3.601288318634033,
+          1.25
+        ]
+      ],
+      "dimensions_m": [
+        6.968579530715942,
+        7.204198598861694,
+        1.2478553203400224
+      ],
+      "sha256": "5d6ece1519238d61d18fa5abcfe40414e12092e70397f48c75d105b70d6d2f2e",
+      "file_bytes": 4790128,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf coherent cut grain",
+          "size": [
+            512,
+            512
+          ],
+          "encoded_bytes": 364426,
+          "decoded_rgba8_bytes": 1048576,
+          "sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8"
+        }
+      ]
+    },
+    "broadleaf-root-skirt": {
+      "triangles": 26655,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -3.2108919620513916,
+          -3.602910280227661,
+          0.0021446796599775553
+        ],
+        [
+          3.757687568664551,
+          3.601288318634033,
+          1.3300000429153442
+        ]
+      ],
+      "dimensions_m": [
+        6.968579530715942,
+        7.204198598861694,
+        1.3278553632553667
+      ],
+      "sha256": "1baa8a53eb8e0b290c690ccce54ee76cb2d68267552ace7d37af5a25f50f6fc2",
+      "file_bytes": 4863480,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf coherent cut grain",
+          "size": [
+            512,
+            512
+          ],
+          "encoded_bytes": 364426,
+          "decoded_rgba8_bytes": 1048576,
+          "sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8"
+        }
+      ]
+    },
+    "broadleaf-deadwood": {
+      "triangles": 16663,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -6.868533830584056e-08,
+          -1.4726905822753906,
+          0.0
+        ],
+        [
+          0.800000011920929,
+          1.0342097282409668,
+          2.2688467502593994
+        ]
+      ],
+      "dimensions_m": [
+        0.8000000806062673,
+        2.5069003105163574,
+        2.2688467502593994
+      ],
+      "sha256": "3760eb5e93b25166f2c746f37239c4465f009050f11afe150b10e39625f24852",
+      "file_bytes": 4424824,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        },
+        {
+          "name": "broadleaf coherent cut grain",
+          "size": [
+            512,
+            512
+          ],
+          "encoded_bytes": 364426,
+          "decoded_rgba8_bytes": 1048576,
+          "sha256": "d8373511aac3511225feb942aefaa92fec1395bde24aa6539b0e8da0cd2fbae8"
+        }
+      ]
+    },
+    "broadleaf-altered-lod0": {
+      "triangles": 219473,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.09669828414917,
+          -3.601966619491577,
+          0.00843413919210434
+        ],
+        [
+          4.218193531036377,
+          4.200547218322754,
+          8.580297470092773
+        ]
+      ],
+      "dimensions_m": [
+        8.314891815185547,
+        7.802513837814331,
+        8.571863330900669
+      ],
+      "sha256": "1fd65b37e449f36679aeeffe89714ca079152fc1dba6d931e26e6750e4cd0682",
+      "file_bytes": 27819496,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "broadleaf-altered-lod1": {
+      "triangles": 98032,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.08023738861084,
+          -3.3523049354553223,
+          0.03348498046398163
+        ],
+        [
+          4.219415187835693,
+          4.202667236328125,
+          8.562625885009766
+        ]
+      ],
+      "dimensions_m": [
+        8.299652576446533,
+        7.554972171783447,
+        8.529140904545784
+      ],
+      "sha256": "2f8f289a417db44b537f7b5cda53e8b6d61fb45b91541f672b99e861813b7133",
+      "file_bytes": 15273724,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "broadleaf-altered-lod2": {
+      "triangles": 65238,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -4.0824737548828125,
+          -2.006535053253174,
+          0.30371251702308655
+        ],
+        [
+          4.219572067260742,
+          4.202667236328125,
+          8.562625885009766
+        ]
+      ],
+      "dimensions_m": [
+        8.302045822143555,
+        6.209202289581299,
+        8.258913367986679
+      ],
+      "sha256": "081173c59e828cc5148f1a17f6cad8d1c57c9a5a91fe7cd1870dc417a23ed9f5",
+      "file_bytes": 11477232,
+      "textures": [
+        {
+          "name": "broadleaf runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2041859,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1"
+        },
+        {
+          "name": "broadleaf runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 1140115,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e"
+        }
+      ]
+    },
+    "pine-a-lod0": {
+      "triangles": 395397,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -3.2265820503234863,
+          -3.0152571201324463,
+          -0.002841588342562318
+        ],
+        [
+          3.2506964206695557,
+          2.7693588733673096,
+          9.16031551361084
+        ]
+      ],
+      "dimensions_m": [
+        6.477278470993042,
+        5.784615993499756,
+        9.163157101953402
+      ],
+      "sha256": "787d46b86d5793bfe4efada6a0146f3f115268eef71cbd495e91e58e41a8da2b",
+      "file_bytes": 48688720,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        }
+      ]
+    },
+    "pine-b-lod0": {
+      "triangles": 395397,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -3.15329909324646,
+          -3.0895144939422607,
+          -0.002841588342562318
+        ],
+        [
+          3.2192554473876953,
+          2.99483060836792,
+          9.413354873657227
+        ]
+      ],
+      "dimensions_m": [
+        6.372554540634155,
+        6.084345102310181,
+        9.416196461999789
+      ],
+      "sha256": "c051ee355711e7a0fff17b8ce27fe091229a0e77aad1465ea48e3c176fb4a789",
+      "file_bytes": 48688720,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        }
+      ]
+    },
+    "pine-a-lod1": {
+      "triangles": 130597,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -3.2298851013183594,
+          -2.998002767562866,
+          -0.0003691725432872772
+        ],
+        [
+          3.2436039447784424,
+          2.7662758827209473,
+          9.157492637634277
+        ]
+      ],
+      "dimensions_m": [
+        6.473489046096802,
+        5.7642786502838135,
+        9.157861810177565
+      ],
+      "sha256": "b72c21f0da05feebf67eeee948f2954ec45850ad4ffe146a8dc8bf6a3914ecdb",
+      "file_bytes": 19433316,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        }
+      ]
+    },
+    "pine-b-lod1": {
+      "triangles": 130597,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -3.1537110805511475,
+          -3.081435203552246,
+          -0.0003691725432872772
+        ],
+        [
+          3.215625762939453,
+          2.9844889640808105,
+          9.408191680908203
+        ]
+      ],
+      "dimensions_m": [
+        6.369336843490601,
+        6.065924167633057,
+        9.40856085345149
+      ],
+      "sha256": "941f2b060c36addc3f84cdef3954f8163bdf2a5bebb7f383dff6d61e15c8024d",
+      "file_bytes": 19433316,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        }
+      ]
+    },
+    "pine-a-lod2": {
+      "triangles": 69637,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -3.225550413131714,
+          -3.0026662349700928,
+          0.012035530060529709
+        ],
+        [
+          3.257200002670288,
+          2.7689731121063232,
+          9.156060218811035
+        ]
+      ],
+      "dimensions_m": [
+        6.482750415802002,
+        5.771639347076416,
+        9.144024688750505
+      ],
+      "sha256": "b3beeb2f6142ecff6f400c46ff873328d64d27661437a6b2fa121a0c6f8e40fd",
+      "file_bytes": 13108220,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        }
+      ]
+    },
+    "pine-b-lod2": {
+      "triangles": 69637,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -3.1810529232025146,
+          -3.0778486728668213,
+          0.012035530060529709
+        ],
+        [
+          3.2208662033081055,
+          2.9690823554992676,
+          9.385089874267578
+        ]
+      ],
+      "dimensions_m": [
+        6.40191912651062,
+        6.046931028366089,
+        9.373054344207048
+      ],
+      "sha256": "1d43c732a3ea0851e0d89abd4fe6100d300879cf2397d057cd1bea565416825d",
+      "file_bytes": 13108216,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        }
+      ]
+    },
+    "pine-stump": {
+      "triangles": 73276,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -2.427764654159546,
+          -1.924845814704895,
+          0.0
+        ],
+        [
+          1.77829909324646,
+          1.7696014642715454,
+          1.0
+        ]
+      ],
+      "dimensions_m": [
+        4.206063747406006,
+        3.6944472789764404,
+        1.0
+      ],
+      "sha256": "ad1c593085fb144f98307876b46cf1214812c2dbd7c10f57350353df5839684e",
+      "file_bytes": 5669040,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine coherent cut grain",
+          "size": [
+            512,
+            512
+          ],
+          "encoded_bytes": 395927,
+          "decoded_rgba8_bytes": 1048576,
+          "sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83"
+        }
+      ]
+    },
+    "pine-root-skirt": {
+      "triangles": 74166,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -2.427764654159546,
+          -1.924845814704895,
+          0.0
+        ],
+        [
+          1.77829909324646,
+          1.7696014642715454,
+          1.0800000429153442
+        ]
+      ],
+      "dimensions_m": [
+        4.206063747406006,
+        3.6944472789764404,
+        1.0800000429153442
+      ],
+      "sha256": "0901d2906a59243e426de7ee26732534b567f927d64b00eec7706674727e3864",
+      "file_bytes": 5696308,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine coherent cut grain",
+          "size": [
+            512,
+            512
+          ],
+          "encoded_bytes": 395927,
+          "decoded_rgba8_bytes": 1048576,
+          "sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83"
+        }
+      ]
+    },
+    "pine-deadwood": {
+      "triangles": 15192,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -6.158096255148848e-08,
+          -1.794236183166504,
+          0.0
+        ],
+        [
+          1.0499999523162842,
+          0.44513556361198425,
+          1.08024263381958
+        ]
+      ],
+      "dimensions_m": [
+        1.0500000138972467,
+        2.239371746778488,
+        1.08024263381958
+      ],
+      "sha256": "95fee82c3b74c82cb42c4c582abac645bb05c786b64736ed21422fab90799616",
+      "file_bytes": 3669208,
+      "textures": [
+        {
+          "name": "pine runtime Image_0",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 2093988,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6"
+        },
+        {
+          "name": "pine runtime Image_1",
+          "size": [
+            1024,
+            1024
+          ],
+          "encoded_bytes": 663219,
+          "decoded_rgba8_bytes": 4194304,
+          "sha256": "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516"
+        },
+        {
+          "name": "pine coherent cut grain",
+          "size": [
+            512,
+            512
+          ],
+          "encoded_bytes": 395927,
+          "decoded_rgba8_bytes": 1048576,
+          "sha256": "caf7b2353eb4fb3015b85ff3c1a514be74991245fb0f0ffd932189e7f63deb83"
+        }
+      ]
+    }
+  },
+  "checks": [
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\art.log",
+      "checks": 11,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "--script",
+          "tests/art_checks.gd"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 42528,
+        "exit": 0,
+        "seconds": 1.247079,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\gathering.log",
+      "checks": 22,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/gathering_feedback.tscn"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 35864,
+        "exit": 0,
+        "seconds": 1.6288402,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\loads-restore.log",
+      "checks": 6,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/building_load_boundaries.tscn",
+          "--",
+          "--load-restore-only"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 16196,
+        "exit": 0,
+        "seconds": 1.5850202,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\loads.log",
+      "checks": 201,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/building_load_boundaries.tscn"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 44468,
+        "exit": 0,
+        "seconds": 6.696309,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\loose-read.log",
+      "checks": 13,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/loose_drop_save.tscn",
+          "--",
+          "--read-checkpoint"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 40068,
+        "exit": 0,
+        "seconds": 1.4896364,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\loose-write.log",
+      "checks": 6,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/loose_drop_save.tscn",
+          "--",
+          "--write-checkpoint"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 7416,
+        "exit": 0,
+        "seconds": 1.3027444,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\materials.log",
+      "checks": 158,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/material_intensive.tscn"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 42908,
+        "exit": 0,
+        "seconds": 1.2166375,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\placement-restore.log",
+      "checks": 60,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/placement_transactions.tscn",
+          "--",
+          "--placement-restore-only"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 2856,
+        "exit": 0,
+        "seconds": 1.4914722,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\placement.log",
+      "checks": 470,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/placement_transactions.tscn"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 21760,
+        "exit": 0,
+        "seconds": 1.9567898,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\save-recovery.log",
+      "checks": 175,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/save_recovery.tscn"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 43900,
+        "exit": 0,
+        "seconds": 3.7323918,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\source-restore.log",
+      "checks": 15,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/living_frontier_flow.tscn",
+          "--",
+          "--lf-restore"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 3764,
+        "exit": 0,
+        "seconds": 13.6679233,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\source-work.log",
+      "checks": 733,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/living_frontier_flow.tscn"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 18352,
+        "exit": 0,
+        "seconds": 53.9772278,
+        "gpu_slot": false
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\unit.log",
+      "checks": 398,
+      "failures": 0,
+      "job": {
+        "pid": 44928,
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "seconds": 3.7681394,
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "--script",
+          "tests/run_tests.gd"
+        ],
+        "gpu_slot": false,
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "exit": 0
+      }
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\world.log",
+      "checks": 5957,
+      "failures": 0,
+      "job": {
+        "arguments": [
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--fixed-fps",
+          "60",
+          "--path",
+          "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/current-game/game",
+          "res://tests/world_intensive.tscn"
+        ],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\current-checks\\user",
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "pid": 12792,
+        "exit": 0,
+        "seconds": 38.1173758,
+        "gpu_slot": false
+      }
+    }
+  ],
+  "total_current_checks": 8225,
+  "approved_source_recheck": {
+    "files": 105,
+    "failures": [],
+    "manifest_sha256": "0a4f26a74335bcceddd2d31f9df3774d415f5aca6d982e9cc5305faf6ac9bba8"
+  },
+  "selected_masters": {
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\broadleaf-kit-v05\\broadleaf-master.blend": {
+      "sha256": "bb671f434b1b6021e378c203ab7f8e344b2cbc01c283f5a991ff04ac495672a7",
+      "bytes": 63632255
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\pine-kit-v03\\pine-master.blend": {
+      "sha256": "896e696700be53184a87f0511734c3d802110268f6726e463d1e1a00538a6eb2",
+      "bytes": 76050842
+    }
+  }
+}

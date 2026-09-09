@@ -1,0 +1,86 @@
+[
+  {
+    "file": "broadleaf-deadwood.glb",
+    "cut_triangles": 2128,
+    "open_cut_edges": 0,
+    "uv0_min": [
+      0.08368127793073654,
+      0.04000002145767212
+    ],
+    "uv0_max": [
+      0.9163187146186829,
+      0.9599999785423279
+    ],
+    "nonmanifold_source_edges": 440
+  },
+  {
+    "file": "broadleaf-root-skirt.glb",
+    "cut_triangles": 1189,
+    "open_cut_edges": 0,
+    "uv0_min": [
+      0.09246870875358582,
+      0.04000002145767212
+    ],
+    "uv0_max": [
+      0.9075312614440918,
+      0.9599999785423279
+    ],
+    "nonmanifold_source_edges": 695
+  },
+  {
+    "file": "broadleaf-stump.glb",
+    "cut_triangles": 1225,
+    "open_cut_edges": 0,
+    "uv0_min": [
+      0.08368127793073654,
+      0.04000002145767212
+    ],
+    "uv0_max": [
+      0.9163187146186829,
+      0.9599999785423279
+    ],
+    "nonmanifold_source_edges": 633
+  },
+  {
+    "file": "pine-deadwood.glb",
+    "cut_triangles": 863,
+    "open_cut_edges": 0,
+    "uv0_min": [
+      0.18496692180633545,
+      0.04000002145767212
+    ],
+    "uv0_max": [
+      0.8150330781936646,
+      0.9599999785423279
+    ],
+    "nonmanifold_source_edges": 0
+  },
+  {
+    "file": "pine-root-skirt.glb",
+    "cut_triangles": 419,
+    "open_cut_edges": 0,
+    "uv0_min": [
+      0.03999999910593033,
+      0.07445836067199707
+    ],
+    "uv0_max": [
+      0.9599999785423279,
+      0.9255416393280029
+    ],
+    "nonmanifold_source_edges": 40
+  },
+  {
+    "file": "pine-stump.glb",
+    "cut_triangles": 427,
+    "open_cut_edges": 0,
+    "uv0_min": [
+      0.03999999910593033,
+      0.08203107118606567
+    ],
+    "uv0_max": [
+      0.9599999785423279,
+      0.9179689288139343
+    ],
+    "nonmanifold_source_edges": 40
+  }
+]
