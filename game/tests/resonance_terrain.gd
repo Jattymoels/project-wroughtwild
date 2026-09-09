@@ -131,8 +131,8 @@ func _run_terrain() -> void:
 	check(not manager.apply(player,foreign) && _sim().export_json()==paid_state,"wrong seed rejected before ownership mutation")
 	done()
 
-func physical_bank() -> void:
-	var state: Dictionary=JSON.parse_string(_sim().resonance_json())
+func physical_bank(state: Dictionary={}) -> void:
+	if state.is_empty(): state=JSON.parse_string(_sim().resonance_json())
 	var columns: Array=state.columns
 	if not check(not columns.is_empty(),"sparse applied bank exists"): return
 	var c: Array=columns[columns.size()/3]

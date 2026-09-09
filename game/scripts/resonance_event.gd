@@ -6,7 +6,12 @@ const POLICY := "living_frontier_wave4"
 
 static func phase(sim: WroughtwildSim) -> String:
 	if sim.campaign_policy()!=POLICY: return "legacy"
-	return String(JSON.parse_string(sim.resonance_json()).phase)
+	return String(current(sim).phase)
+
+static func current(sim: WroughtwildSim) -> Dictionary:
+	var first: Dictionary=JSON.parse_string(sim.resonance_json())
+	var second: Dictionary=JSON.parse_string(sim.resonance_second_json())
+	return second if first.phase=="applied" and second.phase!="dormant" else first
 
 static func protection(player: WroughtwildPlayer, snapshot: Dictionary) -> Array:
 	var result: Array=[]
@@ -45,6 +50,7 @@ static func publish(player: WroughtwildPlayer, path: String) -> Dictionary:
 	var started:=Time.get_ticks_msec()
 	var sim:=player.inventory.get_sim()
 	if phase(sim)!="pending": return {"ok":false,"reason":"No pending resonance."}
+	var second:=String(current(sim).event)=="excited_uplands"
 	if player.trial!=null and player.trial.active(): return {"ok":false,"reason":"Return safely from the Trial before resonance."}
 	# Checkpoint the first-clear ownership even when a nearby fight defers the
 	# physical event. Restart must retain that pending receipt and reward.
@@ -55,7 +61,7 @@ static func publish(player: WroughtwildPlayer, path: String) -> Dictionary:
 	var rules: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(load("res://scripts/sim.gd").get_tuning_directory().path_join("resonance.json")))
 	for enemy in player.get_tree().get_nodes_in_group("enemies"):
 		if enemy is Enemy and enemy.state not in ["idle","patrol","flee","dead"] and enemy.global_position.distance_to(player.global_position)<float(rules.safe_return_radius_m):
-			return {"ok":false,"reason":"Resonance is pending. Finish the nearby fight, then retry at the Annex."}
+			return {"ok":false,"reason":"Resonance is pending. Finish the nearby fight, then retry at a laboratory."}
 	var candidate:=WroughtwildSim.new()
 	if not candidate.load_tuning(load("res://scripts/sim.gd").get_tuning_directory()) or not candidate.import_json(pending.sim):
 		return {"ok":false,"reason":"Resonance preparation could not restore its rules."}
@@ -65,11 +71,22 @@ static func publish(player: WroughtwildPlayer, path: String) -> Dictionary:
 	committed.sim=candidate.export_json()
 	var transformed:=candidate.world_map(int(pending.world_seed))
 	for def: Dictionary in transformed.nodes:
-		if String(def.get("resource_id","")).begins_with("lf4_fen_ore_"):
+		if String(def.get("resource_id","")).begins_with("lf5_uplands_ore_" if second else "lf4_fen_ore_"):
 			committed.resource_nodes.append(ResourceStream.definition_record(def,float(transformed.cell_size)))
 	var prepared:=manager._prepare_restore(player,committed)
 	if prepared.is_empty(): return {"ok":false,"reason":manager.last_error}
 	if not manager.write_data(path,committed): return {"ok":false,"reason":manager.last_error}
 	if not manager._apply_prepared(player,committed,prepared):
-		return {"ok":false,"reason":"Resonance is saved; reload to finish publication. "+manager.last_error}
+		var failure:=manager.last_error
+		var rollback:=manager._prepare_restore(player,pending)
+		if not rollback.is_empty() and manager._apply_prepared(player,pending,rollback):
+			if manager.write_data(path,pending):
+				return {"ok":false,"reason":"Physical publication failed; your pending return and prior era are restored. Retry at a laboratory. "+failure}
+		# Never leave a failed live restore with the new era unlocked. The valid
+		# disk checkpoint can complete publication on restart if host recovery fails.
+		sim.import_json(pending.sim)
+		player.set_physics_process(false)
+		return {"ok":false,"reason":"Resonance is saved; reload to finish physical publication. "+failure}
+	if second:
+		return {"ok":true,"reason":"Excited Uplands has risen into stone shelves. Iron and silver are exposed; a paired boar has followed the changed ground. The Ash Tide opens steel work and a larger Foundry. The first retained bank remains.","publication_ms":Time.get_ticks_msec()-started}
 	return {"ok":true,"reason":"Retained Fen has risen in the Lantern Fen collectors. Its bank exposes copper and tin for charcoal-heated bronze work; a Blue-scar host has followed the retained ground.","publication_ms":Time.get_ticks_msec()-started}

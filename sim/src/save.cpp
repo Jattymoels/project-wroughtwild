@@ -128,6 +128,7 @@ std::string toJson(const SaveGame& game) {
     writeIntMap(out, game.economy.inventory);
     if (game.economy.campaignPolicy != "legacy") {
         out << ",\"campaign_policy\":\"" << escape(game.economy.campaignPolicy) << "\",\"resonance\":" << game.economy.resonanceState.toJson();
+        out << ",\"resonance_second\":" << game.economy.secondResonance.toJson();
     }
     out << ",\"currency\":";
     writeIntMap(out, game.economy.currency);
@@ -251,8 +252,11 @@ SaveGame fromJson(const std::string& text) {
     if (auto policy = eco.find("campaign_policy")) game.economy.campaignPolicy = policy->asString();
     if (game.economy.campaignPolicy != "legacy" && game.economy.campaignPolicy != resonance::campaign)
         throw std::runtime_error("save: unsupported campaign policy");
-    if (game.economy.campaignPolicy == resonance::campaign) game.economy.resonanceState = resonance::State::fromJson(eco.get("resonance"));
-    else if (eco.find("resonance")) throw std::runtime_error("save: legacy campaign cannot contain a resonance event");
+    if (game.economy.campaignPolicy == resonance::campaign) {
+        game.economy.resonanceState = resonance::State::fromJson(eco.get("resonance"));
+        if(auto second=eco.find("resonance_second"))game.economy.secondResonance=resonance::State::fromJson(*second);
+        if(game.economy.resonanceState.event!="retained_fen" || game.economy.secondResonance.event!="excited_uplands")throw std::runtime_error("save: swapped resonance event ledgers");
+    } else if (eco.find("resonance") || eco.find("resonance_second")) throw std::runtime_error("save: legacy campaign cannot contain a resonance event");
     game.economy.inventory = readIntMap(eco.get("inventory"));
     game.economy.currency = readIntMap(eco.get("currency"));
     game.economy.skillXp = readIntMap(eco.get("skill_xp"));
@@ -264,6 +268,17 @@ SaveGame fromJson(const std::string& text) {
         const auto has=[&](const std::string& effect){for(const auto& e:game.economy.worldEffects)if(e==effect)return true;return false;};
         if(game.economy.resonanceState.campaignAward!=has("stonecut_blocks") || (game.economy.resonanceState.campaignAward && !has("lf4_annex_victory")))
             throw std::runtime_error("save: resonance terrain and campaign milestone disagree");
+        auto& second=game.economy.secondResonance;
+        // Explicit LF-5B intermediate-save migration: retain its first clear,
+        // Eye and first ledger, scheduling only the not-yet-implemented event.
+        if(!eco.find("resonance_second") && has("lf5_pairing_victory")) {
+            second.phase="pending";second.seed=game.economy.resonanceState.seed;
+        }
+        if(second.campaignAward!=has("ash_tide") ||
+           (second.phase!="dormant" && (!game.economy.resonanceState.campaignAward || !has("lf5_pairing_victory") || second.seed!=game.economy.resonanceState.seed)) ||
+           (second.phase=="dormant" && has("lf5_pairing_victory")) ||
+           (second.phase=="applied" && !second.campaignAward))
+            throw std::runtime_error("save: second resonance, first publication and era-three receipt disagree");
     }
     // Saves written before D-014 carry no pack items.
     if (auto pack = eco.find("pack_items"))

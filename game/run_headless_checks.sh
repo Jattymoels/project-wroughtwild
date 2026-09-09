@@ -166,6 +166,13 @@ echo "== Living Frontier Wave 4 protected terrain and first laboratory =="
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_hybrid.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/pairing_trial.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/pairing_trial.tscn -- --lf5b-boundary
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/second_resonance_terrain.tscn
+for state in host-recovery pending applied real-return; do
+  "$GODOT" --headless --fixed-fps 60 --path . res://tests/second_resonance_terrain.tscn -- "--lf5c-$state"
+done
+for archive in lf4-published-dormant lf4-published-pending lf4-published-paid-pending lf4-published-applied lf5b-published-clear lf5b-published-boundary; do
+  "$GODOT" --headless --fixed-fps 60 --path . res://tests/second_resonance_terrain.tscn -- "--lf5-compat=$archive"
+done
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn -- --lf4a-pending
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn -- --lf4a-applied

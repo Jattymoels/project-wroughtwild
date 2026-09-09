@@ -28,14 +28,17 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
-[Living Frontier Wave 4](docs/prototype/living-frontier-wave4-2026-09-09.md)
-repairs the physical laboratory approaches, opens the Collection Annex Trial
-and makes its first safe return raise protected ground in Retained Fen, reaching
-era two with finite copper/tin and a Blue host. Launch this incomplete campaign
-with `godot --path game -- --living-frontier-wave4`; its separate saved policy
-keeps older worlds' campaigns intact. Terrain publication currently pauses for
-about 14–21 seconds on the development machine. Work stops after Wave 4 for
-orchestrator review; later laboratories and campaign transitions remain closed.
+[Living Frontier Wave 5](docs/prototype/living-frontier-wave5-2026-09-09.md)
+opens Pairing Hall after the Collection Annex's protected Retained Fen change.
+Its ordered Blue-held, warned Red specimen teaches a deliberate escape or
+interrupt decision. First Pairing victory reshapes Excited Uplands into stone
+shelves with finite iron/silver and a paired host, reaching era three while
+preserving the first event and paid ownership. Launch this incomplete campaign
+with `godot --path game -- --living-frontier-wave5`; the Wave-4 flag and saved
+policy remain compatible. Publication displays a preparing notice but still
+pauses synchronously; measured results and remaining human playtests are in the
+work item. Work stops after LF-5A/B/C for orchestrator review. The human finale,
+captured controls and optional Heat remain Waves 6–7.
 
 [Living Frontier Waves 1–2](docs/prototype/living-frontier-wave2-2026-09-08.md)
 add opt-in manual Red/White/Blue/Green extraction, affordable signal delay and

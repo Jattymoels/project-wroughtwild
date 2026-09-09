@@ -16,11 +16,11 @@ func _run() -> void:
 	quiet_pairing()
 	var manager:=SaveManager.new()
 	if "--lf5b-boundary" in OS.get_cmdline_user_args():
-		check(manager.read(checkpoint_path(),player),"fresh Pairing boundary: "+manager.last_error)
+		check(manager.read("user://lf5-pairing-suspended.json",player),"fresh Pairing boundary: "+manager.last_error)
 		quiet_pairing()
 		check(trial.active() && trial.state=="boundary" && String(trial.layout.run_id)=="deep_forge","fresh process restores the second laboratory, not Annex")
 		check(not sim.world_effect_active("lf5_pairing_victory") && sim.material_count("warden_eye")==0,"suspension is not victory")
-		var disk: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(checkpoint_path()))
+		var disk: Dictionary=JSON.parse_string(FileAccess.get_file_as_string("user://lf5-pairing-suspended.json"))
 		check(JSON.parse_string(manager.capture(player).sim)==JSON.parse_string(disk.sim),"fresh boundary retains exact native ownership")
 		return finish_pairing()
 	var packed:=FileAccess.get_file_as_bytes("res://tests/fixtures/lf4-published-applied.json.gz")
@@ -35,9 +35,13 @@ func _run() -> void:
 	await _native_route()
 	check(specimens_seen.has("lf_paired_boar"),"ordered specimen actually instantiated in Pairing encounters")
 	check(player.global_position.distance_to(annex_entry)<.15,"exact return to physical Pairing site")
-	check(sim.resonance_json()==first_event && int(sim.era().index)==2,"Pairing slice preserves first event and awaits second-publication slice")
+	await frames(4)
+	check(sim.resonance_json()==first_event && int(sim.era().index)==3 && JSON.parse_string(sim.resonance_second_json()).phase=="applied","normal Pairing return publishes second event and preserves the first")
 	check(sim.world_effect_active("lf5_pairing_victory") && sim.material_count("warden_eye")==1,"one useful Trial settlement and first-clear Eye")
 	check(manager.write("user://lf5b-clear.json",player),"save completed Pairing ownership")
+	var pending: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(checkpoint_path()+".previous"))
+	check(JSON.parse_string(pending.sim).economy.resonance_second.phase=="pending","actual safe return retained a second pending checkpoint")
+	check(manager.write_data("user://lf5c-real-return-pending.json",pending),"retain normal-return pending evidence")
 	finish_pairing()
 
 func quiet_pairing() -> void:
@@ -49,7 +53,7 @@ func quiet_pairing() -> void:
 	trial.set_process(false)
 
 func finish_pairing() -> void:
-	print("LF5B_PAIRING ",checks," checks, ",failures," failures; ",walked_metres," m actual movement; encounter outcomes forced")
+	print("LF5B_PAIRING ",checks," checks, ",failures," failures; ",walked_metres," m actual movement; encounter outcomes forced; publication_ms=",world.get_meta("last_resonance_publication_ms",0))
 	get_tree().quit(1 if failures else 0)
 
 func _start_native_route() -> bool:
@@ -106,3 +110,8 @@ func _clear_encounter() -> void:
 
 func checkpoint_path() -> String:
 	return "user://lf5-pairing-boundary.json"
+
+func _boundary_restore() -> void:
+	await super._boundary_restore()
+	var manager:=SaveManager.new()
+	check(manager.write_data("user://lf5-pairing-suspended.json",manager.capture(player)),"retain exact suspended checkpoint before normal-return publication overwrites the active path")

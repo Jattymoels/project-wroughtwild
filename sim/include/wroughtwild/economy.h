@@ -43,6 +43,7 @@ public:
     uint64_t worldSeed = 0; // selected outer-world identity; never the Trial's combat seed
     std::string campaignPolicy = "legacy";
     resonance::State resonanceState;
+    resonance::State secondResonance{"excited_uplands"};
     std::map<std::string, int> currency;
     // Gear instances retain their workpiece capacity and exact rolled values.
     // Newly crafted equipment is an instance even when it is Plain.
@@ -285,6 +286,7 @@ public:
     struct State {
         std::string campaignPolicy = "legacy";
         resonance::State resonanceState;
+        resonance::State secondResonance{"excited_uplands"};
         Inventory inventory;
         std::map<std::string, int> currency;
         std::map<std::string, int> skillXp;

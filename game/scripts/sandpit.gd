@@ -28,6 +28,7 @@ var _era_poll := 0.0
 ## it with play and hands the hour to the light, the packs and the player.
 var _day_phase := ""
 var _day_rules: Dictionary = {}
+var _resonance_publishing := false
 @onready var mood: BiomeMood = $Mood
 @onready var player: WroughtwildPlayer = $Player
 
@@ -37,7 +38,7 @@ func _ready() -> void:
 		world_profile = "living_frontier_wave1"
 	if OS.get_cmdline_user_args().has("--living-frontier-wave3"):
 		world_profile = "living_frontier_wave3"
-	if OS.get_cmdline_user_args().has("--living-frontier-wave4"):
+	if OS.get_cmdline_user_args().has("--living-frontier-wave4") or OS.get_cmdline_user_args().has("--living-frontier-wave5"):
 		world_profile = "living_frontier_wave3"
 		_sim().set_campaign_policy("living_frontier_wave4")
 	var normal_launch := get_parent() == get_tree().root and scene_file_path == "res://scenes/sandpit.tscn"
@@ -80,8 +81,14 @@ func saved_world_started() -> void:
 
 func settle_resonance() -> void:
 	var event:=preload("res://scripts/resonance_event.gd")
-	if event.phase(_sim())!="pending" or not _sim().world_effect_active("lf4_annex_victory") or player.trial.active(): return
+	if _resonance_publishing or event.phase(_sim())!="pending" or not _sim().world_effect_active("lf4_annex_victory") or player.trial.active(): return
+	_resonance_publishing=true
+	player.hud.notify("The return circuit is reshaping "+("Excited Uplands" if String(event.current(_sim()).event)=="excited_uplands" else "Retained Fen")+". Preparing protected ground; please wait.")
+	# Let the notice reach the screen before synchronous terrain/save work.
+	await get_tree().process_frame
+	await get_tree().process_frame
 	var result: Dictionary=event.publish(player,SaveManager.path_for(player))
+	_resonance_publishing=false
 	set_meta("last_resonance_publication_ms",int(result.get("publication_ms",0)))
 	player.hud.notify(String(result.reason))
 	player.hud.refresh()
@@ -274,7 +281,7 @@ func apply_world_seed(seed_value: int) -> void:
 func apply_world_identity(seed_value: int, profile_id: String) -> bool:
 	if not _sim().set_world_profile(profile_id):
 		return false
-	var signature:=_sim().resonance_json().sha256_text() if _sim().campaign_policy()=="living_frontier_wave4" else ""
+	var signature:=_sim().resonance_signature()
 	if seed_value == world_seed and profile_id == world_profile and not terrain.map.is_empty() and String(terrain.map.get("resonance_signature",""))==signature:
 		return true
 	world_profile = profile_id

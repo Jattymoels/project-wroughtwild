@@ -412,11 +412,23 @@ Four finite copper/tin veins use ordinary charcoal heat and bronze recipes;
 one finite Blue host occupies the changed habitat. The first Heart is awarded
 once and can be left at the hill cairn as remembrance without another unlock.
 Repeated clears retain their ordinary Trial haul. Older worlds keep both curio
-gates and all original rewards. Later stories/maps remain closed in Wave 4.
+gates and all original rewards.
 
-Pending publication resumes when its save loads, and a blocked return offers
-a retry at the Annex. The loaded world path is retained for publication.
-Publication currently pauses for about 14–21 seconds on the development machine;
-the transaction preserves pending/applied recovery across interruption.
-Work stops here for orchestrator review. See the
-[Wave 4 contract and evidence](../docs/prototype/living-frontier-wave4-2026-09-09.md).
+Wave 5 continues that same save. `--living-frontier-wave5` is an alias using the
+same default save path and policy. After the first physical award, enter the
+existing Pairing Hall door. Blue and Red reminders lead into a Blue-held charge,
+then a fixed-location warned Red release. Leave the marked circle, use solid
+cover or interrupt/freeze before release; ordinary starting equipment suffices.
+Gallery evidence advances the human operator's story. First victory pays one
+Eye and queues Excited Uplands: protected stone shelves, finite iron/silver and
+one paired host. Only successful physical publication grants era three. The Eye
+can be left at the drowned altar once as remembrance. Central and maps remain
+closed.
+
+Pending publication resumes on load; blocked returns offer retry at a laboratory.
+The loaded path, both event ledgers and all finite/paid ownership are retained.
+The preparing notice renders before synchronous publication, which still pauses
+the game. See measured costs, historical-save compatibility and declared test
+fixtures in the [Wave 5 record](../docs/prototype/living-frontier-wave5-2026-09-09.md).
+Work stops after LF-5A/B/C for orchestrator review; the human finale, captured
+controls and optional Heat remain Waves 6–7.

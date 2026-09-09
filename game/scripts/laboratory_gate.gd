@@ -3,6 +3,11 @@ extends "res://scripts/trial_gate.gd"
 func interact(player: WroughtwildPlayer) -> void:
 	if player.inventory.get_sim().campaign_policy()!="living_frontier_wave4": return
 	if player.trial.active(): player.trial.reopen(); return
+	if preload("res://scripts/resonance_event.gd").phase(player.inventory.get_sim())=="pending" and String(preload("res://scripts/resonance_event.gd").current(player.inventory.get_sim()).event)=="excited_uplands":
+		player.open_custom_panel("The second failsafe is waiting",[
+			{"text":"Pairing's victory is recorded. Publish the protected Excited Uplands shelves to reach the Ash Tide.","button":"Retry resonance","callback":_retry.bind(player)}
+		],"The Eye is remembrance; retrying cannot pay it again.")
+		return
 	if String(get_meta("run_id","forge_tyrant"))=="deep_forge":
 		var available:=false
 		for run: Dictionary in player.inventory.get_sim().trial_story_runs():

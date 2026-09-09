@@ -51,8 +51,10 @@ art acceptance and transition comfort remain review questions.
 Extend the saved `living_frontier_wave4` campaign in place, keeping its published
 name and immutable `living_frontier_wave3` geography. Existing LF4 dormant,
 pending and applied saves retain their original first-event ledger byte for
-byte in meaning, all receipts and stock. An absent second-event field means
-**dormant Excited Uplands**, never a queued or applied event. Pending first
+byte in meaning, all receipts and stock. In those LF4 saves an absent second
+field means **dormant Excited Uplands**. The explicitly retained intermediate
+LF5B victory receipt instead migrates to pending using the first event's seed,
+without another Eye; its earlier suspended boundary remains dormant. Pending first
 returns finish only the first event; Pairing requires its campaign award.
 Applied first returns preserve depleted ore, dead host and spent Heart.
 Legacy/non-LF4 policy retains its original campaign and acquisition.
@@ -141,6 +143,8 @@ and factory automation remain excluded.
 
 ### LF-5B — Pairing laboratory
 
+Checked commit **`e92561a`**, ordinarily pushed to `origin/main`.
+
 `pairing_laboratory.json` selects a Blue reminder in stage zero, Red in stage
 one and one paired specimen replacing an ordinary enemy in every branch of
 stages two through six. The original final Warden and two supports remain.
@@ -182,3 +186,159 @@ Its synchronous pause remains an LF-5C performance/presentation concern.
 All 24 complete generated approaches in seeds **5 / 77** pass again (**59 / 61**
 checks), including historical paid-save ownership and every laboratory shell.
 Scoped whitespace checks pass. No production-art source is changed by LF-5B.
+
+### LF-5C selections before implementation
+
+Keep `resonance` as the original version-one Retained Fen ledger and add
+`resonance_second`, also version one, with event ID `excited_uplands`. Missing
+second ledger means dormant, except the explicitly documented LF-5B first-clear
+receipt migration above. Both seeds must agree with the outer world. Second
+pending/applied requires the first campaign publication; `ash_tide` requires
+the second applied award and Pairing receipt. Reject swapped/unknown ledgers.
+
+Excited Uplands receives parallel raised mineral shelves: maximum **three metres**,
+**twelve-metre ridge spacing**, with unchanged one-metre step relaxation and
+three-metre edge/protection blending. Added rock uses existing stone voxels,
+with four finite alternating iron/silver deposits of eight units and one finite
+`lf5_excited_uplands_pair` boar. No existing biome cell, source, finite node,
+first-event column/workplace or published approach is moved/replaced. This is
+one regional opportunity; there is no new heat hazard or global ecology.
+
+Only first Pairing victory creates the receipt/Eye. Its pending event publishes
+on safe return and grants existing `ash_tide`; the drowned altar consumes a
+held Eye once as remembrance, without another unlock/payout. Era-three ordinary
+skills/recipes/fauna mechanics follow the existing era tables. The native
+candidate should retain its already prepared terrain cache, avoiding one
+redundant regeneration. Show a preparing notice before synchronous publication.
+On a host publication failure restore the pending live checkpoint and save it
+again for retry. If host rollback fails, retain the recoverable committed disk
+candidate, restore the prior native era and require reload explicitly.
+
+### LF-5C — second physical event and era three
+
+Implemented within the recorded selections above. First victory queues only
+the second event; the existing era-three Foundry grant is delivered with
+`ash_tide` after physical publication, not with the Eye. The separate second
+ledger extends the existing campaign and both launch flags select its same
+default save. No earlier campaign is silently converted. The first ledger is
+replayed before the second and its actual columns join the protected mask.
+Only the current event's four resource IDs are appended during publication:
+this explicitly prevents replenishing the already depleted first ore set.
+
+Candidate preparation reuses its voxel cache when exporting the prepared node
+list. A preparing notice is scheduled before synchronous work. If installation
+fails, the publisher restores and saves the pending world; a separately injected
+failure of both installation and host rollback leaves a complete disk candidate,
+restores the prior native era, stops player movement and requests reload. Reload
+must successfully install the physical world before gameplay continues.
+
+Current coupled native checks pass **632 assertions across 37 seeds**, including
+both independent ledgers, exact voxel replay, original resource workplaces,
+caves, ordinary step limits, paid-footprint protection and occupied-region
+deferral. Existing generation fingerprints remain unchanged (**17,716 checks**).
+Main simulation, sources/recipes and machines pass **224,380 / 213,482 / 601**.
+Malformed and mixed save refusals are deliberate negative fixtures.
+Native Annex/Pairing settlement checks pass **55 / 72**: early bank-out,
+death/abandon, suspended boundary, absent-ledger migration, wrong/mixed events,
+repeat victories before and after publication, and both spent trophies.
+
+The second physical transaction passes **133 checks**. Real gathered wood pays
+for footing/support, spanning beam, chest and open door inside a candidate
+Excited Uplands patch. Actual excavation, stored wood, source records, cargo
+connections and a recovery bundle survive. Machine kits and recovery contents
+are declared fixtures; placement and cargo use their normal paying APIs. A
+nearby hostile defers publication after saving pending ownership. Invalid disk
+paths, fully occupied preparation and injected host failure cannot advance the
+live era. Double host-failure/reload passes another **eight checks**.
+
+Actual controller walks and collision rays cross both the original bank and
+new shelves. The new host instantiates the ordered specimen, then a forced
+death checks finite ownership and duplicate callbacks. This death is not combat
+evidence. The original dead Blue host and depleted copper/partial tin survive.
+New iron is worked cold; silver is heated with an actually placed, paid charcoal
+fire. Actual work and pickup collection deplete eight iron units and leave six
+of eight silver units. Existing paid iron/silver recipes spend that ore. Ordinary
+charcoal/wood and the archived basic-forge skill/access isolate this useful
+material proof; it is not acquisition from zero or proof of steel manufacture.
+The existing era-three steel/Foundry rules are retained and covered natively.
+
+The final complete Pairing journey passes **155 checks / 824.9 m** and its
+separate suspended restart passes **four**. Its ordinary safe return publishes
+the second event, preserves the first ledger and retains a real pending checkpoint
+for a separate-process resume. All route encounters intentionally force outcomes
+and disable damage. The independent live hybrid suite passes **2,801**, single
+influences **234**, and rendered tells **five** again. Latest actual starting-weapon
+fights took **3.90 / 4.60 / 3.78 s**, with **5 / 6 / 8 casts**; all had one release
+and finished at 100 life through successful counterplay. The earlier Ranger
+receipt was 3.70 s/five casts. No invulnerability, Catalyst or injected damage
+counts toward either set of combat wins.
+
+The full Wave-4 review regression passes unchanged: protected first publication
+**96**, isolated pending/applied restart **22 / 8**, historical paid seeds 5/77
+**35 / 37**, save recovery **175**, Trial lifecycle **6,221**, legacy Forge walk
+**122 / 814.9 m**, Annex journey **172 / 824.5 m**, and first-campaign pending /
+applied restart **4 / 6**. The repeated source and machine checks retain all five
+Catalyst recipes and separate signal/work/heat costs. No production-art source
+is changed; the independent ART-04 commit is retained in history.
+All **24 complete approaches in seeds 5 / 77** pass again (**59 / 61 checks**) on
+the final world-cache code, alongside their historical paid-save fixtures.
+
+Frozen-save compatibility results:
+
+| Prior checkpoint | Required result | Checks |
+| --- | --- | --- |
+| LF4 dormant, deliberately derived old-format fixture | Only dormant second ledger; paid ownership unchanged; future schema cannot fall back to old backup | 15 |
+| LF4 native first-return pending | Publishes only first event/era two; second stays dormant | 23 |
+| LF4 paid isolated pending | Preserves structures, excavation, cargo and recovery; no campaign milestone without receipt | 23 |
+| LF4 applied, spent Heart/depleted copper/dead Blue host | First ledger and finite ownership retained, second dormant | 13 |
+| Published LF5B first clear | Missing second ledger becomes pending, never pays another Eye; then publishes era three | 23 |
+| Published LF5B suspended boundary | Restores the existing Pairing revision, deposit/haul and no victory; second dormant | 14 |
+
+All pass. The archived Pairing pickup's restored yaw differs by **2.98e-8
+radians** through Godot's float32 basis/Euler conversion. Spatial drop fields
+are checked within **1e-6**; all counts, item/gear seeds, age and other ownership
+fields remain exact. Restarts freeze fixture pickup motion before comparing,
+so ordinary flight is not mistaken for migration loss. See the frozen fixture
+record for origins; no historical bytes are regenerated to make these pass.
+
+Separate-process second-pending, applied and actual-Pairing-return resumes pass
+**13 / 22 / 13 checks** with both physical ledgers. Applied restart retains every native owned field,
+spent Eye, both dead hosts, depleted new iron and partial silver. The host-failure
+fallback also reloads the committed candidate without another reward.
+
+Measured second publications on this host: **13,911 ms** for the full Pairing
+return, **14,482 ms** for the final isolated protected transaction,
+**15,908 ms** for its pending restart, and **13,452 ms** for the actual-return
+checkpoint's separate-process resume. An earlier transaction under concurrent
+regression load took **21,233 ms**. The actual-renderer check measured
+**14,459 ms** (matched-coverage capture rerun **14,524 ms**) and passed **four assertions**, including a rendered preparing
+notice while still in era two. The before/preparing/applied observer captures
+are inspected; they are not a human first-person playtest. Current first-event
+regressions measured **21,149 / 14,549 ms** for Annex return/pending load.
+These are implementation receipts, not controlled performance benchmarks.
+The final complete campaign sequence repeats the protected transaction at
+**14,243 ms** and pending resume at **13,769 ms**, with the same geometry and
+ownership assertions. JSON parsing, affected documentation links and scoped
+whitespace checks also pass.
+
+Reproduction on this Windows checkout, after building the current GDExtension:
+
+```powershell
+./tools/living_frontier_wave5_checks.ps1 -Pairing -Campaign -Native
+./tools/living_frontier_wave5_checks.ps1 -Hybrid -Visuals -TransitionVisuals
+./tools/living_frontier_wave3_checks.ps1 -Routes
+./tools/living_frontier_wave4_checks.ps1 -Terrain -Campaign -Legacy
+```
+
+Native executables link the current built simulation objects. Test saves/logs
+live in isolated `build/lf5`, `build/lf4` and `build/lf3` directories. Rendered
+evidence is local under `captures/lf5`; normal user saves are not used. The
+headless runner includes both generations and compatibility cases. Optional
+transition visuals need the campaign fixtures created by the first command.
+
+Remaining limits: synchronous publication still freezes gameplay; a notice and
+one removed regeneration do not establish transition comfort. The shelves are a
+bounded regional change, not global ecology, fluid/heat terrain or an animation
+system. Full-Trial human combat, novice tell recognition, narrative/discovery,
+art and performance acceptance remain open. **Stop here for orchestrator review
+after LF-5A/B/C. No human uber-boss, captured controls or optional Heat has begun.**

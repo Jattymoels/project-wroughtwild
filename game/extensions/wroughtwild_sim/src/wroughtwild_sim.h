@@ -205,6 +205,8 @@ public:
     bool set_campaign_policy(const String& policy);
     String campaign_policy() const;
     String resonance_json() const;
+    String resonance_second_json() const;
+    String resonance_signature() const;
     bool resonance_queue(int seed);
     bool resonance_prepare(int seed, const Array& protection);
     bool resonance_validate_world(const String& profile, int seed);

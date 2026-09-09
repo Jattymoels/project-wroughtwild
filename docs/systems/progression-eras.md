@@ -1,5 +1,16 @@
 # Progression: Eras, the Foundry, and Ores as Properties
 
+**LF-5C continuation:** first Pairing victory pays one Eye/receipt and queues
+Excited Uplands. Only publication of its protected physical terrain records
+`ash_tide`, reaching era three and the existing skill/Foundry/material changes.
+Neither the trophy nor a victory callback alone advances the era. Loading checks
+both event identities, seeds, prerequisite award and milestone agreement. Repeat
+victories and spent trophies cannot replay either award. Drowned-altar Eye use
+is now once-only remembrance for this campaign; its former curio gate remains
+unchanged for legacy policies. The original Heart/Retained Fen event survives.
+All Catalyst recipes, raw-media uses, fuel costs and source/machine rules remain
+unchanged. [Contract and evidence](../prototype/living-frontier-wave5-2026-09-09.md).
+
 **LF-4C scoped campaign (9 September 2026, D-019/D-028/D-033):** a saved
 `living_frontier_wave4` policy uses the first Collection Annex victory to queue
 resonance and award one Tyrant Heart. Only a complete protected Retained Fen
@@ -10,8 +21,8 @@ changed ground useful. Normal charcoal harvesting, recipes, skills and per-run
 loot/Catalyst rules still apply.
 
 For this policy only, the hill cairn consumes the first Heart once as remembrance,
-with no additional era or reward. Drowned-altar use and later stories/maps remain
-closed. Death and early bank-out do not queue resonance; repeated victories,
+with no additional era or reward. The continuation above opens Pairing and
+drowned-altar remembrance; Central and maps remain closed. Death and early bank-out do not queue resonance; repeated victories,
 callbacks and reloads cannot duplicate the first-clear payout or transformation.
 Legacy policies retain both original curio gates and their rewards unchanged.
 [Contract, compatibility and evidence](../prototype/living-frontier-wave4-2026-09-09.md).

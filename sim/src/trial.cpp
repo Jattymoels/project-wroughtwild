@@ -556,6 +556,10 @@ void TrialSession::finish(bool died) {
                 economy_.recordWorldEffect("lf5_pairing_victory");
                 if(!curio.empty() && !economy_.curioHeld(curio))economy_.grant(curio,1);
             }
+            if(economy_.secondResonance.phase=="dormant") {
+                economy_.secondResonance.phase="pending";
+                economy_.secondResonance.seed=economy_.resonanceState.seed;
+            }
         } else {
             if (!curio.empty()) economy_.grant(curio, 1);
             else if (!completionUnlock().empty()) economy_.recordWorldEffect(completionUnlock());

@@ -1,5 +1,17 @@
 # World Generation, Settlements and Travel
 
+**LF-5C (9 September 2026):** first Pairing victory queues a distinct
+`resonance_second` event at the published Excited Uplands envelope. Stone shelves
+rise by up to three metres with twelve-metre spacing and ordinary one-metre
+edge relaxation. Four finite iron/silver lots and one finite paired boar add a
+useful regional opportunity. Both events replay in order; the first ledger,
+columns and workplaces remain protected alongside all existing paid ownership,
+excavation, source/machine state and finite resource identities. Only successful
+physical publication awards era three. LF4 dormant/pending/applied saves gain
+a dormant second ledger; the recorded intermediate LF5B victory migrates to
+pending without another Eye. The policy and geography IDs remain unchanged.
+[Compatibility, tuning and verification](../prototype/living-frontier-wave5-2026-09-09.md).
+
 **LF-4A (9 September 2026):** opt-in campaign policy `living_frontier_wave4`
 retains LF3 geography and old worlds' policies. A saved, sparse Retained Fen
 event changes real voxels/collision only after a protected candidate checkpoint
@@ -8,7 +20,7 @@ pending/applied restart is explicit. After that isolated proof, LF-4C enables th
 first Annex victory to queue this event. Safe return publishes its saved columns,
 four finite copper/tin veins and one finite Blue host together with era two.
 Published sites, original resource IDs, sources and ownership remain unchanged;
-the other declared transformation region remains inactive. The initial bank
+the other declared region remains inactive until the LF-5C event above. The initial bank
 uses existing ordinary step limits, protects above-ground ownership and leaves
 subsurface voids intact. [Contract and evidence](../prototype/living-frontier-wave4-2026-09-09.md).
 

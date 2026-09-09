@@ -2,6 +2,33 @@
 
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
+## Living Frontier ordered pairing and second changing era — LF-5A through LF-5C
+
+- [x] The ordered Blue hold / warned Red release has one fixed mark, ordinary
+  movement/cover/interrupt counterplay and exposed recovery. Real starting-weapon
+  fights for all three classes retain live incoming damage and no invulnerability
+  or Catalyst fixture; forced death checks are labelled separately.
+- [x] The existing Pairing door opens after first physical publication. An
+  ordinary controller reaches its records, all eight stages, rewards, suspension
+  and exact return; forced encounters make this route/ownership evidence.
+- [x] First Pairing victory queues the second event and pays one Eye. Death,
+  abandonment, early bank and repeated clears cannot duplicate that settlement.
+- [x] Excited Uplands gains actual protected stone shelves and finite iron/silver
+  with one paired host; real movement crosses both transformations' collision.
+  Finite cold iron work, charcoal-heated silver work and paid recipes are checked.
+- [x] Both native ledgers replay deterministically across 37 seeds. The first
+  event, paid pieces/storage, excavation, machine spans/cargo, source state and
+  depleted old resources survive second publication.
+- [x] Failed save/preparation/physical publication cannot expose era three.
+  Host rollback restores pending ownership; a double host failure retains the
+  recoverable disk candidate while restoring the live native era for reload.
+- [x] Fresh-process pending/applied resumes preserve spent Eye, finite stock and
+  both host deaths. The first event and its spent Heart are retained.
+- [ ] Human accepts combined combat difficulty and tells within the full Trial.
+- [ ] Human accepts the narrative, changed-region discovery and publication pause.
+
+[Bounded contract, compatibility matrix and measured costs](living-frontier-wave5-2026-09-09.md).
+
 ## Living Frontier first changing era — LF-4A through LF-4C
 
 LF-4B also passes its physical Annex door, containment apparatus/evidence,
@@ -23,7 +50,7 @@ LF-4C enables the first safe-return settlement under its separate saved policy.
 - [x] Fresh-process pending/applied recovery, repeated callbacks/victories,
   spent Heart, depleted ore and dead host do not duplicate rewards or terrain.
 - [x] The first Heart supports once-only remembrance; legacy curio gates and
-  rewards remain unchanged. Later successor stories/maps stay closed.
+  rewards remain unchanged. Wave 5 above opens Pairing; Central/maps stay closed.
 - [ ] Human accepts the bank's discovery/readability and runtime cost.
 
 [Wave 4 evidence and limitations](living-frontier-wave4-2026-09-09.md).

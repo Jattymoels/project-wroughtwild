@@ -12,10 +12,10 @@ int integer(const json::Value& v, int lo, int hi) {
     if (!std::isfinite(n) || n!=std::floor(n) || n<lo || n>hi) throw std::runtime_error("Invalid resonance integer");
     return static_cast<int>(n);
 }
-const worldgen::FutureTransformation& envelope(const worldgen::WorldMap& map) {
+const worldgen::FutureTransformation& envelope(const worldgen::WorldMap& map, const std::string& event) {
     if (map.profileId!="living_frontier_wave3") throw std::runtime_error("Resonance requires its published LF geography");
-    for (const auto& f:map.futureTransformations) if (f.id=="retained_fen") return f;
-    throw std::runtime_error("Retained Fen envelope is missing");
+    for (const auto& f:map.futureTransformations) if (f.id==event) return f;
+    throw std::runtime_error("Resonance envelope is missing: "+event);
 }
 }
 Config Config::load(const std::string& path) {
@@ -25,10 +25,12 @@ Config Config::load(const std::string& path) {
     c.oreCount=integer(v->get("ore_nodes"),4,4); c.oreUnits=integer(v->get("ore_units"),1,100);
     c.ownershipMargin=integer(v->get("ownership_margin_m"),2,12);
     c.resourceMargin=integer(v->get("resource_margin_m"),2,12);
-    c.oreSpacing=integer(v->get("ore_spacing_m"),3,20); return c;
+    c.oreSpacing=integer(v->get("ore_spacing_m"),3,20);
+    c.secondRise=integer(v->get("second_max_rise_m"),1,3);
+    c.ridgeSpacing=integer(v->get("second_ridge_spacing_m"),8,24); return c;
 }
 std::string State::toJson() const {
-    std::ostringstream s; s<<"{\"version\":1,\"event\":\"retained_fen\",\"phase\":\""<<phase<<"\",\"seed\":"<<seed<<",\"columns\":[";
+    std::ostringstream s; s<<"{\"version\":1,\"event\":\""<<event<<"\",\"phase\":\""<<phase<<"\",\"seed\":"<<seed<<",\"columns\":[";
     for (size_t i=0;i<columns.size();++i) { const auto& c=columns[i]; if(i)s<<','; s<<'['<<c.x<<','<<c.z<<','<<c.before<<','<<c.after<<']'; }
     s<<"],\"ore_units\":"<<oreUnits<<",\"ore\":[";
     for(size_t i=0;i<ore.size();++i) { const auto& p=ore[i]; if(i)s<<','; s<<'['<<p.x<<','<<p.y<<','<<p.z<<']'; }
@@ -37,8 +39,9 @@ std::string State::toJson() const {
     s<<'}'; return s.str();
 }
 State State::fromJson(const json::Value& v) {
-    if(integer(v.get("version"),1,1)!=1 || v.get("event").asString()!="retained_fen") throw std::runtime_error("Unsupported resonance event");
-    State s; s.phase=v.get("phase").asString();
+    const auto event=v.get("event").asString();
+    if(integer(v.get("version"),1,1)!=1 || (event!="retained_fen" && event!="excited_uplands")) throw std::runtime_error("Unsupported resonance event");
+    State s(event); s.phase=v.get("phase").asString();
     if(s.phase!="dormant" && s.phase!="pending" && s.phase!="applied") throw std::runtime_error("Unsupported resonance phase");
     s.seed=integer(v.get("seed"),0,2147483647);
     for(const auto& a:v.get("columns").asArray()) {
@@ -60,8 +63,9 @@ State State::fromJson(const json::Value& v) {
     if((s.phase!="applied" && (s.hasHost || s.campaignAward)) || (s.campaignAward && !s.hasHost)) throw std::runtime_error("Resonance campaign and habitat disagree");
     return s;
 }
-State prepare(const worldgen::WorldMap& base,const Config& cfg,const std::vector<Bounds>& ownership) {
-    const auto& fen=envelope(base);
+State prepare(const worldgen::WorldMap& base,const Config& cfg,const std::vector<Bounds>& ownership,const std::string& event) {
+    const auto& fen=envelope(base,event);
+    const bool second=event=="excited_uplands";
     const int n=base.width*base.height;
     std::vector<int> rise(n,0); std::vector<Bounds> keep;
     auto protect=[&](double x,double z,double rx,double rz) {keep.push_back({x-rx,z-rz,x+rx,z+rz});};
@@ -90,7 +94,14 @@ State prepare(const worldgen::WorldMap& base,const Config& cfg,const std::vector
         if(protectedCell[i] || margin<cfg.blend || base.topSolid(x,z)!=base.at(x,z).height) continue;
         bool caveLip=false;
         for(int dz=-1;dz<=1;++dz) for(int dx=-1;dx<=1;++dx) if(base.topSolid(x+dx,z+dz)!=base.at(x+dx,z+dz).height)caveLip=true;
-        if(!caveLip) rise[i]=std::min(cfg.maxRise,static_cast<int>(margin/cfg.blend));
+        if(!caveLip) {
+            rise[i]=std::min(second?cfg.secondRise:cfg.maxRise,static_cast<int>(margin/cfg.blend));
+            // Long stone shelves retain traversable troughs between them.
+            if(second) {
+                const int band=std::abs(x-fen.at.x)%cfg.ridgeSpacing;
+                rise[i]=std::min(rise[i],std::max(0,std::min(band,cfg.ridgeSpacing-band)-1));
+            }
+        }
     }
     // Monotonic relaxation: taper at every protected edge and preserve the
     // original height difference (or a normal one-metre step) in both directions.
@@ -108,11 +119,11 @@ State prepare(const worldgen::WorldMap& base,const Config& cfg,const std::vector
             if(allowed<rise[i]) {rise[i]=std::max(0,allowed);changed=true;}
         }
     }
-    State s; s.phase="applied";s.seed=base.seed;s.oreUnits=cfg.oreUnits;
+    State s(event); s.phase="applied";s.seed=base.seed;s.oreUnits=cfg.oreUnits;
     for(int z=0;z<base.height;++z) for(int x=0;x<base.width;++x) {
         const int i=z*base.width+x;if(rise[i]>0 && base.cells[i].height+rise[i]<base.depth) s.columns.push_back({x,z,base.cells[i].height,base.cells[i].height+rise[i]});
     }
-    if(static_cast<int>(s.columns.size())<cfg.minimumColumns) throw std::runtime_error("Resonance pending: Retained Fen needs an unoccupied patch; current ownership is protected. Retry after clearing a patch.");
+    if(static_cast<int>(s.columns.size())<cfg.minimumColumns) throw std::runtime_error("Resonance pending: "+fen.id+" needs an unoccupied patch; current ownership is protected. Retry after clearing a patch.");
     for(const auto& c:s.columns) {
         bool clear=true;
         for(const auto& p:s.ore) if(std::hypot(c.x-p.x,c.z-p.z)*base.cellSize<cfg.oreSpacing)clear=false;
@@ -125,12 +136,12 @@ State prepare(const worldgen::WorldMap& base,const Config& cfg,const std::vector
     validate(base,s);return s;
 }
 void validate(const worldgen::WorldMap& base,const State& s) {
-    const auto& fen=envelope(base);
+    const auto& fen=envelope(base,s.event);
     if(s.phase=="dormant")return;
     if(s.seed!=base.seed)throw std::runtime_error("Resonance belongs to a different world seed");
     std::set<std::pair<int,int>> seen;
     for(const auto& c:s.columns) {
-        if(!base.inBounds(c.x,c.z) || !seen.emplace(c.x,c.z).second || c.before!=base.at(c.x,c.z).height || base.topSolid(c.x,c.z)!=c.before || c.after<=c.before || c.after>c.before+2 || c.after>=base.depth || std::hypot(c.x-fen.at.x,c.z-fen.at.z)*base.cellSize>=fen.radiusM)
+        if(!base.inBounds(c.x,c.z) || !seen.emplace(c.x,c.z).second || c.before!=base.at(c.x,c.z).height || base.topSolid(c.x,c.z)!=c.before || c.after<=c.before || c.after>c.before+(s.event=="excited_uplands"?3:2) || c.after>=base.depth || std::hypot(c.x-fen.at.x,c.z-fen.at.z)*base.cellSize>=fen.radiusM)
             throw std::runtime_error("Saved resonance does not match the published terrain");
     }
     std::set<std::pair<int,int>> ore;
@@ -142,21 +153,24 @@ void validate(const worldgen::WorldMap& base,const State& s) {
 }
 void apply(worldgen::WorldMap& map,const State& s) {
     validate(map,s); if(s.phase!="applied")return;
+    const bool second=s.event=="excited_uplands";
     for(const auto& c:s.columns) {
         // Add only above the former surface: no cave or saved excavation fills.
-        for(int y=c.before;y<c.after;++y)map.blocks[(static_cast<size_t>(c.z)*map.width+c.x)*map.depth+y]=y==c.after-1?worldgen::kSurface:worldgen::kDirt;
+        for(int y=c.before;y<c.after;++y)map.blocks[(static_cast<size_t>(c.z)*map.width+c.x)*map.depth+y]=second?worldgen::kStone:(y==c.after-1?worldgen::kSurface:worldgen::kDirt);
         map.cells[c.z*map.width+c.x].height=c.after;
     }
     for(size_t i=0;i<s.ore.size();++i) {
-        const auto& p=s.ore[i];worldgen::PlacedNode node(i%2==0?"copper_vein":"tin_vein",p.x,p.y,p.z);
-        node.resourceId="lf4_fen_ore_"+std::to_string(i);node.habitatId="retained_fen";node.unitsOverride=s.oreUnits;map.nodes.push_back(node);
+        const auto& p=s.ore[i];worldgen::PlacedNode node(second?(i%2==0?"iron_vein":"silver_vein"):(i%2==0?"copper_vein":"tin_vein"),p.x,p.y,p.z);
+        node.resourceId=std::string(second?"lf5_uplands_ore_":"lf4_fen_ore_")+std::to_string(i);node.habitatId=s.event;node.unitsOverride=s.oreUnits;map.nodes.push_back(node);
     }
     if(s.campaignAward && s.hasHost) {
         worldgen::PlacedFrontierHost host;
-        host.id="lf4_retained_fen_blue";host.sourceId="blue_home_margin";host.enemyId="lf_blue_boar";host.influence="blue";
+        host.id=second?"lf5_excited_uplands_pair":"lf4_retained_fen_blue";host.sourceId=second?"red_home_margin":"blue_home_margin";host.enemyId=second?"lf_paired_boar":"lf_blue_boar";host.influence=second?"blue_red":"blue";
         host.at=s.host;host.habits={s.host};map.frontierHosts.push_back(host);
         worldgen::MobPack pack;pack.frontierHostId=host.id;pack.enemies={host.enemyId};
         pack.x=host.at.x;pack.y=host.at.y;pack.z=host.at.z;
+        if(second)for(const auto& old:map.packs)
+            if(!old.biome.empty() && old.biome!="cave" && map.at(old.x,old.z).biomeIndex==map.at(pack.x,pack.z).biomeIndex) {pack.biome=old.biome;break;}
         for(const auto& old:map.packs)if(!old.frontierHostId.empty() && old.enemies==pack.enemies)pack.biome=old.biome;
         map.packs.push_back(pack);
     }

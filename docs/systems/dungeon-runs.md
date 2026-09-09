@@ -8,7 +8,9 @@ records reveal the human operator's imposed combinations and second failsafe;
 three teaching chambers receive solid apparatus with checked approaches.
 Revision-two Pairing suspension remains distinct from revision-one Annex saves.
 First Pairing victory pays one Eye/receipt, without replacing a spent trophy.
-LF-5C adds its second protected publication; Central/maps stay closed.
+LF-5C queues its second event on first victory; safe return publishes Excited
+Uplands and era three together. Pending load resumes to the restored save path;
+blocked returns offer retry at either laboratory. Central/maps stay closed.
 [Contract and evidence](../prototype/living-frontier-wave5-2026-09-09.md).
 
 **LF-4B (9 September 2026):** only saved `living_frontier_wave4` campaigns enter

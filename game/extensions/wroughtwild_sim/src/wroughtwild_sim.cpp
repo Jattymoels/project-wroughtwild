@@ -245,6 +245,8 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_campaign_policy", "policy"), &WroughtwildSim::set_campaign_policy);
     ClassDB::bind_method(D_METHOD("campaign_policy"), &WroughtwildSim::campaign_policy);
     ClassDB::bind_method(D_METHOD("resonance_json"), &WroughtwildSim::resonance_json);
+    ClassDB::bind_method(D_METHOD("resonance_second_json"), &WroughtwildSim::resonance_second_json);
+    ClassDB::bind_method(D_METHOD("resonance_signature"), &WroughtwildSim::resonance_signature);
     ClassDB::bind_method(D_METHOD("resonance_queue", "seed"), &WroughtwildSim::resonance_queue);
     ClassDB::bind_method(D_METHOD("resonance_prepare", "seed", "protection"), &WroughtwildSim::resonance_prepare);
     ClassDB::bind_method(D_METHOD("resonance_validate_world", "profile", "seed"), &WroughtwildSim::resonance_validate_world);
@@ -2377,11 +2379,13 @@ bool WroughtwildSim::set_campaign_policy(const String& policy) {
     if (!require_loaded("set_campaign_policy")) return false;
     const auto id=to_std(policy);
     if (id!="legacy" && id!=wroughtwild::resonance::campaign) return false;
-    if (player_->resonanceState.phase!="dormant") return false;
+    if (player_->resonanceState.phase!="dormant" || player_->secondResonance.phase!="dormant") return false;
     player_->campaignPolicy=id; world_cache_.reset(); return true;
 }
 String WroughtwildSim::campaign_policy() const { return player_ ? to_godot(player_->campaignPolicy) : String("legacy"); }
 String WroughtwildSim::resonance_json() const { return player_ && player_->campaignPolicy==wroughtwild::resonance::campaign ? to_godot(player_->resonanceState.toJson()) : String(); }
+String WroughtwildSim::resonance_second_json() const { return player_ && player_->campaignPolicy==wroughtwild::resonance::campaign ? to_godot(player_->secondResonance.toJson()) : String(); }
+String WroughtwildSim::resonance_signature() const { return player_ && player_->campaignPolicy==wroughtwild::resonance::campaign ? (resonance_json()+resonance_second_json()).sha256_text() : String(); }
 bool WroughtwildSim::resonance_queue(int seed) {
     if (!require_loaded("resonance_queue") || trial_ || seed<0 || player_->campaignPolicy!=wroughtwild::resonance::campaign || world_profile_!="living_frontier_wave3" || player_->resonanceState.phase!="dormant") return false;
     player_->resonanceState.phase="pending";player_->resonanceState.seed=static_cast<uint64_t>(seed);world_cache_.reset();return true;
@@ -2396,7 +2400,10 @@ bool WroughtwildSim::resonance_validate_world(const String& profile,int seed) {
     } catch(const std::exception& e) {last_error_=to_godot(e.what());return false;}
 }
 bool WroughtwildSim::resonance_prepare(int seed,const Array& protection) {
-    if (!require_loaded("resonance_prepare") || trial_ || seed<0 || player_->campaignPolicy!=wroughtwild::resonance::campaign || world_profile_!="living_frontier_wave3" || player_->resonanceState.phase!="pending" || player_->resonanceState.seed!=static_cast<uint64_t>(seed)) {
+    if (!require_loaded("resonance_prepare")) return false;
+    const bool second=player_->resonanceState.phase=="applied" && player_->secondResonance.phase=="pending";
+    auto& event=second?player_->secondResonance:player_->resonanceState;
+    if (trial_ || seed<0 || player_->campaignPolicy!=wroughtwild::resonance::campaign || world_profile_!="living_frontier_wave3" || event.phase!="pending" || event.seed!=static_cast<uint64_t>(seed) || (second && (!player_->resonanceState.campaignAward || !player_->worldEffectActive("lf5_pairing_victory")))) {
         last_error_="No pending resonance for this world";return false;
     }
     try {
@@ -2407,24 +2414,35 @@ bool WroughtwildSim::resonance_prepare(int seed,const Array& protection) {
             if(b[0]>b[2] || b[1]>b[3])throw std::runtime_error("Reversed protection bounds");
             bounds.push_back({b[0],b[1],b[2],b[3]});
         }
-        auto prepared=wroughtwild::resonance::prepare(cached_world(static_cast<uint64_t>(seed)),resonance_config_,bounds);
-        prepared.campaignAward=player_->worldEffectActive("lf4_annex_victory");
-        if(prepared.campaignAward)player_->recordWorldEffect("stonecut_blocks");
-        player_->resonanceState=std::move(prepared);world_cache_.reset();last_error_=String();return true;
-    } catch(const std::exception& e) {last_error_=to_godot(e.what());return false;}
+        const auto& current=cached_world(static_cast<uint64_t>(seed));
+        if(second)for(const auto& c:player_->resonanceState.columns)
+            bounds.push_back({c.x*current.cellSize,c.z*current.cellSize,(c.x+1)*current.cellSize,(c.z+1)*current.cellSize});
+        auto prepared=wroughtwild::resonance::prepare(current,resonance_config_,bounds,event.event);
+        prepared.campaignAward=player_->worldEffectActive(second?"lf5_pairing_victory":"lf4_annex_victory");
+        // Reuse the exact candidate voxel field instead of generating it again
+        // when the publisher asks for its node list. Never reuse stale signatures.
+        wroughtwild::resonance::apply(*world_cache_,prepared);
+        event=std::move(prepared);
+        if(event.campaignAward)player_->recordWorldEffect(second?"ash_tide":"stonecut_blocks");
+        world_cache_resonance_=player_->resonanceState.toJson()+player_->secondResonance.toJson();
+        last_error_=String();return true;
+    } catch(const std::exception& e) {world_cache_.reset();last_error_=to_godot(e.what());return false;}
 }
 
 const wroughtwild::worldgen::WorldMap& WroughtwildSim::cached_world(uint64_t seed) {
     // The 3D world costs real time to generate; world_map and world_mesh
     // are always asked about the same seed back to back, so keep the last
     // one. Deterministic generation makes the cache invisible.
-    const std::string signature = player_->campaignPolicy==wroughtwild::resonance::campaign ? player_->resonanceState.toJson() : "";
+    const std::string signature = player_->campaignPolicy==wroughtwild::resonance::campaign ? player_->resonanceState.toJson()+player_->secondResonance.toJson() : "";
     if (!world_cache_ || world_cache_->seed != seed || world_cache_->profileId != world_profile_ || world_cache_resonance_!=signature) {
         world_cache_.reset(); // Do not retain the old voxel field during new generation.
         world_cache_ = std::make_unique<wroughtwild::worldgen::WorldMap>(
             wroughtwild::worldgen::generateProfile(*tuning_, seed, world_profile_));
         if (player_->campaignPolicy == wroughtwild::resonance::campaign) {
-            try { wroughtwild::resonance::apply(*world_cache_, player_->resonanceState); }
+            try {
+                wroughtwild::resonance::apply(*world_cache_, player_->resonanceState);
+                wroughtwild::resonance::apply(*world_cache_, player_->secondResonance);
+            }
             catch (...) { world_cache_.reset(); throw; }
         }
         world_cache_resonance_=signature;
@@ -2689,7 +2707,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
 
     d["seed"] = seed;
     d["profile_id"] = to_godot(map.profileId);
-    if (player_->campaignPolicy == wroughtwild::resonance::campaign) d["resonance_signature"] = resonance_json().sha256_text();
+    if (player_->campaignPolicy == wroughtwild::resonance::campaign) d["resonance_signature"] = resonance_signature();
     d["width"] = map.width;
     d["height"] = map.height;
     d["depth"] = map.depth;
@@ -2910,7 +2928,8 @@ Dictionary WroughtwildSim::world_map(int seed) {
     for (const auto& region : map.futureTransformations) {
         Dictionary r; r["id"]=to_godot(region.id); r["region_id"]=to_godot(region.regionId);
         r["position"]=position(region.at); r["radius_m"]=region.radiusM;
-        r["active"]=player_->campaignPolicy==wroughtwild::resonance::campaign && player_->resonanceState.phase=="applied" && region.id=="retained_fen";
+        r["active"]=player_->campaignPolicy==wroughtwild::resonance::campaign &&
+            ((player_->resonanceState.phase=="applied" && region.id=="retained_fen") || (player_->secondResonance.phase=="applied" && region.id=="excited_uplands"));
         transforms.push_back(r);
     }
     d["frontier_hosts"]=frontier_hosts; d["laboratories"]=laboratories;

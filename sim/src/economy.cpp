@@ -702,6 +702,10 @@ const Inventory& PlayerEconomy::storeContents(const std::string& key) const {
 
 bool PlayerEconomy::setCurio(const std::string& landmarkId) {
     if (campaignPolicy == resonance::campaign) {
+        if(landmarkId=="drowned_altar") {
+            if(!worldEffectActive("lf5_pairing_victory") || worldEffectActive("lf5_eye_remembrance") || !curioHeld("warden_eye"))return false;
+            remove(inventory,{{"warden_eye",1}});recordWorldEffect("lf5_eye_remembrance");return true;
+        }
         if(landmarkId!="hill_cairn" || !worldEffectActive("lf4_annex_victory") || worldEffectActive("lf4_heart_remembrance") || !curioHeld("tyrant_heart"))return false;
         remove(inventory,{{"tyrant_heart",1}});
         recordWorldEffect("lf4_heart_remembrance");return true;
@@ -714,7 +718,10 @@ bool PlayerEconomy::setCurio(const std::string& landmarkId) {
 }
 
 std::string PlayerEconomy::landmarkWants(const std::string& landmarkId) const {
-    if(campaignPolicy==resonance::campaign && (landmarkId!="hill_cairn" || worldEffectActive("lf4_heart_remembrance")))return {};
+    if(campaignPolicy==resonance::campaign &&
+        ((landmarkId!="hill_cairn" && landmarkId!="drowned_altar") ||
+         (landmarkId=="hill_cairn" && worldEffectActive("lf4_heart_remembrance")) ||
+         (landmarkId=="drowned_altar" && (!worldEffectActive("lf5_pairing_victory") || worldEffectActive("lf5_eye_remembrance")))))return {};
     const auto* curio = tuning_.trial.curioForLandmark(landmarkId);
     return curio ? curio->id : std::string();
 }
@@ -728,6 +735,7 @@ std::vector<std::string> PlayerEconomy::curioHints() const {
     std::vector<std::string> out;
     if(campaignPolicy==resonance::campaign) {
         if(curioHeld("tyrant_heart"))out.push_back("The Tyrant's Cinder Heart: a trophy of the Annex. The hill cairn can hold it in remembrance; the failsafe's safe return, not this offering, changes the era.");
+        if(curioHeld("warden_eye"))out.push_back("The Warden's Eye: evidence from Pairing Hall. The drowned altar can hold it once in remembrance; successful Excited Uplands publication changes the era.");
         return out;
     }
     for (const auto& curio : tuning_.trial.curios)
@@ -831,6 +839,7 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
     State state;
     state.campaignPolicy = campaignPolicy;
     state.resonanceState = resonanceState;
+    state.secondResonance = secondResonance;
     state.inventory = inventory;
     state.currency = currency;
     for (const auto& [id, skill] : skills_) state.skillXp[id] = skill.xp;
@@ -852,6 +861,7 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
 void PlayerEconomy::importState(const State& state) {
     campaignPolicy = state.campaignPolicy;
     resonanceState = state.resonanceState;
+    secondResonance = state.secondResonance;
     foundry_ = state.foundry;
     skillUses_ = state.skillUses;
     skillPractice_ = state.skillPractice; earnedMastery_ = state.earnedMastery;
