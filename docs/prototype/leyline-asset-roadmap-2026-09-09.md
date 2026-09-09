@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01 and ART-02 visually approved; ART-03 next proposed; ART-04–05 proposed.** Owner request,
+**Status: ART-01/02 visually approved; ART-03 technical handoff delivered, visual review pending; ART-04–05 proposed.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -12,8 +12,11 @@ See that result for checks and limits; ordinary game adoption remains separate.
 The owner's subsequent “I love it” and “Let's keep going”, without changing the
 process, visually approve the boar and select [ART-02](affected-grove-2026-09-09.md).
 After the grove handoff, “Awesome, approved, what's next” visually approves
-ART-02. The next proposed slice is ART-03, beginning with the existing wolf;
-this approval record does not begin its implementation.
+ART-02. The subsequent “Let's do it” selected [ART-03](fauna-art-2026-09-09.md),
+beginning with the existing wolf, then one stag. Its isolated source/rig/scar,
+movement and detail-level handoff is now delivered, with the liked moth retained
+as a comparison. See the linked result for actual checks and limits; owner visual
+review is pending. ART-04 and ART-05 remain proposed.
 
 ## Outcome and current evidence
 

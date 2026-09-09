@@ -1,0 +1,533 @@
+{
+  "kind": "stag",
+  "checks": [
+    {
+      "name": "preserved build/fauna-art03/stag-source-v01/stag.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preserved game/assets/authored/mobs/ash_hound.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preserved game/assets/authored/mobs/marsh_wisp.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preserved build/trellis-local/normalized-review/wolf-normalized.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near mesh skinned Vaultcrown - fitted eyes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near mesh skinned Vaultcrown - near candidate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near nonzero triangles",
+      "passed": true,
+      "detail": {
+        "near_zero_area_triangles": 0,
+        "area_epsilon_m2": 1e-14
+      }
+    },
+    {
+      "name": "near complete rig",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near complete clips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration idle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration graze",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration turn",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near safe PBR fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near embedded PNG normal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near embedded PNG base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near embedded PNG orm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid mesh skinned Vaultcrown - fitted eyes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid mesh skinned Vaultcrown - mid candidate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid nonzero triangles",
+      "passed": true,
+      "detail": {
+        "near_zero_area_triangles": 0,
+        "area_epsilon_m2": 1e-14
+      }
+    },
+    {
+      "name": "mid complete rig",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid complete clips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration idle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration graze",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration turn",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid safe PBR fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid embedded PNG normal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid embedded PNG base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid embedded PNG orm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far mesh skinned Vaultcrown - far candidate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far mesh skinned Vaultcrown - fitted eyes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far nonzero triangles",
+      "passed": true,
+      "detail": {
+        "near_zero_area_triangles": 0,
+        "area_epsilon_m2": 1e-14
+      }
+    },
+    {
+      "name": "far complete rig",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far complete clips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration idle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration graze",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration turn",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far safe PBR fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far embedded PNG normal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far embedded PNG base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far embedded PNG orm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base.png decodes PNG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "orm.png decodes PNG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "normal.png decodes PNG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "scar-mask.png decodes PNG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "independent core and host damage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "branch travel varies",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "passed": 85,
+  "failed": 0,
+  "exports": [
+    {
+      "level": "near",
+      "sha256": "f7a670faa949b8d4975168692785b8702c47b0826be7d4f921c8a86d5d5e4b56",
+      "bytes": 32057928,
+      "triangles": 128258,
+      "exported_vertices": 127365,
+      "surfaces": 4,
+      "bones": 17,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "graze": 6.0,
+        "turn": 4.0
+      }
+    },
+    {
+      "level": "mid",
+      "sha256": "4aec6038f26af7fe77df3c0ef255b07c0e68daf2f0c41af8568a16c16521bfb2",
+      "bytes": 28258436,
+      "triangles": 68257,
+      "exported_vertices": 79248,
+      "surfaces": 4,
+      "bones": 17,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "graze": 6.0,
+        "turn": 4.0
+      }
+    },
+    {
+      "level": "far",
+      "sha256": "94610862a508e2ce425821f0dddcb7ddfa549a36f933f82854a7762ad555cadb",
+      "bytes": 24991268,
+      "triangles": 27253,
+      "exported_vertices": 38135,
+      "surfaces": 4,
+      "bones": 17,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "graze": 6.0,
+        "turn": 4.0
+      }
+    }
+  ],
+  "textures": [
+    {
+      "name": "base.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "bits_per_channel": 8,
+      "bytes": 9831919
+    },
+    {
+      "name": "orm.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "bits_per_channel": 8,
+      "bytes": 5126656
+    },
+    {
+      "name": "normal.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "bits_per_channel": 8,
+      "bytes": 7258003
+    },
+    {
+      "name": "scar-mask.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "bits_per_channel": 16,
+      "bytes": 2415877
+    }
+  ],
+  "preserved_sha256": {
+    "build/fauna-art03/stag-source-v01/stag.glb": "a35be4faca9dfc278834cf353bf56d9891c77af0b323bb4ab32e2b988e04940b",
+    "game/assets/authored/mobs/ash_hound.glb": "ec2cded39e9414591991be589608235d20884ff96c020e4bcbc33a6cdd0f0354",
+    "game/assets/authored/mobs/marsh_wisp.glb": "554ec16fe3c7154239682da327d717f694a7ff20c430d27cbaca0266a749e389",
+    "build/trellis-local/normalized-review/wolf-normalized.glb": "0245276461c8562f26a6053a58d8bc831a70ab8238498b22d1568e6e8ea9a9e0"
+  },
+  "limitations": "Stream validation is not watertightness, self-intersection certification, manual retopology or native-game integration."
+}

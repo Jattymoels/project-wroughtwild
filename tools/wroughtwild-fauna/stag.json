@@ -1,0 +1,207 @@
+{
+  "name": "Vaultcrown",
+  "source": "build/fauna-art03/stag-source-v01/stag.glb",
+  "source_sha256": "a35be4faca9dfc278834cf353bf56d9891c77af0b323bb4ab32e2b988e04940b",
+  "height_metres": 3.0,
+  "eye_targets": [
+    {
+      "position": [
+        -0.255272,
+        1.011075,
+        2.037674
+      ],
+      "normal": [
+        -0.952861,
+        0.184894,
+        -0.240562
+      ]
+    },
+    {
+      "position": [
+        -0.067056,
+        1.131559,
+        2.036906
+      ],
+      "normal": [
+        0.452057,
+        0.889217,
+        0.07027
+      ]
+    }
+  ],
+  "scar": {
+    "half_width_metres": 0.025,
+    "core_half_width_metres": 0.006,
+    "recess_metres": 0.006,
+    "projection_step_metres": 0.016,
+    "mask_size": 2048,
+    "peak_emission": 2.8,
+    "minimum_light": 0.22,
+    "period_seconds": 4.0,
+    "crest_width": 0.2,
+    "colour": [
+      0.7,
+      0.32,
+      0.04
+    ],
+    "paths": [
+      {
+        "name": "left_neck",
+        "side": -1,
+        "width": 1,
+        "offset": 0,
+        "points": [
+          [
+            0.74,
+            1.93
+          ],
+          [
+            0.69,
+            1.85
+          ],
+          [
+            0.72,
+            1.78
+          ],
+          [
+            0.63,
+            1.72
+          ],
+          [
+            0.65,
+            1.65
+          ],
+          [
+            0.56,
+            1.59
+          ],
+          [
+            0.55,
+            1.5
+          ],
+          [
+            0.5,
+            1.42
+          ],
+          [
+            0.51,
+            1.32
+          ]
+        ]
+      },
+      {
+        "name": "left_shoulder",
+        "side": -1,
+        "width": 0.7,
+        "offset": 0.25,
+        "points": [
+          [
+            0.65,
+            1.65
+          ],
+          [
+            0.47,
+            1.68
+          ],
+          [
+            0.39,
+            1.62
+          ],
+          [
+            0.27,
+            1.64
+          ],
+          [
+            0.18,
+            1.56
+          ],
+          [
+            0.08,
+            1.56
+          ]
+        ]
+      },
+      {
+        "name": "right_neck",
+        "side": 1,
+        "width": 1,
+        "offset": 0.15,
+        "points": [
+          [
+            0.74,
+            1.93
+          ],
+          [
+            0.69,
+            1.85
+          ],
+          [
+            0.72,
+            1.78
+          ],
+          [
+            0.63,
+            1.72
+          ],
+          [
+            0.65,
+            1.65
+          ],
+          [
+            0.56,
+            1.59
+          ],
+          [
+            0.55,
+            1.5
+          ],
+          [
+            0.5,
+            1.42
+          ],
+          [
+            0.51,
+            1.32
+          ]
+        ]
+      },
+      {
+        "name": "right_shoulder",
+        "side": 1,
+        "width": 0.7,
+        "offset": 0.25,
+        "points": [
+          [
+            0.65,
+            1.65
+          ],
+          [
+            0.47,
+            1.68
+          ],
+          [
+            0.39,
+            1.62
+          ],
+          [
+            0.27,
+            1.64
+          ],
+          [
+            0.18,
+            1.56
+          ],
+          [
+            0.08,
+            1.56
+          ]
+        ]
+      }
+    ]
+  },
+  "purposes": {
+    "height_metres": "Three-metre overall crown comparison scale, not an enlarged Valley Elk gameplay body.",
+    "eye_targets": "Source-render pixel probes locate shallow lenses within existing eye sockets; no eye glow.",
+    "scar": "Six-millimetre narrow core inside a 25 mm dark half-width injury, incised at most 6 mm. UV core/damage/travel channels stay on the skin. Four-second amber art pulse follows the selected concept; it grants no new influence, hostility or gameplay behaviour."
+  }
+}

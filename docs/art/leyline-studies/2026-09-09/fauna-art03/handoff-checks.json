@@ -1,0 +1,48 @@
+{
+  "animals": [
+    {
+      "animal": "wolf",
+      "clean_import": true,
+      "engine_check": true,
+      "packed_blend_sha256": "d43ec135be11154461d2248a889ea5d26d75a33ed8d5cc8f1d074e40f3e6ad32",
+      "deformed_source_samples": 77,
+      "exact_export_copies": [
+        {
+          "file": "wolf-near.glb",
+          "sha256": "8ecb4f734b454333dac1a2e610815d35fbee64a6fc17882076cef49cefe8b54e"
+        },
+        {
+          "file": "wolf-mid.glb",
+          "sha256": "8fa25055d7f41076dc1d651e99aec049656ee7e8dfe3383498b31efb933e1df1"
+        },
+        {
+          "file": "wolf-far.glb",
+          "sha256": "47964bfefddcb1b7c6151708b7a981d3bc3922edf2d809bfcefa40c639b3f5de"
+        }
+      ]
+    },
+    {
+      "animal": "stag",
+      "clean_import": true,
+      "engine_check": true,
+      "packed_blend_sha256": "503017a65384ff7e4717f8ae3a2b9e05b975671cf137425f34a469b3a5b1b53e",
+      "deformed_source_samples": 36,
+      "exact_export_copies": [
+        {
+          "file": "stag-near.glb",
+          "sha256": "f7a670faa949b8d4975168692785b8702c47b0826be7d4f921c8a86d5d5e4b56"
+        },
+        {
+          "file": "stag-mid.glb",
+          "sha256": "4aec6038f26af7fe77df3c0ef255b07c0e68daf2f0c41af8568a16c16521bfb2"
+        },
+        {
+          "file": "stag-far.glb",
+          "sha256": "94610862a508e2ce425821f0dddcb7ddfa549a36f933f82854a7762ad555cadb"
+        }
+      ]
+    }
+  ],
+  "game_assets_preserved": true,
+  "game_loaded": false
+}

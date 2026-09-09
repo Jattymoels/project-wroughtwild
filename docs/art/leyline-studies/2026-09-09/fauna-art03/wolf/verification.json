@@ -1,0 +1,857 @@
+{
+  "kind": "wolf",
+  "checks": [
+    {
+      "name": "preserved build/trellis-local/output/wolf-1024-seed42-20260908-221914-245/wolf.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preserved game/assets/authored/mobs/ash_hound.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preserved game/assets/authored/mobs/marsh_wisp.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "preserved build/trellis-local/normalized-review/wolf-normalized.glb",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near mesh skinned Rimejaw - fitted head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near mesh skinned Rimejaw - fitted jaw",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near mesh skinned Rimejaw - near candidate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near finite surface 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near skin weights 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near valid UVs 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near nonzero triangles",
+      "passed": true,
+      "detail": {
+        "near_zero_area_triangles": 0,
+        "area_epsilon_m2": 1e-14
+      }
+    },
+    {
+      "name": "near complete rig",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near complete clips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration idle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration root",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration turn",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration jaw",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near duration release",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near safe PBR fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near embedded PNG Image_0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near embedded PNG Image_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near embedded PNG normal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near embedded PNG base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "near embedded PNG orm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid mesh skinned Rimejaw - fitted head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid mesh skinned Rimejaw - fitted jaw",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid mesh skinned Rimejaw - mid candidate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid finite surface 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid skin weights 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid valid UVs 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid nonzero triangles",
+      "passed": true,
+      "detail": {
+        "near_zero_area_triangles": 0,
+        "area_epsilon_m2": 1e-14
+      }
+    },
+    {
+      "name": "mid complete rig",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid complete clips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration idle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration root",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration turn",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration jaw",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid duration release",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid safe PBR fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid embedded PNG Image_0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid embedded PNG Image_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid embedded PNG normal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid embedded PNG base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mid embedded PNG orm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far mesh skinned Rimejaw - far candidate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far mesh skinned Rimejaw - fitted head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far mesh skinned Rimejaw - fitted jaw",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 7",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 8",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far finite surface 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far skin weights 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far valid UVs 9",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far nonzero triangles",
+      "passed": true,
+      "detail": {
+        "near_zero_area_triangles": 0,
+        "area_epsilon_m2": 1e-14
+      }
+    },
+    {
+      "name": "far complete rig",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far complete clips",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration idle",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration walk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration root",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration turn",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration jaw",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration windup",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far duration release",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far safe PBR fallback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far embedded PNG normal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far embedded PNG base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far embedded PNG orm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far embedded PNG Image_0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "far embedded PNG Image_1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "base.png decodes PNG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "orm.png decodes PNG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "normal.png decodes PNG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "scar-mask.png decodes PNG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "independent core and host damage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "branch travel varies",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "passed": 148,
+  "failed": 0,
+  "exports": [
+    {
+      "level": "near",
+      "sha256": "8ecb4f734b454333dac1a2e610815d35fbee64a6fc17882076cef49cefe8b54e",
+      "bytes": 41410956,
+      "triangles": 115018,
+      "exported_vertices": 116867,
+      "surfaces": 9,
+      "bones": 17,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "root": 3.0,
+        "turn": 3.0,
+        "jaw": 3.0,
+        "windup": 0.25,
+        "release": 0.2199999988079071
+      }
+    },
+    {
+      "level": "mid",
+      "sha256": "8fa25055d7f41076dc1d651e99aec049656ee7e8dfe3383498b31efb933e1df1",
+      "bytes": 37926768,
+      "triangles": 62147,
+      "exported_vertices": 72340,
+      "surfaces": 9,
+      "bones": 17,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "root": 3.0,
+        "turn": 3.0,
+        "jaw": 3.0,
+        "windup": 0.25,
+        "release": 0.2199999988079071
+      }
+    },
+    {
+      "level": "far",
+      "sha256": "47964bfefddcb1b7c6151708b7a981d3bc3922edf2d809bfcefa40c639b3f5de",
+      "bytes": 34716000,
+      "triangles": 23146,
+      "exported_vertices": 30983,
+      "surfaces": 9,
+      "bones": 17,
+      "clips_seconds": {
+        "idle": 4.0,
+        "walk": 1.600000023841858,
+        "root": 3.0,
+        "turn": 3.0,
+        "jaw": 3.0,
+        "windup": 0.25,
+        "release": 0.2199999988079071
+      }
+    }
+  ],
+  "textures": [
+    {
+      "name": "base.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "bits_per_channel": 8,
+      "bytes": 9801216
+    },
+    {
+      "name": "orm.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "bits_per_channel": 8,
+      "bytes": 2599869
+    },
+    {
+      "name": "normal.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "bits_per_channel": 8,
+      "bytes": 7642254
+    },
+    {
+      "name": "scar-mask.png",
+      "size": [
+        2048,
+        2048
+      ],
+      "bits_per_channel": 16,
+      "bytes": 2407710
+    }
+  ],
+  "preserved_sha256": {
+    "build/trellis-local/output/wolf-1024-seed42-20260908-221914-245/wolf.glb": "584b615a050af649602c2b09aeffbb649f4727f4fc8095874ad7c073c70d5e1f",
+    "game/assets/authored/mobs/ash_hound.glb": "ec2cded39e9414591991be589608235d20884ff96c020e4bcbc33a6cdd0f0354",
+    "game/assets/authored/mobs/marsh_wisp.glb": "554ec16fe3c7154239682da327d717f694a7ff20c430d27cbaca0266a749e389",
+    "build/trellis-local/normalized-review/wolf-normalized.glb": "0245276461c8562f26a6053a58d8bc831a70ab8238498b22d1568e6e8ea9a9e0"
+  },
+  "limitations": "Stream validation is not watertightness, self-intersection certification, manual retopology or native-game integration."
+}

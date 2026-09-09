@@ -1,0 +1,30 @@
+{
+  "near_triangles": 105000,
+  "mid_triangles": 55000,
+  "far_triangles": 16000,
+  "normal_pixels": 2048,
+  "breath_metres": 0.004,
+  "stance_sink_metres": 0.065,
+  "step_metres": 0.14,
+  "hoof_lift_metres": 0.055,
+  "root_radians": 0.1,
+  "turn_radians": 0.24,
+  "windup_radians": 0.07,
+  "release_radians": 0.08,
+  "release_head_lift_radians": 0.08,
+  "purposes": {
+    "detail": "Measured body targets, separate from unchanged jaw/eye geometry. Inspect every level; raw triangle topology may stop collapse above target.",
+    "normal_pixels": "Retain fine source coat and plates in the original atlas.",
+    "breath_metres": "Subtle idle movement while paws stay planted.",
+    "stance_sink_metres": "Settle the imported asymmetric stance into reachable non-stretching paw targets.",
+    "step_metres": "Short in-place walking review; does not set game movement speed.",
+    "hoof_lift_metres": "Paw swing clearance with a flat planted sole.",
+    "root_radians": "A restrained sniff from the source already lowered muzzle.",
+    "turn_radians": "Bounded head turn to inspect jaw fan and shoulder clearance.",
+    "windup_radians": "Visual anticipation over the existing fast/hound 0.25-second windup.",
+    "release_radians": "Modest follow-through during the existing 0.22-second visual release.",
+    "release_head_lift_radians": "Preserve muzzle/floor clearance during the visual bite.",
+    "weight_smoothing_passes": "Diffuse abrupt spatial weight boundaries through connected skin while preserving the rigid skull/crown and planted sole anchors."
+  },
+  "weight_smoothing_passes": 18
+}

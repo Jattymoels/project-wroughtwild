@@ -1,0 +1,1241 @@
+{
+  "blender": "4.5.9 LTS",
+  "reopened": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\fauna-art03\\wolf-rig-v06\\wolf-candidate.blend",
+  "bone_count": 17,
+  "images": [],
+  "deformed_near_mesh_samples": [
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "idle",
+      "seconds": 0.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.032664514706745945,
+      "clip": "idle",
+      "seconds": 0.5,
+      "lowest_surface_metres": -9.359791874885559e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -9.266659617424011e-08,
+        "far": -9.12696123123169e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.961636245250702e-08,
+        "front_R": -9.359791874885559e-08,
+        "rear_L": -4.190951585769653e-09,
+        "rear_R": 6.275149644352496e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03218152041882005,
+      "clip": "idle",
+      "seconds": 1.0,
+      "lowest_surface_metres": -6.239861249923706e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.239861249923706e-08,
+        "far": -4.7031790018081665e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.239861249923706e-08,
+        "front_R": -4.936009645462036e-08,
+        "rear_L": 3.259629011154175e-08,
+        "rear_R": 1.9714207155629992e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.032664514706745945,
+      "clip": "idle",
+      "seconds": 1.5,
+      "lowest_surface_metres": -9.359791874885559e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -9.266659617424011e-08,
+        "far": -9.12696123123169e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.961636245250702e-08,
+        "front_R": -9.359791874885559e-08,
+        "rear_L": -4.190951585769653e-09,
+        "rear_R": 6.275149644352496e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "idle",
+      "seconds": 2.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03495185038085033,
+      "clip": "idle",
+      "seconds": 2.5,
+      "lowest_surface_metres": -7.520429790019989e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.520429790019989e-08,
+        "far": -6.193295121192932e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.520429790019989e-08,
+        "front_R": -6.426125764846802e-08,
+        "rear_L": 2.561137080192566e-08,
+        "rear_R": 9.421273716725409e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.035416741015530065,
+      "clip": "idle",
+      "seconds": 3.0,
+      "lowest_surface_metres": -1.0337680578231812e-07,
+      "lod_lowest_surface_metres": {
+        "mid": -1.0337680578231812e-07,
+        "far": -1.0291114449501038e-07
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.030313670635223e-08,
+        "front_R": -1.0337680578231812e-07,
+        "rear_L": 4.7264620661735535e-08,
+        "rear_R": 7.931157597340643e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03495185038085033,
+      "clip": "idle",
+      "seconds": 3.5,
+      "lowest_surface_metres": -7.520429790019989e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.520429790019989e-08,
+        "far": -6.193295121192932e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.520429790019989e-08,
+        "front_R": -6.426125764846802e-08,
+        "rear_L": 2.561137080192566e-08,
+        "rear_R": 9.421273716725409e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "idle",
+      "seconds": 4.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03621854098864008,
+      "clip": "walk",
+      "seconds": 0.0,
+      "lowest_surface_metres": -6.123445928096771e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.123445928096771e-08,
+        "far": -3.3527612686157227e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.123445928096771e-08,
+        "front_R": -3.306195139884949e-08,
+        "rear_L": 3.306195139884949e-08,
+        "rear_R": 5.695983418263495e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.040577073210470965,
+      "clip": "walk",
+      "seconds": 0.2,
+      "lowest_surface_metres": -6.05359673500061e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.05359673500061e-08,
+        "far": 7.455309969373047e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.05359673500061e-08,
+        "front_R": 0.010729916393756866,
+        "rear_L": 0.01073001604527235,
+        "rear_R": 7.432754500769079e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.05314415013720815,
+      "clip": "walk",
+      "seconds": 0.4,
+      "lowest_surface_metres": -6.146728992462158e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.123445928096771e-08,
+        "far": 6.108894012868404e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.146728992462158e-08,
+        "front_R": 0.05081328749656677,
+        "rear_L": 0.05081338807940483,
+        "rear_R": 6.108894012868404e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.04802818571168489,
+      "clip": "walk",
+      "seconds": 0.6,
+      "lowest_surface_metres": -3.934837877750397e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -3.91155481338501e-08,
+        "far": 4.9069058150053024e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -3.934837877750397e-08,
+        "front_R": 0.04573076218366623,
+        "rear_L": 0.04573085531592369,
+        "rear_R": 4.951289156451821e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.026345437755947082,
+      "clip": "walk",
+      "seconds": 0.8,
+      "lowest_surface_metres": -6.705522537231445e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.658956408500671e-08,
+        "far": -6.658956408500671e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.727633833885193e-08,
+        "front_R": -6.705522537231445e-08,
+        "rear_L": 4.0046870708465576e-08,
+        "rear_R": 6.441041477955878e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.029927104468915135,
+      "clip": "walk",
+      "seconds": 1.0,
+      "lowest_surface_metres": -6.612390279769897e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.612390279769897e-08,
+        "far": -6.565824151039124e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": 0.010729908011853695,
+        "front_R": -6.612390279769897e-08,
+        "rear_L": 3.259629011154175e-08,
+        "rear_R": 0.010730013251304626
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.0428889855236147,
+      "clip": "walk",
+      "seconds": 1.2,
+      "lowest_surface_metres": -6.845220923423767e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.845220923423767e-08,
+        "far": -6.845220923423767e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": 0.05081329122185707,
+        "front_R": -6.845220923423767e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 0.050813447684049606
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.046184594720707725,
+      "clip": "walk",
+      "seconds": 1.4,
+      "lowest_surface_metres": -8.66129994392395e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -8.568167686462402e-08,
+        "far": -8.42846930027008e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": 0.04573077708482742,
+        "front_R": -8.66129994392395e-08,
+        "rear_L": 3.9814040064811707e-08,
+        "rear_R": 0.04573087394237518
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03621854098864008,
+      "clip": "walk",
+      "seconds": 1.6,
+      "lowest_surface_metres": -6.123445928096771e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.123445928096771e-08,
+        "far": -3.3527612686157227e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.123445928096771e-08,
+        "front_R": -3.306195139884949e-08,
+        "rear_L": 3.306195139884949e-08,
+        "rear_R": 5.695983418263495e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 0.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 0.375,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 0.75,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 1.125,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 1.5,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 1.875,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 2.25,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 2.625,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "root",
+      "seconds": 3.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "turn",
+      "seconds": 0.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "turn",
+      "seconds": 0.375,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03981755383080961,
+      "clip": "turn",
+      "seconds": 0.75,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "turn",
+      "seconds": 1.125,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "turn",
+      "seconds": 1.5,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "turn",
+      "seconds": 1.875,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "turn",
+      "seconds": 2.25,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "turn",
+      "seconds": 2.625,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "turn",
+      "seconds": 3.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 0.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 0.375,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 0.75,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 1.125,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 1.5,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 1.875,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 2.25,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 2.625,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "jaw",
+      "seconds": 3.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "windup",
+      "seconds": 0.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03348308437793318,
+      "clip": "windup",
+      "seconds": 0.03125,
+      "lowest_surface_metres": -2.2444874048233032e-07,
+      "lod_lowest_surface_metres": {
+        "mid": -2.2444874048233032e-07,
+        "far": -2.2444874048233032e-07
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -1.4039687812328339e-07,
+        "front_R": -2.2444874048233032e-07,
+        "rear_L": 2.1047890186309814e-07,
+        "rear_R": 3.326313162688166e-07
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03314790149632589,
+      "clip": "windup",
+      "seconds": 0.0625,
+      "lowest_surface_metres": -6.845220923423767e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -6.845220923423767e-08,
+        "far": -6.845220923423767e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": 2.9569491744041443e-08,
+        "front_R": -6.845220923423767e-08,
+        "rear_L": -6.402842700481415e-08,
+        "rear_R": 2.6349880499765277e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03281103131549852,
+      "clip": "windup",
+      "seconds": 0.09375,
+      "lowest_surface_metres": -2.738088369369507e-07,
+      "lod_lowest_surface_metres": {
+        "mid": -2.742744982242584e-07,
+        "far": -2.7474015951156616e-07
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -1.8649734556674957e-07,
+        "front_R": -2.738088369369507e-07,
+        "rear_L": 1.7695128917694092e-08,
+        "rear_R": 8.842107490636408e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03247263549132198,
+      "clip": "windup",
+      "seconds": 0.125,
+      "lowest_surface_metres": -2.4260953068733215e-07,
+      "lod_lowest_surface_metres": {
+        "mid": -2.416782081127167e-07,
+        "far": -2.4028122425079346e-07
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -1.5762634575366974e-07,
+        "front_R": -2.4260953068733215e-07,
+        "rear_L": -3.5390257835388184e-08,
+        "rear_R": -1.669104676693678e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.032132823217012996,
+      "clip": "windup",
+      "seconds": 0.15625,
+      "lowest_surface_metres": -1.6763806343078613e-07,
+      "lod_lowest_surface_metres": {
+        "mid": -1.6810372471809387e-07,
+        "far": -1.685693860054016e-07
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.076879799365997e-08,
+        "front_R": -1.6763806343078613e-07,
+        "rear_L": -3.655441105365753e-08,
+        "rear_R": 2.4687324184924364e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.0317914052085473,
+      "clip": "windup",
+      "seconds": 0.1875,
+      "lowest_surface_metres": -2.039596438407898e-07,
+      "lod_lowest_surface_metres": {
+        "mid": -2.039596438407898e-07,
+        "far": -1.3364478945732117e-07
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -2.039596438407898e-07,
+        "front_R": -1.327134668827057e-07,
+        "rear_L": 3.189779818058014e-08,
+        "rear_R": 1.3720637070946395e-07
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03144866404965686,
+      "clip": "windup",
+      "seconds": 0.21875,
+      "lowest_surface_metres": -2.5331974029541016e-07,
+      "lod_lowest_surface_metres": {
+        "mid": -2.5331974029541016e-07,
+        "far": -2.5331974029541016e-07
+      },
+      "hoof_sole_y_metres": {
+        "front_L": 2.1886080503463745e-08,
+        "front_R": -2.5331974029541016e-07,
+        "rear_L": 6.216578185558319e-08,
+        "rear_R": 1.1907832231372595e-07
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.031103911244282276,
+      "clip": "windup",
+      "seconds": 0.25,
+      "lowest_surface_metres": -0.0007096081972122192,
+      "lod_lowest_surface_metres": {
+        "mid": -0.0007494986057281494,
+        "far": -4.1443854570388794e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -6.82193785905838e-08,
+        "front_R": -4.0978193283081055e-08,
+        "rear_L": 4.7963112592697144e-08,
+        "rear_R": 7.518247002735734e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "release",
+      "seconds": 0.0,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03802355456579162,
+      "clip": "release",
+      "seconds": 0.01,
+      "lowest_surface_metres": -7.636845111846924e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.613562047481537e-08,
+        "far": -3.771856427192688e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.636845111846924e-08,
+        "front_R": -3.771856427192688e-08,
+        "rear_L": 3.259629011154175e-08,
+        "rear_R": 5.8626028476282954e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.041978752633660146,
+      "clip": "release",
+      "seconds": 0.02,
+      "lowest_surface_metres": -4.586763679981232e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -4.586763679981232e-08,
+        "far": -3.958120942115784e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -4.586763679981232e-08,
+        "front_R": -4.190951585769653e-08,
+        "rear_L": 3.259629011154175e-08,
+        "rear_R": 2.3035681806504726e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.045635653450200125,
+      "clip": "release",
+      "seconds": 0.03,
+      "lowest_surface_metres": -5.587935447692871e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -5.587935447692871e-08,
+        "far": -5.634501576423645e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.4016709327697754e-08,
+        "front_R": -5.587935447692871e-08,
+        "rear_L": 3.306195139884949e-08,
+        "rear_R": 4.37248672824353e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.048953027471982186,
+      "clip": "release",
+      "seconds": 0.04,
+      "lowest_surface_metres": -8.335337042808533e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -8.335337042808533e-08,
+        "far": -8.335337042808533e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -3.91155481338501e-08,
+        "front_R": -8.335337042808533e-08,
+        "rear_L": 1.862645149230957e-08,
+        "rear_R": 6.275149644352496e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.05189548158065993,
+      "clip": "release",
+      "seconds": 0.05,
+      "lowest_surface_metres": -4.6566128730773926e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -4.6566128730773926e-08,
+        "far": -4.6566128730773926e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -3.818422555923462e-08,
+        "front_R": -4.6566128730773926e-08,
+        "rear_L": 1.6763806343078613e-08,
+        "rear_R": 5.449692253023386e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.05443299859420188,
+      "clip": "release",
+      "seconds": 0.06,
+      "lowest_surface_metres": -7.404014468193054e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.404014468193054e-08,
+        "far": -7.35744833946228e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.078051567077637e-08,
+        "front_R": -7.404014468193054e-08,
+        "rear_L": 5.494803190231323e-08,
+        "rear_R": 6.028858479112387e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.05654112861395405,
+      "clip": "release",
+      "seconds": 0.07,
+      "lowest_surface_metres": -8.847564458847046e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -8.847564458847046e-08,
+        "far": -8.800998330116272e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.497146725654602e-08,
+        "front_R": -8.847564458847046e-08,
+        "rear_L": 2.584420144557953e-08,
+        "rear_R": 8.097413228824735e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.058200214410592824,
+      "clip": "release",
+      "seconds": 0.08,
+      "lowest_surface_metres": -7.473863661289215e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.473863661289215e-08,
+        "far": -6.007030606269836e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.473863661289215e-08,
+        "front_R": -6.332993507385254e-08,
+        "rear_L": 3.236345946788788e-08,
+        "rear_R": 2.8827344067394733e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.059602012540395655,
+      "clip": "release",
+      "seconds": 0.09,
+      "lowest_surface_metres": -5.4249539971351624e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -5.4016709327697754e-08,
+        "far": -5.2619725465774536e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.4249539971351624e-08,
+        "front_R": -5.2619725465774536e-08,
+        "rear_L": 2.444721758365631e-08,
+        "rear_R": 5.283436621539295e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.061112751208851485,
+      "clip": "release",
+      "seconds": 0.1,
+      "lowest_surface_metres": -4.936009645462036e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -4.842877388000488e-08,
+        "far": -4.7031790018081665e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -4.6566128730773926e-08,
+        "front_R": -4.936009645462036e-08,
+        "rear_L": 2.584420144557953e-08,
+        "rear_R": 6.441769073717296e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.061619324277322224,
+      "clip": "release",
+      "seconds": 0.11,
+      "lowest_surface_metres": -8.265487849712372e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -8.265487849712372e-08,
+        "far": -4.330649971961975e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -8.265487849712372e-08,
+        "front_R": -4.377216100692749e-08,
+        "rear_L": 3.259629011154175e-08,
+        "rear_R": 6.441041477955878e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.061112751208851485,
+      "clip": "release",
+      "seconds": 0.12,
+      "lowest_surface_metres": -4.936009645462036e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -4.842877388000488e-08,
+        "far": -4.7031790018081665e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -4.6566128730773926e-08,
+        "front_R": -4.936009645462036e-08,
+        "rear_L": 2.584420144557953e-08,
+        "rear_R": 6.441769073717296e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.059602012540395655,
+      "clip": "release",
+      "seconds": 0.13,
+      "lowest_surface_metres": -5.4249539971351624e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -5.4016709327697754e-08,
+        "far": -5.2619725465774536e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.4249539971351624e-08,
+        "front_R": -5.2619725465774536e-08,
+        "rear_L": 2.444721758365631e-08,
+        "rear_R": 5.283436621539295e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.058200214410592824,
+      "clip": "release",
+      "seconds": 0.14,
+      "lowest_surface_metres": -7.473863661289215e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.473863661289215e-08,
+        "far": -6.007030606269836e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.473863661289215e-08,
+        "front_R": -6.332993507385254e-08,
+        "rear_L": 3.236345946788788e-08,
+        "rear_R": 2.8827344067394733e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.05654112861395405,
+      "clip": "release",
+      "seconds": 0.15,
+      "lowest_surface_metres": -8.847564458847046e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -8.847564458847046e-08,
+        "far": -8.800998330116272e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.497146725654602e-08,
+        "front_R": -8.847564458847046e-08,
+        "rear_L": 2.584420144557953e-08,
+        "rear_R": 8.097413228824735e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.05443299859420188,
+      "clip": "release",
+      "seconds": 0.16,
+      "lowest_surface_metres": -7.404014468193054e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.404014468193054e-08,
+        "far": -7.35744833946228e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.078051567077637e-08,
+        "front_R": -7.404014468193054e-08,
+        "rear_L": 5.494803190231323e-08,
+        "rear_R": 6.028858479112387e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.05189548158065993,
+      "clip": "release",
+      "seconds": 0.17,
+      "lowest_surface_metres": -4.6566128730773926e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -4.6566128730773926e-08,
+        "far": -4.6566128730773926e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -3.818422555923462e-08,
+        "front_R": -4.6566128730773926e-08,
+        "rear_L": 1.6763806343078613e-08,
+        "rear_R": 5.449692253023386e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.048953027471982186,
+      "clip": "release",
+      "seconds": 0.18,
+      "lowest_surface_metres": -8.335337042808533e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -8.335337042808533e-08,
+        "far": -8.335337042808533e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -3.91155481338501e-08,
+        "front_R": -8.335337042808533e-08,
+        "rear_L": 1.862645149230957e-08,
+        "rear_R": 6.275149644352496e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.045635653450200125,
+      "clip": "release",
+      "seconds": 0.19,
+      "lowest_surface_metres": -5.587935447692871e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -5.587935447692871e-08,
+        "far": -5.634501576423645e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.4016709327697754e-08,
+        "front_R": -5.587935447692871e-08,
+        "rear_L": 3.306195139884949e-08,
+        "rear_R": 4.37248672824353e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.041978752633660146,
+      "clip": "release",
+      "seconds": 0.2,
+      "lowest_surface_metres": -4.586763679981232e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -4.586763679981232e-08,
+        "far": -3.958120942115784e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -4.586763679981232e-08,
+        "front_R": -4.190951585769653e-08,
+        "rear_L": 3.259629011154175e-08,
+        "rear_R": 2.3035681806504726e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03802355456579162,
+      "clip": "release",
+      "seconds": 0.21,
+      "lowest_surface_metres": -7.636845111846924e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.613562047481537e-08,
+        "far": -3.771856427192688e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -7.636845111846924e-08,
+        "front_R": -3.771856427192688e-08,
+        "rear_L": 3.259629011154175e-08,
+        "rear_R": 5.8626028476282954e-08
+      }
+    },
+    {
+      "max_edge_extension_metres": 0.03381725183279552,
+      "clip": "release",
+      "seconds": 0.22,
+      "lowest_surface_metres": -7.450580596923828e-08,
+      "lod_lowest_surface_metres": {
+        "mid": -7.450580596923828e-08,
+        "far": -7.450580596923828e-08
+      },
+      "hoof_sole_y_metres": {
+        "front_L": -5.494803190231323e-08,
+        "front_R": -7.450580596923828e-08,
+        "rear_L": 3.282912075519562e-08,
+        "rear_R": 3.627064870670438e-08
+      }
+    }
+  ],
+  "limitations": "Sole checks cover the fitted near mesh on a flat study floor. They are not terrain IK, actual travel, collision or native combat tests."
+}

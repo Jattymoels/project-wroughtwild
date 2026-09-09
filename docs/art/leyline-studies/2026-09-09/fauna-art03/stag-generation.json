@@ -1,0 +1,32 @@
+{
+  "input_sha256": "c1a574788ddd6277740652c6fcbb5ca217c01a55853978d083b311473ad21842",
+  "arguments": [
+    "--image",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\fauna-art03\\stag-input-v01.png",
+    "--output",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\fauna-art03\\stag-source-v01\\stag.glb",
+    "--models",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+    "--gpu",
+    "0",
+    "--require-gpu",
+    "--res",
+    "1024",
+    "--seed",
+    "42",
+    "--bg-removal",
+    "birefnet",
+    "--dump-bg",
+    "--webp",
+    "off",
+    "--threads",
+    "8"
+  ],
+  "runtime": "pwilkin/trellis.cpp",
+  "version": "v0.6.0",
+  "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+  "started_utc": "2026-09-09T01:07:01.7902909Z",
+  "exit_code": 0,
+  "seconds": 102.12974,
+  "glb_sha256": "a35be4faca9dfc278834cf353bf56d9891c77af0b323bb4ab32e2b988e04940b"
+}

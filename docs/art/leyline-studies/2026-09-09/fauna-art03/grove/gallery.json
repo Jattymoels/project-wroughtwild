@@ -1,0 +1,163 @@
+{
+	"placements": [
+		{
+			"animal": "wolf",
+			"maximum_sole_gap_m": 0.00100803375244141,
+			"position": "(3.65, 0.679072, 2.4)",
+			"yaw_degrees": -30.0
+		},
+		{
+			"animal": "stag",
+			"maximum_sole_gap_m": 0.00679397583007813,
+			"position": "(4.25, 0.675182, 2.4)",
+			"yaw_degrees": -30.0
+		}
+	],
+	"scope": "One animal at a time in a copy of ART-02. Moth GLB and materials unchanged. Flat-patch rest-pose support only; not terrain IK, native AI, world population or combat.",
+	"views": [
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "day",
+			"name": "boar-day",
+			"rotation": "(-0.141726, -2.669977, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "shade",
+			"name": "boar-shade",
+			"rotation": "(-0.141726, -2.669977, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "dusk",
+			"name": "boar-dusk",
+			"rotation": "(-0.141726, -2.669977, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "day",
+			"name": "wolf-day",
+			"rotation": "(-0.156073, -2.334615, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "shade",
+			"name": "wolf-shade",
+			"rotation": "(-0.156073, -2.334615, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "dusk",
+			"name": "wolf-dusk",
+			"rotation": "(-0.156073, -2.334615, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "day",
+			"name": "stag-day",
+			"rotation": "(-0.027461, -2.257182, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "shade",
+			"name": "stag-shade",
+			"rotation": "(-0.027461, -2.257182, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "dusk",
+			"name": "stag-dusk",
+			"rotation": "(-0.027461, -2.257182, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "day",
+			"name": "moth-day",
+			"rotation": "(-0.141793, -2.669977, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "shade",
+			"name": "moth-shade",
+			"rotation": "(-0.141793, -2.669977, 0.0)",
+			"scars": true
+		},
+		{
+			"camera": [
+				0.100000001490116,
+				2.17254781723022,
+				-1.0
+			],
+			"clock": 1.6,
+			"lighting": "dusk",
+			"name": "moth-dusk",
+			"rotation": "(-0.141793, -2.669977, 0.0)",
+			"scars": true
+		}
+	]
+}

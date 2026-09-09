@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-02 visual approval and Wave 2 review). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-03 technical handoff and Wave 2 review). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -22,16 +22,20 @@ Ordinary game adoption remains separate. Sequence:
 ART-04 sources and workshop → ART-05 one actual world route.** ART-02 is now
 technically delivered: six environment roles, a 38.3 m supported walk, actual
 day/shade/dusk evidence and a packed local handoff. The owner subsequently
-visually approved the grove: “Awesome, approved, what's next”. ART-03 is next
-proposed, starting with the existing wolf before the stag; ART-04–05 remain
+visually approved the grove: “Awesome, approved, what's next”. The subsequent
+“Let's do it” selected [ART-03](fauna-art-2026-09-09.md), now technically delivered:
+refined local wolf, one stag, attached pulsing scars, fitted movement/detail
+levels and a preserved-moth comparison. Actual engine evidence and limitations
+are linked from that work item; owner visual review is pending. ART-04–05 remain
 proposed. No ordinary-world adoption has occurred.
 
 The [local TRELLIS wolf experiment](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
 completed generation and 32 Blender handoff checks after the earlier Meshy review.
 The original overnight boar remains intact; its new ART-01 working copy has a
 fitted rig and authored scars. The original generated files remain dense unrigged
-sources. The [wolf/woodland study](leyline-art-studies-2026-09-08.md) still needs
-visual finishing and runtime proof. Preserve the liked moth, ordinary animal
+sources. ART-03 supplies the subsequent wolf finishing and isolated runtime proof;
+the older [wolf/woodland study](leyline-art-studies-2026-09-08.md) remains source
+history, not evidence of normal-world adoption. Preserve the liked moth, ordinary animal
 ancestry and current game assets while establishing that standard.
 
 Related owner direction: [meteorite influences](meteorite-influences-2026-09-08.md)

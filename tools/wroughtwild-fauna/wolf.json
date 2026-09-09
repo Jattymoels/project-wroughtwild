@@ -1,0 +1,201 @@
+{
+  "name": "Rimejaw",
+  "source": "build/trellis-local/output/wolf-1024-seed42-20260908-221914-245/wolf.glb",
+  "source_sha256": "584b615a050af649602c2b09aeffbb649f4727f4fc8095874ad7c073c70d5e1f",
+  "normalized_source": "build/trellis-local/normalized-review/wolf-normalized.glb",
+  "height_metres": 1.05,
+  "near_triangles": 105000,
+  "mid_triangles": 55000,
+  "far_triangles": 16000,
+  "normal_pixels": 2048,
+  "jaw_hinge": [
+    -0.035,
+    0.505,
+    0.49
+  ],
+  "jaw_open_radians": 0.32,
+  "eye_targets": [
+    {
+      "position": [
+        -0.1376804,
+        0.6720934,
+        0.548018
+      ],
+      "normal": [
+        -0.523822,
+        0.827488,
+        -0.202171
+      ]
+    },
+    {
+      "position": [
+        -0.0081904,
+        0.716042,
+        0.54981
+      ],
+      "normal": [
+        -0.158592,
+        0.98649,
+        0.041061
+      ]
+    }
+  ],
+  "scar": {
+    "half_width_metres": 0.018,
+    "core_half_width_metres": 0.005,
+    "recess_metres": 0.005,
+    "projection_step_metres": 0.012,
+    "mask_size": 2048,
+    "peak_emission": 2.8,
+    "minimum_light": 0.22,
+    "period_seconds": 4.0,
+    "crest_width": 0.2,
+    "colour": [
+      0.19,
+      0.56,
+      0.75
+    ],
+    "paths": [
+      {
+        "name": "left_shoulder",
+        "side": -1,
+        "width": 1,
+        "offset": 0,
+        "points": [
+          [
+            0.16,
+            0.98
+          ],
+          [
+            0.21,
+            0.91
+          ],
+          [
+            0.18,
+            0.85
+          ],
+          [
+            0.23,
+            0.78
+          ],
+          [
+            0.2,
+            0.73
+          ],
+          [
+            0.26,
+            0.67
+          ],
+          [
+            0.24,
+            0.6
+          ]
+        ]
+      },
+      {
+        "name": "left_flank",
+        "side": -1,
+        "width": 0.7,
+        "offset": 0.25,
+        "points": [
+          [
+            0.23,
+            0.78
+          ],
+          [
+            0.08,
+            0.75
+          ],
+          [
+            0.03,
+            0.68
+          ],
+          [
+            -0.08,
+            0.67
+          ],
+          [
+            -0.13,
+            0.6
+          ]
+        ]
+      },
+      {
+        "name": "right_shoulder",
+        "side": 1,
+        "width": 0.95,
+        "offset": 0.1,
+        "points": [
+          [
+            0.14,
+            0.97
+          ],
+          [
+            0.21,
+            0.91
+          ],
+          [
+            0.18,
+            0.85
+          ],
+          [
+            0.25,
+            0.8
+          ],
+          [
+            0.22,
+            0.73
+          ],
+          [
+            0.28,
+            0.66
+          ],
+          [
+            0.26,
+            0.62
+          ]
+        ]
+      },
+      {
+        "name": "right_flank",
+        "side": 1,
+        "width": 0.6,
+        "offset": 0.3,
+        "points": [
+          [
+            0.22,
+            0.73
+          ],
+          [
+            0.08,
+            0.76
+          ],
+          [
+            0.02,
+            0.7
+          ],
+          [
+            -0.07,
+            0.72
+          ],
+          [
+            -0.16,
+            0.65
+          ]
+        ]
+      }
+    ]
+  },
+  "purposes": {
+    "height_metres": "Preserved normalized comparison height; not a replacement gameplay body.",
+    "near_triangles": "First inspected detail target retaining coat and cheek fans; actual count is reported.",
+    "mid_triangles": "Encounter-distance candidate, with the same articulated jaw and eyes.",
+    "far_triangles": "Distant target; source topology may limit collapse, so report measured count honestly.",
+    "normal_pixels": "Dense-source coat and plate relief baked into the original atlas.",
+    "jaw_hinge": "Inspected joint behind the muzzle, in normalized Blender metres.",
+    "jaw_open_radians": "Bounded opening for jaw and bite review, retaining the native attack windows.",
+    "eye_targets": "Actual surface positions/normals recovered from the inspected source face render; the head is asymmetric, so side rays are unsuitable.",
+    "scar": "Dark 18 mm half-width injury with a narrow 5 mm core and at most 5 mm incision; UV masks stay attached during motion. Four-second ambient pulse carries the wolf's existing silver-blue art, not new influence or damage rules. Paths follow actual surface rays; branch offsets and widths keep light sparse."
+  },
+  "normalized_source_sha256": "0245276461c8562f26a6053a58d8bc831a70ab8238498b22d1568e6e8ea9a9e0"
+}

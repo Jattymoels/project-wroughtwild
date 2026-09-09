@@ -1,0 +1,36 @@
+{
+  "source": "build\\fauna-art03\\stag-review-v04\\evidence",
+  "clips": [
+    {
+      "name": "day",
+      "source_frames": 192,
+      "fps": 24,
+      "duration_seconds": 8.0,
+      "webp_size": [
+        800,
+        600
+      ]
+    },
+    {
+      "name": "shade",
+      "source_frames": 192,
+      "fps": 24,
+      "duration_seconds": 8.0,
+      "webp_size": [
+        800,
+        600
+      ]
+    },
+    {
+      "name": "graze",
+      "source_frames": 144,
+      "fps": 12,
+      "duration_seconds": 12.0,
+      "webp_size": [
+        800,
+        600
+      ]
+    }
+  ],
+  "note": "Deterministically sampled Godot frames, resized and encoded only. GIF preview is 12 fps; full WebP retains the captured rate. This is not a measured game frame rate."
+}

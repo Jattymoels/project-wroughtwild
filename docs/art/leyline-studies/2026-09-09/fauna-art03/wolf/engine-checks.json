@@ -1,0 +1,64 @@
+{
+	"bloom": false,
+	"engine": {
+		"build": "official",
+		"hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+		"hex": 263424,
+		"major": 4,
+		"minor": 5,
+		"patch": 0,
+		"status": "stable",
+		"string": "4.5-stable (official)",
+		"timestamp": 0
+	},
+	"game_loaded": false,
+	"pause_resume": true,
+	"shared_material_independent_phase": true,
+	"variants": [
+		{
+			"aabb": "[P: (-0.307728, 0.000049, -0.809531), S: (0.617703, 1.04976, 1.619251)]",
+			"bones": 17,
+			"clips_checked": [
+				"idle",
+				"walk",
+				"root",
+				"turn",
+				"jaw",
+				"windup",
+				"release"
+			],
+			"lod": "near",
+			"skin_vertices": 111143
+		},
+		{
+			"aabb": "[P: (-0.307728, 0.000049, -0.80945), S: (0.617539, 1.049389, 1.619449)]",
+			"bones": 17,
+			"clips_checked": [
+				"idle",
+				"walk",
+				"root",
+				"turn",
+				"jaw",
+				"windup",
+				"release"
+			],
+			"lod": "mid",
+			"skin_vertices": 66616
+		},
+		{
+			"aabb": "[P: (-0.309691, 0.000049, -0.812969), S: (0.622274, 1.05042, 1.625002)]",
+			"bones": 17,
+			"clips_checked": [
+				"idle",
+				"walk",
+				"root",
+				"turn",
+				"jaw",
+				"windup",
+				"release"
+			],
+			"lod": "far",
+			"skin_vertices": 25259
+		}
+	]
+}

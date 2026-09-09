@@ -1,0 +1,28 @@
+{
+  "near_triangles": 125000,
+  "mid_triangles": 65000,
+  "far_triangles": 24000,
+  "normal_pixels": 2048,
+  "breath_metres": 0.008,
+  "stance_sink_metres": 0.06,
+  "step_metres": 0.24,
+  "hoof_lift_metres": 0.09,
+  "graze_neck_radians": -1.45,
+  "graze_head_counter_radians": 0.6,
+  "turn_neck_radians": 0.1,
+  "turn_head_radians": 0.28,
+  "purposes": {
+    "detail": "Measured near/mid/far body and open-antler targets; retain rigid crown shape at every level.",
+    "normal_pixels": "Bake dense coat, ceramic and shallow fracture detail into the source atlas.",
+    "breath_metres": "Slow ordinary breathing with planted hooves.",
+    "stance_sink_metres": "Settle the asymmetrical source stance into reachable targets without stretching leg bones.",
+    "step_metres": "In-place stride review, not native movement speed.",
+    "hoof_lift_metres": "Visible swing clearance while the stance hoof remains flat.",
+    "graze_neck_radians": "Lower the muzzle to low understory (about half a metre) while the generated neck plates keep their shape; this is browsing, not a grass-level neck fold.",
+    "graze_head_counter_radians": "Head counterrotation lets the muzzle lower while the rigid crown clears the floor.",
+    "turn_neck_radians": "Small neck contribution to a look-around pose.",
+    "turn_head_radians": "Separate skull turn for antler/neck clearance review.",
+    "weight_smoothing_passes": "Diffuse abrupt spatial weight boundaries through connected skin while preserving the rigid skull/crown and planted sole anchors."
+  },
+  "weight_smoothing_passes": 80
+}
