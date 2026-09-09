@@ -1,5 +1,19 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+**Owner continuation, 9 September 2026:** prioritise the remaining mobs over
+the proposed route-polish pass. The owner approved six animal directions,
+replacing the rejected armadillo with a bighorn ram, then requested stronger
+grotesque structural alteration **now** and **extra augments per era**. The
+[remaining mob work](../prototype/remaining-mob-art-2026-09-09.md) and
+[versioned concepts](concepts/creatures/2026-09-09-roster/README.md) retain the
+same high-quality concept/local-TRELLIS/Blender pipeline. Preserve ordinary
+animal recognition while mutation deforms host structure: swollen quill roots,
+uneven horn growth, throat resonators and displaced inner shell layers. Each
+later era adds physical change; colour/size alone is insufficient. The existing
+three-era campaign, bodies, combat and saved geography remain authoritative.
+The liked moth/boar/wolf/stag remain; the Conservator stays human. Raw sources
+are not automatic adoption or proof of animated scars and anatomy quality.
+
 **Owner continuation, 9 September 2026:** the local TRELLIS boar is liked as a
 starting asset. Plan a coherent asset set with much clearer **pulsing cracks of
 magic scarred through the hosts**. The [asset roadmap](../prototype/leyline-asset-roadmap-2026-09-09.md)

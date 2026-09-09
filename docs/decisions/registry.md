@@ -1,5 +1,19 @@
 # Decision Registry
 
+Owner art continuation, 9 September 2026: defer proposed ART-05B route polish
+and design/generate the other existing mobs through the approved local pipeline.
+The owner selects augmented animals for the remaining humanoid-looking regular
+enemies and approves porcupine, revised ram, crane, beetle, dragonfly nymph and
+tortoise directions; the armadillo was rejected as too close to the boar.
+Under D-013/D-030, push these starting forms further structurally now and add
+**extra augmentations per era**, retaining the existing three-era campaign.
+The Conservator remains the established human. The
+[bounded art work](../prototype/remaining-mob-art-2026-09-09.md) separates concept,
+source geometry, finishing and adoption; D-010/D-012 bodies, attacks and tells,
+published loot/stock/geography and native campaign remain authoritative.
+No raw generation is automatically accepted game art, and no new body, attack,
+spawn rule, era or world profile is selected by the visual direction.
+
 Owner implementation authorization, 9 September 2026: implement **Living
 Frontier Wave 7 only**, LF-7A then LF-7B, following the independent Wave 6
 clearance, and stop for orchestrator review. The [bounded configuration contract](../prototype/living-frontier-wave7-2026-09-09.md)

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "package": "build/roster-art06/roster-source-handoff",
+  "manifest_files_verified": 173,
+  "manifest_file_bytes": 745607757,
+  "fresh_package_static_checks": 102,
+  "renderer": "gl_compatibility",
+  "changed_by_fresh_import_check": [
+    "review/checks.json"
+  ],
+  "manifest_refresh": "Updated renderer diagnostic checks.json and final work-item copy; all other listed files preserved.",
+  "raw_source_hashes_verified": 6,
+  "concept_and_prompt_hash_pairs_verified": 15,
+  "blender_reopen_checks": 42,
+  "known_engine_startup_diagnostic": [
+    "ERROR: Failed to read the root certificate store."
+  ],
+  "generated_cache_excluded": true,
+  "scope": "Local static source handoff; requires installed Godot. No rigs, pulse, game integration or performance certification."
+}

@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-05 playable route pilot delivered). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (remaining mob source batch delivered; route polish deferred). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -8,7 +8,29 @@ queue; the [numbered waves](roadmap-waves.md) remain a historical record.
 Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
-## Current art priority — boar scars and a coherent habitat
+## Current art priority — remaining animal mobs, then era augmentation
+
+The owner deferred the proposed ART-05B environment polish and selected
+[ART-06 remaining mob design/generation](remaining-mob-art-2026-09-09.md).
+Reimagine the remaining humanoid-looking regular enemies as augmented animals;
+the dedicated Conservator stays human. Six directions are visually selected:
+porcupine Archer, ram Husk, crane Shrieker, beetle Crawler, dragonfly-nymph
+Lurker and tortoise Knight. The first armadillo Husk was rejected as too close
+to the boar. Preserve the liked boar/wolf/stag/moth and their prior handoffs.
+
+The owner selected stronger structural corruption **now**, plus **extra
+augmentations per era**. The revised starting concepts and local source
+candidates precede anatomy/rig/scar finishing, then native integration.
+Keep generated-source success distinct from animation or game readiness.
+The six stronger sources and isolated comparison viewer are delivered with
+Blender reopening and both Godot renderer checks. The eight-legged nymph
+candidate was rejected and regenerated with six legs. Final mesh review,
+finishing and native adoption remain open; ART-06 as a whole is not complete.
+Existing three-era campaign, roles, bodies, drops and saved geography remain.
+Boss design/finishing and LF host presentation variants remain in the roster
+backlog; the deferred route ground/scenery/distance-cost polish is retained.
+
+## Previous art sequence — shared scars and the first route
 
 Owner planning request, 9 September: the local TRELLIS boar is liked; emphasise
 pulsing magic cracks and build assets that share the world's lore. The

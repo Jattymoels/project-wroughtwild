@@ -1,0 +1,18 @@
+{
+  "stage": "Stronger base-form source candidates; anatomy finishing, rigs, scar animation and native adoption remain separate.",
+  "baseline_commit": "4f0886b84ebe3386c0ace10d9055d230f5fe4059",
+  "review_longest_dimension": 2.0,
+  "review_ortho_size": 2.75,
+  "purpose": {
+    "review_longest_dimension": "Uniform studio comparison size only; does not select game scale or collision.",
+    "review_ortho_size": "Keep the full source silhouette inside the square inspection viewport."
+  },
+  "assets": [
+    {"id":"cinder_archer", "animal":"Porcupine", "version":"v02", "previous":"v01", "role":"mark / fire projectile", "review_focus":"Four feet; quill-root continuity; whiskers and face; no bow or extra shot."},
+    {"id":"stone_husk", "animal":"Bighorn ram", "version":"v03", "previous":"v02", "role":"frontal guard", "review_focus":"Four cloven hooves; separate open horn curls; asymmetric neck/horn growth; no new charge."},
+    {"id":"shrieker", "animal":"Crane", "version":"v02", "previous":"v01", "role":"recruiting call", "review_focus":"Two planted legs; beak and wing attachment; throat recess remains physically open; no flight."},
+    {"id":"gloom_crawler", "animal":"Ground beetle", "version":"v02", "previous":"v01", "role":"swarm", "review_focus":"Six separate legs; mandibles/antennae; displaced shell and inner lamellae."},
+    {"id":"bog_lurker", "animal":"Dragonfly nymph", "version":"v04", "previous":"v01", "role":"root", "review_focus":"Six separate legs; folded labium; layered ruptured abdomen; no new reach. Reject the eight-legged v02 source."},
+    {"id":"hollow_knight", "animal":"Tortoise", "version":"v02", "previous":"v01", "role":"ward", "review_focus":"Four supporting legs; neck clearance; shell cavities and supported irregular overgrowth."}
+  ]
+}

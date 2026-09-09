@@ -1,0 +1,6 @@
+{
+  "checks": 7,
+  "passed": true,
+  "source_sha256": "2f0dcaf6a2677050c5eb72507553aa466367be9b43ceccd3db79c9fc582d6fbc",
+  "scope": "Packed editable source reopening and unchanged mesh streams, not rig/animation acceptance."
+}

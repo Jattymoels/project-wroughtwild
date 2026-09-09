@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–03 and ART-04 Red/White/Blue visually approved; ART-04D Green technical handoff delivered, visual review pending; ART-05 proposed.** Owner request,
+**Status: ART-01–04 visually approved; ART-05 isolated route technically delivered; ART-06 remaining mobs selected.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -38,6 +38,15 @@ payment, packed source and both-renderer proof. Green visual review is the next
 gate; ART-05 remains separate. All four ART-04 families now have technical handoffs.
 
 ## Outcome and current evidence
+
+Latest owner priority, 9 September: defer the proposed ART-05B route polish and
+design/generate the other mobs through the same pipeline. The
+[ART-06 work item](remaining-mob-art-2026-09-09.md) records six approved animal
+directions, replacement of the rejected armadillo with a ram, stronger
+structural augmentation in the starting forms and additional augmentation per
+existing era. The Conservator remains human. New meshes are isolated candidates
+until their anatomy, scar/rig work and native adapters are verified; no route
+visual approval or ordinary-world adoption is inferred from this priority change.
 
 A player should recognise one cause across a place: a meteorite fractures rock,
 the current follows roots and alters an ordinary animal, and the player works

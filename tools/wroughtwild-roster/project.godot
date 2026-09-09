@@ -1,0 +1,14 @@
+config_version=5
+
+[application]
+config/name="Wroughtwild — ART-06 source inspection"
+run/main_scene="res://review.tscn"
+
+[display]
+window/size/viewport_width=1100
+window/size/viewport_height=900
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+environment/defaults/default_clear_color=Color(0.18,0.20,0.22,1)

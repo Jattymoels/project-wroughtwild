@@ -1,0 +1,180 @@
+{
+  "source": "gloom_crawler.glb",
+  "source_sha256": "bf29586cdd72f9553b5b832359b866a417f14852c1c4ff3cb3597dd0c629a0c4",
+  "blender": "4.5.9 LTS",
+  "generator": {
+    "version": "2.0",
+    "minVersion": "2.0",
+    "generator": "trellis.cpp v0.6.0",
+    "extras": {
+      "seed": 42,
+      "commit": "16f3109e82f3922033bfa62b83c42899678b7b6f",
+      "backend": "cuda",
+      "build": "2026-08-21T08:39:09Z",
+      "generated": "2026-09-09T09:02:36Z"
+    }
+  },
+  "stage": "Raw generated source inspection; no rig, animation or runtime acceptance.",
+  "raw_bounds": [
+    [
+      -0.5017222762107849,
+      -0.4788582921028137,
+      -0.23033422231674194
+    ],
+    [
+      0.5016467571258545,
+      0.47524720430374146,
+      0.23471471667289734
+    ]
+  ],
+  "review_uniform_scale": 1.9932844394650269,
+  "review_size_note": "Longest dimension = 2 inspection units; NOT game metres/body fit.",
+  "meshes": [
+    {
+      "name": "Mesh_0",
+      "vertices": 229326,
+      "triangles": 293396,
+      "uv_layers": 1,
+      "materials": 1,
+      "zero_area_triangles": 0,
+      "geometry_sha256": "12b1fc87b7704b6eaf5835dd32c45ab0042e22aba429375eb343e2f95e966e42"
+    }
+  ],
+  "views": [
+    {
+      "name": "material-az0",
+      "camera": [
+        5.0,
+        0.0,
+        1.7134873867034912
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.4634874165058136
+      ],
+      "ortho_scale": 2.6500000953674316,
+      "clay": false,
+      "floor": true
+    },
+    {
+      "name": "material-az90",
+      "camera": [
+        3.0616169991140216e-16,
+        5.0,
+        1.7134873867034912
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.4634874165058136
+      ],
+      "ortho_scale": 2.6500000953674316,
+      "clay": false,
+      "floor": true
+    },
+    {
+      "name": "material-az180",
+      "camera": [
+        -5.0,
+        6.123233998228043e-16,
+        1.7134873867034912
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.4634874165058136
+      ],
+      "ortho_scale": 2.6500000953674316,
+      "clay": false,
+      "floor": true
+    },
+    {
+      "name": "material-az270",
+      "camera": [
+        -9.184850467946473e-16,
+        -5.0,
+        1.7134873867034912
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.4634874165058136
+      ],
+      "ortho_scale": 2.6500000953674316,
+      "clay": false,
+      "floor": true
+    },
+    {
+      "name": "clay-three-quarter",
+      "camera": [
+        4.0,
+        -5.0,
+        2.463487386703491
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.4634874165058136
+      ],
+      "ortho_scale": 2.6500000953674316,
+      "clay": true,
+      "floor": true
+    },
+    {
+      "name": "clay-top",
+      "camera": [
+        0.0,
+        -0.009999999776482582,
+        6.46348762512207
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.4634874165058136
+      ],
+      "ortho_scale": 2.6500000953674316,
+      "clay": true,
+      "floor": false
+    },
+    {
+      "name": "clay-underside",
+      "camera": [
+        3.0,
+        -4.0,
+        -2.536512613296509
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.4634874165058136
+      ],
+      "ortho_scale": 2.6500000953674316,
+      "clay": true,
+      "floor": false
+    }
+  ],
+  "armatures": 0,
+  "animations": 0,
+  "skins": 0,
+  "emission_textures": 0,
+  "images": [
+    {
+      "name": "Image_0",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    },
+    {
+      "name": "Image_1",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true
+    }
+  ],
+  "source_unchanged": true
+}

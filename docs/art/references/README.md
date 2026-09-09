@@ -52,6 +52,7 @@ image dimensions, checksums and concept version status.
 
 ## Creature concepts and modelling handoff
 
+- [Remaining animal mobs: six approved ancestries, stronger revisions and era direction](../concepts/creatures/2026-09-09-roster/README.md)
 - [First four creatures: images, anatomy, materials and Blender notes](../concepts/creatures/2026-09-07/README.md)
 - [Exact generation prompts](../concepts/creatures/2026-09-07/prompts.md)
 - [Current art direction](../art-direction.md)

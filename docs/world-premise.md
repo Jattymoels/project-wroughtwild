@@ -23,6 +23,16 @@ Whelp, stag for Valley Elk, and moth for both Wisps. The
 [visual reference library](art/references/README.md) records this direction and
 the first modelling-oriented creature studies.
 
+**Owner creature continuation, 9 September 2026:** the remaining regular mobs
+also derive from ordinary animals: porcupine → Cinder Archer, bighorn ram →
+Stone Husk, crane → Shrieker, ground beetle → Gloom Crawler, dragonfly nymph →
+Bog Lurker and tortoise → Hollow Knight. Their starting forms should have
+stronger grotesque structural augmentation, with additional physical augments
+per existing era. The Conservator remains the established human antagonist.
+[ART-06](prototype/remaining-mob-art-2026-09-09.md) separates the approved
+ancestry/direction from candidate meshes, later era designs and game adoption.
+This changes their intended appearance, not names, attacks, drops or bodies.
+
 **Owner leyline clarification, 7 September 2026:** different coloured leylines
 carry different meteorite magic/technology influences. An ordinary animal's
 fantastical expression follows the influence that augmented it; Cinder Wisp is
@@ -122,7 +132,8 @@ compatible successor replaces them.
 The sender and purpose of the meteorites, whether the shower was deliberate,
 the time since impact, the player's origin, and the names and histories of the
 former civilisations are not established. Enemy ancestries beyond the selected
-wolf, boar, stag and moth remain open; beasts need not have been people.
+animals above and the human Conservator remain open; beasts need not have
+been people. Their ordinary origins do not establish a civilisation's history.
 
 “Conquer” describes the player's growing agency. Permanent territorial control,
 purification, restored settlements or removal of all future threats are not yet
