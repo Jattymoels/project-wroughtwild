@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01/02 visually approved; ART-03 technical handoff delivered, visual review pending; ART-04–05 proposed.** Owner request,
+**Status: ART-01–03 visually approved; ART-04 first Red technical handoff delivered, visual review pending; ART-05 proposed.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -15,8 +15,12 @@ After the grove handoff, “Awesome, approved, what's next” visually approves
 ART-02. The subsequent “Let's do it” selected [ART-03](fauna-art-2026-09-09.md),
 beginning with the existing wolf, then one stag. Its isolated source/rig/scar,
 movement and detail-level handoff is now delivered, with the liked moth retained
-as a comparison. See the linked result for actual checks and limits; owner visual
-review is pending. ART-04 and ART-05 remain proposed.
+as a comparison. The subsequent “Love it” visually approves that handoff.
+After discussing source → recovered material → crafted use, “Yep let's do it”
+selects the first [ART-04 Red handoff](source-workshop-art-2026-09-09.md).
+That native-state source/material/heat-buffer handoff is now technically
+delivered, with actual engine evidence and limitations in its work item.
+The remaining influence families and ART-05 remain separate later slices.
 
 ## Outcome and current evidence
 
@@ -222,7 +226,9 @@ surface/movement proof and limitations. The owner visually approved it on
 9 September. **ART-02, one affected grove**, now has a checked 38.3 m isolated
 walk, six environment roles, actual day/shade/dusk evidence and a packed
 [handoff](affected-grove-2026-09-09.md), visually approved by the owner on
-9 September. ART-03 is next proposed, with the wolf before the stag. Routine
+9 September. [ART-03](fauna-art-2026-09-09.md), wolf then stag, is also delivered
+and visually approved. The first [ART-04 Red source/material/heat-buffer handoff](source-workshop-art-2026-09-09.md)
+is delivered for owner visual review. Routine
 mask placement and review setup follow the brief. Decisions that change gameplay
 bodies, saved placement, supported renderer policy or campaign/encounter behaviour
 need their own selected scope. Source promotion into long-term versioned art is

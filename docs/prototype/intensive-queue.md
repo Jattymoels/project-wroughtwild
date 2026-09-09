@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-03 technical handoff and Wave 2 review). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-03 visual approval and first ART-04 Red handoff). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -26,8 +26,16 @@ visually approved the grove: “Awesome, approved, what's next”. The subsequen
 “Let's do it” selected [ART-03](fauna-art-2026-09-09.md), now technically delivered:
 refined local wolf, one stag, attached pulsing scars, fitted movement/detail
 levels and a preserved-moth comparison. Actual engine evidence and limitations
-are linked from that work item; owner visual review is pending. ART-04–05 remain
-proposed. No ordinary-world adoption has occurred.
+are linked from that work item. The subsequent “Love it” visually approves ART-03.
+After discussing source → recovered material → crafted use, “Yep let's do it”
+selects the first [ART-04 Red handoff](source-workshop-art-2026-09-09.md): one
+native source, source-owned fragments, collected Red Salt and the existing paid
+heat buffer/forge use. Remaining White/Blue/Green families and ART-05 are separate
+later slices. No ordinary-world art adoption has occurred.
+The Red technical handoff is now delivered: packed editable source, closed
+recovered fragments, fitted buffer, native ownership/work presentation and
+Forward+/Compatibility evidence. **Next art gate: owner review of Red, then
+one White family slice.** The work item records checks and adoption limits.
 
 The [local TRELLIS wolf experiment](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
 completed generation and 32 Blender handoff checks after the earlier Meshy review.

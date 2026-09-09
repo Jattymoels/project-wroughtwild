@@ -1,0 +1,72 @@
+{
+	"adapter": "NVIDIA GeForce RTX 5090",
+	"cases": [
+		{
+			"cpu_ms_median": 0.193000003695488,
+			"draws_visible": 74,
+			"frame_ms_median": 6.955,
+			"gpu_ms_median": 0.546999990940094,
+			"gpu_ms_p95": 3.49699997901917,
+			"light": false,
+			"lod": "near",
+			"texture_bytes": 523514368
+		},
+		{
+			"cpu_ms_median": 0.179000005125999,
+			"draws_visible": 74,
+			"frame_ms_median": 6.955,
+			"gpu_ms_median": 0.546000003814697,
+			"gpu_ms_p95": 0.555000007152557,
+			"light": true,
+			"lod": "near",
+			"texture_bytes": 523514368
+		},
+		{
+			"cpu_ms_median": 0.178000003099442,
+			"draws_visible": 74,
+			"frame_ms_median": 6.961,
+			"gpu_ms_median": 0.583999991416931,
+			"gpu_ms_p95": 0.593999981880188,
+			"light": false,
+			"lod": "mid",
+			"texture_bytes": 523514368
+		},
+		{
+			"cpu_ms_median": 0.18299999833107,
+			"draws_visible": 74,
+			"frame_ms_median": 6.953,
+			"gpu_ms_median": 0.583999991416931,
+			"gpu_ms_p95": 0.593999981880188,
+			"light": true,
+			"lod": "mid",
+			"texture_bytes": 523514368
+		},
+		{
+			"cpu_ms_median": 0.174999997019768,
+			"draws_visible": 74,
+			"frame_ms_median": 6.957,
+			"gpu_ms_median": 0.579999983310699,
+			"gpu_ms_p95": 0.58899998664856,
+			"light": false,
+			"lod": "far",
+			"texture_bytes": 523514368
+		},
+		{
+			"cpu_ms_median": 0.187999993562698,
+			"draws_visible": 74,
+			"frame_ms_median": 6.947,
+			"gpu_ms_median": 0.578999996185303,
+			"gpu_ms_p95": 0.587999999523163,
+			"light": true,
+			"lod": "far",
+			"texture_bytes": 523514368
+		}
+	],
+	"limitation": "Isolated source/workshop and reused tree backdrop, not populated world streaming. One desktop GPU.",
+	"resolution": [
+		1600,
+		1000
+	],
+	"sample_frames": 90,
+	"warmup_frames": 30
+}

@@ -1,0 +1,19 @@
+{
+  "native_checks": 44,
+  "fresh_process_checks": 5,
+  "asset_checks": 118,
+  "forward_visual_checks": 421,
+  "compatibility_visual_checks": 421,
+  "captures_per_renderer": 70,
+  "failures": [],
+  "independent_capture_state_assertions_per_renderer": 9,
+  "rendered_core_difference_checked_in_both_renderers": true,
+  "preview": {
+    "frames": 48,
+    "encoded_frames": 47,
+    "frame_duration_ms": 125,
+    "duration_seconds": 6,
+    "lossless_pixels_and_complete_timeline_verified": true,
+    "description": "Encoded actual native-state engine frames; replay restarts the recorded checkpoint, not an infinite native production loop."
+  }
+}
