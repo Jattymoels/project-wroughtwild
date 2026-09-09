@@ -1,6 +1,6 @@
 # Green connected growth — finished review
 
-**Technical handoff; owner visual review pending.** Built-in ImageGen → local
+**Delivered and visually approved by the owner: “Love it, continue”.** Built-in ImageGen → local
 TRELLIS → Blender → native-state Godot. These are actual finished renders;
 `green-root-input-v01.png` is the preserved generation reference only.
 

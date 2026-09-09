@@ -1,6 +1,6 @@
 # ART-04D — Green source to junction
 
-**Technical handoff delivered; owner visual review pending — 9 September 2026.** The owner visually
+**Delivered and visually approved — 9 September 2026.** The owner visually
 approved Blue in chat: “Yea looks awesome, continue”. This selects Green only;
 ART-05 world integration remains a separate later slice.
 
@@ -137,6 +137,6 @@ resources and Godot APPDATA are isolated from normal play.
 
 Texture cooking/deduplication, lower-spec hardware, crowded-world performance,
 ordinary save/placement adoption and source promotion into long-term art storage
-remain separate. Green's owner visual review is the next gate. All four ART-04
-families now have technical handoffs; ART-05 is the next bounded slice after that
-review and is not implemented here.
+remain separate. The owner approved Green in chat: “Love it, continue”. All four ART-04
+families are visually approved. The separate [ART-05 route pilot](world-route-art-2026-09-09.md)
+is now selected; this Green handoff itself does not install world art.

@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-04 Blue visual approval and Green handoff). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-05 playable route pilot delivered). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -50,9 +50,14 @@ and both-renderer evidence. The owner approved its actual pictures in chat:
 Green's root/resin/junction technical handoff is now delivered with independently
 paid winch and feeder branches, real obstruction/ownership/restart checks,
 packed editable source and both-renderer evidence.
-**Next art gate: owner visual review of Green in chat.** This completes the four
-ART-04 family handoffs technically. ART-05, one actual world route, remains the
-separate next slice. Each work item records checks and adoption limits.
+The owner approved Green: “Love it, continue”. All four ART-04 families are
+visually approved. **[ART-05, one actual world route](world-route-art-2026-09-09.md), is technically delivered.**
+Its isolated playable Red source/workshop-to-boar route retains finite records,
+collision and paid construction. The 135 m controller walk, harvesting/building,
+combat, streaming and restart passed; matched desktop cost and actual day/dusk
+photos are recorded. **Next art gate: owner review of the actual route in chat.**
+Older ground cover/scenery and wider adoption remain the next bounded reuse work.
+Each work item records checks and adoption limits.
 
 The [local TRELLIS wolf experiment](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
 completed generation and 32 Blender handoff checks after the earlier Meshy review.

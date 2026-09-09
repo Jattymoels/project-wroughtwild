@@ -1,0 +1,8 @@
+{
+  "checks": 926,
+  "failures": 0,
+  "models": 12,
+  "textures": 34,
+  "texture_png_bytes": 77058356,
+  "note": "Every source hash and mesh/skin/animation buffer is exact. GPU compression is not selected; external PNG maps are deduplicated and limited to 2k."
+}

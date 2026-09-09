@@ -245,8 +245,11 @@ walk, six environment roles, actual day/shade/dusk evidence and a packed
 and visually approved. The first [ART-04 Red source/material/heat-buffer handoff](source-workshop-art-2026-09-09.md)
 is delivered and visually approved, as is [ART-04B White](white-workshop-art-2026-09-09.md).
 The owner has also approved [ART-04C Blue](blue-workshop-art-2026-09-09.md).
-[ART-04D Green](green-workshop-art-2026-09-09.md) is technically delivered and
-awaits visual review before the separate ART-05 route. Routine
+[ART-04D Green](green-workshop-art-2026-09-09.md) is delivered and visually
+approved: “Love it, continue”. The separate [ART-05 route pilot](world-route-art-2026-09-09.md)
+is technically delivered as an isolated playable route with actual walking,
+paid work, combat, streaming/restart and matched renderer evidence. Owner visual
+review is the next gate before wider reuse. Routine
 mask placement and review setup follow the brief. Decisions that change gameplay
 bodies, saved placement, supported renderer policy or campaign/encounter behaviour
 need their own selected scope. Source promotion into long-term versioned art is

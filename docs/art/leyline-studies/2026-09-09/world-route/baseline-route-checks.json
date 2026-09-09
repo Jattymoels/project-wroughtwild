@@ -1,0 +1,1666 @@
+{
+  "baseline": true,
+  "checks": [
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "current station can make workbench_kit: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: workbench_kit",
+      "ok": true
+    },
+    {
+      "label": "actual camera/click paid placement: workbench_kit",
+      "ok": true
+    },
+    {
+      "label": "current station can make timber_frame: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: timber_frame",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"text\": \"Breaking (1/3).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"text\": \"Breaking (2/3).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"granted\": 3 }",
+      "ok": true
+    },
+    {
+      "label": "released fieldstone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"text\": \"Breaking (1/3).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"text\": \"Breaking (2/3).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"granted\": 3 }",
+      "ok": true
+    },
+    {
+      "label": "released fieldstone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "current station can make mason_yard_kit: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: mason_yard_kit",
+      "ok": true
+    },
+    {
+      "label": "actual camera/click paid placement: mason_yard_kit",
+      "ok": true
+    },
+    {
+      "label": "current station can make timber_wedge: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: timber_wedge",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "current station can make dress_stone: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: dress_stone",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "current station can make forge_kit: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: forge_kit",
+      "ok": true
+    },
+    {
+      "label": "actual camera/click paid placement: forge_kit",
+      "ok": true
+    },
+    {
+      "label": "current station can make smelt_iron: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: smelt_iron",
+      "ok": true
+    },
+    {
+      "label": "actual camera reaches @StaticBody3D@1022",
+      "ok": true
+    },
+    {
+      "label": "player control: Expose the casing",
+      "ok": true
+    },
+    {
+      "label": "player control: Vent the inclusion",
+      "ok": true
+    },
+    {
+      "label": "player control: Settle the flow",
+      "ok": true
+    },
+    {
+      "label": "player control: Draw the lot",
+      "ok": true
+    },
+    {
+      "label": "real source produces one finite 16-salt claim",
+      "ok": true
+    },
+    {
+      "label": "player control: Collect Red Salt",
+      "ok": true
+    },
+    {
+      "label": "collection transfers exactly once",
+      "ok": true
+    },
+    {
+      "label": "current station can make assemble_red_heat_buffer: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: assemble_red_heat_buffer",
+      "ok": true
+    },
+    {
+      "label": "real source collision rejects overlapping kit",
+      "ok": true
+    },
+    {
+      "label": "rejected overlap preserves kit and native ownership",
+      "ok": true
+    },
+    {
+      "label": "actual camera/click paid placement: red_heat_buffer_kit",
+      "ok": true
+    },
+    {
+      "label": "actual camera reaches @StaticBody3D@5991",
+      "ok": true
+    },
+    {
+      "label": "player control: Pay for 1 heat",
+      "ok": true
+    },
+    {
+      "label": "placed buffer's heat costs two real salt after four-salt frame",
+      "ok": true
+    },
+    {
+      "label": "paid buffer owns the fitted art",
+      "ok": true
+    },
+    {
+      "label": "surviving actual route tree exists",
+      "ok": true
+    },
+    {
+      "label": "route tree keeps partial native work",
+      "ok": true
+    },
+    {
+      "label": "real stream retirement frees harvested actor",
+      "ok": true
+    },
+    {
+      "label": "stream reentry restores exact stock and partial work",
+      "ok": true
+    },
+    {
+      "label": "streamed tree gets one fitted presentation",
+      "ok": true
+    },
+    {
+      "label": "stream reentry preserves its independent scar phase",
+      "ok": true
+    },
+    {
+      "label": "normal work exhausts route tree",
+      "ok": true
+    },
+    {
+      "label": "depletion survives in authoritative finite ledger",
+      "ok": true
+    },
+    {
+      "label": "released wood uses ordinary capacity-aware pickups",
+      "ok": true
+    },
+    {
+      "label": "write paid full-world checkpoint: ",
+      "ok": true
+    },
+    {
+      "label": "same-process full restore: ",
+      "ok": true
+    },
+    {
+      "label": "restored inventory available",
+      "ok": true
+    },
+    {
+      "label": "retain paid playable route before finite hunt",
+      "ok": true
+    },
+    {
+      "label": "actual input/controller traverses existing source route without teleport or collision changes",
+      "ok": true
+    },
+    {
+      "label": "one native finite route boar",
+      "ok": true
+    },
+    {
+      "label": "actual starting casts defeat native boar with live incoming damage",
+      "ok": true
+    },
+    {
+      "label": "native attacks and player casts actually occur",
+      "ok": true
+    },
+    {
+      "label": "actual windup retains native warning and drives fitted skin",
+      "ok": true
+    },
+    {
+      "label": "no dash invulnerability or test protection",
+      "ok": true
+    },
+    {
+      "label": "save finite hunt and paid workshop for fresh-process restart",
+      "ok": true
+    }
+  ],
+  "combat": {
+    "casts": 5,
+    "enemy_life": 0.0,
+    "player_life": 100.0,
+    "releases": 1
+  },
+  "failures": 0,
+  "fits": [],
+  "harvested_id": "wnv6_tree_467_31_460",
+  "views": [],
+  "walk": {
+    "metres": 135.078021510504,
+    "positions": [
+      [
+        467.416656494141,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        466.916595458984,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        465.916473388672,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        464.916351318359,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        463.916229248047,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        462.916107177734,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        461.915985107422,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        460.915863037109,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        459.915740966797,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        458.915618896484,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        457.915496826172,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        456.915374755859,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        455.915252685547,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        454.915130615234,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        453.961181640625,
+        31.9602947235107,
+        438.425415039063
+      ],
+      [
+        453.724914550781,
+        31.9602947235107,
+        437.895629882813
+      ],
+      [
+        453.574645996094,
+        31.9602947235107,
+        436.907379150391
+      ],
+      [
+        453.524597167969,
+        31.9602947235107,
+        435.908630371094
+      ],
+      [
+        453.508087158203,
+        31.9602947235107,
+        434.908843994141
+      ],
+      [
+        453.502655029297,
+        31.9602947235107,
+        433.908721923828
+      ],
+      [
+        453.500915527344,
+        31.9602947235107,
+        432.908599853516
+      ],
+      [
+        453.500244140625,
+        31.9602947235107,
+        431.908477783203
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        430.908355712891
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        429.908233642578
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        428.908111572266
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        427.907989501953
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        426.907867431641
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        425.907745361328
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        424.907623291016
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        423.907501220703
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        422.907379150391
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        421.907257080078
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        420.907135009766
+      ],
+      [
+        453.425262451172,
+        31.9602947235107,
+        419.953674316406
+      ],
+      [
+        452.946258544922,
+        31.9602947235107,
+        419.655853271484
+      ],
+      [
+        452.598480224609,
+        31.9602947235107,
+        418.926147460938
+      ],
+      [
+        451.94580078125,
+        31.9602947235107,
+        418.607696533203
+      ],
+      [
+        451.685974121094,
+        31.9602947235107,
+        417.906677246094
+      ],
+      [
+        451.562133789063,
+        31.9602947235107,
+        416.914703369141
+      ],
+      [
+        451.520629882813,
+        31.9602947235107,
+        415.915618896484
+      ],
+      [
+        451.5068359375,
+        31.9602947235107,
+        414.915832519531
+      ],
+      [
+        451.502319335938,
+        31.9602947235107,
+        413.915710449219
+      ],
+      [
+        451.500762939453,
+        31.9602947235107,
+        412.915588378906
+      ],
+      [
+        451.500244140625,
+        31.9602947235107,
+        411.915466308594
+      ],
+      [
+        451.500091552734,
+        31.9602947235107,
+        410.915344238281
+      ],
+      [
+        451.500091552734,
+        31.9602947235107,
+        409.915222167969
+      ],
+      [
+        451.500091552734,
+        31.9602947235107,
+        408.915100097656
+      ],
+      [
+        451.500091552734,
+        31.9602947235107,
+        407.914978027344
+      ],
+      [
+        451.500091552734,
+        31.9602947235107,
+        406.914855957031
+      ],
+      [
+        451.425506591797,
+        31.9602947235107,
+        405.9609375
+      ],
+      [
+        450.947998046875,
+        31.9602947235107,
+        405.660369873047
+      ],
+      [
+        450.667846679688,
+        31.9602947235107,
+        404.878082275391
+      ],
+      [
+        450.553833007813,
+        31.9602947235107,
+        403.884735107422
+      ],
+      [
+        450.517211914063,
+        31.9602947235107,
+        402.885314941406
+      ],
+      [
+        450.505462646484,
+        31.9602947235107,
+        401.885528564453
+      ],
+      [
+        450.501708984375,
+        31.9602947235107,
+        400.885406494141
+      ],
+      [
+        450.500579833984,
+        31.9602947235107,
+        399.885284423828
+      ],
+      [
+        450.500244140625,
+        31.9602947235107,
+        398.885162353516
+      ],
+      [
+        450.500091552734,
+        31.9602947235107,
+        397.885040283203
+      ],
+      [
+        450.500091552734,
+        31.9602947235107,
+        396.884918212891
+      ],
+      [
+        450.424621582031,
+        31.9602947235107,
+        395.932800292969
+      ],
+      [
+        449.941772460938,
+        31.9602947235107,
+        395.64306640625
+      ],
+      [
+        449.593475341797,
+        31.9602947235107,
+        394.914001464844
+      ],
+      [
+        448.88720703125,
+        31.9602947235107,
+        394.667907714844
+      ],
+      [
+        447.94287109375,
+        31.9602947235107,
+        394.481842041016
+      ],
+      [
+        447.69140625,
+        31.9602947235107,
+        393.867614746094
+      ],
+      [
+        447.571838378906,
+        31.9602947235107,
+        392.959197998047
+      ],
+      [
+        447.525390625,
+        31.9602947235107,
+        391.96044921875
+      ],
+      [
+        447.508941650391,
+        31.9602947235107,
+        390.960662841797
+      ],
+      [
+        447.503112792969,
+        31.9602947235107,
+        389.960540771484
+      ],
+      [
+        447.501037597656,
+        31.9602947235107,
+        388.960418701172
+      ],
+      [
+        447.500335693359,
+        31.9602947235107,
+        387.960296630859
+      ],
+      [
+        447.500091552734,
+        31.9602947235107,
+        386.960174560547
+      ],
+      [
+        447.500091552734,
+        31.9602947235107,
+        385.960052490234
+      ],
+      [
+        447.500091552734,
+        31.9602947235107,
+        384.959930419922
+      ],
+      [
+        447.426849365234,
+        31.9602947235107,
+        384.003387451172
+      ],
+      [
+        446.887481689453,
+        31.9602947235107,
+        383.646057128906
+      ],
+      [
+        446.597595214844,
+        31.9602947235107,
+        382.981018066406
+      ],
+      [
+        445.904510498047,
+        31.9602947235107,
+        382.701599121094
+      ],
+      [
+        444.962066650391,
+        31.9602947235107,
+        382.495758056641
+      ],
+      [
+        444.704376220703,
+        31.9602947235107,
+        381.884185791016
+      ],
+      [
+        444.566467285156,
+        31.9602947235107,
+        380.894226074219
+      ],
+      [
+        444.521545410156,
+        31.9602947235107,
+        379.895141601563
+      ],
+      [
+        444.432373046875,
+        32.9333763122559,
+        378.943878173828
+      ],
+      [
+        443.950469970703,
+        32.8571548461914,
+        378.651306152344
+      ],
+      [
+        443.661224365234,
+        33.5124282836914,
+        378.032531738281
+      ],
+      [
+        442.886871337891,
+        34.0842437744141,
+        377.688690185547
+      ],
+      [
+        442.646697998047,
+        34.8701782226563,
+        376.895233154297
+      ],
+      [
+        442.548187255859,
+        34.9063491821289,
+        375.901245117188
+      ],
+      [
+        442.515686035156,
+        35.0602607727051,
+        374.901763916016
+      ],
+      [
+        442.578063964844,
+        35.7833824157715,
+        373.950286865234
+      ],
+      [
+        443.057312011719,
+        35.857795715332,
+        373.653045654297
+      ],
+      [
+        443.336059570313,
+        36.0182342529297,
+        372.8701171875
+      ],
+      [
+        443.5087890625,
+        36.7646789550781,
+        372.007659912109
+      ],
+      [
+        444.110229492188,
+        36.9317398071289,
+        371.728210449219
+      ],
+      [
+        445.096649169922,
+        37.0726013183594,
+        371.576141357422
+      ],
+      [
+        446.096099853516,
+        37.0528945922852,
+        371.524963378906
+      ],
+      [
+        447.088562011719,
+        36.8652229309082,
+        371.508666992188
+      ],
+      [
+        448.089569091797,
+        36.8667984008789,
+        371.502838134766
+      ],
+      [
+        449.090454101563,
+        36.8677635192871,
+        371.500915527344
+      ],
+      [
+        450.090881347656,
+        37.0673675537109,
+        371.500244140625
+      ],
+      [
+        451.08935546875,
+        37.1336479187012,
+        371.501403808594
+      ],
+      [
+        452.085235595703,
+        37.140380859375,
+        371.500427246094
+      ],
+      [
+        453.083740234375,
+        37.1408805847168,
+        371.500091552734
+      ],
+      [
+        454.083557128906,
+        37.140926361084,
+        371.500091552734
+      ],
+      [
+        455.083770751953,
+        37.2912178039551,
+        371.500091552734
+      ],
+      [
+        456.083892822266,
+        37.8906555175781,
+        371.500091552734
+      ],
+      [
+        457.034729003906,
+        37.8742408752441,
+        371.425628662109
+      ],
+      [
+        457.337036132813,
+        37.9602317810059,
+        370.948852539063
+      ],
+      [
+        458.119384765625,
+        38.0752563476563,
+        370.668762207031
+      ],
+      [
+        459.0634765625,
+        38.1944122314453,
+        370.481384277344
+      ],
+      [
+        459.378662109375,
+        38.8274116516113,
+        369.919219970703
+      ],
+      [
+        460.085876464844,
+        38.9300575256348,
+        369.675537109375
+      ],
+      [
+        461.078857421875,
+        39.0971755981445,
+        369.559143066406
+      ],
+      [
+        462.031585693359,
+        39.392879486084,
+        369.446350097656
+      ],
+      [
+        462.368927001953,
+        39.803108215332,
+        368.896087646484
+      ],
+      [
+        463.029113769531,
+        39.9128303527832,
+        368.600219726563
+      ],
+      [
+        463.300750732422,
+        39.9607810974121,
+        367.910003662109
+      ],
+      [
+        463.432922363281,
+        40.910457611084,
+        366.919036865234
+      ],
+      [
+        463.477508544922,
+        40.9601745605469,
+        365.920166015625
+      ],
+      [
+        463.492431640625,
+        41.8095588684082,
+        364.921508789063
+      ],
+      [
+        463.497467041016,
+        42.8690452575684,
+        363.92138671875
+      ],
+      [
+        463.499176025391,
+        42.9602699279785,
+        362.922149658203
+      ],
+      [
+        463.499725341797,
+        43.8086433410645,
+        361.922027587891
+      ],
+      [
+        463.499908447266,
+        43.9602203369141,
+        360.922790527344
+      ],
+      [
+        463.499908447266,
+        44.8083686828613,
+        359.922668457031
+      ],
+      [
+        463.499908447266,
+        44.9601860046387,
+        358.923431396484
+      ],
+      [
+        463.499908447266,
+        45.8141670227051,
+        357.923309326172
+      ],
+      [
+        463.499908447266,
+        45.9601516723633,
+        356.924102783203
+      ],
+      [
+        463.499908447266,
+        45.9601516723633,
+        355.923980712891
+      ],
+      [
+        463.499908447266,
+        46.8140144348145,
+        354.923858642578
+      ],
+      [
+        463.499908447266,
+        46.9601173400879,
+        353.924621582031
+      ],
+      [
+        463.499908447266,
+        46.9601173400879,
+        352.924499511719
+      ]
+    ],
+    "stalled": false
+  }
+}

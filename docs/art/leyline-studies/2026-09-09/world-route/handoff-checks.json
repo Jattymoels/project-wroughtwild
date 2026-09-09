@@ -1,0 +1,8 @@
+{
+  "files": 1480,
+  "bytes": 244892498,
+  "manifest_sha256": "5b8f080b69734dc4289075b69f3565182d1f48e52f7391263cd07b2f69c2ba5b",
+  "fresh_import": "passed",
+  "playable_smoke": "passed",
+  "changed_delivered_files_after_import": 0
+}

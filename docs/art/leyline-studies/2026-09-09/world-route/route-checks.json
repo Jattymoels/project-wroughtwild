@@ -1,0 +1,3213 @@
+{
+  "baseline": false,
+  "checks": [
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (1/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (2/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (3/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (4/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"text\": \"Chopping (5/6).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for wood",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts wood: { \"granted\": 14 }",
+      "ok": true
+    },
+    {
+      "label": "released wood waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "current station can make workbench_kit: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: workbench_kit",
+      "ok": true
+    },
+    {
+      "label": "actual camera/click paid placement: workbench_kit",
+      "ok": true
+    },
+    {
+      "label": "current station can make timber_frame: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: timber_frame",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"text\": \"Breaking (1/3).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"text\": \"Breaking (2/3).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"granted\": 3 }",
+      "ok": true
+    },
+    {
+      "label": "released fieldstone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"text\": \"Breaking (1/3).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"text\": \"Breaking (2/3).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for fieldstone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts fieldstone: { \"granted\": 3 }",
+      "ok": true
+    },
+    {
+      "label": "released fieldstone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "current station can make mason_yard_kit: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: mason_yard_kit",
+      "ok": true
+    },
+    {
+      "label": "actual camera/click paid placement: mason_yard_kit",
+      "ok": true
+    },
+    {
+      "label": "current station can make timber_wedge: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: timber_wedge",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"You set a wedge in the seam. Drive it with E, or strike it.\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (1/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (2/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"text\": \"Driving the wedge (3/4).\" }",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for split_stone",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts split_stone: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released split_stone waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "current station can make dress_stone: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: dress_stone",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "generated reachable source exists for iron_ore",
+      "ok": true
+    },
+    {
+      "label": "ordinary contextual work accepts iron_ore: { \"granted\": 2 }",
+      "ok": true
+    },
+    {
+      "label": "released iron_ore waits for pickup",
+      "ok": true
+    },
+    {
+      "label": "current station can make forge_kit: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: forge_kit",
+      "ok": true
+    },
+    {
+      "label": "actual camera/click paid placement: forge_kit",
+      "ok": true
+    },
+    {
+      "label": "current station can make smelt_iron: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: smelt_iron",
+      "ok": true
+    },
+    {
+      "label": "actual camera reaches @StaticBody3D@1022",
+      "ok": true
+    },
+    {
+      "label": "player control: Expose the casing",
+      "ok": true
+    },
+    {
+      "label": "player control: Vent the inclusion",
+      "ok": true
+    },
+    {
+      "label": "player control: Settle the flow",
+      "ok": true
+    },
+    {
+      "label": "player control: Draw the lot",
+      "ok": true
+    },
+    {
+      "label": "real source produces one finite 16-salt claim",
+      "ok": true
+    },
+    {
+      "label": "player control: Collect Red Salt",
+      "ok": true
+    },
+    {
+      "label": "collection transfers exactly once",
+      "ok": true
+    },
+    {
+      "label": "current station can make assemble_red_heat_buffer: Ready to make.",
+      "ok": true
+    },
+    {
+      "label": "paid craft produces exact output: assemble_red_heat_buffer",
+      "ok": true
+    },
+    {
+      "label": "real source collision rejects overlapping kit",
+      "ok": true
+    },
+    {
+      "label": "rejected overlap preserves kit and native ownership",
+      "ok": true
+    },
+    {
+      "label": "actual camera/click paid placement: red_heat_buffer_kit",
+      "ok": true
+    },
+    {
+      "label": "actual camera reaches @StaticBody3D@5993",
+      "ok": true
+    },
+    {
+      "label": "player control: Pay for 1 heat",
+      "ok": true
+    },
+    {
+      "label": "placed buffer's heat costs two real salt after four-salt frame",
+      "ok": true
+    },
+    {
+      "label": "paid buffer owns the fitted art",
+      "ok": true
+    },
+    {
+      "label": "surviving actual route tree exists",
+      "ok": true
+    },
+    {
+      "label": "route tree keeps partial native work",
+      "ok": true
+    },
+    {
+      "label": "real stream retirement frees harvested actor",
+      "ok": true
+    },
+    {
+      "label": "stream reentry restores exact stock and partial work",
+      "ok": true
+    },
+    {
+      "label": "streamed tree gets one fitted presentation",
+      "ok": true
+    },
+    {
+      "label": "stream reentry preserves its independent scar phase",
+      "ok": true
+    },
+    {
+      "label": "normal work exhausts route tree",
+      "ok": true
+    },
+    {
+      "label": "depletion survives in authoritative finite ledger",
+      "ok": true
+    },
+    {
+      "label": "released wood uses ordinary capacity-aware pickups",
+      "ok": true
+    },
+    {
+      "label": "write paid full-world checkpoint: ",
+      "ok": true
+    },
+    {
+      "label": "same-process full restore: ",
+      "ok": true
+    },
+    {
+      "label": "restored inventory available",
+      "ok": true
+    },
+    {
+      "label": "retain paid playable route before finite hunt",
+      "ok": true
+    },
+    {
+      "label": "actual input/controller traverses existing source route without teleport or collision changes",
+      "ok": true
+    },
+    {
+      "label": "one native finite route boar",
+      "ok": true
+    },
+    {
+      "label": "native actor owns exactly one fitted animation adapter",
+      "ok": true
+    },
+    {
+      "label": "native freeze holds fitted pose",
+      "ok": true
+    },
+    {
+      "label": "native freeze has visible material priority and cancels warning",
+      "ok": true
+    },
+    {
+      "label": "freeze expires through native time",
+      "ok": true
+    },
+    {
+      "label": "actual starting casts defeat native boar with live incoming damage",
+      "ok": true
+    },
+    {
+      "label": "native attacks and player casts actually occur",
+      "ok": true
+    },
+    {
+      "label": "actual windup retains native warning and drives fitted skin",
+      "ok": true
+    },
+    {
+      "label": "no dash invulnerability or test protection",
+      "ok": true
+    },
+    {
+      "label": "save finite hunt and paid workshop for fresh-process restart",
+      "ok": true
+    }
+  ],
+  "combat": {
+    "casts": 5,
+    "enemy_life": 0.0,
+    "player_life": 100.0,
+    "releases": 1
+  },
+  "failures": 0,
+  "fits": [
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_484_31_453",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_478_31_454",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_469_32_460",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_467_31_460",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_482_31_450",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_468_31_458",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_460_32_462",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_487_30_444",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_490_30_442",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_491_30_441",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_456_32_462",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_481_31_443",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_482_31_442",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_487_30_439",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_488_30_437",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_492_30_434",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_2",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_1",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_490_30_431",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_486_30_432",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_487_30_426",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_441_32_454",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_483_30_425",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_438_33_456",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_474_31_427",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_0",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_475_31_424",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_0",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_433_33_451",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_434_33_446",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_438_32_441",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_459_31_422",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_1",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_464_31_416",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_434_33_438",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_431_33_441",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_442_31_428",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_461_31_415",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_2",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_474_30_409",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_3",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_451_31_420",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_431_33_435",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_458_30_413",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_444_31_422",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_458_30_412",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_438_32_425",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_462_30_408",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_445_31_415",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_444_31_411",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_456_31_404",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_458_30_400",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_30_398",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_440_32_409",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_30_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_447_31_399",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_447_31_398",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_432_32_410",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_462_30_391",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_446_31_395",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_429_32_408",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_445_31_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_449_31_392",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_469_30_388",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_31_383",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_435_32_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_455_31_384",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_481_31_383",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_438_32_389",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_436_32_390",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_468_31_380",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_467_31_460",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_469_32_460",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_468_31_458",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_460_32_462",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_456_32_462",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_478_31_454",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_482_31_450",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_1",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_484_31_453",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_481_31_443",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_482_31_442",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_487_30_444",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_441_32_454",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_0",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_2",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_487_30_439",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_490_30_442",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_438_33_456",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_491_30_441",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_488_30_437",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_474_31_427",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_486_30_432",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_438_32_441",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_433_33_451",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_434_33_446",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_492_30_434",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_475_31_424",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_490_30_431",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_0",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_1",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_483_30_425",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_459_31_422",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_487_30_426",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_434_33_438",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_442_31_428",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_431_33_441",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_3",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_2",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_451_31_420",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_431_33_435",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_464_31_416",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_444_31_422",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_461_31_415",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_438_32_425",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_458_30_413",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_458_30_412",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_445_31_415",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_474_30_409",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_462_30_408",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_444_31_411",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_456_31_404",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_440_32_409",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_458_30_400",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_432_32_410",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_30_398",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_447_31_399",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_429_32_408",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_447_31_398",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_30_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_446_31_395",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_462_30_391",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_445_31_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_449_31_392",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_469_30_388",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_435_32_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_436_32_390",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_438_32_389",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_455_31_384",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_31_383",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_481_31_383",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_431_32_390",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_445_31_384",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_442_32_384",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_468_31_380",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_447_31_380",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_483_31_377",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_455_31_376",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_462_31_375",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_452_31_375",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_466_31_371",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_425_16_381",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_472_31_370",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_430_33_377",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_472_31_368",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_443_37_369",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_455_40_365",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_451_41_363",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(2.869518, 2.735687, 2.588285)",
+      "id": "wnv6_tree_452_45_355",
+      "original_envelope": "[P: (-1.349639, -0.008047, -0.796418), S: (2.869518, 6.793768, 2.593772)]",
+      "scale": 0.316677636882828
+    },
+    {
+      "fitted_size": "(3.155028, 3.007881, 2.845813)",
+      "id": "wnv6_tree_439_46_352",
+      "original_envelope": "[P: (-2.126446, -0.007318, -1.411018), S: (3.155027, 6.84444, 3.113347)]",
+      "scale": 0.34818624122295
+    },
+    {
+      "fitted_size": "(2.90943, 2.773738, 2.624286)",
+      "id": "wnv6_tree_472_46_348",
+      "original_envelope": "[P: (-1.040845, -0.007619, -1.941662), S: (2.90943, 6.797678, 3.155023)]",
+      "scale": 0.321082264623084
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_472_46_342",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_469_32_460",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_468_31_458",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_460_32_462",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_456_32_462",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_478_31_454",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_482_31_450",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_1",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_484_31_453",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_481_31_443",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_482_31_442",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_487_30_444",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_441_32_454",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_0",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_homev6_0_boulder_2",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_487_30_439",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_490_30_442",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_438_33_456",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_491_30_441",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_488_30_437",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_474_31_427",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_486_30_432",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_438_32_441",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_433_33_451",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_434_33_446",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_492_30_434",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_475_31_424",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_490_30_431",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_0",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_1",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_483_30_425",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_459_31_422",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_487_30_426",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_434_33_438",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_442_31_428",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_431_33_441",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_3",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_homev6_0_tree_2",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_451_31_420",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_431_33_435",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_464_31_416",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_444_31_422",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_461_31_415",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_438_32_425",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_458_30_413",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_458_30_412",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_445_31_415",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_474_30_409",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_462_30_408",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_444_31_411",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_456_31_404",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_440_32_409",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_458_30_400",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_432_32_410",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_30_398",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_447_31_399",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_429_32_408",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_447_31_398",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_30_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_446_31_395",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_462_30_391",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_445_31_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_449_31_392",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_469_30_388",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_435_32_394",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_436_32_390",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_438_32_389",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_455_31_384",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_471_31_383",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_481_31_383",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_431_32_390",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_445_31_384",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_442_32_384",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_468_31_380",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_447_31_380",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_483_31_377",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_455_31_376",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_462_31_375",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_452_31_375",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_466_31_371",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_425_16_381",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_472_31_370",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_430_33_377",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_472_31_368",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_443_37_369",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(4.28438, 4.084563, 3.864482)",
+      "id": "wnv6_tree_455_40_365",
+      "original_envelope": "[P: (-2.148119, -0.111487, -1.934877), S: (4.28438, 4.694489, 3.90193)]",
+      "scale": 0.472820719373942
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_451_41_363",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(2.869518, 2.735687, 2.588285)",
+      "id": "wnv6_tree_452_45_355",
+      "original_envelope": "[P: (-1.349639, -0.008047, -0.796418), S: (2.869518, 6.793768, 2.593772)]",
+      "scale": 0.316677636882828
+    },
+    {
+      "fitted_size": "(3.155028, 3.007881, 2.845813)",
+      "id": "wnv6_tree_439_46_352",
+      "original_envelope": "[P: (-2.126446, -0.007318, -1.411018), S: (3.155027, 6.84444, 3.113347)]",
+      "scale": 0.34818624122295
+    },
+    {
+      "fitted_size": "(2.90943, 2.773738, 2.624286)",
+      "id": "wnv6_tree_472_46_348",
+      "original_envelope": "[P: (-1.040845, -0.007619, -1.941662), S: (2.90943, 6.797678, 3.155023)]",
+      "scale": 0.321082264623084
+    },
+    {
+      "fitted_size": "(1.161504, 0.656652, 1.2)",
+      "id": "wnv6_boulder_472_46_342",
+      "original_envelope": "[P: (-0.7, -0.1, -0.6), S: (1.4, 1.1, 1.2)]",
+      "scale": 0.410091137791646
+    },
+    {
+      "fitted_size": "(3.013116, 2.872589, 2.71781)",
+      "id": "wnv6_region_rootvault_wildwood_pine_469_338",
+      "original_envelope": "[P: (-1.163184, -0.006902, -1.917701), S: (3.013116, 7.317759, 3.46211)]",
+      "scale": 0.332525056085976
+    },
+    {
+      "fitted_size": "(3.102536, 2.957838, 2.798466)",
+      "id": "wnv6_region_rootvault_wildwood_pine_474_337",
+      "original_envelope": "[P: (-0.985943, -0.007936, -1.322526), S: (3.188931, 7.006711, 2.798466)]",
+      "scale": 0.342393341216395
+    },
+    {
+      "fitted_size": "(0.93208, 1.259003, 1.707116)",
+      "id": "lf_red_boar",
+      "original_envelope": "[P: (-0.500244, -0.012, -1.363), S: (1.000305, 1.259003, 2.400885)]",
+      "scale": 1.04843396252263
+    }
+  ],
+  "harvested_id": "wnv6_tree_467_31_460",
+  "views": [],
+  "walk": {
+    "metres": 135.175927946344,
+    "positions": [
+      [
+        467.416656494141,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        466.916595458984,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        465.916473388672,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        464.916351318359,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        463.916229248047,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        462.916107177734,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        461.915985107422,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        460.915863037109,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        459.915740966797,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        458.915618896484,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        457.915496826172,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        456.915374755859,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        455.915252685547,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        454.915130615234,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        453.915008544922,
+        31.9602947235107,
+        438.5
+      ],
+      [
+        453.680541992188,
+        31.9602947235107,
+        437.878601074219
+      ],
+      [
+        453.558013916016,
+        31.9602947235107,
+        436.886291503906
+      ],
+      [
+        453.518615722656,
+        31.9602947235107,
+        435.88720703125
+      ],
+      [
+        453.505920410156,
+        31.9602947235107,
+        434.887420654297
+      ],
+      [
+        453.501861572266,
+        31.9602947235107,
+        433.887298583984
+      ],
+      [
+        453.500579833984,
+        31.9602947235107,
+        432.887176513672
+      ],
+      [
+        453.500244140625,
+        31.9602947235107,
+        431.887054443359
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        430.886932373047
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        429.886810302734
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        428.886688232422
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        427.886566162109
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        426.886444091797
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        425.886322021484
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        424.886199951172
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        423.886077880859
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        422.885955810547
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        421.885833740234
+      ],
+      [
+        453.500091552734,
+        31.9602947235107,
+        420.885711669922
+      ],
+      [
+        453.424652099609,
+        31.9602947235107,
+        419.933563232422
+      ],
+      [
+        452.941986083984,
+        31.9602947235107,
+        419.643615722656
+      ],
+      [
+        452.593719482422,
+        31.9602947235107,
+        418.914520263672
+      ],
+      [
+        451.939453125,
+        31.9602947235107,
+        418.600830078125
+      ],
+      [
+        451.681610107422,
+        31.9602947235107,
+        417.899047851563
+      ],
+      [
+        451.563629150391,
+        31.9602947235107,
+        416.989990234375
+      ],
+      [
+        451.519805908203,
+        31.9602947235107,
+        415.907653808594
+      ],
+      [
+        451.506530761719,
+        31.9602947235107,
+        414.907867431641
+      ],
+      [
+        451.502227783203,
+        31.9602947235107,
+        413.991088867188
+      ],
+      [
+        451.500732421875,
+        31.9602947235107,
+        412.907623291016
+      ],
+      [
+        451.500244140625,
+        31.9602947235107,
+        411.907501220703
+      ],
+      [
+        451.500061035156,
+        31.9602947235107,
+        410.99072265625
+      ],
+      [
+        451.500061035156,
+        31.9602947235107,
+        409.907257080078
+      ],
+      [
+        451.500061035156,
+        31.9602947235107,
+        408.907135009766
+      ],
+      [
+        451.500061035156,
+        31.9602947235107,
+        407.990356445313
+      ],
+      [
+        451.500061035156,
+        31.9602947235107,
+        406.906890869141
+      ],
+      [
+        451.425231933594,
+        31.9602947235107,
+        405.953430175781
+      ],
+      [
+        450.946228027344,
+        31.9602947235107,
+        405.655639648438
+      ],
+      [
+        450.666076660156,
+        31.9602947235107,
+        404.873352050781
+      ],
+      [
+        450.562438964844,
+        31.9602947235107,
+        403.962768554688
+      ],
+      [
+        450.522094726563,
+        31.9602947235107,
+        402.963684082031
+      ],
+      [
+        450.507873535156,
+        31.9602947235107,
+        401.963897705078
+      ],
+      [
+        450.502746582031,
+        31.9602947235107,
+        400.963775634766
+      ],
+      [
+        450.501007080078,
+        31.9602947235107,
+        399.963653564453
+      ],
+      [
+        450.500305175781,
+        31.9602947235107,
+        398.963531494141
+      ],
+      [
+        450.500091552734,
+        31.9602947235107,
+        397.963409423828
+      ],
+      [
+        450.500091552734,
+        31.9602947235107,
+        396.963287353516
+      ],
+      [
+        450.426971435547,
+        31.9602947235107,
+        396.006561279297
+      ],
+      [
+        449.888427734375,
+        31.9602947235107,
+        395.647918701172
+      ],
+      [
+        449.598480224609,
+        31.9602947235107,
+        394.982818603516
+      ],
+      [
+        448.905639648438,
+        31.9602947235107,
+        394.702606201172
+      ],
+      [
+        447.963134765625,
+        31.9602947235107,
+        394.496246337891
+      ],
+      [
+        447.705047607422,
+        31.9602947235107,
+        393.884887695313
+      ],
+      [
+        447.566772460938,
+        31.9602947235107,
+        392.894927978516
+      ],
+      [
+        447.521636962891,
+        31.9602947235107,
+        391.895843505859
+      ],
+      [
+        447.507049560547,
+        31.9602947235107,
+        390.896057128906
+      ],
+      [
+        447.502258300781,
+        31.9602947235107,
+        389.895935058594
+      ],
+      [
+        447.500762939453,
+        31.9602947235107,
+        388.895812988281
+      ],
+      [
+        447.500244140625,
+        31.9602947235107,
+        387.895690917969
+      ],
+      [
+        447.500091552734,
+        31.9602947235107,
+        386.895568847656
+      ],
+      [
+        447.500091552734,
+        31.9602947235107,
+        385.895446777344
+      ],
+      [
+        447.500091552734,
+        31.960865020752,
+        384.895324707031
+      ],
+      [
+        447.424926757813,
+        31.960865020752,
+        383.942565917969
+      ],
+      [
+        446.943908691406,
+        31.960865020752,
+        383.649017333984
+      ],
+      [
+        446.595825195313,
+        31.960865020752,
+        382.919647216797
+      ],
+      [
+        445.890563964844,
+        31.960865020752,
+        382.671051025391
+      ],
+      [
+        444.946380615234,
+        31.960865020752,
+        382.483306884766
+      ],
+      [
+        444.705200195313,
+        31.960865020752,
+        381.952117919922
+      ],
+      [
+        444.572814941406,
+        31.960865020752,
+        380.961181640625
+      ],
+      [
+        444.525695800781,
+        31.960865020752,
+        379.962432861328
+      ],
+      [
+        444.508117675781,
+        32.6040267944336,
+        378.962677001953
+      ],
+      [
+        443.947509765625,
+        32.8635520935059,
+        378.641784667969
+      ],
+      [
+        443.698913574219,
+        33.5112380981445,
+        378.005767822266
+      ],
+      [
+        442.886901855469,
+        34.0842933654785,
+        377.688598632813
+      ],
+      [
+        442.646728515625,
+        34.8701858520508,
+        376.895172119141
+      ],
+      [
+        442.548187255859,
+        34.9063606262207,
+        375.901184082031
+      ],
+      [
+        442.515686035156,
+        35.0602760314941,
+        374.901702880859
+      ],
+      [
+        442.578094482422,
+        35.7833633422852,
+        373.950317382813
+      ],
+      [
+        443.057342529297,
+        35.8578033447266,
+        373.653045654297
+      ],
+      [
+        443.336059570313,
+        36.0182342529297,
+        372.8701171875
+      ],
+      [
+        443.434631347656,
+        36.7728462219238,
+        372.045654296875
+      ],
+      [
+        444.110229492188,
+        36.9317398071289,
+        371.728210449219
+      ],
+      [
+        445.096649169922,
+        37.0726013183594,
+        371.576141357422
+      ],
+      [
+        446.096099853516,
+        37.0528945922852,
+        371.524963378906
+      ],
+      [
+        447.088562011719,
+        36.865234375,
+        371.508666992188
+      ],
+      [
+        448.089599609375,
+        36.8669891357422,
+        371.502838134766
+      ],
+      [
+        449.090454101563,
+        36.8678436279297,
+        371.500915527344
+      ],
+      [
+        450.090881347656,
+        37.0673980712891,
+        371.500244140625
+      ],
+      [
+        451.08935546875,
+        37.1336479187012,
+        371.501403808594
+      ],
+      [
+        452.085235595703,
+        37.140380859375,
+        371.500427246094
+      ],
+      [
+        453.084045410156,
+        37.1409797668457,
+        371.500091552734
+      ],
+      [
+        454.083465576172,
+        37.1410064697266,
+        371.500091552734
+      ],
+      [
+        455.083679199219,
+        37.2912139892578,
+        371.500091552734
+      ],
+      [
+        456.083801269531,
+        37.890682220459,
+        371.500091552734
+      ],
+      [
+        457.034515380859,
+        37.8741989135742,
+        371.425628662109
+      ],
+      [
+        457.336944580078,
+        37.9602317810059,
+        370.948852539063
+      ],
+      [
+        458.119384765625,
+        38.0752372741699,
+        370.668762207031
+      ],
+      [
+        459.0634765625,
+        38.1944122314453,
+        370.481384277344
+      ],
+      [
+        459.378662109375,
+        38.8274116516113,
+        369.919219970703
+      ],
+      [
+        460.085876464844,
+        38.9300575256348,
+        369.675537109375
+      ],
+      [
+        461.078857421875,
+        39.0971755981445,
+        369.559143066406
+      ],
+      [
+        461.99462890625,
+        39.1755905151367,
+        369.52099609375
+      ],
+      [
+        462.368957519531,
+        39.8031387329102,
+        368.896057128906
+      ],
+      [
+        463.075042724609,
+        39.9128303527832,
+        368.649169921875
+      ],
+      [
+        463.342987060547,
+        39.9602317810059,
+        367.867309570313
+      ],
+      [
+        463.441436767578,
+        40.8714561462402,
+        366.956115722656
+      ],
+      [
+        463.479461669922,
+        40.9600868225098,
+        365.95751953125
+      ],
+      [
+        463.492797851563,
+        41.8112754821777,
+        364.957733154297
+      ],
+      [
+        463.497467041016,
+        42.8737449645996,
+        363.957611083984
+      ],
+      [
+        463.499176025391,
+        42.9601364135742,
+        362.957763671875
+      ],
+      [
+        463.499725341797,
+        43.8112449645996,
+        361.957641601563
+      ],
+      [
+        463.499908447266,
+        43.9602317810059,
+        360.958343505859
+      ],
+      [
+        463.499908447266,
+        44.8110618591309,
+        359.958221435547
+      ],
+      [
+        463.499908447266,
+        44.9602317810059,
+        358.958892822266
+      ],
+      [
+        463.499908447266,
+        45.8144798278809,
+        357.961944580078
+      ],
+      [
+        463.499908447266,
+        45.9602317810059,
+        356.962615966797
+      ],
+      [
+        463.499908447266,
+        45.9602317810059,
+        355.962493896484
+      ],
+      [
+        463.499908447266,
+        46.8124351501465,
+        354.963714599609
+      ],
+      [
+        463.499908447266,
+        46.9602317810059,
+        353.96435546875
+      ],
+      [
+        463.499908447266,
+        46.9602317810059,
+        352.964233398438
+      ]
+    ],
+    "stalled": false
+  }
+}

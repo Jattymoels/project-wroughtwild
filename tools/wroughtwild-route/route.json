@@ -1,0 +1,16 @@
+{
+  "corridor_radius_m":24.0,
+  "affected_radius_m":18.0,
+  "boar_stride_m":1.25,
+  "root_pose_seconds":4.0,
+  "grove_peak_emission":2.8,
+  "grove_minimum_light":0.22,
+  "explanations":{
+    "corridor_radius_m":"Pilot presentation reaches only existing records this far from the native Red trail. It places nothing.",
+    "affected_radius_m":"Existing trees/rocks near the source or affected host show the approved Red scar; yields and labels remain native.",
+    "boar_stride_m":"Actual horizontal body travel per in-place walk clip. Does not control movement speed or damage.",
+    "root_pose_seconds":"Idle rooting clip period while the native actor is still and not frozen/staggered.",
+    "grove_peak_emission":"ART-02 peak core light; no added lights or bloom.",
+    "grove_minimum_light":"ART-02 fraction of peak retained between travelling crests."
+  }
+}

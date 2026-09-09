@@ -1,0 +1,863 @@
+{
+  "appearance": {
+    "boar": {
+      "source": "build/trellis-local/studio/data/output/Screenshot 2026-09-08 224118_1024_seed42_mtsp0zp4-77uj0z.glb",
+      "source_sha256": "2a889ab30879bf6a4854ebe6def3e1b696d8a411ffaee6f215c7398bebe7abef",
+      "yaw_degrees": 180,
+      "height_metres": 1.2,
+      "scar": {
+        "half_width_metres": 0.016,
+        "core_half_width_metres": 0.0045,
+        "recess_metres": 0.004,
+        "projection_step_metres": 0.012,
+        "mask_size": 2048,
+        "peak_emission": 3.2,
+        "minimum_light": 0.25,
+        "period_seconds": 4.0,
+        "crest_width": 0.18,
+        "colour": [
+          1.0,
+          0.12,
+          0.012
+        ],
+        "paths": [
+          {
+            "name": "left_shield",
+            "side": -1,
+            "width": 1.0,
+            "offset": 0.0,
+            "points": [
+              [
+                0.08,
+                1.04
+              ],
+              [
+                0.15,
+                0.99
+              ],
+              [
+                0.12,
+                0.92
+              ],
+              [
+                0.22,
+                0.86
+              ],
+              [
+                0.18,
+                0.8
+              ],
+              [
+                0.27,
+                0.73
+              ],
+              [
+                0.25,
+                0.65
+              ],
+              [
+                0.32,
+                0.58
+              ]
+            ]
+          },
+          {
+            "name": "left_rear_branch",
+            "side": -1,
+            "width": 0.7,
+            "offset": 0.33,
+            "points": [
+              [
+                0.22,
+                0.86
+              ],
+              [
+                0.05,
+                0.84
+              ],
+              [
+                -0.01,
+                0.78
+              ],
+              [
+                -0.12,
+                0.75
+              ],
+              [
+                -0.18,
+                0.68
+              ],
+              [
+                -0.27,
+                0.69
+              ]
+            ]
+          },
+          {
+            "name": "left_forward_branch",
+            "side": -1,
+            "width": 0.65,
+            "offset": 0.18,
+            "points": [
+              [
+                0.15,
+                0.99
+              ],
+              [
+                0.28,
+                0.98
+              ],
+              [
+                0.31,
+                0.91
+              ],
+              [
+                0.39,
+                0.87
+              ],
+              [
+                0.4,
+                0.8
+              ]
+            ]
+          },
+          {
+            "name": "right_shield",
+            "side": 1,
+            "width": 0.9,
+            "offset": 0.1,
+            "points": [
+              [
+                0.1,
+                1.05
+              ],
+              [
+                0.13,
+                0.99
+              ],
+              [
+                0.21,
+                0.95
+              ],
+              [
+                0.18,
+                0.88
+              ],
+              [
+                0.25,
+                0.83
+              ],
+              [
+                0.21,
+                0.75
+              ],
+              [
+                0.29,
+                0.69
+              ],
+              [
+                0.28,
+                0.59
+              ]
+            ]
+          },
+          {
+            "name": "right_branch",
+            "side": 1,
+            "width": 0.6,
+            "offset": 0.38,
+            "points": [
+              [
+                0.18,
+                0.88
+              ],
+              [
+                0.03,
+                0.86
+              ],
+              [
+                -0.05,
+                0.78
+              ],
+              [
+                -0.14,
+                0.81
+              ],
+              [
+                -0.23,
+                0.75
+              ]
+            ]
+          }
+        ]
+      },
+      "purposes": {
+        "yaw_degrees": "The inspected raw boar faces -Y. Rotate to Blender +Y front / Godot -Z front without changing anatomy.",
+        "height_metres": "Review scale from ground to tallest bristle; not a new enemy body or gameplay scale.",
+        "scar_paths": "Authored side-projected paths in normalized body Y/Z metres. Break across a few shield plates into tough hide; preserve face, joints and most coat.",
+        "half_width_metres": "Width of the dark scar mouth, separate from its narrow luminous core.",
+        "core_half_width_metres": "Keep light inside the fracture; large enough to read at ordinary encounter distance.",
+        "recess_metres": "Shallow physical incision retains solid backing and reads with emission disabled.",
+        "projection_step_metres": "Resolve the surface of individual shield plates instead of floating a tube above them.",
+        "mask_size": "Shared linear RGBA mask: core, damaged host, branch travel, opaque reserved channel; follows existing UVs through skinning.",
+        "peak_emission": "Local Red core brightness at pulse peak; does not add a light or change scene exposure.",
+        "minimum_light": "Keep a faint interior between passing crests.",
+        "period_seconds": "Smooth, visible four-second current; compared with a 2.5-second option.",
+        "crest_width": "Fraction of branch travel illuminated by the moving crest.",
+        "colour": "Ember-associated art colour; adds no Red gameplay transformation or damage."
+      }
+    },
+    "grove": {
+      "seed": 20260909,
+      "tree_height_m": 8.0,
+      "tree_triangle_target": 85000,
+      "canopy_sprays": 780,
+      "leaf_length_m": [
+        0.22,
+        0.32
+      ],
+      "leaf_width_fraction": 0.38,
+      "canopy_detail_distance_m": 18.0,
+      "canopy_detail_fade_m": 2.0,
+      "understory_attempts": 1050,
+      "terrain_size_m": [
+        64,
+        88
+      ],
+      "terrain_step_m": 0.4,
+      "route_z_m": [
+        -19,
+        19
+      ],
+      "eye_height_m": 1.65,
+      "walk_speed_m_s": 2.4,
+      "scar": {
+        "period_seconds": 4.0,
+        "peak_emission": 2.8,
+        "minimum_light": 0.22,
+        "core_half_width_m": 0.012,
+        "damage_half_width_m": 0.055,
+        "recess_m": 0.012
+      },
+      "lighting": {
+        "day": {
+          "sun": 1.5,
+          "ambient": 0.65,
+          "fog": 0.0025,
+          "sun_colour": [
+            1.0,
+            0.94,
+            0.83
+          ]
+        },
+        "shade": {
+          "sun": 0.25,
+          "ambient": 0.45,
+          "fog": 0.004,
+          "sun_colour": [
+            0.79,
+            0.87,
+            1.0
+          ]
+        },
+        "dusk": {
+          "sun": 0.4,
+          "ambient": 0.3,
+          "fog": 0.006,
+          "sun_colour": [
+            1.0,
+            0.68,
+            0.39
+          ]
+        }
+      },
+      "purpose": {
+        "seed": "Repeatable authored review layout and plant variation; never gameplay RNG.",
+        "tree_height_m": "Mature tree scale and connected canopy above the walking route.",
+        "tree_triangle_target": "Retain irregular bark/limb silhouettes while reducing the dense generated source.",
+        "canopy_sprays": "Overlapping leaf groups anchored to actual upper branches.",
+        "leaf_length_m": "Individual broadleaf size, with small natural variation.",
+        "leaf_width_fraction": "Broad folded leaves instead of angular needles.",
+        "canopy_detail_distance_m": "Keep lobed leaf outlines near the observer; the same distant sprays use simpler folded leaves.",
+        "canopy_detail_fade_m": "Two metres of transition around the canopy detail distance; no foliage group is removed.",
+        "understory_attempts": "Seeded candidate groups before excluding the walking path and water; this seed retains 834 groups in the isolated composition.",
+        "terrain_size_m": "Local composition extent including distant framing; not world generation.",
+        "terrain_step_m": "Support and contour sampling for the authored review floor.",
+        "route_z_m": "Beginning and end of the short woodland review walk.",
+        "eye_height_m": "First-person review camera above the actual support mesh.",
+        "walk_speed_m_s": "Slow observation pace in this art review, not player tuning.",
+        "scar": "Shared four-second Red ambient crest; narrow core within a wider dark physical incision. Never a work/ready or attack cue.",
+        "lighting": "Three repeatable review exposures. Sun and ambient are light energies, fog is density; bloom stays off."
+      }
+    },
+    "red": {
+      "source_sha256": "605ba13c594a0173243c1f8145958cd3c1cc6234ba74ca5358aeffd8165fe70e",
+      "source_body": [
+        1.5,
+        1.1,
+        1.5
+      ],
+      "buffer_body": [
+        1.0,
+        1.2,
+        1.0
+      ],
+      "port_height": 0.85,
+      "lod_triangles": [
+        42000,
+        12000,
+        2500
+      ],
+      "scar": {
+        "mask_size": 2048,
+        "core_half_width": 0.006,
+        "damage_half_width": 0.023,
+        "recess_metres": 0.003,
+        "period_seconds": 4.0,
+        "minimum_light": 0.25,
+        "peak_emission": 3.4,
+        "colour_srgb": [
+          1.0,
+          0.24,
+          0.035
+        ],
+        "paths": [
+          {
+            "axis": "top",
+            "points": [
+              [
+                -0.57,
+                -0.19
+              ],
+              [
+                -0.41,
+                -0.22
+              ],
+              [
+                -0.3,
+                -0.15
+              ],
+              [
+                -0.17,
+                -0.045
+              ],
+              [
+                0.025,
+                0.085
+              ],
+              [
+                0.22,
+                0.12
+              ],
+              [
+                0.48,
+                0.14
+              ]
+            ],
+            "width": 1.0,
+            "offset": 0.0
+          },
+          {
+            "axis": "top",
+            "points": [
+              [
+                0.025,
+                0.085
+              ],
+              [
+                0.115,
+                0.225
+              ],
+              [
+                0.16,
+                0.32
+              ],
+              [
+                0.22,
+                0.415
+              ]
+            ],
+            "width": 0.55,
+            "offset": 0.5
+          },
+          {
+            "axis": "front",
+            "points": [
+              [
+                -0.46,
+                0.12
+              ],
+              [
+                -0.37,
+                0.22
+              ],
+              [
+                -0.39,
+                0.33
+              ],
+              [
+                -0.25,
+                0.42
+              ],
+              [
+                -0.2,
+                0.49
+              ]
+            ],
+            "width": 0.7,
+            "offset": 0.0
+          }
+        ]
+      },
+      "presentation": {
+        "source_ready_gain": 0.6,
+        "source_work_gain": 0.8,
+        "claim_gain": 0.3,
+        "stored_gain": 0.4,
+        "working_gain": 1.0,
+        "camera_fov": 48.0
+      },
+      "purpose": {
+        "source_body": "Existing source collider, Godot XYZ metres; no placement-rule change.",
+        "buffer_body": "Existing buffer collider; all authored housing and fittings stay inside it.",
+        "port_height": "Preserves the existing thermal endpoint at 0.85 m above the fixture base.",
+        "lod_triangles": "Near/mid/far geometric detail targets; compare visible slab edges before adoption.",
+        "scar": "UV-attached 6 mm half-core in 23 mm damaged margins; 3 mm maximum additional incision. A four-second ambient breath is separate from native progress.",
+        "paths": "Inspected top XY and front XZ projections in Blender metres. Branch tips taper mostly dark.",
+        "source_ready_gain": "Subdued ready-source light; exhausted/obstructed formation has zero ready gain.",
+        "source_work_gain": "A slightly stronger core after real manual extraction steps, without animating fake timed labour.",
+        "claim_gain": "Quiet exposed mineral light on the actual source-owned claim, removed only after collection.",
+        "stored_gain": "Steady heat proportional to native stored plus reserved heat; storage never runs a work pulse.",
+        "working_gain": "Travel appears only when native firing time advances; pause, obstruction and idle stop it.",
+        "camera_fov": "48-degree review framing. Art review only, not player-camera tuning."
+      }
+    }
+  },
+  "inputs": {
+    "build\\boar-art01\\boar-handoff\\review\\boar-mid.glb": "19bfba5868dfe0d5732d69e0d5af887b1a0b699e121e511450436e38a5ffc3dc",
+    "build\\boar-art01\\boar-handoff\\review\\boar-far.glb": "ab60a8f5205404ea519d30e5403eba21a6b821ce09bb19c81f6de004478220cc",
+    "build\\grove-art02\\emberroot-handoff\\review\\quiet-tree.glb": "5847995437d85aa014f373412f82746658627f83547ee94bd13f81c6b407051f",
+    "build\\grove-art02\\emberroot-handoff\\review\\altered-tree.glb": "6fb66197e5108508e13a376aff5ee9a75098832c78a8efc1ca9444cc3d9ce668",
+    "build\\grove-art02\\emberroot-handoff\\review\\canopy-far.glb": "b09ce4d07b54332e1bc9d15b7b831b31c578a7ffac04ec935b13b199a9cb43ee",
+    "build\\grove-art02\\emberroot-handoff\\review\\fractured-rock.glb": "3b5f3c6d04fc426835184edfe53ea137e9b006442bebff4f57ed37fd84ab37a1",
+    "build\\workshop-art04\\red-handoff\\review\\red-source-mid.glb": "7b1366265915dd52eee60a9863d35b1ed90fc4816cec0e8767a819b25a91b009",
+    "build\\workshop-art04\\red-handoff\\review\\red-source-far.glb": "5e28806005774be533221e4e059cea927a1c40697049b6fbca9d83cfbbbe9158",
+    "build\\workshop-art04\\red-handoff\\review\\red-buffer-mid.glb": "b832849050883de4022f9acc8f14da7cc59d1410f400e06c36510aae7bd65766",
+    "build\\workshop-art04\\red-handoff\\review\\red-fragment-1.glb": "ef53e920ceaf3de67b3a0de4bdb9cb1b5547c7655ccc1d8068a2c96ecc903caf",
+    "build\\workshop-art04\\red-handoff\\review\\red-fragment-2.glb": "a4ab827f42c2ce1815914eaf9506a476e58821b7f3062429c7f86f93ec243510",
+    "build\\workshop-art04\\red-handoff\\review\\red-fragment-3.glb": "cb0c00c555a1367fb865c89ea97acdb06f917f68138914155728c91585019725",
+    "build\\boar-art01\\boar-handoff\\review\\base.png": "9a0f3e8880857820d18c15210607ff356cb029ca53ae253dfa15df18680e43d7",
+    "build\\boar-art01\\boar-handoff\\review\\orm.png": "15caa98c4bb00a53be5b6cd960255eaaed42a659c8d8ffaa92b1dfd1b4be37b1",
+    "build\\boar-art01\\boar-handoff\\review\\normal.png": "29e166e44d701fdbbe0bfb418567b7970877ea563108b64d6a4d1db64fc024ca",
+    "build\\boar-art01\\boar-handoff\\review\\scar-mask.png": "27a9d4aa93e95903fb637d9803bab3446f79c903da35db141975f37fcdc531e5",
+    "build\\boar-art01\\boar-handoff\\review\\far-base.png": "0b0c2d6b9cf9aa8c3e3547519f7266837471aa70e4d7e03600be131fc531d4ad",
+    "build\\boar-art01\\boar-handoff\\review\\far-orm.png": "711fa713cd2fde50cbc8e1f02846ee06f54e06638f1229ed1afed1265de13495",
+    "build\\boar-art01\\boar-handoff\\review\\far-normal.png": "061ebcdfa1a45ace02f1934f3da45cb53e824b1c2573c296636a4a0e25af9abf",
+    "build\\boar-art01\\boar-handoff\\review\\far-scar.png": "c1fdec350bbc2b9b3d5a71aa8138b263647fbc4b7c9e3666506f8d75dc4ef9af",
+    "build\\workshop-art04\\red-handoff\\review\\red-base.png": "5b9693fd31dd27d72c912051c9a10516332b0702fbba8490b52d8c2d8bf67558",
+    "build\\workshop-art04\\red-handoff\\review\\red-orm.png": "28a7979bca20e235936d2da53e512404bd72af93568c995ae9131b6ebb49443c",
+    "build\\workshop-art04\\red-handoff\\review\\red-normal.png": "f78e7e85edcf1676a544ca4ab9dc18618635ebd38cc0d972f4a467d5bb31a805",
+    "build\\workshop-art04\\red-handoff\\review\\red-scar.png": "995d8067f1bb6c79784da8544d3f344776055ed10521022028ef98da9bb00cfd",
+    "build\\grove-art02\\emberroot-handoff\\review\\tree-base.png": "ac7bf54d9b5250f586ffe113a7aefd990843c022854da123fc4d95d78b9e0416",
+    "build\\grove-art02\\emberroot-handoff\\review\\tree-orm.png": "890c1238a247b8ab8a7572f230cd7067ddd86ea503534fd77d5cd09aab20560b",
+    "build\\grove-art02\\emberroot-handoff\\review\\tree-normal.png": "3b9ad8d97b38c1ecf9260e82960fbd26bdd6aad2b5d36bdc1992486169f71286",
+    "build\\grove-art02\\emberroot-handoff\\review\\tree-scar.png": "9717d348db27bf7ff6d1e65e23794def303224705ff5c1826d657685c58d64f0",
+    "build\\grove-art02\\emberroot-handoff\\review\\rock-base.png": "941b29d509ce04b52a5bf2f0eb2c6722d07b730c96dbbc5032aeee26cd884531",
+    "build\\grove-art02\\emberroot-handoff\\review\\rock-orm.png": "c80d6bb4cd7a7e2e909a8cbd0232dde7e2cf405db788afa76cc18e7989787966",
+    "build\\grove-art02\\emberroot-handoff\\review\\rock-scar.png": "89af38a522a3ea38e63262d9bd6d3f3d0631e8a6a8350907ff6573f0c00c9fe6",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-1-base.png": "ad58f394e8ae2b61b560985c9a7723c054589c64fdcb13205d9883c41bd5d37e",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-1-orm.png": "3c4423ae0a78396a44ceee0372128e12d514ed4c2d7d5988af26405f75bad116",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-1-normal.png": "53ce1c48b6eabe71bf866080bb49410795a62ea8fdbb02251ad4f818c3edd9f0",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-1-scar.png": "3a00a0a101c9a216abb15a85451f5348d6fd29759cc17df5cfa2bd4c2034533e",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-2-base.png": "fe370535bd15e2c39e9ee993e41f26e6b53b8e69ef4d2d6143f19107597f16cb",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-2-orm.png": "82def616246f502e9da32a2a80e9fbb2df508fd169663d163d778cefc3070664",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-2-normal.png": "575a8c36856438c77a037b9e3bf153e006c146526fefee3d9a3789a88af6d3e7",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-2-scar.png": "46f4cbb5f7b7c40929b3b56aa00c75f82ef5e5dc543f0365981a39e4eac531fa",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-3-base.png": "22e166c2d66e3845ea5263807a68235840d3c2b46ead3418d29603c32be0ec8d",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-3-orm.png": "4a614353949eb6e5d27cc07785519acae987e3468cd08adbd07c5f4c420e0ed2",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-3-normal.png": "f8d923e88db5b5cfa523e74728abdab898265ad379571261fc1b94e987b13f4b",
+    "build\\workshop-art04\\red-handoff\\review\\fragment-3-scar.png": "a7b90642afcedb7037727301c15362aada87de593b600139b25d567825cf60b8",
+    "build\\boar-art01\\boar-handoff\\review\\boar-study.json": "9d807524f1679f52d2ffe3629a7cc0eacf1770d51a2f71b91218c87c1cfdcbe5",
+    "build\\grove-art02\\emberroot-handoff\\review\\grove.json": "e168242c0a7319ba79c3b30d4ee91d670b0775f64ceac695df0597678b925b69",
+    "build\\workshop-art04\\red-handoff\\review\\red.json": "24c34d54e81d291e016afb77c331893ca904de346383ef1db56697cd5f7e19ae"
+  },
+  "models": {
+    "boar-mid": {
+      "source": "build\\boar-art01\\boar-handoff\\review\\boar-mid.glb",
+      "bytes": 7147680,
+      "triangles": 64983,
+      "animations": [
+        "idle",
+        "walk",
+        "root",
+        "turn",
+        "windup",
+        "release"
+      ]
+    },
+    "boar-far": {
+      "source": "build\\boar-art01\\boar-handoff\\review\\boar-far.glb",
+      "bytes": 735396,
+      "triangles": 10000,
+      "animations": [
+        "idle",
+        "walk",
+        "root",
+        "turn",
+        "windup",
+        "release"
+      ]
+    },
+    "quiet-tree": {
+      "source": "build\\grove-art02\\emberroot-handoff\\review\\quiet-tree.glb",
+      "bytes": 4053388,
+      "triangles": 84990,
+      "animations": []
+    },
+    "altered-tree": {
+      "source": "build\\grove-art02\\emberroot-handoff\\review\\altered-tree.glb",
+      "bytes": 4053424,
+      "triangles": 84990,
+      "animations": []
+    },
+    "canopy-far": {
+      "source": "build\\grove-art02\\emberroot-handoff\\review\\canopy-far.glb",
+      "bytes": 5615672,
+      "triangles": 85800,
+      "animations": []
+    },
+    "fractured-rock": {
+      "source": "build\\grove-art02\\emberroot-handoff\\review\\fractured-rock.glb",
+      "bytes": 2404356,
+      "triangles": 54996,
+      "animations": []
+    },
+    "red-source-mid": {
+      "source": "build\\workshop-art04\\red-handoff\\review\\red-source-mid.glb",
+      "bytes": 521208,
+      "triangles": 11999,
+      "animations": []
+    },
+    "red-source-far": {
+      "source": "build\\workshop-art04\\red-handoff\\review\\red-source-far.glb",
+      "bytes": 146180,
+      "triangles": 2499,
+      "animations": []
+    },
+    "red-buffer-mid": {
+      "source": "build\\workshop-art04\\red-handoff\\review\\red-buffer-mid.glb",
+      "bytes": 709536,
+      "triangles": 15617,
+      "animations": []
+    },
+    "red-fragment-1": {
+      "source": "build\\workshop-art04\\red-handoff\\review\\red-fragment-1.glb",
+      "bytes": 68612,
+      "triangles": 1800,
+      "animations": []
+    },
+    "red-fragment-2": {
+      "source": "build\\workshop-art04\\red-handoff\\review\\red-fragment-2.glb",
+      "bytes": 68804,
+      "triangles": 1800,
+      "animations": []
+    },
+    "red-fragment-3": {
+      "source": "build\\workshop-art04\\red-handoff\\review\\red-fragment-3.glb",
+      "bytes": 71652,
+      "triangles": 1800,
+      "animations": []
+    }
+  },
+  "bindings": {
+    "boar": {
+      "base": "textures/fafec074e6e5afc494537bef.png",
+      "orm": "textures/35fb8601ef22fa938d8a7a11.png",
+      "normal": "textures/0974af1be20b947c1b1493a5.png",
+      "scar": "textures/51558aceec36839c079ff28c.png"
+    },
+    "boar-far": {
+      "base": "textures/f7f74ccc5b84ce14c892677b.png",
+      "orm": "textures/87f2c24d94c774be881e0296.png",
+      "normal": "textures/306a712f0829e17a97838bcf.png",
+      "scar": "textures/c16cf7b116775eb8ec085a7f.png"
+    },
+    "red": {
+      "base": "textures/615ba27cda498236f4b72461.png",
+      "orm": "textures/9be6e5519f1576c2ed3cd6df.png",
+      "normal": "textures/e7bee69a0353a627e2e8accb.png",
+      "scar": "textures/869be0f926f679782615f5f5.png"
+    },
+    "tree": {
+      "base": "textures/22d414ae32ba70f45c694b38.png",
+      "orm": "textures/7b6ef6c09a7785bc2ee9985a.png",
+      "normal": "textures/e99f32b63c50481df84c5d17.png",
+      "scar": "textures/baa02a2d2259791d87dccfca.png"
+    },
+    "rock": {
+      "base": "textures/60f364d4d8239deffa42c66e.png",
+      "orm": "textures/8a6e2e18cbb0e8fba020878e.png",
+      "scar": "textures/acaa968677d5a572a6690a04.png"
+    },
+    "fragment-1": {
+      "base": "textures/c5c57ee455becab13cf87210.png",
+      "orm": "textures/27f218d3a46f51a48b873314.png",
+      "normal": "textures/2694129dde952056afcc9942.png",
+      "scar": "textures/1823f6357a0e14d40673e447.png"
+    },
+    "fragment-2": {
+      "base": "textures/51008b7dc34e61c522bcc953.png",
+      "orm": "textures/5a574e6f8bc3fec9f65c7568.png",
+      "normal": "textures/4fc01094f54cba49d9525dde.png",
+      "scar": "textures/66b07af1c6f4f268c0cd7af7.png"
+    },
+    "fragment-3": {
+      "base": "textures/a9e8409c82822645acdaceb9.png",
+      "orm": "textures/5755e912691f775f7849a017.png",
+      "normal": "textures/7e434332f66cca415f77e5d0.png",
+      "scar": "textures/7a02560fd1ada75cc3207498.png"
+    }
+  },
+  "textures": {
+    "0974af1be20b947c1b1493a5.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 8650268
+    },
+    "fafec074e6e5afc494537bef.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 8532266
+    },
+    "35fb8601ef22fa938d8a7a11.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 4696845
+    },
+    "306a712f0829e17a97838bcf.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 1042572
+    },
+    "f7f74ccc5b84ce14c892677b.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 916841
+    },
+    "87f2c24d94c774be881e0296.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 943597
+    },
+    "22d414ae32ba70f45c694b38.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 6967606
+    },
+    "7b6ef6c09a7785bc2ee9985a.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 2825346
+    },
+    "60f364d4d8239deffa42c66e.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 7918536
+    },
+    "8a6e2e18cbb0e8fba020878e.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 2423604
+    },
+    "869be0f926f679782615f5f5.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 881894
+    },
+    "9be6e5519f1576c2ed3cd6df.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 2648215
+    },
+    "b54691b26d255d2666d86736.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 3624307
+    },
+    "da50b0d17e27835bea32c83e.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 2519950
+    },
+    "c04fc055788c0b15be66ea78.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 58809
+    },
+    "2694129dde952056afcc9942.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 493090
+    },
+    "c5c57ee455becab13cf87210.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 769476
+    },
+    "27f218d3a46f51a48b873314.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 276851
+    },
+    "4fc01094f54cba49d9525dde.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 403402
+    },
+    "51008b7dc34e61c522bcc953.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 637206
+    },
+    "5a574e6f8bc3fec9f65c7568.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 225679
+    },
+    "7e434332f66cca415f77e5d0.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 448561
+    },
+    "a9e8409c82822645acdaceb9.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 760691
+    },
+    "5755e912691f775f7849a017.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 272078
+    },
+    "51558aceec36839c079ff28c.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 1249458
+    },
+    "c16cf7b116775eb8ec085a7f.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 278322
+    },
+    "615ba27cda498236f4b72461.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 7644866
+    },
+    "e7bee69a0353a627e2e8accb.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 208343
+    },
+    "e99f32b63c50481df84c5d17.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 6672258
+    },
+    "baa02a2d2259791d87dccfca.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 1048830
+    },
+    "acaa968677d5a572a6690a04.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 637361
+    },
+    "1823f6357a0e14d40673e447.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 131780
+    },
+    "66b07af1c6f4f268c0cd7af7.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 136889
+    },
+    "7a02560fd1ada75cc3207498.png": {
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 112559
+    }
+  },
+  "texture_bytes": 77058356,
+  "note": "Geometry, skin weights and animation accessors preserved byte-for-byte. Shared external PNGs, maximum 2048 pixels. Raw handoffs untouched."
+}
