@@ -495,9 +495,12 @@ func show_central_control(finale: bool=false) -> void:
 	var rows:Array=[]
 	if central_ending_save_pending:
 		rows.append({"text":"Control and rewards are yours in this session, but the ending could not be saved. Retry before leaving.","button":"Retry ending save","callback":_retry_central_save})
+	for gate in get_tree().get_nodes_in_group("laboratory_gates"):
+		if String(gate.get_meta("run_id",""))=="forge_capstone":
+			rows.append({"text":"Choose a saved offer, unlocked tier and one optional pressure. Preview building materials, equipment and a contraption core.","button":"Configure experiment","enabled":not central_ending_save_pending,"callback":gate.open_captured_maps.bind(self)})
 	var story:="The Conservator's restraints open. Beneath the mineral scars there was still a human hand, holding the return circuit shut. You lower it and release the apparatus from its last command.\n\n" if finale else ""
 	var status:="The ending still needs a successful save." if central_ending_save_pending else "Your ending and rewards are saved."
-	open_custom_panel("The last claim is released" if finale else "Central Laboratory — your controls",rows,story+"The controls now answer to you. Retained Fen and Excited Uplands keep their changed shapes; no third resonance follows.\n\nFuture experiments can be configured here when those controls become available. For now the apparatus is safely at rest.\n\n"+status)
+	open_custom_panel("The last claim is released" if finale else "Central Laboratory — your controls",rows,story+"The controls now answer to you. Retained Fen and Excited Uplands keep their changed shapes; no third resonance follows.\n\nUse the captured chambers for contained Forge creature trials. The Conservator remains defeated. Field materials, fuel and ordinary crafting still supply your build and workshop.\n\n"+status)
 
 func _retry_central_save() -> void:
 	save_game()

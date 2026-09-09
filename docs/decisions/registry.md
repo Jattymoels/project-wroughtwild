@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner implementation authorization, 9 September 2026: implement **Living
+Frontier Wave 7 only**, LF-7A then LF-7B, following the independent Wave 6
+clearance, and stop for orchestrator review. The [bounded configuration contract](../prototype/living-frontier-wave7-2026-09-09.md)
+extends D-028's saved offers at captured Central. One optional compatible
+Crossfire or Relentless pressure supplements the unchanged roll and increases
+only targeted building-source haul. Known creature bosses replace no human
+ending; the LF equipment cache pays gear without a guaranteed Catalyst.
+Three eras, both terrain ledgers, published ownership and legacy Forge rewards
+remain. No further transformation, currency, grade ladder or production scope.
+This supersedes the Wave-6-only closure solely for the selected LF-7A/B work.
+
 Owner implementation authorization, 9 September 2026: repair and verify
 **LF5-R1 first**, then implement **Living Frontier Wave 6 only**, LF-6A/B, and
 stop for orchestrator review. The [bounded contract and repair evidence](../prototype/living-frontier-wave6-2026-09-09.md)

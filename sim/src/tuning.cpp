@@ -1341,6 +1341,13 @@ TrialTable loadTrial(const std::string& path) {
             for (const auto& [target, counts] : components->asObject()) table.mapCompletionComponents[target]=readIntMap(*counts);
         for (const auto& pool : maps->get("target_pools").asArray()) table.mapTargetPools.push_back(readStringArray(*pool));
     }
+    if (auto experiment = doc->find("laboratory_experiment")) {
+        table.laboratoryMaxTier = experiment->get("max_tier").asInt();
+        table.laboratoryPressureHaulMultiplier = experiment->get("pressure_target_haul_multiplier").asNumber();
+        table.laboratoryPressures = readStringArray(experiment->get("pressures"));
+        if (table.laboratoryMaxTier < 1 || !std::isfinite(table.laboratoryPressureHaulMultiplier) || table.laboratoryPressureHaulMultiplier < 1)
+            throw std::runtime_error("trial: invalid laboratory limits");
+    }
     if (auto conditions = doc->find("conditions")) {
         for (const auto& c : conditions->asArray()) {
             TrialCondition def;
@@ -1354,6 +1361,8 @@ TrialTable loadTrial(const std::string& path) {
             table.conditions.push_back(std::move(def));
         }
     }
+    for (const auto& pressure : table.laboratoryPressures)
+        if (!table.findCondition(pressure)) throw std::runtime_error("trial: unknown laboratory pressure");
     if (auto expeditions = doc->find("expeditions")) {
         for (const auto& f : expeditions->asArray()) {
             TrialFloor run;

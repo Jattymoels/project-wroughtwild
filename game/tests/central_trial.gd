@@ -51,7 +51,7 @@ func _run() -> void:
 		check_preserved(disk,manager.capture(player))
 		check_controls(true)
 		check(sim.world_effect_active("forge_arc_complete") && int(sim.era().index)==3 && not sim.trial_start_story(12,"forge_capstone"),"completed human cannot return or cause a fourth era")
-		check(not bool(sim.trial_map_progress().available),"optional configured experiments remain Wave 7")
+		check(bool(sim.trial_map_progress().available),"Wave 7 experiments open only after the retained ending")
 		var once:=sim.export_json()
 		for repeat in 2:
 			player.show_central_control()
@@ -120,7 +120,7 @@ func _run() -> void:
 	var before_native:Dictionary=JSON.parse_string(before_world.sim).economy
 	check(JSON.parse_string(sim.resonance_json())==before_native.resonance && JSON.parse_string(sim.resonance_second_json())==before_native.resonance_second,"ending preserves both physical event ledgers")
 	check(manager.write(CENTRAL_ENDING,player),"retain actual finished battle for fresh-process recovery")
-	check(not sim.trial_start_story(12,"forge_capstone") && not bool(sim.trial_map_progress().available),"story replay and Wave 7 maps remain unavailable")
+	check(not sim.trial_start_story(12,"forge_capstone") && bool(sim.trial_map_progress().available),"story replay remains closed while captured experiments are available")
 	finish_central()
 
 func _start_native_route() -> bool:

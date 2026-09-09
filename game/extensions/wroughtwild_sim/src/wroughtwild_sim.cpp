@@ -393,8 +393,8 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("trial_story_runs"), &WroughtwildSim::trial_story_runs);
     ClassDB::bind_method(D_METHOD("trial_layout"), &WroughtwildSim::trial_layout);
     ClassDB::bind_method(D_METHOD("trial_rules"), &WroughtwildSim::trial_rules);
-    ClassDB::bind_method(D_METHOD("trial_map_offers", "tier"), &WroughtwildSim::trial_map_offers);
-    ClassDB::bind_method(D_METHOD("trial_start_map", "tier", "offer_index"), &WroughtwildSim::trial_start_map);
+    ClassDB::bind_method(D_METHOD("trial_map_offers", "tier", "pressure"), &WroughtwildSim::trial_map_offers, DEFVAL(String("")));
+    ClassDB::bind_method(D_METHOD("trial_start_map", "tier", "offer_index", "pressure", "expected_offer_id"), &WroughtwildSim::trial_start_map, DEFVAL(String("")), DEFVAL(String("")));
     ClassDB::bind_method(D_METHOD("trial_map_progress"), &WroughtwildSim::trial_map_progress);
     ClassDB::bind_method(D_METHOD("trial_continue_floor"), &WroughtwildSim::trial_continue_floor);
     ClassDB::bind_method(D_METHOD("trial_skip_reward"), &WroughtwildSim::trial_skip_reward);
@@ -608,7 +608,8 @@ Dictionary WroughtwildSim::trial_resolve_room(bool victory) {
         return d;
     }
     const auto outcome = trial_->resolveRoom(victory);
-    if (outcome.rewardType == "completion" && trial_->tier() > 0 && trial_->bossDefeated())
+    if (outcome.rewardType == "completion" && trial_->tier() > 0 && trial_->bossDefeated() &&
+        (!trial_->laboratoryExperiment() || trial_->tier() < tuning_->trial.laboratoryMaxTier))
         trial_gate_.clearedMap(trial_->tier());
     d["reward_type"] = to_godot(outcome.rewardType);
     Array offer;
@@ -2520,6 +2521,9 @@ Dictionary WroughtwildSim::trial_layout() const {
     Dictionary out;
     if (!trial_ || trial_->runKind() == "legacy") return out;
     out["run_id"] = to_godot(trial_->runId());
+    out["laboratory_experiment"] = trial_->laboratoryExperiment();
+    out["pressure"] = to_godot(trial_->pressure());
+    out["target_haul_multiplier"] = trial_->targetHaulMultiplier();
     if (player_->campaignPolicy==wroughtwild::resonance::campaign) out["laboratory"] = true;
     if (player_->campaignPolicy==wroughtwild::resonance::campaign && trial_->runId()=="deep_forge") out["pairing_laboratory"] = true;
     if (player_->campaignPolicy==wroughtwild::resonance::campaign && trial_->runId()=="forge_capstone") out["central_laboratory"] = true;
@@ -2574,17 +2578,39 @@ Dictionary WroughtwildSim::trial_layout() const {
 Dictionary WroughtwildSim::trial_map_progress() const {
     Dictionary out;
     if (!require_loaded("trial_map_progress")) return out;
-    out["available"] = player_->campaignPolicy!=wroughtwild::resonance::campaign && player_->worldEffectActive("forge_arc_complete");
-    out["max_tier"] = trial_gate_.maxTier;
+    const bool laboratory = player_->campaignPolicy==wroughtwild::resonance::campaign;
+    out["available"] = player_->worldEffectActive("forge_arc_complete") && (!laboratory || player_->secondResonance.campaignAward);
+    out["laboratory_experiment"] = laboratory;
+    out["max_tier"] = laboratory ? std::min(trial_gate_.maxTier, tuning_->trial.laboratoryMaxTier) : trial_gate_.maxTier;
+    out["last_tier"] = trial_gate_.lastTier;
+    out["last_pressure"] = to_godot(trial_gate_.lastPressure);
+    out["pressure_haul_multiplier"] = tuning_->trial.laboratoryPressureHaulMultiplier;
+    Array pressures;
+    if (laboratory) for (const auto& id : tuning_->trial.laboratoryPressures) {
+        const auto& def = *tuning_->trial.findCondition(id);
+        Dictionary p;
+        p["id"] = to_godot(id); p["display_name"] = to_godot(def.displayName); p["description"] = to_godot(def.description);
+        pressures.push_back(p);
+    }
+    out["pressures"] = pressures;
     return out;
 }
 
-Array WroughtwildSim::trial_map_offers(int tier) const {
+Array WroughtwildSim::trial_map_offers(int tier, const String& pressure) const {
     Array out;
     if (!require_loaded("trial_map_offers") || !player_->worldEffectActive("forge_arc_complete")) return out;
-    if(player_->campaignPolicy==wroughtwild::resonance::campaign)return out;
-    for (const auto& offer : wroughtwild::trial::mapOffers(*tuning_, trial_gate_, tier)) {
+    const bool laboratory = player_->campaignPolicy==wroughtwild::resonance::campaign;
+    if (laboratory && (!player_->secondResonance.campaignAward || tier > tuning_->trial.laboratoryMaxTier)) return out;
+    if (!laboratory && !pressure.is_empty()) return out;
+    for (auto offer : wroughtwild::trial::mapOffers(*tuning_, trial_gate_, tier)) {
         Dictionary d;
+        const auto refusal = laboratory ? wroughtwild::trial::configureLaboratory(*tuning_, offer, to_std(pressure)) : std::string();
+        d["available"] = refusal.empty();
+        d["refusal"] = to_godot(refusal);
+        d["pressure"] = pressure;
+        d["target_haul_multiplier"] = offer.targetHaulMultiplier;
+        d["enemy_life_multiplier"] = 1.0 + tuning_->trial.mapLifePerTier * (tier - 1);
+        d["enemy_damage_multiplier"] = 1.0 + tuning_->trial.mapDamagePerTier * (tier - 1);
         d["id"] = to_godot(offer.id);
         d["seed"] = static_cast<int64_t>(offer.seed);
         d["tier"] = offer.tier;
@@ -2592,8 +2618,20 @@ Array WroughtwildSim::trial_map_offers(int tier) const {
         auto component=tuning_->trial.mapCompletionComponents.find(offer.materialTarget);
         d["completion_components"]=component==tuning_->trial.mapCompletionComponents.end() ? Dictionary() : to_dictionary(component->second);
         d["reward_multiplier"] = offer.rewardMultiplier;
-        auto haul = tuning_->trial.mapHaulUnits.find(offer.materialTarget);
-        d["target_haul_units"] = haul == tuning_->trial.mapHaulUnits.end() ? 0 : static_cast<int>(std::floor(haul->second * offer.rewardMultiplier));
+        const int haul = wroughtwild::trial::targetHaul(*tuning_, offer);
+        d["target_haul_units"] = haul;
+        d["secret_materials"] = to_dictionary(std::map<std::string,int>{{offer.materialTarget,haul}});
+        std::map<std::string,int> cache;
+        for (const auto& [id, units] : tuning_->trial.materialsReward) cache[id] = static_cast<int>(std::floor(units * offer.rewardMultiplier));
+        cache[offer.materialTarget] += haul;
+        d["cache_materials"] = to_dictionary(cache);
+        Array gear;
+        for (const auto& reward : {"materials", "catalyst", "completion"}) {
+            const auto& item = tuning_->trial.itemRewards.at(reward);
+            Dictionary g; g["rarity"] = to_godot(item.rarity); g["tier"] = item.tier;
+            gear.push_back(g);
+        }
+        d["equipment_rewards"] = gear;
         d["boss_id"] = to_godot(offer.bossId);
         for (const auto& run : tuning_->trial.expeditions)
             if (run.boss.id == offer.bossId) d["boss_preview"] = to_godot(run.bossPreview);
@@ -2613,14 +2651,19 @@ Array WroughtwildSim::trial_map_offers(int tier) const {
     return out;
 }
 
-bool WroughtwildSim::trial_start_map(int tier, int offer_index) {
+bool WroughtwildSim::trial_start_map(int tier, int offer_index, const String& pressure, const String& expected_offer_id) {
     if (!require_loaded("trial_start_map") || trial_ || !player_->worldEffectActive("forge_arc_complete")) return false;
-    if (player_->campaignPolicy == wroughtwild::resonance::campaign) return false;
+    const bool laboratory = player_->campaignPolicy == wroughtwild::resonance::campaign;
+    if (!laboratory && !pressure.is_empty()) return false;
     const auto offers = wroughtwild::trial::mapOffers(*tuning_, trial_gate_, tier);
     if (offer_index < 0 || offer_index >= static_cast<int>(offers.size())) return false;
-    auto run = std::make_unique<wroughtwild::trial::TrialSession>(*tuning_, *player_, build_tags(), offers[static_cast<size_t>(offer_index)]);
+    auto offer = offers[static_cast<size_t>(offer_index)];
+    if (!expected_offer_id.is_empty() && to_std(expected_offer_id) != offer.id) return false;
+    if (laboratory && (!player_->secondResonance.campaignAward || !wroughtwild::trial::configureLaboratory(*tuning_, offer, to_std(pressure)).empty())) return false;
+    auto run = std::make_unique<wroughtwild::trial::TrialSession>(*tuning_, *player_, build_tags(), offer);
     trial_ = std::move(run);
     trial_gate_.enteredMap();
+    if (laboratory) { trial_gate_.lastTier = tier; trial_gate_.lastPressure = to_std(pressure); }
     return true;
 }
 

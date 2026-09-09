@@ -12,7 +12,7 @@ extends RefCounted
 const SCHEMA_VERSION := 2
 const DEFAULT_PATH := "user://wroughtwild_save.json"
 static func default_path() -> String:
-	if OS.get_cmdline_user_args().has("--living-frontier-wave4") or OS.get_cmdline_user_args().has("--living-frontier-wave5") or OS.get_cmdline_user_args().has("--living-frontier-wave6"): return "user://living_frontier_wave4.json"
+	if OS.get_cmdline_user_args().has("--living-frontier-wave4") or OS.get_cmdline_user_args().has("--living-frontier-wave5") or OS.get_cmdline_user_args().has("--living-frontier-wave6") or OS.get_cmdline_user_args().has("--living-frontier-wave7"): return "user://living_frontier_wave4.json"
 	if OS.get_cmdline_user_args().has("--living-frontier-wave3"): return "user://living_frontier_wave3.json"
 	return "user://living_frontier_wave1.json" if OS.get_cmdline_user_args().has("--living-frontier") else DEFAULT_PATH
 

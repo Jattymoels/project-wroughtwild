@@ -593,8 +593,8 @@ public:
     Array trial_story_runs() const;
     Dictionary trial_layout() const;
     Dictionary trial_rules() const;
-    Array trial_map_offers(int tier) const;
-    bool trial_start_map(int tier, int offer_index);
+    Array trial_map_offers(int tier, const String& pressure) const;
+    bool trial_start_map(int tier, int offer_index, const String& pressure, const String& expected_offer_id);
     Dictionary trial_map_progress() const;
     bool trial_continue_floor();
     void trial_skip_reward();

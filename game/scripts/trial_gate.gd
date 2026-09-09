@@ -3,6 +3,7 @@ extends StaticBody3D
 ## Entry previews never deposit or roll anything. The simulation validates
 ## the chosen story/offer and only successful entry consumes an offer batch.
 var selected_tier:=1
+var selected_pressure:=""
 
 
 func interact(player: WroughtwildPlayer) -> void:
@@ -30,6 +31,9 @@ func show_maps(player: WroughtwildPlayer,tier: int) -> void:
 	var sim:=player.inventory.get_sim()
 	var progress: Dictionary=sim.call("trial_map_progress")
 	if not bool(progress.get("available",false)): return
+	if bool(progress.get("laboratory_experiment",false)):
+		_show_laboratory_maps(player,tier,progress)
+		return
 	selected_tier=clampi(tier,1,int(progress["max_tier"]))
 	var rows: Array=[]
 	rows.append({"text":"Choose a lower unlocked difficulty.","button":"Tier %d"%maxi(1,selected_tier-1),"enabled":selected_tier>1,"callback":show_maps.bind(player,selected_tier-1)})
@@ -46,9 +50,41 @@ func show_maps(player: WroughtwildPlayer,tier: int) -> void:
 	rows.append({"text":"Return to the story trials.","button":"Back","callback":interact.bind(player)})
 	player.open_custom_panel("Forge trial · Tier %d"%selected_tier,rows,"One floor · Two boon shrines · Conditions and rewards stay fixed until entry.")
 
-func _map(player: WroughtwildPlayer,tier: int,index: int) -> void:
+func open_captured_maps(player: WroughtwildPlayer) -> void:
+	var progress:=player.inventory.get_sim().trial_map_progress()
+	selected_pressure=String(progress.get("last_pressure",""))
+	show_maps(player,int(progress.get("last_tier",1)))
+
+func _show_laboratory_maps(player: WroughtwildPlayer,tier: int,progress: Dictionary) -> void:
+	selected_tier=clampi(tier,1,int(progress.max_tier))
+	var rows:Array=[
+		{"text":"Lower unlocked difficulty.","button":"Tier %d"%maxi(1,selected_tier-1),"enabled":selected_tier>1,"callback":show_maps.bind(player,selected_tier-1)},
+		{"text":"Clear the highest tier to unlock another, up to tier ten.","button":"Tier %d"%(selected_tier+1),"enabled":selected_tier<int(progress.max_tier),"callback":show_maps.bind(player,selected_tier+1)},
+		{"text":"Keep only the saved rolled conditions.","button":"No extra pressure"+(" · selected" if selected_pressure.is_empty() else ""),"callback":_pressure.bind(player,"")}
+	]
+	for pressure:Dictionary in progress.pressures:
+		rows.append({"text":String(pressure.description)+" Targeted material haul ×%.2f; other rewards unchanged."%float(progress.pressure_haul_multiplier),"button":String(pressure.display_name)+(" · selected" if selected_pressure==String(pressure.id) else ""),"callback":_pressure.bind(player,String(pressure.id))})
+	var offers:=player.inventory.get_sim().trial_map_offers(selected_tier,selected_pressure)
+	for i in offers.size():
+		var offer:Dictionary=offers[i]
+		var details:=PackedStringArray()
+		for condition:Dictionary in offer.conditions:
+			details.append("%s%s: %s"%["Added · " if String(condition.id)==selected_pressure and bool(offer.available) else "Rolled · ",condition.display_name,condition.description])
+		var gear:=PackedStringArray()
+		for item:Dictionary in offer.equipment_rewards:gear.append("%s tier %d"%[item.rarity,int(item.tier)])
+		var rewards:="Cache: %s. Optional secret: %s.\nBoss: %s. Gear: %s (one each)."%[WorkPanel.amounts_text(offer.cache_materials),WorkPanel.amounts_text(offer.secret_materials),WorkPanel.amounts_text(offer.completion_components),", ".join(gear)]
+		rows.append({"text":"[b]Run %d · %s[/b]\n%s\nOpponent: %s · enemy life ×%.2f / damage ×%.2f\n%s\n%s"%[i+1,Hud.pretty(String(offer.material_target)),"\n".join(details),Hud.pretty(String(offer.boss_id)),float(offer.enemy_life_multiplier),float(offer.enemy_damage_multiplier),rewards,String(offer.refusal)],"button":"Enter run %d"%(i+1) if bool(offer.available) else "Incompatible","enabled":bool(offer.available),"callback":_map.bind(player,selected_tier,i,selected_pressure,String(offer.id))})
+	rows.append({"text":"Inspect the captured apparatus.","button":"Back","callback":player.show_central_control})
+	player.open_custom_panel("Controlled laboratory · Tier %d"%selected_tier,rows,"Five rooms · One floor · Two boon choices. Creature trials; the human remains defeated. Preview quantities precede temporary boons. No guaranteed Catalyst or grade increase. Bank before the boss to keep earned loot; death loses it. Active experiments cannot be saved. Run pressure changes neither the era nor crafting heat.")
+
+func _pressure(player: WroughtwildPlayer,id: String) -> void:
+	selected_pressure=id
+	show_maps(player,selected_tier)
+
+func _map(player: WroughtwildPlayer,tier: int,index: int,pressure: String="",offer_id: String="") -> void:
+	if player.global_position.distance_to(global_position)>player.interact_range+2: return
 	player.work_panel.close_panel()
-	if not player.trial.begin_map(tier,index): player.hud.notify("That run could not be opened. Review the gate again.")
+	if not player.trial.begin_map(tier,index,pressure,offer_id): player.hud.notify("That run could not be opened. Review the controls again.")
 
 
 func _descend(player: WroughtwildPlayer, floor_id: String) -> void:

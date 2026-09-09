@@ -190,6 +190,8 @@ done
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/central_recovery.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/central_recovery.tscn -- --lf6-death-restart
 echo "== main scene smoke run (120 frames) =="
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_experiment.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_pressure_effects.tscn
 "$GODOT" --headless --path . --quit-after 120
 
 echo "All headless checks passed."

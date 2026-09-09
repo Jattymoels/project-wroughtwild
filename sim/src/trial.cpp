@@ -64,6 +64,7 @@ tuning::TrialFloor mapFloor(const tuning::Tuning& tuning, const MapOffer& offer)
     tuning::TrialFloor run;
     run.id = offer.id;
     run.displayName = "Forge Expedition - tier " + std::to_string(offer.tier);
+    if (offer.laboratory) run.displayName = "Controlled Laboratory - tier " + std::to_string(offer.tier);
     run.boss = source->boss;
     run.runKind = "map";
     run.completionText = "The expedition is cleared. Its spoils are secured.";
@@ -74,7 +75,7 @@ tuning::TrialFloor mapFloor(const tuning::Tuning& tuning, const MapOffer& offer)
         room.id = "map_room_" + std::to_string(i);
         room.displayName = i == 4 ? source->boss.displayName : "The Forge Passage";
         room.module = offer.moduleOrder[static_cast<size_t>(i)];
-        room.reward = rewards[static_cast<size_t>(i)];
+        room.reward = offer.laboratory && i == 3 ? "equipment" : rewards[static_cast<size_t>(i)];
         if (i == 4) room.encounter = source->stages.back().choices.front().encounter;
         else {
             const auto& stage = source->stages[static_cast<size_t>(i) % source->stages.size()];
@@ -93,7 +94,9 @@ void GateState::clearedMap(int tier) {
     if (tier >= 1 && tier <= maxTier && tier < std::numeric_limits<int>::max()) maxTier = std::max(maxTier, tier + 1);
 }
 std::string GateState::toJson() const {
-    return "{\"version\":1,\"batch_seed\":\"" + std::to_string(batchSeed) + "\",\"max_tier\":" + std::to_string(maxTier) + "}";
+    std::string remembered;
+    if (lastTier != 1 || !lastPressure.empty()) remembered = ",\"last_tier\":" + std::to_string(lastTier) + ",\"last_pressure\":\"" + lastPressure + "\"";
+    return "{\"version\":1,\"batch_seed\":\"" + std::to_string(batchSeed) + "\",\"max_tier\":" + std::to_string(maxTier) + remembered + "}";
 }
 GateState GateState::fromJson(const std::string& text) {
     auto value = json::parse(text);
@@ -102,6 +105,11 @@ GateState GateState::fromJson(const std::string& text) {
     state.batchSeed = unsignedInteger(value->get("batch_seed").asString());
     state.maxTier = value->get("max_tier").asInt();
     if (state.maxTier < 1) throw std::runtime_error("trial gate: invalid tier");
+    if (auto tier = value->find("last_tier")) state.lastTier = tier->asInt();
+    if (auto pressure = value->find("last_pressure")) state.lastPressure = pressure->asString();
+    if (state.lastTier < 1 || state.lastTier > state.maxTier ||
+        state.lastPressure.find_first_not_of("abcdefghijklmnopqrstuvwxyz_") != std::string::npos)
+        throw std::runtime_error("trial gate: invalid remembered configuration");
     return state;
 }
 std::vector<MapOffer> mapOffers(const tuning::Tuning& tuning, const GateState& gate, int tier) {
@@ -155,6 +163,43 @@ std::vector<MapOffer> mapOffers(const tuning::Tuning& tuning, const GateState& g
     return offers;
 }
 
+std::string configureLaboratory(const tuning::Tuning& tuning, MapOffer& offer, const std::string& pressure) {
+    if (offer.laboratory) return "This offer is already configured.";
+    if (offer.tier < 1 || offer.tier > tuning.trial.laboratoryMaxTier) return "This tier is outside the laboratory limit.";
+    if (!pressure.empty()) {
+        if (std::find(tuning.trial.laboratoryPressures.begin(), tuning.trial.laboratoryPressures.end(), pressure) == tuning.trial.laboratoryPressures.end())
+            return "Unknown laboratory pressure.";
+        const auto* chosen = tuning.trial.findCondition(pressure);
+        if (!chosen) return "Unknown laboratory pressure.";
+        int hazards = chosen->majorHazard ? 1 : 0;
+        for (const auto& id : offer.conditions) {
+            const auto* rolled = tuning.trial.findCondition(id);
+            if (!rolled) return "Unknown rolled condition.";
+            if (id == pressure) return "Already present in this saved roll. Choose another pressure or none.";
+            if (std::find(chosen->incompatible.begin(), chosen->incompatible.end(), id) != chosen->incompatible.end() ||
+                std::find(rolled->incompatible.begin(), rolled->incompatible.end(), pressure) != rolled->incompatible.end())
+                return "Incompatible with a rolled condition.";
+            for (const auto& [key, value] : chosen->effects) {
+                (void)value;
+                if (rolled->effects.count(key)) return "Shares an effect with a rolled condition.";
+            }
+            if (rolled->majorHazard) ++hazards;
+        }
+        if (hazards > 2) return "The two major-hazard limit is already occupied.";
+    }
+    offer.laboratory = true;
+    offer.pressure = pressure;
+    offer.targetHaulMultiplier = pressure.empty() ? 1.0 : tuning.trial.laboratoryPressureHaulMultiplier;
+    if (!pressure.empty()) offer.conditions.push_back(pressure);
+    return {};
+}
+
+int targetHaul(const tuning::Tuning& tuning, const MapOffer& offer, double temporaryMultiplier) {
+    const auto found = tuning.trial.mapHaulUnits.find(offer.materialTarget);
+    if (found == tuning.trial.mapHaulUnits.end()) return 0;
+    return static_cast<int>(std::floor(found->second * (offer.rewardMultiplier * temporaryMultiplier) * offer.targetHaulMultiplier));
+}
+
 TrialSession::TrialSession(const tuning::Tuning& tuning,
                            economy::PlayerEconomy& economy,
                            boons::BuildTags buildTags,
@@ -186,12 +231,18 @@ TrialSession::TrialSession(const tuning::Tuning& tuning, economy::PlayerEconomy&
                           boons::BuildTags buildTags, const MapOffer& offer)
     : TrialSession(tuning, economy, std::move(buildTags), offer.seed, nullptr, false) {
     // Validate/generate before touching the owner's possessions.
+    const bool laboratory = economy.campaignPolicy == resonance::campaign;
+    if (laboratory != offer.laboratory || (laboratory && (!economy.secondResonance.campaignAward || !economy.worldEffectActive("forge_arc_complete"))))
+        throw std::runtime_error("Captured laboratory requires the saved ending and both physical awards");
     ownedFloor_ = std::make_unique<tuning::TrialFloor>(mapFloor(tuning, offer));
     floor_ = ownedFloor_.get();
     mapTier_ = offer.tier;
     conditions_ = offer.conditions;
     materialTarget_ = offer.materialTarget;
     mapRewardMultiplier_ = offer.rewardMultiplier;
+    laboratoryExperiment_ = offer.laboratory;
+    pressure_ = offer.pressure;
+    targetHaulMultiplier_ = offer.targetHaulMultiplier;
     for (const auto& id : conditions_) if (!tuning.trial.findCondition(id)) throw std::runtime_error("trial: unknown map condition");
     depositedInventory_ = economy_.inventory;
     economy_.inventory.clear();
@@ -316,7 +367,7 @@ TrialSession::RoomOutcome TrialSession::resolveRoom(bool victory) {
 
     // Gear drops (D-014): the room's reward type decides rarity and tier;
     // the base is drawn from every base, so any build can be pulled sideways.
-    auto itemReward = tuning_.trial.itemRewards.find(room.reward);
+    auto itemReward = tuning_.trial.itemRewards.find(room.reward == "equipment" && laboratoryExperiment_ ? "catalyst" : room.reward);
     if (itemReward != tuning_.trial.itemRewards.end() && !tuning_.items.itemBases.empty()) {
         const auto& bases = tuning_.items.itemBases;
         const auto& base = bases[static_cast<size_t>((roomSeed >> 8) % bases.size())];
@@ -381,7 +432,7 @@ void TrialSession::grantHaul(RoomOutcome& outcome, int units, uint64_t seed) {
         auto count = tuning_.trial.mapHaulUnits.find(id);
         if (count != tuning_.trial.mapHaulUnits.end()) units = count->second;
     }
-    const int granted = static_cast<int>(std::floor(units * currentMods().rewardQuantityMultiplier));
+    const int granted = static_cast<int>(std::floor(units * currentMods().rewardQuantityMultiplier * targetHaulMultiplier_));
     loot_[id] += granted;
     outcome.materials[id] += granted;
 }

@@ -292,6 +292,17 @@
       ]
     ]
   },
+  "laboratory_experiment": {
+    "max_tier": 10,
+    "pressures": ["crossfire", "relentless_boss"],
+    "pressure_target_haul_multiplier": 1.25,
+    "records": [
+      {"id":"controlled", "title":"The captured circuit", "text":"The return lines are isolated from the frontier. These five chambers contain familiar Forge creatures. The human operator is gone; finishing this experiment cannot trigger another resonance."},
+      {"id":"configuration", "title":"A committed experiment", "text":"The selected offer and optional pressure are fixed at entry. Crossfire adds two shots to a committed fan; Relentless Boss shortens recovery and attack cadence while keeping warning time. Ordinary movement, cover and interrupts retain their uses."},
+      {"id":"supplies", "title":"A workshop still needs the field", "text":"The selected building source is recovered from the cache and optional store. Victory adds one named contraption core. Ore, fuel, magical media and the ordinary forge still supply deliberate crafting; no source outside is refilled and no Catalyst is guaranteed here."}
+    ],
+    "design_purpose": "Captured Central uses the existing five-room offers, creature bosses and tiers, bounded at ten. Choose none or one listed existing condition in addition to the frozen roll; duplicates, overlapping effects and incompatible conditions are refused, never rerolled. One added pressure multiplies ONLY targeted building-source quantities in the cache and secret by 1.25 before rounding down. Ordinary iron/Kinds, gear rarity/tier/count and the single boss component remain unchanged. The equipment cache gives its existing wrought tier-one item without a guaranteed Catalyst. These are voluntary run settings, separate from campaign eras and Red crafting heat."
+  },
   "conditions": [
     {
       "id": "crowded_packs",
@@ -344,7 +355,7 @@
     {
       "id": "crossfire",
       "display_name": "Crossfire",
-      "description": "Ranged enemies fan extra shots from their committed aim.",
+      "description": "Ranged enemies add two shots across an 18-degree fan from their committed aim.",
       "effects": {
         "crossfire_extra_projectiles": 2,
         "crossfire_fan_degrees": 18
@@ -367,7 +378,7 @@
     {
       "id": "relentless_boss",
       "display_name": "Relentless Boss",
-      "description": "Boss recovery is shorter; attack warnings retain their full duration.",
+      "description": "Boss recovery and attack cadence are multiplied by 0.8; warnings keep their full duration.",
       "effects": {
         "boss_recovery_multiplier": 0.8
       },

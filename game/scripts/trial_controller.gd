@@ -62,10 +62,10 @@ func begin_run(floor_id: String = "") -> bool:
 func begin_legacy_run(floor_id: String = "") -> bool:
 	return _begin_run(floor_id, true)
 
-func begin_map(tier: int, offer_index: int) -> bool:
+func begin_map(tier: int, offer_index: int, pressure: String="", offer_id: String="") -> bool:
 	if active() or _find_arena() == null:
 		return false
-	if not sim.call("trial_start_map", tier, offer_index): return false
+	if not sim.call("trial_start_map", tier, offer_index, pressure, offer_id): return false
 	spatial=true
 	_enter_run()
 	return true
@@ -134,6 +134,7 @@ func _reward_label(reward: String) -> String:
 		"weakness_offer": return "a cursed altar"
 		"materials": return "salvage"
 		"catalyst": return "the catalyst shrine"
+		"equipment": return "the equipment cache"
 		"completion": return "the boss spoils"
 	return reward
 
@@ -354,6 +355,9 @@ func _present_pending_reward() -> void:
 			_after_reward()
 		"catalyst":
 			player.hud.notify("You prise an EMBER CATALYST from the shrine; it thrums with heat. Even death cannot take it from you now.%s" % _items_text(outcome))
+			_after_reward()
+		"equipment":
+			player.hud.notify("Equipment recovered.%s" % _items_text(outcome))
 			_after_reward()
 		"completion":
 			_completion_items = _items_text(outcome)

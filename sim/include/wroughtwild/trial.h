@@ -30,6 +30,9 @@ struct MapOffer {
     std::vector<std::string> moduleOrder;
     std::string materialTarget;
     double rewardMultiplier = 1.0;
+    bool laboratory = false;
+    std::string pressure;
+    double targetHaulMultiplier = 1.0;
 };
 
 // The three offers are pure functions of saved state and selected tier.
@@ -37,12 +40,17 @@ struct MapOffer {
 struct GateState {
     uint64_t batchSeed = 741103;
     int maxTier = 1;
+    int lastTier = 1;
+    std::string lastPressure;
     void enteredMap();
     void clearedMap(int tier);
     std::string toJson() const;
     static GateState fromJson(const std::string& text);
 };
 std::vector<MapOffer> mapOffers(const tuning::Tuning& tuning, const GateState& gate, int tier);
+// Supplements a frozen offer; returns a player-readable refusal without rerolling.
+std::string configureLaboratory(const tuning::Tuning& tuning, MapOffer& offer, const std::string& pressure);
+int targetHaul(const tuning::Tuning& tuning, const MapOffer& offer, double temporaryMultiplier = 1.0);
 
 class TrialSession {
 public:
@@ -67,6 +75,9 @@ public:
     uint64_t seed() const { return seed_; }
     int tier() const { return mapTier_; }
     const std::string& materialTarget() const { return materialTarget_; }
+    bool laboratoryExperiment() const { return laboratoryExperiment_; }
+    const std::string& pressure() const { return pressure_; }
+    double targetHaulMultiplier() const { return targetHaulMultiplier_; }
     int floorIndex() const;
     int floorCount() const { return floor_ ? floor_->floorCount : 1; }
     bool awaitingFloor() const { return awaitingFloor_; }
@@ -160,6 +171,9 @@ private:
     int mapTier_ = 0;
     std::string materialTarget_;
     double mapRewardMultiplier_ = 1.0;
+    bool laboratoryExperiment_ = false;
+    std::string pressure_;
+    double targetHaulMultiplier_ = 1.0;
     std::vector<std::string> conditions_;
     std::vector<int> route_;
     std::vector<int> secretFloors_;

@@ -561,6 +561,9 @@ struct TrialTable {
     double mapDamagePerTier = 0.04;
     double mapRewardPerTier = 0.03;
     double mapRewardPerCondition = 0.1;
+    int laboratoryMaxTier = 10;
+    double laboratoryPressureHaulMultiplier = 1.25;
+    std::vector<std::string> laboratoryPressures;
     std::map<std::string, int> mapHaulUnits;
     // One previewed physical component on a repeatable boss clear. The
     // selected material target stays unchanged, preserving existing offers.

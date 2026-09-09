@@ -450,3 +450,12 @@ combat, route, death/retry/restart and compatibility evidence. The
 closes the recovery defect and clears bounded LF-7A/B; optional Heat and
 configured rewards remain Wave 7. Human difficulty/readability acceptance and
 the terrain-publication pause remain open.
+
+LF-7A: `--living-frontier-wave7` continues the same save. At captured Central,
+press E → Configure experiment. Choose an unlocked tier and no extra pressure,
+Crossfire or Relentless Boss. Three saved offers preview exact source materials,
+equipment and the boss core; incompatible offers explain their refusal.
+Entry fixes the settings and advances the existing batch. Five contained rooms
+reuse known Forge creatures, leaving the human defeated. Extra pressure affects
+only the targeted building-source haul; ore, fuel and magical media remain field
+work. LF-7B completes the automatic return-save/retry and full-loop checks.

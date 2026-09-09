@@ -1,5 +1,15 @@
 # Loot and Crafting Economy
 
+**LF-7 captured runs:** selected Crossfire or Relentless pressure adds a 1.25
+multiplier solely to the offered building-source material in cache/secret,
+rounded down after existing reward multipliers. The exact cache, optional
+secret, fixed three equipment rolls and one boss core are previewed. Equipment
+rarity/tier/count, general iron/purse Kinds and core quantity gain no pressure
+bonus. LF repeats replace the guaranteed-Catalyst shrine with its existing
+wrought tier-one equipment reward; legacy maps retain the shrine. Finite field
+sources never refill, and raw magical media/Catalyst manufacture remain ordinary
+field/forge work. [Contract](../prototype/living-frontier-wave7-2026-09-09.md).
+
 **LF-3B (9 September 2026):** only the new `living_frontier_wave3` profile
 places four finite influenced animals. Each yields four guaranteed matching raw
 units, plus ordinary hide (one per boar, two per stag) or two reeds (moth).

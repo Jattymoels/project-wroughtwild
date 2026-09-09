@@ -1,5 +1,20 @@
 # Repeatable Trial Runs
 
+**LF-7A captured experiments:** after the saved human ending, Central's physical
+E controls expose the existing three stable offers and unlocked tiers, bounded
+at ten for LF policy. One optional Crossfire or Relentless Boss supplements the
+rolled conditions; duplicate/shared/incompatible effects and a third major
+hazard refuse without rerolling. Successful entry validates the offered ID,
+deposits once, advances the existing batch and remembers tier/pressure using
+optional version-one gate fields. The run freezes those settings. Old offer
+seeds, targets, conditions and modules are unchanged. Existing creature bosses
+operate in five reused chambers; the human cannot return. The extra pressure
+multiplies only targeted cache/secret material by 1.25; fixed gear, general
+iron/purse Kinds and one completion core retain their rules. The LF equipment
+cache pays the old shrine's gear without its guaranteed Catalyst. Legacy
+policies retain that Catalyst. Current [contract and evidence](../prototype/living-frontier-wave7-2026-09-09.md)
+supersede the historical Wave 6 experiment closure below.
+
 **LF-6A/B continuation:** after both physical awards, the existing Central site
 opens a scoped capstone copy with the same two floors, eight stages and rewards.
 The final chamber contains the dedicated human Conservator and two physical

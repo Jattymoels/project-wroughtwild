@@ -2,6 +2,24 @@
 
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
+## Living Frontier captured experiments — LF-7A/B
+
+- [x] Captured Central's actual E/key controls combine stable saved offers,
+  unlocked tiers and one compatible optional pressure with exact native previews.
+  Invalid/stale entry refuses before deposit; successful entry freezes settings.
+- [x] Known creature opponents retain the human ending, both transformations,
+  three eras and ordinary ownership. Existing gate saves preserve their rolls.
+- [x] Live Crossfire projectiles, movement, cover and Relentless clocks work at
+  20/60 Hz; isolated ordinary crafted builds produce actual wins and deaths.
+- [x] Only targeted source haul gains a pressure bonus. General materials/Kinds,
+  gear and completion cores stay on their stated rules; LF equipment caches
+  give no guaranteed Catalyst. Legacy shrine rewards remain unchanged.
+- [ ] LF-7B complete live run, exact saved rewards, retry/reconfigure, paid field
+  work and full campaign/earlier defect regression matrix are complete.
+- [ ] Orchestrator reviews Wave 7; human accepts full-run difficulty and clarity.
+
+[Configuration, evidence and limits](living-frontier-wave7-2026-09-09.md).
+
 ## Living Frontier human finale and captured controls — LF-6A/B
 
 - [x] LF5-R1 repair passes ordinary-load actual movement and failed-load stops

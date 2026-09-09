@@ -40,10 +40,10 @@ func finished_label() -> String:
 func reward_label() -> String:
 	var provided := _single_line(String(payload.get("reward_label", "")))
 	if not provided.is_empty(): return provided
-	return {"boon_offer":"Blessing", "weakness_offer":"Bargain", "materials":"Material haul", "catalyst":"Ember Catalyst", "completion":"Boss reward"}.get(String(payload.get("reward", "")), "Encounter")
+	return {"boon_offer":"Blessing", "weakness_offer":"Bargain", "materials":"Material haul", "equipment":"Equipment cache", "catalyst":"Ember Catalyst", "completion":"Boss reward"}.get(String(payload.get("reward", "")), "Encounter")
 
 func reward_action() -> String:
-	return {"boon_offer":"Choose a blessing", "weakness_offer":"Review the bargain", "materials":"Claim materials", "catalyst":"Claim catalyst", "completion":"Claim boss spoils"}.get(String(payload.get("reward_type", "")), _single_line(detail))
+	return {"boon_offer":"Choose a blessing", "weakness_offer":"Review the bargain", "materials":"Claim materials", "equipment":"Claim equipment", "catalyst":"Claim catalyst", "completion":"Claim boss spoils"}.get(String(payload.get("reward_type", "")), _single_line(detail))
 
 func danger_label() -> String:
 	var provided := _single_line(String(payload.get("danger_summary", "")))

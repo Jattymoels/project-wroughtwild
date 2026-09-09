@@ -1,5 +1,11 @@
 # Progression: Eras, the Foundry, and Ores as Properties
 
+**LF-7:** captured Central extends the existing offer/tier system with voluntary
+run pressure. Its creature trials cannot replay the human ending or either
+terrain event. Boss clears unlock another run tier up to ten; three campaign
+eras and Red crafting heat remain independent. Optional remembered settings
+preserve old gate saves. [Contract](../prototype/living-frontier-wave7-2026-09-09.md).
+
 **LF-6 finale (9 September 2026):** the existing Central Laboratory opens after
 the second physical award. Its dedicated human Conservator settles the existing
 capstone haul and `forge_arc_complete` once. For LF policy that receipt owns both

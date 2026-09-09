@@ -135,6 +135,9 @@ func _laboratory_treatment(which_floor: int, layout: Dictionary) -> void:
 	var paired:=bool(layout.get("pairing_laboratory",false))
 	var central:=bool(layout.get("central_laboratory",false))
 	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(load("res://scripts/sim.gd").get_tuning_directory().path_join("central_laboratory.json" if central else ("pairing_laboratory.json" if paired else "laboratory.json"))))
+	if bool(layout.get("laboratory_experiment",false)):
+		var catalogue:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(load("res://scripts/sim.gd").get_tuning_directory().path_join("trial.json")))
+		data.records=catalogue.laboratory_experiment.records
 	for i in data.records.size():
 		if which_floor>0 and i<2: continue
 		var record: Dictionary=data.records[i]

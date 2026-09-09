@@ -28,6 +28,14 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
+[Living Frontier Wave 7](docs/prototype/living-frontier-wave7-2026-09-09.md)
+opens captured Central's saved offers and tiers with optional Crossfire or
+Relentless pressure and exact material/equipment/core previews. Settings commit
+at entry; known creature trials preserve the defeated human and both terrain
+events. LF-7A is checked; LF-7B return/checkpoint/reconfigure verification follows.
+`--living-frontier-wave7` continues the same world/save. Human difficulty and the
+synchronous terrain-publication pause remain open.
+
 [Living Frontier Wave 6](docs/prototype/living-frontier-wave6-2026-09-09.md)
 repairs ordinary-load movement after failed publication recovery, then opens
 the existing Central Laboratory after both protected region changes. Its
