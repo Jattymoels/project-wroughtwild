@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "checks": 12,
+  "scope": "Shared builder preserves the selected ART-06B porcupine geometry and texture maps exactly."
+}

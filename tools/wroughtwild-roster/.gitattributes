@@ -2,3 +2,5 @@
 *-prompt.txt text eol=lf
 # Surface reports retain an exact recipe hash across Windows checkouts.
 surface-study.json text eol=lf
+# ART-06C was built from CRLF bytes; reproduce that checkout hash on every OS.
+lifeline-study.json text eol=crlf

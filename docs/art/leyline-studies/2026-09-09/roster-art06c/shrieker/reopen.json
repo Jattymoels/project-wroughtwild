@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "asset": "shrieker",
+  "checks": 8,
+  "geometry_sha256": "912130ce01367afad4be055350dacd506beb1a61ce1bd7120aa82726bb70e146",
+  "source_sha256": "2f0dcaf6a2677050c5eb72507553aa466367be9b43ceccd3db79c9fc582d6fbc",
+  "views": [
+    "dark-az0",
+    "dark-az180",
+    "lit-az0",
+    "lit-az180"
+  ],
+  "note": "Reopened exact surface geometry, identity, finite positions, no rig, UV layer, packed mask dimensions, contained core and nonconstant travel. Renders are static peak/off comparisons."
+}

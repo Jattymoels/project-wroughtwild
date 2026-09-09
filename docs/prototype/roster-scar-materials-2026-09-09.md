@@ -1,5 +1,10 @@
 # ART-06B — attached creature scars and living light
 
+**Superseded visual treatment:** the owner's subsequent request selects
+[ART-06C deep lifelines and porcupine face](roster-lifelines-2026-09-09.md).
+The following records the earlier shallow pass honestly; its evidence and
+recipe remain available, but sparse superficial light is no longer the brief.
+
 **Isolated surface handoff delivered — 9 September 2026.** The owner's “Continue next” follows the
 actual six-model source gallery and selects its continuation through finishing.
 The [ART-06 work item](remaining-mob-art-2026-09-09.md) retains the approved

@@ -1,0 +1,62 @@
+[
+  {
+    "asset": "cinder_archer",
+    "animal": "Porcupine",
+    "source_sha256": "55c8aaf76b25f6d791278761698f6d6480b3998201819e2e4d55e4e4a1a8ead5",
+    "host_triangles": 280126,
+    "median_depth_units": 0.03095608949661255,
+    "minimum_route_median": 0.025523535907268524,
+    "previous_maximum_depth": 0.0016041581984609365,
+    "core_texel_fraction": 0.00929107666015625
+  },
+  {
+    "asset": "stone_husk",
+    "animal": "Bighorn ram",
+    "source_sha256": "550f859cc7882c19569426d3fa5dec3ecfdfc70ce0fa060d019ae85f28f4854c",
+    "host_triangles": 293246,
+    "median_depth_units": 0.03150111436843872,
+    "minimum_route_median": 0.03091329336166382,
+    "previous_maximum_depth": 0.0009183229994960129,
+    "core_texel_fraction": 0.025957345962524414
+  },
+  {
+    "asset": "shrieker",
+    "animal": "Crane",
+    "source_sha256": "2f0dcaf6a2677050c5eb72507553aa466367be9b43ceccd3db79c9fc582d6fbc",
+    "host_triangles": 296116,
+    "median_depth_units": 0.03159255534410477,
+    "minimum_route_median": 0.030469611287117004,
+    "previous_maximum_depth": 0.0009034522227011621,
+    "core_texel_fraction": 0.017865657806396484
+  },
+  {
+    "asset": "gloom_crawler",
+    "animal": "Ground beetle",
+    "source_sha256": "bf29586cdd72f9553b5b832359b866a417f14852c1c4ff3cb3597dd0c629a0c4",
+    "host_triangles": 293396,
+    "median_depth_units": 0.030883818864822388,
+    "minimum_route_median": 0.02994382381439209,
+    "previous_maximum_depth": 0.0013584085972979665,
+    "core_texel_fraction": 0.008880615234375
+  },
+  {
+    "asset": "bog_lurker",
+    "animal": "Dragonfly nymph",
+    "source_sha256": "99492f19e6dabcad0fdbac821ce48d02187bcae4f669c912445f2c51bf96b9ee",
+    "host_triangles": 290654,
+    "median_depth_units": 0.031559012830257416,
+    "minimum_route_median": 0.030747398734092712,
+    "previous_maximum_depth": 0.0010715908138081431,
+    "core_texel_fraction": 0.029259204864501953
+  },
+  {
+    "asset": "hollow_knight",
+    "animal": "Tortoise",
+    "source_sha256": "39d71df0c48fe7271156fa08feafee854434e0a272020748ab978ba213ea6e3c",
+    "host_triangles": 295369,
+    "median_depth_units": 0.031075596809387207,
+    "minimum_route_median": 0.029346197843551636,
+    "previous_maximum_depth": 0.0012744426494464278,
+    "core_texel_fraction": 0.008759498596191406
+  }
+]

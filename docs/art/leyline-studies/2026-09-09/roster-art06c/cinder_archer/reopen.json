@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "asset": "cinder_archer",
+  "checks": 32,
+  "geometry_sha256": "8045a34fce88065d29fd39e39566d7712090eed6957611f15a4cfd73c64ab06c",
+  "source_sha256": "55c8aaf76b25f6d791278761698f6d6480b3998201819e2e4d55e4e4a1a8ead5",
+  "views": [
+    "dark-az0",
+    "dark-az180",
+    "dark-az270",
+    "face-az270",
+    "face-az315",
+    "lit-az0",
+    "lit-az180",
+    "lit-az270"
+  ],
+  "note": "Reopened exact surface geometry, identity, finite positions, no rig, UV layer, packed mask dimensions, contained core and nonconstant travel. Renders are static peak/off comparisons."
+}

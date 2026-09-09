@@ -20,7 +20,8 @@ asset, output = args[0], Path(args[1]).resolve()
 probe = '--probe' in args
 repo = Path(__file__).resolve().parents[2]
 recipe = Path(__file__).parent
-config = json.loads((recipe/'surface-study.json').read_text(encoding='utf-8'))
+config_path = recipe/(args[args.index('--config')+1] if '--config' in args else 'surface-study.json')
+config = json.loads(config_path.read_text(encoding='utf-8'))
 row = next(x for x in config['assets'] if x['id'] == asset)
 source_row = next(x for x in json.loads((recipe/'roster.json').read_text(encoding='utf-8'))['assets'] if x['id'] == asset)
 source = repo/'build/roster-art06'/f"{asset}-source-{source_row['version']}"/(asset+'.glb')
@@ -55,11 +56,17 @@ centre = Vector(((lo.x+hi.x)/2,(lo.y+hi.y)/2,lo.z))
 transform = Matrix.Scale(inspection['review_uniform_scale'],4)@Matrix.Translation(-centre)
 host.matrix_world = transform@host.matrix_world
 bpy.ops.object.transform_apply(location=True,rotation=True,scale=True)
+face_report = None
+if config.get('porcupine_face') and asset == 'cinder_archer':
+    sys.path.insert(0,str(recipe))
+    from lifeline_geometry import repair_face
+    face_report = repair_face(host,config['porcupine_face'])
 points = np.array([v.co[:] for v in mesh.vertices],dtype=np.float32)
 faces = np.array([p.vertices[:] for p in mesh.polygons],dtype=np.int32)
 bvh = BVHTree.FromPolygons(points.tolist(),faces.tolist(),all_triangles=True)
 starts,ends,widths,flows0,flows1 = [],[],[],[],[]
 routes = []
+segment_sides = []
 for path in row['paths']:
     view = next(v for v in inspection['views'] if v['name'] == path['view'])
     camera, target = Vector(view['camera']),Vector(view['target'])
@@ -88,11 +95,13 @@ for path in row['paths']:
         taper = 1-.7*max(0,(i/max(1,len(p)-2)-.7)/.3)
         starts.append(a);ends.append(b);widths.append(path['width']*taper)
         flows0.append(travel[i]);flows1.append(travel[i+1])
+        segment_sides.append(1 if camera.x>0 else -1)
     routes.append({'name':path['name'],'view':path['view'],'points':p.tolist(),'max_step_units':float(lengths.max())})
-report = {'asset':asset,'source_sha256':digest(source),'config_sha256':digest(recipe/'surface-study.json'),
+report = {'asset':asset,'source_sha256':digest(source),'config_sha256':digest(config_path),
           'source_version':source_row['version'],'removed_degenerate_face_indices':bad.tolist(),
           'source_triangles':len(raw_faces),'triangles':len(faces),'vertices':len(points),'projected_paths':routes,
           'stage':config['stage'],'blender':bpy.app.version_string}
+if face_report: report['face_repair'] = face_report
 if probe:
     (output/'projection.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print('ROSTER_SURFACE_PROJECTION_OK',asset,flush=True)
@@ -103,6 +112,10 @@ ab = b-a
 lengths2 = (ab*ab).sum(1)
 width = np.array(widths)
 f0,f1 = np.array(flows0),np.array(flows1)
+if config.get('flow_mode') == 'connected_distance':
+    sys.path.insert(0,str(recipe))
+    from lifeline_geometry import network_travel
+    f0,f1,report['flow_components'] = network_travel(a,b,np.array(segment_sides),config['flow_join_radius_units'])
 def smooth(x):
     x = np.clip(x,0,1)
     return x*x*(3-2*x)
@@ -137,11 +150,19 @@ before_cross = np.cross(points[faces[:,1]]-points[faces[:,0]],points[faces[:,2]]
 longest_edge = np.maximum.reduce([np.linalg.norm(points[faces[:,i]]-points[faces[:,(i+1)%3]],axis=1) for i in range(3)])
 altitude_cap = np.linalg.norm(before_cross,axis=1)/longest_edge*.08
 for i in range(3): np.minimum.at(local_cap,faces[:,i],altitude_cap)
-incision = np.minimum(config['recess_units']*vertex_marks[:,1]**2,local_cap)
+deep = config.get('geometry_mode') == 'directional_channel'
+depth_report = None
+if deep:
+    sys.path.insert(0,str(recipe))
+    from lifeline_geometry import carve
+    new_points,depth_report = carve(points,faces,a,b,width,np.array(segment_sides),config,routes)
+    incision = np.linalg.norm(new_points-points,axis=1)
+else:
+    incision = np.minimum(config['recess_units']*vertex_marks[:,1]**2,local_cap)
 protected = set()
 # Check the actual float32 positions Blender/GLB retain, including skinny faces.
 # A local face may retain its source position if even a tiny incision is unsafe.
-for attempt in range(14):
+for attempt in range(0 if deep else 14):
     new_points = (points-normals*incision[:,None]).astype(np.float32)
     after_cross = np.cross(new_points[faces[:,1]]-new_points[faces[:,0]],new_points[faces[:,2]]-new_points[faces[:,0]])
     flipped = np.flatnonzero(np.einsum('ij,ij->i',before_cross,after_cross)<=0)
@@ -149,6 +170,7 @@ for attempt in range(14):
     affected = np.unique(faces[flipped])
     protected.update(int(i) for i in affected)
     incision[affected] *= .5 if attempt<10 else 0
+after_cross = np.cross(new_points[faces[:,1]]-new_points[faces[:,0]],new_points[faces[:,2]]-new_points[faces[:,0]])
 assert (np.einsum('ij,ij->i',before_cross,after_cross)>0).all(), 'Introduced flipped or zero-area face'
 mesh.vertices.foreach_set('co',new_points.ravel())
 mesh.update()
@@ -180,7 +202,11 @@ colours = np.ones((len(points),4),np.float32)
 colours[:,:3] = (points-position_lo)/span
 attribute.data.foreach_set('color',colours.ravel())
 attr = nodes.new('ShaderNodeAttribute');attr.attribute_name = attribute.name
-mask = bpy.data.images.new(asset+' fracture data',width=config['mask_size'],height=config['mask_size'],alpha=True,float_buffer=True)
+mask_height=config['mask_size']+(512 if face_report else 0)
+if face_report:
+    from lifeline_geometry import FACE_ATLAS_ROWS
+    mask_height=config['mask_size']+FACE_ATLAS_ROWS
+mask = bpy.data.images.new(asset+' fracture data',width=config['mask_size'],height=mask_height,alpha=True,float_buffer=True)
 mask.colorspace_settings.name = 'Non-Color'
 target = nodes.new('ShaderNodeTexImage');target.image = mask;target.name = 'Attached scar map'
 nodes.active = target;target.select = True
@@ -192,10 +218,13 @@ scene.render.threads_mode = 'FIXED';scene.render.threads = 8
 scene.render.bake.use_selected_to_active = False;scene.render.bake.margin = 8
 bpy.ops.object.select_all(action='DESELECT');host.select_set(True)
 bpy.ops.object.bake(type='EMIT')
-texels = np.empty(config['mask_size']**2*4,np.float32)
+texels = np.empty(config['mask_size']*mask_height*4,np.float32)
 mask.pixels.foreach_get(texels)
 texels = texels.reshape((-1,4))
 valid = texels[:,3]>.5
+if face_report:
+    from lifeline_geometry import face_atlas
+    face_report['texture_audit']=face_atlas(output,texels[:,:3]*span+position_lo,valid,config['mask_size'],mask_height,[original_material,material])
 marks = evaluate(texels[:,:3]*span+position_lo)
 marks[~valid,:3] = 0
 assert (marks[:,0] <= marks[:,1]+1e-6).all()
@@ -215,7 +244,7 @@ gain.inputs[1].default_value = config['peak_emission']
 links.new(split.outputs['Red'],gain.inputs[0]);links.new(gain.outputs[0],shader.inputs['Emission Strength'])
 shader.inputs['Emission Color'].default_value = (*row['colour'],1)
 bump = nodes.new('ShaderNodeBump');bump.invert = True
-bump.inputs['Distance'].default_value = config['recess_units'];bump.inputs['Strength'].default_value = .65
+bump.inputs['Distance'].default_value = config.get('bump_units',config['recess_units']);bump.inputs['Strength'].default_value = .65
 links.new(split.outputs['Green'],bump.inputs['Height']);links.new(bump.outputs['Normal'],shader.inputs['Normal'])
 for image in bpy.data.images:
     if image.source == 'FILE' and image.has_data: image.pack()
@@ -223,16 +252,26 @@ host['source_sha256'] = inspection['source_sha256']
 host['stage'] = config['stage']
 mesh.color_attributes.remove(attribute)
 # Export exact finished geometry with original PBR; Godot binds the separate map.
+attachments = []
+if face_report:
+    from lifeline_geometry import finish_face
+    attachments,face_report['attachments'] = finish_face(host,config['porcupine_face'])
+    bpy.ops.object.select_all(action='DESELECT')
+    for obj in attachments: obj.select_set(True)
+    host.select_set(True)
 mesh.materials[0] = original_material
 bpy.ops.export_scene.gltf(filepath=str(output/(asset+'-surface.glb')),export_format='GLB',use_selection=True,export_animations=False,export_yup=True)
 mesh.materials[0] = material
 report.update(max_displacement_units=float(np.linalg.norm(new_points-points,axis=1).max()),
               flipped_faces=0,mask_size=config['mask_size'],
+              mask_dimensions=[config['mask_size'],mask_height],
               locally_protected_vertices=len(protected),
               core_texel_fraction=float((marks[:,0]>.05).mean()),damage_texel_fraction=float((marks[:,1]>.05).mean()),
               core_vertex_fraction=float((vertex_marks[:,0]>.05).mean()),
               geometry_sha256=hashlib.sha256(new_points.astype(np.float32).tobytes()+faces.tobytes()).hexdigest(),
               note='Texel/vertex fractions are diagnostics, not surface-area percentages. Topology/detail preserved except recorded degenerate faces. No rig or era anatomy.')
+if face_report: report['note']='Dense source retained; only documented face repair changes host topology. New eyes/whiskers are separately counted head attachments. No rig or era anatomy.'
+if depth_report: report['depth_audit'] = depth_report
 assert 0 < report['core_texel_fraction'] < .04
 assert report['core_texel_fraction'] < report['damage_texel_fraction'] < .12
 (output/'surface-report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')

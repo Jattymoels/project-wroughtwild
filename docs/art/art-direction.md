@@ -1,5 +1,13 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+**Owner correction, 9 September 2026:** the six remaining animal mobs need
+obvious, deep magic veins that look essential to keeping their damaged bodies
+alive. [ART-06C](../prototype/roster-lifelines-2026-09-09.md) therefore uses broad
+recessed channels connected through the growths and torso, with energy moving
+inside the injury. This replaces ART-06B's sparse superficial threads. The
+porcupine face is repaired alongside, retaining animal expression and fine
+whiskers. This visual life-support language does not select healing rules.
+
 **Owner continuation, 9 September 2026:** prioritise the remaining mobs over
 the proposed route-polish pass. The owner approved six animal directions,
 replacing the rejected armadillo with a bighorn ram, then requested stronger

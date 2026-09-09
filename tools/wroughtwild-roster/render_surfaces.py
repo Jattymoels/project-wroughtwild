@@ -11,7 +11,8 @@ import bpy
 import numpy as np
 from mathutils import Vector
 
-source,output = [Path(p).resolve() for p in sys.argv[sys.argv.index('--')+1:]]
+args = sys.argv[sys.argv.index('--')+1:]
+source,output = [Path(p).resolve() for p in args[:2]]
 assert not output.exists()
 output.mkdir(parents=True)
 report = json.loads((source/'surface-report.json').read_text(encoding='utf-8'))
@@ -25,9 +26,15 @@ assert hashlib.sha256(points.tobytes()+faces.tobytes()).hexdigest() == report['g
 assert len(faces) == report['triangles'] and np.isfinite(points).all()
 assert host['source_sha256'] == report['source_sha256']
 assert not any(o.type == 'ARMATURE' for o in bpy.data.objects)
+for attachment in report.get('face_repair',{}).get('attachments',[]):
+    obj=bpy.data.objects[attachment['name']]
+    p=np.array([v.co[:] for v in obj.data.vertices],np.float32)
+    f=np.array([v.vertices[:] for v in obj.data.polygons],np.int32)
+    assert hashlib.sha256(p.tobytes()+f.tobytes()).hexdigest()==attachment['geometry_sha256']
+    assert len(f)==attachment['triangles'] and obj['attachment']=='head'
 assert len(mesh.uv_layers) == 1
 mask = next(n.image for n in mesh.materials[0].node_tree.nodes if n.name == 'Attached scar map')
-assert mask.packed_file and list(mask.size) == [report['mask_size']]*2
+assert mask.packed_file and list(mask.size) == report.get('mask_dimensions',[report['mask_size']]*2)
 pixels = np.array(mask.pixels[:],dtype=np.float32).reshape(-1,4)
 assert (pixels[:,0] <= pixels[:,1]+.005).all() and pixels[:,0].max()>.9
 assert .001 < np.ptp(pixels[pixels[:,0]>.1,2]) <= 1.0
@@ -49,14 +56,22 @@ for name,at,energy in [('Key',(-3,-4,6),700),('Fill',(4,-1,3),450),('Rim',(0,4,5
     light.location=at;light.data.energy=energy;light.data.size=4;aim(light,target)
 camera=bpy.data.objects.new('Camera',bpy.data.cameras.new('Camera'));scene.collection.objects.link(camera)
 camera.data.type='ORTHO';camera.data.ortho_scale=2.65;scene.camera=camera
-for angle in [0,180]:
+for angle in ([0,180,270] if '--face' in args else [0,180]):
     rad=math.radians(angle);camera.location=target+Vector((5*math.cos(rad),5*math.sin(rad),1.25));aim(camera,target)
     for mode,value in [('dark',0),('lit',peak)]:
         gain.inputs[1].default_value=value
         scene.render.filepath=str(output/(mode+'-az'+str(angle)+'.png'))
         bpy.ops.render.render(write_still=True)
-result={'passed':True,'asset':asset,'checks':8,'geometry_sha256':report['geometry_sha256'],
-        'source_sha256':report['source_sha256'],'views':['dark-az0','lit-az0','dark-az180','lit-az180'],
+if '--face' in args:
+    target=Vector((0,-.85,.78))
+    camera.data.ortho_scale=.82
+    for angle in [270,315]:
+        rad=math.radians(angle);camera.location=target+Vector((5*math.cos(rad),5*math.sin(rad),.6));aim(camera,target)
+        gain.inputs[1].default_value=peak
+        scene.render.filepath=str(output/('face-az'+str(angle)+'.png'))
+        bpy.ops.render.render(write_still=True)
+result={'passed':True,'asset':asset,'checks':8+2*len(report.get('face_repair',{}).get('attachments',[])),'geometry_sha256':report['geometry_sha256'],
+        'source_sha256':report['source_sha256'],'views':[p.stem for p in sorted(output.glob('*.png'))],
         'note':'Reopened exact surface geometry, identity, finite positions, no rig, UV layer, packed mask dimensions, contained core and nonconstant travel. Renders are static peak/off comparisons.'}
 (output/'reopen.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 print('ROSTER_SURFACE_REOPEN_OK',asset,flush=True)

@@ -1,5 +1,13 @@
 # Decision Registry
 
+Owner visual correction, 9 September 2026: the six remaining animals need
+**obvious, deep veins that look like the mechanism keeping them alive**, with
+the porcupine face repaired alongside. [ART-06C](../prototype/roster-lifelines-2026-09-09.md)
+supersedes ART-06B's sparse/shallow art treatment under D-013/D-030. This is
+visual anatomy and lore; it grants no healing, combat, resource or influence rule.
+Original sources, approved ancestries and the selected later-era augmentation
+direction remain. Rigging and normal-game adoption stay separate checkpoints.
+
 Owner art continuation, 9 September 2026: defer proposed ART-05B route polish
 and design/generate the other existing mobs through the approved local pipeline.
 The owner selects augmented animals for the remaining humanoid-looking regular

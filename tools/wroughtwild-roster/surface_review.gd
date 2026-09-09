@@ -72,8 +72,23 @@ func add_asset(i: int) -> void:
 	holder.add_child(actor)
 	actor.rotation.y = deg_to_rad(225 if row.id == "gloom_crawler" else 45)
 	var children := actor.find_children("*","MeshInstance3D",true,false)
-	require(children.size()==1,"One retained source mesh: "+row.id)
+	var attachments: Array = row.surface_report.get("face_repair",{}).get("attachments",[])
+	require(children.size()==1+attachments.size(),"Source and documented face attachment count: "+row.id)
 	var mesh := children[0] as MeshInstance3D
+	if not attachments.is_empty():
+		for child in children:
+			if "surface host" in String(child.name): mesh=child
+		var attachment_triangles := 0
+		for child in children:
+			if child==mesh: continue
+			require(child.skin==null,"Unrigged head attachment: "+String(child.name))
+			for surface in child.mesh.get_surface_count():
+				attachment_triangles+=int(child.mesh.surface_get_array_index_len(surface)/3)
+				var face_material := child.mesh.surface_get_material(surface) as StandardMaterial3D
+				require(face_material!=null and not face_material.emission_enabled,"Natural non-emissive face material: "+String(child.name))
+		var expected_triangles := 0
+		for attachment in attachments: expected_triangles+=int(attachment.triangles)
+		require(attachment_triangles==expected_triangles,"Exact documented face attachment triangles")
 	var triangles := 0
 	for surface in mesh.mesh.get_surface_count():
 		triangles += int(mesh.mesh.surface_get_array_index_len(surface)/3)
@@ -139,7 +154,7 @@ func apply_settings() -> void:
 		material.set_shader_parameter("pulse_mode",mode)
 	if is_instance_valid(label):
 		var title := "SIX CREATURES" if selected<0 else String(config.assets[selected].animal).to_upper()
-		label.text = "%s / ATTACHED LIVING SCARS\n%s · %s · dense unrigged sources\n0 all · 1–6 creature · M light · Space pause · Arrows orbit · R reset" % [title,["Dark damage","Steady light","Breathing light","Travelling light"][mode],"Paused" if paused else "Running"]
+		label.text = "%s / %s\n%s · %s · dense unrigged sources\n0 all · 1–6 creature · M light · Space pause · Arrows orbit · R reset" % [title,"DEEP LIFELINES" if config.get("geometry_mode","")=="directional_channel" else "ATTACHED LIVING SCARS",["Dark damage","Steady light","Breathing light","Travelling light"][mode],"Paused" if paused else "Running"]
 
 func _process(delta: float) -> void:
 	if automatic: return

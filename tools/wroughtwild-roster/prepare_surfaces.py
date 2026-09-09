@@ -9,18 +9,25 @@ repo = Path(__file__).resolve().parents[2]
 recipe = Path(__file__).parent
 output = Path(sys.argv[1]).resolve()
 assert output.is_relative_to(repo/'build') and not output.exists()
-config = json.loads((recipe/'surface-study.json').read_text(encoding='utf-8'))
+deep = '--lifelines' in sys.argv
+config_path = recipe/('lifeline-study.json' if deep else 'surface-study.json')
+root = repo/'build'/('roster-art06c' if deep else 'roster-art06b')
+version = 'v02' if deep else 'v04'
+config = json.loads(config_path.read_text(encoding='utf-8'))
 roster = json.loads((recipe/'roster.json').read_text(encoding='utf-8'))
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 for row in config['assets']:
-    folder = repo/'build/roster-art06b'/(row['id']+'-surface-v04')
+    folder = root/(row['id']+'-surface-'+version)
     report = json.loads((folder/'surface-report.json').read_text(encoding='utf-8'))
-    assert report['flipped_faces'] == 0 and report['config_sha256'] == sha(recipe/'surface-study.json')
+    assert report['flipped_faces'] == 0 and report['config_sha256'] == sha(config_path)
+    if deep:
+        assert report['depth_audit']['median_depth']>=config['minimum_median_depth_units']
+        assert all(p['median']>=config['minimum_route_depth_units'] for p in report['depth_audit']['routes'])
     original = next(x for x in roster['assets'] if x['id'] == row['id'])
     row.update(animal=original['animal'],surface_report=report)
 output.mkdir(parents=True)
 for row in config['assets']:
-    source = repo/'build/roster-art06b'/(row['id']+'-surface-v04')
+    source = root/(row['id']+'-surface-'+version)
     destination = output/'assets'/row['id']
     destination.mkdir(parents=True)
     for name in [row['id']+'-surface.glb','base.png','orm.png','scar-mask.png']:

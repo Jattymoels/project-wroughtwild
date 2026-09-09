@@ -1,6 +1,6 @@
 # ART-06 — Remaining mob design and local generation
 
-**Design/source and ART-06B surface stages delivered; rigs remain open — 9 September 2026.** The owner deferred the proposed ART-05B
+**Design/source and ART-06C deep-lifeline/face stages delivered; rigs remain open — 9 September 2026.** The owner deferred the proposed ART-05B
 route polish and requested that the other existing mobs be properly designed
 and generated through the liked concept → local TRELLIS → Blender process.
 Asked about the four humanoid-looking regular enemies, the owner selected:
@@ -140,3 +140,9 @@ isolated six-creature comparison. Raw sources remain unchanged; the new surface
 exports and editable Blender files are separate. Source/map, actual pixel,
 pause and both-renderer checks pass. Detailed anatomy repair, rigs and later-era
 forms remain open before native adoption.
+
+The owner subsequently asks for obvious, deep veins that appear to sustain the
+animals, alongside the porcupine face repair. [ART-06C](roster-lifelines-2026-09-09.md)
+delivers the visual correction and the repaired porcupine face. It expands
+channels across the body and measures actual physical recession; the life-support reading does not create
+healing or other gameplay rules. All six source hashes remain authoritative.

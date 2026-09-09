@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "package_files": 149,
+  "fresh_import": true,
+  "manifest_unchanged_after_import": true,
+  "known_diagnostic": "Windows root certificate store unavailable; no script or shader errors."
+}
