@@ -152,6 +152,8 @@ combat balance and final laboratory/ice art remain review questions.
 
 ## LF-4A implementation
 
+LF-4A checked commit: `ec8d22e`.
+
 The new policy is saved inside native economy state; legacy saves omit both new
 fields. Its event is a version-one sparse ledger with dormant, pending and
 applied phases, an immutable seed, original/replacement column heights and four
@@ -206,3 +208,54 @@ world editor. All existing terrain remains one ordinary connected opportunity;
 arbitrary player-built sealed enclosures are not opened for them. This slice's
 new ore is still era-gated and progression remains disabled. Human terrain
 readability, discovery and performance acceptance remain for review.
+
+## LF-4B selections, before implementation
+
+The Collection Annex opens at its existing front shell. That body receives the
+normal E interaction; its footprint stays fixed and paid occupancy still wins.
+The Trial is a policy-scoped copy of `forge_tyrant`: identical eight-stage,
+two-floor topology, deposits, temporary boons, optional store and Tyrant combat
+mechanics. The first two stages replace one ordinary opponent per branch with
+an existing Red-scar and Blue-scar boar respectively, so either branch introduces
+each single influence. The remaining opponents are containment guardians. No
+new enemy statistics, species, boss mechanics or hybrid are introduced.
+
+`laboratory.json` supplies the stage context, specimen IDs, three inspectable
+records and bounded apparatus dimensions/placement. Records identify the later
+human modification of collection machinery, distinct Red/Blue containment, and
+the emergency return circuit whose failure can reach Retained Fen. The copied
+boss is explicitly an adapted mechanical containment warden, not the human.
+Inspection is repeatable evidence with no inventory/progression payout.
+
+All other historical Trial entry APIs and old curio era gates remain closed
+under this policy; published policies keep the original catalogue unchanged.
+LF-4B victory may settle existing run loot/trophy but still cannot queue or
+publish resonance; LF-4C adds that once-only campaign settlement after these
+laboratory regressions pass. The physical route fixture separates its forced
+encounter resolution from real controller walking and first-person interaction.
+
+## LF-4B evidence
+
+The normal first-person E ray selects the existing Annex front body. All three
+entry-gallery records are reached and inspected before combat without changing
+rules/ownership. The three early branch rooms contain solid cabinets included
+in actual navigation clearance. Released Red/Blue enemies use the existing
+influence presentation. Eight encounters, both floors, both branch previews,
+the optional store, every offering, a cleared-floor save/restore and exact
+return position pass **144 checks** over **824.5 m of controller walking**.
+
+Native laboratory identity, route/reward parity, policy-specific suspension,
+deposit restoration and closed progression pass **29 checks**. The checkpoint
+has an explicit laboratory revision; paired-player validation supplies its saved
+policy before reconstructing the run. Legacy saves omit those fields.
+The original Forge route separately passes **122 checks / 814.9 m**, and the
+existing Trial lifecycle suite passes **6,221 checks**. All have zero failures.
+Commands: `tools/living_frontier_wave4_checks.ps1 -Laboratory -Legacy`, native
+`laboratory_tests`; logs `build/lf4/*-b*`. LF-4B's gate is clear.
+
+Limitations: encounter outcomes in the route fixture are forced, explicitly
+isolating real traversal/interaction and ownership from combat balance. Actual
+enemy/controller code runs in normal play, with inherited Tyrant mechanics and
+unchanged specimen statistics. The cabinets and record plaques are bounded
+placeholder art. Human fight balance, laboratory readability and narrative
+discovery still need orchestrator/player review.

@@ -1,0 +1,21 @@
+{
+  "display_name": "Collection Annex",
+  "completion_text": "The containment warden falls. Its emergency return circuit is still carrying a signal toward Retained Fen.",
+  "stage_labels": ["Red containment", "Blue containment", "Collection machinery", "Sample archive", "Altered conduits", "Human workshop", "Emergency return", "Failsafe chamber"],
+  "specimens": ["lf_red_boar", "lf_blue_boar"],
+  "apparatus_size_m": [2, 2, 4],
+  "apparatus_offset_m": [7, 1, 0],
+  "record_spacing_m": 6,
+  "records": [
+    {"id":"collection", "title":"Separated specimens", "text":"Red chambers feed warmth into familiar boars. Blue chambers slow their responses. Each pen carries one influence; the dividers have never held a paired specimen."},
+    {"id":"intervention", "title":"A later human hand", "text":"Human-sized tools lie beside a newer control panel. The operator's handprint branches into the same mineral scar as the specimens. Scratched instructions divert collection lines into living hosts; the original shutdown sequence is crossed out: KEEP THE RETURN CIRCUIT LIVE."},
+    {"id":"failsafe", "title":"Emergency return circuit", "text":"The diagram ties the containment warden to an emergency return line. If containment fails, the line discharges into the Retained Fen collectors. A margin note reads: the operator returns first; the retained ground answers afterward."}
+  ],
+  "design_purpose": {
+    "stage_labels": "Give existing Trial rooms a coherent laboratory purpose without changing their route or reward identity.",
+    "specimens": "One existing single-influence creature replaces the first opponent in each branch of the first two stages.",
+    "apparatus_size_m": "A solid containment cabinet fits in the room's outer alcove and participates in navigation clearance.",
+    "apparatus_offset_m": "Keep apparatus clear of the ordinary entrance, central fight and offering approach.",
+    "record_spacing_m": "Separate the three inspectable entry-gallery records for ordinary walking and E interaction."
+  }
+}

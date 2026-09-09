@@ -4,6 +4,10 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 
 ## Living Frontier isolated terrain — LF-4A
 
+LF-4B also passes its physical Annex door, containment apparatus/evidence,
+eight-stage/two-floor walk, suspended-floor ownership and exact site return.
+Its successor progression is still closed until LF-4C's checked settlement.
+
 - [x] A separate saved campaign transforms real Retained Fen voxels/collision
   while preserving paid supports/storage, machine spans, excavation and recovery.
 - [x] Pending and applied checkpoints survive separate engine processes; a

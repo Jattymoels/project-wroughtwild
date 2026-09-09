@@ -165,6 +165,7 @@ TrialSession::TrialSession(const tuning::Tuning& tuning,
 TrialSession::TrialSession(const tuning::Tuning& tuning, economy::PlayerEconomy& economy,
                            boons::BuildTags buildTags, uint64_t seed, const tuning::TrialFloor* floor, bool deposit)
     : tuning_(tuning), economy_(economy), floor_(floor), buildTags_(std::move(buildTags)), seed_(seed) {
+    if (floor && floor->id=="forge_tyrant" && economy_.campaignPolicy==resonance::campaign) floor_=&tuning_.laboratory;
     // Deposit ordinary carried possessions at the entrance (D-006).
     if (deposit) {
         depositedInventory_ = economy_.inventory;
@@ -397,6 +398,10 @@ std::string TrialSession::checkpoint() const {
     e["trial_checkpoint_version"] = "1";
     e["content_revision"] = std::to_string(tuning_.trial.contentRevision);
     e["run_id"] = runId();
+    if (economy_.campaignPolicy==resonance::campaign) {
+        e["campaign_policy"]=economy_.campaignPolicy;
+        e["laboratory_revision"]="1";
+    }
     e["run_kind"] = runKind();
     e["seed"] = std::to_string(seed_);
     e["stage"] = std::to_string(stageIndex_);
@@ -428,6 +433,14 @@ std::unique_ptr<TrialSession> TrialSession::restore(const tuning::Tuning& tuning
         throw std::runtime_error("trial checkpoint: only story floor boundaries can suspend");
     const auto* floor = tuning.trial.findExpedition(e.at("run_id"));
     if (!floor) throw std::runtime_error("trial checkpoint: unknown story run");
+    const auto savedPolicy=e.find("campaign_policy");
+    const std::string policy=savedPolicy==e.end() ? "legacy" : savedPolicy->second;
+    if (policy!=economy.campaignPolicy) throw std::runtime_error("trial checkpoint: campaign policy mismatch");
+    if (policy==resonance::campaign) {
+        if(e.at("laboratory_revision")!="1") throw std::runtime_error("trial checkpoint: unknown laboratory revision");
+        if (floor->id!="forge_tyrant") throw std::runtime_error("trial checkpoint: unavailable successor story");
+        floor=&tuning.laboratory;
+    }
     const int stage = integer(e.at("stage"));
     if (stage <= 0 || stage >= static_cast<int>(floor->stages.size()) ||
         floor->stages[static_cast<size_t>(stage)].floorIndex != floor->stages[static_cast<size_t>(stage - 1)].floorIndex + 1)

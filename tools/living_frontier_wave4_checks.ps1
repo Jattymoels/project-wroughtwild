@@ -1,4 +1,4 @@
-param([switch]$Terrain, [switch]$Legacy)
+param([switch]$Terrain, [switch]$Laboratory, [switch]$Legacy)
 . "$PSScriptRoot/living_frontier_checks.ps1"
 $lfLogs = Join-Path $lfRoot 'build/lf4'
 New-Item -ItemType Directory -Force $lfLogs | Out-Null
@@ -11,5 +11,6 @@ if ($Terrain) {
 }
 if ($Legacy) {
     foreach ($lfSeed in 5,77) { Invoke-LFEngine "legacy-$lfSeed" @('--headless','--fixed-fps','60','res://tests/living_frontier_routes.tscn','--',"--route-seed=$lfSeed",'--lf3-r1-restore-only') }
-    foreach ($lfScene in 'save_recovery','trial_intensive','trial_resume') { Invoke-LFEngine $lfScene @('--headless',"res://tests/$lfScene.tscn") }
+    foreach ($lfScene in 'save_recovery','trial_intensive','forge_traversal') { Invoke-LFEngine $lfScene @('--headless',"res://tests/$lfScene.tscn") }
 }
+if ($Laboratory) { Invoke-LFEngine 'laboratory-b' @('--headless','--fixed-fps','60','res://tests/laboratory_trial.tscn') }

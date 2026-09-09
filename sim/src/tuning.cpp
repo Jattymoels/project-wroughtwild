@@ -1813,6 +1813,19 @@ Tuning loadAll(const std::string& tuningDirectory) {
     tuning.boons = loadBoons(tuningDirectory + "/boons.json");
     tuning.world = loadWorld(tuningDirectory + "/world.json");
     tuning.trial = loadTrial(tuningDirectory + "/trial.json");
+    const auto lab = json::parseFile(tuningDirectory + "/laboratory.json");
+    const auto* firstTrial = tuning.trial.findExpedition("forge_tyrant");
+    if (!firstTrial) throw std::runtime_error("Laboratory requires the existing first Trial");
+    tuning.laboratory = *firstTrial;
+    tuning.laboratory.displayName = lab->get("display_name").asString();
+    tuning.laboratory.completionText = lab->get("completion_text").asString();
+    const auto& labels = lab->get("stage_labels").asArray();
+    const auto& specimens = lab->get("specimens").asArray();
+    if (labels.size()!=tuning.laboratory.stages.size() || specimens.size()!=2) throw std::runtime_error("Invalid bounded laboratory treatment");
+    for (size_t i=0;i<labels.size();++i) for (auto& room:tuning.laboratory.stages[i].choices) {
+        room.displayName=labels[i]->asString()+" - "+room.displayName;
+        if (i<specimens.size() && !room.encounter.empty()) room.encounter.front()=specimens[i]->asString();
+    }
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
     tuning.livingFrontier = loadLivingFrontier(tuningDirectory + "/living_frontier.json");

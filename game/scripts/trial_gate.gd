@@ -11,7 +11,7 @@ func interact(player: WroughtwildPlayer) -> void:
 		return
 	var sim: WroughtwildSim = player.inventory.get_sim()
 	if sim.campaign_policy()=="living_frontier_wave4":
-		player.open_custom_panel("The old smithy",[],"This impact-struck forge predates the cataclysm. Follow the collection trail to the Collection Annex; its laboratory campaign is still being prepared.")
+		player.open_custom_panel("The old smithy",[],"This impact-struck smithy predates the cataclysm. Follow the collection trail to the Collection Annex and enter its containment Trial.")
 		return
 	var rows: Array=[]
 	var stories: Array=sim.call("trial_story_runs")

@@ -158,7 +158,7 @@ func _reach(fixture: TrialFixture, label: String) -> bool:
 
 func _native_route() -> void:
 	trial.seed_source.seed = 7146
-	if not check(trial.begin_run("forge_tyrant"), "normal native Tyrant route starts"): return
+	if not check(await _start_native_route(), "normal native first Trial route starts"): return
 	await _settle_player()
 	await _settle_navigation(arena.dungeon)
 	await _verify_floor_cache(arena.dungeon)
@@ -221,6 +221,9 @@ func _native_route() -> void:
 	check(encountered == 8 and not trial.active(), "actual route completes all eight native encounters and extracts at its existing boss reward")
 	check(modules_seen.size() == 8, "physical walkthrough covers all eight existing module treatments")
 
+func _start_native_route() -> bool:
+	return trial.begin_run("forge_tyrant")
+
 
 func _clear_encounter() -> void:
 	for pass_index in 20:
@@ -240,19 +243,24 @@ func _boundary_restore() -> void:
 	if not await _reach(arena.dungeon.boundary, "cleared-floor descent lift"): return
 	player.interact()
 	check(player.work_panel.is_open() and trial.state == "boundary", "actual lift E exposes Continue, bank and suspend")
-	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(CHECKPOINT).get_base_dir())
+	var path:=checkpoint_path()
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(path).get_base_dir())
 	var economy := sim.export_json()
 	var haul := sim.trial_loot().duplicate(true)
 	var life := player.combat.life
-	if not check(trial.suspend_to(CHECKPOINT), "reached lift saves the exact cleared-floor checkpoint"): return
+	if not check(trial.suspend_to(path), "reached lift saves the exact cleared-floor checkpoint"): return
 	trial.on_player_died()
-	if not check(SaveManager.new().read(CHECKPOINT, player), "normal save restore rebuilds the cleared floor"): return
+	var manager:=SaveManager.new()
+	if not check(manager.read(path, player), "normal save restore rebuilds the cleared floor: "+manager.last_error): return
 	await _settle_player()
 	check(sim.export_json() == economy and sim.trial_loot() == haul and player.combat.life == life, "restoring presentation preserves exact deposit, haul and life")
 	check(arena.dungeon.secret.claimed, "restored optional store remains spent")
 	if await _reach(arena.dungeon.boundary, "restored descent lift"):
 		player.interact()
 		check(player.work_panel.is_open() and trial.state == "boundary", "restored first-person pose can use the same physical lift")
+
+func checkpoint_path() -> String:
+	return CHECKPOINT
 
 
 func _dynamic_fixture_probe() -> void:

@@ -1318,6 +1318,7 @@ struct Tuning {
     BoonTable boons;
     WorldTable world;
     TrialTable trial;
+    TrialFloor laboratory; // bounded LF-4 policy copy; historical catalogue remains unchanged
     RealtimeTable realtime;
     WorldgenTable worldgen;
     WorldgenTable legacyWorldgen; // immutable legacy_v1 inputs for old saves

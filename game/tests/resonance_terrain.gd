@@ -38,7 +38,7 @@ func _run_terrain() -> void:
 		quiet()
 	else:
 		check(ResonanceEvent.phase(_sim())=="dormant","new campaign starts without an event")
-		check(not _sim().trial_start_story(1,"forge_tyrant") && not _sim().trial_start(1,""),"LF-4A cannot enter either historical Trial bypass")
+		check(not _sim().trial_start_story(1,"deep_forge") && not _sim().trial_start(1,""),"successor cannot enter later or legacy Trial bypasses")
 		check(_sim().resonance_queue(world_seed),"isolated fixture queues once without a Trial trigger")
 		check(not _sim().resonance_queue(world_seed),"duplicate pending request refused")
 		var candidate:=WroughtwildSim.new()

@@ -488,6 +488,8 @@ func interact_fixture(fixture: TrialFixture) -> void:
 	if not active() or not spatial or fixture.claimed or not fixture.available: return
 	if fixture.global_position.distance_to(player.global_position)>player.interact_range+2.0: return
 	match fixture.fixture_kind:
+		"evidence":
+			player.open_custom_panel(fixture.title,[],String(fixture.payload.get("text","")))
 		"route":
 			if state=="exploring" and fixture.stage_index==int(sim.trial_stage().get("index",-1)):
 				enter_room(fixture.choice_index)

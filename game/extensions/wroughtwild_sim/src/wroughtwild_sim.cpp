@@ -2453,8 +2453,8 @@ bool WroughtwildSim::set_world_profile(const String& profile_id) {
 
 bool WroughtwildSim::trial_start_story(int seed, const String& run_id) {
     if (!require_loaded("trial_start_story") || trial_) return false;
-    if (player_->campaignPolicy == wroughtwild::resonance::campaign) return false;
     std::string id = run_id.is_empty() ? "forge_tyrant" : to_std(run_id);
+    if (player_->campaignPolicy == wroughtwild::resonance::campaign && id!="forge_tyrant") return false;
     const auto* run = tuning_->trial.findExpedition(id);
     if (!run || (!run->requiresWorldEffect.empty() && !player_->worldEffectActive(run->requiresWorldEffect))) return false;
     trial_ = std::make_unique<wroughtwild::trial::TrialSession>(*tuning_, *player_, build_tags(), static_cast<uint64_t>(seed), run);
@@ -2464,12 +2464,15 @@ bool WroughtwildSim::trial_start_story(int seed, const String& run_id) {
 Array WroughtwildSim::trial_story_runs() const {
     Array out;
     if (!require_loaded("trial_story_runs")) return out;
-    for (const auto& run : tuning_->trial.expeditions) {
+    for (const auto& historical : tuning_->trial.expeditions) {
+        const bool laboratory=player_->campaignPolicy==wroughtwild::resonance::campaign;
+        if (laboratory && historical.id!="forge_tyrant") continue;
+        const auto& run=laboratory ? tuning_->laboratory : historical;
         Dictionary d;
         d["id"] = to_godot(run.id);
         d["display_name"] = to_godot(run.displayName);
         d["available"] = run.requiresWorldEffect.empty() || player_->worldEffectActive(run.requiresWorldEffect);
-        d["done"] = player_->worldEffectActive(run.completionUnlock);
+        d["done"] = player_->worldEffectActive(laboratory ? "lf4_annex_victory" : run.completionUnlock);
         d["boss_id"] = to_godot(run.boss.id);
         d["boss_preview"] = to_godot(run.bossPreview);
         d["floor_count"] = run.floorCount;
@@ -2491,6 +2494,7 @@ Dictionary WroughtwildSim::trial_layout() const {
     Dictionary out;
     if (!trial_ || trial_->runKind() == "legacy") return out;
     out["run_id"] = to_godot(trial_->runId());
+    if (player_->campaignPolicy==wroughtwild::resonance::campaign) out["laboratory"] = true;
     out["run_kind"] = to_godot(trial_->runKind());
     out["display_name"] = to_godot(trial_->floor()->displayName);
     out["seed"] = static_cast<int64_t>(trial_->seed());
@@ -2621,6 +2625,7 @@ bool WroughtwildSim::trial_checkpoint_valid(const String& text) const {
         const auto paired = wroughtwild::save::fromJson(payload.extra.at("player_state"));
         if (!paired.economy.inventory.empty()) return false;
         wroughtwild::economy::PlayerEconomy probe(*tuning_);
+        probe.importState(paired.economy);
         auto session = wroughtwild::trial::TrialSession::restore(*tuning_, probe, payload.extra.at("session"));
         auto stream = wroughtwild::combat::HitStream::restore(payload.extra.at("hit_stream"));
         (void)session;

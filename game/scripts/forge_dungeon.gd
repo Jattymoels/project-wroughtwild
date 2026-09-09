@@ -31,6 +31,8 @@ var _fixture_obstacles: Array[Rect2] = []
 var _navigation_fixture_ids: Dictionary = {}
 var _navigation_refresh_queued := false
 var _navigation_closing := false
+var laboratory_records: Array[TrialFixture] = []
+var laboratory_apparatus: Array[StaticBody3D] = []
 
 func _exit_tree() -> void:
 	_navigation_closing = true
@@ -124,9 +126,38 @@ func build(layout: Dictionary, which_floor: int) -> void:
 			_box(Vector3(secret_side*6.5,3.5,z),Vector3(3,7,.6),LOOK.stone,true)
 	# Read actual collider poses after route plaque yaw is applied. Pedestals
 	# share the cover clearance map, including offerings and later conduits.
+	if bool(layout.get("laboratory",false)): _laboratory_treatment(which_floor)
 	_authored_obstacles.assign(obstacles)
 	_refresh_fixture_obstacles()
 	_build_navigation()
+
+func _laboratory_treatment(which_floor: int) -> void:
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(load("res://scripts/sim.gd").get_tuning_directory().path_join("laboratory.json")))
+	for i in data.records.size():
+		if which_floor>0 and i<2: continue
+		var record: Dictionary=data.records[i]
+		var at:=Vector3(3,0,8+i*float(data.record_spacing_m))
+		var fixture:=_fixture("evidence",at,String(record.title),"Inspect record")
+		fixture.payload=record.duplicate(true)
+		fixture.available=true
+		fixture.refresh()
+		laboratory_records.append(fixture)
+	if which_floor!=0: return
+	var size:=Vector3(data.apparatus_size_m[0],data.apparatus_size_m[1],data.apparatus_size_m[2])
+	var offset:=Vector3(data.apparatus_offset_m[0],data.apparatus_offset_m[1],data.apparatus_offset_m[2])
+	for key: String in rooms:
+		var stage:=int(key.get_slice(":",0))
+		if stage>1: continue
+		var centre: Vector3=rooms[key].centre
+		var side:=signf(centre.x)
+		var at:=centre+Vector3(side*offset.x,offset.y,offset.z)
+		var cabinet:=_box(at,size,Color("526164"),true)
+		laboratory_apparatus.append(cabinet)
+		var specimen_colour:=Color("ba6b45") if stage==0 else Color("83abc2")
+		# A closed, individually marked containment vessel with a collection
+		# conduit. The released creature is the actual single-influence enemy.
+		_box(at+Vector3(-side*(size.x*.5+.025),0,0),Vector3(.05,size.y*.7,size.z*.7),specimen_colour,false)
+		_box(at+Vector3(0,size.y*.65,0),Vector3(.3,.6,.3),Color("9a9b88"),false)
 
 func _refresh_fixture_obstacles() -> void:
 	obstacles.assign(_authored_obstacles)
