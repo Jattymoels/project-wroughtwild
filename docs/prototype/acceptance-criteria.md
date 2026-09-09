@@ -20,6 +20,10 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   [technical clearance and remaining evidence](living-frontier-wave7-review-2026-09-09.md).
 - [ ] Complete added-pressure runs and upper-tier balance are validated; human
   accepts full-run difficulty and clarity.
+- [x] INT-18A records matched five-room baseline/Relentless victories and natural
+  Crossfire deaths, with ordinary paid preparation and exact saved ownership,
+  configuration and fresh-process next-offer checks. A full Crossfire victory
+  remains open. [Evidence](living-frontier-int18-pressure-validation-2026-09-09.md).
 
 [Configuration, evidence and limits](living-frontier-wave7-2026-09-09.md).
 

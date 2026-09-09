@@ -40,6 +40,12 @@ continues the same world/save. Complete added-pressure runs, upper-tier balance,
 a continuous fresh campaign, human clarity and the synchronous publication pause
 remain open; the review proposes bounded INT-18 validation next.
 
+[INT-18A matched pressure validation](docs/prototype/living-frontier-int18-pressure-validation-2026-09-09.md)
+records complete Relentless victories and their matched baselines, plus honest
+Crossfire deaths with paid preparation. Exact settlement and fresh-process
+offer/ownership checks accompany the attempts. A complete Crossfire victory,
+human balance acceptance and the later campaign/performance slices remain open.
+
 [Living Frontier Wave 6](docs/prototype/living-frontier-wave6-2026-09-09.md)
 repairs ordinary-load movement after failed publication recovery, then opens
 the existing Central Laboratory after both protected region changes. Its

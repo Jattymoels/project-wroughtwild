@@ -31,6 +31,10 @@ wave or expansion is authorized by that implementation record.
 The [independent Wave 7 review](living-frontier-wave7-review-2026-09-09.md)
 records the final technical clearance, current regression evidence and a proposed
 INT-18 validation handoff. There is no automatically approved eighth wave.
+The first [INT-18A validation slice](living-frontier-int18-pressure-validation-2026-09-09.md)
+records matched Relentless/baseline victories and Crossfire deaths with exact
+return/restart checks. Crossfire completion and human balance remain open;
+this does not dispatch the continuous-campaign or performance follow-ups.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 
