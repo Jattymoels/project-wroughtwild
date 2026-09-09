@@ -1,5 +1,16 @@
 # Art Direction — "Weathered Frontier, Dark Thresholds"
 
+**Owner continuation, 9 September 2026:** “Perfect” visually approves ART-06C's
+deep lifelines and porcupine face. The next request selects **nature/world-feel
+and every existing craftable placeable design**, using the original ENV-002
+wide shot as a fullness reference. [ART-07](../prototype/world-and-placeable-art-2026-09-09.md)
+covers connected canopy, understory, ground/bank/rock transitions, wildlife
+habitats and a coherent gathered-material building kit. New boards are proposed
+designs; the catalogue preserves actual shapes, material eligibility, station
+and fixture ownership. Retain all approved animals and ART-04 families. Mob
+rigs and ordinary game adoption remain separate; no generation/population
+change or new furniture recipe follows from a concept image.
+
 **Owner correction, 9 September 2026:** the six remaining animal mobs need
 obvious, deep magic veins that look essential to keeping their damaged bodies
 alive. [ART-06C](../prototype/roster-lifelines-2026-09-09.md) therefore uses broad

@@ -1,0 +1,97 @@
+{
+  "tool": "image_gen.imagegen (built-in)",
+  "date": "2026-09-09",
+  "reference_policy": "Original ENV-002 inspected for compositional qualities; original generations use text prompts without image attachment. Only the station framing edit references a generated local board.",
+  "images": [
+    {
+      "file": "01-world-keyframe.png",
+      "prompt_file": "01-world-keyframe-prompt.txt",
+      "prompt": "Use case: stylized-concept. Asset type: original Wroughtwild environment art-direction keyframe, not an in-game screenshot. Create a beautiful expansive 16:9 landscape concept at high detail. A weathered, earthy dark-fantasy frontier on an alien world whose animals and plants originally looked familiar, then were augmented by meteorite-borne magic/technology. Primary aim: the world feels richly inhabited and covered in connected vegetation, like a believable living habitat. View from a low ridge at human walking height: dense irregular foreground ferns, moss, grasses, leaf litter and exposed woody roots; overlapping crooked broadleaf tree crowns and a few tall conifers frame the middle distance; a winding river reveals wet reed margins, root banks and broken layered rocks; receding wooded hills and weathered stone spires fade into light mist. A clear modest footpath and a small timber-and-stone workshop clearing create useful open space among the density. A ruined old low-technology masonry wall is half reclaimed by roots. Two small recognisable deer browse near the river, a boar forages in the shaded undergrowth and a few tiny moths occupy a sunlit bank; integrate them at plausible scale. The catastrophe is structural: one mature tree has a torsioned split trunk and flared roots wrapped through fractured rock, carrying obvious deep dark channels with visible warm ember energy inside, suggesting the force sustaining a damaged host. Keep most foliage unlit and biologically healthy; brighter scars are local discoveries, not a uniform neon forest. Leaves cluster on real branches with believable gaps. Warm broken sunlight, cool river shadows, olive/sage foliage, weathered brown timber, pale mineral highlights. Painterly high-end game concept art with material realism and strong spatial composition, appealing and mysterious rather than pitch-black horror. Original geography: no enormous circular stone arch, no copied image layout, no floating islands, no stock-image branding, no text, no labels, no logos, no watermark. Rich close/middle/distant layers, substantial canopy coverage and readable routes are essential.",
+      "generated_original": "C:\\Users\\Matty\\.codex\\generated_images\\01a07baf-994f-71a2-bb2b-3025e79126e1\\exec-0a2881a2-bacc-4257-b747-f369b8d99d50.png",
+      "edit_parent": null,
+      "status": "proposed for owner review",
+      "sha256": "2bcb3d2e39f50d0d62f13b00a0574e2dcf969aef4887a90f508ab9fc172db238",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "prompt_sha256": "d23cb5fdc5d3582337089f19e9fcac8564ae2ae66ef7f8fb3d46b634dea50609"
+    },
+    {
+      "file": "02-habitat-kits.png",
+      "prompt_file": "02-habitat-kits-prompt.txt",
+      "prompt": "Use case: stylized-concept. Original Wroughtwild environment production concept board. A carefully composed 3-column by 2-row board with six equally legible scenic habitat vignettes, thin neutral gutters, no text, no lettering, no logos. Every tile shows matching earthy painterly material realism, not cartoons. Top left: gentle meadow woodland edge, broad spreading oak-like tree, thick mixed grass clumps, ferns, brambles and moss, an open footpath and deer at plausible scale. Top middle: Rootvault Wildwood, huge buttressed resinheart trunks, layered pine and broadleaf crowns, resin amber inside a few deeply recessed broken root channels, thick corkbark deadfall, mushrooms and shadowed understory. Top right: Lantern Fen, leaning dark bog oaks and knuckled roots, rust-red clay bank, tall reeds, sedge hummocks, shallow dark water, papery naturally luminous lanternheart husks as rare focal finds. Bottom left: Glasswind Uplands and Shellcut Escarpment, pale fossil shellstone shelves paired with dark layered slate, wind-stunted pine, tough tussocks, low silver-green shrubs, lichens, sheltered pockets of greenery, ram-sized readable routes. Bottom middle: Ember Wastes recovering after catastrophe, bleached ash snags, shattered dark basalt, black grit and rusty ground, patches of coarse surviving grass and thorn scrub, one fractured rock whose deeply recessed scar carries warm ember light, sparse live foliage gives rhythm rather than endless bare flat ground. Bottom right: river and ruined frontier edge, terraced rock banks, damp roots, broken ordinary masonry overgrown by fern and ivy, canopy layers and water with open access for a human. Show nature feeling full in different ways without identical tree density everywhere. Foreground details should be clear enough to inspire individual modular assets. Magic appears only inside a few deep open structural wounds; most plants do not glow. No giant arch, floating rocks, glowing mushrooms everywhere, fantasy ice on the blue region, colourful zone gradients, towns or futuristic machinery.",
+      "generated_original": "C:\\Users\\Matty\\.codex\\generated_images\\01a07baf-994f-71a2-bb2b-3025e79126e1\\exec-d71982b6-cc7e-44dc-9c50-639bcbcae08f.png",
+      "edit_parent": null,
+      "status": "proposed for owner review",
+      "sha256": "f57c8b3f0b15b23f32e65dcb71606e74c68c0f40858434ffa78374247cea613d",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt_sha256": "9e4d947f33f65125dd4dc901050ce2e0b4f6a574fa53f5dd9cad6f7fd9cb99e8"
+    },
+    {
+      "file": "03-building-family.png",
+      "prompt_file": "03-building-family-prompt.txt",
+      "prompt": "Use case: stylized-concept. Original Wroughtwild modular building art-direction sheet, landscape format, weathered low-technology fantasy, painterly material realism on warm grey parchment, sharp material and joinery detail. Top half: one attractive small player-built workshop cottage in three-quarter view, coarse square timber frame and warm wood wall panels on low rough fieldstone footings, dark thin layered slate pitched roof with a clearly legible outer hip and inner valley, smoky cinderglass fixed windows in integral slim frames, single hinged wood door. Keep practical visible one-metre modular construction rhythm and sheltered front working space. Lower left: neatly separated exploded modular samples of a square block, thin wall panel, narrow post, beam, floor slab, stair block with two substantial steps, diagonal clipped block and matching triangular slab, roof slope/hip/valley. All have straight joining boundaries, no curved melted AI seams. Lower middle: decorative small half-size sill/rail/shelf modules, a metal girder, a bronze arched head with a rounded underside, low dry-stone wall, woven reed framed wall panel and cork cladding. Lower right: rich material swatch collection of ordinary warm timber, pale pine, dark bog oak, bleached ash wood, amber resinheart grain, dressed grey stone, layered slate, pale fossil shellstone, rustclay brick, glossy broken-skin dark vitrified basalt, woven reed, porous cork, smoked cinderglass pane with integral frame, dark iron, aged bronze, cool steel, pale silver. Charcoal appears only as loose fuel beside a small fire-setting pile, never as a building block. Style communicates an appealing home made from things collected in the living frontier. Materials distinguish by construction and surface structure as much as colour. No magical glow on ordinary structural timber, no futuristic machines, no stone hinged door, no unsupported reed loadbearing posts, no text, no logos, no numeric labels. Concept proportions are illustrative; make the modular joinery visually convincing.",
+      "generated_original": "C:\\Users\\Matty\\.codex\\generated_images\\01a07baf-994f-71a2-bb2b-3025e79126e1\\exec-d14733ed-79f2-4ebd-8cab-14f314bde7c5.png",
+      "edit_parent": null,
+      "status": "proposed for owner review",
+      "sha256": "09aab066c1d21c313a06b3042f3a9979ffdbcc5fa507949bbf4dc0c741964f68",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt_sha256": "5ad2b27800a9f665787d62c038d0808d595c3b07503e82eb1bbfaf8099971c46"
+    },
+    {
+      "file": "04-stations-and-home-v01.png",
+      "prompt_file": "04-stations-and-home-prompt.txt",
+      "prompt": "Use case: stylized-concept. Original Wroughtwild craftable workshop equipment design board, 3 columns by 2 rows, six separate equally sized object studies with clean empty gutters, warm grey studio background, no text or logos. Beautiful detailed earthy painterly game concept style with realistic hand-built joinery, worn material edges and practical working surfaces. Same family as a weathered timber-and-stone frontier home. Top left: compact one-metre-square wooden workbench, stout pegged legs and a thick scarred top, a simple wooden hand clamp attached inside its footprint, no loose unsupported clutter. Top middle: compact basic forge, roughly square stone hearth with low ember basin, short supported chimney/cowl, iron tools attached within frame, clearly visible working face. Top right: the same forge visibly upgraded in place, same stone plinth and same footprint, stronger iron collars, improved enclosed hot chamber and a supported iron working plate; refinement is visible without an enormous new factory or magical free power. Bottom left: compact mason's yard working station, a square timber bench frame with inset fieldstone bed and a supported dressing block, attached timber wedge and chisels, pale cutting dust, visibly different from metal forge and wood bench. Bottom middle: jointed wooden storage chest with an iron hinge and latch, shown mostly closed with a tiny secondary open view beside it, no treasure glow or magic lock. Bottom right: small practical fire-setting campfire, a low crossed timber fuel pile shown beside an alternative charcoal heap over a dark scorched patch, subtle realistic embers, no cauldron or added cooking apparatus. All four stations must appear compact enough for a small workshop corner, all working parts supported and legible; no sprawling two-metre workbench, no sci-fi cables or screens, no carved runes on ordinary materials. Lighting neutral enough to judge material and form. These are proposed design concepts, not final technical dimensional diagrams.",
+      "generated_original": "C:\\Users\\Matty\\.codex\\generated_images\\01a07baf-994f-71a2-bb2b-3025e79126e1\\exec-a6677fa4-5d41-418e-8ca4-6e170c687d40.png",
+      "edit_parent": null,
+      "status": "superseded: cropped forge tops",
+      "sha256": "330a899d59d8580d3429e4e37d793664e60efee689c72d977fb0025664b74385",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt_sha256": "9fc2e9a68e76950854ad1b6fbf95825bb04e46b4b882fa8d3d0d8318a4d8e8ae"
+    },
+    {
+      "file": "04-stations-and-home.png",
+      "prompt_file": "04-stations-and-home-v02-prompt.txt",
+      "prompt": "Edit this Wroughtwild six-panel craftable station concept board, preserving its exact designs, material palette, realistic painterly finish and 3-column by 2-row arrangement. Correct only the framing and compactness of the top row forge designs: show each forge COMPLETELY within its own panel, including the FULL short stone chimney and top cap, with a clear band of neutral grey background above. Pull the camera back enough in each top panel so no geometry is cut off by the image or panel border. The chimney must be a compact short supported cowl, not a tall tower. Keep the workbench, mason's yard, chest with small open-state inset, and timber/charcoal fire studies. Keep the two forge designs sharing the same base and footprint; the upgraded one has the existing iron collar/enclosed chamber. Do not add new equipment, words, labels or decorative clutter. Full silhouettes with breathing room, every object visibly supported. The output remains one landscape concept board.",
+      "generated_original": "C:\\Users\\Matty\\.codex\\generated_images\\01a07baf-994f-71a2-bb2b-3025e79126e1\\exec-08407ce1-0a62-4296-8c60-c7c29ca214db.png",
+      "edit_parent": "04-stations-and-home-v01.png",
+      "status": "proposed for owner review",
+      "sha256": "644d723e17577dc4e8acc15ed012e82139b92cb8afa58235c2b8637766b8be0d",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt_sha256": "245ca96e864b51539a87bec4912b86a8964ffe428617014c634382b0b08195d7",
+      "edit_parent_sha256": "330a899d59d8580d3429e4e37d793664e60efee689c72d977fb0025664b74385"
+    },
+    {
+      "file": "05-useful-fixtures.png",
+      "prompt_file": "05-useful-fixtures-prompt.txt",
+      "prompt": "Use case: stylized-concept. Original Wroughtwild useful rare-resource devices production concept board. Seven separate object studies arranged in two rows, four across top and three larger across bottom, thin clear empty gutters, neutral warm-grey studio background. No words, no labels, no logos. Material-realistic painterly game art: weathered handmade wood, dark forged iron, raw fibres, natural strange components deliberately braced into practical devices. TOP LEFT: a compact freestanding Lanternheart lamp, one pale warm luminous seed heart held safely inside a papery husk and a simple timber/reed cage on a short foot, not a Victorian gas lamp. TOP SECOND: Thrumroot cargo winch, a stout timber A-frame supporting a drum of tightly wound sinewy root, side hand crank, short visible rope and single ordinary cargo basket; energy comes from winding, no glowing engine. TOP THIRD: the matching fixed landing, plain timber receiving cradle and iron rope guide with support feet, absolutely no second magical root drum. TOP RIGHT: low Stormglass pulse lever, one naturally twisted lightning-glass resonator tube held in timber/iron clamps and a hand lever that taps it, a dim momentary glint, not a glowing power generator. BOTTOM LEFT: Pullstone sorting chute, an unmistakable slanted hand-fed wooden chute with one dark magnetic nodule clamped beside it and two separate catch trays for attracted iron grit and ordinary stone; supported compact frame, open readable working parts. BOTTOM MIDDLE: Ventlung bellows, an organic leathery folded membrane between wooden boards, fibre lashings, hand priming handle and a single directed short nozzle, braced on the ground. BOTTOM RIGHT: a compact Pressure Feeder, rectangular timber and dark iron frame with separately visible clay hopper, small fuel cup, root winding drum, a supported pressure membrane chamber, brick output tray and two distinct capped attachment ports, all supported by the frame. Keep devices tactile and low technology; the animal-like material is a recovered natural membrane, not viscera. No skull decoration, brass steampunk gears everywhere, electronics, levitation, extra outputs, motorized conveyor belts or large factories. These are distinct legible mechanical silhouettes at human workshop scale; preserve useful clear negative spaces between pieces.",
+      "generated_original": "C:\\Users\\Matty\\.codex\\generated_images\\01a07baf-994f-71a2-bb2b-3025e79126e1\\exec-d41bbfd8-e426-455d-b71f-7166dd0fa3ca.png",
+      "edit_parent": null,
+      "status": "proposed for owner review",
+      "sha256": "d09bf2b419b8324cf524e442cf280d49f95bf77754fa29fded6a2a32f2ca724a",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "prompt_sha256": "b812957055792e7277dd998433ebf61e3bd4f3153a1f4fbdca47e8d39c118ea2"
+    }
+  ],
+  "mood_reference": {
+    "path": "docs/art/references/environment/env-002-dense-frontier-original.png",
+    "sha256": "46ec1329993b1a04cc1dc114f80d0a5e406fe933761640653a458295598fd7dd",
+    "use": "Inspected for composition; preserved unchanged; not attached to image generation."
+  }
+}

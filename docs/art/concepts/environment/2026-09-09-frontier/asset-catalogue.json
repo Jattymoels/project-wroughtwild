@@ -1,0 +1,2169 @@
+{
+  "schema_version": 1,
+  "status": "ART-07A design proposals; no runtime adoption",
+  "source_hash_policy": "SHA-256 of UTF-8 input text after CRLF-to-LF normalization; images use exact bytes",
+  "sources": {
+    "data/tuning/construction.json": "0cdc1d42c94427115f738744ee9e971bfa665803458835555c9302ce44950b9f",
+    "data/tuning/crafting.json": "2f7c0e6c24613a4c11708fda3725f6695ee1421679d1455afd88497024e711f5",
+    "data/tuning/worldgen.json": "1a725024ac89e81ebbee0fb9ff66d27c82e1d1e1157238c2be13b90ce4139bf8",
+    "data/tuning/world.json": "884ad24241af09a72d9187746c7f479b5911791adc96d5a856a76fee9aa11a6b",
+    "game/extensions/wroughtwild_sim/src/strange_frontier_bindings.inc": "8417b33e15718829b7f8b2e68d14ce2e69fd8a2101b17109ef782115cb79baf3",
+    "game/extensions/wroughtwild_sim/src/wroughtwild_sim.cpp": "4fb9508708abe4cfe7ac47faaf725837fb0a60171c5b26f6a0b9e52f5fdf9f00",
+    "sim/src/tuning.cpp": "549e732eeafb3a632af36114fe4cb7c5b2fb407f1239d4b41c76351b281ac763",
+    "game/scripts/contraption_site.gd": "efe00ef58b1f3d68198ec8ba08bd8261b3b5e084244e7b18c837c763f2ec1559",
+    "game/art/contraption_look.gd": "0070380865c7df3f9e17117a1390922c9b8d5eae83655754c55148fa82ecc6f7",
+    "game/art/contraption_look.tres": "a01a9ec84249a89c249a9e987abf78fd93216cf4098e11d85ce31b1efb71ec6c",
+    "game/scenes/station_body.tres": "6de93eef9647b533a5873973e88c059cbe89af7c56a0cebcbfdb0a36ed7fbe8d"
+  },
+  "constraints": {
+    "grid_m": 1.0,
+    "lattice_divisions": 2,
+    "normal_profiles_kits": 10,
+    "living_frontier_supported_profiles_kits": 14,
+    "legal_material_shape_pairs": 273,
+    "station_body_m": [
+      0.96,
+      2.0,
+      0.96
+    ],
+    "scope": "Concept coverage only. Profile/era/unlock gates still apply; no new rules or universal kit availability."
+  },
+  "materials": [
+    {
+      "id": "wood",
+      "name": "Timber",
+      "source_item": "wood",
+      "traits": [
+        "timber",
+        "joinery",
+        "fuel",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Warm sawn planks with broad end grain, pegs and irregular tool marks; retain straight mating edges."
+    },
+    {
+      "id": "pine",
+      "name": "Pine",
+      "source_item": "pine",
+      "traits": [
+        "timber",
+        "joinery",
+        "fuel",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Pale long straight grain and small dark knots; lighter rough cut edges than ordinary timber."
+    },
+    {
+      "id": "bog_oak",
+      "name": "Bog Oak",
+      "source_item": "bog_oak",
+      "traits": [
+        "timber",
+        "joinery",
+        "fuel",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Dense nearly black brown wood, water-dark pores and burnished worn corners; grain remains visible in shade."
+    },
+    {
+      "id": "ash_wood",
+      "name": "Ash Wood",
+      "source_item": "ash_wood",
+      "traits": [
+        "timber",
+        "joinery",
+        "fuel",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Bone-pale fibrous grain and weathered silver edges; a timber surface, not bone or snow."
+    },
+    {
+      "id": "stone",
+      "name": "Stone",
+      "source_item": "stone",
+      "traits": [
+        "masonry",
+        "heavy"
+      ],
+      "only_for_trait": null,
+      "brief": "Dressed grey courses with restrained chips and visible bedding; regular joints distinguish worked masonry from fieldstone."
+    },
+    {
+      "id": "iron",
+      "name": "Iron",
+      "source_item": "iron_ingot",
+      "traits": [
+        "metal",
+        "joinery",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Dark hammered iron, broad rivet heads and oxide in protected seams; muted metal, no generic orange glow."
+    },
+    {
+      "id": "bronze",
+      "name": "Bronze",
+      "source_item": "bronze_ingot",
+      "traits": [
+        "metal",
+        "malleable",
+        "tough",
+        "joinery",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Warm cast/hammered bronze with dark green patina in recesses; curved arch remains recognisably worked metal."
+    },
+    {
+      "id": "steel",
+      "name": "Steel",
+      "source_item": "steel_ingot",
+      "traits": [
+        "metal",
+        "hard",
+        "resilient",
+        "joinery",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Cooler tightly finished plates, darker weld/fastener lines and sharper worn edges than iron."
+    },
+    {
+      "id": "silver",
+      "name": "Silver",
+      "source_item": "silver_ingot",
+      "traits": [
+        "metal",
+        "warding",
+        "malleable"
+      ],
+      "only_for_trait": null,
+      "brief": "Pale soft metal with dark tarnished recesses; curved and structural forms only where the existing traits permit them."
+    },
+    {
+      "id": "charcoal",
+      "name": "Charcoal",
+      "source_item": "charcoal",
+      "traits": [
+        "fuel",
+        "hot"
+      ],
+      "only_for_trait": "fuel",
+      "brief": "Angular porous black fuel chunks and subtle ash; only the fuel form, never charcoal walls."
+    },
+    {
+      "id": "fieldstone",
+      "name": "Fieldstone",
+      "source_item": "fieldstone",
+      "traits": [
+        "rough",
+        "heavy"
+      ],
+      "only_for_trait": "rough",
+      "brief": "Rough varied stones with dry contact joints and lichen remnants; low footing/dry wall only."
+    },
+    {
+      "id": "slate",
+      "name": "Slate",
+      "source_item": "slate",
+      "traits": [
+        "masonry",
+        "heavy",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Thin dark cleaved layers, offset joints and chipped edge laminations; roofs read in the silhouette at distance."
+    },
+    {
+      "id": "shellstone",
+      "name": "Shellstone",
+      "source_item": "shellstone",
+      "traits": [
+        "masonry",
+        "heavy",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Warm pale cut stone carrying uneven fossil fragments and occasional whole shell impressions; fossils must not tile identically."
+    },
+    {
+      "id": "rustclay_brick",
+      "name": "Rustclay Brick",
+      "source_item": "rustclay_brick",
+      "traits": [
+        "masonry",
+        "heavy",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Warm red-brown fired courses, varied firing marks and restrained pale joints; repeat spacing fits module boundaries."
+    },
+    {
+      "id": "woven_reed",
+      "name": "Woven Reed",
+      "source_item": "woven_reed",
+      "traits": [
+        "covering"
+      ],
+      "only_for_trait": "covering",
+      "brief": "Over-under reed weave, bundled cut edges and integral lash-bound frame; opaque functional wall coverage despite visible weave."
+    },
+    {
+      "id": "resinheart",
+      "name": "Resinheart",
+      "source_item": "resinheart",
+      "traits": [
+        "timber",
+        "joinery",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Strong amber-brown grain, dense cut end rings and occasional non-emissive resin pockets; retain the collected tree's identity."
+    },
+    {
+      "id": "corkbark",
+      "name": "Corkbark",
+      "source_item": "corkbark",
+      "traits": [
+        "covering"
+      ],
+      "only_for_trait": "covering",
+      "brief": "Thick porous bark faces, layered cut edge and inset frame; use coarse pores rather than noisy universal bump."
+    },
+    {
+      "id": "vitrified_basalt",
+      "name": "Vitrified Basalt",
+      "source_item": "vitrified_basalt",
+      "traits": [
+        "masonry",
+        "heavy",
+        "covering"
+      ],
+      "only_for_trait": null,
+      "brief": "Dark fused rock with broken glossy skin over a matte heavy body; heat-worked material, not an always-burning wall."
+    },
+    {
+      "id": "cinderglass",
+      "name": "Cinderglass",
+      "source_item": "cinderglass",
+      "traits": [
+        "glazing"
+      ],
+      "only_for_trait": "glazing",
+      "brief": "Smoky mineral glass with modest distortion and an integral fitted frame; opaque-enough edge/selection readability and existing projectile blocking."
+    }
+  ],
+  "shapes": [
+    {
+      "id": "codex_corner",
+      "name": "Chamfer Block",
+      "size_m": [
+        1,
+        1,
+        1
+      ],
+      "element": "block",
+      "form": "corner",
+      "oriented": true,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "A clipped diagonal block with continuous side grain/courses and a clean diagonal mating face.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "codex_corner_floor",
+      "name": "Triangular Slab",
+      "size_m": [
+        1,
+        0.25,
+        1
+      ],
+      "element": "floor",
+      "form": "corner",
+      "oriented": true,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Thin triangular slab matching the clipped block; finish the cut edge, preserve exact thickness.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "codex_roof_slope",
+      "name": "Roof Slope",
+      "size_m": [
+        1,
+        0.5,
+        1
+      ],
+      "element": "block",
+      "form": "roof_slope",
+      "oriented": true,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [
+        "covering"
+      ],
+      "requires_world_effect": "stonecut_blocks",
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "iron",
+        "bronze",
+        "steel",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "woven_reed",
+        "resinheart",
+        "corkbark",
+        "vitrified_basalt"
+      ],
+      "brief": "One half-height pitched module; layer covering toward the low edge and keep shared roof seams exact.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "codex_roof_hip",
+      "name": "Roof Hip",
+      "size_m": [
+        1,
+        0.5,
+        1
+      ],
+      "element": "block",
+      "form": "roof_hip",
+      "oriented": true,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [
+        "covering"
+      ],
+      "requires_world_effect": "stonecut_blocks",
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "iron",
+        "bronze",
+        "steel",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "woven_reed",
+        "resinheart",
+        "corkbark",
+        "vitrified_basalt"
+      ],
+      "brief": "Convex outer roof transition with continuous ridge/corner covering; preserve the same cell envelope.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "codex_roof_valley",
+      "name": "Roof Valley",
+      "size_m": [
+        1,
+        0.5,
+        1
+      ],
+      "element": "block",
+      "form": "roof_valley",
+      "oriented": true,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [
+        "covering"
+      ],
+      "requires_world_effect": "stonecut_blocks",
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "iron",
+        "bronze",
+        "steel",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "woven_reed",
+        "resinheart",
+        "corkbark",
+        "vitrified_basalt"
+      ],
+      "brief": "Concave roof transition with a readable drainage valley; no decorative lip blocking the joining module.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "cube",
+      "name": "Cube Block",
+      "size_m": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "element": "block",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Solid regular module; timber assembly, masonry courses or metal panels express family without changing occupancy.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "wall_panel",
+      "name": "Wall Panel",
+      "size_m": [
+        1.0,
+        1.0,
+        0.25
+      ],
+      "element": "wall",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Thin vertical partition with integral believable edges; courses and grain continue at neighbouring faces.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "pillar",
+      "name": "Pillar",
+      "size_m": [
+        0.3,
+        1.0,
+        0.3
+      ],
+      "element": "post",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Narrow vertical support with end joints contained in its exact width; optional details must fit real corner geometry.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "beam",
+      "name": "Beam",
+      "size_m": [
+        1.0,
+        0.4,
+        0.4
+      ],
+      "element": "beam",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Horizontal support with readable underside and end grain/metal caps; preserve the existing exposed beam section.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "floor_slab",
+      "name": "Floor Slab",
+      "size_m": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "element": "floor",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Flat floor/ceiling module with legible rim; same finish on exposed underside, no floating trim.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "stairs",
+      "name": "Stairs",
+      "size_m": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "element": "block",
+      "form": "stairs",
+      "oriented": true,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Two substantial steps inside one cell; match native stair silhouette, not a new many-tread staircase.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "door",
+      "name": "Door",
+      "size_m": [
+        1.0,
+        2.0,
+        0.25
+      ],
+      "element": "wall",
+      "form": "door",
+      "oriented": true,
+      "cells_tall": 2,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [
+        "joinery"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "iron",
+        "bronze",
+        "steel",
+        "resinheart"
+      ],
+      "brief": "Single hinged leaf with frame/hinge detail inside the existing wall form; mirrored hinge orientation and actual open/closed state.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "roof_wedge",
+      "name": "Roof Wedge",
+      "size_m": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "element": "block",
+      "form": "wedge",
+      "oriented": true,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [
+        "masonry"
+      ],
+      "requires_world_effect": "stonecut_blocks",
+      "allowed_materials": [
+        "stone",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "vitrified_basalt"
+      ],
+      "brief": "Full-height 45-degree cut masonry wedge; distinguish this older stone form from half-height covering roofs.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "girder",
+      "name": "Girder",
+      "size_m": [
+        2.0,
+        0.4,
+        0.3
+      ],
+      "element": "beam",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 2,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [
+        "metal"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "iron",
+        "bronze",
+        "steel",
+        "silver"
+      ],
+      "brief": "Two-cell metal beam with a visibly reinforced section; no new cable support or structural rule.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "arch",
+      "name": "Arch",
+      "size_m": [
+        1.0,
+        1.0,
+        0.25
+      ],
+      "element": "wall",
+      "form": "arch",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [
+        "malleable"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "bronze",
+        "silver"
+      ],
+      "brief": "Worked malleable metal head with half-round underside; clear metal finish prevents confusion with a new masonry arch.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "half_cube",
+      "name": "Half Cube",
+      "size_m": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "element": "block",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": "cube",
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Half-grid solid for trim or a step; retain material grain scale, avoid an oversized full-block texture squeezed onto it.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "half_wall",
+      "name": "Half Wall",
+      "size_m": [
+        0.5,
+        0.5,
+        0.125
+      ],
+      "element": "wall",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": "wall_panel",
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Small face panel for sill/parapet infill; same edge seam contract as its coarse parent.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "half_pillar",
+      "name": "Half Post",
+      "size_m": [
+        0.15,
+        0.5,
+        0.15
+      ],
+      "element": "post",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": "pillar",
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Slender half-grid post for legs/pickets; no attached decorative finial beyond the body.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "half_beam",
+      "name": "Half Beam",
+      "size_m": [
+        0.5,
+        0.2,
+        0.2
+      ],
+      "element": "beam",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": "beam",
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Small rail or sill; matching end grain and joints at the half-cell positions.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "half_slab",
+      "name": "Half Slab",
+      "size_m": [
+        0.5,
+        0.125,
+        0.5
+      ],
+      "element": "floor",
+      "form": "box",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": "floor_slab",
+      "material_cost": 1,
+      "requires_traits": [],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "stone",
+        "iron",
+        "bronze",
+        "steel",
+        "silver",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "resinheart",
+        "vitrified_basalt"
+      ],
+      "brief": "Small shelf/step/roof edge with a finished underside; preserve fine lattice placement.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "chest",
+      "name": "Chest",
+      "size_m": [
+        1.0,
+        0.7,
+        0.8
+      ],
+      "element": "block",
+      "form": "chest",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 6,
+      "requires_traits": [
+        "joinery"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "iron",
+        "bronze",
+        "steel",
+        "resinheart"
+      ],
+      "brief": "Low jointed storage box; inherited material family, supported hinges and clear lid opening; contents stay in native storage.",
+      "board": "04-stations-and-home"
+    },
+    {
+      "id": "campfire",
+      "name": "Campfire",
+      "size_m": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "element": "block",
+      "form": "fire",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 3,
+      "requires_traits": [
+        "fuel"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "charcoal"
+      ],
+      "brief": "Low fuel pile with timber or charcoal-specific shape; burning/ash transition reads native fuel lifetime and heat.",
+      "board": "04-stations-and-home"
+    },
+    {
+      "id": "foundation",
+      "name": "Footing",
+      "size_m": [
+        1.0,
+        0.5,
+        1.0
+      ],
+      "element": "block",
+      "form": "low",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [
+        "rough"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "fieldstone"
+      ],
+      "brief": "Half-height dry-laid rough-stone footing with broad load-bearing base; no full masonry cube implied.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "dry_wall",
+      "name": "Dry Wall",
+      "size_m": [
+        1.0,
+        0.5,
+        0.3
+      ],
+      "element": "wall",
+      "form": "low",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [
+        "rough"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "fieldstone"
+      ],
+      "brief": "Low rough-stone course on a wall face; uneven cap inside dimensions, no new shelter or collision interpretation.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "light_panel",
+      "name": "Light Wall Panel",
+      "size_m": [
+        1,
+        1,
+        0.16
+      ],
+      "element": "wall",
+      "form": "light_panel",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 1,
+      "requires_traits": [
+        "covering"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "wood",
+        "pine",
+        "bog_oak",
+        "ash_wood",
+        "iron",
+        "bronze",
+        "steel",
+        "slate",
+        "shellstone",
+        "rustclay_brick",
+        "woven_reed",
+        "resinheart",
+        "corkbark",
+        "vitrified_basalt"
+      ],
+      "brief": "Framed thin covering wall; family-specific weave/bark/planks/sheets with a complete blocking surface.",
+      "board": "03-building-family"
+    },
+    {
+      "id": "glazed_window",
+      "name": "Fixed Glazed Window",
+      "size_m": [
+        1,
+        1,
+        0.16
+      ],
+      "element": "wall",
+      "form": "glazed_window",
+      "oriented": false,
+      "cells_tall": 1,
+      "cells_long": 1,
+      "fine_of": null,
+      "material_cost": 2,
+      "requires_traits": [
+        "glazing"
+      ],
+      "requires_world_effect": null,
+      "allowed_materials": [
+        "cinderglass"
+      ],
+      "brief": "Fixed smoky pane and complete integral frame as one piece; no openable window or extra frame recipe.",
+      "board": "03-building-family"
+    }
+  ],
+  "devices": [
+    {
+      "id": "workbench",
+      "kit": "workbench_kit",
+      "upgrade_from": null,
+      "name": "Workbench",
+      "recipe_id": "workbench_kit",
+      "recipe_inputs": {
+        "wood": 8
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        0.96,
+        2.0,
+        0.96
+      ],
+      "board": "04-stations-and-home",
+      "brief": "Pegged compact timber bench, thick scarred top and contained clamp. Distinct horizontal wood working surface.",
+      "review_states": [
+        "idle",
+        "existing craft feedback"
+      ],
+      "method": "Direct Blender frame and fitted tools."
+    },
+    {
+      "id": "forge_basic",
+      "kit": "forge_kit",
+      "upgrade_from": null,
+      "name": "Basic Forge",
+      "recipe_id": "forge_kit",
+      "recipe_inputs": {
+        "timber_frame": 1,
+        "stone": 8,
+        "iron_ore": 4
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        0.96,
+        2.0,
+        0.96
+      ],
+      "board": "04-stations-and-home",
+      "brief": "Low stone hearth and supported short cowl, iron working face, dark cold basin that lights only with real work feedback.",
+      "review_states": [
+        "idle",
+        "existing fuel/work feedback"
+      ],
+      "method": "Direct Blender hearth/frame; reusable stone/iron surfaces."
+    },
+    {
+      "id": "forge_improved",
+      "kit": null,
+      "upgrade_from": "forge_basic",
+      "name": "Improved Forge",
+      "recipe_id": null,
+      "recipe_inputs": null,
+      "minimum_era": null,
+      "upgrade_cost": {
+        "vanguard": 2,
+        "iron_fittings": 6,
+        "bog_iron": 3
+      },
+      "profile_filter": null,
+      "bounds_m": [
+        0.96,
+        2.0,
+        0.96
+      ],
+      "board": "04-stations-and-home",
+      "brief": "Same forge plinth and footprint with stronger iron collar, better contained hot chamber and visibly refined working plate.",
+      "review_states": [
+        "existing global upgrade appearance",
+        "idle/work"
+      ],
+      "method": "Variant of basic forge; no separate kit."
+    },
+    {
+      "id": "mason_yard",
+      "kit": "mason_yard_kit",
+      "upgrade_from": null,
+      "name": "Mason's Yard",
+      "recipe_id": "mason_yard_kit",
+      "recipe_inputs": {
+        "timber_frame": 1,
+        "fieldstone": 6
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        0.96,
+        2.0,
+        0.96
+      ],
+      "board": "04-stations-and-home",
+      "brief": "Squat timber support around a fieldstone dressing bed, attached wedges/chisel rests, cutting dust inside the footprint.",
+      "review_states": [
+        "idle",
+        "existing stone work feedback"
+      ],
+      "method": "Direct Blender support and contained dressed stone."
+    },
+    {
+      "id": "lantern_lamp",
+      "kit": "lantern_lamp_kit",
+      "upgrade_from": null,
+      "name": "Lanternheart Lamp",
+      "recipe_id": "assemble_lantern_lamp",
+      "recipe_inputs": {
+        "lanternheart": 1,
+        "wood": 2,
+        "raw_reed": 2
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        0.55,
+        1.06,
+        0.45
+      ],
+      "board": "05-useful-fixtures",
+      "brief": "Warm Lanternheart core in papery husk within a small timber/reed cage; protect the recognisable recovered heart.",
+      "review_states": [
+        "native on/off",
+        "dismantled core"
+      ],
+      "method": "Organic core source plus precisely fitted frame."
+    },
+    {
+      "id": "cargo_winch",
+      "kit": "cargo_winch_kit",
+      "upgrade_from": null,
+      "name": "Thrumroot Cargo Winch",
+      "recipe_id": "assemble_cargo_winch",
+      "recipe_inputs": {
+        "thrumroot": 1,
+        "wood": 8,
+        "iron_ingot": 2
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        1.4,
+        1.83,
+        1.15
+      ],
+      "board": "05-useful-fixtures",
+      "brief": "Root tension drum on stout timber supports, hand crank, one basket and a distinct cable attachment.",
+      "review_states": [
+        "unwound/wound",
+        "loaded",
+        "travelling/blocked/arrived"
+      ],
+      "method": "Direct mechanism; controlled organic root coil, separate moving drum/basket."
+    },
+    {
+      "id": "winch_landing",
+      "kit": "winch_landing_kit",
+      "upgrade_from": null,
+      "name": "Cargo Landing",
+      "recipe_id": "assemble_winch_landing",
+      "recipe_inputs": {
+        "wood": 6,
+        "iron_ingot": 1
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        1.4,
+        1.83,
+        1.15
+      ],
+      "board": "05-useful-fixtures",
+      "brief": "Plain matching receiving cradle and rope guide; support feet and basket clearance, no second rare core.",
+      "review_states": [
+        "connected",
+        "arriving/received cargo"
+      ],
+      "method": "Direct Blender; share winch timber/iron and attachment grammar."
+    },
+    {
+      "id": "stormglass_lever",
+      "kit": "stormglass_lever_kit",
+      "upgrade_from": null,
+      "name": "Stormglass Pulse Lever",
+      "recipe_id": "assemble_stormglass_lever",
+      "recipe_inputs": {
+        "stormglass": 1,
+        "wood": 3,
+        "iron_ingot": 1
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        0.65,
+        0.95,
+        0.5
+      ],
+      "board": "05-useful-fixtures",
+      "brief": "Ringing lightning-glass tube in clamps, readable tapping hand lever and outgoing request socket.",
+      "review_states": [
+        "idle",
+        "actual pulse",
+        "unavailable request"
+      ],
+      "method": "Organic tube plus direct frame/lever with physical pivot."
+    },
+    {
+      "id": "magnetic_sorter",
+      "kit": "magnetic_sorter_kit",
+      "upgrade_from": null,
+      "name": "Pullstone Sorting Chute",
+      "recipe_id": "assemble_magnetic_sorter",
+      "recipe_inputs": {
+        "pullstone": 1,
+        "wood": 4,
+        "iron_ingot": 1
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        1.3,
+        1.3,
+        0.85
+      ],
+      "board": "05-useful-fixtures",
+      "brief": "Inclined hand-fed chute, braced dark Pullstone nodule and two unmistakable receiving trays.",
+      "review_states": [
+        "empty/loaded",
+        "native sorting",
+        "separate tray contents"
+      ],
+      "method": "Direct Blender chute/trays; organic magnetic nodule."
+    },
+    {
+      "id": "ventlung_bellows",
+      "kit": "ventlung_bellows_kit",
+      "upgrade_from": null,
+      "name": "Ventlung Bellows",
+      "recipe_id": "assemble_ventlung_bellows",
+      "recipe_inputs": {
+        "ventlung": 1,
+        "wood": 3,
+        "raw_reed": 2
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        0.92,
+        0.97,
+        1.15
+      ],
+      "board": "05-useful-fixtures",
+      "brief": "Folded natural membrane between boards, fibre lashings, priming handle and short directed nozzle.",
+      "review_states": [
+        "unprimed/primed",
+        "actual discharge"
+      ],
+      "method": "Organic membrane with deformation-friendly topology; direct boards/nozzle."
+    },
+    {
+      "id": "pressure_feeder",
+      "kit": "pressure_feeder_kit",
+      "upgrade_from": null,
+      "name": "Pressure Feeder",
+      "recipe_id": "assemble_pressure_feeder",
+      "recipe_inputs": {
+        "ventlung": 1,
+        "thrumroot": 1,
+        "wood": 8,
+        "iron_ingot": 2,
+        "raw_reed": 2
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": null,
+      "bounds_m": [
+        1.5,
+        1.45,
+        1.45
+      ],
+      "board": "05-useful-fixtures",
+      "brief": "Compact frame with separate clay hopper, fuel cup, root drum, pressure chamber and brick tray; distinct pressure and forge attachments.",
+      "review_states": [
+        "idle",
+        "loaded",
+        "reserved/running",
+        "paused/blocked",
+        "output"
+      ],
+      "method": "Direct assembled mechanisms; separate supply meshes driven by native readout."
+    },
+    {
+      "id": "white_connection",
+      "kit": "white_connection_kit",
+      "upgrade_from": null,
+      "name": "White Connection",
+      "recipe_id": "assemble_white_connection",
+      "recipe_inputs": {
+        "white_mineral": 2,
+        "wood": 2
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": "living_frontier_wave1",
+      "bounds_m": [
+        0.65,
+        1.18,
+        0.55
+      ],
+      "board": "retained-ART04B",
+      "brief": "Reuse approved White post, fracture material and fitted frame; immediate request path stays visually distinct from receiver winding.",
+      "review_states": [
+        "native request/connection",
+        "no stored winding"
+      ],
+      "method": "Reuse tools/wroughtwild-white and its accepted handoff."
+    },
+    {
+      "id": "blue_delay",
+      "kit": "blue_delay_kit",
+      "upgrade_from": null,
+      "name": "Blue Delay",
+      "recipe_id": "assemble_blue_delay",
+      "recipe_inputs": {
+        "blue_flake": 2,
+        "wood": 2
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": "living_frontier_wave1",
+      "bounds_m": [
+        0.65,
+        1.18,
+        0.55
+      ],
+      "board": "retained-ART04C",
+      "brief": "Reuse approved supported flake/delay form; visible held request with a legible local pause/release cue.",
+      "review_states": [
+        "empty",
+        "holding",
+        "paused",
+        "released/cancelled"
+      ],
+      "method": "Reuse tools/wroughtwild-blue and its accepted handoff."
+    },
+    {
+      "id": "green_junction",
+      "kit": "green_junction_kit",
+      "upgrade_from": null,
+      "name": "Green Junction",
+      "recipe_id": "assemble_green_junction",
+      "recipe_inputs": {
+        "green_resin": 2,
+        "wood": 2
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": "living_frontier_wave1",
+      "bounds_m": [
+        0.65,
+        1.18,
+        0.55
+      ],
+      "board": "retained-ART04D",
+      "brief": "Reuse approved resin-root fork with two distinct branch sockets; branch result must not imply free work.",
+      "review_states": [
+        "native branch outcomes",
+        "disconnected"
+      ],
+      "method": "Reuse tools/wroughtwild-green and its accepted handoff."
+    },
+    {
+      "id": "red_heat_buffer",
+      "kit": "red_heat_buffer_kit",
+      "upgrade_from": null,
+      "name": "Red Heat Buffer",
+      "recipe_id": "assemble_red_heat_buffer",
+      "recipe_inputs": {
+        "red_salt": 4,
+        "wood": 4,
+        "iron_ingot": 2
+      },
+      "minimum_era": 1,
+      "upgrade_cost": null,
+      "profile_filter": "living_frontier_wave1",
+      "bounds_m": [
+        1.0,
+        1.2,
+        1.0
+      ],
+      "board": "retained-ART04",
+      "brief": "Reuse approved braced heat store, clear charge chamber and existing feeder attachment. Frame material is separate from spent charge.",
+      "review_states": [
+        "empty/charged",
+        "supplying",
+        "native reservation/removal restriction"
+      ],
+      "method": "Reuse tools/wroughtwild-workshop and its accepted handoff."
+    }
+  ],
+  "resource_nodes": [
+    {
+      "id": "tree",
+      "name": "Tree",
+      "item": "wood",
+      "habitat": "meadow/forest",
+      "brief": "Reuse ART-02 broadleaf trunk language; branching silhouette, leaf masses, exposed roots and matching cut stump; ordinary and locally altered finish.",
+      "existing_visual": "tree",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "pine",
+      "name": "Pine",
+      "item": "pine",
+      "habitat": "forest/uplands",
+      "brief": "Tapered conifer with uneven branch tiers, attached needle clusters and visible trunk gaps; pale cut timber matches the pine building family.",
+      "existing_visual": "tree",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "bog_oak",
+      "name": "Bog Oak",
+      "item": "bog_oak",
+      "habitat": "fen",
+      "brief": "Leaning dark oak, flared knuckled waterline roots, sparse lower branches and dense irregular upper crown; dark cut wood.",
+      "existing_visual": "tree",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "ash_snag",
+      "name": "Ash Snag",
+      "item": "ash_wood",
+      "habitat": "ember_wastes",
+      "brief": "Bleached twisted dead trunk with broken boughs, limited char in splits and readable standing/felled silhouette; not a forest of identical spikes.",
+      "existing_visual": "tree",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "resinheart_tree",
+      "name": "Resinheart Tree",
+      "item": "resinheart_log",
+      "habitat": "oldgrowth_grove",
+      "brief": "Thick buttressed amber-grain oldgrowth with hanging crown masses and deep structural root channels on altered variant; preserve approved grove ancestry.",
+      "existing_visual": "resinheart_tree",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "corkbark_deadfall",
+      "name": "Corkbark Deadfall",
+      "item": "raw_corkbark",
+      "habitat": "oldgrowth_grove",
+      "brief": "Low independent dead trunk with thick porous rolled bark lips; show exposed lighter underlayer as its own finite deposit is worked.",
+      "existing_visual": "corkbark_deadfall",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "boulder",
+      "name": "Boulder",
+      "item": "fieldstone",
+      "habitat": "all",
+      "brief": "Reuse approved fractured rock as one family; rounded weathering vs hard broken faces, separate removable chunks and final worked remnant.",
+      "existing_visual": "boulder",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "stone_seam",
+      "name": "Stone Seam",
+      "item": "split_stone",
+      "habitat": "rock/caves",
+      "brief": "Bedrock face with broad bedding planes and wedge-readable split; integrate visually with surrounding rock while retaining one work target.",
+      "existing_visual": "seam",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "iron_vein",
+      "name": "Iron Vein",
+      "item": "iron_ore",
+      "habitat": "rock/caves",
+      "brief": "Ochre iron streaks and dense dull nodules inside broken host rock, not uniform shiny crystal spikes.",
+      "existing_visual": "iron_vein",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "copper_vein",
+      "name": "Copper Vein",
+      "item": "copper_ore",
+      "habitat": "era_2_ore_sites",
+      "brief": "Weathered green-brown copper-bearing bands in warm host rock; exposed worked interior remains recognisable without blue magic association.",
+      "existing_visual": "copper_vein",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "tin_vein",
+      "name": "Tin Vein",
+      "item": "tin_ore",
+      "habitat": "era_2_ore_sites",
+      "brief": "Pale granular mineral pockets in dark banded rock; distinct from iron and silver at interaction distance.",
+      "existing_visual": "tin_vein",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "ember_iron_vein",
+      "name": "Ember-Iron Vein",
+      "item": "ember_iron_ore",
+      "habitat": "era_3_ore_sites",
+      "brief": "Heat-marked dark ore with restrained ember-bearing internal fractures; hot/worked states follow existing rules.",
+      "existing_visual": "ember_vein",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "silver_vein",
+      "name": "Silver Vein",
+      "item": "silver_ore",
+      "habitat": "era_3_ore_sites",
+      "brief": "Narrow pale metallic seam through dark host rock; broad material contrast survives reduced texture detail.",
+      "existing_visual": "silver_vein",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "slate_outcrop",
+      "name": "Layered Slate",
+      "item": "raw_slate",
+      "habitat": "quarry_escarpment",
+      "brief": "Thin stacked dark sheets with exposed split edge and a readable detachable working face; matching slate roof layers.",
+      "existing_visual": "slate_seam",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "shellstone_outcrop",
+      "name": "Fossil Shellstone",
+      "item": "raw_shellstone",
+      "habitat": "quarry_escarpment",
+      "brief": "Pale fossil-bearing bed with scattered shell cross-sections and broad cleaving planes; irregular fossils, not repeated giant medallions.",
+      "existing_visual": "shellstone_seam",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "clay_bank",
+      "name": "Rustclay Bank",
+      "item": "raw_clay",
+      "habitat": "fen_hollow",
+      "brief": "Damp rust-coloured earth pocket in a rooted bank with scooped working layers; depleted pocket stays distinct from decorative mud.",
+      "existing_visual": "clay_bank",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "reed_bed",
+      "name": "Weaving Reeds",
+      "item": "raw_reed",
+      "habitat": "fen_hollow",
+      "brief": "Harvestable mature upright reed bundle with clear cuttable stalk mass; separate low decorative sedge from this work target.",
+      "existing_visual": "reed_bed",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "lanternheart",
+      "name": "Lanternheart",
+      "item": "lanternheart",
+      "habitat": "rare_sites",
+      "brief": "Papery lantern husk sheltering a luminous intact heart; harvest reveals/lifts that same core and leaves an empty husk.",
+      "existing_visual": "lanternheart",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "thrumroot",
+      "name": "Thrumroot",
+      "item": "thrumroot",
+      "habitat": "rare_sites",
+      "brief": "Bowed deadfall held by taut sinewy roots; exposed reusable coil has the same weave/strain as the winch drum.",
+      "existing_visual": "thrumroot",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "stormglass",
+      "name": "Stormglass",
+      "item": "stormglass",
+      "habitat": "rare_sites",
+      "brief": "Naturally fused lightning tube partly embedded in scarred ground; ringing hollow form becomes the lever's resonator.",
+      "existing_visual": "stormglass",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "pullstone",
+      "name": "Pullstone",
+      "item": "pullstone",
+      "habitat": "rare_sites",
+      "brief": "Dark nodule attracting clinging ferrous grit; working separates one intact visibly dense core from its braced host.",
+      "existing_visual": "pullstone",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    },
+    {
+      "id": "ventlung",
+      "name": "Ventlung",
+      "item": "ventlung",
+      "habitat": "rare_sites",
+      "brief": "Bulged natural membrane in a split host, seam and pressure-release opening visible; lifted membrane becomes the hand bellows.",
+      "existing_visual": "ventlung",
+      "review_states": [
+        "intact",
+        "native work stages where present",
+        "native depleted/felled aftermath"
+      ],
+      "method": "Reuse approved source where available; organic source/Blender finishing; matched finite work states."
+    }
+  ],
+  "nature_support": [
+    {
+      "id": "canopy_broadleaf",
+      "role": "foliage",
+      "habitat": "meadow/forest",
+      "brief": "Several linked leaf-mass arrangements on real branches; near leaf detail, simpler middle crowns and matched distant silhouette.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "canopy_conifer",
+      "role": "foliage",
+      "habitat": "forest/uplands",
+      "brief": "Needle-cluster branches with a sparse lower tier and irregular upper spire; separate wind weighting and distant solid read.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "sapling_shrub",
+      "role": "foliage",
+      "habitat": "meadow/forest",
+      "brief": "Young bent stems and low bush clusters connect grass to tree scale; leave trunk access and routes open.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "fern_bracken",
+      "role": "groundcover",
+      "habitat": "forest/river",
+      "brief": "Broad asymmetric frond groups with sparse and lush variants; reuse approved ART-02 understory where suitable.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "meadow_grass",
+      "role": "groundcover",
+      "habitat": "meadow",
+      "brief": "Mixed-height clumps and flattened edge variant, quiet olive/straw colour shifts; distribute in authored patches.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "upland_tussock",
+      "role": "groundcover",
+      "habitat": "uplands",
+      "brief": "Dense low wind-combed clump with a dry rim and green centre; fills pockets between rock without hiding ledges.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "fen_sedge",
+      "role": "groundcover",
+      "habitat": "fen",
+      "brief": "Short rooted wet sedge hummocks, distinct from the finite harvestable reed_bed.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "wastes_scrub",
+      "role": "groundcover",
+      "habitat": "ember_wastes",
+      "brief": "Thorny low scrub and coarse surviving grass, weathered seed heads, broken rhythm across grit rather than bare ash everywhere.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "bramble_climber",
+      "role": "groundcover",
+      "habitat": "forest/ruins",
+      "brief": "Restrained thorn stems, leaf sprays and climbing ivy rooted to actual support; keep openings readable.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "fungal_detritus",
+      "role": "groundcover",
+      "habitat": "oldgrowth/fen",
+      "brief": "Non-glowing shelf fungi, small mushrooms and damp wood debris as cosmetic habitat detail, no new harvest promise.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "moss_lichen",
+      "role": "surface",
+      "habitat": "rock/forest/fen",
+      "brief": "Damp moss cushions and dry pale lichen masks with different edge shapes; no universal carpet on every material.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "leaf_needle_litter",
+      "role": "surface",
+      "habitat": "forest/meadow",
+      "brief": "Branch-correlated litter, dark humus and exposed soil transition; tiling maps plus a few silhouette-breaking chips.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "root_skirt",
+      "role": "geology_contact",
+      "habitat": "forest/fen",
+      "brief": "Attached flared roots crossing soil and rock; modular contact pieces derived from parent tree, no floating ends.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "deadwood_stump",
+      "role": "geology_contact",
+      "habitat": "forest/meadow",
+      "brief": "Broken log, stump and low branch variants; ordinary decorative pieces cannot mimic fresh resource yields.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "river_bank",
+      "role": "geology_contact",
+      "habitat": "river/fen",
+      "brief": "Irregular damp ledge, root shelf and reed-edge transitions, matching actual bank support and access.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "talus_pebbles",
+      "role": "geology_contact",
+      "habitat": "uplands/river",
+      "brief": "Grouped angular scree plus rounded water pebbles; clustered with exposed ground between, not a collider on every stone.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "rock_shelf",
+      "role": "geology_contact",
+      "habitat": "uplands",
+      "brief": "Layered ledge transition and small outcrop variants; silhouette and material variation fit retained terrain.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "cave_threshold",
+      "role": "geology_contact",
+      "habitat": "caves",
+      "brief": "Broken overhang/root lip and damp wall transitions framing existing cave opening; clear human entrance and host approach.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "leyline_scar",
+      "role": "augmentation",
+      "habitat": "existing_influence_routes",
+      "brief": "Deep host-specific recessed channel with dark margins and contained moving light; ordinary/recessed-unlit/lit review states.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "red_source",
+      "role": "retained_source",
+      "habitat": "existing_LF_red",
+      "brief": "Reuse ART-04 Red host, owned fragments, recovered salt and charge language; native lot/formation states only.",
+      "status": "reuse approved family"
+    },
+    {
+      "id": "white_source",
+      "role": "retained_source",
+      "habitat": "existing_LF_white",
+      "brief": "Reuse ART-04B White fractured host and recovered mineral; request transmission is not stored drive.",
+      "status": "reuse approved family"
+    },
+    {
+      "id": "blue_source",
+      "role": "retained_source",
+      "habitat": "existing_LF_blue",
+      "brief": "Reuse ART-04C layered host and recovered flakes; retain native formation and held-request distinction.",
+      "status": "reuse approved family"
+    },
+    {
+      "id": "green_source",
+      "role": "retained_source",
+      "habitat": "existing_LF_green",
+      "brief": "Reuse ART-04D root host and resin pieces; growth supports branching anatomy, not free item propagation.",
+      "status": "reuse approved family"
+    },
+    {
+      "id": "pressure_pocket",
+      "role": "existing_source",
+      "habitat": "existing_pressure_sites",
+      "brief": "Braced split host with readable finite pressure reservoir and attachment; intact/worked/exhausted native stock, no spontaneous refill.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "ruin_wall",
+      "role": "ruin",
+      "habitat": "existing_ruins",
+      "brief": "Weathered low masonry wall, broken corner and small rubble cap, root contact; no relocation or new wall collision.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "ruin_threshold",
+      "role": "ruin",
+      "habitat": "existing_ruins",
+      "brief": "Fallen lintel, worn stair and fractured paving expose former human routes; keep existing entrance clear.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "workshop_approach",
+      "role": "ruin",
+      "habitat": "existing_workplaces",
+      "brief": "Reuse original smithy language and LF marks/clamps; distinguish old ordinary craft from deliberate later containment.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "trail_transition",
+      "role": "surface",
+      "habitat": "existing_routes",
+      "brief": "Exposed compacted soil, leaf-thin path edge and stone-step blend, no new pathfinding or forced navigation line.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "water_surface",
+      "role": "motion",
+      "habitat": "existing_water",
+      "brief": "Readable shallow edge, slow broad flow and small local riffles; match existing water geometry, no new swimming/flooding.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "wind_motion",
+      "role": "motion",
+      "habitat": "canopy/groundcover",
+      "brief": "Shared gentle direction with different branch/reed response; preserve leaf attachment and keep combat tells visually stronger.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "far_treeline",
+      "role": "distance",
+      "habitat": "forest/valley",
+      "brief": "Crown-group silhouette variants matched to near families; prevent a uniform green wall or obvious empty gaps beyond detail range.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "far_rock_haze",
+      "role": "distance",
+      "habitat": "uplands/skyline",
+      "brief": "Reuse actual terrain skyline, large rock value planes and restrained atmospheric separation; concept mountains do not replace geography.",
+      "status": "proposed art brief; no new simulation identity"
+    },
+    {
+      "id": "light_and_quiet",
+      "role": "atmosphere",
+      "habitat": "all",
+      "brief": "Broken sunlight, readable cool shade and dusk warmth; local water/leaf events with quiet gaps, no continuous magic drone.",
+      "status": "proposed art brief; no new simulation identity"
+    }
+  ],
+  "fauna_presentation": [
+    {
+      "id": "lf_white_stag",
+      "ancestry": "stag",
+      "brief": "Retain approved stag anatomy; White host structure/current variant and existing encounter location."
+    },
+    {
+      "id": "lf_green_moth",
+      "ancestry": "moth",
+      "brief": "Retain liked moth and existing Green host influence; wing/thorax glow never replaces actual attack tells."
+    },
+    {
+      "id": "lf_paired_boar",
+      "ancestry": "boar",
+      "brief": "Retain approved boar with its existing paired influence presentation; no new damage or sustain inference."
+    },
+    {
+      "id": "lf_red_boar",
+      "ancestry": "boar",
+      "brief": "Approved boar, Red host variant; structural scar placement remains readable in brush."
+    },
+    {
+      "id": "lf_blue_boar",
+      "ancestry": "boar",
+      "brief": "Approved boar, Blue host variant; no automatic ice-armour redesign."
+    },
+    {
+      "id": "ember_whelp",
+      "ancestry": "boar",
+      "brief": "Low foraging/rooting art pose in scrub pockets; preserve current combat body and role."
+    },
+    {
+      "id": "cinder_archer",
+      "ancestry": "porcupine",
+      "brief": "Approved ART-06C face and deep connected quill-root lifelines; keep quill silhouette clear of dense background."
+    },
+    {
+      "id": "ash_hound",
+      "ancestry": "wolf",
+      "brief": "Approved wolf, silhouette visible through trunk gaps; resting/walking art poses, no added pack rules."
+    },
+    {
+      "id": "stone_husk",
+      "ancestry": "bighorn_ram",
+      "brief": "Approved uneven horn buttress and lifelines; rocky shelf composition frames broad head shape."
+    },
+    {
+      "id": "shrieker",
+      "ancestry": "crane",
+      "brief": "Approved long-leg anatomy and exposed throat resonator; tall silhouette against low vegetation."
+    },
+    {
+      "id": "gloom_crawler",
+      "ancestry": "ground_beetle",
+      "brief": "Approved displaced plates and deep shell channels; cave/ground detail must not hide its outline."
+    },
+    {
+      "id": "bog_lurker",
+      "ancestry": "dragonfly_nymph",
+      "brief": "Approved six-leg nymph and shell lifelines; shallow root-bank composition with clear whole-body read."
+    },
+    {
+      "id": "marsh_wisp",
+      "ancestry": "moth",
+      "brief": "Retain liked moth ancestry and current variant; no swarm count increase to fill the fen."
+    },
+    {
+      "id": "cinder_wisp",
+      "ancestry": "moth",
+      "brief": "Retain established Ember catalyst moth; warm accent remains below immediate attack-warning salience."
+    },
+    {
+      "id": "hollow_knight",
+      "ancestry": "tortoise",
+      "brief": "Approved irregular ossified shell and deep channels; side profile reads as an animal, not a boulder."
+    },
+    {
+      "id": "valley_elk",
+      "ancestry": "stag",
+      "brief": "Approved stag/grazer, browsing/resting art poses with open head/antler background; no new fauna spawns implied."
+    }
+  ]
+}

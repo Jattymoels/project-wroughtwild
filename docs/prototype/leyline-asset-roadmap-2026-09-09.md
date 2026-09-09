@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–04 visually approved; ART-05 isolated route technically delivered; ART-06 remaining mobs selected.** Owner request,
+**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; ART-07 nature/placeable design selected.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -39,7 +39,16 @@ gate; ART-05 remains separate. All four ART-04 families now have technical hando
 
 ## Outcome and current evidence
 
-Latest owner priority, 9 September: defer the proposed ART-05B route polish and
+Latest owner continuation: “Perfect” approves the ART-06C deep lifelines and
+porcupine face. The owner then selects [ART-07 nature/world-feel and every
+existing placeable design](world-and-placeable-art-2026-09-09.md), aligned with
+the original dense landscape reference. The new concept/gallery catalogue
+covers the complete current shape/material/kit inventory and nature roles,
+while reusing approved animal and source families. Its production sequence
+starts with canopy/ground continuity; meshes, costs and native adoption require
+separate evidence. The remaining mob rigs and era forms remain in the backlog.
+
+Previous owner priority, 9 September: defer the proposed ART-05B route polish and
 design/generate the other mobs through the same pipeline. The
 [ART-06 work item](remaining-mob-art-2026-09-09.md) records six approved animal
 directions, replacement of the rejected armadillo with a ram, stronger

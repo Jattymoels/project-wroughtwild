@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-06C deep lifelines/porcupine face delivered; rigs next; route polish deferred). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-06C visually approved; ART-07 nature/world/placeable design selected). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -8,7 +8,28 @@ queue; the [numbered waves](roadmap-waves.md) remain a historical record.
 Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
-## Current art priority — remaining animal mobs, then era augmentation
+## Current art priority — nature, world feel and all existing placeables
+
+The owner visually approved ART-06C with “Perfect”, then asked to start
+designing all nature assets and the world's feel against the original full
+landscape wide shot, plus all craftable placeable pieces.
+[ART-07](world-and-placeable-art-2026-09-09.md) records the bounded design pass:
+five original concept boards, complete briefs for 26 shapes/19 families (273
+legal pairings), 14 kits and the forge upgrade, 22 current resource node types,
+33 supporting environment roles and all 16 existing overworld actor/host IDs.
+Ten kits belong to ordinary profiles; four more require supported LF profiles.
+
+The [gallery and catalogue](../art/concepts/environment/2026-09-09-frontier/README.md)
+are delivered with coverage/provenance checks; they remain proposed visual
+directions, not completed meshes or ordinary-world adoption.
+Recommended production starts with canopy/ground continuity in one isolated
+environment kit (ART-07B), then regional nature, architecture, stations and
+remaining fixtures before one retained world/home route. Reuse approved art.
+No new resource, recipe, enemy cap, generator profile or save migration is part
+of this design delivery. Mob rigs/era augmentation and the ART-05 route
+performance/polish backlog remain open.
+
+## Previous art priority — remaining animal mobs, then era augmentation
 
 The owner deferred the proposed ART-05B environment polish and selected
 [ART-06 remaining mob design/generation](remaining-mob-art-2026-09-09.md).
@@ -32,7 +53,8 @@ The owner then requested obvious deep veins that appear to keep the animals
 alive, with the porcupine face repaired alongside. [ART-06C](roster-lifelines-2026-09-09.md)
 replaces the shallow treatment with broader physical channels and connected
 pulse travel; all six isolated sources and the porcupine face are delivered
-with 72 Blender, 84-per-renderer, 95 handoff and 12 regression checks. Fitted rigs and
+with 72 Blender, 84-per-renderer, 95 handoff and 12 regression checks. The owner's
+subsequent “Perfect” visually approves this handoff. Fitted rigs and
 gait/attack-pose review follow. Extra physical augmentation per era remains
 the selected direction.
 Existing three-era campaign, roles, bodies, drops and saved geography remain.

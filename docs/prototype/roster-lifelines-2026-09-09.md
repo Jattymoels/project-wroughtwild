@@ -1,5 +1,9 @@
 # ART-06C — deep lifelines and porcupine face
 
+**Owner visual approval:** the subsequent “Perfect” approves this handoff and
+selects [ART-07 nature/world/placeable design](world-and-placeable-art-2026-09-09.md).
+Creature rigs, era additions and native adoption remain open.
+
 **Isolated art handoff delivered — 9 September 2026.** The owner wants obvious, deep veins that
 look like the mechanism keeping these animals alive, with the porcupine face
 repaired alongside. This supersedes ART-06B's deliberately sparse, shallow
