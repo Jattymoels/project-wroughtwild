@@ -1,6 +1,6 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
-**Status: Waves 1–5 implemented as opt-in work. Wave 4 independently closes the Wave-3 route defect; Wave 5 stops for orchestrator review. Waves 6–7 remain proposals.**
+**Status: Waves 1–5 implemented as opt-in work. Wave 4 independently closes the Wave-3 route defect; the Wave 5 review requires LF5-R1 recovery repair before Wave 6. Waves 6–7 remain proposals.**
 See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
 [Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
 for selected tuning, compatibility, evidence and remaining owner playtests.
@@ -16,6 +16,8 @@ The [bounded Wave 5 record](living-frontier-wave5-2026-09-09.md) covers the orde
 hybrid, physical Pairing laboratory and protected second event; it separates
 actual baseline combat from forced route/settlement fixtures and records the
 remaining publication pause. No finale or captured-control work is included.
+The [Wave 5 review](living-frontier-wave5-review-2026-09-09.md) records the
+ordinary-control recovery defect and the repair-first LF-6 handoff.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 
