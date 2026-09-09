@@ -1,5 +1,9 @@
 # ART-06 remaining animal source review
 
+The later [ART-06B surface handoff](SURFACES.md) adds individually attached
+fracture maps, safe shallow incisions and actual travelling light to these
+preserved sources. This document retains the earlier raw-source recipe.
+
 This is the design and **unrigged source** stage of the existing imagegen → local
 TRELLIS → Blender → Godot pipeline. It contains six new ordinary-mob animal
 directions with stronger structural corruption. Extra physical augmentations per

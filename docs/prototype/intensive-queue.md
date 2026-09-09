@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (remaining mob source batch delivered; route polish deferred). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-06B mob scars delivered; rigs next; route polish deferred). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -26,6 +26,10 @@ The six stronger sources and isolated comparison viewer are delivered with
 Blender reopening and both Godot renderer checks. The eight-legged nymph
 candidate was rejected and regenerated with six legs. Final mesh review,
 finishing and native adoption remain open; ART-06 as a whole is not complete.
+The owner's subsequent continuation selects [ART-06B attached scar surfaces](roster-scar-materials-2026-09-09.md):
+six packed surface sources and an actual pulsing-light viewer are now checked.
+Fitted anatomy/rig and gait/attack-pose review comes next, starting with the
+porcupine. Extra physical augmentation per era remains the selected direction.
 Existing three-era campaign, roles, bodies, drops and saved geography remain.
 Boss design/finishing and LF host presentation variants remain in the roster
 backlog; the deferred route ground/scenery/distance-cost polish is retained.

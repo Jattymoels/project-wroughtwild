@@ -1,0 +1,68 @@
+[
+  {
+    "asset": "cinder_archer",
+    "animal": "Porcupine",
+    "source_sha256": "55c8aaf76b25f6d791278761698f6d6480b3998201819e2e4d55e4e4a1a8ead5",
+    "surface_glb_sha256": "424a5aa24a38bdd84526b1dca08040a578c5f7a56e2d6f6ed62a8bde139b78e4",
+    "triangles": 282612,
+    "removed_degenerate_faces": 0,
+    "maximum_incision_units": 0.0016041581984609365,
+    "core_texel_fraction": 0.0005824565887451172,
+    "damage_texel_fraction": 0.00498199462890625
+  },
+  {
+    "asset": "stone_husk",
+    "animal": "Bighorn ram",
+    "source_sha256": "550f859cc7882c19569426d3fa5dec3ecfdfc70ce0fa060d019ae85f28f4854c",
+    "surface_glb_sha256": "d806974899dce27294722074e8d7b75f3fedde4247b14abd284f5f937be8ee07",
+    "triangles": 293246,
+    "removed_degenerate_faces": 0,
+    "maximum_incision_units": 0.0009183229994960129,
+    "core_texel_fraction": 0.0013310909271240234,
+    "damage_texel_fraction": 0.013562202453613281
+  },
+  {
+    "asset": "shrieker",
+    "animal": "Crane",
+    "source_sha256": "2f0dcaf6a2677050c5eb72507553aa466367be9b43ceccd3db79c9fc582d6fbc",
+    "surface_glb_sha256": "d92ccdc0ed6f15cf884c16f9f84c833e449c48c34aa886b71f6da78bede8a2ed",
+    "triangles": 296116,
+    "removed_degenerate_faces": 0,
+    "maximum_incision_units": 0.0009034522227011621,
+    "core_texel_fraction": 0.0010669231414794922,
+    "damage_texel_fraction": 0.008463859558105469
+  },
+  {
+    "asset": "gloom_crawler",
+    "animal": "Ground beetle",
+    "source_sha256": "bf29586cdd72f9553b5b832359b866a417f14852c1c4ff3cb3597dd0c629a0c4",
+    "surface_glb_sha256": "ce3954c3ebdff42b4b65203b7bb8bc20a9868978feac834a8e04b8644a12f03a",
+    "triangles": 293396,
+    "removed_degenerate_faces": 0,
+    "maximum_incision_units": 0.0013584085972979665,
+    "core_texel_fraction": 0.0005557537078857422,
+    "damage_texel_fraction": 0.004865884780883789
+  },
+  {
+    "asset": "bog_lurker",
+    "animal": "Dragonfly nymph",
+    "source_sha256": "99492f19e6dabcad0fdbac821ce48d02187bcae4f669c912445f2c51bf96b9ee",
+    "surface_glb_sha256": "4d2b02a2f6664de4dd656309f28d48795d137682664eee9fe036bcd75f9871fa",
+    "triangles": 290654,
+    "removed_degenerate_faces": 0,
+    "maximum_incision_units": 0.0010715908138081431,
+    "core_texel_fraction": 0.0011734962463378906,
+    "damage_texel_fraction": 0.012335062026977539
+  },
+  {
+    "asset": "hollow_knight",
+    "animal": "Tortoise",
+    "source_sha256": "39d71df0c48fe7271156fa08feafee854434e0a272020748ab978ba213ea6e3c",
+    "surface_glb_sha256": "9eb05a35d712e506d9234862090709e9c6b0bb41dec1020afd39887042aed293",
+    "triangles": 295369,
+    "removed_degenerate_faces": 1,
+    "maximum_incision_units": 0.0012744426494464278,
+    "core_texel_fraction": 0.0004839897155761719,
+    "damage_texel_fraction": 0.004170656204223633
+  }
+]

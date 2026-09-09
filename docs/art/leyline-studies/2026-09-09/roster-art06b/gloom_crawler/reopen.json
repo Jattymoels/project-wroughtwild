@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "asset": "gloom_crawler",
+  "checks": 8,
+  "geometry_sha256": "e64f3728aedab235e64449084367cf0ce17e3b1c5c5769a5e0b2c28f0d062a85",
+  "source_sha256": "bf29586cdd72f9553b5b832359b866a417f14852c1c4ff3cb3597dd0c629a0c4",
+  "views": [
+    "dark-az0",
+    "lit-az0",
+    "dark-az180",
+    "lit-az180"
+  ],
+  "note": "Reopened exact surface geometry, identity, finite positions, no rig, UV layer, packed mask dimensions, contained core and nonconstant travel. Renders are static peak/off comparisons."
+}

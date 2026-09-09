@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "asset": "bog_lurker",
+  "checks": 8,
+  "geometry_sha256": "30d4225d48ff7f7ca54c577fab6951062cadbb0957e2e5dea5fdb8358b8a4153",
+  "source_sha256": "99492f19e6dabcad0fdbac821ce48d02187bcae4f669c912445f2c51bf96b9ee",
+  "views": [
+    "dark-az0",
+    "lit-az0",
+    "dark-az180",
+    "lit-az180"
+  ],
+  "note": "Reopened exact surface geometry, identity, finite positions, no rig, UV layer, packed mask dimensions, contained core and nonconstant travel. Renders are static peak/off comparisons."
+}

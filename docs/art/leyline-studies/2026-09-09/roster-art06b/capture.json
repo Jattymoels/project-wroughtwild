@@ -1,0 +1,7 @@
+{
+  "bloom": false,
+  "duration_seconds": 4,
+  "fps": 12,
+  "frames": 48,
+  "source": "Actual Godot rendered frames; deterministic pulse clock, static unrigged meshes."
+}

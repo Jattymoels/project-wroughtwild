@@ -1,0 +1,82 @@
+{
+  "stage": "ART-06B attached surface study; unrigged, no game adoption",
+  "mask_size": 2048,
+  "projection_step_pixels": 10,
+  "max_surface_step_units": 0.24,
+  "damage_half_width_units": 0.024,
+  "core_half_width_units": 0.006,
+  "edge_grain_units": 0.012,
+  "width_variation": 0.38,
+  "recess_units": 0.002,
+  "zero_area_threshold_units_squared": 1e-12,
+  "period_seconds": 4.0,
+  "peak_emission": 2.8,
+  "minimum_light": 0.22,
+  "crest_width": 0.20,
+  "damage_tint": [0.16,0.14,0.12],
+  "purpose": {
+    "mask_size": "Linear UV core/damage/travel atlas, retaining narrow branches on the dense source.",
+    "projection_step_pixels": "Sample authored routes on the original 1024-pixel orthographic evidence views.",
+    "max_surface_step_units": "Reject jumps across empty space or deep disconnected surfaces instead of drawing a floating bridge.",
+    "damage_half_width_units": "Width of the dark host injury at the common two-unit studio scale; not gameplay metres.",
+    "core_half_width_units": "Narrow light contained inside the dark damage, preserving the ordinary animal material.",
+    "edge_grain_units": "Object-space size of small deterministic chips in the fracture margin, continuous across UV seams.",
+    "width_variation": "Amount of local narrowing/widening that breaks mechanically even scar edges while retaining contained light.",
+    "recess_units": "Maximum shallow physical incision into the actual surface along its inward normal.",
+    "zero_area_threshold_units_squared": "Remove only numerically degenerate triangles; record every removed face.",
+    "period_seconds": "Slow ambient pulse period independent of enemy or work clocks.",
+    "peak_emission": "Maximum local scar brightness in the isolated review lighting.",
+    "minimum_light": "Dim residual core between travelling crests.",
+    "crest_width": "Fraction of the pulse cycle occupied by each crest.",
+    "damage_tint": "Linear multiplier that darkens existing host texture inside the scar without replacing it with flat paint.",
+    "paths": "Manually selected points on the retained azimuth renders, projected onto the actual mesh. Each flank is authored independently.",
+    "colour": "Concept-derived scar colour only; no new Kind, damage or influence classification.",
+    "width": "Relative branch thickness, tapering at the end.",
+    "offset": "Travel delay along the network, separating branches without random state."
+  },
+  "assets": [
+    {"id":"cinder_archer","colour":[1.0,0.19,0.025],"paths":[
+      {"name":"shoulder rupture","view":"material-az0","width":1.0,"offset":0.0,"pixels":[[341,390],[325,415],[334,441],[317,465],[328,493],[343,508],[336,543],[351,572],[343,599]]},
+      {"name":"quill root branch","view":"material-az0","width":0.65,"offset":0.3,"pixels":[[328,493],[362,482],[382,466],[389,443],[405,428]]},
+      {"name":"lower root branch","view":"material-az0","width":0.65,"offset":0.45,"pixels":[[336,543],[366,556],[384,579],[370,608]]},
+      {"name":"opposite shoulder","view":"material-az180","width":1.0,"offset":0.1,"pixels":[[710,393],[696,418],[701,445],[718,471],[704,499],[718,524],[701,552],[707,584],[697,615]]},
+      {"name":"opposite quill root","view":"material-az180","width":0.65,"offset":0.35,"pixels":[[704,499],[672,480],[655,449],[637,431]]}
+    ]},
+    {"id":"stone_husk","colour":[0.57,0.76,0.91],"paths":[
+      {"name":"horn fracture","view":"material-az0","width":0.8,"offset":0.0,"pixels":[[330,191],[361,203],[382,223],[402,246],[397,268],[405,290],[390,310],[385,333],[366,345]]},
+      {"name":"root to shoulder","view":"material-az0","width":1.0,"offset":0.2,"pixels":[[374,387],[380,409],[369,432],[388,450],[378,477],[386,500],[371,530]]},
+      {"name":"shoulder branch","view":"material-az0","width":0.6,"offset":0.48,"pixels":[[388,450],[412,457],[428,476],[439,492]]},
+      {"name":"opposite horn","view":"material-az180","width":0.8,"offset":0.1,"pixels":[[754,186],[762,217],[744,244],[762,271],[756,294],[770,317],[786,342]]},
+      {"name":"opposite collar","view":"material-az180","width":1.0,"offset":0.28,"pixels":[[683,283],[669,310],[671,339],[656,364],[662,396],[645,421],[653,449],[641,482]]}
+    ]},
+    {"id":"shrieker","colour":[0.32,0.71,0.76],"paths":[
+      {"name":"throat scar","view":"material-az0","width":0.8,"offset":0.0,"pixels":[[346,279],[335,301],[334,325],[340,348],[336,374],[350,397],[354,421],[366,446]]},
+      {"name":"resonator branch","view":"material-az0","width":0.6,"offset":0.27,"pixels":[[340,348],[319,350],[299,337],[289,325]]},
+      {"name":"keel branch","view":"material-az0","width":0.55,"offset":0.5,"pixels":[[354,421],[378,437],[387,461],[407,484]]},
+      {"name":"opposite throat","view":"material-az180","width":0.8,"offset":0.13,"pixels":[[678,276],[689,300],[694,324],[682,349],[689,376],[675,399],[670,426],[653,449]]},
+      {"name":"opposite resonator","view":"material-az180","width":0.55,"offset":0.39,"pixels":[[682,349],[705,353],[721,340],[730,330]]}
+    ]},
+    {"id":"gloom_crawler","colour":[0.26,0.54,0.62],"paths":[
+      {"name":"closed elytron fracture","view":"material-az0","width":0.8,"offset":0.0,"pixels":[[451,381],[435,402],[437,424],[447,449],[438,474],[447,499],[443,517]]},
+      {"name":"closed shell branch","view":"material-az0","width":0.65,"offset":0.22,"pixels":[[435,402],[470,412],[501,400],[525,412],[552,414],[575,429]]},
+      {"name":"displaced inner plate","view":"material-az180","width":0.9,"offset":0.12,"pixels":[[435,393],[417,416],[421,440],[403,459],[408,480],[396,500]]},
+      {"name":"opened outer fracture","view":"material-az180","width":0.8,"offset":0.02,"pixels":[[579,387],[571,406],[581,427],[578,444],[593,464],[624,466],[646,485],[664,496]]},
+      {"name":"thoracic split","view":"material-az180","width":0.65,"offset":0.4,"pixels":[[289,420],[290,444],[284,468],[296,494]]}
+    ]},
+    {"id":"bog_lurker","colour":[0.33,0.65,0.18],"paths":[
+      {"name":"first abdominal chamber","view":"material-az0","width":0.9,"offset":0.0,"pixels":[[576,466],[561,485],[574,505],[559,525],[570,542]]},
+      {"name":"second abdominal chamber","view":"material-az0","width":0.8,"offset":0.3,"pixels":[[661,443],[651,462],[664,482],[653,501],[666,523],[659,550]]},
+      {"name":"rear chamber","view":"material-az0","width":0.65,"offset":0.55,"pixels":[[750,428],[734,447],[744,469],[732,494],[746,514]]},
+      {"name":"opposite first chamber","view":"material-az180","width":0.9,"offset":0.1,"pixels":[[402,460],[415,482],[402,502],[416,522],[409,540]]},
+      {"name":"opposite second chamber","view":"material-az180","width":0.8,"offset":0.36,"pixels":[[323,440],[310,460],[320,479],[309,499],[317,523],[305,542]]},
+      {"name":"opposite rear chamber","view":"material-az180","width":0.65,"offset":0.6,"pixels":[[225,429],[235,447],[224,467],[239,486],[230,507]]}
+    ]},
+    {"id":"hollow_knight","colour":[0.82,0.85,0.64],"paths":[
+      {"name":"upper mantle fracture","view":"material-az0","width":1.0,"offset":0.0,"pixels":[[555,320],[541,347],[553,366],[536,389],[535,421],[518,445],[529,474],[519,500],[541,522]]},
+      {"name":"mantle cross branch","view":"material-az0","width":0.65,"offset":0.28,"pixels":[[553,366],[584,349],[607,363],[636,353],[659,368]]},
+      {"name":"front shoulder scute","view":"material-az0","width":0.65,"offset":0.43,"pixels":[[320,414],[310,443],[325,467],[314,487],[322,516],[305,539]]},
+      {"name":"opposite mantle","view":"material-az180","width":1.0,"offset":0.1,"pixels":[[530,365],[525,388],[515,410],[535,441],[519,470],[530,498],[515,530],[523,553]]},
+      {"name":"opposite branch","view":"material-az180","width":0.65,"offset":0.38,"pixels":[[515,410],[542,397],[560,377],[555,353]]}
+    ]}
+  ]
+}

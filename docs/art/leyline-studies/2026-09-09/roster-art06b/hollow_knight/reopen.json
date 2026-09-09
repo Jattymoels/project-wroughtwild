@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "asset": "hollow_knight",
+  "checks": 8,
+  "geometry_sha256": "e96e7c68e204e9aa65ee22468c4ac4edd1bb593fc1a2dfa7d821cc833595e96f",
+  "source_sha256": "39d71df0c48fe7271156fa08feafee854434e0a272020748ab978ba213ea6e3c",
+  "views": [
+    "dark-az0",
+    "lit-az0",
+    "dark-az180",
+    "lit-az180"
+  ],
+  "note": "Reopened exact surface geometry, identity, finite positions, no rig, UV layer, packed mask dimensions, contained core and nonconstant travel. Renders are static peak/off comparisons."
+}

@@ -1,6 +1,9 @@
 # ART-06 — actual generated animal sources
 
 **Design/source stage delivered; finishing and game adoption remain open.**
+The later [ART-06B surface report](../roster-art06b/README.md) records attached
+damage/core/travel maps and the actual live pulse. This page retains the raw
+source results; rigs and game adoption remain separate.
 The owner selected six animal directions, rejected the armadillo as too close
 to the boar, then requested stronger structural augmentation now and additional
 physical augments per era. These images are actual imported geometry. Compare

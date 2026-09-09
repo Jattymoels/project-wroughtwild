@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "fresh_import_static_checks": 59,
+  "manifest_files_verified": 143,
+  "manifest_bytes": 670458349,
+  "changed_by_check": [
+    "review/checks.json"
+  ],
+  "manifest_refresh": "Only the new Compatibility diagnostic replaces the earlier Forward+ checks.json; all sources/scripts/textures retain their hashes.",
+  "animations": {
+    "pulse.webp": {
+      "frames": 48,
+      "unique_decoded_frames": 48,
+      "bytes": 732724,
+      "loop": 0
+    },
+    "pulse.gif": {
+      "frames": 48,
+      "unique_decoded_frames": 48,
+      "bytes": 204405,
+      "loop": 0
+    }
+  },
+  "relative_document_links": 19,
+  "engine_errors": "Only known Windows root-certificate-store diagnostic; no script/shader errors.",
+  "scope": "Isolated surface package, requires installed Godot; no normal save, native code or runtime adoption."
+}

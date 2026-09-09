@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "asset": "stone_husk",
+  "checks": 8,
+  "geometry_sha256": "918d1f6aab07b03ec45368092f96b34e78faeaf8d00ebddac85a42b53341e266",
+  "source_sha256": "550f859cc7882c19569426d3fa5dec3ecfdfc70ce0fa060d019ae85f28f4854c",
+  "views": [
+    "dark-az0",
+    "lit-az0",
+    "dark-az180",
+    "lit-az180"
+  ],
+  "note": "Reopened exact surface geometry, identity, finite positions, no rig, UV layer, packed mask dimensions, contained core and nonconstant travel. Renders are static peak/off comparisons."
+}

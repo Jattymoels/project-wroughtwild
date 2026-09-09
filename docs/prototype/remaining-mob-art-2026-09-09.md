@@ -1,6 +1,6 @@
 # ART-06 — Remaining mob design and local generation
 
-**Design/source stage delivered; finishing remains open — 9 September 2026.** The owner deferred the proposed ART-05B
+**Design/source and ART-06B surface stages delivered; rigs remain open — 9 September 2026.** The owner deferred the proposed ART-05B
 route polish and requested that the other existing mobs be properly designed
 and generated through the liked concept → local TRELLIS → Blender process.
 Asked about the four humanoid-looking regular enemies, the owner selected:
@@ -132,3 +132,11 @@ finishing work. Extra era anatomy, boss art, deformation quality, body fit,
 native gameplay adoption and populated-world performance are not complete.
 The design/source stage is ready for review; the entire roster is not marked
 finished merely because generation and static import succeeded.
+
+The subsequent “Continue next” selects further finishing from the actual source
+gallery. [ART-06B](roster-scar-materials-2026-09-09.md) now delivers individually
+fitted dark damage, shallow safe incisions, narrow travelling light and an
+isolated six-creature comparison. Raw sources remain unchanged; the new surface
+exports and editable Blender files are separate. Source/map, actual pixel,
+pause and both-renderer checks pass. Detailed anatomy repair, rigs and later-era
+forms remain open before native adoption.

@@ -1,2 +1,4 @@
 # Preserve the exact prompt bytes recorded by the image provenance manifest.
 *-prompt.txt text eol=lf
+# Surface reports retain an exact recipe hash across Windows checkouts.
+surface-study.json text eol=lf
