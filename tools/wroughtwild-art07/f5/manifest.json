@@ -1,0 +1,4616 @@
+{
+  "task": "ART-07F5",
+  "base_game_native_commit": "56ce6bbe343012205690cf669491372958b80662",
+  "families": {
+    "red": {
+      "source_id": "red_source",
+      "source_catalogue": {
+        "id": "red_source",
+        "role": "retained_source",
+        "habitat": "existing_LF_red",
+        "brief": "Reuse ART-04 Red host, owned fragments, recovered salt and charge language; native lot/formation states only.",
+        "status": "reuse approved family"
+      },
+      "device": {
+        "id": "red_heat_buffer",
+        "kit": "red_heat_buffer_kit",
+        "upgrade_from": null,
+        "name": "Red Heat Buffer",
+        "recipe_id": "assemble_red_heat_buffer",
+        "recipe_inputs": {
+          "red_salt": 4,
+          "wood": 4,
+          "iron_ingot": 2
+        },
+        "minimum_era": 1,
+        "upgrade_cost": null,
+        "profile_filter": "living_frontier_wave1",
+        "bounds_m": [
+          1.0,
+          1.2,
+          1.0
+        ],
+        "board": "retained-ART04",
+        "brief": "Reuse approved braced heat store, clear charge chamber and existing feeder attachment. Frame material is separate from spent charge.",
+        "review_states": [
+          "empty/charged",
+          "supplying",
+          "native reservation/removal restriction"
+        ],
+        "method": "Reuse tools/wroughtwild-workshop and its accepted handoff."
+      },
+      "source_sha256": "605ba13c594a0173243c1f8145958cd3c1cc6234ba74ca5358aeffd8165fe70e",
+      "source_manifest_sha256": "4e555306523970124cad9cfcea6ff273d18d55bc56198039fc79721e3a19b51d",
+      "retained_cutout": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-art04\\red-source-v01\\rock_cutout.png",
+        "sha256": "a56251efb598846aeff43b7c4e965ed1d41c15a18a4176912f550435058db0cd",
+        "bytes": 2775505,
+        "dimensions": [
+          1396,
+          1396
+        ]
+      },
+      "raw_to_game": {
+        "raw_sha256": "605ba13c594a0173243c1f8145958cd3c1cc6234ba74ca5358aeffd8165fe70e",
+        "bounds_blender_xyz": [
+          [
+            -0.7200000286102295,
+            -0.6650883555412292,
+            0.0
+          ],
+          [
+            0.7200000286102295,
+            0.6650883555412292,
+            0.7860442399978638
+          ]
+        ],
+        "triangles": 296112,
+        "uniform_scale": 1.4369563674049317,
+        "native_body_godot_xyz": [
+          1.5,
+          1.1,
+          1.5
+        ]
+      },
+      "rotation_after_glb_import_degrees_z": 0,
+      "axis_mapping": "Blender (x,y,z) to Godot (x,z,-y), glTF importer/exporter handles it once",
+      "pivot": "Ground centre, Blender Z=0 / Godot Y=0; arranged editable scene locations are NOT export transforms",
+      "attachment": {
+        "anchor_godot_xyz_m": [
+          0,
+          0.85,
+          0
+        ],
+        "meaning": "thermal connection to one feeder",
+        "body_godot_xyz_m": [
+          1.0,
+          1.2,
+          1.0
+        ],
+        "source_body_godot_xyz_m": [
+          1.5,
+          1.1,
+          1.5
+        ]
+      },
+      "textures": [
+        {
+          "file": "buffer-base.png",
+          "bytes": 2994408,
+          "sha256": "021b0b2b8ea3438f368e1b0eb432f23cb031bf38d048acad20334ff0b99d1861",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "buffer-normal.png",
+          "bytes": 4135675,
+          "sha256": "050521927b8e18ffe90d5709db5bde82dc48922ebd6b102c8c36e3683fccc0ba",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "buffer-orm.png",
+          "bytes": 114560,
+          "sha256": "782e5264279505ca04d54b5a2b06f2f7b520ff2915ba86331421fa2ada6e6990",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-1-base.png",
+          "bytes": 869072,
+          "sha256": "ad58f394e8ae2b61b560985c9a7723c054589c64fdcb13205d9883c41bd5d37e",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-1-normal.png",
+          "bytes": 630615,
+          "sha256": "53ce1c48b6eabe71bf866080bb49410795a62ea8fdbb02251ad4f818c3edd9f0",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-1-orm.png",
+          "bytes": 394149,
+          "sha256": "3c4423ae0a78396a44ceee0372128e12d514ed4c2d7d5988af26405f75bad116",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-1-scar.png",
+          "bytes": 194635,
+          "sha256": "3a00a0a101c9a216abb15a85451f5348d6fd29759cc17df5cfa2bd4c2034533e",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "fragment-2-base.png",
+          "bytes": 728884,
+          "sha256": "fe370535bd15e2c39e9ee993e41f26e6b53b8e69ef4d2d6143f19107597f16cb",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-2-normal.png",
+          "bytes": 521364,
+          "sha256": "575a8c36856438c77a037b9e3bf153e006c146526fefee3d9a3789a88af6d3e7",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-2-orm.png",
+          "bytes": 325239,
+          "sha256": "82def616246f502e9da32a2a80e9fbb2df508fd169663d163d778cefc3070664",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-2-scar.png",
+          "bytes": 188586,
+          "sha256": "46f4cbb5f7b7c40929b3b56aa00c75f82ef5e5dc543f0365981a39e4eac531fa",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "fragment-3-base.png",
+          "bytes": 864090,
+          "sha256": "22e166c2d66e3845ea5263807a68235840d3c2b46ead3418d29603c32be0ec8d",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-3-normal.png",
+          "bytes": 589216,
+          "sha256": "f8d923e88db5b5cfa523e74728abdab898265ad379571261fc1b94e987b13f4b",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-3-orm.png",
+          "bytes": 387112,
+          "sha256": "4a614353949eb6e5d27cc07785519acae987e3468cd08adbd07c5f4c420e0ed2",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-3-scar.png",
+          "bytes": 159139,
+          "sha256": "a7b90642afcedb7037727301c15362aada87de593b600139b25d567825cf60b8",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "red-base.png",
+          "bytes": 10206968,
+          "sha256": "5b9693fd31dd27d72c912051c9a10516332b0702fbba8490b52d8c2d8bf67558",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "red-normal.png",
+          "bytes": 292368,
+          "sha256": "f78e7e85edcf1676a544ca4ab9dc18618635ebd38cc0d972f4a467d5bb31a805",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "red-orm.png",
+          "bytes": 4544563,
+          "sha256": "28a7979bca20e235936d2da53e512404bd72af93568c995ae9131b6ebb49443c",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "red-scar.png",
+          "bytes": 2887343,
+          "sha256": "995d8067f1bb6c79784da8544d3f344776055ed10521022028ef98da9bb00cfd",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        }
+      ],
+      "external_png_bytes": 31027986,
+      "uncompressed_rgba8_bytes_without_mips": 167772160,
+      "shader_sha256": "c8d27a40ed15ded8860b9b9de4a2dc6c3d945efd6df8a46412bdafc2f2718404",
+      "controls": {
+        "source_sha256": "605ba13c594a0173243c1f8145958cd3c1cc6234ba74ca5358aeffd8165fe70e",
+        "source_body": [
+          1.5,
+          1.1,
+          1.5
+        ],
+        "buffer_body": [
+          1.0,
+          1.2,
+          1.0
+        ],
+        "port_height": 0.85,
+        "lod_triangles": [
+          42000,
+          12000,
+          2500
+        ],
+        "scar": {
+          "mask_size": 2048,
+          "core_half_width": 0.006,
+          "damage_half_width": 0.023,
+          "recess_metres": 0.003,
+          "period_seconds": 4.0,
+          "minimum_light": 0.25,
+          "peak_emission": 3.4,
+          "colour_srgb": [
+            1.0,
+            0.24,
+            0.035
+          ],
+          "paths": [
+            {
+              "axis": "top",
+              "points": [
+                [
+                  -0.57,
+                  -0.19
+                ],
+                [
+                  -0.41,
+                  -0.22
+                ],
+                [
+                  -0.3,
+                  -0.15
+                ],
+                [
+                  -0.17,
+                  -0.045
+                ],
+                [
+                  0.025,
+                  0.085
+                ],
+                [
+                  0.22,
+                  0.12
+                ],
+                [
+                  0.48,
+                  0.14
+                ]
+              ],
+              "width": 1.0,
+              "offset": 0.0
+            },
+            {
+              "axis": "top",
+              "points": [
+                [
+                  0.025,
+                  0.085
+                ],
+                [
+                  0.115,
+                  0.225
+                ],
+                [
+                  0.16,
+                  0.32
+                ],
+                [
+                  0.22,
+                  0.415
+                ]
+              ],
+              "width": 0.55,
+              "offset": 0.5
+            },
+            {
+              "axis": "front",
+              "points": [
+                [
+                  -0.46,
+                  0.12
+                ],
+                [
+                  -0.37,
+                  0.22
+                ],
+                [
+                  -0.39,
+                  0.33
+                ],
+                [
+                  -0.25,
+                  0.42
+                ],
+                [
+                  -0.2,
+                  0.49
+                ]
+              ],
+              "width": 0.7,
+              "offset": 0.0
+            }
+          ]
+        },
+        "presentation": {
+          "source_ready_gain": 0.6,
+          "source_work_gain": 0.8,
+          "claim_gain": 0.3,
+          "stored_gain": 0.4,
+          "working_gain": 1.0,
+          "camera_fov": 48.0
+        },
+        "purpose": {
+          "source_body": "Existing source collider, Godot XYZ metres; no placement-rule change.",
+          "buffer_body": "Existing buffer collider; all authored housing and fittings stay inside it.",
+          "port_height": "Preserves the existing thermal endpoint at 0.85 m above the fixture base.",
+          "lod_triangles": "Near/mid/far geometric detail targets; compare visible slab edges before adoption.",
+          "scar": "UV-attached 6 mm half-core in 23 mm damaged margins; 3 mm maximum additional incision. A four-second ambient breath is separate from native progress.",
+          "paths": "Inspected top XY and front XZ projections in Blender metres. Branch tips taper mostly dark.",
+          "source_ready_gain": "Subdued ready-source light; exhausted/obstructed formation has zero ready gain.",
+          "source_work_gain": "A slightly stronger core after real manual extraction steps, without animating fake timed labour.",
+          "claim_gain": "Quiet exposed mineral light on the actual source-owned claim, removed only after collection.",
+          "stored_gain": "Steady heat proportional to native stored plus reserved heat; storage never runs a work pulse.",
+          "working_gain": "Travel appears only when native firing time advances; pause, obstruction and idle stop it.",
+          "camera_fov": "48-degree review framing. Art review only, not player-camera tuning."
+        }
+      },
+      "original_base_orm_bytes_identical": true,
+      "lod_selection": "N/M/F selects explicit near/mid/far. No automatic population/streaming policy adopted.",
+      "conformance": "retained approved ART-04, geometric incision up to 3 mm; no ART-06C depth retrofit or aesthetic redesign",
+      "current_paid_recipe": {
+        "id": "assemble_red_heat_buffer",
+        "world_profile": "living_frontier_wave1",
+        "display_name": "Red Heat Buffer Kit",
+        "station": "workbench",
+        "minimum_skill": {},
+        "inputs": {
+          "red_salt": 4,
+          "wood": 4,
+          "iron_ingot": 2
+        },
+        "outputs": {
+          "red_heat_buffer_kit": 1
+        },
+        "base_skill_xp": 0,
+        "fuel_cost": 0,
+        "minimum_era": 1,
+        "use_categories": [
+          "construction"
+        ],
+        "design_purpose": "A small affordable supported heat store links to one existing feeder. Its frame contains four Red Salt, four wood and two iron, separate from each two-salt heat charge. Ordinary half-frame refunds apply; unused thermal contents vent. Heat never creates mechanical work."
+      },
+      "fresh_blender": {
+        "colour": "red",
+        "blender": "4.5.9 LTS",
+        "checks": 68,
+        "assertions": [
+          "red-source-near.glb finite",
+          "red-source-near.glb native bounds",
+          "red-source-near.glb UV layer",
+          "red-source-mid.glb finite",
+          "red-source-mid.glb native bounds",
+          "red-source-mid.glb UV layer",
+          "red-source-far.glb finite",
+          "red-source-far.glb native bounds",
+          "red-source-far.glb UV layer",
+          "red-buffer-near.glb finite",
+          "red-buffer-near.glb native bounds",
+          "red-buffer-near.glb UV layer",
+          "red-buffer-near.glb UV layer",
+          "red-buffer-mid.glb finite",
+          "red-buffer-mid.glb native bounds",
+          "red-buffer-mid.glb UV layer",
+          "red-buffer-mid.glb UV layer",
+          "red-buffer-far.glb finite",
+          "red-buffer-far.glb native bounds",
+          "red-buffer-far.glb UV layer",
+          "red-buffer-far.glb UV layer",
+          "red-fragment-1.glb closed after UV seam weld",
+          "red-fragment-1.glb nonzero closed volume",
+          "red-fragment-2.glb closed after UV seam weld",
+          "red-fragment-2.glb nonzero closed volume",
+          "red-fragment-3.glb closed after UV seam weld",
+          "red-fragment-3.glb nonzero closed volume",
+          "packed Buffer base baked",
+          "packed dimensions Buffer base baked",
+          "packed Buffer normal baked",
+          "packed dimensions Buffer normal baked",
+          "packed Buffer ORM baked",
+          "packed dimensions Buffer ORM baked",
+          "packed Fragment 1 base",
+          "packed dimensions Fragment 1 base",
+          "packed Fragment 1 normal",
+          "packed dimensions Fragment 1 normal",
+          "packed Fragment 1 orm",
+          "packed dimensions Fragment 1 orm",
+          "packed Fragment 1 scar",
+          "packed dimensions Fragment 1 scar",
+          "packed Fragment 2 base",
+          "packed dimensions Fragment 2 base",
+          "packed Fragment 2 normal",
+          "packed dimensions Fragment 2 normal",
+          "packed Fragment 2 orm",
+          "packed dimensions Fragment 2 orm",
+          "packed Fragment 2 scar",
+          "packed dimensions Fragment 2 scar",
+          "packed Fragment 3 base",
+          "packed dimensions Fragment 3 base",
+          "packed Fragment 3 normal",
+          "packed dimensions Fragment 3 normal",
+          "packed Fragment 3 orm",
+          "packed dimensions Fragment 3 orm",
+          "packed Fragment 3 scar",
+          "packed dimensions Fragment 3 scar",
+          "packed Image_0",
+          "packed dimensions Image_0",
+          "packed Image_1",
+          "packed dimensions Image_1",
+          "packed Red fracture tangent normal",
+          "packed dimensions Red fracture tangent normal",
+          "packed Red scar - linear core damage travel",
+          "packed dimensions Red scar - linear core damage travel",
+          "pre-scar topology exactly matches retained near master",
+          "delivered geometry matches actual scar displacement to one micrometre",
+          "master bytes unchanged"
+        ],
+        "failures": [],
+        "master_sha256": "540fb48be593f9ef2338ebb672ff9f9a4e48e200b9c056abec82e798b236eac3",
+        "runtime_assets": [
+          {
+            "file": "red-source-near.glb",
+            "sha256": "c25e64339cc2e1f3693ac944911ca18ed34ae9f7ebf12522326357c0b496c9b4",
+            "triangles": 41999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7196746468544006,
+                -0.6647889614105225,
+                0.0
+              ],
+              [
+                0.7197074294090271,
+                0.665177047252655,
+                0.7864708304405212
+              ]
+            ]
+          },
+          {
+            "file": "red-source-mid.glb",
+            "sha256": "7b1366265915dd52eee60a9863d35b1ed90fc4816cec0e8767a819b25a91b009",
+            "triangles": 11999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7196691036224365,
+                -0.6654903888702393,
+                0.0
+              ],
+              [
+                0.7197813391685486,
+                0.6642162203788757,
+                0.7868154644966125
+              ]
+            ]
+          },
+          {
+            "file": "red-source-far.glb",
+            "sha256": "5e28806005774be533221e4e059cea927a1c40697049b6fbca9d83cfbbbe9158",
+            "triangles": 2499,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7269427180290222,
+                -0.6704641580581665,
+                0.0
+              ],
+              [
+                0.7183520793914795,
+                0.6592122912406921,
+                0.7889609336853027
+              ]
+            ]
+          },
+          {
+            "file": "red-buffer-near.glb",
+            "sha256": "5a8149ec4bcd547da4b90daca0647fdacf09ffcae975b8c72cb3a26e4d6d2877",
+            "triangles": 45647,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.47999998927116394,
+                -0.47999998927116394,
+                -1.4901161193847656e-08
+              ],
+              [
+                0.47999998927116394,
+                0.49699994921684265,
+                1.176782488822937
+              ]
+            ]
+          },
+          {
+            "file": "red-buffer-mid.glb",
+            "sha256": "b832849050883de4022f9acc8f14da7cc59d1410f400e06c36510aae7bd65766",
+            "triangles": 15617,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.47999998927116394,
+                -0.47999998927116394,
+                -1.4901161193847656e-08
+              ],
+              [
+                0.47999998927116394,
+                0.49699994921684265,
+                1.176782488822937
+              ]
+            ]
+          },
+          {
+            "file": "red-buffer-far.glb",
+            "sha256": "8eadde745d430463e7bfda42e8e7322dbe9834294a106a0579c1a03e499cc131",
+            "triangles": 6145,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.47999998927116394,
+                -0.47999998927116394,
+                -1.4901161193847656e-08
+              ],
+              [
+                0.47999998927116394,
+                0.49699994921684265,
+                1.176782488822937
+              ]
+            ]
+          },
+          {
+            "file": "red-fragment-1.glb",
+            "sha256": "ef53e920ceaf3de67b3a0de4bdb9cb1b5547c7655ccc1d8068a2c96ecc903caf",
+            "triangles": 1800,
+            "volume_m3": 0.009843764144420116
+          },
+          {
+            "file": "red-fragment-2.glb",
+            "sha256": "a4ab827f42c2ce1815914eaf9506a476e58821b7f3062429c7f86f93ec243510",
+            "triangles": 1800,
+            "volume_m3": 0.00398472540892536
+          },
+          {
+            "file": "red-fragment-3.glb",
+            "sha256": "cb0c00c555a1367fb865c89ea97acdb06f917f68138914155728c91585019725",
+            "triangles": 1800,
+            "volume_m3": 0.004464445182330172
+          }
+        ],
+        "scar": {
+          "configured_max_m": 0.003,
+          "measured_max_m": 0.002997205167485007,
+          "affected_vertices": 588,
+          "affected_p50_m": 0.0012399406714077,
+          "reconstruction_max_error_m": 3.2130348065325876e-08,
+          "method": "same pre-scar QEM topology from packed original; exact per-vertex delivered displacement, not bump/brightness inference"
+        },
+        "contacts": {}
+      },
+      "native_checks": {
+        "checks": 44,
+        "failures": [],
+        "fresh_process": false
+      },
+      "native_restart": {
+        "checks": 5,
+        "failures": [],
+        "fresh_process": true
+      },
+      "motion": {
+        "forward": {
+          "source_frames": 48,
+          "duration_ms": 6000,
+          "lossless_exact": true,
+          "sha256": "86a8d28e62c3f54cb1b82b82b2b664b1dc00816ef694302d9cb1f761084b40ca",
+          "bytes": 4387156
+        },
+        "compat": {
+          "source_frames": 48,
+          "duration_ms": 6000,
+          "lossless_exact": true,
+          "sha256": "c299e8066c7a2083c04a5f3518b3082ef00960fb61157a426bb9b3253cba0096",
+          "bytes": 4665484
+        }
+      },
+      "renderers": {
+        "forward_plus": {
+          "visual_checks": 421,
+          "performance": {
+            "bloom": false,
+            "cases": [
+              {
+                "draw_calls": 83.0,
+                "frame_p50_ms": 6.993,
+                "frame_p95_ms": 7.476,
+                "frame_worst_ms": 7.689,
+                "gpu_p50_ms": 0.72299998998642,
+                "gpu_p95_ms": 1.01999998092651,
+                "gpu_worst_ms": 1.1360000371933,
+                "lod": "near",
+                "primitives": 1494839.0,
+                "render_cpu_p50_ms": 0.138999998569489,
+                "render_cpu_p95_ms": 0.193000003695488,
+                "shade": false,
+                "shot": "source",
+                "texture_bytes": 523514368.0
+              },
+              {
+                "draw_calls": 83.0,
+                "frame_p50_ms": 6.937,
+                "frame_p95_ms": 7.399,
+                "frame_worst_ms": 7.699,
+                "gpu_p50_ms": 0.649999976158142,
+                "gpu_p95_ms": 0.975000023841858,
+                "gpu_worst_ms": 1.15900003910065,
+                "lod": "near",
+                "primitives": 1494843.0,
+                "render_cpu_p50_ms": 0.123999997973442,
+                "render_cpu_p95_ms": 0.146999999880791,
+                "shade": true,
+                "shot": "source",
+                "texture_bytes": 523514368.0
+              },
+              {
+                "draw_calls": 154.0,
+                "frame_p50_ms": 6.972,
+                "frame_p95_ms": 7.349,
+                "frame_worst_ms": 7.529,
+                "gpu_p50_ms": 0.805000007152557,
+                "gpu_p95_ms": 1.08299994468689,
+                "gpu_worst_ms": 1.23500001430511,
+                "lod": "near",
+                "primitives": 1765341.0,
+                "render_cpu_p50_ms": 0.143999993801117,
+                "render_cpu_p95_ms": 0.157000005245209,
+                "shade": false,
+                "shot": "buffer",
+                "texture_bytes": 523514368.0
+              },
+              {
+                "draw_calls": 154.0,
+                "frame_p50_ms": 6.964,
+                "frame_p95_ms": 7.367,
+                "frame_worst_ms": 7.878,
+                "gpu_p50_ms": 0.828999996185303,
+                "gpu_p95_ms": 1.06299996376038,
+                "gpu_worst_ms": 1.2039999961853,
+                "lod": "near",
+                "primitives": 1765345.0,
+                "render_cpu_p50_ms": 0.150999993085861,
+                "render_cpu_p95_ms": 0.216999992728233,
+                "shade": true,
+                "shot": "buffer",
+                "texture_bytes": 523514368.0
+              },
+              {
+                "draw_calls": 345.0,
+                "frame_p50_ms": 6.965,
+                "frame_p95_ms": 7.309,
+                "frame_worst_ms": 7.642,
+                "gpu_p50_ms": 0.971000015735626,
+                "gpu_p95_ms": 1.21899998188019,
+                "gpu_worst_ms": 1.34200000762939,
+                "lod": "near",
+                "primitives": 3358416.0,
+                "render_cpu_p50_ms": 0.190999999642372,
+                "render_cpu_p95_ms": 0.264999985694885,
+                "shade": false,
+                "shot": "overview",
+                "texture_bytes": 523514368.0
+              },
+              {
+                "draw_calls": 345.0,
+                "frame_p50_ms": 6.952,
+                "frame_p95_ms": 7.296,
+                "frame_worst_ms": 7.945,
+                "gpu_p50_ms": 0.973999977111816,
+                "gpu_p95_ms": 1.22300004959106,
+                "gpu_worst_ms": 1.95000004768372,
+                "lod": "near",
+                "primitives": 3358420.0,
+                "render_cpu_p50_ms": 0.18299999833107,
+                "render_cpu_p95_ms": 0.210999995470047,
+                "shade": true,
+                "shot": "overview",
+                "texture_bytes": 523514368.0
+              }
+            ],
+            "device": "NVIDIA GeForce RTX 5090",
+            "msaa": "4x",
+            "renderer": "forward_plus",
+            "resolution": [
+              1600,
+              1000
+            ],
+            "sample_frames": 150,
+            "scope": "Settled unchanged ART-04 review with original backdrop; native clocks held. No streaming or low-spec certification.",
+            "vsync_mode": 1,
+            "warmup_frames": 60
+          }
+        },
+        "gl_compatibility": {
+          "visual_checks": 421,
+          "performance": {
+            "bloom": false,
+            "cases": [
+              {
+                "draw_calls": 84.0,
+                "frame_p50_ms": 6.953,
+                "frame_p95_ms": 6.996,
+                "frame_worst_ms": 7.024,
+                "gpu_p50_ms": 0.24099999666214,
+                "gpu_p95_ms": 0.577000021934509,
+                "gpu_worst_ms": 1.2059999704361,
+                "lod": "near",
+                "primitives": 1494839.0,
+                "render_cpu_p50_ms": 0.453999996185303,
+                "render_cpu_p95_ms": 0.625,
+                "shade": false,
+                "shot": "source",
+                "texture_bytes": 428404678.0
+              },
+              {
+                "draw_calls": 84.0,
+                "frame_p50_ms": 6.955,
+                "frame_p95_ms": 6.991,
+                "frame_worst_ms": 7.057,
+                "gpu_p50_ms": 0.25900000333786,
+                "gpu_p95_ms": 0.625999987125397,
+                "gpu_worst_ms": 0.648000001907349,
+                "lod": "near",
+                "primitives": 1494843.0,
+                "render_cpu_p50_ms": 0.361000001430511,
+                "render_cpu_p95_ms": 0.570999979972839,
+                "shade": true,
+                "shot": "source",
+                "texture_bytes": 428404678.0
+              },
+              {
+                "draw_calls": 160.0,
+                "frame_p50_ms": 6.953,
+                "frame_p95_ms": 6.991,
+                "frame_worst_ms": 7.023,
+                "gpu_p50_ms": 0.29899999499321,
+                "gpu_p95_ms": 0.666999995708466,
+                "gpu_worst_ms": 0.851999998092651,
+                "lod": "near",
+                "primitives": 1765341.0,
+                "render_cpu_p50_ms": 0.444000005722046,
+                "render_cpu_p95_ms": 0.694999992847443,
+                "shade": false,
+                "shot": "buffer",
+                "texture_bytes": 428404678.0
+              },
+              {
+                "draw_calls": 160.0,
+                "frame_p50_ms": 6.953,
+                "frame_p95_ms": 6.992,
+                "frame_worst_ms": 7.044,
+                "gpu_p50_ms": 0.300000011920929,
+                "gpu_p95_ms": 0.675000011920929,
+                "gpu_worst_ms": 0.749000012874603,
+                "lod": "near",
+                "primitives": 1765345.0,
+                "render_cpu_p50_ms": 0.467000007629395,
+                "render_cpu_p95_ms": 0.652999997138977,
+                "shade": true,
+                "shot": "buffer",
+                "texture_bytes": 428404678.0
+              },
+              {
+                "draw_calls": 370.0,
+                "frame_p50_ms": 6.955,
+                "frame_p95_ms": 6.988,
+                "frame_worst_ms": 7.031,
+                "gpu_p50_ms": 0.437000006437302,
+                "gpu_p95_ms": 0.45100000500679,
+                "gpu_worst_ms": 0.810000002384186,
+                "lod": "near",
+                "primitives": 3358416.0,
+                "render_cpu_p50_ms": 0.547999978065491,
+                "render_cpu_p95_ms": 0.790000021457672,
+                "shade": false,
+                "shot": "overview",
+                "texture_bytes": 428404678.0
+              },
+              {
+                "draw_calls": 370.0,
+                "frame_p50_ms": 6.954,
+                "frame_p95_ms": 6.981,
+                "frame_worst_ms": 7.027,
+                "gpu_p50_ms": 0.437999993562698,
+                "gpu_p95_ms": 0.448000013828278,
+                "gpu_worst_ms": 0.823000013828278,
+                "lod": "near",
+                "primitives": 3358420.0,
+                "render_cpu_p50_ms": 0.555000007152557,
+                "render_cpu_p95_ms": 0.815999984741211,
+                "shade": true,
+                "shot": "overview",
+                "texture_bytes": 428404678.0
+              }
+            ],
+            "device": "NVIDIA GeForce RTX 5090",
+            "msaa": "4x",
+            "renderer": "gl_compatibility",
+            "resolution": [
+              1600,
+              1000
+            ],
+            "sample_frames": 150,
+            "scope": "Settled unchanged ART-04 review with original backdrop; native clocks held. No streaming or low-spec certification.",
+            "vsync_mode": 1,
+            "warmup_frames": 60
+          }
+        }
+      },
+      "original_package_path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-art04\\red-handoff",
+      "original_input": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-art04\\red-handoff\\provenance\\red-inclusion-input-v01.png",
+        "sha256": "080e21bbd2c0623f680202ce6db88c5d8ac9204e3507e7cc70ee0b51cb71f663"
+      },
+      "original_generation": {
+        "input_sha256": "080e21bbd2c0623f680202ce6db88c5d8ac9204e3507e7cc70ee0b51cb71f663",
+        "arguments": [
+          "--image",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\workshop-art04\\red-inclusion-input-v01.png",
+          "--output",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-art04\\red-source-v01\\rock.glb",
+          "--models",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+          "--gpu",
+          "0",
+          "--require-gpu",
+          "--res",
+          "1024",
+          "--seed",
+          "42",
+          "--bg-removal",
+          "birefnet",
+          "--dump-bg",
+          "--webp",
+          "off",
+          "--threads",
+          "8"
+        ],
+        "runtime": "pwilkin/trellis.cpp",
+        "version": "v0.6.0",
+        "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+        "started_utc": "2026-09-09T02:30:51.0993470Z",
+        "exit_code": 0,
+        "seconds": 188.8597571,
+        "glb_sha256": "605ba13c594a0173243c1f8145958cd3c1cc6234ba74ca5358aeffd8165fe70e"
+      }
+    },
+    "white": {
+      "source_id": "white_source",
+      "source_catalogue": {
+        "id": "white_source",
+        "role": "retained_source",
+        "habitat": "existing_LF_white",
+        "brief": "Reuse ART-04B White fractured host and recovered mineral; request transmission is not stored drive.",
+        "status": "reuse approved family"
+      },
+      "device": {
+        "id": "white_connection",
+        "kit": "white_connection_kit",
+        "upgrade_from": null,
+        "name": "White Connection",
+        "recipe_id": "assemble_white_connection",
+        "recipe_inputs": {
+          "white_mineral": 2,
+          "wood": 2
+        },
+        "minimum_era": 1,
+        "upgrade_cost": null,
+        "profile_filter": "living_frontier_wave1",
+        "bounds_m": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "board": "retained-ART04B",
+        "brief": "Reuse approved White post, fracture material and fitted frame; immediate request path stays visually distinct from receiver winding.",
+        "review_states": [
+          "native request/connection",
+          "no stored winding"
+        ],
+        "method": "Reuse tools/wroughtwild-white and its accepted handoff."
+      },
+      "source_sha256": "4db9ed58667a1d1bfdb883550e902e1d1e322865743a69f10867e4030842d949",
+      "source_manifest_sha256": "d977641c970f60d7aba7804432b7741c2be998dcbb0aa9c361022b6412e3efad",
+      "retained_cutout": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-white\\source-v01\\rock_cutout.png",
+        "sha256": "535c0e826b279de52e9f03f6b04f0713a36afbd980fde6d61eb25603118ec7f6",
+        "bytes": 2418072,
+        "dimensions": [
+          1464,
+          1464
+        ]
+      },
+      "raw_to_game": {
+        "raw_sha256": "4db9ed58667a1d1bfdb883550e902e1d1e322865743a69f10867e4030842d949",
+        "bounds_blender_xyz": [
+          [
+            -0.7200000882148743,
+            -0.602288544178009,
+            0.0
+          ],
+          [
+            0.7200000882148743,
+            0.602288544178009,
+            0.8041986227035522
+          ]
+        ],
+        "triangles": 282324,
+        "uniform_scale": 1.4433490738926869,
+        "native_body_godot_xyz": [
+          1.5,
+          1.1,
+          1.5
+        ]
+      },
+      "rotation_after_glb_import_degrees_z": -90,
+      "axis_mapping": "Blender (x,y,z) to Godot (x,z,-y), glTF importer/exporter handles it once",
+      "pivot": "Ground centre, Blender Z=0 / Godot Y=0; arranged editable scene locations are NOT export transforms",
+      "attachment": {
+        "anchor_godot_xyz_m": [
+          0,
+          1.18,
+          0
+        ],
+        "meaning": "shared native signal anchor; Green arms do not create separate physical native ports",
+        "body_godot_xyz_m": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "source_body_godot_xyz_m": [
+          1.5,
+          1.1,
+          1.5
+        ]
+      },
+      "textures": [
+        {
+          "file": "fragment-1-base.png",
+          "bytes": 590769,
+          "sha256": "4e36e7b3bf3a81a68073850b22158eff8324b6395ab870f6c72834adcb368b27",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-1-normal.png",
+          "bytes": 94871,
+          "sha256": "246349280b03ceccbb5da7e59a3e444ea14a4704972ce6c75176c867cbda0fbf",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-1-orm.png",
+          "bytes": 90352,
+          "sha256": "fbecb3cc8f32e2189a2ca79c1f63159fc50c8b9b957d1bdc68297e3464d46508",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-1-scar.png",
+          "bytes": 138367,
+          "sha256": "2a11dc30b86ca724e76eef7292840cc89edbeb4837ffb2fcfbad92a09e56611b",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "fragment-2-base.png",
+          "bytes": 676686,
+          "sha256": "650fc8ab16a6f777505ca9a165044eab5974f55a2272fc5b811bf8cef2f03928",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-2-normal.png",
+          "bytes": 114004,
+          "sha256": "7d36c4074eac500c32a2e7430e333ae51e6fe43bed270a88bc6eac421db00bcf",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-2-orm.png",
+          "bytes": 95585,
+          "sha256": "d5b2667b5fc1c63dfbc149fae694c0ec2f2ffc78a0f2deb3e24a0260f57e9054",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-2-scar.png",
+          "bytes": 180757,
+          "sha256": "6e506b84e7f0f039ab20b2b8aeaad5ba06d694fc1c53e80540aa237023685a8d",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "fragment-3-base.png",
+          "bytes": 555393,
+          "sha256": "cb354269197e6590762ac366cbc50d757c04b4d7b296a8b0f8e78914c3d219c7",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-3-normal.png",
+          "bytes": 57908,
+          "sha256": "7b3474cc84253b5ae58eea975d82c550f0480aa5fb4cc43f18001be1957c5ccf",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-3-orm.png",
+          "bytes": 94978,
+          "sha256": "1dfa11f4b9d8324b622e0bb8fa88eb366b82c488253f8bfa882115d7190f09d5",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-3-scar.png",
+          "bytes": 103433,
+          "sha256": "bedb83a7962ddfa419548e4dd3c1138af05443999a45c2fa640bd856fd879fde",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "post-base.png",
+          "bytes": 3535580,
+          "sha256": "f3cc4a03f6d552dd80815b72da42e3a260f5a33e7376be7955eb7a8e4ffca680",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "post-normal.png",
+          "bytes": 5991721,
+          "sha256": "d78b9f70e99fedf9bf7b9bb710d072690c8ba1188c65539153597668a7563ae7",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "post-orm.png",
+          "bytes": 100181,
+          "sha256": "28bfd79bd368c56beff47eccee465b5c7bc366be76a992cc543a8d2d883cc75b",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "white-base.png",
+          "bytes": 10359912,
+          "sha256": "d11969320ef7e02aaf225f6f033d20f4c88303cf5b3467b86556a86ec428b861",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "white-normal.png",
+          "bytes": 1368011,
+          "sha256": "35045d1520a9f7ce077c4200d4e0c3a938a0870098d01fab166681c84b29ecc3",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "white-orm.png",
+          "bytes": 1672103,
+          "sha256": "ecf88beabed87ebef57e98d0c034f381d775a1c8f6ba736d8b1acc465295d361",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "white-scar.png",
+          "bytes": 3679499,
+          "sha256": "678461c4a4c3c06a2d7be0cbe944dffd828735f72230251a3c2e5b23f62a7598",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        }
+      ],
+      "external_png_bytes": 29500110,
+      "uncompressed_rgba8_bytes_without_mips": 167772160,
+      "shader_sha256": "9edb30b4334a8d1c8f30df2712413d454a7a6022ce42934c275748a40b55f1f4",
+      "controls": {
+        "source_sha256": "4db9ed58667a1d1bfdb883550e902e1d1e322865743a69f10867e4030842d949",
+        "source_body": [
+          1.5,
+          1.1,
+          1.5
+        ],
+        "post_body": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "port_height": 1.18,
+        "lod_triangles": [
+          42000,
+          18000,
+          15000
+        ],
+        "scar": {
+          "mask_size": 2048,
+          "core_half_width": 0.006,
+          "damage_half_width": 0.023,
+          "recess_metres": 0.003,
+          "period_seconds": 4.0,
+          "minimum_light": 0.25,
+          "peak_emission": 3.4,
+          "colour_srgb": [
+            1.0,
+            0.96,
+            0.79
+          ],
+          "paths": [
+            {
+              "axis": "top",
+              "points": [
+                [
+                  -0.48,
+                  0.02
+                ],
+                [
+                  -0.32,
+                  -0.03
+                ],
+                [
+                  -0.17,
+                  -0.005
+                ],
+                [
+                  -0.07,
+                  -0.06
+                ],
+                [
+                  0.08,
+                  -0.04
+                ],
+                [
+                  0.24,
+                  0.0
+                ],
+                [
+                  0.46,
+                  0.07
+                ]
+              ],
+              "width": 1.0,
+              "offset": 0.0
+            },
+            {
+              "axis": "top",
+              "points": [
+                [
+                  -0.07,
+                  -0.06
+                ],
+                [
+                  -0.11,
+                  -0.18
+                ],
+                [
+                  -0.035,
+                  -0.27
+                ],
+                [
+                  0.01,
+                  -0.36
+                ]
+              ],
+              "width": 0.55,
+              "offset": 0.45
+            },
+            {
+              "axis": "front",
+              "points": [
+                [
+                  -0.42,
+                  0.13
+                ],
+                [
+                  -0.28,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.22
+                ],
+                [
+                  -0.09,
+                  0.31
+                ],
+                [
+                  0.1,
+                  0.32
+                ],
+                [
+                  0.22,
+                  0.32
+                ]
+              ],
+              "width": 0.7,
+              "offset": 0.0
+            }
+          ]
+        },
+        "presentation": {
+          "source_ready_gain": 0.65,
+          "source_work_gain": 0.85,
+          "claim_gain": 0.3,
+          "request_seconds": 0.85,
+          "camera_fov": 48.0
+        },
+        "purpose": {
+          "source_body": "Existing source collider in Godot XYZ metres; all detail levels remain inside it.",
+          "post_body": "Existing compact White Connection collider; no saved placement or fit change.",
+          "port_height": "Existing White signal endpoint at the top of its 1.18 m body.",
+          "lod_triangles": "Near/mid/far mineral targets retain the layered silhouette. This generated exterior stops simplifying near 15k triangles because of its junction topology; lower far budgets need a later topology pass, not a claim of 2.5k output.",
+          "scar": "UV-attached 6 mm half-core and 23 mm damaged margin; at most 3 mm added recess. Pale ivory light has no gameplay effect.",
+          "paths": "Inspected Blender top XY/front XZ surface paths. Only selected compression fractures carry light.",
+          "period_seconds": "A four-second gathering swell and short passage on a ready natural source, separate from real device requests.",
+          "minimum_light": "25% ambient floor keeps the narrow natural scar visible between crests.",
+          "peak_emission": "3.4 peak with no bloom; checked in day/shade and both renderers.",
+          "source_ready_gain": "Subdued ready-source pulse, zero after exhaustion or during blocked reformation.",
+          "source_work_gain": "Brighter after actual manual extraction progress, without inventing a work timer.",
+          "claim_gain": "Quiet exposed-mineral light while native claim or carried count is positive.",
+          "request_seconds": "0.85 second one-shot passage when the native White counter increases, including a request refused by an unwound drum. No repeated idle success; loading does not replay a saved counter.",
+          "camera_fov": "48-degree isolated review camera; not player-camera tuning."
+        }
+      },
+      "original_base_orm_bytes_identical": true,
+      "lod_selection": "N/M/F selects explicit near/mid/far. No automatic population/streaming policy adopted.",
+      "conformance": "retained approved ART-04, geometric incision up to 3 mm; no ART-06C depth retrofit or aesthetic redesign",
+      "current_paid_recipe": {
+        "id": "assemble_white_connection",
+        "world_profile": "living_frontier_wave1",
+        "display_name": "White Connection Kit",
+        "station": "workbench",
+        "minimum_skill": {},
+        "inputs": {
+          "white_mineral": 2,
+          "wood": 2
+        },
+        "outputs": {
+          "white_connection_kit": 1
+        },
+        "base_skill_xp": 0,
+        "fuel_cost": 0,
+        "minimum_era": 1,
+        "use_categories": [
+          "construction"
+        ],
+        "design_purpose": "Living Frontier: one White lot supplies eight inexpensive placeable signal connections. White forwards one immediate request to the selected cargo drum or Blue delay. White owns no winding or pending request; the receiver pays its own work. No automatic extraction. Ordinary frame removal refunds apply."
+      },
+      "fresh_blender": {
+        "colour": "white",
+        "blender": "4.5.9 LTS",
+        "checks": 68,
+        "assertions": [
+          "white-source-near.glb finite",
+          "white-source-near.glb native bounds",
+          "white-source-near.glb UV layer",
+          "white-source-mid.glb finite",
+          "white-source-mid.glb native bounds",
+          "white-source-mid.glb UV layer",
+          "white-source-far.glb finite",
+          "white-source-far.glb native bounds",
+          "white-source-far.glb UV layer",
+          "white-post-near.glb finite",
+          "white-post-near.glb native bounds",
+          "white-post-near.glb UV layer",
+          "white-post-near.glb UV layer",
+          "white-post-mid.glb finite",
+          "white-post-mid.glb native bounds",
+          "white-post-mid.glb UV layer",
+          "white-post-mid.glb UV layer",
+          "white-post-far.glb finite",
+          "white-post-far.glb native bounds",
+          "white-post-far.glb UV layer",
+          "white-post-far.glb UV layer",
+          "white-fragment-1.glb closed after UV seam weld",
+          "white-fragment-1.glb nonzero closed volume",
+          "white-fragment-2.glb closed after UV seam weld",
+          "white-fragment-2.glb nonzero closed volume",
+          "white-fragment-3.glb closed after UV seam weld",
+          "white-fragment-3.glb nonzero closed volume",
+          "packed Image_0",
+          "packed dimensions Image_0",
+          "packed Image_1",
+          "packed dimensions Image_1",
+          "packed Post base baked",
+          "packed dimensions Post base baked",
+          "packed Post normal baked",
+          "packed dimensions Post normal baked",
+          "packed Post ORM baked",
+          "packed dimensions Post ORM baked",
+          "packed White fracture tangent normal",
+          "packed dimensions White fracture tangent normal",
+          "packed White fragment 1 base",
+          "packed dimensions White fragment 1 base",
+          "packed White fragment 1 orm",
+          "packed dimensions White fragment 1 orm",
+          "packed White fragment 1 scar",
+          "packed dimensions White fragment 1 scar",
+          "packed White fragment 2 base",
+          "packed dimensions White fragment 2 base",
+          "packed White fragment 2 orm",
+          "packed dimensions White fragment 2 orm",
+          "packed White fragment 2 scar",
+          "packed dimensions White fragment 2 scar",
+          "packed White fragment 3 base",
+          "packed dimensions White fragment 3 base",
+          "packed White fragment 3 orm",
+          "packed dimensions White fragment 3 orm",
+          "packed White fragment 3 scar",
+          "packed dimensions White fragment 3 scar",
+          "packed White fragment own tangent normal",
+          "packed dimensions White fragment own tangent normal",
+          "packed White fragment own tangent normal.001",
+          "packed dimensions White fragment own tangent normal.001",
+          "packed White fragment own tangent normal.002",
+          "packed dimensions White fragment own tangent normal.002",
+          "packed White scar - linear core damage travel",
+          "packed dimensions White scar - linear core damage travel",
+          "pre-scar topology exactly matches retained near master",
+          "delivered geometry matches actual scar displacement to one micrometre",
+          "master bytes unchanged"
+        ],
+        "failures": [],
+        "master_sha256": "350652cec3011d91b4f487bac53db4186d043fe82bd5b4732148e421e6d3ac38",
+        "runtime_assets": [
+          {
+            "file": "white-source-near.glb",
+            "sha256": "372e60765d3c3ba43121e7a1ddea4e6d3e609e87f5d8d74630232db3cd23acb3",
+            "triangles": 41937,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7188213467597961,
+                -0.6047986149787903,
+                0.0
+              ],
+              [
+                0.7220536470413208,
+                0.6024454832077026,
+                0.804997980594635
+              ]
+            ]
+          },
+          {
+            "file": "white-source-mid.glb",
+            "sha256": "feca98082acd1b8384b499fdbe2a6f196f0ff34f42f295c10428955a09b87e5e",
+            "triangles": 17989,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7139134407043457,
+                -0.6009238362312317,
+                0.0
+              ],
+              [
+                0.7196536064147949,
+                0.6066313982009888,
+                0.799839437007904
+              ]
+            ]
+          },
+          {
+            "file": "white-source-far.glb",
+            "sha256": "9102335bf3a4597a9c3d9ac0ebbf846c945b2ee6b101d70a2c1189ebef80a65d",
+            "triangles": 14989,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7044201493263245,
+                -0.61290043592453,
+                0.0
+              ],
+              [
+                0.7060344815254211,
+                0.5964896082878113,
+                0.8089552521705627
+              ]
+            ]
+          },
+          {
+            "file": "white-post-near.glb",
+            "sha256": "be50153d3ca50b7d2bcc4db74e42eb71616458e9a755eef8630a4f514def367c",
+            "triangles": 43533,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "white-post-mid.glb",
+            "sha256": "4cbe618c63edc2c630f19b5298bf771c295c5027d8dd9323c06c8ef193c395a3",
+            "triangles": 19585,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "white-post-far.glb",
+            "sha256": "63a3379188200a3ceb0f2a2a211a16dc641f7ec0f5eb41b1c3187387e56a8f37",
+            "triangles": 16585,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "white-fragment-1.glb",
+            "sha256": "c3318e01ada117d9c66c3e6cb04eed0e58f286b6a5eec47fd55bc3e339539b0e",
+            "triangles": 200,
+            "volume_m3": 0.0040659566571444455
+          },
+          {
+            "file": "white-fragment-2.glb",
+            "sha256": "d7c8142fa851d8fc023a430d9c7bcc870e11058de2c6c3bf7fb42a8434393e49",
+            "triangles": 178,
+            "volume_m3": 0.003580508711315631
+          },
+          {
+            "file": "white-fragment-3.glb",
+            "sha256": "04086773ea5379acd88aefbd3ef16ef4153c1a4c19926be9aa62e144a1869e0c",
+            "triangles": 136,
+            "volume_m3": 0.006461925632486585
+          }
+        ],
+        "scar": {
+          "configured_max_m": 0.003,
+          "measured_max_m": 0.002999397538069187,
+          "affected_vertices": 157,
+          "affected_p50_m": 0.0006619816676333404,
+          "reconstruction_max_error_m": 2.9973391289521574e-08,
+          "method": "same pre-scar QEM topology from packed original; exact per-vertex delivered displacement, not bump/brightness inference"
+        },
+        "contacts": {
+          "core_bounds": [
+            [
+              0.8771654367446899,
+              -0.17539159953594208,
+              0.7519999742507935
+            ],
+            [
+              1.3238366842269897,
+              0.17470918595790863,
+              1.025699257850647
+            ]
+          ]
+        }
+      },
+      "native_checks": {
+        "checks": 73,
+        "failures": [],
+        "restart": false
+      },
+      "native_restart": {
+        "checks": 6,
+        "failures": [],
+        "restart": true
+      },
+      "motion": {
+        "forward": {
+          "source_frames": 48,
+          "duration_ms": 6000,
+          "lossless_exact": true,
+          "sha256": "bd4fbf0ba2cdfdc59383490a52b598bbea98c2aa8a46efb645bda0f354ad4b8a",
+          "bytes": 5013656
+        },
+        "compat": {
+          "source_frames": 48,
+          "duration_ms": 6000,
+          "lossless_exact": true,
+          "sha256": "c4e1e89a05263dd6d630a7e771b43ddf57d00f3476d776e4025576695776538d",
+          "bytes": 5451164
+        }
+      },
+      "renderers": {
+        "forward_plus": {
+          "visual_checks": 454,
+          "performance": {
+            "bloom": false,
+            "cases": [
+              {
+                "draw_calls": 80.0,
+                "frame_p50_ms": 6.987,
+                "frame_p95_ms": 7.372,
+                "frame_worst_ms": 7.715,
+                "gpu_p50_ms": 0.614000022411346,
+                "gpu_p95_ms": 0.935999989509583,
+                "gpu_worst_ms": 1.00899994373322,
+                "lod": "near",
+                "primitives": 1327599.0,
+                "render_cpu_p50_ms": 0.136999994516373,
+                "render_cpu_p95_ms": 0.158000007271767,
+                "shade": false,
+                "shot": "source",
+                "texture_bytes": 500482560.0
+              },
+              {
+                "draw_calls": 80.0,
+                "frame_p50_ms": 6.951,
+                "frame_p95_ms": 7.487,
+                "frame_worst_ms": 8.062,
+                "gpu_p50_ms": 0.564000010490417,
+                "gpu_p95_ms": 0.935000002384186,
+                "gpu_worst_ms": 1.02400004863739,
+                "lod": "near",
+                "primitives": 1327603.0,
+                "render_cpu_p50_ms": 0.122000001370907,
+                "render_cpu_p95_ms": 0.142000004649162,
+                "shade": true,
+                "shot": "source",
+                "texture_bytes": 500482560.0
+              },
+              {
+                "draw_calls": 90.0,
+                "frame_p50_ms": 6.986,
+                "frame_p95_ms": 7.406,
+                "frame_worst_ms": 8.012,
+                "gpu_p50_ms": 0.625999987125397,
+                "gpu_p95_ms": 0.967000007629395,
+                "gpu_worst_ms": 1.10000002384186,
+                "lod": "near",
+                "primitives": 1412913.0,
+                "render_cpu_p50_ms": 0.123999997973442,
+                "render_cpu_p95_ms": 0.151999995112419,
+                "shade": false,
+                "shot": "post",
+                "texture_bytes": 500482560.0
+              },
+              {
+                "draw_calls": 90.0,
+                "frame_p50_ms": 6.995,
+                "frame_p95_ms": 7.331,
+                "frame_worst_ms": 7.794,
+                "gpu_p50_ms": 0.619000017642975,
+                "gpu_p95_ms": 0.967999994754791,
+                "gpu_worst_ms": 1.00199997425079,
+                "lod": "near",
+                "primitives": 1412917.0,
+                "render_cpu_p50_ms": 0.130999997258186,
+                "render_cpu_p95_ms": 0.188999995589256,
+                "shade": true,
+                "shot": "post",
+                "texture_bytes": 500482560.0
+              },
+              {
+                "draw_calls": 133.0,
+                "frame_p50_ms": 6.965,
+                "frame_p95_ms": 7.272,
+                "frame_worst_ms": 7.447,
+                "gpu_p50_ms": 0.924000024795532,
+                "gpu_p95_ms": 1.21700000762939,
+                "gpu_worst_ms": 1.26699995994568,
+                "lod": "near",
+                "primitives": 3253114.0,
+                "render_cpu_p50_ms": 0.140000000596046,
+                "render_cpu_p95_ms": 0.232999995350838,
+                "shade": false,
+                "shot": "overview",
+                "texture_bytes": 500482560.0
+              },
+              {
+                "draw_calls": 133.0,
+                "frame_p50_ms": 6.979,
+                "frame_p95_ms": 7.277,
+                "frame_worst_ms": 7.826,
+                "gpu_p50_ms": 0.921999990940094,
+                "gpu_p95_ms": 1.16299998760223,
+                "gpu_worst_ms": 1.27100002765656,
+                "lod": "near",
+                "primitives": 3253118.0,
+                "render_cpu_p50_ms": 0.133000001311302,
+                "render_cpu_p95_ms": 0.151999995112419,
+                "shade": true,
+                "shot": "overview",
+                "texture_bytes": 500482560.0
+              }
+            ],
+            "device": "NVIDIA GeForce RTX 5090",
+            "msaa": "4x",
+            "renderer": "forward_plus",
+            "resolution": [
+              1600,
+              1000
+            ],
+            "sample_frames": 150,
+            "scope": "Settled unchanged ART-04 review with original backdrop; native clocks held. No streaming or low-spec certification.",
+            "vsync_mode": 1,
+            "warmup_frames": 60
+          }
+        },
+        "gl_compatibility": {
+          "visual_checks": 454,
+          "performance": {
+            "bloom": false,
+            "cases": [
+              {
+                "draw_calls": 81.0,
+                "frame_p50_ms": 6.954,
+                "frame_p95_ms": 6.99,
+                "frame_worst_ms": 7.008,
+                "gpu_p50_ms": 0.238999992609024,
+                "gpu_p95_ms": 0.462999999523163,
+                "gpu_worst_ms": 0.601000010967255,
+                "lod": "near",
+                "primitives": 1327599.0,
+                "render_cpu_p50_ms": 0.351999998092651,
+                "render_cpu_p95_ms": 0.584999978542328,
+                "shade": false,
+                "shot": "source",
+                "texture_bytes": 427749314.0
+              },
+              {
+                "draw_calls": 81.0,
+                "frame_p50_ms": 6.954,
+                "frame_p95_ms": 6.983,
+                "frame_worst_ms": 7.035,
+                "gpu_p50_ms": 0.238000005483627,
+                "gpu_p95_ms": 0.58899998664856,
+                "gpu_worst_ms": 0.800000011920929,
+                "lod": "near",
+                "primitives": 1327603.0,
+                "render_cpu_p50_ms": 0.36599999666214,
+                "render_cpu_p95_ms": 0.587999999523163,
+                "shade": true,
+                "shot": "source",
+                "texture_bytes": 427749314.0
+              },
+              {
+                "draw_calls": 91.0,
+                "frame_p50_ms": 6.954,
+                "frame_p95_ms": 6.989,
+                "frame_worst_ms": 7.006,
+                "gpu_p50_ms": 0.24600000679493,
+                "gpu_p95_ms": 0.58899998664856,
+                "gpu_worst_ms": 0.813000023365021,
+                "lod": "near",
+                "primitives": 1412913.0,
+                "render_cpu_p50_ms": 0.393999993801117,
+                "render_cpu_p95_ms": 0.583000004291534,
+                "shade": false,
+                "shot": "post",
+                "texture_bytes": 427749314.0
+              },
+              {
+                "draw_calls": 91.0,
+                "frame_p50_ms": 6.953,
+                "frame_p95_ms": 6.99,
+                "frame_worst_ms": 7.014,
+                "gpu_p50_ms": 0.24600000679493,
+                "gpu_p95_ms": 0.603999972343445,
+                "gpu_worst_ms": 0.626999974250793,
+                "lod": "near",
+                "primitives": 1412917.0,
+                "render_cpu_p50_ms": 0.377999991178513,
+                "render_cpu_p95_ms": 0.583000004291534,
+                "shade": true,
+                "shot": "post",
+                "texture_bytes": 427749314.0
+              },
+              {
+                "draw_calls": 155.0,
+                "frame_p50_ms": 6.953,
+                "frame_p95_ms": 6.99,
+                "frame_worst_ms": 6.999,
+                "gpu_p50_ms": 0.442999988794327,
+                "gpu_p95_ms": 0.801999986171722,
+                "gpu_worst_ms": 0.973999977111816,
+                "lod": "near",
+                "primitives": 3253114.0,
+                "render_cpu_p50_ms": 0.356000006198883,
+                "render_cpu_p95_ms": 0.607999980449677,
+                "shade": false,
+                "shot": "overview",
+                "texture_bytes": 427749314.0
+              },
+              {
+                "draw_calls": 155.0,
+                "frame_p50_ms": 6.952,
+                "frame_p95_ms": 7.001,
+                "frame_worst_ms": 7.015,
+                "gpu_p50_ms": 0.444000005722046,
+                "gpu_p95_ms": 0.813000023365021,
+                "gpu_worst_ms": 0.837000012397766,
+                "lod": "near",
+                "primitives": 3253118.0,
+                "render_cpu_p50_ms": 0.42399999499321,
+                "render_cpu_p95_ms": 0.652999997138977,
+                "shade": true,
+                "shot": "overview",
+                "texture_bytes": 427749314.0
+              }
+            ],
+            "device": "NVIDIA GeForce RTX 5090",
+            "msaa": "4x",
+            "renderer": "gl_compatibility",
+            "resolution": [
+              1600,
+              1000
+            ],
+            "sample_frames": 150,
+            "scope": "Settled unchanged ART-04 review with original backdrop; native clocks held. No streaming or low-spec certification.",
+            "vsync_mode": 1,
+            "warmup_frames": 60
+          }
+        }
+      },
+      "original_package_path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-white\\white-handoff",
+      "original_input": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-white\\white-handoff\\provenance\\white-inclusion-input-v01.png",
+        "sha256": "473d92edfa3c206b19cb93250f3f32d7f4d58e03245b3f541d660903937af015"
+      },
+      "original_generation": {
+        "input_sha256": "473d92edfa3c206b19cb93250f3f32d7f4d58e03245b3f541d660903937af015",
+        "arguments": [
+          "--image",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\workshop-white\\white-inclusion-input-v01.png",
+          "--output",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-white\\source-v01\\rock.glb",
+          "--models",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+          "--gpu",
+          "0",
+          "--require-gpu",
+          "--res",
+          "1024",
+          "--seed",
+          "42",
+          "--bg-removal",
+          "birefnet",
+          "--dump-bg",
+          "--webp",
+          "off",
+          "--threads",
+          "8"
+        ],
+        "runtime": "pwilkin/trellis.cpp",
+        "version": "v0.6.0",
+        "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+        "started_utc": "2026-09-09T04:30:46.4765612Z",
+        "exit_code": 0,
+        "seconds": 288.0969282,
+        "glb_sha256": "4db9ed58667a1d1bfdb883550e902e1d1e322865743a69f10867e4030842d949"
+      }
+    },
+    "blue": {
+      "source_id": "blue_source",
+      "source_catalogue": {
+        "id": "blue_source",
+        "role": "retained_source",
+        "habitat": "existing_LF_blue",
+        "brief": "Reuse ART-04C layered host and recovered flakes; retain native formation and held-request distinction.",
+        "status": "reuse approved family"
+      },
+      "device": {
+        "id": "blue_delay",
+        "kit": "blue_delay_kit",
+        "upgrade_from": null,
+        "name": "Blue Delay",
+        "recipe_id": "assemble_blue_delay",
+        "recipe_inputs": {
+          "blue_flake": 2,
+          "wood": 2
+        },
+        "minimum_era": 1,
+        "upgrade_cost": null,
+        "profile_filter": "living_frontier_wave1",
+        "bounds_m": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "board": "retained-ART04C",
+        "brief": "Reuse approved supported flake/delay form; visible held request with a legible local pause/release cue.",
+        "review_states": [
+          "empty",
+          "holding",
+          "paused",
+          "released/cancelled"
+        ],
+        "method": "Reuse tools/wroughtwild-blue and its accepted handoff."
+      },
+      "source_sha256": "6165314bec6143e66a1fc4f7bd32ef9d582ea743bb854fc9819f25c8cdd83eb2",
+      "source_manifest_sha256": "d7d3c978760f77175a6cc15f7f76ebb9f50fbe16f2705e63cc2604b19ce8db55",
+      "retained_cutout": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-blue\\source-v01\\rock_cutout.png",
+        "sha256": "b3061c3c3c42220492f67452cd50a1b3a3dcaacc81850b5251e790773b631ed6",
+        "bytes": 2917862,
+        "dimensions": [
+          1552,
+          1552
+        ]
+      },
+      "raw_to_game": {
+        "raw_sha256": "6165314bec6143e66a1fc4f7bd32ef9d582ea743bb854fc9819f25c8cdd83eb2",
+        "bounds_blender_xyz": [
+          [
+            -0.7199999690055847,
+            -0.6179729104042053,
+            0.0
+          ],
+          [
+            0.7199999690055847,
+            0.6179729104042053,
+            0.7049647569656372
+          ]
+        ],
+        "triangles": 287422,
+        "uniform_scale": 1.438133031283536,
+        "native_body_godot_xyz": [
+          1.5,
+          1.1,
+          1.5
+        ]
+      },
+      "rotation_after_glb_import_degrees_z": 0,
+      "axis_mapping": "Blender (x,y,z) to Godot (x,z,-y), glTF importer/exporter handles it once",
+      "pivot": "Ground centre, Blender Z=0 / Godot Y=0; arranged editable scene locations are NOT export transforms",
+      "attachment": {
+        "anchor_godot_xyz_m": [
+          0,
+          1.18,
+          0
+        ],
+        "meaning": "shared native signal anchor; Green arms do not create separate physical native ports",
+        "body_godot_xyz_m": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "source_body_godot_xyz_m": [
+          1.5,
+          1.1,
+          1.5
+        ]
+      },
+      "textures": [
+        {
+          "file": "blue-base.png",
+          "bytes": 10487072,
+          "sha256": "74c5b817f953c7ea999b480e23fe4c5ccd68f8d080795b6667c825de42887645",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "blue-normal.png",
+          "bytes": 314560,
+          "sha256": "9082a0b82a10041d814422dc10303912dd639231bf4d21d09f36a54cddfdb114",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "blue-orm.png",
+          "bytes": 4827537,
+          "sha256": "81d174e33ba2176982960a53dcaed33227662808e938f963d4d8e1613cb9a015",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "blue-scar.png",
+          "bytes": 2688835,
+          "sha256": "563d546388900c9656524de14717deacb7b042dbaf8fe39822517d4c405d52fc",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "fragment-1-base.png",
+          "bytes": 619389,
+          "sha256": "530e3bbd9bc93a1ddfb548c7879e8adf0b39f0fa6b34c5a6c16c87e5fb137cfc",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-1-normal.png",
+          "bytes": 161321,
+          "sha256": "ec9a7408739fb6914b60f5cf236e740df69e169b8554bf83201cbf19d7ba8501",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-1-orm.png",
+          "bytes": 232027,
+          "sha256": "77cb62980a591700cbca72b831754d132ea098b947d17b5cde4bff3bc68c6b84",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-1-scar.png",
+          "bytes": 191747,
+          "sha256": "0174a8d0c3c99c13c10016198d1f09b2cca3b36b33c6d53cd79d788a91a38386",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "fragment-2-base.png",
+          "bytes": 573991,
+          "sha256": "d9ac1c13b5f58ffb5a28f766c0572e27e8c3c096bae67fa0a9ffa35c796b0e80",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-2-normal.png",
+          "bytes": 115677,
+          "sha256": "698b552251ca0c42b8fd25234d327ca1920d3242a69ac265ce3576d878c37a70",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-2-orm.png",
+          "bytes": 201215,
+          "sha256": "d14ea0c5c757ff5cdfd426098993e9ba719dae879b30c66c16ea4aa6c64ea781",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-2-scar.png",
+          "bytes": 138943,
+          "sha256": "2c08fc6ce20528bfc5141cf7baa76e88c36587c51bbcbad4d7548fc868fdc460",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "fragment-3-base.png",
+          "bytes": 598360,
+          "sha256": "a423b6c7e1b96ce074c0155d8663ed3b779233b4e2d018c447d69aebef50b82a",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-3-normal.png",
+          "bytes": 173542,
+          "sha256": "ca9dd8c52d45e00ed9544b479db3648f76b78bb67de285cb3cf03976177ad82b",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-3-orm.png",
+          "bytes": 252766,
+          "sha256": "35712ae4e4c1e0415b72ebdd7c97d541470f705437b73abb7f8c37e5f613ff50",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-3-scar.png",
+          "bytes": 170753,
+          "sha256": "77c2a15160cc279f7529ac5cfc389a20eaa44cba92b46e4ae0c11ccaf81bf17f",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel"
+        },
+        {
+          "file": "post-base.png",
+          "bytes": 3267690,
+          "sha256": "0d9d596cd836b0bccf999a2d62b7b967c9556a54f752044bb4bfd74af982caab",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "post-normal.png",
+          "bytes": 5520420,
+          "sha256": "4b780e0301ff1c5d76026fbebb9f97b5abf2bde51e992f8ec164164439fd61c7",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "post-orm.png",
+          "bytes": 113360,
+          "sha256": "14c828196401718b6c368dfa71577b8c4158506f1eb36579c137f2f10c738f1d",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        }
+      ],
+      "external_png_bytes": 30649205,
+      "uncompressed_rgba8_bytes_without_mips": 167772160,
+      "shader_sha256": "a26c7df7cf62e9270beef3866ca8ae86663a81dc1811947f378cc017197f29f8",
+      "controls": {
+        "source_sha256": "6165314bec6143e66a1fc4f7bd32ef9d582ea743bb854fc9819f25c8cdd83eb2",
+        "source_body": [
+          1.5,
+          1.1,
+          1.5
+        ],
+        "post_body": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "port_height": 1.18,
+        "lod_triangles": [
+          36000,
+          16000,
+          8000
+        ],
+        "scar": {
+          "mask_size": 2048,
+          "core_half_width": 0.006,
+          "damage_half_width": 0.022,
+          "recess_metres": 0.003,
+          "period_seconds": 4.5,
+          "minimum_light": 0.25,
+          "peak_emission": 4.0,
+          "colour_srgb": [
+            0.24,
+            0.53,
+            1.0
+          ],
+          "paths": [
+            {
+              "axis": "top",
+              "points": [
+                [
+                  -0.5,
+                  -0.12
+                ],
+                [
+                  -0.37,
+                  -0.2
+                ],
+                [
+                  -0.24,
+                  -0.22
+                ],
+                [
+                  -0.09,
+                  -0.29
+                ],
+                [
+                  0.08,
+                  -0.28
+                ],
+                [
+                  0.23,
+                  -0.2
+                ],
+                [
+                  0.4,
+                  -0.12
+                ],
+                [
+                  0.53,
+                  0.04
+                ]
+              ],
+              "width": 1.0,
+              "offset": 0.0
+            },
+            {
+              "axis": "top",
+              "points": [
+                [
+                  -0.09,
+                  -0.29
+                ],
+                [
+                  -0.16,
+                  -0.36
+                ],
+                [
+                  -0.12,
+                  -0.44
+                ]
+              ],
+              "width": 0.55,
+              "offset": 0.37
+            },
+            {
+              "axis": "front",
+              "points": [
+                [
+                  -0.43,
+                  0.2
+                ],
+                [
+                  -0.29,
+                  0.26
+                ],
+                [
+                  -0.12,
+                  0.27
+                ],
+                [
+                  0.04,
+                  0.3
+                ],
+                [
+                  0.18,
+                  0.28
+                ],
+                [
+                  0.3,
+                  0.32
+                ],
+                [
+                  0.43,
+                  0.39
+                ]
+              ],
+              "width": 0.65,
+              "offset": 0.0
+            }
+          ]
+        },
+        "presentation": {
+          "source_ready_gain": 0.65,
+          "source_work_gain": 0.85,
+          "claim_gain": 0.3,
+          "camera_fov": 48.0,
+          "release_seconds": 0.65
+        },
+        "purpose": {
+          "source_body": "Existing source collider in Godot XYZ metres; all detail levels remain inside it.",
+          "post_body": "Existing compact Blue Delay collider. No saved placement or body changes.",
+          "port_height": "Existing Blue signal endpoint at 1.18 m.",
+          "lod_triangles": "Near/mid/far reduction targets; record achieved counts and inspect silhouette without waiving physical checks.",
+          "scar": "6 mm half-core, 22 mm damaged margin and up to 3 mm recess in the opaque slate. Cool blue light has no Frost or gameplay effect.",
+          "paths": "Inspected Blender top XY/front XZ surface paths. Only selected compression fractures carry light.",
+          "period_seconds": "Natural host lingers in one fracture, then moves onward over 4.5 seconds. The device uses actual native delay instead.",
+          "minimum_light": "25% ambient floor keeps the narrow natural scar visible between crests.",
+          "peak_emission": "Peak 4.0, checked in both renderers with bloom disabled.",
+          "source_ready_gain": "Subdued ready-source pulse, zero after exhaustion or during blocked reformation.",
+          "source_work_gain": "Brighter after actual manual extraction progress, without inventing a work timer.",
+          "claim_gain": "Quiet exposed-mineral light while native claim or carried count is positive.",
+          "camera_fov": "48-degree isolated review camera; not player-camera tuning.",
+          "release_seconds": "0.65 second passage only when a native pending request expires in an active tick; refusal still consumes that request. Cancel, rewire and reload do not trigger it."
+        }
+      },
+      "original_base_orm_bytes_identical": true,
+      "lod_selection": "N/M/F selects explicit near/mid/far. No automatic population/streaming policy adopted.",
+      "conformance": "retained approved ART-04, geometric incision up to 3 mm; no ART-06C depth retrofit or aesthetic redesign",
+      "current_paid_recipe": {
+        "id": "assemble_blue_delay",
+        "world_profile": "living_frontier_wave1",
+        "display_name": "Blue Delay Kit",
+        "station": "workbench",
+        "minimum_skill": {},
+        "inputs": {
+          "blue_flake": 2,
+          "wood": 2
+        },
+        "outputs": {
+          "blue_delay_kit": 1
+        },
+        "base_skill_xp": 0,
+        "fuel_cost": 0,
+        "minimum_era": 1,
+        "use_categories": [
+          "construction"
+        ],
+        "design_purpose": "One Blue lot pays for eight inexpensive delays. Each holds one signal for three active nearby seconds, never supplies energy and has explicit pause/cancel controls. Ordinary half-frame refunds apply. Blue carries 128 units so a whole costly Catalyst recipe can fit later."
+      },
+      "fresh_blender": {
+        "colour": "blue",
+        "blender": "4.5.9 LTS",
+        "checks": 69,
+        "assertions": [
+          "blue-source-near.glb finite",
+          "blue-source-near.glb native bounds",
+          "blue-source-near.glb UV layer",
+          "blue-source-mid.glb finite",
+          "blue-source-mid.glb native bounds",
+          "blue-source-mid.glb UV layer",
+          "blue-source-far.glb finite",
+          "blue-source-far.glb native bounds",
+          "blue-source-far.glb UV layer",
+          "blue-post-near.glb finite",
+          "blue-post-near.glb native bounds",
+          "blue-post-near.glb UV layer",
+          "blue-post-near.glb UV layer",
+          "blue-post-mid.glb finite",
+          "blue-post-mid.glb native bounds",
+          "blue-post-mid.glb UV layer",
+          "blue-post-mid.glb UV layer",
+          "blue-post-far.glb finite",
+          "blue-post-far.glb native bounds",
+          "blue-post-far.glb UV layer",
+          "blue-post-far.glb UV layer",
+          "blue-fragment-1.glb closed after UV seam weld",
+          "blue-fragment-1.glb nonzero closed volume",
+          "blue-fragment-2.glb closed after UV seam weld",
+          "blue-fragment-2.glb nonzero closed volume",
+          "blue-fragment-3.glb closed after UV seam weld",
+          "blue-fragment-3.glb nonzero closed volume",
+          "packed Blue fracture tangent normal",
+          "packed dimensions Blue fracture tangent normal",
+          "packed Blue fragment 1 base",
+          "packed dimensions Blue fragment 1 base",
+          "packed Blue fragment 1 orm",
+          "packed dimensions Blue fragment 1 orm",
+          "packed Blue fragment 1 scar",
+          "packed dimensions Blue fragment 1 scar",
+          "packed Blue fragment 2 base",
+          "packed dimensions Blue fragment 2 base",
+          "packed Blue fragment 2 orm",
+          "packed dimensions Blue fragment 2 orm",
+          "packed Blue fragment 2 scar",
+          "packed dimensions Blue fragment 2 scar",
+          "packed Blue fragment 3 base",
+          "packed dimensions Blue fragment 3 base",
+          "packed Blue fragment 3 orm",
+          "packed dimensions Blue fragment 3 orm",
+          "packed Blue fragment 3 scar",
+          "packed dimensions Blue fragment 3 scar",
+          "packed Blue fragment own tangent normal",
+          "packed dimensions Blue fragment own tangent normal",
+          "packed Blue fragment own tangent normal.001",
+          "packed dimensions Blue fragment own tangent normal.001",
+          "packed Blue fragment own tangent normal.002",
+          "packed dimensions Blue fragment own tangent normal.002",
+          "packed Blue scar - linear core damage travel",
+          "packed dimensions Blue scar - linear core damage travel",
+          "packed Image_0",
+          "packed dimensions Image_0",
+          "packed Image_1",
+          "packed dimensions Image_1",
+          "packed Post base baked",
+          "packed dimensions Post base baked",
+          "packed Post normal baked",
+          "packed dimensions Post normal baked",
+          "packed Post ORM baked",
+          "packed dimensions Post ORM baked",
+          "pre-scar topology exactly matches retained near master",
+          "delivered geometry matches actual scar displacement to one micrometre",
+          "Blue cradle contact",
+          "master bytes unchanged"
+        ],
+        "failures": [],
+        "master_sha256": "f9cde6272d02843d16899f590733913f32a4f0f87c0f5efcea5528c408157c8f",
+        "runtime_assets": [
+          {
+            "file": "blue-source-near.glb",
+            "sha256": "e63608d602d8df6105df7a3821e5affccab33a879768e73018f5dbf2abe59570",
+            "triangles": 35999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7198760509490967,
+                -0.6181938052177429,
+                0.0
+              ],
+              [
+                0.7203423380851746,
+                0.6185444593429565,
+                0.704846978187561
+              ]
+            ]
+          },
+          {
+            "file": "blue-source-mid.glb",
+            "sha256": "26fd11f4a53f5a4c4acc224885187480b1b2ca73e52ec4e696c3aef24758f368",
+            "triangles": 15999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7199640274047852,
+                -0.6176341772079468,
+                0.0
+              ],
+              [
+                0.7203465104103088,
+                0.6183997392654419,
+                0.7056806683540344
+              ]
+            ]
+          },
+          {
+            "file": "blue-source-far.glb",
+            "sha256": "629b485ba2db338edfe439dd02f728c8aba59646cb3002152a13240f39b35ad4",
+            "triangles": 7999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7207265496253967,
+                -0.6160182952880859,
+                0.0
+              ],
+              [
+                0.7185283303260803,
+                0.6187224984169006,
+                0.7061638236045837
+              ]
+            ]
+          },
+          {
+            "file": "blue-post-near.glb",
+            "sha256": "f8bf0a65a2c7d80114faeb075eeaab3d05b8dbf312ebc017bc635dda4b71d9f9",
+            "triangles": 38651,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "blue-post-mid.glb",
+            "sha256": "67cc90abac283c7d30445d18d3e0715e20ae91678624136c3f81ea9705cc21b1",
+            "triangles": 18651,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "blue-post-far.glb",
+            "sha256": "702b73744171eaa7a796ef246f5103e822caa89e60088afba74accf576176fdf",
+            "triangles": 10651,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "blue-fragment-1.glb",
+            "sha256": "83da9891118451c654f81854921e8317beffe81c21c5f909b2350d4fce640f58",
+            "triangles": 192,
+            "volume_m3": 0.001317404434143499
+          },
+          {
+            "file": "blue-fragment-2.glb",
+            "sha256": "c22ed3148c855d02eb2714992756f0e5d4d61bfb8441cc18eb2b69c6896043db",
+            "triangles": 134,
+            "volume_m3": 0.0011957060775082183
+          },
+          {
+            "file": "blue-fragment-3.glb",
+            "sha256": "99d871603b993b5296cd34955c47c6e62fae5f19edd914990b06314c61ddea91",
+            "triangles": 176,
+            "volume_m3": 0.001281290928708105
+          }
+        ],
+        "scar": {
+          "configured_max_m": 0.003,
+          "measured_max_m": 0.002999956478420517,
+          "affected_vertices": 357,
+          "affected_p50_m": 0.0011078018523686566,
+          "reconstruction_max_error_m": 2.9672323546940542e-08,
+          "method": "same pre-scar QEM topology from packed original; exact per-vertex delivered displacement, not bump/brightness inference"
+        },
+        "contacts": {
+          "core_bounds": [
+            [
+              0.8696396946907043,
+              -0.11555103212594986,
+              0.47145020961761475
+            ],
+            [
+              1.3305095434188843,
+              0.10999999195337296,
+              0.9166759848594666
+            ]
+          ]
+        }
+      },
+      "native_checks": {
+        "checks": 90,
+        "failures": [],
+        "restart": false
+      },
+      "native_restart": {
+        "checks": 16,
+        "failures": [],
+        "restart": true
+      },
+      "motion": {
+        "forward": {
+          "source_frames": 64,
+          "duration_ms": 8000,
+          "lossless_exact": true,
+          "sha256": "44ad985a317f998eb8b18935d8a6444475609e40627e972fdd4a1ad81204647b",
+          "bytes": 8524350
+        },
+        "compat": {
+          "source_frames": 64,
+          "duration_ms": 8000,
+          "lossless_exact": true,
+          "sha256": "675964f5bd79d3b435beaed1870085a19414c747888419f6fde482639eb527cd",
+          "bytes": 9294012
+        }
+      },
+      "renderers": {
+        "forward_plus": {
+          "visual_checks": 548,
+          "performance": {
+            "bloom": false,
+            "cases": [
+              {
+                "draw_calls": 111.0,
+                "frame_p50_ms": 6.973,
+                "frame_p95_ms": 7.455,
+                "frame_worst_ms": 7.909,
+                "gpu_p50_ms": 0.741999983787537,
+                "gpu_p95_ms": 0.980000019073486,
+                "gpu_worst_ms": 1.10699999332428,
+                "lod": "near",
+                "primitives": 1373434.0,
+                "render_cpu_p50_ms": 0.126000002026558,
+                "render_cpu_p95_ms": 0.164000004529953,
+                "shade": false,
+                "shot": "source",
+                "texture_bytes": 651477504.0
+              },
+              {
+                "draw_calls": 111.0,
+                "frame_p50_ms": 6.997,
+                "frame_p95_ms": 7.442,
+                "frame_worst_ms": 7.534,
+                "gpu_p50_ms": 0.744000017642975,
+                "gpu_p95_ms": 0.995999991893768,
+                "gpu_worst_ms": 1.07599997520447,
+                "lod": "near",
+                "primitives": 1373438.0,
+                "render_cpu_p50_ms": 0.122000001370907,
+                "render_cpu_p95_ms": 0.135000005364418,
+                "shade": true,
+                "shot": "source",
+                "texture_bytes": 651477504.0
+              },
+              {
+                "draw_calls": 106.0,
+                "frame_p50_ms": 6.986,
+                "frame_p95_ms": 7.375,
+                "frame_worst_ms": 7.533,
+                "gpu_p50_ms": 0.731000006198883,
+                "gpu_p95_ms": 0.981000006198883,
+                "gpu_worst_ms": 1.17400002479553,
+                "lod": "near",
+                "primitives": 1389476.0,
+                "render_cpu_p50_ms": 0.126000002026558,
+                "render_cpu_p95_ms": 0.219999998807907,
+                "shade": false,
+                "shot": "post",
+                "texture_bytes": 651477504.0
+              },
+              {
+                "draw_calls": 106.0,
+                "frame_p50_ms": 6.984,
+                "frame_p95_ms": 7.4,
+                "frame_worst_ms": 7.714,
+                "gpu_p50_ms": 0.616999983787537,
+                "gpu_p95_ms": 0.977999985218048,
+                "gpu_worst_ms": 1.05499994754791,
+                "lod": "near",
+                "primitives": 1389480.0,
+                "render_cpu_p50_ms": 0.126000002026558,
+                "render_cpu_p95_ms": 0.171000003814697,
+                "shade": true,
+                "shot": "post",
+                "texture_bytes": 651477504.0
+              },
+              {
+                "draw_calls": 150.0,
+                "frame_p50_ms": 6.979,
+                "frame_p95_ms": 7.282,
+                "frame_worst_ms": 7.766,
+                "gpu_p50_ms": 0.924000024795532,
+                "gpu_p95_ms": 1.15499997138977,
+                "gpu_worst_ms": 1.24399995803833,
+                "lod": "near",
+                "primitives": 3216352.0,
+                "render_cpu_p50_ms": 0.136999994516373,
+                "render_cpu_p95_ms": 0.158000007271767,
+                "shade": false,
+                "shot": "overview",
+                "texture_bytes": 651477504.0
+              },
+              {
+                "draw_calls": 150.0,
+                "frame_p50_ms": 6.97,
+                "frame_p95_ms": 7.342,
+                "frame_worst_ms": 7.63,
+                "gpu_p50_ms": 0.929000020027161,
+                "gpu_p95_ms": 1.23099994659424,
+                "gpu_worst_ms": 1.2610000371933,
+                "lod": "near",
+                "primitives": 3216356.0,
+                "render_cpu_p50_ms": 0.137999996542931,
+                "render_cpu_p95_ms": 0.150000005960464,
+                "shade": true,
+                "shot": "overview",
+                "texture_bytes": 651477504.0
+              }
+            ],
+            "device": "NVIDIA GeForce RTX 5090",
+            "msaa": "4x",
+            "renderer": "forward_plus",
+            "resolution": [
+              1600,
+              1000
+            ],
+            "sample_frames": 150,
+            "scope": "Settled unchanged ART-04 review with original backdrop; native clocks held. No streaming or low-spec certification.",
+            "vsync_mode": 1,
+            "warmup_frames": 60
+          }
+        },
+        "gl_compatibility": {
+          "visual_checks": 548,
+          "performance": {
+            "bloom": false,
+            "cases": [
+              {
+                "draw_calls": 112.0,
+                "frame_p50_ms": 6.955,
+                "frame_p95_ms": 6.993,
+                "frame_worst_ms": 7.011,
+                "gpu_p50_ms": 0.234999999403954,
+                "gpu_p95_ms": 0.555999994277954,
+                "gpu_worst_ms": 0.736999988555908,
+                "lod": "near",
+                "primitives": 1373434.0,
+                "render_cpu_p50_ms": 0.544000029563904,
+                "render_cpu_p95_ms": 0.646000027656555,
+                "shade": false,
+                "shot": "source",
+                "texture_bytes": 606706274.0
+              },
+              {
+                "draw_calls": 112.0,
+                "frame_p50_ms": 6.954,
+                "frame_p95_ms": 6.993,
+                "frame_worst_ms": 7.03,
+                "gpu_p50_ms": 0.252999991178513,
+                "gpu_p95_ms": 0.614000022411346,
+                "gpu_worst_ms": 0.876999974250793,
+                "lod": "near",
+                "primitives": 1373438.0,
+                "render_cpu_p50_ms": 0.513000011444092,
+                "render_cpu_p95_ms": 0.653999984264374,
+                "shade": true,
+                "shot": "source",
+                "texture_bytes": 606706274.0
+              },
+              {
+                "draw_calls": 107.0,
+                "frame_p50_ms": 6.953,
+                "frame_p95_ms": 6.993,
+                "frame_worst_ms": 7.017,
+                "gpu_p50_ms": 0.24600000679493,
+                "gpu_p95_ms": 0.602999985218048,
+                "gpu_worst_ms": 0.640999972820282,
+                "lod": "near",
+                "primitives": 1389476.0,
+                "render_cpu_p50_ms": 0.414000004529953,
+                "render_cpu_p95_ms": 0.634999990463257,
+                "shade": false,
+                "shot": "post",
+                "texture_bytes": 606706274.0
+              },
+              {
+                "draw_calls": 107.0,
+                "frame_p50_ms": 6.952,
+                "frame_p95_ms": 6.99,
+                "frame_worst_ms": 7.042,
+                "gpu_p50_ms": 0.243000000715256,
+                "gpu_p95_ms": 0.569999992847443,
+                "gpu_worst_ms": 0.630999982357025,
+                "lod": "near",
+                "primitives": 1389480.0,
+                "render_cpu_p50_ms": 0.437999993562698,
+                "render_cpu_p95_ms": 0.66100001335144,
+                "shade": true,
+                "shot": "post",
+                "texture_bytes": 606706274.0
+              },
+              {
+                "draw_calls": 173.0,
+                "frame_p50_ms": 6.958,
+                "frame_p95_ms": 6.991,
+                "frame_worst_ms": 7.089,
+                "gpu_p50_ms": 0.42399999499321,
+                "gpu_p95_ms": 0.745000004768372,
+                "gpu_worst_ms": 0.773000001907349,
+                "lod": "near",
+                "primitives": 3216352.0,
+                "render_cpu_p50_ms": 0.45100000500679,
+                "render_cpu_p95_ms": 0.657999992370605,
+                "shade": false,
+                "shot": "overview",
+                "texture_bytes": 606706274.0
+              },
+              {
+                "draw_calls": 173.0,
+                "frame_p50_ms": 6.953,
+                "frame_p95_ms": 6.989,
+                "frame_worst_ms": 7.009,
+                "gpu_p50_ms": 0.435999989509583,
+                "gpu_p95_ms": 0.657000005245209,
+                "gpu_worst_ms": 0.823000013828278,
+                "lod": "near",
+                "primitives": 3216356.0,
+                "render_cpu_p50_ms": 0.435999989509583,
+                "render_cpu_p95_ms": 0.65200001001358,
+                "shade": true,
+                "shot": "overview",
+                "texture_bytes": 606706274.0
+              }
+            ],
+            "device": "NVIDIA GeForce RTX 5090",
+            "msaa": "4x",
+            "renderer": "gl_compatibility",
+            "resolution": [
+              1600,
+              1000
+            ],
+            "sample_frames": 150,
+            "scope": "Settled unchanged ART-04 review with original backdrop; native clocks held. No streaming or low-spec certification.",
+            "vsync_mode": 1,
+            "warmup_frames": 60
+          }
+        }
+      },
+      "original_package_path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-blue\\blue-handoff",
+      "original_input": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-blue\\blue-handoff\\provenance\\blue-fracture-input-v01.png",
+        "sha256": "a7f54c3a29fb681f3f922339271fc3a787b867fb161ca4400003d6a715347329"
+      },
+      "original_generation": {
+        "input_sha256": "a7f54c3a29fb681f3f922339271fc3a787b867fb161ca4400003d6a715347329",
+        "arguments": [
+          "--image",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\workshop-blue\\blue-fracture-input-v01.png",
+          "--output",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-blue\\source-v01\\rock.glb",
+          "--models",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+          "--gpu",
+          "0",
+          "--require-gpu",
+          "--res",
+          "1024",
+          "--seed",
+          "42",
+          "--bg-removal",
+          "birefnet",
+          "--dump-bg",
+          "--webp",
+          "off",
+          "--threads",
+          "8"
+        ],
+        "runtime": "pwilkin/trellis.cpp",
+        "version": "v0.6.0",
+        "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+        "started_utc": "2026-09-09T05:26:31.1518120Z",
+        "exit_code": 0,
+        "seconds": 148.1690953,
+        "glb_sha256": "6165314bec6143e66a1fc4f7bd32ef9d582ea743bb854fc9819f25c8cdd83eb2"
+      }
+    },
+    "green": {
+      "source_id": "green_source",
+      "source_catalogue": {
+        "id": "green_source",
+        "role": "retained_source",
+        "habitat": "existing_LF_green",
+        "brief": "Reuse ART-04D root host and resin pieces; growth supports branching anatomy, not free item propagation.",
+        "status": "reuse approved family"
+      },
+      "device": {
+        "id": "green_junction",
+        "kit": "green_junction_kit",
+        "upgrade_from": null,
+        "name": "Green Junction",
+        "recipe_id": "assemble_green_junction",
+        "recipe_inputs": {
+          "green_resin": 2,
+          "wood": 2
+        },
+        "minimum_era": 1,
+        "upgrade_cost": null,
+        "profile_filter": "living_frontier_wave1",
+        "bounds_m": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "board": "retained-ART04D",
+        "brief": "Reuse approved resin-root fork with two distinct branch sockets; branch result must not imply free work.",
+        "review_states": [
+          "native branch outcomes",
+          "disconnected"
+        ],
+        "method": "Reuse tools/wroughtwild-green and its accepted handoff."
+      },
+      "source_sha256": "eba7bfa22ea63b72d03b9bc0e80775e1b3eed6d5b76fad2bbe86037dde8454fc",
+      "source_manifest_sha256": "018d8cfe62d6749e1b6d2943431970780938483823a3577354e1deb3f8a049cf",
+      "retained_cutout": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-green\\source-v01\\rock_cutout.png",
+        "sha256": "0d5bae0503b3468a42c5172e02d923a6cac8a54cbc914d934738bdcedc595ae0",
+        "bytes": 2627922,
+        "dimensions": [
+          1574,
+          1574
+        ]
+      },
+      "raw_to_game": {
+        "raw_sha256": "eba7bfa22ea63b72d03b9bc0e80775e1b3eed6d5b76fad2bbe86037dde8454fc",
+        "bounds_blender_xyz": [
+          [
+            -0.6451732516288757,
+            -0.7199999690055847,
+            0.0
+          ],
+          [
+            0.645173192024231,
+            0.7199999690055847,
+            0.755544900894165
+          ]
+        ],
+        "triangles": 292204,
+        "uniform_scale": 1.438933400168151,
+        "native_body_godot_xyz": [
+          1.5,
+          1.1,
+          1.5
+        ]
+      },
+      "rotation_after_glb_import_degrees_z": 0,
+      "axis_mapping": "Blender (x,y,z) to Godot (x,z,-y), glTF importer/exporter handles it once",
+      "pivot": "Ground centre, Blender Z=0 / Godot Y=0; arranged editable scene locations are NOT export transforms",
+      "attachment": {
+        "anchor_godot_xyz_m": [
+          0,
+          1.18,
+          0
+        ],
+        "meaning": "shared native signal anchor; Green arms do not create separate physical native ports",
+        "body_godot_xyz_m": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "source_body_godot_xyz_m": [
+          1.5,
+          1.1,
+          1.5
+        ]
+      },
+      "textures": [
+        {
+          "file": "fragment-1-base.png",
+          "bytes": 460254,
+          "sha256": "40c068726e5f9a8d125ac861ec870c5c85a91ac2abb2df958702f957a81129bf",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-1-normal.png",
+          "bytes": 128936,
+          "sha256": "59b69c4d18ccdf6030a847b05c0a18bde9815794d3b9b818be48167667476b00",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-1-orm.png",
+          "bytes": 191371,
+          "sha256": "82f52f32e690a7c67ace3c1afdf183b455c1d2c0de285d82b0814ac8c5da5241",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-1-scar.png",
+          "bytes": 921522,
+          "sha256": "a2909b5d0b56cdef78fedb60dc47d2f45115398c4c0dda1cc52838f92737e41a",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel, A branch identity (not transparency)"
+        },
+        {
+          "file": "fragment-2-base.png",
+          "bytes": 468895,
+          "sha256": "6a1c8fe70dd5b68788d455bc5f216edf7eb080f097eefdd293205837b01f6977",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-2-normal.png",
+          "bytes": 96380,
+          "sha256": "d9404f079f6b75d681ac855da3217bf0e2e6fc954bd5fd2a1d14067affd3ec1d",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-2-orm.png",
+          "bytes": 192709,
+          "sha256": "a78b9c022774fd4eafaabaec76cecb9f4f2f0a7c568028f3a2b68b069c1b100c",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-2-scar.png",
+          "bytes": 177870,
+          "sha256": "48aece8a66aac3d79cb4537641a5aa891c68582daf6f5a73481be88a951ed48e",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel, A branch identity (not transparency)"
+        },
+        {
+          "file": "fragment-3-base.png",
+          "bytes": 492222,
+          "sha256": "d996ab3274ec485285020c903609d5bd418fa34897e554d1fd74bb1778eeb00a",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "fragment-3-normal.png",
+          "bytes": 82249,
+          "sha256": "f100560a5e39b7cb4fa4427d665b7dff726cc04a5c0b697981eb8dfd23ca1ae3",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "fragment-3-orm.png",
+          "bytes": 222612,
+          "sha256": "babc91e9e1885e00330ff00bc06da861eb2ff3eeb804e926ee57275f4db0d484",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "fragment-3-scar.png",
+          "bytes": 576075,
+          "sha256": "cb4e19cd2ede9d03177bee971026881dc40d095cabe587a1d58621699f929f63",
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel, A branch identity (not transparency)"
+        },
+        {
+          "file": "green-base.png",
+          "bytes": 9866678,
+          "sha256": "42cefe1661814c9c1176a03e4f3bed021b481cb931a6d0e5652d1d4492585a0f",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "green-normal.png",
+          "bytes": 296467,
+          "sha256": "2bcf0c6d006a9afdcc4a619d8e9b345eb436bc2abc35a27f0d5f13c8c781f099",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "green-orm.png",
+          "bytes": 1702430,
+          "sha256": "6c7fbde512cd5acfc65aefe2dd57cde913b360d9dddd700ffec36bf652e9d2ed",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        },
+        {
+          "file": "green-scar.png",
+          "bytes": 2220490,
+          "sha256": "5cf488921f681a2d50ed19e6cf3f0f56fcc4612c195ef7f8773b1ce12e840448",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGBA",
+          "sampling": "linear data",
+          "channels": "R core, G damage, B travel, A branch identity (not transparency)"
+        },
+        {
+          "file": "post-base.png",
+          "bytes": 3791560,
+          "sha256": "8327e4cb42024d1bf657830a51438834cc7884896ed1390d7ac6d17a48edefe0",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "sRGB albedo",
+          "channels": "base colour"
+        },
+        {
+          "file": "post-normal.png",
+          "bytes": 6842972,
+          "sha256": "7b9abfb8a02d180156845d38e2b22a6ff9116df660ac66acf7d2c99816729199",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "tangent-space normal"
+        },
+        {
+          "file": "post-orm.png",
+          "bytes": 95810,
+          "sha256": "aa7fb4c01116301f453e24efd95cd2189a90071687d8b6f5c395829e4050cbb4",
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "mode": "RGB",
+          "sampling": "linear data",
+          "channels": "R occlusion, G roughness, B metallic; shader uses G/B"
+        }
+      ],
+      "external_png_bytes": 28827502,
+      "uncompressed_rgba8_bytes_without_mips": 167772160,
+      "shader_sha256": "5172a68257b0d64b1e0fa7b792e15edd68328bff7c44b3fcedf90cb60ca9708f",
+      "controls": {
+        "source_sha256": "eba7bfa22ea63b72d03b9bc0e80775e1b3eed6d5b76fad2bbe86037dde8454fc",
+        "source_body": [
+          1.5,
+          1.1,
+          1.5
+        ],
+        "post_body": [
+          0.65,
+          1.18,
+          0.55
+        ],
+        "port_height": 1.18,
+        "lod_triangles": [
+          36000,
+          16000,
+          8000
+        ],
+        "scar": {
+          "mask_size": 2048,
+          "core_half_width": 0.006,
+          "damage_half_width": 0.022,
+          "recess_metres": 0.003,
+          "period_seconds": 4.2,
+          "minimum_light": 0.25,
+          "peak_emission": 3.7,
+          "colour_srgb": [
+            0.43,
+            0.9,
+            0.39
+          ],
+          "paths": [
+            {
+              "axis": "front",
+              "points": [
+                [
+                  -0.24,
+                  0.1
+                ],
+                [
+                  -0.19,
+                  0.18
+                ],
+                [
+                  -0.13,
+                  0.24
+                ],
+                [
+                  -0.07,
+                  0.32
+                ],
+                [
+                  -0.03,
+                  0.4
+                ]
+              ],
+              "width": 1.0,
+              "offset": 0.0,
+              "span": 0.42,
+              "branch": 0
+            },
+            {
+              "axis": "front",
+              "points": [
+                [
+                  -0.03,
+                  0.4
+                ],
+                [
+                  -0.13,
+                  0.43
+                ],
+                [
+                  -0.23,
+                  0.47
+                ],
+                [
+                  -0.37,
+                  0.51
+                ],
+                [
+                  -0.46,
+                  0.48
+                ]
+              ],
+              "width": 0.75,
+              "offset": 0.42,
+              "span": 0.58,
+              "branch": 1
+            },
+            {
+              "axis": "front",
+              "points": [
+                [
+                  -0.03,
+                  0.4
+                ],
+                [
+                  0.1,
+                  0.39
+                ],
+                [
+                  0.2,
+                  0.43
+                ],
+                [
+                  0.29,
+                  0.48
+                ],
+                [
+                  0.37,
+                  0.47
+                ]
+              ],
+              "width": 0.7,
+              "offset": 0.42,
+              "span": 0.58,
+              "branch": 2
+            }
+          ]
+        },
+        "presentation": {
+          "source_ready_gain": 0.65,
+          "source_work_gain": 0.85,
+          "claim_gain": 0.3,
+          "camera_fov": 48.0,
+          "passage_seconds": 1.05
+        },
+        "purpose": {
+          "source_body": "Existing source collider in Godot XYZ metres; all detail levels remain inside it.",
+          "post_body": "Existing compact Green Junction collider; two visible branches retain the native shared top cable anchor.",
+          "port_height": "Existing central cable anchor at 1.18 m for both native output spans.",
+          "lod_triangles": "Near/mid/far reduction targets; record achieved counts and inspect silhouette without waiving physical checks.",
+          "scar": "6 mm half-core, 22 mm damaged grain and up to 3 mm recess. Green light is presentation, not poison or terrain growth.",
+          "paths": "A shared front-grain stem divides into two fading branches; RGBA stores core, damage, progress and branch identity.",
+          "period_seconds": "4.2-second natural travelling pulse splits at 42% of the route. The junction uses real counter events instead.",
+          "minimum_light": "25% ambient floor keeps the narrow natural scar visible between crests.",
+          "peak_emission": "3.7 peak, no bloom, checked in both renderers and shade/day.",
+          "source_ready_gain": "Subdued ready-source pulse, zero after exhaustion or during blocked reformation.",
+          "source_work_gain": "Brighter after actual manual extraction progress, without inventing a work timer.",
+          "claim_gain": "Quiet exposed-mineral light while native claim or carried count is positive.",
+          "camera_fov": "48-degree isolated review camera; not player-camera tuning.",
+          "passage_seconds": "1.05-second passage only when the native Green counter increases. Each physically clear output shows its request even if that receiver refuses work.",
+          "resin": "New cut faces are inferred cloudy olive resin with 0.36 roughness, blended over 12 mm of distance from the sampled original surface; outer bark and attached scars remain."
+        },
+        "resin": {
+          "cut_colour_linear": [
+            0.11,
+            0.14,
+            0.035
+          ],
+          "cut_roughness": 0.36,
+          "cut_transition_m": 0.012
+        }
+      },
+      "original_base_orm_bytes_identical": true,
+      "lod_selection": "N/M/F selects explicit near/mid/far. No automatic population/streaming policy adopted.",
+      "conformance": "retained approved ART-04, geometric incision up to 3 mm; no ART-06C depth retrofit or aesthetic redesign",
+      "current_paid_recipe": {
+        "id": "assemble_green_junction",
+        "world_profile": "living_frontier_wave1",
+        "display_name": "Green Junction Kit",
+        "station": "workbench",
+        "minimum_skill": {},
+        "inputs": {
+          "green_resin": 2,
+          "wood": 2
+        },
+        "outputs": {
+          "green_junction_kit": 1
+        },
+        "base_skill_xp": 0,
+        "fuel_cost": 0,
+        "minimum_era": 1,
+        "use_categories": [
+          "construction"
+        ],
+        "design_purpose": "Two resin and two wood buy an inexpensive two-port junction. One incoming request attempts each distinct cargo drum or pressure feeder once; each receiver pays its own drive and supplies. A blocked branch does not spend the other branch's work. Fixed ordered signal links exclude loops and reconvergence."
+      },
+      "fresh_blender": {
+        "colour": "green",
+        "blender": "4.5.9 LTS",
+        "checks": 77,
+        "assertions": [
+          "green-source-near.glb finite",
+          "green-source-near.glb native bounds",
+          "green-source-near.glb UV layer",
+          "green-source-mid.glb finite",
+          "green-source-mid.glb native bounds",
+          "green-source-mid.glb UV layer",
+          "green-source-far.glb finite",
+          "green-source-far.glb native bounds",
+          "green-source-far.glb UV layer",
+          "green-post-near.glb finite",
+          "green-post-near.glb native bounds",
+          "green-post-near.glb UV layer",
+          "green-post-near.glb UV layer",
+          "green-post-near.glb UV layer",
+          "green-post-near.glb UV layer",
+          "green-post-mid.glb finite",
+          "green-post-mid.glb native bounds",
+          "green-post-mid.glb UV layer",
+          "green-post-mid.glb UV layer",
+          "green-post-mid.glb UV layer",
+          "green-post-mid.glb UV layer",
+          "green-post-far.glb finite",
+          "green-post-far.glb native bounds",
+          "green-post-far.glb UV layer",
+          "green-post-far.glb UV layer",
+          "green-post-far.glb UV layer",
+          "green-post-far.glb UV layer",
+          "green-fragment-1.glb closed after UV seam weld",
+          "green-fragment-1.glb nonzero closed volume",
+          "green-fragment-2.glb closed after UV seam weld",
+          "green-fragment-2.glb nonzero closed volume",
+          "green-fragment-3.glb closed after UV seam weld",
+          "green-fragment-3.glb nonzero closed volume",
+          "packed Green fracture tangent normal",
+          "packed dimensions Green fracture tangent normal",
+          "packed Green fragment 1 base",
+          "packed dimensions Green fragment 1 base",
+          "packed Green fragment 1 orm",
+          "packed dimensions Green fragment 1 orm",
+          "packed Green fragment 1 scar",
+          "packed dimensions Green fragment 1 scar",
+          "packed Green fragment 2 base",
+          "packed dimensions Green fragment 2 base",
+          "packed Green fragment 2 orm",
+          "packed dimensions Green fragment 2 orm",
+          "packed Green fragment 2 scar",
+          "packed dimensions Green fragment 2 scar",
+          "packed Green fragment 3 base",
+          "packed dimensions Green fragment 3 base",
+          "packed Green fragment 3 orm",
+          "packed dimensions Green fragment 3 orm",
+          "packed Green fragment 3 scar",
+          "packed dimensions Green fragment 3 scar",
+          "packed Green fragment own tangent normal",
+          "packed dimensions Green fragment own tangent normal",
+          "packed Green fragment own tangent normal.001",
+          "packed dimensions Green fragment own tangent normal.001",
+          "packed Green fragment own tangent normal.002",
+          "packed dimensions Green fragment own tangent normal.002",
+          "packed Green scar - linear core damage travel branch",
+          "packed dimensions Green scar - linear core damage travel branch",
+          "packed Image_0",
+          "packed dimensions Image_0",
+          "packed Image_1",
+          "packed dimensions Image_1",
+          "packed Post base baked",
+          "packed dimensions Post base baked",
+          "packed Post normal baked",
+          "packed dimensions Post normal baked",
+          "packed Post ORM baked",
+          "packed dimensions Post ORM baked",
+          "pre-scar topology exactly matches retained near master",
+          "delivered geometry matches actual scar displacement to one micrometre",
+          "GREEN_CORE - first attached stem",
+          "GREEN_CORE - second attached stem",
+          "Green cradle contact",
+          "master bytes unchanged"
+        ],
+        "failures": [],
+        "master_sha256": "d720f9dcb3b89572e3ee245a26e19c5a554bb3571e9250405697beec9aca601e",
+        "runtime_assets": [
+          {
+            "file": "green-source-near.glb",
+            "sha256": "f1b508a12c58f19e55e075b9aa7fedbdd2ed2758903ef12ffdc26852774e3a53",
+            "triangles": 35999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.6449030637741089,
+                -0.7203564047813416,
+                0.0
+              ],
+              [
+                0.6455594301223755,
+                0.7199642658233643,
+                0.7546491622924805
+              ]
+            ]
+          },
+          {
+            "file": "green-source-mid.glb",
+            "sha256": "e52ef236343e6f23fb1dad254023568e4ce6778f3cd50a759c0c113734c26404",
+            "triangles": 15999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.645301878452301,
+                -0.7201560735702515,
+                0.0
+              ],
+              [
+                0.6448702216148376,
+                0.7199366688728333,
+                0.7550821900367737
+              ]
+            ]
+          },
+          {
+            "file": "green-source-far.glb",
+            "sha256": "5ef406c4232de8bc7fa5dd642bcde227dc982aaa62400eddb525647d1b032574",
+            "triangles": 7999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.6491534113883972,
+                -0.7221766114234924,
+                0.0
+              ],
+              [
+                0.6454063653945923,
+                0.7146491408348083,
+                0.7568821310997009
+              ]
+            ]
+          },
+          {
+            "file": "green-post-near.glb",
+            "sha256": "22eb05f636ba5f238d47f3fa04abcd0942baa552f7bdb47830645af0b70227b0",
+            "triangles": 1998,
+            "surfaces": 4,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "green-post-mid.glb",
+            "sha256": "22eb05f636ba5f238d47f3fa04abcd0942baa552f7bdb47830645af0b70227b0",
+            "triangles": 1998,
+            "surfaces": 4,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "green-post-far.glb",
+            "sha256": "22eb05f636ba5f238d47f3fa04abcd0942baa552f7bdb47830645af0b70227b0",
+            "triangles": 1998,
+            "surfaces": 4,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "green-fragment-1.glb",
+            "sha256": "7fa48e9138a0e240f18b27c292e33e7c034c8ff83c4d4c2948baf2a7bcb6ce67",
+            "triangles": 190,
+            "volume_m3": 0.001923723323626664
+          },
+          {
+            "file": "green-fragment-2.glb",
+            "sha256": "4f719d5b062ed3ecb0f5a3be7eccfee336f4c5291b430e4d46f0bf3baa714e30",
+            "triangles": 184,
+            "volume_m3": 0.001817930898203723
+          },
+          {
+            "file": "green-fragment-3.glb",
+            "sha256": "998a0d76eb1579e83c78cd90e4b0807606ab71122853d6bb8b432d59641cf5cd",
+            "triangles": 244,
+            "volume_m3": 0.0018702597459294174
+          }
+        ],
+        "scar": {
+          "configured_max_m": 0.003,
+          "measured_max_m": 0.002994823887149617,
+          "affected_vertices": 218,
+          "affected_p50_m": 0.0011019697104561747,
+          "reconstruction_max_error_m": 2.940508850022901e-08,
+          "method": "same pre-scar QEM topology from packed original; exact per-vertex delivered displacement, not bump/brightness inference"
+        },
+        "contacts": {
+          "stem_base_m": 0.6825000047683716
+        }
+      },
+      "native_checks": {
+        "checks": 111,
+        "failures": [],
+        "restart": false
+      },
+      "native_restart": {
+        "checks": 13,
+        "failures": [],
+        "restart": true
+      },
+      "motion": {
+        "forward": {
+          "source_frames": 96,
+          "duration_ms": 12000,
+          "lossless_exact": true,
+          "sha256": "d088461c51996b91478d921d719e2634e3b410df3bf7cc29231b587f60d7611b",
+          "bytes": 12904248
+        },
+        "compat": {
+          "source_frames": 96,
+          "duration_ms": 12000,
+          "lossless_exact": true,
+          "sha256": "dde5024203eadce820737a1e65185d5bd35ee4375757e0afdd1da1d94ff0c23f",
+          "bytes": 14247294
+        }
+      },
+      "renderers": {
+        "forward_plus": {
+          "visual_checks": 1126,
+          "performance": {
+            "bloom": false,
+            "cases": [
+              {
+                "draw_calls": 131.0,
+                "frame_p50_ms": 6.957,
+                "frame_p95_ms": 7.452,
+                "frame_worst_ms": 7.7,
+                "gpu_p50_ms": 0.697000026702881,
+                "gpu_p95_ms": 0.952000021934509,
+                "gpu_worst_ms": 0.994000017642975,
+                "lod": "near",
+                "primitives": 1560450.0,
+                "render_cpu_p50_ms": 0.181999996304512,
+                "render_cpu_p95_ms": 0.23199999332428,
+                "shade": false,
+                "shot": "source",
+                "texture_bytes": 807059968.0
+              },
+              {
+                "draw_calls": 131.0,
+                "frame_p50_ms": 6.988,
+                "frame_p95_ms": 7.397,
+                "frame_worst_ms": 7.671,
+                "gpu_p50_ms": 0.805000007152557,
+                "gpu_p95_ms": 1.06400001049042,
+                "gpu_worst_ms": 1.19000005722046,
+                "lod": "near",
+                "primitives": 1560454.0,
+                "render_cpu_p50_ms": 0.175999999046326,
+                "render_cpu_p95_ms": 0.206000000238419,
+                "shade": true,
+                "shot": "source",
+                "texture_bytes": 807059968.0
+              },
+              {
+                "draw_calls": 115.0,
+                "frame_p50_ms": 6.976,
+                "frame_p95_ms": 7.344,
+                "frame_worst_ms": 7.543,
+                "gpu_p50_ms": 0.847000002861023,
+                "gpu_p95_ms": 1.09899997711182,
+                "gpu_worst_ms": 1.17499995231628,
+                "lod": "near",
+                "primitives": 2744410.0,
+                "render_cpu_p50_ms": 0.172999992966652,
+                "render_cpu_p95_ms": 0.194000005722046,
+                "shade": false,
+                "shot": "post",
+                "texture_bytes": 807059968.0
+              },
+              {
+                "draw_calls": 115.0,
+                "frame_p50_ms": 6.957,
+                "frame_p95_ms": 7.343,
+                "frame_worst_ms": 7.584,
+                "gpu_p50_ms": 0.837999999523163,
+                "gpu_p95_ms": 1.09800004959106,
+                "gpu_worst_ms": 1.20299994945526,
+                "lod": "near",
+                "primitives": 2744414.0,
+                "render_cpu_p50_ms": 0.153999999165535,
+                "render_cpu_p95_ms": 0.18299999833107,
+                "shade": true,
+                "shot": "post",
+                "texture_bytes": 807059968.0
+              },
+              {
+                "draw_calls": 208.0,
+                "frame_p50_ms": 6.97,
+                "frame_p95_ms": 7.334,
+                "frame_worst_ms": 7.591,
+                "gpu_p50_ms": 0.904999971389771,
+                "gpu_p95_ms": 1.15400004386902,
+                "gpu_worst_ms": 1.34099996089935,
+                "lod": "near",
+                "primitives": 2626178.0,
+                "render_cpu_p50_ms": 0.178000003099442,
+                "render_cpu_p95_ms": 0.197999998927116,
+                "shade": false,
+                "shot": "overview",
+                "texture_bytes": 807059968.0
+              },
+              {
+                "draw_calls": 208.0,
+                "frame_p50_ms": 6.967,
+                "frame_p95_ms": 7.277,
+                "frame_worst_ms": 7.585,
+                "gpu_p50_ms": 0.907999992370605,
+                "gpu_p95_ms": 1.14300000667572,
+                "gpu_worst_ms": 1.22899997234344,
+                "lod": "near",
+                "primitives": 2626182.0,
+                "render_cpu_p50_ms": 0.175999999046326,
+                "render_cpu_p95_ms": 0.215000003576279,
+                "shade": true,
+                "shot": "overview",
+                "texture_bytes": 807059968.0
+              }
+            ],
+            "device": "NVIDIA GeForce RTX 5090",
+            "msaa": "4x",
+            "renderer": "forward_plus",
+            "resolution": [
+              1600,
+              1000
+            ],
+            "sample_frames": 150,
+            "scope": "Settled unchanged ART-04 review with original backdrop; native clocks held. No streaming or low-spec certification.",
+            "vsync_mode": 1,
+            "warmup_frames": 60
+          }
+        },
+        "gl_compatibility": {
+          "visual_checks": 1126,
+          "performance": {
+            "bloom": false,
+            "cases": [
+              {
+                "draw_calls": 132.0,
+                "frame_p50_ms": 6.954,
+                "frame_p95_ms": 6.993,
+                "frame_worst_ms": 7.014,
+                "gpu_p50_ms": 0.27700001001358,
+                "gpu_p95_ms": 0.637000024318695,
+                "gpu_worst_ms": 0.851999998092651,
+                "lod": "near",
+                "primitives": 1560450.0,
+                "render_cpu_p50_ms": 0.421999990940094,
+                "render_cpu_p95_ms": 0.663999974727631,
+                "shade": false,
+                "shot": "source",
+                "texture_bytes": 783216554.0
+              },
+              {
+                "draw_calls": 132.0,
+                "frame_p50_ms": 6.952,
+                "frame_p95_ms": 6.985,
+                "frame_worst_ms": 7.011,
+                "gpu_p50_ms": 0.27700001001358,
+                "gpu_p95_ms": 0.509999990463257,
+                "gpu_worst_ms": 0.674000024795532,
+                "lod": "near",
+                "primitives": 1560454.0,
+                "render_cpu_p50_ms": 0.41499999165535,
+                "render_cpu_p95_ms": 0.65200001001358,
+                "shade": true,
+                "shot": "source",
+                "texture_bytes": 783216554.0
+              },
+              {
+                "draw_calls": 138.0,
+                "frame_p50_ms": 6.953,
+                "frame_p95_ms": 6.982,
+                "frame_worst_ms": 7.004,
+                "gpu_p50_ms": 0.321999996900558,
+                "gpu_p95_ms": 0.688000023365021,
+                "gpu_worst_ms": 0.879999995231628,
+                "lod": "near",
+                "primitives": 2744410.0,
+                "render_cpu_p50_ms": 0.388000011444092,
+                "render_cpu_p95_ms": 0.626999974250793,
+                "shade": false,
+                "shot": "post",
+                "texture_bytes": 783216554.0
+              },
+              {
+                "draw_calls": 138.0,
+                "frame_p50_ms": 6.952,
+                "frame_p95_ms": 6.989,
+                "frame_worst_ms": 7.003,
+                "gpu_p50_ms": 0.303999990224838,
+                "gpu_p95_ms": 0.847000002861023,
+                "gpu_worst_ms": 1.89800000190735,
+                "lod": "near",
+                "primitives": 2744414.0,
+                "render_cpu_p50_ms": 0.391999989748001,
+                "render_cpu_p95_ms": 0.629999995231628,
+                "shade": true,
+                "shot": "post",
+                "texture_bytes": 783216554.0
+              },
+              {
+                "draw_calls": 231.0,
+                "frame_p50_ms": 6.954,
+                "frame_p95_ms": 6.989,
+                "frame_worst_ms": 7.002,
+                "gpu_p50_ms": 0.437999993562698,
+                "gpu_p95_ms": 0.653999984264374,
+                "gpu_worst_ms": 0.822000026702881,
+                "lod": "near",
+                "primitives": 2626178.0,
+                "render_cpu_p50_ms": 0.504000008106232,
+                "render_cpu_p95_ms": 0.759999990463257,
+                "shade": false,
+                "shot": "overview",
+                "texture_bytes": 783216554.0
+              },
+              {
+                "draw_calls": 231.0,
+                "frame_p50_ms": 6.95,
+                "frame_p95_ms": 6.99,
+                "frame_worst_ms": 7.028,
+                "gpu_p50_ms": 0.439000010490417,
+                "gpu_p95_ms": 0.666999995708466,
+                "gpu_worst_ms": 0.819999992847443,
+                "lod": "near",
+                "primitives": 2626182.0,
+                "render_cpu_p50_ms": 0.479000002145767,
+                "render_cpu_p95_ms": 0.75,
+                "shade": true,
+                "shot": "overview",
+                "texture_bytes": 783216554.0
+              }
+            ],
+            "device": "NVIDIA GeForce RTX 5090",
+            "msaa": "4x",
+            "renderer": "gl_compatibility",
+            "resolution": [
+              1600,
+              1000
+            ],
+            "sample_frames": 150,
+            "scope": "Settled unchanged ART-04 review with original backdrop; native clocks held. No streaming or low-spec certification.",
+            "vsync_mode": 1,
+            "warmup_frames": 60
+          }
+        }
+      },
+      "original_package_path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-green\\green-handoff",
+      "original_input": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-green\\green-handoff\\provenance\\green-root-input-v01.png",
+        "sha256": "2db11d11fb368e34ec0009a621977a9414ad430c58befe20c8cd5a0895af02d1"
+      },
+      "original_generation": {
+        "input_sha256": "2db11d11fb368e34ec0009a621977a9414ad430c58befe20c8cd5a0895af02d1",
+        "arguments": [
+          "--image",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\workshop-green\\green-root-input-v01.png",
+          "--output",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-green\\source-v01\\rock.glb",
+          "--models",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+          "--gpu",
+          "0",
+          "--require-gpu",
+          "--res",
+          "1024",
+          "--seed",
+          "42",
+          "--bg-removal",
+          "birefnet",
+          "--dump-bg",
+          "--webp",
+          "off",
+          "--threads",
+          "8"
+        ],
+        "runtime": "pwilkin/trellis.cpp",
+        "version": "v0.6.0",
+        "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+        "started_utc": "2026-09-09T06:06:43.0172681Z",
+        "exit_code": 0,
+        "seconds": 150.4289035,
+        "glb_sha256": "eba7bfa22ea63b72d03b9bc0e80775e1b3eed6d5b76fad2bbe86037dde8454fc"
+      }
+    }
+  },
+  "failures": [],
+  "native": {
+    "dll_sha256": "a39a5972948cd420f56c2ca1065cf078ad41463b93af009f36b2b22dadd9993d",
+    "revision": "56ce6bbe343012205690cf669491372958b80662",
+    "godot_cpp_sha256": "701934d2505314d4272ef258beca75974de9f2bb2d94d98b29d22670de42370c"
+  },
+  "historical_native_baseline": "f7253d20ed1dbeee743219190bdaccac60921c1c",
+  "native_difference_summary": "data/tuning/central_laboratory.json\ndata/tuning/combat_realtime.json\ndata/tuning/pairing_laboratory.json\ndata/tuning/resonance.json\ndata/tuning/trial.json\ndata/tuning/world.json\ngame/extensions/wroughtwild_sim/src/wroughtwild_sim.cpp\ngame/extensions/wroughtwild_sim/src/wroughtwild_sim.h\nsim/include/wroughtwild/economy.h\nsim/include/wroughtwild/resonance.h\nsim/include/wroughtwild/trial.h\nsim/include/wroughtwild/tuning.h\nsim/src/economy.cpp\nsim/src/resonance.cpp\nsim/src/save.cpp\nsim/src/trial.cpp\nsim/src/tuning.cpp\n",
+  "install_manifest": {
+    "runtime": "pwilkin/trellis.cpp",
+    "version": "v0.6.0",
+    "release_target_commit": "06fc9000719c912ddc4929d21db075972c26ac3e",
+    "model_repository": "ilintar/trellis2-gguf",
+    "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+    "precision": "f16 conversion",
+    "packages": [
+      {
+        "name": "trellis-cuda-windows-x64.zip",
+        "bytes": 728541568,
+        "sha256": "4d08ab27e83094035fd8349aaf34d3460738df0466ef9c4991ddd958c0344bc2",
+        "url": "https://github.com/pwilkin/trellis.cpp/releases/download/v0.6.0/trellis-cuda-windows-x64.zip"
+      },
+      {
+        "name": "trellis-studio-windows-x64-portable.zip",
+        "bytes": 1666448,
+        "sha256": "5260072bf6af5ab12157709475cea15d20f05309c5c77cd71905bd443a3cb4d4",
+        "url": "https://github.com/pwilkin/trellis.cpp/releases/download/v0.6.0/trellis-studio-windows-x64-portable.zip"
+      }
+    ],
+    "weights": [
+      {
+        "name": "birefnet.gguf",
+        "bytes": 882749024,
+        "sha256": "10c5dd4dcac904cf81c9a16180eb66f167dd52ab55867f54a44567b0b2babbc1",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/birefnet.gguf"
+      },
+      {
+        "name": "dinov3.gguf",
+        "bytes": 606773440,
+        "sha256": "b2e84087aebeb06440da4f5970413153f7f27f71ede7bab993e82accd839d936",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/dinov3.gguf"
+      },
+      {
+        "name": "shape_dec.gguf",
+        "bytes": 948745344,
+        "sha256": "d3230b649031b55728da2d8818f092eab9ad6f1e72fd01f6cbff6bfada5d7d47",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/shape_dec.gguf"
+      },
+      {
+        "name": "shape_flow_1024.gguf",
+        "bytes": 2586636032,
+        "sha256": "7d0e9903bf132a5d78f289eaa2fa4050bcd52c689716406cbf66b76cdfa4656c",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/shape_flow_1024.gguf"
+      },
+      {
+        "name": "shape_flow_512.gguf",
+        "bytes": 2586636032,
+        "sha256": "fef397f3600e2fab327a98b3edd3cc8377e9741eef870f3ea3f40235875828fb",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/shape_flow_512.gguf"
+      },
+      {
+        "name": "ss_dec.gguf",
+        "bytes": 147379392,
+        "sha256": "2790b5eecb261cc877d9bf175ce2bd6dd48cd65be8c042c5f5bc023dfca01cf7",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/ss_dec.gguf"
+      },
+      {
+        "name": "ss_flow.gguf",
+        "bytes": 2586488480,
+        "sha256": "1dfbef1b80ddea422a6189ff9ac29a244c4482cfbaa01870a0c0ea76d3fb9ae6",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/ss_flow.gguf"
+      },
+      {
+        "name": "tex_dec.gguf",
+        "bytes": 948713888,
+        "sha256": "858d1e0079254e1d1f0596d7fa3a747d21bfe80f83d810e735a1e0b9db550322",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/tex_dec.gguf"
+      },
+      {
+        "name": "tex_flow_1024.gguf",
+        "bytes": 2586734336,
+        "sha256": "c0a51917c1e5a9dad4d8a49cdf47553e21fd47716d46e53c5f44fcc7bf7f3af1",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/tex_flow_1024.gguf"
+      },
+      {
+        "name": "tex_flow_512.gguf",
+        "bytes": 2586734336,
+        "sha256": "0e81b8213191369dc023eb270650f0ccded29f39bf0bbb7a1fe5d4bcefc15b79",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/tex_flow_512.gguf"
+      }
+    ]
+  },
+  "current_data_sha256": {
+    "data/tuning/boons.json": "1b0919dda0907e29d27313c37bfa48cd032b9e8585ad84dfda469a1bbf8a6eb4",
+    "data/tuning/central_laboratory.json": "a7b8dc40f543e461aadb0cdac595e7fad994c54b8613779119aa54e326b1091d",
+    "data/tuning/combat_realtime.json": "17241f8cfe5041cd3ae1457e2378540babb5258f77b6be62009dc59dfaa04622",
+    "data/tuning/construction.json": "2c815e617586d677c3b44f0679ad8787f649f7cb72d7e465737f6d2076bbdb1a",
+    "data/tuning/contraptions.json": "92435f5e59bc478fe9ee75a9fc4199f6e09750437a40ca7cfaffee7375ec320d",
+    "data/tuning/crafting.json": "f5e003bf1159db758cea9310823928b8388694a062a972868ca68f699ca1f07c",
+    "data/tuning/eras.json": "23636c97e5637398440b29bb935b352ecc00792b88f427710f872750f0fbb00b",
+    "data/tuning/foundry.json": "b8b2b88b05cfa7abdb19fdec2b7b9e256c5115180b48b7a8517947c4b22d96ea",
+    "data/tuning/grammar.json": "8d655a917d854eea60125c44515eb1a41fc160e720fab18f30d60bc503dcb183",
+    "data/tuning/items.json": "83ee3d622a1fbafae29abe6b3fe8d0af36465f791db9391b09fe44283ab3e61a",
+    "data/tuning/laboratory.json": "5404ced59aa7740b9d1eeb9ca1cc93590423085560a6a6f2666f8384c66ce710",
+    "data/tuning/leyline.json": "9c518d71289b6ad5ce8fb5ce635c1e9709db4737fb9c1cd85721de75f3649617",
+    "data/tuning/living_frontier.json": "4c2824d8640f066ffcfa0b64dbb5d0aba6ed2f77ff27857d3579fecb34d249ab",
+    "data/tuning/pairing_laboratory.json": "bd98eeb1bf55992378713079e9ab173cec34ea198e356146f1661c2a020ac7f7",
+    "data/tuning/resonance.json": "4295cb33350008613b33ca3b7375c166b4b4e112acb4c8e89fefcdebcdd624ea",
+    "data/tuning/skills.json": "8491f055cf252da0b84f455cba88bca553e7f78e363a6fe8e1391d856a7c65f4",
+    "data/tuning/trial.json": "4b7e42f46a92db5a197e30f7aa88fdfa60f461d8af311775d8ee25eb2a965eb9",
+    "data/tuning/world.json": "d8acf5cd04e9f2f4a50261a1a5c351c76df95375ee24080492f18ea37ecc2b5d",
+    "data/tuning/worldgen-frontier-v2.json": "9c3495f6442c094288dea47ac8821bc2d12c0e647c2e565f58123d197cc07690",
+    "data/tuning/worldgen-frontier-v3.json": "b9d995244092780009a45d5194fa9c15de948eab3db9541efb34af3b1ae0074e",
+    "data/tuning/worldgen-frontier-v4.json": "bca786c65ceaa3b149666ca292f9a1b0b1859817ee5b8976f619be976c70734b",
+    "data/tuning/worldgen-frontier-v5.json": "473ac7fc294443b00535a12f368c99fa2cf1fff90587153673ca102736c89876",
+    "data/tuning/worldgen-legacy-v1.json": "084161027bc1d2b77fd0c4cc01f0189d2753a7c6c2e3c10bee6cacf62e267304",
+    "data/tuning/worldgen.json": "4544c6920bcd9cb7269ff9eb03fcee612ba282c179b96b63db7dfc8f0d5c1f61"
+  },
+  "performance_conditions": {
+    "device": "NVIDIA GeForce RTX 5090",
+    "driver": "591.86",
+    "godot": "4.5.stable.official.876b29033",
+    "resolution": [
+      1600,
+      1000
+    ],
+    "msaa": "4x",
+    "bloom": false,
+    "warmup_frames": 60,
+    "sample_frames": 150,
+    "lod": "near",
+    "vsync_mode": 1,
+    "wall_timing_limit": "VSync enabled; approximately 7 ms includes presentation pacing, not uncapped throughput.",
+    "scope": "Six fixed source/device/overview day/shade cases per family and renderer; original backdrop retained. Independent benchmark batch, no capture/generation/encoding/compiler load."
+  },
+  "current_game": {
+    "base": "56ce6bbe343012205690cf669491372958b80662",
+    "dll_sha256": "a39a5972948cd420f56c2ca1065cf078ad41463b93af009f36b2b22dadd9993d",
+    "runs": [
+      {
+        "name": "import",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "--editor",
+          "--import",
+          "--quit"
+        ],
+        "exit_code": 0,
+        "seconds": 12.446264505386353
+      },
+      {
+        "name": "support-repair",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/leyline_support_repair.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 11.495620965957642
+      },
+      {
+        "name": "support-repair-restart",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/leyline_support_repair.tscn",
+          "--",
+          "--repair-restore"
+        ],
+        "exit_code": 0,
+        "seconds": 38.7864727973938
+      },
+      {
+        "name": "paid-wave1",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/living_frontier_flow.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 57.531940937042236
+      },
+      {
+        "name": "living_frontier_wave2_flow",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/living_frontier_wave2_flow.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 15.28861689567566
+      },
+      {
+        "name": "living_frontier_wave2_flow-restart",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/living_frontier_wave2_flow.tscn",
+          "--",
+          "--lf2-restore"
+        ],
+        "exit_code": 0,
+        "seconds": 15.928539752960205
+      },
+      {
+        "name": "living_frontier_green_flow",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/living_frontier_green_flow.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 17.776560306549072
+      },
+      {
+        "name": "living_frontier_green_flow-restart",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/living_frontier_green_flow.tscn",
+          "--",
+          "--green-restore"
+        ],
+        "exit_code": 0,
+        "seconds": 10.652500867843628
+      },
+      {
+        "name": "living_frontier_heat_flow",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/living_frontier_heat_flow.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 15.746735334396362
+      },
+      {
+        "name": "living_frontier_heat_flow-restart",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/living_frontier_heat_flow.tscn",
+          "--",
+          "--heat-restore"
+        ],
+        "exit_code": 0,
+        "seconds": 13.814972162246704
+      },
+      {
+        "name": "crafting_catalogue",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/crafting_catalogue.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 2.2479376792907715
+      },
+      {
+        "name": "contraption_intensive",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/contraption_intensive.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 1.3250296115875244
+      },
+      {
+        "name": "pressure_workshop",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/pressure_workshop.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 8.929896831512451
+      },
+      {
+        "name": "placement_transactions",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/placement_transactions.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 3.1081206798553467
+      },
+      {
+        "name": "home_station_placement",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/home_station_placement.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 1.9358851909637451
+      },
+      {
+        "name": "loose_drop_save",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/loose_drop_save.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 3.806896924972534
+      },
+      {
+        "name": "save_recovery",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/save_recovery.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 3.98725962638855
+      },
+      {
+        "name": "weathered_save",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/weathered_save.tscn"
+        ],
+        "exit_code": 1,
+        "seconds": 39.99746584892273
+      },
+      {
+        "name": "weathered_save-retry02",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/weathered_save.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 42.94066023826599
+      },
+      {
+        "name": "wide_frontier_pacing",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/wide_frontier_pacing.tscn"
+        ],
+        "exit_code": 0,
+        "seconds": 4.551573038101196
+      }
+    ],
+    "failures": [],
+    "historical_failed_attempts": [
+      {
+        "name": "weathered_save",
+        "command": [
+          "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+          "--headless",
+          "--audio-driver",
+          "Dummy",
+          "res://tests/weathered_save.tscn"
+        ],
+        "exit_code": 1,
+        "seconds": 39.99746584892273
+      }
+    ],
+    "failure_explanation": "First weathered_save invocation lacked its expected private build/codex-aesthetic directory (2 file-I/O failures); unchanged test rerun passed 21/21 after setup correction. Initial F5 placement adapter forgot the half-metre cell offset and physics-space settle after restore; corrected only F5 test, all 47+25 assertions passed. Initial Red benchmark had long Windows shader-cache paths; shortened private APPDATA and reran measurements. Failed logs retained."
+  },
+  "placement_commands": [
+    {
+      "name": "import",
+      "command": [
+        "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--editor",
+        "--import",
+        "--quit"
+      ],
+      "seconds": 4.135217666625977,
+      "exit_code": 0
+    },
+    {
+      "name": "placement",
+      "command": [
+        "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "res://art07f5/check_placements.tscn"
+      ],
+      "seconds": 12.700658559799194,
+      "exit_code": 0
+    },
+    {
+      "name": "restart",
+      "command": [
+        "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\current-game\\game",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "res://art07f5/check_placements.tscn",
+        "--",
+        "--f5-restore"
+      ],
+      "seconds": 12.59926438331604,
+      "exit_code": 0
+    }
+  ],
+  "placement_lineage": {
+    "base": "56ce6bbe343012205690cf669491372958b80662",
+    "checkpoint_sha256": "e738a86f8a343bbef5de4c4973a99b621a33cf56342a3eca8e3e039e88ab3faa",
+    "files": {
+      "red": {
+        "runtime_sha256": "5a8149ec4bcd547da4b90daca0647fdacf09ffcae975b8c72cb3a26e4d6d2877"
+      },
+      "white": {
+        "runtime_sha256": "be50153d3ca50b7d2bcc4db74e42eb71616458e9a755eef8630a4f514def367c"
+      },
+      "blue": {
+        "runtime_sha256": "f8bf0a65a2c7d80114faeb075eeaab3d05b8dbf312ebc017bc635dda4b71d9f9"
+      },
+      "green": {
+        "runtime_sha256": "22eb05f636ba5f238d47f3fa04abcd0942baa552f7bdb47830645af0b70227b0"
+      }
+    },
+    "scope": "Test-only attachment and native placement; two explicitly granted test kits per colour, no normal-game adoption."
+  },
+  "scope_limits": [
+    "No normal game integration or owner visual acceptance",
+    "Original exterior meshes are not certified watertight; only recovered solids are",
+    "No source regeneration or scar redesign; actual approximately 3 mm approved cuts retained",
+    "RTX 5090 only; no low-end, populated-world, streaming or automatic LOD certification",
+    "Current full-world source/work/save checks separate from historical compact paid review checkpoints",
+    "Transaction test grants two labelled kits per colour; not evidence of paid first-hour progression"
+  ]
+}

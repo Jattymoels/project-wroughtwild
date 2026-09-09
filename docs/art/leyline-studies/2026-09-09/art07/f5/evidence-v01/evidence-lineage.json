@@ -1,0 +1,95 @@
+[
+  {
+    "file": "blender-four-colours.png",
+    "sha256": "eeda8cc13dbaaa892852b893a29effc97d360bffd852d551bd38d46b362d39f1",
+    "composition": "2x2 original actual renderer images, uniformly reduced to fit; labels added outside frames",
+    "sources": [
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\red\\evidence\\packed-reopen.png",
+        "sha256": "3839fbcc6856b55bad5b60db31b12561020e1637286ef1429dad86435423e008"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\white\\evidence\\packed-reopen.png",
+        "sha256": "4d2b1bb824f532ab11b41d80ce6ed21d7b0b274830f787c537db82ca1b60dc7c"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\blue\\evidence\\packed-reopen.png",
+        "sha256": "5102b846f10b763c124da37a79e5e82228cc9ee7e001efecde3ac62f90c4813a"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\green\\evidence\\packed-reopen.png",
+        "sha256": "774d8825b8ec71390c760f60c7817aa46cea9b54ce485567b3cf6b96343846b9"
+      }
+    ]
+  },
+  {
+    "file": "forward-four-colours.png",
+    "sha256": "47e6375c64f84fb20e917101f04ad52dc2a0bc2452d75651ff7e4ae9c4e17707",
+    "composition": "2x2 original actual renderer images, uniformly reduced to fit; labels added outside frames",
+    "sources": [
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\red\\review\\evidence\\10-buffer-real-firing.png",
+        "sha256": "e39aed2d6958838d984fd3599151d30ba7b58acae9343118ebc9b657c2e29b60"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\white\\review\\evidence\\post-request.png",
+        "sha256": "b2be70d0689e54ac44b3d8c227f698c9cfd6f1d94ee3e24fd7a36bb3aa7ac756"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\blue\\review\\evidence\\delay-held.png",
+        "sha256": "cd7fd036c871547a63f1821c6ef1429afcd8ca797bef4d17c0bdbbcccba1173c"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\green\\review\\evidence\\junction-unwound.png",
+        "sha256": "ae461989e36bcd0538ae698c94a933a00f4cd91facd2e79858585eba56fa2325"
+      }
+    ]
+  },
+  {
+    "file": "compat-four-colours.png",
+    "sha256": "04dafcaf3d3bf2984e920dadfcccbdf69d4801b21a641c2d8b39b7997e744077",
+    "composition": "2x2 original actual renderer images, uniformly reduced to fit; labels added outside frames",
+    "sources": [
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\red\\review\\evidence-compat\\10-buffer-real-firing.png",
+        "sha256": "534136e46560238212925b9cb659883591b9b933d526f0181c86dc806622ae7f"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\white\\review\\evidence-compat\\post-request.png",
+        "sha256": "bb152aae00ac0ca34bded999632e7c751ba962ab71b8acade42ee306ad6dc2d9"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\blue\\review\\evidence-compat\\delay-held.png",
+        "sha256": "93eedafb148f08d76f84e390be856a51bff3feb9ae930bcc58793da414c96a21"
+      },
+      {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\green\\review\\evidence-compat\\junction-unwound.png",
+        "sha256": "8f365a7de0fbf07b5849f7b6d0c405e3713b3e341df9998a23eadbfec00b79c2"
+      }
+    ]
+  },
+  {
+    "file": "red-motion.webp",
+    "sha256": "86a8d28e62c3f54cb1b82b82b2b664b1dc00816ef694302d9cb1f761084b40ca",
+    "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\red\\evidence\\forward-red-paid-firing.webp",
+    "exact_copy": true
+  },
+  {
+    "file": "white-motion.webp",
+    "sha256": "bd4fbf0ba2cdfdc59383490a52b598bbea98c2aa8a46efb645bda0f354ad4b8a",
+    "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\white\\evidence\\forward-white-request.webp",
+    "exact_copy": true
+  },
+  {
+    "file": "blue-motion.webp",
+    "sha256": "44ad985a317f998eb8b18935d8a6444475609e40627e972fdd4a1ad81204647b",
+    "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\blue\\evidence\\forward-blue-delay.webp",
+    "exact_copy": true
+  },
+  {
+    "file": "green-motion.webp",
+    "sha256": "d088461c51996b91478d921d719e2634e3b410df3bf7cc29231b587f60d7611b",
+    "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v01\\working\\green\\evidence\\forward-green-junction.webp",
+    "exact_copy": true
+  }
+]
