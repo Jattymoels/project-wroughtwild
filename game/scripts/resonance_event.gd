@@ -85,7 +85,7 @@ static func publish(player: WroughtwildPlayer, path: String) -> Dictionary:
 		# Never leave a failed live restore with the new era unlocked. The valid
 		# disk checkpoint can complete publication on restart if host recovery fails.
 		sim.import_json(pending.sim)
-		player.set_physics_process(false)
+		player.stop_for_world_recovery()
 		return {"ok":false,"reason":"Resonance is saved; reload to finish physical publication. "+failure}
 	if second:
 		return {"ok":true,"reason":"Excited Uplands has risen into stone shelves. Iron and silver are exposed; a paired boar has followed the changed ground. The Ash Tide opens steel work and a larger Foundry. The first retained bank remains.","publication_ms":Time.get_ticks_msec()-started}

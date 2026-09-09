@@ -55,6 +55,10 @@ var _full_said := {}
 ## radius comes, and it rings a while before it will blow again.
 var _horn_left := 0.0
 var trial: TrialController
+## A failed physical publication owns this stop until a complete restore.
+## Keep an already disabled review/presentation controller disabled afterward.
+var _world_recovery_stopped := false
+var _world_recovery_resume_physics := false
 var footsteps: PlayerFootsteps
 var environment_ambience: EnvironmentAmbience
 var preferences := PlayerPreferences.new()
@@ -467,6 +471,19 @@ func save_game(path: String = "") -> bool:
 	hud.notify("Saved." if ok else "Save failed: %s" % manager.last_error)
 	return ok
 
+
+func stop_for_world_recovery() -> void:
+	if not _world_recovery_stopped:
+		_world_recovery_resume_physics = is_physics_processing()
+		_world_recovery_stopped = true
+	set_physics_process(false)
+	velocity = Vector3.ZERO
+
+func finish_world_recovery() -> void:
+	if not _world_recovery_stopped: return
+	_world_recovery_stopped = false
+	set_physics_process(_world_recovery_resume_physics)
+	_world_recovery_resume_physics = false
 
 func load_game(path: String = "") -> bool:
 	if path.is_empty(): path = SaveManager.path_for(self)

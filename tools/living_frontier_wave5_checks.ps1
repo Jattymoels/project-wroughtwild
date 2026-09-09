@@ -1,10 +1,14 @@
-param([switch]$Hybrid, [switch]$Visuals, [switch]$Native, [switch]$Pairing, [switch]$TrialNative, [switch]$Campaign, [switch]$Legacy, [switch]$TransitionVisuals)
+param([switch]$Hybrid, [switch]$Visuals, [switch]$Native, [switch]$Pairing, [switch]$TrialNative, [switch]$Campaign, [switch]$Legacy, [switch]$TransitionVisuals, [switch]$Recovery)
 $lf5Options=@{}+$PSBoundParameters
 . "$PSScriptRoot/living_frontier_checks.ps1"
 $lfLogs = Join-Path $lfRoot 'build/lf5'
 New-Item -ItemType Directory -Force $lfLogs | Out-Null
 $env:APPDATA = Join-Path $lfLogs 'appdata'
 New-Item -ItemType Directory -Force $env:APPDATA | Out-Null
+if ($lf5Options.Recovery -or $lf5Options.Campaign) {
+    Invoke-LFEngine 'recovery-controls' @('--headless','--fixed-fps','60','res://tests/resonance_recovery_controls.tscn')
+    Invoke-LFEngine 'recovery-controls-restart' @('--headless','--fixed-fps','60','res://tests/resonance_recovery_controls.tscn','--','--lf5-r1-restart')
+}
 if ($lf5Options.Hybrid) {
     Invoke-LFEngine 'hybrid' @('--headless','--fixed-fps','60','res://tests/living_frontier_hybrid.tscn')
     Invoke-LFEngine 'single-hosts' @('--headless','--fixed-fps','60','res://tests/living_frontier_hosts.tscn')

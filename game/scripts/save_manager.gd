@@ -428,6 +428,9 @@ func _apply_prepared(player: WroughtwildPlayer, data: Dictionary, prepared: Dict
 	player.reset_environment_feedback()
 	if player.hud != null:
 		player.hud.refresh()
+	# Release only publication's own stop, after terrain, placed bodies, trial
+	# state and loose ownership are all installed. Every refusal keeps it.
+	player.finish_world_recovery()
 	return true
 
 

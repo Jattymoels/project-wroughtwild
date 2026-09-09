@@ -1,5 +1,10 @@
 # Living Frontier Wave 5 — orchestrator review
 
+Subsequent author repair, 9 September 2026: [LF5-R1 evidence](living-frontier-wave6-2026-09-09.md#lf5-r1-result)
+records an explicit recovery-stop lifecycle and passing ordinary-input movement,
+failed-load and fresh-process regressions. The original independent findings
+below remain the reviewed baseline; independent Wave 6 review is still pending.
+
 9 September 2026. Reviewed baseline: `71dad88`, containing LF-5A `0482211`,
 LF-5B `e92561a` and LF-5C `71dad88`. Interleaved ART-04 and active White
 workshop art are separate. This review changes documentation only; the local

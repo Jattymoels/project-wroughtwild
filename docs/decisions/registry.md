@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner implementation authorization, 9 September 2026: repair and verify
+**LF5-R1 first**, then implement **Living Frontier Wave 6 only**, LF-6A/B, and
+stop for orchestrator review. The [bounded contract and repair evidence](../prototype/living-frontier-wave6-2026-09-09.md)
+select the existing Central site, a dedicated corrupted human with learned
+channel/combination counterplay, and one saved story/control handoff. The
+ordinary-load movement regression passes before gameplay implementation.
+Preserve both transformations, all published ownership and old saves; keep
+unrelated art intact. `forge_arc_complete` owns the LF ending/control without
+another era or currency. Optional Heat and configured rewards remain Wave 7.
+This supersedes the Wave-5-only closure solely for this selected work.
+
 Owner implementation authorization, 9 September 2026: after independent Wave 4
 clearance, implement **Living Frontier Wave 5 only**, LF-5A → LF-5B → LF-5C,
 then stop for orchestrator review. The [bounded contract](../prototype/living-frontier-wave5-2026-09-09.md)

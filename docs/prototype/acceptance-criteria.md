@@ -26,9 +26,11 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   both host deaths. The first event and its spent Heart are retained.
 - [ ] Human accepts combined combat difficulty and tells within the full Trial.
 - [ ] Human accepts the narrative, changed-region discovery and publication pause.
-- [ ] Ordinary loading after the double-host-failure fallback restores player
+- [x] Ordinary loading after the double-host-failure fallback restores player
   movement without a test helper enabling it. The independent
-  [LF5-R1 review](living-frontier-wave5-review-2026-09-09.md) blocks LF-6 on this repair.
+  [LF5-R1 review](living-frontier-wave5-review-2026-09-09.md) found the defect;
+  the [repair evidence](living-frontier-wave6-2026-09-09.md#lf5-r1-result) passes
+  actual input movement, failed loads and fresh-process recovery before LF-6.
 
 [Bounded contract, compatibility matrix and measured costs](living-frontier-wave5-2026-09-09.md).
 
