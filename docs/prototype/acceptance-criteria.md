@@ -25,7 +25,8 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   published legacy saves, finite sources, machines and recipes still pass.
 - [x] The captured controls explain future experiments, with configured rewards
   and optional Heat still unavailable until Wave 7. No new era is introduced.
-- [ ] Orchestrator independently reviews the repair and Wave 6 implementation.
+- [x] Orchestrator independently reviews the repair and Wave 6 implementation;
+  [review and Wave 7 handoff](living-frontier-wave6-review-2026-09-09.md).
 - [ ] Human accepts full-Trial difficulty, close-view human/tell readability,
   finale pacing and the remaining synchronous terrain-publication pause.
 
@@ -60,6 +61,8 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   [LF5-R1 review](living-frontier-wave5-review-2026-09-09.md) found the defect;
   the [repair evidence](living-frontier-wave6-2026-09-09.md#lf5-r1-result) passes
   actual input movement, failed loads and fresh-process recovery before LF-6.
+  The [Wave 6 review](living-frontier-wave6-review-2026-09-09.md#lf5-r1-closure)
+  independently repeats those checks and closes the defect.
 
 [Bounded contract, compatibility matrix and measured costs](living-frontier-wave5-2026-09-09.md).
 

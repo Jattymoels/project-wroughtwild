@@ -38,9 +38,10 @@ apparatus controls. Launch with `godot --path game -- --living-frontier-wave6`;
 Wave-4/5 flags and saves remain compatible. The existing geography, two terrain
 events, three eras, paid work and finite ownership remain. Publication still
 pauses synchronously. Evidence distinguishes live build wins from forced route
-fixtures; human readability and difficulty acceptance remain open. Work stops
-after LF-6A/B for orchestrator review. Optional Heat and configured rewards
-remain Wave 7.
+fixtures; human readability and difficulty acceptance remain open. The
+[independent Wave 6 review](docs/prototype/living-frontier-wave6-review-2026-09-09.md)
+closes the recovery defect and clears bounded LF-7A/B. Optional Heat and
+configured rewards remain Wave 7.
 
 [Living Frontier Waves 1–2](docs/prototype/living-frontier-wave2-2026-09-08.md)
 add opt-in manual Red/White/Blue/Green extraction, affordable signal delay and

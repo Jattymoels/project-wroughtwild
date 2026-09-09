@@ -6,7 +6,7 @@ Implement LF-5A, LF-5B, LF-5C in that order, check/commit/ordinarily push each
 slice, then stop for orchestrator review. This contract is recorded before
 implementation. Unrelated fauna/workshop art remains outside these commits.
 
-**Independent review:** [LF5-R1](living-frontier-wave5-review-2026-09-09.md)
+**Original independent review:** [LF5-R1](living-frontier-wave5-review-2026-09-09.md)
 must be repaired before LF-6. The double-host-failure fallback leaves movement
 disabled after a successful ordinary load; the existing traversal helper masks
 that gap by re-enabling physics. This review records the defect, not its repair.
@@ -14,7 +14,9 @@ that gap by re-enabling physics. This review records the defect, not its repair.
 Subsequent author repair: **9036a12**, ordinarily pushed before LF-6A. The
 [Wave 6 repair record](living-frontier-wave6-2026-09-09.md#lf5-r1-result) passes
 ordinary-load actual movement and failed-load/fresh-process checks. The original
-independent review remains historical evidence; orchestrator re-review is next.
+independent review remains historical evidence. The subsequent
+[Wave 6 review](living-frontier-wave6-review-2026-09-09.md#lf5-r1-closure)
+independently verifies that repair and closes LF5-R1.
 
 ## Scope and selected implementation
 

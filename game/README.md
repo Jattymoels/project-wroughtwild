@@ -445,5 +445,8 @@ works. Leaving before a successful checkpoint retains the preceding saved
 state. Reopening the controls does not replay the story or pay again. Both
 changed regions remain, and there is no fourth era. The
 [Wave 6 record](../docs/prototype/living-frontier-wave6-2026-09-09.md) contains
-combat, route, death/retry/restart and compatibility evidence. Work stops for
-orchestrator review; optional Heat and configured rewards remain Wave 7.
+combat, route, death/retry/restart and compatibility evidence. The
+[independent review](../docs/prototype/living-frontier-wave6-review-2026-09-09.md)
+closes the recovery defect and clears bounded LF-7A/B; optional Heat and
+configured rewards remain Wave 7. Human difficulty/readability acceptance and
+the terrain-publication pause remain open.

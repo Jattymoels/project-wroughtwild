@@ -1,5 +1,12 @@
 # Living Frontier Wave 6 — repair gate, bounded contract and evidence
 
+Subsequent [independent Wave 6 review](living-frontier-wave6-review-2026-09-09.md)
+closes LF5-R1, confirms LF3-R1 remains repaired and clears bounded LF-7A/B.
+Eight native suites and 32 committed engine invocations pass, plus the original
+recovery diagnostic adapted to expect restoration. Human difficulty/readability
+acceptance and the synchronous publication pause remain open. The author record
+below is retained as the implementation history.
+
 Owner authorization: 9 September 2026. Repair LF5-R1 first; only after its
 regression passes implement LF-6A and LF-6B, publish checked slices, then stop
 for orchestrator review. The [Wave 5 review](living-frontier-wave5-review-2026-09-09.md)
