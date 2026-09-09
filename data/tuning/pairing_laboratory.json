@@ -1,0 +1,21 @@
+{
+  "display_name": "Pairing Hall",
+  "completion_text": "The pairing warden falls. Its interlock sends the held charge toward Excited Uplands; the return circuit will answer after you leave.",
+  "stage_labels": ["Retention reminder", "Excitation reminder", "First imposed pairing", "Paired stockroom", "Ordered feed paths", "Rejected specimens", "Return accumulator", "Pairing interlock"],
+  "specimens": ["lf_blue_boar", "lf_red_boar", "lf_paired_boar", "lf_paired_boar", "lf_paired_boar", "lf_paired_boar", "lf_paired_boar", ""],
+  "apparatus_size_m": [2, 2, 4],
+  "apparatus_offset_m": [7, 1, 0],
+  "record_spacing_m": 6,
+  "records": [
+    {"id":"pairing", "title":"Hold first. Release second.", "text":"Two collars share one animal. The Blue feed holds a charge in a fixed ring; only afterward does the Red vent warn and release there. Leave the marked ground before the Red warning ends, or interrupt the host. The drained collars leave time to strike. Neither feed follows an escaping target."},
+    {"id":"operator", "title":"The operator's revised purpose", "text":"The same human handprint appears beside the pairing controls, now deeply branched with mineral scars. A note revises the Collection Annex instructions: Keeping them alive is not enough. Hold the pattern until the body accepts the second feed. Rejected collars lie beside restraints sized for an ordinary boar. A single human-sized harness leads onward to the Central Laboratory."},
+    {"id":"failsafe", "title":"Second return interlock", "text":"A newer feed bypasses the original shutdown. When the pairing warden fails, Blue releases its stored charge through Red into the Excited Uplands collectors. Survey marks predict raised mineral shelves, exposed iron and silver, and paired animals following the changed ground. The operator's final note reads: No one captures the controls while I remain at the central installation."}
+  ],
+  "design_purpose": {
+    "stage_labels": "Existing Deep Forge rooms teach separate reminders followed by the same ordered pairing; no new topology or simultaneous hybrid kits.",
+    "specimens": "Replace one ordinary enemy in every branch of stages zero through six, preserving encounter counts and the existing final Warden/support roster.",
+    "apparatus_size_m": "Existing solid cabinet dimensions keep physical cover and navigation honest.",
+    "apparatus_offset_m": "Place imposed feed cabinets in the first three teaching chambers' outer alcoves, away from entry and reward approaches. Later rooms retain existing conduits.",
+    "record_spacing_m": "Existing six-metre separation gives the three records individual E approaches without a mandatory reading gate."
+  }
+}

@@ -3,6 +3,14 @@ extends "res://scripts/trial_gate.gd"
 func interact(player: WroughtwildPlayer) -> void:
 	if player.inventory.get_sim().campaign_policy()!="living_frontier_wave4": return
 	if player.trial.active(): player.trial.reopen(); return
+	if String(get_meta("run_id","forge_tyrant"))=="deep_forge":
+		var available:=false
+		for run: Dictionary in player.inventory.get_sim().trial_story_runs():
+			if String(run.id)=="deep_forge": available=bool(run.available)
+		player.open_custom_panel("Pairing Hall",[
+			{"text":"Blue holds a marked charge; Red warns, then releases it. Follow the imposed feed paths through two floors to the pairing warden. Recover materials and equipment, and learn who ordered the experiments. Its unstable return line reaches Excited Uplands.","button":"Enter pairing Trial" if available else "Await the Annex return","enabled":available,"callback":_enter.bind(player)}
+		],"Leave the ring or interrupt the host, then attack during recovery. Equipment enters intact; ordinary possessions wait in the lockers.")
+		return
 	if preload("res://scripts/resonance_event.gd").phase(player.inventory.get_sim())=="pending":
 		player.open_custom_panel("The failsafe is waiting",[
 			{"text":"The first victory is recorded. Let the return circuit settle into the unoccupied Retained Fen ground.","button":"Retry resonance","callback":_retry.bind(player)}
@@ -20,7 +28,7 @@ func interact(player: WroughtwildPlayer) -> void:
 func _enter(player: WroughtwildPlayer) -> void:
 	if player.global_position.distance_to(global_position)>player.interact_range+2: return
 	player.work_panel.close_panel()
-	if not player.trial.begin_run("forge_tyrant"): player.hud.notify("The containment entrance could not open.")
+	if not player.trial.begin_run(String(get_meta("run_id","forge_tyrant"))): player.hud.notify("The laboratory entrance could not open.")
 
 func _retry(player: WroughtwildPlayer) -> void:
 	player.work_panel.close_panel()

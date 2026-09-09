@@ -1828,6 +1828,23 @@ Tuning loadAll(const std::string& tuningDirectory) {
         room.displayName=labels[i]->asString()+" - "+room.displayName;
         if (i<specimens.size() && !room.encounter.empty()) room.encounter.front()=specimens[i]->asString();
     }
+    const auto pairing = json::parseFile(tuningDirectory + "/pairing_laboratory.json");
+    const auto* secondTrial = tuning.trial.findExpedition("deep_forge");
+    if (!secondTrial) throw std::runtime_error("Pairing requires the existing second Trial");
+    tuning.pairingLaboratory = *secondTrial;
+    tuning.pairingLaboratory.displayName = pairing->get("display_name").asString();
+    tuning.pairingLaboratory.completionText = pairing->get("completion_text").asString();
+    const auto& pairedLabels = pairing->get("stage_labels").asArray();
+    const auto& pairedSpecimens = pairing->get("specimens").asArray();
+    if (pairedLabels.size()!=secondTrial->stages.size() || pairedSpecimens.size()!=pairedLabels.size()) throw std::runtime_error("Invalid Pairing laboratory stages");
+    for (size_t i=0;i<pairedLabels.size();++i) for (auto& room:tuning.pairingLaboratory.stages[i].choices) {
+        room.displayName=pairedLabels[i]->asString()+" - "+room.displayName;
+        const auto specimen=pairedSpecimens[i]->asString();
+        if (!specimen.empty()) {
+            if (room.encounter.empty() || !tuning.world.findEnemy(specimen)) throw std::runtime_error("Invalid paired specimen");
+            room.encounter.front()=specimen;
+        }
+    }
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
     tuning.livingFrontier = loadLivingFrontier(tuningDirectory + "/living_frontier.json");

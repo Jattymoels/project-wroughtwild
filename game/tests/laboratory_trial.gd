@@ -33,7 +33,7 @@ func _run() -> void:
 	if "--lf4c-pending" in OS.get_cmdline_user_args() or "--lf4c-applied" in OS.get_cmdline_user_args():
 		await restart_campaign()
 		return finish_campaign()
-	check(sim.trial_story_runs().size()==1,"successor exposes one bounded laboratory Trial")
+	check(sim.trial_story_runs().filter(func(run: Dictionary):return bool(run.available)).size()==1,"only Annex is available before its first physical publication")
 	check(not sim.trial_start_story(7,"deep_forge") && not sim.trial_start(7,""),"older story and legacy bypass remain closed")
 	await _native_route()
 	check(specimens_seen.has("lf_red_boar") && specimens_seen.has("lf_blue_boar"),"both real single-influence specimen scenes encountered")

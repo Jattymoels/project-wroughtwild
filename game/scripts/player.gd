@@ -929,7 +929,7 @@ func aim_probe() -> Dictionary:
 	if collider is DroppedBundle:
 		return {"state": "interact", "label": InputPrompts.text("Your dropped pack — {interact} to recover"), "target": collider}
 	if collider is TrialGate:
-		return {"state": "interact", "label": InputPrompts.text("Collection Annex — {interact} to enter" if collider.is_in_group("laboratory_gates") else "Trial gate — {interact} to enter"), "target": collider}
+		return {"state": "interact", "label": InputPrompts.text(String(collider.get_meta("laboratory_label","Laboratory"))+" — {interact} to enter" if collider.is_in_group("laboratory_gates") else "Trial gate — {interact} to enter"), "target": collider}
 	if collider is TrialFixture:
 		return {"state":"interact","label":collider.trial_label(),"target":collider}
 	if collider is Landmark:

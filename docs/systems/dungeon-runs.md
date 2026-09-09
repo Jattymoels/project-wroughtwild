@@ -1,5 +1,16 @@
 # Repeatable Trial Runs
 
+**LF-5B continuation:** the existing Pairing Hall front body opens the second
+laboratory only after the first physical campaign award. It retains Deep Forge's
+two floors, eight stages, Warden, encounter counts and ordinary rewards. Blue/Red
+reminders precede the ordered paired specimen in stages 2–6. Three gallery
+records reveal the human operator's imposed combinations and second failsafe;
+three teaching chambers receive solid apparatus with checked approaches.
+Revision-two Pairing suspension remains distinct from revision-one Annex saves.
+First Pairing victory pays one Eye/receipt, without replacing a spent trophy.
+LF-5C adds its second protected publication; Central/maps stay closed.
+[Contract and evidence](../prototype/living-frontier-wave5-2026-09-09.md).
+
 **LF-4B (9 September 2026):** only saved `living_frontier_wave4` campaigns enter
 the first Trial through the existing Collection Annex shell. A scoped Tyrant
 copy retains eight stages/two floors, deposits, temporary boons and ordinary

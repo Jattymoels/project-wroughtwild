@@ -166,6 +166,10 @@ TrialSession::TrialSession(const tuning::Tuning& tuning, economy::PlayerEconomy&
                            boons::BuildTags buildTags, uint64_t seed, const tuning::TrialFloor* floor, bool deposit)
     : tuning_(tuning), economy_(economy), floor_(floor), buildTags_(std::move(buildTags)), seed_(seed) {
     if (floor && floor->id=="forge_tyrant" && economy_.campaignPolicy==resonance::campaign) floor_=&tuning_.laboratory;
+    if (floor && floor->id=="deep_forge" && economy_.campaignPolicy==resonance::campaign) {
+        if (!economy_.resonanceState.campaignAward) throw std::runtime_error("Pairing requires the first physical campaign publication");
+        floor_=&tuning_.pairingLaboratory;
+    }
     // Deposit ordinary carried possessions at the entrance (D-006).
     if (deposit) {
         depositedInventory_ = economy_.inventory;
@@ -400,7 +404,7 @@ std::string TrialSession::checkpoint() const {
     e["run_id"] = runId();
     if (economy_.campaignPolicy==resonance::campaign) {
         e["campaign_policy"]=economy_.campaignPolicy;
-        e["laboratory_revision"]="1";
+        e["laboratory_revision"]=floor_ && floor_->id=="deep_forge" ? "2" : "1";
     }
     e["run_kind"] = runKind();
     e["seed"] = std::to_string(seed_);
@@ -437,9 +441,9 @@ std::unique_ptr<TrialSession> TrialSession::restore(const tuning::Tuning& tuning
     const std::string policy=savedPolicy==e.end() ? "legacy" : savedPolicy->second;
     if (policy!=economy.campaignPolicy) throw std::runtime_error("trial checkpoint: campaign policy mismatch");
     if (policy==resonance::campaign) {
-        if(e.at("laboratory_revision")!="1") throw std::runtime_error("trial checkpoint: unknown laboratory revision");
-        if (floor->id!="forge_tyrant") throw std::runtime_error("trial checkpoint: unavailable successor story");
-        floor=&tuning.laboratory;
+        if (floor->id=="forge_tyrant" && e.at("laboratory_revision")=="1") floor=&tuning.laboratory;
+        else if (floor->id=="deep_forge" && e.at("laboratory_revision")=="2" && economy.resonanceState.campaignAward) floor=&tuning.pairingLaboratory;
+        else throw std::runtime_error("trial checkpoint: unavailable laboratory or unknown revision");
     }
     const int stage = integer(e.at("stage"));
     if (stage <= 0 || stage >= static_cast<int>(floor->stages.size()) ||
@@ -546,6 +550,11 @@ void TrialSession::finish(bool died) {
                     economy_.resonanceState.phase="pending";
                     economy_.resonanceState.seed=economy_.worldSeed;
                 }
+            }
+        } else if(economy_.campaignPolicy==resonance::campaign && floor_ && floor_->id=="deep_forge") {
+            if(!economy_.worldEffectActive("lf5_pairing_victory")) {
+                economy_.recordWorldEffect("lf5_pairing_victory");
+                if(!curio.empty() && !economy_.curioHeld(curio))economy_.grant(curio,1);
             }
         } else {
             if (!curio.empty()) economy_.grant(curio, 1);

@@ -145,10 +145,12 @@ func _laboratory(data: Dictionary) -> void:
 		_box(at+Vector3(side*size.x*.5,h*.5,0),Vector3(.35,h,size.z),STONE,true)
 	_box(at+Vector3(0,h*.5,-size.z*.5),Vector3(size.x,h,.35),STONE,true)
 	var front:=_box(at+Vector3(0,h*.5,size.z*.5),Vector3(size.x,h,.25),METAL,true)
-	var laboratory_open:=terrain._sim.campaign_policy()=="living_frontier_wave4" and String(data.id).contains("annex")
+	var laboratory_open:=terrain._sim.campaign_policy()=="living_frontier_wave4" and (String(data.id).contains("annex") or String(data.id).contains("pairing"))
 	if laboratory_open:
 		var body:=front.get_node("ExteriorBody")
 		body.set_script(preload("res://scripts/laboratory_gate.gd"))
+		body.set_meta("run_id","deep_forge" if String(data.id).contains("pairing") else "forge_tyrant")
+		body.set_meta("laboratory_label",String(data.label))
 		body.add_to_group("laboratory_gates")
 	_box(at+Vector3(0,h+.08,0),Vector3(size.x+.5,.3,size.z+.5),STONE,true)
 	for side in [-1,1]:
@@ -161,7 +163,7 @@ func _laboratory(data: Dictionary) -> void:
 	for i in 3: _box(at+Vector3(-.32+i*.32,3.1,size.z*.5+.2),Vector3(.1,.4,.07),Color("cec6a4"))
 	var label := Label3D.new()
 	label.text = "%s\nSealed collection bays" % String(data.label)
-	if laboratory_open: label.text="%s\nContainment entrance" % String(data.label)
+	if laboratory_open: label.text="%s\n%s" % [String(data.label),"Ordered pairing entrance" if String(data.id).contains("pairing") else "Containment entrance"]
 	label.position = at+Vector3(0,h+.7,size.z*.5)
 	label.font_size = 34
 	label.pixel_size = .006

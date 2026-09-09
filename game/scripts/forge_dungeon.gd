@@ -126,13 +126,14 @@ func build(layout: Dictionary, which_floor: int) -> void:
 			_box(Vector3(secret_side*6.5,3.5,z),Vector3(3,7,.6),LOOK.stone,true)
 	# Read actual collider poses after route plaque yaw is applied. Pedestals
 	# share the cover clearance map, including offerings and later conduits.
-	if bool(layout.get("laboratory",false)): _laboratory_treatment(which_floor)
+	if bool(layout.get("laboratory",false)): _laboratory_treatment(which_floor,layout)
 	_authored_obstacles.assign(obstacles)
 	_refresh_fixture_obstacles()
 	_build_navigation()
 
-func _laboratory_treatment(which_floor: int) -> void:
-	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(load("res://scripts/sim.gd").get_tuning_directory().path_join("laboratory.json")))
+func _laboratory_treatment(which_floor: int, layout: Dictionary) -> void:
+	var paired:=bool(layout.get("pairing_laboratory",false))
+	var data: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(load("res://scripts/sim.gd").get_tuning_directory().path_join("pairing_laboratory.json" if paired else "laboratory.json")))
 	for i in data.records.size():
 		if which_floor>0 and i<2: continue
 		var record: Dictionary=data.records[i]
@@ -147,7 +148,9 @@ func _laboratory_treatment(which_floor: int) -> void:
 	var offset:=Vector3(data.apparatus_offset_m[0],data.apparatus_offset_m[1],data.apparatus_offset_m[2])
 	for key: String in rooms:
 		var stage:=int(key.get_slice(":",0))
-		if stage>1: continue
+		if stage>1 and not paired: continue
+		if paired and stage>2: continue
+		if stage==7: continue
 		var centre: Vector3=rooms[key].centre
 		var side:=signf(centre.x)
 		var at:=centre+Vector3(side*offset.x,offset.y,offset.z)
@@ -157,6 +160,9 @@ func _laboratory_treatment(which_floor: int) -> void:
 		# A closed, individually marked containment vessel with a collection
 		# conduit. The released creature is the actual single-influence enemy.
 		_box(at+Vector3(-side*(size.x*.5+.025),0,0),Vector3(.05,size.y*.7,size.z*.7),specimen_colour,false)
+		if paired:
+			_box(at+Vector3(-side*(size.x*.5+.04),.35,-.8),Vector3(.06,.4,.8),Color("77c5ed"),false)
+			_box(at+Vector3(-side*(size.x*.5+.04),-.35,.8),Vector3(.06,.4,.8),Color("f17443"),false)
 		_box(at+Vector3(0,size.y*.65,0),Vector3(.3,.6,.3),Color("9a9b88"),false)
 
 func _refresh_fixture_obstacles() -> void:

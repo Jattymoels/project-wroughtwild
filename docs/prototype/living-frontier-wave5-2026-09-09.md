@@ -97,6 +97,8 @@ finite opportunities are also protected during second preparation.
 
 ### LF-5A — ordered specimen
 
+Checked commit **`0482211`**, ordinarily pushed to `origin/main`.
+
 One `lf_paired_boar` reuses the existing boar asset and ordinary damage/control
 rules. Its fixed mark is centred on the host's position at commitment, not the
 player's later position. The native `paired_boar` behaviour owns the selected
@@ -136,3 +138,47 @@ recognition under a crowded Trial, difficulty and creature art remain open.
 The scene `res://tests/living_frontier_hybrid.tscn` isolates this first specimen;
 LF-5B puts it into the physical campaign. Waves 6–7, other hybrids, broad ecology
 and factory automation remain excluded.
+
+### LF-5B — Pairing laboratory
+
+`pairing_laboratory.json` selects a Blue reminder in stage zero, Red in stage
+one and one paired specimen replacing an ordinary enemy in every branch of
+stages two through six. The original final Warden and two supports remain.
+Encounter counts, room topology, ordinary per-run materials/gear/boons, deposits
+and death rules are unchanged. Three inspectable gallery records teach the
+sequence, show the operator's shift from preservation to imposed alteration,
+and foreshadow the second return interlock and central human harness.
+
+The same saved LF4 campaign opens the existing Pairing front body after its
+first physical award. Central/map APIs remain closed. Pairing uses boundary
+revision two; Annex revision one is preserved. First victory records
+`lf5_pairing_victory` and pays one Eye, including after replayed callbacks or a
+spent Eye. During this checked intermediate slice, that receipt does not yet
+queue/publish the second event. **LF-5C will migrate an LF-5B victory lacking a
+second ledger to pending using the first event's saved seed**, without replaying
+its Eye; historical LF4 records without that receipt gain only a dormant second
+ledger. This bounds intermediate-checkpoint compatibility before LF-5C.
+
+Cabinet size, offset and record spacing reuse LF4 values. Cabinets occupy the
+three teaching chambers. A first candidate extended them through later rooms;
+the actual route ray caught a cabinet obstructing stage six. Keeping later
+rooms' existing conduits clears that regression, verified by the same full walk.
+The final route passes **152 checks / 824.9 m**, with a separate **four-check
+fresh-process suspended restart**. It physically uses the existing site door,
+inspects all records, traverses every stage and optional reward, and returns to
+the exact Pairing approach with one Eye/receipt and the original first ledger.
+The route fixture intentionally disables damage and forces encounters; it
+does not establish full-Trial combat balance. It starts from the frozen LF4
+applied campaign containing the spent Heart, dead Blue host and depleted ore.
+
+Historical fixture origins and the deliberately derived dormant case are
+documented in [the fixture record](../../game/tests/fixtures/lf4-published-saves.md).
+Native Annex and Pairing checks pass **55 / 60**, including early failure,
+abandon, repeat victory, spent trophy and preserved first-event state. Existing
+save recovery passes **175**, Trial lifecycle **6,221**, old Forge traversal
+**122 / 814.9 m**, and the complete Annex journey **172 / 824.5 m**. All have
+zero failures. The Annex publication measured **17,743 ms** in this rerun.
+Its synchronous pause remains an LF-5C performance/presentation concern.
+All 24 complete generated approaches in seeds **5 / 77** pass again (**59 / 61**
+checks), including historical paid-save ownership and every laboratory shell.
+Scoped whitespace checks pass. No production-art source is changed by LF-5B.

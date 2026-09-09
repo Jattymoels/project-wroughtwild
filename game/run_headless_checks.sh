@@ -164,6 +164,8 @@ done
 
 echo "== Living Frontier Wave 4 protected terrain and first laboratory =="
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_hybrid.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/pairing_trial.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/pairing_trial.tscn -- --lf5b-boundary
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn -- --lf4a-pending
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn -- --lf4a-applied

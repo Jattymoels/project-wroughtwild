@@ -29,13 +29,17 @@ build/resonance_tests: test_resonance.cpp $(wildcard $(SIM)/src/*.cpp) $(wildcar
 build/laboratory_tests: test_laboratory.cpp $(wildcard $(SIM)/src/*.cpp) $(wildcard $(SIM)/src/worldgen_*.inc) $(wildcard $(SIM)/include/wroughtwild/*.h)
 	@mkdir -p build
 	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_laboratory.cpp $(wildcard $(SIM)/src/*.cpp) -o $@
-test: $(BIN) build/leyline_tests build/living_frontier_wave2_tests build/living_frontier_wave3_tests build/resonance_tests build/laboratory_tests
+build/pairing_tests: test_pairing.cpp $(wildcard $(SIM)/src/*.cpp) $(wildcard $(SIM)/src/worldgen_*.inc) $(wildcard $(SIM)/include/wroughtwild/*.h)
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_pairing.cpp $(wildcard $(SIM)/src/*.cpp) -o $@
+test: $(BIN) build/leyline_tests build/living_frontier_wave2_tests build/living_frontier_wave3_tests build/resonance_tests build/laboratory_tests build/pairing_tests
 	./$(BIN) ../../data/tuning
 	./build/leyline_tests ../../data/tuning
 	./build/living_frontier_wave2_tests ../../data/tuning
 	./build/living_frontier_wave3_tests ../../data/tuning
 	./build/resonance_tests ../../data/tuning
 	./build/laboratory_tests ../../data/tuning
+	./build/pairing_tests ../../data/tuning
 
 # Complete terrain/pack fingerprints from before the intensive, multi-seed
 # reachable habitat guarantees, and the approved material/form matrix.
