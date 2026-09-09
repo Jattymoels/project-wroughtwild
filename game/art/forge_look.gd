@@ -1,5 +1,12 @@
 class_name ForgeLook
 extends Resource
+
+## Captured experiments claim rewards on the open entrance apron, away from
+## rear cover and containment cabinets, with room to walk back to the gallery.
+@export var laboratory_reward_offset := Vector3(0,0,6)
+## The return control stays beside the entrance, reachable before any fight
+## and after the equipment cache without crossing the uncleared boss seal.
+@export var laboratory_exit_position := Vector3(-3,0,8)
 ## Authored Forge kit dimensions, metres. Geometry controls composition and
 ## clearance; combat values are supplied by trial_rules(), never this resource.
 @export var room_width := 20.0 # Room breadth leaves room to flank a group.

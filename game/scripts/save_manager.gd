@@ -432,6 +432,8 @@ func _apply_prepared(player: WroughtwildPlayer, data: Dictionary, prepared: Dict
 	# state and loose ownership are all installed. Every refusal keeps it.
 	player.finish_world_recovery()
 	player.central_ending_save_pending=false
+	player.experiment_save_pending=false
+	player.experiment_return_text=""
 	player.refresh_central_control()
 	return true
 
@@ -455,6 +457,7 @@ func write(path: String, player: WroughtwildPlayer) -> bool:
 		player.remove_meta("recovered_save_path")
 	if written:
 		player.central_ending_save_pending=false
+		player.experiment_save_pending=false
 		player.refresh_central_control()
 	return written
 

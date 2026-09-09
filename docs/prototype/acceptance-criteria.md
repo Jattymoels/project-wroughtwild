@@ -14,7 +14,7 @@ These are player-visible outcomes, not a substitute for implementation-level tes
 - [x] Only targeted source haul gains a pressure bonus. General materials/Kinds,
   gear and completion cores stay on their stated rules; LF equipment caches
   give no guaranteed Catalyst. Legacy shrine rewards remain unchanged.
-- [ ] LF-7B complete live run, exact saved rewards, retry/reconfigure, paid field
+- [x] LF-7B complete live run, exact saved rewards, retry/reconfigure, paid field
   work and full campaign/earlier defect regression matrix are complete.
 - [ ] Orchestrator reviews Wave 7; human accepts full-run difficulty and clarity.
 

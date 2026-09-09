@@ -1,6 +1,6 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
-**Status: Waves 1–6 implemented as opt-in work. Independent Wave 6 review closes LF5-R1, confirms the Wave-3 route repair and clears the dedicated human and saved control handoff for bounded LF-7A/B. Human balance/readability acceptance and the publication pause remain open. Optional Heat and configured rewards remain Wave 7.**
+**Status: Waves 1–7 implemented as opt-in work. LF-7A/B expose captured laboratory configurations, exact rewards and saved return/reconfiguration. Both earlier defect regressions remain passing. Wave 7 now awaits orchestrator review; human balance/readability acceptance and the synchronous publication pause remain open.**
 See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
 [Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
 for selected tuning, compatibility, evidence and remaining owner playtests.
@@ -24,6 +24,10 @@ control. It preserves both published changes, three eras and all owned work;
 human acceptance of full-Trial difficulty/readability remains separate.
 The [independent Wave 6 review](living-frontier-wave6-review-2026-09-09.md)
 records the rerun evidence, both defect closures and the bounded Wave 7 prompt.
+The [Wave 7 contract and evidence](living-frontier-wave7-2026-09-09.md) records
+the optional pressure contract, complete live base run, physical extraction,
+once-only reward settlement, save retry and campaign compatibility. No further
+wave or expansion is authorized by that implementation record.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 

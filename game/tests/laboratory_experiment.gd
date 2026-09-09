@@ -50,7 +50,7 @@ func _run() -> void:
 		for button:Button in player.work_panel.find_children("*","Button",true,false):
 			if button.text=="Enter run %d"%int(selected_offer.slot+1):
 				button.grab_focus()
-				for scroll:ScrollContainer in player.work_panel.find_children("*","ScrollContainer",true,false):scroll.ensure_control_visible(button)
+				for scroll:ScrollContainer in player.work_panel.find_children("*","ScrollContainer",true,false):scroll.ensure_control_visible(button.get_parent().get_parent())
 		for i in 8:await get_tree().process_frame
 		await RenderingServer.frame_post_draw
 		get_viewport().get_texture().get_image().save_png("res://../captures/lf7/reward-preview.png")

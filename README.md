@@ -32,7 +32,8 @@ creature concept sheets with modelling notes. The selected creatures now have an
 opens captured Central's saved offers and tiers with optional Crossfire or
 Relentless pressure and exact material/equipment/core previews. Settings commit
 at entry; known creature trials preserve the defeated human and both terrain
-events. LF-7A is checked; LF-7B return/checkpoint/reconfigure verification follows.
+events. LF-7A/B are checked: complete, bank or abandon, save the settled return,
+retry failed writes and choose another configuration. Wave 7 awaits orchestrator review.
 `--living-frontier-wave7` continues the same world/save. Human difficulty and the
 synchronous terrain-publication pause remain open.
 

@@ -1,6 +1,6 @@
 # Repeatable Trial Runs
 
-**LF-7A captured experiments:** after the saved human ending, Central's physical
+**LF-7A/B captured experiments:** after the saved human ending, Central's physical
 E controls expose the existing three stable offers and unlocked tiers, bounded
 at ten for LF policy. One optional Crossfire or Relentless Boss supplements the
 rolled conditions; duplicate/shared/incompatible effects and a third major
@@ -14,6 +14,18 @@ iron/purse Kinds and one completion core retain their rules. The LF equipment
 cache pays the old shrine's gear without its guaranteed Catalyst. Legacy
 policies retain that Catalyst. Current [contract and evidence](../prototype/living-frontier-wave7-2026-09-09.md)
 supersede the historical Wave 6 experiment closure below.
+
+Captured experiments place offerings on the open entrance apron and the exit
+beside the initial controls. Exit is unavailable during fights; between fights
+it allows abandonment, or banking after the equipment cache before the boss.
+Normal return saves the settled material bag, separate Kind purse, earned gear,
+gate batch and remembered configuration with the complete owned world. A failed
+write retains live ownership and disables re-entry until a visible retry or
+ordinary save succeeds. Retrying writes the settlement without awarding again.
+Successful restore clears transient retry state only after installing the world.
+No mid-fight checkpoint is added; a crash before the return checkpoint restores
+the preceding save. Roll-tier previews describe modifiers on random bases,
+which retain their existing effective-tier limits.
 
 **LF-6A/B continuation:** after both physical awards, the existing Central site
 opens a scoped capstone copy with the same two floors, eight stages and rewards.

@@ -59,6 +59,8 @@ var trial: TrialController
 ## Keep an already disabled review/presentation controller disabled afterward.
 var _world_recovery_stopped := false
 var central_ending_save_pending := false # Transient write failure; receipt stays native.
+var experiment_save_pending := false # Settled map return awaiting a complete checkpoint.
+var experiment_return_text := ""
 var _world_recovery_resume_physics := false
 var footsteps: PlayerFootsteps
 var environment_ambience: EnvironmentAmbience
@@ -488,23 +490,40 @@ func finish_world_recovery() -> void:
 
 func refresh_central_control() -> void:
 	var sites:=world_root().get_node_or_null("FrontierSites")
-	if sites!=null: sites.refresh_apparatus(central_ending_save_pending)
+	if sites!=null: sites.refresh_apparatus(central_ending_save_pending or experiment_save_pending)
 
 func show_central_control(finale: bool=false) -> void:
 	if not inventory.get_sim().world_effect_active("forge_arc_complete"): return
 	var rows:Array=[]
 	if central_ending_save_pending:
 		rows.append({"text":"Control and rewards are yours in this session, but the ending could not be saved. Retry before leaving.","button":"Retry ending save","callback":_retry_central_save})
+	if experiment_save_pending:
+		rows.append({"text":"The returned goods and next offer batch still need saving. Retry before leaving.","button":"Retry experiment save","callback":_retry_experiment_save})
 	for gate in get_tree().get_nodes_in_group("laboratory_gates"):
 		if String(gate.get_meta("run_id",""))=="forge_capstone":
-			rows.append({"text":"Choose a saved offer, unlocked tier and one optional pressure. Preview building materials, equipment and a contraption core.","button":"Configure experiment","enabled":not central_ending_save_pending,"callback":gate.open_captured_maps.bind(self)})
+			rows.append({"text":"Choose a saved offer, unlocked tier and one optional pressure. Preview building materials, equipment and a contraption core.","button":"Configure experiment","enabled":not central_ending_save_pending and not experiment_save_pending,"callback":gate.open_captured_maps.bind(self)})
 	var story:="The Conservator's restraints open. Beneath the mineral scars there was still a human hand, holding the return circuit shut. You lower it and release the apparatus from its last command.\n\n" if finale else ""
 	var status:="The ending still needs a successful save." if central_ending_save_pending else "Your ending and rewards are saved."
+	if experiment_save_pending:status="The ending is retained; this experiment's return still needs saving."
 	open_custom_panel("The last claim is released" if finale else "Central Laboratory — your controls",rows,story+"The controls now answer to you. Retained Fen and Excited Uplands keep their changed shapes; no third resonance follows.\n\nUse the captured chambers for contained Forge creature trials. The Conservator remains defeated. Field materials, fuel and ordinary crafting still supply your build and workshop.\n\n"+status)
 
 func _retry_central_save() -> void:
 	save_game()
 	show_central_control()
+
+func show_experiment_return() -> void:
+	var rows:Array=[]
+	if experiment_save_pending:
+		rows.append({"text":"Your returned possessions remain yours in this session. Retry saving before leaving; it will not award the run again.","button":"Retry experiment save","callback":_retry_experiment_save})
+	for gate in get_tree().get_nodes_in_group("laboratory_gates"):
+		if String(gate.get_meta("run_id",""))=="forge_capstone":
+			rows.append({"text":"Choose another saved offer and change the optional pressure or unlocked tier.","button":"Configure next experiment","enabled":not experiment_save_pending,"callback":gate.open_captured_maps.bind(self)})
+	var saved:="SAVE NEEDED — the previous checkpoint remains on disk." if experiment_save_pending else "Return saved. The next offer batch and your selected settings are saved together."
+	open_custom_panel("Laboratory return",rows,experiment_return_text+"\n\n"+saved+"\nBoth changed regions and the defeated human remain. Ore, fuel, magical media and ordinary construction still come from your frontier work.")
+
+func _retry_experiment_save() -> void:
+	save_game()
+	show_experiment_return()
 
 func load_game(path: String = "") -> bool:
 	if path.is_empty(): path = SaveManager.path_for(self)

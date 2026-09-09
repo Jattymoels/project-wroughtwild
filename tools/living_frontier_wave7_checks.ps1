@@ -1,4 +1,4 @@
-param([switch]$Native, [switch]$Controls, [switch]$Combat, [switch]$Effects, [switch]$Visuals)
+param([switch]$Native, [switch]$Controls, [switch]$Combat, [switch]$Effects, [switch]$Visuals, [switch]$Loop, [switch]$Restart, [switch]$Routes, [switch]$LoopVisuals)
 $lf7Options=@{}+$PSBoundParameters
 . "$PSScriptRoot/living_frontier_checks.ps1"
 $lfLogs=Join-Path $lfRoot 'build/lf7'
@@ -16,6 +16,10 @@ if ($lf7Options.Native) {
     if ($LASTEXITCODE -ne 0) { throw 'Laboratory native checks failed.' }
 }
 if ($lf7Options.Controls) { Invoke-LFEngine 'controls' @('--headless','--fixed-fps','60','res://tests/laboratory_experiment.tscn') }
+if ($lf7Options.Loop) { Invoke-LFEngine 'loop' @('--headless','--fixed-fps','60','res://tests/laboratory_repeat_loop.tscn') }
+if ($lf7Options.Restart) { Invoke-LFEngine 'loop-restart' @('--headless','--fixed-fps','60','res://tests/laboratory_repeat_loop.tscn','--','--lf7-restart') }
+if ($lf7Options.Routes) { Invoke-LFEngine 'routes' @('--headless','--fixed-fps','60','res://tests/laboratory_route_geometry.tscn') }
 if ($lf7Options.Combat) { Invoke-LFEngine 'combat' @('--headless','--fixed-fps','60','res://tests/laboratory_experiment_combat.tscn') }
 if ($lf7Options.Effects) { Invoke-LFEngine 'effects' @('--headless','--fixed-fps','60','res://tests/laboratory_pressure_effects.tscn') }
 if ($lf7Options.Visuals) { Invoke-LFEngine 'visuals' @('--position','-9999,-9999','--resolution','1280x720','--audio-driver','Dummy','res://tests/laboratory_experiment.tscn','--','--lf7-visuals') }
+if ($lf7Options.LoopVisuals) { Invoke-LFEngine 'loop-visuals' @('--position','-9999,-9999','--resolution','1280x720','--audio-driver','Dummy','--fixed-fps','60','res://tests/laboratory_repeat_loop.tscn','--','--lf7-loop-visuals') }

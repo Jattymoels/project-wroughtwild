@@ -25,7 +25,7 @@ func trial_label() -> String:
 			var danger := danger_label()
 			if not danger.is_empty(): preview += " · " + danger
 			return InputPrompts.formatted("%s — {interact} · Enter · %s", [name, preview])
-		"boundary": return InputPrompts.formatted("%s — {interact} · Continue, bank or suspend", name)
+		"boundary": return InputPrompts.formatted("%s — {interact} · Leave laboratory" if bool(payload.get("experiment_exit",false)) else "%s — {interact} · Continue, bank or suspend", name)
 		"secret": return InputPrompts.formatted("%s — {interact} · Inspect", name)
 		"conduit": return InputPrompts.formatted("%s — {interact} · %s", [name,"Drain active channel" if bool(payload.get("emergency_release",false)) else "Cool ward protection"])
 	return InputPrompts.formatted("%s — {interact} · %s", [name, reward_action() if fixture_kind == "reward" else _single_line(detail)])
@@ -62,7 +62,7 @@ func world_lines() -> PackedStringArray:
 		var danger := danger_label()
 		if not danger.is_empty(): lines.append(danger)
 	elif fixture_kind == "boundary":
-		lines.append("Continue · Bank · Suspend")
+		lines.append("Bank · Abandon" if bool(payload.get("experiment_exit",false)) else "Continue · Bank · Suspend")
 	elif fixture_kind == "secret":
 		lines.append("Inspect the catch")
 	elif fixture_kind == "conduit":

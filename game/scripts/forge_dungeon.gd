@@ -74,6 +74,8 @@ func build(layout: Dictionary, which_floor: int) -> void:
 			var seal := _box(Vector3(inward, 2.2, z + 3), Vector3(.45, 4.4, LOOK.doorway_width), LOOK.iron, true, false)
 			rooms[key] = {"centre": centre, "rect": Rect2(centre.x-10, z-12, 20, 24), "door": plate, "seal": seal, "module": module,
 				"reward_at": centre + Vector3(side * 4, .0, -8), "spawn_at": centre + Vector3(side * 2, .5, -3)}
+			if bool(layout.get("laboratory_experiment",false)):
+				rooms[key].reward_at=centre+LOOK.laboratory_reward_offset
 			module_ids.append(module)
 		var gate_z := z - LOOK.room_depth * .5 - 3.0
 		spine_gates[index] = _box(Vector3(0, 2.6, gate_z), Vector3(LOOK.gallery_width, 5.2, .5), LOOK.iron, true, false)
@@ -93,6 +95,12 @@ func build(layout: Dictionary, which_floor: int) -> void:
 	if which_floor + 1 >= int(layout.get("floor_count", 2)):
 		boundary.title = "End of gallery"
 		boundary.payload["terminal"] = true
+		boundary.refresh()
+	if bool(layout.get("laboratory_experiment",false)):
+		boundary.position=LOOK.laboratory_exit_position
+		boundary.title="Laboratory exit"
+		boundary.payload={"experiment_exit":true}
+		boundary.detail="review extraction or abandon"
 		boundary.refresh()
 	# Secret is on the first floor only; both variants occupy real side space.
 	if which_floor == 0:

@@ -183,6 +183,9 @@ func enter_room(choice_index: int) -> bool:
 	current_room = room
 	if spatial:
 		room_space=arena.dungeon.open_room(stage_index,choice_index)
+		if bool(layout.get("laboratory_experiment",false)):
+			arena.dungeon.boundary.available=false
+			arena.dungeon.boundary.refresh()
 		encounter_id=String(room.get("id","encounter_%d"%stage_index))
 		run_mods=sim.combat_mods()
 	player.work_panel.close_panel()
@@ -433,6 +436,7 @@ func finish_run() -> void:
 	var boss_defeated: bool = sim.trial_boss_defeated()
 	var finished_floor: Dictionary=sim.trial_floor()
 	var finished_layout: Dictionary=layout.duplicate(true)
+	var finished_loot:Dictionary=sim.trial_loot()
 	_despawn_enemies()
 	for hazard in _hazards(): hazard.cancel()
 	_clear_conduits()
@@ -469,7 +473,7 @@ func finish_run() -> void:
 	if spatial:
 		player.hud.notify("Trial %s · %.1f minutes · %d encounters · %d boss tells" % ["failed" if died else "complete" if boss_defeated else "extracted",elapsed_seconds/60.0,completed_encounters,boss_tells])
 		if String(finished_layout.get("run_kind",""))=="map" and boss_defeated:
-			player.hud.notify("Challenge cleared. The gate offers the next tier.")
+			player.hud.notify("Challenge cleared. Review your unlocked tiers at the controls.")
 	spatial=false
 	layout={}
 	if boss_defeated and bool(finished_layout.get("central_laboratory",false)):
@@ -479,6 +483,14 @@ func finish_run() -> void:
 		player.refresh_central_control()
 		player.save_game()
 		player.show_central_control(true)
+	if bool(finished_layout.get("laboratory_experiment",false)):
+		player.experiment_return_text="Attempt ended. Stored goods and permanent equipment returned; unbanked run loot was lost." if died else ("Challenge cleared." if boss_defeated else "Early extraction.")+" Recovered: "+WorkPanel.amounts_text(finished_loot)+". Earned equipment returned with the haul."
+		player.experiment_save_pending=true
+		player.refresh_central_control()
+		var checkpoint_started:=Time.get_ticks_msec()
+		player.save_game()
+		player.set_meta("last_experiment_checkpoint_ms",Time.get_ticks_msec()-checkpoint_started)
+		player.show_experiment_return()
 	if player.world_root().has_method("settle_resonance"): player.world_root().call_deferred("settle_resonance")
 
 
@@ -495,6 +507,9 @@ func _show_spatial_route() -> void:
 		return
 	state="exploring"
 	arena.dungeon.select_stage(int(stage["index"]),stage.get("choices",[]))
+	if bool(layout.get("laboratory_experiment",false)):
+		arena.dungeon.boundary.available=true
+		arena.dungeon.boundary.refresh()
 
 func interact_fixture(fixture: TrialFixture) -> void:
 	if not active() or not spatial or fixture.claimed or not fixture.available: return
@@ -508,7 +523,9 @@ func interact_fixture(fixture: TrialFixture) -> void:
 		"reward":
 			if state=="reward": _present_pending_reward()
 		"boundary":
-			if state=="boundary": show_boundary()
+			if bool(fixture.payload.get("experiment_exit",false)):
+				if state=="exploring":show_experiment_exit()
+			elif state=="boundary": show_boundary()
 		"secret":
 			if state not in ["exploring","boundary"]: return
 			var found: Dictionary=sim.call("trial_claim_secret")
@@ -535,6 +552,13 @@ func interact_fixture(fixture: TrialFixture) -> void:
 				fixture.claimed=true
 				fixture.refresh()
 				player.hud.notify("The ward conduit cools. The furnace guardian loses part of its protection.")
+
+func show_experiment_exit() -> void:
+	var stage:=sim.trial_stage()
+	player.open_custom_panel("Laboratory exit",[
+		{"text":"Keep the earned haul and equipment. The boss core and next tier require victory.","button":"Bank and leave","enabled":bool(stage.get("can_bank_and_exit",false)),"callback":bank_out},
+		{"text":"Return stored goods and permanent equipment; lose unbanked run loot.","button":"Abandon experiment","callback":on_player_died},
+	],"Banking opens after the equipment cache, before the boss. Closing this page keeps the experiment active.")
 
 func show_boundary() -> void:
 	if not spatial or state!="boundary": return

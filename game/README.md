@@ -451,11 +451,21 @@ closes the recovery defect and clears bounded LF-7A/B; optional Heat and
 configured rewards remain Wave 7. Human difficulty/readability acceptance and
 the terrain-publication pause remain open.
 
-LF-7A: `--living-frontier-wave7` continues the same save. At captured Central,
+LF-7A/B: `--living-frontier-wave7` continues the same save. At captured Central,
 press E → Configure experiment. Choose an unlocked tier and no extra pressure,
 Crossfire or Relentless Boss. Three saved offers preview exact source materials,
 equipment and the boss core; incompatible offers explain their refusal.
 Entry fixes the settings and advances the existing batch. Five contained rooms
 reuse known Forge creatures, leaving the human defeated. Extra pressure affects
 only the targeted building-source haul; ore, fuel and magical media remain field
-work. LF-7B completes the automatic return-save/retry and full-loop checks.
+work. The laboratory exit is beside the entrance: abandon between encounters,
+or bank after the equipment cache before the boss. Victory, banking and failure
+save the returned possessions and next offers together. The return page opens
+another configuration, or offers a save retry if writing failed. Retry does not
+pay twice. Active experiments cannot be suspended; a crash before the return
+checkpoint restores the preceding save. Actual combat, physical routes, separate
+material/Kind-purse rewards, failed writes and fresh processes are checked in
+the [Wave 7 record](../docs/prototype/living-frontier-wave7-2026-09-09.md).
+Run `tools/living_frontier_wave7_checks.ps1` with `-Native -Controls -Loop
+-Restart -Routes -Combat -Effects`; `-Visuals -LoopVisuals` captures the pages.
+Human full-run difficulty/readability and orchestrator review remain open.

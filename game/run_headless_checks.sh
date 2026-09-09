@@ -189,9 +189,13 @@ for state in boundary ending after-death save-failure; do
 done
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/central_recovery.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/central_recovery.tscn -- --lf6-death-restart
-echo "== main scene smoke run (120 frames) =="
+echo "== Living Frontier Wave 7 captured experiments =="
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_experiment.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_pressure_effects.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_route_geometry.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_repeat_loop.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_repeat_loop.tscn -- --lf7-restart
+echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 
 echo "All headless checks passed."
