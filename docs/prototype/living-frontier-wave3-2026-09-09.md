@@ -4,6 +4,11 @@ Owner authorization: 9 September 2026. Implement LF-3A → LF-3B → LF-3C only,
 after the [Wave 2 review](living-frontier-wave2-review-2026-09-09.md).
 Recorded before behaviour edits. Baseline: `73ed215`.
 
+**Orchestrator review follow-up:** [LF3-R1](living-frontier-wave3-review-2026-09-09.md)
+requires physical route repair before Wave 4. The original implementation and
+passing receipts below are retained; they did not test approach clearance against
+the newly placed laboratory shells.
+
 ## Outcome and boundaries
 
 Connect recognisable animals, four useful influences and a visible artificial

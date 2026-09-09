@@ -1,11 +1,14 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
-**Status: Waves 1–2 implemented in the opt-in experiment; Wave 3 and later remain proposals.**
+**Status: Waves 1–3 implemented as opt-in work; Wave 3 has a blocking route review item. Later waves remain proposals.**
 See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
 [Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
 for selected tuning, compatibility, evidence and remaining owner playtests.
-The [9 September orchestrator review](living-frontier-wave2-review-2026-09-09.md)
-clears the foundation for a bounded Wave 3 work item; later waves remain proposals.
+The [Wave 2 review](living-frontier-wave2-review-2026-09-09.md) cleared its foundation.
+The [Wave 3 handoff](living-frontier-wave3-handoff-2026-09-09.md) records the
+inhabitants, paid rewards and laboratory trail; the
+[Wave 3 review](living-frontier-wave3-review-2026-09-09.md) requires LF3-R1's
+physical route repair before Wave 4.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 

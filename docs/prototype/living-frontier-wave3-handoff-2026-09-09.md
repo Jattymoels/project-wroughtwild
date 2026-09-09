@@ -2,6 +2,12 @@
 
 **Wave 3 complete; ready for orchestrator review.** Owner scope: LF-3A → LF-3B →
 LF-3C only. This does not mark orchestrator or owner playtest acceptance.
+
+**Orchestrator review, 9 September:** [LF3-R1 blocks the Wave 4 all-clear](living-frontier-wave3-review-2026-09-09.md).
+Independent standard checks pass, but seed 5's visible Annex trail and seed 77's
+Central Laboratory approach cross actual sealed walls. Repair derived routes
+without relocating published sites or owned construction before proceeding.
+
 Start with the repository's required reading order, then the
 [accepted Wave 2 review](living-frontier-wave2-review-2026-09-09.md) and
 [Wave 3 bounded contract, tuning and detailed receipts](living-frontier-wave3-2026-09-09.md).
