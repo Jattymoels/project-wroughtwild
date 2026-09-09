@@ -1845,6 +1845,43 @@ Tuning loadAll(const std::string& tuningDirectory) {
             room.encounter.front()=specimen;
         }
     }
+    const auto central = json::parseFile(tuningDirectory + "/central_laboratory.json");
+    const auto* capstone = tuning.trial.findExpedition("forge_capstone");
+    if (!capstone) throw std::runtime_error("Central requires the existing capstone");
+    tuning.centralLaboratory = *capstone;
+    auto& human = tuning.centralLaboratory;
+    human.displayName=central->get("display_name").asString();
+    human.completionText=central->get("completion_text").asString();
+    human.bossPreview=central->get("boss_preview").asString();
+    const auto& boss=central->get("boss");
+    human.boss.id=boss.get("id").asString();
+    human.boss.displayName=boss.get("display_name").asString();
+    human.boss.maxLife=boss.get("max_life").asNumber();
+    human.boss.clawDamage=boss.get("claw_damage").asNumber();
+    human.boss.clawDamageType=boss.get("claw_damage_type").asString();
+    human.boss.clawPeriodRounds=static_cast<int>(boss.get("claw_period_rounds").asNumber());
+    human.boss.breathDamage=boss.get("breath_damage").asNumber();
+    human.boss.breathDamageType=boss.get("breath_damage_type").asString();
+    human.boss.breathPeriodRounds=static_cast<int>(boss.get("breath_period_rounds").asNumber());
+    human.boss.breathTelegraphRounds=static_cast<int>(boss.get("breath_telegraph_rounds").asNumber());
+    const auto& centralLabels=central->get("stage_labels").asArray();
+    const auto& centralSpecimens=central->get("specimens").asArray();
+    if(centralLabels.size()!=human.stages.size() || centralSpecimens.size()!=human.stages.size() || human.boss.maxLife<=0)
+        throw std::runtime_error("Invalid Central treatment");
+    for(size_t i=0;i<human.stages.size();++i)for(auto& room:human.stages[i].choices) {
+        room.displayName=centralLabels[i]->asString()+" - "+room.displayName;
+        if(room.reward=="completion")room.encounter={human.boss.id};
+        else {
+            const auto specimen=centralSpecimens[i]->asString();
+            if(room.encounter.empty() || !tuning.world.findEnemy(specimen))throw std::runtime_error("Invalid Central specimen");
+            room.encounter.front()=specimen;
+        }
+    }
+    for(const auto& [key,value]:central->get("engine_rules").asObject()) {
+        const double number=value->asNumber();
+        if(!std::isfinite(number) || number<=0)throw std::runtime_error("Invalid Central combat tuning");
+        tuning.centralRules[key]=number;
+    }
     tuning.realtime = loadRealtime(tuningDirectory + "/combat_realtime.json");
     tuning.worldgen = loadWorldgen(tuningDirectory + "/worldgen.json");
     tuning.livingFrontier = loadLivingFrontier(tuningDirectory + "/living_frontier.json");

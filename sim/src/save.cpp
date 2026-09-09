@@ -279,6 +279,8 @@ SaveGame fromJson(const std::string& text) {
            (second.phase=="dormant" && has("lf5_pairing_victory")) ||
            (second.phase=="applied" && !second.campaignAward))
             throw std::runtime_error("save: second resonance, first publication and era-three receipt disagree");
+        if(has("forge_arc_complete") && !second.campaignAward)
+            throw std::runtime_error("save: Central resolution requires the second physical award");
     }
     // Saves written before D-014 carry no pack items.
     if (auto pack = eco.find("pack_items"))
@@ -328,7 +330,10 @@ SaveGame fromJson(const std::string& text) {
     if (auto count = eco.find("crafted_gear")) game.economy.craftedGear = count->asInt();
     if (auto points = eco.find("skill_practice")) for (const auto& [id, value] : points->asObject()) game.economy.skillPractice[id] = value->asNumber();
     if (auto mastery = eco.find("earned_mastery")) for (const auto& [id, perks] : mastery->asObject()) {
-        for (const auto& p : perks->asArray()) game.economy.earnedMastery[id].push_back({p->get("uses").asInt(), p->get("modifier").asString(), p->get("value").asNumber(), p->get("text").asString()});
+        // Meaningful casts can create an empty earned list before the first
+        // perk. Preserve that saved representation as well as earned entries.
+        auto& earned=game.economy.earnedMastery[id];
+        for (const auto& p : perks->asArray()) earned.push_back({p->get("uses").asInt(), p->get("modifier").asString(), p->get("value").asNumber(), p->get("text").asString()});
     }
 
     for (const auto& [slot, itemValue] : doc->get("equipment").asObject())

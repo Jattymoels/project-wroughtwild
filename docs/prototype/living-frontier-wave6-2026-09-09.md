@@ -56,6 +56,11 @@ tuning or save field was introduced. Injected host faults are deterministic
 recovery evidence, not a claim of spontaneous failure during human play.
 The existing synchronous publication pause remains unchanged.
 
+Repair publication: local commit **9036a12**, ordinary push to `origin/main`
+succeeded. The full historical matrix also completed: double-host recovery 8;
+second pending/applied/real-return 13/22/13; six frozen archives
+15/23/23/13/23/14, all zero failures.
+
 ## Wave 6 bounded implementation contract
 
 Recorded while the repair matrix runs; gameplay implementation remains gated
@@ -141,3 +146,59 @@ No missing decision blocks this bounded selection. The eventual configured
 experiment fiction/rewards and Heat rules stay unselected for Wave 7. No extra
 hybrid roster, era, world transformation, broad automation or unrelated art
 adoption is part of Wave 6.
+
+## LF-6A author evidence
+
+Dedicated `Conservator` script/scene, native Central treatment, existing physical
+door and two emergency releases implemented. It uses Boss ancestry for existing
+damage/status classification only; its configuration, movement, channel loop,
+gesture mesh, tells and recovery are separate. White commits one lane, Blue
+holds the player's original position before Red releases there, and Green
+branches White into two damaging lanes. Actual cover blocks each release.
+Stagger/freeze cancel channels; both apparatus pedestals cool together after E.
+The ordinary floor modules and rewards remain those of the legacy capstone.
+Only hostile boar specimens occupy preceding rooms; passive White/Green
+wildlife are not turned into required kills.
+
+`tools/living_frontier_wave6_checks.ps1 -Boss -Central -Native -Visuals` covers:
+
+- **1,867 combat checks**, zero failures: live contact, committed marks, actual
+  side stepping, both Green branches and safe gap, cover, stagger/freeze,
+  apparatus cancellation and recovery at 20/60 Hz. No physics immunity or
+  forced boss defeat is used for the three build wins. All use paid ordinary
+  starter weapons and an empty Foundry, with synthetic campaign access only.
+- Warden **13.78 s / 36 casts / 100 life / 0 releases**; Ranger
+  **36.13 s / 41 casts / 100 life / 12 releases**; Kindler
+  **36.17 s / 68 casts / 100 life / 12 releases**. Warden interrupts all
+  channels; the ranged bots evade live releases. Separate contact tests take
+  real damage. These are deterministic feasibility tests, not human difficulty
+  approval; melee's interrupt advantage is a known tuning limitation.
+- **173 route checks**, **834.5 m actual walking** through the existing entrance,
+  eight stages, records, module links, apparatus and exact return. Earlier
+  encounters use forced outcomes/invulnerability for route coverage; only the
+  final chamber uses live casts and damage (**11.22 s / 23 casts / 100 life /
+  1 release**, retained route boons). Do not use this as a full-Trial balance run.
+- Separate-process Central boundary **4** and ending **4** checks; native
+  ownership/settlement **47**, all zero failures. Boundary revision three
+  retains exact deposits/build/loot and cannot resurrect a resolved human.
+  A save-decoder omission of empty earned-mastery lists was exposed by real
+  practice, repaired without changing perks, and covered by exact round trip.
+- Existing native main **224,380**, source **213,482**, machine **601**, frozen
+  generation **17,716**, dual-resonance **632**, Annex **55**, Pairing **72**;
+  live hybrid **2,801** and single-source **234**, all zero failures. The final
+  empty-mastery codec repair then passed the Central native/restart checks.
+- **9 rendered checks** with inspected White, Blue, Red and Green captures
+  under `captures/lf6`. The articulated human and major warning geometry are
+  distinct primitive placeholders. These observer views prove rendering, not
+  first-person human readability in a busy chamber.
+
+Logs, synthetic checkpoints and diagnostics are isolated in `build/lf6` (older
+regressions in `build/lf5`). The standard native/headless runners include Central.
+All new numeric rules live in `central_laboratory.json` with their player-facing
+purpose; no extra tuning was scattered into combat logic. No geography,
+transformation, recipe, finite stock, paid construction, source or machine
+ownership was changed. Unrelated art work remains outside this slice.
+
+LF-6B still owes the visible persistent panel, final return autosave, failed-save
+retry, later death ownership and their rendered/restart evidence. The existing
+completion receipt already saves correctly and will drive that presentation.

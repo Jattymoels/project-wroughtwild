@@ -27,7 +27,7 @@ func trial_label() -> String:
 			return InputPrompts.formatted("%s — {interact} · Enter · %s", [name, preview])
 		"boundary": return InputPrompts.formatted("%s — {interact} · Continue, bank or suspend", name)
 		"secret": return InputPrompts.formatted("%s — {interact} · Inspect", name)
-		"conduit": return InputPrompts.formatted("%s — {interact} · Cool ward protection", name)
+		"conduit": return InputPrompts.formatted("%s — {interact} · %s", [name,"Drain active channel" if bool(payload.get("emergency_release",false)) else "Cool ward protection"])
 	return InputPrompts.formatted("%s — {interact} · %s", [name, reward_action() if fixture_kind == "reward" else _single_line(detail)])
 
 func finished_label() -> String:
@@ -66,7 +66,7 @@ func world_lines() -> PackedStringArray:
 	elif fixture_kind == "secret":
 		lines.append("Inspect the catch")
 	elif fixture_kind == "conduit":
-		lines.append("Cool ward protection")
+		lines.append("Drain active channel" if bool(payload.get("emergency_release",false)) else "Cool ward protection")
 	elif fixture_kind == "reward":
 		lines.append(reward_action())
 	else:

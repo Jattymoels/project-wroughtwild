@@ -2476,7 +2476,8 @@ bool WroughtwildSim::trial_start_story(int seed, const String& run_id) {
     if (!require_loaded("trial_start_story") || trial_) return false;
     std::string id = run_id.is_empty() ? "forge_tyrant" : to_std(run_id);
     if (player_->campaignPolicy == wroughtwild::resonance::campaign &&
-        (id!="forge_tyrant" && (id!="deep_forge" || !player_->resonanceState.campaignAward))) return false;
+        (id!="forge_tyrant" && (id!="deep_forge" || !player_->resonanceState.campaignAward) &&
+         (id!="forge_capstone" || !player_->secondResonance.campaignAward || player_->worldEffectActive("forge_arc_complete")))) return false;
     const auto* run = tuning_->trial.findExpedition(id);
     if (!run || (!run->requiresWorldEffect.empty() && !player_->worldEffectActive(run->requiresWorldEffect))) return false;
     trial_ = std::make_unique<wroughtwild::trial::TrialSession>(*tuning_, *player_, build_tags(), static_cast<uint64_t>(seed), run);
@@ -2488,14 +2489,15 @@ Array WroughtwildSim::trial_story_runs() const {
     if (!require_loaded("trial_story_runs")) return out;
     for (const auto& historical : tuning_->trial.expeditions) {
         const bool laboratory=player_->campaignPolicy==wroughtwild::resonance::campaign;
-        if (laboratory && historical.id!="forge_tyrant" && historical.id!="deep_forge") continue;
-        const auto& run=laboratory ? (historical.id=="deep_forge" ? tuning_->pairingLaboratory : tuning_->laboratory) : historical;
+        if (laboratory && historical.id=="forge_capstone" && !player_->secondResonance.campaignAward) continue;
+        const auto& run=laboratory ? (historical.id=="forge_capstone" ? tuning_->centralLaboratory : (historical.id=="deep_forge" ? tuning_->pairingLaboratory : tuning_->laboratory)) : historical;
         Dictionary d;
         d["id"] = to_godot(run.id);
         d["display_name"] = to_godot(run.displayName);
         d["available"] = run.requiresWorldEffect.empty() || player_->worldEffectActive(run.requiresWorldEffect);
         if(laboratory && run.id=="deep_forge")d["available"]=player_->resonanceState.campaignAward;
-        d["done"] = player_->worldEffectActive(laboratory ? (run.id=="deep_forge" ? "lf5_pairing_victory" : "lf4_annex_victory") : run.completionUnlock);
+        if(laboratory && run.id=="forge_capstone")d["available"]=player_->secondResonance.campaignAward && !player_->worldEffectActive("forge_arc_complete");
+        d["done"] = player_->worldEffectActive(laboratory ? (run.id=="forge_capstone" ? "forge_arc_complete" : (run.id=="deep_forge" ? "lf5_pairing_victory" : "lf4_annex_victory")) : run.completionUnlock);
         d["boss_id"] = to_godot(run.boss.id);
         d["boss_preview"] = to_godot(run.bossPreview);
         d["floor_count"] = run.floorCount;
@@ -2509,6 +2511,7 @@ Dictionary WroughtwildSim::trial_rules() const {
     Dictionary out;
     if (!require_loaded("trial_rules")) return out;
     for (const auto& [key, value] : tuning_->trial.engineRules) out[to_godot(key)] = value;
+    for (const auto& [key, value] : tuning_->centralRules) out[to_godot(key)] = value;
     out["content_revision"] = tuning_->trial.contentRevision;
     return out;
 }
@@ -2519,6 +2522,7 @@ Dictionary WroughtwildSim::trial_layout() const {
     out["run_id"] = to_godot(trial_->runId());
     if (player_->campaignPolicy==wroughtwild::resonance::campaign) out["laboratory"] = true;
     if (player_->campaignPolicy==wroughtwild::resonance::campaign && trial_->runId()=="deep_forge") out["pairing_laboratory"] = true;
+    if (player_->campaignPolicy==wroughtwild::resonance::campaign && trial_->runId()=="forge_capstone") out["central_laboratory"] = true;
     out["run_kind"] = to_godot(trial_->runKind());
     out["display_name"] = to_godot(trial_->floor()->displayName);
     out["seed"] = static_cast<int64_t>(trial_->seed());

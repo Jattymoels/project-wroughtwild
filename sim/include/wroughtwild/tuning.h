@@ -1321,6 +1321,8 @@ struct Tuning {
     TrialTable trial;
     TrialFloor laboratory; // bounded LF-4 policy copy; historical catalogue remains unchanged
     TrialFloor pairingLaboratory; // LF-5 continuation of the same saved campaign
+    TrialFloor centralLaboratory; // LF-6 dedicated human, unchanged historical capstone
+    std::map<std::string, double> centralRules;
     RealtimeTable realtime;
     WorldgenTable worldgen;
     WorldgenTable legacyWorldgen; // immutable legacy_v1 inputs for old saves

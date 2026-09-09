@@ -171,6 +171,11 @@ TrialSession::TrialSession(const tuning::Tuning& tuning, economy::PlayerEconomy&
         floor_=&tuning_.pairingLaboratory;
     }
     // Deposit ordinary carried possessions at the entrance (D-006).
+    if (floor && floor->id=="forge_capstone" && economy_.campaignPolicy==resonance::campaign) {
+        if (!economy_.secondResonance.campaignAward || economy_.worldEffectActive("forge_arc_complete"))
+            throw std::runtime_error("Central requires the second publication and an unfinished story");
+        floor_=&tuning_.centralLaboratory;
+    }
     if (deposit) {
         depositedInventory_ = economy_.inventory;
         economy_.inventory.clear();
@@ -404,7 +409,7 @@ std::string TrialSession::checkpoint() const {
     e["run_id"] = runId();
     if (economy_.campaignPolicy==resonance::campaign) {
         e["campaign_policy"]=economy_.campaignPolicy;
-        e["laboratory_revision"]=floor_ && floor_->id=="deep_forge" ? "2" : "1";
+        e["laboratory_revision"]=floor_ && floor_->id=="forge_capstone" ? "3" : (floor_ && floor_->id=="deep_forge" ? "2" : "1");
     }
     e["run_kind"] = runKind();
     e["seed"] = std::to_string(seed_);
@@ -443,6 +448,7 @@ std::unique_ptr<TrialSession> TrialSession::restore(const tuning::Tuning& tuning
     if (policy==resonance::campaign) {
         if (floor->id=="forge_tyrant" && e.at("laboratory_revision")=="1") floor=&tuning.laboratory;
         else if (floor->id=="deep_forge" && e.at("laboratory_revision")=="2" && economy.resonanceState.campaignAward) floor=&tuning.pairingLaboratory;
+        else if (floor->id=="forge_capstone" && e.at("laboratory_revision")=="3" && economy.secondResonance.campaignAward && !economy.worldEffectActive("forge_arc_complete")) floor=&tuning.centralLaboratory;
         else throw std::runtime_error("trial checkpoint: unavailable laboratory or unknown revision");
     }
     const int stage = integer(e.at("stage"));

@@ -38,7 +38,7 @@ func _ready() -> void:
 		world_profile = "living_frontier_wave1"
 	if OS.get_cmdline_user_args().has("--living-frontier-wave3"):
 		world_profile = "living_frontier_wave3"
-	if OS.get_cmdline_user_args().has("--living-frontier-wave4") or OS.get_cmdline_user_args().has("--living-frontier-wave5"):
+	if OS.get_cmdline_user_args().has("--living-frontier-wave4") or OS.get_cmdline_user_args().has("--living-frontier-wave5") or OS.get_cmdline_user_args().has("--living-frontier-wave6"):
 		world_profile = "living_frontier_wave3"
 		_sim().set_campaign_policy("living_frontier_wave4")
 	var normal_launch := get_parent() == get_tree().root and scene_file_path == "res://scenes/sandpit.tscn"

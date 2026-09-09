@@ -27,7 +27,8 @@ var _tell_boundary: ForgeTell
 
 
 static func spawn_boss(root: Node, at: Vector3) -> Boss:
-	var scene: PackedScene = load("res://scenes/boss.tscn")
+	var human:=String(load("res://scripts/sim.gd").shared().boss().get("id",""))=="conservator"
+	var scene: PackedScene = load("res://scenes/conservator.tscn" if human else "res://scenes/boss.tscn")
 	var boss: Boss = scene.instantiate()
 	boss.position=at
 	root.add_child(boss)

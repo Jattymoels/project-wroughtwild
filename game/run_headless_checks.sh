@@ -181,6 +181,12 @@ done
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_trial.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_trial.tscn -- --lf4c-pending
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_trial.tscn -- --lf4c-applied
+echo "== Living Frontier Wave 6 Central Laboratory =="
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/conservator_combat.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/central_trial.tscn
+for state in boundary ending; do
+  "$GODOT" --headless --fixed-fps 60 --path . res://tests/central_trial.tscn -- "--lf6-$state"
+done
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 

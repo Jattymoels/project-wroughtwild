@@ -1,5 +1,14 @@
 # Repeatable Trial Runs
 
+**LF-6A continuation:** after both physical awards, the existing Central site
+opens a scoped capstone copy with the same two floors, eight stages and rewards.
+The final chamber contains the dedicated human Conservator and two physical
+emergency releases. Central suspension uses revision three; Annex/Pairing retain
+their published revisions. Under LF policy, `forge_arc_complete` resolves the
+human story once and prevents re-entry before deposit; legacy capstone/maps
+retain their existing rules. No new era or configurable experiment is added.
+[Contract and evidence](../prototype/living-frontier-wave6-2026-09-09.md).
+
 **LF-5B continuation:** the existing Pairing Hall front body opens the second
 laboratory only after the first physical campaign award. It retains Deep Forge's
 two floors, eight stages, Warden, encounter counts and ordinary rewards. Blue/Red

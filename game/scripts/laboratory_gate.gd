@@ -3,6 +3,18 @@ extends "res://scripts/trial_gate.gd"
 func interact(player: WroughtwildPlayer) -> void:
 	if player.inventory.get_sim().campaign_policy()!="living_frontier_wave4": return
 	if player.trial.active(): player.trial.reopen(); return
+	if String(get_meta("run_id",""))=="forge_capstone":
+		var sim:=player.inventory.get_sim()
+		if sim.world_effect_active("forge_arc_complete"):
+			player.open_custom_panel("Central Laboratory — released",[],"The Conservator's harness is silent. The apparatus no longer answers its claim. Your two changed regions remain.")
+			return
+		var available:=false
+		for run: Dictionary in sim.trial_story_runs():
+			if String(run.id)=="forge_capstone": available=bool(run.available)
+		player.open_custom_panel("Central Laboratory",[
+			{"text":"Follow the final feed paths to the human Conservator. Read White's lane, the Blue-held Red mark and Green's two branches. Emergency release pedestals drain a channel and expose the harness.","button":"Enter Central Trial" if available else "Await the second return","enabled":available,"callback":_enter.bind(player)}
+		],"Ordinary movement, cover and interrupts work. Victory releases the controls; it causes no third resonance.")
+		return
 	if preload("res://scripts/resonance_event.gd").phase(player.inventory.get_sim())=="pending" and String(preload("res://scripts/resonance_event.gd").current(player.inventory.get_sim()).event)=="excited_uplands":
 		player.open_custom_panel("The second failsafe is waiting",[
 			{"text":"Pairing's victory is recorded. Publish the protected Excited Uplands shelves to reach the Ash Tide.","button":"Retry resonance","callback":_retry.bind(player)}

@@ -508,6 +508,18 @@ func interact_fixture(fixture: TrialFixture) -> void:
 			player.hud.notify("Hidden store: %s. These materials must be extracted."%WorkPanel.amounts_text(found.get("materials",found)))
 		"conduit":
 			if state=="fighting":
+				if bool(fixture.payload.get("emergency_release",false)):
+					for enemy in trial_enemies():
+						if enemy.has_method("drain_channel") and enemy.drain_channel():
+							for pedestal in conduits:
+								pedestal.available=false
+								pedestal.claimed=true
+								pedestal.refresh()
+							conduit_left=float(rules.conservator_release_cooldown_seconds)
+							player.hud.notify("The held channel drains. The harness is exposed; both releases are cooling.")
+							return
+					player.hud.notify("No active channel to release. Use this during a warning.")
+					return
 				fixture.available=false
 				fixture.claimed=true
 				fixture.refresh()
@@ -670,7 +682,7 @@ func _tick_spatial(delta: float) -> void:
 	vent_left-=delta
 	var boss_alive:=false
 	for e in trial_enemies():
-		if e is Boss: boss_alive=true; break
+		if e is Boss and not e.has_method("drain_channel"): boss_alive=true; break
 	if vent_left<=0 and (boss_alive or int(run_mods.get("extra_vent_count",0))>0):
 		vent_left=float(rules.get("boss_vent_period_seconds",8.0))
 		var centre: Vector3=room_space.get("centre",Vector3.ZERO)
@@ -717,12 +729,24 @@ func _spatial_enemy_died(enemy: Enemy) -> void:
 func target_multiplier(enemy: Enemy) -> float:
 	var multiplier:=1.0
 	if enemy.staggered(): multiplier*=float(sim.combat_mods().get("staggered_damage_multiplier",1))
-	if enemy is Boss:
+	if enemy is Boss and not enemy.has_method("drain_channel"):
 		var active_conduits:=0
 		for c in conduits:
 			if is_instance_valid(c) and c.available: active_conduits+=1
 		multiplier*=1.0-float(rules.get("conduit_reduction_per_active",.15))*active_conduits
 	return maxf(0.05,multiplier)
+
+func build_release_pedestals() -> void:
+	_clear_conduits()
+	var centre: Vector3=room_space.get("centre",Vector3.ZERO)
+	for side in [-1.0,1.0]:
+		var offset:=Vector3(side*float(rules.conservator_release_side_m),0,float(rules.conservator_release_forward_m))
+		var pedestal:=arena.dungeon._fixture("conduit",centre+offset,"Emergency release","Drain the active channel")
+		pedestal.payload["emergency_release"]=true
+		pedestal.available=true
+		pedestal.refresh()
+		conduits.append(pedestal)
+	conduit_left=float(rules.conservator_release_cooldown_seconds)
 
 func build_conduits() -> void:
 	_clear_conduits()

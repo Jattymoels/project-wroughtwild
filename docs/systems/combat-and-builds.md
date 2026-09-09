@@ -1,5 +1,14 @@
 # Combat and Persistent Builds
 
+**LF-6A (9 September 2026):** the existing Central Laboratory contains the human
+Conservator, with a dedicated articulated placeholder and independent channel
+loop. White commits one lane; Blue holds a target mark before Red releases;
+Green branches a White aim into two lanes with a safe gap. Move, use cover,
+interrupt or physically drain the channel at either emergency pedestal, then
+attack during recovery. The final chamber uses no Warden guard/claw/breath or
+ambient furnace vents. Existing native mitigation, statuses, player skills and
+builds remain authoritative. [Bounded contract](../prototype/living-frontier-wave6-2026-09-09.md).
+
 **LF-5A (9 September 2026):** one paired boar holds a fixed Blue charge at its
 starting position for one second, then gives a separate one-second Red warning
 before one six-damage fire release in that same 3.2 m circle. It retains 75
