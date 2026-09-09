@@ -1,0 +1,28 @@
+{
+  "seed": 42,
+  "edge_bevel_m": 0.003,
+  "joint_width_m": 0.008,
+  "joint_depth_m": 0.006,
+  "board_spacing_m": 0.25,
+  "fieldstone_courses": 2,
+  "fieldstone_bevel_m": 0.026,
+  "fieldstone_joint_m": 0.014,
+  "fieldstone_relief_m": 0.018,
+  "fieldstone_corner_wear_m": 0.014,
+  "roughness": 0.88,
+  "render_samples": 32,
+  "purposes": {
+    "seed": "Repeatable fieldstone offsets and provisional grain.",
+    "edge_bevel_m": "A three-millimetre inward arris catches light within the native envelope.",
+    "joint_width_m": "Eight-millimetre backed joinery grooves read at player distance.",
+    "joint_depth_m": "Six-millimetre physical join recess; ordinary construction has no magic scars.",
+    "board_spacing_m": "Four board divisions per metre, aligned across repeated modules.",
+    "fieldstone_courses": "Two substantial dry-laid courses within the existing half-height piece.",
+    "fieldstone_bevel_m": "Coarse worn fieldstone corners, with no outward collision ornament.",
+    "fieldstone_joint_m": "Dark backed spaces between rough stones.",
+    "fieldstone_relief_m": "Uneven cap and face recession inside the existing body.",
+    "fieldstone_corner_wear_m": "Irregular worn corners distinguish hand-laid fieldstone from dressed bricks; each stone stays inside its allocated envelope.",
+    "roughness": "Matte provisional materials; material production slices remain separate.",
+    "render_samples": "Blender CPU inspection quality, not a runtime setting."
+  }
+}

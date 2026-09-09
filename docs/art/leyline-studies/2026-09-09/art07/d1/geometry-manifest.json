@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cube",
+    "triangles": 312,
+    "vertices": 158,
+    "sha256": "55abbd2e09f4da193756d2c3c45945d6747f3c3072126dbc64d162f914e59a3d"
+  },
+  {
+    "id": "wall_panel",
+    "triangles": 312,
+    "vertices": 158,
+    "sha256": "8f7995ce358f73b332c3be6e123af3d7d40b9c76ff502ea14a1046718d7b6b53"
+  },
+  {
+    "id": "pillar",
+    "triangles": 76,
+    "vertices": 40,
+    "sha256": "3d41b403332797c34412469de67348065d5cc544e1a704fbba38c0a4115d4f58"
+  },
+  {
+    "id": "beam",
+    "triangles": 76,
+    "vertices": 40,
+    "sha256": "b044f4dd69ce422826241d5f34df55c92866c43101ba22ae66aee1d8e6956be6"
+  },
+  {
+    "id": "floor_slab",
+    "triangles": 188,
+    "vertices": 96,
+    "sha256": "d1583948ac110fe23a9e9a477c340386d6979ccb57968a65651c5690f6223055"
+  },
+  {
+    "id": "stairs",
+    "triangles": 224,
+    "vertices": 114,
+    "sha256": "e0e4e226bc5146cb811a51da4fea13594703614980b83ba00c954d9b60d75d25"
+  },
+  {
+    "id": "codex_corner",
+    "triangles": 8,
+    "vertices": 6,
+    "sha256": "7d6101a7da67ced66ffc401a88a0f0fdac770e75cf129798460d553d7977bd0a"
+  },
+  {
+    "id": "codex_corner_floor",
+    "triangles": 104,
+    "vertices": 54,
+    "sha256": "75a9c8bab2c6ef92d5c70e98ae9c5b9b770f9280851f80d6f10917938c909552"
+  },
+  {
+    "id": "foundation",
+    "triangles": 1422,
+    "vertices": 713,
+    "sha256": "fdfa7f8e3dd5df2e0ec7259e59f96d936e30126e37a1738104a677faeb169592"
+  },
+  {
+    "id": "dry_wall",
+    "triangles": 686,
+    "vertices": 345,
+    "sha256": "4ed793bd33e5e7a5380c5baa06a793c7858adaad4f95976950e0864c69b057f0"
+  }
+]

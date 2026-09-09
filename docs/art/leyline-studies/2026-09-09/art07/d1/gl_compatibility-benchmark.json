@@ -1,0 +1,45 @@
+{
+	"adapter": "NVIDIA GeForce RTX 5090",
+	"cap": 0,
+	"renderer": "gl_compatibility",
+	"resolution": [
+		1440,
+		900
+	],
+	"rows": [
+		{
+			"camera_distance_parameter_m": 6.0,
+			"draws": 131.0,
+			"p50_ms": 0.514,
+			"p95_ms": 0.575,
+			"primitives": 26380.0,
+			"texture_bytes": 12949532.0,
+			"video_bytes": 47698212.0,
+			"worst_ms": 1.005
+		},
+		{
+			"camera_distance_parameter_m": 12.0,
+			"draws": 181.0,
+			"p50_ms": 0.541,
+			"p95_ms": 0.617,
+			"primitives": 35106.0,
+			"texture_bytes": 12949532.0,
+			"video_bytes": 47698212.0,
+			"worst_ms": 0.7
+		},
+		{
+			"camera_distance_parameter_m": 24.0,
+			"draws": 251.0,
+			"p50_ms": 0.576,
+			"p95_ms": 0.642,
+			"primitives": 46706.0,
+			"texture_bytes": 12949532.0,
+			"video_bytes": 47698212.0,
+			"worst_ms": 0.876
+		}
+	],
+	"sample_frames": 360,
+	"scene": "same static native lattice gallery; no captures/generation during measurement",
+	"vsync": false,
+	"warmup_frames": 180
+}
