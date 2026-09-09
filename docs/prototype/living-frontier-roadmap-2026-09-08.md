@@ -1,6 +1,6 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
-**Status: Waves 1–7 implemented as opt-in work. LF-7A/B expose captured laboratory configurations, exact rewards and saved return/reconfiguration. Both earlier defect regressions remain passing. Wave 7 now awaits orchestrator review; human balance/readability acceptance and the synchronous publication pause remain open.**
+**Status: Waves 1–7 implemented as opt-in work and technically cleared by independent reviews. LF-7A/B expose captured laboratory configurations, exact rewards and saved return/reconfiguration. Both earlier defect regressions remain passing. Complete added-pressure runs, upper-tier balance, continuous fresh-campaign evidence, human clarity and the synchronous publication pause remain open.**
 See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
 [Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
 for selected tuning, compatibility, evidence and remaining owner playtests.
@@ -28,6 +28,9 @@ The [Wave 7 contract and evidence](living-frontier-wave7-2026-09-09.md) records
 the optional pressure contract, complete live base run, physical extraction,
 once-only reward settlement, save retry and campaign compatibility. No further
 wave or expansion is authorized by that implementation record.
+The [independent Wave 7 review](living-frontier-wave7-review-2026-09-09.md)
+records the final technical clearance, current regression evidence and a proposed
+INT-18 validation handoff. There is no automatically approved eighth wave.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 

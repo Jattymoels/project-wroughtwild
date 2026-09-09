@@ -16,7 +16,10 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   give no guaranteed Catalyst. Legacy shrine rewards remain unchanged.
 - [x] LF-7B complete live run, exact saved rewards, retry/reconfigure, paid field
   work and full campaign/earlier defect regression matrix are complete.
-- [ ] Orchestrator reviews Wave 7; human accepts full-run difficulty and clarity.
+- [x] Orchestrator independently reviews Wave 7 and earlier regressions;
+  [technical clearance and remaining evidence](living-frontier-wave7-review-2026-09-09.md).
+- [ ] Complete added-pressure runs and upper-tier balance are validated; human
+  accepts full-run difficulty and clarity.
 
 [Configuration, evidence and limits](living-frontier-wave7-2026-09-09.md).
 

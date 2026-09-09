@@ -468,4 +468,7 @@ material/Kind-purse rewards, failed writes and fresh processes are checked in
 the [Wave 7 record](../docs/prototype/living-frontier-wave7-2026-09-09.md).
 Run `tools/living_frontier_wave7_checks.ps1` with `-Native -Controls -Loop
 -Restart -Routes -Combat -Effects`; `-Visuals -LoopVisuals` captures the pages.
-Human full-run difficulty/readability and orchestrator review remain open.
+The [independent Wave 7 review](../docs/prototype/living-frontier-wave7-review-2026-09-09.md)
+clears the implementation and earlier regressions. Complete added-pressure runs,
+upper-tier balance, a continuous fresh campaign and human difficulty/readability
+acceptance remain open, alongside the known synchronous publication pause.

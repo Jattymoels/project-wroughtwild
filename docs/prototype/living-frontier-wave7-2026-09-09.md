@@ -5,6 +5,13 @@ orchestrator review. The [Wave 6 review](living-frontier-wave6-review-2026-09-09
 clears both earlier repairs. Unrelated art and local diagnostics stay outside
 these slices. Human difficulty/readability acceptance remains separate.
 
+Subsequent [independent orchestrator review](living-frontier-wave7-review-2026-09-09.md)
+clears LF-7A/B: 511,271 native checks, 16,637 counted engine checks and 12 live
+pressure samples, with no new blocking implementation defect found. Complete
+added-pressure victories, upper-tier balance, a continuous fresh campaign and
+human presentation acceptance remain open. The implementation receipts below
+retain the author's original measurements; the review records its own reruns.
+
 ## Configuration contract — recorded before implementation
 
 Affected systems: D-006 Trial ownership, D-010 combat authority, D-019/D-028

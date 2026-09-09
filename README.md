@@ -33,9 +33,12 @@ opens captured Central's saved offers and tiers with optional Crossfire or
 Relentless pressure and exact material/equipment/core previews. Settings commit
 at entry; known creature trials preserve the defeated human and both terrain
 events. LF-7A/B are checked: complete, bank or abandon, save the settled return,
-retry failed writes and choose another configuration. Wave 7 awaits orchestrator review.
-`--living-frontier-wave7` continues the same world/save. Human difficulty and the
-synchronous terrain-publication pause remain open.
+retry failed writes and choose another configuration. The
+[independent Wave 7 review](docs/prototype/living-frontier-wave7-review-2026-09-09.md)
+clears the implementation and earlier regressions. `--living-frontier-wave7`
+continues the same world/save. Complete added-pressure runs, upper-tier balance,
+a continuous fresh campaign, human clarity and the synchronous publication pause
+remain open; the review proposes bounded INT-18 validation next.
 
 [Living Frontier Wave 6](docs/prototype/living-frontier-wave6-2026-09-09.md)
 repairs ordinary-load movement after failed publication recovery, then opens
