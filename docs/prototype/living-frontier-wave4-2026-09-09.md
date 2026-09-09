@@ -6,6 +6,10 @@ Baseline: `4cc5e3c`. The [Wave 3 review](living-frontier-wave3-review-2026-09-09
 [Wave 3 contract](living-frontier-wave3-2026-09-09.md) and
 [roadmap](living-frontier-roadmap-2026-09-08.md) constrain this work.
 
+The [independent Wave 4 review](living-frontier-wave4-review-2026-09-09.md)
+closes LF3-R1 and gives technical clearance for the bounded LF-5 wave. Combat
+and readability playtests and the measured publication pause remain open.
+
 ## LF3-R1 contract, recorded before implementation
 
 Preserve the published generation pass, including terrain, resources, packs,

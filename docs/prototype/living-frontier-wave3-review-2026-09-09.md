@@ -1,11 +1,13 @@
 # Living Frontier Wave 3 — orchestrator review
 
-**Implementation follow-up, 9 September:** LF3-R1 is repaired and its physical,
-37-seed and historical paid-save regressions pass. The
+**Independent closure, 9 September:** LF3-R1 is repaired. The
+[Wave 4 orchestrator review](living-frontier-wave4-review-2026-09-09.md)
+independently confirms its physical routes, 37-seed native sweep and historical
+paid-save regressions. The
 [Wave 4 work record](living-frontier-wave4-2026-09-09.md#lf3-r1-evidence) retains
 the negative wall reproductions, exact-geometry fingerprints, checked routes
-and complete pipeline receipt. The original review below remains the before
-evidence; this follow-up does not claim another orchestrator review.
+and complete pipeline receipt. The original review below remains the historical
+before evidence; its route blocker is closed by the linked independent review.
 
 9 September 2026. Reviewed baseline:
 `11322c9` (publication handoff), containing LF-3A `df5a0c1`, LF-3B `0cec19f`

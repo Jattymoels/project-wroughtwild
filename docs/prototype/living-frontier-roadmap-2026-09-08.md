@@ -7,8 +7,11 @@ for selected tuning, compatibility, evidence and remaining owner playtests.
 The [Wave 2 review](living-frontier-wave2-review-2026-09-09.md) cleared its foundation.
 The [Wave 3 handoff](living-frontier-wave3-handoff-2026-09-09.md) records the
 inhabitants, paid rewards and laboratory trail; the
-[Wave 3 review](living-frontier-wave3-review-2026-09-09.md) requires LF3-R1's
-physical route repair before Wave 4.
+[Wave 3 review](living-frontier-wave3-review-2026-09-09.md) identified LF3-R1's
+physical route defect. The
+[Wave 4 review](living-frontier-wave4-review-2026-09-09.md) independently closes
+that repair, clears LF-4 and records the next bounded LF-5 work and remaining
+playtest/performance limits.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 
