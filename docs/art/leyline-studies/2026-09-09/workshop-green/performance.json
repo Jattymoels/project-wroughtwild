@@ -1,0 +1,60 @@
+{
+	"cases": [
+		{
+			"cpu_median_ms": 0.122000001370907,
+			"draw_calls": 131.0,
+			"gpu_median_ms": 0.372000008821487,
+			"gpu_p95_ms": 2.89800000190735,
+			"shade": false,
+			"shot": "source",
+			"texture_bytes": 927540736.0
+		},
+		{
+			"cpu_median_ms": 0.135000005364418,
+			"draw_calls": 131.0,
+			"gpu_median_ms": 0.367000013589859,
+			"gpu_p95_ms": 0.375999987125397,
+			"shade": true,
+			"shot": "source",
+			"texture_bytes": 927540736.0
+		},
+		{
+			"cpu_median_ms": 0.130999997258186,
+			"draw_calls": 115.0,
+			"gpu_median_ms": 0.456000000238419,
+			"gpu_p95_ms": 0.465000003576279,
+			"shade": false,
+			"shot": "post",
+			"texture_bytes": 927540736.0
+		},
+		{
+			"cpu_median_ms": 0.133000001311302,
+			"draw_calls": 115.0,
+			"gpu_median_ms": 0.456999987363815,
+			"gpu_p95_ms": 0.465000003576279,
+			"shade": true,
+			"shot": "post",
+			"texture_bytes": 927540736.0
+		},
+		{
+			"cpu_median_ms": 0.216999992728233,
+			"draw_calls": 208.0,
+			"gpu_median_ms": 0.529999971389771,
+			"gpu_p95_ms": 0.537000000476837,
+			"shade": false,
+			"shot": "overview",
+			"texture_bytes": 927540736.0
+		},
+		{
+			"cpu_median_ms": 0.209999993443489,
+			"draw_calls": 208.0,
+			"gpu_median_ms": 0.528999984264374,
+			"gpu_p95_ms": 0.53600001335144,
+			"shade": true,
+			"shot": "overview",
+			"texture_bytes": 927540736.0
+		}
+	],
+	"device": "NVIDIA GeForce RTX 5090",
+	"renderer": "forward_plus"
+}

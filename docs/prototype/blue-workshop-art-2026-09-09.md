@@ -1,6 +1,6 @@
 # ART-04C — Blue source to delay
 
-**Technical handoff delivered; Blue visual review pending — 9 September 2026.** After reviewing the
+**Technical handoff delivered and visually approved — 9 September 2026.** After reviewing the
 White handoff in chat, the owner answered “Yep approved, next!”. White is visually
 approved. This selects Blue only; Green and ART-05 remain later slices.
 
@@ -148,5 +148,6 @@ engine/script/shader/assertion errors fail. UTF-8/newline errors caught in the
 first derived review were corrected before final captures. Blender resources
 and Godot APPDATA are isolated.
 
-**Next gate: owner visual approval of Blue's actual pictures in chat.** White is
-approved. Green and ART-05 remain separate later slices.
+The owner approved Blue's actual pictures in chat: “Yea looks awesome, continue”.
+The next selected slice is [ART-04D Green](green-workshop-art-2026-09-09.md).
+ART-05 remains a separate later slice.

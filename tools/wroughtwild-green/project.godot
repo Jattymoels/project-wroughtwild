@@ -1,0 +1,15 @@
+config_version=5
+
+[application]
+config/name="Wroughtwild ART-04 Green study"
+run/main_scene="res://review.tscn"
+
+[display]
+window/size/viewport_width=1600
+window/size/viewport_height=1000
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="forward_plus"
+renderer/rendering_method.mobile="mobile"
+textures/default_filters/use_nearest_mipmap_filter=false

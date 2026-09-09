@@ -1,0 +1,284 @@
+{
+  "native": {
+    "checks": 111,
+    "failures": [],
+    "restart": false
+  },
+  "restart": {
+    "checks": 13,
+    "failures": [],
+    "restart": true
+  },
+  "assets": {
+    "checks": 133,
+    "failures": [],
+    "runtime_assets": [
+      {
+        "file": "green-source-near.glb",
+        "triangles": 35999,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.6449030637741089,
+            -0.7203564047813416,
+            0.0
+          ],
+          [
+            0.6455594301223755,
+            0.7199642658233643,
+            0.7546491622924805
+          ]
+        ]
+      },
+      {
+        "file": "green-source-mid.glb",
+        "triangles": 15999,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.645301878452301,
+            -0.7201560735702515,
+            0.0
+          ],
+          [
+            0.6448702216148376,
+            0.7199366688728333,
+            0.7550821900367737
+          ]
+        ]
+      },
+      {
+        "file": "green-source-far.glb",
+        "triangles": 7999,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.6491534113883972,
+            -0.7221766114234924,
+            0.0
+          ],
+          [
+            0.6454063653945923,
+            0.7146491408348083,
+            0.7568821310997009
+          ]
+        ]
+      },
+      {
+        "file": "green-post-near.glb",
+        "triangles": 1998,
+        "surfaces": 4,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "green-post-mid.glb",
+        "triangles": 1998,
+        "surfaces": 4,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "green-post-far.glb",
+        "triangles": 1998,
+        "surfaces": 4,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "green-fragment-1.glb",
+        "triangles": 190,
+        "volume_m3": 0.001923723323626664
+      },
+      {
+        "file": "green-fragment-2.glb",
+        "triangles": 184,
+        "volume_m3": 0.001817930898203723
+      },
+      {
+        "file": "green-fragment-3.glb",
+        "triangles": 244,
+        "volume_m3": 0.0018702597459294174
+      }
+    ],
+    "blender": "4.5.9 LTS",
+    "packed_blend_sha256": "d720f9dcb3b89572e3ee245a26e19c5a554bb3571e9250405697beec9aca601e"
+  },
+  "renderers": {
+    "evidence": {
+      "visual_checks": 1126,
+      "captures": 132,
+      "renderer": "forward_plus",
+      "rendered_light_differences": {
+        "source-ready.png / source-no-glow.png": {
+          "changed_pixels": 1789,
+          "maximum_channel_difference": 226,
+          "region": [
+            530,
+            340,
+            1120,
+            770
+          ]
+        },
+        "junction-unwound.png / junction-unwound-no-glow.png": {
+          "changed_pixels": 510,
+          "maximum_channel_difference": 241,
+          "region": [
+            680,
+            280,
+            920,
+            485
+          ]
+        },
+        "request-21.png / request-25.png": {
+          "changed_pixels": 614,
+          "maximum_channel_difference": 241,
+          "region": [
+            690,
+            280,
+            915,
+            485
+          ]
+        },
+        "junction-first-blocked.png / junction-second-blocked.png": {
+          "changed_pixels": 510,
+          "maximum_channel_difference": 241,
+          "region": [
+            690,
+            280,
+            915,
+            440
+          ]
+        },
+        "first arm": {
+          "sent_green_pixels": 145,
+          "blocked_green_pixels": 0,
+          "region": [
+            728,
+            309,
+            795,
+            389
+          ]
+        },
+        "second arm": {
+          "sent_green_pixels": 275,
+          "blocked_green_pixels": 1,
+          "region": [
+            826,
+            310,
+            899,
+            370
+          ]
+        }
+      },
+      "paused_core_pixels_identical": true
+    },
+    "evidence-compat": {
+      "visual_checks": 1126,
+      "captures": 132,
+      "renderer": "gl_compatibility",
+      "rendered_light_differences": {
+        "source-ready.png / source-no-glow.png": {
+          "changed_pixels": 1583,
+          "maximum_channel_difference": 250,
+          "region": [
+            530,
+            340,
+            1120,
+            770
+          ]
+        },
+        "junction-unwound.png / junction-unwound-no-glow.png": {
+          "changed_pixels": 472,
+          "maximum_channel_difference": 255,
+          "region": [
+            680,
+            280,
+            920,
+            485
+          ]
+        },
+        "request-21.png / request-25.png": {
+          "changed_pixels": 567,
+          "maximum_channel_difference": 255,
+          "region": [
+            690,
+            280,
+            915,
+            485
+          ]
+        },
+        "junction-first-blocked.png / junction-second-blocked.png": {
+          "changed_pixels": 472,
+          "maximum_channel_difference": 255,
+          "region": [
+            690,
+            280,
+            915,
+            440
+          ]
+        },
+        "first arm": {
+          "sent_green_pixels": 127,
+          "blocked_green_pixels": 0,
+          "region": [
+            728,
+            309,
+            795,
+            389
+          ]
+        },
+        "second arm": {
+          "sent_green_pixels": 245,
+          "blocked_green_pixels": 1,
+          "region": [
+            826,
+            310,
+            899,
+            370
+          ]
+        }
+      },
+      "paused_core_pixels_identical": true
+    }
+  },
+  "evidence_checks": 419,
+  "clip": {
+    "source_frames": 96,
+    "encoded_frames": 96,
+    "duration_ms": 12000,
+    "lossless_exact": true,
+    "sha256": "52bc5f6be6a944b7e5a59f67a3dbb3f5aa687e8580aed5a976571adb10ffc1ae"
+  },
+  "failures": []
+}

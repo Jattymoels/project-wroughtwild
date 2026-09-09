@@ -1,0 +1,155 @@
+{
+  "source_sha256": "eba7bfa22ea63b72d03b9bc0e80775e1b3eed6d5b76fad2bbe86037dde8454fc",
+  "source_body": [
+    1.5,
+    1.1,
+    1.5
+  ],
+  "post_body": [
+    0.65,
+    1.18,
+    0.55
+  ],
+  "port_height": 1.18,
+  "lod_triangles": [
+    36000,
+    16000,
+    8000
+  ],
+  "scar": {
+    "mask_size": 2048,
+    "core_half_width": 0.006,
+    "damage_half_width": 0.022,
+    "recess_metres": 0.003,
+    "period_seconds": 4.2,
+    "minimum_light": 0.25,
+    "peak_emission": 3.7,
+    "colour_srgb": [
+      0.43,
+      0.9,
+      0.39
+    ],
+    "paths": [
+      {
+        "axis": "front",
+        "points": [
+          [
+            -0.24,
+            0.1
+          ],
+          [
+            -0.19,
+            0.18
+          ],
+          [
+            -0.13,
+            0.24
+          ],
+          [
+            -0.07,
+            0.32
+          ],
+          [
+            -0.03,
+            0.4
+          ]
+        ],
+        "width": 1.0,
+        "offset": 0.0,
+        "span": 0.42,
+        "branch": 0
+      },
+      {
+        "axis": "front",
+        "points": [
+          [
+            -0.03,
+            0.4
+          ],
+          [
+            -0.13,
+            0.43
+          ],
+          [
+            -0.23,
+            0.47
+          ],
+          [
+            -0.37,
+            0.51
+          ],
+          [
+            -0.46,
+            0.48
+          ]
+        ],
+        "width": 0.75,
+        "offset": 0.42,
+        "span": 0.58,
+        "branch": 1
+      },
+      {
+        "axis": "front",
+        "points": [
+          [
+            -0.03,
+            0.4
+          ],
+          [
+            0.1,
+            0.39
+          ],
+          [
+            0.2,
+            0.43
+          ],
+          [
+            0.29,
+            0.48
+          ],
+          [
+            0.37,
+            0.47
+          ]
+        ],
+        "width": 0.7,
+        "offset": 0.42,
+        "span": 0.58,
+        "branch": 2
+      }
+    ]
+  },
+  "presentation": {
+    "source_ready_gain": 0.65,
+    "source_work_gain": 0.85,
+    "claim_gain": 0.3,
+    "camera_fov": 48.0,
+    "passage_seconds": 1.05
+  },
+  "purpose": {
+    "source_body": "Existing source collider in Godot XYZ metres; all detail levels remain inside it.",
+    "post_body": "Existing compact Green Junction collider; two visible branches retain the native shared top cable anchor.",
+    "port_height": "Existing central cable anchor at 1.18 m for both native output spans.",
+    "lod_triangles": "Near/mid/far reduction targets; record achieved counts and inspect silhouette without waiving physical checks.",
+    "scar": "6 mm half-core, 22 mm damaged grain and up to 3 mm recess. Green light is presentation, not poison or terrain growth.",
+    "paths": "A shared front-grain stem divides into two fading branches; RGBA stores core, damage, progress and branch identity.",
+    "period_seconds": "4.2-second natural travelling pulse splits at 42% of the route. The junction uses real counter events instead.",
+    "minimum_light": "25% ambient floor keeps the narrow natural scar visible between crests.",
+    "peak_emission": "3.7 peak, no bloom, checked in both renderers and shade/day.",
+    "source_ready_gain": "Subdued ready-source pulse, zero after exhaustion or during blocked reformation.",
+    "source_work_gain": "Brighter after actual manual extraction progress, without inventing a work timer.",
+    "claim_gain": "Quiet exposed-mineral light while native claim or carried count is positive.",
+    "camera_fov": "48-degree isolated review camera; not player-camera tuning.",
+    "passage_seconds": "1.05-second passage only when the native Green counter increases. Each physically clear output shows its request even if that receiver refuses work.",
+    "resin": "New cut faces are inferred cloudy olive resin with 0.36 roughness, blended over 12 mm of distance from the sampled original surface; outer bark and attached scars remain."
+  },
+  "resin": {
+    "cut_colour_linear": [
+      0.11,
+      0.14,
+      0.035
+    ],
+    "cut_roughness": 0.36,
+    "cut_transition_m": 0.012
+  }
+}
