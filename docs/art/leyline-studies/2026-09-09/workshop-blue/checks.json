@@ -1,0 +1,224 @@
+{
+  "native": {
+    "checks": 90,
+    "failures": [],
+    "restart": false
+  },
+  "restart": {
+    "checks": 16,
+    "failures": [],
+    "restart": true
+  },
+  "assets": {
+    "checks": 119,
+    "failures": [],
+    "runtime_assets": [
+      {
+        "file": "blue-source-near.glb",
+        "triangles": 35999,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.7198760509490967,
+            -0.6181938052177429,
+            0.0
+          ],
+          [
+            0.7203423380851746,
+            0.6185444593429565,
+            0.704846978187561
+          ]
+        ]
+      },
+      {
+        "file": "blue-source-mid.glb",
+        "triangles": 15999,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.7199640274047852,
+            -0.6176341772079468,
+            0.0
+          ],
+          [
+            0.7203465104103088,
+            0.6183997392654419,
+            0.7056806683540344
+          ]
+        ]
+      },
+      {
+        "file": "blue-source-far.glb",
+        "triangles": 7999,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.7207265496253967,
+            -0.6160182952880859,
+            0.0
+          ],
+          [
+            0.7185283303260803,
+            0.6187224984169006,
+            0.7061638236045837
+          ]
+        ]
+      },
+      {
+        "file": "blue-post-near.glb",
+        "triangles": 38651,
+        "surfaces": 2,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "blue-post-mid.glb",
+        "triangles": 18651,
+        "surfaces": 2,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "blue-post-far.glb",
+        "triangles": 10651,
+        "surfaces": 2,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "blue-fragment-1.glb",
+        "triangles": 192,
+        "volume_m3": 0.001317404434143499
+      },
+      {
+        "file": "blue-fragment-2.glb",
+        "triangles": 134,
+        "volume_m3": 0.0011957060775082183
+      },
+      {
+        "file": "blue-fragment-3.glb",
+        "triangles": 176,
+        "volume_m3": 0.001281290928708105
+      }
+    ],
+    "blender": "4.5.9 LTS",
+    "packed_blend_sha256": "f9cde6272d02843d16899f590733913f32a4f0f87c0f5efcea5528c408157c8f"
+  },
+  "renderers": {
+    "evidence": {
+      "visual_checks": 548,
+      "captures": 97,
+      "renderer": "forward_plus",
+      "rendered_light_differences": {
+        "source-ready.png / source-no-glow.png": {
+          "changed_pixels": 1287,
+          "maximum_channel_difference": 216,
+          "region": [
+            570,
+            355,
+            1000,
+            760
+          ]
+        },
+        "delay-held.png / delay-held-no-glow.png": {
+          "changed_pixels": 181,
+          "maximum_channel_difference": 239,
+          "region": [
+            610,
+            335,
+            965,
+            790
+          ]
+        },
+        "delay-held.png / request-12.png": {
+          "changed_pixels": 99,
+          "maximum_channel_difference": 87,
+          "region": [
+            660,
+            385,
+            910,
+            615
+          ]
+        }
+      },
+      "paused_core_pixels_identical": true
+    },
+    "evidence-compat": {
+      "visual_checks": 548,
+      "captures": 97,
+      "renderer": "gl_compatibility",
+      "rendered_light_differences": {
+        "source-ready.png / source-no-glow.png": {
+          "changed_pixels": 1163,
+          "maximum_channel_difference": 239,
+          "region": [
+            570,
+            355,
+            1000,
+            760
+          ]
+        },
+        "delay-held.png / delay-held-no-glow.png": {
+          "changed_pixels": 154,
+          "maximum_channel_difference": 255,
+          "region": [
+            610,
+            335,
+            965,
+            790
+          ]
+        },
+        "delay-held.png / request-12.png": {
+          "changed_pixels": 91,
+          "maximum_channel_difference": 172,
+          "region": [
+            660,
+            385,
+            910,
+            615
+          ]
+        }
+      },
+      "paused_core_pixels_identical": true
+    }
+  },
+  "evidence_checks": 293,
+  "clip": {
+    "source_frames": 64,
+    "encoded_frames": 63,
+    "duration_ms": 8000,
+    "lossless_exact": true,
+    "sha256": "43cce5383bfd548e99d7c121b9552bff6fdcd3cf656756f263ddb1d83a01ffac"
+  },
+  "failures": []
+}

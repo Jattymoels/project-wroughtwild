@@ -1,6 +1,6 @@
 # ART-04B — White source to connection
 
-**Technical handoff delivered; White visual review pending — 9 September 2026.** The owner reviewed
+**Technical handoff delivered and visually approved — 9 September 2026.** The owner reviewed
 the finished Red set in chat and answered “Yes approved” to proceeding to White.
 
 ## Outcome and boundaries
@@ -143,5 +143,6 @@ warning; it uses no TLS/network request, and other engine/script/assertion error
 still fail. Blender user resources and Godot APPDATA are isolated under the art
 build for the final runs.
 
-**Next gate: owner visual review of the White pictures in chat.** Red is already
-approved. Blue, Green and ART-05 remain separate slices after this review.
+The owner reviewed White's pictures in chat and replied “Yep approved, next!”.
+White is visually approved. The next selected slice is
+[ART-04C Blue](blue-workshop-art-2026-09-09.md); Green and ART-05 remain later.

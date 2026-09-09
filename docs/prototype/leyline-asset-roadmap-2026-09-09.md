@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–03 and ART-04 Red visually approved; ART-04 White technical handoff delivered, visual review pending; ART-05 proposed.** Owner request,
+**Status: ART-01–03 and ART-04 Red/White visually approved; ART-04C Blue technical handoff delivered, visual review pending; ART-05 proposed.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -26,8 +26,12 @@ matching recovered material and the existing White Connection. Blue, Green and
 ART-05 remain separate later slices.
 White is now technically delivered with a packed editable source, closed
 fragments, fitted post and native request/cargo proof in both renderers. Its
-actual pictures await owner review in chat; costs and remaining limits are in
-the work item.
+actual pictures were approved in chat: “Yep approved, next!”. This selects
+[ART-04C Blue](blue-workshop-art-2026-09-09.md), with Green and ART-05 later.
+Costs and remaining limits are in the White work item.
+Blue's source/flakes/delay handoff is now technically delivered, including real
+pending/paused/released requests and both-renderer evidence. Its actual pictures
+await owner review in chat; Green and ART-05 remain later slices.
 
 ## Outcome and current evidence
 
@@ -235,8 +239,8 @@ walk, six environment roles, actual day/shade/dusk evidence and a packed
 [handoff](affected-grove-2026-09-09.md), visually approved by the owner on
 9 September. [ART-03](fauna-art-2026-09-09.md), wolf then stag, is also delivered
 and visually approved. The first [ART-04 Red source/material/heat-buffer handoff](source-workshop-art-2026-09-09.md)
-is delivered and visually approved. The next selected family is
-[ART-04B White](white-workshop-art-2026-09-09.md). Routine
+is delivered and visually approved, as is [ART-04B White](white-workshop-art-2026-09-09.md).
+The next selected family is [ART-04C Blue](blue-workshop-art-2026-09-09.md). Routine
 mask placement and review setup follow the brief. Decisions that change gameplay
 bodies, saved placement, supported renderer policy or campaign/encounter behaviour
 need their own selected scope. Source promotion into long-term versioned art is

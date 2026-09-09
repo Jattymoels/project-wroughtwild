@@ -1,7 +1,7 @@
 # ART-04B — White source, recovered mineral and connection
 
-Technical handoff delivered; **White visual approval pending**. Red was approved
-in chat before this separate family began. These are actual finished assets,
+Technical handoff delivered and **visually approved in chat**: “Yep approved, next!”.
+Blue is the next separate family. These are actual finished assets,
 with one Blender studio view and Godot Forward+ captures; `white-inclusion-input-v01.png`
 is the original ImageGen input, not a finished engine asset.
 
