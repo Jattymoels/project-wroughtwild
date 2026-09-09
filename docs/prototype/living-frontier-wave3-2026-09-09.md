@@ -306,3 +306,8 @@ Foundry regressions. The final expanded source-panel capture also passes its
 separate rendered run. No new package, production art or later-wave behaviour
 was introduced. Stop here for orchestrator review; publication receipts and
 remaining human questions are in the [handoff](living-frontier-wave3-handoff-2026-09-09.md).
+
+Local LF-3C commit `118bded`; ordinary push to `origin/main` succeeded, advancing
+the confirmed remote from `0cec19f` to `118bded`. The final handoff records all
+three checked slices. Concurrent art changes and unrelated fixtures remain
+outside these commits. No Wave 4 work was started.

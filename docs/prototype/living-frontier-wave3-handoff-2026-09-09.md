@@ -14,7 +14,7 @@ direction. Baseline was `73ed215`; concurrent ART-01 commits remain intact.
 | --- | --- | --- |
 | LF-3A | Same articulated boar ancestry; Red warned nearby release, Blue held committed charge. Ordinary retreat/sidestep, cover and interruption remain useful. | `df5a0c1`; pushed to `origin/main` |
 | LF-3B | Four finite influenced hosts, passive habits, matching source walks and useful material drops. Three visible sealed laboratory shells and two inactive future regions exist from the first new-profile save. | `0cec19f`; pushed to `origin/main` |
-| LF-3C | Paid zero-found-Catalyst progression through all five recipes; useful hunt-funded bricks; one artificial trail to the Collection Annex and contextual material/manufacture reading. | Checked; publication receipt follows the implementation commit |
+| LF-3C | Paid zero-found-Catalyst progression through all five recipes; useful hunt-funded bricks; one artificial trail to the Collection Annex and contextual material/manufacture reading. | `118bded`; pushed to `origin/main` |
 
 Run the normal game with `-- --living-frontier-wave3 --world-seed=77`.
 This is explicitly opt-in and uses `user://living_frontier_wave3.json`.
