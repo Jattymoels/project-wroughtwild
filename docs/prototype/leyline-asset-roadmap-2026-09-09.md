@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–03 visually approved; ART-04 first Red technical handoff delivered, visual review pending; ART-05 proposed.** Owner request,
+**Status: ART-01–03 and ART-04 Red visually approved; ART-04 White technical handoff delivered, visual review pending; ART-05 proposed.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -20,7 +20,14 @@ After discussing source → recovered material → crafted use, “Yep let's do 
 selects the first [ART-04 Red handoff](source-workshop-art-2026-09-09.md).
 That native-state source/material/heat-buffer handoff is now technically
 delivered, with actual engine evidence and limitations in its work item.
-The remaining influence families and ART-05 remain separate later slices.
+After reviewing the actual Red images in chat, “Yes approved” records its visual
+approval and selects [ART-04B White](white-workshop-art-2026-09-09.md): one source,
+matching recovered material and the existing White Connection. Blue, Green and
+ART-05 remain separate later slices.
+White is now technically delivered with a packed editable source, closed
+fragments, fitted post and native request/cargo proof in both renderers. Its
+actual pictures await owner review in chat; costs and remaining limits are in
+the work item.
 
 ## Outcome and current evidence
 
@@ -228,7 +235,8 @@ walk, six environment roles, actual day/shade/dusk evidence and a packed
 [handoff](affected-grove-2026-09-09.md), visually approved by the owner on
 9 September. [ART-03](fauna-art-2026-09-09.md), wolf then stag, is also delivered
 and visually approved. The first [ART-04 Red source/material/heat-buffer handoff](source-workshop-art-2026-09-09.md)
-is delivered for owner visual review. Routine
+is delivered and visually approved. The next selected family is
+[ART-04B White](white-workshop-art-2026-09-09.md). Routine
 mask placement and review setup follow the brief. Decisions that change gameplay
 bodies, saved placement, supported renderer policy or campaign/encounter behaviour
 need their own selected scope. Source promotion into long-term versioned art is

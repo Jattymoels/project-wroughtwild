@@ -1,6 +1,10 @@
 # ART-04A — Red source to workshop
 
-**Technical handoff delivered; owner visual review pending — 9 September 2026.** The owner's “Love it” visually
+**Technical handoff delivered and visually approved — 9 September 2026.** After
+reviewing the actual Red source, fragments and buffer pictures in chat, the
+owner replied “Yes approved”, clearing the next separate White family slice.
+This approves the Red appearance; ordinary-world adoption remains ART-05.
+The owner's earlier “Love it” visually
 approves the [ART-03 fauna handoff](fauna-art-2026-09-09.md). After discussing
 source → recovered material → crafted use, “Yep let's do it” selects this first
 Red family. White, Blue, Green and ART-05 world adoption remain separate slices.
@@ -130,5 +134,5 @@ The dense source is an exterior surface; only the small recovered fragments are
 certified closed solids. Their new faces use baked source detail. The rare
 catalyst uses a small claim marker, not a newly finished rare-asset model.
 
-The first Red family is ready for owner visual review. Continue with White only
-after that review; Blue, Green and ART-05 remain separate slices.
+The first Red family passed owner visual review in chat. Continue with the
+separate White family; Blue, Green and ART-05 remain later slices.

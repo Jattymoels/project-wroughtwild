@@ -1,0 +1,17 @@
+{
+  "native": {
+    "revision": "f7253d20ed1dbeee743219190bdaccac60921c1c",
+    "godot_cpp_sha256": "701934d2505314d4272ef258beca75974de9f2bb2d94d98b29d22670de42370c",
+    "dll_sha256": "23d9ea7902a5d28bdeb8a49d16eeea76b50d1014ad044942320dc05831eedd99"
+  },
+  "paid_checkpoint_sha256": "2da8a1ca73012f391ca25b0140518f09d3da4b7ec46e42b85a44d8e0152f0b51",
+  "context": {
+    "canopy-far.glb": "b09ce4d07b54332e1bc9d15b7b831b31c578a7ffac04ec935b13b199a9cb43ee",
+    "forest-floor.png": "3d5b8c97099046eec0f47e4150246f7a83abd0318023b4b680fc05da2a4f69cc",
+    "quiet-tree.glb": "5847995437d85aa014f373412f82746658627f83547ee94bd13f81c6b407051f",
+    "strange_basket.glb": "77db7e07e390fe1115db50924dbfe170d03f871bc56c14d81301d7eb979ce3ae",
+    "strange_drum.glb": "8596005d2d7edbb175123e630f9cb112edb0d9914f858fbb0e74fa31682778aa",
+    "strange_lever.glb": "dd065fef7f3f1e17b3ea91508bb083391235cb20c5616b573cbe7c25cecbb3da",
+    "strange_winch.glb": "1d4f5b0fe6aa8a75accd705a5c8673cc5cabdb9719c8c649a558ac9eeeb89e61"
+  }
+}

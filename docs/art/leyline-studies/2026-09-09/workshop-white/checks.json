@@ -1,0 +1,202 @@
+{
+  "native": {
+    "checks": 73,
+    "failures": [],
+    "restart": false
+  },
+  "restart": {
+    "checks": 6,
+    "failures": [],
+    "restart": true
+  },
+  "assets": {
+    "checks": 118,
+    "failures": [],
+    "runtime_assets": [
+      {
+        "file": "white-source-near.glb",
+        "triangles": 41937,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.7188213467597961,
+            -0.6047986149787903,
+            0.0
+          ],
+          [
+            0.7220536470413208,
+            0.6024454832077026,
+            0.804997980594635
+          ]
+        ]
+      },
+      {
+        "file": "white-source-mid.glb",
+        "triangles": 17989,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.7139134407043457,
+            -0.6009238362312317,
+            0.0
+          ],
+          [
+            0.7196536064147949,
+            0.6066313982009888,
+            0.799839437007904
+          ]
+        ]
+      },
+      {
+        "file": "white-source-far.glb",
+        "triangles": 14989,
+        "surfaces": 1,
+        "bounds_blender_xyz": [
+          [
+            -0.7044201493263245,
+            -0.61290043592453,
+            0.0
+          ],
+          [
+            0.7060344815254211,
+            0.5964896082878113,
+            0.8089552521705627
+          ]
+        ]
+      },
+      {
+        "file": "white-post-near.glb",
+        "triangles": 43533,
+        "surfaces": 2,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "white-post-mid.glb",
+        "triangles": 19585,
+        "surfaces": 2,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "white-post-far.glb",
+        "triangles": 16585,
+        "surfaces": 2,
+        "bounds_blender_xyz": [
+          [
+            -0.3100000023841858,
+            -0.25999999046325684,
+            0.0
+          ],
+          [
+            0.3100000023841858,
+            0.25999999046325684,
+            1.1800000667572021
+          ]
+        ]
+      },
+      {
+        "file": "white-fragment-1.glb",
+        "triangles": 200,
+        "volume_m3": 0.0040659566571444455
+      },
+      {
+        "file": "white-fragment-2.glb",
+        "triangles": 178,
+        "volume_m3": 0.003580508711315631
+      },
+      {
+        "file": "white-fragment-3.glb",
+        "triangles": 136,
+        "volume_m3": 0.006461925632486585
+      }
+    ],
+    "blender": "4.5.9 LTS",
+    "packed_blend_sha256": "350652cec3011d91b4f487bac53db4186d043fe82bd5b4732148e421e6d3ac38"
+  },
+  "renderers": {
+    "evidence": {
+      "visual_checks": 454,
+      "captures": 80,
+      "renderer": "forward_plus",
+      "rendered_light_differences": {
+        "source-ready.png": {
+          "changed_pixels": 1387,
+          "maximum_channel_difference": 234,
+          "region": [
+            570,
+            355,
+            1000,
+            760
+          ]
+        },
+        "post-request.png": {
+          "changed_pixels": 68,
+          "maximum_channel_difference": 239,
+          "region": [
+            560,
+            340,
+            1040,
+            790
+          ]
+        }
+      }
+    },
+    "evidence-compat": {
+      "visual_checks": 454,
+      "captures": 80,
+      "renderer": "gl_compatibility",
+      "rendered_light_differences": {
+        "source-ready.png": {
+          "changed_pixels": 1263,
+          "maximum_channel_difference": 255,
+          "region": [
+            570,
+            355,
+            1000,
+            760
+          ]
+        },
+        "post-request.png": {
+          "changed_pixels": 60,
+          "maximum_channel_difference": 255,
+          "region": [
+            560,
+            340,
+            1040,
+            790
+          ]
+        }
+      }
+    }
+  },
+  "evidence_checks": 231,
+  "clip": {
+    "source_frames": 48,
+    "encoded_frames": 39,
+    "duration_ms": 6000,
+    "lossless_exact": true,
+    "sha256": "22abd7794d42ce1099566e16588c84eb6453410ce2833a386ed2e702f377c322"
+  },
+  "failures": []
+}

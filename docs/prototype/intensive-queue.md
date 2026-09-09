@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-03 visual approval and first ART-04 Red handoff). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-04 Red visual approval and White continuation). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -34,8 +34,14 @@ heat buffer/forge use. Remaining White/Blue/Green families and ART-05 are separa
 later slices. No ordinary-world art adoption has occurred.
 The Red technical handoff is now delivered: packed editable source, closed
 recovered fragments, fitted buffer, native ownership/work presentation and
-Forward+/Compatibility evidence. **Next art gate: owner review of Red, then
-one White family slice.** The work item records checks and adoption limits.
+Forward+/Compatibility evidence. The owner reviewed the actual Red images in
+chat and replied “Yes approved”, selecting the separate
+[ART-04B White family](white-workshop-art-2026-09-09.md). Its source, recovered
+mineral and White Connection retain native request/drive separation.
+White's checked technical handoff is now delivered: editable source, closed
+fragments, fitted post, native request/cargo ownership, both renderers and
+recorded performance. **Next art gate: owner review of White visuals in chat.** Blue, Green and ART-05 remain
+later slices. Each work item records checks and adoption limits.
 
 The [local TRELLIS wolf experiment](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
 completed generation and 32 Blender handoff checks after the earlier Meshy review.
