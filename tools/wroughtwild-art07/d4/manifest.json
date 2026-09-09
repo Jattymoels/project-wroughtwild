@@ -1,0 +1,1247 @@
+{
+  "schema": 1,
+  "slice": "ART-07D4",
+  "status": "Reusable material source handoff; no normal-game adoption",
+  "base_commit": "56ce6bbe343012205690cf669491372958b80662",
+  "owner_visual_acceptance": "pending",
+  "source_concept": {
+    "path": "docs/art/concepts/environment/2026-09-09-frontier/03-building-family.png",
+    "sha256": "09aab066c1d21c313a06b3042f3a9979ffdbcc5fa507949bbf4dc0c741964f68"
+  },
+  "recipe": "materials.json",
+  "source_version": "v02",
+  "families": [
+    {
+      "id": "wood",
+      "name": "Timber",
+      "colour": [
+        126,
+        91,
+        55
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "edge_metres": [
+        0.5,
+        0.5
+      ],
+      "rings": 10,
+      "warp": 1.0,
+      "knots": 2,
+      "roughness": 0.78,
+      "relief_m": 0.00065,
+      "purpose": "Warm broad growth, torn fibres and irregular transverse tool chatter."
+    },
+    {
+      "id": "pine",
+      "name": "Pine",
+      "colour": [
+        196,
+        170,
+        122
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "edge_metres": [
+        0.5,
+        0.5
+      ],
+      "rings": 15,
+      "warp": 0.32,
+      "knots": 3,
+      "roughness": 0.73,
+      "relief_m": 0.0004,
+      "purpose": "Pale long grain, small dark knots and lighter end grain."
+    },
+    {
+      "id": "bog_oak",
+      "name": "Bog oak",
+      "colour": [
+        61,
+        48,
+        36
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "edge_metres": [
+        0.5,
+        0.5
+      ],
+      "rings": 20,
+      "warp": 0.65,
+      "knots": 1,
+      "roughness": 0.66,
+      "relief_m": 0.0007,
+      "purpose": "Dense nearly black brown grain with water-dark elongated pores."
+    },
+    {
+      "id": "ash_wood",
+      "name": "Ash wood",
+      "colour": [
+        174,
+        167,
+        151
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "edge_metres": [
+        0.5,
+        0.5
+      ],
+      "rings": 12,
+      "warp": 0.8,
+      "knots": 1,
+      "roughness": 0.85,
+      "relief_m": 0.00085,
+      "purpose": "Silvered bone-pale fibres retaining warm wood beneath weathering."
+    },
+    {
+      "id": "resinheart",
+      "name": "Resinheart",
+      "colour": [
+        147,
+        86,
+        35
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "edge_metres": [
+        0.5,
+        0.5
+      ],
+      "rings": 9,
+      "warp": 1.6,
+      "knots": 2,
+      "roughness": 0.7,
+      "relief_m": 0.0005,
+      "purpose": "Strong amber growth, dense end rings and non-emissive resin pockets."
+    },
+    {
+      "id": "woven_reed",
+      "name": "Woven reed",
+      "colour": [
+        153,
+        124,
+        73
+      ],
+      "tile_metres": [
+        0.4,
+        0.4
+      ],
+      "edge_metres": [
+        0.4,
+        0.4
+      ],
+      "roughness": 0.86,
+      "relief_m": 0.0018,
+      "courses": 16,
+      "stakes": 8,
+      "purpose": "Alternating over-under bundles with opaque dark backing and bundled cut edges."
+    },
+    {
+      "id": "corkbark",
+      "name": "Corkbark",
+      "colour": [
+        155,
+        116,
+        70
+      ],
+      "tile_metres": [
+        0.3,
+        0.3
+      ],
+      "edge_metres": [
+        0.3,
+        0.3
+      ],
+      "roughness": 0.91,
+      "relief_m": 0.0013,
+      "pores": 240,
+      "purpose": "Irregular coarse closed pores and stratified cut edges."
+    }
+  ],
+  "texture_contract": {
+    "filename": "d4_<family>_<face|edge>_<albedo|normal|orm>.png",
+    "albedo": "RGB8 sRGB",
+    "normal": "RGB8 linear tangent OpenGL +Y, strength 1",
+    "orm": "RGB8 linear: R=255 no baked AO, G=roughness, B=0 nonmetal",
+    "opacity": "Opaque RGB; no alpha coverage holes",
+    "emission": "Disabled for every family; no magical scar channel",
+    "filtering": "Repeat; lossless PNG import; mipmaps; anisotropic filtering",
+    "mapping": "UV = oriented local metres / family repeat metres; fine pieces crop at unchanged density; end/edge faces use separate material"
+  },
+  "textures": [
+    {
+      "file": "d4_wood_face_albedo.png",
+      "family": "wood",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "sRGB",
+      "bytes": 1011162,
+      "sha256": "60495f38ed2f8660102a40e5c209943e552b955af3c45afd19f6790a8ecee6fc",
+      "wrap_mean_delta_8bit": [
+        3.1744791666666665,
+        0.5667317708333334
+      ],
+      "interior_mean_delta_8bit": [
+        4.452594875162919,
+        1.2702322494094167
+      ]
+    },
+    {
+      "file": "d4_wood_face_normal.png",
+      "family": "wood",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 895013,
+      "sha256": "eaa132c2296ad62b996941cecbd335248f490327712ce84d6973d3a0652c2bba",
+      "wrap_mean_delta_8bit": [
+        3.5670572916666665,
+        0.4130859375
+      ],
+      "interior_mean_delta_8bit": [
+        2.7940086347344413,
+        0.7311805682836429
+      ]
+    },
+    {
+      "file": "d4_wood_face_orm.png",
+      "family": "wood",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 248137,
+      "sha256": "6a67ec454cf5890288470c8156230b6bdc3dc24dbd5c8ec55bb8db075fb56262",
+      "wrap_mean_delta_8bit": [
+        0.3473307291666667,
+        0.06673177083333333
+      ],
+      "interior_mean_delta_8bit": [
+        0.7538193808040078,
+        0.09244759846448354
+      ]
+    },
+    {
+      "file": "d4_wood_edge_albedo.png",
+      "family": "wood",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "sRGB",
+      "bytes": 364572,
+      "sha256": "f9782d735584a82c04a495cff356d8d5246fa22d2bd109749851d048a264d22f",
+      "wrap_mean_delta_8bit": [
+        7.100260416666667,
+        3.87109375
+      ],
+      "interior_mean_delta_8bit": [
+        7.309793909001957,
+        4.820437357305936
+      ]
+    },
+    {
+      "file": "d4_wood_edge_normal.png",
+      "family": "wood",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 368969,
+      "sha256": "6b5e0e3c710ea44a646a3cce9fd31b3a41bd88a06cd6c0fa845e49097e23eb06",
+      "wrap_mean_delta_8bit": [
+        3.6536458333333335,
+        2.072265625
+      ],
+      "interior_mean_delta_8bit": [
+        3.645446020874103,
+        2.2874406290769733
+      ]
+    },
+    {
+      "file": "d4_wood_edge_orm.png",
+      "family": "wood",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 116664,
+      "sha256": "ef7c46f9df51147cabf82b27a611e7a2adbcb66e5e85e579d03f4ab6f1e9cdee",
+      "wrap_mean_delta_8bit": [
+        0.8509114583333334,
+        0.4798177083333333
+      ],
+      "interior_mean_delta_8bit": [
+        1.3474205499836922,
+        0.4941915871656882
+      ]
+    },
+    {
+      "file": "d4_pine_face_albedo.png",
+      "family": "pine",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "sRGB",
+      "bytes": 1148960,
+      "sha256": "9c0e43fe21e0137804617d5d5dc45d91dd4f7102b82224b2d6acd4176b4ea12e",
+      "wrap_mean_delta_8bit": [
+        17.197916666666668,
+        0.5774739583333334
+      ],
+      "interior_mean_delta_8bit": [
+        9.896907583903552,
+        2.040154569892473
+      ]
+    },
+    {
+      "file": "d4_pine_face_normal.png",
+      "family": "pine",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 640578,
+      "sha256": "b2127388b9bff4177702567a1bb7dc9205ed488c81c03007814690db45e98163",
+      "wrap_mean_delta_8bit": [
+        3.1780598958333335,
+        0.1318359375
+      ],
+      "interior_mean_delta_8bit": [
+        1.9727806670536006,
+        0.4040248121334311
+      ]
+    },
+    {
+      "file": "d4_pine_face_orm.png",
+      "family": "pine",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 235215,
+      "sha256": "6d38bc47a8ce290cd1654d293ac8fa461b18271f745d34d3767cb422786d4740",
+      "wrap_mean_delta_8bit": [
+        1.1767578125,
+        0.031575520833333336
+      ],
+      "interior_mean_delta_8bit": [
+        0.8785718195055393,
+        0.07492229502688172
+      ]
+    },
+    {
+      "file": "d4_pine_edge_albedo.png",
+      "family": "pine",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "sRGB",
+      "bytes": 469832,
+      "sha256": "30b6cdbf1cf4f6fcf8cf993c1b60b7b48c8c50082c7b916c9f4127531be51e32",
+      "wrap_mean_delta_8bit": [
+        16.4296875,
+        9.869791666666666
+      ],
+      "interior_mean_delta_8bit": [
+        15.552689783105023,
+        11.349870556099152
+      ]
+    },
+    {
+      "file": "d4_pine_edge_normal.png",
+      "family": "pine",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 315026,
+      "sha256": "8a3116d67735cb61563d424d2b9073e27ce41f2dfcd7948799c4b73e0f03f134",
+      "wrap_mean_delta_8bit": [
+        3.5234375,
+        1.64453125
+      ],
+      "interior_mean_delta_8bit": [
+        2.3114094096542726,
+        1.5353065883887802
+      ]
+    },
+    {
+      "file": "d4_pine_edge_orm.png",
+      "family": "pine",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 127257,
+      "sha256": "771baa3a0f716a991e0f3c00784dc630ed6ac5e8ef1e2023de35c990b2abec7f",
+      "wrap_mean_delta_8bit": [
+        0.8977864583333334,
+        0.6067708333333334
+      ],
+      "interior_mean_delta_8bit": [
+        1.3890668317840835,
+        0.6287329786366601
+      ]
+    },
+    {
+      "file": "d4_bog_oak_face_albedo.png",
+      "family": "bog_oak",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "sRGB",
+      "bytes": 791900,
+      "sha256": "056dc44268f0c97ae97ec65941550560bd92a2c15ce5cf349d86b2ab969c16a5",
+      "wrap_mean_delta_8bit": [
+        3.0823567708333335,
+        0.4514973958333333
+      ],
+      "interior_mean_delta_8bit": [
+        3.445288634836266,
+        0.7100767630946563
+      ]
+    },
+    {
+      "file": "d4_bog_oak_face_normal.png",
+      "family": "bog_oak",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 961223,
+      "sha256": "8e6ebb2aea21f8efb382aeeaabe37e63a5a62c93b9977fe2feba8f10f3cb9b08",
+      "wrap_mean_delta_8bit": [
+        5.004231770833333,
+        0.568359375
+      ],
+      "interior_mean_delta_8bit": [
+        3.7460851585410557,
+        0.8256971173427826
+      ]
+    },
+    {
+      "file": "d4_bog_oak_face_orm.png",
+      "family": "bog_oak",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 266635,
+      "sha256": "a318662c51429bdc4ebeb097564af11efb177fe82dcae8efbfb623961fc2ffee",
+      "wrap_mean_delta_8bit": [
+        0.576171875,
+        0.09440104166666667
+      ],
+      "interior_mean_delta_8bit": [
+        0.9523072203893777,
+        0.10325533561420658
+      ]
+    },
+    {
+      "file": "d4_bog_oak_edge_albedo.png",
+      "family": "bog_oak",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "sRGB",
+      "bytes": 330500,
+      "sha256": "41ceeb9c3e4f4b045c4d83d4f75645f84ae77c1a36f6f5002d34dc54f9660c47",
+      "wrap_mean_delta_8bit": [
+        5.509114583333333,
+        3.59375
+      ],
+      "interior_mean_delta_8bit": [
+        5.122090060339204,
+        3.8561490949119372
+      ]
+    },
+    {
+      "file": "d4_bog_oak_edge_normal.png",
+      "family": "bog_oak",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 400734,
+      "sha256": "d34132463a63675802d42d71e756d1b5a7ad724339d9336ef823f601ef70c6b5",
+      "wrap_mean_delta_8bit": [
+        4.472005208333333,
+        3.3072916666666665
+      ],
+      "interior_mean_delta_8bit": [
+        4.192052195450098,
+        2.8748776908023483
+      ]
+    },
+    {
+      "file": "d4_bog_oak_edge_orm.png",
+      "family": "bog_oak",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 136924,
+      "sha256": "8b14de17ea2d7ebe953a8aef0fb4f0d52abdde958f9afacc10c115e5386802d3",
+      "wrap_mean_delta_8bit": [
+        1.0638020833333333,
+        0.7096354166666666
+      ],
+      "interior_mean_delta_8bit": [
+        1.4575332273320287,
+        0.708188091161122
+      ]
+    },
+    {
+      "file": "d4_ash_wood_face_albedo.png",
+      "family": "ash_wood",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "sRGB",
+      "bytes": 1127659,
+      "sha256": "ad434cc76489ee22e28e5e83d850a3a766ec5747f07c58b24c969d276cdfd5d2",
+      "wrap_mean_delta_8bit": [
+        9.134440104166666,
+        0.966796875
+      ],
+      "interior_mean_delta_8bit": [
+        8.330077806797817,
+        2.0440410913571196
+      ]
+    },
+    {
+      "file": "d4_ash_wood_face_normal.png",
+      "family": "ash_wood",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 1031310,
+      "sha256": "36dccc0c81097c189274faed90d44cb6083efaf7f0f00f316f2fd032543dddea",
+      "wrap_mean_delta_8bit": [
+        5.487955729166667,
+        0.5823567708333334
+      ],
+      "interior_mean_delta_8bit": [
+        3.971214475908276,
+        0.9527371115387748
+      ]
+    },
+    {
+      "file": "d4_ash_wood_face_orm.png",
+      "family": "ash_wood",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 244624,
+      "sha256": "4f5f18f92286409993d3b4ef401212b019e95599ab20b94b60ff48ac6b948a18",
+      "wrap_mean_delta_8bit": [
+        0.6780598958333334,
+        0.064453125
+      ],
+      "interior_mean_delta_8bit": [
+        0.7868334937072337,
+        0.087798982771261
+      ]
+    },
+    {
+      "file": "d4_ash_wood_edge_albedo.png",
+      "family": "ash_wood",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "sRGB",
+      "bytes": 436331,
+      "sha256": "112c39bd3a5d83053b83b622706e89da5d58d21164cbb17d43b140aefa9a9b5c",
+      "wrap_mean_delta_8bit": [
+        12.994791666666666,
+        6.857421875
+      ],
+      "interior_mean_delta_8bit": [
+        13.403215203033268,
+        9.000926237361384
+      ]
+    },
+    {
+      "file": "d4_ash_wood_edge_normal.png",
+      "family": "ash_wood",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 412740,
+      "sha256": "cc0a1e4611ad59a185ad2a33c47012248c2626befbfccd996b9b8abc502ef6fb",
+      "wrap_mean_delta_8bit": [
+        5.181640625,
+        3.181640625
+      ],
+      "interior_mean_delta_8bit": [
+        4.913714683219178,
+        3.120131839122635
+      ]
+    },
+    {
+      "file": "d4_ash_wood_edge_orm.png",
+      "family": "ash_wood",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 121597,
+      "sha256": "7591dfb6ae52b39f6155784c34bb2e491a1babbf264c575b588ad5e60a70c3dd",
+      "wrap_mean_delta_8bit": [
+        0.9524739583333334,
+        0.4498697916666667
+      ],
+      "interior_mean_delta_8bit": [
+        1.381718087491846,
+        0.5583605980919765
+      ]
+    },
+    {
+      "file": "d4_resinheart_face_albedo.png",
+      "family": "resinheart",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "sRGB",
+      "bytes": 1047539,
+      "sha256": "bb302268b631a509e2b151e669d2489617856e6b27dc6062e3d4f58ea77565e6",
+      "wrap_mean_delta_8bit": [
+        3.33203125,
+        0.7659505208333334
+      ],
+      "interior_mean_delta_8bit": [
+        4.191139596570544,
+        1.3419613855286738
+      ]
+    },
+    {
+      "file": "d4_resinheart_face_normal.png",
+      "family": "resinheart",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 771725,
+      "sha256": "75b7dc491d0436653331441d8da22aa0988a467a37286ea4b8f3987babe348f0",
+      "wrap_mean_delta_8bit": [
+        2.6774088541666665,
+        0.3011067708333333
+      ],
+      "interior_mean_delta_8bit": [
+        2.0301989781891496,
+        0.5728068869134897
+      ]
+    },
+    {
+      "file": "d4_resinheart_face_orm.png",
+      "family": "resinheart",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.5,
+        2.0
+      ],
+      "colour_space": "linear",
+      "bytes": 283501,
+      "sha256": "1bf867a2918bc2f2a381ab30cbb7fff127a2c89a2570d5c224d57fc2931784c5",
+      "wrap_mean_delta_8bit": [
+        0.4547526041666667,
+        0.1572265625
+      ],
+      "interior_mean_delta_8bit": [
+        0.8817162934791463,
+        0.15081097008390354
+      ]
+    },
+    {
+      "file": "d4_resinheart_edge_albedo.png",
+      "family": "resinheart",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "sRGB",
+      "bytes": 369835,
+      "sha256": "129de64182e445216c64a8456ed693e4148d36db7c4f4f422fd18b9f89b39c0a",
+      "wrap_mean_delta_8bit": [
+        6.69921875,
+        3.4186197916666665
+      ],
+      "interior_mean_delta_8bit": [
+        7.0195898564905415,
+        4.569916269161775
+      ]
+    },
+    {
+      "file": "d4_resinheart_edge_normal.png",
+      "family": "resinheart",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 323170,
+      "sha256": "0b51bec96d78b61cb76b125533ded1b14489d63cb6340be4c27234837fd96c45",
+      "wrap_mean_delta_8bit": [
+        2.6751302083333335,
+        1.5208333333333333
+      ],
+      "interior_mean_delta_8bit": [
+        2.6922483997879976,
+        1.6306746371493803
+      ]
+    },
+    {
+      "file": "d4_resinheart_edge_orm.png",
+      "family": "resinheart",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 124634,
+      "sha256": "9d529e69961f40836b7aae31047a318d36f178142671df1702d61f3b80c8fe93",
+      "wrap_mean_delta_8bit": [
+        1.978515625,
+        0.5065104166666666
+      ],
+      "interior_mean_delta_8bit": [
+        1.533993038568167,
+        0.6661697855512068
+      ]
+    },
+    {
+      "file": "d4_woven_reed_face_albedo.png",
+      "family": "woven_reed",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.4,
+        0.4
+      ],
+      "colour_space": "sRGB",
+      "bytes": 780740,
+      "sha256": "376a301621143353c8977432b0a65365b4228d50eafb7fbc293cd3e92155f239",
+      "wrap_mean_delta_8bit": [
+        0.2822265625,
+        2.23828125
+      ],
+      "interior_mean_delta_8bit": [
+        1.0676946506394591,
+        1.8604867984278266
+      ]
+    },
+    {
+      "file": "d4_woven_reed_face_normal.png",
+      "family": "woven_reed",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.4,
+        0.4
+      ],
+      "colour_space": "linear",
+      "bytes": 958787,
+      "sha256": "25f07d0c81652b11f1fca3230b33028f31aa7bd02eabb95a5eb221de3f8befcf",
+      "wrap_mean_delta_8bit": [
+        1.6080729166666667,
+        5.435546875
+      ],
+      "interior_mean_delta_8bit": [
+        1.2900947478820464,
+        3.252474976580319
+      ]
+    },
+    {
+      "file": "d4_woven_reed_face_orm.png",
+      "family": "woven_reed",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.4,
+        0.4
+      ],
+      "colour_space": "linear",
+      "bytes": 133451,
+      "sha256": "e0edb7bd0da1f6ea2ff827f51354e2aac26c40d05f01843725685c1803b7a461",
+      "wrap_mean_delta_8bit": [
+        0.0022786458333333335,
+        0.0022786458333333335
+      ],
+      "interior_mean_delta_8bit": [
+        0.052081105918051485,
+        0.07024981416992505
+      ]
+    },
+    {
+      "file": "d4_woven_reed_edge_albedo.png",
+      "family": "woven_reed",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.4,
+        0.4
+      ],
+      "colour_space": "sRGB",
+      "bytes": 44273,
+      "sha256": "1a4e033a631873446be50285fc3c482486641075b26555297b08d41fbfadfb3f",
+      "wrap_mean_delta_8bit": [
+        0.0,
+        0.0
+      ],
+      "interior_mean_delta_8bit": [
+        3.547945205479452,
+        3.547945205479452
+      ]
+    },
+    {
+      "file": "d4_woven_reed_edge_normal.png",
+      "family": "woven_reed",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.4,
+        0.4
+      ],
+      "colour_space": "linear",
+      "bytes": 164309,
+      "sha256": "102c72e8361744f6b83280558535d9cdceda4ae4324fc05245ea7177713612f9",
+      "wrap_mean_delta_8bit": [
+        0.001953125,
+        0.030598958333333332
+      ],
+      "interior_mean_delta_8bit": [
+        1.0871542217058057,
+        1.1015918032452707
+      ]
+    },
+    {
+      "file": "d4_woven_reed_edge_orm.png",
+      "family": "woven_reed",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.4,
+        0.4
+      ],
+      "colour_space": "linear",
+      "bytes": 49973,
+      "sha256": "71635003f3b459687d073f4dda8999eff830d7d9cc0dbf498da28b1769f381c2",
+      "wrap_mean_delta_8bit": [
+        0.005208333333333333,
+        0.007161458333333333
+      ],
+      "interior_mean_delta_8bit": [
+        0.10197019732550555,
+        0.14490964408023482
+      ]
+    },
+    {
+      "file": "d4_corkbark_face_albedo.png",
+      "family": "corkbark",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.3,
+        0.3
+      ],
+      "colour_space": "sRGB",
+      "bytes": 1473703,
+      "sha256": "33c75eb1028542dcd6cb2c62b28888e6a1b743ca5c22654272446a43ee923074",
+      "wrap_mean_delta_8bit": [
+        2.3645833333333335,
+        2.2021484375
+      ],
+      "interior_mean_delta_8bit": [
+        6.686705130946563,
+        6.704720783948354
+      ]
+    },
+    {
+      "file": "d4_corkbark_face_normal.png",
+      "family": "corkbark",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.3,
+        0.3
+      ],
+      "colour_space": "linear",
+      "bytes": 2347115,
+      "sha256": "2d60301092280f07df134ebc4bcc30c419765bfd63bec57262aaf304bac7e443",
+      "wrap_mean_delta_8bit": [
+        12.906575520833334,
+        13.2958984375
+      ],
+      "interior_mean_delta_8bit": [
+        14.849151482058488,
+        14.892544077366406
+      ]
+    },
+    {
+      "file": "d4_corkbark_face_orm.png",
+      "family": "corkbark",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.3,
+        0.3
+      ],
+      "colour_space": "linear",
+      "bytes": 133151,
+      "sha256": "d68127f092c5e7166110ff0f3e3d1b14259844aeaf990ba535af9b815415a1c0",
+      "wrap_mean_delta_8bit": [
+        0.0026041666666666665,
+        0.0003255208333333333
+      ],
+      "interior_mean_delta_8bit": [
+        0.0557763878706419,
+        0.055818072356630825
+      ]
+    },
+    {
+      "file": "d4_corkbark_edge_albedo.png",
+      "family": "corkbark",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.3,
+        0.3
+      ],
+      "colour_space": "sRGB",
+      "bytes": 465685,
+      "sha256": "9412624ffe0e1cbbf4a7802bc0424ea723186d20e83c6a1a144ade07210446a7",
+      "wrap_mean_delta_8bit": [
+        5.731770833333333,
+        5.957682291666667
+      ],
+      "interior_mean_delta_8bit": [
+        11.678324262067841,
+        11.775033889840183
+      ]
+    },
+    {
+      "file": "d4_corkbark_edge_normal.png",
+      "family": "corkbark",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.3,
+        0.3
+      ],
+      "colour_space": "linear",
+      "bytes": 631174,
+      "sha256": "b469fd5204777681c132278f5e1e1e5b3e62cadfa25c57e9b8594d1514fed2b4",
+      "wrap_mean_delta_8bit": [
+        13.44140625,
+        12.830078125
+      ],
+      "interior_mean_delta_8bit": [
+        16.084658349641227,
+        16.179566464856492
+      ]
+    },
+    {
+      "file": "d4_corkbark_edge_orm.png",
+      "family": "corkbark",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.3,
+        0.3
+      ],
+      "colour_space": "linear",
+      "bytes": 51090,
+      "sha256": "4466a505541ad72dbc349df7ebcf49189ee8286a2e76ee68d00e5c2322238ab8",
+      "wrap_mean_delta_8bit": [
+        0.005208333333333333,
+        0.0032552083333333335
+      ],
+      "interior_mean_delta_8bit": [
+        0.10737983121330724,
+        0.11360103758969341
+      ]
+    }
+  ],
+  "proxy_contract": {
+    "count": 26,
+    "triangles": 312,
+    "surfaces_per_proxy": 2,
+    "new_legal_forms": false,
+    "covering_only": [
+      "woven_reed",
+      "corkbark"
+    ],
+    "blender_to_godot": "(x,y,z) -> (x,z,-y), metres",
+    "purpose": "Current dimension envelopes plus explicitly nonplaceable inspection coupons; geometry slices own fitted frames/pegs/joins"
+  }
+}

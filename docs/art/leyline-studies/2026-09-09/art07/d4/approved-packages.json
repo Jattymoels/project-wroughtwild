@@ -1,0 +1,72 @@
+[
+  {
+    "manifests": [
+      {
+        "file": "manifest.json",
+        "sha256": "0a4f26a74335bcceddd2d31f9df3774d415f5aca6d982e9cc5305faf6ac9bba8"
+      }
+    ],
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\emberroot-handoff",
+    "consumed_geometry": false
+  },
+  {
+    "manifests": [
+      {
+        "file": "manifest.json",
+        "sha256": "cbfe5b8cf051605d0e9bc33c364ae46ac8bd454e9d437ea6d03d59818f1b55c5"
+      }
+    ],
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\boar-art01\\boar-handoff",
+    "consumed_geometry": false
+  },
+  {
+    "manifests": [
+      {
+        "file": "manifest.json",
+        "sha256": "56c0f25182e44e435c0bee5a1d29985e25983c85db44aea8c089a34dd0e828f2"
+      }
+    ],
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\roster-art06c\\lifeline-handoff",
+    "consumed_geometry": false
+  },
+  {
+    "manifests": [
+      {
+        "file": "manifest.json",
+        "sha256": "4e555306523970124cad9cfcea6ff273d18d55bc56198039fc79721e3a19b51d"
+      }
+    ],
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-art04\\red-handoff",
+    "consumed_geometry": false
+  },
+  {
+    "manifests": [
+      {
+        "file": "manifest.json",
+        "sha256": "d977641c970f60d7aba7804432b7741c2be998dcbb0aa9c361022b6412e3efad"
+      }
+    ],
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-white\\white-handoff",
+    "consumed_geometry": false
+  },
+  {
+    "manifests": [
+      {
+        "file": "manifest.json",
+        "sha256": "d7d3c978760f77175a6cc15f7f76ebb9f50fbe16f2705e63cc2604b19ce8db55"
+      }
+    ],
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-blue\\blue-handoff",
+    "consumed_geometry": false
+  },
+  {
+    "manifests": [
+      {
+        "file": "manifest.json",
+        "sha256": "018d8cfe62d6749e1b6d2943431970780938483823a3577354e1deb3f8a049cf"
+      }
+    ],
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\workshop-green\\green-handoff",
+    "consumed_geometry": false
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "files": [
+    {
+      "file": "blender-bog_oak.png",
+      "bytes": 1196267,
+      "sha256": "374b2dba1fcb3e23ef544fb57020c71783c006d66be53160d246137d41c3ce82"
+    },
+    {
+      "file": "blender-corkbark.png",
+      "bytes": 1361706,
+      "sha256": "0250b7d6fd4fefb3639fda63d15b7f298adf3368e2ddac4659355b93903d7c4e"
+    },
+    {
+      "file": "blender-overview.png",
+      "bytes": 2493484,
+      "sha256": "9c4a94f95084ae47f5b8a1eb576d1fbc6a035c5b552a6957e2320e2025e6f474"
+    },
+    {
+      "file": "blender-resinheart.png",
+      "bytes": 1312622,
+      "sha256": "78af8d9f3e1b385ba254e988c5bb9d5aba2a5610e9d7974ca8f9102c2391091c"
+    },
+    {
+      "file": "blender-wood.png",
+      "bytes": 1223904,
+      "sha256": "64a6f3aaa0b4e84aa75c88b5ba81be9505d1a9cc1ebebdee6dc202343703b816"
+    },
+    {
+      "file": "blender-woven_reed.png",
+      "bytes": 1341137,
+      "sha256": "9ce95d83b3ef564a7919bce4ea575d416e8e3c9c45500495c80208dfdf2b4ec3"
+    },
+    {
+      "file": "forward_plus-ash_wood.png",
+      "bytes": 1054691,
+      "sha256": "bef3b21918238b4b1f3c697f260c062815031b7108624c08c23fc9c334c2063d"
+    },
+    {
+      "file": "forward_plus-benchmark.json",
+      "bytes": 1440,
+      "sha256": "14b7357b98d900ca43901f8fe5f1f84548efd3a8d0bf92ccc61e08e02385bac0"
+    },
+    {
+      "file": "forward_plus-bog_oak.png",
+      "bytes": 1077855,
+      "sha256": "e5560ec9b34c32e9dfd970a8c4ee70caec806af49fb9135732efc559d54e528d"
+    },
+    {
+      "file": "forward_plus-corkbark.png",
+      "bytes": 892121,
+      "sha256": "8df27b7d66b4cbbd06a42a77d4206c4551b9473a1c33f0c15e67e3f2334a0ceb"
+    },
+    {
+      "file": "forward_plus-motion.webp",
+      "bytes": 2635778,
+      "sha256": "4d0b139490e72ff883b6a3918ebaef0ddad9f7f8e3cbbd34c095a1a45277594b"
+    },
+    {
+      "file": "forward_plus-overview.png",
+      "bytes": 468831,
+      "sha256": "f1d7add8b96dd754e0247f3a0bc13169b91ad37a948a9996f60fb088226a3a9b"
+    },
+    {
+      "file": "forward_plus-pine.png",
+      "bytes": 1016137,
+      "sha256": "2a2efe3cb8c90dc04e1e97aab567bc897d00b198a92b42f75a762a31774a27fc"
+    },
+    {
+      "file": "forward_plus-resinheart.png",
+      "bytes": 1150546,
+      "sha256": "a12b9e5313c8c6c6088d2143828d7aa6b508308a06639c723f8b524a32181057"
+    },
+    {
+      "file": "forward_plus-shade.png",
+      "bytes": 411908,
+      "sha256": "e09e1f4a604a061a3de24e898d3fd5756fe7a065c7264177acc2578aeee3daa2"
+    },
+    {
+      "file": "forward_plus-unlit.png",
+      "bytes": 11179,
+      "sha256": "9f8b7c9af5e81b2222a0f5f9d4dcb3809dcef119c1c9dfbb5500b2b83eebf905"
+    },
+    {
+      "file": "forward_plus-wood.png",
+      "bytes": 714926,
+      "sha256": "6859dcffcfad3573323b9ca00996a995e2addeb2e5e39113f6b998494dda926f"
+    },
+    {
+      "file": "forward_plus-woven_reed.png",
+      "bytes": 1193340,
+      "sha256": "77c5f89a58af6a4b4ef58d26279140bcbf9eeb35ad84ab5dacea3aecdbd174f6"
+    },
+    {
+      "file": "gl_compatibility-ash_wood.png",
+      "bytes": 1142430,
+      "sha256": "fdd6c2941b8444a824f79e1f03ae303795979ac00f7473a95e30a85e8ecec39f"
+    },
+    {
+      "file": "gl_compatibility-benchmark.json",
+      "bytes": 1444,
+      "sha256": "00aa70ac9d453dbad657748a4972f3796a81b929d22fb51600e5111240e32020"
+    },
+    {
+      "file": "gl_compatibility-bog_oak.png",
+      "bytes": 1158112,
+      "sha256": "6ac249112b80cb931835df46724065ef482619237e0d8c67001a909186cb87ae"
+    },
+    {
+      "file": "gl_compatibility-corkbark.png",
+      "bytes": 877374,
+      "sha256": "e06c28d82ea728d6a1b9deff21d13c50729e39a09f77a00f4ec745fc7d76904b"
+    },
+    {
+      "file": "gl_compatibility-motion.webp",
+      "bytes": 3616210,
+      "sha256": "918794d1cdec89b26840f93085c572f85ed7357d44c853c92d1c3b2b63623a7b"
+    },
+    {
+      "file": "gl_compatibility-overview.png",
+      "bytes": 503917,
+      "sha256": "f102730d3232c71014246d17f1acf1c6c31d50520b8892a6d2b5449e4d7a9cd4"
+    },
+    {
+      "file": "gl_compatibility-pine.png",
+      "bytes": 1097410,
+      "sha256": "c4fc8ba4a4ffb1577479f8e808b3d0a8a78b821ce344a60d19066a3bc6186a03"
+    },
+    {
+      "file": "gl_compatibility-resinheart.png",
+      "bytes": 1215751,
+      "sha256": "67be16e566321a153dd21e78e5e8b41819fcd8f41c71572b6772ca393f3746b3"
+    },
+    {
+      "file": "gl_compatibility-shade.png",
+      "bytes": 456734,
+      "sha256": "277166d2c7c44e6a6ede78a8be72903f4702f9e22f51f8144a3a184dba1982d5"
+    },
+    {
+      "file": "gl_compatibility-unlit.png",
+      "bytes": 16379,
+      "sha256": "dc18f1f32f79f37373020c8fd1905dd00f87dc89325db9fd2a67afa4745aa1ef"
+    },
+    {
+      "file": "gl_compatibility-wood.png",
+      "bytes": 779160,
+      "sha256": "18bde66352f6e10ff23be675b2a0080b7b31fb0f4625bdcb6b7342d3bf0fe6df"
+    },
+    {
+      "file": "gl_compatibility-woven_reed.png",
+      "bytes": 1255645,
+      "sha256": "a29895fcfef0fb14e0c395e12f80dfe5697105a89d9e13510304ed7aafba7c6a"
+    }
+  ],
+  "motion": "96 actual engine camera frames, 24 fps, resized to 960x540 and encoded WebP; materials static; no source illustration substituted."
+}

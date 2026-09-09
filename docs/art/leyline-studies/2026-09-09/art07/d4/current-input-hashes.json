@@ -1,0 +1,22 @@
+[
+  {
+    "sha256": "e511167c984d3aa44422987d61bc1560cab2c4c2ec6517fd6eadb5c89b0e784b",
+    "file": "game/assets/textures/planks.png"
+  },
+  {
+    "sha256": "75e8c2d624736dff3a8d73529d35ba6e1fcbf49dbac22f1a15e655a180dd1f43",
+    "file": "game/art/material_library.tres"
+  },
+  {
+    "sha256": "6be210c3af6fd6d5dcb0696fa2964d1bb3c06236f31712968731e8cfcc823efa",
+    "file": "game/art/material_library.gd"
+  },
+  {
+    "sha256": "2c815e617586d677c3b44f0679ad8787f649f7cb72d7e465737f6d2076bbdb1a",
+    "file": "data/tuning/construction.json"
+  },
+  {
+    "sha256": "f5e003bf1159db758cea9310823928b8388694a062a972868ca68f699ca1f07c",
+    "file": "data/tuning/crafting.json"
+  }
+]

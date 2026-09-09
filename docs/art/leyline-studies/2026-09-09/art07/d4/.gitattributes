@@ -1,0 +1,3 @@
+# Preserve hashed benchmark JSON and portable documentation line endings.
+*.json text eol=lf
+*.md text eol=lf

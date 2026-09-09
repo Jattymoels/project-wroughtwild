@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "canonical_files": 196,
+  "canonical_manifest_sha256": "aaa0316f108cdb1de0ed27cc3a40fac7a07574497c14486e88b18fa73dfbda59",
+  "fresh_source_and_review_authored_bytes": "exact",
+  "unlit_scene_max_rgb": 0,
+  "mipmapped_external_maps": 42,
+  "selected_error_free_jobs": [
+    "final-import",
+    "final-forward-capture",
+    "final-compatibility-capture",
+    "forward-benchmark",
+    "compatibility-benchmark",
+    "final-reopen"
+  ],
+  "fresh_png_hash_matches": 20,
+  "pngs": 20,
+  "normal_inputs_unchanged": true,
+  "texture_memory_mib": {
+    "forward_plus": 274.74072265625,
+    "gl_compatibility": 160.08326053619385
+  }
+}

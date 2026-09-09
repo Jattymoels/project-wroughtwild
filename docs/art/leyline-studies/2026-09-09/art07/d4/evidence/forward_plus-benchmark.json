@@ -1,0 +1,73 @@
+{
+	"counters": [
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		},
+		{
+			"draws": 107.0,
+			"primitives": 720.0,
+			"texture_bytes": 288086528.0,
+			"video_bytes": 320880320.0
+		}
+	],
+	"device": "NVIDIA GeForce RTX 5090",
+	"frames": 600,
+	"note": "Separate fixed-view run, no generation or screenshots; RTX result only.",
+	"p50_ms": 0.237,
+	"p95_ms": 0.382,
+	"renderer": "forward_plus",
+	"size": "(1600, 900)",
+	"warmup_frames": 132,
+	"worst_ms": 0.723
+}

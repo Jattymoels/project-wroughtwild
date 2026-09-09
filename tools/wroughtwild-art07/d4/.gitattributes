@@ -1,0 +1,3 @@
+# Preserve recipe line endings recorded in the sealed local package.
+* text eol=lf
+manifest.json text eol=crlf
