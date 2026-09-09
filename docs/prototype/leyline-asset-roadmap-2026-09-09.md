@@ -39,6 +39,13 @@ gate; ART-05 remains separate. All four ART-04 families now have technical hando
 
 ## Outcome and current evidence
 
+The owner then requested a sliced plan and prompts for other sessions to enact
+ART-07. The [dispatch pack](art07-production/README.md) now breaks the parent
+B–G work into 26 bounded slices, with complete catalogue ownership, prerequisites,
+isolated worktrees, one GPU slot, serial checked publication and a practical
+generation/Blender process. Preparing the pack starts no production jobs and
+does not mark raw assets, final models or ordinary-world rollout complete.
+
 Latest owner continuation: “Perfect” approves the ART-06C deep lifelines and
 porcupine face. The owner then selects [ART-07 nature/world-feel and every
 existing placeable design](world-and-placeable-art-2026-09-09.md), aligned with

@@ -1,5 +1,12 @@
 # ART-07 — a full frontier and a coherent building kit
 
+**Owner follow-up:** “Yep, create a sliced plan and prompts to send off to other
+sessions to enact” selects the [ART-07 dispatch pack](art07-production/README.md).
+It refines B–G into 26 bounded worker slices and one serial publication prompt,
+with explicit catalogue ownership and the documented local generation/Blender
+process. The pack is delivered; no production session or GPU job is launched by
+the planning step. The broad headings below remain the parent art work items.
+
 **ART-07A design pass delivered, 9 September 2026; new boards proposed for visual review.** The owner asked to start
 designing all nature assets and the world's feel against the original wide
 landscape reference, together with all craftable placeable pieces. Their

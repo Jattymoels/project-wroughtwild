@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-06C visually approved; ART-07 nature/world/placeable design selected). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-06C visually approved; ART-07 design and sliced dispatch pack delivered). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -9,6 +9,17 @@ Recording an idea here does not mark it implemented or approve unspecified new
 game rules. Existing accepted work items and decisions remain authoritative.
 
 ## Current art priority — nature, world feel and all existing placeables
+
+The owner's subsequent request selects a [sliced execution plan and session
+prompts](art07-production/README.md). The checked dispatch pack contains 26
+bounded worker prompts, one publisher prompt, an explicit dependency/ownership
+map and the [local TRELLIS/Blender/Godot process](art07-production/PROCESS.md).
+Start B1 (canopy), D1 (core geometry), D4 (timber surfaces) and F5 (approved
+colour reuse) in separate worktrees if working in parallel. GPU work is serial;
+one publisher integrates checked commits onto main. This prepares enactment,
+not evidence that any ART-07 production slice has already run. G1 is an isolated
+retained-route/home pilot; G2 reviews it independently before any ordinary-world
+rollout decision.
 
 The owner visually approved ART-06C with “Perfect”, then asked to start
 designing all nature assets and the world's feel against the original full

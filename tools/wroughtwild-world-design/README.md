@@ -10,6 +10,7 @@ Run from the repository root with the existing Python runtime:
 ```powershell
 python tools/wroughtwild-world-design/catalogue.py
 python tools/wroughtwild-world-design/verify_art.py
+python tools/wroughtwild-world-design/session_plan.py
 ```
 
 `catalogue.py --write` regenerates the two catalogue files after deliberately
@@ -31,6 +32,12 @@ Text is stored as UTF-8 LF. Game-source hashes intentionally normalise CRLF to
 LF for Git portability; image and submitted-prompt hashes are exact bytes.
 The tools introduce no tuning knobs. Sizes and costs in the catalogue are
 snapshots of authoritative existing data, not values to apply back to the game.
+
+`session_plan.py` validates the [dispatch pack](../../docs/prototype/art07-production/README.md):
+26 bounded worker prompts, dependencies and one primary owner for every one of
+the 131 catalogue entries. `--write` regenerates its index and worker prompts
+from the reviewed `plan.json`; it never creates sessions or starts GPU jobs.
+The separate publisher prompt preserves serial integration onto main.
 
 The gallery records visual limitations. These broad boards need individual
 multi-view production images before organic generation; grid pieces and

@@ -1,0 +1,803 @@
+{
+  "version": 1,
+  "status": "Owner-requested execution plan and prompts; production jobs not started by this planning slice",
+  "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
+  "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
+  "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",
+  "publication": "Dedicated publisher integrates one checked worker at a time; ordinary non-force origin/main push under standing permission.",
+  "tasks": [
+    {
+      "id": "b1",
+      "title": "Broadleaf and pine canopy kit",
+      "track": "Nature foundations",
+      "dependencies": [],
+      "owns": {
+        "resource_nodes": [
+          "tree",
+          "pine"
+        ],
+        "nature_support": [
+          "canopy_broadleaf",
+          "canopy_conifer",
+          "root_skirt",
+          "deadwood_stump"
+        ]
+      },
+      "outcome": "Reuse the approved ART-02 trunk/rock language and deliver broadleaf/pine source masters, attached canopy variants, root contacts and matching felled/stump presentation. Establish clear near/middle/far asset candidates in game metres.",
+      "checks": [
+        "Actual branch attachment, underside/clay review and no floating leaf masses.",
+        "Preserve native tree identities and finite full/felled state; no new harvesting rules.",
+        "Packed masters reopen; export orientation/bounds and visible LOD transitions pass."
+      ],
+      "reading": [
+        "tools/wroughtwild-grove/README.md",
+        "docs/prototype/affected-grove-2026-09-09.md",
+        "docs/systems/world-generation.md"
+      ],
+      "notes": "Start with existing approved grove sources; do not regenerate them merely to make the slice look new."
+    },
+    {
+      "id": "b2",
+      "title": "Ground cover and forest floor",
+      "track": "Nature foundations",
+      "dependencies": [],
+      "owns": {
+        "nature_support": [
+          "sapling_shrub",
+          "fern_bracken",
+          "meadow_grass",
+          "bramble_climber",
+          "moss_lichen",
+          "leaf_needle_litter"
+        ]
+      },
+      "outcome": "Deliver a reusable low-plant/ground-material kit: saplings/shrubs, fern/bracken, meadow grass, bramble/climber, moss/lichen and leaf/needle litter. Make clusters and transitions, not a blanket scatter rule.",
+      "checks": [
+        "Close and walking-height views show plausible attachments and nonrepeating ground transitions.",
+        "Tiled textures and coarse-to-detailed surfaces have no bright seams; record transparent overdraw.",
+        "Quiet ordinary materials, packed source reopen and two-renderer detail comparisons."
+      ],
+      "reading": [
+        "tools/wroughtwild-grove/README.md",
+        "docs/prototype/affected-grove-2026-09-09.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "b3",
+      "title": "Rock, root-bank and cave-contact kit",
+      "track": "Nature foundations",
+      "dependencies": [],
+      "owns": {
+        "resource_nodes": [
+          "boulder",
+          "stone_seam"
+        ],
+        "nature_support": [
+          "river_bank",
+          "talus_pebbles",
+          "rock_shelf",
+          "cave_threshold"
+        ]
+      },
+      "outcome": "Deliver matched boulder/stone-seam candidates plus modular bank, talus, shelf and cave-lip contact pieces. Preserve actual work faces and provide believable ground/rock intersections.",
+      "checks": [
+        "All existing resource work/depleted states remain readable without new drops.",
+        "Actual support/cave entrance clearance, hidden-side geometry and resource body alignment.",
+        "No decorative collider or implicit extra resource for each pebble; packed and rendered checks."
+      ],
+      "reading": [
+        "tools/wroughtwild-grove/README.md",
+        "docs/systems/world-generation.md",
+        "docs/systems/construction.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "b4",
+      "title": "First composed walk, light and distance",
+      "track": "Nature foundations",
+      "dependencies": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "owns": {
+        "nature_support": [
+          "leyline_scar",
+          "water_surface",
+          "wind_motion",
+          "far_treeline",
+          "far_rock_haze",
+          "light_and_quiet"
+        ]
+      },
+      "outcome": "Compose one isolated small walk from B1–B3 and approved ART-02 context, demonstrating near/middle/far fullness, physical scar depth, water/foliage motion and readable lighting. Use existing audio direction with quiet gaps; no new sound pack is required.",
+      "checks": [
+        "Matched day/shade/dusk, emission-off and actual pulse/wind captures in both renderers.",
+        "Open walking space, grounded contacts, depth measurements and pause-aware motion.",
+        "Separate uncontended benchmark, draw/primitive/texture costs and explicit candidate budgets; do not claim ordinary world integration."
+      ],
+      "reading": [
+        "tools/wroughtwild-grove/README.md",
+        "tools/wroughtwild-roster/LIFELINES.md",
+        "docs/prototype/world-route-art-2026-09-09.md",
+        "docs/prototype/quiet-ambience-2026-09-08.md"
+      ],
+      "notes": "This is the first environment technical checkpoint; later slices reuse its measured conventions, not its entire dense composition."
+    },
+    {
+      "id": "c1",
+      "title": "Lantern Fen and Rustwater resources",
+      "track": "Regional nature",
+      "dependencies": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "owns": {
+        "resource_nodes": [
+          "bog_oak",
+          "clay_bank",
+          "reed_bed"
+        ],
+        "nature_support": [
+          "fen_sedge",
+          "fungal_detritus"
+        ]
+      },
+      "outcome": "Build leaning bog oak, finite clay bank and harvestable reeds with short decorative sedge and non-glowing fungal/wood detail. Compose a small wet-margin review without altering water, geography or stock.",
+      "checks": [
+        "Bog oak, clay and reeds expose their own real work/aftermath states.",
+        "Decorative sedge/mushrooms cannot be mistaken for an added renewable harvest.",
+        "Wet ground contacts, daylight/shade, native work snapshot/reload and packed sources."
+      ],
+      "reading": [
+        "docs/systems/world-generation.md",
+        "docs/prototype/world-intensive-2026-09-06.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "c2",
+      "title": "Glasswind and Shellcut quarry",
+      "track": "Regional nature",
+      "dependencies": [
+        "b1",
+        "b3"
+      ],
+      "owns": {
+        "resource_nodes": [
+          "slate_outcrop",
+          "shellstone_outcrop"
+        ],
+        "nature_support": [
+          "upland_tussock"
+        ]
+      },
+      "outcome": "Deliver layered slate, irregular fossil shellstone and low wind-worn tussocks, using B1 pine/B3 shelves for context. Source faces and worked material should visibly belong to the same family.",
+      "checks": [
+        "Distinct full/part-worked/depleted quarry faces, exact native stock and restart.",
+        "Fossils vary and do not repeat as tiled medallions; split slate has actual layered silhouette.",
+        "Existing approaches and work-target envelopes retained; near/far review and cost report."
+      ],
+      "reading": [
+        "docs/systems/world-generation.md",
+        "docs/prototype/world-intensive-2026-09-06.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "c3",
+      "title": "Resinheart and corkbark oldgrowth",
+      "track": "Regional nature",
+      "dependencies": [
+        "b1",
+        "b2"
+      ],
+      "owns": {
+        "resource_nodes": [
+          "resinheart_tree",
+          "corkbark_deadfall"
+        ]
+      },
+      "outcome": "Deliver resinheart oldgrowth and independently harvested corkbark deadfall. Reuse B1/B2 structure while exposing amber grain, porous cut bark and deep altered root wounds where appropriate.",
+      "checks": [
+        "Tree and deadfall retain separate native work/save identities and exact depletion.",
+        "Recovered/cut material matches future resinheart/cork construction without adding emission to ordinary boards.",
+        "Attached crown/root anatomy, incision-off views, packed reopen and two-renderer review."
+      ],
+      "reading": [
+        "tools/wroughtwild-grove/README.md",
+        "docs/prototype/world-intensive-2026-09-06.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "c4",
+      "title": "Recovering wastes and ash timber",
+      "track": "Regional nature",
+      "dependencies": [
+        "b1",
+        "b2",
+        "b3"
+      ],
+      "owns": {
+        "resource_nodes": [
+          "ash_snag"
+        ],
+        "nature_support": [
+          "wastes_scrub"
+        ]
+      },
+      "outcome": "Make ash snag/felled timber variants and sparse surviving scrub that create an inhabited damaged landscape. Reuse existing rock/ground families instead of inventing a lava biome.",
+      "checks": [
+        "Standing/felled ash remains recognizable and respects native resource state.",
+        "Broken branches and surviving plants avoid repetitive spike-field silhouettes.",
+        "Readable traversal, quiet ordinary materials, day/dusk and cost evidence."
+      ],
+      "reading": [
+        "docs/systems/world-generation.md",
+        "docs/world-premise.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "c5",
+      "title": "Ore-bearing rock family",
+      "track": "Regional nature",
+      "dependencies": [
+        "b3"
+      ],
+      "owns": {
+        "resource_nodes": [
+          "iron_vein",
+          "copper_vein",
+          "tin_vein",
+          "ember_iron_vein",
+          "silver_vein"
+        ]
+      },
+      "outcome": "Finish the five existing ore hosts as a related rock family with distinct internal mineral structure and matched worked faces. Preserve existing heat/work responses and era placement.",
+      "checks": [
+        "Full, existing heated/cracked where applicable, part-worked and depleted native snapshots.",
+        "No changed access, heat requirement, yield, tool behaviour, era or save identity.",
+        "Clay/material views and both-renderer comparison make ores legible without universal bright crystals."
+      ],
+      "reading": [
+        "docs/systems/world-generation.md",
+        "docs/systems/construction.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "c6",
+      "title": "Ruins and workshop approaches",
+      "track": "Regional nature",
+      "dependencies": [
+        "b3"
+      ],
+      "owns": {
+        "nature_support": [
+          "ruin_wall",
+          "ruin_threshold",
+          "workshop_approach",
+          "trail_transition"
+        ]
+      },
+      "outcome": "Produce surface/contact variants for existing ruin walls, thresholds, the old smithy and published LF approach marks. Pair worn masonry, roots and ground transitions without moving or sealing routes.",
+      "checks": [
+        "Existing entrances, collision envelopes and source/route anchors remain unchanged.",
+        "Old accidental-impact craft and deliberate later containment remain distinguishable.",
+        "Actual before/after existing-scene views and a supported walking check; no new loot or recipes."
+      ],
+      "reading": [
+        "docs/prototype/exploration-storytelling-2026-09-07.md",
+        "docs/prototype/environment-target-2026-09-08.md",
+        "docs/systems/world-generation.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "d1",
+      "title": "Core lattice geometry",
+      "track": "Building kit",
+      "dependencies": [],
+      "owns": {
+        "shapes": [
+          "cube",
+          "wall_panel",
+          "pillar",
+          "beam",
+          "floor_slab",
+          "stairs",
+          "codex_corner",
+          "codex_corner_floor",
+          "foundation",
+          "dry_wall"
+        ]
+      },
+      "outcome": "Direct-model ten core shapes at their actual dimensions, including coarse clipped forms and low fieldstone pieces. Use provisional existing material families while material slices are authored.",
+      "checks": [
+        "Exact native block/face/edge pivots, sizes and orientation; all joins fit without coplanar flicker.",
+        "Real coarse-grid placement, corner/support/ceiling cases and paired geometry/body bounds.",
+        "Material restrictions, occupancy, costs and saves unchanged; neutral and material views."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "tools/wroughtwild-blender/README.md",
+        "docs/prototype/placement-reliability-2026-09-07.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "d2",
+      "title": "Roofs, door and metal spans",
+      "track": "Building kit",
+      "dependencies": [
+        "d1"
+      ],
+      "owns": {
+        "shapes": [
+          "codex_roof_slope",
+          "codex_roof_hip",
+          "codex_roof_valley",
+          "door",
+          "roof_wedge",
+          "girder",
+          "arch"
+        ]
+      },
+      "outcome": "Direct-model seven existing roof/joinery/span forms around D1 join boundaries: three covering roofs, hinged door, full masonry wedge, metal girder and malleable arch.",
+      "checks": [
+        "All legal turns, slope/hip/valley seams, door hinge directions/open-state and ceiling/corner contacts.",
+        "Existing half-height covering roofs vs full-height masonry wedge remain distinct.",
+        "No stone arch/door eligibility extension, new support system or changed world unlock."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/prototype/home-placement-persistence-2026-09-07.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "d3",
+      "title": "Fine pieces and complete wall coverings",
+      "track": "Building kit",
+      "dependencies": [
+        "d1"
+      ],
+      "owns": {
+        "shapes": [
+          "half_cube",
+          "half_wall",
+          "half_pillar",
+          "half_beam",
+          "half_slab",
+          "light_panel",
+          "glazed_window"
+        ]
+      },
+      "outcome": "Finish five fine shapes and the two framed covering/glazing forms. Match the original lattice at half scale, with integral frames and material-correct surfaces.",
+      "checks": [
+        "0.5 m registry placement and exact coarse/fine joins, including small pillars/rails/shelves.",
+        "Fixed cinderglass window and light panel preserve shelter, projectile and movement blocking.",
+        "All legal family pairings, frame completeness, two-sided readability and imported sizes."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/prototype/home-placement-persistence-2026-09-07.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "d4",
+      "title": "Timber, reed and cork materials",
+      "track": "Building kit",
+      "dependencies": [],
+      "owns": {
+        "materials": [
+          "wood",
+          "pine",
+          "bog_oak",
+          "ash_wood",
+          "resinheart",
+          "woven_reed",
+          "corkbark"
+        ]
+      },
+      "outcome": "Author seven shared material families using the approved building sheet: five distinct timbers, woven reed and porous cork. Deliver reusable surfaces/atlas or tiling sources, mapping guidance and material swatches.",
+      "checks": [
+        "Grain/end-grain/weave direction and scale at coarse/fine dimensions, neutral lighting and tiled seams.",
+        "No baked illumination, added glow, visible background contamination or new legal forms.",
+        "Exported texture colour spaces/sizes and both-renderer material review; compare against collected source concept."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/systems/crafting-and-skills.md"
+      ],
+      "notes": "Can run alongside geometry sessions; use existing proxy shapes and publish stable texture names/mapping in its own manifest."
+    },
+    {
+      "id": "d5",
+      "title": "Stone, glass and fuel materials",
+      "track": "Building kit",
+      "dependencies": [],
+      "owns": {
+        "materials": [
+          "stone",
+          "fieldstone",
+          "slate",
+          "shellstone",
+          "rustclay_brick",
+          "vitrified_basalt",
+          "cinderglass",
+          "charcoal"
+        ]
+      },
+      "outcome": "Author eight existing mineral/glazing/fuel finishes: dressed vs rough stone, layered slate, fossil shellstone, fired brick, fused basalt, smoky fixed glass and charcoal fuel. Keep source-to-worked identity.",
+      "checks": [
+        "Tiled joint/fossil variation, material scale and visible edges in neutral/light/dark views.",
+        "Charcoal only represents fuel; cinderglass has correct frame/mapping contract and existing blocking.",
+        "Opacity/reflection/normal behaviour in both renderers with measured texture costs."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/systems/crafting-and-skills.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "d6",
+      "title": "Worked metal materials",
+      "track": "Building kit",
+      "dependencies": [],
+      "owns": {
+        "materials": [
+          "iron",
+          "bronze",
+          "steel",
+          "silver"
+        ]
+      },
+      "outcome": "Author four related but distinct hammered/cast metal families, with joint/rivet treatment suitable for buildings, stations and fixtures. Broad material response must survive distance.",
+      "checks": [
+        "Iron/bronze/steel/silver are distinguishable by finish and structural detail, not neon tint.",
+        "Malleable/metal/joinery restrictions remain data-owned; no extra component costs.",
+        "Neutral and shaded reviews on exact girder/arch or proxy geometry; correct linear ORM and shared texture costs."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/systems/crafting-and-skills.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "e1",
+      "title": "Workbench and mason's yard",
+      "track": "Stations and home",
+      "dependencies": [
+        "d1",
+        "d4",
+        "d5"
+      ],
+      "owns": {
+        "devices": [
+          "workbench",
+          "mason_yard"
+        ]
+      },
+      "outcome": "Deliver two compact stations with distinct working surfaces, using D4/D5 materials and the approved station board. Keep clamps/tools inside the existing 0.96 × 2 × 0.96 m station body.",
+      "checks": [
+        "Actual kit preview and paid placement in real wall/floor corners, rotations and both grid scales.",
+        "No genuine collision bypass; failed placement retains kit; success yields one usable native station.",
+        "Craft feedback, interaction, native ownership and fresh-process restore with packed model evidence."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/systems/crafting-and-skills.md",
+        "docs/prototype/placement-reliability-2026-09-07.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "e2",
+      "title": "Basic and improved forge",
+      "track": "Stations and home",
+      "dependencies": [
+        "d5",
+        "d6"
+      ],
+      "owns": {
+        "devices": [
+          "forge_basic",
+          "forge_improved"
+        ]
+      },
+      "outcome": "Deliver the basic forge and its upgraded appearance sharing one plinth/body. Fit the supported cowl, hot chamber and working plate inside existing dimensions; keep existing work and heat feedback.",
+      "checks": [
+        "In-place upgrade and later kit preview show correct existing global tier, with no extra kit.",
+        "Physical placement/corner fit, real forging and feeder attachment envelopes.",
+        "Cold/work/paused feedback, ownership and separate-process reload; no new recipe or fuel cost."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/systems/crafting-and-skills.md",
+        "docs/prototype/workshop-usability-2026-09-07.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "e3",
+      "title": "Chest and fire-setting piece",
+      "track": "Stations and home",
+      "dependencies": [
+        "d1",
+        "d4",
+        "d5",
+        "d6"
+      ],
+      "owns": {
+        "shapes": [
+          "chest",
+          "campfire"
+        ]
+      },
+      "outcome": "Finish every legal chest material and timber/charcoal campfire form. Give the chest a supported lid/hinge presentation and fire-setting a real finite burn/ash appearance.",
+      "checks": [
+        "Existing storage capacity and native contents, opening/closing, removal spill and reload remain exact.",
+        "Burn lifetime and fuel heat follow existing rules; no extra stone/cooking ingredient or refund.",
+        "Geometry/ghost/body alignment and actual open/closed/burning/spent views."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/prototype/building-loads-2026-09-08.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "f1",
+      "title": "Lanternheart and Stormglass chains",
+      "track": "Useful fixtures",
+      "dependencies": [
+        "d4",
+        "d6"
+      ],
+      "owns": {
+        "resource_nodes": [
+          "lanternheart",
+          "stormglass"
+        ],
+        "devices": [
+          "lantern_lamp",
+          "stormglass_lever"
+        ]
+      },
+      "outcome": "Finish two source → recovered component → fixture chains: luminous heart/lamp and natural resonator/lever. Reuse direct frames and generate only organic components where helpful.",
+      "checks": [
+        "Source work lifts the same intact core and preserves finite source stock/aftermath.",
+        "Lamp on/off and lever request follow native state; pulse instant never implies continuous free power.",
+        "Grounded preview, genuine placement refusal, one usable fixture, dismantle core refund and fresh reload."
+      ],
+      "reading": [
+        "docs/prototype/rare-world-intensive-2026-09-06.md",
+        "docs/systems/construction.md",
+        "docs/systems/crafting-and-skills.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "f2",
+      "title": "Thrumroot winch and landing",
+      "track": "Useful fixtures",
+      "dependencies": [
+        "d4",
+        "d6"
+      ],
+      "owns": {
+        "resource_nodes": [
+          "thrumroot"
+        ],
+        "devices": [
+          "cargo_winch",
+          "winch_landing"
+        ]
+      },
+      "outcome": "Finish taut-root source/recovered coil and a precise hand-wound cargo drum with its ordinary landing. The winding must read as recovered Thrumroot, not anonymous rope; landing has no second rare core.",
+      "checks": [
+        "Fixed supported endpoints, clear span, correctly pivoted drum/basket and one authoritative cargo owner.",
+        "Real paid winding/trip, physical obstruction/pause, partial collection and endpoint removal.",
+        "Mid-trip save and fresh-process restore, no duplicate basket inventory or phantom motion."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "tools/wroughtwild-white/README.md",
+        "docs/prototype/placement-reliability-2026-09-07.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "f3",
+      "title": "Pullstone sorter and Ventlung bellows",
+      "track": "Useful fixtures",
+      "dependencies": [
+        "d4",
+        "d6"
+      ],
+      "owns": {
+        "resource_nodes": [
+          "pullstone",
+          "ventlung"
+        ],
+        "devices": [
+          "magnetic_sorter",
+          "ventlung_bellows"
+        ]
+      },
+      "outcome": "Finish two compact source/component/device chains: braced magnetic nodule with two-tray sorting chute, and folded natural membrane with supported hand bellows/nozzle.",
+      "checks": [
+        "Correct distinct input/two output tray state from native ferrous classification.",
+        "Actual bellows priming/discharge and existing material response, no new energy or mining rule.",
+        "Work/depletion, whole-body placement bounds, failure kit retention, exact core/contents refund and reload."
+      ],
+      "reading": [
+        "docs/systems/construction.md",
+        "docs/prototype/rare-world-intensive-2026-09-06.md",
+        "docs/prototype/environment-target-2026-09-08.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "f4",
+      "title": "Pressure pocket and complete feeder",
+      "track": "Useful fixtures",
+      "dependencies": [
+        "e2",
+        "f2",
+        "f3"
+      ],
+      "owns": {
+        "nature_support": [
+          "pressure_pocket"
+        ],
+        "devices": [
+          "pressure_feeder"
+        ]
+      },
+      "outcome": "Finish the existing finite pressure pocket and one feeder reusing the proven root drum/membrane/frame families. Separate clay hopper, fuel cup, pressure store, drive and fired-brick tray; fit both real attachments.",
+      "checks": [
+        "Actual built forge/pocket attachment checks and existing full geometry/port bounds.",
+        "Real native loading, start, escrow, pause/blockage, cancel, output and exact recovery/reload.",
+        "No supply generation, doubled drive/heat or false work animation; geometry evidence and real placement transaction."
+      ],
+      "reading": [
+        "docs/prototype/pressure-workshop-2026-09-06.md",
+        "docs/prototype/workshop-usability-2026-09-07.md",
+        "docs/systems/construction.md",
+        "tools/wroughtwild-workshop/README.md"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "f5",
+      "title": "Retain and package the four approved colours",
+      "track": "Useful fixtures",
+      "dependencies": [],
+      "owns": {
+        "nature_support": [
+          "red_source",
+          "white_source",
+          "blue_source",
+          "green_source"
+        ],
+        "devices": [
+          "white_connection",
+          "blue_delay",
+          "green_junction",
+          "red_heat_buffer"
+        ]
+      },
+      "outcome": "Audit and reference the four approved ART-04 source/material/device packages for the new set. Deliver a dependency/attachment/material-conformance manifest and standalone comparison, with only necessary task-local adapter corrections.",
+      "checks": [
+        "Verify original package/source hashes and native bounds before using them.",
+        "White immediate request, Blue hold/pause/release, Green separate paid branches and Red paid heat remain exact.",
+        "Current-revision copied native checks and fresh-process restoration; record historical baseline differences honestly."
+      ],
+      "reading": [
+        "tools/wroughtwild-workshop/README.md",
+        "tools/wroughtwild-white/README.md",
+        "tools/wroughtwild-blue/README.md",
+        "tools/wroughtwild-green/README.md",
+        "docs/prototype/living-frontier-wave2-2026-09-08.md"
+      ],
+      "notes": "Do not regenerate or aesthetically redesign already approved sources. Reuse is the successful outcome."
+    },
+    {
+      "id": "g1",
+      "title": "Retained route and home integration pilot",
+      "track": "Integration",
+      "dependencies": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "e1",
+        "e2",
+        "e3",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ],
+      "owns": {},
+      "outcome": "Assemble the checked kit in one copied current Wroughtwild game and one paid retained route/home pilot. Integrate visual adapters in the isolated project, keep all native IDs/geography, and expose regional assets in separate labelled native-state review cases where the main route does not contain them.",
+      "checks": [
+        "One actual paid route/home uses ordinary movement/building/work; all legal shapes/materials/kits have focused cases without forcing them onto a new map.",
+        "Geography/resource/ownership fingerprints match baseline; local placement refresh and fresh-process home/work/source recovery pass.",
+        "Actual Forward+/Compatibility views, uncontended matched benchmark, clear art-disabled baseline and clean packaged launch."
+      ],
+      "reading": [
+        "tools/wroughtwild-route/README.md",
+        "docs/prototype/world-route-art-2026-09-09.md",
+        "docs/prototype/placement-reliability-2026-09-07.md",
+        "docs/prototype/session-reliability-2026-09-07.md",
+        "docs/systems/world-generation.md",
+        "docs/systems/construction.md"
+      ],
+      "notes": "Build native/game/data from the same explicitly pinned current revision. Keep normal game/data/saves unchanged; this is the ART-07G isolated adoption gate, not a new global renderer or generator."
+    },
+    {
+      "id": "g2",
+      "title": "Independent full-kit review",
+      "track": "Integration",
+      "dependencies": [
+        "g1"
+      ],
+      "owns": {
+        "fauna_presentation": [
+          "lf_white_stag",
+          "lf_green_moth",
+          "lf_paired_boar",
+          "lf_red_boar",
+          "lf_blue_boar",
+          "ember_whelp",
+          "cinder_archer",
+          "ash_hound",
+          "stone_husk",
+          "shrieker",
+          "gloom_crawler",
+          "bog_lurker",
+          "marsh_wisp",
+          "cinder_wisp",
+          "hollow_knight",
+          "valley_elk"
+        ]
+      },
+      "outcome": "Independently inspect and run the delivered G1 handoff, compare actual models to the approved direction, audit complete catalogue coverage and retained actor/host identities, then publish a candid technical clearance or bounded defect list.",
+      "checks": [
+        "Reopen a fresh copy; replay meaningful placement, native work, reload and geography checks rather than trusting receipts.",
+        "Review daylight/shade/dusk, deep scars without emission, material joins and both-renderer cost evidence.",
+        "Confirm all 16 existing actor/host IDs and approved ancestry direction remain; no new mob meshes/rig completion is claimed by this environment review."
+      ],
+      "reading": [
+        "docs/prototype/world-and-placeable-art-2026-09-09.md",
+        "docs/prototype/roster-lifelines-2026-09-09.md",
+        "docs/prototype/session-reliability-2026-09-07.md"
+      ],
+      "notes": "Assign to a session that did not implement G1. Report visual shortcomings separately from technical failures; ordinary-world rollout and owner visual acceptance remain explicit later decisions."
+    }
+  ]
+}
