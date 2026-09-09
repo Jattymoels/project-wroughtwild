@@ -1,6 +1,6 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
-**Status: Waves 1–7 implemented as opt-in work and technically cleared by independent reviews. LF-7A/B expose captured laboratory configurations, exact rewards and saved return/reconfiguration. Both earlier defect regressions remain passing. Complete added-pressure runs, upper-tier balance, continuous fresh-campaign evidence, human clarity and the synchronous publication pause remain open.**
+**Status: Waves 1–7 implemented as opt-in work and technically cleared by independent reviews. LF-7A/B expose captured laboratory configurations, exact rewards and saved return/reconfiguration. Both earlier defect regressions remain passing. INT-18A independently reproduces complete Relentless victories and Crossfire deaths. Crossfire completion, upper-tier balance, continuous fresh-campaign evidence, human clarity and the synchronous publication pause remain open.**
 See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
 [Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
 for selected tuning, compatibility, evidence and remaining owner playtests.
@@ -35,6 +35,9 @@ The first [INT-18A validation slice](living-frontier-int18-pressure-validation-2
 records matched Relentless/baseline victories and Crossfire deaths with exact
 return/restart checks. Crossfire completion and human balance remain open;
 this does not dispatch the continuous-campaign or performance follow-ups.
+The [independent INT-18A review](living-frontier-int18-pressure-review-2026-09-09.md)
+clears the validation slice and proposes INT-18B's same-world campaign proof,
+retaining Crossfire's open acceptance and the observed combat-trace variation.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 

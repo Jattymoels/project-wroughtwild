@@ -10,6 +10,12 @@ victory remains unproven.** Do not mark all added-pressure acceptance complete.
 The eight retained final attempts include four victories and four deaths.
 This is measured validation, not human balance acceptance.
 
+Subsequent [independent review](living-frontier-int18-pressure-review-2026-09-09.md)
+clears this slice and reproduces four victories/four deaths with exact ownership
+and recovery checks. Its combat traces and assertion counts differ in places;
+the review records its own measurements without replacing the receipts below.
+Complete Crossfire victory and human balance acceptance remain open.
+
 ## Scope and contract
 
 Affected systems are D-006 ownership, D-010 engine combat, D-025/D-026 prepared

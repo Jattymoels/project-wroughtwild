@@ -36,7 +36,7 @@ events. LF-7A/B are checked: complete, bank or abandon, save the settled return,
 retry failed writes and choose another configuration. The
 [independent Wave 7 review](docs/prototype/living-frontier-wave7-review-2026-09-09.md)
 clears the implementation and earlier regressions. `--living-frontier-wave7`
-continues the same world/save. Complete added-pressure runs, upper-tier balance,
+continues the same world/save. Crossfire completion, upper-tier balance,
 a continuous fresh campaign, human clarity and the synchronous publication pause
 remain open; the review proposes bounded INT-18 validation next.
 
@@ -45,6 +45,9 @@ records complete Relentless victories and their matched baselines, plus honest
 Crossfire deaths with paid preparation. Exact settlement and fresh-process
 offer/ownership checks accompany the attempts. A complete Crossfire victory,
 human balance acceptance and the later campaign/performance slices remain open.
+The [independent INT-18A review](docs/prototype/living-frontier-int18-pressure-review-2026-09-09.md)
+clears this validation slice, records repeated wins/deaths and runtime variation,
+and proposes one continuous fresh campaign as INT-18B.
 
 [Living Frontier Wave 6](docs/prototype/living-frontier-wave6-2026-09-09.md)
 repairs ordinary-load movement after failed publication recovery, then opens

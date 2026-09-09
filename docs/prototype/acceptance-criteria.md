@@ -24,6 +24,8 @@ These are player-visible outcomes, not a substitute for implementation-level tes
   Crossfire deaths, with ordinary paid preparation and exact saved ownership,
   configuration and fresh-process next-offer checks. A full Crossfire victory
   remains open. [Evidence](living-frontier-int18-pressure-validation-2026-09-09.md).
+- [x] Orchestrator independently reruns all eight attempts and sixteen recovery
+  checks; [INT-18A clearance and limitations](living-frontier-int18-pressure-review-2026-09-09.md).
 
 [Configuration, evidence and limits](living-frontier-wave7-2026-09-09.md).
 
