@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "Owner-requested execution plan and prompts; production jobs not started by this planning slice",
+  "status": "B1, D1, D4 and F5 technically delivered; see publication-2026-09-10.md for publication evidence and limits. Other slices remain planned.",
   "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
   "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
   "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",

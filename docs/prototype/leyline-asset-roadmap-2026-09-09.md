@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; ART-07 nature/placeable design selected.** Owner request,
+**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; ART-07 B1/D1/D4/F5 source handoffs technically delivered.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -39,6 +39,15 @@ gate; ART-05 remains separate. All four ART-04 families now have technical hando
 
 ## Outcome and current evidence
 
+On 10 September the owner reported the first four dispatch slices complete.
+Their [publication report](art07-production/publication-2026-09-10.md) records
+checked worker commits, local package identities and independent fresh reopens.
+This delivers canopy candidates, ten core shapes, seven organic finishes and
+the retained four-colour packages. Owner visual acceptance of these deliveries
+and normal-world adoption remain separate. B2/B3/D5/D6 are recommended next;
+D1 also unlocks D2/D3 after publication. Full-width tree collision and dense
+forest performance remain open; the isolated RTX 5090 results do not close them.
+
 The owner then requested a sliced plan and prompts for other sessions to enact
 ART-07. The [dispatch pack](art07-production/README.md) now breaks the parent
 B–G work into 26 bounded slices, with complete catalogue ownership, prerequisites,
@@ -46,7 +55,7 @@ isolated worktrees, one GPU slot, serial checked publication and a practical
 generation/Blender process. Preparing the pack starts no production jobs and
 does not mark raw assets, final models or ordinary-world rollout complete.
 
-Latest owner continuation: “Perfect” approves the ART-06C deep lifelines and
+Earlier owner continuation: “Perfect” approves the ART-06C deep lifelines and
 porcupine face. The owner then selects [ART-07 nature/world-feel and every
 existing placeable design](world-and-placeable-art-2026-09-09.md), aligned with
 the original dense landscape reference. The new concept/gallery catalogue

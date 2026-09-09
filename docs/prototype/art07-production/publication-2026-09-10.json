@@ -1,0 +1,3604 @@
+{
+  "date": "2026-09-10",
+  "base": "56ce6bbe343012205690cf669491372958b80662",
+  "scope": "Four source handoffs; no normal-game adoption or visual acceptance inferred.",
+  "packages": {
+    "b1": {
+      "worker": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1",
+      "source_commits": [
+        "4e448871bb1b01d5279db373675055b6e3591c05",
+        "eaf1344f50be36745c81fd70202c962a3987f826"
+      ],
+      "changed_files": 38,
+      "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02",
+      "manifest_sha256": "00a244253614b8c58213a15f929e48fd65c9aec0bb3489600646497bfcbaf7d0",
+      "files": 1533,
+      "bytes": 1582338594,
+      "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\b1",
+      "hash_check": "PASS",
+      "scope_and_python_json_syntax": "PASS",
+      "canonical_rechecked_after_jobs": true,
+      "worker_tool_and_art_blobs_equal_main": true
+    },
+    "d1": {
+      "worker": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d1\\worktree",
+      "source_commits": [
+        "81d3cab8ccd95b84ab218f84860cb8c71aa094e6"
+      ],
+      "changed_files": 46,
+      "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d1\\worktree\\build\\art07\\d1\\v02\\core-lattice-handoff-v01",
+      "manifest_sha256": "a3e92f9692e05eae547290cd6520242f91dfbda31d9236eb6d12842f0453b85a",
+      "files": 1597,
+      "bytes": 116306666,
+      "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d1",
+      "hash_check": "PASS",
+      "scope_and_python_json_syntax": "PASS",
+      "canonical_rechecked_after_jobs": true,
+      "worker_tool_and_art_blobs_equal_main": true
+    },
+    "d4": {
+      "worker": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-d4",
+      "source_commits": [
+        "d1ae974521760cfe2c3d3e379bc34564ae93ab45",
+        "2e203f7fd8bcb3848b4a7f89ff7e005bbc989c3a"
+      ],
+      "changed_files": 53,
+      "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-d4\\build\\art07\\d4\\h04",
+      "manifest_sha256": "aaa0316f108cdb1de0ed27cc3a40fac7a07574497c14486e88b18fa73dfbda59",
+      "files": 196,
+      "bytes": 117145245,
+      "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d4",
+      "hash_check": "PASS",
+      "scope_and_python_json_syntax": "PASS",
+      "canonical_rechecked_after_jobs": true,
+      "worker_tool_and_art_blobs_equal_main": true
+    },
+    "f5": {
+      "worker": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5",
+      "source_commits": [
+        "ba143f8a7d8f2577b9e5a85784d448bc55f1c2b7",
+        "aef8f0f2c031faae219cb0378417027bcd47635b"
+      ],
+      "changed_files": 32,
+      "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v02\\four-colours-handoff",
+      "manifest_sha256": "4cc8c36a2d63c4c0b0c3e131e875992de981ba4220beffa123ad97d389e7103f",
+      "files": 1660,
+      "bytes": 3482734888,
+      "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5",
+      "hash_check": "PASS",
+      "scope_and_python_json_syntax": "PASS",
+      "canonical_rechecked_after_jobs": true,
+      "worker_tool_and_art_blobs_equal_main": true
+    }
+  },
+  "main_implementation_commits": {
+    "b1": [
+      "f3236243516fdb60a5ab56387727db88f7b2477f"
+    ],
+    "d1": [
+      "58d3223583081e06e7ce08df19d08de49abc2065"
+    ],
+    "d4": [
+      "fd1a17d1f8ff722d9521b3b4593752560491e0b0"
+    ],
+    "f5": [
+      "a2f846b40a88c58552b9d7fb3e65b3de461d60d3"
+    ]
+  },
+  "jobs": [
+    {
+      "name": "b1-import",
+      "process": {
+        "exit_code": 0,
+        "end": "2026-09-10T06:52:57.8316211+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--editor",
+            "--import",
+            "--quit",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\b1\\review"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\b1-import",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\b1"
+        },
+        "seconds": 15.9696889,
+        "pid": 22992,
+        "start": "2026-09-10T06:52:41.8620245+09:30"
+      },
+      "stdout_sha256": "0f601fcdfa307c88eb9a19aa17aadc910fc79331cb5315d3a7e8e26af3a365ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "b1-review",
+      "process": {
+        "exit_code": 0,
+        "end": "2026-09-10T06:53:00.9623041+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\b1\\review",
+            "--rendering-method",
+            "forward_plus",
+            "--audio-driver",
+            "Dummy",
+            "--",
+            "--check"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\b1-review",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\b1"
+        },
+        "seconds": 3.066141,
+        "pid": 11844,
+        "start": "2026-09-10T06:52:57.8962664+09:30"
+      },
+      "stdout_sha256": "cb0b1eb09317a49909183fd99a650fef544fbd88edd1d54c19f0443555aa7bb2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "b1-blender",
+      "process": {
+        "exit_code": 0,
+        "end": "2026-09-10T06:53:18.3891935+09:30",
+        "job": {
+          "executable": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\tools\\wroughtwild-art07\\b1\\audit_blender.py",
+            "--",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\b1-blender.json",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\b1\\models\\broadleaf",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\b1\\models\\pine"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\b1-blender",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\b1"
+        },
+        "seconds": 17.4084429,
+        "pid": 21624,
+        "start": "2026-09-10T06:53:00.9808043+09:30"
+      },
+      "stdout_sha256": "4d745f08d045985b8b1e51654722f53a6885ad5975714760e31da4cfb001b3ae",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "d1-import",
+      "process": {
+        "pid": 36912,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--editor",
+            "--import",
+            "--quit",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d1\\review\\game"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\d1-import",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\d1"
+        },
+        "seconds": 10.5125993,
+        "start": "2026-09-10T06:53:53.9606422+09:30",
+        "exit_code": 0,
+        "end": "2026-09-10T06:54:04.4731664+09:30"
+      },
+      "stdout_sha256": "fa6cac967ca67240152f5530574636a5f60f8cae463a046b1982a1a7bcf78ab3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "d1-placement",
+      "process": {
+        "pid": 36172,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d1\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "res://art07_d1/checks.tscn"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\d1-placement",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\d1"
+        },
+        "seconds": 2.3688173,
+        "start": "2026-09-10T06:54:04.5156617+09:30",
+        "exit_code": 0,
+        "end": "2026-09-10T06:54:06.8843635+09:30"
+      },
+      "stdout_sha256": "361fb465ac8b43024cd1c611fedba8ef7020000ee4f19ee2a1ee93913fd95672",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "d1-restart",
+      "process": {
+        "pid": 33524,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d1\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "res://art07_d1/checks.tscn",
+            "--",
+            "--d1-restore"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\d1-restart",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\d1"
+        },
+        "seconds": 2.2029241,
+        "start": "2026-09-10T06:54:06.9013204+09:30",
+        "exit_code": 0,
+        "end": "2026-09-10T06:54:09.1041573+09:30"
+      },
+      "stdout_sha256": "2893bf4a82c9e31b6916b3812146ae215a12c3f8c8d93283d8d9120ce2407247",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "d1-blender",
+      "process": {
+        "pid": 11368,
+        "job": {
+          "executable": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d1\\worktree\\tools\\wroughtwild-art07\\d1\\reopen.py",
+            "--",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d1-source",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d1-blender"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\d1-blender",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\d1"
+        },
+        "seconds": 46.1835547,
+        "start": "2026-09-10T06:54:09.1182736+09:30",
+        "exit_code": 0,
+        "end": "2026-09-10T06:54:55.3017436+09:30"
+      },
+      "stdout_sha256": "3189f58dac96a6c4f48230592949818cdbe2c2c8ca00fa775bc5fd40a425e592",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "d4-textures",
+      "process": {
+        "seconds": 1.8178082,
+        "exit_code": 0,
+        "job": {
+          "executable": "C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "arguments": [
+            "-B",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-d4\\tools\\wroughtwild-art07\\d4\\verify.py",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d4\\review\\textures"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\d4-textures",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\d4"
+        },
+        "start": "2026-09-10T06:55:19.8859020+09:30",
+        "pid": 5636,
+        "end": "2026-09-10T06:55:21.7036050+09:30"
+      },
+      "stdout_sha256": "e179f175c0b2695f6a3d53beafec50ae8d2bb2453e68717674407971899796fb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "d4-blender",
+      "process": {
+        "seconds": 19.2073368,
+        "exit_code": 0,
+        "job": {
+          "executable": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-d4\\tools\\wroughtwild-art07\\d4\\blender_materials.py",
+            "--",
+            "--reopen",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d4\\source\\d4_materials.blend",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\d4-blender"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\d4-blender",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\d4"
+        },
+        "start": "2026-09-10T06:55:21.7351477+09:30",
+        "pid": 30344,
+        "end": "2026-09-10T06:55:40.9423950+09:30"
+      },
+      "stdout_sha256": "de9796ce10b48633cbeb29ba8af9eeba7cb3cb8f3930714ace268ab9d065c27e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-red-import",
+      "process": {
+        "seconds": 11.7365589,
+        "pid": 37128,
+        "exit_code": 0,
+        "end": "2026-09-10T06:56:16.4345654+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--editor",
+            "--import",
+            "--quit",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\red\\review"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-red-import",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-red"
+        },
+        "start": "2026-09-10T06:56:04.6981077+09:30"
+      },
+      "stdout_sha256": "4d632a4dcb23ce2910d03cd1dd89c50e223d8aedbbb987cba14df22f2672d1a9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-red-check",
+      "process": {
+        "seconds": 18.2779887,
+        "pid": 37040,
+        "exit_code": 0,
+        "end": "2026-09-10T06:56:34.7542356+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\red\\review",
+            "--audio-driver",
+            "Dummy",
+            "--script",
+            "res://check_native.gd",
+            "--quit-after",
+            "5000"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-red-check",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-red"
+        },
+        "start": "2026-09-10T06:56:16.4763037+09:30"
+      },
+      "stdout_sha256": "5c0f2a9a263fca098ea649d14f30fc319c2851d5594906080ae73f8e124adc47",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-red-restart",
+      "process": {
+        "seconds": 5.0689301,
+        "pid": 6884,
+        "exit_code": 0,
+        "end": "2026-09-10T06:56:39.8428509+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\red\\review",
+            "--audio-driver",
+            "Dummy",
+            "--script",
+            "res://check_native.gd",
+            "--quit-after",
+            "5000",
+            "--",
+            "--restart"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-red-restart",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-red"
+        },
+        "start": "2026-09-10T06:56:34.7739658+09:30"
+      },
+      "stdout_sha256": "8823234060f7c5a28c74f4437291cb2d175764b94bf44b0e00aa38a25c03b912",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-red-blender",
+      "process": {
+        "seconds": 8.7212707,
+        "pid": 36876,
+        "exit_code": 0,
+        "end": "2026-09-10T06:56:48.5922793+09:30",
+        "job": {
+          "executable": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\tools\\wroughtwild-art07\\f5\\blender_audit.py",
+            "--",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5",
+            "red",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5-red-blender"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-red-blender",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-red"
+        },
+        "start": "2026-09-10T06:56:39.8710537+09:30"
+      },
+      "stdout_sha256": "d7aebc8caa9d46d8123031b243a09799866c8045a15ceb1a93a2e7c144da7a5f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-white-import",
+      "process": {
+        "seconds": 10.8439565,
+        "pid": 30524,
+        "exit_code": 0,
+        "end": "2026-09-10T06:56:59.4493259+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--editor",
+            "--import",
+            "--quit",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\white\\review"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-white-import",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-white"
+        },
+        "start": "2026-09-10T06:56:48.6054075+09:30"
+      },
+      "stdout_sha256": "4f94bdd50330049d94f501beaa865fe19cd1c3698614aa615072c4ddfd786539",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-white-check",
+      "process": {
+        "seconds": 7.6384969,
+        "pid": 2760,
+        "exit_code": 0,
+        "end": "2026-09-10T06:57:07.1027950+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\white\\review",
+            "--audio-driver",
+            "Dummy",
+            "--script",
+            "res://check_native.gd",
+            "--quit-after",
+            "5000"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-white-check",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-white"
+        },
+        "start": "2026-09-10T06:56:59.4643312+09:30"
+      },
+      "stdout_sha256": "045c037109a164aba0313761abae9584b3ea5ec2536e1827423e5c6319578c38",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-white-restart",
+      "process": {
+        "seconds": 5.0426717,
+        "pid": 26516,
+        "exit_code": 0,
+        "end": "2026-09-10T06:57:12.1566663+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\white\\review",
+            "--audio-driver",
+            "Dummy",
+            "--script",
+            "res://check_native.gd",
+            "--quit-after",
+            "5000",
+            "--",
+            "--restart"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-white-restart",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-white"
+        },
+        "start": "2026-09-10T06:57:07.1140474+09:30"
+      },
+      "stdout_sha256": "96d9e351f7fb54623dc324898537db61057cc0af055be931074d9eb8ccb5e87e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-white-blender",
+      "process": {
+        "seconds": 10.223974,
+        "pid": 33088,
+        "exit_code": 0,
+        "end": "2026-09-10T06:57:22.3927677+09:30",
+        "job": {
+          "executable": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\tools\\wroughtwild-art07\\f5\\blender_audit.py",
+            "--",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5",
+            "white",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5-white-blender"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-white-blender",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-white"
+        },
+        "start": "2026-09-10T06:57:12.1688339+09:30"
+      },
+      "stdout_sha256": "73c2f96583cad23eda378c23058be819f845d7934142f6db35ba05b02c8bb853",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-blue-import",
+      "process": {
+        "seconds": 13.0805749,
+        "pid": 25884,
+        "exit_code": 0,
+        "end": "2026-09-10T06:57:35.4877510+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--editor",
+            "--import",
+            "--quit",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\blue\\review"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-blue-import",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-blue"
+        },
+        "start": "2026-09-10T06:57:22.4072147+09:30"
+      },
+      "stdout_sha256": "21228746611bb90310f5c5ea0cdf09ceb937723e82500c8870947635ea3e6413",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-blue-check",
+      "process": {
+        "seconds": 10.2328576,
+        "pid": 16092,
+        "exit_code": 0,
+        "end": "2026-09-10T06:57:45.7444629+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\blue\\review",
+            "--audio-driver",
+            "Dummy",
+            "--script",
+            "res://check_native.gd",
+            "--quit-after",
+            "5000"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-blue-check",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-blue"
+        },
+        "start": "2026-09-10T06:57:35.5116407+09:30"
+      },
+      "stdout_sha256": "8bb831436500ff60bac36c40f1e2b2b8d627c7c68541f6aa8c7d535fa7703395",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-blue-restart",
+      "process": {
+        "seconds": 9.7546209,
+        "pid": 6824,
+        "exit_code": 0,
+        "end": "2026-09-10T06:57:55.5110896+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\blue\\review",
+            "--audio-driver",
+            "Dummy",
+            "--script",
+            "res://check_native.gd",
+            "--quit-after",
+            "5000",
+            "--",
+            "--restart"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-blue-restart",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-blue"
+        },
+        "start": "2026-09-10T06:57:45.7565042+09:30"
+      },
+      "stdout_sha256": "c39e7b5e0e3eb553dd42a8e5a037ef5038f3ed2096d53cb0ceb29667434f09fa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-blue-blender",
+      "process": {
+        "seconds": 9.2043367,
+        "pid": 34656,
+        "exit_code": 0,
+        "end": "2026-09-10T06:58:04.7269907+09:30",
+        "job": {
+          "executable": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\tools\\wroughtwild-art07\\f5\\blender_audit.py",
+            "--",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5",
+            "blue",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5-blue-blender"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-blue-blender",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-blue"
+        },
+        "start": "2026-09-10T06:57:55.5227027+09:30"
+      },
+      "stdout_sha256": "dd7325896f7ef187d0749354c3c53ea84dbd414c6902edda33e060edc0419dfb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-green-import",
+      "process": {
+        "seconds": 14.8091248,
+        "pid": 6800,
+        "exit_code": 0,
+        "end": "2026-09-10T06:58:19.5476241+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--editor",
+            "--import",
+            "--quit",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\green\\review"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-green-import",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-green"
+        },
+        "start": "2026-09-10T06:58:04.7385364+09:30"
+      },
+      "stdout_sha256": "ef54ecf73d7fb14281468382be26bc3856c2d764a3640de0f6de84ec3cd17727",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-green-check",
+      "process": {
+        "seconds": 22.6003888,
+        "pid": 22992,
+        "exit_code": 0,
+        "end": "2026-09-10T06:58:42.1635271+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\green\\review",
+            "--audio-driver",
+            "Dummy",
+            "--script",
+            "res://check_native.gd",
+            "--quit-after",
+            "5000"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-green-check",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-green"
+        },
+        "start": "2026-09-10T06:58:19.5631819+09:30"
+      },
+      "stdout_sha256": "6565ec65e51d94561c15afa4636715a0caa2275d0bffb8d5fb6a1ea93a581f14",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-green-restart",
+      "process": {
+        "seconds": 9.8133669,
+        "pid": 22784,
+        "exit_code": 0,
+        "end": "2026-09-10T06:58:51.9896982+09:30",
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5\\green\\review",
+            "--audio-driver",
+            "Dummy",
+            "--script",
+            "res://check_native.gd",
+            "--quit-after",
+            "5000",
+            "--",
+            "--restart"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-green-restart",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-green"
+        },
+        "start": "2026-09-10T06:58:42.1764306+09:30"
+      },
+      "stdout_sha256": "43f2ea99d73af18888de714c257d5cd0cd9b84add0fbb62006e56d06d9ade15f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "f5-green-blender",
+      "process": {
+        "seconds": 8.9141845,
+        "pid": 25940,
+        "exit_code": 0,
+        "end": "2026-09-10T06:59:00.9151153+09:30",
+        "job": {
+          "executable": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\tools\\wroughtwild-art07\\f5\\blender_audit.py",
+            "--",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5",
+            "green",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\f5-green-blender"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\logs\\f5-green-blender",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\u\\f5-green"
+        },
+        "start": "2026-09-10T06:58:52.0009845+09:30"
+      },
+      "stdout_sha256": "d6264397a9fe2a3d8faa8715c0736dfa1b185bc974f00b990d8f0769b4680b26",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fresh_blender_results": {
+    "b1": {
+      "masters": [
+        {
+          "file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\b1\\models\\broadleaf\\broadleaf-master.blend",
+          "packed_images": 6,
+          "collections": [
+            "01 SOURCE",
+            "02 FINISHED",
+            "03 RUNTIME",
+            "04 REVIEW"
+          ],
+          "independent_measured_scar_depth_m": 0.09992749531513745
+        },
+        {
+          "file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\p07\\v02\\b1\\models\\pine\\pine-master.blend",
+          "packed_images": 5,
+          "collections": [
+            "01 SOURCE",
+            "02 FINISHED",
+            "03 RUNTIME",
+            "04 REVIEW"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "file": "broadleaf-a-lod0.glb",
+          "triangles": 219474,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.09669828414917,
+              -3.601966619491577,
+              0.00843413919210434
+            ],
+            [
+              4.223137855529785,
+              4.193358898162842,
+              8.580297470092773
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.007604145910590887,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.009160863235592842
+        },
+        {
+          "file": "broadleaf-a-lod1.glb",
+          "triangles": 98032,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.08023738861084,
+              -3.3523049354553223,
+              0.03348498046398163
+            ],
+            [
+              4.215907573699951,
+              4.195178031921387,
+              8.562625885009766
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.007604310754686594,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.009416766464710236
+        },
+        {
+          "file": "broadleaf-a-lod2.glb",
+          "triangles": 65232,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.0824737548828125,
+              -2.006535053253174,
+              0.30371251702308655
+            ],
+            [
+              4.213953971862793,
+              4.202667236328125,
+              8.562625885009766
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.0076042283326387405,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.008603198453783989
+        },
+        {
+          "file": "broadleaf-altered-lod0.glb",
+          "triangles": 219473,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.09669828414917,
+              -3.601966619491577,
+              0.00843413919210434
+            ],
+            [
+              4.218193531036377,
+              4.200547218322754,
+              8.580297470092773
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.007604145910590887,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.009160863235592842
+        },
+        {
+          "file": "broadleaf-altered-lod1.glb",
+          "triangles": 98032,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.08023738861084,
+              -3.3523049354553223,
+              0.03348498046398163
+            ],
+            [
+              4.219415187835693,
+              4.202667236328125,
+              8.562625885009766
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.007604310754686594,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.008603198453783989
+        },
+        {
+          "file": "broadleaf-altered-lod2.glb",
+          "triangles": 65238,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.0824737548828125,
+              -2.006535053253174,
+              0.30371251702308655
+            ],
+            [
+              4.219572067260742,
+              4.202667236328125,
+              8.562625885009766
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.0076042283326387405,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.009416766464710236
+        },
+        {
+          "file": "broadleaf-b-lod0.glb",
+          "triangles": 219474,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.322175025939941,
+              -3.601966619491577,
+              0.00843413919210434
+            ],
+            [
+              4.320868968963623,
+              4.19644832611084,
+              8.319479942321777
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.007604327518492937,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.00913203414529562
+        },
+        {
+          "file": "broadleaf-b-lod1.glb",
+          "triangles": 98032,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.306158542633057,
+              -3.3523049354553223,
+              0.03348498046398163
+            ],
+            [
+              4.3221869468688965,
+              4.190802574157715,
+              8.305931091308594
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.007604327518492937,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.00833198893815279
+        },
+        {
+          "file": "broadleaf-b-lod2.glb",
+          "triangles": 65232,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -4.306158542633057,
+              -2.2461509704589844,
+              0.30371251702308655
+            ],
+            [
+              4.3202338218688965,
+              4.190802574157715,
+              8.305931091308594
+            ]
+          ],
+          "leaf_roots": 16240,
+          "max_leaf_to_twig_surface_m": 0.007604327518492937,
+          "branchlets": 580,
+          "max_branchlet_to_trunk_surface_m": 0.009465432725846767
+        },
+        {
+          "file": "broadleaf-deadwood.glb",
+          "triangles": 16663,
+          "degenerate_triangles": 0,
+          "surfaces": 2,
+          "bounds_blender_m": [
+            [
+              -6.868533830584056e-08,
+              -1.4726905822753906,
+              0.0
+            ],
+            [
+              0.800000011920929,
+              1.0342097282409668,
+              2.2688467502593994
+            ]
+          ]
+        },
+        {
+          "file": "broadleaf-root-skirt.glb",
+          "triangles": 26655,
+          "degenerate_triangles": 0,
+          "surfaces": 2,
+          "bounds_blender_m": [
+            [
+              -3.2108919620513916,
+              -3.602910280227661,
+              0.0021446796599775553
+            ],
+            [
+              3.757687568664551,
+              3.601288318634033,
+              1.3300000429153442
+            ]
+          ]
+        },
+        {
+          "file": "broadleaf-stump.glb",
+          "triangles": 25229,
+          "degenerate_triangles": 0,
+          "surfaces": 2,
+          "bounds_blender_m": [
+            [
+              -3.2108919620513916,
+              -3.602910280227661,
+              0.0021446796599775553
+            ],
+            [
+              3.757687568664551,
+              3.601288318634033,
+              1.25
+            ]
+          ]
+        },
+        {
+          "file": "pine-a-lod0.glb",
+          "triangles": 395397,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -3.2265820503234863,
+              -3.0152571201324463,
+              -0.002841588342562318
+            ],
+            [
+              3.2506964206695557,
+              2.7693588733673096,
+              9.16031551361084
+            ]
+          ],
+          "leaf_roots": 24480,
+          "max_leaf_to_twig_surface_m": 0.007603791076689959,
+          "branchlets": 680,
+          "max_branchlet_to_trunk_surface_m": 0.00818734709173441
+        },
+        {
+          "file": "pine-a-lod1.glb",
+          "triangles": 130597,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -3.2298851013183594,
+              -2.998002767562866,
+              -0.0003691725432872772
+            ],
+            [
+              3.2436039447784424,
+              2.7662758827209473,
+              9.157492637634277
+            ]
+          ],
+          "leaf_roots": 24480,
+          "max_leaf_to_twig_surface_m": 0.007603791076689959,
+          "branchlets": 680,
+          "max_branchlet_to_trunk_surface_m": 0.008383811451494694
+        },
+        {
+          "file": "pine-a-lod2.glb",
+          "triangles": 69637,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -3.225550413131714,
+              -3.0026662349700928,
+              0.012035530060529709
+            ],
+            [
+              3.257200002670288,
+              2.7689731121063232,
+              9.156060218811035
+            ]
+          ],
+          "leaf_roots": 24480,
+          "max_leaf_to_twig_surface_m": 0.007603791076689959,
+          "branchlets": 680,
+          "max_branchlet_to_trunk_surface_m": 0.008548269048333168
+        },
+        {
+          "file": "pine-b-lod0.glb",
+          "triangles": 395397,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -3.15329909324646,
+              -3.0895144939422607,
+              -0.002841588342562318
+            ],
+            [
+              3.2192554473876953,
+              2.99483060836792,
+              9.413354873657227
+            ]
+          ],
+          "leaf_roots": 24480,
+          "max_leaf_to_twig_surface_m": 0.007603941019624472,
+          "branchlets": 680,
+          "max_branchlet_to_trunk_surface_m": 0.008570050820708275
+        },
+        {
+          "file": "pine-b-lod1.glb",
+          "triangles": 130597,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -3.1537110805511475,
+              -3.081435203552246,
+              -0.0003691725432872772
+            ],
+            [
+              3.215625762939453,
+              2.9844889640808105,
+              9.408191680908203
+            ]
+          ],
+          "leaf_roots": 24480,
+          "max_leaf_to_twig_surface_m": 0.007603941019624472,
+          "branchlets": 680,
+          "max_branchlet_to_trunk_surface_m": 0.006841239519417286
+        },
+        {
+          "file": "pine-b-lod2.glb",
+          "triangles": 69637,
+          "degenerate_triangles": 0,
+          "surfaces": 3,
+          "bounds_blender_m": [
+            [
+              -3.1810529232025146,
+              -3.0778486728668213,
+              0.012035530060529709
+            ],
+            [
+              3.2208662033081055,
+              2.9690823554992676,
+              9.385089874267578
+            ]
+          ],
+          "leaf_roots": 24480,
+          "max_leaf_to_twig_surface_m": 0.007603941019624472,
+          "branchlets": 680,
+          "max_branchlet_to_trunk_surface_m": 0.008188711479306221
+        },
+        {
+          "file": "pine-deadwood.glb",
+          "triangles": 15192,
+          "degenerate_triangles": 0,
+          "surfaces": 2,
+          "bounds_blender_m": [
+            [
+              -6.158096255148848e-08,
+              -1.794236183166504,
+              0.0
+            ],
+            [
+              1.0499999523162842,
+              0.44513556361198425,
+              1.08024263381958
+            ]
+          ]
+        },
+        {
+          "file": "pine-root-skirt.glb",
+          "triangles": 74166,
+          "degenerate_triangles": 0,
+          "surfaces": 2,
+          "bounds_blender_m": [
+            [
+              -2.427764654159546,
+              -1.924845814704895,
+              0.0
+            ],
+            [
+              1.77829909324646,
+              1.7696014642715454,
+              1.0800000429153442
+            ]
+          ]
+        },
+        {
+          "file": "pine-stump.glb",
+          "triangles": 73276,
+          "degenerate_triangles": 0,
+          "surfaces": 2,
+          "bounds_blender_m": [
+            [
+              -2.427764654159546,
+              -1.924845814704895,
+              0.0
+            ],
+            [
+              1.77829909324646,
+              1.7696014642715454,
+              1.0
+            ]
+          ]
+        }
+      ]
+    },
+    "d1": {
+      "master_sha256": "128e70f689689f90d4eaa9eddf552bd6823f5fe8778f381607510606b2021e98",
+      "packed_images": 2,
+      "six_angles_each_material_and_neutral": true,
+      "fresh_glb_imports": {
+        "cube": {
+          "bounds": [
+            [
+              -0.5,
+              -0.5,
+              -0.5
+            ],
+            [
+              0.5,
+              0.5,
+              0.5
+            ]
+          ],
+          "triangles": 312,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "wall_panel": {
+          "bounds": [
+            [
+              -0.5,
+              -0.5,
+              -0.125
+            ],
+            [
+              0.5,
+              0.5,
+              0.125
+            ]
+          ],
+          "triangles": 312,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "pillar": {
+          "bounds": [
+            [
+              -0.15000000596046448,
+              -0.5,
+              -0.15000000596046448
+            ],
+            [
+              0.15000000596046448,
+              0.5,
+              0.15000000596046448
+            ]
+          ],
+          "triangles": 76,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "beam": {
+          "bounds": [
+            [
+              -0.5,
+              -0.20000000298023224,
+              -0.20000000298023224
+            ],
+            [
+              0.5,
+              0.20000000298023224,
+              0.20000000298023224
+            ]
+          ],
+          "triangles": 76,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "floor_slab": {
+          "bounds": [
+            [
+              -0.5,
+              -0.125,
+              -0.5
+            ],
+            [
+              0.5,
+              0.125,
+              0.5
+            ]
+          ],
+          "triangles": 188,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "stairs": {
+          "bounds": [
+            [
+              -0.5,
+              -0.5,
+              -0.5
+            ],
+            [
+              0.5,
+              0.5,
+              0.5
+            ]
+          ],
+          "triangles": 224,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "codex_corner": {
+          "bounds": [
+            [
+              -0.5,
+              -0.5,
+              -0.5
+            ],
+            [
+              0.5,
+              0.5,
+              0.5
+            ]
+          ],
+          "triangles": 8,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "codex_corner_floor": {
+          "bounds": [
+            [
+              -0.5,
+              -0.125,
+              -0.5
+            ],
+            [
+              0.5,
+              0.125,
+              0.5
+            ]
+          ],
+          "triangles": 104,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "foundation": {
+          "bounds": [
+            [
+              -0.5,
+              -0.5,
+              -0.5
+            ],
+            [
+              0.5,
+              0.0,
+              0.5
+            ]
+          ],
+          "triangles": 1422,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "dry_wall": {
+          "bounds": [
+            [
+              -0.5,
+              -0.5,
+              -0.15000000596046448
+            ],
+            [
+              0.5,
+              0.0,
+              0.15000000596046448
+            ]
+          ],
+          "triangles": 686,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        }
+      }
+    },
+    "d4": {
+      "proxies": [
+        {
+          "name": "ash_wood_beam",
+          "family": "ash_wood",
+          "dimensions_blender_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "ash_wood_half_beam",
+          "family": "ash_wood",
+          "dimensions_blender_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "ash_wood_half_wall",
+          "family": "ash_wood",
+          "dimensions_blender_m": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.5,
+            0.125
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "ash_wood_wall_panel",
+          "family": "ash_wood",
+          "dimensions_blender_m": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            1.0,
+            0.25
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "bog_oak_beam",
+          "family": "bog_oak",
+          "dimensions_blender_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "bog_oak_half_beam",
+          "family": "bog_oak",
+          "dimensions_blender_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "bog_oak_half_wall",
+          "family": "bog_oak",
+          "dimensions_blender_m": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.5,
+            0.125
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "bog_oak_wall_panel",
+          "family": "bog_oak",
+          "dimensions_blender_m": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            1.0,
+            0.25
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "corkbark_cut_swatch",
+          "family": "corkbark",
+          "dimensions_blender_m": [
+            0.5,
+            0.1599999964237213,
+            0.30000001192092896
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.30000001192092896,
+            0.1599999964237213
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "corkbark_light_panel",
+          "family": "corkbark",
+          "dimensions_blender_m": [
+            1.0,
+            0.1599999964237213,
+            1.0
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            1.0,
+            0.1599999964237213
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "corkbark_tiling_coupon",
+          "family": "corkbark",
+          "dimensions_blender_m": [
+            0.5,
+            0.03999999910593033,
+            0.5
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.5,
+            0.03999999910593033
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "pine_beam",
+          "family": "pine",
+          "dimensions_blender_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "pine_half_beam",
+          "family": "pine",
+          "dimensions_blender_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "pine_half_wall",
+          "family": "pine",
+          "dimensions_blender_m": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.5,
+            0.125
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "pine_wall_panel",
+          "family": "pine",
+          "dimensions_blender_m": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            1.0,
+            0.25
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "resinheart_beam",
+          "family": "resinheart",
+          "dimensions_blender_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "resinheart_half_beam",
+          "family": "resinheart",
+          "dimensions_blender_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "resinheart_half_wall",
+          "family": "resinheart",
+          "dimensions_blender_m": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.5,
+            0.125
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "resinheart_wall_panel",
+          "family": "resinheart",
+          "dimensions_blender_m": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            1.0,
+            0.25
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "wood_beam",
+          "family": "wood",
+          "dimensions_blender_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "wood_half_beam",
+          "family": "wood",
+          "dimensions_blender_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 0,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "wood_half_wall",
+          "family": "wood",
+          "dimensions_blender_m": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.5,
+            0.125
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "wood_wall_panel",
+          "family": "wood",
+          "dimensions_blender_m": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            1.0,
+            0.25
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "woven_reed_cut_swatch",
+          "family": "woven_reed",
+          "dimensions_blender_m": [
+            0.5,
+            0.1599999964237213,
+            0.30000001192092896
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.30000001192092896,
+            0.1599999964237213
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "woven_reed_light_panel",
+          "family": "woven_reed",
+          "dimensions_blender_m": [
+            1.0,
+            0.1599999964237213,
+            1.0
+          ],
+          "dimensions_godot_m": [
+            1.0,
+            1.0,
+            0.1599999964237213
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        },
+        {
+          "name": "woven_reed_tiling_coupon",
+          "family": "woven_reed",
+          "dimensions_blender_m": [
+            0.5,
+            0.03999999910593033,
+            0.5
+          ],
+          "dimensions_godot_m": [
+            0.5,
+            0.5,
+            0.03999999910593033
+          ],
+          "triangles": 12,
+          "surfaces": 2,
+          "grain_axis_blender": 2,
+          "origin": "centre; board arrangement only; not a lattice replacement"
+        }
+      ],
+      "triangles": 312,
+      "images": [
+        {
+          "name": "d4_ash_wood_edge_albedo.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_ash_wood_edge_normal.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_ash_wood_edge_orm.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_ash_wood_face_albedo.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_ash_wood_face_normal.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_ash_wood_face_orm.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_bog_oak_edge_albedo.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_bog_oak_edge_normal.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_bog_oak_edge_orm.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_bog_oak_face_albedo.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_bog_oak_face_normal.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_bog_oak_face_orm.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_corkbark_edge_albedo.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_corkbark_edge_normal.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_corkbark_edge_orm.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_corkbark_face_albedo.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_corkbark_face_normal.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_corkbark_face_orm.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_pine_edge_albedo.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_pine_edge_normal.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_pine_edge_orm.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_pine_face_albedo.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_pine_face_normal.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_pine_face_orm.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_resinheart_edge_albedo.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_resinheart_edge_normal.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_resinheart_edge_orm.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_resinheart_face_albedo.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_resinheart_face_normal.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_resinheart_face_orm.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_wood_edge_albedo.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_wood_edge_normal.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_wood_edge_orm.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_wood_face_albedo.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_wood_face_normal.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_wood_face_orm.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_woven_reed_edge_albedo.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_woven_reed_edge_normal.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_woven_reed_edge_orm.png",
+          "size": [
+            512,
+            512
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_woven_reed_face_albedo.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "sRGB",
+          "packed": true
+        },
+        {
+          "name": "d4_woven_reed_face_normal.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        },
+        {
+          "name": "d4_woven_reed_face_orm.png",
+          "size": [
+            1024,
+            1024
+          ],
+          "colour_space": "Non-Color",
+          "packed": true
+        }
+      ],
+      "degenerate_triangles": 0,
+      "fresh_glb_import": [
+        {
+          "name": "ash_wood_beam",
+          "size": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "native_shape": "beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "ash_wood_half_beam",
+          "size": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "native_shape": "half_beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "ash_wood_half_wall",
+          "size": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "triangles": 12,
+          "native_shape": "half_wall",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "ash_wood_wall_panel",
+          "size": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "triangles": 12,
+          "native_shape": "wall_panel",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "bog_oak_beam",
+          "size": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "native_shape": "beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "bog_oak_half_beam",
+          "size": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "native_shape": "half_beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "bog_oak_half_wall",
+          "size": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "triangles": 12,
+          "native_shape": "half_wall",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "bog_oak_wall_panel",
+          "size": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "triangles": 12,
+          "native_shape": "wall_panel",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "corkbark_cut_swatch",
+          "size": [
+            0.5,
+            0.1599999964237213,
+            0.30000001192092896
+          ],
+          "triangles": 12,
+          "native_shape": null,
+          "dimension_check": "inspection coupon only"
+        },
+        {
+          "name": "corkbark_light_panel",
+          "size": [
+            1.0,
+            0.1599999964237213,
+            1.0
+          ],
+          "triangles": 12,
+          "native_shape": "light_panel",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "corkbark_tiling_coupon",
+          "size": [
+            0.5,
+            0.03999999910593033,
+            0.5
+          ],
+          "triangles": 12,
+          "native_shape": null,
+          "dimension_check": "inspection coupon only"
+        },
+        {
+          "name": "pine_beam",
+          "size": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "native_shape": "beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "pine_half_beam",
+          "size": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "native_shape": "half_beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "pine_half_wall",
+          "size": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "triangles": 12,
+          "native_shape": "half_wall",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "pine_wall_panel",
+          "size": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "triangles": 12,
+          "native_shape": "wall_panel",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "resinheart_beam",
+          "size": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "native_shape": "beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "resinheart_half_beam",
+          "size": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "native_shape": "half_beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "resinheart_half_wall",
+          "size": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "triangles": 12,
+          "native_shape": "half_wall",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "resinheart_wall_panel",
+          "size": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "triangles": 12,
+          "native_shape": "wall_panel",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "wood_beam",
+          "size": [
+            1.0,
+            0.4000000059604645,
+            0.4000000059604645
+          ],
+          "triangles": 12,
+          "native_shape": "beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "wood_half_beam",
+          "size": [
+            0.5,
+            0.20000000298023224,
+            0.20000000298023224
+          ],
+          "triangles": 12,
+          "native_shape": "half_beam",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "wood_half_wall",
+          "size": [
+            0.5,
+            0.125,
+            0.5
+          ],
+          "triangles": 12,
+          "native_shape": "half_wall",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "wood_wall_panel",
+          "size": [
+            1.0,
+            0.25,
+            1.0
+          ],
+          "triangles": 12,
+          "native_shape": "wall_panel",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "woven_reed_cut_swatch",
+          "size": [
+            0.5,
+            0.1599999964237213,
+            0.30000001192092896
+          ],
+          "triangles": 12,
+          "native_shape": null,
+          "dimension_check": "inspection coupon only"
+        },
+        {
+          "name": "woven_reed_light_panel",
+          "size": [
+            1.0,
+            0.1599999964237213,
+            1.0
+          ],
+          "triangles": 12,
+          "native_shape": "light_panel",
+          "dimension_check": "pass"
+        },
+        {
+          "name": "woven_reed_tiling_coupon",
+          "size": [
+            0.5,
+            0.03999999910593033,
+            0.5
+          ],
+          "triangles": 12,
+          "native_shape": null,
+          "dimension_check": "inspection coupon only"
+        }
+      ]
+    },
+    "f5": {
+      "red": {
+        "colour": "red",
+        "blender": "4.5.9 LTS",
+        "checks": 68,
+        "assertions": [
+          "red-source-near.glb finite",
+          "red-source-near.glb native bounds",
+          "red-source-near.glb UV layer",
+          "red-source-mid.glb finite",
+          "red-source-mid.glb native bounds",
+          "red-source-mid.glb UV layer",
+          "red-source-far.glb finite",
+          "red-source-far.glb native bounds",
+          "red-source-far.glb UV layer",
+          "red-buffer-near.glb finite",
+          "red-buffer-near.glb native bounds",
+          "red-buffer-near.glb UV layer",
+          "red-buffer-near.glb UV layer",
+          "red-buffer-mid.glb finite",
+          "red-buffer-mid.glb native bounds",
+          "red-buffer-mid.glb UV layer",
+          "red-buffer-mid.glb UV layer",
+          "red-buffer-far.glb finite",
+          "red-buffer-far.glb native bounds",
+          "red-buffer-far.glb UV layer",
+          "red-buffer-far.glb UV layer",
+          "red-fragment-1.glb closed after UV seam weld",
+          "red-fragment-1.glb nonzero closed volume",
+          "red-fragment-2.glb closed after UV seam weld",
+          "red-fragment-2.glb nonzero closed volume",
+          "red-fragment-3.glb closed after UV seam weld",
+          "red-fragment-3.glb nonzero closed volume",
+          "packed Buffer base baked",
+          "packed dimensions Buffer base baked",
+          "packed Buffer normal baked",
+          "packed dimensions Buffer normal baked",
+          "packed Buffer ORM baked",
+          "packed dimensions Buffer ORM baked",
+          "packed Fragment 1 base",
+          "packed dimensions Fragment 1 base",
+          "packed Fragment 1 normal",
+          "packed dimensions Fragment 1 normal",
+          "packed Fragment 1 orm",
+          "packed dimensions Fragment 1 orm",
+          "packed Fragment 1 scar",
+          "packed dimensions Fragment 1 scar",
+          "packed Fragment 2 base",
+          "packed dimensions Fragment 2 base",
+          "packed Fragment 2 normal",
+          "packed dimensions Fragment 2 normal",
+          "packed Fragment 2 orm",
+          "packed dimensions Fragment 2 orm",
+          "packed Fragment 2 scar",
+          "packed dimensions Fragment 2 scar",
+          "packed Fragment 3 base",
+          "packed dimensions Fragment 3 base",
+          "packed Fragment 3 normal",
+          "packed dimensions Fragment 3 normal",
+          "packed Fragment 3 orm",
+          "packed dimensions Fragment 3 orm",
+          "packed Fragment 3 scar",
+          "packed dimensions Fragment 3 scar",
+          "packed Image_0",
+          "packed dimensions Image_0",
+          "packed Image_1",
+          "packed dimensions Image_1",
+          "packed Red fracture tangent normal",
+          "packed dimensions Red fracture tangent normal",
+          "packed Red scar - linear core damage travel",
+          "packed dimensions Red scar - linear core damage travel",
+          "pre-scar topology exactly matches retained near master",
+          "delivered geometry matches actual scar displacement to one micrometre",
+          "master bytes unchanged"
+        ],
+        "failures": [],
+        "master_sha256": "540fb48be593f9ef2338ebb672ff9f9a4e48e200b9c056abec82e798b236eac3",
+        "runtime_assets": [
+          {
+            "file": "red-source-near.glb",
+            "sha256": "c25e64339cc2e1f3693ac944911ca18ed34ae9f7ebf12522326357c0b496c9b4",
+            "triangles": 41999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7196746468544006,
+                -0.6647889614105225,
+                0.0
+              ],
+              [
+                0.7197074294090271,
+                0.665177047252655,
+                0.7864708304405212
+              ]
+            ]
+          },
+          {
+            "file": "red-source-mid.glb",
+            "sha256": "7b1366265915dd52eee60a9863d35b1ed90fc4816cec0e8767a819b25a91b009",
+            "triangles": 11999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7196691036224365,
+                -0.6654903888702393,
+                0.0
+              ],
+              [
+                0.7197813391685486,
+                0.6642162203788757,
+                0.7868154644966125
+              ]
+            ]
+          },
+          {
+            "file": "red-source-far.glb",
+            "sha256": "5e28806005774be533221e4e059cea927a1c40697049b6fbca9d83cfbbbe9158",
+            "triangles": 2499,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7269427180290222,
+                -0.6704641580581665,
+                0.0
+              ],
+              [
+                0.7183520793914795,
+                0.6592122912406921,
+                0.7889609336853027
+              ]
+            ]
+          },
+          {
+            "file": "red-buffer-near.glb",
+            "sha256": "5a8149ec4bcd547da4b90daca0647fdacf09ffcae975b8c72cb3a26e4d6d2877",
+            "triangles": 45647,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.47999998927116394,
+                -0.47999998927116394,
+                -1.4901161193847656e-08
+              ],
+              [
+                0.47999998927116394,
+                0.49699994921684265,
+                1.176782488822937
+              ]
+            ]
+          },
+          {
+            "file": "red-buffer-mid.glb",
+            "sha256": "b832849050883de4022f9acc8f14da7cc59d1410f400e06c36510aae7bd65766",
+            "triangles": 15617,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.47999998927116394,
+                -0.47999998927116394,
+                -1.4901161193847656e-08
+              ],
+              [
+                0.47999998927116394,
+                0.49699994921684265,
+                1.176782488822937
+              ]
+            ]
+          },
+          {
+            "file": "red-buffer-far.glb",
+            "sha256": "8eadde745d430463e7bfda42e8e7322dbe9834294a106a0579c1a03e499cc131",
+            "triangles": 6145,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.47999998927116394,
+                -0.47999998927116394,
+                -1.4901161193847656e-08
+              ],
+              [
+                0.47999998927116394,
+                0.49699994921684265,
+                1.176782488822937
+              ]
+            ]
+          },
+          {
+            "file": "red-fragment-1.glb",
+            "sha256": "ef53e920ceaf3de67b3a0de4bdb9cb1b5547c7655ccc1d8068a2c96ecc903caf",
+            "triangles": 1800,
+            "volume_m3": 0.009843764144420116
+          },
+          {
+            "file": "red-fragment-2.glb",
+            "sha256": "a4ab827f42c2ce1815914eaf9506a476e58821b7f3062429c7f86f93ec243510",
+            "triangles": 1800,
+            "volume_m3": 0.00398472540892536
+          },
+          {
+            "file": "red-fragment-3.glb",
+            "sha256": "cb0c00c555a1367fb865c89ea97acdb06f917f68138914155728c91585019725",
+            "triangles": 1800,
+            "volume_m3": 0.004464445182330172
+          }
+        ],
+        "scar": {
+          "configured_max_m": 0.003,
+          "measured_max_m": 0.002997205167485007,
+          "affected_vertices": 588,
+          "affected_p50_m": 0.0012399406714077,
+          "reconstruction_max_error_m": 3.2130348065325876e-08,
+          "method": "same pre-scar QEM topology from packed original; exact per-vertex delivered displacement, not bump/brightness inference"
+        },
+        "contacts": {}
+      },
+      "white": {
+        "colour": "white",
+        "blender": "4.5.9 LTS",
+        "checks": 68,
+        "assertions": [
+          "white-source-near.glb finite",
+          "white-source-near.glb native bounds",
+          "white-source-near.glb UV layer",
+          "white-source-mid.glb finite",
+          "white-source-mid.glb native bounds",
+          "white-source-mid.glb UV layer",
+          "white-source-far.glb finite",
+          "white-source-far.glb native bounds",
+          "white-source-far.glb UV layer",
+          "white-post-near.glb finite",
+          "white-post-near.glb native bounds",
+          "white-post-near.glb UV layer",
+          "white-post-near.glb UV layer",
+          "white-post-mid.glb finite",
+          "white-post-mid.glb native bounds",
+          "white-post-mid.glb UV layer",
+          "white-post-mid.glb UV layer",
+          "white-post-far.glb finite",
+          "white-post-far.glb native bounds",
+          "white-post-far.glb UV layer",
+          "white-post-far.glb UV layer",
+          "white-fragment-1.glb closed after UV seam weld",
+          "white-fragment-1.glb nonzero closed volume",
+          "white-fragment-2.glb closed after UV seam weld",
+          "white-fragment-2.glb nonzero closed volume",
+          "white-fragment-3.glb closed after UV seam weld",
+          "white-fragment-3.glb nonzero closed volume",
+          "packed Image_0",
+          "packed dimensions Image_0",
+          "packed Image_1",
+          "packed dimensions Image_1",
+          "packed Post base baked",
+          "packed dimensions Post base baked",
+          "packed Post normal baked",
+          "packed dimensions Post normal baked",
+          "packed Post ORM baked",
+          "packed dimensions Post ORM baked",
+          "packed White fracture tangent normal",
+          "packed dimensions White fracture tangent normal",
+          "packed White fragment 1 base",
+          "packed dimensions White fragment 1 base",
+          "packed White fragment 1 orm",
+          "packed dimensions White fragment 1 orm",
+          "packed White fragment 1 scar",
+          "packed dimensions White fragment 1 scar",
+          "packed White fragment 2 base",
+          "packed dimensions White fragment 2 base",
+          "packed White fragment 2 orm",
+          "packed dimensions White fragment 2 orm",
+          "packed White fragment 2 scar",
+          "packed dimensions White fragment 2 scar",
+          "packed White fragment 3 base",
+          "packed dimensions White fragment 3 base",
+          "packed White fragment 3 orm",
+          "packed dimensions White fragment 3 orm",
+          "packed White fragment 3 scar",
+          "packed dimensions White fragment 3 scar",
+          "packed White fragment own tangent normal",
+          "packed dimensions White fragment own tangent normal",
+          "packed White fragment own tangent normal.001",
+          "packed dimensions White fragment own tangent normal.001",
+          "packed White fragment own tangent normal.002",
+          "packed dimensions White fragment own tangent normal.002",
+          "packed White scar - linear core damage travel",
+          "packed dimensions White scar - linear core damage travel",
+          "pre-scar topology exactly matches retained near master",
+          "delivered geometry matches actual scar displacement to one micrometre",
+          "master bytes unchanged"
+        ],
+        "failures": [],
+        "master_sha256": "350652cec3011d91b4f487bac53db4186d043fe82bd5b4732148e421e6d3ac38",
+        "runtime_assets": [
+          {
+            "file": "white-source-near.glb",
+            "sha256": "372e60765d3c3ba43121e7a1ddea4e6d3e609e87f5d8d74630232db3cd23acb3",
+            "triangles": 41937,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7188213467597961,
+                -0.6047986149787903,
+                0.0
+              ],
+              [
+                0.7220536470413208,
+                0.6024454832077026,
+                0.804997980594635
+              ]
+            ]
+          },
+          {
+            "file": "white-source-mid.glb",
+            "sha256": "feca98082acd1b8384b499fdbe2a6f196f0ff34f42f295c10428955a09b87e5e",
+            "triangles": 17989,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7139134407043457,
+                -0.6009238362312317,
+                0.0
+              ],
+              [
+                0.7196536064147949,
+                0.6066313982009888,
+                0.799839437007904
+              ]
+            ]
+          },
+          {
+            "file": "white-source-far.glb",
+            "sha256": "9102335bf3a4597a9c3d9ac0ebbf846c945b2ee6b101d70a2c1189ebef80a65d",
+            "triangles": 14989,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7044201493263245,
+                -0.61290043592453,
+                0.0
+              ],
+              [
+                0.7060344815254211,
+                0.5964896082878113,
+                0.8089552521705627
+              ]
+            ]
+          },
+          {
+            "file": "white-post-near.glb",
+            "sha256": "be50153d3ca50b7d2bcc4db74e42eb71616458e9a755eef8630a4f514def367c",
+            "triangles": 43533,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "white-post-mid.glb",
+            "sha256": "4cbe618c63edc2c630f19b5298bf771c295c5027d8dd9323c06c8ef193c395a3",
+            "triangles": 19585,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "white-post-far.glb",
+            "sha256": "63a3379188200a3ceb0f2a2a211a16dc641f7ec0f5eb41b1c3187387e56a8f37",
+            "triangles": 16585,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "white-fragment-1.glb",
+            "sha256": "c3318e01ada117d9c66c3e6cb04eed0e58f286b6a5eec47fd55bc3e339539b0e",
+            "triangles": 200,
+            "volume_m3": 0.0040659566571444455
+          },
+          {
+            "file": "white-fragment-2.glb",
+            "sha256": "d7c8142fa851d8fc023a430d9c7bcc870e11058de2c6c3bf7fb42a8434393e49",
+            "triangles": 178,
+            "volume_m3": 0.003580508711315631
+          },
+          {
+            "file": "white-fragment-3.glb",
+            "sha256": "04086773ea5379acd88aefbd3ef16ef4153c1a4c19926be9aa62e144a1869e0c",
+            "triangles": 136,
+            "volume_m3": 0.006461925632486585
+          }
+        ],
+        "scar": {
+          "configured_max_m": 0.003,
+          "measured_max_m": 0.002999397538069187,
+          "affected_vertices": 157,
+          "affected_p50_m": 0.0006619816676333404,
+          "reconstruction_max_error_m": 2.9973391289521574e-08,
+          "method": "same pre-scar QEM topology from packed original; exact per-vertex delivered displacement, not bump/brightness inference"
+        },
+        "contacts": {
+          "core_bounds": [
+            [
+              0.8771654367446899,
+              -0.17539159953594208,
+              0.7519999742507935
+            ],
+            [
+              1.3238366842269897,
+              0.17470918595790863,
+              1.025699257850647
+            ]
+          ]
+        }
+      },
+      "blue": {
+        "colour": "blue",
+        "blender": "4.5.9 LTS",
+        "checks": 69,
+        "assertions": [
+          "blue-source-near.glb finite",
+          "blue-source-near.glb native bounds",
+          "blue-source-near.glb UV layer",
+          "blue-source-mid.glb finite",
+          "blue-source-mid.glb native bounds",
+          "blue-source-mid.glb UV layer",
+          "blue-source-far.glb finite",
+          "blue-source-far.glb native bounds",
+          "blue-source-far.glb UV layer",
+          "blue-post-near.glb finite",
+          "blue-post-near.glb native bounds",
+          "blue-post-near.glb UV layer",
+          "blue-post-near.glb UV layer",
+          "blue-post-mid.glb finite",
+          "blue-post-mid.glb native bounds",
+          "blue-post-mid.glb UV layer",
+          "blue-post-mid.glb UV layer",
+          "blue-post-far.glb finite",
+          "blue-post-far.glb native bounds",
+          "blue-post-far.glb UV layer",
+          "blue-post-far.glb UV layer",
+          "blue-fragment-1.glb closed after UV seam weld",
+          "blue-fragment-1.glb nonzero closed volume",
+          "blue-fragment-2.glb closed after UV seam weld",
+          "blue-fragment-2.glb nonzero closed volume",
+          "blue-fragment-3.glb closed after UV seam weld",
+          "blue-fragment-3.glb nonzero closed volume",
+          "packed Blue fracture tangent normal",
+          "packed dimensions Blue fracture tangent normal",
+          "packed Blue fragment 1 base",
+          "packed dimensions Blue fragment 1 base",
+          "packed Blue fragment 1 orm",
+          "packed dimensions Blue fragment 1 orm",
+          "packed Blue fragment 1 scar",
+          "packed dimensions Blue fragment 1 scar",
+          "packed Blue fragment 2 base",
+          "packed dimensions Blue fragment 2 base",
+          "packed Blue fragment 2 orm",
+          "packed dimensions Blue fragment 2 orm",
+          "packed Blue fragment 2 scar",
+          "packed dimensions Blue fragment 2 scar",
+          "packed Blue fragment 3 base",
+          "packed dimensions Blue fragment 3 base",
+          "packed Blue fragment 3 orm",
+          "packed dimensions Blue fragment 3 orm",
+          "packed Blue fragment 3 scar",
+          "packed dimensions Blue fragment 3 scar",
+          "packed Blue fragment own tangent normal",
+          "packed dimensions Blue fragment own tangent normal",
+          "packed Blue fragment own tangent normal.001",
+          "packed dimensions Blue fragment own tangent normal.001",
+          "packed Blue fragment own tangent normal.002",
+          "packed dimensions Blue fragment own tangent normal.002",
+          "packed Blue scar - linear core damage travel",
+          "packed dimensions Blue scar - linear core damage travel",
+          "packed Image_0",
+          "packed dimensions Image_0",
+          "packed Image_1",
+          "packed dimensions Image_1",
+          "packed Post base baked",
+          "packed dimensions Post base baked",
+          "packed Post normal baked",
+          "packed dimensions Post normal baked",
+          "packed Post ORM baked",
+          "packed dimensions Post ORM baked",
+          "pre-scar topology exactly matches retained near master",
+          "delivered geometry matches actual scar displacement to one micrometre",
+          "Blue cradle contact",
+          "master bytes unchanged"
+        ],
+        "failures": [],
+        "master_sha256": "f9cde6272d02843d16899f590733913f32a4f0f87c0f5efcea5528c408157c8f",
+        "runtime_assets": [
+          {
+            "file": "blue-source-near.glb",
+            "sha256": "e63608d602d8df6105df7a3821e5affccab33a879768e73018f5dbf2abe59570",
+            "triangles": 35999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7198760509490967,
+                -0.6181938052177429,
+                0.0
+              ],
+              [
+                0.7203423380851746,
+                0.6185444593429565,
+                0.704846978187561
+              ]
+            ]
+          },
+          {
+            "file": "blue-source-mid.glb",
+            "sha256": "26fd11f4a53f5a4c4acc224885187480b1b2ca73e52ec4e696c3aef24758f368",
+            "triangles": 15999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7199640274047852,
+                -0.6176341772079468,
+                0.0
+              ],
+              [
+                0.7203465104103088,
+                0.6183997392654419,
+                0.7056806683540344
+              ]
+            ]
+          },
+          {
+            "file": "blue-source-far.glb",
+            "sha256": "629b485ba2db338edfe439dd02f728c8aba59646cb3002152a13240f39b35ad4",
+            "triangles": 7999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.7207265496253967,
+                -0.6160182952880859,
+                0.0
+              ],
+              [
+                0.7185283303260803,
+                0.6187224984169006,
+                0.7061638236045837
+              ]
+            ]
+          },
+          {
+            "file": "blue-post-near.glb",
+            "sha256": "f8bf0a65a2c7d80114faeb075eeaab3d05b8dbf312ebc017bc635dda4b71d9f9",
+            "triangles": 38651,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "blue-post-mid.glb",
+            "sha256": "67cc90abac283c7d30445d18d3e0715e20ae91678624136c3f81ea9705cc21b1",
+            "triangles": 18651,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "blue-post-far.glb",
+            "sha256": "702b73744171eaa7a796ef246f5103e822caa89e60088afba74accf576176fdf",
+            "triangles": 10651,
+            "surfaces": 2,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "blue-fragment-1.glb",
+            "sha256": "83da9891118451c654f81854921e8317beffe81c21c5f909b2350d4fce640f58",
+            "triangles": 192,
+            "volume_m3": 0.001317404434143499
+          },
+          {
+            "file": "blue-fragment-2.glb",
+            "sha256": "c22ed3148c855d02eb2714992756f0e5d4d61bfb8441cc18eb2b69c6896043db",
+            "triangles": 134,
+            "volume_m3": 0.0011957060775082183
+          },
+          {
+            "file": "blue-fragment-3.glb",
+            "sha256": "99d871603b993b5296cd34955c47c6e62fae5f19edd914990b06314c61ddea91",
+            "triangles": 176,
+            "volume_m3": 0.001281290928708105
+          }
+        ],
+        "scar": {
+          "configured_max_m": 0.003,
+          "measured_max_m": 0.002999956478420517,
+          "affected_vertices": 357,
+          "affected_p50_m": 0.0011078018523686566,
+          "reconstruction_max_error_m": 2.9672323546940542e-08,
+          "method": "same pre-scar QEM topology from packed original; exact per-vertex delivered displacement, not bump/brightness inference"
+        },
+        "contacts": {
+          "core_bounds": [
+            [
+              0.8696396946907043,
+              -0.11555103212594986,
+              0.47145020961761475
+            ],
+            [
+              1.3305095434188843,
+              0.10999999195337296,
+              0.9166759848594666
+            ]
+          ]
+        }
+      },
+      "green": {
+        "colour": "green",
+        "blender": "4.5.9 LTS",
+        "checks": 77,
+        "assertions": [
+          "green-source-near.glb finite",
+          "green-source-near.glb native bounds",
+          "green-source-near.glb UV layer",
+          "green-source-mid.glb finite",
+          "green-source-mid.glb native bounds",
+          "green-source-mid.glb UV layer",
+          "green-source-far.glb finite",
+          "green-source-far.glb native bounds",
+          "green-source-far.glb UV layer",
+          "green-post-near.glb finite",
+          "green-post-near.glb native bounds",
+          "green-post-near.glb UV layer",
+          "green-post-near.glb UV layer",
+          "green-post-near.glb UV layer",
+          "green-post-near.glb UV layer",
+          "green-post-mid.glb finite",
+          "green-post-mid.glb native bounds",
+          "green-post-mid.glb UV layer",
+          "green-post-mid.glb UV layer",
+          "green-post-mid.glb UV layer",
+          "green-post-mid.glb UV layer",
+          "green-post-far.glb finite",
+          "green-post-far.glb native bounds",
+          "green-post-far.glb UV layer",
+          "green-post-far.glb UV layer",
+          "green-post-far.glb UV layer",
+          "green-post-far.glb UV layer",
+          "green-fragment-1.glb closed after UV seam weld",
+          "green-fragment-1.glb nonzero closed volume",
+          "green-fragment-2.glb closed after UV seam weld",
+          "green-fragment-2.glb nonzero closed volume",
+          "green-fragment-3.glb closed after UV seam weld",
+          "green-fragment-3.glb nonzero closed volume",
+          "packed Green fracture tangent normal",
+          "packed dimensions Green fracture tangent normal",
+          "packed Green fragment 1 base",
+          "packed dimensions Green fragment 1 base",
+          "packed Green fragment 1 orm",
+          "packed dimensions Green fragment 1 orm",
+          "packed Green fragment 1 scar",
+          "packed dimensions Green fragment 1 scar",
+          "packed Green fragment 2 base",
+          "packed dimensions Green fragment 2 base",
+          "packed Green fragment 2 orm",
+          "packed dimensions Green fragment 2 orm",
+          "packed Green fragment 2 scar",
+          "packed dimensions Green fragment 2 scar",
+          "packed Green fragment 3 base",
+          "packed dimensions Green fragment 3 base",
+          "packed Green fragment 3 orm",
+          "packed dimensions Green fragment 3 orm",
+          "packed Green fragment 3 scar",
+          "packed dimensions Green fragment 3 scar",
+          "packed Green fragment own tangent normal",
+          "packed dimensions Green fragment own tangent normal",
+          "packed Green fragment own tangent normal.001",
+          "packed dimensions Green fragment own tangent normal.001",
+          "packed Green fragment own tangent normal.002",
+          "packed dimensions Green fragment own tangent normal.002",
+          "packed Green scar - linear core damage travel branch",
+          "packed dimensions Green scar - linear core damage travel branch",
+          "packed Image_0",
+          "packed dimensions Image_0",
+          "packed Image_1",
+          "packed dimensions Image_1",
+          "packed Post base baked",
+          "packed dimensions Post base baked",
+          "packed Post normal baked",
+          "packed dimensions Post normal baked",
+          "packed Post ORM baked",
+          "packed dimensions Post ORM baked",
+          "pre-scar topology exactly matches retained near master",
+          "delivered geometry matches actual scar displacement to one micrometre",
+          "GREEN_CORE - first attached stem",
+          "GREEN_CORE - second attached stem",
+          "Green cradle contact",
+          "master bytes unchanged"
+        ],
+        "failures": [],
+        "master_sha256": "d720f9dcb3b89572e3ee245a26e19c5a554bb3571e9250405697beec9aca601e",
+        "runtime_assets": [
+          {
+            "file": "green-source-near.glb",
+            "sha256": "f1b508a12c58f19e55e075b9aa7fedbdd2ed2758903ef12ffdc26852774e3a53",
+            "triangles": 35999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.6449030637741089,
+                -0.7203564047813416,
+                0.0
+              ],
+              [
+                0.6455594301223755,
+                0.7199642658233643,
+                0.7546491622924805
+              ]
+            ]
+          },
+          {
+            "file": "green-source-mid.glb",
+            "sha256": "e52ef236343e6f23fb1dad254023568e4ce6778f3cd50a759c0c113734c26404",
+            "triangles": 15999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.645301878452301,
+                -0.7201560735702515,
+                0.0
+              ],
+              [
+                0.6448702216148376,
+                0.7199366688728333,
+                0.7550821900367737
+              ]
+            ]
+          },
+          {
+            "file": "green-source-far.glb",
+            "sha256": "5ef406c4232de8bc7fa5dd642bcde227dc982aaa62400eddb525647d1b032574",
+            "triangles": 7999,
+            "surfaces": 1,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.6491534113883972,
+                -0.7221766114234924,
+                0.0
+              ],
+              [
+                0.6454063653945923,
+                0.7146491408348083,
+                0.7568821310997009
+              ]
+            ]
+          },
+          {
+            "file": "green-post-near.glb",
+            "sha256": "22eb05f636ba5f238d47f3fa04abcd0942baa552f7bdb47830645af0b70227b0",
+            "triangles": 1998,
+            "surfaces": 4,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "green-post-mid.glb",
+            "sha256": "22eb05f636ba5f238d47f3fa04abcd0942baa552f7bdb47830645af0b70227b0",
+            "triangles": 1998,
+            "surfaces": 4,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "green-post-far.glb",
+            "sha256": "22eb05f636ba5f238d47f3fa04abcd0942baa552f7bdb47830645af0b70227b0",
+            "triangles": 1998,
+            "surfaces": 4,
+            "degenerate_triangles_below_1e-12_m2": 0,
+            "bounds_blender_xyz": [
+              [
+                -0.3100000023841858,
+                -0.25999999046325684,
+                0.0
+              ],
+              [
+                0.3100000023841858,
+                0.25999999046325684,
+                1.1800000667572021
+              ]
+            ]
+          },
+          {
+            "file": "green-fragment-1.glb",
+            "sha256": "7fa48e9138a0e240f18b27c292e33e7c034c8ff83c4d4c2948baf2a7bcb6ce67",
+            "triangles": 190,
+            "volume_m3": 0.001923723323626664
+          },
+          {
+            "file": "green-fragment-2.glb",
+            "sha256": "4f719d5b062ed3ecb0f5a3be7eccfee336f4c5291b430e4d46f0bf3baa714e30",
+            "triangles": 184,
+            "volume_m3": 0.001817930898203723
+          },
+          {
+            "file": "green-fragment-3.glb",
+            "sha256": "998a0d76eb1579e83c78cd90e4b0807606ab71122853d6bb8b432d59641cf5cd",
+            "triangles": 244,
+            "volume_m3": 0.0018702597459294174
+          }
+        ],
+        "scar": {
+          "configured_max_m": 0.003,
+          "measured_max_m": 0.002994823887149617,
+          "affected_vertices": 218,
+          "affected_p50_m": 0.0011019697104561747,
+          "reconstruction_max_error_m": 2.940508850022901e-08,
+          "method": "same pre-scar QEM topology from packed original; exact per-vertex delivered displacement, not bump/brightness inference"
+        },
+        "contacts": {
+          "stem_base_m": 0.6825000047683716
+        }
+      }
+    }
+  },
+  "normal_game_data_sim_diff": ""
+}

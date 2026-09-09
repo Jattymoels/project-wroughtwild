@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-06C visually approved; ART-07 design and sliced dispatch pack delivered). Owner: Matty. Delivery: Codex.
+Updated: 10 September 2026 (ART-07 B1/D1/D4/F5 technically delivered; publication checks recorded). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -14,10 +14,15 @@ The owner's subsequent request selects a [sliced execution plan and session
 prompts](art07-production/README.md). The checked dispatch pack contains 26
 bounded worker prompts, one publisher prompt, an explicit dependency/ownership
 map and the [local TRELLIS/Blender/Godot process](art07-production/PROCESS.md).
-Start B1 (canopy), D1 (core geometry), D4 (timber surfaces) and F5 (approved
-colour reuse) in separate worktrees if working in parallel. GPU work is serial;
-one publisher integrates checked commits onto main. This prepares enactment,
-not evidence that any ART-07 production slice has already run. G1 is an isolated
+The first four slices, B1 (canopy), D1 (core geometry), D4 (timber surfaces) and
+F5 (approved colour reuse), now have checked source handoffs. The
+[publication report](art07-production/publication-2026-09-10.md) records serial
+main integration, actual package hashes, fresh checks and remaining limits.
+Recommend B2 (ground cover), B3 (rocks/banks), D5 (mineral/fuel surfaces) and D6
+(metals) next; D2/D3 also become ready through D1. GPU work remains serial.
+Four of 26 slices are technically delivered; visual approval remains separate.
+The B1 full-width canopy still needs collision adoption and a practical forest
+budget; its far meshes are 65–70k triangles. G1 is an isolated
 retained-route/home pilot; G2 reviews it independently before any ordinary-world
 rollout decision.
 
