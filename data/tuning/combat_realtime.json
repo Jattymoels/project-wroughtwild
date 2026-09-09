@@ -9,6 +9,14 @@
     "cone_degrees": 100.0
   },
   "behaviours": {
+    "paired_boar": {
+      "move_speed_mps": 3.5, "attack_range_m": 3.2, "aggro_range_m": 10.0,
+      "windup_seconds": 1.0, "give_up_distance_m": 26.0,
+      "release_shape": "held_burst", "release_warning_seconds": 1.0,
+      "release_seconds": 0.15, "release_distance_m": 0.0,
+      "release_radius_m": 3.2, "recovery_seconds": 1.5,
+      "design_purpose": "LF-5 ordered specimen. Blue holds a fixed charge at the boar's starting position for one second; a separate one-second Red warning precedes one six-damage fire release inside that exact 3.2m circle. No tracking, rush contact, root or burn. Walk clear, use cover, or cancel either phase with ordinary stagger/freeze; 1.5s planted recovery permits a reply. Existing chase and life budget remain."
+    },
     "frontier_moth": {
       "move_speed_mps":4, "attack_range_m":0, "aggro_range_m":6, "windup_seconds":0,
       "give_up_distance_m":18, "flees":true,

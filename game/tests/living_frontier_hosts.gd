@@ -144,6 +144,7 @@ func combat_case(class_id: String, id: StringName) -> void:
 	check(bool(sim.craft(recipe).get("crafted",false)), "ordinary starting weapon paid")
 	check(sim.equip_pack_item(sim.pack_items().size()-1), "equip ordinary starting weapon")
 	check(sim.foundry().plate.is_empty(), "no Catalyst or support fixture")
+	check(player.combat.invulnerable_left == 0 and player.combat.is_physics_processing(), "incoming damage is live without invulnerability")
 	enemy = Enemy.spawn(self,id,Vector3(0,.02,5))
 	enemy.state = "chase"
 	release_count = 0
@@ -160,8 +161,8 @@ func combat_case(class_id: String, id: StringName) -> void:
 		var distance := to.length()
 		var target_distance := 1.5 if class_id == "warden" else 5.0
 		if distance > target_distance: move = forward
-		if enemy.state in ["windup","release"]:
-			if enemy.release_shape == "radial":
+		if enemy.state in ["windup","release_warning","release"]:
+			if enemy.release_shape in ["radial","held_burst"]:
 				move = -forward if distance < enemy.release_radius+.35 else Vector3.ZERO
 			else: move = Vector3(-forward.z,0,forward.x)
 		var local := player.global_basis.inverse()*move
@@ -176,6 +177,7 @@ func combat_case(class_id: String, id: StringName) -> void:
 	var remaining := enemy.life if is_instance_valid(enemy) else 0.0
 	check(remaining <= 0 and player.combat.life > 0, "starting " + class_id + " defeats " + String(id))
 	check(casts > 0, "actual starting casts used")
+	check(player.combat.invulnerable_left == 0, "combat completed without invulnerability")
 	results.append({"class":class_id,"enemy":id,"seconds":seconds,"life":player.combat.life,"casts":casts,"releases":release_count,"remaining":remaining})
 	print("LF3_COMBAT ",JSON.stringify(results.back()))
 	player.test_walk = Vector2.ZERO

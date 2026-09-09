@@ -43,6 +43,9 @@ var behaviour := "melee"
 var visual_id := ""
 var influence := ""
 var release_shape := ""
+var release_warning_seconds := 0.0
+var _release_warning_left := 0.0
+var _held_position := Vector3.ZERO
 var release_seconds := 0.0
 var release_distance := 0.0
 var release_radius := 0.0
@@ -228,6 +231,7 @@ func configure(sim: WroughtwildSim) -> void:
 	var rt: Dictionary = sim.realtime()
 	var b: Dictionary = rt["behaviours"].get(behaviour, {})
 	release_shape = String(b.get("release_shape", ""))
+	release_warning_seconds = float(b.get("release_warning_seconds", 0.0))
 	release_seconds = float(b.get("release_seconds", 0.0))
 	release_distance = float(b.get("release_distance_m", 0.0))
 	release_radius = float(b.get("release_radius_m", 0.0))
@@ -410,6 +414,7 @@ func _on_frozen() -> void:
 	if not release_shape.is_empty(): _cancel_release()
 
 func _cancel_release() -> void:
+	_release_warning_left = 0.0
 	_release_left = 0.0
 	_release_hit = true
 	_frontier_recovery_left = recovery_seconds
@@ -716,6 +721,7 @@ func _physics_process(delta: float) -> void:
 				if ready_to_attack and not blocked_attack:
 					state = "windup"
 					_windup_left = windup_seconds
+					_held_position = global_position
 					_strike_direction = (player.global_position - global_position) * Vector3(1,0,1)
 					_strike_direction = _strike_direction.normalized()
 					if not projectile_rules.is_empty():
@@ -731,7 +737,10 @@ func _physics_process(delta: float) -> void:
 			if _windup_left <= 0.0:
 				# The hit only lands if the player is still in reach: walking
 				# out of the wind-up is a legitimate dodge.
-				if not release_shape.is_empty():
+				if release_shape == "held_burst":
+					_release_warning_left = release_warning_seconds
+					state = "release_warning"
+				elif not release_shape.is_empty():
 					_release_left = release_seconds
 					_release_hit = false
 					state = "release"
@@ -752,6 +761,14 @@ func _physics_process(delta: float) -> void:
 					release_strike = true
 				_attack_cooldown = attack_period_seconds
 				if release_shape.is_empty(): state = "chase"
+		"release_warning":
+			_release_warning_left = maxf(0.0, _release_warning_left - delta)
+			if _release_warning_left <= 0.0:
+				_release_left = release_seconds
+				_release_hit = false
+				state = "release"
+				attack_released.emit(release_shape)
+				release_contact = true
 		"release":
 			if release_shape == "charge":
 				planar = _strike_direction * release_distance / release_seconds * minf(delta, _release_left) / delta
@@ -800,6 +817,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if release_contact and not _release_hit:
 		var closest := global_position
+		if release_shape == "held_burst": closest = _held_position
 		if release_shape == "charge":
 			var swept := Geometry2D.get_closest_point_to_segment(Vector2(player.global_position.x, player.global_position.z), Vector2(release_from.x, release_from.z), Vector2(global_position.x, global_position.z))
 			closest = Vector3(swept.x, global_position.y, swept.y)

@@ -93,6 +93,13 @@ int main(int argc, char** argv) {
     }
     const auto& red = *t.world.findEnemy("lf_red_boar");
     const auto& blue = *t.world.findEnemy("lf_blue_boar");
+    const auto& paired = *t.world.findEnemy("lf_paired_boar");
+    const auto& pairing = *t.realtime.findBehaviour(paired.behaviour);
+    check(paired.visualId == blue.visualId && paired.maxLife == blue.maxLife && paired.damage == blue.damage,
+          "ordered hybrid retains ordinary animal budget");
+    check(paired.damageTaken.empty() && paired.immuneStatuses.empty() && pairing.releaseShape == "held_burst" &&
+          pairing.windupSeconds >= 1 && pairing.releaseWarningSeconds >= 1 && pairing.releaseDistanceM == 0,
+          "one held charge has separate readable warnings and ordinary control answers");
     check(red.visualId == blue.visualId && red.maxLife == blue.maxLife && red.damage == blue.damage,
           "influence spends one shared animal budget rather than adding a full second kit");
     check(red.damageTaken.empty() && blue.damageTaken.empty() && red.immuneStatuses.empty() && blue.immuneStatuses.empty(),

@@ -1,5 +1,13 @@
 # Combat and Persistent Builds
 
+**LF-5A (9 September 2026):** one paired boar holds a fixed Blue charge at its
+starting position for one second, then gives a separate one-second Red warning
+before one six-damage fire release in that same 3.2 m circle. It retains 75
+life, ordinary control/mitigation and a planted 1.5-second recovery. The phase
+words and exact perimeter teach leaving the held area; returning into it before
+release remains unsafe. Cover, stagger/freeze and ordinary movement work, with
+no root, rush contact or persistent burn. [Contract and real combat evidence](../prototype/living-frontier-wave5-2026-09-09.md).
+
 **Living Frontier LF-3A (9 September 2026):** the opt-in comparison adds two
 hosts of the same existing boar. Red warns a 3.2 m circular release for one
 second, pays one ordinary six-damage fire hit and recovers for 1.1 seconds.

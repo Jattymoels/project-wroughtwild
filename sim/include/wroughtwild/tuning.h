@@ -653,7 +653,8 @@ struct EnemyProjectileRealtime {
 
 struct BehaviourRealtime {
     EnemyProjectileRealtime projectile;
-    std::string releaseShape; // empty = existing delivery; radial or charge
+    std::string releaseShape; // empty = existing delivery; radial, charge or held_burst
+    double releaseWarningSeconds = 0.0;
     double releaseSeconds = 0.0, releaseDistanceM = 0.0, releaseRadiusM = 0.0;
     double recoverySeconds = 0.0;
     bool flees = false; // grazers: run within aggro range, never attack

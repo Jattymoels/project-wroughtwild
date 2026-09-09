@@ -163,6 +163,7 @@ for identity in offence guard sustain tempo; do
 done
 
 echo "== Living Frontier Wave 4 protected terrain and first laboratory =="
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_hybrid.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn -- --lf4a-pending
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn -- --lf4a-applied

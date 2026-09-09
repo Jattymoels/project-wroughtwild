@@ -887,6 +887,7 @@ Dictionary WroughtwildSim::realtime() const {
         entry["windup_seconds"] = b.windupSeconds;
         entry["windup_advance_m"] = b.windupAdvanceM;
         entry["release_shape"] = to_godot(b.releaseShape);
+        entry["release_warning_seconds"] = b.releaseWarningSeconds;
         entry["release_seconds"] = b.releaseSeconds;
         entry["release_distance_m"] = b.releaseDistanceM;
         entry["release_radius_m"] = b.releaseRadiusM;

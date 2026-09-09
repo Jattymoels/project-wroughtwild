@@ -913,11 +913,13 @@ RealtimeTable loadRealtime(const std::string& path) {
         if (auto v = b->find("windup_advance_m")) behaviour.windupAdvanceM = v->asNumber();
         if (auto v = b->find("release_shape")) {
             behaviour.releaseShape = v->asString();
+            if (auto warning = b->find("release_warning_seconds")) behaviour.releaseWarningSeconds = warning->asNumber();
             behaviour.releaseSeconds = b->get("release_seconds").asNumber();
             behaviour.releaseDistanceM = b->get("release_distance_m").asNumber();
             behaviour.releaseRadiusM = b->get("release_radius_m").asNumber();
             behaviour.recoverySeconds = b->get("recovery_seconds").asNumber();
-            if ((behaviour.releaseShape != "radial" && behaviour.releaseShape != "charge") ||
+            if ((behaviour.releaseShape != "radial" && behaviour.releaseShape != "charge" && behaviour.releaseShape != "held_burst") ||
+                (behaviour.releaseShape == "held_burst" && behaviour.releaseWarningSeconds <= 0) ||
                 behaviour.releaseSeconds <= 0 || behaviour.releaseRadiusM <= 0 ||
                 behaviour.releaseDistanceM < 0 || behaviour.recoverySeconds <= 0 || behaviour.windupSeconds <= 0)
                 throw std::runtime_error("realtime: invalid committed release");
@@ -1947,7 +1949,7 @@ Tuning loadAll(const std::string& tuningDirectory) {
             throw std::runtime_error("world: enemy " + enemy.id + " pays unknown kind " + enemy.currencyKind);
     for (const auto& host : tuning.world.frontierEnemies) {
         if (!tuning.world.findEnemy(host.visualId) || !tuning.realtime.findBehaviour(host.behaviour) ||
-            (host.influence != "red" && host.influence != "white" && host.influence != "blue" && host.influence != "green"))
+            (host.influence != "red" && host.influence != "white" && host.influence != "blue" && host.influence != "green" && host.influence != "blue_red"))
             throw std::runtime_error("world: invalid Living Frontier host " + host.id);
     }
     for (const auto& skill : tuning.skills.combatSkills)

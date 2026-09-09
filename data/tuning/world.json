@@ -99,6 +99,15 @@
       "design_purpose":"One familiar moth visits connected growth and flees disturbance; no attack or mandatory hunt. Four raw units fund two Green junctions through normal physical loot."
     },
     {
+      "id": "lf_paired_boar", "display_name": "Blue-held Red Boar",
+      "world_profile": "living_frontier_wave3",
+      "visual_id": "ember_whelp", "influence": "blue_red",
+      "max_life": 75, "behaviour": "paired_boar", "damage": 6,
+      "damage_type": "fire", "attack_period_rounds": 1,
+      "loot": [{"item":"hide","min":1,"max":1,"chance":1}, {"item":"red_salt","min":2,"max":2,"chance":1}, {"item":"blue_flake","min":2,"max":2,"chance":1}],
+      "design_purpose": "LF-5's only hybrid: an ordered held charge and warned release, retaining the boar life/damage and four-unit useful raw haul. No Catalyst gate or additional simultaneous kit."
+    },
+    {
       "id": "lf_red_boar", "display_name": "Red-scar Boar",
       "world_profile": "living_frontier_wave3",
       "visual_id": "ember_whelp", "influence": "red",

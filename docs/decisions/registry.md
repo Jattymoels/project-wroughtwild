@@ -1,5 +1,17 @@
 # Decision Registry
 
+Owner implementation authorization, 9 September 2026: after independent Wave 4
+clearance, implement **Living Frontier Wave 5 only**, LF-5A → LF-5B → LF-5C,
+then stop for orchestrator review. The [bounded contract](../prototype/living-frontier-wave5-2026-09-09.md)
+selects one Blue-held/Red-release specimen, the existing Pairing Hall and a
+separate protected Excited Uplands event reaching era three. Extend existing
+LF4 campaigns without reseeding, replacing the first ledger or duplicating
+first-clear rewards. Keep published geography, paid work, exact source/machine
+ownership and all five Catalyst recipes. Real baseline combat, both physical
+transforms, historical/pending/applied restart and measured publication time
+are required. Human finale, captured controls and optional Heat remain LF-6/7.
+This supersedes Wave 4's later-work closure only within this selected wave.
+
 Owner implementation authorization, 9 September 2026: repair **LF3-R1 first**,
 then implement **Living Frontier Wave 4 only**, LF-4A → LF-4B → LF-4C, and stop
 for orchestrator review. The [bounded work item](../prototype/living-frontier-wave4-2026-09-09.md)
