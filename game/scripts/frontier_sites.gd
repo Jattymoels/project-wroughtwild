@@ -6,6 +6,7 @@ var terrain: Terrain
 var dressing: Array[MeshInstance3D] = []
 var shells: Array[MeshInstance3D] = []
 var trail_marks: Array[MeshInstance3D] = []
+var trail_pieces: Array[MeshInstance3D] = []
 const STONE := Color("555e5b")
 const METAL := Color("727a77")
 
@@ -60,6 +61,7 @@ func _compose() -> void:
 	refresh_buildings()
 
 func _artificial_trail() -> void:
+	var first_piece:=dressing.size()
 	var path: PackedVector3Array=terrain.map.laboratory_trail
 	var spacing:=int(terrain.map.frontier_rules.trail_spacing_m)
 	var indices: Array[int]=[]
@@ -74,6 +76,11 @@ func _artificial_trail() -> void:
 		if direction.length_squared()<.1: direction=(at-path[maxi(0,index-1)])*Vector3(1,0,1)
 		direction=direction.normalized()
 		var side:=direction.cross(Vector3.UP)
+		# The walking lane clears the final shell; offset clamps should sit on
+		# its outward side as well, rather than disappearing into a wall.
+		for lab: Dictionary in terrain.map.laboratories:
+			var away: Vector3=(at-lab.position)*Vector3(1,0,1)
+			if away.length()<12 and side.dot(away)<0: side=-side
 		var post_at:=at+side*.7
 		# Later metal clamps have consistent tooling, right angles and a stamped
 		# triple cut. Natural influence cues retain their local branching/layers.
@@ -108,6 +115,7 @@ func _artificial_trail() -> void:
 			label.billboard=BaseMaterial3D.BILLBOARD_ENABLED
 			label.visibility_range_end=14
 			add_child(label)
+	trail_pieces=dressing.slice(first_piece)
 
 func _scar(at: Vector3, influence: String, growth := false) -> void:
 	var colour: Color = FrontierHostLook.PALETTE[influence]

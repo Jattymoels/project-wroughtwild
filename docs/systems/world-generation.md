@@ -1,5 +1,15 @@
 # World Generation, Settlements and Travel
 
+**LF3-R1 (9 September 2026):** site selection remains frozen, but derived LF
+approaches and the collection trail are corrected after every shell is final.
+The walk excludes projecting exteriors with ordinary capsule clearance and
+keeps a supported neighbouring band around cave lips/steep shelves. It includes
+existing ruin margins. Paid occupied space still suppresses cosmetic dressing;
+near a lab, offset clamps face away from its shell. This explicitly supersedes
+the frozen-walk wording below without moving a site, resource or terrain voxel.
+Normal Space jumps handle existing metre ledges; no movement skill or teleport
+is needed. [Physical regressions and compatibility](../prototype/living-frontier-wave4-2026-09-09.md).
+
 **LF-3B (9 September 2026):** the separate opt-in `living_frontier_wave3`
 identity retains V6 terrain, resource identities and the four published source
 anchors. Four finite influenced hosts occupy supported clearings beyond the

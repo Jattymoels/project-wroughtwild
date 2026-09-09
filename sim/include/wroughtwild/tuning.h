@@ -1034,7 +1034,7 @@ struct LivingFrontierTable {
     double hostMinimumSpawnM = 0, hostSourceMinimumM = 0, hostSourceMaximumM = 0;
     double hostSeparationM = 0, encounterClearRadiusM = 0, labWidthM = 0, labDepthM = 0;
     double labHeightM = 0, labSearchM = 0, transformRadiusM = 0, habitPauseSeconds = 0;
-    double habitatCueSpacingM = 0, trailSpacingM = 0;
+    double habitatCueSpacingM = 0, trailSpacingM = 0, labRouteClearanceM = 0;
     std::vector<FrontierHostDef> hosts;
     std::vector<FrontierLabDef> labs;
 };

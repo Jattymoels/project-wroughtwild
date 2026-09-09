@@ -97,11 +97,47 @@ void compose(WorldMap& map, const tuning::LivingFrontierTable& rules) {
         if (def.regionId!="rootvault_wildwood")
             map.futureTransformations.push_back({def.regionId=="lantern_fen"?"retained_fen":"excited_uplands",def.regionId,{region->x,region->y,region->z},rules.transformRadiusM});
     }
-    // Reserve the single walk now; later nonblocking signs do not change identity.
+    // LF3-R1: placement above is published and must not consume corrected
+    // routes. Only after every shell is final can we derive physical walks.
+    // Include the existing ruin margins, then the full sealed lab footprint
+    // (foundation/door trim included) inflated for an ordinary player capsule.
+    auto physical=wide_frontier::surfaceWalk(map,1);
+    // A centre-height path can skim a cave lip or the side of a steep shelf.
+    // Retain a supported neighbouring band so a normal body can turn at each
+    // metre waypoint without falling off the authored walking surface.
+    for (int z=1;z<map.height-1;++z) for (int x=1;x<map.width-1;++x) {
+        const int at=z*map.width+x;
+        if (!physical.clear[at]) continue;
+        for (int dz=-1;dz<=1;++dz) for (int dx=-1;dx<=1;++dx) {
+            const int n=(z+dz)*map.width+x+dx;
+            if (physical.heights[n]!=map.at(x+dx,z+dz).height || std::abs(physical.heights[n]-physical.heights[at])>1)
+                physical.clear[at]=false;
+        }
+    }
+    for (const auto& shell:map.laboratories) {
+        const double rx=(shell.widthM*.5+rules.labRouteClearanceM)/map.cellSize;
+        const double rz=(shell.depthM*.5+rules.labRouteClearanceM)/map.cellSize;
+        for (int dz=-static_cast<int>(std::ceil(rz));dz<=std::ceil(rz);++dz)
+            for (int dx=-static_cast<int>(std::ceil(rx));dx<=std::ceil(rx);++dx)
+                if (std::abs(dx)<=rx && std::abs(dz)<=rz && map.inBounds(shell.at.x+dx,shell.at.z+dz))
+                    physical.clear[(shell.at.z+dz)*map.width+shell.at.x+dx]=false;
+    }
+    physical=rootedWalk(map,physical,map.spawnX,map.spawnZ);
+    const auto route=[&](const SurfaceWalk& from,int x,int z) {
+        if (from.parent[z*map.width+x]<0) throw std::runtime_error("LF3: no physical approach");
+        return approachTo(map,from,x,z);
+    };
+    for (auto& shell:map.laboratories) shell.approach=route(physical,shell.at.x,shell.at.z+4);
+    for (size_t i=0;i<map.frontierHosts.size();++i) {
+        auto& h=map.frontierHosts[i];
+        const auto& home=map.homeSites.at(rules.hosts[i].homeIndex);
+        h.approach=route(physical,h.at.x,h.at.z);
+        h.sourceRoute=route(rootedWalk(map,physical,home.x+8,home.z),h.at.x,h.at.z);
+    }
     const auto& source=map.homeSites.at(0);
-    const auto trailWalk=rootedWalk(map,walk,source.x+8,source.z);
+    const auto trailWalk=rootedWalk(map,physical,source.x+8,source.z);
     const auto& lab=map.laboratories.front();
-    map.laboratoryTrail=approachTo(map,trailWalk,lab.at.x,lab.at.z+4);
+    map.laboratoryTrail=route(trailWalk,lab.at.x,lab.at.z+4);
     map.packs.erase(std::remove_if(map.packs.begin(),map.packs.end(),[&](const auto& p){
         for (const auto& h:map.frontierHosts)
             if (std::hypot(p.x-h.at.x,p.z-h.at.z)<rules.encounterClearRadiusM) return true;

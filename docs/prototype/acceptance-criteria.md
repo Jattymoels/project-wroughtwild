@@ -2,6 +2,16 @@
 
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
+## Living Frontier physical approaches — LF3-R1
+
+- [x] Derived approaches and the visible collection trail clear final lab shells
+  with ordinary player space, preserving published terrain and site/resource IDs.
+- [x] Seeds 5 and 77 reproduce the old wall failures and pass all 24 full physical
+  routes after repair; the 37-seed sweep preserves complete native fingerprints.
+- [x] Historical paid construction over old trail dressing, inventory, resource
+  work and source/machine ownership survive fresh-process restoration exactly.
+- [ ] Owner accepts discovery/navigation comfort. [Evidence and limits](living-frontier-wave4-2026-09-09.md).
+
 ## Living Frontier Wave 1 (D-033)
 
 - [x] LF-1A opt-in Red extraction supplies useful raw material without a Catalyst;

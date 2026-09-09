@@ -1,5 +1,16 @@
 # Decision Registry
 
+Owner implementation authorization, 9 September 2026: repair **LF3-R1 first**,
+then implement **Living Frontier Wave 4 only**, LF-4A → LF-4B → LF-4C, and stop
+for orchestrator review. The [bounded work item](../prototype/living-frontier-wave4-2026-09-09.md)
+records the route repair and each later contract before implementation. This
+supersedes the Wave-3-only boundary below within that request. Derived LF walks
+must clear final physical shells and ordinary player space without changing
+published geography or owned state. A real isolated transformation and pending
+restart proof precede laboratory progression. Later campaign work stays opt-in;
+older worlds retain their acquisition and curio policies. Hybrids, the second
+transition, human finale and configured Heat remain outside Wave 4.
+
 Owner implementation authorization, 9 September 2026: implement **Living
 Frontier Wave 3 only**, in LF-3A → LF-3B → LF-3C order, after the accepted
 [Wave 2 review](../prototype/living-frontier-wave2-review-2026-09-09.md).

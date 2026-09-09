@@ -122,10 +122,15 @@ func _persistence(history: CataclysmSites) -> void:
 	if first == null or second == null: return
 	var partial_id := first.resource_id
 	var partial_units := first.remaining_units
+	# Travel to the first specimen can stream the second scene out. Its stable
+	# resource owner survives; reacquire that scene only when we travel to it.
+	var depleted_id := second.resource_id
 	check(await _aim_body(first), "normal interaction ray reaches the partial-work specimen")
 	player.interact()
 	check(first.drive_progress == 1 and first.remaining_units == partial_units, "one contextual press saves genuine incomplete work without yielding stock")
-	var depleted_id := second.resource_id
+	second = terrain.resource_stream.materialise(depleted_id)
+	check(second != null, "depletion specimen retains its owner across travel")
+	if second == null: return
 	var depleted_family := String(second.material_family)
 	var depleted_units := second.remaining_units
 	var carried := _sim().material_count(depleted_family)

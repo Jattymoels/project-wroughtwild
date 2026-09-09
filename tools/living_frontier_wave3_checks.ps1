@@ -1,4 +1,4 @@
-param([switch]$Hosts, [switch]$Native, [switch]$FocusedNative, [switch]$Full, [switch]$Import, [switch]$Visuals, [switch]$Habitat, [switch]$HabitatRestore, [switch]$HabitatVisuals, [switch]$Trail, [switch]$TrailRestore, [switch]$TrailVisuals)
+param([switch]$Hosts, [switch]$Native, [switch]$FocusedNative, [switch]$Full, [switch]$Import, [switch]$Visuals, [switch]$Habitat, [switch]$HabitatRestore, [switch]$HabitatVisuals, [switch]$Trail, [switch]$TrailRestore, [switch]$TrailVisuals, [switch]$Routes)
 $ErrorActionPreference = 'Stop'
 $lf3Options = @{} + $PSBoundParameters
 . (Join-Path $PSScriptRoot 'living_frontier_checks.ps1')
@@ -7,6 +7,11 @@ New-Item -ItemType Directory -Force -Path $lfLogs | Out-Null
 $env:APPDATA = Join-Path $lfLogs 'appdata'
 New-Item -ItemType Directory -Force -Path $env:APPDATA | Out-Null
 if ($lf3Options.Import) { Invoke-LFEngine 'import' @('--headless','--import') }
+if ($lf3Options.Routes) {
+    foreach ($lfSeed in @(5,77)) {
+        Invoke-LFEngine ('routes-' + $lfSeed) @('--headless','--fixed-fps','60','res://tests/living_frontier_routes.tscn','--',('--route-seed=' + $lfSeed))
+    }
+}
 if ($lf3Options.Hosts) { Invoke-LFEngine 'hosts' @('--headless','--fixed-fps','60','res://tests/living_frontier_hosts.tscn') }
 if ($lf3Options.Visuals) { Invoke-LFEngine 'host-visuals' @('--position','-9999,-9999','--resolution','1280x720','--audio-driver','Dummy','res://tests/living_frontier_hosts.tscn','--','--host-visuals') }
 if ($lf3Options.Habitat) { Invoke-LFEngine 'habitat' @('--headless','--fixed-fps','60','res://tests/living_frontier_habitat.tscn') }

@@ -1,5 +1,12 @@
 # Living Frontier Wave 3 — orchestrator review
 
+**Implementation follow-up, 9 September:** LF3-R1 is repaired and its physical,
+37-seed and historical paid-save regressions pass. The
+[Wave 4 work record](living-frontier-wave4-2026-09-09.md#lf3-r1-evidence) retains
+the negative wall reproductions, exact-geometry fingerprints, checked routes
+and complete pipeline receipt. The original review below remains the before
+evidence; this follow-up does not claim another orchestrator review.
+
 9 September 2026. Reviewed baseline:
 `11322c9` (publication handoff), containing LF-3A `df5a0c1`, LF-3B `0cec19f`
 and LF-3C `118bded`. Interleaved ART-01 commits and active grove/art work are

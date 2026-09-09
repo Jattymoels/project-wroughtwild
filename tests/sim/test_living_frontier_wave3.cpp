@@ -6,8 +6,25 @@
 #include <cmath>
 #include <tuple>
 #include <iostream>
+#include <type_traits>
+#include <map>
 
 using namespace wroughtwild;
+#include "worldgen_fingerprint.inc"
+#include "living_frontier_published.inc"
+uint64_t publishedFingerprint(const worldgen::WorldMap& map) {
+    ExactWorldFingerprint hash;
+    hash.world(map);
+    for (const auto& p:map.packs) hash.add(p.frontierHostId);
+    for (const auto& h:map.frontierHosts) {
+        hash.fields(h.id,h.sourceId,h.enemyId,h.influence); hash.point(h.at); hash.path(h.habits);
+    }
+    for (const auto& l:map.laboratories) {
+        hash.fields(l.id,l.label,l.regionId,l.widthM,l.depthM,l.heightM); hash.point(l.at);
+    }
+    for (const auto& r:map.futureTransformations) { hash.fields(r.id,r.regionId,r.radiusM); hash.point(r.at); }
+    return hash.value;
+}
 int checks = 0, failures = 0;
 void check(bool ok, const std::string& label) {
     ++checks;
@@ -15,13 +32,19 @@ void check(bool ok, const std::string& label) {
 }
 void routeCheck(const worldgen::WorldMap& map, const std::vector<worldgen::SurfacePoint>& path) {
     check(!path.empty(), "ordinary approach exists");
-    bool supported=true, connected=true;
+    bool supported=true, connected=true, shellsClear=true;
     for (size_t i=0;i<path.size();++i) {
         const auto& p=path[i];
         supported &= map.inBounds(p.x,p.z) && map.topSolid(p.x,p.z)==p.y && map.at(p.x,p.z).height==p.y;
         if (i>0) connected &= std::abs(p.x-path[i-1].x)+std::abs(p.z-path[i-1].z)==1 && std::abs(p.y-path[i-1].y)<=1;
+        // Independent bounds from the engine shell: the foundation projects
+        // .4 m beyond nominal walls, and the ordinary body radius is .42 m.
+        for (const auto& lab:map.laboratories)
+            if (std::abs(p.x-lab.at.x)*map.cellSize < lab.widthM*.5+.4+.42 &&
+                std::abs(p.z-lab.at.z)*map.cellSize < lab.depthM*.5+.4+.42) shellsClear=false;
     }
     check(supported && connected,"entire approach uses supported single steps, no jump skill");
+    check(shellsClear,"entire capsule corridor avoids final solid laboratory footprints");
 }
 void wave3Machines(const tuning::Tuning& tuning, contraptions::Config config) {
     const auto* recipe=tuning.crafting.findRecipe("refine_rustclay_brick");
@@ -82,6 +105,7 @@ int main(int argc, char** argv) {
     for (int seed=0;seed<32;++seed) seeds.push_back(seed);
     for (const auto seed: seeds) {
         const auto map=worldgen::generateProfile(t,seed,"living_frontier_wave3");
+        check(publishedFingerprint(map)==publishedLF3.at(seed),"published terrain, resources, packs, sites and all owned anchors remain byte exact: "+std::to_string(seed));
         check(map.frontierHosts.size()==4 && map.laboratories.size()==3 && map.futureTransformations.size()==2,"all bounded geography exists from first save");
         routeCheck(map,map.laboratoryTrail);
         for (size_t i=0;i<map.frontierHosts.size();++i) {

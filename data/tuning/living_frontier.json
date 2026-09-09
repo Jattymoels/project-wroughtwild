@@ -13,6 +13,7 @@
   "habit_pause_seconds": 5,
   "habitat_cue_spacing_m": 12,
   "trail_spacing_m": 9,
+  "lab_route_clearance_m": 0.9,
   "hosts": [
     {"id":"lf3_red_rooting", "source_id":"red_home_margin", "enemy_id":"lf_red_boar", "influence":"red", "home_index":0},
     {"id":"lf3_white_grazing", "source_id":"white_home_margin", "enemy_id":"lf_white_stag", "influence":"white", "home_index":1},
@@ -35,6 +36,7 @@
     "habit_pause_seconds":"Quiet hosts pause between grazing/rooting or connected-growth visits; danger still uses normal combat states.",
     "habitat_cue_spacing_m":"Sparse small matching scars connect source and animal along a reachable walk.",
     "trail_spacing_m":"Maximum walking interval between repeated artificial trail marks toward the Collection Annex.",
+    "lab_route_clearance_m":"Derived walks clear each shell's nominal half-size by 0.9 m: 0.4 m projecting foundation, 0.42 m ordinary capsule radius and 0.08 m tolerance. Does not move published sites or exclude paid construction.",
     "hosts_and_laboratories":"Four stable finite host identities and three visible site identities frozen with the new opt-in world profile. All older profiles remain unchanged."
   }
 }

@@ -1784,6 +1784,7 @@ LivingFrontierTable loadLivingFrontier(const std::string& path) {
     t.transformRadiusM = number("transform_radius_m");
     t.habitPauseSeconds = number("habit_pause_seconds");
     t.habitatCueSpacingM = number("habitat_cue_spacing_m"); t.trailSpacingM = number("trail_spacing_m");
+    t.labRouteClearanceM = number("lab_route_clearance_m");
     for (const auto& h : doc->get("hosts").asArray()) {
         FrontierHostDef host;
         host.id=h->get("id").asString(); host.sourceId=h->get("source_id").asString();
