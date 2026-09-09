@@ -8,7 +8,8 @@ func _ready() -> void:
 	player.class_panel.choose("warden")
 	freeze_fixtures()
 	set_physics_process(false)
-	if "--lf3-visuals" in OS.get_cmdline_user_args(): _visuals.call_deferred()
+	if "--lf3-trail-visuals" in OS.get_cmdline_user_args(): _trail_visuals.call_deferred()
+	elif "--lf3-visuals" in OS.get_cmdline_user_args(): _visuals.call_deferred()
 	else: _run_habitat.call_deferred()
 
 func _run_habitat() -> void:
@@ -147,3 +148,53 @@ func freeze_fixtures() -> void:
 	for actor in [player,player.placement,player.combat,player.spring_arm,mob_packs]: actor.set_physics_process(false)
 	mob_packs.set_process(false)
 	for enemy in get_tree().get_nodes_in_group("enemies"): enemy.set_physics_process(false)
+
+func _trail_visuals() -> void:
+	get_window().size=Vector2i(1280,720)
+	player.hide()
+	player.hud.hide()
+	var camera:=Camera3D.new()
+	add_child(camera)
+	camera.current=true
+	camera.fov=60
+	var sites:=get_node("FrontierSites") as FrontierSites
+	var folder:=ProjectSettings.globalize_path("res://../captures/lf3")
+	DirAccess.make_dir_recursive_absolute(folder)
+	for pair in [["trail-origin",0],["trail-middle",sites.trail_marks.size()/2],["trail-laboratory",sites.trail_marks.size()-1]]:
+		var mark: MeshInstance3D=sites.trail_marks[int(pair[1])]
+		var at: Vector3=mark.get_meta("walk_position")
+		player.global_position=at+Vector3.UP*1.2
+		terrain.ensure_area(at,28)
+		camera.global_position=at+Vector3(5,3,6)
+		camera.look_at(at+Vector3.UP*.65)
+		if String(pair[0])=="trail-laboratory": camera.look_at(terrain.map.laboratories[0].position+Vector3.UP*1.7)
+		for i in 20: await get_tree().process_frame
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_png(folder+"/"+String(pair[0])+".png")
+	camera.current=false
+	player.hud.show()
+	var source:=find_source_for_picture()
+	await aim_at(source)
+	player.interact()
+	for i in 10: await get_tree().process_frame
+	await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png(folder+"/field-reading.png")
+	var details: Array=player.work_panel.find_children("*","Button",true,false)
+	details.reverse()
+	for button: Button in details:
+		if button.text=="Details" and button.is_visible_in_tree():
+			await reveal_control(button)
+			button.button_pressed=true
+			break
+	for i in 10: await get_tree().process_frame
+	player.work_panel._scroll.scroll_vertical=int(player.work_panel._scroll.get_v_scroll_bar().max_value)
+	for i in 2: await get_tree().process_frame
+	await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png(folder+"/field-manufacture.png")
+	print("LF3_TRAIL_VISUALS actual field origin, middle, terminus and source information")
+	get_tree().quit()
+
+func find_source_for_picture() -> LeylineSource:
+	for source in get_tree().get_nodes_in_group("leyline_sources"):
+		if source.source_id=="red_home_margin": return source
+	return null

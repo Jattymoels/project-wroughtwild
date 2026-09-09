@@ -2,7 +2,9 @@
 #include "wroughtwild/loot.h"
 #include "wroughtwild/worldgen.h"
 #include "wroughtwild/leyline.h"
+#include "wroughtwild/contraptions.h"
 #include <cmath>
+#include <tuple>
 #include <iostream>
 
 using namespace wroughtwild;
@@ -20,6 +22,36 @@ void routeCheck(const worldgen::WorldMap& map, const std::vector<worldgen::Surfa
         if (i>0) connected &= std::abs(p.x-path[i-1].x)+std::abs(p.z-path[i-1].z)==1 && std::abs(p.y-path[i-1].y)<=1;
     }
     check(supported && connected,"entire approach uses supported single steps, no jump skill");
+}
+void wave3Machines(const tuning::Tuning& tuning, contraptions::Config config) {
+    const auto* recipe=tuning.crafting.findRecipe("refine_rustclay_brick");
+    config.feederRecipeInputs=recipe->inputs; config.feederRecipeOutputs=recipe->outputs;
+    config.feederFuelCost=recipe->fuelCost; config.feederFuels=tuning.crafting.fuels;
+    contraptions::MachineWorld m(config,{"living_frontier_wave3",77,{}});
+    for (const auto& [key,kind,x]:std::vector<std::tuple<std::string,std::string,double>>{
+        {"red","red_heat_buffer",0},{"feeder","pressure_feeder",4},{"lever","stormglass_lever",6},
+        {"white","white_connection",8},{"blue","blue_delay",10},{"green","green_junction",12},
+        {"drum","cargo_winch",14},{"landing","winch_landing",24}})
+        check(m.create(key,kind,{x,0,0}).ok,"new profile accepts inherited fixture: "+key);
+    check(m.attachFeeder("feeder","","forge",{4,0,2},true).ok && m.link("red","feeder",true).ok,"heat keeps its own attached receiver");
+    check(m.link("lever","white",true).ok && m.link("white","blue",true).ok && m.link("blue","green",true).ok &&
+          m.link("green","drum",true).ok && m.linkSecond("green","feeder",true).ok && m.link("drum","landing",true).ok,"complete inherited signal path under new identity");
+    economy::Inventory pack{{"red_salt",2},{"raw_clay",8},{"wood",10}};
+    check(m.chargeHeat("red",pack,true).ok && !pack.count("red_salt") && m.state("red")->heat==1,"thermal input is actually paid");
+    check(m.deposit("feeder","raw_clay",8,pack).moved==8 && m.deposit("drum","wood",10,pack).moved==10,"actual inputs transfer to separate consumers");
+    check(!m.wind("red").ok && !m.wind("blue").ok && !m.start("feeder",true).ok,"heat and a signal cannot replace mechanical work");
+    check(m.wind("drum").ok && m.wind("feeder").ok,"each receiver separately wound");
+    check(m.request("lever",{}).ok && m.advanceDelay("blue",1,{}).ok,"one held request before restart");
+    auto saved=m.serialize();
+    contraptions::MachineWorld legacy(config,{"living_frontier_wave1",77,{}});
+    check(!legacy.restore(saved),"machine payload cannot cross world profiles");
+    check(m.restore(saved) && m.serialize()==saved,"new identity restores pending signal, inputs and exact heat");
+    check(m.advanceDelay("blue",2,{}).ok && m.state("drum")->moving && m.state("drum")->energy==0 &&
+          m.state("feeder")->escrowDrive==1 && m.state("feeder")->escrowHeat==1 && m.state("red")->heat==0,"one release pays each work budget and only the thermal consumer's heat");
+    saved=m.serialize();
+    check(m.restore(saved) && !m.advanceDelay("blue",100,{}).ok && m.serialize()==saved,"restart cannot replay a consumed signal");
+    check(m.advance("drum",100,true).ok && m.advance("feeder",8,true).ok,"paid work completes");
+    check(m.withdraw("landing","cargo","wood",10,40,pack).moved==10 && m.state("feeder")->output==config.feederRecipeOutputs,"real delivered cargo and useful bricks retain their distinct owners");
 }
 int main(int argc, char** argv) {
     const auto t = tuning::loadAll(argc > 1 ? argv[1] : "data/tuning");
@@ -45,6 +77,7 @@ int main(int argc, char** argv) {
     for (const auto& r:t.crafting.recipes)
         check(r.availableIn("living_frontier_wave3")==r.availableIn("living_frontier_wave1"),"published recipe policy inherited: "+r.id);
     const auto sources=leyline::Config::load(std::string(argc>1?argv[1]:"data/tuning")+"/leyline.json");
+    wave3Machines(t,contraptions::Config::load(std::string(argc>1?argv[1]:"data/tuning")+"/contraptions.json"));
     std::vector<int> seeds={42,77,256,1337,2147483647};
     for (int seed=0;seed<32;++seed) seeds.push_back(seed);
     for (const auto seed: seeds) {

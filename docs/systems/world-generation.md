@@ -9,6 +9,11 @@ exist from its first save. Actual solid walls occupy space; envelopes impose no
 building exclusion. Older LF saves keep their exact geography. Normal startup
 remains V6. [Contract, tuning and evidence](../prototype/living-frontier-wave3-2026-09-09.md).
 
+LF-3C adds only non-blocking repeated clamps/marks/short feed sections along the
+already frozen Red-source-to-Collection-Annex walk. Their nine-cell walking
+interval is tuned in `living_frontier.json`; they yield locally to paid occupied
+space. No lab moves or new collision enters an existing Wave 3 save.
+
 **LF-2A (8 September 2026):** the same opt-in profile adds Blue Flakes on home
 margin 2 (+8 m X), retaining the existing lot/work/formation limits and adding
 a fixed 4% Faint Frost bonus per lot. Version 3 requires Red, White and Blue;

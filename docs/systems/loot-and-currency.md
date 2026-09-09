@@ -9,6 +9,14 @@ reward afterward. Reload/streaming cannot pay a second kill or renew a source.
 Published acquisition policy and ordinary recipes remain, including all five
 raw-material manufacture recipes. [Bounded contract](../prototype/living-frontier-wave3-2026-09-09.md).
 
+**LF-3C:** the fresh paid seed-77 journey reaches a useful forge and brick
+construction from an ordinary-weapon boar hunt, then manufactures Ember, Frost,
+Preserving, Impact and Piercing with **zero found Catalysts**. White uses its
+existing capped active-world renewal to supply both identities. Source inspection
+shows the current native recipe inputs, and one later artificial feed trail
+leads to the sealed Collection Annex. No new acquisition policy, laboratory
+reward or curio/era change is enabled by this proof.
+
 **LF-1A, D-033 (8 September 2026):** the opt-in Living Frontier Red host
 reliably releases raw Salt and has one 4% Faint Ember opportunity per fixed lot.
 The native source owns uncollected raw/rare claims until a capacity-checked

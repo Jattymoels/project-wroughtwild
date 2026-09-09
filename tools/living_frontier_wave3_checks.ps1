@@ -1,4 +1,4 @@
-param([switch]$Hosts, [switch]$Native, [switch]$FocusedNative, [switch]$Full, [switch]$Import, [switch]$Visuals, [switch]$Habitat, [switch]$HabitatRestore, [switch]$HabitatVisuals)
+param([switch]$Hosts, [switch]$Native, [switch]$FocusedNative, [switch]$Full, [switch]$Import, [switch]$Visuals, [switch]$Habitat, [switch]$HabitatRestore, [switch]$HabitatVisuals, [switch]$Trail, [switch]$TrailRestore, [switch]$TrailVisuals)
 $ErrorActionPreference = 'Stop'
 $lf3Options = @{} + $PSBoundParameters
 . (Join-Path $PSScriptRoot 'living_frontier_checks.ps1')
@@ -12,6 +12,9 @@ if ($lf3Options.Visuals) { Invoke-LFEngine 'host-visuals' @('--position','-9999,
 if ($lf3Options.Habitat) { Invoke-LFEngine 'habitat' @('--headless','--fixed-fps','60','res://tests/living_frontier_habitat.tscn') }
 if ($lf3Options.HabitatRestore) { Invoke-LFEngine 'habitat-restart' @('--headless','--fixed-fps','60','res://tests/living_frontier_habitat.tscn','--','--lf3-restore') }
 if ($lf3Options.HabitatVisuals) { Invoke-LFEngine 'habitat-visuals' @('--position','-9999,-9999','--resolution','1280x720','--audio-driver','Dummy','res://tests/living_frontier_habitat.tscn','--','--lf3-visuals') }
+if ($lf3Options.Trail) { Invoke-LFEngine 'paid-trail' @('--headless','--fixed-fps','60','res://tests/living_frontier_trail_flow.tscn') }
+if ($lf3Options.TrailRestore) { Invoke-LFEngine 'paid-trail-restart' @('--headless','--fixed-fps','60','res://tests/living_frontier_trail_flow.tscn','--','--lf3-trail-restore') }
+if ($lf3Options.TrailVisuals) { Invoke-LFEngine 'trail-visuals' @('--position','-9999,-9999','--resolution','1280x720','--audio-driver','Dummy','res://tests/living_frontier_habitat.tscn','--','--lf3-trail-visuals') }
 if ($lf3Options.Native -or $lf3Options.FocusedNative) {
     $lfCompiler = 'C:/Users/Matty/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/bin/g++.exe'
     $env:PATH = (Split-Path $lfCompiler) + ';' + $env:PATH

@@ -348,7 +348,11 @@ sidestep Blue's held straight charge, or interrupt either with ordinary skills.
 White stag and Green moth remain passive. Their scars and nearby ground cues
 lead back to useful source materials. Three sealed laboratory shells and two
 inactive future transformation regions exist from this world's first save;
-there are no laboratory encounters. Normal startup remains V6, and loading keeps
+there are no laboratory encounters. At the Red source, follow the later metal
+clamps and repeated triple-cut marks to the Collection Annex. Source **Details**
+connect each animal's behaviour and raw reward to the matching ordinary Catalyst
+recipes. All five can be manufactured without rare finds; White supplies Impact
+and Piercing across two normal manifestations. Normal startup remains V6, and loading keeps
 the saved identity. Existing experimental worlds are not converted or reseeded.
 See [Wave 3 contract and evidence](../docs/prototype/living-frontier-wave3-2026-09-09.md).
 

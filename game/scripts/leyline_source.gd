@@ -130,9 +130,28 @@ func _open(message := "") -> void:
 	var detail := "Red Salt replaces the brick variant's fuel only. Forge Faint Ember: 96 salt + 4 iron ingots + 8 charcoal, immediately at a basic forge (Blacksmithing 1). Salt supplies no mechanical winding." if s.material=="red_salt" else "A signal requests a trip; the cargo drum spends its own stored winding. Blue holds one request for three active nearby seconds, with Pause, Resume and Cancel controls."
 	if not String(s.rare_item).is_empty(): detail += " Each fixed lot has a %.1f%% bonus %s opportunity, independent of work or collection splits." % [float(s.rare_per_10000)/100.0,Hud.pretty(String(s.rare_item))]
 	rows.append({"text":uses.get(s.material,""),"button":"Material use","enabled":false,"details":detail})
+	if terrain.world_profile()=="living_frontier_wave3":
+		rows.append({"text":frontier_observation(),"button":"Field reading","enabled":false,"details":frontier_manufacture()})
 	if not ready: message = "Clear the host's workspace and restore its ground support to work or collect."
 	_panel_player.open_custom_panel(s.label,rows,message,"leyline:"+source_id)
 	refresh()
+
+func frontier_observation() -> String:
+	return {
+		"red_home_margin":"Red vents outward. Beyond the calm clearing, a scarred boar plants its feet before releasing a circle of heat. Back away or interrupt it. The metal clamps here bear three matching cuts; follow them toward the Collection Annex.",
+		"blue_home_margin":"Blue holds before releasing. The scarred boar beyond the calm clearing commits to a straight charge: move sideways or interrupt it. Its flakes share this source's held pattern.",
+		"white_home_margin":"White carries an impulse. The stag beyond the calm clearing grazes and flees; its narrow scars share this mineral's pattern. Hunting it is optional.",
+		"green_home_margin":"Green branches through connected growth. The moth beyond the calm clearing visits those branches and flees disturbance. Its resin shares this source's pattern."
+	}.get(source_id,"")
+
+func frontier_manufacture() -> String:
+	var recipes: Array={"red_home_margin":["ember"],"blue_home_margin":["frost"],"green_home_margin":["preserving"],"white_home_margin":["impact","piercing"]}.get(source_id,[])
+	var detail:="An affected animal yields four matching raw units through its physical drops. These also pay ordinary useful recipes. Safe manual source work supplies bulk material, so a hunt or rare find is never required.\n\nReliable manufacture at your basic forge (Blacksmithing 1):"
+	for id: String in recipes:
+		var recipe: Dictionary=sim.recipe("forge_faint_"+id)
+		detail+="\n%s: %s." % [String(recipe.display_name),WorkPanel.amounts_text(recipe.inputs)]
+	detail+="\n\nA signal requests work. Each receiver still pays its own winding; stored Red heat remains a separate thermal cost. The later collection apparatus leads to sealed laboratory sites."
+	return detail
 
 func _can_act() -> bool:
 	return is_instance_valid(_panel_player) and not _panel_player.trial.active() and _panel_player.global_position.distance_to(global_position) < 5.0 and supported()

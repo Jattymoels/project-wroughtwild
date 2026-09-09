@@ -41,6 +41,10 @@ echo "== Living Frontier Wave 3 habitat and finite reward restart =="
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_habitat.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_habitat.tscn -- --lf3-restore
 
+echo "== Living Frontier Wave 3 no-luck paid trail and restart =="
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_trail_flow.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/living_frontier_trail_flow.tscn -- --lf3-trail-restore
+
 echo "== INT-05C dead-target and reaction recovery boundaries =="
 "$GODOT" --headless --fixed-fps 240 --path . res://tests/power_progression_review.tscn -- --boundary-only --expect-fixed
 

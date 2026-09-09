@@ -105,7 +105,8 @@ commands, exact outcomes, limitations, local commits and remote pushes below.
 
 ## Results
 
-Implementation in progress. No completion or player acceptance claimed yet.
+All three slices are implemented and checked. Wave 3 remains opt-in and awaits
+orchestrator review. No owner playtest or orchestrator acceptance is claimed.
 
 ### LF-3A implementation and measured tuning
 
@@ -162,7 +163,8 @@ links extend out from the four existing home margins to clear supported ground
 at least 170 m from spawn; the 150 m quiet valley and home/source workplaces
 remain calm. Red and Blue have independent approaches, no escorts or elites.
 Each host yields four matching raw units plus hide (boars one, stag two) or two
-raw reeds (moth). These modest drops fund two matching utility parts; they do not
+raw reeds (moth). These drops supply the raw input for two White/Blue/Green
+utility kits or two Red brick batches, alongside ordinary inputs; they do not
 replace bulk extraction. Death is remembered by stable host identity in the
 existing saved world-effect ledger; no source or reward rerolls on streaming.
 
@@ -225,6 +227,9 @@ The final habitat movement lives in the enemy controller; the scar adapter only
 poses and renders the animal. Repeated the 222 + 76 + 18 focused checks after that
 separation; all pass. The full pipeline's host scenes preceded this final move.
 
+Local LF-3B commit `0cec19f`; ordinary push to `origin/main` succeeded. Concurrent
+ART-01 commits were retained; later grove work and planning edits remain separate.
+
 ### LF-3C selected proof and trail
 
 After LF-3B's checked commit, use a fresh seed-77 Wave 3 economy with no supplied
@@ -246,3 +251,58 @@ yield locally to paid construction and do not change saved lab footprints.
 Source inspection connects observed animal behaviour, useful raw drops and the
 existing ordinary manufacture costs. No discovery gate or laboratory encounter
 is introduced. Current Forge/curio rewards remain coherent until later waves.
+
+### LF-3C measured result
+
+The fresh paid journey passes **940 checks**, followed by **seven fresh-process
+checks**, zero failures. Five real casts with the actually crafted wooden cudgel
+defeat the generated Red boar, with 100 life remaining under scripted evasion.
+The four dropped Salt plus 16 gathered clay pay eight ordinary bricks; four
+bricks pay two placed cubes before any Catalyst is owned. The ordinary bench,
+masonry yard and forge are gathered, crafted and placed through existing input.
+
+The same economy smelts 22 ingots and makes 36 charcoal, then pays every input
+of all five current manufacture recipes. Seven Red, six Blue, six Green and
+twelve White lots contain no rare result in this journey. White's last four
+lots come after its existing 600-second active-world formation. No stock reset,
+Catalyst grant, raised chance, free station or Trial payout is used. A manufactured
+Ember is placed into the existing persistent Kindling layout; the other four
+remain owned. Source, gear, XP, host death, paid buildings and manufactured
+ownership survive restart. The published importer drops empty **unearned**
+mastery lists; the probe normalizes only those empty lists while comparing all
+actual earned entries and practice values. No save rule changed to fit the test.
+
+Following the repeated marks reaches the Collection Annex without granting any
+stock, campaign progress, heat or mechanical work. A paid block can occupy a
+mark's space; its cosmetic dressing hides and the block survives restart. The
+trail leaves LF-3B's three actual shells and future envelopes exactly in place.
+The 1.3 m posts, 0.75 m clamp heads, triple cut and two-cell short feeds are local
+placeholder geometry; nine walking cells between marks is the exposed spacing
+control. The dark metal and repeated cuts visibly distinguish the later apparatus
+from local animal/source scars. Source **Details** show the actual native costs.
+
+Rendered/inspected: [source and trail origin](../../captures/lf3/trail-origin.png),
+[field feed](../../captures/lf3/trail-middle.png),
+[laboratory terminus](../../captures/lf3/trail-laboratory.png),
+[contextual reading](../../captures/lf3/field-reading.png) and
+[expanded manufacture details](../../captures/lf3/field-manufacture.png).
+Commands: `tools/living_frontier_wave3_checks.ps1 -Trail -TrailRestore`,
+`-TrailVisuals`, `-FocusedNative` and `-Full`. Receipts:
+`build/lf3/paid-trail.json`, `paid-trail-restart.json`, `final-trail-c.log`,
+`native-c.log`, `visual-details-c.log` and `full-engine-c.log`.
+
+Final native Wave 3 suite: **16,830 checks, zero failures**. In addition to the
+37-seed geography/loot/recipe checks, a complete new-profile White → Blue → Green
+chain preserves a held request across restart, then spends each receiver's
+winding separately and one paid Red thermal unit only at the feeder. Cargo and
+bricks have distinct owners; the consumed request cannot replay. A Wave 1 machine
+world refuses this Wave 3 payload rather than importing a different identity.
+
+The final complete engine run passes **111 ordered invocations and all four
+Foundry identity scenes**, every exit zero. This includes the final 222 combat,
+76 + 18 habitat/restart and 940 + 7 paid journey/restart checks, plus the existing
+combat, loot, source/workshop payments, generation, terrain, building, save and
+Foundry regressions. The final expanded source-panel capture also passes its
+separate rendered run. No new package, production art or later-wave behaviour
+was introduced. Stop here for orchestrator review; publication receipts and
+remaining human questions are in the [handoff](living-frontier-wave3-handoff-2026-09-09.md).

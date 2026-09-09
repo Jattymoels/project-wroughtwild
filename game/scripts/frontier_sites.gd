@@ -5,6 +5,7 @@ extends Node3D
 var terrain: Terrain
 var dressing: Array[MeshInstance3D] = []
 var shells: Array[MeshInstance3D] = []
+var trail_marks: Array[MeshInstance3D] = []
 const STONE := Color("555e5b")
 const METAL := Color("727a77")
 
@@ -55,7 +56,58 @@ func _compose() -> void:
 		for i in range(0,path.size(),spacing): _scar(path[i],String(habitat.influence))
 		for at: Vector3 in habitat.habits: _scar(at,String(habitat.influence),true)
 	for lab: Dictionary in terrain.map.laboratories: _laboratory(lab)
+	_artificial_trail()
 	refresh_buildings()
+
+func _artificial_trail() -> void:
+	var path: PackedVector3Array=terrain.map.laboratory_trail
+	var spacing:=int(terrain.map.frontier_rules.trail_spacing_m)
+	var indices: Array[int]=[]
+	for i in range(0,path.size(),spacing): indices.append(i)
+	if indices.is_empty(): return
+	if indices.back()!=path.size()-1: indices.append(path.size()-1)
+	for slot in indices.size():
+		var index:=indices[slot]
+		var at:=path[index]
+		var next:=path[mini(index+spacing,path.size()-1)]
+		var direction: Vector3=(next-at)*Vector3(1,0,1)
+		if direction.length_squared()<.1: direction=(at-path[maxi(0,index-1)])*Vector3(1,0,1)
+		direction=direction.normalized()
+		var side:=direction.cross(Vector3.UP)
+		var post_at:=at+side*.7
+		# Later metal clamps have consistent tooling, right angles and a stamped
+		# triple cut. Natural influence cues retain their local branching/layers.
+		var post:=_box(post_at+Vector3.UP*.65,Vector3(.18,1.3,.18),METAL)
+		post.name="CollectionMark%d" % slot
+		post.set_meta("walk_position",at)
+		post.set_meta("route_index",index)
+		trail_marks.append(post)
+		var clamp:=_box(post_at+Vector3.UP*.92,Vector3(.75,.12,.34),METAL)
+		clamp.rotation.y=atan2(-direction.x,-direction.z)
+		for cut in 3:
+			var stamp:=_box(post_at+Vector3.UP*1.13+side*(cut-1)*.19,Vector3(.07,.3,.25),Color("cec6a4"))
+			stamp.rotation.y=clamp.rotation.y
+		if index+2<path.size():
+			# Short straight feeds leave the walking lane open, visibly fastened
+			# onto the scar rather than pretending to be a natural lightning fork.
+			var end:=path[index+2]+side*.7+Vector3.UP*.45
+			var start:=post_at+Vector3.UP*.45
+			var feed:=_box((start+end)*.5,Vector3(.11,.11,start.distance_to(end)),Color("465453"))
+			feed.look_at(end)
+			var pointer:=_box(at+Vector3.UP*.09+direction*.6,Vector3(.1,.06,1.2),Color("cec6a4"))
+			pointer.rotation.y=clamp.rotation.y
+			for turn in [-1,1]:
+				var tip:=_box(at+Vector3.UP*.09+direction*1.02+side*turn*.18,Vector3(.07,.06,.55),Color("cec6a4"))
+				tip.rotation.y=clamp.rotation.y+turn*.7
+		if slot==0 or slot==indices.size()-1:
+			var label:=Label3D.new()
+			label.text="Collection feed →" if slot==0 else "Collection Annex · feed terminus"
+			label.position=post_at+Vector3.UP*1.65
+			label.font_size=28
+			label.pixel_size=.005
+			label.billboard=BaseMaterial3D.BILLBOARD_ENABLED
+			label.visibility_range_end=14
+			add_child(label)
 
 func _scar(at: Vector3, influence: String, growth := false) -> void:
 	var colour: Color = FrontierHostLook.PALETTE[influence]
