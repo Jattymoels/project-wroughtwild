@@ -2407,6 +2407,8 @@ bool WroughtwildSim::resonance_prepare(int seed,const Array& protection) {
             bounds.push_back({b[0],b[1],b[2],b[3]});
         }
         auto prepared=wroughtwild::resonance::prepare(cached_world(static_cast<uint64_t>(seed)),resonance_config_,bounds);
+        prepared.campaignAward=player_->worldEffectActive("lf4_annex_victory");
+        if(prepared.campaignAward)player_->recordWorldEffect("stonecut_blocks");
         player_->resonanceState=std::move(prepared);world_cache_.reset();last_error_=String();return true;
     } catch(const std::exception& e) {last_error_=to_godot(e.what());return false;}
 }
@@ -2546,7 +2548,7 @@ Dictionary WroughtwildSim::trial_layout() const {
 Dictionary WroughtwildSim::trial_map_progress() const {
     Dictionary out;
     if (!require_loaded("trial_map_progress")) return out;
-    out["available"] = player_->worldEffectActive("forge_arc_complete");
+    out["available"] = player_->campaignPolicy!=wroughtwild::resonance::campaign && player_->worldEffectActive("forge_arc_complete");
     out["max_tier"] = trial_gate_.maxTier;
     return out;
 }
@@ -2554,6 +2556,7 @@ Dictionary WroughtwildSim::trial_map_progress() const {
 Array WroughtwildSim::trial_map_offers(int tier) const {
     Array out;
     if (!require_loaded("trial_map_offers") || !player_->worldEffectActive("forge_arc_complete")) return out;
+    if(player_->campaignPolicy==wroughtwild::resonance::campaign)return out;
     for (const auto& offer : wroughtwild::trial::mapOffers(*tuning_, trial_gate_, tier)) {
         Dictionary d;
         d["id"] = to_godot(offer.id);
@@ -2677,6 +2680,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
         return d;
     }
     const auto& map = *prepared;
+    player_->worldSeed=static_cast<uint64_t>(seed);
     const auto& table = world_table();
 
     d["seed"] = seed;
@@ -2901,7 +2905,9 @@ Dictionary WroughtwildSim::world_map(int seed) {
     }
     for (const auto& region : map.futureTransformations) {
         Dictionary r; r["id"]=to_godot(region.id); r["region_id"]=to_godot(region.regionId);
-        r["position"]=position(region.at); r["radius_m"]=region.radiusM; r["active"]=false; transforms.push_back(r);
+        r["position"]=position(region.at); r["radius_m"]=region.radiusM;
+        r["active"]=player_->campaignPolicy==wroughtwild::resonance::campaign && player_->resonanceState.phase=="applied" && region.id=="retained_fen";
+        transforms.push_back(r);
     }
     d["frontier_hosts"]=frontier_hosts; d["laboratories"]=laboratories;
     d["future_transformations"]=transforms; d["laboratory_trail"]=route(map.laboratoryTrail);
@@ -3622,6 +3628,7 @@ Dictionary WroughtwildSim::landmark_wants(const String& landmark_id) const {
     if (!require_loaded("landmark_wants")) {
         return d;
     }
+    if(player_->landmarkWants(to_std(landmark_id)).empty())return d;
     const auto* curio = tuning_->trial.curioForLandmark(to_std(landmark_id));
     if (curio == nullptr) {
         return d;
@@ -3629,6 +3636,7 @@ Dictionary WroughtwildSim::landmark_wants(const String& landmark_id) const {
     d["curio"] = String(curio->id.c_str());
     d["display_name"] = String(curio->displayName.c_str());
     d["held"] = player_->curioHeld(curio->id);
+    if(player_->campaignPolicy==wroughtwild::resonance::campaign)d["remembrance"]=true;
     return d;
 }
 

@@ -162,6 +162,13 @@ for identity in offence guard sustain tempo; do
   "$GODOT" --headless --path . "res://tests/foundry_${identity}_identity.tscn"
 done
 
+echo "== Living Frontier Wave 4 protected terrain and first laboratory =="
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn -- --lf4a-pending
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/resonance_terrain.tscn -- --lf4a-applied
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_trial.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_trial.tscn -- --lf4c-pending
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/laboratory_trial.tscn -- --lf4c-applied
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 

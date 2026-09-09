@@ -260,6 +260,11 @@ SaveGame fromJson(const std::string& text) {
     game.economy.craftCounts = readIntMap(eco.get("craft_counts"));
     game.economy.fulfilledOrders = readStringList(eco.get("fulfilled_orders"));
     game.economy.worldEffects = readStringList(eco.get("world_effects"));
+    if(game.economy.campaignPolicy==resonance::campaign) {
+        const auto has=[&](const std::string& effect){for(const auto& e:game.economy.worldEffects)if(e==effect)return true;return false;};
+        if(game.economy.resonanceState.campaignAward!=has("stonecut_blocks") || (game.economy.resonanceState.campaignAward && !has("lf4_annex_victory")))
+            throw std::runtime_error("save: resonance terrain and campaign milestone disagree");
+    }
     // Saves written before D-014 carry no pack items.
     if (auto pack = eco.find("pack_items"))
         for (const auto& itemValue : pack->asArray())

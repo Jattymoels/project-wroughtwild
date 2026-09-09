@@ -33,6 +33,8 @@ remains separate from automated checks.
 
 ## LF3-R1 evidence
 
+Checked repair commit: `0c5f270`.
+
 The retained negative controller tests stop against real `ExteriorBody` walls:
 seed 5's collection segment **256** and seed 77's Central approach segment
 **233**. Capsule corridor samples find **28 / 26** shell contacts respectively.
@@ -236,6 +238,8 @@ encounter resolution from real controller walking and first-person interaction.
 
 ## LF-4B evidence
 
+Checked laboratory commit: `0ba9be5`.
+
 The normal first-person E ray selects the existing Annex front body. All three
 entry-gallery records are reached and inspected before combat without changing
 rules/ownership. The three early branch rooms contain solid cabinets included
@@ -259,3 +263,145 @@ enemy/controller code runs in normal play, with inherited Tyrant mechanics and
 unchanged specimen statistics. The cabinets and record plaques are bounded
 placeholder art. Human fight balance, laboratory readability and narrative
 discovery still need orchestrator/player review.
+
+## LF-4C selections, before implementation
+
+LF-4B is checked and pushed as `0ba9be5`. A first victorious Annex settlement
+records `lf4_annex_victory`, grants one Tyrant Heart and changes the event from
+dormant to pending for the saved world seed. Death, bank-out and repeated
+victory cannot create another first-clear receipt. Ordinary run loot continues
+to settle by the existing per-run contract, including its Catalyst policy.
+
+Only a complete protected publication candidate bearing that receipt records
+`stonecut_blocks`. Its saved event marks the campaign award, ensuring geometry,
+era and first-clear ownership agree on restart. The tested LF-4A direct scheduling
+hook remains an isolated geometry proof with no campaign award. The four ore
+lots retain the existing heat-to-work/charcoal and bronze recipe rules. A fifth
+spaced, saved workplace supplies one finite existing Blue-scar boar, with its own
+`lf4_retained_fen_blue` death identity and no escorts or second payout.
+
+Normal safe return attempts publication after the Trial closes. Loading a
+pending campaign resumes at that safe boundary; nearby combat or blocked
+preparation leaves an explicit retry at the Annex. Writes follow the successfully
+loaded/saved world path, with the separate Wave-4 default for a fresh world.
+The optional hill-cairn Heart use becomes once-only remembrance: it consumes
+the trophy and records remembrance, granting no additional era, ability or loot.
+The drowned altar and all deeper Forge/map entry stay unavailable in this
+successor. Every legacy policy retains both original curio gates and rewards.
+
+## LF-4C implementation and evidence
+
+The first-clear receipt, held Heart and pending event settle with the existing
+Trial ownership rules. The event uses the outer world's seed, independently of
+the encounter seed. The normal return closes the Trial before attempting the
+protected transaction. Loading a pending first-return checkpoint resumes the
+same boundary. A successful write/read retains the actual world save path, so
+publication does not silently fork a loaded campaign into a default file.
+The pending checkpoint is written before checking nearby combat: a fighting
+return may defer physical publication, but still persists the first-clear
+receipt, reward and complete ownership for restart. A final transaction audit
+found and corrected the earlier ordering that deferred before this write.
+
+An applied campaign record stores its fifth workplace and `campaign_award`.
+Only the complete prepared candidate gains the existing `stonecut_blocks`
+milestone. Native save validation rejects a mixed terrain/era record before
+live ownership changes. Earlier isolated Wave-4 event records can omit the new
+optional fields; they retain their original geometry and isolated policy.
+Legacy saves continue omitting all Wave-4 fields. Replays use the saved sparse
+columns and workplace identities; current tuning never rerolls an applied bank.
+
+The additional host is `lf4_retained_fen_blue`, using the existing Blue-scar
+boar, its ordinary finite-host death record and existing material reward.
+The four ore IDs are `lf4_fen_ore_0` through `lf4_fen_ore_3`: alternating copper
+and tin, eight units each. The existing six-metre spacing now includes the one
+new host workplace. LF-4C introduces no new recipe, currency, combat statistic
+or numerical tuning beyond LF-4A/B's recorded data.
+
+Native first-clear, suspended-floor, repeated-victory and compatibility checks
+pass **55 checks, zero failures**. This includes a real native early bank-out
+and a failed encounter: both restore deposits under the existing rules without
+a trophy or pending event. A spent first-clear Heart stays spent across two
+later victories and repeated finish callbacks. Both legacy curio gates still
+advance their original eras and retain their rewards.
+
+Focused engine settlement passes **29 checks**, fresh pending restart **4**,
+and fresh applied restart **6**, all zero failures. The pending file comes from
+the actual first victory's previous checkpoint, before the candidate publishes;
+it has one Heart, the receipt and era one. Normal loading publishes era two
+once at that file's path. The applied restart preserves exact native inventory,
+milestone and ledger, one depleted copper node, a tin node with six units, the
+spent Heart and the defeated finite host. Duplicate callbacks do not add drops.
+The deliberately mismatched milestone checkpoint is rejected atomically with
+an expected refusal warning.
+
+The final full laboratory journey passes **172 checks over 824.5 metres of
+ordinary controller walking**. It includes the actual front-door E target,
+all three evidence records, physical containment/navigation, both floors and
+their suspended boundary, eight encounters, exact return, first protected
+publication, paid material use and once-only host/trophy ownership. Fresh
+processes again pass **4 pending / 6 applied** campaign checks.
+
+The useful-material proof pays for two ordinary charcoal fires and drives their
+real terrain heat pulses, works the new ore scenes, and collects their emitted
+pickups. Actual copper/tin from the event is consumed by the existing bronze
+recipe. The fixture supplies the basic forge, charcoal and ordinary iron/wood
+inputs; normal mine-order smelting, fittings and fulfilment earn the existing
+Blacksmithing requirement. This establishes material usefulness, not a second
+complete gathering-to-forge acquisition journey. Ore work and fire time are
+accelerated; no event ore is injected into inventory.
+
+The final isolated protection fixture also pays for an open door and spanning
+beam beside its support/storage. Their physical poses, all stored materials,
+machine span/cargo, excavated columns and recovery bundle survive publication.
+With the final combat-deferral regression it passes **96 checks**, including
+ordinary bank traversal and an independent ray against the raised collision
+surface. A newly named checkpoint must exist after combat deferral and retain
+the complete native ownership; the old early-return ordering fails that test.
+Fresh pending and applied terrain restarts pass **22 / 8 checks**.
+
+The final native sweep passes **373 checks across all 37 seeds**. It now checks
+cardinal and diagonal terrain steps, exactly four added ore lots, exactly one
+existing finite Blue host and its spaced workplace, in addition to the isolated
+protection/replay tests. Published geography/ownership passes **17,311** Wave-3
+checks; main rules **224,380**, Wave 1 **213,482**, and Wave 2 **601**, all zero
+failures. These use the final compiled simulation objects. Logs are
+`build/lf4/test_*-final.log`; native sources are available through
+`make -C tests/sim` and its `build/resonance_tests` / `build/laboratory_tests`
+targets. Engine checks use `tools/living_frontier_wave4_checks.ps1 -Full` or
+the focused `-Terrain -Campaign -Legacy` switches, with isolated APPDATA.
+
+Final engine coverage: **119 ordered canonical invocations plus all four
+Foundry identity scenes, zero failures** (`build/lf4/full-c.log`). This includes
+the complete seed-5/77 physical/paid-save regressions at **59 / 61 checks**, the
+legacy Forge walk at **122 checks / 814.9 m**, and the first laboratory/campaign
+at **172 checks / 824.5 m**. The transaction-order correction landed during the
+tail of that run: its campaign journey/restarts use the corrected publisher,
+and the affected isolated terrain/restart cases were then rerun against the
+final code at **96 / 22 / 8 checks** (`build/lf4/terrain-final.log`). All pass.
+Documentation validation finds **240 local targets, none missing**; scoped
+whitespace checks pass. Expected malformed/mismatched-save refusal warnings
+remain, without engine errors. LF-4C's implementation gate is clear.
+
+### Review boundary and known limitations
+
+Stop after Wave 4 for orchestrator review. Pairing Hall, Central Laboratory,
+Excited Uplands, hybrids, the second transformation, the personal human finale
+and configurable Heat remain unavailable in this opt-in campaign. The retained
+bank and cabinets are primitive art; the inherited containment warden is not
+the corrupted human boss. Existing ordinary launches and saved policies remain.
+
+Terrain publication is synchronous: the measured first-return transaction took
+**21.5 seconds**, and fresh pending recovery **15.2 seconds** on the development
+machine. The final full-suite rerun measured **14.2 / 14.0 seconds** respectively;
+the observed range is approximately **14–21 seconds**. This visible pause needs
+human runtime acceptance and future performance work. The transaction is
+restart-safe, but these results do not establish a
+seamless presentation or lower-spec performance.
+
+The laboratory fixture uses real controller walking and first-person E targets,
+but explicitly forces encounter outcomes to isolate traversal and ownership.
+Human fight balance, discovery, navigation comfort, narrative readability and
+final environment/specimen art remain review questions. Seed coverage is finite;
+arbitrary paid walls may deliberately seal their own routes. The transformation
+preserves ordinary terrain steps and occupied ground, without opening player
+enclosures or introducing a general world editor.

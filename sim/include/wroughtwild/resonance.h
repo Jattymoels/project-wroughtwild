@@ -18,6 +18,8 @@ struct State {
     std::vector<Column> columns;
     std::vector<worldgen::SurfacePoint> ore;
     int oreUnits = 0;
+    bool hasHost = false, campaignAward = false;
+    worldgen::SurfacePoint host;
     std::string toJson() const;
     static State fromJson(const json::Value& value);
 };

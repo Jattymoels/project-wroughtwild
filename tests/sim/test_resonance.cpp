@@ -15,11 +15,16 @@ int main(int argc,char** argv) {
         try {s=resonance::prepare(base,cfg,{});}catch(const std::exception& e){check(false,std::to_string(seed)+": "+e.what());continue;}
         check(s.columns.size()>=32 && s.ore.size()==4,"meaningful finite opportunity");
         auto round=resonance::State::fromJson(*json::parse(s.toJson()));check(round.toJson()==s.toJson(),"exact event replay record");
+        round.campaignAward=true;
         auto changed=base;resonance::apply(changed,round);
         check(changed.blocks!=base.blocks,"actual voxel transformation");
+        check(changed.nodes.size()==base.nodes.size()+4 && changed.frontierHosts.size()==base.frontierHosts.size()+1 && changed.packs.size()==base.packs.size()+1 && changed.frontierHosts.back().id=="lf4_retained_fen_blue" && changed.packs.back().frontierHostId=="lf4_retained_fen_blue" && changed.packs.back().enemies==std::vector<std::string>{"lf_blue_boar"},"campaign adds exactly four ore lots and one existing finite Blue host");
+        bool clearHost=s.hasHost;
+        for(const auto& p:s.ore)clearHost &= std::hypot(s.host.x-p.x,s.host.z-p.z)*base.cellSize>=cfg.oreSpacing;
+        check(clearHost,"new habitat has a distinct spaced workplace");
         bool oldEdges=true,oldNodes=true,oldCaves=true;
         for(int z=1;z<base.height-1;++z)for(int x=1;x<base.width-1;++x) {
-            for(const auto& d:std::vector<std::pair<int,int>>{{1,0},{0,1}}) {
+            for(const auto& d:std::vector<std::pair<int,int>>{{1,0},{0,1},{1,1},{-1,1}}) {
                 const int before=std::abs(base.at(x,z).height-base.at(x+d.first,z+d.second).height);
                 const int after=std::abs(changed.at(x,z).height-changed.at(x+d.first,z+d.second).height);
                 oldEdges &= after<=std::max(1,before);

@@ -2,19 +2,28 @@
 
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
-## Living Frontier isolated terrain — LF-4A
+## Living Frontier first changing era — LF-4A through LF-4C
 
 LF-4B also passes its physical Annex door, containment apparatus/evidence,
 eight-stage/two-floor walk, suspended-floor ownership and exact site return.
-Its successor progression is still closed until LF-4C's checked settlement.
+LF-4C enables the first safe-return settlement under its separate saved policy.
 
 - [x] A separate saved campaign transforms real Retained Fen voxels/collision
   while preserving paid supports/storage, machine spans, excavation and recovery.
 - [x] Pending and applied checkpoints survive separate engine processes; a
-  failed save and fully occupied envelope retain pending ownership.
+  failed save and fully occupied envelope retain pending ownership. Nearby
+  combat persists the pending checkpoint while deferring the physical event.
 - [x] An ordinary controller crosses the bank and its margins; native 37-seed
   checks preserve old ordinary terrain edges, resources and subsurface blocks.
 - [x] Existing seeds 5/77 paid saves and native serialization keep legacy policy.
+- [x] First victory queues resonance while still in era one; normal safe return
+  publishes protected collision and era two in one validated checkpoint.
+- [x] Four finite copper/tin lots supply ordinary heated harvesting and paid
+  bronze manufacture; one existing Blue host adds a finite habitat opportunity.
+- [x] Fresh-process pending/applied recovery, repeated callbacks/victories,
+  spent Heart, depleted ore and dead host do not duplicate rewards or terrain.
+- [x] The first Heart supports once-only remembrance; legacy curio gates and
+  rewards remain unchanged. Later successor stories/maps stay closed.
 - [ ] Human accepts the bank's discovery/readability and runtime cost.
 
 [Wave 4 evidence and limitations](living-frontier-wave4-2026-09-09.md).

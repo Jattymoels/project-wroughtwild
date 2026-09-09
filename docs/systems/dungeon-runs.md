@@ -7,8 +7,12 @@ rewards; the first two stages introduce separate existing Red/Blue specimens.
 Solid apparatus and inspectable human-intervention/failsafe records complete
 the bounded laboratory treatment. Later story/map entry is closed under this
 policy; legacy worlds retain the published Forge catalogue and curio gates.
-Laboratory suspension carries an explicit policy/revision. Progression remains
-closed until LF-4C. [Contract and checks](../prototype/living-frontier-wave4-2026-09-09.md).
+Laboratory suspension carries an explicit policy/revision. LF-4C now queues
+one resonance event and awards one Heart on the first victory. Publication runs
+after the normal safe return, retaining the loaded world path; pending restart
+resumes that boundary. Repeat clears keep ordinary run loot without repeating
+the trophy or terrain event. Death and bank-out retain their original settlement
+rules and cannot queue the event. [Contract and checks](../prototype/living-frontier-wave4-2026-09-09.md).
 
 **D-029 replenishment addition, 6 September 2026:** each existing repeatable
 material target previews one rare contraption component in the gate offer. Its

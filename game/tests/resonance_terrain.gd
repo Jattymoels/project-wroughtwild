@@ -62,10 +62,13 @@ func _run_terrain() -> void:
 		check(place(&"block",cell),"paid footing in a candidate transformation column")
 		check(place(&"block",cell+Vector3i.UP),"paid support above the footing")
 		check(place(&"chest",cell+Vector3i(2,0,0)),"paid storage beside the support")
+		check(place(&"door",cell+Vector3i(0,0,3),"face",2),"paid door beside the retained workspace")
+		check(place(&"beam",cell+Vector3i(0,2,0),"edge",0),"paid spanning support above the footing")
 		var blocks: Array=[];var nodes: Array=[];var sites: Array=[]
 		SaveManager._walk(self,blocks,nodes,sites)
 		for block: PlacedBlock in blocks:
 			if block.is_chest(): check(_sim().store_deposit(block.store_key(),"wood",4)==4,"stored gathered materials owned by chest")
+			if block.is_door(): block.set_door_open(true)
 		check(not terrain.break_block(c[0]-3,c[2]-1,c[1]).is_empty(),"excavated adjacent real surface")
 		_sim().add_material("cargo_winch_kit",1)
 		_sim().add_material("winch_landing_kit",1)
@@ -82,6 +85,18 @@ func _run_terrain() -> void:
 	var before:=manager.capture(player)
 	var heights: PackedInt32Array=terrain.map.heights.duplicate()
 	var protected_bounds:=ResonanceEvent.protection(player,before)
+	var threat:=Enemy.spawn(self,&"ember_whelp",player.global_position+Vector3(2,0,0))
+	threat.set_physics_process(false)
+	threat.state="chase"
+	var fight_path: String="user://lf4a-fight-%d.json"%Time.get_ticks_usec()
+	var deferred:=ResonanceEvent.publish(player,fight_path)
+	check(not deferred.ok && ResonanceEvent.phase(_sim())=="pending" && heights==terrain.map.heights,"nearby combat defers physical publication")
+	var fight_saved:=FileAccess.file_exists(fight_path)
+	check(fight_saved,"combat deferral still installs a pending checkpoint")
+	if fight_saved:
+		var fight_record: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(fight_path))
+		check(JSON.parse_string(fight_record.sim)==JSON.parse_string(before.sim),"combat-deferred checkpoint retains complete pending ownership")
+	threat.free()
 	var failed:=ResonanceEvent.publish(player,"user://absent-lf4a-directory/save.json")
 	check(not failed.ok && ResonanceEvent.phase(_sim())=="pending" && heights==terrain.map.heights,"failed checkpoint leaves pending and physical world unchanged")
 	var result:=ResonanceEvent.publish(player,APPLIED_SAVE)

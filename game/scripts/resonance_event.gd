@@ -14,7 +14,7 @@ static func protection(player: WroughtwildPlayer, snapshot: Dictionary) -> Array
 	SaveManager._walk(player.world_root(),blocks,nodes,stations)
 	for block: PlacedBlock in blocks:
 		# Full oriented footprint, including a door's swept leaf and arch spans.
-		var radius: float=maxf(block.size.x,block.size.z)*0.71
+		var radius: float=maxf(block.size.x,block.size.z)*(1.0 if block.is_door() else sqrt(0.5))
 		var p:=block.global_position
 		result.append([p.x-radius,p.z-radius,p.x+radius,p.z+radius])
 	for station: StationSite in stations:
@@ -42,16 +42,20 @@ static func protection(player: WroughtwildPlayer, snapshot: Dictionary) -> Array
 	return result
 
 static func publish(player: WroughtwildPlayer, path: String) -> Dictionary:
+	var started:=Time.get_ticks_msec()
 	var sim:=player.inventory.get_sim()
 	if phase(sim)!="pending": return {"ok":false,"reason":"No pending resonance."}
 	if player.trial!=null and player.trial.active(): return {"ok":false,"reason":"Return safely from the Trial before resonance."}
+	# Checkpoint the first-clear ownership even when a nearby fight defers the
+	# physical event. Restart must retain that pending receipt and reward.
+	var manager:=SaveManager.new()
+	var pending:=manager.capture(player)
+	if not manager.write_data(path,pending): return {"ok":false,"reason":manager.last_error}
+	player.set_meta("active_world_save_path",path)
 	var rules: Dictionary=JSON.parse_string(FileAccess.get_file_as_string(load("res://scripts/sim.gd").get_tuning_directory().path_join("resonance.json")))
 	for enemy in player.get_tree().get_nodes_in_group("enemies"):
 		if enemy is Enemy and enemy.state not in ["idle","patrol","flee","dead"] and enemy.global_position.distance_to(player.global_position)<float(rules.safe_return_radius_m):
 			return {"ok":false,"reason":"Resonance is pending. Finish the nearby fight, then retry at the Annex."}
-	var manager:=SaveManager.new()
-	var pending:=manager.capture(player)
-	if not manager.write_data(path,pending): return {"ok":false,"reason":manager.last_error}
 	var candidate:=WroughtwildSim.new()
 	if not candidate.load_tuning(load("res://scripts/sim.gd").get_tuning_directory()) or not candidate.import_json(pending.sim):
 		return {"ok":false,"reason":"Resonance preparation could not restore its rules."}
@@ -68,4 +72,4 @@ static func publish(player: WroughtwildPlayer, path: String) -> Dictionary:
 	if not manager.write_data(path,committed): return {"ok":false,"reason":manager.last_error}
 	if not manager._apply_prepared(player,committed,prepared):
 		return {"ok":false,"reason":"Resonance is saved; reload to finish publication. "+manager.last_error}
-	return {"ok":true,"reason":"Retained Fen has risen. Its bank exposes copper and tin."}
+	return {"ok":true,"reason":"Retained Fen has risen in the Lantern Fen collectors. Its bank exposes copper and tin for charcoal-heated bronze work; a Blue-scar host has followed the retained ground.","publication_ms":Time.get_ticks_msec()-started}

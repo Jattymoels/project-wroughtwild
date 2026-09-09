@@ -18,6 +18,11 @@ static func default_path() -> String:
 
 const RESOURCE_NODE_SCENE := preload("res://scenes/resource_node.tscn")
 
+static func path_for(player: WroughtwildPlayer) -> String:
+	if player.inventory.get_sim().campaign_policy()=="living_frontier_wave4":
+		return String(player.get_meta("active_world_save_path","user://living_frontier_wave4.json"))
+	return default_path()
+
 var last_error := ""
 var recovered_previous := false
 
@@ -440,6 +445,7 @@ func write(path: String, player: WroughtwildPlayer) -> bool:
 		var current: Variant = _read_payload(path)
 		preserve_previous = not current is Dictionary or _prepare_restore(player, current, false).is_empty()
 	var written := _write_staged(path, data, preserve_previous)
+	if written and player.inventory.get_sim().campaign_policy()=="living_frontier_wave4": player.set_meta("active_world_save_path",path)
 	if written and recovery_path == ProjectSettings.globalize_path(path):
 		player.remove_meta("recovered_save_path")
 	return written
@@ -606,6 +612,7 @@ func read(path: String, player: WroughtwildPlayer) -> bool:
 		var prepared := _prepare_restore(player, parsed)
 		if not prepared.is_empty():
 			var loaded := _apply_prepared(player, parsed, prepared)
+			if loaded: player.set_meta("active_world_save_path",path)
 			if loaded and player.has_meta("recovered_save_path"): player.remove_meta("recovered_save_path")
 			return loaded
 	else:
@@ -621,6 +628,7 @@ func read(path: String, player: WroughtwildPlayer) -> bool:
 			if not prepared.is_empty():
 				last_error = ""
 				var loaded := _apply_prepared(player, previous, prepared)
+				if loaded: player.set_meta("active_world_save_path",path)
 				recovered_previous = loaded
 				if loaded: player.set_meta("recovered_save_path", ProjectSettings.globalize_path(path))
 				return loaded

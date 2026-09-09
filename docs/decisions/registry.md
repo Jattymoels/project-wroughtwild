@@ -11,6 +11,14 @@ restart proof precede laboratory progression. Later campaign work stays opt-in;
 older worlds retain their acquisition and curio policies. Hybrids, the second
 transition, human finale and configured Heat remain outside Wave 4.
 
+The recorded LF-4C selection scopes D-019/D-028 to saved
+`living_frontier_wave4` campaigns: first Annex victory queues one event/Heart;
+protected safe-return publication awards `stonecut_blocks` with real terrain,
+four finite ore lots and one existing Blue host. Hill-cairn use is once-only
+remembrance without another unlock. Older policies keep both curio gates and
+ordinary rewards; later successor stories/maps remain closed. Geometry and era
+publish in one validated checkpoint. [Selections and receipts](../prototype/living-frontier-wave4-2026-09-09.md#lf-4c-selections-before-implementation).
+
 Owner implementation authorization, 9 September 2026: implement **Living
 Frontier Wave 3 only**, in LF-3A → LF-3B → LF-3C order, after the accepted
 [Wave 2 review](../prototype/living-frontier-wave2-review-2026-09-09.md).

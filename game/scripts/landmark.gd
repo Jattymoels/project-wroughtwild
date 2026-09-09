@@ -105,6 +105,7 @@ func interact_label(sim: WroughtwildSim) -> String:
 	if wants.is_empty():
 		return "%s — it wants nothing yet" % title
 	if bool(wants.get("held", false)):
+		if bool(wants.get("remembrance",false)): return InputPrompts.formatted("%s — {interact} leave a remembrance",title)
 		return InputPrompts.formatted("%s — {interact} set %s", [title, wants.get("display_name", "the curio")])
 	return "%s — it waits for %s" % [title, wants.get("display_name", "something")]
 
@@ -117,6 +118,9 @@ func interact(player: WroughtwildPlayer) -> void:
 		player.hud.notify("%s. It wants nothing yet." % display_name.capitalize())
 		return
 	if sim.set_curio(landmark_id):
+		if bool(wants.get("remembrance",false)):
+			player.hud.notify("You leave the Heart in remembrance. Its story stays with the cairn.")
+			return
 		PulseRing.burst(get_parent(), global_position + Vector3(0, 0.6, 0), 14.0, Color(1.0, 0.8, 0.35, 0.5), 1.6)
 		player.hud.notify("You set %s in %s. The ground answers." % [wants.get("display_name", "the curio"), display_name])
 	else:

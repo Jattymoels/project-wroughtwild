@@ -401,8 +401,22 @@ physical support restores excavated sources at their existing anchors; keep
 their workspaces clear. Source payload 4 and machine schema 5 migrate published
 experimental ledgers without resetting them. The existing campaign is unchanged.
 That historical Wave-2 stop is superseded by the owner's Wave-3 and Wave-4 work
-items. `--living-frontier-wave4` selects an isolated successor campaign with its
+items. `--living-frontier-wave4` selects an opt-in successor campaign with its
 own `user://living_frontier_wave4.json`; it retains LF3 geography. A saved policy,
-not the launch flag, controls loading. LF-4A proves protected real terrain and
-restart before laboratory progression is enabled. See the
+not the launch flag, controls loading. Follow the corrected collection trail to
+the existing Collection Annex door and use E to enter its two-floor Trial.
+Containment apparatus and three records introduce separate altered specimens,
+the human operator and a damaged failsafe. The first warden victory queues
+resonance; safe return raises a protected Retained Fen bank into era two.
+Four finite copper/tin veins use ordinary charcoal heat and bronze recipes;
+one finite Blue host occupies the changed habitat. The first Heart is awarded
+once and can be left at the hill cairn as remembrance without another unlock.
+Repeated clears retain their ordinary Trial haul. Older worlds keep both curio
+gates and all original rewards. Later stories/maps remain closed in Wave 4.
+
+Pending publication resumes when its save loads, and a blocked return offers
+a retry at the Annex. The loaded world path is retained for publication.
+Publication currently pauses for about 14–21 seconds on the development machine;
+the transaction preserves pending/applied recovery across interruption.
+Work stops here for orchestrator review. See the
 [Wave 4 contract and evidence](../docs/prototype/living-frontier-wave4-2026-09-09.md).

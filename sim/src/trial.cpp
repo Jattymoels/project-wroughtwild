@@ -538,8 +538,19 @@ void TrialSession::finish(bool died) {
     // record the unlock. A floor without a curio unlocks outright.
     if (bossDefeated_) {
         const std::string curio = floor_ ? floor_->completionCurio : tuning_.trial.completionCurio;
-        if (!curio.empty()) economy_.grant(curio, 1);
-        else if (!completionUnlock().empty()) economy_.recordWorldEffect(completionUnlock());
+        if(economy_.campaignPolicy==resonance::campaign && floor_ && floor_->id=="forge_tyrant") {
+            if(!economy_.worldEffectActive("lf4_annex_victory")) {
+                economy_.recordWorldEffect("lf4_annex_victory");
+                if(!curio.empty() && !economy_.curioHeld(curio))economy_.grant(curio,1);
+                if(economy_.resonanceState.phase=="dormant") {
+                    economy_.resonanceState.phase="pending";
+                    economy_.resonanceState.seed=economy_.worldSeed;
+                }
+            }
+        } else {
+            if (!curio.empty()) economy_.grant(curio, 1);
+            else if (!completionUnlock().empty()) economy_.recordWorldEffect(completionUnlock());
+        }
     }
 
     // Temporary trial effects never outlive the run (design pillar).

@@ -28,13 +28,22 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
+[Living Frontier Wave 4](docs/prototype/living-frontier-wave4-2026-09-09.md)
+repairs the physical laboratory approaches, opens the Collection Annex Trial
+and makes its first safe return raise protected ground in Retained Fen, reaching
+era two with finite copper/tin and a Blue host. Launch this incomplete campaign
+with `godot --path game -- --living-frontier-wave4`; its separate saved policy
+keeps older worlds' campaigns intact. Terrain publication currently pauses for
+about 14–21 seconds on the development machine. Work stops after Wave 4 for
+orchestrator review; later laboratories and campaign transitions remain closed.
+
 [Living Frontier Waves 1–2](docs/prototype/living-frontier-wave2-2026-09-08.md)
 add opt-in manual Red/White/Blue/Green extraction, affordable signal delay and
 branching, paid Red heat storage, five ordinary offensive Catalyst recipes and
 a paid brick-making/hauling workshop. Existing experimental worlds continue
 without resets; ordinary launches retain their acquisition and campaign.
 The work item records tests, exact costs and a reproducible player walkthrough.
-Wave 3 requires a separate orchestrator review.
+The Wave-3 review and its repaired route issue are recorded in the Wave-4 handoff.
 
 [INT-08B portable Windows build](docs/prototype/portable-build-2026-09-08.md)
 adds an isolated export helper and tracked preset, executable-relative tuning,

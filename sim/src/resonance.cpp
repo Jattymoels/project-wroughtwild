@@ -32,7 +32,9 @@ std::string State::toJson() const {
     for (size_t i=0;i<columns.size();++i) { const auto& c=columns[i]; if(i)s<<','; s<<'['<<c.x<<','<<c.z<<','<<c.before<<','<<c.after<<']'; }
     s<<"],\"ore_units\":"<<oreUnits<<",\"ore\":[";
     for(size_t i=0;i<ore.size();++i) { const auto& p=ore[i]; if(i)s<<','; s<<'['<<p.x<<','<<p.y<<','<<p.z<<']'; }
-    s<<"]}"; return s.str();
+    s<<"],\"campaign_award\":"<<(campaignAward?"true":"false");
+    if(hasHost)s<<",\"host\":["<<host.x<<','<<host.y<<','<<host.z<<']';
+    s<<'}'; return s.str();
 }
 State State::fromJson(const json::Value& v) {
     if(integer(v.get("version"),1,1)!=1 || v.get("event").asString()!="retained_fen") throw std::runtime_error("Unsupported resonance event");
@@ -44,12 +46,18 @@ State State::fromJson(const json::Value& v) {
         s.columns.push_back({integer(*p[0],0,4095),integer(*p[1],0,4095),integer(*p[2],1,1023),integer(*p[3],1,1023)});
     }
     s.oreUnits=integer(v.get("ore_units"),0,100);
+    if(auto award=v.find("campaign_award"))s.campaignAward=award->asBool();
+    if(auto host=v.find("host")) {
+        const auto& p=host->asArray();if(p.size()!=3)throw std::runtime_error("Invalid resonance host");
+        s.host={integer(*p[0],0,4095),integer(*p[1],1,1023),integer(*p[2],0,4095)};s.hasHost=true;
+    }
     for(const auto& a:v.get("ore").asArray()) {
         const auto& p=a->asArray(); if(p.size()!=3) throw std::runtime_error("Invalid resonance opportunity");
         s.ore.push_back({integer(*p[0],0,4095),integer(*p[1],1,1023),integer(*p[2],0,4095)});
     }
     if(s.phase=="applied" ? (s.columns.empty() || s.ore.size()!=4 || s.oreUnits<1) : (!s.columns.empty() || !s.ore.empty() || s.oreUnits!=0))
         throw std::runtime_error("Resonance phase and terrain disagree");
+    if((s.phase!="applied" && (s.hasHost || s.campaignAward)) || (s.campaignAward && !s.hasHost)) throw std::runtime_error("Resonance campaign and habitat disagree");
     return s;
 }
 State prepare(const worldgen::WorldMap& base,const Config& cfg,const std::vector<Bounds>& ownership) {
@@ -110,9 +118,10 @@ State prepare(const worldgen::WorldMap& base,const Config& cfg,const std::vector
         for(const auto& p:s.ore) if(std::hypot(c.x-p.x,c.z-p.z)*base.cellSize<cfg.oreSpacing)clear=false;
         for(int dz=-1;dz<=1;++dz)for(int dx=-1;dx<=1;++dx)if(rise[(c.z+dz)*base.width+c.x+dx]==0)clear=false;
         if(clear) s.ore.push_back({c.x,c.after,c.z});
-        if(static_cast<int>(s.ore.size())==cfg.oreCount)break;
+        if(static_cast<int>(s.ore.size())==cfg.oreCount+1)break;
     }
-    if(static_cast<int>(s.ore.size())!=cfg.oreCount)throw std::runtime_error("Resonance pending: protected ground leaves insufficient ore workplaces. Retry after clearing a patch.");
+    if(static_cast<int>(s.ore.size())!=cfg.oreCount+1)throw std::runtime_error("Resonance pending: protected ground leaves insufficient material and habitat workplaces. Retry after clearing a patch.");
+    s.host=s.ore.back();s.ore.pop_back();s.hasHost=true;
     validate(base,s);return s;
 }
 void validate(const worldgen::WorldMap& base,const State& s) {
@@ -125,7 +134,8 @@ void validate(const worldgen::WorldMap& base,const State& s) {
             throw std::runtime_error("Saved resonance does not match the published terrain");
     }
     std::set<std::pair<int,int>> ore;
-    for(const auto& p:s.ore) {
+    auto workplaces=s.ore;if(s.hasHost)workplaces.push_back(s.host);
+    for(const auto& p:workplaces) {
         auto it=std::find_if(s.columns.begin(),s.columns.end(),[&](const Column& c){return c.x==p.x && c.z==p.z && c.after==p.y;});
         if(it==s.columns.end() || !ore.emplace(p.x,p.z).second)throw std::runtime_error("Invalid saved resonance ore workplace");
     }
@@ -140,6 +150,15 @@ void apply(worldgen::WorldMap& map,const State& s) {
     for(size_t i=0;i<s.ore.size();++i) {
         const auto& p=s.ore[i];worldgen::PlacedNode node(i%2==0?"copper_vein":"tin_vein",p.x,p.y,p.z);
         node.resourceId="lf4_fen_ore_"+std::to_string(i);node.habitatId="retained_fen";node.unitsOverride=s.oreUnits;map.nodes.push_back(node);
+    }
+    if(s.campaignAward && s.hasHost) {
+        worldgen::PlacedFrontierHost host;
+        host.id="lf4_retained_fen_blue";host.sourceId="blue_home_margin";host.enemyId="lf_blue_boar";host.influence="blue";
+        host.at=s.host;host.habits={s.host};map.frontierHosts.push_back(host);
+        worldgen::MobPack pack;pack.frontierHostId=host.id;pack.enemies={host.enemyId};
+        pack.x=host.at.x;pack.y=host.at.y;pack.z=host.at.z;
+        for(const auto& old:map.packs)if(!old.frontierHostId.empty() && old.enemies==pack.enemies)pack.biome=old.biome;
+        map.packs.push_back(pack);
     }
 }
 }

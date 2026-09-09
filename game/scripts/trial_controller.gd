@@ -468,6 +468,7 @@ func finish_run() -> void:
 			player.hud.notify("Challenge cleared. The gate offers the next tier.")
 	spatial=false
 	layout={}
+	if player.world_root().has_method("settle_resonance"): player.world_root().call_deferred("settle_resonance")
 
 
 func _show_spatial_route() -> void:

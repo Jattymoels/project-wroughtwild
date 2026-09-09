@@ -40,6 +40,7 @@ public:
     Inventory inventory;
     // Host selects this from the outer saved-world identity, never item data.
     std::string worldProfile;
+    uint64_t worldSeed = 0; // selected outer-world identity; never the Trial's combat seed
     std::string campaignPolicy = "legacy";
     resonance::State resonanceState;
     std::map<std::string, int> currency;

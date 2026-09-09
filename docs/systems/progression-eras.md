@@ -1,5 +1,21 @@
 # Progression: Eras, the Foundry, and Ores as Properties
 
+**LF-4C scoped campaign (9 September 2026, D-019/D-028/D-033):** a saved
+`living_frontier_wave4` policy uses the first Collection Annex victory to queue
+resonance and award one Tyrant Heart. Only a complete protected Retained Fen
+publication records `stonecut_blocks`, reaching era two with the existing
+Foundry/material capabilities. Its applied event and milestone must agree on
+load. Four new finite copper/tin identities and one finite Blue host make the
+changed ground useful. Normal charcoal harvesting, recipes, skills and per-run
+loot/Catalyst rules still apply.
+
+For this policy only, the hill cairn consumes the first Heart once as remembrance,
+with no additional era or reward. Drowned-altar use and later stories/maps remain
+closed. Death and early bank-out do not queue resonance; repeated victories,
+callbacks and reloads cannot duplicate the first-clear payout or transformation.
+Legacy policies retain both original curio gates and their rewards unchanged.
+[Contract, compatibility and evidence](../prototype/living-frontier-wave4-2026-09-09.md).
+
 Owner-approved Northstar, 6 September 2026 (D-030): [extreme augmentation](../world-premise.md)
 connects surviving building materials, technology recovered through existing
 enemy Kinds/catalysts, increasingly capable forging, and eventual extraction

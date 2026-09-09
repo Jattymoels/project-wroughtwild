@@ -4,8 +4,13 @@
 retains LF3 geography and old worlds' policies. A saved, sparse Retained Fen
 event changes real voxels/collision only after a protected candidate checkpoint
 is installed. Paid space, excavation, resources and recovery access are retained;
-pending/applied restart is explicit. Laboratory progression remains closed in
-this isolated slice. [Contract and evidence](../prototype/living-frontier-wave4-2026-09-09.md).
+pending/applied restart is explicit. After that isolated proof, LF-4C enables the
+first Annex victory to queue this event. Safe return publishes its saved columns,
+four finite copper/tin veins and one finite Blue host together with era two.
+Published sites, original resource IDs, sources and ownership remain unchanged;
+the other declared transformation region remains inactive. The initial bank
+uses existing ordinary step limits, protects above-ground ownership and leaves
+subsurface voids intact. [Contract and evidence](../prototype/living-frontier-wave4-2026-09-09.md).
 
 **LF3-R1 (9 September 2026):** site selection remains frozen, but derived LF
 approaches and the collection trail are corrected after every shell is final.

@@ -457,7 +457,7 @@ func _decline_saved_trial() -> void:
 	offer_class()
 
 func save_game(path: String = "") -> bool:
-	if path.is_empty(): path = SaveManager.default_path()
+	if path.is_empty(): path = SaveManager.path_for(self)
 	if trial.active():
 		if trial.spatial and trial.state=="boundary": return trial.suspend_to(path)
 		hud.notify("Reach a cleared floor's descent lift to suspend this run.")
@@ -469,7 +469,7 @@ func save_game(path: String = "") -> bool:
 
 
 func load_game(path: String = "") -> bool:
-	if path.is_empty(): path = SaveManager.default_path()
+	if path.is_empty(): path = SaveManager.path_for(self)
 	if trial.active():
 		hud.notify("You cannot load inside the trial.")
 		return false
@@ -483,6 +483,7 @@ func load_game(path: String = "") -> bool:
 		# A save that carries a class needs no choosing.
 		if class_panel.is_open() and not bool(inventory.get_sim().foundry().get("can_choose_class", false)):
 			class_panel.close_panel()
+		if world_root().has_method("settle_resonance"): world_root().call_deferred("settle_resonance")
 	hud.notify(("Recovered previous save." if manager.recovered_previous else "Loaded.") if ok else "Load failed: %s" % manager.last_error)
 	return ok
 

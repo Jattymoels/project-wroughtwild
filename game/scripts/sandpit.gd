@@ -76,6 +76,15 @@ func start_chosen_world(seed_value: int) -> bool:
 func saved_world_started() -> void:
 	SEED_CONTROLS.show_identity(player,world_seed,world_profile)
 	_tick_day(0)
+	settle_resonance.call_deferred()
+
+func settle_resonance() -> void:
+	var event:=preload("res://scripts/resonance_event.gd")
+	if event.phase(_sim())!="pending" or not _sim().world_effect_active("lf4_annex_victory") or player.trial.active(): return
+	var result: Dictionary=event.publish(player,SaveManager.path_for(player))
+	set_meta("last_resonance_publication_ms",int(result.get("publication_ms",0)))
+	player.hud.notify(String(result.reason))
+	player.hud.refresh()
 
 
 func _sim() -> WroughtwildSim:

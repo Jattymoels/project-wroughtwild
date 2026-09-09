@@ -701,9 +701,11 @@ const Inventory& PlayerEconomy::storeContents(const std::string& key) const {
 }
 
 bool PlayerEconomy::setCurio(const std::string& landmarkId) {
-    // This opt-in successor opens its bounded campaign in LF-4C. Historical
-    // curio gates remain available only to their own saved campaign policy.
-    if (campaignPolicy == resonance::campaign) return false;
+    if (campaignPolicy == resonance::campaign) {
+        if(landmarkId!="hill_cairn" || !worldEffectActive("lf4_annex_victory") || worldEffectActive("lf4_heart_remembrance") || !curioHeld("tyrant_heart"))return false;
+        remove(inventory,{{"tyrant_heart",1}});
+        recordWorldEffect("lf4_heart_remembrance");return true;
+    }
     const auto* curio = tuning_.trial.curioForLandmark(landmarkId);
     if (!curio || !curioHeld(curio->id)) return false;
     remove(inventory, {{curio->id, 1}});
@@ -712,6 +714,7 @@ bool PlayerEconomy::setCurio(const std::string& landmarkId) {
 }
 
 std::string PlayerEconomy::landmarkWants(const std::string& landmarkId) const {
+    if(campaignPolicy==resonance::campaign && (landmarkId!="hill_cairn" || worldEffectActive("lf4_heart_remembrance")))return {};
     const auto* curio = tuning_.trial.curioForLandmark(landmarkId);
     return curio ? curio->id : std::string();
 }
@@ -723,6 +726,10 @@ bool PlayerEconomy::curioHeld(const std::string& curioId) const {
 
 std::vector<std::string> PlayerEconomy::curioHints() const {
     std::vector<std::string> out;
+    if(campaignPolicy==resonance::campaign) {
+        if(curioHeld("tyrant_heart"))out.push_back("The Tyrant's Cinder Heart: a trophy of the Annex. The hill cairn can hold it in remembrance; the failsafe's safe return, not this offering, changes the era.");
+        return out;
+    }
     for (const auto& curio : tuning_.trial.curios)
         if (curioHeld(curio.id)) out.push_back(curio.displayName + ": " + curio.reading);
     return out;
