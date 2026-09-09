@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-02 handoff and Wave 2 review). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-02 visual approval and Wave 2 review). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -21,8 +21,10 @@ Ordinary game adoption remains separate. Sequence:
 **ART-01 boar/scar handoff → ART-02 affected grove → ART-03 small fauna set →
 ART-04 sources and workshop → ART-05 one actual world route.** ART-02 is now
 technically delivered: six environment roles, a 38.3 m supported walk, actual
-day/shade/dusk evidence and a packed local handoff. Grove visual review remains
-open. ART-03–05 remain proposed; no ordinary-world adoption has occurred.
+day/shade/dusk evidence and a packed local handoff. The owner subsequently
+visually approved the grove: “Awesome, approved, what's next”. ART-03 is next
+proposed, starting with the existing wolf before the stag; ART-04–05 remain
+proposed. No ordinary-world adoption has occurred.
 
 The [local TRELLIS wolf experiment](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
 completed generation and 32 Blender handoff checks after the earlier Meshy review.

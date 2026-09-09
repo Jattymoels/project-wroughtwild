@@ -1,9 +1,14 @@
 # ART-02 — one affected grove
 
-**Status: technically delivered; grove visual review pending.** On 9 September the owner visually approved
+**Status: technically delivered and visually approved.** On 9 September the owner visually approved
 the ART-01 boar: “I love it, it's almost too high quality !!!” and requested
 continuation without changing the process. This selects the next bounded slice
 in the [asset roadmap](leyline-asset-roadmap-2026-09-09.md).
+
+Following the delivered grove review, the owner confirmed “Awesome, approved,
+what's next” on 9 September 2026. This accepts the isolated grove's visual
+direction; the integration and refinement limits below remain. ART-03 is the
+next proposed slice, with the wolf first; it has not been started here.
 
 Build one approximately 40 m walk through ordinary woodland into a scarred
 grove, using six environment roles: quiet tree, related altered tree, exposed
@@ -132,8 +137,7 @@ damaged half-width and up to 12 mm incision; rock uses 8/35/10 mm. Shared ambien
 light uses a 4-second period, 2.8 peak and 22% minimum. Geometry and deliberate
 placements remain authoring data, with no game tuning introduced.
 
-The stronger tree/rock sources and shared scars are a useful advance, but this
-is **not final owner approval of the environment**. Repeated tree silhouettes,
+The owner has visually approved this isolated grove. Repeated tree silhouettes,
 geometric understory, close scar-mask stepping and simplified water remain
 visible. Root sections have an open back fitted into this bank; they are not
 freestanding universally placeable props. Some tree roots are deliberately
@@ -156,5 +160,6 @@ Implementation and verification: **Codex (OpenAI)**. Only ART-02 tools, images,
 evidence and documents, plus the factual ART-01 visual-approval update, are
 included. Concurrent Living Frontier work, normal game assets, saves, finite
 resources, progression and running test/playtest processes remain outside this
-change. Local commit and ordinary push are reported separately at publication.
-ART-03 is next proposed after this grove review; it has not been started here.
+change. Local implementation commit: `6aa5a61f7e0770b54069b836d79d2e106174f5de`.
+Its ordinary push to the confirmed `origin/main` succeeded. The subsequent
+visual-approval record changes documentation only.

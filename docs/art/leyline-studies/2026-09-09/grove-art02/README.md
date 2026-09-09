@@ -1,10 +1,12 @@
 # Emberroot Grove — actual ART-02 evidence
 
-9 September 2026. **Technical handoff; grove visual review pending.**
+9 September 2026. **Technical handoff complete; grove visually approved.**
 [Result, checks and limits](../../../../prototype/affected-grove-2026-09-09.md).
 These pictures and walks are actual Godot output from the composed isolated
 setting. The three labelled source inputs below are generated images, not
 engine captures. No ordinary game asset or saved world was replaced.
+The owner's subsequent “Awesome, approved, what's next” accepts this isolated
+grove's visual direction. ART-03 is next proposed, beginning with the wolf.
 
 ![Actual Godot clearing, daylight](clearing-day.png)
 
@@ -63,5 +65,6 @@ The clean package is verified through a separate fresh import copy.
 
 Repeated tree forms, geometric understory, close mask stepping, simple water,
 high geometry/texture cost and the absence of ordinary-world integration remain
-limitations. These checks establish a usable review setting, not final art
-acceptance, watertight generated topology or new world-generation behaviour.
+limitations after visual approval. Technical checks establish the review
+setting's operation; they do not certify watertight generated topology or
+ordinary-world integration.
