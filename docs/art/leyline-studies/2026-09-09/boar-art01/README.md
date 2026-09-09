@@ -1,6 +1,7 @@
 # ART-01 — the boar carrying living scars
 
-Technical handoff, 9 September 2026. **Owner visual review is pending.**
+Technical handoff, 9 September 2026. **Owner visually approved the result** and
+requested continuation with the same process into ART-02.
 The [work item](../../../../prototype/boar-living-scars-2026-09-09.md) records scope,
 failures, corrections and adoption limits. The
 [authoring recipe](../../../../../tools/wroughtwild-boar/README.md) rebuilds the
@@ -106,4 +107,5 @@ Visible generated coat layers/gaps and some overly regular scar edges remain.
 The far bake is unsuitable for close viewing. Hand topology/animation finishing,
 native material adaptation, real travel/terrain/body fit and ordinary game
 adoption are not claimed. The preserved boar and moving embedded scars establish
-the study handoff; owner approval of its final appearance is a separate judgement.
+the study handoff. The owner subsequently visually approved this result;
+that does not remove the integration limits above.

@@ -1,0 +1,17 @@
+{
+  "manifest_files": 105,
+  "all_hashes_match": true,
+  "fresh_import_and_traverse": {
+    "completed": true,
+    "end": [
+      0.255796074867249,
+      0.833000123500824,
+      18.8917388916016
+    ],
+    "grounded_steps": 953,
+    "maximum_support_error_m": 0.0351225137710571,
+    "method": "Actual CharacterBody3D move_and_slide toward route points at 60 physics ticks/s.",
+    "physics_steps": 956
+  },
+  "clean_package_has_no_cache_or_user_directory": true
+}

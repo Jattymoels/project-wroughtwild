@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 9 September 2026 (ART-01 handoff and Wave 2 review). Owner: Matty. Delivery: Codex.
+Updated: 9 September 2026 (ART-02 handoff and Wave 2 review). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -15,12 +15,14 @@ pulsing magic cracks and build assets that share the world's lore. The
 [asset roadmap](leyline-asset-roadmap-2026-09-09.md) is prepared. The subsequent
 "Alright let's do it" selected [ART-01](boar-living-scars-2026-09-09.md), now
 technically delivered as an isolated editable boar, living-scar material, rig,
-movement/detail comparisons and measured handoff. Owner visual approval and
-ordinary game adoption remain separate. Sequence:
+movement/detail comparisons and measured handoff. The owner subsequently
+visually approved the boar and selected [ART-02](affected-grove-2026-09-09.md).
+Ordinary game adoption remains separate. Sequence:
 **ART-01 boar/scar handoff → ART-02 affected grove → ART-03 small fauna set →
-ART-04 sources and workshop → ART-05 one actual world route.** ART-02 is next
-proposed after reviewing the boar. ART-02–05 were not started or automatically
-selected by this continuation.
+ART-04 sources and workshop → ART-05 one actual world route.** ART-02 is now
+technically delivered: six environment roles, a 38.3 m supported walk, actual
+day/shade/dusk evidence and a packed local handoff. Grove visual review remains
+open. ART-03–05 remain proposed; no ordinary-world adoption has occurred.
 
 The [local TRELLIS wolf experiment](../art/leyline-studies/2026-09-08/wolf-image3d/trellis-local/README.md)
 completed generation and 32 Blender handoff checks after the earlier Meshy review.

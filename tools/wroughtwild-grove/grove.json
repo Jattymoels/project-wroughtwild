@@ -1,0 +1,40 @@
+{
+  "seed": 20260909,
+  "tree_height_m": 8.0,
+  "tree_triangle_target": 85000,
+  "canopy_sprays": 780,
+  "leaf_length_m": [0.22, 0.32],
+  "leaf_width_fraction": 0.38,
+  "canopy_detail_distance_m": 18.0,
+  "canopy_detail_fade_m": 2.0,
+  "understory_attempts": 1050,
+  "terrain_size_m": [64, 88],
+  "terrain_step_m": 0.4,
+  "route_z_m": [-19, 19],
+  "eye_height_m": 1.65,
+  "walk_speed_m_s": 2.4,
+  "scar": {"period_seconds": 4.0, "peak_emission": 2.8, "minimum_light": 0.22, "core_half_width_m": 0.012, "damage_half_width_m": 0.055, "recess_m": 0.012},
+  "lighting": {
+    "day": {"sun": 1.5, "ambient": 0.65, "fog": 0.0025, "sun_colour": [1.0, 0.94, 0.83]},
+    "shade": {"sun": 0.25, "ambient": 0.45, "fog": 0.004, "sun_colour": [0.79, 0.87, 1.0]},
+    "dusk": {"sun": 0.4, "ambient": 0.3, "fog": 0.006, "sun_colour": [1.0, 0.68, 0.39]}
+  },
+  "purpose": {
+    "seed": "Repeatable authored review layout and plant variation; never gameplay RNG.",
+    "tree_height_m": "Mature tree scale and connected canopy above the walking route.",
+    "tree_triangle_target": "Retain irregular bark/limb silhouettes while reducing the dense generated source.",
+    "canopy_sprays": "Overlapping leaf groups anchored to actual upper branches.",
+    "leaf_length_m": "Individual broadleaf size, with small natural variation.",
+    "leaf_width_fraction": "Broad folded leaves instead of angular needles.",
+    "canopy_detail_distance_m": "Keep lobed leaf outlines near the observer; the same distant sprays use simpler folded leaves.",
+    "canopy_detail_fade_m": "Two metres of transition around the canopy detail distance; no foliage group is removed.",
+    "understory_attempts": "Seeded candidate groups before excluding the walking path and water; this seed retains 834 groups in the isolated composition.",
+    "terrain_size_m": "Local composition extent including distant framing; not world generation.",
+    "terrain_step_m": "Support and contour sampling for the authored review floor.",
+    "route_z_m": "Beginning and end of the short woodland review walk.",
+    "eye_height_m": "First-person review camera above the actual support mesh.",
+    "walk_speed_m_s": "Slow observation pace in this art review, not player tuning.",
+    "scar": "Shared four-second Red ambient crest; narrow core within a wider dark physical incision. Never a work/ready or attack cue.",
+    "lighting": "Three repeatable review exposures. Sun and ambient are light energies, fog is density; bloom stays off."
+  }
+}

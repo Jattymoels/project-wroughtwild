@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01 selected and technically delivered for owner review; ART-02–05 proposed.** Owner request,
+**Status: ART-01 visually approved; ART-02 technically delivered for review; ART-03–05 proposed.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -9,6 +9,8 @@ not accept every generated mesh or expand gameplay. The owner's subsequent
 "Alright let's do it" selected [ART-01](boar-living-scars-2026-09-09.md): the
 existing boar now has an isolated scar, skin, movement and detail-level handoff.
 See that result for checks and limits; ordinary game adoption remains separate.
+The owner's subsequent “I love it” and “Let's keep going”, without changing the
+process, visually approve the boar and select [ART-02](affected-grove-2026-09-09.md).
 
 ## Outcome and current evidence
 
@@ -210,8 +212,10 @@ asset is installed by writing this roadmap.
 
 Current handoff: **ART-01, the existing boar with authored pulsing scars**, whose
 [implementation report](boar-living-scars-2026-09-09.md) records the completed
-surface/movement proof and limitations. Owner visual approval remains separate.
-**ART-02, one affected grove**, is next proposed after that review. Routine
+surface/movement proof and limitations. The owner visually approved it on
+9 September. **ART-02, one affected grove**, now has a checked 38.3 m isolated
+walk, six environment roles, actual day/shade/dusk evidence and a packed
+[handoff](affected-grove-2026-09-09.md). Its visual review remains open. Routine
 mask placement and review setup follow the brief. Decisions that change gameplay
 bodies, saved placement, supported renderer policy or campaign/encounter behaviour
 need their own selected scope. Source promotion into long-term versioned art is

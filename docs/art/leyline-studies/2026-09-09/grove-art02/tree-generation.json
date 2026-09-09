@@ -1,0 +1,32 @@
+{
+  "input_sha256": "f564d6324eb121807f6a868079bb6782610ea58d43333a9004189e3c842f123c",
+  "arguments": [
+    "--image",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\grove-art02\\tree-input-v01.png",
+    "--output",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\tree-source-v01\\tree.glb",
+    "--models",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+    "--gpu",
+    "0",
+    "--require-gpu",
+    "--res",
+    "1024",
+    "--seed",
+    "42",
+    "--bg-removal",
+    "birefnet",
+    "--dump-bg",
+    "--webp",
+    "off",
+    "--threads",
+    "8"
+  ],
+  "runtime": "pwilkin/trellis.cpp",
+  "version": "v0.6.0",
+  "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+  "started_utc": "2026-09-08T23:15:42.2647368Z",
+  "exit_code": 0,
+  "seconds": 106.2983562,
+  "glb_sha256": "d3931de79e69c609958ed0807d93d4b45217bdb50f7d1a59d4862e8f92214f30"
+}

@@ -1,0 +1,158 @@
+[
+	{
+		"camera": [
+			-0.699999988079071,
+			2.05538320541382,
+			-14.0
+		],
+		"clock": 1.65,
+		"lighting": "day",
+		"name": "approach-day",
+		"rotation": "(0.048511, -2.944197, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			-0.300000011920929,
+			2.15963506698608,
+			-1.0
+		],
+		"clock": 1.65,
+		"lighting": "day",
+		"name": "clearing-day",
+		"rotation": "(-0.007259, -2.590735, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			1.39999997615814,
+			2.18208169937134,
+			7.0
+		],
+		"clock": 1.65,
+		"lighting": "day",
+		"name": "scar-day",
+		"rotation": "(-0.13312, -1.570796, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			0.400000005960464,
+			2.17197561264038,
+			13.0
+		],
+		"clock": 1.65,
+		"lighting": "day",
+		"name": "downstream-day",
+		"rotation": "(0.002725, 2.906048, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			-0.699999988079071,
+			2.05538320541382,
+			-14.0
+		],
+		"clock": 1.65,
+		"lighting": "shade",
+		"name": "approach-shade",
+		"rotation": "(0.048511, -2.944197, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			-0.300000011920929,
+			2.15963506698608,
+			-1.0
+		],
+		"clock": 1.65,
+		"lighting": "shade",
+		"name": "clearing-shade",
+		"rotation": "(-0.007259, -2.590735, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			1.39999997615814,
+			2.18208169937134,
+			7.0
+		],
+		"clock": 1.65,
+		"lighting": "shade",
+		"name": "scar-shade",
+		"rotation": "(-0.13312, -1.570796, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			0.400000005960464,
+			2.17197561264038,
+			13.0
+		],
+		"clock": 1.65,
+		"lighting": "shade",
+		"name": "downstream-shade",
+		"rotation": "(0.002725, 2.906048, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			-0.699999988079071,
+			2.05538320541382,
+			-14.0
+		],
+		"clock": 1.65,
+		"lighting": "dusk",
+		"name": "approach-dusk",
+		"rotation": "(0.048511, -2.944197, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			-0.300000011920929,
+			2.15963506698608,
+			-1.0
+		],
+		"clock": 1.65,
+		"lighting": "dusk",
+		"name": "clearing-dusk",
+		"rotation": "(-0.007259, -2.590735, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			1.39999997615814,
+			2.18208169937134,
+			7.0
+		],
+		"clock": 1.65,
+		"lighting": "dusk",
+		"name": "scar-dusk",
+		"rotation": "(-0.13312, -1.570796, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			0.400000005960464,
+			2.17197561264038,
+			13.0
+		],
+		"clock": 1.65,
+		"lighting": "dusk",
+		"name": "downstream-dusk",
+		"rotation": "(0.002725, 2.906048, 0.0)",
+		"scars": true
+	},
+	{
+		"camera": [
+			1.39999997615814,
+			2.18208169937134,
+			7.0
+		],
+		"clock": 1.65,
+		"lighting": "shade",
+		"name": "scar-unlit",
+		"rotation": "(-0.13312, -1.570796, 0.0)",
+		"scars": false
+	}
+]

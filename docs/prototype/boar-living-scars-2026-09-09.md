@@ -1,6 +1,6 @@
 # ART-01 — boar and living scars
 
-Status: **Technically complete; owner visual review pending.** Owner continuation, 9 September 2026: "Alright let's do it"
+Status: **Technically complete; owner visually approved, 9 September 2026.** Owner continuation: "Alright let's do it"
 selects the first bounded slice of the [asset roadmap](leyline-asset-roadmap-2026-09-09.md).
 Baseline: `cf9cfd3`; unrelated Living Frontier work is present and preserved.
 
@@ -126,7 +126,9 @@ changing its scale requires reviewing the rig and scar paths together.
 The narrow orange scars read as a shared material injury and remain embedded in
 motion. The 4-second/25% travelling setting is the useful default for owner review.
 The no-light comparison keeps the dark scar; shade strengthens the core without
-requiring bloom. This is technical delivery, **not owner visual approval**.
+requiring bloom. The owner subsequently said “I love it” and asked to continue
+without changing the process. That supplies visual approval; the technical
+limitations below and separate ordinary-game adoption boundary remain.
 
 The generated coat still has layered sheets, some gaps and coarse transitions;
 some scar edges are too regular at close range. The fitted triangle rig is a
@@ -166,6 +168,6 @@ for publication. Generated source/runtime working assets stay in the local ignor
 handoff, following the roadmap's separate source-promotion boundary. The source
 hash identifies a required local input; a fresh clone alone cannot recreate it.
 
-After owner visual review, **ART-02 — one affected grove** is the next proposed
-slice. It is not implemented or started here. ART-03/04/05 and ordinary game art
-adoption remain unselected by this continuation.
+The owner subsequently visually approved this result and selected
+[ART-02 — one affected grove](affected-grove-2026-09-09.md). ART-03/04/05 and
+ordinary game art adoption remain separate.

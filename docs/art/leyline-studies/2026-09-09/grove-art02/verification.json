@@ -1,0 +1,475 @@
+{
+  "checks": [
+    {
+      "check": "altered-tree.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "altered-tree.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "boar-mid.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "boar-mid.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "canopy-far.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "canopy-far.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "canopy-far.glb exported linear colour and two UV channels",
+      "passed": true
+    },
+    {
+      "check": "canopy-far.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "canopy-far.glb exported linear colour and two UV channels",
+      "passed": true
+    },
+    {
+      "check": "canopy.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "canopy.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "canopy.glb exported linear colour and two UV channels",
+      "passed": true
+    },
+    {
+      "check": "canopy.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "canopy.glb exported linear colour and two UV channels",
+      "passed": true
+    },
+    {
+      "check": "deadfall.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "deadfall.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "deadfall.glb exported linear colour and two UV channels",
+      "passed": true
+    },
+    {
+      "check": "fractured-rock.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "fractured-rock.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "quiet-tree.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "quiet-tree.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "root-bank.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "root-bank.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "terrain.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "terrain.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "terrain.glb exported linear colour and two UV channels",
+      "passed": true
+    },
+    {
+      "check": "understory.glb valid header",
+      "passed": true
+    },
+    {
+      "check": "understory.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "understory.glb exported linear colour and two UV channels",
+      "passed": true
+    },
+    {
+      "check": "understory.glb finite coordinates and valid indices",
+      "passed": true
+    },
+    {
+      "check": "understory.glb exported linear colour and two UV channels",
+      "passed": true
+    },
+    {
+      "check": "Distant canopy reduces triangles",
+      "passed": true
+    },
+    {
+      "check": "Quiet and altered tree keep triangle count",
+      "passed": true
+    },
+    {
+      "check": "tree-base.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "tree-orm.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "tree-scar.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "tree-normal.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "rock-base.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "rock-orm.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "rock-scar.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "forest-floor.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "base.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "orm.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "scar-mask.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "normal.png decodes as PNG",
+      "passed": true
+    },
+    {
+      "check": "tree-scar.png narrow nonempty core and independent dark margin",
+      "passed": true
+    },
+    {
+      "check": "rock-scar.png narrow nonempty core and independent dark margin",
+      "passed": true
+    },
+    {
+      "check": "153 route samples with no collision failures",
+      "passed": true
+    },
+    {
+      "check": "Actual capsule completes the route",
+      "passed": true
+    },
+    {
+      "check": "Independent project and paused clock",
+      "passed": true
+    },
+    {
+      "check": "approach-day real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "clearing-day real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "scar-day real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "downstream-day real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "approach-shade real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "clearing-shade real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "scar-shade real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "downstream-shade real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "approach-dusk real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "clearing-dusk real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "scar-dusk real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "downstream-dusk real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "scar-unlit real nonblank 1440x900 image",
+      "passed": true
+    },
+    {
+      "check": "Matched glow-off changes a small nonempty region",
+      "passed": true
+    },
+    {
+      "check": "build/grove-art02/tree-source-v01/tree.glb preserved",
+      "passed": true
+    },
+    {
+      "check": "build/grove-art02/rock-source-v01/rock.glb preserved",
+      "passed": true
+    },
+    {
+      "check": "build/trellis-local/studio/data/output/Screenshot 2026-09-08 224118_1024_seed42_mtsp0zp4-77uj0z.glb preserved",
+      "passed": true
+    },
+    {
+      "check": "game/assets/authored/mobs/ash_hound.glb preserved",
+      "passed": true
+    },
+    {
+      "check": "game/assets/authored/mobs/marsh_wisp.glb preserved",
+      "passed": true
+    }
+  ],
+  "passed": 69,
+  "assets": {
+    "altered-tree.glb": {
+      "triangles": 84990,
+      "exported_vertices": 94752,
+      "material_count": 1,
+      "bounds": [
+        [
+          -3.7571218013763428,
+          0.0021446796599775553,
+          -3.601288318634033
+        ],
+        [
+          3.757687568664551,
+          7.999804973602295,
+          3.602910280227661
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "6fb66197e5108508e13a376aff5ee9a75098832c78a8efc1ca9444cc3d9ce668"
+    },
+    "boar-mid.glb": {
+      "triangles": 64983,
+      "exported_vertices": 96421,
+      "material_count": 1,
+      "bounds": [
+        [
+          -0.4456300735473633,
+          4.279355925973505e-05,
+          -0.8134505748748779
+        ],
+        [
+          0.44339126348495483,
+          1.2008839845657349,
+          0.8148022890090942
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "19bfba5868dfe0d5732d69e0d5af887b1a0b699e121e511450436e38a5ffc3dc"
+    },
+    "canopy-far.glb": {
+      "triangles": 85800,
+      "exported_vertices": 90480,
+      "material_count": 2,
+      "bounds": [
+        [
+          -4.553160667419434,
+          3.7520174980163574,
+          -4.570340156555176
+        ],
+        [
+          4.5081610679626465,
+          8.64085865020752,
+          2.3149755001068115
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "b09ce4d07b54332e1bc9d15b7b831b31c578a7ffac04ec935b13b199a9cb43ee"
+    },
+    "canopy.glb": {
+      "triangles": 326040,
+      "exported_vertices": 265200,
+      "material_count": 2,
+      "bounds": [
+        [
+          -4.561252593994141,
+          3.7520174980163574,
+          -4.572786808013916
+        ],
+        [
+          4.5081610679626465,
+          8.64085865020752,
+          2.3227672576904297
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "3402bd90274aacc180255fd408034924e6959597b39dda1dc3c15232f4bc1bce"
+    },
+    "deadfall.glb": {
+      "triangles": 8112,
+      "exported_vertices": 4164,
+      "material_count": 1,
+      "bounds": [
+        [
+          -2.0791289806365967,
+          -0.01692509651184082,
+          -0.8088347911834717
+        ],
+        [
+          2.016371965408325,
+          0.7807507514953613,
+          0.6069263219833374
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "6687cd3b4f0441d757dcb7a38d23324e4a8fc9fe22bb169044e650d5800f1a2b"
+    },
+    "fractured-rock.glb": {
+      "triangles": 54996,
+      "exported_vertices": 64778,
+      "material_count": 1,
+      "bounds": [
+        [
+          -1.4158904552459717,
+          -0.00043465313501656055,
+          -1.4620380401611328
+        ],
+        [
+          1.4164156913757324,
+          1.6007987260818481,
+          1.4641410112380981
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "3b5f3c6d04fc426835184edfe53ea137e9b006442bebff4f57ed37fd84ab37a1"
+    },
+    "quiet-tree.glb": {
+      "triangles": 84990,
+      "exported_vertices": 94752,
+      "material_count": 1,
+      "bounds": [
+        [
+          -3.7571218013763428,
+          0.0021446796599775553,
+          -3.601288318634033
+        ],
+        [
+          3.757687568664551,
+          7.999804973602295,
+          3.602910280227661
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "5847995437d85aa014f373412f82746658627f83547ee94bd13f81c6b407051f"
+    },
+    "root-bank.glb": {
+      "triangles": 8546,
+      "exported_vertices": 9357,
+      "material_count": 1,
+      "bounds": [
+        [
+          -3.2108919620513916,
+          0.15822750329971313,
+          0.40053412318229675
+        ],
+        [
+          2.72092604637146,
+          1.4497727155685425,
+          3.602910280227661
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "0718f626d01c6d39a926cd6930db428f3d2a3bf137ec02488edae4ddec7c2b00"
+    },
+    "terrain.glb": {
+      "triangles": 70400,
+      "exported_vertices": 35581,
+      "material_count": 1,
+      "bounds": [
+        [
+          -32.0,
+          -1.027536392211914,
+          -44.0
+        ],
+        [
+          32.0,
+          4.792599201202393,
+          44.0
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "fb7ce77f091ef982a17a3f620b5115ceba6c060cfe6184bf8a6a52c8030564a5"
+    },
+    "understory.glb": {
+      "triangles": 15140,
+      "exported_vertices": 14430,
+      "material_count": 2,
+      "bounds": [
+        [
+          -1.2777115106582642,
+          0.009999999776482582,
+          -1.167106032371521
+        ],
+        [
+          1.382857322692871,
+          0.6390001773834229,
+          0.8909850120544434
+        ]
+      ],
+      "near_zero_area_triangles": 0,
+      "sha256": "649839809cc872ab18b9579c050ddbe5b70a2ec7421e3d0abdec091e0f39d64e"
+    }
+  },
+  "glow_changed_pixel_fraction": 0.005779320987654321,
+  "limitations": "Stream checks report microscopic slivers; they do not certify watertight generated topology or normal-game adoption."
+}

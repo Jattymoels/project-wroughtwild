@@ -1,0 +1,32 @@
+{
+  "input_sha256": "a009263af1f9b8a1bf7856212ffaa6cce08eac1f241d24ee8af529cdb7a53b2c",
+  "arguments": [
+    "--image",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\grove-art02\\rock-input-v01.png",
+    "--output",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\rock.glb",
+    "--models",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+    "--gpu",
+    "0",
+    "--require-gpu",
+    "--res",
+    "1024",
+    "--seed",
+    "42",
+    "--bg-removal",
+    "birefnet",
+    "--dump-bg",
+    "--webp",
+    "off",
+    "--threads",
+    "8"
+  ],
+  "runtime": "pwilkin/trellis.cpp",
+  "version": "v0.6.0",
+  "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+  "started_utc": "2026-09-08T23:36:02.8659031Z",
+  "exit_code": 0,
+  "seconds": 116.2489703,
+  "glb_sha256": "6185f02594ec0d064d9750fa28fe33603c513361f0a96a65512ff9668c721322"
+}

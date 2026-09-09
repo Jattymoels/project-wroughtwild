@@ -1,0 +1,47 @@
+{
+	"adapter": "NVIDIA GeForce RTX 5090",
+	"cases": [
+		{
+			"draw_calls": 185.0,
+			"gpu_median_ms": 2.47399997711182,
+			"gpu_p95_ms": 2.80399990081787,
+			"lighting": "day",
+			"primitives": 35245155.0,
+			"samples": 300,
+			"texture_bytes": 701871104.0,
+			"wall_median_ms": 2.531,
+			"wall_p95_ms": 2.875,
+			"warmup": 90
+		},
+		{
+			"draw_calls": 185.0,
+			"gpu_median_ms": 2.50099992752075,
+			"gpu_p95_ms": 2.82699990272522,
+			"lighting": "dusk",
+			"primitives": 35245155.0,
+			"samples": 300,
+			"texture_bytes": 701871104.0,
+			"wall_median_ms": 2.55,
+			"wall_p95_ms": 2.876,
+			"warmup": 90
+		}
+	],
+	"engine": {
+		"build": "official",
+		"hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+		"hex": 263424,
+		"major": 4,
+		"minor": 5,
+		"patch": 0,
+		"status": "stable",
+		"string": "4.5-stable (official)",
+		"timestamp": 0
+	},
+	"msaa": 4,
+	"renderer": "Forward+",
+	"scope": "Complete isolated grove. No game simulation or ordinary-world performance claim.",
+	"size": [
+		1440,
+		900
+	]
+}

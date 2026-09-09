@@ -1,0 +1,46 @@
+[
+  {
+    "file": "build/grove-art02/editable-v01/emberroot-grove.blend",
+    "objects": 2740,
+    "mesh_objects": 1844,
+    "unique_meshes": 70,
+    "packed_images": 25,
+    "armatures": 1,
+    "actions": 6,
+    "camera": "Eye-height clearing camera",
+    "passed": true
+  },
+  {
+    "file": "build/grove-art02/tree-finish-v03/tree-finished.blend",
+    "objects": 3,
+    "mesh_objects": 3,
+    "unique_meshes": 3,
+    "packed_images": 3,
+    "armatures": 0,
+    "actions": 0,
+    "camera": null,
+    "passed": true
+  },
+  {
+    "file": "build/grove-art02/rock-finish-v01/rock-finished.blend",
+    "objects": 3,
+    "mesh_objects": 3,
+    "unique_meshes": 3,
+    "packed_images": 3,
+    "armatures": 0,
+    "actions": 0,
+    "camera": null,
+    "passed": true
+  },
+  {
+    "file": "build/grove-art02/tree-normal-v01/tree-normal-bake.blend",
+    "objects": 3,
+    "mesh_objects": 3,
+    "unique_meshes": 3,
+    "packed_images": 4,
+    "armatures": 0,
+    "actions": 0,
+    "camera": null,
+    "passed": true
+  }
+]
