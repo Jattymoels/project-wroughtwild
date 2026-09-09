@@ -11,6 +11,11 @@ must be repaired before LF-6. The double-host-failure fallback leaves movement
 disabled after a successful ordinary load; the existing traversal helper masks
 that gap by re-enabling physics. This review records the defect, not its repair.
 
+Subsequent author repair: **9036a12**, ordinarily pushed before LF-6A. The
+[Wave 6 repair record](living-frontier-wave6-2026-09-09.md#lf5-r1-result) passes
+ordinary-load actual movement and failed-load/fresh-process checks. The original
+independent review remains historical evidence; orchestrator re-review is next.
+
 ## Scope and selected implementation
 
 Affected authorities: D-010 combat numbers/time split, D-006 Trial ownership,

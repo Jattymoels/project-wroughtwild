@@ -199,6 +199,97 @@ purpose; no extra tuning was scattered into combat logic. No geography,
 transformation, recipe, finite stock, paid construction, source or machine
 ownership was changed. Unrelated art work remains outside this slice.
 
-LF-6B still owes the visible persistent panel, final return autosave, failed-save
-retry, later death ownership and their rendered/restart evidence. The existing
-completion receipt already saves correctly and will drive that presentation.
+LF-6A publication: local commit **f552c3c**, ordinary push to `origin/main`
+succeeded. The subsequent LF-6B slice below completes the visible panel,
+automatic ending checkpoint and recovery evidence using the same receipt.
+
+## LF-6B author evidence and review handoff
+
+The normal final reward/return now checkpoints the full settled world before
+the finale claims that ownership is saved. `forge_arc_complete` remains the
+only persistent receipt. The existing Central exterior changes its Blue/Red
+feeds to quiet lights, releases its handle, labels control as yours and offers
+inspection instead of re-entry. A failed write leaves that live ownership,
+adds **SAVE NEEDED** and exposes **Retry ending save**; successful ordinary save
+or the retry button clears the transient warning. Successful complete restore
+clears the warning only after all physical ownership is installed. The ending
+page explains both lasting region changes and future unavailable experiments.
+
+Current author checks, all zero failures:
+
+| Evidence | Result and boundary |
+| --- | --- |
+| Final actual combat | 1,867 checks repeated with final integration; all three no-Catalyst starter wins retain the LF-6A measurements above |
+| Central complete return | 186 checks; 834.5 m walked; prior encounters forced, final human live; exact automatic ending/haul checkpoint |
+| Separate-process cleared boundary | 4 checks; exact suspended ownership and dedicated human identity |
+| Separate-process ending | 36 checks; exact native rewards/world/loot stream, visible control, repeated ordinary save/load, no story replay or payout |
+| Later world death restart | 30 checks; every positive material quantity belongs to one recoverable pack, equipment/pack items/ending remain owned; fatal open-world hit is injected to isolate ownership |
+| Failed ending write and retry | 194 checks; same actual final fight, preserved preceding checkpoint, visible retry, one settlement, then separate-process ending/death recovery |
+| Natural final-human death and retry | 47 checks; six actual released hits cause one ordinary Trial death; 304.6 m actual floor-two route; deposit/build, finite world ownership and both ledgers survive ordinary retry and boundary reload |
+| Separate-process Trial death | 18 checks; exact returned ownership, locked controls and available Central retry |
+| Rendered control pages | 13 checks, including actual E ray and settled viewport bounds; before/after door and finale inspected |
+| Native save/economy after codec repair | 224,380 main checks and 47 Central checks; no perk, currency or reward rule was changed |
+
+The failed-write route separately completes the same live final fight. A real
+unwritable destination leaves the preceding boundary bytes intact. Repeated
+failed ordinary save retains the unsaved indicator; actual retry-button use
+writes the ending without another native settlement. The measured checkpoint
+and panel action was **258–372 ms** on this machine across the two checked runs. A fresh process then recovers
+the retried ending and later death pack with the same ownership checks above.
+This exercises file-open failure and the existing staged writer; it does not
+claim exhaustive OS power-loss/filesystem fault injection. A crash before a
+successful checkpoint retains the preceding save; active fights are not resumable.
+
+Exact world comparisons include seed/profile, loot stream, placed blocks,
+stations, excavation, finite resource records, source/machine state and loose
+drop/death-pack ownership. Loose-drop cosmetic clocks are frozen immediately
+when restored for these comparisons; spatial float32 round trips use the
+existing 1e-6 tolerance, while counts, identities, ages and seeds stay exact.
+Inventory zero-count spent IDs are not physical quantities in a death pack.
+
+Final compatibility reruns include LF5-R1 **24 + 15**, Pairing **155 + 4**,
+protected second terrain **133**, double-host recovery **8**, pending/applied/
+real-return **13/22/13**, six published archives **15/23/23/13/23/14**, save
+recovery **175**, Trial lifecycle **6,221**, legacy Forge traversal **122** and
+Annex **172**, all zero failures. The final editor registration and 120-frame
+fresh `--living-frontier-wave6 --world-seed=77` smoke also pass without script
+or engine errors. Concurrent-run publication measured **19,270 ms** for Pairing
+and **20,938 ms** for Annex, preserving the known synchronous pause.
+The source/machine/recipe and frozen-generation suites recorded under LF-6A
+also pass. Expected corrupt-input warnings in those recovery suites are labelled
+fault inputs, not ignored failures.
+
+Reproduce from the current native build:
+
+```powershell
+./tools/living_frontier_wave6_checks.ps1 -Boss -Central -SaveFailure -Recovery -Native -Visuals -Controls
+./tools/living_frontier_wave5_checks.ps1 -Campaign -Legacy
+```
+
+The standard native and headless runners include Central and recovery. Isolated
+synthetic checkpoints/logs remain in `build/lf6` and `build/lf5`. Inspected
+captures are retained for review: [White](../../captures/lf6/white.png),
+[Blue](../../captures/lf6/blue.png), [Red](../../captures/lf6/red.png),
+[Green](../../captures/lf6/green.png), [locked exterior](../../captures/lf6/control-before.png),
+[captured exterior](../../captures/lf6/control-captured.png),
+[entrance page](../../captures/lf6/control-before-page.png),
+[saved controls](../../captures/lf6/control-captured-page.png) and
+[finale](../../captures/lf6/finale-page.png). Human tell images are observer views;
+control images use the actual first-person camera after ordinary saved-world load.
+
+### Remaining limits and stop
+
+- Human full-Trial acceptance remains open. The Warden interrupts every channel
+  in the isolated starter test; ranged bots evade all releases. This is proof
+  that lucky Catalysts are unnecessary, not proof of an accepted difficulty curve.
+- The human, harness and apparatus remain authored primitives. Silhouette,
+  close-view gestures, crowded-HUD readability and narrative pacing need human
+  review. Earlier Trial-room outcomes are forced only in route/ownership tests.
+- Terrain publication retains its synchronous pause. No geography, second-event
+  performance, construction, stock, recipe, source/machine or unrelated art
+  redesign is included. LF-6B adds no combat tuning or save schema.
+- Optional Heat, configured challenge selection/rewards and any related tuning
+  remain Wave 7. There is no third transformation or fourth era.
+
+Author work stops here for orchestrator review after checked publication. This
+record does not claim independent review or human acceptance.

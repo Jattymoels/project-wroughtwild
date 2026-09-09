@@ -4,6 +4,7 @@ var total_hits := 0
 var total_damage := 0.0
 
 func _contact_cases() -> void:
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://../build/lf6"))
 	player=preload("res://scenes/player.tscn").instantiate()
 	player.position=Vector3(0,1,0)
 	add_child(player)

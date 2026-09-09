@@ -1,12 +1,19 @@
 # Repeatable Trial Runs
 
-**LF-6A continuation:** after both physical awards, the existing Central site
+**LF-6A/B continuation:** after both physical awards, the existing Central site
 opens a scoped capstone copy with the same two floors, eight stages and rewards.
 The final chamber contains the dedicated human Conservator and two physical
 emergency releases. Central suspension uses revision three; Annex/Pairing retain
 their published revisions. Under LF policy, `forge_arc_complete` resolves the
 human story once and prevents re-entry before deposit; legacy capstone/maps
-retain their existing rules. No new era or configurable experiment is added.
+retain their existing rules. Final return writes the settled haul, story and
+world together before presenting the transfer as saved. A failed write leaves
+the live settlement and an explicit save-retry action; it never repeats native
+settlement. The existing exterior derives its quiet lights, released handle
+and control page from that receipt on return/load. Death before victory still
+returns deposits and loses unbanked loot; world death after completion retains
+the ending and uses the usual material death pack. No new era or configurable
+experiment is added.
 [Contract and evidence](../prototype/living-frontier-wave6-2026-09-09.md).
 
 **LF-5B continuation:** the existing Pairing Hall front body opens the second

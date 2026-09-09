@@ -446,7 +446,7 @@ func finish_run() -> void:
 	player.combat.invulnerable_left = 2.0
 	if died:
 		var kept := ", and the catalyst is still in your hand" if sim.material_count("ember_catalyst") > 0 else ""
-		player.hud.notify("You wake at the gate. Your stored goods are untouched%s. The Tyrant's weakness to prepared steel is clearer now." % kept)
+		player.hud.notify("You wake at Central's door. Your stored goods are untouched. Read the committed marks, or reach an emergency release during the warning." if finished_layout.get("central_laboratory",false) else "You wake at the gate. Your stored goods are untouched%s. The Tyrant's weakness to prepared steel is clearer now." % kept)
 	elif boss_defeated:
 		var floor: Dictionary = finished_floor
 		if String(floor.get("id", "")) != "":
@@ -468,6 +468,13 @@ func finish_run() -> void:
 			player.hud.notify("Challenge cleared. The gate offers the next tier.")
 	spatial=false
 	layout={}
+	if boss_defeated and bool(finished_layout.get("central_laboratory",false)):
+		# Native settlement already owns the ending and ordinary haul. Checkpoint
+		# the complete returned world before claiming that transfer is saved.
+		player.central_ending_save_pending=true
+		player.refresh_central_control()
+		player.save_game()
+		player.show_central_control(true)
 	if player.world_root().has_method("settle_resonance"): player.world_root().call_deferred("settle_resonance")
 
 

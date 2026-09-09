@@ -422,13 +422,28 @@ cover or interrupt/freeze before release; ordinary starting equipment suffices.
 Gallery evidence advances the human operator's story. First victory pays one
 Eye and queues Excited Uplands: protected stone shelves, finite iron/silver and
 one paired host. Only successful physical publication grants era three. The Eye
-can be left at the drowned altar once as remembrance. Central and maps remain
-closed.
+can be left at the drowned altar once as remembrance. Wave 6 opens Central;
+configured maps remain closed.
 
 Pending publication resumes on load; blocked returns offer retry at a laboratory.
 The loaded path, both event ledgers and all finite/paid ownership are retained.
 The preparing notice renders before synchronous publication, which still pauses
 the game. See measured costs, historical-save compatibility and declared test
 fixtures in the [Wave 5 record](../docs/prototype/living-frontier-wave5-2026-09-09.md).
-Work stops after LF-5A/B/C for orchestrator review; the human finale, captured
-controls and optional Heat remain Waves 6–7.
+Wave 6 continues the same world and save with `--living-frontier-wave6`.
+After both physical awards, enter the existing Central Laboratory. The human
+Conservator commits a White lane, retains a Blue mark before Red releases there,
+and branches White into two Green lanes with a safe gap. Move, use cover or
+interrupt; either emergency-release pedestal drains a warning and exposes the
+harness while both controls cool. Three ordinary starter builds can win without
+Catalysts; difficulty remains provisional, especially Warden interrupts.
+
+The final return saves the existing haul and once-only ending together. The
+outer door changes to your controls. If the write fails, the page and door
+explicitly show that a save is needed, with a retry button; ordinary save also
+works. Leaving before a successful checkpoint retains the preceding saved
+state. Reopening the controls does not replay the story or pay again. Both
+changed regions remain, and there is no fourth era. The
+[Wave 6 record](../docs/prototype/living-frontier-wave6-2026-09-09.md) contains
+combat, route, death/retry/restart and compatibility evidence. Work stops for
+orchestrator review; optional Heat and configured rewards remain Wave 7.

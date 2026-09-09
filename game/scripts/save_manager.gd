@@ -431,6 +431,8 @@ func _apply_prepared(player: WroughtwildPlayer, data: Dictionary, prepared: Dict
 	# Release only publication's own stop, after terrain, placed bodies, trial
 	# state and loose ownership are all installed. Every refusal keeps it.
 	player.finish_world_recovery()
+	player.central_ending_save_pending=false
+	player.refresh_central_control()
 	return true
 
 
@@ -451,6 +453,9 @@ func write(path: String, player: WroughtwildPlayer) -> bool:
 	if written and player.inventory.get_sim().campaign_policy()=="living_frontier_wave4": player.set_meta("active_world_save_path",path)
 	if written and recovery_path == ProjectSettings.globalize_path(path):
 		player.remove_meta("recovered_save_path")
+	if written:
+		player.central_ending_save_pending=false
+		player.refresh_central_control()
 	return written
 
 static func _valid_vec(value: Variant) -> bool:

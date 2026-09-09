@@ -58,6 +58,7 @@ var trial: TrialController
 ## A failed physical publication owns this stop until a complete restore.
 ## Keep an already disabled review/presentation controller disabled afterward.
 var _world_recovery_stopped := false
+var central_ending_save_pending := false # Transient write failure; receipt stays native.
 var _world_recovery_resume_physics := false
 var footsteps: PlayerFootsteps
 var environment_ambience: EnvironmentAmbience
@@ -484,6 +485,23 @@ func finish_world_recovery() -> void:
 	_world_recovery_stopped = false
 	set_physics_process(_world_recovery_resume_physics)
 	_world_recovery_resume_physics = false
+
+func refresh_central_control() -> void:
+	var sites:=world_root().get_node_or_null("FrontierSites")
+	if sites!=null: sites.refresh_apparatus(central_ending_save_pending)
+
+func show_central_control(finale: bool=false) -> void:
+	if not inventory.get_sim().world_effect_active("forge_arc_complete"): return
+	var rows:Array=[]
+	if central_ending_save_pending:
+		rows.append({"text":"Control and rewards are yours in this session, but the ending could not be saved. Retry before leaving.","button":"Retry ending save","callback":_retry_central_save})
+	var story:="The Conservator's restraints open. Beneath the mineral scars there was still a human hand, holding the return circuit shut. You lower it and release the apparatus from its last command.\n\n" if finale else ""
+	var status:="The ending still needs a successful save." if central_ending_save_pending else "Your ending and rewards are saved."
+	open_custom_panel("The last claim is released" if finale else "Central Laboratory — your controls",rows,story+"The controls now answer to you. Retained Fen and Excited Uplands keep their changed shapes; no third resonance follows.\n\nFuture experiments can be configured here when those controls become available. For now the apparatus is safely at rest.\n\n"+status)
+
+func _retry_central_save() -> void:
+	save_game()
+	show_central_control()
 
 func load_game(path: String = "") -> bool:
 	if path.is_empty(): path = SaveManager.path_for(self)
@@ -946,6 +964,8 @@ func aim_probe() -> Dictionary:
 	if collider is DroppedBundle:
 		return {"state": "interact", "label": InputPrompts.text("Your dropped pack — {interact} to recover"), "target": collider}
 	if collider is TrialGate:
+		if collider.is_in_group("laboratory_gates") and String(collider.get_meta("run_id",""))=="forge_capstone" and inventory.get_sim().world_effect_active("forge_arc_complete"):
+			return {"state":"interact","label":InputPrompts.text("Your apparatus controls — {interact} to inspect"),"target":collider}
 		return {"state": "interact", "label": InputPrompts.text(String(collider.get_meta("laboratory_label","Laboratory"))+" — {interact} to enter" if collider.is_in_group("laboratory_gates") else "Trial gate — {interact} to enter"), "target": collider}
 	if collider is TrialFixture:
 		return {"state":"interact","label":collider.trial_label(),"target":collider}

@@ -184,9 +184,11 @@ done
 echo "== Living Frontier Wave 6 Central Laboratory =="
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/conservator_combat.tscn
 "$GODOT" --headless --fixed-fps 60 --path . res://tests/central_trial.tscn
-for state in boundary ending; do
+for state in boundary ending after-death save-failure; do
   "$GODOT" --headless --fixed-fps 60 --path . res://tests/central_trial.tscn -- "--lf6-$state"
 done
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/central_recovery.tscn
+"$GODOT" --headless --fixed-fps 60 --path . res://tests/central_recovery.tscn -- --lf6-death-restart
 echo "== main scene smoke run (120 frames) =="
 "$GODOT" --headless --path . --quit-after 120
 

@@ -6,7 +6,7 @@ func interact(player: WroughtwildPlayer) -> void:
 	if String(get_meta("run_id",""))=="forge_capstone":
 		var sim:=player.inventory.get_sim()
 		if sim.world_effect_active("forge_arc_complete"):
-			player.open_custom_panel("Central Laboratory — released",[],"The Conservator's harness is silent. The apparatus no longer answers its claim. Your two changed regions remain.")
+			player.show_central_control()
 			return
 		var available:=false
 		for run: Dictionary in sim.trial_story_runs():

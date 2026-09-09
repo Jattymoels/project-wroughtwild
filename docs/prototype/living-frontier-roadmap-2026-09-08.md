@@ -1,6 +1,6 @@
 # Living Frontier — extraction, resonance and the laboratory campaign
 
-**Status: Waves 1–5 implemented as opt-in work. Wave 4 independently closes the Wave-3 route defect; the Wave 5 review requires LF5-R1 recovery repair before Wave 6. Waves 6–7 remain proposals.**
+**Status: Waves 1–6 implemented as opt-in work. Wave 4 independently closes the Wave-3 route defect. Wave 6 repairs LF5-R1 first, then delivers the dedicated human and saved control handoff; author evidence awaits orchestrator review. Optional Heat and configured rewards remain Wave 7.**
 See the [Wave 1 contract](living-frontier-wave1-2026-09-08.md) and
 [Wave 2 implementation and paid walkthrough](living-frontier-wave2-2026-09-08.md)
 for selected tuning, compatibility, evidence and remaining owner playtests.
@@ -18,6 +18,10 @@ actual baseline combat from forced route/settlement fixtures and records the
 remaining publication pause. No finale or captured-control work is included.
 The [Wave 5 review](living-frontier-wave5-review-2026-09-09.md) records the
 ordinary-control recovery defect and the repair-first LF-6 handoff.
+The [Wave 6 contract and evidence](living-frontier-wave6-2026-09-09.md) records
+the actual-input repair, dedicated Central battle and persistent apparatus
+control. It preserves both published changes, three eras and all owned work;
+human acceptance of full-Trial difficulty/readability remains separate.
 Owner direction and clarification: 8 September 2026. Author: Codex.
 Audited implementation baseline: `49edab9`.
 

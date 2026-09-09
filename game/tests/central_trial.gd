@@ -2,8 +2,18 @@ extends "res://tests/pairing_trial.gd"
 ## Prior rooms force outcomes for route coverage; final human uses live casts.
 const CENTRAL_BOUNDARY := "user://lf6-central-boundary.json"
 const CENTRAL_ENDING := "user://lf6-central-ending.json"
+const CENTRAL_AFTER_DEATH := "user://lf6-after-ending-death.json"
+const FAILED_ENDING := "user://lf6-directory-that-does-not-exist/ending.json"
 var before_world: Dictionary
 var central_gate: StaticBody3D
+var last_boundary_bytes: PackedByteArray
+
+func _ready() -> void:
+	# Restored pickups are new nodes. Freeze their cosmetic clocks immediately,
+	# before the inherited boundary walk waits for navigation/physics frames.
+	get_tree().node_added.connect(func(node:Node):
+		if node is Pickup: node.ready.connect(func():node.set_physics_process(false),CONNECT_ONE_SHOT))
+	super._ready()
 
 func quiet_pairing() -> void:
 	super.quiet_pairing()
@@ -14,11 +24,15 @@ func _run() -> void:
 	sim=load("res://scripts/sim.gd").shared()
 	sim.set_campaign_policy("living_frontier_wave4")
 	world=preload("res://scenes/sandpit.tscn").instantiate()
+	world.scene_file_path="" # Embedded deterministic fixture, not a fresh-launch chooser.
 	world.world_profile="living_frontier_wave3";world.world_seed=77
 	get_tree().root.add_child(world);get_tree().current_scene=world
 	player=world.player;trial=player.trial;arena=world.get_node("TrialArena")
 	quiet_pairing()
 	var manager:=SaveManager.new()
+	if "--lf6-control-visuals" in OS.get_cmdline_user_args():
+		await capture_controls()
+		return finish_central()
 	if "--lf6-boundary" in OS.get_cmdline_user_args():
 		check(player.load_game(CENTRAL_BOUNDARY),"fresh Central boundary loads normally")
 		quiet_pairing()
@@ -27,15 +41,43 @@ func _run() -> void:
 		check(JSON.parse_string(manager.capture(player).sim)==JSON.parse_string(disk.sim),"fresh boundary preserves exact native ownership")
 		check(not sim.world_effect_active("forge_arc_complete"),"suspension does not resolve the ending")
 		return finish_central()
-	if "--lf6-ending" in OS.get_cmdline_user_args():
-		check(player.load_game(CENTRAL_ENDING),"fresh ending loads normally")
+	if "--lf6-ending" in OS.get_cmdline_user_args() or "--lf6-after-death" in OS.get_cmdline_user_args():
+		var after_death:bool="--lf6-after-death" in OS.get_cmdline_user_args()
+		var path:=CENTRAL_AFTER_DEATH if after_death else CENTRAL_ENDING
+		check(player.load_game(path),"fresh ending loads normally")
 		quiet_pairing()
-		var disk:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(CENTRAL_ENDING))
-		var diagnostic:=FileAccess.open("res://../build/lf6/ending-actual.json",FileAccess.WRITE)
-		diagnostic.store_string(manager.capture(player).sim);diagnostic.close()
+		var disk:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(path))
 		check(JSON.parse_string(manager.capture(player).sim)==JSON.parse_string(disk.sim),"fresh ending and all native rewards remain exact")
+		check_preserved(disk,manager.capture(player))
+		check_controls(true)
 		check(sim.world_effect_active("forge_arc_complete") && int(sim.era().index)==3 && not sim.trial_start_story(12,"forge_capstone"),"completed human cannot return or cause a fourth era")
 		check(not bool(sim.trial_map_progress().available),"optional configured experiments remain Wave 7")
+		var once:=sim.export_json()
+		for repeat in 2:
+			player.show_central_control()
+			check(not player.work_panel._custom_title.contains("last claim") && sim.export_json()==once,"reopening controls does not replay finale or repay")
+			check(player.save_game() && player.load_game(),"ordinary repeated save/load retains ending")
+			quiet_pairing()
+			check(sim.export_json()==once,"repeat load pays nothing")
+			check_controls(true)
+		if not after_death:
+			var owned:Dictionary=JSON.parse_string(once)
+			var prior_drops:=WorldDrops.capture(world)
+			# Inject a fatal open-world hit to isolate post-ending ownership. The
+			# separate Central recovery fixture dies to natural human releases.
+			player.combat.invulnerable_left=0
+			player.combat.take_hit(1000000000,"physical","ending ownership fixture")
+			var drops:=WorldDrops.capture(world)
+			var expected_pack:Dictionary={}
+			# Inventory may retain zero-count spent IDs; a death pack contains
+			# positive owned quantities only, under the existing drop contract.
+			for id in owned.economy.inventory:
+				if int(owned.economy.inventory[id])>0:expected_pack[id]=int(owned.economy.inventory[id])
+			check(drops.bundles.size()==prior_drops.bundles.size()+1 && drops.bundles.back().contents==expected_pack,"later death transfers every positive material quantity to one recoverable pack")
+			var fallen:Dictionary=JSON.parse_string(sim.export_json())
+			check(fallen.equipment==owned.equipment && fallen.economy.pack_items==owned.economy.pack_items && sim.world_effect_active("forge_arc_complete"),"world death retains ending, equipped gear and pack items")
+			check_controls(true)
+			check(player.save_game(CENTRAL_AFTER_DEATH),"normal save retains later death ownership for separate process")
 		return finish_central()
 	var packed:=FileAccess.get_file_as_bytes("res://tests/fixtures/lf5b-published-clear.json.gz")
 	var file:=FileAccess.open("user://lf6-start.json",FileAccess.WRITE)
@@ -45,13 +87,36 @@ func _run() -> void:
 	check(ResonanceEvent.publish(player,"user://lf6-prepared.json").ok,"existing second publication opens Central")
 	quiet_pairing()
 	before_world=manager.capture(player)
+	check_controls(false)
 	check(sim.trial_story_runs().size()==3 && bool(sim.trial_story_runs()[2].available),"existing third site opens only after both physical awards")
 	await _native_route()
 	check(player.global_position.distance_to(annex_entry)<.15,"finale returns to the exact Central approach")
 	check(sim.world_effect_active("forge_arc_complete") && int(sim.era().index)==3,"real final human fight resolves once without another era")
+	check(player.work_panel._custom_title=="The last claim is released","normal final return presents the once-only story resolution")
+	var settled:=sim.export_json()
+	if "--lf6-save-failure" in OS.get_cmdline_user_args():
+		check(player.central_ending_save_pending && not FileAccess.file_exists(FAILED_ENDING),"failed automatic ending write keeps live ownership visibly unsaved")
+		check(FileAccess.get_file_as_bytes(checkpoint_path())==last_boundary_bytes,"failed ending write leaves preceding checkpoint intact")
+		check(not player.save_game() && player.central_ending_save_pending,"failed ordinary save retains the retry state")
+		check_controls(true,true)
+		check(not sim.trial_start_story(12,"forge_capstone") && sim.export_json()==settled,"failed save cannot reopen or repay the ending")
+		player.set_meta("active_world_save_path",checkpoint_path())
+		player.show_central_control()
+		var retry:Button
+		for button:Button in player.work_panel.find_children("*","Button",true,false):
+			if button.text=="Retry ending save":retry=button
+		check(retry!=null && not retry.disabled,"failed ending exposes an enabled save-retry button")
+		var retry_started:=Time.get_ticks_msec()
+		if retry!=null:retry.pressed.emit()
+		print("LF6_ENDING_RETRY checkpoint_and_panel_ms=",Time.get_ticks_msec()-retry_started)
+		check(not player.central_ending_save_pending && sim.export_json()==settled,"actual retry button saves without repeating settlement")
+	else:
+		check(not player.central_ending_save_pending,"ordinary final return completes the ending checkpoint")
+	var automatic:Dictionary=JSON.parse_string(FileAccess.get_file_as_string(checkpoint_path()))
+	check(JSON.parse_string(automatic.sim)==JSON.parse_string(settled) && automatic.get("trial_boundary",{}).is_empty(),"return checkpoint contains the exact ending and haul outside the Trial")
+	check_controls(true)
 	var after:=manager.capture(player)
-	for key in ["blocks","stations","broken_blocks","cracked_blocks","contraptions","leylines","resource_nodes"]:
-		check(JSON.parse_string(JSON.stringify(after.get(key)))==JSON.parse_string(JSON.stringify(before_world.get(key))),"ending preserves world ownership: "+key)
+	check_preserved(before_world,after)
 	var before_native:Dictionary=JSON.parse_string(before_world.sim).economy
 	check(JSON.parse_string(sim.resonance_json())==before_native.resonance && JSON.parse_string(sim.resonance_second_json())==before_native.resonance_second,"ending preserves both physical event ledgers")
 	check(manager.write(CENTRAL_ENDING,player),"retain actual finished battle for fresh-process recovery")
@@ -145,6 +210,9 @@ func _clear_encounter() -> void:
 	player.combat.set_physics_process(false)
 	trial._process(1.0/60)
 	await frames(2)
+	if "--lf6-save-failure" in OS.get_cmdline_user_args():
+		last_boundary_bytes=FileAccess.get_file_as_bytes(checkpoint_path())
+		player.set_meta("active_world_save_path",FAILED_ENDING)
 
 func _boundary_restore() -> void:
 	await super._boundary_restore()
@@ -153,6 +221,51 @@ func _boundary_restore() -> void:
 
 func checkpoint_path() -> String:
 	return "user://lf6-active-boundary.json"
+
+func check_controls(captured:bool, pending:bool=false) -> void:
+	var sites:=world.get_node("FrontierSites") as FrontierSites
+	check(sites.control_label!=null && sites.control_label.text.contains("CONTROL: YOURS" if captured else "CONTROL: LOCKED"),"existing outer door visibly reflects saved control ownership")
+	check(sites.control_label.text.contains("SAVE NEEDED")==pending && player.central_ending_save_pending==pending,"control panel accurately reports unsaved ending")
+	check(is_equal_approx(sites.control_lever.rotation.z,PI*.5 if captured else 0.0),"physical control handle retains the released orientation")
+
+func check_preserved(before:Dictionary, after:Dictionary) -> void:
+	for key in ["blocks","stations","broken_blocks","cracked_blocks","contraptions","leylines","resource_nodes","world_seed","world_profile","loot_kill_counter"]:
+		check(JSON.parse_string(JSON.stringify(after.get(key)))==JSON.parse_string(JSON.stringify(before.get(key))),"ending preserves world ownership: "+key)
+	var comparator:Node=load("res://tests/second_resonance_terrain.gd").new()
+	check(comparator.same_drops(before.world_drops,after.world_drops),"loose drops and death packs preserve exact ownership and float32 pose tolerance")
+	comparator.free()
+
+func capture_controls() -> void:
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://../captures/lf6"))
+	for phase in ["before","captured"]:
+		check(player.load_game("user://lf6-prepared.json" if phase=="before" else CENTRAL_ENDING),"rendered control state restores through normal load")
+		quiet_pairing()
+		player.work_panel.close_panel()
+		var lab:Dictionary=world.terrain.map.laboratories[2]
+		world.terrain.ensure_area(lab.position,32)
+		player.global_position=lab.approach[-1]+Vector3.UP*.1
+		player.velocity=Vector3.ZERO
+		player.set_physics_process(true)
+		await frames(10)
+		var aim:Vector3=lab.position+Vector3(0,1.7,lab.size.z*.5)
+		player.look_at(Vector3(aim.x,player.global_position.y,aim.z))
+		var offset:=aim-player.camera.global_position
+		player.spring_arm.rotation.x=atan2(offset.y,Vector2(offset.x,offset.z).length())
+		await frames(4)
+		check_controls(phase=="captured")
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_png("res://../captures/lf6/control-"+phase+".png")
+		player.interact()
+		check(player.work_panel.is_open(),"rendered control page opens through physical E")
+		for i in 8:await get_tree().process_frame
+		check(player.work_panel._root.get_global_rect().size.y<get_viewport().get_visible_rect().size.y && player.work_panel._title.global_position.y>0,"control page settles inside the viewport")
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_png("res://../captures/lf6/control-"+phase+"-page.png")
+	player.show_central_control(true)
+	for i in 8:await get_tree().process_frame
+	check(player.work_panel._root.get_global_rect().size.y<get_viewport().get_visible_rect().size.y,"finale fits the viewport")
+	await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png("res://../captures/lf6/finale-page.png")
 
 func finish_central() -> void:
 	print("LF6_CENTRAL ",checks," checks, ",failures," failures; ",walked_metres," m actual route; prior encounters forced, final human live")

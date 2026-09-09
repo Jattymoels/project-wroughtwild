@@ -28,17 +28,19 @@ creature concept sheets with modelling notes. The selected creatures now have an
 
 ## Current phase
 
-[Living Frontier Wave 5](docs/prototype/living-frontier-wave5-2026-09-09.md)
-opens Pairing Hall after the Collection Annex's protected Retained Fen change.
-Its ordered Blue-held, warned Red specimen teaches a deliberate escape or
-interrupt decision. First Pairing victory reshapes Excited Uplands into stone
-shelves with finite iron/silver and a paired host, reaching era three while
-preserving the first event and paid ownership. Launch this incomplete campaign
-with `godot --path game -- --living-frontier-wave5`; the Wave-4 flag and saved
-policy remain compatible. Publication displays a preparing notice but still
-pauses synchronously; measured results and remaining human playtests are in the
-work item. Work stops after LF-5A/B/C for orchestrator review. The human finale,
-captured controls and optional Heat remain Waves 6–7.
+[Living Frontier Wave 6](docs/prototype/living-frontier-wave6-2026-09-09.md)
+repairs ordinary-load movement after failed publication recovery, then opens
+the existing Central Laboratory after both protected region changes. Its
+dedicated human Conservator uses committed White lanes, a Blue-held Red mark
+and Green branches, with movement, cover, interrupts and emergency-release
+counterplay. Victory resolves the story once and visibly transfers the saved
+apparatus controls. Launch with `godot --path game -- --living-frontier-wave6`;
+Wave-4/5 flags and saves remain compatible. The existing geography, two terrain
+events, three eras, paid work and finite ownership remain. Publication still
+pauses synchronously. Evidence distinguishes live build wins from forced route
+fixtures; human readability and difficulty acceptance remain open. Work stops
+after LF-6A/B for orchestrator review. Optional Heat and configured rewards
+remain Wave 7.
 
 [Living Frontier Waves 1–2](docs/prototype/living-frontier-wave2-2026-09-08.md)
 add opt-in manual Red/White/Blue/Green extraction, affordable signal delay and

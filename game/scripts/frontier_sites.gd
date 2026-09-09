@@ -7,6 +7,10 @@ var dressing: Array[MeshInstance3D] = []
 var shells: Array[MeshInstance3D] = []
 var trail_marks: Array[MeshInstance3D] = []
 var trail_pieces: Array[MeshInstance3D] = []
+var central_label: Label3D
+var control_label: Label3D
+var control_lights: Array[MeshInstance3D] = []
+var control_lever: MeshInstance3D
 const STONE := Color("555e5b")
 const METAL := Color("727a77")
 
@@ -58,6 +62,7 @@ func _compose() -> void:
 		for at: Vector3 in habitat.habits: _scar(at,String(habitat.influence),true)
 	for lab: Dictionary in terrain.map.laboratories: _laboratory(lab)
 	_artificial_trail()
+	refresh_apparatus()
 	refresh_buildings()
 
 func _artificial_trail() -> void:
@@ -170,6 +175,34 @@ func _laboratory(data: Dictionary) -> void:
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	label.visibility_range_end = 28
 	add_child(label)
+	if laboratory_open and String(data.id).contains("central"):
+		central_label=label
+		# A surface change on the existing door, with no extra collision or stock.
+		control_label=Label3D.new()
+		control_label.name="ApparatusControl"
+		control_label.position=at+Vector3(0,1.8,size.z*.5+.22)
+		control_label.font_size=28
+		control_label.pixel_size=.003
+		control_label.visibility_range_end=20
+		add_child(control_label)
+		for side in [-1.0,1.0]:
+			control_lights.append(_box(at+Vector3(side*.65,1.05,size.z*.5+.22),Vector3(.055,.7,.045),Color("e47b58"),false,true))
+		control_lever=_box(at+Vector3(0,.95,size.z*.5+.27),Vector3(.5,.08,.12),Color("d1c8a6"))
+
+func refresh_apparatus(save_pending: bool=false) -> void:
+	if central_label==null: return
+	var captured:=terrain._sim.world_effect_active("forge_arc_complete")
+	central_label.text="Central Laboratory\n"+("Apparatus control · yours" if captured else "Human harness entrance")
+	control_label.text="APPARATUS\n"+("CONTROL: YOURS" if captured else "CONTROL: LOCKED")
+	if captured and save_pending: control_label.text+="\nSAVE NEEDED"
+	control_label.modulate=Color("e9d6aa") if captured else Color("eeb195")
+	control_lever.rotation.z=PI*.5 if captured else 0.0
+	for i in control_lights.size():
+		var material:=control_lights[i].mesh.material as StandardMaterial3D
+		var colour:Color=Color("bdcba7") if captured else (Color("71bae7") if i==0 else Color("ee8053"))
+		material.albedo_color=colour
+		material.emission=colour
+		material.emission_energy_multiplier=.15 if captured else .45
 
 func refresh_buildings(changed: Array[AABB] = [], buildings: Dictionary = {}) -> void:
 	var index := StrangeSites._building_index(terrain) if buildings.is_empty() else buildings

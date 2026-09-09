@@ -2,6 +2,35 @@
 
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
+## Living Frontier human finale and captured controls — LF-6A/B
+
+- [x] LF5-R1 repair passes ordinary-load actual movement and failed-load stops
+  before Wave 6 implementation, then passes again with the finale installed.
+- [x] The existing Central door opens after both physical awards, retaining
+  its two floors, eight stages, records, apparatus and ordinary Trial ownership.
+- [x] A dedicated corrupted human uses its own committed White lane, Blue-held
+  Red release and Green branches, distinct gestures/tells and exposed recovery.
+  Actual movement, cover, stagger/freeze and both physical emergency releases
+  provide counterplay. The existing Warden attack loop is not used.
+- [x] Three paid ordinary starter builds win with real casts and incoming damage
+  enabled, no Catalyst or invulnerability fixture. Natural human attacks also
+  cause a real Trial death; earlier route encounters explicitly force outcomes.
+- [x] Final return saves the existing haul and once-only resolution together;
+  the existing door visibly transfers control. Failed writes retain the live
+  settlement, a visible unsaved state and a working save-retry action without
+  another payout. Reopening saved controls does not repeat the finale.
+- [x] Ordinary saves/loads and separate processes preserve cleared boundaries,
+  death/retry, completed story, later death-pack quantities and all other owned
+  equipment/world state. Both transformations and three eras remain intact;
+  published legacy saves, finite sources, machines and recipes still pass.
+- [x] The captured controls explain future experiments, with configured rewards
+  and optional Heat still unavailable until Wave 7. No new era is introduced.
+- [ ] Orchestrator independently reviews the repair and Wave 6 implementation.
+- [ ] Human accepts full-Trial difficulty, close-view human/tell readability,
+  finale pacing and the remaining synchronous terrain-publication pause.
+
+[Bounded contract, labelled evidence and limitations](living-frontier-wave6-2026-09-09.md).
+
 ## Living Frontier ordered pairing and second changing era — LF-5A through LF-5C
 
 - [x] The ordered Blue hold / warned Red release has one fixed mark, ordinary

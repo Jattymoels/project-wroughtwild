@@ -1,5 +1,18 @@
 # Progression: Eras, the Foundry, and Ores as Properties
 
+**LF-6 finale (9 September 2026):** the existing Central Laboratory opens after
+the second physical award. Its dedicated human Conservator settles the existing
+capstone haul and `forge_arc_complete` once. For LF policy that receipt owns both
+story resolution and apparatus control; no third terrain event or fourth era is
+added. Saved completion visibly releases the existing exterior control handle
+and prevents another human encounter. Final return checkpoints the whole world
+and haul; failed writes keep the live settlement, show that saving is still
+needed, and offer save retry without another payout. Loading an older unfinished
+checkpoint retains that checkpoint's unfinished story. Death before victory
+cannot claim control; later world death preserves completion and uses ordinary
+recoverable material-pack ownership. Optional configured runs/rewards and Heat
+remain Wave 7. [Bounded contract and evidence](../prototype/living-frontier-wave6-2026-09-09.md).
+
 **LF-5C continuation:** first Pairing victory pays one Eye/receipt and queues
 Excited Uplands. Only publication of its protected physical terrain records
 `ash_tide`, reaching era three and the existing skill/Foundry/material changes.
@@ -22,7 +35,7 @@ loot/Catalyst rules still apply.
 
 For this policy only, the hill cairn consumes the first Heart once as remembrance,
 with no additional era or reward. The continuation above opens Pairing and
-drowned-altar remembrance; Central and maps remain closed. Death and early bank-out do not queue resonance; repeated victories,
+drowned-altar remembrance; LF-6 above opens Central, while maps remain closed. Death and early bank-out do not queue resonance; repeated victories,
 callbacks and reloads cannot duplicate the first-clear payout or transformation.
 Legacy policies retain both original curio gates and their rewards unchanged.
 [Contract, compatibility and evidence](../prototype/living-frontier-wave4-2026-09-09.md).
