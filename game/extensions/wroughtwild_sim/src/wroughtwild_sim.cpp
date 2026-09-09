@@ -242,6 +242,12 @@ void WroughtwildSim::_bind_methods() {
     ClassDB::bind_method(D_METHOD("skill_cast_armour", "skill_id"), &WroughtwildSim::skill_cast_armour);
     ClassDB::bind_method(D_METHOD("ward_multiplier", "carried_statuses"), &WroughtwildSim::ward_multiplier);
     ClassDB::bind_method(D_METHOD("world_map", "seed"), &WroughtwildSim::world_map);
+    ClassDB::bind_method(D_METHOD("set_campaign_policy", "policy"), &WroughtwildSim::set_campaign_policy);
+    ClassDB::bind_method(D_METHOD("campaign_policy"), &WroughtwildSim::campaign_policy);
+    ClassDB::bind_method(D_METHOD("resonance_json"), &WroughtwildSim::resonance_json);
+    ClassDB::bind_method(D_METHOD("resonance_queue", "seed"), &WroughtwildSim::resonance_queue);
+    ClassDB::bind_method(D_METHOD("resonance_prepare", "seed", "protection"), &WroughtwildSim::resonance_prepare);
+    ClassDB::bind_method(D_METHOD("resonance_validate_world", "profile", "seed"), &WroughtwildSim::resonance_validate_world);
     ClassDB::bind_method(D_METHOD("set_world_profile", "profile_id"), &WroughtwildSim::set_world_profile);
     ClassDB::bind_method(D_METHOD("world_profile"), &WroughtwildSim::world_profile);
     ClassDB::bind_method(D_METHOD("world_mesh", "seed", "chunk_cells", "faceted", "palette"), &WroughtwildSim::world_mesh, DEFVAL(false), DEFVAL(Dictionary()));
@@ -423,6 +429,7 @@ bool WroughtwildSim::trial_start(int seed, const String& floor_id) {
     if (!require_loaded("trial_start") || trial_) {
         return false;
     }
+    if (player_->campaignPolicy == wroughtwild::resonance::campaign) return false;
     const wroughtwild::tuning::TrialFloor* floor = nullptr;
     if (!floor_id.is_empty()) {
         floor = tuning_->trial.findFloor(to_std(floor_id));
@@ -1097,6 +1104,7 @@ bool WroughtwildSim::import_json(const String& text) {
         auto savedGate = game.extra.find("trial_gate");
         if (savedGate != game.extra.end()) gate = wroughtwild::trial::GateState::fromJson(savedGate->second);
         player_->importState(game.economy);
+        world_cache_.reset();
         equipment_ = game.equipment;
         trial_gate_ = gate;
         last_error_ = String();
@@ -1261,6 +1269,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         for (const auto& base : loaded->items.itemBases) machine_config.allowedItems.erase(base.id);
         auto machines = std::make_unique<wroughtwild::contraptions::MachineWorld>(machine_config);
         auto leyline_config = wroughtwild::leyline::Config::load(to_std(tuning_directory.path_join("leyline.json")));
+        auto resonance_config = wroughtwild::resonance::Config::load(to_std(tuning_directory.path_join("resonance.json")));
         // PlayerEconomy keeps a reference to the tuning, so the tuning must
         // outlive it: drop the session and player first, then swap the tuning in.
         trial_.reset();
@@ -1273,6 +1282,7 @@ bool WroughtwildSim::load_tuning(const String& tuning_directory) {
         leylines_.reset();
         leyline_positions_.clear();
         leyline_config_ = std::move(leyline_config);
+        resonance_config_ = resonance_config;
         player_ = std::make_unique<wroughtwild::economy::PlayerEconomy>(*tuning_);
         temper_seed_ = std::random_device{}();
         last_error_ = String();
@@ -2362,14 +2372,59 @@ PackedStringArray WroughtwildSim::linked_casts(const String& skill_id, const Str
                                                                 to_std(skill_id), to_std(trigger)));
 }
 
+bool WroughtwildSim::set_campaign_policy(const String& policy) {
+    if (!require_loaded("set_campaign_policy")) return false;
+    const auto id=to_std(policy);
+    if (id!="legacy" && id!=wroughtwild::resonance::campaign) return false;
+    if (player_->resonanceState.phase!="dormant") return false;
+    player_->campaignPolicy=id; world_cache_.reset(); return true;
+}
+String WroughtwildSim::campaign_policy() const { return player_ ? to_godot(player_->campaignPolicy) : String("legacy"); }
+String WroughtwildSim::resonance_json() const { return player_ && player_->campaignPolicy==wroughtwild::resonance::campaign ? to_godot(player_->resonanceState.toJson()) : String(); }
+bool WroughtwildSim::resonance_queue(int seed) {
+    if (!require_loaded("resonance_queue") || trial_ || seed<0 || player_->campaignPolicy!=wroughtwild::resonance::campaign || world_profile_!="living_frontier_wave3" || player_->resonanceState.phase!="dormant") return false;
+    player_->resonanceState.phase="pending";player_->resonanceState.seed=static_cast<uint64_t>(seed);world_cache_.reset();return true;
+}
+bool WroughtwildSim::resonance_validate_world(const String& profile,int seed) {
+    if (!require_loaded("resonance_validate_world")) return false;
+    if (player_->campaignPolicy=="legacy")return true;
+    try {
+        if(to_std(profile)!="living_frontier_wave3" || seed<0)throw std::runtime_error("Campaign and saved geography disagree");
+        if(!set_world_profile(profile))return false;
+        (void)cached_world(static_cast<uint64_t>(seed)); return true;
+    } catch(const std::exception& e) {last_error_=to_godot(e.what());return false;}
+}
+bool WroughtwildSim::resonance_prepare(int seed,const Array& protection) {
+    if (!require_loaded("resonance_prepare") || trial_ || seed<0 || player_->campaignPolicy!=wroughtwild::resonance::campaign || world_profile_!="living_frontier_wave3" || player_->resonanceState.phase!="pending" || player_->resonanceState.seed!=static_cast<uint64_t>(seed)) {
+        last_error_="No pending resonance for this world";return false;
+    }
+    try {
+        std::vector<wroughtwild::resonance::Bounds> bounds;
+        for(int64_t i=0;i<protection.size();++i) {
+            const Array a=protection[i];if(a.size()!=4)throw std::runtime_error("Invalid protection bounds");
+            double b[4];for(int j=0;j<4;++j) {b[j]=static_cast<double>(a[j]);if(!std::isfinite(b[j]))throw std::runtime_error("Invalid protection coordinate");}
+            if(b[0]>b[2] || b[1]>b[3])throw std::runtime_error("Reversed protection bounds");
+            bounds.push_back({b[0],b[1],b[2],b[3]});
+        }
+        auto prepared=wroughtwild::resonance::prepare(cached_world(static_cast<uint64_t>(seed)),resonance_config_,bounds);
+        player_->resonanceState=std::move(prepared);world_cache_.reset();last_error_=String();return true;
+    } catch(const std::exception& e) {last_error_=to_godot(e.what());return false;}
+}
+
 const wroughtwild::worldgen::WorldMap& WroughtwildSim::cached_world(uint64_t seed) {
     // The 3D world costs real time to generate; world_map and world_mesh
     // are always asked about the same seed back to back, so keep the last
     // one. Deterministic generation makes the cache invisible.
-    if (!world_cache_ || world_cache_->seed != seed || world_cache_->profileId != world_profile_) {
+    const std::string signature = player_->campaignPolicy==wroughtwild::resonance::campaign ? player_->resonanceState.toJson() : "";
+    if (!world_cache_ || world_cache_->seed != seed || world_cache_->profileId != world_profile_ || world_cache_resonance_!=signature) {
         world_cache_.reset(); // Do not retain the old voxel field during new generation.
         world_cache_ = std::make_unique<wroughtwild::worldgen::WorldMap>(
             wroughtwild::worldgen::generateProfile(*tuning_, seed, world_profile_));
+        if (player_->campaignPolicy == wroughtwild::resonance::campaign) {
+            try { wroughtwild::resonance::apply(*world_cache_, player_->resonanceState); }
+            catch (...) { world_cache_.reset(); throw; }
+        }
+        world_cache_resonance_=signature;
     }
     return *world_cache_;
 }
@@ -2398,6 +2453,7 @@ bool WroughtwildSim::set_world_profile(const String& profile_id) {
 
 bool WroughtwildSim::trial_start_story(int seed, const String& run_id) {
     if (!require_loaded("trial_start_story") || trial_) return false;
+    if (player_->campaignPolicy == wroughtwild::resonance::campaign) return false;
     std::string id = run_id.is_empty() ? "forge_tyrant" : to_std(run_id);
     const auto* run = tuning_->trial.findExpedition(id);
     if (!run || (!run->requiresWorldEffect.empty() && !player_->worldEffectActive(run->requiresWorldEffect))) return false;
@@ -2526,6 +2582,7 @@ Array WroughtwildSim::trial_map_offers(int tier) const {
 
 bool WroughtwildSim::trial_start_map(int tier, int offer_index) {
     if (!require_loaded("trial_start_map") || trial_ || !player_->worldEffectActive("forge_arc_complete")) return false;
+    if (player_->campaignPolicy == wroughtwild::resonance::campaign) return false;
     const auto offers = wroughtwild::trial::mapOffers(*tuning_, trial_gate_, tier);
     if (offer_index < 0 || offer_index >= static_cast<int>(offers.size())) return false;
     auto run = std::make_unique<wroughtwild::trial::TrialSession>(*tuning_, *player_, build_tags(), offers[static_cast<size_t>(offer_index)]);
@@ -2619,6 +2676,7 @@ Dictionary WroughtwildSim::world_map(int seed) {
 
     d["seed"] = seed;
     d["profile_id"] = to_godot(map.profileId);
+    if (player_->campaignPolicy == wroughtwild::resonance::campaign) d["resonance_signature"] = resonance_json().sha256_text();
     d["width"] = map.width;
     d["height"] = map.height;
     d["depth"] = map.depth;

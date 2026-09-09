@@ -5,7 +5,7 @@ SIM := ../../sim
 SOURCES := test_main.cpp $(SIM)/src/json.cpp $(SIM)/src/tuning.cpp \
            $(SIM)/src/economy.cpp $(SIM)/src/items.cpp $(SIM)/src/boons.cpp \
            $(SIM)/src/stats.cpp $(SIM)/src/combat.cpp $(SIM)/src/trial.cpp \
-           $(SIM)/src/save.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(SIM)/src/loot.cpp $(SIM)/src/grammar.cpp $(SIM)/src/lattice.cpp $(SIM)/src/foundry.cpp $(SIM)/src/daycycle.cpp
+           $(SIM)/src/save.cpp $(SIM)/src/resonance.cpp $(SIM)/src/worldgen.cpp $(SIM)/src/worldgen_profiles.cpp $(SIM)/src/loot.cpp $(SIM)/src/grammar.cpp $(SIM)/src/lattice.cpp $(SIM)/src/foundry.cpp $(SIM)/src/daycycle.cpp
 BIN := build/sim_tests
 .DEFAULT_GOAL := test
 
@@ -23,11 +23,15 @@ build/living_frontier_wave2_tests: test_living_frontier_wave2.cpp $(wildcard $(S
 build/living_frontier_wave3_tests: test_living_frontier_wave3.cpp living_frontier_published.inc worldgen_fingerprint.inc $(wildcard $(SIM)/src/*.cpp) $(wildcard $(SIM)/src/worldgen_*.inc) $(wildcard $(SIM)/include/wroughtwild/*.h)
 	@mkdir -p build
 	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_living_frontier_wave3.cpp $(wildcard $(SIM)/src/*.cpp) -o $@
-test: $(BIN) build/leyline_tests build/living_frontier_wave2_tests build/living_frontier_wave3_tests
+build/resonance_tests: test_resonance.cpp $(wildcard $(SIM)/src/*.cpp) $(wildcard $(SIM)/src/worldgen_*.inc) $(wildcard $(SIM)/include/wroughtwild/*.h)
+	@mkdir -p build
+	$(CXX) $(CXXFLAGS) -I$(SIM)/include test_resonance.cpp $(wildcard $(SIM)/src/*.cpp) -o $@
+test: $(BIN) build/leyline_tests build/living_frontier_wave2_tests build/living_frontier_wave3_tests build/resonance_tests
 	./$(BIN) ../../data/tuning
 	./build/leyline_tests ../../data/tuning
 	./build/living_frontier_wave2_tests ../../data/tuning
 	./build/living_frontier_wave3_tests ../../data/tuning
+	./build/resonance_tests ../../data/tuning
 
 # Complete terrain/pack fingerprints from before the intensive, multi-seed
 # reachable habitat guarantees, and the approved material/form matrix.

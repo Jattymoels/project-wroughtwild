@@ -29,18 +29,8 @@ func setup(owner_terrain: Terrain, definitions: Array) -> void:
 	resource_build_budget_ms = settings.resource_build_budget_ms
 	refresh_seconds = settings.refresh_seconds
 	for def in definitions:
-		var id := String(def.get("resource_id", "wn_%s_%d_%d_%d" % [def.type,def.x,def.y,def.z]))
-		var cs := float(terrain.map.cell_size)
-		records[id] = {
-			"name":id,"resource_id":id,"habitat_id":String(def.get("habitat_id","")),
-			"presentation_label":String(def.get("presentation_label",def.get("display_name",""))),
-			"parent":"Terrain/ResourceNodes","family":String(def.material_family),"visual":String(def.visual),
-			"position":[(int(def.x)+0.5)*cs,float(def.y),(int(def.z)+0.5)*cs],
-			"remaining_units":int(def.units),"units_per_harvest":int(def.units_per_harvest),
-			"heat_to_work":int(def.get("heat_to_work",0)),"tool_item":String(def.get("tool_item","")),
-			"drive_presses":int(def.get("drive_presses",1)),"drive_progress":0,"wedge_set":false,"cracked":false,
-			"era":int(def.get("era",1)),"site_id":String(def.get("site_id","")),
-			"harvest_stages":Array(def.get("harvest_stages",[])),"use_preview":String(def.get("use_preview",""))}
+		var row:=definition_record(def,float(terrain.map.cell_size))
+		records[row.resource_id]=row
 	for id in records:
 		_presentation_defaults[id]={}
 		for field in ["visual","resource_id","habitat_id","presentation_label","era","site_id","harvest_stages","use_preview"]:
@@ -48,6 +38,19 @@ func setup(owner_terrain: Terrain, definitions: Array) -> void:
 	_reindex()
 	canopies = ResourceCanopies.new()
 	canopies.setup(self)
+
+static func definition_record(def: Dictionary, cs: float) -> Dictionary:
+	var id := String(def.get("resource_id", "wn_%s_%d_%d_%d" % [def.type,def.x,def.y,def.z]))
+	return {
+		"name":id,"resource_id":id,"habitat_id":String(def.get("habitat_id","")),
+		"presentation_label":String(def.get("presentation_label",def.get("display_name",""))),
+		"parent":"Terrain/ResourceNodes","family":String(def.material_family),"visual":String(def.visual),
+		"position":[(int(def.x)+0.5)*cs,float(def.y),(int(def.z)+0.5)*cs],
+		"remaining_units":int(def.units),"units_per_harvest":int(def.units_per_harvest),
+		"heat_to_work":int(def.get("heat_to_work",0)),"tool_item":String(def.get("tool_item","")),
+		"drive_presses":int(def.get("drive_presses",1)),"drive_progress":0,"wedge_set":false,"cracked":false,
+		"era":int(def.get("era",1)),"site_id":String(def.get("site_id","")),
+		"harvest_stages":Array(def.get("harvest_stages",[])),"use_preview":String(def.get("use_preview",""))}
 
 func _reindex() -> void:
 	buckets.clear()

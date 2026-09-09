@@ -202,6 +202,12 @@ public:
     // material_family, display_name, units, units_per_harvest, visual}),
     // packs (array of {enemies, x, z}), spawn_x/z, gate_x/z.
     Dictionary world_map(int seed);
+    bool set_campaign_policy(const String& policy);
+    String campaign_policy() const;
+    String resonance_json() const;
+    bool resonance_queue(int seed);
+    bool resonance_prepare(int seed, const Array& protection);
+    bool resonance_validate_world(const String& profile, int seed);
     // Active generation identity. Unknown profiles never replace the current
     // selection; old direct callers default to legacy_v1.
     bool set_world_profile(const String& profile_id);
@@ -690,6 +696,8 @@ private:
     std::unique_ptr<wroughtwild::tuning::Tuning> tuning_;
     std::unique_ptr<wroughtwild::contraptions::MachineWorld> contraptions_;
     wroughtwild::leyline::Config leyline_config_;
+    wroughtwild::resonance::Config resonance_config_;
+    mutable std::string world_cache_resonance_;
     std::unique_ptr<wroughtwild::leyline::World> leylines_;
     std::map<std::string, Vector3> leyline_positions_; // bound geography, independent of validation's cache
     std::unique_ptr<wroughtwild::economy::PlayerEconomy> player_;

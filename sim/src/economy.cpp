@@ -701,6 +701,9 @@ const Inventory& PlayerEconomy::storeContents(const std::string& key) const {
 }
 
 bool PlayerEconomy::setCurio(const std::string& landmarkId) {
+    // This opt-in successor opens its bounded campaign in LF-4C. Historical
+    // curio gates remain available only to their own saved campaign policy.
+    if (campaignPolicy == resonance::campaign) return false;
     const auto* curio = tuning_.trial.curioForLandmark(landmarkId);
     if (!curio || !curioHeld(curio->id)) return false;
     remove(inventory, {{curio->id, 1}});
@@ -819,6 +822,8 @@ bool PlayerEconomy::buildStation(const std::string& stationId) {
 
 PlayerEconomy::State PlayerEconomy::exportState() const {
     State state;
+    state.campaignPolicy = campaignPolicy;
+    state.resonanceState = resonanceState;
     state.inventory = inventory;
     state.currency = currency;
     for (const auto& [id, skill] : skills_) state.skillXp[id] = skill.xp;
@@ -838,6 +843,8 @@ PlayerEconomy::State PlayerEconomy::exportState() const {
 }
 
 void PlayerEconomy::importState(const State& state) {
+    campaignPolicy = state.campaignPolicy;
+    resonanceState = state.resonanceState;
     foundry_ = state.foundry;
     skillUses_ = state.skillUses;
     skillPractice_ = state.skillPractice; earnedMastery_ = state.earnedMastery;

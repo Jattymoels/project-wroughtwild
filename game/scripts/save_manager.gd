@@ -12,6 +12,7 @@ extends RefCounted
 const SCHEMA_VERSION := 2
 const DEFAULT_PATH := "user://wroughtwild_save.json"
 static func default_path() -> String:
+	if OS.get_cmdline_user_args().has("--living-frontier-wave4"): return "user://living_frontier_wave4.json"
 	if OS.get_cmdline_user_args().has("--living-frontier-wave3"): return "user://living_frontier_wave3.json"
 	return "user://living_frontier_wave1.json" if OS.get_cmdline_user_args().has("--living-frontier") else DEFAULT_PATH
 
@@ -241,6 +242,9 @@ func _prepare_restore(player: WroughtwildPlayer, data: Dictionary, restoring := 
 		return {}
 	if not candidate.import_json(String(data.sim)):
 		last_error = "rules state rejected: " + candidate.last_error()
+		return {}
+	if not candidate.resonance_validate_world(profile,int(data.get("world_seed",0))):
+		last_error = "saved resonance rejected: " + candidate.last_error()
 		return {}
 	for entry: Dictionary in data.get("blocks", []):
 		var cell: Array = entry.cell
@@ -573,6 +577,15 @@ func read(path: String, player: WroughtwildPlayer) -> bool:
 		return false
 	var parsed: Variant = _read_payload(path)
 	if parsed is Dictionary:
+		var rules_parser:=JSON.new()
+		var rules: Variant=null
+		if rules_parser.parse(String(parsed.get("sim","")))==OK: rules=rules_parser.data
+		if rules is Dictionary and rules.get("economy") is Dictionary:
+			var policy:=String(rules.economy.get("campaign_policy","legacy"))
+			var resonance: Variant=rules.economy.get("resonance",{})
+			if policy not in ["legacy","living_frontier_wave4"] or (resonance is Dictionary and int(resonance.get("version",1))>1):
+				last_error="unsupported campaign or resonance save version"
+				return false
 		# A newer format/profile needs its matching game, not an automatic rewind.
 		if parsed.get("contraptions", "") is String and not String(parsed.get("contraptions", "")).is_empty():
 			var machine_data: Variant = JSON.parse_string(parsed.contraptions)

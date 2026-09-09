@@ -149,3 +149,60 @@ ambitions in this incomplete opt-in campaign. LF-5–7 progression, the second
 transform, human finale and configured Heat are unavailable, rather than opening
 the old later Forge stories through an unintended bypass. Human discovery,
 combat balance and final laboratory/ice art remain review questions.
+
+## LF-4A implementation
+
+The new policy is saved inside native economy state; legacy saves omit both new
+fields. Its event is a version-one sparse ledger with dormant, pending and
+applied phases, an immutable seed, original/replacement column heights and four
+finite ore identities. Source and machine validation reuse the same transformed
+native cache as mesh/collision generation. An earlier candidate failed the real
+collision check because source validation refilled that cache with base terrain;
+the shared cache signature correction is part of this slice.
+
+`resonance.json` records all new tuning: two-metre maximum rise, three-metre
+edge band and ownership/workspace margin, two-metre existing-resource margin,
+at least 32 changed columns, four ore nodes six metres apart with eight units
+each, and a 24 m nearby-combat deferral. Columns are retained around actual
+oriented paid footprints, storage, station footprints, machine endpoints and
+linked spans, excavations/cracks, current return position and recoverables.
+Generated home sites, approaches, shell footprints, finite resources and host
+workplaces are also retained. Adjacent heights are relaxed until no previously
+ordinary step becomes taller. Only blocks above the old surface are added;
+underground voids and later saved excavation are not refilled.
+
+Publication first checkpoints pending ownership, builds a separate native
+candidate, validates its full save, commits that save and then uses normal
+restoration to publish it. An interruption after commit loads applied geometry;
+the previous checkpoint retains pending ownership. Full occupancy produces an
+explicit retry reason. Neither a Trial nor a curio can advance this policy in
+LF-4A. No existing world is migrated by the launch flag.
+
+Native sweep: **299 checks, 0 failures**, same 37 seeds as LF3-R1. Every seed
+produces a physical bank and four distinct workplaces, preserves old ordinary
+terrain edges/resources/subsurface blocks, deterministically routes around a
+protected paid footprint, and explicitly defers full occupancy. Legacy native
+serialization and pending policy/seed roundtrip also pass.
+
+The isolated Godot fixture uses gathered timber with real paid placement for
+footing, support and chest, stores four gathered wood, excavates a real surface
+block, and retains a linked cargo span and recovery bundle. Machine kits and the
+bundle are explicit fixture stock; this is a protection test, not a second
+economy-acquisition proof. The controller walks across both changed bank margins
+and a ray independently hits its new collision surface. It exercises actual
+failed save opening and verifies unchanged pending terrain/ownership.
+
+Final engine receipts: **89** isolated checks, **19** pending-restart checks,
+**8** applied-restart checks, **35 + 37** historical paid-save checks, all zero
+failures. Existing save recovery passes **175** and native main rules pass
+**224,380**. The recovery rerun also corrected the new forward-version probe
+to parse damaged native JSON without emitting an engine error. Commands:
+`tools/living_frontier_wave4_checks.ps1 -Terrain -Legacy` and the native
+`tests/sim` resonance target; isolated logs live in ignored `build/lf4`.
+LF-4A's real transformation and pending-restart gate is clear.
+
+Limit: this is a local retained-bank transformation, not a general-purpose
+world editor. All existing terrain remains one ordinary connected opportunity;
+arbitrary player-built sealed enclosures are not opened for them. This slice's
+new ore is still era-gated and progression remains disabled. Human terrain
+readability, discovery and performance acceptance remain for review.

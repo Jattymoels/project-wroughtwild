@@ -37,6 +37,9 @@ func _ready() -> void:
 		world_profile = "living_frontier_wave1"
 	if OS.get_cmdline_user_args().has("--living-frontier-wave3"):
 		world_profile = "living_frontier_wave3"
+	if OS.get_cmdline_user_args().has("--living-frontier-wave4"):
+		world_profile = "living_frontier_wave3"
+		_sim().set_campaign_policy("living_frontier_wave4")
 	var normal_launch := get_parent() == get_tree().root and scene_file_path == "res://scenes/sandpit.tscn"
 	if normal_launch and DisplayServer.get_name() != "headless":
 		seed_controls = SEED_CONTROLS.new()
@@ -262,7 +265,8 @@ func apply_world_seed(seed_value: int) -> void:
 func apply_world_identity(seed_value: int, profile_id: String) -> bool:
 	if not _sim().set_world_profile(profile_id):
 		return false
-	if seed_value == world_seed and profile_id == world_profile and not terrain.map.is_empty():
+	var signature:=_sim().resonance_json().sha256_text() if _sim().campaign_policy()=="living_frontier_wave4" else ""
+	if seed_value == world_seed and profile_id == world_profile and not terrain.map.is_empty() and String(terrain.map.get("resonance_signature",""))==signature:
 		return true
 	world_profile = profile_id
 	_build_world(seed_value)

@@ -2,6 +2,19 @@
 
 These are player-visible outcomes, not a substitute for implementation-level tests.
 
+## Living Frontier isolated terrain — LF-4A
+
+- [x] A separate saved campaign transforms real Retained Fen voxels/collision
+  while preserving paid supports/storage, machine spans, excavation and recovery.
+- [x] Pending and applied checkpoints survive separate engine processes; a
+  failed save and fully occupied envelope retain pending ownership.
+- [x] An ordinary controller crosses the bank and its margins; native 37-seed
+  checks preserve old ordinary terrain edges, resources and subsurface blocks.
+- [x] Existing seeds 5/77 paid saves and native serialization keep legacy policy.
+- [ ] Human accepts the bank's discovery/readability and runtime cost.
+
+[Wave 4 evidence and limitations](living-frontier-wave4-2026-09-09.md).
+
 ## Living Frontier physical approaches — LF3-R1
 
 - [x] Derived approaches and the visible collection trail clear final lab shells

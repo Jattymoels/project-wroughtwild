@@ -1,0 +1,22 @@
+{
+  "max_rise_m": 2,
+  "blend_m": 3,
+  "ownership_margin_m": 3,
+  "resource_margin_m": 2,
+  "minimum_changed_columns": 32,
+  "ore_spacing_m": 6,
+  "ore_nodes": 4,
+  "ore_units": 8,
+  "safe_return_radius_m": 24,
+  "design_purpose": {
+    "max_rise_m": "A visible retained bank, at most two metres higher than published terrain.",
+    "blend_m": "Taper the bank around its edge and protected ground; ordinary old steps stay ordinary.",
+    "ownership_margin_m": "Keep three metres of working and walking space around current builds, machinery, excavations and recoverables.",
+    "resource_margin_m": "Keep existing finite resource ground and two metres of harvesting space unchanged.",
+    "minimum_changed_columns": "Defer a fully occupied envelope rather than publish a token or destructive event.",
+    "ore_spacing_m": "Leave working room between new exposed deposits.",
+    "ore_nodes": "Two copper and two tin deposits make the first transformed habitat useful without an infinite supply.",
+    "ore_units": "Each new deposit holds eight ore, using the existing charcoal heat and harvest rules.",
+    "safe_return_radius_m": "Defer publication while an overworld enemy is fighting within twenty-four metres of the return point."
+  }
+}

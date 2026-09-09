@@ -1,5 +1,12 @@
 # World Generation, Settlements and Travel
 
+**LF-4A (9 September 2026):** opt-in campaign policy `living_frontier_wave4`
+retains LF3 geography and old worlds' policies. A saved, sparse Retained Fen
+event changes real voxels/collision only after a protected candidate checkpoint
+is installed. Paid space, excavation, resources and recovery access are retained;
+pending/applied restart is explicit. Laboratory progression remains closed in
+this isolated slice. [Contract and evidence](../prototype/living-frontier-wave4-2026-09-09.md).
+
 **LF3-R1 (9 September 2026):** site selection remains frozen, but derived LF
 approaches and the collection trail are corrected after every shell is final.
 The walk excludes projecting exteriors with ordinary capsule clearance and

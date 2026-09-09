@@ -194,6 +194,13 @@ wroughtwild::contraptions::WorldIdentity WroughtwildSim::machine_world_identity(
     if (!world_cache_ || world_cache_->profileId!=id || world_cache_->seed!=native_seed) {
         world_cache_.reset();
         world_cache_=std::make_unique<wroughtwild::worldgen::WorldMap>(wroughtwild::worldgen::generateProfile(*tuning_,native_seed,id));
+        world_cache_resonance_.clear();
+        if (player_ && player_->campaignPolicy==wroughtwild::resonance::campaign && id=="living_frontier_wave3" &&
+            (player_->resonanceState.phase=="dormant" || player_->resonanceState.seed==native_seed)) {
+            try { wroughtwild::resonance::apply(*world_cache_,player_->resonanceState); }
+            catch (...) {world_cache_.reset();throw;}
+            world_cache_resonance_=player_->resonanceState.toJson();
+        }
     }
     const auto* map=world_cache_.get();
     wroughtwild::contraptions::WorldIdentity identity;

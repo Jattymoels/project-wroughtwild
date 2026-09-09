@@ -400,4 +400,9 @@ record exact costs, placements, checks and owner playtests. Repaired paid
 physical support restores excavated sources at their existing anchors; keep
 their workspaces clear. Source payload 4 and machine schema 5 migrate published
 experimental ledgers without resetting them. The existing campaign is unchanged.
-**Stop at Wave 2: Wave 3 needs a separate orchestrator review.**
+That historical Wave-2 stop is superseded by the owner's Wave-3 and Wave-4 work
+items. `--living-frontier-wave4` selects an isolated successor campaign with its
+own `user://living_frontier_wave4.json`; it retains LF3 geography. A saved policy,
+not the launch flag, controls loading. LF-4A proves protected real terrain and
+restart before laboratory progression is enabled. See the
+[Wave 4 contract and evidence](../docs/prototype/living-frontier-wave4-2026-09-09.md).

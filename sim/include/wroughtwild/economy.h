@@ -10,6 +10,7 @@
 #include "wroughtwild/foundry.h"
 #include "wroughtwild/items.h"
 #include "wroughtwild/tuning.h"
+#include "wroughtwild/resonance.h"
 
 namespace wroughtwild::economy {
 
@@ -39,6 +40,8 @@ public:
     Inventory inventory;
     // Host selects this from the outer saved-world identity, never item data.
     std::string worldProfile;
+    std::string campaignPolicy = "legacy";
+    resonance::State resonanceState;
     std::map<std::string, int> currency;
     // Gear instances retain their workpiece capacity and exact rolled values.
     // Newly crafted equipment is an instance even when it is Plain.
@@ -279,6 +282,8 @@ public:
 
     // --- save/load ---
     struct State {
+        std::string campaignPolicy = "legacy";
+        resonance::State resonanceState;
         Inventory inventory;
         std::map<std::string, int> currency;
         std::map<std::string, int> skillXp;

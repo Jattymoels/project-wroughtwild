@@ -126,6 +126,9 @@ std::string toJson(const SaveGame& game) {
 
     out << "\"inventory\":";
     writeIntMap(out, game.economy.inventory);
+    if (game.economy.campaignPolicy != "legacy") {
+        out << ",\"campaign_policy\":\"" << escape(game.economy.campaignPolicy) << "\",\"resonance\":" << game.economy.resonanceState.toJson();
+    }
     out << ",\"currency\":";
     writeIntMap(out, game.economy.currency);
     out << ",\"skill_xp\":";
@@ -245,6 +248,11 @@ SaveGame fromJson(const std::string& text) {
                                  std::to_string(game.schemaVersion));
 
     const json::Value& eco = doc->get("economy");
+    if (auto policy = eco.find("campaign_policy")) game.economy.campaignPolicy = policy->asString();
+    if (game.economy.campaignPolicy != "legacy" && game.economy.campaignPolicy != resonance::campaign)
+        throw std::runtime_error("save: unsupported campaign policy");
+    if (game.economy.campaignPolicy == resonance::campaign) game.economy.resonanceState = resonance::State::fromJson(eco.get("resonance"));
+    else if (eco.find("resonance")) throw std::runtime_error("save: legacy campaign cannot contain a resonance event");
     game.economy.inventory = readIntMap(eco.get("inventory"));
     game.economy.currency = readIntMap(eco.get("currency"));
     game.economy.skillXp = readIntMap(eco.get("skill_xp"));
