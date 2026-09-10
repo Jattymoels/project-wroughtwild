@@ -1,12 +1,13 @@
 # ART-07 — a full frontier and a coherent building kit
 
-**Production update, 10 September 2026:** B1, D1, D4 and F5 have technically
-delivered source packages. The [publication report](art07-production/publication-2026-09-10.md)
-records exact worker/main commits, fresh-copy checks, local handoffs and limits.
-Four of 26 dispatch slices are delivered; the parent B–G groups below are not
-therefore complete. Next recommended prompts are B2/B3/D5/D6; D2/D3 also unlock
-through D1. Visual acceptance, canopy collision/budgets and ordinary-world
-adoption remain separate from source publication.
+**Production update, 11 September 2026:** B1, B2, B3, D1, D4, D5, D6 and F5
+have technically delivered source packages. The [first publication](art07-production/publication-2026-09-10.md)
+and [second publication](art07-production/publication-2026-09-11.md) record exact
+worker/main commits, fresh-copy checks, local handoffs and limits. Eight of 26
+dispatch slices are delivered; the parent B–G groups below remain incomplete.
+Next recommended prompts are B4/D2/D3/E2: the composed walk, remaining structural
+forms and basic/upgraded forge. Visual acceptance, canopy collision/budgets,
+texture sharing and ordinary-world adoption remain separate from source publication.
 
 **Owner follow-up:** “Yep, create a sliced plan and prompts to send off to other
 sessions to enact” selects the [ART-07 dispatch pack](art07-production/README.md).

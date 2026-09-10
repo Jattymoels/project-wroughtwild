@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "B1, D1, D4 and F5 technically delivered; see publication-2026-09-10.md for publication evidence and limits. Other slices remain planned.",
+  "status": "B1, B2, B3, D1, D4, D5, D6 and F5 technically delivered; see publication-2026-09-10.md and publication-2026-09-11.md for evidence and limits. Recommended next batch: B4, D2, D3, E2. Other slices remain planned.",
   "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
   "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
   "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",

@@ -6,16 +6,16 @@ The plan refines the broad ART-07B–G headings into **26 bounded slices**. It p
 
 ## Current delivery and next prompts
 
-B1, D1, D4 and F5 are technically delivered. The [publication report](publication-2026-09-10.md) records their exact commits, verified local handoffs, repeated checks and unresolved visual/performance limits. This is four of 26 slices; no ordinary-world adoption is included.
+B1, B2, B3, D1, D4, D5, D6 and F5 are technically delivered: eight of 26 slices. The [first publication](publication-2026-09-10.md) and [second publication](publication-2026-09-11.md) record exact commits, verified local handoffs, repeated checks and unresolved visual/performance limits. No ordinary-world adoption or owner visual acceptance is inferred.
 
-The recommended next batch completes the remaining foundation assets. Paste one complete prompt into each separate session:
+The recommended next batch joins the nature foundations into a measured walk, completes structural forms and starts the forge finish. Paste one complete prompt into each separate session:
 
-1. [B2 — ground cover and forest floor](prompts/B2.md).
-2. [B3 — rocks, banks and cave contacts](prompts/B3.md).
-3. [D5 — stone, glass and fuel materials](prompts/D5.md).
-4. [D6 — worked metal materials](prompts/D6.md).
+1. [B4 — first composed walk, light and distance](prompts/B4.md).
+2. [D2 — roofs, door and metal spans](prompts/D2.md).
+3. [D3 — fine pieces and complete wall coverings](prompts/D3.md).
+4. [E2 — basic and improved forge](prompts/E2.md).
 
-These can author independently in separate worktrees. GPU generation, rendering and benchmarks use one coordinated slot. D2 (roofs/door/spans) and D3 (fine pieces/coverings) are also ready after D1's publication and local handoff verification. No new sessions are started by this index.
+These can author independently in separate worktrees after verifying their published prerequisites and local packages. GPU generation, rendering and benchmarks use one coordinated slot. B4 must carry forward canopy/body fitting, foliage costs and texture duplication limits from B1–B3. D2/D3 retain D1's lattice and native collision contracts; D5/D6 material proxies do not replace those shapes. Regional kits, E1/E3 and F1–F3 are also dependency-ready, but remain planned. No new sessions are started by this index.
 
 Use the [publisher prompt](prompts/PUBLISH.md) in one coordinating session after workers deliver checked commits. It integrates/pushes one result at a time and updates the shared queue. A dependent session starts after prerequisite recipes/receipts are published and its local source packages verify. A scheduled or merely generated source does not satisfy a dependency.
 

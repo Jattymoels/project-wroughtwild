@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; ART-07 B1/D1/D4/F5 source handoffs technically delivered.** Owner request,
+**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; eight ART-07 source handoffs technically delivered (B1/B2/B3/D1/D4/D5/D6/F5).** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -44,9 +44,12 @@ Their [publication report](art07-production/publication-2026-09-10.md) records
 checked worker commits, local package identities and independent fresh reopens.
 This delivers canopy candidates, ten core shapes, seven organic finishes and
 the retained four-colour packages. Owner visual acceptance of these deliveries
-and normal-world adoption remain separate. B2/B3/D5/D6 are recommended next;
-D1 also unlocks D2/D3 after publication. Full-width tree collision and dense
-forest performance remain open; the isolated RTX 5090 results do not close them.
+and normal-world adoption remain separate. The owner reported B2/B3/D5/D6
+complete on 11 September; their [second publication](art07-production/publication-2026-09-11.md)
+adds ground plants, rock contacts and the remaining twelve material families.
+Recommend B4/D2/D3/E2 next, with prerequisite hashes checked before consumption.
+Full-width tree collision, dense forest performance, repeated material patterns
+and texture duplication remain open; isolated RTX 5090 results do not close them.
 
 The owner then requested a sliced plan and prompts for other sessions to enact
 ART-07. The [dispatch pack](art07-production/README.md) now breaks the parent

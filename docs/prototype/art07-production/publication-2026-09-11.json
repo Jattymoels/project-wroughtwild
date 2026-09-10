@@ -1,0 +1,963 @@
+{
+  "baseline": "f00d4b76274ef2a73c3b6f4a275d2bd3ca0f958d",
+  "slices": {
+    "b2": {
+      "branch": "codex/art07-b2",
+      "worker_tip": "8a64a9f558121c64f528bb09651a0e37b627933b",
+      "commits": [
+        "2f3cb09eab7ea613ac8a569acabc6c0e752e201e",
+        "8a64a9f558121c64f528bb09651a0e37b627933b"
+      ],
+      "scoped_files": [
+        "docs/art/leyline-studies/2026-09-09/art07/b2/README.md",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/blender-audit.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/blender/composition.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/blender/fern-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/blender/floor-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/blender/shrub-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/blender/shrub-source.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus-walk-wind.webp",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/benchmark.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/climber-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/fern-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/floor-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/lichen-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/lod-18-1.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/lod-18-2.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/lod-7-0.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/lod-7-1.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/moss-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/overview-day.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/overview-dusk.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/overview-shade.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/shrub-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/forward_plus/walking-height.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/fresh-blender-audit.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/fresh-verification.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility-walk-wind.webp",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/benchmark.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/climber-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/fern-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/floor-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/lichen-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/lod-18-1.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/lod-18-2.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/lod-7-0.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/lod-7-1.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/moss-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/overview-day.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/overview-dusk.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/overview-shade.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/shrub-close.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/gl_compatibility/walking-height.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/kit-report.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/provenance.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/shrub-input-v01.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b2/verification.json",
+        "docs/prototype/art07-production/receipts/b2.md",
+        "tools/wroughtwild-art07/b2/README.md",
+        "tools/wroughtwild-art07/b2/audit.py",
+        "tools/wroughtwild-art07/b2/build-native.ps1",
+        "tools/wroughtwild-art07/b2/build_kit.py",
+        "tools/wroughtwild-art07/b2/encode_motion.py",
+        "tools/wroughtwild-art07/b2/floor.gdshader",
+        "tools/wroughtwild-art07/b2/generate-shrub.ps1",
+        "tools/wroughtwild-art07/b2/geometry.py",
+        "tools/wroughtwild-art07/b2/inspect_source.py",
+        "tools/wroughtwild-art07/b2/kit.json",
+        "tools/wroughtwild-art07/b2/launch-review.ps1",
+        "tools/wroughtwild-art07/b2/package.py",
+        "tools/wroughtwild-art07/b2/plant.gdshader",
+        "tools/wroughtwild-art07/b2/prepare_review.py",
+        "tools/wroughtwild-art07/b2/provenance.py",
+        "tools/wroughtwild-art07/b2/render-batch.ps1",
+        "tools/wroughtwild-art07/b2/review.gd",
+        "tools/wroughtwild-art07/b2/run-current-checks.ps1",
+        "tools/wroughtwild-art07/b2/run-job.ps1",
+        "tools/wroughtwild-art07/b2/shrub-prompt.txt",
+        "tools/wroughtwild-art07/b2/verify.py"
+      ],
+      "python_syntax_files": 9,
+      "canonical": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff",
+      "copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b2\\copy",
+      "manifest_sha256": "bb4a50ea353a1fdb964542e46afc3f1549f7e45b3b004ab7b4130ae1a7d50e62",
+      "files_verified_before_and_after_copy": 274,
+      "canonical_files_verified_after_checks": 274,
+      "jobs": [
+        {
+          "pid": 4140,
+          "name": "blender-audit",
+          "exit_code": 0,
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07/b2/worktree/tools/wroughtwild-art07/b2/audit.py",
+            "--",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b2/copy/editable",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b2/audit.json",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b2/copy/review/assets"
+          ],
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b2\\user",
+          "seconds": 3.3555628,
+          "started": "2026-09-11T08:06:06.8363565+09:30",
+          "slice": "b2",
+          "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+          "retained_certificate_store_diagnostic": false,
+          "log_sha256": "92846ffcf94efb24be5461166ca12a70d2281c8dabb125aa5a4a57ac91b28d4b"
+        },
+        {
+          "pid": 2120,
+          "name": "import",
+          "exit_code": 0,
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b2/copy/review",
+            "--editor",
+            "--import"
+          ],
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b2\\user",
+          "seconds": 10.5548962,
+          "started": "2026-09-11T08:06:10.2066836+09:30",
+          "slice": "b2",
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "5e824d77d32b4a12101451fabc634eeb8efe3c92033c2aea7dee40b7e95174f0"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b2\\user",
+          "exit_code": 0,
+          "slice": "b2",
+          "arguments": [
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b2/copy/review",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "forward_plus",
+            "--",
+            "--check"
+          ],
+          "name": "forward_plus",
+          "seconds": 18.1153539,
+          "started": "2026-09-11T08:07:05.4543344+09:30",
+          "pid": 7804,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "d49d24d120ef135a5e007de17467880f26c8c703862ca4c4f7266abbf887363d"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b2\\user",
+          "exit_code": 0,
+          "slice": "b2",
+          "arguments": [
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b2/copy/review",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "gl_compatibility",
+            "--",
+            "--check"
+          ],
+          "name": "gl_compatibility",
+          "seconds": 10.648922,
+          "started": "2026-09-11T08:07:23.5860284+09:30",
+          "pid": 4356,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "6bdb0856bd3319abf9ba1073d00c22d69096acaa1fac5b9236fa1d601e377a05"
+        }
+      ],
+      "main_commits": [
+        "f51e82436686149777b7f7eb66d85ebc5a31dd9d",
+        "8496673695266ce317d2ec0cd657abcfd6131ccc"
+      ],
+      "fresh_blender_summary": {
+        "exports": 34,
+        "packed_images": [
+          {
+            "name": "forest-floor.png",
+            "size": [
+              1254,
+              1254
+            ]
+          },
+          {
+            "name": "Image_0",
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "Image_1",
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ]
+      }
+    },
+    "b3": {
+      "branch": "codex/art07-b3",
+      "worker_tip": "c37be9a753cf433e4d0f5d9a5142c76956fcfb50",
+      "commits": [
+        "a01c6cedb4e30f4acff3db4b80fea6f3e7712baa",
+        "c37be9a753cf433e4d0f5d9a5142c76956fcfb50"
+      ],
+      "scoped_files": [
+        "docs/art/leyline-studies/2026-09-09/art07/b3/README.md",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/blender-kit.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/boulder-full-material.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/boulder-worked-material.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/boulder-worked-underside.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/cave-threshold-back.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/forward_plus-cave-clearance.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/forward_plus-day.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/forward_plus-native-work.gif",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/forward_plus-pulse.gif",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/forward_plus-scar-off.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/forward_plus-work-states.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/fresh-verification.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/gl_compatibility-cave-clearance.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/gl_compatibility-day.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/gl_compatibility-native-work.gif",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/gl_compatibility-pulse.gif",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/gl_compatibility-scar-off.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/gl_compatibility-work-states.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/model-audit.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/river-bank-material.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/rock-shelf-altered-clay.png",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/source-provenance.json",
+        "docs/art/leyline-studies/2026-09-09/art07/b3/verification.json",
+        "docs/prototype/art07-production/receipts/b3.md",
+        "tools/wroughtwild-art07/b3/README.md",
+        "tools/wroughtwild-art07/b3/audit.py",
+        "tools/wroughtwild-art07/b3/build_kit.py",
+        "tools/wroughtwild-art07/b3/encode_motion.py",
+        "tools/wroughtwild-art07/b3/finalize_export.py",
+        "tools/wroughtwild-art07/b3/inspect_source.py",
+        "tools/wroughtwild-art07/b3/kit.json",
+        "tools/wroughtwild-art07/b3/launch-review.ps1",
+        "tools/wroughtwild-art07/b3/native_resource.gd",
+        "tools/wroughtwild-art07/b3/native_review.gd",
+        "tools/wroughtwild-art07/b3/package.py",
+        "tools/wroughtwild-art07/b3/prepare.py",
+        "tools/wroughtwild-art07/b3/provenance.py",
+        "tools/wroughtwild-art07/b3/render_master.py",
+        "tools/wroughtwild-art07/b3/review.gd",
+        "tools/wroughtwild-art07/b3/run-current-checks.ps1",
+        "tools/wroughtwild-art07/b3/run-job.ps1",
+        "tools/wroughtwild-art07/b3/scar.gdshader",
+        "tools/wroughtwild-art07/b3/verify_package.py",
+        "tools/wroughtwild-art07/b3/verify_pause.gd",
+        "tools/wroughtwild-art07/b3/verify_runtime.ps1"
+      ],
+      "python_syntax_files": 10,
+      "canonical": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02",
+      "copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\copy",
+      "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+      "files_verified_before_and_after_copy": 1541,
+      "canonical_files_verified_after_checks": 1541,
+      "jobs": [
+        {
+          "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07/b3/worktree/tools/wroughtwild-art07/b3/audit.py",
+            "--",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/models",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/audit.json"
+          ],
+          "name": "blender-audit",
+          "seconds": 2.8744068,
+          "started": "2026-09-11T08:07:34.2389271+09:30",
+          "pid": 21632,
+          "retained_certificate_store_diagnostic": false,
+          "log_sha256": "3ffb023cfbfd39f1cda846fc1d3aa6ced2e2986d7ecb0f62fea53a0737f7df56"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/review",
+            "--editor",
+            "--import"
+          ],
+          "name": "import",
+          "seconds": 22.3019009,
+          "started": "2026-09-11T08:07:37.1165295+09:30",
+          "pid": 33148,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "60c75b02a11f05cbac5ca35dbfb485febea6610ee8e2f0a84dfa07898350deb6"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/review",
+            "--script",
+            "res://verify_pause.gd"
+          ],
+          "name": "pause",
+          "seconds": 1.4850466,
+          "started": "2026-09-11T08:07:59.4220197+09:30",
+          "pid": 7580,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "05729ea4b716cc2e13acc8f61997bb0bc1a736d8eda9f8fdec09fbceaff81638"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/native/game",
+            "--editor",
+            "--import"
+          ],
+          "name": "native-import",
+          "seconds": 18.0610803,
+          "started": "2026-09-11T08:08:00.9101747+09:30",
+          "pid": 8588,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "4ae6c49f360764d95ae4331d997b25877e42ba20c09b3f63dd4e6e8721c23ff6"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--fixed-fps",
+            "60",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/native/game",
+            "res://b3/native_review.tscn"
+          ],
+          "name": "native-flow",
+          "seconds": 3.6503264,
+          "started": "2026-09-11T08:08:18.9751614+09:30",
+          "pid": 35432,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "1f1c29ba2c5469542a3e99e479bcbda9429cdece2b29ba01909271dcd5dcd4d6"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--fixed-fps",
+            "60",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/native/game",
+            "res://b3/native_review.tscn",
+            "--",
+            "--restore-partial"
+          ],
+          "name": "native-partial",
+          "seconds": 1.7585541,
+          "started": "2026-09-11T08:08:22.6305940+09:30",
+          "pid": 11120,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "b134e5f282763635e2637316948f0ae5bae9d20dd41f84ee85a47d23ec35e049"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--fixed-fps",
+            "60",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/native/game",
+            "res://b3/native_review.tscn",
+            "--",
+            "--restore-final"
+          ],
+          "name": "native-final",
+          "seconds": 1.7880756,
+          "started": "2026-09-11T08:08:24.3923964+09:30",
+          "pid": 21388,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "7fd5874df9ba8aa9a981a047f86285e2dcc641214bdaf241f403fbf3707f7608"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/review",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "forward_plus",
+            "--",
+            "--capture"
+          ],
+          "name": "forward_plus",
+          "seconds": 21.6395385,
+          "started": "2026-09-11T08:08:26.1836229+09:30",
+          "pid": 38240,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "3515d178f404542ab806340fbf79ed7a040836ea1197b07f14e87becbc65ddb6"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\b3\\user",
+          "exit_code": 0,
+          "slice": "b3",
+          "arguments": [
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/b3/copy/review",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "gl_compatibility",
+            "--",
+            "--capture"
+          ],
+          "name": "gl_compatibility",
+          "seconds": 19.3724502,
+          "started": "2026-09-11T08:08:47.8262968+09:30",
+          "pid": 38236,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "5d639b28a1a75e8b53daf61945430a0cec684c615ced8c04ed65bf8c8441507e"
+        }
+      ],
+      "main_commits": [
+        "2ca4f4e5c06a7016f575f993844cac0913436ca7",
+        "9f0ae11b3c0dc8400200707a181ead4366266cf6"
+      ],
+      "fresh_blender_summary": {
+        "exports": 30,
+        "packed_images": 7,
+        "incision_m": 0.06449609090535735
+      }
+    },
+    "d5": {
+      "branch": "codex/art07-d5",
+      "worker_tip": "a2ec335308c8f82d3f86b26d9cb328762a9ffc61",
+      "commits": [
+        "4aff2b6359a81f9cc756e8fa54d0749ba8a152b0",
+        "a2ec335308c8f82d3f86b26d9cb328762a9ffc61"
+      ],
+      "scoped_files": [
+        "docs/art/leyline-studies/2026-09-09/art07/d5/.gitattributes",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/README.md",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-charcoal.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-cinderglass.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-fieldstone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-overview.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-rustclay_brick.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-shellstone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-slate.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-stone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/blender-vitrified_basalt.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/clay-three-quarter.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/evidence-manifest.json",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-benchmark.json",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-charcoal.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-cinderglass.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-dark.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-far.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-fieldstone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-light.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-motion.webp",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-overview.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-rustclay_brick.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-shade.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-shellstone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-slate.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-stone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-unlit.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/forward_plus-vitrified_basalt.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/fresh-verification-command.json",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-benchmark.json",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-charcoal.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-cinderglass.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-dark.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-far.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-fieldstone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-light.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-motion.webp",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-overview.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-rustclay_brick.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-shade.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-shellstone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-slate.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-stone.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-unlit.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/gl_compatibility-vitrified_basalt.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/packed-reopen.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d5/v03/reopen-audit.json",
+        "docs/prototype/art07-production/receipts/d5.md",
+        "tools/wroughtwild-art07/d5/.gitattributes",
+        "tools/wroughtwild-art07/d5/README.md",
+        "tools/wroughtwild-art07/d5/blender_materials.py",
+        "tools/wroughtwild-art07/d5/build-native.ps1",
+        "tools/wroughtwild-art07/d5/configure_imports.py",
+        "tools/wroughtwild-art07/d5/evidence.py",
+        "tools/wroughtwild-art07/d5/gpu-slot.ps1",
+        "tools/wroughtwild-art07/d5/launch-review.ps1",
+        "tools/wroughtwild-art07/d5/manifest.json",
+        "tools/wroughtwild-art07/d5/materials.json",
+        "tools/wroughtwild-art07/d5/native-checks.ps1",
+        "tools/wroughtwild-art07/d5/native-game-checks.ps1",
+        "tools/wroughtwild-art07/d5/package.py",
+        "tools/wroughtwild-art07/d5/prepare_review.py",
+        "tools/wroughtwild-art07/d5/render-review.ps1",
+        "tools/wroughtwild-art07/d5/review-project.godot",
+        "tools/wroughtwild-art07/d5/review.gd",
+        "tools/wroughtwild-art07/d5/surfaces.py",
+        "tools/wroughtwild-art07/d5/verify.py",
+        "tools/wroughtwild-art07/d5/verify_handoff.py"
+      ],
+      "python_syntax_files": 8,
+      "canonical": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d5\\worktree\\build\\art07\\d5\\v03\\d5-handoff",
+      "copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\copy",
+      "manifest_sha256": "79532aa924414715fbbde0bf714280fd75d40c9f21cc62cb44c0ce12c3834844",
+      "files_verified_before_and_after_copy": 290,
+      "canonical_files_verified_after_checks": 290,
+      "jobs": [
+        {
+          "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\user",
+          "exit_code": 0,
+          "slice": "d5",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07/d5/worktree/tools/wroughtwild-art07/d5/blender_materials.py",
+            "--",
+            "--reopen",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d5/copy/source/d5_materials.blend",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d5/reopened"
+          ],
+          "name": "blender-audit",
+          "seconds": 86.1961158,
+          "started": "2026-09-11T08:09:07.2020943+09:30",
+          "pid": 16308,
+          "retained_certificate_store_diagnostic": false,
+          "log_sha256": "d2d694f13ff15c5b7f15992067f622bd909415066a97a04b80959b1c829376a2"
+        },
+        {
+          "program": "C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\user",
+          "exit_code": 0,
+          "slice": "d5",
+          "arguments": [
+            "-B",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07/d5/worktree/tools/wroughtwild-art07/d5/verify.py",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d5/copy/review/textures"
+          ],
+          "name": "maps",
+          "seconds": 1.9350561,
+          "started": "2026-09-11T08:10:33.4024021+09:30",
+          "pid": 7344,
+          "retained_certificate_store_diagnostic": false,
+          "log_sha256": "ecdd9f52501f6602fe2d192fd5d709c334daa1aed1862959464b55f3d27ad209"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\user",
+          "exit_code": 0,
+          "slice": "d5",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d5/copy/review",
+            "--editor",
+            "--import"
+          ],
+          "name": "import",
+          "seconds": 9.1724077,
+          "started": "2026-09-11T08:10:35.3433847+09:30",
+          "pid": 23712,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "5c25e6d71c72cf5f6cdf4ad47efc95a266f1a6f78fc322f342b8f8a47a9223d6"
+        },
+        {
+          "program": "C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\user",
+          "exit_code": 0,
+          "slice": "d5",
+          "arguments": [
+            "-B",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07/d5/worktree/tools/wroughtwild-art07/d5/configure_imports.py",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d5/copy/review"
+          ],
+          "name": "import-settings",
+          "seconds": 0.2466991,
+          "started": "2026-09-11T08:10:44.5194605+09:30",
+          "pid": 17380,
+          "retained_certificate_store_diagnostic": false,
+          "log_sha256": "bedfd00a5d8af86fbd978ad6cc9d46257e0c066859c1455fd8eb61f8a22719bc"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\user",
+          "exit_code": 0,
+          "slice": "d5",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d5/copy/review",
+            "--editor",
+            "--import"
+          ],
+          "name": "reimport",
+          "seconds": 4.9181131,
+          "started": "2026-09-11T08:10:44.7727657+09:30",
+          "pid": 3644,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "7032cb1c7ec27c2abb853d8c63239e2b41c46bd6151bbf1c46348288ef9647ec"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\user",
+          "exit_code": 0,
+          "slice": "d5",
+          "arguments": [
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d5/copy/review",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "forward_plus",
+            "--",
+            "--capture"
+          ],
+          "name": "forward_plus",
+          "seconds": 11.1340594,
+          "started": "2026-09-11T08:10:49.6936199+09:30",
+          "pid": 38716,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "d932cc63b751bdebb33a8aa4705f9c6b0dcea861a54b470cd743f34f636546a2"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\user",
+          "exit_code": 0,
+          "slice": "d5",
+          "arguments": [
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d5/copy/review",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "gl_compatibility",
+            "--",
+            "--capture"
+          ],
+          "name": "gl_compatibility",
+          "seconds": 4.6787711,
+          "started": "2026-09-11T08:11:00.8301144+09:30",
+          "pid": 28284,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "21da45b940265f4b5025f739ec3a8e0a49f803e01ff02889f45bc67130f18799"
+        }
+      ],
+      "main_commits": [
+        "a62c0033eda3eb6ac38a4dd9a4a598e1a926aab3",
+        "68b7ca1152fc543449316c8187efb1ce3abd0382"
+      ],
+      "fresh_blender_summary": {
+        "audit_path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d5\\reopened\\reopen-audit.json",
+        "audit_sha256": "4d1078359a82c655902f48f3cad56d7427de9715684062525e36a88cec432579"
+      }
+    },
+    "d6": {
+      "branch": "codex/art07-d6",
+      "worker_tip": "6925449393ce710b9d9ae7a46c2f0ac997ced43c",
+      "commits": [
+        "20c5e0b4d663037e8573488e895ba9fb882fea74",
+        "6925449393ce710b9d9ae7a46c2f0ac997ced43c"
+      ],
+      "scoped_files": [
+        "docs/art/leyline-studies/2026-09-09/art07/d6/README.md",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/blender-bronze.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/blender-iron.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/blender-overview.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/blender-silver.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/blender-steel.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-distance-10.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-distance-24.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-motion.webp",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-overview.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-shade.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-unlit.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-distance-10.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-distance-24.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-motion.webp",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-overview.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-shade.png",
+        "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-unlit.png",
+        "docs/prototype/art07-production/receipts/d6.md",
+        "tools/wroughtwild-art07/d6/.gitattributes",
+        "tools/wroughtwild-art07/d6/README.md",
+        "tools/wroughtwild-art07/d6/blender_materials.py",
+        "tools/wroughtwild-art07/d6/build-native.ps1",
+        "tools/wroughtwild-art07/d6/configure_imports.py",
+        "tools/wroughtwild-art07/d6/delivery_check.py",
+        "tools/wroughtwild-art07/d6/evidence.py",
+        "tools/wroughtwild-art07/d6/freeze_game.py",
+        "tools/wroughtwild-art07/d6/fresh_copy.py",
+        "tools/wroughtwild-art07/d6/gpu-slot.ps1",
+        "tools/wroughtwild-art07/d6/manifest.json",
+        "tools/wroughtwild-art07/d6/materials.json",
+        "tools/wroughtwild-art07/d6/native_checks.py",
+        "tools/wroughtwild-art07/d6/native_review.ps1",
+        "tools/wroughtwild-art07/d6/package.py",
+        "tools/wroughtwild-art07/d6/prepare_review.py",
+        "tools/wroughtwild-art07/d6/provenance.py",
+        "tools/wroughtwild-art07/d6/queued-job.ps1",
+        "tools/wroughtwild-art07/d6/review-project.godot",
+        "tools/wroughtwild-art07/d6/review.gd",
+        "tools/wroughtwild-art07/d6/run_review.ps1",
+        "tools/wroughtwild-art07/d6/surfaces.py",
+        "tools/wroughtwild-art07/d6/verify.py"
+      ],
+      "python_syntax_files": 12,
+      "canonical": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d6\\worktree\\build\\art07\\d6\\v04\\handoff",
+      "copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d6\\copy",
+      "manifest_sha256": "8d82eb36775959f41905e579e36d737caa4a8512ed504d679ab49652301338a7",
+      "files_verified_before_and_after_copy": 78,
+      "canonical_files_verified_after_checks": 78,
+      "jobs": [
+        {
+          "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d6\\user",
+          "exit_code": 0,
+          "slice": "d6",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07/d6/worktree/tools/wroughtwild-art07/d6/blender_materials.py",
+            "--",
+            "--reopen",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d6/copy/source/d6_materials.blend",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d6/reopened"
+          ],
+          "name": "blender-audit",
+          "seconds": 25.6140814,
+          "started": "2026-09-11T08:11:05.5119892+09:30",
+          "pid": 23572,
+          "retained_certificate_store_diagnostic": false,
+          "log_sha256": "e530639d4dc62a7aa7ded8b16c829b8cef9c0b0f1e618e992e20da6dabc01018"
+        },
+        {
+          "program": "C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d6\\user",
+          "exit_code": 0,
+          "slice": "d6",
+          "arguments": [
+            "-B",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07/d6/worktree/tools/wroughtwild-art07/d6/verify.py",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d6/copy/review/textures",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d6/texture-checks.json"
+          ],
+          "name": "maps",
+          "seconds": 0.9726367,
+          "started": "2026-09-11T08:11:31.1297526+09:30",
+          "pid": 3228,
+          "retained_certificate_store_diagnostic": false,
+          "log_sha256": "9fab1377a630e67e0b00c346ee080451bfdc251e63ad6ffe17e243fbf897b484"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d6\\user",
+          "exit_code": 0,
+          "slice": "d6",
+          "arguments": [
+            "--headless",
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d6/copy/review",
+            "--editor",
+            "--import"
+          ],
+          "name": "import",
+          "seconds": 5.8708831,
+          "started": "2026-09-11T08:11:32.1083947+09:30",
+          "pid": 9632,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "d037dd38ee9440a7a694c377bc7e97c4be271fa82c6cf23fb9608d7360f77c10"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d6\\user",
+          "exit_code": 0,
+          "slice": "d6",
+          "arguments": [
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d6/copy/review",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "forward_plus",
+            "--",
+            "--capture"
+          ],
+          "name": "forward_plus",
+          "seconds": 10.3067803,
+          "started": "2026-09-11T08:11:37.9819513+09:30",
+          "pid": 7652,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "f857b999add23eba593be434c88b053fc6adafb555e6e6834aecc08667dd529a"
+        },
+        {
+          "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d6\\user",
+          "exit_code": 0,
+          "slice": "d6",
+          "arguments": [
+            "--path",
+            "C:/Users/Matty/Dev/project-wroughtwild/build/art07-publication-2026-09-11/d6/copy/review",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "gl_compatibility",
+            "--",
+            "--capture"
+          ],
+          "name": "gl_compatibility",
+          "seconds": 3.1508919,
+          "started": "2026-09-11T08:11:48.2912116+09:30",
+          "pid": 36372,
+          "retained_certificate_store_diagnostic": true,
+          "log_sha256": "fdb8806db28c17d25d6cc3d4cc37e289a3ff43caef2c056e1589834ec867528a"
+        }
+      ],
+      "main_commits": [
+        "b7116c733deb971402af6245c11a9fe15c50063b",
+        "3bc4f6844fc0adf7b9cb00c93852b9dd81de4222"
+      ],
+      "fresh_blender_summary": {
+        "audit_path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\d6\\reopened\\reopen-audit.json",
+        "audit_sha256": "8d4a5617c1150da18d986ebba1b590aafe9c7915817cd67529ec953490848190"
+      }
+    }
+  },
+  "previous_dependency_hash_checks": [
+    {
+      "id": "b1",
+      "path": "C:/Users/Matty/Dev/project-wroughtwild-art07-b1/build/art07/b1/v01/canopy-handoff-v02",
+      "manifest_sha256": "00a244253614b8c58213a15f929e48fd65c9aec0bb3489600646497bfcbaf7d0",
+      "verified_files": 1533
+    },
+    {
+      "id": "d1",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d1\\worktree\\build\\art07\\d1\\v02\\core-lattice-handoff-v01",
+      "manifest_sha256": "a3e92f9692e05eae547290cd6520242f91dfbda31d9236eb6d12842f0453b85a",
+      "verified_files": 1597
+    }
+  ],
+  "fresh_native_b3": {
+    "flow": {
+      "checks": 16621,
+      "failures": 0,
+      "fieldstone": 9,
+      "fixture": "Authored current-resource and cave-support fixture; six supplied wedges. Actual work, pickups, bodies and SaveManager. Not a normal campaign or all cave shapes.",
+      "split_stone": 12
+    },
+    "partial-restart": {
+      "checks": 10,
+      "failures": 0,
+      "fieldstone": 3,
+      "fixture": "Authored current-resource and cave-support fixture; six supplied wedges. Actual work, pickups, bodies and SaveManager. Not a normal campaign or all cave shapes.",
+      "split_stone": 0
+    },
+    "final-restart": {
+      "checks": 8,
+      "failures": 0,
+      "fieldstone": 9,
+      "fixture": "Authored current-resource and cave-support fixture; six supplied wedges. Actual work, pickups, bodies and SaveManager. Not a normal campaign or all cave shapes.",
+      "split_stone": 12
+    }
+  },
+  "verification_scope": "Fresh packed-source and GLB reopens; renderer imports and B2 checks/B3-D5-D6 captures; B3 pause and native flow/restarts; D5/D6 texture gates; worker evidence/provenance and immutable package checks. No generation, new benchmarks or full simulation suite rerun.",
+  "status": "pass",
+  "source_only": true,
+  "owner_visual_acceptance": "pending",
+  "checked_record": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\checked.json",
+    "sha256": "ca3da860d53122dbbb71a31e6c7ea92146321f4eb424cca88a768846477faee5"
+  },
+  "publisher_scripts": [
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\prepare.py",
+      "sha256": "b59245c71bed6cbaf7872a21542def9c502606584807cf375df03651bf675d89"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\jobs.json",
+      "sha256": "0b923e25a3cda4fdcc40121c09172e437ee850f61aa06b16b9e32dd6a66b1a89"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\run-checks.ps1",
+      "sha256": "72b3e85a77682f02ddedd36b9d607a1664e7903e02a2ed0724ae49b009708c35"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-11\\final-check.py",
+      "sha256": "a10906a595bd8bd2fec107719c864c792c161bc642b1c023eec6ebb543e506be"
+    }
+  ],
+  "powershell_syntax_files": 21,
+  "source_publication": {
+    "remote": "https://github.com/Jattymoels/project-wroughtwild.git",
+    "branch": "main",
+    "from": "f00d4b76274ef2a73c3b6f4a275d2bd3ca0f958d",
+    "to": "3bc4f6844fc0adf7b9cb00c93852b9dd81de4222",
+    "status": "ordinary push succeeded"
+  },
+  "next_recommended": [
+    "b4",
+    "d2",
+    "d3",
+    "e2"
+  ]
+}
