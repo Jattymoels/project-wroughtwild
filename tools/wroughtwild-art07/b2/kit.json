@@ -1,0 +1,26 @@
+{
+  "seed": 42,
+  "shrub_height_m": 1.35,
+  "shrub_triangles": [24000, 10000, 3500],
+  "fern_fronds": [9, 6],
+  "grass_blades": [72, 36],
+  "lod_distances_m": [7, 18],
+  "wind_tip_m": 0.018,
+  "wind_period_seconds": 5.5,
+  "eye_height_m": 1.65,
+  "walk_speed_m_s": 2.0,
+  "texture_tile_m": 2.4,
+  "controls": {
+    "seed": "Repeat authoring variation, never gameplay RNG.",
+    "shrub_height_m": "Small woody bridge between groundcover and canopy.",
+    "shrub_triangles": "Candidate per-distance woody geometry targets, measured before adoption.",
+    "fern_fronds": "Lush and sparse asymmetric frond populations.",
+    "grass_blades": "Meadow and flattened path-edge blade populations.",
+    "lod_distances_m": "Near/middle/far comparison distances, no runtime budget approval.",
+    "wind_tip_m": "Maximum quiet horizontal bend per metre of rooted plant height.",
+    "wind_period_seconds": "Slow ambient motion, independent of work or attack signals.",
+    "eye_height_m": "Walking-height observation camera.",
+    "walk_speed_m_s": "Physical review walking speed.",
+    "texture_tile_m": "World scale of reused litter, with mirrored offset samples for seams."
+  }
+}

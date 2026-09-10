@@ -1,0 +1,153 @@
+{
+  "roles": {
+    "sapling-shrub-lod0": {
+      "triangles": 32091,
+      "surfaces": 3
+    },
+    "sapling-shrub-lod1": {
+      "triangles": 13762,
+      "surfaces": 3
+    },
+    "sapling-shrub-lod2": {
+      "triangles": 9703,
+      "surfaces": 3
+    },
+    "fern-lush-lod0": {
+      "triangles": 89982,
+      "surfaces": 2
+    },
+    "fern-lush-lod1": {
+      "triangles": 40644,
+      "surfaces": 2
+    },
+    "fern-lush-lod2": {
+      "triangles": 3924,
+      "surfaces": 2
+    },
+    "fern-sparse-lod0": {
+      "triangles": 59988,
+      "surfaces": 2
+    },
+    "fern-sparse-lod1": {
+      "triangles": 27096,
+      "surfaces": 2
+    },
+    "fern-sparse-lod2": {
+      "triangles": 2616,
+      "surfaces": 2
+    },
+    "grass-meadow-lod0": {
+      "triangles": 1080,
+      "surfaces": 1
+    },
+    "grass-meadow-lod1": {
+      "triangles": 504,
+      "surfaces": 1
+    },
+    "grass-meadow-lod2": {
+      "triangles": 216,
+      "surfaces": 1
+    },
+    "grass-edge-lod0": {
+      "triangles": 540,
+      "surfaces": 1
+    },
+    "grass-edge-lod1": {
+      "triangles": 252,
+      "surfaces": 1
+    },
+    "grass-edge-lod2": {
+      "triangles": 108,
+      "surfaces": 1
+    },
+    "context-deadfall": {
+      "triangles": 8112,
+      "surfaces": 1
+    },
+    "bramble-lod0": {
+      "triangles": 5208,
+      "surfaces": 2
+    },
+    "bramble-lod1": {
+      "triangles": 2586,
+      "surfaces": 2
+    },
+    "bramble-lod2": {
+      "triangles": 2130,
+      "surfaces": 2
+    },
+    "climber-lod0": {
+      "triangles": 5238,
+      "surfaces": 2
+    },
+    "climber-lod1": {
+      "triangles": 2616,
+      "surfaces": 2
+    },
+    "climber-lod2": {
+      "triangles": 2160,
+      "surfaces": 2
+    },
+    "moss-lod0": {
+      "triangles": 20196,
+      "surfaces": 1
+    },
+    "moss-lod1": {
+      "triangles": 8932,
+      "surfaces": 1
+    },
+    "moss-lod2": {
+      "triangles": 3080,
+      "surfaces": 1
+    },
+    "lichen-lod0": {
+      "triangles": 494,
+      "surfaces": 1
+    },
+    "lichen-lod1": {
+      "triangles": 286,
+      "surfaces": 1
+    },
+    "lichen-lod2": {
+      "triangles": 156,
+      "surfaces": 1
+    },
+    "leaf-litter-lod0": {
+      "triangles": 896,
+      "surfaces": 1
+    },
+    "leaf-litter-lod1": {
+      "triangles": 384,
+      "surfaces": 1
+    },
+    "leaf-litter-lod2": {
+      "triangles": 256,
+      "surfaces": 1
+    },
+    "needle-litter-lod0": {
+      "triangles": 768,
+      "surfaces": 1
+    },
+    "needle-litter-lod1": {
+      "triangles": 768,
+      "surfaces": 1
+    },
+    "needle-litter-lod2": {
+      "triangles": 768,
+      "surfaces": 1
+    }
+  },
+  "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v03\\inspection\\shrub-source.blend",
+  "source_hash": "910a5fe5d58a58d515ee110c204d3e1fea80a7606babf6ac1a2e95a5f5fba55c",
+  "attachments": [],
+  "source_components": {
+    "count": 2,
+    "retained_vertices": 139036,
+    "removed_vertices": 4312
+  },
+  "lod_root_reseat_m": {
+    "0": 0.0010838608723133802,
+    "1": 0.00413748063147068,
+    "2": 0.020665323361754417
+  }
+}

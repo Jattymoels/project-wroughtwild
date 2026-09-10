@@ -1,0 +1,24 @@
+{
+  "package_manifest_sha256": "bb4a50ea353a1fdb964542e46afc3f1549f7e45b3b004ab7b4130ae1a7d50e62",
+  "canonical_files_unchanged": 274,
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v11\\forward",
+  "packed_source_reopen": true,
+  "export_reimports": 34,
+  "renderer_comparisons": [
+    {
+      "renderer": "forward_plus",
+      "captured_frames": 162,
+      "pixel_identical": 30,
+      "max_channel_delta": 47,
+      "route_checks": 481
+    },
+    {
+      "renderer": "gl_compatibility",
+      "captured_frames": 162,
+      "pixel_identical": 30,
+      "max_channel_delta": 66,
+      "route_checks": 481
+    }
+  ],
+  "fresh_appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v11\\user"
+}

@@ -1,0 +1,70 @@
+{
+	"alpha_surfaces": 0,
+	"cases": [
+		{
+			"draws": 687.0,
+			"gpu_p50_ms": 0.377000004053116,
+			"gpu_p95_ms": 0.389999985694885,
+			"lod": 0,
+			"mood": 0,
+			"primitives": 4688270.0,
+			"samples": 300,
+			"texture_bytes": 269652992.0,
+			"wall_p50_ms": 1.096,
+			"wall_p95_ms": 1.436,
+			"wall_worst_ms": 2.206,
+			"warmup": 90
+		},
+		{
+			"draws": 687.0,
+			"gpu_p50_ms": 0.377000004053116,
+			"gpu_p95_ms": 0.391999989748001,
+			"lod": 0,
+			"mood": 2,
+			"primitives": 4688270.0,
+			"samples": 300,
+			"texture_bytes": 269652992.0,
+			"wall_p50_ms": 1.217,
+			"wall_p95_ms": 1.704,
+			"wall_worst_ms": 2.443,
+			"warmup": 90
+		},
+		{
+			"draws": 687.0,
+			"gpu_p50_ms": 0.259999990463257,
+			"gpu_p95_ms": 0.275999993085861,
+			"lod": -1,
+			"mood": 0,
+			"primitives": 2406466.0,
+			"samples": 300,
+			"texture_bytes": 269652992.0,
+			"wall_p50_ms": 1.211,
+			"wall_p95_ms": 1.399,
+			"wall_worst_ms": 1.953,
+			"warmup": 90
+		},
+		{
+			"draws": 687.0,
+			"gpu_p50_ms": 0.257999986410141,
+			"gpu_p95_ms": 0.275999993085861,
+			"lod": -1,
+			"mood": 2,
+			"primitives": 2406466.0,
+			"samples": 300,
+			"texture_bytes": 269652992.0,
+			"wall_p50_ms": 1.208,
+			"wall_p95_ms": 1.374,
+			"wall_worst_ms": 2.197,
+			"warmup": 90
+		}
+	],
+	"device": "NVIDIA GeForce RTX 5090",
+	"msaa": 4,
+	"notes": "Separate from captures/generation. Compatibility zero GPU timings mean unavailable. Static kit, not world budget approval.",
+	"renderer": "forward_plus",
+	"resolution": [
+		1280,
+		900
+	],
+	"vsync": false
+}

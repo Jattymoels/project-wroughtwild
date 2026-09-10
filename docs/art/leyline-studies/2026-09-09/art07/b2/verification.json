@@ -1,0 +1,301 @@
+{
+  "exports": [
+    {
+      "file": "bramble-lod0.glb",
+      "bytes": 198712,
+      "sha256": "bcd6f23fedbfe84ff7e9d19f0f265bef3e7aa4c3288ae5569125564405c7e470",
+      "textures": []
+    },
+    {
+      "file": "bramble-lod1.glb",
+      "bytes": 100196,
+      "sha256": "148849878a38dde5af20d483c2f1a610f1568c13f4e0931b05ffe44a8f66872a",
+      "textures": []
+    },
+    {
+      "file": "bramble-lod2.glb",
+      "bytes": 82408,
+      "sha256": "169ef19731676b7d7e837dc927d5888fdb5e67d6aa3e94cfd6bd12600f8d35ab",
+      "textures": []
+    },
+    {
+      "file": "climber-lod0.glb",
+      "bytes": 199548,
+      "sha256": "ec3f0c4732830c42eda01e2de9c1d8b43bee3cacb071961df55e270ab3c1d0e3",
+      "textures": []
+    },
+    {
+      "file": "climber-lod1.glb",
+      "bytes": 101036,
+      "sha256": "f27a8299a302e56a804d387d349bbec92984fb65b134642165d93d20180324d3",
+      "textures": []
+    },
+    {
+      "file": "climber-lod2.glb",
+      "bytes": 83248,
+      "sha256": "afb024e9fe75c96184e9f71e60a8cf4a0635d88bf75169576f938b570b05d852",
+      "textures": []
+    },
+    {
+      "file": "context-deadfall.glb",
+      "bytes": 266688,
+      "sha256": "60cb65b1b13111aa990ff86c1b04f26fd106dcecc99915c197df7fc5217f439d",
+      "textures": []
+    },
+    {
+      "file": "fern-lush-lod0.glb",
+      "bytes": 4275548,
+      "sha256": "0c7a236103b9d421af5cd2b64daf33458ba73cee5fcc1f64ae7f98531558de77",
+      "textures": []
+    },
+    {
+      "file": "fern-lush-lod1.glb",
+      "bytes": 1841444,
+      "sha256": "23ed257613677e7a18ebda4f5e67cb8931d01684df400bb681dbee86854ebf4b",
+      "textures": []
+    },
+    {
+      "file": "fern-lush-lod2.glb",
+      "bytes": 166980,
+      "sha256": "4f02005eb9e621cf17e75b3d5a4c945dce329594fb2cac59e579d12c81c0470a",
+      "textures": []
+    },
+    {
+      "file": "fern-sparse-lod0.glb",
+      "bytes": 2508480,
+      "sha256": "229f85b831ebc07785d938f31bc818409d4bd165d3c11b64b8fa0a4f41e7200e",
+      "textures": []
+    },
+    {
+      "file": "fern-sparse-lod1.glb",
+      "bytes": 1228460,
+      "sha256": "db34388b5267037351ea980cc30c1d628975f476f0a4d612cfbc4e1ef4914a81",
+      "textures": []
+    },
+    {
+      "file": "fern-sparse-lod2.glb",
+      "bytes": 112140,
+      "sha256": "f14252ad2c49f7ab22fd75999cf097d33dd6fbde1d5cdd3fe7f38698236fa7bd",
+      "textures": []
+    },
+    {
+      "file": "grass-edge-lod0.glb",
+      "bytes": 31520,
+      "sha256": "9355e9f258b7ab608ca2e7c601024dbd9aefa5ca4e75d64919fe9014c6e059da",
+      "textures": []
+    },
+    {
+      "file": "grass-edge-lod1.glb",
+      "bytes": 17116,
+      "sha256": "669890461ce40a166638a0098d758904ff305e8be3e3414f20716db40acd4d1b",
+      "textures": []
+    },
+    {
+      "file": "grass-edge-lod2.glb",
+      "bytes": 9912,
+      "sha256": "cf706e3c906ce7ee2ab14013cbb256c9fce143e22b0a94eabd3921abcc949ab0",
+      "textures": []
+    },
+    {
+      "file": "grass-meadow-lod0.glb",
+      "bytes": 61696,
+      "sha256": "755aab6c17df6fd9221f87b98e223f43e5d64a7e2440a305bd4adf34da4830ed",
+      "textures": []
+    },
+    {
+      "file": "grass-meadow-lod1.glb",
+      "bytes": 32888,
+      "sha256": "bf6210327301d8ff1182cb28bfe2517cb86764940e801a2d6a72243842de026a",
+      "textures": []
+    },
+    {
+      "file": "grass-meadow-lod2.glb",
+      "bytes": 18488,
+      "sha256": "dd6222e2c1612cf505e1e6d07e4894328019b0022dcf7af0f7fcb6a39de73bb5",
+      "textures": []
+    },
+    {
+      "file": "leaf-litter-lod0.glb",
+      "bytes": 39112,
+      "sha256": "52516eb336b074c66e3e1f360a701c03547afa6e2b8401fd602b219035dc5a64",
+      "textures": []
+    },
+    {
+      "file": "leaf-litter-lod1.glb",
+      "bytes": 19144,
+      "sha256": "fbcdcc101f47eddd513673d10785b5d32f08185fa23087fb9e296b9615f92e96",
+      "textures": []
+    },
+    {
+      "file": "leaf-litter-lod2.glb",
+      "bytes": 14152,
+      "sha256": "c1bec517f55103ed80880285ec87e51a56506d10196158b907bd3d8a60cfed74",
+      "textures": []
+    },
+    {
+      "file": "lichen-lod0.glb",
+      "bytes": 26616,
+      "sha256": "834edb035966738025b7a814106c4a6d5b6a14a36516869cc11aa64ca0844c83",
+      "textures": []
+    },
+    {
+      "file": "lichen-lod1.glb",
+      "bytes": 16216,
+      "sha256": "6006c51f71db00b18ebb166965bc7173bf7321f10b64dd8b2aefc20faa585214",
+      "textures": []
+    },
+    {
+      "file": "lichen-lod2.glb",
+      "bytes": 9712,
+      "sha256": "b3afd73612c1bc9a4ec2db495020aabd7429a6f0ae00d0e68ef034beaf012041",
+      "textures": []
+    },
+    {
+      "file": "moss-lod0.glb",
+      "bytes": 1012136,
+      "sha256": "a742b11302a6c01ce8075ca2a9426bc13ae31f2874971abc8feb607614957268",
+      "textures": []
+    },
+    {
+      "file": "moss-lod1.glb",
+      "bytes": 448928,
+      "sha256": "bbc5c4bf7780a57a1d90c8a3102bf504119df79df6dede4ac3626e9861b8d5d1",
+      "textures": []
+    },
+    {
+      "file": "moss-lod2.glb",
+      "bytes": 156324,
+      "sha256": "592a987d41b359889a32ed2209ab0627e1dffc339925ad2ec575e62a28ac462d",
+      "textures": []
+    },
+    {
+      "file": "needle-litter-lod0.glb",
+      "bytes": 39756,
+      "sha256": "d153a223140e08c010716a595ac9dbe889e5a82345d08978e1bd6330201902b6",
+      "textures": []
+    },
+    {
+      "file": "needle-litter-lod1.glb",
+      "bytes": 39756,
+      "sha256": "8e6fd28241714e2c5bd39945fe0415ae0dc9a7aff300dd729897324eb786daea",
+      "textures": []
+    },
+    {
+      "file": "needle-litter-lod2.glb",
+      "bytes": 39756,
+      "sha256": "1b3552452d5833f83d2b53dd95a6c35edbcdc2823c2acb9657bb017333b6e6c0",
+      "textures": []
+    },
+    {
+      "file": "sapling-shrub-lod0.glb",
+      "bytes": 14768104,
+      "sha256": "d9b134eaec25efc7c7b7e8045155083d290fcc5a3e9c3e3f0390f3da2aff720c",
+      "textures": [
+        "cd3654b46bc11d060c1350a26310986cd48157e1e37748602e669457e2aa4a46",
+        "f7d6854e0aecfd764a411d90aeb6bd0d8af50cfde5448e80adddac585cab0f39"
+      ]
+    },
+    {
+      "file": "sapling-shrub-lod1.glb",
+      "bytes": 13923456,
+      "sha256": "d3dc0c6a458c58f10cd6ce1361ae84c1b1c54be0eb0c99159cd9552292eb6c44",
+      "textures": [
+        "cd3654b46bc11d060c1350a26310986cd48157e1e37748602e669457e2aa4a46",
+        "f7d6854e0aecfd764a411d90aeb6bd0d8af50cfde5448e80adddac585cab0f39"
+      ]
+    },
+    {
+      "file": "sapling-shrub-lod2.glb",
+      "bytes": 13691048,
+      "sha256": "1a3960388003947ced7156cce33a9208d4f0486fdf650e8ab85814799eadf098",
+      "textures": [
+        "cd3654b46bc11d060c1350a26310986cd48157e1e37748602e669457e2aa4a46",
+        "f7d6854e0aecfd764a411d90aeb6bd0d8af50cfde5448e80adddac585cab0f39"
+      ]
+    }
+  ],
+  "unique_embedded_images": {
+    "cd3654b46bc11d060c1350a26310986cd48157e1e37748602e669457e2aa4a46": {
+      "size": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 8600757,
+      "rgba8_bytes": 16777216
+    },
+    "f7d6854e0aecfd764a411d90aeb6bd0d8af50cfde5448e80adddac585cab0f39": {
+      "size": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 4494973,
+      "rgba8_bytes": 16777216
+    }
+  },
+  "source_floor_sha256": "3d5b8c97099046eec0f47e4150246f7a83abd0318023b4b680fc05da2a4f69cc",
+  "original_edge_difference_mean_255": 20.354066985645932,
+  "mirrored_edge_coordinate_error": 8.881784197001252e-16,
+  "rendered_lod_comparisons": [
+    {
+      "renderer": "forward_plus",
+      "distance_m": 7,
+      "lod": 1,
+      "mean_abs_rgb_255": 0.619322337962963,
+      "pixels_over_16_fraction": 0.02029513888888889
+    },
+    {
+      "renderer": "forward_plus",
+      "distance_m": 7,
+      "lod": 2,
+      "mean_abs_rgb_255": 1.1646571180555556,
+      "pixels_over_16_fraction": 0.036960069444444445
+    },
+    {
+      "renderer": "forward_plus",
+      "distance_m": 18,
+      "lod": 1,
+      "mean_abs_rgb_255": 0.06514641203703704,
+      "pixels_over_16_fraction": 0.0020572916666666665
+    },
+    {
+      "renderer": "forward_plus",
+      "distance_m": 18,
+      "lod": 2,
+      "mean_abs_rgb_255": 0.10205642361111111,
+      "pixels_over_16_fraction": 0.0034852430555555557
+    },
+    {
+      "renderer": "gl_compatibility",
+      "distance_m": 7,
+      "lod": 1,
+      "mean_abs_rgb_255": 0.5908295717592592,
+      "pixels_over_16_fraction": 0.016508680555555554
+    },
+    {
+      "renderer": "gl_compatibility",
+      "distance_m": 7,
+      "lod": 2,
+      "mean_abs_rgb_255": 1.1237303240740741,
+      "pixels_over_16_fraction": 0.032551215277777774
+    },
+    {
+      "renderer": "gl_compatibility",
+      "distance_m": 18,
+      "lod": 1,
+      "mean_abs_rgb_255": 0.05907465277777778,
+      "pixels_over_16_fraction": 0.0014600694444444444
+    },
+    {
+      "renderer": "gl_compatibility",
+      "distance_m": 18,
+      "lod": 2,
+      "mean_abs_rgb_255": 0.10274421296296296,
+      "pixels_over_16_fraction": 0.0031041666666666665
+    }
+  ],
+  "grove_manifest_sha256": "0a4f26a74335bcceddd2d31f9df3774d415f5aca6d982e9cc5305faf6ac9bba8",
+  "grove_files_unchanged": 105,
+  "alpha_blended_surfaces": 0,
+  "overdraw_note": "Opaque geometry uses depth testing. Transparent overdraw is zero; opaque/shadow submissions measured separately in benchmark.",
+  "pause_pixels_exact_both_renderers": true
+}
