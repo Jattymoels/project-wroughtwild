@@ -1,0 +1,261 @@
+{
+  "status": "pass",
+  "slice": "ART-07D6",
+  "base_commit": "f00d4b76274ef2a73c3b6f4a275d2bd3ca0f958d",
+  "canonical_handoff": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d6\\worktree\\build\\art07\\d6\\v04\\handoff",
+  "manifest_sha256": "8d82eb36775959f41905e579e36d737caa4a8512ed504d679ab49652301338a7",
+  "canonical_files_unchanged": 78,
+  "original_hash_records_unchanged": 26,
+  "packed_reopen": "10 meshes; 13608 triangles; 12 packed images; fresh GLB agrees",
+  "evidence": [
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/blender-bronze.png",
+      "bytes": 1247104,
+      "sha256": "49277d384d26723bae748b3650a732ad3ed891991bfc13023904cfde2e850765"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/blender-iron.png",
+      "bytes": 1138490,
+      "sha256": "6f02ecb8e92b3a5218ed9a18a0fdaabb415f2056f8381cacd62657fe8149d467"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/blender-overview.png",
+      "bytes": 1658417,
+      "sha256": "d737587eedf672597daa20153f3542a735f27d8fde3c4b3be3924a5408cb1f26"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/blender-silver.png",
+      "bytes": 1286670,
+      "sha256": "6135703a07be8339f7a86ba3db5fbaab7fc199b9a3829a86d67f0ab2ab04c164"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/blender-steel.png",
+      "bytes": 1195915,
+      "sha256": "cdbaf4b51850ec1e8a653bab9e9d46040dda1e2427d81982765af98e0d0d92d3"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-distance-10.png",
+      "bytes": 216605,
+      "sha256": "59fc0757677cb56cf8a22f639b574a9d36e91be22968de6489bc3c9e268157b8"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-distance-24.png",
+      "bytes": 214962,
+      "sha256": "12eb5bc059ed1736a35e9c52167210768636695e3aed74370403aa0c139cc041"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-motion.webp",
+      "bytes": 1282744,
+      "sha256": "d85bbfe72f838e091bc69d9712aaea20c623f5e696e15c3dd78ae6097b1daf58"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-overview.png",
+      "bytes": 236790,
+      "sha256": "da96eb25b0a66fef913d033b1f98c0d2d2afdb986e0baa8d8f3981de4a5f7a05"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-shade.png",
+      "bytes": 206441,
+      "sha256": "d33657096435cd7e8432e49f18f85fadcf4fd418303246b6c46f420314da1021"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/forward_plus-unlit.png",
+      "bytes": 11311,
+      "sha256": "1711f81c0846671a8c4e08fef1fc2b06a3cc03338634e1991fa228f0cf9dd2ab"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-distance-10.png",
+      "bytes": 224089,
+      "sha256": "a617dc60ec8e466be5284c226a16b4ec48052eb003a80699b973245584c8a94e"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-distance-24.png",
+      "bytes": 221356,
+      "sha256": "ef74fc75d58ba3c0f4056d12956e87f2c58f19b243c24ec6aea6619e605e7441"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-motion.webp",
+      "bytes": 1849386,
+      "sha256": "75535e2dda835850546d0a1a54adec6786237d7226d740a1e2983a18bbda820d"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-overview.png",
+      "bytes": 284873,
+      "sha256": "f6eb4851f6ad9a94c70f970f3b4ba46eb039e783c6b5ff10cbb0425f202190fa"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-shade.png",
+      "bytes": 223656,
+      "sha256": "48f1ad7e121671f0ef977cf2855725723c4360ce80d9a1b6e5d2367d9f33edcf"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/gl_compatibility-unlit.png",
+      "bytes": 16524,
+      "sha256": "f1a7de111d3edde8d3bc31f17b3b4839d8b1893ed5e5c1bcf080a656070fcdcb"
+    },
+    {
+      "path": "docs/art/leyline-studies/2026-09-09/art07/d6/README.md",
+      "bytes": 2413,
+      "sha256": "6c08c37244e3d12b80bdd4948cdd4084f4e6a6a59d1b6e9570bc435d62618149"
+    }
+  ],
+  "benchmarks": {
+    "forward_plus": {
+      "counters": [
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 243241472.0,
+          "video_bytes": 276782880.0
+        }
+      ],
+      "device": "NVIDIA GeForce RTX 5090",
+      "frames": 600,
+      "note": "Separate fixed-view run, no generation or screenshots; RTX result only.",
+      "p50_ms": 0.224,
+      "p95_ms": 0.319,
+      "renderer": "forward_plus",
+      "size": "(1600, 900)",
+      "warmup_frames": 132,
+      "worst_ms": 0.599
+    },
+    "gl_compatibility": {
+      "counters": [
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        },
+        {
+          "draws": 43.0,
+          "primitives": 25276.0,
+          "texture_bytes": 108789711.0,
+          "video_bytes": 118091075.0
+        }
+      ],
+      "device": "NVIDIA GeForce RTX 5090",
+      "frames": 600,
+      "note": "Separate fixed-view run, no generation or screenshots; RTX result only.",
+      "p50_ms": 0.319,
+      "p95_ms": 0.476,
+      "renderer": "gl_compatibility",
+      "size": "(1600, 900)",
+      "warmup_frames": 132,
+      "worst_ms": 1.408
+    }
+  },
+  "native_checks": {
+    "world": 595376,
+    "core": 224380,
+    "placement": 470,
+    "restart": 60,
+    "stations": 98,
+    "failures": 0
+  },
+  "no_protected_source_diff": true,
+  "owner_visual_acceptance": "pending",
+  "publication": "worker branch only; serial publisher integration pending"
+}
