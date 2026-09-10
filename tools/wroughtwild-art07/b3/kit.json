@@ -1,0 +1,22 @@
+{
+  "seed": 42,
+  "boulder_size_xyz_blender": [1.36, 1.16, 0.96],
+  "seam_size_xyz_blender": [2.9, 0.66, 0.18],
+  "scar_depth_m": 0.065,
+  "scar_half_width_m": 0.11,
+  "lod_triangle_targets": [12000, 4500, 1200],
+  "lod_distances_m": [12, 28],
+  "pulse_period_s": 4.0,
+  "pulse_peak": 2.2,
+  "purpose": {
+    "seed": "Repeatable talus grouping and root placement; no gameplay RNG.",
+    "boulder_size_xyz_blender": "Fit the existing 1.4 by 1.2 m horizontal body and 1 m height with a small margin.",
+    "seam_size_xyz_blender": "Low adjacent bedding over the existing three-metre grounded work ribbon; runtime samples retained terrain.",
+    "scar_depth_m": "Six-and-a-half centimetre physical injury in the altered shelf; readable with emission off.",
+    "scar_half_width_m": "Broad broken wound around a narrow inset energy floor.",
+    "lod_triangle_targets": "Per host detail targets preserving large bedding; actual exported counts are measured, not approved world budgets.",
+    "lod_distances_m": "Standalone review switches near to middle at 12 m, far at 28 m; integration tuning remains open.",
+    "pulse_period_s": "Four-second ambient cycle; pauses with review, unrelated to stock, heat or work.",
+    "pulse_peak": "Restrained scar emission with no bloom or per-scar lamp."
+  }
+}

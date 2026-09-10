@@ -1,0 +1,851 @@
+{
+  "existing_checks": {
+    "art": {
+      "checks": 11,
+      "failures": 0
+    },
+    "gathering": {
+      "checks": 22,
+      "failures": 0
+    },
+    "loads-restore": {
+      "checks": 6,
+      "failures": 0
+    },
+    "loads": {
+      "checks": 201,
+      "failures": 0
+    },
+    "loose-read": {
+      "checks": 13,
+      "failures": 0
+    },
+    "loose-write": {
+      "checks": 6,
+      "failures": 0
+    },
+    "materials": {
+      "checks": 158,
+      "failures": 0
+    },
+    "placement-restore": {
+      "checks": 60,
+      "failures": 0
+    },
+    "placement": {
+      "checks": 470,
+      "failures": 0
+    },
+    "save-recovery": {
+      "checks": 175,
+      "failures": 0
+    },
+    "source-restore": {
+      "checks": 15,
+      "failures": 0
+    },
+    "source-work": {
+      "checks": 733,
+      "failures": 0
+    },
+    "unit": {
+      "checks": 398,
+      "failures": 0
+    },
+    "world": {
+      "checks": 5957,
+      "failures": 0
+    }
+  },
+  "total_existing_checks": 8225,
+  "benchmarks": {
+    "forward_plus": {
+      "art": {
+        "art_visible": true,
+        "device": "NVIDIA GeForce RTX 5090",
+        "draws": 99.0,
+        "p50_ms": 0.293,
+        "p95_ms": 0.414,
+        "primitives": 81034.0,
+        "samples": 600,
+        "scope": "Static composed B3 kit; hidden-art comparison retains loaded textures. Not a whole-world budget or lower-spec approval.",
+        "texture_bytes": 475077632.0,
+        "viewport": "1440x900 MSAA4 shadows on vsync off fixed camera",
+        "worst_ms": 3.926
+      },
+      "hidden": {
+        "art_visible": false,
+        "device": "NVIDIA GeForce RTX 5090",
+        "draws": 6.0,
+        "p50_ms": 0.173,
+        "p95_ms": 0.265,
+        "primitives": 220.0,
+        "samples": 600,
+        "scope": "Static composed B3 kit; hidden-art comparison retains loaded textures. Not a whole-world budget or lower-spec approval.",
+        "texture_bytes": 475077632.0,
+        "viewport": "1440x900 MSAA4 shadows on vsync off fixed camera",
+        "worst_ms": 1.25
+      }
+    },
+    "gl_compatibility": {
+      "art": {
+        "art_visible": true,
+        "device": "NVIDIA GeForce RTX 5090",
+        "draws": 99.0,
+        "p50_ms": 0.267,
+        "p95_ms": 0.405,
+        "primitives": 81042.0,
+        "samples": 600,
+        "scope": "Static composed B3 kit; hidden-art comparison retains loaded textures. Not a whole-world budget or lower-spec approval.",
+        "texture_bytes": 393831321.0,
+        "viewport": "1440x900 MSAA4 shadows on vsync off fixed camera",
+        "worst_ms": 0.723
+      },
+      "hidden": {
+        "art_visible": false,
+        "device": "NVIDIA GeForce RTX 5090",
+        "draws": 6.0,
+        "p50_ms": 0.202,
+        "p95_ms": 0.25,
+        "primitives": 228.0,
+        "samples": 600,
+        "scope": "Static composed B3 kit; hidden-art comparison retains loaded textures. Not a whole-world budget or lower-spec approval.",
+        "texture_bytes": 393831321.0,
+        "viewport": "1440x900 MSAA4 shadows on vsync off fixed camera",
+        "worst_ms": 1.073
+      }
+    }
+  },
+  "exports": {
+    "boulder-full-lod0.glb": {
+      "file": "boulder-full-lod0.glb",
+      "triangles": 11980,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 265,
+      "cap_faces": 45,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 4014548,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "boulder-full-lod1.glb": {
+      "file": "boulder-full-lod1.glb",
+      "triangles": 4500,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3392116,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "boulder-full-lod2.glb": {
+      "file": "boulder-full-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3318768,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "boulder-remnant-lod0.glb": {
+      "file": "boulder-remnant-lod0.glb",
+      "triangles": 2745,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 292,
+      "cap_faces": 43,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0007921158103272319
+        ],
+        [
+          -0.19999998807907104,
+          0.4692701995372772,
+          0.588157057762146
+        ]
+      ],
+      "bytes": 3455996,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "boulder-remnant-lod1.glb": {
+      "file": "boulder-remnant-lod1.glb",
+      "triangles": 2745,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 292,
+      "cap_faces": 43,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0007921158103272319
+        ],
+        [
+          -0.19999998807907104,
+          0.4692701995372772,
+          0.588157057762146
+        ]
+      ],
+      "bytes": 3455996,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "boulder-remnant-lod2.glb": {
+      "file": "boulder-remnant-lod2.glb",
+      "triangles": 1124,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0007921158103272319
+        ],
+        [
+          -0.19999998807907104,
+          0.4692701995372772,
+          0.588157057762146
+        ]
+      ],
+      "bytes": 3319500,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "boulder-worked-lod0.glb": {
+      "file": "boulder-worked-lod0.glb",
+      "triangles": 7422,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 451,
+      "cap_faces": 44,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0003593878063838929
+        ],
+        [
+          0.23000001907348633,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3737884,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "boulder-worked-lod1.glb": {
+      "file": "boulder-worked-lod1.glb",
+      "triangles": 4500,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0003593878063838929
+        ],
+        [
+          0.23000001907348633,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3396852,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "boulder-worked-lod2.glb": {
+      "file": "boulder-worked-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0003593878063838929
+        ],
+        [
+          0.23000001907348633,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3320980,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "cave-threshold-lod0.glb": {
+      "file": "cave-threshold-lod0.glb",
+      "triangles": 11674,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -2.1354918479919434,
+          -0.5634468197822571,
+          -9.769200914888643e-07
+        ],
+        [
+          2.1449999809265137,
+          0.6499999761581421,
+          3.0739998817443848
+        ]
+      ],
+      "bytes": 3504100,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "cave-threshold-lod1.glb": {
+      "file": "cave-threshold-lod1.glb",
+      "triangles": 4494,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -2.1354918479919434,
+          -0.5634468197822571,
+          -9.769200914888643e-07
+        ],
+        [
+          2.1449999809265137,
+          0.6499999761581421,
+          3.0739998817443848
+        ]
+      ],
+      "bytes": 3376676,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "cave-threshold-lod2.glb": {
+      "file": "cave-threshold-lod2.glb",
+      "triangles": 1190,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -2.1354918479919434,
+          -0.5634468197822571,
+          -9.769200914888643e-07
+        ],
+        [
+          2.1449999809265137,
+          0.6499999761581421,
+          3.0739998817443848
+        ]
+      ],
+      "bytes": 3318116,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "released-chunk-lod0.glb": {
+      "file": "released-chunk-lod0.glb",
+      "triangles": 5493,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 125,
+      "cap_faces": 316,
+      "bounds_blender_m": [
+        [
+          0.23000000417232513,
+          -0.4312358796596527,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5782676339149475,
+          0.920292317867279
+        ]
+      ],
+      "bytes": 3616040,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "released-chunk-lod1.glb": {
+      "file": "released-chunk-lod1.glb",
+      "triangles": 4491,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 125,
+      "cap_faces": 60,
+      "bounds_blender_m": [
+        [
+          0.23000000417232513,
+          -0.4312358796596527,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5782676339149475,
+          0.920292317867279
+        ]
+      ],
+      "bytes": 3571176,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "released-chunk-lod2.glb": {
+      "file": "released-chunk-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          0.23000000417232513,
+          -0.4312358796596527,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5782676339149475,
+          0.920292317867279
+        ]
+      ],
+      "bytes": 3318416,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "river-bank-lod0.glb": {
+      "file": "river-bank-lod0.glb",
+      "triangles": 12846,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 706,
+      "cap_faces": 4,
+      "bounds_blender_m": [
+        [
+          -1.710848331451416,
+          -0.699999988079071,
+          -4.5035184825792385e-07
+        ],
+        [
+          1.75,
+          0.75,
+          0.7599999904632568
+        ]
+      ],
+      "bytes": 7185104,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "river-bank-lod1.glb": {
+      "file": "river-bank-lod1.glb",
+      "triangles": 3129,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 3,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.710848331451416,
+          -0.699999988079071,
+          -4.5035184825792385e-07
+        ],
+        [
+          1.75,
+          0.75,
+          0.7599999904632568
+        ]
+      ],
+      "bytes": 6545660,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "river-bank-lod2.glb": {
+      "file": "river-bank-lod2.glb",
+      "triangles": 1199,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 3,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.710848331451416,
+          -0.699999988079071,
+          -4.5035184825792385e-07
+        ],
+        [
+          1.75,
+          0.75,
+          0.7599999904632568
+        ]
+      ],
+      "bytes": 6503000,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "rock-shelf-altered-lod0.glb": {
+      "file": "rock-shelf-altered-lod0.glb",
+      "triangles": 11981,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 262,
+      "cap_faces": 42,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -0.015506967902183533
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 4167800,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "rock-shelf-altered-lod1.glb": {
+      "file": "rock-shelf-altered-lod1.glb",
+      "triangles": 2220,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -0.015506967902183533
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3350284,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "rock-shelf-altered-lod2.glb": {
+      "file": "rock-shelf-altered-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -0.015506967902183533
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3323756,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "rock-shelf-lod0.glb": {
+      "file": "rock-shelf-lod0.glb",
+      "triangles": 11981,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 262,
+      "cap_faces": 42,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -8.326172746819793e-07
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 4006768,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "rock-shelf-lod1.glb": {
+      "file": "rock-shelf-lod1.glb",
+      "triangles": 2176,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -8.326172746819793e-07
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3340020,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "rock-shelf-lod2.glb": {
+      "file": "rock-shelf-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -8.326172746819793e-07
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3318604,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "stone-seam-lod0.glb": {
+      "file": "stone-seam-lod0.glb",
+      "triangles": 9046,
+      "surfaces": 4,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 202,
+      "cap_faces": 365,
+      "bounds_blender_m": [
+        [
+          -1.41756010055542,
+          -0.28605762124061584,
+          -1.7614364367091184e-07
+        ],
+        [
+          1.4500000476837158,
+          0.33000001311302185,
+          0.1728000044822693
+        ]
+      ],
+      "bytes": 3824036,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "stone-seam-lod1.glb": {
+      "file": "stone-seam-lod1.glb",
+      "triangles": 4499,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 3,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.41756010055542,
+          -0.28605762124061584,
+          -1.7614364367091184e-07
+        ],
+        [
+          1.4500000476837158,
+          0.33000001311302185,
+          0.1728000044822693
+        ]
+      ],
+      "bytes": 3392072,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "stone-seam-lod2.glb": {
+      "file": "stone-seam-lod2.glb",
+      "triangles": 1199,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 3,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.41756010055542,
+          -0.28605762124061584,
+          -1.7614364367091184e-07
+        ],
+        [
+          1.4500000476837158,
+          0.33000001311302185,
+          0.1728000044822693
+        ]
+      ],
+      "bytes": 3319396,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "talus-pebbles-lod0.glb": {
+      "file": "talus-pebbles-lod0.glb",
+      "triangles": 3996,
+      "surfaces": 8,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.1602790355682373,
+          -0.5230766534805298,
+          -2.0554681157136656e-07
+        ],
+        [
+          1.1592295169830322,
+          0.49178546667099,
+          0.20221340656280518
+        ]
+      ],
+      "bytes": 3391052,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "talus-pebbles-lod1.glb": {
+      "file": "talus-pebbles-lod1.glb",
+      "triangles": 3996,
+      "surfaces": 8,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.1602790355682373,
+          -0.5230766534805298,
+          -2.0554681157136656e-07
+        ],
+        [
+          1.1592295169830322,
+          0.49178546667099,
+          0.20221340656280518
+        ]
+      ],
+      "bytes": 3391052,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    },
+    "talus-pebbles-lod2.glb": {
+      "file": "talus-pebbles-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 8,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.1602790355682373,
+          -0.5230766534805298,
+          -2.0554681157136656e-07
+        ],
+        [
+          1.1592295169830322,
+          0.49178546667099,
+          0.20221340656280518
+        ]
+      ],
+      "bytes": 3325124,
+      "alpha_modes": [
+        "OPAQUE"
+      ]
+    }
+  },
+  "native_dll": {
+    "dll_sha256": "6d8094fc95c0854f9100b161806a11d9fa3a67bb4f870080976bcd8d2e8f2279",
+    "godot_cpp_sha256": "701934d2505314d4272ef258beca75974de9f2bb2d94d98b29d22670de42370c",
+    "revision": "f00d4b76274ef2a73c3b6f4a275d2bd3ca0f958d"
+  },
+  "source_hashes_unchanged": true,
+  "static_v05_v06_identical": true,
+  "packed_images": 7,
+  "max_incision_m": 0.06449609090535735,
+  "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321"
+}

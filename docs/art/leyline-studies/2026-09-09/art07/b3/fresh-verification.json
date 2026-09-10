@@ -1,0 +1,235 @@
+{
+  "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+  "canonical_files_verified_after_import": 1541,
+  "fresh_audit_exactly_matches_selected": true,
+  "all_existing_gd_scripts_and_native_dll_same_as_current_check_target": true,
+  "fresh_jobs": [
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-checks\\blender.log.job.json",
+      "job_sha256": "5cb847a68a97d5c00a4df732dcf1c2ecc3fa97d9f1486978bcab62cb197cd156",
+      "gpu_slot": false,
+      "exit": 0,
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "./tools/wroughtwild-art07/b3/audit.py",
+        "--",
+        "./build/art07/b3/v01/handoff-reimport-v02/models",
+        "./build/art07/b3/v01/fresh-v02-audit.json"
+      ],
+      "seconds": 2.2152516,
+      "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+      "pid": 3604,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-checks\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-checks\\interactive-pause.log.job.json",
+      "job_sha256": "661b68f828ae563620f9e34638d8722854d32d228b7a9b2a20d137267c731cc6",
+      "gpu_slot": false,
+      "exit": 0,
+      "arguments": [
+        "--headless",
+        "--path",
+        "./build/art07/b3/v01/handoff-reimport-v02/review",
+        "--script",
+        "res://verify_pause.gd"
+      ],
+      "seconds": 1.6362239,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 2796,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-checks\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-checks\\native-game-import.log.job.json",
+      "job_sha256": "52b069a82cf9b03cd85759bca9a8036fb85f643ac7618290c9c4ec40ab6f2dcb",
+      "gpu_slot": false,
+      "exit": 0,
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "./build/art07/b3/v01/handoff-reimport-v02/native/game",
+        "--import"
+      ],
+      "seconds": 13.1712597,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 7708,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-checks\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-checks\\review-import.log.job.json",
+      "job_sha256": "e56c0942274c95b8709a49fdbf7cbf2b729a9c3c7969e148d421efb05c680ab0",
+      "gpu_slot": false,
+      "exit": 0,
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "./build/art07/b3/v01/handoff-reimport-v02/review",
+        "--import"
+      ],
+      "seconds": 17.0932902,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 6184,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-checks\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-native\\native-final.log.job.json",
+      "job_sha256": "0cd6996f1fff37a3a4cf559d13139790bf256c107eb54505f589dc9bbefd0e39",
+      "gpu_slot": false,
+      "exit": 0,
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        ".\\build\\art07\\b3\\v01\\handoff-reimport-v02\\native\\game",
+        "res://b3/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "seconds": 1.6500006,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 5776,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-native\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-native\\native-flow.log.job.json",
+      "job_sha256": "fb8e7db067deceffc6dd2ea21e832e11d119671d037d8ce9211ea86b28573f8c",
+      "gpu_slot": false,
+      "exit": 0,
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        ".\\build\\art07\\b3\\v01\\handoff-reimport-v02\\native\\game",
+        "res://b3/native_review.tscn"
+      ],
+      "seconds": 2.6868803,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 4472,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-native\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-native\\native-partial.log.job.json",
+      "job_sha256": "810a9a5a28caba7a3e93e9e678b6d3b66c2e5b67c180168c12a3c303b69f71d7",
+      "gpu_slot": false,
+      "exit": 0,
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        ".\\build\\art07\\b3\\v01\\handoff-reimport-v02\\native\\game",
+        "res://b3/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "seconds": 1.6499707,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 16776,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-native\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-capture\\forward_plus-native.log.job.json",
+      "job_sha256": "9b6bb1dddf192ed07d75d0599b770fe7fb4625355fbbec15b5612b738471c538",
+      "gpu_slot": true,
+      "exit": 0,
+      "arguments": [
+        "--path",
+        ".\\build\\art07\\b3\\v01\\handoff-reimport-v02\\native\\game",
+        "--rendering-method",
+        "forward_plus",
+        "--resolution",
+        "1440x900",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://b3/native_review.tscn"
+      ],
+      "seconds": 13.8719069,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 3484,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-capture\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-capture\\forward_plus-static.log.job.json",
+      "job_sha256": "da85e647725e2be1cc6b9128d17431280b97eb43a6b4b7b9797ee4d8458afd50",
+      "gpu_slot": true,
+      "exit": 0,
+      "arguments": [
+        "--path",
+        ".\\build\\art07\\b3\\v01\\handoff-reimport-v02\\review",
+        "--rendering-method",
+        "forward_plus",
+        "--resolution",
+        "1440x900",
+        "--audio-driver",
+        "Dummy",
+        "--",
+        "--capture"
+      ],
+      "seconds": 20.6906078,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 35656,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-capture\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-capture\\gl_compatibility-native.log.job.json",
+      "job_sha256": "1dee99d151fad833170f567a77b08f615ba23931fbefbb93807738563e28ec0d",
+      "gpu_slot": true,
+      "exit": 0,
+      "arguments": [
+        "--path",
+        ".\\build\\art07\\b3\\v01\\handoff-reimport-v02\\native\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "1440x900",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://b3/native_review.tscn"
+      ],
+      "seconds": 7.5213924,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 28360,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-capture\\user"
+    },
+    {
+      "job_file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-capture\\gl_compatibility-static.log.job.json",
+      "job_sha256": "bfc92946f5b2d7638ed2d64d685e8cf3a3678182ab33faae0022a5f81ed15673",
+      "gpu_slot": true,
+      "exit": 0,
+      "arguments": [
+        "--path",
+        ".\\build\\art07\\b3\\v01\\handoff-reimport-v02\\review",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "1440x900",
+        "--audio-driver",
+        "Dummy",
+        "--",
+        "--capture"
+      ],
+      "seconds": 16.8031238,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 33112,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\fresh-v02-capture\\user"
+    }
+  ]
+}

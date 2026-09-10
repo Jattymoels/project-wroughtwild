@@ -1,0 +1,115 @@
+{
+  "files": {
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\emberroot-handoff\\editable\\rock-finished.blend": {
+      "sha256": "cc8a483a7cf3f9ae5b012a8d78155ad49afb71affc2ab505078b2935f80bd61a",
+      "bytes": 34491449
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\emberroot-handoff\\review\\root-bank.glb": {
+      "sha256": "0718f626d01c6d39a926cd6930db428f3d2a3bf137ec02488edae4ddec7c2b00",
+      "bytes": 14622380
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\emberroot-handoff\\review\\rock-base.png": {
+      "sha256": "941b29d509ce04b52a5bf2f0eb2c6722d07b730c96dbbc5032aeee26cd884531",
+      "bytes": 8512622
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\emberroot-handoff\\review\\rock-orm.png": {
+      "sha256": "c80d6bb4cd7a7e2e909a8cbd0232dde7e2cf405db788afa76cc18e7989787966",
+      "bytes": 3371762
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\emberroot-handoff\\review\\forest-floor.png": {
+      "sha256": "3d5b8c97099046eec0f47e4150246f7a83abd0318023b4b680fc05da2a4f69cc",
+      "bytes": 3699621
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\rock.glb": {
+      "sha256": "6185f02594ec0d064d9750fa28fe33603c513361f0a96a65512ff9668c721322",
+      "bytes": 25627192
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\rock_cutout.png": {
+      "sha256": "cc9079702437c95c6534478c23f29cfe89c381b50cc99fe5c00a17124f9cadb6",
+      "bytes": 2975927
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\generation.json": {
+      "sha256": "ed438b7c355766e7e8efd68dacbc110d7cda986db4b3c2943dd30603a74a3377",
+      "bytes": 985
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\grove-art02\\rock-input-v01.png": {
+      "sha256": "a009263af1f9b8a1bf7856212ffaa6cce08eac1f241d24ee8af529cdb7a53b2c",
+      "bytes": 2672924
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\references\\environment\\env-002-dense-frontier-original.png": {
+      "sha256": "46ec1329993b1a04cc1dc114f80d0a5e406fe933761640653a458295598fd7dd",
+      "bytes": 924019
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\runtime\\trellis-cli.exe": {
+      "sha256": "e3d075612388a42fcb9bea73377feac4149e3a463cff2d2e11b24975e85d427d",
+      "bytes": 2732544
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe": {
+      "sha256": "42c096b04d79bd0ff234429f67178881047c1c370d25ad3aef2766f3eeac4024",
+      "bytes": 96051672
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\tools\\wroughtwild-trellis\\install-manifest.json": {
+      "sha256": "da4b60f904904b539cbb20f4ae21f9eaf9dac8ca5ff97ed92c341242aa9c0e2d",
+      "bytes": 3782
+    }
+  },
+  "pinned_runtime": "v0.6.0",
+  "pinned_model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+  "weights": {
+    "birefnet.gguf": "10c5dd4dcac904cf81c9a16180eb66f167dd52ab55867f54a44567b0b2babbc1",
+    "dinov3.gguf": "b2e84087aebeb06440da4f5970413153f7f27f71ede7bab993e82accd839d936",
+    "shape_dec.gguf": "d3230b649031b55728da2d8818f092eab9ad6f1e72fd01f6cbff6bfada5d7d47",
+    "shape_flow_1024.gguf": "7d0e9903bf132a5d78f289eaa2fa4050bcd52c689716406cbf66b76cdfa4656c",
+    "shape_flow_512.gguf": "fef397f3600e2fab327a98b3edd3cc8377e9741eef870f3ea3f40235875828fb",
+    "ss_dec.gguf": "2790b5eecb261cc877d9bf175ce2bd6dd48cd65be8c042c5f5bc023dfca01cf7",
+    "ss_flow.gguf": "1dfbef1b80ddea422a6189ff9ac29a244c4482cfbaa01870a0c0ea76d3fb9ae6",
+    "tex_dec.gguf": "858d1e0079254e1d1f0596d7fa3a747d21bfe80f83d810e735a1e0b9db550322",
+    "tex_flow_1024.gguf": "c0a51917c1e5a9dad4d8a49cdf47553e21fd47716d46e53c5f44fcc7bf7f3af1",
+    "tex_flow_512.gguf": "0e81b8213191369dc023eb270650f0ccded29f39bf0bbb7a1fe5d4bcefc15b79"
+  },
+  "raw_asset_metadata": {
+    "version": "2.0",
+    "minVersion": "2.0",
+    "generator": "trellis.cpp v0.6.0",
+    "extras": {
+      "seed": 42,
+      "commit": "16f3109e82f3922033bfa62b83c42899678b7b6f",
+      "backend": "cuda",
+      "build": "2026-08-21T08:39:09Z",
+      "generated": "2026-09-08T23:37:57Z"
+    }
+  },
+  "original_generation": {
+    "input_sha256": "a009263af1f9b8a1bf7856212ffaa6cce08eac1f241d24ee8af529cdb7a53b2c",
+    "arguments": [
+      "--image",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\grove-art02\\rock-input-v01.png",
+      "--output",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\rock.glb",
+      "--models",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+      "--gpu",
+      "0",
+      "--require-gpu",
+      "--res",
+      "1024",
+      "--seed",
+      "42",
+      "--bg-removal",
+      "birefnet",
+      "--dump-bg",
+      "--webp",
+      "off",
+      "--threads",
+      "8"
+    ],
+    "runtime": "pwilkin/trellis.cpp",
+    "version": "v0.6.0",
+    "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+    "started_utc": "2026-09-08T23:36:02.8659031Z",
+    "exit_code": 0,
+    "seconds": 116.2489703,
+    "glb_sha256": "6185f02594ec0d064d9750fa28fe33603c513361f0a96a65512ff9668c721322"
+  },
+  "new_generation": "None: inspected approved source reused."
+}

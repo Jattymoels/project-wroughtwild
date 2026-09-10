@@ -1,0 +1,694 @@
+{
+  "packed_images": 7,
+  "independent_max_incision_m": 0.06449609090535735,
+  "exports": [
+    {
+      "file": "boulder-full-lod0.glb",
+      "triangles": 11980,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 265,
+      "cap_faces": 45,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 4014548
+    },
+    {
+      "file": "boulder-full-lod1.glb",
+      "triangles": 4500,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3392116
+    },
+    {
+      "file": "boulder-full-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3318768
+    },
+    {
+      "file": "boulder-remnant-lod0.glb",
+      "triangles": 2745,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 292,
+      "cap_faces": 43,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0007921158103272319
+        ],
+        [
+          -0.19999998807907104,
+          0.4692701995372772,
+          0.588157057762146
+        ]
+      ],
+      "bytes": 3455996
+    },
+    {
+      "file": "boulder-remnant-lod1.glb",
+      "triangles": 2745,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 292,
+      "cap_faces": 43,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0007921158103272319
+        ],
+        [
+          -0.19999998807907104,
+          0.4692701995372772,
+          0.588157057762146
+        ]
+      ],
+      "bytes": 3455996
+    },
+    {
+      "file": "boulder-remnant-lod2.glb",
+      "triangles": 1124,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0007921158103272319
+        ],
+        [
+          -0.19999998807907104,
+          0.4692701995372772,
+          0.588157057762146
+        ]
+      ],
+      "bytes": 3319500
+    },
+    {
+      "file": "boulder-worked-lod0.glb",
+      "triangles": 7422,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 451,
+      "cap_faces": 44,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0003593878063838929
+        ],
+        [
+          0.23000001907348633,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3737884
+    },
+    {
+      "file": "boulder-worked-lod1.glb",
+      "triangles": 4500,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0003593878063838929
+        ],
+        [
+          0.23000001907348633,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3396852
+    },
+    {
+      "file": "boulder-worked-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          0.0003593878063838929
+        ],
+        [
+          0.23000001907348633,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 3320980
+    },
+    {
+      "file": "cave-threshold-lod0.glb",
+      "triangles": 11674,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -2.1354918479919434,
+          -0.5634468197822571,
+          -9.769200914888643e-07
+        ],
+        [
+          2.1449999809265137,
+          0.6499999761581421,
+          3.0739998817443848
+        ]
+      ],
+      "bytes": 3504100
+    },
+    {
+      "file": "cave-threshold-lod1.glb",
+      "triangles": 4494,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -2.1354918479919434,
+          -0.5634468197822571,
+          -9.769200914888643e-07
+        ],
+        [
+          2.1449999809265137,
+          0.6499999761581421,
+          3.0739998817443848
+        ]
+      ],
+      "bytes": 3376676
+    },
+    {
+      "file": "cave-threshold-lod2.glb",
+      "triangles": 1190,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -2.1354918479919434,
+          -0.5634468197822571,
+          -9.769200914888643e-07
+        ],
+        [
+          2.1449999809265137,
+          0.6499999761581421,
+          3.0739998817443848
+        ]
+      ],
+      "bytes": 3318116
+    },
+    {
+      "file": "released-chunk-lod0.glb",
+      "triangles": 5493,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 125,
+      "cap_faces": 316,
+      "bounds_blender_m": [
+        [
+          0.23000000417232513,
+          -0.4312358796596527,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5782676339149475,
+          0.920292317867279
+        ]
+      ],
+      "bytes": 3616040
+    },
+    {
+      "file": "released-chunk-lod1.glb",
+      "triangles": 4491,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 125,
+      "cap_faces": 60,
+      "bounds_blender_m": [
+        [
+          0.23000000417232513,
+          -0.4312358796596527,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5782676339149475,
+          0.920292317867279
+        ]
+      ],
+      "bytes": 3571176
+    },
+    {
+      "file": "released-chunk-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          0.23000000417232513,
+          -0.4312358796596527,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5782676339149475,
+          0.920292317867279
+        ]
+      ],
+      "bytes": 3318416
+    },
+    {
+      "file": "river-bank-lod0.glb",
+      "triangles": 12846,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 706,
+      "cap_faces": 4,
+      "bounds_blender_m": [
+        [
+          -1.710848331451416,
+          -0.699999988079071,
+          -4.5035184825792385e-07
+        ],
+        [
+          1.75,
+          0.75,
+          0.7599999904632568
+        ]
+      ],
+      "bytes": 7185104
+    },
+    {
+      "file": "river-bank-lod1.glb",
+      "triangles": 3129,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 3,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.710848331451416,
+          -0.699999988079071,
+          -4.5035184825792385e-07
+        ],
+        [
+          1.75,
+          0.75,
+          0.7599999904632568
+        ]
+      ],
+      "bytes": 6545660
+    },
+    {
+      "file": "river-bank-lod2.glb",
+      "triangles": 1199,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 3,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.710848331451416,
+          -0.699999988079071,
+          -4.5035184825792385e-07
+        ],
+        [
+          1.75,
+          0.75,
+          0.7599999904632568
+        ]
+      ],
+      "bytes": 6503000
+    },
+    {
+      "file": "rock-shelf-altered-lod0.glb",
+      "triangles": 11981,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 262,
+      "cap_faces": 42,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -0.015506967902183533
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 4167800
+    },
+    {
+      "file": "rock-shelf-altered-lod1.glb",
+      "triangles": 2220,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -0.015506967902183533
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3350284
+    },
+    {
+      "file": "rock-shelf-altered-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -0.015506967902183533
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3323756
+    },
+    {
+      "file": "rock-shelf-lod0.glb",
+      "triangles": 11981,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 262,
+      "cap_faces": 42,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -8.326172746819793e-07
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 4006768
+    },
+    {
+      "file": "rock-shelf-lod1.glb",
+      "triangles": 2176,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -8.326172746819793e-07
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3340020
+    },
+    {
+      "file": "rock-shelf-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -8.326172746819793e-07
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3318604
+    },
+    {
+      "file": "stone-seam-lod0.glb",
+      "triangles": 9046,
+      "surfaces": 4,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 202,
+      "cap_faces": 365,
+      "bounds_blender_m": [
+        [
+          -1.41756010055542,
+          -0.28605762124061584,
+          -1.7614364367091184e-07
+        ],
+        [
+          1.4500000476837158,
+          0.33000001311302185,
+          0.1728000044822693
+        ]
+      ],
+      "bytes": 3824036
+    },
+    {
+      "file": "stone-seam-lod1.glb",
+      "triangles": 4499,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 3,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.41756010055542,
+          -0.28605762124061584,
+          -1.7614364367091184e-07
+        ],
+        [
+          1.4500000476837158,
+          0.33000001311302185,
+          0.1728000044822693
+        ]
+      ],
+      "bytes": 3392072
+    },
+    {
+      "file": "stone-seam-lod2.glb",
+      "triangles": 1199,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 3,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.41756010055542,
+          -0.28605762124061584,
+          -1.7614364367091184e-07
+        ],
+        [
+          1.4500000476837158,
+          0.33000001311302185,
+          0.1728000044822693
+        ]
+      ],
+      "bytes": 3319396
+    },
+    {
+      "file": "talus-pebbles-lod0.glb",
+      "triangles": 3996,
+      "surfaces": 8,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.1602790355682373,
+          -0.5230766534805298,
+          -2.0554681157136656e-07
+        ],
+        [
+          1.1592295169830322,
+          0.49178546667099,
+          0.20221340656280518
+        ]
+      ],
+      "bytes": 3391052
+    },
+    {
+      "file": "talus-pebbles-lod1.glb",
+      "triangles": 3996,
+      "surfaces": 8,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.1602790355682373,
+          -0.5230766534805298,
+          -2.0554681157136656e-07
+        ],
+        [
+          1.1592295169830322,
+          0.49178546667099,
+          0.20221340656280518
+        ]
+      ],
+      "bytes": 3391052
+    },
+    {
+      "file": "talus-pebbles-lod2.glb",
+      "triangles": 1200,
+      "surfaces": 8,
+      "degenerate_triangles": 0,
+      "boundary_edges_after_weld": 0,
+      "cap_faces": 0,
+      "bounds_blender_m": [
+        [
+          -1.1602790355682373,
+          -0.5230766534805298,
+          -2.0554681157136656e-07
+        ],
+        [
+          1.1592295169830322,
+          0.49178546667099,
+          0.20221340656280518
+        ]
+      ],
+      "bytes": 3325124
+    }
+  ],
+  "textures": [
+    {
+      "name": "Image_0",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.001",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.003",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_1",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.001",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.003",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Tree scar - core damage travel",
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "colourspace": "Non-Color"
+    }
+  ]
+}
