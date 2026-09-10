@@ -1,0 +1,156 @@
+{
+  "forward_plus": {
+    "adapter": "NVIDIA GeForce RTX 5090",
+    "cap": 0,
+    "renderer": "forward_plus",
+    "resolution": [
+      1440,
+      900
+    ],
+    "rows": [
+      {
+        "camera_distance_parameter_m": 6.0,
+        "draws": 72.0,
+        "p50_ms": 0.425,
+        "p95_ms": 0.717,
+        "primitives": 203628.0,
+        "texture_bytes": 96585216.0,
+        "video_bytes": 139119632.0,
+        "worst_ms": 1.094
+      },
+      {
+        "camera_distance_parameter_m": 12.0,
+        "draws": 116.0,
+        "p50_ms": 0.419,
+        "p95_ms": 0.728,
+        "primitives": 363614.0,
+        "texture_bytes": 96585216.0,
+        "video_bytes": 139119632.0,
+        "worst_ms": 1.027
+      },
+      {
+        "camera_distance_parameter_m": 24.0,
+        "draws": 175.0,
+        "p50_ms": 0.404,
+        "p95_ms": 0.724,
+        "primitives": 420760.0,
+        "texture_bytes": 96585216.0,
+        "video_bytes": 139119632.0,
+        "worst_ms": 0.933
+      }
+    ],
+    "sample_frames": 360,
+    "scene": "same static native lattice gallery; no captures/generation during measurement",
+    "vsync": false,
+    "warmup_frames": 180,
+    "process": {
+      "exit_code": 0,
+      "end": "2026-09-11T09:23:19.3533646+09:30",
+      "job": {
+        "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "arguments": [
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\snapshot\\game",
+          "--audio-driver",
+          "Dummy",
+          "--rendering-method",
+          "forward_plus",
+          "--resolution",
+          "1440x900",
+          "--position",
+          "-9999,-9999",
+          "res://art07_d2/gallery.tscn",
+          "--",
+          "--benchmark"
+        ],
+        "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree",
+        "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\logs\\forward_plus-benchmark",
+        "gpu": true,
+        "timeout_seconds": 600,
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\isolated-appdata",
+        "allow_headless_peers": false
+      },
+      "pid": 40052,
+      "start": "2026-09-11T09:23:16.0881896+09:30",
+      "seconds": 3.2653111
+    },
+    "gpu_info": "name, driver_version, utilization.gpu [%], memory.used [MiB]\nNVIDIA GeForce RTX 5090, 591.86, 7 %, 1411 MiB\n"
+  },
+  "gl_compatibility": {
+    "adapter": "NVIDIA GeForce RTX 5090",
+    "cap": 0,
+    "renderer": "gl_compatibility",
+    "resolution": [
+      1440,
+      900
+    ],
+    "rows": [
+      {
+        "camera_distance_parameter_m": 6.0,
+        "draws": 226.0,
+        "p50_ms": 0.58,
+        "p95_ms": 0.665,
+        "primitives": 203628.0,
+        "texture_bytes": 12950555.0,
+        "video_bytes": 37725159.0,
+        "worst_ms": 0.837
+      },
+      {
+        "camera_distance_parameter_m": 12.0,
+        "draws": 343.0,
+        "p50_ms": 0.645,
+        "p95_ms": 0.71,
+        "primitives": 363614.0,
+        "texture_bytes": 12950555.0,
+        "video_bytes": 37725159.0,
+        "worst_ms": 0.796
+      },
+      {
+        "camera_distance_parameter_m": 24.0,
+        "draws": 418.0,
+        "p50_ms": 0.682,
+        "p95_ms": 0.765,
+        "primitives": 420760.0,
+        "texture_bytes": 12950555.0,
+        "video_bytes": 37725159.0,
+        "worst_ms": 0.943
+      }
+    ],
+    "sample_frames": 360,
+    "scene": "same static native lattice gallery; no captures/generation during measurement",
+    "vsync": false,
+    "warmup_frames": 180,
+    "process": {
+      "exit_code": 0,
+      "end": "2026-09-11T09:23:23.5787666+09:30",
+      "job": {
+        "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "arguments": [
+          "--path",
+          "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\snapshot\\game",
+          "--audio-driver",
+          "Dummy",
+          "--rendering-method",
+          "gl_compatibility",
+          "--resolution",
+          "1440x900",
+          "--position",
+          "-9999,-9999",
+          "res://art07_d2/gallery.tscn",
+          "--",
+          "--benchmark"
+        ],
+        "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree",
+        "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\logs\\gl_compatibility-benchmark",
+        "gpu": true,
+        "timeout_seconds": 600,
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\isolated-appdata",
+        "allow_headless_peers": false
+      },
+      "pid": 20832,
+      "start": "2026-09-11T09:23:19.3829575+09:30",
+      "seconds": 4.1958798
+    },
+    "gpu_info": "name, driver_version, utilization.gpu [%], memory.used [MiB]\nNVIDIA GeForce RTX 5090, 591.86, 49 %, 1459 MiB\n"
+  }
+}

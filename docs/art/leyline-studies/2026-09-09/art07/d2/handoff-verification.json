@@ -1,0 +1,390 @@
+{
+  "canonical_package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\roof-joinery-spans-handoff-v02",
+  "manifest_sha256": "47bc86f0adca636bc111c1f772c807cd7d0d6926e26c304d3f6f023bd3740eec",
+  "canonical_files_rehashed": 1544,
+  "source_recipe_matches_package": true,
+  "fresh_processes": {
+    "import": {
+      "process": {
+        "end": "2026-09-11T09:28:00.4518998+09:30",
+        "start": "2026-09-11T09:27:47.9029015+09:30",
+        "seconds": 12.5490576,
+        "exit_code": 0,
+        "pid": 39664,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--headless",
+            "--import"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\logs\\import",
+          "gpu": true,
+          "allow_headless_peers": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\isolated-appdata"
+        }
+      },
+      "checks": [],
+      "stdout_sha256": "3c721b94d87f5b56bddb3bc2502329b657ae642f020be152919c4ede5e26740a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "placement": {
+      "process": {
+        "end": "2026-09-11T09:28:02.6945258+09:30",
+        "start": "2026-09-11T09:28:00.4912955+09:30",
+        "seconds": 2.2032935,
+        "exit_code": 0,
+        "pid": 19448,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--headless",
+            "res://art07_d2/checks.tscn"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\logs\\placement",
+          "gpu": true,
+          "allow_headless_peers": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\isolated-appdata"
+        }
+      },
+      "checks": [
+        [
+          "6563",
+          "0"
+        ]
+      ],
+      "stdout_sha256": "0f17682303f2a664bc427731b10c3e5fd647bb688baeb673e859facf8a4d568d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "restart": {
+      "process": {
+        "end": "2026-09-11T09:28:04.6177253+09:30",
+        "start": "2026-09-11T09:28:02.7086416+09:30",
+        "seconds": 1.9091359,
+        "exit_code": 0,
+        "pid": 20488,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--headless",
+            "res://art07_d2/checks.tscn",
+            "--",
+            "--d2-restore"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\logs\\restart",
+          "gpu": true,
+          "allow_headless_peers": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\isolated-appdata"
+        }
+      },
+      "checks": [
+        [
+          "6164",
+          "0"
+        ]
+      ],
+      "stdout_sha256": "9bb041161fcef6adb5003356c49a9ba1c5af3d808968e3ce27420283c8c56490",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "forward_plus": {
+      "process": {
+        "end": "2026-09-11T09:28:12.6249081+09:30",
+        "start": "2026-09-11T09:28:04.6293396+09:30",
+        "seconds": 7.9956132,
+        "exit_code": 0,
+        "pid": 30972,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "forward_plus",
+            "--resolution",
+            "1440x900",
+            "--position",
+            "-9999,-9999",
+            "res://art07_d2/gallery.tscn",
+            "--",
+            "--capture"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\logs\\forward_plus",
+          "gpu": true,
+          "allow_headless_peers": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\isolated-appdata"
+        }
+      },
+      "checks": [],
+      "stdout_sha256": "e9ab5abf0322fa7f768f56e3814b3dc2067fea4215ccbf5d0ad35db80fb9687f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gl_compatibility": {
+      "process": {
+        "end": "2026-09-11T09:28:21.4786180+09:30",
+        "start": "2026-09-11T09:28:12.6368290+09:30",
+        "seconds": 8.84183,
+        "exit_code": 0,
+        "pid": 41964,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "gl_compatibility",
+            "--resolution",
+            "1440x900",
+            "--position",
+            "-9999,-9999",
+            "res://art07_d2/gallery.tscn",
+            "--",
+            "--capture"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\logs\\gl_compatibility",
+          "gpu": true,
+          "allow_headless_peers": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\isolated-appdata"
+        }
+      },
+      "checks": [],
+      "stdout_sha256": "b0b735423a8bd500fdd590d49f1ab4e5eccca9600acab928d0328ee7fb4227b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "blender": {
+      "process": {
+        "end": "2026-09-11T09:28:44.9382901+09:30",
+        "start": "2026-09-11T09:28:21.4911951+09:30",
+        "seconds": 23.4471446,
+        "exit_code": 0,
+        "pid": 41624,
+        "job": {
+          "executable": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\tools\\wroughtwild-art07\\d2\\reopen.py",
+            "--",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\source",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\blender-reopen"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\logs\\blender",
+          "gpu": true,
+          "allow_headless_peers": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\fresh-handoff-v02\\isolated-appdata"
+        }
+      },
+      "checks": [],
+      "stdout_sha256": "2948c4dd1b78cbc8ef80fe04f83f1f484f0e8a224bd3d7c355440e2484ecf2f0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "fresh_images": {
+    "forward_plus": {
+      "images": 58,
+      "byte_identical": 58,
+      "different": []
+    },
+    "gl_compatibility": {
+      "images": 58,
+      "byte_identical": 58,
+      "different": []
+    }
+  },
+  "reopen": {
+    "master_sha256": "9726f7f173a6204a5a0ddd9b8df162333b62c4adb4c988623eff06754ceb8dad",
+    "native_two_state_hinge_control": true,
+    "packed_images": 5,
+    "six_angles_each_material_and_neutral": true,
+    "fresh_glb_imports": {
+      "codex_roof_slope": {
+        "bounds": [
+          [
+            -0.5,
+            -0.25,
+            -0.5
+          ],
+          [
+            0.5,
+            0.25,
+            0.5
+          ]
+        ],
+        "triangles": 5084,
+        "surfaces": 1,
+        "closed_after_welding_export_seams": true,
+        "actual_glb_asset_metadata": {
+          "generator": "Khronos glTF Blender I/O v4.5.51",
+          "version": "2.0"
+        }
+      },
+      "codex_roof_hip": {
+        "bounds": [
+          [
+            -0.5,
+            -0.25,
+            -0.5
+          ],
+          [
+            0.5,
+            0.25,
+            0.5
+          ]
+        ],
+        "triangles": 4988,
+        "surfaces": 1,
+        "closed_after_welding_export_seams": true,
+        "actual_glb_asset_metadata": {
+          "generator": "Khronos glTF Blender I/O v4.5.51",
+          "version": "2.0"
+        }
+      },
+      "codex_roof_valley": {
+        "bounds": [
+          [
+            -0.5,
+            -0.25,
+            -0.5
+          ],
+          [
+            0.5,
+            0.25,
+            0.5
+          ]
+        ],
+        "triangles": 5180,
+        "surfaces": 1,
+        "closed_after_welding_export_seams": true,
+        "actual_glb_asset_metadata": {
+          "generator": "Khronos glTF Blender I/O v4.5.51",
+          "version": "2.0"
+        }
+      },
+      "door": {
+        "bounds": [
+          [
+            -0.4699999988079071,
+            -0.9700000286102295,
+            -0.0625
+          ],
+          [
+            0.4699999988079071,
+            0.9700000286102295,
+            0.0625
+          ]
+        ],
+        "triangles": 2050,
+        "surfaces": 1,
+        "closed_after_welding_export_seams": true,
+        "actual_glb_asset_metadata": {
+          "generator": "Khronos glTF Blender I/O v4.5.51",
+          "version": "2.0"
+        }
+      },
+      "roof_wedge": {
+        "bounds": [
+          [
+            -0.5,
+            -0.5,
+            -0.5
+          ],
+          [
+            0.5,
+            0.5,
+            0.5
+          ]
+        ],
+        "triangles": 128,
+        "surfaces": 1,
+        "closed_after_welding_export_seams": true,
+        "actual_glb_asset_metadata": {
+          "generator": "Khronos glTF Blender I/O v4.5.51",
+          "version": "2.0"
+        }
+      },
+      "girder": {
+        "bounds": [
+          [
+            -1.0,
+            -0.20000000298023224,
+            -0.15000000596046448
+          ],
+          [
+            1.0,
+            0.20000000298023224,
+            0.15000000596046448
+          ]
+        ],
+        "triangles": 460,
+        "surfaces": 1,
+        "closed_after_welding_export_seams": true,
+        "actual_glb_asset_metadata": {
+          "generator": "Khronos glTF Blender I/O v4.5.51",
+          "version": "2.0"
+        }
+      },
+      "arch": {
+        "bounds": [
+          [
+            -0.5,
+            -0.5,
+            -0.125
+          ],
+          [
+            0.5,
+            0.5,
+            0.125
+          ]
+        ],
+        "triangles": 516,
+        "surfaces": 1,
+        "closed_after_welding_export_seams": true,
+        "actual_glb_asset_metadata": {
+          "generator": "Khronos glTF Blender I/O v4.5.51",
+          "version": "2.0"
+        }
+      }
+    },
+    "edge_samples": 528,
+    "legal_seam_pairs": 108
+  },
+  "runtime_equivalence": {
+    "arch.glb": "f5886aef76bab79e783890a05e03ad143df1e224cea1478bdb382f7e59146aea",
+    "codex_roof_hip.glb": "1868065b78ca4097fe802550bb7ed00d6c18e06273000b5c7f755f30f575cb3d",
+    "codex_roof_slope.glb": "f64fe57e0671da01b28298e7d833d2944fb49f44e0db931e52c8ee14df3179bf",
+    "codex_roof_valley.glb": "916d5619c3245aeef5001fdb394c9de427e50f2b504cd6050ea3d286d8a723ec",
+    "door.glb": "962c56bad64ff31f9f5960a157c8a256e08f582b526226b296ff18f0e900d1cf",
+    "girder.glb": "c87ae1d42a2eff8c06ee7b0ac796311133e0e737d44aedd57ac442e2f2181be3",
+    "roof_wedge.glb": "995f7aa0d9d78c5f83d07ee68b7cda6581fb3352b646aba2626b5a71f8ac90b2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "seed": 42,
+  "roof_subdivisions": 48,
+  "roof_courses": 6,
+  "roof_joint_depth_m": 0.006,
+  "roof_edge_guard_m": 0.025,
+  "join_depth_m": 0.006,
+  "join_width_m": 0.008,
+  "web_recess_m": 0.008,
+  "render_samples": 20,
+  "explanation": {
+    "seed": "Repeatable provisional grain and worn metal colouring; no gameplay RNG.",
+    "roof_subdivisions": "Sampling density of the closed covering relief; same mesh at each measured distance.",
+    "roof_courses": "Six overlapping-looking recessed courses per one-metre module.",
+    "roof_joint_depth_m": "Maximum inward roof-course relief; cannot expand native roof collision.",
+    "roof_edge_guard_m": "Exact uncut border retains all native roof seam endpoints and slopes.",
+    "join_depth_m": "Backed door joinery, masonry cuts and blind fastener sockets.",
+    "join_width_m": "Narrow physical panel joints; ordinary construction has no magical scars.",
+    "web_recess_m": "Shallow metal web relief retains the solid-box girder silhouette and collision.",
+    "render_samples": "CPU Blender inspection quality; not a game performance setting."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "forward_plus": {
+    "frames": 48,
+    "display_duration_ms": 3984,
+    "encoding": "960x600 WebP quality 86; original 1440x900 PNGs retained",
+    "source_frames": "build\\art07\\d2\\v02\\snapshot\\game\\art07_d2\\evidence\\forward_plus\\v03",
+    "events": "Native E switch at frames 12 and 36; no tween invented; slight camera orbit",
+    "hash": "a5e0801acd725a9330d86375daaf71b19c168bc288bf4d7db6f35e139f577893"
+  },
+  "gl_compatibility": {
+    "frames": 48,
+    "display_duration_ms": 3984,
+    "encoding": "960x600 WebP quality 86; original 1440x900 PNGs retained",
+    "source_frames": "build\\art07\\d2\\v02\\snapshot\\game\\art07_d2\\evidence\\gl_compatibility\\v03",
+    "events": "Native E switch at frames 12 and 36; no tween invented; slight camera orbit",
+    "hash": "eb8a083d5de9c0b4d70946d53b8e66983621a0ceb24501915189da55b8eeaaca"
+  }
+}
