@@ -1,0 +1,1607 @@
+{
+  "proxies": [
+    {
+      "name": "charcoal_fuel_00",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.16906869411468506,
+        0.14419932663440704,
+        0.154758483171463
+      ],
+      "dimensions_godot_m": [
+        0.16906869411468506,
+        0.154758483171463,
+        0.14419932663440704
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "charcoal_fuel_01",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.1896171271800995,
+        0.18235746026039124,
+        0.17888686060905457
+      ],
+      "dimensions_godot_m": [
+        0.1896171271800995,
+        0.17888686060905457,
+        0.18235746026039124
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "charcoal_fuel_02",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.21101316809654236,
+        0.1447884440422058,
+        0.20328804850578308
+      ],
+      "dimensions_godot_m": [
+        0.21101316809654236,
+        0.20328804850578308,
+        0.1447884440422058
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "charcoal_fuel_03",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.16949325799942017,
+        0.18251566588878632,
+        0.22716987133026123
+      ],
+      "dimensions_godot_m": [
+        0.16949325799942017,
+        0.22716987133026123,
+        0.18251566588878632
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "charcoal_fuel_04",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.1897526979446411,
+        0.14437435567378998,
+        0.15482822060585022
+      ],
+      "dimensions_godot_m": [
+        0.1897526979446411,
+        0.15482822060585022,
+        0.14437435567378998
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "charcoal_fuel_05",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.21028679609298706,
+        0.1825757920742035,
+        0.1789671778678894
+      ],
+      "dimensions_godot_m": [
+        0.21028679609298706,
+        0.1789671778678894,
+        0.1825757920742035
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "charcoal_fuel_06",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.16953811049461365,
+        0.14447109401226044,
+        0.20312386751174927
+      ],
+      "dimensions_godot_m": [
+        0.16953811049461365,
+        0.20312386751174927,
+        0.14447109401226044
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "charcoal_fuel_07",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.19002176821231842,
+        0.18259009718894958,
+        0.22718214988708496
+      ],
+      "dimensions_godot_m": [
+        0.19002176821231842,
+        0.22718214988708496,
+        0.18259009718894958
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "charcoal_fuel_08",
+      "family": "charcoal",
+      "dimensions_blender_m": [
+        0.21044260263442993,
+        0.14451542496681213,
+        0.15488402545452118
+      ],
+      "dimensions_godot_m": [
+        0.21044260263442993,
+        0.15488402545452118,
+        0.14451542496681213
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "cinderglass_frame_rail_-1",
+      "family": "cinderglass",
+      "dimensions_blender_m": [
+        0.8500000238418579,
+        0.1599999964237213,
+        0.07500000298023224
+      ],
+      "dimensions_godot_m": [
+        0.8500000238418579,
+        0.07500000298023224,
+        0.1599999964237213
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "cinderglass_frame_rail_1",
+      "family": "cinderglass",
+      "dimensions_blender_m": [
+        0.8500000238418579,
+        0.1599999964237213,
+        0.07500000298023224
+      ],
+      "dimensions_godot_m": [
+        0.8500000238418579,
+        0.07500000298023224,
+        0.1599999964237213
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "cinderglass_frame_side_-1",
+      "family": "cinderglass",
+      "dimensions_blender_m": [
+        0.07500000298023224,
+        0.1599999964237213,
+        1.0
+      ],
+      "dimensions_godot_m": [
+        0.07500000298023224,
+        1.0,
+        0.1599999964237213
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "cinderglass_frame_side_1",
+      "family": "cinderglass",
+      "dimensions_blender_m": [
+        0.07500000298023224,
+        0.1599999964237213,
+        1.0
+      ],
+      "dimensions_godot_m": [
+        0.07500000298023224,
+        1.0,
+        0.1599999964237213
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "cinderglass_muntin_h",
+      "family": "cinderglass",
+      "dimensions_blender_m": [
+        0.8500000238418579,
+        0.12800000607967377,
+        0.026000000536441803
+      ],
+      "dimensions_godot_m": [
+        0.8500000238418579,
+        0.026000000536441803,
+        0.12800000607967377
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "cinderglass_muntin_v",
+      "family": "cinderglass",
+      "dimensions_blender_m": [
+        0.026000000536441803,
+        0.12800000607967377,
+        0.8500000238418579
+      ],
+      "dimensions_godot_m": [
+        0.026000000536441803,
+        0.8500000238418579,
+        0.12800000607967377
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "cinderglass_pane",
+      "family": "cinderglass",
+      "dimensions_blender_m": [
+        0.8500000238418579,
+        0.03840000182390213,
+        0.8500000238418579
+      ],
+      "dimensions_godot_m": [
+        0.8500000238418579,
+        0.8500000238418579,
+        0.03840000182390213
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "fieldstone_cut_coupon",
+      "family": "fieldstone",
+      "dimensions_blender_m": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.20000000298023224,
+        0.4000000059604645
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "fieldstone_face_coupon",
+      "family": "fieldstone",
+      "dimensions_blender_m": [
+        1.0,
+        0.25,
+        0.5
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.5,
+        0.25
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "fieldstone_repeat_coupon",
+      "family": "fieldstone",
+      "dimensions_blender_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "dimensions_godot_m": [
+        0.5,
+        0.5,
+        0.10000000149011612
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "rustclay_brick_cut_coupon",
+      "family": "rustclay_brick",
+      "dimensions_blender_m": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.20000000298023224,
+        0.4000000059604645
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "rustclay_brick_face_coupon",
+      "family": "rustclay_brick",
+      "dimensions_blender_m": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        1.0,
+        0.25
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "rustclay_brick_repeat_coupon",
+      "family": "rustclay_brick",
+      "dimensions_blender_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "dimensions_godot_m": [
+        0.5,
+        0.5,
+        0.10000000149011612
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "shellstone_cut_coupon",
+      "family": "shellstone",
+      "dimensions_blender_m": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.20000000298023224,
+        0.4000000059604645
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "shellstone_face_coupon",
+      "family": "shellstone",
+      "dimensions_blender_m": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        1.0,
+        0.25
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "shellstone_repeat_coupon",
+      "family": "shellstone",
+      "dimensions_blender_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "dimensions_godot_m": [
+        0.5,
+        0.5,
+        0.10000000149011612
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_cut_coupon",
+      "family": "slate",
+      "dimensions_blender_m": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.20000000298023224,
+        0.4000000059604645
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_layer_00",
+      "family": "slate",
+      "dimensions_blender_m": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.1550000011920929,
+        0.06499999761581421
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_layer_01",
+      "family": "slate",
+      "dimensions_blender_m": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.1550000011920929,
+        0.06499999761581421
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_layer_02",
+      "family": "slate",
+      "dimensions_blender_m": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.1550000011920929,
+        0.06499999761581421
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_layer_03",
+      "family": "slate",
+      "dimensions_blender_m": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.1550000011920929,
+        0.06499999761581421
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_layer_04",
+      "family": "slate",
+      "dimensions_blender_m": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.1550000011920929,
+        0.06499999761581421
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_layer_05",
+      "family": "slate",
+      "dimensions_blender_m": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.1550000011920929,
+        0.06499999761581421
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_layer_06",
+      "family": "slate",
+      "dimensions_blender_m": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.1550000011920929,
+        0.06499999761581421
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "slate_repeat_coupon",
+      "family": "slate",
+      "dimensions_blender_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "dimensions_godot_m": [
+        0.5,
+        0.5,
+        0.10000000149011612
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "stone_cut_coupon",
+      "family": "stone",
+      "dimensions_blender_m": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.20000000298023224,
+        0.4000000059604645
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "stone_face_coupon",
+      "family": "stone",
+      "dimensions_blender_m": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        1.0,
+        0.25
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "stone_repeat_coupon",
+      "family": "stone",
+      "dimensions_blender_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "dimensions_godot_m": [
+        0.5,
+        0.5,
+        0.10000000149011612
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "vitrified_basalt_cut_coupon",
+      "family": "vitrified_basalt",
+      "dimensions_blender_m": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        0.20000000298023224,
+        0.4000000059604645
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "vitrified_basalt_face_coupon",
+      "family": "vitrified_basalt",
+      "dimensions_blender_m": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "dimensions_godot_m": [
+        1.0,
+        1.0,
+        0.25
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    },
+    {
+      "name": "vitrified_basalt_repeat_coupon",
+      "family": "vitrified_basalt",
+      "dimensions_blender_m": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "dimensions_godot_m": [
+        0.5,
+        0.5,
+        0.10000000149011612
+      ],
+      "triangles": 44,
+      "surfaces": 2,
+      "grain_axis_blender": 2,
+      "origin": "centre; board arrangement only; not a lattice replacement"
+    }
+  ],
+  "triangles": 1760,
+  "images": [
+    {
+      "name": "d5_charcoal_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_charcoal_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_charcoal_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_charcoal_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_charcoal_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_charcoal_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_cinderglass_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_cinderglass_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_cinderglass_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_cinderglass_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_cinderglass_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_cinderglass_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_fieldstone_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_fieldstone_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_fieldstone_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_fieldstone_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_fieldstone_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_fieldstone_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_rustclay_brick_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_rustclay_brick_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_rustclay_brick_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_rustclay_brick_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_rustclay_brick_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_rustclay_brick_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_shellstone_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_shellstone_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_shellstone_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_shellstone_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_shellstone_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_shellstone_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_slate_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_slate_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_slate_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_slate_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_slate_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_slate_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_stone_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_stone_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_stone_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_stone_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_stone_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_stone_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_vitrified_basalt_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_vitrified_basalt_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_vitrified_basalt_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_vitrified_basalt_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "sRGB",
+      "packed": true
+    },
+    {
+      "name": "d5_vitrified_basalt_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    },
+    {
+      "name": "d5_vitrified_basalt_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "colour_space": "Non-Color",
+      "packed": true
+    }
+  ],
+  "degenerate_triangles": 0,
+  "fixed_window_assembly_bounds_blender_m": [
+    1.0,
+    0.15999998152256012,
+    1.0
+  ],
+  "fresh_glb_import": [
+    {
+      "name": "charcoal_fuel_00",
+      "size": [
+        0.16906869411468506,
+        0.14419932663440704,
+        0.154758483171463
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "charcoal_fuel_01",
+      "size": [
+        0.1896171271800995,
+        0.18235746026039124,
+        0.17888686060905457
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "charcoal_fuel_02",
+      "size": [
+        0.21101315319538116,
+        0.14478842914104462,
+        0.20328804850578308
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "charcoal_fuel_03",
+      "size": [
+        0.16949324309825897,
+        0.18251565098762512,
+        0.22716987133026123
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "charcoal_fuel_04",
+      "size": [
+        0.1897526979446411,
+        0.14437435567378998,
+        0.15482822060585022
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "charcoal_fuel_05",
+      "size": [
+        0.21028678119182587,
+        0.1825757771730423,
+        0.1789671778678894
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "charcoal_fuel_06",
+      "size": [
+        0.16953812539577484,
+        0.14447110891342163,
+        0.20312386751174927
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "charcoal_fuel_07",
+      "size": [
+        0.19002176821231842,
+        0.18259009718894958,
+        0.22718214988708496
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "charcoal_fuel_08",
+      "size": [
+        0.21044260263442993,
+        0.14451542496681213,
+        0.15488402545452118
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "cinderglass_frame_rail_-1",
+      "size": [
+        0.8500000238418579,
+        0.1599999964237213,
+        0.07500000298023224
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "cinderglass_frame_rail_1",
+      "size": [
+        0.8500000238418579,
+        0.1599999964237213,
+        0.07500000298023224
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "cinderglass_frame_side_-1",
+      "size": [
+        0.07500000298023224,
+        0.1599999964237213,
+        1.0
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "cinderglass_frame_side_1",
+      "size": [
+        0.07500000298023224,
+        0.1599999964237213,
+        1.0
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "cinderglass_muntin_h",
+      "size": [
+        0.8500000238418579,
+        0.12800000607967377,
+        0.026000000536441803
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "cinderglass_muntin_v",
+      "size": [
+        0.026000000536441803,
+        0.12800000607967377,
+        0.8500000238418579
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "cinderglass_pane",
+      "size": [
+        0.8500000238418579,
+        0.03840000182390213,
+        0.8500000238418579
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "fieldstone_cut_coupon",
+      "size": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "fieldstone_face_coupon",
+      "size": [
+        1.0,
+        0.25,
+        0.5
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "fieldstone_repeat_coupon",
+      "size": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "rustclay_brick_cut_coupon",
+      "size": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "rustclay_brick_face_coupon",
+      "size": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "rustclay_brick_repeat_coupon",
+      "size": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "shellstone_cut_coupon",
+      "size": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "shellstone_face_coupon",
+      "size": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "shellstone_repeat_coupon",
+      "size": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_cut_coupon",
+      "size": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_layer_00",
+      "size": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_layer_01",
+      "size": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_layer_02",
+      "size": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_layer_03",
+      "size": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_layer_04",
+      "size": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_layer_05",
+      "size": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_layer_06",
+      "size": [
+        1.0,
+        0.06499999761581421,
+        0.1550000011920929
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "slate_repeat_coupon",
+      "size": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "stone_cut_coupon",
+      "size": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "stone_face_coupon",
+      "size": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "stone_repeat_coupon",
+      "size": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "vitrified_basalt_cut_coupon",
+      "size": [
+        1.0,
+        0.4000000059604645,
+        0.20000000298023224
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "vitrified_basalt_face_coupon",
+      "size": [
+        1.0,
+        0.25,
+        1.0
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    },
+    {
+      "name": "vitrified_basalt_repeat_coupon",
+      "size": [
+        0.5,
+        0.10000000149011612,
+        0.5
+      ],
+      "triangles": 44,
+      "native_shape": null,
+      "dimension_check": "inspection coupon only"
+    }
+  ]
+}

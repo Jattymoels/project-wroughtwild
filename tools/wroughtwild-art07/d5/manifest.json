@@ -1,0 +1,1416 @@
+{
+  "schema": 1,
+  "slice": "ART-07D5",
+  "status": "Material source handoff; owner visual acceptance pending; no normal-game adoption",
+  "base_commit": "f00d4b76274ef2a73c3b6f4a275d2bd3ca0f958d",
+  "selected_version": "v03",
+  "source": "Original periodic surface fields, dimensioned Blender samples; D4 recipe derivative, no TRELLIS generation",
+  "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d5\\worktree\\build\\art07\\d5\\v03\\d5-handoff",
+  "package_manifest_sha256": "79532aa924414715fbbde0bf714280fd75d40c9f21cc62cb44c0ce12c3834844",
+  "triangles": 1760,
+  "meshes": 40,
+  "surfaces": 80,
+  "maps": [
+    {
+      "file": "d5_stone_face_albedo.png",
+      "family": "stone",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 690581,
+      "sha256": "2a23f332216a02a1ac9826a6fd51823369e79d2f477c3079ec33787370b494dc",
+      "wrap_mean_delta_8bit": [
+        0.15071614583333334,
+        0.14192708333333334
+      ],
+      "interior_mean_delta_8bit": [
+        1.5543594335492017,
+        1.5479778887666993
+      ]
+    },
+    {
+      "file": "d5_stone_face_normal.png",
+      "family": "stone",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 388234,
+      "sha256": "9291a098b904f9681b7da866bcc4e6756fddc2f8c9fcbc308cf43332bc421f41",
+      "wrap_mean_delta_8bit": [
+        0.18294270833333334,
+        0.23697916666666666
+      ],
+      "interior_mean_delta_8bit": [
+        0.2742800993809058,
+        0.30654389153633105
+      ]
+    },
+    {
+      "file": "d5_stone_face_orm.png",
+      "family": "stone",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 173157,
+      "sha256": "4105d69c3b67a1b0f98ce9136fc0c1f071e3d2589c3fe4afaf214d35a341d783",
+      "wrap_mean_delta_8bit": [
+        0.0026041666666666665,
+        0.0029296875
+      ],
+      "interior_mean_delta_8bit": [
+        0.08707857302867383,
+        0.07723626130254155
+      ]
+    },
+    {
+      "file": "d5_stone_edge_albedo.png",
+      "family": "stone",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 238655,
+      "sha256": "623710a501ec8ec1d88c17714bd336fe425145feb837141a7ef168f49e7fe729",
+      "wrap_mean_delta_8bit": [
+        0.4791666666666667,
+        0.4622395833333333
+      ],
+      "interior_mean_delta_8bit": [
+        2.9163099315068495,
+        2.7904588633398566
+      ]
+    },
+    {
+      "file": "d5_stone_edge_normal.png",
+      "family": "stone",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 159753,
+      "sha256": "b5b8030ac49a449c8e5639b8892e1cdda548605d75fb39638d7effd568e28220",
+      "wrap_mean_delta_8bit": [
+        0.5006510416666666,
+        0.3665364583333333
+      ],
+      "interior_mean_delta_8bit": [
+        0.7569958312948467,
+        0.5924186134213959
+      ]
+    },
+    {
+      "file": "d5_stone_edge_orm.png",
+      "family": "stone",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 61549,
+      "sha256": "acd9dc1692d0cd658519f75d04cf112c462db61a04835e80e96d2eafbb88aaee",
+      "wrap_mean_delta_8bit": [
+        0.009765625,
+        0.015625
+      ],
+      "interior_mean_delta_8bit": [
+        0.17164439620026092,
+        0.15429814905414221
+      ]
+    },
+    {
+      "file": "d5_fieldstone_face_albedo.png",
+      "family": "fieldstone",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 788058,
+      "sha256": "371da99714452e22a1ab783075877098fe86a35dcdcf480c9528dd8a05282da2",
+      "wrap_mean_delta_8bit": [
+        1.8815104166666667,
+        0.5680338541666666
+      ],
+      "interior_mean_delta_8bit": [
+        1.657488442896709,
+        1.235178460512382
+      ]
+    },
+    {
+      "file": "d5_fieldstone_face_normal.png",
+      "family": "fieldstone",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 572605,
+      "sha256": "74002238c7c575a6fb5db03c7a667a2cdfb7f36d5f51d9eb6600649b630239c2",
+      "wrap_mean_delta_8bit": [
+        0.8694661458333334,
+        0.5218098958333334
+      ],
+      "interior_mean_delta_8bit": [
+        0.6366547913611925,
+        0.46233281657298797
+      ]
+    },
+    {
+      "file": "d5_fieldstone_face_orm.png",
+      "family": "fieldstone",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 171934,
+      "sha256": "5bdee8d5d09c9d5b9be4e5e03c339ca7d81a5b55b872537f3223fdfb183059a6",
+      "wrap_mean_delta_8bit": [
+        0.0035807291666666665,
+        0.0022786458333333335
+      ],
+      "interior_mean_delta_8bit": [
+        0.08588245102231998,
+        0.07827932805881395
+      ]
+    },
+    {
+      "file": "d5_fieldstone_edge_albedo.png",
+      "family": "fieldstone",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 277486,
+      "sha256": "690c94a07b4c9ab804af43069aee5d65a0943e2bfb2b0d2109fb0e4710430f81",
+      "wrap_mean_delta_8bit": [
+        0.8509114583333334,
+        2.267578125
+      ],
+      "interior_mean_delta_8bit": [
+        3.324268438111546,
+        2.4246460677592956
+      ]
+    },
+    {
+      "file": "d5_fieldstone_edge_normal.png",
+      "family": "fieldstone",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 240374,
+      "sha256": "d679f69d787b3f7f4b27d36abac1f0231cebad52d21f9ab815bd8155a83975fd",
+      "wrap_mean_delta_8bit": [
+        0.873046875,
+        1.4967447916666667
+      ],
+      "interior_mean_delta_8bit": [
+        1.7556351414709719,
+        1.0206103738584476
+      ]
+    },
+    {
+      "file": "d5_fieldstone_edge_orm.png",
+      "family": "fieldstone",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 61794,
+      "sha256": "97c7ccbc6e24a1fdafbf6e5ea1f7ae9149379b1043b452a58748a63960c3090f",
+      "wrap_mean_delta_8bit": [
+        0.009765625,
+        0.011067708333333334
+      ],
+      "interior_mean_delta_8bit": [
+        0.1743555834148728,
+        0.15555054427592954
+      ]
+    },
+    {
+      "file": "d5_slate_face_albedo.png",
+      "family": "slate",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 695548,
+      "sha256": "23b4d24b1a24a4429818f9f03202fdb00d48bb043d87213347fd12ea68a5e432",
+      "wrap_mean_delta_8bit": [
+        0.2646484375,
+        1.7229817708333333
+      ],
+      "interior_mean_delta_8bit": [
+        0.7897412252565983,
+        1.0706348388115021
+      ]
+    },
+    {
+      "file": "d5_slate_face_normal.png",
+      "family": "slate",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 482434,
+      "sha256": "6380255462886020dc840542d82b458024822f7b1efc4f482da176f823f10841",
+      "wrap_mean_delta_8bit": [
+        0.5673828125,
+        2.34765625
+      ],
+      "interior_mean_delta_8bit": [
+        0.36797377759449335,
+        0.7173269998370805
+      ]
+    },
+    {
+      "file": "d5_slate_face_orm.png",
+      "family": "slate",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 170237,
+      "sha256": "0f2a1053899cf3ad088728a7186dc10942cfeae428fcd6cc81781ebc3116fdff",
+      "wrap_mean_delta_8bit": [
+        0.0022786458333333335,
+        0.0035807291666666665
+      ],
+      "interior_mean_delta_8bit": [
+        0.08686505936379928,
+        0.0768856024967416
+      ]
+    },
+    {
+      "file": "d5_slate_edge_albedo.png",
+      "family": "slate",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        0.25
+      ],
+      "colour_space": "sRGB",
+      "bytes": 245652,
+      "sha256": "497ec40832e1dac0a40c1f747a04155eb01aa176586e07b4ab14985671a6707e",
+      "wrap_mean_delta_8bit": [
+        0.5325520833333334,
+        3.943359375
+      ],
+      "interior_mean_delta_8bit": [
+        1.5080469259621656,
+        2.374415209148728
+      ]
+    },
+    {
+      "file": "d5_slate_edge_normal.png",
+      "family": "slate",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        0.25
+      ],
+      "colour_space": "linear",
+      "bytes": 302307,
+      "sha256": "094dae78fdcab8f04dbcc8f1a857804dc92798a8640f5da2f621340deb88899f",
+      "wrap_mean_delta_8bit": [
+        1.7799479166666667,
+        11.309244791666666
+      ],
+      "interior_mean_delta_8bit": [
+        1.74039617987606,
+        4.453900898972603
+      ]
+    },
+    {
+      "file": "d5_slate_edge_orm.png",
+      "family": "slate",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        0.25
+      ],
+      "colour_space": "linear",
+      "bytes": 61707,
+      "sha256": "61f3cd5a0a015c743c5ac8962b6419d9a67eac4ce3958f3abf6c7da5df541a4d",
+      "wrap_mean_delta_8bit": [
+        0.008463541666666666,
+        0.01171875
+      ],
+      "interior_mean_delta_8bit": [
+        0.17283945898564906,
+        0.1558244659165036
+      ]
+    },
+    {
+      "file": "d5_shellstone_face_albedo.png",
+      "family": "shellstone",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        2
+      ],
+      "colour_space": "sRGB",
+      "bytes": 891437,
+      "sha256": "8d63dfdc458eb47368e857e913e7af5fa2bd6d420625e5df53fb33cb74a251a4",
+      "wrap_mean_delta_8bit": [
+        0.271484375,
+        0.19075520833333334
+      ],
+      "interior_mean_delta_8bit": [
+        2.474983580767351,
+        2.649450655751059
+      ]
+    },
+    {
+      "file": "d5_shellstone_face_normal.png",
+      "family": "shellstone",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        2
+      ],
+      "colour_space": "linear",
+      "bytes": 361963,
+      "sha256": "886d420aa3fc29337c79094f109bd5f225ca3390af6303d2490884f855cbeb0b",
+      "wrap_mean_delta_8bit": [
+        0.056640625,
+        0.0322265625
+      ],
+      "interior_mean_delta_8bit": [
+        0.28753703873411535,
+        0.31099840389784944
+      ]
+    },
+    {
+      "file": "d5_shellstone_face_orm.png",
+      "family": "shellstone",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        2,
+        2
+      ],
+      "colour_space": "linear",
+      "bytes": 170020,
+      "sha256": "a00c7ade4e9c790f27a39b1e63842b22689ad193e24eb73db5262e29dd6c1dfd",
+      "wrap_mean_delta_8bit": [
+        0.004231770833333333,
+        0.0016276041666666667
+      ],
+      "interior_mean_delta_8bit": [
+        0.08670532186787228,
+        0.0767125005091235
+      ]
+    },
+    {
+      "file": "d5_shellstone_edge_albedo.png",
+      "family": "shellstone",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 288753,
+      "sha256": "7e7ad70b2a2ccf2c33a4085b0eebbc2d1c402ee4447a5833f85fa087e1335a77",
+      "wrap_mean_delta_8bit": [
+        0.673828125,
+        0.7389322916666666
+      ],
+      "interior_mean_delta_8bit": [
+        4.325980766878669,
+        4.626384896852577
+      ]
+    },
+    {
+      "file": "d5_shellstone_edge_normal.png",
+      "family": "shellstone",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 161982,
+      "sha256": "a2cb8ef5a0b2515e70f5968254b2dc1a302f00a973d375483333230dd9e51dae",
+      "wrap_mean_delta_8bit": [
+        0.353515625,
+        0.4166666666666667
+      ],
+      "interior_mean_delta_8bit": [
+        0.6369901235322897,
+        0.7340896118721462
+      ]
+    },
+    {
+      "file": "d5_shellstone_edge_orm.png",
+      "family": "shellstone",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 62251,
+      "sha256": "1530ce86b9d77381f249b9fa31a8bf1369fb116b0a2eb6ae217a8013db24c50e",
+      "wrap_mean_delta_8bit": [
+        0.013020833333333334,
+        0.009114583333333334
+      ],
+      "interior_mean_delta_8bit": [
+        0.17348795254403132,
+        0.15752915035877366
+      ]
+    },
+    {
+      "file": "d5_rustclay_brick_face_albedo.png",
+      "family": "rustclay_brick",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 718709,
+      "sha256": "e4d84d6a978f59f985e50a010d583c8180ba7ebacd7deabc27905ae9b18eac6f",
+      "wrap_mean_delta_8bit": [
+        0.0830078125,
+        0.08463541666666667
+      ],
+      "interior_mean_delta_8bit": [
+        1.040837749979635,
+        1.3314387575350277
+      ]
+    },
+    {
+      "file": "d5_rustclay_brick_face_normal.png",
+      "family": "rustclay_brick",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 381255,
+      "sha256": "7fa6638516e6961cef3f09909fa1ce1b70951f910d93d66d9112b71dec26ac12",
+      "wrap_mean_delta_8bit": [
+        0.14322916666666666,
+        0.16764322916666666
+      ],
+      "interior_mean_delta_8bit": [
+        0.3014329280710329,
+        0.6112298005254154
+      ]
+    },
+    {
+      "file": "d5_rustclay_brick_face_orm.png",
+      "family": "rustclay_brick",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 171089,
+      "sha256": "3057d4f9da19a28f4b36c42e1e2fad7d54216341234b3ed313a35b85efd80378",
+      "wrap_mean_delta_8bit": [
+        0.0035807291666666665,
+        0.0026041666666666665
+      ],
+      "interior_mean_delta_8bit": [
+        0.0850481248981753,
+        0.07744595654121864
+      ]
+    },
+    {
+      "file": "d5_rustclay_brick_edge_albedo.png",
+      "family": "rustclay_brick",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 249532,
+      "sha256": "53f0d6904e3b8fe649a7fe0ddff82df8b4ac49909f3c620003990d70d0d9937a",
+      "wrap_mean_delta_8bit": [
+        0.41015625,
+        0.3860677083333333
+      ],
+      "interior_mean_delta_8bit": [
+        2.0788741438356166,
+        2.351232519977169
+      ]
+    },
+    {
+      "file": "d5_rustclay_brick_edge_normal.png",
+      "family": "rustclay_brick",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 137065,
+      "sha256": "6e84fdbccd901004510f1528f6ac37d45d6ad683cffdd2e0a2f98dd9df1f0e7e",
+      "wrap_mean_delta_8bit": [
+        0.3177083333333333,
+        0.2747395833333333
+      ],
+      "interior_mean_delta_8bit": [
+        0.5097847358121331,
+        0.6471277723418134
+      ]
+    },
+    {
+      "file": "d5_rustclay_brick_edge_orm.png",
+      "family": "rustclay_brick",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 61445,
+      "sha256": "d551ef5af334ec3a6b0eaac2dc08d3d76bd63308f7bc87fc8b2bbd29779e6f10",
+      "wrap_mean_delta_8bit": [
+        0.016927083333333332,
+        0.009114583333333334
+      ],
+      "interior_mean_delta_8bit": [
+        0.17391603473581213,
+        0.15558239562948467
+      ]
+    },
+    {
+      "file": "d5_vitrified_basalt_face_albedo.png",
+      "family": "vitrified_basalt",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 470994,
+      "sha256": "218ce0dea4d52f5f29440eb6b6dc98fe75eae6bb05f9ec720191d7a8ebe24563",
+      "wrap_mean_delta_8bit": [
+        0.21842447916666666,
+        0.14453125
+      ],
+      "interior_mean_delta_8bit": [
+        0.5596466810239492,
+        0.5049620448435973
+      ]
+    },
+    {
+      "file": "d5_vitrified_basalt_face_normal.png",
+      "family": "vitrified_basalt",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 423375,
+      "sha256": "8e73b65c7cc24c43b89acd12a7eb2b1e53ac7be046ab4681b6dac92b37634ae1",
+      "wrap_mean_delta_8bit": [
+        0.23990885416666666,
+        0.22591145833333334
+      ],
+      "interior_mean_delta_8bit": [
+        0.251730701673998,
+        0.22902793051482567
+      ]
+    },
+    {
+      "file": "d5_vitrified_basalt_face_orm.png",
+      "family": "vitrified_basalt",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 101891,
+      "sha256": "dcf901858978ac6b3a7fd7322641e88af4b1bdcb356bc58c0e866022f5fcdfd9",
+      "wrap_mean_delta_8bit": [
+        0.080078125,
+        0.0419921875
+      ],
+      "interior_mean_delta_8bit": [
+        0.17594862434832192,
+        0.17421346784376018
+      ]
+    },
+    {
+      "file": "d5_vitrified_basalt_edge_albedo.png",
+      "family": "vitrified_basalt",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 165672,
+      "sha256": "856fd81ae1acbe8410223a90522a4e406ac52d05a90304c16139e82d36ac8eaf",
+      "wrap_mean_delta_8bit": [
+        0.58203125,
+        0.3684895833333333
+      ],
+      "interior_mean_delta_8bit": [
+        1.0709265940965427,
+        0.9719835494129159
+      ]
+    },
+    {
+      "file": "d5_vitrified_basalt_edge_normal.png",
+      "family": "vitrified_basalt",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 150756,
+      "sha256": "74cf0bb53b58f8359ef223740ba4371e24395d949c96c6c008fe26cd50cbaae1",
+      "wrap_mean_delta_8bit": [
+        0.3932291666666667,
+        0.3776041666666667
+      ],
+      "interior_mean_delta_8bit": [
+        0.415163282778865,
+        0.3724085738747554
+      ]
+    },
+    {
+      "file": "d5_vitrified_basalt_edge_orm.png",
+      "family": "vitrified_basalt",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 44741,
+      "sha256": "b32650375f8170440587ecba07ac6eb9384526bbf6b8fa6d28b18f3ea81cea56",
+      "wrap_mean_delta_8bit": [
+        0.19401041666666666,
+        0.06901041666666667
+      ],
+      "interior_mean_delta_8bit": [
+        0.43613931017612523,
+        0.3524900114155251
+      ]
+    },
+    {
+      "file": "d5_cinderglass_face_albedo.png",
+      "family": "cinderglass",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "sRGB",
+      "bytes": 229998,
+      "sha256": "80da03e2615cd2aa7d7eded0a79d2a6f2e118334212331cec3d5414ffa11c9c4",
+      "wrap_mean_delta_8bit": [
+        0.0013020833333333333,
+        0.0006510416666666666
+      ],
+      "interior_mean_delta_8bit": [
+        0.10370272788367546,
+        0.14542476173020527
+      ]
+    },
+    {
+      "file": "d5_cinderglass_face_normal.png",
+      "family": "cinderglass",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 6397,
+      "sha256": "4b563eb0e9d1c042d78a2f6bf48c17377ab532c39a4cdf3b8b1f00d17fb3d018",
+      "wrap_mean_delta_8bit": [
+        0.0,
+        0.0
+      ],
+      "interior_mean_delta_8bit": [
+        0.00011582559465623981,
+        0.00030229207396546105
+      ]
+    },
+    {
+      "file": "d5_cinderglass_face_orm.png",
+      "family": "cinderglass",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        1,
+        1
+      ],
+      "colour_space": "linear",
+      "bytes": 64223,
+      "sha256": "3a3015af540d157db8ec18a64b8ce8d15b14ae51296eac3fbdf9907e6a2ca593",
+      "wrap_mean_delta_8bit": [
+        0.0003255208333333333,
+        0.0006510416666666666
+      ],
+      "interior_mean_delta_8bit": [
+        0.018818795311990877,
+        0.0258501089524275
+      ]
+    },
+    {
+      "file": "d5_cinderglass_edge_albedo.png",
+      "family": "cinderglass",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "sRGB",
+      "bytes": 188441,
+      "sha256": "d9f59432c6ac932ff85ff47509d228c3a888fa1447e521f3ace112dc3dd28634",
+      "wrap_mean_delta_8bit": [
+        0.19856770833333334,
+        0.19856770833333334
+      ],
+      "interior_mean_delta_8bit": [
+        0.9206786631604696,
+        0.8900886232061318
+      ]
+    },
+    {
+      "file": "d5_cinderglass_edge_normal.png",
+      "family": "cinderglass",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 66337,
+      "sha256": "bdac8f329efaddc56d0a40684f743276087d252c6f6603ea92b330c70633a89f",
+      "wrap_mean_delta_8bit": [
+        0.020182291666666668,
+        0.020833333333333332
+      ],
+      "interior_mean_delta_8bit": [
+        0.08296767979452055,
+        0.08149614726027397
+      ]
+    },
+    {
+      "file": "d5_cinderglass_edge_orm.png",
+      "family": "cinderglass",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.5,
+        0.5
+      ],
+      "colour_space": "linear",
+      "bytes": 71197,
+      "sha256": "816f0263b97f6d7a99b3aee5c59f787ee566afabc5801767a45f8fa2512f177f",
+      "wrap_mean_delta_8bit": [
+        0.016927083333333332,
+        0.020833333333333332
+      ],
+      "interior_mean_delta_8bit": [
+        0.24347684279191129,
+        0.2266695205479452
+      ]
+    },
+    {
+      "file": "d5_charcoal_face_albedo.png",
+      "family": "charcoal",
+      "role": "face",
+      "map": "albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.25,
+        0.25
+      ],
+      "colour_space": "sRGB",
+      "bytes": 429648,
+      "sha256": "61f64fc9b7afe2995381c010954c37b4041ef7b5a38705314623fa340d6cc15c",
+      "wrap_mean_delta_8bit": [
+        1.7542317708333333,
+        0.039713541666666664
+      ],
+      "interior_mean_delta_8bit": [
+        0.6428705528062887,
+        0.39912354390681004
+      ]
+    },
+    {
+      "file": "d5_charcoal_face_normal.png",
+      "family": "charcoal",
+      "role": "face",
+      "map": "normal",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.25,
+        0.25
+      ],
+      "colour_space": "linear",
+      "bytes": 985721,
+      "sha256": "bed82d8a26d70f0b032c661439160892832d180dd24e240e9b95019d4c63a817",
+      "wrap_mean_delta_8bit": [
+        4.572265625,
+        0.9651692708333334
+      ],
+      "interior_mean_delta_8bit": [
+        2.1458409701857284,
+        1.4730333195869991
+      ]
+    },
+    {
+      "file": "d5_charcoal_face_orm.png",
+      "family": "charcoal",
+      "role": "face",
+      "map": "orm",
+      "size": [
+        1024,
+        1024
+      ],
+      "tile_metres": [
+        0.25,
+        0.25
+      ],
+      "colour_space": "linear",
+      "bytes": 172964,
+      "sha256": "fed79f78318c2d3865df61c5dbe2d7f7407e555ef9209e82d6deccf1dd64f5d1",
+      "wrap_mean_delta_8bit": [
+        0.001953125,
+        0.001953125
+      ],
+      "interior_mean_delta_8bit": [
+        0.0866820931085044,
+        0.07814027370478983
+      ]
+    },
+    {
+      "file": "d5_charcoal_edge_albedo.png",
+      "family": "charcoal",
+      "role": "edge",
+      "map": "albedo",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.25,
+        0.25
+      ],
+      "colour_space": "sRGB",
+      "bytes": 152270,
+      "sha256": "97fa1baf6520caaf6a30c89d777c220f22357227d680a13c254fa656d25e61f4",
+      "wrap_mean_delta_8bit": [
+        4.038411458333333,
+        0.024739583333333332
+      ],
+      "interior_mean_delta_8bit": [
+        1.3203545437866928,
+        0.7871667074363993
+      ]
+    },
+    {
+      "file": "d5_charcoal_edge_normal.png",
+      "family": "charcoal",
+      "role": "edge",
+      "map": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.25,
+        0.25
+      ],
+      "colour_space": "linear",
+      "bytes": 338961,
+      "sha256": "ed487e11323658c4797f50fee528b21605936d6bea4b88b8f07c85b2a4083935",
+      "wrap_mean_delta_8bit": [
+        7.76171875,
+        1.5319010416666667
+      ],
+      "interior_mean_delta_8bit": [
+        3.655404028049576,
+        2.49269584760274
+      ]
+    },
+    {
+      "file": "d5_charcoal_edge_orm.png",
+      "family": "charcoal",
+      "role": "edge",
+      "map": "orm",
+      "size": [
+        512,
+        512
+      ],
+      "tile_metres": [
+        0.25,
+        0.25
+      ],
+      "colour_space": "linear",
+      "bytes": 61892,
+      "sha256": "8482f16bcaa41d36cbeae0953ab5523eb4905d7bd176f422f9e853b3471293ba",
+      "wrap_mean_delta_8bit": [
+        0.014322916666666666,
+        0.006510416666666667
+      ],
+      "interior_mean_delta_8bit": [
+        0.1771037181996086,
+        0.15491988747553817
+      ]
+    }
+  ],
+  "controls": {
+    "version": 1,
+    "seed": 42,
+    "face_size_px": 1024,
+    "edge_size_px": 512,
+    "controls": {
+      "seed": "Repeatable irregularity; never gameplay RNG.",
+      "face_size_px/edge_size_px": "Near-view surface and cut-edge resolution.",
+      "tile_metres/edge_metres": "Physical repeat in U/V; fine pieces crop at the same density.",
+      "colour": "Unlit sRGB host colour, without photographed shadows.",
+      "roughness": "Dry versus fused surface response; no emission.",
+      "relief_m": "Normal-map microrelief only; no structural scar or collision change.",
+      "courses/columns": "Course layout that repeats on whole metre module boundaries.",
+      "fossils": "Uneven partial and whole shell impressions per 2 m repeat.",
+      "opacity": "Fixed glass visibility; alpha blend only on the pane, opaque frame.",
+      "frame_width_m/muntin_width_m/pane_depth_fraction": "Existing native fixed-window dimensions, read-only reference."
+    },
+    "window": {
+      "frame_width_m": 0.075,
+      "muntin_width_m": 0.026,
+      "pane_depth_fraction": 0.24
+    },
+    "families": [
+      {
+        "id": "stone",
+        "name": "Dressed stone",
+        "colour": [
+          133,
+          132,
+          123
+        ],
+        "tile_metres": [
+          2,
+          1
+        ],
+        "edge_metres": [
+          1,
+          1
+        ],
+        "roughness": 0.87,
+        "relief_m": 0.0012,
+        "courses": 4,
+        "columns": 4,
+        "purpose": "Regular dressed courses, restrained chipped bedding and tool grain."
+      },
+      {
+        "id": "fieldstone",
+        "name": "Rough fieldstone",
+        "colour": [
+          115,
+          116,
+          103
+        ],
+        "tile_metres": [
+          2,
+          1
+        ],
+        "edge_metres": [
+          1,
+          1
+        ],
+        "roughness": 0.93,
+        "relief_m": 0.002,
+        "courses": 3,
+        "columns": 5,
+        "purpose": "Varied dry contacts, rounded irregular stones and lichen remnants; low forms only."
+      },
+      {
+        "id": "slate",
+        "name": "Layered slate",
+        "colour": [
+          66,
+          75,
+          81
+        ],
+        "tile_metres": [
+          2,
+          1
+        ],
+        "edge_metres": [
+          1,
+          0.25
+        ],
+        "roughness": 0.78,
+        "relief_m": 0.0014,
+        "courses": 7,
+        "columns": 5,
+        "purpose": "Cleaved blue-grey faces and thin chipped edge laminations."
+      },
+      {
+        "id": "shellstone",
+        "name": "Fossil shellstone",
+        "colour": [
+          188,
+          174,
+          141
+        ],
+        "tile_metres": [
+          2,
+          2
+        ],
+        "edge_metres": [
+          1,
+          1
+        ],
+        "roughness": 0.89,
+        "relief_m": 0.0011,
+        "courses": 5,
+        "columns": 4,
+        "fossils": 37,
+        "purpose": "Warm cut rock with irregular broken shell fragments and occasional whole impressions."
+      },
+      {
+        "id": "rustclay_brick",
+        "name": "Fired rustclay",
+        "colour": [
+          149,
+          77,
+          49
+        ],
+        "tile_metres": [
+          1,
+          1
+        ],
+        "edge_metres": [
+          1,
+          1
+        ],
+        "roughness": 0.85,
+        "relief_m": 0.0009,
+        "courses": 8,
+        "columns": 4,
+        "purpose": "Staggered red-brown fired courses, firing patches and narrow pale joints."
+      },
+      {
+        "id": "vitrified_basalt",
+        "name": "Fused basalt",
+        "colour": [
+          48,
+          49,
+          48
+        ],
+        "tile_metres": [
+          1,
+          1
+        ],
+        "edge_metres": [
+          1,
+          1
+        ],
+        "roughness": 0.75,
+        "relief_m": 0.001,
+        "courses": 3,
+        "columns": 3,
+        "purpose": "Broken glossy fused islands in a heavy matte body; no burning cracks."
+      },
+      {
+        "id": "cinderglass",
+        "name": "Smoky fixed glass",
+        "colour": [
+          98,
+          113,
+          111
+        ],
+        "tile_metres": [
+          1,
+          1
+        ],
+        "edge_metres": [
+          0.5,
+          0.5
+        ],
+        "roughness": 0.24,
+        "relief_m": 0.00016,
+        "opacity": 0.72,
+        "purpose": "Smoky streaks, modest normal distortion and a complete opaque integral mineral frame."
+      },
+      {
+        "id": "charcoal",
+        "name": "Charcoal fuel",
+        "colour": [
+          39,
+          38,
+          36
+        ],
+        "tile_metres": [
+          0.25,
+          0.25
+        ],
+        "edge_metres": [
+          0.25,
+          0.25
+        ],
+        "roughness": 0.94,
+        "relief_m": 0.001,
+        "purpose": "Angular black porous chunks, retained wood fissures and light ash; fuel only."
+      }
+    ]
+  },
+  "evidence": "docs\\art\\leyline-studies\\2026-09-09\\art07\\d5\\v03",
+  "actual_capture_frames_per_renderer": 96
+}

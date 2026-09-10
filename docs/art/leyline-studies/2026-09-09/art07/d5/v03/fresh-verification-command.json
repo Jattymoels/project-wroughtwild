@@ -1,0 +1,14 @@
+{
+  "child_pid": 11644,
+  "exit_code": 0,
+  "started": "2026-09-11T07:14:58.1257916+09:30",
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d5\\worktree\\build\\art07\\d5\\u",
+  "arguments": [
+    "-NoProfile",
+    "-File",
+    "build/art07/d5/v03/verify-fresh.ps1"
+  ],
+  "wrapper_pid": 38696,
+  "seconds": 98.380711,
+  "program": "C:\\Users\\Matty\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+}

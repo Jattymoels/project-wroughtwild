@@ -1,0 +1,232 @@
+{
+  "files": [
+    {
+      "file": "blender-charcoal.png",
+      "bytes": 1031397,
+      "sha256": "3f277f934561c77871fa3a358972526fe84a796979100326a0f5d63ab3043cd4"
+    },
+    {
+      "file": "blender-cinderglass.png",
+      "bytes": 1072341,
+      "sha256": "dd59637bf1ede2ea7f61be12cb030df93c66ac2b996ccb0ceca1f89b1663f631"
+    },
+    {
+      "file": "blender-fieldstone.png",
+      "bytes": 1178057,
+      "sha256": "049cf902dbb824b31b4f728cb741e961af4483916970e9e7cbb77b88aeb3466c"
+    },
+    {
+      "file": "blender-overview.png",
+      "bytes": 2333803,
+      "sha256": "6e09d5b353307a38fd248b24010cd9d7bc15716c0dc7019d079243aa3140334a"
+    },
+    {
+      "file": "blender-rustclay_brick.png",
+      "bytes": 1249358,
+      "sha256": "9fa887a66c62d5821feed878bc29c64454a6a7b5c167f9a5e8a56c6b11847ea6"
+    },
+    {
+      "file": "blender-shellstone.png",
+      "bytes": 1244227,
+      "sha256": "166c2151f0533027d2f382135e1bd9ff610a0fed1c425adde4e9a76c57bcba7a"
+    },
+    {
+      "file": "blender-slate.png",
+      "bytes": 1175257,
+      "sha256": "1b026170708b8086e6c274c929c955edaa8b766c575ae45b382aaf7d20502060"
+    },
+    {
+      "file": "blender-stone.png",
+      "bytes": 1139580,
+      "sha256": "e6fe14b19b8e9cd4d4bb8792dbb1496825759de4fa065a562f69f8fa8dbe486b"
+    },
+    {
+      "file": "blender-vitrified_basalt.png",
+      "bytes": 1161485,
+      "sha256": "d9c729f241b21cc1aa1a9e5dd70e03243eaf413315898cf37ec96dd707646258"
+    },
+    {
+      "file": "clay-three-quarter.png",
+      "bytes": 2002448,
+      "sha256": "0e9703670fb878576b245a2d5e8f3afd6bc936321e1cfb3f5f74f0706f8c0a67"
+    },
+    {
+      "file": "forward_plus-benchmark.json",
+      "bytes": 1450,
+      "sha256": "ed863cb0d07049fad2aeeb7d175cfcc405e47497fded5aa373004578206b1d1f"
+    },
+    {
+      "file": "forward_plus-charcoal.png",
+      "bytes": 337928,
+      "sha256": "461b96041ed7014501fbb21fad84a83d20c00ea0a894faa3b0b78de2796f4be9"
+    },
+    {
+      "file": "forward_plus-cinderglass.png",
+      "bytes": 636712,
+      "sha256": "931790888dfeb656cf101d400d85f0d2151a3dd09dc2b934ff6dab2bc1e2d5ab"
+    },
+    {
+      "file": "forward_plus-dark.png",
+      "bytes": 252142,
+      "sha256": "db7e3af806e8edce8fad1db33f87432e97c0b2b9f849e95e5093976c897989d8"
+    },
+    {
+      "file": "forward_plus-far.png",
+      "bytes": 171963,
+      "sha256": "150f2dae8f99987038b43fd1b22a533961e820b5c3bcd25a3f67c5844e660ba9"
+    },
+    {
+      "file": "forward_plus-fieldstone.png",
+      "bytes": 933818,
+      "sha256": "4305695683d31b8a2bcdfa3e2248da3ce8d8eab27d267681709239135b0ae957"
+    },
+    {
+      "file": "forward_plus-light.png",
+      "bytes": 363926,
+      "sha256": "afbbae5b926f2d5395ec5771862d01b941030d709a92ef81ee3ded5e7c22ff4a"
+    },
+    {
+      "file": "forward_plus-motion.webp",
+      "bytes": 1601912,
+      "sha256": "32c125b6e3f0c799008959f51ee05ad7222dc327a672e19c3402145027a85b4a"
+    },
+    {
+      "file": "forward_plus-overview.png",
+      "bytes": 337921,
+      "sha256": "e8ae67609c12afbcefd763c177a15d1dada29db12a51176feb78e0cf3c6a1f6a"
+    },
+    {
+      "file": "forward_plus-rustclay_brick.png",
+      "bytes": 1030040,
+      "sha256": "2a419c61ca5e3aa9b6f1da6ce854ab553b9df2aeffcf290e9678e1dc38575244"
+    },
+    {
+      "file": "forward_plus-shade.png",
+      "bytes": 283545,
+      "sha256": "57b7000bd3f5c450e1f007dd36e39f8195758b01d83df88c8e9942e7c906e00b"
+    },
+    {
+      "file": "forward_plus-shellstone.png",
+      "bytes": 1040084,
+      "sha256": "2e1ea196667bcbad251214360e31a0b375e3d971a84cf211db7a9e7d8f822f95"
+    },
+    {
+      "file": "forward_plus-slate.png",
+      "bytes": 980221,
+      "sha256": "be870e5fbeecd14c0abee8cb5a561eab798e391ff653a3855052cd4c6fa9975b"
+    },
+    {
+      "file": "forward_plus-stone.png",
+      "bytes": 629598,
+      "sha256": "56fdaafab71adc0e7eaff4c60f4a21e5f2e20434571cb60153bb938894073795"
+    },
+    {
+      "file": "forward_plus-unlit.png",
+      "bytes": 11319,
+      "sha256": "1ebf38388f9a0c21cc421f0f202c9b53524e534d2b4d62229313d38b4c59c6a7"
+    },
+    {
+      "file": "forward_plus-vitrified_basalt.png",
+      "bytes": 887000,
+      "sha256": "0fd0756dbc87043a88b134de42be86383690c2c58d8df11805433afe7d6e07e0"
+    },
+    {
+      "file": "fresh-verification-command.json",
+      "bytes": 468,
+      "sha256": "bf2f8b48e4b1fc8f3268d1082c25daa5fec4891f00621267428bf635a3fff057"
+    },
+    {
+      "file": "gl_compatibility-benchmark.json",
+      "bytes": 1454,
+      "sha256": "4753193721f23190f5f8e57dff88c486d4005d49a8b06f332cebf855cc877a94"
+    },
+    {
+      "file": "gl_compatibility-charcoal.png",
+      "bytes": 280133,
+      "sha256": "0f4cfd66cb6b744938e0cf016d03ac5c42374df961eaa30865d7d4a24eb8427f"
+    },
+    {
+      "file": "gl_compatibility-cinderglass.png",
+      "bytes": 577255,
+      "sha256": "dad75e41c61de63bf51d1523633d875c20e9f457b5eb4531e2eacc9203d9e09e"
+    },
+    {
+      "file": "gl_compatibility-dark.png",
+      "bytes": 267727,
+      "sha256": "21e7864db620bcef33dbb1e6532f17cec2525ab7213c28f44ada1d8ec4881ae2"
+    },
+    {
+      "file": "gl_compatibility-far.png",
+      "bytes": 183732,
+      "sha256": "62905cce5cd9a908fc8e3078573324f363c0a21140eb545446b020d03c5a0ee3"
+    },
+    {
+      "file": "gl_compatibility-fieldstone.png",
+      "bytes": 912435,
+      "sha256": "2e8e0ba7d0400a84248a97bfdf3e0aeadaaa7d6ae76510203efaf020be47cd8e"
+    },
+    {
+      "file": "gl_compatibility-light.png",
+      "bytes": 358512,
+      "sha256": "fbea4387a1b70dfb4f0f65697fe0577d4cb8178f326074a2f864fa350ab21be6"
+    },
+    {
+      "file": "gl_compatibility-motion.webp",
+      "bytes": 2118778,
+      "sha256": "264db02cb6bc4625413b89ea8cdbc924522c375d1512f2607b41b36a04613dc6"
+    },
+    {
+      "file": "gl_compatibility-overview.png",
+      "bytes": 355676,
+      "sha256": "c2f6e95a1c225cc5935ddd605917133acbb4b56db19ff8bd73fe1f02f4bb9bb2"
+    },
+    {
+      "file": "gl_compatibility-rustclay_brick.png",
+      "bytes": 992256,
+      "sha256": "d9e08bb3d7c1545a73128294d666f81161a663db6fa0eb05ba388e9e0924ce5d"
+    },
+    {
+      "file": "gl_compatibility-shade.png",
+      "bytes": 321622,
+      "sha256": "83516f4130694dfa5a6c72f33ca4da13556468a20c10d87967ea42c0d2cb04ed"
+    },
+    {
+      "file": "gl_compatibility-shellstone.png",
+      "bytes": 999523,
+      "sha256": "86adc54a8031087cb4c205ca4f71a161f5f17e9657ed30e7cc4c8db7e3c8a862"
+    },
+    {
+      "file": "gl_compatibility-slate.png",
+      "bytes": 922456,
+      "sha256": "3cc56d78451dd539e004e1255e044a39a924d7c86fc56738c8e1bca93a35a2bf"
+    },
+    {
+      "file": "gl_compatibility-stone.png",
+      "bytes": 620198,
+      "sha256": "60a5de156dbfbf8d962259cccd4908e19eedc82ad2c98064fb8dea9a46fbe092"
+    },
+    {
+      "file": "gl_compatibility-unlit.png",
+      "bytes": 16488,
+      "sha256": "6df787958f6545bf1aa97fa1b101c8cf52b16e5eb2aa3a6a390a85af95eedec0"
+    },
+    {
+      "file": "gl_compatibility-vitrified_basalt.png",
+      "bytes": 849196,
+      "sha256": "c45bc97dcc5bad02c291d736e61bb747610352c8ec79df513b75ff878c207f70"
+    },
+    {
+      "file": "packed-reopen.png",
+      "bytes": 2333904,
+      "sha256": "895ca6e24f9e9dc26d88907d6732a655cb111fb195422203f85bb354d8232c4b"
+    },
+    {
+      "file": "reopen-audit.json",
+      "bytes": 35810,
+      "sha256": "9b0b300511c10acf0bc659e7bffbc35144484e77c75c4aa863f430f1f2c28659"
+    }
+  ],
+  "source": "Unaltered actual Blender/Godot stills. Motion encodes 96 actual engine frames per renderer at 960x540; camera inspection, static materials.",
+  "fresh_package_manifest_sha256": "79532aa924414715fbbde0bf714280fd75d40c9f21cc62cb44c0ce12c3834844",
+  "json_storage": "Curated JSON uses UTF-8 LF; original raw logs are retained in the ignored version and handoff. Render/media bytes are unchanged."
+}
