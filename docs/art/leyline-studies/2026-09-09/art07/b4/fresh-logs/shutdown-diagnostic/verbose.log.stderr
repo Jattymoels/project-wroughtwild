@@ -1,0 +1,15 @@
+WARNING: GENERAL - Message Id Number: 0 | Message Id Name: Loader Message
+	windows_read_data_files_in_registry: Registry lookup failed to get layer manifest files.
+	Objects - 1
+		Object[0] - VK_OBJECT_TYPE_INSTANCE, Handle 2952792785040
+   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:639)
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2468)
+WARNING: Image format RGB8 not supported by hardware, converting to RGBA8.
+   at: _validate_texture_format (servers/rendering/renderer_rd/storage_rd/texture_storage.cpp:2265)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://review.gd:53)
+WARNING: Image format RGB8 not supported by hardware, converting to RGBA8.
+   at: _validate_texture_format (servers/rendering/renderer_rd/storage_rd/texture_storage.cpp:2265)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://review.gd:56)

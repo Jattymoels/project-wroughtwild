@@ -1,0 +1,6 @@
+[
+  "launch-review.ps1",
+  "run-current-checks.ps1",
+  "run-job.ps1",
+  "run-stage.ps1"
+]

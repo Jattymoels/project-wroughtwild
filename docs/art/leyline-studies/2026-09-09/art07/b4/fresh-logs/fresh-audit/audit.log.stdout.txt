@@ -1,0 +1,131 @@
+09:52:46 | INFO: Data are loaded, start creating Blender stuff
+09:52:46 | INFO: Blender create Mesh node broadleaf branchlets 0 L0.001
+09:52:46 | INFO: Blender create Mesh node broadleaf foliage 0 L0.001
+09:52:46 | INFO: Blender create Mesh node Mesh_0.001
+09:52:46 | INFO: glTF import finished in 0.28s
+09:52:47 | INFO: Data are loaded, start creating Blender stuff
+09:52:47 | INFO: Blender create Mesh node broadleaf branchlets 0 L1.001
+09:52:47 | INFO: Blender create Mesh node broadleaf foliage 0 L1.001
+09:52:47 | INFO: Blender create Mesh node Mesh_0.004
+09:52:47 | INFO: glTF import finished in 0.15s
+09:52:48 | INFO: Data are loaded, start creating Blender stuff
+09:52:48 | INFO: Blender create Mesh node broadleaf branchlets 0 L2.001
+09:52:48 | INFO: Blender create Mesh node broadleaf foliage 0 L2.001
+09:52:48 | INFO: Blender create Mesh node Mesh_0.006
+09:52:48 | INFO: glTF import finished in 0.02s
+09:52:48 | INFO: Data are loaded, start creating Blender stuff
+09:52:48 | INFO: Blender create Mesh node broadleaf branchlets 0 L0.003
+09:52:48 | INFO: Blender create Mesh node broadleaf foliage 0 L0.003
+09:52:48 | INFO: Blender create Mesh node Mesh_0.007
+09:52:48 | INFO: glTF import finished in 0.24s
+09:52:49 | INFO: Data are loaded, start creating Blender stuff
+09:52:49 | INFO: Blender create Mesh node broadleaf branchlets 0 L1.003
+09:52:49 | INFO: Blender create Mesh node broadleaf foliage 0 L1.003
+09:52:49 | INFO: Blender create Mesh node Mesh_0.008
+09:52:49 | INFO: glTF import finished in 0.12s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node broadleaf branchlets 0 L2.003
+09:52:50 | INFO: Blender create Mesh node broadleaf foliage 0 L2.003
+09:52:50 | INFO: Blender create Mesh node Mesh_0.012
+09:52:50 | INFO: glTF import finished in 0.02s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node fern-lush-lod2 foliage.001
+09:52:50 | INFO: Blender create Mesh node fern-lush-lod2 stems.001
+09:52:50 | INFO: glTF import finished in 0.01s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node fern-sparse-lod2 foliage.001
+09:52:50 | INFO: Blender create Mesh node fern-sparse-lod2 stems.001
+09:52:50 | INFO: glTF import finished in 0.00s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node grass-edge-lod2 foliage.001
+09:52:50 | INFO: glTF import finished in 0.00s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node grass-meadow-lod2 foliage.001
+09:52:50 | INFO: glTF import finished in 0.00s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node ART02 retained sampled landform
+09:52:50 | INFO: glTF import finished in 0.09s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node leaf-litter-lod2 foliage.001
+09:52:50 | INFO: glTF import finished in 0.00s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node moss-lod2 foliage.001
+09:52:50 | INFO: glTF import finished in 0.00s
+09:52:50 | INFO: Data are loaded, start creating Blender stuff
+09:52:50 | INFO: Blender create Mesh node pine branchlets 0 L0.001
+09:52:50 | INFO: Blender create Mesh node pine foliage 0 L0.001
+09:52:51 | INFO: Blender create Mesh node Mesh_0.014
+09:52:51 | INFO: glTF import finished in 0.42s
+09:52:52 | INFO: Data are loaded, start creating Blender stuff
+09:52:52 | INFO: Blender create Mesh node pine branchlets 0 L1.001
+09:52:52 | INFO: Blender create Mesh node pine foliage 0 L1.001
+09:52:52 | INFO: Blender create Mesh node Mesh_0.016
+09:52:52 | INFO: glTF import finished in 0.15s
+09:52:52 | INFO: Data are loaded, start creating Blender stuff
+09:52:52 | INFO: Blender create Mesh node pine branchlets 0 L2.001
+09:52:52 | INFO: Blender create Mesh node pine foliage 0 L2.001
+09:52:52 | INFO: Blender create Mesh node Mesh_0.018
+09:52:53 | INFO: glTF import finished in 0.02s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.021
+09:52:53 | INFO: Blender create Mesh node Mesh_0.022
+09:52:53 | INFO: glTF import finished in 0.04s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.023
+09:52:53 | INFO: Blender create Mesh node Mesh_0.024
+09:52:53 | INFO: glTF import finished in 0.00s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.025
+09:52:53 | INFO: glTF import finished in 0.01s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.026
+09:52:53 | INFO: glTF import finished in 0.00s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.027
+09:52:53 | INFO: glTF import finished in 0.01s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.028
+09:52:53 | INFO: glTF import finished in 0.00s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node attached shrub foliage.001
+09:52:53 | INFO: Blender create Mesh node attached shrub stems.001
+09:52:53 | INFO: Blender create Mesh node Mesh_0.020
+09:52:53 | INFO: glTF import finished in 0.06s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.029
+09:52:53 | INFO: Blender create Mesh node Mesh_0.030
+09:52:53 | INFO: Blender create Mesh node Mesh_0.031
+09:52:53 | INFO: Blender create Mesh node Mesh_0.032
+09:52:53 | INFO: Blender create Mesh node Mesh_0.033
+09:52:53 | INFO: Blender create Mesh node Mesh_0.034
+09:52:53 | INFO: Blender create Mesh node Mesh_0.035
+09:52:53 | INFO: Blender create Mesh node Mesh_0.036
+09:52:53 | INFO: glTF import finished in 0.01s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.037
+09:52:53 | INFO: Blender create Mesh node Mesh_0.038
+09:52:53 | INFO: Blender create Mesh node Mesh_0.039
+09:52:53 | INFO: Blender create Mesh node Mesh_0.040
+09:52:53 | INFO: Blender create Mesh node Mesh_0.041
+09:52:53 | INFO: Blender create Mesh node Mesh_0.042
+09:52:53 | INFO: Blender create Mesh node Mesh_0.043
+09:52:53 | INFO: Blender create Mesh node Mesh_0.044
+09:52:53 | INFO: glTF import finished in 0.01s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Stream
+09:52:53 | INFO: glTF import finished in 0.00s
+09:52:53 | INFO: Data are loaded, start creating Blender stuff
+09:52:53 | INFO: Blender create Mesh node Mesh_0.009
+09:52:53 | INFO: Blender create Mesh node broadleaf branchlets 0 L0.001
+09:52:53 | INFO: Blender create Mesh node broadleaf foliage 0 L0.001
+09:52:54 | INFO: glTF import finished in 0.23s
+09:52:54 | INFO: Data are loaded, start creating Blender stuff
+09:52:54 | INFO: Blender create Mesh node Mesh_0.077
+09:52:54 | INFO: glTF import finished in 0.01s
+B4_AUDIT_OK 26
+Blender 4.5.9 LTS (hash 8bf95cbd38d1 built 2026-04-21 01:33:45)
+Read blend: "C:\Users\Matty\Dev\project-wroughtwild\build\art07\b4\worktree\build\art07\b4\v01\handoff-reimport-v01\source\b4-composition.blend"
+Read blend: "C:\Users\Matty\Dev\project-wroughtwild-art07-b1\build\art07\b1\v01\canopy-handoff-v02\models\broadleaf\broadleaf-master.blend"
+Read blend: "C:\Users\Matty\Dev\project-wroughtwild\build\art07\b3\worktree\build\art07\b3\v01\handoff-v02\models\b3-master.blend"
+
+Blender quit

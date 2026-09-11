@@ -1,0 +1,44 @@
+{
+  "forward_plus": {
+    "walk_m": 36.3531301096082,
+    "supported_samples": 911,
+    "terrain_error_m": 4.210027712237e-05,
+    "paused_frames_identical": true,
+    "motion": {
+      "pulse_mean_channel_change": 3.0635185185185185,
+      "water-wind_mean_channel_change": 2.767658179012346
+    },
+    "scar_mean_channel_change": 0.8475036008230453,
+    "budget": [
+      {
+        "lighting": 0,
+        "passes_candidate_ceiling": true
+      },
+      {
+        "lighting": 2,
+        "passes_candidate_ceiling": true
+      }
+    ]
+  },
+  "gl_compatibility": {
+    "walk_m": 36.3531301096082,
+    "supported_samples": 911,
+    "terrain_error_m": 4.210027712237e-05,
+    "paused_frames_identical": true,
+    "motion": {
+      "pulse_mean_channel_change": 3.9967852366255143,
+      "water-wind_mean_channel_change": 3.5493420781893006
+    },
+    "scar_mean_channel_change": 0.40714814814814815,
+    "budget": [
+      {
+        "lighting": 0,
+        "passes_candidate_ceiling": true
+      },
+      {
+        "lighting": 2,
+        "passes_candidate_ceiling": true
+      }
+    ]
+  }
+}

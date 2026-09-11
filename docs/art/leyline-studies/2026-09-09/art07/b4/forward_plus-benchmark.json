@@ -1,0 +1,68 @@
+{
+	"adapter": "NVIDIA GeForce RTX 5090",
+	"budget": {
+		"draw_calls": 240.0,
+		"gpu_p95_ms": 3.0,
+		"submitted_primitives": 3000000.0,
+		"texture_mib": 384.0
+	},
+	"cases": [
+		{
+			"all_near_and_shadows": true,
+			"draw_calls": 446.0,
+			"gpu_p50_ms": 2.05699992179871,
+			"gpu_p95_ms": 2.80100011825562,
+			"lighting": 0,
+			"primitives": 22003899.0,
+			"texture_bytes": 224806912.0,
+			"wall_p50_ms": 2.137,
+			"wall_p95_ms": 2.84,
+			"wall_worst_ms": 3.355
+		},
+		{
+			"all_near_and_shadows": true,
+			"draw_calls": 446.0,
+			"gpu_p50_ms": 2.08999991416931,
+			"gpu_p95_ms": 2.83400011062622,
+			"lighting": 2,
+			"primitives": 22003899.0,
+			"texture_bytes": 224806912.0,
+			"wall_p50_ms": 2.179,
+			"wall_p95_ms": 2.874,
+			"wall_worst_ms": 3.284
+		},
+		{
+			"all_near_and_shadows": false,
+			"draw_calls": 114.0,
+			"gpu_p50_ms": 0.628000020980835,
+			"gpu_p95_ms": 0.634999990463257,
+			"lighting": 0,
+			"primitives": 2965872.0,
+			"texture_bytes": 224806912.0,
+			"wall_p50_ms": 1.543,
+			"wall_p95_ms": 2.041,
+			"wall_worst_ms": 2.539
+		},
+		{
+			"all_near_and_shadows": false,
+			"draw_calls": 114.0,
+			"gpu_p50_ms": 0.628000020980835,
+			"gpu_p95_ms": 0.632000029087067,
+			"lighting": 2,
+			"primitives": 2965872.0,
+			"texture_bytes": 224806912.0,
+			"wall_p50_ms": 1.549,
+			"wall_p95_ms": 2.008,
+			"wall_worst_ms": 2.197
+		}
+	],
+	"msaa": 4,
+	"renderer": "forward_plus",
+	"samples": 600,
+	"size": [
+		1440,
+		900
+	],
+	"vsync": false,
+	"warmup": 120
+}

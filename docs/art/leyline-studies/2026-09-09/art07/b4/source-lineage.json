@@ -1,0 +1,98 @@
+[
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-a-lod0.glb",
+    "sha256": "1d0f5379d7265ea8f481465104cdd0a2a6e605bbb1c62242eaeb8512763cce6c"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-a-lod1.glb",
+    "sha256": "d7a857fd2d814f1c9d8e7b34043df16a1ba34ac3e122f379160d22d9042bc5aa"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-a-lod2.glb",
+    "sha256": "6eec6ec10807fb051fa9995b818d7bbb002cf110bf36c1603b3561f587162971"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-altered-lod0.glb",
+    "sha256": "1fd65b37e449f36679aeeffe89714ca079152fc1dba6d931e26e6750e4cd0682"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-altered-lod1.glb",
+    "sha256": "2f8f289a417db44b537f7b5cda53e8b6d61fb45b91541f672b99e861813b7133"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-altered-lod2.glb",
+    "sha256": "081173c59e828cc5148f1a17f6cad8d1c57c9a5a91fe7cd1870dc417a23ed9f5"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\pine\\pine-a-lod0.glb",
+    "sha256": "787d46b86d5793bfe4efada6a0146f3f115268eef71cbd495e91e58e41a8da2b"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\pine\\pine-a-lod1.glb",
+    "sha256": "b72c21f0da05feebf67eeee948f2954ec45850ad4ffe146a8dc8bf6a3914ecdb"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\pine\\pine-a-lod2.glb",
+    "sha256": "b3beeb2f6142ecff6f400c46ff873328d64d27661437a6b2fa121a0c6f8e40fd"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\fern-lush-lod2.glb",
+    "sha256": "4f02005eb9e621cf17e75b3d5a4c945dce329594fb2cac59e579d12c81c0470a"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\fern-sparse-lod2.glb",
+    "sha256": "f14252ad2c49f7ab22fd75999cf097d33dd6fbde1d5cdd3fe7f38698236fa7bd"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\grass-meadow-lod2.glb",
+    "sha256": "dd6222e2c1612cf505e1e6d07e4894328019b0022dcf7af0f7fcb6a39de73bb5"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\grass-edge-lod2.glb",
+    "sha256": "cf706e3c906ce7ee2ab14013cbb256c9fce143e22b0a94eabd3921abcc949ab0"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\moss-lod2.glb",
+    "sha256": "592a987d41b359889a32ed2209ab0627e1dffc339925ad2ec575e62a28ac462d"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\leaf-litter-lod2.glb",
+    "sha256": "c1bec517f55103ed80880285ec87e51a56506d10196158b907bd3d8a60cfed74"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\sapling-shrub-lod2.glb",
+    "sha256": "1a3960388003947ced7156cce33a9208d4f0486fdf650e8ab85814799eadf098"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\river-bank-lod0.glb",
+    "sha256": "97ffee7722a8c587389c4b55c7012aa33b0a73cf423fae7b848535542bdce857"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\river-bank-lod1.glb",
+    "sha256": "18e5fd80c28075d382eb34937d45ac81c915087c18a4b19d92ea43679ad41dfe"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\rock-shelf-lod0.glb",
+    "sha256": "569338889b942866d288b79a2224f23992cb322eafc8e744e00b84e13795d97b"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\rock-shelf-lod1.glb",
+    "sha256": "ca6a06b5778da2fa49dea769310ba52b059a813e82294b7269e8fd3894391dfe"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\rock-shelf-altered-lod0.glb",
+    "sha256": "bbef42cd706ddebef3766492c2ad3bfc547d26cf68a6e7b81c11ec80ba8828b7"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\rock-shelf-altered-lod1.glb",
+    "sha256": "607295a056e53e33052b54df7be1cac1d3c4b7cbc68a990e56aa17e5b9b67744"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\talus-pebbles-lod0.glb",
+    "sha256": "f46e07f661887d78f44ad99e08be6dcc80f212cc44fd32bc04a07e7f3240b602"
+  },
+  {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\talus-pebbles-lod1.glb",
+    "sha256": "38011b7673e488d8ed7be96cc7fde1126d4dbdbbb4b4fa0075a1226a516208fc"
+  }
+]

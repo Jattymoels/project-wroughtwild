@@ -1,0 +1,1193 @@
+{
+	"device": "NVIDIA GeForce RTX 5090",
+	"engine": {
+		"build": "official",
+		"hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+		"hex": 263424,
+		"major": 4,
+		"minor": 5,
+		"patch": 0,
+		"status": "stable",
+		"string": "4.5-stable (official)",
+		"timestamp": 0
+	},
+	"exclusive_lods": [
+		{
+			"distance": 5.0,
+			"lod": 0
+		},
+		{
+			"distance": 7.0,
+			"lod": 1
+		},
+		{
+			"distance": 21.0,
+			"lod": 2
+		}
+	],
+	"materials_shared": 15,
+	"pause_resume": true,
+	"plant_batches": 52,
+	"plant_origins": [
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000832667268468867,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000222044604925031,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000117961196366423,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.000000000000000222044604925031,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000277555756156289,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000832667268468867,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000138777878078145,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000416333634234434,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.000000000000000222044604925031,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000138777878078145,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000166533453693773,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000166533453693773,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000138777878078145,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000138777878078145,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.00000000000000000693889390390723,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.000000000000000388578058618805,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000222044604925031,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000832667268468867,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000152655665885959,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.00000000000000012490009027033,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000138777878078145,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000693889390390723,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000138777878078145,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000444089209850063,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.000000000000000222044604925031,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.000000000000000277555756156289,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000156125112837913,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000138777878078145,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.000000000000000166533453693773,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000277555756156289,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.000000000000000111022302462516,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.00000000000000000693889390390723,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-meadow"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "grass-edge"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-sparse"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "leaf-litter"
+		},
+		{
+			"origin_ground_error": 0.0,
+			"role": "fern-lush"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000555111512312578,
+			"role": "moss"
+		},
+		{
+			"origin_ground_error": 0.0000000000000000112757025938492,
+			"role": "grass-meadow"
+		}
+	],
+	"quiet_pcm_schedule": [
+		{
+			"duration": 2.30458049886621,
+			"gain_db": -36.0,
+			"next_quiet": 16.9760475158691,
+			"time": 14.95,
+			"variant": 1
+		},
+		{
+			"duration": 2.27002267573696,
+			"gain_db": -36.0,
+			"next_quiet": 15.5782413482666,
+			"time": 34.3,
+			"variant": 0
+		},
+		{
+			"duration": 2.30458049886621,
+			"gain_db": -36.0,
+			"next_quiet": 13.3047952651978,
+			"time": 52.2,
+			"variant": 1
+		},
+		{
+			"duration": 2.27002267573696,
+			"gain_db": -36.0,
+			"next_quiet": 13.9216737747192,
+			"time": 67.9,
+			"variant": 0
+		},
+		{
+			"duration": 2.27936507936508,
+			"gain_db": -36.0,
+			"next_quiet": 19.4809303283691,
+			"time": 84.15,
+			"variant": 2
+		},
+		{
+			"duration": 2.30458049886621,
+			"gain_db": -36.0,
+			"next_quiet": 14.1462726593018,
+			"time": 105.95,
+			"variant": 1
+		},
+		{
+			"duration": 2.27002267573696,
+			"gain_db": -36.0,
+			"next_quiet": 18.6470489501953,
+			"time": 122.45,
+			"variant": 0
+		},
+		{
+			"duration": 2.27936507936508,
+			"gain_db": -36.0,
+			"next_quiet": 12.6886425018311,
+			"time": 143.4,
+			"variant": 2
+		},
+		{
+			"duration": 2.27002267573696,
+			"gain_db": -36.0,
+			"next_quiet": 23.038890838623,
+			"time": 158.4,
+			"variant": 0
+		}
+	],
+	"renderer": "gl_compatibility",
+	"terrain_max_error_m": 0.00004210027712237,
+	"trees": 31
+}

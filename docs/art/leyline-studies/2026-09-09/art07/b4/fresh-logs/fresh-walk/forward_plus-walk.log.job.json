@@ -1,0 +1,20 @@
+{
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\fresh-walk\\user",
+  "pid": 41716,
+  "seconds": 31.1329477,
+  "gpu_slot": true,
+  "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+  "exit": 0,
+  "arguments": [
+    "--path",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\handoff-reimport-v01\\review",
+    "--rendering-method",
+    "forward_plus",
+    "--fixed-fps",
+    "60",
+    "--audio-driver",
+    "Dummy",
+    "--",
+    "--walk"
+  ]
+}

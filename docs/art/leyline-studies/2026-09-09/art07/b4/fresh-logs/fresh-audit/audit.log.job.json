@@ -1,0 +1,20 @@
+{
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\fresh-audit\\user",
+  "pid": 26724,
+  "seconds": 11.0051277,
+  "gpu_slot": false,
+  "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+  "exit": 0,
+  "arguments": [
+    "--background",
+    "--threads",
+    "8",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\tools\\wroughtwild-art07\\b4\\audit.py",
+    "--",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\handoff-reimport-v01\\source",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\fresh-audit\\audit.json"
+  ]
+}

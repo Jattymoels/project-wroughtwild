@@ -1,0 +1,20 @@
+{
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\fresh-motion\\user",
+  "pid": 8480,
+  "seconds": 30.3647974,
+  "gpu_slot": true,
+  "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+  "exit": 0,
+  "arguments": [
+    "--path",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\handoff-reimport-v01\\review",
+    "--rendering-method",
+    "gl_compatibility",
+    "--fixed-fps",
+    "60",
+    "--audio-driver",
+    "Dummy",
+    "--",
+    "--motion"
+  ]
+}

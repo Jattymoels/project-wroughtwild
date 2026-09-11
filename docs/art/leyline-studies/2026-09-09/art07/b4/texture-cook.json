@@ -1,0 +1,271 @@
+{
+  "models": [
+    {
+      "source": "broadleaf-a-0.glb",
+      "source_sha256": "029a0d89b9e4888e05476f5c1cd9bc4c987b17fa98ceb2100d817990f12e5c23",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 25346944
+    },
+    {
+      "source": "broadleaf-a-1.glb",
+      "source_sha256": "8eaefab4db261b26788e5ac640fd6a976ffdedc012825ac7f012abbccc54c639",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 12782112
+    },
+    {
+      "source": "broadleaf-a-2.glb",
+      "source_sha256": "d6478aa40b755fc2b61cf2a090ee883e83b9d07b51d04a4345ce3004d8578789",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 2034240
+    },
+    {
+      "source": "broadleaf-altered-0.glb",
+      "source_sha256": "90a5e3515e3655f456bd8cbc0a9de173e4272f474ecb3c95021157fe762c93b5",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 25347718
+    },
+    {
+      "source": "broadleaf-altered-1.glb",
+      "source_sha256": "7404b286b5fc546db3ee9dca63532741d719d24cd4643ac41dfd1a3792642454",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 12785932
+    },
+    {
+      "source": "broadleaf-altered-2.glb",
+      "source_sha256": "5c2e1fb44e7740f35bd2588615a157feb0f41bde7f5c52055b277d8f6435456d",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 2035840
+    },
+    {
+      "source": "fern-lush.glb",
+      "source_sha256": "a5f8b25cd10509839a1c0bfc6123fe43fb50861af27f1ad99cf611d5518b0c52",
+      "geometry_views_preserved": 10,
+      "geometry_bytes": 164520
+    },
+    {
+      "source": "fern-sparse.glb",
+      "source_sha256": "0e0fc6d13a9279d357aedd88ab5f41887514e82f0df314181430d8033d1e867d",
+      "geometry_views_preserved": 10,
+      "geometry_bytes": 109680
+    },
+    {
+      "source": "grass-edge.glb",
+      "source_sha256": "3bcaab74917d6526593bcb4a82f711cc666633a377c39fdb5b6007078c230c21",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 8568
+    },
+    {
+      "source": "grass-meadow.glb",
+      "source_sha256": "5f3e6407ae6a3dd7525014af8ca9bdae47ff3b427251b2b9094bf5172d67f584",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 17136
+    },
+    {
+      "source": "ground.glb",
+      "source_sha256": "0369688d9d050a334f87487bfd81c9afe1fec37afb94f85528561c40921739ef",
+      "geometry_views_preserved": 3,
+      "geometry_bytes": 6688656
+    },
+    {
+      "source": "leaf-litter.glb",
+      "source_sha256": "08eca7a48966042fdb3756a7a7c663b4e27a59f0db1432b8f06e2acf38842d47",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 12800
+    },
+    {
+      "source": "moss.glb",
+      "source_sha256": "2ff1504a2a62a166e27b1cc4f9dc744997500aa774ece2401f338e55024285bf",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 154968
+    },
+    {
+      "source": "pine-a-0.glb",
+      "source_sha256": "20fcff7e18b20a66075600879e5306544eda6568caea9c3f7c842ccf6e44b007",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 46509222
+    },
+    {
+      "source": "pine-a-1.glb",
+      "source_sha256": "19fffc2d4346ae00f0fd7e2b57295c46368175a84f46cd062ac571919c275c65",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 17255182
+    },
+    {
+      "source": "pine-a-2.glb",
+      "source_sha256": "1e68c8da2d563fa7853dbf519f036ee9e207aa287b5576d6c3f39cf604fec87e",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 1966022
+    },
+    {
+      "source": "river-bank-0.glb",
+      "source_sha256": "9af98bc48933bf4eeda906885e1934e68b4f8639c11ee04200a5d41e6d011a03",
+      "geometry_views_preserved": 12,
+      "geometry_bytes": 722740
+    },
+    {
+      "source": "river-bank-1.glb",
+      "source_sha256": "ed4321d111203e045544c8a03e9590eff0e36f88576c366196047b4bdca063e2",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 70552
+    },
+    {
+      "source": "rock-shelf-0.glb",
+      "source_sha256": "50e25b1dab7fef86a83d61b4aea90535eaf2bcbbf702d49f0933b343b1902a1d",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 729456
+    },
+    {
+      "source": "rock-shelf-1.glb",
+      "source_sha256": "cf40b71901e66efdfbda4d852ff7ca7208e74fbea257a619aba0f3bb50737d09",
+      "geometry_views_preserved": 4,
+      "geometry_bytes": 48064
+    },
+    {
+      "source": "rock-shelf-altered-0.glb",
+      "source_sha256": "b342ddb31d7f36cc41a01d71e30f1a449f71d87f7e94369a8b0ea1e791b36e47",
+      "geometry_views_preserved": 10,
+      "geometry_bytes": 976572
+    },
+    {
+      "source": "rock-shelf-altered-1.glb",
+      "source_sha256": "3b049c877f1958197b2b38374a33cdb0cc4717a2e52acf6a0e66410ef0eb0955",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 62424
+    },
+    {
+      "source": "sapling-shrub.glb",
+      "source_sha256": "075bdb6e8e43dbbd230d411a62e7ae6370ae8d2d1c304fb813f52bb133e7be01",
+      "geometry_views_preserved": 14,
+      "geometry_bytes": 602794
+    },
+    {
+      "source": "talus-pebbles-0.glb",
+      "source_sha256": "2705b3652045b984be7e1dd543d3ec7e96b3ff95333603b3da1c29193a145e36",
+      "geometry_views_preserved": 32,
+      "geometry_bytes": 92840
+    },
+    {
+      "source": "talus-pebbles-1.glb",
+      "source_sha256": "61c61546fe53a944eeb99e9f051504b1136a402d4aa514cd0f5e347347344d8e",
+      "geometry_views_preserved": 32,
+      "geometry_bytes": 92840
+    },
+    {
+      "source": "water.glb",
+      "source_sha256": "9c93ee88f8a08d5942c7a0e0ba3d9dab80389e036aa2a0c531ae050648f0ba16",
+      "geometry_views_preserved": 3,
+      "geometry_bytes": 9648
+    }
+  ],
+  "unique_textures": {
+    "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 2041859,
+      "rgba8_mip_bytes": 5592405
+    },
+    "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 1140115,
+      "rgba8_mip_bytes": 5592405
+    },
+    "016c9f5d55580f0499be87f33ce7be0ac4af3e61ba23a182ba5df874ef98870a": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1254,
+        1254
+      ],
+      "encoded_bytes": 2519555,
+      "rgba8_mip_bytes": 5592405
+    },
+    "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 2093988,
+      "rgba8_mip_bytes": 5592405
+    },
+    "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 663219,
+      "rgba8_mip_bytes": 5592405
+    },
+    "d267d6c3388bf04dabeb8dcbc1d6383d58bf08f2ff07be30bdceab36aa7e9c5c": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 2287704,
+      "rgba8_mip_bytes": 5592405
+    },
+    "8bd5603cff1c22d648f8e633f1e27d266a311695e89104ae70787c512a5f4796": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 1002688,
+      "rgba8_mip_bytes": 5592405
+    },
+    "9ab2d57db76c2a01c80bc4007c166d0dc10eb2814cbd396012477b81574f19b0": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 1791815,
+      "rgba8_mip_bytes": 5592405
+    },
+    "24140da5838801a572e593392ad1f239abeb5efee93be0a07cda5ad7096fb950": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 920274,
+      "rgba8_mip_bytes": 5592405
+    }
+  },
+  "texture_rgba8_mip_bytes": 50331645
+}

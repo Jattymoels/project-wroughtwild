@@ -1,0 +1,119 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14",
+  "tools": {
+    "blender": {
+      "path": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+      "sha256": "42c096b04d79bd0ff234429f67178881047c1c370d25ad3aef2766f3eeac4024"
+    },
+    "godot": {
+      "path": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "sha256": "7b77f3735dec3a32bb20af29cc1900583795d1de82a14f23d23350a88ec85faf"
+    },
+    "python": {
+      "path": "C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a"
+    }
+  },
+  "gpu": "name, driver_version, memory.total [MiB]\nNVIDIA GeForce RTX 5090, 591.86, 32607 MiB",
+  "regressions": [
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\art.log",
+      "checks": 11,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\gathering.log",
+      "checks": 22,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\grounded.log",
+      "checks": 47,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\loads-restore.log",
+      "checks": 6,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\loads.log",
+      "checks": 201,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\loose-read.log",
+      "checks": 13,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\loose-write.log",
+      "checks": 6,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\materials.log",
+      "checks": 158,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\placement-restore.log",
+      "checks": 60,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\placement.log",
+      "checks": 470,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\quiet.log",
+      "checks": 169,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\save-recovery.log",
+      "checks": 175,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\source-restore.log",
+      "checks": 15,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\source-work.log",
+      "checks": 733,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\unit.log",
+      "checks": 398,
+      "failures": 0,
+      "exit": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-checks\\world.log",
+      "checks": 5957,
+      "failures": 0,
+      "exit": 0
+    }
+  ],
+  "total_checks": 8441,
+  "gpu_ownership": "Local\\Wroughtwild-Art07-GPU, no other Godot/Blender/TRELLIS process at acquisition; separate generation/capture/benchmark stages, no interrupted playtest."
+}

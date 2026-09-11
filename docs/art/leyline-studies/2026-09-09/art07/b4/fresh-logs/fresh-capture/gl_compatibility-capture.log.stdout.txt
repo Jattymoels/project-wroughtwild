@@ -1,0 +1,6 @@
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 591.86 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 5090
+
+B4_SCAR_UV broadleaf-altered-0 Deep oak L0 max_core 0.90036600828171 root_rotation (0.0, -0.224971, 0.0)
+B4_CHECKS_OK 273 contacts, terrain 0.00004210027712
+B4_CAPTURE_OK gl_compatibility

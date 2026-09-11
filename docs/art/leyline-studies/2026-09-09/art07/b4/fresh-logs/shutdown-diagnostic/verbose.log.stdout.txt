@@ -1,0 +1,572 @@
+WorkerThreadPool: 32 threads, 9 max low-priority.
+Godot Engine v4.5.stable.official.876b29033 - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+Unrecognized output string "misc2" in mapping:
+030000000d0f00000202000000000000,Horipad O Nintendo Switch 2 Controller,a:b1,b:b0,back:b8,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b4,leftstick:b10,lefttrigger:b6,leftx:a0,lefty:a1,misc1:b13,misc2:b14,rightshoulder:b5,rightstick:b11,righttrigger:b7,rightx:a2,righty:a3,start:b9,x:b3,y:b2,platform:Windows,
+Unrecognized output string "misc2" in mapping:
+030000000d0f00009601000000000000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:b8,leftx:a0,lefty:a1,misc2:b2,paddle1:b5,paddle2:b15,paddle3:b18,paddle4:b19,rightshoulder:b7,rightstick:b14,righttrigger:b9,rightx:a3,righty:a4,start:b11,x:b3,y:b4,platform:Windows,
+Unrecognized output string "misc2" in mapping:
+030000007e0500006920000000000000,Nintendo Switch 2 Pro Controller,a:b0,b:b1,back:b14,dpdown:b8,dpleft:b10,dpright:b9,dpup:b11,guide:b16,leftshoulder:b12,leftstick:b15,lefttrigger:b13,leftx:a0,lefty:a1~,misc1:b17,misc2:b20,paddle1:b18,paddle2:b19,rightshoulder:b4,rightstick:b7,righttrigger:b5,rightx:a2,righty:a3~,start:b6,x:b2,y:b3,platform:Windows,
+SDL: Gamepad PS4 Controller connected
+SDL: Init OK!
+Devices:
+  #0: NVIDIA NVIDIA GeForce RTX 5090 - Supported, Discrete
+  #1: AMD AMD Radeon(TM) Graphics - Supported, Integrated
+Optional extension VK_EXT_fragment_density_map not found
+Optional extension VK_EXT_astc_decode_mode not found
+Optional extension VK_EXT_texture_compression_astc_hdr not found
+Optional extension VK_KHR_external_memory_fd not found
+Optional extension VK_EXT_debug_marker not found
+- Vulkan Fragment Shading Rate supported:
+  Pipeline fragment shading rate
+  Primitive fragment shading rate
+  Attachment fragment shading rate, min texel size: (16, 16), max texel size: (16, 16), max fragment size: (4, 4)
+- Vulkan Fragment Density Map not supported
+- Vulkan multiview supported:
+  max view count: 32
+  max instances: 134217727
+- Vulkan subgroup:
+  size: 32
+  min size: 32
+  max size: 32
+  stages: STAGE_VERTEX, STAGE_TESSELLATION_CONTROL, STAGE_TESSELLATION_EVALUATION, STAGE_GEOMETRY, STAGE_FRAGMENT, STAGE_COMPUTE, STAGE_RAYGEN_KHR, STAGE_ANY_HIT_KHR, STAGE_CLOSEST_HIT_KHR, STAGE_MISS_KHR, STAGE_INTERSECTION_KHR, STAGE_CALLABLE_KHR, STAGE_TASK_NV, STAGE_MESH_NV
+  supported ops: FEATURE_BASIC, FEATURE_VOTE, FEATURE_ARITHMETIC, FEATURE_BALLOT, FEATURE_SHUFFLE, FEATURE_SHUFFLE_RELATIVE, FEATURE_CLUSTERED, FEATURE_QUAD, FEATURE_PARTITIONED_NV
+  quad operations in all stages
+Vulkan 1.4.325 - Forward+ - Using Device #0: NVIDIA - NVIDIA GeForce RTX 5090
+Startup PSO cache (0.0 MiB)
+Using "winink" pen tablet driver...
+Creating VMA small objects pool for memory type index 1
+Shader 'CanvasSdfShaderRD' (group 0) SHA256: 4ae1c8f9d33cbc7968cd8c803da5f7e62b213192c33781ba7538d1843007db50
+Shader cache miss for CanvasSdfShaderRD/4ae1c8f9d33cbc7968cd8c803da5f7e62b213192c33781ba7538d1843007db50/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SkeletonShaderRD' (group 0) SHA256: 003ea4725382f051a99deb167035ceb67e941109bf97b44b6fc0c0f077f5c565
+Shader cache miss for SkeletonShaderRD/003ea4725382f051a99deb167035ceb67e941109bf97b44b6fc0c0f077f5c565/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SortShaderRD' (group 0) SHA256: e3569cb510d4d20f66ac5642590debf369eabd97ac79005a0f2bc585a8fef8b6
+Shader cache miss for SortShaderRD/e3569cb510d4d20f66ac5642590debf369eabd97ac79005a0f2bc585a8fef8b6/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'ParticlesShaderRD' (group 0) SHA256: e25e4cd9f8bef4433fcd488eebdbabe4ea7c3854b31f92f95cf594683ca733b7
+Shader cache miss for ParticlesShaderRD/e25e4cd9f8bef4433fcd488eebdbabe4ea7c3854b31f92f95cf594683ca733b7/f128cab0b22fb7e0d9f023d6cdb81309be392d95
+Shader 'ParticlesCopyShaderRD' (group 0) SHA256: 853acf68cd95d40a337ae8e82171280453b17e3962789cc0fa66e23098b4c851
+Shader cache miss for ParticlesCopyShaderRD/853acf68cd95d40a337ae8e82171280453b17e3962789cc0fa66e23098b4c851/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'CanvasShaderRD' (group 0) SHA256: e7b17ec4355ae6960cd5e830867fe5ab9d4e79978916b0314010e86dd56ba262
+Shader cache miss for CanvasShaderRD/e7b17ec4355ae6960cd5e830867fe5ab9d4e79978916b0314010e86dd56ba262/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'CanvasOcclusionShaderRD' (group 0) SHA256: 1a96e185127c69dd7854dc31c275b848df6164172b41caef221afab6680d9591
+Shader cache miss for CanvasOcclusionShaderRD/1a96e185127c69dd7854dc31c275b848df6164172b41caef221afab6680d9591/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader cache miss for CanvasShaderRD/e7b17ec4355ae6960cd5e830867fe5ab9d4e79978916b0314010e86dd56ba262/8a7277c8d3ac029b087c3fa9c55de85560be5119
+Shader cache miss for CanvasShaderRD/e7b17ec4355ae6960cd5e830867fe5ab9d4e79978916b0314010e86dd56ba262/45fb1ddc6499e56682916a355ce2839e61f42dfe
+Shader 'ClusterRenderShaderRD' (group 0) SHA256: 9502a0390ee6965ffb56ef8a758070e729ac89971a740ca387540e1a685acf9a
+Shader cache miss for ClusterRenderShaderRD/9502a0390ee6965ffb56ef8a758070e729ac89971a740ca387540e1a685acf9a/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'ClusterStoreShaderRD' (group 0) SHA256: c5e670c1291c276fbf57282d72cfae9b0d94649bc8f8f119b8bf226d0c847c81
+Shader cache miss for ClusterStoreShaderRD/c5e670c1291c276fbf57282d72cfae9b0d94649bc8f8f119b8bf226d0c847c81/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'ClusterDebugShaderRD' (group 0) SHA256: 8b7af19e792fd5df1d77e4d5345a0b3ae0802a2c829205f6b17f983261f54d54
+Shader cache miss for ClusterDebugShaderRD/8b7af19e792fd5df1d77e4d5345a0b3ae0802a2c829205f6b17f983261f54d54/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SceneForwardClusteredShaderRD' (group 0) SHA256: d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd
+Shader 'SceneForwardClusteredShaderRD' (group 1) SHA256: 58e2a9ab076df3f99437c6c5bd89507685a58c88c86a09d60a3e15ffc1bf61d7
+Shader 'SceneForwardClusteredShaderRD' (group 2) SHA256: c9da4e6ecce5df0f99ff3165b31b702270e7ef9466c08d8af1b5ea0323e2db09
+Shader 'SceneForwardClusteredShaderRD' (group 3) SHA256: 4da236f9f8be4c1abe317e02dbe04a98f95da7b5823887f3bf2035c1a3e522ba
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/a38af1e47720abf30ca44f3d3c099c07b046df81
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/ab0b960474f1491b42ef9f2ca13dbd4ccaf64911
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/111f8cfd3c260d918df85827eb251dc36a43cb13
+Shader 'BestFitNormalShaderRD' (group 0) SHA256: 7b41920ab18ac1bb3fea961d1983a05665b32c756fe87aec7de272742a40f156
+Shader cache miss for BestFitNormalShaderRD/7b41920ab18ac1bb3fea961d1983a05665b32c756fe87aec7de272742a40f156/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'IntegrateDfgShaderRD' (group 0) SHA256: 2c56495726420af1acc8425fec8751aac2ed742a2c8f199bf7fe2a08f28dfdba
+Shader cache miss for IntegrateDfgShaderRD/2c56495726420af1acc8425fec8751aac2ed742a2c8f199bf7fe2a08f28dfdba/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'ResolveShaderRD' (group 0) SHA256: e3c8c53e2940e1f5a91520a0afce45c4d5ad81899bdb2a00c92d0bf7a5a1d598
+Shader cache miss for ResolveShaderRD/e3c8c53e2940e1f5a91520a0afce45c4d5ad81899bdb2a00c92d0bf7a5a1d598/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'TaaResolveShaderRD' (group 0) SHA256: 8cb1203e5082170b6b51e723094162080c212d7f1911c0a9edb0ebeaa7e86a0e
+Shader cache miss for TaaResolveShaderRD/8cb1203e5082170b6b51e723094162080c212d7f1911c0a9edb0ebeaa7e86a0e/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'Fsr2DepthClipPassShaderRD' (group 0) SHA256: 177eee0f6a6558b704bf1ec91e7d362d05e1aad1730efb6e2ff11f871410cfc0
+Shader 'Fsr2ReconstructPreviousDepthPassShaderRD' (group 0) SHA256: 358f0f50e45bf02ca4a4d7caad0f817dc7af0da242469fec10a5158bebfa77db
+Shader 'Fsr2LockPassShaderRD' (group 0) SHA256: 46bf218ed72ab39571bc371c527146035b9c1f01dbcc9a80f2ea1ffbd936d9f2
+Shader 'Fsr2AccumulatePassShaderRD' (group 0) SHA256: 04c43a42d0dec2c54cb90a97e26d888c88995df139142948afde178db865de21
+Shader 'Fsr2RcasPassShaderRD' (group 0) SHA256: cc94b511e66750be6b0c6b31869945465124f655d1927913d7e2903c129d8e79
+Shader 'Fsr2ComputeLuminancePyramidPassShaderRD' (group 0) SHA256: 3cc2b3058c0b29853f1a8d064772a1e4d0034ad64c1942b3c234b93c7f3ee2f0
+Shader 'Fsr2AutogenReactivePassShaderRD' (group 0) SHA256: 0a9f1598fa0d6c0de6765298b1aaf83f89bf24038af5fbe5b43f5bd0b40c7dec
+Shader 'Fsr2TcrAutogenPassShaderRD' (group 0) SHA256: fa1597e2764e7eb1358f350f529c11e57718acb629000cbc3d958a845a6514a4
+Shader 'SsEffectsDownsampleShaderRD' (group 0) SHA256: a44a503b31412deb8f509269a41acb36b667a79160663403f6a4bc8a5b95dc10
+Shader cache miss for SsEffectsDownsampleShaderRD/a44a503b31412deb8f509269a41acb36b667a79160663403f6a4bc8a5b95dc10/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SsilShaderRD' (group 0) SHA256: 46469c3c6dcab29a50a70756a6af386446a21ad5664a14d1a51f6c51dcb19e68
+Shader cache miss for SsilShaderRD/46469c3c6dcab29a50a70756a6af386446a21ad5664a14d1a51f6c51dcb19e68/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SsilImportanceMapShaderRD' (group 0) SHA256: 25142e13a4c413a05320535e62074da3d3c62d4797e2ea09d4f231f285b381ec
+Shader cache miss for SsilImportanceMapShaderRD/25142e13a4c413a05320535e62074da3d3c62d4797e2ea09d4f231f285b381ec/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SsilBlurShaderRD' (group 0) SHA256: 5ea6ec5d7fbe59a8377212eab5a85c43ba7ddbde0ccdec337e29d5f39555f504
+Shader cache miss for SsilBlurShaderRD/5ea6ec5d7fbe59a8377212eab5a85c43ba7ddbde0ccdec337e29d5f39555f504/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SsilInterleaveShaderRD' (group 0) SHA256: 51fbb4500de19d012e93876e4341b103a11687e210f89f06fa75e999f47e1351
+Shader cache miss for SsilInterleaveShaderRD/51fbb4500de19d012e93876e4341b103a11687e210f89f06fa75e999f47e1351/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SsaoShaderRD' (group 0) SHA256: 03c523b5744efe67362a3cbb7e05745d549de8f377764940b148580a9415ca5c
+Shader cache miss for SsaoShaderRD/03c523b5744efe67362a3cbb7e05745d549de8f377764940b148580a9415ca5c/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SsaoImportanceMapShaderRD' (group 0) SHA256: 1503559631352e2698230af3486d78af71583e0da34ac98926a1b97df530d3df
+Shader cache miss for SsaoImportanceMapShaderRD/1503559631352e2698230af3486d78af71583e0da34ac98926a1b97df530d3df/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SsaoBlurShaderRD' (group 0) SHA256: f20b8fd74ba7d9c6eb01d99d6e64d94626b6d09cf183a058fbf6d3ca4bf5e32d
+Shader cache miss for SsaoBlurShaderRD/f20b8fd74ba7d9c6eb01d99d6e64d94626b6d09cf183a058fbf6d3ca4bf5e32d/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SsaoInterleaveShaderRD' (group 0) SHA256: 6149f988122e57a5ff5055d684b7b4928b1809e4973328f97cd8bfc488acc78d
+Shader cache miss for SsaoInterleaveShaderRD/6149f988122e57a5ff5055d684b7b4928b1809e4973328f97cd8bfc488acc78d/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'ScreenSpaceReflectionScaleShaderRD' (group 0) SHA256: 77ccdf4032989ccf62ada33bf63873d2e3bae533e78362a6b7987eb9a0eacea0
+Shader cache miss for ScreenSpaceReflectionScaleShaderRD/77ccdf4032989ccf62ada33bf63873d2e3bae533e78362a6b7987eb9a0eacea0/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'ScreenSpaceReflectionShaderRD' (group 0) SHA256: e36e5c5230134ac5b1e9c43e65471dd06e96620e1fb03e0ce1bd7524745d7bfc
+Shader cache miss for ScreenSpaceReflectionShaderRD/e36e5c5230134ac5b1e9c43e65471dd06e96620e1fb03e0ce1bd7524745d7bfc/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'ScreenSpaceReflectionFilterShaderRD' (group 0) SHA256: 1725e4091c2ee64f62be73b97e4f528354ab22d39d0abae24d173f28c9beaca3
+Shader cache miss for ScreenSpaceReflectionFilterShaderRD/1725e4091c2ee64f62be73b97e4f528354ab22d39d0abae24d173f28c9beaca3/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SubsurfaceScatteringShaderRD' (group 0) SHA256: 0e3d9156c48d315eb365b1fae7200cea5aa173c839909adfe05d82e9fa8b0b1a
+Shader cache miss for SubsurfaceScatteringShaderRD/0e3d9156c48d315eb365b1fae7200cea5aa173c839909adfe05d82e9fa8b0b1a/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SkyShaderRD' (group 0) SHA256: a9f86a6778595096e980fe5217e4465487a0a679fa9526d4a2e81f745d154beb
+Shader cache miss for SkyShaderRD/a9f86a6778595096e980fe5217e4465487a0a679fa9526d4a2e81f745d154beb/de678811d1bad3cad4892a8db7b6ea0be197d51d
+Shader cache miss for SkyShaderRD/a9f86a6778595096e980fe5217e4465487a0a679fa9526d4a2e81f745d154beb/03e3b11c69e24394b2d955a8c0ba85587bb70839
+Shader 'VoxelGiShaderRD' (group 0) SHA256: 1dfeca066a930bff2756e23c4984263c32cec09a78f945dcdf7f93d6dfae2465
+Shader cache miss for VoxelGiShaderRD/1dfeca066a930bff2756e23c4984263c32cec09a78f945dcdf7f93d6dfae2465/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'VoxelGiDebugShaderRD' (group 0) SHA256: 0eb7f9f258ebf21cdd385051c3b1f30074f2a639446e3bcdb8622cc1b5d1b9fc
+Shader cache miss for VoxelGiDebugShaderRD/0eb7f9f258ebf21cdd385051c3b1f30074f2a639446e3bcdb8622cc1b5d1b9fc/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SdfgiPreprocessShaderRD' (group 0) SHA256: 806816078967870f19f38dc86962915a56e336f7001d22093d3c6c08980a4905
+Shader cache miss for SdfgiPreprocessShaderRD/806816078967870f19f38dc86962915a56e336f7001d22093d3c6c08980a4905/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SdfgiDirectLightShaderRD' (group 0) SHA256: 283e3eabc5cfee6eef5bf7b5666a65acb4566422fa62101943cbbb0457a0c84a
+Shader cache miss for SdfgiDirectLightShaderRD/283e3eabc5cfee6eef5bf7b5666a65acb4566422fa62101943cbbb0457a0c84a/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SdfgiIntegrateShaderRD' (group 0) SHA256: 15c2766c68477b4e78df7a6fe0417baa497e7ec6f88bcaf5646095744fb2fa9c
+Shader cache miss for SdfgiIntegrateShaderRD/15c2766c68477b4e78df7a6fe0417baa497e7ec6f88bcaf5646095744fb2fa9c/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'GiShaderRD' (group 0) SHA256: 9e9b4b5d4c15f202f7ffb443fd0971df128a5f50e14bf72f2821620133146f3d
+Shader 'GiShaderRD' (group 1) SHA256: 6df91197bce0a55add8f8cf655ee71ac97f5c7510e3d8fe9649405dab2882f24
+Shader cache miss for GiShaderRD/9e9b4b5d4c15f202f7ffb443fd0971df128a5f50e14bf72f2821620133146f3d/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader cache miss for GiShaderRD/6df91197bce0a55add8f8cf655ee71ac97f5c7510e3d8fe9649405dab2882f24/087916079fba7c625e62b0c2cca570e0fb87c99a
+Updated PSO cache (3.0 MiB)
+Shader 'SdfgiDebugShaderRD' (group 0) SHA256: 32fe59dd71320510d4bca50ec1d9c0f2c1336d61cc8dae4a926ccba3f27e69ba
+Shader cache miss for SdfgiDebugShaderRD/32fe59dd71320510d4bca50ec1d9c0f2c1336d61cc8dae4a926ccba3f27e69ba/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SdfgiDebugProbesShaderRD' (group 0) SHA256: 97da1595879bfde5276d42636c8d91122b5ef75ab1fb8903e553fc3bda3a5734
+Shader cache miss for SdfgiDebugProbesShaderRD/97da1595879bfde5276d42636c8d91122b5ef75ab1fb8903e553fc3bda3a5734/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'VolumetricFogShaderRD' (group 0) SHA256: fe352ea61d45a1becd37b6cde528377232cf0b234eab02c91b64cf8e6f06f3a0
+Shader 'VolumetricFogShaderRD' (group 1) SHA256: edf7cfdc03734aac137e008bab9652e5aeda353e952ba62dfcb5d9190ba21da1
+Shader 'VolumetricFogShaderRD' (group 2) SHA256: 344344f4b7915ff3364dcbdc20dc8594fb6f75c080b1117a4174cbaa3efafefa
+Shader 'VolumetricFogShaderRD' (group 3) SHA256: b4dd1d878a773bfd3670e580d7655c262e7c3070a5667de022bb881ba6f64364
+Shader cache miss for VolumetricFogShaderRD/344344f4b7915ff3364dcbdc20dc8594fb6f75c080b1117a4174cbaa3efafefa/9a227745af2d65830f930370a9fbba551fbd6f60
+Shader 'VolumetricFogProcessShaderRD' (group 0) SHA256: 3fc7a608ebbf31f778a34a2a6443de396524f5cb561f3ef01681f431dcce034a
+Shader 'VolumetricFogProcessShaderRD' (group 1) SHA256: 57488d4c00ca662455ceb9402d56e1bf6644bfe7726ad8d2a0f7233550b90c7e
+Shader 'VolumetricFogProcessShaderRD' (group 2) SHA256: c26b9ba64050436f14df13f3acd93e026fd02fcd49185294630fb730cdcb20a2
+Shader 'VolumetricFogProcessShaderRD' (group 3) SHA256: 64a25515655aff4c57c164f43f769c6eb63eeacd1542982e5882dac1aeff1c28
+Shader cache miss for VolumetricFogProcessShaderRD/c26b9ba64050436f14df13f3acd93e026fd02fcd49185294630fb730cdcb20a2/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'BokehDofShaderRD' (group 0) SHA256: b1c4cc674cd4635c32b4468ed1d2433197c6e8f8bf2bd56d8550f6cf61915142
+Shader cache miss for BokehDofShaderRD/b1c4cc674cd4635c32b4468ed1d2433197c6e8f8bf2bd56d8550f6cf61915142/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'CopyShaderRD' (group 0) SHA256: ab28315412a3dede7744b14fc38c5af7ecfa8d2f45b3a59d3f112ac9db88865d
+Shader cache miss for CopyShaderRD/ab28315412a3dede7744b14fc38c5af7ecfa8d2f45b3a59d3f112ac9db88865d/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'CopyToFbShaderRD' (group 0) SHA256: 8daff24fe2afaa4cbf26897d5238ddce01373e4680b12619ccf95c8d95609d66
+Shader cache miss for CopyToFbShaderRD/8daff24fe2afaa4cbf26897d5238ddce01373e4680b12619ccf95c8d95609d66/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'CubeToDpShaderRD' (group 0) SHA256: 74fa7b2e6030d8ff4983cced87bc68e8774c8437bbdbe7d89d30a6c8ea2bebe0
+Shader cache miss for CubeToDpShaderRD/74fa7b2e6030d8ff4983cced87bc68e8774c8437bbdbe7d89d30a6c8ea2bebe0/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'CubemapDownsamplerShaderRD' (group 0) SHA256: 79e3fd57fbe018511a512a7b8fc7c1689b86bf86e0421097c9c1aa0cc27926ac
+Shader cache miss for CubemapDownsamplerShaderRD/79e3fd57fbe018511a512a7b8fc7c1689b86bf86e0421097c9c1aa0cc27926ac/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'CubemapFilterShaderRD' (group 0) SHA256: 248a89bbba6199237a05d6bdfb6c084870ee1a2b4608e04393d253b0f811ef90
+Shader cache miss for CubemapFilterShaderRD/248a89bbba6199237a05d6bdfb6c084870ee1a2b4608e04393d253b0f811ef90/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'CubemapRoughnessShaderRD' (group 0) SHA256: 6b9463386124b15b3f67e3fbf396dd5c01075145020ce716a70a95876fb8a03e
+Shader cache miss for CubemapRoughnessShaderRD/6b9463386124b15b3f67e3fbf396dd5c01075145020ce716a70a95876fb8a03e/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SpecularMergeShaderRD' (group 0) SHA256: 936c8e2d6f46d594cf4546fc8ebaec5391010250bcec983f880e7a5b117bb96b
+Shader cache miss for SpecularMergeShaderRD/936c8e2d6f46d594cf4546fc8ebaec5391010250bcec983f880e7a5b117bb96b/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'ShadowFrustumShaderRD' (group 0) SHA256: 2ff92cb124320cba29de6156dbc2a23bfbafde9437e75d4aa075da501dbeb1c7
+Shader cache miss for ShadowFrustumShaderRD/2ff92cb124320cba29de6156dbc2a23bfbafde9437e75d4aa075da501dbeb1c7/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'MotionVectorsShaderRD' (group 0) SHA256: 9701f92c2b3f16a896b0694e4e5042258bb5838755e75b5fc439fb935a4c9df2
+Shader cache miss for MotionVectorsShaderRD/9701f92c2b3f16a896b0694e4e5042258bb5838755e75b5fc439fb935a4c9df2/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'LuminanceReduceShaderRD' (group 0) SHA256: 9bc49c21388ea0f6632f9208dddfac35bb44f0400b742ef9bd380cd73b918ee9
+Shader cache miss for LuminanceReduceShaderRD/9bc49c21388ea0f6632f9208dddfac35bb44f0400b742ef9bd380cd73b918ee9/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SmaaEdgeDetectionShaderRD' (group 0) SHA256: 9f859e28f279c2023b067a396cc676913a9312de1139c6e92df21c3d8394e048
+Shader cache miss for SmaaEdgeDetectionShaderRD/9f859e28f279c2023b067a396cc676913a9312de1139c6e92df21c3d8394e048/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SmaaWeightCalculationShaderRD' (group 0) SHA256: 38c403b349941a90fcef48bf6d9d5f7180097305974993a157771f5840e53d48
+Shader cache miss for SmaaWeightCalculationShaderRD/38c403b349941a90fcef48bf6d9d5f7180097305974993a157771f5840e53d48/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'SmaaBlendingShaderRD' (group 0) SHA256: 1e58c4bc987660974f0db013d8fa75885430693d61e7fa24404bb15fa40c8c18
+Shader cache miss for SmaaBlendingShaderRD/1e58c4bc987660974f0db013d8fa75885430693d61e7fa24404bb15fa40c8c18/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'TonemapShaderRD' (group 0) SHA256: 141ca482ad62836b23d95815a70eddc80284764b1ca43d7ff2ede5ab6fbe59c8
+Shader cache miss for TonemapShaderRD/141ca482ad62836b23d95815a70eddc80284764b1ca43d7ff2ede5ab6fbe59c8/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'VrsShaderRD' (group 0) SHA256: 120fc066caf56440b52425f59c57b1c43d32031edc764e0b728094ad0b8b22f6
+Shader cache miss for VrsShaderRD/120fc066caf56440b52425f59c57b1c43d32031edc764e0b728094ad0b8b22f6/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'FsrUpscaleShaderRD' (group 0) SHA256: b2553a80fa5432b72a1520a94979da2f3c92b79d9a0ceb64d93b45d3e77d1840
+Shader cache miss for FsrUpscaleShaderRD/b2553a80fa5432b72a1520a94979da2f3c92b79d9a0ceb64d93b45d3e77d1840/087916079fba7c625e62b0c2cca570e0fb87c99a
+Shader 'BlitShaderRD' (group 0) SHA256: d5a779b2dd0cc1b4f4a707e99930a8eb1b36861da830a175fa21c9c74159eeb9
+Shader cache miss for BlitShaderRD/d5a779b2dd0cc1b4f4a707e99930a8eb1b36861da830a175fa21c9c74159eeb9/087916079fba7c625e62b0c2cca570e0fb87c99a
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+CORE API HASH: 2213950498
+EDITOR API HASH: 3825216437
+SceneTreeFTI: traversal method DEFAULT
+Loaded builtin CA certificates
+Loading resource: res://review.tscn
+Loading resource: res://review.gd
+Loading resource: res://art/environment_sound_look.tres
+Loading resource: res://art/environment_sound_look.gd
+Loading resource: res://assets/ground.gltf
+Loading resource: res://.godot/imported/ground.gltf-cfc78d98481c75ec4175e85f8b85d0cb.scn
+Loading resource: res://textures/016c9f5d55580f0499be87f33ce7be0ac4af3e61ba23a182ba5df874ef98870a.png
+Loading resource: res://.godot/imported/016c9f5d55580f0499be87f33ce7be0ac4af3e61ba23a182ba5df874ef98870a.png-74be0703316987701363f14d11fa9726.ctex
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/d5b65da8b54fd78c9941c2c7f18eed94888383af
+Loading resource: res://surface.gdshader
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/a4204a234c21c0b17ba8b4a56159916c212b00b5
+Loading resource: res://forest-floor.png
+Loading resource: res://.godot/imported/forest-floor.png-ef3b4099a470de8a31f2100eb5f16e77.ctex
+Loading resource: res://assets/water.gltf
+Loading resource: res://.godot/imported/water.gltf-887bd450df31080373d171be401a06a6.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://textures/b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1.png
+Loading resource: res://.godot/imported/b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1.png-364e9e0fdece59fe80402ecc5947f7db.ctex
+Loading resource: res://textures/78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e.png
+Loading resource: res://.godot/imported/78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e.png-7d35838f032332a5d8a7c068492c9563.ctex
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/7826338073068ce731530b6997f6b49db7c45e99
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/7c29a1aba1f2d77ac6836468dbe83fb6abd4c28f
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://textures/0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6.png
+Loading resource: res://.godot/imported/0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6.png-4b1e264b02e99b1ea18f4fb5c6b48280.ctex
+Loading resource: res://textures/ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516.png
+Loading resource: res://.godot/imported/ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516.png-fdf054eb47a845a4836b3d7497a2a378.ctex
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-altered-0.gltf
+Loading resource: res://.godot/imported/broadleaf-altered-0.gltf-ea4fabc1a2a653df7732f064ef5fd42e.scn
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/ed6df57c4dda170baf55c906924f862b0d55cf92
+Loading resource: res://assets/broadleaf-altered-0.gltf
+Loading resource: res://.godot/imported/broadleaf-altered-0.gltf-ea4fabc1a2a653df7732f064ef5fd42e.scn
+Loading resource: res://assets/broadleaf-altered-1.gltf
+Loading resource: res://.godot/imported/broadleaf-altered-1.gltf-85d327ca595740054b4c8a657ae2aa52.scn
+Loading resource: res://assets/broadleaf-altered-1.gltf
+Loading resource: res://.godot/imported/broadleaf-altered-1.gltf-85d327ca595740054b4c8a657ae2aa52.scn
+Loading resource: res://assets/broadleaf-altered-2.gltf
+Loading resource: res://.godot/imported/broadleaf-altered-2.gltf-e13cdaadf1c151cf18d96744f5cb9575.scn
+Loading resource: res://assets/broadleaf-altered-2.gltf
+Loading resource: res://.godot/imported/broadleaf-altered-2.gltf-e13cdaadf1c151cf18d96744f5cb9575.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/pine-a-0.gltf
+Loading resource: res://.godot/imported/pine-a-0.gltf-a042eff96e21487cdcbdfdba72f4498e.scn
+Loading resource: res://assets/pine-a-1.gltf
+Loading resource: res://.godot/imported/pine-a-1.gltf-2fd9209239ea556a41d1e45528521e7d.scn
+Loading resource: res://assets/pine-a-2.gltf
+Loading resource: res://.godot/imported/pine-a-2.gltf-8eaa125b0181e7707de48f77000092ab.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/broadleaf-a-0.gltf
+Loading resource: res://.godot/imported/broadleaf-a-0.gltf-d9fad36ef2ee8ee197aa26fe11735429.scn
+Loading resource: res://assets/broadleaf-a-1.gltf
+Loading resource: res://.godot/imported/broadleaf-a-1.gltf-da7ed2db4a08b28b04cb683758f54651.scn
+Loading resource: res://assets/broadleaf-a-2.gltf
+Loading resource: res://.godot/imported/broadleaf-a-2.gltf-ba2abcb564a48b91cb029a89d02a959a.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://textures/d267d6c3388bf04dabeb8dcbc1d6383d58bf08f2ff07be30bdceab36aa7e9c5c.png
+Loading resource: res://.godot/imported/d267d6c3388bf04dabeb8dcbc1d6383d58bf08f2ff07be30bdceab36aa7e9c5c.png-24de4663195ef412c999e3d05b7ad8f0.ctex
+Loading resource: res://textures/8bd5603cff1c22d648f8e633f1e27d266a311695e89104ae70787c512a5f4796.png
+Loading resource: res://.godot/imported/8bd5603cff1c22d648f8e633f1e27d266a311695e89104ae70787c512a5f4796.png-aff618279fe3e1efe6799e7230472f0d.ctex
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/river-bank-0.gltf
+Loading resource: res://.godot/imported/river-bank-0.gltf-ad87eca395378abcf82b6b4cb0f56e75.scn
+Loading resource: res://assets/rock-shelf-0.gltf
+Loading resource: res://.godot/imported/rock-shelf-0.gltf-7a14f22e545461e4017ee7bf29bc79a7.scn
+Loading resource: res://assets/rock-shelf-0.gltf
+Loading resource: res://.godot/imported/rock-shelf-0.gltf-7a14f22e545461e4017ee7bf29bc79a7.scn
+Loading resource: res://assets/rock-shelf-0.gltf
+Loading resource: res://.godot/imported/rock-shelf-0.gltf-7a14f22e545461e4017ee7bf29bc79a7.scn
+Loading resource: res://assets/rock-shelf-0.gltf
+Loading resource: res://.godot/imported/rock-shelf-0.gltf-7a14f22e545461e4017ee7bf29bc79a7.scn
+Loading resource: res://assets/rock-shelf-1.gltf
+Loading resource: res://.godot/imported/rock-shelf-1.gltf-8ce4477722b903520db8427391849534.scn
+Loading resource: res://assets/rock-shelf-1.gltf
+Loading resource: res://.godot/imported/rock-shelf-1.gltf-8ce4477722b903520db8427391849534.scn
+Loading resource: res://assets/rock-shelf-1.gltf
+Loading resource: res://.godot/imported/rock-shelf-1.gltf-8ce4477722b903520db8427391849534.scn
+Loading resource: res://assets/rock-shelf-1.gltf
+Loading resource: res://.godot/imported/rock-shelf-1.gltf-8ce4477722b903520db8427391849534.scn
+Loading resource: res://assets/rock-shelf-1.gltf
+Loading resource: res://.godot/imported/rock-shelf-1.gltf-8ce4477722b903520db8427391849534.scn
+Loading resource: res://assets/rock-shelf-altered-0.gltf
+Loading resource: res://.godot/imported/rock-shelf-altered-0.gltf-930fd7e8073cc888641836f8db4dc4a8.scn
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/af93465febe3095bd4787ff617490b89dc980719
+Shader cache miss for SceneForwardClusteredShaderRD/d80c10b7bc0719bca4bd88fe927c7c6f3bcb42f5c79117523d47e0854b12d4dd/9942c89334cd4c0a340e523cc9eda3b3a8a2dc0a
+Loading resource: res://assets/rock-shelf-altered-0.gltf
+Loading resource: res://.godot/imported/rock-shelf-altered-0.gltf-930fd7e8073cc888641836f8db4dc4a8.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/talus-pebbles-0.gltf
+Loading resource: res://.godot/imported/talus-pebbles-0.gltf-bf949973eccec97698e4a6fe58e8f0ce.scn
+Loading resource: res://assets/grass-meadow.gltf
+Loading resource: res://.godot/imported/grass-meadow.gltf-f6fb1545000f5e2a935e24dd4dcbf487.scn
+Loading resource: res://assets/grass-meadow.gltf
+Loading resource: res://.godot/imported/grass-meadow.gltf-f6fb1545000f5e2a935e24dd4dcbf487.scn
+Loading resource: res://assets/grass-edge.gltf
+Loading resource: res://.godot/imported/grass-edge.gltf-6442860dd89ad4b1a9bb0029562ac647.scn
+Loading resource: res://assets/grass-edge.gltf
+Loading resource: res://.godot/imported/grass-edge.gltf-6442860dd89ad4b1a9bb0029562ac647.scn
+Loading resource: res://assets/fern-sparse.gltf
+Loading resource: res://.godot/imported/fern-sparse.gltf-688e256099f0a4bbdda23eaf5c83566a.scn
+Loading resource: res://assets/fern-sparse.gltf
+Loading resource: res://.godot/imported/fern-sparse.gltf-688e256099f0a4bbdda23eaf5c83566a.scn
+Loading resource: res://assets/grass-meadow.gltf
+Loading resource: res://.godot/imported/grass-meadow.gltf-f6fb1545000f5e2a935e24dd4dcbf487.scn
+Loading resource: res://assets/leaf-litter.gltf
+Loading resource: res://.godot/imported/leaf-litter.gltf-c86385e8c2b65d49bca60b3c3d382f24.scn
+Loading resource: res://assets/leaf-litter.gltf
+Loading resource: res://.godot/imported/leaf-litter.gltf-c86385e8c2b65d49bca60b3c3d382f24.scn
+Loading resource: res://assets/fern-lush.gltf
+Loading resource: res://.godot/imported/fern-lush.gltf-9d84418424ed28438b447dbd90693b8d.scn
+Loading resource: res://assets/fern-lush.gltf
+Loading resource: res://.godot/imported/fern-lush.gltf-9d84418424ed28438b447dbd90693b8d.scn
+Loading resource: res://assets/moss.gltf
+Loading resource: res://.godot/imported/moss.gltf-066037dbe0f8578ff66495e42de0191b.scn
+Loading resource: res://assets/moss.gltf
+Loading resource: res://.godot/imported/moss.gltf-066037dbe0f8578ff66495e42de0191b.scn
+Loading resource: res://assets/grass-meadow.gltf
+Loading resource: res://.godot/imported/grass-meadow.gltf-f6fb1545000f5e2a935e24dd4dcbf487.scn
+Loading resource: res://assets/grass-edge.gltf
+Loading resource: res://.godot/imported/grass-edge.gltf-6442860dd89ad4b1a9bb0029562ac647.scn
+Loading resource: res://assets/grass-meadow.gltf
+Loading resource: res://.godot/imported/grass-meadow.gltf-f6fb1545000f5e2a935e24dd4dcbf487.scn
+Loading resource: res://assets/fern-lush.gltf
+Loading resource: res://.godot/imported/fern-lush.gltf-9d84418424ed28438b447dbd90693b8d.scn
+Loading resource: res://assets/moss.gltf
+Loading resource: res://.godot/imported/moss.gltf-066037dbe0f8578ff66495e42de0191b.scn
+Loading resource: res://assets/fern-sparse.gltf
+Loading resource: res://.godot/imported/fern-sparse.gltf-688e256099f0a4bbdda23eaf5c83566a.scn
+Loading resource: res://assets/leaf-litter.gltf
+Loading resource: res://.godot/imported/leaf-litter.gltf-c86385e8c2b65d49bca60b3c3d382f24.scn
+Loading resource: res://assets/moss.gltf
+Loading resource: res://.godot/imported/moss.gltf-066037dbe0f8578ff66495e42de0191b.scn
+Loading resource: res://assets/grass-edge.gltf
+Loading resource: res://.godot/imported/grass-edge.gltf-6442860dd89ad4b1a9bb0029562ac647.scn
+Loading resource: res://assets/fern-sparse.gltf
+Loading resource: res://.godot/imported/fern-sparse.gltf-688e256099f0a4bbdda23eaf5c83566a.scn
+Loading resource: res://assets/leaf-litter.gltf
+Loading resource: res://.godot/imported/leaf-litter.gltf-c86385e8c2b65d49bca60b3c3d382f24.scn
+Loading resource: res://assets/fern-lush.gltf
+Loading resource: res://.godot/imported/fern-lush.gltf-9d84418424ed28438b447dbd90693b8d.scn
+Loading resource: res://assets/grass-edge.gltf
+Loading resource: res://.godot/imported/grass-edge.gltf-6442860dd89ad4b1a9bb0029562ac647.scn
+Loading resource: res://assets/fern-sparse.gltf
+Loading resource: res://.godot/imported/fern-sparse.gltf-688e256099f0a4bbdda23eaf5c83566a.scn
+Loading resource: res://assets/leaf-litter.gltf
+Loading resource: res://.godot/imported/leaf-litter.gltf-c86385e8c2b65d49bca60b3c3d382f24.scn
+Loading resource: res://assets/moss.gltf
+Loading resource: res://.godot/imported/moss.gltf-066037dbe0f8578ff66495e42de0191b.scn
+Loading resource: res://assets/fern-lush.gltf
+Loading resource: res://.godot/imported/fern-lush.gltf-9d84418424ed28438b447dbd90693b8d.scn
+Loading resource: res://assets/sapling-shrub.gltf
+Loading resource: res://.godot/imported/sapling-shrub.gltf-6d6fb26762b8f40600c40456f19962a7.scn
+Loading resource: res://textures/9ab2d57db76c2a01c80bc4007c166d0dc10eb2814cbd396012477b81574f19b0.png
+Loading resource: res://.godot/imported/9ab2d57db76c2a01c80bc4007c166d0dc10eb2814cbd396012477b81574f19b0.png-ba8b17448b8b46d9c663efe140bd8fab.ctex
+Loading resource: res://textures/24140da5838801a572e593392ad1f239abeb5efee93be0a07cda5ad7096fb950.png
+Loading resource: res://.godot/imported/24140da5838801a572e593392ad1f239abeb5efee93be0a07cda5ad7096fb950.png-ae1df1124515947bd0700404e297aaa9.ctex
+Loading resource: res://assets/sapling-shrub.gltf
+Loading resource: res://.godot/imported/sapling-shrub.gltf-6d6fb26762b8f40600c40456f19962a7.scn
+Loading resource: res://assets/sapling-shrub.gltf
+Loading resource: res://.godot/imported/sapling-shrub.gltf-6d6fb26762b8f40600c40456f19962a7.scn
+Loading resource: res://assets/sapling-shrub.gltf
+Loading resource: res://.godot/imported/sapling-shrub.gltf-6d6fb26762b8f40600c40456f19962a7.scn
+Loading resource: res://assets/sapling-shrub.gltf
+Loading resource: res://.godot/imported/sapling-shrub.gltf-6d6fb26762b8f40600c40456f19962a7.scn
+Shader cache miss for SkyShaderRD/a9f86a6778595096e980fe5217e4465487a0a679fa9526d4a2e81f745d154beb/e105b1e014f9523daf8d734c2f2dc115ba341902
+Updated PSO cache (6.1 MiB)
+B4_SCAR_UV broadleaf-altered-0 Deep oak L0 max_core 0.90036600828171 root_rotation (0.0, -0.224971, 0.0)
+B4_CHECKS_OK 273 contacts, terrain 0.00004210027712
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
+Updated PSO cache (6.8 MiB)

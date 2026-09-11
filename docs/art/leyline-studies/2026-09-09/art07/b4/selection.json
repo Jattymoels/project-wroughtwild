@@ -1,0 +1,15 @@
+{
+  "base": "0f35e87c6a23e3197bec968fa4443c8e134317b3",
+  "branch": "codex/art07-b4",
+  "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\kit-final",
+  "review": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\review-budget-v05",
+  "audit": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\final-audit",
+  "captures": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\final-capture",
+  "walk": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\final-walk",
+  "motion": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\final-motion",
+  "benchmark": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\benchmark-budget-v05",
+  "benchmark_log_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\final-benchmark",
+  "media": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\media-final",
+  "native": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\current-v02",
+  "diagnostics": "Earlier kit/review/capture/benchmark versions remain under this ignored run root. Only named selected evidence is in the handoff; early budget and import failures are not selected passes."
+}
