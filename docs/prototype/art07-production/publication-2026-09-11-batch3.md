@@ -41,7 +41,7 @@ handoff packages or their documented reconstruction.
 | --- | --- |
 | B4 | Packed master/41 images and 26 GLBs; branch attachment, scar depth and native-body fit diagnostics; fresh engine import; actual capture, physical walk and motion/pause in both renderers |
 | D2 | Packed master/5 images and 7 closed GLBs; 84 actual Blender views; 528 roof-edge samples and 108 legal seam pairs; hinge controls; 6,563 placement and 6,164 fresh-restart assertions; both-renderer captures |
-| D3 | Packed master/2 images and 12 closed GLBs; 144 actual Blender views; 35,310 placement and 40,431 fresh-restart assertions, including covering collision/shelter and the shelf negative control; both-renderer captures |
+| D3 | Packed master/2 images and 12 closed GLBs; 144 actual Blender views; 35,310 placement and 40,431 fresh-restart assertions, including covering collision/shelter and fine-piece/body contacts; both-renderer captures |
 | E2 | Packed master/9 images and 6 GLBs; 24 actual Blender views; 162 real work/upgrade/ownership assertions plus 12 fresh-restore assertions in each renderer |
 
 All **26 fresh subprocesses exited zero**. Python source syntax and all 18
@@ -60,7 +60,9 @@ publisher-local APPDATA/LOCALAPPDATA and test saves. Workers and canonical
 packages were read only.
 
 Original generation, full simulation regressions and benchmark runs were not
-repeated. B4's original numerical/image/budget verifier was rerun against its
+repeated. D3's separate rejected-shelf negative control remains worker evidence;
+the publisher repeated the current placement/restart checks and geometry audit.
+B4's original numerical/image/budget verifier was rerun against its
 unchanged evidence; those timings remain the worker's measurements. The updated
 dispatch/catalogue/concept validators check the final notes and prompts.
 
