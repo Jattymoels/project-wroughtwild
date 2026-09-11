@@ -1,0 +1,126 @@
+{
+	"finding": "Grounded ores have a zero-thickness terrain ribbon collider, not a solid boulder body. Solid sources are fallback/source candidates; do not install a protruding rock into the ordinary ribbon without a separate fit decision.",
+	"half_width": 0.24,
+	"lift": 0.018,
+	"rows": [
+		{
+			"cold_workable": true,
+			"definition": {
+				"display_name": "Iron Vein",
+				"material_family": "iron_ore",
+				"units": 8.0,
+				"units_per_harvest": 2.0,
+				"visual": "iron_vein"
+			},
+			"fallback_center": "Vector3(0, 0.3, 0)",
+			"fallback_size": "Vector3(2.6, 0.6, 0.9)",
+			"fallback_yaw": 0.0,
+			"grounded_bounds": {
+				"position": "Vector3(-0.23998928, 0.018, -1.5)",
+				"size": "Vector3(0.47997856, 1e-05, 3)"
+			},
+			"grounded_collider_points": 432,
+			"grounded_triangles": 144,
+			"id": "iron_vein",
+			"presses": 1,
+			"tool": ""
+		},
+		{
+			"cold_workable": false,
+			"definition": {
+				"display_name": "Copper Vein",
+				"era": 2.0,
+				"heat_to_work": 2.0,
+				"material_family": "copper_ore",
+				"units": 8.0,
+				"units_per_harvest": 2.0,
+				"visual": "copper_vein"
+			},
+			"fallback_center": "Vector3(0, 0.3, 0)",
+			"fallback_size": "Vector3(0.9, 0.6, 2.6)",
+			"fallback_yaw": 1.57079637050629,
+			"grounded_bounds": {
+				"position": "Vector3(-1.5, 0.018, -0.23998928)",
+				"size": "Vector3(3, 1e-05, 0.47997856)"
+			},
+			"grounded_collider_points": 432,
+			"grounded_triangles": 144,
+			"id": "copper_vein",
+			"presses": 1,
+			"tool": ""
+		},
+		{
+			"cold_workable": false,
+			"definition": {
+				"display_name": "Tin Vein",
+				"era": 2.0,
+				"heat_to_work": 2.0,
+				"material_family": "tin_ore",
+				"units": 6.0,
+				"units_per_harvest": 2.0,
+				"visual": "tin_vein"
+			},
+			"fallback_center": "Vector3(0, 0.3, 0)",
+			"fallback_size": "Vector3(0.9, 0.6, 2.6)",
+			"fallback_yaw": 1.57079637050629,
+			"grounded_bounds": {
+				"position": "Vector3(-1.5, 0.018, -0.23998928)",
+				"size": "Vector3(3, 1e-05, 0.47997856)"
+			},
+			"grounded_collider_points": 432,
+			"grounded_triangles": 144,
+			"id": "tin_vein",
+			"presses": 1,
+			"tool": ""
+		},
+		{
+			"cold_workable": false,
+			"definition": {
+				"display_name": "Ember-Iron Vein",
+				"era": 3.0,
+				"heat_to_work": 2.0,
+				"material_family": "ember_iron_ore",
+				"units": 6.0,
+				"units_per_harvest": 2.0,
+				"visual": "ember_vein"
+			},
+			"fallback_center": "Vector3(0, 0.3, 0)",
+			"fallback_size": "Vector3(0.9, 0.6, 2.6)",
+			"fallback_yaw": 1.57079637050629,
+			"grounded_bounds": {
+				"position": "Vector3(-1.5, 0.018, -0.23998928)",
+				"size": "Vector3(3, 1e-05, 0.47997856)"
+			},
+			"grounded_collider_points": 432,
+			"grounded_triangles": 144,
+			"id": "ember_iron_vein",
+			"presses": 1,
+			"tool": ""
+		},
+		{
+			"cold_workable": false,
+			"definition": {
+				"display_name": "Silver Vein",
+				"era": 3.0,
+				"heat_to_work": 2.0,
+				"material_family": "silver_ore",
+				"units": 6.0,
+				"units_per_harvest": 2.0,
+				"visual": "silver_vein"
+			},
+			"fallback_center": "Vector3(0, 0.3, 0)",
+			"fallback_size": "Vector3(0.9, 0.6, 2.6)",
+			"fallback_yaw": 1.57079637050629,
+			"grounded_bounds": {
+				"position": "Vector3(-1.5, 0.018, -0.23998928)",
+				"size": "Vector3(3, 1e-05, 0.47997856)"
+			},
+			"grounded_collider_points": 432,
+			"grounded_triangles": 144,
+			"id": "silver_vein",
+			"presses": 1,
+			"tool": ""
+		}
+	],
+	"seam_steps": 24
+}

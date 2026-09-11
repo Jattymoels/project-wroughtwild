@@ -1,0 +1,89 @@
+{
+  "canonical": {
+    "files": 2029,
+    "sha256": "7b5f6338140c9d0500586fc55991b69e853e002ebc258641488728992e282494"
+  },
+  "original_inputs_unchanged": 8,
+  "b3": {
+    "files": 1541,
+    "sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321"
+  },
+  "fresh_glbs": 90,
+  "identical_runtime_source_files": 1305,
+  "fresh_renderer_recapture": false,
+  "render_scope": "Actual selected runtime captured in both renderers before sealing. Fresh import/native reloads plus exact runtime byte identity verified after sealing.",
+  "native_flow": {
+    "checks": 121,
+    "failures": 0,
+    "inventory": {
+      "copper_vein": 8,
+      "ember_iron_vein": 6,
+      "iron_vein": 8,
+      "silver_vein": 6,
+      "tin_vein": 6
+    },
+    "mode": "flow",
+    "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+  },
+  "native_partial": {
+    "checks": 66,
+    "failures": 0,
+    "inventory": {
+      "copper_vein": 2,
+      "ember_iron_vein": 2,
+      "iron_vein": 2,
+      "silver_vein": 2,
+      "tin_vein": 2
+    },
+    "mode": "partial",
+    "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+  },
+  "native_final": {
+    "checks": 52,
+    "failures": 0,
+    "inventory": {
+      "copper_vein": 8,
+      "ember_iron_vein": 6,
+      "iron_vein": 8,
+      "silver_vein": 6,
+      "tin_vein": 6
+    },
+    "mode": "final",
+    "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+  },
+  "forward_plus": {
+    "selected_static_pngs": 17,
+    "paused_identical": true,
+    "native": {
+      "checks": 148,
+      "failures": 0,
+      "inventory": {
+        "copper_vein": 8,
+        "ember_iron_vein": 6,
+        "iron_vein": 8,
+        "silver_vein": 6,
+        "tin_vein": 6
+      },
+      "mode": "flow",
+      "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+    }
+  },
+  "gl_compatibility": {
+    "selected_static_pngs": 17,
+    "paused_identical": true,
+    "native": {
+      "checks": 148,
+      "failures": 0,
+      "inventory": {
+        "copper_vein": 8,
+        "ember_iron_vein": 6,
+        "iron_vein": 8,
+        "silver_vein": 6,
+        "tin_vein": 6
+      },
+      "mode": "flow",
+      "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+    }
+  },
+  "current_unmodified_checks": 8225
+}

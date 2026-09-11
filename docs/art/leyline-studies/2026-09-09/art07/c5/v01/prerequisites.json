@@ -1,0 +1,64 @@
+{
+  "base": "4b5d89b376765fbf4d46049aa099e0bb154a82da",
+  "b3_package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02",
+  "b3_manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+  "b3_files_verified": 1541,
+  "files": {
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\models\\b3-master.blend": "7061684fbc9f52b28715607feefc24f3d96aa92adcbdb7404f5a3780c22b3a7c",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\rock.glb": "6185f02594ec0d064d9750fa28fe33603c513361f0a96a65512ff9668c721322",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\rock_cutout.png": "cc9079702437c95c6534478c23f29cfe89c381b50cc99fe5c00a17124f9cadb6",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\generation.json": "ed438b7c355766e7e8efd68dacbc110d7cda986db4b3c2943dd30603a74a3377",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\grove-art02\\rock-input-v01.png": "a009263af1f9b8a1bf7856212ffaa6cce08eac1f241d24ee8af529cdb7a53b2c",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\runtime\\trellis-cli.exe": "e3d075612388a42fcb9bea73377feac4149e3a463cff2d2e11b24975e85d427d",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe": "42c096b04d79bd0ff234429f67178881047c1c370d25ad3aef2766f3eeac4024",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\tools\\wroughtwild-trellis\\install-manifest.json": "da4b60f904904b539cbb20f4ae21f9eaf9dac8ca5ff97ed92c341242aa9c0e2d"
+  },
+  "models_verified": 10,
+  "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+  "raw_metadata": {
+    "version": "2.0",
+    "minVersion": "2.0",
+    "generator": "trellis.cpp v0.6.0",
+    "extras": {
+      "seed": 42,
+      "commit": "16f3109e82f3922033bfa62b83c42899678b7b6f",
+      "backend": "cuda",
+      "build": "2026-08-21T08:39:09Z",
+      "generated": "2026-09-08T23:37:57Z"
+    }
+  },
+  "generation": {
+    "input_sha256": "a009263af1f9b8a1bf7856212ffaa6cce08eac1f241d24ee8af529cdb7a53b2c",
+    "arguments": [
+      "--image",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\leyline-studies\\2026-09-09\\grove-art02\\rock-input-v01.png",
+      "--output",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\rock-source-v01\\rock.glb",
+      "--models",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\models",
+      "--gpu",
+      "0",
+      "--require-gpu",
+      "--res",
+      "1024",
+      "--seed",
+      "42",
+      "--bg-removal",
+      "birefnet",
+      "--dump-bg",
+      "--webp",
+      "off",
+      "--threads",
+      "8"
+    ],
+    "runtime": "pwilkin/trellis.cpp",
+    "version": "v0.6.0",
+    "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+    "started_utc": "2026-09-08T23:36:02.8659031Z",
+    "exit_code": 0,
+    "seconds": 116.2489703,
+    "glb_sha256": "6185f02594ec0d064d9750fa28fe33603c513361f0a96a65512ff9668c721322"
+  },
+  "new_generation": false,
+  "native_reuse": "B3 DLL; exact game/sim/data Git diff is empty to current base"
+}

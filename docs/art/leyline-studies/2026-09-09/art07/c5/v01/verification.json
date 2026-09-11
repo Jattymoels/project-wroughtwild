@@ -1,0 +1,122 @@
+{
+  "renderers": {
+    "forward_plus": {
+      "heat_frame_count": 42,
+      "max_mean_pixel_change": 0.06726157407407407,
+      "paused_identical": true,
+      "native": {
+        "checks": 148,
+        "failures": 0,
+        "inventory": {
+          "copper_vein": 8,
+          "ember_iron_vein": 6,
+          "iron_vein": 8,
+          "silver_vein": 6,
+          "tin_vein": 6
+        },
+        "mode": "flow",
+        "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+      },
+      "benchmark": {
+        "cases": [
+          {
+            "draws": 105.0,
+            "gpu_p50_ms": 0.143999993801117,
+            "gpu_p95_ms": 0.150999993085861,
+            "lod": 0,
+            "primitives": 298735.0,
+            "texture_bytes": 141662208.0,
+            "wall_p50_ms": 0.43,
+            "wall_p95_ms": 1.867,
+            "wall_worst_ms": 2.835
+          },
+          {
+            "draws": 105.0,
+            "gpu_p50_ms": 0.13400000333786,
+            "gpu_p95_ms": 0.141000002622604,
+            "lod": 1,
+            "primitives": 128728.0,
+            "texture_bytes": 141662208.0,
+            "wall_p50_ms": 0.42,
+            "wall_p95_ms": 1.104,
+            "wall_worst_ms": 2.809
+          },
+          {
+            "draws": 105.0,
+            "gpu_p50_ms": 0.128000006079674,
+            "gpu_p95_ms": 0.135000005364418,
+            "lod": 2,
+            "primitives": 43728.0,
+            "texture_bytes": 141662208.0,
+            "wall_p50_ms": 0.414,
+            "wall_p95_ms": 1.261,
+            "wall_worst_ms": 2.439
+          }
+        ],
+        "device": "NVIDIA GeForce RTX 5090",
+        "renderer": "forward_plus",
+        "scope": "15 source specimens, not an ordinary habitat or lower-spec approval.",
+        "settings": "1440x900, MSAA4, shadows on, VSync off, 120 warmup and 600 samples each, fixed view"
+      }
+    },
+    "gl_compatibility": {
+      "heat_frame_count": 42,
+      "max_mean_pixel_change": 0.11951697530864197,
+      "paused_identical": true,
+      "native": {
+        "checks": 148,
+        "failures": 0,
+        "inventory": {
+          "copper_vein": 8,
+          "ember_iron_vein": 6,
+          "iron_vein": 8,
+          "silver_vein": 6,
+          "tin_vein": 6
+        },
+        "mode": "flow",
+        "scope": "Authored fixture using current ResourceNode, native inventory, player work/pickup and SaveManager. No normal campaign or ordinary-world art adoption."
+      },
+      "benchmark": {
+        "cases": [
+          {
+            "draws": 105.0,
+            "gpu_p50_ms": 0.14300000667572,
+            "gpu_p95_ms": 0.144999995827675,
+            "lod": 0,
+            "primitives": 298735.0,
+            "texture_bytes": 60256561.0,
+            "wall_p50_ms": 0.31,
+            "wall_p95_ms": 0.403,
+            "wall_worst_ms": 0.656
+          },
+          {
+            "draws": 105.0,
+            "gpu_p50_ms": 0.130999997258186,
+            "gpu_p95_ms": 0.133000001311302,
+            "lod": 1,
+            "primitives": 128728.0,
+            "texture_bytes": 60256561.0,
+            "wall_p50_ms": 0.335,
+            "wall_p95_ms": 0.415,
+            "wall_worst_ms": 0.714
+          },
+          {
+            "draws": 105.0,
+            "gpu_p50_ms": 0.123999997973442,
+            "gpu_p95_ms": 0.126000002026558,
+            "lod": 2,
+            "primitives": 43728.0,
+            "texture_bytes": 60256561.0,
+            "wall_p50_ms": 0.342,
+            "wall_p95_ms": 0.407,
+            "wall_worst_ms": 0.844
+          }
+        ],
+        "device": "NVIDIA GeForce RTX 5090",
+        "renderer": "gl_compatibility",
+        "scope": "15 source specimens, not an ordinary habitat or lower-spec approval.",
+        "settings": "1440x900, MSAA4, shadows on, VSync off, 120 warmup and 600 samples each, fixed view"
+      }
+    }
+  }
+}

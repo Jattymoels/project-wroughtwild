@@ -1,0 +1,1982 @@
+{
+  "packed_images": [
+    {
+      "name": "C5 retained shared linear ORM",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "C5 shared periodic stone albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.001",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_1",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.001",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    }
+  ],
+  "incisions": [
+    {
+      "object": "iron_vein-cold",
+      "independent_max_inward_m": 0.0
+    },
+    {
+      "object": "copper_vein-cold",
+      "independent_max_inward_m": 0.0
+    },
+    {
+      "object": "copper_vein-cracked",
+      "independent_max_inward_m": 0.05498730903491378
+    },
+    {
+      "object": "tin_vein-cold",
+      "independent_max_inward_m": 0.0
+    },
+    {
+      "object": "tin_vein-cracked",
+      "independent_max_inward_m": 0.05497859525348758
+    },
+    {
+      "object": "ember_iron_vein-cold",
+      "independent_max_inward_m": 0.042990641202777624
+    },
+    {
+      "object": "ember_iron_vein-cracked",
+      "independent_max_inward_m": 0.042990641202777624
+    },
+    {
+      "object": "silver_vein-cold",
+      "independent_max_inward_m": 0.0
+    },
+    {
+      "object": "silver_vein-cracked",
+      "independent_max_inward_m": 0.05498730903491378
+    }
+  ],
+  "exports": [
+    {
+      "file": "copper_vein-u2-cold-lod0.glb",
+      "triangles": 5976,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 524796,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.2856801152229309,
+          0.0
+        ],
+        [
+          -0.6098599433898926,
+          0.3077632784843445,
+          0.28430625796318054
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u2-cold-lod1.glb",
+      "triangles": 2576,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 434068,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.2854812443256378,
+          0.0
+        ],
+        [
+          -0.6098599433898926,
+          0.3077632784843445,
+          0.28532055020332336
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u2-cold-lod2.glb",
+      "triangles": 876,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 387972,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.2842777371406555,
+          0.0
+        ],
+        [
+          -0.609653651714325,
+          0.30152788758277893,
+          0.2832675576210022
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u2-cracked-lod0.glb",
+      "triangles": 5976,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 524596,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.2856801152229309,
+          0.0
+        ],
+        [
+          -0.6098599433898926,
+          0.3077632784843445,
+          0.2653716206550598
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u2-cracked-lod1.glb",
+      "triangles": 2576,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 433992,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.2854812443256378,
+          0.0
+        ],
+        [
+          -0.6098599433898926,
+          0.3077632784843445,
+          0.26454925537109375
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u2-cracked-lod2.glb",
+      "triangles": 876,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 387976,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.2842777371406555,
+          0.0
+        ],
+        [
+          -0.609653651714325,
+          0.3015283942222595,
+          0.26563483476638794
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u4-cold-lod0.glb",
+      "triangles": 5975,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 3,
+      "uv": true,
+      "colour": true,
+      "bytes": 524036,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.35855403542518616,
+          0.0
+        ],
+        [
+          0.00020127635798417032,
+          0.384361207485199,
+          0.4371379017829895
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u4-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 433540,
+      "bounds_blender_m": [
+        [
+          -1.2376817464828491,
+          -0.3548097014427185,
+          0.0
+        ],
+        [
+          0.0006135064759291708,
+          0.3825520873069763,
+          0.4371379017829895
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u4-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 387844,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.3438340723514557,
+          0.0
+        ],
+        [
+          0.000999422394670546,
+          0.3800438344478607,
+          0.43541595339775085
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u4-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 523788,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.35855403542518616,
+          0.0
+        ],
+        [
+          0.00020127635798417032,
+          0.384361207485199,
+          0.4371379017829895
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u4-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 433500,
+      "bounds_blender_m": [
+        [
+          -1.2376817464828491,
+          -0.3548097014427185,
+          0.0
+        ],
+        [
+          0.0006135064759291708,
+          0.3825520873069763,
+          0.4371379017829895
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u4-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 387804,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.3438340723514557,
+          0.0
+        ],
+        [
+          0.00214122561737895,
+          0.3800438344478607,
+          0.43541595339775085
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u6-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 525028,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.39062902331352234,
+          0.0
+        ],
+        [
+          0.6101566553115845,
+          0.3893433213233948,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u6-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 433940,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.38476985692977905,
+          0.0
+        ],
+        [
+          0.6105770468711853,
+          0.391022264957428,
+          0.48811817169189453
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u6-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 388076,
+      "bounds_blender_m": [
+        [
+          -1.2286185026168823,
+          -0.3774494230747223,
+          0.0
+        ],
+        [
+          0.6125856041908264,
+          0.3869495689868927,
+          0.4901377558708191
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u6-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 524908,
+      "bounds_blender_m": [
+        [
+          -1.2376817464828491,
+          -0.39062902331352234,
+          0.0
+        ],
+        [
+          0.6102056503295898,
+          0.3893433213233948,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u6-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 434064,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.38476985692977905,
+          0.0
+        ],
+        [
+          0.6105770468711853,
+          0.391022264957428,
+          0.48811817169189453
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u6-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 388004,
+      "bounds_blender_m": [
+        [
+          -1.2286185026168823,
+          -0.3774494230747223,
+          0.0
+        ],
+        [
+          0.6125856041908264,
+          0.3869495689868927,
+          0.48954713344573975
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u8-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521380,
+      "bounds_blender_m": [
+        [
+          -1.2376817464828491,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          1.2478480339050293,
+          0.3893433213233948,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u8-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431972,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          1.2450051307678223,
+          0.38604268431663513,
+          0.48811817169189453
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u8-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386584,
+      "bounds_blender_m": [
+        [
+          -1.2286185026168823,
+          -0.3774494230747223,
+          0.0
+        ],
+        [
+          1.25,
+          0.3869495689868927,
+          0.48392245173454285
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u8-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521264,
+      "bounds_blender_m": [
+        [
+          -1.2376817464828491,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          1.2478480339050293,
+          0.3893433213233948,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u8-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431900,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          1.2450051307678223,
+          0.38604268431663513,
+          0.48811817169189453
+        ]
+      ]
+    },
+    {
+      "file": "copper_vein-u8-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386512,
+      "bounds_blender_m": [
+        [
+          -1.2286185026168823,
+          -0.3774494230747223,
+          0.0
+        ],
+        [
+          1.25,
+          0.3858031630516052,
+          0.48954713344573975
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u2-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 524680,
+      "bounds_blender_m": [
+        [
+          -1.2402019500732422,
+          -0.35854288935661316,
+          0.0
+        ],
+        [
+          -0.4065603017807007,
+          0.3142341077327728,
+          0.3400179445743561
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u2-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 434156,
+      "bounds_blender_m": [
+        [
+          -1.2402019500732422,
+          -0.35854288935661316,
+          0.0
+        ],
+        [
+          -0.40635600686073303,
+          0.31349197030067444,
+          0.3402469754219055
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u2-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 388340,
+      "bounds_blender_m": [
+        [
+          -1.2373329401016235,
+          -0.36127611994743347,
+          0.0
+        ],
+        [
+          -0.4064452648162842,
+          0.309878945350647,
+          0.34020403027534485
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u2-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 524684,
+      "bounds_blender_m": [
+        [
+          -1.2402019500732422,
+          -0.35854288935661316,
+          0.0
+        ],
+        [
+          -0.4065603017807007,
+          0.3142341077327728,
+          0.3400179445743561
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u2-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 434160,
+      "bounds_blender_m": [
+        [
+          -1.2402019500732422,
+          -0.35854288935661316,
+          0.0
+        ],
+        [
+          -0.40635600686073303,
+          0.31349197030067444,
+          0.3402469754219055
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u2-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 388344,
+      "bounds_blender_m": [
+        [
+          -1.2373329401016235,
+          -0.36127611994743347,
+          0.0
+        ],
+        [
+          -0.4064452648162842,
+          0.309878945350647,
+          0.34020403027534485
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u4-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 524996,
+      "bounds_blender_m": [
+        [
+          -1.2402019500732422,
+          -0.39062902331352234,
+          0.0
+        ],
+        [
+          0.40693140029907227,
+          0.3888228237628937,
+          0.48898187279701233
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u4-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 434076,
+      "bounds_blender_m": [
+        [
+          -1.2373329401016235,
+          -0.38476985692977905,
+          0.0
+        ],
+        [
+          0.40718144178390503,
+          0.3888228237628937,
+          0.48775672912597656
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u4-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 388216,
+      "bounds_blender_m": [
+        [
+          -1.236873745918274,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          0.4071723520755768,
+          0.3892878293991089,
+          0.4886232614517212
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u4-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 525000,
+      "bounds_blender_m": [
+        [
+          -1.2402019500732422,
+          -0.39062902331352234,
+          0.0
+        ],
+        [
+          0.40693140029907227,
+          0.3888228237628937,
+          0.48898187279701233
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u4-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 434080,
+      "bounds_blender_m": [
+        [
+          -1.2373329401016235,
+          -0.38476985692977905,
+          0.0
+        ],
+        [
+          0.40718144178390503,
+          0.3888228237628937,
+          0.48775672912597656
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u4-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 388220,
+      "bounds_blender_m": [
+        [
+          -1.236873745918274,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          0.4071723520755768,
+          0.3892878293991089,
+          0.4886232614517212
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u6-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521348,
+      "bounds_blender_m": [
+        [
+          -1.2376914024353027,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          1.242116093635559,
+          0.38933807611465454,
+          0.4884284734725952
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u6-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431904,
+      "bounds_blender_m": [
+        [
+          -1.2378602027893066,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          1.239404559135437,
+          0.39351359009742737,
+          0.48926764726638794
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u6-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386600,
+      "bounds_blender_m": [
+        [
+          -1.236873745918274,
+          -0.3774494230747223,
+          0.0
+        ],
+        [
+          1.25,
+          0.3837963342666626,
+          0.4899936020374298
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u6-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521352,
+      "bounds_blender_m": [
+        [
+          -1.2376914024353027,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          1.242116093635559,
+          0.38933807611465454,
+          0.4884284734725952
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u6-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431908,
+      "bounds_blender_m": [
+        [
+          -1.2378602027893066,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          1.239404559135437,
+          0.39351359009742737,
+          0.48926764726638794
+        ]
+      ]
+    },
+    {
+      "file": "ember_iron_vein-u6-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386600,
+      "bounds_blender_m": [
+        [
+          -1.236873745918274,
+          -0.3774494230747223,
+          0.0
+        ],
+        [
+          1.25,
+          0.3837963342666626,
+          0.4899936020374298
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u2-cold-lod0.glb",
+      "triangles": 5976,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 524836,
+      "bounds_blender_m": [
+        [
+          -1.2401890754699707,
+          -0.2870923578739166,
+          0.0
+        ],
+        [
+          -0.6099632978439331,
+          0.30776241421699524,
+          0.2842894494533539
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u2-cold-lod1.glb",
+      "triangles": 2576,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 433952,
+      "bounds_blender_m": [
+        [
+          -1.2401890754699707,
+          -0.28684377670288086,
+          0.0
+        ],
+        [
+          -0.6099218130111694,
+          0.30776241421699524,
+          0.2853279113769531
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u2-cold-lod2.glb",
+      "triangles": 876,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 388048,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.2845492660999298,
+          7.673312211409211e-05
+        ],
+        [
+          -0.6094605326652527,
+          0.3015284538269043,
+          0.2853279113769531
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u4-cold-lod0.glb",
+      "triangles": 5976,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 12,
+      "uv": true,
+      "colour": true,
+      "bytes": 524444,
+      "bounds_blender_m": [
+        [
+          -1.2401890754699707,
+          -0.36506620049476624,
+          0.0
+        ],
+        [
+          4.5937053073430434e-05,
+          0.37768232822418213,
+          0.43714001774787903
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u4-cold-lod1.glb",
+      "triangles": 2575,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 15,
+      "uv": true,
+      "colour": true,
+      "bytes": 433908,
+      "bounds_blender_m": [
+        [
+          -1.2376855611801147,
+          -0.36206236481666565,
+          0.0
+        ],
+        [
+          0.00037435011472553015,
+          0.3765220046043396,
+          0.43714001774787903
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u4-cold-lod2.glb",
+      "triangles": 875,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 15,
+      "uv": true,
+      "colour": true,
+      "bytes": 387848,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.3589428961277008,
+          0.0
+        ],
+        [
+          0.004310191608965397,
+          0.37745028734207153,
+          0.4440826177597046
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u6-cold-lod0.glb",
+      "triangles": 5975,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 9,
+      "uv": true,
+      "colour": true,
+      "bytes": 525308,
+      "bounds_blender_m": [
+        [
+          -1.2401890754699707,
+          -0.39064931869506836,
+          0.0
+        ],
+        [
+          0.6101850271224976,
+          0.38933950662612915,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u6-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 12,
+      "uv": true,
+      "colour": true,
+      "bytes": 434212,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.3885405361652374,
+          0.0
+        ],
+        [
+          0.6105425953865051,
+          0.3935092091560364,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u6-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 12,
+      "uv": true,
+      "colour": true,
+      "bytes": 388276,
+      "bounds_blender_m": [
+        [
+          -1.2338634729385376,
+          -0.3757551312446594,
+          0.0
+        ],
+        [
+          0.6104954481124878,
+          0.39015257358551025,
+          0.4897969663143158
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u8-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521412,
+      "bounds_blender_m": [
+        [
+          -1.2376855611801147,
+          -0.3885405361652374,
+          0.0
+        ],
+        [
+          1.2430163621902466,
+          0.38933950662612915,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u8-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431884,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.3810436427593231,
+          0.0
+        ],
+        [
+          1.2422744035720825,
+          0.3935092091560364,
+          0.4870513677597046
+        ]
+      ]
+    },
+    {
+      "file": "iron_vein-u8-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386720,
+      "bounds_blender_m": [
+        [
+          -1.2286193370819092,
+          -0.3757551312446594,
+          0.0
+        ],
+        [
+          1.2426402568817139,
+          0.39015257358551025,
+          0.48550015687942505
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u2-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 524864,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.35971319675445557,
+          0.0
+        ],
+        [
+          -0.4065999984741211,
+          0.3142341077327728,
+          0.339220255613327
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u2-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 434540,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.3605649173259735,
+          0.0
+        ],
+        [
+          -0.40635600686073303,
+          0.31349197030067444,
+          0.339220255613327
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u2-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 388440,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.3607701361179352,
+          0.0
+        ],
+        [
+          -0.40651044249534607,
+          0.309878945350647,
+          0.339220255613327
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u2-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 524900,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.3605649173259735,
+          0.0
+        ],
+        [
+          -0.4065999984741211,
+          0.3142341077327728,
+          0.339220255613327
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u2-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 434440,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.3605649173259735,
+          0.0
+        ],
+        [
+          -0.40635600686073303,
+          0.31349197030067444,
+          0.339220255613327
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u2-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 388400,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.3607701361179352,
+          0.0
+        ],
+        [
+          -0.4063798189163208,
+          0.309878945350647,
+          0.339220255613327
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u4-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 524904,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.39062902331352234,
+          0.0
+        ],
+        [
+          0.4069214165210724,
+          0.3888228237628937,
+          0.4889793395996094
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u4-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 434220,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          0.4069899320602417,
+          0.3888228237628937,
+          0.48857277631759644
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u4-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 388280,
+      "bounds_blender_m": [
+        [
+          -1.2338614463806152,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          0.40735524892807007,
+          0.3892878293991089,
+          0.4883665144443512
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u4-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 524904,
+      "bounds_blender_m": [
+        [
+          -1.2401853799819946,
+          -0.39062902331352234,
+          0.0
+        ],
+        [
+          0.4069158434867859,
+          0.38882315158843994,
+          0.4889793395996094
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u4-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 433944,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.38476985692977905,
+          0.0
+        ],
+        [
+          0.40701302886009216,
+          0.38882315158843994,
+          0.48857277631759644
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u4-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 388208,
+      "bounds_blender_m": [
+        [
+          -1.2338614463806152,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          0.4077681005001068,
+          0.3892878293991089,
+          0.48859086632728577
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u6-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521296,
+      "bounds_blender_m": [
+        [
+          -1.2376817464828491,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          1.2432947158813477,
+          0.38933807611465454,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u6-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431976,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          1.2440822124481201,
+          0.39351359009742737,
+          0.4886532127857208
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u6-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386644,
+      "bounds_blender_m": [
+        [
+          -1.2286185026168823,
+          -0.3774494230747223,
+          0.0
+        ],
+        [
+          1.2409802675247192,
+          0.3902054727077484,
+          0.49168986082077026
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u6-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521096,
+      "bounds_blender_m": [
+        [
+          -1.2376817464828491,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          1.2432947158813477,
+          0.38933807611465454,
+          0.48843082785606384
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u6-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431812,
+      "bounds_blender_m": [
+        [
+          -1.2373270988464355,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          1.2440822124481201,
+          0.39351359009742737,
+          0.4886532127857208
+        ]
+      ]
+    },
+    {
+      "file": "silver_vein-u6-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386608,
+      "bounds_blender_m": [
+        [
+          -1.2286185026168823,
+          -0.3774494230747223,
+          0.0
+        ],
+        [
+          1.2409802675247192,
+          0.38544633984565735,
+          0.4861582815647125
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u2-cold-lod0.glb",
+      "triangles": 5976,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 525032,
+      "bounds_blender_m": [
+        [
+          -1.2401868104934692,
+          -0.3588779866695404,
+          0.0
+        ],
+        [
+          -0.40659743547439575,
+          0.31736406683921814,
+          0.3392447233200073
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u2-cold-lod1.glb",
+      "triangles": 2575,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 21,
+      "uv": true,
+      "colour": true,
+      "bytes": 434456,
+      "bounds_blender_m": [
+        [
+          -1.2401868104934692,
+          -0.3588779866695404,
+          0.0
+        ],
+        [
+          -0.4063698351383209,
+          0.31736406683921814,
+          0.3392447233200073
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u2-cold-lod2.glb",
+      "triangles": 875,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 21,
+      "uv": true,
+      "colour": true,
+      "bytes": 388564,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.3611021041870117,
+          0.0
+        ],
+        [
+          -0.40651917457580566,
+          0.3191237449645996,
+          0.3392447233200073
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u2-cracked-lod0.glb",
+      "triangles": 5976,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 18,
+      "uv": true,
+      "colour": true,
+      "bytes": 525072,
+      "bounds_blender_m": [
+        [
+          -1.2401868104934692,
+          -0.3588779866695404,
+          0.0
+        ],
+        [
+          -0.40659743547439575,
+          0.31736406683921814,
+          0.3392447233200073
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u2-cracked-lod1.glb",
+      "triangles": 2575,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 21,
+      "uv": true,
+      "colour": true,
+      "bytes": 434300,
+      "bounds_blender_m": [
+        [
+          -1.2401868104934692,
+          -0.3588779866695404,
+          0.0
+        ],
+        [
+          -0.4063698351383209,
+          0.31736406683921814,
+          0.3392447233200073
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u2-cracked-lod2.glb",
+      "triangles": 875,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 21,
+      "uv": true,
+      "colour": true,
+      "bytes": 388524,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.3611021041870117,
+          0.0
+        ],
+        [
+          -0.40637630224227905,
+          0.3191237449645996,
+          0.3392447233200073
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u4-cold-lod0.glb",
+      "triangles": 5975,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 9,
+      "uv": true,
+      "colour": true,
+      "bytes": 524740,
+      "bounds_blender_m": [
+        [
+          -1.2401868104934692,
+          -0.39062902331352234,
+          0.0
+        ],
+        [
+          0.406927227973938,
+          0.38883134722709656,
+          0.4889792203903198
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u4-cold-lod1.glb",
+      "triangles": 2575,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 9,
+      "uv": true,
+      "colour": true,
+      "bytes": 434260,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          0.40732669830322266,
+          0.38883134722709656,
+          0.48857250809669495
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u4-cold-lod2.glb",
+      "triangles": 875,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 9,
+      "uv": true,
+      "colour": true,
+      "bytes": 388244,
+      "bounds_blender_m": [
+        [
+          -1.235788345336914,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          0.40852805972099304,
+          0.3893163502216339,
+          0.48836806416511536
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u4-cracked-lod0.glb",
+      "triangles": 5975,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 9,
+      "uv": true,
+      "colour": true,
+      "bytes": 524704,
+      "bounds_blender_m": [
+        [
+          -1.2401868104934692,
+          -0.39062902331352234,
+          0.0
+        ],
+        [
+          0.406927227973938,
+          0.38883134722709656,
+          0.4889792203903198
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u4-cracked-lod1.glb",
+      "triangles": 2575,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 9,
+      "uv": true,
+      "colour": true,
+      "bytes": 434144,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.38476985692977905,
+          0.0
+        ],
+        [
+          0.40730956196784973,
+          0.38883134722709656,
+          0.48857250809669495
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u4-cracked-lod2.glb",
+      "triangles": 875,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 9,
+      "uv": true,
+      "colour": true,
+      "bytes": 388168,
+      "bounds_blender_m": [
+        [
+          -1.235788345336914,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          0.40895336866378784,
+          0.38185346126556396,
+          0.48859235644340515
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u6-cold-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521288,
+      "bounds_blender_m": [
+        [
+          -1.2376848459243774,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          1.2434324026107788,
+          0.38911157846450806,
+          0.4884306490421295
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u6-cold-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431844,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          1.241768479347229,
+          0.3856140971183777,
+          0.4881179630756378
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u6-cold-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386660,
+      "bounds_blender_m": [
+        [
+          -1.2336373329162598,
+          -0.3774494230747223,
+          3.5267017665319145e-05
+        ],
+        [
+          1.25,
+          0.3814272880554199,
+          0.49022307991981506
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u6-cracked-lod0.glb",
+      "triangles": 5974,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 521012,
+      "bounds_blender_m": [
+        [
+          -1.2376848459243774,
+          -0.3885178864002228,
+          0.0
+        ],
+        [
+          1.2434324026107788,
+          0.38911157846450806,
+          0.4884306490421295
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u6-cracked-lod1.glb",
+      "triangles": 2574,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 431764,
+      "bounds_blender_m": [
+        [
+          -1.2373297214508057,
+          -0.37941470742225647,
+          0.0
+        ],
+        [
+          1.241768479347229,
+          0.3856140971183777,
+          0.4881179630756378
+        ]
+      ]
+    },
+    {
+      "file": "tin_vein-u6-cracked-lod2.glb",
+      "triangles": 874,
+      "degenerate": 0,
+      "boundary_edges_after_weld": 6,
+      "uv": true,
+      "colour": true,
+      "bytes": 386580,
+      "bounds_blender_m": [
+        [
+          -1.2336373329162598,
+          -0.3774494230747223,
+          3.5267017665319145e-05
+        ],
+        [
+          1.25,
+          0.3764045238494873,
+          0.4835185706615448
+        ]
+      ]
+    }
+  ]
+}
