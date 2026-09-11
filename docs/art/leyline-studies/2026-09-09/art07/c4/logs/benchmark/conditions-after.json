@@ -1,0 +1,8 @@
+{
+  "gpu": [
+    "name, driver_version, utilization.gpu [%], memory.used [MiB]",
+    "NVIDIA GeForce RTX 5090, 591.86, 38 %, 1698 MiB"
+  ],
+  "utc": "2026-09-11T02:12:48.2787970Z",
+  "other_renderer_processes": []
+}

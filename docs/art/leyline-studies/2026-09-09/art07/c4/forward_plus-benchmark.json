@@ -1,0 +1,64 @@
+{
+	"cases": [
+		{
+			"all_near": true,
+			"draws": 209.0,
+			"gpu_p50_ms": 0.488999992609024,
+			"gpu_p95_ms": 0.805999994277954,
+			"lighting": 0,
+			"primitives": 2780138.0,
+			"texture_bytes": 207761920.0,
+			"wall_p50_ms": 0.555,
+			"wall_p95_ms": 0.883,
+			"wall_worst_ms": 1.634
+		},
+		{
+			"all_near": true,
+			"draws": 226.0,
+			"gpu_p50_ms": 0.476999998092651,
+			"gpu_p95_ms": 0.797999978065491,
+			"lighting": 2,
+			"primitives": 2780138.0,
+			"texture_bytes": 207761920.0,
+			"wall_p50_ms": 0.545,
+			"wall_p95_ms": 0.874,
+			"wall_worst_ms": 1.526
+		},
+		{
+			"all_near": false,
+			"draws": 226.0,
+			"gpu_p50_ms": 0.365000009536743,
+			"gpu_p95_ms": 0.370999991893768,
+			"lighting": 0,
+			"primitives": 1489999.0,
+			"texture_bytes": 207761920.0,
+			"wall_p50_ms": 0.461,
+			"wall_p95_ms": 0.766,
+			"wall_worst_ms": 1.533
+		},
+		{
+			"all_near": false,
+			"draws": 242.0,
+			"gpu_p50_ms": 0.349999994039536,
+			"gpu_p95_ms": 0.354000002145767,
+			"lighting": 2,
+			"primitives": 1489999.0,
+			"texture_bytes": 207761920.0,
+			"wall_p50_ms": 0.443,
+			"wall_p95_ms": 0.697,
+			"wall_worst_ms": 1.246
+		}
+	],
+	"device": "NVIDIA GeForce RTX 5090",
+	"msaa": 4,
+	"renderer": "forward_plus",
+	"samples": 600,
+	"scope": "Small C4 authored fixed view; no whole-world or lower-spec budget approval.",
+	"shadows": "32m orthogonal; plants off",
+	"viewport": [
+		1440,
+		900
+	],
+	"vsync": false,
+	"warmup": 120
+}

@@ -1,0 +1,727 @@
+{
+  "packed_images": [
+    {
+      "name": "Image_0",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "bytes": 8876901
+    },
+    {
+      "name": "Image_0.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "bytes": 8600757
+    },
+    {
+      "name": "Image_0.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "bytes": 8600757
+    },
+    {
+      "name": "Image_0.003",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "bytes": 8600757
+    },
+    {
+      "name": "Image_1",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "bytes": 615731
+    },
+    {
+      "name": "Image_1.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "bytes": 4494973
+    },
+    {
+      "name": "Image_1.002",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "bytes": 4494973
+    },
+    {
+      "name": "Image_1.003",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "bytes": 4494973
+    }
+  ],
+  "independent_scar_vertex_displacement_m": 0.04500000058362881,
+  "models": {
+    "ash-a-lod0": {
+      "triangles": 23996,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 26834,
+      "bounds_blender_m": [
+        [
+          -0.7839823365211487,
+          -0.34399938583374023,
+          0.0
+        ],
+        [
+          0.5445123910903931,
+          1.0885297060012817,
+          4.400596618652344
+        ]
+      ],
+      "bytes": 10514512,
+      "body_band_radius_m": 0.28072572560345255
+    },
+    "ash-a-lod1": {
+      "triangles": 7996,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 12594,
+      "bounds_blender_m": [
+        [
+          -0.780225396156311,
+          -0.34644681215286255,
+          0.0
+        ],
+        [
+          0.5467097759246826,
+          1.0924605131149292,
+          4.402958869934082
+        ]
+      ],
+      "bytes": 9920712,
+      "body_band_radius_m": 0.2807208321695948
+    },
+    "ash-a-lod2": {
+      "triangles": 3338,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 5800,
+      "bounds_blender_m": [
+        [
+          -0.791835606098175,
+          -0.32353582978248596,
+          0.0
+        ],
+        [
+          0.485569030046463,
+          1.072633147239685,
+          4.195047855377197
+        ]
+      ],
+      "bytes": 9691028,
+      "body_band_radius_m": 0.26756946347829336
+    },
+    "ash-altered-lod0": {
+      "triangles": 23996,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 26834,
+      "bounds_blender_m": [
+        [
+          -0.7839823365211487,
+          -0.34399938583374023,
+          0.0
+        ],
+        [
+          0.5445123910903931,
+          1.0885297060012817,
+          4.400596618652344
+        ]
+      ],
+      "bytes": 10733764,
+      "body_band_radius_m": 0.28072572560345255
+    },
+    "ash-altered-lod1": {
+      "triangles": 7996,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 12594,
+      "bounds_blender_m": [
+        [
+          -0.780225396156311,
+          -0.34644681215286255,
+          0.0
+        ],
+        [
+          0.5467097759246826,
+          1.0924605131149292,
+          4.402958869934082
+        ]
+      ],
+      "bytes": 10015516,
+      "body_band_radius_m": 0.2807208321695948
+    },
+    "ash-altered-lod2": {
+      "triangles": 3338,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 5800,
+      "bounds_blender_m": [
+        [
+          -0.791835606098175,
+          -0.32353582978248596,
+          0.0
+        ],
+        [
+          0.485569030046463,
+          1.072633147239685,
+          4.195047855377197
+        ]
+      ],
+      "bytes": 9735400,
+      "body_band_radius_m": 0.25886232310799356
+    },
+    "ash-b-lod0": {
+      "triangles": 23996,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 26834,
+      "bounds_blender_m": [
+        [
+          -0.9524054527282715,
+          -0.26847943663597107,
+          0.0
+        ],
+        [
+          0.6130837798118591,
+          0.8968119025230408,
+          4.400596618652344
+        ]
+      ],
+      "bytes": 10514512,
+      "body_band_radius_m": 0.28072572560345255
+    },
+    "ash-b-lod1": {
+      "triangles": 7996,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 12594,
+      "bounds_blender_m": [
+        [
+          -0.9532616138458252,
+          -0.270516037940979,
+          0.0
+        ],
+        [
+          0.6165139675140381,
+          0.8985406160354614,
+          4.402958869934082
+        ]
+      ],
+      "bytes": 9920712,
+      "body_band_radius_m": 0.2807208321695948
+    },
+    "ash-b-lod2": {
+      "triangles": 3338,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 5800,
+      "bounds_blender_m": [
+        [
+          -0.9580680727958679,
+          -0.2508116662502289,
+          0.0
+        ],
+        [
+          0.535149872303009,
+          0.8963961601257324,
+          4.195047855377197
+        ]
+      ],
+      "bytes": 9691032,
+      "body_band_radius_m": 0.26756946347829336
+    },
+    "ash-felled-a-lod0": {
+      "triangles": 20503,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 22873,
+      "bounds_blender_m": [
+        [
+          -1.9802982807159424,
+          -0.34399938583374023,
+          0.0
+        ],
+        [
+          1.9802982807159424,
+          1.0885297060012817,
+          1.3284947872161865
+        ]
+      ],
+      "bytes": 10366520
+    },
+    "ash-felled-a-lod1": {
+      "triangles": 7269,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 11241,
+      "bounds_blender_m": [
+        [
+          -1.9814794063568115,
+          -0.34644681215286255,
+          0.0
+        ],
+        [
+          1.9814794063568115,
+          1.0924605131149292,
+          1.3269351720809937
+        ]
+      ],
+      "bytes": 9877896
+    },
+    "ash-felled-a-lod2": {
+      "triangles": 3217,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 5493,
+      "bounds_blender_m": [
+        [
+          -1.8775238990783691,
+          -0.32353582978248596,
+          0.0
+        ],
+        [
+          1.8775238990783691,
+          1.072633147239685,
+          1.2774046659469604
+        ]
+      ],
+      "bytes": 9682276
+    },
+    "ash-felled-b-lod0": {
+      "triangles": 20503,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 22873,
+      "bounds_blender_m": [
+        [
+          -1.9802982807159424,
+          -0.26847943663597107,
+          0.0
+        ],
+        [
+          1.9802982807159424,
+          0.8968119025230408,
+          1.5654892921447754
+        ]
+      ],
+      "bytes": 10366524
+    },
+    "ash-felled-b-lod1": {
+      "triangles": 7269,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 11241,
+      "bounds_blender_m": [
+        [
+          -1.9814794063568115,
+          -0.270516037940979,
+          0.0
+        ],
+        [
+          1.9814794063568115,
+          0.8985406160354614,
+          1.5697755813598633
+        ]
+      ],
+      "bytes": 9877892
+    },
+    "ash-felled-b-lod2": {
+      "triangles": 3217,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 5493,
+      "bounds_blender_m": [
+        [
+          -1.8775238990783691,
+          -0.2508116662502289,
+          0.0
+        ],
+        [
+          1.8775238990783691,
+          0.8963961601257324,
+          1.493217945098877
+        ]
+      ],
+      "bytes": 9682272
+    },
+    "ash-short-lod0": {
+      "triangles": 20706,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 23398,
+      "bounds_blender_m": [
+        [
+          -0.5896486639976501,
+          -0.34399938583374023,
+          0.0
+        ],
+        [
+          0.5445123910903931,
+          0.931837797164917,
+          3.299999952316284
+        ]
+      ],
+      "bytes": 10379640,
+      "body_band_radius_m": 0.28072572560345255
+    },
+    "ash-short-lod1": {
+      "triangles": 6970,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 10954,
+      "bounds_blender_m": [
+        [
+          -0.5887817740440369,
+          -0.34644681215286255,
+          0.0
+        ],
+        [
+          0.5467097759246826,
+          0.9261708855628967,
+          3.299999952316284
+        ]
+      ],
+      "bytes": 9866176,
+      "body_band_radius_m": 0.2807208321695948
+    },
+    "ash-short-lod2": {
+      "triangles": 2985,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 5179,
+      "bounds_blender_m": [
+        [
+          -0.6590262055397034,
+          -0.32353582978248596,
+          0.0
+        ],
+        [
+          0.485569030046463,
+          0.9135841727256775,
+          3.299999952316284
+        ]
+      ],
+      "bytes": 9671084,
+      "body_band_radius_m": 0.26756946347829336
+    },
+    "ash-stump-lod0": {
+      "triangles": 4649,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 5341,
+      "bounds_blender_m": [
+        [
+          -0.21773849427700043,
+          -0.2582843601703644,
+          0.0
+        ],
+        [
+          0.21846510469913483,
+          0.2585783004760742,
+          0.41999998688697815
+        ]
+      ],
+      "bytes": 9695292,
+      "body_band_radius_m": 0.2636162089820972
+    },
+    "ash-stump-lod1": {
+      "triangles": 1443,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 2247,
+      "bounds_blender_m": [
+        [
+          -0.2156893014907837,
+          -0.2560463547706604,
+          0.0
+        ],
+        [
+          0.2173965722322464,
+          0.25779178738594055,
+          0.41999998688697815
+        ]
+      ],
+      "bytes": 9572048,
+      "body_band_radius_m": 0.26430699538526503
+    },
+    "ash-stump-lod2": {
+      "triangles": 467,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 785,
+      "bounds_blender_m": [
+        [
+          -0.1981905996799469,
+          -0.2175179421901703,
+          0.0
+        ],
+        [
+          0.19340504705905914,
+          0.23052877187728882,
+          0.42000001668930054
+        ]
+      ],
+      "bytes": 9522212,
+      "body_band_radius_m": 0.25886232310799356
+    },
+    "boulder-full-lod0": {
+      "triangles": 11980,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 21248,
+      "bounds_blender_m": [
+        [
+          -0.6647867560386658,
+          -0.5027679204940796,
+          -9.369492772748345e-07
+        ],
+        [
+          0.6800000071525574,
+          0.5799999833106995,
+          0.9215999841690063
+        ]
+      ],
+      "bytes": 4014548
+    },
+    "rock-shelf-lod0": {
+      "triangles": 11981,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 20977,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -8.326172746819793e-07
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 4006768
+    },
+    "scrub-lod0": {
+      "triangles": 32091,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 43331,
+      "bounds_blender_m": [
+        [
+          -0.6892962455749512,
+          -0.427778422832489,
+          0.0
+        ],
+        [
+          0.6947162747383118,
+          0.42677122354507446,
+          0.6743756532669067
+        ]
+      ],
+      "bytes": 14768128
+    },
+    "scrub-lod1": {
+      "triangles": 13762,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 21698,
+      "bounds_blender_m": [
+        [
+          -0.6844586133956909,
+          -0.4296366572380066,
+          0.0
+        ],
+        [
+          0.6858798265457153,
+          0.429281622171402,
+          0.6715823411941528
+        ]
+      ],
+      "bytes": 13923484
+    },
+    "scrub-lod2": {
+      "triangles": 9703,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 15305,
+      "bounds_blender_m": [
+        [
+          -0.7044451236724854,
+          -0.36222943663597107,
+          0.0
+        ],
+        [
+          0.7598072290420532,
+          0.301073282957077,
+          0.6717947721481323
+        ]
+      ],
+      "bytes": 13691076
+    },
+    "seed-grass-lod0": {
+      "triangles": 806,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 750,
+      "bounds_blender_m": [
+        [
+          -0.4497504234313965,
+          -0.44770151376724243,
+          0.0014883991098031402
+        ],
+        [
+          0.47063255310058594,
+          0.456953227519989,
+          0.7020571231842041
+        ]
+      ],
+      "bytes": 45652,
+      "seedhead_attachment_roots": 20,
+      "max_seedhead_stem_distance_m": 0.0007975384942255914
+    },
+    "seed-grass-lod1": {
+      "triangles": 554,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 498,
+      "bounds_blender_m": [
+        [
+          -0.4497504234313965,
+          -0.44770151376724243,
+          0.0014883991098031402
+        ],
+        [
+          0.47063255310058594,
+          0.456953227519989,
+          0.7020571231842041
+        ]
+      ],
+      "bytes": 33072,
+      "seedhead_attachment_roots": 20,
+      "max_seedhead_stem_distance_m": 0.0007975384942255914
+    },
+    "seed-grass-lod2": {
+      "triangles": 386,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 330,
+      "bounds_blender_m": [
+        [
+          -0.4497504234313965,
+          -0.44770151376724243,
+          0.0014883991098031402
+        ],
+        [
+          0.47063255310058594,
+          0.456953227519989,
+          0.7020571231842041
+        ]
+      ],
+      "bytes": 24668,
+      "seedhead_attachment_roots": 20,
+      "max_seedhead_stem_distance_m": 0.0007975384942255914
+    },
+    "talus-pebbles-lod0": {
+      "triangles": 3996,
+      "surfaces": 8,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 262,
+      "bounds_blender_m": [
+        [
+          -1.1602790355682373,
+          -0.5230766534805298,
+          -2.0554681157136656e-07
+        ],
+        [
+          1.1592295169830322,
+          0.49178546667099,
+          0.20221340656280518
+        ]
+      ],
+      "bytes": 3391052
+    },
+    "thorn-lod0": {
+      "triangles": 2828,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 464,
+      "bounds_blender_m": [
+        [
+          -0.5147697925567627,
+          -0.3287922143936157,
+          -0.001281593693420291
+        ],
+        [
+          0.5514735579490662,
+          0.23106177151203156,
+          0.4212612211704254
+        ]
+      ],
+      "bytes": 98416
+    },
+    "thorn-lod1": {
+      "triangles": 1566,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 232,
+      "bounds_blender_m": [
+        [
+          -0.5147697925567627,
+          -0.3287922143936157,
+          -0.001281593693420291
+        ],
+        [
+          0.5504568219184875,
+          0.23106177151203156,
+          0.41121143102645874
+        ]
+      ],
+      "bytes": 52948
+    },
+    "thorn-lod2": {
+      "triangles": 1450,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "boundary_edges_in_export_charts": 174,
+      "bounds_blender_m": [
+        [
+          -0.5147697925567627,
+          -0.3287922143936157,
+          -0.001281593693420291
+        ],
+        [
+          0.5447742342948914,
+          0.23106177151203156,
+          0.41121143102645874
+        ]
+      ],
+      "bytes": 48424
+    }
+  }
+}

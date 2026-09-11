@@ -1,0 +1,22 @@
+{
+  "finished_utc": "2026-09-11T02:25:51.1886106Z",
+  "seconds": 4.6591277,
+  "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+  "started_utc": "2026-09-11T02:25:46.5248436Z",
+  "arguments": [
+    "--background",
+    "--threads",
+    "8",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/tools/wroughtwild-art07/c4/audit.py",
+    "--",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-v01/models",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-checks-v01/audit.json"
+  ],
+  "exit": 0,
+  "pid": 40636,
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\user",
+  "gpu_slot": false
+}

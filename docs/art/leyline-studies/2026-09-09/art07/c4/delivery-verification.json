@@ -1,0 +1,462 @@
+{
+  "canonical_path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\handoff-v03",
+  "manifest_sha256": "0b37d8e749a4eefc17042374226df1d14b5dad84b5769e65a9a47a3ba1c7a724",
+  "verified_canonical_files_after_replay": 2253,
+  "canonical_bytes": 1304222141,
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01",
+  "fresh_models_equal": true,
+  "fresh_packed_images_equal": true,
+  "space_input": {
+    "materials": 61,
+    "paused_frames": 16,
+    "resume": true,
+    "space_input": true
+  },
+  "combined_evidence": {
+    "forward_plus": {
+      "review_checks": 406553,
+      "native_checks": {
+        "flow": 80,
+        "partial-restart": 22,
+        "final-restart": 22
+      },
+      "route_m": 36.3827438354492,
+      "supported_samples": 910,
+      "motion": {
+        "pulse_maximum_changed_fraction_gt8": 0.03464930555555556,
+        "scar_host_maximum_changed_fraction_gt8": 0.21333673469387754,
+        "wind_maximum_changed_fraction_gt8": 0.057953125
+      },
+      "pause_last_ten_identical": true,
+      "benchmark": {
+        "cases": [
+          {
+            "all_near": true,
+            "draws": 209.0,
+            "gpu_p50_ms": 0.488999992609024,
+            "gpu_p95_ms": 0.805999994277954,
+            "lighting": 0,
+            "primitives": 2780138.0,
+            "texture_bytes": 207761920.0,
+            "wall_p50_ms": 0.555,
+            "wall_p95_ms": 0.883,
+            "wall_worst_ms": 1.634
+          },
+          {
+            "all_near": true,
+            "draws": 226.0,
+            "gpu_p50_ms": 0.476999998092651,
+            "gpu_p95_ms": 0.797999978065491,
+            "lighting": 2,
+            "primitives": 2780138.0,
+            "texture_bytes": 207761920.0,
+            "wall_p50_ms": 0.545,
+            "wall_p95_ms": 0.874,
+            "wall_worst_ms": 1.526
+          },
+          {
+            "all_near": false,
+            "draws": 226.0,
+            "gpu_p50_ms": 0.365000009536743,
+            "gpu_p95_ms": 0.370999991893768,
+            "lighting": 0,
+            "primitives": 1489999.0,
+            "texture_bytes": 207761920.0,
+            "wall_p50_ms": 0.461,
+            "wall_p95_ms": 0.766,
+            "wall_worst_ms": 1.533
+          },
+          {
+            "all_near": false,
+            "draws": 242.0,
+            "gpu_p50_ms": 0.349999994039536,
+            "gpu_p95_ms": 0.354000002145767,
+            "lighting": 2,
+            "primitives": 1489999.0,
+            "texture_bytes": 207761920.0,
+            "wall_p50_ms": 0.443,
+            "wall_p95_ms": 0.697,
+            "wall_worst_ms": 1.246
+          }
+        ],
+        "device": "NVIDIA GeForce RTX 5090",
+        "msaa": 4,
+        "renderer": "forward_plus",
+        "samples": 600,
+        "scope": "Small C4 authored fixed view; no whole-world or lower-spec budget approval.",
+        "shadows": "32m orthogonal; plants off",
+        "viewport": [
+          1440,
+          900
+        ],
+        "vsync": false,
+        "warmup": 120
+      }
+    },
+    "gl_compatibility": {
+      "review_checks": 406553,
+      "native_checks": {
+        "flow": 80,
+        "partial-restart": 22,
+        "final-restart": 22
+      },
+      "route_m": 36.3827438354492,
+      "supported_samples": 910,
+      "motion": {
+        "pulse_maximum_changed_fraction_gt8": 0.033877604166666665,
+        "scar_host_maximum_changed_fraction_gt8": 0.2028265306122449,
+        "wind_maximum_changed_fraction_gt8": 0.06041493055555556
+      },
+      "pause_last_ten_identical": true,
+      "benchmark": {
+        "cases": [
+          {
+            "all_near": true,
+            "draws": 590.0,
+            "gpu_p50_ms": 0.426999986171722,
+            "gpu_p95_ms": 0.433999985456467,
+            "lighting": 0,
+            "primitives": 2780138.0,
+            "texture_bytes": 92409481.0,
+            "wall_p50_ms": 0.659,
+            "wall_p95_ms": 0.732,
+            "wall_worst_ms": 0.956
+          },
+          {
+            "all_near": true,
+            "draws": 590.0,
+            "gpu_p50_ms": 0.412000000476837,
+            "gpu_p95_ms": 0.418000012636185,
+            "lighting": 2,
+            "primitives": 2780138.0,
+            "texture_bytes": 92409481.0,
+            "wall_p50_ms": 0.685,
+            "wall_p95_ms": 0.823,
+            "wall_worst_ms": 1.319
+          },
+          {
+            "all_near": false,
+            "draws": 590.0,
+            "gpu_p50_ms": 0.293999999761581,
+            "gpu_p95_ms": 0.29899999499321,
+            "lighting": 0,
+            "primitives": 1489999.0,
+            "texture_bytes": 92409481.0,
+            "wall_p50_ms": 0.698,
+            "wall_p95_ms": 0.847,
+            "wall_worst_ms": 1.206
+          },
+          {
+            "all_near": false,
+            "draws": 590.0,
+            "gpu_p50_ms": 0.279000014066696,
+            "gpu_p95_ms": 0.284999996423721,
+            "lighting": 2,
+            "primitives": 1489999.0,
+            "texture_bytes": 92409481.0,
+            "wall_p50_ms": 0.704,
+            "wall_p95_ms": 0.862,
+            "wall_worst_ms": 1.149
+          }
+        ],
+        "device": "NVIDIA GeForce RTX 5090",
+        "msaa": 4,
+        "renderer": "gl_compatibility",
+        "samples": 600,
+        "scope": "Small C4 authored fixed view; no whole-world or lower-spec budget approval.",
+        "shadows": "32m orthogonal; plants off",
+        "viewport": [
+          1440,
+          900
+        ],
+        "vsync": false,
+        "warmup": 120
+      }
+    }
+  },
+  "fresh_job_records": {
+    "audit.log.job.json": {
+      "finished_utc": "2026-09-11T02:25:51.1886106Z",
+      "seconds": 4.6591277,
+      "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+      "started_utc": "2026-09-11T02:25:46.5248436Z",
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/tools/wroughtwild-art07/c4/audit.py",
+        "--",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-v01/models",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-checks-v01/audit.json"
+      ],
+      "exit": 0,
+      "pid": 40636,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\user",
+      "gpu_slot": false
+    },
+    "compatibility-capture.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:09.4259136Z",
+      "seconds": 7.1268668,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:26:02.2989193Z",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-v01/review",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--capture"
+      ],
+      "exit": 0,
+      "pid": 16272,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\user",
+      "gpu_slot": true
+    },
+    "native-import.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:02.2718194Z",
+      "seconds": 11.0647562,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:25:51.2068737Z",
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-v01/native/game",
+        "--import"
+      ],
+      "exit": 0,
+      "pid": 38476,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\user",
+      "gpu_slot": false
+    },
+    "pause.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:39.7330167Z",
+      "seconds": 1.7585685,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:26:37.9743383Z",
+      "arguments": [
+        "--headless",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-v01/review",
+        "--script",
+        "res://verify_pause.gd"
+      ],
+      "exit": 0,
+      "pid": 26348,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\user",
+      "gpu_slot": false
+    },
+    "native\\forward_plus-final.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:27.4167168Z",
+      "seconds": 2.9368095,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:26:24.4797830Z",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\native\\game",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c4/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "exit": 0,
+      "pid": 38868,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\native\\user",
+      "gpu_slot": true
+    },
+    "native\\forward_plus-flow.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:21.6209845Z",
+      "seconds": 12.1599044,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:26:09.4609527Z",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\native\\game",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c4/native_review.tscn"
+      ],
+      "exit": 0,
+      "pid": 22560,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\native\\user",
+      "gpu_slot": true
+    },
+    "native\\forward_plus-partial.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:24.4647165Z",
+      "seconds": 2.8276911,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:26:21.6369107Z",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\native\\game",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c4/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "exit": 0,
+      "pid": 25108,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\native\\user",
+      "gpu_slot": true
+    },
+    "native\\gl_compatibility-final.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:37.9655925Z",
+      "seconds": 2.4835155,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:26:35.4819646Z",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\native\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c4/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "exit": 0,
+      "pid": 21876,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\native\\user",
+      "gpu_slot": true
+    },
+    "native\\gl_compatibility-flow.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:32.8866151Z",
+      "seconds": 5.4539392,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:26:27.4325676Z",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\native\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c4/native_review.tscn"
+      ],
+      "exit": 0,
+      "pid": 36056,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\native\\user",
+      "gpu_slot": true
+    },
+    "native\\gl_compatibility-partial.log.job.json": {
+      "finished_utc": "2026-09-11T02:26:35.4677999Z",
+      "seconds": 2.5656512,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:26:32.9020323Z",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\native\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c4/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "exit": 0,
+      "pid": 39864,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\native\\user",
+      "gpu_slot": true
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\import.job.json": {
+      "seconds": 5.5577169,
+      "pid": 26196,
+      "finished_utc": "2026-09-11T02:24:54.5591161Z",
+      "gpu_slot": true,
+      "exit": 0,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\review",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--headless",
+        "--editor",
+        "--import"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:24:48.9958597Z",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\isolated-user"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\review.job.json": {
+      "seconds": 12.7756606,
+      "pid": 32672,
+      "finished_utc": "2026-09-11T02:25:07.3498975Z",
+      "gpu_slot": true,
+      "exit": 0,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\review",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--capture"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "started_utc": "2026-09-11T02:24:54.5740060Z",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-v01\\isolated-user"
+    }
+  },
+  "prerequisites_unchanged": {
+    "b1": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02",
+      "manifest_sha256": "00a244253614b8c58213a15f929e48fd65c9aec0bb3489600646497bfcbaf7d0",
+      "verified_files": 1533,
+      "bytes": 1582338594
+    },
+    "b2": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff",
+      "manifest_sha256": "bb4a50ea353a1fdb964542e46afc3f1549f7e45b3b004ab7b4130ae1a7d50e62",
+      "verified_files": 274,
+      "bytes": 335584773
+    },
+    "b3": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02",
+      "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+      "verified_files": 1541,
+      "bytes": 693973744
+    },
+    "art02": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\emberroot-handoff",
+      "manifest_sha256": "0a4f26a74335bcceddd2d31f9df3774d415f5aca6d982e9cc5305faf6ac9bba8",
+      "verified_files": 105,
+      "bytes": 832730182
+    }
+  },
+  "original_source_hashes_unchanged": true,
+  "replay_scope": "Fresh copy reruns packed-source/GLB audit, both-renderer static captures/contact checks, actual Space pause, and native flow/partial/final reloads. Motion/walk sequences and quiet benchmarks were validated before packaging and transferred with exact hashes; those jobs are not repeated or represented as fresh measurements."
+}

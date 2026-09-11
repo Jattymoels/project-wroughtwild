@@ -1,0 +1,114 @@
+{
+  "base": "f5e481a28fb032a7d4d7ebec1e3e01cc1aca0bc9",
+  "model_manifest": {
+    "runtime": "pwilkin/trellis.cpp",
+    "version": "v0.6.0",
+    "release_target_commit": "06fc9000719c912ddc4929d21db075972c26ac3e",
+    "model_repository": "ilintar/trellis2-gguf",
+    "model_revision": "a57397bd3d351599d9729fc144b3f87c3f87d65b",
+    "precision": "f16 conversion",
+    "packages": [
+      {
+        "name": "trellis-cuda-windows-x64.zip",
+        "bytes": 728541568,
+        "sha256": "4d08ab27e83094035fd8349aaf34d3460738df0466ef9c4991ddd958c0344bc2",
+        "url": "https://github.com/pwilkin/trellis.cpp/releases/download/v0.6.0/trellis-cuda-windows-x64.zip"
+      },
+      {
+        "name": "trellis-studio-windows-x64-portable.zip",
+        "bytes": 1666448,
+        "sha256": "5260072bf6af5ab12157709475cea15d20f05309c5c77cd71905bd443a3cb4d4",
+        "url": "https://github.com/pwilkin/trellis.cpp/releases/download/v0.6.0/trellis-studio-windows-x64-portable.zip"
+      }
+    ],
+    "weights": [
+      {
+        "name": "birefnet.gguf",
+        "bytes": 882749024,
+        "sha256": "10c5dd4dcac904cf81c9a16180eb66f167dd52ab55867f54a44567b0b2babbc1",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/birefnet.gguf"
+      },
+      {
+        "name": "dinov3.gguf",
+        "bytes": 606773440,
+        "sha256": "b2e84087aebeb06440da4f5970413153f7f27f71ede7bab993e82accd839d936",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/dinov3.gguf"
+      },
+      {
+        "name": "shape_dec.gguf",
+        "bytes": 948745344,
+        "sha256": "d3230b649031b55728da2d8818f092eab9ad6f1e72fd01f6cbff6bfada5d7d47",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/shape_dec.gguf"
+      },
+      {
+        "name": "shape_flow_1024.gguf",
+        "bytes": 2586636032,
+        "sha256": "7d0e9903bf132a5d78f289eaa2fa4050bcd52c689716406cbf66b76cdfa4656c",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/shape_flow_1024.gguf"
+      },
+      {
+        "name": "shape_flow_512.gguf",
+        "bytes": 2586636032,
+        "sha256": "fef397f3600e2fab327a98b3edd3cc8377e9741eef870f3ea3f40235875828fb",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/shape_flow_512.gguf"
+      },
+      {
+        "name": "ss_dec.gguf",
+        "bytes": 147379392,
+        "sha256": "2790b5eecb261cc877d9bf175ce2bd6dd48cd65be8c042c5f5bc023dfca01cf7",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/ss_dec.gguf"
+      },
+      {
+        "name": "ss_flow.gguf",
+        "bytes": 2586488480,
+        "sha256": "1dfbef1b80ddea422a6189ff9ac29a244c4482cfbaa01870a0c0ea76d3fb9ae6",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/ss_flow.gguf"
+      },
+      {
+        "name": "tex_dec.gguf",
+        "bytes": 948713888,
+        "sha256": "858d1e0079254e1d1f0596d7fa3a747d21bfe80f83d810e735a1e0b9db550322",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/tex_dec.gguf"
+      },
+      {
+        "name": "tex_flow_1024.gguf",
+        "bytes": 2586734336,
+        "sha256": "c0a51917c1e5a9dad4d8a49cdf47553e21fd47716d46e53c5f44fcc7bf7f3af1",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/tex_flow_1024.gguf"
+      },
+      {
+        "name": "tex_flow_512.gguf",
+        "bytes": 2586734336,
+        "sha256": "0e81b8213191369dc023eb270650f0ccded29f39bf0bbb7a1fe5d4bcefc15b79",
+        "url": "https://huggingface.co/ilintar/trellis2-gguf/resolve/a57397bd3d351599d9729fc144b3f87c3f87d65b/tex_flow_512.gguf"
+      }
+    ]
+  },
+  "tools": {
+    "trellis": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\runtime\\trellis-cli.exe",
+      "sha256": "e3d075612388a42fcb9bea73377feac4149e3a463cff2d2e11b24975e85d427d",
+      "bytes": 2732544
+    },
+    "blender": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+      "sha256": "42c096b04d79bd0ff234429f67178881047c1c370d25ad3aef2766f3eeac4024",
+      "bytes": 96051672
+    },
+    "godot": {
+      "path": "C:\\Users\\Matty\\Godot\\Godot_v4.5-stable_win64_console.exe",
+      "sha256": "7b77f3735dec3a32bb20af29cc1900583795d1de82a14f23d23350a88ec85faf",
+      "bytes": 197640
+    },
+    "input": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\docs\\art\\leyline-studies\\2026-09-09\\art07\\c4\\ash-input-v01.png",
+      "sha256": "22e8e7c98b9e321afe41e712a7ed9b856a30a78ef2596e3b1d7de647fe233dec",
+      "bytes": 1610552
+    },
+    "prompt": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\tools\\wroughtwild-art07\\c4\\ash-prompt.txt",
+      "sha256": "63915cbfa22f0fbaa7905d6d0d61ef2a1086a6f2aa23d5770a31ff0772ab0253",
+      "bytes": 1477
+    }
+  }
+}

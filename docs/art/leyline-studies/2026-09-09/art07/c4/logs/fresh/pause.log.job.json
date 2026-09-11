@@ -1,0 +1,17 @@
+{
+  "finished_utc": "2026-09-11T02:26:39.7330167Z",
+  "seconds": 1.7585685,
+  "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+  "started_utc": "2026-09-11T02:26:37.9743383Z",
+  "arguments": [
+    "--headless",
+    "--path",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-v01/review",
+    "--script",
+    "res://verify_pause.gd"
+  ],
+  "exit": 0,
+  "pid": 26348,
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\user",
+  "gpu_slot": false
+}

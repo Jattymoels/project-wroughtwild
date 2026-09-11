@@ -1,0 +1,17 @@
+{
+  "finished_utc": "2026-09-11T02:26:02.2718194Z",
+  "seconds": 11.0647562,
+  "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+  "started_utc": "2026-09-11T02:25:51.2068737Z",
+  "arguments": [
+    "--headless",
+    "--editor",
+    "--path",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-v01/native/game",
+    "--import"
+  ],
+  "exit": 0,
+  "pid": 38476,
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\user",
+  "gpu_slot": false
+}

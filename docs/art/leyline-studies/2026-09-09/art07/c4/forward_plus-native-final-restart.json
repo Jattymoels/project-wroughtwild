@@ -1,0 +1,26 @@
+{
+	"ash_wood": 28,
+	"checks": 22,
+	"envelopes": [
+		{
+			"body_position": "(0.0, 1.3, 0.0)",
+			"body_size": "(0.6, 2.6, 0.6)",
+			"drive_presses": 6,
+			"id": "c4_ash_0",
+			"item": "ash_wood",
+			"units": 14,
+			"visual_scale": "(1.0, 1.0, 1.0)"
+		},
+		{
+			"body_position": "(0.0, 1.3, 0.0)",
+			"body_size": "(0.6, 2.6, 0.6)",
+			"drive_presses": 6,
+			"id": "c4_ash_1",
+			"item": "ash_wood",
+			"units": 14,
+			"visual_scale": "(1.0, 1.0, 1.0)"
+		}
+	],
+	"failures": 0,
+	"fixture": "Authored wastes-biome presentation adapter. Actual native _apply_work, fall tween, pickup and SaveManager. Posed collection; not paid campaign play."
+}

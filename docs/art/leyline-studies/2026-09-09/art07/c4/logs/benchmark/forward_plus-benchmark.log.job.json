@@ -1,0 +1,20 @@
+{
+  "seconds": 11.44447,
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\benchmark-v04\\user",
+  "finished_utc": "2026-09-11T02:12:43.3948090Z",
+  "exit": 0,
+  "gpu_slot": true,
+  "arguments": [
+    "--path",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\review-v04",
+    "--rendering-method",
+    "forward_plus",
+    "--audio-driver",
+    "Dummy",
+    "--",
+    "--benchmark"
+  ],
+  "started_utc": "2026-09-11T02:12:31.9474176Z",
+  "pid": 39496,
+  "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe"
+}

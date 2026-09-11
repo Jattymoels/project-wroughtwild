@@ -1,0 +1,162 @@
+{
+  "forward_plus": {
+    "review_checks": 406553,
+    "native_checks": {
+      "flow": 80,
+      "partial-restart": 22,
+      "final-restart": 22
+    },
+    "route_m": 36.3827438354492,
+    "supported_samples": 910,
+    "motion": {
+      "pulse_maximum_changed_fraction_gt8": 0.03464930555555556,
+      "scar_host_maximum_changed_fraction_gt8": 0.21333673469387754,
+      "wind_maximum_changed_fraction_gt8": 0.057953125
+    },
+    "pause_last_ten_identical": true,
+    "benchmark": {
+      "cases": [
+        {
+          "all_near": true,
+          "draws": 209.0,
+          "gpu_p50_ms": 0.488999992609024,
+          "gpu_p95_ms": 0.805999994277954,
+          "lighting": 0,
+          "primitives": 2780138.0,
+          "texture_bytes": 207761920.0,
+          "wall_p50_ms": 0.555,
+          "wall_p95_ms": 0.883,
+          "wall_worst_ms": 1.634
+        },
+        {
+          "all_near": true,
+          "draws": 226.0,
+          "gpu_p50_ms": 0.476999998092651,
+          "gpu_p95_ms": 0.797999978065491,
+          "lighting": 2,
+          "primitives": 2780138.0,
+          "texture_bytes": 207761920.0,
+          "wall_p50_ms": 0.545,
+          "wall_p95_ms": 0.874,
+          "wall_worst_ms": 1.526
+        },
+        {
+          "all_near": false,
+          "draws": 226.0,
+          "gpu_p50_ms": 0.365000009536743,
+          "gpu_p95_ms": 0.370999991893768,
+          "lighting": 0,
+          "primitives": 1489999.0,
+          "texture_bytes": 207761920.0,
+          "wall_p50_ms": 0.461,
+          "wall_p95_ms": 0.766,
+          "wall_worst_ms": 1.533
+        },
+        {
+          "all_near": false,
+          "draws": 242.0,
+          "gpu_p50_ms": 0.349999994039536,
+          "gpu_p95_ms": 0.354000002145767,
+          "lighting": 2,
+          "primitives": 1489999.0,
+          "texture_bytes": 207761920.0,
+          "wall_p50_ms": 0.443,
+          "wall_p95_ms": 0.697,
+          "wall_worst_ms": 1.246
+        }
+      ],
+      "device": "NVIDIA GeForce RTX 5090",
+      "msaa": 4,
+      "renderer": "forward_plus",
+      "samples": 600,
+      "scope": "Small C4 authored fixed view; no whole-world or lower-spec budget approval.",
+      "shadows": "32m orthogonal; plants off",
+      "viewport": [
+        1440,
+        900
+      ],
+      "vsync": false,
+      "warmup": 120
+    }
+  },
+  "gl_compatibility": {
+    "review_checks": 406553,
+    "native_checks": {
+      "flow": 80,
+      "partial-restart": 22,
+      "final-restart": 22
+    },
+    "route_m": 36.3827438354492,
+    "supported_samples": 910,
+    "motion": {
+      "pulse_maximum_changed_fraction_gt8": 0.033877604166666665,
+      "scar_host_maximum_changed_fraction_gt8": 0.2028265306122449,
+      "wind_maximum_changed_fraction_gt8": 0.06041493055555556
+    },
+    "pause_last_ten_identical": true,
+    "benchmark": {
+      "cases": [
+        {
+          "all_near": true,
+          "draws": 590.0,
+          "gpu_p50_ms": 0.426999986171722,
+          "gpu_p95_ms": 0.433999985456467,
+          "lighting": 0,
+          "primitives": 2780138.0,
+          "texture_bytes": 92409481.0,
+          "wall_p50_ms": 0.659,
+          "wall_p95_ms": 0.732,
+          "wall_worst_ms": 0.956
+        },
+        {
+          "all_near": true,
+          "draws": 590.0,
+          "gpu_p50_ms": 0.412000000476837,
+          "gpu_p95_ms": 0.418000012636185,
+          "lighting": 2,
+          "primitives": 2780138.0,
+          "texture_bytes": 92409481.0,
+          "wall_p50_ms": 0.685,
+          "wall_p95_ms": 0.823,
+          "wall_worst_ms": 1.319
+        },
+        {
+          "all_near": false,
+          "draws": 590.0,
+          "gpu_p50_ms": 0.293999999761581,
+          "gpu_p95_ms": 0.29899999499321,
+          "lighting": 0,
+          "primitives": 1489999.0,
+          "texture_bytes": 92409481.0,
+          "wall_p50_ms": 0.698,
+          "wall_p95_ms": 0.847,
+          "wall_worst_ms": 1.206
+        },
+        {
+          "all_near": false,
+          "draws": 590.0,
+          "gpu_p50_ms": 0.279000014066696,
+          "gpu_p95_ms": 0.284999996423721,
+          "lighting": 2,
+          "primitives": 1489999.0,
+          "texture_bytes": 92409481.0,
+          "wall_p50_ms": 0.704,
+          "wall_p95_ms": 0.862,
+          "wall_worst_ms": 1.149
+        }
+      ],
+      "device": "NVIDIA GeForce RTX 5090",
+      "msaa": 4,
+      "renderer": "gl_compatibility",
+      "samples": 600,
+      "scope": "Small C4 authored fixed view; no whole-world or lower-spec budget approval.",
+      "shadows": "32m orthogonal; plants off",
+      "viewport": [
+        1440,
+        900
+      ],
+      "vsync": false,
+      "warmup": 120
+    }
+  }
+}

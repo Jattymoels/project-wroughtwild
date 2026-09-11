@@ -1,0 +1,278 @@
+{
+  "models": [
+    {
+      "source": "ash-a-lod0.glb",
+      "sha256": "f357c7724942c9aff1910f6b66958946d4be51a6c25ab8dc41e4c6f23d4f2329",
+      "geometry_views_preserved": 4,
+      "geometry_bytes": 1020360
+    },
+    {
+      "source": "ash-a-lod1.glb",
+      "sha256": "07eadf081742d26fb55474c3ca573b1c6d5fbb537d2734de2218edaadad9aa92",
+      "geometry_views_preserved": 4,
+      "geometry_bytes": 426568
+    },
+    {
+      "source": "ash-a-lod2.glb",
+      "sha256": "6630498dbb4f21751c3c705e64198bcdd69dfe265a8434defe2a8c035424a262",
+      "geometry_views_preserved": 4,
+      "geometry_bytes": 196892
+    },
+    {
+      "source": "ash-altered-lod0.glb",
+      "sha256": "085e0cec0de1df1b119c33a568c5f5ed891c9da78fe2e428b569aabdebfe4700",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 1239456
+    },
+    {
+      "source": "ash-altered-lod1.glb",
+      "sha256": "d2344ffc909ce356a0966a522cbe5cf5a040d242aeb907f966248a80e89e5bb0",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 521216
+    },
+    {
+      "source": "ash-altered-lod2.glb",
+      "sha256": "bfaa5509fe993c3bb77c5d41b699a9cd76b215c2aad8d38748d23806c839b5ba",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 241108
+    },
+    {
+      "source": "ash-b-lod0.glb",
+      "sha256": "97d9f945407bacdc580136ce722ca4eeaa5f9b748d3fbc25957866923984eedc",
+      "geometry_views_preserved": 4,
+      "geometry_bytes": 1020360
+    },
+    {
+      "source": "ash-b-lod1.glb",
+      "sha256": "73e657149fe7fa6e7ecc7d053be9ca4cfc3cd5d224667c030a7a6fdcf98c86d6",
+      "geometry_views_preserved": 4,
+      "geometry_bytes": 426568
+    },
+    {
+      "source": "ash-b-lod2.glb",
+      "sha256": "8f6c8239a2d9ac28ed3da718cc6b1cdcaef60a3e3d0a4c7fcb3ffdc58c0047b4",
+      "geometry_views_preserved": 4,
+      "geometry_bytes": 196892
+    },
+    {
+      "source": "ash-felled-a-lod0.glb",
+      "sha256": "1e525e5bdf55d632809b42bb86aed87bdf21188b92cb8cab972a30fc91f6c7ed",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 871402
+    },
+    {
+      "source": "ash-felled-a-lod1.glb",
+      "sha256": "1e83bc56535122a1eff55b2fa5d8b2d86800ce9a304ee4511b657e23e5dd383e",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 382782
+    },
+    {
+      "source": "ash-felled-a-lod2.glb",
+      "sha256": "1b09ea2f419fd05ef8a34528d99c5c9189908d6d230df2e5f000d50a37b5b297",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 187174
+    },
+    {
+      "source": "ash-felled-b-lod0.glb",
+      "sha256": "f16e0a77b42ae9a449c6bfc19b93fdeaa27d0b1091f457b8195b2af7555f3a23",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 871402
+    },
+    {
+      "source": "ash-felled-b-lod1.glb",
+      "sha256": "5a40da046e25e57786af7a89259755b63d9381938e331c71b5a694d6965d26b3",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 382782
+    },
+    {
+      "source": "ash-felled-b-lod2.glb",
+      "sha256": "1cab19a54e16caf43109950101031a62bc301ebca7aa949d1970c258ef454afa",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 187174
+    },
+    {
+      "source": "ash-short-lod0.glb",
+      "sha256": "12dcd57df5ce229c822dcdf045042cdad86167072c7de60a485d801285877f15",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 884526
+    },
+    {
+      "source": "ash-short-lod1.glb",
+      "sha256": "0e8e694ee55999b2b1ddf845133b07519939971b8c846279511cdb3db4df8c2f",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 371070
+    },
+    {
+      "source": "ash-short-lod2.glb",
+      "sha256": "67c055f03e52c2ca3ee58a1e3aff997286ed0b351b6893aa3c2938d5e846ca85",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 175992
+    },
+    {
+      "source": "ash-stump-lod0.glb",
+      "sha256": "73d50546a611cc28933de45a946bf73e693e057b5e07ecdba3a60b2ad9954b5c",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 200184
+    },
+    {
+      "source": "ash-stump-lod1.glb",
+      "sha256": "7a4aba161aefac5f8bbe58556b6cf3b9cc52de40c23cff46940b22f789841454",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 76948
+    },
+    {
+      "source": "ash-stump-lod2.glb",
+      "sha256": "1adada39bc9ee8e74bb00febe6067d7425a06c87bc1e9f5e3ffb7843b94f645e",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 27124
+    },
+    {
+      "source": "boulder-full-lod0.glb",
+      "sha256": "8dba29fef7d6f01b6ffeae0edfab67d47b43ef94c85ff26ba129052467f8351c",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 721642
+    },
+    {
+      "source": "rock-shelf-lod0.glb",
+      "sha256": "569338889b942866d288b79a2224f23992cb322eafc8e744e00b84e13795d97b",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 713872
+    },
+    {
+      "source": "scrub-lod0.glb",
+      "sha256": "7b02557e46067d6827eb08b5260a0674ebb5546f7b43d3297de26c9606a421ce",
+      "geometry_views_preserved": 14,
+      "geometry_bytes": 1668604
+    },
+    {
+      "source": "scrub-lod1.glb",
+      "sha256": "285345e60d682702340d4be3d50e30a0cbfd1bde6198f059193cb04ecb13b48e",
+      "geometry_views_preserved": 14,
+      "geometry_bytes": 823940
+    },
+    {
+      "source": "scrub-lod2.glb",
+      "sha256": "e49a39ca7adef71fd8e63e9fb5aab1b25705ac3f3466ced029faa4a6beb76086",
+      "geometry_views_preserved": 14,
+      "geometry_bytes": 591532
+    },
+    {
+      "source": "seed-grass-lod0.glb",
+      "sha256": "b3f3e865bd85555c4b26e719cea310480ac68f9bec3e5c7e2e1ff9310e3585cc",
+      "geometry_views_preserved": 15,
+      "geometry_bytes": 42236
+    },
+    {
+      "source": "seed-grass-lod1.glb",
+      "sha256": "4e21b0ef0e36a425491da7d3a681d6b829d0a00a14914659d3b731623c83ab3d",
+      "geometry_views_preserved": 15,
+      "geometry_bytes": 29636
+    },
+    {
+      "source": "seed-grass-lod2.glb",
+      "sha256": "6cc4be87363fe1eca0bf123789a36f32e591a5208c15f1647f56b3fc6cb7425c",
+      "geometry_views_preserved": 15,
+      "geometry_bytes": 21236
+    },
+    {
+      "source": "talus-pebbles-lod0.glb",
+      "sha256": "f46e07f661887d78f44ad99e08be6dcc80f212cc44fd32bc04a07e7f3240b602",
+      "geometry_views_preserved": 32,
+      "geometry_bytes": 92776
+    },
+    {
+      "source": "thorn-lod0.glb",
+      "sha256": "181a6b9b7c1276ad4a02ad6ee107b1183f031031730d141cd9755b8bb5773f06",
+      "geometry_views_preserved": 10,
+      "geometry_bytes": 95948
+    },
+    {
+      "source": "thorn-lod1.glb",
+      "sha256": "f4f7a1c4f58381771ad24db0f40850ccef21412377866a7f59a343ad73a0d6fc",
+      "geometry_views_preserved": 10,
+      "geometry_bytes": 50492
+    },
+    {
+      "source": "thorn-lod2.glb",
+      "sha256": "0413af6e932115a5a9b9eb7fb324a4687240612e275b6a701e08dd448ee93e3c",
+      "geometry_views_preserved": 10,
+      "geometry_bytes": 45968
+    }
+  ],
+  "textures": {
+    "f968be85946942bf1b839b8e5f19421ef85256e0d8cd19d5fc2241a7cac2206c": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 1910719,
+      "rgba8_mip_bytes": 5592405
+    },
+    "a2ac211bea614b210a985f776eea92651f573ec5039065cfd0abab1fd4567cc2": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 132834,
+      "rgba8_mip_bytes": 5592405
+    },
+    "d267d6c3388bf04dabeb8dcbc1d6383d58bf08f2ff07be30bdceab36aa7e9c5c": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 2287704,
+      "rgba8_mip_bytes": 5592405
+    },
+    "8bd5603cff1c22d648f8e633f1e27d266a311695e89104ae70787c512a5f4796": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 1002688,
+      "rgba8_mip_bytes": 5592405
+    },
+    "9ab2d57db76c2a01c80bc4007c166d0dc10eb2814cbd396012477b81574f19b0": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 1791815,
+      "rgba8_mip_bytes": 5592405
+    },
+    "24140da5838801a572e593392ad1f239abeb5efee93be0a07cda5ad7096fb950": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        2048,
+        2048
+      ],
+      "encoded_bytes": 920274,
+      "rgba8_mip_bytes": 5592405
+    }
+  },
+  "texture_rgba8_mip_bytes": 33554430,
+  "floor_sha256": "3d5b8c97099046eec0f47e4150246f7a83abd0318023b4b680fc05da2a4f69cc"
+}

@@ -1,0 +1,344 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "python_executable": "C:\\Users\\Matty\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "pillow": "12.3.0",
+  "numpy": "2.3.5",
+  "frozen_revision": "f5e481a28fb032a7d4d7ebec1e3e01cc1aca0bc9",
+  "selection": {
+    "kit": "kit-v03",
+    "review": "review-v04",
+    "native": "native-v03",
+    "blender": "blender-v03"
+  },
+  "sources": {
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\ash-raw\\source.glb": {
+      "bytes": 19753988,
+      "sha256": "d486f9143f28b20f0347fad0b1af2e34fd66c9b371aca0407f6e32b9db7e4a27"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\kit-v03\\c4-master.blend": {
+      "bytes": 86958513,
+      "sha256": "4be93a535b86f963180b4281d7f635e21d7288c0955ddeebe1445e81d2773884"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\inspection\\ash-source.blend": {
+      "bytes": 22498132,
+      "sha256": "01e3463cdaa315e8103a86b654ba0ab3f5a0eed77e3c67ca77471fe144e978af"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\native-v03\\game\\bin\\libwroughtwild_sim.windows.x86_64.dll": {
+      "bytes": 7496302,
+      "sha256": "6d8094fc95c0854f9100b161806a11d9fa3a67bb4f870080976bcd8d2e8f2279"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\ash-raw\\source_base.png": {
+      "bytes": 8876901,
+      "sha256": "f3269f57d5ca663aa27a2596420ae1ff140fde60a8db443a3753ec82b6566649"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\ash-raw\\source_cutout.png": {
+      "bytes": 1028009,
+      "sha256": "4a176c23dffbcd8bd50f7e34bdd087f8159a0f840d69501e9a126c4722af0852"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\README.md": {
+      "bytes": 19322,
+      "sha256": "b8707640c6c85b7c7501901fee19b9d4e04eaac63833dbdbbb5018b75fe19a5c"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\DESIGN.md": {
+      "bytes": 12466,
+      "sha256": "7ad604f236f94c9e526d607390efa48564fe4769729f98b5a70ea33fc3fe2235"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\decisions\\registry.md": {
+      "bytes": 85855,
+      "sha256": "5e07992ff6a7419e3aeff5d608f75add86a64cb3772c50198f29dc10e3184f80"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\prototype\\art07-production\\receipts\\b4.md": {
+      "bytes": 17372,
+      "sha256": "8a8f3f1db449552378bce40a544eb9db409fe7c48af69ee6b6d45ec03d90ff38"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\concepts\\environment\\2026-09-09-frontier\\02-habitat-kits.png": {
+      "bytes": 3977458,
+      "sha256": "f57c8b3f0b15b23f32e65dcb71606e74c68c0f40858434ffa78374247cea613d"
+    },
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\references\\environment\\env-002-dense-frontier-original.png": {
+      "bytes": 924019,
+      "sha256": "46ec1329993b1a04cc1dc114f80d0a5e406fe933761640653a458295598fd7dd"
+    }
+  },
+  "current_check_jobs": {
+    "art.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "--script",
+        "tests/art_checks.gd"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 1.3381275,
+      "pid": 9728
+    },
+    "gathering.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/gathering_feedback.tscn"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 1.7731494,
+      "pid": 5056
+    },
+    "loads-restore.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/building_load_boundaries.tscn",
+        "--",
+        "--load-restore-only"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 1.7494838,
+      "pid": 17304
+    },
+    "loads.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/building_load_boundaries.tscn"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 7.1839024,
+      "pid": 30524
+    },
+    "loose-read.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/loose_drop_save.tscn",
+        "--",
+        "--read-checkpoint"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 1.6622664,
+      "pid": 40832
+    },
+    "loose-write.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/loose_drop_save.tscn",
+        "--",
+        "--write-checkpoint"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 1.5728041,
+      "pid": 13632
+    },
+    "materials.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/material_intensive.tscn"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 1.4007971,
+      "pid": 41608
+    },
+    "placement-restore.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/placement_transactions.tscn",
+        "--",
+        "--placement-restore-only"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 1.7792493,
+      "pid": 17792
+    },
+    "placement.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/placement_transactions.tscn"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 2.2168162,
+      "pid": 38812
+    },
+    "save-recovery.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/save_recovery.tscn"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 4.2615025,
+      "pid": 24228
+    },
+    "source-restore.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/living_frontier_flow.tscn",
+        "--",
+        "--lf-restore"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 14.6725483,
+      "pid": 34212
+    },
+    "source-work.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/living_frontier_flow.tscn"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 56.9072638,
+      "pid": 15324
+    },
+    "unit.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "--script",
+        "tests/run_tests.gd"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 4.0843731,
+      "pid": 13916
+    },
+    "world.log.job.json": {
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current\\game",
+        "res://tests/world_intensive.tscn"
+      ],
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\current-checks\\user",
+      "exit": 0,
+      "gpu_slot": false,
+      "seconds": 38.7517131,
+      "pid": 38960
+    }
+  },
+  "native_provenance": {
+    "revision": "f5e481a28fb032a7d4d7ebec1e3e01cc1aca0bc9",
+    "binary_compiled_revision": "f00d4b76274ef2a73c3b6f4a275d2bd3ca0f958d",
+    "game_sim_data_diff_empty": true,
+    "dll_sha256": "6d8094fc95c0854f9100b161806a11d9fa3a67bb4f870080976bcd8d2e8f2279",
+    "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02\\native\\game\\bin\\libwroughtwild_sim.windows.x86_64.dll"
+  },
+  "known_diagnostics": [
+    "Initial image audit did not force lazy packed-image decode; fixed by reading pixels.",
+    "Initial exact float scale assertion detected native lean roundoff; corrected to approximate unit basis plus exact child model scale.",
+    "First candidate review ground winding was reversed; actual ray support check caught it and clockwise front faces restored.",
+    "First composition retained distracting B3 middle UVs and dense bramble; selected source uses near B3 geometry and sparse whole leaves.",
+    "Review-v03 scar camera faced the back; review-v04 captures the front, with fixed identical clock for light off/on and a close front pulse view. No source geometry changed."
+  ],
+  "unchanged_assertions": 8225
+}

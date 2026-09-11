@@ -1,0 +1,22 @@
+{
+  "finished_utc": "2026-09-11T02:26:09.4259136Z",
+  "seconds": 7.1268668,
+  "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+  "started_utc": "2026-09-11T02:26:02.2989193Z",
+  "arguments": [
+    "--path",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree/build/art07/c4/v01/fresh-v01/review",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--fixed-fps",
+    "60",
+    "--",
+    "--capture"
+  ],
+  "exit": 0,
+  "pid": 16272,
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\fresh-checks-v01\\user",
+  "gpu_slot": true
+}

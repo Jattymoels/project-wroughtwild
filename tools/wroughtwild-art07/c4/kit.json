@@ -1,0 +1,26 @@
+{
+  "seed": 42,
+  "standing_height_m": 4.4,
+  "body_radius_m": 0.28,
+  "clear_bough_height_m": 2.6,
+  "targets": [24000, 8000, 2200],
+  "scar_depth_m": 0.045,
+  "scar_half_width_m": 0.075,
+  "lod_distances_m": [12, 28],
+  "wind_period_s": 5.5,
+  "wind_bend_m_per_m": 0.018,
+  "pulse_period_s": 4.0,
+  "purposes": {
+    "seed": "Reproduce this authored study without consuming gameplay RNG.",
+    "standing_height_m": "Give the broken crown a readable silhouette above head height.",
+    "body_radius_m": "Keep lower wood inside the unchanged 0.6 m native body for every yaw.",
+    "clear_bough_height_m": "Keep projecting boughs above the native trunk body and walking space.",
+    "targets": "Candidate near/middle/far triangle targets for ash; measured output is recorded separately.",
+    "scar_depth_m": "Make the optional altered trunk injury remain geometric with light off.",
+    "scar_half_width_m": "Keep energy inside a broad damaged host channel.",
+    "lod_distances_m": "Reduce small distant detail in this isolated habitat review.",
+    "wind_period_s": "Slow irregular scrub movement.",
+    "wind_bend_m_per_m": "Small root-anchored scrub sway.",
+    "pulse_period_s": "Ambient damaged-host light, independent of work or stock."
+  }
+}

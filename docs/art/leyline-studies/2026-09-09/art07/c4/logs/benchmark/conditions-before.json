@@ -1,0 +1,9 @@
+{
+  "coordination": "C1 C2 C3 explicitly confirmed no engine or heavy CPU jobs for the C4 window; generation/capture/encoding excluded.",
+  "gpu": [
+    "name, driver_version, utilization.gpu [%], memory.used [MiB]",
+    "NVIDIA GeForce RTX 5090, 591.86, 14 %, 1698 MiB"
+  ],
+  "utc": "2026-09-11T02:12:31.8327935Z",
+  "other_renderer_processes": []
+}

@@ -1,0 +1,8 @@
+ERROR: Unable to create shader cache directory Fsr2ReconstructPreviousDepthPassShaderRD/358f0f50e45bf02ca4a4d7caad0f817dc7af0da242469fec10a5158bebfa77db at user://shader_cache.
+   at: _initialize_cache (servers/rendering/renderer_rd/shader_rd.cpp:873)
+ERROR: Unable to create shader cache directory Fsr2ComputeLuminancePyramidPassShaderRD/3cc2b3058c0b29853f1a8d064772a1e4d0034ad64c1942b3c234b93c7f3ee2f0 at user://shader_cache.
+   at: _initialize_cache (servers/rendering/renderer_rd/shader_rd.cpp:873)
+ERROR: Unable to create shader cache directory ScreenSpaceReflectionFilterShaderRD/1725e4091c2ee64f62be73b97e4f528354ab22d39d0abae24d173f28c9beaca3 at user://shader_cache.
+   at: _initialize_cache (servers/rendering/renderer_rd/shader_rd.cpp:873)
+ERROR: Failed to read the root certificate store.
+   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2468)
