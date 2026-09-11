@@ -1,0 +1,23 @@
+{
+  "inputs_unchanged": {
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\AGENTS.md": "a30df016dcb3c564690c4397a0b60346f7ed0f22b252180b3b171c2160335c98",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\data\\tuning\\construction.json": "2c815e617586d677c3b44f0679ad8787f649f7cb72d7e465737f6d2076bbdb1a",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\scripts\\piece_mesh.gd": "d7df31b008fa7f1a18e5add0e9b2e68f5ecd1da253aba7029f75ded47c506a71",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\scripts\\piece_look.gd": "8ba70d104598fd88daba5768dc1caa11483a3b6894e700cf04d237a64f7f9103",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\art\\material_library.gd": "9b2a538ff0174d1f900a46b0f43227fdf4582326215546810bc865ba4b2cf086",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\art\\material_library.tres": "75e8c2d624736dff3a8d73529d35ba6e1fcbf49dbac22f1a15e655a180dd1f43",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\art\\building_look.gd": "3c2d189e226343a9f1c60baa1b2e6b121846b969d90915547842dbe37267a2af",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\art\\concepts\\environment\\2026-09-09-frontier\\03-building-family.png": "09aab066c1d21c313a06b3042f3a9979ffdbcc5fa507949bbf4dc0c741964f68",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\prototype\\art07-production\\receipts\\d1.md": "d7300d05fdc419edb805ffaf936cc0d0fca13c9b0a6b3d944ef452791c465b00",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\tools\\wroughtwild-art07\\d1\\build.py": "b0877610a7e1a7af3da62090acb15249966e80b6230a6aed0e872708c5e6b5c8",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\tools\\wroughtwild-art07\\d1\\reopen.py": "b57b6d8275d953ec3ce617a7c55689bf87a78bf61a984e15e6154e3cf0c3d164",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\tools\\wroughtwild-art07\\d1\\checks.gd": "d293f0a645a1ec7c9d0ba934cd309c6689757440cd45a3403d265608fdf65134",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\tools\\wroughtwild-art07\\d1\\run-job.ps1": "5d2a5dfd8d337fd28aeda96dea7378654644c75a7fd7ebca05e48bc20d1f222d",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe": "42c096b04d79bd0ff234429f67178881047c1c370d25ad3aef2766f3eeac4024",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\trellis-local\\runtime\\trellis-cli.exe": "e3d075612388a42fcb9bea73377feac4149e3a463cff2d2e11b24975e85d427d",
+    "C:\\Users\\Matty\\Dev\\project-wroughtwild\\tools\\wroughtwild-trellis\\install-manifest.json": "da4b60f904904b539cbb20f4ae21f9eaf9dac8ca5ff97ed92c341242aa9c0e2d",
+    "C:\\Users\\Matty\\Godot\\Godot_v4.5-stable_win64_console.exe": "7b77f3735dec3a32bb20af29cc1900583795d1de82a14f23d23350a88ec85faf"
+  },
+  "d1_package_files_unchanged": 1597,
+  "manifest_sha256": "a3e92f9692e05eae547290cd6520242f91dfbda31d9236eb6d12842f0453b85a"
+}

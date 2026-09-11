@@ -1,0 +1,581 @@
+{
+  "slice": "ART-07D3",
+  "status": "technically delivered; owner visual acceptance pending",
+  "verified_at": "2026-09-11T00:09:57.277051+00:00",
+  "canonical_package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fine-coverings-handoff-v02",
+  "manifest_sha256": "2839bd3e9c54eee602e8e8731b76a006fc3e811a2f670f71754bb6e280c3ab45",
+  "canonical_files_rehashed_after_fresh_reopen": 1668,
+  "no_unlisted_package_files": true,
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02",
+  "jobs": {
+    "import": {
+      "process": {
+        "end": "2026-09-11T09:30:12.7279114+09:30",
+        "pid": 36460,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--headless",
+            "--import"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\import",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\isolated-appdata",
+          "allow_native_dummy_material_diagnostic": false
+        },
+        "seconds": 12.2748536,
+        "start": "2026-09-11T09:30:00.4531260+09:30",
+        "exit_code": 0
+      },
+      "logs": {
+        "process.json": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\import\\process.json",
+          "sha256": "4c75806f040484a06bdfe8fe600f28c7c18a432edbd98ed9b6beca11a86f1879"
+        },
+        "stdout.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\import\\stdout.log",
+          "sha256": "b5dd6d13b4a46ceba7656772ce92c4d510698f89dcd56478c8633e3687a37027"
+        },
+        "stderr.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\import\\stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "placement-retry": {
+      "process": {
+        "seconds": 4.7588163,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--headless",
+            "res://art07_d3/checks.tscn"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02/logs/placement-retry",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\isolated-appdata",
+          "allow_native_dummy_material_diagnostic": true
+        },
+        "known_diagnostic": "One native-reproduced headless dummy material diagnostic; original log retained.",
+        "end": "2026-09-11T09:37:48.1358643+09:30",
+        "exit_code": 0,
+        "pid": 33604,
+        "start": "2026-09-11T09:37:43.3771249+09:30"
+      },
+      "logs": {
+        "process.json": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\placement-retry\\process.json",
+          "sha256": "f8d0eaeabe09b28dd809fb02ce77de93828ca0282fbc279b58b86dc63a0cc33e"
+        },
+        "stdout.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\placement-retry\\stdout.log",
+          "sha256": "e838a399b0ddaa830ab059087c74b28d9da8f4f1ac79056d821964051ebb605f"
+        },
+        "stderr.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\placement-retry\\stderr.log",
+          "sha256": "7c38d0ebabefd7ffe7d9f7711f981b81606073226a44cf3af1df07f56a6cc7e6"
+        }
+      }
+    },
+    "restart": {
+      "process": {
+        "seconds": 4.9816298,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--headless",
+            "res://art07_d3/checks.tscn",
+            "--",
+            "--d3-restore"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\restart",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\isolated-appdata",
+          "allow_native_dummy_material_diagnostic": true
+        },
+        "end": "2026-09-11T09:37:53.1542263+09:30",
+        "exit_code": 0,
+        "pid": 7228,
+        "start": "2026-09-11T09:37:48.1726614+09:30"
+      },
+      "logs": {
+        "process.json": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\restart\\process.json",
+          "sha256": "6d07616db7868597f9e47e15d7ec67a6b6770b747da693f17086e4599fd886a2"
+        },
+        "stdout.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\restart\\stdout.log",
+          "sha256": "3be4d450bd70150e258a39bb657881b19032b448807e041a4664a96fc64ec35d"
+        },
+        "stderr.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\restart\\stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "forward_plus": {
+      "process": {
+        "seconds": 8.5738868,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "forward_plus",
+            "--resolution",
+            "1440x900",
+            "--position",
+            "-9999,-9999",
+            "res://art07_d3/gallery.tscn",
+            "--",
+            "--capture"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\forward_plus",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\isolated-appdata",
+          "allow_native_dummy_material_diagnostic": false
+        },
+        "end": "2026-09-11T09:38:01.7644804+09:30",
+        "exit_code": 0,
+        "pid": 38160,
+        "start": "2026-09-11T09:37:53.1906459+09:30"
+      },
+      "logs": {
+        "process.json": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\forward_plus\\process.json",
+          "sha256": "57da2598d86934ad1f12310920083765aa68d63306b83cc0c4ec98470fa39d89"
+        },
+        "stdout.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\forward_plus\\stdout.log",
+          "sha256": "d0437f40011bcfab1a070e9876400403ac2ced5620518135d2a90b4ecac8c34e"
+        },
+        "stderr.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\forward_plus\\stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "gl_compatibility": {
+      "process": {
+        "seconds": 9.4000774,
+        "job": {
+          "executable": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+          "arguments": [
+            "--path",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game",
+            "--audio-driver",
+            "Dummy",
+            "--rendering-method",
+            "gl_compatibility",
+            "--resolution",
+            "1440x900",
+            "--position",
+            "-9999,-9999",
+            "res://art07_d3/gallery.tscn",
+            "--",
+            "--capture"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\gl_compatibility",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\isolated-appdata",
+          "allow_native_dummy_material_diagnostic": false
+        },
+        "end": "2026-09-11T09:38:11.1762385+09:30",
+        "exit_code": 0,
+        "pid": 29928,
+        "start": "2026-09-11T09:38:01.7762149+09:30"
+      },
+      "logs": {
+        "process.json": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\gl_compatibility\\process.json",
+          "sha256": "f0f8bcc5f7c6f869c9e3b696e07ed912ed67c33c07a60bead04181bdaec2cbca"
+        },
+        "stdout.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\gl_compatibility\\stdout.log",
+          "sha256": "48923c1033e5aecaa39583c182bef72e6ced13ef6cbe2e650f9aa27c47754e5c"
+        },
+        "stderr.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\gl_compatibility\\stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "blender": {
+      "process": {
+        "seconds": 32.8563687,
+        "job": {
+          "executable": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+          "arguments": [
+            "--background",
+            "--threads",
+            "8",
+            "--python-exit-code",
+            "1",
+            "--python",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\tools\\wroughtwild-art07\\d3\\reopen.py",
+            "--",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\source",
+            "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\blender-reopen"
+          ],
+          "cwd": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree",
+          "output": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\blender",
+          "gpu": true,
+          "timeout_seconds": 600,
+          "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\isolated-appdata",
+          "allow_native_dummy_material_diagnostic": false
+        },
+        "end": "2026-09-11T09:38:44.0447567+09:30",
+        "exit_code": 0,
+        "pid": 17772,
+        "start": "2026-09-11T09:38:11.1884410+09:30"
+      },
+      "logs": {
+        "process.json": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\blender\\process.json",
+          "sha256": "83c2e4f4dbc4c721d89757c7b801d336b3297f17be6c09d96556855a762067e6"
+        },
+        "stdout.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\blender\\stdout.log",
+          "sha256": "979931402e5b85b57b3b1009383811b001a7c5a6e7519594df45e4d56c37de30"
+        },
+        "stderr.log": {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\logs\\blender\\stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  },
+  "checks": {
+    "placement": {
+      "checks": 35310,
+      "failures": 0,
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game\\art07_d3\\check-placement.json",
+      "sha256": "022a5ceb2cd81a2d7b7a65b362c12bd40c7757d436f63b787e323856c1820d03",
+      "identical_to_selected_check_report": true
+    },
+    "restart": {
+      "checks": 40431,
+      "failures": 0,
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game\\art07_d3\\check-restart.json",
+      "sha256": "e4c682a4b7f24c4a006d875a61bef3e6b6df3eff5cb5fdf832dde406612770e9",
+      "identical_to_selected_check_report": true
+    }
+  },
+  "captures": {
+    "forward_plus": {
+      "fresh_pngs": 63,
+      "stills": 15,
+      "orbit_frames": 48,
+      "byte_identical_to_selected": 63,
+      "differing_files": [],
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game\\art07_d3\\evidence\\forward_plus"
+    },
+    "gl_compatibility": {
+      "fresh_pngs": 63,
+      "stills": 15,
+      "orbit_frames": 48,
+      "byte_identical_to_selected": 63,
+      "differing_files": [],
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\review\\game\\art07_d3\\evidence\\gl_compatibility"
+    }
+  },
+  "blender": {
+    "reopen": {
+      "master_sha256": "f02214856665525851a0bad564044ab82332b814a6f823ccf96b761c1cf5e46d",
+      "packed_images": 2,
+      "six_angles_each_material_and_neutral": true,
+      "fresh_glb_imports": {
+        "half_cube": {
+          "bounds": [
+            [
+              -0.25,
+              -0.25,
+              -0.25
+            ],
+            [
+              0.25,
+              0.25,
+              0.25
+            ]
+          ],
+          "triangles": 198,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_cube_solid": {
+          "bounds": [
+            [
+              -0.25,
+              -0.25,
+              -0.25
+            ],
+            [
+              0.25,
+              0.25,
+              0.25
+            ]
+          ],
+          "triangles": 44,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_wall": {
+          "bounds": [
+            [
+              -0.25,
+              -0.25,
+              -0.0625
+            ],
+            [
+              0.25,
+              0.25,
+              0.0625
+            ]
+          ],
+          "triangles": 198,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_wall_solid": {
+          "bounds": [
+            [
+              -0.25,
+              -0.25,
+              -0.0625
+            ],
+            [
+              0.25,
+              0.25,
+              0.0625
+            ]
+          ],
+          "triangles": 44,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_pillar": {
+          "bounds": [
+            [
+              -0.07500000298023224,
+              -0.25,
+              -0.07500000298023224
+            ],
+            [
+              0.07500000298023224,
+              0.25,
+              0.07500000298023224
+            ]
+          ],
+          "triangles": 76,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_pillar_solid": {
+          "bounds": [
+            [
+              -0.07500000298023224,
+              -0.25,
+              -0.07500000298023224
+            ],
+            [
+              0.07500000298023224,
+              0.25,
+              0.07500000298023224
+            ]
+          ],
+          "triangles": 44,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_beam": {
+          "bounds": [
+            [
+              -0.25,
+              -0.10000000149011612,
+              -0.10000000149011612
+            ],
+            [
+              0.25,
+              0.10000000149011612,
+              0.10000000149011612
+            ]
+          ],
+          "triangles": 76,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_beam_solid": {
+          "bounds": [
+            [
+              -0.25,
+              -0.10000000149011612,
+              -0.10000000149011612
+            ],
+            [
+              0.25,
+              0.10000000149011612,
+              0.10000000149011612
+            ]
+          ],
+          "triangles": 44,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_slab": {
+          "bounds": [
+            [
+              -0.25,
+              -0.0625,
+              -0.25
+            ],
+            [
+              0.25,
+              0.0625,
+              0.25
+            ]
+          ],
+          "triangles": 76,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "half_slab_solid": {
+          "bounds": [
+            [
+              -0.25,
+              -0.0625,
+              -0.25
+            ],
+            [
+              0.25,
+              0.0625,
+              0.25
+            ]
+          ],
+          "triangles": 44,
+          "surfaces": 1,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "light_panel": {
+          "bounds": [
+            [
+              -0.5,
+              -0.5,
+              -0.07999999821186066
+            ],
+            [
+              0.5,
+              0.5,
+              0.07999999821186066
+            ]
+          ],
+          "triangles": 524,
+          "surfaces": 2,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        },
+        "glazed_window": {
+          "bounds": [
+            [
+              -0.5,
+              -0.5,
+              -0.07999999821186066
+            ],
+            [
+              0.5,
+              0.5,
+              0.07999999821186066
+            ]
+          ],
+          "triangles": 948,
+          "surfaces": 2,
+          "closed_after_welding_export_seams": true,
+          "actual_glb_asset_metadata": {
+            "generator": "Khronos glTF Blender I/O v4.5.51",
+            "version": "2.0"
+          }
+        }
+      }
+    },
+    "actual_fresh_pngs": 144,
+    "byte_identical_to_original_inspection": 0,
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fresh-handoff-v02\\blender-reopen",
+    "pixel_identical_to_original_inspection": 144,
+    "differing_pixel_files": []
+  },
+  "prerequisites": {
+    "original_inputs_rehashed": 17,
+    "d1_package_files_rehashed": 1597,
+    "d1_manifest_sha256": "a3e92f9692e05eae547290cd6520242f91dfbda31d9236eb6d12842f0453b85a"
+  },
+  "source_audit_sha256": "36431c2e947130a16e0104d9738d255e76b4c0add44cbb07178c2c117d89530b",
+  "all_package_recipes_match_checked_sources": true,
+  "publication": "No main integration or push; publisher owns publication."
+}

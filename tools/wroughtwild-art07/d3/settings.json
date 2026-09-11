@@ -1,0 +1,24 @@
+{
+  "seed": 42,
+  "edge_bevel_m": 0.0015,
+  "joint_width_m": 0.004,
+  "joint_depth_m": 0.003,
+  "board_spacing_m": 0.25,
+  "shelf_end_margin_m": 0.016,
+  "frame_rebate_m": 0.009,
+  "frame_joint_m": 0.002,
+  "render_samples": 24,
+  "roughness": 0.88,
+  "purposes": {
+    "seed": "Repeatable inspection grain; never affects gameplay RNG.",
+    "edge_bevel_m": "Small inward edge catches light inside the native envelope, half D1's arris.",
+    "joint_width_m": "Four millimetre backed joints in timber fine pieces; no grooves on mineral/metal variants.",
+    "joint_depth_m": "Three millimetre physical join depth leaves every fine face closed.",
+    "board_spacing_m": "Keep the same quarter-metre board rhythm as coarse D1, not a squeezed full-size texture.",
+    "shelf_end_margin_m": "Terminate recessed shelf joints 16 mm inside the front/back rim so its complete edge silhouette stays closed.",
+    "frame_rebate_m": "A nine millimetre shoulder seats the infill within the original frame width.",
+    "frame_joint_m": "Shallow two millimetre end joints show the assembly on front and back without opening a hole.",
+    "render_samples": "Blender CPU inspection samples, not a game setting.",
+    "roughness": "Matte provisional Blender timber; native engine family materials remain authoritative."
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "blender_version": "4.5.9 LTS",
+  "assets": {
+    "half_cube": {
+      "vertices": 101,
+      "triangles": 198,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.25,
+          -0.25,
+          -0.25
+        ],
+        [
+          0.25,
+          0.25,
+          0.25
+        ]
+      ],
+      "shape_id": "half_cube",
+      "size_m": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "33dca73fe047bd6c876d2eda16eac4920fc5177e1d7c97d4f6cee5d69d43d10f",
+      "form": "box"
+    },
+    "half_cube_solid": {
+      "vertices": 24,
+      "triangles": 44,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.25,
+          -0.25,
+          -0.25
+        ],
+        [
+          0.25,
+          0.25,
+          0.25
+        ]
+      ],
+      "shape_id": "half_cube",
+      "size_m": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "d38369a44eecccb12fef3947cf9325fe5517777fbce36a3d210f3394c2338c7a",
+      "form": "box"
+    },
+    "half_wall": {
+      "vertices": 101,
+      "triangles": 198,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.25,
+          -0.25,
+          -0.0625
+        ],
+        [
+          0.25,
+          0.25,
+          0.0625
+        ]
+      ],
+      "shape_id": "half_wall",
+      "size_m": [
+        0.5,
+        0.5,
+        0.125
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "97d0595da43bf9aee02adc314a7612e6a12362037db163f3ed418ec5659db202",
+      "form": "box"
+    },
+    "half_wall_solid": {
+      "vertices": 24,
+      "triangles": 44,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.25,
+          -0.25,
+          -0.0625
+        ],
+        [
+          0.25,
+          0.25,
+          0.0625
+        ]
+      ],
+      "shape_id": "half_wall",
+      "size_m": [
+        0.5,
+        0.5,
+        0.125
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "f5a61ae624b48e6be43a2ef5fcda1b68176a57092be500e92272bc370f759a38",
+      "form": "box"
+    },
+    "half_pillar": {
+      "vertices": 40,
+      "triangles": 76,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.07500000298023224,
+          -0.25,
+          -0.07500000298023224
+        ],
+        [
+          0.07500000298023224,
+          0.25,
+          0.07500000298023224
+        ]
+      ],
+      "shape_id": "half_pillar",
+      "size_m": [
+        0.15,
+        0.5,
+        0.15
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "b8d480080a628c38cf5f1372215122bcfe4c31dd02f24e892296ad2d47f9f4b4",
+      "form": "box"
+    },
+    "half_pillar_solid": {
+      "vertices": 24,
+      "triangles": 44,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.07500000298023224,
+          -0.25,
+          -0.07500000298023224
+        ],
+        [
+          0.07500000298023224,
+          0.25,
+          0.07500000298023224
+        ]
+      ],
+      "shape_id": "half_pillar",
+      "size_m": [
+        0.15,
+        0.5,
+        0.15
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "3363e46261e12be98232e9e1054b72018b9321cd08f865ec9ca8343db6a62ea6",
+      "form": "box"
+    },
+    "half_beam": {
+      "vertices": 40,
+      "triangles": 76,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.25,
+          -0.10000000149011612,
+          -0.10000000149011612
+        ],
+        [
+          0.25,
+          0.10000000149011612,
+          0.10000000149011612
+        ]
+      ],
+      "shape_id": "half_beam",
+      "size_m": [
+        0.5,
+        0.2,
+        0.2
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "cf478d86469b5d78c24c21058982ba14045786bab24021332c08c6ee08a803b6",
+      "form": "box"
+    },
+    "half_beam_solid": {
+      "vertices": 24,
+      "triangles": 44,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.25,
+          -0.10000000149011612,
+          -0.10000000149011612
+        ],
+        [
+          0.25,
+          0.10000000149011612,
+          0.10000000149011612
+        ]
+      ],
+      "shape_id": "half_beam",
+      "size_m": [
+        0.5,
+        0.2,
+        0.2
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "a8db6bbbfef633d6e84f9df2d22ad8f03509f7597fc1862566afa684e7afc651",
+      "form": "box"
+    },
+    "half_slab": {
+      "vertices": 40,
+      "triangles": 76,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.25,
+          -0.0625,
+          -0.25
+        ],
+        [
+          0.25,
+          0.0625,
+          0.25
+        ]
+      ],
+      "shape_id": "half_slab",
+      "size_m": [
+        0.5,
+        0.125,
+        0.5
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "02d0bf6cd791816114569ec649772b0b11589d69a3b8099ab69483bf3d2ad57b",
+      "form": "box"
+    },
+    "half_slab_solid": {
+      "vertices": 24,
+      "triangles": 44,
+      "surfaces": 1,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.25,
+          -0.0625,
+          -0.25
+        ],
+        [
+          0.25,
+          0.0625,
+          0.25
+        ]
+      ],
+      "shape_id": "half_slab",
+      "size_m": [
+        0.5,
+        0.125,
+        0.5
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "a5669f64a0a6c15ca38673f3181f1d727c18ca1ecb8c927706470f77c06d380a",
+      "form": "box"
+    },
+    "light_panel": {
+      "vertices": 264,
+      "triangles": 524,
+      "surfaces": 2,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.5,
+          -0.5,
+          -0.07999999821186066
+        ],
+        [
+          0.5,
+          0.5,
+          0.07999999821186066
+        ]
+      ],
+      "shape_id": "light_panel",
+      "size_m": [
+        1,
+        1,
+        0.16
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "749f281d13de7c7dec43820145869c2bb76342b45bf38592bb840726a5f6823d",
+      "form": "light_panel"
+    },
+    "glazed_window": {
+      "vertices": 470,
+      "triangles": 948,
+      "surfaces": 2,
+      "nonmanifold_edges": 0,
+      "degenerate_triangles": 0,
+      "bounds": [
+        [
+          -0.5,
+          -0.5,
+          -0.07999999821186066
+        ],
+        [
+          0.5,
+          0.5,
+          0.07999999821186066
+        ]
+      ],
+      "shape_id": "glazed_window",
+      "size_m": [
+        1,
+        1,
+        0.16
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "sha256": "731e25113b4656a0fee615240fb0b80b65657212292216060943a4da4d256054",
+      "form": "glazed_window"
+    }
+  },
+  "controls": {
+    "seed": 42,
+    "edge_bevel_m": 0.0015,
+    "joint_width_m": 0.004,
+    "joint_depth_m": 0.003,
+    "board_spacing_m": 0.25,
+    "shelf_end_margin_m": 0.016,
+    "frame_rebate_m": 0.009,
+    "frame_joint_m": 0.002,
+    "render_samples": 24,
+    "roughness": 0.88,
+    "purposes": {
+      "seed": "Repeatable inspection grain; never affects gameplay RNG.",
+      "edge_bevel_m": "Small inward edge catches light inside the native envelope, half D1's arris.",
+      "joint_width_m": "Four millimetre backed joints in timber fine pieces; no grooves on mineral/metal variants.",
+      "joint_depth_m": "Three millimetre physical join depth leaves every fine face closed.",
+      "board_spacing_m": "Keep the same quarter-metre board rhythm as coarse D1, not a squeezed full-size texture.",
+      "shelf_end_margin_m": "Terminate recessed shelf joints 16 mm inside the front/back rim so its complete edge silhouette stays closed.",
+      "frame_rebate_m": "A nine millimetre shoulder seats the infill within the original frame width.",
+      "frame_joint_m": "Shallow two millimetre end joints show the assembly on front and back without opening a hole.",
+      "render_samples": "Blender CPU inspection samples, not a game setting.",
+      "roughness": "Matte provisional Blender timber; native engine family materials remain authoritative."
+    }
+  },
+  "native_frame_width_m": 0.075,
+  "native_panel_batten_m": 0.045,
+  "native_muntin_m": 0.026,
+  "coordinate_mapping": "Blender (x,y,z) -> Godot (x,z,-y) once; centred native pose, metres",
+  "lod_policy": "Same bounded geometry at near/middle/far; no additional collision or automatic decimation."
+}

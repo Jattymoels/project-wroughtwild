@@ -1,0 +1,1622 @@
+{
+	"checks": 40431,
+	"failures": 0,
+	"rows": [
+		{
+			"family": "wood",
+			"max_inset_m": 0.00320017337799072,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.00320017337799072,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.00320017337799072,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.00320017337799072,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.00320017337799072,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.00320017337799072,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.00320017337799072,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.00320017337799072,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.000000119209289550781,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.000000119209289550781,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.000000119209289550781,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.000000119209289550781,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.75, 1.75, 0.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.75, 1.75, 2.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.00320005416870117,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.75, 1.75, 4.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.00320005416870117,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.75, 1.75, 4.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.75, 1.75, 4.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.75, 1.75, 4.75)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.00320053100585938,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (8.5, 1.75, 4.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.00320005416870117,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.75, 1.75, 4.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.00320053100585938,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (12.5, 1.75, 4.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.00320005416870117,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.75, 1.75, 4.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.00320053100585938,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (16.5, 1.75, 4.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.00320005416870117,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.75, 1.75, 4.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.00320053100585938,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (20.5, 1.75, 4.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.00320005416870117,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.75, 1.75, 4.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (0.5, 1.75, 6.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.75, 1.75, 6.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.000000476837158203125,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (4.5, 1.75, 6.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.75, 1.75, 6.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (8.5, 1.75, 6.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.75, 1.75, 6.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (12.5, 1.75, 6.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.75, 1.75, 6.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (16.5, 1.75, 6.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.75, 1.75, 6.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (20.5, 1.75, 6.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.75, 1.75, 6.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (0.5, 1.75, 8.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.75, 1.75, 8.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (4.5, 1.75, 8.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.75, 1.75, 8.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.00319957733154297,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (8.5, 1.75, 8.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.00320053100585938,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.75, 1.75, 8.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (12.5, 1.75, 8.75)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.75, 1.75, 8.5)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.5, 1.75, 8.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.5, 1.75, 8.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.5, 1.75, 8.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.5, 1.75, 8.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.5, 1.75, 10.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.5, 1.75, 12.5)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.00000095367431640625,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.75, 1.5, 14.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.000000476837158203125,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (2.5, 1.5, 14.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.00000095367431640625,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.75, 1.5, 14.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.00000095367431640625,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (6.5, 1.5, 14.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.00000095367431640625,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.75, 1.5, 14.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.00000095367431640625,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (10.5, 1.5, 14.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.00000095367431640625,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.75, 1.5, 14.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.00000095367431640625,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (14.5, 1.5, 14.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.75, 1.5, 14.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (18.5, 1.5, 14.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.75, 1.5, 14.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (22.5, 1.5, 14.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.75, 1.5, 16.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.000000238418579101563,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (2.5, 1.5, 16.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.75, 1.5, 16.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.000000476837158203125,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (6.5, 1.5, 16.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.75, 1.5, 16.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (10.5, 1.5, 16.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.75, 1.5, 16.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.00000095367431640625,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (14.5, 1.5, 16.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.75, 1.5, 16.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (18.5, 1.5, 16.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.75, 1.5, 16.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (22.5, 1.5, 16.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.75, 1.5, 18.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.000000715255737304688,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (2.5, 1.5, 18.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.75, 1.5, 18.5)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.000000476837158203125,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (6.5, 1.5, 18.75)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.75, 1.5, 18.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.75, 1.5, 18.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.75, 1.5, 18.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.75, 1.5, 18.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.75, 1.5, 18.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.75, 1.5, 18.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.75, 1.5, 18.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.75, 1.5, 18.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "stone",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (16.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "silver",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (18.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (20.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (22.75, 1.5, 20.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.75, 1.5, 22.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.75, 1.5, 22.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.75, 1.5, 22.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.75, 1.5, 22.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.75, 1.5, 22.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.75, 1.5, 22.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.75, 1.5, 22.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.75, 1.5, 22.75)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (16.5, 2.0, 23.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (19.0, 2.0, 22.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (20.5, 2.0, 23.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "pine",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (23.0, 2.0, 22.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.0607999563217163,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (0.5, 2.0, 25.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "bog_oak",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (3.0, 2.0, 24.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (4.5, 2.0, 25.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "ash_wood",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (7.0, 2.0, 24.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (8.5, 2.0, 25.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "iron",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (11.0, 2.0, 24.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (12.5, 2.0, 25.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "bronze",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (15.0, 2.0, 24.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (16.5, 2.0, 25.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "steel",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (19.0, 2.0, 24.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (20.5, 2.0, 25.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "slate",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (23.0, 2.0, 24.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0607998371124268,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (0.5, 2.0, 27.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "shellstone",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (3.0, 2.0, 26.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (4.5, 2.0, 27.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "rustclay_brick",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (7.0, 2.0, 26.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (8.5, 2.0, 27.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (11.0, 2.0, 26.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (12.5, 2.0, 27.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "resinheart",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (15.0, 2.0, 26.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "corkbark",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (16.5, 2.0, 27.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "corkbark",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (19.0, 2.0, 26.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (20.5, 2.0, 27.0)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "vitrified_basalt",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (23.0, 2.0, 26.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (0.5, 2.0, 29.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608005523681641,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (3.0, 2.0, 28.5)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.000000715255737304688,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-5.0, 1.25, 4.0)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.000000715255737304688,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-5.0, 1.75, 4.0)]",
+			"shape": "half_pillar",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.075, -0.25, -0.075), S: (0.15, 0.5, 0.15)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.00000143051147460938,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-4.75, 2.0, 4.0)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-4.75, 2.0, 4.25)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.00320005416870117,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-2.75, 2.25, 5.25)]",
+			"shape": "half_cube",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.25), S: (0.5, 0.5, 0.5)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.00320005416870117,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-2.75, 2.25, 5.0)]",
+			"shape": "half_wall",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.25, -0.0625), S: (0.5, 0.5, 0.125)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.000249862670898438,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-2.75, 2.0, 5.25)]",
+			"shape": "half_slab",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.0625, -0.25), S: (0.5, 0.125, 0.5)]"
+		},
+		{
+			"family": "wood",
+			"max_inset_m": 0.00000143051147460938,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-2.75, 2.0, 5.0)]",
+			"shape": "half_beam",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.25, -0.1, -0.1), S: (0.5, 0.2, 0.2)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-13.0, 0.5, 0.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 1,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-11.0, 0.5, 0.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 1,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-12.5, 0.5, 0.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-12.5, 0.5, 2.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-13.0, 1.5, 0.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 1,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-11.0, 1.5, 0.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 1,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-12.5, 1.5, 0.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-12.5, 1.5, 2.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-13.0, 2.5, 0.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 1,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-11.0, 2.5, 0.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 1,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-12.5, 2.5, 0.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-12.5, 2.5, 2.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-13.0, 0.5, 1.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-11.0, 0.5, 1.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-11.5, 0.5, 0.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-11.5, 0.5, 2.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-13.0, 1.5, 1.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-11.0, 1.5, 1.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-11.5, 1.5, 0.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-11.5, 1.5, 2.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-13.0, 2.5, 1.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "woven_reed",
+			"max_inset_m": 0.0607995986938477,
+			"pose": "[X: (-0.0, 0.0, -1.0), Y: (0.0, 1.0, 0.0), Z: (1.0, 0.0, -0.0), O: (-11.0, 2.5, 1.5)]",
+			"shape": "light_panel",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-11.5, 2.5, 0.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		},
+		{
+			"family": "cinderglass",
+			"max_inset_m": 0.0608000755310059,
+			"pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (-11.5, 2.5, 2.0)]",
+			"shape": "glazed_window",
+			"triangle_edge_retries": 0,
+			"visual": "[P: (-0.5, -0.5, -0.08), S: (1.0, 1.0, 0.16)]"
+		}
+	]
+}

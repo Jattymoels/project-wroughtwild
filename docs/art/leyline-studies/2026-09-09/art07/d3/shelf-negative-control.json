@@ -1,0 +1,27 @@
+{
+  "ray_retry_radius_m": 1e-05,
+  "rejected_4mm_shelf_slit_still_fails": true,
+  "selected_closed_rim_passes": true,
+  "rows": [
+    {
+      "file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\models-v01\\assets\\half_slab.glb",
+      "sha256": "6ab3029238d7bb3d89f9099be03184062902c9971bf16029964d4723c38f0ce6",
+      "neighbour_hits": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "file": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\models-v02\\assets\\half_slab.glb",
+      "sha256": "02d0bf6cd791816114569ec649772b0b11589d69a3b8099ab69483bf3d2ad57b",
+      "neighbour_hits": [
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  ]
+}

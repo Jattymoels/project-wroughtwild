@@ -1,0 +1,259 @@
+{
+  "master_sha256": "f02214856665525851a0bad564044ab82332b814a6f823ccf96b761c1cf5e46d",
+  "packed_images": 2,
+  "six_angles_each_material_and_neutral": true,
+  "fresh_glb_imports": {
+    "half_cube": {
+      "bounds": [
+        [
+          -0.25,
+          -0.25,
+          -0.25
+        ],
+        [
+          0.25,
+          0.25,
+          0.25
+        ]
+      ],
+      "triangles": 198,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_cube_solid": {
+      "bounds": [
+        [
+          -0.25,
+          -0.25,
+          -0.25
+        ],
+        [
+          0.25,
+          0.25,
+          0.25
+        ]
+      ],
+      "triangles": 44,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_wall": {
+      "bounds": [
+        [
+          -0.25,
+          -0.25,
+          -0.0625
+        ],
+        [
+          0.25,
+          0.25,
+          0.0625
+        ]
+      ],
+      "triangles": 198,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_wall_solid": {
+      "bounds": [
+        [
+          -0.25,
+          -0.25,
+          -0.0625
+        ],
+        [
+          0.25,
+          0.25,
+          0.0625
+        ]
+      ],
+      "triangles": 44,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_pillar": {
+      "bounds": [
+        [
+          -0.07500000298023224,
+          -0.25,
+          -0.07500000298023224
+        ],
+        [
+          0.07500000298023224,
+          0.25,
+          0.07500000298023224
+        ]
+      ],
+      "triangles": 76,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_pillar_solid": {
+      "bounds": [
+        [
+          -0.07500000298023224,
+          -0.25,
+          -0.07500000298023224
+        ],
+        [
+          0.07500000298023224,
+          0.25,
+          0.07500000298023224
+        ]
+      ],
+      "triangles": 44,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_beam": {
+      "bounds": [
+        [
+          -0.25,
+          -0.10000000149011612,
+          -0.10000000149011612
+        ],
+        [
+          0.25,
+          0.10000000149011612,
+          0.10000000149011612
+        ]
+      ],
+      "triangles": 76,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_beam_solid": {
+      "bounds": [
+        [
+          -0.25,
+          -0.10000000149011612,
+          -0.10000000149011612
+        ],
+        [
+          0.25,
+          0.10000000149011612,
+          0.10000000149011612
+        ]
+      ],
+      "triangles": 44,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_slab": {
+      "bounds": [
+        [
+          -0.25,
+          -0.0625,
+          -0.25
+        ],
+        [
+          0.25,
+          0.0625,
+          0.25
+        ]
+      ],
+      "triangles": 76,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "half_slab_solid": {
+      "bounds": [
+        [
+          -0.25,
+          -0.0625,
+          -0.25
+        ],
+        [
+          0.25,
+          0.0625,
+          0.25
+        ]
+      ],
+      "triangles": 44,
+      "surfaces": 1,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "light_panel": {
+      "bounds": [
+        [
+          -0.5,
+          -0.5,
+          -0.07999999821186066
+        ],
+        [
+          0.5,
+          0.5,
+          0.07999999821186066
+        ]
+      ],
+      "triangles": 524,
+      "surfaces": 2,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    },
+    "glazed_window": {
+      "bounds": [
+        [
+          -0.5,
+          -0.5,
+          -0.07999999821186066
+        ],
+        [
+          0.5,
+          0.5,
+          0.07999999821186066
+        ]
+      ],
+      "triangles": 948,
+      "surfaces": 2,
+      "closed_after_welding_export_seams": true,
+      "actual_glb_asset_metadata": {
+        "generator": "Khronos glTF Blender I/O v4.5.51",
+        "version": "2.0"
+      }
+    }
+  }
+}

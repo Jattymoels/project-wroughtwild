@@ -1,0 +1,241 @@
+{
+  "slice": "ART-07D3",
+  "owner_visual_acceptance": "pending",
+  "media": [
+    {
+      "file": "blender-material.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\models-v02\\evidence\\blender-material.png",
+      "sha256": "2e7a77a4d40955861d4d984ee50277ba2fc68b481fe0eed97077b5c8b36cd7e8",
+      "unmodified_copy": true
+    },
+    {
+      "file": "blender-neutral.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\models-v02\\evidence\\blender-neutral.png",
+      "sha256": "47f14fb7927de069b12c7f7bbd726fb2ea284f4216fa3e99ddaa011fadd62b81",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-catalogue-material.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\catalogue-material.png",
+      "sha256": "1f31bdd3a9d3cf2cf2b48938c5e5eb6e3a7eb3fc2568a7a1351ae9c6946ca7bc",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-fine-pieces.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\fine-pieces.png",
+      "sha256": "908cdee9ae42a05a469f9483255ed9fb6c25a869cc4c28c3c95402ea9238b02a",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-coverings-front.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\coverings-front.png",
+      "sha256": "1554a86f9fd00bd483779a0f7ea2dfb3bcf91f0958de99e1ffe1e4f3f64760b4",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-coverings-back.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\coverings-back.png",
+      "sha256": "b5c277746323e7f4a3019a43abd99cd9a7f4d436803b930b31b8b4fd7707fe0d",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-source-frames-front.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\source-frames-front.png",
+      "sha256": "6bb195fa0665266a8fe706035996587d762ea66d3ab07f34bafadafe3bcbe77d",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-source-frames-back.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\source-frames-back.png",
+      "sha256": "78fbe77653ddc2ffc19c4fa39495a5207cfce37ff05e883b3ef35be06ec5a343",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-source-frames-neutral.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\source-frames-neutral.png",
+      "sha256": "7b7be88f2bb02a069bdb6edc34321bc1aff1978055a14b8d33aefa8a15d46ee7",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-joins-material.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\joins-material.png",
+      "sha256": "1ee16b6dfb628e9311e8583fe05ace2744e318cf8203439ebacc9610b4abe6c5",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-joins-neutral.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\joins-neutral.png",
+      "sha256": "df2baa4e6d652a7299f8d58afa042783e60c3121ca4dc81045c39128e5159e11",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-window-front.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\window-front.png",
+      "sha256": "a4941568a4f29f6da6c31d64d86a5b9ed609ffc4bb8b5bb083b2a17f0e50e605",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-window-back.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\window-back.png",
+      "sha256": "9819de069fccd1bf5c1f4023424f234a5583ffb2f8b5790ea227eef9e0f7d6cf",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-shelf-underside.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\shelf-underside.png",
+      "sha256": "f5dd4563def02fc93d8aa5ff077b548db6bef143f87a208aa45ed826df3c2df4",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-joins-shade.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\joins-shade.png",
+      "sha256": "de45ad9f59418fb7939e63c13fa1cb219f5cf2725176d5a0e48b74681229c78f",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-joins-dusk.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\joins-dusk.png",
+      "sha256": "ae014e456e1b0725c06f182479c63d4f5fd51097810fad929b995823a3cff32e",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-orbit.webp",
+      "sha256": "c6274e1380c8d9c79673403eb013c6572f7ebdfc436cc2ef24a412e0b61b0045",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus",
+      "derivative": "48 actual camera-orbit frames resized to 960x600, 83 ms each; static geometry",
+      "frames": 48
+    },
+    {
+      "file": "gl_compatibility-catalogue-material.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\catalogue-material.png",
+      "sha256": "e548504bfdabaddb26c30c74ace063b01ae65aa909dd1e84e01eb3bb2565c150",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-fine-pieces.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\fine-pieces.png",
+      "sha256": "f28af5b9d1953ea81b5a637ebfe72f3568bfd4506fd05e91b1396a104d8401ff",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-coverings-front.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\coverings-front.png",
+      "sha256": "ac28c08ed56d7b008d0ee72df79edb5e78bf003518c93afa445847676ee64efe",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-coverings-back.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\coverings-back.png",
+      "sha256": "abab69ffcb4c656590203679a184a41019b97a9a25b2edbabe0f18dc034ed0e6",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-source-frames-front.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\source-frames-front.png",
+      "sha256": "335171c9c5a558904aed7b85d2be42cd5a7430f96b27b5a7a5efed939a10d5ab",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-source-frames-back.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\source-frames-back.png",
+      "sha256": "36b690b2e89f1e91b7e246de28e7210ca87eba775e862a9c35fd824c6db04250",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-source-frames-neutral.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\source-frames-neutral.png",
+      "sha256": "0bd30db035bcd7211889b606bcd88c72f9ac783e32a20fc081d598de08d57935",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-joins-material.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\joins-material.png",
+      "sha256": "9ca3f9385dd31eefb256176901ce6e129fef502f5de4ee9de162d2df399ea204",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-joins-neutral.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\joins-neutral.png",
+      "sha256": "32a95f2b6f4d268d2c730762ed3136692bd84ec29ec4867487bcbaeacbbe9a6c",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-window-front.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\window-front.png",
+      "sha256": "874828025dcc7c4cae03e35d9355eccd413a22bdebcee5abfe791915fd2f7614",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-window-back.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\window-back.png",
+      "sha256": "d9390e9baf8b78ce4040b4fed3a5b2b1a5b3ce61bfb2679084324e8e6102ccc8",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-shelf-underside.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\shelf-underside.png",
+      "sha256": "9bfbf2c03cbd5e3596da947ec4f8128d7c892bd64e02356c343a85d333ac4a86",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-joins-shade.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\joins-shade.png",
+      "sha256": "bbb8beea9fdc0c0938bfb9c811e4411af952ea9ba375121fec3d0a3b2a334467",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-joins-dusk.png",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\joins-dusk.png",
+      "sha256": "e6bf201608fb62ed39a6b6cd93c0a02ecbcbfeb98948561af2310f3f81c86f42",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-orbit.webp",
+      "sha256": "99e549020b53842683319efac23e9954d602c183615382d60898437b957a91f7",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility",
+      "derivative": "48 actual camera-orbit frames resized to 960x600, 83 ms each; static geometry",
+      "frames": 48
+    },
+    {
+      "file": "blender-topology-views.jpg",
+      "sha256": "98840ee8431c3b9bb996a63386e5eaa4b28eac7b2a64e2a7db579a3054465f6d",
+      "derivative": "Labelled contact sheet of independent actual neutral front/back/underside/three-quarter renders; no shape editing"
+    },
+    {
+      "file": "geometry.json",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\models-v02\\geometry.json",
+      "sha256": "7bfa0fbfceeb34b5385a88d98bcf6d7de3c01740ad66d54d9c50fb0336f3ddf7",
+      "unmodified_copy": true
+    },
+    {
+      "file": "blender-reopen.json",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\blender-reopen-v05\\reopen.json",
+      "sha256": "ef76d99b645ec3ab28b10cfd1bc4a3d64ab939bc3e48d69597b4569d93fd6e4a",
+      "unmodified_copy": true
+    },
+    {
+      "file": "check-placement.json",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\check-placement.json",
+      "sha256": "022a5ceb2cd81a2d7b7a65b362c12bd40c7757d436f63b787e323856c1820d03",
+      "unmodified_copy": true
+    },
+    {
+      "file": "check-restart.json",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\check-restart.json",
+      "sha256": "e4c682a4b7f24c4a006d875a61bef3e6b6df3eff5cb5fdf832dde406612770e9",
+      "unmodified_copy": true
+    },
+    {
+      "file": "forward_plus-benchmark.json",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\forward_plus\\benchmark.json",
+      "sha256": "497cb2a78932fb0944c6b0d4e71eb87caaec8daaf87c525cad6b2c0dfdb4a39a",
+      "unmodified_copy": true
+    },
+    {
+      "file": "gl_compatibility-benchmark.json",
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\snapshot\\game\\art07_d3\\evidence\\gl_compatibility\\benchmark.json",
+      "sha256": "eb61b22db536a8da19d8bb01ddd91762ac0166e9958667b4f5448fa425ab4867",
+      "unmodified_copy": true
+    }
+  ]
+}
