@@ -1,0 +1,402 @@
+{
+  "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\handoff",
+  "manifest_sha256": "0a182b3cb25c5815497cf79645ff1be7769cf1d9d012572bfbbb0a8116d0d9cd",
+  "files": 1830,
+  "bytes": 808257227,
+  "validated_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\validation-copy",
+  "fresh_check_commands": {
+    "import": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\u",
+      "exit_code": 0,
+      "pid": 35996,
+      "seconds": 13.0924184,
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\validation-copy\\review",
+        "--editor",
+        "--import"
+      ]
+    },
+    "check": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\u",
+      "exit_code": 0,
+      "pid": 16492,
+      "seconds": 2.2570945,
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\validation-copy\\review",
+        "--",
+        "--check"
+      ]
+    },
+    "restart": {
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\u",
+      "exit_code": 0,
+      "pid": 44988,
+      "seconds": 2.3265096,
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\validation-copy\\review",
+        "--",
+        "--restart"
+      ]
+    }
+  },
+  "fresh_reopen_command": {
+    "arguments": [
+      "--background",
+      "--threads",
+      "8",
+      "--python-exit-code",
+      "1",
+      "--python",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\tools\\wroughtwild-art07\\f2\\reopen.py",
+      "--",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\validation-copy\\source\\devices",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\validation-copy\\source\\thrumroot",
+      "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\fresh-reopen"
+    ],
+    "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\u",
+    "wrapper_pid": 43852,
+    "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+    "exit_code": 0,
+    "seconds": 8.2214717,
+    "child_pid": 43756,
+    "started": "2026-09-11T13:53:59.9809430+09:30"
+  },
+  "fresh_reopen": {
+    "masters": {
+      "devices": {
+        "images": [
+          {
+            "name": "d4_bog_oak_face_albedo.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          },
+          {
+            "name": "d4_bog_oak_face_normal.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          },
+          {
+            "name": "d4_bog_oak_face_orm.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          },
+          {
+            "name": "d4_wood_edge_albedo.png",
+            "packed": true,
+            "size": [
+              512,
+              512
+            ]
+          },
+          {
+            "name": "d4_wood_edge_normal.png",
+            "packed": true,
+            "size": [
+              512,
+              512
+            ]
+          },
+          {
+            "name": "d4_wood_edge_orm.png",
+            "packed": true,
+            "size": [
+              512,
+              512
+            ]
+          },
+          {
+            "name": "d4_wood_face_albedo.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          },
+          {
+            "name": "d4_wood_face_normal.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          },
+          {
+            "name": "d4_wood_face_orm.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          },
+          {
+            "name": "d6_iron_albedo.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          },
+          {
+            "name": "d6_iron_normal.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          },
+          {
+            "name": "d6_iron_orm.png",
+            "packed": true,
+            "size": [
+              1024,
+              1024
+            ]
+          }
+        ],
+        "objects": 12
+      },
+      "source": {
+        "images": [
+          {
+            "name": "Image_0",
+            "packed": true,
+            "size": [
+              2048,
+              2048
+            ]
+          },
+          {
+            "name": "Image_1",
+            "packed": true,
+            "size": [
+              2048,
+              2048
+            ]
+          }
+        ],
+        "objects": 5
+      }
+    },
+    "imports": {
+      "basket.glb": {
+        "triangles": 3848,
+        "degenerate": 0,
+        "godot_size": [
+          0.37727999687194824,
+          0.42361984215676785,
+          0.30527999997138977
+        ],
+        "surfaces": 3,
+        "colour_layers": 0
+      },
+      "landing.glb": {
+        "triangles": 3716,
+        "degenerate": 0,
+        "godot_size": [
+          1.2600000500679016,
+          1.8175004399240038,
+          1.0199999809265137
+        ],
+        "surfaces": 3,
+        "colour_layers": 0
+      },
+      "recovered-coil.glb": {
+        "triangles": 7708,
+        "degenerate": 0,
+        "godot_size": [
+          0.39599116146564484,
+          0.20163628086447716,
+          0.3958226293325424
+        ],
+        "surfaces": 2,
+        "colour_layers": 0
+      },
+      "winch.glb": {
+        "triangles": 22360,
+        "degenerate": 0,
+        "godot_size": [
+          1.3199999928474426,
+          1.8174999952316284,
+          1.0199999809265137
+        ],
+        "surfaces": 7,
+        "colour_layers": 0
+      },
+      "thrumroot-far.glb": {
+        "triangles": 9000,
+        "degenerate": 0,
+        "godot_size": [
+          2.133156895637512,
+          0.7764445375651121,
+          0.6973052620887756
+        ],
+        "surfaces": 1,
+        "colour_layers": 1
+      },
+      "thrumroot-middle.glb": {
+        "triangles": 26000,
+        "degenerate": 0,
+        "godot_size": [
+          2.1357775926589966,
+          0.7897389129502699,
+          0.7144849002361298
+        ],
+        "surfaces": 1,
+        "colour_layers": 1
+      },
+      "thrumroot-near.glb": {
+        "triangles": 64000,
+        "degenerate": 0,
+        "godot_size": [
+          2.1390403509140015,
+          0.790467280367011,
+          0.7144849002361298
+        ],
+        "surfaces": 1,
+        "colour_layers": 1
+      }
+    }
+  },
+  "reopened_render_sha256": "24fb7ed42d6986bcfaab2f24916dd589ca2a7feffb4f7a9c22e11eb9cee5ce81",
+  "sealed_package_unchanged_after_copy_import": true,
+  "scope_audit": {
+    "base": "4b5d89b376765fbf4d46049aa099e0bb154a82da",
+    "unchanged_base_files": 1054,
+    "changed_copy_files": [
+      {
+        "path": "game/project.godot",
+        "base_sha256": "9b3b7928af6363bc9b99c971c3f8f088141453bc3011025edd037b148d77073d",
+        "review_sha256": "3637807975b4d4284530cd7315be5129beda2783aded615a0849a8753730f7c1"
+      },
+      {
+        "path": "game/scripts/strange_resource_art.gd",
+        "base_sha256": "80fa8ccbdb86a8562b61b2ad84c46b1c0a4beed7f2102bc9b10e28d8978f6718",
+        "review_sha256": "e7192a21beff6675b8587955f12cf0b95b1756b73e9e520b2757a5c7a1ad2b14"
+      }
+    ],
+    "regenerated_import_metadata_excluded_from_package": [
+      "game/assets/authored/beam.glb.import",
+      "game/assets/authored/broadleaf_tree.glb.import",
+      "game/assets/authored/campfire.glb.import",
+      "game/assets/authored/cataclysm_augmentation_inlay.glb.import",
+      "game/assets/authored/cataclysm_fen_cistern.glb.import",
+      "game/assets/authored/cataclysm_fen_roof.glb.import",
+      "game/assets/authored/cataclysm_fen_wall.glb.import",
+      "game/assets/authored/cataclysm_forge_lamella.glb.import",
+      "game/assets/authored/cataclysm_forge_threshold.glb.import",
+      "game/assets/authored/cataclysm_impact_fragment.glb.import",
+      "game/assets/authored/cataclysm_root_fragment.glb.import",
+      "game/assets/authored/cataclysm_rootvault_frame.glb.import",
+      "game/assets/authored/cataclysm_rootvault_roof.glb.import",
+      "game/assets/authored/cataclysm_rootvault_wall.glb.import",
+      "game/assets/authored/cataclysm_upland_paving.glb.import",
+      "game/assets/authored/cataclysm_upland_shelter.glb.import",
+      "game/assets/authored/cataclysm_upland_wall.glb.import",
+      "game/assets/authored/chest.glb.import",
+      "game/assets/authored/deadfall.glb.import",
+      "game/assets/authored/fern_bed.glb.import",
+      "game/assets/authored/field_boulder.glb.import",
+      "game/assets/authored/forge_basic.glb.import",
+      "game/assets/authored/forge_improved.glb.import",
+      "game/assets/authored/mason_yard.glb.import",
+      "game/assets/authored/mobs/ash_hound.glb.import",
+      "game/assets/authored/mobs/bog_lurker.glb.import",
+      "game/assets/authored/mobs/cinder_archer.glb.import",
+      "game/assets/authored/mobs/cinder_wisp.glb.import",
+      "game/assets/authored/mobs/ember_whelp.glb.import",
+      "game/assets/authored/mobs/forge_tyrant.glb.import",
+      "game/assets/authored/mobs/gloom_crawler.glb.import",
+      "game/assets/authored/mobs/hollow_knight.glb.import",
+      "game/assets/authored/mobs/marsh_wisp.glb.import",
+      "game/assets/authored/mobs/shrieker.glb.import",
+      "game/assets/authored/mobs/stone_husk.glb.import",
+      "game/assets/authored/mobs/valley_elk.glb.import",
+      "game/assets/authored/pillar.glb.import",
+      "game/assets/authored/shrub.glb.import",
+      "game/assets/authored/strange_arm.glb.import",
+      "game/assets/authored/strange_basket.glb.import",
+      "game/assets/authored/strange_bellows.glb.import",
+      "game/assets/authored/strange_drum.glb.import",
+      "game/assets/authored/strange_empty_husk.glb.import",
+      "game/assets/authored/strange_fern.glb.import",
+      "game/assets/authored/strange_hollow_trunk.glb.import",
+      "game/assets/authored/strange_lamp.glb.import",
+      "game/assets/authored/strange_landing.glb.import",
+      "game/assets/authored/strange_lantern_shell.glb.import",
+      "game/assets/authored/strange_lanternheart.glb.import",
+      "game/assets/authored/strange_lever.glb.import",
+      "game/assets/authored/strange_lightning_scar.glb.import",
+      "game/assets/authored/strange_low_outcrop.glb.import",
+      "game/assets/authored/strange_moss.glb.import",
+      "game/assets/authored/strange_pullstone.glb.import",
+      "game/assets/authored/strange_root_arch.glb.import",
+      "game/assets/authored/strange_root_arch_b.glb.import",
+      "game/assets/authored/strange_root_arch_c.glb.import",
+      "game/assets/authored/strange_root_crown.glb.import",
+      "game/assets/authored/strange_scree.glb.import",
+      "game/assets/authored/strange_sedge.glb.import",
+      "game/assets/authored/strange_sorter.glb.import",
+      "game/assets/authored/strange_stone_rib.glb.import",
+      "game/assets/authored/strange_stormglass.glb.import",
+      "game/assets/authored/strange_thrumroot_core.glb.import",
+      "game/assets/authored/strange_thrumroot_shell.glb.import",
+      "game/assets/authored/strange_vent_case.glb.import",
+      "game/assets/authored/strange_ventlung.glb.import",
+      "game/assets/authored/strange_wildwood_tree.glb.import",
+      "game/assets/authored/strange_winch.glb.import",
+      "game/assets/authored/stump.glb.import",
+      "game/assets/authored/wall_panel.glb.import",
+      "game/assets/authored/workbench.glb.import",
+      "game/assets/textures/ash.png.import",
+      "game/assets/textures/bark.png.import",
+      "game/assets/textures/bronze.png.import",
+      "game/assets/textures/dirt.png.import",
+      "game/assets/textures/fieldstone.png.import",
+      "game/assets/textures/forest_floor.png.import",
+      "game/assets/textures/grass.png.import",
+      "game/assets/textures/iron_plate.png.import",
+      "game/assets/textures/iron_vein.png.import",
+      "game/assets/textures/leaves.png.import",
+      "game/assets/textures/marsh.png.import",
+      "game/assets/textures/masonry.png.import",
+      "game/assets/textures/planks.png.import",
+      "game/assets/textures/rock.png.import",
+      "game/assets/textures/silver.png.import",
+      "game/assets/textures/steel.png.import",
+      "game/assets/textures/stone_node.png.import"
+    ],
+    "frozen_archive_sha256": "2502b6e5ef903a1cbbac205e180ed5ff73caebcde1e18c130527d377c8b8adda",
+    "native_provenance": {
+      "godot_cpp_sha256": "701934d2505314d4272ef258beca75974de9f2bb2d94d98b29d22670de42370c",
+      "dll_sha256": "3cfc50f58319dc7e22bc197343c98e1beb16204b791633c45f9650b67bb4b173",
+      "revision": "4b5d89b376765fbf4d46049aa099e0bb154a82da"
+    }
+  }
+}

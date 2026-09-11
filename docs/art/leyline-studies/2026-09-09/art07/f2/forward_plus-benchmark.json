@@ -1,0 +1,17 @@
+{
+	"device": "NVIDIA GeForce RTX 5090",
+	"draws": 97.0,
+	"p50_ms": 0.444,
+	"p95_ms": 1.018,
+	"primitives": 409846.0,
+	"renderer": "forward_plus",
+	"samples": 600,
+	"scope": "settled isolated native study; no captures/generation during measurement",
+	"size": [
+		1440,
+		900
+	],
+	"texture_bytes": 375075328.0,
+	"vsync": "off",
+	"worst_ms": 2.163
+}

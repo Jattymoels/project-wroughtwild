@@ -1,0 +1,6266 @@
+[
+	{
+		"basket": "Vector3(0.625, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0.2945243, 0, 0)",
+		"frame": 0,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.015625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(0.75, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0.5890486, 0, 0)",
+		"frame": 1,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.03125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(0.875, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0.88357294, 0, 0)",
+		"frame": 2,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.046875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(1, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(1.1780972, 0, 0)",
+		"frame": 3,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(1.125, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(1.4726216, 0, 0)",
+		"frame": 4,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.078125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(1.25, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(1.7671459, 0, 0)",
+		"frame": 5,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.09375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(1.375, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(2.06167, 0, 0)",
+		"frame": 6,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.109375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(1.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(2.3561945, 0, 0)",
+		"frame": 7,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(1.625, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(2.6507187, 0, 0)",
+		"frame": 8,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.140625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(1.75, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(2.9452431, 0, 0)",
+		"frame": 9,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.15625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(1.875, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(3.2397673, 0, 0)",
+		"frame": 10,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.171875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(2, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(3.5342917, 0, 0)",
+		"frame": 11,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.1875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(2.125, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(3.828816, 0, 0)",
+		"frame": 12,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.203125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(2.25, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(4.12334, 0, 0)",
+		"frame": 13,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.21875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(2.375, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(4.417865, 0, 0)",
+		"frame": 14,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.234375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(2.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(4.712389, 0, 0)",
+		"frame": 15,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.25,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(2.625, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(5.006913, 0, 0)",
+		"frame": 16,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.265625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(2.75, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(5.3014374, 0, 0)",
+		"frame": 17,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.28125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(2.875, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(5.595962, 0, 0)",
+		"frame": 18,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.296875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(5.8904862, 0, 0)",
+		"frame": 19,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.3125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.125, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(6.1850104, 0, 0)",
+		"frame": 20,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.328125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.25, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(6.4795346, 0, 0)",
+		"frame": 21,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.34375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.375, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(6.7740593, 0, 0)",
+		"frame": 22,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.359375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 23,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 24,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 25,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 26,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 27,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 28,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 29,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 30,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 31,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 32,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 33,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 34,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 35,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 36,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 37,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 38,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 39,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 40,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 41,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 42,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 43,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 44,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 45,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 46,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.5, 1.25, 0.5)",
+		"blocked": true,
+		"drum": "Vector3(7.0685835, 0, 0)",
+		"frame": 47,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.625, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(7.3631077, 0, 0)",
+		"frame": 48,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.390625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.75, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(7.657632, 0, 0)",
+		"frame": 49,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.40625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(3.875, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(7.9521565, 0, 0)",
+		"frame": 50,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.421875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(4, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(8.24668, 0, 0)",
+		"frame": 51,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.4375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(4.125, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(8.541205, 0, 0)",
+		"frame": 52,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.453125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(4.25, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(8.83573, 0, 0)",
+		"frame": 53,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.46875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(4.375, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(9.130254, 0, 0)",
+		"frame": 54,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.484375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(4.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(9.424778, 0, 0)",
+		"frame": 55,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.5,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(4.625, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(9.719302, 0, 0)",
+		"frame": 56,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.515625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(4.75, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(10.013826, 0, 0)",
+		"frame": 57,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.53125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(4.875, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(10.308351, 0, 0)",
+		"frame": 58,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.546875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(10.602875, 0, 0)",
+		"frame": 59,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.5625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(5.125, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(10.8974, 0, 0)",
+		"frame": 60,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.578125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(5.25, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(11.191924, 0, 0)",
+		"frame": 61,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.59375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(5.375, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(11.486448, 0, 0)",
+		"frame": 62,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.609375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(5.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(11.7809725, 0, 0)",
+		"frame": 63,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(5.625, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(12.075497, 0, 0)",
+		"frame": 64,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.640625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(5.75, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(12.370021, 0, 0)",
+		"frame": 65,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.65625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(5.875, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(12.664545, 0, 0)",
+		"frame": 66,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.671875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(6, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(12.959069, 0, 0)",
+		"frame": 67,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.6875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(6.125, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(13.253594, 0, 0)",
+		"frame": 68,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.703125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(6.25, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(13.548119, 0, 0)",
+		"frame": 69,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.71875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(6.375, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(13.842643, 0, 0)",
+		"frame": 70,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.734375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(6.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(14.137167, 0, 0)",
+		"frame": 71,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.75,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(6.625, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(14.431691, 0, 0)",
+		"frame": 72,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.765625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(6.75, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(14.726215, 0, 0)",
+		"frame": 73,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.78125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(6.875, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(15.02074, 0, 0)",
+		"frame": 74,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.796875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(7, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(15.315264, 0, 0)",
+		"frame": 75,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.8125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(7.125, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(15.609789, 0, 0)",
+		"frame": 76,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.828125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(7.25, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(15.904313, 0, 0)",
+		"frame": 77,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.84375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(7.375, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(16.198837, 0, 0)",
+		"frame": 78,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.859375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(7.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(16.49336, 0, 0)",
+		"frame": 79,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(7.625, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(16.787886, 0, 0)",
+		"frame": 80,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.890625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(7.75, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(17.08241, 0, 0)",
+		"frame": 81,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.90625,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(7.875, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(17.376934, 0, 0)",
+		"frame": 82,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.921875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(17.67146, 0, 0)",
+		"frame": 83,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.9375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.125, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(17.965982, 0, 0)",
+		"frame": 84,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.953125,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.25, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(18.260508, 0, 0)",
+		"frame": 85,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.96875,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.375, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(18.55503, 0, 0)",
+		"frame": 86,
+		"native": {
+			"at_landing": false,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 0,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": true,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.984375,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 87,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 88,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 89,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 90,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 91,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 92,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 93,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 94,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 95,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 96,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 97,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 98,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 99,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 100,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 101,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 102,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 103,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 104,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 105,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 106,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	},
+	{
+		"basket": "Vector3(8.5, 1.25, 0.5)",
+		"blocked": false,
+		"drum": "Vector3(0, 0, 0)",
+		"frame": 107,
+		"native": {
+			"at_landing": true,
+			"cargo": {
+				"wood": 20
+			},
+			"completed_cycles": 0,
+			"completed_trips": 1,
+			"cycle_seconds": 0.0,
+			"delay_paused": false,
+			"delay_seconds": 0.0,
+			"energy": 0,
+			"escrow_drive": 0,
+			"escrow_fuel": {
+
+			},
+			"escrow_heat": 0,
+			"escrow_inputs": {
+
+			},
+			"feeder_paused": false,
+			"ferrous": {
+
+			},
+			"forge_key": "",
+			"forge_position": "(0.0, 0.0, 0.0)",
+			"heat": 0,
+			"heat_key": "",
+			"input": {
+
+			},
+			"key": "fixture_0_0_0",
+			"kind": "cargo_winch",
+			"lamp_on": true,
+			"link": "fixture_16_0_0",
+			"moving": false,
+			"output": {
+
+			},
+			"pending_request": false,
+			"position": "(0.5, 0.0, 0.5)",
+			"progress": 0.0,
+			"pulses": 0,
+			"quarter_turns": 0,
+			"queued_cycles": 0,
+			"remainder": {
+
+			},
+			"second_link": "",
+			"second_span_length": 0.0,
+			"source_id": "",
+			"span_length": 8.0
+		}
+	}
+]
