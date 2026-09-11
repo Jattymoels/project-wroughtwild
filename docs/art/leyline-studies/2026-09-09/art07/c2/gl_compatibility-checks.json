@@ -1,0 +1,21 @@
+{
+	"extra_colliders": 0,
+	"grass_ground_origins": 86,
+	"lod_cases": [
+		{
+			"distance": 8,
+			"expected": 0
+		},
+		{
+			"distance": 10,
+			"expected": 1
+		},
+		{
+			"distance": 24,
+			"expected": 2
+		}
+	],
+	"max_origin_error_m": 0.0,
+	"pause_resume": true,
+	"scope": "Authored flat quarry composition, separate native work/body/contact fixture. No ordinary-world adoption."
+}

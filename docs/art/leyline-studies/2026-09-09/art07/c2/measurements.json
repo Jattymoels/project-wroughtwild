@@ -1,0 +1,262 @@
+{
+  "models": 60,
+  "images_packed": 9,
+  "degenerate_triangles": 0,
+  "representative": {
+    "slate-v0-full": [
+      {
+        "triangles": 18474,
+        "surfaces": 1
+      },
+      {
+        "triangles": 6997,
+        "surfaces": 1
+      },
+      {
+        "triangles": 1797,
+        "surfaces": 1
+      }
+    ],
+    "slate-v0-worked": [
+      {
+        "triangles": 13048,
+        "surfaces": 1
+      },
+      {
+        "triangles": 6995,
+        "surfaces": 1
+      },
+      {
+        "triangles": 1797,
+        "surfaces": 1
+      }
+    ],
+    "slate-v0-last": [
+      {
+        "triangles": 7084,
+        "surfaces": 1
+      },
+      {
+        "triangles": 7000,
+        "surfaces": 1
+      },
+      {
+        "triangles": 1800,
+        "surfaces": 1
+      }
+    ],
+    "slate-v0-recovered": [
+      {
+        "triangles": 2696,
+        "surfaces": 1
+      },
+      {
+        "triangles": 2696,
+        "surfaces": 1
+      },
+      {
+        "triangles": 1799,
+        "surfaces": 1
+      }
+    ],
+    "shellstone-v0-full": [
+      {
+        "triangles": 32000,
+        "surfaces": 2
+      },
+      {
+        "triangles": 7000,
+        "surfaces": 2
+      },
+      {
+        "triangles": 1800,
+        "surfaces": 1
+      }
+    ],
+    "shellstone-v0-worked": [
+      {
+        "triangles": 20164,
+        "surfaces": 2
+      },
+      {
+        "triangles": 7000,
+        "surfaces": 2
+      },
+      {
+        "triangles": 1798,
+        "surfaces": 2
+      }
+    ],
+    "shellstone-v0-last": [
+      {
+        "triangles": 12738,
+        "surfaces": 2
+      },
+      {
+        "triangles": 7000,
+        "surfaces": 2
+      },
+      {
+        "triangles": 1800,
+        "surfaces": 2
+      }
+    ],
+    "shellstone-v0-recovered": [
+      {
+        "triangles": 2500,
+        "surfaces": 2
+      },
+      {
+        "triangles": 2500,
+        "surfaces": 2
+      },
+      {
+        "triangles": 1800,
+        "surfaces": 2
+      }
+    ],
+    "upland-tussock-v0": [
+      {
+        "triangles": 1920,
+        "surfaces": 1
+      },
+      {
+        "triangles": 880,
+        "surfaces": 1
+      },
+      {
+        "triangles": 360,
+        "surfaces": 1
+      }
+    ]
+  },
+  "open_edge_limitations": {
+    "pine-context.glb": 48988,
+    "shellstone-v0-full-lod0.glb": 4,
+    "shellstone-v0-full-lod1.glb": 4,
+    "shellstone-v0-full-lod2.glb": 4,
+    "shellstone-v0-recovered-lod0.glb": 4,
+    "shellstone-v0-recovered-lod1.glb": 4,
+    "shellstone-v0-recovered-lod2.glb": 4,
+    "shellstone-v1-full-lod0.glb": 4,
+    "shellstone-v1-full-lod1.glb": 4,
+    "shellstone-v1-full-lod2.glb": 4,
+    "shellstone-v1-last-lod0.glb": 4,
+    "shellstone-v1-last-lod1.glb": 4,
+    "shellstone-v1-last-lod2.glb": 4,
+    "shellstone-v1-worked-lod0.glb": 4,
+    "shellstone-v1-worked-lod1.glb": 4,
+    "shellstone-v1-worked-lod2.glb": 4,
+    "slate-v0-full-lod1.glb": 9,
+    "slate-v0-full-lod2.glb": 9,
+    "slate-v0-recovered-lod2.glb": 3,
+    "slate-v0-worked-lod1.glb": 9,
+    "slate-v0-worked-lod2.glb": 9,
+    "slate-v1-full-lod1.glb": 9,
+    "slate-v1-full-lod2.glb": 9,
+    "slate-v1-recovered-lod2.glb": 3,
+    "slate-v1-worked-lod1.glb": 12,
+    "slate-v1-worked-lod2.glb": 12
+  },
+  "textures": {
+    "unique_textures": {
+      "0e8668cd3517597eab58530d626435eca404480d25344a04b694259272e9a7f6": {
+        "size": [
+          1024,
+          1024
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 2093988,
+        "rgba8_mip_bytes": 5592405
+      },
+      "ad1eb75d764f757d80968fe3303db8817cd2e0d3ecae5885c0c8914aa265d516": {
+        "size": [
+          1024,
+          1024
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 663219,
+        "rgba8_mip_bytes": 5592405
+      },
+      "d267d6c3388bf04dabeb8dcbc1d6383d58bf08f2ff07be30bdceab36aa7e9c5c": {
+        "size": [
+          1024,
+          1024
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 2287704,
+        "rgba8_mip_bytes": 5592405
+      },
+      "8bd5603cff1c22d648f8e633f1e27d266a311695e89104ae70787c512a5f4796": {
+        "size": [
+          1024,
+          1024
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 1002688,
+        "rgba8_mip_bytes": 5592405
+      },
+      "8dc227c723a14c646b2e70733aceb46c9815134442d5581e62ec64a292aac7db": {
+        "size": [
+          1024,
+          1024
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 1977575,
+        "rgba8_mip_bytes": 5592405
+      },
+      "62918817a8be2cee33abaf6ca3e6a782ba47fb9d9501935f8153b64c2a7ca099": {
+        "size": [
+          1024,
+          1024
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 621665,
+        "rgba8_mip_bytes": 5592405
+      },
+      "15b66b6ae1e0272ad4a25441cdba23f12595e550c2da840b017879aadd9a9bc1": {
+        "size": [
+          1024,
+          1024
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 1600003,
+        "rgba8_mip_bytes": 5592405
+      },
+      "bed057dbef3cf79bef89efce88ad45aa6b830ea2b3155dfb74102d19ae4fe4f8": {
+        "size": [
+          1024,
+          1024
+        ],
+        "source_size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 1371046,
+        "rgba8_mip_bytes": 5592405
+      }
+    },
+    "texture_rgba8_mip_bytes": 44739240
+  }
+}

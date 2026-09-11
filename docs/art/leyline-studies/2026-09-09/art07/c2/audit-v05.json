@@ -1,0 +1,1343 @@
+{
+  "packed_images": [
+    {
+      "name": "Image_0",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.003",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_1",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.003",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "shellstone seamless mineral albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "slate seamless mineral albedo",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Tree scar - core damage travel",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "Non-Color"
+    }
+  ],
+  "exports": [
+    {
+      "file": "pine-context.glb",
+      "sha256": "b3beeb2f6142ecff6f400c46ff873328d64d27661437a6b2fa121a0c6f8e40fd",
+      "triangles": 69637,
+      "surfaces": 3,
+      "degenerates": 0,
+      "open_edges_after_weld": 48988,
+      "bounds_blender_m": [
+        [
+          -3.225550413131714,
+          -3.0026662349700928,
+          0.012035530060529709
+        ],
+        [
+          3.257200002670288,
+          2.7689731121063232,
+          9.156060218811035
+        ]
+      ],
+      "bytes": 13108220
+    },
+    {
+      "file": "rock-shelf-altered.glb",
+      "sha256": "607295a056e53e33052b54df7be1cac1d3c4b7cbc68a990e56aa17e5b9b67744",
+      "triangles": 2220,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -0.015506967902183533
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3350284
+    },
+    {
+      "file": "rock-shelf.glb",
+      "sha256": "ca6a06b5778da2fa49dea769310ba52b059a813e82294b7269e8fd3894391dfe",
+      "triangles": 2176,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -1.6619669198989868,
+          -0.910183310508728,
+          -8.326172746819793e-07
+        ],
+        [
+          1.7000000476837158,
+          1.0499999523162842,
+          0.8160000443458557
+        ]
+      ],
+      "bytes": 3340020
+    },
+    {
+      "file": "shellstone-v0-full-lod0.glb",
+      "sha256": "bb4dfae3920aff329043a8fad520c30ad2b038630b3701c5564de5a0afe990c2",
+      "triangles": 32000,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9701573252677917,
+          -0.5401197075843811,
+          -2.6783063731272705e-05
+        ],
+        [
+          0.9703449606895447,
+          0.5400419235229492,
+          0.5327500700950623
+        ]
+      ],
+      "bytes": 5254816
+    },
+    {
+      "file": "shellstone-v0-full-lod1.glb",
+      "sha256": "3d2017a183ddd2c644e91b3bc2d1bc3391405550df1a47ce07a7576114f6cc8a",
+      "triangles": 7000,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9709973931312561,
+          -0.5385017395019531,
+          -0.0011500823311507702
+        ],
+        [
+          0.971541166305542,
+          0.540763795375824,
+          0.5341061353683472
+        ]
+      ],
+      "bytes": 4489216
+    },
+    {
+      "file": "shellstone-v0-full-lod2.glb",
+      "sha256": "295a7915bb443176a12d5e556059988843f2e1fe37bf336a624b8c44acbbebd0",
+      "triangles": 1800,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9668510556221008,
+          -0.5374398827552795,
+          -0.0044190604239702225
+        ],
+        [
+          0.9755316972732544,
+          0.5383716821670532,
+          0.5371120572090149
+        ]
+      ],
+      "bytes": 2692704
+    },
+    {
+      "file": "shellstone-v0-last-lod0.glb",
+      "sha256": "2e11299912f1208c2864de67cc0b7aebf24902601454c91c736003952bebe582",
+      "triangles": 12738,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9701573252677917,
+          -0.4769928753376007,
+          1.0430813157658037e-10
+        ],
+        [
+          -0.2800000011920929,
+          0.5400419235229492,
+          0.5327500700950623
+        ]
+      ],
+      "bytes": 4614444
+    },
+    {
+      "file": "shellstone-v0-last-lod1.glb",
+      "sha256": "79cf940d104816ccc238cd0a4bbf616c1914c86bc05ee55a652420cd7d08cb7f",
+      "triangles": 7000,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9713565707206726,
+          -0.47649961709976196,
+          -0.0003506180946715176
+        ],
+        [
+          -0.27982959151268005,
+          0.5405306816101074,
+          0.5333157777786255
+        ]
+      ],
+      "bytes": 4440520
+    },
+    {
+      "file": "shellstone-v0-last-lod2.glb",
+      "sha256": "3e4b27ede92bfaf2153ad928119812449e22cdfe7c28fe319acb983f9fd8dd96",
+      "triangles": 1800,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.968835175037384,
+          -0.4796028733253479,
+          -0.0010355287231504917
+        ],
+        [
+          -0.2794216573238373,
+          0.540763795375824,
+          0.5341061353683472
+        ]
+      ],
+      "bytes": 4276248
+    },
+    {
+      "file": "shellstone-v0-recovered-lod0.glb",
+      "sha256": "90b1030c96dfb5be7d57eb9acae80eb4cf20297af9ecd3e9a2e6ce3dd57f3fc9",
+      "triangles": 2500,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.12039679288864136,
+          -0.18485139310359955,
+          -0.0002807225100696087
+        ],
+        [
+          0.12075641751289368,
+          0.1862204670906067,
+          0.18204721808433533
+        ]
+      ],
+      "bytes": 4304084
+    },
+    {
+      "file": "shellstone-v0-recovered-lod1.glb",
+      "sha256": "9445e43bc6093e62d7989cdba7dde0223838f29f2408bd4f5af6ae0787e9490d",
+      "triangles": 2500,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.12039679288864136,
+          -0.18485139310359955,
+          -0.0002807225100696087
+        ],
+        [
+          0.12075641751289368,
+          0.1862204670906067,
+          0.18204721808433533
+        ]
+      ],
+      "bytes": 4304084
+    },
+    {
+      "file": "shellstone-v0-recovered-lod2.glb",
+      "sha256": "c5c3738758fb298c0bb6ae9186143f667551140901ca7b36b685ca49fa3be2e7",
+      "triangles": 1800,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.12041716277599335,
+          -0.18485139310359955,
+          -0.0002189946681028232
+        ],
+        [
+          0.12075641751289368,
+          0.1862204670906067,
+          0.18204721808433533
+        ]
+      ],
+      "bytes": 4279720
+    },
+    {
+      "file": "shellstone-v0-worked-lod0.glb",
+      "sha256": "12e91849fa365991258ecf035306d37166fc4efb020be354a2ba9897430471a8",
+      "triangles": 20164,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9701573252677917,
+          -0.5085519552230835,
+          1.0430813157658037e-10
+        ],
+        [
+          0.23000001907348633,
+          0.5400419235229492,
+          0.5327500700950623
+        ]
+      ],
+      "bytes": 4874208
+    },
+    {
+      "file": "shellstone-v0-worked-lod1.glb",
+      "sha256": "a47aac83d0abe31a421b19eb95953c338cd0c25a18ee7b66f603c04f94e83ad4",
+      "triangles": 7000,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9709973931312561,
+          -0.5075165033340454,
+          -0.000261431880062446
+        ],
+        [
+          0.23013637959957123,
+          0.540763795375824,
+          0.5341061353683472
+        ]
+      ],
+      "bytes": 4466956
+    },
+    {
+      "file": "shellstone-v0-worked-lod2.glb",
+      "sha256": "36eea2bfe975dd8a98524fd5eef0cfa39ee5e62cfcd6192c8a7250eb1330a62d",
+      "triangles": 1798,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.968835175037384,
+          -0.5003947019577026,
+          -0.003265341743826866
+        ],
+        [
+          0.23120450973510742,
+          0.5364957451820374,
+          0.5371120572090149
+        ]
+      ],
+      "bytes": 4286608
+    },
+    {
+      "file": "shellstone-v1-full-lod0.glb",
+      "sha256": "935576a74da6eaf9417a7242dcdce7e60568d35eb63ca65b481a139daaf5f2d9",
+      "triangles": 29714,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9703449606895447,
+          -0.5400419235229492,
+          1.0430813157658037e-10
+        ],
+        [
+          0.8199999928474426,
+          0.5401197075843811,
+          0.5327500700950623
+        ]
+      ],
+      "bytes": 5191632
+    },
+    {
+      "file": "shellstone-v1-full-lod1.glb",
+      "sha256": "6bb74876a517925fd3706f4c47e1733d1a04b2947063febe34d15bce22bb718d",
+      "triangles": 7000,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.971541166305542,
+          -0.540763795375824,
+          -0.0011500823311507702
+        ],
+        [
+          0.8204163312911987,
+          0.5385017395019531,
+          0.5341061353683472
+        ]
+      ],
+      "bytes": 4488700
+    },
+    {
+      "file": "shellstone-v1-full-lod2.glb",
+      "sha256": "795b099dfa9770e4a6d2609cdc26d70776b3dded7a2459c470cb66811a021050",
+      "triangles": 1800,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9755316972732544,
+          -0.5383716821670532,
+          -0.0031493452843278646
+        ],
+        [
+          0.8226926326751709,
+          0.5374398827552795,
+          0.5371120572090149
+        ]
+      ],
+      "bytes": 4293528
+    },
+    {
+      "file": "shellstone-v1-last-lod0.glb",
+      "sha256": "ef89bcfa24f5156e80b3e387a1635308f063ab7251b8cefde6c966b581d7dad0",
+      "triangles": 12774,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9703449606895447,
+          -0.4623130261898041,
+          1.0430813157658037e-10
+        ],
+        [
+          -0.2800000011920929,
+          0.5401197075843811,
+          0.4927573502063751
+        ]
+      ],
+      "bytes": 4625828
+    },
+    {
+      "file": "shellstone-v1-last-lod1.glb",
+      "sha256": "cf6b227daaaed7c3afb881b3f9a9522733bd7798508686f0c373ff4459767a3c",
+      "triangles": 7000,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9703449606895447,
+          -0.46185964345932007,
+          -0.00027824044809676707
+        ],
+        [
+          -0.27987736463546753,
+          0.5395292639732361,
+          0.49201950430870056
+        ]
+      ],
+      "bytes": 4448848
+    },
+    {
+      "file": "shellstone-v1-last-lod2.glb",
+      "sha256": "fc2413abc2ce93e1f8f226dafb6963c0fd6bb42347d3f80aa1baccfb710c06a9",
+      "triangles": 1800,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9729593396186829,
+          -0.4643952250480652,
+          -0.0020542347338050604
+        ],
+        [
+          -0.27954187989234924,
+          0.5385017395019531,
+          0.49295395612716675
+        ]
+      ],
+      "bytes": 4281216
+    },
+    {
+      "file": "shellstone-v1-recovered-lod0.glb",
+      "sha256": "01df9389de85f0896b1644c8bececdc9e7f249dafce701c9ae6c9c86e60418b8",
+      "triangles": 2500,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.09259460121393204,
+          -0.1884111911058426,
+          -4.053383236168884e-05
+        ],
+        [
+          0.09260612726211548,
+          0.18846260011196136,
+          0.1976192742586136
+        ]
+      ],
+      "bytes": 4297208
+    },
+    {
+      "file": "shellstone-v1-recovered-lod1.glb",
+      "sha256": "1bee80a91549d5a1e27598857312767176593e6df082834643f77b17a95e6b92",
+      "triangles": 2500,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.09259460121393204,
+          -0.1884111911058426,
+          -4.053383236168884e-05
+        ],
+        [
+          0.09260612726211548,
+          0.18846260011196136,
+          0.1976192742586136
+        ]
+      ],
+      "bytes": 4297208
+    },
+    {
+      "file": "shellstone-v1-recovered-lod2.glb",
+      "sha256": "750929a276f6d95f9f04dc80792f31278a61a797b57911f1f5ad2cf6a1d98c99",
+      "triangles": 1800,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.09262227267026901,
+          -0.1884111911058426,
+          -0.00013608498557005078
+        ],
+        [
+          0.09271100908517838,
+          0.18918074667453766,
+          0.1976192742586136
+        ]
+      ],
+      "bytes": 4274640
+    },
+    {
+      "file": "shellstone-v1-worked-lod0.glb",
+      "sha256": "efcc2cd267f6e17a2fbe812ca343e5815c148c1e031b752afa3b0d47f616bdca",
+      "triangles": 20406,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9703449606895447,
+          -0.4995916187763214,
+          1.0430813157658037e-10
+        ],
+        [
+          0.23000000417232513,
+          0.5401197075843811,
+          0.5247124433517456
+        ]
+      ],
+      "bytes": 4893448
+    },
+    {
+      "file": "shellstone-v1-worked-lod1.glb",
+      "sha256": "f8d8447b51a1f0597466d7387b9a378569e08299d71e852e2f43b104a7c1469a",
+      "triangles": 7000,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9708667397499084,
+          -0.5002059936523438,
+          -0.00037980664637871087
+        ],
+        [
+          0.2301759421825409,
+          0.5395292639732361,
+          0.5256690979003906
+        ]
+      ],
+      "bytes": 4476396
+    },
+    {
+      "file": "shellstone-v1-worked-lod2.glb",
+      "sha256": "e19d488194ec9a8d74e14d86791be91ee0b3f278b46a1efe2c9e280c20efcb1c",
+      "triangles": 1800,
+      "surfaces": 2,
+      "degenerates": 0,
+      "open_edges_after_weld": 4,
+      "bounds_blender_m": [
+        [
+          -0.9729593396186829,
+          -0.5063566565513611,
+          -0.0039471653290092945
+        ],
+        [
+          0.23045922815799713,
+          0.5374924540519714,
+          0.5234934687614441
+        ]
+      ],
+      "bytes": 4291224
+    },
+    {
+      "file": "slate-v0-full-lod0.glb",
+      "sha256": "8f2319b13e5e94896fc777215ec0a39c1ae7169cbe306bbbd970e66827b248ce",
+      "triangles": 18474,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9800237417221069,
+          -0.5406498908996582,
+          -2.1129846483614045e-10
+        ],
+        [
+          0.9777045845985413,
+          0.5685551762580872,
+          0.5293996334075928
+        ]
+      ],
+      "bytes": 1862232
+    },
+    {
+      "file": "slate-v0-full-lod1.glb",
+      "sha256": "51f29f2b516da3792feffdd4c49dfe4129295f777d35cac333f0b834f161e1a3",
+      "triangles": 6997,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 9,
+      "bounds_blender_m": [
+        [
+          -0.9719522595405579,
+          -0.5237153768539429,
+          -0.00012580926704686135
+        ],
+        [
+          0.976348876953125,
+          0.5508469343185425,
+          0.5285326838493347
+        ]
+      ],
+      "bytes": 1561364
+    },
+    {
+      "file": "slate-v0-full-lod2.glb",
+      "sha256": "d994cd1baf769630938c542a8adada4aaf976e6d49616be847a55d86933f2e0a",
+      "triangles": 1797,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 9,
+      "bounds_blender_m": [
+        [
+          -0.9556853175163269,
+          -0.5057626962661743,
+          -0.0004416726587805897
+        ],
+        [
+          0.9798485040664673,
+          0.5556177496910095,
+          0.5297558307647705
+        ]
+      ],
+      "bytes": 1417072
+    },
+    {
+      "file": "slate-v0-last-lod0.glb",
+      "sha256": "417a8a72144c0dba346e5a6e33726c24bcaa2760f00ccee0229d21e392168a51",
+      "triangles": 7084,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9800237417221069,
+          -0.49472707509994507,
+          -2.1129846483614045e-10
+        ],
+        [
+          -0.2800000011920929,
+          0.49674221873283386,
+          0.5048118233680725
+        ]
+      ],
+      "bytes": 1575232
+    },
+    {
+      "file": "slate-v0-last-lod1.glb",
+      "sha256": "40e503e27d3f5fca2ed023355a5556a1da8bb9a80e89a500fa60989616e79607",
+      "triangles": 7000,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9800237417221069,
+          -0.49472707509994507,
+          -2.1129846483614045e-10
+        ],
+        [
+          -0.2800000011920929,
+          0.49674221873283386,
+          0.5048118233680725
+        ]
+      ],
+      "bytes": 1572104
+    },
+    {
+      "file": "slate-v0-last-lod2.glb",
+      "sha256": "1854b2eae96561d7b412e2447f2767cd348002bbf9597b5f14381d2884618b2a",
+      "triangles": 1800,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9719522595405579,
+          -0.4864860773086548,
+          -0.00012580926704686135
+        ],
+        [
+          -0.27990299463272095,
+          0.4831014573574066,
+          0.5045740604400635
+        ]
+      ],
+      "bytes": 1424804
+    },
+    {
+      "file": "slate-v0-recovered-lod0.glb",
+      "sha256": "26d026e8b903894fcc3f93090adfb1ff0d5409e9800921479ea6354313f2f0cb",
+      "triangles": 2696,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.18429067730903625,
+          -0.1282188594341278,
+          2.9057263539744582e-11
+        ],
+        [
+          0.18523363769054413,
+          0.12972575426101685,
+          0.032413505017757416
+        ]
+      ],
+      "bytes": 1450464
+    },
+    {
+      "file": "slate-v0-recovered-lod1.glb",
+      "sha256": "28129284a6f0d173c23988fcf73a0eac549ea0c7a11c3dfae59c64b10b0207b9",
+      "triangles": 2696,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.18429067730903625,
+          -0.1282188594341278,
+          2.9057263539744582e-11
+        ],
+        [
+          0.18523363769054413,
+          0.12972575426101685,
+          0.032413505017757416
+        ]
+      ],
+      "bytes": 1450464
+    },
+    {
+      "file": "slate-v0-recovered-lod2.glb",
+      "sha256": "646f4bc70ccbdf07858fb882d7e06e0eec9456ea6943cd6835b4d44d359b6404",
+      "triangles": 1799,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 3,
+      "bounds_blender_m": [
+        [
+          -0.18429067730903625,
+          -0.12968750298023224,
+          -0.00015255178732331842
+        ],
+        [
+          0.18523363769054413,
+          0.12832479178905487,
+          0.032413505017757416
+        ]
+      ],
+      "bytes": 1427008
+    },
+    {
+      "file": "slate-v0-worked-lod0.glb",
+      "sha256": "010524ea2df2180eddeb9eb258a519bfec737f1ef16768b0eea70c2b745828ac",
+      "triangles": 13048,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9800237417221069,
+          -0.5406498908996582,
+          -2.1129846483614045e-10
+        ],
+        [
+          0.23000003397464752,
+          0.5508934259414673,
+          0.5290828347206116
+        ]
+      ],
+      "bytes": 1742252
+    },
+    {
+      "file": "slate-v0-worked-lod1.glb",
+      "sha256": "7c734192a6a83dd93ebb89a49bfa138a87c9db20bae51021099fc5d740ea5251",
+      "triangles": 6995,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 9,
+      "bounds_blender_m": [
+        [
+          -0.9773566722869873,
+          -0.5252541899681091,
+          -0.0002693300775717944
+        ],
+        [
+          0.23004306852817535,
+          0.5508934259414673,
+          0.5291604399681091
+        ]
+      ],
+      "bytes": 1575244
+    },
+    {
+      "file": "slate-v0-worked-lod2.glb",
+      "sha256": "f259312a97e35335e07b9c200a12b499904d55d1bca5f82e1b5484c19da75d40",
+      "triangles": 1797,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 9,
+      "bounds_blender_m": [
+        [
+          -0.9624190926551819,
+          -0.5159651637077332,
+          -6.647841655649245e-05
+        ],
+        [
+          0.23043307662010193,
+          0.5493921041488647,
+          0.5263285636901855
+        ]
+      ],
+      "bytes": 1422644
+    },
+    {
+      "file": "slate-v1-full-lod0.glb",
+      "sha256": "f0108f47fdb3e54806ca2e00613dea16dc5fe9c41c7ed903f78d88e5a4410d5f",
+      "triangles": 18474,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9589869976043701,
+          -0.5406498908996582,
+          -2.1129846483614045e-10
+        ],
+        [
+          0.9987413883209229,
+          0.5685551762580872,
+          0.5293996334075928
+        ]
+      ],
+      "bytes": 1862252
+    },
+    {
+      "file": "slate-v1-full-lod1.glb",
+      "sha256": "72d1720fd5bba01b1714945b883d4da9df573acc4f54873f208f33918a27c0df",
+      "triangles": 6997,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 9,
+      "bounds_blender_m": [
+        [
+          -0.9509154558181763,
+          -0.5237153768539429,
+          -0.00012580926704686135
+        ],
+        [
+          0.9973856210708618,
+          0.5508469343185425,
+          0.5285326838493347
+        ]
+      ],
+      "bytes": 1561384
+    },
+    {
+      "file": "slate-v1-full-lod2.glb",
+      "sha256": "1b1fb293a05cc0f7c0673bf4882cb5124a2fcefa5cfba27b57e9cf5cdcd3d6c2",
+      "triangles": 1797,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 9,
+      "bounds_blender_m": [
+        [
+          -0.9346485137939453,
+          -0.5057626962661743,
+          -0.0004416726587805897
+        ],
+        [
+          1.000885248184204,
+          0.5556177496910095,
+          0.5297558307647705
+        ]
+      ],
+      "bytes": 1417092
+    },
+    {
+      "file": "slate-v1-last-lod0.glb",
+      "sha256": "479087dfc0002cbab34faceca0aa58b9902ad76fc369b2103b32d413ade1f618",
+      "triangles": 7230,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9589869976043701,
+          -0.49472707509994507,
+          -2.1129846483614045e-10
+        ],
+        [
+          -0.2589632272720337,
+          0.49674221873283386,
+          0.5061803460121155
+        ]
+      ],
+      "bytes": 1578016
+    },
+    {
+      "file": "slate-v1-last-lod1.glb",
+      "sha256": "3a37691405e01084fe9a21a800522a3fade9b67b54fdef60ac06875dce9cda6a",
+      "triangles": 7000,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9589869976043701,
+          -0.49472707509994507,
+          -3.49105425812013e-06
+        ],
+        [
+          -0.2589632272720337,
+          0.49674221873283386,
+          0.5061803460121155
+        ]
+      ],
+      "bytes": 1570616
+    },
+    {
+      "file": "slate-v1-last-lod2.glb",
+      "sha256": "b0d02a6e00092fb9d1fea8f0a3430733d3cc93a8e8dda41cd8efb38c32b19141",
+      "triangles": 1800,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9509154558181763,
+          -0.47729551792144775,
+          -0.00012580926704686135
+        ],
+        [
+          -0.25871995091438293,
+          0.4831014573574066,
+          0.5075417757034302
+        ]
+      ],
+      "bytes": 1424664
+    },
+    {
+      "file": "slate-v1-recovered-lod0.glb",
+      "sha256": "010bf1a2bf46b0b29b24e7be8d0da3e603112f155ac620be552135bcf1047a4b",
+      "triangles": 2696,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.18429067730903625,
+          -0.1282188594341278,
+          2.9057263539744582e-11
+        ],
+        [
+          0.18523363769054413,
+          0.12972575426101685,
+          0.032413505017757416
+        ]
+      ],
+      "bytes": 1450464
+    },
+    {
+      "file": "slate-v1-recovered-lod1.glb",
+      "sha256": "83d90d50f3a3ede7dbd24f3aff569ba8a4f2c762068122f78a9c5c2d506cf1c0",
+      "triangles": 2696,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.18429067730903625,
+          -0.1282188594341278,
+          2.9057263539744582e-11
+        ],
+        [
+          0.18523363769054413,
+          0.12972575426101685,
+          0.032413505017757416
+        ]
+      ],
+      "bytes": 1450464
+    },
+    {
+      "file": "slate-v1-recovered-lod2.glb",
+      "sha256": "de3d11e6d542e3dbef49e1fade14a6ea5b1a33421582f185198af24da6f3ee4d",
+      "triangles": 1799,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 3,
+      "bounds_blender_m": [
+        [
+          -0.18429067730903625,
+          -0.12968750298023224,
+          -0.00015255178732331842
+        ],
+        [
+          0.18523363769054413,
+          0.12832479178905487,
+          0.032413505017757416
+        ]
+      ],
+      "bytes": 1427008
+    },
+    {
+      "file": "slate-v1-worked-lod0.glb",
+      "sha256": "936b03f92eb660b5e163c0df622414ba4431d252b22d912b7830fde27f402556",
+      "triangles": 13302,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 0,
+      "bounds_blender_m": [
+        [
+          -0.9589869976043701,
+          -0.5406498908996582,
+          -2.1129846483614045e-10
+        ],
+        [
+          0.2510368227958679,
+          0.5508934259414673,
+          0.5293973088264465
+        ]
+      ],
+      "bytes": 1749844
+    },
+    {
+      "file": "slate-v1-worked-lod1.glb",
+      "sha256": "bf86675b710be7b89e7f5f9f2ca42bea0fb3c47a38016e96c43e326d3f706944",
+      "triangles": 6996,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 12,
+      "bounds_blender_m": [
+        [
+          -0.9563199281692505,
+          -0.5252541899681091,
+          -0.0002693300775717944
+        ],
+        [
+          0.251099556684494,
+          0.5508934259414673,
+          0.5294013023376465
+        ]
+      ],
+      "bytes": 1575908
+    },
+    {
+      "file": "slate-v1-worked-lod2.glb",
+      "sha256": "eccf2bc8efdf4457ebd8dce938b7b0253b54898e8649e5f26bc7a94f7d754d57",
+      "triangles": 1796,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 12,
+      "bounds_blender_m": [
+        [
+          -0.9413822889328003,
+          -0.5159651637077332,
+          -6.647841655649245e-05
+        ],
+        [
+          0.2513999342918396,
+          0.5493921041488647,
+          0.5285291075706482
+        ]
+      ],
+      "bytes": 1422812
+    },
+    {
+      "file": "upland-tussock-v0-lod0.glb",
+      "sha256": "737dd2e80d805d384fd48e24f2faec97bcf79a12d5a97c36d15da331985cdf0e",
+      "triangles": 1920,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 2400,
+      "bounds_blender_m": [
+        [
+          -0.22940343618392944,
+          -0.2549794018268585,
+          0.0
+        ],
+        [
+          0.35013383626937866,
+          0.25192850828170776,
+          0.33919844031333923
+        ]
+      ],
+      "bytes": 158812
+    },
+    {
+      "file": "upland-tussock-v0-lod1.glb",
+      "sha256": "1560e6fa9f2afb76ab0aefb9efa57efc75b896295bf9db67b60f9f782968bde1",
+      "triangles": 880,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 1100,
+      "bounds_blender_m": [
+        [
+          -0.20989130437374115,
+          -0.24235282838344574,
+          0.0
+        ],
+        [
+          0.35013383626937866,
+          0.25192850828170776,
+          0.3311922550201416
+        ]
+      ],
+      "bytes": 73876
+    },
+    {
+      "file": "upland-tussock-v0-lod2.glb",
+      "sha256": "683030387ac70fe04e639ba6aa37f058ad6d07b4d03aea3506d2bf5a0b2a35a5",
+      "triangles": 360,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 450,
+      "bounds_blender_m": [
+        [
+          -0.2064749300479889,
+          -0.2294822335243225,
+          0.0
+        ],
+        [
+          0.35013383626937866,
+          0.25192850828170776,
+          0.324768602848053
+        ]
+      ],
+      "bytes": 31148
+    },
+    {
+      "file": "upland-tussock-v1-lod0.glb",
+      "sha256": "14c01a31116a684a083c35eadb3fee775aabc1303f1af5fe19f6722e4cee8154",
+      "triangles": 1920,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 2400,
+      "bounds_blender_m": [
+        [
+          -0.2283155471086502,
+          -0.2501399517059326,
+          0.0
+        ],
+        [
+          0.3486606478691101,
+          0.24562478065490723,
+          0.34261077642440796
+        ]
+      ],
+      "bytes": 159460
+    },
+    {
+      "file": "upland-tussock-v1-lod1.glb",
+      "sha256": "c8b0712e0a22e0b21d4b6202f6c9bd9fbd5db8e32dc18df44e2a3502a50f3e13",
+      "triangles": 880,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 1100,
+      "bounds_blender_m": [
+        [
+          -0.2283155471086502,
+          -0.2501399517059326,
+          0.0
+        ],
+        [
+          0.3481915593147278,
+          0.23440806567668915,
+          0.34261077642440796
+        ]
+      ],
+      "bytes": 74236
+    },
+    {
+      "file": "upland-tussock-v1-lod2.glb",
+      "sha256": "ad19f74cbee2fc18abfa83cba7adc4754ac9685d503a36d7f374ee667595215d",
+      "triangles": 360,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 450,
+      "bounds_blender_m": [
+        [
+          -0.2283155471086502,
+          -0.2501399517059326,
+          0.0
+        ],
+        [
+          0.3481915593147278,
+          0.23440806567668915,
+          0.34261077642440796
+        ]
+      ],
+      "bytes": 30932
+    },
+    {
+      "file": "upland-tussock-v2-lod0.glb",
+      "sha256": "904a04489526bf1c373ca912c7fa0dd5310046470a9bf9ae651d2793f4292f51",
+      "triangles": 1920,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 2400,
+      "bounds_blender_m": [
+        [
+          -0.22740860283374786,
+          -0.2503243088722229,
+          0.0
+        ],
+        [
+          0.34853941202163696,
+          0.2518283426761627,
+          0.33891043066978455
+        ]
+      ],
+      "bytes": 158960
+    },
+    {
+      "file": "upland-tussock-v2-lod1.glb",
+      "sha256": "fe36e0059464d16582601f27fec95d507ad2d8e74b6b5bb2a881c8ed113c9228",
+      "triangles": 880,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 1100,
+      "bounds_blender_m": [
+        [
+          -0.22740860283374786,
+          -0.2503243088722229,
+          0.0
+        ],
+        [
+          0.338061660528183,
+          0.2518283426761627,
+          0.33076369762420654
+        ]
+      ],
+      "bytes": 73512
+    },
+    {
+      "file": "upland-tussock-v2-lod2.glb",
+      "sha256": "5803bca445b7bd9300ad9a7bb093c3250f2f2e7c208aba9b9c53d05b01b613ec",
+      "triangles": 360,
+      "surfaces": 1,
+      "degenerates": 0,
+      "open_edges_after_weld": 450,
+      "bounds_blender_m": [
+        [
+          -0.2249571532011032,
+          -0.23210227489471436,
+          0.0
+        ],
+        [
+          0.32277581095695496,
+          0.1997118592262268,
+          0.33076369762420654
+        ]
+      ],
+      "bytes": 31004
+    }
+  ],
+  "fossil_source_review": {
+    "method": "Source-local textured and geometric fossil surfaces, never repeated UV medallion tiles. Rejected procedural fossil strokes are removed from the selected shellstone exports.",
+    "forms": "One ribbed fan and irregular partial/calcified circular cross-sections on the generated front face. Fine coil detail is softened in the generated source.",
+    "variants": "Second candidate rotates the same source and trims one edge; it is not a second unique fossil population."
+  }
+}

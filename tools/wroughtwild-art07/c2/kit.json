@@ -1,0 +1,28 @@
+{
+  "seed": 42,
+  "quarry_bounds_blender_m": [2.0, 1.15, 0.58],
+  "slate_layers": 7,
+  "slate_gap_m": 0.012,
+  "shellstone_fit_blender_m": [1.94, 1.08, 0.545],
+  "shellstone_lod_triangles": [32000, 7000, 1800],
+  "tussock_blades": [240, 110, 45],
+  "lod_distances_m": [9, 23],
+  "wind_period_s": 5.5,
+  "wind_tip_m": 0.018,
+  "pulse_period_s": 4.0,
+  "pulse_peak": 2.2,
+  "purpose": {
+    "seed": "Repeatable art variation without touching gameplay RNG.",
+    "quarry_bounds_blender_m": "Maximum authored extent inside the unchanged native picking and collision body, mapped once to Godot X/Z/Y.",
+    "slate_layers": "Seven cleaved sheets retain a thin stepped edge in silhouette.",
+    "slate_gap_m": "Open bedding joints make slate read as split layers without a painted stripe.",
+    "shellstone_fit_blender_m": "Fit the inspected geological host inside the original work body; ground finishing removes another 12 mm at the base.",
+    "shellstone_lod_triangles": "Near, middle and far reduction targets for the generated fossil bed; actual exported triangles are independently audited.",
+    "tussock_blades": "Near, middle and far blade counts retain the low combed silhouette at decreasing geometry cost.",
+    "lod_distances_m": "Review-only near and middle transition distances; no change to ordinary streaming.",
+    "wind_period_s": "Slow ambient grass movement distinct from source work.",
+    "wind_tip_m": "Subtle grass-tip travel with immobile roots and low ledge visibility.",
+    "pulse_period_s": "Inherited B3 altered-shelf ambient pulse; no work or reward meaning.",
+    "pulse_peak": "Inherited B3 narrow inset energy strength, independent of bloom."
+  }
+}

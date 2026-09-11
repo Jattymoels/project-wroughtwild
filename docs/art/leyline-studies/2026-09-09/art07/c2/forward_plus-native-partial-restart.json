@@ -1,0 +1,33 @@
+{
+	"checks": 13,
+	"contacts": [
+		{
+			"body": [
+				2,
+				0.58,
+				1.15
+			],
+			"ground_m": 0,
+			"id": "slate_outcrop",
+			"max_y": 0.529399633407593,
+			"min_y": -0.00000000021129846483614,
+			"sampled_vertices": 25949
+		},
+		{
+			"body": [
+				2,
+				0.58,
+				1.15
+			],
+			"ground_m": 0,
+			"id": "shellstone_outcrop",
+			"max_y": 0.532750070095062,
+			"min_y": -0.0000267830637312727,
+			"sampled_vertices": 54637
+		}
+	],
+	"failures": 0,
+	"fixture": "Authored current-resource flat-ground fixture. Real contextual work, pickups, current capsule/rays and SaveManager; no test material grants. Not a generated-world journey or arbitrary slope fitter.",
+	"raw_shellstone": 12,
+	"raw_slate": 12
+}

@@ -1,0 +1,52 @@
+{
+  "forward_plus-wind": {
+    "actual_frames": 48,
+    "fps": 12,
+    "motion_difference": true
+  },
+  "forward_plus-pulse": {
+    "actual_frames": 48,
+    "fps": 12,
+    "motion_difference": true
+  },
+  "forward_plus-orbit": {
+    "actual_frames": 36,
+    "fps": 9,
+    "motion_difference": true
+  },
+  "forward_plus-pause": {
+    "byte_visual_invariance": true,
+    "frames": 8
+  },
+  "forward_plus-native-depletion": {
+    "actual_frames": 12,
+    "fps": 12,
+    "motion_difference": true,
+    "scope": "Native shrink and session-only aftermath, no synthetic frames."
+  },
+  "gl_compatibility-wind": {
+    "actual_frames": 48,
+    "fps": 12,
+    "motion_difference": true
+  },
+  "gl_compatibility-pulse": {
+    "actual_frames": 48,
+    "fps": 12,
+    "motion_difference": true
+  },
+  "gl_compatibility-orbit": {
+    "actual_frames": 36,
+    "fps": 9,
+    "motion_difference": true
+  },
+  "gl_compatibility-pause": {
+    "byte_visual_invariance": true,
+    "frames": 8
+  },
+  "gl_compatibility-native-depletion": {
+    "actual_frames": 12,
+    "fps": 12,
+    "motion_difference": true,
+    "scope": "Native shrink and session-only aftermath, no synthetic frames."
+  }
+}

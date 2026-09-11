@@ -1,0 +1,287 @@
+{
+  "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\handoff-v01",
+  "manifest_sha256": "5bc63bc7e83bc8406942d0d5bc8fa6c9e6e605876f4249b9762cbae3f15504fd",
+  "manifested_files": 2248,
+  "payload_bytes": 789060004,
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-v01",
+  "canonical_rehash_unchanged": true,
+  "fresh_audit_matches_original": true,
+  "job_records": [
+    {
+      "gpu_slot": false,
+      "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+      "pid": 39032,
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\tools\\wroughtwild-art07\\c2/audit.py",
+        "--",
+        "build\\art07\\c2\\v01\\fresh-v01\\source",
+        "build\\art07\\c2\\v01\\fresh-check-v01\\fresh-audit.json"
+      ],
+      "seconds": 5.1200491,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-check-v01\\user",
+      "exit": 0
+    },
+    {
+      "gpu_slot": true,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 39028,
+      "arguments": [
+        "--path",
+        "build\\art07\\c2\\v01\\fresh-v01\\review",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--capture"
+      ],
+      "seconds": 9.9615423,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-check-v01\\capture\\user",
+      "exit": 0
+    },
+    {
+      "gpu_slot": true,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 32480,
+      "arguments": [
+        "--path",
+        "build\\art07\\c2\\v01\\fresh-v01\\review",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--capture"
+      ],
+      "seconds": 4.152631,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-check-v01\\capture\\user",
+      "exit": 0
+    },
+    {
+      "gpu_slot": false,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 41252,
+      "arguments": [
+        "--headless",
+        "--path",
+        "build\\art07\\c2\\v01\\fresh-v01\\native\\game",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c2/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "seconds": 1.6589136,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-check-v01\\user",
+      "exit": 0
+    },
+    {
+      "gpu_slot": false,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 15248,
+      "arguments": [
+        "--headless",
+        "--path",
+        "build\\art07\\c2\\v01\\fresh-v01\\native\\game",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c2/native_review.tscn"
+      ],
+      "seconds": 1.9039952,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-check-v01\\user",
+      "exit": 0
+    },
+    {
+      "gpu_slot": false,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 16288,
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "build\\art07\\c2\\v01\\fresh-v01\\native\\game",
+        "--import"
+      ],
+      "seconds": 12.7862035,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-check-v01\\user",
+      "exit": 0
+    },
+    {
+      "gpu_slot": false,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 24856,
+      "arguments": [
+        "--headless",
+        "--path",
+        "build\\art07\\c2\\v01\\fresh-v01\\native\\game",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c2/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "seconds": 1.7471201,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-check-v01\\user",
+      "exit": 0
+    },
+    {
+      "gpu_slot": false,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 21876,
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "build\\art07\\c2\\v01\\fresh-v01\\review",
+        "--import"
+      ],
+      "seconds": 7.0712258,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\fresh-check-v01\\user",
+      "exit": 0
+    }
+  ],
+  "native_replays": {
+    "native-final-restart": {
+      "checks": 10,
+      "contacts": [
+        {
+          "body": [
+            2,
+            0.58,
+            1.15
+          ],
+          "ground_m": 0,
+          "id": "slate_outcrop",
+          "max_y": 0.529399633407593,
+          "min_y": -2.1129846483614e-10,
+          "sampled_vertices": 25949
+        },
+        {
+          "body": [
+            2,
+            0.58,
+            1.15
+          ],
+          "ground_m": 0,
+          "id": "shellstone_outcrop",
+          "max_y": 0.532750070095062,
+          "min_y": -2.67830637312727e-05,
+          "sampled_vertices": 54637
+        }
+      ],
+      "failures": 0,
+      "fixture": "Authored current-resource flat-ground fixture. Real contextual work, pickups, current capsule/rays and SaveManager; no test material grants. Not a generated-world journey or arbitrary slope fitter.",
+      "raw_shellstone": 24,
+      "raw_slate": 24
+    },
+    "native-flow": {
+      "checks": 25,
+      "contacts": [
+        {
+          "body": [
+            2,
+            0.58,
+            1.15
+          ],
+          "ground_m": 0,
+          "id": "slate_outcrop",
+          "max_y": 0.529399633407593,
+          "min_y": -2.1129846483614e-10,
+          "sampled_vertices": 25949
+        },
+        {
+          "body": [
+            2,
+            0.58,
+            1.15
+          ],
+          "ground_m": 0,
+          "id": "shellstone_outcrop",
+          "max_y": 0.532750070095062,
+          "min_y": -2.67830637312727e-05,
+          "sampled_vertices": 54637
+        },
+        {
+          "distance_from_front_m": 1.42499995231628,
+          "id": "slate_outcrop",
+          "ray_hit": "(-1.65, 0.29, 0.575)"
+        },
+        {
+          "distance_from_front_m": 1.42499995231628,
+          "id": "shellstone_outcrop",
+          "ray_hit": "(1.65, 0.29, 0.575)"
+        }
+      ],
+      "failures": 0,
+      "fixture": "Authored current-resource flat-ground fixture. Real contextual work, pickups, current capsule/rays and SaveManager; no test material grants. Not a generated-world journey or arbitrary slope fitter.",
+      "raw_shellstone": 24,
+      "raw_slate": 24
+    },
+    "native-partial-restart": {
+      "checks": 12,
+      "contacts": [
+        {
+          "body": [
+            2,
+            0.58,
+            1.15
+          ],
+          "ground_m": 0,
+          "id": "slate_outcrop",
+          "max_y": 0.529399633407593,
+          "min_y": -2.1129846483614e-10,
+          "sampled_vertices": 25949
+        },
+        {
+          "body": [
+            2,
+            0.58,
+            1.15
+          ],
+          "ground_m": 0,
+          "id": "shellstone_outcrop",
+          "max_y": 0.532750070095062,
+          "min_y": -2.67830637312727e-05,
+          "sampled_vertices": 54637
+        }
+      ],
+      "failures": 0,
+      "fixture": "Authored current-resource flat-ground fixture. Real contextual work, pickups, current capsule/rays and SaveManager; no test material grants. Not a generated-world journey or arbitrary slope fitter.",
+      "raw_shellstone": 12,
+      "raw_slate": 12
+    }
+  },
+  "source_recheck": {
+    "b1": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02",
+      "manifest_sha256": "00a244253614b8c58213a15f929e48fd65c9aec0bb3489600646497bfcbaf7d0",
+      "files": 1533
+    },
+    "b3": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02",
+      "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+      "files": 1541
+    },
+    "art02": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\grove-art02\\emberroot-handoff",
+      "manifest_sha256": "0a4f26a74335bcceddd2d31f9df3774d415f5aca6d982e9cc5305faf6ac9bba8",
+      "files": 105
+    }
+  }
+}

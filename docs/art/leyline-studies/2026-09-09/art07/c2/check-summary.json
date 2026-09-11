@@ -1,0 +1,254 @@
+{
+  "current-checks": {
+    "checks": 8225,
+    "jobs": [
+      {
+        "suite": "art",
+        "checks": 11,
+        "failures": 0,
+        "pid": 9248,
+        "seconds": 1.5605024,
+        "job": "current-checks\\art.log.job.json"
+      },
+      {
+        "suite": "gathering",
+        "checks": 22,
+        "failures": 0,
+        "pid": 37212,
+        "seconds": 1.7700338,
+        "job": "current-checks\\gathering.log.job.json"
+      },
+      {
+        "suite": "loads-restore",
+        "checks": 6,
+        "failures": 0,
+        "pid": 23788,
+        "seconds": 1.8655712,
+        "job": "current-checks\\loads-restore.log.job.json"
+      },
+      {
+        "suite": "loads",
+        "checks": 201,
+        "failures": 0,
+        "pid": 39928,
+        "seconds": 7.0537773,
+        "job": "current-checks\\loads.log.job.json"
+      },
+      {
+        "suite": "loose-read",
+        "checks": 13,
+        "failures": 0,
+        "pid": 36056,
+        "seconds": 1.596,
+        "job": "current-checks\\loose-read.log.job.json"
+      },
+      {
+        "suite": "loose-write",
+        "checks": 6,
+        "failures": 0,
+        "pid": 34528,
+        "seconds": 1.5673774,
+        "job": "current-checks\\loose-write.log.job.json"
+      },
+      {
+        "suite": "materials",
+        "checks": 158,
+        "failures": 0,
+        "pid": 7208,
+        "seconds": 1.3826853,
+        "job": "current-checks\\materials.log.job.json"
+      },
+      {
+        "suite": "placement-restore",
+        "checks": 60,
+        "failures": 0,
+        "pid": 35096,
+        "seconds": 1.7577202,
+        "job": "current-checks\\placement-restore.log.job.json"
+      },
+      {
+        "suite": "placement",
+        "checks": 470,
+        "failures": 0,
+        "pid": 34308,
+        "seconds": 2.3497893,
+        "job": "current-checks\\placement.log.job.json"
+      },
+      {
+        "suite": "save-recovery",
+        "checks": 175,
+        "failures": 0,
+        "pid": 20988,
+        "seconds": 4.0882212,
+        "job": "current-checks\\save-recovery.log.job.json"
+      },
+      {
+        "suite": "source-restore",
+        "checks": 15,
+        "failures": 0,
+        "pid": 10852,
+        "seconds": 14.2328223,
+        "job": "current-checks\\source-restore.log.job.json"
+      },
+      {
+        "suite": "source-work",
+        "checks": 733,
+        "failures": 0,
+        "pid": 17776,
+        "seconds": 57.9986085,
+        "job": "current-checks\\source-work.log.job.json"
+      },
+      {
+        "suite": "unit",
+        "checks": 398,
+        "failures": 0,
+        "pid": 41704,
+        "seconds": 4.2003803,
+        "job": "current-checks\\unit.log.job.json"
+      },
+      {
+        "suite": "world",
+        "checks": 5957,
+        "failures": 0,
+        "pid": 38468,
+        "seconds": 39.5152998,
+        "job": "current-checks\\world.log.job.json"
+      }
+    ]
+  },
+  "adapter-current-checks": {
+    "checks": 8225,
+    "jobs": [
+      {
+        "suite": "art",
+        "checks": 11,
+        "failures": 0,
+        "pid": 35768,
+        "seconds": 1.3703072,
+        "job": "adapter-current-checks\\art.log.job.json"
+      },
+      {
+        "suite": "gathering",
+        "checks": 22,
+        "failures": 0,
+        "pid": 3260,
+        "seconds": 2.3020829,
+        "job": "adapter-current-checks\\gathering.log.job.json"
+      },
+      {
+        "suite": "loads-restore",
+        "checks": 6,
+        "failures": 0,
+        "pid": 8556,
+        "seconds": 1.9266301,
+        "job": "adapter-current-checks\\loads-restore.log.job.json"
+      },
+      {
+        "suite": "loads",
+        "checks": 201,
+        "failures": 0,
+        "pid": 8576,
+        "seconds": 7.2022663,
+        "job": "adapter-current-checks\\loads.log.job.json"
+      },
+      {
+        "suite": "loose-read",
+        "checks": 13,
+        "failures": 0,
+        "pid": 16368,
+        "seconds": 1.660969,
+        "job": "adapter-current-checks\\loose-read.log.job.json"
+      },
+      {
+        "suite": "loose-write",
+        "checks": 6,
+        "failures": 0,
+        "pid": 36488,
+        "seconds": 1.5597447,
+        "job": "adapter-current-checks\\loose-write.log.job.json"
+      },
+      {
+        "suite": "materials",
+        "checks": 158,
+        "failures": 0,
+        "pid": 32240,
+        "seconds": 1.3872887,
+        "job": "adapter-current-checks\\materials.log.job.json"
+      },
+      {
+        "suite": "placement-restore",
+        "checks": 60,
+        "failures": 0,
+        "pid": 38560,
+        "seconds": 1.7550488,
+        "job": "adapter-current-checks\\placement-restore.log.job.json"
+      },
+      {
+        "suite": "placement",
+        "checks": 470,
+        "failures": 0,
+        "pid": 20660,
+        "seconds": 2.2110193,
+        "job": "adapter-current-checks\\placement.log.job.json"
+      },
+      {
+        "suite": "save-recovery",
+        "checks": 175,
+        "failures": 0,
+        "pid": 12932,
+        "seconds": 4.0086712,
+        "job": "adapter-current-checks\\save-recovery.log.job.json"
+      },
+      {
+        "suite": "source-restore",
+        "checks": 15,
+        "failures": 0,
+        "pid": 22732,
+        "seconds": 14.3818568,
+        "job": "adapter-current-checks\\source-restore.log.job.json"
+      },
+      {
+        "suite": "source-work",
+        "checks": 733,
+        "failures": 0,
+        "pid": 37192,
+        "seconds": 57.6683701,
+        "job": "adapter-current-checks\\source-work.log.job.json"
+      },
+      {
+        "suite": "unit",
+        "checks": 398,
+        "failures": 0,
+        "pid": 37424,
+        "seconds": 3.8710278,
+        "job": "adapter-current-checks\\unit.log.job.json"
+      },
+      {
+        "suite": "world",
+        "checks": 5957,
+        "failures": 0,
+        "pid": 29352,
+        "seconds": 38.8435977,
+        "job": "adapter-current-checks\\world.log.job.json"
+      }
+    ]
+  },
+  "selected_hashes": {
+    "shellstone-generation-v01\\source.glb": {
+      "sha256": "1882c630366dc5c6afec33282cb6ae38ba515bfa1ab08e7e204cab276ee24f83",
+      "bytes": 21234092
+    },
+    "shellstone-generation-v01\\source_cutout.png": {
+      "sha256": "80fab4979cdf569c223a09158561f2071981ccf075e446cb285d3cac070eb20c",
+      "bytes": 2635032
+    },
+    "shellstone-generation-v01\\source_base.png": {
+      "sha256": "ecf6c9a0bdbb127c7499d68bd670cb60c06c564b5518ca19b4326e4f2534631f",
+      "bytes": 9709519
+    },
+    "kit-v05\\c2-master.blend": {
+      "sha256": "1ad371e50e7e40c3fa77eb29032e34f289b95193840db3cc97f90dce85f010ce",
+      "bytes": 92957149
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+	"cases": [
+		{
+			"art_hidden": true,
+			"draws": 2.0,
+			"gpu_p50_ms": 0.0810000002384186,
+			"gpu_p95_ms": 0.0860000029206276,
+			"primitives": 4.0,
+			"texture_bytes": 96738259.0,
+			"view": "overview",
+			"wall_p50_ms": 0.348,
+			"wall_p95_ms": 0.49,
+			"wall_worst_ms": 0.845
+		},
+		{
+			"art_hidden": false,
+			"draws": 158.0,
+			"gpu_p50_ms": 0.203999996185303,
+			"gpu_p95_ms": 0.209000006318092,
+			"primitives": 896134.0,
+			"texture_bytes": 96738259.0,
+			"view": "overview",
+			"wall_p50_ms": 0.51,
+			"wall_p95_ms": 0.666,
+			"wall_worst_ms": 0.814
+		},
+		{
+			"art_hidden": true,
+			"draws": 2.0,
+			"gpu_p50_ms": 0.0810000002384186,
+			"gpu_p95_ms": 0.0869999974966049,
+			"primitives": 4.0,
+			"texture_bytes": 96738259.0,
+			"view": "quarry-close",
+			"wall_p50_ms": 0.343,
+			"wall_p95_ms": 0.504,
+			"wall_worst_ms": 1.102
+		},
+		{
+			"art_hidden": false,
+			"draws": 74.0,
+			"gpu_p50_ms": 0.146999999880791,
+			"gpu_p95_ms": 0.149000003933907,
+			"primitives": 645006.0,
+			"texture_bytes": 96738259.0,
+			"view": "quarry-close",
+			"wall_p50_ms": 0.426,
+			"wall_p95_ms": 0.564,
+			"wall_worst_ms": 0.932
+		},
+		{
+			"art_hidden": true,
+			"draws": 2.0,
+			"gpu_p50_ms": 0.0790000036358833,
+			"gpu_p95_ms": 0.0839999988675117,
+			"primitives": 4.0,
+			"texture_bytes": 96738259.0,
+			"view": "approach",
+			"wall_p50_ms": 0.345,
+			"wall_p95_ms": 0.505,
+			"wall_worst_ms": 0.881
+		},
+		{
+			"art_hidden": false,
+			"draws": 119.0,
+			"gpu_p50_ms": 0.131999999284744,
+			"gpu_p95_ms": 0.136999994516373,
+			"primitives": 461416.0,
+			"texture_bytes": 96738259.0,
+			"view": "approach",
+			"wall_p50_ms": 0.476,
+			"wall_p95_ms": 0.629,
+			"wall_worst_ms": 0.912
+		}
+	],
+	"device": "NVIDIA GeForce RTX 5090",
+	"msaa": 4,
+	"renderer": "gl_compatibility",
+	"samples": 600,
+	"scope": "C2 authored habitat at three fixed views. Hidden comparison retains textures. No other-device or full-world budget.",
+	"viewport": [
+		1440,
+		900
+	],
+	"vsync": false,
+	"warmup": 120
+}
