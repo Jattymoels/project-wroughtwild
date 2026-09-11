@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "B1–B4, D1–D6, E2 and F5 technically delivered: 12 of 26 slices. See the three publication reports through publication-2026-09-11-batch3.md for evidence and limits. Recommended next batch: C1, C2, C3, C4. Other slices remain planned.",
+  "status": "B1–B4, C1–C4, D1–D6, E2 and F5 technically delivered: 16 of 26 slices. See the four publication reports through publication-2026-09-11-batch4.md for evidence and limits. Recommended next batch: C5, C6, F2, F3. Other slices remain planned.",
   "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
   "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
   "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",
@@ -270,9 +270,10 @@
       ],
       "reading": [
         "docs/systems/world-generation.md",
-        "docs/systems/construction.md"
+        "docs/systems/construction.md",
+        "docs/prototype/art07-production/receipts/b4.md"
       ],
-      "notes": ""
+      "notes": "Read B4's contact, body-fit, shared-texture and LOD findings. Measure this slice's actual native envelopes and approaches before authoring; preserve them. A posed source study or fixed-view RTX benchmark does not clear ordinary-world adoption or a new habitat's performance."
     },
     {
       "id": "c6",
@@ -298,9 +299,10 @@
       "reading": [
         "docs/prototype/exploration-storytelling-2026-09-07.md",
         "docs/prototype/environment-target-2026-09-08.md",
-        "docs/systems/world-generation.md"
+        "docs/systems/world-generation.md",
+        "docs/prototype/art07-production/receipts/b4.md"
       ],
-      "notes": ""
+      "notes": "Read B4's contact, body-fit, shared-texture and LOD findings. Measure this slice's actual native envelopes and approaches before authoring; preserve them. A posed source study or fixed-view RTX benchmark does not clear ordinary-world adoption or a new habitat's performance."
     },
     {
       "id": "d1",
@@ -618,7 +620,7 @@
         "tools/wroughtwild-white/README.md",
         "docs/prototype/placement-reliability-2026-09-07.md"
       ],
-      "notes": ""
+      "notes": "F4 will consume this handoff after publication. Record exact native body bounds, endpoint/socket positions, pivots, resource/component identity, state names and ownership/refund behavior so it can reuse the package without reconstructing the device. Keep those native contracts unchanged. Measure complete device costs and real work-driven motion; visual pulses must not imply an unpaid action."
     },
     {
       "id": "f3",
@@ -649,7 +651,7 @@
         "docs/prototype/rare-world-intensive-2026-09-06.md",
         "docs/prototype/environment-target-2026-09-08.md"
       ],
-      "notes": ""
+      "notes": "F4 will consume this handoff after publication. Record exact native body bounds, endpoint/socket positions, pivots, resource/component identity, state names and ownership/refund behavior so it can reuse the package without reconstructing the device. Keep those native contracts unchanged. Measure complete device costs and real work-driven motion; visual pulses must not imply an unpaid action."
     },
     {
       "id": "f4",

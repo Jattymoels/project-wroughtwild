@@ -6,16 +6,18 @@ The plan refines the broad ART-07B–G headings into **26 bounded slices**. It p
 
 ## Current delivery and next prompts
 
-B1–B4, D1–D6, E2 and F5 are technically delivered: **12 of 26 slices**. The [first publication](publication-2026-09-10.md), [second publication](publication-2026-09-11.md) and [third publication](publication-2026-09-11-batch3.md) record exact commits, verified local handoffs, repeated checks and unresolved visual/performance limits. No ordinary-world adoption or owner visual acceptance is inferred.
+B1–B4, C1–C4, D1–D6, E2 and F5 are technically delivered: **16 of 26 slices**. The [first publication](publication-2026-09-10.md), [second publication](publication-2026-09-11.md), [third publication](publication-2026-09-11-batch3.md) and [fourth publication](publication-2026-09-11-batch4.md) record exact commits, verified local handoffs, fresh checks and unresolved visual/performance limits. Owner visual acceptance and ordinary-world adoption remain separate.
 
-The recommended next batch gives four existing regions their own resource and habitat kits. Paste one complete prompt into each separate session:
+The recommended next batch finishes the remaining regional source kits and supplies the two device prerequisites for F4. Paste one complete prompt into each separate session:
 
-1. [C1 — Lantern Fen and Rustwater resources](prompts/C1.md).
-2. [C2 — Glasswind and Shellcut quarry](prompts/C2.md).
-3. [C3 — Resinheart and corkbark oldgrowth](prompts/C3.md).
-4. [C4 — recovering wastes and ash timber](prompts/C4.md).
+1. [C5 — Ore-bearing rock family](prompts/C5.md).
+2. [C6 — Ruins and workshop approaches](prompts/C6.md).
+3. [F2 — Thrumroot winch and landing](prompts/F2.md).
+4. [F3 — Pullstone sorter and Ventlung bellows](prompts/F3.md).
 
-All four are dependency-ready after verifying B1/B2/B3 as assigned. Their prompts also read B4's composition receipt so its canopy/body-fit limits, texture sharing and measured LOD costs carry forward. Inspect native envelopes before authoring variants; a new habitat needs its own measurements. Author in separate worktrees and coordinate the one GPU slot. C5/C6, E1/E3 and F1–F3 are also dependency-ready, but remain planned. No new sessions are started by this index.
+All four are dependency-ready: C5/C6 consume checked B3; F2/F3 consume checked D4/D6. Verify those absolute local handoffs before use. C5/C6 also read B4 contact/fit/cost findings. Completing and publishing F2/F3 unlocks F4; the following proposed batch can then be E1/E3/F1/F4 without dependencies between those four. G1 follows every B–F source slice, then a separate G2 reviewer. These later rows remain planned.
+
+Use separate worktrees and the shared GPU mutex plus read-only process checks. Cross-session messaging requires explicit owner authorization; exclude completed workers from GPU notices and do not create acknowledgement exchanges. No new sessions are started by this index.
 
 Use the [publisher prompt](prompts/PUBLISH.md) in one coordinating session after workers deliver checked commits. It integrates/pushes one result at a time and updates the shared queue. A dependent session starts after prerequisite recipes/receipts are published and its local source packages verify. A scheduled or merely generated source does not satisfy a dependency.
 

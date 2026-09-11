@@ -63,6 +63,14 @@ in PROCESS is cooperative coordination; inspect existing Studio/game jobs too.
 Never kill another session or the owner's playtest to free the GPU. A benchmark
 with competing load is labelled diagnostic and cannot clear the performance gate.
 
+Use the shared mutex and read-only process checks to coordinate that slot.
+Do not send messages to other sessions unless the owner explicitly authorizes
+cross-session communication. If authorized, contact only an active worker that
+needs the information; exclude completed sessions from GPU notices. Informational
+slot releases do not request new work or an acknowledgement. Do not create
+acknowledgement exchanges, recurring checks or background follow-ups after the
+final handoff. Report the completed slice once and stop.
+
 Workers commit checked work to their own `codex/` branch and report the commit
 and cleanly scoped diff. They do not concurrently push or cherry-pick onto main.
 The included `PUBLISH.md` prompt gives one publisher responsibility for integrating

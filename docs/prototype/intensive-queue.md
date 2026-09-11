@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 11 September 2026 (12 ART-07 source slices technically delivered; next batch C1/C2/C3/C4). Owner: Matty. Delivery: Codex.
+Updated: 11 September 2026 (16 ART-07 source slices technically delivered; next batch C5/C6/F2/F3). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -14,20 +14,22 @@ The owner's subsequent request selects a [sliced execution plan and session
 prompts](art07-production/README.md). The checked dispatch pack contains 26
 bounded worker prompts, one publisher prompt, an explicit dependency/ownership
 map and the [local TRELLIS/Blender/Godot process](art07-production/PROCESS.md).
-B1–B4, D1–D6, E2 and F5 now have technically delivered source handoffs:
-**12 of 26 slices**. The [first](art07-production/publication-2026-09-10.md),
-[second](art07-production/publication-2026-09-11.md) and
-[third publication](art07-production/publication-2026-09-11-batch3.md) record
+B1–B4, C1–C4, D1–D6, E2 and F5 now have technically delivered source handoffs:
+**16 of 26 slices**. The [first](art07-production/publication-2026-09-10.md),
+[second](art07-production/publication-2026-09-11.md),
+[third](art07-production/publication-2026-09-11-batch3.md) and
+[fourth publication](art07-production/publication-2026-09-11-batch4.md) record
 serial main integration, package hashes, fresh checks and remaining limits.
-The latest batch adds the composed walk, roofs/door/spans, fine pieces/coverings
-and the basic/improved forge. Recommend C1 (fen), C2 (quarry), C3 (oldgrowth)
-and C4 (recovering wastes) next. GPU work remains serial.
-B4 reduces far trees to about 13–14k triangles and shares review textures;
-its fixed-view result does not clear dense forests or normal tree-body fit.
-D2/D3 preserve the existing lattice, including D1 chamfer/triangular pieces;
-their final material integration remains pending. G1 is an isolated retained
-route/home pilot; G2 reviews it independently before any ordinary-world rollout
-decision. Owner visual acceptance remains separate from technical delivery.
+The latest batch adds fen, quarry, oldgrowth and recovering-wastes kits.
+Recommend C5 (ores), C6 (ruins/approaches), F2 (winch/landing) and F3
+(sorter/bellows) next. Their completion unlocks a proposed E1/E3/F1/F4 batch;
+G1 then consumes all B–F slices and G2 independently reviews the isolated pilot.
+GPU work stays serial through the mutex and read-only process checks. Completed
+workers are excluded from coordination notices; no acknowledgement exchanges.
+C1/C3 retain native lower-body fit with slim trunks, leaving crown appearance
+and near geometry costs open. C4's far ash remains above its recipe target.
+Full material/shape integration, wider hardware/density performance and owner
+visual acceptance are still pending. Existing octagonal building pieces remain.
 
 The owner visually approved ART-06C with “Perfect”, then asked to start
 designing all nature assets and the world's feel against the original full
