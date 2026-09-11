@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "B1–B4, C1–C4, D1–D6, E2 and F5 technically delivered: 16 of 26 slices. See the four publication reports through publication-2026-09-11-batch4.md for evidence and limits. Recommended next batch: C5, C6, F2, F3. Other slices remain planned.",
+  "status": "B1–B4, C1–C6, D1–D6, E2, F2, F3 and F5 technically delivered: 20 of 26 slices. See the five publication reports through publication-2026-09-11-batch5.md for evidence and limits. Recommended next batch: E1, E3, F1, F4. G1 then G2 follow; these six slices remain planned.",
   "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
   "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
   "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",
@@ -680,9 +680,11 @@
         "docs/prototype/pressure-workshop-2026-09-06.md",
         "docs/prototype/workshop-usability-2026-09-07.md",
         "docs/systems/construction.md",
-        "tools/wroughtwild-workshop/README.md"
+        "tools/wroughtwild-workshop/README.md",
+        "tools/wroughtwild-art07/f2/CONTRACTS.md",
+        "tools/wroughtwild-art07/f3/CONTRACT.md"
       ],
-      "notes": ""
+      "notes": "Consume the published E2/F2/F3 handoffs and their measured contracts. Preserve native body envelopes, attachment/socket positions, pivots, resource/component identity, paid state changes, escrow and recovery ownership. Reuse the finished source/device families without duplicating cores or reconstructing the mechanism. Retain the native winding-angle behavior; a visual pulse cannot imply stored energy or an unpaid operation. Measure the combined feeder cost, including shared textures and the conservative Ventlung far LOD."
     },
     {
       "id": "f5",
@@ -761,9 +763,10 @@
         "docs/prototype/placement-reliability-2026-09-07.md",
         "docs/prototype/session-reliability-2026-09-07.md",
         "docs/systems/world-generation.md",
-        "docs/systems/construction.md"
+        "docs/systems/construction.md",
+        "docs/prototype/art07-production/receipts/c5.md"
       ],
-      "notes": "Build native/game/data from the same explicitly pinned current revision. Keep normal game/data/saves unchanged; this is the ART-07G isolated adoption gate, not a new global renderer or generator."
+      "notes": "Build native/game/data from the same explicitly pinned current revision. Keep normal game/data/saves unchanged; this is the ART-07G isolated adoption gate, not a new global renderer or generator. C5 raised ore meshes are cleared only for the existing fallback body and isolated fixture. Normal faceted terrain uses a thin ribbon retained by the C5 adapter; it is not cleared for replacement by a raised slab. Preserve native terrain, collider, stock and excavation behavior. Report any unmet terrain-art placement requirement as a bounded defect; do not enlarge bodies or change geography to hide it."
     },
     {
       "id": "g2",

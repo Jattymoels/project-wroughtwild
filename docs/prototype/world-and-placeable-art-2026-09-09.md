@@ -1,21 +1,17 @@
 # ART-07 — a full frontier and a coherent building kit
 
-**Production update, 11 September 2026:** B1–B4, C1–C4, D1–D6, E2 and F5
-have technically delivered source packages: **16 of 26 dispatch slices**.
-The [first](art07-production/publication-2026-09-10.md),
-[second](art07-production/publication-2026-09-11.md),
-[third](art07-production/publication-2026-09-11-batch3.md) and
-[fourth publication](art07-production/publication-2026-09-11-batch4.md) record
-exact commits, fresh checks, local handoffs and limits. The latest batch adds
-fen resources, quarry materials, resinheart/corkbark and recovering wastes.
-Next recommended prompts are C5/C6/F2/F3: ores, ruins/approaches, Thrumroot
-winch/landing and Pullstone/Ventlung. Publishing F2/F3 unlocks F4 so a later
-E1/E3/F1/F4 batch can run without dependencies between its four sessions.
-B and D have their source libraries; C/E/F/G and full ART-07 remain incomplete.
+**Production update, 11 September 2026:** B1–B4, C1–C6, D1–D6, E2, F2, F3
+and F5 have technically delivered source packages: **20 of 26 dispatch slices**.
+The [fifth publication](art07-production/publication-2026-09-11-batch5.md)
+adds ores, ruins/approaches, Thrumroot winch/landing and Pullstone/Ventlung;
+it links all earlier publication evidence. Next are E1/E3/F1/F4, with checked
+inputs and no dependencies between those four. G1 then assembles the isolated
+route/home pilot from all 24 source slices; G2 independently reviews it.
+B/C/D source libraries are delivered; E/F/G and full ART-07 remain incomplete.
 Native chamfer/triangular pieces and their octagonal building use are retained.
-C1/C3 tree candidates fit existing lower bodies through slim trunks; their
-canopy appearance and high near costs still need review. C4's far ash misses
-its recipe triangle target. Visual acceptance, broader performance and
+C5 raised ore fits the fallback fixture only: ordinary faceted terrain keeps
+its native thin ribbon. Device texture/LOD costs and previously reported source
+silhouette/mesh limits remain open. Visual acceptance, broader performance and
 ordinary-world adoption remain separate from source publication.
 
 **Owner follow-up:** “Yep, create a sliced plan and prompts to send off to other

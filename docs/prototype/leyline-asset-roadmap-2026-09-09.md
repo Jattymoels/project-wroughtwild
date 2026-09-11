@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; 16 ART-07 source handoffs technically delivered (B1–B4/C1–C4/D1–D6/E2/F5).** Owner request,
+**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; 20 ART-07 source handoffs technically delivered (B1–B4/C1–C6/D1–D6/E2/F2/F3/F5).** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -53,13 +53,18 @@ composed walk, remaining structural forms and the basic/improved forge.
 The owner subsequently reported C1/C2/C3/C4 complete. Their
 [fourth publication](art07-production/publication-2026-09-11-batch4.md) adds
 fen, quarry, resinheart/corkbark and recovering-wastes handoffs with unchanged
-finite-resource bodies and work/save rules. Recommend C5/C6/F2/F3 next after
-verifying B3 or D4/D6 as assigned. F2/F3 then unlock F4, allowing a subsequent
-E1/E3/F1/F4 batch with no dependencies between those four. All later slices
-remain planned. Native body fit does not settle the slim oldgrowth silhouette,
-faceted crowns, heavy near meshes, regular fossils/bark or C4's missed far-ash
-triangle target. Full shape/material integration and broad performance remain
-open; successful isolated checks do not grant owner visual acceptance.
+finite-resource bodies and work/save rules. The owner then reported C5/C6/F2/F3
+complete; the [fifth publication](art07-production/publication-2026-09-11-batch5.md)
+adds ore states, ruins/approaches, winch/landing and sorter/bellows. Fresh reopens,
+both-renderer motion, native work and restart checks pass. Recommend E1/E3/F1/F4
+next; all four have checked published dependencies and can proceed independently.
+After publication of those four, G1 integrates all 24 B–F slices into an isolated
+pilot, followed by independent G2. These six later slices remain planned.
+C5 raised ore art is checked only against the fallback body; faceted terrain
+retains its native ribbon. F3 keeps the 8,500-triangle Ventlung middle mesh at
+far distance because the smaller candidate lost its folds. Texture costs and
+earlier source silhouette/budget limits remain open. Successful source checks
+do not grant owner visual acceptance or ordinary-world adoption.
 
 The owner then requested a sliced plan and prompts for other sessions to enact
 ART-07. The [dispatch pack](art07-production/README.md) now breaks the parent
