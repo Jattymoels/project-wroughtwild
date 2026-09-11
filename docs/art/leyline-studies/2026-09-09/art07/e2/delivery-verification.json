@@ -1,0 +1,51 @@
+{
+  "canonical_package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\handoff",
+  "manifest_sha256": "95d33325e5ce3ec48b9ae8a25345579965c9defae4381c492797008973d51fbd",
+  "manifest_files_rehashed": 1490,
+  "fresh_master_and_six_glbs_unchanged": true,
+  "fresh_reopen_audit_identical": true,
+  "packed_images": 9,
+  "runs": {
+    "forward_plus/checks": {
+      "checks": 162,
+      "failures": 0,
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\fresh-rendered\\forward_plus-capture.log",
+      "log_sha256": "3deb46994acaa955b43bfb24872fa3849ac269fb9d59b287dc9ebed6d23ca95a",
+      "exit_code": 0
+    },
+    "forward_plus/restore": {
+      "checks": 12,
+      "failures": 0,
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\fresh-rendered\\forward_plus-restore.log",
+      "log_sha256": "a7f705a36149a0e8e828f91fe3718dd548709af3769561aa6ef27bb6d3989045",
+      "exit_code": 0
+    },
+    "gl_compatibility/checks": {
+      "checks": 162,
+      "failures": 0,
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\fresh-rendered\\gl_compatibility-capture.log",
+      "log_sha256": "1d733ef02e6a3590dc91b903fb99b55c41e9c0ea46c1d11916c69ccbbc1715fa",
+      "exit_code": 0
+    },
+    "gl_compatibility/restore": {
+      "checks": 12,
+      "failures": 0,
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\fresh-rendered\\gl_compatibility-restore.log",
+      "log_sha256": "8dddb3d5f263124242cc2a019f06e95509c2eae06810df19a1a8a927277231e2",
+      "exit_code": 0
+    },
+    "fresh-import": {
+      "metadata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\fresh-import.log.json",
+      "exit_code": 0,
+      "seconds": 17.0431573,
+      "sha256": "abb95b3a35b955ac21f1f63a794a153393bbb3b3135ac5880793f5d79170f643"
+    },
+    "fresh-reopen": {
+      "metadata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\fresh-reopen.log.json",
+      "exit_code": 0,
+      "seconds": 64.7707009,
+      "sha256": "d4003e7ff476ae3e3e7eee819338414ad1c7d5447ce6d61ab7736a42b7176716"
+    }
+  },
+  "known_warning": "Intermittent ObjectDB instances leaked at exit. No script or shader errors accepted."
+}

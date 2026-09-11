@@ -1,0 +1,29 @@
+{
+  "units": "metres; Blender front -Y maps to existing Godot +Z workface",
+  "body": [0.96, 2.0, 0.96],
+  "plinth": [0.90, 0.86, 0.78],
+  "cowl_bottom_z": 1.46,
+  "cowl_top_z": 1.70,
+  "top_z": 1.96,
+  "stone_bevel_m": 0.018,
+  "iron_bevel_m": 0.004,
+  "scar_depth_m": 0.038,
+  "scar_width_m": 0.038,
+  "scar_energy_recess_m": 0.032,
+  "seed": 42,
+  "levels": ["near", "middle", "far"],
+  "purposes": {
+    "body": "Unchanged native obstruction; all ornaments remain inside it.",
+    "plinth": "Same footing and hearth base shared by both appearances.",
+    "cowl_bottom_z": "Supported cover above the working opening.",
+    "cowl_top_z": "Slope into the short flue while clearing the existing two-metre body.",
+    "top_z": "Cap leaves four centimetres beneath native body top.",
+    "stone_bevel_m": "Physical weathered masonry edges at close range.",
+    "iron_bevel_m": "Worked iron highlight without razor-sharp sheet edges.",
+    "scar_depth_m": "Real dark fracture inside a hearth jamb, visible with light disabled.",
+    "scar_width_m": "Broad split that remains readable beside ordinary unlit stone.",
+    "scar_energy_recess_m": "Work response stays buried inside the injury.",
+    "seed": "Repeatable chips, coal and surface offsets.",
+    "levels": "Near keeps peened heads and coal facets; middle simplifies both; far retains the opening, supports, collars and fracture. No automatic runtime budget is selected."
+  }
+}

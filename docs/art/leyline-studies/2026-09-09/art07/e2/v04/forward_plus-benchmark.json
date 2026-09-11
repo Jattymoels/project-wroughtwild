@@ -1,0 +1,8 @@
+{
+	"checks": 137,
+	"device": "NVIDIA GeForce RTX 5090",
+	"failures": 0,
+	"frames": [],
+	"renderer": "forward_plus",
+	"scope": "paid engineering fixture on supplied stock; no owner world opened"
+}

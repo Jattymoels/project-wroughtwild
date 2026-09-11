@@ -1,0 +1,671 @@
+{
+  "files": [
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v04\\reopen\\basic-three-quarter.png",
+      "path": "blender-basic.png",
+      "sha256": "45ac7f782091cc72b78f8b7e3adc7b55cda98b704cde50cb008b4b1d0c695431",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v04\\reopen\\basic-clay-front.png",
+      "path": "blender-basic-clay.png",
+      "sha256": "9075923e250321d978ad2ac31a53f4138baa7eb4a87c0c1130f9e0a6f50c5bb2",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v04\\reopen\\improved-three-quarter.png",
+      "path": "blender-improved.png",
+      "sha256": "af894d7f4bbad49a9f40f159373661347cb66dada274d581f1a213c6592b5a7c",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v04\\reopen\\improved-clay-front.png",
+      "path": "blender-improved-clay.png",
+      "sha256": "f9ccd3e5e921f96f05a031240dba277dc0d6f361875be215cbb64554b1d9d1cd",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\01-basic-cold.png",
+      "path": "forward_plus-01-basic-cold.png",
+      "sha256": "eb4a7d6fad841fba4ad0743252bc12e5dd68e3a070fa41bc1681a4e4313a80d2",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\03-improved-cold.png",
+      "path": "forward_plus-03-improved-cold.png",
+      "sha256": "8c7ebc2a47b3a3b5b850f7a60b0e17c3da3eb40eb3c159bad820cadc661745c5",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\03-working-context.png",
+      "path": "forward_plus-03-working-context.png",
+      "sha256": "1a3e0e3d0869e6674b58bb4afc053087ae3e12d2c85484d30469c2e177975a71",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\03-working-controls.png",
+      "path": "forward_plus-03-working-controls.png",
+      "sha256": "f617e612d3db40dc73a902eaaefa98f4a038b5a8e8b67c398b986b656af625be",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\04-paused.png",
+      "path": "forward_plus-04-paused.png",
+      "sha256": "e58f97b4917c1fe0d1f84ee31e5aa3b5f309d3aab48da94a88b424ac2b98b14c",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\05-complete.png",
+      "path": "forward_plus-05-complete.png",
+      "sha256": "31084f8b958c0af05ed356f94274494797b2569d03d74501daf358375bb1403b",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\07-shade.png",
+      "path": "forward_plus-07-shade.png",
+      "sha256": "9c76985bb5a2a5d06b0f8f5ea5ef60ade3e42fedc329c4257b3651229f2629cf",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\08-fresh-process-paused.png",
+      "path": "forward_plus-08-fresh-process-paused.png",
+      "sha256": "a5135bb20136f10477ca9ef5496230cdb9db100d472e58751d233ee851d0d126",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\checks.json",
+      "path": "forward_plus-checks.json",
+      "sha256": "483b7498a229f4e281985b6cc2e2b3668681b1a35800ecfe682f05e6b2bdbecf",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\restore.json",
+      "path": "forward_plus-restore.json",
+      "sha256": "2fed6f42e6a797cca01739b789cdca001463bee1c28b0252857cd331439c0123",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\benchmark.json",
+      "path": "forward_plus-benchmark.json",
+      "sha256": "a20229ee056fe2c213b10ba81b21e69287ed28de332a22f2176e622642b3031d",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\timings.json",
+      "path": "forward_plus-timings.json",
+      "sha256": "c9b3d4824c69f4f92286d90405f08a753433f124122fb2e9e649a754ae41f826",
+      "unchanged": true
+    },
+    {
+      "path": "forward_plus-work-pause.webp",
+      "sha256": "d6accecaae3e9120f024ce01d53b2c5612f41cc842a33ef96d5b6b7489ca31fc",
+      "source_frames": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-000.png",
+          "sha256": "b6ad1a585d00ab4a65a0c8c83487775b9f6777eb3292d267533386ae01260160"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-001.png",
+          "sha256": "2731dfb98ba6b608564e88fd86ed156743f66cb383a00c6adbeb93cb3fb68e5f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-002.png",
+          "sha256": "369a72c0f45d05d0b0a0beda12501deb3c281d3728a79816b03c2fbbdc08e2f2"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-003.png",
+          "sha256": "6c7ccf2eb1019e21d6f6eff6e83112cb8abbcd118b451acf1091802078daf92f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-004.png",
+          "sha256": "68cf186ed668a947d6f92eae3316ef1f8c8419acfcfd20baa2c70cf46f6fdf4f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-005.png",
+          "sha256": "d70358c2c83a4d62f48fa6275ad094b42d5669604097f5591f4b0c0003fb61ed"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-006.png",
+          "sha256": "94cb9934809545d4f07a9afa812f7b701448c47f05ef1fde595ee83f029073ca"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-007.png",
+          "sha256": "0b455d59febd38a28feb2241148cae8a5825e904aac8c1a7dabc030efbc4e50e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-008.png",
+          "sha256": "e84869a6367ae3727c1e8c3aaabeb29e751cf0e008e5107f9480b14eaabb61c0"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-009.png",
+          "sha256": "8eccd4df4706cbd8651a6aa4312cc08bd65733d68d831828b584d03151ef8a01"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-010.png",
+          "sha256": "1259d332fd6b73647d97ab293557448743a7a45fb668d308c9ed5e68e28edbcd"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-011.png",
+          "sha256": "9e7145fd3b77d9c66e81207a74619343d0bc7e82dea47f15f92b79d25446cd3d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-012.png",
+          "sha256": "627e8007d6876ca1e32955706cf6a7b639600d5f6cd08d09600329a46e99b5c1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-013.png",
+          "sha256": "c3bf98e67a73ad11d489da7928c34afd39b52b80efb462e21a4c464c2e25312d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-014.png",
+          "sha256": "e2418dc2c4113e3f30b2167fd74587e66b50e5548a0e13cb9b8da493ea6cca9c"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-015.png",
+          "sha256": "479d0d46afab7a28853b3eee741eee5bfcdd46ea0aef8c9d5ced42288b549493"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-016.png",
+          "sha256": "1bfbafff6b5b41d4cb832a536b607ac3b03ca0c14d8760a04ef26fc4d05c4989"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-017.png",
+          "sha256": "44072c35e275d53f04c995657d0dd3077e8e9289ccff7f824d6ccdff94c8fa80"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-018.png",
+          "sha256": "dfc166c9a3fa778d583e350277526a6036810441b9b6e9d4c3ee862a84ff3e46"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-019.png",
+          "sha256": "536d555b44bb5ba3e8dcf5c09404f18d2e4b996e0b7b32660905c2c50f168a4b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-020.png",
+          "sha256": "55ed5d6f7803f5370d04b4abddfe762b09a48420c9296f47fcc5f0da5e89a9b3"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-021.png",
+          "sha256": "06ebe607c4b9b60253f1b09f2ee12b7b1a62f57f8c6fcc78251b33e4ef0bcf63"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-022.png",
+          "sha256": "d4c8759df134db373cc3d771a7846592ed9c4d2db74be8a0948a27fc6bb6395a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-023.png",
+          "sha256": "ef56bd04440bcf0975115e6548afbdf83547c5cb96233d34d9ea372a88459608"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-024.png",
+          "sha256": "41d2b89b6e73002e14cf668224b5a0d0f53798826d67e4ce32da4b11858b43ea"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-025.png",
+          "sha256": "94ce97b375b5ecfc6110111379520d13eba20ffabdff2507dc487f6f41ab2cba"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-026.png",
+          "sha256": "08d8d7ee5e9dbd6de107096175252848204c91dee9144df2e0406d263ccfc1c2"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-027.png",
+          "sha256": "1a5223ae3ee453e6be02ff93267598a5e21a983211648936a76ac093cfd2e645"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-028.png",
+          "sha256": "9eb2c498cc3106a03ca2b95d8c419c473cc9806733dc99108a9c32f5dec6158e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-029.png",
+          "sha256": "94bb671b9a93a8dd3b56cd0e401d2df4c653ca96128617f91c868f1be106ee49"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-030.png",
+          "sha256": "c662add67bc341bc3853e36548f2d0ecfc5595dfc7056ea23a8542c6e3524fdc"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-031.png",
+          "sha256": "d18cf3943914698d108ace494567de0e8d2fe7646f5ba2c6447ab61390cfdb98"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-032.png",
+          "sha256": "df027a776fe065c8a3e4d0b17f43b37a14dc5e1370cbef353e9c3517a735e332"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-033.png",
+          "sha256": "b0a1d5506c2a5e0c398a0e4ef8ce5093b741f622da8782d24d0105def657e830"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-034.png",
+          "sha256": "8a659a1f116bc841f351f3b699ca96ab4ff0867b4e82066d4909af85e96dd628"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-035.png",
+          "sha256": "7ba47c2b3f7506a554457e10ea4383d82bb74e558d92a43209cd7653f6161e64"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-036.png",
+          "sha256": "f18bf29044a890cff8364b0cb28cbf84a9b203d46717170a7d0c172f910a0601"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-037.png",
+          "sha256": "414a73a22459c71bea6ee1eeeccff4855bab51fe88b26432ce8d782890227cf9"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-038.png",
+          "sha256": "2acc7555ed8716769a824004b78cf78ec1c5e978bc0a8d375b58b739fa7d6f0c"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-039.png",
+          "sha256": "35fe74b868bd9bb8e17ecf9e88876d827b22f7033f7710fd359688071f43d426"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-040.png",
+          "sha256": "38a3e2a890ee30606227e20cc7e29e0844eabc416625d20518335670772022a1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-041.png",
+          "sha256": "8baf64ab103e453b3e31045017e25b9a90b15ba02eabea592bedddf30785380f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-042.png",
+          "sha256": "c79e4fac6847b017329f334a879e27c379562aa1441de21cd08267f1d330dc28"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-043.png",
+          "sha256": "e8fcfd754a8404f70796082e6d1590309a35a418dcb2393b0e0eb3548418334f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-044.png",
+          "sha256": "8dd10d4b74febdaf5535a9059416d06931c029b06934cc2478c8a3f5e4a978d6"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-045.png",
+          "sha256": "036c3156c9a043f34cecb5b569c9fcc6e28281fc12fe62c8827d2635ab115508"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-046.png",
+          "sha256": "b74ec4cf3dcb7bfa7759662f523d069212b3a69f0812378f47deb372c547509d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-047.png",
+          "sha256": "f2d628166498ae32de4fa6dde37810d8f97aac3849279690b064e4436736cc5f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-048.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-049.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-050.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-051.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-052.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-053.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-054.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-055.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-056.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-057.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-058.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\forward_plus\\motion-059.png",
+          "sha256": "fc289b3981adaa7cdff255e02dc41933f9ad4ddb069b37e6a57305f185fd7ede"
+        }
+      ],
+      "playback": "60 actual frames; 100 ms each for inspection. First 48 advance native work at 24 Hz; final 12 hold explicit pause. No interpolated motion."
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\01-basic-cold.png",
+      "path": "gl_compatibility-01-basic-cold.png",
+      "sha256": "f971ef1d0a3b10cf62dde6a33214ac8b98407398115dcc357593db4720bb3ba2",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\03-improved-cold.png",
+      "path": "gl_compatibility-03-improved-cold.png",
+      "sha256": "fb90691c5c7d6f2c5b86a075160f24ea56a3f72903fb75c0052f42585ecc7daa",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\03-working-context.png",
+      "path": "gl_compatibility-03-working-context.png",
+      "sha256": "32bee305c03736693ac6437438c12c39d65a625c4a7ca09d4fe5978fc5a999de",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\03-working-controls.png",
+      "path": "gl_compatibility-03-working-controls.png",
+      "sha256": "446ab0b46e3f26241eb546074e25dd68bbf94ea2c297d088238c2f15cc1b8c06",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\04-paused.png",
+      "path": "gl_compatibility-04-paused.png",
+      "sha256": "45593ae98c08e7f8f571c09937bae1bb7daf41df77a1254dd273d498d582e403",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\05-complete.png",
+      "path": "gl_compatibility-05-complete.png",
+      "sha256": "c2bde768dd3930c224fc46259042955ade58242bc6a938072128c429b7a88da9",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\07-shade.png",
+      "path": "gl_compatibility-07-shade.png",
+      "sha256": "78c170550342d7890b640fd22bfa3535bf0dc2718c1e058730c203dc63fd1645",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\08-fresh-process-paused.png",
+      "path": "gl_compatibility-08-fresh-process-paused.png",
+      "sha256": "f2271a16382aea6481c44e4b31491ea81173a7c011ff5478471e219d0d39a189",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\checks.json",
+      "path": "gl_compatibility-checks.json",
+      "sha256": "49f05745d72e4a36669a9a10784dfff3252562341e4649fe8eb1997acd6d4405",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\restore.json",
+      "path": "gl_compatibility-restore.json",
+      "sha256": "0f4fbbe1768a7a1cb8bd784f3b19c9eb4ca0e52004db873e0e7a6e8a47c22f69",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\benchmark.json",
+      "path": "gl_compatibility-benchmark.json",
+      "sha256": "98faed7f4ffa05ce25a6976f92131498875f9e70895ed75fd6482d99527ae2e4",
+      "unchanged": true
+    },
+    {
+      "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\timings.json",
+      "path": "gl_compatibility-timings.json",
+      "sha256": "e158fb746ce30f9664b1882271a02c046e9eb8aed2e44f1917e79037aa4ac4ff",
+      "unchanged": true
+    },
+    {
+      "path": "gl_compatibility-work-pause.webp",
+      "sha256": "04b030ecf129d49c85052277f2f752943e8685248807e50ff9480cd4487ca53a",
+      "source_frames": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-000.png",
+          "sha256": "c0149b497f7f8f38442ef448daa9d846b0662ae2e1cfaa6d41f8d91832ad0344"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-001.png",
+          "sha256": "0b782122044bfc7d93ddea0a9cea9e2ba56f26ca7c2468543421c0ce0c0ee009"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-002.png",
+          "sha256": "dbcfcf4b6f9a7270c0e17baf545168c0a40d11b9ed8159f8236ed6005b6583c1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-003.png",
+          "sha256": "2f64787c60cb2e9ebac8f212d0c248b08803c9e671d6bf860853a808e2b72f95"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-004.png",
+          "sha256": "76ea1bcb1ff97526517f4f770245f744dbaf0921ae16e24a911f4d6b42e5284e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-005.png",
+          "sha256": "86a16e1899392444e48d1e0903be7623e48ba01b0ee88753180cfdf34a100fe2"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-006.png",
+          "sha256": "c689b0ac4bbb27ed255d6cf4f06e36a40053dda2edac4e73d26d87f52a320215"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-007.png",
+          "sha256": "1839ad482e817c4cdad8f1a58a06a2081ddf9c1b9fb028f2ae8acafc672ac095"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-008.png",
+          "sha256": "70403d01bca524ce2702dce32c0f784f16c2eefd74b8a850f5a2e0309a591dce"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-009.png",
+          "sha256": "fa8be3f85b861963f900aba382728c330cec10574bb03eae2405be8e831c21e7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-010.png",
+          "sha256": "7db47bfbfdad6aed3d9eedabc5fb3ec5e88bbe0d851e9358300b155054fdd687"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-011.png",
+          "sha256": "49b4b80b66bfb23ccf071e124bf02a84f45768a2ca21dd44a6a12a50bcea3692"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-012.png",
+          "sha256": "fe3cfa5ba2f25325104c63c7402a25fba83fb0f86db7f0c1c44dcd7859bd9546"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-013.png",
+          "sha256": "b146daad031e5f3586798529e3b84adb31a358f94e3765a9a4b0caada4c04b40"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-014.png",
+          "sha256": "a9bc0414147b45e1d3050e23dc5195b96e9262457a7d3d1d1fd8f24daca3c6b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-015.png",
+          "sha256": "dacc17342a8c1768a68a1bba0adb094b2b161f3116bf2b19c02391160360e055"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-016.png",
+          "sha256": "fb62287a60402ccc01c6e275e3409aa3f7404e96463e88689f5651777f4cb074"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-017.png",
+          "sha256": "4df0c7638c10fd55d56ded788717cec9f3ee2b99c97af6d79710b56132c7b7cb"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-018.png",
+          "sha256": "c02fd28da7987670c7bc3a05bb0c60182064a7575b559d362331c5b9779fb9ff"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-019.png",
+          "sha256": "e35a53c88da54f4322b60c40a9fb417cf37f2d6949dc64d0c9276a48d983c387"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-020.png",
+          "sha256": "20176a7d0ea2941cbf5b58c21926acdb5b0e721cfe5a4ebd0302a996730ccf7e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-021.png",
+          "sha256": "741708fcbccff970f2563b9d1243840d27b2ba69e8b1560f6bb0bd254e48d0a4"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-022.png",
+          "sha256": "967768bffe245c2fbf7ffb10241c8de77ed963a408136123d889310b42caf5b1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-023.png",
+          "sha256": "54ae50029516feb2b7abf04a707d8fa2267987a9932812ae435e3918ceda4d53"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-024.png",
+          "sha256": "3fa99d8e14a47e64a8bff34edf7ce29994a90707d4aeb7a93e0deeb0864317ad"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-025.png",
+          "sha256": "1610db161614c0e3ddf10ee606c8dc1755d60938fb66b0fc977f50a8cd10b8d9"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-026.png",
+          "sha256": "2f0ae02a7304f95caf05447235c57b86b600999139f95125d97748d3ab9e105b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-027.png",
+          "sha256": "b148dfbe24193a8768b8a6944bb023ba5a9d894d7fb897e4769205e8b6626bc6"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-028.png",
+          "sha256": "809c38d1d9a97f020d713ae5b7b9940f095f13232440992f633472db84d3ffe1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-029.png",
+          "sha256": "10098ee39fce0d3ed513ef71aa123778db193d8481a101d48e3faa9f958a4450"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-030.png",
+          "sha256": "0bb0880051502da7c5ffbcd9b06bf538df6f97f7c566368355bd5a27595afb66"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-031.png",
+          "sha256": "ed83bd2c706be583c5cf4853f6064be85ea0b75ef3e0f59a2dbf7be058d17b9c"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-032.png",
+          "sha256": "10d2fb166aeb17db6cbb56eca964b2355142c23a4c25def5455cf74825280b19"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-033.png",
+          "sha256": "8eef679a43730ba5b2b4791d348f0a8570ddfa18489d33e20533b2d3c1a9bd63"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-034.png",
+          "sha256": "11788187099616a94df1cb48ac5d7b7251ae57b0dca2f9fbbfe3ff501091459c"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-035.png",
+          "sha256": "0369735daab35ed863366028be55e0e75e352644ebeeb0f7de290a5163a7890b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-036.png",
+          "sha256": "624c6e50ce4b03d1e052b3571b648800027a2408319d5cc40cecbd117c99e603"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-037.png",
+          "sha256": "8ffe33b497a10f9a54ef0ba8d54fe83f1e0cbb551b7b1921fe080ae116b4d6bb"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-038.png",
+          "sha256": "03e07fb78465d426f5c4379fa74ac8ec6de8fed2ad550a8c556dea84721d85a7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-039.png",
+          "sha256": "3e80888d013c9df68517518b603290040e0b25bfa8bd0a4184a09430d52a3560"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-040.png",
+          "sha256": "fb67b02a8b81ed8a72f156bef876e965ffc12b55510437d0d80d08278aef9c55"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-041.png",
+          "sha256": "8ec060afd6d9ecac3542e09219cb3bd743c624524f74d6b4ac478d0c0db7541e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-042.png",
+          "sha256": "e81320ba507fb18238a4566a52ebac4d9e615644880146aaaa13a4f8be06b39f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-043.png",
+          "sha256": "4b4dd569236ffd91988aed0dff0da3df770af22221f1b7d1ad5c54e35cd4ace6"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-044.png",
+          "sha256": "631dcbd51deb34dc02ec1e7ff487ea42b88426ddc09a0358a8b4821ae92e3c9d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-045.png",
+          "sha256": "40ae9dd5e50b327e783e8299171b07e0bde2ff34040388e6a048c96c6bf7c12f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-046.png",
+          "sha256": "ccb5ed484a92149a1aaf7309bae6ee281032d7d0778379980239b33c17e220f1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-047.png",
+          "sha256": "065cee6f2fbe3cf606c03c0b93a33df864569282029956f83baeea7cbbd9591a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-048.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-049.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-050.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-051.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-052.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-053.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-054.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-055.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-056.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-057.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-058.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\review03\\evidence\\gl_compatibility\\motion-059.png",
+          "sha256": "42204dc59fce475b29f5ec8bdc4c1fb0eaa22946ba7b7eaa68535da99d7edc73"
+        }
+      ],
+      "playback": "60 actual frames; 100 ms each for inspection. First 48 advance native work at 24 Hz; final 12 hold explicit pause. No interpolated motion."
+    },
+    {
+      "path": "blender-contact-sheet.jpg",
+      "sha256": "f2d3cedae99c496fc1e68b46401e38de84829ff4b4afa062f9bab1214e20b7f3",
+      "source": "24 actual reopened Blender renders; scaled thumbnails only"
+    }
+  ]
+}

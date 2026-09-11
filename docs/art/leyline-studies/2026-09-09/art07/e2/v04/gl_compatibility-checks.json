@@ -1,0 +1,2793 @@
+{
+	"checks": 162,
+	"device": "NVIDIA GeForce RTX 5090",
+	"failures": 0,
+	"frames": [
+		{
+			"amount": 0.8,
+			"frame": 0,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.0416666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.00520833333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 1,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.0833333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0104166666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 2,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.125,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.015625
+		},
+		{
+			"amount": 0.8,
+			"frame": 3,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.166666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0208333333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 4,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.208333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0260416666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 5,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.25,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.03125
+		},
+		{
+			"amount": 0.8,
+			"frame": 6,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.291666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0364583333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 7,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.333333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0416666666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 8,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.375,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.046875
+		},
+		{
+			"amount": 0.8,
+			"frame": 9,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.416666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0520833333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 10,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.458333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0572916666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 11,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.5,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0625
+		},
+		{
+			"amount": 0.8,
+			"frame": 12,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.541666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0677083333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 13,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.583333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0729166666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 14,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.625,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.078125
+		},
+		{
+			"amount": 0.8,
+			"frame": 15,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.666666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0833333333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 16,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.708333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0885416666666666
+		},
+		{
+			"amount": 0.8,
+			"frame": 17,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.75,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.09375
+		},
+		{
+			"amount": 0.8,
+			"frame": 18,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.791666666666666,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.0989583333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 19,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.833333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.104166666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 20,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.875,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.109375
+		},
+		{
+			"amount": 0.8,
+			"frame": 21,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.916666666666666,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.114583333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 22,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 0.958333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.119791666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 23,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.0,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.125
+		},
+		{
+			"amount": 0.8,
+			"frame": 24,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.04166666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.130208333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 25,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.08333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.135416666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 26,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.125,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.140625
+		},
+		{
+			"amount": 0.8,
+			"frame": 27,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.16666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.145833333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 28,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.20833333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.151041666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 29,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.25,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.15625
+		},
+		{
+			"amount": 0.8,
+			"frame": 30,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.29166666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.161458333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 31,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.33333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.166666666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 32,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.375,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.171875
+		},
+		{
+			"amount": 0.8,
+			"frame": 33,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.41666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.177083333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 34,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.45833333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.182291666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 35,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.5,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.1875
+		},
+		{
+			"amount": 0.8,
+			"frame": 36,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.54166666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.192708333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 37,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.58333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.197916666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 38,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.625,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.203125
+		},
+		{
+			"amount": 0.8,
+			"frame": 39,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.66666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.208333333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 40,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.70833333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.213541666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 41,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.75,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.21875
+		},
+		{
+			"amount": 0.8,
+			"frame": 42,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.79166666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.223958333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 43,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.83333333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.229166666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 44,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.875,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.234375
+		},
+		{
+			"amount": 0.8,
+			"frame": 45,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.91666666666667,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.239583333333333
+		},
+		{
+			"amount": 0.8,
+			"frame": 46,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 1.95833333333333,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.244791666666667
+		},
+		{
+			"amount": 0.8,
+			"frame": 47,
+			"native": {
+				"at_landing": false,
+				"cargo": {
+
+				},
+				"completed_cycles": 0,
+				"completed_trips": 0,
+				"cycle_seconds": 2.0,
+				"delay_paused": false,
+				"delay_seconds": 0.0,
+				"energy": 0,
+				"escrow_drive": 1,
+				"escrow_fuel": {
+					"wood": 1
+				},
+				"escrow_heat": 0,
+				"escrow_inputs": {
+					"raw_clay": 8
+				},
+				"feeder_paused": false,
+				"ferrous": {
+
+				},
+				"forge_key": "station_forge_basic_500_0_500",
+				"forge_position": "(0.5, 0.0, 0.5)",
+				"heat": 0,
+				"heat_key": "",
+				"input": {
+					"raw_clay": 8,
+					"wood": 1
+				},
+				"key": "e2_feeder",
+				"kind": "pressure_feeder",
+				"lamp_on": true,
+				"link": "",
+				"moving": false,
+				"output": {
+
+				},
+				"pending_request": false,
+				"position": "(3.5, 0.0, 0.5)",
+				"progress": 0.0,
+				"pulses": 0,
+				"quarter_turns": 0,
+				"queued_cycles": 4,
+				"remainder": {
+
+				},
+				"second_link": "",
+				"second_span_length": 0.0,
+				"source_id": "",
+				"span_length": 0.0
+			},
+			"phase": 0.25
+		}
+	],
+	"renderer": "gl_compatibility",
+	"scope": "paid engineering fixture on supplied stock; no owner world opened"
+}

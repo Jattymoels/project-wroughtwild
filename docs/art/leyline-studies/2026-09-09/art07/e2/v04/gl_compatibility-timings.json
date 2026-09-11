@@ -1,0 +1,16 @@
+{
+	"device": "NVIDIA GeForce RTX 5090",
+	"draws": 27.0,
+	"p50_ms": 0.889,
+	"p95_ms": 1.042,
+	"primitives": 28914.0,
+	"renderer": "gl_compatibility",
+	"resolution": [
+		1600,
+		900
+	],
+	"sample_frames": 600,
+	"texture_bytes": 92138896.0,
+	"warmup_frames": 132,
+	"worst_ms": 1.423
+}
