@@ -1,0 +1,13 @@
+{
+  "checks": 276,
+  "failures": 0,
+  "machine_state": "{\"schema\":2,\"world_profile\":\"legacy_v1\",\"world_seed\":\"0\",\"sources\":{},\"machines\":[{\"key\":\"fixture_-4_0_0\",\"kind\":\"magnetic_sorter\",\"position\":[-1.5,0,0.5],\"quarter_turns\":0,\"link\":\"\",\"span_length\":0,\"energy\":0,\"lamp_on\":true,\"moving\":false,\"at_landing\":false,\"progress\":0,\"completed_trips\":0,\"pulses\":0,\"cargo\":{},\"input\":{},\"ferrous\":{\"bog_iron\":4,\"iron_fittings\":4,\"iron_ingot\":4,\"iron_ore\":4},\"remainder\":{\"copper_ore\":3,\"raw_reed\":3,\"silver_ore\":3,\"wood\":3},\"source_id\":\"\",\"forge_key\":\"\",\"forge_position\":[0,0,0],\"escrow_drive\":0,\"queued_cycles\":0,\"completed_cycles\":0,\"cycle_seconds\":0,\"feeder_paused\":false,\"output\":{},\"escrow_inputs\":{},\"escrow_fuel\":{}},{\"key\":\"fixture_4_0_0\",\"kind\":\"ventlung_bellows\",\"position\":[2.5,0,0.5],\"quarter_turns\":0,\"link\":\"\",\"span_length\":0,\"energy\":3,\"lamp_on\":true,\"moving\":false,\"at_landing\":false,\"progress\":0,\"completed_trips\":0,\"pulses\":0,\"cargo\":{},\"input\":{},\"ferrous\":{},\"remainder\":{},\"source_id\":\"\",\"forge_key\":\"\",\"forge_position\":[0,0,0],\"escrow_drive\":0,\"queued_cycles\":0,\"completed_cycles\":0,\"cycle_seconds\":0,\"feeder_paused\":false,\"output\":{},\"escrow_inputs\":{},\"escrow_fuel\":{}}]}",
+  "mode": "motion",
+  "native_inventory": {
+    "magnetic_sorter_kit": 0,
+    "pullstone": 0,
+    "ventlung": 0,
+    "ventlung_bellows_kit": 0
+  },
+  "user_dir": "C:/Users/Matty/Dev/project-wroughtwild/build/art07/f3/worktree/build/art07/f3/u/F3Native"
+}

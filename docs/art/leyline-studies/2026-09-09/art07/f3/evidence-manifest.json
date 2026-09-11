@@ -1,0 +1,120 @@
+{
+  "method": "Actual renderer pixels. Contact sheets resize and label only. Motion is 120 successive Godot viewport frames at fixed 30 fps; no tweened or invented frames.",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 53,
+      "sha256": "644d9c7198e1da3f16a59733a9773e69d841bffd803838cea9d738b67a737394"
+    },
+    {
+      "path": "blender-device-inspection.png",
+      "bytes": 1365685,
+      "sha256": "134c33d599ac2bfef1fbb739373c0595b4f6f22b418b96d2f248a3e470e6af9d"
+    },
+    {
+      "path": "blender-overview.png",
+      "bytes": 1647290,
+      "sha256": "eef26b3c7018083a40ddd42757989c46d891157a58f38d6f67f4cef587e982a5"
+    },
+    {
+      "path": "blender-scars-off-peak.png",
+      "bytes": 1055205,
+      "sha256": "2b817257ed3d22b0dc0bebd247132bf0a63926a5f8a01589e1b90f3b994576c9"
+    },
+    {
+      "path": "forward_plus-benchmark-no-shadows.json",
+      "bytes": 467,
+      "sha256": "f34e6eed6da4bf9cdb160eacf824097d5323551c6020bc0c24f736cc8a523d17"
+    },
+    {
+      "path": "forward_plus-benchmark.json",
+      "bytes": 467,
+      "sha256": "74e3f62478583bb408376b97c6ffae87b921c885acd92b6b3de6244afe930caf"
+    },
+    {
+      "path": "forward_plus-capture.json",
+      "bytes": 1609,
+      "sha256": "3b83911a42c9ccb3b9a0747ce83042a4c7936493c4578a92495706ac961178ad"
+    },
+    {
+      "path": "forward_plus-motion.json",
+      "bytes": 1608,
+      "sha256": "394f1fab98637a003c0f9e186ebf429492c8e8e29964f9990a59cace99a18b51"
+    },
+    {
+      "path": "gl_compatibility-benchmark-no-shadows.json",
+      "bytes": 470,
+      "sha256": "0ea3e2893d683e726be42fbf8e546de0494bdc7f3bc388c8a9e9a4f25663be9d"
+    },
+    {
+      "path": "gl_compatibility-benchmark.json",
+      "bytes": 471,
+      "sha256": "9e6a9ff05591da824aad343ac0cf9f3dba3a37063961b08f8fd9b9ced5a02cd7"
+    },
+    {
+      "path": "gl_compatibility-capture.json",
+      "bytes": 1609,
+      "sha256": "3b83911a42c9ccb3b9a0747ce83042a4c7936493c4578a92495706ac961178ad"
+    },
+    {
+      "path": "gl_compatibility-motion.json",
+      "bytes": 1608,
+      "sha256": "394f1fab98637a003c0f9e186ebf429492c8e8e29964f9990a59cace99a18b51"
+    },
+    {
+      "path": "godot-forward_plus-motion.webp",
+      "bytes": 662124,
+      "sha256": "52a14f96058d49338ed58b236ad746f2ab50a4c04aa49bf90431489456c78032"
+    },
+    {
+      "path": "godot-forward_plus-native-states.png",
+      "bytes": 418142,
+      "sha256": "dc0ce9debf187bec2b03e5c488d9ddd9da54feafee46a38993eee8c91e0b5b60"
+    },
+    {
+      "path": "godot-forward_plus.png",
+      "bytes": 219175,
+      "sha256": "37475921ee13e8300cbf7c686bd03e4715d8f8c874a207c924ca0980825c8b0e"
+    },
+    {
+      "path": "godot-gl_compatibility-motion.webp",
+      "bytes": 861222,
+      "sha256": "4a1ec80a4154cbafb83db00c34102a54bbe2e45b4114d00a698ccceccc3bfe78"
+    },
+    {
+      "path": "godot-gl_compatibility-native-states.png",
+      "bytes": 461761,
+      "sha256": "69dcbc04722af923af7170aa97537dac128007221c4a372580b235c601a49b08"
+    },
+    {
+      "path": "godot-gl_compatibility.png",
+      "bytes": 246499,
+      "sha256": "f13a9cb94b9c3ac10bd454fb1e7d632ccddace41e92dbeb838fce75d32349d53"
+    },
+    {
+      "path": "pullstone-input-v01.png",
+      "bytes": 2879224,
+      "sha256": "8fabab8b17b044817c598dbe42679ea2a7b2c254d51528cd3157defa33bd4ea1"
+    },
+    {
+      "path": "pullstone-prompt-v01.txt",
+      "bytes": 1244,
+      "sha256": "8a0635ad267fe20a49e8170d5e61eb3d1052d7c4d9fdc31fce7506c6a75b2e17"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2250,
+      "sha256": "6fa90815f46ce318bc0578273de3ac25479f026799a63e5681352f5e50a4e4e5"
+    },
+    {
+      "path": "ventlung-input-v01.png",
+      "bytes": 2254111,
+      "sha256": "568cfcd8985a9a76e3d07600a7cf6c861e75eb76626bd1f465290ea55ea7893b"
+    },
+    {
+      "path": "ventlung-prompt-v01.txt",
+      "bytes": 1217,
+      "sha256": "834f8e8057f8890964998f480b18a8b85e3043a1c504de17d978e3ce5fb204fe"
+    }
+  ]
+}

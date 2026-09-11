@@ -1,0 +1,130 @@
+{
+  "base_commit": "4b5d89b376765fbf4d46049aa099e0bb154a82da",
+  "source_height_m": {
+    "pullstone": 0.82,
+    "ventlung": 0.96
+  },
+  "source_near_triangles": {
+    "pullstone": 18000,
+    "ventlung": 22000
+  },
+  "source_middle_triangles": {
+    "pullstone": 6500,
+    "ventlung": 8500
+  },
+  "source_far_triangles": {
+    "pullstone": 1400,
+    "ventlung": 1800
+  },
+  "scar_depth_m": {
+    "pullstone": 0.035,
+    "ventlung": 0.026
+  },
+  "scar_half_width_m": {
+    "pullstone": 0.035,
+    "ventlung": 0.028
+  },
+  "beam_bevel_m": 0.004,
+  "wood_repeat_m": [
+    0.5,
+    2.0
+  ],
+  "metal_repeat_m": 0.5,
+  "native_bounds_m": {
+    "pullstone": [
+      2.0,
+      1.2,
+      1.1
+    ],
+    "ventlung": [
+      1.2,
+      1.2,
+      1.2
+    ],
+    "magnetic_sorter": [
+      1.3,
+      1.3,
+      0.85
+    ],
+    "ventlung_bellows": [
+      0.92,
+      0.97,
+      1.15
+    ]
+  },
+  "sort_visual_anchors_godot_m": {
+    "input": [
+      0,
+      1.05,
+      -0.12
+    ],
+    "ferrous_route": [
+      -0.35,
+      0.86,
+      0.02
+    ],
+    "remainder_route": [
+      0.32,
+      0.66,
+      0.02
+    ],
+    "ferrous_tray": [
+      -0.4,
+      0.32,
+      0.15
+    ],
+    "remainder_tray": [
+      0.4,
+      0.32,
+      0.15
+    ]
+  },
+  "bellows_native_godot_m": {
+    "target_query_origin": [
+      0,
+      0.6,
+      0
+    ],
+    "target_query_destination_offset": [
+      0,
+      0.3,
+      0
+    ],
+    "release_origin": [
+      0,
+      0.55,
+      0
+    ],
+    "nozzle_tip_visual": [
+      0,
+      0.55,
+      -0.555
+    ]
+  },
+  "purposes": {
+    "source_height_m": "Uniform normalization fits an upright recovered specimen into the existing source body; device copies receive explicitly measured mount transforms.",
+    "source_near_triangles": "First measured detailed runtime candidates preserve large folds and deep cuts, not an approved game-wide budget.",
+    "source_middle_triangles": "Simplify small mineral fragments and wrinkles while keeping the parent silhouette and cut.",
+    "source_far_triangles": "Retain broad folded/nodule masses for distance inspection; no finite ownership or physics changes.",
+    "scar_depth_m": "Real inward displacement creates a dark injury visible with emission disabled; measured on each delivered near core.",
+    "scar_half_width_m": "Gives the incision broken margins instead of a painted bright line.",
+    "beam_bevel_m": "Softens worked timber edges inside the existing body envelope.",
+    "wood_repeat_m": "D4 metric grain density, V along the member; end grain uses the D4 half-metre mapping.",
+    "metal_repeat_m": "D6 iron half-metre finish repeated at its original density.",
+    "native_bounds_m": "Unchanged physical placement/resource bodies, not new tuning.",
+    "sort_visual_anchors_godot_m": "Existing native presentation route locations retained exactly, including both distinct trays.",
+    "bellows_native_godot_m": "Current target/impact positions are retained; the nozzle is cosmetic and adds no reach or targeting gate.",
+    "recovery_voxel_m": "Closes touching raw triangles before authoring runtime solids; original surface UV charts are interpolated by nearest polygon, not unrelated vertices.",
+    "review_lighting": "Shared linear-tone inspection lighting keeps original materials readable in Forward+ and Compatibility; this changes no ordinary-world lighting."
+  },
+  "recovery_voxel_m": {
+    "pullstone": 0.004,
+    "ventlung": 0.004
+  },
+  "review_lighting": {
+    "tone_mapping": "linear",
+    "key": 0.75,
+    "ambient": 0.35,
+    "fill": 0.2
+  }
+}
