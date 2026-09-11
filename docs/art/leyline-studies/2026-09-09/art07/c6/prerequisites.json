@@ -1,0 +1,14 @@
+{
+  "b3": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02",
+    "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+    "files": 1541,
+    "bytes": 693973744
+  },
+  "b4": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\handoff-v01",
+    "manifest_sha256": "60392ada2fd8eedb52ee091cfead2c7afa1da200f47d0994bafaef7404bace71",
+    "files": 697,
+    "bytes": 2811863353
+  }
+}

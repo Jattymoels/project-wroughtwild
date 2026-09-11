@@ -1,0 +1,1432 @@
+{
+  "packed_images": [
+    {
+      "name": "C6 periodic metal",
+      "size": [
+        512,
+        512
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "C6 periodic soil",
+      "size": [
+        512,
+        512
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "C6 periodic stone",
+      "size": [
+        512,
+        512
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "C6 periodic wood",
+      "size": [
+        512,
+        512
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.002",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.003",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.004",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.005",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.006",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.002",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.003",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.004",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.005",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.006",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm reed grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm reed grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.002",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.003",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.004",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.005",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.006",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.007",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain.002",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain.003",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain.004",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Dark joined timber colour",
+      "size": [
+        128,
+        256
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.001",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.003",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_1",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.001",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.003",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Weathered station timber colour",
+      "size": [
+        128,
+        256
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Worn forged iron colour",
+      "size": [
+        128,
+        256
+      ],
+      "colourspace": "sRGB"
+    }
+  ],
+  "independent_incision_m": 0.047999843202896124,
+  "exports": [
+    {
+      "file": "cataclysm_fen_cistern-lod0.glb",
+      "triangles": 4080,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3152467012405396,
+          -1.137682318687439,
+          -0.05000000074505806
+        ],
+        [
+          1.5099999904632568,
+          1.137682318687439,
+          0.5969449281692505
+        ]
+      ],
+      "bytes": 646100
+    },
+    {
+      "file": "cataclysm_fen_cistern-lod1.glb",
+      "triangles": 4080,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3152467012405396,
+          -1.137682318687439,
+          -0.05000000074505806
+        ],
+        [
+          1.5099999904632568,
+          1.137682318687439,
+          0.5969449281692505
+        ]
+      ],
+      "bytes": 647476
+    },
+    {
+      "file": "cataclysm_fen_cistern-lod2.glb",
+      "triangles": 4080,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3152467012405396,
+          -1.137682318687439,
+          -0.05000000074505806
+        ],
+        [
+          1.5099999904632568,
+          1.137682318687439,
+          0.5969449281692505
+        ]
+      ],
+      "bytes": 647476
+    },
+    {
+      "file": "cataclysm_fen_roof-lod0.glb",
+      "triangles": 2992,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3118243217468262,
+          -0.8399999737739563,
+          0.02510794997215271
+        ],
+        [
+          1.342868685722351,
+          0.9250468611717224,
+          0.4684999883174896
+        ]
+      ],
+      "bytes": 373996
+    },
+    {
+      "file": "cataclysm_fen_roof-lod1.glb",
+      "triangles": 2992,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3118243217468262,
+          -0.8399999737739563,
+          0.02510794997215271
+        ],
+        [
+          1.342868685722351,
+          0.9250468611717224,
+          0.4684999883174896
+        ]
+      ],
+      "bytes": 373292
+    },
+    {
+      "file": "cataclysm_fen_roof-lod2.glb",
+      "triangles": 2992,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3118243217468262,
+          -0.8399999737739563,
+          0.02510794997215271
+        ],
+        [
+          1.342868685722351,
+          0.9250468611717224,
+          0.4684999883174896
+        ]
+      ],
+      "bytes": 373292
+    },
+    {
+      "file": "cataclysm_fen_wall-lod0.glb",
+      "triangles": 12782,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3674999475479126,
+          -0.24413077533245087,
+          -0.054999999701976776
+        ],
+        [
+          1.3674999475479126,
+          0.2350374460220337,
+          1.6525561809539795
+        ]
+      ],
+      "bytes": 4422584
+    },
+    {
+      "file": "cataclysm_fen_wall-lod1.glb",
+      "triangles": 8644,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3674999475479126,
+          -0.24413077533245087,
+          -0.054999999701976776
+        ],
+        [
+          1.3674999475479126,
+          0.2350374460220337,
+          1.6525561809539795
+        ]
+      ],
+      "bytes": 4266000
+    },
+    {
+      "file": "cataclysm_fen_wall-lod2.glb",
+      "triangles": 6851,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3674999475479126,
+          -0.24413077533245087,
+          -0.054999999701976776
+        ],
+        [
+          1.3674999475479126,
+          0.2350374460220337,
+          1.6525561809539795
+        ]
+      ],
+      "bytes": 4187816
+    },
+    {
+      "file": "cataclysm_fen_wall_struck-lod0.glb",
+      "triangles": 15137,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3674999475479126,
+          -0.24413077533245087,
+          -0.054999999701976776
+        ],
+        [
+          1.3674999475479126,
+          0.2350374460220337,
+          1.6525561809539795
+        ]
+      ],
+      "bytes": 4839472,
+      "independent_front_ray_recession_m": 0.0458531379699707,
+      "matched_ray_samples": 1556
+    },
+    {
+      "file": "cataclysm_fen_wall_struck-lod1.glb",
+      "triangles": 10897,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3674999475479126,
+          -0.24413077533245087,
+          -0.054999999701976776
+        ],
+        [
+          1.3674999475479126,
+          0.2350374460220337,
+          1.6525561809539795
+        ]
+      ],
+      "bytes": 4598308,
+      "independent_front_ray_recession_m": 0.0458531379699707,
+      "matched_ray_samples": 1556
+    },
+    {
+      "file": "cataclysm_fen_wall_struck-lod2.glb",
+      "triangles": 8056,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3674999475479126,
+          -0.24413077533245087,
+          -0.054999999701976776
+        ],
+        [
+          1.3674999475479126,
+          0.2350374460220337,
+          1.6525561809539795
+        ]
+      ],
+      "bytes": 4405272,
+      "independent_front_ray_recession_m": 0.0458531379699707,
+      "matched_ray_samples": 1556
+    },
+    {
+      "file": "cataclysm_forge_threshold-lod0.glb",
+      "triangles": 21022,
+      "surfaces": 6,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.7649999856948853,
+          -0.5074999928474426,
+          -0.07000000774860382
+        ],
+        [
+          1.7649999856948853,
+          0.36997202038764954,
+          2.805082082748413
+        ]
+      ],
+      "bytes": 4566488
+    },
+    {
+      "file": "cataclysm_forge_threshold-lod1.glb",
+      "triangles": 12280,
+      "surfaces": 6,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.7649999856948853,
+          -0.5074999928474426,
+          -0.07000000774860382
+        ],
+        [
+          1.7649999856948853,
+          0.36997202038764954,
+          2.805082082748413
+        ]
+      ],
+      "bytes": 4239656
+    },
+    {
+      "file": "cataclysm_forge_threshold-lod2.glb",
+      "triangles": 8044,
+      "surfaces": 6,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.7649999856948853,
+          -0.5074999928474426,
+          -0.07000000774860382
+        ],
+        [
+          1.7649999856948853,
+          0.36997202038764954,
+          2.805082082748413
+        ]
+      ],
+      "bytes": 4065752
+    },
+    {
+      "file": "cataclysm_rootvault_frame-lod0.glb",
+      "triangles": 11782,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.6624999046325684,
+          -0.3249075412750244,
+          -0.05499999225139618
+        ],
+        [
+          1.6624999046325684,
+          0.32649970054626465,
+          2.783461809158325
+        ]
+      ],
+      "bytes": 4302028
+    },
+    {
+      "file": "cataclysm_rootvault_frame-lod1.glb",
+      "triangles": 6785,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.6624999046325684,
+          -0.3249075412750244,
+          -0.05499999225139618
+        ],
+        [
+          1.6624999046325684,
+          0.32649970054626465,
+          2.783461809158325
+        ]
+      ],
+      "bytes": 4123168
+    },
+    {
+      "file": "cataclysm_rootvault_frame-lod2.glb",
+      "triangles": 4461,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.6624999046325684,
+          -0.3249075412750244,
+          -0.05499999225139618
+        ],
+        [
+          1.6624999046325684,
+          0.32649970054626465,
+          2.783461809158325
+        ]
+      ],
+      "bytes": 4031980
+    },
+    {
+      "file": "cataclysm_rootvault_roof-lod0.glb",
+      "triangles": 816,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3789517879486084,
+          -0.9801464676856995,
+          -0.028781414031982422
+        ],
+        [
+          1.402768850326538,
+          1.0674999952316284,
+          0.5884312987327576
+        ]
+      ],
+      "bytes": 234656
+    },
+    {
+      "file": "cataclysm_rootvault_roof-lod1.glb",
+      "triangles": 816,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3789517879486084,
+          -0.9801464676856995,
+          -0.028781414031982422
+        ],
+        [
+          1.402768850326538,
+          1.0674999952316284,
+          0.5884312987327576
+        ]
+      ],
+      "bytes": 234432
+    },
+    {
+      "file": "cataclysm_rootvault_roof-lod2.glb",
+      "triangles": 816,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.3789517879486084,
+          -0.9801464676856995,
+          -0.028781414031982422
+        ],
+        [
+          1.402768850326538,
+          1.0674999952316284,
+          0.5884312987327576
+        ]
+      ],
+      "bytes": 234432
+    },
+    {
+      "file": "cataclysm_rootvault_wall-lod0.glb",
+      "triangles": 10651,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.462499976158142,
+          -0.26204973459243774,
+          -0.05499999225139618
+        ],
+        [
+          1.462499976158142,
+          0.2669387459754944,
+          2.254512310028076
+        ]
+      ],
+      "bytes": 4278564
+    },
+    {
+      "file": "cataclysm_rootvault_wall-lod1.glb",
+      "triangles": 6323,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.462499976158142,
+          -0.26204973459243774,
+          -0.05499999225139618
+        ],
+        [
+          1.462499976158142,
+          0.2669387459754944,
+          2.254512310028076
+        ]
+      ],
+      "bytes": 4114384
+    },
+    {
+      "file": "cataclysm_rootvault_wall-lod2.glb",
+      "triangles": 4528,
+      "surfaces": 7,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.462499976158142,
+          -0.26204973459243774,
+          -0.05499999225139618
+        ],
+        [
+          1.462499976158142,
+          0.2669387459754944,
+          2.254512310028076
+        ]
+      ],
+      "bytes": 4036220
+    },
+    {
+      "file": "cataclysm_upland_paving-lod0.glb",
+      "triangles": 680,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4000000953674316,
+          -0.6450749635696411,
+          -0.020000001415610313
+        ],
+        [
+          1.3264250755310059,
+          0.8449509739875793,
+          0.08100000023841858
+        ]
+      ],
+      "bytes": 240592
+    },
+    {
+      "file": "cataclysm_upland_paving-lod1.glb",
+      "triangles": 680,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4000000953674316,
+          -0.6450749635696411,
+          -0.020000001415610313
+        ],
+        [
+          1.3264250755310059,
+          0.8449509739875793,
+          0.08100000023841858
+        ]
+      ],
+      "bytes": 240336
+    },
+    {
+      "file": "cataclysm_upland_paving-lod2.glb",
+      "triangles": 680,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4000000953674316,
+          -0.6450749635696411,
+          -0.020000001415610313
+        ],
+        [
+          1.3264250755310059,
+          0.8449509739875793,
+          0.08100000023841858
+        ]
+      ],
+      "bytes": 240336
+    },
+    {
+      "file": "cataclysm_upland_shelter-lod0.glb",
+      "triangles": 2788,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.5774999856948853,
+          -0.49812498688697815,
+          -0.054999999701976776
+        ],
+        [
+          1.5875000953674316,
+          0.5821322798728943,
+          2.389807939529419
+        ]
+      ],
+      "bytes": 562996
+    },
+    {
+      "file": "cataclysm_upland_shelter-lod1.glb",
+      "triangles": 2788,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.5774999856948853,
+          -0.49812498688697815,
+          -0.054999999701976776
+        ],
+        [
+          1.5875000953674316,
+          0.5821322798728943,
+          2.389807939529419
+        ]
+      ],
+      "bytes": 561748
+    },
+    {
+      "file": "cataclysm_upland_shelter-lod2.glb",
+      "triangles": 2788,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.5774999856948853,
+          -0.49812498688697815,
+          -0.054999999701976776
+        ],
+        [
+          1.5875000953674316,
+          0.5821322798728943,
+          2.389807939529419
+        ]
+      ],
+      "bytes": 561748
+    },
+    {
+      "file": "cataclysm_upland_wall-lod0.glb",
+      "triangles": 10045,
+      "surfaces": 6,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4815326929092407,
+          -0.414124995470047,
+          -0.05499999225139618
+        ],
+        [
+          1.5715327262878418,
+          0.3256426453590393,
+          1.5099999904632568
+        ]
+      ],
+      "bytes": 4070328
+    },
+    {
+      "file": "cataclysm_upland_wall-lod1.glb",
+      "triangles": 5990,
+      "surfaces": 6,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4815326929092407,
+          -0.414124995470047,
+          -0.05499999225139618
+        ],
+        [
+          1.5715327262878418,
+          0.3256426453590393,
+          1.5099999904632568
+        ]
+      ],
+      "bytes": 3916380
+    },
+    {
+      "file": "cataclysm_upland_wall-lod2.glb",
+      "triangles": 4450,
+      "surfaces": 6,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4815326929092407,
+          -0.414124995470047,
+          -0.05499999225139618
+        ],
+        [
+          1.5715327262878418,
+          0.3256426453590393,
+          1.5099999904632568
+        ]
+      ],
+      "bytes": 3851428
+    },
+    {
+      "file": "lf_arrow_stem-lod0.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.05000000074505806,
+          -0.6000000238418579,
+          -0.029999999329447746
+        ],
+        [
+          0.05000000074505806,
+          0.6000000238418579,
+          0.029999999329447746
+        ]
+      ],
+      "bytes": 206968
+    },
+    {
+      "file": "lf_arrow_stem-lod1.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.05000000074505806,
+          -0.6000000238418579,
+          -0.029999999329447746
+        ],
+        [
+          0.05000000074505806,
+          0.6000000238418579,
+          0.029999999329447746
+        ]
+      ],
+      "bytes": 206968
+    },
+    {
+      "file": "lf_arrow_stem-lod2.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.05000000074505806,
+          -0.6000000238418579,
+          -0.029999999329447746
+        ],
+        [
+          0.05000000074505806,
+          0.6000000238418579,
+          0.029999999329447746
+        ]
+      ],
+      "bytes": 206968
+    },
+    {
+      "file": "lf_arrow_tip-lod0.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.03500000014901161,
+          -0.2750000059604645,
+          -0.029999999329447746
+        ],
+        [
+          0.03500000014901161,
+          0.2750000059604645,
+          0.029999999329447746
+        ]
+      ],
+      "bytes": 206968
+    },
+    {
+      "file": "lf_arrow_tip-lod1.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.03500000014901161,
+          -0.2750000059604645,
+          -0.029999999329447746
+        ],
+        [
+          0.03500000014901161,
+          0.2750000059604645,
+          0.029999999329447746
+        ]
+      ],
+      "bytes": 206968
+    },
+    {
+      "file": "lf_arrow_tip-lod2.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.03500000014901161,
+          -0.2750000059604645,
+          -0.029999999329447746
+        ],
+        [
+          0.03500000014901161,
+          0.2750000059604645,
+          0.029999999329447746
+        ]
+      ],
+      "bytes": 206968
+    },
+    {
+      "file": "lf_clamp-lod0.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.375,
+          -0.17000000178813934,
+          -0.05999999865889549
+        ],
+        [
+          0.375,
+          0.17000000178813934,
+          0.05999999865889549
+        ]
+      ],
+      "bytes": 190652
+    },
+    {
+      "file": "lf_clamp-lod1.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.375,
+          -0.17000000178813934,
+          -0.05999999865889549
+        ],
+        [
+          0.375,
+          0.17000000178813934,
+          0.05999999865889549
+        ]
+      ],
+      "bytes": 190652
+    },
+    {
+      "file": "lf_clamp-lod2.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.375,
+          -0.17000000178813934,
+          -0.05999999865889549
+        ],
+        [
+          0.375,
+          0.17000000178813934,
+          0.05999999865889549
+        ]
+      ],
+      "bytes": 190652
+    },
+    {
+      "file": "lf_feed-lod0.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.054999999701976776,
+          -0.5,
+          -0.054999999701976776
+        ],
+        [
+          0.054999999701976776,
+          0.5,
+          0.054999999701976776
+        ]
+      ],
+      "bytes": 190652
+    },
+    {
+      "file": "lf_feed-lod1.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.054999999701976776,
+          -0.5,
+          -0.054999999701976776
+        ],
+        [
+          0.054999999701976776,
+          0.5,
+          0.054999999701976776
+        ]
+      ],
+      "bytes": 190652
+    },
+    {
+      "file": "lf_feed-lod2.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.054999999701976776,
+          -0.5,
+          -0.054999999701976776
+        ],
+        [
+          0.054999999701976776,
+          0.5,
+          0.054999999701976776
+        ]
+      ],
+      "bytes": 190652
+    },
+    {
+      "file": "lf_post-lod0.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.09000000357627869,
+          -0.09000000357627869,
+          -0.6499999761581421
+        ],
+        [
+          0.09000000357627869,
+          0.09000000357627869,
+          0.6499999761581421
+        ]
+      ],
+      "bytes": 190676
+    },
+    {
+      "file": "lf_post-lod1.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.09000000357627869,
+          -0.09000000357627869,
+          -0.6499999761581421
+        ],
+        [
+          0.09000000357627869,
+          0.09000000357627869,
+          0.6499999761581421
+        ]
+      ],
+      "bytes": 190676
+    },
+    {
+      "file": "lf_post-lod2.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.09000000357627869,
+          -0.09000000357627869,
+          -0.6499999761581421
+        ],
+        [
+          0.09000000357627869,
+          0.09000000357627869,
+          0.6499999761581421
+        ]
+      ],
+      "bytes": 190676
+    },
+    {
+      "file": "lf_stamp-lod0.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.03500000014901161,
+          -0.125,
+          -0.15000000596046448
+        ],
+        [
+          0.03500000014901161,
+          0.125,
+          0.15000000596046448
+        ]
+      ],
+      "bytes": 206932
+    },
+    {
+      "file": "lf_stamp-lod1.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.03500000014901161,
+          -0.125,
+          -0.15000000596046448
+        ],
+        [
+          0.03500000014901161,
+          0.125,
+          0.15000000596046448
+        ]
+      ],
+      "bytes": 206932
+    },
+    {
+      "file": "lf_stamp-lod2.glb",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.03500000014901161,
+          -0.125,
+          -0.15000000596046448
+        ],
+        [
+          0.03500000014901161,
+          0.125,
+          0.15000000596046448
+        ]
+      ],
+      "bytes": 206932
+    },
+    {
+      "file": "trail_transition-lod0.glb",
+      "triangles": 788,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4000000953674316,
+          -0.6450749635696411,
+          -0.020000001415610313
+        ],
+        [
+          1.3264250755310059,
+          0.8449509739875793,
+          0.08100000023841858
+        ]
+      ],
+      "bytes": 414744
+    },
+    {
+      "file": "trail_transition-lod1.glb",
+      "triangles": 788,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4000000953674316,
+          -0.6450749635696411,
+          -0.020000001415610313
+        ],
+        [
+          1.3264250755310059,
+          0.8449509739875793,
+          0.08100000023841858
+        ]
+      ],
+      "bytes": 414488
+    },
+    {
+      "file": "trail_transition-lod2.glb",
+      "triangles": 788,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -1.4000000953674316,
+          -0.6450749635696411,
+          -0.020000001415610313
+        ],
+        [
+          1.3264250755310059,
+          0.8449509739875793,
+          0.08100000023841858
+        ]
+      ],
+      "bytes": 414488
+    },
+    {
+      "file": "workbench-lod0.glb",
+      "triangles": 1004,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.4699999988079071,
+          -0.4710000157356262,
+          0.0
+        ],
+        [
+          0.4699999690055847,
+          0.4570000171661377,
+          1.0525000095367432
+        ]
+      ],
+      "bytes": 438220
+    },
+    {
+      "file": "workbench-lod1.glb",
+      "triangles": 1004,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.4699999988079071,
+          -0.4710000157356262,
+          0.0
+        ],
+        [
+          0.4699999690055847,
+          0.4570000171661377,
+          1.0525000095367432
+        ]
+      ],
+      "bytes": 438156
+    },
+    {
+      "file": "workbench-lod2.glb",
+      "triangles": 1004,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_m": [
+        [
+          -0.4699999988079071,
+          -0.4710000157356262,
+          0.0
+        ],
+        [
+          0.4699999690055847,
+          0.4570000171661377,
+          1.0525000095367432
+        ]
+      ],
+      "bytes": 438156
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "owner_visual_acceptance": "pending",
+  "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/handoff-v02",
+  "slice": "ART-07C6",
+  "manifest_sha256": "f8b8f094881207e34762bbba5e5a3c2023fbadca098e6c7a0bb190310cd66bc3",
+  "branch": "codex/art07-c6",
+  "main_pushed": false,
+  "ordinary_world_adoption": false,
+  "base": "4b5d89b376765fbf4d46049aa099e0bb154a82da",
+  "bytes": 676051405,
+  "files": 2201
+}

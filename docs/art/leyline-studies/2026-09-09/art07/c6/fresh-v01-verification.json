@@ -1,0 +1,26 @@
+{
+  "package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\handoff-v01",
+  "copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\fresh-v01",
+  "manifest_sha256": "c9dcdb03813d333a50806f100acc8a6408195399378f8dc8348b56e19b3adbde",
+  "canonical_files": 2162,
+  "canonical_unchanged": true,
+  "fresh_model_audit_identical": true,
+  "fresh_checks": {
+    "forward_plus/check": {
+      "checks": 2921,
+      "failures": 0
+    },
+    "forward_plus/capture": {
+      "checks": 80,
+      "failures": 0
+    },
+    "gl_compatibility/check": {
+      "checks": 2921,
+      "failures": 0
+    },
+    "gl_compatibility/capture": {
+      "checks": 80,
+      "failures": 0
+    }
+  }
+}

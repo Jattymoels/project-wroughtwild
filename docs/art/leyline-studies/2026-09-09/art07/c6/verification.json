@@ -1,0 +1,280 @@
+{
+  "forward_plus": {
+    "check": {
+      "checks": 2921,
+      "failures": 0
+    },
+    "capture": {
+      "checks": 80,
+      "failures": 0
+    },
+    "walk": {
+      "checks": 548,
+      "failures": 0,
+      "walks": [
+        {
+          "airborne_frames": 29,
+          "distance_m": 21.2575407326221,
+          "endpoint": "(219.6711, 28.96058, 654.5002)",
+          "endpoint_supported": true,
+          "frames": 232,
+          "id": "smithy",
+          "points": 24,
+          "reached": true,
+          "supported_frames": 203
+        },
+        {
+          "airborne_frames": 158,
+          "distance_m": 21.8454292656388,
+          "endpoint": "(495.4998, 43.96084, 342.6725)",
+          "endpoint_supported": true,
+          "frames": 262,
+          "id": "collection",
+          "points": 24,
+          "reached": true,
+          "supported_frames": 104
+        }
+      ]
+    },
+    "motion": {
+      "checks": 62,
+      "failures": 0
+    },
+    "benchmark": {
+      "checks": 3,
+      "failures": 0,
+      "views": [
+        {
+          "camera": "(229.5, 29.65, 660.5)",
+          "candidate": false,
+          "draws": 675,
+          "id": "smithy-arrival",
+          "p50_ms": 1.314,
+          "p95_ms": 1.69,
+          "primitives": 2217771,
+          "samples": 600,
+          "texture_bytes": 144309248,
+          "warmup": 180,
+          "worst_ms": 2.174
+        },
+        {
+          "camera": "(229.5, 29.65, 660.5)",
+          "candidate": true,
+          "draws": 746,
+          "id": "smithy-arrival",
+          "p50_ms": 1.296,
+          "p95_ms": 1.708,
+          "primitives": 2278395,
+          "samples": 600,
+          "texture_bytes": 144309248,
+          "warmup": 180,
+          "worst_ms": 1.895
+        },
+        {
+          "camera": "(214.3, 29.65, 661.5455)",
+          "candidate": false,
+          "draws": 706,
+          "id": "fen_wall_struck",
+          "p50_ms": 1.262,
+          "p95_ms": 1.633,
+          "primitives": 2479968,
+          "samples": 600,
+          "texture_bytes": 144309248,
+          "warmup": 180,
+          "worst_ms": 1.841
+        },
+        {
+          "camera": "(214.3, 29.65, 661.5455)",
+          "candidate": true,
+          "draws": 734,
+          "id": "fen_wall_struck",
+          "p50_ms": 1.264,
+          "p95_ms": 1.643,
+          "primitives": 2531901,
+          "samples": 600,
+          "texture_bytes": 144309248,
+          "warmup": 180,
+          "worst_ms": 2.046
+        },
+        {
+          "camera": "(471.5, 32.65, 441.0)",
+          "candidate": false,
+          "draws": 1854,
+          "id": "collection-marks",
+          "p50_ms": 2.006,
+          "p95_ms": 2.424,
+          "primitives": 3924149,
+          "samples": 600,
+          "texture_bytes": 144309248,
+          "warmup": 180,
+          "worst_ms": 2.987
+        },
+        {
+          "camera": "(471.5, 32.65, 441.0)",
+          "candidate": true,
+          "draws": 1370,
+          "id": "collection-marks",
+          "p50_ms": 1.75,
+          "p95_ms": 2.192,
+          "primitives": 3985589,
+          "samples": 600,
+          "texture_bytes": 144309248,
+          "warmup": 180,
+          "worst_ms": 2.766
+        }
+      ]
+    },
+    "visible_change_pixels": {
+      "collection-approach-after-day": 25527,
+      "collection-marks-after-day": 17204,
+      "fen_wall_struck-after-day": 225676,
+      "forge_threshold-after-day": 215404,
+      "rootvault_frame-after-day": 536415,
+      "smithy-arrival-after-day": 15199,
+      "trail_transition-after-day": 336159,
+      "upland_wall-after-day": 343063,
+      "workbench-after-day": 237239
+    },
+    "emission_change_pixels": 3469,
+    "motion_change_pixels": 6015
+  },
+  "gl_compatibility": {
+    "check": {
+      "checks": 2921,
+      "failures": 0
+    },
+    "capture": {
+      "checks": 80,
+      "failures": 0
+    },
+    "walk": {
+      "checks": 548,
+      "failures": 0,
+      "walks": [
+        {
+          "airborne_frames": 29,
+          "distance_m": 21.2575407326221,
+          "endpoint": "(219.6711, 28.96058, 654.5002)",
+          "endpoint_supported": true,
+          "frames": 232,
+          "id": "smithy",
+          "points": 24,
+          "reached": true,
+          "supported_frames": 203
+        },
+        {
+          "airborne_frames": 158,
+          "distance_m": 21.8454292656388,
+          "endpoint": "(495.4998, 43.96084, 342.6725)",
+          "endpoint_supported": true,
+          "frames": 262,
+          "id": "collection",
+          "points": 24,
+          "reached": true,
+          "supported_frames": 104
+        }
+      ]
+    },
+    "motion": {
+      "checks": 62,
+      "failures": 0
+    },
+    "benchmark": {
+      "checks": 3,
+      "failures": 0,
+      "views": [
+        {
+          "camera": "(229.5, 29.65, 660.5)",
+          "candidate": false,
+          "draws": 844,
+          "id": "smithy-arrival",
+          "p50_ms": 1.986,
+          "p95_ms": 2.296,
+          "primitives": 2217771,
+          "samples": 600,
+          "texture_bytes": 37729268,
+          "warmup": 180,
+          "worst_ms": 2.667
+        },
+        {
+          "camera": "(229.5, 29.65, 660.5)",
+          "candidate": true,
+          "draws": 917,
+          "id": "smithy-arrival",
+          "p50_ms": 1.987,
+          "p95_ms": 2.299,
+          "primitives": 2278395,
+          "samples": 600,
+          "texture_bytes": 37729268,
+          "warmup": 180,
+          "worst_ms": 2.668
+        },
+        {
+          "camera": "(214.3, 29.65, 661.5455)",
+          "candidate": false,
+          "draws": 907,
+          "id": "fen_wall_struck",
+          "p50_ms": 1.998,
+          "p95_ms": 2.287,
+          "primitives": 2479968,
+          "samples": 600,
+          "texture_bytes": 37729268,
+          "warmup": 180,
+          "worst_ms": 2.709
+        },
+        {
+          "camera": "(214.3, 29.65, 661.5455)",
+          "candidate": true,
+          "draws": 925,
+          "id": "fen_wall_struck",
+          "p50_ms": 1.987,
+          "p95_ms": 2.257,
+          "primitives": 2531901,
+          "samples": 600,
+          "texture_bytes": 37729268,
+          "warmup": 180,
+          "worst_ms": 2.593
+        },
+        {
+          "camera": "(471.5, 32.65, 441.0)",
+          "candidate": false,
+          "draws": 1857,
+          "id": "collection-marks",
+          "p50_ms": 2.752,
+          "p95_ms": 3.208,
+          "primitives": 3924149,
+          "samples": 600,
+          "texture_bytes": 37729268,
+          "warmup": 180,
+          "worst_ms": 3.732
+        },
+        {
+          "camera": "(471.5, 32.65, 441.0)",
+          "candidate": true,
+          "draws": 1857,
+          "id": "collection-marks",
+          "p50_ms": 2.636,
+          "p95_ms": 3.016,
+          "primitives": 3985589,
+          "samples": 600,
+          "texture_bytes": 37729268,
+          "warmup": 180,
+          "worst_ms": 3.511
+        }
+      ]
+    },
+    "visible_change_pixels": {
+      "collection-approach-after-day": 25358,
+      "collection-marks-after-day": 16252,
+      "fen_wall_struck-after-day": 109225,
+      "forge_threshold-after-day": 356213,
+      "rootvault_frame-after-day": 278999,
+      "smithy-arrival-after-day": 13360,
+      "trail_transition-after-day": 320698,
+      "upland_wall-after-day": 319988,
+      "workbench-after-day": 164121
+    },
+    "emission_change_pixels": 2287,
+    "motion_change_pixels": 4963
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "seed": 42,
+  "scar_depth_m": 0.048,
+  "scar_half_width_m": 0.095,
+  "root_height_m": 0.34,
+  "lod_distances_m": [10, 24],
+  "texture_side": 512,
+  "pulse_period_s": 4.5,
+  "pulse_peak": 1.6,
+  "purpose": {
+    "seed": "Repeatable authored wear only; does not consume gameplay RNG.",
+    "scar_depth_m": "Nearly five centimetres of real injury in the selected smithy masonry, visible with light disabled.",
+    "scar_half_width_m": "Dark stone break around a much narrower inset white energy floor.",
+    "root_height_m": "Roots remain around existing masonry feet and never bridge an entrance.",
+    "lod_distances_m": "Candidate near/middle/far choices in the isolated review, not approved world streaming budgets.",
+    "texture_side": "Small shared periodic architecture textures; inherited organic maps retain their own provenance.",
+    "pulse_period_s": "Slow ambient scar life, independent of finite source/work state; explicit clock pauses.",
+    "pulse_peak": "Local inset energy without bloom, a light node, or a success/stock claim."
+  }
+}

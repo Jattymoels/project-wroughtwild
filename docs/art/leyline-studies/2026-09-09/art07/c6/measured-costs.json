@@ -1,0 +1,2737 @@
+{
+  "base": "4b5d89b376765fbf4d46049aa099e0bb154a82da",
+  "sources": {
+    "cataclysm_fen_cistern": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_fen_cistern.glb",
+      "sha256": "24ca4e2fffe22a6d25666bd33876cc81d44a55ba950d020e9ff8ac9aba439555",
+      "bounds": [
+        [
+          -1.3152467012405396,
+          -1.137682318687439,
+          -0.05000000074505806
+        ],
+        [
+          1.5099999904632568,
+          1.137682318687439,
+          0.5969449281692505
+        ]
+      ],
+      "triangles": 4080
+    },
+    "cataclysm_fen_roof": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_fen_roof.glb",
+      "sha256": "1b0919a8c7c6cda37a90d6c9f2d6f7336e8b70ca4dfc624b56fc1d872659028b",
+      "bounds": [
+        [
+          -1.3118243217468262,
+          -0.8399999737739563,
+          0.02510794997215271
+        ],
+        [
+          1.342868685722351,
+          0.9250468611717224,
+          0.4684999883174896
+        ]
+      ],
+      "triangles": 2992
+    },
+    "cataclysm_fen_wall": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_fen_wall.glb",
+      "sha256": "d6007df97d8d75564f70a23af245e73c98419264a4bd5bbb0b30e4290faf5459",
+      "bounds": [
+        [
+          -1.3674999475479126,
+          -0.24413077533245087,
+          -0.054999999701976776
+        ],
+        [
+          1.3674999475479126,
+          0.2350374460220337,
+          1.6525561809539795
+        ]
+      ],
+      "triangles": 5304
+    },
+    "cataclysm_forge_threshold": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_forge_threshold.glb",
+      "sha256": "c7ee06c7fdac062367ffa5ff2dd55df10274fddc1952d4f7e1d0ce6e42dce848",
+      "bounds": [
+        [
+          -1.7649999856948853,
+          -0.5074999928474426,
+          -0.07000000774860382
+        ],
+        [
+          1.7649999856948853,
+          0.36997202038764954,
+          2.805082082748413
+        ]
+      ],
+      "triangles": 4624
+    },
+    "cataclysm_rootvault_frame": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_rootvault_frame.glb",
+      "sha256": "a3f4e9aa2a8c34582def6de86abf4768a1e379f0b729d9ddd8a324c787975114",
+      "bounds": [
+        [
+          -1.6624999046325684,
+          -0.3249075412750244,
+          -0.05499999225139618
+        ],
+        [
+          1.6624999046325684,
+          0.32649970054626465,
+          2.783461809158325
+        ]
+      ],
+      "triangles": 2496
+    },
+    "cataclysm_rootvault_roof": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_rootvault_roof.glb",
+      "sha256": "5ed36544e560ed58319111154015f3e8249bd08d72a5ddd5a451f93fdf8981b9",
+      "bounds": [
+        [
+          -1.3789517879486084,
+          -0.9801464676856995,
+          -0.028781414031982422
+        ],
+        [
+          1.402768850326538,
+          1.0674999952316284,
+          0.5884312987327576
+        ]
+      ],
+      "triangles": 816
+    },
+    "cataclysm_rootvault_wall": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_rootvault_wall.glb",
+      "sha256": "0f06baaeb8f17c035b29053ad844b90c02818c9644daa8335eb329d737a012e2",
+      "bounds": [
+        [
+          -1.462499976158142,
+          -0.26204973459243774,
+          -0.05499999225139618
+        ],
+        [
+          1.462499976158142,
+          0.2669387459754944,
+          2.254512310028076
+        ]
+      ],
+      "triangles": 2952
+    },
+    "cataclysm_upland_paving": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_upland_paving.glb",
+      "sha256": "d6e188429b21e16780c8d10968a780ce1ca4e35542a941819ce696532e511623",
+      "bounds": [
+        [
+          -1.4000000953674316,
+          -0.6450749635696411,
+          -0.020000001415610313
+        ],
+        [
+          1.3264250755310059,
+          0.8449509739875793,
+          0.08100000023841858
+        ]
+      ],
+      "triangles": 680
+    },
+    "cataclysm_upland_shelter": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_upland_shelter.glb",
+      "sha256": "be7da6daa2bff2d70e7d67002a585dece81b65d5621b971f1fcfe2a8f42a95ec",
+      "bounds": [
+        [
+          -1.5774999856948853,
+          -0.49812498688697815,
+          -0.054999999701976776
+        ],
+        [
+          1.5875000953674316,
+          0.5821322798728943,
+          2.389807939529419
+        ]
+      ],
+      "triangles": 2788
+    },
+    "cataclysm_upland_wall": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_upland_wall.glb",
+      "sha256": "64a9e098be0a45f7d63759e41e00ae9f6d593776ec0f0a7709418722477125a8",
+      "bounds": [
+        [
+          -1.4815326929092407,
+          -0.414124995470047,
+          -0.05499999225139618
+        ],
+        [
+          1.5715327262878418,
+          0.3256426453590393,
+          1.5099999904632568
+        ]
+      ],
+      "triangles": 3060
+    },
+    "workbench": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\workbench.glb",
+      "sha256": "ba7f406ccce186f2e927edfa90b8cf2118a30ad57ad571483bac6a2d4569a490",
+      "bounds": [
+        [
+          -0.4699999988079071,
+          -0.4710000157356262,
+          0.0
+        ],
+        [
+          0.4699999690055847,
+          0.4570000171661377,
+          1.0525000095367432
+        ]
+      ],
+      "triangles": 1004
+    },
+    "trail_transition": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\game\\assets\\authored\\cataclysm_upland_paving.glb",
+      "sha256": "d6e188429b21e16780c8d10968a780ce1ca4e35542a941819ce696532e511623",
+      "bounds": [
+        [
+          -1.4000000953674316,
+          -0.6450749635696411,
+          -0.020000001415610313
+        ],
+        [
+          1.3264250755310059,
+          0.8449509739875793,
+          0.08100000023841858
+        ]
+      ],
+      "triangles": 680,
+      "role": "Compacted soil and thin litter on existing supported paving margins"
+    }
+  },
+  "assets": {
+    "cataclysm_fen_cistern": [
+      {
+        "file": "cataclysm_fen_cistern-lod0.glb",
+        "triangles": 4080,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3152467012405396,
+            -1.137682318687439,
+            -0.05000000074505806
+          ],
+          [
+            1.5099999904632568,
+            1.137682318687439,
+            0.5969449281692505
+          ]
+        ],
+        "bytes": 646100
+      },
+      {
+        "file": "cataclysm_fen_cistern-lod1.glb",
+        "triangles": 4080,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3152467012405396,
+            -1.137682318687439,
+            -0.05000000074505806
+          ],
+          [
+            1.5099999904632568,
+            1.137682318687439,
+            0.5969449281692505
+          ]
+        ],
+        "bytes": 647476
+      },
+      {
+        "file": "cataclysm_fen_cistern-lod2.glb",
+        "triangles": 4080,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3152467012405396,
+            -1.137682318687439,
+            -0.05000000074505806
+          ],
+          [
+            1.5099999904632568,
+            1.137682318687439,
+            0.5969449281692505
+          ]
+        ],
+        "bytes": 647476
+      }
+    ],
+    "cataclysm_fen_roof": [
+      {
+        "file": "cataclysm_fen_roof-lod0.glb",
+        "triangles": 2992,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3118243217468262,
+            -0.8399999737739563,
+            0.02510794997215271
+          ],
+          [
+            1.342868685722351,
+            0.9250468611717224,
+            0.4684999883174896
+          ]
+        ],
+        "bytes": 373996
+      },
+      {
+        "file": "cataclysm_fen_roof-lod1.glb",
+        "triangles": 2992,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3118243217468262,
+            -0.8399999737739563,
+            0.02510794997215271
+          ],
+          [
+            1.342868685722351,
+            0.9250468611717224,
+            0.4684999883174896
+          ]
+        ],
+        "bytes": 373292
+      },
+      {
+        "file": "cataclysm_fen_roof-lod2.glb",
+        "triangles": 2992,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3118243217468262,
+            -0.8399999737739563,
+            0.02510794997215271
+          ],
+          [
+            1.342868685722351,
+            0.9250468611717224,
+            0.4684999883174896
+          ]
+        ],
+        "bytes": 373292
+      }
+    ],
+    "cataclysm_fen_wall": [
+      {
+        "file": "cataclysm_fen_wall-lod0.glb",
+        "triangles": 12782,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3674999475479126,
+            -0.24413077533245087,
+            -0.054999999701976776
+          ],
+          [
+            1.3674999475479126,
+            0.2350374460220337,
+            1.6525561809539795
+          ]
+        ],
+        "bytes": 4422584
+      },
+      {
+        "file": "cataclysm_fen_wall-lod1.glb",
+        "triangles": 8644,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3674999475479126,
+            -0.24413077533245087,
+            -0.054999999701976776
+          ],
+          [
+            1.3674999475479126,
+            0.2350374460220337,
+            1.6525561809539795
+          ]
+        ],
+        "bytes": 4266000
+      },
+      {
+        "file": "cataclysm_fen_wall-lod2.glb",
+        "triangles": 6851,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3674999475479126,
+            -0.24413077533245087,
+            -0.054999999701976776
+          ],
+          [
+            1.3674999475479126,
+            0.2350374460220337,
+            1.6525561809539795
+          ]
+        ],
+        "bytes": 4187816
+      }
+    ],
+    "cataclysm_fen_wall_struck": [
+      {
+        "file": "cataclysm_fen_wall_struck-lod0.glb",
+        "triangles": 15137,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3674999475479126,
+            -0.24413077533245087,
+            -0.054999999701976776
+          ],
+          [
+            1.3674999475479126,
+            0.2350374460220337,
+            1.6525561809539795
+          ]
+        ],
+        "bytes": 4839472,
+        "independent_front_ray_recession_m": 0.0458531379699707,
+        "matched_ray_samples": 1556
+      },
+      {
+        "file": "cataclysm_fen_wall_struck-lod1.glb",
+        "triangles": 10897,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3674999475479126,
+            -0.24413077533245087,
+            -0.054999999701976776
+          ],
+          [
+            1.3674999475479126,
+            0.2350374460220337,
+            1.6525561809539795
+          ]
+        ],
+        "bytes": 4598308,
+        "independent_front_ray_recession_m": 0.0458531379699707,
+        "matched_ray_samples": 1556
+      },
+      {
+        "file": "cataclysm_fen_wall_struck-lod2.glb",
+        "triangles": 8056,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3674999475479126,
+            -0.24413077533245087,
+            -0.054999999701976776
+          ],
+          [
+            1.3674999475479126,
+            0.2350374460220337,
+            1.6525561809539795
+          ]
+        ],
+        "bytes": 4405272,
+        "independent_front_ray_recession_m": 0.0458531379699707,
+        "matched_ray_samples": 1556
+      }
+    ],
+    "cataclysm_forge_threshold": [
+      {
+        "file": "cataclysm_forge_threshold-lod0.glb",
+        "triangles": 21022,
+        "surfaces": 6,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.7649999856948853,
+            -0.5074999928474426,
+            -0.07000000774860382
+          ],
+          [
+            1.7649999856948853,
+            0.36997202038764954,
+            2.805082082748413
+          ]
+        ],
+        "bytes": 4566488
+      },
+      {
+        "file": "cataclysm_forge_threshold-lod1.glb",
+        "triangles": 12280,
+        "surfaces": 6,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.7649999856948853,
+            -0.5074999928474426,
+            -0.07000000774860382
+          ],
+          [
+            1.7649999856948853,
+            0.36997202038764954,
+            2.805082082748413
+          ]
+        ],
+        "bytes": 4239656
+      },
+      {
+        "file": "cataclysm_forge_threshold-lod2.glb",
+        "triangles": 8044,
+        "surfaces": 6,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.7649999856948853,
+            -0.5074999928474426,
+            -0.07000000774860382
+          ],
+          [
+            1.7649999856948853,
+            0.36997202038764954,
+            2.805082082748413
+          ]
+        ],
+        "bytes": 4065752
+      }
+    ],
+    "cataclysm_rootvault_frame": [
+      {
+        "file": "cataclysm_rootvault_frame-lod0.glb",
+        "triangles": 11782,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.6624999046325684,
+            -0.3249075412750244,
+            -0.05499999225139618
+          ],
+          [
+            1.6624999046325684,
+            0.32649970054626465,
+            2.783461809158325
+          ]
+        ],
+        "bytes": 4302028
+      },
+      {
+        "file": "cataclysm_rootvault_frame-lod1.glb",
+        "triangles": 6785,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.6624999046325684,
+            -0.3249075412750244,
+            -0.05499999225139618
+          ],
+          [
+            1.6624999046325684,
+            0.32649970054626465,
+            2.783461809158325
+          ]
+        ],
+        "bytes": 4123168
+      },
+      {
+        "file": "cataclysm_rootvault_frame-lod2.glb",
+        "triangles": 4461,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.6624999046325684,
+            -0.3249075412750244,
+            -0.05499999225139618
+          ],
+          [
+            1.6624999046325684,
+            0.32649970054626465,
+            2.783461809158325
+          ]
+        ],
+        "bytes": 4031980
+      }
+    ],
+    "cataclysm_rootvault_roof": [
+      {
+        "file": "cataclysm_rootvault_roof-lod0.glb",
+        "triangles": 816,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3789517879486084,
+            -0.9801464676856995,
+            -0.028781414031982422
+          ],
+          [
+            1.402768850326538,
+            1.0674999952316284,
+            0.5884312987327576
+          ]
+        ],
+        "bytes": 234656
+      },
+      {
+        "file": "cataclysm_rootvault_roof-lod1.glb",
+        "triangles": 816,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3789517879486084,
+            -0.9801464676856995,
+            -0.028781414031982422
+          ],
+          [
+            1.402768850326538,
+            1.0674999952316284,
+            0.5884312987327576
+          ]
+        ],
+        "bytes": 234432
+      },
+      {
+        "file": "cataclysm_rootvault_roof-lod2.glb",
+        "triangles": 816,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.3789517879486084,
+            -0.9801464676856995,
+            -0.028781414031982422
+          ],
+          [
+            1.402768850326538,
+            1.0674999952316284,
+            0.5884312987327576
+          ]
+        ],
+        "bytes": 234432
+      }
+    ],
+    "cataclysm_rootvault_wall": [
+      {
+        "file": "cataclysm_rootvault_wall-lod0.glb",
+        "triangles": 10651,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.462499976158142,
+            -0.26204973459243774,
+            -0.05499999225139618
+          ],
+          [
+            1.462499976158142,
+            0.2669387459754944,
+            2.254512310028076
+          ]
+        ],
+        "bytes": 4278564
+      },
+      {
+        "file": "cataclysm_rootvault_wall-lod1.glb",
+        "triangles": 6323,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.462499976158142,
+            -0.26204973459243774,
+            -0.05499999225139618
+          ],
+          [
+            1.462499976158142,
+            0.2669387459754944,
+            2.254512310028076
+          ]
+        ],
+        "bytes": 4114384
+      },
+      {
+        "file": "cataclysm_rootvault_wall-lod2.glb",
+        "triangles": 4528,
+        "surfaces": 7,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.462499976158142,
+            -0.26204973459243774,
+            -0.05499999225139618
+          ],
+          [
+            1.462499976158142,
+            0.2669387459754944,
+            2.254512310028076
+          ]
+        ],
+        "bytes": 4036220
+      }
+    ],
+    "cataclysm_upland_paving": [
+      {
+        "file": "cataclysm_upland_paving-lod0.glb",
+        "triangles": 680,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4000000953674316,
+            -0.6450749635696411,
+            -0.020000001415610313
+          ],
+          [
+            1.3264250755310059,
+            0.8449509739875793,
+            0.08100000023841858
+          ]
+        ],
+        "bytes": 240592
+      },
+      {
+        "file": "cataclysm_upland_paving-lod1.glb",
+        "triangles": 680,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4000000953674316,
+            -0.6450749635696411,
+            -0.020000001415610313
+          ],
+          [
+            1.3264250755310059,
+            0.8449509739875793,
+            0.08100000023841858
+          ]
+        ],
+        "bytes": 240336
+      },
+      {
+        "file": "cataclysm_upland_paving-lod2.glb",
+        "triangles": 680,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4000000953674316,
+            -0.6450749635696411,
+            -0.020000001415610313
+          ],
+          [
+            1.3264250755310059,
+            0.8449509739875793,
+            0.08100000023841858
+          ]
+        ],
+        "bytes": 240336
+      }
+    ],
+    "cataclysm_upland_shelter": [
+      {
+        "file": "cataclysm_upland_shelter-lod0.glb",
+        "triangles": 2788,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.5774999856948853,
+            -0.49812498688697815,
+            -0.054999999701976776
+          ],
+          [
+            1.5875000953674316,
+            0.5821322798728943,
+            2.389807939529419
+          ]
+        ],
+        "bytes": 562996
+      },
+      {
+        "file": "cataclysm_upland_shelter-lod1.glb",
+        "triangles": 2788,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.5774999856948853,
+            -0.49812498688697815,
+            -0.054999999701976776
+          ],
+          [
+            1.5875000953674316,
+            0.5821322798728943,
+            2.389807939529419
+          ]
+        ],
+        "bytes": 561748
+      },
+      {
+        "file": "cataclysm_upland_shelter-lod2.glb",
+        "triangles": 2788,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.5774999856948853,
+            -0.49812498688697815,
+            -0.054999999701976776
+          ],
+          [
+            1.5875000953674316,
+            0.5821322798728943,
+            2.389807939529419
+          ]
+        ],
+        "bytes": 561748
+      }
+    ],
+    "cataclysm_upland_wall": [
+      {
+        "file": "cataclysm_upland_wall-lod0.glb",
+        "triangles": 10045,
+        "surfaces": 6,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4815326929092407,
+            -0.414124995470047,
+            -0.05499999225139618
+          ],
+          [
+            1.5715327262878418,
+            0.3256426453590393,
+            1.5099999904632568
+          ]
+        ],
+        "bytes": 4070328
+      },
+      {
+        "file": "cataclysm_upland_wall-lod1.glb",
+        "triangles": 5990,
+        "surfaces": 6,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4815326929092407,
+            -0.414124995470047,
+            -0.05499999225139618
+          ],
+          [
+            1.5715327262878418,
+            0.3256426453590393,
+            1.5099999904632568
+          ]
+        ],
+        "bytes": 3916380
+      },
+      {
+        "file": "cataclysm_upland_wall-lod2.glb",
+        "triangles": 4450,
+        "surfaces": 6,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4815326929092407,
+            -0.414124995470047,
+            -0.05499999225139618
+          ],
+          [
+            1.5715327262878418,
+            0.3256426453590393,
+            1.5099999904632568
+          ]
+        ],
+        "bytes": 3851428
+      }
+    ],
+    "lf_arrow_stem": [
+      {
+        "file": "lf_arrow_stem-lod0.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.05000000074505806,
+            -0.6000000238418579,
+            -0.029999999329447746
+          ],
+          [
+            0.05000000074505806,
+            0.6000000238418579,
+            0.029999999329447746
+          ]
+        ],
+        "bytes": 206968
+      },
+      {
+        "file": "lf_arrow_stem-lod1.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.05000000074505806,
+            -0.6000000238418579,
+            -0.029999999329447746
+          ],
+          [
+            0.05000000074505806,
+            0.6000000238418579,
+            0.029999999329447746
+          ]
+        ],
+        "bytes": 206968
+      },
+      {
+        "file": "lf_arrow_stem-lod2.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.05000000074505806,
+            -0.6000000238418579,
+            -0.029999999329447746
+          ],
+          [
+            0.05000000074505806,
+            0.6000000238418579,
+            0.029999999329447746
+          ]
+        ],
+        "bytes": 206968
+      }
+    ],
+    "lf_arrow_tip": [
+      {
+        "file": "lf_arrow_tip-lod0.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.03500000014901161,
+            -0.2750000059604645,
+            -0.029999999329447746
+          ],
+          [
+            0.03500000014901161,
+            0.2750000059604645,
+            0.029999999329447746
+          ]
+        ],
+        "bytes": 206968
+      },
+      {
+        "file": "lf_arrow_tip-lod1.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.03500000014901161,
+            -0.2750000059604645,
+            -0.029999999329447746
+          ],
+          [
+            0.03500000014901161,
+            0.2750000059604645,
+            0.029999999329447746
+          ]
+        ],
+        "bytes": 206968
+      },
+      {
+        "file": "lf_arrow_tip-lod2.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.03500000014901161,
+            -0.2750000059604645,
+            -0.029999999329447746
+          ],
+          [
+            0.03500000014901161,
+            0.2750000059604645,
+            0.029999999329447746
+          ]
+        ],
+        "bytes": 206968
+      }
+    ],
+    "lf_clamp": [
+      {
+        "file": "lf_clamp-lod0.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.375,
+            -0.17000000178813934,
+            -0.05999999865889549
+          ],
+          [
+            0.375,
+            0.17000000178813934,
+            0.05999999865889549
+          ]
+        ],
+        "bytes": 190652
+      },
+      {
+        "file": "lf_clamp-lod1.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.375,
+            -0.17000000178813934,
+            -0.05999999865889549
+          ],
+          [
+            0.375,
+            0.17000000178813934,
+            0.05999999865889549
+          ]
+        ],
+        "bytes": 190652
+      },
+      {
+        "file": "lf_clamp-lod2.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.375,
+            -0.17000000178813934,
+            -0.05999999865889549
+          ],
+          [
+            0.375,
+            0.17000000178813934,
+            0.05999999865889549
+          ]
+        ],
+        "bytes": 190652
+      }
+    ],
+    "lf_feed": [
+      {
+        "file": "lf_feed-lod0.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.054999999701976776,
+            -0.5,
+            -0.054999999701976776
+          ],
+          [
+            0.054999999701976776,
+            0.5,
+            0.054999999701976776
+          ]
+        ],
+        "bytes": 190652
+      },
+      {
+        "file": "lf_feed-lod1.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.054999999701976776,
+            -0.5,
+            -0.054999999701976776
+          ],
+          [
+            0.054999999701976776,
+            0.5,
+            0.054999999701976776
+          ]
+        ],
+        "bytes": 190652
+      },
+      {
+        "file": "lf_feed-lod2.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.054999999701976776,
+            -0.5,
+            -0.054999999701976776
+          ],
+          [
+            0.054999999701976776,
+            0.5,
+            0.054999999701976776
+          ]
+        ],
+        "bytes": 190652
+      }
+    ],
+    "lf_post": [
+      {
+        "file": "lf_post-lod0.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.09000000357627869,
+            -0.09000000357627869,
+            -0.6499999761581421
+          ],
+          [
+            0.09000000357627869,
+            0.09000000357627869,
+            0.6499999761581421
+          ]
+        ],
+        "bytes": 190676
+      },
+      {
+        "file": "lf_post-lod1.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.09000000357627869,
+            -0.09000000357627869,
+            -0.6499999761581421
+          ],
+          [
+            0.09000000357627869,
+            0.09000000357627869,
+            0.6499999761581421
+          ]
+        ],
+        "bytes": 190676
+      },
+      {
+        "file": "lf_post-lod2.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.09000000357627869,
+            -0.09000000357627869,
+            -0.6499999761581421
+          ],
+          [
+            0.09000000357627869,
+            0.09000000357627869,
+            0.6499999761581421
+          ]
+        ],
+        "bytes": 190676
+      }
+    ],
+    "lf_stamp": [
+      {
+        "file": "lf_stamp-lod0.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.03500000014901161,
+            -0.125,
+            -0.15000000596046448
+          ],
+          [
+            0.03500000014901161,
+            0.125,
+            0.15000000596046448
+          ]
+        ],
+        "bytes": 206932
+      },
+      {
+        "file": "lf_stamp-lod1.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.03500000014901161,
+            -0.125,
+            -0.15000000596046448
+          ],
+          [
+            0.03500000014901161,
+            0.125,
+            0.15000000596046448
+          ]
+        ],
+        "bytes": 206932
+      },
+      {
+        "file": "lf_stamp-lod2.glb",
+        "triangles": 108,
+        "surfaces": 1,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.03500000014901161,
+            -0.125,
+            -0.15000000596046448
+          ],
+          [
+            0.03500000014901161,
+            0.125,
+            0.15000000596046448
+          ]
+        ],
+        "bytes": 206932
+      }
+    ],
+    "trail_transition": [
+      {
+        "file": "trail_transition-lod0.glb",
+        "triangles": 788,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4000000953674316,
+            -0.6450749635696411,
+            -0.020000001415610313
+          ],
+          [
+            1.3264250755310059,
+            0.8449509739875793,
+            0.08100000023841858
+          ]
+        ],
+        "bytes": 414744
+      },
+      {
+        "file": "trail_transition-lod1.glb",
+        "triangles": 788,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4000000953674316,
+            -0.6450749635696411,
+            -0.020000001415610313
+          ],
+          [
+            1.3264250755310059,
+            0.8449509739875793,
+            0.08100000023841858
+          ]
+        ],
+        "bytes": 414488
+      },
+      {
+        "file": "trail_transition-lod2.glb",
+        "triangles": 788,
+        "surfaces": 3,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -1.4000000953674316,
+            -0.6450749635696411,
+            -0.020000001415610313
+          ],
+          [
+            1.3264250755310059,
+            0.8449509739875793,
+            0.08100000023841858
+          ]
+        ],
+        "bytes": 414488
+      }
+    ],
+    "workbench": [
+      {
+        "file": "workbench-lod0.glb",
+        "triangles": 1004,
+        "surfaces": 2,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.4699999988079071,
+            -0.4710000157356262,
+            0.0
+          ],
+          [
+            0.4699999690055847,
+            0.4570000171661377,
+            1.0525000095367432
+          ]
+        ],
+        "bytes": 438220
+      },
+      {
+        "file": "workbench-lod1.glb",
+        "triangles": 1004,
+        "surfaces": 2,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.4699999988079071,
+            -0.4710000157356262,
+            0.0
+          ],
+          [
+            0.4699999690055847,
+            0.4570000171661377,
+            1.0525000095367432
+          ]
+        ],
+        "bytes": 438156
+      },
+      {
+        "file": "workbench-lod2.glb",
+        "triangles": 1004,
+        "surfaces": 2,
+        "degenerate_triangles": 0,
+        "bounds_blender_m": [
+          [
+            -0.4699999988079071,
+            -0.4710000157356262,
+            0.0
+          ],
+          [
+            0.4699999690055847,
+            0.4570000171661377,
+            1.0525000095367432
+          ]
+        ],
+        "bytes": 438156
+      }
+    ]
+  },
+  "checks": {
+    "current-checks": {
+      "jobs": [
+        {
+          "name": "art.log",
+          "checks": 11,
+          "exit": 0,
+          "seconds": 1.9739914
+        },
+        {
+          "name": "gathering.log",
+          "checks": 22,
+          "exit": 0,
+          "seconds": 2.3627561
+        },
+        {
+          "name": "loads-restore.log",
+          "checks": 6,
+          "exit": 0,
+          "seconds": 1.7733397
+        },
+        {
+          "name": "loads.log",
+          "checks": 201,
+          "exit": 0,
+          "seconds": 7.6379795
+        },
+        {
+          "name": "loose-read.log",
+          "checks": 13,
+          "exit": 0,
+          "seconds": 1.9612038
+        },
+        {
+          "name": "loose-write.log",
+          "checks": 6,
+          "exit": 0,
+          "seconds": 1.5755266
+        },
+        {
+          "name": "materials.log",
+          "checks": 158,
+          "exit": 0,
+          "seconds": 1.8769031
+        },
+        {
+          "name": "placement-restore.log",
+          "checks": 60,
+          "exit": 0,
+          "seconds": 1.9808359
+        },
+        {
+          "name": "placement.log",
+          "checks": 470,
+          "exit": 0,
+          "seconds": 2.5162433
+        },
+        {
+          "name": "save-recovery.log",
+          "checks": 175,
+          "exit": 0,
+          "seconds": 4.2644578
+        },
+        {
+          "name": "source-restore.log",
+          "checks": 15,
+          "exit": 0,
+          "seconds": 15.4350085
+        },
+        {
+          "name": "source-work.log",
+          "checks": 733,
+          "exit": 0,
+          "seconds": 63.8080333
+        },
+        {
+          "name": "unit.log",
+          "checks": 398,
+          "exit": 0,
+          "seconds": 5.3877467
+        },
+        {
+          "name": "world.log",
+          "checks": 5957,
+          "exit": 0,
+          "seconds": 45.1644307
+        }
+      ],
+      "total": 8225
+    },
+    "native-checks": {
+      "jobs": [
+        {
+          "name": "discovery-clarity.log",
+          "checks": 249,
+          "exit": 0,
+          "seconds": 2.1500912
+        },
+        {
+          "name": "discovery-sites.log",
+          "checks": 183,
+          "exit": 0,
+          "seconds": 1.6066557
+        },
+        {
+          "name": "ecology.log",
+          "checks": 102,
+          "exit": 0,
+          "seconds": 14.2658371
+        },
+        {
+          "name": "environment.log",
+          "checks": 19,
+          "exit": 0,
+          "seconds": 14.8544428
+        },
+        {
+          "name": "pressure.log",
+          "checks": 60,
+          "exit": 0,
+          "seconds": 9.8487195
+        },
+        {
+          "name": "routes-5.log",
+          "checks": 59,
+          "exit": 0,
+          "seconds": 98.1368271
+        },
+        {
+          "name": "routes-77.log",
+          "checks": 61,
+          "exit": 0,
+          "seconds": 82.1130917
+        },
+        {
+          "name": "smithy-v5-1.log",
+          "checks": 122,
+          "exit": 0,
+          "seconds": 12.0703288
+        },
+        {
+          "name": "smithy-v6-1.log",
+          "checks": 122,
+          "exit": 0,
+          "seconds": 21.3815656
+        },
+        {
+          "name": "smithy-v6-77.log",
+          "checks": 122,
+          "exit": 0,
+          "seconds": 23.7124119
+        }
+      ],
+      "total": 1099
+    },
+    "selected-native-checks": {
+      "jobs": [
+        {
+          "name": "discovery-clarity.log",
+          "checks": 249,
+          "exit": 0,
+          "seconds": 2.1952959
+        },
+        {
+          "name": "discovery-sites.log",
+          "checks": 183,
+          "exit": 0,
+          "seconds": 1.5508643
+        },
+        {
+          "name": "ecology.log",
+          "checks": 102,
+          "exit": 0,
+          "seconds": 14.1375423
+        },
+        {
+          "name": "environment.log",
+          "checks": 19,
+          "exit": 0,
+          "seconds": 16.0058205
+        },
+        {
+          "name": "pressure.log",
+          "checks": 60,
+          "exit": 0,
+          "seconds": 11.3862673
+        },
+        {
+          "name": "routes-5.log",
+          "checks": 59,
+          "exit": 0,
+          "seconds": 96.8873649
+        },
+        {
+          "name": "routes-77.log",
+          "checks": 61,
+          "exit": 0,
+          "seconds": 89.0817995
+        },
+        {
+          "name": "smithy-v5-1.log",
+          "checks": 122,
+          "exit": 0,
+          "seconds": 11.2834496
+        },
+        {
+          "name": "smithy-v6-1.log",
+          "checks": 122,
+          "exit": 0,
+          "seconds": 18.3105199
+        },
+        {
+          "name": "smithy-v6-77.log",
+          "checks": 122,
+          "exit": 0,
+          "seconds": 21.5705428
+        }
+      ],
+      "total": 1099
+    }
+  },
+  "jobs": {
+    "release-check/forward_plus.log.job.json": {
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "forward_plus",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=check"
+      ],
+      "other_processes_at_completion": [],
+      "seconds": 9.8508405,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-check\\user",
+      "other_processes_at_acquisition": [],
+      "pid": 6932,
+      "exit": 0,
+      "gpu_slot": false,
+      "stderr": "ERROR: Failed to read the root certificate store.\n   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2468)\n"
+    },
+    "release-check/gl_compatibility.log.job.json": {
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=check"
+      ],
+      "other_processes_at_completion": [],
+      "seconds": 9.5809439,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-check\\user",
+      "other_processes_at_acquisition": [],
+      "pid": 45732,
+      "exit": 0,
+      "gpu_slot": false,
+      "stderr": "ERROR: Failed to read the root certificate store.\n   at: get_system_ca_certificates (platform/windows/os_windows.cpp:2468)\nWARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:140)\n       [3] _ready (res://c6/native_review.gd:22)\n"
+    },
+    "release-capture/forward_plus.log.job.json": {
+      "gpu_slot": true,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 38336,
+      "other_processes_at_acquisition": [],
+      "other_processes_at_completion": [],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-capture\\user",
+      "seconds": 30.0006031,
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "forward_plus",
+        "--position",
+        "-16000,-16000",
+        "--resolution",
+        "1440x900",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=capture"
+      ],
+      "stderr": ""
+    },
+    "release-capture/gl_compatibility.log.job.json": {
+      "gpu_slot": true,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 44692,
+      "other_processes_at_acquisition": [],
+      "other_processes_at_completion": [],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-capture\\user",
+      "seconds": 28.9926566,
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--position",
+        "-16000,-16000",
+        "--resolution",
+        "1440x900",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=capture"
+      ],
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:140)\n       [3] _ready (res://c6/native_review.gd:22)\n"
+    },
+    "release-walk/forward_plus.log.job.json": {
+      "gpu_slot": true,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 12892,
+      "other_processes_at_acquisition": [],
+      "other_processes_at_completion": [],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-walk\\user",
+      "seconds": 21.4301224,
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "forward_plus",
+        "--position",
+        "-16000,-16000",
+        "--resolution",
+        "1440x900",
+        "--fixed-fps",
+        "60",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=walk"
+      ],
+      "stderr": ""
+    },
+    "release-walk/gl_compatibility.log.job.json": {
+      "gpu_slot": true,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 40036,
+      "other_processes_at_acquisition": [],
+      "other_processes_at_completion": [],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-walk\\user",
+      "seconds": 20.3553222,
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--position",
+        "-16000,-16000",
+        "--resolution",
+        "1440x900",
+        "--fixed-fps",
+        "60",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=walk"
+      ],
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:140)\n       [3] _ready (res://c6/native_review.gd:22)\n"
+    },
+    "release-motion/forward_plus.log.job.json": {
+      "gpu_slot": true,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 28144,
+      "other_processes_at_acquisition": [],
+      "other_processes_at_completion": [],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-motion\\user",
+      "seconds": 19.7689906,
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "forward_plus",
+        "--position",
+        "-16000,-16000",
+        "--resolution",
+        "1440x900",
+        "--fixed-fps",
+        "60",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=motion"
+      ],
+      "stderr": ""
+    },
+    "release-motion/gl_compatibility.log.job.json": {
+      "gpu_slot": true,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 45092,
+      "other_processes_at_acquisition": [],
+      "other_processes_at_completion": [],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-motion\\user",
+      "seconds": 20.2032665,
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--position",
+        "-16000,-16000",
+        "--resolution",
+        "1440x900",
+        "--fixed-fps",
+        "60",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=motion"
+      ],
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:140)\n       [3] _ready (res://c6/native_review.gd:22)\n"
+    },
+    "release-benchmark/forward_plus.log.job.json": {
+      "gpu_slot": true,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 39568,
+      "other_processes_at_acquisition": [],
+      "finished_utc": "2026-09-11T04:34:47.7928368Z",
+      "started_utc": "2026-09-11T04:34:28.8137241Z",
+      "other_processes_at_completion": [],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-benchmark\\user",
+      "seconds": 18.9791452,
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "forward_plus",
+        "--position",
+        "-16000,-16000",
+        "--resolution",
+        "1440x900",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=benchmark"
+      ],
+      "stderr": ""
+    },
+    "release-benchmark/gl_compatibility.log.job.json": {
+      "gpu_slot": true,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 11052,
+      "other_processes_at_acquisition": [],
+      "finished_utc": "2026-09-11T04:35:09.1350542Z",
+      "started_utc": "2026-09-11T04:34:47.8437552Z",
+      "other_processes_at_completion": [],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\release-benchmark\\user",
+      "seconds": 21.2913425,
+      "arguments": [
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree/build/art07/c6/v01/review-v06/game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--position",
+        "-16000,-16000",
+        "--resolution",
+        "1440x900",
+        "res://c6/native_review.tscn",
+        "--",
+        "--weathered-look",
+        "--c6-mode=benchmark"
+      ],
+      "stderr": "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer.\n   at: environment_set_ssao (servers/rendering/storage/environment_storage.cpp:586)\n   GDScript backtrace (most recent call first):\n       [0] configure (res://art/wildland_atmosphere.gd:23)\n       [1] setup (res://scripts/biome_mood.gd:147)\n       [2] _build_world (res://scripts/sandpit.gd:140)\n       [3] _ready (res://c6/native_review.gd:22)\n"
+    }
+  },
+  "periodic_texture_edges": {
+    "metal.png": {
+      "sha256": "d31f9d6385c881d0ee43f82728ef74a92d80eac945acb7d7f31633064de68896",
+      "size": [
+        512,
+        512
+      ],
+      "seam_x_mean_8bit": 0.4915364583333333,
+      "interior_x_mean_8bit": 0.47924948018590996,
+      "seam_y_mean_8bit": 0.4453125,
+      "interior_y_mean_8bit": 0.43320388943248533
+    },
+    "soil.png": {
+      "sha256": "c40b86e331542c342a78802290ed910bcdf5f7b3afebe298553de32ebd002f0f",
+      "size": [
+        512,
+        512
+      ],
+      "seam_x_mean_8bit": 0.22721354166666666,
+      "interior_x_mean_8bit": 0.21049285510437052,
+      "seam_y_mean_8bit": 0.19986979166666666,
+      "interior_y_mean_8bit": 0.1909565088878017
+    },
+    "stone.png": {
+      "sha256": "e2eb1d3a40c80901e60325eed8bf71951435da3fba9cc40873ea565520dc754f",
+      "size": [
+        512,
+        512
+      ],
+      "seam_x_mean_8bit": 0.646484375,
+      "interior_x_mean_8bit": 0.6674604023972602,
+      "seam_y_mean_8bit": 0.609375,
+      "interior_y_mean_8bit": 0.6107153049575995
+    },
+    "wood.png": {
+      "sha256": "050c7c36827bde63ec57101fc4a609c695ff554d8f3d21edeb423b750e80dbd8",
+      "size": [
+        512,
+        512
+      ],
+      "seam_x_mean_8bit": 2.2122395833333335,
+      "interior_x_mean_8bit": 2.098726455479452,
+      "seam_y_mean_8bit": 0.25390625,
+      "interior_y_mean_8bit": 0.26199394569471623
+    }
+  },
+  "cook": {
+    "models": [
+      {
+        "source": "cataclysm_fen_cistern-lod0.glb",
+        "sha256": "fe3f53592c3f44fbe8e93024fd32d3cf9a430eb87d95231b0c11d11f55003c92",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 266048
+      },
+      {
+        "source": "cataclysm_fen_cistern-lod1.glb",
+        "sha256": "613d37f6561da22a3c9d7636738c656be70db508b8ef416f123da2257849b412",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 267424
+      },
+      {
+        "source": "cataclysm_fen_cistern-lod2.glb",
+        "sha256": "7f791f703b7034deda03d7bf2aa3fcf6360232ee449d98a5257ebeca7b500f25",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 267424
+      },
+      {
+        "source": "cataclysm_fen_roof-lod0.glb",
+        "sha256": "5f6934137e808445fe96d03669ad3fccf3ba9e85363916b966a81d52e01b451e",
+        "geometry_views_unchanged": 8,
+        "geometry_bytes": 190336
+      },
+      {
+        "source": "cataclysm_fen_roof-lod1.glb",
+        "sha256": "4665f3cd20cb3f3c84a0ea364904ed78d575ce7c431f03ed8dee323c825246f2",
+        "geometry_views_unchanged": 8,
+        "geometry_bytes": 189632
+      },
+      {
+        "source": "cataclysm_fen_roof-lod2.glb",
+        "sha256": "7a12465ba6337d415d0e1e061cebb9e4b8bb846fc4d0b797a59cd9cac4ed432c",
+        "geometry_views_unchanged": 8,
+        "geometry_bytes": 189632
+      },
+      {
+        "source": "cataclysm_fen_wall-lod0.glb",
+        "sha256": "80a129b078beb6475c55f120177851a69d77bb18fdb673b6e457ec773c78ec16",
+        "geometry_views_unchanged": 32,
+        "geometry_bytes": 674260
+      },
+      {
+        "source": "cataclysm_fen_wall-lod1.glb",
+        "sha256": "c26a1bd3ad7a7215e5f47fbbdafe4c1749c05cfca7cd1e71ccaa3d545f8c6d8f",
+        "geometry_views_unchanged": 32,
+        "geometry_bytes": 517688
+      },
+      {
+        "source": "cataclysm_fen_wall-lod2.glb",
+        "sha256": "f6119e5ee9f6e5a9cdf63c0a801c435622b2d9b8f10454ffc89ad8ed5af966b0",
+        "geometry_views_unchanged": 32,
+        "geometry_bytes": 439508
+      },
+      {
+        "source": "cataclysm_fen_wall_struck-lod0.glb",
+        "sha256": "3be0659b7911397d9592761374d797d22aa57a5a6fb7136086ade2f20ec853a8",
+        "geometry_views_unchanged": 37,
+        "geometry_bytes": 1090060
+      },
+      {
+        "source": "cataclysm_fen_wall_struck-lod1.glb",
+        "sha256": "8ff3f592ca29f3f42a5290796817e0a9ddc1970fa0659e9acaaed1c0f4f50c6a",
+        "geometry_views_unchanged": 37,
+        "geometry_bytes": 848912
+      },
+      {
+        "source": "cataclysm_fen_wall_struck-lod2.glb",
+        "sha256": "5f8fca021c3eaf0b463104f3709050735d526e1af30a830249f82197950c8a69",
+        "geometry_views_unchanged": 37,
+        "geometry_bytes": 655884
+      },
+      {
+        "source": "cataclysm_forge_threshold-lod0.glb",
+        "sha256": "e3f705502420ce970d08aa97ab0fafc4e9b49778323ab9386e6696a026a074fe",
+        "geometry_views_unchanged": 24,
+        "geometry_bytes": 1001368
+      },
+      {
+        "source": "cataclysm_forge_threshold-lod1.glb",
+        "sha256": "17ed29e7814c3398b79cbdbf74da77c28240ff5b24658d5f9320c75b8fa04666",
+        "geometry_views_unchanged": 24,
+        "geometry_bytes": 674544
+      },
+      {
+        "source": "cataclysm_forge_threshold-lod2.glb",
+        "sha256": "a2638f4343c5c95777f504791286a041b99572d88b64785856191d1fbd3a5b07",
+        "geometry_views_unchanged": 24,
+        "geometry_bytes": 500648
+      },
+      {
+        "source": "cataclysm_rootvault_frame-lod0.glb",
+        "sha256": "af5519a9151ec741f6aa4a65074f2ad0106bd185e34e0a60fe95bc08a623c44b",
+        "geometry_views_unchanged": 28,
+        "geometry_bytes": 554408
+      },
+      {
+        "source": "cataclysm_rootvault_frame-lod1.glb",
+        "sha256": "27687300090b499e901f0cb5a6eb89d2d57ff6127bf5d967bc3f65c07348fcba",
+        "geometry_views_unchanged": 28,
+        "geometry_bytes": 375558
+      },
+      {
+        "source": "cataclysm_rootvault_frame-lod2.glb",
+        "sha256": "89dced29195f4bb32f26d06e044631fb0f13d38c11f57ae21c70e5f19f04218c",
+        "geometry_views_unchanged": 28,
+        "geometry_bytes": 284370
+      },
+      {
+        "source": "cataclysm_rootvault_roof-lod0.glb",
+        "sha256": "f54dd848b94ff0ead9a637d4427e0f540d6ef9ec73d75543bc2b43a65145f682",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 51712
+      },
+      {
+        "source": "cataclysm_rootvault_roof-lod1.glb",
+        "sha256": "c2d907833dfeea06a58054b61289e5040d1420ef57c5652e392f0f0c1d3ac142",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 51488
+      },
+      {
+        "source": "cataclysm_rootvault_roof-lod2.glb",
+        "sha256": "254a693ce92986d72a4dcefcde580ee06c783eb47bf2156fce66e6e7abf2d2f7",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 51488
+      },
+      {
+        "source": "cataclysm_rootvault_wall-lod0.glb",
+        "sha256": "366c26331d684f0b2b9b7511bd5485f2eeeccc210889ed4720dfb02c2cf1d2fb",
+        "geometry_views_unchanged": 28,
+        "geometry_bytes": 530948
+      },
+      {
+        "source": "cataclysm_rootvault_wall-lod1.glb",
+        "sha256": "94aab0ec67dd3f50de48bcebc79ca5774aa162302ad28cee942932a099ad2206",
+        "geometry_views_unchanged": 28,
+        "geometry_bytes": 366772
+      },
+      {
+        "source": "cataclysm_rootvault_wall-lod2.glb",
+        "sha256": "0e7f5a2d0aa3e624da24d3b3a0b575b8a1c8f2d07632effdddb18282a46a613a",
+        "geometry_views_unchanged": 28,
+        "geometry_bytes": 288608
+      },
+      {
+        "source": "cataclysm_upland_paving-lod0.glb",
+        "sha256": "abee6cdab999a17644bd46a83e2d139d8dc73fc50ea76b3f63a05a023bbc9c38",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 42672
+      },
+      {
+        "source": "cataclysm_upland_paving-lod1.glb",
+        "sha256": "a6f6713c8a110dc0eafedb5c270f2878c975440bda312834c95887a14ffaaad8",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 42416
+      },
+      {
+        "source": "cataclysm_upland_paving-lod2.glb",
+        "sha256": "5312f7c98d19c3c414d11d8ade39b2503beedf565a670672b7542547092d5a61",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 42416
+      },
+      {
+        "source": "cataclysm_upland_shelter-lod0.glb",
+        "sha256": "3f2168b963d492f91b9b39768b3677146b88dcb157021cfc1924a4b856e7a452",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 182936
+      },
+      {
+        "source": "cataclysm_upland_shelter-lod1.glb",
+        "sha256": "dcb21a7630ce76daacd63c81396008bd4d454bebf29a712e41092a896d2a7e95",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 181688
+      },
+      {
+        "source": "cataclysm_upland_shelter-lod2.glb",
+        "sha256": "3857f7e8758a2f8835b4288f6febe8fb3660ca1b19f6db30b694cbe9393cca48",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 181688
+      },
+      {
+        "source": "cataclysm_upland_wall-lod0.glb",
+        "sha256": "0eec7bb5572fd7adb9ab1150e3898696ed45868af19c9fdfd8bd262baeaed1fd",
+        "geometry_views_unchanged": 24,
+        "geometry_bytes": 505232
+      },
+      {
+        "source": "cataclysm_upland_wall-lod1.glb",
+        "sha256": "5adec53d75febf91e86c55b74ed91ef05a90a6b1a8fcb5e03ca916759c69e550",
+        "geometry_views_unchanged": 24,
+        "geometry_bytes": 351300
+      },
+      {
+        "source": "cataclysm_upland_wall-lod2.glb",
+        "sha256": "d4e8eb586228143255be47682f7e50fe22fe3694743f08b2c45beb8083ed7884",
+        "geometry_views_unchanged": 24,
+        "geometry_bytes": 286352
+      },
+      {
+        "source": "lf_arrow_stem-lod0.glb",
+        "sha256": "6ea5fcf5fda7f05bfefe01e99b3cb98e8f5487c79f4333ee022e02667209ddb5",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_arrow_stem-lod1.glb",
+        "sha256": "9eafe9264c5c060b92718a06530a709e1f115fba8e497fd5382e5fdae2a9891d",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_arrow_stem-lod2.glb",
+        "sha256": "0df89c29542dfd38538ef46a8483f8337181861b11c785a9c953a6d5581f4674",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_arrow_tip-lod0.glb",
+        "sha256": "7ca59d0711a6b2951e9db793c7d010ada360b051ee64ae6ae87f3c027848de75",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_arrow_tip-lod1.glb",
+        "sha256": "35aebc87e1cd704c7ed025fcac465504618d0e72d4f332454e2998105241e199",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_arrow_tip-lod2.glb",
+        "sha256": "09e39ebbf72c462bba0f9fd9d75f17ec73a0c5f88f8d4b12f3c31afe34ce58ea",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_clamp-lod0.glb",
+        "sha256": "13a864e5ac9e282d3d59e0b1b0bfc08da305509e01240c1625fc53cb51d63851",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_clamp-lod1.glb",
+        "sha256": "076b8ae69c38ae89a89a137cc566f0d73ed198f7c067344e5af030d9323e706e",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_clamp-lod2.glb",
+        "sha256": "1842109ba54951b6e8108613bb88c4e53a38d659275a31ef97839db59a08dc62",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_feed-lod0.glb",
+        "sha256": "15ed7943bc37b8f1ae19314328d2cda8ae9d7e63e21175529bfa9ab1f07c551b",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_feed-lod1.glb",
+        "sha256": "440e82923d21cb81daca97d92ac72523177a3861a5037edbc8ecc9359bfc6d68",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_feed-lod2.glb",
+        "sha256": "fb3dd4d700ad3e6fa2dc3b86cf1184f4d52deb1fc1f510969782301ce42633f7",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_post-lod0.glb",
+        "sha256": "7b4c8501680474db6fd63c5e23a6eaad13e02446daeabd5b31995f59b4ea17a2",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_post-lod1.glb",
+        "sha256": "5d90956c3ff8abe7054345d6e80f86ade893aaf16a3583883149b2d6d162f528",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_post-lod2.glb",
+        "sha256": "3cedc4ed93f80c27dfcc9a16ca400223a687b80feb8ea99f65ebf73b40bbaba1",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_stamp-lod0.glb",
+        "sha256": "c719fc791c33554e9d4c91cd0d14a6f3061a0a0743b9613f50a7841e06a062c8",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_stamp-lod1.glb",
+        "sha256": "cc43d29e2b4587a7cf8ba774d6c305c6d884bb2e52951a55f6d5d4a5ec342341",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "lf_stamp-lod2.glb",
+        "sha256": "6828cd2c6a621adb310dcdd68adbd9a32b3ab90c66b284332fc68600fed9e189",
+        "geometry_views_unchanged": 4,
+        "geometry_bytes": 9096
+      },
+      {
+        "source": "trail_transition-lod0.glb",
+        "sha256": "6e85159bc4f7a25b7abeebd7ff83215735155dad0e54225432664702e143bb8e",
+        "geometry_views_unchanged": 11,
+        "geometry_bytes": 52700
+      },
+      {
+        "source": "trail_transition-lod1.glb",
+        "sha256": "05419d088b0b5ed622d714507876b7bae44d0c68d8cbd41a040c48f89d5bae80",
+        "geometry_views_unchanged": 11,
+        "geometry_bytes": 52444
+      },
+      {
+        "source": "trail_transition-lod2.glb",
+        "sha256": "9d9ad23b62c47f2d2c1db05a98c1616a02d18e050e782aca5f787af43b166ab2",
+        "geometry_views_unchanged": 11,
+        "geometry_bytes": 52444
+      },
+      {
+        "source": "workbench-lod0.glb",
+        "sha256": "815668d32cbaac17a3061572c9ade911ffb3c1b010df502ffb370d4bf7b1cff1",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 73416
+      },
+      {
+        "source": "workbench-lod1.glb",
+        "sha256": "1b70c246164c94e695a7beb16617d96cab0036c255fe46806f86e896c1844c42",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 73352
+      },
+      {
+        "source": "workbench-lod2.glb",
+        "sha256": "24d6eb16cdca518c602384b3b4f20af69f4c8508bba1819e3b37c56df37cf72a",
+        "geometry_views_unchanged": 12,
+        "geometry_bytes": 73352
+      }
+    ],
+    "textures": {
+      "e2eb1d3a40c80901e60325eed8bf71951435da3fba9cc40873ea565520dc754f": {
+        "size": [
+          512,
+          512
+        ],
+        "encoded_bytes": 196447,
+        "rgba8_mip_bytes": 1398101
+      },
+      "d31f9d6385c881d0ee43f82728ef74a92d80eac945acb7d7f31633064de68896": {
+        "size": [
+          512,
+          512
+        ],
+        "encoded_bytes": 180167,
+        "rgba8_mip_bytes": 1398101
+      },
+      "050c7c36827bde63ec57101fc4a609c695ff554d8f3d21edeb423b750e80dbd8": {
+        "size": [
+          512,
+          512
+        ],
+        "encoded_bytes": 181469,
+        "rgba8_mip_bytes": 1398101
+      },
+      "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1": {
+        "size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 2041859,
+        "rgba8_mip_bytes": 5592405
+      },
+      "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e": {
+        "size": [
+          1024,
+          1024
+        ],
+        "encoded_bytes": 1140115,
+        "rgba8_mip_bytes": 5592405
+      },
+      "c40b86e331542c342a78802290ed910bcdf5f7b3afebe298553de32ebd002f0f": {
+        "size": [
+          512,
+          512
+        ],
+        "encoded_bytes": 162187,
+        "rgba8_mip_bytes": 1398101
+      }
+    },
+    "unique_texture_rgba8_mip_bytes": 16777214
+  },
+  "root_contact": [
+    {
+      "asset": "cataclysm_fen_wall",
+      "root": "cataclysm_fen_wall roots 0",
+      "uniform_source_scale": 0.2647058749281413,
+      "max_face_parent_gap_m": 0.04799848422408104,
+      "faces_omitted": 5516
+    },
+    {
+      "asset": "cataclysm_fen_wall",
+      "root": "cataclysm_fen_wall roots 1",
+      "uniform_source_scale": 0.2647058749281413,
+      "max_face_parent_gap_m": 0.04799848422408104,
+      "faces_omitted": 5654
+    },
+    {
+      "asset": "cataclysm_fen_wall",
+      "root": "cataclysm_fen_wall roots attached",
+      "construction": "direct small branching roots sampled on actual masonry; B3 bark/shape reference",
+      "max_vertex_parent_gap_m": 0.01799999177455902,
+      "root_radius_m": 0.018
+    },
+    {
+      "asset": "cataclysm_forge_threshold",
+      "root": "cataclysm_forge_threshold roots 0",
+      "uniform_source_scale": 0.13382352565811592,
+      "max_face_parent_gap_m": 0.04794108867645264,
+      "faces_omitted": 999
+    },
+    {
+      "asset": "cataclysm_forge_threshold",
+      "root": "cataclysm_forge_threshold roots 1",
+      "uniform_source_scale": 0.13382352565811592,
+      "max_face_parent_gap_m": 0.04794108867645264,
+      "faces_omitted": 999
+    },
+    {
+      "asset": "cataclysm_forge_threshold",
+      "root": "cataclysm_forge_threshold roots attached",
+      "construction": "direct small branching roots sampled on actual masonry; B3 bark/shape reference",
+      "max_vertex_parent_gap_m": 0.01600000262260437,
+      "root_radius_m": 0.013
+    },
+    {
+      "asset": "cataclysm_rootvault_frame",
+      "root": "cataclysm_rootvault_frame roots 0",
+      "uniform_source_scale": 0.13382352565811592,
+      "max_face_parent_gap_m": 0.04799957573413849,
+      "faces_omitted": 4519
+    },
+    {
+      "asset": "cataclysm_rootvault_frame",
+      "root": "cataclysm_rootvault_frame roots 1",
+      "uniform_source_scale": 0.13382352565811592,
+      "max_face_parent_gap_m": 0.04799957573413849,
+      "faces_omitted": 4519
+    },
+    {
+      "asset": "cataclysm_rootvault_frame",
+      "root": "cataclysm_rootvault_frame roots attached",
+      "construction": "direct small branching roots sampled on actual masonry; B3 bark/shape reference",
+      "max_vertex_parent_gap_m": 0.01394471526145935,
+      "root_radius_m": 0.013
+    },
+    {
+      "asset": "cataclysm_rootvault_wall",
+      "root": "cataclysm_rootvault_wall roots 0",
+      "uniform_source_scale": 0.2647058749281413,
+      "max_face_parent_gap_m": 0.04799848422408104,
+      "faces_omitted": 5549
+    },
+    {
+      "asset": "cataclysm_rootvault_wall",
+      "root": "cataclysm_rootvault_wall roots 1",
+      "uniform_source_scale": 0.2647058749281413,
+      "max_face_parent_gap_m": 0.04799848422408104,
+      "faces_omitted": 5476
+    },
+    {
+      "asset": "cataclysm_rootvault_wall",
+      "root": "cataclysm_rootvault_wall roots attached",
+      "construction": "direct small branching roots sampled on actual masonry; B3 bark/shape reference",
+      "max_vertex_parent_gap_m": 0.017999902367591858,
+      "root_radius_m": 0.018
+    },
+    {
+      "asset": "cataclysm_upland_wall",
+      "root": "cataclysm_upland_wall roots 0",
+      "uniform_source_scale": 0.2647058749281413,
+      "max_face_parent_gap_m": 0.04799848422408104,
+      "faces_omitted": 5641
+    },
+    {
+      "asset": "cataclysm_upland_wall",
+      "root": "cataclysm_upland_wall roots 1",
+      "uniform_source_scale": 0.2647058749281413,
+      "max_face_parent_gap_m": 0.04799848422408104,
+      "faces_omitted": 6134
+    },
+    {
+      "asset": "cataclysm_upland_wall",
+      "root": "cataclysm_upland_wall roots attached",
+      "construction": "direct small branching roots sampled on actual masonry; B3 bark/shape reference",
+      "max_vertex_parent_gap_m": 0.0209999680519104,
+      "root_radius_m": 0.018
+    }
+  ],
+  "scar": {
+    "maximum_depth_m": 0.047999843202896124,
+    "vertices_displaced": 3082,
+    "half_width_m": 0.095,
+    "reference": "SOURCE pre-incision fen wall",
+    "altered": "cataclysm_fen_wall_struck"
+  },
+  "packed_images": [
+    {
+      "name": "C6 periodic metal",
+      "size": [
+        512,
+        512
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "C6 periodic soil",
+      "size": [
+        512,
+        512
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "C6 periodic stone",
+      "size": [
+        512,
+        512
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "C6 periodic wood",
+      "size": [
+        512,
+        512
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.002",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.003",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.004",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.005",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm light grain.006",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.002",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.003",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.004",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.005",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm metal grain.006",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm reed grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm reed grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.002",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.003",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.004",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.005",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.006",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm stone grain.007",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain.001",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain.002",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain.003",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Cataclysm wood grain.004",
+      "size": [
+        128,
+        128
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Dark joined timber colour",
+      "size": [
+        128,
+        256
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.001",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_0.003",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Image_1",
+      "size": [
+        2048,
+        2048
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.001",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.003",
+      "size": [
+        1024,
+        1024
+      ],
+      "colourspace": "Non-Color"
+    },
+    {
+      "name": "Weathered station timber colour",
+      "size": [
+        128,
+        256
+      ],
+      "colourspace": "sRGB"
+    },
+    {
+      "name": "Worn forged iron colour",
+      "size": [
+        128,
+        256
+      ],
+      "colourspace": "sRGB"
+    }
+  ]
+}

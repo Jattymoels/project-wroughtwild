@@ -1,0 +1,287 @@
+[
+  {
+    "name": "cataclysm_fen_cistern-lod0.glb",
+    "identical": true,
+    "sha256": "fe3f53592c3f44fbe8e93024fd32d3cf9a430eb87d95231b0c11d11f55003c92"
+  },
+  {
+    "name": "cataclysm_fen_cistern-lod1.glb",
+    "identical": true,
+    "sha256": "613d37f6561da22a3c9d7636738c656be70db508b8ef416f123da2257849b412"
+  },
+  {
+    "name": "cataclysm_fen_cistern-lod2.glb",
+    "identical": true,
+    "sha256": "7f791f703b7034deda03d7bf2aa3fcf6360232ee449d98a5257ebeca7b500f25"
+  },
+  {
+    "name": "cataclysm_fen_roof-lod0.glb",
+    "identical": true,
+    "sha256": "5f6934137e808445fe96d03669ad3fccf3ba9e85363916b966a81d52e01b451e"
+  },
+  {
+    "name": "cataclysm_fen_roof-lod1.glb",
+    "identical": true,
+    "sha256": "4665f3cd20cb3f3c84a0ea364904ed78d575ce7c431f03ed8dee323c825246f2"
+  },
+  {
+    "name": "cataclysm_fen_roof-lod2.glb",
+    "identical": true,
+    "sha256": "7a12465ba6337d415d0e1e061cebb9e4b8bb846fc4d0b797a59cd9cac4ed432c"
+  },
+  {
+    "name": "cataclysm_fen_wall_struck-lod0.glb",
+    "identical": true,
+    "sha256": "3be0659b7911397d9592761374d797d22aa57a5a6fb7136086ade2f20ec853a8"
+  },
+  {
+    "name": "cataclysm_fen_wall_struck-lod1.glb",
+    "identical": true,
+    "sha256": "8ff3f592ca29f3f42a5290796817e0a9ddc1970fa0659e9acaaed1c0f4f50c6a"
+  },
+  {
+    "name": "cataclysm_fen_wall_struck-lod2.glb",
+    "identical": true,
+    "sha256": "5f8fca021c3eaf0b463104f3709050735d526e1af30a830249f82197950c8a69"
+  },
+  {
+    "name": "cataclysm_fen_wall-lod0.glb",
+    "identical": true,
+    "sha256": "80a129b078beb6475c55f120177851a69d77bb18fdb673b6e457ec773c78ec16"
+  },
+  {
+    "name": "cataclysm_fen_wall-lod1.glb",
+    "identical": true,
+    "sha256": "c26a1bd3ad7a7215e5f47fbbdafe4c1749c05cfca7cd1e71ccaa3d545f8c6d8f"
+  },
+  {
+    "name": "cataclysm_fen_wall-lod2.glb",
+    "identical": true,
+    "sha256": "f6119e5ee9f6e5a9cdf63c0a801c435622b2d9b8f10454ffc89ad8ed5af966b0"
+  },
+  {
+    "name": "cataclysm_forge_threshold-lod0.glb",
+    "identical": true,
+    "sha256": "e3f705502420ce970d08aa97ab0fafc4e9b49778323ab9386e6696a026a074fe"
+  },
+  {
+    "name": "cataclysm_forge_threshold-lod1.glb",
+    "identical": true,
+    "sha256": "17ed29e7814c3398b79cbdbf74da77c28240ff5b24658d5f9320c75b8fa04666"
+  },
+  {
+    "name": "cataclysm_forge_threshold-lod2.glb",
+    "identical": true,
+    "sha256": "a2638f4343c5c95777f504791286a041b99572d88b64785856191d1fbd3a5b07"
+  },
+  {
+    "name": "cataclysm_rootvault_frame-lod0.glb",
+    "identical": true,
+    "sha256": "af5519a9151ec741f6aa4a65074f2ad0106bd185e34e0a60fe95bc08a623c44b"
+  },
+  {
+    "name": "cataclysm_rootvault_frame-lod1.glb",
+    "identical": true,
+    "sha256": "27687300090b499e901f0cb5a6eb89d2d57ff6127bf5d967bc3f65c07348fcba"
+  },
+  {
+    "name": "cataclysm_rootvault_frame-lod2.glb",
+    "identical": true,
+    "sha256": "89dced29195f4bb32f26d06e044631fb0f13d38c11f57ae21c70e5f19f04218c"
+  },
+  {
+    "name": "cataclysm_rootvault_roof-lod0.glb",
+    "identical": true,
+    "sha256": "f54dd848b94ff0ead9a637d4427e0f540d6ef9ec73d75543bc2b43a65145f682"
+  },
+  {
+    "name": "cataclysm_rootvault_roof-lod1.glb",
+    "identical": true,
+    "sha256": "c2d907833dfeea06a58054b61289e5040d1420ef57c5652e392f0f0c1d3ac142"
+  },
+  {
+    "name": "cataclysm_rootvault_roof-lod2.glb",
+    "identical": true,
+    "sha256": "254a693ce92986d72a4dcefcde580ee06c783eb47bf2156fce66e6e7abf2d2f7"
+  },
+  {
+    "name": "cataclysm_rootvault_wall-lod0.glb",
+    "identical": true,
+    "sha256": "366c26331d684f0b2b9b7511bd5485f2eeeccc210889ed4720dfb02c2cf1d2fb"
+  },
+  {
+    "name": "cataclysm_rootvault_wall-lod1.glb",
+    "identical": true,
+    "sha256": "94aab0ec67dd3f50de48bcebc79ca5774aa162302ad28cee942932a099ad2206"
+  },
+  {
+    "name": "cataclysm_rootvault_wall-lod2.glb",
+    "identical": true,
+    "sha256": "0e7f5a2d0aa3e624da24d3b3a0b575b8a1c8f2d07632effdddb18282a46a613a"
+  },
+  {
+    "name": "cataclysm_upland_paving-lod0.glb",
+    "identical": true,
+    "sha256": "abee6cdab999a17644bd46a83e2d139d8dc73fc50ea76b3f63a05a023bbc9c38"
+  },
+  {
+    "name": "cataclysm_upland_paving-lod1.glb",
+    "identical": true,
+    "sha256": "a6f6713c8a110dc0eafedb5c270f2878c975440bda312834c95887a14ffaaad8"
+  },
+  {
+    "name": "cataclysm_upland_paving-lod2.glb",
+    "identical": true,
+    "sha256": "5312f7c98d19c3c414d11d8ade39b2503beedf565a670672b7542547092d5a61"
+  },
+  {
+    "name": "cataclysm_upland_shelter-lod0.glb",
+    "identical": true,
+    "sha256": "3f2168b963d492f91b9b39768b3677146b88dcb157021cfc1924a4b856e7a452"
+  },
+  {
+    "name": "cataclysm_upland_shelter-lod1.glb",
+    "identical": true,
+    "sha256": "dcb21a7630ce76daacd63c81396008bd4d454bebf29a712e41092a896d2a7e95"
+  },
+  {
+    "name": "cataclysm_upland_shelter-lod2.glb",
+    "identical": true,
+    "sha256": "3857f7e8758a2f8835b4288f6febe8fb3660ca1b19f6db30b694cbe9393cca48"
+  },
+  {
+    "name": "cataclysm_upland_wall-lod0.glb",
+    "identical": true,
+    "sha256": "0eec7bb5572fd7adb9ab1150e3898696ed45868af19c9fdfd8bd262baeaed1fd"
+  },
+  {
+    "name": "cataclysm_upland_wall-lod1.glb",
+    "identical": true,
+    "sha256": "5adec53d75febf91e86c55b74ed91ef05a90a6b1a8fcb5e03ca916759c69e550"
+  },
+  {
+    "name": "cataclysm_upland_wall-lod2.glb",
+    "identical": true,
+    "sha256": "d4e8eb586228143255be47682f7e50fe22fe3694743f08b2c45beb8083ed7884"
+  },
+  {
+    "name": "lf_arrow_stem-lod0.glb",
+    "identical": true,
+    "sha256": "6ea5fcf5fda7f05bfefe01e99b3cb98e8f5487c79f4333ee022e02667209ddb5"
+  },
+  {
+    "name": "lf_arrow_stem-lod1.glb",
+    "identical": true,
+    "sha256": "9eafe9264c5c060b92718a06530a709e1f115fba8e497fd5382e5fdae2a9891d"
+  },
+  {
+    "name": "lf_arrow_stem-lod2.glb",
+    "identical": true,
+    "sha256": "0df89c29542dfd38538ef46a8483f8337181861b11c785a9c953a6d5581f4674"
+  },
+  {
+    "name": "lf_arrow_tip-lod0.glb",
+    "identical": true,
+    "sha256": "7ca59d0711a6b2951e9db793c7d010ada360b051ee64ae6ae87f3c027848de75"
+  },
+  {
+    "name": "lf_arrow_tip-lod1.glb",
+    "identical": true,
+    "sha256": "35aebc87e1cd704c7ed025fcac465504618d0e72d4f332454e2998105241e199"
+  },
+  {
+    "name": "lf_arrow_tip-lod2.glb",
+    "identical": true,
+    "sha256": "09e39ebbf72c462bba0f9fd9d75f17ec73a0c5f88f8d4b12f3c31afe34ce58ea"
+  },
+  {
+    "name": "lf_clamp-lod0.glb",
+    "identical": true,
+    "sha256": "13a864e5ac9e282d3d59e0b1b0bfc08da305509e01240c1625fc53cb51d63851"
+  },
+  {
+    "name": "lf_clamp-lod1.glb",
+    "identical": true,
+    "sha256": "076b8ae69c38ae89a89a137cc566f0d73ed198f7c067344e5af030d9323e706e"
+  },
+  {
+    "name": "lf_clamp-lod2.glb",
+    "identical": true,
+    "sha256": "1842109ba54951b6e8108613bb88c4e53a38d659275a31ef97839db59a08dc62"
+  },
+  {
+    "name": "lf_feed-lod0.glb",
+    "identical": true,
+    "sha256": "15ed7943bc37b8f1ae19314328d2cda8ae9d7e63e21175529bfa9ab1f07c551b"
+  },
+  {
+    "name": "lf_feed-lod1.glb",
+    "identical": true,
+    "sha256": "440e82923d21cb81daca97d92ac72523177a3861a5037edbc8ecc9359bfc6d68"
+  },
+  {
+    "name": "lf_feed-lod2.glb",
+    "identical": true,
+    "sha256": "fb3dd4d700ad3e6fa2dc3b86cf1184f4d52deb1fc1f510969782301ce42633f7"
+  },
+  {
+    "name": "lf_post-lod0.glb",
+    "identical": true,
+    "sha256": "7b4c8501680474db6fd63c5e23a6eaad13e02446daeabd5b31995f59b4ea17a2"
+  },
+  {
+    "name": "lf_post-lod1.glb",
+    "identical": true,
+    "sha256": "5d90956c3ff8abe7054345d6e80f86ade893aaf16a3583883149b2d6d162f528"
+  },
+  {
+    "name": "lf_post-lod2.glb",
+    "identical": true,
+    "sha256": "3cedc4ed93f80c27dfcc9a16ca400223a687b80feb8ea99f65ebf73b40bbaba1"
+  },
+  {
+    "name": "lf_stamp-lod0.glb",
+    "identical": true,
+    "sha256": "c719fc791c33554e9d4c91cd0d14a6f3061a0a0743b9613f50a7841e06a062c8"
+  },
+  {
+    "name": "lf_stamp-lod1.glb",
+    "identical": true,
+    "sha256": "cc43d29e2b4587a7cf8ba774d6c305c6d884bb2e52951a55f6d5d4a5ec342341"
+  },
+  {
+    "name": "lf_stamp-lod2.glb",
+    "identical": true,
+    "sha256": "6828cd2c6a621adb310dcdd68adbd9a32b3ab90c66b284332fc68600fed9e189"
+  },
+  {
+    "name": "trail_transition-lod0.glb",
+    "identical": true,
+    "sha256": "6e85159bc4f7a25b7abeebd7ff83215735155dad0e54225432664702e143bb8e"
+  },
+  {
+    "name": "trail_transition-lod1.glb",
+    "identical": true,
+    "sha256": "05419d088b0b5ed622d714507876b7bae44d0c68d8cbd41a040c48f89d5bae80"
+  },
+  {
+    "name": "trail_transition-lod2.glb",
+    "identical": true,
+    "sha256": "9d9ad23b62c47f2d2c1db05a98c1616a02d18e050e782aca5f787af43b166ab2"
+  },
+  {
+    "name": "workbench-lod0.glb",
+    "identical": true,
+    "sha256": "815668d32cbaac17a3061572c9ade911ffb3c1b010df502ffb370d4bf7b1cff1"
+  },
+  {
+    "name": "workbench-lod1.glb",
+    "identical": true,
+    "sha256": "1b70c246164c94e695a7beb16617d96cab0036c255fe46806f86e896c1844c42"
+  },
+  {
+    "name": "workbench-lod2.glb",
+    "identical": true,
+    "sha256": "24d6eb16cdca518c602384b3b4f20af69f4c8508bba1819e3b37c56df37cf72a"
+  }
+]
