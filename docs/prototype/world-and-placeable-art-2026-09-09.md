@@ -1,13 +1,19 @@
 # ART-07 — a full frontier and a coherent building kit
 
-**Production update, 11 September 2026:** B1, B2, B3, D1, D4, D5, D6 and F5
-have technically delivered source packages. The [first publication](art07-production/publication-2026-09-10.md)
-and [second publication](art07-production/publication-2026-09-11.md) record exact
-worker/main commits, fresh-copy checks, local handoffs and limits. Eight of 26
-dispatch slices are delivered; the parent B–G groups below remain incomplete.
-Next recommended prompts are B4/D2/D3/E2: the composed walk, remaining structural
-forms and basic/upgraded forge. Visual acceptance, canopy collision/budgets,
-texture sharing and ordinary-world adoption remain separate from source publication.
+**Production update, 11 September 2026:** B1–B4, D1–D6, E2 and F5
+have technically delivered source packages: **12 of 26 dispatch slices**.
+The [first](art07-production/publication-2026-09-10.md),
+[second](art07-production/publication-2026-09-11.md) and
+[third publication](art07-production/publication-2026-09-11-batch3.md) record
+exact commits, fresh checks, local handoffs and limits. The latest batch adds
+the composed walk, remaining structural forms and basic/improved forge.
+Next recommended prompts are C1/C2/C3/C4: fen, quarry, oldgrowth and recovering
+wastes. Parent B is technically delivered as a source/composition checkpoint;
+D has its six source libraries, with full material/shape integration still
+pending. C/E/F/G and full ART-07 remain incomplete. Native chamfer/triangular
+pieces and their octagonal building use are retained. Visual acceptance,
+canopy collision fit, broader performance and ordinary-world adoption remain
+separate from source publication.
 
 **Owner follow-up:** “Yep, create a sliced plan and prompts to send off to other
 sessions to enact” selects the [ART-07 dispatch pack](art07-production/README.md).

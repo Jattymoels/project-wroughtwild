@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "B1, B2, B3, D1, D4, D5, D6 and F5 technically delivered; see publication-2026-09-10.md and publication-2026-09-11.md for evidence and limits. Recommended next batch: B4, D2, D3, E2. Other slices remain planned.",
+  "status": "B1–B4, D1–D6, E2 and F5 technically delivered: 12 of 26 slices. See the three publication reports through publication-2026-09-11-batch3.md for evidence and limits. Recommended next batch: C1, C2, C3, C4. Other slices remain planned.",
   "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
   "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
   "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",
@@ -154,9 +154,10 @@
       ],
       "reading": [
         "docs/systems/world-generation.md",
-        "docs/prototype/world-intensive-2026-09-06.md"
+        "docs/prototype/world-intensive-2026-09-06.md",
+        "docs/prototype/art07-production/receipts/b4.md"
       ],
-      "notes": ""
+      "notes": "Read B4's published composition receipt for inherited tree/body-fit limits, LOD costs and texture sharing. Inspect and measure native work-target and collision envelopes before authoring variants. Keep those native contracts; report any required footprint/rule change rather than enlarging a body to fit an inherited model. Measure this slice's own contacts and renderer costs; B4's fixed-view benchmark does not clear a new habitat."
     },
     {
       "id": "c2",
@@ -183,9 +184,10 @@
       ],
       "reading": [
         "docs/systems/world-generation.md",
-        "docs/prototype/world-intensive-2026-09-06.md"
+        "docs/prototype/world-intensive-2026-09-06.md",
+        "docs/prototype/art07-production/receipts/b4.md"
       ],
-      "notes": ""
+      "notes": "Read B4's published composition receipt for inherited tree/body-fit limits, LOD costs and texture sharing. Inspect and measure native work-target and collision envelopes before authoring variants. Keep those native contracts; report any required footprint/rule change rather than enlarging a body to fit an inherited model. Measure this slice's own contacts and renderer costs; B4's fixed-view benchmark does not clear a new habitat."
     },
     {
       "id": "c3",
@@ -209,9 +211,10 @@
       ],
       "reading": [
         "tools/wroughtwild-grove/README.md",
-        "docs/prototype/world-intensive-2026-09-06.md"
+        "docs/prototype/world-intensive-2026-09-06.md",
+        "docs/prototype/art07-production/receipts/b4.md"
       ],
-      "notes": ""
+      "notes": "Read B4's published composition receipt for inherited tree/body-fit limits, LOD costs and texture sharing. Inspect and measure native work-target and collision envelopes before authoring variants. Keep those native contracts; report any required footprint/rule change rather than enlarging a body to fit an inherited model. Measure this slice's own contacts and renderer costs; B4's fixed-view benchmark does not clear a new habitat."
     },
     {
       "id": "c4",
@@ -238,9 +241,10 @@
       ],
       "reading": [
         "docs/systems/world-generation.md",
-        "docs/world-premise.md"
+        "docs/world-premise.md",
+        "docs/prototype/art07-production/receipts/b4.md"
       ],
-      "notes": ""
+      "notes": "Read B4's published composition receipt for inherited tree/body-fit limits, LOD costs and texture sharing. Inspect and measure native work-target and collision envelopes before authoring variants. Keep those native contracts; report any required footprint/rule change rather than enlarging a body to fit an inherited model. Measure this slice's own contacts and renderer costs; B4's fixed-view benchmark does not clear a new habitat."
     },
     {
       "id": "c5",
