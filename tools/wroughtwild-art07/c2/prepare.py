@@ -52,4 +52,3 @@ renderer/rendering_method="forward_plus"
 (out/'review.tscn').write_text('[gd_scene load_steps=2 format=3]\n[ext_resource type="Script" path="res://review.gd" id="1"]\n[node name="C2" type="Node3D"]\nscript=ExtResource("1")\n')
 (out/'cook.json').write_text(json.dumps({'models':audit,'unique_textures':textures,'texture_rgba8_mip_bytes':sum(t['rgba8_mip_bytes'] for t in textures.values())},indent=2)+'\n')
 print('C2_COOK_OK',len(audit),len(textures))
-

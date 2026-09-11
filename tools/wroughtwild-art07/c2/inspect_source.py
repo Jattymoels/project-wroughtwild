@@ -24,4 +24,3 @@ cam=bpy.data.objects.new('C2 camera',bpy.data.cameras.new('C2 camera'));scene.co
 for name,at in [('front',(0,5,2)),('back',(0,-5,2)),('side',(5,0,2)),('top',(0,0,6)),('underside',(0,0,-6)),('three-quarter',(4,5,3))]:
  cam.location=at;cam.rotation_euler=(Vector((0,0,.8))-cam.location).to_track_quat('-Z','Y').to_euler();scene.render.filepath=str(out/(name+'.png'));bpy.ops.render.render(write_still=True)
 print('C2_SOURCE_INSPECTION_OK')
-

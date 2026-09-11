@@ -13,4 +13,3 @@ assert sha(dll)=='6d8094fc95c0854f9100b161806a11d9fa3a67bb4f870080976bcd8d2e8f22
 shutil.copy2(dll,out/'game/bin'/dll.name)
 (out/'provenance.json').write_text(json.dumps({'revision':revision,'binary_compiled_revision':compiled,'game_sim_data_diff_empty':True,'dll_sha256':sha(dll),'source':str(dll)},indent=2)+'\n')
 print('C2_CURRENT_NATIVE_COPY_OK')
-
