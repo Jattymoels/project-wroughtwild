@@ -1,0 +1,736 @@
+{
+	"capsule": [
+		0.32,
+		1.8
+	],
+	"contacts": [
+		{
+			"anchor": "Vector3(-2.4, 0.34846824, -4.5)",
+			"id": "bog-oak-full",
+			"support_error_m": 0.00000804662704467773
+		},
+		{
+			"anchor": "Vector3(0.6, 0.5854914, 4.2)",
+			"id": "bog-oak-full",
+			"support_error_m": 0.0000286102294921875
+		},
+		{
+			"anchor": "Vector3(2.8, 0.44928247, 9)",
+			"id": "bog-oak-full",
+			"support_error_m": 0.0000227093696594238
+		},
+		{
+			"anchor": "Vector3(-3, -0.2629589, 14)",
+			"id": "bog-oak-full",
+			"support_error_m": 0.0000410974025726318
+		},
+		{
+			"anchor": "Vector3(3.1, 0.51448125, -2.5)",
+			"id": "bog-oak-worked",
+			"support_error_m": 0.00000113248825073242
+		},
+		{
+			"anchor": "Vector3(-3.3, -0.48545685, 1)",
+			"id": "clay-24",
+			"support_error_m": 0.0000168383121490479
+		},
+		{
+			"anchor": "Vector3(-3.35, -0.7078319, 3)",
+			"id": "clay-12",
+			"support_error_m": 0.0000219941139221191
+		},
+		{
+			"anchor": "Vector3(-3.5, -0.8394417, 5)",
+			"id": "clay-4",
+			"support_error_m": 0.000041663646697998
+		},
+		{
+			"anchor": "Vector3(-3.4, -0.14098793, -2)",
+			"id": "reed-24",
+			"support_error_m": 0.00000816583633422852
+		},
+		{
+			"anchor": "Vector3(-4.1, -0.7317677, 0)",
+			"id": "reed-18",
+			"support_error_m": 0.0000323653221130371
+		},
+		{
+			"anchor": "Vector3(-3.9, -0.8694045, 7)",
+			"id": "reed-12",
+			"support_error_m": 0.0000153183937072754
+		},
+		{
+			"anchor": "Vector3(-3.8, -0.77951866, 9)",
+			"id": "reed-6",
+			"support_error_m": 0.0000186562538146973
+		},
+		{
+			"anchor": "Vector3(-4.2, -0.6888674, 11)",
+			"id": "reed-24",
+			"support_error_m": 0.0000277161598205566
+		},
+		{
+			"anchor": "Vector3(-4.7, -0.58025575, 13)",
+			"id": "reed-24",
+			"support_error_m": 0.0000157356262207031
+		},
+		{
+			"anchor": "Vector3(2, 0.34399903, -5.2)",
+			"id": "bog-oak-stump",
+			"support_error_m": 0.00000107288360595703
+		},
+		{
+			"anchor": "Vector3(-2.8, 0.032301813, -0.5)",
+			"id": "clay-0",
+			"support_error_m": 0.00000134110450744629
+		},
+		{
+			"anchor": "Vector3(-3.2, -0.21548466, -0.5)",
+			"id": "reed-0",
+			"support_error_m": 0.0000152140855789185
+		},
+		{
+			"anchor": "Vector3(-4.536346, -0.5459225, -4.277486)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000119209289550781
+		},
+		{
+			"anchor": "Vector3(-4.632557, -0.508909, -6.135276)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000221729278564453
+		},
+		{
+			"anchor": "Vector3(-3.48258, -0.3912558, 14.558552)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000377297401428223
+		},
+		{
+			"anchor": "Vector3(-3.539585, -0.3656513, 15.27425)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000202059745788574
+		},
+		{
+			"anchor": "Vector3(-4.668922, -0.5167633, -6.6806536)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000222921371459961
+		},
+		{
+			"anchor": "Vector3(-2.9833896, -0.5975708, 3.5745869)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000134706497192383
+		},
+		{
+			"anchor": "Vector3(-2.9260736, -0.4925307, 10.646769)",
+			"id": "fen-sedge",
+			"support_error_m": 0.00000488758087158203
+		},
+		{
+			"anchor": "Vector3(-2.7359905, -0.47785902, 9.658112)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000214576721191406
+		},
+		{
+			"anchor": "Vector3(-2.5405717, -0.45496973, 5.1448803)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000198781490325928
+		},
+		{
+			"anchor": "Vector3(-3.1742964, -0.64325374, 3.1910782)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000267624855041504
+		},
+		{
+			"anchor": "Vector3(-3.9984066, -0.49849033, -1.981379)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000450611114501953
+		},
+		{
+			"anchor": "Vector3(-2.5864887, -0.51521254, 7.207841)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000176429748535156
+		},
+		{
+			"anchor": "Vector3(-3.2649665, -0.5103111, 11.816765)",
+			"id": "fen-sedge",
+			"support_error_m": 0.00000667572021484375
+		},
+		{
+			"anchor": "Vector3(-3.1859784, -0.63031983, 9.8223)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000209808349609375
+		},
+		{
+			"anchor": "Vector3(-2.9258392, -0.31100345, 12.879051)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000376701354980469
+		},
+		{
+			"anchor": "Vector3(-4.4540563, -0.5801975, -3.2645102)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000190138816833496
+		},
+		{
+			"anchor": "Vector3(-3.3570726, -0.75732327, 3.8813095)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000104904174804688
+		},
+		{
+			"anchor": "Vector3(-4.57065, -0.51426536, -5.1533933)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000156760215759277
+		},
+		{
+			"anchor": "Vector3(-3.7155192, -0.619527, 0.40385723)",
+			"id": "fen-sedge",
+			"support_error_m": 0.00000560283660888672
+		},
+		{
+			"anchor": "Vector3(-3.201802, -0.2536369, 15.277695)",
+			"id": "fen-sedge",
+			"support_error_m": 0.00000101327896118164
+		},
+		{
+			"anchor": "Vector3(-2.8699973, -0.5671577, 4.061104)",
+			"id": "fen-sedge",
+			"support_error_m": 0.00000482797622680664
+		},
+		{
+			"anchor": "Vector3(-2.704524, -0.46446332, 9.648483)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000213682651519775
+		},
+		{
+			"anchor": "Vector3(-3.0971344, -0.72859544, 5.502163)",
+			"id": "fen-sedge",
+			"support_error_m": 0.00000578165054321289
+		},
+		{
+			"anchor": "Vector3(-2.9655771, -0.68621737, 7.160674)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000118613243103027
+		},
+		{
+			"anchor": "Vector3(-2.7284622, -0.57805586, 5.981695)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000116825103759766
+		},
+		{
+			"anchor": "Vector3(-4.285784, -0.7445942, -0.42916203)",
+			"id": "fen-sedge",
+			"support_error_m": 0.00000870227813720703
+		},
+		{
+			"anchor": "Vector3(-2.8417575, -0.631246, 5.954027)",
+			"id": "fen-sedge",
+			"support_error_m": 0.000000596046447753906
+		},
+		{
+			"anchor": "Vector3(-2.7667637, -0.5856229, 5.531623)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000203847885131836
+		},
+		{
+			"anchor": "Vector3(-3.3902385, -0.5272229, 12.0591755)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000247955322265625
+		},
+		{
+			"anchor": "Vector3(-2.9119437, -0.19024989, 14.382759)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000167191028594971
+		},
+		{
+			"anchor": "Vector3(-3.0423076, -0.71948254, 6.1386385)",
+			"id": "fen-sedge",
+			"support_error_m": 0.00000464916229248047
+		},
+		{
+			"anchor": "Vector3(-3.0095596, -0.69939524, 7.3884993)",
+			"id": "fen-sedge",
+			"support_error_m": 0.000024259090423584
+		},
+		{
+			"anchor": "Vector3(-3.4624798, -0.5832904, 1.0310564)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000334382057189941
+		},
+		{
+			"anchor": "Vector3(-3.1813774, -0.65984935, 3.3493109)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000262856483459473
+		},
+		{
+			"anchor": "Vector3(-4.446903, -0.6610018, -2.1822696)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000106096267700195
+		},
+		{
+			"anchor": "Vector3(-3.4180584, -0.4965581, 12.605307)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000192224979400635
+		},
+		{
+			"anchor": "Vector3(-2.9301016, -0.5772794, 9.4573765)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000337958335876465
+		},
+		{
+			"anchor": "Vector3(-3.346225, -0.5514095, 11.553799)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000176429748535156
+		},
+		{
+			"anchor": "Vector3(-4.637355, -0.671179, -2.7562556)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000106692314147949
+		},
+		{
+			"anchor": "Vector3(-2.8614602, -0.2643651, 13.042139)",
+			"id": "fen-sedge",
+			"support_error_m": 0.0000397264957427979
+		},
+		{
+			"anchor": "Vector3(-2.1, 0.3724696, -3.9)",
+			"id": "fungal-detritus",
+			"support_error_m": 0.00000971555709838867
+		},
+		{
+			"anchor": "Vector3(-2.5, -0.47822383, 7.1)",
+			"id": "fungal-detritus",
+			"support_error_m": 0.0000161826610565186
+		},
+		{
+			"anchor": "Vector3(1.8, 0.36121058, -4.8)",
+			"id": "fungal-detritus",
+			"support_error_m": 0.0000293254852294922
+		}
+	],
+	"device": "NVIDIA GeForce RTX 5090",
+	"engine": {
+		"build": "official",
+		"hash": "876b290332ec6f2e6d173d08162a02aa7e6ca46d",
+		"hex": 263424,
+		"major": 4,
+		"minor": 5,
+		"patch": 0,
+		"status": "stable",
+		"string": "4.5-stable (official)",
+		"timestamp": 0
+	},
+	"exclusive_lods": true,
+	"footprints": [
+		{
+			"id": "clay-24",
+			"max_burial_m": 0.209054203383106,
+			"max_height_above_body_origin_m": 0.359999999403954,
+			"max_positive_root_gap_m": 0.0299830663545451,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 1338
+		},
+		{
+			"id": "clay-12",
+			"max_burial_m": 0.134012917154365,
+			"max_height_above_body_origin_m": 0.360000014305115,
+			"max_positive_root_gap_m": 0.0299989216043562,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 3205
+		},
+		{
+			"id": "clay-4",
+			"max_burial_m": 0.0,
+			"max_height_above_body_origin_m": 0.360000014305115,
+			"max_positive_root_gap_m": 0.0299809979017147,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 3996
+		},
+		{
+			"id": "reed-24",
+			"max_burial_m": 0.000520797340078726,
+			"max_height_above_body_origin_m": 1.25423675775528,
+			"max_positive_root_gap_m": 0.000520795251391946,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 192
+		},
+		{
+			"id": "reed-18",
+			"max_burial_m": 0.000520844161609912,
+			"max_height_above_body_origin_m": 1.25423669815063,
+			"max_positive_root_gap_m": 0.000520837109324157,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 184
+		},
+		{
+			"id": "reed-12",
+			"max_burial_m": 0.000520842610301275,
+			"max_height_above_body_origin_m": 1.25423669815063,
+			"max_positive_root_gap_m": 0.000520836990860696,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 176
+		},
+		{
+			"id": "reed-6",
+			"max_burial_m": 0.000520834499088574,
+			"max_height_above_body_origin_m": 1.21212911605835,
+			"max_positive_root_gap_m": 0.000520842068810423,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 168
+		},
+		{
+			"id": "reed-24",
+			"max_burial_m": 0.000520853784273911,
+			"max_height_above_body_origin_m": 1.25423669815063,
+			"max_positive_root_gap_m": 0.000520825181866802,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 192
+		},
+		{
+			"id": "reed-24",
+			"max_burial_m": 0.000520841835984664,
+			"max_height_above_body_origin_m": 1.25423669815063,
+			"max_positive_root_gap_m": 0.000520841927908244,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 192
+		},
+		{
+			"id": "clay-0",
+			"max_burial_m": 0.012608227473489,
+			"max_height_above_body_origin_m": 0.360000014305115,
+			"max_positive_root_gap_m": 0.0299952496630268,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 4013
+		},
+		{
+			"id": "reed-0",
+			"max_burial_m": 0.0000000138622507361852,
+			"max_height_above_body_origin_m": 0.251856599003077,
+			"max_positive_root_gap_m": 0.0000000148262584431791,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 160
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000291434940624669,
+			"max_height_above_body_origin_m": 0.192896276712418,
+			"max_positive_root_gap_m": 0.0298720658625161,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000293126904971075,
+			"max_height_above_body_origin_m": 0.195938020944595,
+			"max_positive_root_gap_m": 0.0298720528409098,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000146513446930285,
+			"max_height_above_body_origin_m": 0.191566407680511,
+			"max_positive_root_gap_m": 0.0298720600994197,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000147060745803174,
+			"max_height_above_body_origin_m": 0.188192799687386,
+			"max_positive_root_gap_m": 0.0298720563817353,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000291169193200602,
+			"max_height_above_body_origin_m": 0.201580613851547,
+			"max_positive_root_gap_m": 0.0298720501172715,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000286277613836816,
+			"max_height_above_body_origin_m": 0.206072151660919,
+			"max_positive_root_gap_m": 0.02987206350302,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000250822862479794,
+			"max_height_above_body_origin_m": 0.201887518167496,
+			"max_positive_root_gap_m": 0.0298720579553921,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000257302358308564,
+			"max_height_above_body_origin_m": 0.194231241941452,
+			"max_positive_root_gap_m": 0.0298720625215395,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000140646080337703,
+			"max_height_above_body_origin_m": 0.213331371545792,
+			"max_positive_root_gap_m": 0.0298720355441954,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000294267844536122,
+			"max_height_above_body_origin_m": 0.192819118499756,
+			"max_positive_root_gap_m": 0.0298720329920663,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000271549225328016,
+			"max_height_above_body_origin_m": 0.210879981517792,
+			"max_positive_root_gap_m": 0.0298720615836527,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000224681894200884,
+			"max_height_above_body_origin_m": 0.20914751291275,
+			"max_positive_root_gap_m": 0.0298720488460378,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000259230720223158,
+			"max_height_above_body_origin_m": 0.182826995849609,
+			"max_positive_root_gap_m": 0.0298720612258722,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000297615586619671,
+			"max_height_above_body_origin_m": 0.186779528856277,
+			"max_positive_root_gap_m": 0.0298720679820554,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000143449020439945,
+			"max_height_above_body_origin_m": 0.204142339527607,
+			"max_positive_root_gap_m": 0.0298720469391537,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000297655498027183,
+			"max_height_above_body_origin_m": 0.196917206048965,
+			"max_positive_root_gap_m": 0.0298720453457174,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000296313357184275,
+			"max_height_above_body_origin_m": 0.192666113376617,
+			"max_positive_root_gap_m": 0.0298720718635737,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000295230613289732,
+			"max_height_above_body_origin_m": 0.196305096149445,
+			"max_positive_root_gap_m": 0.0298720592636169,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000292409467750332,
+			"max_height_above_body_origin_m": 0.192920744419098,
+			"max_positive_root_gap_m": 0.0298720759182282,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000146901764086493,
+			"max_height_above_body_origin_m": 0.192343030124903,
+			"max_positive_root_gap_m": 0.0298720419521523,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000286014391059908,
+			"max_height_above_body_origin_m": 0.204133212566376,
+			"max_positive_root_gap_m": 0.0298720766832986,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000144642310906384,
+			"max_height_above_body_origin_m": 0.204966843128204,
+			"max_positive_root_gap_m": 0.0298720180960133,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000289907713391102,
+			"max_height_above_body_origin_m": 0.194856762886047,
+			"max_positive_root_gap_m": 0.029872045135208,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000288732164843708,
+			"max_height_above_body_origin_m": 0.196233659982681,
+			"max_positive_root_gap_m": 0.029872058043818,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000283980298165787,
+			"max_height_above_body_origin_m": 0.206113159656525,
+			"max_positive_root_gap_m": 0.029872075270473,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.000000028729837620034,
+			"max_height_above_body_origin_m": 0.187876164913177,
+			"max_positive_root_gap_m": 0.0298720536683428,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000283196496253524,
+			"max_height_above_body_origin_m": 0.203640937805176,
+			"max_positive_root_gap_m": 0.0298720379087255,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.000000029679807833638,
+			"max_height_above_body_origin_m": 0.201099634170532,
+			"max_positive_root_gap_m": 0.0298720749159077,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000294826355551336,
+			"max_height_above_body_origin_m": 0.187470823526382,
+			"max_positive_root_gap_m": 0.0298720469369708,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.00000000726173091103455,
+			"max_height_above_body_origin_m": 0.201131906360388,
+			"max_positive_root_gap_m": 0.0298720437143293,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.00000002921572039849,
+			"max_height_above_body_origin_m": 0.200806140899658,
+			"max_positive_root_gap_m": 0.0298720734519538,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000278934549902132,
+			"max_height_above_body_origin_m": 0.189400196075439,
+			"max_positive_root_gap_m": 0.0298720497610134,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000272668403411558,
+			"max_height_above_body_origin_m": 0.21095284819603,
+			"max_positive_root_gap_m": 0.029872030380977,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000284982987208693,
+			"max_height_above_body_origin_m": 0.201907098293304,
+			"max_positive_root_gap_m": 0.029872061975655,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000297540145854924,
+			"max_height_above_body_origin_m": 0.200974941253662,
+			"max_positive_root_gap_m": 0.029872040757783,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000276723698400261,
+			"max_height_above_body_origin_m": 0.194029092788696,
+			"max_positive_root_gap_m": 0.0298720365643962,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000277498913847651,
+			"max_height_above_body_origin_m": 0.197926759719849,
+			"max_positive_root_gap_m": 0.0298720316085449,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000256639547391302,
+			"max_height_above_body_origin_m": 0.188471585512161,
+			"max_positive_root_gap_m": 0.0298720591068081,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000295000488481634,
+			"max_height_above_body_origin_m": 0.195619136095047,
+			"max_positive_root_gap_m": 0.0298720616391196,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		},
+		{
+			"id": "fen-sedge",
+			"max_burial_m": 0.0000000144868735896253,
+			"max_height_above_body_origin_m": 0.198857471346855,
+			"max_positive_root_gap_m": 0.0298720521871217,
+			"method": "Actual imported vertices and same shader seating formula, against retained triangle terrain; no stock/body/geography adjustment.",
+			"root_vertices": 210
+		}
+	],
+	"materials": 18,
+	"max_support_error_m": 0.0000450611114501953,
+	"pause_resume": true,
+	"walk_end": "Vector3(-0.8533995, 0.4067504, 8.027835)",
+	"walk_samples": 482
+}

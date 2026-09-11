@@ -1,0 +1,28 @@
+{
+  "forward_plus": {
+    "wind_frames": 66,
+    "paused_frames": 12,
+    "paused_pixels_identical": true,
+    "resumed_pixels_differ": true,
+    "work_frames": 36,
+    "fall_frames": 24,
+    "source_dimensions": [
+      1440,
+      900
+    ],
+    "encoding": "Actual PNG frames, resized only; no synthesized motion. Work timeline presented at 160 ms/frame, not realtime."
+  },
+  "gl_compatibility": {
+    "wind_frames": 66,
+    "paused_frames": 12,
+    "paused_pixels_identical": true,
+    "resumed_pixels_differ": true,
+    "work_frames": 36,
+    "fall_frames": 24,
+    "source_dimensions": [
+      1440,
+      900
+    ],
+    "encoding": "Actual PNG frames, resized only; no synthesized motion. Work timeline presented at 160 ms/frame, not realtime."
+  }
+}

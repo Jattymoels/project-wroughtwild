@@ -1,0 +1,37 @@
+{
+  "handoff": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c1\\worktree\\build\\art07\\c1\\v01\\handoff-v01",
+  "manifest_sha256": "e733692b99f61cadf17e7e3d3382834b558aa21c9817597a801eba877104c6f6",
+  "verified_payload_files": 2331,
+  "all_canonical_payloads_unchanged_after_execution": true,
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c1\\worktree\\build\\art07\\c1\\v01\\fresh-v01",
+  "packed_master_sha256": "53bcff4b7fb6dba63a3c7dd351629a362044971e0520673777e57e098a34ae41",
+  "fresh_glbs_audited": 51,
+  "launcher_forward_plus_exit": 0,
+  "compatibility_capture_exit": 0,
+  "native_replays": {
+    "flow": {
+      "bog_oak": 14,
+      "checks": 20,
+      "failures": 0,
+      "fixture": "Posed source work using actual native dispatcher; no paid first-hour or generated-route claim.",
+      "raw_clay": 24,
+      "raw_reed": 24
+    },
+    "partial-restart": {
+      "bog_oak": 0,
+      "checks": 9,
+      "failures": 0,
+      "fixture": "Posed source work using actual native dispatcher; no paid first-hour or generated-route claim.",
+      "raw_clay": 8,
+      "raw_reed": 6
+    },
+    "final-restart": {
+      "bog_oak": 14,
+      "checks": 7,
+      "failures": 0,
+      "fixture": "Posed source work using actual native dispatcher; no paid first-hour or generated-route claim.",
+      "raw_clay": 24,
+      "raw_reed": 24
+    }
+  }
+}
