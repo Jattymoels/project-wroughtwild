@@ -1,0 +1,26 @@
+{
+  "recorded_at": "2026-09-11T11:37:25.9527399+09:30",
+  "blender": "4.5.9 LTS, Cycles CPU, 8 threads",
+  "renderers": [
+    "Forward+ Vulkan",
+    "Compatibility OpenGL"
+  ],
+  "programs": [
+    {
+      "sha256": "372c2eae555b344520bf147be0096e009069aeca4e7f78d6aecea6d53158056a",
+      "path": "C:/Users/Matty/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
+    },
+    {
+      "sha256": "42c096b04d79bd0ff234429f67178881047c1c370d25ad3aef2766f3eeac4024",
+      "path": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe"
+    },
+    {
+      "sha256": "7b77f3735dec3a32bb20af29cc1900583795d1de82a14f23d23350a88ec85faf",
+      "path": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe"
+    }
+  ],
+  "gpu": "NVIDIA GeForce RTX 5090, 591.86, 32607 MiB",
+  "generation": "No new generation; verified B1/B2 inputs reused",
+  "os": "Microsoft Windows NT 10.0.26200.0",
+  "godot": "4.5 stable"
+}

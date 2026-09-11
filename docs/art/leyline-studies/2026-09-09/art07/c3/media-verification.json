@@ -1,0 +1,38 @@
+{
+  "forward_plus": {
+    "motion": {
+      "pulse": {
+        "source_frames": 48,
+        "max_mean_pixel_difference": 0.4894162855691057
+      },
+      "wind": {
+        "source_frames": 48,
+        "max_mean_pixel_difference": 0.8859216209349593
+      },
+      "walk": {
+        "source_frames": 44,
+        "max_mean_pixel_difference": 29.46699980945122
+      }
+    },
+    "paused_identical_frames": 12,
+    "native_fall_frames": 42
+  },
+  "gl_compatibility": {
+    "motion": {
+      "pulse": {
+        "source_frames": 48,
+        "max_mean_pixel_difference": 0.5659886305894309
+      },
+      "wind": {
+        "source_frames": 48,
+        "max_mean_pixel_difference": 1.113668699186992
+      },
+      "walk": {
+        "source_frames": 44,
+        "max_mean_pixel_difference": 37.563026549796746
+      }
+    },
+    "paused_identical_frames": 12,
+    "native_fall_frames": 42
+  }
+}

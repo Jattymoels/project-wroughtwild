@@ -1,0 +1,372 @@
+{
+  "python_parse": true,
+  "regression": [
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\art.log",
+      "checks": 11,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\gathering.log",
+      "checks": 22,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\loads-restore.log",
+      "checks": 6,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\loads.log",
+      "checks": 201,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\loose-read.log",
+      "checks": 13,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\loose-write.log",
+      "checks": 6,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\materials.log",
+      "checks": 158,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\placement-restore.log",
+      "checks": 60,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\placement.log",
+      "checks": 470,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\save-recovery.log",
+      "checks": 175,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\source-restore.log",
+      "checks": 15,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\source-work.log",
+      "checks": 733,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\unit.log",
+      "checks": 398,
+      "failures": 0
+    },
+    {
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\current-checks\\world.log",
+      "checks": 5957,
+      "failures": 0
+    }
+  ],
+  "regression_total": 8225,
+  "jobs": [
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-capture\\forward_plus-capture.log.job.json",
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 36464,
+      "seconds": 10.5849303,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\review-v03",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--capture"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-capture\\user",
+      "gpu_slot": true,
+      "exit": 0
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-capture\\gl_compatibility-capture.log.job.json",
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "pid": 28648,
+      "seconds": 3.9584392,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\review-v03",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--capture"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-capture\\user",
+      "gpu_slot": true,
+      "exit": 0
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-motion\\forward_plus-motion.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-motion\\user",
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\review-v03",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--motion"
+      ],
+      "seconds": 22.4018331,
+      "gpu_slot": true,
+      "pid": 39348
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-motion\\gl_compatibility-motion.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-motion\\user",
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\review-v03",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--motion"
+      ],
+      "seconds": 18.6898793,
+      "gpu_slot": true,
+      "pid": 12508
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-walk\\forward_plus-walk.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-walk\\user",
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\review-v03",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--walk"
+      ],
+      "seconds": 14.6833161,
+      "gpu_slot": true,
+      "pid": 6296
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-walk\\gl_compatibility-walk.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-walk\\user",
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\review-v03",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "--",
+        "--walk"
+      ],
+      "seconds": 9.3471063,
+      "gpu_slot": true,
+      "pid": 34640
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\forward_plus-final.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\user",
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "seconds": 2.9342288,
+      "gpu_slot": true,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\native-final-v03\\game",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c3/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "exit": 0,
+      "pid": 13076
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\forward_plus-flow.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\user",
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "seconds": 13.5010204,
+      "gpu_slot": true,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\native-final-v03\\game",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c3/native_review.tscn"
+      ],
+      "exit": 0,
+      "pid": 4964
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\forward_plus-partial.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\user",
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "seconds": 2.8526555,
+      "gpu_slot": true,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\native-final-v03\\game",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c3/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "exit": 0,
+      "pid": 12680
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\gl_compatibility-final.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\user",
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "seconds": 2.6787388,
+      "gpu_slot": true,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\native-final-v03\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c3/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "exit": 0,
+      "pid": 41304
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\gl_compatibility-flow.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\user",
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "seconds": 5.8561628,
+      "gpu_slot": true,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\native-final-v03\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c3/native_review.tscn"
+      ],
+      "exit": 0,
+      "pid": 29328
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\gl_compatibility-partial.log.job.json",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-native-v05\\user",
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "seconds": 2.6251352,
+      "gpu_slot": true,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\native-final-v03\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--fixed-fps",
+        "60",
+        "res://c3/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "exit": 0,
+      "pid": 26868
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-benchmark\\forward_plus-benchmark.log.job.json",
+      "gpu_slot": true,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\review-v03",
+        "--rendering-method",
+        "forward_plus",
+        "--audio-driver",
+        "Dummy",
+        "--",
+        "--benchmark"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-benchmark\\user",
+      "seconds": 10.5078388,
+      "pid": 18704,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-benchmark\\gl_compatibility-benchmark.log.job.json",
+      "gpu_slot": true,
+      "arguments": [
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\review-v03",
+        "--rendering-method",
+        "gl_compatibility",
+        "--audio-driver",
+        "Dummy",
+        "--",
+        "--benchmark"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\final-benchmark\\user",
+      "seconds": 3.0412097,
+      "pid": 41272,
+      "exit": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe"
+    }
+  ],
+  "audit_file": "audit-v05.json",
+  "audited_exports": 23
+}

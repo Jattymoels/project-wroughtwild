@@ -1,0 +1,503 @@
+{
+  "packed_images": 14,
+  "collections": [
+    "FINISHED",
+    "REVIEW",
+    "RUNTIME",
+    "SOURCE"
+  ],
+  "independent_scar_depth_m": 0.06492992708386652,
+  "exports": [
+    {
+      "asset": "corkbark-12-lod0",
+      "triangles": 54919,
+      "surfaces": 4,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.37667474150657654,
+          0.008219459094107151
+        ],
+        [
+          0.699999988079071,
+          0.3766545057296753,
+          0.5966637134552002
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        1.1140095921291504e-05,
+        3.3234684906346956e-06
+      ]
+    },
+    {
+      "asset": "corkbark-12-lod1",
+      "triangles": 27655,
+      "surfaces": 4,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.37660640478134155,
+          0.008219366893172264
+        ],
+        [
+          0.699999988079071,
+          0.37651315331459045,
+          0.5966810584068298
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        2.8241474865353666e-05,
+        1.0965924957417883e-05
+      ]
+    },
+    {
+      "asset": "corkbark-12-lod2",
+      "triangles": 19639,
+      "surfaces": 4,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.37652140855789185,
+          0.008182279765605927
+        ],
+        [
+          0.699999988079071,
+          0.3771531879901886,
+          0.5964677929878235
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        0.00022797659039497375,
+        1.611058360140305e-05
+      ]
+    },
+    {
+      "asset": "corkbark-18-lod0",
+      "triangles": 74007,
+      "surfaces": 5,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.37667474150657654,
+          0.00809940043836832
+        ],
+        [
+          0.7820000052452087,
+          0.37665867805480957,
+          0.5966774821281433
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        1.1140095921291504e-05,
+        3.3234684906346956e-06,
+        0.00038509778096340597
+      ]
+    },
+    {
+      "asset": "corkbark-18-lod1",
+      "triangles": 33111,
+      "surfaces": 5,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.37660640478134155,
+          0.008219366893172264
+        ],
+        [
+          0.7820000052452087,
+          0.3765958845615387,
+          0.5966810584068298
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        2.8241474865353666e-05,
+        1.0965924957417883e-05,
+        4.4541673560161144e-05
+      ]
+    },
+    {
+      "asset": "corkbark-18-lod2",
+      "triangles": 21087,
+      "surfaces": 5,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.37652140855789185,
+          0.008182279765605927
+        ],
+        [
+          0.7820000052452087,
+          0.3773522675037384,
+          0.5964677929878235
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        0.00022797659039497375,
+        1.611058360140305e-05,
+        0.0007628421881236136
+      ]
+    },
+    {
+      "asset": "corkbark-6-lod0",
+      "triangles": 35831,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.37567803263664246,
+          0.008337090723216534
+        ],
+        [
+          0.699999988079071,
+          0.3766545057296753,
+          0.5940662622451782
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        1.1140095921291504e-05
+      ]
+    },
+    {
+      "asset": "corkbark-6-lod1",
+      "triangles": 22199,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.374678373336792,
+          0.009097243659198284
+        ],
+        [
+          0.699999988079071,
+          0.37651315331459045,
+          0.5940662622451782
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        2.8241474865353666e-05
+      ]
+    },
+    {
+      "asset": "corkbark-6-lod2",
+      "triangles": 18191,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.7900000214576721,
+          -0.3708789050579071,
+          0.009756509214639664
+        ],
+        [
+          0.699999988079071,
+          0.3771531879901886,
+          0.5940662622451782
+        ]
+      ],
+      "native_envelope_fit": true,
+      "sleeve_min_surface_contacts_m": [
+        0.00022797659039497375
+      ]
+    },
+    {
+      "asset": "fern-sparse",
+      "triangles": 2616,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.792550265789032,
+          -0.629948079586029,
+          0.00596486683934927
+        ],
+        [
+          0.7643262147903442,
+          0.5347049832344055,
+          0.7427817583084106
+        ]
+      ]
+    },
+    {
+      "asset": "grass-edge",
+      "triangles": 108,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.4062219262123108,
+          -0.42312467098236084,
+          0.0010000000474974513
+        ],
+        [
+          0.4159349799156189,
+          0.5578914880752563,
+          0.23855261504650116
+        ]
+      ]
+    },
+    {
+      "asset": "leaf-litter",
+      "triangles": 256,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.5014551877975464,
+          -0.5043590664863586,
+          0.0010243005817756057
+        ],
+        [
+          0.46862897276878357,
+          0.42364123463630676,
+          0.024044005200266838
+        ]
+      ]
+    },
+    {
+      "asset": "moss",
+      "triangles": 3080,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.49203529953956604,
+          -0.39622440934181213,
+          0.004000000189989805
+        ],
+        [
+          0.45127061009407043,
+          0.40069225430488586,
+          0.05582541227340698
+        ]
+      ]
+    },
+    {
+      "asset": "recovered-corkbark",
+      "triangles": 5456,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.2633333206176758,
+          -0.37660640478134155,
+          0.008219366893172264
+        ],
+        [
+          0.2553333342075348,
+          0.37407875061035156,
+          0.5966810584068298
+        ]
+      ],
+      "closed_non_emitting_recovered_solids": true
+    },
+    {
+      "asset": "recovered-resinheart",
+      "triangles": 188,
+      "surfaces": 2,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.3499999940395355,
+          -0.1899999976158142,
+          -1.2516975012033527e-08
+        ],
+        [
+          0.3499999940395355,
+          0.1899999976158142,
+          0.3800000250339508
+        ]
+      ],
+      "closed_non_emitting_recovered_solids": true
+    },
+    {
+      "asset": "resinheart-altered-hero",
+      "triangles": 219473,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -4.09669828414917,
+          -3.601966619491577,
+          -0.8981922268867493
+        ],
+        [
+          4.218193531036377,
+          4.200547218322754,
+          11.102416038513184
+        ]
+      ]
+    },
+    {
+      "asset": "resinheart-altered-lod0",
+      "triangles": 219474,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -3.957374334335327,
+          -2.0495433807373047,
+          -0.8981922268867493
+        ],
+        [
+          4.2229695320129395,
+          4.195652008056641,
+          11.101316452026367
+        ]
+      ],
+      "native_body_band_max_radius_m": 0.3918887474031858,
+      "root_min_z": -0.8981922268867493,
+      "leaf_roots": 16219,
+      "leaf_max_gap_m": 0.0010813006665557623,
+      "branch_roots": 580,
+      "branch_max_gap_m": 0.003000630298629403
+    },
+    {
+      "asset": "resinheart-altered-lod1",
+      "triangles": 98032,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -3.925546884536743,
+          -2.018589496612549,
+          -0.8631210327148438
+        ],
+        [
+          4.216293811798096,
+          4.197404861450195,
+          11.075511932373047
+        ]
+      ],
+      "native_body_band_max_radius_m": 0.39185468942417007,
+      "root_min_z": -0.8631210327148438,
+      "leaf_roots": 16230,
+      "leaf_max_gap_m": 0.0010371726239100099,
+      "branch_roots": 580,
+      "branch_max_gap_m": 0.0030005197040736675
+    },
+    {
+      "asset": "resinheart-altered-lod2",
+      "triangles": 13800,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -3.896893262863159,
+          -1.9839224815368652,
+          -0.4848024845123291
+        ],
+        [
+          4.089305877685547,
+          4.092228889465332,
+          11.056586265563965
+        ]
+      ],
+      "native_body_band_max_radius_m": 0.3920000150730049,
+      "root_min_z": -0.4848024845123291,
+      "attachment_scope": "Far silhouette only; near/middle own attachment fidelity."
+    },
+    {
+      "asset": "resinheart-lod0",
+      "triangles": 219474,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -3.957374334335327,
+          -2.0495433807373047,
+          -0.8981922268867493
+        ],
+        [
+          4.2229695320129395,
+          4.195652008056641,
+          11.101316452026367
+        ]
+      ],
+      "native_body_band_max_radius_m": 0.3918887474031858,
+      "root_min_z": -0.8981922268867493,
+      "leaf_roots": 16219,
+      "leaf_max_gap_m": 0.0010813006665557623,
+      "branch_roots": 580,
+      "branch_max_gap_m": 0.003000630298629403
+    },
+    {
+      "asset": "resinheart-lod1",
+      "triangles": 98032,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -3.925546884536743,
+          -2.018589496612549,
+          -0.8631210327148438
+        ],
+        [
+          4.216293811798096,
+          4.197404861450195,
+          11.075511932373047
+        ]
+      ],
+      "native_body_band_max_radius_m": 0.39185468942417007,
+      "root_min_z": -0.8631210327148438,
+      "leaf_roots": 16230,
+      "leaf_max_gap_m": 0.0010371726239100099,
+      "branch_roots": 580,
+      "branch_max_gap_m": 0.0030005197040736675
+    },
+    {
+      "asset": "resinheart-lod2",
+      "triangles": 13800,
+      "surfaces": 3,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -3.896893262863159,
+          -1.9839224815368652,
+          -0.4848024845123291
+        ],
+        [
+          4.089305877685547,
+          4.092228889465332,
+          11.056586265563965
+        ]
+      ],
+      "native_body_band_max_radius_m": 0.3920000150730049,
+      "root_min_z": -0.4848024845123291,
+      "attachment_scope": "Far silhouette only; near/middle own attachment fidelity."
+    },
+    {
+      "asset": "resinheart-stump",
+      "triangles": 8904,
+      "surfaces": 1,
+      "degenerate_triangles": 0,
+      "bounds_blender_xyz": [
+        [
+          -0.3888366222381592,
+          -0.39175254106521606,
+          -0.8981922268867493
+        ],
+        [
+          0.39122048020362854,
+          0.39139294624328613,
+          0.5
+        ]
+      ]
+    }
+  ]
+}

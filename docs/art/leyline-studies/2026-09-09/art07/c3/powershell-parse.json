@@ -1,0 +1,18 @@
+[
+  {
+    "file": "launch-review.ps1",
+    "errors": 0
+  },
+  {
+    "file": "run-current-checks.ps1",
+    "errors": 0
+  },
+  {
+    "file": "run-job.ps1",
+    "errors": 0
+  },
+  {
+    "file": "run-stage.ps1",
+    "errors": 0
+  }
+]

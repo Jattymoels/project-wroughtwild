@@ -1,0 +1,149 @@
+{
+	"cases": [
+		{
+			"all_near": true,
+			"draws": 134.0,
+			"eye": [
+				10.0,
+				5.40000009536743,
+				15.0
+			],
+			"gpu_p50_ms": 0.541000008583069,
+			"gpu_p95_ms": 1.28699994087219,
+			"light": 0,
+			"primitives": 3484014.0,
+			"texture_bytes": 144078336.0,
+			"wall_p50_ms": 0.684,
+			"wall_p95_ms": 1.46,
+			"worst_ms": 8.454
+		},
+		{
+			"all_near": true,
+			"draws": 134.0,
+			"eye": [
+				10.0,
+				5.40000009536743,
+				15.0
+			],
+			"gpu_p50_ms": 0.541000008583069,
+			"gpu_p95_ms": 0.866999983787537,
+			"light": 2,
+			"primitives": 3484014.0,
+			"texture_bytes": 144078336.0,
+			"wall_p50_ms": 0.67,
+			"wall_p95_ms": 0.985,
+			"worst_ms": 1.469
+		},
+		{
+			"all_near": false,
+			"draws": 134.0,
+			"eye": [
+				10.0,
+				5.40000009536743,
+				15.0
+			],
+			"gpu_p50_ms": 0.391000002622604,
+			"gpu_p95_ms": 0.398000001907349,
+			"light": 0,
+			"primitives": 1689782.0,
+			"texture_bytes": 144078336.0,
+			"wall_p50_ms": 0.536,
+			"wall_p95_ms": 0.829,
+			"worst_ms": 1.572
+		},
+		{
+			"all_near": false,
+			"draws": 134.0,
+			"eye": [
+				10.0,
+				5.40000009536743,
+				15.0
+			],
+			"gpu_p50_ms": 0.391000002622604,
+			"gpu_p95_ms": 0.400999993085861,
+			"light": 2,
+			"primitives": 1689782.0,
+			"texture_bytes": 144078336.0,
+			"wall_p50_ms": 0.544,
+			"wall_p95_ms": 0.79,
+			"worst_ms": 1.288
+		},
+		{
+			"all_near": true,
+			"draws": 26.0,
+			"eye": [
+				0.0,
+				1.62000000476837,
+				-4.0
+			],
+			"gpu_p50_ms": 0.270000010728836,
+			"gpu_p95_ms": 0.277999997138977,
+			"light": 0,
+			"primitives": 1365326.0,
+			"texture_bytes": 144078336.0,
+			"wall_p50_ms": 0.425,
+			"wall_p95_ms": 0.669,
+			"worst_ms": 1.344
+		},
+		{
+			"all_near": true,
+			"draws": 26.0,
+			"eye": [
+				0.0,
+				1.62000000476837,
+				-4.0
+			],
+			"gpu_p50_ms": 0.270000010728836,
+			"gpu_p95_ms": 0.273000001907349,
+			"light": 2,
+			"primitives": 1365326.0,
+			"texture_bytes": 144078336.0,
+			"wall_p50_ms": 0.399,
+			"wall_p95_ms": 0.676,
+			"worst_ms": 1.179
+		},
+		{
+			"all_near": false,
+			"draws": 26.0,
+			"eye": [
+				0.0,
+				1.62000000476837,
+				-4.0
+			],
+			"gpu_p50_ms": 0.238999992609024,
+			"gpu_p95_ms": 0.241999998688698,
+			"light": 0,
+			"primitives": 879558.0,
+			"texture_bytes": 144078336.0,
+			"wall_p50_ms": 0.368,
+			"wall_p95_ms": 0.601,
+			"worst_ms": 1.156
+		},
+		{
+			"all_near": false,
+			"draws": 26.0,
+			"eye": [
+				0.0,
+				1.62000000476837,
+				-4.0
+			],
+			"gpu_p50_ms": 0.239999994635582,
+			"gpu_p95_ms": 0.246999993920326,
+			"light": 2,
+			"primitives": 879558.0,
+			"texture_bytes": 144078336.0,
+			"wall_p50_ms": 0.403,
+			"wall_p95_ms": 0.659,
+			"worst_ms": 1.099
+		}
+	],
+	"device": "NVIDIA GeForce RTX 5090",
+	"msaa": 4,
+	"samples": 300,
+	"size": [
+		1280,
+		900
+	],
+	"vsync": false,
+	"warmup": 90
+}

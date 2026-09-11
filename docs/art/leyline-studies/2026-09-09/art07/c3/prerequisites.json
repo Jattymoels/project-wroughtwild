@@ -1,0 +1,12 @@
+{
+  "b1": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02",
+    "manifest_sha256": "00a244253614b8c58213a15f929e48fd65c9aec0bb3489600646497bfcbaf7d0",
+    "verified_files": 1533
+  },
+  "b2": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff",
+    "manifest_sha256": "bb4a50ea353a1fdb964542e46afc3f1549f7e45b3b004ab7b4130ae1a7d50e62",
+    "verified_files": 274
+  }
+}

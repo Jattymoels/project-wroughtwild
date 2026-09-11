@@ -1,0 +1,205 @@
+{
+  "models": [
+    {
+      "source": "corkbark-12-lod0.glb",
+      "source_sha256": "be6bc02188ed60f631d3497e88fee1492cd1c5b6d49abd9a8ae9f2cacadf296f",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 1374660
+    },
+    {
+      "source": "corkbark-12-lod1.glb",
+      "source_sha256": "c2d15f5a7c30b856c665987e60ce20e39294345e3673b50bb656e0bded3067dd",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 774852
+    },
+    {
+      "source": "corkbark-12-lod2.glb",
+      "source_sha256": "ddcca017a2cfc5f31854121d5f4a8a13b7d036dbb568e805baa20b77a2782acf",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 598500
+    },
+    {
+      "source": "corkbark-18-lod0.glb",
+      "source_sha256": "6eefb006399529b1be45e07578617c09061dff6e0fae861c83f9b9c1c958bc22",
+      "geometry_views_preserved": 22,
+      "geometry_bytes": 1794660
+    },
+    {
+      "source": "corkbark-18-lod1.glb",
+      "source_sha256": "017436e02d422f5fbd2335818fcb11a1cdc7ac8d466b5ca2ede8ced9c5522599",
+      "geometry_views_preserved": 22,
+      "geometry_bytes": 894948
+    },
+    {
+      "source": "corkbark-18-lod2.glb",
+      "source_sha256": "f239b83638a2bb32e1e4e6a4851857430d6420f6481b1b2c520fefa45f3e33d2",
+      "geometry_views_preserved": 22,
+      "geometry_bytes": 630420
+    },
+    {
+      "source": "corkbark-6-lod0.glb",
+      "source_sha256": "dc42ed99140077a556d5248cc903617ea98422a0bebe7a63113ff3954e23e9c7",
+      "geometry_views_preserved": 14,
+      "geometry_bytes": 954660
+    },
+    {
+      "source": "corkbark-6-lod1.glb",
+      "source_sha256": "e8012e9676aeb683fa408efe219cd040ec913dcc266e6933b3594823df32b3a9",
+      "geometry_views_preserved": 14,
+      "geometry_bytes": 654756
+    },
+    {
+      "source": "corkbark-6-lod2.glb",
+      "source_sha256": "3d30adae3eef9e51fbe280ab4d98b8f5fc326ee3639800675291f5e94c6b18d5",
+      "geometry_views_preserved": 14,
+      "geometry_bytes": 566580
+    },
+    {
+      "source": "fern-sparse.glb",
+      "source_sha256": "ff8bfe2324fe7b77c870d0a10f6ae4463e45ed9ad6e89848691ffb21b6957c39",
+      "geometry_views_preserved": 10,
+      "geometry_bytes": 109680
+    },
+    {
+      "source": "grass-edge.glb",
+      "source_sha256": "27b96013bc41c6c1c797eeaea3f2f490f32c6525f45e8b5079cfea155cc6b100",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 8568
+    },
+    {
+      "source": "leaf-litter.glb",
+      "source_sha256": "98c8664c550640595fbe5eeb54b2a2a93720a21561dec620b2f507a7a0c19b00",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 12800
+    },
+    {
+      "source": "moss.glb",
+      "source_sha256": "94d5472166b17940d51db1bdc452e6273828af1db14ac60fb806058d2c5de70b",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 154968
+    },
+    {
+      "source": "recovered-corkbark.glb",
+      "source_sha256": "bd42ffb7d935248991400f074a2cf3be7cc5dbbc2ddd9a9dd3247d478f1e7288",
+      "geometry_views_preserved": 4,
+      "geometry_bytes": 120096
+    },
+    {
+      "source": "recovered-resinheart.glb",
+      "source_sha256": "5b00e0baedbfa9e8564e7b70a214edb6abcca323b76a44c04c6b17f92a51e07b",
+      "geometry_views_preserved": 8,
+      "geometry_bytes": 10344
+    },
+    {
+      "source": "resinheart-altered-hero.glb",
+      "source_sha256": "43c4fcd32bba26a6638add932e6c1d7dc4a93874a7c017ea5661931c825cef11",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 25325498
+    },
+    {
+      "source": "resinheart-altered-lod0.glb",
+      "source_sha256": "95c485819ca4415d32b18a51014df66d8950125950acfd8693f0c6e31c6f9c4a",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 17507704
+    },
+    {
+      "source": "resinheart-altered-lod1.glb",
+      "source_sha256": "70f3fdb734449497a9dc0636a47d698be4a4631b9e72574da68fdfe29fff3299",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 11305276
+    },
+    {
+      "source": "resinheart-altered-lod2.glb",
+      "source_sha256": "b9213caa4e30c6e47c8fa297a1b15ed543e57d8c31bff6973208582cb5f0d274",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 2014560
+    },
+    {
+      "source": "resinheart-lod0.glb",
+      "source_sha256": "7e238900376987fdcc0d894de44a44a74cbaa1b38201e6fcc757138dcd32b2bf",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 17507704
+    },
+    {
+      "source": "resinheart-lod1.glb",
+      "source_sha256": "0c88a56a992f9e03865f09621a3373999d71afb8f768e5b8311c809e9f5e51e5",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 11305276
+    },
+    {
+      "source": "resinheart-lod2.glb",
+      "source_sha256": "09ca9c51f362151cf41e57973251fdf2e54aa25e45c3ec9f700d4ef89e1c90fe",
+      "geometry_views_preserved": 18,
+      "geometry_bytes": 2014560
+    },
+    {
+      "source": "resinheart-stump.glb",
+      "source_sha256": "935cedf50754de3bddc723730828ba53cb1753a704ee42872a5649c639e087f8",
+      "geometry_views_preserved": 5,
+      "geometry_bytes": 503264
+    }
+  ],
+  "unique_textures": {
+    "228bb426b981840fce14dbaca4c0b4a7c3a31d9cc784e87202bc1d324bf83c1a": {
+      "size": [
+        512,
+        512
+      ],
+      "source_size": [
+        512,
+        512
+      ],
+      "encoded_bytes": 195409,
+      "rgba8_mip_bytes": 1398101
+    },
+    "7d77694db618dc74c4b0652e1750b0fb8b72c47b19954887704714a2ce690005": {
+      "size": [
+        512,
+        512
+      ],
+      "source_size": [
+        512,
+        512
+      ],
+      "encoded_bytes": 352453,
+      "rgba8_mip_bytes": 1398101
+    },
+    "438c2c916f24416039fe6ab76a0d31cef7f2bea99f719b2cb3d215376545d3c8": {
+      "size": [
+        512,
+        512
+      ],
+      "source_size": [
+        512,
+        512
+      ],
+      "encoded_bytes": 468070,
+      "rgba8_mip_bytes": 1398101
+    },
+    "b51994d07b5b3cb00ed6a55de910d77066abfa808c2d16811b5949096fe3abe1": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 2041859,
+      "rgba8_mip_bytes": 5592405
+    },
+    "78ce5273206e9172785dca1f28e014d92fc0b6d0c528843dbd95d99b0df5774e": {
+      "size": [
+        1024,
+        1024
+      ],
+      "source_size": [
+        1024,
+        1024
+      ],
+      "encoded_bytes": 1140115,
+      "rgba8_mip_bytes": 5592405
+    }
+  },
+  "texture_rgba8_mip_bytes": 15379113
+}

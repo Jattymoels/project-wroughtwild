@@ -1,0 +1,470 @@
+{
+  "assets": {
+    "resinheart-lod0": {
+      "triangles": 219474,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -3.957374334335327,
+          -2.0495433807373047,
+          -0.8981922268867493
+        ],
+        [
+          4.2229695320129395,
+          4.195652008056641,
+          11.101316452026367
+        ]
+      ],
+      "sha256": "7e238900376987fdcc0d894de44a44a74cbaa1b38201e6fcc757138dcd32b2bf"
+    },
+    "resinheart-altered-lod0": {
+      "triangles": 219474,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -3.957374334335327,
+          -2.0495433807373047,
+          -0.8981922268867493
+        ],
+        [
+          4.2229695320129395,
+          4.195652008056641,
+          11.101316452026367
+        ]
+      ],
+      "sha256": "95c485819ca4415d32b18a51014df66d8950125950acfd8693f0c6e31c6f9c4a"
+    },
+    "resinheart-lod1": {
+      "triangles": 98032,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -3.925546884536743,
+          -2.018589496612549,
+          -0.8631210327148438
+        ],
+        [
+          4.216293811798096,
+          4.197404861450195,
+          11.075511932373047
+        ]
+      ],
+      "sha256": "0c88a56a992f9e03865f09621a3373999d71afb8f768e5b8311c809e9f5e51e5"
+    },
+    "resinheart-altered-lod1": {
+      "triangles": 98032,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -3.925546884536743,
+          -2.018589496612549,
+          -0.8631210327148438
+        ],
+        [
+          4.216293811798096,
+          4.197404861450195,
+          11.075511932373047
+        ]
+      ],
+      "sha256": "70f3fdb734449497a9dc0636a47d698be4a4631b9e72574da68fdfe29fff3299"
+    },
+    "resinheart-lod2": {
+      "triangles": 13800,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -3.923431158065796,
+          -2.006492853164673,
+          -0.4848024845123291
+        ],
+        [
+          4.21370267868042,
+          4.202667236328125,
+          11.07744026184082
+        ]
+      ],
+      "sha256": "09ca9c51f362151cf41e57973251fdf2e54aa25e45c3ec9f700d4ef89e1c90fe"
+    },
+    "resinheart-altered-lod2": {
+      "triangles": 13800,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -3.923431158065796,
+          -2.006492853164673,
+          -0.4848024845123291
+        ],
+        [
+          4.21370267868042,
+          4.202667236328125,
+          11.07744026184082
+        ]
+      ],
+      "sha256": "b9213caa4e30c6e47c8fa297a1b15ed543e57d8c31bff6973208582cb5f0d274"
+    },
+    "resinheart-stump": {
+      "triangles": 8904,
+      "surfaces": 2,
+      "bounds": [
+        [
+          -0.3888366222381592,
+          -0.39175254106521606,
+          -0.8981922268867493
+        ],
+        [
+          0.39122048020362854,
+          0.39139294624328613,
+          0.5
+        ]
+      ],
+      "sha256": "935cedf50754de3bddc723730828ba53cb1753a704ee42872a5649c639e087f8"
+    },
+    "corkbark-18-lod0": {
+      "triangles": 74007,
+      "surfaces": 5,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.37667474150657654,
+          0.00809940043836832
+        ],
+        [
+          0.7820000052452087,
+          0.37665867805480957,
+          0.5966774821281433
+        ]
+      ],
+      "sha256": "6eefb006399529b1be45e07578617c09061dff6e0fae861c83f9b9c1c958bc22"
+    },
+    "corkbark-12-lod0": {
+      "triangles": 54919,
+      "surfaces": 4,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.37667474150657654,
+          0.008219459094107151
+        ],
+        [
+          0.699999988079071,
+          0.3766545057296753,
+          0.5966637134552002
+        ]
+      ],
+      "sha256": "be6bc02188ed60f631d3497e88fee1492cd1c5b6d49abd9a8ae9f2cacadf296f"
+    },
+    "corkbark-6-lod0": {
+      "triangles": 35831,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.37567803263664246,
+          0.008337090723216534
+        ],
+        [
+          0.699999988079071,
+          0.3766545057296753,
+          0.5940662622451782
+        ]
+      ],
+      "sha256": "dc42ed99140077a556d5248cc903617ea98422a0bebe7a63113ff3954e23e9c7"
+    },
+    "corkbark-18-lod1": {
+      "triangles": 33111,
+      "surfaces": 5,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.37660640478134155,
+          0.008219366893172264
+        ],
+        [
+          0.7820000052452087,
+          0.3765958845615387,
+          0.5966810584068298
+        ]
+      ],
+      "sha256": "017436e02d422f5fbd2335818fcb11a1cdc7ac8d466b5ca2ede8ced9c5522599"
+    },
+    "corkbark-12-lod1": {
+      "triangles": 27655,
+      "surfaces": 4,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.37660640478134155,
+          0.008219366893172264
+        ],
+        [
+          0.699999988079071,
+          0.37651315331459045,
+          0.5966810584068298
+        ]
+      ],
+      "sha256": "c2d15f5a7c30b856c665987e60ce20e39294345e3673b50bb656e0bded3067dd"
+    },
+    "corkbark-6-lod1": {
+      "triangles": 22199,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.374678373336792,
+          0.009097243659198284
+        ],
+        [
+          0.699999988079071,
+          0.37651315331459045,
+          0.5940662622451782
+        ]
+      ],
+      "sha256": "e8012e9676aeb683fa408efe219cd040ec913dcc266e6933b3594823df32b3a9"
+    },
+    "corkbark-18-lod2": {
+      "triangles": 21087,
+      "surfaces": 5,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.37652140855789185,
+          0.008182279765605927
+        ],
+        [
+          0.7820000052452087,
+          0.3773522675037384,
+          0.5964677929878235
+        ]
+      ],
+      "sha256": "f239b83638a2bb32e1e4e6a4851857430d6420f6481b1b2c520fefa45f3e33d2"
+    },
+    "corkbark-12-lod2": {
+      "triangles": 19639,
+      "surfaces": 4,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.37652140855789185,
+          0.008182279765605927
+        ],
+        [
+          0.699999988079071,
+          0.3771531879901886,
+          0.5964677929878235
+        ]
+      ],
+      "sha256": "ddcca017a2cfc5f31854121d5f4a8a13b7d036dbb568e805baa20b77a2782acf"
+    },
+    "corkbark-6-lod2": {
+      "triangles": 18191,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -0.7900000214576721,
+          -0.3708789050579071,
+          0.009756509214639664
+        ],
+        [
+          0.699999988079071,
+          0.3771531879901886,
+          0.5940662622451782
+        ]
+      ],
+      "sha256": "3d30adae3eef9e51fbe280ab4d98b8f5fc326ee3639800675291f5e94c6b18d5"
+    },
+    "recovered-corkbark": {
+      "triangles": 5456,
+      "surfaces": 1,
+      "bounds": [
+        [
+          -0.2633333206176758,
+          -0.37660640478134155,
+          0.008219366893172264
+        ],
+        [
+          0.2553333342075348,
+          0.37407875061035156,
+          0.5966810584068298
+        ]
+      ],
+      "sha256": "bd42ffb7d935248991400f074a2cf3be7cc5dbbc2ddd9a9dd3247d478f1e7288"
+    },
+    "recovered-resinheart": {
+      "triangles": 188,
+      "surfaces": 2,
+      "bounds": [
+        [
+          -0.3499999940395355,
+          -0.1899999976158142,
+          -1.2516975012033527e-08
+        ],
+        [
+          0.3499999940395355,
+          0.1899999976158142,
+          0.3800000250339508
+        ]
+      ],
+      "sha256": "5b00e0baedbfa9e8564e7b70a214edb6abcca323b76a44c04c6b17f92a51e07b"
+    },
+    "resinheart-altered-hero": {
+      "triangles": 219473,
+      "surfaces": 3,
+      "bounds": [
+        [
+          -4.09669828414917,
+          -3.601966619491577,
+          -0.8981922268867493
+        ],
+        [
+          4.218193531036377,
+          4.200547218322754,
+          11.102416038513184
+        ]
+      ],
+      "sha256": "43c4fcd32bba26a6638add932e6c1d7dc4a93874a7c017ea5661931c825cef11"
+    },
+    "fern-sparse": {
+      "triangles": 2616,
+      "surfaces": 2,
+      "bounds": [
+        [
+          -0.792550265789032,
+          -0.629948079586029,
+          0.00596486683934927
+        ],
+        [
+          0.7643262147903442,
+          0.5347049832344055,
+          0.7427817583084106
+        ]
+      ],
+      "sha256": "ff8bfe2324fe7b77c870d0a10f6ae4463e45ed9ad6e89848691ffb21b6957c39"
+    },
+    "moss": {
+      "triangles": 3080,
+      "surfaces": 1,
+      "bounds": [
+        [
+          -0.49203529953956604,
+          -0.39622440934181213,
+          0.004000000189989805
+        ],
+        [
+          0.45127061009407043,
+          0.40069225430488586,
+          0.05582541227340698
+        ]
+      ],
+      "sha256": "94d5472166b17940d51db1bdc452e6273828af1db14ac60fb806058d2c5de70b"
+    },
+    "leaf-litter": {
+      "triangles": 256,
+      "surfaces": 1,
+      "bounds": [
+        [
+          -0.5014551877975464,
+          -0.5043590664863586,
+          0.0010243005817756057
+        ],
+        [
+          0.46862897276878357,
+          0.42364123463630676,
+          0.024044005200266838
+        ]
+      ],
+      "sha256": "98c8664c550640595fbe5eeb54b2a2a93720a21561dec620b2f507a7a0c19b00"
+    },
+    "grass-edge": {
+      "triangles": 108,
+      "surfaces": 1,
+      "bounds": [
+        [
+          -0.4062219262123108,
+          -0.42312467098236084,
+          0.0010000000474974513
+        ],
+        [
+          0.4159349799156189,
+          0.5578914880752563,
+          0.23855261504650116
+        ]
+      ],
+      "sha256": "27b96013bc41c6c1c797eeaea3f2f490f32c6525f45e8b5079cfea155cc6b100"
+    }
+  },
+  "lineage": [
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-a-lod0.glb",
+      "sha256": "1d0f5379d7265ea8f481465104cdd0a2a6e605bbb1c62242eaeb8512763cce6c"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-a-lod1.glb",
+      "sha256": "d7a857fd2d814f1c9d8e7b34043df16a1ba34ac3e122f379160d22d9042bc5aa"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-a-lod2.glb",
+      "sha256": "6eec6ec10807fb051fa9995b818d7bbb002cf110bf36c1603b3561f587162971"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-deadwood.glb",
+      "sha256": "3760eb5e93b25166f2c746f37239c4465f009050f11afe150b10e39625f24852"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02\\models\\broadleaf\\broadleaf-altered-lod0.glb",
+      "sha256": "1fd65b37e449f36679aeeffe89714ca079152fc1dba6d931e26e6750e4cd0682"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\fern-sparse-lod2.glb",
+      "sha256": "f14252ad2c49f7ab22fd75999cf097d33dd6fbde1d5cdd3fe7f38698236fa7bd"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\moss-lod2.glb",
+      "sha256": "592a987d41b359889a32ed2209ab0627e1dffc339925ad2ec575e62a28ac462d"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\leaf-litter-lod2.glb",
+      "sha256": "c1bec517f55103ed80880285ec87e51a56506d10196158b907bd3d8a60cfed74"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff\\review\\assets\\grass-edge-lod2.glb",
+      "sha256": "cf706e3c906ce7ee2ab14013cbb256c9fce143e22b0a94eabd3921abcc949ab0"
+    }
+  ],
+  "scar": {
+    "0": {
+      "max_depth_m": 0.06492992708386652,
+      "vertices": 1157
+    },
+    "1": {
+      "max_depth_m": 0.061365643511177057,
+      "vertices": 559
+    },
+    "2": {
+      "max_depth_m": 0.06347435525577845,
+      "vertices": 308
+    }
+  },
+  "transform": {
+    "source_burial_m": 0.65,
+    "vertical_scale": 1.4,
+    "body_radius_m": 0.392,
+    "crown_start_m": 4.55,
+    "crown_full_m": 6.2,
+    "scar_depth_m": 0.065,
+    "lod_m": [
+      9,
+      27
+    ]
+  },
+  "full_width_hero_inherited_scar_depth_m": 0.13452500653213126,
+  "crown_resnap_m": {
+    "0": [
+      0.011878393504814625,
+      0.07514106392908214
+    ],
+    "1": [
+      0.09380510258080413,
+      0.08864080366783687
+    ]
+  }
+}
