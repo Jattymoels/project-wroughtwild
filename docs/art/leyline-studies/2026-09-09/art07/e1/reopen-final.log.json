@@ -1,0 +1,22 @@
+{
+  "child_pid": 37040,
+  "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+  "arguments": [
+    "--background",
+    "--threads",
+    "8",
+    "--python-exit-code",
+    "1",
+    "--python",
+    "tools/wroughtwild-art07/e1/blender_stations.py",
+    "--",
+    "--reopen",
+    "build/art07/e1/v03/models/source/e1_stations.blend",
+    "build/art07/e1/v03/reopen-v02"
+  ],
+  "started": "2026-09-11T16:24:23.7772892+09:30",
+  "wrapper_pid": 17872,
+  "seconds": 42.605351,
+  "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+  "exit_code": 0
+}

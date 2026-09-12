@@ -1,0 +1,155 @@
+{
+  "slice": "ART-07E1",
+  "scope": [
+    "workbench",
+    "mason_yard"
+  ],
+  "base": "bbcb3a7dfd235e8f803141ccb57c38e03d6c1708",
+  "handoff": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\v03\\e1-handoff-v02",
+  "manifest_sha256": "e5ea047846fff53c72c225c4a88bec04ac9aea77bc9635a3fd238670b8948da6",
+  "payload_files": 1866,
+  "payload_bytes": 265904623,
+  "master_sha256": "e6b32b1fe553381b450cc9b1979c2b6d8168343a3d858e55d2d57cf3d9e7dda4",
+  "runtime": {
+    "workbench_near": {
+      "triangles": 4732,
+      "surfaces": 2,
+      "bytes": 3897664,
+      "sha256": "67ba0a152bb4dbc3eba81bf7c6f32a25c0ec648be6e70445ef9e76017c8c2c34",
+      "bounds_blender": [
+        [
+          -0.44999998807907104,
+          -0.47200000286102295,
+          0.0
+        ],
+        [
+          0.44999998807907104,
+          0.3974999785423279,
+          1.090499997138977
+        ]
+      ],
+      "generator": "Khronos glTF Blender I/O v4.5.51"
+    },
+    "mason_yard_near": {
+      "triangles": 7360,
+      "surfaces": 6,
+      "bytes": 5255996,
+      "sha256": "a623749c71a22e0c4e8bf06f7851da4a55ef8d9ebb72c46450069b060daff002",
+      "bounds_blender": [
+        [
+          -0.44699999690055847,
+          -0.4545000195503235,
+          0.0
+        ],
+        [
+          0.44699999690055847,
+          0.4300000071525574,
+          1.0850000381469727
+        ]
+      ],
+      "generator": "Khronos glTF Blender I/O v4.5.51"
+    },
+    "workbench_middle": {
+      "triangles": 1832,
+      "surfaces": 2,
+      "bytes": 3432636,
+      "sha256": "3a54e2d18a537d4c00861eb92cd0382ff9aba355b077290195251dac69c26ada",
+      "bounds_blender": [
+        [
+          -0.44999998807907104,
+          -0.47200000286102295,
+          0.0
+        ],
+        [
+          0.44999998807907104,
+          0.3974999785423279,
+          1.090499997138977
+        ]
+      ],
+      "generator": "Khronos glTF Blender I/O v4.5.51"
+    },
+    "mason_yard_middle": {
+      "triangles": 2400,
+      "surfaces": 6,
+      "bytes": 4580588,
+      "sha256": "feef1361f36a8c2fcf2d8de3f9c3f23e37a7504c79b995787a3e379b8eb22c97",
+      "bounds_blender": [
+        [
+          -0.44699999690055847,
+          -0.4545000195503235,
+          0.0
+        ],
+        [
+          0.44699999690055847,
+          0.4300000071525574,
+          1.0850000381469727
+        ]
+      ],
+      "generator": "Khronos glTF Blender I/O v4.5.51"
+    },
+    "workbench_far": {
+      "triangles": 1064,
+      "surfaces": 2,
+      "bytes": 3316136,
+      "sha256": "53f9688591f9fca8f508fc0b8b6d5b69193ddcfd64721dbd095303d67d1b5664",
+      "bounds_blender": [
+        [
+          -0.44999998807907104,
+          -0.47200000286102295,
+          0.0
+        ],
+        [
+          0.44999998807907104,
+          0.3974999785423279,
+          1.090499997138977
+        ]
+      ],
+      "generator": "Khronos glTF Blender I/O v4.5.51"
+    },
+    "mason_yard_far": {
+      "triangles": 1508,
+      "surfaces": 6,
+      "bytes": 4481604,
+      "sha256": "14b7e9bdc05ff4d77d5f7cc122705a6d5bec4edadbcf4feeff76c64bc0095e12",
+      "bounds_blender": [
+        [
+          -0.44699999690055847,
+          -0.4545000195503235,
+          0.0
+        ],
+        [
+          0.44699999690055847,
+          0.4300000071525574,
+          1.0850000381469727
+        ]
+      ],
+      "generator": "Khronos glTF Blender I/O v4.5.51"
+    }
+  },
+  "dependencies": {
+    "d1": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d1\\worktree\\build\\art07\\d1\\v02\\core-lattice-handoff-v01",
+      "manifest_sha256": "a3e92f9692e05eae547290cd6520242f91dfbda31d9236eb6d12842f0453b85a",
+      "published_commit": "58d3223",
+      "verified_files": 1597
+    },
+    "d4": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-d4\\build\\art07\\d4\\h04",
+      "manifest_sha256": "aaa0316f108cdb1de0ed27cc3a40fac7a07574497c14486e88b18fa73dfbda59",
+      "published_commit": "b1abc42",
+      "verified_files": 196
+    },
+    "d5": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d5\\worktree\\build\\art07\\d5\\v03\\d5-handoff",
+      "manifest_sha256": "79532aa924414715fbbde0bf714280fd75d40c9f21cc62cb44c0ce12c3834844",
+      "published_commit": "68b7ca1152fc543449316c8187efb1ce3abd0382",
+      "verified_files": 290
+    }
+  },
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02",
+  "owner_visual_acceptance": "pending",
+  "publication": "worker branch only; publisher integrates main",
+  "note": "This Git handoff index is outside the sealed payload to avoid a self-referencing package hash.",
+  "status": "technically delivered",
+  "fresh_verification_sha256": "92fe9d0c94316b506c97f625f9963557cc6b4f4d07c3eea884c3d443c9e72697"
+}

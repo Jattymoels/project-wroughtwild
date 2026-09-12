@@ -1,0 +1,48 @@
+{
+	"device": "NVIDIA GeForce RTX 5090",
+	"renderer": "forward_plus",
+	"resolution": [
+		1440,
+		900
+	],
+	"rows": [
+		{
+			"draws": 927.0,
+			"level": "baseline",
+			"p50_ms": 0.558,
+			"p95_ms": 1.122,
+			"primitives": 168366.0,
+			"texture_bytes": 200570880.0,
+			"worst_ms": 2.3
+		},
+		{
+			"draws": 928.0,
+			"level": "near",
+			"p50_ms": 0.531,
+			"p95_ms": 0.678,
+			"primitives": 541758.0,
+			"texture_bytes": 200570880.0,
+			"worst_ms": 1.469
+		},
+		{
+			"draws": 928.0,
+			"level": "middle",
+			"p50_ms": 0.567,
+			"p95_ms": 1.893,
+			"primitives": 253838.0,
+			"texture_bytes": 200570880.0,
+			"worst_ms": 3.385
+		},
+		{
+			"draws": 928.0,
+			"level": "far",
+			"p50_ms": 0.544,
+			"p95_ms": 1.118,
+			"primitives": 193186.0,
+			"texture_bytes": 200570880.0,
+			"worst_ms": 2.523
+		}
+	],
+	"samples": 360,
+	"warmup": 132
+}

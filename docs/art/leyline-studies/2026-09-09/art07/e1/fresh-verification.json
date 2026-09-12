@@ -1,0 +1,224 @@
+{
+  "canonical": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\v03\\e1-handoff-v02",
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02",
+  "manifest_sha256": "e5ea047846fff53c72c225c4a88bec04ac9aea77bc9635a3fd238670b8948da6",
+  "canonical_files_unchanged": 1866,
+  "packed_images": 12,
+  "independent_glb_imports": 6,
+  "checks": {
+    "headless/checks": {
+      "checks": 304,
+      "failures": 0,
+      "source": "check.log"
+    },
+    "headless/restore": {
+      "checks": 132,
+      "failures": 0,
+      "source": "restore.log"
+    },
+    "forward_plus/checks": {
+      "checks": 304,
+      "failures": 0,
+      "renderer": "forward_plus",
+      "scope": "actual paid transactions on fixed inspection stock, not owner gameplay"
+    },
+    "forward_plus/restore": {
+      "checks": 132,
+      "failures": 0,
+      "renderer": "forward_plus",
+      "scope": "actual paid transactions on fixed inspection stock, not owner gameplay"
+    },
+    "gl_compatibility/checks": {
+      "checks": 304,
+      "failures": 0,
+      "renderer": "gl_compatibility",
+      "scope": "actual paid transactions on fixed inspection stock, not owner gameplay"
+    },
+    "gl_compatibility/restore": {
+      "checks": 132,
+      "failures": 0,
+      "renderer": "gl_compatibility",
+      "scope": "actual paid transactions on fixed inspection stock, not owner gameplay"
+    }
+  },
+  "render_comparisons": {
+    "blender": {
+      "frames": 16,
+      "identical_sha256": 0,
+      "identical_decoded_pixels": 16
+    },
+    "godot": {
+      "frames": 334,
+      "identical_sha256": 333,
+      "identical_decoded_pixels": 333
+    }
+  },
+  "processes": {
+    "import": {
+      "exit_code": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+      "seconds": 11.4626368,
+      "started": "2026-09-12T12:47:47.2515387+09:30",
+      "wrapper_pid": 13012,
+      "arguments": [
+        "--headless",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\review\\game",
+        "--editor",
+        "--import"
+      ],
+      "child_pid": 35784
+    },
+    "check": {
+      "exit_code": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+      "seconds": 5.9429053,
+      "started": "2026-09-12T12:47:58.8439228+09:30",
+      "wrapper_pid": 13012,
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\review\\game",
+        "res://e1/review.tscn",
+        "--",
+        "--check"
+      ],
+      "child_pid": 44204
+    },
+    "restore": {
+      "exit_code": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+      "seconds": 2.2424229,
+      "started": "2026-09-12T12:48:04.8880713+09:30",
+      "wrapper_pid": 13012,
+      "arguments": [
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\review\\game",
+        "res://e1/review.tscn",
+        "--",
+        "--restore"
+      ],
+      "child_pid": 26700
+    },
+    "blender": {
+      "exit_code": 0,
+      "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+      "seconds": 52.6312651,
+      "started": "2026-09-12T12:48:22.2289890+09:30",
+      "wrapper_pid": 13012,
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\recipes\\blender_stations.py",
+        "--",
+        "--reopen",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\source\\e1_stations.blend",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\verified-blender"
+      ],
+      "child_pid": 19800
+    },
+    "forward_plus-capture": {
+      "exit_code": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+      "seconds": 14.7393445,
+      "started": "2026-09-12T12:49:14.9819411+09:30",
+      "wrapper_pid": 13012,
+      "arguments": [
+        "--fixed-fps",
+        "60",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\review\\game",
+        "--rendering-method",
+        "forward_plus",
+        "res://e1/review.tscn",
+        "--",
+        "--capture"
+      ],
+      "child_pid": 9412
+    },
+    "forward_plus-restore": {
+      "exit_code": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+      "seconds": 3.6149534,
+      "started": "2026-09-12T12:49:29.8422892+09:30",
+      "wrapper_pid": 13012,
+      "arguments": [
+        "--fixed-fps",
+        "60",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\review\\game",
+        "--rendering-method",
+        "forward_plus",
+        "res://e1/review.tscn",
+        "--",
+        "--restore",
+        "--capture"
+      ],
+      "child_pid": 3388
+    },
+    "gl_compatibility-capture": {
+      "exit_code": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+      "seconds": 17.0503396,
+      "started": "2026-09-12T12:49:33.5556795+09:30",
+      "wrapper_pid": 13012,
+      "arguments": [
+        "--fixed-fps",
+        "60",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\review\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "res://e1/review.tscn",
+        "--",
+        "--capture"
+      ],
+      "child_pid": 23248
+    },
+    "gl_compatibility-restore": {
+      "exit_code": 0,
+      "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\u",
+      "seconds": 3.854985,
+      "started": "2026-09-12T12:49:50.6836309+09:30",
+      "wrapper_pid": 13012,
+      "arguments": [
+        "--fixed-fps",
+        "60",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\f02\\review\\game",
+        "--rendering-method",
+        "gl_compatibility",
+        "res://e1/review.tscn",
+        "--",
+        "--restore",
+        "--capture"
+      ],
+      "child_pid": 26620
+    }
+  }
+}
