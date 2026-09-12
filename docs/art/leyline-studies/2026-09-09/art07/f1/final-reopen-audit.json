@@ -1,0 +1,527 @@
+{
+  "packed_images": [
+    {
+      "name": "d4_wood_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "packed": true,
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "d4_wood_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "d4_wood_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "d4_wood_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "d4_wood_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "d4_wood_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "d4_woven_reed_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "d4_woven_reed_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "d4_woven_reed_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "d6_iron_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "d6_iron_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "d6_iron_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "Image_0",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "Image_0.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "colorspace": "sRGB"
+    },
+    {
+      "name": "Image_1",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    },
+    {
+      "name": "Image_1.001",
+      "size": [
+        2048,
+        2048
+      ],
+      "packed": true,
+      "colorspace": "Non-Color"
+    }
+  ],
+  "exports": [
+    {
+      "file": "lantern_lamp.glb",
+      "triangles": 23648,
+      "surfaces": 4,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "Housing",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Heart",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.25,
+          -0.21699999272823334,
+          0.0
+        ],
+        [
+          0.25,
+          0.21699999272823334,
+          1.0449999570846558
+        ]
+      ],
+      "sha256": "5508ff9ec6d2f900b6bb939b3e5d834029a4bac00aa074e7fcce5ac70e813b99"
+    },
+    {
+      "file": "lanternheart_far.glb",
+      "triangles": 2200,
+      "surfaces": 1,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "lanternheart_far",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.16144400835037231,
+          -0.14905615150928497,
+          0.00100415397901088
+        ],
+        [
+          0.16187435388565063,
+          0.15376336872577667,
+          0.6009471416473389
+        ]
+      ],
+      "sha256": "72171b2b42f1a25bd4a686d9f175fcf3f0c358e98f222f1af942c52cad2ecfe7"
+    },
+    {
+      "file": "lanternheart_middle.glb",
+      "triangles": 6000,
+      "surfaces": 1,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "lanternheart_middle",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.16203314065933228,
+          -0.14898736774921417,
+          0.0005159317515790462
+        ],
+        [
+          0.16201479732990265,
+          0.15466290712356567,
+          0.5991532802581787
+        ]
+      ],
+      "sha256": "dee77f66b6443d6033cfe0caa0987d9e0f95a688623a7d5176e347f464af6ec4"
+    },
+    {
+      "file": "lanternheart_near.glb",
+      "triangles": 14000,
+      "surfaces": 1,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "lanternheart_near",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.16194158792495728,
+          -0.14906807243824005,
+          0.00013682943244930357
+        ],
+        [
+          0.16181878745555878,
+          0.15428473055362701,
+          0.5989935398101807
+        ]
+      ],
+      "sha256": "c2e3fd0917d468fc89d996cfca48eb90f16bb359961cb5eeaa0f7f72ed708500"
+    },
+    {
+      "file": "lanternheart_shell.glb",
+      "triangles": 7240,
+      "surfaces": 5,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "Husk_0",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Husk_1",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Husk_2",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Husk_3",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Husk_4",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.26027584075927734,
+          -0.2706369459629059,
+          0.10199999809265137
+        ],
+        [
+          0.2786068618297577,
+          0.2691580653190613,
+          0.7429999709129333
+        ]
+      ],
+      "sha256": "10c790aabcde4d7af2f7c4ae78801ef25c52425bcee910c7e9fda82a55cdc543"
+    },
+    {
+      "file": "lanternheart_source.glb",
+      "triangles": 21240,
+      "surfaces": 6,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "Husk_0",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Husk_1",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Husk_2",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Husk_3",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Husk_4",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "SourceHeart",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.26027584075927734,
+          -0.2706369459629059,
+          0.10199999809265137
+        ],
+        [
+          0.2786068618297577,
+          0.2691580653190613,
+          0.7429999709129333
+        ]
+      ],
+      "sha256": "1a1728e06e4aee6c06843a9a436198c39d664db2b9c393bf50b69ddb14688592"
+    },
+    {
+      "file": "stormglass_far.glb",
+      "triangles": 2000,
+      "surfaces": 2,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "stormglass_far",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.21932584047317505,
+          -0.0426996685564518,
+          -0.04273977130651474
+        ],
+        [
+          0.22045780718326569,
+          0.044024091213941574,
+          0.043302711099386215
+        ]
+      ],
+      "sha256": "cc5cd4fe2d7c72cc83cdcf0021b69c08a9b3988cc78a5af0108643ce6ffd232c"
+    },
+    {
+      "file": "stormglass_lever.glb",
+      "triangles": 18380,
+      "surfaces": 8,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "Housing.001",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Lever",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "Resonator",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.3100000023841858,
+          -0.22499999403953552,
+          0.0
+        ],
+        [
+          0.3100000023841858,
+          0.22500000894069672,
+          0.9502837061882019
+        ]
+      ],
+      "sha256": "ddfbf234cdf8256ad045b6e7fad95abb643a5e4297cc14c9d2e6fc30075dca93"
+    },
+    {
+      "file": "stormglass_middle.glb",
+      "triangles": 5000,
+      "surfaces": 2,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "stormglass_middle",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.2191811352968216,
+          -0.04271509498357773,
+          -0.042545385658741
+        ],
+        [
+          0.22000332176685333,
+          0.0440116748213768,
+          0.04253765568137169
+        ]
+      ],
+      "sha256": "c32cb5641c81a85ca3277cc1b791afa7d46678e6732492a7f1816e3d615be267"
+    },
+    {
+      "file": "stormglass_near.glb",
+      "triangles": 12000,
+      "surfaces": 2,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "stormglass_near",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.21913625299930573,
+          -0.0425143763422966,
+          -0.042545385658741
+        ],
+        [
+          0.21962954103946686,
+          0.04357583075761795,
+          0.042587894946336746
+        ]
+      ],
+      "sha256": "49592e144c7dfb7ea95dab782ec5d2e3006449d176c3d7b0fb0572e36d3d9ff7"
+    },
+    {
+      "file": "stormglass_shell.glb",
+      "triangles": 612,
+      "surfaces": 1,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "stormglass_shell",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.875,
+          -0.49960246682167053,
+          0.0
+        ],
+        [
+          0.875,
+          0.49960246682167053,
+          0.18000000715255737
+        ]
+      ],
+      "sha256": "9de717a4aed74cd2181f4248fbebb3a33b1d9813142bfcbb8e77ef3353404f05"
+    },
+    {
+      "file": "stormglass_source.glb",
+      "triangles": 12612,
+      "surfaces": 3,
+      "degenerate": 0,
+      "topology": [
+        {
+          "name": "stormglass_shell",
+          "boundary": 0,
+          "nonmanifold": 0
+        },
+        {
+          "name": "SourceTube",
+          "boundary": 0,
+          "nonmanifold": 0
+        }
+      ],
+      "bounds_blender_m": [
+        [
+          -0.875,
+          -0.49960246682167053,
+          0.0
+        ],
+        [
+          0.875,
+          0.49960246682167053,
+          0.32258790731430054
+        ]
+      ],
+      "sha256": "c329aa3960ed03735ead69932c734ea481a96c813fea971c2a5a3b0a10c0a514"
+    }
+  ]
+}

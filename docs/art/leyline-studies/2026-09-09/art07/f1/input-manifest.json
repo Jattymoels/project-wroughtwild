@@ -1,0 +1,30 @@
+{
+  "slice": "ART-07F1",
+  "selected_trellis_version": "v05",
+  "records": [
+    {
+      "subject": "lanternheart",
+      "generator": "built-in imagegen; one isolated organic component",
+      "original_image_path": "C:\\Users\\Matty\\.codex\\generated_images\\01a08f22-f80e-7cb2-9301-d7dd5589739c\\exec-81c5363d-5441-4942-b58a-c05231adaa7a.png",
+      "selected_image": "lanternheart-input-v01.png",
+      "selected_image_sha256": "2d89c50710a3562cc87409aa49560b77126bbb8dec9a66c2a4fd4ad642ce8936",
+      "prompt_file": "lanternheart-prompt-v01.txt",
+      "prompt_file_sha256": "58d03f79f12d48075aede5bd7edb674a2eb5f21c386092c3db254590ea77e34a",
+      "prompt_utf8": "Use case: stylized-concept. Wroughtwild ART-07F1 production input: ONE intact Lanternheart recovered organic core only. Full isolated object on neutral mid-grey background, three-quarter view, whole silhouette visible with breathing room, neutral soft studio light. A warm ochre pear-shaped seed heart, roughly twice as tall as wide, enclosed in tightly joined translucent papery skin with irregular wrinkled long vertical ribs, dry fibrous lower attachment nub and closed tapered crown. Recognisable botanical structure with earthy material realism, detailed parchment grain and dry curled edges closely attached to the seed. Several deep dark open longitudinal injury channels follow the ribs, containing narrow amber living light well below the broken margins; broad ordinary skin remains largely unlit. No external cage, no separate host husk, no trunk, no soil, no props, no floating leaves, no sparks, no lettering or watermark. The intact recoverable object is a closed seed body, not a human anatomical organ. Strong asymmetrical large forms and real recessed scars before fine detail. This will become the identical recovered component inside a small timber/reed lamp; no metal parts or mechanical features. A single object, no multiple views or scene.",
+      "raw_source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f1\\worktree\\build\\art07\\f1\\v05\\lanternheart\\source.glb",
+      "raw_sha256": "d6d4b0ae3e4f9fd1cdb9831e89e630c1661a46d9fb52e6b5a87ef40439da43a7"
+    },
+    {
+      "subject": "stormglass",
+      "generator": "built-in imagegen; one isolated organic component",
+      "original_image_path": "C:\\Users\\Matty\\.codex\\generated_images\\01a08f22-f80e-7cb2-9301-d7dd5589739c\\exec-a9543175-ba69-4568-af9e-c25a86d64875.png",
+      "selected_image": "stormglass-input-v01.png",
+      "selected_image_sha256": "5d98c8d04b63ab637753987e299c9275eed9b24900f38bdb2c012bf61f276e43",
+      "prompt_file": "stormglass-prompt-v01.txt",
+      "prompt_file_sha256": "e7627207d1a68d0229eadbb5f37b2ff6b912a91c9a05037e1ec615e9bb7901a9",
+      "prompt_utf8": "Use case: stylized-concept. Wroughtwild ART-07F1 production input: ONE naturally fused Stormglass lightning tube, an intact recovered resonator. Full isolated object on neutral mid-grey background, three-quarter view, whole silhouette visible with breathing room and neutral studio lighting. A single elongated, slightly bent milky ivory fulgurite tube, six times as long as its diameter, lying diagonally horizontally so the dark open near end and continuous bore are clearly visible. Rough mineral crust, irregular organic annular ribs around its length, tiny trapped dark grains, cloudy opaque glass with matte weathered surface rather than perfectly transparent glass. Thick chipped but intact rim and believable wall thickness. A few deep open dark branching longitudinal cracks penetrate the outer crust; no visible emission in this idle specimen. Strong natural asymmetry and lightning-scar character, no cut polished industrial cylinder. Both ends open, no appendages, no multiple tubes or detached splinters, no stand, no soil, no clamps, no lever, no machinery, no sparks or energetic background. This same recovered tube will be fitted into a compact timber and iron tapping lever; a later single request pulse supplies no power. No text, lettering, watermark, decorative border or extra views. Prioritize one clear hollow form and earthy material realism over fine surface noise.",
+      "raw_source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f1\\worktree\\build\\art07\\f1\\v05\\stormglass\\source.glb",
+      "raw_sha256": "00843958337ff1e5ec7401f8ba8386d130946d54f29fd7c12d3828eb78f3e6bb"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "checks": 136,
+  "failures": 0,
+  "machine_state": "{\"schema\":2,\"world_profile\":\"legacy_v1\",\"world_seed\":\"0\",\"sources\":{},\"machines\":[{\"key\":\"fixture_-4_0_0\",\"kind\":\"lantern_lamp\",\"position\":[-1.5,0,0.5],\"quarter_turns\":0,\"link\":\"\",\"span_length\":0,\"energy\":0,\"lamp_on\":true,\"moving\":false,\"at_landing\":false,\"progress\":0,\"completed_trips\":0,\"pulses\":0,\"cargo\":{},\"input\":{},\"ferrous\":{},\"remainder\":{},\"source_id\":\"\",\"forge_key\":\"\",\"forge_position\":[0,0,0],\"escrow_drive\":0,\"queued_cycles\":0,\"completed_cycles\":0,\"cycle_seconds\":0,\"feeder_paused\":false,\"output\":{},\"escrow_inputs\":{},\"escrow_fuel\":{}},{\"key\":\"fixture_4_0_0\",\"kind\":\"stormglass_lever\",\"position\":[2.5,0,0.5],\"quarter_turns\":0,\"link\":\"fixture_-4_0_0\",\"span_length\":4,\"energy\":0,\"lamp_on\":true,\"moving\":false,\"at_landing\":false,\"progress\":0,\"completed_trips\":0,\"pulses\":1,\"cargo\":{},\"input\":{},\"ferrous\":{},\"remainder\":{},\"source_id\":\"\",\"forge_key\":\"\",\"forge_position\":[0,0,0],\"escrow_drive\":0,\"queued_cycles\":0,\"completed_cycles\":0,\"cycle_seconds\":0,\"feeder_paused\":false,\"output\":{},\"escrow_inputs\":{},\"escrow_fuel\":{}}]}",
+  "mode": "capture",
+  "native_inventory": {
+    "iron_ingot": 0,
+    "lantern_lamp_kit": 0,
+    "lanternheart": 2,
+    "raw_reed": 0,
+    "stormglass": 2,
+    "stormglass_lever_kit": 0,
+    "wood": 0
+  },
+  "user_dir": "C:/Users/Matty/Dev/project-wroughtwild/build/art07/f1/worktree/build/art07/f1/u/F1Native"
+}

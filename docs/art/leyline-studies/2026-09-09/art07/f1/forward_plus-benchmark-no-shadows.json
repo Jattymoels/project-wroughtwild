@@ -1,0 +1,18 @@
+{
+  "device": "NVIDIA GeForce RTX 5090",
+  "directional_shadows": false,
+  "draws": 24.0,
+  "frames": 600,
+  "height": 900,
+  "msaa": 4,
+  "note": "Complete devices and source hosts in isolated native stage; test stock, no generation/capture/compiler overlap.",
+  "p50_ms": 0.425,
+  "p95_ms": 0.767,
+  "primitives": 60398.0,
+  "renderer": "forward_plus",
+  "texture_bytes": 541144576.0,
+  "vsync": false,
+  "warmup_frames": 132,
+  "width": 1600,
+  "worst_ms": 1.413
+}
