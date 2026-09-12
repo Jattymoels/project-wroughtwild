@@ -1,0 +1,107 @@
+{
+  "source_review": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f4\\worktree\\build\\art07\\f4\\review04",
+  "source_reopen": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f4\\worktree\\build\\art07\\f4\\v10\\reopen",
+  "motion": "60 actual frames, 30 paid-work native ticks, 15 paused, 15 real physics-blocked; 1200x675 review encode, 33ms per frame, quality 88. Original 1600x900 PNGs and native ledgers retained in package.",
+  "files": [
+    {
+      "path": "blender-feeder-clay.webp",
+      "bytes": 485284,
+      "sha256": "f325aae6d57fd7aad568bd3ebb5743eeec0872d23239de4ce5c74b199f1e66fa"
+    },
+    {
+      "path": "blender-feeder-material.webp",
+      "bytes": 655980,
+      "sha256": "a04f5ef48969acf74e4dc1ee428cbb1cc884e29afbf45ab12f81fcbab82d4a54"
+    },
+    {
+      "path": "blender-pocket-clay.webp",
+      "bytes": 404120,
+      "sha256": "aa9f25b996197dac99b3e26860843c9c2ad29b4ece1c34231b972efec285f57c"
+    },
+    {
+      "path": "blender-pocket-material.webp",
+      "bytes": 464236,
+      "sha256": "d19c42429697800759bc7706605a41a9a0e33bdd9b17cfbdf7d4cc375e0ca51b"
+    },
+    {
+      "path": "forward_plus-01-pocket-full.webp",
+      "bytes": 729334,
+      "sha256": "c79d711804f90b638d74c9badfe48e3640755f5dc687bbb7f074774cbe5ff995"
+    },
+    {
+      "path": "forward_plus-03-paid-firing.webp",
+      "bytes": 861786,
+      "sha256": "1b7941388bb4aa782e4eb8819ecbe17b835ec42b8145cd785d99abe8f6daa598"
+    },
+    {
+      "path": "forward_plus-07-rear-emission-off.webp",
+      "bytes": 774496,
+      "sha256": "09915742dddc32acd07fa1650855af2cfd2daea685aeb991d021d4679e624c0d"
+    },
+    {
+      "path": "forward_plus-07-shade.webp",
+      "bytes": 550288,
+      "sha256": "e64ec4e3db9a67736cc307544c0175647ad8913d1e94bc9f02a5c0ff68c454c2"
+    },
+    {
+      "path": "forward_plus-08-both-attachments.webp",
+      "bytes": 886478,
+      "sha256": "4db042dbed3fbf4b3247da85ae428d88e5821ab2c113ad1751b46ac4c59f996b"
+    },
+    {
+      "path": "forward_plus-11-completed-tray.webp",
+      "bytes": 832158,
+      "sha256": "0cf4eeb02e3b0216f012aa0511516833e47908ee47880c31da865470025e5216"
+    },
+    {
+      "path": "forward_plus-14-exhausted-reload.webp",
+      "bytes": 855186,
+      "sha256": "33dc92b9f04df9cf9c1f07af10d9d38f60c64a140fff2de0dbd1c212cc94ef51"
+    },
+    {
+      "path": "forward_plus-native-motion.webp",
+      "bytes": 2051578,
+      "sha256": "6268dae3daa360cbfaba7225b881dd640c4a9cca93fb35ddbb111082916aa86b"
+    },
+    {
+      "path": "gl_compatibility-01-pocket-full.webp",
+      "bytes": 649674,
+      "sha256": "627a810d087983a54058c81a5eb5eda60ec7aaefbd896f9c8924871c89500ac9"
+    },
+    {
+      "path": "gl_compatibility-03-paid-firing.webp",
+      "bytes": 825484,
+      "sha256": "82fea283711cfff7a80cd4a402a1d368e1477e11a7fac3ffc0b6e00b8cd722dc"
+    },
+    {
+      "path": "gl_compatibility-07-rear-emission-off.webp",
+      "bytes": 696618,
+      "sha256": "3a62c3ec281669ecf1f8b61b809246fffbac931f2d8072cb7338281befbf9f5e"
+    },
+    {
+      "path": "gl_compatibility-07-shade.webp",
+      "bytes": 470474,
+      "sha256": "5e2cb8f1063e1a846833520546494c5dc5aed1634fda2030eaa0448e8e010a2f"
+    },
+    {
+      "path": "gl_compatibility-08-both-attachments.webp",
+      "bytes": 816796,
+      "sha256": "51bc475dc2d9e99b6704d46420551fed553a7190e8327db905b55b58ca3e418a"
+    },
+    {
+      "path": "gl_compatibility-11-completed-tray.webp",
+      "bytes": 783056,
+      "sha256": "4eb1fdc33a6acbb7eca1d2d5737802c24f2f84d9b222639f2e4dc324c28b94ed"
+    },
+    {
+      "path": "gl_compatibility-14-exhausted-reload.webp",
+      "bytes": 810212,
+      "sha256": "30c0d716e7221317a55dc076b4b02d4338a29a1b952ca779f1c7a6f1b0099b8c"
+    },
+    {
+      "path": "gl_compatibility-native-motion.webp",
+      "bytes": 2030762,
+      "sha256": "2d89f2b568e8cef6974d79401bdf0e5becb230b0dc70f4fe4b661073215c1e62"
+    }
+  ]
+}
