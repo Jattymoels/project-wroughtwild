@@ -1,0 +1,203 @@
+{
+  "date": "2026-09-12",
+  "scope": "Verified local source inputs for the isolated G1 integration pilot. Not a normal-world rollout or owner visual approval.",
+  "checked_baseline": "bbcb3a7dfd235e8f803141ccb57c38e03d6c1708",
+  "source_count": 24,
+  "files": 35779,
+  "bytes": 19093094616,
+  "inputs": {
+    "b1": {
+      "files": 1533,
+      "bytes": 1582338594,
+      "manifest_sha256": "00a244253614b8c58213a15f929e48fd65c9aec0bb3489600646497bfcbaf7d0",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-10.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "b2": {
+      "files": 274,
+      "bytes": 335584773,
+      "manifest_sha256": "bb4a50ea353a1fdb964542e46afc3f1549f7e45b3b004ab7b4130ae1a7d50e62",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "b3": {
+      "files": 1541,
+      "bytes": 693973744,
+      "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "b4": {
+      "files": 697,
+      "bytes": 2811863353,
+      "manifest_sha256": "60392ada2fd8eedb52ee091cfead2c7afa1da200f47d0994bafaef7404bace71",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\handoff-v01",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch3.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "c1": {
+      "files": 2331,
+      "bytes": 1260213978,
+      "manifest_sha256": "e733692b99f61cadf17e7e3d3382834b558aa21c9817597a801eba877104c6f6",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c1\\worktree\\build\\art07\\c1\\v01\\handoff-v01",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch4.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "c2": {
+      "files": 2248,
+      "bytes": 789060004,
+      "manifest_sha256": "5bc63bc7e83bc8406942d0d5bc8fa6c9e6e605876f4249b9762cbae3f15504fd",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\handoff-v01",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch4.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "c3": {
+      "files": 1733,
+      "bytes": 957686134,
+      "manifest_sha256": "110a3a8dc1dc4fe4de4f5385f55405d4e6bac77b050229f7ce8e604869fff1da",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\oldgrowth-handoff-v02",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch4.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "c4": {
+      "files": 2253,
+      "bytes": 1304222141,
+      "manifest_sha256": "0b37d8e749a4eefc17042374226df1d14b5dad84b5769e65a9a47a3ba1c7a724",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\handoff-v03",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch4.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "c5": {
+      "files": 2029,
+      "bytes": 421238282,
+      "manifest_sha256": "7b5f6338140c9d0500586fc55991b69e853e002ebc258641488728992e282494",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c5\\worktree\\build\\art07\\c5\\v01\\handoff-v01",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch5.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "c6": {
+      "files": 2201,
+      "bytes": 676051405,
+      "manifest_sha256": "f8b8f094881207e34762bbba5e5a3c2023fbadca098e6c7a0bb190310cd66bc3",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\handoff-v02",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch5.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "d1": {
+      "files": 1597,
+      "bytes": 116306666,
+      "manifest_sha256": "a3e92f9692e05eae547290cd6520242f91dfbda31d9236eb6d12842f0453b85a",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d1\\worktree\\build\\art07\\d1\\v02\\core-lattice-handoff-v01",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-10.json",
+      "verification": "verified in this publication preflight"
+    },
+    "d2": {
+      "files": 1544,
+      "bytes": 112683888,
+      "manifest_sha256": "47bc86f0adca636bc111c1f772c807cd7d0d6926e26c304d3f6f023bd3740eec",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\roof-joinery-spans-handoff-v02",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch3.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "d3": {
+      "files": 1668,
+      "bytes": 126564767,
+      "manifest_sha256": "2839bd3e9c54eee602e8e8731b76a006fc3e811a2f670f71754bb6e280c3ab45",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fine-coverings-handoff-v02",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch3.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    },
+    "d4": {
+      "files": 196,
+      "bytes": 117145245,
+      "manifest_sha256": "aaa0316f108cdb1de0ed27cc3a40fac7a07574497c14486e88b18fa73dfbda59",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-d4\\build\\art07\\d4\\h04",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-10.json",
+      "verification": "verified in this publication preflight"
+    },
+    "d5": {
+      "files": 290,
+      "bytes": 104432660,
+      "manifest_sha256": "79532aa924414715fbbde0bf714280fd75d40c9f21cc62cb44c0ce12c3834844",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d5\\worktree\\build\\art07\\d5\\v03\\d5-handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11.json",
+      "verification": "verified in this publication preflight"
+    },
+    "d6": {
+      "files": 78,
+      "bytes": 29858504,
+      "manifest_sha256": "8d82eb36775959f41905e579e36d737caa4a8512ed504d679ab49652301338a7",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d6\\worktree\\build\\art07\\d6\\v04\\handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11.json",
+      "verification": "verified in this publication preflight"
+    },
+    "e1": {
+      "files": 1866,
+      "bytes": 265904623,
+      "manifest_sha256": "e5ea047846fff53c72c225c4a88bec04ac9aea77bc9635a3fd238670b8948da6",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\v03\\e1-handoff-v02",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-12.json",
+      "verification": "verified in this publication preflight; fresh checks and integration recorded in publication report"
+    },
+    "e2": {
+      "files": 1490,
+      "bytes": 196851303,
+      "manifest_sha256": "95d33325e5ce3ec48b9ae8a25345579965c9defae4381c492797008973d51fbd",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch3.json",
+      "verification": "verified in this publication preflight"
+    },
+    "e3": {
+      "files": 2204,
+      "bytes": 406834328,
+      "manifest_sha256": "b3a06254c13e48c3c60f613ec161dacb3c4a8e3b554036d25ff1dcb21cda6bc7",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-12.json",
+      "verification": "verified in this publication preflight; fresh checks and integration recorded in publication report"
+    },
+    "f1": {
+      "files": 1465,
+      "bytes": 667618307,
+      "manifest_sha256": "2e3130549c8d0c75f7039f788c15ec94aa3c79d5d7724c9eafecfe038b03259d",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f1\\worktree\\build\\art07\\f1\\v10\\handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-12.json",
+      "verification": "verified in this publication preflight; fresh checks and integration recorded in publication report"
+    },
+    "f2": {
+      "files": 1830,
+      "bytes": 808257227,
+      "manifest_sha256": "0a182b3cb25c5815497cf79645ff1be7769cf1d9d012572bfbbb0a8116d0d9cd",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch5.json",
+      "verification": "verified in this publication preflight"
+    },
+    "f3": {
+      "files": 1369,
+      "bytes": 974850525,
+      "manifest_sha256": "0bdfa7b9f39b2f79e67fe0fa6adfa5a27f89188418e29e52de2fa91471d73dd8",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f3\\worktree\\build\\art07\\f3\\v28\\handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-11-batch5.json",
+      "verification": "verified in this publication preflight"
+    },
+    "f4": {
+      "files": 1682,
+      "bytes": 850819277,
+      "manifest_sha256": "7b243163925d2783548a191e9e8ac9036e24242b6b22146d5040144e26ddc23f",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f4\\worktree\\build\\art07\\f4\\v12\\handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-12.json",
+      "verification": "verified in this publication preflight; fresh checks and integration recorded in publication report"
+    },
+    "f5": {
+      "files": 1660,
+      "bytes": 3482734888,
+      "manifest_sha256": "4cc8c36a2d63c4c0b0c3e131e875992de981ba4220beffa123ad97d389e7103f",
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v02\\four-colours-handoff",
+      "publication_report": "docs/prototype/art07-production/publication-2026-09-10.json",
+      "verification": "rehash of published canonical package for G1 readiness"
+    }
+  },
+  "latest_source_integration_tip": "da0c9d3e4fc97c102020db54c8d50575f0399d44"
+}

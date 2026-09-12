@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 11 September 2026 (20 ART-07 source slices technically delivered; next batch E1/E3/F1/F4). Owner: Matty. Delivery: Codex.
+Updated: 12 September 2026 (all 24 ART-07 B–F source slices technically delivered; G1 next, then independent G2). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -14,20 +14,20 @@ The owner's subsequent request selects a [sliced execution plan and session
 prompts](art07-production/README.md). The checked dispatch pack contains 26
 bounded worker prompts, one publisher prompt, an explicit dependency/ownership
 map and the [local TRELLIS/Blender/Godot process](art07-production/PROCESS.md).
-B1–B4, C1–C6, D1–D6, E2, F2, F3 and F5 now have technical source handoffs:
-**20 of 26 slices**. The [fifth publication](art07-production/publication-2026-09-11-batch5.md)
-records C5/C6/F2/F3 integration, verified package hashes, fresh packed-source,
-renderer/work/restart checks and limits, with links to the four earlier reports.
-Recommend E1 (workbench/yard), E3 (chest/fire), F1 (Lanternheart/Stormglass)
-and F4 (pressure pocket/feeder) next. All four are dependency-ready. G1 then
-consumes all 24 B–F source slices and G2 independently reviews the isolated pilot.
+All **24 B–F source slices** now have technical handoffs: **24 of 26 slices**.
+The [sixth publication](art07-production/publication-2026-09-12.md) integrates
+E1/E3/F1/F4 with verified package identities, packed-source, renderer, paid work
+and fresh-process recovery checks. The
+[G1 input index](art07-production/g1-inputs-2026-09-12.json) lists all 24 verified
+local source packages. Next is one G1 isolated route/home integration session.
+After its checked handoff is published, a separate G2 session reviews it
+independently; the two cannot run concurrently. Both remain planned.
+C5 terrain fit, inherited E3 chest seating, combined texture/LOD costs and
+earlier source appearance/budget limits remain explicit review concerns.
+Native geography, finite ownership and octagonal building support are retained.
 GPU work stays serial through the mutex and read-only process checks. Completed
-workers are excluded from coordination notices; no acknowledgement exchanges.
-C5 raised ore art remains limited to the native fallback fixture; faceted
-terrain retains the thin native ribbon. Device texture/LOD costs and earlier
-source silhouette/budget limits remain recorded. Full shape/material integration,
-wider hardware/density performance and owner visual acceptance are pending.
-Existing octagonal building pieces remain.
+workers receive no coordination notices or acknowledgement requests. Visual
+acceptance and normal-world rollout remain separate from source publication.
 
 The owner visually approved ART-06C with “Perfect”, then asked to start
 designing all nature assets and the world's feel against the original full

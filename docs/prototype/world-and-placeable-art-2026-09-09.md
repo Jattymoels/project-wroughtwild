@@ -1,18 +1,18 @@
 # ART-07 — a full frontier and a coherent building kit
 
-**Production update, 11 September 2026:** B1–B4, C1–C6, D1–D6, E2, F2, F3
-and F5 have technically delivered source packages: **20 of 26 dispatch slices**.
-The [fifth publication](art07-production/publication-2026-09-11-batch5.md)
-adds ores, ruins/approaches, Thrumroot winch/landing and Pullstone/Ventlung;
-it links all earlier publication evidence. Next are E1/E3/F1/F4, with checked
-inputs and no dependencies between those four. G1 then assembles the isolated
-route/home pilot from all 24 source slices; G2 independently reviews it.
-B/C/D source libraries are delivered; E/F/G and full ART-07 remain incomplete.
-Native chamfer/triangular pieces and their octagonal building use are retained.
-C5 raised ore fits the fallback fixture only: ordinary faceted terrain keeps
-its native thin ribbon. Device texture/LOD costs and previously reported source
-silhouette/mesh limits remain open. Visual acceptance, broader performance and
-ordinary-world adoption remain separate from source publication.
+**Production update, 12 September 2026:** all **24 B–F source slices** have
+technical handoffs: **24 of 26 dispatch slices**. The
+[sixth publication](art07-production/publication-2026-09-12.md) adds workbench/yard,
+chest/fire, Lanternheart/Stormglass and pressure pocket/feeder, with fresh
+packed-source, renderer and native work/restart checks and prior report links.
+The [G1 input index](art07-production/g1-inputs-2026-09-12.json) records all 24
+verified local packages. Next is G1's isolated retained route/home integration
+pilot, then a separate G2 independent review after its handoff is published.
+Both remain planned. Native chamfer/triangular and octagonal building uses remain.
+C5 raised ore is limited to its fallback fixture; normal terrain retains its
+thin ribbon. E3 retains the inherited 0.15 m chest/floor intersection. Conservative
+device LODs, texture costs and earlier silhouette/budget limits need combined
+review. Source completion does not grant visual approval or ordinary-world rollout.
 
 **Owner follow-up:** “Yep, create a sliced plan and prompts to send off to other
 sessions to enact” selects the [ART-07 dispatch pack](art07-production/README.md).

@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; 20 ART-07 source handoffs technically delivered (B1–B4/C1–C6/D1–D6/E2/F2/F3/F5).** Owner request,
+**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; all 24 ART-07 B–F source handoffs technically delivered; G1/G2 pending.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -56,15 +56,18 @@ fen, quarry, resinheart/corkbark and recovering-wastes handoffs with unchanged
 finite-resource bodies and work/save rules. The owner then reported C5/C6/F2/F3
 complete; the [fifth publication](art07-production/publication-2026-09-11-batch5.md)
 adds ore states, ruins/approaches, winch/landing and sorter/bellows. Fresh reopens,
-both-renderer motion, native work and restart checks pass. Recommend E1/E3/F1/F4
-next; all four have checked published dependencies and can proceed independently.
-After publication of those four, G1 integrates all 24 B–F slices into an isolated
-pilot, followed by independent G2. These six later slices remain planned.
-C5 raised ore art is checked only against the fallback body; faceted terrain
-retains its native ribbon. F3 keeps the 8,500-triangle Ventlung middle mesh at
-far distance because the smaller candidate lost its folds. Texture costs and
-earlier source silhouette/budget limits remain open. Successful source checks
-do not grant owner visual acceptance or ordinary-world adoption.
+both-renderer motion, native work and restart checks pass. E1/E3/F1/F4 were
+recommended with checked published dependencies. The owner reported those four
+complete on 12 September. Their
+[sixth publication](art07-production/publication-2026-09-12.md) supplies the final
+stations/home and useful-fixture source chains: **all 24 B–F source slices**.
+The [input index](art07-production/g1-inputs-2026-09-12.json) records every verified
+local package. G1 is now the next isolated integration pilot; G2 reviews its
+published handoff independently afterward. Both remain planned, with normal-world
+rollout and owner visual acceptance separate. Preserve C5's terrain-ribbon
+boundary, E3's native chest seating and existing octagonal construction. Combined
+device texture costs, conservative far LODs and earlier silhouette/budget limits
+remain open; successful source checks do not settle the finished-world appearance.
 
 The owner then requested a sliced plan and prompts for other sessions to enact
 ART-07. The [dispatch pack](art07-production/README.md) now breaks the parent

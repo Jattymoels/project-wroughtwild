@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "B1–B4, C1–C6, D1–D6, E2, F2, F3 and F5 technically delivered: 20 of 26 slices. See the five publication reports through publication-2026-09-11-batch5.md for evidence and limits. Recommended next batch: E1, E3, F1, F4. G1 then G2 follow; these six slices remain planned.",
+  "status": "All 24 B–F source slices technically delivered: 24 of 26 dispatch slices. See the six publication reports through publication-2026-09-12.md for checked evidence and limits. Next: G1 retained route/home integration pilot. G2 independently reviews its completed handoff afterward. G1/G2 remain planned; owner visual acceptance and ordinary-world rollout are separate.",
   "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
   "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
   "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",
@@ -764,9 +764,14 @@
         "docs/prototype/session-reliability-2026-09-07.md",
         "docs/systems/world-generation.md",
         "docs/systems/construction.md",
-        "docs/prototype/art07-production/receipts/c5.md"
+        "docs/prototype/art07-production/receipts/c5.md",
+        "docs/prototype/art07-production/g1-inputs-2026-09-12.json",
+        "docs/prototype/art07-production/publication-2026-09-12.md",
+        "docs/prototype/art07-production/receipts/e3.md",
+        "tools/wroughtwild-art07/f1/CONTRACT.md",
+        "tools/wroughtwild-art07/f4/CONTRACT.md"
       ],
-      "notes": "Build native/game/data from the same explicitly pinned current revision. Keep normal game/data/saves unchanged; this is the ART-07G isolated adoption gate, not a new global renderer or generator. C5 raised ore meshes are cleared only for the existing fallback body and isolated fixture. Normal faceted terrain uses a thin ribbon retained by the C5 adapter; it is not cleared for replacement by a raised slab. Preserve native terrain, collider, stock and excavation behavior. Report any unmet terrain-art placement requirement as a bounded defect; do not enlarge bodies or change geography to hide it."
+      "notes": "Build native/game/data from the same explicitly pinned current revision. Keep normal game/data/saves unchanged; this is the ART-07G isolated adoption gate, not a new global renderer or generator. C5 raised ore meshes are cleared only for the existing fallback body and isolated fixture. Normal faceted terrain uses a thin ribbon retained by the C5 adapter; it is not cleared for replacement by a raised slab. Preserve native terrain, collider, stock and excavation behavior. Report any unmet terrain-art placement requirement as a bounded defect; do not enlarge bodies or change geography to hide it. All 24 source inputs are listed with absolute paths and manifest hashes in the checked G1 input index; verify them before consumption. Compose station, piece, source and device presentation dispatch by owned IDs so their adapters coexist. E3 preserves the native chest seating that intersects a flat floor by 0.15 m; record that visual limitation and retain the native body and placement rules. F1 requests create no drive; F4 must restore fractional paid escrow and exhausted pocket appearance. Preserve every existing chamfer/triangular and octagonal building use. Report total loaded texture and geometry costs, explicit LOD choices and unresolved visual defects in the combined pilot."
     },
     {
       "id": "g2",

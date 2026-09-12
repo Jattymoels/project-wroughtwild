@@ -6,20 +6,15 @@ The plan refines the broad ART-07B–G headings into **26 bounded slices**. It p
 
 ## Current delivery and next prompts
 
-B1–B4, C1–C6, D1–D6, E2, F2, F3 and F5 are technically delivered: **20 of 26 slices**. The [first publication](publication-2026-09-10.md), [second publication](publication-2026-09-11.md), [third publication](publication-2026-09-11-batch3.md), [fourth publication](publication-2026-09-11-batch4.md) and [fifth publication](publication-2026-09-11-batch5.md) record exact commits, verified local handoffs, fresh checks and unresolved visual/performance limits. Owner visual acceptance and ordinary-world adoption remain separate.
+All **24 B–F source slices** are technically delivered: **24 of 26 dispatch slices**. The [sixth publication](publication-2026-09-12.md) adds E1/E3/F1/F4 and links the five earlier reports. It records exact integrated commits, checked local handoffs, fresh reopens and state/restart evidence. Owner visual acceptance and ordinary-world adoption remain separate.
 
-The recommended next batch finishes the four remaining B–F source slices. Paste one complete prompt into each separate session:
+The next step is one session: **[G1 — Retained route and home integration pilot](prompts/G1.md)**. All 24 dependencies are available; the [G1 input index](g1-inputs-2026-09-12.json) records their absolute local package paths and manifest hashes. The publisher verified 35,779 source files for this handoff. A Git clone alone does not contain these ignored packages.
 
-1. [E1 — Workbench and mason's yard](prompts/E1.md).
-2. [E3 — Chest and fire-setting piece](prompts/E3.md).
-3. [F1 — Lanternheart and Stormglass chains](prompts/F1.md).
-4. [F4 — Pressure pocket and complete feeder](prompts/F4.md).
+After G1 completes and its handoff is checked and published, assign **[G2 — Independent full-kit review](prompts/G2.md)** to a separate session that did not implement G1. G2 depends on G1 and is not ready to run concurrently. These two slices remain planned. Normal-world rollout is beyond the isolated pilot.
 
-All four are dependency-ready with no dependencies between them: E1 uses D1/D4/D5; E3 adds D6; F1 uses D4/D6; F4 consumes E2/F2/F3. Verify the assigned absolute local handoffs and manifest hashes before use. The publisher rechecked these inputs. F4 must read the published device contracts, including native attachment, paid work and recovery ownership.
+G1 must preserve native geography, finite ownership, all legal shapes/materials and octagonal building pieces. Compose the overlapping presentation adapters by their owned IDs. Keep the C5 terrain-ribbon boundary and record E3 chest seating, conservative device LODs, texture costs and earlier visual/budget limits candidly.
 
-After these four are completed and published, G1 assembles the isolated retained route/home pilot from all 24 B–F source slices. A separate G2 session then independently reviews G1. These six later rows remain planned. C5 raised ore art is only checked against the fallback fixture; ordinary faceted terrain retains its native ribbon. G1 must preserve that boundary or report the unmet placement requirement.
-
-Use separate worktrees and the shared GPU mutex plus read-only process checks. Cross-session messaging requires explicit owner authorization; exclude completed workers from GPU notices and do not create acknowledgement exchanges. No new sessions are started by this index.
+Use the shared GPU mutex plus read-only process checks. Cross-session messaging requires explicit owner authorization; exclude completed workers from GPU notices and do not create acknowledgement exchanges. No new session is started by this index.
 
 Use the [publisher prompt](prompts/PUBLISH.md) in one coordinating session after workers deliver checked commits. It integrates/pushes one result at a time and updates the shared queue. A dependent session starts after prerequisite recipes/receipts are published and its local source packages verify. A scheduled or merely generated source does not satisfy a dependency.
 
