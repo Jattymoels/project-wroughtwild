@@ -1,0 +1,17 @@
+{
+  "comparison_rectangle": [
+    0,
+    180,
+    1440,
+    900
+  ],
+  "pixels_above_5_of_255": 3753,
+  "difference_bounds_in_rectangle": [
+    542,
+    115,
+    898,
+    427
+  ],
+  "native_point_light": "unchanged in both views",
+  "scope": "same native burn age, camera and lighting; only ember shader gain differs"
+}

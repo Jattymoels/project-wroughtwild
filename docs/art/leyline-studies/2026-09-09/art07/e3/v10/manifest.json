@@ -1,0 +1,1483 @@
+{
+  "slice": "ART-07E3",
+  "sources": "Unchanged principal renders and derived contact sheets/WebP from actual model captures. Burn movie compresses native time; no real-time claim. JSON uses LF for Git hash stability.",
+  "files": [
+    {
+      "path": "blender-wood-open.png",
+      "sha256": "c814a8b48e69784f74e4d4f7ed3f0f97ffdc0e37d9306ef190a62c788798fa24",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-open.png",
+          "sha256": "c814a8b48e69784f74e4d4f7ed3f0f97ffdc0e37d9306ef190a62c788798fa24"
+        }
+      ]
+    },
+    {
+      "path": "blender-wood-closed.png",
+      "sha256": "455a505466a1c37a2e4e1c570ee9580cc9075bcac0d372b9d274d508e4ca0746",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-closed.png",
+          "sha256": "455a505466a1c37a2e4e1c570ee9580cc9075bcac0d372b9d274d508e4ca0746"
+        }
+      ]
+    },
+    {
+      "path": "blender-wood-fuel.png",
+      "sha256": "86a126edd8c151c023f2cc30dcb9869285017b355d0e113f48e49d505a2d088e",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-fuel.png",
+          "sha256": "86a126edd8c151c023f2cc30dcb9869285017b355d0e113f48e49d505a2d088e"
+        }
+      ]
+    },
+    {
+      "path": "blender-wood-fuel-clay.png",
+      "sha256": "76040087bcb59655ed73edbb45b6bf5f780569bec6ee7df7154d86cc0af19f40",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-fuel-clay.png",
+          "sha256": "76040087bcb59655ed73edbb45b6bf5f780569bec6ee7df7154d86cc0af19f40"
+        }
+      ]
+    },
+    {
+      "path": "blender-bronze-open.png",
+      "sha256": "d9523daac3718d8886bfaad638181eb6c93d23e52d76f47daf496e5f5343194c",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\bronze-open.png",
+          "sha256": "d9523daac3718d8886bfaad638181eb6c93d23e52d76f47daf496e5f5343194c"
+        }
+      ]
+    },
+    {
+      "path": "blender-charcoal-fuel.png",
+      "sha256": "8c435c90e7d332b629101a36faba23fe013cf7bf1e8da0ea444814d38a71c15c",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\charcoal-fuel.png",
+          "sha256": "8c435c90e7d332b629101a36faba23fe013cf7bf1e8da0ea444814d38a71c15c"
+        }
+      ]
+    },
+    {
+      "path": "blender-six-angle.png",
+      "sha256": "7a15e8e2c6d2f13ca47a5a4fa80dd2ff7d0620a5a9e45bf30804b183b9f56ef9",
+      "operation": "labelled contact sheet; proportional resizing only",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-clay-front.png",
+          "sha256": "e629c25c9fb3d1e3882620da63e20646a49fdca5cbe8be8ca068c63cbb8641c8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-clay-back.png",
+          "sha256": "05f0ccebc135121e1b5ee1a60b0945234ec56516a84859809fca156514c5a6bc"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-clay-side.png",
+          "sha256": "7d5953cb1fed23f57f44605cfa5dccace62a023862cfe37481381be41a1ba145"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-clay-top.png",
+          "sha256": "fabf456896c2bf0b742dd132b091087c76ec4d2a4343718ce85a3fa77ada2d0d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-clay-underside.png",
+          "sha256": "84e167dd15c9324824e266cf207ba4073dcb7f78185f30f5f6427c6eb67e0ec1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\wood-clay-three-quarter.png",
+          "sha256": "eb333b5a930febebaf745cc31d55bdaf9f7d91f9abc30a2ac9e4e13027b1a11f"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/ember-visibility.json",
+      "sha256": "d485306e0e7a3ab82bdfbac77466ce0b0774fbd1e8b119a12dd8b4659be4df9d",
+      "operation": "actual rendered emission-on/off pixel comparison outside the caption",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-dusk.png",
+          "sha256": "1ef92c6466f0855a7f6f495ff8ca29cf7f3b9c093a9792a1b2ee865a45e20bc4"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-dusk-emission-off.png",
+          "sha256": "73e0703fc916899e86c49ebcf64f94254368cbbff69639ba857adf31fe1b6a10"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/chest-wood-open.png",
+      "sha256": "4b5148f361849cb70626f0e679a3902c0f112d01c288715e19c75f09e30ef349",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-wood-open.png",
+          "sha256": "4b5148f361849cb70626f0e679a3902c0f112d01c288715e19c75f09e30ef349"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/chest-wood-closed.png",
+      "sha256": "c00593c828b8beed6d7c77ca7c55004e7556f3fe6e235a39160041f4a6cd64c9",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-wood-closed.png",
+          "sha256": "c00593c828b8beed6d7c77ca7c55004e7556f3fe6e235a39160041f4a6cd64c9"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/chest-bronze-open.png",
+      "sha256": "ef7236c0f306b0c6d9cceb124bc79c0f81fcf4ea4ff1844184ccd0130b62a087",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-bronze-open.png",
+          "sha256": "ef7236c0f306b0c6d9cceb124bc79c0f81fcf4ea4ff1844184ccd0130b62a087"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/02-storage-panel.png",
+      "sha256": "f6434d9fbade1a627d2dee6e1ccb649dacbbba47ac563d189180129fdf0934e4",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\02-storage-panel.png",
+          "sha256": "f6434d9fbade1a627d2dee6e1ccb649dacbbba47ac563d189180129fdf0934e4"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/chest-shade.png",
+      "sha256": "880dff933d76421e3b7f122f80f97792d691b7f08dde57fc70b17addecf4d1f7",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-shade.png",
+          "sha256": "880dff933d76421e3b7f122f80f97792d691b7f08dde57fc70b17addecf4d1f7"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/chest-dusk.png",
+      "sha256": "16dddffe2ae706c2717c73bceecedfd3d5772ee80d2269705e845600a6991883",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-dusk.png",
+          "sha256": "16dddffe2ae706c2717c73bceecedfd3d5772ee80d2269705e845600a6991883"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/ghost-chest.png",
+      "sha256": "ed21b498a9ae23de19b5cc5f85b45c2a75db21d8c2defa0e2eb109acde09e991",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\ghost-chest.png",
+          "sha256": "ed21b498a9ae23de19b5cc5f85b45c2a75db21d8c2defa0e2eb109acde09e991"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/ghost-campfire.png",
+      "sha256": "2bf3b424b7578d26eb5abf68e76d26068604523c0d1936bf8ebc97f364020a3e",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\ghost-campfire.png",
+          "sha256": "2bf3b424b7578d26eb5abf68e76d26068604523c0d1936bf8ebc97f364020a3e"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/fire-wood-new.png",
+      "sha256": "b8f875d2883222130d0d8eece072ac053eae015dca1f7a726f38a7e4eefc6a47",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-wood-new.png",
+          "sha256": "b8f875d2883222130d0d8eece072ac053eae015dca1f7a726f38a7e4eefc6a47"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/fire-last-44.png",
+      "sha256": "4765d28724f2740b3991b080acbfffaa31b7d42277bcce4a14e33c859b381bfd",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-last-44.png",
+          "sha256": "4765d28724f2740b3991b080acbfffaa31b7d42277bcce4a14e33c859b381bfd"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/fire-last-59.png",
+      "sha256": "58a68b8ddff64230828d1a62aa6fb46425f63b0b9a163119d9e6c58d2ecccac8",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-last-59.png",
+          "sha256": "58a68b8ddff64230828d1a62aa6fb46425f63b0b9a163119d9e6c58d2ecccac8"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/fire-spent.png",
+      "sha256": "f0fdad6576d9f1f8a93421ee1318fe734f3413136474188d62b4abca049b8822",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-spent.png",
+          "sha256": "f0fdad6576d9f1f8a93421ee1318fe734f3413136474188d62b4abca049b8822"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/fire-emission-off.png",
+      "sha256": "db927b7f61a72ce3abb7216835ee9a8403ede871dab6ebedfb880cb29a172ce4",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-emission-off.png",
+          "sha256": "db927b7f61a72ce3abb7216835ee9a8403ede871dab6ebedfb880cb29a172ce4"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/fire-dusk.png",
+      "sha256": "1ef92c6466f0855a7f6f495ff8ca29cf7f3b9c093a9792a1b2ee865a45e20bc4",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-dusk.png",
+          "sha256": "1ef92c6466f0855a7f6f495ff8ca29cf7f3b9c093a9792a1b2ee865a45e20bc4"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/fire-dusk-emission-off.png",
+      "sha256": "73e0703fc916899e86c49ebcf64f94254368cbbff69639ba857adf31fe1b6a10",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-dusk-emission-off.png",
+          "sha256": "73e0703fc916899e86c49ebcf64f94254368cbbff69639ba857adf31fe1b6a10"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/chests-distance-6.png",
+      "sha256": "031b2ca9421b8bdea0505134c291d59a8cf0d988b14551b345118b9034dd5c8a",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chests-distance-6.png",
+          "sha256": "031b2ca9421b8bdea0505134c291d59a8cf0d988b14551b345118b9034dd5c8a"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/chests-distance-12.png",
+      "sha256": "d1acfc6a8f74b098d66d6e8fa3a74c9b67177d2f0f5bd9b7ce6d3f37b0ea936b",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chests-distance-12.png",
+          "sha256": "d1acfc6a8f74b098d66d6e8fa3a74c9b67177d2f0f5bd9b7ce6d3f37b0ea936b"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/chests-distance-24.png",
+      "sha256": "b9426e8ee6d62f6d4cbfb1e6ff133c1479c1ff52240beca9e16defb7d7be04f0",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chests-distance-24.png",
+          "sha256": "b9426e8ee6d62f6d4cbfb1e6ff133c1479c1ff52240beca9e16defb7d7be04f0"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/all-eight-chests.png",
+      "sha256": "2a531b05a513e28d219e8cf322137bf34e64cdf5d90152bd4a685e6932773bb1",
+      "operation": "labelled contact sheet; proportional resizing only",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-wood-open.png",
+          "sha256": "4b5148f361849cb70626f0e679a3902c0f112d01c288715e19c75f09e30ef349"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-pine-open.png",
+          "sha256": "2f56adff7834ff778e8d94d943ac3bb73690cca95ac3eaaf944775a69b6bd0db"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-bog_oak-open.png",
+          "sha256": "83256648924b7cf7662cee4d9fc367990b4e53cfcf548e133c944f0bbd4e5e2c"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-ash_wood-open.png",
+          "sha256": "4dc1ef13eec38e5be9dc8b306583fd9f2989f56466ec81119a37a3e90e9be987"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-resinheart-open.png",
+          "sha256": "5f0bfdd76745a9d160431e78cc1f928b90104e10de68856f240b8e0e66c153dd"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-iron-open.png",
+          "sha256": "059ea986a5a0a32e6e61733088775669502e6691141f5990d7ce5b70cd0c11f7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-bronze-open.png",
+          "sha256": "ef7236c0f306b0c6d9cceb124bc79c0f81fcf4ea4ff1844184ccd0130b62a087"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\chest-steel-open.png",
+          "sha256": "68a14b8a511f5d8ae7798dd00395451e851791f3b6868a52dc64877f7e23b0ef"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/all-five-fuels.png",
+      "sha256": "617d97d733b02a3e8a54b34afcbd80a839791ec44ff2490ed465bf249d2954f9",
+      "operation": "labelled contact sheet; proportional resizing only",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-wood-new.png",
+          "sha256": "b8f875d2883222130d0d8eece072ac053eae015dca1f7a726f38a7e4eefc6a47"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-pine-new.png",
+          "sha256": "0c9241e5ae17372f40f7fd5894bdfd3c7f9828a586e94c195735a23dd01c379f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-bog_oak-new.png",
+          "sha256": "9efdee47af1b0d14407238fe0ddd04cd8ec2db59e21290c366e13eb9df08b040"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-ash_wood-new.png",
+          "sha256": "a7a3d790d25be4c5788b3a348bc4af0f27c6bee7328c8edb85acec2ce725e2b6"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-charcoal-new.png",
+          "sha256": "79cf381d38087ec3464909c8b5067d2a608d90425f8c4cc4f889894ce8da8c3a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-wood-late.png",
+          "sha256": "217baf1a50a68c454933c95f46360fafd3a6eb829fac75210ba747486b26dc53"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-pine-late.png",
+          "sha256": "0a7d43b15d0353c0c9436752388f90a8b33e925a8656195cbdb875998d4fd193"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-bog_oak-late.png",
+          "sha256": "9cf5072d66c695c9dc08f94a8fdba1f2b5ed81e86a598c7a89da588b6f9dbeae"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-ash_wood-late.png",
+          "sha256": "33ce538a8217a4d17cf452e1bfb5d5b92d7212ac30166d705682c74b4c20fe9e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-charcoal-late.png",
+          "sha256": "d7b6adfcd4119fdc97920034388b06d2c7c4912735398cc1661685e1142473b5"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/lid-motion.webp",
+      "sha256": "0e7aa3eabad6397c5dc8d10c94785a8db1bb7facb5b55fdc40d9e6171da67d68",
+      "operation": "actual captured frames resized to 960x600; 80 ms display per frame; native panel driven cosmetic travel",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-000.png",
+          "sha256": "aa4cb39944f6fdffac797d05dcc7f7fb3b496241ed11ca3d9bcffeed8069a5c0"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-001.png",
+          "sha256": "748f568125af20d2e40de345978b592365d1b8c1a1d08ff1c66685133b6df761"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-002.png",
+          "sha256": "4dd25583a4f399eae559e2d61e3bb1304b7bc46dccc32312a24c5c20559a73e2"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-003.png",
+          "sha256": "a7e0cb9e88a758c7b19eaed08996c73249ffeb0833441682ff7183f77bf236b4"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-004.png",
+          "sha256": "0ca94b27cb9198294678f1483a9d5e4dcf56bca775acce3bfc98d24fdc9aa066"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-005.png",
+          "sha256": "b8dc3f56c0e270ab68f4190a71308ba5b1082164618d5ca61e681bf1ee0911a8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-006.png",
+          "sha256": "b6d1d4cd86a72cf9f53dc51d841672a6f27c9680f2fb17a64a6e7d09824d7c6a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-007.png",
+          "sha256": "9ec881de502652b90db5e11673be1336a9dcf67cc67e5222b9ce27c2f9e40116"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-008.png",
+          "sha256": "6b00f9235ddfa76200a996bdd87f2cef119ee421b665e474fd360c3ad6ec3bf1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-009.png",
+          "sha256": "ce55a2d9283c1654d47eb0df9c05a8f91a78a84f29d222d89761e07c5c38ba4e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-010.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-011.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-012.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-013.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-014.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-015.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-016.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-017.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-018.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-019.png",
+          "sha256": "355b2d800cafcf6529f553c211a1881ec60e6bebd446819997f6c9b00c04715b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-020.png",
+          "sha256": "0779ec8ddb44162742a8cf0152f96863c7d06e628eacfccd4cbfb9b0415d08a8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-021.png",
+          "sha256": "e8bea52fbf2f57d9c117da9b0f6213aae8a7e90e6e5c7844f93973a216e9991a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-022.png",
+          "sha256": "faa9f00f28719c0b4cc9dcce337ade7a083e17ef9beb903890e7ab91ef9c6199"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-023.png",
+          "sha256": "31b703b65d005bfea80328bf9fb4ccb6aa6882b92aa4336bbe1bc5990e7a64cb"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-024.png",
+          "sha256": "0b6eaea5e5b1199a81080a33158988657a1b2b3e5ecc4dbb2786ba3ae0f49fb7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-025.png",
+          "sha256": "e69b8c81ab900d2c24eed16be928f101ce68b57c85244da5e6bfd0667547812f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-026.png",
+          "sha256": "461ffde6502ecc2ed0a5fc3a8d3b1b127c9f6b369771664cc9f7c7b1c0366f63"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-027.png",
+          "sha256": "09732df9565a61946273a08ad5fe9c7ab47a0a8b0f38b8999ac2db731117bccf"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-028.png",
+          "sha256": "e0edecd3be8d8a1c7892679310912fb305d4733b1ace88182988e9c6d55cefdd"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-029.png",
+          "sha256": "95b2944f007f16c656e3e9b80b5d89144084a4d59f9a3a7397d7bae847a91a3f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-030.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-031.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-032.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-033.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-034.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-035.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-036.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-037.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-038.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-lid-039.png",
+          "sha256": "b31d4a61d4bad4d9293b08c169f628db3d6ef5a47b399ee71bcd5222aa7489b7"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/fire-motion.webp",
+      "sha256": "aebcce503387da5d91969dd6b752461370b3f53a37bb854b629a283d55303a92",
+      "operation": "actual captured frames resized to 960x600; 120 ms display per one-second native burn step, followed by actual spent view",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-000.png",
+          "sha256": "ab9b22198743131da24a110b21017e002d2609d48e7ba215f2fefb031626ca0b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-001.png",
+          "sha256": "aa2c8fbe66e24a4462c0bfa8878a981fece8c8b15cb7332929f757c87ea6b956"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-002.png",
+          "sha256": "24e8817d0369e53bf0f114afc90363c54b206fdcf347dc6ef6d3bac10975d27d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-003.png",
+          "sha256": "4cd2194b8215d237a786a837b325c0f830cbd80c60973714651830ab1aaa47e2"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-004.png",
+          "sha256": "af0c85cde449dceae549b43e89c5e9be82018ca52ff3fe44a88ce7e814acc2e0"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-005.png",
+          "sha256": "c9505bb8020ab816f86984c7bdc3a13af3c14a81efd971ca32d510dad28bc7b0"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-006.png",
+          "sha256": "a169878453f0e82dadc14b08ff581edb2b8d9e6f68a746d3b9f96438709b608a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-007.png",
+          "sha256": "a31a3eaa20fc09929d392704e26db49c8ddc26f5934adeb2154baa0c84882fb4"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-008.png",
+          "sha256": "d1818d295957923716f4c78f802d069443dbe444b75e04670c07c95beee9dfa6"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-009.png",
+          "sha256": "fb9bebbd9cd435a87618605002addd1ab75761e3910ca8f9fb4e2909f3db81ee"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-010.png",
+          "sha256": "25f8f71ca0027abb640be8a8b2a5d00cb0e711c77c300474ba6f818efa41b58f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-011.png",
+          "sha256": "daa0fdbcf00dfddc3b03845b3f7581915849b7e32a29cdf4574dcb8b65f8cb8c"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-012.png",
+          "sha256": "75cdc0f198e24baa17eff1b29f64b8d0b7680e3a3f84c2e4f5a342ff5f1b66fc"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-013.png",
+          "sha256": "5d88d7761772bcbe5c8d5762f30489e1ad46cfcae93b73647f689435c8fe61fb"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-014.png",
+          "sha256": "df1ebd62c7a50cbab81ac4b56c8da3ef0ed174adad7a5263e123ce3ca4853d45"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-015.png",
+          "sha256": "09500753c17db8310988eae578badcc35521c1c90711c2c897ef7cfca09704a8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-016.png",
+          "sha256": "aa9248f91c4d5b756ac29925c17707b6d072e5aba76adf352a5059bc546f7db5"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-017.png",
+          "sha256": "1a77e1aec34f9afe826d2858554185cc5cc85d1d95031017d979dbbe117f5cc5"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-018.png",
+          "sha256": "05f70bb2813b7ae6e56b7aff08da55a2ddb6e31dee9873636d57c6d6e1ae3e75"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-019.png",
+          "sha256": "0ec797d47603d129c4b59f32d7efb71d8871b02fd9311450dc49c44c632a8db8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-020.png",
+          "sha256": "aa593a7fc73272ed16f63d281a63c234f3ca084202f9c29a5905d58b405a84bb"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-021.png",
+          "sha256": "f41ad582fdf0e40ec2ad3e6874ed043a0fe9a6a3c390b8e714ac239159534290"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-022.png",
+          "sha256": "9184948c4f0b23654135562a0c15ccb7055090eb3eb605469df531bfefa5e7e4"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-023.png",
+          "sha256": "201523002b9c50d253ec8da8c897060bcef60df5e830807554ff0442a5410e1a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-024.png",
+          "sha256": "ad13de91aa58e49ed072ab87b839279dff6f302473ea311936f61e42f3ca6cbb"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-025.png",
+          "sha256": "bde635a9cb7352eb8fda3ccfcd565e2e17b4d45174ce76849280bbaf65b32016"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-026.png",
+          "sha256": "b3155630d46621e53aaa8ab5edc17386b161dceccb6e4944976b8295273aa0c0"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-027.png",
+          "sha256": "18f2925f8eeab7e2b1c3aa13953d26463ac1b7ae19f73d78e63599ccd855670a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-028.png",
+          "sha256": "bc62e40fdea5bdef95d66bee1e32faaaf26201666b09c278af629377a6f479e9"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-029.png",
+          "sha256": "284bf7a9d5e4331d21fe1a30bef8936ed6b2318ccac5dfcc633564454513643e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-030.png",
+          "sha256": "3ba028e1788f22fe47cd47b3b80274bf14f0065a8069e5af0fad850b1c644904"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-031.png",
+          "sha256": "afe81ee48520084788f829fedeb5c30f60fad10aaabf6950372c3c4841db0ab7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-032.png",
+          "sha256": "834723b1a95d3986ebfe60b049800d1e9db1cbb1a9f2fc81b3bda3c978ad3431"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-033.png",
+          "sha256": "e1e9cb98b99c5c38bd030bde96fb4deb2c7f76097f22b10d163b44eef9142743"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-034.png",
+          "sha256": "665c0415c4924434e30aa04011279ed5efc83f57da8a62294f73dc1160abd88d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-035.png",
+          "sha256": "e14efb48567a833dcb7bf6e702dfef364632212344598d5f6044b933e00310de"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-036.png",
+          "sha256": "8406ab9fba2bbd31c09d58aa4732bb9d8417263c7f93547fd67c111ee22d05c0"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-037.png",
+          "sha256": "243df0bb5115a5e91f2b70eee19893d465352b1353cbb0c30a8c2a2cfdbaec11"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-038.png",
+          "sha256": "04671835b941a745d8858ec6d2b46456059f7b0a7d014d1042c248f9f6fbddcf"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-039.png",
+          "sha256": "3d3f836c9a03f341fcf8a3bd54d8c97799dd309e94a2d7903b11f06b4e5a5852"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-040.png",
+          "sha256": "862461f378d01e298c2af59a636d4899da544d4a74b6524513b6b2ab4a79f859"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-041.png",
+          "sha256": "a80e7fcdfc4c3e6f1aa13316f7905dfb0b2b15c56251128c2d2b5418c89dc338"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-042.png",
+          "sha256": "e9d430bbd995b23e188d8bb69466712ca38f3fbcd6e23cc81f3b272da9abf15f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-043.png",
+          "sha256": "a91fffe4101b2d57b5027f33afeb57e5ed1f3d724369359cd9f2d91e29f0de5a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\motion-fire-044.png",
+          "sha256": "5ae318b72f1bfaf52d8b0c22860da7e513ba5391a7fd3867741c0472c3a309bd"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\fire-spent.png",
+          "sha256": "f0fdad6576d9f1f8a93421ee1318fe734f3413136474188d62b4abca049b8822"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/checks.json",
+      "sha256": "1953da7bc20db299452525fe20787a2e9c23fa4209ed1209ba8aa6ecec7dd38c",
+      "operation": "JSON line endings normalized to LF; values unchanged",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\checks.json",
+          "sha256": "1953da7bc20db299452525fe20787a2e9c23fa4209ed1209ba8aa6ecec7dd38c"
+        }
+      ]
+    },
+    {
+      "path": "forward_plus/benchmark.json",
+      "sha256": "dea140da0e3ba4703e75c35ddaf514def01f3fb8608d2380239f1c73c64e1ac1",
+      "operation": "JSON line endings normalized to LF; values unchanged",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\forward_plus\\benchmark.json",
+          "sha256": "dea140da0e3ba4703e75c35ddaf514def01f3fb8608d2380239f1c73c64e1ac1"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/ember-visibility.json",
+      "sha256": "d485306e0e7a3ab82bdfbac77466ce0b0774fbd1e8b119a12dd8b4659be4df9d",
+      "operation": "actual rendered emission-on/off pixel comparison outside the caption",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-dusk.png",
+          "sha256": "c001d9a77e90024d3ccecb5074fa5d7b4a4b0cdbb697c93a45915fe25ffb59c8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-dusk-emission-off.png",
+          "sha256": "868eb1407238cc8ba3ea2aa718d5bc423ca4fc2d17d6482e11106f88d2ecd300"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/chest-wood-open.png",
+      "sha256": "2dbc44510251005166ec1da3e436768257923239a55bab7fa7b9de9c2fff567e",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-wood-open.png",
+          "sha256": "2dbc44510251005166ec1da3e436768257923239a55bab7fa7b9de9c2fff567e"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/chest-wood-closed.png",
+      "sha256": "a29a024bdaa592a3b5a5d3e1097981c3948f5b46af1dad206f16dd81314f09ef",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-wood-closed.png",
+          "sha256": "a29a024bdaa592a3b5a5d3e1097981c3948f5b46af1dad206f16dd81314f09ef"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/chest-bronze-open.png",
+      "sha256": "9e15decd1beb524d081dbbc393e2e49dd1a374cdfaf52027c65f2d70d7035df2",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-bronze-open.png",
+          "sha256": "9e15decd1beb524d081dbbc393e2e49dd1a374cdfaf52027c65f2d70d7035df2"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/02-storage-panel.png",
+      "sha256": "de8983142ab6e677be6941dc3e0c678dfe451dad25263edb37bc9b2f568b10b5",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\02-storage-panel.png",
+          "sha256": "de8983142ab6e677be6941dc3e0c678dfe451dad25263edb37bc9b2f568b10b5"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/chest-shade.png",
+      "sha256": "9008a07c30665589442e78b06e457d48ff7727ff50321c910eea457715732a6b",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-shade.png",
+          "sha256": "9008a07c30665589442e78b06e457d48ff7727ff50321c910eea457715732a6b"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/chest-dusk.png",
+      "sha256": "d103ad0a76f714d42f12a849237a9124fbfee6da2f67ec0ca17a765df24ffa5d",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-dusk.png",
+          "sha256": "d103ad0a76f714d42f12a849237a9124fbfee6da2f67ec0ca17a765df24ffa5d"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/ghost-chest.png",
+      "sha256": "9208cf818d6689fdbec3353bb72138231e38ce5b0ca15dfb51ac0d8cb8d54bb6",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\ghost-chest.png",
+          "sha256": "9208cf818d6689fdbec3353bb72138231e38ce5b0ca15dfb51ac0d8cb8d54bb6"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/ghost-campfire.png",
+      "sha256": "05811d12453cbdf4f5eb60943e0636fd2d1172b2bb60e0efaf1a22df2d9bf706",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\ghost-campfire.png",
+          "sha256": "05811d12453cbdf4f5eb60943e0636fd2d1172b2bb60e0efaf1a22df2d9bf706"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/fire-wood-new.png",
+      "sha256": "7426a08e7d6c21ea69b99c2f29258ab96c86e7b240906411ce0af502cac4c5b7",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-wood-new.png",
+          "sha256": "7426a08e7d6c21ea69b99c2f29258ab96c86e7b240906411ce0af502cac4c5b7"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/fire-last-44.png",
+      "sha256": "eb2e0bb2b12b7759a2749f6449558e774171d3237a5f85d35123bb3ee16e26f5",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-last-44.png",
+          "sha256": "eb2e0bb2b12b7759a2749f6449558e774171d3237a5f85d35123bb3ee16e26f5"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/fire-last-59.png",
+      "sha256": "f8cf275f0f95442bf789d7659972265bd1a263a7e35930b545bd38d20dee2cb1",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-last-59.png",
+          "sha256": "f8cf275f0f95442bf789d7659972265bd1a263a7e35930b545bd38d20dee2cb1"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/fire-spent.png",
+      "sha256": "7804bb286d0845d2b28f0d4968ae14f9ebac2d7d9b8182e5035442d9b6243666",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-spent.png",
+          "sha256": "7804bb286d0845d2b28f0d4968ae14f9ebac2d7d9b8182e5035442d9b6243666"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/fire-emission-off.png",
+      "sha256": "28a0a6bd79d059ec2ed103ab401f447988a889b2433c8b9d90fc50319498a396",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-emission-off.png",
+          "sha256": "28a0a6bd79d059ec2ed103ab401f447988a889b2433c8b9d90fc50319498a396"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/fire-dusk.png",
+      "sha256": "c001d9a77e90024d3ccecb5074fa5d7b4a4b0cdbb697c93a45915fe25ffb59c8",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-dusk.png",
+          "sha256": "c001d9a77e90024d3ccecb5074fa5d7b4a4b0cdbb697c93a45915fe25ffb59c8"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/fire-dusk-emission-off.png",
+      "sha256": "868eb1407238cc8ba3ea2aa718d5bc423ca4fc2d17d6482e11106f88d2ecd300",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-dusk-emission-off.png",
+          "sha256": "868eb1407238cc8ba3ea2aa718d5bc423ca4fc2d17d6482e11106f88d2ecd300"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/chests-distance-6.png",
+      "sha256": "ece85ca6cd262b6108d075ecd9a85810b7ff935c8f4d24faabaf0aa0be2fc0d7",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chests-distance-6.png",
+          "sha256": "ece85ca6cd262b6108d075ecd9a85810b7ff935c8f4d24faabaf0aa0be2fc0d7"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/chests-distance-12.png",
+      "sha256": "7162e4794c54cb1bcb4b2e9b34afe8e252d278b6e9e2857be5c0a7465a4fd4b9",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chests-distance-12.png",
+          "sha256": "7162e4794c54cb1bcb4b2e9b34afe8e252d278b6e9e2857be5c0a7465a4fd4b9"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/chests-distance-24.png",
+      "sha256": "1b7b47f509a1c2c96bc9ceac4e1ff3b08958863173b95e8a78767410bc665cc9",
+      "operation": "unchanged bytes",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chests-distance-24.png",
+          "sha256": "1b7b47f509a1c2c96bc9ceac4e1ff3b08958863173b95e8a78767410bc665cc9"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/all-eight-chests.png",
+      "sha256": "05cc60d75174fbae42fcd35336f6717a03172fca34ee2a278e87bc0005e6e47a",
+      "operation": "labelled contact sheet; proportional resizing only",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-wood-open.png",
+          "sha256": "2dbc44510251005166ec1da3e436768257923239a55bab7fa7b9de9c2fff567e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-pine-open.png",
+          "sha256": "eef8a3d014271b50bb7b740de0e86224a7001f4f47a2cfe4e4c86499601c9339"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-bog_oak-open.png",
+          "sha256": "08a1ab6e5c5c967cada9df8b6fdb295da6ca72a69f5afd3d69f9f16b4da390f9"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-ash_wood-open.png",
+          "sha256": "9402440d242f6c3246ee03fbdb70350e42a7fe66513ad3e953357a6557ac948f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-resinheart-open.png",
+          "sha256": "2af99238e0d599265a461ab0858b4ea3a23a3085f274197b8a021ef9f610892f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-iron-open.png",
+          "sha256": "26b790de2adaa154a107ff41c7e85c352d791c37bc253ef7a15b181c2ac36bad"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-bronze-open.png",
+          "sha256": "9e15decd1beb524d081dbbc393e2e49dd1a374cdfaf52027c65f2d70d7035df2"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\chest-steel-open.png",
+          "sha256": "006ea36f2f1d8b34b1cd92882aa4736345f13de9d0448a34d28ce1300de4c942"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/all-five-fuels.png",
+      "sha256": "d6caf908c441d3fda7b037244a5db0c256930bb7216f6c5cc6b4f49671fe4b1e",
+      "operation": "labelled contact sheet; proportional resizing only",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-wood-new.png",
+          "sha256": "7426a08e7d6c21ea69b99c2f29258ab96c86e7b240906411ce0af502cac4c5b7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-pine-new.png",
+          "sha256": "d6f3724a883b832597dc157dce13ce87045e3ca3eba2df63ef4ede17966853e8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-bog_oak-new.png",
+          "sha256": "cf9afac462aee4f3cc5dbb10597f5cf127656ecf7e1bc78bb7aa421cac0164f4"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-ash_wood-new.png",
+          "sha256": "4d9abb757b32bbd3e545fe37036a45d0a9a1782e68931855fb4497c2ef83e678"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-charcoal-new.png",
+          "sha256": "ba284387e28d76f160b5eeb1c26be4c14a7cbbbe519974783418da4a48fc7241"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-wood-late.png",
+          "sha256": "0351d71d5503476108deaa28e5c12f56eea96386c04b4f349cff30e14c6b9e53"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-pine-late.png",
+          "sha256": "e32c500bd4b46826b60186959204eb4ca6dc6dcd7120f106631a8dec51b87a01"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-bog_oak-late.png",
+          "sha256": "3cc6f21dd6821470218b69a6460199948c8d7c8630fe8611570be6b5f40cb958"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-ash_wood-late.png",
+          "sha256": "d382468508f647fd9f2262a39630e53271620c9909c4b218379aa4a9c696fc44"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-charcoal-late.png",
+          "sha256": "0e76eb5b1934ba92889602e77ba93d9d22df08a3c59d62b9019c2f1a024788c2"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/lid-motion.webp",
+      "sha256": "419e85bf7cbe543f8f3e48d7b4254c65b4dc48aaba40fca0f81637d19846137c",
+      "operation": "actual captured frames resized to 960x600; 80 ms display per frame; native panel driven cosmetic travel",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-000.png",
+          "sha256": "6717110699360b47da7e792c039388055dc4fa0951ce37cbbd411df819ad6ca7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-001.png",
+          "sha256": "70b0860ce7ddd82248f66fab3c0d893daef56e06def311170b49abd3e66fc930"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-002.png",
+          "sha256": "209adecdf6bbf609b89510ac20f673ef64d32ad9978bb1d14f8cee289821e70e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-003.png",
+          "sha256": "f83295063248dc70f3738e0f7909a91f1056fe6489564af59c5c54a943995456"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-004.png",
+          "sha256": "71147a8a8df32a199c113e1fd1afc61390346fefefc6bc177dd389b87e6c5440"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-005.png",
+          "sha256": "99b1ca742947a299782c6d2bce447b415c50ab37250db571c4a7723dd42ad9e7"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-006.png",
+          "sha256": "5b52c6d9f0dacfc4b980dbefc3b9258acc24e7bf0521e32ab0bb78faa7e4f914"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-007.png",
+          "sha256": "f100f17dcf965e76b13fdf23500ef0d1c8fa58c2ae32d661b279142ea7624bf8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-008.png",
+          "sha256": "96d205e75547e23d2110d04d664c469997bcbaf6dd749914fcfbad9dfd04c5bc"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-009.png",
+          "sha256": "18594a45ae58adb38148cc7585bc2e1d95a2a54b2db19d7646e2ee941f234303"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-010.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-011.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-012.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-013.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-014.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-015.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-016.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-017.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-018.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-019.png",
+          "sha256": "0963e723abe284b8bb677df996ff48a987cbdd00150b827be1f8542b56739152"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-020.png",
+          "sha256": "13ffee0800adb27a357c5167b87d65530a8cdf0887b6ab1d274ed2a2cc4ae98a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-021.png",
+          "sha256": "bd2d52309e059e691b652a50b1594d74c82d9cf8d955cbf3d6661173f0094b72"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-022.png",
+          "sha256": "da12be764e01d524a56819c2d7ab2d84baa2b278f2b374fe8fe58491a76b9ebe"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-023.png",
+          "sha256": "706fd99886ce7bf216013106b7589ac48f18ba9a36da4e1013c91dda25df926d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-024.png",
+          "sha256": "3f527a711a08bd4ddf255476203977fadc4a255e016f53f968cc6e7dcf1320a8"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-025.png",
+          "sha256": "0e717e6b66305c303b48d67a14c12eafa02595d92afca83579b43d78a3f3fa5e"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-026.png",
+          "sha256": "df2e0e580bf18bb078f89b2c243bc6c931b1a9a0402dc4bcb774ca3fdc31f02b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-027.png",
+          "sha256": "600b2713cd228537f83c981769bbd9bb83ed4981f312e17444dfc3f883db89a4"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-028.png",
+          "sha256": "ca7e7b41cd7dac8d6d5433034a987e1d635159c059494cff503b87a80893214f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-029.png",
+          "sha256": "03e3fce70f6b0517014ebcb8acc2d1d921c534d0b3c6acf3404e19708d3a60d5"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-030.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-031.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-032.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-033.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-034.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-035.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-036.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-037.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-038.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-lid-039.png",
+          "sha256": "4d6bc53470a089d09e52d20efae956ba524487206d968664b0295421f0ff6919"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/fire-motion.webp",
+      "sha256": "57c45b76b68ff487059c578c798f437ce0b996d9d6f797101cc4f3128188bd5f",
+      "operation": "actual captured frames resized to 960x600; 120 ms display per one-second native burn step, followed by actual spent view",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-000.png",
+          "sha256": "02567696fa9fc4cfa0f3e9a9c4563da221174156be3d0602ea1a5f3c5e3b1069"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-001.png",
+          "sha256": "0f2414417baffa2f7412bcf862e8e084e8fa82cce4a0b7f4ab10a9f8563bd8fc"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-002.png",
+          "sha256": "99e42af5fcfcbb273d2b71667ce1d813a554945453b566af09276572cd73744b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-003.png",
+          "sha256": "37640694f96a0735486ad2a5cf449b22f9f404b8442a63f2d719ac2ba70275ff"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-004.png",
+          "sha256": "7a0f190c59bb20633e43e55672420de86bb4d3a3f20c72cbcf8d062cba4044ce"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-005.png",
+          "sha256": "72b613dfdfba8dc703c0da92c0dd010bb60f59bbe68f0cb4ffc471d6ad21602a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-006.png",
+          "sha256": "02e13789f36c0ec39c7bc552d3459c8aa10fae6b4a9c49b7d9a9a0895b713924"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-007.png",
+          "sha256": "afcbecf427ff8fb3bc7ae7819ddd61acabd6d74469ae50ceb9b7570ecef2e875"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-008.png",
+          "sha256": "a41706dd99f06dcc18560297e2bff9af9045e4d840d0183e00a319a8cbc61ee6"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-009.png",
+          "sha256": "ceffcaa1582ab0919b6df317651c65f8e8777f4815d433d0f857eb01da18d23b"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-010.png",
+          "sha256": "44f79993eaf8beca9d72d543f47e3eb849ced7ea5ef5c743eb1cb9e85c0384ed"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-011.png",
+          "sha256": "a5dbd98bc2f01ea6eaa6593ea1537629f1af7e6f2beb4c3a91deafacb9e9946c"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-012.png",
+          "sha256": "9ada86763c86131187efeb3d05c465aba981114aa6cf4a2b675bcbd896e3a268"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-013.png",
+          "sha256": "0f924f1ce42a3f57ff8f25329dd1d2ba87eaef31b0406c77127e33df849c3b10"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-014.png",
+          "sha256": "d3557a9ce99649761649360f5bb5d4da4adf495135fc52319a161b63ea41d183"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-015.png",
+          "sha256": "383f25c0c879fda917b6da94e05d1d8858856c38241ef28e537c80451a342411"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-016.png",
+          "sha256": "d5bb405db50f73a1b23a106be975fed3a0ded242bd38d0007b45cc1d11962316"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-017.png",
+          "sha256": "106d2a92bac6def6c23521da10b72f9cbf95c4a76da1e96b6d15bf8e59419b20"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-018.png",
+          "sha256": "e025d02ade7959f826de9399a8adb108c64fcca5b9a614ef9bebb7647893ee13"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-019.png",
+          "sha256": "9527dca1525669eae1bf08321a29f55ee9f098f62f60f4e1804099cc55c01cec"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-020.png",
+          "sha256": "b3f4946d8805751677f73b96b401e92b4c5157f56d09dc58dd8936b85594b229"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-021.png",
+          "sha256": "60e6cd2211734685bb1bc1600d0c7b4246435aeb7ea9e6fbaa5f743f0bfb9d4d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-022.png",
+          "sha256": "9f9b8ade5254c65221d26367dedc7bfe0de8af85293f26278b4a5d6efb71101a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-023.png",
+          "sha256": "500bb4bab5a36094d623df12e5d366eb343b1f555b795b2f06ca9e995dfb68a1"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-024.png",
+          "sha256": "d9be746d38c9f98f3f26a90659d02db8df8334a66abe39c32419fe9c1847a5af"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-025.png",
+          "sha256": "4a90b94cb2e88848e3eb9e7171382fda403c7b73817c448149b216741f1ec501"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-026.png",
+          "sha256": "57be58ae42e13dcbb9b26a2923f3f1d0b998a0c68b368a356e30fff4d51251b5"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-027.png",
+          "sha256": "9b8fd279bcc4a46de3d8dbac7600905a7e868e9a8d73552d25dfad09a50b5f90"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-028.png",
+          "sha256": "8c292422b1db1d305b49e3b464542d0f79dfaf8db4503eaf29d745349f3914bf"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-029.png",
+          "sha256": "304a931a99f75ab981b1eaf3972da7ccc987443b398d397c657a570900208619"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-030.png",
+          "sha256": "8afe68ae8fd3fbd99aad60a921e9e73370e5aa20db08fb33ad0fa38cbe19a096"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-031.png",
+          "sha256": "280842b36933ab64e03e7cfdf7cfe4a017d3788d37517e3e946e04b1a7305b4a"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-032.png",
+          "sha256": "3d4fa80246640baffa8910a00ffb0b54413eaa58fa88b6f91895f77a072b723c"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-033.png",
+          "sha256": "afff1f91d5398d95a5b0c020a9f3a9c9dd70182362d5fdb99d7e3fa2fd0241a9"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-034.png",
+          "sha256": "bd5cc3bcb64021749c2308384cb0fdb8ac22067e810a0c643ec23f6ff70aa801"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-035.png",
+          "sha256": "ad7206a303db489f1d0c006821c2576c89e28fdd459f02237fad52fc7fd70200"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-036.png",
+          "sha256": "1c27f84a6c97529772be7be318e1ae6b03b07d1c9d2c2da999b1e0610b377a34"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-037.png",
+          "sha256": "54d997223051f858384959bfcf11a67260e985a02cd8ef3732f2fee860bfd0c9"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-038.png",
+          "sha256": "44db4f8fe5c4e7f5fbc42dd5c4c65dafe05af7c105b4037e1b3b682ab643b9e9"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-039.png",
+          "sha256": "b62cc93032dc5a53f2712537828cc700a5c91b4cca41042db82a65f264fd3c99"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-040.png",
+          "sha256": "7a952b4509e7d121f85856bc9cbba8ff7d1ea9374b75247c222379440687ece5"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-041.png",
+          "sha256": "fdf4dfa05f3607d18ebaf717bf57a64fad44ee870a9c20d29afa1661d84e1b4f"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-042.png",
+          "sha256": "44492332e29984e7aa31f0fd422a33a7a5e06b4764ee5ab66605fd42fa86fc5d"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-043.png",
+          "sha256": "aaabe5b618a0001c1bb83ebc4ee146022ec95e50663e9128aba301f4643049fd"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\motion-fire-044.png",
+          "sha256": "dbe443f2316706e3d81f2cd53f2b95628db982d3f4f790055596469499a87666"
+        },
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\fire-spent.png",
+          "sha256": "7804bb286d0845d2b28f0d4968ae14f9ebac2d7d9b8182e5035442d9b6243666"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/checks.json",
+      "sha256": "5d710d038f3cdd113c99f8b8a188d40d351cc0056648ce5a06c392e49ece54b8",
+      "operation": "JSON line endings normalized to LF; values unchanged",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\checks.json",
+          "sha256": "5d710d038f3cdd113c99f8b8a188d40d351cc0056648ce5a06c392e49ece54b8"
+        }
+      ]
+    },
+    {
+      "path": "gl_compatibility/benchmark.json",
+      "sha256": "66377f2f0f29c3ce71d2f6d9a3bc2ac6329f5282715119746703591a9ac05390",
+      "operation": "JSON line endings normalized to LF; values unchanged",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\r04\\evidence\\gl_compatibility\\benchmark.json",
+          "sha256": "66377f2f0f29c3ce71d2f6d9a3bc2ac6329f5282715119746703591a9ac05390"
+        }
+      ]
+    },
+    {
+      "path": "source-audit.json",
+      "sha256": "7ba5ef205dc689ad74f69cfb3558f1d00a7cb9b064211a00b87fa7f135058545",
+      "operation": "JSON line endings normalized to LF; values unchanged",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\audit-final.json",
+          "sha256": "fefadd2741e30d0b690db844b11ef5d072ee688b2619ba5bafd4cc88039d453e"
+        }
+      ]
+    },
+    {
+      "path": "blender-reopen.json",
+      "sha256": "01fcd0b52b6cab8ba4a15515e9a4279204fc5f1eb36996be4dec69c964c23a26",
+      "operation": "JSON line endings normalized to LF; values unchanged",
+      "sources": [
+        {
+          "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\reopen\\reopen.json",
+          "sha256": "c87ba57854b78817f082e9240b06ee030408d6cb0efc259278f4756718e5efcf"
+        }
+      ]
+    }
+  ]
+}

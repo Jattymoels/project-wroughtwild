@@ -1,0 +1,60 @@
+{
+	"backend": "forward_plus",
+	"benchmarks": [
+		{
+			"distance_m": 6.0,
+			"draws": 123.0,
+			"live_fires": 5,
+			"p50_ms": 0.525,
+			"p95_ms": 1.202,
+			"primitives": 128846.0,
+			"texture_bytes": 342180352.0,
+			"video_bytes": 397942608.0,
+			"worst_ms": 1.685
+		},
+		{
+			"distance_m": 12.0,
+			"draws": 176.0,
+			"live_fires": 5,
+			"p50_ms": 0.537,
+			"p95_ms": 1.144,
+			"primitives": 178342.0,
+			"texture_bytes": 342180352.0,
+			"video_bytes": 397942608.0,
+			"worst_ms": 2.112
+		},
+		{
+			"distance_m": 24.0,
+			"draws": 158.0,
+			"live_fires": 5,
+			"p50_ms": 0.589,
+			"p95_ms": 0.992,
+			"primitives": 157470.0,
+			"texture_bytes": 342180352.0,
+			"video_bytes": 397942608.0,
+			"worst_ms": 1.896
+		}
+	],
+	"checks": 798,
+	"failures": 0,
+	"fuel": [
+		{
+			"charcoal_seconds": 60,
+			"clock": "unchanged native method, one-second test steps",
+			"families": [
+				"wood",
+				"pine",
+				"bog_oak",
+				"ash_wood",
+				"charcoal"
+			],
+			"heat": [
+				1,
+				2
+			],
+			"save": "omitted as before",
+			"timber_seconds": 45
+		}
+	],
+	"scope": "Supplied stock; native payment, panels, burn method and saves. No first-hour pacing claim."
+}

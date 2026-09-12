@@ -1,0 +1,1216 @@
+{
+  "base": "bbcb3a7dfd235e8f803141ccb57c38e03d6c1708",
+  "dependencies": {
+    "d1": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d1\\worktree\\build\\art07\\d1\\v02\\core-lattice-handoff-v01",
+      "manifest_sha256": "a3e92f9692e05eae547290cd6520242f91dfbda31d9236eb6d12842f0453b85a",
+      "published_commit": "58d3223",
+      "verified_files": 1597
+    },
+    "d4": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-d4\\build\\art07\\d4\\h04",
+      "manifest_sha256": "aaa0316f108cdb1de0ed27cc3a40fac7a07574497c14486e88b18fa73dfbda59",
+      "published_commit": "b1abc42",
+      "verified_files": 196
+    },
+    "d5": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d5\\worktree\\build\\art07\\d5\\v03\\d5-handoff",
+      "manifest_sha256": "79532aa924414715fbbde0bf714280fd75d40c9f21cc62cb44c0ce12c3834844",
+      "published_commit": "68b7ca1",
+      "verified_files": 290
+    },
+    "d6": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d6\\worktree\\build\\art07\\d6\\v04\\handoff",
+      "manifest_sha256": "8d82eb36775959f41905e579e36d737caa4a8512ed504d679ab49652301338a7",
+      "published_commit": "3bc4f68",
+      "verified_files": 78
+    }
+  },
+  "unchanged_source_files": 56,
+  "models": {
+    "chest_wood_body": {
+      "triangles": 4288,
+      "degenerates": 0,
+      "objects": 52,
+      "bounds_blender": [
+        [
+          -0.5,
+          -0.4000000059604645,
+          -0.5
+        ],
+        [
+          0.5,
+          0.4000000059604645,
+          0.1080000028014183
+        ]
+      ]
+    },
+    "chest_wood_lid": {
+      "triangles": 2048,
+      "degenerates": 0,
+      "objects": 24,
+      "bounds_blender": [
+        [
+          -0.4970000088214874,
+          -0.4000000059604645,
+          0.03799999877810478
+        ],
+        [
+          0.4970000088214874,
+          0.39649999141693115,
+          0.20000001788139343
+        ]
+      ]
+    },
+    "chest_pine_body": {
+      "triangles": 4288,
+      "degenerates": 0,
+      "objects": 52,
+      "bounds_blender": [
+        [
+          -0.5,
+          -0.4000000059604645,
+          -0.5
+        ],
+        [
+          0.5,
+          0.4000000059604645,
+          0.1080000028014183
+        ]
+      ]
+    },
+    "chest_pine_lid": {
+      "triangles": 2048,
+      "degenerates": 0,
+      "objects": 24,
+      "bounds_blender": [
+        [
+          -0.4970000088214874,
+          -0.4000000059604645,
+          0.03799999877810478
+        ],
+        [
+          0.4970000088214874,
+          0.39649999141693115,
+          0.20000001788139343
+        ]
+      ]
+    },
+    "chest_bog_oak_body": {
+      "triangles": 4288,
+      "degenerates": 0,
+      "objects": 52,
+      "bounds_blender": [
+        [
+          -0.5,
+          -0.4000000059604645,
+          -0.5
+        ],
+        [
+          0.5,
+          0.4000000059604645,
+          0.1080000028014183
+        ]
+      ]
+    },
+    "chest_bog_oak_lid": {
+      "triangles": 2048,
+      "degenerates": 0,
+      "objects": 24,
+      "bounds_blender": [
+        [
+          -0.4970000088214874,
+          -0.4000000059604645,
+          0.03799999877810478
+        ],
+        [
+          0.4970000088214874,
+          0.39649999141693115,
+          0.20000001788139343
+        ]
+      ]
+    },
+    "chest_ash_wood_body": {
+      "triangles": 4288,
+      "degenerates": 0,
+      "objects": 52,
+      "bounds_blender": [
+        [
+          -0.5,
+          -0.4000000059604645,
+          -0.5
+        ],
+        [
+          0.5,
+          0.4000000059604645,
+          0.1080000028014183
+        ]
+      ]
+    },
+    "chest_ash_wood_lid": {
+      "triangles": 2048,
+      "degenerates": 0,
+      "objects": 24,
+      "bounds_blender": [
+        [
+          -0.4970000088214874,
+          -0.4000000059604645,
+          0.03799999877810478
+        ],
+        [
+          0.4970000088214874,
+          0.39649999141693115,
+          0.20000001788139343
+        ]
+      ]
+    },
+    "chest_resinheart_body": {
+      "triangles": 4288,
+      "degenerates": 0,
+      "objects": 52,
+      "bounds_blender": [
+        [
+          -0.5,
+          -0.4000000059604645,
+          -0.5
+        ],
+        [
+          0.5,
+          0.4000000059604645,
+          0.1080000028014183
+        ]
+      ]
+    },
+    "chest_resinheart_lid": {
+      "triangles": 2048,
+      "degenerates": 0,
+      "objects": 24,
+      "bounds_blender": [
+        [
+          -0.4970000088214874,
+          -0.4000000059604645,
+          0.03799999877810478
+        ],
+        [
+          0.4970000088214874,
+          0.39649999141693115,
+          0.20000001788139343
+        ]
+      ]
+    },
+    "chest_iron_body": {
+      "triangles": 4288,
+      "degenerates": 0,
+      "objects": 52,
+      "bounds_blender": [
+        [
+          -0.5,
+          -0.4000000059604645,
+          -0.5
+        ],
+        [
+          0.5,
+          0.4000000059604645,
+          0.1080000028014183
+        ]
+      ]
+    },
+    "chest_iron_lid": {
+      "triangles": 2048,
+      "degenerates": 0,
+      "objects": 24,
+      "bounds_blender": [
+        [
+          -0.4970000088214874,
+          -0.4000000059604645,
+          0.03799999877810478
+        ],
+        [
+          0.4970000088214874,
+          0.39649999141693115,
+          0.20000001788139343
+        ]
+      ]
+    },
+    "chest_bronze_body": {
+      "triangles": 4288,
+      "degenerates": 0,
+      "objects": 52,
+      "bounds_blender": [
+        [
+          -0.5,
+          -0.4000000059604645,
+          -0.5
+        ],
+        [
+          0.5,
+          0.4000000059604645,
+          0.1080000028014183
+        ]
+      ]
+    },
+    "chest_bronze_lid": {
+      "triangles": 2048,
+      "degenerates": 0,
+      "objects": 24,
+      "bounds_blender": [
+        [
+          -0.4970000088214874,
+          -0.4000000059604645,
+          0.03799999877810478
+        ],
+        [
+          0.4970000088214874,
+          0.39649999141693115,
+          0.20000001788139343
+        ]
+      ]
+    },
+    "chest_steel_body": {
+      "triangles": 4288,
+      "degenerates": 0,
+      "objects": 52,
+      "bounds_blender": [
+        [
+          -0.5,
+          -0.4000000059604645,
+          -0.5
+        ],
+        [
+          0.5,
+          0.4000000059604645,
+          0.1080000028014183
+        ]
+      ]
+    },
+    "chest_steel_lid": {
+      "triangles": 2048,
+      "degenerates": 0,
+      "objects": 24,
+      "bounds_blender": [
+        [
+          -0.4970000088214874,
+          -0.4000000059604645,
+          0.03799999877810478
+        ],
+        [
+          0.4970000088214874,
+          0.39649999141693115,
+          0.20000001788139343
+        ]
+      ]
+    },
+    "fire_wood_fuel": {
+      "triangles": 192,
+      "degenerates": 0,
+      "objects": 6,
+      "bounds_blender": [
+        [
+          -0.3155180513858795,
+          -0.3135240375995636,
+          -0.23899999260902405
+        ],
+        [
+          0.3155180513858795,
+          0.3135240375995636,
+          -0.09000000357627869
+        ]
+      ]
+    },
+    "fire_wood_embers": {
+      "triangles": 72,
+      "degenerates": 0,
+      "objects": 6,
+      "bounds_blender": [
+        [
+          -0.29551804065704346,
+          -0.2935240566730499,
+          -0.1770000010728836
+        ],
+        [
+          0.29551804065704346,
+          0.2935240566730499,
+          -0.10199999809265137
+        ]
+      ]
+    },
+    "fire_wood_ash": {
+      "triangles": 400,
+      "degenerates": 0,
+      "objects": 20,
+      "bounds_blender": [
+        [
+          -0.3141471743583679,
+          -0.31381040811538696,
+          -0.24778607487678528
+        ],
+        [
+          0.36617034673690796,
+          0.35469451546669006,
+          -0.22821393609046936
+        ]
+      ]
+    },
+    "fire_pine_fuel": {
+      "triangles": 192,
+      "degenerates": 0,
+      "objects": 6,
+      "bounds_blender": [
+        [
+          -0.3155180513858795,
+          -0.3135240375995636,
+          -0.23899999260902405
+        ],
+        [
+          0.3155180513858795,
+          0.3135240375995636,
+          -0.09000000357627869
+        ]
+      ]
+    },
+    "fire_pine_embers": {
+      "triangles": 72,
+      "degenerates": 0,
+      "objects": 6,
+      "bounds_blender": [
+        [
+          -0.29551804065704346,
+          -0.2935240566730499,
+          -0.1770000010728836
+        ],
+        [
+          0.29551804065704346,
+          0.2935240566730499,
+          -0.10199999809265137
+        ]
+      ]
+    },
+    "fire_pine_ash": {
+      "triangles": 400,
+      "degenerates": 0,
+      "objects": 20,
+      "bounds_blender": [
+        [
+          -0.3141471743583679,
+          -0.31381040811538696,
+          -0.24778607487678528
+        ],
+        [
+          0.36617034673690796,
+          0.35469451546669006,
+          -0.22821393609046936
+        ]
+      ]
+    },
+    "fire_bog_oak_fuel": {
+      "triangles": 192,
+      "degenerates": 0,
+      "objects": 6,
+      "bounds_blender": [
+        [
+          -0.3155180513858795,
+          -0.3135240375995636,
+          -0.23899999260902405
+        ],
+        [
+          0.3155180513858795,
+          0.3135240375995636,
+          -0.09000000357627869
+        ]
+      ]
+    },
+    "fire_bog_oak_embers": {
+      "triangles": 72,
+      "degenerates": 0,
+      "objects": 6,
+      "bounds_blender": [
+        [
+          -0.29551804065704346,
+          -0.2935240566730499,
+          -0.1770000010728836
+        ],
+        [
+          0.29551804065704346,
+          0.2935240566730499,
+          -0.10199999809265137
+        ]
+      ]
+    },
+    "fire_bog_oak_ash": {
+      "triangles": 400,
+      "degenerates": 0,
+      "objects": 20,
+      "bounds_blender": [
+        [
+          -0.3141471743583679,
+          -0.31381040811538696,
+          -0.24778607487678528
+        ],
+        [
+          0.36617034673690796,
+          0.35469451546669006,
+          -0.22821393609046936
+        ]
+      ]
+    },
+    "fire_ash_wood_fuel": {
+      "triangles": 192,
+      "degenerates": 0,
+      "objects": 6,
+      "bounds_blender": [
+        [
+          -0.3155180513858795,
+          -0.3135240375995636,
+          -0.23899999260902405
+        ],
+        [
+          0.3155180513858795,
+          0.3135240375995636,
+          -0.09000000357627869
+        ]
+      ]
+    },
+    "fire_ash_wood_embers": {
+      "triangles": 72,
+      "degenerates": 0,
+      "objects": 6,
+      "bounds_blender": [
+        [
+          -0.29551804065704346,
+          -0.2935240566730499,
+          -0.1770000010728836
+        ],
+        [
+          0.29551804065704346,
+          0.2935240566730499,
+          -0.10199999809265137
+        ]
+      ]
+    },
+    "fire_ash_wood_ash": {
+      "triangles": 400,
+      "degenerates": 0,
+      "objects": 20,
+      "bounds_blender": [
+        [
+          -0.3141471743583679,
+          -0.31381040811538696,
+          -0.24778607487678528
+        ],
+        [
+          0.36617034673690796,
+          0.35469451546669006,
+          -0.22821393609046936
+        ]
+      ]
+    },
+    "fire_charcoal_fuel": {
+      "triangles": 580,
+      "degenerates": 0,
+      "objects": 29,
+      "bounds_blender": [
+        [
+          -0.3002120554447174,
+          -0.3106437921524048,
+          -0.24281850457191467
+        ],
+        [
+          0.30490371584892273,
+          0.3091197907924652,
+          -0.04087021201848984
+        ]
+      ]
+    },
+    "fire_charcoal_embers": {
+      "triangles": 1080,
+      "degenerates": 0,
+      "objects": 10,
+      "bounds_blender": [
+        [
+          -0.2381313294172287,
+          -0.2346562147140503,
+          -0.1860000044107437
+        ],
+        [
+          0.24150000512599945,
+          0.22794470191001892,
+          -0.17400000989437103
+        ]
+      ]
+    },
+    "fire_charcoal_ash": {
+      "triangles": 400,
+      "degenerates": 0,
+      "objects": 20,
+      "bounds_blender": [
+        [
+          -0.3141471743583679,
+          -0.31381040811538696,
+          -0.24778607487678528
+        ],
+        [
+          0.36617034673690796,
+          0.35469451546669006,
+          -0.22821393609046936
+        ]
+      ]
+    }
+  },
+  "runtime": {
+    "chest_ash_wood_body": {
+      "bytes": 5111312,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "df9493902abd3abaeaab8681919c672b3ee6a1e45a0ed81ca9db5f184504eeab"
+    },
+    "chest_ash_wood_lid": {
+      "bytes": 4857708,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "a2a7b450a028b5a53a9acaebc871cca6e257e0e6d1602b6ed4e04016f025a85f"
+    },
+    "chest_bog_oak_body": {
+      "bytes": 4631592,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "3db4f9c73028c36a967e405d612ec803f0a16d997a424d7a43918b3417975088"
+    },
+    "chest_bog_oak_lid": {
+      "bytes": 4377988,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "d6449df5d06543aa840058675031536f010628028ed3776028e5c04bd118d856"
+    },
+    "chest_bronze_body": {
+      "bytes": 1566732,
+      "surfaces": 1,
+      "embedded_images": 3,
+      "sha256": "5c3854d4b1b5e5d53662f60bfd286f438266ea8c44acd575e7b235a440287f45"
+    },
+    "chest_bronze_lid": {
+      "bytes": 1312372,
+      "surfaces": 1,
+      "embedded_images": 3,
+      "sha256": "187ef5c69cb4b18613f2ac6c773c5cb1b2ba7114a9e4170eb4690d5478e6bbb2"
+    },
+    "chest_iron_body": {
+      "bytes": 1545240,
+      "surfaces": 1,
+      "embedded_images": 3,
+      "sha256": "760cef9d9df6f2ea9b3aeddb3120aa47a012f29abc0438fc26193c4dafc7646f"
+    },
+    "chest_iron_lid": {
+      "bytes": 1290880,
+      "surfaces": 1,
+      "embedded_images": 3,
+      "sha256": "0d86d84d77c21d8f2a6328fbd7ee9533b28820453a068c46b5253daad8661469"
+    },
+    "chest_pine_body": {
+      "bytes": 4668216,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "a1b582c31161af17e873e0006dabed794da4e4a3963398bac4bd1e9d0c0f9e73"
+    },
+    "chest_pine_lid": {
+      "bytes": 4414612,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "ad2ab673c63fd89d7ce9f260eb294bcc4a8ced260d1dfd5f87ecff4e86a050d3"
+    },
+    "chest_resinheart_body": {
+      "bytes": 4664032,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "88a5b4243bfe8c3a648402ed65e728e3ea0cf505cd515a3ae1700d376980e488"
+    },
+    "chest_resinheart_lid": {
+      "bytes": 4410428,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "c3ecdc116703fad81497c5e4e298eabbb664e18ccd41e4793dc93b7d08a96404"
+    },
+    "chest_steel_body": {
+      "bytes": 1534568,
+      "surfaces": 1,
+      "embedded_images": 3,
+      "sha256": "3f25bf0a91fc231ab29d65cadad5acaf0f83af5e829428470045e1286b2865e5"
+    },
+    "chest_steel_lid": {
+      "bytes": 1280208,
+      "surfaces": 1,
+      "embedded_images": 3,
+      "sha256": "abc7c931f7d1b4b1fa55d9b3ae3fbf763987cb20d3eb4a2762f909d464cfc5d6"
+    },
+    "chest_wood_body": {
+      "bytes": 4742268,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "ad086415e1e4397ae958d573fc49176ed897f8b87643a42948d4de55abaf1f1c"
+    },
+    "chest_wood_lid": {
+      "bytes": 4488664,
+      "surfaces": 3,
+      "embedded_images": 9,
+      "sha256": "5acfd9d8a9011e0ed1f9b528797fc5d1ba9af7fd24a2f3af48c702e195962aa9"
+    },
+    "fire_ash_wood_ash": {
+      "bytes": 61408,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "690643a23b75d9d0b0508de7d1ede9f2064ed3270b792c8bad0a1fc5096518dc"
+    },
+    "fire_ash_wood_embers": {
+      "bytes": 8740,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "ba4875720bfa03aa0ab2f79f9177df010c49c55443f489db0b662ede895162a4"
+    },
+    "fire_ash_wood_fuel": {
+      "bytes": 3583128,
+      "surfaces": 2,
+      "embedded_images": 6,
+      "sha256": "b0fc980600654f8ba79bf39af21f26e321ba58e9d68f4123acbee4804fc68ec2"
+    },
+    "fire_bog_oak_ash": {
+      "bytes": 61408,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "1d22c1385120ccb141c5e643abcedb71aaacdcd65027aa173dbf23c48ae2b37f"
+    },
+    "fire_bog_oak_embers": {
+      "bytes": 8736,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "3eb3563abed1914a2ea8ffeee88d3cb6075122547e192743616bfa4613794128"
+    },
+    "fire_bog_oak_fuel": {
+      "bytes": 3103408,
+      "surfaces": 2,
+      "embedded_images": 6,
+      "sha256": "1d49d3e830e14664f91b2a7f7a387c970a7a2ed639acc6be341e6dab3bf91be0"
+    },
+    "fire_charcoal_ash": {
+      "bytes": 61408,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "e6e7e469e7a101530bdc58cbbc92df7676a74988ce4902a85fe268b2e695ab15"
+    },
+    "fire_charcoal_embers": {
+      "bytes": 134612,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "8889a027fef32e2025b9a661066f262afa338b41fb73b9ecbcaece85dfebffeb"
+    },
+    "fire_charcoal_fuel": {
+      "bytes": 1796492,
+      "surfaces": 1,
+      "embedded_images": 3,
+      "sha256": "1338c998404dad265ad577022a1daba61f6e143738a2651dfd611fcfea82442a"
+    },
+    "fire_pine_ash": {
+      "bytes": 61404,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "2ccebb3eaacb541bbcd17a0d0b7eb5ec871aeff70d4941bc8aecbe303eb83b56"
+    },
+    "fire_pine_embers": {
+      "bytes": 8736,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "18637b696141d76679c5a59c3bc21f335e9cef86b8bd00c824adb60a822154c6"
+    },
+    "fire_pine_fuel": {
+      "bytes": 3140036,
+      "surfaces": 2,
+      "embedded_images": 6,
+      "sha256": "596ce8a8fa19019c34cc0af1bf5b268bde0b4635aa54baf0e3efabb0bc62d0a3"
+    },
+    "fire_wood_ash": {
+      "bytes": 61404,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "05dbd36466f904236160273c5515684155eee2db23567ceea9ddae0adf12e386"
+    },
+    "fire_wood_embers": {
+      "bytes": 8736,
+      "surfaces": 1,
+      "embedded_images": 0,
+      "sha256": "23d87823df8ea82de44bfd49177f86d3d178e540f4c78b438a204d5e5b365db1"
+    },
+    "fire_wood_fuel": {
+      "bytes": 3214084,
+      "surfaces": 2,
+      "embedded_images": 6,
+      "sha256": "44c0f45c3417bd13be5c7a9c3103a3cf84cfb0cc04e53b734e3587578b2fd0ba"
+    }
+  },
+  "textures": [
+    {
+      "file": "d4_ash_wood_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 436331,
+      "sha256": "112c39bd3a5d83053b83b622706e89da5d58d21164cbb17d43b140aefa9a9b5c",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_ash_wood_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 412740,
+      "sha256": "cc0a1e4611ad59a185ad2a33c47012248c2626befbfccd996b9b8abc502ef6fb",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_ash_wood_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 121597,
+      "sha256": "7591dfb6ae52b39f6155784c34bb2e491a1babbf264c575b588ad5e60a70c3dd",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_ash_wood_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 1127659,
+      "sha256": "ad434cc76489ee22e28e5e83d850a3a766ec5747f07c58b24c969d276cdfd5d2",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_ash_wood_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 1031310,
+      "sha256": "36dccc0c81097c189274faed90d44cb6083efaf7f0f00f316f2fd032543dddea",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_ash_wood_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 244624,
+      "sha256": "4f5f18f92286409993d3b4ef401212b019e95599ab20b94b60ff48ac6b948a18",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_bog_oak_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 330500,
+      "sha256": "41ceeb9c3e4f4b045c4d83d4f75645f84ae77c1a36f6f5002d34dc54f9660c47",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_bog_oak_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 400734,
+      "sha256": "d34132463a63675802d42d71e756d1b5a7ad724339d9336ef823f601ef70c6b5",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_bog_oak_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 136924,
+      "sha256": "8b14de17ea2d7ebe953a8aef0fb4f0d52abdde958f9afacc10c115e5386802d3",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_bog_oak_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 791900,
+      "sha256": "056dc44268f0c97ae97ec65941550560bd92a2c15ce5cf349d86b2ab969c16a5",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_bog_oak_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 961223,
+      "sha256": "8e6ebb2aea21f8efb382aeeaabe37e63a5a62c93b9977fe2feba8f10f3cb9b08",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_bog_oak_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 266635,
+      "sha256": "a318662c51429bdc4ebeb097564af11efb177fe82dcae8efbfb623961fc2ffee",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_pine_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 469832,
+      "sha256": "30b6cdbf1cf4f6fcf8cf993c1b60b7b48c8c50082c7b916c9f4127531be51e32",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_pine_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 315026,
+      "sha256": "8a3116d67735cb61563d424d2b9073e27ce41f2dfcd7948799c4b73e0f03f134",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_pine_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 127257,
+      "sha256": "771baa3a0f716a991e0f3c00784dc630ed6ac5e8ef1e2023de35c990b2abec7f",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_pine_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 1148960,
+      "sha256": "9c0e43fe21e0137804617d5d5dc45d91dd4f7102b82224b2d6acd4176b4ea12e",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_pine_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 640578,
+      "sha256": "b2127388b9bff4177702567a1bb7dc9205ed488c81c03007814690db45e98163",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_pine_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 235215,
+      "sha256": "6d38bc47a8ce290cd1654d293ac8fa461b18271f745d34d3767cb422786d4740",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_resinheart_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 369835,
+      "sha256": "129de64182e445216c64a8456ed693e4148d36db7c4f4f422fd18b9f89b39c0a",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_resinheart_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 323170,
+      "sha256": "0b51bec96d78b61cb76b125533ded1b14489d63cb6340be4c27234837fd96c45",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_resinheart_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 124634,
+      "sha256": "9d529e69961f40836b7aae31047a318d36f178142671df1702d61f3b80c8fe93",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_resinheart_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 1047539,
+      "sha256": "bb302268b631a509e2b151e669d2489617856e6b27dc6062e3d4f58ea77565e6",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_resinheart_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 771725,
+      "sha256": "75b7dc491d0436653331441d8da22aa0988a467a37286ea4b8f3987babe348f0",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_resinheart_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 283501,
+      "sha256": "1bf867a2918bc2f2a381ab30cbb7fff127a2c89a2570d5c224d57fc2931784c5",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_wood_edge_albedo.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 364572,
+      "sha256": "f9782d735584a82c04a495cff356d8d5246fa22d2bd109749851d048a264d22f",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_wood_edge_normal.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 368969,
+      "sha256": "6b5e0e3c710ea44a646a3cce9fd31b3a41bd88a06cd6c0fa845e49097e23eb06",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_wood_edge_orm.png",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 116664,
+      "sha256": "ef7c46f9df51147cabf82b27a611e7a2adbcb66e5e85e579d03f4ab6f1e9cdee",
+      "rgb_bytes": 786432,
+      "rgba_mip_bytes": 1398100
+    },
+    {
+      "file": "d4_wood_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 1011162,
+      "sha256": "60495f38ed2f8660102a40e5c209943e552b955af3c45afd19f6790a8ecee6fc",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_wood_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 895013,
+      "sha256": "eaa132c2296ad62b996941cecbd335248f490327712ce84d6973d3a0652c2bba",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d4_wood_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 248137,
+      "sha256": "6a67ec454cf5890288470c8156230b6bdc3dc24dbd5c8ec55bb8db075fb56262",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d5_charcoal_face_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 429648,
+      "sha256": "61f64fc9b7afe2995381c010954c37b4041ef7b5a38705314623fa340d6cc15c",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d5_charcoal_face_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 985721,
+      "sha256": "bed82d8a26d70f0b032c661439160892832d180dd24e240e9b95019d4c63a817",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d5_charcoal_face_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 172964,
+      "sha256": "fed79f78318c2d3865df61c5dbe2d7f7407e555ef9209e82d6deccf1dd64f5d1",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_bronze_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 409727,
+      "sha256": "2eee9f8323b59286f23d185ce53a12f1a920fe1132808da3d4ae25d05aec4acb",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_bronze_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 208699,
+      "sha256": "630ba7eb61bb22f0d8ab09a71105a8b3d5ccb5fa10ad151541aad0d99cd6bd7d",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_bronze_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 282044,
+      "sha256": "1a02ecade52be16c80db54ff504d0e8a3c4f132c60f26be979eb1aecf6563e04",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_iron_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 375882,
+      "sha256": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_iron_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 234257,
+      "sha256": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_iron_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 275897,
+      "sha256": "48f97b675ed8da71ce41fc1709c64e2bd7086458eded07497d856a85d4195d73",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_steel_albedo.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 445937,
+      "sha256": "a15b076eefc22cf9b00b2d6961822d0658aea36c51733da8227ba04dd0c005c1",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_steel_normal.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 148381,
+      "sha256": "132c1b47f4a026be88c7b7a09e787598789ace6f57f3ca25317954eb225b2d3a",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    },
+    {
+      "file": "d6_steel_orm.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 278668,
+      "sha256": "f8618a8e9b2f7d1b041eddb58e52c9cb916ed5169f4b5750f23556915be1eac9",
+      "rgb_bytes": 3145728,
+      "rgba_mip_bytes": 5592404
+    }
+  ],
+  "rgb_base_bytes": 96731136,
+  "rgba_full_mip_bytes": 171966408,
+  "png_bytes": 19371791,
+  "normal_game_sim_data_diff": "",
+  "limitations": "Source triangle counts, not whole-world budgets. Same explicit mesh set at near/middle/far; engine import LOD retained on articulated parts. GLBs retain embedded source maps in addition to shared external runtime bindings; report engine resident bytes separately."
+}

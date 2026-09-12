@@ -1,0 +1,160 @@
+{
+  "slice": "ART-07E3",
+  "date": "2026-09-12",
+  "base": "bbcb3a7dfd235e8f803141ccb57c38e03d6c1708",
+  "canonical_package": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\handoff",
+  "manifest_sha256": "b3a06254c13e48c3c60f613ec161dacb3c4a8e3b554036d25ff1dcb21cda6bc7",
+  "verified_payload_files": 2204,
+  "canonical_unchanged_after_validation": true,
+  "source_master_sha256": "199172adc3d8f580461dcac50bd2686009c4cefd8897766d634a62dca7f94261",
+  "fresh_copy": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\fresh04",
+  "packed_images": 42,
+  "exact_one_object_reimports": 31,
+  "fresh_state_checks": 775,
+  "fresh_restart_checks": 33,
+  "packaged_launcher_checks": 255,
+  "launcher_and_runtime_code_unchanged_from_tested_v08": true,
+  "only_review_file_change_from_tested_v08": [
+    "review/game/e3/geometry.json"
+  ],
+  "renderer_capture_checks_each": 901,
+  "renderer_visibility_pixels_each": 3753,
+  "owner_visual_acceptance": "pending",
+  "publication": "not performed; dedicated publisher",
+  "proof_logs": [
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\fresh-import.log.json",
+      "sha256": "39da3bd7c9c983d56fbc071e4abcd249a1421faf97c8eea3b63a5f15525c7ff7",
+      "run": {
+        "wrapper_pid": 22988,
+        "competing_processes_at_start": [],
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "seconds": 16.3137982,
+        "child_pid": 27056,
+        "benchmark_competitors_observed": [],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\u",
+        "gpu_mutex": false,
+        "exit_code": 0,
+        "arguments": [
+          "--path",
+          "build/art07/e3/fresh04/review/game",
+          "--audio-driver",
+          "Dummy",
+          "--headless",
+          "--editor",
+          "--import"
+        ],
+        "started": "2026-09-12T13:43:01.9358260+09:30"
+      }
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\fresh-check.log.json",
+      "sha256": "531404369fad6ed825dd3b8027dfbba07b971cdc82a1e7f540508c13a44eb36a",
+      "run": {
+        "wrapper_pid": 22988,
+        "competing_processes_at_start": [
+          {
+            "ProcessId": 20700,
+            "Name": "blender.exe",
+            "CommandLine": "\"C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe\" \"--background\" \"--threads\" \"8\" \"--python-exit-code\" \"1\" \"--python\" \"build/art07/e3/fresh04/recipes/blender_home.py\" \"--\" \"--reopen\" \"build/art07/e3/fresh04/source/e3_home.blend\" \"build/art07/e3/fresh04/reopened\""
+          }
+        ],
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "seconds": 4.0386087,
+        "child_pid": 38124,
+        "benchmark_competitors_observed": [],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\u",
+        "gpu_mutex": false,
+        "exit_code": 0,
+        "arguments": [
+          "--path",
+          "build/art07/e3/fresh04/review/game",
+          "--audio-driver",
+          "Dummy",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "res://e3/review.tscn",
+          "--",
+          "--check"
+        ],
+        "started": "2026-09-12T13:43:18.3789748+09:30"
+      }
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\fresh-restart.log.json",
+      "sha256": "834a1c6ee183bd1ff31d6b717a5bfa20fe1468c6bcca47a1d5cda1b27a0cd874",
+      "run": {
+        "wrapper_pid": 22988,
+        "competing_processes_at_start": [
+          {
+            "ProcessId": 20700,
+            "Name": "blender.exe",
+            "CommandLine": "\"C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe\" \"--background\" \"--threads\" \"8\" \"--python-exit-code\" \"1\" \"--python\" \"build/art07/e3/fresh04/recipes/blender_home.py\" \"--\" \"--reopen\" \"build/art07/e3/fresh04/source/e3_home.blend\" \"build/art07/e3/fresh04/reopened\""
+          }
+        ],
+        "program": "C:/Users/Matty/Godot/Godot_v4.5-stable_win64_console.exe",
+        "seconds": 3.9493,
+        "child_pid": 43024,
+        "benchmark_competitors_observed": [],
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\u",
+        "gpu_mutex": false,
+        "exit_code": 0,
+        "arguments": [
+          "--path",
+          "build/art07/e3/fresh04/review/game",
+          "--audio-driver",
+          "Dummy",
+          "--headless",
+          "--fixed-fps",
+          "60",
+          "res://e3/review.tscn",
+          "--",
+          "--restore"
+        ],
+        "started": "2026-09-12T13:43:22.5474167+09:30"
+      }
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\fresh-blender.log.json",
+      "sha256": "369687498b2b727981a11c5586ce742091b4e7b6a931e9b3da2a74dd248a30a1",
+      "run": {
+        "wrapper_pid": 18796,
+        "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\u",
+        "started": "2026-09-12T13:43:15.6278678+09:30",
+        "exit_code": 0,
+        "competing_processes_at_start": [],
+        "benchmark_competitors_observed": [],
+        "program": "C:/Users/Matty/Dev/project-wroughtwild/build/blender-tool/blender-4.5.9-windows-x64/blender.exe",
+        "child_pid": 20700,
+        "gpu_mutex": true,
+        "seconds": 80.9417976,
+        "arguments": [
+          "--background",
+          "--threads",
+          "8",
+          "--python-exit-code",
+          "1",
+          "--python",
+          "build/art07/e3/fresh04/recipes/blender_home.py",
+          "--",
+          "--reopen",
+          "build/art07/e3/fresh04/source/e3_home.blend",
+          "build/art07/e3/fresh04/reopened"
+        ]
+      }
+    },
+    {
+      "path": "C:\\Users\\Matty\\AppData\\Local\\Temp\\Wroughtwild-E3-5d21c75337b5473b86ad1f822aeade4e\\import.log",
+      "sha256": "fd2fe7331996979318bc06f7df585a908f2c697a08ebb121b7fd62aaacfd8409"
+    },
+    {
+      "path": "C:\\Users\\Matty\\AppData\\Local\\Temp\\Wroughtwild-E3-5d21c75337b5473b86ad1f822aeade4e\\review.log",
+      "sha256": "663afdd8da8bd099a97f45b9c57f3fd039498847e52961b59dd66f593305bf15"
+    },
+    {
+      "path": "C:\\Users\\Matty\\AppData\\Local\\Temp\\Wroughtwild-E3-5d21c75337b5473b86ad1f822aeade4e\\review.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

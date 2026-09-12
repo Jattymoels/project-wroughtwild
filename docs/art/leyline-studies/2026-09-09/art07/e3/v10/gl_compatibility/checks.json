@@ -1,0 +1,26 @@
+{
+	"backend": "gl_compatibility",
+	"benchmarks": [],
+	"checks": 901,
+	"failures": 0,
+	"fuel": [
+		{
+			"charcoal_seconds": 60,
+			"clock": "unchanged native method, one-second test steps",
+			"families": [
+				"wood",
+				"pine",
+				"bog_oak",
+				"ash_wood",
+				"charcoal"
+			],
+			"heat": [
+				1,
+				2
+			],
+			"save": "omitted as before",
+			"timber_seconds": 45
+		}
+	],
+	"scope": "Supplied stock; native payment, panels, burn method and saves. No first-hour pacing claim."
+}
