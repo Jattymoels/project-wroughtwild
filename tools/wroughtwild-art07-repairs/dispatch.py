@@ -162,7 +162,8 @@ def main():
         if args.write:
             path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(raw)
         else:
-            assert path.read_bytes() == raw, 'Stale generated document: ' + str(path)
+            # Worktree checkouts can use CRLF; compare exact decoded document content.
+            assert path.read_text(encoding='utf-8') == content, 'Stale generated document: ' + str(path)
     assert {p.name for p in (HOME / 'prompts').glob('*.md')} == {i.upper()+'.md' for i in ids} | {'PUBLISH.md'}
     links = 0
     for doc in HOME.rglob('*.md'):
