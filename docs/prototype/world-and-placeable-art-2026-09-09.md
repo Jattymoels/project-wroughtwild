@@ -1,17 +1,15 @@
 # ART-07 — a full frontier and a coherent building kit
 
-**Production update, 13 September 2026:** all **24 B–F source slices and G1**
-are technically delivered: **25 of 26 dispatch slices**. The
-[seventh publication](art07-production/publication-2026-09-13.md) records G1's
-checked isolated paid route/home, exact published source commits, fresh package
-reopens, all 273 building combinations and both-renderer device recovery.
-Next is one separate [G2 independent review](art07-production/prompts/G2.md);
-its [input record](art07-production/g2-inputs-2026-09-13.json) identifies the
-sealed package. G2 remains planned. Existing octagonal/chamfer/triangle uses,
-geography and ownership are retained. The narrow canopy fit, generic joins,
-inherited 0.15 m chest/floor intersection, C5 fallback-only raised ore and
-substantial texture/geometry costs remain review findings. Owner visual
-acceptance and ordinary-world rollout are separate from technical publication.
+**Production update, 14 September 2026:** all **26 original dispatch slices
+are delivered**: 24 B–F source handoffs, G1 isolated integration and G2 independent
+review. The [eighth publication](art07-production/publication-2026-09-14.md)
+records bounded technical clearance, all 273 legal building pairs in both
+renderers, retained octagonal/chamfer/triangle uses, and unchanged native
+ownership/geography. The [G2 report](../art/leyline-studies/2026-09-09/art07/g2/README.md)
+leaves five visual handbacks, fixture shutdown cleanup and loading/residency costs
+open. No original dispatch slice remains. Recommended follow-up is bounded canopy
+and loading work in the isolated pilot, followed by visual finishing and re-review.
+Owner visual acceptance and ordinary-world rollout remain separate decisions.
 
 **Owner follow-up:** “Yep, create a sliced plan and prompts to send off to other
 sessions to enact” selects the [ART-07 dispatch pack](art07-production/README.md).

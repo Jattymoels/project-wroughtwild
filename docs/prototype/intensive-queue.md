@@ -1,6 +1,6 @@
 # Wroughtwild intensive queue
 
-Updated: 13 September 2026 (25 ART-07 slices technically delivered including G1; independent G2 next). Owner: Matty. Delivery: Codex.
+Updated: 14 September 2026 (all 26 original ART-07 deliveries complete; G2 visual/cost handbacks remain open). Owner: Matty. Delivery: Codex.
 
 The owner asked to keep track of the seven intensives discussed after the Wide
 Frontier pass and make a plan for the first one. This is the current planning
@@ -14,20 +14,20 @@ The owner's subsequent request selects a [sliced execution plan and session
 prompts](art07-production/README.md). The checked dispatch pack contains 26
 bounded worker prompts, one publisher prompt, an explicit dependency/ownership
 map and the [local TRELLIS/Blender/Godot process](art07-production/PROCESS.md).
-All **24 B–F source slices and G1** have technical handoffs: **25 of 26 slices**.
-The [seventh publication](art07-production/publication-2026-09-13.md) integrates
-the isolated retained route/home pilot after fresh package, paid baseline,
-placement/recovery, packed-source and both-renderer checks. The
-[G2 input record](art07-production/g2-inputs-2026-09-13.json) identifies its
-sealed local handoff. Next is one [G2 review](art07-production/prompts/G2.md)
-session that did not implement G1; G2 remains planned. It must replay the package
-and give independent technical, visual and cost findings.
-Narrow canopy fit, generic material joins, inherited chest seating, C5's terrain
-ribbon boundary and substantial loaded texture/geometry costs remain open.
-Native geography, finite ownership and octagonal building support are retained.
-GPU work stays serial through the mutex and read-only process checks. Completed
-workers receive no notices or acknowledgement requests. Owner visual acceptance
-and normal-world rollout remain separate from the isolated technical handoff.
+All **26 original ART-07 dispatch slices are delivered**: 24 B–F sources,
+G1 isolated integration and G2 independent review. The
+[eighth publication](art07-production/publication-2026-09-14.md) verifies the G2
+review seal, exact commits, 64 independent job receipts and seven fresh publisher
+checks. Both renderers retain all 273 legal pairs and octagonal building support;
+paid native ownership and geography agree with art disabled.
+The [G2 report](../art/leyline-studies/2026-09-09/art07/g2/README.md) gives bounded
+technical clearance while leaving five visual handbacks, eight fixture shutdown
+warnings and the loading/residency cost gate open. No original slice remains to
+dispatch. Proposed follow-up starts with canopy fit and loading costs in the
+isolated pilot; further visual finishing and independent re-review follow.
+No repair or ordinary-world rollout is implemented by this publication. Owner
+visual acceptance and target-device clearance remain open. GPU work stays serial;
+completed workers receive no notices or acknowledgement requests.
 
 The owner visually approved ART-06C with “Perfect”, then asked to start
 designing all nature assets and the world's feel against the original full

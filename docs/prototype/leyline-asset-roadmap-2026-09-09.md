@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; all 24 ART-07 B–F source handoffs and G1 technically delivered; independent G2 pending.** Owner request,
+**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; all 26 original ART-07 deliveries complete including independent G2; visual/cost handbacks and rollout remain open.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -67,12 +67,17 @@ local package. On 13 September the owner reported G1 complete. Its
 isolated paid route/home: **25 of 26 dispatch slices**. Fresh package import,
 paid art-on/art-off equivalence, all legal building pairs, save/device recovery
 and packed-source reopen passed. Existing octagonal construction is retained.
-The next step is [G2](art07-production/prompts/G2.md), in a separate session that
-did not implement G1, using the [checked input record](art07-production/g2-inputs-2026-09-13.json).
-G2 remains planned. The visibly narrow canopy, generic joins, native chest seating,
-C5 terrain-ribbon boundary and loaded texture/geometry costs need independent
-assessment. Technical completion does not settle finished-world appearance;
-owner visual acceptance and normal-world rollout remain separate.
+On 14 September the owner reported G2 complete. The
+[eighth publication](art07-production/publication-2026-09-14.md) records its
+independent review: **all 26 original dispatch slices are delivered**. G2 gives
+bounded technical clearance after 64 fresh worker jobs; publication additionally
+checks a fresh copied import, paid-home smoke, all 273 pairs and all 16 retained
+actor IDs in both renderers. Five visual handbacks, fixture shutdown cleanup,
+loading/residency costs and target-device review remain open. No original slice
+remains to dispatch. Proposed follow-up begins with canopy fit and loading costs;
+owner visual acceptance and ordinary-world rollout remain separate. The six
+ART-06C source animals that still use older runtime forms retain their own
+unfinished rig/adoption boundary; G2 does not close that work.
 
 The owner then requested a sliced plan and prompts for other sessions to enact
 ART-07. The [dispatch pack](art07-production/README.md) now breaks the parent

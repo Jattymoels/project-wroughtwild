@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "All 24 B–F source slices and the G1 isolated route/home integration pilot are technically delivered: 25 of 26 dispatch slices. See publication-2026-09-13.md and the six source publications. Next: G2 independent full-kit review in a session that did not implement G1. G2 remains planned; owner visual acceptance and ordinary-world rollout are separate.",
+  "status": "All 26 original dispatch slices are delivered: 24 B–F source handoffs, G1 isolated integration and G2 independent review. See publication-2026-09-14.md. G2 gives bounded technical clearance, with five visual handbacks, fixture-cleanup warnings and the loading/residency cost gate open. No original slice remains to dispatch; repairs, owner visual acceptance and ordinary-world rollout remain separate.",
   "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
   "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
   "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",
