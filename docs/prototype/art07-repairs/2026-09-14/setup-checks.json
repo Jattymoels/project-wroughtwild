@@ -1,5 +1,5 @@
 {
-  "status": "Planning and setup-helper checks pass; actual workspace/copy results recorded after setup.",
+  "status": "PASS: plan, prompts, guards, original validators and four actual first-wave workspace/runtime preparations verified.",
   "checks": [
     {
       "command": [
@@ -75,5 +75,134 @@
   ],
   "unrelated_work_preserved": true,
   "game_sim_data_and_original_art_unchanged": true,
-  "gpu_jobs_started": 0
+  "gpu_jobs_started": 0,
+  "setup_base": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
+  "actual_first_wave": [
+    {
+      "id": "r1",
+      "branch": "codex/art07-r1",
+      "worktree": "D:/project-wroughtwild-art07-r1",
+      "setup_base": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
+      "state": "workspace_and_runtime_prepared; implementation_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v01/prepared.json",
+      "prepared_receipt_sha256": "423297ecb34f87fd934313ade70d78b5575bb39494412115e9683cdd5aac7e43",
+      "copied_files": 4787,
+      "copied_bytes": 3438257458,
+      "import_smoke_jobs": "D:/project-wroughtwild-art07-r1/build/art07-repairs/r1/v01/import-smoke.json",
+      "payload_verification": "Each runtime entry hashed against the sealed source during copying; final file set and native DLL rechecked.",
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "result": "PASS",
+        "worker_prompts": 9,
+        "publisher_prompts": 1,
+        "exclusive_git_outputs": 36,
+        "findings_owned_once": 7,
+        "waves": 4,
+        "reading_files": 35,
+        "local_links": 31
+      }
+    },
+    {
+      "id": "r2",
+      "branch": "codex/art07-r2",
+      "worktree": "D:/project-wroughtwild-art07-r2",
+      "setup_base": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
+      "state": "workspace_and_runtime_prepared; implementation_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v01/prepared.json",
+      "prepared_receipt_sha256": "861b537add77173853ee0726d235f0161bf2e597b260cb8b28f9dfe203490094",
+      "copied_files": 4787,
+      "copied_bytes": 3438257458,
+      "import_smoke_jobs": "D:/project-wroughtwild-art07-r2/build/art07-repairs/r2/v01/import-smoke.json",
+      "payload_verification": "Each runtime entry hashed against the sealed source during copying; final file set and native DLL rechecked.",
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "result": "PASS",
+        "worker_prompts": 9,
+        "publisher_prompts": 1,
+        "exclusive_git_outputs": 36,
+        "findings_owned_once": 7,
+        "waves": 4,
+        "reading_files": 35,
+        "local_links": 31
+      }
+    },
+    {
+      "id": "r3",
+      "branch": "codex/art07-r3",
+      "worktree": "D:/project-wroughtwild-art07-r3",
+      "setup_base": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
+      "state": "workspace_and_runtime_prepared; implementation_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/prepared.json",
+      "prepared_receipt_sha256": "ccd88008426564b88194c8c9d9d0b36437c0c1f6469c05d83fc2dcf7f74bdd04",
+      "copied_files": 4787,
+      "copied_bytes": 3438257458,
+      "import_smoke_jobs": "D:/project-wroughtwild-art07-r3/build/art07-repairs/r3/v01/import-smoke.json",
+      "payload_verification": "Each runtime entry hashed against the sealed source during copying; final file set and native DLL rechecked.",
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "result": "PASS",
+        "worker_prompts": 9,
+        "publisher_prompts": 1,
+        "exclusive_git_outputs": 36,
+        "findings_owned_once": 7,
+        "waves": 4,
+        "reading_files": 35,
+        "local_links": 31
+      }
+    },
+    {
+      "id": "r4",
+      "branch": "codex/art07-r4",
+      "worktree": "D:/project-wroughtwild-art07-r4",
+      "setup_base": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
+      "state": "workspace_and_runtime_prepared; implementation_not_started",
+      "runtime": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/runtime",
+      "prepared_receipt": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/prepared.json",
+      "prepared_receipt_sha256": "6dac9a9125967a8491374ed2bb1da71359ef4bb5e009c12f3b4848a229c60abd",
+      "copied_files": 4787,
+      "copied_bytes": 3438257458,
+      "import_smoke_jobs": "D:/project-wroughtwild-art07-r4/build/art07-repairs/r4/v01/import-smoke.json",
+      "payload_verification": "Each runtime entry hashed against the sealed source during copying; final file set and native DLL rechecked.",
+      "cache_inherited": false,
+      "engine_launched": false,
+      "git_clean": true,
+      "worktree_dispatch_validator": {
+        "result": "PASS",
+        "worker_prompts": 9,
+        "publisher_prompts": 1,
+        "exclusive_git_outputs": 36,
+        "findings_owned_once": 7,
+        "waves": 4,
+        "reading_files": 35,
+        "local_links": 31
+      }
+    }
+  ],
+  "total_copied_runtime_files": 19148,
+  "total_copied_runtime_bytes": 13753029832,
+  "runner_provenance": {
+    "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\tools\\wroughtwild-art07\\g2\\run.ps1",
+    "sha256": "d303be3e38bcf501720c370798acaa2c1a72e7515ca8939accb3f41a940d6983",
+    "changes": [
+      "Assigned R branch/build subtree guard replaces G2 root guard.",
+      "Owned failure-stop uses -Force; other processes are never stopped.",
+      "Output guard message names repair."
+    ],
+    "engine_runs": 0
+  },
+  "verification_limits": [
+    "No Godot import, launch, Blender reopen, source regeneration, benchmark or repair implementation performed by setup.",
+    "The copy helper verifies the runtime subset; workers must fully verify every extra source/master or candidate they consume.",
+    "Minimum target hardware and owner visual acceptance remain open.",
+    "Git checkouts use CRLF for some text; the repair prompt validator checks exact normalized document content. Sealed runtime bytes are not normalized."
+  ]
 }
