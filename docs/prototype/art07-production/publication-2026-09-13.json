@@ -1,0 +1,1693 @@
+{
+  "status": "pass",
+  "base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "canonical": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff",
+    "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+    "files": 5701,
+    "bytes": 7430015212
+  },
+  "worker_commits": [
+    "1d3d3ce29c4afe7e1db970b880953e92035a0b7b",
+    "4412781c70ce8cbc7651f9262df6831593b83874"
+  ],
+  "successful_jobs": 27,
+  "scope_adjustment": {
+    "time": "2026-09-13T22:11:39.0705553+09:30",
+    "pid": 39552,
+    "reason": "Publisher deliberately removes redundant broad signal-flow suites after fresh paid integration and restore gates pass. Original 81 worker job receipts have been verified. This interrupted White run is retained and excluded from successful checks.",
+    "command_line": "\"C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe\" \"--headless\" \"--fixed-fps\" \"60\" \"--path\" \"C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game\" \"res://tests/living_frontier_flow.tscn\"",
+    "interrupted_job": {
+      "pid": 39552,
+      "name": "white",
+      "seconds": 175.0245301,
+      "exit_code": -1,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://tests/living_frontier_flow.tscn"
+      ],
+      "started": "2026-09-13T22:09:20.9917620+09:30",
+      "slice": "g1"
+    },
+    "log_sha256": "626b8982d80b8bc44547efcc1b23f68ea4f8ad1fb92a9e3bf7c498d8ea9ab1b5",
+    "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+  },
+  "assertions_across_repeated_cases": 89006,
+  "jobs": [
+    {
+      "pid": 34872,
+      "name": "import",
+      "seconds": 96.083002,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "--editor",
+        "--import"
+      ],
+      "started": "2026-09-13T21:59:50.5804464+09:30",
+      "slice": "g1",
+      "assertions": 0,
+      "result_lines": [],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\import.log",
+      "log_sha256": "a7888570c0813bca8eb922e02a03770fab71b7a91f0f88fc45500a2dbf114984",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 26436,
+      "name": "unit",
+      "seconds": 22.1565631,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "--script",
+        "res://tests/run_tests.gd"
+      ],
+      "started": "2026-09-13T22:01:26.7024355+09:30",
+      "slice": "g1",
+      "assertions": 398,
+      "result_lines": [
+        "398 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\unit.log",
+      "log_sha256": "17cdde8b96e31afbdd05159ed262ede2a59d16a46dbd3c232b6239392459e6f1",
+      "stderr_sha256": "59b7659895107cde29a3b646496df49c5f3c15901a78fa06e108a0c4165f08bd"
+    },
+    {
+      "pid": 44916,
+      "name": "probe-art",
+      "seconds": 101.7831531,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/probe.tscn"
+      ],
+      "started": "2026-09-13T22:01:48.8623536+09:30",
+      "slice": "g1",
+      "assertions": 9,
+      "result_lines": [
+        "G1_PROBE 9 checks, 0 failures / map 550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\probe-art.log",
+      "log_sha256": "dcd0d92a25cd2d0910f432354d04e1a2272a1082249a943e8ba224181222ac6c",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 11792,
+      "name": "probe-baseline",
+      "seconds": 24.4479477,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/probe.tscn",
+        "--",
+        "--baseline"
+      ],
+      "started": "2026-09-13T22:03:30.6498602+09:30",
+      "slice": "g1",
+      "assertions": 9,
+      "result_lines": [
+        "G1_PROBE 9 checks, 0 failures / map 550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\probe-baseline.log",
+      "log_sha256": "dcd0d92a25cd2d0910f432354d04e1a2272a1082249a943e8ba224181222ac6c",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 25536,
+      "name": "placement",
+      "seconds": 3.9579906,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://tests/placement_transactions.tscn"
+      ],
+      "started": "2026-09-13T22:03:55.1009928+09:30",
+      "slice": "g1",
+      "assertions": 470,
+      "result_lines": [
+        "PLACEMENT_TRANSACTIONS 470 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\placement.log",
+      "log_sha256": "1ee277a29145308ca2d2421e369437e0e41d75de3e5eae38c69ab38dbfcd224d",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 8704,
+      "name": "placement-restart",
+      "seconds": 3.0251075,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://tests/placement_transactions.tscn",
+        "--",
+        "--placement-restore-only"
+      ],
+      "started": "2026-09-13T22:03:59.0620756+09:30",
+      "slice": "g1",
+      "assertions": 60,
+      "result_lines": [
+        "PLACEMENT_RESTART 60 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\placement-restart.log",
+      "log_sha256": "3f53b6ba2ffe9bcf3681d90b7993e54811210a5a0bc1ad91b1b1e9fff2eebb8f",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 30572,
+      "name": "local-scenery",
+      "seconds": 88.6063845,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://tests/placement_scenery.tscn"
+      ],
+      "started": "2026-09-13T22:04:02.0907198+09:30",
+      "slice": "g1",
+      "assertions": 5254,
+      "result_lines": [
+        "PLACEMENT_SCENERY 5254 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\local-scenery.log",
+      "log_sha256": "ceca8410bd922ed5f84300e6c4ca84986082e560e1f9418f893d35eb79ff5e47",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 8056,
+      "name": "home",
+      "seconds": 3.2179901,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://tests/home_workshop_review.tscn"
+      ],
+      "started": "2026-09-13T22:05:30.7003121+09:30",
+      "slice": "g1",
+      "assertions": 1027,
+      "result_lines": [
+        "HOME_WORKSHOP_REVIEW 1027 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\home.log",
+      "log_sha256": "1c16d56aaeecf349512f8558ea2056524359a6c6afe8ef614c8d45c453d5ee1a",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 43880,
+      "name": "paid-art",
+      "seconds": 121.9465889,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/paid.tscn",
+        "--",
+        "--run-id=publisher"
+      ],
+      "started": "2026-09-13T22:05:33.9211546+09:30",
+      "slice": "g1",
+      "assertions": 865,
+      "result_lines": [
+        "G1_PAID 865 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\paid-art.log",
+      "log_sha256": "8f86e72af80474847bc32bf58012f9b125693b6a71c02a5bce76c00a24673507",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 24280,
+      "name": "paid-art-restart",
+      "seconds": 86.5521811,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/paid.tscn",
+        "--",
+        "--restart",
+        "--run-id=publisher"
+      ],
+      "started": "2026-09-13T22:07:35.8707310+09:30",
+      "slice": "g1",
+      "assertions": 8,
+      "result_lines": [
+        "G1_PAID 8 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\paid-art-restart.log",
+      "log_sha256": "4d60bf09071638b1c43b5d67aa775c915b9d3f849f6d21e6a61d7f96cdb45a99",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "pid": 24768,
+      "name": "paid-baseline",
+      "seconds": 18.5626927,
+      "exit_code": 0,
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/paid.tscn",
+        "--",
+        "--baseline",
+        "--run-id=publisher"
+      ],
+      "started": "2026-09-13T22:09:02.4261422+09:30",
+      "slice": "g1",
+      "assertions": 865,
+      "result_lines": [
+        "G1_PAID 865 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\paid-baseline.log",
+      "log_sha256": "8f86e72af80474847bc32bf58012f9b125693b6a71c02a5bce76c00a24673507",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:12:21.6029127+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 7804,
+      "exit_code": 0,
+      "seconds": 105.2732417,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "smoke-forward_plus",
+      "assertions": 0,
+      "result_lines": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\smoke-forward_plus.log",
+      "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:14:06.8872777+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 29840,
+      "exit_code": 0,
+      "seconds": 8.3689396,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/catalogue.tscn"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "catalogue-forward_plus",
+      "assertions": 1861,
+      "result_lines": [
+        "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\catalogue-forward_plus.log",
+      "log_sha256": "4cfb3077fb4d1d9cd5fdabb7de439516629dd4005b61199530b93f670b3ed116",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:14:15.2608428+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 2120,
+      "exit_code": 0,
+      "seconds": 123.1041853,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://f4/review.tscn",
+        "--",
+        "--capture"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "f4-forward_plus",
+      "assertions": 227,
+      "result_lines": [
+        "F4_CHECKS 227 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\f4-forward_plus.log",
+      "log_sha256": "44d522dc06c02241ba90f3d2b54cc467911b3f4cf4f63d2e1f4b859b98fdfab2",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:16:18.3690212+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 39220,
+      "exit_code": 0,
+      "seconds": 98.9075281,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://f4/review.tscn",
+        "--",
+        "--capture",
+        "--restore"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "f4-restart-forward_plus",
+      "assertions": 32,
+      "result_lines": [
+        "F4_RESTORE 32 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\f4-restart-forward_plus.log",
+      "log_sha256": "0b8c852877edd39f457b007ecb513faf353267c1bf0ceb885513f3829fdd6e08",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:17:57.2869396+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 33004,
+      "exit_code": 0,
+      "seconds": 98.7069723,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://f4/review.tscn",
+        "--",
+        "--capture",
+        "--restore-exhausted"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "f4-exhausted-forward_plus",
+      "assertions": 29,
+      "result_lines": [
+        "F4_EXHAUSTED-RESTORE 29 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\f4-exhausted-forward_plus.log",
+      "log_sha256": "54337559cbd9e1fc546b1db9387592278885b27da9bfff090871b32bfaea2931",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:19:35.9973726+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 39492,
+      "exit_code": 0,
+      "seconds": 210.6566085,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/review.tscn"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "views-forward_plus",
+      "assertions": 0,
+      "result_lines": [
+        "G1_REVIEW_OK 15 views, 0 matched samples"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\views-forward_plus.log",
+      "log_sha256": "5a552d7766096d2d5856dff1391cf467a222e87d9052b2105622f85c5413d8c8",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:23:06.6572887+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 5268,
+      "exit_code": 0,
+      "seconds": 97.2909152,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/play.tscn",
+        "--",
+        "--smoke"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "smoke-gl_compatibility",
+      "assertions": 0,
+      "result_lines": [
+        "G1_PACKAGED_LAUNCH_OK"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\smoke-gl_compatibility.log",
+      "log_sha256": "516193bd5fcb7fab0ee4c641bf6fd0366505e153888a9087b0c14b5901aed69f",
+      "stderr_sha256": "955b94d5e97a69bbe5ee9568e84345ecd7a751de467c187cb8ae830eeb9be8a0"
+    },
+    {
+      "started": "2026-09-13T22:24:43.9518057+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 10664,
+      "exit_code": 0,
+      "seconds": 8.114307,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/catalogue.tscn"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "catalogue-gl_compatibility",
+      "assertions": 1861,
+      "result_lines": [
+        "G1_CATALOGUE 1861 checks, 0 failures; 273 legal pairs"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\catalogue-gl_compatibility.log",
+      "log_sha256": "923964d71af409bfedbd374a5d65d1be154c26cf7b763740958aa8248d073fdd",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:24:52.0694818+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 37644,
+      "exit_code": 0,
+      "seconds": 126.8619999,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://f4/review.tscn",
+        "--",
+        "--capture"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "f4-gl_compatibility",
+      "assertions": 227,
+      "result_lines": [
+        "F4_CHECKS 227 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\f4-gl_compatibility.log",
+      "log_sha256": "05325b2b3ed2974cb3485ac96ec881d0138d36dfb07650e91279af1460378c2c",
+      "stderr_sha256": "453045393338e16b464785498e5547a8c1145ef6dedc2e9e2c3cb3857a546865"
+    },
+    {
+      "started": "2026-09-13T22:26:58.9349576+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 25428,
+      "exit_code": 0,
+      "seconds": 96.2897126,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://f4/review.tscn",
+        "--",
+        "--capture",
+        "--restore"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "f4-restart-gl_compatibility",
+      "assertions": 32,
+      "result_lines": [
+        "F4_RESTORE 32 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\f4-restart-gl_compatibility.log",
+      "log_sha256": "948e452fd13e5ae4c764b364c80865422d20f5bccd8975c080a8001dbcf56255",
+      "stderr_sha256": "1e68b0006b4ddee1c3d992aa14dd3d0eb77c20da5ad3287edae55e2c09e28005"
+    },
+    {
+      "started": "2026-09-13T22:28:35.2276228+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 12532,
+      "exit_code": 0,
+      "seconds": 95.4830899,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://f4/review.tscn",
+        "--",
+        "--capture",
+        "--restore-exhausted"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "f4-exhausted-gl_compatibility",
+      "assertions": 29,
+      "result_lines": [
+        "F4_EXHAUSTED-RESTORE 29 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\f4-exhausted-gl_compatibility.log",
+      "log_sha256": "3985385330d5e379a1ebc840e5f15424353d770051a8aa5c1d9fcb2e2b9210ed",
+      "stderr_sha256": "1e68b0006b4ddee1c3d992aa14dd3d0eb77c20da5ad3287edae55e2c09e28005"
+    },
+    {
+      "started": "2026-09-13T22:30:10.7136559+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 45472,
+      "exit_code": 0,
+      "seconds": 205.0937776,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/review.tscn"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "views-gl_compatibility",
+      "assertions": 0,
+      "result_lines": [
+        "G1_REVIEW_OK 15 views, 0 matched samples"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\views-gl_compatibility.log",
+      "log_sha256": "59aa376e3c42bb08e615736f4f6c9dc7fb78714d867f4721b377d67238d2917c",
+      "stderr_sha256": "15f58b2aa95a03ef21170a9b36b3e9c59e79980e075651ece0c95ad5bf79baed"
+    },
+    {
+      "started": "2026-09-13T22:33:35.8106715+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 40680,
+      "exit_code": 0,
+      "seconds": 4.2890075,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://art07_d3/checks.tscn"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "d3",
+      "assertions": 35310,
+      "result_lines": [
+        "D3_PLACEMENT 35310 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\d3.log",
+      "log_sha256": "3dc38c39d5d0ee969dc9c3206826e97107ddf02c61a9c1948d90104bc5cefd05",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:33:40.1026861+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 22808,
+      "exit_code": 0,
+      "seconds": 4.5199608,
+      "arguments": [
+        "--rendering-method",
+        "gl_compatibility",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://art07_d3/checks.tscn",
+        "--",
+        "--d3-restore"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "d3-restart",
+      "assertions": 40431,
+      "result_lines": [
+        "D3_RESTART 40431 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\d3-restart.log",
+      "log_sha256": "7cc0ea5e92468733798ca3b429d8978c50ebb84259f6a5df95c86fbfc84523f0",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:33:44.6264022+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\engine\\Godot_v4.5-stable_win64.exe",
+      "pid": 20952,
+      "exit_code": 0,
+      "seconds": 132.2616692,
+      "arguments": [
+        "--rendering-method",
+        "forward_plus",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "res://g1/walk_review.tscn",
+        "--",
+        "--capture",
+        "--run-id=publisher-walk"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "walk-forward",
+      "assertions": 2,
+      "result_lines": [
+        "G1_PAID 2 checks, 0 failures"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\walk-forward.log",
+      "log_sha256": "3e797ac7116fd752166baeb9e9fcb853e5e5340f336766a5fc8e82bfe0037fb0",
+      "stderr_sha256": "9c750f1ffc2a3372d6f717fa3ee0a35e6a5436f16d1d26787743b9d551e7eaf5"
+    },
+    {
+      "started": "2026-09-13T22:35:56.8909657+09:30",
+      "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+      "pid": 40676,
+      "exit_code": 0,
+      "seconds": 42.6350177,
+      "arguments": [
+        "--background",
+        "--threads",
+        "8",
+        "--python-exit-code",
+        "1",
+        "--python",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff\\recipes\\g1\\reopen.py",
+        "--",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff\\masters",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\game",
+        "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\blender-reopen"
+      ],
+      "appdata": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\u\\g1",
+      "slice": "g1",
+      "name": "blender-reopen",
+      "assertions": 0,
+      "result_lines": [
+        "G1_BLENDER_REOPEN_OK 30 6"
+      ],
+      "log": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\blender-reopen.log",
+      "log_sha256": "9cf4e22288033973939a162d99de434810c763313d9ba626bd1063712d4e0eef",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "paid_fingerprints": {
+    "art": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\evidence\\paid-art-publisher\\paid.json",
+    "baseline": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\fresh\\evidence\\paid-baseline-publisher\\paid.json",
+    "stages": {
+      "initial": {
+        "sha256": "9e9e5ba4447000f8ca4fa63385d4c6c05ac78e2925cc18f77431f0bab9a7b792",
+        "fields": {
+          "blocks": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "contraptions": "37d5fa0d9c6ccac855507058bc3f9ce279da2dbef46dc89d72ef91d3b978a2e5",
+          "leylines": "4dba9e9f454624f1688501c536d96c5a5c8e48f3be4c5836ddf1e6061d8df676",
+          "loot_kill_counter": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+          "player": "bee26e6c635dc70acfff01e2cffa79bc82a41c136ba64ea4af2c56b4aaa91479",
+          "resource_nodes": "d2f3d6bf8d433b564d4a48842efc4ad4e1cec83cf2d4d6a861d495cdcd8234b2",
+          "schema_version": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+          "sim": "843c24c59267ac07dbececf24fa0649e205365cc2a2cd463a2e212dc6fbc933b",
+          "stations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "world_drops": "24c4f8486ed77a02e0d880efd21553349ff003dd9c8d2b3e5371834f8fcf66fd",
+          "world_profile": "8b2d16e8347ad720172d15b90e0b5865d75696764bbe5fe361db55e6f34a74e8",
+          "world_seed": "a88a7902cb4ef697ba0b6759c50e8c10297ff58f942243de19b984841bfe1f73"
+        }
+      },
+      "paid": {
+        "sha256": "ab80181fbed535cfbe2684d370b9438149b816097c7c6301a3684fda4f0b931b",
+        "fields": {
+          "blocks": "8b8a2167a77128135c703f51126027c1db7eca8cf1bd88d8e3e4ef93a5a958a0",
+          "contraptions": "c84285ffe24620a915300948528461c6c4fc864b0f8bc72135b00d702fb302dc",
+          "leylines": "0147e312950d39137e10ba3aadb4729972efd2f3177117b1e1986595a995c438",
+          "loot_kill_counter": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+          "player": "1cc8fe990b3e1dde04358cf91f43c96fdd2ee5e1feb9a3109b3123716a167efc",
+          "resource_nodes": "2e8358181f67b7af749c5e4acba0686b29b19544ce8f1edaa63fd14f2c8ffda2",
+          "schema_version": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+          "sim": "892bac3a3a160646466af4678bc7391c53262a4dd526727a3693f59fc7a809cc",
+          "stations": "4fd38a76da509ebdc1380bf33e9ac3eaa63f270973e1046fb56f568e88cf75b9",
+          "world_drops": "24c4f8486ed77a02e0d880efd21553349ff003dd9c8d2b3e5371834f8fcf66fd",
+          "world_profile": "8b2d16e8347ad720172d15b90e0b5865d75696764bbe5fe361db55e6f34a74e8",
+          "world_seed": "a88a7902cb4ef697ba0b6759c50e8c10297ff58f942243de19b984841bfe1f73"
+        }
+      },
+      "final": {
+        "sha256": "7d0398e6cddedd096aa6ff3f5f01ba070d96af2043397dd1d8139f424a1b637d",
+        "fields": {
+          "blocks": "8b8a2167a77128135c703f51126027c1db7eca8cf1bd88d8e3e4ef93a5a958a0",
+          "contraptions": "c84285ffe24620a915300948528461c6c4fc864b0f8bc72135b00d702fb302dc",
+          "leylines": "0147e312950d39137e10ba3aadb4729972efd2f3177117b1e1986595a995c438",
+          "loot_kill_counter": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+          "player": "717cda48df7bc46a1779fac4f9d3c325d6929628c3da738cf86643678ad7b4e2",
+          "resource_nodes": "2e8358181f67b7af749c5e4acba0686b29b19544ce8f1edaa63fd14f2c8ffda2",
+          "schema_version": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+          "sim": "892bac3a3a160646466af4678bc7391c53262a4dd526727a3693f59fc7a809cc",
+          "stations": "4fd38a76da509ebdc1380bf33e9ac3eaa63f270973e1046fb56f568e88cf75b9",
+          "world_drops": "24c4f8486ed77a02e0d880efd21553349ff003dd9c8d2b3e5371834f8fcf66fd",
+          "world_profile": "8b2d16e8347ad720172d15b90e0b5865d75696764bbe5fe361db55e6f34a74e8",
+          "world_seed": "a88a7902cb4ef697ba0b6759c50e8c10297ff58f942243de19b984841bfe1f73"
+        }
+      }
+    },
+    "canonicalization": "Parse native JSON, sort finite resource/station records, omit only auto-generated station scene-node name. Persistent station_key, resource_id, positions, quantities, work, skills, effects, loot, building addresses and ownership remain exact.",
+    "walk_metres": 135.078021510504
+  },
+  "probes": {
+    "geography_sha256": "550b2d742314136a71a8c177920059bd245996e744b8722c8ba8c68afbde4a70",
+    "snapshot_sha256": "2fe1ad3fa6b4581996b94b451d7d05c5d135c11281517f76f70bbf4ef1001aba",
+    "art_checks": 9,
+    "baseline_checks": 9,
+    "scope": "Fresh final integration hooks; exact generated map and complete save snapshot. Only ephemeral auto-generated station scene names excluded, never station_key."
+  },
+  "fresh_reopen": {
+    "masters": 30,
+    "packed_file_images": 477,
+    "runtime_glbs": 6,
+    "report_path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\g1\\blender-reopen\\report.json",
+    "sha256": "56ae3aca975fb9d831cf76c9d9043b6ab781a50996ef33692717897c3e002884"
+  },
+  "fresh_runtime_test_outputs_changed": [
+    {
+      "path": "game/g1/paid-home.json",
+      "before": "14c20ce335b11acdb6c2fae97350d47ae0359f30b40d2099078a3ff6bd08d168",
+      "after": "3fdf7a67e8025d8f8e6fac918d382fb951c6254ace22530ebe49f94293e00934"
+    }
+  ],
+  "native_scope": {
+    "base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+    "native": {
+      "revision": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+      "godot_cpp_sha256": "701934d2505314d4272ef258beca75974de9f2bb2d94d98b29d22670de42370c",
+      "dll_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1"
+    },
+    "baseline_files_unchanged": 1040,
+    "changes_exactly_reproduce_literal_hooks": [
+      "game/art/frontier_look.gd",
+      "game/art/station_look.gd",
+      "game/project.godot",
+      "game/scripts/contraption_site.gd",
+      "game/scripts/leyline_source.gd",
+      "game/scripts/pickup.gd",
+      "game/scripts/piece_look.gd",
+      "game/scripts/placed_block.gd",
+      "game/scripts/player.gd",
+      "game/scripts/pressure_pocket.gd",
+      "game/scripts/resource_stream.gd",
+      "game/scripts/sandpit.gd",
+      "game/scripts/save_manager.gd",
+      "game/scripts/station_site.gd",
+      "game/scripts/strange_resource_art.gd",
+      "game/scripts/terrain.gd"
+    ],
+    "newline_only": [
+      "game/assets/authored/beam.glb.import",
+      "game/assets/authored/broadleaf_tree.glb.import",
+      "game/assets/authored/campfire.glb.import",
+      "game/assets/authored/cataclysm_augmentation_inlay.glb.import",
+      "game/assets/authored/cataclysm_fen_cistern.glb.import",
+      "game/assets/authored/cataclysm_fen_roof.glb.import",
+      "game/assets/authored/cataclysm_fen_wall.glb.import",
+      "game/assets/authored/cataclysm_forge_lamella.glb.import",
+      "game/assets/authored/cataclysm_forge_threshold.glb.import",
+      "game/assets/authored/cataclysm_impact_fragment.glb.import",
+      "game/assets/authored/cataclysm_root_fragment.glb.import",
+      "game/assets/authored/cataclysm_rootvault_frame.glb.import",
+      "game/assets/authored/cataclysm_rootvault_roof.glb.import",
+      "game/assets/authored/cataclysm_rootvault_wall.glb.import",
+      "game/assets/authored/cataclysm_upland_paving.glb.import",
+      "game/assets/authored/cataclysm_upland_shelter.glb.import",
+      "game/assets/authored/cataclysm_upland_wall.glb.import",
+      "game/assets/authored/chest.glb.import",
+      "game/assets/authored/deadfall.glb.import",
+      "game/assets/authored/fern_bed.glb.import",
+      "game/assets/authored/field_boulder.glb.import",
+      "game/assets/authored/forge_basic.glb.import",
+      "game/assets/authored/forge_improved.glb.import",
+      "game/assets/authored/mason_yard.glb.import",
+      "game/assets/authored/mobs/ash_hound.glb.import",
+      "game/assets/authored/mobs/bog_lurker.glb.import",
+      "game/assets/authored/mobs/cinder_archer.glb.import",
+      "game/assets/authored/mobs/cinder_wisp.glb.import",
+      "game/assets/authored/mobs/ember_whelp.glb.import",
+      "game/assets/authored/mobs/forge_tyrant.glb.import",
+      "game/assets/authored/mobs/gloom_crawler.glb.import",
+      "game/assets/authored/mobs/hollow_knight.glb.import",
+      "game/assets/authored/mobs/marsh_wisp.glb.import",
+      "game/assets/authored/mobs/shrieker.glb.import",
+      "game/assets/authored/mobs/stone_husk.glb.import",
+      "game/assets/authored/mobs/valley_elk.glb.import",
+      "game/assets/authored/pillar.glb.import",
+      "game/assets/authored/shrub.glb.import",
+      "game/assets/authored/strange_arm.glb.import",
+      "game/assets/authored/strange_basket.glb.import",
+      "game/assets/authored/strange_bellows.glb.import",
+      "game/assets/authored/strange_drum.glb.import",
+      "game/assets/authored/strange_empty_husk.glb.import",
+      "game/assets/authored/strange_fern.glb.import",
+      "game/assets/authored/strange_hollow_trunk.glb.import",
+      "game/assets/authored/strange_lamp.glb.import",
+      "game/assets/authored/strange_landing.glb.import",
+      "game/assets/authored/strange_lantern_shell.glb.import",
+      "game/assets/authored/strange_lanternheart.glb.import",
+      "game/assets/authored/strange_lever.glb.import",
+      "game/assets/authored/strange_lightning_scar.glb.import",
+      "game/assets/authored/strange_low_outcrop.glb.import",
+      "game/assets/authored/strange_moss.glb.import",
+      "game/assets/authored/strange_pullstone.glb.import",
+      "game/assets/authored/strange_root_arch.glb.import",
+      "game/assets/authored/strange_root_arch_b.glb.import",
+      "game/assets/authored/strange_root_arch_c.glb.import",
+      "game/assets/authored/strange_root_crown.glb.import",
+      "game/assets/authored/strange_scree.glb.import",
+      "game/assets/authored/strange_sedge.glb.import",
+      "game/assets/authored/strange_sorter.glb.import",
+      "game/assets/authored/strange_stone_rib.glb.import",
+      "game/assets/authored/strange_stormglass.glb.import",
+      "game/assets/authored/strange_thrumroot_core.glb.import",
+      "game/assets/authored/strange_thrumroot_shell.glb.import",
+      "game/assets/authored/strange_vent_case.glb.import",
+      "game/assets/authored/strange_ventlung.glb.import",
+      "game/assets/authored/strange_wildwood_tree.glb.import",
+      "game/assets/authored/strange_winch.glb.import",
+      "game/assets/authored/stump.glb.import",
+      "game/assets/authored/wall_panel.glb.import",
+      "game/assets/authored/workbench.glb.import",
+      "game/assets/textures/ash.png.import",
+      "game/assets/textures/bark.png.import",
+      "game/assets/textures/bronze.png.import",
+      "game/assets/textures/dirt.png.import",
+      "game/assets/textures/fieldstone.png.import",
+      "game/assets/textures/forest_floor.png.import",
+      "game/assets/textures/grass.png.import",
+      "game/assets/textures/iron_plate.png.import",
+      "game/assets/textures/iron_vein.png.import",
+      "game/assets/textures/leaves.png.import",
+      "game/assets/textures/marsh.png.import",
+      "game/assets/textures/masonry.png.import",
+      "game/assets/textures/planks.png.import",
+      "game/assets/textures/rock.png.import",
+      "game/assets/textures/silver.png.import",
+      "game/assets/textures/steel.png.import",
+      "game/assets/textures/stone_node.png.import"
+    ],
+    "omitted_generated_uids": [],
+    "native_archive_files_verified": 80,
+    "game_data_archive_files_verified": 1145,
+    "scope": "Every pinned game/data archive byte checked against Git. Every changed existing runtime file reconstructs exactly from the recorded literal presentation hooks and isolated project settings. Native sources, data, geometry/ownership authority unchanged."
+  },
+  "preflight": {
+    "base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+    "worker_commits": [
+      "1d3d3ce29c4afe7e1db970b880953e92035a0b7b",
+      "4412781c70ce8cbc7651f9262df6831593b83874"
+    ],
+    "initial_status": "M captures/lf6/control-before-page.png\n M captures/lf6/control-before.png\n M captures/lf6/control-captured-page.png\n M captures/lf6/control-captured.png\n M captures/lf6/finale-page.png\n?? captures/contact-forge/\n?? captures/contact/\n?? captures/flow/\n?? captures/home-reliability/\n?? captures/home/\n?? captures/interaction-feedback/\n?? captures/lf5/\n?? captures/pressure/\n?? game/assets/authored/broadleaf_tree_far.glb.import\n?? game/building-load-boundaries-expected.json\n?? game/building-load-boundaries.json\n?? game/building-load-boundaries.json.previous\n?? game/building-load-checkpoint.json\n?? game/building-load-checkpoint.json.previous\n?? game/building-load-manifest.json\n?? game/first-hour-journey.txt\n?? game/first-hour-pickup-probe.json\n?? game/first-hour-pickup-probe.json.expected\n?? game/first-hour-pickup-probe.json.previous\n?? game/first_hour_journey_save.json\n?? game/first_hour_journey_save.json.previous\n?? game/loose_drop_save_checkpoint.json\n?? game/loose_drop_save_checkpoint.json.previous\n?? game/loose_drop_save_disk_probe.json\n?? game/loose_drop_save_disk_probe.json.previous\n?? game/tests/custom_panel_refresh.gd.uid\n?? game/tests/feeder_controls.gd.uid\n?? game/tests/feeder_visuals.gd.uid\n?? game/tests/living_frontier_flow.gd.uid\n?? game/tests/living_frontier_hybrid.gd.uid\n?? game/tests/pairing_trial.gd.uid\n?? game/tests/second_resonance_terrain.gd.uid\n?? game/tests/workshop_readability_review.gd.uid",
+    "owned": [
+      "docs/art/leyline-studies/2026-09-09/art07/g1/README.md",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/blender-clay.png",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/blender-material.png",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/costs.md",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-catalogue.png",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-exhausted.png",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-feeder.png",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-home-compatibility.png",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-home-forward.png",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-interior.png",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/media.json",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/native-feeder-compatibility.webp",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/native-feeder.webp",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/paid-route.webp",
+      "docs/prototype/art07-production/receipts/g1.md",
+      "tools/wroughtwild-art07/g1/HANDOFF.md",
+      "tools/wroughtwild-art07/g1/README.md",
+      "tools/wroughtwild-art07/g1/art.gd",
+      "tools/wroughtwild-art07/g1/benchmark_compare.py",
+      "tools/wroughtwild-art07/g1/build-native.ps1",
+      "tools/wroughtwild-art07/g1/c4_fixture.gd",
+      "tools/wroughtwild-art07/g1/catalogue.gd",
+      "tools/wroughtwild-art07/g1/catalogue.tscn",
+      "tools/wroughtwild-art07/g1/checks.ps1",
+      "tools/wroughtwild-art07/g1/colours.gd",
+      "tools/wroughtwild-art07/g1/curate.py",
+      "tools/wroughtwild-art07/g1/environment.gd",
+      "tools/wroughtwild-art07/g1/final-captures.ps1",
+      "tools/wroughtwild-art07/g1/fingerprints.py",
+      "tools/wroughtwild-art07/g1/fresh_copy.py",
+      "tools/wroughtwild-art07/g1/gpu-slot.ps1",
+      "tools/wroughtwild-art07/g1/launch.ps1",
+      "tools/wroughtwild-art07/g1/manifest.py",
+      "tools/wroughtwild-art07/g1/materials.gd",
+      "tools/wroughtwild-art07/g1/package.py",
+      "tools/wroughtwild-art07/g1/paid.gd",
+      "tools/wroughtwild-art07/g1/paid.tscn",
+      "tools/wroughtwild-art07/g1/play.gd",
+      "tools/wroughtwild-art07/g1/play.tscn",
+      "tools/wroughtwild-art07/g1/prepare.py",
+      "tools/wroughtwild-art07/g1/probe.gd",
+      "tools/wroughtwild-art07/g1/probe.tscn",
+      "tools/wroughtwild-art07/g1/probe_compare.py",
+      "tools/wroughtwild-art07/g1/render.ps1",
+      "tools/wroughtwild-art07/g1/reopen.py",
+      "tools/wroughtwild-art07/g1/review.gd",
+      "tools/wroughtwild-art07/g1/review.tscn",
+      "tools/wroughtwild-art07/g1/settings.json",
+      "tools/wroughtwild-art07/g1/stage_masters.py",
+      "tools/wroughtwild-art07/g1/summarize_costs.py",
+      "tools/wroughtwild-art07/g1/verify_inputs.py",
+      "tools/wroughtwild-art07/g1/walk_review.gd",
+      "tools/wroughtwild-art07/g1/walk_review.tscn"
+    ],
+    "worker_files": {
+      "docs/art/leyline-studies/2026-09-09/art07/g1/README.md": "5914b18fbc92d9311dfd45082a043b32f70d1095e70d9856970291467061c989",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/blender-clay.png": "b641aab895467b5b7bc9d34c02b1ef5c4f7ff89e079f4fea1ff2dd311b0f6688",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/blender-material.png": "d0dd69eb364ca904e4ffc071c29c996b16718f9bbde269493d72677985de167e",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/costs.md": "b74e1898ebeade728ff96a49810771ce484ae461528fe4dff6a6864ec0e2a50d",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-catalogue.png": "aaebc7cf1cecbbdb3b12957392fab7c9533e8309c4fa609b2f55f8ce3c6fa659",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-exhausted.png": "675fcc24e1a00df56e5d653e3ba15f4781332bbeecfdbf94493eee62ac7be3e5",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-feeder.png": "0cc1f401046e380415f6fcffb10586408897e5b9578127cf3b6c06d4fdb9f0a5",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-home-compatibility.png": "395cd95f6bcab04aa4d9c97aa46ae85dbc45bc1a2f3399a5b01c7e25b93c6226",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-home-forward.png": "34e492d6e6699fbbcfa96bde6056dea09781a73f65fafcf71741a92e2bfa670b",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/godot-interior.png": "2a2a445c944453dea6e9b3e301fff3ae1a59368eef6568ce6989008a8f2a8a6f",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/media.json": "acee6b081df6d1b1ac3d1328f89396e7cf6126d3c305dfcdaedc908c4c7f3546",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/native-feeder-compatibility.webp": "a07cc31e84793ac84a6fbad528397d9cdc4137d8ce34b107c8e7dc72a59fccd3",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/native-feeder.webp": "ee94eb9a66c96feafbc45f3c9a062d4621ad53ea58f7b5b096713902abf56041",
+      "docs/art/leyline-studies/2026-09-09/art07/g1/paid-route.webp": "3b4472e1fea7edc3a4f058573aff5c74b9e016d2223cc612e334a17fd8a62ebc",
+      "docs/prototype/art07-production/receipts/g1.md": "0686f16b29c872f30e3d26b3b20e8d0e444809303c12fdbb1ec664ce52eea4f8",
+      "tools/wroughtwild-art07/g1/HANDOFF.md": "19f0169f8790efc8e241e2e9203c63c489f73e4228d53090877b214ae9ee4378",
+      "tools/wroughtwild-art07/g1/README.md": "ee88c4e0941addca0231caf3c9f1e4e7a0ccadc0181097c1b1c3f3f84f7abfc5",
+      "tools/wroughtwild-art07/g1/art.gd": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+      "tools/wroughtwild-art07/g1/benchmark_compare.py": "3a04ac0bd2b827c00183132e6374b908e628f494083edbde5cff8c7df510402a",
+      "tools/wroughtwild-art07/g1/build-native.ps1": "dfb2acc36702236b9956b7890222313aa4aff86b8bad10cf7883acbff4cfcf3a",
+      "tools/wroughtwild-art07/g1/c4_fixture.gd": "9deade44e5e3666799ffe0fe369375c3c3fa1cb4fff62ba766e5fdf3516127b9",
+      "tools/wroughtwild-art07/g1/catalogue.gd": "be34f0ec7e4aa735b06086d055ed63e84adc462d9a276e75ad0e79d71b75d4cb",
+      "tools/wroughtwild-art07/g1/catalogue.tscn": "c1a8620792f68605e515efcb605125012f25bd036c6cc7e6b9e0399affd8af06",
+      "tools/wroughtwild-art07/g1/checks.ps1": "1bbce85ae98aa8d57fd684e4f196d77bd5b542f48afcfb8852b252093d957976",
+      "tools/wroughtwild-art07/g1/colours.gd": "7902f76d2d10e86943a37f2d361e0b999fc4db7d15967dbda16892503ad22a46",
+      "tools/wroughtwild-art07/g1/curate.py": "595c066fc4ccb37c288f57e58ee250f5a07ec0517ea6a4242c4795078d78dbf5",
+      "tools/wroughtwild-art07/g1/environment.gd": "fe7cef6c04b1cecfa1ac907304e679b7b9571fc251a69454dc1a05dee6b48b70",
+      "tools/wroughtwild-art07/g1/final-captures.ps1": "ea550169355443708df04a40ad12147be26cbb1b79708f72804fca09d0b24075",
+      "tools/wroughtwild-art07/g1/fingerprints.py": "a0663c3e70736201acc1f8affe816eeae22e5f4011e8580bbb1ee44bb9683a1c",
+      "tools/wroughtwild-art07/g1/fresh_copy.py": "a36579eab81ebd1f4ffc84efe300fee7430d15a7ae2bea86b8c88f51f26ba350",
+      "tools/wroughtwild-art07/g1/gpu-slot.ps1": "5530d286ddfce7dce917017bf3226a8f69dfd2e17e693780f59e19327f0043da",
+      "tools/wroughtwild-art07/g1/launch.ps1": "f3dce98282f4c86c95f82be8e24cf04c138cd9bacced46af7775ced718131412",
+      "tools/wroughtwild-art07/g1/manifest.py": "7a27821ee39bbe6b88ada9ce3b33a655b884c3284fe2b7737b11dc5980cba449",
+      "tools/wroughtwild-art07/g1/materials.gd": "6531f7b0a254b33b47db2b2da541c49e5c356c1900f440462a83e22a8e3c56ca",
+      "tools/wroughtwild-art07/g1/package.py": "1f91cadf94a4be4dfaa97638e94f581dd070a22ee4f0fc621866389b336a7ae1",
+      "tools/wroughtwild-art07/g1/paid.gd": "d4bdecc200118511b20cc03963035b6521e378ae498bb5ed6d4f34d334f09752",
+      "tools/wroughtwild-art07/g1/paid.tscn": "fe4dd1c8f4ff99e3fe30e37a8f47af8b08175faffe3ff1e56cbc62d071eca0ab",
+      "tools/wroughtwild-art07/g1/play.gd": "db8a54fad7cc2f9f88708dbf07f65e9c4e3297258ec7cde2f39f031e9a179c45",
+      "tools/wroughtwild-art07/g1/play.tscn": "fe224d6c2bd073bd1820ba39d2e48befbc929b6fcd7a473bb7d214a7e8c0be97",
+      "tools/wroughtwild-art07/g1/prepare.py": "70830cf61ccf9505f1431d587c534819a2f4d955d0dce3d08dcdb73d06348ba1",
+      "tools/wroughtwild-art07/g1/probe.gd": "5ef9cb5e5b96d6a313676faa3998df0a4345ea6afdc5df1856347643f05d1196",
+      "tools/wroughtwild-art07/g1/probe.tscn": "35e82c50a2fa83ea32bc0e484a390deb91e4e6efc5716472bd6536a086a6d5d7",
+      "tools/wroughtwild-art07/g1/probe_compare.py": "47af91304286e81eeabf64d53332f93fda5688d71cf8d6635e8cdd8d6505757b",
+      "tools/wroughtwild-art07/g1/render.ps1": "ad08c3da1bda3323d3321f98e902fd3787cba40d0b76745bcde40ce8b5a88d3f",
+      "tools/wroughtwild-art07/g1/reopen.py": "42ae3c7034f4deaaad3a22de1db2174beee23c3229fd7ba3ddb5d31ae6a1e8f6",
+      "tools/wroughtwild-art07/g1/review.gd": "8d2146b7c704e0721f6027df7a62e3cc9e384ff36230e8e98952a3e2c4bfeefb",
+      "tools/wroughtwild-art07/g1/review.tscn": "b3b119ddcdd7a6a900a1dbd192ec03b9399b50dd127af464d59a0155cf403c1f",
+      "tools/wroughtwild-art07/g1/settings.json": "c12b30e5e1bda464a459105a66c5fcd874fd6742c2295ea339615784ce195710",
+      "tools/wroughtwild-art07/g1/stage_masters.py": "a81702067225737304625bbd6492774de82d9133b30092aced00c5c3480da128",
+      "tools/wroughtwild-art07/g1/summarize_costs.py": "b88b10a94d677e2d20f83e188fc44b0766db2b109c15b3c2acb67f253fceddf3",
+      "tools/wroughtwild-art07/g1/verify_inputs.py": "789b3049286e6dd375edeb0fc1f13099c953f340c380dff0d1dcb429d996a0c0",
+      "tools/wroughtwild-art07/g1/walk_review.gd": "b346926af128b810ee673053528d36553ea12155c98cf82a582380c8c7a8f470",
+      "tools/wroughtwild-art07/g1/walk_review.tscn": "6d452d33a433bfda942c6b3b8e8ce480986be0509d0347179d48fd22c22bb905"
+    },
+    "canonical": {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff",
+      "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+      "files": 5701,
+      "bytes": 7430015212
+    },
+    "inputs": {
+      "b1": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-b1\\build\\art07\\b1\\v01\\canopy-handoff-v02",
+        "manifest_sha256": "00a244253614b8c58213a15f929e48fd65c9aec0bb3489600646497bfcbaf7d0",
+        "files": 1533,
+        "bytes": 1582338594
+      },
+      "b2": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b2\\worktree\\build\\art07\\b2\\v10\\handoff",
+        "manifest_sha256": "bb4a50ea353a1fdb964542e46afc3f1549f7e45b3b004ab7b4130ae1a7d50e62",
+        "files": 274,
+        "bytes": 335584773
+      },
+      "b3": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b3\\worktree\\build\\art07\\b3\\v01\\handoff-v02",
+        "manifest_sha256": "b53961b58ddf4720ec51f77adfe1e87860890f4c3d9b68ec3f6de27102b39321",
+        "files": 1541,
+        "bytes": 693973744
+      },
+      "b4": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\b4\\worktree\\build\\art07\\b4\\v01\\handoff-v01",
+        "manifest_sha256": "60392ada2fd8eedb52ee091cfead2c7afa1da200f47d0994bafaef7404bace71",
+        "files": 697,
+        "bytes": 2811863353
+      },
+      "c1": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c1\\worktree\\build\\art07\\c1\\v01\\handoff-v01",
+        "manifest_sha256": "e733692b99f61cadf17e7e3d3382834b558aa21c9817597a801eba877104c6f6",
+        "files": 2331,
+        "bytes": 1260213978
+      },
+      "c2": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c2\\worktree\\build\\art07\\c2\\v01\\handoff-v01",
+        "manifest_sha256": "5bc63bc7e83bc8406942d0d5bc8fa6c9e6e605876f4249b9762cbae3f15504fd",
+        "files": 2248,
+        "bytes": 789060004
+      },
+      "c3": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c3\\worktree\\build\\art07\\c3\\v01\\oldgrowth-handoff-v02",
+        "manifest_sha256": "110a3a8dc1dc4fe4de4f5385f55405d4e6bac77b050229f7ce8e604869fff1da",
+        "files": 1733,
+        "bytes": 957686134
+      },
+      "c4": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c4\\worktree\\build\\art07\\c4\\v01\\handoff-v03",
+        "manifest_sha256": "0b37d8e749a4eefc17042374226df1d14b5dad84b5769e65a9a47a3ba1c7a724",
+        "files": 2253,
+        "bytes": 1304222141
+      },
+      "c5": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c5\\worktree\\build\\art07\\c5\\v01\\handoff-v01",
+        "manifest_sha256": "7b5f6338140c9d0500586fc55991b69e853e002ebc258641488728992e282494",
+        "files": 2029,
+        "bytes": 421238282
+      },
+      "c6": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\c6\\worktree\\build\\art07\\c6\\v01\\handoff-v02",
+        "manifest_sha256": "f8b8f094881207e34762bbba5e5a3c2023fbadca098e6c7a0bb190310cd66bc3",
+        "files": 2201,
+        "bytes": 676051405
+      },
+      "d1": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d1\\worktree\\build\\art07\\d1\\v02\\core-lattice-handoff-v01",
+        "manifest_sha256": "a3e92f9692e05eae547290cd6520242f91dfbda31d9236eb6d12842f0453b85a",
+        "files": 1597,
+        "bytes": 116306666
+      },
+      "d2": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d2\\worktree\\build\\art07\\d2\\v02\\roof-joinery-spans-handoff-v02",
+        "manifest_sha256": "47bc86f0adca636bc111c1f772c807cd7d0d6926e26c304d3f6f023bd3740eec",
+        "files": 1544,
+        "bytes": 112683888
+      },
+      "d3": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d3\\worktree\\build\\art07\\d3\\v01\\fine-coverings-handoff-v02",
+        "manifest_sha256": "2839bd3e9c54eee602e8e8731b76a006fc3e811a2f670f71754bb6e280c3ab45",
+        "files": 1668,
+        "bytes": 126564767
+      },
+      "d4": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-d4\\build\\art07\\d4\\h04",
+        "manifest_sha256": "aaa0316f108cdb1de0ed27cc3a40fac7a07574497c14486e88b18fa73dfbda59",
+        "files": 196,
+        "bytes": 117145245
+      },
+      "d5": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d5\\worktree\\build\\art07\\d5\\v03\\d5-handoff",
+        "manifest_sha256": "79532aa924414715fbbde0bf714280fd75d40c9f21cc62cb44c0ce12c3834844",
+        "files": 290,
+        "bytes": 104432660
+      },
+      "d6": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\d6\\worktree\\build\\art07\\d6\\v04\\handoff",
+        "manifest_sha256": "8d82eb36775959f41905e579e36d737caa4a8512ed504d679ab49652301338a7",
+        "files": 78,
+        "bytes": 29858504
+      },
+      "e1": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e1\\worktree\\build\\art07\\e1\\v03\\e1-handoff-v02",
+        "manifest_sha256": "e5ea047846fff53c72c225c4a88bec04ac9aea77bc9635a3fd238670b8948da6",
+        "files": 1866,
+        "bytes": 265904623
+      },
+      "e2": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e2\\worktree\\build\\art07\\e2\\v05\\handoff",
+        "manifest_sha256": "95d33325e5ce3ec48b9ae8a25345579965c9defae4381c492797008973d51fbd",
+        "files": 1490,
+        "bytes": 196851303
+      },
+      "e3": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\e3\\worktree\\build\\art07\\e3\\v10\\handoff",
+        "manifest_sha256": "b3a06254c13e48c3c60f613ec161dacb3c4a8e3b554036d25ff1dcb21cda6bc7",
+        "files": 2204,
+        "bytes": 406834328
+      },
+      "f1": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f1\\worktree\\build\\art07\\f1\\v10\\handoff",
+        "manifest_sha256": "2e3130549c8d0c75f7039f788c15ec94aa3c79d5d7724c9eafecfe038b03259d",
+        "files": 1465,
+        "bytes": 667618307
+      },
+      "f2": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f2\\worktree\\build\\art07\\f2\\v04\\handoff",
+        "manifest_sha256": "0a182b3cb25c5815497cf79645ff1be7769cf1d9d012572bfbbb0a8116d0d9cd",
+        "files": 1830,
+        "bytes": 808257227
+      },
+      "f3": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f3\\worktree\\build\\art07\\f3\\v28\\handoff",
+        "manifest_sha256": "0bdfa7b9f39b2f79e67fe0fa6adfa5a27f89188418e29e52de2fa91471d73dd8",
+        "files": 1369,
+        "bytes": 974850525
+      },
+      "f4": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\f4\\worktree\\build\\art07\\f4\\v12\\handoff",
+        "manifest_sha256": "7b243163925d2783548a191e9e8ac9036e24242b6b22146d5040144e26ddc23f",
+        "files": 1682,
+        "bytes": 850819277
+      },
+      "f5": {
+        "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild-art07-f5\\build\\art07\\f5\\v02\\four-colours-handoff",
+        "manifest_sha256": "4cc8c36a2d63c4c0b0c3e131e875992de981ba4220beffa123ad97d389e7103f",
+        "files": 1660,
+        "bytes": 3482734888
+      }
+    },
+    "index_sha256": "eb39916df348f51dae7643692becaa5340ff9bfede2ed38f5b0ecdfb21ee5fef",
+    "recipe_delta": [
+      {
+        "file": "build-native.ps1",
+        "sealed": "16570b3ab7c94c73317d9c2ff3dfb135e5429227f07767cb63c19635b7568f2c",
+        "tracked": "dfb2acc36702236b9956b7890222313aa4aff86b8bad10cf7883acbff4cfcf3a",
+        "difference": "Trailing blank lines only; executable statements identical."
+      },
+      {
+        "file": "gpu-slot.ps1",
+        "sealed": "82899fe703964a52d09599f74edb924d9502ecf5b6d168d7eef02183279e65bb",
+        "tracked": "5530d286ddfce7dce917017bf3226a8f69dfd2e17e693780f59e19327f0043da",
+        "difference": "Trailing blank lines only; executable statements identical."
+      },
+      {
+        "file": "paid.gd",
+        "sealed": "6a52697f8e89c36d530ef08a8cea4526ca2eab4a5b32210d616fe6e6d1be7f11",
+        "tracked": "d4bdecc200118511b20cc03963035b6521e378ae498bb5ed6d4f34d334f09752",
+        "difference": "Trailing blank lines only; executable statements identical."
+      }
+    ],
+    "worker_successful_jobs": 81,
+    "fresh_files": 4788,
+    "fresh_bytes": 3438258532
+  },
+  "media": {
+    "images": {
+      "godot-home-forward.png": {
+        "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v05\\pilot\\evidence\\views-art-forward_plus\\paid-home-day.png",
+        "sha256": "34e492d6e6699fbbcfa96bde6056dea09781a73f65fafcf71741a92e2bfa670b",
+        "dimensions": [
+          1440,
+          900
+        ]
+      },
+      "godot-home-compatibility.png": {
+        "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v05\\pilot\\evidence\\views-art-gl_compatibility\\paid-home-day.png",
+        "sha256": "395cd95f6bcab04aa4d9c97aa46ae85dbc45bc1a2f3399a5b01c7e25b93c6226",
+        "dimensions": [
+          1440,
+          900
+        ]
+      },
+      "godot-interior.png": {
+        "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v05\\pilot\\evidence\\views-art-forward_plus\\paid-interior-day.png",
+        "sha256": "2a2a445c944453dea6e9b3e301fff3ae1a59368eef6568ce6989008a8f2a8a6f",
+        "dimensions": [
+          1440,
+          900
+        ]
+      },
+      "godot-catalogue.png": {
+        "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff\\evidence\\catalogue-forward_plus\\wood.png",
+        "sha256": "aaebc7cf1cecbbdb3b12957392fab7c9533e8309c4fa609b2f55f8ce3c6fa659",
+        "dimensions": [
+          1440,
+          900
+        ]
+      },
+      "godot-feeder.png": {
+        "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff\\evidence\\forward_plus\\03-paid-firing.png",
+        "sha256": "0cc1f401046e380415f6fcffb10586408897e5b9578127cf3b6c06d4fdb9f0a5",
+        "dimensions": [
+          1600,
+          900
+        ]
+      },
+      "godot-exhausted.png": {
+        "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff\\evidence\\forward_plus\\14-exhausted-reload.png",
+        "sha256": "675fcc24e1a00df56e5d653e3ba15f4781332bbeecfdbf94493eee62ac7be3e5",
+        "dimensions": [
+          1600,
+          900
+        ]
+      },
+      "blender-material.png": {
+        "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff\\blender\\material.png",
+        "sha256": "d0dd69eb364ca904e4ffc071c29c996b16718f9bbde269493d72677985de167e",
+        "dimensions": [
+          1440,
+          1000
+        ]
+      },
+      "blender-clay.png": {
+        "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff\\blender\\clay.png",
+        "sha256": "b641aab895467b5b7bc9d34c02b1ef5c4f7ff89e079f4fea1ff2dd311b0f6688",
+        "dimensions": [
+          1440,
+          1000
+        ]
+      }
+    },
+    "motion": {
+      "paid-route.webp": {
+        "sha256": "3b4472e1fea7edc3a4f058573aff5c74b9e016d2223cc612e334a17fd8a62ebc",
+        "source_frames": 77,
+        "encoded_frames": 77,
+        "duration_ms": 23100,
+        "distinct_decoded_frames": 77,
+        "scope": "Actual ordered Godot frame sequence, resized and WebP encoded only; no synthetic or interpolated frames. Route playback cadence is illustrative, not a frame-time benchmark. Feeder frames follow native 30 Hz test ticks, including held pause and blocked states."
+      },
+      "native-feeder.webp": {
+        "sha256": "ee94eb9a66c96feafbc45f3c9a062d4621ad53ea58f7b5b096713902abf56041",
+        "source_frames": 60,
+        "encoded_frames": 60,
+        "duration_ms": 1980,
+        "distinct_decoded_frames": 60,
+        "scope": "Actual ordered Godot frame sequence, resized and WebP encoded only; no synthetic or interpolated frames. Route playback cadence is illustrative, not a frame-time benchmark. Feeder frames follow native 30 Hz test ticks, including held pause and blocked states."
+      },
+      "native-feeder-compatibility.webp": {
+        "sha256": "a07cc31e84793ac84a6fbad528397d9cdc4137d8ce34b107c8e7dc72a59fccd3",
+        "source_frames": 60,
+        "encoded_frames": 60,
+        "duration_ms": 1980,
+        "distinct_decoded_frames": 60,
+        "scope": "Actual ordered Godot frame sequence, resized and WebP encoded only; no synthetic or interpolated frames. Route playback cadence is illustrative, not a frame-time benchmark. Feeder frames follow native 30 Hz test ticks, including held pause and blocked states."
+      }
+    }
+  },
+  "limits": [
+    "Technical G1 integration delivery only; G2 and owner visual acceptance pending.",
+    "No ordinary-world rollout; canonical package and normal game/data/saves untouched.",
+    "Inherited narrow B1 fit does not achieve full canopy concept. Distant native canopy retained.",
+    "Generic per-face endgrain/edge finishing remains limited; chest retains native 0.15 m floor intersection.",
+    "C5 raised ore remains fallback-only; existing faceted terrain ribbon unchanged.",
+    "Unmatched B2/B4 composition roles have no new generated anchors.",
+    "Original matched RTX 5090 measurements show substantial texture/geometry costs; no lower-spec acceptance.",
+    "Paid acquisition/build targets are harness-paced; controller route is real, not an uncut human first-hour playthrough."
+  ],
+  "fresh_motion_state": {
+    "forward_plus": {
+      "checks": 227,
+      "working_frames": 30,
+      "paused_frames_exact": 15,
+      "blocked_frames_exact": 15
+    },
+    "gl_compatibility": {
+      "checks": 227,
+      "working_frames": 30,
+      "paused_frames_exact": 15,
+      "blocked_frames_exact": 15
+    }
+  },
+  "original_benchmark_rechecked": {
+    "comparisons": 16,
+    "source": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff\\evidence\\benchmark-comparison.json",
+    "source_sha256": "08c6d2569fea4d7ef265e42ab7d3db1e1ace087289504fbe62880111ddf0528b",
+    "recomputed": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\original-benchmark-rechecked.json",
+    "sha256": "08c6d2569fea4d7ef265e42ab7d3db1e1ace087289504fbe62880111ddf0528b",
+    "scope": "Original worker timings revalidated from sealed matching reports; no new publisher benchmark claimed."
+  },
+  "checkout_newline_differences": [
+    {
+      "file": "docs/art/leyline-studies/2026-09-09/art07/g1/README.md",
+      "main_sha256": "d046cd1301082f18056e43adb357053dea9029e17616d99a9bdb3f1a85d5096f",
+      "worker_sha256": "5914b18fbc92d9311dfd45082a043b32f70d1095e70d9856970291467061c989",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/HANDOFF.md",
+      "main_sha256": "365fa286c0724fa00638c5ea40023f1f92602634d1bbb843407ec2cf7c3fce9c",
+      "worker_sha256": "19f0169f8790efc8e241e2e9203c63c489f73e4228d53090877b214ae9ee4378",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/README.md",
+      "main_sha256": "6a0d102738bbc0b66751e12dd2c4838ed7434adc972b4091fc976ebb048378ae",
+      "worker_sha256": "ee88c4e0941addca0231caf3c9f1e4e7a0ccadc0181097c1b1c3f3f84f7abfc5",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/art.gd",
+      "main_sha256": "ae9bc0e6020e26d8ea31cd13e0b155922be246c13a3227772957e8a6c5bba56c",
+      "worker_sha256": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/benchmark_compare.py",
+      "main_sha256": "17e65c026bef8b98e8d292899a03d5b03ed598ba48f31f3ae579d7c779067564",
+      "worker_sha256": "3a04ac0bd2b827c00183132e6374b908e628f494083edbde5cff8c7df510402a",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/c4_fixture.gd",
+      "main_sha256": "160c140d06744adec70b6196a6b27df04a4a4bc9ca8f3050167177ab599fd6aa",
+      "worker_sha256": "9deade44e5e3666799ffe0fe369375c3c3fa1cb4fff62ba766e5fdf3516127b9",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/catalogue.gd",
+      "main_sha256": "3c880f50f006faf06862d8da9d423d75a29824e903637463fa51e3e2ea82f3b5",
+      "worker_sha256": "be34f0ec7e4aa735b06086d055ed63e84adc462d9a276e75ad0e79d71b75d4cb",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/checks.ps1",
+      "main_sha256": "9afe9be14befa983d7baa4a43d2401b43b3d1bd5ddf038fc2985e5767e9b057c",
+      "worker_sha256": "1bbce85ae98aa8d57fd684e4f196d77bd5b542f48afcfb8852b252093d957976",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/colours.gd",
+      "main_sha256": "d0e9b886def428cd7443a9f9664108b059c2e17dbb06da796fb1907051ebba47",
+      "worker_sha256": "7902f76d2d10e86943a37f2d361e0b999fc4db7d15967dbda16892503ad22a46",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/curate.py",
+      "main_sha256": "190fc264c4f69915ff2672fd6300747edeb561dc998b5858b60c07477cac7eb5",
+      "worker_sha256": "595c066fc4ccb37c288f57e58ee250f5a07ec0517ea6a4242c4795078d78dbf5",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/environment.gd",
+      "main_sha256": "7eb3e8cb25bacdb7ce85875eec34d32eac86f6e8d2c71ea18dcaaeff868b4954",
+      "worker_sha256": "fe7cef6c04b1cecfa1ac907304e679b7b9571fc251a69454dc1a05dee6b48b70",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/final-captures.ps1",
+      "main_sha256": "eace006b5b88a249e0a8d40f72cfff7f9eb5fd10d50d4f2593d626e6d263249e",
+      "worker_sha256": "ea550169355443708df04a40ad12147be26cbb1b79708f72804fca09d0b24075",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/fingerprints.py",
+      "main_sha256": "ad7a2ecabe24266292750b2f9e34c801f8fd5d05a1d6c59bcf4b1114d5eaf23f",
+      "worker_sha256": "a0663c3e70736201acc1f8affe816eeae22e5f4011e8580bbb1ee44bb9683a1c",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/fresh_copy.py",
+      "main_sha256": "decec1b89677698330fc913c33ca811bede8d7c714f9a549c779b2a4fb38ef43",
+      "worker_sha256": "a36579eab81ebd1f4ffc84efe300fee7430d15a7ae2bea86b8c88f51f26ba350",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/launch.ps1",
+      "main_sha256": "5e427c16600cb177c4ea6a06ce3126272ebac4451fd7ac1e7b143db4d1379ea9",
+      "worker_sha256": "f3dce98282f4c86c95f82be8e24cf04c138cd9bacced46af7775ced718131412",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/manifest.py",
+      "main_sha256": "f00c7fb75ab12b041640c1cf3a61ea490820bb471ed3976d77f4e3b93ef55c6a",
+      "worker_sha256": "7a27821ee39bbe6b88ada9ce3b33a655b884c3284fe2b7737b11dc5980cba449",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/materials.gd",
+      "main_sha256": "10fe315185f3c84745c60e075c58fb094fc6de54514d690dfb5f3ec99fe2c6a5",
+      "worker_sha256": "6531f7b0a254b33b47db2b2da541c49e5c356c1900f440462a83e22a8e3c56ca",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/package.py",
+      "main_sha256": "c93e4a05375d6042ba3a23fbc5dd07ac1be2462d83f65137be358988d681b921",
+      "worker_sha256": "1f91cadf94a4be4dfaa97638e94f581dd070a22ee4f0fc621866389b336a7ae1",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/play.gd",
+      "main_sha256": "f37c27639062d879d6e4a8dfb58e990785eca2ce9d9b6257d97bba119f2e90d6",
+      "worker_sha256": "db8a54fad7cc2f9f88708dbf07f65e9c4e3297258ec7cde2f39f031e9a179c45",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/play.tscn",
+      "main_sha256": "2a995d814b3df25ea33d0f2ee4dd284368f4ad0bd787ea583d3b0a7c400cbac2",
+      "worker_sha256": "fe224d6c2bd073bd1820ba39d2e48befbc929b6fcd7a473bb7d214a7e8c0be97",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/prepare.py",
+      "main_sha256": "e5ad1f5453e6ef07421d2d914e164457b74093eea347f19b488a8ae458154b22",
+      "worker_sha256": "70830cf61ccf9505f1431d587c534819a2f4d955d0dce3d08dcdb73d06348ba1",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/probe.gd",
+      "main_sha256": "43dc6bc3d2ba98bd31a9eefb5d18bf58c1652a4082076587e2354155ba38e128",
+      "worker_sha256": "5ef9cb5e5b96d6a313676faa3998df0a4345ea6afdc5df1856347643f05d1196",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/probe_compare.py",
+      "main_sha256": "d281273094b48b96bfc6b87bedc57169cf1721cb2029bca98be062f23b4aee43",
+      "worker_sha256": "47af91304286e81eeabf64d53332f93fda5688d71cf8d6635e8cdd8d6505757b",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/render.ps1",
+      "main_sha256": "cbe5a4fbd25d004f7a64420d2364cd0756a39d33294b0d3d0986998afe34f459",
+      "worker_sha256": "ad08c3da1bda3323d3321f98e902fd3787cba40d0b76745bcde40ce8b5a88d3f",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/reopen.py",
+      "main_sha256": "fc7a74fd735c906fbab6a93c1b189c78b9fe19872def8ed165284e0ec67aed1d",
+      "worker_sha256": "42ae3c7034f4deaaad3a22de1db2174beee23c3229fd7ba3ddb5d31ae6a1e8f6",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/review.gd",
+      "main_sha256": "415d296242bf63538f52c1e66b36e6b06391167a2daca9d04c2bd1962542a9d0",
+      "worker_sha256": "8d2146b7c704e0721f6027df7a62e3cc9e384ff36230e8e98952a3e2c4bfeefb",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/settings.json",
+      "main_sha256": "03184dd6b34b585ebd1f9fdede3db7088b578456ba96b64e2c0133b95aca6437",
+      "worker_sha256": "c12b30e5e1bda464a459105a66c5fcd874fd6742c2295ea339615784ce195710",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/stage_masters.py",
+      "main_sha256": "4d84df604d6909fa046a802ec7e793440b13c92eb91428963ebe8b4de0c9088f",
+      "worker_sha256": "a81702067225737304625bbd6492774de82d9133b30092aced00c5c3480da128",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/summarize_costs.py",
+      "main_sha256": "884f0c14b2452393df9f536ab5219cbd783babd07292082ecd656e50fab1e880",
+      "worker_sha256": "b88b10a94d677e2d20f83e188fc44b0766db2b109c15b3c2acb67f253fceddf3",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/verify_inputs.py",
+      "main_sha256": "70e8903d4bee09965030fd4b5fc2235f07c57db0671f1f4e8fcc0e00310bd390",
+      "worker_sha256": "789b3049286e6dd375edeb0fc1f13099c953f340c380dff0d1dcb429d996a0c0",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/walk_review.gd",
+      "main_sha256": "cdd39aaad7e5c572279d758c94ee3b604a67a999c6f8e880ca4b22b7ae1cfb4e",
+      "worker_sha256": "b346926af128b810ee673053528d36553ea12155c98cf82a582380c8c7a8f470",
+      "newline_only": true
+    }
+  ],
+  "source_integration_tip": "4412781c70ce8cbc7651f9262df6831593b83874",
+  "main_commits": [
+    "1d3d3ce29c4afe7e1db970b880953e92035a0b7b",
+    "4412781c70ce8cbc7651f9262df6831593b83874"
+  ],
+  "next_recommended": [
+    "g2"
+  ],
+  "publication": {
+    "remote": "https://github.com/Jattymoels/project-wroughtwild.git",
+    "branch": "main",
+    "method": "Fast-forward exact worker commits; ordinary non-force push under standing permission.",
+    "source_push": "successful; remote main verified at 4412781c70ce8cbc7651f9262df6831593b83874",
+    "notes": "Publication notes are a separate commit; final published SHA is reported by the coordinator."
+  },
+  "publisher_scripts": [
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\prepare.py",
+      "sha256": "9347b093d606366528fe28f48e46eacb3bbe917e91a38b7f8ef7ae2b90facbad"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\make_jobs.py",
+      "sha256": "d7badebc80d202cb3709407cbcdbc5d32c36a063d8296d9cb5cf8e22dc76a376"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\jobs.json",
+      "sha256": "505be6dd75176a32d934cb8cc9e991ebc7efa932066dd3f32fd14aa23ccdbc01"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\run-checks.ps1",
+      "sha256": "d39cfffa0ff62739f529d9553f24d421f8ffa8938d888386bf4ac582ee107f4b"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\native_scope.py",
+      "sha256": "b91458bfcff7128acc260a32f912bb8cae20b00ee749dac3a546913724029d06"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\media_check.py",
+      "sha256": "d117df187659fc85d8ad156697306c6f9d1af84915c734ac33fcf501c4274444"
+    },
+    {
+      "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-publication-2026-09-13\\final_check.py",
+      "sha256": "7b616dbe07d784819cc7fa077ec7bef84d17d133aaf96598a51dcecc43cb380a"
+    }
+  ],
+  "documentation_validation": {
+    "dispatch": {
+      "result": "PASS",
+      "production_slices": 26,
+      "worker_prompts": 26,
+      "publisher_prompts": 1,
+      "catalogue_entries_owned_once": 131,
+      "coverage": {
+        "resource_nodes": 22,
+        "nature_support": 33,
+        "shapes": 26,
+        "materials": 19,
+        "devices": 15,
+        "fauna_presentation": 16
+      },
+      "dependency_edges": 60,
+      "required_reading_files": 43,
+      "local_links": 177,
+      "initially_ready": [
+        "b1",
+        "b2",
+        "b3",
+        "d1",
+        "d4",
+        "d5",
+        "d6",
+        "f5"
+      ]
+    },
+    "catalogue": {
+      "result": "PASS",
+      "shapes": 26,
+      "materials": 19,
+      "kits": 14,
+      "upgrades": 1,
+      "finite_resource_types": 22,
+      "supporting_art_roles": 33,
+      "actor_ids": 16,
+      "grid_m": 1,
+      "lattice_divisions": 2,
+      "normal_profiles_kits": 10,
+      "living_frontier_supported_profiles_kits": 14,
+      "legal_material_shape_pairs": 273,
+      "station_body_m": [
+        0.96,
+        2,
+        0.96
+      ],
+      "scope": "Concept coverage only. Profile/era/unlock gates still apply; no new rules or universal kit availability."
+    },
+    "art": {
+      "result": "PASS",
+      "pngs": 6,
+      "selected_boards": 5,
+      "superseded_framing_board": 1,
+      "exact_prompts": 6,
+      "generated_original_copies_checked": 6,
+      "edit_parent_links": 1,
+      "unchanged_mood_reference": 1,
+      "local_links_checked": 28
+    }
+  }
+}

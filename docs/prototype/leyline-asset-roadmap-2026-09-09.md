@@ -1,6 +1,6 @@
 # Leyline asset roadmap — a world carrying the same scars
 
-**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; all 24 ART-07 B–F source handoffs technically delivered; G1/G2 pending.** Owner request,
+**Status: ART-01–04 and ART-06C visually approved; ART-05 isolated route technically delivered; all 24 ART-07 B–F source handoffs and G1 technically delivered; independent G2 pending.** Owner request,
 9 September 2026: plan assets that make the world distinctive and connected to
 its lore, using the local TRELLIS pipeline. The owner liked their generated boar
 and especially wants **pulsing cracks of magic scarred through the assets**.
@@ -62,12 +62,17 @@ complete on 12 September. Their
 [sixth publication](art07-production/publication-2026-09-12.md) supplies the final
 stations/home and useful-fixture source chains: **all 24 B–F source slices**.
 The [input index](art07-production/g1-inputs-2026-09-12.json) records every verified
-local package. G1 is now the next isolated integration pilot; G2 reviews its
-published handoff independently afterward. Both remain planned, with normal-world
-rollout and owner visual acceptance separate. Preserve C5's terrain-ribbon
-boundary, E3's native chest seating and existing octagonal construction. Combined
-device texture costs, conservative far LODs and earlier silhouette/budget limits
-remain open; successful source checks do not settle the finished-world appearance.
+local package. On 13 September the owner reported G1 complete. Its
+[seventh publication](art07-production/publication-2026-09-13.md) adds the checked
+isolated paid route/home: **25 of 26 dispatch slices**. Fresh package import,
+paid art-on/art-off equivalence, all legal building pairs, save/device recovery
+and packed-source reopen passed. Existing octagonal construction is retained.
+The next step is [G2](art07-production/prompts/G2.md), in a separate session that
+did not implement G1, using the [checked input record](art07-production/g2-inputs-2026-09-13.json).
+G2 remains planned. The visibly narrow canopy, generic joins, native chest seating,
+C5 terrain-ribbon boundary and loaded texture/geometry costs need independent
+assessment. Technical completion does not settle finished-world appearance;
+owner visual acceptance and normal-world rollout remain separate.
 
 The owner then requested a sliced plan and prompts for other sessions to enact
 ART-07. The [dispatch pack](art07-production/README.md) now breaks the parent

@@ -6,13 +6,13 @@ The plan refines the broad ART-07B–G headings into **26 bounded slices**. It p
 
 ## Current delivery and next prompts
 
-All **24 B–F source slices** are technically delivered: **24 of 26 dispatch slices**. The [sixth publication](publication-2026-09-12.md) adds E1/E3/F1/F4 and links the five earlier reports. It records exact integrated commits, checked local handoffs, fresh reopens and state/restart evidence. Owner visual acceptance and ordinary-world adoption remain separate.
+All **24 B–F source slices and G1** are technically delivered: **25 of 26 dispatch slices**. The [seventh publication](publication-2026-09-13.md) integrates the isolated retained route/home pilot and links the six source publications. It records fresh package, paid baseline, building, recovery and packed-source checks. Owner visual acceptance and ordinary-world adoption remain separate.
 
-The next step is one session: **[G1 — Retained route and home integration pilot](prompts/G1.md)**. All 24 dependencies are available; the [G1 input index](g1-inputs-2026-09-12.json) records their absolute local package paths and manifest hashes. The publisher verified 35,779 source files for this handoff. A Git clone alone does not contain these ignored packages.
+The next step is one separate session: **[G2 — Independent full-kit review](prompts/G2.md)**, assigned to someone who did not implement G1. The [G2 input record](g2-inputs-2026-09-13.json) gives the exact G1 handoff path/hash and pinned runtime. G2 remains planned. Copy the handoff into a fresh G2-owned directory before import or play; a Git clone does not contain the ignored local package.
 
-After G1 completes and its handoff is checked and published, assign **[G2 — Independent full-kit review](prompts/G2.md)** to a separate session that did not implement G1. G2 depends on G1 and is not ready to run concurrently. These two slices remain planned. Normal-world rollout is beyond the isolated pilot.
+G1 retains all 273 legal building combinations, including octagonal/chamfer/triangle uses, native geography and finite ownership. Its [24-source input index](g1-inputs-2026-09-12.json) still identifies every predecessor package; all 35,779 source files were reverified for publication.
 
-G1 must preserve native geography, finite ownership, all legal shapes/materials and octagonal building pieces. Compose the overlapping presentation adapters by their owned IDs. Keep the C5 terrain-ribbon boundary and record E3 chest seating, conservative device LODs, texture costs and earlier visual/budget limits candidly.
+Independent review must assess the narrow canopy fit against the selected fuller habitat direction, generic material joins, E3 chest seating, C5 terrain-ribbon boundary, unmatched supporting composition assets and substantial loaded texture/geometry costs. The isolated paid pilot is technically checked; these limitations remain open visual/cost findings.
 
 Use the shared GPU mutex plus read-only process checks. Cross-session messaging requires explicit owner authorization; exclude completed workers from GPU notices and do not create acknowledgement exchanges. No new session is started by this index.
 

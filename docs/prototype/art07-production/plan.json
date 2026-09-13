@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "status": "All 24 B–F source slices technically delivered: 24 of 26 dispatch slices. See the six publication reports through publication-2026-09-12.md for checked evidence and limits. Next: G1 retained route/home integration pilot. G2 independently reviews its completed handoff afterward. G1/G2 remain planned; owner visual acceptance and ordinary-world rollout are separate.",
+  "status": "All 24 B–F source slices and the G1 isolated route/home integration pilot are technically delivered: 25 of 26 dispatch slices. See publication-2026-09-13.md and the six source publications. Next: G2 independent full-kit review in a session that did not implement G1. G2 remains planned; owner visual acceptance and ordinary-world rollout are separate.",
   "design_baseline": "1eda3c512aefadbc00638c1b4fbde8096dd8ae09",
   "catalogue": "docs/art/concepts/environment/2026-09-09-frontier/asset-catalogue.json",
   "ready_rule": "Dependencies have checked receipts/recipes published to main and their local handoff paths/hashes verified; branch from inspected current published main.",
@@ -809,9 +809,16 @@
       "reading": [
         "docs/prototype/world-and-placeable-art-2026-09-09.md",
         "docs/prototype/roster-lifelines-2026-09-09.md",
-        "docs/prototype/session-reliability-2026-09-07.md"
+        "docs/prototype/session-reliability-2026-09-07.md",
+        "docs/prototype/art07-production/g2-inputs-2026-09-13.json",
+        "docs/prototype/art07-production/publication-2026-09-13.md",
+        "docs/prototype/art07-production/receipts/g1.md",
+        "tools/wroughtwild-art07/g1/README.md",
+        "docs/art/leyline-studies/2026-09-09/art07/g1/README.md",
+        "docs/art/leyline-studies/2026-09-09/art07/g1/costs.md",
+        "tools/wroughtwild-art07/f4/CONTRACT.md"
       ],
-      "notes": "Assign to a session that did not implement G1. Report visual shortcomings separately from technical failures; ordinary-world rollout and owner visual acceptance remain explicit later decisions."
+      "notes": "Assign to a session that did not implement G1. Report visual shortcomings separately from technical failures; ordinary-world rollout and owner visual acceptance remain explicit later decisions. The checked G2 input record identifies the sealed G1 package, its hash, pinned game/data/native revision and all 24 source inputs. Verify it and make a fresh G2-owned copy before importing, playing or running tests; do not run mutable reviews in the canonical handoff. G1 executable statements in the sealed recipes and published sources agree; three files differ only by removed trailing blank lines, recorded in the input record. Review the delivered final hooks, including synchronous F4 exhausted/fractional restore and art-on/art-off ownership/geography equality. Recheck all 273 legal building pairs and octagonal/chamfer/triangle uses. Evaluate the visibly narrow canopy against the selected fuller habitat direction, generic material joins, the inherited 0.15 m chest/floor intersection, C5 fallback-only raised ore, unmatched B2/B4 supporting roles and roughly 1.3 GiB loaded textures with hidden stages/LODs. G1 gathering/build targets are harness-paced; distinguish its actual controller route from a human first-hour playthrough. Preserve source assets, native bodies and geography; report bounded defects with an owning slice instead of repairing them in this review. State separate technical, visual and cost findings; do not equate publisher checks with independent acceptance. Finish the G2 report, commit its owned evidence/receipt and stop. G1 reconstruction/copy/GPU wrappers contain G1-worktree output guards: keep those unchanged, and use a minimal G2-owned runner/copy helper with verified engine arguments and explicit-path verifiers. Record adaptations and isolated output/user paths; never redirect G2 writes into G1. Git normalized line endings in 31 main-checkout text files without changing their committed blobs or executable statements. Both raw hashes are recorded separately from the three trailing-blank-line recipe differences; keep sealed bytes unchanged."
     }
   ]
 }

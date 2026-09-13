@@ -1,18 +1,17 @@
 # ART-07 — a full frontier and a coherent building kit
 
-**Production update, 12 September 2026:** all **24 B–F source slices** have
-technical handoffs: **24 of 26 dispatch slices**. The
-[sixth publication](art07-production/publication-2026-09-12.md) adds workbench/yard,
-chest/fire, Lanternheart/Stormglass and pressure pocket/feeder, with fresh
-packed-source, renderer and native work/restart checks and prior report links.
-The [G1 input index](art07-production/g1-inputs-2026-09-12.json) records all 24
-verified local packages. Next is G1's isolated retained route/home integration
-pilot, then a separate G2 independent review after its handoff is published.
-Both remain planned. Native chamfer/triangular and octagonal building uses remain.
-C5 raised ore is limited to its fallback fixture; normal terrain retains its
-thin ribbon. E3 retains the inherited 0.15 m chest/floor intersection. Conservative
-device LODs, texture costs and earlier silhouette/budget limits need combined
-review. Source completion does not grant visual approval or ordinary-world rollout.
+**Production update, 13 September 2026:** all **24 B–F source slices and G1**
+are technically delivered: **25 of 26 dispatch slices**. The
+[seventh publication](art07-production/publication-2026-09-13.md) records G1's
+checked isolated paid route/home, exact published source commits, fresh package
+reopens, all 273 building combinations and both-renderer device recovery.
+Next is one separate [G2 independent review](art07-production/prompts/G2.md);
+its [input record](art07-production/g2-inputs-2026-09-13.json) identifies the
+sealed package. G2 remains planned. Existing octagonal/chamfer/triangle uses,
+geography and ownership are retained. The narrow canopy fit, generic joins,
+inherited 0.15 m chest/floor intersection, C5 fallback-only raised ore and
+substantial texture/geometry costs remain review findings. Owner visual
+acceptance and ordinary-world rollout are separate from technical publication.
 
 **Owner follow-up:** “Yep, create a sliced plan and prompts to send off to other
 sessions to enact” selects the [ART-07 dispatch pack](art07-production/README.md).

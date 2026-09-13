@@ -1,0 +1,247 @@
+{
+  "status": "G1 technically delivered and published; G2 ready for independent review.",
+  "source_integration_tip": "4412781c70ce8cbc7651f9262df6831593b83874",
+  "g1_package": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07\\g1\\worktree\\build\\art07\\g1\\v06\\handoff",
+    "manifest_sha256": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+    "files": 5701,
+    "bytes": 7430015212
+  },
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "native": {
+    "revision": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+    "godot_cpp_sha256": "701934d2505314d4272ef258beca75974de9f2bb2d94d98b29d22670de42370c",
+    "dll_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1"
+  },
+  "input_index": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\docs\\prototype\\art07-production\\g1-inputs-2026-09-12.json",
+    "sha256": "eb39916df348f51dae7643692becaa5340ff9bfede2ed38f5b0ecdfb21ee5fef",
+    "source_count": 24,
+    "files": 35779,
+    "bytes": 19093094616
+  },
+  "receipt": "docs/prototype/art07-production/receipts/g1.md",
+  "report": "docs/prototype/art07-production/publication-2026-09-13.md",
+  "reproduction": "tools/wroughtwild-art07/g1/README.md",
+  "costs": "docs/art/leyline-studies/2026-09-09/art07/g1/costs.md",
+  "sealed_recipe_whitespace_differences": [
+    {
+      "file": "build-native.ps1",
+      "sealed": "16570b3ab7c94c73317d9c2ff3dfb135e5429227f07767cb63c19635b7568f2c",
+      "tracked": "dfb2acc36702236b9956b7890222313aa4aff86b8bad10cf7883acbff4cfcf3a",
+      "difference": "Trailing blank lines only; executable statements identical."
+    },
+    {
+      "file": "gpu-slot.ps1",
+      "sealed": "82899fe703964a52d09599f74edb924d9502ecf5b6d168d7eef02183279e65bb",
+      "tracked": "5530d286ddfce7dce917017bf3226a8f69dfd2e17e693780f59e19327f0043da",
+      "difference": "Trailing blank lines only; executable statements identical."
+    },
+    {
+      "file": "paid.gd",
+      "sealed": "6a52697f8e89c36d530ef08a8cea4526ca2eab4a5b32210d616fe6e6d1be7f11",
+      "tracked": "d4bdecc200118511b20cc03963035b6521e378ae498bb5ed6d4f34d334f09752",
+      "difference": "Trailing blank lines only; executable statements identical."
+    }
+  ],
+  "review_boundary": "Copy the sealed package into fresh G2-owned output before engine import/play/tests. Keep canonical and source handoffs read-only. Inspect and replay independently; no normal-world rollout, replacement assets, gameplay/body changes, or mob/rig completion. Return a scoped finding list where needed.",
+  "limits": [
+    "Technical G1 integration delivery only; G2 and owner visual acceptance pending.",
+    "No ordinary-world rollout; canonical package and normal game/data/saves untouched.",
+    "Inherited narrow B1 fit does not achieve full canopy concept. Distant native canopy retained.",
+    "Generic per-face endgrain/edge finishing remains limited; chest retains native 0.15 m floor intersection.",
+    "C5 raised ore remains fallback-only; existing faceted terrain ribbon unchanged.",
+    "Unmatched B2/B4 composition roles have no new generated anchors.",
+    "Original matched RTX 5090 measurements show substantial texture/geometry costs; no lower-spec acceptance.",
+    "Paid acquisition/build targets are harness-paced; controller route is real, not an uncut human first-hour playthrough."
+  ],
+  "execution_note": "G1 reconstruction/copy/GPU wrappers contain G1-worktree output guards. Keep them unchanged. Run verified engine arguments and explicit-path verifiers through a minimal G2-owned runner/copy helper, recording adaptations and isolated output/user paths; never redirect writes into the canonical G1 worktree.",
+  "git_checkout_newline_differences": [
+    {
+      "file": "docs/art/leyline-studies/2026-09-09/art07/g1/README.md",
+      "main_sha256": "d046cd1301082f18056e43adb357053dea9029e17616d99a9bdb3f1a85d5096f",
+      "worker_sha256": "5914b18fbc92d9311dfd45082a043b32f70d1095e70d9856970291467061c989",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/HANDOFF.md",
+      "main_sha256": "365fa286c0724fa00638c5ea40023f1f92602634d1bbb843407ec2cf7c3fce9c",
+      "worker_sha256": "19f0169f8790efc8e241e2e9203c63c489f73e4228d53090877b214ae9ee4378",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/README.md",
+      "main_sha256": "6a0d102738bbc0b66751e12dd2c4838ed7434adc972b4091fc976ebb048378ae",
+      "worker_sha256": "ee88c4e0941addca0231caf3c9f1e4e7a0ccadc0181097c1b1c3f3f84f7abfc5",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/art.gd",
+      "main_sha256": "ae9bc0e6020e26d8ea31cd13e0b155922be246c13a3227772957e8a6c5bba56c",
+      "worker_sha256": "760d85a59a05fd6445d70f87664c234d195d06394ee5a9717d52702073b2d9c8",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/benchmark_compare.py",
+      "main_sha256": "17e65c026bef8b98e8d292899a03d5b03ed598ba48f31f3ae579d7c779067564",
+      "worker_sha256": "3a04ac0bd2b827c00183132e6374b908e628f494083edbde5cff8c7df510402a",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/c4_fixture.gd",
+      "main_sha256": "160c140d06744adec70b6196a6b27df04a4a4bc9ca8f3050167177ab599fd6aa",
+      "worker_sha256": "9deade44e5e3666799ffe0fe369375c3c3fa1cb4fff62ba766e5fdf3516127b9",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/catalogue.gd",
+      "main_sha256": "3c880f50f006faf06862d8da9d423d75a29824e903637463fa51e3e2ea82f3b5",
+      "worker_sha256": "be34f0ec7e4aa735b06086d055ed63e84adc462d9a276e75ad0e79d71b75d4cb",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/checks.ps1",
+      "main_sha256": "9afe9be14befa983d7baa4a43d2401b43b3d1bd5ddf038fc2985e5767e9b057c",
+      "worker_sha256": "1bbce85ae98aa8d57fd684e4f196d77bd5b542f48afcfb8852b252093d957976",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/colours.gd",
+      "main_sha256": "d0e9b886def428cd7443a9f9664108b059c2e17dbb06da796fb1907051ebba47",
+      "worker_sha256": "7902f76d2d10e86943a37f2d361e0b999fc4db7d15967dbda16892503ad22a46",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/curate.py",
+      "main_sha256": "190fc264c4f69915ff2672fd6300747edeb561dc998b5858b60c07477cac7eb5",
+      "worker_sha256": "595c066fc4ccb37c288f57e58ee250f5a07ec0517ea6a4242c4795078d78dbf5",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/environment.gd",
+      "main_sha256": "7eb3e8cb25bacdb7ce85875eec34d32eac86f6e8d2c71ea18dcaaeff868b4954",
+      "worker_sha256": "fe7cef6c04b1cecfa1ac907304e679b7b9571fc251a69454dc1a05dee6b48b70",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/final-captures.ps1",
+      "main_sha256": "eace006b5b88a249e0a8d40f72cfff7f9eb5fd10d50d4f2593d626e6d263249e",
+      "worker_sha256": "ea550169355443708df04a40ad12147be26cbb1b79708f72804fca09d0b24075",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/fingerprints.py",
+      "main_sha256": "ad7a2ecabe24266292750b2f9e34c801f8fd5d05a1d6c59bcf4b1114d5eaf23f",
+      "worker_sha256": "a0663c3e70736201acc1f8affe816eeae22e5f4011e8580bbb1ee44bb9683a1c",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/fresh_copy.py",
+      "main_sha256": "decec1b89677698330fc913c33ca811bede8d7c714f9a549c779b2a4fb38ef43",
+      "worker_sha256": "a36579eab81ebd1f4ffc84efe300fee7430d15a7ae2bea86b8c88f51f26ba350",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/launch.ps1",
+      "main_sha256": "5e427c16600cb177c4ea6a06ce3126272ebac4451fd7ac1e7b143db4d1379ea9",
+      "worker_sha256": "f3dce98282f4c86c95f82be8e24cf04c138cd9bacced46af7775ced718131412",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/manifest.py",
+      "main_sha256": "f00c7fb75ab12b041640c1cf3a61ea490820bb471ed3976d77f4e3b93ef55c6a",
+      "worker_sha256": "7a27821ee39bbe6b88ada9ce3b33a655b884c3284fe2b7737b11dc5980cba449",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/materials.gd",
+      "main_sha256": "10fe315185f3c84745c60e075c58fb094fc6de54514d690dfb5f3ec99fe2c6a5",
+      "worker_sha256": "6531f7b0a254b33b47db2b2da541c49e5c356c1900f440462a83e22a8e3c56ca",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/package.py",
+      "main_sha256": "c93e4a05375d6042ba3a23fbc5dd07ac1be2462d83f65137be358988d681b921",
+      "worker_sha256": "1f91cadf94a4be4dfaa97638e94f581dd070a22ee4f0fc621866389b336a7ae1",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/play.gd",
+      "main_sha256": "f37c27639062d879d6e4a8dfb58e990785eca2ce9d9b6257d97bba119f2e90d6",
+      "worker_sha256": "db8a54fad7cc2f9f88708dbf07f65e9c4e3297258ec7cde2f39f031e9a179c45",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/play.tscn",
+      "main_sha256": "2a995d814b3df25ea33d0f2ee4dd284368f4ad0bd787ea583d3b0a7c400cbac2",
+      "worker_sha256": "fe224d6c2bd073bd1820ba39d2e48befbc929b6fcd7a473bb7d214a7e8c0be97",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/prepare.py",
+      "main_sha256": "e5ad1f5453e6ef07421d2d914e164457b74093eea347f19b488a8ae458154b22",
+      "worker_sha256": "70830cf61ccf9505f1431d587c534819a2f4d955d0dce3d08dcdb73d06348ba1",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/probe.gd",
+      "main_sha256": "43dc6bc3d2ba98bd31a9eefb5d18bf58c1652a4082076587e2354155ba38e128",
+      "worker_sha256": "5ef9cb5e5b96d6a313676faa3998df0a4345ea6afdc5df1856347643f05d1196",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/probe_compare.py",
+      "main_sha256": "d281273094b48b96bfc6b87bedc57169cf1721cb2029bca98be062f23b4aee43",
+      "worker_sha256": "47af91304286e81eeabf64d53332f93fda5688d71cf8d6635e8cdd8d6505757b",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/render.ps1",
+      "main_sha256": "cbe5a4fbd25d004f7a64420d2364cd0756a39d33294b0d3d0986998afe34f459",
+      "worker_sha256": "ad08c3da1bda3323d3321f98e902fd3787cba40d0b76745bcde40ce8b5a88d3f",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/reopen.py",
+      "main_sha256": "fc7a74fd735c906fbab6a93c1b189c78b9fe19872def8ed165284e0ec67aed1d",
+      "worker_sha256": "42ae3c7034f4deaaad3a22de1db2174beee23c3229fd7ba3ddb5d31ae6a1e8f6",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/review.gd",
+      "main_sha256": "415d296242bf63538f52c1e66b36e6b06391167a2daca9d04c2bd1962542a9d0",
+      "worker_sha256": "8d2146b7c704e0721f6027df7a62e3cc9e384ff36230e8e98952a3e2c4bfeefb",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/settings.json",
+      "main_sha256": "03184dd6b34b585ebd1f9fdede3db7088b578456ba96b64e2c0133b95aca6437",
+      "worker_sha256": "c12b30e5e1bda464a459105a66c5fcd874fd6742c2295ea339615784ce195710",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/stage_masters.py",
+      "main_sha256": "4d84df604d6909fa046a802ec7e793440b13c92eb91428963ebe8b4de0c9088f",
+      "worker_sha256": "a81702067225737304625bbd6492774de82d9133b30092aced00c5c3480da128",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/summarize_costs.py",
+      "main_sha256": "884f0c14b2452393df9f536ab5219cbd783babd07292082ecd656e50fab1e880",
+      "worker_sha256": "b88b10a94d677e2d20f83e188fc44b0766db2b109c15b3c2acb67f253fceddf3",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/verify_inputs.py",
+      "main_sha256": "70e8903d4bee09965030fd4b5fc2235f07c57db0671f1f4e8fcc0e00310bd390",
+      "worker_sha256": "789b3049286e6dd375edeb0fc1f13099c953f340c380dff0d1dcb429d996a0c0",
+      "newline_only": true
+    },
+    {
+      "file": "tools/wroughtwild-art07/g1/walk_review.gd",
+      "main_sha256": "cdd39aaad7e5c572279d758c94ee3b604a67a999c6f8e880ca4b22b7ae1cfb4e",
+      "worker_sha256": "b346926af128b810ee673053528d36553ea12155c98cf82a582380c8c7a8f470",
+      "newline_only": true
+    }
+  ]
+}
