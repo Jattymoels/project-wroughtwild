@@ -12,7 +12,7 @@ All **26 original dispatch slices are delivered**: 24 B–F source handoffs, G1 
 
 G2 independently replayed all 273 legal building combinations in both renderers, including retained octagonal/chamfer/triangle uses. Paid ownership and geography agree with art disabled. The [24-source input index](g1-inputs-2026-09-12.json) and [G2 input record](g2-inputs-2026-09-13.json) identify exact local dependencies; Git does not contain those ignored packages.
 
-The [open handbacks](publication-2026-09-14.md#remaining-handbacks) cover narrow crowns, generic material joins, chest seating, raised-ore coverage, sparse supporting composition, eight fixture cleanup warnings, and loading/texture residency. Recommended follow-up starts with canopy fit and loading/residency in the isolated pilot, then visual finishing and independent re-review. These are proposed repairs, not completed work or ordinary-world adoption.
+The [open handbacks](publication-2026-09-14.md#remaining-handbacks) cover narrow crowns, generic material joins, chest seating, raised-ore coverage, sparse supporting composition, eight fixture cleanup warnings, and loading/texture residency. Recommended follow-up starts with canopy fit and loading/residency in the isolated pilot, then visual finishing and independent re-review. The owner-requested [repair plan and setup](../art07-repairs/2026-09-14/README.md) now provides nine follow-up prompts, starting with R1–R4. No repair implementation or ordinary-world adoption is completed by that preparation.
 
 Use the shared GPU mutex plus read-only process checks. Cross-session messaging requires explicit owner authorization; exclude completed workers from GPU notices and do not create acknowledgement exchanges. No new session is started by this index.
 

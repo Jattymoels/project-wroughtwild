@@ -79,6 +79,11 @@ owner visual acceptance and ordinary-world rollout remain separate. The six
 ART-06C source animals that still use older runtime forms retain their own
 unfinished rig/adoption boundary; G2 does not close that work.
 
+The owner then requested the recommended plan, prompts and setup. The
+[repair pack](art07-repairs/2026-09-14/README.md) prepares seven bounded repairs
+plus integration and independent review. R1–R4 start first in separate D: workspaces;
+no repair implementation or worker task is started by preparing those copies.
+
 The owner then requested a sliced plan and prompts for other sessions to enact
 ART-07. The [dispatch pack](art07-production/README.md) now breaks the parent
 B–G work into 26 bounded slices, with complete catalogue ownership, prerequisites,

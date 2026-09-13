@@ -29,6 +29,12 @@ No repair or ordinary-world rollout is implemented by this publication. Owner
 visual acceptance and target-device clearance remain open. GPU work stays serial;
 completed workers receive no notices or acknowledgement requests.
 
+The owner requested the recommended repair plan, prompts and setup. The
+[repair dispatch pack](art07-repairs/2026-09-14/README.md) defines R1–R4 first
+(canopy, loading/residency, material joins and cleanup), then R5–R7, R8 combined
+integration and R9 independent review. Separate D: workspaces and verified
+runtime copies prepare the first four; no repair task is launched by setup.
+
 The owner visually approved ART-06C with “Perfect”, then asked to start
 designing all nature assets and the world's feel against the original full
 landscape wide shot, plus all craftable placeable pieces.

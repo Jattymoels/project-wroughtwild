@@ -1,0 +1,483 @@
+{
+  "version": 1,
+  "date": "2026-09-14",
+  "status": "Owner-requested plan, prompts and isolated setup. No repair implementation started by preparation.",
+  "review_base": "b8248561bb06268af607d718c119c69639e4dadc",
+  "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+  "target_hardware": {
+    "initial_measurement": "Current RTX 5090 machine; record actual CPU/GPU/driver and backend on every measured run.",
+    "minimum_device": null,
+    "acceptance": "Open until owner selects a target and actual measurements exist."
+  },
+  "waves": [
+    {
+      "number": 1,
+      "tasks": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "start_after": []
+    },
+    {
+      "number": 2,
+      "tasks": [
+        "r5",
+        "r6",
+        "r7"
+      ],
+      "start_after": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ]
+    },
+    {
+      "number": 3,
+      "tasks": [
+        "r8"
+      ],
+      "start_after": [
+        "r5",
+        "r6",
+        "r7"
+      ]
+    },
+    {
+      "number": 4,
+      "tasks": [
+        "r9"
+      ],
+      "start_after": [
+        "r8"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "r1",
+      "title": "Restore broad canopy silhouettes",
+      "wave": 1,
+      "findings": [
+        "G2-V01"
+      ],
+      "owners": [
+        "B1",
+        "C4",
+        "G1"
+      ],
+      "depends_on": [],
+      "sources": [
+        "b1",
+        "c4"
+      ],
+      "reading": [
+        "tools/wroughtwild-art07/b1/README.md",
+        "tools/wroughtwild-art07/c4/README.md",
+        "tools/wroughtwild-art07/g1/art.gd",
+        "tools/wroughtwild-art07/g1/settings.json",
+        "tools/wroughtwild-art07/g2/canopy.gd"
+      ],
+      "outcome": "Restore crown mass in the retained pilot while fitting the lower trunk to the existing native collision and work envelope.",
+      "work": [
+        "Measure the delivered broadleaf/pine and C4 fit first. G2 found 289 wood instances at horizontal scale 0.2694963 and 32 pines at 0.1313987, with vertical scale 1. Record lower-trunk and upper-crown bounds separately.",
+        "Re-author or refit the lower trunk and attached upper crown as needed using existing packed sources. Do not apply a single narrow horizontal scale to the entire tree merely to fit its base. Keep recognisable branch attachment, real scars, roots and stage transitions.",
+        "Preserve the native 0.7 m walk-height body, resource IDs, positions, heights, harvest targets, stock, partial/exhausted states and existing visibility distances. Check the actual player/head/work envelope; do not add collision to crown mass.",
+        "Deliver selected LODs and a small presentation overlay against the unchanged G1 baseline. Do not implement ground-cover composition or loading-cache changes; R7 and R2 own those concerns."
+      ],
+      "checks": [
+        "Reopen fresh copies of every changed packed master; check packed maps, finite geometry, roots, scale and every exported LOD.",
+        "Capture identical player-height home/route views before and after in daylight, shade, dusk and emission-off where altered. Include both renderers and camera-labelled crown widths/overlap measurements.",
+        "Replay B1/C4 finite-work, partial/exhausted restoration and native-body/movement checks, including one separate-process restart. Compare full paid/probe ownership and geography when changing runtime hooks.",
+        "Report texture/geometry and settled/streaming costs. Do not call the visual defect closed on geometry dimensions alone; present actual models for later owner review."
+      ],
+      "branch": "codex/art07-r1",
+      "worktree": "D:/project-wroughtwild-art07-r1",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r1/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r1/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r1.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r1.json"
+      ]
+    },
+    {
+      "id": "r2",
+      "title": "Reduce setup time and asset residency",
+      "wave": 1,
+      "findings": [
+        "G2-C01"
+      ],
+      "owners": [
+        "G1",
+        "source owners"
+      ],
+      "depends_on": [],
+      "sources": [],
+      "reading": [
+        "tools/wroughtwild-art07/g1/art.gd",
+        "tools/wroughtwild-art07/g1/environment.gd",
+        "tools/wroughtwild-art07/g1/review.gd",
+        "tools/wroughtwild-art07/g2/install_inspection.py",
+        "docs/art/leyline-studies/2026-09-09/art07/g2/costs.md",
+        "docs/prototype/frame-pacing-2026-09-07.md"
+      ],
+      "outcome": "Reduce measured setup and unnecessary resident art resources in the isolated pilot while retaining visible quality and native behavior.",
+      "work": [
+        "Profile the unchanged G1 pilot before editing: loading, mesh assembly, material/texture creation, hidden stages/LODs and restore. G2 measured 91.306/87.482 s art setup versus 11.808/11.319 s baseline, and 1307.8/1288.5 MiB loaded textures on RTX 5090.",
+        "Apply measured, bounded presentation-side reuse/loading changes. Prefer sharing equivalent resources and avoiding unnecessary eager loading; do not remove work states, blank visible assets, reduce native world density/streaming distances or weaken safety to make the benchmark faster.",
+        "Distinguish exact duplicate PNG disk bytes from loaded GPU allocation. Preserve material colour spaces, visible detail, state transitions and native work ownership. Do not silently rebuild meshes from a newer main game/data revision.",
+        "Deliver change records and application instructions suitable for combination with R1/R3/R7. Your package starts from the common G1 baseline, not an unfinished peer runtime. Include an inventory of files/functions/settings that may overlap their art edits.",
+        "Correct the cost-summary range-separator encoding only in your new measurement derivative; preserve the sealed G2 report."
+      ],
+      "checks": [
+        "Record at least three paired fresh processes per mode/backend after import; report each setup duration and min/median/max. Keep import time separate from already-imported startup, first-use stalls, traversal spikes and settled frames.",
+        "Use both renderers, the same paid checkpoint/cameras/resources, 1440x900, 4x MSAA, vsync off, 120 warmup and 300 samples per camera/light. Run benchmarks alone under the mutex with no concurrent imports, generation or captures.",
+        "Report before/after texture/buffer allocations, unique resident geometry including hidden stages, disk package size and actual engine/device identifiers. Show repeatable improvement over measured variation; no approved minimum-hardware budget is invented.",
+        "Exercise cold first-use, all work stages, pause/block/cancel, partial/exhausted restore, repeated home/route reload and release/re-entry. Preserve final-hook art-on/art-off ownership and geography; replay affected source checks.",
+        "Supply matched actual images for visual equivalence. Target-device acceptance remains explicitly unverified until the owner selects and the worker actually tests that device."
+      ],
+      "branch": "codex/art07-r2",
+      "worktree": "D:/project-wroughtwild-art07-r2",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r2/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r2/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r2.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r2.json"
+      ]
+    },
+    {
+      "id": "r3",
+      "title": "Finish building face, end and edge materials",
+      "wave": 1,
+      "findings": [
+        "G2-V02"
+      ],
+      "owners": [
+        "G1",
+        "D4",
+        "D5",
+        "D6"
+      ],
+      "depends_on": [],
+      "sources": [
+        "d4",
+        "d5",
+        "d6"
+      ],
+      "reading": [
+        "tools/wroughtwild-art07/g1/materials.gd",
+        "tools/wroughtwild-art07/g1/catalogue.gd",
+        "tools/wroughtwild-art07/d4/README.md",
+        "tools/wroughtwild-art07/d5/README.md",
+        "tools/wroughtwild-art07/d6/README.md",
+        "docs/systems/construction.md"
+      ],
+      "outcome": "Make existing building forms read as constructed materials with appropriate face, end and edge treatment.",
+      "work": [
+        "Inspect the selected building board and actual generic G1 triplanar face-map treatment. Reuse the existing material family maps and measured scale before creating replacements.",
+        "Implement face/end/edge orientation and joins on the existing shapes. Keep wood grain/endgrain, stone/mineral bedding and metal/glass traits coherent across rotations and coarse/fine joins; inspect transparent-family sorting and both renderers.",
+        "Preserve all 26 catalogue shapes, 19 families and 273 legal pairings, paid construction, shape/material unlocks and the retained octagonal/chamfer/triangle vocabulary. No new shape, roof unlock, physical body or recipe.",
+        "Do not alter chest seating or canopy/ground cover. Record explicit shared-file conflicts with R2 instead of copying a whole peer runtime."
+      ],
+      "checks": [
+        "Run all 273 legal pairs in both renderers with unchanged native payment/refusal checks. Include octagonal, chamfer and triangle uses, fine/coarse junctions, rotated/adjacent faces, doors and transparent materials.",
+        "Render repeatable close and player-height comparisons in daylight/shade/dusk, with UV-scale and seams/endgrain evidence. Separate labelled catalogue inspection stock from the real paid home.",
+        "Construct or reopen a paid home, verify failed placement retains the kit and successful placement creates exactly one object, then restore in a fresh process.",
+        "Report added/removed textures, loaded memory and draw/geometry costs; packed-source reopen is required for any authored map/geometry replacement."
+      ],
+      "branch": "codex/art07-r3",
+      "worktree": "D:/project-wroughtwild-art07-r3",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r3/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r3/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r3.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r3.json"
+      ]
+    },
+    {
+      "id": "r4",
+      "title": "Attribute and fix fixture cleanup warnings",
+      "wave": 1,
+      "findings": [
+        "G2-T01"
+      ],
+      "owners": [
+        "B3",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "E1",
+        "F2",
+        "F3"
+      ],
+      "depends_on": [],
+      "sources": [
+        "b3",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "e1",
+        "f2",
+        "f3"
+      ],
+      "reading": [
+        "tools/wroughtwild-art07/g2/run.ps1",
+        "tools/wroughtwild-art07/g2/make_jobs.py",
+        "docs/art/leyline-studies/2026-09-09/art07/g2/checks.md",
+        "docs/prototype/session-reliability-2026-09-07.md"
+      ],
+      "outcome": "Identify the leaked objects in the eight reported source fixtures and correct their owned lifecycle cleanup.",
+      "work": [
+        "Reproduce and attribute ObjectDB shutdown warnings in B3/C1/C2/C3/C4/E1/F2/F3 using unchanged fixtures and verbose object evidence. Determine fixture-only versus reusable runtime ownership before editing.",
+        "Fix the smallest owned presentation/fixture lifecycle. Free only genuinely owned resources/nodes at the right lifecycle point; retain live resources needed by work, saves and later states.",
+        "Keep log diagnostics and assertions intact. Do not suppress leak warnings, weaken the runner, force the engine to exit early or equate exit-code zero with cleanup success.",
+        "If attribution reaches native simulation architecture or unrelated global ownership, deliver a precise blocked finding instead of silently broadening scope. Preserve G2's runner and reports; work in R4 copies."
+      ],
+      "checks": [
+        "Show before/after verbose logs identifying the affected objects, with a clean normal shutdown after repair in each of the eight original cases.",
+        "Replay all unchanged affected native assertions and associated fresh-process restarts, including finite depletion and partial ownership; keep explicit expected invalid-input warnings separate.",
+        "Run a bounded repeated create/work/restore/dispose exercise appropriate to the owned lifecycle. Report object/resource counts across iterations and after release; state the duration and limits of memory conclusions.",
+        "Prove original source packages and the normal game/saves remain unchanged. Deliver the exact reusable versus fixture-only patch distinction for R8."
+      ],
+      "branch": "codex/art07-r4",
+      "worktree": "D:/project-wroughtwild-art07-r4",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r4/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r4/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r4.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r4.json"
+      ]
+    },
+    {
+      "id": "r5",
+      "title": "Correct chest visual seating",
+      "wave": 2,
+      "findings": [
+        "G2-V03"
+      ],
+      "owners": [
+        "E3"
+      ],
+      "depends_on": [],
+      "sources": [
+        "e3"
+      ],
+      "reading": [
+        "tools/wroughtwild-art07/e3/README.md",
+        "tools/wroughtwild-art07/e3/blender_home.py",
+        "docs/systems/construction.md"
+      ],
+      "outcome": "Remove the visible chest/floor intersection using a visual fit compatible with the existing physical seat and storage behavior.",
+      "work": [
+        "Reproduce and measure the inherited 0.15 m intersection on ordinary and fine floors and retained terrain.",
+        "Adjust only authored visual fit within the native placement/body contract. Keep storage dimensions/capacity, actual seat/transform, hinge authority, interaction target and saved placement unchanged; inspect all affected bounds.",
+        "If a satisfactory fit requires moving the native body/seat or changing placement tolerance, stop that dependent change and report the exact decision needed with a visual candidate. Do not claim the defect fixed by hiding the floor or cropping the evidence."
+      ],
+      "checks": [
+        "Fresh packed-source reopen and export verification of the changed chest; show closed/open views, floor contact, lid clearance and pivot measurements.",
+        "Replay real placement refusals and one-success ownership, paid storage/deposit/withdrawal, lid operation and fresh-process saved restore.",
+        "Compare floor/terrain cases, walls/low ceilings and native body/pose before and after in both renderers. Report any residual visual mismatch honestly."
+      ],
+      "branch": "codex/art07-r5",
+      "worktree": "D:/project-wroughtwild-art07-r5",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r5/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r5.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r5.json"
+      ]
+    },
+    {
+      "id": "r6",
+      "title": "Resolve faceted-ore visual coverage",
+      "wave": 2,
+      "findings": [
+        "G2-V04"
+      ],
+      "owners": [
+        "C5",
+        "G1"
+      ],
+      "depends_on": [],
+      "sources": [
+        "c5"
+      ],
+      "reading": [
+        "tools/wroughtwild-art07/c5/README.md",
+        "tools/wroughtwild-art07/c5/native_resource.gd",
+        "docs/systems/world-generation.md",
+        "docs/systems/construction.md"
+      ],
+      "outcome": "Provide a coherent existing-ore presentation on ordinary faceted terrain within its retained surface and excavation envelope.",
+      "work": [
+        "Trace the current fallback-only C5 adapter and measure the ordinary faceted ribbon, exposed surface and work/body constraints. Review available source candidates before designing changes.",
+        "Implement a surface-conforming visual treatment only where the existing terrain/body contract permits it. Retain the fallback candidate and make full/partial/exhausted appearances truthful.",
+        "Preserve every native resource ID, pose, stock, excavation boundary, targeting/collision and save record. A raised slab is not automatically valid on faceted terrain.",
+        "If the selected appearance cannot fit without changing terrain/colliders, deliver measured options and the exact missing decision; leave that part unapproved. Do not label fallback-only coverage as a completed faceted-terrain repair."
+      ],
+      "checks": [
+        "Render native faceted and fallback cases separately at player height and close range, including slopes/edges, partial extraction, exhaustion and exposed excavation in both renderers.",
+        "Replay unchanged C5 native harvest/partial-restart assertions and compare full art-on/off resource/geography ownership.",
+        "Prove no buried/airborne visual slab, phantom solid surface or mismatched remaining stock is introduced. Reopen changed source masters and report costs."
+      ],
+      "branch": "codex/art07-r6",
+      "worktree": "D:/project-wroughtwild-art07-r6",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r6/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r6/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r6.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r6.json"
+      ]
+    },
+    {
+      "id": "r7",
+      "title": "Compose fuller habitat at retained anchors",
+      "wave": 2,
+      "findings": [
+        "G2-V05"
+      ],
+      "owners": [
+        "B2",
+        "B4",
+        "G1"
+      ],
+      "depends_on": [
+        "r1"
+      ],
+      "sources": [
+        "b2",
+        "b4"
+      ],
+      "reading": [
+        "tools/wroughtwild-art07/b2/README.md",
+        "tools/wroughtwild-art07/b4/README.md",
+        "tools/wroughtwild-art07/g1/environment.gd",
+        "docs/systems/world-generation.md"
+      ],
+      "outcome": "Improve ground and canopy composition using existing retained decorative anchors and the published R1 canopy candidate.",
+      "work": [
+        "Verify and consume R1's published package, then audit all 33 support-role candidates against actual retained anchor types, envelopes and clearances. Record used, unsuitable and deliberately uncomposed roles.",
+        "Build coherent local groupings and silhouette variation at existing anchors, with rooted contact and the approved material/scar language. Preserve world geography, anchor IDs/counts/poses, collision and paths; do not invent scatter to fill the picture.",
+        "Account for R1 crown width and keep ordinary player routes, source discovery and work areas readable. Own cover-role/composition changes; loading optimisations remain R2's responsibility.",
+        "If existing anchors cannot achieve a particular selected composition, provide a measured proposal for the unmet requirement instead of quietly adding new geography or claiming full coverage."
+      ],
+      "checks": [
+        "Matched home, route, clearing and habitat views in daylight/shade/dusk, in both renderers; compare against the selected fuller reference and the R1 candidate.",
+        "Audit anchor IDs/counts/poses, finite resource state and geography before/after. Walk the actual controller route and preserve scenery clearance after building and excavation.",
+        "Test rooted sway, near/middle/far transitions, silhouette overlap and camera visibility. Record uncomposed roles and causes, not a forced all-assets-visible checklist.",
+        "Reopen any changed packed sources and report combined canopy/cover texture, geometry and frame costs; no independent performance clearance from visual improvement."
+      ],
+      "branch": "codex/art07-r7",
+      "worktree": "D:/project-wroughtwild-art07-r7",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r7/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r7/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r7.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r7.json"
+      ]
+    },
+    {
+      "id": "r8",
+      "title": "Integrate the seven repaired candidates",
+      "wave": 3,
+      "findings": [],
+      "owners": [
+        "integration"
+      ],
+      "depends_on": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7"
+      ],
+      "sources": [],
+      "reading": [
+        "tools/wroughtwild-art07/g1/README.md",
+        "tools/wroughtwild-art07/g1/prepare.py",
+        "tools/wroughtwild-art07/g1/fingerprints.py",
+        "tools/wroughtwild-art07/g1/probe_compare.py",
+        "docs/prototype/art07-production/prompts/G1.md"
+      ],
+      "outcome": "Produce one reproducible isolated retained-world package combining all seven published repair candidates.",
+      "work": [
+        "Require published receipts, exact source commits and verified package identities for R1–R7. Start with the common pinned G1 runtime; apply reviewed changes rather than adopting a peer's entire mutated review/save directory.",
+        "Build a file/function/settings overlap ledger. R2 loading work can touch files modified visually by R1/R3/R7; compare each change against the common baseline, resolve it explicitly and preserve both responsibilities. No last-writer-wins directory copy.",
+        "Keep the baseline game/data/native pin at 6bb2e044dcd0bf1788896aa2c19cdf56fee93522 and DLL hash from inputs.json unless a separately approved rebase is explicitly selected. Document only presentation hooks, asset changes and fixture fixes.",
+        "Preserve the synchronous F4 fractional/exhausted restore before recovery input, native escrow/drive/payment, finite stock, legal shape gates and all 16 original actors. No ART-06C rig adoption or ordinary-world rollout.",
+        "Seal a fresh full reproducible runtime/source handoff with exact lineage, selected masters, maps, launchers and private test state. Make a checked input record for R9; blocked repairs remain explicit and cannot be silently marked closed."
+      ],
+      "checks": [
+        "Fresh package import and playable paid-home launch in both renderers. Reopen changed packed sources and verify original/repair input hashes before and after.",
+        "Replay the meaningful paid art-on/off initial/paid/final and probe/geography comparisons, actual controller walk, all 273 legal building pairs, placement/failed-kit/one-success and fresh-process recovery checks.",
+        "Run all affected repaired source/state checks and F4 work, pause/block, fractional and exhausted restore in both renderers. Recheck eight cleanup fixtures; include bounded repeated reload/traversal.",
+        "Capture matched full-kit visual comparisons and repeat the R2 measurement protocol on the combined candidate; an isolated R2 improvement does not establish the final package cost.",
+        "Publish a seven-finding disposition table with evidence and remaining limits. Runtime acceptance, owner visuals and target-device clearance remain separate."
+      ],
+      "branch": "codex/art07-r8",
+      "worktree": "D:/project-wroughtwild-art07-r8",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r8/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r8.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r8.json"
+      ]
+    },
+    {
+      "id": "r9",
+      "title": "Independently review the repaired full kit",
+      "wave": 4,
+      "findings": [],
+      "owners": [
+        "independent review"
+      ],
+      "depends_on": [
+        "r8"
+      ],
+      "sources": [],
+      "reading": [
+        "tools/wroughtwild-art07/g2/README.md",
+        "docs/art/leyline-studies/2026-09-09/art07/g2/README.md",
+        "docs/prototype/roster-lifelines-2026-09-09.md",
+        "docs/prototype/session-reliability-2026-09-07.md"
+      ],
+      "outcome": "Independently decide which original G2 defects the combined R8 package actually resolves.",
+      "work": [
+        "Use a new task that did not implement R1–R8. Independently verify R8's published commits, seal and input lineage; copy its final package before importing or executing. Never redirect the original G1/G2 guards.",
+        "Compare original G2 and final R8 evidence against the selected art direction. Review every G2-V01–V05, T01 and C01 separately; return cleared, partial or open with exact evidence and owner.",
+        "Reproduce meaningful placement, native work and reload/geography cases rather than trusting receipts. Inspect canopy, habitat, joins, chest and ore in matched daylight/shade/dusk and emission-off views where applicable.",
+        "Confirm all 273 building pairs including octagonal/chamfer/triangle uses and all 16 retained actor/host IDs. Preserve the six older runtime animal forms as an explicit separate ART-06C adoption boundary.",
+        "Give separate technical, visual and cost conclusions. An unselected/unavailable target device stays unverified; no general minimum hardware claim. Report concrete defects without repairing them in this task."
+      ],
+      "checks": [
+        "Fresh source import, paid launch and relevant native/payment/save assertions in both renderers, with exact logs, arguments and isolated user paths.",
+        "Independently reproduce R2/R8 setup/residency and settled/first-use costs under matched conditions; verify measured hardware and explicit sample counts.",
+        "Review actual model stills and native motion, changed packed-source reopen, input preservation and the seven-finding closure table.",
+        "Report owner-review images and bounded follow-up prompts when needed. A technical pass alone never authorizes normal-world rollout."
+      ],
+      "branch": "codex/art07-r9",
+      "worktree": "D:/project-wroughtwild-art07-r9",
+      "status": "not_started",
+      "owns": [
+        "tools/wroughtwild-art07-repairs/r9/",
+        "docs/art/leyline-studies/2026-09-14/art07-repairs/r9/",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r9.md",
+        "docs/prototype/art07-repairs/2026-09-14/receipts/r9.json"
+      ]
+    }
+  ]
+}

@@ -11,6 +11,11 @@ open. No original dispatch slice remains. Recommended follow-up is bounded canop
 and loading work in the isolated pilot, followed by visual finishing and re-review.
 Owner visual acceptance and ordinary-world rollout remain separate decisions.
 
+**Repair setup, 14 September 2026:** the owner requested the recommended plan,
+prompts and setup. The [repair pack](art07-repairs/2026-09-14/README.md) gives
+nine follow-up tasks with first-wave R1–R4 workspaces, fixed runtime inputs and
+serial publication gates. Preparing it does not implement or visually accept a repair.
+
 **Owner follow-up:** “Yep, create a sliced plan and prompts to send off to other
 sessions to enact” selects the [ART-07 dispatch pack](art07-production/README.md).
 It refines B–G into 26 bounded worker slices and one serial publication prompt,

@@ -1,0 +1,4 @@
+{
+  "purpose": "Publisher-owned index of checked repair candidates integrated and pushed to main. Empty means none delivered; workspace preparation does not complete a repair.",
+  "deliveries": {}
+}
