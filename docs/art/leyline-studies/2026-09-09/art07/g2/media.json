@@ -1,0 +1,948 @@
+{
+  "images": {
+    "home-forward.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\views-art-forward_plus\\paid-home-day.png",
+      "sha256": "84f3e3db86004c9633c8b611cd3404c9481c664530cadda6f84924074d49dcaf",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "home-compatibility.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\views-art-gl_compatibility\\paid-home-day.png",
+      "sha256": "b4adf4e81b3a05b118f53f91aa64a8e32d50c93d3e603dc1c9e104c8b9afd130",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "home-dusk.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\views-art-forward_plus\\paid-home-dusk.png",
+      "sha256": "1f04a402267b43113d251feed40f9c1b9f36df54fae470002cb6ed9a2414328d",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "interior.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\views-art-forward_plus\\paid-interior-day.png",
+      "sha256": "2a2a445c944453dea6e9b3e301fff3ae1a59368eef6568ce6989008a8f2a8a6f",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "catalogue.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\catalogue-forward_plus\\wood.png",
+      "sha256": "c38c46a5407474edfbca108c914c2f01a47c6d0fba4e6baf496ba6c5468d6438",
+      "dimensions": [
+        1440,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "feeder.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\03-paid-firing.png",
+      "sha256": "ac611da6c16d72be913c958c4e0a2972ac3d33ab4ddc7f99de57abf296d9e281",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "feeder-no-emission.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\07-rear-emission-off.png",
+      "sha256": "7cd6a61fdc4d140c7fe4640ace0708a619bbcc9a6a8455e8e3813ce44ebacddb",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "feeder-shade.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\07-shade.png",
+      "sha256": "a1903ce559132bd63bd0c35551b28c893660ebb141a12bf3b26b36a9e6bb4a5c",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "exhausted-reload.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\14-exhausted-reload.png",
+      "sha256": "a3c186e71ad1e06eae86ff2455cf93cafba102c2255257c5b9e8e13f98dcd6d5",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "fauna-forward.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\g2-fauna-forward_plus\\lineup.png",
+      "sha256": "956190e3465fa07b22457c866cc30e8ca69ce42471c9d6a889d9c737ad862ad7",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "fauna-compatibility.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\g2-fauna-gl_compatibility\\lineup.png",
+      "sha256": "9c5838e431dd36e6b9fde254617966d11f8a791ef82f1584c4a66f221fd467f3",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "blender-material.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\blender\\material.png",
+      "sha256": "e3dd2776279ceb3ef2525cd1325e8350121cbd99e2a081e95b33e426da875ad1",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    },
+    "blender-clay.png": {
+      "source": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\blender\\clay.png",
+      "sha256": "115d9cdcf0e8bf999774e388d28c0159e9766905eac19fae9e303d8ef47a3c2f",
+      "dimensions": [
+        1440,
+        1000
+      ],
+      "scope": "Unedited fresh G2 render; copied byte-for-byte."
+    }
+  },
+  "motion": {
+    "route.webp": {
+      "frames": [
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0000.png",
+          "sha256": "c80d1817b56d7ed2fcdd446a571d2bf4e76c909cff7f666ad31d8724bac2a989"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0001.png",
+          "sha256": "67cd8c29dfded7261eb582e4b7e30230897f691f3e00233405e59da66bac7a5d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0002.png",
+          "sha256": "0d38d6c1f629f51bf26add9cd82266c9b04db289763de446a518c6c1cd8edaa5"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0003.png",
+          "sha256": "9a652384faa0ee7c6ffa078401c5cbf4671f2126df5ae3b6bc0dbda79b845a31"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0004.png",
+          "sha256": "fa3c64a4452a23382b4d0c75858a57efa94dfda0518ba62c3b958bcfa66509b3"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0005.png",
+          "sha256": "2249034a87a503f3ddbc3520804048763d822db3bda24f7a39dfaba36d93d119"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0006.png",
+          "sha256": "b1865adc634c8fc4f72077435d644d0f2a26636da674661f3f4dd9bfe975d10c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0007.png",
+          "sha256": "a9e46768f63c4379f0b39925b610659f98d02826eda7a6d9b0a61a5719e16e8f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0008.png",
+          "sha256": "d2e611e9a86c23793b1fd026213bc4b94b3315f885c4d0a8a21036e15f1cc5bf"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0009.png",
+          "sha256": "c4a6df6a882fbe3081d9286efef826176da057cf12e2cf94a3341c4bee1ff5da"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0010.png",
+          "sha256": "ecaa66f46b24de25add9ab0ab32ea5565ed8a862e33d1d1f8d23a43b609d0bf0"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0011.png",
+          "sha256": "6091d9bd9f826e5b0b6fd0fb7f54de4c03680f810544290c4e7c32f15506e671"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0012.png",
+          "sha256": "988f83e49c3a6aeb72da647da33992d3316a52c7bddcace01a0fdfe2fd2cd46c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0013.png",
+          "sha256": "7b6b7998e8df3f11f606168ecb2e8230e6c0ec1efea282c66d8f704c862e44c2"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0014.png",
+          "sha256": "20b8b89b64e35d3758b7e9c26bdd4d780ecce9ea1e8da983b3efe9271c479dd5"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0015.png",
+          "sha256": "c512257f4a1063c9c380453c846f36fbbd222fc7a2f64be00e681016c4ec2b19"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0016.png",
+          "sha256": "205c993db3b3e8dbbb41d0978d76c9b2b926d5162f8fdc0fe37ab6e3eece05cd"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0017.png",
+          "sha256": "75ef03c78385f0c81873f25b84accb726101490af924cacfef9e1eb6cbabcc6d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0018.png",
+          "sha256": "9fd0b44d6d614c55bcfd36a8cd05d71b42876c9006bec8305866bcd6c9079ef1"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0019.png",
+          "sha256": "79aad731b331cde8a824eb6f3a005e72afd572226041bbc32d6379dbad75df36"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0020.png",
+          "sha256": "a05defc17e444ccefea52f9f7aa26bd8552b43043ccb15a3f7859b004ef4a9d2"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0021.png",
+          "sha256": "f0486aa669febdb60ef8ac3875031a7982ea1e3f51e38c39ea0384aff52660d9"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0022.png",
+          "sha256": "cfbfff78cb58cadbfc4aad2185274810698e5105d45f5e3a6bff795f33e5514f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0023.png",
+          "sha256": "0938224a9facc64d278122c3136c8efba40589329a3f902babb2b0c1803e6c5f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0024.png",
+          "sha256": "572dc95304042d944d79b729a702a5c04c92571848ebba7ed847967bd5da0186"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0025.png",
+          "sha256": "bf152656b30b736789c515403cefdf5b696854e1d82c0c42ec13c551a67d3e6c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0026.png",
+          "sha256": "f54a951f707fa6d346585e626dffb4ea8d948b55b62ef21862945a4deee6654b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0027.png",
+          "sha256": "88b82c13ff5bd70069b7a0d7cb6f61ce32df82034066382ab9cca1b2bc3894fc"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0028.png",
+          "sha256": "184afbc9055da8d3d6891ad588ef1e0ed26a4fbafb32d1508e3ee4dc0ff6c2e9"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0029.png",
+          "sha256": "07d0eabdb2c73751bc2541a8cf5e5adf8bc7846ce823870d8157863b151781c8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0030.png",
+          "sha256": "710f81b05237cffd7aea2b41a4ef52ce44e78a6eac85fd7511879bbaca0e93f7"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0031.png",
+          "sha256": "c2b9dc03060e110618a3586d724535e1e4023b2092de4ace7b18961d8485cffa"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0032.png",
+          "sha256": "faf5c4f5c1210c7d30d624261a3ce65ff186b15c7eb4ede4cb1b80967b79c931"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0033.png",
+          "sha256": "f31fa33604f66ec8fccb5da1a96812e2625e564d32f74b13b436ffef9cbaecae"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0034.png",
+          "sha256": "9c9e3effea5cb99f095a28e29b6aac709fe585e0b47235498593a6fd17bea085"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0035.png",
+          "sha256": "e385497110215a2a3f8e7c6ff55333ffea3f327d40e77e9bc0e24ce2ff7cb703"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0036.png",
+          "sha256": "1998fd5f69a9c3f6f4157d617d78b8d28ccac96a6b4801811d09c4004ee3b3d0"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0037.png",
+          "sha256": "d5daeca06af294b50861443b0ada5ac17ea422e1ca06a32910b288863165bc6e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0038.png",
+          "sha256": "f8795a738e8100cdb0a873e9753439a815bf469162328926a90b7f8af650dd85"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0039.png",
+          "sha256": "b3ad706a52f97c10cfef1876314533a9e00275925493691ef1a576d353547b23"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0040.png",
+          "sha256": "740e351235ba9f4f18b00d292fd8f09f6c57a861c3e3ac1aae176246b929a05f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0041.png",
+          "sha256": "8e6c18647cd6cb349440a11c8d3bb6bca479fbfedd91d38b7acae8cc0300990a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0042.png",
+          "sha256": "28a2ef9b7c05d4bed48854eb387286f9b071469e462a128f3cac98c305fd6dd3"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0043.png",
+          "sha256": "e59f8410737b7b0823b3551e2929913ed4d9b3da9414ecd3ff25838a90c442e8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0044.png",
+          "sha256": "482fb6d83c9d07e4b1020eee253434bac8346b41cfd9ff12c8483d133ccaf190"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0045.png",
+          "sha256": "6b25fb23a8cceaa67c073ccb1fadbc118abd266d115bdb1d8ee2f3795e42c15b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0046.png",
+          "sha256": "d6fa5b6c7f5a60d36472f8a1df15e316f84a1ca7c233fbea97b2b421fc48757e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0047.png",
+          "sha256": "20e8099eeb06eba1d17e327325318a1feb4969753e5d5a5e26b1cacdf1e8967a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0048.png",
+          "sha256": "6e3dcd88a4a58b897c85144a4e971d241831a93ea2c6a6737abf42d140176169"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0049.png",
+          "sha256": "22f3568d55a00ab3902c057c0542941bafad36ac2bbf54986e06ed10c5d3b158"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0050.png",
+          "sha256": "1df8699ecf6b34c984bfa6cbe245b210ba27250d08af7035e84383fb1c423099"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0051.png",
+          "sha256": "f1a6b3cb67a1f0eb890967bde2943ac469365e37f58d138041a2cfd38b1b24fb"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0052.png",
+          "sha256": "bf7d501f6497f11ed46fd87d2934acaf62225e2046883e869e831ee214bbd322"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0053.png",
+          "sha256": "ad7f0f5e74dd06638047503c625a3bf35c7f75ecdeb6d3d672620be84340395b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0054.png",
+          "sha256": "6e87605772eaca805e11d35e4b7998302117c53c3195619cceb95ba6ea9d185c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0055.png",
+          "sha256": "de90233b802773eff729e142d486003586383f70897f14958d50a179dc513d18"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0056.png",
+          "sha256": "b87c7424f733b793bad9a619d97882019057e2a49a7df1b84a196251a9d1082d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0057.png",
+          "sha256": "8f1540a132c0fe9c82084130ef4bd3f16214094d2ba3bfadd116be44a8a1bf5a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0058.png",
+          "sha256": "e7881ad7f563c120f535f39e41c0c6890cd7825df603e5996b84f79a7d9d7895"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0059.png",
+          "sha256": "531a7835570903f4b42dddc24a462870321be8d3f2d9f8630513fa74064a03b6"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0060.png",
+          "sha256": "b6c03da76d8bb539eee920c89be97894e0e2ad86dd516ce6726e6d110cad9437"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0061.png",
+          "sha256": "5bdc0c0a2bfcb8a22d7947a3ade17141fad93bca376ce49265760a8242b9486c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0062.png",
+          "sha256": "525f839a2e5918e49c84a9a18674b95469076546875cd48e3b94ceb501803d3b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0063.png",
+          "sha256": "c4b561f6bb7db9b17d00b59fe5086332ac0a9e4344409af3b662581e36b241f9"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0064.png",
+          "sha256": "b02e7cce8dc031ecea450934bbbb67d913f5b3c4dcd44ad79845b7258c144a0e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0065.png",
+          "sha256": "ba67918b9ac570a653d3569e6f2fd5e37c91f3acffe11772f7ccc8ebc905675a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0066.png",
+          "sha256": "9536d9c1db11ae88594ad58189b9d813ee62a6a0840beab57c1d90b65aacab67"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0067.png",
+          "sha256": "a5abb74308220ce81a394e4f93b7238f9faba33c087372e680e1cd194d48aa6a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0068.png",
+          "sha256": "80824d027dad06de731ba21d23f21d7f76d8c2560fb6c20551c6343007a20c1c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0069.png",
+          "sha256": "22fb4141429f1ea6d24ceabaac0462b85e6d48510bae3c344dfee5957b325893"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0070.png",
+          "sha256": "c915611daa0d03156426f12ef7f2cc716b149c8e47958e515bff13c5e373ede6"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0071.png",
+          "sha256": "b51720bcc5dc9a80abfbbc7f3b6e21e2c0d5c170cc04ee3327332fb0ec238f9a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0072.png",
+          "sha256": "4538b34e8e319b7f3aed7da1d7d8f3f43ce263f33abde90ac0a34129cbc6bec8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0073.png",
+          "sha256": "4b1b9c8e36fad821f5622fa629aad643014104c700574a4fea425a39aa0c2d29"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0074.png",
+          "sha256": "224719ca749702984c8a7156ed8ff9b8ceb1939c3605fdbbc52ae38f14cd08d8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0075.png",
+          "sha256": "b0ae143d15e7e45714fdbaf36db6862e9739e8659dff90b7a4d648460a6ff787"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0076.png",
+          "sha256": "48e0771e65c3b8fd19a1566767b6df73f041d8df24dbe70e3a15814ee5611517"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\paid-art-forward_plus-g2-walk\\walk\\0077.png",
+          "sha256": "e768ba746081522fb6259280587213a346ce7285ba01da8bba07e04d5114fece"
+        }
+      ],
+      "frame_ms": 300,
+      "sha256": "8c8a80f2ba2802fd017a9e796cc7b41e25e302c1f400c39f6e46b715616c724c",
+      "dimensions": [
+        1024,
+        640
+      ],
+      "scope": "Actual ordered frames, resized/encoded only. No interpolation. Route cadence illustrative; feeder uses native 30 Hz work/pause/blocked ticks."
+    },
+    "feeder.webp": {
+      "frames": [
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-000.png",
+          "sha256": "84199bf752a8bde19b3b3768df0f5da7ad5db835d664f218be36a4167fcf000b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-001.png",
+          "sha256": "f4689e4ae211eba2e07bb947de86f6b3c6e860950b5aefbb2681eed8f5123b1a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-002.png",
+          "sha256": "2a629e442de5b5730d84f9a75d6ac0c2e81eb839b6bf24e19a98c3b7bb545ccf"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-003.png",
+          "sha256": "ddf09a770a09d5f17da5a31c4e32d5dfc10e86d474fa20bd9a2f579524dc4577"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-004.png",
+          "sha256": "20de37688679ed0a99eaa6b22b41495d61e1cb897449b98cbcee96c9f67401b4"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-005.png",
+          "sha256": "68bbb7b01f8c118c66cb01483705079c148bd765691cea62cacd6f91e057ca69"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-006.png",
+          "sha256": "76d7bdd6ed42817add23f6a831d3613a9b601d3b618cea73f916f4473d3f84b8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-007.png",
+          "sha256": "80b1cfb298b9f0f23887295bdad0ca849d091418f251aa8130fd065de034ecbc"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-008.png",
+          "sha256": "23e7ca3150621928cb4e6fe0b3303c4af9b80c88fccb5c8ab4069dbadaba3629"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-009.png",
+          "sha256": "35dd060787c2b533faebd49e13acb621e241aa94d5b7412d3d51c8c793ea9916"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-010.png",
+          "sha256": "60067944605b98461a00936a1f6e9eb6d9c29cd760abff2248a4d285c2607c89"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-011.png",
+          "sha256": "1e269eae29458f35194301b5ae9f4b2ba9f72e905758ec6cce0031eb6b75e83f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-012.png",
+          "sha256": "d5eed838e01d4c90af53a42a3f2d838bb8c60bf5017f7a6a866dae6ab8a17de4"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-013.png",
+          "sha256": "8c290ffbeb15dc0640ad9f936dc2a487adcf9b5c74566cf574a975f7e7c197ed"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-014.png",
+          "sha256": "9d1dccb1dbea309ae7af135a4397dd4ce7ed928f28b60b2bbbf0c10e5eb43ed3"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-015.png",
+          "sha256": "1259d352d810ad0b48775069fcd13e99447381c9ee963a72ff4486352ce2144e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-016.png",
+          "sha256": "ddbe3cc7e1f33fd541e687589c360626f4641b72a6174af6a13ad073c370629b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-017.png",
+          "sha256": "58fdbb326e70dfc2f9918ee195abc541119c12ae8cdc0a462637b6c7de968b7c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-018.png",
+          "sha256": "c7052634860f68199b8ff2f6c737a13e3973c3ad7ad87ea9e0953b3e72742162"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-019.png",
+          "sha256": "4f3cd0a6497878a1e2f86a5dfcc53fe864956bfcdc1a6c21682e73872bd458eb"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-020.png",
+          "sha256": "a6e66385bf5111a59a02242455bf745a8347fbcc9e7ac1c2ff3a80528c047ef8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-021.png",
+          "sha256": "857ccf342241cabe597aef774b3d1f6031797845d34ba9ca21f26665277d720f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-022.png",
+          "sha256": "ab42b4aa8425c56fcace82288b9ba4d854812d5430d589e177bb512775f18d86"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-023.png",
+          "sha256": "66c712916f3f4987f5c92a65f1e4e8fdea02defdb702fa3c74efaa044aa3f5b3"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-024.png",
+          "sha256": "4bb886f264320f79783faa53096a274ed719172fc0cf5de1933cf64483b40ae1"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-025.png",
+          "sha256": "d51975015dc72b14c92caf14e08650be04eb3aa0ca782a6be421e47da21174ce"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-026.png",
+          "sha256": "8b8137020b4b41905af24fae2b62d4de5e95ff0a46c774f2271be91e0e7e540a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-027.png",
+          "sha256": "4204e24b66679cfa4070ec321aaeb41fc7a6d42e119ce834b9fbde866f798386"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-028.png",
+          "sha256": "3fb4c60e07c6951c5ed86980991038c2cae3f1c1cc1ea12e408a2f1e784a1acc"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-029.png",
+          "sha256": "78bab135fa0debcadb902093ae41a474d4de2ec54033d5f0259c8e76eb75e8ba"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-030.png",
+          "sha256": "79167e2f68a09b97d5a8f3e08972cd286b8bdf59c98e550bb5f1fde480eaa081"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-031.png",
+          "sha256": "866c08e141a3a5bfcaf1707654133f39e5dd761d37560cafbea9f1dbc9e01374"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-032.png",
+          "sha256": "a6612b0ac1dd6e6112f0fe85f8830e16b8611a8e1548c767a226d5179fdb00fc"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-033.png",
+          "sha256": "8990fdb76ea1a676e92bb43143b3dff9655e0d8bacee9e67e7b935102fca9128"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-034.png",
+          "sha256": "32b17d27291454c90024c7e012a22302b72377822fc3ad5efc3f6ba4da3c8d09"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-035.png",
+          "sha256": "e76b5b61b9b091509d5a1cc1b579d5ab06144a4a52f8511b9df695ff11a54abd"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-036.png",
+          "sha256": "2a347aa69c4a4c778d6b2a6c119779120c6b520d2764f6dd95ea1ce0e6fc825b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-037.png",
+          "sha256": "fe8a8a3fea766efcd459250770b58563be86df5765f37b3980b05ab05173da75"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-038.png",
+          "sha256": "64f7bd2f4fa157150b7c9dda2de3878b04e44a5fbf87f225a6eb1abe086edada"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-039.png",
+          "sha256": "d6c0b92f0990b8b7041509600994ac0cb49ff291779718050c0def96e7a3fced"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-040.png",
+          "sha256": "6851f39eb640532bc77c82078820427c1c127501ddfe1dd97803c61ee53daa1e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-041.png",
+          "sha256": "d4b32c117dc30aad430296055c3c98e35dbdb31e3daaa93abb4b9c7dbb71fea8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-042.png",
+          "sha256": "fcf5e5c779df2f4b53657edebf48d1d9a5a627e0fcb24d500554a147ce770956"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-043.png",
+          "sha256": "75e46495c5de827e5c33283a27a76db06c8472c32d344666e4e71a8d8544f263"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-044.png",
+          "sha256": "9b68c6ad0e359ab60700a07eed7e9f56e7156bc81575a53399a828f90c475a1e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-045.png",
+          "sha256": "8470f2098e3cf382dff9b0359e7fd253b74094c91d0d47ece014a92465057e13"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-046.png",
+          "sha256": "0ea4a0c85299504ac3c64ed7526cef7575936889ea19e0d37940c57b41127e6f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-047.png",
+          "sha256": "dfa057c68cfc03ea497473c432f626697257628bd60241aa58c6b9108330e12f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-048.png",
+          "sha256": "bd52e978875b760db5326ec78461a0c44285a8def772bfd000d79cbea55ef7f0"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-049.png",
+          "sha256": "f62ed02160377448da3f952ffdeef3f5ddd118f1f1cb0d38a2e3489cb3775de4"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-050.png",
+          "sha256": "b52edfc853aa3181675f14b9919dbff7298eb354930b1c9be93b818363cc859a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-051.png",
+          "sha256": "1c4e16c7276e5d34d79e980cf81617b07aa074f0d23346d02d51bfa5ec564ee6"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-052.png",
+          "sha256": "405d68d296c8c9f502ca758c10c8954fc0a3cb6dc6faa7556961d3b72d7c343e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-053.png",
+          "sha256": "b1019ec34a08b444a81a60b3839123695446ec58631ff7b0f04e0ff26331a275"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-054.png",
+          "sha256": "8f87cb11996d23c7b83b92e0e19cd81a2bdf3d067a840ada280057bd110bb231"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-055.png",
+          "sha256": "be08c0e33ad2267d027e1368ccbcd090dce1e6202ca645ac0110125e178f2670"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-056.png",
+          "sha256": "4ecad15459bd361ee5a3a97c7ced1de7df3eb1000c1b41e2b1b412fab69e2851"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-057.png",
+          "sha256": "d00c2185e503921c1bb240f0079ad0b28e497af070590bf52bf85547a943d913"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-058.png",
+          "sha256": "1ab60ac0b65ea8fa35aec4c644b8161d1fda92e15ec03345970b74c544624067"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\forward_plus\\motion-059.png",
+          "sha256": "1fb46b6f138ae30fda3f87a85b94196cd3ab25e5e136def5450f1a39cd51fc4c"
+        }
+      ],
+      "frame_ms": 33,
+      "sha256": "61e7fd24c8806c1c396a6bb087e56ea2434c344bbb5ee2022065bb94b7cce941",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "scope": "Actual ordered frames, resized/encoded only. No interpolation. Route cadence illustrative; feeder uses native 30 Hz work/pause/blocked ticks."
+    },
+    "feeder-compatibility.webp": {
+      "frames": [
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-000.png",
+          "sha256": "a1fd27f95e29393576e6c2cd8fc3bb0d14a511db410cc9503012ece980528d20"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-001.png",
+          "sha256": "831a21c58f17156aa5eda0d20172bcacd8c6921c24a5213dc1aaf1d960fea72e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-002.png",
+          "sha256": "f31c50b44ce44744d078e0adca2d7bb398be189950c4c298c7a9e4269c829d84"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-003.png",
+          "sha256": "3b84508176a542f8cc3830a290a8592e3a64320b59c5fbfbbdd0a9de556ee554"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-004.png",
+          "sha256": "a3a98119edd542464b714430f611c2d6479fd90e32c337600be2b2594e5111ee"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-005.png",
+          "sha256": "ef7eaf70f4cdb88da1b7198ff85bef4023dee9fc4fcd30d93ae5fa9dac88eacd"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-006.png",
+          "sha256": "849cd87e79f6ed752014d3a3b63885b84931e85779292c98e1c2bac2fa51599f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-007.png",
+          "sha256": "0ca0442ddd7ffe3bfabc51371d21ce1da29dcc97c0ff995fe90084f1af6527b9"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-008.png",
+          "sha256": "1e2663acc6662de8b50aa2079ddb00151cbc276a5d5fe88b69fe1d745693dd96"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-009.png",
+          "sha256": "2e33d4598dee9575a551598dba0cc690b008cd990b38863f128c5dc2f7ef7051"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-010.png",
+          "sha256": "f597e3c3e7185d005c2f0c0dc2ed02fe86c654b654f3b4df07eecd1f15f2e2c0"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-011.png",
+          "sha256": "2213e1a525834dd0244c8cc34f4e7e467034aa4d4f393b81d4d42977d2083e34"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-012.png",
+          "sha256": "56b13c3fd4f59b34fdab6e799fd4a9e6747a61ec5d4f5196763377aa7ef11bb8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-013.png",
+          "sha256": "14200bca89d392c20cc8b68c2d08a005646cdef3dadd93e8f9d0473f8ff6f8cf"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-014.png",
+          "sha256": "9a0e497f97b4acf4542bfbc567d4aa0e98d0351150a718a358ca5a740f17175c"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-015.png",
+          "sha256": "ce298f43d3fd60a778d2492933108a6a653059bb4490c18e1b8c6906971ae232"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-016.png",
+          "sha256": "e8c9445ab8c09a824ac1e7564ee85dc9b1fdb6227bc57014ecac4be9ef39cd69"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-017.png",
+          "sha256": "7918ce9d90d87239f5469b359e7c8ef8ce91e11e89176078b2b268fdeaed444b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-018.png",
+          "sha256": "e0e7f08dd9b312b214a121a5f8916ce93c491a58a11c5ac689e8093802501b94"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-019.png",
+          "sha256": "5bfd6e1cb816e3e159f96554972cd95419a6e33358def950c7ad747e4b07517e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-020.png",
+          "sha256": "d91b8be43cfbf2484254a5306937e7181aa188512aa2b23135398433fe9a2d39"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-021.png",
+          "sha256": "f2f2f0c22e41eb49c7a63c3416982fd15638c81fbdf82cc5e2beef87b1e707a1"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-022.png",
+          "sha256": "585885bd1515e2033194b2f979def34135d2e332b394bd887eaa01384cc6496e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-023.png",
+          "sha256": "124f90a218b43251279bd4d5a83cc56391c0a1664b8c73073744ac43986b5245"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-024.png",
+          "sha256": "38fb5df0d2794131a5a9ea24926ac304f61154dda17f7d64d513750f8acccb29"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-025.png",
+          "sha256": "7e95ad171fbabe3804d2f874f9ce8a526f6da39a5ee6ccaf58415bb77a1c447d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-026.png",
+          "sha256": "922a2a0f09b92d9242d8a0c51a1d108ef1e2b4360ef3f4b7d1db8def2dfb6538"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-027.png",
+          "sha256": "2a49b8cd89a818316715d5ba62594ac9060e5555d6d37f52551a588c8523a863"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-028.png",
+          "sha256": "8cb6f0355078165cd38606289d6d59daf3288b7b504675bbc4f4dc7e1d89b05f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-029.png",
+          "sha256": "49c385554274853f19b8bd1a784688ae8ff7da4dce7ad62908a6c05d26c66c96"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-030.png",
+          "sha256": "ba48ba9062cd74f832f5e32bad41a77e1162aaf130440b3380b4891488995401"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-031.png",
+          "sha256": "535616a5a28205fe9272101680f2131a024f1d603bcf41cf182b7090415fb634"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-032.png",
+          "sha256": "0b3a5c11b7ff187dc8abf9e9b9604fc9454e61d9ac26fdf1f2b31f1dfbc0c2b9"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-033.png",
+          "sha256": "5b66179aa3851eb5e4303203862e5376bcafc7d930eb648c43a81ef94cd74a19"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-034.png",
+          "sha256": "d530c1d6b77a337958583f1a44a5872ab477c349f2102323c7e4935d1e238164"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-035.png",
+          "sha256": "57d9c2e2441020186bd71171d7ae4fd0c136ecde5969b94f86b486b0942fb5a7"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-036.png",
+          "sha256": "60bfb750b154b4fe930d216d519943f9ab6d3b7cfebc42300eeca63e00eb128b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-037.png",
+          "sha256": "2b3b35a5284fdf29aee0ce7f5f44f407ff16c79ddbce8d34cc6a69faf9c8a518"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-038.png",
+          "sha256": "de0cfa7423fda3050fed33200315485386bcf1014a983c288cabb1398a3c507d"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-039.png",
+          "sha256": "22580e913c96a0f93f6d257456e79996b14436e26e32ff704ad182bfe8a19240"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-040.png",
+          "sha256": "0f7833a673f871f89fff698b41573b8966b19a1151bb0cd6f6958a6722c2566a"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-041.png",
+          "sha256": "10bf295dcbecd20b0ef5f02ac2d965dffcde8a81489ea8067d557f4c79df8ceb"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-042.png",
+          "sha256": "584ab55e7d657b354a1a0312276e6eb52c733ad0f9fbb220ed8c2d9e4a2c45ed"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-043.png",
+          "sha256": "761d2e64859ef9a143951b30b61b4b667c3a331836b78af4ea31e5d2a47ac893"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-044.png",
+          "sha256": "391c7d05450e14f87072718429be35756b8b021dab8b1c74bcb5268ca95dbf77"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-045.png",
+          "sha256": "b3630017e9338eab26aaeadf0cfea9dce003a7d744484b1ad08e3be163aa6c9f"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-046.png",
+          "sha256": "53ed475c0a5ee5cdac5d7d0866ab2474e2e8aaac93bf1ccc843bcb23c5d6d5fb"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-047.png",
+          "sha256": "d388bd96f7702b6717b2146810a71485018e8b6dd6a485501a45ae2bab8fdfdb"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-048.png",
+          "sha256": "0ab576596ff2a2292bffaa7ad864aff43ab7a066a3396c608ad1c37692e9ab66"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-049.png",
+          "sha256": "d1f30c102dca2f1e4f808bc4b107ac3409d44a5823c594aee0c1f0a738faa993"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-050.png",
+          "sha256": "8ab58f565bf46b6fdf9358e361ea3745e22fa6a59c221cb7f799dabf0133377e"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-051.png",
+          "sha256": "2b9a99afa7f7293f109c6cc45e54c9fcf29d1a991944870eea3c8a209ff36809"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-052.png",
+          "sha256": "fe5aab7914cceca09490c8c5d2dc3b4e04876bf6ca30dbf97de837bd6cf87cd8"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-053.png",
+          "sha256": "a06519471d13e03df25033c69e64f5a61e89652d3e0a21172e410681cf97e276"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-054.png",
+          "sha256": "ca27908d053ec9b1b7101895f409671a44b4329083c6afb8823c51718d29ef01"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-055.png",
+          "sha256": "6516727967b3cb5e350c7834d51a70a90f824f6912fa4d0d139ab9795fa13ff1"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-056.png",
+          "sha256": "cac5c3fca3f9bbc8e6c6e1065d1f68f639dc53fa59d0dabd0eb644ad7328dc04"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-057.png",
+          "sha256": "fa47e273bd0b219a81d6c1fab0437b98cadad562cb6944c3e2251dd3a8187132"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-058.png",
+          "sha256": "5af57777f6345debe2e2ec1ff368af06a4cb087364e97eadefddd2866629e91b"
+        },
+        {
+          "path": "D:\\project-wroughtwild-art07-g2\\build\\art07\\g2\\v01\\review\\evidence\\gl_compatibility\\motion-059.png",
+          "sha256": "bd49ae300b72d7bcc6d29effed1ce868ac11076da6bc81ed4be0ddb67a04b961"
+        }
+      ],
+      "frame_ms": 33,
+      "sha256": "5adb0d1075802a4e0101e89d56823d73a2af49d0132ef511f0fb6f01ab134a6f",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "scope": "Actual ordered frames, resized/encoded only. No interpolation. Route cadence illustrative; feeder uses native 30 Hz work/pause/blocked ticks."
+    }
+  }
+}
