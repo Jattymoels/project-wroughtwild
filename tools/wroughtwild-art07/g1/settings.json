@@ -1,0 +1,18 @@
+{
+  "material_normal_strength": 0.45,
+  "frame_shade": 0.72,
+  "canopy_lod": 2,
+  "groundcover_lod": 2,
+  "colour_lod": "mid",
+  "plant_bend": 0.018,
+  "leaf_colour_gain": [0.85, 0.72, 0.60],
+  "purpose": {
+    "material_normal_strength": "Restrains small material relief across the combined house while retaining the published linear normal maps.",
+    "frame_shade": "Darkens frame-role timber and mineral surfaces enough to distinguish structural edges.",
+    "canopy_lod": "Explicit published far mesh for the B1/C4 live-tree pilot; native streaming distances and bodies are unchanged. Source fit/foliage costs still require G2 assessment.",
+    "groundcover_lod": "Published B2 far geometry fitted inside each existing decorative cover envelope; keeps density and terrain positions unchanged.",
+    "colour_lod": "Published middle source and fixture solids for all four F5 colours. Independent fragments retain their checked exported detail.",
+    "plant_bend": "B4 inherited rooted sway amount for existing decorative B2 cover; bases and scatter positions stay fixed.",
+    "leaf_colour_gain": "B4 inherited warm leaf colour multipliers used on the untextured far cover mesh."
+  }
+}
