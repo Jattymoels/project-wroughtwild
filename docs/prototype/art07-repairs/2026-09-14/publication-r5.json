@@ -1,0 +1,3963 @@
+{
+  "id": "r5",
+  "date": "2026-09-14",
+  "status": "verified_and_integrated",
+  "integration": {
+    "method": "scoped cherry-pick",
+    "previous_main": "8508c25c7883a1408c6b36a6a6260756b5e4f76e",
+    "original_implementation_commit": "f4d5ef753e22fe6ef69164db25f768a2a289f248",
+    "original_receipt_commit": "24e14c82437bfca62576a14a328f3fb445fb6f2d",
+    "implementation_commit": "7f658e1c343ff281002e6951258e800667aad18b",
+    "receipt_commit": "c057b9210f60417ef81884a0c2f799bbede37d3d",
+    "worker_tree_content_match": "All 45 owned Git blobs identical",
+    "destination": "https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main"
+  },
+  "package": {
+    "path": "D:/project-wroughtwild-art07-r5/build/art07-repairs/r5/v02/handoff",
+    "manifest_sha256": "18a9c2bf4a659373ccd303f8682e3f7553146a25619e736d66c969fb85f7f986",
+    "files": 5444,
+    "bytes": 3931408290
+  },
+  "outcome": "R5 reshapes the lower cabinets and adds four inset feet across all eight chest families. Cabinets meet ordinary slabs and clear fine slabs while native bodies, paid placement, 960-unit storage, saved ownership and the original lid/hinge authority remain unchanged.",
+  "verification": "The publisher rehashed the complete 5,444-file seal and all required original/dependency packages, reproduced every worker audit assertion with only its output paths redirected, and checked selected image/motion provenance and all retained runner-log hashes. Fresh v04 starts from 4,787 verified original runtime entries, applies exactly nine sealed deltas and adds four fixture files. A new headless import, 250 native checks, 32 separate-process restore checks, and background packed-master reopen/render plus 16 GLB imports pass. The fresh 12-case geometry/native records and full ownership/block checkpoint equal worker rendered evidence; packed-source measurements match exactly.",
+  "visual_review": "Publisher inspected actual before/after Forward+ ordinary-slab frames, Compatibility fine-slab contact, retained paid-home contact and packed-source open views. The cabinet looks shallower and feet ground the flat-terrain version. Existing room shading remains dark. Owner visual acceptance is pending.",
+  "finding": "G2-V03: partial; technically verified visual candidate, owner and combined R8/R9 acceptance pending.",
+  "remaining_limits": "G2-V03 remains partial: feet are concealed 0.125 m in ordinary slabs and 0.0625 m in fine slabs. The cosmetic under-cabinet void retains the solid native collider. Existing wall and low-ceiling lid overlaps remain; the three terrain probes cover flat retained sites, not arbitrary slopes. Source triangles rise from 6,336 to 6,768 per closed chest (+432, 6.82%). Both-renderer visual/terrain/benchmark evidence is retained and verified from the worker; the publisher did not repeat rendered Godot or performance jobs. Current-machine timings are not target-hardware acceptance. R8 must reconcile eight replacement GLBs with R2 texture storage and R9 must independently review the combined candidate. No ordinary-world rollout is included.",
+  "static_verification": {
+    "result": "PASS",
+    "owned_files": [
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/README.md",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline05-forward_plus-original-paid-home-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline05-forward_plus-retained-terrain-1-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-forward_plus-back-wall-open.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-forward_plus-fine-slab-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-forward_plus-flat-wood-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-forward_plus-low-ceiling-open.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-forward_plus-ordinary-slab-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-forward_plus-ordinary-slab-open.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-gl_compatibility-fine-slab-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-gl_compatibility-flat-wood-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/baseline06-gl_compatibility-ordinary-slab-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-back-wall-open.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-fine-slab-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-flat-wood-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-low-ceiling-open.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-opening.gif",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-ordinary-slab-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-ordinary-slab-open.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-original-paid-home-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-forward_plus-retained-terrain-1-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-gl_compatibility-fine-slab-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-gl_compatibility-flat-wood-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-gl_compatibility-opening.gif",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/candidate-gl_compatibility-ordinary-slab-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/provenance.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/results.json",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/source-iron-open.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/source-wood-closed.png",
+      "docs/art/leyline-studies/2026-09-14/art07-repairs/r5/source-wood-open.png",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r5.json",
+      "docs/prototype/art07-repairs/2026-09-14/receipts/r5.md",
+      "tools/wroughtwild-art07-repairs/r5/README.md",
+      "tools/wroughtwild-art07-repairs/r5/apply_candidate.py",
+      "tools/wroughtwild-art07-repairs/r5/apply_package.py",
+      "tools/wroughtwild-art07-repairs/r5/audit.py",
+      "tools/wroughtwild-art07-repairs/r5/blender_fit.py",
+      "tools/wroughtwild-art07-repairs/r5/curate.py",
+      "tools/wroughtwild-art07-repairs/r5/evidence_jobs.py",
+      "tools/wroughtwild-art07-repairs/r5/fit.json",
+      "tools/wroughtwild-art07-repairs/r5/package.py",
+      "tools/wroughtwild-art07-repairs/r5/prepare.py",
+      "tools/wroughtwild-art07-repairs/r5/review.gd",
+      "tools/wroughtwild-art07-repairs/r5/source_jobs.py",
+      "tools/wroughtwild-art07-repairs/r5/terrain_review.gd"
+    ],
+    "package": {
+      "path": "D:/project-wroughtwild-art07-r5/build/art07-repairs/r5/v02/handoff",
+      "manifest_sha256": "18a9c2bf4a659373ccd303f8682e3f7553146a25619e736d66c969fb85f7f986",
+      "files": 5444,
+      "bytes": 3931408290
+    },
+    "full_input_verification": {
+      "arguments": [
+        "tools/wroughtwild-art07-repairs/workspace.py",
+        "verify",
+        "--id",
+        "r5"
+      ],
+      "stdout": "{\n  \"id\": \"r5\",\n  \"branch\": \"codex/art07-r5\",\n  \"worktree\": \"D:/project-wroughtwild-art07-r5\",\n  \"sources\": [\n    \"e3\"\n  ],\n  \"manifest_identities\": \"verified\",\n  \"scope\": \"Manifest identity/count/size and tool availability only. Full payload hashing happens on copy or explicit source consumption.\"\n}\nREPAIR_FULL_INPUT_VERIFIED runtime_source 5701 7430015212\nREPAIR_FULL_INPUT_VERIFIED g2_review 772 594208921\nREPAIR_FULL_INPUT_VERIFIED e3 2204 406834328\nREPAIR_FULL_INPUT_VERIFIED r1 5940 5622031314\nREPAIR_FULL_INPUT_VERIFIED r2 6411 9091108107\nREPAIR_FULL_INPUT_VERIFIED r3 5632 4156251159\nREPAIR_FULL_INPUT_VERIFIED r4 747 13305657\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "payload_verification": {
+      "arguments": [
+        "tools/wroughtwild-art07-repairs/r5/package.py",
+        "verify",
+        "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\handoff"
+      ],
+      "stdout": "{\n  \"path\": \"D:\\\\project-wroughtwild-art07-r5\\\\build\\\\art07-repairs\\\\r5\\\\v02\\\\handoff\",\n  \"manifest_sha256\": \"18a9c2bf4a659373ccd303f8682e3f7553146a25619e736d66c969fb85f7f986\",\n  \"files\": 5444,\n  \"bytes\": 3931408290\n}\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    "sealed_recipe_matches": [
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/README.md",
+        "sha256": "a84c487c8d714e943d9270056d8d170a5c56025c4dbc801ed22f0a95050ee7a5",
+        "sealed_sha256": "a84c487c8d714e943d9270056d8d170a5c56025c4dbc801ed22f0a95050ee7a5"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/apply_candidate.py",
+        "sha256": "31ef46a9d560f606bb7efaa713fd34e9e2cf4561c90e5fe863ced54aa2e6ebda",
+        "sealed_sha256": "31ef46a9d560f606bb7efaa713fd34e9e2cf4561c90e5fe863ced54aa2e6ebda"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/apply_package.py",
+        "sha256": "9572e7e8cfba0a0ab67a1e2b822cc6d959ae95044a0fc97edf849adee2a140d5",
+        "sealed_sha256": "9572e7e8cfba0a0ab67a1e2b822cc6d959ae95044a0fc97edf849adee2a140d5"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/audit.py",
+        "sha256": "98b1ce1a0dc1c58f9f8102dd99cbdd33c1a3a37fdd40a2250d2f10793f280160",
+        "sealed_sha256": "98b1ce1a0dc1c58f9f8102dd99cbdd33c1a3a37fdd40a2250d2f10793f280160"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/blender_fit.py",
+        "sha256": "9b22eaf186cd90c28e6bd28e7b1a4fb5e818b4b18e815baf970d8293f3f1af97",
+        "sealed_sha256": "9b22eaf186cd90c28e6bd28e7b1a4fb5e818b4b18e815baf970d8293f3f1af97"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/curate.py",
+        "sha256": "0a009462b5079c0ee915b479a772cec0c321ed60a4a05e29a230e0b8da31b83d",
+        "sealed_sha256": "0a009462b5079c0ee915b479a772cec0c321ed60a4a05e29a230e0b8da31b83d"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/evidence_jobs.py",
+        "sha256": "f728a9caac6f19edbebc40a098dbe546df9c4f7144b786c729be1db5450e001a",
+        "sealed_sha256": "f728a9caac6f19edbebc40a098dbe546df9c4f7144b786c729be1db5450e001a"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/fit.json",
+        "sha256": "a2082cbb8b2ce0be0d4b947c38d0c649399e4a414e47a9d245ac10bdaf673acb",
+        "sealed_sha256": "a2082cbb8b2ce0be0d4b947c38d0c649399e4a414e47a9d245ac10bdaf673acb"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/package.py",
+        "sha256": "4ae46ccc1575562180e1e51cc48dea67d7d57f1259b17569b0d0e3dfe0fdbf24",
+        "sealed_sha256": "4ae46ccc1575562180e1e51cc48dea67d7d57f1259b17569b0d0e3dfe0fdbf24"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/prepare.py",
+        "sha256": "c309297e623aa916b453ae1b6c81e5e0f936ac25406e48b7e820677b6c71406a",
+        "sealed_sha256": "c309297e623aa916b453ae1b6c81e5e0f936ac25406e48b7e820677b6c71406a"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/review.gd",
+        "sha256": "3d43fb2c1b5d8deadd3b6c5d0c522114e700c5cc6e183fc62f21bf99c8cd0467",
+        "sealed_sha256": "3d43fb2c1b5d8deadd3b6c5d0c522114e700c5cc6e183fc62f21bf99c8cd0467"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/source_jobs.py",
+        "sha256": "e707e3dc226014cce65f4e1cb8cbb1a3a0053266c75be2967ee44cd0d072a680",
+        "sealed_sha256": "e707e3dc226014cce65f4e1cb8cbb1a3a0053266c75be2967ee44cd0d072a680"
+      },
+      {
+        "path": "tools/wroughtwild-art07-repairs/r5/terrain_review.gd",
+        "sha256": "3462344ed0785afb307e36a48b7fc0f95f3d3c40c4566f93aad972efaf6e5ed2",
+        "sealed_sha256": "3462344ed0785afb307e36a48b7fc0f95f3d3c40c4566f93aad972efaf6e5ed2"
+      }
+    ],
+    "worker_log_receipts": [
+      {
+        "path": "evidence/baseline/logs/baseline-capture-forward_plus.log.json",
+        "id": "baseline-capture-forward_plus",
+        "exit_code": 1,
+        "failure": "Nonzero process exit.",
+        "log_sha256": "d249457a8abe3bea727f01a1aeb2a82f79249f95ea97521ab269c026ecc7c8ad"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline02-benchmark-forward_plus.log.json",
+        "id": "baseline02-benchmark-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "413f23f1a41e0c6f9f822a527bccaa8d575432bb60ff0bff2f4be562b747966c"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline02-benchmark-gl_compatibility.log.json",
+        "id": "baseline02-benchmark-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "2a79b57ea9a99c87c2b797e204dfff6481c17d00e33fab62812ddb3f41c7b502"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline02-capture-forward_plus.log.json",
+        "id": "baseline02-capture-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "546ce3a5560a44915c4dcd3e1e997f5ba66211d0735c7f1d1680533727a3bd09"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline02-capture-gl_compatibility.log.json",
+        "id": "baseline02-capture-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "97a9771bd2cfaae6480c5db682e8e15f877c86a695f60eae454b34b8a825027b"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline02-restore-forward_plus.log.json",
+        "id": "baseline02-restore-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "48c756579cc6cefff9fb6dece61395ea2f3da195bac98b6fef635c1ba3fae226"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline02-restore-gl_compatibility.log.json",
+        "id": "baseline02-restore-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "39f789ef451f55969bd6edf7e08bc627334eed992e297d97b73e48cc7fabe42a"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline02-terrain-forward_plus.log.json",
+        "id": "baseline02-terrain-forward_plus",
+        "exit_code": -1,
+        "failure": "Fatal log diagnostic; assertions do not override this.",
+        "log_sha256": "b0a5e8e3bf331e75b84d64df8a7759634cb96428a0a3366967ea3fd432ef6386"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline03-terrain-forward_plus.log.json",
+        "id": "baseline03-terrain-forward_plus",
+        "exit_code": -1,
+        "failure": "Fatal log diagnostic; assertions do not override this.",
+        "log_sha256": "d188ae481b4555036d88d509b281b87bd662da7757d5803dbcaf0341f2d8aa21"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline04-terrain-forward_plus.log.json",
+        "id": "baseline04-terrain-forward_plus",
+        "exit_code": 1,
+        "failure": "Nonzero process exit.",
+        "log_sha256": "e608db3eec2bd5d78d12ed546e79fba146193e2ee3626846d15f89d399bbf978"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline05-terrain-forward_plus.log.json",
+        "id": "baseline05-terrain-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "56912371c28fe006a5103f419c5112bc922c823e04ed53ccdd75cde45e57a4bb"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline05-terrain-gl_compatibility.log.json",
+        "id": "baseline05-terrain-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "45b9a87976a518aa27ed6e5921673a7907bf77838c24381eecaa07523e84edaa"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline06-capture-forward_plus.log.json",
+        "id": "baseline06-capture-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "1121c81ad9193354466408d7cead8413b45fcf3655ea037dde56a09ff2d9f20c"
+      },
+      {
+        "path": "evidence/baseline/logs/baseline06-capture-gl_compatibility.log.json",
+        "id": "baseline06-capture-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "9d6c0c03848f6aef82032e6c60356a5fa5088c1d3ca8ee24e029b86e82dd0e5b"
+      },
+      {
+        "path": "evidence/baseline/logs/import.log.json",
+        "id": "import",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "d4e8713dbbb4dd69f2f4cdf7d0b07ac8e5c8093d8000f4ee59eba95454eedbb6"
+      },
+      {
+        "path": "evidence/baseline/logs/smoke-forward_plus.log.json",
+        "id": "smoke-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772"
+      },
+      {
+        "path": "evidence/baseline/logs/smoke-gl_compatibility.log.json",
+        "id": "smoke-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0"
+      },
+      {
+        "path": "evidence/candidate/logs/blender-fit.log.json",
+        "id": "blender-fit",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "ac8babdb8007386b3a1fd1b259cd6db7061d2310d31cd3acb19917ad057f9b51"
+      },
+      {
+        "path": "evidence/candidate/logs/blender-reopen-v02.log.json",
+        "id": "blender-reopen-v02",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "9efe77226147b97ad93793f4f5c11015a1d20dc5ae6a1a0ca5655610b1b8d5cf"
+      },
+      {
+        "path": "evidence/candidate/logs/blender-reopen.log.json",
+        "id": "blender-reopen",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "445a9088d41719721bee474dd02bbd5c3b23f466623388c45be2e54a02881549"
+      },
+      {
+        "path": "evidence/candidate/logs/candidate-benchmark-forward_plus.log.json",
+        "id": "candidate-benchmark-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "edd5345bf8bd3cdb1add077d32b1e080541dcee827acc191a06a577c88d7339b"
+      },
+      {
+        "path": "evidence/candidate/logs/candidate-benchmark-gl_compatibility.log.json",
+        "id": "candidate-benchmark-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "4d88d3c8c088d2cd3028d7105581dc0b0c6aa884eb819f47a6a89c827d4edf12"
+      },
+      {
+        "path": "evidence/candidate/logs/candidate-capture-forward_plus.log.json",
+        "id": "candidate-capture-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "76035e019296c7d11c5322fc7c2cf0181adf488c65433354f80f973afdc6c576"
+      },
+      {
+        "path": "evidence/candidate/logs/candidate-capture-gl_compatibility.log.json",
+        "id": "candidate-capture-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "9b6e62a23d7cc0d3db055899e9074a9371ad632634a9c54df18db0171eddb426"
+      },
+      {
+        "path": "evidence/candidate/logs/candidate-restore-forward_plus.log.json",
+        "id": "candidate-restore-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "48c756579cc6cefff9fb6dece61395ea2f3da195bac98b6fef635c1ba3fae226"
+      },
+      {
+        "path": "evidence/candidate/logs/candidate-restore-gl_compatibility.log.json",
+        "id": "candidate-restore-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "39f789ef451f55969bd6edf7e08bc627334eed992e297d97b73e48cc7fabe42a"
+      },
+      {
+        "path": "evidence/candidate/logs/candidate-terrain-forward_plus.log.json",
+        "id": "candidate-terrain-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "a2c15c1b490c32d9de6e56455e814a74a22a6352d1b0e1741488deb76257f84e"
+      },
+      {
+        "path": "evidence/candidate/logs/candidate-terrain-gl_compatibility.log.json",
+        "id": "candidate-terrain-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "645a427569397ebc5d9a901bff21e314dca67b37cd07b914b1817edc8adec379"
+      },
+      {
+        "path": "evidence/candidate/logs/import.log.json",
+        "id": "import",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "520fdcde1c6a149491c1929005718c71b02fb8e1b4c101f508a07a1cc97fa1fc"
+      },
+      {
+        "path": "evidence/candidate/logs/smoke-forward_plus.log.json",
+        "id": "smoke-forward_plus",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772"
+      },
+      {
+        "path": "evidence/candidate/logs/smoke-gl_compatibility.log.json",
+        "id": "smoke-gl_compatibility",
+        "exit_code": 0,
+        "failure": "",
+        "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0"
+      }
+    ],
+    "selected_worker_jobs": [
+      {
+        "variant": "baseline",
+        "id": "import",
+        "log": "build/art07-repairs/r5/v01/logs/import.log",
+        "checks": null,
+        "diagnostics": [],
+        "log_sha256": "d4e8713dbbb4dd69f2f4cdf7d0b07ac8e5c8093d8000f4ee59eba95454eedbb6",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "results": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\import",
+        "processes_before": null,
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "--import"
+        ],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\import\\local",
+        "start": "2026-09-14T12:55:05.3995853+09:30",
+        "exit_code": 0,
+        "failure": "",
+        "wrapper_pid": 24104,
+        "child_pid": 5184,
+        "seconds": 84.2809859,
+        "benchmark_competitors": [],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\import\\temp"
+      },
+      {
+        "variant": "baseline",
+        "id": "smoke-forward_plus",
+        "log": "build/art07-repairs/r5/v01/logs/smoke-forward_plus.log",
+        "checks": null,
+        "diagnostics": [],
+        "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-forward_plus",
+        "processes_before": null,
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke"
+        ],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-forward_plus\\local",
+        "start": "2026-09-14T12:56:29.7755241+09:30",
+        "exit_code": 0,
+        "failure": "",
+        "wrapper_pid": 24104,
+        "child_pid": 17220,
+        "seconds": 96.7655006,
+        "benchmark_competitors": [],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-forward_plus\\temp"
+      },
+      {
+        "variant": "baseline",
+        "id": "smoke-gl_compatibility",
+        "log": "build/art07-repairs/r5/v01/logs/smoke-gl_compatibility.log",
+        "checks": null,
+        "diagnostics": [
+          "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer."
+        ],
+        "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-gl_compatibility",
+        "processes_before": null,
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke"
+        ],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-gl_compatibility\\local",
+        "start": "2026-09-14T12:58:06.5492923+09:30",
+        "exit_code": 0,
+        "failure": "",
+        "wrapper_pid": 24104,
+        "child_pid": 16132,
+        "seconds": 93.1124954,
+        "benchmark_competitors": [],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\smoke-gl_compatibility\\temp"
+      },
+      {
+        "variant": "baseline",
+        "id": "baseline06-capture-forward_plus",
+        "log": "build/art07-repairs/r5/v01/logs/baseline06-capture-forward_plus.log",
+        "checks": 270,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-forward_plus",
+        "exit_code": 0,
+        "child_pid": 40636,
+        "seconds": 22.0642501,
+        "start": "2026-09-14T13:40:03.2344964+09:30",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--capture",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline06-capture-forward_plus"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-forward_plus\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "1121c81ad9193354466408d7cead8413b45fcf3655ea037dde56a09ff2d9f20c",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-forward_plus\\local",
+        "results": [
+          "R5_CAPTURE 270 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "baseline",
+        "id": "baseline02-restore-forward_plus",
+        "log": "build/art07-repairs/r5/v01/logs/baseline02-restore-forward_plus.log",
+        "checks": 32,
+        "diagnostics": [],
+        "wrapper_pid": 9920,
+        "benchmark_competitors": [],
+        "log_sha256": "48c756579cc6cefff9fb6dece61395ea2f3da195bac98b6fef635c1ba3fae226",
+        "results": [
+          "R5_RESTORE 32 checks, 0 failures"
+        ],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-forward_plus\\local",
+        "start": "2026-09-14T13:06:27.0741110+09:30",
+        "exit_code": 0,
+        "processes_before": null,
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--restore",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline02-restore-forward_plus"
+        ],
+        "seconds": 4.2021031,
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-forward_plus",
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-forward_plus\\temp",
+        "child_pid": 22100,
+        "failure": "",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe"
+      },
+      {
+        "variant": "baseline",
+        "id": "baseline02-benchmark-forward_plus",
+        "log": "build/art07-repairs/r5/v01/logs/baseline02-benchmark-forward_plus.log",
+        "checks": 213,
+        "diagnostics": [],
+        "wrapper_pid": 9920,
+        "benchmark_competitors": [],
+        "log_sha256": "413f23f1a41e0c6f9f822a527bccaa8d575432bb60ff0bff2f4be562b747966c",
+        "results": [
+          "R5_BENCHMARK 213 checks, 0 failures"
+        ],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-forward_plus\\local",
+        "start": "2026-09-14T13:06:31.2828836+09:30",
+        "exit_code": 0,
+        "processes_before": null,
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--benchmark",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline02-benchmark-forward_plus"
+        ],
+        "seconds": 20.9296231,
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-forward_plus",
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-forward_plus\\temp",
+        "child_pid": 8820,
+        "failure": "",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe"
+      },
+      {
+        "variant": "baseline",
+        "id": "baseline05-terrain-forward_plus",
+        "log": "build/art07-repairs/r5/v01/logs/baseline05-terrain-forward_plus.log",
+        "checks": 25,
+        "diagnostics": [],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-forward_plus\\local",
+        "benchmark_competitors": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-forward_plus",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "seconds": 99.449844,
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://r5/terrain_review.tscn",
+          "--",
+          "--terrain",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline05-terrain-forward_plus"
+        ],
+        "log_sha256": "56912371c28fe006a5103f419c5112bc922c823e04ed53ccdd75cde45e57a4bb",
+        "processes_before": null,
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-forward_plus\\temp",
+        "wrapper_pid": 36264,
+        "results": [
+          "R5_TERRAIN 25 checks, 0 failures"
+        ],
+        "start": "2026-09-14T13:26:32.0914487+09:30",
+        "failure": "",
+        "child_pid": 10020,
+        "exit_code": 0
+      },
+      {
+        "variant": "baseline",
+        "id": "baseline06-capture-gl_compatibility",
+        "log": "build/art07-repairs/r5/v01/logs/baseline06-capture-gl_compatibility.log",
+        "checks": 270,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-gl_compatibility",
+        "exit_code": 0,
+        "child_pid": 22080,
+        "seconds": 21.960156,
+        "start": "2026-09-14T13:40:25.3061130+09:30",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--capture",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline06-capture-gl_compatibility"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-gl_compatibility\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "9d6c0c03848f6aef82032e6c60356a5fa5088c1d3ca8ee24e029b86e82dd0e5b",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline06-capture-gl_compatibility\\local",
+        "results": [
+          "R5_CAPTURE 270 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "baseline",
+        "id": "baseline02-restore-gl_compatibility",
+        "log": "build/art07-repairs/r5/v01/logs/baseline02-restore-gl_compatibility.log",
+        "checks": 32,
+        "diagnostics": [],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-gl_compatibility\\local",
+        "log_sha256": "39f789ef451f55969bd6edf7e08bc627334eed992e297d97b73e48cc7fabe42a",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-gl_compatibility",
+        "seconds": 4.2937912,
+        "start": "2026-09-14T13:08:51.8604683+09:30",
+        "benchmark_competitors": [],
+        "failure": "",
+        "results": [
+          "R5_RESTORE 32 checks, 0 failures"
+        ],
+        "processes_before": null,
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--restore",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline02-restore-gl_compatibility"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-capture-gl_compatibility\\temp",
+        "child_pid": 34708,
+        "exit_code": 0,
+        "wrapper_pid": 35352
+      },
+      {
+        "variant": "baseline",
+        "id": "baseline02-benchmark-gl_compatibility",
+        "log": "build/art07-repairs/r5/v01/logs/baseline02-benchmark-gl_compatibility.log",
+        "checks": 213,
+        "diagnostics": [],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-gl_compatibility\\local",
+        "log_sha256": "2a79b57ea9a99c87c2b797e204dfff6481c17d00e33fab62812ddb3f41c7b502",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-gl_compatibility",
+        "seconds": 20.67897,
+        "start": "2026-09-14T13:08:56.1608646+09:30",
+        "benchmark_competitors": [],
+        "failure": "",
+        "results": [
+          "R5_BENCHMARK 213 checks, 0 failures"
+        ],
+        "processes_before": null,
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--benchmark",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline02-benchmark-gl_compatibility"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline02-benchmark-gl_compatibility\\temp",
+        "child_pid": 35052,
+        "exit_code": 0,
+        "wrapper_pid": 35352
+      },
+      {
+        "variant": "baseline",
+        "id": "baseline05-terrain-gl_compatibility",
+        "log": "build/art07-repairs/r5/v01/logs/baseline05-terrain-gl_compatibility.log",
+        "checks": 25,
+        "diagnostics": [
+          "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer."
+        ],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-gl_compatibility\\local",
+        "benchmark_competitors": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-gl_compatibility",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "seconds": 94.5013038,
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\runtime\\game",
+          "res://r5/terrain_review.tscn",
+          "--",
+          "--terrain",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\evidence\\baseline05-terrain-gl_compatibility"
+        ],
+        "log_sha256": "45b9a87976a518aa27ed6e5921673a7907bf77838c24381eecaa07523e84edaa",
+        "processes_before": null,
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\users\\baseline05-terrain-gl_compatibility\\temp",
+        "wrapper_pid": 36264,
+        "results": [
+          "R5_TERRAIN 25 checks, 0 failures"
+        ],
+        "start": "2026-09-14T13:28:11.5616186+09:30",
+        "failure": "",
+        "child_pid": 36248,
+        "exit_code": 0
+      },
+      {
+        "variant": "candidate",
+        "id": "blender-fit",
+        "log": "build/art07-repairs/r5/v02/logs/blender-fit.log",
+        "checks": null,
+        "diagnostics": [],
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-fit\\local",
+        "benchmark_competitors": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-fit",
+        "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+        "seconds": 5.1085542,
+        "arguments": [
+          "--background",
+          "--threads",
+          "8",
+          "--python-exit-code",
+          "1",
+          "--python",
+          "D:\\project-wroughtwild-art07-r5\\tools\\wroughtwild-art07-repairs\\r5\\blender_fit.py",
+          "--",
+          "fit",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v01\\original-source\\source\\e3_home.blend",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\models"
+        ],
+        "log_sha256": "ac8babdb8007386b3a1fd1b259cd6db7061d2310d31cd3acb19917ad057f9b51",
+        "processes_before": null,
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-fit\\temp",
+        "wrapper_pid": 36264,
+        "results": [],
+        "start": "2026-09-14T13:29:46.0695841+09:30",
+        "failure": "",
+        "child_pid": 19808,
+        "exit_code": 0
+      },
+      {
+        "variant": "candidate",
+        "id": "blender-reopen-v02",
+        "log": "build/art07-repairs/r5/v02/logs/blender-reopen-v02.log",
+        "checks": null,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-reopen-v02",
+        "exit_code": 0,
+        "child_pid": 29928,
+        "seconds": 97.5904196,
+        "start": "2026-09-14T13:38:25.5878496+09:30",
+        "arguments": [
+          "--background",
+          "--threads",
+          "8",
+          "--python-exit-code",
+          "1",
+          "--python",
+          "D:\\project-wroughtwild-art07-r5\\tools\\wroughtwild-art07-repairs\\r5\\blender_fit.py",
+          "--",
+          "reopen",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\models\\r5_chest.blend",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\reopen-v02"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-reopen-v02\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "9efe77226147b97ad93793f4f5c11015a1d20dc5ae6a1a0ca5655610b1b8d5cf",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\blender-reopen-v02\\local",
+        "results": [],
+        "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "import",
+        "log": "build/art07-repairs/r5/v02/logs/import.log",
+        "checks": null,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\import",
+        "exit_code": 0,
+        "child_pid": 9856,
+        "seconds": 87.9249802,
+        "start": "2026-09-14T13:40:47.2726810+09:30",
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "--import"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\import\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "520fdcde1c6a149491c1929005718c71b02fb8e1b4c101f508a07a1cc97fa1fc",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\import\\local",
+        "results": [],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "smoke-forward_plus",
+        "log": "build/art07-repairs/r5/v02/logs/smoke-forward_plus.log",
+        "checks": null,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-forward_plus",
+        "exit_code": 0,
+        "child_pid": 37640,
+        "seconds": 96.5298579,
+        "start": "2026-09-14T13:42:15.2637780+09:30",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-forward_plus\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "a6457489dd615c57f47571067cb821b47a0330f90c95b3e27d339454e8509772",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-forward_plus\\local",
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "smoke-gl_compatibility",
+        "log": "build/art07-repairs/r5/v02/logs/smoke-gl_compatibility.log",
+        "checks": null,
+        "diagnostics": [
+          "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer."
+        ],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-gl_compatibility",
+        "exit_code": 0,
+        "child_pid": 16000,
+        "seconds": 92.7255452,
+        "start": "2026-09-14T13:43:51.8004591+09:30",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://g1/play.tscn",
+          "--",
+          "--smoke"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-gl_compatibility\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "bcc5dd1c40549a72a960cfa2758068943fe9d3f7b5717a2024a4851ad364bbc0",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\smoke-gl_compatibility\\local",
+        "results": [
+          "G1_PACKAGED_LAUNCH_OK"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "candidate-capture-forward_plus",
+        "log": "build/art07-repairs/r5/v02/logs/candidate-capture-forward_plus.log",
+        "checks": 294,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus",
+        "exit_code": 0,
+        "child_pid": 38272,
+        "seconds": 21.8543135,
+        "start": "2026-09-14T13:45:24.5321066+09:30",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--capture",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-capture-forward_plus"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "76035e019296c7d11c5322fc7c2cf0181adf488c65433354f80f973afdc6c576",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus\\local",
+        "results": [
+          "R5_CAPTURE 294 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "candidate-restore-forward_plus",
+        "log": "build/art07-repairs/r5/v02/logs/candidate-restore-forward_plus.log",
+        "checks": 32,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus",
+        "exit_code": 0,
+        "child_pid": 15556,
+        "seconds": 4.3024059,
+        "start": "2026-09-14T13:45:46.3930780+09:30",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--restore",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-restore-forward_plus"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "48c756579cc6cefff9fb6dece61395ea2f3da195bac98b6fef635c1ba3fae226",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-forward_plus\\local",
+        "results": [
+          "R5_RESTORE 32 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "candidate-benchmark-forward_plus",
+        "log": "build/art07-repairs/r5/v02/logs/candidate-benchmark-forward_plus.log",
+        "checks": 249,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-forward_plus",
+        "exit_code": 0,
+        "child_pid": 8920,
+        "seconds": 20.9252646,
+        "start": "2026-09-14T13:45:50.7019774+09:30",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--benchmark",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-benchmark-forward_plus"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-forward_plus\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "edd5345bf8bd3cdb1add077d32b1e080541dcee827acc191a06a577c88d7339b",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-forward_plus\\local",
+        "results": [
+          "R5_BENCHMARK 249 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "candidate-terrain-forward_plus",
+        "log": "build/art07-repairs/r5/v02/logs/candidate-terrain-forward_plus.log",
+        "checks": 65,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-forward_plus",
+        "exit_code": 0,
+        "child_pid": 40468,
+        "seconds": 99.0020987,
+        "start": "2026-09-14T13:46:11.6337756+09:30",
+        "arguments": [
+          "--rendering-method",
+          "forward_plus",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://r5/terrain_review.tscn",
+          "--",
+          "--terrain",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-terrain-forward_plus"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-forward_plus\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "a2c15c1b490c32d9de6e56455e814a74a22a6352d1b0e1741488deb76257f84e",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-forward_plus\\local",
+        "results": [
+          "R5_TERRAIN 65 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "candidate-capture-gl_compatibility",
+        "log": "build/art07-repairs/r5/v02/logs/candidate-capture-gl_compatibility.log",
+        "checks": 294,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility",
+        "exit_code": 0,
+        "child_pid": 37956,
+        "seconds": 21.9645512,
+        "start": "2026-09-14T13:47:50.6429235+09:30",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--capture",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-capture-gl_compatibility"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "9b6e62a23d7cc0d3db055899e9074a9371ad632634a9c54df18db0171eddb426",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility\\local",
+        "results": [
+          "R5_CAPTURE 294 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "candidate-restore-gl_compatibility",
+        "log": "build/art07-repairs/r5/v02/logs/candidate-restore-gl_compatibility.log",
+        "checks": 32,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility",
+        "exit_code": 0,
+        "child_pid": 30656,
+        "seconds": 4.9232748,
+        "start": "2026-09-14T13:48:12.6141455+09:30",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--restore",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-restore-gl_compatibility"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "39f789ef451f55969bd6edf7e08bc627334eed992e297d97b73e48cc7fabe42a",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-capture-gl_compatibility\\local",
+        "results": [
+          "R5_RESTORE 32 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "candidate-benchmark-gl_compatibility",
+        "log": "build/art07-repairs/r5/v02/logs/candidate-benchmark-gl_compatibility.log",
+        "checks": 249,
+        "diagnostics": [],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-gl_compatibility",
+        "exit_code": 0,
+        "child_pid": 40268,
+        "seconds": 21.6906655,
+        "start": "2026-09-14T13:48:17.5432239+09:30",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--benchmark",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-benchmark-gl_compatibility"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-gl_compatibility\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "4d88d3c8c088d2cd3028d7105581dc0b0c6aa884eb819f47a6a89c827d4edf12",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-benchmark-gl_compatibility\\local",
+        "results": [
+          "R5_BENCHMARK 249 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      },
+      {
+        "variant": "candidate",
+        "id": "candidate-terrain-gl_compatibility",
+        "log": "build/art07-repairs/r5/v02/logs/candidate-terrain-gl_compatibility.log",
+        "checks": 65,
+        "diagnostics": [
+          "WARNING: Screen-space ambient occlusion (SSAO) can only be enabled when using the Forward+ renderer."
+        ],
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-gl_compatibility",
+        "exit_code": 0,
+        "child_pid": 39476,
+        "seconds": 95.6222763,
+        "start": "2026-09-14T13:48:39.2394335+09:30",
+        "arguments": [
+          "--rendering-method",
+          "gl_compatibility",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\game",
+          "res://r5/terrain_review.tscn",
+          "--",
+          "--terrain",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\evidence\\candidate-terrain-gl_compatibility"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-gl_compatibility\\temp",
+        "benchmark_competitors": [],
+        "wrapper_pid": 24076,
+        "log_sha256": "645a427569397ebc5d9a901bff21e314dca67b37cd07b914b1817edc8adec379",
+        "processes_before": null,
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\users\\candidate-terrain-gl_compatibility\\local",
+        "results": [
+          "R5_TERRAIN 65 checks, 0 failures"
+        ],
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v02\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "failure": ""
+      }
+    ],
+    "reproduced_audit": {
+      "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+      "original_runtime_entries_checked": 4787,
+      "changed_runtime_files": [
+        "game/assets/authored/e3/chest_ash_wood_body.glb",
+        "game/assets/authored/e3/chest_bog_oak_body.glb",
+        "game/assets/authored/e3/chest_bronze_body.glb",
+        "game/assets/authored/e3/chest_iron_body.glb",
+        "game/assets/authored/e3/chest_pine_body.glb",
+        "game/assets/authored/e3/chest_resinheart_body.glb",
+        "game/assets/authored/e3/chest_steel_body.glb",
+        "game/assets/authored/e3/chest_wood_body.glb",
+        "game/e3/geometry.json"
+      ],
+      "native_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1",
+      "embedded_image_hashes_unchanged": {
+        "chest_ash_wood_body.glb": {
+          "d4_ash_wood_face_normal": "36dccc0c81097c189274faed90d44cb6083efaf7f0f00f316f2fd032543dddea",
+          "d4_ash_wood_face_albedo": "ad434cc76489ee22e28e5e83d850a3a766ec5747f07c58b24c969d276cdfd5d2",
+          "d4_ash_wood_face_orm": "08b29b45ce51da7b6c5e21b13e780b405c83cecb6caa4a1780a7c600f67e55ba",
+          "d4_ash_wood_edge_normal": "cc0a1e4611ad59a185ad2a33c47012248c2626befbfccd996b9b8abc502ef6fb",
+          "d4_ash_wood_edge_albedo": "112c39bd3a5d83053b83b622706e89da5d58d21164cbb17d43b140aefa9a9b5c",
+          "d4_ash_wood_edge_orm": "f0b990064a33a86fc9b1fa3f8006d92e47d591bb5b98d5865338e2a8755948fa",
+          "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+          "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+          "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+        },
+        "chest_bog_oak_body.glb": {
+          "d4_bog_oak_face_normal": "8e6ebb2aea21f8efb382aeeaabe37e63a5a62c93b9977fe2feba8f10f3cb9b08",
+          "d4_bog_oak_face_albedo": "056dc44268f0c97ae97ec65941550560bd92a2c15ce5cf349d86b2ab969c16a5",
+          "d4_bog_oak_face_orm": "e71588e8bf0a8419e805737112693796df9807acf59fab1e3cf12ef25c01ff8b",
+          "d4_bog_oak_edge_normal": "d34132463a63675802d42d71e756d1b5a7ad724339d9336ef823f601ef70c6b5",
+          "d4_bog_oak_edge_albedo": "41ceeb9c3e4f4b045c4d83d4f75645f84ae77c1a36f6f5002d34dc54f9660c47",
+          "d4_bog_oak_edge_orm": "6860b678349b176e7097f24e525a9a4efb14052a4bd2eae1ab090a3c0bdd90c4",
+          "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+          "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+          "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+        },
+        "chest_bronze_body.glb": {
+          "d6_bronze_normal": "630ba7eb61bb22f0d8ab09a71105a8b3d5ccb5fa10ad151541aad0d99cd6bd7d",
+          "d6_bronze_albedo": "2eee9f8323b59286f23d185ce53a12f1a920fe1132808da3d4ae25d05aec4acb",
+          "d6_bronze_orm": "70b52451680d0bb16816d3a017de96ca2243e788b1d0b13c673e82da43256312"
+        },
+        "chest_iron_body.glb": {
+          "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+          "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+          "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+        },
+        "chest_pine_body.glb": {
+          "d4_pine_face_normal": "b2127388b9bff4177702567a1bb7dc9205ed488c81c03007814690db45e98163",
+          "d4_pine_face_albedo": "9c0e43fe21e0137804617d5d5dc45d91dd4f7102b82224b2d6acd4176b4ea12e",
+          "d4_pine_face_orm": "5d0c20a1bf3f8c757c95cbf348361e35cab9995ae7929290c90073cfec5bcfef",
+          "d4_pine_edge_normal": "8a3116d67735cb61563d424d2b9073e27ce41f2dfcd7948799c4b73e0f03f134",
+          "d4_pine_edge_albedo": "30b6cdbf1cf4f6fcf8cf993c1b60b7b48c8c50082c7b916c9f4127531be51e32",
+          "d4_pine_edge_orm": "f07005fd6ea5ed898aa4a118e61ea9079f35863ee3686d6369b9faaef74dc04a",
+          "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+          "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+          "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+        },
+        "chest_resinheart_body.glb": {
+          "d4_resinheart_face_normal": "75b7dc491d0436653331441d8da22aa0988a467a37286ea4b8f3987babe348f0",
+          "d4_resinheart_face_albedo": "bb302268b631a509e2b151e669d2489617856e6b27dc6062e3d4f58ea77565e6",
+          "d4_resinheart_face_orm": "4a817e8b0e69365a07c470b4348a1596770214280f12c707e59e74989cfd64bb",
+          "d4_resinheart_edge_normal": "0b51bec96d78b61cb76b125533ded1b14489d63cb6340be4c27234837fd96c45",
+          "d4_resinheart_edge_albedo": "129de64182e445216c64a8456ed693e4148d36db7c4f4f422fd18b9f89b39c0a",
+          "d4_resinheart_edge_orm": "0ad7854a2179f58277cc3bd8b0fd425dbc80c8ab22b640540c5b550050f3007c",
+          "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+          "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+          "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+        },
+        "chest_steel_body.glb": {
+          "d6_steel_normal": "132c1b47f4a026be88c7b7a09e787598789ace6f57f3ca25317954eb225b2d3a",
+          "d6_steel_albedo": "a15b076eefc22cf9b00b2d6961822d0658aea36c51733da8227ba04dd0c005c1",
+          "d6_steel_orm": "7c4dc8885f25bb9b35d89d2fa96e39f93f2dda3bd63f84eca6435192c54f1838"
+        },
+        "chest_wood_body.glb": {
+          "d4_wood_face_normal": "eaa132c2296ad62b996941cecbd335248f490327712ce84d6973d3a0652c2bba",
+          "d4_wood_face_albedo": "60495f38ed2f8660102a40e5c209943e552b955af3c45afd19f6790a8ecee6fc",
+          "d4_wood_face_orm": "553c03e409746ae7f8fa6cadcacbd6d2238ad80b0718ba3785a23266aae1c6a1",
+          "d4_wood_edge_normal": "6b5e0e3c710ea44a646a3cce9fd31b3a41bd88a06cd6c0fa845e49097e23eb06",
+          "d4_wood_edge_albedo": "f9782d735584a82c04a495cff356d8d5246fa22d2bd109749851d048a264d22f",
+          "d4_wood_edge_orm": "8ec98352d964b87f06d410936f6c8988e58220672f605e9e0ff873a314222727",
+          "d6_iron_normal": "fd31cdeea7994d987a88e128aa3f588074817eba92a7b1121ec5a9d932da0fb6",
+          "d6_iron_albedo": "0c5be94f2d761836257a1c9f26990107753e383bfec4c7dcaba69c7730d95e74",
+          "d6_iron_orm": "6361d449326cef5aff2804cc370c23c72d4b8807d0073ba644fd9c27ddfa58f6"
+        }
+      },
+      "exact_lids": {
+        "chest_ash_wood_lid.glb": "a2a7b450a028b5a53a9acaebc871cca6e257e0e6d1602b6ed4e04016f025a85f",
+        "chest_bog_oak_lid.glb": "d6449df5d06543aa840058675031536f010628028ed3776028e5c04bd118d856",
+        "chest_bronze_lid.glb": "187ef5c69cb4b18613f2ac6c773c5cb1b2ba7114a9e4170eb4690d5478e6bbb2",
+        "chest_iron_lid.glb": "0d86d84d77c21d8f2a6328fbd7ee9533b28820453a068c46b5253daad8661469",
+        "chest_pine_lid.glb": "ad2ab673c63fd89d7ce9f260eb294bcc4a8ced260d1dfd5f87ecff4e86a050d3",
+        "chest_resinheart_lid.glb": "c3ecdc116703fad81497c5e4e298eabbb664e18ccd41e4793dc93b7d08a96404",
+        "chest_steel_lid.glb": "abc7c931f7d1b4b1fa55d9b3ae3fbf763987cb20d3eb4a2762f909d464cfc5d6",
+        "chest_wood_lid.glb": "5acfd9d8a9011e0ed1f9b528797fc5d1ba9af7fd24a2f3af48c702e195962aa9"
+      },
+      "comparisons": [
+        {
+          "renderer": "forward_plus",
+          "id": "flat-wood",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "flat-pine",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "flat-bog_oak",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "flat-ash_wood",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "flat-resinheart",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "flat-iron",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "flat-bronze",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "flat-steel",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "ordinary-slab",
+          "old_base_gap_m": -0.274999976158142,
+          "new_foot_gap_m": -0.125,
+          "new_cabinet_gap_m": 2.98023223876953e-08,
+          "native_exact": true,
+          "closed_top_world": 1.55000007152557,
+          "open_top_world": 2.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "fine-slab",
+          "old_base_gap_m": -0.212499976158142,
+          "new_foot_gap_m": -0.0625,
+          "new_cabinet_gap_m": 0.0625000298023224,
+          "native_exact": true,
+          "closed_top_world": 1.55000007152557,
+          "open_top_world": 2.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "back-wall",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "low-ceiling",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "flat-wood",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "flat-pine",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "flat-bog_oak",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "flat-ash_wood",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "flat-resinheart",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "flat-iron",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "flat-bronze",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "flat-steel",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "ordinary-slab",
+          "old_base_gap_m": -0.274999976158142,
+          "new_foot_gap_m": -0.125,
+          "new_cabinet_gap_m": 2.98023223876953e-08,
+          "native_exact": true,
+          "closed_top_world": 1.55000007152557,
+          "open_top_world": 2.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "fine-slab",
+          "old_base_gap_m": -0.212499976158142,
+          "new_foot_gap_m": -0.0625,
+          "new_cabinet_gap_m": 0.0625000298023224,
+          "native_exact": true,
+          "closed_top_world": 1.55000007152557,
+          "open_top_world": 2.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "back-wall",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "low-ceiling",
+          "old_base_gap_m": -0.150000005960464,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125,
+          "native_exact": true,
+          "closed_top_world": 0.550000011920929,
+          "open_top_world": 1.20039367675781
+        }
+      ],
+      "terrain_comparisons": [
+        {
+          "renderer": "forward_plus",
+          "id": "original-paid-home",
+          "native_pose_and_body_exact": true,
+          "support_samples_exact": 9,
+          "old_base_gap_m": -0.150001525878906,
+          "new_foot_gap_m": -1.9073486328125e-06,
+          "new_cabinet_gap_m": 0.124998480081558,
+          "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "retained-terrain-1",
+          "native_pose_and_body_exact": true,
+          "support_samples_exact": 9,
+          "old_base_gap_m": -0.149999618530273,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125000387430191,
+          "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "retained-terrain-2",
+          "native_pose_and_body_exact": true,
+          "support_samples_exact": 9,
+          "old_base_gap_m": -0.149999618530273,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125000387430191,
+          "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+        },
+        {
+          "renderer": "forward_plus",
+          "id": "retained-terrain-3",
+          "native_pose_and_body_exact": true,
+          "support_samples_exact": 9,
+          "old_base_gap_m": -0.149999618530273,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125000387430191,
+          "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "original-paid-home",
+          "native_pose_and_body_exact": true,
+          "support_samples_exact": 9,
+          "old_base_gap_m": -0.150001525878906,
+          "new_foot_gap_m": -1.9073486328125e-06,
+          "new_cabinet_gap_m": 0.124998480081558,
+          "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "retained-terrain-1",
+          "native_pose_and_body_exact": true,
+          "support_samples_exact": 9,
+          "old_base_gap_m": -0.149999618530273,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125000387430191,
+          "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "retained-terrain-2",
+          "native_pose_and_body_exact": true,
+          "support_samples_exact": 9,
+          "old_base_gap_m": -0.149999618530273,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125000387430191,
+          "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+        },
+        {
+          "renderer": "gl_compatibility",
+          "id": "retained-terrain-3",
+          "native_pose_and_body_exact": true,
+          "support_samples_exact": 9,
+          "old_base_gap_m": -0.149999618530273,
+          "new_foot_gap_m": 0.0,
+          "new_cabinet_gap_m": 0.125000387430191,
+          "terrain_sha256": "5a97c79b202521cc73939916944a02a30dd1b56e04b71e96be490259ff0440de"
+        }
+      ],
+      "geometry_semantic_rows_changed": [
+        "chest_wood_body",
+        "chest_pine_body",
+        "chest_bog_oak_body",
+        "chest_ash_wood_body",
+        "chest_resinheart_body",
+        "chest_iron_body",
+        "chest_bronze_body",
+        "chest_steel_body"
+      ],
+      "geometry_serialization": "JSON reserialized with indent=2 and final LF; only eight body rows differ semantically."
+    },
+    "changes": {
+      "runtime_base": "6bb2e044dcd0bf1788896aa2c19cdf56fee93522",
+      "parent_candidates": [],
+      "status": "ready_for_integration",
+      "files": [
+        {
+          "path": "game/assets/authored/e3/chest_ash_wood_body.glb",
+          "before_sha256": "df9493902abd3abaeaab8681919c672b3ee6a1e45a0ed81ca9db5f184504eeab",
+          "after_sha256": "82a0e35fef1fcd90a4a6eec3fa94ac0a16e9547a0fddfdff988e57c4e9ee54cb",
+          "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+          "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+          "overlaps": [
+            "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+          ],
+          "before_bytes": 5111312,
+          "after_bytes": 5175168,
+          "replacement_asset": "runtime/game/assets/authored/e3/chest_ash_wood_body.glb",
+          "classification": "authored_visual"
+        },
+        {
+          "path": "game/assets/authored/e3/chest_bog_oak_body.glb",
+          "before_sha256": "3db4f9c73028c36a967e405d612ec803f0a16d997a424d7a43918b3417975088",
+          "after_sha256": "11d9d57499ae21676d52f9719b518a00bc45d2e73bcb780381d5ab32f9a1a83f",
+          "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+          "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+          "overlaps": [
+            "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+          ],
+          "before_bytes": 4631592,
+          "after_bytes": 4695448,
+          "replacement_asset": "runtime/game/assets/authored/e3/chest_bog_oak_body.glb",
+          "classification": "authored_visual"
+        },
+        {
+          "path": "game/assets/authored/e3/chest_bronze_body.glb",
+          "before_sha256": "5c3854d4b1b5e5d53662f60bfd286f438266ea8c44acd575e7b235a440287f45",
+          "after_sha256": "7468f8f1c6a97ef148b3d5cbf4c8b56166301726e74a010e074fefa5fc4abdd6",
+          "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+          "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+          "overlaps": [
+            "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+          ],
+          "before_bytes": 1566732,
+          "after_bytes": 1630588,
+          "replacement_asset": "runtime/game/assets/authored/e3/chest_bronze_body.glb",
+          "classification": "authored_visual"
+        },
+        {
+          "path": "game/assets/authored/e3/chest_iron_body.glb",
+          "before_sha256": "760cef9d9df6f2ea9b3aeddb3120aa47a012f29abc0438fc26193c4dafc7646f",
+          "after_sha256": "b64cb98d765e44ab18676bd86b861d943d6af91f5e84674180bbcd4c37861814",
+          "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+          "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+          "overlaps": [
+            "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+          ],
+          "before_bytes": 1545240,
+          "after_bytes": 1609100,
+          "replacement_asset": "runtime/game/assets/authored/e3/chest_iron_body.glb",
+          "classification": "authored_visual"
+        },
+        {
+          "path": "game/assets/authored/e3/chest_pine_body.glb",
+          "before_sha256": "a1b582c31161af17e873e0006dabed794da4e4a3963398bac4bd1e9d0c0f9e73",
+          "after_sha256": "19a83c6f9811826a67aa6aeb8ced2fdd0d945a5e328dd285d5c6ec3d7a4dd74d",
+          "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+          "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+          "overlaps": [
+            "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+          ],
+          "before_bytes": 4668216,
+          "after_bytes": 4732072,
+          "replacement_asset": "runtime/game/assets/authored/e3/chest_pine_body.glb",
+          "classification": "authored_visual"
+        },
+        {
+          "path": "game/assets/authored/e3/chest_resinheart_body.glb",
+          "before_sha256": "88a5b4243bfe8c3a648402ed65e728e3ea0cf505cd515a3ae1700d376980e488",
+          "after_sha256": "00992c740cde547c279e8c4039d5014ec534d47d859adbfb2b83394c06aab9ce",
+          "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+          "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+          "overlaps": [
+            "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+          ],
+          "before_bytes": 4664032,
+          "after_bytes": 4727888,
+          "replacement_asset": "runtime/game/assets/authored/e3/chest_resinheart_body.glb",
+          "classification": "authored_visual"
+        },
+        {
+          "path": "game/assets/authored/e3/chest_steel_body.glb",
+          "before_sha256": "3f25bf0a91fc231ab29d65cadad5acaf0f83af5e829428470045e1286b2865e5",
+          "after_sha256": "a879a3a3677fb056ff4a11a817b9a6ed03734dd6275fd68817ab4f9379e9310d",
+          "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+          "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+          "overlaps": [
+            "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+          ],
+          "before_bytes": 1534568,
+          "after_bytes": 1598428,
+          "replacement_asset": "runtime/game/assets/authored/e3/chest_steel_body.glb",
+          "classification": "authored_visual"
+        },
+        {
+          "path": "game/assets/authored/e3/chest_wood_body.glb",
+          "before_sha256": "ad086415e1e4397ae958d573fc49176ed897f8b87643a42948d4de55abaf1f1c",
+          "after_sha256": "6fbf3decd1853445580c122e7bc1b9d2a35ecc258a8b5006e4f97e7182ee3231",
+          "functions_or_settings": "Authored lower cabinet vertex fit, four inset same-family feet and their metric UVs",
+          "purpose": "Cabinet raised clear of full/fine slab surfaces, with four inset feet reaching nominal ground; fixed rim/hinge/lid",
+          "overlaps": [
+            "R2 may change imported texture storage; reconcile asset replacement against that parent rather than copying the whole runtime."
+          ],
+          "before_bytes": 4742268,
+          "after_bytes": 4806124,
+          "replacement_asset": "runtime/game/assets/authored/e3/chest_wood_body.glb",
+          "classification": "authored_visual"
+        },
+        {
+          "path": "game/e3/geometry.json",
+          "before_sha256": "4207f6920afd2b7b72188a9d8190a5788e298af0a6e637da9f621746e9336ea6",
+          "after_sha256": "e3d787b627bb9963e7fb7388a5adc3dfc946a5b5ed7586e8d72addd956bfffcd",
+          "functions_or_settings": "Eight chest body measured bounds; body triangle counts include four source-derived feet; lid/fuel rows retain their values",
+          "purpose": "Record changed exported source measurements",
+          "overlaps": [],
+          "before_bytes": 10319,
+          "after_bytes": 14463,
+          "replacement_asset": "runtime/game/e3/geometry.json",
+          "classification": "source_measurement_metadata"
+        }
+      ],
+      "delta_base": "fd5c592ef52185cc7d0737840e41af09dbb5bcea36b719539931e156f42865cd",
+      "source_master": "source-candidate/r5_chest.blend",
+      "source_master_sha256": "55392f9725c07e8005facdefbc22f4534bd8fb4df78de6a67a22a06347a84382",
+      "fit_controls": {
+        "source_bottom_m": -0.5,
+        "candidate_bottom_m": -0.225,
+        "fixed_upper_body_m": 0.06,
+        "foot_bottom_m": -0.35,
+        "foot_x_m": 0.4,
+        "foot_depth_m": 0.29,
+        "foot_width_m": 0.08,
+        "foot_joint_overlap_m": 0.02,
+        "controls": {
+          "source_bottom_m": "Measured inherited authored base relative to the unchanged native lattice pose.",
+          "candidate_bottom_m": "Cabinet underside clears the ordinary slab top (0.125 m above its lattice plane) without moving the native seat or lid.",
+          "fixed_upper_body_m": "Upper rim and hinge attachment remain exact above this height; lower boards compress linearly below it.",
+          "foot_bottom_m": "Feet reach the nominal flat support plane at unchanged native pose Y=0.35; full/fine slabs conceal part or all of their 0.125 m exposed length.",
+          "foot_x_m": "Symmetrical inset foot centres along the chest width, within the original body.",
+          "foot_depth_m": "Symmetrical inset foot centres along the chest depth, within the original body.",
+          "foot_width_m": "Small same-family feet give visible grounded contacts without broad cabinet/floor intersections.",
+          "foot_joint_overlap_m": "Feet enter the cabinet base by 20 mm so their supporting joints stay connected."
+        }
+      },
+      "owner_visual_acceptance": "pending",
+      "ordinary_world_rollout": "outside scope",
+      "fixture_only_files": [
+        {
+          "path": "game/r5/review.gd",
+          "after_sha256": "3d43fb2c1b5d8deadd3b6c5d0c522114e700c5cc6e183fc62f21bf99c8cd0467",
+          "purpose": "R5-only native capture/restore/cost/retained-terrain review fixture; not an ordinary-world adoption.",
+          "overlaps": []
+        },
+        {
+          "path": "game/r5/review.tscn",
+          "after_sha256": "184e843253b4380644bc6d31220abc2410388353a64a6f4046d07a899c0ac784",
+          "purpose": "R5-only native capture/restore/cost/retained-terrain review fixture; not an ordinary-world adoption.",
+          "overlaps": []
+        },
+        {
+          "path": "game/r5/terrain_review.gd",
+          "after_sha256": "3462344ed0785afb307e36a48b7fc0f95f3d3c40c4566f93aad972efaf6e5ed2",
+          "purpose": "R5-only native capture/restore/cost/retained-terrain review fixture; not an ordinary-world adoption.",
+          "overlaps": []
+        },
+        {
+          "path": "game/r5/terrain_review.tscn",
+          "after_sha256": "d7b1ee378dd04bc7ac2e66e9589ed29609102fcb58dc03f3f96fc93cc0650c8a",
+          "purpose": "R5-only native capture/restore/cost/retained-terrain review fixture; not an ordinary-world adoption.",
+          "overlaps": []
+        }
+      ]
+    },
+    "audit_reproduction": "Unchanged assertions, two final output paths redirected to new publisher records; no worker output modified."
+  },
+  "fresh_verification": {
+    "result": "PASS",
+    "runtime": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\runtime",
+    "source_files_verified": 4791,
+    "fresh_jobs": [
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\import\\local",
+        "wrapper_pid": 41060,
+        "start": "2026-09-14T14:22:06.5094847+09:30",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "log_sha256": "520fdcde1c6a149491c1929005718c71b02fb8e1b4c101f508a07a1cc97fa1fc",
+        "exit_code": 0,
+        "results": [],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\import\\temp",
+        "benchmark_competitors": [],
+        "seconds": 78.276024,
+        "processes_before": null,
+        "child_pid": 34644,
+        "id": "import",
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\import",
+        "failure": "",
+        "arguments": [
+          "--headless",
+          "--editor",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\runtime\\game",
+          "--import"
+        ]
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-headless-checks\\local",
+        "wrapper_pid": 41060,
+        "start": "2026-09-14T14:23:24.8859926+09:30",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "log_sha256": "36b612dadbaf2c61f857d82b456de3f9548b345178ce0ee6971ceec03af7234d",
+        "exit_code": 0,
+        "results": [
+          "R5_CHECKS 250 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-headless-checks\\temp",
+        "benchmark_competitors": [],
+        "seconds": 19.0332861,
+        "processes_before": null,
+        "child_pid": 42476,
+        "id": "publisher-headless-checks",
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-headless-checks",
+        "failure": "",
+        "arguments": [
+          "--headless",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--checks",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\evidence\\publisher-headless-checks"
+        ]
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-headless-checks\\local",
+        "wrapper_pid": 41060,
+        "start": "2026-09-14T14:23:43.9267937+09:30",
+        "program": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+        "log_sha256": "d7c9e608543be286f4a35db9d2e41262591fdea7286b71f64ca7cf907887b3ff",
+        "exit_code": 0,
+        "results": [
+          "R5_RESTORE 32 checks, 0 failures"
+        ],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-headless-checks\\temp",
+        "benchmark_competitors": [],
+        "seconds": 3.0344125,
+        "processes_before": null,
+        "child_pid": 39852,
+        "id": "publisher-headless-restore",
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-headless-checks",
+        "failure": "",
+        "arguments": [
+          "--headless",
+          "--path",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\runtime\\game",
+          "res://r5/review.tscn",
+          "--",
+          "--restore",
+          "--out=D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\evidence\\publisher-headless-restore"
+        ]
+      },
+      {
+        "localappdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-blender-reopen\\local",
+        "wrapper_pid": 41060,
+        "start": "2026-09-14T14:23:46.9668174+09:30",
+        "program": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\blender-tool\\blender-4.5.9-windows-x64\\blender.exe",
+        "log_sha256": "9d0c9c498add28043cb0a2119edcf9802d1f74c19077c860f3452eb690b5bf26",
+        "exit_code": 0,
+        "results": [],
+        "temp": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-blender-reopen\\temp",
+        "benchmark_competitors": [],
+        "seconds": 112.4632355,
+        "processes_before": null,
+        "child_pid": 42640,
+        "id": "publisher-blender-reopen",
+        "appdata": "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\users\\publisher-blender-reopen",
+        "failure": "",
+        "arguments": [
+          "--background",
+          "--threads",
+          "8",
+          "--python-exit-code",
+          "1",
+          "--python",
+          "D:\\project-wroughtwild-art07-r5\\tools\\wroughtwild-art07-repairs\\r5\\blender_fit.py",
+          "--",
+          "reopen",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\models\\r5_chest.blend",
+          "D:\\project-wroughtwild-art07-r5\\build\\art07-repairs\\r5\\v04\\reopen"
+        ]
+      }
+    ],
+    "native_reports": {
+      "checks": {
+        "assertions": [
+          {
+            "label": "explicit isolated native identity",
+            "ok": true
+          },
+          {
+            "label": "empty pack refuses unpaid chest",
+            "ok": true
+          },
+          {
+            "label": "unpaid refusal creates no owner and spends nothing",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility wood",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility pine",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility bog_oak",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility ash_wood",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility stone",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility iron",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility bronze",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility steel",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility silver",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility charcoal",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility fieldstone",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility slate",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility shellstone",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility rustclay_brick",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility woven_reed",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility resinheart",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility corkbark",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility vitrified_basalt",
+            "ok": true
+          },
+          {
+            "label": "original chest eligibility cinderglass",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts wood chest at(0, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(0, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "flat-wood visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "flat-wood closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "flat-wood cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "flat-wood only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "flat-wood duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "flat-wood refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "flat-wood actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "flat-wood E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "flat-wood actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "flat-wood paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "flat-wood paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "flat-wood same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "flat-wood natural closing",
+            "ok": true
+          },
+          {
+            "label": "flat-wood visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts pine chest at(2, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(2, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "flat-pine visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "flat-pine closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "flat-pine cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "flat-pine only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "flat-pine duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "flat-pine refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "flat-pine actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "flat-pine E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "flat-pine actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "flat-pine paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "flat-pine paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "flat-pine same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "flat-pine natural closing",
+            "ok": true
+          },
+          {
+            "label": "flat-pine visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts bog_oak chest at(4, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(4, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak natural closing",
+            "ok": true
+          },
+          {
+            "label": "flat-bog_oak visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts ash_wood chest at(6, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(6, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood natural closing",
+            "ok": true
+          },
+          {
+            "label": "flat-ash_wood visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts resinheart chest at(8, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(8, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart natural closing",
+            "ok": true
+          },
+          {
+            "label": "flat-resinheart visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts iron chest at(10, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(10, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "flat-iron visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "flat-iron closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "flat-iron cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "flat-iron only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "flat-iron duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "flat-iron refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "flat-iron actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "flat-iron E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "flat-iron actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "flat-iron paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "flat-iron paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "flat-iron same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "flat-iron natural closing",
+            "ok": true
+          },
+          {
+            "label": "flat-iron visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts bronze chest at(12, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(12, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze natural closing",
+            "ok": true
+          },
+          {
+            "label": "flat-bronze visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts steel chest at(14, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(14, 0, 0): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "flat-steel visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "flat-steel closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "flat-steel cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "flat-steel only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "flat-steel duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "flat-steel refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "flat-steel actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "flat-steel E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "flat-steel actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "flat-steel paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "flat-steel paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "flat-steel same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "flat-steel natural closing",
+            "ok": true
+          },
+          {
+            "label": "flat-steel visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "native fine floor accepts: ",
+            "ok": true
+          },
+          {
+            "label": "paid fine floor placement",
+            "ok": true
+          },
+          {
+            "label": "exact fine floor cost",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts wood chest at(0, 1, 4): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(0, 1, 4): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab natural closing",
+            "ok": true
+          },
+          {
+            "label": "ordinary-slab visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "native fine floor accepts: ",
+            "ok": true
+          },
+          {
+            "label": "paid fine floor placement",
+            "ok": true
+          },
+          {
+            "label": "exact fine floor cost",
+            "ok": true
+          },
+          {
+            "label": "native fine floor accepts: ",
+            "ok": true
+          },
+          {
+            "label": "paid fine floor placement",
+            "ok": true
+          },
+          {
+            "label": "exact fine floor cost",
+            "ok": true
+          },
+          {
+            "label": "native fine floor accepts: ",
+            "ok": true
+          },
+          {
+            "label": "paid fine floor placement",
+            "ok": true
+          },
+          {
+            "label": "exact fine floor cost",
+            "ok": true
+          },
+          {
+            "label": "native fine floor accepts: ",
+            "ok": true
+          },
+          {
+            "label": "paid fine floor placement",
+            "ok": true
+          },
+          {
+            "label": "exact fine floor cost",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts wood chest at(3, 1, 4): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(3, 1, 4): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "fine-slab visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "fine-slab closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "fine-slab cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "fine-slab only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "fine-slab duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "fine-slab refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "fine-slab actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "fine-slab E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "fine-slab actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "fine-slab paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "fine-slab paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "fine-slab same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "fine-slab natural closing",
+            "ok": true
+          },
+          {
+            "label": "fine-slab visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts wood chest at(10, 0, 4): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(10, 0, 4): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts wood wall_panel at(10, 0, 4): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for wall_panel at(10, 0, 4): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: wall_panel",
+            "ok": true
+          },
+          {
+            "label": "retained legal low ceiling/wall lattice placement",
+            "ok": true
+          },
+          {
+            "label": "back-wall visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "back-wall closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "back-wall cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "back-wall only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "back-wall duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "back-wall refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "back-wall actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "back-wall E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "back-wall actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "back-wall paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "back-wall paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "back-wall same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "back-wall natural closing",
+            "ok": true
+          },
+          {
+            "label": "back-wall visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts wood chest at(7, 0, 4): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for chest at(7, 0, 4): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: chest",
+            "ok": true
+          },
+          {
+            "label": "normal target accepts wood floor_slab at(7, 1, 4): ",
+            "ok": true
+          },
+          {
+            "label": "normal paid placement succeeds for floor_slab at(7, 1, 4): ",
+            "ok": true
+          },
+          {
+            "label": "placement pays exactly the native cost: floor_slab",
+            "ok": true
+          },
+          {
+            "label": "retained legal low ceiling/wall lattice placement",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling visual stays inside native closed envelope",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling closed preview and placed geometry agree",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling cabinet clears support surface",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling only four exported inset feet extend below the clear cabinet",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling duplicate refuses",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling refusal retains payment and one owner",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling actual ray targets unchanged body",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling E opens sole native store",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling actual delta opens retained 78 degree lid",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling paid deposit exact",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling paid withdrawal exact",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling same 960-unit shared capacity",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling natural closing",
+            "ok": true
+          },
+          {
+            "label": "low-ceiling visual operation preserves native body/pose/hinge/key/capacity",
+            "ok": true
+          },
+          {
+            "label": "write paid R5 checkpoint",
+            "ok": true
+          }
+        ],
+        "backend": "forward_plus",
+        "cases": [
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "wood",
+            "gap_m": 0.0,
+            "id": "flat-wood",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (0, 0, 0) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:0,0,0",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 0.35, 0.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870432)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "pine",
+            "gap_m": 0.0,
+            "id": "flat-pine",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (4, 0, 0) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:4,0,0",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (2.5, 0.35, 0.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870432)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "bog_oak",
+            "gap_m": 0.0,
+            "id": "flat-bog_oak",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (8, 0, 0) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:8,0,0",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (4.5, 0.35, 0.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870432)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "ash_wood",
+            "gap_m": 0.0,
+            "id": "flat-ash_wood",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (12, 0, 0) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:12,0,0",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (6.5, 0.35, 0.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870432)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "resinheart",
+            "gap_m": 0.0,
+            "id": "flat-resinheart",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (16, 0, 0) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:16,0,0",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (8.5, 0.35, 0.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870432)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "iron",
+            "gap_m": 0.0,
+            "id": "flat-iron",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (20, 0, 0) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:20,0,0",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.5, 0.35, 0.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870432)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "bronze",
+            "gap_m": 0.0,
+            "id": "flat-bronze",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (24, 0, 0) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:24,0,0",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (12.5, 0.35, 0.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870432)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "steel",
+            "gap_m": 0.0,
+            "id": "flat-steel",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (28, 0, 0) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:28,0,0",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (14.5, 0.35, 0.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870432)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 1.12500002980232,
+            "cabinet_gap_m": 2.98023223876953e-08,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 1.55000007152557,
+            "concealed_foot_depth_m": 0.125,
+            "family": "wood",
+            "gap_m": -0.125,
+            "id": "ordinary-slab",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (0, 2, 8) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:0,2,8",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.5, 1.35, 4.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870433)]",
+            "open_top_world": 2.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 1.125,
+            "visible_bottom_world": 1.0
+          },
+          {
+            "cabinet_bottom_world": 1.12500002980232,
+            "cabinet_gap_m": 0.0625000298023224,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_top_world": 1.55000007152557,
+            "concealed_foot_depth_m": 0.0625,
+            "family": "wood",
+            "gap_m": -0.0625,
+            "id": "fine-slab",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (6, 2, 8) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:6,2,8",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (3.5, 1.35, 4.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870433)]",
+            "open_top_world": 2.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 1.0625,
+            "visible_bottom_world": 1.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_obstacle_overlap": "[P: (10.0, 0.0, 4.1), S: (1.0, 0.55, 0.025)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "wood",
+            "gap_m": 0.0,
+            "id": "back-wall",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (20, 0, 8) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:20,0,8",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (10.5, 0.35, 4.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "obstacle_bounds": "[P: (10.0, 0.0, 3.875), S: (1.0, 1.0, 0.25)]",
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870433)]",
+            "open_obstacle_overlap": "[P: (10.0, 0.0, 4.029567), S: (1.0, 1.0, 0.095433)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          },
+          {
+            "cabinet_bottom_world": 0.125,
+            "cabinet_gap_m": 0.125,
+            "closed_local": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "closed_obstacle_overlap": "[P: (0.0, 0.0, 0.0), S: (0.0, 0.0, 0.0)]",
+            "closed_top_world": 0.550000011920929,
+            "concealed_foot_depth_m": 0.0,
+            "family": "wood",
+            "gap_m": 0.0,
+            "id": "low-ceiling",
+            "native": {
+              "capacity": 960,
+              "collision_size": "(1.0, 0.7, 0.8)",
+              "collision_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.15, 0.0)]",
+              "element": "{ \"kind\": \"volume\", \"axis\": 0, \"cell\": (14, 0, 8) }",
+              "hinge": "(0.0, 0.09, -0.354)",
+              "key": "volume:0:14,0,8",
+              "pose": "[X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (7.5, 0.35, 4.5)]",
+              "size": "(1.0, 0.7, 0.8)"
+            },
+            "obstacle_bounds": "[P: (7.0, 0.875, 4.0), S: (1.0, 0.25, 1.0)]",
+            "open_local": "[P: (-0.5, -0.35, -0.470433), S: (1.0, 1.200394, 0.870433)]",
+            "open_obstacle_overlap": "[P: (7.0, 0.875, 4.029567), S: (1.0, 0.25, 0.870433)]",
+            "open_top_world": 1.20039367675781,
+            "preview_bounds": "[P: (-0.5, -0.35, -0.4), S: (1.0, 0.55, 0.8)]",
+            "support_top_world": 0.0,
+            "visible_bottom_world": 0.0
+          }
+        ],
+        "checks": 250,
+        "failures": 0,
+        "gpu": "",
+        "msaa": "4x",
+        "scope": "Deterministic addressed fixture targets and supplied stock; native placement/payment/storage; real panel-driven lid delta. Not a first-hour journey.",
+        "viewport": "(1440, 900)",
+        "vsync": "off"
+      },
+      "restore": {
+        "assertions": [
+          {
+            "label": "fresh-process restore 0: ",
+            "ok": true
+          },
+          {
+            "label": "fresh exact native ownership",
+            "ok": true
+          },
+          {
+            "label": "fresh exact saved geography and poses",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "exactly twelve restored paid chest owners",
+            "ok": true
+          },
+          {
+            "label": "fresh-process restore 1: ",
+            "ok": true
+          },
+          {
+            "label": "fresh exact native ownership",
+            "ok": true
+          },
+          {
+            "label": "fresh exact saved geography and poses",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "restored closed chest and exact contents",
+            "ok": true
+          },
+          {
+            "label": "exactly twelve restored paid chest owners",
+            "ok": true
+          }
+        ],
+        "backend": "forward_plus",
+        "cases": [],
+        "checks": 32,
+        "failures": 0,
+        "gpu": "",
+        "msaa": "4x",
+        "scope": "Deterministic addressed fixture targets and supplied stock; native placement/payment/storage; real panel-driven lid delta. Not a first-hour journey.",
+        "viewport": "(1440, 900)",
+        "vsync": "off"
+      }
+    },
+    "packed_reopen": {
+      "packed_images": 42,
+      "source_sha256": "55392f9725c07e8005facdefbc22f4534bd8fb4df78de6a67a22a06347a84382",
+      "measurements": {
+        "wood": {
+          "closed": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4000000059604645,
+                0.20000001788139343
+              ]
+            ]
+          },
+          "hinge_blender": [
+            0,
+            0.354,
+            0.09
+          ],
+          "open": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4702245593070984,
+                0.8467621803283691
+              ]
+            ]
+          }
+        },
+        "pine": {
+          "closed": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4000000059604645,
+                0.20000001788139343
+              ]
+            ]
+          },
+          "hinge_blender": [
+            0,
+            0.354,
+            0.09
+          ],
+          "open": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4702245593070984,
+                0.8467621803283691
+              ]
+            ]
+          }
+        },
+        "bog_oak": {
+          "closed": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4000000059604645,
+                0.20000001788139343
+              ]
+            ]
+          },
+          "hinge_blender": [
+            0,
+            0.354,
+            0.09
+          ],
+          "open": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4702245593070984,
+                0.8467621803283691
+              ]
+            ]
+          }
+        },
+        "ash_wood": {
+          "closed": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4000000059604645,
+                0.20000001788139343
+              ]
+            ]
+          },
+          "hinge_blender": [
+            0,
+            0.354,
+            0.09
+          ],
+          "open": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4702245593070984,
+                0.8467621803283691
+              ]
+            ]
+          }
+        },
+        "resinheart": {
+          "closed": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4000000059604645,
+                0.20000001788139343
+              ]
+            ]
+          },
+          "hinge_blender": [
+            0,
+            0.354,
+            0.09
+          ],
+          "open": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4702245593070984,
+                0.8467621803283691
+              ]
+            ]
+          }
+        },
+        "iron": {
+          "closed": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4000000059604645,
+                0.20000001788139343
+              ]
+            ]
+          },
+          "hinge_blender": [
+            0,
+            0.354,
+            0.09
+          ],
+          "open": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4702245593070984,
+                0.8467621803283691
+              ]
+            ]
+          }
+        },
+        "bronze": {
+          "closed": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4000000059604645,
+                0.20000001788139343
+              ]
+            ]
+          },
+          "hinge_blender": [
+            0,
+            0.354,
+            0.09
+          ],
+          "open": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4702245593070984,
+                0.8467621803283691
+              ]
+            ]
+          }
+        },
+        "steel": {
+          "closed": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4000000059604645,
+                0.20000001788139343
+              ]
+            ]
+          },
+          "hinge_blender": [
+            0,
+            0.354,
+            0.09
+          ],
+          "open": {
+            "triangles": 6768,
+            "objects": 80,
+            "bounds_blender": [
+              [
+                -0.5,
+                -0.4000000059604645,
+                -0.3499999940395355
+              ],
+              [
+                0.5,
+                0.4702245593070984,
+                0.8467621803283691
+              ]
+            ]
+          }
+        }
+      },
+      "imports": {
+        "chest_ash_wood_body.glb": {
+          "sha256": "82a0e35fef1fcd90a4a6eec3fa94ac0a16e9547a0fddfdff988e57c4e9ee54cb",
+          "triangles": 4720,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.1080000028014183
+            ]
+          ]
+        },
+        "chest_ash_wood_lid.glb": {
+          "sha256": "a2a7b450a028b5a53a9acaebc871cca6e257e0e6d1602b6ed4e04016f025a85f",
+          "triangles": 2048,
+          "bounds_blender": [
+            [
+              -0.4970000088214874,
+              -0.4000000059604645,
+              0.03799999877810478
+            ],
+            [
+              0.4970000088214874,
+              0.39649999141693115,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "chest_bog_oak_body.glb": {
+          "sha256": "11d9d57499ae21676d52f9719b518a00bc45d2e73bcb780381d5ab32f9a1a83f",
+          "triangles": 4720,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.1080000028014183
+            ]
+          ]
+        },
+        "chest_bog_oak_lid.glb": {
+          "sha256": "d6449df5d06543aa840058675031536f010628028ed3776028e5c04bd118d856",
+          "triangles": 2048,
+          "bounds_blender": [
+            [
+              -0.4970000088214874,
+              -0.4000000059604645,
+              0.03799999877810478
+            ],
+            [
+              0.4970000088214874,
+              0.39649999141693115,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "chest_bronze_body.glb": {
+          "sha256": "7468f8f1c6a97ef148b3d5cbf4c8b56166301726e74a010e074fefa5fc4abdd6",
+          "triangles": 4720,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.1080000028014183
+            ]
+          ]
+        },
+        "chest_bronze_lid.glb": {
+          "sha256": "187ef5c69cb4b18613f2ac6c773c5cb1b2ba7114a9e4170eb4690d5478e6bbb2",
+          "triangles": 2048,
+          "bounds_blender": [
+            [
+              -0.4970000088214874,
+              -0.4000000059604645,
+              0.03799999877810478
+            ],
+            [
+              0.4970000088214874,
+              0.39649999141693115,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "chest_iron_body.glb": {
+          "sha256": "b64cb98d765e44ab18676bd86b861d943d6af91f5e84674180bbcd4c37861814",
+          "triangles": 4720,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.1080000028014183
+            ]
+          ]
+        },
+        "chest_iron_lid.glb": {
+          "sha256": "0d86d84d77c21d8f2a6328fbd7ee9533b28820453a068c46b5253daad8661469",
+          "triangles": 2048,
+          "bounds_blender": [
+            [
+              -0.4970000088214874,
+              -0.4000000059604645,
+              0.03799999877810478
+            ],
+            [
+              0.4970000088214874,
+              0.39649999141693115,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "chest_pine_body.glb": {
+          "sha256": "19a83c6f9811826a67aa6aeb8ced2fdd0d945a5e328dd285d5c6ec3d7a4dd74d",
+          "triangles": 4720,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.1080000028014183
+            ]
+          ]
+        },
+        "chest_pine_lid.glb": {
+          "sha256": "ad2ab673c63fd89d7ce9f260eb294bcc4a8ced260d1dfd5f87ecff4e86a050d3",
+          "triangles": 2048,
+          "bounds_blender": [
+            [
+              -0.4970000088214874,
+              -0.4000000059604645,
+              0.03799999877810478
+            ],
+            [
+              0.4970000088214874,
+              0.39649999141693115,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "chest_resinheart_body.glb": {
+          "sha256": "00992c740cde547c279e8c4039d5014ec534d47d859adbfb2b83394c06aab9ce",
+          "triangles": 4720,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.1080000028014183
+            ]
+          ]
+        },
+        "chest_resinheart_lid.glb": {
+          "sha256": "c3ecdc116703fad81497c5e4e298eabbb664e18ccd41e4793dc93b7d08a96404",
+          "triangles": 2048,
+          "bounds_blender": [
+            [
+              -0.4970000088214874,
+              -0.4000000059604645,
+              0.03799999877810478
+            ],
+            [
+              0.4970000088214874,
+              0.39649999141693115,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "chest_steel_body.glb": {
+          "sha256": "a879a3a3677fb056ff4a11a817b9a6ed03734dd6275fd68817ab4f9379e9310d",
+          "triangles": 4720,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.1080000028014183
+            ]
+          ]
+        },
+        "chest_steel_lid.glb": {
+          "sha256": "abc7c931f7d1b4b1fa55d9b3ae3fbf763987cb20d3eb4a2762f909d464cfc5d6",
+          "triangles": 2048,
+          "bounds_blender": [
+            [
+              -0.4970000088214874,
+              -0.4000000059604645,
+              0.03799999877810478
+            ],
+            [
+              0.4970000088214874,
+              0.39649999141693115,
+              0.20000001788139343
+            ]
+          ]
+        },
+        "chest_wood_body.glb": {
+          "sha256": "6fbf3decd1853445580c122e7bc1b9d2a35ecc258a8b5006e4f97e7182ee3231",
+          "triangles": 4720,
+          "bounds_blender": [
+            [
+              -0.5,
+              -0.4000000059604645,
+              -0.3499999940395355
+            ],
+            [
+              0.5,
+              0.4000000059604645,
+              0.1080000028014183
+            ]
+          ]
+        },
+        "chest_wood_lid.glb": {
+          "sha256": "5acfd9d8a9011e0ed1f9b528797fc5d1ba9af7fd24a2f3af48c702e195962aa9",
+          "triangles": 2048,
+          "bounds_blender": [
+            [
+              -0.4970000088214874,
+              -0.4000000059604645,
+              0.03799999877810478
+            ],
+            [
+              0.4970000088214874,
+              0.39649999141693115,
+              0.20000001788139343
+            ]
+          ]
+        }
+      }
+    },
+    "state_equality": "Fresh paid ownership/blocks equal both rendered worker checkpoints; all 12 geometric/native case records equal worker Forward+ capture.",
+    "desktop_comfort": "All Godot jobs explicitly headless and Blender explicitly background; no desktop input automation or rendered Godot window. Normal runtime and test code unchanged.",
+    "scope": "Fresh import, native payment/storage/lid checks and separate-process repeated restores, packed-master renders and 16 GLB imports. Both-renderer visual/terrain/benchmark evidence independently hashed and inspected from worker seal; those GPU runs were not repeated."
+  },
+  "publisher_audit": {
+    "path": "C:\\Users\\Matty\\Dev\\project-wroughtwild\\build\\art07-repair-publication-r5-2026-09-14\\audit.py",
+    "sha256": "42ae28f85d135ee8504459a3ac79032e7f6d822e2d60f1aa8e9d3c918baeb3e2"
+  },
+  "publisher_preflight_corrections": [
+    "Package verifier returns a Windows path with backslashes; comparison now resolves the path and compares hash/count/bytes exactly. No payload difference or worker change."
+  ],
+  "publication": "These records accompany an ordinary non-force push to approved origin/main; remote-tip proof is retained separately after pushing."
+}

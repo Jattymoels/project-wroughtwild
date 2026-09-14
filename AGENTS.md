@@ -40,6 +40,11 @@ For every implementation task:
 7. Run relevant tests and checks.
 8. Report the result, limitations and tuning parameters introduced.
 
+For every completed slice, start the completion report with a short plain-language
+summary of what the slice achieved. Include material remaining limits, followed by
+verification and the actual commit/push outcome. The owner requested this ongoing
+reporting format on 14 September 2026.
+
 ## Owner's commit workflow
 
 The owner has given standing permission to commit completed, checked slices to

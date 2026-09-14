@@ -441,5 +441,17 @@
     "earlier_attempts": "Retained front-wall ray, ledger type, terrain scene parent and outside-house ray harness failures; initial open-view cropping corrected in selected frames. Empty GPU deferrals launched no child and exposed an unchanged-runner missing-log error. No assertions relaxed; no peer interrupted.",
     "automatic_approval_rejections": []
   },
-  "publication": "Local R5 implementation/receipt commits only; no main integration or push."
+  "publication": {
+    "method": "scoped cherry-pick",
+    "previous_main": "8508c25c7883a1408c6b36a6a6260756b5e4f76e",
+    "original_implementation_commit": "f4d5ef753e22fe6ef69164db25f768a2a289f248",
+    "original_receipt_commit": "24e14c82437bfca62576a14a328f3fb445fb6f2d",
+    "implementation_commit": "7f658e1c343ff281002e6951258e800667aad18b",
+    "receipt_commit": "c057b9210f60417ef81884a0c2f799bbede37d3d",
+    "worker_tree_content_match": "All 45 owned Git blobs identical",
+    "destination": "origin/main at https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main",
+    "publisher_verification": "docs/prototype/art07-repairs/2026-09-14/publication-r5.json",
+    "push": "Accompanying publication commit; remote-tip result verified separately."
+  }
 }

@@ -406,3 +406,11 @@ R1–R4 have checked published candidates. [R5–R7 setup and full prompts](art0
 are ready in their dedicated D: worktrees with fresh verified baseline runtimes.
 No worker tasks were launched. R8 waits for R5–R7 publication; R9 follows R8.
 Owner visual acceptance, combined costs and target-device acceptance remain open.
+
+### ART-07R5 publication, 14 September 2026
+
+[R5 passed publisher verification](art07-repairs/2026-09-14/publication-r5.md).
+All eight chest cabinets now clear the measured supports while native storage,
+placement and lid authority remain exact. G2-V03 is partial: concealed feet,
+existing lid overlaps and owner acceptance remain. R8 waits for checked R6/R7
+publication; no combined runtime or ordinary-world rollout was released.
