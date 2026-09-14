@@ -1,5 +1,18 @@
 # ART-07 repair contract
 
+## Owner correction — prototype review limits, 14 September 2026
+
+The owner stopped R9's multi-hour review. Follow the current owner depot's
+`C:/Users/Matty/Dev/project-wroughtwild/AGENTS.md` Prototype work limits first:
+10 minutes total for review/verification, up to three focused jobs, one renderer,
+reuse of applicable existing evidence, and explicit approval before exceeding it.
+The exhaustive requirements retained below describe the original pack and are
+superseded where they conflict with that later instruction. Do not restart old
+workers or recreate their evidence to comply with historical wording.
+R9 is closed out from available results; no further testing or packaging is
+authorised by its old prompt. A review can finish with explicit unverified limits
+and references to the existing R8 package instead of sealing another copy.
+
 The owner requested the plan, prompts and setup on 14 September 2026. This pack
 prepares follow-up work on the seven G2 findings. Sending one worker prompt selects
 that bounded task; preparing its directory does not implement it. The original

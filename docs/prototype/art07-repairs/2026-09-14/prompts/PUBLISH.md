@@ -5,6 +5,14 @@ Copy into the serial coordinating task after a repair worker reports completion.
 ```text
 Coordinate publication of completed ART-07 repair candidates only.
 Owner checkout: C:/Users/Matty/Dev/project-wroughtwild.
+Read the current owner AGENTS.md Prototype work limits FIRST. This owner's later
+instruction supersedes exhaustive steps below: 10 minutes of review/verification,
+up to three focused checks, one renderer, no routine rerun of worker evidence or
+full parent rehash/copy/seal. For a documentation publication, check only its diff
+and the affected dispatch/link consistency. Reuse existing valid packages. Stop
+with explicit limits rather than expanding verification; request additional time
+only for a specific necessary risk and check. R9 was stopped by the owner; publish
+its available conclusions without launching further tests or requiring a new seal.
 Read AGENTS.md in its required order, then docs/prototype/art07-repairs/2026-09-14/
 README.md, COMMON.md, SETUP.md, plan.json, inputs.json, workspaces.json and deliveries.json.
 

@@ -10,6 +10,20 @@ game rules. Existing accepted work items and decisions remain authoritative.
 
 ## Current art priority — nature, world feel and all existing placeables
 
+**Owner correction, 14 September 2026:** R9's multi-hour review was stopped as
+excessive for this spare-time prototype. Current owner AGENTS.md prototype work
+limits override historical matrix/rehash/review requirements: 10 minutes total
+review/verification, up to three focused jobs on one renderer, and reuse of
+applicable evidence. Close R9 from available results; do not launch more checks
+or build another seal. Carry concrete gameplay/save blockers and material
+limitations into the next playable step. No unsolicited follow-up review waves.
+R9 stopped and became idle after the owner's instruction. Its closing report
+records 181 passed engine/Blender jobs and no reproduced gameplay/save blocker;
+visual and performance limits remain. The final preservation audit, consolidated
+acceptance and package reconstruction are unfinished, and the work is uncommitted.
+Those are the worker's reported results, not a new publisher verification or
+completed R9 delivery. Existing evidence is retained; do not resume the old matrix.
+
 The owner's subsequent request selects a [sliced execution plan and session
 prompts](art07-production/README.md). The checked dispatch pack contains 26
 bounded worker prompts, one publisher prompt, an explicit dependency/ownership

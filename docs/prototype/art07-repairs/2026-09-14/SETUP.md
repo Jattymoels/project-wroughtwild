@@ -1,9 +1,10 @@
 # Worktree and runtime setup
 
-Start with [the plan](README.md). **R9 is ready for a new independent review task**
-that implemented none of R1–R8. Its worktree and fresh final R8 runtime
-are prepared below. R1–R8 are checked and published. Setup launched no worker
-task or engine. [Workspaces](workspaces.json) records the actual preparation.
+**Owner stopped R9's extended review, 14 September 2026.** Retain existing results
+and close out with concise conclusions; launch no further review jobs or package
+copies. The current owner depot's AGENTS.md prototype work limits supersede the
+historical setup/review matrix below. R1–R8 are checked and published.
+[Workspaces](workspaces.json) preserves the earlier preparation record.
 
 Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md) [R6](publication-r6.md) [R7](publication-r7.md) [R8](publication-r8.md).
 The initial setup flags remain historical; [deliveries.json](deliveries.json) is

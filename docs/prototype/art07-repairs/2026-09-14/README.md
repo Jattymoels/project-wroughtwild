@@ -20,7 +20,7 @@ source work can proceed independently in separate tasks.
 | 2 | [R6 — Resolve faceted-ore visual coverage](prompts/R6.md) | Provide a coherent existing-ore presentation on ordinary faceted terrain within its retained surface and excavation envelope. | Common G1/G2 baseline |
 | 2 | [R7 — Compose fuller habitat at retained anchors](prompts/R7.md) | Improve ground and canopy composition using existing retained decorative anchors and the published R1 canopy candidate. | R1 |
 | 3 | [R8 — Integrate the seven repaired candidates](prompts/R8.md) | Produce one reproducible isolated retained-world package combining all seven published repair candidates. | R1, R2, R3, R4, R5, R6, R7 |
-| 4 | [R9 — Independently review the repaired full kit](prompts/R9.md) | Independently decide which original G2 defects the combined R8 package actually resolves. | R8 |
+| 4 | [R9 — Independently review the repaired full kit](prompts/R9.md) | Close the owner-stopped R9 review using existing results; identify practical adoption blockers and explicit limitations. | R8 |
 
 Wave 2 starts after all four first-wave candidates are checked and published.
 R7 additionally consumes R1’s canopy. R8 requires all seven repairs; R9 requires

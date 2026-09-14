@@ -1,5 +1,11 @@
 # ART-07RN — task title
 
+Owner correction, 14 September 2026: current AGENTS.md prototype work limits take
+precedence. For a review-only or stopped task, a concise achieved/checks/blockers/
+limitations report referencing existing artifacts is sufficient. A new package,
+full source rehash and the historical package schema below are not required.
+Mark unfinished work unverified; do not fabricate a ready delivery to fill fields.
+
 Status: candidate / ready_for_integration / blocked_by_decision.
 Owner visual acceptance: pending. Ordinary-world rollout: outside scope.
 

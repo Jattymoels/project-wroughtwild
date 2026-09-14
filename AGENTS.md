@@ -2,6 +2,51 @@
 
 These instructions apply to every AI-assisted change in this repository.
 
+## Prototype work limits — owner correction, 14 September 2026
+
+This is a spare-time game prototype. The owner rejected the multi-hour R9 review
+and its repeated testing/analysis. These limits supersede older exhaustive evidence,
+benchmark, packaging and publisher requirements throughout this repository.
+
+- Default review/verification budget: **10 minutes total wall time per task**.
+  For review-only tasks this includes reading, analysis, setup, imports, copies,
+  hashing, tests, renders and reporting. For implementation tasks it covers the
+  combined verification work. Retries, new versions, processes, compaction,
+  delegation and publisher follow-up do not reset the budget or justify repeating
+  the worker's passed checks. Track elapsed time and reserve time to report.
+- Before checking, name the concrete risk and choose at most **three focused
+  verification jobs**, on **one renderer** (Forward+ unless the change concerns
+  Compatibility). A matrix hidden inside one job still counts as a matrix.
+  Documentation-only work needs a small link/syntax/diff check, not game tests.
+- Reuse applicable passed evidence for unchanged inputs. Do not default to
+  rehashing/repacking multi-GB parents, rebuilding fresh copies, reopening all
+  Blender masters, both-renderer matrices, every seed/material/light combination,
+  repeated benchmarks, soak tests or recursive independent reviews.
+- Run another check only for a concrete changed behavior or observed failure,
+  within the same budget. Preserve failures; never weaken assertions, suppress
+  diagnostics or claim an unrun check passed. Fixing a review harness does not
+  justify restarting the whole review. Stop once there is enough evidence for
+  the scoped prototype decision.
+- If a necessary check cannot fit, **stop and report** the result available,
+  exact unverified risk, proposed next check and estimated additional time.
+  Obtain explicit owner approval before spending more time. An older prompt's
+  blanket requirement is not approval to exceed this limit. Do not make every
+  minor omission a question or blocker; label low-impact gaps and finish.
+- At the deadline launch no more jobs and safely cancel only owned testing
+  processes where possible. Preserve artifacts and report incomplete checks.
+  Never leave background testing running after declaring the task stopped.
+- Only reproducible gameplay/save failures or demonstrated unusable performance
+  should be proposed as adoption blockers. Cosmetic gaps, exhaustive coverage,
+  unmeasured hardware and hypothetical future risks are limitations by default.
+  Prefer a playable iteration and owner feedback. No unsolicited repair waves.
+- Handoffs should be concise: achieved behavior, checks actually run, real
+  blockers/limits, and commit/push outcome. Review-only tasks reuse existing
+  packages and need no new sealed runtime, source archive or exhaustive report.
+
+For copied/older project worktrees, read this section from the current owner depot
+at `C:/Users/Matty/Dev/project-wroughtwild/AGENTS.md` before applying an old prompt.
+The owner can explicitly choose a larger scope/budget for a particular task.
+
 ## Required reading order
 
 Before planning or editing:
