@@ -1,0 +1,2881 @@
+{
+  "id": "r4",
+  "finding": "G2-T01",
+  "native_runs": [
+    {
+      "path": "logs\\after-final\\b3-final.log",
+      "sha256": "9248deca97d371fe5da8d03fb2799acae2122d692ea63f504d8558fa23caf7d4",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.7864896,
+      "child_pid": 1496,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://b3/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "start": "2026-09-14T11:28:23.3323396+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3\\temp"
+      },
+      "markers": [
+        "B3_NATIVE_OK 8"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1807,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103645068
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 309,
+            "objects": 2454,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107763580
+          },
+          "children_after": 0,
+          "fixture": "res://b3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 78,
+          "seconds": 0.157027,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\b3-partial.log",
+      "sha256": "e1884dedb2e6851388ba70ca287202b7378ede7d6c04ab214e1a4f6fd38039fb",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.7838046,
+      "child_pid": 22028,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://b3/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "start": "2026-09-14T11:28:21.5427295+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3\\temp"
+      },
+      "markers": [
+        "B3_NATIVE_OK 10"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1807,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103645132
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 327,
+            "objects": 2523,
+            "orphans": 0,
+            "resources": 266,
+            "static_bytes": 144212776
+          },
+          "children_after": 0,
+          "fixture": "res://b3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 78,
+          "seconds": 0.159257,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\b3.log",
+      "sha256": "a33cd755dec17c11e1f22fc09d9fa833150fb404963d5410d1fc5952a98b8a9b",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.8054323,
+      "child_pid": 33220,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://b3/native_review.tscn"
+      ],
+      "start": "2026-09-14T11:28:18.7310399+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\b3\\temp"
+      },
+      "markers": [
+        "B3_NATIVE_OK 16621"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 7,
+            "nodes": 4,
+            "objects": 1828,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103945896
+          },
+          "before": {
+            "cached_action_clips": 7,
+            "nodes": 367,
+            "objects": 2625,
+            "orphans": 0,
+            "resources": 257,
+            "static_bytes": 117532492
+          },
+          "children_after": 0,
+          "fixture": "res://b3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 56,
+          "seconds": 0.115854,
+          "voices": [
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@379",
+              "node_id": 160289524483,
+              "playback_id": -9223371876514919674,
+              "stream_id": -9223371883511018960
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@381",
+              "node_id": 160457296652,
+              "playback_id": -9223371876347147505,
+              "stream_id": -9223371884349880550
+            },
+            {
+              "cue": "release_stone",
+              "name": "@AudioStreamPlayer3D@385",
+              "node_id": 160742509334,
+              "playback_id": -9223371876061934820,
+              "stream_id": -9223371879148942720
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@389",
+              "node_id": 160960613156,
+              "playback_id": -9223371875843831001,
+              "stream_id": -9223371883511018960
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@391",
+              "node_id": 161128385325,
+              "playback_id": -9223371875676058832,
+              "stream_id": -9223371884349880550
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@393",
+              "node_id": 161296157494,
+              "playback_id": -9223371875508286663,
+              "stream_id": -9223371884198885601
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@395",
+              "node_id": 161463929663,
+              "playback_id": -9223371875340514494,
+              "stream_id": -9223371883511018960
+            },
+            {
+              "cue": "release_stone",
+              "name": "@AudioStreamPlayer3D@399",
+              "node_id": 161765919562,
+              "playback_id": -9223371875038524592,
+              "stream_id": -9223371882001069523
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c1-final.log",
+      "sha256": "e654ce3be5822c34959263b15c780a43e20e94aaccdd7537cfa1aeacf3d3f776",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.7794355,
+      "child_pid": 26884,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c1/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "start": "2026-09-14T11:28:28.8186140+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1\\temp"
+      },
+      "markers": [
+        "C1_NATIVE_OK final-restart 7"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1810,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 104202088
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 309,
+            "objects": 2457,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 108320864
+          },
+          "children_after": 0,
+          "fixture": "res://c1/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 68,
+          "seconds": 0.139386,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c1-partial.log",
+      "sha256": "37d42be62ce7a6ce2703a3fd66a3c5c33d438a1f38a5bdc647f9fd0825770fbd",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.8001019,
+      "child_pid": 36700,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c1/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "start": "2026-09-14T11:28:27.0121187+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1\\temp"
+      },
+      "markers": [
+        "C1_NATIVE_OK partial-restart 9"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1810,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 104202152
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 348,
+            "objects": 2574,
+            "orphans": 0,
+            "resources": 282,
+            "static_bytes": 197445956
+          },
+          "children_after": 0,
+          "fixture": "res://c1/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 68,
+          "seconds": 0.140366,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c1.log",
+      "sha256": "3ea5d9a57ad58c37a7afec25e9167d3b6ac6585ea4601ebfeb7e37e667002331",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.8806593,
+      "child_pid": 9300,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c1/native_review.tscn"
+      ],
+      "start": "2026-09-14T11:28:25.1254390+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c1\\temp"
+      },
+      "markers": [
+        "C1_NATIVE_OK flow 20"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 12,
+            "nodes": 4,
+            "objects": 1830,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 104365166
+          },
+          "before": {
+            "cached_action_clips": 12,
+            "nodes": 325,
+            "objects": 2551,
+            "orphans": 0,
+            "resources": 257,
+            "static_bytes": 145893042
+          },
+          "children_after": 0,
+          "fixture": "res://c1/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 60,
+          "seconds": 0.121976,
+          "voices": [
+            {
+              "cue": "release_fibre",
+              "name": "@AudioStreamPlayer3D@334",
+              "node_id": 173543524171,
+              "playback_id": -9223371863260919986,
+              "stream_id": -9223371879518042306
+            },
+            {
+              "cue": "work_fibre",
+              "name": "@AudioStreamPlayer3D@337",
+              "node_id": 174449493831,
+              "playback_id": -9223371862354949532,
+              "stream_id": -9223371881262872750
+            },
+            {
+              "cue": "work_fibre",
+              "name": "@AudioStreamPlayer3D@338",
+              "node_id": 175288354590,
+              "playback_id": -9223371861516088798,
+              "stream_id": -9223371880390457543
+            },
+            {
+              "cue": "release_fibre",
+              "name": "@AudioStreamPlayer3D@339",
+              "node_id": 176378874360,
+              "playback_id": -9223371860425569778,
+              "stream_id": -9223371879518042306
+            },
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@342",
+              "node_id": 177301620517,
+              "playback_id": -9223371859502822917,
+              "stream_id": -9223371889131387057
+            },
+            {
+              "cue": "work_wood",
+              "name": "InteractionSound",
+              "node_id": 178140482083,
+              "playback_id": -9223371858663962113,
+              "stream_id": -9223371888258971828
+            },
+            {
+              "cue": "release_wood",
+              "name": "@AudioStreamPlayer3D@343",
+              "node_id": 179063228940,
+              "playback_id": -9223371857741215187,
+              "stream_id": -9223371857808324085
+            },
+            {
+              "cue": "collect",
+              "name": "@AudioStreamPlayer3D@346",
+              "node_id": 184717150021,
+              "playback_id": -9223371852087293359,
+              "stream_id": -9223371852154403020
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c2-final.log",
+      "sha256": "61a44f459897cbe72d816cda1d231ed596d6ba714a29fa77e5367b947ba739e1",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.6976471,
+      "child_pid": 13588,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c2/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "start": "2026-09-14T11:28:34.1908430+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2\\temp"
+      },
+      "markers": [
+        "C2_NATIVE_RESULT 10 checks, 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1809,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 104105452
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 311,
+            "objects": 2459,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108232292
+          },
+          "children_after": 0,
+          "fixture": "res://c2/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 48,
+          "seconds": 0.100316,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c2-partial.log",
+      "sha256": "220265c1acabff6ab1c2530dcfbeb35d7cb2c740cf0ffb2125e6532cddcbaf80",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.6919414,
+      "child_pid": 36296,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c2/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "start": "2026-09-14T11:28:32.4925554+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2\\temp"
+      },
+      "markers": [
+        "C2_NATIVE_RESULT 12 checks, 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1809,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 104105516
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 331,
+            "objects": 2521,
+            "orphans": 0,
+            "resources": 265,
+            "static_bytes": 132089952
+          },
+          "children_after": 0,
+          "fixture": "res://c2/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 47,
+          "seconds": 0.097903,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c2.log",
+      "sha256": "1c42d3080aa82f0e4039b4efb64e6a56ea315e3ac7668f029b76b5f81dfcd91f",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.8808364,
+      "child_pid": 15932,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c2/native_review.tscn"
+      ],
+      "start": "2026-09-14T11:28:30.6043871+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c2\\temp"
+      },
+      "markers": [
+        "C2_NATIVE_RESULT 25 checks, 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 7,
+            "nodes": 4,
+            "objects": 1824,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 104213120
+          },
+          "before": {
+            "cached_action_clips": 7,
+            "nodes": 336,
+            "objects": 2564,
+            "orphans": 0,
+            "resources": 251,
+            "static_bytes": 126387124
+          },
+          "children_after": 0,
+          "fixture": "res://c2/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 64,
+          "seconds": 0.13208,
+          "voices": [
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@353",
+              "node_id": 156900526636,
+              "playback_id": -9223371879903917508,
+              "stream_id": -9223371887889873077
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@354",
+              "node_id": 157017967227,
+              "playback_id": -9223371879786477780,
+              "stream_id": -9223371887738878126
+            },
+            {
+              "cue": "release_stone",
+              "name": "@AudioStreamPlayer3D@355",
+              "node_id": 157370288761,
+              "playback_id": -9223371879434155385,
+              "stream_id": -9223371886262482386
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@358",
+              "node_id": 157571615323,
+              "playback_id": -9223371879232828836,
+              "stream_id": -9223371887889873077
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@359",
+              "node_id": 157689055863,
+              "playback_id": -9223371879115388276,
+              "stream_id": -9223371887738878126
+            },
+            {
+              "cue": "work_stone",
+              "name": "@AudioStreamPlayer3D@360",
+              "node_id": 157806496414,
+              "playback_id": -9223371878997947752,
+              "stream_id": -9223371887587883205
+            },
+            {
+              "cue": "release_stone",
+              "name": "@AudioStreamPlayer3D@362",
+              "node_id": 158192372367,
+              "playback_id": -9223371878612071806,
+              "stream_id": -9223371887436888254
+            },
+            {
+              "cue": "collect",
+              "name": "@AudioStreamPlayer3D@365",
+              "node_id": 159618435720,
+              "playback_id": -9223371877186008429,
+              "stream_id": -9223371882890261860
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c3-final.log",
+      "sha256": "9dc6e05e9fca62b1728d59d87023a02dd46d47f6e3c3da5d8b0e2402ee68143d",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.6937442,
+      "child_pid": 7376,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c3/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "start": "2026-09-14T11:28:39.5637854+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3\\temp"
+      },
+      "markers": [
+        "C3_NATIVE_OK 9"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1832,
+            "orphans": 0,
+            "resources": 250,
+            "static_bytes": 129299500
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 311,
+            "objects": 2483,
+            "orphans": 0,
+            "resources": 250,
+            "static_bytes": 133428072
+          },
+          "children_after": 0,
+          "fixture": "res://c3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 48,
+          "seconds": 0.09891,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c3-partial.log",
+      "sha256": "5234e6fdc24a4ba467cf62259c459f81a64a2cb470edafbc66f0389eff7d1731",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.7850218,
+      "child_pid": 27812,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c3/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "start": "2026-09-14T11:28:37.7733017+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3\\temp"
+      },
+      "markers": [
+        "C3_NATIVE_OK 9"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1836,
+            "orphans": 0,
+            "resources": 250,
+            "static_bytes": 129308620
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 325,
+            "objects": 2515,
+            "orphans": 0,
+            "resources": 262,
+            "static_bytes": 159757416
+          },
+          "children_after": 0,
+          "fixture": "res://c3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 91,
+          "seconds": 0.18531,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c3.log",
+      "sha256": "f44f1701400d6adf73df43c650ebde64f828ac8f47a0552ff7a5c6fd65ca1c80",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.8736992,
+      "child_pid": 21664,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c3/native_review.tscn"
+      ],
+      "start": "2026-09-14T11:28:35.8939847+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c3\\temp"
+      },
+      "markers": [
+        "C3_NATIVE_OK 21"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 8,
+            "nodes": 4,
+            "objects": 1859,
+            "orphans": 0,
+            "resources": 250,
+            "static_bytes": 129448202
+          },
+          "before": {
+            "cached_action_clips": 8,
+            "nodes": 328,
+            "objects": 2558,
+            "orphans": 0,
+            "resources": 257,
+            "static_bytes": 135491730
+          },
+          "children_after": 0,
+          "fixture": "res://c3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 84,
+          "seconds": 0.171024,
+          "voices": [
+            {
+              "cue": "release_wood",
+              "name": "@AudioStreamPlayer3D@302",
+              "node_id": 146062445084,
+              "playback_id": -9223371890741999072,
+              "stream_id": -9223371890809107939
+            },
+            {
+              "cue": "collect",
+              "name": "@AudioStreamPlayer3D@305",
+              "node_id": 146263771681,
+              "playback_id": -9223371890540672471,
+              "stream_id": -9223371890607781338
+            },
+            {
+              "cue": "work_wood",
+              "name": "InteractionSound",
+              "node_id": 147673057074,
+              "playback_id": -9223371889131387107,
+              "stream_id": -9223371892470053065
+            },
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@306",
+              "node_id": 148629358378,
+              "playback_id": -9223371888175085781,
+              "stream_id": -9223371892772042936
+            },
+            {
+              "cue": "release_wood",
+              "name": "@AudioStreamPlayer3D@307",
+              "node_id": 150038644541,
+              "playback_id": -9223371886765799603,
+              "stream_id": -9223371886832908461
+            },
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@310",
+              "node_id": 150458074924,
+              "playback_id": -9223371886346368495,
+              "stream_id": -9223371892470053065
+            },
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@311",
+              "node_id": 150575516175,
+              "playback_id": -9223371886228927986,
+              "stream_id": -9223371892772042936
+            },
+            {
+              "cue": "release_wood",
+              "name": "@AudioStreamPlayer3D@312",
+              "node_id": 150743287625,
+              "playback_id": -9223371886061155845,
+              "stream_id": -9223371886832908461
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c4-final.log",
+      "sha256": "9ec157e2f816278820001a708eb3ad1f8b03bde725a0933d9cff7308a54a67b9",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.6900846,
+      "child_pid": 35824,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c4/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "start": "2026-09-14T11:28:44.7498134+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4\\temp"
+      },
+      "markers": [
+        "C4_NATIVE_OK 22"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1808,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 103563088
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 309,
+            "objects": 2455,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 107681408
+          },
+          "children_after": 0,
+          "fixture": "res://c4/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 78,
+          "seconds": 0.158022,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c4-partial.log",
+      "sha256": "8881c778f4044b8f1ed3e6a94f92d0535cb312ff6d8b350ce11fd8b7a5d196c4",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.692564,
+      "child_pid": 36400,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c4/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "start": "2026-09-14T11:28:43.0505427+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4\\temp"
+      },
+      "markers": [
+        "C4_NATIVE_OK 22"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1808,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 103563152
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 319,
+            "objects": 2481,
+            "orphans": 0,
+            "resources": 249,
+            "static_bytes": 116701188
+          },
+          "children_after": 0,
+          "fixture": "res://c4/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 74,
+          "seconds": 0.150234,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\c4.log",
+      "sha256": "07afb30ff37c1124902d8a447f5fdb0b16f2afb7afd0391c99b325163c91e311",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 1.7809087,
+      "child_pid": 35128,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c4/native_review.tscn"
+      ],
+      "start": "2026-09-14T11:28:41.2638028+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\c4\\temp"
+      },
+      "markers": [
+        "C4_NATIVE_OK 35"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 5,
+            "nodes": 4,
+            "objects": 1821,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 103632012
+          },
+          "before": {
+            "cached_action_clips": 5,
+            "nodes": 321,
+            "objects": 2504,
+            "orphans": 0,
+            "resources": 247,
+            "static_bytes": 116266272
+          },
+          "children_after": 0,
+          "fixture": "res://c4/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 89,
+          "seconds": 0.180595,
+          "voices": [
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@296",
+              "node_id": 141180274476,
+              "playback_id": -9223371895624169681,
+              "stream_id": -9223371896043600073
+            },
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@297",
+              "node_id": 141448709940,
+              "playback_id": -9223371895355734246,
+              "stream_id": -9223371896345589944
+            },
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@298",
+              "node_id": 141566150428,
+              "playback_id": -9223371895238293729,
+              "stream_id": -9223371896194594993
+            },
+            {
+              "cue": "release_wood",
+              "name": "@AudioStreamPlayer3D@299",
+              "node_id": 141767477029,
+              "playback_id": -9223371895036966417,
+              "stream_id": -9223371895104075994
+            },
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@302",
+              "node_id": 141968804342,
+              "playback_id": -9223371894835639815,
+              "stream_id": -9223371896345589944
+            },
+            {
+              "cue": "work_wood",
+              "name": "@AudioStreamPlayer3D@303",
+              "node_id": 142086244860,
+              "playback_id": -9223371894718199297,
+              "stream_id": -9223371896194594993
+            },
+            {
+              "cue": "release_wood",
+              "name": "@AudioStreamPlayer3D@304",
+              "node_id": 142254017029,
+              "playback_id": -9223371894550427128,
+              "stream_id": -9223371895104075994
+            },
+            {
+              "cue": "collect",
+              "name": "InteractionSound",
+              "node_id": 144485386747,
+              "playback_id": -9223371892319058151,
+              "stream_id": -9223371892386166278
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\e1-restart.log",
+      "sha256": "bfdafa875bf575f3b45c8280773919db6c67f93bcdee301213db4f62cc1de523",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.2497412,
+      "child_pid": 32844,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://e1/review.tscn",
+        "--",
+        "--restore"
+      ],
+      "start": "2026-09-14T11:28:49.3457936+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\e1",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\e1\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\e1\\temp"
+      },
+      "markers": [
+        "E1_RESTORE 132 checks, 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1895,
+            "orphans": 0,
+            "resources": 286,
+            "static_bytes": 130360684
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 889,
+            "objects": 8267,
+            "orphans": 1650,
+            "resources": 286,
+            "static_bytes": 161895036
+          },
+          "children_after": 0,
+          "fixture": "res://e1/review.gd",
+          "frame_waiters_before": 1,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 50,
+          "seconds": 0.125139,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\e1.log",
+      "sha256": "d52fa11a3e2e32472bd410cb00ee1607f15f1343038bbde2ec94421223013d21",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.894288,
+      "child_pid": 36064,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://e1/review.tscn",
+        "--",
+        "--check"
+      ],
+      "start": "2026-09-14T11:28:46.4456555+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\e1",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\e1\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\e1\\temp"
+      },
+      "markers": [
+        "E1_CHECKS 304 checks, 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 4,
+            "nodes": 4,
+            "objects": 1903,
+            "orphans": 0,
+            "resources": 286,
+            "static_bytes": 129792916
+          },
+          "before": {
+            "cached_action_clips": 4,
+            "nodes": 1084,
+            "objects": 4013,
+            "orphans": 0,
+            "resources": 286,
+            "static_bytes": 138871544
+          },
+          "children_after": 0,
+          "fixture": "res://e1/review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 50,
+          "seconds": 0.105429,
+          "voices": [
+            {
+              "cue": "craft_bench",
+              "name": "@AudioStreamPlayer3D@919",
+              "node_id": 212114344764,
+              "playback_id": -9223371824690100417,
+              "stream_id": -9223371824757208259
+            },
+            {
+              "cue": "craft_yard",
+              "name": "InteractionSound",
+              "node_id": 232666434573,
+              "playback_id": -9223371804138009575,
+              "stream_id": -9223371804205118452
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\f2-restart.log",
+      "sha256": "83027fcdca62cb080adc3223d51797652f628fecdc6f2d1a2161c667059bc377",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.3396694,
+      "child_pid": 15384,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://f2/review.tscn",
+        "--",
+        "--restart"
+      ],
+      "start": "2026-09-14T11:28:53.9529249+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f2",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f2\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f2\\temp"
+      },
+      "markers": [
+        "F2_RESTART 29 checks 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1873,
+            "orphans": 0,
+            "resources": 278,
+            "static_bytes": 172198572
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 343,
+            "objects": 2622,
+            "orphans": 0,
+            "resources": 305,
+            "static_bytes": 219966036
+          },
+          "children_after": 0,
+          "fixture": "res://f2/review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 59,
+          "seconds": 0.121691,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\f2.log",
+      "sha256": "a071d94c7e2d0c4f41b9dc306a8ec6da44bb4499f5f34aa54ac9dbd5da14a811",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.3431031,
+      "child_pid": 26000,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://f2/review.tscn",
+        "--",
+        "--check"
+      ],
+      "start": "2026-09-14T11:28:51.6011231+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f2",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f2\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f2\\temp"
+      },
+      "markers": [
+        "F2_CHECKS 50 checks 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 5,
+            "nodes": 4,
+            "objects": 1883,
+            "orphans": 0,
+            "resources": 278,
+            "static_bytes": 172265916
+          },
+          "before": {
+            "cached_action_clips": 5,
+            "nodes": 342,
+            "objects": 2637,
+            "orphans": 0,
+            "resources": 303,
+            "static_bytes": 219769136
+          },
+          "children_after": 0,
+          "fixture": "res://f2/review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 67,
+          "seconds": 0.136619,
+          "voices": [
+            {
+              "cue": "work_thrumroot",
+              "name": "InteractionSound",
+              "node_id": 151447931483,
+              "playback_id": -9223371885356512674,
+              "stream_id": -9223371885423621542
+            },
+            {
+              "cue": "work_thrumroot",
+              "name": "@AudioStreamPlayer3D@311",
+              "node_id": 151582149215,
+              "playback_id": -9223371885222294941,
+              "stream_id": -9223371885289403808
+            },
+            {
+              "cue": "work_thrumroot",
+              "name": "@AudioStreamPlayer3D@312",
+              "node_id": 151783475812,
+              "playback_id": -9223371885020968344,
+              "stream_id": -9223371885088077211
+            },
+            {
+              "cue": "release_thrumroot",
+              "name": "@AudioStreamPlayer3D@313",
+              "node_id": 151968025196,
+              "playback_id": -9223371884836418960,
+              "stream_id": -9223371884903527827
+            },
+            {
+              "cue": "collect",
+              "name": "@AudioStreamPlayer3D@316",
+              "node_id": 152169351793,
+              "playback_id": -9223371884635092359,
+              "stream_id": -9223371884702201226
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\f3-depleted.log",
+      "sha256": "449c80f1388184793620a01febbf54e7f11a924fd069a09e0516ad61f8864d6b",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.7111089,
+      "child_pid": 3564,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://f3/review.tscn",
+        "--",
+        "--restart-depleted"
+      ],
+      "start": "2026-09-14T11:29:01.9115967+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3\\temp"
+      },
+      "markers": [
+        "F3_RESTART-DEPLETED 247 checks, 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1796,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 100371952
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 367,
+            "objects": 2721,
+            "orphans": 40,
+            "resources": 284,
+            "static_bytes": 219938548
+          },
+          "children_after": 0,
+          "fixture": "res://f3/review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 81,
+          "seconds": 0.167592,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\f3-restart.log",
+      "sha256": "002f9b6eb202a8ab339459cea76a7595ded07b963c7c0c8a27a1d6df81c389de",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.7105606,
+      "child_pid": 34344,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://f3/review.tscn",
+        "--",
+        "--restart"
+      ],
+      "start": "2026-09-14T11:28:59.1947212+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3\\temp"
+      },
+      "markers": [
+        "F3_RESTART 248 checks, 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1796,
+            "orphans": 0,
+            "resources": 241,
+            "static_bytes": 100374724
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 383,
+            "objects": 2781,
+            "orphans": 40,
+            "resources": 314,
+            "static_bytes": 425614812
+          },
+          "children_after": 0,
+          "fixture": "res://f3/review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 78,
+          "seconds": 0.167129,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\after-final\\f3.log",
+      "sha256": "6ccc8947ad86151bc9d786eabb698d074e7053c723d07587dd044871ecbd0d9d",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.8894408,
+      "child_pid": 21016,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--headless",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://f3/review.tscn"
+      ],
+      "start": "2026-09-14T11:28:56.2992269+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\after-final\\f3\\temp"
+      },
+      "markers": [
+        "F3_CHECKS 306 checks, 0 failures"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 9,
+            "nodes": 4,
+            "objects": 1889,
+            "orphans": 0,
+            "resources": 266,
+            "static_bytes": 214788992
+          },
+          "before": {
+            "cached_action_clips": 9,
+            "nodes": 397,
+            "objects": 2757,
+            "orphans": 0,
+            "resources": 284,
+            "static_bytes": 224037132
+          },
+          "children_after": 0,
+          "fixture": "res://f3/review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 50,
+          "seconds": 0.104884,
+          "voices": [
+            {
+              "cue": "work_pullstone",
+              "name": "@AudioStreamPlayer3D@377",
+              "node_id": 156900526950,
+              "playback_id": -9223371879903917206,
+              "stream_id": -9223371879971026073
+            },
+            {
+              "cue": "work_ventlung",
+              "name": "@AudioStreamPlayer3D@378",
+              "node_id": 157017967467,
+              "playback_id": -9223371879786476689,
+              "stream_id": -9223371879853585556
+            },
+            {
+              "cue": "work_ventlung",
+              "name": "@AudioStreamPlayer3D@379",
+              "node_id": 157135407984,
+              "playback_id": -9223371879669036172,
+              "stream_id": -9223371879736145039
+            },
+            {
+              "cue": "release_stone",
+              "name": "@AudioStreamPlayer3D@412",
+              "node_id": 160121752408,
+              "playback_id": -9223371876682691762,
+              "stream_id": -9223371876749800628
+            },
+            {
+              "cue": "work_pullstone",
+              "name": "@AudioStreamPlayer3D@419",
+              "node_id": 160658623293,
+              "playback_id": -9223371876145820875,
+              "stream_id": -9223371876212929740
+            },
+            {
+              "cue": "release_pullstone",
+              "name": "@AudioStreamPlayer3D@420",
+              "node_id": 160826395509,
+              "playback_id": -9223371875978048723,
+              "stream_id": -9223371876045157584
+            },
+            {
+              "cue": "work_ventlung",
+              "name": "@AudioStreamPlayer3D@423",
+              "node_id": 161027722020,
+              "playback_id": -9223371875776722146,
+              "stream_id": -9223371875843831012
+            },
+            {
+              "cue": "release_ventlung",
+              "name": "@AudioStreamPlayer3D@424",
+              "node_id": 161195494167,
+              "playback_id": -9223371875608950000,
+              "stream_id": -9223371875676058858
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "source_checks": [
+    {
+      "path": "game/b3/native_review.gd",
+      "outside_finish_identical": true,
+      "assertions_identical": true,
+      "before_sha256": "996be77212ed9cf1bf2f7077b93d55df98c615bbc3aaa8357a7f882505e5356f",
+      "after_sha256": "3e48b7119bf95b36eb847b12e46bb4be4475f16607d1ada5b01da9b2327bcdb3",
+      "original_crlf": false,
+      "candidate_crlf": false
+    },
+    {
+      "path": "game/c1/native_review.gd",
+      "outside_finish_identical": true,
+      "assertions_identical": true,
+      "before_sha256": "3d4cf3f176f7b1675604bcc4201f2fcdc34d68e5e702a0c29a20f7a5b11c4bc2",
+      "after_sha256": "b4ee29c6a979de3ddf05d7be04382a78a6fdec31b04a1622c4612f423a5594c9",
+      "original_crlf": true,
+      "candidate_crlf": true
+    },
+    {
+      "path": "game/c2/native_review.gd",
+      "outside_finish_identical": true,
+      "assertions_identical": true,
+      "before_sha256": "8f1ba26a50659d7037ab1a8d620db6c645aed43b0308c0fa6f4b5b4ef76cd61d",
+      "after_sha256": "8992285fd78029ace166ccf92736ec84f30fc269c042c638d7e9731a1a1c71e6",
+      "original_crlf": true,
+      "candidate_crlf": true
+    },
+    {
+      "path": "game/c3/native_review.gd",
+      "outside_finish_identical": true,
+      "assertions_identical": true,
+      "before_sha256": "0cdb4fabd5aac08c3ec0f14d858506504eb3a42696d0954f3634f4e189caf6d0",
+      "after_sha256": "71d1f9f60e2b8ff9d9f983d4df368113bcf93c446cde3fc073cd29cf5a63ddc7",
+      "original_crlf": false,
+      "candidate_crlf": false
+    },
+    {
+      "path": "game/c4/native_review.gd",
+      "outside_finish_identical": true,
+      "assertions_identical": true,
+      "before_sha256": "ae1217f45631b695bb7a189d18cc212de4f7698b7e1e81105b91ec44f89f155c",
+      "after_sha256": "2301218a528a2f9c4b1dce632985e94d5917a3df3d7c5bd3d4677a274663f484",
+      "original_crlf": true,
+      "candidate_crlf": true
+    },
+    {
+      "path": "game/e1/review.gd",
+      "outside_finish_identical": true,
+      "assertions_identical": true,
+      "before_sha256": "58452b6800ba2db1cf504cb558798aac655315f259530abf80a0580c45f01ec6",
+      "after_sha256": "db6458c3c66c2becdee4ecc0f3a55b98df084f5acf860739c1812f5f11d7b728",
+      "original_crlf": false,
+      "candidate_crlf": false
+    },
+    {
+      "path": "game/f2/review.gd",
+      "outside_finish_identical": true,
+      "assertions_identical": true,
+      "before_sha256": "9614eaf827262e1d35f7489c4c91ed0ef07db81e591c3aa24785e13344a51d9a",
+      "after_sha256": "803834ee71587ff00b9e9407c5a2d117bdf8a36afab1933fa1bc3e4fe1f33c7d",
+      "original_crlf": false,
+      "candidate_crlf": false
+    },
+    {
+      "path": "game/f3/review.gd",
+      "outside_finish_identical": true,
+      "assertions_identical": true,
+      "before_sha256": "a4a942744b1072448820bb08a9e8e6adf621f86b49a07b1c0943541abdce60eb",
+      "after_sha256": "32dcdf821706a09bfd057d3adc163b7eb496a50a829b13b02d6811b23c046f6e",
+      "original_crlf": false,
+      "candidate_crlf": false
+    }
+  ],
+  "cleanup_seconds": {
+    "samples": 22,
+    "min": 0.097903,
+    "median": 0.1380025,
+    "max": 0.18531
+  },
+  "render_runs": [
+    {
+      "path": "logs\\render-after\\c3-final.log",
+      "sha256": "bd3f993ff64c68ba58bc8a5695c4225969f7fed7da7bd3f3671d22e0cbe19a44",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.8541391,
+      "child_pid": 23580,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "1280x720",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c3/native_review.tscn",
+        "--",
+        "--restore-final"
+      ],
+      "start": "2026-09-14T11:29:12.2562656+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3\\temp"
+      },
+      "markers": [
+        "C3_NATIVE_OK 9"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1816,
+            "orphans": 0,
+            "resources": 250,
+            "static_bytes": 100486151
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 311,
+            "objects": 2467,
+            "orphans": 0,
+            "resources": 250,
+            "static_bytes": 104573003
+          },
+          "children_after": 0,
+          "fixture": "res://c3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 3,
+          "seconds": 0.041434,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\render-after\\c3-partial.log",
+      "sha256": "8a962a468950447e6f58b3a3fe867dbef48a21dbbc6743d6d568d0c30a9d1603",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 2.9447698,
+      "child_pid": 19908,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "1280x720",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c3/native_review.tscn",
+        "--",
+        "--restore-partial"
+      ],
+      "start": "2026-09-14T11:29:09.3048844+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3\\temp"
+      },
+      "markers": [
+        "C3_NATIVE_OK 9"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 0,
+            "nodes": 4,
+            "objects": 1821,
+            "orphans": 0,
+            "resources": 250,
+            "static_bytes": 100501647
+          },
+          "before": {
+            "cached_action_clips": 0,
+            "nodes": 325,
+            "objects": 2500,
+            "orphans": 0,
+            "resources": 262,
+            "static_bytes": 104720727
+          },
+          "children_after": 0,
+          "fixture": "res://c3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 3,
+          "seconds": 0.045845,
+          "voices": []
+        }
+      ]
+    },
+    {
+      "path": "logs\\render-after\\c3.log",
+      "sha256": "4e3c158076e526f20bd0ca274632b9bb9c996f53acee162450c1c643cc5569b4",
+      "exit_code": 0,
+      "failure": "",
+      "seconds": 4.6446195,
+      "child_pid": 34852,
+      "program": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\engine\\Godot_v4.5-stable_win64.exe",
+      "arguments": [
+        "--verbose",
+        "--rendering-method",
+        "gl_compatibility",
+        "--resolution",
+        "1280x720",
+        "--fixed-fps",
+        "60",
+        "--path",
+        "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\runtime\\game",
+        "res://c3/native_review.tscn"
+      ],
+      "start": "2026-09-14T11:29:04.6534562+09:30",
+      "private_state": {
+        "appdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3",
+        "localappdata": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3\\local",
+        "temp": "D:\\project-wroughtwild-art07-r4\\build\\art07-repairs\\r4\\v01\\users\\render-after\\c3\\temp"
+      },
+      "markers": [
+        "C3_NATIVE_OK 68"
+      ],
+      "leak_types": {},
+      "leaks": [],
+      "warnings": [],
+      "errors": [],
+      "orphan_string_names": [],
+      "cleanup": [
+        {
+          "after": {
+            "cached_action_clips": 9,
+            "nodes": 4,
+            "objects": 1840,
+            "orphans": 0,
+            "resources": 250,
+            "static_bytes": 100790375
+          },
+          "before": {
+            "cached_action_clips": 9,
+            "nodes": 317,
+            "objects": 2512,
+            "orphans": 0,
+            "resources": 257,
+            "static_bytes": 104996299
+          },
+          "children_after": 0,
+          "fixture": "res://c3/native_review.gd",
+          "frame_waiters_before": 0,
+          "frame_waiters_before_free": 0,
+          "mix_passes": 2,
+          "playbacks_after": 0,
+          "poll_frames": 2,
+          "seconds": 0.033102,
+          "voices": [
+            {
+              "cue": "collect",
+              "name": "InteractionSound",
+              "node_id": 167168182090,
+              "playback_id": -9223371869636261345,
+              "stream_id": -9223371869703370233
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "render_environment_diagnostics": {
+    "logs\\render-after\\c3-final.log": [
+      "NVAPI: Error creating application: NVAPI_EXECUTABLE_ALREADY_IN_USE(code -167)"
+    ],
+    "logs\\render-after\\c3-partial.log": [
+      "NVAPI: Error creating application: NVAPI_EXECUTABLE_ALREADY_IN_USE(code -167)"
+    ],
+    "logs\\render-after\\c3.log": [
+      "NVAPI: Error creating application: NVAPI_EXECUTABLE_ALREADY_IN_USE(code -167)"
+    ]
+  },
+  "classification": {
+    "fixture_only_files": 10,
+    "reusable_runtime_changes": []
+  },
+  "expected_invalid_input_warnings": {
+    "affected_native_matrix": [],
+    "scope": "G2's unrelated invalid-input/save-recovery diagnostics were not replayed or reclassified; original reports remain preserved."
+  },
+  "before_after": [
+    {
+      "fixture": "b3",
+      "before_log": "logs\\before-repeat1\\b3.log",
+      "before_leaks": {
+        "AudioStreamWAV": 7,
+        "AudioStreamPlaybackWAV": 20
+      },
+      "after_log": "logs\\after-final\\b3.log",
+      "after_leaks": {},
+      "attribution_log": "logs\\trace\\b3.log",
+      "matched_ids": 14
+    },
+    {
+      "fixture": "c1",
+      "before_log": "logs\\before-repeat2\\c1.log",
+      "before_leaks": {
+        "AudioStreamPlaybackWAV": 18,
+        "AudioStreamWAV": 11
+      },
+      "after_log": "logs\\after-final\\c1.log",
+      "after_leaks": {},
+      "attribution_log": "logs\\trace-quiet1\\c1.log",
+      "matched_ids": 16
+    },
+    {
+      "fixture": "c2",
+      "before_log": "logs\\before\\c2.log",
+      "before_leaks": {
+        "AudioStreamWAV": 7,
+        "AudioStreamPlaybackWAV": 24
+      },
+      "after_log": "logs\\after-final\\c2.log",
+      "after_leaks": {},
+      "attribution_log": "logs\\trace-repeat1\\c2.log",
+      "matched_ids": 15
+    },
+    {
+      "fixture": "c3",
+      "before_log": "logs\\before-repeat1\\c3.log",
+      "before_leaks": {
+        "AudioStreamWAV": 8,
+        "AudioStreamPlaybackWAV": 14
+      },
+      "after_log": "logs\\after-final\\c3.log",
+      "after_leaks": {},
+      "attribution_log": "logs\\trace\\c3.log",
+      "matched_ids": 22
+    },
+    {
+      "fixture": "c4",
+      "before_log": "logs\\before\\c4.log",
+      "before_leaks": {
+        "AudioStreamPlaybackWAV": 9,
+        "AudioStreamWAV": 5
+      },
+      "after_log": "logs\\after-final\\c4.log",
+      "after_leaks": {},
+      "attribution_log": "logs\\trace\\c4.log",
+      "matched_ids": 14
+    },
+    {
+      "fixture": "e1",
+      "before_log": "logs\\before\\e1.log",
+      "before_leaks": {
+        "AudioStreamPlaybackWAV": 2,
+        "AudioStreamWAV": 2
+      },
+      "after_log": "logs\\after-final\\e1.log",
+      "after_leaks": {},
+      "attribution_log": "logs\\trace\\e1.log",
+      "matched_ids": 4
+    },
+    {
+      "fixture": "f2",
+      "before_log": "logs\\before\\f2.log",
+      "before_leaks": {
+        "AudioStreamWAV": 5,
+        "AudioStreamPlaybackWAV": 5
+      },
+      "after_log": "logs\\after-final\\f2.log",
+      "after_leaks": {},
+      "attribution_log": "logs\\trace-repeat3\\f2.log",
+      "matched_ids": 10
+    },
+    {
+      "fixture": "f3",
+      "before_log": "logs\\before\\f3.log",
+      "before_leaks": {
+        "AudioStreamPlaybackWAV": 9,
+        "AudioStreamWAV": 9
+      },
+      "after_log": "logs\\after-final\\f3.log",
+      "after_leaks": {},
+      "attribution_log": "logs\\trace\\f3.log",
+      "matched_ids": 16
+    }
+  ],
+  "soak": {
+    "reference": {
+      "seconds": 5.213219,
+      "checks": 156,
+      "after_release": {
+        "cached_action_clips": 6,
+        "nodes": 4,
+        "objects": 1825,
+        "orphans": 0,
+        "resources": 240,
+        "static_bytes": 103910576
+      },
+      "observed_playbacks_alive": 7,
+      "iterations": [
+        {
+          "iteration": 0,
+          "before_create": {
+            "cached_action_clips": 0,
+            "nodes": 5,
+            "objects": 1705,
+            "orphans": 0,
+            "resources": 236,
+            "static_bytes": 78585070
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107935176
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103778020
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 1,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103776144
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107957520
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103797020
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 2,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103795128
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107960640
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103800140
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 3,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103798280
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107994640
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103834012
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 4,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103832088
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107997728
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103837100
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 5,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103835176
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108000816
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103840188
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 6,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103838392
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108004032
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103843404
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 7,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103841480
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108068560
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103907932
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 8,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103906008
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108071648
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103911020
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 9,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103909096
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108074736
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103914108
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 10,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103912192
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108077824
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103917196
+          },
+          "observed_playbacks_alive": 7
+        },
+        {
+          "iteration": 11,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1826,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103915536
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2495,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108081168
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1825,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103920540
+          },
+          "observed_playbacks_alive": 7
+        }
+      ]
+    },
+    "repaired": {
+      "seconds": 7.024718,
+      "checks": 156,
+      "after_release": {
+        "cached_action_clips": 6,
+        "nodes": 4,
+        "objects": 1811,
+        "orphans": 0,
+        "resources": 240,
+        "static_bytes": 104026460
+      },
+      "observed_playbacks_alive": 0,
+      "iterations": [
+        {
+          "iteration": 0,
+          "before_create": {
+            "cached_action_clips": 0,
+            "nodes": 5,
+            "objects": 1705,
+            "orphans": 0,
+            "resources": 236,
+            "static_bytes": 78586442
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107936548
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103772876
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 1,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103771000
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107966376
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103802320
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 2,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103800428
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 107979940
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103815884
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 3,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103814024
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108024384
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103860200
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 4,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103858276
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108037916
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103873732
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 5,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103871808
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108051448
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103887264
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 6,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103885468
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108065108
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103900924
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 7,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103899000
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108140080
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103975896
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 8,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103973972
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108153612
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103989428
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 9,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 103987504
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108167144
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 104002960
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 10,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 104001044
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108180676
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 104016492
+          },
+          "observed_playbacks_alive": 0
+        },
+        {
+          "iteration": 11,
+          "before_create": {
+            "cached_action_clips": 6,
+            "nodes": 5,
+            "objects": 1812,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 104014832
+          },
+          "before_dispose": {
+            "cached_action_clips": 6,
+            "nodes": 313,
+            "objects": 2488,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 108194464
+          },
+          "after_release": {
+            "cached_action_clips": 6,
+            "nodes": 4,
+            "objects": 1811,
+            "orphans": 0,
+            "resources": 240,
+            "static_bytes": 104030280
+          },
+          "observed_playbacks_alive": 0
+        }
+      ]
+    }
+  },
+  "normal_preserved_files": 1385
+}
