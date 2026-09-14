@@ -1,14 +1,13 @@
 # Worktree and runtime setup
 
-Start with [the plan](README.md). The next ready slice is **R8**, which combines
-the seven checked and published candidates. Its real worktree and fresh baseline
-runtime are prepared below. R9 remains gated on R8 and requires an independent
-task. No worker task has been launched by setup. [Workspaces](workspaces.json)
-preserves the historical preparation and current delivery records.
+Start with [the plan](README.md). R1–R8 are checked and published. R9 is the next
+independent review; its actual worktree preparation is recorded separately.
+No worker task was launched by publication. [Workspaces](workspaces.json) preserves
+historical setup and current delivery records.
 
-Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md) [R6](publication-r6.md) [R7](publication-r7.md).
-The initial setup flags remain historical; [deliveries.json](deliveries.json)
-is the current readiness record.
+Published repair candidates: [R1](publication-r1.md) [R2](publication-r2.md) [R3](publication-r3.md) [R4](publication-r4.md) [R5](publication-r5.md) [R6](publication-r6.md) [R7](publication-r7.md) [R8](publication-r8.md).
+The initial setup flags remain historical; [deliveries.json](deliveries.json) is
+the current readiness record.
 
 The owner depot is `C:/Users/Matty/Dev/project-wroughtwild`. D: was chosen because
 C: had about 5 GiB free while D: had about 1.3 TiB when preparing the pack. No old

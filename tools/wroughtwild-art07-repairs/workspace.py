@@ -126,6 +126,23 @@ def prepare(plan, task, version):
     if task['id'] == 'r9':
         package = read(DOCS / 'deliveries.json')['deliveries']['r8']['package']
     rows = entries(package)
+    source = Path(package['path']).resolve()
+    prefix = ''
+    test_support = {}
+    if task['id'] == 'r9':
+        # R8 seals its complete candidate under runtime/, separately from evidence.
+        map_path = source / 'runtime-files.json'
+        assert sha(map_path) == rows['runtime-files.json']['sha256']
+        runtime_map = read(map_path)
+        nested = {name.removeprefix('runtime/'): row for name, row in rows.items()
+                  if name.startswith('runtime/')}
+        assert runtime_map == nested, 'R8 runtime map must exactly match its sealed entries.'
+        assert all(Path(name).parts[0] in ['game', 'data', 'engine'] for name in nested)
+        override = 'test-support/override.cfg'
+        assert sha(source / override) == rows[override]['sha256']
+        test_support = {'game/override.cfg': {'source_path': override, **rows[override]}}
+        rows = nested
+        prefix = 'runtime/'
     selected = {name: row for name, row in rows.items()
                 if Path(name).parts[0] in ['game', 'data', 'engine']}
     assert selected and any(n.endswith('project.godot') for n in selected)
@@ -134,18 +151,23 @@ def prepare(plan, task, version):
     out = (base / version).resolve()
     assert out.is_relative_to(base) and not out.exists(), 'Use a fresh version.'
     needed = sum(row['bytes'] for row in selected.values())
-    assert shutil.disk_usage(ROOT).free > needed + 512 * 1024**2, 'Insufficient copy space; leave existing work intact.'
+    extra_bytes = sum(row['bytes'] for row in test_support.values())
+    assert shutil.disk_usage(ROOT).free > needed + extra_bytes + 512 * 1024**2, 'Insufficient copy space; leave existing work intact.'
     runtime = out / 'runtime'
-    source = Path(package['path']).resolve()
     for name, row in selected.items():
         target = (runtime / name).resolve()
         assert target.is_relative_to(runtime.resolve()), name
-        origin = (source / name).resolve()
+        origin = (source / prefix / name).resolve()
         assert origin.is_relative_to(source), name
         target.parent.mkdir(parents=True, exist_ok=True)
         assert not target.exists()
         shutil.copy2(origin, target)
         assert target.stat().st_size == row['bytes'] and sha(target) == row['sha256'].lower(), name
+    for name, row in test_support.items():
+        target = (runtime / name).resolve()
+        assert target.is_relative_to(runtime.resolve()) and not target.exists(), name
+        shutil.copy2(source / row['source_path'], target)
+        assert target.stat().st_size == row['bytes'] and sha(target) == row['sha256'], name
     assert not (runtime / 'game/.godot').exists()
     dll = runtime / 'game/bin/libwroughtwild_sim.windows.x86_64.dll'
     assert sha(dll) == inputs['native']['dll_sha256']
@@ -157,12 +179,17 @@ def prepare(plan, task, version):
         ('smoke-forward_plus', ['--rendering-method', 'forward_plus', '--path', str(runtime / 'game'), 'res://g1/play.tscn', '--', '--smoke']),
         ('smoke-gl_compatibility', ['--rendering-method', 'gl_compatibility', '--path', str(runtime / 'game'), 'res://g1/play.tscn', '--', '--smoke'])
     ]:
+        if task['id'] == 'r9' and ident.startswith('smoke-'):
+            args.append('--r8-no-mouse-capture')
         jobs.append({'id': ident, 'program': str(engine), 'arguments': args,
                      'log': str(out / 'logs' / (ident + '.log')), 'state': str(out / 'users' / ident)})
     record = {'id': task['id'], 'branch': task['branch'], 'checkout_commit': git('rev-parse', 'HEAD'),
               'runtime_base': inputs['runtime_base'], 'source': package, 'runtime': str(runtime),
               'files': len(selected), 'bytes': needed, 'original_files': selected,
               'scope': 'Copied runtime entries verified byte-for-byte; no cache inherited, no engine started, no repair implemented. Other source/master payloads must be verified before consumption.'}
+    if task['id'] == 'r9':
+        record.update({'runtime_package_prefix': prefix, 'test_support': test_support,
+                       'test_support_scope': 'Verified R8 no-focus override outside the normal runtime map. Automated smoke uses the mouse-capture opt-out. Normal-play copies must exclude this override.'})
     for name, data in [('prepared.json', record), ('import-smoke.json', jobs)]:
         with (out / name).open('x', encoding='utf-8', newline='\n') as stream:
             json.dump(data, stream, indent=2)

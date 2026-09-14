@@ -1691,7 +1691,17 @@
   "ordinary_world_rollout": "outside scope",
   "r9_input": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/R9-input.json",
   "native_dll_sha256": "0e7c4956b6c870f5879e78f54c5830509b7ae37913055543cc3a6d451298e0e1",
-  "publication": "Source committed on codex/art07-r8; receipt commit resolved from history. Main integration and push not performed by worker.",
+  "publication": {
+    "method": "fast-forward",
+    "previous_main": "b7eec48a9d0c1810a8c68aeec9ee7e7699328478",
+    "implementation_commit": "67865cf44739f9f9f779c36be49042dd77342d5e",
+    "receipt_commit": "7a5bc56936f1565cd94c450e6ca36ae1ccdbde15",
+    "worker_blobs": "Exact original commits, unchanged",
+    "destination": "https://github.com/Jattymoels/project-wroughtwild.git",
+    "ref": "refs/heads/main",
+    "publisher_verification": "docs/prototype/art07-repairs/2026-09-14/publication-r8.json",
+    "push": "Accompanying publication commit; remote tip independently verified after pushing."
+  },
   "git_source_proof": {
     "path": "docs/art/leyline-studies/2026-09-14/art07-repairs/r8/source-commit-proof.json",
     "sha256": "c7ab330d0f921ceb0594c0d57a5d31aa6bc881a84e1b8c768693c6fa161fb9a1",

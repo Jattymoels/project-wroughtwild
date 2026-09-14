@@ -435,3 +435,11 @@ No worker task or engine was launched by setup. R8 owns explicit delta compositi
 and combined verification; R9 follows independently after R8 publication.
 Owner visual acceptance, unselected body/geography options and target-device
 clearance remain open.
+
+### ART-07R8 publication, 14 September 2026
+
+[R8 passed publisher verification](art07-repairs/2026-09-14/publication-r8.md).
+All seven repairs now compose in one sealed retained-world runtime, with original
+native/save boundaries and a verified automatic-test mouse opt-out. Setup and
+texture memory improve; settled-frame cost, traversal stalls and recorded visual
+limits remain. R9 follows as a new independent review; no rollout is authorized.

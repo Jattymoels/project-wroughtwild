@@ -104,6 +104,19 @@
         "bytes": 4594239829
       },
       "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r7.json"
+    },
+    "r8": {
+      "status": "published",
+      "source_commit": "67865cf44739f9f9f779c36be49042dd77342d5e",
+      "receipt_commit": "7a5bc56936f1565cd94c450e6ca36ae1ccdbde15",
+      "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r8.json",
+      "package": {
+        "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff-final",
+        "manifest_sha256": "06dbb6538e4c454db65a00c60737d8e5bbaffbdb3fd0d5c9f0f355d2073c4541",
+        "files": 9890,
+        "bytes": 13437587547
+      },
+      "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r8.json"
     }
   }
 }

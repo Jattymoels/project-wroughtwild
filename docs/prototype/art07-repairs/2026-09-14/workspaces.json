@@ -1,5 +1,5 @@
 {
-  "status": "R1–R7 candidates checked and published. R8 worktree and fresh common baseline runtime are prepared; no worker task launched by setup.",
+  "status": "R1–R8 checked and published. R9 dependency gate is clear; actual preparation follows separately.",
   "created_from_published_commit": "173ab4eeb4eac97f3dd2869c50e765bba0cfb40a",
   "metadata_note": "Idle prepared branches may receive a documentation-only fast-forward to the published final setup record; setup_base records the actual original copy/checkout commit. Per-row setup state, engine/cache and clean flags describe initial preparation only; current_delivery records later publication where present. Wave-2 setup_base and prepared receipts retain the actual copy base; a later documentation-only fast-forward may add this final setup record. Top-level engine/task launch counts refer to setup only, not worker or publisher verification. Wave-3 setup_base and prepared receipt preserve the actual baseline-copy commit; a documentation-only fast-forward may add the final setup record. No engine or worker task is launched by wave-3 setup.",
   "workspaces": [
@@ -348,7 +348,21 @@
         "r5",
         "r6",
         "r7"
-      ]
+      ],
+      "current_delivery": {
+        "status": "published",
+        "source_commit": "67865cf44739f9f9f779c36be49042dd77342d5e",
+        "receipt_commit": "7a5bc56936f1565cd94c450e6ca36ae1ccdbde15",
+        "receipt": "docs/prototype/art07-repairs/2026-09-14/receipts/r8.json",
+        "package": {
+          "path": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v01\\handoff-final",
+          "manifest_sha256": "06dbb6538e4c454db65a00c60737d8e5bbaffbdb3fd0d5c9f0f355d2073c4541",
+          "files": 9890,
+          "bytes": 13437587547
+        },
+        "publication_report": "docs/prototype/art07-repairs/2026-09-14/publication-r8.json",
+        "publisher_runtime": "D:\\project-wroughtwild-art07-r8\\build\\art07-repairs\\r8\\v04\\runtime"
+      }
     }
   ],
   "later_waves": "R9 remains planned only; it requires published R8 and an independent task that implemented none of R1–R8.",
